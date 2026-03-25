@@ -36,8 +36,17 @@ function ChoiceItem({ choice, qid, sel, onSelect, revealed }) {
   );
 }
 
-function QuestionBlock({ question, sel, onSelect, revealed }) {
+function QuestionBlock({ question, sel, onSelect }) {
+  // ✅ revealed를 문제 단위로 관리 — 이 문제의 선지를 클릭해야만 정답 노출
+  const [revealed, setRevealed] = useState(false);
+
   const hasBogiTable = question.bogiType === 'table' && question.bogiTable;
+
+  function handleSelect(uid, choice) {
+    setRevealed(true);
+    onSelect(uid, choice);
+  }
+
   return (
     <div style={{ background:'#f9fafb', border:'1px solid #e5e7eb', borderRadius:'10px', padding:'14px 16px', display:'flex', flexDirection:'column', gap:'8px' }}>
       <div style={{ fontSize:'0.88rem', fontWeight:'600', color:'#111827', lineHeight:'1.55' }}>
@@ -50,13 +59,19 @@ function QuestionBlock({ question, sel, onSelect, revealed }) {
           sel={sel}
           onSelect={(num) => {
             const choice = question.choices.find(c => c.num === num);
-            if (choice) onSelect(`q${question.id}_c${num}`, choice);
+            if (choice) handleSelect(`q${question.id}_c${num}`, choice);
           }}
         />
       )}
       {!hasBogiTable && question.bogi && (
-        <div style={{ background:'#fff', border:'1px solid #d1d5db', borderRadius:'6px', padding:'10px 12px', fontSize:'0.82rem', color:'#374151', lineHeight:'1.65', whiteSpace:'pre-wrap' }}>
-          <span style={{ fontWeight:'700' }}>〈보기〉</span>{'\n'}{question.bogi}
+        <div style={{
+          background:'#fff', border:'1px solid #d1d5db', borderRadius:'6px',
+          padding:'10px 14px', fontSize:'0.82rem', color:'#374151',
+          lineHeight:'1.75', whiteSpace:'pre-wrap',
+          textAlign:'left',  /* ✅ 왼쪽 정렬 */
+        }}>
+          <div style={{ fontWeight:'700', marginBottom:'6px' }}>〈보기〉</div>
+          <div>{question.bogi}</div>
           {question.bogiImage && (
             <div style={{ marginTop:'12px', textAlign:'center' }}>
               <img
@@ -71,7 +86,7 @@ function QuestionBlock({ question, sel, onSelect, revealed }) {
       {!hasBogiTable && (
         <div style={{ display:'flex', flexDirection:'column', gap:'5px' }}>
           {question.choices.map(c => (
-            <ChoiceItem key={c.num} choice={c} qid={question.id} sel={sel} onSelect={onSelect} revealed={revealed} />
+            <ChoiceItem key={c.num} choice={c} qid={question.id} sel={sel} onSelect={handleSelect} revealed={revealed} />
           ))}
         </div>
       )}
@@ -104,19 +119,25 @@ function ReportModal({ wrongLog, onClose }) {
 }
 
 export default function QuizPanel({ passageSet, sel, onSelChange }) {
-  const [revealed, setRevealed] = useState(false);
   const [wrongLog, setWrongLog] = useState([]);
   const [showReport, setShowReport] = useState(false);
   if (!passageSet) return null;
+
   function handleSelect(uid, choice) {
     onSelChange(uid, choice);
-    setRevealed(true);
     if (!choice.ok) setWrongLog(prev => prev.find(w=>w.uid===uid) ? prev : [...prev, { uid, pat:choice.pat, qid:uid.split('_')[0] }]);
   }
+
   return (
     <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
-      {passageSet.questions.map(q => <QuestionBlock key={q.id} question={q} sel={sel} onSelect={handleSelect} revealed={revealed} />)}
-      {wrongLog.length > 0 && <button onClick={() => setShowReport(true)} style={{ padding:'10px 16px', borderRadius:'8px', background:'#1f2937', color:'#fff', border:'none', fontWeight:'700', cursor:'pointer', fontSize:'0.88rem', alignSelf:'flex-end' }}>📊 내 오답 패턴 보기 ({wrongLog.length}개)</button>}
+      {passageSet.questions.map(q => (
+        <QuestionBlock key={q.id} question={q} sel={sel} onSelect={handleSelect} />
+      ))}
+      {wrongLog.length > 0 && (
+        <button onClick={() => setShowReport(true)} style={{ padding:'10px 16px', borderRadius:'8px', background:'#1f2937', color:'#fff', border:'none', fontWeight:'700', cursor:'pointer', fontSize:'0.88rem', alignSelf:'flex-end' }}>
+          📊 내 오답 패턴 보기 ({wrongLog.length}개)
+        </button>
+      )}
       {showReport && <ReportModal wrongLog={wrongLog} onClose={() => setShowReport(false)} />}
     </div>
   );
