@@ -25,3 +25,14 @@
     "vite": "^8.0.1"
   }
 }
+{
+  "engines": {
+    "node": ">=18"
+  }
+}
+```
+
+**② 이전 빌드 캐시 문제**
+Vercel 대시보드에서:
+```
+Settings → General → Build Cache → Clear Cache and Redeploy
