@@ -418,7 +418,6 @@ function ViewerPage({ yearKey, yearData }) {
           <PassagePanel
             passageSet={currentSet}
             sel={sel}
-            selectedChoice={selChoice}
           />
         </div>
 
@@ -541,7 +540,7 @@ export default function App() {
           border: '1px solid #fca5a5', borderRadius: '10px',
           color: '#7f1d1d', fontSize: '0.88rem',
         }}>
-          ⚠️ {error}  
+          ⚠️ {error}
           <button
             onClick={() => setError(null)}
             style={{
