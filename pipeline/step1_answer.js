@@ -41,7 +41,7 @@ export async function extractAnswers(pdfPath) {
     ],
   });
 
-  const text = response.content[0].text.trim();
+  const text = response.content[0].text.trim().replace(/^```[a-z]*\n?/i, '').replace(/\n?```$/i, '');
   return JSON.parse(text);
 }
 
