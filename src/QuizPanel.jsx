@@ -62,11 +62,12 @@ function PatternBadge({ pat }) {
 }
 
 // ── 선지 아이템 ───────────────────────────────────────────
-function ChoiceItem({ choice, qid, clicked, onSelect }) {
+function ChoiceItem({ choice, qid, questionType, clicked, onSelect }) {
   const uid = `q${qid}_c${choice.num}`;
   const isMe = clicked === uid;
-  const isCorrect = choice.ok === false;  // ok=false → 정답
-
+  const isCorrect = questionType === 'positive'
+    ? choice.ok === true
+    : choice.ok === false;
   let bg='#ffffff', border='1px solid #e5e7eb', tc='#1f2937';
   let numBg='#f3f4f6', numColor=CC[choice.num]?.text ?? '#374151';
 
@@ -107,6 +108,12 @@ function QuestionBlock({ question, passageId, sel, onSelect }) {
   const [clicked, setClicked] = useState(null);
 
   function handleClick(uid, choice) {
+    // 같은 선지 재클릭 → 취소
+    if (clicked === uid) {
+      setClicked(null);
+      onSelect(null, null);
+      return;
+    }
     setClicked(uid);
     onSelect(uid, choice);
   }
@@ -144,7 +151,8 @@ function QuestionBlock({ question, passageId, sel, onSelect }) {
       {!hasBogiTable && (
         <div style={{ display:'flex', flexDirection:'column', gap:'5px' }}>
           {question.choices.map(c => (
-            <ChoiceItem key={c.num} choice={c} qid={question.id} clicked={clicked} onSelect={handleClick} />
+            // 수정
+<ChoiceItem key={c.num} choice={c} qid={question.id} questionType={question.questionType ?? 'negative'} clicked={clicked} onSelect={handleClick} />
           ))}
         </div>
       )}
@@ -180,12 +188,19 @@ export default function QuizPanel({ passageSet, sel, onSelChange }) {
   const [showReport, setShowReport] = useState(false);
   if (!passageSet) return null;
 
-  function handleSelect(uid, choice) {
-    onSelChange(uid, choice);
-    if (choice.ok === true) {
-      setLog(prev => prev.find(w=>w.uid===uid) ? prev : [...prev, { uid, pat:choice.pat }]);
+  // 수정
+function handleSelect(uid, choice) {
+  onSelChange(uid, choice);
+  if (choice) {
+    const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
+    const q = passageSet.questions.find(q => q.id === qid);
+    const qt = q?.questionType ?? 'negative';
+    const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
+    if (!isCorrect) {
+      setLog(prev => prev.find(w => w.uid === uid) ? prev : [...prev, { uid, pat: choice.pat }]);
     }
   }
+}
 
   return (
     <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>

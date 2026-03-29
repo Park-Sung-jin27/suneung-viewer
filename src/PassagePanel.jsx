@@ -33,12 +33,13 @@ function Lines({ text }) {
   );
 }
 
+// 수정
 function getHL(sent, sel) {
   if (!sel) return null;
   const cs = sent.cs;
   if (!cs || cs.length === 0) return null;
-  if (!cs.includes(sel)) return null;
   const cNum = parseInt(sel.split('_c')[1], 10);
+  if (!cs.includes(cNum)) return null;
   return CC[cNum] || null;
 }
 
