@@ -39,7 +39,7 @@ function getHL(sent, sel) {
   const cs = sent.cs;
   if (!cs || cs.length === 0) return null;
   const cNum = parseInt(sel.split('_c')[1], 10);
-  if (!cs.includes(cNum)) return null;
+  if (!cs.includes(sel)) return null;
   return CC[cNum] || null;
 }
 
