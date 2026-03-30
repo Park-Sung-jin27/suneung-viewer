@@ -33,7 +33,6 @@ function Lines({ text }) {
   );
 }
 
-// 수정
 function getHL(sent, sel) {
   if (!sel) return null;
   const cs = sent.cs;
@@ -43,7 +42,41 @@ function getHL(sent, sel) {
   return CC[cNum] || null;
 }
 
-function RenderSent({ sent, sel }) {
+// ── inline annotation 스타일 ──
+const BOX_STYLE = { border: '1px solid #555', borderRadius: '2px', padding: '0 3px' };
+const UL_STYLE  = { textDecoration: 'underline', textUnderlineOffset: '3px' };
+
+function applyInlineAnns(text, anns) {
+  if (!anns.length) return <Lines text={text} />;
+  // 텍스트 내 등장 위치 순으로 정렬
+  const sorted = anns
+    .map(a => ({ text: a.text, type: a.type, idx: text.indexOf(a.text) }))
+    .filter(a => a.idx >= 0)
+    .sort((a, b) => a.idx - b.idx);
+  if (!sorted.length) return <Lines text={text} />;
+
+  const parts = [];
+  let cursor = 0;
+  for (const a of sorted) {
+    if (a.idx < cursor) continue;
+    if (a.idx > cursor) parts.push({ t: text.slice(cursor, a.idx), type: null });
+    parts.push({ t: a.text, type: a.type });
+    cursor = a.idx + a.text.length;
+  }
+  if (cursor < text.length) parts.push({ t: text.slice(cursor), type: null });
+
+  return (
+    <>
+      {parts.map((p, i) => {
+        if (p.type === 'box') return <span key={i} style={BOX_STYLE}><Lines text={p.t} /></span>;
+        if (p.type === 'underline') return <span key={i} style={UL_STYLE}><Lines text={p.t} /></span>;
+        return <Lines key={i} text={p.t} />;
+      })}
+    </>
+  );
+}
+
+function RenderSent({ sent, sel, anns }) {
   if (sent.type === 'image') {
     return (
       <div style={{ margin: '16px 0', textAlign: 'center' }}>
@@ -83,25 +116,79 @@ function RenderSent({ sent, sel }) {
     background: pal.bg, borderRadius: '3px', padding: '1px 3px',
     outline: `1.5px solid ${pal.border}`, outlineOffset: '1px',
   } : {};
-  return <span style={hlStyle}><Lines text={t} />{' '}</span>;
+
+  const content = anns.length > 0 ? applyInlineAnns(t, anns) : <Lines text={t} />;
+  return <span style={hlStyle}>{content}{' '}</span>;
 }
 
-function renderAll(sents, sel) {
+// ── bracket 유틸: sentIds 배열에서 범위 판정 ──
+function getBracketInfo(sentId, brackets, sentIds) {
+  for (const br of brackets) {
+    const from = sentIds.indexOf(br.sentFrom);
+    const to = sentIds.indexOf(br.sentTo);
+    const cur = sentIds.indexOf(sentId);
+    if (from < 0 || to < 0 || cur < 0) continue;
+    if (cur >= from && cur <= to) {
+      return { label: br.label, isFirst: cur === from };
+    }
+  }
+  return null;
+}
+
+function renderAll(sents, sel, annotations) {
+  const brackets = annotations.filter(a => a.type === 'bracket');
+  const inlineTypes = new Set(['box', 'underline']);
+  const sentIds = sents.map(s => s.id);
+
+  // sentId → inline annotations 매핑
+  const annMap = {};
+  for (const a of annotations) {
+    if (inlineTypes.has(a.type) && a.sentId) {
+      (annMap[a.sentId] ||= []).push(a);
+    }
+  }
+
   const result = [];
   let buf = [];
+
   function flush() {
     if (!buf.length) return;
-    result.push(
+    const brInfo = getBracketInfo(buf[0].id, brackets, sentIds);
+    const hasBracket = !!brInfo;
+
+    const inner = (
       <p key={'p_' + buf[0].id} style={{ margin: '0 0 5px 0' }}>
-        {buf.map(s => <RenderSent key={s.id} sent={s} sel={sel} />)}
+        {buf.map(s => (
+          <RenderSent key={s.id} sent={s} sel={sel} anns={annMap[s.id] || []} />
+        ))}
       </p>
     );
+
+    if (hasBracket) {
+      result.push(
+        <div key={'br_' + buf[0].id} style={{ borderLeft: '3px solid #888', paddingLeft: '8px' }}>
+          {brInfo.isFirst && (
+            <span style={{ fontSize: '11px', color: '#888', display: 'block', marginBottom: '2px' }}>
+              [{brInfo.label}]
+            </span>
+          )}
+          {inner}
+        </div>
+      );
+    } else {
+      result.push(inner);
+    }
     buf = [];
   }
+
   for (const s of sents) {
     const st = s.sentType || (s.type === 'image' ? 'image' : 'body');
-    if (['workTag','omission','author','footnote','image'].includes(st)) { flush(); result.push(<RenderSent key={s.id} sent={s} sel={sel} />); }
-    else { buf.push(s); }
+    if (['workTag', 'omission', 'author', 'footnote', 'image'].includes(st)) {
+      flush();
+      result.push(<RenderSent key={s.id} sent={s} sel={sel} anns={annMap[s.id] || []} />);
+    } else {
+      buf.push(s);
+    }
   }
   flush();
   return result;
@@ -109,13 +196,14 @@ function renderAll(sents, sel) {
 
 export default function PassagePanel({ passageSet, sel }) {
   if (!passageSet) return null;
+  const annotations = passageSet.annotations ?? [];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
       <div style={{ fontSize: '0.73rem', color: '#9ca3af', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase', borderBottom: '1px solid #f3f4f6', paddingBottom: '8px' }}>
         {passageSet.range} · {passageSet.title}
       </div>
       <div style={{ fontSize: '0.92rem', lineHeight: '2.0', color: '#1f2937', fontFamily: "'Noto Serif KR', serif" }}>
-        {renderAll(passageSet.sents || [], sel)}
+        {renderAll(passageSet.sents || [], sel, annotations)}
       </div>
     </div>
   );

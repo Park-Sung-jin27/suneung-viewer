@@ -1,0 +1,1335 @@
+{
+  "2026수능": {
+    "s1": [
+      {
+        "type": "box",
+        "sentId": "r2026a_s3",
+        "text": "단순 관점"
+      }
+    ],
+    "s2": [
+      {
+        "type": "box",
+        "sentId": "r2026b_s34",
+        "text": "연대보증인"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026b_s3",
+        "text": "구성하는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026b_s5",
+        "text": "고려하여"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026b_s12",
+        "text": "파기하고"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026b_s24",
+        "text": "성립하려면"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026b_s36",
+        "text": "규정하고"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026b_s26",
+        "text": "이는 주채무자와 보증인 간에 보증의 대가를 지급하기로 하는 계약이 별도로 체결되었더라도 마찬가지이다."
+      }
+    ],
+    "s3": [
+      {
+        "type": "underline",
+        "sentId": "r2026c_s3",
+        "text": "얻는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026c_s9",
+        "text": "돌아온다"
+      }
+    ],
+    "s4": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2026d_s9",
+        "sentTo": "r2026d_s11"
+      }
+    ],
+    "l2026a": [
+      {
+        "type": "underline",
+        "sentId": "l2026as4",
+        "text": "반기 듣고"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026as4",
+        "text": "깜짝 놀래여"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026as6",
+        "text": "깜짝 놀래여"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026as6",
+        "text": "이 산중"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026as7",
+        "text": "반기 듣고"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026as9",
+        "text": "깜짝 놀래"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026as10",
+        "text": "수궁"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026as11",
+        "text": "질색허여"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026as12",
+        "text": "세수람 고개"
+      }
+    ],
+    "l2026b": [
+      {
+        "type": "underline",
+        "sentId": "l2026bs2",
+        "text": "한 목소리"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026bs2",
+        "text": "외마디 소리"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026bs2",
+        "text": "바람"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026bs5",
+        "text": "오색딱다구리"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026bs5",
+        "text": "청설모"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026bs7",
+        "text": "흰 구름"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026bs7",
+        "text": "장대비"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026bs29",
+        "text": "사람의 소리"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026bs29",
+        "text": "좋은 소리"
+      }
+    ],
+    "l2026c": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2026cs4",
+        "sentTo": "l2026cs14"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026cs1",
+        "text": "이 세상에서 서로 말이 통하지 않는 두 종류의 인간군들이 사는가 보았다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026cs15",
+        "text": "이야기"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026cs18",
+        "text": "그러나 그렇기는 하지만 명분이나 사리의 옳음이란 것이 싸움에 무슨 필요가 있단 말인가"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026cs26",
+        "text": "소문"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026cs27",
+        "text": "전국 각처에서 찾아든 사람들이 이곳 독가촌에 정착하여 그럭저럭 안정을 얻을 만하게 된 이즈음 이곳이 외부의 자본에 의해 관광지로 돼 버린다면 도대체 이 사람들은 또 어느 곳으로 찾아들어 가 얼마만큼 방황을 해야 한다는 말인가?"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026cs34",
+        "text": "명분 보다는 실리를 추구해 오는 측이 항상 이겨 오고 있었던 게 아닌가."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026cs36",
+        "text": "문제는 그것이 아직까지는 완전히 지나간 게 아니라는 데 있었다."
+      }
+    ],
+    "l2026d": [
+      {
+        "type": "underline",
+        "sentId": "l2026ds2",
+        "text": "우리 말이 지쳤구나"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026ds2",
+        "text": "촌인(村人)의 솜씨 아녀"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026ds2",
+        "text": "수상히 오는 손"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026ds2",
+        "text": "유심터라 이 부사야"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026ds2",
+        "text": "억지로 발 드리운들"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026ds7",
+        "text": "방패연"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2026ds10",
+        "text": "연"
+      }
+    ]
+  },
+  "2025수능": {
+    "kor25_a": [
+      {
+        "type": "underline",
+        "sentId": "kor25_as17",
+        "text": "밑줄 긋기의 방법을 이해하고 잘 사용하는 것"
+      }
+    ],
+    "kor25_b": [
+      {
+        "type": "box",
+        "sentId": "kor25_bs1",
+        "text": "개화"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_bs15",
+        "text": "근대 국가 건설과 새로운 주체의 형성에 주목하여 문명에 대한 견해를 제시했다."
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_bs27",
+        "text": "과학의 근거 위에서만 민주 정치의 실현이 가능하다고 주장했다"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_bs29",
+        "text": "그칠"
+      }
+    ],
+    "kor25_c": [
+      {
+        "type": "box",
+        "sentId": "kor25_cs14",
+        "text": "잠재 표현"
+      }
+    ],
+    "kor25_d": [
+      {
+        "type": "underline",
+        "sentId": "kor25_ds1",
+        "text": "이루어진다고"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_ds5",
+        "text": "불러내어"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_ds8",
+        "text": "나타난다고"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_ds8",
+        "text": "감추고"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_ds8",
+        "text": "넘쳐 나는"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_ds9",
+        "text": "인정하는 입장"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_ds11",
+        "text": "인정하지 않는 입장"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_ds12",
+        "text": "대법원"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_ds14",
+        "text": "다수 의견"
+      },
+      {
+        "type": "underline",
+        "sentId": "kor25_ds15",
+        "text": "소수 의견"
+      }
+    ],
+    "l2025a": [
+      {
+        "type": "box",
+        "sentId": "l2025as105",
+        "text": "누명"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2025as106",
+        "text": "이 일은 소자가 이미 아는 바이오니 염려 마옵소서."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2025as106",
+        "text": "처음에 그놈이 충렬부인 방에 간 줄 어찌 알으셨나이까?"
+      }
+    ],
+    "l2025b": [
+      {
+        "type": "underline",
+        "sentId": "l2025bs7",
+        "text": "치병과 환후는 각각 따로인 것을"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2025bs31",
+        "text": "누군가가 듣기를 바라는 모든 고백이란, 위선이 아니면 위악이다."
+      }
+    ],
+    "l2025c": [
+      {
+        "type": "box",
+        "sentId": "l2025as161",
+        "text": "비밀"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2025as160",
+        "text": "불편스런 일이 한두 가지가 아니었다"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2025as168",
+        "text": "― 그깟 놈의 배꼽, 안 가지고 있음 어때."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2025as170",
+        "text": "자신으로부터 배꼽이 사라져 버린 사실을, 그리고 그 때문에 생긴 모든 불편을 잊고, 그 배꼽 없는 생활에 스스로 익숙해져 버리기를 바라 마지않았다"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2025as190",
+        "text": "어느 해 여름이었다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2025as191",
+        "text": "하니까 그것은 허원이 자신의 배꼽을 잃어버리고 나서 불편하기 그지없는 세 번째의 여름을 맞고 있을 때였다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2025as205",
+        "text": "배꼽에 관한 논의가 그렇듯 갑자기 시중 일반에까지 성행하기 시작한 것이다."
+      }
+    ],
+    "l2025d": [
+      {
+        "type": "underline",
+        "sentId": "l2025as219",
+        "text": "인삼"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2025as249",
+        "text": "고기"
+      }
+    ]
+  },
+  "2025_9월": {
+    "sep25_a": [
+      {
+        "type": "underline",
+        "sentId": "sep25_as11",
+        "text": "글 내용과 관련된 시각 자료를 포함한 글을 읽을 때"
+      }
+    ],
+    "sep25_b": [
+      {
+        "type": "underline",
+        "sentId": "sep25_bs2",
+        "text": "재판매 가격 유지 행위"
+      },
+      {
+        "type": "underline",
+        "sentId": "sep25_bs2",
+        "text": "붙여"
+      },
+      {
+        "type": "underline",
+        "sentId": "sep25_bs19",
+        "text": "이용후기 광고"
+      }
+    ],
+    "sep25_c": [
+      {
+        "type": "underline",
+        "sentId": "sep25_cs17",
+        "text": "블록체인에 포함된 데이터는 일부가 지워지더라도 복원이 용이하다"
+      }
+    ],
+    "sep25_d": [
+      {
+        "type": "box",
+        "sentId": "sep25_ds20",
+        "text": "정신분석학적 영화 이론"
+      },
+      {
+        "type": "underline",
+        "sentId": "sep25_ds6",
+        "text": "새로운"
+      },
+      {
+        "type": "underline",
+        "sentId": "sep25_ds10",
+        "text": "깨뜨릴"
+      },
+      {
+        "type": "underline",
+        "sentId": "sep25_ds16",
+        "text": "마주하는"
+      },
+      {
+        "type": "underline",
+        "sentId": "sep25_ds18",
+        "text": "쓰는"
+      },
+      {
+        "type": "underline",
+        "sentId": "sep25_ds20",
+        "text": "관객이 영화에서 느끼는 현실감은 상상적인 것이며 환영이다"
+      },
+      {
+        "type": "underline",
+        "sentId": "sep25_ds28",
+        "text": "없앤다"
+      }
+    ],
+    "lsep25a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "lsep25as2",
+        "sentTo": "lsep25as4"
+      },
+      {
+        "type": "box",
+        "sentId": "lsep25as8",
+        "text": "꽃그늘"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25as6",
+        "text": "(어찌 그렇지 않을 수 있겠는가?)"
+      }
+    ],
+    "lsep25b": [
+      {
+        "type": "box",
+        "sentId": "lsep25bs5",
+        "text": "태반"
+      },
+      {
+        "type": "box",
+        "sentId": "lsep25bs10",
+        "text": "생가"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25bs2",
+        "text": "부여를 숙신을 발해를 여진을 요를 금을 흥안령을 음산을 아무우르를 숭가리를"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25bs3",
+        "text": "자작나무와 이깔나무의 슬퍼하던 것을 기억한다"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25bs3",
+        "text": "갈대와 장풍의 붙드던 말도 잊지 않았다"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25bs3",
+        "text": "오로촌이 멧돝을 잡아 나를 잔치해 보내던 것도 쏠론이 십릿길을 따라 나와 울던 것도 잊지 않았다"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25bs4",
+        "text": "아무 이기지 못할 슬픔도 시름도 없이"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25bs6",
+        "text": "아, 나의 조상은 형제는 일가친척은 정다운 이웃은 그리운 것은 사랑하는 것은 우러르는 것은 나의 자랑은 나의 힘은 없다"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25bs9",
+        "text": "살얼음의 창"
+      }
+    ],
+    "lsep25c": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "lsep25cs20",
+        "sentTo": "lsep25cs27"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25cs6",
+        "text": "나머지 절반"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25cs9",
+        "text": "야릇한 웃음"
+      },
+      {
+        "type": "underline",
+        "sentId": "lsep25cs10",
+        "text": "눈이 휘둥그레진"
+      }
+    ],
+    "lsep25d": []
+  },
+  "2024수능": {
+    "r2024a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2024a_s5",
+        "sentTo": "r2024a_s16"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024a_s13",
+        "text": "지금 사용하고 있는 전략을 계속 사용할 것인지"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024a_s14",
+        "text": "문제 해결을 위한 다른 전략에는 무엇이 있는지"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024a_s14",
+        "text": "각 전략의 특징과 사용 절차, 조건 등은 무엇인지"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024a_s15",
+        "text": "전략들의 적절한 적용 순서가 무엇인지"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024a_s15",
+        "text": "현재의 상황에서 최적의 전략이 무엇인지"
+      }
+    ],
+    "r2024b": [
+      {
+        "type": "underline",
+        "sentId": "r2024b_s1",
+        "text": "경마식 보도"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024b_s7",
+        "text": "「공직선거법」"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024b_s9",
+        "text": "선거방송심의에 관한 특별규정"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024b_s10",
+        "text": "선거 여론조사보도준칙"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024b_s14",
+        "text": "공직선거법의 선거 방송 토론회 규정"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024b_s17",
+        "text": "다수 의견"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024b_s18",
+        "text": "소수 의견"
+      }
+    ],
+    "r2024c": [
+      {
+        "type": "underline",
+        "sentId": "r2024c_s2",
+        "text": "나타내기"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024c_s3",
+        "text": "빠져"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024c_s9",
+        "text": "생긴다"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024c_s12",
+        "text": "대푯값으로 평균보다 중앙값을 주로 사용한다."
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024c_s18",
+        "text": "이상치를 포함하는 데이터에서 직선 L을 찾는다고 하자"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024c_s19",
+        "text": "지나는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024c_s23",
+        "text": "멀어"
+      }
+    ],
+    "r2024d": [
+      {
+        "type": "underline",
+        "sentId": "r2024d_s2",
+        "text": "담긴"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024d_s25",
+        "text": "유학자의 입장"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2024d_s30",
+        "text": "학문적 소신"
+      }
+    ],
+    "l2024a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2024as2",
+        "sentTo": "l2024as6"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024as8",
+        "text": "짐은 불행하여 공주를 잃고 종적을 모르니 통한함을 어찌 측량하리오."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024as10",
+        "text": "국변"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024as11",
+        "text": "자식을 불러 들으심이 마땅하올까 하나이다"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024as13",
+        "text": "내 병이 조금 나았으니 사오일 후 세상에 나가 남두성을 잡아 죽여 이 원한을 풀리라. 너희는 나를 위하여 마음을 위로하라."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024as15",
+        "text": "드시어 첩 등의 우러르는 마음을 즐겁게 하소서."
+      }
+    ],
+    "l2024b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2024bs12",
+        "sentTo": "l2024bs12"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2024bs14",
+        "sentTo": "l2024bs14"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024bs4",
+        "text": "문"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024bs12",
+        "text": "가지"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024bs21",
+        "text": "너는 잊는 것이 병이라고 생각하느냐?"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024bs21",
+        "text": "그렇다면 잊지 않는 것이 병이 되고, 잊는 것이 도리어 병이 아니라는 말은 무슨 근거로 할까?"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024bs21",
+        "text": "그 말이 옳을까?"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024bs23",
+        "text": "먼 것을 보고 나면 가까운 것을 잊고, 새것을 보고 나면 옛것을 잊는다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024bs24",
+        "text": "그렇기 때문에 하늘이 잊지 못해 벌을 내리기도 하고, 남들이 잊지 못해 질시의 눈길을 보내며, 귀신이 잊지 못해 재앙을 내린다."
+      }
+    ],
+    "l2024c": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2024cs8",
+        "sentTo": "l2024cs8"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2024cs9",
+        "sentTo": "l2024cs9"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2024cs9",
+        "sentTo": "l2024cs9"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024cs2",
+        "text": "애최에 늬가 말 실수헌 게 잘못이지, 남을 탄해 뭘 허니? 이게 모두 모양만 숭업구……, 온, 글쎄, 그만 허구 들어가아. 늬가 잘못했어. 네 잘못이야."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024cs2",
+        "text": "아, 그 배지 못헌 행랑것허구, 쌈이 무슨 쌈이냐?"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024cs3",
+        "text": "그리고 후유우 하고 한숨조차 내쉬는데, 방 안에서들 그러는 소리가 대문 밖까지 그대로 들리더라 한다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024cs6",
+        "text": "인제는 할 수가 없으니, 소리를 한번 질러 볼까?"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024cs9",
+        "text": "오오, 그러니까, 채, 무어, 말할 새두 없이 문이 잠겨져서. 그냥 갇힌 채, 누구 오기만 기대린 게로군?"
+      }
+    ],
+    "l2024d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2024ds5",
+        "sentTo": "l2024ds11"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2024ds17",
+        "sentTo": "l2024ds22"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2024ds27",
+        "sentTo": "l2024ds31"
+      }
+    ]
+  },
+  "2023수능": {
+    "r2023a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2023as9",
+        "sentTo": "r2023as13"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023as14",
+        "text": "다른 독자와 소통하는 즐거움"
+      }
+    ],
+    "r2023b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2023bs2",
+        "sentTo": "r2023bs9"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023bs7",
+        "text": "따라"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023bs11",
+        "text": "실학자들의 유서"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023bs14",
+        "text": "이어받는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023bs15",
+        "text": "쉽게"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023bs22",
+        "text": "뒤섞여"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023bs22",
+        "text": "일부 주자학자의 비판"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023bs23",
+        "text": "성호사설"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023bs25",
+        "text": "바꾸어"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023bs27",
+        "text": "오주연문장전산고"
+      }
+    ],
+    "r2023c": [
+      {
+        "type": "underline",
+        "sentId": "r2023cs3",
+        "text": "맞는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023cs4",
+        "text": "들"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023cs11",
+        "text": "받을"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023cs16",
+        "text": "고를"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023cs19",
+        "text": "재량 준칙"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023cs23",
+        "text": "지켜야"
+      }
+    ],
+    "r2023d": [
+      {
+        "type": "underline",
+        "sentId": "r2023ds5",
+        "text": "직접법"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023ds5",
+        "text": "간접법"
+      }
+    ],
+    "l2023a": [
+      {
+        "type": "underline",
+        "sentId": "l2023as6",
+        "text": "매월 초하루"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023as7",
+        "text": "정월 초하루"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023as9",
+        "text": "그달"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023as11",
+        "text": "매양 꽃 피는 아침과 달 뜬 밤"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023as12",
+        "text": "어느 봄날 밤"
+      }
+    ],
+    "l2023b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2023bs1",
+        "sentTo": "l2023bs3"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2023bs8",
+        "sentTo": "l2023bs8"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2023bs21",
+        "sentTo": "l2023bs24"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023bs11",
+        "text": "작은 정자"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023bs16",
+        "text": "옛 망양정 자리"
+      }
+    ],
+    "l2023c": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2023cs2",
+        "sentTo": "l2023cs2"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2023cs7",
+        "sentTo": "l2023cs8"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2023cs11",
+        "sentTo": "l2023cs13"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l2023cs15",
+        "sentTo": "l2023cs16"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l2023cs26",
+        "sentTo": "l2023cs28"
+      }
+    ],
+    "l2023d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2023ds9",
+        "sentTo": "l2023ds9"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2023ds10",
+        "sentTo": "l2023ds10"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l2023ds11",
+        "sentTo": "l2023ds11"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l2023ds12",
+        "sentTo": "l2023ds12"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023ds2",
+        "text": "가 보아라"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023ds3",
+        "text": "지극히"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023ds4",
+        "text": "과분하지 말라"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023ds5",
+        "text": "많은 손님들"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2023ds6",
+        "text": "빛나는 생명의 양상"
+      }
+    ]
+  },
+  "2022수능": {
+    "r2022a": [
+      {
+        "type": "underline",
+        "sentId": "r2022a_s3",
+        "text": "폐허 속에서도 사람들이 책을 찾아 서가 앞에 선 이유는 무엇일까?"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022a_s10",
+        "text": "독서는 자신을 둘러싼 현실을 올바로 인식하고 당면한 문제를 해결할 논리와 힘을 지니게 한다."
+      }
+    ],
+    "r2022b": [
+      {
+        "type": "box",
+        "sentId": "r2022b_s10",
+        "text": "직관ㆍ표상ㆍ사유"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022b_s1",
+        "text": "정립-반정립-종합."
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022b_s5",
+        "text": "지녀야"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022b_s8",
+        "text": "가리킨다"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022b_s18",
+        "text": "예술-종교-철학"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022b_s20",
+        "text": "끝나도"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022b_s27",
+        "text": "보면"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022b_s27",
+        "text": "이루어지지"
+      }
+    ],
+    "r2022c": [
+      {
+        "type": "underline",
+        "sentId": "r2022c_s6",
+        "text": "금 본위 체제"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022c_s8",
+        "text": "브레턴우즈 체제"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022c_s22",
+        "text": "어떠한 기축 통화도 없이 각각 다른 통화가 사용되는 경우"
+      }
+    ],
+    "r2022d": [
+      {
+        "type": "box",
+        "sentId": "r2022d_s2",
+        "text": "장치"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022d_s9",
+        "text": "촬영된 영상"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022d_s12",
+        "text": "왜곡이 보정된 영상"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022d_s14",
+        "text": "위에서 내려다보는 시점의 영상"
+      }
+    ],
+    "l2022a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2022as1",
+        "sentTo": "l2022as1"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2022as2",
+        "sentTo": "l2022as2"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2022as3",
+        "sentTo": "l2022as3"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l2022as4",
+        "sentTo": "l2022as4"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l2022as4",
+        "sentTo": "l2022as4"
+      },
+      {
+        "type": "box",
+        "sentId": "l2022as1",
+        "text": "묵화(墨畫)"
+      },
+      {
+        "type": "box",
+        "sentId": "l2022as6",
+        "text": "북창"
+      }
+    ],
+    "l2022b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2022bs1",
+        "sentTo": "l2022bs5"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022bs11",
+        "text": "케이스"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022bs32",
+        "text": "우산 이상의 것"
+      }
+    ],
+    "l2022c": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2022cs1",
+        "sentTo": "l2022cs2"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2022cs7",
+        "sentTo": "l2022cs8"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2022cs11",
+        "sentTo": "l2022cs12"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l2022cs16",
+        "sentTo": "l2022cs17"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l2022cs19",
+        "sentTo": "l2022cs20"
+      },
+      {
+        "type": "box",
+        "sentId": "l2022cs5",
+        "text": "묵화(墨畫)"
+      },
+      {
+        "type": "box",
+        "sentId": "l2022cs22",
+        "text": "북창"
+      }
+    ],
+    "l2022d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2022ds13",
+        "sentTo": "l2022ds26"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2022ds32",
+        "sentTo": "l2022ds34"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022ds4",
+        "text": "올벼 씨 한 말은 반 넘게 쥐 먹었고"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022ds9",
+        "text": "솥 시루 버려두니 붉은 빛이 다 되었다"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022ds12",
+        "text": "이 얼굴 지녀 있어 어려운 일 하고 많다"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022ds30",
+        "text": "두어라 차례 정한 일이니 매는 대로 매리라"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022ds38",
+        "text": "아마도 밥 들이고 잔 잡을 때에 흥에 겨워 하노라"
+      }
+    ]
+  },
+  "2022_6월": {
+    "2022_6_r01": [],
+    "2022_6_r02": [],
+    "2022_6_r03": []
+  }
+}
