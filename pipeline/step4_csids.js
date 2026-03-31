@@ -24,6 +24,26 @@ const SYSTEM_PROMPT = `너는 수능 국어 선지와 지문 문장을 매칭하
 출력 형식:
 [{ "questionId": 1, "num": 1, "cs_ids": ["r2022a_s3", "r2022a_s4"] }, ...]`;
 
+async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      const isRetryable = err.message?.includes('Connection') ||
+                          err.message?.includes('timeout') ||
+                          err.status === 529 ||
+                          err.status === 500;
+      if (isRetryable && i < maxRetries - 1) {
+        console.warn(`  ⚠️ API 오류 (${i+1}/${maxRetries}): ${err.message}`);
+        console.warn(`  ${delay/1000}초 후 재시도...`);
+        await new Promise(r => setTimeout(r, delay));
+      } else {
+        throw err;
+      }
+    }
+  }
+}
+
 function stripMarkdown(text) {
   return text.trim().replace(/^```[a-z]*\n?/i, '').replace(/\n?```$/i, '');
 }
@@ -127,7 +147,7 @@ ${JSON.stringify(set.questions.flatMap(q =>
 각 선지의 cs_ids 배열만 반환해줘.
 형식: [{ "questionId": 1, "num": 1, "cs_ids": [...] }, ...]`;
 
-  const response = await client.messages.create(
+  const response = await callWithRetry(() => client.messages.create(
     {
       model: 'claude-sonnet-4-5',
       max_tokens: 4000,
@@ -135,7 +155,7 @@ ${JSON.stringify(set.questions.flatMap(q =>
       messages: [{ role: 'user', content: userPrompt }],
     },
     { headers: { 'anthropic-beta': 'output-128k-2025-02-19' } }
-  );
+  ));
 
   const matches = parseJSON(response.content[0].text);
 

@@ -1328,8 +1328,206 @@
     ]
   },
   "2022_6월": {
-    "2022_6_r01": [],
-    "2022_6_r02": [],
-    "2022_6_r03": []
+    "r2022ja": [
+      {
+        "type": "underline",
+        "sentId": "r2022jas1",
+        "text": "특정 주제를 깊이 있게 탐구하기 위한 독서"
+      }
+    ],
+    "r2022jb": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2022jbs14",
+        "sentTo": "r2022jbs23"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022jbs33",
+        "text": "예언화 경향"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022jbs37",
+        "text": "찾고자"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022jbs38",
+        "text": "전반적 대응설"
+      }
+    ],
+    "r2022jc": [
+      {
+        "type": "underline",
+        "sentId": "r2022jcs5",
+        "text": "누리기로"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022jcs14",
+        "text": "가로막는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022jcs15",
+        "text": "울타리"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022jcs19",
+        "text": "무디어져"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022jcs20",
+        "text": "크나큰"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022jcs24",
+        "text": "세웠다는"
+      }
+    ],
+    "r2022jd": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2022jds22",
+        "sentTo": "r2022jds24"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022jds15",
+        "text": "이중 가닥 DNA 특이 염료"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022jds17",
+        "text": "형광 표식 탐침"
+      }
+    ],
+    "l2022ja": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2022jas22",
+        "sentTo": "l2022jas22"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jas5",
+        "text": "나는 긴장했다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jas8",
+        "text": "더구나 이리루 들어 오시자 머리를 깎구 수염까지 기르셨거든요."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jas10",
+        "text": "묘한 철학"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jas12",
+        "text": "'모두 썩어라, 철저히 썩어라'가 그분이 세상을 보는 이상한 눈입니다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jas18",
+        "text": "아니 그는 그 얼마 후에 내 앞에서 정말로 깨끗하게 사라져 버린 것이다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jas18",
+        "text": "요설들"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jas19",
+        "text": "당신이 미련하다고 말씀하는 건 우습게 들리시겠지만 착한 일을 뜻하시는 것이었습니다."
+      }
+    ],
+    "l2022jb": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2022jbs23",
+        "sentTo": "l2022jbs25"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2022jbs25",
+        "sentTo": "l2022jbs25"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jbs15",
+        "text": "궁핍을 면할 양으로 본의 아닌 생활을 계속하느니보다 모든 속사(俗事)를 버리고 표연히 강상(江上)의 어객(漁客)이 되는 것이 운치 있는 생활이기도 하려니와 얼마나 자유를 사랑 하는 청고(淸高)한 마음이냐."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jbs18",
+        "text": "한 점 찌는 객이 되고 나는 주인이 되어 알력과 모략과 시기와 저주로 꽉 찬 이 풍진(風塵) 세상을 등 뒤로 두고 서로 무언의 우정을 교환한다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jbs19",
+        "text": "별안간 이 한 점 찌는 술 취한 놈처럼 까딱 까딱 흔들리기 시작한다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jbs26",
+        "text": "세상이 하 뒤숭숭하니 고요히 서재나 지키어 한묵(翰墨) * 의 유희(遊戲)로 푹 박혀 있자는 것"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jbs27",
+        "text": "막상 나 자신이 그런 심경에 처해 있고 보니 고인(古人)의 불우한 그 심정을 넉넉히 동감하게 된다."
+      }
+    ],
+    "l2022jc": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2022jcs10",
+        "sentTo": "l2022jcs12"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jcs3",
+        "text": "이때 마침"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jcs6",
+        "text": "하루는"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jcs6",
+        "text": "공사 문첩 한 장"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jcs7",
+        "text": "요사이"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jcs9",
+        "text": "이미 반년이라"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2022jcs15",
+        "text": "두루마리"
+      }
+    ],
+    "l2022jd": []
   }
 }

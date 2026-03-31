@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { P, CC } from './constants';
 import { BogiTable } from './BogiTable';
 
@@ -123,9 +123,21 @@ function QuestionBlock({ question, passageId, sel, onSelect }) {
 
   return (
     <div style={{ background:'#f9fafb', border:'1px solid #e5e7eb', borderRadius:'10px', padding:'14px 16px', display:'flex', flexDirection:'column', gap:'8px' }}>
-      <div style={{ fontSize:'0.88rem', fontWeight:'600', color:'#111827', lineHeight:'1.6', textAlign:'left' }}>
-        <span style={{ color:'#9ca3af', marginRight:'5px' }}>{question.id}.</span>
-        {question.t}
+      <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between', gap:'8px' }}>
+        <div style={{ fontSize:'0.88rem', fontWeight:'600', color:'#111827', lineHeight:'1.6', textAlign:'left', flex:1 }}>
+          <span style={{ color:'#9ca3af', marginRight:'5px' }}>{question.id}.</span>
+          {question.t}
+        </div>
+        {question.correctRate != null && (
+          <span style={{
+            fontSize:'0.7rem', fontWeight:'700', whiteSpace:'nowrap', flexShrink:0, marginTop:'2px',
+            padding:'2px 7px', borderRadius:'4px',
+            color: question.correctRate >= 70 ? '#15803d' : question.correctRate >= 40 ? '#854d0e' : '#dc2626',
+            background: question.correctRate >= 70 ? '#dcfce7' : question.correctRate >= 40 ? '#fef9c3' : '#fee2e2',
+          }}>
+            정답률 {question.correctRate}%
+          </span>
+        )}
       </div>
 
       {hasBogiTable && (
@@ -140,6 +152,14 @@ function QuestionBlock({ question, passageId, sel, onSelect }) {
         <div style={{ background:'#fff', border:'1px solid #d1d5db', borderRadius:'6px', padding:'12px 14px', fontSize:'0.82rem', color:'#374151', lineHeight:'1.75', textAlign:'left' }}>
           <div style={{ fontWeight:'700', marginBottom:'6px' }}>〈보기〉</div>
           <div style={{ whiteSpace:'pre-wrap' }}>{question.bogi}</div>
+          {question.bogiImages?.length > 0 && (
+            <div style={{ marginTop:'12px', display:'flex', flexDirection:'column', gap:'8px', alignItems:'center' }}>
+              {question.bogiImages.map((img,i) => (
+                <img key={i} src={img.url} alt={img.alt||''}
+                  style={{ maxWidth:'100%', borderRadius:'4px', border:'1px solid #e5e7eb' }} />
+              ))}
+            </div>
+          )}
           {question.bogiImage && (
             <div style={{ marginTop:'12px', textAlign:'center' }}>
               <img src={question.bogiImage.url} alt={question.bogiImage.alt||''} style={{ maxWidth:'100%', borderRadius:'4px', border:'1px solid #e5e7eb' }} />
@@ -160,23 +180,88 @@ function QuestionBlock({ question, passageId, sel, onSelect }) {
   );
 }
 
-// ── 오답 리포트 모달 ──────────────────────────────────────
-function ReportModal({ log, onClose }) {
-  const cnt = log.reduce((a,{pat})=>{ if(pat) a[pat]=(a[pat]||0)+1; return a; },{});
-  const top = Object.entries(cnt).sort(([,a],[,b])=>b-a).slice(0,4);
+// ── 오답 리포트 모달 (개선) ───────────────────────────────
+function ReportModal({ totalQ, correctCount, wrongCount, log, onClose }) {
+  const rate = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
+
+  // 패턴별 집계 (P1~P9 전부)
+  const patCounts = {};
+  for (const { pat } of log) { if (pat) patCounts[pat] = (patCounts[pat] || 0) + 1; }
+  const totalWrong = log.length;
+
+  // 가장 많이 틀린 패턴
+  const topPat = Object.entries(patCounts).sort(([,a],[,b]) => b - a)[0];
+
+  const adviceMap = {
+    1: '지문의 주체/객체, 인과 방향을 꼼꼼히 확인하세요.',
+    2: '모든/항상/만 같은 한정사에 주의하세요.',
+    3: '지문에 없는 내용을 추가하지 않도록 주의하세요.',
+    4: '팩트는 맞지만 해석이 다른 함정에 주의하세요.',
+    5: '시어/이미지의 상징 의미를 정확히 파악하세요.',
+    6: '화자/인물의 정서와 태도를 구분하세요.',
+    7: '서술 방식과 구성 구조를 정확히 파악하세요.',
+    8: '보기 조건을 작품에 정확히 대입하세요.',
+    9: '어휘의 문맥적 의미를 정확히 파악하세요.',
+  };
+
   return (
-    <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.45)', display:'flex', alignItems:'center', justifyContent:'center', zIndex:1000, padding:'16px' }}>
-      <div style={{ background:'#fff', borderRadius:'14px', padding:'24px', maxWidth:'360px', width:'100%' }}>
-        <h3 style={{ fontSize:'1.05rem', fontWeight:'800', marginBottom:'16px' }}>📊 오답 패턴 리포트</h3>
-        {top.length===0 && <p style={{ fontSize:'0.85rem', color:'#9ca3af' }}>오답 패턴 없음</p>}
-        {top.map(([pat,n])=>{ const p=P[pat]; if(!p) return null; return (
-          <div key={pat} style={{ display:'flex', alignItems:'center', gap:'10px', padding:'8px 12px', borderRadius:'7px', background:p.bg, marginBottom:'6px' }}>
-            <span style={{ fontWeight:'800', color:p.color, minWidth:'28px', fontSize:'0.78rem' }}>P{pat}</span>
-            <span style={{ flex:1, fontWeight:'600', fontSize:'0.84rem' }}>{p.name}</span>
-            <span style={{ background:p.color, color:'#fff', borderRadius:'12px', padding:'2px 10px', fontSize:'0.76rem', fontWeight:'700' }}>{n}회</span>
+    <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.45)', display:'flex', alignItems:'center', justifyContent:'center', zIndex:1000, padding:'16px' }}
+         onClick={onClose}>
+      <div style={{ background:'#fff', borderRadius:'14px', padding:'24px', maxWidth:'380px', width:'100%', maxHeight:'85vh', overflowY:'auto' }}
+           onClick={e => e.stopPropagation()}>
+
+        {/* 상단: 정답률 */}
+        <div style={{ textAlign:'center', marginBottom:'18px' }}>
+          <div style={{ fontSize:'2.2rem', fontWeight:'800', color: rate >= 80 ? '#16a34a' : rate >= 50 ? '#ca8a04' : '#dc2626' }}>
+            {rate}%
           </div>
-        );})}
-        <button onClick={onClose} style={{ width:'100%', marginTop:'14px', padding:'10px', borderRadius:'8px', background:'#1f2937', color:'#fff', border:'none', fontWeight:'700', cursor:'pointer', fontSize:'0.88rem' }}>닫기</button>
+          <div style={{ fontSize:'0.82rem', color:'#6b7280', marginTop:'4px' }}>
+            {totalQ}문제 중 <span style={{ color:'#16a34a', fontWeight:'700' }}>{correctCount}개 정답</span> · <span style={{ color:'#dc2626', fontWeight:'700' }}>{wrongCount}개 오답</span>
+          </div>
+        </div>
+
+        <div style={{ height:'1px', background:'#e5e7eb', margin:'0 0 14px' }} />
+
+        {/* 패턴별 섹션 */}
+        <h4 style={{ fontSize:'0.88rem', fontWeight:'700', marginBottom:'10px', color:'#111827' }}>오답 패턴 분석</h4>
+        <div style={{ display:'flex', flexDirection:'column', gap:'6px' }}>
+          {Object.keys(P).map(k => {
+            const p = P[k];
+            const n = patCounts[k] || 0;
+            const pct = totalWrong > 0 ? Math.round((n / totalWrong) * 100) : 0;
+            const isEmpty = n === 0;
+            return (
+              <div key={k} style={{ display:'flex', alignItems:'center', gap:'8px', padding:'7px 10px', borderRadius:'6px', background: isEmpty ? '#f9fafb' : p.bg, opacity: isEmpty ? 0.5 : 1 }}>
+                <span style={{ fontWeight:'800', color: isEmpty ? '#9ca3af' : p.color, minWidth:'28px', fontSize:'0.75rem' }}>P{k}</span>
+                <div style={{ flex:1 }}>
+                  <div style={{ fontSize:'0.78rem', fontWeight:'600', color: isEmpty ? '#9ca3af' : '#374151' }}>{p.name}</div>
+                  {!isEmpty && (
+                    <div style={{ marginTop:'3px', height:'6px', background:'#e5e7eb', borderRadius:'3px', overflow:'hidden' }}>
+                      <div style={{ width:`${pct}%`, height:'100%', background:p.color, borderRadius:'3px', transition:'width 0.3s' }} />
+                    </div>
+                  )}
+                </div>
+                <span style={{ fontSize:'0.73rem', fontWeight:'700', color: isEmpty ? '#d1d5db' : p.color, minWidth:'32px', textAlign:'right' }}>
+                  {n}건{!isEmpty && ` ${pct}%`}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 하단 조언 */}
+        {topPat && (
+          <div style={{ marginTop:'14px', padding:'10px 12px', background:'#fffbeb', border:'1px solid #fbbf24', borderRadius:'8px', fontSize:'0.8rem', lineHeight:'1.5', color:'#92400e' }}>
+            <strong>P{topPat[0]}({P[topPat[0]]?.name})</strong>이 가장 많습니다. {adviceMap[topPat[0]] || '해당 패턴을 집중적으로 복습하세요.'}
+          </div>
+        )}
+        {!topPat && wrongCount === 0 && (
+          <div style={{ marginTop:'14px', padding:'10px 12px', background:'#ecfdf5', border:'1px solid #6ee7b7', borderRadius:'8px', fontSize:'0.8rem', color:'#065f46', textAlign:'center' }}>
+            전문 만점! 훌륭합니다.
+          </div>
+        )}
+
+        <button onClick={onClose} style={{ width:'100%', marginTop:'16px', padding:'10px', borderRadius:'8px', background:'#1f2937', color:'#fff', border:'none', fontWeight:'700', cursor:'pointer', fontSize:'0.88rem' }}>닫기</button>
       </div>
     </div>
   );
@@ -185,34 +270,69 @@ function ReportModal({ log, onClose }) {
 // ── 메인 컴포넌트 ─────────────────────────────────────────
 export default function QuizPanel({ passageSet, sel, onSelChange }) {
   const [log, setLog] = useState([]);
+  const [answered, setAnswered] = useState(new Set()); // qid Set
   const [showReport, setShowReport] = useState(false);
+  const autoShownRef = useRef(false);
+
+  // 세트 변경 시 리셋
+  const setId = passageSet?.id;
+  useEffect(() => {
+    setLog([]);
+    setAnswered(new Set());
+    setShowReport(false);
+    autoShownRef.current = false;
+  }, [setId]);
+
   if (!passageSet) return null;
 
-  // 수정
-function handleSelect(uid, choice) {
-  onSelChange(uid, choice);
-  if (choice) {
-    const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
-    const q = passageSet.questions.find(q => q.id === qid);
-    const qt = q?.questionType ?? 'negative';
-    const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
-    if (!isCorrect) {
-      setLog(prev => prev.find(w => w.uid === uid) ? prev : [...prev, { uid, pat: choice.pat }]);
+  const totalQ = passageSet.questions.length;
+  const correctCount = answered.size - log.length;
+  const wrongCount = log.length;
+
+  function handleSelect(uid, choice) {
+    onSelChange(uid, choice);
+    if (choice) {
+      const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
+      const q = passageSet.questions.find(q => q.id === qid);
+      const qt = q?.questionType ?? 'negative';
+      const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
+
+      setAnswered(prev => {
+        const next = new Set(prev);
+        next.add(qid);
+        // 전부 풀었으면 자동 모달
+        if (next.size === totalQ && !autoShownRef.current) {
+          autoShownRef.current = true;
+          setTimeout(() => setShowReport(true), 400);
+        }
+        return next;
+      });
+
+      if (!isCorrect) {
+        setLog(prev => prev.find(w => w.uid === uid) ? prev : [...prev, { uid, pat: choice.pat }]);
+      }
     }
   }
-}
 
   return (
     <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
       {passageSet.questions.map(q => (
         <QuestionBlock key={`${passageSet.id}-${q.id}`} question={q} passageId={passageSet.id} sel={sel} onSelect={handleSelect} />
       ))}
-      {log.length > 0 && (
+      {answered.size > 0 && (
         <button onClick={()=>setShowReport(true)} style={{ padding:'10px 16px', borderRadius:'8px', background:'#1f2937', color:'#fff', border:'none', fontWeight:'700', cursor:'pointer', alignSelf:'flex-end', fontSize:'0.85rem' }}>
-          📊 오답 패턴 보기 ({log.length}개)
+          📊 리포트 보기 ({answered.size}/{totalQ})
         </button>
       )}
-      {showReport && <ReportModal log={log} onClose={()=>setShowReport(false)} />}
+      {showReport && (
+        <ReportModal
+          totalQ={totalQ}
+          correctCount={correctCount}
+          wrongCount={wrongCount}
+          log={log}
+          onClose={()=>setShowReport(false)}
+        />
+      )}
     </div>
   );
 }

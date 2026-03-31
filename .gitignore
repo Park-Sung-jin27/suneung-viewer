@@ -28,3 +28,9 @@ dist-ssr
 
 # Claude Code worktrees
 .claude/worktrees
+
+# Pipeline temp files
+_inbox/
+_done/
+pipeline/debug_last_response.txt
+pipeline/test_data/
