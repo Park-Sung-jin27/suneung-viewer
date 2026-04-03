@@ -1,6 +1,5 @@
-import QuestionQA from './QuestionQA';
 import { useState, useEffect, useRef } from 'react';
-import { P, CC, MODE, SYMBOLS } from './constants';
+import { P, CC } from './constants';
 import { BogiTable } from './BogiTable';
 
 // ── analysis 텍스트에서 sent ID 참조 제거 ─────────────────
@@ -10,25 +9,7 @@ function cleanAnalysis(text) {
   return text.replace(/[a-zA-Z_]*[a-zA-Z]\d+(?:[·,][a-zA-Z_]*\d+)*:\s*[''"]?/g, '').trim();
 }
 
-// ── 기호 이미지 렌더링 ([[sym:box]] 등 치환) ─────────────
-function renderWithSymbols(text) {
-  if (!text) return null;
-  const parts = text.split(/(\[\[sym:\w+\]\])/);
-  return parts.map((part, i) => {
-    const match = part.match(/\[\[sym:(\w+)\]\]/);
-    if (match && SYMBOLS?.[match[1]]) {
-      return (
-        <img
-          key={i}
-          src={SYMBOLS[match[1]]}
-          alt={match[1]}
-          style={{ height: '1.2em', verticalAlign: '-0.2em', margin: '0 3px' }}
-        />
-      );
-    }
-    return <span key={i}>{part}</span>;
-  });
-}
+// ── 해설 블록 (선지 아래 인라인 표시) ────────────────────
 function AnalysisBlock({ text }) {
   const cleaned = cleanAnalysis(text);
   if (!cleaned || cleaned.length < 5) return null;
@@ -75,35 +56,22 @@ function PatternBadge({ pat }) {
   const p = P[pat];
   return (
     <span style={{ fontSize:'0.68rem', fontWeight:'700', color:p.color, background:p.bg, border:`1px solid ${p.color}55`, borderRadius:'4px', padding:'1px 6px', marginLeft:'7px', verticalAlign:'middle', whiteSpace:'nowrap' }}>
-      {pat} {p.name}
+      P{pat} {p.name}
     </span>
   );
 }
 
 // ── 선지 아이템 ───────────────────────────────────────────
-function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submitted, isReview }) {
+function ChoiceItem({ choice, qid, questionType, clicked, onSelect }) {
   const uid = `q${qid}_c${choice.num}`;
   const isMe = clicked === uid;
   const isCorrect = questionType === 'positive'
     ? choice.ok === true
     : choice.ok === false;
-
-  // 풀이 모드: 제출 전엔 결과 숨김
-  const showResult = mode !== MODE.STUDY || submitted;
-
   let bg='#ffffff', border='1px solid #e5e7eb', tc='#1f2937';
   let numBg='#f3f4f6', numColor=CC[choice.num]?.text ?? '#374151';
 
-  if (isReview) {
-    // 복습 모드: 정답(초록) + 내 오답(빨간) 동시 표시
-    if (isCorrect) {
-      bg='#ecfdf5'; border='2px solid #10b981'; tc='#065f46';
-      numBg='#10b981'; numColor='#fff';
-    } else if (isMe) {
-      bg='#fef2f2'; border='2px solid #ef4444'; tc='#7f1d1d';
-      numBg='#ef4444'; numColor='#fff';
-    }
-  } else if (isMe && showResult) {
+  if (isMe) {
     if (isCorrect) {
       bg='#ecfdf5'; border='2px solid #10b981'; tc='#065f46';
       numBg='#10b981'; numColor='#fff';
@@ -111,27 +79,22 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submit
       bg='#fef2f2'; border='2px solid #ef4444'; tc='#7f1d1d';
       numBg='#ef4444'; numColor='#fff';
     }
-  } else if (isMe) {
-    bg='#eff6ff'; border='2px solid #3b82f6'; tc='#1e40af';
-    numBg='#3b82f6'; numColor='#fff';
   }
 
   return (
     <div>
-      <div onClick={() => onSelect(uid, choice)} style={{ display:'flex', alignItems:'flex-start', gap:'10px', padding:'10px 12px', borderRadius: (isMe && showResult) ? '8px 8px 0 0' : '8px', background:bg, border, cursor:'pointer', transition:'background 0.12s, border 0.12s', userSelect:'none' }}>
+      <div onClick={() => onSelect(uid, choice)} style={{ display:'flex', alignItems:'flex-start', gap:'10px', padding:'10px 12px', borderRadius: isMe ? '8px 8px 0 0' : '8px', background:bg, border, cursor:'pointer', transition:'background 0.12s, border 0.12s', userSelect:'none' }}>
         <span style={{ minWidth:'22px', height:'22px', borderRadius:'50%', flexShrink:0, marginTop:'1px', background:numBg, color:numColor, display:'flex', alignItems:'center', justifyContent:'center', fontSize:'0.77rem', fontWeight:'700' }}>
           {choice.num}
         </span>
         <div style={{ flex:1, fontSize:'0.88rem', lineHeight:'1.65', color:tc, textAlign:'left' }}>
-          <span>{renderWithSymbols(choice.t)}</span>
-          {(isReview ? (isMe && !isCorrect) : (isMe && showResult && !isCorrect)) && choice.pat && <PatternBadge pat={choice.pat} />}
+          <span>{choice.t}</span>
+          {isMe && !isCorrect && choice.pat && <PatternBadge pat={choice.pat} />}
         </div>
-        {isReview && isCorrect && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>✅</span>}
-        {isReview && isMe && !isCorrect && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>❌</span>}
-        {!isReview && isMe && showResult && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>{isCorrect?'✅':'❌'}</span>}
+        {isMe && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>{isCorrect?'✅':'❌'}</span>}
       </div>
-      {/* 선지 아래 해설 — 결과 표시 시에만 */}
-      {((isReview && (isCorrect || isMe)) || (!isReview && isMe && showResult)) && choice.analysis && (
+      {/* 선지 아래 해설 인라인 표시 */}
+      {isMe && choice.analysis && (
         <div style={{ background: isCorrect?'#f0fdf4':'#fff5f5', borderLeft:`2px solid ${isCorrect?'#10b981':'#ef4444'}`, borderBottom:`1px solid ${isCorrect?'#a7f3d0':'#fca5a5'}`, borderRight:`1px solid ${isCorrect?'#a7f3d0':'#fca5a5'}`, borderRadius:'0 0 8px 8px', padding:'10px 14px' }}>
           <AnalysisBlock text={choice.analysis} />
         </div>
@@ -141,12 +104,11 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submit
 }
 
 // ── 문제 블록 ─────────────────────────────────────────────
-function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, isReview, initialClicked, yearKey, passageSents, user }) {
-  const [clicked, setClicked] = useState(initialClicked ?? null);
+function QuestionBlock({ question, passageId, sel, onSelect }) {
+  const [clicked, setClicked] = useState(null);
 
   function handleClick(uid, choice) {
-    // 같은 선지 재클릭 → 취소 (풀이 모드 제출 후엔 변경 불가)
-    if (mode === MODE.STUDY && submitted) return;
+    // 같은 선지 재클릭 → 취소
     if (clicked === uid) {
       setClicked(null);
       onSelect(null, null);
@@ -157,8 +119,7 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
   }
 
   const hasBogiTable = question.bogiType === 'table' && question.bogiTable;
-  const hasBogiImage = question.bogi?.type === 'annotated_image' || question.bogi?.type === 'diagram';
-  const hasBogi = !hasBogiTable && !hasBogiImage && question.bogi;
+  const hasBogi = !hasBogiTable && question.bogi;
 
   return (
     <div style={{ background:'#f9fafb', border:'1px solid #e5e7eb', borderRadius:'10px', padding:'14px 16px', display:'flex', flexDirection:'column', gap:'8px' }}>
@@ -187,82 +148,6 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
           }} />
       )}
 
-      {/* 보기: annotated_image / diagram 타입 */}
-      {hasBogiImage && (
-        <div style={{ background:'#fff', border:'1px solid #d1d5db', borderRadius:'6px', padding:'12px 14px' }}>
-          <div style={{ fontWeight:'700', marginBottom:'8px', fontSize:'0.82rem', color:'#374151' }}>〈보기〉</div>
-
-          {question.bogi.type === 'annotated_image' && (
-            <div style={{ textAlign:'center' }}>
-              <img src={question.bogi.image} alt="보기 자료"
-                style={{ maxWidth:'100%', borderRadius:'4px', border:'1px solid #e5e7eb' }} />
-            </div>
-          )}
-
-          {question.bogi.type === 'diagram' && (() => {
-            const bogi = question.bogi;
-            // flow 파싱: "(가) ⇨ A 단계 ⇨ (나)" → 토큰 배열
-            const flowTokens = bogi.flow
-              ? bogi.flow.split(/\s*(⇨|→|⟶)\s*/).filter(Boolean)
-              : [];
-            return (
-              <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
-                {/* 1. description */}
-                {bogi.description && (
-                  <div style={{ fontSize:'0.82rem', color:'#374151', lineHeight:'1.7', whiteSpace:'pre-wrap' }}>
-                    {bogi.description}
-                  </div>
-                )}
-
-                {/* 2. flow 박스 도식 */}
-                {flowTokens.length > 0 && (
-                  <div style={{ display:'flex', alignItems:'center', flexWrap:'wrap', gap:'4px', justifyContent:'center' }}>
-                    {flowTokens.map((tok, i) => {
-                      const isArrow = /^(⇨|→|⟶)$/.test(tok);
-                      return isArrow ? (
-                        <span key={i} style={{ fontSize:'1rem', color:'#6b7280', padding:'0 2px' }}>{tok}</span>
-                      ) : /^\(.+\)$/.test(tok.trim()) ? (
-                        <span key={i} style={{ fontSize:'0.85rem', fontWeight:'600', color:'#374151' }}>{tok}</span>
-                      ) : (
-                        <span key={i} style={{
-                          padding:'4px 12px', borderRadius:'6px',
-                          border:'1.5px solid #374151', background:'#f9fafb',
-                          fontSize:'0.82rem', fontWeight:'600', color:'#111827',
-                          whiteSpace:'nowrap',
-                        }}>{tok}</span>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* 3. items: label + image 수평 배치 */}
-                {bogi.items?.length > 0 && (
-                  <div style={{ display:'flex', flexDirection: bogi.layout === 'horizontal' ? 'row' : 'column', gap:'12px', flexWrap:'wrap' }}>
-                    {bogi.items.map((item, i) => (
-                      <div key={i} style={{
-                        flex:'1 1 120px', display:'flex', flexDirection:'column',
-                        alignItems:'center', gap:'6px',
-                        padding:'8px', borderRadius:'8px',
-                        background:'#f9fafb', border:'1px solid #e5e7eb',
-                      }}>
-                        <div style={{ display:'flex', alignItems:'center', gap:'6px' }}>
-                          <span style={{ fontWeight:'800', fontSize:'0.85rem', color:'#1f2937' }}>{item.label}</span>
-                          {item.desc && <span style={{ fontSize:'0.75rem', color:'#6b7280' }}>{item.desc}</span>}
-                        </div>
-                        {item.image && (
-                          <img src={item.image} alt={item.label}
-                            style={{ maxWidth:'100%', maxHeight:'120px', objectFit:'contain', borderRadius:'4px' }} />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-          })()}
-        </div>
-      )}
-
       {hasBogi && (
         <div style={{ background:'#fff', border:'1px solid #d1d5db', borderRadius:'6px', padding:'12px 14px', fontSize:'0.82rem', color:'#374151', lineHeight:'1.75', textAlign:'left' }}>
           <div style={{ fontWeight:'700', marginBottom:'6px' }}>〈보기〉</div>
@@ -283,23 +168,13 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
         </div>
       )}
 
-      {!hasBogiTable && !hasBogiImage && (
+      {!hasBogiTable && (
         <div style={{ display:'flex', flexDirection:'column', gap:'5px' }}>
           {question.choices.map(c => (
-            <ChoiceItem key={c.num} choice={c} qid={question.id} questionType={question.questionType ?? 'negative'} clicked={clicked} onSelect={handleClick} mode={mode} submitted={submitted} isReview={isReview} />
+            // 수정
+<ChoiceItem key={c.num} choice={c} qid={question.id} questionType={question.questionType ?? 'negative'} clicked={clicked} onSelect={handleClick} />
           ))}
         </div>
-      )}
-
-      {/* AI Q&A — 복습 모드에서만 표시 */}
-      {isReview && (
-        <QuestionQA
-          questionKey={`${yearKey}_${passageId}_${question.id}`}
-          questionText={question.t}
-          choices={question.choices}
-          passageSents={passageSents}
-          user={user}
-        />
       )}
     </div>
   );
@@ -393,10 +268,8 @@ function ReportModal({ totalQ, correctCount, wrongCount, log, onClose }) {
 }
 
 // ── 메인 컴포넌트 ─────────────────────────────────────────
-export default function QuizPanel({ passageSet, sel, onSelChange, user, yearKey, mode, studyAnswers = {}, onStudyAnswer, submitted = false, isReview = false, onPrev, onNext, hasPrev, hasNext }) {
-  const isStudy = mode === MODE.STUDY;
-
-  const [log, setLog]           = useState([]);
+export default function QuizPanel({ passageSet, sel, onSelChange }) {
+  const [log, setLog] = useState([]);
   const [answered, setAnswered] = useState(new Set()); // qid Set
   const [showReport, setShowReport] = useState(false);
   const autoShownRef = useRef(false);
@@ -410,87 +283,47 @@ export default function QuizPanel({ passageSet, sel, onSelChange, user, yearKey,
     autoShownRef.current = false;
   }, [setId]);
 
-  // submitted prop: 현재 세트 log/answered 계산 + 결과 모달
-  useEffect(() => {
-    if (!submitted || !passageSet) return;
-    const newLog = [];
-    const newAnswered = new Set();
-    for (const [qidStr, choiceNum] of Object.entries(studyAnswers)) {
-      const qid = parseInt(qidStr, 10);
-      const q = passageSet.questions.find(q => q.id === qid);
-      if (!q) continue;
-      const choice = q.choices.find(c => c.num === choiceNum);
-      if (!choice) continue;
-      const qt = q.questionType ?? 'negative';
-      const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
-      newAnswered.add(qid);
-      if (!isCorrect) newLog.push({ uid: `q${qid}_c${choiceNum}`, pat: choice.pat });
-    }
-    setAnswered(newAnswered);
-    setLog(newLog);
-    if (!autoShownRef.current && !isReview) {
-      autoShownRef.current = true;
-      setTimeout(() => setShowReport(true), 400);
-    }
-  }, [submitted, setId]); // eslint-disable-line react-hooks/exhaustive-deps
-
   if (!passageSet) return null;
 
   const totalQ = passageSet.questions.length;
   const correctCount = answered.size - log.length;
   const wrongCount = log.length;
 
-  function processAnswer(uid, choice) {
-    const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
-    const q = passageSet.questions.find(q => q.id === qid);
-    const qt = q?.questionType ?? 'negative';
-    const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
-
-    setAnswered(prev => {
-      const next = new Set(prev);
-      next.add(qid);
-      return next;
-    });
-
-    if (!isCorrect) {
-      setLog(prev => prev.find(w => w.uid === uid) ? prev : [...prev, { uid, pat: choice.pat }]);
-    }
-  }
-
   function handleSelect(uid, choice) {
-    if (isStudy && !submitted) {
-      // 풀이 모드 미제출: studyAnswers에만 저장, 형광펜 비활성화
-      if (!choice) return;
+    onSelChange(uid, choice);
+    if (choice) {
       const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
-      onStudyAnswer(qid, choice.num);
-      onSelChange(null, null); // 형광펜 표시 안 함
-    } else {
-      onSelChange(uid, choice);
-      if (!choice) return;
-      processAnswer(uid, choice);
+      const q = passageSet.questions.find(q => q.id === qid);
+      const qt = q?.questionType ?? 'negative';
+      const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
+
+      setAnswered(prev => {
+        const next = new Set(prev);
+        next.add(qid);
+        // 전부 풀었으면 자동 모달
+        if (next.size === totalQ && !autoShownRef.current) {
+          autoShownRef.current = true;
+          setTimeout(() => setShowReport(true), 400);
+        }
+        return next;
+      });
+
+      if (!isCorrect) {
+        setLog(prev => prev.find(w => w.uid === uid) ? prev : [...prev, { uid, pat: choice.pat }]);
+      }
     }
   }
 
   return (
     <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
-
       {passageSet.questions.map(q => (
-        <QuestionBlock
-          key={`${passageSet.id}-${q.id}`}
-          question={q}
-          passageId={passageSet.id}
-          sel={sel}
-          onSelect={handleSelect}
-          mode={mode}
-          submitted={submitted}
-          isReview={isReview}
-          initialClicked={studyAnswers[q.id] != null ? `q${q.id}_c${studyAnswers[q.id]}` : undefined}
-          yearKey={yearKey}
-          passageSents={passageSet.sents}
-          user={user}
-        />
+        <QuestionBlock key={`${passageSet.id}-${q.id}`} question={q} passageId={passageSet.id} sel={sel} onSelect={handleSelect} />
       ))}
-
+      {answered.size > 0 && (
+        <button onClick={()=>setShowReport(true)} style={{ padding:'10px 16px', borderRadius:'8px', background:'#1f2937', color:'#fff', border:'none', fontWeight:'700', cursor:'pointer', alignSelf:'flex-end', fontSize:'0.85rem' }}>
+          📊 리포트 보기 ({answered.size}/{totalQ})
+        </button>
+      )}
       {showReport && (
         <ReportModal
           totalQ={totalQ}
@@ -500,34 +333,6 @@ export default function QuizPanel({ passageSet, sel, onSelChange, user, yearKey,
           onClose={()=>setShowReport(false)}
         />
       )}
-
-      {/* 이전/다음 지문 버튼 */}
-      <div style={{ display:'flex', justifyContent:'space-between', marginTop:'8px' }}>
-        <button
-          onClick={onPrev}
-          disabled={!hasPrev}
-          style={{
-            padding:'9px 16px', borderRadius:'8px', fontSize:'0.83rem', fontWeight:'600',
-            border:'1px solid #d1d5db', cursor: hasPrev ? 'pointer' : 'not-allowed',
-            background: hasPrev ? '#f2f7f2' : '#f9fafb',
-            color: hasPrev ? '#2d6e2d' : '#d1d5db',
-          }}
-        >
-          ← 이전 지문
-        </button>
-        <button
-          onClick={onNext}
-          disabled={!hasNext}
-          style={{
-            padding:'9px 16px', borderRadius:'8px', fontSize:'0.83rem', fontWeight:'600',
-            border:'1px solid #d1d5db', cursor: hasNext ? 'pointer' : 'not-allowed',
-            background: hasNext ? '#f2f7f2' : '#f9fafb',
-            color: hasNext ? '#2d6e2d' : '#d1d5db',
-          }}
-        >
-          다음 지문 →
-        </button>
-      </div>
     </div>
   );
 }
