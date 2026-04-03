@@ -151,7 +151,7 @@ function QuestionBlock({ question, passageId, sel, onSelect }) {
       {hasBogi && (
         <div style={{ background:'#fff', border:'1px solid #d1d5db', borderRadius:'6px', padding:'12px 14px', fontSize:'0.82rem', color:'#374151', lineHeight:'1.75', textAlign:'left' }}>
           <div style={{ fontWeight:'700', marginBottom:'6px' }}>〈보기〉</div>
-          <div style={{ whiteSpace:'pre-wrap' }}>{question.bogi}</div>
+          <div style={{ whiteSpace:'pre-wrap' }}>{typeof question.bogi === 'string' ? question.bogi : ''}</div>
           {question.bogiImages?.length > 0 && (
             <div style={{ marginTop:'12px', display:'flex', flexDirection:'column', gap:'8px', alignItems:'center' }}>
               {question.bogiImages.map((img,i) => (
