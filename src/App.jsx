@@ -6,9 +6,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import PassagePanel from './PassagePanel';
 import QuizPanel from './QuizPanel';
-import { YEAR_INFO } from './constants';
+import WrongNote from './WrongNote';
+import PatternReport from './PatternReport';
+import Payment from './Payment';
+import Banner from './Banner';
+import Landing from './Landing';
+import ResultPage from './ResultPage';
+import { YEAR_INFO, MODE } from './constants';
 import { loadYear, getYearKeys } from './dataLoader';
 import { supabase } from './supabase';
+import { saveAnswer } from './hooks/useAnswerTracker';
+import allData from './data/all_data_204.json';
 
 // ─────────────────────────────────────────────
 // 전역 스타일 (CSS-in-JS 인라인 방식)
@@ -27,16 +35,18 @@ const SECTION_LABELS = { reading: '독서', literature: '문학' };
 
 // ─────────────────────────────────────────────
 // 화면 상태 타입
-// 'main'   → 연도 선택 메인 화면
-// 'viewer' → 지문+문제 뷰어
-// 'auth'   → 로그인/회원가입
+// 'main'       → 연도 선택 메인 화면
+// 'viewer'     → 지문+문제 뷰어
+// 'auth'       → 로그인/회원가입
+// 'wrongnote'  → 오답 노트
+// 'report'     → 오답 패턴 리포트
 // ─────────────────────────────────────────────
 
 
 // ══════════════════════════════════════════════
 // [1] Header
 // ══════════════════════════════════════════════
-function Header({ view, yearMeta, section, onBack, user, onAuth, onLogout }) {
+function Header({ view, yearMeta, section, onBack, user, onAuth, onLogout, onWrongNote, onReport }) {
   return (
     <header style={{
       position: 'sticky', top: 0, zIndex: 100,
@@ -89,6 +99,12 @@ function Header({ view, yearMeta, section, onBack, user, onAuth, onLogout }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         {user ? (
           <>
+            <button onClick={onReport} style={{ fontSize: '0.73rem', fontWeight: '600', color: '#2d6e2d', background: '#f2f7f2', border: '1px solid #7aad7a', borderRadius: '6px', padding: '4px 10px', cursor: 'pointer' }}>
+              내 분석
+            </button>
+            <button onClick={onWrongNote} style={{ fontSize: '0.73rem', fontWeight: '600', color: '#2d6e2d', background: '#f2f7f2', border: '1px solid #7aad7a', borderRadius: '6px', padding: '4px 10px', cursor: 'pointer' }}>
+              오답 노트
+            </button>
             <span style={{ fontSize: '0.73rem', color: '#6b7280', maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {user.email}
             </span>
@@ -191,10 +207,153 @@ function PassageSetNav({ sets, currentIdx, onChange }) {
 
 
 // ══════════════════════════════════════════════
-// [4] 메인 화면 — 연도 카드 그리드
+// [4-0] ModeSelectModal — 모드 선택
 // ══════════════════════════════════════════════
-function MainPage({ onSelectYear }) {
+function ModeSelectModal({ yearKey, meta, user, onClose, onSelect }) {
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 300,
+        background: 'rgba(0,0,0,0.45)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '24px',
+      }}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          background: '#fff', borderRadius: '16px',
+          padding: '28px 24px', maxWidth: '360px', width: '100%',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.18)',
+        }}
+      >
+        {/* 시험명 */}
+        <div style={{ marginBottom: '20px' }}>
+          <div style={{ width: '28px', height: '3px', borderRadius: '2px', background: meta.color, marginBottom: '10px' }} />
+          <div style={{ fontFamily: "'Noto Serif KR', serif", fontSize: '1.05rem', fontWeight: '700', color: '#111827' }}>
+            {meta.label}
+          </div>
+          <div style={{ fontSize: '0.72rem', color: '#9ca3af', marginTop: '3px' }}>{meta.tag}</div>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {/* 풀이 모드 */}
+          <button
+            onClick={() => {
+              if (!user) { onClose(); onSelect(yearKey, MODE.STUDY, true); return; }
+              onSelect(yearKey, MODE.STUDY, false);
+            }}
+            style={{
+              padding: '14px 16px', borderRadius: '10px', border: '1.5px solid #1f2937',
+              background: '#1f2937', color: '#fff', textAlign: 'left', cursor: 'pointer',
+            }}
+          >
+            <div style={{ fontWeight: '700', fontSize: '0.92rem', marginBottom: '4px' }}>📝 풀이 모드</div>
+            <div style={{ fontSize: '0.75rem', color: '#9ca3af' }}>내 답을 기록하고 패턴을 분석받으세요</div>
+          </button>
+
+          {/* 보기 모드 */}
+          <button
+            onClick={() => onSelect(yearKey, MODE.VIEW, false)}
+            style={{
+              padding: '14px 16px', borderRadius: '10px', border: '1.5px solid #e5e7eb',
+              background: '#fff', color: '#1f2937', textAlign: 'left', cursor: 'pointer',
+            }}
+          >
+            <div style={{ fontWeight: '700', fontSize: '0.92rem', marginBottom: '4px' }}>👁 보기 모드</div>
+            <div style={{ fontSize: '0.75rem', color: '#9ca3af' }}>해설과 근거를 자유롭게 확인하세요</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ══════════════════════════════════════════════
+// [4] ProModal — 구독 유도 모달
+// ══════════════════════════════════════════════
+function ProModal({ onClose, onSubscribe }) {
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 300,
+        background: 'rgba(0,0,0,0.45)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '24px',
+      }}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          background: '#fff', borderRadius: '16px',
+          padding: '32px 28px', maxWidth: '340px', width: '100%',
+          textAlign: 'center',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.18)',
+        }}
+      >
+        <div style={{ fontSize: '2rem', marginBottom: '12px' }}>🔒</div>
+        <h3 style={{
+          fontFamily: "'Noto Serif KR', serif",
+          fontSize: '1.1rem', fontWeight: '700',
+          color: '#111827', marginBottom: '10px',
+        }}>
+          Pro 전용 콘텐츠
+        </h3>
+        <p style={{ fontSize: '0.85rem', color: '#6b7280', lineHeight: '1.7', marginBottom: '24px' }}>
+          전체 시험은 Pro 구독 후 이용 가능합니다.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <button
+            onClick={() => { onClose(); onSubscribe(); }}
+            style={{
+              padding: '11px', borderRadius: '8px',
+              background: '#1f2937', color: '#fff',
+              border: 'none', fontWeight: '700',
+              fontSize: '0.88rem', cursor: 'pointer',
+            }}
+          >
+            구독하기
+          </button>
+          <button
+            onClick={onClose}
+            style={{
+              padding: '10px', borderRadius: '8px',
+              background: 'none', color: '#9ca3af',
+              border: '1px solid #e5e7eb',
+              fontSize: '0.85rem', cursor: 'pointer',
+            }}
+          >
+            닫기
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+// ══════════════════════════════════════════════
+// [5] 메인 화면 — 연도 카드 그리드
+// ══════════════════════════════════════════════
+const FREE_YEARS = ['2026수능', '2025수능'];
+
+function MainPage({ onSelectYear, isPro, onSubscribe, user, onNeedAuth }) {
   const yearKeys = getYearKeys();
+  const [showProModal, setShowProModal]   = useState(false);
+  const [modeTarget, setModeTarget]       = useState(null); // { yearKey, meta }
+
+  function handleCardClick(yearKey, meta, locked) {
+    if (locked) { setShowProModal(true); return; }
+    setModeTarget({ yearKey, meta });
+  }
+
+  function handleModeSelect(yearKey, selectedMode, needAuth) {
+    setModeTarget(null);
+    if (needAuth) { onNeedAuth(); return; }
+    onSelectYear(yearKey, selectedMode);
+  }
 
   return (
     <div style={{
@@ -202,6 +361,17 @@ function MainPage({ onSelectYear }) {
       background: '#f9fafb',
       fontFamily: "'Noto Sans KR', sans-serif",
     }}>
+      {showProModal && <ProModal onClose={() => setShowProModal(false)} onSubscribe={onSubscribe} />}
+      {modeTarget && (
+        <ModeSelectModal
+          yearKey={modeTarget.yearKey}
+          meta={modeTarget.meta}
+          user={user}
+          onClose={() => setModeTarget(null)}
+          onSelect={handleModeSelect}
+        />
+      )}
+
       {/* 히어로 영역 */}
       <div style={{
         padding: '48px 24px 36px',
@@ -250,12 +420,14 @@ function MainPage({ onSelectYear }) {
           const meta = YEAR_INFO.find(y => y.key === yearKey);
           const yearData = { label: meta?.label ?? yearKey, color: meta?.color ?? '#374151',
                              badge: meta?.badge ?? '', tag: meta?.tag ?? '' };
+          const locked = !isPro && !FREE_YEARS.includes(yearKey);
           return (
             <YearCard
               key={yearKey}
               yearKey={yearKey}
               meta={yearData}
-              onClick={() => onSelectYear(yearKey)}
+              locked={locked}
+              onClick={() => handleCardClick(yearKey, yearData, locked)}
             />
           );
         })}
@@ -265,7 +437,7 @@ function MainPage({ onSelectYear }) {
 }
 
 
-function YearCard({ yearKey, meta, onClick }) {
+function YearCard({ yearKey, meta, locked, onClick }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -275,14 +447,15 @@ function YearCard({ yearKey, meta, onClick }) {
       onMouseLeave={() => setHovered(false)}
       style={{
         background: '#fff',
-        border: `1.5px solid ${hovered ? meta.color : '#e5e7eb'}`,
+        border: `1.5px solid ${hovered && !locked ? meta.color : '#e5e7eb'}`,
         borderRadius: '14px',
         padding: '20px 18px',
         cursor: 'pointer',
         textAlign: 'left',
         transition: 'all 0.18s',
-        transform: hovered ? 'translateY(-2px)' : 'none',
-        boxShadow: hovered ? `0 8px 24px ${meta.color}22` : '0 1px 4px rgba(0,0,0,0.06)',
+        transform: hovered && !locked ? 'translateY(-2px)' : 'none',
+        boxShadow: hovered && !locked ? `0 8px 24px ${meta.color}22` : '0 1px 4px rgba(0,0,0,0.06)',
+        opacity: locked ? 0.4 : 1,
       }}
     >
       {/* 컬러 바 */}
@@ -323,14 +496,15 @@ function YearCard({ yearKey, meta, onClick }) {
         {meta.tag}
       </div>
 
-      {/* 화살표 */}
+      {/* 화살표 or 잠금 */}
       <div style={{
-        marginTop: '14px', color: meta.color,
+        marginTop: '14px',
         fontSize: '0.85rem', fontWeight: '700',
-        opacity: hovered ? 1 : 0.4,
+        color: locked ? '#9ca3af' : meta.color,
+        opacity: locked ? 0.7 : hovered ? 1 : 0.4,
         transition: 'opacity 0.15s',
       }}>
-        시작하기 →
+        {locked ? '🔒 Pro 전용' : '시작하기 →'}
       </div>
     </button>
   );
@@ -340,14 +514,69 @@ function YearCard({ yearKey, meta, onClick }) {
 // ══════════════════════════════════════════════
 // [5] 뷰어 화면 — 지문 + 문제 레이아웃
 // ══════════════════════════════════════════════
-function ViewerPage({ yearKey, yearData }) {
-  const [section, setSection] = useState('reading');
-  const [setIdx, setSetIdx]   = useState(0);
+function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, onBack }) {
+  // initialSetId로 section/setIdx 복원
+  const initSection = (() => {
+    if (!initialSetId || !yearData) return 'reading';
+    if (yearData.literature?.some(s => s.id === initialSetId)) return 'literature';
+    return 'reading';
+  })();
+  const initSetIdx = (() => {
+    if (!initialSetId || !yearData) return 0;
+    const sec = yearData.literature?.some(s => s.id === initialSetId) ? 'literature' : 'reading';
+    const idx = (yearData[sec] ?? []).findIndex(s => s.id === initialSetId);
+    return idx >= 0 ? idx : 0;
+  })();
+
+  const [section, setSection] = useState(initSection);
+  const [setIdx, setSetIdx]   = useState(initSetIdx);
   const [sel, setSel]         = useState(null);       // 고유 식별자 "q1_c3"
   const [selChoice, setSelChoice] = useState(null);   // 선택된 선지 전체 객체
+  const [studyAnswers, setStudyAnswers] = useState({}); // { [setId]: { [qid]: choiceNum } }
+  const [submitted, setSubmitted]       = useState(false);
+  const [submitting, setSubmitting]     = useState(false);
+  const [warningMsg, setWarningMsg]     = useState(null);
 
   const sets = yearData?.[section] ?? [];
   const currentSet = sets[setIdx] ?? null;
+
+  const isStudy     = mode === MODE.STUDY;
+  const totalQCount = [...(yearData?.reading ?? []), ...(yearData?.literature ?? [])]
+    .reduce((sum, s) => sum + (s.questions?.length ?? 0), 0);
+  const totalAnswered = Object.values(studyAnswers)
+    .reduce((sum, sq) => sum + Object.keys(sq).length, 0);
+
+  // reading → literature 순서의 전체 세트 flat 배열
+  const allSets = [
+    ...(yearData?.reading    ?? []).map(s => ({ ...s, _sec: 'reading' })),
+    ...(yearData?.literature ?? []).map(s => ({ ...s, _sec: 'literature' })),
+  ];
+  const allSetIdx  = currentSet ? allSets.findIndex(s => s.id === currentSet.id) : -1;
+  const hasPrev    = allSetIdx > 0;
+  const hasNext    = allSetIdx >= 0 && allSetIdx < allSets.length - 1;
+
+  function handleNavSet(delta) {
+    const target = allSets[allSetIdx + delta];
+    if (!target) return;
+    if (target._sec !== section) setSection(target._sec);
+    const secSets = yearData?.[target._sec] ?? [];
+    const idx = secSets.findIndex(s => s.id === target.id);
+    if (idx >= 0) setSetIdx(idx);
+    setSel(null);
+    setSelChoice(null);
+    setWarningMsg(null);
+    window.scrollTo({ top: 0 });
+  }
+
+  // URL 동기화 (세트 변경 시 replaceState)
+  useEffect(() => {
+    if (!yearKey || !currentSet) return;
+    const qId = sel ? sel.split('_')[0].replace('q', '') : (initialQId ?? '');
+    const params = new URLSearchParams({ year: yearKey, set: currentSet.id });
+    if (qId) params.set('q', qId);
+    if (mode) params.set('mode', mode);
+    window.history.replaceState({}, '', `/viewer?${params.toString()}`);
+  }, [yearKey, currentSet, sel]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // 섹션/세트 변경 시 선택 초기화
   function handleSectionChange(sec) {
@@ -355,12 +584,15 @@ function ViewerPage({ yearKey, yearData }) {
     setSetIdx(0);
     setSel(null);
     setSelChoice(null);
+    setWarningMsg(null);
   }
 
   function handleSetChange(idx) {
     setSetIdx(idx);
     setSel(null);
     setSelChoice(null);
+    setWarningMsg(null);
+    window.scrollTo({ top: 0 });
   }
 
   // QuizPanel → PassagePanel 연동
@@ -368,6 +600,58 @@ function ViewerPage({ yearKey, yearData }) {
     setSel(uid);
     setSelChoice(choice);
   }, []);
+
+  function handleStudyAnswer(qid, choiceNum) {
+    const sid = currentSet?.id;
+    if (!sid) return;
+    setStudyAnswers(prev => ({
+      ...prev,
+      [sid]: { ...prev[sid], [qid]: choiceNum },
+    }));
+    setWarningMsg(null);
+  }
+
+  async function handleSubmitAll() {
+    // 첫 번째 미선택 문항 찾기
+    let firstMissing = null;
+    for (const s of allSets) {
+      for (const q of (s.questions ?? [])) {
+        if (studyAnswers[s.id]?.[q.id] == null) {
+          firstMissing = { setId: s.id, sec: s._sec, qId: q.id };
+          break;
+        }
+      }
+      if (firstMissing) break;
+    }
+    if (firstMissing) {
+      const { setId: missId, sec: missSec, qId } = firstMissing;
+      if (missSec !== section) setSection(missSec);
+      const secSets = yearData?.[missSec] ?? [];
+      const missIdx = secSets.findIndex(s => s.id === missId);
+      if (missIdx >= 0) setSetIdx(missIdx);
+      setWarningMsg(`⚠️ ${qId}번 문항에 답이 체크되지 않았습니다.`);
+      return;
+    }
+    // 전체 선택 완료 → saveAnswer 일괄 호출
+    setSubmitting(true);
+    try {
+      for (const s of allSets) {
+        for (const q of (s.questions ?? [])) {
+          const choiceNum = studyAnswers[s.id]?.[q.id];
+          if (choiceNum == null) continue;
+          const choice = q.choices.find(c => c.num === choiceNum);
+          if (!choice) continue;
+          const qt = q.questionType ?? 'negative';
+          const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
+          await saveAnswer({ user, yearKey, setId: s.id, questionId: q.id, choiceNum, isCorrect, pat: choice.pat ?? null });
+        }
+      }
+      setSubmitted(true);
+      window.scrollTo({ top: 0 });
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   // 모바일: 선지 선택 시 지문 상단으로 자동 스크롤
   useEffect(() => {
@@ -379,8 +663,65 @@ function ViewerPage({ yearKey, yearData }) {
     }
   }, [sel]);
 
+  // 제출 완료 → ResultPage 전환
+  if (submitted) {
+    const yearMeta = YEAR_INFO.find(y => y.key === yearKey);
+    return (
+      <ResultPage
+        user={user}
+        yearKey={yearKey}
+        yearLabel={yearMeta?.label ?? yearKey}
+        studyAnswers={studyAnswers}
+        allSets={allSets}
+        onReview={(setId, qid) => {
+          const target = allSets.find(s => s.id === setId);
+          if (!target) return;
+          if (target._sec !== section) setSection(target._sec);
+          const secSets = yearData?.[target._sec] ?? [];
+          const idx = secSets.findIndex(s => s.id === setId);
+          if (idx >= 0) setSetIdx(idx);
+          setSel(null);
+          setSelChoice(null);
+          setSubmitted(false);
+          window.scrollTo({ top: 0 });
+        }}
+        onBack={onBack}
+      />
+    );
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: '#f9fafb' }}>
+
+      {/* 풀이 모드: 헤더 우측 전체 제출 바 */}
+      {isStudy && !submitted && (
+        <div style={{
+          position: 'sticky', top: '52px', zIndex: 90,
+          background: '#1f2937',
+          padding: '7px 20px',
+          display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '12px',
+        }}>
+          <span style={{ fontSize: '0.78rem', color: '#9ca3af' }}>
+            {totalAnswered}/{totalQCount} 선택
+          </span>
+          <button
+            onClick={handleSubmitAll}
+            disabled={submitting}
+            style={{
+              padding: '6px 16px', borderRadius: '6px',
+              background: submitting ? '#6b7280' : '#f9fafb',
+              color: submitting ? '#fff' : '#1f2937',
+              border: 'none', fontWeight: '700',
+              cursor: submitting ? 'not-allowed' : 'pointer',
+              fontSize: '0.85rem',
+              opacity: submitting ? 0.8 : 1,
+              transition: 'all 0.15s',
+            }}
+          >
+            {submitting ? '저장 중…' : `제출 (${totalAnswered}/${totalQCount})`}
+          </button>
+        </div>
+      )}
 
       {/* 섹션 탭 */}
       <div style={{ paddingTop: '12px' }}>
@@ -397,6 +738,21 @@ function ViewerPage({ yearKey, yearData }) {
         currentIdx={setIdx}
         onChange={handleSetChange}
       />
+
+      {/* 인라인 경고 (미선택 문항) */}
+      {warningMsg && (
+        <div style={{
+          maxWidth: '1200px', margin: '8px auto 0', padding: '0 16px',
+        }}>
+          <div style={{
+            background: '#fef3c7', border: '1px solid #fbbf24',
+            borderRadius: '8px', padding: '10px 16px',
+            color: '#92400e', fontSize: '0.85rem', fontWeight: '600',
+          }}>
+            {warningMsg}
+          </div>
+        </div>
+      )}
 
       {/* 메인 컨텐츠 — 데스크탑: 2칼럼 / 모바일: 1칼럼 */}
       <div style={{
@@ -428,6 +784,7 @@ function ViewerPage({ yearKey, yearData }) {
           <PassagePanel
             passageSet={currentSet}
             sel={sel}
+            mode={mode}
           />
         </div>
 
@@ -441,6 +798,16 @@ function ViewerPage({ yearKey, yearData }) {
             passageSet={currentSet}
             sel={sel}
             onSelChange={handleSelChange}
+            user={user}
+            yearKey={yearKey}
+            mode={mode}
+            studyAnswers={studyAnswers[currentSet?.id] ?? {}}
+            onStudyAnswer={handleStudyAnswer}
+            submitted={submitted}
+            onPrev={() => handleNavSet(-1)}
+            onNext={() => handleNavSet(1)}
+            hasPrev={hasPrev}
+            hasNext={hasNext}
           />
         </div>
       </div>
@@ -555,12 +922,16 @@ function AuthPage({ onSuccess }) {
 // [7] App — 루트 컴포넌트 + 라우팅 상태 관리
 // ══════════════════════════════════════════════
 export default function App() {
-  const [view, setView]           = useState('main');    // 'main' | 'viewer' | 'auth'
+  const [view, setView]           = useState('main');    // 'main' | 'viewer' | 'auth' | 'wrongnote' | 'report'
   const [selectedYear, setSelectedYear] = useState(null);
   const [yearData, setYearData]   = useState(null);
   const [loading, setLoading]     = useState(false);
   const [error, setError]         = useState(null);
   const [user, setUser]           = useState(null);
+  const [isPro, setIsPro]         = useState(false);
+  const [initialSetId, setInitialSetId] = useState(null);
+  const [initialQId, setInitialQId]     = useState(null);
+  const [mode, setMode]                 = useState(MODE.VIEW); // 'study' | 'view'
 
   // Supabase Auth 상태 구독
   useEffect(() => {
@@ -573,18 +944,84 @@ export default function App() {
     return () => subscription.unsubscribe();
   }, []);
 
+  // 구독 상태 확인
+  useEffect(() => {
+    if (!user) { setIsPro(false); return; }
+    supabase.rpc('is_pro', { uid: user.id }).then(({ data }) => {
+      setIsPro(data === true);
+    });
+  }, [user]);
+
+  // 결제 콜백 URL 처리 (/payment/success, /payment/fail)
+  useEffect(() => {
+    const params     = new URLSearchParams(window.location.search);
+    const paymentKey = params.get('paymentKey');
+    const orderId    = params.get('orderId');
+    const amount     = params.get('amount');
+    const code       = params.get('code');
+
+    if (code) {
+      // 결제 실패 / 취소
+      alert('결제가 취소됐습니다');
+      window.history.replaceState({}, '', window.location.pathname);
+      return;
+    }
+
+    if (paymentKey && orderId && amount) {
+      // 결제 성공 — 세션에서 user 확보 후 DB 저장
+      supabase.auth.getSession().then(async ({ data: { session } }) => {
+        const uid = session?.user?.id;
+        if (!uid) return;
+        await supabase.from('subscriptions').upsert(
+          { user_id: uid, plan: 'pro', status: 'active',
+            toss_payment_key: paymentKey, toss_order_id: orderId },
+          { onConflict: 'user_id' }
+        );
+        setIsPro(true);
+        window.history.replaceState({}, '', window.location.pathname);
+        setView('main');
+      });
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 뷰어 URL 복원 (/viewer?year=...&set=...&q=...)
+  useEffect(() => {
+    if (window.location.pathname !== '/viewer') return;
+    const params   = new URLSearchParams(window.location.search);
+    const yearKey  = params.get('year');
+    const setId    = params.get('set');
+    const qId      = params.get('q');
+    const modeParam = params.get('mode');
+    if (!yearKey) return;
+    setInitialSetId(setId ?? null);
+    setInitialQId(qId ?? null);
+    setMode(modeParam === MODE.STUDY ? MODE.STUDY : MODE.VIEW);
+    loadYear(yearKey)
+      .then(data => {
+        setYearData(data);
+        setSelectedYear(yearKey);
+        setView('viewer');
+        window.scrollTo({ top: 0 });
+      })
+      .catch(e => setError(`데이터 로드 실패: ${e.message}`));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   // 연도 메타정보 (헤더 표시용)
   const yearMeta = YEAR_INFO.find(y => y.key === selectedYear) ?? null;
 
   // 연도 선택 → 데이터 로드 → 뷰어 진입
-  async function handleSelectYear(yearKey) {
+  async function handleSelectYear(yearKey, selectedMode = MODE.VIEW) {
     setLoading(true);
     setError(null);
     try {
       const data = await loadYear(yearKey);
       setYearData(data);
       setSelectedYear(yearKey);
+      setInitialSetId(null);
+      setInitialQId(null);
+      setMode(selectedMode);
       setView('viewer');
+      window.history.pushState({}, '', `/viewer?year=${encodeURIComponent(yearKey)}&mode=${selectedMode}`);
       window.scrollTo({ top: 0 });
     } catch (e) {
       setError(`데이터 로드 실패: ${e.message}`);
@@ -598,13 +1035,16 @@ export default function App() {
     setView('main');
     setSelectedYear(null);
     setYearData(null);
+    window.history.pushState({}, '', '/');
     window.scrollTo({ top: 0 });
   }
 
   // 로그아웃
   async function handleLogout() {
     await supabase.auth.signOut();
+    sessionStorage.clear();
     setUser(null);
+    setView('main');
   }
 
   return (
@@ -641,6 +1081,8 @@ export default function App() {
         user={user}
         onAuth={() => setView('auth')}
         onLogout={handleLogout}
+        onWrongNote={() => setView('wrongnote')}
+        onReport={() => setView('report')}
       />
 
       {/* 로딩 */}
@@ -691,12 +1133,46 @@ export default function App() {
         view === 'auth' ? (
           <AuthPage onSuccess={() => setView('main')} />
         ) : view === 'viewer' ? (
-          <ViewerPage
-            yearKey={selectedYear}
-            yearData={yearData}
+          <>
+            <Banner
+              bannerId="how-to-use-v1"
+              message="💡 시험지를 먼저 풀고 오세요 — 답을 입력하면 지문 근거와 해설이 표시됩니다"
+              type="info"
+            />
+            <ViewerPage
+              yearKey={selectedYear}
+              yearData={yearData}
+              user={user}
+              initialSetId={initialSetId}
+              initialQId={initialQId}
+              mode={mode}
+              onBack={handleBack}
+            />
+          </>
+        ) : view === 'report' ? (
+          <PatternReport user={user} />
+        ) : view === 'wrongnote' ? (
+          <WrongNote
+            user={user}
+            allData={allData}
+            onGoToQuestion={(yearKey, setId, questionId) => {
+              setSelectedYear(yearKey);
+              setView('viewer');
+              // setId, questionId로 해당 문제로 이동하는 로직은 추후 구현
+            }}
           />
+        ) : view === 'payment' ? (
+          <Payment
+            user={user}
+            onSuccess={() => {
+              setIsPro(true);
+              setView('main');
+            }}
+          />
+        ) : !user && view === 'main' ? (
+          <Landing onStart={() => setView('auth')} />
         ) : (
-          <MainPage onSelectYear={handleSelectYear} />
+          <MainPage onSelectYear={handleSelectYear} isPro={isPro} onSubscribe={() => setView('payment')} user={user} onNeedAuth={() => setView('auth')} />
         )
       )}
     </>
