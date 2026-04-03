@@ -220,27 +220,37 @@ function PatternBadge({ pat }) {
 // ══════════════════════════════════════════════════════════
 // [5] ChoiceItem
 // ══════════════════════════════════════════════════════════
-function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submitted, isReview }) {
+function ChoiceItem({ choice, qid, questionType, clicked, myAnswer, onSelect, mode, submitted, isReview }) {
   const uid = `q${qid}_c${choice.num}`;
-  const isMe = clicked === uid;
+  const isActive  = clicked === uid;    // 현재 클릭된 선지 (형광펜 + 해설)
+  const isMe      = myAnswer === uid;   // 원래 내가 고른 선지 (색상 표시용)
   const isCorrect = questionType === 'positive' ? choice.ok === true : choice.ok === false;
 
-  // 결과 표시 조건
   const showResult = mode !== MODE.STUDY || submitted;
 
   let bg = '#ffffff', border = '1px solid #e5e7eb', tc = '#1f2937';
   let numBg = '#f3f4f6', numColor = CC[choice.num]?.text ?? '#374151';
 
   if (isReview) {
-    // 복습 모드: 정답(초록) + 내 오답(빨간) 동시 표시
-    if (isCorrect) {
+    // 복습 모드: 정답(초록 테두리) / 원래 오답(빨간 테두리) 항상 표시
+    // 현재 active 선지는 배경색으로 강조
+    if (isCorrect && isActive) {
       bg = '#ecfdf5'; border = '2px solid #10b981'; tc = '#065f46';
       numBg = '#10b981'; numColor = '#fff';
-    } else if (isMe) {
+    } else if (isCorrect) {
+      border = '2px solid #10b981'; tc = '#065f46';
+      numBg = '#d1fae5'; numColor = '#065f46';
+    } else if (isMe && isActive) {
       bg = '#fef2f2'; border = '2px solid #ef4444'; tc = '#7f1d1d';
       numBg = '#ef4444'; numColor = '#fff';
+    } else if (isMe) {
+      border = '2px solid #ef4444'; tc = '#7f1d1d';
+      numBg = '#fee2e2'; numColor = '#b91c1c';
+    } else if (isActive) {
+      bg = '#f8fafc'; border = '2px solid #6366f1'; tc = '#1f2937';
+      numBg = '#6366f1'; numColor = '#fff';
     }
-  } else if (isMe && showResult) {
+  } else if (isActive && showResult) {
     if (isCorrect) {
       bg = '#ecfdf5'; border = '2px solid #10b981'; tc = '#065f46';
       numBg = '#10b981'; numColor = '#fff';
@@ -248,27 +258,23 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submit
       bg = '#fef2f2'; border = '2px solid #ef4444'; tc = '#7f1d1d';
       numBg = '#ef4444'; numColor = '#fff';
     }
-  } else if (isMe) {
-    // 풀이 모드 미제출: 파란 테두리
+  } else if (isActive) {
     bg = '#eff6ff'; border = '2px solid #3b82f6'; tc = '#1e40af';
     numBg = '#3b82f6'; numColor = '#fff';
   }
 
-  const showAnalysis = isReview
-    ? (isCorrect || isMe)
-    : (isMe && showResult);
+  // 해설: 복습 모드는 클릭한 선지에만, 일반은 기존 로직
+  const showAnalysis = isReview ? isActive : (isActive && showResult);
 
-  const showBadge = isReview
-    ? (isMe && !isCorrect)
-    : (isMe && showResult && !isCorrect);
+  // 패턴 뱃지: 오답일 때만
+  const showBadge = isActive && !isCorrect && (isReview || showResult);
 
+  // 아이콘: 복습 모드는 정답/원래오답에 항상, 일반은 클릭+결과
   const showIcon = isReview
     ? (isCorrect || isMe)
-    : (isMe && showResult);
+    : (isActive && showResult);
 
-  const icon = isReview
-    ? (isCorrect ? '✅' : isMe ? '❌' : null)
-    : (isCorrect ? '✅' : '❌');
+  const icon = isCorrect ? '✅' : '❌';
 
   return (
     <div>
@@ -277,7 +283,7 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submit
         style={{
           display: 'flex', alignItems: 'flex-start', gap: '10px',
           padding: '10px 12px',
-          borderRadius: showAnalysis ? '8px 8px 0 0' : '8px',
+          borderRadius: showAnalysis && choice.analysis ? '8px 8px 0 0' : '8px',
           background: bg, border, cursor: 'pointer',
           transition: 'background 0.12s, border 0.12s', userSelect: 'none',
         }}
@@ -319,10 +325,12 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submit
 // [6] QuestionBlock
 // ══════════════════════════════════════════════════════════
 function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, isReview, initialClicked, yearKey, passageSents, user }) {
-  const [clicked, setClicked] = useState(initialClicked ?? null);
+  // 복습 모드: clicked = 현재 활성 선지(null로 시작), myAnswer = 원래 내 답
+  const [clicked, setClicked] = useState(isReview ? null : (initialClicked ?? null));
 
   function handleClick(uid, choice) {
-    if (mode === MODE.STUDY && submitted) return;
+    // 풀이 모드 제출 후 + 복습 모드 아닐 때만 클릭 차단
+    if (mode === MODE.STUDY && submitted && !isReview) return;
     if (clicked === uid) {
       setClicked(null);
       onSelect(null, null);
@@ -379,6 +387,7 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
               qid={question.id}
               questionType={question.questionType ?? 'negative'}
               clicked={clicked}
+              myAnswer={initialClicked ?? null}
               onSelect={handleClick}
               mode={mode}
               submitted={submitted}
@@ -548,7 +557,7 @@ export default function QuizPanel({
   const wrongCount = log.length;
 
   function handleSelect(uid, choice) {
-    if (isStudy && !submitted) {
+    if (isStudy && !submitted && !isReview) {
       // 풀이 모드 미제출: studyAnswers에만 저장, 형광펜 비활성화
       if (!choice) return;
       const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
