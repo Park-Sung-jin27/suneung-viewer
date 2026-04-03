@@ -157,7 +157,8 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
   }
 
   const hasBogiTable = question.bogiType === 'table' && question.bogiTable;
-  const hasBogi = !hasBogiTable && question.bogi;
+  const hasBogiImage = question.bogi?.type === 'annotated_image' || question.bogi?.type === 'diagram';
+  const hasBogi = !hasBogiTable && !hasBogiImage && question.bogi;
 
   return (
     <div style={{ background:'#f9fafb', border:'1px solid #e5e7eb', borderRadius:'10px', padding:'14px 16px', display:'flex', flexDirection:'column', gap:'8px' }}>
@@ -186,6 +187,82 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
           }} />
       )}
 
+      {/* 보기: annotated_image / diagram 타입 */}
+      {hasBogiImage && (
+        <div style={{ background:'#fff', border:'1px solid #d1d5db', borderRadius:'6px', padding:'12px 14px' }}>
+          <div style={{ fontWeight:'700', marginBottom:'8px', fontSize:'0.82rem', color:'#374151' }}>〈보기〉</div>
+
+          {question.bogi.type === 'annotated_image' && (
+            <div style={{ textAlign:'center' }}>
+              <img src={question.bogi.image} alt="보기 자료"
+                style={{ maxWidth:'100%', borderRadius:'4px', border:'1px solid #e5e7eb' }} />
+            </div>
+          )}
+
+          {question.bogi.type === 'diagram' && (() => {
+            const bogi = question.bogi;
+            // flow 파싱: "(가) ⇨ A 단계 ⇨ (나)" → 토큰 배열
+            const flowTokens = bogi.flow
+              ? bogi.flow.split(/\s*(⇨|→|⟶)\s*/).filter(Boolean)
+              : [];
+            return (
+              <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
+                {/* 1. description */}
+                {bogi.description && (
+                  <div style={{ fontSize:'0.82rem', color:'#374151', lineHeight:'1.7', whiteSpace:'pre-wrap' }}>
+                    {bogi.description}
+                  </div>
+                )}
+
+                {/* 2. flow 박스 도식 */}
+                {flowTokens.length > 0 && (
+                  <div style={{ display:'flex', alignItems:'center', flexWrap:'wrap', gap:'4px', justifyContent:'center' }}>
+                    {flowTokens.map((tok, i) => {
+                      const isArrow = /^(⇨|→|⟶)$/.test(tok);
+                      return isArrow ? (
+                        <span key={i} style={{ fontSize:'1rem', color:'#6b7280', padding:'0 2px' }}>{tok}</span>
+                      ) : /^\(.+\)$/.test(tok.trim()) ? (
+                        <span key={i} style={{ fontSize:'0.85rem', fontWeight:'600', color:'#374151' }}>{tok}</span>
+                      ) : (
+                        <span key={i} style={{
+                          padding:'4px 12px', borderRadius:'6px',
+                          border:'1.5px solid #374151', background:'#f9fafb',
+                          fontSize:'0.82rem', fontWeight:'600', color:'#111827',
+                          whiteSpace:'nowrap',
+                        }}>{tok}</span>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* 3. items: label + image 수평 배치 */}
+                {bogi.items?.length > 0 && (
+                  <div style={{ display:'flex', flexDirection: bogi.layout === 'horizontal' ? 'row' : 'column', gap:'12px', flexWrap:'wrap' }}>
+                    {bogi.items.map((item, i) => (
+                      <div key={i} style={{
+                        flex:'1 1 120px', display:'flex', flexDirection:'column',
+                        alignItems:'center', gap:'6px',
+                        padding:'8px', borderRadius:'8px',
+                        background:'#f9fafb', border:'1px solid #e5e7eb',
+                      }}>
+                        <div style={{ display:'flex', alignItems:'center', gap:'6px' }}>
+                          <span style={{ fontWeight:'800', fontSize:'0.85rem', color:'#1f2937' }}>{item.label}</span>
+                          {item.desc && <span style={{ fontSize:'0.75rem', color:'#6b7280' }}>{item.desc}</span>}
+                        </div>
+                        {item.image && (
+                          <img src={item.image} alt={item.label}
+                            style={{ maxWidth:'100%', maxHeight:'120px', objectFit:'contain', borderRadius:'4px' }} />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+        </div>
+      )}
+
       {hasBogi && (
         <div style={{ background:'#fff', border:'1px solid #d1d5db', borderRadius:'6px', padding:'12px 14px', fontSize:'0.82rem', color:'#374151', lineHeight:'1.75', textAlign:'left' }}>
           <div style={{ fontWeight:'700', marginBottom:'6px' }}>〈보기〉</div>
@@ -206,7 +283,7 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
         </div>
       )}
 
-      {!hasBogiTable && (
+      {!hasBogiTable && !hasBogiImage && (
         <div style={{ display:'flex', flexDirection:'column', gap:'5px' }}>
           {question.choices.map(c => (
             <ChoiceItem key={c.num} choice={c} qid={question.id} questionType={question.questionType ?? 'negative'} clicked={clicked} onSelect={handleClick} mode={mode} submitted={submitted} isReview={isReview} />
