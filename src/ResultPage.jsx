@@ -85,26 +85,6 @@ export default function ResultPage({ user, yearKey, yearLabel, studyAnswers, all
             );
           })}
         </div>
-        {/* 미분류 행 — pat:null 오답 */}
-        {showUnclassified && unclassified > 0 && (
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: '8px',
-            padding: '6px 10px', borderRadius: '6px',
-            background: '#f3f4f6', marginTop: '4px',
-          }}>
-            <span style={{ fontWeight: '800', color: '#9ca3af', minWidth: '28px', fontSize: '0.73rem' }}>미분류</span>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: '0.75rem', fontWeight: '600', color: '#6b7280' }}>패턴 미지정 오답</div>
-            </div>
-            <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#9ca3af', minWidth: '28px', textAlign: 'right' }}>
-              {unclassified}건
-            </span>
-          </div>
-        )}
-      </div>
-    );
-  }
-
   function PatBar({ keys, title, showUnclassified }) {
     const total = keys.reduce((s, k) => s + (patCounts[k] || 0), 0);
     const displayTotal = total + (showUnclassified ? unclassified : 0);
