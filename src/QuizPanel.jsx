@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { P, CC } from './constants';
+import { P, CC, MODE } from './constants';
 import { BogiTable } from './BogiTable';
 
 // ── analysis 텍스트에서 sent ID 참조 제거 ─────────────────
@@ -56,22 +56,26 @@ function PatternBadge({ pat }) {
   const p = P[pat];
   return (
     <span style={{ fontSize:'0.68rem', fontWeight:'700', color:p.color, background:p.bg, border:`1px solid ${p.color}55`, borderRadius:'4px', padding:'1px 6px', marginLeft:'7px', verticalAlign:'middle', whiteSpace:'nowrap' }}>
-      P{pat} {p.name}
+      {pat} {p.name}
     </span>
   );
 }
 
 // ── 선지 아이템 ───────────────────────────────────────────
-function ChoiceItem({ choice, qid, questionType, clicked, onSelect }) {
+function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submitted }) {
   const uid = `q${qid}_c${choice.num}`;
   const isMe = clicked === uid;
   const isCorrect = questionType === 'positive'
     ? choice.ok === true
     : choice.ok === false;
+
+  // 풀이 모드: 제출 전엔 결과 숨김
+  const showResult = mode !== MODE.STUDY || submitted;
+
   let bg='#ffffff', border='1px solid #e5e7eb', tc='#1f2937';
   let numBg='#f3f4f6', numColor=CC[choice.num]?.text ?? '#374151';
 
-  if (isMe) {
+  if (isMe && showResult) {
     if (isCorrect) {
       bg='#ecfdf5'; border='2px solid #10b981'; tc='#065f46';
       numBg='#10b981'; numColor='#fff';
@@ -79,22 +83,26 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect }) {
       bg='#fef2f2'; border='2px solid #ef4444'; tc='#7f1d1d';
       numBg='#ef4444'; numColor='#fff';
     }
+  } else if (isMe) {
+    // 풀이 모드 미제출: 선택만 표시 (파란 테두리)
+    bg='#eff6ff'; border='2px solid #3b82f6'; tc='#1e40af';
+    numBg='#3b82f6'; numColor='#fff';
   }
 
   return (
     <div>
-      <div onClick={() => onSelect(uid, choice)} style={{ display:'flex', alignItems:'flex-start', gap:'10px', padding:'10px 12px', borderRadius: isMe ? '8px 8px 0 0' : '8px', background:bg, border, cursor:'pointer', transition:'background 0.12s, border 0.12s', userSelect:'none' }}>
+      <div onClick={() => onSelect(uid, choice)} style={{ display:'flex', alignItems:'flex-start', gap:'10px', padding:'10px 12px', borderRadius: (isMe && showResult) ? '8px 8px 0 0' : '8px', background:bg, border, cursor:'pointer', transition:'background 0.12s, border 0.12s', userSelect:'none' }}>
         <span style={{ minWidth:'22px', height:'22px', borderRadius:'50%', flexShrink:0, marginTop:'1px', background:numBg, color:numColor, display:'flex', alignItems:'center', justifyContent:'center', fontSize:'0.77rem', fontWeight:'700' }}>
           {choice.num}
         </span>
         <div style={{ flex:1, fontSize:'0.88rem', lineHeight:'1.65', color:tc, textAlign:'left' }}>
           <span>{choice.t}</span>
-          {isMe && !isCorrect && choice.pat && <PatternBadge pat={choice.pat} />}
+          {isMe && showResult && !isCorrect && choice.pat && <PatternBadge pat={choice.pat} />}
         </div>
-        {isMe && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>{isCorrect?'✅':'❌'}</span>}
+        {isMe && showResult && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>{isCorrect?'✅':'❌'}</span>}
       </div>
-      {/* 선지 아래 해설 인라인 표시 */}
-      {isMe && choice.analysis && (
+      {/* 선지 아래 해설 — 결과 표시 시에만 */}
+      {isMe && showResult && choice.analysis && (
         <div style={{ background: isCorrect?'#f0fdf4':'#fff5f5', borderLeft:`2px solid ${isCorrect?'#10b981':'#ef4444'}`, borderBottom:`1px solid ${isCorrect?'#a7f3d0':'#fca5a5'}`, borderRight:`1px solid ${isCorrect?'#a7f3d0':'#fca5a5'}`, borderRadius:'0 0 8px 8px', padding:'10px 14px' }}>
           <AnalysisBlock text={choice.analysis} />
         </div>
@@ -104,11 +112,12 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect }) {
 }
 
 // ── 문제 블록 ─────────────────────────────────────────────
-function QuestionBlock({ question, passageId, sel, onSelect }) {
-  const [clicked, setClicked] = useState(null);
+function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, initialClicked }) {
+  const [clicked, setClicked] = useState(initialClicked ?? null);
 
   function handleClick(uid, choice) {
-    // 같은 선지 재클릭 → 취소
+    // 같은 선지 재클릭 → 취소 (풀이 모드 제출 후엔 변경 불가)
+    if (mode === MODE.STUDY && submitted) return;
     if (clicked === uid) {
       setClicked(null);
       onSelect(null, null);
@@ -171,8 +180,7 @@ function QuestionBlock({ question, passageId, sel, onSelect }) {
       {!hasBogiTable && (
         <div style={{ display:'flex', flexDirection:'column', gap:'5px' }}>
           {question.choices.map(c => (
-            // 수정
-<ChoiceItem key={c.num} choice={c} qid={question.id} questionType={question.questionType ?? 'negative'} clicked={clicked} onSelect={handleClick} />
+            <ChoiceItem key={c.num} choice={c} qid={question.id} questionType={question.questionType ?? 'negative'} clicked={clicked} onSelect={handleClick} mode={mode} submitted={submitted} />
           ))}
         </div>
       )}
@@ -268,8 +276,10 @@ function ReportModal({ totalQ, correctCount, wrongCount, log, onClose }) {
 }
 
 // ── 메인 컴포넌트 ─────────────────────────────────────────
-export default function QuizPanel({ passageSet, sel, onSelChange }) {
-  const [log, setLog] = useState([]);
+export default function QuizPanel({ passageSet, sel, onSelChange, user, yearKey, mode, studyAnswers = {}, onStudyAnswer, submitted = false, onPrev, onNext, hasPrev, hasNext }) {
+  const isStudy = mode === MODE.STUDY;
+
+  const [log, setLog]           = useState([]);
   const [answered, setAnswered] = useState(new Set()); // qid Set
   const [showReport, setShowReport] = useState(false);
   const autoShownRef = useRef(false);
@@ -283,47 +293,83 @@ export default function QuizPanel({ passageSet, sel, onSelChange }) {
     autoShownRef.current = false;
   }, [setId]);
 
+  // submitted prop: 현재 세트 log/answered 계산 + 결과 모달
+  useEffect(() => {
+    if (!submitted || !passageSet) return;
+    const newLog = [];
+    const newAnswered = new Set();
+    for (const [qidStr, choiceNum] of Object.entries(studyAnswers)) {
+      const qid = parseInt(qidStr, 10);
+      const q = passageSet.questions.find(q => q.id === qid);
+      if (!q) continue;
+      const choice = q.choices.find(c => c.num === choiceNum);
+      if (!choice) continue;
+      const qt = q.questionType ?? 'negative';
+      const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
+      newAnswered.add(qid);
+      if (!isCorrect) newLog.push({ uid: `q${qid}_c${choiceNum}`, pat: choice.pat });
+    }
+    setAnswered(newAnswered);
+    setLog(newLog);
+    if (!autoShownRef.current) {
+      autoShownRef.current = true;
+      setTimeout(() => setShowReport(true), 400);
+    }
+  }, [submitted, setId]); // eslint-disable-line react-hooks/exhaustive-deps
+
   if (!passageSet) return null;
 
   const totalQ = passageSet.questions.length;
   const correctCount = answered.size - log.length;
   const wrongCount = log.length;
 
+  function processAnswer(uid, choice) {
+    const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
+    const q = passageSet.questions.find(q => q.id === qid);
+    const qt = q?.questionType ?? 'negative';
+    const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
+
+    setAnswered(prev => {
+      const next = new Set(prev);
+      next.add(qid);
+      return next;
+    });
+
+    if (!isCorrect) {
+      setLog(prev => prev.find(w => w.uid === uid) ? prev : [...prev, { uid, pat: choice.pat }]);
+    }
+  }
+
   function handleSelect(uid, choice) {
-    onSelChange(uid, choice);
-    if (choice) {
+    if (isStudy && !submitted) {
+      // 풀이 모드 미제출: studyAnswers에만 저장, 형광펜 비활성화
+      if (!choice) return;
       const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
-      const q = passageSet.questions.find(q => q.id === qid);
-      const qt = q?.questionType ?? 'negative';
-      const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
-
-      setAnswered(prev => {
-        const next = new Set(prev);
-        next.add(qid);
-        // 전부 풀었으면 자동 모달
-        if (next.size === totalQ && !autoShownRef.current) {
-          autoShownRef.current = true;
-          setTimeout(() => setShowReport(true), 400);
-        }
-        return next;
-      });
-
-      if (!isCorrect) {
-        setLog(prev => prev.find(w => w.uid === uid) ? prev : [...prev, { uid, pat: choice.pat }]);
-      }
+      onStudyAnswer(qid, choice.num);
+      onSelChange(null, null); // 형광펜 표시 안 함
+    } else {
+      onSelChange(uid, choice);
+      if (!choice) return;
+      processAnswer(uid, choice);
     }
   }
 
   return (
     <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
+
       {passageSet.questions.map(q => (
-        <QuestionBlock key={`${passageSet.id}-${q.id}`} question={q} passageId={passageSet.id} sel={sel} onSelect={handleSelect} />
+        <QuestionBlock
+          key={`${passageSet.id}-${q.id}`}
+          question={q}
+          passageId={passageSet.id}
+          sel={sel}
+          onSelect={handleSelect}
+          mode={mode}
+          submitted={submitted}
+          initialClicked={studyAnswers[q.id] != null ? `q${q.id}_c${studyAnswers[q.id]}` : undefined}
+        />
       ))}
-      {answered.size > 0 && (
-        <button onClick={()=>setShowReport(true)} style={{ padding:'10px 16px', borderRadius:'8px', background:'#1f2937', color:'#fff', border:'none', fontWeight:'700', cursor:'pointer', alignSelf:'flex-end', fontSize:'0.85rem' }}>
-          📊 리포트 보기 ({answered.size}/{totalQ})
-        </button>
-      )}
+
       {showReport && (
         <ReportModal
           totalQ={totalQ}
@@ -333,6 +379,34 @@ export default function QuizPanel({ passageSet, sel, onSelChange }) {
           onClose={()=>setShowReport(false)}
         />
       )}
+
+      {/* 이전/다음 지문 버튼 */}
+      <div style={{ display:'flex', justifyContent:'space-between', marginTop:'8px' }}>
+        <button
+          onClick={onPrev}
+          disabled={!hasPrev}
+          style={{
+            padding:'9px 16px', borderRadius:'8px', fontSize:'0.83rem', fontWeight:'600',
+            border:'1px solid #d1d5db', cursor: hasPrev ? 'pointer' : 'not-allowed',
+            background: hasPrev ? '#f2f7f2' : '#f9fafb',
+            color: hasPrev ? '#2d6e2d' : '#d1d5db',
+          }}
+        >
+          ← 이전 지문
+        </button>
+        <button
+          onClick={onNext}
+          disabled={!hasNext}
+          style={{
+            padding:'9px 16px', borderRadius:'8px', fontSize:'0.83rem', fontWeight:'600',
+            border:'1px solid #d1d5db', cursor: hasNext ? 'pointer' : 'not-allowed',
+            background: hasNext ? '#f2f7f2' : '#f9fafb',
+            color: hasNext ? '#2d6e2d' : '#d1d5db',
+          }}
+        >
+          다음 지문 →
+        </button>
+      </div>
     </div>
   );
 }
