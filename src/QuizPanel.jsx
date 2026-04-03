@@ -1,3 +1,4 @@
+import QuestionQA from './QuestionQA';
 import { useState, useEffect, useRef } from 'react';
 import { P, CC, MODE } from './constants';
 import { BogiTable } from './BogiTable';
@@ -62,7 +63,7 @@ function PatternBadge({ pat }) {
 }
 
 // ── 선지 아이템 ───────────────────────────────────────────
-function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submitted }) {
+function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submitted, isReview }) {
   const uid = `q${qid}_c${choice.num}`;
   const isMe = clicked === uid;
   const isCorrect = questionType === 'positive'
@@ -75,7 +76,16 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submit
   let bg='#ffffff', border='1px solid #e5e7eb', tc='#1f2937';
   let numBg='#f3f4f6', numColor=CC[choice.num]?.text ?? '#374151';
 
-  if (isMe && showResult) {
+  if (isReview) {
+    // 복습 모드: 정답(초록) + 내 오답(빨간) 동시 표시
+    if (isCorrect) {
+      bg='#ecfdf5'; border='2px solid #10b981'; tc='#065f46';
+      numBg='#10b981'; numColor='#fff';
+    } else if (isMe) {
+      bg='#fef2f2'; border='2px solid #ef4444'; tc='#7f1d1d';
+      numBg='#ef4444'; numColor='#fff';
+    }
+  } else if (isMe && showResult) {
     if (isCorrect) {
       bg='#ecfdf5'; border='2px solid #10b981'; tc='#065f46';
       numBg='#10b981'; numColor='#fff';
@@ -84,7 +94,6 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submit
       numBg='#ef4444'; numColor='#fff';
     }
   } else if (isMe) {
-    // 풀이 모드 미제출: 선택만 표시 (파란 테두리)
     bg='#eff6ff'; border='2px solid #3b82f6'; tc='#1e40af';
     numBg='#3b82f6'; numColor='#fff';
   }
@@ -97,12 +106,14 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submit
         </span>
         <div style={{ flex:1, fontSize:'0.88rem', lineHeight:'1.65', color:tc, textAlign:'left' }}>
           <span>{choice.t}</span>
-          {isMe && showResult && !isCorrect && choice.pat && <PatternBadge pat={choice.pat} />}
+          {(isReview ? (isMe && !isCorrect) : (isMe && showResult && !isCorrect)) && choice.pat && <PatternBadge pat={choice.pat} />}
         </div>
-        {isMe && showResult && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>{isCorrect?'✅':'❌'}</span>}
+        {isReview && isCorrect && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>✅</span>}
+        {isReview && isMe && !isCorrect && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>❌</span>}
+        {!isReview && isMe && showResult && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>{isCorrect?'✅':'❌'}</span>}
       </div>
       {/* 선지 아래 해설 — 결과 표시 시에만 */}
-      {isMe && showResult && choice.analysis && (
+      {((isReview && (isCorrect || isMe)) || (!isReview && isMe && showResult)) && choice.analysis && (
         <div style={{ background: isCorrect?'#f0fdf4':'#fff5f5', borderLeft:`2px solid ${isCorrect?'#10b981':'#ef4444'}`, borderBottom:`1px solid ${isCorrect?'#a7f3d0':'#fca5a5'}`, borderRight:`1px solid ${isCorrect?'#a7f3d0':'#fca5a5'}`, borderRadius:'0 0 8px 8px', padding:'10px 14px' }}>
           <AnalysisBlock text={choice.analysis} />
         </div>
@@ -112,7 +123,7 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submit
 }
 
 // ── 문제 블록 ─────────────────────────────────────────────
-function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, initialClicked }) {
+function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, isReview, initialClicked, yearKey, passageSents, user }) {
   const [clicked, setClicked] = useState(initialClicked ?? null);
 
   function handleClick(uid, choice) {
@@ -180,7 +191,7 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, in
       {!hasBogiTable && (
         <div style={{ display:'flex', flexDirection:'column', gap:'5px' }}>
           {question.choices.map(c => (
-            <ChoiceItem key={c.num} choice={c} qid={question.id} questionType={question.questionType ?? 'negative'} clicked={clicked} onSelect={handleClick} mode={mode} submitted={submitted} />
+            <ChoiceItem key={c.num} choice={c} qid={question.id} questionType={question.questionType ?? 'negative'} clicked={clicked} onSelect={handleClick} mode={mode} submitted={submitted} isReview={isReview} />
           ))}
         </div>
       )}
@@ -271,12 +282,22 @@ function ReportModal({ totalQ, correctCount, wrongCount, log, onClose }) {
 
         <button onClick={onClose} style={{ width:'100%', marginTop:'16px', padding:'10px', borderRadius:'8px', background:'#1f2937', color:'#fff', border:'none', fontWeight:'700', cursor:'pointer', fontSize:'0.88rem' }}>닫기</button>
       </div>
+      {/* AI Q&A — 복습 모드에서만 표시 */}
+      {isReview && (
+        <QuestionQA
+          questionKey={`${yearKey}_${passageId}_${question.id}`}
+          questionText={question.t}
+          choices={question.choices}
+          passageSents={passageSents}
+          user={user}
+        />
+      )}
     </div>
   );
 }
 
 // ── 메인 컴포넌트 ─────────────────────────────────────────
-export default function QuizPanel({ passageSet, sel, onSelChange, user, yearKey, mode, studyAnswers = {}, onStudyAnswer, submitted = false, onPrev, onNext, hasPrev, hasNext }) {
+export default function QuizPanel({ passageSet, sel, onSelChange, user, yearKey, mode, studyAnswers = {}, onStudyAnswer, submitted = false, isReview = false, onPrev, onNext, hasPrev, hasNext }) {
   const isStudy = mode === MODE.STUDY;
 
   const [log, setLog]           = useState([]);
@@ -366,7 +387,11 @@ export default function QuizPanel({ passageSet, sel, onSelChange, user, yearKey,
           onSelect={handleSelect}
           mode={mode}
           submitted={submitted}
+          isReview={isReview}
           initialClicked={studyAnswers[q.id] != null ? `q${q.id}_c${studyAnswers[q.id]}` : undefined}
+          yearKey={yearKey}
+          passageSents={passageSet.sents}
+          user={user}
         />
       ))}
 

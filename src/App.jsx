@@ -535,6 +535,7 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
   const [studyAnswers, setStudyAnswers] = useState({}); // { [setId]: { [qid]: choiceNum } }
   const [submitted, setSubmitted]       = useState(false);
   const [submitting, setSubmitting]     = useState(false);
+  const [isReview, setIsReview]         = useState(false);
   const [warningMsg, setWarningMsg]     = useState(null);
 
   const sets = yearData?.[section] ?? [];
@@ -679,8 +680,8 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, [warningMsg]);
 
-  // 제출 완료 → ResultPage 전환
-  if (submitted) {
+  // 제출 완료 → ResultPage 전환 (복습 모드 진입 시엔 뷰어 유지)
+  if (submitted && !isReview) {
     const yearMeta = YEAR_INFO.find(y => y.key === yearKey);
     return (
       <ResultPage
@@ -698,7 +699,7 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
           if (idx >= 0) setSetIdx(idx);
           setSel(null);
           setSelChoice(null);
-          setSubmitted(false);
+          setIsReview(true);
           window.scrollTo({ top: 0 });
         }}
         onBack={onBack}
@@ -710,6 +711,26 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
     <div style={{ minHeight: '100vh', background: '#f9fafb' }}>
 
       {/* 풀이 모드: 헤더 우측 전체 제출 바 */}
+      {/* 복습 모드 배너 */}
+      {isStudy && isReview && (
+        <div style={{
+          position: 'sticky', top: '52px', zIndex: 90,
+          background: '#064e3b',
+          padding: '7px 20px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px',
+        }}>
+          <span style={{ fontSize: '0.78rem', color: '#6ee7b7' }}>
+            📖 복습 모드 — 내 답 <span style={{color:'#fca5a5'}}>빨간</span> · 정답 <span style={{color:'#6ee7b7'}}>초록</span> · 해설 자동 표시
+          </span>
+          <button
+            onClick={() => setIsReview(false)}
+            style={{ flexShrink:0, padding: '5px 14px', borderRadius: '6px', background: '#10b981', color: '#fff', border: 'none', fontWeight: '700', fontSize: '0.82rem', cursor: 'pointer' }}
+          >
+            결과로 돌아가기
+          </button>
+        </div>
+      )}
+
       {isStudy && !submitted && (
         <div style={{
           position: 'sticky', top: '52px', zIndex: 90,
@@ -817,6 +838,7 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
             user={user}
             yearKey={yearKey}
             mode={mode}
+            isReview={isReview}
             studyAnswers={studyAnswers[currentSet?.id] ?? {}}
             onStudyAnswer={handleStudyAnswer}
             submitted={submitted}
