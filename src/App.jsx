@@ -555,6 +555,12 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
   const hasPrev    = allSetIdx > 0;
   const hasNext    = allSetIdx >= 0 && allSetIdx < allSets.length - 1;
 
+  // 윈도우 + 지문 패널 내부 스크롤 동시 리셋
+  function resetScroll() {
+    window.scrollTo({ top: 0 });
+    document.getElementById('passage-panel')?.scrollTo({ top: 0 });
+  }
+
   function handleNavSet(delta) {
     const target = allSets[allSetIdx + delta];
     if (!target) return;
@@ -565,7 +571,7 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
     setSel(null);
     setSelChoice(null);
     setWarningMsg(null);
-    window.scrollTo({ top: 0 });
+    resetScroll();
   }
 
   // URL 동기화 (세트 변경 시 replaceState)
@@ -585,6 +591,7 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
     setSel(null);
     setSelChoice(null);
     setWarningMsg(null);
+    resetScroll();
   }
 
   function handleSetChange(idx) {
@@ -592,7 +599,7 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
     setSel(null);
     setSelChoice(null);
     setWarningMsg(null);
-    window.scrollTo({ top: 0 });
+    resetScroll();
   }
 
   // QuizPanel → PassagePanel 연동
@@ -633,24 +640,26 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
       return;
     }
     // 전체 선택 완료 → saveAnswer 일괄 호출
+    // saveAnswer 실패해도 ResultPage는 반드시 표시 (개별 try-catch)
     setSubmitting(true);
-    try {
-      for (const s of allSets) {
-        for (const q of (s.questions ?? [])) {
-          const choiceNum = studyAnswers[s.id]?.[q.id];
-          if (choiceNum == null) continue;
-          const choice = q.choices.find(c => c.num === choiceNum);
-          if (!choice) continue;
-          const qt = q.questionType ?? 'negative';
-          const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
+    for (const s of allSets) {
+      for (const q of (s.questions ?? [])) {
+        const choiceNum = studyAnswers[s.id]?.[q.id];
+        if (choiceNum == null) continue;
+        const choice = q.choices.find(c => c.num === choiceNum);
+        if (!choice) continue;
+        const qt = q.questionType ?? 'negative';
+        const isCorrect = qt === 'positive' ? choice.ok === true : choice.ok === false;
+        try {
           await saveAnswer({ user, yearKey, setId: s.id, questionId: q.id, choiceNum, isCorrect, pat: choice.pat ?? null });
+        } catch (e) {
+          console.warn('[saveAnswer 실패 무시]', s.id, q.id, e?.message);
         }
       }
-      setSubmitted(true);
-      window.scrollTo({ top: 0 });
-    } finally {
-      setSubmitting(false);
     }
+    setSubmitting(false);
+    setSubmitted(true);
+    window.scrollTo({ top: 0 });
   }
 
   // 모바일: 선지 선택 시 지문 상단으로 자동 스크롤
@@ -662,6 +671,13 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
       }
     }
   }, [sel]);
+
+  // 경고 배너 표시 시 배너 위치로 자동 스크롤
+  useEffect(() => {
+    if (!warningMsg) return;
+    const el = document.getElementById('warning-banner');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, [warningMsg]);
 
   // 제출 완료 → ResultPage 전환
   if (submitted) {
@@ -741,7 +757,7 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
 
       {/* 인라인 경고 (미선택 문항) */}
       {warningMsg && (
-        <div style={{
+        <div id="warning-banner" style={{
           maxWidth: '1200px', margin: '8px auto 0', padding: '0 16px',
         }}>
           <div style={{
