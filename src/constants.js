@@ -50,3 +50,11 @@ export const YEAR_INFO = [
   { key: '2022수능', label: '2022학년도 수능',    tag: '2021.11', badge: '',     color: '#2c3e50' },
   { key: '2022_6월', label: '2022학년도 6월 모의', tag: '2021.06', badge: '',    color: '#2ecc71' },
 ];
+
+// 선지 기호 이미지 매핑 ([[sym:box]] 등 치환용)
+export const SYMBOLS = {
+  box:      '/images/sym_box.png',
+  numbered: '/images/sym_numbered.png',
+  check:    '/images/sym_check.png',
+  wavy:     '/images/sym_wavy.png',
+};

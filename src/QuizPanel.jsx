@@ -1,6 +1,6 @@
 import QuestionQA from './QuestionQA';
 import { useState, useEffect, useRef } from 'react';
-import { P, CC, MODE } from './constants';
+import { P, CC, MODE, SYMBOLS } from './constants';
 import { BogiTable } from './BogiTable';
 
 // ── analysis 텍스트에서 sent ID 참조 제거 ─────────────────
@@ -10,7 +10,25 @@ function cleanAnalysis(text) {
   return text.replace(/[a-zA-Z_]*[a-zA-Z]\d+(?:[·,][a-zA-Z_]*\d+)*:\s*[''"]?/g, '').trim();
 }
 
-// ── 해설 블록 (선지 아래 인라인 표시) ────────────────────
+// ── 기호 이미지 렌더링 ([[sym:box]] 등 치환) ─────────────
+function renderWithSymbols(text) {
+  if (!text) return null;
+  const parts = text.split(/(\[\[sym:\w+\]\])/);
+  return parts.map((part, i) => {
+    const match = part.match(/\[\[sym:(\w+)\]\]/);
+    if (match && SYMBOLS?.[match[1]]) {
+      return (
+        <img
+          key={i}
+          src={SYMBOLS[match[1]]}
+          alt={match[1]}
+          style={{ height: '1.2em', verticalAlign: '-0.2em', margin: '0 3px' }}
+        />
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
+}
 function AnalysisBlock({ text }) {
   const cleaned = cleanAnalysis(text);
   if (!cleaned || cleaned.length < 5) return null;
@@ -105,7 +123,7 @@ function ChoiceItem({ choice, qid, questionType, clicked, onSelect, mode, submit
           {choice.num}
         </span>
         <div style={{ flex:1, fontSize:'0.88rem', lineHeight:'1.65', color:tc, textAlign:'left' }}>
-          <span>{choice.t}</span>
+          <span>{renderWithSymbols(choice.t)}</span>
           {(isReview ? (isMe && !isCorrect) : (isMe && showResult && !isCorrect)) && choice.pat && <PatternBadge pat={choice.pat} />}
         </div>
         {isReview && isCorrect && <span style={{ fontSize:'1rem', flexShrink:0, paddingTop:'1px' }}>✅</span>}
