@@ -85,6 +85,10 @@ export default function ResultPage({ user, yearKey, yearLabel, studyAnswers, all
             );
           })}
         </div>
+      </div>
+    );
+  }
+
   function PatBar({ keys, title, showUnclassified }) {
     const total = keys.reduce((s, k) => s + (patCounts[k] || 0), 0);
     const displayTotal = total + (showUnclassified ? unclassified : 0);
