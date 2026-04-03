@@ -195,6 +195,17 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
           ))}
         </div>
       )}
+
+      {/* AI Q&A — 복습 모드에서만 표시 */}
+      {isReview && (
+        <QuestionQA
+          questionKey={`${yearKey}_${passageId}_${question.id}`}
+          questionText={question.t}
+          choices={question.choices}
+          passageSents={passageSents}
+          user={user}
+        />
+      )}
     </div>
   );
 }
@@ -282,16 +293,6 @@ function ReportModal({ totalQ, correctCount, wrongCount, log, onClose }) {
 
         <button onClick={onClose} style={{ width:'100%', marginTop:'16px', padding:'10px', borderRadius:'8px', background:'#1f2937', color:'#fff', border:'none', fontWeight:'700', cursor:'pointer', fontSize:'0.88rem' }}>닫기</button>
       </div>
-      {/* AI Q&A — 복습 모드에서만 표시 */}
-      {isReview && (
-        <QuestionQA
-          questionKey={`${yearKey}_${passageId}_${question.id}`}
-          questionText={question.t}
-          choices={question.choices}
-          passageSents={passageSents}
-          user={user}
-        />
-      )}
     </div>
   );
 }
@@ -332,7 +333,7 @@ export default function QuizPanel({ passageSet, sel, onSelChange, user, yearKey,
     }
     setAnswered(newAnswered);
     setLog(newLog);
-    if (!autoShownRef.current) {
+    if (!autoShownRef.current && !isReview) {
       autoShownRef.current = true;
       setTimeout(() => setShowReport(true), 400);
     }

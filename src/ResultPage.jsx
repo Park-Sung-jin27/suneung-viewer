@@ -32,8 +32,10 @@ export default function ResultPage({ user, yearKey, yearLabel, studyAnswers, all
 
   // 패턴 집계
   const patCounts = {};
+  let unclassified = 0;
   for (const { pat } of wrongItems) {
     if (pat) patCounts[pat] = (patCounts[pat] || 0) + 1;
+    else unclassified++;
   }
   const topPat = Object.entries(patCounts).sort(([, a], [, b]) => b - a)[0];
 
@@ -83,13 +85,30 @@ export default function ResultPage({ user, yearKey, yearLabel, studyAnswers, all
             );
           })}
         </div>
+        {/* 미분류 행 — pat:null 오답 */}
+        {showUnclassified && unclassified > 0 && (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: '8px',
+            padding: '6px 10px', borderRadius: '6px',
+            background: '#f3f4f6', marginTop: '4px',
+          }}>
+            <span style={{ fontWeight: '800', color: '#9ca3af', minWidth: '28px', fontSize: '0.73rem' }}>미분류</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: '600', color: '#6b7280' }}>패턴 미지정 오답</div>
+            </div>
+            <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#9ca3af', minWidth: '28px', textAlign: 'right' }}>
+              {unclassified}건
+            </span>
+          </div>
+        )}
       </div>
     );
   }
 
-  function PatBar({ keys, title }) {
+  function PatBar({ keys, title, showUnclassified }) {
     const total = keys.reduce((s, k) => s + (patCounts[k] || 0), 0);
-    if (total === 0) return (
+    const displayTotal = total + (showUnclassified ? unclassified : 0);
+    if (displayTotal === 0) return (
       <div>
         <div style={{ fontSize: '0.78rem', fontWeight: '700', color: '#9ca3af', marginBottom: '6px' }}>{title}</div>
         <div style={{ fontSize: '0.75rem', color: '#d1d5db' }}>오답 없음</div>
@@ -101,7 +120,7 @@ export default function ResultPage({ user, yearKey, yearLabel, studyAnswers, all
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
           {keys.map(k => {
             const n   = patCounts[k] || 0;
-            const pct = total > 0 ? Math.round((n / total) * 100) : 0;
+            const pct = displayTotal > 0 ? Math.round((n / displayTotal) * 100) : 0;
             const p   = P[k];
             const isTop = topPat && topPat[0] === k;
             return (
@@ -128,6 +147,22 @@ export default function ResultPage({ user, yearKey, yearLabel, studyAnswers, all
             );
           })}
         </div>
+        {/* 미분류 행 — pat:null 오답 */}
+        {showUnclassified && unclassified > 0 && (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: '8px',
+            padding: '6px 10px', borderRadius: '6px',
+            background: '#f3f4f6', marginTop: '4px',
+          }}>
+            <span style={{ fontWeight: '800', color: '#9ca3af', minWidth: '28px', fontSize: '0.73rem' }}>미분류</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: '600', color: '#6b7280' }}>패턴 미지정 오답</div>
+            </div>
+            <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#9ca3af', minWidth: '28px', textAlign: 'right' }}>
+              {unclassified}건
+            </span>
+          </div>
+        )}
       </div>
     );
   }
@@ -187,8 +222,8 @@ export default function ResultPage({ user, yearKey, yearLabel, studyAnswers, all
               </div>
             )}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-              <PatBar keys={READING_PATS} title="독서 오답 패턴" />
-              <PatBar keys={LIT_PATS}     title="문학 오답 패턴" />
+              <PatBar keys={READING_PATS} title="독서 오답 패턴" showUnclassified />
+              <PatBar keys={LIT_PATS}     title="문학 오답 패턴" showUnclassified />
             </div>
           </div>
         )}
