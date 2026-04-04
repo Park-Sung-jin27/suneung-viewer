@@ -1,4 +1,5 @@
 import { P, P0 } from './constants';
+import GradeEstimate from './GradeEstimate';
 
 const SECTION_LABELS = { reading: '독서', literature: '문학' };
 const READING_PATS  = ['R1', 'R2', 'R3', 'R4'];
@@ -181,6 +182,9 @@ export default function ResultPage({ user, yearKey, yearLabel, studyAnswers, all
             </div>
           ))}
         </div>
+
+        {/* 등급 추정 */}
+        <GradeEstimate correct={correctQ} total={totalQ} yearKey={yearKey} />
 
         {/* 2. 섹션별 결과 */}
         {[{ label: SECTION_LABELS.reading, sets: readingSets }, { label: SECTION_LABELS.literature, sets: litSets }]
