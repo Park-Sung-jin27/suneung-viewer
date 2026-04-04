@@ -51,6 +51,74 @@ export const YEAR_INFO = [
   { key: '2022_6월', label: '2022학년도 6월 모의', tag: '2021.06', badge: '',    color: '#2ecc71' },
 ];
 
+// 수능 국어 등급컷 (화법과 작문 선택 기준, 원점수 100점 만점 역산치)
+// ※ 2022학년도 이후 국어 공식 등급은 표준점수 기반이며,
+//    아래 원점수는 입시기관 역산 참고치로 실제와 다를 수 있습니다.
+// ※ 이 앱은 공통 34문항(독서+문학)만 포함 — 선택과목 미포함
+//
+// verified: true  → 평가원 확정 채점 결과 기반
+// verified: false → 입시기관(EBSi·메가·종로 등) 추정치 기반
+//
+// cuts 배열: [1등급컷, 2등급컷, 3등급컷, 4등급컷, 5등급컷, 6등급컷, 7등급컷]
+// 각 값은 해당 등급에 진입하기 위한 최저 원점수 (100점 만점 기준 %)로 사용
+export const GRADE_CUTS = {
+  '2026수능': {
+    cuts: [89, 81, 71, 61, 48, 36, 26],
+    verified: true,
+    source: '평가원 확정 채점 결과',
+  },
+  '2025수능': {
+    cuts: [95, 87, 77, 65, 52, 39, 27],
+    verified: false,
+    source: '입시기관 추정치',
+  },
+  '2025_9월': null,
+  '2024수능': {
+    cuts: [87, 79, 71, 61, 48, 36, 25],
+    verified: false,
+    source: 'EBSi 가채점 기반',
+  },
+  '2023수능': {
+    cuts: [93, 85, 75, 63, 50, 37, 25],
+    verified: false,
+    source: '입시기관 추정치 (미검증)',
+  },
+  '2022수능': {
+    cuts: [89, 81, 71, 59, 46, 34, 23],
+    verified: false,
+    source: '입시기관 추정치 (미검증)',
+  },
+  '2022_6월': null,
+};
+
+// 등급 추정 헬퍼 함수
+// correct: 맞은 문항 수, total: 전체 문항 수, yearKey: '2026수능' 등
+// 반환값: { grade: 1~9, pct: 정답률 %, cutUsed: 해당 등급컷, verified, source }
+//         데이터 없으면 null 반환
+export function estimateGrade(correct, total, yearKey) {
+  const data = GRADE_CUTS[yearKey];
+  if (!data || total === 0) return null;
+
+  const pct = (correct / total) * 100;
+  const cuts = data.cuts;
+
+  let grade = 8;
+  for (let i = 0; i < cuts.length; i++) {
+    if (pct >= cuts[i]) {
+      grade = i + 1;
+      break;
+    }
+  }
+
+  return {
+    grade,
+    pct: Math.round(pct),
+    cutUsed: cuts[grade - 1] ?? null,
+    verified: data.verified,
+    source: data.source,
+  };
+}
+
 // 선지 기호 이미지 매핑 ([[sym:box]] 등 치환용)
 export const SYMBOLS = {
   box:      '/images/sym_box.png',
