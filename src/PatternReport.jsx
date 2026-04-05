@@ -176,7 +176,7 @@ function getComment(topPat) {
 }
 
 // ── 메인 컴포넌트 ────────────────────────────────────────────
-export default function PatternReport({ user }) {
+export default function PatternReport({ user, onGoToQuestion }) {
   const [stats, setStats]           = useState(null);
   const [answers, setAnswers]       = useState([]);
   const [loading, setLoading]       = useState(true);
@@ -435,6 +435,7 @@ export default function PatternReport({ user }) {
           patKey={activeCoachPat}
           wrongAnswers={coachWrongAnswers}
           onClose={() => setActiveCoachPat(null)}
+          onGoToQuestion={onGoToQuestion}
         />
       )}
     </div>

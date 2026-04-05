@@ -813,12 +813,12 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r2023as9",
-        "sentTo": "r2023as13"
+        "sentFrom": "r2023a_s9",
+        "sentTo": "r2023a_s13"
       },
       {
         "type": "underline",
-        "sentId": "r2023as14",
+        "sentId": "r2023a_s14",
         "text": "다른 독자와 소통하는 즐거움"
       }
     ],
@@ -826,79 +826,79 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r2023bs2",
-        "sentTo": "r2023bs9"
+        "sentFrom": "r2023b_s2",
+        "sentTo": "r2023b_s9"
       },
       {
         "type": "underline",
-        "sentId": "r2023bs7",
+        "sentId": "r2023b_s7",
         "text": "따라"
       },
       {
         "type": "underline",
-        "sentId": "r2023bs11",
+        "sentId": "r2023b_s11",
         "text": "실학자들의 유서"
       },
       {
         "type": "underline",
-        "sentId": "r2023bs14",
+        "sentId": "r2023b_s14",
         "text": "이어받는"
       },
       {
         "type": "underline",
-        "sentId": "r2023bs15",
+        "sentId": "r2023b_s15",
         "text": "쉽게"
       },
       {
         "type": "underline",
-        "sentId": "r2023bs22",
+        "sentId": "r2023b_s22",
         "text": "뒤섞여"
       },
       {
         "type": "underline",
-        "sentId": "r2023bs22",
+        "sentId": "r2023b_s22",
         "text": "일부 주자학자의 비판"
       },
       {
         "type": "underline",
-        "sentId": "r2023bs23",
+        "sentId": "r2023b_s23",
         "text": "성호사설"
       },
       {
         "type": "underline",
-        "sentId": "r2023bs25",
+        "sentId": "r2023b_s25",
         "text": "바꾸어"
       },
       {
         "type": "underline",
-        "sentId": "r2023bs27",
+        "sentId": "r2023b_s27",
         "text": "오주연문장전산고"
       }
     ],
     "r2023c": [
       {
         "type": "underline",
-        "sentId": "r2023cs3",
+        "sentId": "r2023c_s3",
         "text": "맞는"
       },
       {
         "type": "underline",
-        "sentId": "r2023cs4",
+        "sentId": "r2023c_s4",
         "text": "들"
       },
       {
         "type": "underline",
-        "sentId": "r2023cs11",
+        "sentId": "r2023c_s11",
         "text": "받을"
       },
       {
         "type": "underline",
-        "sentId": "r2023cs16",
+        "sentId": "r2023c_s16",
         "text": "고를"
       },
       {
         "type": "underline",
-        "sentId": "r2023cs19",
+        "sentId": "r2023c_s19",
         "text": "재량 준칙"
       },
       {
@@ -910,12 +910,12 @@
     "r2023d": [
       {
         "type": "underline",
-        "sentId": "r2023ds5",
+        "sentId": "r2023d_s5",
         "text": "직접법"
       },
       {
         "type": "underline",
-        "sentId": "r2023ds5",
+        "sentId": "r2023d_s5",
         "text": "간접법"
       }
     ],

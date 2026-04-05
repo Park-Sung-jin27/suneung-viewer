@@ -52,7 +52,7 @@ ${itemsText}
 
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true' },
+    headers: { 'Content-Type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true', 'x-api-key': import.meta.env.VITE_ANTHROPIC_API_KEY },
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 1000,
@@ -72,7 +72,7 @@ async function fetchReply({ patKey, patName, wrongItems, history }) {
 
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true' },
+    headers: { 'Content-Type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true', 'x-api-key': import.meta.env.VITE_ANTHROPIC_API_KEY },
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 1000,
@@ -151,7 +151,7 @@ function TypingIndicator() {
 }
 
 // ── 메인 컴포넌트 ─────────────────────────────────────────────
-export default function PatternCoach({ patKey, wrongAnswers, onClose }) {
+export default function PatternCoach({ patKey, wrongAnswers, onClose, onGoToQuestion }) {
   const [allData, setAllData]         = useState(null);  // null = 로딩 중
   const [wrongItems, setWrongItems]   = useState([]);
   const [history, setHistory]         = useState([]);
@@ -315,15 +315,35 @@ export default function PatternCoach({ patKey, wrongAnswers, onClose }) {
           <div ref={bottomRef} />
         </div>
 
-        {/* 분석 요약 칩 */}
-        {wrongItems.length > 0 && !loadingInit && (
-          <div style={{
-            margin: '0 20px 8px',
-            background: '#FFFBEB', border: '1px solid #FDE68A',
-            borderRadius: '8px', padding: '8px 14px',
-            fontSize: '0.73rem', color: '#92400E',
-          }}>
-            📌 분석된 오답 {wrongItems.length}건 · {wrongItems.map(w => `${w.choiceNum}번`).join(', ')}
+        {/* 오답 보러가기 목록 */}
+        {wrongAnswers.length > 0 && !loadingInit && (
+          <div style={{ margin: '0 20px 8px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <div style={{ fontSize: '0.7rem', color: '#9CA3AF', fontWeight: '600', marginBottom: '2px' }}>
+              분석한 오답 {wrongAnswers.length}건
+            </div>
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+              {wrongAnswers.map((wa, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    onClose();
+                    onGoToQuestion?.(wa.year_key, wa.set_id, wa.question_id);
+                  }}
+                  style={{
+                    padding: '4px 12px', borderRadius: '6px',
+                    background: '#F9FAFB', border: '1px solid #E5E7EB',
+                    fontSize: '0.73rem', fontWeight: '600',
+                    color: '#374151', cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', gap: '4px',
+                    transition: 'all 0.12s',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.background = '#EEF2FF'; e.currentTarget.style.borderColor = '#A5B4FC'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = '#F9FAFB'; e.currentTarget.style.borderColor = '#E5E7EB'; }}
+                >
+                  {wa.question_id}번 문항 →
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
@@ -345,6 +365,7 @@ export default function PatternCoach({ patKey, wrongAnswers, onClose }) {
               padding: '10px 14px', fontSize: '0.85rem',
               lineHeight: '1.5', fontFamily: 'inherit',
               color: '#1a1a14', outline: 'none',
+              background: '#fff',
               opacity: (loadingInit || loadingReply) ? 0.6 : 1,
             }}
             onKeyDown={e => { if (e.key === 'Enter' && e.metaKey) handleSend(); }}

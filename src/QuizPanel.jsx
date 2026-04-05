@@ -566,6 +566,8 @@ export default function QuizPanel({
     } else {
       onSelChange(uid, choice);
       if (!choice) return;
+      // VIEW 모드에서는 answered/log/ReportModal 추적 안 함
+      if (!isStudy) return;
       const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
       const q = passageSet.questions.find(q => q.id === qid);
       const qt = q?.questionType ?? 'negative';
