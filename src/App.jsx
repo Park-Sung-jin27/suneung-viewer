@@ -1193,10 +1193,24 @@ export default function App() {
           <WrongNote
             user={user}
             allData={allData}
-            onGoToQuestion={(yearKey, setId, questionId) => {
-              setSelectedYear(yearKey);
-              setView('viewer');
-              // setId, questionId로 해당 문제로 이동하는 로직은 추후 구현
+            onGoToQuestion={async (yearKey, setId, questionId) => {
+              setLoading(true);
+              setError(null);
+              try {
+                const data = await loadYear(yearKey);
+                setYearData(data);
+                setSelectedYear(yearKey);
+                setInitialSetId(setId ?? null);
+                setInitialQId(questionId ? String(questionId) : null);
+                setMode(MODE.VIEW);
+                setView('viewer');
+                window.history.pushState({}, '', `/viewer?year=${encodeURIComponent(yearKey)}&set=${setId}&mode=${MODE.VIEW}`);
+                window.scrollTo({ top: 0 });
+              } catch (e) {
+                setError(`데이터 로드 실패: ${e.message}`);
+              } finally {
+                setLoading(false);
+              }
             }}
           />
         ) : view === 'payment' ? (
