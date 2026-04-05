@@ -32,7 +32,7 @@ ${userQuestion}`;
 
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true' },
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 1000,
@@ -203,6 +203,7 @@ export default function QuestionQA({ questionKey, questionText, choices, passage
                 border: '1px solid #e2e8f0', borderRadius: '6px',
                 padding: '8px 10px', fontSize: '0.82rem', lineHeight: '1.6',
                 fontFamily: 'inherit', color: '#1e293b',
+                background: '#fff',
                 outline: 'none',
               }}
               onKeyDown={e => {

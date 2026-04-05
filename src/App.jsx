@@ -821,7 +821,7 @@ function ViewerPage({ yearKey, yearData, user, initialSetId, initialQId, mode, o
           <PassagePanel
             passageSet={currentSet}
             sel={sel}
-            mode={mode}
+            mode={isReview ? MODE.VIEW : mode}
           />
         </div>
 
