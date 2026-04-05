@@ -1,11 +1,12 @@
 // ============================================================
-// PatternReport.jsx — 오답 패턴 리포트
+// PatternReport.jsx — 오답 패턴 리포트 + AI 코칭 연동
 // constants.js P 정의 기준 (R1~R4 독서, L1~L5 문학, P0 미분류)
 // ============================================================
 
 import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
 import { P, P0, YEAR_INFO } from './constants';
+import PatternCoach from './PatternCoach';
 
 const C = {
   bg:    '#f9f5ed',
@@ -49,7 +50,7 @@ function SummaryCard({ label, value, sub }) {
 }
 
 // ── 패턴 바 ──────────────────────────────────────────────────
-function PatternBar({ patKey, count, maxCount, isTop }) {
+function PatternBar({ patKey, count, maxCount, isTop, onCoach }) {
   const info = P[patKey] ?? P0;
   const pct = maxCount > 0 ? Math.round((count / maxCount) * 100) : 0;
 
@@ -90,8 +91,30 @@ function PatternBar({ patKey, count, maxCount, isTop }) {
           minWidth: count > 0 ? '4px' : '0',
         }} />
       </div>
-      <div style={{ fontSize: '0.67rem', color: C.muted }}>
-        {info.desc}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ fontSize: '0.67rem', color: C.muted }}>
+          {info.desc}
+        </div>
+        {/* AI 코칭 버튼 — 오답이 1건 이상인 패턴에만 표시 */}
+        {count > 0 && (
+          <button
+            onClick={() => onCoach(patKey)}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '4px',
+              padding: '3px 10px',
+              background: isTop ? info.color : '#F9FAFB',
+              color: isTop ? '#fff' : info.color,
+              border: `1px solid ${info.color}66`,
+              borderRadius: '5px',
+              fontSize: '0.68rem', fontWeight: '700',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap', flexShrink: 0,
+              transition: 'all 0.15s',
+            }}
+          >
+            🤖 AI 코칭
+          </button>
+        )}
       </div>
     </div>
   );
@@ -147,18 +170,18 @@ const COMMENTS = {
 
 function getComment(topPat) {
   if (topPat === null) return '아직 분석할 데이터가 부족합니다. 더 많은 문제를 풀어보세요.';
-  if (topPat === '0') {
-    return `P0(미분류)에 오답이 많습니다. 틀린 이유를 스스로 분석하고 패턴을 파악하세요.`;
-  }
+  if (topPat === '0') return 'P0(미분류)에 오답이 많습니다. 틀린 이유를 스스로 분석하고 패턴을 파악하세요.';
   const info = P[topPat] ?? P0;
   return `${topPat}(${info.name})에 가장 자주 당합니다. ${COMMENTS[topPat] ?? ''}`;
 }
 
 // ── 메인 컴포넌트 ────────────────────────────────────────────
 export default function PatternReport({ user }) {
-  const [stats, setStats]     = useState(null);
-  const [answers, setAnswers] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [stats, setStats]           = useState(null);
+  const [answers, setAnswers]       = useState([]);
+  const [loading, setLoading]       = useState(true);
+  // 코치 모달 상태
+  const [activeCoachPat, setActiveCoachPat] = useState(null); // 'R2', 'L3' 등
 
   useEffect(() => {
     if (!user) { setLoading(false); return; }
@@ -167,7 +190,9 @@ export default function PatternReport({ user }) {
       const [{ data: statsData }, { data: answersData }] = await Promise.all([
         supabase.from('user_stats').select('*').eq('user_id', user.id).single(),
         supabase.from('user_answers')
-          .select('year_key, is_correct, pat')
+          // question_key, choice_num 추가 — PatternCoach에서 오답 세부 데이터 조회용
+          // ※ user_answers 테이블에 해당 컬럼이 없으면 select에서 제거 (코칭은 계속 동작, 오답 세부 분석만 생략됨)
+          .select('year_key, is_correct, pat, set_id, question_id, choice_num')
           .eq('user_id', user.id)
           .order('answered_at', { ascending: false })
           .limit(200),
@@ -192,7 +217,6 @@ export default function PatternReport({ user }) {
   const accuracy      = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
   const streakDays    = stats?.streak_days ?? 0;
 
-  // pat 카운트: user_answers에서 집계 (R1~R4, L1~L5, "0"=미분류)
   const patCounts = {};
   for (const a of answers) {
     if (!a.is_correct && a.pat != null) {
@@ -204,7 +228,6 @@ export default function PatternReport({ user }) {
   const allPatKeys = [...READING_PATS, ...LIT_PATS];
   const maxCount = Math.max(...allPatKeys.map(k => patCounts[k] ?? 0), 1);
 
-  // 주요 약점: R/L 중 가장 많은 패턴
   const topPat = allPatKeys.length > 0
     ? allPatKeys.reduce((best, k) => (patCounts[k] ?? 0) > (patCounts[best] ?? 0) ? k : best, allPatKeys[0])
     : null;
@@ -212,7 +235,6 @@ export default function PatternReport({ user }) {
 
   const p0Count = patCounts['0'] ?? 0;
 
-  // 시험별 정답률
   const yearMap = {};
   for (const a of answers) {
     if (!yearMap[a.year_key]) yearMap[a.year_key] = { correct: 0, total: 0 };
@@ -226,6 +248,11 @@ export default function PatternReport({ user }) {
   });
 
   const hasData = totalAnswered > 0 || answers.length > 0;
+
+  // 코칭 모달용: 해당 패턴의 오답만 필터
+  const coachWrongAnswers = activeCoachPat
+    ? answers.filter(a => !a.is_correct && String(a.pat) === activeCoachPat)
+    : [];
 
   return (
     <div style={{ minHeight: '100vh', background: C.bg, fontFamily: "'Noto Sans KR', sans-serif", color: C.ink }}>
@@ -249,7 +276,7 @@ export default function PatternReport({ user }) {
           오답 패턴 리포트
         </h2>
         <p style={{ fontSize: '0.82rem', color: C.muted, margin: 0 }}>
-          내 취약점을 파악하고 집중 훈련하세요
+          내 취약 패턴을 AI가 직접 분석해 맞춤 코칭을 제공합니다
         </p>
       </div>
 
@@ -283,21 +310,9 @@ export default function PatternReport({ user }) {
           <>
             {/* 1. 요약 카드 */}
             <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
-              <SummaryCard
-                label="총 풀이 문항"
-                value={totalAnswered.toLocaleString()}
-                sub="문항"
-              />
-              <SummaryCard
-                label="정답률"
-                value={`${accuracy}%`}
-                sub={`${totalCorrect}/${totalAnswered}`}
-              />
-              <SummaryCard
-                label="연속 학습일"
-                value={streakDays}
-                sub="일 연속"
-              />
+              <SummaryCard label="총 풀이 문항" value={totalAnswered.toLocaleString()} sub="문항" />
+              <SummaryCard label="정답률" value={`${accuracy}%`} sub={`${totalCorrect}/${totalAnswered}`} />
+              <SummaryCard label="연속 학습일" value={streakDays} sub="일 연속" />
             </div>
 
             {/* 2. 독서 / 문학 패턴 (좌우 분할) */}
@@ -318,6 +333,7 @@ export default function PatternReport({ user }) {
                       count={patCounts[pk] ?? 0}
                       maxCount={maxCount}
                       isTop={hasTopPat && topPat === pk}
+                      onCoach={setActiveCoachPat}
                     />
                   ))}
                 </div>
@@ -339,13 +355,14 @@ export default function PatternReport({ user }) {
                       count={patCounts[pk] ?? 0}
                       maxCount={maxCount}
                       isTop={hasTopPat && topPat === pk}
+                      onCoach={setActiveCoachPat}
                     />
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* 4. 미분류 (P0) */}
+            {/* 3. 미분류 (P0) */}
             {p0Count > 0 && (
               <div style={{
                 background: '#fff', border: `1px dashed ${C.beige}`,
@@ -379,7 +396,7 @@ export default function PatternReport({ user }) {
               </div>
             )}
 
-            {/* 5. 시험별 정답률 */}
+            {/* 4. 시험별 정답률 */}
             {yearEntries.length > 0 && (
               <div style={{
                 background: '#fff', border: `1px solid ${C.beige}`,
@@ -397,7 +414,7 @@ export default function PatternReport({ user }) {
               </div>
             )}
 
-            {/* 6. 한 줄 총평 */}
+            {/* 5. 한 줄 총평 */}
             <div style={{
               background: C.gl, border: `1px solid ${C.gb}`,
               borderRadius: '14px', padding: '16px 18px',
@@ -411,6 +428,15 @@ export default function PatternReport({ user }) {
           </>
         )}
       </div>
+
+      {/* PatternCoach 모달 */}
+      {activeCoachPat && (
+        <PatternCoach
+          patKey={activeCoachPat}
+          wrongAnswers={coachWrongAnswers}
+          onClose={() => setActiveCoachPat(null)}
+        />
+      )}
     </div>
   );
 }
