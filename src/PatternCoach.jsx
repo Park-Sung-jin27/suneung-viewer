@@ -50,11 +50,11 @@ ${itemsText}
 
 300자 이내, 존댓말로.`;
 
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
+  const res = await fetch('/api/claude', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true', 'x-api-key': import.meta.env.VITE_ANTHROPIC_API_KEY },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 1000,
       messages: [{ role: 'user', content: prompt }],
     }),
@@ -70,11 +70,11 @@ async function fetchReply({ patKey, patName, wrongItems, history }) {
     `오답${i + 1}: ${item.choiceText} / ${item.analysis || '해설 없음'}`
   ).join('\n');
 
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
+  const res = await fetch('/api/claude', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true', 'x-api-key': import.meta.env.VITE_ANTHROPIC_API_KEY },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 1000,
       system: `수능 국어 전문 튜터. 현재 학생의 ${patKey}(${patName}) 오답 패턴 코칭 세션 중.\n분석된 오답:\n${context}\n\n200자 이내, 존댓말로 답하세요.`,
       messages: history,
@@ -154,6 +154,7 @@ function TypingIndicator() {
 export default function PatternCoach({ patKey, wrongAnswers, onClose, onGoToQuestion }) {
   const [allData, setAllData]         = useState(null);  // null = 로딩 중
   const [wrongItems, setWrongItems]   = useState([]);
+  const [showWrongList, setShowWrongList] = useState(false);
   const [history, setHistory]         = useState([]);
   const [loadingInit, setLoadingInit] = useState(true);
   const [loadingReply, setLoadingReply] = useState(false);
@@ -192,6 +193,11 @@ export default function PatternCoach({ patKey, wrongAnswers, onClose, onGoToQues
         choiceText: choice.t,
         analysis: choice.analysis ?? '',
         groundingSents,
+        // 보러가기용 메타
+        yearKey: wa.year_key,
+        setId: wa.set_id,
+        setTitle: set.title ?? set.id,
+        questionId: wa.question_id,
       });
     }
     setWrongItems(items);
@@ -315,35 +321,89 @@ export default function PatternCoach({ patKey, wrongAnswers, onClose, onGoToQues
           <div ref={bottomRef} />
         </div>
 
-        {/* 오답 보러가기 목록 */}
-        {wrongAnswers.length > 0 && !loadingInit && (
-          <div style={{ margin: '0 20px 8px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <div style={{ fontSize: '0.7rem', color: '#9CA3AF', fontWeight: '600', marginBottom: '2px' }}>
-              분석한 오답 {wrongAnswers.length}건
-            </div>
-            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-              {wrongAnswers.map((wa, i) => (
-                <button
-                  key={i}
-                  onClick={() => {
-                    onClose();
-                    onGoToQuestion?.(wa.year_key, wa.set_id, wa.question_id);
-                  }}
-                  style={{
-                    padding: '4px 12px', borderRadius: '6px',
-                    background: '#F9FAFB', border: '1px solid #E5E7EB',
-                    fontSize: '0.73rem', fontWeight: '600',
-                    color: '#374151', cursor: 'pointer',
-                    display: 'flex', alignItems: 'center', gap: '4px',
-                    transition: 'all 0.12s',
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#EEF2FF'; e.currentTarget.style.borderColor = '#A5B4FC'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = '#F9FAFB'; e.currentTarget.style.borderColor = '#E5E7EB'; }}
-                >
-                  {wa.question_id}번 문항 →
-                </button>
-              ))}
-            </div>
+        {/* 오답 보러가기 버튼 */}
+        {wrongItems.length > 0 && !loadingInit && (
+          <div style={{ margin: '0 20px 8px' }}>
+            <button
+              onClick={() => setShowWrongList(v => !v)}
+              style={{
+                width: '100%', padding: '8px 14px',
+                background: showWrongList ? '#EEF2FF' : '#F9FAFB',
+                border: `1px solid ${showWrongList ? '#A5B4FC' : '#E5E7EB'}`,
+                borderRadius: '8px', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                fontSize: '0.78rem', fontWeight: '600',
+                color: showWrongList ? '#4338CA' : '#374151',
+                transition: 'all 0.15s',
+              }}
+            >
+              <span>📋 분석한 오답 {wrongItems.length}건 보러가기</span>
+              <span style={{ fontSize: '0.7rem' }}>{showWrongList ? '▲' : '▼'}</span>
+            </button>
+
+            {/* 오답 목록 패널 — 지문별 그룹핑 */}
+            {showWrongList && (() => {
+              // set_id 기준으로 그룹핑
+              const groups = {};
+              for (const item of wrongItems) {
+                const key = `${item.yearKey}__${item.setId}`;
+                if (!groups[key]) groups[key] = { yearKey: item.yearKey, setId: item.setId, setTitle: item.setTitle, questions: [] };
+                groups[key].questions.push({ questionId: item.questionId, questionText: item.questionText });
+              }
+              return (
+                <div style={{
+                  marginTop: '6px', borderRadius: '8px',
+                  border: '1px solid #E5E7EB', overflow: 'hidden',
+                  background: '#fff',
+                }}>
+                  {Object.values(groups).map((g, gi) => (
+                    <div key={g.setId} style={{
+                      borderBottom: gi < Object.values(groups).length - 1 ? '1px solid #F3F4F6' : 'none',
+                    }}>
+                      {/* 지문 제목 */}
+                      <div style={{
+                        padding: '8px 14px 4px',
+                        fontSize: '0.72rem', fontWeight: '700',
+                        color: '#6B7280', background: '#F9FAFB',
+                        borderBottom: '1px solid #F3F4F6',
+                      }}>
+                        {g.yearKey} · {g.setTitle}
+                      </div>
+                      {/* 문제 목록 */}
+                      <div style={{ padding: '6px 10px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                        {g.questions.map((q, qi) => (
+                          <button
+                            key={qi}
+                            onClick={() => {
+                              setShowWrongList(false);
+                              onClose();
+                              onGoToQuestion?.(g.yearKey, g.setId, q.questionId);
+                            }}
+                            style={{
+                              padding: '7px 12px', borderRadius: '6px',
+                              background: '#fff', border: '1px solid #E5E7EB',
+                              cursor: 'pointer', textAlign: 'left',
+                              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                              gap: '8px', transition: 'all 0.12s',
+                            }}
+                            onMouseEnter={e => { e.currentTarget.style.background = '#EEF2FF'; e.currentTarget.style.borderColor = '#A5B4FC'; }}
+                            onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.borderColor = '#E5E7EB'; }}
+                          >
+                            <span style={{ fontSize: '0.78rem', fontWeight: '700', color: '#6366F1', flexShrink: 0 }}>
+                              {q.questionId}번
+                            </span>
+                            <span style={{ fontSize: '0.75rem', color: '#374151', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              {q.questionText}
+                            </span>
+                            <span style={{ fontSize: '0.72rem', color: '#9CA3AF', flexShrink: 0 }}>→</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
           </div>
         )}
 
