@@ -377,25 +377,23 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
         <BogiRenderer bogi={question.bogi} />
       )}
 
-      {/* 선지 목록 — BogiTable 없을 때만 */}
-      {!hasBogiTable && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-          {question.choices.map(c => (
-            <ChoiceItem
-              key={c.num}
-              choice={c}
-              qid={question.id}
-              questionType={question.questionType ?? 'negative'}
-              clicked={clicked}
-              myAnswer={initialClicked ?? null}
-              onSelect={handleClick}
-              mode={mode}
-              submitted={submitted}
-              isReview={isReview}
-            />
-          ))}
-        </div>
-      )}
+      {/* 선지 목록 — BogiTable과 독립 렌더링 */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+        {question.choices.map(c => (
+          <ChoiceItem
+            key={c.num}
+            choice={c}
+            qid={question.id}
+            questionType={question.questionType ?? 'negative'}
+            clicked={clicked}
+            myAnswer={initialClicked ?? null}
+            onSelect={handleClick}
+            mode={mode}
+            submitted={submitted}
+            isReview={isReview}
+          />
+        ))}
+      </div>
 
       {/* AI Q&A — 복습 모드에서만 */}
       {isReview && (
