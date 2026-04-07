@@ -38,6 +38,7 @@ function Header({ user, onLogout }) {
   const navigate = useNavigate();
   const location = useLocation();
   const isViewer = location.pathname === '/viewer';
+  const showBack = ['/viewer', '/report', '/wrongnote', '/payment'].includes(location.pathname);
   const yearKey  = new URLSearchParams(location.search).get('year');
   const yearMeta = YEAR_INFO.find(y => y.key === yearKey) ?? null;
 
@@ -50,10 +51,10 @@ function Header({ user, onLogout }) {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        {isViewer && (
-          <button onClick={() => navigate('/')}
+        {showBack && (
+          <button onClick={() => navigate(-1)}
             style={{ display: 'flex', alignItems: 'center', gap: '5px', background: 'none', border: 'none', cursor: 'pointer', color: '#6b7280', fontSize: '0.85rem', fontWeight: '600', padding: '6px 8px', borderRadius: '6px' }}>
-            ← 목록
+            ← 뒤로
           </button>
         )}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
