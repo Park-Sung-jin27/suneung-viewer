@@ -18,9 +18,16 @@ function Underlined({ text }) {
   );
 }
 
+// [[sym:KEY]] 제거 (지문 패널에서는 기호 이미지 불필요, 텍스트 제거)
+function stripSymTags(text) {
+  if (!text) return '';
+  return text.replace(/\[\[sym:\w+\]\]/g, '');
+}
+
 function Lines({ text }) {
-  if (!text || !text.includes('\n')) return <Underlined text={text || ''} />;
-  const rows = text.split('\n');
+  const cleaned = stripSymTags(text || '');
+  if (!cleaned.includes('\n')) return <Underlined text={cleaned} />;
+  const rows = cleaned.split('\n');
   return (
     <>
       {rows.map((row, i) => (

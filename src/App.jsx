@@ -694,7 +694,7 @@ function AuthPage() {
     if (error) setError(error.message);
   }
 
-  const inp = { width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #d1d5db', fontSize: '0.88rem', fontFamily: "'Noto Sans KR', sans-serif", outline: 'none' };
+  const inp = { width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #d1d5db', fontSize: '0.88rem', fontFamily: "'Noto Sans KR', sans-serif", outline: 'none', boxSizing: 'border-box' };
 
   return (
     <div style={{ minHeight: '100vh', background: '#f9fafb', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>

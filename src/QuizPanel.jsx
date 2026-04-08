@@ -7,10 +7,23 @@ import QuestionQA from './QuestionQA';
 // [1] 유틸 함수
 // ══════════════════════════════════════════════════════════
 
-// analysis 텍스트에서 sent ID 참조 제거
+// analysis 텍스트 정제
 function cleanAnalysis(text) {
   if (!text) return '';
-  return text.replace(/[a-zA-Z_]*[a-zA-Z]\d+(?:[·,][a-zA-Z_]*\d+)*:\s*[''"]?/g, '').trim();
+  return text
+    // sent ID 참조 제거: r2025a_s1, bs7 등
+    .replace(/\b[a-zA-Z_]*[a-zA-Z]\d+(?:[·,][a-zA-Z_]*\d+)*:\s*[''"]?/g, '')
+    // 말미 패턴 코드 제거: [L1], [R2], [P0] 등
+    .replace(/\s*\[([RLVP][0-9]|P0)\]\s*$/gm, '')
+    // [?], [불명확] 같은 불완전 기호 제거
+    .replace(/\[\?[^\]]*\]/g, '')
+    // bs7, r2024a_s3 같은 단독 sent ID 제거
+    .replace(/\b[a-zA-Z]{1,3}\d{4}[a-zA-Z]?_s\d+\b/g, '')
+    // "지문이 제공되지 않았으나" 류 AI 오류 문구 제거
+    .replace(/\(지문이 제공되지 않[^)]*\)/g, '')
+    .replace(/지문이 제공되지 않[^,\.。]*[,\.。]?\s*/g, '')
+    .replace(/일반적인 수능 해설 형식으로 작성합니다[\.。]?\s*/g, '')
+    .trim();
 }
 
 // [[sym:KEY]] → <img> 치환
@@ -220,10 +233,10 @@ function PatternBadge({ pat }) {
 // ══════════════════════════════════════════════════════════
 // [5] ChoiceItem
 // ══════════════════════════════════════════════════════════
-function ChoiceItem({ choice, qid, questionType, clicked, myAnswer, onSelect, mode, submitted, isReview }) {
+function ChoiceItem({ choice, qid, questionType, clicked, myAnswer, onSelect, mode, submitted, isReview, isVocab }) {
   const uid = `q${qid}_c${choice.num}`;
-  const isActive  = clicked === uid;    // 현재 클릭된 선지 (형광펜 + 해설)
-  const isMe      = myAnswer === uid;   // 원래 내가 고른 선지 (색상 표시용)
+  const isActive  = clicked === uid;
+  const isMe      = myAnswer === uid;
   const isCorrect = questionType === 'positive' ? choice.ok === true : choice.ok === false;
 
   const showResult = mode !== MODE.STUDY || submitted;
@@ -307,13 +320,22 @@ function ChoiceItem({ choice, qid, questionType, clicked, myAnswer, onSelect, mo
       </div>
       {showAnalysis && choice.analysis && (
         <div style={{
-          background: isCorrect ? '#f0fdf4' : '#fff5f5',
+          background: isVocab
+            ? (isCorrect ? '#f0fdf4' : '#fff5f5')
+            : (isCorrect ? '#f0fdf4' : '#fff5f5'),
           borderLeft: `2px solid ${isCorrect ? '#10b981' : '#ef4444'}`,
           borderBottom: `1px solid ${isCorrect ? '#a7f3d0' : '#fca5a5'}`,
           borderRight: `1px solid ${isCorrect ? '#a7f3d0' : '#fca5a5'}`,
           borderRadius: '0 0 8px 8px', padding: '10px 14px',
         }}>
-          <AnalysisBlock text={choice.analysis} />
+          {isVocab ? (
+            // 어휘 문제: 단순 텍스트 해설 (형광펜 연동 없음)
+            <div style={{ fontSize: '0.82rem', lineHeight: '1.75', color: '#374151', whiteSpace: 'pre-wrap' }}>
+              {cleanAnalysis(choice.analysis)}
+            </div>
+          ) : (
+            <AnalysisBlock text={choice.analysis} />
+          )}
         </div>
       )}
     </div>
@@ -324,12 +346,17 @@ function ChoiceItem({ choice, qid, questionType, clicked, myAnswer, onSelect, mo
 // ══════════════════════════════════════════════════════════
 // [6] QuestionBlock
 // ══════════════════════════════════════════════════════════
+
+// 어휘 문제 판별 — 발문에 아래 키워드 포함 시
+function isVocabQuestion(questionText) {
+  const t = questionText ?? '';
+  return /사전적\s*의미|문맥상\s*의미|문맥적\s*의미|밑줄\s*친.*의미|㉠.*~.*㉤|ⓐ.*~.*ⓔ|단어의\s*뜻/i.test(t);
+}
 function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, isReview, initialClicked, yearKey, passageSents, user }) {
-  // 복습 모드: clicked = 현재 활성 선지(null로 시작), myAnswer = 원래 내 답
   const [clicked, setClicked] = useState(isReview ? null : (initialClicked ?? null));
+  const isVocab = isVocabQuestion(question.t);
 
   function handleClick(uid, choice) {
-    // 풀이 모드 제출 후 + 복습 모드 아닐 때만 클릭 차단
     if (mode === MODE.STUDY && submitted && !isReview) return;
     if (clicked === uid) {
       setClicked(null);
@@ -337,7 +364,8 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
       return;
     }
     setClicked(uid);
-    onSelect(uid, choice);
+    // 어휘 문제는 지문 형광펜 연동 안 함
+    onSelect(isVocab ? null : uid, choice);
   }
 
   const hasBogiTable = question.bogiType === 'table' && question.bogiTable;
@@ -377,6 +405,13 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
         <BogiRenderer bogi={question.bogi} />
       )}
 
+      {/* 어휘 문제 안내 */}
+      {isVocab && (
+        <div style={{ fontSize: '0.72rem', color: '#6b7280', background: '#f3f4f6', borderRadius: '6px', padding: '6px 10px', lineHeight: 1.6 }}>
+          📖 어휘 문제 — 각 선지의 단어가 지문 문맥에서 쓰인 의미와 일치하는지 확인하세요
+        </div>
+      )}
+
       {/* 선지 목록 — BogiTable과 독립 렌더링 */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
         {question.choices.map(c => (
@@ -391,6 +426,7 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
             mode={mode}
             submitted={submitted}
             isReview={isReview}
+            isVocab={isVocab}
           />
         ))}
       </div>
