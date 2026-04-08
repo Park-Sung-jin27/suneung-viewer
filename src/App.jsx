@@ -1,5 +1,5 @@
 // ============================================================
-// App.jsx — react-router-dom 기반 라우팅
+// App.jsx — react-router-dom 기반 라우팅 + MainPage 리디자인
 // ============================================================
 
 import { useState, useEffect, useCallback } from 'react';
@@ -22,7 +22,6 @@ import { supabase }   from './supabase';
 import { saveAnswer } from './hooks/useAnswerTracker';
 import allData from './data/all_data_204.json';
 
-// ── 폰트 ────────────────────────────────────────────────────
 const _fl = document.createElement('link');
 _fl.rel  = 'stylesheet';
 _fl.href = 'https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap';
@@ -30,6 +29,21 @@ document.head.appendChild(_fl);
 
 const SECTION_LABELS = { reading: '독서', literature: '문학' };
 const FREE_YEARS     = ['2026수능', '2025수능'];
+
+const MC = {
+  green:  '#2d6e2d',
+  soft:   '#3d8b3d',
+  bg:     '#f0f7f0',
+  line:   '#7aad7a',
+  ink:    '#0d1a0e',
+  inkMid: '#253226',
+  muted:  '#5a6b5b',
+  subtle: '#8a9b8b',
+  paper:  '#faf8f4',
+  paperAlt:'#f3f0ea',
+  white:  '#ffffff',
+  border: '#e0dbd0',
+};
 
 // ══════════════════════════════════════════════
 // Header
@@ -60,11 +74,10 @@ function Header({ user, onLogout }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           {yearMeta && <span style={{ width: 8, height: 8, borderRadius: '50%', background: yearMeta.color, display: 'inline-block' }} />}
           <span onClick={() => navigate('/')} style={{ fontFamily: "'Noto Sans KR', sans-serif", fontWeight: '900', fontSize: '0.95rem', color: '#111827', letterSpacing: '-0.02em', cursor: 'pointer' }}>
-            {isViewer && yearMeta ? `${yearMeta.label}` : '수능 국어 논리맵핑'}
+            {isViewer && yearMeta ? yearMeta.label : '논리맵핑'}
           </span>
         </div>
       </div>
-
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         {user ? (
           <>
@@ -98,6 +111,7 @@ function Layout({ user, onLogout, children }) {
           #passage-panel { position: static !important; max-height: none !important; }
         }
         @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
       `}</style>
       <Header user={user} onLogout={onLogout} />
       {children}
@@ -202,25 +216,49 @@ function ProModal({ onClose, onSubscribe }) {
 }
 
 // ══════════════════════════════════════════════
-// YearCard
+// YearCard — 리디자인
 // ══════════════════════════════════════════════
-function YearCard({ meta, locked, onClick }) {
-  const [hovered, setHovered] = useState(false);
+function YearCard({ meta, locked, isFree, onClick }) {
+  const [hov, setHov] = useState(false);
   return (
-    <button onClick={onClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
-      background: '#fff',
-      border: `1.5px solid ${hovered && !locked ? meta.color : '#e5e7eb'}`,
-      borderRadius: '14px', padding: '20px 18px',
-      cursor: 'pointer', textAlign: 'left', transition: 'all 0.18s',
-      transform: hovered && !locked ? 'translateY(-2px)' : 'none',
-      boxShadow: hovered && !locked ? `0 8px 24px ${meta.color}22` : '0 1px 4px rgba(0,0,0,0.06)',
-      opacity: locked ? 0.4 : 1,
-    }}>
-      <div style={{ width: '32px', height: '3px', borderRadius: '2px', background: meta.color, marginBottom: '14px' }} />
-      {meta.badge && <span style={{ fontSize: '0.68rem', fontWeight: '700', color: meta.color, background: `${meta.color}15`, padding: '2px 8px', borderRadius: '10px', display: 'inline-block', marginBottom: '8px' }}>{meta.badge}</span>}
-      <div style={{ fontFamily: "'Noto Serif KR', serif", fontSize: '1.05rem', fontWeight: '700', color: '#111827', lineHeight: '1.35', letterSpacing: '-0.02em' }}>{meta.label}</div>
-      <div style={{ fontSize: '0.72rem', color: '#9ca3af', marginTop: '6px', fontWeight: '500' }}>{meta.tag}</div>
-      <div style={{ marginTop: '14px', fontSize: '0.85rem', fontWeight: '700', color: locked ? '#9ca3af' : meta.color, opacity: locked ? 0.7 : hovered ? 1 : 0.4, transition: 'opacity 0.15s' }}>
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        background: MC.white,
+        border: `1.5px solid ${hov && !locked ? meta.color : MC.border}`,
+        borderRadius: '14px', padding: '18px 16px',
+        cursor: 'pointer', textAlign: 'left', transition: 'all 0.18s',
+        transform: hov && !locked ? 'translateY(-2px)' : 'none',
+        boxShadow: hov && !locked ? `0 8px 24px ${meta.color}22` : '0 1px 4px rgba(0,0,0,0.04)',
+        opacity: locked ? 0.45 : 1,
+        position: 'relative', overflow: 'hidden',
+      }}
+    >
+      {isFree && (
+        <span style={{
+          position: 'absolute', top: 10, right: 10,
+          fontSize: '0.58rem', fontWeight: '800',
+          color: MC.green, background: MC.bg,
+          border: `1px solid ${MC.line}`,
+          borderRadius: '100px', padding: '2px 7px',
+          letterSpacing: '0.05em',
+        }}>
+          무료
+        </span>
+      )}
+      <div style={{ width: '28px', height: '3px', borderRadius: '2px', background: meta.color, marginBottom: '12px' }} />
+      {meta.badge && (
+        <span style={{ fontSize: '0.65rem', fontWeight: '700', color: meta.color, background: `${meta.color}15`, padding: '2px 7px', borderRadius: '8px', display: 'inline-block', marginBottom: '7px' }}>
+          {meta.badge}
+        </span>
+      )}
+      <div style={{ fontFamily: "'Noto Serif KR', serif", fontSize: '1rem', fontWeight: '700', color: MC.ink, lineHeight: '1.35', letterSpacing: '-0.02em' }}>
+        {meta.label}
+      </div>
+      <div style={{ fontSize: '0.7rem', color: MC.subtle, marginTop: '5px', fontWeight: '500' }}>{meta.tag}</div>
+      <div style={{ marginTop: '12px', fontSize: '0.82rem', fontWeight: '700', color: locked ? MC.subtle : meta.color, opacity: locked ? 0.7 : hov ? 1 : 0.45, transition: 'opacity 0.15s' }}>
         {locked ? '🔒 Pro 전용' : '시작하기 →'}
       </div>
     </button>
@@ -228,7 +266,7 @@ function YearCard({ meta, locked, onClick }) {
 }
 
 // ══════════════════════════════════════════════
-// MainPage
+// MainPage — 리디자인
 // ══════════════════════════════════════════════
 function MainPage({ isPro, user }) {
   const navigate = useNavigate();
@@ -248,45 +286,175 @@ function MainPage({ isPro, user }) {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f9fafb', fontFamily: "'Noto Sans KR', sans-serif" }}>
+    <div style={{ minHeight: '100vh', background: MC.paper, fontFamily: "'Noto Sans KR', sans-serif" }}>
       {showProModal && <ProModal onClose={() => setShowProModal(false)} onSubscribe={() => navigate('/payment')} />}
       {modeTarget && (
         <ModeSelectModal yearKey={modeTarget.yearKey} meta={modeTarget.meta} user={user}
           onClose={() => setModeTarget(null)} onSelect={handleModeSelect} />
       )}
 
-      <div style={{ padding: '48px 24px 36px', textAlign: 'center', borderBottom: '1px solid #e5e7eb', background: '#fff' }}>
-        <div style={{ display: 'inline-block', fontSize: '0.72rem', fontWeight: '700', color: '#6b7280', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '12px', background: '#f3f4f6', padding: '4px 12px', borderRadius: '20px' }}>Logic Mapping Viewer</div>
-        <h1 style={{ fontFamily: "'Noto Serif KR', serif", fontSize: 'clamp(1.6rem, 5vw, 2.2rem)', fontWeight: '700', color: '#111827', lineHeight: '1.3', letterSpacing: '-0.03em', margin: '0 0 12px' }}>수능 국어 기출<br />논리맵핑 분석</h1>
-        <p style={{ fontSize: '0.88rem', color: '#9ca3af', maxWidth: '360px', margin: '0 auto', lineHeight: '1.7' }}>
-          선지를 클릭하면 지문 속 근거 문장이 형광펜으로 표시됩니다.<br />오답의 패턴을 눈으로 확인하세요.
+      {/* 히어로 */}
+      <div style={{
+        padding: 'clamp(36px, 6vw, 60px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 44px)',
+        background: MC.white, borderBottom: `1px solid ${MC.border}`,
+        display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center',
+      }}>
+        <span style={{
+          display: 'inline-block', fontSize: '0.62rem', fontWeight: '700',
+          color: MC.green, background: MC.bg, border: `1px solid ${MC.line}35`,
+          borderRadius: '100px', padding: '4px 14px',
+          letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '18px',
+          animation: 'fadeUp 0.6s ease both',
+        }}>
+          수능 국어 AI 논리진단
+        </span>
+
+        <h1 style={{
+          fontFamily: "'Noto Serif KR', serif",
+          fontSize: 'clamp(1.5rem, 4.5vw, 2.2rem)',
+          fontWeight: '700', color: MC.ink,
+          lineHeight: '1.3', letterSpacing: '-0.03em',
+          margin: '0 0 14px',
+          animation: 'fadeUp 0.6s ease 0.1s both',
+        }}>
+          내 국어 약점을<br />
+          <span style={{ color: MC.green }}>지금 진단하세요</span>
+        </h1>
+
+        <p style={{
+          fontSize: 'clamp(0.83rem, 1.6vw, 0.95rem)',
+          color: MC.muted, lineHeight: '1.8',
+          maxWidth: '420px', margin: '0 0 28px',
+          animation: 'fadeUp 0.6s ease 0.2s both',
+        }}>
+          선지를 클릭하면 지문 근거 문장이 형광펜으로 표시됩니다.<br />
+          오답 패턴을 진단하고 AI 훈련으로 바로 교정하세요.
         </p>
+
+        {/* 빠른 진입 버튼 */}
+        <div style={{
+          display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center',
+          animation: 'fadeUp 0.6s ease 0.3s both',
+        }}>
+          <button
+            onClick={() => navigate('/report')}
+            style={{ padding: '10px 22px', borderRadius: '10px', background: MC.green, color: '#fff', border: 'none', fontWeight: '700', fontSize: '0.87rem', cursor: 'pointer', fontFamily: "'Noto Sans KR', sans-serif" }}
+          >
+            📊 내 패턴 분석 보기
+          </button>
+          <button
+            onClick={() => navigate('/payment')}
+            style={{ padding: '10px 22px', borderRadius: '10px', background: 'transparent', color: MC.green, border: `1.5px solid ${MC.line}`, fontWeight: '700', fontSize: '0.87rem', cursor: 'pointer', fontFamily: "'Noto Sans KR', sans-serif" }}
+          >
+            💳 요금제 보기
+          </button>
+        </div>
+
+        {/* 구독 상태 배너 */}
+        {!isPro && (
+          <div style={{
+            marginTop: '20px', padding: '10px 18px',
+            background: MC.bg, border: `1px solid ${MC.line}`,
+            borderRadius: '10px', fontSize: '0.78rem', color: MC.mid,
+            display: 'flex', alignItems: 'center', gap: '8px',
+            animation: 'fadeUp 0.6s ease 0.35s both',
+          }}>
+            <span>🆓</span>
+            <span><strong>2026·2025학년도 수능</strong> 무료 — 전체 시험은 Pro에서</span>
+            <button
+              onClick={() => navigate('/payment')}
+              style={{ background: MC.green, color: '#fff', border: 'none', borderRadius: '6px', padding: '3px 10px', fontSize: '0.72rem', fontWeight: '700', cursor: 'pointer', whiteSpace: 'nowrap' }}
+            >
+              업그레이드
+            </button>
+          </div>
+        )}
+        {isPro && (
+          <div style={{
+            marginTop: '20px', padding: '9px 18px',
+            background: MC.bg, border: `1px solid ${MC.line}`,
+            borderRadius: '10px', fontSize: '0.78rem', color: MC.green, fontWeight: '600',
+            animation: 'fadeUp 0.6s ease 0.35s both',
+          }}>
+            ✅ Pro 구독 중 — 전체 7개년 시험 이용 가능
+          </div>
+        )}
       </div>
 
-      <div style={{ maxWidth: '720px', margin: '0 auto', padding: '28px 20px', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '14px' }}>
-        {yearKeys.map(yearKey => {
-          const meta   = YEAR_INFO.find(y => y.key === yearKey);
-          const yd     = { label: meta?.label ?? yearKey, color: meta?.color ?? '#374151', badge: meta?.badge ?? '', tag: meta?.tag ?? '' };
-          const locked = !isPro && !FREE_YEARS.includes(yearKey);
-          return <YearCard key={yearKey} meta={yd} locked={locked} onClick={() => handleCardClick(yearKey, yd, locked)} />;
-        })}
+      {/* 시험 선택 */}
+      <div style={{ maxWidth: '780px', margin: '0 auto', padding: 'clamp(20px, 4vw, 36px) clamp(16px, 4vw, 24px)' }}>
+
+        {/* 섹션 헤더 */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+          <div>
+            <div style={{ fontSize: '0.68rem', fontWeight: '700', color: MC.subtle, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '4px' }}>
+              수록 시험
+            </div>
+            <h2 style={{ fontFamily: "'Noto Serif KR', serif", fontSize: '1.1rem', fontWeight: '700', color: MC.ink, letterSpacing: '-0.02em' }}>
+              풀 시험을 선택하세요
+            </h2>
+          </div>
+          <span style={{ fontSize: '0.72rem', color: MC.subtle }}>
+            {isPro ? '전체 개방' : `무료 2개 · Pro ${yearKeys.length - 2}개`}
+          </span>
+        </div>
+
+        {/* 연도 카드 그리드 */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(175px, 1fr))',
+          gap: '12px',
+          marginBottom: '32px',
+        }}>
+          {yearKeys.map(yearKey => {
+            const meta   = YEAR_INFO.find(y => y.key === yearKey);
+            const yd     = { label: meta?.label ?? yearKey, color: meta?.color ?? '#374151', badge: meta?.badge ?? '', tag: meta?.tag ?? '' };
+            const locked = !isPro && !FREE_YEARS.includes(yearKey);
+            const isFree = FREE_YEARS.includes(yearKey);
+            return (
+              <YearCard key={yearKey} meta={yd} locked={locked} isFree={isFree}
+                onClick={() => handleCardClick(yearKey, yd, locked)} />
+            );
+          })}
+        </div>
+
+        {/* 기능 요약 카드 3개 */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+          {[
+            { icon: '🔦', title: '지문 근거 형광펜', desc: '선지 클릭 → 지문 근거 문장 즉시 표시', color: '#3b82f6', bg: '#eff6ff' },
+            { icon: '🎯', title: 'AI 패턴 훈련', desc: '오답 패턴에 맞는 AI 훈련 문제 무한 생성', color: MC.green, bg: MC.bg },
+            { icon: '📊', title: '개인 오답 리포트', desc: '누적 데이터 기반 취약 패턴 자동 분류', color: '#8b5cf6', bg: '#f5f3ff' },
+          ].map((f, i) => (
+            <div key={i} style={{
+              background: f.bg, border: `1px solid ${f.color}25`,
+              borderRadius: '12px', padding: '16px 14px',
+              display: 'flex', gap: '12px', alignItems: 'flex-start',
+            }}>
+              <span style={{ fontSize: '1.3rem', flexShrink: 0 }}>{f.icon}</span>
+              <div>
+                <div style={{ fontSize: '0.83rem', fontWeight: '700', color: MC.ink, marginBottom: '4px' }}>{f.title}</div>
+                <div style={{ fontSize: '0.74rem', color: MC.muted, lineHeight: 1.6 }}>{f.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 // ══════════════════════════════════════════════
-// ViewerPage — self-contained
+// ViewerPage
 // ══════════════════════════════════════════════
 function ViewerPage({ user }) {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const yearKey      = searchParams.get('year') ?? '';
-  const initSetId    = searchParams.get('set')  ?? null;
-  const initQId      = searchParams.get('q')    ?? null;
-  const modeParam    = searchParams.get('mode') ?? MODE.VIEW;
-  const mode         = modeParam === MODE.STUDY ? MODE.STUDY : MODE.VIEW;
+  const yearKey   = searchParams.get('year') ?? '';
+  const initSetId = searchParams.get('set')  ?? null;
+  const initQId   = searchParams.get('q')    ?? null;
+  const modeParam = searchParams.get('mode') ?? MODE.VIEW;
+  const mode      = modeParam === MODE.STUDY ? MODE.STUDY : MODE.VIEW;
 
   const [yearData, setYearData]     = useState(null);
   const [loading, setLoading]       = useState(true);
@@ -300,14 +468,12 @@ function ViewerPage({ user }) {
   const [isReview, setIsReview]     = useState(false);
   const [warningMsg, setWarningMsg] = useState(null);
 
-  // 데이터 로드
   useEffect(() => {
     if (!yearKey) { navigate('/'); return; }
     setLoading(true);
     loadYear(yearKey)
       .then(data => {
         setYearData(data);
-        // section/setIdx 복원
         if (initSetId) {
           if (data.literature?.some(s => s.id === initSetId)) {
             setSection('literature');
@@ -322,7 +488,7 @@ function ViewerPage({ user }) {
         setLoading(false);
       })
       .catch(e => { setError(e.message); setLoading(false); });
-  }, [yearKey]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [yearKey]); // eslint-disable-line
 
   const sets       = yearData?.[section] ?? [];
   const currentSet = sets[setIdx] ?? null;
@@ -332,9 +498,9 @@ function ViewerPage({ user }) {
     ...(yearData?.reading    ?? []).map(s => ({ ...s, _sec: 'reading' })),
     ...(yearData?.literature ?? []).map(s => ({ ...s, _sec: 'literature' })),
   ];
-  const allSetIdx  = currentSet ? allSets.findIndex(s => s.id === currentSet.id) : -1;
-  const hasPrev    = allSetIdx > 0;
-  const hasNext    = allSetIdx >= 0 && allSetIdx < allSets.length - 1;
+  const allSetIdx     = currentSet ? allSets.findIndex(s => s.id === currentSet.id) : -1;
+  const hasPrev       = allSetIdx > 0;
+  const hasNext       = allSetIdx >= 0 && allSetIdx < allSets.length - 1;
   const totalQCount   = allSets.reduce((sum, s) => sum + (s.questions?.length ?? 0), 0);
   const totalAnswered = Object.values(studyAnswers).reduce((sum, sq) => sum + Object.keys(sq).length, 0);
 
@@ -352,14 +518,13 @@ function ViewerPage({ user }) {
     setSel(null); setWarningMsg(null); resetScroll();
   }
 
-  // URL 동기화
   useEffect(() => {
     if (!yearKey || !currentSet) return;
     const next = { year: yearKey, set: currentSet.id, mode };
     if (sel) next.q = sel.split('_')[0].replace('q', '');
     else if (initQId) next.q = initQId;
     setSearchParams(next, { replace: true });
-  }, [yearKey, currentSet, sel]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [yearKey, currentSet, sel]); // eslint-disable-line
 
   const handleSelChange = useCallback((uid) => setSel(uid), []);
 
@@ -534,7 +699,7 @@ function AuthPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#f9fafb', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
       <div style={{ background: '#fff', borderRadius: '16px', border: '1px solid #e5e7eb', padding: '32px 28px', maxWidth: '380px', width: '100%' }}>
-        <h2 style={{ fontFamily: "'Noto Serif KR', serif", fontSize: '1.3rem', fontWeight: '700', color: '#111827', marginBottom: '24px', textAlign: 'center' }}>수능 국어 논리맵핑</h2>
+        <h2 style={{ fontFamily: "'Noto Serif KR', serif", fontSize: '1.3rem', fontWeight: '700', color: '#111827', marginBottom: '24px', textAlign: 'center' }}>논리맵핑</h2>
         <div style={{ display: 'flex', background: '#f3f4f6', borderRadius: '8px', padding: '3px', marginBottom: '20px' }}>
           {[['login', '로그인'], ['signup', '회원가입']].map(([key, label]) => (
             <button key={key} onClick={() => { setTab(key); setError(null); setMessage(null); }}
@@ -591,7 +756,6 @@ export default function App() {
     supabase.rpc('is_pro', { uid: user.id }).then(({ data }) => setIsPro(data === true));
   }, [user]);
 
-  // 결제 콜백
   useEffect(() => {
     const params     = new URLSearchParams(window.location.search);
     const paymentKey = params.get('paymentKey');
@@ -611,7 +775,7 @@ export default function App() {
         navigate('/', { replace: true });
       });
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line
 
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -632,33 +796,25 @@ export default function App() {
           ? <Landing onStart={() => navigate('/auth')} />
           : <Layout user={user} onLogout={handleLogout}><MainPage isPro={isPro} user={user} /></Layout>
       } />
-
-      <Route path="/auth" element={
-        user ? <Navigate to="/" replace /> : <AuthPage />
-      } />
-
+      <Route path="/auth" element={user ? <Navigate to="/" replace /> : <AuthPage />} />
       <Route path="/viewer" element={
         <Layout user={user} onLogout={handleLogout}><ViewerPage user={user} /></Layout>
       } />
-
       <Route path="/report" element={
         user
           ? <Layout user={user} onLogout={handleLogout}><PatternReport user={user} onGoToQuestion={goToQuestion} /></Layout>
           : <Navigate to="/auth" replace />
       } />
-
       <Route path="/wrongnote" element={
         user
           ? <Layout user={user} onLogout={handleLogout}><WrongNote user={user} allData={allData} onGoToQuestion={goToQuestion} /></Layout>
           : <Navigate to="/auth" replace />
       } />
-
       <Route path="/payment" element={
         user
           ? <Layout user={user} onLogout={handleLogout}><Payment user={user} onSuccess={() => { setIsPro(true); navigate('/'); }} /></Layout>
           : <Navigate to="/auth" replace />
       } />
-
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
