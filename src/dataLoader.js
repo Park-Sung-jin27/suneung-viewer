@@ -9,10 +9,30 @@ async function _load() {
   return _cache;
 }
 
+function _buildSentCs(yearData) {
+  for (const sec of ['reading', 'literature']) {
+    for (const set of (yearData[sec] || [])) {
+      const sentMap = {};
+      for (const s of set.sents) sentMap[s.id] = s;
+      for (const q of set.questions) {
+        for (const c of q.choices) {
+          const key = `q${q.id}_c${c.num}`;
+          for (const sid of (c.cs_ids || [])) {
+            const s = sentMap[sid];
+            if (s) (s.cs ||= []).includes(key) || s.cs.push(key);
+          }
+        }
+      }
+    }
+  }
+}
+
 export async function loadYear(yearKey) {
   const data = await _load();
   if (!data[yearKey]) throw new Error(`연도 데이터 없음: ${yearKey}`);
-  return data[yearKey];
+  const yd = data[yearKey];
+  if (!yd._csBuilt) { _buildSentCs(yd); yd._csBuilt = true; }
+  return yd;
 }
 
 export async function getYearKeys() {
