@@ -224,16 +224,52 @@ function parseJSON(raw) {
 
 // ─── 핵심 로직 ───────────────────────────────────────────────
 
+const VALID_PATS = new Set(['R1','R2','R3','R4','L1','L2','L3','L4','L5','V']);
+
+// analysis 키워드 → pat 자동 분류 (postProcess fallback)
+function detectPatFromAnalysis(a, sec) {
+  const m = a.match(/\[(R[1-4]|L[1-5]|V)\]/);
+  if (m) return m[1];
+  if (/\[오류유형[①②③]/.test(a) || a.includes('📌 보기 근거'))
+    return sec === 'reading' ? 'R4' : 'L5';
+  if (/팩트 왜곡|사실 왜곡|의미 왜곡|어휘 의미|문맥적 의미|정반대|역전된/.test(a))
+    return sec === 'reading' ? 'R1' : 'L1';
+  if (/관계[··]인과|인과 전도|인과관계 왜곡|논리 왜곡|반박-지지|대상 바꿔치기|순서 역전/.test(a))
+    return sec === 'reading' ? 'R2' : 'L4';
+  if (/과도한 추론|과잉 추론|지문에 없|근거 부재|지문 핵심 미파악|과장 해석/.test(a))
+    return sec === 'reading' ? 'R3' : 'L3';
+  if (/개념 짜깁기|개념 혼합|개념 혼동/.test(a))
+    return sec === 'reading' ? 'R4' : 'L1';
+  if (/심리 오독|정서\s?오독|인물 의도|맥락 오독/.test(a))
+    return sec === 'reading' ? 'R1' : 'L2';
+  if (/수사법|시어|이미지|표현법|시간 표지/.test(a) && sec === 'literature') return 'L1';
+  if (/구조.*오류|맥락.*오류|화자.*오독|인물.*오인/.test(a) && sec === 'literature') return 'L4';
+  if (/정서.*오류|태도 오독|화자의 태도 오독/.test(a) && sec === 'literature') return 'L2';
+  if (/권면 대상|핵심 의미 왜곡|과도한 의미/.test(a) && sec === 'literature') return 'L3';
+  return null;
+}
+
+function sanitizePat(pat, ok) {
+  // ok:true는 무조건 null
+  if (ok === true) return null;
+  // 유효한 문자열 패턴이면 그대로
+  if (typeof pat === 'string' && VALID_PATS.has(pat)) return pat;
+  // 숫자나 기타 → null (postProcess에서 detectPat으로 재분류 시도)
+  return null;
+}
+
 function applyChoices(set, updatedChoices) {
   const updatedQuestions = set.questions.map((q) => ({
     ...q,
     choices: q.choices.map((orig) => {
       const updated = updatedChoices.find((c) => c.qId === q.id && c.num === orig.num);
       if (updated) {
+        const patRaw = updated.pat ?? orig.pat;
+        const okVal  = updated.ok ?? orig.ok;
         return {
           ...orig,
-          ok: updated.ok ?? orig.ok,
-          pat: updated.pat ?? orig.pat,
+          ok:       okVal,
+          pat:      sanitizePat(patRaw, okVal),
           analysis: updated.analysis ?? orig.analysis,
         };
       }
@@ -328,8 +364,16 @@ export async function postProcess(result, answerKey) {
             totalOkFixed++;
           }
 
-          if (choice.ok === false && choice.pat === null) { choice.pat = 0; totalPatFlagged++; }
-          if (choice.ok === true && choice.pat !== null) { choice.pat = null; totalPatNullFixed++; }
+          // ok:true → pat 강제 null
+          if (choice.ok === true && choice.pat !== null) {
+            choice.pat = null;
+            totalPatNullFixed++;
+          }
+          // ok:false + pat 미분류(null/숫자/잘못된 문자열) → analysis 키워드 기반 재분류
+          if (choice.ok === false && !VALID_PATS.has(choice.pat)) {
+            choice.pat = detectPatFromAnalysis(choice.analysis || '', section) ?? 0;
+            totalPatFlagged++;
+          }
 
           if (okChanged) {
             console.log(`  [postProcess] analysis 재생성: ${set.id} ${q.id}번 선지${c.num}`);

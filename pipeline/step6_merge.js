@@ -90,6 +90,22 @@ for (const s of existingSets) {
   }
 }
 
+// ─── pat 유효성 보정 (숫자/잘못된 값 방어) ───────────────────
+const VALID_PATS = new Set(['R1','R2','R3','R4','L1','L2','L3','L4','L5','V']);
+let patFixed = 0;
+for (const set of mergedSets) {
+  for (const q of set.questions ?? []) {
+    for (const c of q.choices ?? []) {
+      if (c.ok === true && c.pat !== null && c.pat !== undefined) {
+        c.pat = null; patFixed++;
+      } else if (c.ok === false && !VALID_PATS.has(c.pat)) {
+        if (c.pat !== 0) { c.pat = 0; patFixed++; }
+      }
+    }
+  }
+}
+if (patFixed > 0) console.warn(`⚠️  pat 유효성 보정: ${patFixed}건`);
+
 // ─── 통계 출력 ───────────────────────────────────────────────
 
 let totalChoices   = 0;
