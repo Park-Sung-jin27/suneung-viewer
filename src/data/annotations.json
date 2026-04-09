@@ -922,27 +922,27 @@
     "l2023a": [
       {
         "type": "underline",
-        "sentId": "l2023as6",
+        "sentId": "l2023a_s6",
         "text": "매월 초하루"
       },
       {
         "type": "underline",
-        "sentId": "l2023as7",
+        "sentId": "l2023a_s7",
         "text": "정월 초하루"
       },
       {
         "type": "underline",
-        "sentId": "l2023as9",
+        "sentId": "l2023a_s9",
         "text": "그달"
       },
       {
         "type": "underline",
-        "sentId": "l2023as11",
+        "sentId": "l2023a_s11",
         "text": "매양 꽃 피는 아침과 달 뜬 밤"
       },
       {
         "type": "underline",
-        "sentId": "l2023as12",
+        "sentId": "l2023a_s12",
         "text": "어느 봄날 밤"
       }
     ],
@@ -950,7 +950,7 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2023bs1",
+        "sentFrom": "l2023b_s1",
         "sentTo": "l2023bs3"
       },
       {
@@ -980,20 +980,20 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2023cs2",
-        "sentTo": "l2023cs2"
+        "sentFrom": "l2023c_s2",
+        "sentTo": "l2023c_s2"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2023cs7",
-        "sentTo": "l2023cs8"
+        "sentFrom": "l2023c_s7",
+        "sentTo": "l2023c_s8"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2023cs11",
-        "sentTo": "l2023cs13"
+        "sentFrom": "l2023c_s11",
+        "sentTo": "l2023c_s13"
       },
       {
         "type": "bracket",
@@ -1012,50 +1012,50 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2023ds9",
-        "sentTo": "l2023ds9"
+        "sentFrom": "l2023d_s9",
+        "sentTo": "l2023d_s9"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2023ds10",
-        "sentTo": "l2023ds10"
+        "sentFrom": "l2023d_s10",
+        "sentTo": "l2023d_s10"
       },
       {
         "type": "bracket",
         "label": "D",
-        "sentFrom": "l2023ds11",
-        "sentTo": "l2023ds11"
+        "sentFrom": "l2023d_s11",
+        "sentTo": "l2023d_s11"
       },
       {
         "type": "bracket",
         "label": "E",
-        "sentFrom": "l2023ds12",
-        "sentTo": "l2023ds12"
+        "sentFrom": "l2023d_s12",
+        "sentTo": "l2023d_s12"
       },
       {
         "type": "underline",
-        "sentId": "l2023ds2",
+        "sentId": "l2023d_s2",
         "text": "가 보아라"
       },
       {
         "type": "underline",
-        "sentId": "l2023ds3",
+        "sentId": "l2023d_s3",
         "text": "지극히"
       },
       {
         "type": "underline",
-        "sentId": "l2023ds4",
+        "sentId": "l2023d_s4",
         "text": "과분하지 말라"
       },
       {
         "type": "underline",
-        "sentId": "l2023ds5",
+        "sentId": "l2023d_s5",
         "text": "많은 손님들"
       },
       {
         "type": "underline",
-        "sentId": "l2023ds6",
+        "sentId": "l2023d_s6",
         "text": "빛나는 생명의 양상"
       }
     ]
