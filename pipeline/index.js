@@ -380,7 +380,16 @@ async function main() {
   clearCheckpoint();
   console.log('\n' + '═'.repeat(60));
   console.log(`  ✅ 파이프라인 완료: ${examKey} / ${section}`);
-  console.log('═'.repeat(60) + '\n');
+  console.log('═'.repeat(60));
+  console.log(`
+  📝 다음 단계 — annotation 입력:
+
+     node pipeline/annotate.js ${examKey}
+
+     지문 sentId 참고표 + 현재 상태 확인 후
+     src/data/annotations.json 편집 → 자동 빌드
+`);
+
 }
 
 main().catch(err => {
