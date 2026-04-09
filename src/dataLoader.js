@@ -24,4 +24,8 @@ export function getYearSync(yearKey) {
   return _cache?.[yearKey] ?? null;
 }
 
-export default { loadYear, getYearKeys, getYearSync };
+export async function loadAllData() {
+  return await _load();
+}
+
+export default { loadYear, getYearKeys, getYearSync, loadAllData };

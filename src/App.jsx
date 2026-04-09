@@ -17,7 +17,7 @@ import Banner        from './Banner';
 import Landing       from './Landing';
 import ResultPage    from './ResultPage';
 import { YEAR_INFO, MODE } from './constants';
-import { loadYear, getYearKeys } from './dataLoader';
+import { loadYear, getYearKeys, loadAllData } from './dataLoader';
 import { supabase }   from './supabase';
 import { saveAnswer } from './hooks/useAnswerTracker';
 
@@ -739,6 +739,9 @@ export default function App() {
   const [user, setUser]         = useState(null);
   const [isPro, setIsPro]       = useState(false);
   const [authReady, setAuthReady] = useState(false);
+  const [allData, setAllData]   = useState(null);
+
+  useEffect(() => { loadAllData().then(setAllData); }, []);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
