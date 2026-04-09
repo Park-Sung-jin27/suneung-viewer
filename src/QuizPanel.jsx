@@ -352,6 +352,7 @@ function isVocabQuestion(questionText) {
   const t = questionText ?? '';
   return /사전적\s*의미|문맥상\s*의미|문맥적\s*의미|밑줄\s*친.*의미|㉠.*~.*㉤|ⓐ.*~.*ⓔ|단어의\s*뜻/i.test(t);
 }
+
 function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, isReview, initialClicked, yearKey, passageSents, user }) {
   const [clicked, setClicked] = useState(isReview ? null : (initialClicked ?? null));
   const isVocab = isVocabQuestion(question.t);
@@ -360,12 +361,12 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
     if (mode === MODE.STUDY && submitted && !isReview) return;
     if (clicked === uid) {
       setClicked(null);
-      onSelect(null, null);
+      onSelect(null, null, false);  // deselect
       return;
     }
     setClicked(uid);
-    // 어휘 문제는 지문 형광펜 연동 안 함
-    onSelect(isVocab ? null : uid, choice);
+    // [FIX] uid는 항상 실제값 전달. isVocab 플래그로 형광펜 차단은 QuizPanel에서 처리
+    onSelect(uid, choice, isVocab);
   }
 
   const hasBogiTable = question.bogiType === 'table' && question.bogiTable;
@@ -590,16 +591,22 @@ export default function QuizPanel({
   const correctCount = answered.size - log.length;
   const wrongCount = log.length;
 
-  function handleSelect(uid, choice) {
+  // [FIX] isVocab 3번째 인자 추가
+  // uid는 항상 실제값(non-null) 또는 deselect 시 null
+  // isVocab=true 이면 형광펜 연동(onSelChange) 생략
+  function handleSelect(uid, choice, isVocab) {
     if (isStudy && !submitted && !isReview) {
-      // 풀이 모드 미제출: studyAnswers에만 저장, 형광펜 비활성화
-      if (!choice) return;
+      // 풀이 모드 미제출
+      if (!choice || !uid) return;  // deselect 또는 안전 가드
       const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
       onStudyAnswer(qid, choice.num);
+      // 어휘 문제는 형광펜 비활성화, 그 외는 null (풀이 모드 중 형광펜 없음)
       onSelChange(null, null);
     } else {
-      onSelChange(uid, choice);
-      if (!choice) return;
+      // 보기/복습/제출 후 모드
+      // 어휘 문제는 형광펜 연동 안 함
+      onSelChange(isVocab ? null : uid, isVocab ? null : choice);
+      if (!choice || !uid) return;
       // VIEW 모드에서는 answered/log/ReportModal 추적 안 함
       if (!isStudy) return;
       const qid = parseInt(uid.split('_c')[0].replace('q', ''), 10);
