@@ -3,56 +3,56 @@
     "s1": [
       {
         "type": "box",
-        "sentId": "r2026as3",
+        "sentId": "r2026a_s3",
         "text": "단순 관점"
       }
     ],
     "s2": [
       {
         "type": "box",
-        "sentId": "r2026bs34",
+        "sentId": "r2026b_s34",
         "text": "연대보증인"
       },
       {
         "type": "underline",
-        "sentId": "r2026bs3",
+        "sentId": "r2026b_s3",
         "text": "구성하는"
       },
       {
         "type": "underline",
-        "sentId": "r2026bs5",
+        "sentId": "r2026b_s5",
         "text": "고려하여"
       },
       {
         "type": "underline",
-        "sentId": "r2026bs12",
+        "sentId": "r2026b_s12",
         "text": "파기하고"
       },
       {
         "type": "underline",
-        "sentId": "r2026bs24",
+        "sentId": "r2026b_s24",
         "text": "성립하려면"
       },
       {
         "type": "underline",
-        "sentId": "r2026bs36",
+        "sentId": "r2026b_s36",
         "text": "규정하고"
       },
       {
         "type": "underline",
-        "sentId": "r2026bs26",
+        "sentId": "r2026b_s26",
         "text": "이는 주채무자와 보증인 간에 보증의 대가를 지급하기로 하는 계약이 별도로 체결되었더라도 마찬가지이다."
       }
     ],
     "s3": [
       {
         "type": "underline",
-        "sentId": "r2026cs3",
+        "sentId": "r2026c_s3",
         "text": "얻는"
       },
       {
         "type": "underline",
-        "sentId": "r2026cs9",
+        "sentId": "r2026c_s9",
         "text": "돌아온다"
       }
     ],
