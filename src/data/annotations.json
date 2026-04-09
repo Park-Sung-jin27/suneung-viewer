@@ -3,56 +3,56 @@
     "s1": [
       {
         "type": "box",
-        "sentId": "r2026a_s3",
+        "sentId": "r2026as3",
         "text": "단순 관점"
       }
     ],
     "s2": [
       {
         "type": "box",
-        "sentId": "r2026b_s34",
+        "sentId": "r2026bs34",
         "text": "연대보증인"
       },
       {
         "type": "underline",
-        "sentId": "r2026b_s3",
+        "sentId": "r2026bs3",
         "text": "구성하는"
       },
       {
         "type": "underline",
-        "sentId": "r2026b_s5",
+        "sentId": "r2026bs5",
         "text": "고려하여"
       },
       {
         "type": "underline",
-        "sentId": "r2026b_s12",
+        "sentId": "r2026bs12",
         "text": "파기하고"
       },
       {
         "type": "underline",
-        "sentId": "r2026b_s24",
+        "sentId": "r2026bs24",
         "text": "성립하려면"
       },
       {
         "type": "underline",
-        "sentId": "r2026b_s36",
+        "sentId": "r2026bs36",
         "text": "규정하고"
       },
       {
         "type": "underline",
-        "sentId": "r2026b_s26",
+        "sentId": "r2026bs26",
         "text": "이는 주채무자와 보증인 간에 보증의 대가를 지급하기로 하는 계약이 별도로 체결되었더라도 마찬가지이다."
       }
     ],
     "s3": [
       {
         "type": "underline",
-        "sentId": "r2026c_s3",
+        "sentId": "r2026cs3",
         "text": "얻는"
       },
       {
         "type": "underline",
-        "sentId": "r2026c_s9",
+        "sentId": "r2026cs9",
         "text": "돌아온다"
       }
     ],
@@ -570,118 +570,118 @@
     "r2024a": [
       {
         "type": "underline",
-        "sentId": "r2024a_s13",
+        "sentId": "r2024as13",
         "text": "지금 사용하고 있는 전략을 계속 사용할 것인지"
       },
       {
         "type": "underline",
-        "sentId": "r2024a_s14",
+        "sentId": "r2024as14",
         "text": "문제 해결을 위한 다른 전략에는 무엇이 있는지"
       },
       {
         "type": "underline",
-        "sentId": "r2024a_s14",
+        "sentId": "r2024as14",
         "text": "각 전략의 특징과 사용 절차, 조건 등은 무엇인지"
       },
       {
         "type": "underline",
-        "sentId": "r2024a_s15",
+        "sentId": "r2024as15",
         "text": "전략들의 적절한 적용 순서가 무엇인지"
       },
       {
         "type": "underline",
-        "sentId": "r2024a_s15",
+        "sentId": "r2024as15",
         "text": "현재의 상황에서 최적의 전략이 무엇인지"
       }
     ],
     "r2024b": [
       {
         "type": "underline",
-        "sentId": "r2024b_s1",
+        "sentId": "r2024bs1",
         "text": "경마식 보도"
       },
       {
         "type": "underline",
-        "sentId": "r2024b_s7",
+        "sentId": "r2024bs7",
         "text": "「공직선거법」"
       },
       {
         "type": "underline",
-        "sentId": "r2024b_s9",
+        "sentId": "r2024bs9",
         "text": "선거방송심의에 관한 특별규정"
       },
       {
         "type": "underline",
-        "sentId": "r2024b_s10",
+        "sentId": "r2024bs10",
         "text": "선거 여론조사보도준칙"
       },
       {
         "type": "underline",
-        "sentId": "r2024b_s14",
+        "sentId": "r2024bs14",
         "text": "공직선거법의 선거 방송 토론회 규정"
       },
       {
         "type": "underline",
-        "sentId": "r2024b_s17",
+        "sentId": "r2024bs17",
         "text": "다수 의견"
       },
       {
         "type": "underline",
-        "sentId": "r2024b_s18",
+        "sentId": "r2024bs18",
         "text": "소수 의견"
       }
     ],
     "r2024c": [
       {
         "type": "underline",
-        "sentId": "r2024c_s2",
+        "sentId": "r2024cs2",
         "text": "나타내기"
       },
       {
         "type": "underline",
-        "sentId": "r2024c_s3",
+        "sentId": "r2024cs3",
         "text": "빠져"
       },
       {
         "type": "underline",
-        "sentId": "r2024c_s9",
+        "sentId": "r2024cs9",
         "text": "생긴다"
       },
       {
         "type": "underline",
-        "sentId": "r2024c_s12",
+        "sentId": "r2024cs12",
         "text": "대푯값으로 평균보다 중앙값을 주로 사용한다."
       },
       {
         "type": "underline",
-        "sentId": "r2024c_s18",
+        "sentId": "r2024cs18",
         "text": "이상치를 포함하는 데이터에서 직선 L을 찾는다고 하자"
       },
       {
         "type": "underline",
-        "sentId": "r2024c_s19",
+        "sentId": "r2024cs19",
         "text": "지나는"
       },
       {
         "type": "underline",
-        "sentId": "r2024c_s23",
+        "sentId": "r2024cs23",
         "text": "멀어"
       }
     ],
     "r2024d": [
       {
         "type": "underline",
-        "sentId": "r2024d_s2",
+        "sentId": "r2024ds2",
         "text": "담긴"
       },
       {
         "type": "underline",
-        "sentId": "r2024d_s25",
+        "sentId": "r2024ds25",
         "text": "유학자의 입장"
       },
       {
         "type": "underline",
-        "sentId": "r2024d_s30",
+        "sentId": "r2024ds30",
         "text": "학문적 소신"
       }
     ],
@@ -691,31 +691,6 @@
         "label": "A",
         "sentFrom": "l2024a_s2",
         "sentTo": "l2024a_s6"
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024a_s8",
-        "text": "짐은 불행하여 공주를 잃고 종적을 모르니 통한함을 어찌 측량하리오."
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024a_s10",
-        "text": "국변"
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024a_s11",
-        "text": "자식을 불러 들으심이 마땅하올까 하나이다"
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024a_s13",
-        "text": "내 병이 조금 나았으니 사오일 후 세상에 나가 남두성을 잡아 죽여 이 원한을 풀리라. 너희는 나를 위하여 마음을 위로하라."
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024a_s15",
-        "text": "드시어 첩 등의 우러르는 마음을 즐겁게 하소서."
       }
     ],
     "l2024b": [
@@ -730,16 +705,6 @@
         "label": "B",
         "sentFrom": "l2024b_s14",
         "sentTo": "l2024b_s14"
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024b_s4",
-        "text": "문"
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024b_s12",
-        "text": "가지"
       }
     ],
     "l2024c": [
@@ -760,31 +725,6 @@
         "label": "C",
         "sentFrom": "l2024c_s9",
         "sentTo": "l2024c_s9"
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024c_s2",
-        "text": "애최에 늬가 말 실수헌 게 잘못이지, 남을 탄해 뭘 허니? 이게 모두 모양만 숭업구……, 온, 글쎄, 그만 허구 들어가아. 늬가 잘못했어. 네 잘못이야."
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024c_s2",
-        "text": "아, 그 배지 못헌 행랑것허구, 쌈이 무슨 쌈이냐?"
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024c_s3",
-        "text": "그리고 후유우 하고 한숨조차 내쉬는데, 방 안에서들 그러는 소리가 대문 밖까지 그대로 들리더라 한다."
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024c_s6",
-        "text": "인제는 할 수가 없으니, 소리를 한번 질러 볼까?"
-      },
-      {
-        "type": "underline",
-        "sentId": "l2024c_s9",
-        "text": "오오, 그러니까, 채, 무어, 말할 새두 없이 문이 잠겨져서. 그냥 갇힌 채, 누구 오기만 기대린 게로군?"
       }
     ],
     "l2024d": [
@@ -818,7 +758,7 @@
       },
       {
         "type": "underline",
-        "sentId": "r2023a_s14",
+        "sentId": "r2023as14",
         "text": "다른 독자와 소통하는 즐거움"
       }
     ],
@@ -831,118 +771,113 @@
       },
       {
         "type": "underline",
-        "sentId": "r2023b_s7",
+        "sentId": "r2023bs7",
         "text": "따라"
       },
       {
         "type": "underline",
-        "sentId": "r2023b_s11",
+        "sentId": "r2023bs11",
         "text": "실학자들의 유서"
       },
       {
         "type": "underline",
-        "sentId": "r2023b_s14",
+        "sentId": "r2023bs14",
         "text": "이어받는"
       },
       {
         "type": "underline",
-        "sentId": "r2023b_s15",
+        "sentId": "r2023bs15",
         "text": "쉽게"
       },
       {
         "type": "underline",
-        "sentId": "r2023b_s22",
+        "sentId": "r2023bs22",
         "text": "뒤섞여"
       },
       {
         "type": "underline",
-        "sentId": "r2023b_s22",
+        "sentId": "r2023bs22",
         "text": "일부 주자학자의 비판"
       },
       {
         "type": "underline",
-        "sentId": "r2023b_s23",
+        "sentId": "r2023bs23",
         "text": "성호사설"
       },
       {
         "type": "underline",
-        "sentId": "r2023b_s25",
+        "sentId": "r2023bs25",
         "text": "바꾸어"
       },
       {
         "type": "underline",
-        "sentId": "r2023b_s27",
+        "sentId": "r2023bs27",
         "text": "오주연문장전산고"
       }
     ],
     "r2023c": [
       {
         "type": "underline",
-        "sentId": "r2023c_s3",
+        "sentId": "r2023cs3",
         "text": "맞는"
       },
       {
         "type": "underline",
-        "sentId": "r2023c_s4",
+        "sentId": "r2023cs4",
         "text": "들"
       },
       {
         "type": "underline",
-        "sentId": "r2023c_s11",
+        "sentId": "r2023cs11",
         "text": "받을"
       },
       {
         "type": "underline",
-        "sentId": "r2023c_s16",
+        "sentId": "r2023cs16",
         "text": "고를"
       },
       {
         "type": "underline",
-        "sentId": "r2023c_s19",
+        "sentId": "r2023cs19",
         "text": "재량 준칙"
-      },
-      {
-        "type": "underline",
-        "sentId": "r2023cs23",
-        "text": "지켜야"
       }
     ],
     "r2023d": [
       {
         "type": "underline",
-        "sentId": "r2023d_s5",
+        "sentId": "r2023ds5",
         "text": "직접법"
       },
       {
         "type": "underline",
-        "sentId": "r2023d_s5",
+        "sentId": "r2023ds5",
         "text": "간접법"
       }
     ],
     "l2023a": [
       {
         "type": "underline",
-        "sentId": "l2023a_s6",
+        "sentId": "l2023as6",
         "text": "매월 초하루"
       },
       {
         "type": "underline",
-        "sentId": "l2023a_s7",
+        "sentId": "l2023as7",
         "text": "정월 초하루"
       },
       {
         "type": "underline",
-        "sentId": "l2023a_s9",
+        "sentId": "l2023as9",
         "text": "그달"
       },
       {
         "type": "underline",
-        "sentId": "l2023a_s11",
+        "sentId": "l2023as11",
         "text": "매양 꽃 피는 아침과 달 뜬 밤"
       },
       {
         "type": "underline",
-        "sentId": "l2023a_s12",
+        "sentId": "l2023as12",
         "text": "어느 봄날 밤"
       }
     ],
@@ -1035,27 +970,27 @@
       },
       {
         "type": "underline",
-        "sentId": "l2023d_s2",
+        "sentId": "l2023ds2",
         "text": "가 보아라"
       },
       {
         "type": "underline",
-        "sentId": "l2023d_s3",
+        "sentId": "l2023ds3",
         "text": "지극히"
       },
       {
         "type": "underline",
-        "sentId": "l2023d_s4",
+        "sentId": "l2023ds4",
         "text": "과분하지 말라"
       },
       {
         "type": "underline",
-        "sentId": "l2023d_s5",
+        "sentId": "l2023ds5",
         "text": "많은 손님들"
       },
       {
         "type": "underline",
-        "sentId": "l2023d_s6",
+        "sentId": "l2023ds6",
         "text": "빛나는 생명의 양상"
       }
     ]
@@ -1064,78 +999,78 @@
     "r2022a": [
       {
         "type": "underline",
-        "sentId": "r2022a_s3",
+        "sentId": "r2022as3",
         "text": "폐허 속에서도 사람들이 책을 찾아 서가 앞에 선 이유는 무엇일까?"
       },
       {
         "type": "underline",
-        "sentId": "r2022a_s10",
+        "sentId": "r2022as10",
         "text": "독서는 자신을 둘러싼 현실을 올바로 인식하고 당면한 문제를 해결할 논리와 힘을 지니게 한다."
       }
     ],
     "r2022b": [
       {
         "type": "box",
-        "sentId": "r2022b_s10",
+        "sentId": "r2022bs10",
         "text": "직관ㆍ표상ㆍ사유"
       },
       {
         "type": "underline",
-        "sentId": "r2022b_s1",
+        "sentId": "r2022bs1",
         "text": "정립-반정립-종합."
       },
       {
         "type": "underline",
-        "sentId": "r2022b_s5",
+        "sentId": "r2022bs5",
         "text": "지녀야"
       },
       {
         "type": "underline",
-        "sentId": "r2022b_s8",
+        "sentId": "r2022bs8",
         "text": "가리킨다"
       },
       {
         "type": "underline",
-        "sentId": "r2022b_s18",
+        "sentId": "r2022bs18",
         "text": "예술-종교-철학"
       }
     ],
     "r2022c": [
       {
         "type": "underline",
-        "sentId": "r2022c_s6",
+        "sentId": "r2022cs6",
         "text": "금 본위 체제"
       },
       {
         "type": "underline",
-        "sentId": "r2022c_s8",
+        "sentId": "r2022cs8",
         "text": "브레턴우즈 체제"
       },
       {
         "type": "underline",
-        "sentId": "r2022c_s22",
+        "sentId": "r2022cs22",
         "text": "어떠한 기축 통화도 없이 각각 다른 통화가 사용되는 경우"
       }
     ],
     "r2022d": [
       {
         "type": "box",
-        "sentId": "r2022d_s2",
+        "sentId": "r2022ds2",
         "text": "장치"
       },
       {
         "type": "underline",
-        "sentId": "r2022d_s9",
+        "sentId": "r2022ds9",
         "text": "촬영된 영상"
       },
       {
         "type": "underline",
-        "sentId": "r2022d_s12",
+        "sentId": "r2022ds12",
         "text": "왜곡이 보정된 영상"
       },
       {
         "type": "underline",
-        "sentId": "r2022d_s14",
+        "sentId": "r2022ds14",
         "text": "위에서 내려다보는 시점의 영상"
       }
     ],
@@ -1172,12 +1107,12 @@
       },
       {
         "type": "box",
-        "sentId": "l2022a_s1",
+        "sentId": "l2022as1",
         "text": "묵화(墨畫)"
       },
       {
         "type": "box",
-        "sentId": "l2022a_s6",
+        "sentId": "l2022as6",
         "text": "북창"
       }
     ],
@@ -1190,12 +1125,12 @@
       },
       {
         "type": "underline",
-        "sentId": "l2022b_s11",
+        "sentId": "l2022bs11",
         "text": "케이스"
       },
       {
         "type": "underline",
-        "sentId": "l2022b_s32",
+        "sentId": "l2022bs32",
         "text": "우산 이상의 것"
       }
     ],
@@ -1232,12 +1167,12 @@
       },
       {
         "type": "box",
-        "sentId": "l2022c_s5",
+        "sentId": "l2022cs5",
         "text": "묵화(墨畫)"
       },
       {
         "type": "box",
-        "sentId": "l2022c_s22",
+        "sentId": "l2022cs22",
         "text": "북창"
       }
     ],
@@ -1256,27 +1191,27 @@
       },
       {
         "type": "underline",
-        "sentId": "l2022d_s4",
+        "sentId": "l2022ds4",
         "text": "올벼 씨 한 말은 반 넘게 쥐 먹었고"
       },
       {
         "type": "underline",
-        "sentId": "l2022d_s9",
+        "sentId": "l2022ds9",
         "text": "솥 시루 버려두니 붉은 빛이 다 되었다"
       },
       {
         "type": "underline",
-        "sentId": "l2022d_s12",
+        "sentId": "l2022ds12",
         "text": "이 얼굴 지녀 있어 어려운 일 하고 많다"
       },
       {
         "type": "underline",
-        "sentId": "l2022d_s30",
+        "sentId": "l2022ds30",
         "text": "두어라 차례 정한 일이니 매는 대로 매리라"
       },
       {
         "type": "underline",
-        "sentId": "l2022d_s38",
+        "sentId": "l2022ds38",
         "text": "아마도 밥 들이고 잔 잡을 때에 흥에 겨워 하노라"
       }
     ]
@@ -1285,7 +1220,7 @@
     "r20226a": [
       {
         "type": "underline",
-        "sentId": "r20226a_s1",
+        "sentId": "r20226as1",
         "text": "특정 주제를 깊이 있게 탐구하기 위한 독서"
       }
     ],
@@ -1298,49 +1233,49 @@
       },
       {
         "type": "underline",
-        "sentId": "r20226b_s33",
+        "sentId": "r20226bs33",
         "text": "예언화 경향"
       },
       {
         "type": "underline",
-        "sentId": "r20226b_s37",
+        "sentId": "r20226bs37",
         "text": "찾고자"
       },
       {
         "type": "underline",
-        "sentId": "r20226b_s38",
+        "sentId": "r20226bs38",
         "text": "전반적 대응설"
       }
     ],
     "r20226c": [
       {
         "type": "underline",
-        "sentId": "r20226c_s5",
+        "sentId": "r20226cs5",
         "text": "누리기로"
       },
       {
         "type": "underline",
-        "sentId": "r20226c_s14",
+        "sentId": "r20226cs14",
         "text": "가로막는"
       },
       {
         "type": "underline",
-        "sentId": "r20226c_s15",
+        "sentId": "r20226cs15",
         "text": "울타리"
       },
       {
         "type": "underline",
-        "sentId": "r20226c_s19",
+        "sentId": "r20226cs19",
         "text": "무디어져"
       },
       {
         "type": "underline",
-        "sentId": "r20226c_s20",
+        "sentId": "r20226cs20",
         "text": "크나큰"
       },
       {
         "type": "underline",
-        "sentId": "r20226c_s24",
+        "sentId": "r20226cs24",
         "text": "세웠다는"
       }
     ],
@@ -1353,34 +1288,34 @@
       },
       {
         "type": "underline",
-        "sentId": "r20226d_s15",
+        "sentId": "r20226ds15",
         "text": "이중 가닥 DNA 특이 염료"
       },
       {
         "type": "underline",
-        "sentId": "r20226d_s17",
+        "sentId": "r20226ds17",
         "text": "형광 표식 탐침"
       }
     ],
     "l20226a": [
       {
         "type": "underline",
-        "sentId": "l20226a_s5",
+        "sentId": "l20226as5",
         "text": "나는 긴장했다."
       },
       {
         "type": "underline",
-        "sentId": "l20226a_s8",
+        "sentId": "l20226as8",
         "text": "더구나 이리루 들어 오시자 머리를 깎구 수염까지 기르셨거든요."
       },
       {
         "type": "underline",
-        "sentId": "l20226a_s10",
+        "sentId": "l20226as10",
         "text": "묘한 철학"
       },
       {
         "type": "underline",
-        "sentId": "l20226a_s12",
+        "sentId": "l20226as12",
         "text": "'모두 썩어라, 철저히 썩어라'가 그분이 세상을 보는 이상한 눈입니다."
       }
     ],
@@ -1399,54 +1334,54 @@
       },
       {
         "type": "underline",
-        "sentId": "l20226b_s15",
+        "sentId": "l20226bs15",
         "text": "궁핍을 면할 양으로 본의 아닌 생활을 계속하느니보다 모든 속사(俗事)를 버리고 표연히 강상(江上)의 어객(漁客)이 되는 것이 운치 있는 생활이기도 하려니와 얼마나 자유를 사랑 하는 청고(淸高)한 마음이냐."
       },
       {
         "type": "underline",
-        "sentId": "l20226b_s18",
+        "sentId": "l20226bs18",
         "text": "한 점 찌는 객이 되고 나는 주인이 되어 알력과 모략과 시기와 저주로 꽉 찬 이 풍진(風塵) 세상을 등 뒤로 두고 서로 무언의 우정을 교환한다."
       },
       {
         "type": "underline",
-        "sentId": "l20226b_s19",
+        "sentId": "l20226bs19",
         "text": "별안간 이 한 점 찌는 술 취한 놈처럼 까딱 까딱 흔들리기 시작한다."
       },
       {
         "type": "underline",
-        "sentId": "l20226b_s26",
+        "sentId": "l20226bs26",
         "text": "세상이 하 뒤숭숭하니 고요히 서재나 지키어 한묵(翰墨) * 의 유희(遊戲)로 푹 박혀 있자는 것"
       },
       {
         "type": "underline",
-        "sentId": "l20226b_s27",
+        "sentId": "l20226bs27",
         "text": "막상 나 자신이 그런 심경에 처해 있고 보니 고인(古人)의 불우한 그 심정을 넉넉히 동감하게 된다."
       }
     ],
     "l20226c": [
       {
         "type": "underline",
-        "sentId": "l20226c_s3",
+        "sentId": "l20226cs3",
         "text": "이때 마침"
       },
       {
         "type": "underline",
-        "sentId": "l20226c_s6",
+        "sentId": "l20226cs6",
         "text": "하루는"
       },
       {
         "type": "underline",
-        "sentId": "l20226c_s6",
+        "sentId": "l20226cs6",
         "text": "공사 문첩 한 장"
       },
       {
         "type": "underline",
-        "sentId": "l20226c_s7",
+        "sentId": "l20226cs7",
         "text": "요사이"
       },
       {
         "type": "underline",
-        "sentId": "l20226c_s9",
+        "sentId": "l20226cs9",
         "text": "이미 반년이라"
       }
     ],
