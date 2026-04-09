@@ -60,7 +60,7 @@ function BogiRenderer({ bogi }) {
       borderRadius: '6px', padding: '12px 14px',
       fontSize: '0.82rem', color: '#374151', lineHeight: '1.75',
     }}>
-      <div style={{ fontWeight: '700', marginBottom: '8px' }}>〈보기〉</div>
+      <div style={{ fontWeight: '700', marginBottom: '8px', textAlign: 'center' }}>〈보기〉</div>
       {children}
     </div>
   );
@@ -68,7 +68,7 @@ function BogiRenderer({ bogi }) {
   // ── 문자열 보기
   if (typeof bogi === 'string') {
     return wrap(
-      <div style={{ whiteSpace: 'pre-wrap', textAlign: 'left' }}>{bogi}</div>
+      <div style={{ whiteSpace: 'pre-wrap', textAlign: 'justify' }}>{bogi}</div>
     );
   }
 
