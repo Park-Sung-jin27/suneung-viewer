@@ -166,8 +166,9 @@ export default function PatternCoach({ patKey, wrongAnswers, onClose, onGoToQues
 
   // allData 동적 로드 (App.jsx가 이미 로드했더라도 별도 번들에서 가져옴)
   useEffect(() => {
-    import('./data/all_data_204.json')
-      .then(m => setAllData(m.default))
+    fetch('/data/all_data_204.json')
+      .then(r => r.json())
+      .then(m => setAllData(m))
       .catch(() => setAllData({}));  // 실패 시 빈 객체 — 패턴 이름만으로 코칭
   }, []);
 

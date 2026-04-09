@@ -20,7 +20,6 @@ import { YEAR_INFO, MODE } from './constants';
 import { loadYear, getYearKeys } from './dataLoader';
 import { supabase }   from './supabase';
 import { saveAnswer } from './hooks/useAnswerTracker';
-import allData from './data/all_data_204.json';
 
 const _fl = document.createElement('link');
 _fl.rel  = 'stylesheet';
@@ -270,7 +269,8 @@ function YearCard({ meta, locked, isFree, onClick }) {
 // ══════════════════════════════════════════════
 function MainPage({ isPro, user }) {
   const navigate = useNavigate();
-  const yearKeys = getYearKeys();
+  const [yearKeys, setYearKeys] = useState([]);
+  useEffect(() => { getYearKeys().then(setYearKeys); }, []);
   const [showProModal, setShowProModal] = useState(false);
   const [modeTarget, setModeTarget]     = useState(null);
 

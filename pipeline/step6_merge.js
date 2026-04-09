@@ -24,7 +24,7 @@ if (section !== 'reading' && section !== 'literature') {
 // ─── 파일 로드 ───────────────────────────────────────────────
 
 const step5Abs   = path.resolve(step5Path);
-const allDataPath = path.resolve(__dirname, '../src/data/all_data_204.json');
+const allDataPath = path.resolve(__dirname, '../public/data/all_data_204.json');
 
 const step5Data = JSON.parse(fs.readFileSync(step5Abs, 'utf8'));
 const allData   = JSON.parse(fs.readFileSync(allDataPath, 'utf8'));
@@ -52,8 +52,30 @@ const mergedSets = newSets.map(newSet => {
   const existing = existingSets.find(s => s.id === newSet.id);
   if (existing) {
     updatedCount++;
-    // existing의 추가 필드(tag, hasFig, annotations 등) 보존 후 step5 데이터로 덮어쓰기
-    return { ...existing, ...newSet };
+
+    // 선지 단위 병합: cs_ids는 기존 값 우선, 비어있을 때만 새 값으로 채움
+    const mergedQuestions = newSet.questions.map(newQ => {
+      const existingQ = existing.questions.find(q => q.id === newQ.id);
+      if (!existingQ) return newQ;
+
+      const mergedChoices = newQ.choices.map(newC => {
+        const existingC = existingQ.choices.find(c => c.num === newC.num);
+        if (!existingC) return newC;
+
+        return {
+          ...newC,
+          // cs_ids: 기존에 있으면 유지, 비어있을 때만 새 값 사용
+          cs_ids: (existingC.cs_ids && existingC.cs_ids.length > 0)
+            ? existingC.cs_ids
+            : (newC.cs_ids || []),
+        };
+      });
+
+      return { ...newQ, choices: mergedChoices };
+    });
+
+    // existing의 추가 필드(tag, hasFig, annotations 등) 보존
+    return { ...existing, ...newSet, questions: mergedQuestions };
   } else {
     addedCount++;
     return newSet;
