@@ -81,6 +81,17 @@ async function tryRun(yearKey, examPath, answerPath) {
     renameSync(answerPath, path.join(DONE_DIR, path.basename(answerPath)));
     console.log(`\n✅ [watch] ${yearKey} 완료 → _done/`);
 
+    // annotation 입력 양식 자동 생성
+    try {
+      const templateScript = path.resolve(__dirname, 'gen_annotation_template.cjs');
+      execSync(`node "${templateScript}" "${yearKey}"`, {
+        stdio: 'inherit',
+        cwd: path.resolve(__dirname, '..'),
+      });
+    } catch (err) {
+      console.warn(`⚠️  [watch] annotation 양식 생성 실패: ${err.message}`);
+    }
+
   } catch (err) {
     console.error(`\n❌ [watch] ${yearKey} 파이프라인 실패: ${err.message}`);
     console.error(`   _inbox/ 폴더의 파일을 확인하세요.`);
