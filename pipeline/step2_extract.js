@@ -9,7 +9,10 @@ import { jsonrepair } from "jsonrepair";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const client = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+  timeout: 10 * 60 * 1000,
+});
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // ─── SYSTEM PROMPTS ──────────────────────────────────────────
@@ -163,7 +166,7 @@ bogi는 <보기> 텍스트가 있으면 채우고, 없으면 빈 문자열`;
 // ─── 구형 수능 포맷 판별 ──────────────────────────────────────
 function isLegacyFormat(yearKey) {
   const m = yearKey.match(/(\d{4})/);
-  return m ? parseInt(m[1], 10) < 2022 : false;
+  return m ? parseInt(m[1], 10) < 2017 : false;
 }
 
 // ─── 세트 분류 (구형 포맷용) ─────────────────────────────────
@@ -253,7 +256,7 @@ async function callClaude(pdfBase64, userPrompt, systemPrompt = SYSTEM_PROMPT) {
     client.messages.create(
       {
         model: "claude-sonnet-4-5",
-        max_tokens: 16000,
+        max_tokens: 32000,
         system: systemPrompt,
         messages: [
           {
@@ -761,13 +764,15 @@ export async function extractStructure(
         GEMINI_READING_PROMPT(yearKey, lastQuestion),
       );
     } else {
-      // 문학: 1차 전체 호출
+      // 문학: 1차 전체 호출 (Claude API)
       console.log(
-        `[step2] 문학 영역 1차 추출 중 (Gemini, 18~${lastQuestion}번)...`,
+        `[step2] 문학 영역 1차 추출 중 (Claude, 18~${lastQuestion}번)...`,
       );
-      const lit1 = await callGemini(
-        pdfPath,
+      const litPdfBase64 = fs.readFileSync(pdfPath).toString("base64");
+      const lit1 = await callClaude(
+        litPdfBase64,
         GEMINI_LITERATURE_PROMPT(yearKey, lastQuestion),
+        LIT_SYSTEM_PROMPT,
       );
       const year = yearKey.replace(/[^0-9]/g, "");
       const litIds = ["a", "b", "c", "d"];
@@ -817,7 +822,7 @@ export async function extractStructure(
           `\n\n[이미 추출 완료 — 절대 다시 추출하지 마라]\n${extractedSummary}` +
           `\n\n[시작 위치]\n다음 텍스트 이후부터 추출해줘: "${lastText}"`;
 
-        const lit2 = await callGemini(pdfPath, prompt2);
+        const lit2 = await callClaude(litPdfBase64, prompt2, LIT_SYSTEM_PROMPT);
 
         // ★ ID 강제 재할당 (1차 결과 이후 순서로)
         const allIds = "abcdefgh".split("");
