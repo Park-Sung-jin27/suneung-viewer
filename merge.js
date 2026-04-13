@@ -1,7 +1,7 @@
 import fs from "fs";
 
 try {
-  const mainPath = "./src/data/all_data_204.json";
+  const mainPath = "./public/data/all_data_204.json";
   // 🎯 읽어올 파일명을 문학 데이터로 변경
   const updatedPath = "./lit_2026_rebuilt.json";
 

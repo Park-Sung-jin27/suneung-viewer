@@ -1,5 +1,5 @@
 const fs = require("fs");
-const p = "C:/Users/downf/suneung-viewer/src/data/all_data_204.json";
+const p = "C:/Users/downf/suneung-viewer/public/data/all_data_204.json";
 const d = JSON.parse(fs.readFileSync(p, "utf8"));
 const lit = d["2024수능"].literature;
 

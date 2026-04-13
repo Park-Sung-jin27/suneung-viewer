@@ -5,8 +5,8 @@
 const fs = require("fs");
 const path = require("path");
 
-const DATA_PATH = path.join(__dirname, "../src/data/all_data_204.json");
-const ANN_PATH = path.join(__dirname, "../src/data/annotations.json");
+const DATA_PATH = path.join(__dirname, "../public/data/all_data_204.json");
+const ANN_PATH = path.join(__dirname, "../public/data/annotations.json");
 
 const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
 const anns = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));

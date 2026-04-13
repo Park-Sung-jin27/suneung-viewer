@@ -24,7 +24,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
-const ANN_PATH = path.resolve(__dirname, "../src/data/annotations.json");
+const ANN_PATH = path.resolve(__dirname, "../public/data/annotations.json");
 const ROOT = path.resolve(__dirname, "..");
 
 const yearKey = process.argv[2];
