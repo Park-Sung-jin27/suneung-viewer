@@ -1,12 +1,12 @@
-import Anthropic from '@anthropic-ai/sdk';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-import { jsonrepair } from 'jsonrepair';
+import Anthropic from "@anthropic-ai/sdk";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+import { jsonrepair } from "jsonrepair";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-dotenv.config({ path: path.resolve(__dirname, '../.env'), override: true });
+dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -68,7 +68,9 @@ ok:true 선지 analysis 형식 (보기 문제):
 - questionType: positive → 정답 선지 ok: true
 - questionType: negative → 정답 선지 ok: false`;
 
-const RETRY_SYSTEM_PROMPT = SYSTEM_PROMPT + `
+const RETRY_SYSTEM_PROMPT =
+  SYSTEM_PROMPT +
+  `
 
 경고: ok:false인 선지는 반드시 pat을 채워야 한다.
 독서 세트(set id가 r로 시작)는 R1~R4 중 하나, 문학 세트(set id가 l로 시작)는 L1~L5 중 하나.
@@ -124,14 +126,15 @@ async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
     try {
       return await fn();
     } catch (err) {
-      const isRetryable = err.message?.includes('Connection') ||
-                          err.message?.includes('timeout') ||
-                          err.status === 529 ||
-                          err.status === 500;
+      const isRetryable =
+        err.message?.includes("Connection") ||
+        err.message?.includes("timeout") ||
+        err.status === 529 ||
+        err.status === 500;
       if (isRetryable && i < maxRetries - 1) {
-        console.warn(`  ⚠️ API 오류 (${i+1}/${maxRetries}): ${err.message}`);
-        console.warn(`  ${delay/1000}초 후 재시도...`);
-        await new Promise(r => setTimeout(r, delay));
+        console.warn(`  ⚠️ API 오류 (${i + 1}/${maxRetries}): ${err.message}`);
+        console.warn(`  ${delay / 1000}초 후 재시도...`);
+        await new Promise((r) => setTimeout(r, delay));
       } else {
         throw err;
       }
@@ -142,7 +145,10 @@ async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
 // ─── JSON 파싱 유틸 ──────────────────────────────────────────
 
 function stripMarkdown(text) {
-  return text.trim().replace(/^```[a-z]*\n?/i, '').replace(/\n?```$/i, '');
+  return text
+    .trim()
+    .replace(/^```[a-z]*\n?/i, "")
+    .replace(/\n?```$/i, "");
 }
 
 function fixUnescapedQuotes(jsonStr) {
@@ -151,8 +157,8 @@ function fixUnescapedQuotes(jsonStr) {
   let i = 0;
   while (i < jsonStr.length) {
     const ch = jsonStr[i];
-    if (ch === '\\' && inString) {
-      result.push(ch, jsonStr[i + 1] || '');
+    if (ch === "\\" && inString) {
+      result.push(ch, jsonStr[i + 1] || "");
       i += 2;
       continue;
     }
@@ -162,9 +168,15 @@ function fixUnescapedQuotes(jsonStr) {
         result.push(ch);
       } else {
         let j = i + 1;
-        while (j < jsonStr.length && ' \n\r\t'.includes(jsonStr[j])) j++;
+        while (j < jsonStr.length && " \n\r\t".includes(jsonStr[j])) j++;
         const next = jsonStr[j];
-        if (next === ':' || next === ',' || next === '}' || next === ']' || j >= jsonStr.length) {
+        if (
+          next === ":" ||
+          next === "," ||
+          next === "}" ||
+          next === "]" ||
+          j >= jsonStr.length
+        ) {
           inString = false;
           result.push(ch);
         } else {
@@ -176,13 +188,17 @@ function fixUnescapedQuotes(jsonStr) {
     }
     i++;
   }
-  return result.join('');
+  return result.join("");
 }
 
 function tryParse(text) {
   try {
     const parsed = JSON.parse(text);
-    if (Array.isArray(parsed) && parsed.length > 0 && Array.isArray(parsed[0])) {
+    if (
+      Array.isArray(parsed) &&
+      parsed.length > 0 &&
+      Array.isArray(parsed[0])
+    ) {
       return parsed.flat();
     }
     return parsed;
@@ -196,16 +212,19 @@ function parseJSON(raw) {
   const direct = tryParse(text);
   if (direct) return direct;
 
-  console.warn('JSON 직접 파싱 실패, 따옴표 수정 시도');
+  console.warn("JSON 직접 파싱 실패, 따옴표 수정 시도");
   const fixed = tryParse(fixUnescapedQuotes(text));
   if (fixed) return fixed;
 
-  console.warn('따옴표 수정 실패, 여러 배열 병합 시도');
+  console.warn("따옴표 수정 실패, 여러 배열 병합 시도");
   const arrays = [];
-  let depth = 0, start = -1;
+  let depth = 0,
+    start = -1;
   for (let i = 0; i < text.length; i++) {
-    if (text[i] === '[') { if (depth === 0) start = i; depth++; }
-    else if (text[i] === ']') {
+    if (text[i] === "[") {
+      if (depth === 0) start = i;
+      depth++;
+    } else if (text[i] === "]") {
       depth--;
       if (depth === 0 && start !== -1) {
         const chunk = text.slice(start, i + 1);
@@ -217,35 +236,63 @@ function parseJSON(raw) {
   }
   if (arrays.length > 0) return arrays;
 
-  console.warn('배열 병합 실패, jsonrepair 시도');
+  console.warn("배열 병합 실패, jsonrepair 시도");
   const repaired = jsonrepair(text);
   return JSON.parse(repaired);
 }
 
 // ─── 핵심 로직 ───────────────────────────────────────────────
 
-const VALID_PATS = new Set(['R1','R2','R3','R4','L1','L2','L3','L4','L5','V']);
+const VALID_PATS = new Set([
+  "R1",
+  "R2",
+  "R3",
+  "R4",
+  "L1",
+  "L2",
+  "L3",
+  "L4",
+  "L5",
+  "V",
+]);
 
 // analysis 키워드 → pat 자동 분류 (postProcess fallback)
 function detectPatFromAnalysis(a, sec) {
   const m = a.match(/\[(R[1-4]|L[1-5]|V)\]/);
   if (m) return m[1];
-  if (/\[오류유형[①②③]/.test(a) || a.includes('📌 보기 근거'))
-    return sec === 'reading' ? 'R4' : 'L5';
-  if (/팩트 왜곡|사실 왜곡|의미 왜곡|어휘 의미|문맥적 의미|정반대|역전된/.test(a))
-    return sec === 'reading' ? 'R1' : 'L1';
-  if (/관계[··]인과|인과 전도|인과관계 왜곡|논리 왜곡|반박-지지|대상 바꿔치기|순서 역전/.test(a))
-    return sec === 'reading' ? 'R2' : 'L4';
-  if (/과도한 추론|과잉 추론|지문에 없|근거 부재|지문 핵심 미파악|과장 해석/.test(a))
-    return sec === 'reading' ? 'R3' : 'L3';
+  if (/\[오류유형[①②③]/.test(a) || a.includes("📌 보기 근거"))
+    return sec === "reading" ? "R4" : "L5";
+  if (
+    /팩트 왜곡|사실 왜곡|의미 왜곡|어휘 의미|문맥적 의미|정반대|역전된/.test(a)
+  )
+    return sec === "reading" ? "R1" : "L1";
+  if (
+    /관계[··]인과|인과 전도|인과관계 왜곡|논리 왜곡|반박-지지|대상 바꿔치기|순서 역전/.test(
+      a,
+    )
+  )
+    return sec === "reading" ? "R2" : "L4";
+  if (
+    /과도한 추론|과잉 추론|지문에 없|근거 부재|지문 핵심 미파악|과장 해석/.test(
+      a,
+    )
+  )
+    return sec === "reading" ? "R3" : "L3";
   if (/개념 짜깁기|개념 혼합|개념 혼동/.test(a))
-    return sec === 'reading' ? 'R4' : 'L1';
+    return sec === "reading" ? "R4" : "L1";
   if (/심리 오독|정서\s?오독|인물 의도|맥락 오독/.test(a))
-    return sec === 'reading' ? 'R1' : 'L2';
-  if (/수사법|시어|이미지|표현법|시간 표지/.test(a) && sec === 'literature') return 'L1';
-  if (/구조.*오류|맥락.*오류|화자.*오독|인물.*오인/.test(a) && sec === 'literature') return 'L4';
-  if (/정서.*오류|태도 오독|화자의 태도 오독/.test(a) && sec === 'literature') return 'L2';
-  if (/권면 대상|핵심 의미 왜곡|과도한 의미/.test(a) && sec === 'literature') return 'L3';
+    return sec === "reading" ? "R1" : "L2";
+  if (/수사법|시어|이미지|표현법|시간 표지/.test(a) && sec === "literature")
+    return "L1";
+  if (
+    /구조.*오류|맥락.*오류|화자.*오독|인물.*오인/.test(a) &&
+    sec === "literature"
+  )
+    return "L4";
+  if (/정서.*오류|태도 오독|화자의 태도 오독/.test(a) && sec === "literature")
+    return "L2";
+  if (/권면 대상|핵심 의미 왜곡|과도한 의미/.test(a) && sec === "literature")
+    return "L3";
   return null;
 }
 
@@ -253,7 +300,7 @@ function sanitizePat(pat, ok) {
   // ok:true는 무조건 null
   if (ok === true) return null;
   // 유효한 문자열 패턴이면 그대로
-  if (typeof pat === 'string' && VALID_PATS.has(pat)) return pat;
+  if (typeof pat === "string" && VALID_PATS.has(pat)) return pat;
   // 숫자나 기타 → null (postProcess에서 detectPat으로 재분류 시도)
   return null;
 }
@@ -262,14 +309,16 @@ function applyChoices(set, updatedChoices) {
   const updatedQuestions = set.questions.map((q) => ({
     ...q,
     choices: q.choices.map((orig) => {
-      const updated = updatedChoices.find((c) => c.qId === q.id && c.num === orig.num);
+      const updated = updatedChoices.find(
+        (c) => c.qId === q.id && c.num === orig.num,
+      );
       if (updated) {
         const patRaw = updated.pat ?? orig.pat;
-        const okVal  = updated.ok ?? orig.ok;
+        const okVal = updated.ok ?? orig.ok;
         return {
           ...orig,
-          ok:       okVal,
-          pat:      sanitizePat(patRaw, okVal),
+          ok: okVal,
+          pat: sanitizePat(patRaw, okVal),
           analysis: updated.analysis ?? orig.analysis,
         };
       }
@@ -280,16 +329,18 @@ function applyChoices(set, updatedChoices) {
 }
 
 async function callAnalyze(set, answerKey, systemPrompt) {
-  const answerGuide = set.questions.map((q) => {
-    const correctNum = answerKey[String(q.id)];
-    if (correctNum === undefined) return null;
-    return { qId: q.id, questionType: q.questionType, correctNum };
-  }).filter(Boolean);
+  const answerGuide = set.questions
+    .map((q) => {
+      const correctNum = answerKey[String(q.id)];
+      if (correctNum === undefined) return null;
+      return { qId: q.id, questionType: q.questionType, correctNum };
+    })
+    .filter(Boolean);
 
   const userPrompt = `다음 세트를 분석해줘.
 
 [정답 정보]
-${answerGuide.map(g => `문항 ${g.qId}번 (${g.questionType}): 정답 선지 = ${g.correctNum}번`).join('\n')}
+${answerGuide.map((g) => `문항 ${g.qId}번 (${g.questionType}): 정답 선지 = ${g.correctNum}번`).join("\n")}
 
 [세트 데이터]
 ${JSON.stringify(set)}
@@ -302,15 +353,17 @@ choices 배열만 JSON으로 반환해줘.
 형식: [{ qId: 1, num: 1, pat: null, analysis: "..." }, ...]
 반드시 qId(문항 id)를 포함해줘. qId는 set.questions[n].id 값이다.`;
 
-  const response = await callWithRetry(() => client.messages.create(
-    {
-      model: 'claude-sonnet-4-5',
-      max_tokens: 8000,
-      system: systemPrompt,
-      messages: [{ role: 'user', content: userPrompt }],
-    },
-    { headers: { 'anthropic-beta': 'output-128k-2025-02-19' } }
-  ));
+  const response = await callWithRetry(() =>
+    client.messages.create(
+      {
+        model: "claude-sonnet-4-5",
+        max_tokens: 8000,
+        system: systemPrompt,
+        messages: [{ role: "user", content: userPrompt }],
+      },
+      { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
+    ),
+  );
 
   return parseJSON(response.content[0].text);
 }
@@ -323,43 +376,53 @@ async function reanalyzeSingleChoice(set, question, choice) {
 위 선지의 ok 값(${choice.ok})에 맞게 analysis만 작성해줘.
 출력: { "analysis": "..." }`;
 
-  const response = await callWithRetry(() => client.messages.create(
-    {
-      model: 'claude-sonnet-4-5',
-      max_tokens: 2000,
-      system: REANALYSIS_SYSTEM_PROMPT,
-      messages: [{ role: 'user', content: userPrompt }],
-    },
-    { headers: { 'anthropic-beta': 'output-128k-2025-02-19' } }
-  ));
+  const response = await callWithRetry(() =>
+    client.messages.create(
+      {
+        model: "claude-sonnet-4-5",
+        max_tokens: 2000,
+        system: REANALYSIS_SYSTEM_PROMPT,
+        messages: [{ role: "user", content: userPrompt }],
+      },
+      { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
+    ),
+  );
 
   const parsed = parseJSON(response.content[0].text);
-  return parsed.analysis || '';
+  return parsed.analysis || "";
 }
 
 // ─── 후처리 보정 ─────────────────────────────────────────────
 
 export async function postProcess(result, answerKey) {
   const correctedSets = { reading: [], literature: [] };
-  let totalOkFixed = 0, totalPatFlagged = 0, totalPatNullFixed = 0;
+  let totalOkFixed = 0,
+    totalPatFlagged = 0,
+    totalPatNullFixed = 0;
 
-  for (const section of ['reading', 'literature']) {
+  for (const section of ["reading", "literature"]) {
     for (const set of result[section]) {
       const updatedQuestions = [];
 
       for (const q of set.questions) {
         const correctNum = answerKey[String(q.id)];
-        if (correctNum === undefined) { updatedQuestions.push(q); continue; }
+        if (correctNum === undefined) {
+          updatedQuestions.push(q);
+          continue;
+        }
 
         const updatedChoices = [];
         for (const c of q.choices) {
           let choice = { ...c };
           const isCorrect = c.num === correctNum;
-          const expectedOk = q.questionType === 'positive' ? isCorrect : !isCorrect;
+          const expectedOk =
+            q.questionType === "positive" ? isCorrect : !isCorrect;
           const okChanged = choice.ok !== expectedOk;
 
           if (okChanged) {
-            console.warn(`  [postProcess] ok 보정: ${set.id} ${q.id}번 선지${c.num} ${choice.ok} → ${expectedOk}`);
+            console.warn(
+              `  [postProcess] ok 보정: ${set.id} ${q.id}번 선지${c.num} ${choice.ok} → ${expectedOk}`,
+            );
             choice.ok = expectedOk;
             totalOkFixed++;
           }
@@ -371,14 +434,22 @@ export async function postProcess(result, answerKey) {
           }
           // ok:false + pat 미분류(null/숫자/잘못된 문자열) → analysis 키워드 기반 재분류
           if (choice.ok === false && !VALID_PATS.has(choice.pat)) {
-            choice.pat = detectPatFromAnalysis(choice.analysis || '', section) ?? 0;
+            choice.pat =
+              detectPatFromAnalysis(choice.analysis || "", section) ?? 0;
             totalPatFlagged++;
           }
 
           if (okChanged) {
-            console.log(`  [postProcess] analysis 재생성: ${set.id} ${q.id}번 선지${c.num}`);
-            try { choice.analysis = await reanalyzeSingleChoice(set, q, choice); }
-            catch (err) { console.warn(`  [postProcess] analysis 재생성 실패: ${err.message}`); }
+            console.log(
+              `  [postProcess] analysis 재생성: ${set.id} ${q.id}번 선지${c.num}`,
+            );
+            try {
+              choice.analysis = await reanalyzeSingleChoice(set, q, choice);
+            } catch (err) {
+              console.warn(
+                `  [postProcess] analysis 재생성 실패: ${err.message}`,
+              );
+            }
           }
 
           updatedChoices.push(choice);
@@ -389,53 +460,59 @@ export async function postProcess(result, answerKey) {
     }
   }
 
-  console.log('\n' + '='.repeat(50));
-  console.log('[postProcess] 보정 완료 요약');
-  console.log('='.repeat(50));
+  console.log("\n" + "=".repeat(50));
+  console.log("[postProcess] 보정 완료 요약");
+  console.log("=".repeat(50));
   if (totalOkFixed === 0) console.log(`ok 보정: ✅ 0건`);
   else console.warn(`ok 보정: ⚠️ ${totalOkFixed}건`);
   console.log(`pat:null→0 플래그: ${totalPatFlagged}건`);
   console.log(`ok:true & pat→null: ${totalPatNullFixed}건`);
 
   let remaining = 0;
-  for (const section of ['reading', 'literature']) {
+  for (const section of ["reading", "literature"]) {
     for (const set of correctedSets[section]) {
       for (const q of set.questions) {
         const correctNum = answerKey[String(q.id)];
         if (!correctNum) continue;
-        const correctChoice = q.choices.find(c => c.num === correctNum);
+        const correctChoice = q.choices.find((c) => c.num === correctNum);
         if (!correctChoice) continue;
-        const expectedOk = q.questionType === 'positive' ? true : false;
+        const expectedOk = q.questionType === "positive" ? true : false;
         if (correctChoice.ok !== expectedOk) remaining++;
       }
     }
   }
   console.log(`ok 불일치 잔여: ${remaining}건`);
-  console.log('='.repeat(50));
+  console.log("=".repeat(50));
 
   return correctedSets;
 }
 
 function injectOkValues(choices, set, answerKey) {
   return choices.map((c) => {
-    const q = set.questions.find(q => q.id === c.qId);
-    if (!q) { console.warn(`  [injectOk] qId ${c.qId} 매칭 실패 — num ${c.num}`); return c; }
+    const q = set.questions.find((q) => q.id === c.qId);
+    if (!q) {
+      console.warn(`  [injectOk] qId ${c.qId} 매칭 실패 — num ${c.num}`);
+      return c;
+    }
     const correctNum = answerKey[String(q.id)];
     if (correctNum === undefined) return c;
     const isCorrect = c.num === correctNum;
-    c.ok = q.questionType === 'positive' ? isCorrect : !isCorrect;
+    c.ok = q.questionType === "positive" ? isCorrect : !isCorrect;
     return c;
   });
 }
 
-const VOCAB_PATTERN = /사전적 의미|문맥상 의미|문맥적 의미|밑줄 친.*의미|ⓐ.*~.*ⓔ|㉠.*~.*㉤/;
+const VOCAB_PATTERN =
+  /사전적 의미|문맥상 의미|문맥적 의미|밑줄 친.*의미|ⓐ.*~.*ⓔ|㉠.*~.*㉤/;
 
 function isVocabQuestion(q) {
   return VOCAB_PATTERN.test(q.t);
 }
 
 async function analyzeSet(set, answerKey) {
-  const vocabQIds = new Set(set.questions.filter(isVocabQuestion).map(q => q.id));
+  const vocabQIds = new Set(
+    set.questions.filter(isVocabQuestion).map((q) => q.id),
+  );
 
   if (vocabQIds.size === 0) {
     const choices = await callAnalyze(set, answerKey, SYSTEM_PROMPT);
@@ -443,18 +520,32 @@ async function analyzeSet(set, answerKey) {
   }
 
   // 일반 문항과 어휘 문항 분리
-  const normalSet = { ...set, questions: set.questions.filter(q => !vocabQIds.has(q.id)) };
-  const vocabSet  = { ...set, questions: set.questions.filter(q =>  vocabQIds.has(q.id)) };
+  const normalSet = {
+    ...set,
+    questions: set.questions.filter((q) => !vocabQIds.has(q.id)),
+  };
+  const vocabSet = {
+    ...set,
+    questions: set.questions.filter((q) => vocabQIds.has(q.id)),
+  };
 
   let allChoices = [];
 
   if (normalSet.questions.length > 0) {
-    const normalChoices = await callAnalyze(normalSet, answerKey, SYSTEM_PROMPT);
+    const normalChoices = await callAnalyze(
+      normalSet,
+      answerKey,
+      SYSTEM_PROMPT,
+    );
     allChoices.push(...normalChoices);
   }
 
   if (vocabSet.questions.length > 0) {
-    const vocabChoices = await callAnalyze(vocabSet, answerKey, VOCAB_SYSTEM_PROMPT);
+    const vocabChoices = await callAnalyze(
+      vocabSet,
+      answerKey,
+      VOCAB_SYSTEM_PROMPT,
+    );
     allChoices.push(...vocabChoices);
   }
 
@@ -474,17 +565,23 @@ export async function retrySet(set, answerKey) {
  * - 새로 완료된 세트는 즉시 캐시에 저장
  * → 절전/네트워크 끊김 후 재실행 시 완료된 세트부터 이어서 진행
  */
-export async function analyzeStructure(structureData, answerKey, partialCachePath = null) {
+export async function analyzeStructure(
+  structureData,
+  answerKey,
+  partialCachePath = null,
+) {
   // 기존 부분 완료 결과 로드
   let partial = { reading: [], literature: [] };
   if (partialCachePath && fs.existsSync(partialCachePath)) {
-    partial = JSON.parse(fs.readFileSync(partialCachePath, 'utf8'));
+    partial = JSON.parse(fs.readFileSync(partialCachePath, "utf8"));
     const completedIds = [
-      ...partial.reading.map(s => s.id),
-      ...partial.literature.map(s => s.id),
+      ...partial.reading.map((s) => s.id),
+      ...partial.literature.map((s) => s.id),
     ];
     if (completedIds.length > 0) {
-      console.log(`  📂 부분 완료 로드: ${completedIds.join(', ')} — 이어서 진행`);
+      console.log(
+        `  📂 부분 완료 로드: ${completedIds.join(", ")} — 이어서 진행`,
+      );
     }
   }
 
@@ -494,11 +591,11 @@ export async function analyzeStructure(structureData, answerKey, partialCachePat
   };
 
   const completedIds = new Set([
-    ...partial.reading.map(s => s.id),
-    ...partial.literature.map(s => s.id),
+    ...partial.reading.map((s) => s.id),
+    ...partial.literature.map((s) => s.id),
   ]);
 
-  for (const section of ['reading', 'literature']) {
+  for (const section of ["reading", "literature"]) {
     for (const set of structureData[section]) {
       // 이미 완료된 세트 스킵
       if (completedIds.has(set.id)) {
@@ -514,7 +611,9 @@ export async function analyzeStructure(structureData, answerKey, partialCachePat
       // ★ 세트 완료 즉시 부분 캐시 저장
       if (partialCachePath) {
         atomicWrite(partialCachePath, result);
-        console.log(`  💾 부분 저장: ${set.id} 완료 → ${path.basename(partialCachePath)}`);
+        console.log(
+          `  💾 부분 저장: ${set.id} 완료 → ${path.basename(partialCachePath)}`,
+        );
       }
     }
   }
@@ -527,8 +626,8 @@ export async function analyzeStructure(structureData, answerKey, partialCachePat
  * 임시 파일에 먼저 쓰고 완료되면 rename → 중단돼도 원본 보존
  */
 export function atomicWrite(filePath, data) {
-  const tmpPath = filePath + '.tmp';
-  fs.writeFileSync(tmpPath, JSON.stringify(data, null, 2), 'utf8');
+  const tmpPath = filePath + ".tmp";
+  fs.writeFileSync(tmpPath, JSON.stringify(data, null, 2), "utf8");
   fs.renameSync(tmpPath, filePath);
 }
 
@@ -537,44 +636,69 @@ export function atomicWrite(filePath, data) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const structurePath = process.argv[2];
   const answerKeyPath = process.argv[3];
-  const retryFlag = process.argv.indexOf('--retry');
+  const retryFlag = process.argv.indexOf("--retry");
   const retryId = retryFlag !== -1 ? process.argv[retryFlag + 1] : null;
 
   if (!structurePath || !answerKeyPath) {
-    console.error('사용법: node pipeline/step3_analysis.js [step2결과JSON] [정답키JSON] [--retry setId]');
+    console.error(
+      "사용법: node pipeline/step3_analysis.js [step2결과JSON] [정답키JSON] [--retry setId]",
+    );
     process.exit(1);
   }
 
   const structurePath_abs = path.resolve(structurePath);
-  const structureData = JSON.parse(fs.readFileSync(structurePath_abs, 'utf8'));
-  const answerKey = JSON.parse(fs.readFileSync(path.resolve(answerKeyPath), 'utf8'));
+  const structureData = JSON.parse(fs.readFileSync(structurePath_abs, "utf8"));
+  const answerKey = JSON.parse(
+    fs.readFileSync(path.resolve(answerKeyPath), "utf8"),
+  );
 
   if (retryId) {
-    const step3Path = path.resolve(path.dirname(structurePath_abs), 'step3_result.json');
-    if (!fs.existsSync(step3Path)) { console.error(`step3 결과 없음: ${step3Path}`); process.exit(1); }
-    const step3Data = JSON.parse(fs.readFileSync(step3Path, 'utf8'));
+    const step3Path = path.resolve(
+      path.dirname(structurePath_abs),
+      "step3_result.json",
+    );
+    if (!fs.existsSync(step3Path)) {
+      console.error(`step3 결과 없음: ${step3Path}`);
+      process.exit(1);
+    }
+    const step3Data = JSON.parse(fs.readFileSync(step3Path, "utf8"));
     const allSets = [...step3Data.reading, ...step3Data.literature];
-    const targetSet = allSets.find(s => s.id === retryId);
-    if (!targetSet) { console.error(`세트 ID 없음: ${retryId}`); process.exit(1); }
+    const targetSet = allSets.find((s) => s.id === retryId);
+    if (!targetSet) {
+      console.error(`세트 ID 없음: ${retryId}`);
+      process.exit(1);
+    }
 
     retrySet(targetSet, answerKey)
       .then((updated) => {
-        for (const section of ['reading', 'literature']) {
-          const idx = step3Data[section].findIndex(s => s.id === retryId);
-          if (idx !== -1) { step3Data[section][idx] = updated; break; }
+        for (const section of ["reading", "literature"]) {
+          const idx = step3Data[section].findIndex((s) => s.id === retryId);
+          if (idx !== -1) {
+            step3Data[section][idx] = updated;
+            break;
+          }
         }
         atomicWrite(step3Path, step3Data);
         console.log(`\n✅ ${retryId} 재분석 완료`);
       })
-      .catch((err) => { console.error('오류:', err.message); process.exit(1); });
+      .catch((err) => {
+        console.error("오류:", err.message);
+        process.exit(1);
+      });
   } else {
     analyzeStructure(structureData, answerKey)
       .then(async (raw) => {
         const corrected = await postProcess(raw, answerKey);
-        const outPath = path.resolve(path.dirname(structurePath_abs), 'step3_result.json');
+        const outPath = path.resolve(
+          path.dirname(structurePath_abs),
+          "step3_result.json",
+        );
         atomicWrite(outPath, corrected);
         console.log(`\n✅ 저장 완료: ${outPath}`);
       })
-      .catch((err) => { console.error('오류:', err.message); process.exit(1); });
+      .catch((err) => {
+        console.error("오류:", err.message);
+        process.exit(1);
+      });
   }
 }

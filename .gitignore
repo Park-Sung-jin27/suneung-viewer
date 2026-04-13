@@ -34,3 +34,6 @@ _inbox/
 _done/
 pipeline/debug_last_response.txt
 pipeline/test_data/
+
+# Legacy data folder (now using public/data/)
+src/data/

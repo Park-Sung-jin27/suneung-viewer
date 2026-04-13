@@ -1,12 +1,12 @@
-import Anthropic from '@anthropic-ai/sdk';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-import { jsonrepair } from 'jsonrepair';
+import Anthropic from "@anthropic-ai/sdk";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+import { jsonrepair } from "jsonrepair";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-dotenv.config({ path: path.resolve(__dirname, '../.env'), override: true });
+dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -29,14 +29,15 @@ async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
     try {
       return await fn();
     } catch (err) {
-      const isRetryable = err.message?.includes('Connection') ||
-                          err.message?.includes('timeout') ||
-                          err.status === 529 ||
-                          err.status === 500;
+      const isRetryable =
+        err.message?.includes("Connection") ||
+        err.message?.includes("timeout") ||
+        err.status === 529 ||
+        err.status === 500;
       if (isRetryable && i < maxRetries - 1) {
-        console.warn(`  ⚠️ API 오류 (${i+1}/${maxRetries}): ${err.message}`);
-        console.warn(`  ${delay/1000}초 후 재시도...`);
-        await new Promise(r => setTimeout(r, delay));
+        console.warn(`  ⚠️ API 오류 (${i + 1}/${maxRetries}): ${err.message}`);
+        console.warn(`  ${delay / 1000}초 후 재시도...`);
+        await new Promise((r) => setTimeout(r, delay));
       } else {
         throw err;
       }
@@ -45,7 +46,10 @@ async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
 }
 
 function stripMarkdown(text) {
-  return text.trim().replace(/^```[a-z]*\n?/i, '').replace(/\n?```$/i, '');
+  return text
+    .trim()
+    .replace(/^```[a-z]*\n?/i, "")
+    .replace(/\n?```$/i, "");
 }
 
 function fixUnescapedQuotes(jsonStr) {
@@ -54,8 +58,8 @@ function fixUnescapedQuotes(jsonStr) {
   let i = 0;
   while (i < jsonStr.length) {
     const ch = jsonStr[i];
-    if (ch === '\\' && inString) {
-      result.push(ch, jsonStr[i + 1] || '');
+    if (ch === "\\" && inString) {
+      result.push(ch, jsonStr[i + 1] || "");
       i += 2;
       continue;
     }
@@ -65,9 +69,15 @@ function fixUnescapedQuotes(jsonStr) {
         result.push(ch);
       } else {
         let j = i + 1;
-        while (j < jsonStr.length && ' \n\r\t'.includes(jsonStr[j])) j++;
+        while (j < jsonStr.length && " \n\r\t".includes(jsonStr[j])) j++;
         const next = jsonStr[j];
-        if (next === ':' || next === ',' || next === '}' || next === ']' || j >= jsonStr.length) {
+        if (
+          next === ":" ||
+          next === "," ||
+          next === "}" ||
+          next === "]" ||
+          j >= jsonStr.length
+        ) {
           inString = false;
           result.push(ch);
         } else {
@@ -79,13 +89,17 @@ function fixUnescapedQuotes(jsonStr) {
     }
     i++;
   }
-  return result.join('');
+  return result.join("");
 }
 
 function tryParse(text) {
   try {
     const parsed = JSON.parse(text);
-    if (Array.isArray(parsed) && parsed.length > 0 && Array.isArray(parsed[0])) {
+    if (
+      Array.isArray(parsed) &&
+      parsed.length > 0 &&
+      Array.isArray(parsed[0])
+    ) {
       return parsed.flat();
     }
     return parsed;
@@ -105,10 +119,13 @@ function parseJSON(raw) {
 
   // 여러 배열 병합
   const arrays = [];
-  let depth = 0, start = -1;
+  let depth = 0,
+    start = -1;
   for (let i = 0; i < text.length; i++) {
-    if (text[i] === '[') { if (depth === 0) start = i; depth++; }
-    else if (text[i] === ']') {
+    if (text[i] === "[") {
+      if (depth === 0) start = i;
+      depth++;
+    } else if (text[i] === "]") {
       depth--;
       if (depth === 0 && start !== -1) {
         const chunk = text.slice(start, i + 1);
@@ -125,37 +142,41 @@ function parseJSON(raw) {
 }
 
 async function matchCsIds(set) {
-  const sentIds = new Set(set.sents.map(s => s.id));
+  const sentIds = new Set(set.sents.map((s) => s.id));
 
   const userPrompt = `다음 세트에서 각 선지의 cs_ids를 찾아줘.
 
 지문 문장 목록:
-${JSON.stringify(set.sents.map(s => ({ id: s.id, t: s.t })))}
+${JSON.stringify(set.sents.map((s) => ({ id: s.id, t: s.t })))}
 
 선지 목록:
-${JSON.stringify(set.questions.flatMap(q =>
-    q.choices.map(c => ({
+${JSON.stringify(
+  set.questions.flatMap((q) =>
+    q.choices.map((c) => ({
       questionId: q.id,
       num: c.num,
       t: c.t,
       ok: c.ok,
       pat: c.pat,
-      analysis: c.analysis
-    }))
-  ))}
+      analysis: c.analysis,
+    })),
+  ),
+)}
 
 각 선지의 cs_ids 배열만 반환해줘.
 형식: [{ "questionId": 1, "num": 1, "cs_ids": [...] }, ...]`;
 
-  const response = await callWithRetry(() => client.messages.create(
-    {
-      model: 'claude-sonnet-4-5',
-      max_tokens: 4000,
-      system: SYSTEM_PROMPT,
-      messages: [{ role: 'user', content: userPrompt }],
-    },
-    { headers: { 'anthropic-beta': 'output-128k-2025-02-19' } }
-  ));
+  const response = await callWithRetry(() =>
+    client.messages.create(
+      {
+        model: "claude-sonnet-4-5",
+        max_tokens: 4000,
+        system: SYSTEM_PROMPT,
+        messages: [{ role: "user", content: userPrompt }],
+      },
+      { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
+    ),
+  );
 
   const matches = parseJSON(response.content[0].text);
 
@@ -163,8 +184,8 @@ ${JSON.stringify(set.questions.flatMap(q =>
   let totalMatched = 0;
   let invalidRemoved = 0;
 
-  const cleaned = matches.map(m => {
-    const validIds = (m.cs_ids || []).filter(id => {
+  const cleaned = matches.map((m) => {
+    const validIds = (m.cs_ids || []).filter((id) => {
       if (sentIds.has(id)) return true;
       invalidRemoved++;
       return false;
@@ -173,14 +194,16 @@ ${JSON.stringify(set.questions.flatMap(q =>
     return { ...m, cs_ids: validIds };
   });
 
-  console.log(`  매칭: ${totalMatched}개 cs_ids, 무효 ID 제거: ${invalidRemoved}개`);
+  console.log(
+    `  매칭: ${totalMatched}개 cs_ids, 무효 ID 제거: ${invalidRemoved}개`,
+  );
   return cleaned;
 }
 
 export async function assignCsIds(step3Data) {
   const result = { reading: [], literature: [] };
 
-  for (const section of ['reading', 'literature']) {
+  for (const section of ["reading", "literature"]) {
     for (const set of step3Data[section]) {
       console.log(`[step4] cs_ids 매칭 중: ${set.id} (${set.range})`);
 
@@ -192,9 +215,9 @@ export async function assignCsIds(step3Data) {
         matchMap.set(`${m.questionId}_${m.num}`, m.cs_ids);
       }
 
-      const updatedQuestions = set.questions.map(q => ({
+      const updatedQuestions = set.questions.map((q) => ({
         ...q,
-        choices: q.choices.map(c => {
+        choices: q.choices.map((c) => {
           const cs_ids = matchMap.get(`${q.id}_${c.num}`);
           return cs_ids !== undefined ? { ...c, cs_ids } : c;
         }),
@@ -212,24 +235,24 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const inputPath = process.argv[2];
 
   if (!inputPath) {
-    console.error('사용법: node pipeline/step4_csids.js [step3결과JSON경로]');
+    console.error("사용법: node pipeline/step4_csids.js [step3결과JSON경로]");
     process.exit(1);
   }
 
   const inputPath_abs = path.resolve(inputPath);
-  const step3Data = JSON.parse(fs.readFileSync(inputPath_abs, 'utf8'));
+  const step3Data = JSON.parse(fs.readFileSync(inputPath_abs, "utf8"));
 
   assignCsIds(step3Data)
     .then((result) => {
       const outPath = path.resolve(
         path.dirname(inputPath_abs),
-        path.basename(inputPath_abs).replace('step3_', 'step4_')
+        path.basename(inputPath_abs).replace("step3_", "step4_"),
       );
-      fs.writeFileSync(outPath, JSON.stringify(result, null, 2), 'utf8');
+      fs.writeFileSync(outPath, JSON.stringify(result, null, 2), "utf8");
       console.log(`\n✅ 저장 완료: ${outPath}`);
     })
     .catch((err) => {
-      console.error('오류:', err.message);
+      console.error("오류:", err.message);
       process.exit(1);
     });
 }

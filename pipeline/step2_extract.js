@@ -1,13 +1,13 @@
-import Anthropic from '@anthropic-ai/sdk';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-import { jsonrepair } from 'jsonrepair';
+import Anthropic from "@anthropic-ai/sdk";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+import { jsonrepair } from "jsonrepair";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-dotenv.config({ path: path.resolve(__dirname, '../.env'), override: true });
+dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -168,12 +168,15 @@ function isLegacyFormat(yearKey) {
 
 // ─── 세트 분류 (구형 포맷용) ─────────────────────────────────
 function classifySection(set) {
-  if (set.sents?.some(s => s.sentType === 'workTag')) return 'literature';
+  if (set.sents?.some((s) => s.sentType === "workTag")) return "literature";
   const authorPattern = /[-—]\s*.+[,，」\-]/;
-  if (set.sents?.some(s => authorPattern.test(s.t || ''))) return 'literature';
-  if (set.sents?.some(s => (s.sentType || '') === 'author')) return 'literature';
-  if (set.sents?.some(s => (s.sentType || '') === 'verse')) return 'literature';
-  return 'reading';
+  if (set.sents?.some((s) => authorPattern.test(s.t || "")))
+    return "literature";
+  if (set.sents?.some((s) => (s.sentType || "") === "author"))
+    return "literature";
+  if (set.sents?.some((s) => (s.sentType || "") === "verse"))
+    return "literature";
+  return "reading";
 }
 
 // ─── 재시도 래퍼 ─────────────────────────────────────────────
@@ -182,14 +185,15 @@ async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
     try {
       return await fn();
     } catch (err) {
-      const isRetryable = err.message?.includes('Connection') ||
-                          err.message?.includes('timeout') ||
-                          err.status === 529 ||
-                          err.status === 500;
+      const isRetryable =
+        err.message?.includes("Connection") ||
+        err.message?.includes("timeout") ||
+        err.status === 529 ||
+        err.status === 500;
       if (isRetryable && i < maxRetries - 1) {
-        console.warn(`  ⚠️ API 오류 (${i+1}/${maxRetries}): ${err.message}`);
-        console.warn(`  ${delay/1000}초 후 재시도...`);
-        await new Promise(r => setTimeout(r, delay));
+        console.warn(`  ⚠️ API 오류 (${i + 1}/${maxRetries}): ${err.message}`);
+        console.warn(`  ${delay / 1000}초 후 재시도...`);
+        await new Promise((r) => setTimeout(r, delay));
       } else {
         throw err;
       }
@@ -198,7 +202,10 @@ async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
 }
 
 function stripMarkdown(text) {
-  return text.trim().replace(/^```[a-z]*\n?/i, '').replace(/\n?```$/i, '');
+  return text
+    .trim()
+    .replace(/^```[a-z]*\n?/i, "")
+    .replace(/\n?```$/i, "");
 }
 
 function fixUnescapedQuotes(jsonStr) {
@@ -207,8 +214,8 @@ function fixUnescapedQuotes(jsonStr) {
   let i = 0;
   while (i < jsonStr.length) {
     const ch = jsonStr[i];
-    if (ch === '\\' && inString) {
-      result.push(ch, jsonStr[i + 1] || '');
+    if (ch === "\\" && inString) {
+      result.push(ch, jsonStr[i + 1] || "");
       i += 2;
       continue;
     }
@@ -218,9 +225,15 @@ function fixUnescapedQuotes(jsonStr) {
         result.push(ch);
       } else {
         let j = i + 1;
-        while (j < jsonStr.length && ' \n\r\t'.includes(jsonStr[j])) j++;
+        while (j < jsonStr.length && " \n\r\t".includes(jsonStr[j])) j++;
         const next = jsonStr[j];
-        if (next === ':' || next === ',' || next === '}' || next === ']' || j >= jsonStr.length) {
+        if (
+          next === ":" ||
+          next === "," ||
+          next === "}" ||
+          next === "]" ||
+          j >= jsonStr.length
+        ) {
           inString = false;
           result.push(ch);
         } else {
@@ -232,39 +245,59 @@ function fixUnescapedQuotes(jsonStr) {
     }
     i++;
   }
-  return result.join('');
+  return result.join("");
 }
 
 async function callClaude(pdfBase64, userPrompt, systemPrompt = SYSTEM_PROMPT) {
-  const response = await callWithRetry(() => client.messages.create(
-    {
-      model: 'claude-sonnet-4-5',
-      max_tokens: 16000,
-      system: systemPrompt,
-      messages: [{
-        role: 'user',
-        content: [
-          { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: pdfBase64 } },
-          { type: 'text', text: userPrompt },
+  const response = await callWithRetry(() =>
+    client.messages.create(
+      {
+        model: "claude-sonnet-4-5",
+        max_tokens: 16000,
+        system: systemPrompt,
+        messages: [
+          {
+            role: "user",
+            content: [
+              {
+                type: "document",
+                source: {
+                  type: "base64",
+                  media_type: "application/pdf",
+                  data: pdfBase64,
+                },
+              },
+              { type: "text", text: userPrompt },
+            ],
+          },
         ],
-      }],
-    },
-    { headers: { 'anthropic-beta': 'output-128k-2025-02-19' } }
-  ));
+      },
+      { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
+    ),
+  );
 
   const raw = response.content[0].text;
-  console.log(`[debug] stop_reason: ${response.stop_reason}, 응답 길이: ${raw.length}자`);
+  console.log(
+    `[debug] stop_reason: ${response.stop_reason}, 응답 길이: ${raw.length}자`,
+  );
 
-  const debugPath = path.resolve(__dirname, '../pipeline/debug_last_response.txt');
-  fs.writeFileSync(debugPath, raw, 'utf8');
+  const debugPath = path.resolve(
+    __dirname,
+    "../pipeline/debug_last_response.txt",
+  );
+  fs.writeFileSync(debugPath, raw, "utf8");
 
   const text = stripMarkdown(raw);
   try {
     return JSON.parse(text);
   } catch {
-    try { return JSON.parse(fixUnescapedQuotes(text)); } catch {
-      try { return JSON.parse(jsonrepair(text)); } catch (err3) {
-        console.error('JSON 파싱 실패:', err3.message);
+    try {
+      return JSON.parse(fixUnescapedQuotes(text));
+    } catch {
+      try {
+        return JSON.parse(jsonrepair(text));
+      } catch (err3) {
+        console.error("JSON 파싱 실패:", err3.message);
         throw err3;
       }
     }
@@ -276,7 +309,7 @@ async function callClaude(pdfBase64, userPrompt, systemPrompt = SYSTEM_PROMPT) {
 // Gemini는 PDF 전체를 한 번에 보고 안정적으로 추출
 
 const GEMINI_READING_PROMPT = (yearKey, lastQ) => {
-  const year = yearKey.replace(/[^0-9]/g, '');
+  const year = yearKey.replace(/[^0-9]/g, "");
   return `너는 수능 국어 시험지 PDF에서 데이터를 추출하는 전문가야.
 아래 JSON 스키마에 맞게 독서 영역(1번~17번)만 추출해줘.
 
@@ -374,7 +407,7 @@ PDF의 1번~17번 독서 전체를 추출해줘.`;
 };
 
 const GEMINI_LITERATURE_PROMPT = (yearKey, lastQ, fromQ = 18, toQ = null) => {
-  const year = yearKey.replace(/[^0-9]/g, '');
+  const year = yearKey.replace(/[^0-9]/g, "");
   const endQ = toQ || lastQ;
   return `너는 수능 국어 시험지 PDF에서 데이터를 추출하는 전문가야.
 아래 JSON 스키마에 맞게 문학 영역(${fromQ}번~${endQ}번)만 추출해줘.
@@ -487,13 +520,13 @@ PDF의 ${fromQ}번~${endQ}번 문학 영역을 추출해줘.`;
  * Claude API 대비 PDF 파싱 안정성이 높음
  */
 async function callGemini(pdfPath, prompt) {
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
   const pdfBuffer = fs.readFileSync(pdfPath);
-  const pdfBase64 = pdfBuffer.toString('base64');
+  const pdfBase64 = pdfBuffer.toString("base64");
 
   const result = await callWithRetry(async () => {
     const response = await model.generateContent([
-      { inlineData: { mimeType: 'application/pdf', data: pdfBase64 } },
+      { inlineData: { mimeType: "application/pdf", data: pdfBase64 } },
       { text: prompt },
     ]);
     return response.response.text();
@@ -501,22 +534,28 @@ async function callGemini(pdfPath, prompt) {
 
   console.log(`[debug:gemini] 응답 길이: ${result.length}자`);
 
-  const debugPath = path.resolve(__dirname, '../pipeline/debug_last_response.txt');
-  fs.writeFileSync(debugPath, result, 'utf8');
+  const debugPath = path.resolve(
+    __dirname,
+    "../pipeline/debug_last_response.txt",
+  );
+  fs.writeFileSync(debugPath, result, "utf8");
 
   const text = stripMarkdown(result);
   try {
     return JSON.parse(text);
   } catch {
-    try { return JSON.parse(fixUnescapedQuotes(text)); } catch {
-      try { return JSON.parse(jsonrepair(text)); } catch (err3) {
-        console.error('Gemini JSON 파싱 실패:', err3.message);
+    try {
+      return JSON.parse(fixUnescapedQuotes(text));
+    } catch {
+      try {
+        return JSON.parse(jsonrepair(text));
+      } catch (err3) {
+        console.error("Gemini JSON 파싱 실패:", err3.message);
         throw err3;
       }
     }
   }
 }
-
 
 /**
  * 추출된 세트 배열이 올바른지 검증한다.
@@ -535,43 +574,49 @@ export function validateExtraction(sets, section, lastQuestion) {
 
   const readingRange = { min: 1, max: 17 };
   const litRange = { min: 18, max: lastQuestion };
-  const expectedRange = section === 'reading' ? readingRange : litRange;
-  const expectedPrefix = section === 'reading' ? 'r' : 'l';
+  const expectedRange = section === "reading" ? readingRange : litRange;
+  const expectedPrefix = section === "reading" ? "r" : "l";
 
   // 중복 세트 ID 감지
-  const ids = sets.map(s => s.id);
+  const ids = sets.map((s) => s.id);
   const dupIds = ids.filter((id, i) => ids.indexOf(id) !== i);
   if (dupIds.length > 0) {
-    errors.push(`중복 세트 ID: ${[...new Set(dupIds)].join(', ')}`);
+    errors.push(`중복 세트 ID: ${[...new Set(dupIds)].join(", ")}`);
   }
 
   for (const set of sets) {
     // 1. ID 접두사 검증
     if (!set.id.startsWith(expectedPrefix)) {
-      errors.push(`[${set.id}] id 접두사 오류 — ${section}은 '${expectedPrefix}'로 시작해야 함`);
+      errors.push(
+        `[${set.id}] id 접두사 오류 — ${section}은 '${expectedPrefix}'로 시작해야 함`,
+      );
     }
 
     // 2. 문항 번호 범위 검증
     if (set.questions?.length > 0) {
-      const qIds = set.questions.map(q => q.id);
+      const qIds = set.questions.map((q) => q.id);
       const qMin = Math.min(...qIds);
       const qMax = Math.max(...qIds);
 
       if (qMin < expectedRange.min || qMax > expectedRange.max) {
-        errors.push(`[${set.id}] Q번호 범위 오류 — Q${qMin}~${qMax} (기대: ${expectedRange.min}~${expectedRange.max}번)`);
+        errors.push(
+          `[${set.id}] Q번호 범위 오류 — Q${qMin}~${qMax} (기대: ${expectedRange.min}~${expectedRange.max}번)`,
+        );
       }
     } else {
       errors.push(`[${set.id}] 문항 없음`);
     }
 
     // 3. 문학 세트에 독서 내용이 들어왔는지 감지
-    if (section === 'literature') {
-      const hasLitMarker = set.sents?.some(s =>
-        ['workTag', 'author', 'verse'].includes(s.sentType)
+    if (section === "literature") {
+      const hasLitMarker = set.sents?.some((s) =>
+        ["workTag", "author", "verse"].includes(s.sentType),
       );
       // verse/author/workTag가 전혀 없으면 독서일 가능성 높음
       if (!hasLitMarker && set.sents?.length > 3) {
-        errors.push(`[${set.id}] 문학 마커 없음 (workTag/author/verse) — 독서 지문이 잘못 추출됐을 가능성`);
+        errors.push(
+          `[${set.id}] 문학 마커 없음 (workTag/author/verse) — 독서 지문이 잘못 추출됐을 가능성`,
+        );
       }
     }
 
@@ -582,23 +627,29 @@ export function validateExtraction(sets, section, lastQuestion) {
   }
 
   // 5. 중복 Q번호 감지 (다른 세트 간 겹치는 Q번호)
-  const allQIds = sets.flatMap(s => s.questions?.map(q => q.id) || []);
+  const allQIds = sets.flatMap((s) => s.questions?.map((q) => q.id) || []);
   const dupQIds = allQIds.filter((id, i) => allQIds.indexOf(id) !== i);
   if (dupQIds.length > 0) {
-    errors.push(`중복 Q번호: ${[...new Set(dupQIds)].join(', ')} — 같은 문항이 여러 세트에 중복 추출됨`);
+    errors.push(
+      `중복 Q번호: ${[...new Set(dupQIds)].join(", ")} — 같은 문항이 여러 세트에 중복 추출됨`,
+    );
   }
 
   // 6. 마지막 문항 커버리지 체크 — 누락된 문항 구간 감지
   if (allQIds.length > 0) {
     const maxQ = Math.max(...allQIds);
     const minQ = Math.min(...allQIds);
-    const expectedMin = section === 'reading' ? 1 : 18;
-    const expectedMax = section === 'reading' ? 17 : lastQuestion;
+    const expectedMin = section === "reading" ? 1 : 18;
+    const expectedMax = section === "reading" ? 17 : lastQuestion;
     if (maxQ < expectedMax - 1) {
-      errors.push(`마지막 문항 누락 — 추출된 최대 Q: ${maxQ}, 기대: ${expectedMax}번. Q${maxQ+1}~${expectedMax} 누락`);
+      errors.push(
+        `마지막 문항 누락 — 추출된 최대 Q: ${maxQ}, 기대: ${expectedMax}번. Q${maxQ + 1}~${expectedMax} 누락`,
+      );
     }
     if (minQ > expectedMin + 1) {
-      errors.push(`첫 문항 누락 — 추출된 최소 Q: ${minQ}, 기대: ${expectedMin}번`);
+      errors.push(
+        `첫 문항 누락 — 추출된 최소 Q: ${minQ}, 기대: ${expectedMin}번`,
+      );
     }
   }
 
@@ -607,45 +658,55 @@ export function validateExtraction(sets, section, lastQuestion) {
 
 // ─── 구형 포맷 추출 ───────────────────────────────────────────
 async function extractLegacy(pdfBase64, yearKey) {
-  const year = yearKey.replace(/[^0-9]/g, '');
+  const year = yearKey.replace(/[^0-9]/g, "");
 
   console.log(`[step2] 구형 포맷 감지 — 16~27번 추출 중...`);
-  const batch1 = await callClaude(pdfBase64,
+  const batch1 = await callClaude(
+    pdfBase64,
     `이 시험지의 16번~27번을 추출해줘. id는 set_a, set_b, set_c 순으로 사용해.`,
-    LEGACY_SYSTEM_PROMPT);
+    LEGACY_SYSTEM_PROMPT,
+  );
 
   console.log(`[step2] 구형 포맷 — 28~39번 추출 중...`);
-  const batch2 = await callClaude(pdfBase64,
+  const batch2 = await callClaude(
+    pdfBase64,
     `이 시험지의 28번~39번을 추출해줘. id는 set_d, set_e, set_f 순으로 사용해.`,
-    LEGACY_SYSTEM_PROMPT);
+    LEGACY_SYSTEM_PROMPT,
+  );
 
   console.log(`[step2] 구형 포맷 — 40~45번 추출 중...`);
-  const batch3 = await callClaude(pdfBase64,
+  const batch3 = await callClaude(
+    pdfBase64,
     `이 시험지의 40번~45번을 추출해줘. id는 set_g, set_h 순으로 사용해.`,
-    LEGACY_SYSTEM_PROMPT);
+    LEGACY_SYSTEM_PROMPT,
+  );
 
   const allSets = [...batch1, ...batch2, ...batch3];
-  const reading = [], literature = [];
-  let rIdx = 0, lIdx = 0;
-  const letters = 'abcdefgh';
+  const reading = [],
+    literature = [];
+  let rIdx = 0,
+    lIdx = 0;
+  const letters = "abcdefgh";
 
   for (const set of allSets) {
     const sec = classifySection(set);
-    const idx = sec === 'literature' ? lIdx++ : rIdx++;
+    const idx = sec === "literature" ? lIdx++ : rIdx++;
     const letter = letters[idx] || letters[letters.length - 1];
-    const prefix = sec === 'literature' ? 'l' : 'r';
+    const prefix = sec === "literature" ? "l" : "r";
     const newId = `${prefix}${year}${letter}`;
     set.id = newId;
     set.sents = set.sents.map((s, i) => ({ ...s, id: `${newId}s${i + 1}` }));
-    set.vocab = (set.vocab || []).map(v => {
-      const idx2 = parseInt((v.sentId || '').replace(/\D/g, ''), 10) || 1;
+    set.vocab = (set.vocab || []).map((v) => {
+      const idx2 = parseInt((v.sentId || "").replace(/\D/g, ""), 10) || 1;
       return { ...v, sentId: `${newId}s${idx2}` };
     });
-    if (sec === 'literature') literature.push(set);
+    if (sec === "literature") literature.push(set);
     else reading.push(set);
   }
 
-  console.log(`[step2] 분류 결과: reading ${reading.length}세트, literature ${literature.length}세트`);
+  console.log(
+    `[step2] 분류 결과: reading ${reading.length}세트, literature ${literature.length}세트`,
+  );
   return { reading, literature };
 }
 
@@ -660,16 +721,23 @@ async function extractLegacy(pdfBase64, yearKey) {
  * - 검증 실패 시 즉시 throw (잘못된 데이터가 캐시에 저장되지 않음)
  * - lastQuestion은 answer_key에서 자동 추론 가능
  */
-export async function extractStructure(pdfPath, yearKey, lastQuestion = 45, section = 'all', dataDir = null) {
-  const year = yearKey.replace(/[^0-9]/g, '');
+export async function extractStructure(
+  pdfPath,
+  yearKey,
+  lastQuestion = 45,
+  section = "all",
+  dataDir = null,
+) {
+  const year = yearKey.replace(/[^0-9]/g, "");
 
   if (isLegacyFormat(yearKey)) {
     console.log(`[step2] 구형 수능 포맷 (${yearKey}) — 16~45번 통합 추출`);
     const pdfBuffer = fs.readFileSync(pdfPath);
-    return extractLegacy(pdfBuffer.toString('base64'), yearKey);
+    return extractLegacy(pdfBuffer.toString("base64"), yearKey);
   }
 
-  const targetSections = section === 'all' ? ['reading', 'literature'] : [section];
+  const targetSections =
+    section === "all" ? ["reading", "literature"] : [section];
   const result = { reading: [], literature: [] };
 
   for (const sec of targetSections) {
@@ -680,25 +748,37 @@ export async function extractStructure(pdfPath, yearKey, lastQuestion = 45, sect
 
     if (cachePath && fs.existsSync(cachePath)) {
       console.log(`  📂 캐시 로드 (${sec}): ${path.basename(cachePath)}`);
-      result[sec] = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
+      result[sec] = JSON.parse(fs.readFileSync(cachePath, "utf8"));
       continue;
     }
 
     // ── ★ Gemini API 추출 ──
     let sets;
-    if (sec === 'reading') {
+    if (sec === "reading") {
       console.log(`[step2] 독서 영역 추출 중 (Gemini, 1~17번)...`);
-      sets = await callGemini(pdfPath, GEMINI_READING_PROMPT(yearKey, lastQuestion));
+      sets = await callGemini(
+        pdfPath,
+        GEMINI_READING_PROMPT(yearKey, lastQuestion),
+      );
     } else {
       // 문학: 1차 전체 호출
-      console.log(`[step2] 문학 영역 1차 추출 중 (Gemini, 18~${lastQuestion}번)...`);
-      const lit1 = await callGemini(pdfPath, GEMINI_LITERATURE_PROMPT(yearKey, lastQuestion));
-      const year = yearKey.replace(/[^0-9]/g, '');
-      const litIds = ['a','b','c','d'];
-      lit1.forEach((s,i) => { if(litIds[i]) s.id = `l${year}${litIds[i]}`; });
+      console.log(
+        `[step2] 문학 영역 1차 추출 중 (Gemini, 18~${lastQuestion}번)...`,
+      );
+      const lit1 = await callGemini(
+        pdfPath,
+        GEMINI_LITERATURE_PROMPT(yearKey, lastQuestion),
+      );
+      const year = yearKey.replace(/[^0-9]/g, "");
+      const litIds = ["a", "b", "c", "d"];
+      lit1.forEach((s, i) => {
+        if (litIds[i]) s.id = `l${year}${litIds[i]}`;
+      });
 
       // 추출된 Q번호 커버리지 확인
-      const coveredQs = new Set(lit1.flatMap(s => s.questions?.map(q => q.id) || []));
+      const coveredQs = new Set(
+        lit1.flatMap((s) => s.questions?.map((q) => q.id) || []),
+      );
       const missingQs = [];
       for (let q = 18; q <= lastQuestion; q++) {
         if (!coveredQs.has(q)) missingQs.push(q);
@@ -706,28 +786,41 @@ export async function extractStructure(pdfPath, yearKey, lastQuestion = 45, sect
 
       if (missingQs.length > 0) {
         const maxCovered = Math.max(...coveredQs);
-        console.log(`  ⚠️  미추출 Q번호: ${missingQs.join(',')} — 2차 호출로 보충`);
+        console.log(
+          `  ⚠️  미추출 Q번호: ${missingQs.join(",")} — 2차 호출로 보충`,
+        );
 
         const lastSet = lit1[lit1.length - 1];
         const lastSents = lastSet?.sents || [];
-        const lastAuthor = lastSents.find(s => s.sentType === 'author')?.t || '';
-        const lastBodySent = [...lastSents].reverse().find(s => ['body','verse'].includes(s.sentType));
+        const lastAuthor =
+          lastSents.find((s) => s.sentType === "author")?.t || "";
+        const lastBodySent = [...lastSents]
+          .reverse()
+          .find((s) => ["body", "verse"].includes(s.sentType));
         const lastText = lastBodySent?.t?.slice(-50) || lastAuthor;
 
-        const extractedSummary = lit1.map(s => {
-          const qs = s.questions?.map(q => q.id) || [];
-          return `Q${Math.min(...qs)}~${Math.max(...qs)}: "${s.title}"`;
-        }).join(', ');
+        const extractedSummary = lit1
+          .map((s) => {
+            const qs = s.questions?.map((q) => q.id) || [];
+            return `Q${Math.min(...qs)}~${Math.max(...qs)}: "${s.title}"`;
+          })
+          .join(", ");
 
         // ★ GEMINI_LITERATURE_PROMPT와 동일한 완전한 스키마 + 위치 힌트
-        const prompt2 = GEMINI_LITERATURE_PROMPT(yearKey, lastQuestion, maxCovered+1, lastQuestion) +
+        const prompt2 =
+          GEMINI_LITERATURE_PROMPT(
+            yearKey,
+            lastQuestion,
+            maxCovered + 1,
+            lastQuestion,
+          ) +
           `\n\n[이미 추출 완료 — 절대 다시 추출하지 마라]\n${extractedSummary}` +
           `\n\n[시작 위치]\n다음 텍스트 이후부터 추출해줘: "${lastText}"`;
 
         const lit2 = await callGemini(pdfPath, prompt2);
 
         // ★ ID 강제 재할당 (1차 결과 이후 순서로)
-        const allIds = 'abcdefgh'.split('');
+        const allIds = "abcdefgh".split("");
         const startIdx = lit1.length;
         lit2.forEach((s, i) => {
           s.id = `l${year}${allIds[startIdx + i] || String.fromCharCode(97 + startIdx + i)}`;
@@ -744,15 +837,15 @@ export async function extractStructure(pdfPath, yearKey, lastQuestion = 45, sect
     const { valid, errors } = validateExtraction(sets, sec, lastQuestion);
     if (!valid) {
       console.error(`\n❌ [step2] ${sec} 추출 검증 실패:`);
-      errors.forEach(e => console.error(`  - ${e}`));
+      errors.forEach((e) => console.error(`  - ${e}`));
       console.error(`\n  캐시에 저장하지 않습니다. 재실행 시 다시 추출합니다.`);
-      throw new Error(`step2 ${sec} 추출 검증 실패: ${errors.join(' | ')}`);
+      throw new Error(`step2 ${sec} 추출 검증 실패: ${errors.join(" | ")}`);
     }
 
     console.log(`  ✅ ${sec} 검증 통과 (${sets.length}세트)`);
 
     if (cachePath) {
-      fs.writeFileSync(cachePath, JSON.stringify(sets, null, 2), 'utf8');
+      fs.writeFileSync(cachePath, JSON.stringify(sets, null, 2), "utf8");
       console.log(`  💾 저장: ${path.basename(cachePath)}`);
     }
 
@@ -767,14 +860,19 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const pdfPath = process.argv[2];
   const yearKey = process.argv[3];
   const lastQuestion = parseInt(process.argv[4]) || 45;
-  const section = process.argv[5] || 'all';
+  const section = process.argv[5] || "all";
 
   if (!pdfPath || !yearKey) {
-    console.error('사용법: node pipeline/step2_extract.js <시험지PDF> <연도키> [마지막문항] [섹션]');
+    console.error(
+      "사용법: node pipeline/step2_extract.js <시험지PDF> <연도키> [마지막문항] [섹션]",
+    );
     process.exit(1);
   }
 
   extractStructure(pdfPath, yearKey, lastQuestion, section)
-    .then(result => console.log(JSON.stringify(result, null, 2)))
-    .catch(err => { console.error('오류:', err.message); process.exit(1); });
+    .then((result) => console.log(JSON.stringify(result, null, 2)))
+    .catch((err) => {
+      console.error("오류:", err.message);
+      process.exit(1);
+    });
 }

@@ -26,111 +26,163 @@
  *   - pat 분류 불가 (ok:false + analysis 키워드 없음)
  */
 
-import fs   from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
 
 // ─── 인라인 헬퍼 (step2_postprocess / step3_rules 핵심 로직 내장) ─────────────
 const NEG_PATTERNS = [
-  '않은','않는','틀린','아닌','없는','거리가 먼','잘못','적절하지',
-  '맞지 않','옳지 않','부적절','해당하지','일치하지','어색한',
-  '알 수 없는','옳지않','적합하지',
+  "않은",
+  "않는",
+  "틀린",
+  "아닌",
+  "없는",
+  "거리가 먼",
+  "잘못",
+  "적절하지",
+  "맞지 않",
+  "옳지 않",
+  "부적절",
+  "해당하지",
+  "일치하지",
+  "어색한",
+  "알 수 없는",
+  "옳지않",
+  "적합하지",
 ];
 function detectQuestionType(t) {
-  for (const p of NEG_PATTERNS) if ((t||'').includes(p)) return 'negative';
-  return 'positive';
+  for (const p of NEG_PATTERNS) if ((t || "").includes(p)) return "negative";
+  return "positive";
 }
 function splitBogiFromQt(q) {
-  const t = q.t || '';
+  const t = q.t || "";
   const bogiIdx = t.search(/<보\s기>/);
   if (bogiIdx !== -1) {
-    if (!q.bogi || q.bogi === '') q.bogi = t.slice(bogiIdx).trim();
+    if (!q.bogi || q.bogi === "") q.bogi = t.slice(bogiIdx).trim();
     q.t = t.slice(0, bogiIdx).trim();
     return true;
   }
-  const first  = t.indexOf('<학습 활동>');
-  const second = first !== -1 ? t.indexOf('<학습 활동>', first + 1) : -1;
-  if (second !== -1 && (!q.bogi || q.bogi === '')) {
+  const first = t.indexOf("<학습 활동>");
+  const second = first !== -1 ? t.indexOf("<학습 활동>", first + 1) : -1;
+  if (second !== -1 && (!q.bogi || q.bogi === "")) {
     q.bogi = t.slice(second).trim();
-    q.t    = t.slice(0, second).trim();
+    q.t = t.slice(0, second).trim();
     return true;
   }
   return false;
 }
 function cleanChoiceText(c) {
-  let t = c.t || '';
+  let t = c.t || "";
   const before = t;
-  t = t.replace(/\s+\d{1,2}\s+\d\s*$/, '').trim();
-  t = t.replace(/\s*20\s+이 문제지에 관한 저작권은.*$/, '').trim();
-  t = t.replace(/\s*\*\s*확인 사항[\s\S]*$/, '').trim();
-  t = t.replace(/\s*\[\d+[～~]\d+\][\s\S]*$/, '').trim();
+  t = t.replace(/\s+\d{1,2}\s+\d\s*$/, "").trim();
+  t = t.replace(/\s*20\s+이 문제지에 관한 저작권은.*$/, "").trim();
+  t = t.replace(/\s*\*\s*확인 사항[\s\S]*$/, "").trim();
+  t = t.replace(/\s*\[\d+[～~]\d+\][\s\S]*$/, "").trim();
   c.t = t;
   return t !== before;
 }
 function isEmptyChoice(c) {
   return !c.t?.trim() || /^\s*\d\s*$/.test(c.t);
 }
-const NEG_CONTENT = ['어긋나','틀리','왜곡','오류','잘못','부적절','맞지 않'];
-const POS_CONTENT = ['일치','적절한','올바르','합당'];
+const NEG_CONTENT = [
+  "어긋나",
+  "틀리",
+  "왜곡",
+  "오류",
+  "잘못",
+  "부적절",
+  "맞지 않",
+];
+const POS_CONTENT = ["일치", "적절한", "올바르", "합당"];
 
 function detectPatFromAnalysis(analysis, sec) {
   const a = analysis;
-  if (/\[오류유형[①②③]/.test(a) || a.includes('[L5]') || a.includes('📌 보기 근거')) return 'L5';
-  if (a.includes('심리 오독') || a.includes('정서오독') || a.includes('[L2]')) return 'L2';
-  if (a.includes('팩트 왜곡') || a.includes('개념 짜깁기') || a.includes('[L1]') ||
-      a.includes('사실 왜곡') || a.includes('[R1]')) return sec === 'reading' ? 'R1' : 'L1';
-  if (a.includes('관계·인과') || a.includes('인과 전도') || a.includes('[L4]') || a.includes('[R2]'))
-    return sec === 'reading' ? 'R2' : 'L4';
-  if (a.includes('과도한 추론') || a.includes('[L3]') || a.includes('[R3]') || a.includes('지문에 없'))
-    return sec === 'reading' ? 'R3' : 'L3';
-  if (a.includes('개념 혼합') || a.includes('[R4]')) return sec === 'reading' ? 'R4' : 'L1';
-  if (a.includes('구조') || a.includes('대비') || a.includes('[L4]')) return 'L4';
-  if (a.includes('정서') || a.includes('감정') || a.includes('심리')) return 'L2';
+  if (
+    /\[오류유형[①②③]/.test(a) ||
+    a.includes("[L5]") ||
+    a.includes("📌 보기 근거")
+  )
+    return "L5";
+  if (a.includes("심리 오독") || a.includes("정서오독") || a.includes("[L2]"))
+    return "L2";
+  if (
+    a.includes("팩트 왜곡") ||
+    a.includes("개념 짜깁기") ||
+    a.includes("[L1]") ||
+    a.includes("사실 왜곡") ||
+    a.includes("[R1]")
+  )
+    return sec === "reading" ? "R1" : "L1";
+  if (
+    a.includes("관계·인과") ||
+    a.includes("인과 전도") ||
+    a.includes("[L4]") ||
+    a.includes("[R2]")
+  )
+    return sec === "reading" ? "R2" : "L4";
+  if (
+    a.includes("과도한 추론") ||
+    a.includes("[L3]") ||
+    a.includes("[R3]") ||
+    a.includes("지문에 없")
+  )
+    return sec === "reading" ? "R3" : "L3";
+  if (a.includes("개념 혼합") || a.includes("[R4]"))
+    return sec === "reading" ? "R4" : "L1";
+  if (a.includes("구조") || a.includes("대비") || a.includes("[L4]"))
+    return "L4";
+  if (a.includes("정서") || a.includes("감정") || a.includes("심리"))
+    return "L2";
   return null;
 }
 
 function fixAnalysisConclusion(ana, ok) {
-  const lines = ana.split('\n');
+  const lines = ana.split("\n");
   for (let i = lines.length - 1; i >= 0; i--) {
-    if (!lines[i].includes('✅') && !lines[i].includes('❌')) continue;
-    if (ok === true && lines[i].includes('❌')) {
+    if (!lines[i].includes("✅") && !lines[i].includes("❌")) continue;
+    if (ok === true && lines[i].includes("❌")) {
       lines[i] = lines[i]
-        .replace(/❌.*\[.*?\]\s*$/, '✅ 지문과 일치하는 적절한 진술')
-        .replace(/❌.*$/, '✅ 지문과 일치하는 적절한 진술');
-    } else if (ok === false && lines[i].includes('✅')) {
-      lines[i] = lines[i].replace(/✅.*$/, '❌ 지문과 어긋나는 부적절한 진술[?]');
+        .replace(/❌.*\[.*?\]\s*$/, "✅ 지문과 일치하는 적절한 진술")
+        .replace(/❌.*$/, "✅ 지문과 일치하는 적절한 진술");
+    } else if (ok === false && lines[i].includes("✅")) {
+      lines[i] = lines[i].replace(
+        /✅.*$/,
+        "❌ 지문과 어긋나는 부적절한 진술[?]",
+      );
     }
     break;
   }
-  return lines.join('\n');
+  return lines.join("\n");
 }
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-dotenv.config({ path: path.resolve(__dirname, '../.env'), override: true });
+dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
-const DATA_PATH  = path.resolve(__dirname, '../src/data/all_data_204.json');
-const ANN_PATH   = path.resolve(__dirname, '../src/data/annotations.json');
-const BACKUP_DIR = path.resolve(__dirname, '../pipeline/backups');
+const DATA_PATH = path.resolve(__dirname, "../src/data/all_data_204.json");
+const ANN_PATH = path.resolve(__dirname, "../src/data/annotations.json");
+const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
 
-const args    = process.argv.slice(2);
-const FIX     = args.includes('--fix');
-const REPORT  = args.includes('--report');
-const YEAR    = args.find(a => !a.startsWith('--'));
+const args = process.argv.slice(2);
+const FIX = args.includes("--fix");
+const REPORT = args.includes("--report");
+const YEAR = args.find((a) => !a.startsWith("--"));
 
 // ─── 로드 ────────────────────────────────────────────────────────────────────
-const raw  = fs.readFileSync(DATA_PATH, 'utf8');
+const raw = fs.readFileSync(DATA_PATH, "utf8");
 const data = JSON.parse(raw);
 
 let ann = null;
-try { ann = JSON.parse(fs.readFileSync(ANN_PATH, 'utf8')); } catch {}
+try {
+  ann = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));
+} catch {}
 
 // ─── 결과 수집 ────────────────────────────────────────────────────────────────
-const issues   = [];  // 발견된 문제 전체
+const issues = []; // 발견된 문제 전체
 const autoFixed = []; // 자동 수정된 항목
-const manual   = [];  // 수동 처리 필요 항목
+const manual = []; // 수동 처리 필요 항목
 
-function issue(type, yearKey, loc, message, severity = 'warn') {
+function issue(type, yearKey, loc, message, severity = "warn") {
   issues.push({ type, yearKey, loc, message, severity });
 }
 function fixed(type, yearKey, loc, message) {
@@ -143,38 +195,43 @@ function needsManual(type, yearKey, loc, message) {
 // ─── sentId 유효 세트 수집 ────────────────────────────────────────────────────
 const validSentIds = new Set();
 for (const yd of Object.values(data))
-  for (const sec of ['reading','literature'])
-    for (const s of (yd[sec] || []))
-      for (const sent of (s.sents || []))
-        validSentIds.add(sent.id);
+  for (const sec of ["reading", "literature"])
+    for (const s of yd[sec] || [])
+      for (const sent of s.sents || []) validSentIds.add(sent.id);
 
 // ─── 메인 순회 ────────────────────────────────────────────────────────────────
-const yearsToCheck = YEAR
-  ? [YEAR]
-  : Object.keys(data);
+const yearsToCheck = YEAR ? [YEAR] : Object.keys(data);
 
 for (const yearKey of yearsToCheck) {
-  if (!data[yearKey]) { console.warn(`⚠️  ${yearKey} 없음`); continue; }
+  if (!data[yearKey]) {
+    console.warn(`⚠️  ${yearKey} 없음`);
+    continue;
+  }
 
-  for (const sec of ['reading','literature']) {
-    for (const set of (data[yearKey][sec] || [])) {
+  for (const sec of ["reading", "literature"]) {
+    for (const set of data[yearKey][sec] || []) {
       for (const q of set.questions) {
         const qLoc = `${yearKey} ${set.id} Q${q.id}`;
 
         // ── A: q.t 보기 혼재 ──────────────────────────────────────────────
-        const beforeT = q.t || '';
+        const beforeT = q.t || "";
         if (FIX) splitBogiFromQt(q);
-        if ((q.t || '').length < beforeT.length) {
-          fixed('A_bogi_split', yearKey, qLoc, `q.t에서 보기 분리`);
+        if ((q.t || "").length < beforeT.length) {
+          fixed("A_bogi_split", yearKey, qLoc, `q.t에서 보기 분리`);
         }
 
         // ── B: questionType 누락 ──────────────────────────────────────────
-        if (!q.questionType || q.questionType === 'N/A') {
+        if (!q.questionType || q.questionType === "N/A") {
           const detected = detectQuestionType(q.t);
-          issue('B_qt_missing', yearKey, qLoc, `questionType 없음 → 감지: ${detected}`);
+          issue(
+            "B_qt_missing",
+            yearKey,
+            qLoc,
+            `questionType 없음 → 감지: ${detected}`,
+          );
           if (FIX) {
             q.questionType = detected;
-            fixed('B_qt_set', yearKey, qLoc, `questionType → ${detected}`);
+            fixed("B_qt_set", yearKey, qLoc, `questionType → ${detected}`);
           }
         }
 
@@ -182,83 +239,126 @@ for (const yearKey of yearsToCheck) {
           const cLoc = `${qLoc}-[${c.num}]`;
 
           // ── C: 선지 오염 텍스트 ────────────────────────────────────────
-          const before = c.t || '';
+          const before = c.t || "";
           const wasCleaned = cleanChoiceText(c);
           if (wasCleaned) {
-            issue('C_choice_pollution', yearKey, cLoc, `선지 오염: "${before.slice(-30)}"`);
-            if (!FIX) { c.t = before; }
-            else { fixed('C_cleaned', yearKey, cLoc, '오염 제거'); }
+            issue(
+              "C_choice_pollution",
+              yearKey,
+              cLoc,
+              `선지 오염: "${before.slice(-30)}"`,
+            );
+            if (!FIX) {
+              c.t = before;
+            } else {
+              fixed("C_cleaned", yearKey, cLoc, "오염 제거");
+            }
           }
 
           // ── C-2: 선지 내용 없음 ────────────────────────────────────────
           if (isEmptyChoice(c)) {
-            needsManual('C_empty_choice', yearKey, cLoc, '선지 내용 없음 (표 파싱 실패) → 수동 입력 필요');
+            needsManual(
+              "C_empty_choice",
+              yearKey,
+              cLoc,
+              "선지 내용 없음 (표 파싱 실패) → 수동 입력 필요",
+            );
           }
 
           // ── D: ok:true + pat 있음 ──────────────────────────────────────
           if (c.ok === true && c.pat !== null && c.pat !== undefined) {
-            issue('D_true_has_pat', yearKey, cLoc, `ok:true인데 pat:${c.pat}`);
-            if (FIX) { c.pat = null; fixed('D_pat_null', yearKey, cLoc, 'pat → null'); }
+            issue("D_true_has_pat", yearKey, cLoc, `ok:true인데 pat:${c.pat}`);
+            if (FIX) {
+              c.pat = null;
+              fixed("D_pat_null", yearKey, cLoc, "pat → null");
+            }
           }
 
           // ── E: ok:false + pat 없음/0 ───────────────────────────────────
-          if (c.ok === false && (!c.pat || c.pat === '0' || c.pat === 0)) {
-            const detected = detectPatFromAnalysis(c.analysis || '', sec);
+          if (c.ok === false && (!c.pat || c.pat === "0" || c.pat === 0)) {
+            const detected = detectPatFromAnalysis(c.analysis || "", sec);
             if (detected) {
-              issue('E_pat_zero', yearKey, cLoc, `pat:0 → 감지: ${detected}`);
-              if (FIX) { c.pat = detected; fixed('E_pat_classified', yearKey, cLoc, `pat → ${detected}`); }
+              issue("E_pat_zero", yearKey, cLoc, `pat:0 → 감지: ${detected}`);
+              if (FIX) {
+                c.pat = detected;
+                fixed("E_pat_classified", yearKey, cLoc, `pat → ${detected}`);
+              }
             } else {
-              needsManual('E_pat_unclassifiable', yearKey, cLoc, 'pat 분류 불가 → 수동 확인');
+              needsManual(
+                "E_pat_unclassifiable",
+                yearKey,
+                cLoc,
+                "pat 분류 불가 → 수동 확인",
+              );
             }
           }
 
           // ── F: analysis 결론 vs ok 불일치 ─────────────────────────────
-          const ana = c.analysis || '';
-          const hasOkMark   = ana.includes('✅');
-          const hasFailMark = ana.includes('❌');
+          const ana = c.analysis || "";
+          const hasOkMark = ana.includes("✅");
+          const hasFailMark = ana.includes("❌");
           const conclusionMismatch =
-            (c.ok === true  && hasFailMark && !hasOkMark) ||
-            (c.ok === false && hasOkMark   && !hasFailMark);
+            (c.ok === true && hasFailMark && !hasOkMark) ||
+            (c.ok === false && hasOkMark && !hasFailMark);
 
           if (conclusionMismatch) {
-            issue('F_conclusion_mismatch', yearKey, cLoc,
-              `ok:${c.ok} ↔ analysis 결론 불일치`);
+            issue(
+              "F_conclusion_mismatch",
+              yearKey,
+              cLoc,
+              `ok:${c.ok} ↔ analysis 결론 불일치`,
+            );
             if (FIX) {
               c.analysis = fixAnalysisConclusion(ana, c.ok);
-              fixed('F_conclusion_fixed', yearKey, cLoc, '결론 줄 수정');
+              fixed("F_conclusion_fixed", yearKey, cLoc, "결론 줄 수정");
             }
           }
 
           // ── F-2: analysis 내용 반전 (🔍 내용) ─────────────────────────
-          const NEG_RE = /(?<!부)적절하지\s*않|어긋나|틀리[다는]|왜곡|오류|잘못[된하]|부적절/;
+          const NEG_RE =
+            /(?<!부)적절하지\s*않|어긋나|틀리[다는]|왜곡|오류|잘못[된하]|부적절/;
           const POS_RE = /(?<!부)적절[한하]|(?<!불)일치|올바르|합당/;
-          const heuristic = ana.replace(/📌.*?\n/g, '');
+          const heuristic = ana.replace(/📌.*?\n/g, "");
           const contentReversed =
-            (c.ok === true  && NEG_RE.test(heuristic)) ||
+            (c.ok === true && NEG_RE.test(heuristic)) ||
             (c.ok === false && POS_RE.test(heuristic));
 
           if (contentReversed && !conclusionMismatch) {
-            needsManual('F_content_reversed', yearKey, cLoc,
-              '🔍 내용 반전 → reanalyze_positive.mjs 재실행 필요');
+            needsManual(
+              "F_content_reversed",
+              yearKey,
+              cLoc,
+              "🔍 내용 반전 → reanalyze_positive.mjs 재실행 필요",
+            );
           }
 
           // ── F-3: analysis 비어있음 ─────────────────────────────────────
           if (!ana.trim()) {
-            needsManual('F_empty_analysis', yearKey, cLoc, 'analysis 비어있음 → step3 재실행 필요');
+            needsManual(
+              "F_empty_analysis",
+              yearKey,
+              cLoc,
+              "analysis 비어있음 → step3 재실행 필요",
+            );
           }
 
           // ── DEAD cs_ids ────────────────────────────────────────────────
-          for (const csId of (c.cs_ids || [])) {
+          for (const csId of c.cs_ids || []) {
             if (!validSentIds.has(csId)) {
-              needsManual('DEAD_csid', yearKey, cLoc, `DEAD cs_id: ${csId}`);
+              needsManual("DEAD_csid", yearKey, cLoc, `DEAD cs_id: ${csId}`);
             }
           }
         }
 
         // ── bogi 없는 보기 문항 경고 ─────────────────────────────────────
-        const hasBogiKeyword = /<보기>|<보\s기>|<학습\s활동>/.test(q.t || '');
+        const hasBogiKeyword = /<보기>|<보\s기>|<학습\s활동>/.test(q.t || "");
         if (hasBogiKeyword && !q.bogi) {
-          needsManual('G_missing_bogi', yearKey, qLoc, '보기 문항인데 bogi 없음');
+          needsManual(
+            "G_missing_bogi",
+            yearKey,
+            qLoc,
+            "보기 문항인데 bogi 없음",
+          );
         }
       }
     }
@@ -270,22 +370,46 @@ if (ann) {
   for (const [yearKey, yearAnn] of Object.entries(ann)) {
     for (const [setKey, items] of Object.entries(yearAnn)) {
       for (const item of items) {
-        for (const field of ['sentId','sentFrom','sentTo']) {
+        for (const field of ["sentId", "sentFrom", "sentTo"]) {
           const sid = item[field];
           if (!sid || validSentIds.has(sid)) continue;
 
           // 자동 수정 시도
-          const fix1 = sid.replace(/^([a-zA-Z]+\d{4}[a-z])(s\d+)$/, '$1_$2');
-          const fix2 = sid.replace(/^([rl])2022j([abcd])(s\d+)$/, (_, r, l, s) => `${r}20226${l}_${s}`);
+          const fix1 = sid.replace(/^([a-zA-Z]+\d{4}[a-z])(s\d+)$/, "$1_$2");
+          const fix2 = sid.replace(
+            /^([rl])2022j([abcd])(s\d+)$/,
+            (_, r, l, s) => `${r}20226${l}_${s}`,
+          );
 
           if (validSentIds.has(fix1)) {
-            issue('G_ann_sentid', yearKey, `${setKey}[${field}]`, `${sid} → ${fix1}`);
-            if (FIX) { item[field] = fix1; fixed('G_ann_fixed', yearKey, `${setKey}`, `${sid}→${fix1}`); }
+            issue(
+              "G_ann_sentid",
+              yearKey,
+              `${setKey}[${field}]`,
+              `${sid} → ${fix1}`,
+            );
+            if (FIX) {
+              item[field] = fix1;
+              fixed("G_ann_fixed", yearKey, `${setKey}`, `${sid}→${fix1}`);
+            }
           } else if (validSentIds.has(fix2)) {
-            issue('G_ann_sentid', yearKey, `${setKey}[${field}]`, `${sid} → ${fix2}`);
-            if (FIX) { item[field] = fix2; fixed('G_ann_fixed', yearKey, `${setKey}`, `${sid}→${fix2}`); }
+            issue(
+              "G_ann_sentid",
+              yearKey,
+              `${setKey}[${field}]`,
+              `${sid} → ${fix2}`,
+            );
+            if (FIX) {
+              item[field] = fix2;
+              fixed("G_ann_fixed", yearKey, `${setKey}`, `${sid}→${fix2}`);
+            }
           } else {
-            needsManual('G_ann_dead', yearKey, `${setKey}[${field}]`, `DEAD sentId: ${sid}`);
+            needsManual(
+              "G_ann_dead",
+              yearKey,
+              `${setKey}[${field}]`,
+              `DEAD sentId: ${sid}`,
+            );
           }
         }
       }
@@ -295,11 +419,17 @@ if (ann) {
 
 // ─── 결과 출력 ────────────────────────────────────────────────────────────────
 // chalk 불필요 — 단순 텍스트 출력
-const chalk = { red: s=>s, yellow: s=>s, green: s=>s, cyan: s=>s, bold: s=>s };
+const chalk = {
+  red: (s) => s,
+  yellow: (s) => s,
+  green: (s) => s,
+  cyan: (s) => s,
+  bold: (s) => s,
+};
 
-console.log('\n' + '═'.repeat(60));
-console.log(' QUALITY GATE REPORT');
-console.log('═'.repeat(60));
+console.log("\n" + "═".repeat(60));
+console.log(" QUALITY GATE REPORT");
+console.log("═".repeat(60));
 
 // 연도별 이슈 집계
 const issuesByYear = {};
@@ -308,26 +438,29 @@ for (const iss of issues) {
   issuesByYear[iss.yearKey]++;
 }
 
-console.log('\n[ 연도별 이슈 ]');
+console.log("\n[ 연도별 이슈 ]");
 for (const [y, cnt] of Object.entries(issuesByYear)) {
-  const status = cnt === 0 ? '✅' : '🔴';
+  const status = cnt === 0 ? "✅" : "🔴";
   console.log(`  ${status} ${y}: ${cnt}건`);
 }
 
 console.log(`\n[ 자동수정 가능: ${issues.length}건 ]`);
 const typeCount = {};
-for (const iss of issues) typeCount[iss.type] = (typeCount[iss.type]||0)+1;
-for (const [t, cnt] of Object.entries(typeCount)) console.log(`  ${t}: ${cnt}건`);
+for (const iss of issues) typeCount[iss.type] = (typeCount[iss.type] || 0) + 1;
+for (const [t, cnt] of Object.entries(typeCount))
+  console.log(`  ${t}: ${cnt}건`);
 
 console.log(`\n[ 수동 처리 필요: ${manual.length}건 ]`);
 const manualByType = {};
-for (const m of manual) manualByType[m.type] = (manualByType[m.type]||0)+1;
-for (const [t, cnt] of Object.entries(manualByType)) console.log(`  ${t}: ${cnt}건`);
+for (const m of manual) manualByType[m.type] = (manualByType[m.type] || 0) + 1;
+for (const [t, cnt] of Object.entries(manualByType))
+  console.log(`  ${t}: ${cnt}건`);
 
 if (manual.length > 0 && !REPORT) {
-  console.log('\n  상세:');
-  for (const m of manual.slice(0, 20)) console.log(`    ${m.yearKey} ${m.loc}: ${m.message}`);
-  if (manual.length > 20) console.log(`    ... 외 ${manual.length-20}건`);
+  console.log("\n  상세:");
+  for (const m of manual.slice(0, 20))
+    console.log(`    ${m.yearKey} ${m.loc}: ${m.message}`);
+  if (manual.length > 20) console.log(`    ... 외 ${manual.length - 20}건`);
 }
 
 if (FIX) {
@@ -335,21 +468,27 @@ if (FIX) {
 
   // 저장
   if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
-  const ts = new Date().toISOString().replace(/[:.]/g,'-').slice(0,19);
-  fs.writeFileSync(path.join(BACKUP_DIR, `all_data_204_backup_${ts}.json`), raw);
-  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), 'utf8');
-  if (ann) fs.writeFileSync(ANN_PATH, JSON.stringify(ann, null, 2), 'utf8');
-  console.log('✅ 파일 저장 완료 (백업 포함)');
+  const ts = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
+  fs.writeFileSync(
+    path.join(BACKUP_DIR, `all_data_204_backup_${ts}.json`),
+    raw,
+  );
+  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
+  if (ann) fs.writeFileSync(ANN_PATH, JSON.stringify(ann, null, 2), "utf8");
+  console.log("✅ 파일 저장 완료 (백업 포함)");
 }
 
 if (REPORT) {
-  const reportPath = path.resolve(__dirname, '../pipeline/quality_report.json');
-  fs.writeFileSync(reportPath, JSON.stringify({ issues, autoFixed, manual }, null, 2));
+  const reportPath = path.resolve(__dirname, "../pipeline/quality_report.json");
+  fs.writeFileSync(
+    reportPath,
+    JSON.stringify({ issues, autoFixed, manual }, null, 2),
+  );
   console.log(`\n📄 리포트 저장: ${reportPath}`);
 }
 
 if (!FIX && issues.length > 0) {
-  console.log('\n→ 자동수정 적용: node pipeline/quality_gate.mjs --fix');
+  console.log("\n→ 자동수정 적용: node pipeline/quality_gate.mjs --fix");
 }
 
-console.log('\n' + '═'.repeat(60) + '\n');
+console.log("\n" + "═".repeat(60) + "\n");
