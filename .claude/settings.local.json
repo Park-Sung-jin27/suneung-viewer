@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(node:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(xxd)",
+      "Bash(cp \"_done/2024수능/2024수능_시험지.pdf\" /tmp/test1.pdf)",
+      "Bash(cp \"_done/2024수능/2024수능_정답.pdf\" /tmp/test2.pdf)",
+      "Read(//c/tmp/**)",
+      "Bash(rm:*)",
+      "Bash(ls _inbox/2021수능*)"
     ]
   }
 }
