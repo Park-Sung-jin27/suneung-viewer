@@ -72,12 +72,17 @@ function BogiRenderer({ bogi }) {
     );
   }
 
-  // ── annotated_image: 이미지 한 장
+  // ── annotated_image: 텍스트(선택) + 이미지
   if (bogi.type === 'annotated_image') {
     return wrap(
-      <div style={{ textAlign: 'center' }}>
-        <img src={bogi.image} alt="보기 자료"
-          style={{ maxWidth: '100%', borderRadius: '4px', border: '1px solid #e5e7eb' }} />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        {bogi.text && (
+          <div style={{ whiteSpace: 'pre-wrap', textAlign: 'justify' }}>{bogi.text}</div>
+        )}
+        <div style={{ textAlign: 'center' }}>
+          <img src={`/images/${bogi.image}`} alt="보기 그림"
+            style={{ maxWidth: '100%', borderRadius: '4px', border: '1px solid #e5e7eb' }} />
+        </div>
       </div>
     );
   }
@@ -233,7 +238,7 @@ function PatternBadge({ pat }) {
 // ══════════════════════════════════════════════════════════
 // [5] ChoiceItem
 // ══════════════════════════════════════════════════════════
-function ChoiceItem({ choice, qid, questionType, clicked, myAnswer, onSelect, mode, submitted, isReview, isVocab }) {
+function ChoiceItem({ choice, qid, questionType, clicked, myAnswer, onSelect, mode, submitted, isReview, isVocab, passageSents }) {
   const uid = `q${qid}_c${choice.num}`;
   const isActive  = clicked === uid;
   const isMe      = myAnswer === uid;
@@ -278,6 +283,15 @@ function ChoiceItem({ choice, qid, questionType, clicked, myAnswer, onSelect, mo
 
   // 해설: 복습 모드는 클릭한 선지에만, 일반은 기존 로직
   const showAnalysis = isReview ? isActive : (isActive && showResult);
+
+  // cs 기반 문단 번호 계산 — para 필드가 있는 sents에서만 동작
+  const paraNums = passageSents
+    ? [...new Set(
+        passageSents
+          .filter(s => s.para != null && Array.isArray(s.cs) && s.cs.includes(uid))
+          .map(s => s.para)
+      )].sort((a, b) => a - b)
+    : [];
 
   // 패턴 뱃지: 오답일 때만
   const showBadge = isActive && !isCorrect && (isReview || showResult);
@@ -328,6 +342,23 @@ function ChoiceItem({ choice, qid, questionType, clicked, myAnswer, onSelect, mo
           borderRight: `1px solid ${isCorrect ? '#a7f3d0' : '#fca5a5'}`,
           borderRadius: '0 0 8px 8px', padding: '10px 14px',
         }}>
+          {/* 문단 참조 뱃지 — para 데이터가 있을 때만 표시 */}
+          {paraNums.length > 0 && (
+            <div style={{ marginBottom: '6px' }}>
+              {paraNums.map(n => (
+                <span key={n} style={{
+                  display: 'inline-block', marginRight: '5px',
+                  fontSize: '0.68rem', fontWeight: '700',
+                  color: '#6366f1', background: '#ede9fe',
+                  border: '1px solid #c4b5fd',
+                  borderRadius: '4px', padding: '1px 7px',
+                }}>
+                  {n}문단
+                </span>
+              ))}
+              <span style={{ fontSize: '0.68rem', color: '#9ca3af' }}>을 보면</span>
+            </div>
+          )}
           {isVocab ? (
             // 어휘 문제: 단순 텍스트 해설 (형광펜 연동 없음)
             <div style={{ fontSize: '0.82rem', lineHeight: '1.75', color: '#374151', whiteSpace: 'pre-wrap' }}>
@@ -428,6 +459,7 @@ function QuestionBlock({ question, passageId, sel, onSelect, mode, submitted, is
             submitted={submitted}
             isReview={isReview}
             isVocab={isVocab}
+            passageSents={passageSents}
           />
         ))}
       </div>

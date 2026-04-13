@@ -3,6 +3,7 @@
 // ============================================================
 
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from './supabase';
 import { P, P0, YEAR_INFO } from './constants';
 import PatternCoach from './PatternCoach';
@@ -354,11 +355,13 @@ function PatternTrainer({ patKey, onClose }) {
 
 // ── 메인 ────────────────────────────────────────────────────
 export default function PatternReport({ user, onGoToQuestion }) {
+  const navigate = useNavigate();
   const [stats, setStats]   = useState(null);
   const [answers, setAnswers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeCoachPat, setActiveCoachPat] = useState(null);
   const [activeTrainPat, setActiveTrainPat] = useState(null);
+  const [toastMsg, setToastMsg] = useState(null);
 
   useEffect(() => {
     if (!user) { setLoading(false); return; }
@@ -446,9 +449,22 @@ export default function PatternReport({ user, onGoToQuestion }) {
         <h2 style={{ fontFamily: "'Noto Serif KR', serif", fontSize: '1.4rem', fontWeight: '700', color: C.ink, margin: '0 0 6px', letterSpacing: '-0.02em' }}>
           오답 패턴 리포트
         </h2>
-        <p style={{ fontSize: '0.82rem', color: C.muted, margin: 0 }}>
-          취약 패턴을 진단하고, 🎯 훈련으로 바로 교정하세요
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+          <p style={{ fontSize: '0.82rem', color: C.muted, margin: 0 }}>
+            취약 패턴을 진단하고, 🎯 훈련으로 바로 교정하세요
+          </p>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href).then(() => {
+                setToastMsg('링크가 복사됐습니다');
+                setTimeout(() => setToastMsg(null), 2500);
+              });
+            }}
+            style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '5px', padding: '6px 14px', background: C.bg, color: C.green, border: `1px solid ${C.line}`, borderRadius: '8px', fontSize: '0.75rem', fontWeight: '700', cursor: 'pointer', whiteSpace: 'nowrap' }}
+          >
+            🔗 공유하기
+          </button>
+        </div>
       </div>
 
       <div style={{ padding: '20px', maxWidth: '680px', margin: '0 auto' }}>
@@ -545,6 +561,28 @@ export default function PatternReport({ user, onGoToQuestion }) {
           </>
         )}
       </div>
+
+      {/* 선생님에게 보내기 CTA */}
+      {!loading && (
+        <div style={{ padding: '0 20px 28px', maxWidth: '680px', margin: '0 auto' }}>
+          <button
+            onClick={() => { navigate('/'); setTimeout(() => document.getElementById('b2b-waitlist')?.scrollIntoView({ behavior: 'smooth' }), 300); }}
+            style={{ width: '100%', padding: '15px', background: C.green, color: '#fff', border: 'none', borderRadius: '12px', fontSize: '0.9rem', fontWeight: '700', cursor: 'pointer', fontFamily: "'Noto Sans KR', sans-serif", letterSpacing: '-0.01em' }}
+          >
+            🏫 우리 학원 선생님에게 보내기
+          </button>
+          <p style={{ fontSize: '0.7rem', color: C.subtle, textAlign: 'center', margin: '8px 0 0' }}>
+            학원에서 단체 도입하면 학생별 패턴 리포트를 제공합니다
+          </p>
+        </div>
+      )}
+
+      {/* 토스트 */}
+      {toastMsg && (
+        <div style={{ position: 'fixed', bottom: '32px', left: '50%', transform: 'translateX(-50%)', background: '#1f2937', color: '#fff', padding: '10px 24px', borderRadius: '10px', fontSize: '0.85rem', fontWeight: '600', zIndex: 500, boxShadow: '0 4px 16px rgba(0,0,0,0.2)' }}>
+          {toastMsg}
+        </div>
+      )}
 
       {/* PatternCoach 모달 */}
       {activeCoachPat && (

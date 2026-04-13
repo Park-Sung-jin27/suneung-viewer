@@ -3,6 +3,7 @@
 // ============================================================
 
 import { useState, useEffect, useRef } from 'react';
+import { supabase } from './supabase';
 
 // ── 토큰 ────────────────────────────────────────────────────
 const C = {
@@ -194,6 +195,61 @@ function StatCard({ stat, label, sub, color = C.mid }) {
 }
 
 // ── 가격 플랜 ────────────────────────────────────────────────
+function WaitlistForm() {
+  const [form, setForm] = useState({ academy_name: '', phone: '', student_count: '' });
+  const [status, setStatus] = useState('idle'); // idle | submitting | done | error
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!form.academy_name || !form.phone || !form.student_count) return;
+    setStatus('submitting');
+    const { error } = await supabase.from('waitlist').insert([form]);
+    setStatus(error ? 'error' : 'done');
+  }
+
+  if (status === 'done') {
+    return (
+      <div style={{ maxWidth: 440, margin: '0 auto', textAlign: 'center', padding: '40px 20px', background: '#f0fdf4', border: '1px solid #86efac', borderRadius: '16px' }}>
+        <div style={{ fontSize: '2rem', marginBottom: '12px' }}>✅</div>
+        <p style={{ fontSize: '1rem', fontWeight: '700', color: '#15803d', marginBottom: '8px' }}>신청이 완료되었습니다</p>
+        <p style={{ fontSize: '0.85rem', color: '#166534' }}>담당자가 24시간 내에 연락드리겠습니다</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} style={{ maxWidth: 440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+      <input
+        type="text" placeholder="학원명" required value={form.academy_name}
+        onChange={e => setForm(f => ({ ...f, academy_name: e.target.value }))}
+        style={{ padding: '13px 16px', borderRadius: '10px', border: '1px solid #d1d5db', fontSize: '0.9rem', fontFamily: "'Noto Sans KR', sans-serif", outline: 'none' }}
+      />
+      <input
+        type="tel" placeholder="원장님 연락처" required value={form.phone}
+        onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+        style={{ padding: '13px 16px', borderRadius: '10px', border: '1px solid #d1d5db', fontSize: '0.9rem', fontFamily: "'Noto Sans KR', sans-serif", outline: 'none' }}
+      />
+      <select
+        required value={form.student_count}
+        onChange={e => setForm(f => ({ ...f, student_count: e.target.value }))}
+        style={{ padding: '13px 16px', borderRadius: '10px', border: '1px solid #d1d5db', fontSize: '0.9rem', fontFamily: "'Noto Sans KR', sans-serif", outline: 'none', color: form.student_count ? '#1f2937' : '#9ca3af', background: '#fff' }}
+      >
+        <option value="" disabled>학생 수</option>
+        <option value="10명 미만">10명 미만</option>
+        <option value="10~30명">10~30명</option>
+        <option value="30명 이상">30명 이상</option>
+      </select>
+      <button
+        type="submit" disabled={status === 'submitting'}
+        style={{ padding: '14px', borderRadius: '10px', background: '#2d6e2d', color: '#fff', border: 'none', fontSize: '0.95rem', fontWeight: '700', cursor: 'pointer', fontFamily: "'Noto Sans KR', sans-serif", opacity: status === 'submitting' ? 0.6 : 1 }}
+      >
+        {status === 'submitting' ? '신청 중...' : '신청하기'}
+      </button>
+      {status === 'error' && <p style={{ fontSize: '0.8rem', color: '#dc2626', textAlign: 'center' }}>오류가 발생했습니다. 다시 시도해주세요.</p>}
+    </form>
+  );
+}
+
 function PriceCard({ plan, price, period, features, cta, featured, onStart }) {
   const [h, setH] = useState(false);
   return (
@@ -566,6 +622,24 @@ export default function Landing({ onStart }) {
             </FadeIn>
           ))}
         </div>
+      </section>
+
+      {/* ══ B2B 학원 도입 ══ */}
+      <section id="b2b-waitlist" style={{ background: C.paper, borderTop: `1px solid ${C.border}`, padding: 'clamp(64px,8vw,100px) clamp(20px,6vw,80px)' }}>
+        <FadeIn>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <div style={{ marginBottom: 14 }}><Pill>학원 도입</Pill></div>
+            <h2 style={{ fontFamily: "'Noto Serif KR', serif", fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: '700', color: C.ink, letterSpacing: '-0.03em', marginBottom: '12px' }}>
+              우리 학원에도 도입하고 싶으신가요?
+            </h2>
+            <p style={{ fontSize: '0.87rem', color: C.muted, lineHeight: 1.8 }}>
+              수학·영어 전문 학원에서 국어 성적까지. 강사 없이 운영 가능합니다.
+            </p>
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <WaitlistForm />
+        </FadeIn>
       </section>
 
       {/* ══ 최종 CTA ══ */}
