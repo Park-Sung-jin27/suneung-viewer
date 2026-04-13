@@ -159,8 +159,8 @@ function fixAnalysisConclusion(ana, ok) {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
-const DATA_PATH = path.resolve(__dirname, "../src/data/all_data_204.json");
-const ANN_PATH = path.resolve(__dirname, "../src/data/annotations.json");
+const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+const ANN_PATH = path.resolve(__dirname, "../public/data/annotations.json");
 const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
 
 const args = process.argv.slice(2);

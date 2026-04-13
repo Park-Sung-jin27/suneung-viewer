@@ -9,7 +9,10 @@ import { jsonrepair } from "jsonrepair";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const client = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+  timeout: 10 * 60 * 1000,
+});
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // ─── SYSTEM PROMPTS ──────────────────────────────────────────
@@ -62,7 +65,7 @@ const LIT_SYSTEM_PROMPT = `너는 수능 국어 시험지 PDF에서 문학 영�
 중요: JSON 문자열 값 내부에 큰따옴표(")가 있으면 반드시 백슬래시로 이스케이프(\")하거나 작은따옴표(')로 대체하라.
 
 ⚠️ 절대 규칙:
-- 독서 영역(1~17번)을 추출하지 마라. 문학 영역(18번 이후)만 추출하라.
+- 독서 영역을 추출하지 마라. 문학 영역(18번 이후)만 추출하라.
 - 문학 영역은 시, 소설, 고전문학, 수필 등 문학 작품이 수록된 부분이다.
 - 독서 영역은 설명문·논설문 등 비문학 지문이다 — 추출 대상이 아니다.
 - id 접두사는 반드시 소문자 l(L)을 사용해. 독서(r)와 절대 혼동하지 마라.
@@ -161,9 +164,23 @@ vocab은 3~4등급 학생이 어려워할 개념어 3~7개
 bogi는 <보기> 텍스트가 있으면 채우고, 없으면 빈 문자열`;
 
 // ─── 구형 수능 포맷 판별 ──────────────────────────────────────
+// 2016학년도까지: A/B형 분리, 16~45번 독서·문학 혼재
 function isLegacyFormat(yearKey) {
   const m = yearKey.match(/(\d{4})/);
-  return m ? parseInt(m[1], 10) < 2022 : false;
+  return m ? parseInt(m[1], 10) < 2017 : false;
+}
+
+// ─── 선택영역 포함 여부 ──────────────────────────────────────
+// 2014~2021학년도: Q1~15 화작문(선택), Q16~34 독서+문학
+// 2022학년도~: Q1~34 전체 독서+문학
+function hasElectiveSection(yearKey) {
+  const m = yearKey.match(/(\d{4})/);
+  return m ? parseInt(m[1], 10) >= 2014 && parseInt(m[1], 10) <= 2021 : false;
+}
+
+// 독서+문학 시작 문항 번호
+function getReadingStartQ(yearKey) {
+  return hasElectiveSection(yearKey) ? 16 : 1;
 }
 
 // ─── 세트 분류 (구형 포맷용) ─────────────────────────────────
@@ -253,7 +270,7 @@ async function callClaude(pdfBase64, userPrompt, systemPrompt = SYSTEM_PROMPT) {
     client.messages.create(
       {
         model: "claude-sonnet-4-5",
-        max_tokens: 16000,
+        max_tokens: 32000,
         system: systemPrompt,
         messages: [
           {
@@ -308,10 +325,13 @@ async function callClaude(pdfBase64, userPrompt, systemPrompt = SYSTEM_PROMPT) {
 // Claude API는 PDF에서 특정 문항 범위를 불안정하게 추출함
 // Gemini는 PDF 전체를 한 번에 보고 안정적으로 추출
 
-const GEMINI_READING_PROMPT = (yearKey, lastQ) => {
+const GEMINI_READING_PROMPT = (yearKey, lastQ, startQ = null) => {
   const year = yearKey.replace(/[^0-9]/g, "");
+  const fromQ = startQ || getReadingStartQ(yearKey);
+  const readingEndQ = hasElectiveSection(yearKey) ? Math.min(lastQ, 34) : 17;
   return `너는 수능 국어 시험지 PDF에서 데이터를 추출하는 전문가야.
-아래 JSON 스키마에 맞게 독서 영역(1번~17번)만 추출해줘.
+아래 JSON 스키마에 맞게 독서 영역(${fromQ}번~${readingEndQ}번 범위의 독서 지문)만 추출해줘.
+※ ${fromQ > 1 ? `1~${fromQ - 1}번은 화법/작문/문법 선택영역이므로 절대 추출하지 마라.` : ""}
 
 [출력 규칙]
 - 순수 JSON만 출력. 설명, 마크다운 코드블록, 기타 텍스트 없음
@@ -564,7 +584,7 @@ async function callGemini(pdfPath, prompt) {
  * @param {number} lastQuestion - 마지막 문항 번호
  * @returns {{ valid: boolean, errors: string[] }}
  */
-export function validateExtraction(sets, section, lastQuestion) {
+export function validateExtraction(sets, section, lastQuestion, yearKey = "") {
   const errors = [];
 
   if (!Array.isArray(sets) || sets.length === 0) {
@@ -572,7 +592,8 @@ export function validateExtraction(sets, section, lastQuestion) {
     return { valid: false, errors };
   }
 
-  const readingRange = { min: 1, max: 17 };
+  const readingMin = yearKey ? getReadingStartQ(yearKey) : 1;
+  const readingRange = { min: readingMin, max: lastQuestion };
   const litRange = { min: 18, max: lastQuestion };
   const expectedRange = section === "reading" ? readingRange : litRange;
   const expectedPrefix = section === "reading" ? "r" : "l";
@@ -753,21 +774,25 @@ export async function extractStructure(
     }
 
     // ── ★ Gemini API 추출 ──
+    const startQ = getReadingStartQ(yearKey);
     let sets;
     if (sec === "reading") {
-      console.log(`[step2] 독서 영역 추출 중 (Gemini, 1~17번)...`);
+      console.log(
+        `[step2] 독서 영역 추출 중 (Gemini, ${startQ}~${lastQuestion}번)...`,
+      );
       sets = await callGemini(
         pdfPath,
-        GEMINI_READING_PROMPT(yearKey, lastQuestion),
+        GEMINI_READING_PROMPT(yearKey, lastQuestion, startQ),
       );
     } else {
-      // 문학: 1차 전체 호출
+      // 문학: 1차 전체 호출 (Gemini)
+      const litStartQ = hasElectiveSection(yearKey) ? 18 : 18;
       console.log(
-        `[step2] 문학 영역 1차 추출 중 (Gemini, 18~${lastQuestion}번)...`,
+        `[step2] 문학 영역 1차 추출 중 (Gemini, ${litStartQ}~${lastQuestion}번)...`,
       );
       const lit1 = await callGemini(
         pdfPath,
-        GEMINI_LITERATURE_PROMPT(yearKey, lastQuestion),
+        GEMINI_LITERATURE_PROMPT(yearKey, lastQuestion, litStartQ),
       );
       const year = yearKey.replace(/[^0-9]/g, "");
       const litIds = ["a", "b", "c", "d"];
@@ -833,13 +858,31 @@ export async function extractStructure(
       }
     }
 
-    // ── 추출 직후 검증 ──
-    const { valid, errors } = validateExtraction(sets, sec, lastQuestion);
+    // ── 추출 직후 검증 (범위 밖 세트 자동 필터링) ──
+    const { valid, errors } = validateExtraction(
+      sets,
+      sec,
+      lastQuestion,
+      yearKey,
+    );
     if (!valid) {
-      console.error(`\n❌ [step2] ${sec} 추출 검증 실패:`);
-      errors.forEach((e) => console.error(`  - ${e}`));
-      console.error(`\n  캐시에 저장하지 않습니다. 재실행 시 다시 추출합니다.`);
-      throw new Error(`step2 ${sec} 추출 검증 실패: ${errors.join(" | ")}`);
+      console.warn(`\n⚠️  [step2] ${sec} 추출 검증 경고:`);
+      errors.forEach((e) => console.warn(`  - ${e}`));
+      // 범위 밖 Q번호를 가진 세트 필터링
+      const minQ = sec === "reading" ? startQ : 18;
+      const maxQ = lastQuestion;
+      const before = sets.length;
+      sets = sets.filter((s) => {
+        const qIds = (s.questions || []).map((q) => q.id).filter(Boolean);
+        if (qIds.length === 0) return false;
+        return qIds.every((q) => q >= minQ && q <= maxQ);
+      });
+      console.warn(
+        `  → ${before - sets.length}개 세트 제거, ${sets.length}개 유지`,
+      );
+      if (sets.length === 0) {
+        throw new Error(`step2 ${sec}: 유효한 세트가 0개 — 재실행 필요`);
+      }
     }
 
     console.log(`  ✅ ${sec} 검증 통과 (${sets.length}세트)`);

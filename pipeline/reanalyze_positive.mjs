@@ -19,7 +19,7 @@ import dotenv from "dotenv";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
-const DATA_PATH = path.resolve(__dirname, "../src/data/all_data_204.json");
+const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
 const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
