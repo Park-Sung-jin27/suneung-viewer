@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { P, P0 } from "./constants";
 import GradeEstimate from "./GradeEstimate";
 
@@ -15,6 +16,7 @@ function isCorrect(q, choiceNum) {
 
 export default function ResultPage({
   user,
+  isPro,
   yearKey,
   yearLabel,
   studyAnswers,
@@ -307,6 +309,8 @@ export default function ResultPage({
     );
   }
 
+  const navigate = useNavigate();
+
   // ── JSX ───────────────────────────────────────────────────
   return (
     <div
@@ -490,7 +494,109 @@ export default function ResultPage({
           </div>
         )}
 
-        {/* 4. 하단 버튼 */}
+        {/* 4. 전환 유도 배너 */}
+        {!user && (
+          <div
+            style={{
+              background: "linear-gradient(135deg, #ecfdf5 0%, #f0f7f0 100%)",
+              border: "1px solid #86efac",
+              borderRadius: "14px",
+              padding: "24px 20px",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "1.05rem",
+                fontWeight: "800",
+                color: "#15803d",
+                marginBottom: "8px",
+                lineHeight: 1.4,
+              }}
+            >
+              오답 패턴을 저장하고 AI 코칭을 받아보세요
+            </div>
+            <p
+              style={{
+                fontSize: "0.78rem",
+                color: "#166534",
+                marginBottom: "16px",
+                lineHeight: 1.6,
+              }}
+            >
+              지금 분석한 오답 패턴을 내 계정에 저장하고, AI가 약점만 집중
+              훈련시켜 드립니다.
+            </p>
+            <button
+              onClick={() => navigate("/auth")}
+              style={{
+                padding: "12px 28px",
+                borderRadius: "10px",
+                background: "#2d6e2d",
+                color: "#fff",
+                border: "none",
+                fontSize: "0.9rem",
+                fontWeight: "700",
+                cursor: "pointer",
+                fontFamily: "'Noto Sans KR', sans-serif",
+              }}
+            >
+              무료로 시작하기 →
+            </button>
+          </div>
+        )}
+
+        {user && !isPro && (
+          <div
+            style={{
+              background: "#fffbeb",
+              border: "1px solid #fbbf24",
+              borderRadius: "14px",
+              padding: "20px",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "0.92rem",
+                fontWeight: "700",
+                color: "#92400e",
+                marginBottom: "6px",
+              }}
+            >
+              무료 체험으로 확인한 패턴, 전체 시험에서 교정하세요
+            </div>
+            <p
+              style={{
+                fontSize: "0.75rem",
+                color: "#a16207",
+                marginBottom: "14px",
+                lineHeight: 1.6,
+              }}
+            >
+              11개년 204문항 전체 + AI 패턴 코칭으로 오답 습관을 완전히
+              교정합니다.
+            </p>
+            <button
+              onClick={() => navigate("/payment")}
+              style={{
+                padding: "11px 24px",
+                borderRadius: "10px",
+                background: "#b45309",
+                color: "#fff",
+                border: "none",
+                fontSize: "0.85rem",
+                fontWeight: "700",
+                cursor: "pointer",
+                fontFamily: "'Noto Sans KR', sans-serif",
+              }}
+            >
+              나머지 시험 전체 보기 →
+            </button>
+          </div>
+        )}
+
+        {/* 5. 하단 버튼 */}
         <div
           style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}
         >

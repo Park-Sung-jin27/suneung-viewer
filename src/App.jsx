@@ -1260,6 +1260,7 @@ function ViewerPage({ user }) {
     return (
       <ResultPage
         user={user}
+        isPro={isPro}
         yearKey={yearKey}
         yearLabel={yearMeta?.label ?? yearKey}
         studyAnswers={studyAnswers}
