@@ -19,6 +19,7 @@ import PatternReport from "./PatternReport";
 import Payment from "./Payment";
 import Banner from "./Banner";
 import Landing from "./Landing";
+import AcademyPreview from "./AcademyPreview";
 import ResultPage from "./ResultPage";
 import { YEAR_INFO, MODE } from "./constants";
 import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
@@ -1767,18 +1768,16 @@ export default function App() {
       supabase.auth.getSession().then(async ({ data: { session } }) => {
         const uid = session?.user?.id;
         if (!uid) return;
-        await supabase
-          .from("subscriptions")
-          .upsert(
-            {
-              user_id: uid,
-              plan: "pro",
-              status: "active",
-              toss_payment_key: paymentKey,
-              toss_order_id: orderId,
-            },
-            { onConflict: "user_id" },
-          );
+        await supabase.from("subscriptions").upsert(
+          {
+            user_id: uid,
+            plan: "pro",
+            status: "active",
+            toss_payment_key: paymentKey,
+            toss_order_id: orderId,
+          },
+          { onConflict: "user_id" },
+        );
         setIsPro(true);
         navigate("/", { replace: true });
       });
@@ -1871,6 +1870,7 @@ export default function App() {
           )
         }
       />
+      <Route path="/academy-preview" element={<AcademyPreview />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
