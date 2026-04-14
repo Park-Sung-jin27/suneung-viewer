@@ -1885,7 +1885,7 @@ export default function Landing({ onStart }) {
               letterSpacing: "-0.03em",
             }}
           >
-            수능 국어 기출 7개년
+            수능 국어 오답, 지문에서 근거를 직접 확인하세요
           </h2>
           <p
             style={{
@@ -1895,8 +1895,9 @@ export default function Landing({ onStart }) {
               lineHeight: 1.75,
             }}
           >
-            2022~2026학년도 수능·9월·6월 모의평가 · 독서 + 문학 전 문항 · 선지
-            해설 완비
+            11년차 입시 강사가 만든 독해 오류 교정 훈련 도구
+            <br />
+            2022~2026학년도 수능·모의평가 204문항 · 선지별 근거 형광펜
           </p>
           <div
             style={{
@@ -1997,7 +1998,7 @@ export default function Landing({ onStart }) {
               price="39,900"
               period="/ 월 · 구독"
               features={[
-                { text: "전 기출 204문항 전체 접근", ok: true },
+                { text: "오답 패턴 진단 + 전 시험 형광펜 복기 훈련", ok: true },
                 { text: "오류 패턴 8종 진단 무제한", ok: true },
                 { text: "누적 개인 리포트 + 처방", ok: true },
                 { text: "주간 진도 트래킹", ok: true },
