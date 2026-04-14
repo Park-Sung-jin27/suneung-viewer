@@ -100,7 +100,9 @@ function BogiRenderer({ bogi }) {
         )}
         <div style={{ textAlign: "center" }}>
           <img
-            src={`/images/${bogi.image}`}
+            src={
+              bogi.image.startsWith("/") ? bogi.image : `/images/${bogi.image}`
+            }
             alt="보기 그림"
             style={{
               maxWidth: "100%",
