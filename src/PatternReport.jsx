@@ -999,6 +999,180 @@ export default function PatternReport({ user, onGoToQuestion }) {
               />
             </div>
 
+            {/* AI 진단 메시지 */}
+            {hasTopPat &&
+              (() => {
+                const topInfo = P[topPat] ?? P0;
+                const sorted = allPatKeys
+                  .filter((k) => (patCounts[k] ?? 0) > 0)
+                  .sort((a, b) => (patCounts[b] ?? 0) - (patCounts[a] ?? 0));
+                const top2 = sorted.slice(0, 2);
+                return (
+                  <div
+                    style={{
+                      background: C.white,
+                      border: `1.5px solid ${topInfo.color}30`,
+                      borderRadius: "14px",
+                      padding: "20px 18px",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "0.68rem",
+                        fontWeight: "700",
+                        color: C.subtle,
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                        marginBottom: "10px",
+                      }}
+                    >
+                      AI 진단
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "1rem",
+                        fontWeight: "700",
+                        color: C.ink,
+                        lineHeight: 1.5,
+                        marginBottom: "12px",
+                      }}
+                    >
+                      핵심 취약 패턴은{" "}
+                      <span style={{ color: topInfo.color }}>
+                        {topPat} {topInfo.name}
+                      </span>
+                      입니다
+                    </div>
+                    {top2.map((k) => {
+                      const info = P[k] ?? P0;
+                      return (
+                        <div
+                          key={k}
+                          style={{
+                            display: "flex",
+                            alignItems: "flex-start",
+                            gap: "8px",
+                            marginBottom: "8px",
+                          }}
+                        >
+                          <span
+                            style={{
+                              fontSize: "0.72rem",
+                              fontWeight: "800",
+                              color: info.color,
+                              minWidth: "28px",
+                            }}
+                          >
+                            {k}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: "0.78rem",
+                              color: C.muted,
+                              lineHeight: 1.6,
+                            }}
+                          >
+                            {COMMENTS[k]}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })()}
+
+            {/* 지문 유형별 정답률 */}
+            {answers.length > 0 &&
+              (() => {
+                const sec = {
+                  reading: { c: 0, t: 0 },
+                  literature: { c: 0, t: 0 },
+                };
+                for (const a of answers) {
+                  const s = a.set_id?.startsWith("l")
+                    ? "literature"
+                    : "reading";
+                  sec[s].t++;
+                  if (a.is_correct) sec[s].c++;
+                }
+                const rPct =
+                  sec.reading.t > 0
+                    ? Math.round((sec.reading.c / sec.reading.t) * 100)
+                    : 0;
+                const lPct =
+                  sec.literature.t > 0
+                    ? Math.round((sec.literature.c / sec.literature.t) * 100)
+                    : 0;
+                return (
+                  <div
+                    style={{
+                      background: C.white,
+                      border: `1px solid ${C.border}`,
+                      borderRadius: "14px",
+                      padding: "18px 16px",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontSize: "0.82rem",
+                        fontWeight: "700",
+                        color: C.ink,
+                        margin: "0 0 14px",
+                      }}
+                    >
+                      유형별 정답률
+                    </h3>
+                    {[
+                      { label: "독서", pct: rPct, cnt: sec.reading },
+                      { label: "문학", pct: lPct, cnt: sec.literature },
+                    ].map(({ label, pct, cnt }) => (
+                      <div key={label} style={{ marginBottom: "10px" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            fontSize: "0.75rem",
+                            marginBottom: "4px",
+                          }}
+                        >
+                          <span style={{ fontWeight: "600", color: C.ink }}>
+                            {label}
+                          </span>
+                          <span style={{ color: C.muted }}>
+                            {pct}% ({cnt.c}/{cnt.t})
+                          </span>
+                        </div>
+                        <div
+                          style={{
+                            height: "8px",
+                            background: "#f3f4f6",
+                            borderRadius: "4px",
+                            overflow: "hidden",
+                          }}
+                        >
+                          <div
+                            style={{
+                              height: "100%",
+                              width: `${pct}%`,
+                              background:
+                                pct >= 80
+                                  ? C.green
+                                  : pct >= 60
+                                    ? "#b7950b"
+                                    : "#c0392b",
+                              borderRadius: "4px",
+                              transition: "width 0.4s ease",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
+
             {/* 훈련 안내 배너 */}
             <div
               style={{
