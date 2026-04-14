@@ -93,6 +93,7 @@ export const MODE = {
 
 // 연도 메타정보
 export const YEAR_INFO = [
+  // ── 수능 ──
   {
     key: "2026수능",
     label: "2026학년도 수능",
@@ -108,13 +109,6 @@ export const YEAR_INFO = [
     color: "#2980b9",
   },
   {
-    key: "2025_9월",
-    label: "2025학년도 9월 모의",
-    tag: "2024.09",
-    badge: "",
-    color: "#27ae60",
-  },
-  {
     key: "2024수능",
     label: "2024학년도 수능",
     tag: "2023.11",
@@ -122,23 +116,31 @@ export const YEAR_INFO = [
     color: "#8e44ad",
   },
   {
-    key: "2024_9월",
-    label: "2024학년도 9월 모의",
-    tag: "2023.09",
+    key: "2023수능",
+    label: "2023학년도 수능",
+    tag: "2022.11",
     badge: "",
     color: "#d35400",
   },
   {
-    key: "2024_6월",
-    label: "2024학년도 6월 모의",
-    tag: "2023.06",
+    key: "2022수능",
+    label: "2022학년도 수능",
+    tag: "2021.11",
     badge: "",
-    color: "#e67e22",
+    color: "#2c3e50",
+  },
+  // ── 9월 모의 ──
+  {
+    key: "2025_9월",
+    label: "2025학년도 9월 모의",
+    tag: "2024.09",
+    badge: "",
+    color: "#27ae60",
   },
   {
-    key: "2023수능",
-    label: "2023학년도 수능",
-    tag: "2022.11",
+    key: "2024_9월",
+    label: "2024학년도 9월 모의",
+    tag: "2023.09",
     badge: "",
     color: "#d35400",
   },
@@ -149,19 +151,20 @@ export const YEAR_INFO = [
     badge: "",
     color: "#1abc9c",
   },
+  // ── 6월 모의 ──
+  {
+    key: "2024_6월",
+    label: "2024학년도 6월 모의",
+    tag: "2023.06",
+    badge: "",
+    color: "#e67e22",
+  },
   {
     key: "2023_6월",
     label: "2023학년도 6월 모의",
     tag: "2022.06",
     badge: "",
     color: "#3498db",
-  },
-  {
-    key: "2022수능",
-    label: "2022학년도 수능",
-    tag: "2021.11",
-    badge: "",
-    color: "#2c3e50",
   },
   {
     key: "2022_6월",
