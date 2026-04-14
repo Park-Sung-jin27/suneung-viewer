@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { CC } from "./constants";
 
 // ── 기호 밑줄 (/g 플래그 금지) ───────────────────────────
@@ -209,7 +210,11 @@ function RenderSent({ sent, sel, anns }) {
 
   const content =
     anns.length > 0 ? applyInlineAnns(t, anns) : <Lines text={t} />;
-  return <span style={hlStyle}>{content} </span>;
+  return (
+    <span style={hlStyle} data-hl={pal ? "true" : undefined}>
+      {content}{" "}
+    </span>
+  );
 }
 
 // ── bracket 유틸: sentIds 배열에서 범위 판정 ──
@@ -298,13 +303,26 @@ function renderAll(sents, sel, annotations) {
 }
 
 export default function PassagePanel({ passageSet, sel, mode }) {
+  const panelRef = useRef(null);
+
+  useEffect(() => {
+    if (!sel || !panelRef.current) return;
+    const first = panelRef.current.querySelector("[data-hl]");
+    if (first) {
+      first.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [sel]);
+
   if (!passageSet) return null;
   const annotations = passageSet.annotations ?? [];
   // 풀이 모드에서 sel이 있어도 '전체 제출' 전(submitted 알 수 없으므로)
   // QuizPanel이 submitted 전엔 onSelChange를 호출하지 않으므로 sel은 null 유지됨
   // → 별도 처리 없이 sel 그대로 사용
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+    <div
+      ref={panelRef}
+      style={{ display: "flex", flexDirection: "column", gap: "14px" }}
+    >
       <div
         style={{
           fontSize: "0.73rem",
