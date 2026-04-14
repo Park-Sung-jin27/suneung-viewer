@@ -632,6 +632,23 @@ export default function ResultPage({
               오답 다시 보기
             </button>
           )}
+          {user && (
+            <button
+              onClick={() => navigate("/report")}
+              style={{
+                padding: "11px 20px",
+                borderRadius: "8px",
+                background: "#2d6e2d",
+                border: "none",
+                fontWeight: "700",
+                fontSize: "0.88rem",
+                color: "#fff",
+                cursor: "pointer",
+              }}
+            >
+              패턴 리포트 보기
+            </button>
+          )}
         </div>
       </div>
     </div>

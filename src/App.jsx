@@ -1493,7 +1493,9 @@ function AuthPage() {
         if (error) throw error;
         navigate("/");
       } else {
-        const { error } = await supabase.auth.signUp({ email, password });
+        const { data, error } = await supabase.auth.signUp({ email, password });
+        console.log("signUp data:", data);
+        console.log("signUp error:", error);
         if (error) throw error;
         setMessage("확인 이메일을 발송했습니다. 이메일을 확인해 주세요.");
       }
