@@ -180,51 +180,32 @@ function Btn({
 }
 
 // ── 형광펜 인터랙티브 데모 ───────────────────────────────────
-function HighlightDemo() {
-  const [active, setActive] = useState(null);
-  const choices = [
-    {
-      num: 1,
-      text: "㉠은 외부 자극이 없어도 자발적으로 발생한다.",
-      ok: false,
-      hl: [0, 1],
-    },
-    {
-      num: 2,
-      text: "㉡은 세포막의 이온 투과성 변화로 나타난다.",
-      ok: true,
-      hl: [2],
-    },
-    {
-      num: 3,
-      text: "㉠과 ㉡은 모두 Na⁺ 이동에 의해 발생한다.",
-      ok: false,
-      hl: [0, 2],
-    },
-  ];
+function HighlightDemo({ onStart }) {
+  const [active, setActive] = useState(false);
+
+  // 2026수능 독서 — 열팽창과 선형 열팽창 계수
   const sents = [
     {
       id: 0,
-      t: "활동 전위는 외부 자극에 의해 세포막 전위가 역치 이상으로 상승할 때 발생한다.",
-      hl: [1, 3],
+      t: "열팽창이란 물체의 온도 변화에 따라 그 길이, 부피가 변화하는 현상을 말한다.",
+      hl: true,
     },
     {
       id: 1,
-      t: "Na⁺ 채널이 열리며 Na⁺가 세포 내로 급격히 유입된다.",
-      hl: [1, 3],
+      t: "그중 길이의 변화를 수치화한 것이 선형 열팽창 계수인데, 이는 온도 변화에 따른 길이 변화율을 온도 변화량으로 나눈 값이다.",
+      hl: false,
     },
-    {
-      id: 2,
-      t: "세포막의 이온 투과성 변화는 활동 전위의 핵심 기전이다.",
-      hl: [2],
-    },
-    { id: 3, t: "이후 K⁺가 세포 외로 유출되어 재분극이 일어난다.", hl: [] },
   ];
-  const hlC = {
-    1: { bg: "rgba(59,130,246,0.22)", bdr: "#3b82f6" },
-    2: { bg: "rgba(34,197,94,0.22)", bdr: "#22c55e" },
-    3: { bg: "rgba(234,179,8,0.28)", bdr: "#eab308" },
+
+  const choice = {
+    num: 1,
+    text: "온도의 변화에 따라 물체의 길이는 변하지만 부피는 변하지 않는다.",
+    ok: false,
+    pat: "R1",
   };
+
+  const hlBg = "rgba(239,68,68,0.13)";
+  const hlBdr = "#ef4444";
 
   return (
     <div
@@ -235,6 +216,8 @@ function HighlightDemo() {
         overflow: "hidden",
         boxShadow:
           "0 24px 64px rgba(30,92,30,0.13), 0 4px 16px rgba(0,0,0,0.06)",
+        maxWidth: 520,
+        margin: "0 auto",
       }}
     >
       {/* 브라우저 크롬 */}
@@ -275,166 +258,159 @@ function HighlightDemo() {
             margin: "0 12px",
           }}
         >
-          suneung-viewer.vercel.app
+          논리맵핑 — 2026수능
         </div>
         <div style={{ width: 56 }} />
       </div>
-      {/* 2분할 */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          minHeight: 290,
-        }}
-      >
+
+      {/* 본문 */}
+      <div style={{ padding: "18px 18px 10px" }}>
         <div
           style={{
-            borderRight: `1px solid ${C.border}`,
-            padding: "16px 15px",
-            background: "#fdfcfa",
+            fontSize: "0.58rem",
+            fontWeight: "700",
+            color: C.subtle,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            marginBottom: "10px",
           }}
         >
-          <div
-            style={{
-              fontSize: "0.58rem",
-              fontWeight: "700",
-              color: C.subtle,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: "12px",
-            }}
-          >
-            지문
-          </div>
-          {sents.map((s) => {
-            const hl = active !== null && s.hl.includes(active);
-            return (
-              <p
-                key={s.id}
-                style={{
-                  fontSize: "0.7rem",
-                  lineHeight: "1.9",
-                  color: C.inkMid,
-                  marginBottom: "6px",
-                  padding: "1px 3px",
-                  borderRadius: "3px",
-                  transition: "all 0.22s",
-                  background: hl ? hlC[active]?.bg : "transparent",
-                  borderBottom: hl
-                    ? `2px solid ${hlC[active]?.bdr}`
-                    : "2px solid transparent",
-                }}
-              >
-                {s.t}
-              </p>
-            );
-          })}
+          지문 — 2026학년도 수능
         </div>
-        <div style={{ padding: "16px 15px" }}>
-          <div
-            style={{
-              fontSize: "0.58rem",
-              fontWeight: "700",
-              color: C.subtle,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: "12px",
-            }}
-          >
-            문제
-          </div>
-          <div
-            style={{
-              fontSize: "0.68rem",
-              color: C.inkMid,
-              marginBottom: "11px",
-              lineHeight: 1.6,
-            }}
-          >
-            <strong>3.</strong> ㉠, ㉡에 대한 설명으로 적절하지 <u>않은</u>{" "}
-            것은?
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-            {choices.map((c) => {
-              const on = active === c.num;
-              return (
-                <div
-                  key={c.num}
-                  onClick={() => setActive(on ? null : c.num)}
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: 7,
-                    padding: "7px 9px",
-                    borderRadius: "7px",
-                    cursor: "pointer",
-                    background: on
-                      ? c.ok
-                        ? "rgba(34,197,94,0.1)"
-                        : "rgba(239,68,68,0.1)"
-                      : "#fff",
-                    border: on
-                      ? `2px solid ${c.ok ? "#22c55e" : "#ef4444"}`
-                      : `1px solid ${C.border}`,
-                    transition: "all 0.18s",
-                  }}
-                >
-                  <span
-                    style={{
-                      minWidth: 18,
-                      height: 18,
-                      borderRadius: "50%",
-                      flexShrink: 0,
-                      background: on
-                        ? c.ok
-                          ? "#22c55e"
-                          : "#ef4444"
-                        : "#f0efed",
-                      color: on ? "#fff" : C.subtle,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "0.6rem",
-                      fontWeight: "700",
-                    }}
-                  >
-                    {c.num}
-                  </span>
-                  <span
-                    style={{
-                      fontSize: "0.65rem",
-                      lineHeight: 1.6,
-                      color: C.ink,
-                      flex: 1,
-                    }}
-                  >
-                    {c.text}
-                  </span>
-                  {on && (
-                    <span style={{ fontSize: "0.8rem", flexShrink: 0 }}>
-                      {c.ok ? "✅" : "❌"}
-                    </span>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          <div
-            style={{
-              marginTop: "10px",
-              padding: "7px 9px",
-              background: C.bg,
-              borderRadius: "7px",
-              fontSize: "0.61rem",
-              color: C.mid,
-              lineHeight: 1.6,
-            }}
-          >
-            {active
-              ? `💡 ${active}번 → 지문 근거가 형광펜으로 표시됩니다`
-              : "👆 선지를 클릭해보세요"}
-          </div>
+        {sents.map((s) => {
+          const on = active && s.hl;
+          return (
+            <p
+              key={s.id}
+              style={{
+                fontSize: "0.78rem",
+                lineHeight: "1.9",
+                color: C.inkMid,
+                marginBottom: "6px",
+                padding: "2px 4px",
+                borderRadius: "4px",
+                transition: "all 0.25s",
+                background: on ? hlBg : "transparent",
+                borderBottom: on
+                  ? `2px solid ${hlBdr}`
+                  : "2px solid transparent",
+              }}
+            >
+              {s.t}
+            </p>
+          );
+        })}
+      </div>
+
+      {/* 선지 */}
+      <div style={{ padding: "0 18px 14px" }}>
+        <div
+          style={{
+            fontSize: "0.58rem",
+            fontWeight: "700",
+            color: C.subtle,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            marginBottom: "8px",
+          }}
+        >
+          선지
         </div>
+        <div
+          onClick={() => setActive(!active)}
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            gap: 8,
+            padding: "9px 11px",
+            borderRadius: "8px",
+            cursor: "pointer",
+            background: active ? "rgba(239,68,68,0.08)" : "#fff",
+            border: active ? "2px solid #ef4444" : `1px solid ${C.border}`,
+            transition: "all 0.18s",
+          }}
+        >
+          <span
+            style={{
+              minWidth: 20,
+              height: 20,
+              borderRadius: "50%",
+              flexShrink: 0,
+              background: active ? "#ef4444" : "#f0efed",
+              color: active ? "#fff" : C.subtle,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "0.65rem",
+              fontWeight: "700",
+            }}
+          >
+            {choice.num}
+          </span>
+          <span
+            style={{
+              fontSize: "0.73rem",
+              lineHeight: 1.7,
+              color: C.ink,
+              flex: 1,
+            }}
+          >
+            {choice.text}
+          </span>
+          {active && (
+            <span style={{ fontSize: "0.85rem", flexShrink: 0 }}>❌</span>
+          )}
+        </div>
+
+        {/* 피드백 */}
+        <div
+          style={{
+            marginTop: "8px",
+            padding: "8px 11px",
+            background: active ? "rgba(239,68,68,0.06)" : C.bg,
+            borderRadius: "8px",
+            fontSize: "0.68rem",
+            color: active ? "#b91c1c" : C.mid,
+            lineHeight: 1.7,
+            transition: "all 0.25s",
+          }}
+        >
+          {active ? (
+            <>
+              <strong>R1 사실 왜곡</strong> — 지문에 "길이, 부피가 변화하는
+              현상"이라 했으므로 부피도 변합니다.
+            </>
+          ) : (
+            "👆 선지를 클릭해보세요 — 형광펜이 켜집니다"
+          )}
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div
+        style={{
+          padding: "0 18px 18px",
+          textAlign: "center",
+        }}
+      >
+        <button
+          onClick={onStart}
+          style={{
+            width: "100%",
+            padding: "12px",
+            background: C.green,
+            color: "#fff",
+            border: "none",
+            borderRadius: "10px",
+            fontSize: "0.85rem",
+            fontWeight: "700",
+            cursor: "pointer",
+            fontFamily: "'Noto Sans KR', sans-serif",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          직접 풀어보기 →
+        </button>
       </div>
     </div>
   );
@@ -1123,11 +1099,41 @@ export default function Landing({ onStart }) {
           >
             신용카드 없이 시작 · 언제든 해지 가능
           </p>
-
-          <div style={{ animation: "fadeUp 0.9s ease 0.55s both" }}>
-            <HighlightDemo />
-          </div>
         </div>
+      </section>
+
+      {/* ══ 인터랙티브 미니 데모 ══ */}
+      <section
+        style={{
+          background: C.paper,
+          borderTop: `1px solid ${C.border}`,
+          padding: "clamp(48px,6vw,80px) clamp(20px,6vw,80px)",
+        }}
+      >
+        <FadeIn>
+          <div style={{ textAlign: "center", marginBottom: "28px" }}>
+            <Pill color={C.green}>3초 체험</Pill>
+            <h2
+              style={{
+                fontFamily: "'Noto Serif KR', serif",
+                fontSize: "clamp(1.2rem, 2.8vw, 1.7rem)",
+                fontWeight: "700",
+                color: C.ink,
+                letterSpacing: "-0.03em",
+                marginTop: "14px",
+                marginBottom: "8px",
+              }}
+            >
+              선지를 클릭하면, 근거가 보입니다
+            </h2>
+            <p style={{ fontSize: "0.82rem", color: C.muted, lineHeight: 1.7 }}>
+              2026학년도 수능 실제 지문으로 체험해보세요
+            </p>
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <HighlightDemo onStart={onStart} />
+        </FadeIn>
       </section>
 
       {/* ══ 통계 (다크) ══ */}
