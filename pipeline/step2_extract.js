@@ -430,7 +430,13 @@ const GEMINI_LITERATURE_PROMPT = (yearKey, lastQ, fromQ = 18, toQ = null) => {
   const year = yearKey.replace(/[^0-9]/g, "");
   const endQ = toQ || lastQ;
   return `너는 수능 국어 시험지 PDF에서 데이터를 추출하는 전문가야.
-아래 JSON 스키마에 맞게 문학 영역(${fromQ}번~${endQ}번)만 추출해줘.
+아래 JSON 스키마에 맞게 문학 영역(${fromQ}번~${endQ}번)을 빠짐없이 전부 추출해줘.
+
+⚠️ 최우선 규칙 — 누락 방지:
+- 시험지에 있는 모든 문학 작품과 문제를 빠짐없이 추출하라.
+- 문항 번호 순서대로(${fromQ}번부터 ${endQ}번까지) 하나도 빠뜨리지 마라.
+- 범위를 스스로 판단하여 축소하지 마라. ${fromQ}~${endQ}번 사이의 모든 문항을 포함하라.
+- 추출을 중단하지 마라. ${endQ}번까지 완전히 추출할 것.
 
 [출력 규칙]
 - 순수 JSON만 출력. 설명, 마크다운 코드블록, 기타 텍스트 없음

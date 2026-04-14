@@ -337,17 +337,37 @@ async function callAnalyze(set, answerKey, systemPrompt) {
     })
     .filter(Boolean);
 
-  const userPrompt = `다음 세트를 분석해줘.
+  // 지문과 문제를 구조화해서 전달 (토큰 효율 + 해설 품질 향상)
+  const sentsText = set.sents.map((s) => `[${s.id}] ${s.t}`).join("\n");
+
+  const questionsText = set.questions
+    .map((q) => {
+      const choicesText = q.choices.map((c) => `  ${c.num}. ${c.t}`).join("\n");
+      const bogi = q.bogi
+        ? `\n  <보기> ${typeof q.bogi === "string" ? q.bogi.substring(0, 200) : ""}`
+        : "";
+      return `Q${q.id} (${q.questionType}): ${q.t}${bogi}\n${choicesText}`;
+    })
+    .join("\n\n");
+
+  const sec =
+    set.id.startsWith("r") || set.id.startsWith("s") ? "reading" : "literature";
+
+  const userPrompt = `세트 "${set.id}" (${set.title}) 분석
 
 [정답 정보]
 ${answerGuide.map((g) => `문항 ${g.qId}번 (${g.questionType}): 정답 선지 = ${g.correctNum}번`).join("\n")}
 
-[세트 데이터]
-${JSON.stringify(set)}
+[지문 전문]
+${sentsText}
 
-각 선지의 pat과 analysis만 작성해줘. ok 필드는 출력하지 마.
+[문항과 선지]
+${questionsText}
+
+위 지문을 근거로 각 선지의 pat과 analysis를 작성해줘.
 - 정답 선지(ok:true에 해당): pat: null
-- 오답 선지(ok:false에 해당): 독서 세트는 R1~R4, 문학 세트는 L1~L5 중 하나
+- 오답 선지(ok:false에 해당): ${sec === "reading" ? "R1~R4" : "L1~L5"} 중 하나
+- analysis는 반드시 지문의 구체적 근거를 인용하여 해당 선지가 왜 맞거나 틀린지 설명할 것
 
 choices 배열만 JSON으로 반환해줘.
 형식: [{ qId: 1, num: 1, pat: null, analysis: "..." }, ...]
@@ -357,7 +377,7 @@ choices 배열만 JSON으로 반환해줘.
     client.messages.create(
       {
         model: "claude-sonnet-4-5",
-        max_tokens: 8000,
+        max_tokens: 16000,
         system: systemPrompt,
         messages: [{ role: "user", content: userPrompt }],
       },
@@ -595,15 +615,23 @@ export async function analyzeStructure(
     ...partial.literature.map((s) => s.id),
   ]);
 
+  // 전체 세트 수 계산
+  const allSets = [...structureData.reading, ...structureData.literature];
+  const totalSets = allSets.length;
+  let setIdx = 0;
+
   for (const section of ["reading", "literature"]) {
     for (const set of structureData[section]) {
+      setIdx++;
       // 이미 완료된 세트 스킵
       if (completedIds.has(set.id)) {
         console.log(`[step3] 스킵 (이미 완료): ${set.id}`);
         continue;
       }
 
-      console.log(`[step3] 분석 중: ${set.id} (${set.range})`);
+      console.log(
+        `[step3] 분석 중: ${set.id} (${set.range}) [${setIdx}/${totalSets}]`,
+      );
       const updatedChoices = await analyzeSet(set, answerKey);
       const analyzed = applyChoices(set, updatedChoices);
       result[section].push(analyzed);

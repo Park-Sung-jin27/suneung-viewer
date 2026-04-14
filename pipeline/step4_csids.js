@@ -144,33 +144,37 @@ function parseJSON(raw) {
 async function matchCsIds(set) {
   const sentIds = new Set(set.sents.map((s) => s.id));
 
-  const userPrompt = `다음 세트에서 각 선지의 cs_ids를 찾아줘.
+  // 지문과 선지를 구조화해서 전달
+  const sentsText = set.sents.map((s) => `[${s.id}] ${s.t}`).join("\n");
 
-지문 문장 목록:
-${JSON.stringify(set.sents.map((s) => ({ id: s.id, t: s.t })))}
+  const choicesText = set.questions
+    .flatMap((q) =>
+      q.choices.map(
+        (c) =>
+          `Q${q.id}-${c.num} (ok:${c.ok}): ${c.t}\n  analysis: ${(c.analysis || "").substring(0, 150)}`,
+      ),
+    )
+    .join("\n");
 
-선지 목록:
-${JSON.stringify(
-  set.questions.flatMap((q) =>
-    q.choices.map((c) => ({
-      questionId: q.id,
-      num: c.num,
-      t: c.t,
-      ok: c.ok,
-      pat: c.pat,
-      analysis: c.analysis,
-    })),
-  ),
-)}
+  const userPrompt = `세트 "${set.id}" cs_ids 매칭
 
-각 선지의 cs_ids 배열만 반환해줘.
-형식: [{ "questionId": 1, "num": 1, "cs_ids": [...] }, ...]`;
+[지문 문장 — 이 목록의 id만 사용할 것]
+${sentsText}
+
+[선지와 해설]
+${choicesText}
+
+각 선지의 ok/analysis 근거가 되는 지문 문장 ID를 찾아줘.
+- ok:true 선지: 선지 내용이 직접 근거하는 문장 ID
+- ok:false 선지: 선지가 왜곡/전도한 원래 문장 ID
+- 반드시 위 지문 목록에 있는 실제 id만 사용할 것
+형식: [{ "questionId": 1, "num": 1, "cs_ids": ["${set.sents[0]?.id || "id"}", ...] }, ...]`;
 
   const response = await callWithRetry(() =>
     client.messages.create(
       {
         model: "claude-sonnet-4-5",
-        max_tokens: 4000,
+        max_tokens: 8000,
         system: SYSTEM_PROMPT,
         messages: [{ role: "user", content: userPrompt }],
       },
@@ -202,10 +206,16 @@ ${JSON.stringify(
 
 export async function assignCsIds(step3Data) {
   const result = { reading: [], literature: [] };
+  const allSets = [...step3Data.reading, ...step3Data.literature];
+  const totalSets = allSets.length;
+  let setIdx = 0;
 
   for (const section of ["reading", "literature"]) {
     for (const set of step3Data[section]) {
-      console.log(`[step4] cs_ids 매칭 중: ${set.id} (${set.range})`);
+      setIdx++;
+      console.log(
+        `[step4] cs_ids 매칭 중: ${set.id} (${set.range}) [${setIdx}/${totalSets}]`,
+      );
 
       const matches = await matchCsIds(set);
 
