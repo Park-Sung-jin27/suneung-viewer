@@ -12,8 +12,11 @@ function cleanAnalysis(text) {
   if (!text) return "";
   return (
     text
-      // sent ID 참조 제거: r2025a_s1, bs7 등
+      // [[sym:KEY]] 기호 태그 제거
+      .replace(/\[\[sym:\w+\]\]/g, "")
+      // sent ID 참조 제거: r2025a_s1, bs7, (as2), (as6~as7) 등
       .replace(/\b[a-zA-Z_]*[a-zA-Z]\d+(?:[·,][a-zA-Z_]*\d+)*:\s*[''"]?/g, "")
+      .replace(/\(as\d+(?:~as\d+)?\)/g, "")
       // 말미 패턴 코드 제거: [L1], [R2], [P0] 등
       .replace(/\s*\[([RLVP][0-9]|P0)\]\s*$/gm, "")
       // [?], [불명확] 같은 불완전 기호 제거

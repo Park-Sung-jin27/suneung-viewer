@@ -137,6 +137,16 @@ function RenderSent({ sent, sel, anns }) {
 
   const t = sent.t || "";
   const st = sent.sentType || "body";
+  const pal = getHL(sent, sel);
+  const hlStyle = pal
+    ? {
+        background: pal.bg,
+        borderRadius: "3px",
+        padding: "1px 3px",
+        outline: `1.5px solid ${pal.border}`,
+        outlineOffset: "1px",
+      }
+    : {};
 
   if (st === "workTag")
     return (
@@ -145,13 +155,34 @@ function RenderSent({ sent, sel, anns }) {
           fontWeight: "700",
           fontSize: "0.9rem",
           color: "#111827",
-          marginTop: "20px",
-          marginBottom: "4px",
+          marginTop: "24px",
+          marginBottom: "6px",
+          paddingTop: "16px",
+          borderTop: "1px solid #e5e7eb",
         }}
       >
         {t}
       </div>
     );
+  if (st === "verse") {
+    const lines = t.split("\n");
+    return (
+      <div
+        style={{
+          margin: "2px 0",
+          paddingLeft: "8px",
+          lineHeight: "2.0",
+        }}
+        data-hl={pal ? "true" : undefined}
+      >
+        {lines.map((line, i) => (
+          <div key={i} style={pal ? hlStyle : {}}>
+            <Lines text={line} />
+          </div>
+        ))}
+      </div>
+    );
+  }
   if (st === "omission")
     return (
       <div
@@ -196,17 +227,6 @@ function RenderSent({ sent, sel, anns }) {
         <Underlined text={t} />
       </div>
     );
-
-  const pal = getHL(sent, sel);
-  const hlStyle = pal
-    ? {
-        background: pal.bg,
-        borderRadius: "3px",
-        padding: "1px 3px",
-        outline: `1.5px solid ${pal.border}`,
-        outlineOffset: "1px",
-      }
-    : {};
 
   const content =
     anns.length > 0 ? applyInlineAnns(t, anns) : <Lines text={t} />;
@@ -289,7 +309,11 @@ function renderAll(sents, sel, annotations) {
 
   for (const s of sents) {
     const st = s.sentType || (s.type === "image" ? "image" : "body");
-    if (["workTag", "omission", "author", "footnote", "image"].includes(st)) {
+    if (
+      ["workTag", "omission", "author", "footnote", "image", "verse"].includes(
+        st,
+      )
+    ) {
       flush();
       result.push(
         <RenderSent key={s.id} sent={s} sel={sel} anns={annMap[s.id] || []} />,
