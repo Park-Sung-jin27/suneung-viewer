@@ -868,14 +868,25 @@ export async function extractStructure(
     if (!valid) {
       console.warn(`\n⚠️  [step2] ${sec} 추출 검증 경고:`);
       errors.forEach((e) => console.warn(`  - ${e}`));
-      // 범위 밖 Q번호를 가진 세트 필터링
+      // 범위 밖 Q번호 처리: 세트 내 범위 밖 문항만 제거, 세트 자체는 유지
       const minQ = sec === "reading" ? startQ : 18;
       const maxQ = lastQuestion;
       const before = sets.length;
       sets = sets.filter((s) => {
         const qIds = (s.questions || []).map((q) => q.id).filter(Boolean);
         if (qIds.length === 0) return false;
-        return qIds.every((q) => q >= minQ && q <= maxQ);
+        // 범위와 하나라도 겹치면 유지
+        const hasOverlap = qIds.some((q) => q >= minQ && q <= maxQ);
+        if (!hasOverlap) return false;
+        // 범위 밖 문항만 제거
+        const beforeQ = s.questions.length;
+        s.questions = s.questions.filter((q) => q.id >= minQ && q.id <= maxQ);
+        if (s.questions.length < beforeQ) {
+          console.warn(
+            `  → ${s.id}: 범위 밖 문항 ${beforeQ - s.questions.length}개 제거, ${s.questions.length}개 유지`,
+          );
+        }
+        return s.questions.length > 0;
       });
       console.warn(
         `  → ${before - sets.length}개 세트 제거, ${sets.length}개 유지`,
