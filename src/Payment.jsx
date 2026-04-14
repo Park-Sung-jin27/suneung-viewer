@@ -60,7 +60,7 @@ const PLANS = [
     period: "/ 월 · 구독",
     badge: "가장 많이 선택",
     features: [
-      { text: "전 기출 204문항 전체 접근", ok: true },
+      { text: "오답 패턴 진단 + 전 시험 형광펜 복기 훈련", ok: true },
       { text: "오류 패턴 8종 진단 무제한", ok: true },
       { text: "누적 개인 리포트 + 처방", ok: true },
       { text: "주간 진도 트래킹", ok: true },
@@ -76,9 +76,9 @@ const PLANS = [
     period: "/ 월 · 학생 1인",
     badge: null,
     features: [
+      { text: "사관학교·LEET 포함 + AI 맞춤 패턴 훈련", ok: true },
       { text: "스탠다드 전체 포함", ok: true },
       { text: "월 2회 전문가 1:1 리뷰", ok: true },
-      { text: "맞춤 교정 플랜 수립", ok: true },
       { text: "학부모 리포트 공유", ok: true },
       { text: "수능 전 긴급 점검 1회", ok: true },
     ],
@@ -548,6 +548,173 @@ export default function Payment({ user, onSuccess }) {
         <br />
         현재 무료 스타터 플랜으로 핵심 기능을 먼저 경험해보세요.
       </p>
+
+      {/* ── B2B 학원 도입 플랜 ── */}
+      <div
+        style={{
+          marginTop: "48px",
+          paddingTop: "36px",
+          borderTop: `1px solid ${C.border}`,
+        }}
+      >
+        <div style={{ textAlign: "center", marginBottom: "28px" }}>
+          <div
+            style={{
+              display: "inline-block",
+              fontSize: "0.65rem",
+              fontWeight: "700",
+              color: C.green,
+              background: C.bg,
+              padding: "4px 14px",
+              borderRadius: "20px",
+              marginBottom: "12px",
+            }}
+          >
+            학원 도입
+          </div>
+          <h2
+            style={{
+              fontFamily: "'Noto Serif KR', serif",
+              fontSize: "1.2rem",
+              fontWeight: "700",
+              color: C.ink,
+              letterSpacing: "-0.03em",
+              marginBottom: "8px",
+            }}
+          >
+            학원 단체 도입 플랜
+          </h2>
+          <p
+            style={{
+              fontSize: "0.78rem",
+              color: C.muted,
+              lineHeight: 1.7,
+            }}
+          >
+            강사 없이 학생별 오답 패턴을 진단하고 교정합니다
+          </p>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "16px",
+            maxWidth: "560px",
+            margin: "0 auto",
+          }}
+        >
+          {[
+            {
+              name: "학원 스탠다드",
+              price: "199,000",
+              period: "/ 월 · 학원당",
+              features: [
+                "학생 30명 이내",
+                "오답 패턴 진단 + 형광펜 훈련",
+                "학생별 리포트 열람",
+                "(학생 리포트·관리 기능 순차 오픈 예정)",
+              ],
+            },
+            {
+              name: "학원 프리미엄",
+              price: "349,000",
+              period: "/ 월 · 학원당",
+              features: [
+                "학생 100명 이내",
+                "AI 맞춤 패턴 훈련 포함",
+                "학부모 리포트 공유",
+                "(학생 리포트·관리 기능 순차 오픈 예정)",
+              ],
+            },
+          ].map((plan) => (
+            <div
+              key={plan.name}
+              style={{
+                background: C.white,
+                border: `1px solid ${C.border}`,
+                borderRadius: "14px",
+                padding: "24px 18px",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: "700",
+                  color: C.ink,
+                  marginBottom: "6px",
+                }}
+              >
+                {plan.name}
+              </div>
+              <div style={{ marginBottom: "16px" }}>
+                <span
+                  style={{
+                    fontSize: "1.3rem",
+                    fontWeight: "800",
+                    color: C.green,
+                  }}
+                >
+                  {plan.price}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.72rem",
+                    color: C.muted,
+                    marginLeft: "4px",
+                  }}
+                >
+                  {plan.period}
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                }}
+              >
+                {plan.features.map((f, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      fontSize: "0.72rem",
+                      color: f.startsWith("(") ? C.subtle : C.ink,
+                      lineHeight: 1.6,
+                      fontStyle: f.startsWith("(") ? "italic" : "normal",
+                    }}
+                  >
+                    {f.startsWith("(") ? f : `✓ ${f}`}
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("b2b-waitlist")
+                    ?.scrollIntoView({ behavior: "smooth" }) ||
+                  (window.location.href = "/#b2b-waitlist")
+                }
+                style={{
+                  marginTop: "18px",
+                  width: "100%",
+                  padding: "10px",
+                  background: C.green,
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "8px",
+                  fontSize: "0.78rem",
+                  fontWeight: "700",
+                  cursor: "pointer",
+                  fontFamily: "'Noto Sans KR', sans-serif",
+                }}
+              >
+                도입 상담 신청
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
