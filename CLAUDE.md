@@ -102,6 +102,18 @@ ok:false + L3
 
 ---
 
+## 형광펜 작동 구조 (중요)
+
+```
+단일 진실값: choice.cs_ids
+sent.cs: dataLoader._buildSentCs()가 런타임에 cs_ids로부터 생성하는 역참조
+정적 sent.cs 개수는 품질 기준이 아님 — 품질 검수 시 cs_ids만 확인할 것
+
+흐름: choice.cs_ids → _buildSentCs() → sent.cs → PassagePanel getHL() → 형광펜 표시
+```
+
+---
+
 ## 품질 검증 구조
 
 ```

@@ -12,35 +12,54 @@
 
 ## 🔥 오늘 할 것 (3개만)
 
-1. **[B-4] F_empty_analysis 25건 재생성** — CRITICAL 0건 달성
-2. **[O-1] needs_human 패턴 추출** — 성진님, B-4 후
-3. **[A-2] git pull + 빌드 확인** — B-4 후
+1. **[오르비] 게시** — Code A 시험 범위 버그 수정 완료 후
+2. **[B] F_content_reversed 47건 정밀 분류**
+3. **[O-1] needs_human 패턴 정의**
 
 ---
 
-## 🚧 진행 중
+## 오늘 완료
 
-- Code B: F_empty_analysis 25건 재생성
-- Code A: B-4 완료 대기
-
----
-
-## ⚠️ 막힌 것
-
-- set_ 플레이스홀더 근본 원인 미해결 (구형 2014~2018 재탑재 시 step3 점검 필요 — 백로그)
+- 2022~2026 수능 5개 release_ready 달성
+- isReversed false positive 버그 수정
+- step4 잘못된 마커 규칙 제거 후 재검증 완료
+- 형광펜 choice.cs_ids 기준 / sent.cs 런타임 역매핑 구조 확인
+- 회원가입 플로우 정상 확인 (이메일)
 
 ---
 
-## ➡️ 다음 액션
+## ⚠️ 남은 것
 
-B-4 완료 → CRITICAL 0 확인 → O-1 패턴 추출 → step3 보완
+- Google OAuth: 배포 환경 최종 확인 필요
+- 무료 사용자 시험 범위 버그 수정 중 (2022~2026 5개 전부 보여야 함)
+- "무료로 시작" 버튼 Pro 잠금 해제 버그 수정 중
 
 ---
 
-## 📊 현재 quality_gate (78a93fe)
+## ➡️ 내일 첫 작업
+
+F_content_reversed 47건 정밀 분류 → 진짜 반전만 reanalyze
+sent.cs 런타임 역매핑 구조 문서화
+
+---
+
+## 📊 현재 quality_gate (--scope=suneung5)
 
 | 등급 | 건수 |
 |---|---|
-| 🔴 CRITICAL | 25건 (F_empty만) |
-| 🟡 WARNING | 482건 |
-| ⚪ IGNORE | 4건 |
+| 🔴 CRITICAL | 0건 ✅ |
+| 🟡 WARNING | 119건 (F_content_reversed 47 + G_ann_dead 72) |
+| ⚪ IGNORE | 8건 |
+| **상태** | 🟢 **release_ready** |
+
+> 공개 범위: 2022~2026 수능 5개만.
+> 형광펜 단일 진실값: choice.cs_ids (sent.cs는 런타임 역참조, 품질 기준 아님)
+
+---
+
+## 핵심 구조 메모
+
+```
+형광펜: choice.cs_ids → dataLoader._buildSentCs() → sent.cs → PassagePanel getHL()
+정적 sent.cs 개수 = 품질 기준 아님 (오해 금지)
+```
