@@ -10,16 +10,30 @@ dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
+// ─────────────────────────────────────────────
+// [수정 1] 코드 레벨에서 자동 [] 처리할 패턴
+// R3: 과도한 추론 — 지문에 근거 없음
+// V:  어휘 치환 판단 — 지문 문장 특정 불가
+// null: pat 미지정 — AI에 맡기지 않음
+// ─────────────────────────────────────────────
+const AUTO_EMPTY_PATS = new Set(["R3", "V", null]);
+
+// ─────────────────────────────────────────────
+// [수정 2] SYSTEM_PROMPT — 구체계 pat:3 → R3/V 명세
+// ─────────────────────────────────────────────
 const SYSTEM_PROMPT = `너는 수능 국어 선지와 지문 문장을 매칭하는 전문가다.
 반드시 순수 JSON만 출력하라. 마크다운, 설명 텍스트 없음.
 
 [cs_ids 규칙]
 - 각 선지의 ok/analysis 근거가 되는 지문 문장 ID를 찾아라
-- ok:true인 선지: 선지 내용이 직접 근거하는 문장 ID
-- ok:false인 선지: 선지가 왜곡/전도/추론한 원래 문장 ID
-- 근거 문장이 여러 개면 모두 포함
-- 지문에 근거가 없는 선지(pat:3 과도한 추론)는 빈 배열 []
+- ok:true인 선지: 선지 내용이 사실임을 직접 뒷받침하는 문장 ID
+- ok:false인 선지: 선지가 왜곡·전도·짜깁기한 원래 지문 문장 ID (패턴의 출처)
+- 근거 문장이 여러 개면 모두 포함 (최대 5개)
 - 반드시 실제 존재하는 sent.id만 사용할 것
+
+[자동 처리 — 이 선지들은 목록에 포함되지 않음, AI 불필요]
+- ok:false + pat:R3 (과도한 추론): 지문에 근거 없는 내용이므로 [] 자동 적용
+- ok:false + pat:V  (어휘 치환):   어휘 문제로 지문 문장 특정 불가이므로 [] 자동 적용
 
 출력 형식:
 [{ "questionId": 1, "num": 1, "cs_ids": ["r2022a_s3", "r2022a_s4"] }, ...]`;
@@ -95,11 +109,7 @@ function fixUnescapedQuotes(jsonStr) {
 function tryParse(text) {
   try {
     const parsed = JSON.parse(text);
-    if (
-      Array.isArray(parsed) &&
-      parsed.length > 0 &&
-      Array.isArray(parsed[0])
-    ) {
+    if (Array.isArray(parsed) && parsed.length > 0 && Array.isArray(parsed[0])) {
       return parsed.flat();
     }
     return parsed;
@@ -119,8 +129,7 @@ function parseJSON(raw) {
 
   // 여러 배열 병합
   const arrays = [];
-  let depth = 0,
-    start = -1;
+  let depth = 0, start = -1;
   for (let i = 0; i < text.length; i++) {
     if (text[i] === "[") {
       if (depth === 0) start = i;
@@ -144,32 +153,51 @@ function parseJSON(raw) {
 async function matchCsIds(set) {
   const sentIds = new Set(set.sents.map((s) => s.id));
 
-  // 지문과 선지를 구조화해서 전달
-  const sentsText = set.sents.map((s) => `[${s.id}] ${s.t}`).join("\n");
+  // ─────────────────────────────────────────────
+  // [수정 1] AUTO_EMPTY_PATS 선지는 AI 호출 전 분리
+  // ─────────────────────────────────────────────
+  const autoEmptyChoices = [];
+  const needsMatchChoices = [];
 
-  const choicesText = set.questions
-    .flatMap((q) =>
-      q.choices.map(
-        (c) =>
-          `Q${q.id}-${c.num} (ok:${c.ok}): ${c.t}\n  analysis: ${(c.analysis || "").substring(0, 150)}`,
-      ),
-    )
-    .join("\n");
+  for (const q of set.questions) {
+    for (const c of q.choices) {
+      const isAutoEmpty = c.ok === false && AUTO_EMPTY_PATS.has(c.pat);
+      if (isAutoEmpty) {
+        autoEmptyChoices.push({ questionId: q.id, num: c.num, cs_ids: [] });
+      } else {
+        needsMatchChoices.push({
+          questionId: q.id,
+          num: c.num,
+          t: c.t,
+          ok: c.ok,
+          pat: c.pat,
+          analysis: c.analysis,
+        });
+      }
+    }
+  }
 
-  const userPrompt = `세트 "${set.id}" cs_ids 매칭
+  console.log(
+    `  자동 [] 처리: ${autoEmptyChoices.length}건 (R3/V/null), AI 매칭 대상: ${needsMatchChoices.length}건`
+  );
 
-[지문 문장 — 이 목록의 id만 사용할 것]
-${sentsText}
+  // AI 매칭 대상이 없으면 API 호출 생략
+  if (needsMatchChoices.length === 0) {
+    return autoEmptyChoices;
+  }
 
-[선지와 해설]
-${choicesText}
+  const userPrompt = `다음 세트에서 각 선지의 cs_ids를 찾아줘.
 
-각 선지의 ok/analysis 근거가 되는 지문 문장 ID를 찾아줘.
-- ok:true 선지: 선지 내용이 직접 근거하는 문장 ID
-- ok:false 선지: 선지가 왜곡/전도한 원래 문장 ID
-- 반드시 위 지문 목록에 있는 실제 id만 사용할 것
-형식: [{ "questionId": 1, "num": 1, "cs_ids": ["${set.sents[0]?.id || "id"}", ...] }, ...]`;
+지문 문장 목록:
+${JSON.stringify(set.sents.map((s) => ({ id: s.id, t: s.t })))}
 
+선지 목록:
+${JSON.stringify(needsMatchChoices)}
+
+각 선지의 cs_ids 배열만 반환해줘.
+형식: [{ "questionId": 1, "num": 1, "cs_ids": [...] }, ...]`;
+
+  // [수정 3] max_tokens 4000 → 8000
   const response = await callWithRetry(() =>
     client.messages.create(
       {
@@ -178,8 +206,8 @@ ${choicesText}
         system: SYSTEM_PROMPT,
         messages: [{ role: "user", content: userPrompt }],
       },
-      { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
-    ),
+      { headers: { "anthropic-beta": "output-128k-2025-02-19" } }
+    )
   );
 
   const matches = parseJSON(response.content[0].text);
@@ -199,27 +227,22 @@ ${choicesText}
   });
 
   console.log(
-    `  매칭: ${totalMatched}개 cs_ids, 무효 ID 제거: ${invalidRemoved}개`,
+    `  매칭: ${totalMatched}개 cs_ids, 무효 ID 제거: ${invalidRemoved}개`
   );
-  return cleaned;
+
+  // autoEmpty + AI 매칭 결과 병합
+  return [...autoEmptyChoices, ...cleaned];
 }
 
 export async function assignCsIds(step3Data) {
   const result = { reading: [], literature: [] };
-  const allSets = [...step3Data.reading, ...step3Data.literature];
-  const totalSets = allSets.length;
-  let setIdx = 0;
 
   for (const section of ["reading", "literature"]) {
     for (const set of step3Data[section]) {
-      setIdx++;
-      console.log(
-        `[step4] cs_ids 매칭 중: ${set.id} (${set.range}) [${setIdx}/${totalSets}]`,
-      );
+      console.log(`[step4] cs_ids 매칭 중: ${set.id} (${set.range})`);
 
       const matches = await matchCsIds(set);
 
-      // matches를 questionId + num 기준으로 빠르게 조회
       const matchMap = new Map();
       for (const m of matches) {
         matchMap.set(`${m.questionId}_${m.num}`, m.cs_ids);
@@ -240,29 +263,115 @@ export async function assignCsIds(step3Data) {
   return result;
 }
 
-// 커맨드라인
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const inputPath = process.argv[2];
+// ─────────────────────────────────────────────
+// 타겟 재실행 모드: 기존 all_data_204.json에서
+// ok:false cs_ids=[] 중 R3/V/null 제외한 선지만
+// 세트 단위로 API 재호출해 cs_ids 채우기
+//
+// 사용법:
+//   node pipeline/step4_csids.js --retarget [yearKey]
+//   node pipeline/step4_csids.js --retarget          (전체 5개 시험)
+// ─────────────────────────────────────────────
+async function retarget(targetYear) {
+  const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+  const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
 
-  if (!inputPath) {
-    console.error("사용법: node pipeline/step4_csids.js [step3결과JSON경로]");
-    process.exit(1);
+  const years = targetYear
+    ? [targetYear]
+    : ["2022수능", "2023수능", "2024수능", "2025수능", "2026수능"];
+
+  let totalFixed = 0;
+
+  for (const yr of years) {
+    if (!data[yr]) {
+      console.warn(`⚠️ ${yr} 키 없음 — 스킵`);
+      continue;
+    }
+
+    for (const section of ["reading", "literature"]) {
+      const sets = data[yr][section] || [];
+
+      for (const set of sets) {
+        // 이 세트에서 재매핑 대상 선지 존재 여부 확인
+        const needsWork = set.questions.some((q) =>
+          q.choices.some(
+            (c) =>
+              c.ok === false &&
+              !AUTO_EMPTY_PATS.has(c.pat) &&
+              (!c.cs_ids || c.cs_ids.length === 0)
+          )
+        );
+
+        if (!needsWork) continue;
+
+        console.log(`\n[retarget] ${yr} ${set.id} (${set.range})`);
+
+        const matches = await matchCsIds(set);
+        const matchMap = new Map();
+        for (const m of matches) {
+          matchMap.set(`${m.questionId}_${m.num}`, m.cs_ids);
+        }
+
+        for (const q of set.questions) {
+          for (const c of q.choices) {
+            const key = `${q.id}_${c.num}`;
+            if (matchMap.has(key)) {
+              const newIds = matchMap.get(key);
+              if (newIds.length > 0 || AUTO_EMPTY_PATS.has(c.pat)) {
+                c.cs_ids = newIds;
+                if (newIds.length > 0) totalFixed++;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    console.log(`✅ ${yr} 완료`);
   }
 
-  const inputPath_abs = path.resolve(inputPath);
-  const step3Data = JSON.parse(fs.readFileSync(inputPath_abs, "utf8"));
+  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
+  console.log(`\n✅ all_data_204.json 저장 완료 — ${totalFixed}건 cs_ids 채움`);
+}
 
-  assignCsIds(step3Data)
-    .then((result) => {
-      const outPath = path.resolve(
-        path.dirname(inputPath_abs),
-        path.basename(inputPath_abs).replace("step3_", "step4_"),
-      );
-      fs.writeFileSync(outPath, JSON.stringify(result, null, 2), "utf8");
-      console.log(`\n✅ 저장 완료: ${outPath}`);
-    })
-    .catch((err) => {
+// 커맨드라인
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  const mode = process.argv[2];
+
+  if (mode === "--retarget") {
+    // 기존 데이터 타겟 재실행
+    const targetYear = process.argv[3] || null;
+    retarget(targetYear).catch((err) => {
       console.error("오류:", err.message);
       process.exit(1);
     });
+  } else {
+    // 기존 신규 파이프라인 모드
+    const inputPath = mode;
+    if (!inputPath) {
+      console.error(
+        "사용법:\n" +
+        "  신규: node pipeline/step4_csids.js [step3결과JSON경로]\n" +
+        "  재실행: node pipeline/step4_csids.js --retarget [연도키(선택)]"
+      );
+      process.exit(1);
+    }
+
+    const inputPath_abs = path.resolve(inputPath);
+    const step3Data = JSON.parse(fs.readFileSync(inputPath_abs, "utf8"));
+
+    assignCsIds(step3Data)
+      .then((result) => {
+        const outPath = path.resolve(
+          path.dirname(inputPath_abs),
+          path.basename(inputPath_abs).replace("step3_", "step4_")
+        );
+        fs.writeFileSync(outPath, JSON.stringify(result, null, 2), "utf8");
+        console.log(`\n✅ 저장 완료: ${outPath}`);
+      })
+      .catch((err) => {
+        console.error("오류:", err.message);
+        process.exit(1);
+      });
+  }
 }
