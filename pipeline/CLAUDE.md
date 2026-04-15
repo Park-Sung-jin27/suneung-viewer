@@ -6,7 +6,7 @@
 
 ## 🔥 CURRENT FOCUS (이번 주 목표)
 
-**해설 퀄리티 확정 + 최종 프로세스 완성**
+**2022~2026 수능 5개 시험 외부 공개 가능 품질 확정**
 
 → 이 목표와 직접 관련 없는 작업 금지
 → 기능 추가, UI 리디자인, 전체 시험 확장 금지
@@ -20,6 +20,20 @@
 그 경험이 쌓이면 자신감이 생기고 성적이 오른다.
 
 **핵심 차별점: 모든 선지에 지문 근거를 형광펜(cs_ids)으로 1:1 시각 연결**
+
+---
+
+## 공개 가능 기준 (4개 모두 충족해야 release_ready)
+
+```
+1. ok:true cs_ids=[] → 0건        ← 핵심 KPI (정답 근거 반드시 있어야 함)
+2. DEAD_csid → 0건
+3. F_empty_analysis → 0건
+4. ok:false + R1/R2/R4/L1/L2/L4/L5 + cs_ids=[] → 0건
+```
+
+**작업 완료 ≠ 공개 가능**
+DONE 목록에 올라가도 위 4개 충족 전까지는 공개 불가.
 
 ---
 
@@ -47,7 +61,7 @@ AI:     90% 처리 — 추출, 해설, cs_ids, 품질 검증
   - 성진님 수업 방식과 다른 것
 ```
 
-**해설 4단계 원칙 (step3 핵심):**
+**해설 4단계 원칙:**
 ```
 1. 선지 조건 분해 — 복합 조건은 ①②③으로 분리
 2. 작품별 개별 검증 — 가/나/다 각각 확인
@@ -65,16 +79,56 @@ ok: false = 지문 사실 불일치
 questionType: positive → ok:true가 정답
 questionType: negative → ok:false가 정답
 pat: ok:false일 때만 R1~R4(독서) / L1~L5(문학). ok:true면 null.
+```
 
-cs_ids:
-  ok:true, ok:false+R1/R2/R4 → 근거/왜곡 출처 문장 ID
-  ok:false + R3, V            → [] 필수
-  ok:false + L3               → 부분 일치 sentId (작품 전체 불가)
+**cs_ids 규칙:**
+```
+ok:true
+  → 반드시 근거 문장 ID 있어야 함 (예외 없음)
+
+ok:false + R1/R2/R4/L1/L2/L4/L5
+  → 왜곡의 출처가 된 원문 문장 ID (예외 없음)
+
+ok:false + R3
+  → [] 필수 (지문에 없는 내용이 오답 근거)
+
+ok:false + V
+  → [] 필수 (어휘 치환 문항, 지문 문장 특정 불가)
+
+ok:false + L3
+  → 부분 일치 작품의 sentId
+  → 단, "작품 전체가 근거"는 불가 — 반드시 특정 문장 지목
 ```
 
 ---
 
-## 데이터 / 스키마
+## 품질 검증 구조
+
+```
+quality_gate.mjs       → 단일 진입점 (출시 판단 기준)
+reanalyze_positive.mjs → 부실/반전/빈 해설 자동 재생성
+                         MAX_RETRY=2, improved/retryable/needs_human 분류
+
+CRITICAL (출시 차단):
+  - ok:true cs_ids 없음
+  - ok:false + 근거필요 pat + cs_ids 없음
+  - DEAD_csid
+  - F_empty_analysis
+
+WARNING (출시 후 개선):
+  - F_content_reversed
+  - G_ann_dead
+
+IGNORE:
+  - E_pat_unclassifiable
+  - F_conclusion_mismatch
+```
+
+**검증은 quality_gate만. node -e 인라인 검증 금지.**
+
+---
+
+## 데이터 스키마
 
 ```
 단일 진실: public/data/all_data_204.json
@@ -109,9 +163,9 @@ A/B형: "2016수능A"
 
 ```
 step1~7: 추출 → 해설 → cs_ids → 검증 → 배포
-quality_gate.mjs       : 품질 검사 단일 진입점
-reanalyze_positive.mjs : 부실/반전/빈 해설 자동 재생성
-pipeline/archive/      : fix_dead_csids.cjs (전체 시험 확장 예정)
+quality_gate.mjs          : 품질 검사 단일 진입점
+reanalyze_positive.mjs    : 해설 재생성
+pipeline/archive/         : fix_dead_csids.cjs 등 재사용 레거시
 ```
 
 ---
@@ -121,6 +175,7 @@ pipeline/archive/      : fix_dead_csids.cjs (전체 시험 확장 예정)
 ```
 - 일회성 패치 스크립트 생성 (node -e 또는 step 파일 수정만)
 - 성진님 판단을 일회성 적용 (반드시 step3 프롬프트에 반영)
+- node -e 인라인으로 품질 검증 (quality_gate만 사용)
 - Code A / Code B 동시 push
 - PowerShell && 체이닝 (→ ; 사용)
 - 이번 주 목표와 무관한 작업
@@ -132,7 +187,7 @@ pipeline/archive/      : fix_dead_csids.cjs (전체 시험 확장 예정)
 
 ```
 데이터 오류 = UX 오류
-잘못된 cs_ids = 형광펜 붕괴 = 제품 붕괴
+ok:true cs_ids 없음 = 핵심 약속 위반 = 출시 불가
 정확도 > 속도
 ```
 
