@@ -126,27 +126,74 @@ function BogiRenderer({ bogi }) {
   }
 
   // ── annotated_image: 텍스트(선택) + 이미지
+  //   imagePosition: 'right' | 'left' → 텍스트 옆 배치 (데스크탑)
+  //                  'top' | 'bottom' | undefined → 세로 배치
+  //   모바일(<=640px)에서는 항상 세로 배치로 fallback
   if (bogi.type === "annotated_image") {
+    const pos = bogi.imagePosition;
+    const isHorizontal = pos === "right" || pos === "left";
+    const imgSrc = bogi.image.startsWith("/")
+      ? bogi.image
+      : `/images/${bogi.image}`;
+    const imgEl = (
+      <img
+        src={imgSrc}
+        alt="보기 그림"
+        style={{
+          maxWidth: "100%",
+          borderRadius: "4px",
+          border: "1px solid #e5e7eb",
+        }}
+      />
+    );
+    const textEl = bogi.text ? (
+      <div style={{ whiteSpace: "pre-wrap", textAlign: "justify", flex: 1 }}>
+        {bogi.text}
+      </div>
+    ) : null;
+
+    if (isHorizontal) {
+      return wrap(
+        <div
+          className="bogi-annotated-image-horizontal"
+          style={{
+            display: "flex",
+            flexDirection: pos === "left" ? "row-reverse" : "row",
+            gap: "14px",
+            alignItems: "flex-start",
+          }}
+        >
+          <style>{`
+            @media (max-width: 640px) {
+              .bogi-annotated-image-horizontal {
+                flex-direction: column !important;
+              }
+              .bogi-annotated-image-horizontal > .bogi-img-wrap {
+                width: 100% !important;
+                text-align: center !important;
+              }
+            }
+          `}</style>
+          {textEl}
+          <div
+            className="bogi-img-wrap"
+            style={{
+              flex: "0 0 40%",
+              maxWidth: "40%",
+              textAlign: "center",
+            }}
+          >
+            {imgEl}
+          </div>
+        </div>,
+      );
+    }
+
+    // 기본: 세로 배치 (텍스트 위, 이미지 아래)
     return wrap(
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        {bogi.text && (
-          <div style={{ whiteSpace: "pre-wrap", textAlign: "justify" }}>
-            {bogi.text}
-          </div>
-        )}
-        <div style={{ textAlign: "center" }}>
-          <img
-            src={
-              bogi.image.startsWith("/") ? bogi.image : `/images/${bogi.image}`
-            }
-            alt="보기 그림"
-            style={{
-              maxWidth: "100%",
-              borderRadius: "4px",
-              border: "1px solid #e5e7eb",
-            }}
-          />
-        </div>
+        {textEl}
+        <div style={{ textAlign: "center" }}>{imgEl}</div>
       </div>,
     );
   }
