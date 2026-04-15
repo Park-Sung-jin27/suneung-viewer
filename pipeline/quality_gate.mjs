@@ -166,6 +166,15 @@ const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
 const args = process.argv.slice(2);
 const FIX = args.includes("--fix");
 const REPORT = args.includes("--report");
+// --scope 프리셋: "suneung5" = 2022~2026수능 5개
+const SCOPE = (() => {
+  const scopeArg = args.find((a) => a.startsWith("--scope="));
+  if (!scopeArg) return null;
+  return scopeArg.split("=")[1];
+})();
+const SCOPE_YEARS = {
+  suneung5: ["2022수능", "2023수능", "2024수능", "2025수능", "2026수능"],
+};
 const YEAR = args.find((a) => !a.startsWith("--"));
 
 // ─── 로드 ────────────────────────────────────────────────────────────────────
@@ -200,7 +209,11 @@ for (const yd of Object.values(data))
       for (const sent of s.sents || []) validSentIds.add(sent.id);
 
 // ─── 메인 순회 ────────────────────────────────────────────────────────────────
-const yearsToCheck = YEAR ? [YEAR] : Object.keys(data);
+const yearsToCheck = SCOPE && SCOPE_YEARS[SCOPE]
+  ? SCOPE_YEARS[SCOPE]
+  : YEAR
+    ? [YEAR]
+    : Object.keys(data);
 
 for (const yearKey of yearsToCheck) {
   if (!data[yearKey]) {

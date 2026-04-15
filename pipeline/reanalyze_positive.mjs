@@ -98,14 +98,16 @@ ok:true이면 패턴 없음.
   return response.content[0].text.trim();
 }
 
-// ─── 반전 감지 함수 ────────────────────────────────────────────────────────────
+// ─── 반전 감지 함수 (결론형 문구만 매칭, "부적절"의 "적절한" 부분 매칭 방지) ──
+// negative lookbehind로 "부"가 앞에 오는 "적절한 진술" 제외
+const NEG_RE = /어긋나|왜곡|잘못 서술|맞지 않|일치하지 않/;
+const POS_RE = /(?<!부)적절한 진술|일치하는 적절한 진술|올바른 진술|합당한 진술/;
+
 function isReversed(c) {
   const ana = c.analysis || "";
-  const NEG = ["어긋나", "틀리", "왜곡", "오류", "잘못", "부적절", "맞지 않"];
-  const POS = ["일치", "적절한", "올바르", "합당"];
-  if (c.ok === true && NEG.some((w) => ana.includes(w))) return true;
-  if (c.ok === false && POS.some((w) => ana.includes(w))) return true;
-  if (!ana.trim()) return true; // 빈 analysis도 재작성 대상
+  if (!ana.trim()) return true;
+  if (c.ok === true && NEG_RE.test(ana)) return true;
+  if (c.ok === false && POS_RE.test(ana)) return true;
   return false;
 }
 

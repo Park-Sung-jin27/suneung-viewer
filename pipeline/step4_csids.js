@@ -293,13 +293,16 @@ async function retarget(targetYear) {
 
       for (const set of sets) {
         // 이 세트에서 재매핑 대상 선지 존재 여부 확인
+        // 1. ok:true + cs_ids=[]   → 근거 문장 미매핑 (CRITICAL)
+        // 2. ok:false + R1/R2/R4/L1/L2/L4/L5 + cs_ids=[] → 왜곡 출처 미매핑 (CRITICAL)
         const needsWork = set.questions.some((q) =>
-          q.choices.some(
-            (c) =>
-              c.ok === false &&
-              !AUTO_EMPTY_PATS.has(c.pat) &&
-              (!c.cs_ids || c.cs_ids.length === 0)
-          )
+          q.choices.some((c) => {
+            const empty = !c.cs_ids || c.cs_ids.length === 0;
+            if (!empty) return false;
+            if (c.ok === true) return true;
+            if (c.ok === false && !AUTO_EMPTY_PATS.has(c.pat)) return true;
+            return false;
+          })
         );
 
         if (!needsWork) continue;
