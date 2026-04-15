@@ -1018,7 +1018,7 @@ function MainPage({ isPro, user }) {
 // ══════════════════════════════════════════════
 // ViewerPage
 // ══════════════════════════════════════════════
-function ViewerPage({ user }) {
+function ViewerPage({ user, isPro = false }) {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -1852,7 +1852,7 @@ export default function App() {
         path="/viewer"
         element={
           <Layout user={user} onLogout={handleLogout}>
-            <ViewerPage user={user} />
+            <ViewerPage user={user} isPro={isPro} />
           </Layout>
         }
       />

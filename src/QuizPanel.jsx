@@ -7,6 +7,39 @@ import QuestionQA from "./QuestionQA";
 // [1] 유틸 함수
 // ══════════════════════════════════════════════════════════
 
+// [도식:...] / [사진:...] / [그림:...] / [이미지:...] 패턴을
+// 실제 이미지가 연결되지 않은 경우 중립적 박스로 노출 (원본 설명문 숨김)
+function replaceImagePlaceholders(text) {
+  if (!text) return text;
+  const re = /\[(?:도식|사진|그림|이미지)\s*:[^\]]+\]/g;
+  if (!re.test(text)) return text;
+  const parts = text.split(/\[(?:도식|사진|그림|이미지)\s*:[^\]]+\]/g);
+  const result = [];
+  for (let i = 0; i < parts.length; i++) {
+    if (parts[i]) result.push(parts[i]);
+    if (i < parts.length - 1) {
+      result.push(
+        <span
+          key={"img-ph-" + i}
+          style={{
+            display: "inline-block",
+            padding: "2px 10px",
+            margin: "0 2px",
+            border: "1px dashed #9ca3af",
+            borderRadius: "4px",
+            fontSize: "0.72rem",
+            color: "#6b7280",
+            background: "#f9fafb",
+          }}
+        >
+          🖼 이미지
+        </span>,
+      );
+    }
+  }
+  return result;
+}
+
 // analysis 텍스트 정제
 function cleanAnalysis(text) {
   if (!text) return "";
@@ -87,7 +120,7 @@ function BogiRenderer({ bogi }) {
   if (typeof bogi === "string") {
     return wrap(
       <div style={{ whiteSpace: "pre-wrap", textAlign: "justify" }}>
-        {bogi}
+        {replaceImagePlaceholders(bogi)}
       </div>,
     );
   }
