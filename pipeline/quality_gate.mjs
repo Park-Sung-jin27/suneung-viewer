@@ -209,11 +209,12 @@ for (const yd of Object.values(data))
       for (const sent of s.sents || []) validSentIds.add(sent.id);
 
 // ─── 메인 순회 ────────────────────────────────────────────────────────────────
-const yearsToCheck = SCOPE && SCOPE_YEARS[SCOPE]
-  ? SCOPE_YEARS[SCOPE]
-  : YEAR
-    ? [YEAR]
-    : Object.keys(data);
+const yearsToCheck =
+  SCOPE && SCOPE_YEARS[SCOPE]
+    ? SCOPE_YEARS[SCOPE]
+    : YEAR
+      ? [YEAR]
+      : Object.keys(data);
 
 for (const yearKey of yearsToCheck) {
   if (!data[yearKey]) {
@@ -362,6 +363,27 @@ for (const yearKey of yearsToCheck) {
             }
           }
 
+          // ── H: analysis 내부 ID 노출 ────────────────────────────────────
+          // [r2024cs11], r2024cs11, (as11), (as11~as15), q1_c3 등
+          const ID_LEAK_RE = /\[[a-z_0-9]+s\d+\]|\[[a-z0-9]+_s\d+\]|\((?:as|cs|bs|ds|es)\d+(?:~(?:as|cs|bs|ds|es)\d+)?\)|q\d+_c\d+|\b[rl]\d{4}[a-z_0-9]*s\d+\b/;
+          if (ana && ID_LEAK_RE.test(ana)) {
+            if (FIX) {
+              const cleaned = ana
+                .replace(/\s*\[[a-z_0-9]+s\d+\]/g, "")
+                .replace(/\s*\[[a-z0-9]+_s\d+\]/g, "")
+                .replace(/\s*\((?:as|cs|bs|ds|es)\d+(?:~(?:as|cs|bs|ds|es)\d+)?\)/g, "")
+                .replace(/\s*q\d+_c\d+/g, "")
+                .replace(/\s*\b[rl]\d{4}[a-z_0-9]*s\d+\b/g, "")
+                .replace(/\s{2,}/g, " ")
+                .replace(/ ([.,])/g, "$1")
+                .trim();
+              c.analysis = cleaned;
+              fixed("H_id_leak_removed", yearKey, cLoc, "내부 ID 패턴 제거");
+            } else {
+              issue("H_analysis_id_leak", yearKey, cLoc, "analysis에 내부 ID 노출");
+            }
+          }
+
           // ── MISSING cs_ids: 근거 있어야 할 선지에 cs_ids 없음 ───────────
           const hasCsIds = Array.isArray(c.cs_ids) && c.cs_ids.length > 0;
           if (!hasCsIds) {
@@ -375,7 +397,7 @@ for (const yearKey of yearsToCheck) {
             } else if (c.ok === false) {
               const pat = c.pat;
               // R3/V/0/null은 [] 허용, 그 외 R1/R2/R4/L1/L2/L4/L5는 필수
-              const REQUIRES_CS = ["R1","R2","R4","L1","L2","L4","L5"];
+              const REQUIRES_CS = ["R1", "R2", "R4", "L1", "L2", "L4", "L5"];
               if (REQUIRES_CS.includes(pat)) {
                 needsManual(
                   "MISSING_csid_false",
@@ -396,6 +418,24 @@ for (const yearKey of yearsToCheck) {
             yearKey,
             qLoc,
             "보기 문항인데 bogi 없음",
+          );
+        }
+      }
+
+      // ── H2: 세트 내 cs_ids 몰빵 감지 (동일 sent_id 5회+ 반복) ───────────
+      const freq = new Map();
+      for (const q of set.questions || []) {
+        for (const c of q.choices || []) {
+          for (const id of c.cs_ids || []) freq.set(id, (freq.get(id) || 0) + 1);
+        }
+      }
+      for (const [id, cnt] of freq) {
+        if (cnt >= 5) {
+          needsManual(
+            "H_cs_concentration",
+            yearKey,
+            `${set.id} ${id}`,
+            `동일 sent ${cnt}회 반복 — 재분석 대상`,
           );
         }
       }
@@ -491,8 +531,10 @@ const SEVERITY_MAP = {
   F_empty_analysis: "CRITICAL",
   MISSING_csid_true: "CRITICAL",
   MISSING_csid_false: "CRITICAL",
+  H_analysis_id_leak: "CRITICAL",
   F_content_reversed: "WARNING",
   D_true_has_pat: "WARNING",
+  H_cs_concentration: "WARNING",
   E_pat_unclassifiable: "IGNORE",
   F_conclusion_mismatch: "IGNORE",
   E_pat_zero: "IGNORE",
@@ -574,6 +616,8 @@ console.log("\n" + "═".repeat(60));
 if (bySeverity.CRITICAL.length === 0) {
   console.log("✅ release_ready — CRITICAL 0건");
 } else {
-  console.log(`🔴 release_blocked — CRITICAL ${bySeverity.CRITICAL.length}건 남음`);
+  console.log(
+    `🔴 release_blocked — CRITICAL ${bySeverity.CRITICAL.length}건 남음`,
+  );
 }
 console.log("═".repeat(60) + "\n");
