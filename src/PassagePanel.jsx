@@ -27,9 +27,12 @@ function Underlined({ text }) {
 }
 
 // [[sym:KEY]] 제거 (지문 패널에서는 기호 이미지 불필요, 텍스트 제거)
+// [도식/사진/그림/이미지: ...] placeholder 제거 (원본 설명문 노출 방지)
 function stripSymTags(text) {
   if (!text) return "";
-  return text.replace(/\[\[sym:\w+\]\]/g, "");
+  return text
+    .replace(/\[\[sym:\w+\]\]/g, "")
+    .replace(/\[(?:도식|사진|그림|이미지)\s*:[^\]]+\]/g, "🖼");
 }
 
 function Lines({ text }) {
