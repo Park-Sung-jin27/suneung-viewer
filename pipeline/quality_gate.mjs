@@ -348,6 +348,31 @@ for (const yearKey of yearsToCheck) {
               needsManual("DEAD_csid", yearKey, cLoc, `DEAD cs_id: ${csId}`);
             }
           }
+
+          // ── MISSING cs_ids: 근거 있어야 할 선지에 cs_ids 없음 ───────────
+          const hasCsIds = Array.isArray(c.cs_ids) && c.cs_ids.length > 0;
+          if (!hasCsIds) {
+            if (c.ok === true) {
+              needsManual(
+                "MISSING_csid_true",
+                yearKey,
+                cLoc,
+                "ok:true인데 cs_ids 없음 (근거 문장 미매핑)",
+              );
+            } else if (c.ok === false) {
+              const pat = c.pat;
+              // R3/V/0/null은 [] 허용, 그 외 R1/R2/R4/L1/L2/L4/L5는 필수
+              const REQUIRES_CS = ["R1","R2","R4","L1","L2","L4","L5"];
+              if (REQUIRES_CS.includes(pat)) {
+                needsManual(
+                  "MISSING_csid_false",
+                  yearKey,
+                  cLoc,
+                  `ok:false pat:${pat}인데 cs_ids 없음 (왜곡 출처 미매핑)`,
+                );
+              }
+            }
+          }
         }
 
         // ── bogi 없는 보기 문항 경고 ─────────────────────────────────────
@@ -451,9 +476,11 @@ for (const [y, cnt] of Object.entries(issuesByYear)) {
 const SEVERITY_MAP = {
   DEAD_csid: "CRITICAL",
   F_empty_analysis: "CRITICAL",
+  MISSING_csid_true: "CRITICAL",
+  MISSING_csid_false: "CRITICAL",
   F_content_reversed: "WARNING",
-  E_pat_unclassifiable: "WARNING",
   D_true_has_pat: "WARNING",
+  E_pat_unclassifiable: "IGNORE",
   F_conclusion_mismatch: "IGNORE",
   E_pat_zero: "IGNORE",
 };
@@ -509,7 +536,18 @@ if (REPORT) {
   const reportPath = path.resolve(__dirname, "../pipeline/quality_report.json");
   fs.writeFileSync(
     reportPath,
-    JSON.stringify({ issues, autoFixed, manual }, null, 2),
+    JSON.stringify(
+      {
+        issues,
+        autoFixed,
+        manual,
+        critical: bySeverity.CRITICAL,
+        warning: bySeverity.WARNING,
+        ignore: bySeverity.IGNORE,
+      },
+      null,
+      2,
+    ),
   );
   console.log(`\n📄 리포트 저장: ${reportPath}`);
 }
@@ -518,4 +556,11 @@ if (!FIX && issues.length > 0) {
   console.log("\n→ 자동수정 적용: node pipeline/quality_gate.mjs --fix");
 }
 
-console.log("\n" + "═".repeat(60) + "\n");
+// 릴리스 판정 — CRITICAL 0건이면 release_ready
+console.log("\n" + "═".repeat(60));
+if (bySeverity.CRITICAL.length === 0) {
+  console.log("✅ release_ready — CRITICAL 0건");
+} else {
+  console.log(`🔴 release_blocked — CRITICAL ${bySeverity.CRITICAL.length}건 남음`);
+}
+console.log("═".repeat(60) + "\n");

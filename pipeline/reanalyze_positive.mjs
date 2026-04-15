@@ -21,6 +21,8 @@ dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
 const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
 const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
+const REPORT_PATH = path.resolve(__dirname, "reanalyze_positive_report.json");
+const MAX_RETRY = 2;
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -118,8 +120,8 @@ fs.writeFileSync(path.join(BACKUP_DIR, `all_data_204_backup_${ts}.json`), raw);
 console.log(`✅ 백업 완료\n`);
 
 let totalFixed = 0;
-// [B-2] 결과 분류: improved / still_bad / needs_human
-const results = { improved: [], still_bad: [], needs_human: [] };
+// 결과 분류: improved / retryable / needs_human
+const results = { improved: [], retryable: [], needs_human: [] };
 
 for (const yearKey of yearsToProcess) {
   if (!data[yearKey]) {
@@ -148,25 +150,46 @@ for (const yearKey of yearsToProcess) {
 
           const loc = `${yearKey} ${set.id} Q${q.id}-${c.num}`;
           process.stdout.write(`  [${c.num}] ok:${c.ok} 재생성 중...`);
-          try {
-            const newAnalysis = await generateAnalysis(set, q, c);
-            c.analysis = newAnalysis;
 
-            // pat 정리: ok:true면 null
-            if (c.ok === true) c.pat = null;
+          let success = false;
+          let lastErr = null;
+          for (let attempt = 1; attempt <= MAX_RETRY; attempt++) {
+            try {
+              const newAnalysis = await generateAnalysis(set, q, c);
+              c.analysis = newAnalysis;
+              if (c.ok === true) c.pat = null;
 
-            // [B-2] 분류: 재생성 후 여전히 반전이면 still_bad
-            if (isReversed(c)) {
-              results.still_bad.push(loc);
-              console.log(" ⚠️ still_bad");
+              if (!isReversed(c)) {
+                results.improved.push(loc);
+                console.log(` ✅ (attempt ${attempt})`);
+                success = true;
+                totalFixed++;
+                break;
+              }
+              // 여전히 반전 — 재시도
+              if (attempt < MAX_RETRY) {
+                process.stdout.write(` ⟳retry${attempt}`);
+                await new Promise((r) => setTimeout(r, 500));
+              }
+            } catch (err) {
+              lastErr = err;
+              if (attempt < MAX_RETRY) {
+                process.stdout.write(` ⟳err${attempt}`);
+                await new Promise((r) => setTimeout(r, 1000));
+              }
+            }
+          }
+
+          if (!success) {
+            if (lastErr) {
+              results.needs_human.push(`${loc} — API 실패: ${lastErr.message}`);
+              console.log(` 🔴 needs_human (API 실패)`);
             } else {
-              results.improved.push(loc);
-              console.log(" ✅");
+              // MAX_RETRY 초과 — retryable이었으나 needs_human으로 이동
+              results.needs_human.push(`${loc} — 재시도 ${MAX_RETRY}회 초과 (여전히 반전)`);
+              console.log(` 🔴 needs_human (재시도 초과)`);
             }
             totalFixed++;
-          } catch (err) {
-            results.needs_human.push(`${loc} — ${err.message}`);
-            console.log(` ❌ 실패: ${err.message}`);
           }
 
           // API 과부하 방지
@@ -183,22 +206,26 @@ for (const yearKey of yearsToProcess) {
 fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
 console.log(`\n✅ 완료: ${totalFixed}개 analysis 재작성`);
 
-// [B-2] 결과 분류 리포트 — needs_human + still_bad만 상세 출력 (사람은 전체 검수 금지)
+// 결과 분류 리포트
 console.log(`\n=== 결과 분류 ===`);
 console.log(`  ✅ improved:    ${results.improved.length}건`);
-console.log(`  ⚠️  still_bad:   ${results.still_bad.length}건 (재생성 후에도 반전)`);
-console.log(`  🔴 needs_human: ${results.needs_human.length}건 (API 실패 등)`);
-
-if (results.still_bad.length > 0) {
-  console.log(`\n[ ⚠️ still_bad 상세 — 프롬프트 개선 필요 ]`);
-  for (const loc of results.still_bad.slice(0, 30)) console.log(`  ${loc}`);
-  if (results.still_bad.length > 30)
-    console.log(`  ... 외 ${results.still_bad.length - 30}건`);
-}
+console.log(`  ⟳  retryable:   ${results.retryable.length}건 (재시도 성공 가능)`);
+console.log(`  🔴 needs_human: ${results.needs_human.length}건 (MAX_RETRY 초과 또는 API 실패)`);
 
 if (results.needs_human.length > 0) {
-  console.log(`\n[ 🔴 needs_human 상세 ]`);
+  console.log(`\n[ 🔴 needs_human 상세 — 프롬프트 개선 패턴 추출 대상 ]`);
   for (const loc of results.needs_human.slice(0, 30)) console.log(`  ${loc}`);
   if (results.needs_human.length > 30)
     console.log(`  ... 외 ${results.needs_human.length - 30}건`);
 }
+
+// 결과 JSON 저장
+fs.writeFileSync(
+  REPORT_PATH,
+  JSON.stringify(
+    { timestamp: new Date().toISOString(), totalFixed, ...results },
+    null,
+    2,
+  ),
+);
+console.log(`\n📄 리포트 저장: ${REPORT_PATH}`);
