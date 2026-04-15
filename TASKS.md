@@ -7,35 +7,34 @@
 
 ## 🔥 ACTIVE TASKS
 
-**[B-3] DEAD_csid 699건 재조사**
+**[B-4] F_empty_analysis 25건 재생성**
 - 담당: Code B
-- 완료 기준: DEAD_csid 원인 파악 + CRITICAL 0건
-- 상태: 긴급
-- 배경: 이전 fix_dead_csids 결과가 머지 과정에서 누락되거나 재작성 시 cs_ids 재변형 가능성
-- 방법: quality_gate CRITICAL 목록 확인 → 원인 분류 → pipeline/archive/fix_dead_csids.cjs 전체 시험 확장 재실행
+- 완료 기준: CRITICAL 0건
+- 상태: 진행
+- 명령어: `node pipeline/reanalyze_positive.mjs all`
 
 **[O-1] 오류 패턴 정의**
 - 담당: 성진님
 - 완료 기준:
-  - still_bad 목록에서 공통 패턴 1개 이상 발견
+  - still_bad / needs_human 목록에서 공통 패턴 1개 이상 발견
   - step3 프롬프트에 반영 완료
-- 상태: 대기 (B-3 완료 후)
-- 방법:
-  1. `node pipeline/reanalyze_positive.mjs all` 실행 후 needs_human 목록 확인
-  2. 성진님이 공통 패턴 정의 → step3 즉시 반영
+- 상태: B-4 완료 후
+- 방법: needs_human 목록 확인 → 공통 패턴 정의 → step3 즉시 반영
 
-**[A-2] B 완료 후 git pull + 후속 작업**
+> 사람이 결과를 확인하면 자동화가 아니다. 사람이 규칙을 만들면 자동화다.
+
+**[A-2] git pull + 후속 빌드 확인**
 - 담당: Code A
 - 완료 기준: git pull 후 정상 빌드
-- 상태: B-3 완료 후 진행
+- 상태: B-4 완료 후 진행
 
 ---
 
-## 📊 현재 quality_gate 상태
+## 📊 현재 quality_gate 상태 (78a93fe 기준)
 
 | 등급 | 건수 | 내용 |
 |---|---|---|
-| 🔴 CRITICAL | 724건 | DEAD_csid 699 + F_empty 25 |
+| 🔴 CRITICAL | 25건 | F_empty_analysis만 잔존 |
 | 🟡 WARNING | 482건 | F_reversed 220 + E_pat 190 + D_true 72 |
 | ⚪ IGNORE | 4건 | |
 
@@ -43,16 +42,17 @@
 
 ## 📌 2단계 진입 조건
 
-- CRITICAL = 0
+- CRITICAL = 0 ← 거의 도달
 - WARNING 자동 처리 안정
 - needs_human 20건 이하
 
 ---
 
-## 📋 백로그 (지금 하지 않음)
+## 📋 백로그
 
-- Day별 UX 구조 (베타 유저 데이터 확보 후)
+- set_ 플레이스홀더 근본 원인: 구형(2014~2018) 재탑재 시 step3 프롬프트 점검 필요
 - pat_unclassifiable 190건 (다음 주)
+- Day별 UX 구조 (베타 유저 데이터 확보 후)
 
 ---
 
@@ -82,6 +82,7 @@
 - [x] 랜딩 히어로/CTA/공부법 섹션 — 14일 기준 통일 (0854358)
 - [x] B-1 해설 재생성 255건 (a2f07c2)
 - [x] B-2 quality_gate 3단계 필터 + reanalyze 분류 (4a179d6)
+- [x] B-3 DEAD_csid 699건 → 0건 (78a93fe) — Type A 193건 치환 + Type B 506건 제거
 
 ---
 
