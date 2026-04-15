@@ -1136,6 +1136,131 @@ export default function Landing({ onStart }) {
         </FadeIn>
       </section>
 
+      {/* ══ 이렇게 공부하세요 (3단계) ══ */}
+      <section
+        style={{
+          background: C.white,
+          borderTop: `1px solid ${C.border}`,
+          padding: "clamp(56px,7vw,88px) clamp(20px,6vw,80px)",
+        }}
+      >
+        <FadeIn>
+          <div style={{ textAlign: "center", marginBottom: "44px" }}>
+            <Pill color={C.green}>How to use</Pill>
+            <h2
+              style={{
+                fontFamily: "'Noto Serif KR', serif",
+                fontSize: "clamp(1.3rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                color: C.ink,
+                letterSpacing: "-0.03em",
+                marginTop: "14px",
+                marginBottom: "10px",
+              }}
+            >
+              이렇게 공부하세요
+            </h2>
+            <p
+              style={{
+                fontSize: "0.85rem",
+                color: C.muted,
+                lineHeight: 1.7,
+              }}
+            >
+              3단계만 기억하면 됩니다
+            </p>
+          </div>
+        </FadeIn>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "16px",
+            maxWidth: "880px",
+            margin: "0 auto",
+          }}
+        >
+          {[
+            {
+              step: "1",
+              title: "먼저 풀어보세요",
+              desc: "시간 재지 말고 평소대로",
+              icon: "✏️",
+            },
+            {
+              step: "2",
+              title: "형광펜으로 근거 확인",
+              desc: "내가 고른 답의 근거가 지문에 있는지",
+              icon: "🔦",
+            },
+            {
+              step: "3",
+              title: "해설로 완성",
+              desc: "왜 맞고 왜 틀렸는지",
+              icon: "📖",
+            },
+          ].map((s, i) => (
+            <FadeIn key={s.step} delay={0.05 + i * 0.08}>
+              <div
+                style={{
+                  background: C.paper,
+                  border: `1px solid ${C.border}`,
+                  borderRadius: "14px",
+                  padding: "28px 22px",
+                  height: "100%",
+                  position: "relative",
+                }}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "-12px",
+                    left: "20px",
+                    background: C.green,
+                    color: "#fff",
+                    width: "28px",
+                    height: "28px",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "0.78rem",
+                    fontWeight: "800",
+                  }}
+                >
+                  {s.step}
+                </div>
+                <div style={{ fontSize: "1.6rem", marginBottom: "12px" }}>
+                  {s.icon}
+                </div>
+                <h3
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "700",
+                    color: C.ink,
+                    margin: "0 0 8px",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {s.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.82rem",
+                    color: C.muted,
+                    lineHeight: 1.7,
+                    margin: 0,
+                  }}
+                >
+                  {s.desc}
+                </p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
+
       {/* ══ 통계 (다크) ══ */}
       <section
         style={{
