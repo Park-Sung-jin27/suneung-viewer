@@ -8,7 +8,17 @@
       "Bash(cp \"_done/2024수능/2024수능_정답.pdf\" /tmp/test2.pdf)",
       "Read(//c/tmp/**)",
       "Bash(rm:*)",
-      "Bash(ls _inbox/2021수능*)"
+      "Bash(ls _inbox/2021수능*)",
+      "Bash(ls _inbox/*.pdf)",
+      "Bash(tee pipeline/logs/watch_20260413b.log)",
+      "Bash(wmic process:*)",
+      "Bash(git stash:*)",
+      "Bash(git merge:*)",
+      "Bash(cp /c/Users/downf/Downloads/CLAUDE.md CLAUDE.md)",
+      "Bash(cp /c/Users/downf/Downloads/CLAUDE.md pipeline/CLAUDE.md)",
+      "Bash(cp /c/Users/downf/Downloads/CLAUDE_A.md src/CLAUDE.md)",
+      "Bash(cp /c/Users/downf/Downloads/HANDOVER.md HANDOVER.md)",
+      "Bash(cp /c/Users/downf/Downloads/TASKS.md TASKS.md)"
     ]
   }
 }
