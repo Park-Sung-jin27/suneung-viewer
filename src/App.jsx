@@ -33,7 +33,7 @@ _fl.href =
 document.head.appendChild(_fl);
 
 const SECTION_LABELS = { reading: "독서", literature: "문학" };
-const FREE_YEARS = ["2026수능", "2025수능"];
+const FREE_YEARS = ["2026수능", "2025수능", "2024수능", "2023수능", "2022수능"];
 
 const MC = {
   green: "#2d6e2d",
@@ -1891,10 +1891,11 @@ export default function App() {
             <Layout user={user} onLogout={handleLogout}>
               <Payment
                 user={user}
-                onSuccess={() => {
+                onPaySuccess={() => {
                   setIsPro(true);
                   navigate("/");
                 }}
+                onFreeStart={() => navigate("/")}
               />
             </Layout>
           ) : (
