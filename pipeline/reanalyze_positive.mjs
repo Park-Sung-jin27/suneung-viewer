@@ -118,6 +118,8 @@ fs.writeFileSync(path.join(BACKUP_DIR, `all_data_204_backup_${ts}.json`), raw);
 console.log(`✅ 백업 완료\n`);
 
 let totalFixed = 0;
+// [B-2] 결과 분류: improved / still_bad / needs_human
+const results = { improved: [], still_bad: [], needs_human: [] };
 
 for (const yearKey of yearsToProcess) {
   if (!data[yearKey]) {
@@ -144,6 +146,7 @@ for (const yearKey of yearsToProcess) {
             continue;
           }
 
+          const loc = `${yearKey} ${set.id} Q${q.id}-${c.num}`;
           process.stdout.write(`  [${c.num}] ok:${c.ok} 재생성 중...`);
           try {
             const newAnalysis = await generateAnalysis(set, q, c);
@@ -152,9 +155,17 @@ for (const yearKey of yearsToProcess) {
             // pat 정리: ok:true면 null
             if (c.ok === true) c.pat = null;
 
-            console.log(" ✅");
+            // [B-2] 분류: 재생성 후 여전히 반전이면 still_bad
+            if (isReversed(c)) {
+              results.still_bad.push(loc);
+              console.log(" ⚠️ still_bad");
+            } else {
+              results.improved.push(loc);
+              console.log(" ✅");
+            }
             totalFixed++;
           } catch (err) {
+            results.needs_human.push(`${loc} — ${err.message}`);
             console.log(` ❌ 실패: ${err.message}`);
           }
 
@@ -171,3 +182,23 @@ for (const yearKey of yearsToProcess) {
 
 fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
 console.log(`\n✅ 완료: ${totalFixed}개 analysis 재작성`);
+
+// [B-2] 결과 분류 리포트 — needs_human + still_bad만 상세 출력 (사람은 전체 검수 금지)
+console.log(`\n=== 결과 분류 ===`);
+console.log(`  ✅ improved:    ${results.improved.length}건`);
+console.log(`  ⚠️  still_bad:   ${results.still_bad.length}건 (재생성 후에도 반전)`);
+console.log(`  🔴 needs_human: ${results.needs_human.length}건 (API 실패 등)`);
+
+if (results.still_bad.length > 0) {
+  console.log(`\n[ ⚠️ still_bad 상세 — 프롬프트 개선 필요 ]`);
+  for (const loc of results.still_bad.slice(0, 30)) console.log(`  ${loc}`);
+  if (results.still_bad.length > 30)
+    console.log(`  ... 외 ${results.still_bad.length - 30}건`);
+}
+
+if (results.needs_human.length > 0) {
+  console.log(`\n[ 🔴 needs_human 상세 ]`);
+  for (const loc of results.needs_human.slice(0, 30)) console.log(`  ${loc}`);
+  if (results.needs_human.length > 30)
+    console.log(`  ... 외 ${results.needs_human.length - 30}건`);
+}

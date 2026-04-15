@@ -444,23 +444,50 @@ for (const [y, cnt] of Object.entries(issuesByYear)) {
   console.log(`  ${status} ${y}: ${cnt}건`);
 }
 
+// ─── 3단계 분류: CRITICAL / WARNING / IGNORE ──────────────────────────────────
+// CRITICAL: 기능 깨짐 (사용자 경험 직접 영향)
+// WARNING:  품질 문제 (내용은 보이나 부정확)
+// IGNORE:   중요도 낮음 (형식 문제, 자동분류 가능)
+const SEVERITY_MAP = {
+  DEAD_csid: "CRITICAL",
+  F_empty_analysis: "CRITICAL",
+  F_content_reversed: "WARNING",
+  E_pat_unclassifiable: "WARNING",
+  D_true_has_pat: "WARNING",
+  F_conclusion_mismatch: "IGNORE",
+  E_pat_zero: "IGNORE",
+};
+const ALL_FINDINGS = [...issues, ...manual];
+const bySeverity = { CRITICAL: [], WARNING: [], IGNORE: [] };
+for (const f of ALL_FINDINGS) {
+  const sev = SEVERITY_MAP[f.type] || "WARNING";
+  bySeverity[sev].push(f);
+}
+
+function printSeverity(label, arr, icon) {
+  console.log(`\n[ ${icon} ${label}: ${arr.length}건 ]`);
+  const byType = {};
+  for (const f of arr) byType[f.type] = (byType[f.type] || 0) + 1;
+  for (const [t, cnt] of Object.entries(byType))
+    console.log(`  ${t}: ${cnt}건`);
+}
+printSeverity("CRITICAL (기능 깨짐)", bySeverity.CRITICAL, "🔴");
+printSeverity("WARNING (품질 문제)", bySeverity.WARNING, "🟡");
+printSeverity("IGNORE (중요도 낮음)", bySeverity.IGNORE, "⚪");
+
 console.log(`\n[ 자동수정 가능: ${issues.length}건 ]`);
 const typeCount = {};
 for (const iss of issues) typeCount[iss.type] = (typeCount[iss.type] || 0) + 1;
 for (const [t, cnt] of Object.entries(typeCount))
   console.log(`  ${t}: ${cnt}건`);
 
-console.log(`\n[ 수동 처리 필요: ${manual.length}건 ]`);
-const manualByType = {};
-for (const m of manual) manualByType[m.type] = (manualByType[m.type] || 0) + 1;
-for (const [t, cnt] of Object.entries(manualByType))
-  console.log(`  ${t}: ${cnt}건`);
-
-if (manual.length > 0 && !REPORT) {
-  console.log("\n  상세:");
-  for (const m of manual.slice(0, 20))
+// CRITICAL 상세는 항상 출력 (0건이 목표이므로 남으면 반드시 확인)
+if (bySeverity.CRITICAL.length > 0 && !REPORT) {
+  console.log("\n  🔴 CRITICAL 상세:");
+  for (const m of bySeverity.CRITICAL.slice(0, 20))
     console.log(`    ${m.yearKey} ${m.loc}: ${m.message}`);
-  if (manual.length > 20) console.log(`    ... 외 ${manual.length - 20}건`);
+  if (bySeverity.CRITICAL.length > 20)
+    console.log(`    ... 외 ${bySeverity.CRITICAL.length - 20}건`);
 }
 
 if (FIX) {
