@@ -31,7 +31,14 @@ const SYSTEM_PROMPT = `너는 수능 국어 선지와 지문 문장을 매칭하
 - 근거 문장이 여러 개면 모두 포함 (최대 5개)
 - 반드시 실제 존재하는 sent.id만 사용할 것
 - ⚠️ 빈 배열 [] 절대 금지 — 목록에 포함된 모든 선지는 반드시 1개 이상의 sent.id를 반환할 것
-- analysis가 ㉠/ⓐ/[A] 등 마커만 인용하여 sent.id 매칭이 어렵더라도, analysis에 인용된 문구를 sent의 t에서 검색하여 가장 관련 있는 sent.id를 반드시 1개 이상 찾아라
+
+[근거 선택 우선순위 — 몰빵 방지]
+- 동일 세트에서 특정 sent.id를 반복 선택할 수는 있으나,
+  각 선지의 핵심 판단 근거가 실제로 같은 문장인지 먼저 검토하라.
+- 도입부/일반론 문장을 모든 선지의 공통 근거로 남발하지 말 것.
+- 선지별 차이를 직접 판정하게 만드는 문장이 있으면 그 문장을 우선 선택하라.
+- 결과적으로 동일 sent.id가 과도하게 반복되면,
+  그 선택 이유를 다시 검토하고 더 직접적인 근거가 있는지 재탐색하라.
 
 [자동 처리 — 이 선지들은 목록에 포함되지 않음, AI 불필요]
 - ok:false + pat:R3 (과도한 추론): 지문에 근거 없는 내용이므로 [] 자동 적용
@@ -111,7 +118,11 @@ function fixUnescapedQuotes(jsonStr) {
 function tryParse(text) {
   try {
     const parsed = JSON.parse(text);
-    if (Array.isArray(parsed) && parsed.length > 0 && Array.isArray(parsed[0])) {
+    if (
+      Array.isArray(parsed) &&
+      parsed.length > 0 &&
+      Array.isArray(parsed[0])
+    ) {
       return parsed.flat();
     }
     return parsed;
@@ -131,7 +142,8 @@ function parseJSON(raw) {
 
   // 여러 배열 병합
   const arrays = [];
-  let depth = 0, start = -1;
+  let depth = 0,
+    start = -1;
   for (let i = 0; i < text.length; i++) {
     if (text[i] === "[") {
       if (depth === 0) start = i;
@@ -180,7 +192,7 @@ async function matchCsIds(set) {
   }
 
   console.log(
-    `  자동 [] 처리: ${autoEmptyChoices.length}건 (R3/V/null), AI 매칭 대상: ${needsMatchChoices.length}건`
+    `  자동 [] 처리: ${autoEmptyChoices.length}건 (R3/V/null), AI 매칭 대상: ${needsMatchChoices.length}건`,
   );
 
   // AI 매칭 대상이 없으면 API 호출 생략
@@ -208,8 +220,8 @@ ${JSON.stringify(needsMatchChoices)}
         system: SYSTEM_PROMPT,
         messages: [{ role: "user", content: userPrompt }],
       },
-      { headers: { "anthropic-beta": "output-128k-2025-02-19" } }
-    )
+      { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
+    ),
   );
 
   const matches = parseJSON(response.content[0].text);
@@ -229,7 +241,7 @@ ${JSON.stringify(needsMatchChoices)}
   });
 
   console.log(
-    `  매칭: ${totalMatched}개 cs_ids, 무효 ID 제거: ${invalidRemoved}개`
+    `  매칭: ${totalMatched}개 cs_ids, 무효 ID 제거: ${invalidRemoved}개`,
   );
 
   // autoEmpty + AI 매칭 결과 병합
@@ -297,17 +309,32 @@ async function retarget(targetYear) {
         // 이 세트에서 재매핑 대상 선지 존재 여부 확인
         // 1. ok:true + cs_ids=[]   → 근거 문장 미매핑 (CRITICAL)
         // 2. ok:false + R1/R2/R4/L1/L2/L4/L5 + cs_ids=[] → 왜곡 출처 미매핑 (CRITICAL)
-        const needsWork = set.questions.some((q) =>
+        // 3. 동일 sent.id 5회+ 반복 → 몰빵 (WARNING) — 재분석 대상
+        const emptyCase = set.questions.some((q) =>
           q.choices.some((c) => {
             const empty = !c.cs_ids || c.cs_ids.length === 0;
             if (!empty) return false;
             if (c.ok === true) return true;
             if (c.ok === false && !AUTO_EMPTY_PATS.has(c.pat)) return true;
             return false;
-          })
+          }),
         );
+        let concentrationCase = false;
+        const freq = new Map();
+        for (const q of set.questions || []) {
+          for (const c of q.choices || []) {
+            for (const id of c.cs_ids || []) freq.set(id, (freq.get(id) || 0) + 1);
+          }
+        }
+        for (const cnt of freq.values()) {
+          if (cnt >= 5) { concentrationCase = true; break; }
+        }
+        const needsWork = emptyCase || concentrationCase;
 
         if (!needsWork) continue;
+        if (concentrationCase && !emptyCase) {
+          console.log(`  [몰빵 감지] ${set.id} — 재분석 진행`);
+        }
 
         console.log(`\n[retarget] ${yr} ${set.id} (${set.range})`);
 
@@ -356,8 +383,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     if (!inputPath) {
       console.error(
         "사용법:\n" +
-        "  신규: node pipeline/step4_csids.js [step3결과JSON경로]\n" +
-        "  재실행: node pipeline/step4_csids.js --retarget [연도키(선택)]"
+          "  신규: node pipeline/step4_csids.js [step3결과JSON경로]\n" +
+          "  재실행: node pipeline/step4_csids.js --retarget [연도키(선택)]",
       );
       process.exit(1);
     }
@@ -369,7 +396,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       .then((result) => {
         const outPath = path.resolve(
           path.dirname(inputPath_abs),
-          path.basename(inputPath_abs).replace("step3_", "step4_")
+          path.basename(inputPath_abs).replace("step3_", "step4_"),
         );
         fs.writeFileSync(outPath, JSON.stringify(result, null, 2), "utf8");
         console.log(`\n✅ 저장 완료: ${outPath}`);
