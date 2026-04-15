@@ -2,7 +2,7 @@
 // App.jsx — react-router-dom 기반 라우팅 + MainPage 리디자인
 // ============================================================
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   Routes,
   Route,
@@ -1468,6 +1468,28 @@ function ViewerPage({ user }) {
 }
 
 // ══════════════════════════════════════════════
+// AuthRedirect — 로그인된 상태로 /auth 재진입 시
+//   신규가입 직후면 /viewer, 아니면 /
+//   (StrictMode 이중 렌더 대비: useRef로 한 번만 읽고 useEffect에서 소비)
+// ══════════════════════════════════════════════
+function AuthRedirect() {
+  const justSignedUpRef = useRef(
+    sessionStorage.getItem("justSignedUp") === "1",
+  );
+  useEffect(() => {
+    if (justSignedUpRef.current) {
+      sessionStorage.removeItem("justSignedUp");
+    }
+  }, []);
+  if (justSignedUpRef.current) {
+    return (
+      <Navigate to="/viewer?year=2026수능&set=s1&q=1&mode=study" replace />
+    );
+  }
+  return <Navigate to="/" replace />;
+}
+
+// ══════════════════════════════════════════════
 // AuthPage
 // ══════════════════════════════════════════════
 function AuthPage() {
@@ -1493,14 +1515,19 @@ function AuthPage() {
         if (error) throw error;
         navigate("/");
       } else {
+        // 신규가입 플래그 — /auth 자동 리다이렉트가 /viewer로 가게 함
+        sessionStorage.setItem("justSignedUp", "1");
         const { data, error } = await supabase.auth.signUp({ email, password });
         console.log("signUp data:", data);
         console.log("signUp error:", error);
-        if (error) throw error;
-        // 세션이 즉시 발급되면 (이메일 확인 비활성화 시) 바로 뷰어 진입
-        if (data?.session) {
-          navigate("/viewer?year=2026수능&set=s1&q=1&mode=study");
-        } else {
+        if (error) {
+          sessionStorage.removeItem("justSignedUp");
+          throw error;
+        }
+        // 세션 즉시 발급이면 AuthRedirect가 /viewer로 자동 이동.
+        // 이메일 확인 필요 시 플래그 정리하고 안내 표시.
+        if (!data?.session) {
+          sessionStorage.removeItem("justSignedUp");
           setMessage("확인 이메일을 발송했습니다. 이메일을 확인해 주세요.");
         }
       }
@@ -1820,10 +1847,7 @@ export default function App() {
           )
         }
       />
-      <Route
-        path="/auth"
-        element={user ? <Navigate to="/" replace /> : <AuthPage />}
-      />
+      <Route path="/auth" element={user ? <AuthRedirect /> : <AuthPage />} />
       <Route
         path="/viewer"
         element={
