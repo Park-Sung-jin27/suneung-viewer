@@ -1210,9 +1210,9 @@ export default function Landing({ onStart }) {
             }}
           >
             <StatCard
-              stat="8종"
+              stat="9종"
               label="반복되는 오류 패턴"
-              sub={"사실왜곡 · 인과전도\n과잉추론 · 개념혼합 외"}
+              sub={"독서 4종 + 문학 5종\n사실왜곡 · 정서오독 외"}
               color={C.line}
             />
             <StatCard
@@ -1505,7 +1505,7 @@ export default function Landing({ onStart }) {
               icon: "🔖",
               title: "오류 패턴 자동 분류",
               accent: C.mid,
-              desc: "독서 4종(사실왜곡·인과전도·과잉추론·개념혼합), 문학 4종으로 자동 분류. 내가 어떤 함정에 자주 빠지는지 알 수 있습니다.",
+              desc: "독서 4종(사실왜곡·인과전도·과잉추론·개념혼합), 문학 5종(표현·정서·주제·구조·보기 대입)으로 자동 분류. 내가 어떤 함정에 자주 빠지는지 알 수 있습니다.",
             },
             {
               icon: "📊",
@@ -1582,7 +1582,7 @@ export default function Landing({ onStart }) {
         <FadeIn>
           <div style={{ textAlign: "center", marginBottom: "40px" }}>
             <div style={{ marginBottom: 14 }}>
-              <Pill>8종 오류 패턴 분류 체계</Pill>
+              <Pill>9종 오류 패턴 분류 체계</Pill>
             </div>
             <h2
               style={{
@@ -1628,28 +1628,28 @@ export default function Landing({ onStart }) {
               {
                 code: "R1",
                 name: "사실 왜곡",
-                desc: "수치·상태·방향을 정반대나 다른 값으로 서술",
+                desc: "지문의 수치·상태·방향을 반대로 바꾼 선지",
                 color: "#c0392b",
                 bg: "rgba(192,57,43,0.08)",
               },
               {
                 code: "R2",
                 name: "인과·관계 전도",
-                desc: "주체-객체, 원인-결과, 포함관계를 뒤바꿈",
+                desc: "원인-결과, 주체-객체를 바꿔놓은 선지",
                 color: "#7d3c98",
                 bg: "rgba(125,60,152,0.08)",
               },
               {
                 code: "R3",
                 name: "과잉 추론",
-                desc: "지문에 없는 내용, 1단계 이상 비약",
+                desc: "지문에 없는 내용을 한 단계 더 끌어낸 선지",
                 color: "#1565c0",
                 bg: "rgba(21,101,192,0.08)",
               },
               {
                 code: "R4",
                 name: "개념 혼합",
-                desc: "서로 다른 문단의 개념어를 섞어 거짓 문장 구성",
+                desc: "다른 문단의 개념을 섞어 만든 거짓 선지",
                 color: "#b7950b",
                 bg: "rgba(183,149,11,0.08)",
               },
@@ -1681,29 +1681,36 @@ export default function Landing({ onStart }) {
             {[
               {
                 code: "L1",
-                name: "표현·형식 오독",
-                desc: "시어·수사법·서술 방식을 잘못 파악",
+                name: "표현 오독",
+                desc: "시어·수사법·서술 방식을 잘못 파악한 선지",
                 color: "#e74c3c",
                 bg: "rgba(231,76,60,0.08)",
               },
               {
                 code: "L2",
-                name: "정서·태도 오독",
-                desc: "화자·인물의 감정·태도를 반대로 파악",
+                name: "정서 오독",
+                desc: "화자·인물의 감정·태도를 반대로 읽은 선지",
                 color: "#2980b9",
                 bg: "rgba(41,128,185,0.08)",
               },
               {
                 code: "L3",
-                name: "주제·의미 과잉",
-                desc: "작품에 없는 의미 도출, 근거 없는 확대 해석",
+                name: "주제 과잉",
+                desc: "작품에 없는 의미를 끌어낸 확대 해석",
                 color: "#27ae60",
                 bg: "rgba(39,174,96,0.08)",
               },
               {
                 code: "L4",
+                name: "구조 오류",
+                desc: "시점·구성·장면 전환을 잘못 설명한 선지",
+                color: "#8e44ad",
+                bg: "rgba(142,68,173,0.08)",
+              },
+              {
+                code: "L5",
                 name: "보기 대입 오류",
-                desc: "보기 조건을 잘못 적용하거나 보기 자체를 오독",
+                desc: "보기 조건을 잘못 적용하거나 보기를 오독한 선지",
                 color: "#d35400",
                 bg: "rgba(211,84,0,0.08)",
               },
@@ -1749,7 +1756,7 @@ export default function Landing({ onStart }) {
         <FadeIn delay={0.1}>
           <div style={{ maxWidth: 720, margin: "0 auto" }}>
             {[
-              { item: "오류 패턴 진단", us: "8종 구조 분류", them: "없음" },
+              { item: "오류 패턴 진단", us: "9종 구조 분류", them: "없음" },
               { item: "지문 근거 시각화", us: "선지별 형광펜", them: "없음" },
               {
                 item: "개인화 리포트",
@@ -1983,7 +1990,7 @@ export default function Landing({ onStart }) {
               period="/ 월 · 구독"
               features={[
                 { text: "오답 패턴 진단 + 전 시험 형광펜 복기 훈련", ok: true },
-                { text: "오류 패턴 8종 진단 무제한", ok: true },
+                { text: "오류 패턴 9종 진단 무제한", ok: true },
                 { text: "누적 개인 리포트 + 처방", ok: true },
                 { text: "주간 진도 트래킹", ok: true },
                 { text: "1:1 전문가 리뷰", ok: false },
