@@ -332,7 +332,7 @@ function PlanCard({
   );
 }
 
-export default function Payment({ user, onSuccess }) {
+export default function Payment({ user, onPaySuccess, onFreeStart }) {
   const [tossPayments, setTossPayments] = useState(null);
   const [loading, setLoading] = useState(false);
   const [sdkError, setSdkError] = useState(null);
@@ -367,7 +367,7 @@ export default function Payment({ user, onSuccess }) {
           "/?paymentKey={paymentKey}&orderId={orderId}&amount={amount}",
         failUrl: window.location.origin + "/?code={code}&message={message}",
       });
-      onSuccess?.();
+      onPaySuccess?.();
     } catch (err) {
       if (err.code !== "PAY_PROCESS_CANCELED") {
         console.error("[결제 오류]", err.message);
@@ -378,7 +378,8 @@ export default function Payment({ user, onSuccess }) {
   }
 
   function handleFreeStart() {
-    onSuccess?.();
+    // 무료 플랜 — Pro 부여하지 않고 메인으로만 이동
+    onFreeStart?.();
   }
 
   return (
