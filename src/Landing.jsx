@@ -416,124 +416,6 @@ function HighlightDemo({ onStart }) {
   );
 }
 
-// ── 14일 여정 시각화 ─────────────────────────────────────────
-function JourneyViz() {
-  const steps = [
-    {
-      day: "Day 1",
-      icon: "🔍",
-      title: "첫 진단",
-      desc: "20문항 · 오류 패턴 리포트 즉시 발급",
-    },
-    {
-      day: "Day 2–7",
-      icon: "🎯",
-      title: "1순위 패턴 교정",
-      desc: "고빈도 오류 집중 훈련 10문항",
-    },
-    {
-      day: "Day 8–13",
-      icon: "📈",
-      title: "2순위 패턴 교정",
-      desc: "중간 오류 감소율 리포트",
-    },
-    {
-      day: "Day 14",
-      icon: "🏆",
-      title: "재진단 비교",
-      desc: "Day 1 vs Day 14 — 변화를 데이터로 확인",
-    },
-  ];
-  return (
-    <div style={{ position: "relative", padding: "0 8px" }}>
-      {/* 연결선 */}
-      <div
-        style={{
-          position: "absolute",
-          top: 28,
-          left: "12.5%",
-          right: "12.5%",
-          height: "1px",
-          background: `linear-gradient(to right, ${C.line}, ${C.mid})`,
-          opacity: 0.4,
-        }}
-      />
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "12px",
-          position: "relative",
-        }}
-      >
-        {steps.map((s, i) => (
-          <div key={i} style={{ textAlign: "center" }}>
-            <div
-              style={{
-                width: 56,
-                height: 56,
-                borderRadius: "50%",
-                background: i === 3 ? C.mid : C.bg,
-                border: `2px solid ${i === 3 ? C.mid : C.line}`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "0 auto 10px",
-                fontSize: "1.3rem",
-                boxShadow: i === 3 ? `0 4px 16px ${C.mid}40` : "none",
-              }}
-            >
-              {s.icon}
-            </div>
-            <div
-              style={{
-                fontSize: "0.62rem",
-                fontWeight: "700",
-                color: i === 3 ? C.mid : C.subtle,
-                letterSpacing: "0.06em",
-                marginBottom: "4px",
-              }}
-            >
-              {s.day}
-            </div>
-            <div
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: "700",
-                color: C.ink,
-                marginBottom: "4px",
-                lineHeight: 1.3,
-              }}
-            >
-              {s.title}
-            </div>
-            <div
-              style={{ fontSize: "0.72rem", color: C.muted, lineHeight: 1.6 }}
-            >
-              {s.desc}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div
-        style={{
-          marginTop: "20px",
-          padding: "12px 16px",
-          background: C.bg,
-          borderRadius: "10px",
-          border: `1px solid ${C.line}`,
-          textAlign: "center",
-        }}
-      >
-        <span style={{ fontSize: "0.78rem", color: C.mid, fontWeight: "600" }}>
-          💡 Day 14 비교 리포트 — 외부 후기보다 본인 데이터의 전환력이 3~5배
-          높습니다
-        </span>
-      </div>
-    </div>
-  );
-}
-
 // ── 패턴 카드 ────────────────────────────────────────────────
 function PatternCard({ code, name, desc, color, bg }) {
   const [h, setH] = useState(false);
@@ -1054,11 +936,9 @@ export default function Landing({ onStart }) {
               animation: "fadeUp 0.8s ease 0.2s both",
             }}
           >
-            열심히 공부해도
+            14일 무료로 시작하고,
             <br />
-            국어 점수가 안 오르는 이유,
-            <br />
-            <span style={{ color: C.mid }}>드디어 찾았습니다.</span>
+            <span style={{ color: C.mid }}>내 오답 패턴을 확인하세요</span>
           </h1>
 
           <p
@@ -1071,10 +951,10 @@ export default function Landing({ onStart }) {
               animation: "fadeUp 0.8s ease 0.3s both",
             }}
           >
-            당신의 오답은 실력이 아니라{" "}
-            <strong style={{ color: C.ink }}>논리 오류 패턴</strong> 때문입니다.
+            문제를 풀고, 형광펜으로 근거를 복기하고,
             <br />
-            어떤 패턴으로 틀리는지 진단하고, 그 패턴만 집중 교정합니다.
+            어떤 <strong style={{ color: C.ink }}>오답 패턴</strong>에 자주
+            걸리는지 스스로 파악하세요.
           </p>
 
           <div
@@ -1836,45 +1716,6 @@ export default function Landing({ onStart }) {
         </div>
       </section>
 
-      {/* ══ 14일 여정 ══ */}
-      <section
-        style={{
-          background: C.paper,
-          padding: "clamp(64px,8vw,100px) clamp(20px,6vw,80px)",
-        }}
-      >
-        <FadeIn>
-          <div style={{ textAlign: "center", marginBottom: "48px" }}>
-            <div style={{ marginBottom: 14 }}>
-              <Pill>14일 무료 체험 구조</Pill>
-            </div>
-            <h2
-              style={{
-                fontFamily: "'Noto Serif KR', serif",
-                fontSize: "clamp(1.4rem, 3vw, 2rem)",
-                fontWeight: "700",
-                color: C.ink,
-                letterSpacing: "-0.03em",
-                marginBottom: "12px",
-              }}
-            >
-              14일 안에 변화를
-              <br />
-              데이터로 확인합니다
-            </h2>
-            <p style={{ fontSize: "0.87rem", color: C.muted, lineHeight: 1.8 }}>
-              신용카드 없이 시작. Day 14 비교 리포트가 가장 강력한 전환
-              트리거입니다.
-            </p>
-          </div>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <div style={{ maxWidth: 760, margin: "0 auto" }}>
-            <JourneyViz />
-          </div>
-        </FadeIn>
-      </section>
-
       {/* ══ 방식 비교 ══ */}
       <section
         style={{
@@ -2343,7 +2184,7 @@ export default function Landing({ onStart }) {
               lineHeight: 1.7,
             }}
           >
-            진단 20문항 · 10분 소요 · 즉시 리포트 발급
+            문제 풀이 · 형광펜 근거 복기 · 오답 패턴 확인
           </p>
           <p
             style={{
