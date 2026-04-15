@@ -982,7 +982,7 @@ export default function Landing({ onStart }) {
         </span>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <span style={{ fontSize: "0.75rem", color: C.muted }}>14일 무료</span>
-          <Btn label="무료 진단 시작" onClick={onStart} size="sm" />
+          <Btn label="14일 무료로 시작하기 →" onClick={onStart} size="sm" />
         </div>
       </nav>
 
@@ -1083,11 +1083,7 @@ export default function Landing({ onStart }) {
               marginBottom: "10px",
             }}
           >
-            <Btn
-              label="14일 무료 진단 시작하기 →"
-              onClick={onStart}
-              size="lg"
-            />
+            <Btn label="14일 무료로 시작하기 →" onClick={onStart} size="lg" />
           </div>
           <p
             style={{
@@ -1136,69 +1132,78 @@ export default function Landing({ onStart }) {
         </FadeIn>
       </section>
 
-      {/* ══ 이렇게 공부하세요 (3단계) ══ */}
+      {/* ══ 공부법 섹션 ══ */}
       <section
         style={{
           background: C.white,
           borderTop: `1px solid ${C.border}`,
-          padding: "clamp(56px,7vw,88px) clamp(20px,6vw,80px)",
+          padding: "clamp(64px,8vw,100px) clamp(20px,6vw,80px)",
         }}
       >
         <FadeIn>
-          <div style={{ textAlign: "center", marginBottom: "44px" }}>
-            <Pill color={C.green}>How to use</Pill>
+          <div
+            style={{
+              textAlign: "center",
+              marginBottom: "48px",
+              maxWidth: 720,
+              margin: "0 auto 48px",
+            }}
+          >
+            <Pill color={C.red} bg="#fef2f2">
+              현실 진단
+            </Pill>
             <h2
               style={{
                 fontFamily: "'Noto Serif KR', serif",
-                fontSize: "clamp(1.3rem, 3vw, 1.9rem)",
+                fontSize: "clamp(1.4rem, 3.2vw, 2rem)",
                 fontWeight: "700",
                 color: C.ink,
                 letterSpacing: "-0.03em",
+                lineHeight: 1.4,
                 marginTop: "14px",
-                marginBottom: "10px",
+                marginBottom: 0,
               }}
             >
-              이렇게 공부하세요
+              지금 당신의 공부 방식,
+              <br />
+              <span style={{ color: C.red }}>이렇게 틀리고 있습니다</span>
             </h2>
-            <p
-              style={{
-                fontSize: "0.85rem",
-                color: C.muted,
-                lineHeight: 1.7,
-              }}
-            >
-              3단계만 기억하면 됩니다
-            </p>
           </div>
         </FadeIn>
 
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            display: "flex",
+            flexDirection: "column",
             gap: "16px",
-            maxWidth: "880px",
-            margin: "0 auto",
+            maxWidth: "720px",
+            margin: "0 auto 40px",
           }}
         >
           {[
             {
-              step: "1",
+              step: "1단계",
               title: "먼저 풀어보세요",
-              desc: "시간 재지 말고 평소대로",
-              icon: "✏️",
+              lines: [
+                "대부분 여기서 이미 틀립니다",
+                "문제는 실력이 아니라 '근거를 잘못 잡는 것'입니다",
+              ],
             },
             {
-              step: "2",
-              title: "형광펜으로 근거 확인",
-              desc: "내가 고른 답의 근거가 지문에 있는지",
-              icon: "🔦",
+              step: "2단계",
+              title: "형광펜으로 근거를 확인하세요",
+              lines: [
+                "내가 고른 답이 아니라",
+                '"지문이 말하는 답"을 확인하세요',
+              ],
             },
             {
-              step: "3",
-              title: "해설로 완성",
-              desc: "왜 맞고 왜 틀렸는지",
-              icon: "📖",
+              step: "3단계",
+              title: "해설로 틀린 이유를 확정하세요",
+              lines: [
+                "같은 실수를 반복하는 이유는",
+                "틀린 이유를 정확히 모르기 때문입니다",
+              ],
             },
           ].map((s, i) => (
             <FadeIn key={s.step} delay={0.05 + i * 0.08}>
@@ -1206,59 +1211,72 @@ export default function Landing({ onStart }) {
                 style={{
                   background: C.paper,
                   border: `1px solid ${C.border}`,
-                  borderRadius: "14px",
-                  padding: "28px 22px",
-                  height: "100%",
-                  position: "relative",
+                  borderLeft: `4px solid ${C.green}`,
+                  borderRadius: "12px",
+                  padding: "22px 24px",
+                  display: "flex",
+                  gap: "20px",
+                  alignItems: "flex-start",
                 }}
               >
                 <div
                   style={{
-                    position: "absolute",
-                    top: "-12px",
-                    left: "20px",
-                    background: C.green,
-                    color: "#fff",
-                    width: "28px",
-                    height: "28px",
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "0.78rem",
-                    fontWeight: "800",
+                    flexShrink: 0,
+                    minWidth: "58px",
+                    fontSize: "0.72rem",
+                    fontWeight: "700",
+                    color: C.green,
+                    letterSpacing: "0.02em",
+                    paddingTop: "3px",
                   }}
                 >
                   {s.step}
                 </div>
-                <div style={{ fontSize: "1.6rem", marginBottom: "12px" }}>
-                  {s.icon}
+                <div style={{ flex: 1 }}>
+                  <h3
+                    style={{
+                      fontSize: "1.02rem",
+                      fontWeight: "700",
+                      color: C.ink,
+                      margin: "0 0 10px",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {s.title}
+                  </h3>
+                  {s.lines.map((line, j) => (
+                    <p
+                      key={j}
+                      style={{
+                        fontSize: "0.86rem",
+                        color: C.muted,
+                        lineHeight: 1.7,
+                        margin: "0 0 3px",
+                      }}
+                    >
+                      → {line}
+                    </p>
+                  ))}
                 </div>
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: "700",
-                    color: C.ink,
-                    margin: "0 0 8px",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  {s.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "0.82rem",
-                    color: C.muted,
-                    lineHeight: 1.7,
-                    margin: 0,
-                  }}
-                >
-                  {s.desc}
-                </p>
               </div>
             </FadeIn>
           ))}
         </div>
+
+        <FadeIn delay={0.35}>
+          <div style={{ textAlign: "center" }}>
+            <Btn label="14일 무료로 시작하기 →" onClick={onStart} size="lg" />
+            <p
+              style={{
+                fontSize: "0.73rem",
+                color: C.subtle,
+                marginTop: "12px",
+              }}
+            >
+              신용카드 없이 시작 · 언제든 해지 가능
+            </p>
+          </div>
+        </FadeIn>
       </section>
 
       {/* ══ 통계 (다크) ══ */}
@@ -2337,7 +2355,7 @@ export default function Landing({ onStart }) {
             국어 오답의 원인, 오늘 안에 알 수 있습니다.
           </p>
           <Btn
-            label="무료 진단 시작하기 →"
+            label="14일 무료로 시작하기 →"
             onClick={onStart}
             variant="white"
             size="lg"
