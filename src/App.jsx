@@ -1497,7 +1497,12 @@ function AuthPage() {
         console.log("signUp data:", data);
         console.log("signUp error:", error);
         if (error) throw error;
-        setMessage("확인 이메일을 발송했습니다. 이메일을 확인해 주세요.");
+        // 세션이 즉시 발급되면 (이메일 확인 비활성화 시) 바로 뷰어 진입
+        if (data?.session) {
+          navigate("/viewer?year=2026수능&set=s1&q=1&mode=study");
+        } else {
+          setMessage("확인 이메일을 발송했습니다. 이메일을 확인해 주세요.");
+        }
       }
     } catch (err) {
       setError(err.message);
