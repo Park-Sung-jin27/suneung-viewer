@@ -12,37 +12,36 @@
 
 ## 🔥 오늘 할 것 (3개만)
 
-1. **[B] 내용 반전 해설 재생성** — `reanalyze_positive.mjs all`
-2. **[B] DEAD_csid 전체 시험 확장** — `fix_dead_csids.cjs` 수정 후 실행
-3. **[O] 해설 퀄리티 샘플 검수** — 성진님이 5~10건 직접 확인 후 step3 프롬프트 보완
+1. **[B-3] DEAD_csid 699건 원인 파악 + 재수정** — 긴급
+2. **[O-1] still_bad 패턴 추출** — 성진님, B-3 후
+3. **[A-2] git pull + 후속 빌드 확인** — B-3 후
 
 ---
 
 ## 🚧 진행 중
 
-- Code B: quality_gate 이슈 처리 대기 (reanalyze, DEAD_csid)
-- Code A: 미커밋 파일 검토 후 push 예정
+- Code B: DEAD_csid 699건 재조사 중
+- Code A: B 완료 대기
 
 ---
 
 ## ⚠️ 막힌 것
 
-- 미커밋 파일 다수 (api/, pipeline/*, src/*.jsx) — Code A/B 각자 정리 필요
+- DEAD_csid 699건 재등장 — 이전 fix 결과가 머지/재작성 과정에서 누락된 것으로 추정
+- B-1 "반전/빈 해설 0건" 미달 — B-2 필터로 still_bad 방식 전환
 
 ---
 
 ## ➡️ 다음 액션
 
-B 재생성 완료 → 성진님 샘플 검수 → step3 프롬프트 보완 → 전체 재실행
+B-3 완료 → O-1 패턴 추출 → step3 프롬프트 보완 → reanalyze 재실행
 
 ---
 
-## 📊 현재 데이터 품질
+## 📊 현재 quality_gate
 
-| 항목 | 건수 | 상태 |
-|---|---|---|
-| 내용 반전 해설 | ~1200건 | 🔴 처리 필요 |
-| DEAD_csid | 699건 | 🔴 처리 필요 |
-| 빈 해설 | 25건 | 🔴 처리 필요 |
-| pat 분류 불가 | 190건 | 🟡 수동 검토 |
-| 2022~2026수능 품질 | 완료 | ✅ |
+| 등급 | 건수 |
+|---|---|
+| 🔴 CRITICAL | 724건 (DEAD_csid 699 + F_empty 25) |
+| 🟡 WARNING | 482건 (F_reversed 220 + E_pat 190 + D_true 72) |
+| ⚪ IGNORE | 4건 |

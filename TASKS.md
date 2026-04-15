@@ -7,48 +7,42 @@
 
 ## 🔥 ACTIVE TASKS
 
-**[B-1] 해설 재생성**
+**[B-3] DEAD_csid 699건 재조사**
 - 담당: Code B
-- 완료 기준: `reanalyze_positive.mjs all` 실행 후 반전/빈 해설 0건
-- 상태: 실행 중 (main repo에서 실행할 것 — worktree 금지)
-- 명령어: `cd C:/Users/downf/suneung-viewer && node pipeline/reanalyze_positive.mjs all`
+- 완료 기준: DEAD_csid 원인 파악 + CRITICAL 0건
+- 상태: 긴급
+- 배경: 이전 fix_dead_csids 결과가 머지 과정에서 누락되거나 재작성 시 cs_ids 재변형 가능성
+- 방법: quality_gate CRITICAL 목록 확인 → 원인 분류 → pipeline/archive/fix_dead_csids.cjs 전체 시험 확장 재실행
 
-**[B-2] quality_gate 3단계 필터 개선**
-- 담당: Code B
+**[O-1] 오류 패턴 정의**
+- 담당: 성진님
 - 완료 기준:
-  - CRITICAL / WARNING / IGNORE 3단계 분류 작동
-  - reanalyze 결과 improved / still_bad / needs_human 분류
-  - needs_human만 출력 (전체 검수 금지)
-- 상태: B-1 완료 후 진행
-- 원칙: 복잡한 자동화 추가 금지. 현재 구조 유지하면서 필터만 추가.
+  - still_bad 목록에서 공통 패턴 1개 이상 발견
+  - step3 프롬프트에 반영 완료
+- 상태: 대기 (B-3 완료 후)
+- 방법:
+  1. `node pipeline/reanalyze_positive.mjs all` 실행 후 needs_human 목록 확인
+  2. 성진님이 공통 패턴 정의 → step3 즉시 반영
 
-**[A-1] 랜딩페이지 히어로 + CTA + 공부법 섹션 정리**
+**[A-2] B 완료 후 git pull + 후속 작업**
 - 담당: Code A
-- 완료 기준:
-  - 히어로 문구 14일 기준으로 교체
-  - 모든 CTA "14일 무료로 시작하기"로 통일
-  - 공부법 3단계 섹션 노출
-- 상태: 진행
-- 수정 내용:
-  1. 히어로: "14일 무료로 시작하고, 내 오답 패턴을 확인하세요"
-     → 교정 완료/변화 보장 표현 금지
-     → 제품이 실제로 주는 것만: 풀기 → 복기 → 약점 파악
-  2. CTA 전체 통일: "14일 무료로 시작하기"
-     → 기존 "무료 진단", "10분 확인" 전부 제거
-  3. 공부법 섹션 (짧게):
-     - 1단계: 먼저 풀어보세요
-     - 2단계: 형광펜으로 근거를 확인하세요
-     - 3단계: 해설로 틀린 이유를 확정하세요
-- 금지:
-  - Day별 여정 섹션 신설
-  - 리텐션 UX가 구현된 것처럼 보이는 문구
-  - "14일 후 변화가 자동으로 확인된다" 류의 표현
+- 완료 기준: git pull 후 정상 빌드
+- 상태: B-3 완료 후 진행
+
+---
+
+## 📊 현재 quality_gate 상태
+
+| 등급 | 건수 | 내용 |
+|---|---|---|
+| 🔴 CRITICAL | 724건 | DEAD_csid 699 + F_empty 25 |
+| 🟡 WARNING | 482건 | F_reversed 220 + E_pat 190 + D_true 72 |
+| ⚪ IGNORE | 4건 | |
 
 ---
 
 ## 📌 2단계 진입 조건
 
-아래 조건 만족 시 다음 단계로:
 - CRITICAL = 0
 - WARNING 자동 처리 안정
 - needs_human 20건 이하
@@ -57,9 +51,8 @@
 
 ## 📋 백로그 (지금 하지 않음)
 
-- Day별 UX 구조 (베타 유저 리텐션 데이터 확보 후 설계)
-- 7일차/14일차 전환 트리거
-- pat_unclassifiable 190건
+- Day별 UX 구조 (베타 유저 데이터 확보 후)
+- pat_unclassifiable 190건 (다음 주)
 
 ---
 
@@ -86,6 +79,9 @@
 - [x] CLAUDE.md 통합 재작성
 - [x] 2025수능 해설 ID 잔재 13건 → 0건
 - [x] 루트/src 레거시 파일 삭제
+- [x] 랜딩 히어로/CTA/공부법 섹션 — 14일 기준 통일 (0854358)
+- [x] B-1 해설 재생성 255건 (a2f07c2)
+- [x] B-2 quality_gate 3단계 필터 + reanalyze 분류 (4a179d6)
 
 ---
 
