@@ -40,6 +40,29 @@ if (!yd) {
   process.exit(1);
 }
 
+// ── 원문자 감지 ───────────────────────────────────────────────────────────────
+// 선지·지문에 등장하는 ⓐⓑⓒⓓⓔ / ㉠㉡㉢㉣㉤ / ①②③④⑤ / [A][B][C][D][E]
+const MARKER_RE = /[ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\]/g;
+
+function findMarkerSents(set) {
+  // setId → [{marker, sentId, preview}]
+  const results = [];
+  for (const s of set.sents || []) {
+    const t = s.t || "";
+    const found = t.match(MARKER_RE);
+    if (!found) continue;
+    const uniq = [...new Set(found)];
+    for (const marker of uniq) {
+      results.push({
+        marker,
+        sentId: s.id,
+        preview: t.replace(/\s+/g, " ").trim().substring(0, 80),
+      });
+    }
+  }
+  return results;
+}
+
 // ── 템플릿 생성 ───────────────────────────────────────────────────────────────
 const lines = [];
 const W = 52;
@@ -60,6 +83,19 @@ for (const sec of ["reading", "literature"]) {
     lines.push('bracket B: "" ~ ""');
     lines.push('box: ""');
     lines.push('underline: ""');
+
+    // 원문자 자동 감지 → marker 섹션에 후보 주입
+    const markers = findMarkerSents(set);
+    if (markers.length > 0) {
+      lines.push("marker:");
+      lines.push("  # 포맷: <마커> <sentId> \"<어구>\"");
+      lines.push("  # 아래 후보에서 \"???\"를 실제 어구로 교체하세요");
+      for (const m of markers) {
+        lines.push(
+          `  # ${m.marker} ${m.sentId} "???"  ← ${m.preview}`,
+        );
+      }
+    }
     lines.push("");
   }
 }

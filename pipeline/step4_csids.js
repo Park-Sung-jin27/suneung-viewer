@@ -164,7 +164,25 @@ function parseJSON(raw) {
   return JSON.parse(repaired);
 }
 
-async function matchCsIds(set) {
+// [B-12] 선지에서 원문자 추출
+const MARKER_IN_CHOICE_RE = /[ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\]/g;
+
+function buildMarkerHint(choices, markers) {
+  if (!markers || markers.length === 0) return "";
+  const used = new Set();
+  for (const c of choices) {
+    const m = (c.t || "").match(MARKER_IN_CHOICE_RE);
+    if (m) m.forEach((x) => used.add(x));
+  }
+  const relevant = markers.filter((m) => used.has(m.marker));
+  if (relevant.length === 0) return "";
+  const lines = relevant.map(
+    (m) => `  ${m.marker} → ${m.sentId}의 "${m.text}" 부근`,
+  );
+  return `\n[마커 가이드 — 선지에 나오는 원문자의 구체적 span]\n${lines.join("\n")}\n마커가 있는 선지는 해당 sentId를 우선 cs_ids에 포함하라.\n`;
+}
+
+async function matchCsIds(set, markers = []) {
   const sentIds = new Set(set.sents.map((s) => s.id));
 
   // ─────────────────────────────────────────────
@@ -200,6 +218,8 @@ async function matchCsIds(set) {
     return autoEmptyChoices;
   }
 
+  const markerHint = buildMarkerHint(needsMatchChoices, markers);
+
   const userPrompt = `다음 세트에서 각 선지의 cs_ids를 찾아줘.
 
 지문 문장 목록:
@@ -207,6 +227,7 @@ ${JSON.stringify(set.sents.map((s) => ({ id: s.id, t: s.t })))}
 
 선지 목록:
 ${JSON.stringify(needsMatchChoices)}
+${markerHint}
 
 각 선지의 cs_ids 배열만 반환해줘.
 형식: [{ "questionId": 1, "num": 1, "cs_ids": [...] }, ...]`;
@@ -240,6 +261,21 @@ ${JSON.stringify(needsMatchChoices)}
     return { ...m, cs_ids: validIds };
   });
 
+  // [B-12] cs_spans 생성: 선지에 원문자 있고 marker annotation 있으면 spans 추가
+  for (const m of cleaned) {
+    const set_q = set.questions.find((q) => q.id === m.questionId);
+    const set_c = set_q?.choices.find((c) => c.num === m.num);
+    if (!set_c) continue;
+    const markersInChoice = (set_c.t || "").match(MARKER_IN_CHOICE_RE);
+    if (!markersInChoice) continue;
+    const spans = [];
+    for (const mk of [...new Set(markersInChoice)]) {
+      const found = markers.find((x) => x.marker === mk);
+      if (found) spans.push({ sent_id: found.sentId, text: found.text });
+    }
+    if (spans.length > 0) m.cs_spans = spans;
+  }
+
   console.log(
     `  매칭: ${totalMatched}개 cs_ids, 무효 ID 제거: ${invalidRemoved}개`,
   );
@@ -248,25 +284,34 @@ ${JSON.stringify(needsMatchChoices)}
   return [...autoEmptyChoices, ...cleaned];
 }
 
-export async function assignCsIds(step3Data) {
+export async function assignCsIds(step3Data, annotations = {}) {
   const result = { reading: [], literature: [] };
 
   for (const section of ["reading", "literature"]) {
     for (const set of step3Data[section]) {
       console.log(`[step4] cs_ids 매칭 중: ${set.id} (${set.range})`);
 
-      const matches = await matchCsIds(set);
+      // [B-12] 해당 세트의 marker annotation 전달
+      const setMarkers = (annotations[set.id] || []).filter(
+        (a) => a.type === "marker",
+      );
+      const matches = await matchCsIds(set, setMarkers);
 
       const matchMap = new Map();
+      const spansMap = new Map();
       for (const m of matches) {
         matchMap.set(`${m.questionId}_${m.num}`, m.cs_ids);
+        if (m.cs_spans) spansMap.set(`${m.questionId}_${m.num}`, m.cs_spans);
       }
 
       const updatedQuestions = set.questions.map((q) => ({
         ...q,
         choices: q.choices.map((c) => {
           const cs_ids = matchMap.get(`${q.id}_${c.num}`);
-          return cs_ids !== undefined ? { ...c, cs_ids } : c;
+          const cs_spans = spansMap.get(`${q.id}_${c.num}`);
+          const next = cs_ids !== undefined ? { ...c, cs_ids } : { ...c };
+          if (cs_spans) next.cs_spans = cs_spans;
+          return next;
         }),
       }));
 
@@ -288,7 +333,12 @@ export async function assignCsIds(step3Data) {
 // ─────────────────────────────────────────────
 async function retarget(targetYear) {
   const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+  const ANN_PATH = path.resolve(__dirname, "../public/data/annotations.json");
   const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
+  let ann = {};
+  try {
+    ann = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));
+  } catch {}
 
   const years = targetYear
     ? [targetYear]
@@ -338,10 +388,20 @@ async function retarget(targetYear) {
 
         console.log(`\n[retarget] ${yr} ${set.id} (${set.range})`);
 
-        const matches = await matchCsIds(set);
+        // [B-12] marker annotation 조회
+        const setMarkers = (ann[yr]?.[set.id] || []).filter(
+          (a) => a.type === "marker",
+        );
+        if (setMarkers.length > 0) {
+          console.log(`  [마커] ${setMarkers.length}개 로드`);
+        }
+
+        const matches = await matchCsIds(set, setMarkers);
         const matchMap = new Map();
+        const spansMap = new Map();
         for (const m of matches) {
           matchMap.set(`${m.questionId}_${m.num}`, m.cs_ids);
+          if (m.cs_spans) spansMap.set(`${m.questionId}_${m.num}`, m.cs_spans);
         }
 
         for (const q of set.questions) {
@@ -353,6 +413,9 @@ async function retarget(targetYear) {
                 c.cs_ids = newIds;
                 if (newIds.length > 0) totalFixed++;
               }
+            }
+            if (spansMap.has(key)) {
+              c.cs_spans = spansMap.get(key);
             }
           }
         }

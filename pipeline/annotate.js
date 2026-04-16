@@ -45,6 +45,66 @@ if (!yd) {
 
 const ann = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));
 
+// [B-12] draft 파서 — _annotation_drafts/<yearKey>.txt의 marker 섹션을 annotations.json에 반영
+const DRAFT_PATH = path.resolve(
+  __dirname,
+  `../_annotation_drafts/${yearKey}.txt`,
+);
+if (process.argv.includes("--apply-draft") && fs.existsSync(DRAFT_PATH)) {
+  const draftText = fs.readFileSync(DRAFT_PATH, "utf8");
+  // 세트 단위로 파싱: 세트 헤더(set.id 줄) 뒤 marker: 섹션을 찾아 항목 수집
+  const setIds = new Set();
+  for (const sec of ["reading", "literature"])
+    for (const s of yd[sec] || []) setIds.add(s.id);
+
+  const lines = draftText.split(/\r?\n/);
+  let currentSet = null;
+  let inMarker = false;
+  const markerByset = {}; // setId → [{type, marker, sentId, text}]
+
+  // "  <마커> <sentId> "<어구>"" 포맷, 주석(#) 라인은 무시
+  const MARKER_LINE =
+    /^\s{2,}([ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\])\s+([a-zA-Z_0-9]+)\s+"([^"]+)"\s*$/;
+
+  for (const raw of lines) {
+    const setHeaderMatch = raw.match(/^([a-zA-Z_0-9]+)\s/);
+    if (setHeaderMatch && setIds.has(setHeaderMatch[1])) {
+      currentSet = setHeaderMatch[1];
+      inMarker = false;
+      continue;
+    }
+    if (/^marker:\s*$/.test(raw)) {
+      inMarker = true;
+      continue;
+    }
+    if (/^(bracket|box|underline)/.test(raw)) {
+      inMarker = false;
+      continue;
+    }
+    if (!inMarker || !currentSet) continue;
+    if (/^\s*#/.test(raw)) continue; // 주석 라인 스킵
+    const m = raw.match(MARKER_LINE);
+    if (!m) continue;
+    const [, marker, sentId, text] = m;
+    if (!markerByset[currentSet]) markerByset[currentSet] = [];
+    markerByset[currentSet].push({ type: "marker", marker, sentId, text });
+  }
+
+  // annotations.json에 병합 — 기존 항목 중 type:"marker" 만 교체
+  if (!ann[yearKey]) ann[yearKey] = {};
+  for (const [setId, markers] of Object.entries(markerByset)) {
+    const existing = (ann[yearKey][setId] || []).filter(
+      (a) => a.type !== "marker",
+    );
+    ann[yearKey][setId] = [...existing, ...markers];
+  }
+  fs.writeFileSync(ANN_PATH, JSON.stringify(ann, null, 2), "utf8");
+  const total = Object.values(markerByset).flat().length;
+  console.log(
+    `\n✅ draft에서 marker ${total}개 파싱 → ${Object.keys(markerByset).length}개 세트 반영\n`,
+  );
+}
+
 // ── 출력 헬퍼 ─────────────────────────────────────────────────────────────────
 const W = process.stdout.columns || 80;
 const line = (c = "─") => c.repeat(W);
