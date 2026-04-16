@@ -328,21 +328,36 @@ for (const yearKey of yearsToCheck) {
             }
           }
 
-          // ── F-2: analysis 내용 반전 (🔍 내용) ─────────────────────────
-          const NEG_RE =
-            /(?<!부)적절하지\s*않|어긋나|틀리[다는]|왜곡|오류|잘못[된하]|부적절/;
-          const POS_RE = /(?<!부)적절[한하]|(?<!불)일치|올바르|합당/;
-          const heuristic = ana.replace(/📌.*?\n/g, "");
-          const contentReversed =
-            (c.ok === true && NEG_RE.test(heuristic)) ||
-            (c.ok === false && POS_RE.test(heuristic));
+          // ── F-2: analysis 반전 (결론 이모지 기준, isReversed와 동기화) ─
+          // 마지막 ✅/❌ 이모지가 ok 값과 일치하는지 검사
+          // - ok:true + 결론 ❌ → reversed
+          // - ok:false + 결론 ✅ → reversed
+          // - 결론 이모지 없음 → reversed (포맷 파손)
+          let contentReversed = false;
+          if (!ana.trim()) {
+            // 빈 analysis는 F_empty_analysis로 별도 처리
+          } else {
+            const lastPos = Math.max(
+              ana.lastIndexOf("✅"),
+              ana.lastIndexOf("❌"),
+            );
+            if (lastPos < 0) {
+              contentReversed = true;
+            } else {
+              const conclusion = ana.slice(lastPos);
+              if (c.ok === true && conclusion.startsWith("❌"))
+                contentReversed = true;
+              if (c.ok === false && conclusion.startsWith("✅"))
+                contentReversed = true;
+            }
+          }
 
           if (contentReversed && !conclusionMismatch) {
             needsManual(
               "F_content_reversed",
               yearKey,
               cLoc,
-              "🔍 내용 반전 → reanalyze_positive.mjs 재실행 필요",
+              "결론 이모지(✅/❌) vs ok 불일치 → reanalyze 필요",
             );
           }
 
@@ -365,13 +380,17 @@ for (const yearKey of yearsToCheck) {
 
           // ── H: analysis 내부 ID 노출 ────────────────────────────────────
           // [r2024cs11], r2024cs11, (as11), (as11~as15), q1_c3 등
-          const ID_LEAK_RE = /\[[a-z_0-9]+s\d+\]|\[[a-z0-9]+_s\d+\]|\((?:as|cs|bs|ds|es)\d+(?:~(?:as|cs|bs|ds|es)\d+)?\)|q\d+_c\d+|\b[rl]\d{4}[a-z_0-9]*s\d+\b/;
+          const ID_LEAK_RE =
+            /\[[a-z_0-9]+s\d+\]|\[[a-z0-9]+_s\d+\]|\((?:as|cs|bs|ds|es)\d+(?:~(?:as|cs|bs|ds|es)\d+)?\)|q\d+_c\d+|\b[rl]\d{4}[a-z_0-9]*s\d+\b/;
           if (ana && ID_LEAK_RE.test(ana)) {
             if (FIX) {
               const cleaned = ana
                 .replace(/\s*\[[a-z_0-9]+s\d+\]/g, "")
                 .replace(/\s*\[[a-z0-9]+_s\d+\]/g, "")
-                .replace(/\s*\((?:as|cs|bs|ds|es)\d+(?:~(?:as|cs|bs|ds|es)\d+)?\)/g, "")
+                .replace(
+                  /\s*\((?:as|cs|bs|ds|es)\d+(?:~(?:as|cs|bs|ds|es)\d+)?\)/g,
+                  "",
+                )
                 .replace(/\s*q\d+_c\d+/g, "")
                 .replace(/\s*\b[rl]\d{4}[a-z_0-9]*s\d+\b/g, "")
                 .replace(/\s{2,}/g, " ")
@@ -380,7 +399,12 @@ for (const yearKey of yearsToCheck) {
               c.analysis = cleaned;
               fixed("H_id_leak_removed", yearKey, cLoc, "내부 ID 패턴 제거");
             } else {
-              issue("H_analysis_id_leak", yearKey, cLoc, "analysis에 내부 ID 노출");
+              issue(
+                "H_analysis_id_leak",
+                yearKey,
+                cLoc,
+                "analysis에 내부 ID 노출",
+              );
             }
           }
 
@@ -426,7 +450,8 @@ for (const yearKey of yearsToCheck) {
       const freq = new Map();
       for (const q of set.questions || []) {
         for (const c of q.choices || []) {
-          for (const id of c.cs_ids || []) freq.set(id, (freq.get(id) || 0) + 1);
+          for (const id of c.cs_ids || [])
+            freq.set(id, (freq.get(id) || 0) + 1);
         }
       }
       for (const [id, cnt] of freq) {
