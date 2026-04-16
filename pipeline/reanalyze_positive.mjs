@@ -100,8 +100,9 @@ ok:true이면 패턴 없음.
 
 // ─── 반전 감지 함수 (결론형 문구만 매칭, "부적절"의 "적절한" 부분 매칭 방지) ──
 // negative lookbehind로 "부"가 앞에 오는 "적절한 진술" 제외
-const NEG_RE = /어긋나|왜곡|잘못 서술|맞지 않|일치하지 않/;
-const POS_RE = /(?<!부)적절한 진술|일치하는 적절한 진술|올바른 진술|합당한 진술/;
+const NEG_RE = /어긋나|왜곡|잘못|(?<!부)적절하지|맞지 않|일치하지 않/;
+const POS_RE =
+  /(?<!부)적절한 진술|일치하는 적절한 진술|올바른 진술|합당한 진술/;
 
 function isReversed(c) {
   const ana = c.analysis || "";
@@ -188,7 +189,9 @@ for (const yearKey of yearsToProcess) {
               console.log(` 🔴 needs_human (API 실패)`);
             } else {
               // MAX_RETRY 초과 — retryable이었으나 needs_human으로 이동
-              results.needs_human.push(`${loc} — 재시도 ${MAX_RETRY}회 초과 (여전히 반전)`);
+              results.needs_human.push(
+                `${loc} — 재시도 ${MAX_RETRY}회 초과 (여전히 반전)`,
+              );
               console.log(` 🔴 needs_human (재시도 초과)`);
             }
             totalFixed++;
@@ -211,8 +214,12 @@ console.log(`\n✅ 완료: ${totalFixed}개 analysis 재작성`);
 // 결과 분류 리포트
 console.log(`\n=== 결과 분류 ===`);
 console.log(`  ✅ improved:    ${results.improved.length}건`);
-console.log(`  ⟳  retryable:   ${results.retryable.length}건 (재시도 성공 가능)`);
-console.log(`  🔴 needs_human: ${results.needs_human.length}건 (MAX_RETRY 초과 또는 API 실패)`);
+console.log(
+  `  ⟳  retryable:   ${results.retryable.length}건 (재시도 성공 가능)`,
+);
+console.log(
+  `  🔴 needs_human: ${results.needs_human.length}건 (MAX_RETRY 초과 또는 API 실패)`,
+);
 
 if (results.needs_human.length > 0) {
   console.log(`\n[ 🔴 needs_human 상세 — 프롬프트 개선 패턴 추출 대상 ]`);
