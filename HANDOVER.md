@@ -10,36 +10,34 @@
 
 ---
 
-## 🔥 오늘 할 것 (3개만)
+## 🔥 내일 가장 먼저 할 것 1개
 
-1. **[오르비] 게시** — Code A 시험 범위 버그 수정 완료 후
-2. **[B] F_content_reversed 47건 정밀 분류**
-3. **[O-1] needs_human 패턴 정의**
+**이미지 2개 git push → vercel 배포 → 오르비 게시**
+
+```bash
+git add public/images/2023_r20239d_q16_bogi.png public/images/2022_r20226b_q4_bogi.png
+git commit -m "feat: 누락 이미지 2개 추가"
+git push
+```
 
 ---
 
 ## 오늘 완료
 
-- 2022~2026 수능 5개 release_ready 달성
-- isReversed false positive 버그 수정
-- step4 잘못된 마커 규칙 제거 후 재검증 완료
-- 형광펜 choice.cs_ids 기준 / sent.cs 런타임 역매핑 구조 확인
-- 회원가입 플로우 정상 확인 (이메일)
+- 5개 수능 CRITICAL 0건 / release_ready 달성
+- isPro 런타임 에러, 회원가입 진입, 무료 범위(5개 수능), 이미지 렌더러 수정
+- 내부 ID 58건 → 0건, DEAD_csid → 0건
+- 몰빵 Top 케이스 대부분 해소 (l2025bs2 22→0, l2026as2 20→2)
+- isReversed false positive 44건 → 0건
+- 이미지 bogi 6건 annotated_image 변환 (4건 렌더 확인)
 
 ---
 
-## ⚠️ 남은 것
+## ⚠️ 아직 안 끝난 것
 
-- Google OAuth: 배포 환경 최종 확인 필요
-- 무료 사용자 시험 범위 버그 수정 중 (2022~2026 5개 전부 보여야 함)
-- "무료로 시작" 버튼 Pro 잠금 해제 버그 수정 중
-
----
-
-## ➡️ 내일 첫 작업
-
-F_content_reversed 47건 정밀 분류 → 진짜 반전만 reanalyze
-sent.cs 런타임 역매핑 구조 문서화
+- 이미지 파일 2개 git 미push (파일은 로컬에 있음)
+- 2025·2026수능 reanalyze 미실행
+- 2026 l2026d 몰빵 잔존 (ds7 11회)
 
 ---
 
@@ -48,18 +46,6 @@ sent.cs 런타임 역매핑 구조 문서화
 | 등급 | 건수 |
 |---|---|
 | 🔴 CRITICAL | 0건 ✅ |
-| 🟡 WARNING | 119건 (F_content_reversed 47 + G_ann_dead 72) |
-| ⚪ IGNORE | 8건 |
+| 🟡 WARNING | 164건 (F_content_reversed 47 + H_cs_concentration 45 + G_ann_dead 72) |
+| ⚪ IGNORE | 7건 |
 | **상태** | 🟢 **release_ready** |
-
-> 공개 범위: 2022~2026 수능 5개만.
-> 형광펜 단일 진실값: choice.cs_ids (sent.cs는 런타임 역참조, 품질 기준 아님)
-
----
-
-## 핵심 구조 메모
-
-```
-형광펜: choice.cs_ids → dataLoader._buildSentCs() → sent.cs → PassagePanel getHL()
-정적 sent.cs 개수 = 품질 기준 아님 (오해 금지)
-```
