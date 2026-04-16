@@ -93,11 +93,14 @@ ok:true 해설에서는 부정 판정 표현을 절대 사용하지 말 것.
 금지 표현: 어긋나다, 왜곡, 잘못, 부적절, 맞지 않다, 일치하지 않다
 정답 해설은 지문 근거 + 직접 일치 + 왜 맞는지만 기술.
 
+반드시 ✅ 또는 ❌ 이모지로 결론을 마무리할 것.
+이모지 없이 끝나는 응답은 무효.
+
 해설만 출력. 설명 금지.`;
 
   const response = await client.messages.create({
     model: "claude-opus-4-6",
-    max_tokens: 600,
+    max_tokens: 1500,
     messages: [{ role: "user", content: prompt }],
   });
 
