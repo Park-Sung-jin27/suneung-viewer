@@ -104,17 +104,20 @@ ok:true 해설에서는 부정 판정 표현을 절대 사용하지 말 것.
   return response.content[0].text.trim();
 }
 
-// ─── 반전 감지 함수 (결론형 문구만 매칭, "부적절"의 "적절한" 부분 매칭 방지) ──
-// negative lookbehind로 "부"가 앞에 오는 "적절한 진술" 제외
-const NEG_RE = /어긋나|왜곡|잘못|(?<!부)적절하지|맞지 않|일치하지 않/;
-const POS_RE =
-  /(?<!부)적절한 진술|일치하는 적절한 진술|올바른 진술|합당한 진술/;
-
+// ─── 반전 감지 함수 (결론 이모지 ✅/❌ 기준) ────────────────────────────────
+// 해설 본문(📌 인용, 🔍 설명)에는 "왜곡/잘못/부적절" 등이 개념/서술로 등장할 수 있음.
+// 따라서 최종 결론 마커(✅/❌)와 ok 값의 일치만 검사한다.
 function isReversed(c) {
   const ana = c.analysis || "";
   if (!ana.trim()) return true;
-  if (c.ok === true && NEG_RE.test(ana)) return true;
-  if (c.ok === false && POS_RE.test(ana)) return true;
+  // 결론부: 마지막 ✅ 또는 ❌ 이모지부터 끝까지
+  const lastPos = Math.max(ana.lastIndexOf("✅"), ana.lastIndexOf("❌"));
+  if (lastPos < 0) return true; // 결론 이모지 없으면 반전 대상
+  const conclusion = ana.slice(lastPos);
+  const hasPos = conclusion.startsWith("✅");
+  const hasNeg = conclusion.startsWith("❌");
+  if (c.ok === true && hasNeg) return true;
+  if (c.ok === false && hasPos) return true;
   return false;
 }
 
