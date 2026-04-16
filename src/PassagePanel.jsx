@@ -57,7 +57,47 @@ function getHL(sent, sel) {
   if (!cs || cs.length === 0) return null;
   const cNum = parseInt(sel.split("_c")[1], 10);
   if (!cs.includes(sel)) return null;
-  return CC[cNum] || null;
+  const pal = CC[cNum];
+  if (!pal) return null;
+  const spans = sent.csSpans?.[sel] || null;
+  return { pal, spans };
+}
+
+// 부분 하이라이트 렌더링
+//   spans: ["어구1", "어구2"] — text 내부 문자열
+//   반환: JSX — spans 매칭되면 해당 부분만 hlStyle, 나머지는 Lines
+//   매칭 실패 시 null 반환 → 호출측에서 전체 하이라이트 fallback 처리
+function renderSpanParts(text, spans, hlStyle) {
+  if (!text || !spans || spans.length === 0) return null;
+  const hits = spans
+    .map((s) => ({ text: s, idx: text.indexOf(s) }))
+    .filter((h) => h.idx >= 0)
+    .sort((a, b) => a.idx - b.idx);
+  if (hits.length === 0) return null; // 매칭 실패 → fallback
+
+  const parts = [];
+  let cursor = 0;
+  for (const h of hits) {
+    if (h.idx < cursor) continue; // 겹침 skip
+    if (h.idx > cursor) parts.push({ t: text.slice(cursor, h.idx), hl: false });
+    parts.push({ t: h.text, hl: true });
+    cursor = h.idx + h.text.length;
+  }
+  if (cursor < text.length) parts.push({ t: text.slice(cursor), hl: false });
+
+  return (
+    <>
+      {parts.map((p, i) =>
+        p.hl ? (
+          <span key={i} style={hlStyle} data-hl="true">
+            <Lines text={p.t} />
+          </span>
+        ) : (
+          <Lines key={i} text={p.t} />
+        ),
+      )}
+    </>
+  );
 }
 
 // ── inline annotation 스타일 ──
@@ -140,7 +180,9 @@ function RenderSent({ sent, sel, anns }) {
 
   const t = sent.t || "";
   const st = sent.sentType || "body";
-  const pal = getHL(sent, sel);
+  const hl = getHL(sent, sel); // { pal, spans } | null
+  const pal = hl?.pal || null;
+  const spans = hl?.spans || null;
   const hlStyle = pal
     ? {
         background: pal.bg,
@@ -176,13 +218,30 @@ function RenderSent({ sent, sel, anns }) {
           paddingLeft: "8px",
           lineHeight: "2.0",
         }}
-        data-hl={pal ? "true" : undefined}
+        data-hl={pal && !spans ? "true" : undefined}
       >
-        {lines.map((line, i) => (
-          <div key={i} style={pal ? hlStyle : {}}>
-            <Lines text={line} />
-          </div>
-        ))}
+        {lines.map((line, i) => {
+          // spans 있으면 라인별 부분 하이라이트 시도
+          if (pal && spans) {
+            const spanJsx = renderSpanParts(line, spans, hlStyle);
+            if (spanJsx) {
+              // span 매칭 성공 → 라인 전체 outline 없이 span만 강조
+              return <div key={i}>{spanJsx}</div>;
+            }
+            // span 매칭 실패 → 해당 라인 fallback (전체 하이라이트)
+            return (
+              <div key={i} style={hlStyle} data-hl="true">
+                <Lines text={line} />
+              </div>
+            );
+          }
+          // pal 없음 또는 spans 없음 → 기존 동작
+          return (
+            <div key={i} style={pal ? hlStyle : {}}>
+              <Lines text={line} />
+            </div>
+          );
+        })}
       </div>
     );
   }
@@ -231,6 +290,16 @@ function RenderSent({ sent, sel, anns }) {
       </div>
     );
 
+  // body — spans 우선, 실패 시 기존 전체 하이라이트 fallback
+  if (pal && spans) {
+    // box/underline annotation보다 span 하이라이트 우선
+    // (annotation은 span 매칭 실패 시 fallback 경로에서 처리)
+    const spanJsx = renderSpanParts(t, spans, hlStyle);
+    if (spanJsx) {
+      return <span>{spanJsx} </span>;
+    }
+    // span 매칭 실패 → 전체 하이라이트 fallback
+  }
   const content =
     anns.length > 0 ? applyInlineAnns(t, anns) : <Lines text={t} />;
   return (

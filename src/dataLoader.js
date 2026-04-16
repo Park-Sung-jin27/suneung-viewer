@@ -17,9 +17,24 @@ function _buildSentCs(yearData) {
       for (const q of set.questions) {
         for (const c of q.choices) {
           const key = `q${q.id}_c${c.num}`;
+          // cs_ids → sent.cs (문장 전체 하이라이트용, 기존 유지)
           for (const sid of c.cs_ids || []) {
             const s = sentMap[sid];
             if (s) (s.cs ||= []).includes(key) || s.cs.push(key);
+          }
+          // cs_spans → sent.csSpans (부분 하이라이트용, 신규)
+          //   스키마: { sent_id, text } — text는 해당 문장 내부 어구
+          for (const span of c.cs_spans || []) {
+            const sid = span.sent_id;
+            const text = span.text;
+            if (!sid || !text) continue;
+            const s = sentMap[sid];
+            if (!s) continue;
+            // cs에도 추가 (스크롤/fallback용 — cs_ids에 없더라도 cs_spans만 있는 경우 대비)
+            (s.cs ||= []).includes(key) || s.cs.push(key);
+            // csSpans: { key: [text1, text2, ...] }
+            s.csSpans ||= {};
+            (s.csSpans[key] ||= []).push(text);
           }
         }
       }
