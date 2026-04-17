@@ -250,3 +250,20 @@ export const SYMBOLS = {
   check: "/images/sym_check.png",
   wavy: "/images/sym_wavy.png",
 };
+
+// ── figure sent 이미지 매핑 ─────────────────────────────────
+//   PassagePanel은 sentType === "figure"인 sent 렌더링 시 이 맵을 조회.
+//   있으면 <img> + alt caption, 없으면 원문(placeholder)을 그대로 <Lines>로 노출.
+//
+//   Code B가 all_data_204.json의 figure sent에 url/alt 필드를 추가하면
+//   이 맵은 단계적으로 제거 가능. (단기 해결책)
+//
+//   이미지 파일 대기(Code B 요청):
+//     r2023ds17  L-그래프 도식
+//     r2021cs24  3D 애니메이션 스케치
+export const FIGURE_IMAGE_MAP = {
+  r2022as2: {
+    url: "/images/2022_r2022a_photo.png",
+    alt: "제2차 세계 대전 당시 폐허가 된 런던 건물 안에서 사람들이 책을 보고 있는 사진",
+  },
+};

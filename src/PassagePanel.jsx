@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { CC } from "./constants";
+import { CC, FIGURE_IMAGE_MAP } from "./constants";
 
 // ── 기호 밑줄 (/g 플래그 금지) ───────────────────────────
 const SYM_SPLIT = /([㉠-㉮ⓐ-ⓩ①-⑤])/;
@@ -291,6 +291,51 @@ function RenderSent({ sent, sel, anns }) {
         {t}
       </div>
     );
+  // figure: 지문 중간 이미지/도식. FIGURE_IMAGE_MAP에 매핑되면 <img> 렌더링,
+  //         매핑 없으면 원문 placeholder([도식: ...])를 그대로 <Lines>로 노출
+  //         (stripSymTags가 🖼 이모지로 치환)
+  if (st === "figure") {
+    const fig = FIGURE_IMAGE_MAP[sent.id];
+    if (fig) {
+      return (
+        <div style={{ margin: "16px 0", textAlign: "center" }}>
+          <img
+            src={fig.url}
+            alt={fig.alt || ""}
+            style={{
+              maxWidth: "100%",
+              borderRadius: "6px",
+              border: "1px solid #e5e7eb",
+            }}
+          />
+          {fig.alt && (
+            <p
+              style={{
+                fontSize: "0.72rem",
+                color: "#9ca3af",
+                marginTop: "4px",
+                fontStyle: "italic",
+              }}
+            >
+              {fig.alt}
+            </p>
+          )}
+        </div>
+      );
+    }
+    return (
+      <div
+        style={{
+          color: "#9ca3af",
+          fontSize: "0.82rem",
+          textAlign: "center",
+          margin: "10px 0",
+        }}
+      >
+        <Lines text={t} />
+      </div>
+    );
+  }
   if (st === "verse") {
     const lines = t.split("\n");
     return (
@@ -464,9 +509,15 @@ function renderAll(sents, sel, annotations) {
   for (const s of sents) {
     const st = s.sentType || (s.type === "image" ? "image" : "body");
     if (
-      ["workTag", "omission", "author", "footnote", "image", "verse"].includes(
-        st,
-      )
+      [
+        "workTag",
+        "omission",
+        "author",
+        "footnote",
+        "image",
+        "verse",
+        "figure",
+      ].includes(st)
     ) {
       flush();
       result.push(
