@@ -63,25 +63,96 @@ function getHL(sent, sel) {
   return { pal, spans };
 }
 
-// 부분 하이라이트 렌더링
-//   spans: ["어구1", "어구2"] — text 내부 문자열
-//   반환: JSX — spans 매칭되면 해당 부분만 hlStyle, 나머지는 Lines
-//   매칭 실패 시 null 반환 → 호출측에서 전체 하이라이트 fallback 처리
-function renderSpanParts(text, spans, hlStyle) {
-  if (!text || !spans || spans.length === 0) return null;
-  const hits = spans
-    .map((s) => ({ text: s, idx: text.indexOf(s) }))
-    .filter((h) => h.idx >= 0)
-    .sort((a, b) => a.idx - b.idx);
-  if (hits.length === 0) return null; // 매칭 실패 → fallback
+// ── span 부분 하이라이트 매칭 유틸 ──
+//
+// 설계:
+//   1차  원문 직접 indexOf
+//   2차  길이 보존 정규화 (NBSP/스마트따옴표 → 일반 문자) 후 indexOf
+//         → 공백 개수를 바꾸지 않으므로 정규화 텍스트의 인덱스를 원문에 그대로 적용 가능
+//   3차  공백 유연 regex (연속 공백 차이 흡수)
+//   전부 실패 → 하나라도 매칭 못 하면 null 반환 (all-or-nothing fallback)
 
+function normalizeText(text) {
+  // 길이 보존: 코드포인트 치환만 수행, 공백 압축(\s+→" ") 금지
+  //   — 공백 압축 시 인덱스가 어긋나 원문 슬라이스 위치가 깨짐
+  return (text || "")
+    .replace(/\u00A0/g, " ")
+    .replace(/[\u201C\u201D]/g, '"')
+    .replace(/[\u2018\u2019]/g, "'");
+}
+
+const RE_SPECIAL = /[.*+?^${}()|[\]\\]/g;
+function escapeRegex(s) {
+  return s.replace(RE_SPECIAL, "\\$&");
+}
+
+// span을 공백 유연 regex로 변환 (연속 공백 허용)
+function spanToFlexRegex(spanText) {
+  const normalized = normalizeText(spanText);
+  const tokens = normalized.split(/\s+/).filter(Boolean);
+  if (tokens.length === 0) return null;
+  const pattern = tokens.map(escapeRegex).join("[\\s\\u00A0]+");
+  try {
+    return new RegExp(pattern);
+  } catch {
+    return null;
+  }
+}
+
+function findSpanRanges(rawText, spanTexts) {
+  if (!rawText || !Array.isArray(spanTexts) || spanTexts.length === 0)
+    return null;
+  const ranges = [];
+  const normRaw = normalizeText(rawText); // 길이 보존 — 인덱스 그대로 사용 가능
+
+  for (const spanText of spanTexts) {
+    if (!spanText) continue;
+    // 1차: 원문 직접
+    let idx = rawText.indexOf(spanText);
+    if (idx !== -1) {
+      ranges.push({ start: idx, end: idx + spanText.length });
+      continue;
+    }
+    // 2차: 길이 보존 정규화 (인덱스 동일)
+    const normSpan = normalizeText(spanText);
+    idx = normRaw.indexOf(normSpan);
+    if (idx !== -1) {
+      ranges.push({ start: idx, end: idx + normSpan.length });
+      continue;
+    }
+    // 3차: 공백 유연 regex
+    const re = spanToFlexRegex(spanText);
+    if (re) {
+      const m = rawText.match(re);
+      if (m && typeof m.index === "number" && m.index >= 0) {
+        ranges.push({ start: m.index, end: m.index + m[0].length });
+        continue;
+      }
+    }
+    // 하나라도 실패 → 전체 fallback
+    if (typeof console !== "undefined") {
+      console.warn("[span-match-failed]", {
+        spanText,
+        rawPreview: rawText.slice(0, 60),
+      });
+    }
+    return null;
+  }
+
+  ranges.sort((a, b) => a.start - b.start);
+  return ranges;
+}
+
+function renderWithRanges(text, ranges, hlStyle) {
+  if (!ranges || ranges.length === 0) return null;
   const parts = [];
   let cursor = 0;
-  for (const h of hits) {
-    if (h.idx < cursor) continue; // 겹침 skip
-    if (h.idx > cursor) parts.push({ t: text.slice(cursor, h.idx), hl: false });
-    parts.push({ t: h.text, hl: true });
-    cursor = h.idx + h.text.length;
+  for (const r of ranges) {
+    if (r.start < cursor) continue; // 겹침 skip
+    if (r.start > cursor)
+      parts.push({ t: text.slice(cursor, r.start), hl: false });
+    parts.push({ t: text.slice(r.start, r.end), hl: true });
+    cursor = r.end;
   }
   if (cursor < text.length) parts.push({ t: text.slice(cursor), hl: false });
 
@@ -98,6 +169,17 @@ function renderSpanParts(text, spans, hlStyle) {
       )}
     </>
   );
+}
+
+// 부분 하이라이트 렌더링
+//   spans: ["어구1", "어구2"] — text 내부 문자열
+//   반환: JSX — 모든 span 매칭 성공 시 해당 부분만 hlStyle
+//   매칭 실패(하나라도) 시 null → 호출측에서 전체 하이라이트 fallback
+function renderSpanParts(text, spans, hlStyle) {
+  if (!text || !spans || spans.length === 0) return null;
+  const ranges = findSpanRanges(text, spans);
+  if (!ranges || ranges.length === 0) return null;
+  return renderWithRanges(text, ranges, hlStyle);
 }
 
 // ── inline annotation 스타일 ──

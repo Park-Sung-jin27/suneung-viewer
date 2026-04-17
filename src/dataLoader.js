@@ -24,6 +24,7 @@ function _buildSentCs(yearData) {
           }
           // cs_spans → sent.csSpans (부분 하이라이트용, 신규)
           //   스키마: { sent_id, text } — text는 해당 문장 내부 어구
+          //   csSpans: { key: [text1, text2, ...] } — 객체(key 기반), 배열 아님
           for (const span of c.cs_spans || []) {
             const sid = span.sent_id;
             const text = span.text;
@@ -32,9 +33,9 @@ function _buildSentCs(yearData) {
             if (!s) continue;
             // cs에도 추가 (스크롤/fallback용 — cs_ids에 없더라도 cs_spans만 있는 경우 대비)
             (s.cs ||= []).includes(key) || s.cs.push(key);
-            // csSpans: { key: [text1, text2, ...] }
             s.csSpans ||= {};
-            (s.csSpans[key] ||= []).push(text);
+            const arr = (s.csSpans[key] ||= []);
+            if (!arr.includes(text)) arr.push(text); // 중복 push 방지
           }
         }
       }
