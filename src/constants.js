@@ -258,12 +258,17 @@ export const SYMBOLS = {
 //   Code B가 all_data_204.json의 figure sent에 url/alt 필드를 추가하면
 //   이 맵은 단계적으로 제거 가능. (단기 해결책)
 //
-//   이미지 파일 대기(Code B 요청):
-//     r2023ds17  L-그래프 도식
-//     r2021cs24  3D 애니메이션 스케치
 export const FIGURE_IMAGE_MAP = {
   r2022as2: {
     url: "/images/2022_r2022a_photo.png",
     alt: "제2차 세계 대전 당시 폐허가 된 런던 건물 안에서 사람들이 책을 보고 있는 사진",
+  },
+  r2023ds17: {
+    url: "/images/2023_r2023d_sent17_lgraph.png",
+    alt: "L-그래프의 가로축 X와 세로축 Y, 편차, 기울기를 표시",
+  },
+  r2021cs24: {
+    url: "/images/2021_r2021c_sent24_scene.png",
+    alt: "3D 애니메이션 제작을 위한 장면 구상 및 스케치",
   },
 };
