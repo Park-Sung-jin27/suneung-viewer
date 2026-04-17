@@ -1,5 +1,6 @@
 // dataLoader.js
 let _cache = null;
+let _annCache = null;
 
 async function _load() {
   if (_cache) return _cache;
@@ -7,6 +8,41 @@ async function _load() {
   if (!res.ok) throw new Error("데이터 로드 실패");
   _cache = await res.json();
   return _cache;
+}
+
+// annotations.json은 optional — 없어도 앱은 정상 동작
+async function _loadAnn() {
+  if (_annCache !== null) return _annCache;
+  try {
+    const res = await fetch("/data/annotations.json");
+    if (!res.ok) {
+      _annCache = {};
+      return _annCache;
+    }
+    _annCache = await res.json();
+  } catch {
+    _annCache = {};
+  }
+  return _annCache;
+}
+
+// annotations를 해당 year의 set.annotations로 주입
+//   annotations.json 구조: { [yearKey]: { [setId]: [ {type, sentId, text}, ... ] } }
+//   setKey는 all_data_204.json의 set.setId와 일치
+function _attachAnnotations(yearData, annYear) {
+  if (!annYear || typeof annYear !== "object") return;
+  for (const sec of ["reading", "literature"]) {
+    for (const set of yearData[sec] || []) {
+      const setId = set.setId || set.id;
+      if (!setId) continue;
+      const list = annYear[setId];
+      if (Array.isArray(list) && list.length > 0) {
+        set.annotations = list;
+      } else if (!set.annotations) {
+        set.annotations = [];
+      }
+    }
+  }
 }
 
 function _buildSentCs(yearData) {
@@ -50,6 +86,11 @@ export async function loadYear(yearKey) {
   if (!yd._csBuilt) {
     _buildSentCs(yd);
     yd._csBuilt = true;
+  }
+  if (!yd._annBuilt) {
+    const annAll = await _loadAnn();
+    _attachAnnotations(yd, annAll[yearKey]);
+    yd._annBuilt = true;
   }
   return yd;
 }
