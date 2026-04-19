@@ -167,6 +167,84 @@ function parseJSON(raw) {
 // [B-12] 선지에서 원문자 추출
 const MARKER_IN_CHOICE_RE = /[ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\]/g;
 
+// ─────────────────────────────────────────────
+// [B-14] analysis의 "📌 지문 근거: "..."" 패턴 → cs_spans 자동 추출
+//
+// 목적:
+//   - 해설이 이미 지문의 정확한 인용 어구를 가지고 있음 → 이 어구를 cs_spans.text로 재사용
+//   - cs_ids에 있는 sent들 중 실제로 해당 인용을 포함하는 문장으로 매핑
+//   - marker annotation이 이미 만들어 준 cs_spans와 중복 시 (sent_id, text) 기준 dedupe
+//
+// 한계/주의:
+//   - "📌 보기 근거:"는 대상 제외 (지문이 아니라 <보기>의 조건이라 span 대상 아님)
+//   - 정규화 매칭(공백·원문자·한자·괄호 제거 후 포함 여부)
+//   - 인용문 길이 8자 이상만 유효 span 후보 (너무 짧은 조각은 sent 특정 실패 확률↑)
+// ─────────────────────────────────────────────
+const _QUOTE_RE = /📌\s*지문\s*근거\s*:\s*["“]([^"”]{4,500})["”]/g;
+const _NORM_RE = /[ⓐ-ⓩⒶ-Ⓩ㉠-㉯①-⑳]|\[[A-E]\]|[「」『』【】〔〕⟨⟩《》()（）\[\]{}]|[\u4E00-\u9FFF\u3400-\u4DBF]|[·ㆍ‧,.!?;:*…"“”'‘’`´]/g;
+const _normSpan = (s) =>
+  String(s || "").replace(_NORM_RE, "").replace(/\s+/g, "");
+
+function extractAnalysisSpans(choice, setSents) {
+  const ana = choice.analysis || "";
+  if (!ana) return [];
+  const csIdSet = new Set(choice.cs_ids || []);
+  const idToSent = new Map(setSents.map((s) => [s.id, s]));
+
+  const out = [];
+  const seen = new Set();
+
+  for (const m of ana.matchAll(_QUOTE_RE)) {
+    let quote = (m[1] || "").trim();
+    if (quote.length < 8) continue;
+    // 인용문에 "..." / "…" / 중간 공백 많은 케이스는 split 후 각각 시도
+    // 주요 구분: "…" 또는 " / "
+    const segments = quote
+      .split(/…+|\s*\/\s*|\s*\.{3,}\s*/)
+      .map((s) => s.trim())
+      .filter((s) => s.length >= 6);
+
+    for (const seg of segments.length > 0 ? segments : [quote]) {
+      const nq = _normSpan(seg);
+      if (nq.length < 4) continue;
+      // 1) cs_ids 안에서 먼저 찾기
+      let hit = null;
+      for (const id of csIdSet) {
+        const s = idToSent.get(id);
+        if (!s) continue;
+        if (_normSpan(s.t || "").includes(nq)) { hit = s; break; }
+      }
+      // 2) cs_ids 안에서 못 찾으면 세트 전체에서 찾기 (cs_ids 확장 후보)
+      if (!hit) {
+        for (const s of setSents) {
+          if (_normSpan(s.t || "").includes(nq)) { hit = s; break; }
+        }
+      }
+      if (!hit) continue;
+      const key = `${hit.id}::${seg}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push({ sent_id: hit.id, text: seg, occurrence: 1 });
+    }
+  }
+  return out;
+}
+
+// spans 병합 — (sent_id, text) 기준 dedupe. 기존 marker spans는 보존.
+function mergeSpans(existing, extracted) {
+  const out = [];
+  const seen = new Set();
+  const push = (s) => {
+    const k = `${s.sent_id}::${(s.text || "").trim()}`;
+    if (seen.has(k)) return;
+    seen.add(k);
+    out.push(s);
+  };
+  for (const s of existing || []) push(s);
+  for (const s of extracted || []) push(s);
+  return out;
+}
+
 function buildMarkerHint(choices, markers) {
   if (!markers || markers.length === 0) return "";
   const used = new Set();
@@ -186,38 +264,75 @@ async function matchCsIds(set, markers = []) {
   const sentIds = new Set(set.sents.map((s) => s.id));
 
   // ─────────────────────────────────────────────
-  // [수정 1] AUTO_EMPTY_PATS 선지는 AI 호출 전 분리
+  // [B-13] 선지 3분류:
+  //   1. autoEmptyChoices   — R3/V/null → cs_ids=[] 자동
+  //   2. markerChoices      — 선지 내 원문자가 marker annotation과 매칭 →
+  //                           cs_spans 먼저 생성, cs_ids는 spans로부터 파생
+  //   3. needsMatchChoices  — 위 둘 다 아님 → AI 매칭
+  // marker 선지는 AI를 건너뛴다(성진님 입력이 최종 결정권).
   // ─────────────────────────────────────────────
   const autoEmptyChoices = [];
+  const markerChoices = [];
   const needsMatchChoices = [];
 
   for (const q of set.questions) {
     for (const c of q.choices) {
-      const isAutoEmpty = c.ok === false && AUTO_EMPTY_PATS.has(c.pat);
-      if (isAutoEmpty) {
+      // 1) 자동 빈배열 처리
+      if (c.ok === false && AUTO_EMPTY_PATS.has(c.pat)) {
         autoEmptyChoices.push({ questionId: q.id, num: c.num, cs_ids: [] });
-      } else {
-        needsMatchChoices.push({
-          questionId: q.id,
-          num: c.num,
-          t: c.t,
-          ok: c.ok,
-          pat: c.pat,
-          analysis: c.analysis,
-        });
+        continue;
       }
+
+      // 2) marker 선지 — 선지 텍스트에 들어 있는 원문자 중 annotation과
+      //    매칭되는 것이 하나라도 있으면 cs_spans 직접 생성
+      const markersInChoice = (c.t || "").match(MARKER_IN_CHOICE_RE);
+      if (markersInChoice && markers.length > 0) {
+        const spans = [];
+        for (const mk of [...new Set(markersInChoice)]) {
+          const found = markers.find((x) => x.marker === mk);
+          if (found) {
+            spans.push({
+              sent_id: found.sentId,
+              text: found.text,
+              occurrence: found.occurrence || 1,
+            });
+          }
+        }
+        if (spans.length > 0) {
+          markerChoices.push({
+            questionId: q.id,
+            num: c.num,
+            cs_ids: [...new Set(spans.map((s) => s.sent_id))],
+            cs_spans: spans,
+          });
+          continue;
+        }
+      }
+
+      // 3) 나머지는 AI 매칭 대상
+      needsMatchChoices.push({
+        questionId: q.id,
+        num: c.num,
+        t: c.t,
+        ok: c.ok,
+        pat: c.pat,
+        analysis: c.analysis,
+      });
     }
   }
 
   console.log(
-    `  자동 [] 처리: ${autoEmptyChoices.length}건 (R3/V/null), AI 매칭 대상: ${needsMatchChoices.length}건`,
+    `  분류: 자동[] ${autoEmptyChoices.length} / marker직결 ${markerChoices.length} / AI매칭 ${needsMatchChoices.length}`,
   );
 
   // AI 매칭 대상이 없으면 API 호출 생략
   if (needsMatchChoices.length === 0) {
-    return autoEmptyChoices;
+    return [...autoEmptyChoices, ...markerChoices];
   }
 
+  // marker는 이미 markerChoices로 소화했으므로 힌트에서 제외하지 않음 —
+  // 남아 있는 AI 매칭 선지 중에도 annotation에 없는 원문자가 섞일 수 있으므로
+  // 힌트는 buildMarkerHint가 알아서 필터링.
   const markerHint = buildMarkerHint(needsMatchChoices, markers);
 
   const userPrompt = `다음 세트에서 각 선지의 cs_ids를 찾아줘.
@@ -261,27 +376,40 @@ ${markerHint}
     return { ...m, cs_ids: validIds };
   });
 
-  // [B-12] cs_spans 생성: 선지에 원문자 있고 marker annotation 있으면 spans 추가
-  for (const m of cleaned) {
-    const set_q = set.questions.find((q) => q.id === m.questionId);
-    const set_c = set_q?.choices.find((c) => c.num === m.num);
-    if (!set_c) continue;
-    const markersInChoice = (set_c.t || "").match(MARKER_IN_CHOICE_RE);
-    if (!markersInChoice) continue;
-    const spans = [];
-    for (const mk of [...new Set(markersInChoice)]) {
-      const found = markers.find((x) => x.marker === mk);
-      if (found) spans.push({ sent_id: found.sentId, text: found.text });
-    }
-    if (spans.length > 0) m.cs_spans = spans;
-  }
-
   console.log(
     `  매칭: ${totalMatched}개 cs_ids, 무효 ID 제거: ${invalidRemoved}개`,
   );
 
-  // autoEmpty + AI 매칭 결과 병합
-  return [...autoEmptyChoices, ...cleaned];
+  // ─────────────────────────────────────────────
+  // [B-14] analysis 인용문 → cs_spans 보강
+  //   · marker직결 선지: 기존 marker cs_spans 보존 + 해설 인용을 dedupe 후 추가
+  //   · AI 매칭 선지: cs_spans 신규 생성 (해설 인용 기반)
+  //   · autoEmpty(R3/V/null) 선지: cs_ids=[] 이므로 span 대상 아님 — skip
+  //   매칭 실패 시 기존 cs_spans(또는 미설정) 유지 — 프론트가 sent 전체 fallback
+  // ─────────────────────────────────────────────
+  const enrichWithAnalysis = (match) => {
+    const q = set.questions.find((x) => x.id === match.questionId);
+    const c = q?.choices.find((x) => x.num === match.num);
+    if (!c) return match;
+    const extracted = extractAnalysisSpans(
+      { cs_ids: match.cs_ids || [], analysis: c.analysis || "" },
+      set.sents || [],
+    );
+    if (extracted.length === 0) return match;
+    // cs_ids가 인용문 sent로 확장될 수 있으므로 유효 sentId 합집합 유지
+    const idSet = new Set(match.cs_ids || []);
+    for (const s of extracted) idSet.add(s.sent_id);
+    return {
+      ...match,
+      cs_ids: [...idSet],
+      cs_spans: mergeSpans(match.cs_spans, extracted),
+    };
+  };
+  const markerChoicesEnriched = markerChoices.map(enrichWithAnalysis);
+  const cleanedEnriched = cleaned.map(enrichWithAnalysis);
+
+  // autoEmpty + marker직결 + AI 매칭 결과 병합
+  return [...autoEmptyChoices, ...markerChoicesEnriched, ...cleanedEnriched];
 }
 
 export async function assignCsIds(step3Data, annotations = {}) {
@@ -429,11 +557,83 @@ async function retarget(targetYear) {
   console.log(`\n✅ all_data_204.json 저장 완료 — ${totalFixed}건 cs_ids 채움`);
 }
 
+// ─────────────────────────────────────────────
+// [B-14] --extract-spans: analysis 인용문 → cs_spans 보정
+//   AI 호출 없음. cs_ids는 유지하고 cs_spans만 갱신.
+//
+// 사용법:
+//   node pipeline/step4_csids.js --extract-spans [yearKey] [setIdPrefix?]
+//     yearKey 생략 → suneung5 기본 범위
+//     setIdPrefix 지정 시 해당 setId 시작 세트만 (예: l2026 → l2026a~d 전부)
+// ─────────────────────────────────────────────
+async function extractSpansMode(targetYear, setIdPrefix) {
+  const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+  const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
+
+  const years = targetYear
+    ? [targetYear]
+    : ["2022수능", "2023수능", "2024수능", "2025수능", "2026수능"];
+
+  let totalExtracted = 0;
+  let totalChoicesTouched = 0;
+  let totalCsIdsExpanded = 0;
+
+  for (const yr of years) {
+    if (!data[yr]) {
+      console.warn(`⚠️ ${yr} 키 없음 — 스킵`);
+      continue;
+    }
+    for (const section of ["reading", "literature"]) {
+      for (const set of data[yr][section] || []) {
+        if (setIdPrefix && !set.id.startsWith(setIdPrefix)) continue;
+        let setTouched = 0;
+        for (const q of set.questions || []) {
+          for (const c of q.choices || []) {
+            if (!c.analysis || !Array.isArray(c.cs_ids)) continue;
+            const extracted = extractAnalysisSpans(c, set.sents || []);
+            if (extracted.length === 0) continue;
+
+            // 인용문이 cs_ids 밖의 sent에서 잡힌 경우 → cs_ids 확장
+            const csIdSet = new Set(c.cs_ids);
+            for (const s of extracted) {
+              if (!csIdSet.has(s.sent_id)) {
+                c.cs_ids.push(s.sent_id);
+                csIdSet.add(s.sent_id);
+                totalCsIdsExpanded++;
+              }
+            }
+            const before = c.cs_spans ? c.cs_spans.length : 0;
+            c.cs_spans = mergeSpans(c.cs_spans, extracted);
+            if (c.cs_spans.length > before) {
+              totalExtracted += c.cs_spans.length - before;
+              totalChoicesTouched++;
+              setTouched++;
+            }
+          }
+        }
+        if (setTouched > 0)
+          console.log(`  [${yr}] ${set.id}: ${setTouched}개 선지 spans 갱신`);
+      }
+    }
+  }
+  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
+  console.log(
+    `\n✅ extract-spans 완료 — ${totalChoicesTouched}개 선지 / spans +${totalExtracted} / cs_ids 확장 +${totalCsIdsExpanded}`,
+  );
+}
+
 // 커맨드라인
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const mode = process.argv[2];
 
-  if (mode === "--retarget") {
+  if (mode === "--extract-spans") {
+    const yr = process.argv[3] || null;
+    const prefix = process.argv[4] || null;
+    extractSpansMode(yr, prefix).catch((err) => {
+      console.error("오류:", err.message);
+      process.exit(1);
+    });
+  } else if (mode === "--retarget") {
     // 기존 데이터 타겟 재실행
     const targetYear = process.argv[3] || null;
     retarget(targetYear).catch((err) => {
