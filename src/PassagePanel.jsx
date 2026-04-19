@@ -536,10 +536,22 @@ export default function PassagePanel({ passageSet, sel, mode }) {
 
   useEffect(() => {
     if (!sel || !panelRef.current) return;
-    const first = panelRef.current.querySelector("[data-hl]");
-    if (first) {
-      first.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    // 2-tick rAF 지연 — sel 변경 → React re-render → DOM 반영 이후 스크롤 계산
+    //   모바일(body scroll)에서 useEffect 직접 호출 시 re-render 사이클에 잡혀
+    //   smooth 스크롤이 중단되는 현상 회피. window.scrollTo로 body 기준 이동.
+    const r1 = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const el = panelRef.current?.querySelector("[data-hl]");
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const absY = window.scrollY + rect.top;
+        window.scrollTo({
+          top: absY - window.innerHeight / 2,
+          behavior: "smooth",
+        });
+      });
+    });
+    return () => cancelAnimationFrame(r1);
   }, [sel]);
 
   if (!passageSet) return null;
