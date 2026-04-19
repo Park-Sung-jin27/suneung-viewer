@@ -536,22 +536,37 @@ export default function PassagePanel({ passageSet, sel, mode }) {
 
   useEffect(() => {
     if (!sel || !panelRef.current) return;
-    // 2-tick rAF 지연 — sel 변경 → React re-render → DOM 반영 이후 스크롤 계산
-    //   모바일(body scroll)에서 useEffect 직접 호출 시 re-render 사이클에 잡혀
-    //   smooth 스크롤이 중단되는 현상 회피. window.scrollTo로 body 기준 이동.
-    const r1 = requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const el = panelRef.current?.querySelector("[data-hl]");
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const absY = window.scrollY + rect.top;
-        window.scrollTo({
-          top: absY - window.innerHeight / 2,
-          behavior: "smooth",
-        });
-      });
+    // 다음 프레임까지 대기 — 자식 RenderSent가 [data-hl] 붙인 후 조회 보장
+    const id = requestAnimationFrame(() => {
+      const first = panelRef.current?.querySelector("[data-hl]");
+      if (!first) return;
+
+      // 가장 가까운 스크롤 가능한 조상 찾기 (부모 컨테이너 overflow 기반)
+      let scroller = first.parentElement;
+      while (scroller) {
+        const oy = getComputedStyle(scroller).overflowY;
+        if (
+          (oy === "auto" || oy === "scroll") &&
+          scroller.scrollHeight > scroller.clientHeight
+        )
+          break;
+        scroller = scroller.parentElement;
+      }
+
+      if (scroller && scroller !== document.documentElement) {
+        // 컨테이너 수동 스크롤 — Chrome Windows smooth 무시 회피
+        const top =
+          first.getBoundingClientRect().top -
+          scroller.getBoundingClientRect().top +
+          scroller.scrollTop -
+          scroller.clientHeight / 2 +
+          first.clientHeight / 2;
+        scroller.scrollTo({ top, behavior: "smooth" });
+      } else {
+        first.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     });
-    return () => cancelAnimationFrame(r1);
+    return () => cancelAnimationFrame(id);
   }, [sel]);
 
   if (!passageSet) return null;
