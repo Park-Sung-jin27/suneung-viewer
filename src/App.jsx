@@ -1179,12 +1179,9 @@ function ViewerPage({ user, isPro = false }) {
     window.scrollTo({ top: 0 });
   }
 
-  useEffect(() => {
-    if (sel && window.innerWidth < 768)
-      document
-        .getElementById("passage-panel")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [sel]);
+  // sel 변경 시 스크롤은 PassagePanel useEffect가 단일 담당.
+  //   여기서 추가 scrollIntoView를 호출하면 PassagePanel의 window.scrollTo와
+  //   smooth scroll 큐에서 충돌 → 연속 클릭 시 위치 누적·예측 불가.
 
   useEffect(() => {
     if (warningMsg)
