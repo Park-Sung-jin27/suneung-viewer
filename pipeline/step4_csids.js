@@ -181,6 +181,10 @@ const MARKER_IN_CHOICE_RE = /[ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\]/g;
 //   - 인용문 길이 8자 이상만 유효 span 후보 (너무 짧은 조각은 sent 특정 실패 확률↑)
 // ─────────────────────────────────────────────
 const _QUOTE_RE = /📌\s*지문\s*근거\s*:\s*["“]([^"”]{4,500})["”]/g;
+// [B-14.1] 📌 지문 근거: 줄이 따옴표 없이 paraphrase로 쓰인 경우에도
+//   그 줄 안의 내부 인용 '…' / "…"를 span 후보로 수거한다.
+const _PO_LINE_RE = /📌\s*지문\s*근거\s*:\s*([^\n]{1,1200})/g;
+const _INNER_QUOTE_RE = /['‘]([^'’\n]{3,120})['’]|["“]([^"”\n]{3,200})["”]/g;
 const _NORM_RE = /[ⓐ-ⓩⒶ-Ⓩ㉠-㉯①-⑳]|\[[A-E]\]|[「」『』【】〔〕⟨⟩《》()（）\[\]{}]|[\u4E00-\u9FFF\u3400-\u4DBF]|[·ㆍ‧,.!?;:*…"“”'‘’`´]/g;
 const _normSpan = (s) =>
   String(s || "").replace(_NORM_RE, "").replace(/\s+/g, "");
@@ -225,6 +229,60 @@ function extractAnalysisSpans(choice, setSents) {
       if (seen.has(key)) continue;
       seen.add(key);
       out.push({ sent_id: hit.id, text: seg, occurrence: 1 });
+    }
+  }
+
+  // [B-14.1] paraphrase 형식의 📌 지문 근거: 줄에서 내부 인용문 추출
+  //   - _QUOTE_RE로 이미 잡힌 "따옴표로 통째 감싼 경우"는 제외
+  //   - paraphrase 줄 안의 '...' / "..."를 span 후보로 수거해 cs_ids sent에 매칭
+  for (const lineMatch of ana.matchAll(_PO_LINE_RE)) {
+    const line = lineMatch[1] || "";
+    // 이미 첫 글자가 "로 시작하면 _QUOTE_RE가 처리했으니 skip
+    if (/^["“]/.test(line.trim())) continue;
+    for (const im of line.matchAll(_INNER_QUOTE_RE)) {
+      const inner = (im[1] || im[2] || "").trim();
+      if (inner.length < 4) continue;
+      const nq = _normSpan(inner);
+      if (nq.length < 3) continue;
+      let hit = null;
+      for (const id of csIdSet) {
+        const s = idToSent.get(id);
+        if (!s) continue;
+        if (_normSpan(s.t || "").includes(nq)) { hit = s; break; }
+      }
+      if (!hit) {
+        for (const s of setSents) {
+          if (_normSpan(s.t || "").includes(nq)) { hit = s; break; }
+        }
+      }
+      if (!hit) continue;
+      const key = `${hit.id}::${inner}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push({ sent_id: hit.id, text: inner, occurrence: 1 });
+    }
+  }
+
+  // [B-14.2] 전체 analysis에서 추가로 내부 인용문 수거
+  //   - 단, **cs_ids 내부** sent에 exact match되는 경우에만 채택 (FP 방지)
+  //   - 앞 두 단계로 이미 잡힌 건 seen set으로 dedupe
+  if (csIdSet.size > 0) {
+    for (const im of ana.matchAll(_INNER_QUOTE_RE)) {
+      const inner = (im[1] || im[2] || "").trim();
+      if (inner.length < 5) continue;
+      const nq = _normSpan(inner);
+      if (nq.length < 4) continue;
+      let hit = null;
+      for (const id of csIdSet) {
+        const s = idToSent.get(id);
+        if (!s) continue;
+        if (_normSpan(s.t || "").includes(nq)) { hit = s; break; }
+      }
+      if (!hit) continue;
+      const key = `${hit.id}::${inner}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push({ sent_id: hit.id, text: inner, occurrence: 1 });
     }
   }
   return out;

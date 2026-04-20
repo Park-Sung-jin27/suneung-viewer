@@ -1,0 +1,60 @@
+{
+  "_comment": "Gate 7 — 파이프라인/프롬프트 수정 시 회귀 테스트 대상. 공식 기준: node pipeline/quality_gate.mjs --scope=suneung5 --gate5 --golden. expected 코드는 해당 문항에서 '등장해도 괜찮은' 알려진 코드 목록(허용 백서). 목록에 없는 CRITICAL 코드가 올라오면 merge 차단.",
+  "_runner_official": "node pipeline/quality_gate.mjs --scope=suneung5 --gate5 --golden",
+  "_runner_reference": "node pipeline/quality_gate.mjs --scope=suneung5 --gate5   (참고 리포트 전용, 머지 판단 금지)",
+  "_tier_policy": {
+    "tier1_block": ["C_figure_missing", "C_marker_pollution", "C_work_mismatch", "H_analysis_id_leak"],
+    "tier2_verify": ["C_quote_unreflected", "C_highlight_analysis_divergence"],
+    "tier3_no_promote": ["C_pat_mismatch"]
+  },
+  "items": [
+    {
+      "year": "2026수능",
+      "setId": "l2026b",
+      "questionId": 22,
+      "criteria": ["expression_analysis"],
+      "expected": []
+    },
+    {
+      "year": "2026수능",
+      "setId": "l2026b",
+      "questionId": 25,
+      "criteria": ["expression_analysis", "argument_breakdown"],
+      "expected": ["C_quote_unreflected", "W_quote_unreflected", "W_expression_analysis_missing"]
+    },
+    {
+      "year": "2026수능",
+      "setId": "l2026b",
+      "questionId": 26,
+      "criteria": ["concept_structure", "argument_breakdown"],
+      "expected": ["C_quote_unreflected", "W_quote_unreflected"]
+    },
+    {
+      "year": "2026수능",
+      "setId": "l2026c",
+      "questionId": 29,
+      "criteria": ["common_premise", "expression_analysis"],
+      "expected": ["C_quote_unreflected", "W_expression_analysis_missing"]
+    },
+    {
+      "year": "2026수능",
+      "setId": "l2026c",
+      "questionId": 30,
+      "criteria": ["expression_analysis", "incompatibility_logic"],
+      "expected": ["C_quote_unreflected", "W_quote_unreflected"]
+    },
+    {
+      "year": "2022수능",
+      "setId": "r2022a",
+      "criteria": ["figure_rendering"],
+      "expected": ["C_figure_missing"]
+    },
+    {
+      "year": "2022수능",
+      "setId": "r2022d",
+      "questionId": 17,
+      "criteria": ["marker_pollution"],
+      "expected": []
+    }
+  ]
+}
