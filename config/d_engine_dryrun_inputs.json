@@ -1,0 +1,349 @@
+{
+  "meta": {
+    "description": "D엔진 dry-run 입력 (14개, 최종 정제)",
+    "count": 17,
+    "note": "intent_validation은 D엔진에 전달하지 않음 (Gold 내부 검증용)"
+  },
+  "samples": [
+    {
+      "sample_id": "gold_R1_001",
+      "input": {
+        "passage": "보증 채무자는 채권자가 채무자에게 먼저 청구하지 않은 상태에서는 보증 채무의 이행을 거절할 수 있다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "보증 채무자는 채권자가 채무자에게 먼저 청구하지 않았더라도 보증 채무의 이행을 거절할 수 없다.",
+        "analysis": "📌 지문 근거: \"보증 채무자는 채권자가 채무자에게 먼저 청구하지 않은 상태에서는 보증 채무의 이행을 거절할 수 있다.\" 🔍 지문은 청구가 선행되지 않으면 보증 채무자가 이행을 거절할 수 있다고 설명한다. 선지는 이를 거절할 수 없다고 바꾸어 서술했으므로 지문과 어긋난다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R1_002",
+      "input": {
+        "passage": "기술 변화는 소비 양식을 바꾸고, 바뀐 소비 양식은 다시 생산 방식을 재편한다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "생산 방식의 재편은 기술 변화를 일으키고, 기술 변화는 소비 양식을 바꾼다.",
+        "analysis": "📌 지문 근거: \"기술 변화는 소비 양식을 바꾸고, 바뀐 소비 양식은 다시 생산 방식을 재편한다.\" 🔍 선지는 지문의 내용을 다르게 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R1_003",
+      "input": {
+        "passage": "플랫폼 기업은 참여자 수가 늘수록 서비스의 가치가 높아지는 네트워크 효과를 가진다. 또한 플랫폼 기업은 다양한 산업에 영향을 미친다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "플랫폼 기업은 참여자 수가 늘어도 서비스 가치가 높아지지 않는다.",
+        "analysis": "📌 지문 근거: \"플랫폼 기업은 다양한 산업에 영향을 미친다.\" 🔍 플랫폼 기업은 사회 전반에 큰 영향을 주므로 선지는 적절하지 않다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R2_001",
+      "input": {
+        "passage": "대기 중 미세먼지가 증가하면 태양 복사가 줄어 지표면 온도가 낮아질 수 있다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "지표면 온도가 낮아지기 때문에 대기 중 미세먼지가 증가한다.",
+        "analysis": "📌 지문 근거: \"대기 중 미세먼지가 증가하면 태양 복사가 줄어 지표면 온도가 낮아질 수 있다.\" 🔍 지문은 미세먼지 증가를 원인, 지표면 온도 저하를 결과로 제시한다. 선지는 이를 뒤집어 온도 저하가 미세먼지 증가의 원인인 것처럼 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R2_002",
+      "input": {
+        "passage": "도시는 하천 정비 이후 홍수 피해가 줄었고, 이에 따라 주변 지역의 주거 선호가 높아졌다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "주거 선호가 높아졌기 때문에 홍수 피해가 줄었으며, 하천 정비는 이에 영향을 주지 않았다.",
+        "analysis": "📌 지문 근거: \"도시는 하천 정비 이후 홍수 피해가 줄었고, 이에 따라 주변 지역의 주거 선호가 높아졌다.\" 🔍 선지는 주거 선호와 홍수 피해의 관계를 뒤집었을 뿐 아니라 하천 정비의 영향을 지워 버렸다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R1_004",
+      "input": {
+        "passage": "츠비키는 은하들의 속력으로부터 추정한 은하단의 질량이 은하들의 밝기로부터 추정한 은하단의 질량보다 훨씬 크다는 것을 확인하고 은하단 내부에 '실종된 질량'이 있다고 결론지었다.",
+        "question_text": "윗글의 내용에 대한 진술로 적절하지 않은 것은?",
+        "choice_text": "밝기로부터 추정한 은하단의 질량이 속력으로부터 추정한 질량보다 더 크다.",
+        "analysis": "📌 지문 근거: \"은하들의 속력으로부터 추정한 은하단의 질량이 은하들의 밝기로부터 추정한 은하단의 질량보다 훨씬 크다\" 🔍 지문은 속력 기반 추정 질량이 밝기 기반 추정 질량보다 크다고 명시한다. 선지는 두 값의 대소 관계를 정반대로 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R1_005",
+      "input": {
+        "passage": "송신기에서는 기호를 부호로 변환한다. 전송된 부호를 수신기에서 원래의 기호로 복원한다.",
+        "question_text": "윗글에서 알 수 있는 내용으로 적절한 것은?",
+        "choice_text": "수신기에서 기호를 부호로 변환하고, 송신기에서 부호를 기호로 복원한다.",
+        "analysis": "📌 지문 근거: \"송신기에서는 기호를 부호로 변환한다. 전송된 부호를 수신기에서 원래의 기호로 복원한다.\" 🔍 지문에서 기호를 부호로 변환하는 주체는 송신기, 부호를 기호로 복원하는 주체는 수신기이다. 선지는 두 주체의 역할을 서로 뒤바꾸었다. 이는 단순한 값 반전이 아니라 역할 대응 관계의 반전이다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "positive",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R1_006",
+      "input": {
+        "passage": "스피노자는 목적론이 자연에 대한 이해를 왜곡한다고 비판한다. 볼로틴은 근대 과학이 자연에 목적이 없음을 보이지도 못했고 그렇게 하려는 시도조차 하지 않았다고 지적한다.",
+        "question_text": "윗글에 나타난 목적론에 대한 논의를 적절하게 진술한 것은?",
+        "choice_text": "스피노자와 볼로틴은 목적론이 자연에 대한 이해를 확장한다고 주장한다.",
+        "analysis": "📌 지문 근거: \"스피노자는 목적론이 자연에 대한 이해를 왜곡한다고 비판한다. 볼로틴은 근대 과학이 자연에 목적이 없음을 보이지도 못했고 그렇게 하려는 시도조차 하지 않았다고 지적한다.\" 🔍 스피노자와 볼로틴의 입장을 제시했지만, 이들이 선지의 주장과 어떻게 충돌하는지 설명하지 않는다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "positive",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R2_003",
+      "input": {
+        "passage": "중심부 밖에서는 중심으로부터 멀어질수록 중심 쪽으로 별을 당기는 중력이 줄어들기 때문에 거리가 멀어질수록 별의 속력이 줄어드는 것으로 나온다.",
+        "question_text": "윗글에 대한 이해로 적절하지 않은 것은?",
+        "choice_text": "별의 속력이 줄어들기 때문에 중심 쪽으로 별을 당기는 중력이 줄어든다.",
+        "analysis": "📌 지문 근거: \"중심 쪽으로 별을 당기는 중력이 줄어들기 때문에 거리가 멀어질수록 별의 속력이 줄어드는 것으로 나온다.\" 🔍 지문은 중력 감소를 원인으로, 별의 속력 감소를 결과로 제시한다. 선지는 이를 뒤집어 별의 속력 감소를 원인으로, 중력 감소를 결과로 서술했다. 원인(중력 감소)과 결과(속력 감소)가 뒤바뀌었다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R2_004",
+      "input": {
+        "passage": "각 소리 크기에 할당되는 비트의 개수가 늘면 소리는 아날로그 원음에 가까워진다.",
+        "question_text": "윗글을 이해한 내용으로 가장 적절한 것은?",
+        "choice_text": "각 소리 크기에 할당되는 비트의 개수가 늘면 소리는 아날로그 원음에서 멀어진다.",
+        "analysis": "📌 지문 근거: \"각 소리 크기에 할당되는 비트의 개수가 늘면 소리는 아날로그 원음에 가까워진다.\" 🔍 지문은 비트 개수가 늘면 원음에 '가까워진다'고 서술한다. 선지는 동일한 조건에서 결과 방향을 '멀어진다'로 반대로 바꿨다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "positive",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R2_005",
+      "input": {
+        "passage": "비가 많이 오면 도로가 젖고, 그로 인해 차량의 제동 거리가 길어진다.",
+        "question_text": "윗글에 대한 이해로 적절하지 않은 것은?",
+        "choice_text": "차량의 제동 거리가 길어지기 때문에 도로가 젖는다.",
+        "analysis": "📌 지문 근거: \"비가 많이 오면 도로가 젖고, 그로 인해 차량의 제동 거리가 길어진다.\" 🔍 지문은 도로가 젖는 것이 제동 거리 증가의 원인임을 제시한다. 선지는 이를 뒤집어 제동 거리 증가가 도로가 젖는 원인인 것처럼 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R2_006",
+      "input": {
+        "passage": "포식자의 개체 수가 증가하면 피식자의 개체 수가 감소한다. 이로 인해 생태계의 균형이 유지된다.",
+        "question_text": "윗글에 대한 이해로 적절하지 않은 것은?",
+        "choice_text": "피식자의 개체 수가 감소하기 때문에 포식자의 개체 수가 증가한다.",
+        "analysis": "📌 지문 근거: \"포식자의 개체 수가 증가하면 피식자의 개체 수가 감소한다.\" 🔍 지문은 포식자 증가가 피식자 감소의 원인임을 제시한다. 선지는 이를 뒤집어 피식자 감소가 포식자 증가의 원인인 것처럼 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_DOMAIN_001",
+      "input": {
+        "passage": "아리스토텔레스는 자연물이 목적을 실현할 능력도 타고나며, 그 목적은 방해받지 않는 한 반드시 실현될 것이고, 그 본성적 목적의 실현은 운동 주체에 항상 바람직한 결과를 가져온다고 믿는다.",
+        "question_text": "윗글에 나타난 아리스토텔레스의 견해에 대한 이해로 가장 적절한 것은?",
+        "choice_text": "자연물의 목적 실현은 때로는 그 자연물에 해가 된다.",
+        "analysis": "📌 지문 근거: \"그 본성적 목적의 실현은 운동 주체에 항상 바람직한 결과를 가져온다고 믿는다.\" 🔍 주제적으로 보면 자연의 목적 실현이 항상 긍정적 의미를 갖는다고 해석할 수 있다. 지문은 목적 실현이 '항상 바람직한 결과'를 가져온다고 명시한다. 선지는 '때로는 해가 된다'로 반대 내용을 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "L3",
+        "ok": false,
+        "questionType": "positive",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_DOMAIN_002",
+      "input": {
+        "passage": "유물론적 인간관에 따르면, 인간은 물리적 몸에 지나지 않는다. 물리적 몸 이외에 영혼은 존재하지 않는다. 따라서 인간의 결정은 단지 뇌에서 일어나는 신경 사건이다.",
+        "question_text": "윗글에 대한 설명으로 적절하지 않은 것은?",
+        "choice_text": "유물론적 인간관은 인간의 선택을 물리적 사건으로 본다.",
+        "analysis": "📌 지문 근거: \"인간의 결정은 단지 뇌에서 일어나는 신경 사건이다.\" 🔍 지문은 유물론적 인간관이 인간의 결정을 뇌의 신경 사건, 즉 물리적 사건으로 본다고 명시한다. 선지는 이를 정확히 반영하고 있다. ✅ 지문과 일치하는 적절한 진술이다.",
+        "pat": "R1",
+        "ok": true,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R1_009",
+      "input": {
+        "passage": "계약법상 일반적인 매매 계약은 당사자 간 합의만으로 성립한다. 계약서 작성은 법적 효력 발생의 요건이 아니라 증거 보전을 위한 수단일 뿐이다.",
+        "question_text": "윗글에 대한 이해로 적절하지 않은 것은?",
+        "choice_text": "일반 매매 계약은 당사자의 합의만으로는 성립하지 않으며, 계약서 작성은 법적 효력 발생의 필수 요건이다.",
+        "analysis": "📌 지문 근거: \"계약법상 일반적인 매매 계약은 당사자 간 합의만으로 성립한다.\" 🔍 지문은 합의만으로 계약이 성립한다고 명시한다. 선지는 이를 부정하여 '합의만으로는 성립하지 않는다'고 서술했으므로 지문과 어긋난다. 다만 계약서 작성이 법적 효력 발생의 필수 요건이라는 선지의 두 번째 조건은 직접 검토하지 않는다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R2_008",
+      "input": {
+        "passage": "블록체인은 분산 원장 기술을 기반으로 한다. 거래 데이터가 여러 노드에 동시에 저장되기 때문에 데이터 위변조가 사실상 불가능하다. 또한 블록체인은 중앙 관리자 없이 운영된다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "블록체인 시스템에서는 데이터 위변조가 용이하다.",
+        "analysis": "📌 지문 근거: \"블록체인은 중앙 관리자 없이 운영된다.\" 🔍 지문은 블록체인이 중앙 관리자 없이 운영되는 분산 구조임을 설명한다. 선지는 위변조가 용이하다고 서술했으므로 적절하지 않다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    },
+    {
+      "sample_id": "gold_R2_010",
+      "input": {
+        "passage": "늑대가 초원에서 사라지자 사슴 개체수가 증가했다. 사슴의 증가로 초원의 풀이 급격히 줄어 들판이 황폐해졌다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "초원의 풀이 줄어든 것이 사슴 개체수를 증가시켰으며, 늑대가 초원에서 사라졌음에도 사슴 개체수는 증가하지 않았다.",
+        "analysis": "📌 지문 근거: \"늑대가 초원에서 사라지자 사슴 개체수가 증가했다. 사슴의 증가로 초원의 풀이 급격히 줄어 들판이 황폐해졌다.\" 🔍 선지는 사슴과 풀의 인과 관계를 뒤집었을 뿐 아니라, 늑대가 초원에서 사라지자 사슴 개체수가 증가했다는 지문 진술과 정면으로 충돌한다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      }
+    }
+  ]
+}

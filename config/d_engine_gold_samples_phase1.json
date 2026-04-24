@@ -1,0 +1,888 @@
+{
+  "meta": {
+    "phase": "Phase 1",
+    "description": "D엔진 Phase 1 gold samples (R1 + R2 + DOMAIN)",
+    "target_total": 20,
+    "current_count": 17,
+    "schema_reference": "d_engine_input_schema.md",
+    "distribution_plan": {
+      "existing_by_user": 5,
+      "authored_by_claude": 11,
+      "to_be_authored_by_user": 4
+    },
+    "error_type_distribution": {
+  "NONE": 6,
+  "P_MISMATCH": 4,
+  "E_EVIDENCE_WEAK": 2,
+  "E_CONDITION_MISSING": 2,
+  "E_LOGIC_UNCLEAR": 1,
+  "E_COMPOSITE_ERROR": 3,
+  "E_DOMAIN_INVALID": 2
+},"discarded_samples": [
+  {
+    "sample_id": "gold_R1_010",
+    "planned": "fail / E_LOGIC_UNCLEAR",
+    "reason": "3/3 NONE 판정. 엔진 RULE_7 미감지 확정. HANDOVER_QUALITY_REVIEWER.md 2026-04-24 기록 참조.",
+    "date": "2026-04-24"
+  }
+],
+"phase_a_completion_date": "2026-04-24",
+"phase_a_status": "COMPLETE",
+    "coverage": {
+      "currently_covered_error_types": [
+        "NONE",
+        "P_MISMATCH",
+        "E_EVIDENCE_WEAK",
+        "E_LOGIC_UNCLEAR",
+        "E_CONDITION_MISSING",
+        "E_COMPOSITE_ERROR",
+        "E_DOMAIN_INVALID"
+      ],
+      "pending_coverage": []
+    },
+    "source_field_spec": {
+      "file": "PDF filename (예: '3.pdf')",
+      "page": "페이지 번호 (int)",
+      "question": "문항 번호 (int)",
+      "choice": "선지 번호 (int)"
+    },
+    "design_principles": {
+      "gold_vs_stress": "Phase 1 Gold = 정답이 명확한 케이스만. borderline/confidence=low는 Phase 2 stress test로 분리.",
+      "r2_criterion": "R2는 '~때문에'로 연결된 명시적 인과 사슬의 원인-결과 역전. 대응 관계/함수 관계/정의 왜곡은 R2 아님 (R1 또는 R3).",
+      "single_error_type": "Gold는 error_type 하나가 명확히 고정되어야 함. 두 종류 혼재 시 Gold 부적합.",
+      "precheck_signals_policy": "Gold 샘플의 precheck_signals는 전부 false. D엔진이 힌트 없이 독립적으로 semantic 판정해야 검증력 확보.",
+      "domain_samples_design": "DOMAIN 샘플은 Rule 0만 테스트하지 않고 Rule 0 + 추가 Rule(1/5 등) 동시 위반 구조로 설계. D엔진이 형식 검증만 대충 하고 넘어가지 못하게 semantic 함정 포함."
+    }
+  },
+  "samples": [
+    {
+      "sample_id": "gold_R1_001",
+      "source": {
+        "file": null,
+        "page": null,
+        "question": null,
+        "choice": null,
+        "validated": false,
+        "note": "사용자 작성 샘플, PDF 검증 대기"
+      },
+      "input": {
+        "passage": "보증 채무자는 채권자가 채무자에게 먼저 청구하지 않은 상태에서는 보증 채무의 이행을 거절할 수 있다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "보증 채무자는 채권자가 채무자에게 먼저 청구하지 않았더라도 보증 채무의 이행을 거절할 수 없다.",
+        "analysis": "📌 지문 근거: \"보증 채무자는 채권자가 채무자에게 먼저 청구하지 않은 상태에서는 보증 채무의 이행을 거절할 수 있다.\" 🔍 지문은 청구가 선행되지 않으면 보증 채무자가 이행을 거절할 수 있다고 설명한다. 선지는 이를 거절할 수 없다고 바꾸어 서술했으므로 지문과 어긋난다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": true,
+        "error_type": "NONE",
+        "rule_hits": [],
+        "reason": "",
+        "confidence": "high"
+      },
+      "rationale": "지문의 단일 조건을 반대로 바꾼 사실 왜곡이다. 관계 전도나 과도한 추론이 아니라 명시된 상태를 부정으로 바꾼 R1이다.",
+      "test_intent": "정상적인 R1 통과 케이스",
+      "intent_validation": {
+        "target_failure_mode": "NONE",
+        "forbidden_alternatives": [],
+        "acceptable_confidence": [
+          "high"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R1_002",
+      "source": {
+        "file": null,
+        "page": null,
+        "question": null,
+        "choice": null,
+        "validated": false,
+        "note": "사용자 작성 샘플, PDF 검증 대기"
+      },
+      "input": {
+        "passage": "기술 변화는 소비 양식을 바꾸고, 바뀐 소비 양식은 다시 생산 방식을 재편한다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "생산 방식의 재편은 기술 변화를 일으키고, 기술 변화는 소비 양식을 바꾼다.",
+        "analysis": "📌 지문 근거: \"기술 변화는 소비 양식을 바꾸고, 바뀐 소비 양식은 다시 생산 방식을 재편한다.\" 🔍 선지는 지문의 내용을 다르게 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "P_MISMATCH",
+        "rule_hits": [
+          "RULE_1_PAT_DEFINITION_MISMATCH"
+        ],
+        "reason": "지문의 핵심 오류 구조는 단순 사실값 왜곡이 아니라 원인과 결과의 관계를 뒤집은 관계·인과 전도이다.",
+        "confidence": "high"
+      },
+      "rationale": "기술 변화 → 소비 양식 변화 → 생산 방식 재편이라는 관계를 생산 방식 재편 → 기술 변화로 뒤집었다. R1이 아니라 R2 검토가 필요한 케이스다.",
+      "test_intent": "R1 오분류를 P_MISMATCH로 잡는 케이스",
+      "intent_validation": {
+        "target_failure_mode": "P_MISMATCH",
+        "forbidden_alternatives": [
+          "E_LOGIC_UNCLEAR",
+          "E_EVIDENCE_WEAK"
+        ],
+        "acceptable_confidence": [
+          "high",
+          "mid"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R1_003",
+      "source": {
+        "file": null,
+        "page": null,
+        "question": null,
+        "choice": null,
+        "validated": false,
+        "note": "사용자 작성 샘플, PDF 검증 대기"
+      },
+      "input": {
+        "passage": "플랫폼 기업은 참여자 수가 늘수록 서비스의 가치가 높아지는 네트워크 효과를 가진다. 또한 플랫폼 기업은 다양한 산업에 영향을 미친다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "플랫폼 기업은 참여자 수가 늘어도 서비스 가치가 높아지지 않는다.",
+        "analysis": "📌 지문 근거: \"플랫폼 기업은 다양한 산업에 영향을 미친다.\" 🔍 플랫폼 기업은 사회 전반에 큰 영향을 주므로 선지는 적절하지 않다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "E_CONDITION_MISSING",
+        "rule_hits": [
+          "RULE_2_EVIDENCE_NOT_DIRECT",
+          "RULE_3_CONDITION_MISSING"
+        ],
+        "reason": "analysis의 근거는 선지의 핵심 조건(참여자 수 증가-서비스 가치 상승)을 직접 다루지 않으며, 선지 주요 조건 자체가 반영되지 않았다.",
+        "confidence": "high"
+      },
+      "rationale": "선지 판단의 핵심은 네트워크 효과(참여자 수-서비스 가치) 조건인데, analysis는 '다양한 산업 영향'이라는 다른 문장을 근거로 들었다. 근거 직접성 부족과 선지 주요 조건 미반영이 동시에 성립한다.",
+      "test_intent": "근거 문장이 선지 조건과 무관하고 선지 조건 자체가 analysis에 반영되지 않은 케이스",
+      "intent_validation": {
+        "target_failure_mode": "E_CONDITION_MISSING",
+        "forbidden_alternatives": [
+          "NONE",
+          "P_MISMATCH",
+          "E_COMPOSITE_ERROR"
+        ],
+        "acceptable_confidence": [
+          "high",
+          "mid"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R2_001",
+      "source": {
+        "file": null,
+        "page": null,
+        "question": null,
+        "choice": null,
+        "validated": false,
+        "note": "사용자 작성 샘플, PDF 검증 대기"
+      },
+      "input": {
+        "passage": "대기 중 미세먼지가 증가하면 태양 복사가 줄어 지표면 온도가 낮아질 수 있다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "지표면 온도가 낮아지기 때문에 대기 중 미세먼지가 증가한다.",
+        "analysis": "📌 지문 근거: \"대기 중 미세먼지가 증가하면 태양 복사가 줄어 지표면 온도가 낮아질 수 있다.\" 🔍 지문은 미세먼지 증가를 원인, 지표면 온도 저하를 결과로 제시한다. 선지는 이를 뒤집어 온도 저하가 미세먼지 증가의 원인인 것처럼 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": true,
+        "error_type": "NONE",
+        "rule_hits": [],
+        "reason": "",
+        "confidence": "high"
+      },
+      "rationale": "원인과 결과를 정반대로 뒤집은 전형적인 관계·인과 전도이므로 R2가 맞다.",
+      "test_intent": "정상적인 R2 통과 케이스",
+      "intent_validation": {
+        "target_failure_mode": "NONE",
+        "forbidden_alternatives": [],
+        "acceptable_confidence": [
+          "high"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R2_002",
+      "source": {
+        "file": null,
+        "page": null,
+        "question": null,
+        "choice": null,
+        "validated": false,
+        "note": "사용자 작성 샘플, PDF 검증 대기"
+      },
+      "input": {
+        "passage": "도시는 하천 정비 이후 홍수 피해가 줄었고, 이에 따라 주변 지역의 주거 선호가 높아졌다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "주거 선호가 높아졌기 때문에 홍수 피해가 줄었으며, 하천 정비는 이에 영향을 주지 않았다.",
+        "analysis": "📌 지문 근거: \"도시는 하천 정비 이후 홍수 피해가 줄었고, 이에 따라 주변 지역의 주거 선호가 높아졌다.\" 🔍 선지는 주거 선호와 홍수 피해의 관계를 뒤집었을 뿐 아니라 하천 정비의 영향을 지워 버렸다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "E_COMPOSITE_ERROR",
+        "rule_hits": [
+          "RULE_4_COMPOSITE_ERROR",
+          "RULE_1_PAT_DEFINITION_MISMATCH"
+        ],
+        "reason": "analysis는 관계 전도뿐 아니라 하천 정비의 영향을 삭제한 사실 왜곡까지 함께 지적하고 있어 복합 오류인데, pat을 단일 R2로만 처리했다.",
+        "confidence": "high"
+      },
+      "rationale": "원인-결과 전도와 사실 삭제/왜곡이 동시에 존재하므로 단일 R2로 닫으면 안 된다.",
+      "test_intent": "복합 오류를 단일 pat에 꽂은 케이스",
+      "intent_validation": {
+        "target_failure_mode": "E_COMPOSITE_ERROR",
+        "forbidden_alternatives": [
+          "P_MISMATCH",
+          "NONE"
+        ],
+        "acceptable_confidence": [
+          "high",
+          "mid"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R1_004",
+      "source": {
+        "file": "3.pdf",
+        "page": 1,
+        "question": 25,
+        "choice": 5
+      },
+      "input": {
+        "passage": "츠비키는 은하들의 속력으로부터 추정한 은하단의 질량이 은하들의 밝기로부터 추정한 은하단의 질량보다 훨씬 크다는 것을 확인하고 은하단 내부에 '실종된 질량'이 있다고 결론지었다.",
+        "question_text": "윗글의 내용에 대한 진술로 적절하지 않은 것은?",
+        "choice_text": "밝기로부터 추정한 은하단의 질량이 속력으로부터 추정한 질량보다 더 크다.",
+        "analysis": "📌 지문 근거: \"은하들의 속력으로부터 추정한 은하단의 질량이 은하들의 밝기로부터 추정한 은하단의 질량보다 훨씬 크다\" 🔍 지문은 속력 기반 추정 질량이 밝기 기반 추정 질량보다 크다고 명시한다. 선지는 두 값의 대소 관계를 정반대로 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": true,
+        "error_type": "NONE",
+        "rule_hits": [],
+        "reason": "",
+        "confidence": "high"
+      },
+      "rationale": "두 측정값(속력 기반 > 밝기 기반)의 대소 관계를 정반대로 뒤집은 단일 사실값 왜곡이다. 관계·인과 전도나 개념 혼합이 아니므로 R1이 맞다.",
+      "test_intent": "정상 R1 통과 케이스 (대소 관계 반전). 원문 선지 기반이되 문항 유형 혼동 방지 위해 generic 발문으로 재구성됨.",
+      "intent_validation": {
+        "target_failure_mode": "NONE",
+        "forbidden_alternatives": [],
+        "acceptable_confidence": [
+          "high"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R1_005",
+      "source": {
+        "file": "2.pdf",
+        "page": 1,
+        "question": 38,
+        "choice": 2
+      },
+      "input": {
+        "passage": "송신기에서는 기호를 부호로 변환한다. 전송된 부호를 수신기에서 원래의 기호로 복원한다.",
+        "question_text": "윗글에서 알 수 있는 내용으로 적절한 것은?",
+        "choice_text": "수신기에서 기호를 부호로 변환하고, 송신기에서 부호를 기호로 복원한다.",
+        "analysis": "📌 지문 근거: \"송신기에서는 기호를 부호로 변환한다. 전송된 부호를 수신기에서 원래의 기호로 복원한다.\" 🔍 지문에서 기호를 부호로 변환하는 주체는 송신기, 부호를 기호로 복원하는 주체는 수신기이다. 선지는 두 주체의 역할을 서로 뒤바꾸었다. 이는 단순한 값 반전이 아니라 역할 대응 관계의 반전이다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "positive",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "P_MISMATCH",
+        "rule_hits": [
+          "RULE_1_PAT_DEFINITION_MISMATCH"
+        ],
+        "reason": "analysis는 '단순한 값 반전이 아니라 역할 대응 관계의 반전'이라고 명시하며 두 주체의 역할 반전을 지적한다. 이는 관계·인과 전도(R2)의 구조이며, 단일 사실값/상태의 왜곡(R1)과 구조가 다르다.",
+        "confidence": "high"
+      },
+      "rationale": "오류의 핵심은 두 행위 주체(송신기/수신기)가 서로의 역할을 맞바꾼 것이다. 이는 주체-객체/주체-행위 관계의 전도이므로 R2에 해당한다. R1은 수치/상태/방향 등 단일 값의 왜곡에 국한되므로 이 케이스를 커버하지 못한다.",
+      "test_intent": "관계 전도 구조(R2)를 R1로 오분류한 P_MISMATCH 경계 케이스 (analysis 본문에 값 반전 아닌 관계 반전 명시)",
+      "intent_validation": {
+        "target_failure_mode": "P_MISMATCH",
+        "forbidden_alternatives": [
+          "NONE",
+          "E_LOGIC_UNCLEAR"
+        ],
+        "acceptable_confidence": [
+          "high",
+          "mid"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R1_006",
+      "source": {
+        "file": "1.pdf",
+        "page": 1,
+        "question": 18,
+        "choice": 4
+      },
+      "input": {
+        "passage": "스피노자는 목적론이 자연에 대한 이해를 왜곡한다고 비판한다. 볼로틴은 근대 과학이 자연에 목적이 없음을 보이지도 못했고 그렇게 하려는 시도조차 하지 않았다고 지적한다.",
+        "question_text": "윗글에 나타난 목적론에 대한 논의를 적절하게 진술한 것은?",
+        "choice_text": "스피노자와 볼로틴은 목적론이 자연에 대한 이해를 확장한다고 주장한다.",
+        "analysis": "📌 지문 근거: \"스피노자는 목적론이 자연에 대한 이해를 왜곡한다고 비판한다. 볼로틴은 근대 과학이 자연에 목적이 없음을 보이지도 못했고 그렇게 하려는 시도조차 하지 않았다고 지적한다.\" 🔍 스피노자와 볼로틴의 입장을 제시했지만, 이들이 선지의 주장과 어떻게 충돌하는지 설명하지 않는다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "positive",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "E_LOGIC_UNCLEAR",
+        "rule_hits": [
+          "RULE_7_ANALYSIS_TOO_VAGUE"
+        ],
+        "reason": "근거 문장은 맞지만, 그 근거가 선지 주장과 어떻게 충돌하는지 설명하지 않아 논리 전개가 불명확하다.",
+        "confidence": "high"
+      },
+      "rationale": "근거 자체는 선지 대상(스피노자/볼로틴)과 정확히 대응하므로 E_EVIDENCE_WEAK가 아니다. 문제는 근거에서 선지 판단으로 이어지는 설명 논리가 없다는 것이다. 근거→판단의 연결 단계가 누락되어 analysis가 구조 설명을 제공하지 못하는 E_LOGIC_UNCLEAR에 해당한다.",
+      "test_intent": "근거는 정확하나 근거→선지 판단의 논리 연결이 빠진 E_LOGIC_UNCLEAR 단일 케이스",
+      "intent_validation": {
+        "target_failure_mode": "E_LOGIC_UNCLEAR",
+        "forbidden_alternatives": [
+          "NONE",
+          "P_MISMATCH"
+        ],
+        "acceptable_confidence": [
+          "high",
+          "mid"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R2_003",
+      "source": {
+        "file": "3.pdf",
+        "page": 1,
+        "question": 26,
+        "choice": 3
+      },
+      "input": {
+        "passage": "중심부 밖에서는 중심으로부터 멀어질수록 중심 쪽으로 별을 당기는 중력이 줄어들기 때문에 거리가 멀어질수록 별의 속력이 줄어드는 것으로 나온다.",
+        "question_text": "윗글에 대한 이해로 적절하지 않은 것은?",
+        "choice_text": "별의 속력이 줄어들기 때문에 중심 쪽으로 별을 당기는 중력이 줄어든다.",
+        "analysis": "📌 지문 근거: \"중심 쪽으로 별을 당기는 중력이 줄어들기 때문에 거리가 멀어질수록 별의 속력이 줄어드는 것으로 나온다.\" 🔍 지문은 중력 감소를 원인으로, 별의 속력 감소를 결과로 제시한다. 선지는 이를 뒤집어 별의 속력 감소를 원인으로, 중력 감소를 결과로 서술했다. 원인(중력 감소)과 결과(속력 감소)가 뒤바뀌었다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": true,
+        "error_type": "NONE",
+        "rule_hits": [],
+        "reason": "",
+        "confidence": "high"
+      },
+      "rationale": "지문은 '중력 감소 때문에 속력이 줄어든다'는 명시적 인과 문장이다. 선지는 '속력이 줄어들기 때문에 중력이 줄어든다'로 원인-결과를 정확히 뒤바꿨다. 수학적 대응 관계의 역추론이나 정의 왜곡이 아니라 '~때문에'로 연결된 인과 사슬의 방향을 반전시킨 것이므로 R2가 맞다.",
+      "test_intent": "정상 R2 통과 케이스 (명시적 인과 관계 '~때문에'의 원인-결과 뒤집기)",
+      "intent_validation": {
+        "target_failure_mode": "NONE",
+        "forbidden_alternatives": [],
+        "acceptable_confidence": [
+          "high"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R2_004",
+      "source": {
+        "file": "9.pdf",
+        "page": 1,
+        "question": 15,
+        "choice": 4
+      },
+      "input": {
+        "passage": "각 소리 크기에 할당되는 비트의 개수가 늘면 소리는 아날로그 원음에 가까워진다.",
+        "question_text": "윗글을 이해한 내용으로 가장 적절한 것은?",
+        "choice_text": "각 소리 크기에 할당되는 비트의 개수가 늘면 소리는 아날로그 원음에서 멀어진다.",
+        "analysis": "📌 지문 근거: \"각 소리 크기에 할당되는 비트의 개수가 늘면 소리는 아날로그 원음에 가까워진다.\" 🔍 지문은 비트 개수가 늘면 원음에 '가까워진다'고 서술한다. 선지는 동일한 조건에서 결과 방향을 '멀어진다'로 반대로 바꿨다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "positive",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "P_MISMATCH",
+        "rule_hits": [
+          "RULE_1_PAT_DEFINITION_MISMATCH"
+        ],
+        "reason": "analysis는 동일 조건에서 결과 방향만 반대로 바꾼 것이라고 설명한다. 두 실체의 역할 교환이 아니라 단일 결과값의 방향 반전이므로 구조는 R1에 해당하며, R2와 일치하지 않는다.",
+        "confidence": "high"
+      },
+      "rationale": "경계 케이스: pat이 R2로 박혔으나 실제 구조는 '비트 개수 증가 → 원음 근접'이라는 단일 방향성의 결과값을 '이격'으로 뒤집은 것. 주체·객체 교환이 없으므로 R1이 맞고 R2는 틀렸다. analysis에서 '관계'라는 모호한 표현을 제거하고 '결과 방향 반전'으로 명시했다.",
+      "test_intent": "단일 결과값 방향 반전(R1)을 R2로 오분류한 P_MISMATCH 경계 케이스",
+      "intent_validation": {
+        "target_failure_mode": "P_MISMATCH",
+        "forbidden_alternatives": [
+          "NONE"
+        ],
+        "acceptable_confidence": [
+          "high",
+          "mid"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R2_005",
+      "source": {
+        "file": null,
+        "page": null,
+        "question": null,
+        "choice": null,
+        "validated": false,
+        "note": "Claude 재작성 샘플 (원본은 pat 오지정 문제로 교체됨)"
+      },
+      "input": {
+        "passage": "비가 많이 오면 도로가 젖고, 그로 인해 차량의 제동 거리가 길어진다.",
+        "question_text": "윗글에 대한 이해로 적절하지 않은 것은?",
+        "choice_text": "차량의 제동 거리가 길어지기 때문에 도로가 젖는다.",
+        "analysis": "📌 지문 근거: \"비가 많이 오면 도로가 젖고, 그로 인해 차량의 제동 거리가 길어진다.\" 🔍 지문은 도로가 젖는 것이 제동 거리 증가의 원인임을 제시한다. 선지는 이를 뒤집어 제동 거리 증가가 도로가 젖는 원인인 것처럼 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": true,
+        "error_type": "NONE",
+        "rule_hits": [],
+        "reason": "",
+        "confidence": "high"
+      },
+      "rationale": "명시적 인과 접속어 '때문에' 존재. A(도로 젖음)와 B(제동 거리 증가) 구조를 B와 A로 뒤집은 단일 R2 구조. R2 엄격 기준(인과 접속어 + 방향 뒤집기) 만족. pat 정확, 근거 직접, 조건 반영 완전.",
+      "test_intent": "명시적 인과 전도 구조가 pat=R2로 정상 승인되는 통과 케이스",
+      "intent_validation": {
+        "target_failure_mode": "NONE",
+        "forbidden_alternatives": [],
+        "acceptable_confidence": [
+          "high"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R2_006",
+      "source": {
+        "file": null,
+        "page": null,
+        "question": null,
+        "choice": null,
+        "validated": false,
+        "note": "Claude 재작성 샘플 (원본은 pat 오지정 문제로 교체됨)"
+      },
+      "input": {
+        "passage": "포식자의 개체 수가 증가하면 피식자의 개체 수가 감소한다. 이로 인해 생태계의 균형이 유지된다.",
+        "question_text": "윗글에 대한 이해로 적절하지 않은 것은?",
+        "choice_text": "피식자의 개체 수가 감소하기 때문에 포식자의 개체 수가 증가한다.",
+        "analysis": "📌 지문 근거: \"포식자의 개체 수가 증가하면 피식자의 개체 수가 감소한다.\" 🔍 지문은 포식자 증가가 피식자 감소의 원인임을 제시한다. 선지는 이를 뒤집어 피식자 감소가 포식자 증가의 원인인 것처럼 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": true,
+        "error_type": "NONE",
+        "rule_hits": [],
+        "reason": "",
+        "confidence": "high"
+      },
+      "rationale": "생태학 주제로 R2_005(물리)와 주제 분리. 명시적 인과 접속어 '때문에' 존재. A(포식자 증가)와 B(피식자 감소) 구조를 B와 A로 뒤집은 단일 R2.",
+      "test_intent": "다른 주제 영역에서도 명시적 인과 전도가 pat=R2로 정상 승인되는 통과 케이스. R2_005와 주제 독립.",
+      "intent_validation": {
+        "target_failure_mode": "NONE",
+        "forbidden_alternatives": [],
+        "acceptable_confidence": [
+          "high"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_DOMAIN_001",
+      "source": {
+        "file": "1.pdf",
+        "page": 1,
+        "question": 17,
+        "choice": 2
+      },
+      "input": {
+        "passage": "아리스토텔레스는 자연물이 목적을 실현할 능력도 타고나며, 그 목적은 방해받지 않는 한 반드시 실현될 것이고, 그 본성적 목적의 실현은 운동 주체에 항상 바람직한 결과를 가져온다고 믿는다.",
+        "question_text": "윗글에 나타난 아리스토텔레스의 견해에 대한 이해로 가장 적절한 것은?",
+        "choice_text": "자연물의 목적 실현은 때로는 그 자연물에 해가 된다.",
+        "analysis": "📌 지문 근거: \"그 본성적 목적의 실현은 운동 주체에 항상 바람직한 결과를 가져온다고 믿는다.\" 🔍 주제적으로 보면 자연의 목적 실현이 항상 긍정적 의미를 갖는다고 해석할 수 있다. 지문은 목적 실현이 '항상 바람직한 결과'를 가져온다고 명시한다. 선지는 '때로는 해가 된다'로 반대 내용을 서술했다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "L3",
+        "ok": false,
+        "questionType": "positive",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "E_DOMAIN_INVALID",
+        "rule_hits": [
+          "RULE_0_DOMAIN_INVALID",
+          "RULE_1_PAT_DEFINITION_MISMATCH"
+        ],
+        "reason": "domain이 reading인데 pat이 L3(문학 계열)로 배정되어 Rule 0을 위반한다. 동시에 analysis가 지적하는 실제 오류 구조는 '항상 바람직함 vs 때로 해가 됨'이라는 단일 사실값 반전(R1)이므로 L3(주제·의미 과잉)와도 맞지 않아 Rule 1도 함께 위반한다.",
+        "confidence": "high"
+      },
+      "rationale": "함정 케이스: 인문 지문이고 '주제적으로 보면'이라는 표현과 '목적·실현·바람직함' 같은 의미 논의가 등장한다. 그러나 (1) domain이 reading이므로 L계열 pat은 형식적으로 허용되지 않고, (2) analysis는 명백히 R1 구조를 설명하므로 pat 정의 자체와도 맞지 않는다. 우선순위에 따라 대표 error_type은 E_DOMAIN_INVALID이되 rule_hits는 두 규칙 모두 기록해야 한다.",
+      "test_intent": "domain 규칙 + pat 정의 불일치가 동시에 위반된 케이스 (인문 지문 + '주제적' 표현 함정 포함)",
+      "intent_validation": {
+        "target_failure_mode": "E_DOMAIN_INVALID",
+        "forbidden_alternatives": [
+          "NONE"
+        ],
+        "acceptable_confidence": [
+          "high"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_DOMAIN_002",
+      "source": {
+        "file": "6.pdf",
+        "page": 1,
+        "question": 10,
+        "choice": 2
+      },
+      "input": {
+        "passage": "유물론적 인간관에 따르면, 인간은 물리적 몸에 지나지 않는다. 물리적 몸 이외에 영혼은 존재하지 않는다. 따라서 인간의 결정은 단지 뇌에서 일어나는 신경 사건이다.",
+        "question_text": "윗글에 대한 설명으로 적절하지 않은 것은?",
+        "choice_text": "유물론적 인간관은 인간의 선택을 물리적 사건으로 본다.",
+        "analysis": "📌 지문 근거: \"인간의 결정은 단지 뇌에서 일어나는 신경 사건이다.\" 🔍 지문은 유물론적 인간관이 인간의 결정을 뇌의 신경 사건, 즉 물리적 사건으로 본다고 명시한다. 선지는 이를 정확히 반영하고 있다. ✅ 지문과 일치하는 적절한 진술이다.",
+        "pat": "R1",
+        "ok": true,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "P_MISMATCH",
+        "rule_hits": [
+          "RULE_1_PAT_DEFINITION_MISMATCH",
+          "RULE_5_OK_TRUE_WITH_PAT"
+        ],
+        "reason": "선지가 지문과 일치하여 ok:true인데 pat이 설정되어 있어 오류 구조가 존재하지 않는다. pat 정의와 실제 상황이 불일치한다.",
+        "confidence": "high"
+      },
+      "rationale": "pat=R1은 reading 도메인에서 허용되므로 RULE_0(도메인 위반)에 해당하지 않는다. 진짜 문제는 ok:true + pat 존재라는 조합 자체의 모순이다. 오류가 없는 선지에 오류 패턴이 부여되어 있어 pat 정의와 실제 상황이 불일치한다.",
+      "test_intent": "ok:true + pat 존재라는 형식 모순이 있는 케이스. analysis가 선지를 긍정해도 pat 적용 대상 자체가 아님.",
+      "intent_validation": {
+        "target_failure_mode": "P_MISMATCH",
+        "forbidden_alternatives": [
+          "NONE",
+          "E_DOMAIN_INVALID"
+        ],
+        "acceptable_confidence": [
+          "high"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R1_009",
+      "source": {
+        "file": null,
+        "page": null,
+        "question": null,
+        "choice": null,
+        "validated": false,
+        "note": "Claude 초안 샘플, 사용자 검토 완료"
+      },
+      "input": {
+        "passage": "계약법상 일반적인 매매 계약은 당사자 간 합의만으로 성립한다. 계약서 작성은 법적 효력 발생의 요건이 아니라 증거 보전을 위한 수단일 뿐이다.",
+        "question_text": "윗글에 대한 이해로 적절하지 않은 것은?",
+        "choice_text": "일반 매매 계약은 당사자의 합의만으로는 성립하지 않으며, 계약서 작성은 법적 효력 발생의 필수 요건이다.",
+        "analysis": "📌 지문 근거: \"계약법상 일반적인 매매 계약은 당사자 간 합의만으로 성립한다.\" 🔍 지문은 합의만으로 계약이 성립한다고 명시한다. 선지는 이를 부정하여 '합의만으로는 성립하지 않는다'고 서술했으므로 지문과 어긋난다. 다만 계약서 작성이 법적 효력 발생의 필수 요건이라는 선지의 두 번째 조건은 직접 검토하지 않는다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "E_CONDITION_MISSING",
+        "rule_hits": [
+          "RULE_3_CONDITION_MISSING"
+        ],
+        "reason": "선지는 (1) 합의만으로는 성립하지 않음, (2) 계약서 작성이 필수 요건이라는 두 조건을 병렬로 주장하지만, analysis는 첫 조건만 명시적으로 다루고 두 번째 조건은 '직접 검토하지 않는다'고 스스로 명시한다.",
+        "confidence": "high"
+      },
+      "rationale": "선지의 한 조건(합의 성립)은 analysis가 지문 근거로 정확히 반박했다. 그러나 두 번째 조건(계약서 작성 필수 요건)은 analysis가 명시적으로 검토 대상에서 제외했다. 근거 직접성 부족이 아니라 선지 주요 조건의 명시적 미반영이다. R1_003(근거 자체가 선지와 무관)과 달리 R1_009는 일부 조건만 처리된 구조로 차별됨.",
+      "test_intent": "복합 조건 선지에서 한 조건만 명시 처리하고 다른 조건은 analysis 스스로 미검토를 선언한 E_CONDITION_MISSING 케이스. R1_003과 분포상 구분됨.",
+      "intent_validation": {
+        "target_failure_mode": "E_CONDITION_MISSING",
+        "forbidden_alternatives": [
+          "NONE",
+          "P_MISMATCH",
+          "E_COMPOSITE_ERROR",
+          "E_EVIDENCE_WEAK"
+        ],
+        "acceptable_confidence": [
+          "high",
+          "mid"
+        ]
+      }
+    },
+    {
+      "sample_id": "gold_R2_008",
+      "source": {
+        "file": null,
+        "page": null,
+        "question": null,
+        "choice": null,
+        "validated": false,
+        "note": "Claude 수정안 C, 사용자 검증 3회 완료 (3/3 E_EVIDENCE_WEAK + RULE_2 일관)"
+      },
+      "input": {
+        "passage": "블록체인은 분산 원장 기술을 기반으로 한다. 거래 데이터가 여러 노드에 동시에 저장되기 때문에 데이터 위변조가 사실상 불가능하다. 또한 블록체인은 중앙 관리자 없이 운영된다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "블록체인 시스템에서는 데이터 위변조가 용이하다.",
+        "analysis": "📌 지문 근거: \"블록체인은 중앙 관리자 없이 운영된다.\" 🔍 지문은 블록체인이 중앙 관리자 없이 운영되는 분산 구조임을 설명한다. 선지는 위변조가 용이하다고 서술했으므로 적절하지 않다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R1",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "E_EVIDENCE_WEAK",
+        "rule_hits": [
+          "RULE_2_EVIDENCE_NOT_DIRECT"
+        ],
+        "reason": "analysis가 인용한 근거('중앙 관리자 없이 운영된다')는 블록체인 주제와 관련은 있으나 선지의 핵심 주장('위변조 용이')을 직접 반박하지 못한다. 지문에는 '위변조가 사실상 불가능하다'는 직접 반박 문장이 있음에도 analysis가 이를 인용하지 않았다.",
+        "confidence": "high"
+      },
+      "rationale": "analysis 근거가 선지 주제(블록체인)와 관련은 있으나, 선지의 핵심 주장(위변조 용이/어려움)을 직접 반박하는 근거가 아니다. analysis가 선지 조건을 언급만 하고 직접 근거와 연결하지 않은 구조. R1_003(근거가 선지 주제와 완전 무관)과 달리 R2_008은 '관련 있으나 간접적'인 타입 B.",
+      "test_intent": "근거가 선지 주제와 관련은 있으나 직접 반박하지 못하는 E_EVIDENCE_WEAK 타입 B 케이스.",
+      "intent_validation": {
+        "target_failure_mode": "E_EVIDENCE_WEAK",
+        "forbidden_alternatives": [
+          "NONE",
+          "P_MISMATCH",
+          "E_CONDITION_MISSING",
+          "E_COMPOSITE_ERROR",
+          "E_LOGIC_UNCLEAR"
+        ],
+        "acceptable_confidence": [
+          "high",
+          "mid"
+        ],
+        "evidence_weak_subtype": "B_TOPIC_RELEVANT_NON_CAUSAL"
+      }
+    },
+    {
+      "sample_id": "gold_R2_010",
+      "source": {
+        "file": null,
+        "page": null,
+        "question": null,
+        "choice": null,
+        "validated": false,
+        "note": "품질 심사관 작성, 2026-04-24 3/3 E_COMPOSITE_ERROR high 검증 완료"
+      },
+      "input": {
+        "passage": "늑대가 초원에서 사라지자 사슴 개체수가 증가했다. 사슴의 증가로 초원의 풀이 급격히 줄어 들판이 황폐해졌다.",
+        "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
+        "choice_text": "초원의 풀이 줄어든 것이 사슴 개체수를 증가시켰으며, 늑대가 초원에서 사라졌음에도 사슴 개체수는 증가하지 않았다.",
+        "analysis": "📌 지문 근거: \"늑대가 초원에서 사라지자 사슴 개체수가 증가했다. 사슴의 증가로 초원의 풀이 급격히 줄어 들판이 황폐해졌다.\" 🔍 선지는 사슴과 풀의 인과 관계를 뒤집었을 뿐 아니라, 늑대가 초원에서 사라지자 사슴 개체수가 증가했다는 지문 진술과 정면으로 충돌한다. ❌ 지문과 어긋나는 부적절한 진술",
+        "pat": "R2",
+        "ok": false,
+        "questionType": "negative",
+        "bogi": null,
+        "domain": "reading",
+        "precheck_signals": {
+          "domain_mismatch_detected": false,
+          "pat_missing_detected": false,
+          "composite_label_detected": false,
+          "bracket_recovery_applied": false
+        }
+      },
+      "expected_output": {
+        "pass": false,
+        "error_type": "E_COMPOSITE_ERROR",
+        "rule_hits": [
+          "RULE_4_COMPOSITE_ERROR",
+          "RULE_1_PAT_DEFINITION_MISMATCH"
+        ],
+        "reason": "analysis는 사슴-풀의 인과 전도와 늑대-사슴의 사실 진술 부정을 동시에 지적하지만, pat은 단일 R2로 처리되어 두 오류 구조 중 하나만 반영한다.",
+        "confidence": "high"
+      },
+      "rationale": "analysis에 '뒤집었을 뿐 아니라 ~ 정면으로 충돌한다' 형태로 두 독립 오류가 병렬 명시되어 있다. 사슴 개체수 증가와 풀 감소의 원인-결과 반전(R2 구조) 하나, 그리고 '늑대 사라짐 → 사슴 증가'라는 지문 사실을 '증가하지 않았다'로 부정한 단일 사실 왜곡(R1 구조) 하나. 두 구조가 공존하므로 단일 pat으로 닫으면 안 된다.",
+      "test_intent": "두 독립 오류 구조(R2 + R1)가 analysis에 병렬 명시된 상태에서 단일 pat으로 처리된 E_COMPOSITE_ERROR 케이스",
+      "intent_validation": {
+        "target_failure_mode": "E_COMPOSITE_ERROR",
+        "forbidden_alternatives": [
+          "NONE",
+          "P_MISMATCH"
+        ],
+        "acceptable_confidence": [
+          "high"
+        ],
+        "acceptable_rule_hits_variants": [
+          ["RULE_4_COMPOSITE_ERROR"],
+          ["RULE_4_COMPOSITE_ERROR", "RULE_1_PAT_DEFINITION_MISMATCH"]
+        ]
+      }
+    }
+  ],
+  "pending_slots": {
+    "claude_to_author": [],
+    "user_to_author": [
+      {
+        "sample_id": "gold_R1_007",
+        "planned": "pass / NONE"
+      },
+      {
+        "sample_id": "gold_R1_008",
+        "planned": "fail / P_MISMATCH (경계 케이스)"
+      },
+      
+      {
+        "sample_id": "gold_R2_007",
+        "planned": "pass / NONE"
+      }
+    ]
+  }
+}
