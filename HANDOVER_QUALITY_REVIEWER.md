@@ -1,7 +1,65 @@
 # HANDOVER — D엔진 Phase 1 (품질 심사관)
 
-> 갱신: 2026-04-24 세션 종료
-> 다음 재개: R2_010 최종 1회 검증만 (5분 작업)
+> 갱신: 2026-04-24 저녁 세션 종료
+> 다음 재개: Decision 2 (RULE_7 재정의 방향 결정)
+
+---
+
+## 🎯 다음 재개 포인트 (2026-04-25 아침)
+
+### Decision 2 — RULE_7 재정의 방향
+
+**입력 데이터** (R1_006 5회 실험):
+- NONE 2회 / P_MISMATCH 2회 / E_CONDITION_MISSING 1회
+- RULE_7 발동 2회 (rule_hits 형태 상이: `[RULE_1,3,7]` vs `[RULE_7]`)
+- 전 run confidence=high
+
+**방향 후보 3가지**:
+1. **A. 제거** — E_LOGIC_UNCLEAR 카테고리 자체 폐기
+2. **B. 재정의** — 조건 엄격화 (예: analysis에 메타-고백 명시 시만 발동)
+3. **C. 분할** — 7a(메타-고백 감지) / 7b(근거 비약 감지)
+
+### 2026-04-24 완료 작업
+
+1. **Phase 1 Stage A 종료**
+   - Gold 17개, validate pass, commit `ccc3d88`
+   - R2_010 추가, R1_010 discarded
+   - config 2개 파일 + HANDOVER 2개 파일 push
+
+2. **Decision 1 provisional 확정** (v0.9)
+   - 실험: 4 samples × 5 runs = 20회
+     - R1_001: deterministic (NONE 5)
+     - R2_004: deterministic (P_MISMATCH 5)
+     - R1_004: deterministic (NONE 5)
+     - R1_006: **random** (NONE 2 / P_MISMATCH 2 / E_CONDITION_MISSING 1)
+   - 전략: 1회 기본 + 트리거 감지 시 2회 추가 → majority, 3-way 분기 시 needs_human
+   - 재호출 트리거: error_type 불일치, rule_hits에 RULE_7, 혼재 패턴
+   - confidence 기반 트리거 무효 (R1_006에서 전부 high인데 분기 발생)
+   - **이 실험의 진짜 발견**: "RULE_7 등장 시 엔진 랜덤화"
+
+### Decision 1 provisional → confirmed 승격 조건
+
+- [ ] Decision 2 (RULE_7 재정의) 완료
+- [ ] Stage 2 pilot 데이터로 RULE_7 포함 비율 재측정
+- [ ] 샘플 4개 한계 극복을 위한 추가 측정 (단 Stage 2 전제 조건 아님)
+
+### Decision 3 (E_EVIDENCE_WEAK Subtype 제한) — 대기 중
+
+이번 실험에서 E_EVIDENCE_WEAK 관련 데이터 확보 안 됨. 별도 측정 필요.
+
+### 관련 파일 상태
+
+| 파일 | 위치 | 상태 |
+|---|---|---|
+| decision1_experiment_results.json | config/ | ✅ 최신 (provisional) |
+| d_engine_gold_samples_phase1.json | config/ | ✅ 17 samples |
+| d_engine_dryrun_inputs.json | config/ | ✅ 17 samples |
+| d_engine_prompt.txt | config/ | ✅ 우선순위 보정 포함 |
+
+### 미해결 블로커 (Chat 1 영역)
+
+git status modified 19개 파일 (pipeline/, public/data/all_data_204.json 포함). 
+Chat 1 재개 시 정리 필요. Chat 2(이 세션)는 건드리지 않음.
 
 ---
 
@@ -69,6 +127,27 @@ Phase 1 Stage A 종료됨. 다음 작업은 ROI 기준 택일:
 
 ### 진화 중 1건
 - **R2_010** (E_COMPOSITE_ERROR, 늑대/사슴/풀): 설계 수정 4회 후 내일 검증 대기
+
+---
+
+## 2026-04-24 저녁 세션 성과 (Phase 1 Stage A 종료 + Decision 1 provisional)
+
+### Phase 1 Stage A 종료
+- R2_010 추가 (3/3 E_COMPOSITE_ERROR 검증 후)
+- R1_010 discarded (3/3 NONE, RULE_7 미감지 확정)
+- Gold 14 → 17, pending 4 → 3, validate pass
+- commit ccc3d88 push 완료
+
+### Decision 1 provisional 확정
+- 실험 20회 (4 samples × 5 runs)
+- 전략: v0.9 provisional (상단 재개 포인트 참조)
+- 핵심 발견: RULE_7이 엔진 랜덤화의 주된 원인
+
+### 원칙 위반 자가수정
+- apply_phase_a.mjs 생성 (일회성 스크립트 금지 원칙 위반)
+- 사용자 지적으로 위반 인지
+- 롤백 → 수동 편집으로 전환 → 파일 삭제
+- 교훈: Gold/config JSON 수정은 항상 VS Code 직접 편집
 
 ---
 
