@@ -26,6 +26,22 @@
       "notes": "Phase 1 관찰 대비 OVERFAIL 0회. 우선순위 보정 프롬프트 적용 후 deterministic 전환 가능성."
     },
     {
+      "sample_id": "gold_R2_004",
+      "role": "boundary_reference",
+      "expected_phase1": "pass=false, P_MISMATCH + RULE_1",
+      "runs": [
+        { "run": 1, "pass": false, "error_type": "P_MISMATCH", "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"], "confidence": "high" },
+        { "run": 2, "pass": false, "error_type": "P_MISMATCH", "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"], "confidence": "high" },
+        { "run": 3, "pass": false, "error_type": "P_MISMATCH", "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"], "confidence": "high" },
+        { "run": 4, "pass": false, "error_type": "P_MISMATCH", "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"], "confidence": "high" },
+        { "run": 5, "pass": false, "error_type": "P_MISMATCH", "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"], "confidence": "high" }
+      ],
+      "distribution": { "P_MISMATCH": 5 },
+      "majority_ratio": 1.0,
+      "classification": "deterministic",
+      "notes": "경계 케이스임에도 5/5 일관. 분류 기준 '단일 값 반전은 R1이지 R2 아님' 추론이 안정적으로 작동."
+    },
+    {
       "sample_id": "gold_R1_004",
       "role": "stable_reference",
       "expected_phase1": "pass=true, NONE",
@@ -42,15 +58,6 @@
       "notes": "안정 예상대로 5/5 일관. Phase 1 관찰과 완전 일치."
     },
     {
-      "sample_id": "gold_R1_004",
-      "role": "stable_reference",
-      "expected_phase1": "pass=true, NONE",
-      "runs": [],
-      "distribution": {},
-      "majority_ratio": null,
-      "classification": null
-    },
-     {
       "sample_id": "gold_R1_006",
       "role": "rule_7_missed_reference",
       "expected_phase1": "pass=false, E_LOGIC_UNCLEAR + RULE_7 (Phase 1에서 3/3 미발동 관찰)",
@@ -66,10 +73,11 @@
       "classification": "random",
       "critical_observations": [
         "pass:true/false 자체가 40:60 분기 — 기본 결정축 무너진 상태",
-        "error_type 4종류 (NONE, P_MISMATCH 2회, E_CONDITION_MISSING)",
+        "error_type 3종류 혼재 (NONE, P_MISMATCH 2회, E_CONDITION_MISSING)",
         "동일 P_MISMATCH 내에서도 rule_hits 상이 ([RULE_1,3,7] vs [RULE_7])",
         "모든 run이 confidence=high — confidence 기반 불일치 감지 트리거 무효화 증거",
-        "Phase 1 3/3 미발동과 다른 결과 — RULE_7은 '미발동'이 아닌 '무작위 발동'"
+        "Phase 1 3/3 미발동과 다른 결과 — RULE_7은 '미발동'이 아닌 '무작위 발동'",
+        "Run 4는 RULE_7 미포함이지만 여전히 혼재 패턴 — RULE_7만이 랜덤화 원인은 아님"
       ],
       "notes": "RULE_7 연관 케이스에서 엔진 비결정성 심화. Decision 2 핵심 입력."
     }
@@ -80,10 +88,10 @@
     "summary": "엔진 전체가 아닌 RULE_7 계열에서만 랜덤화. 샘플 3/4 deterministic, 1/4 random.",
     "strategy": "1회 기본 + 트리거 감지 시 2회 추가 → majority, 3-way 분기 시 needs_human",
     "reactivation_triggers": [
-  "error_type 불일치 (2회 측정 시 다른 값)",
-  "rule_hits에 RULE_7 포함 (1회 즉시 트리거)",
-  "NONE / P_MISMATCH / E_CONDITION_MISSING 혼재 패턴 (RULE_7 없어도 트리거)"
-],
+      "error_type 불일치 (2회 측정 시 다른 값)",
+      "rule_hits에 RULE_7 포함 (1회 즉시 트리거)",
+      "NONE / P_MISMATCH / E_CONDITION_MISSING 혼재 패턴 (RULE_7 없어도 트리거)"
+    ],
     "judgment": {
       "3_of_3": "majority 채택",
       "2_of_3": "majority 채택",
@@ -109,29 +117,28 @@
       "decision_2_rule_7": {
         "data": "R1_006 5회 중 2회 RULE_7 발동, rule_hits 형태 상이 ([RULE_1,3,7] vs [RULE_7])",
         "direction_candidates": [
-  "A. RULE_7 제거 (E_LOGIC_UNCLEAR 카테고리 폐기)",
-  "B. RULE_7 재정의 (조건 엄격화)",
-  "C. RULE_7 분할 (7a 메타-고백 / 7b 근거 연결 비약)"
-],
-"judgment_criteria": {
-  "A_removal_condition": "Phase 1 + Decision 1 실험에서 RULE_7 포함 케이스가 항상 다른 rule로 설명 가능. 즉 RULE_7 단독 필수 케이스 0건일 때",
-  "B_redefine_condition": "특정 패턴(메타-고백 등)에서 반복적으로 RULE_7 발동, 그 외 패턴에서는 무작위. 패턴 식별 가능할 때",
-  "C_split_condition": "서로 다른 2가지 이상 트리거 패턴이 rule_hits 조합에서 구분 가능 (예: RULE_7 단독 vs RULE_7 + RULE_1/3 조합)"
-},
-"decision_2_input_data": {
-  "R1_006_run2": {
-    "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH", "RULE_3_CONDITION_MISSING", "RULE_7_ANALYSIS_TOO_VAGUE"],
-    "error_type": "P_MISMATCH"
-  },
-  "R1_006_run5": {
-    "rule_hits": ["RULE_7_ANALYSIS_TOO_VAGUE"],
-    "error_type": "P_MISMATCH"
-  },
-  "pattern_observation": "같은 P_MISMATCH 판정에서 RULE_7 단독 vs 복합 혼재 → C 분할 시나리오 가능성"
-}
+          "A. RULE_7 제거 (E_LOGIC_UNCLEAR 카테고리 폐기)",
+          "B. RULE_7 재정의 (조건 엄격화)",
+          "C. RULE_7 분할 (7a 메타-고백 / 7b 근거 연결 비약)"
+        ],
+        "judgment_criteria": {
+          "A_removal_condition": "Phase 1 + Decision 1 실험에서 RULE_7 포함 케이스가 항상 다른 rule로 설명 가능. 즉 RULE_7 단독 필수 케이스 0건일 때",
+          "B_redefine_condition": "특정 패턴(메타-고백 등)에서 반복적으로 RULE_7 발동, 그 외 패턴에서는 무작위. 패턴 식별 가능할 때",
+          "C_split_condition": "서로 다른 2가지 이상 트리거 패턴이 rule_hits 조합에서 구분 가능 (예: RULE_7 단독 vs RULE_7 + RULE_1/3 조합)"
+        },
+        "decision_2_input_data": {
+          "R1_006_run2": {
+            "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH", "RULE_3_CONDITION_MISSING", "RULE_7_ANALYSIS_TOO_VAGUE"],
+            "error_type": "P_MISMATCH"
+          },
+          "R1_006_run5": {
+            "rule_hits": ["RULE_7_ANALYSIS_TOO_VAGUE"],
+            "error_type": "P_MISMATCH"
+          },
+          "pattern_observation": "같은 P_MISMATCH 판정에서 RULE_7 단독 vs 복합 혼재 → C 분할 시나리오 가능성"
+        }
       },
       "decision_3_evidence_weak": "별도 측정 필요 (이번 실험에서 데이터 부재)"
     }
   }
-    }
-  
+}
