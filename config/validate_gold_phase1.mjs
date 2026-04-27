@@ -300,29 +300,103 @@ function validateIntent(sample) {
 }
 
 function validateErrorTypeDistribution(data) {
+  // §10 v2 메타 구조 인지 (2026-04-27 갱신)
+  //   - actual_distribution: samples 실측 분포 검증
+  //   - discarded_distribution: 폐기 카운트 정합 검증
+  //   - distribution_plan: 합계 일치 검증
+  //   - legacy fallback: 기존 error_type_distribution 호환
   const issues = [];
-  const declared = data.meta?.error_type_distribution || {};
-  const actual = {};
 
-  for (const s of data.samples) {
-    const et = s.expected_output?.error_type;
-    actual[et] = (actual[et] || 0) + 1;
+  // (1) actual_distribution 검증 (§10 v2)
+  const declaredActual = data.meta?.actual_distribution || null;
+  if (declaredActual) {
+    const observed = {};
+    for (const s of data.samples) {
+      const et = s.expected_output?.error_type;
+      observed[et] = (observed[et] || 0) + 1;
+    }
+    // _meaning, _total 메타 키는 카운트 비교에서 제외
+    const declaredCounts = { ...declaredActual };
+    delete declaredCounts._meaning;
+    delete declaredCounts._total;
+    for (const [et, count] of Object.entries(declaredCounts)) {
+      if (observed[et] !== count) {
+        issues.push({
+          code: 'ACTUAL_DISTRIBUTION_MISMATCH',
+          error_type: et,
+          declared: count,
+          observed: observed[et] || 0,
+        });
+      }
+    }
+    // observed에는 있는데 declared에는 없는 et 검출
+    for (const [et, count] of Object.entries(observed)) {
+      if (!(et in declaredCounts)) {
+        issues.push({
+          code: 'ACTUAL_DISTRIBUTION_UNDECLARED',
+          error_type: et,
+          observed: count,
+        });
+      }
+    }
+    // _total 일치 확인
+    if (declaredActual._total !== data.samples.length) {
+      issues.push({
+        code: 'ACTUAL_TOTAL_MISMATCH',
+        declared: declaredActual._total,
+        observed: data.samples.length,
+      });
+    }
+  } else {
+    // (1-fallback) legacy error_type_distribution
+    const declared = data.meta?.error_type_distribution || {};
+    if (Object.keys(declared).length > 0) {
+      const pendingCount = (data.pending_slots?.user_to_author || []).length
+                        + (data.pending_slots?.claude_to_author || []).length;
+      const declaredTotal = Object.values(declared).reduce((a, b) => a + b, 0);
+      const currentTotal = data.samples.length + pendingCount;
+      if (declaredTotal !== currentTotal) {
+        issues.push({
+          code: 'TOTAL_COUNT_MISMATCH',
+          declared: declaredTotal,
+          actual_plus_pending: currentTotal,
+        });
+      }
+    }
+    // 둘 다 없으면 검증 생략 (legacy 모드)
   }
 
-  // Pending 반영
-  const pendingCount = (data.pending_slots?.user_to_author || []).length
-                    + (data.pending_slots?.claude_to_author || []).length;
+  // (2) discarded_distribution 검증 (§10 v2)
+  const declaredDiscarded = data.meta?.discarded_distribution || null;
+  if (declaredDiscarded) {
+    const discardedSamplesLen = (data.meta?.discarded_samples || []).length;
+    if (declaredDiscarded._total !== discardedSamplesLen) {
+      issues.push({
+        code: 'DISCARDED_TOTAL_MISMATCH',
+        declared: declaredDiscarded._total,
+        observed: discardedSamplesLen,
+      });
+    }
+  }
 
-  // Declared 대비 현재 확정 + pending 합이 일치해야 함
-  const declaredTotal = Object.values(declared).reduce((a, b) => a + b, 0);
-  const currentTotal = data.samples.length + pendingCount;
-
-  if (declaredTotal !== currentTotal) {
-    issues.push({
-      code: 'TOTAL_COUNT_MISMATCH',
-      declared: declaredTotal,
-      actual_plus_pending: currentTotal,
-    });
+  // (3) distribution_plan 합계 일치 검증 (§10 v2)
+  const plan = data.meta?.distribution_plan || null;
+  if (plan && typeof plan._total_attempted === 'number') {
+    const sumKeys = [
+      'existing_by_user',
+      'authored_by_claude',
+      'authored_by_quality_reviewer',
+      'to_be_authored_by_user',
+      'discarded',
+    ];
+    const sum = sumKeys.reduce((a, k) => a + (plan[k] || 0), 0);
+    if (sum !== plan._total_attempted) {
+      issues.push({
+        code: 'DISTRIBUTION_PLAN_SUM_MISMATCH',
+        declared: plan._total_attempted,
+        sum,
+      });
+    }
   }
 
   return issues;
