@@ -215,71 +215,114 @@ Pilot 운영 시 모니터링하고 정기 보고:
 
 ---
 
-## 10. Phase 1 Gold 최종 상태 (누락 보완)
+## 10. Phase 1 Gold 최종 상태 (정합성 복구 v2)
 
-### Gold 18개 확정 (2026-04-25)
+> v1 폐기. v2가 정식. 갱신일: 2026-04-27.
+>
+> v1 (Gold 18개 종결 지시)은 R2_010이 이미 line 816 존재함을 인지 못한 채 작성되어 정합성 균열 5건 야기. 본 v2가 모든 균열 해소 후 Phase 1 종결.
 
-본 인수인계 문서 §1·2·3 결정과 별도로, Phase 1 Gold 샘플은 **18개로 종결** (17개 아님).
+### Gold 17개 확정 (samples 배열 실측)
 
-| 분포 | 개수 | 비고 |
+`config/d_engine_gold_samples_phase1.json` `samples` 배열 17개 실측 분포 (`actual_distribution`):
+
+| error_type | 개수 | sample_id |
 |---|---|---|
-| NONE | 6/6 | 완료 |
-| P_MISMATCH | 5/5 | 완료 |
-| E_CONDITION_MISSING | 2/2 | 완료 |
-| E_DOMAIN_INVALID | 1/1 | 완료 |
-| E_EVIDENCE_WEAK | 1/2 | R2_009 영구 폐기, 1/2로 마감 |
-| E_LOGIC_UNCLEAR | 1/2 | R1_010 영구 폐기, 1/2로 마감 |
-| **E_COMPOSITE_ERROR** | **2/2** | **R2_010 추가 (3/3 E_COMPOSITE_ERROR 검증 완료)** |
-| **합계** | **18/20** | **완료율 90%** |
+| NONE | 6 | R1_001, R2_001, R1_004, R2_003, R2_005, R2_006 |
+| P_MISMATCH | 4 | R1_002, R1_005, R2_004, DOMAIN_002 |
+| E_CONDITION_MISSING | 2 | R1_003, R1_009 |
+| E_COMPOSITE_ERROR | 2 | R2_002, R2_010 |
+| E_LOGIC_UNCLEAR | 1 | R1_006 |
+| E_EVIDENCE_WEAK | 1 | R2_008 |
+| E_DOMAIN_INVALID | 1 | DOMAIN_001 |
+| **합계** | **17** | ✅ samples 배열 길이 일치 |
 
-### R2_010 정보
+### Phase 1 옵션 A 채택
+
+- 17개로 Phase 1 종결
+- 완료율 85% (17/20 목표)
+- 잔여 pending 2개 (gold_R1_007, gold_R2_007 — 둘 다 NONE planned) 5/15 이후 보강 또는 폐기
+- ROI 근거: NONE 이미 6개 확보, 추가 보강 가치 낮음. 5/15 v1.1 마감 우선
+
+### 폐기 sample 2건 (β 전환 — 추적 가능성 보존)
+
+`discarded_samples` 배열에 2건 등재:
+
+| sample_id | planned | reason |
+|---|---|---|
+| gold_R1_010 | fail / E_LOGIC_UNCLEAR | 3/3 NONE 판정. 엔진 RULE_7 미감지 확정 |
+| gold_R1_008 | fail / P_MISMATCH (경계 케이스, R4→R2 흡수 의도) | Phase 1 옵션 A 채택 시 P_MISMATCH 분포 4건 충분으로 폐기. 의제 4 (R4→R2 흡수) 분석 시 참조 |
+
+### 메타 데이터 갱신 (적용 완료, 2026-04-27)
+
+`config/d_engine_gold_samples_phase1.json` 갱신 결과:
 
 ```json
 {
-  "sample_id": "gold_R2_010",
-  "input": {
-    "passage": "늑대가 초원에서 사라지자 사슴 개체수가 증가했다. 사슴의 증가로 초원의 풀이 급격히 줄어 들판이 황폐해졌다.",
-    "question_text": "윗글에 대한 이해로 가장 적절하지 않은 것은?",
-    "choice_text": "초원의 풀이 줄어든 것이 사슴 개체수를 증가시켰으며, 늑대가 초원에서 사라졌음에도 사슴 개체수는 증가하지 않았다.",
-    "analysis": "📌 지문 근거: \"늑대가 초원에서 사라지자 사슴 개체수가 증가했다. 사슴의 증가로 초원의 풀이 급격히 줄어 들판이 황폐해졌다.\" 🔍 선지는 사슴과 풀의 인과 관계를 뒤집었을 뿐 아니라, 늑대가 초원에서 사라지자 사슴 개체수가 증가했다는 지문 진술과 정면으로 충돌한다. ❌ 지문과 어긋나는 부적절한 진술",
-    "pat": "R2",
-    "ok": false,
-    "questionType": "negative",
-    "bogi": null,
-    "domain": "reading",
-    "precheck_signals": {
-      "domain_mismatch_detected": false,
-      "pat_missing_detected": false,
-      "composite_label_detected": false,
-      "bracket_recovery_applied": false
+  "meta": {
+    "phase": "Phase 1",
+    "target_total": 20,
+    "current_count": 17,
+    "distribution_plan": {
+      "existing_by_user": 5,
+      "authored_by_claude": 11,
+      "authored_by_quality_reviewer": 1,
+      "to_be_authored_by_user": 2,
+      "discarded": 2,
+      "_total_attempted": 21,
+      "_total_active": 17
+    },
+    "target_distribution": {
+      "_meaning": "Phase 1 목표 도달 시(20개) 계획 분포",
+      "NONE": 6, "P_MISMATCH": 4, "E_EVIDENCE_WEAK": 2,
+      "E_CONDITION_MISSING": 2, "E_LOGIC_UNCLEAR": 2,
+      "E_COMPOSITE_ERROR": 2, "E_DOMAIN_INVALID": 2,
+      "_total": 20
+    },
+    "actual_distribution": {
+      "_meaning": "samples 배열 실측 분포 (active만, discarded·pending 제외)",
+      "NONE": 6, "P_MISMATCH": 4, "E_CONDITION_MISSING": 2,
+      "E_COMPOSITE_ERROR": 2, "E_LOGIC_UNCLEAR": 1,
+      "E_EVIDENCE_WEAK": 1, "E_DOMAIN_INVALID": 1,
+      "_total": 17
+    },
+    "discarded_distribution": {
+      "_meaning": "폐기된 샘플의 planned error_type",
+      "E_LOGIC_UNCLEAR": 1,
+      "P_MISMATCH": 1,
+      "_total": 2,
+      "_samples": ["gold_R1_010", "gold_R1_008"]
     }
-  },
-  "expected_output": {
-    "pass": false,
-    "error_type": "E_COMPOSITE_ERROR",
-    "rule_hits": ["RULE_4_COMPOSITE_ERROR"],
-    "confidence": "high"
-  },
-  "verification": {
-    "method": "GPT-5 3회 독립 실행",
-    "result": "3/3 E_COMPOSITE_ERROR",
-    "verified_date": "2026-04-25"
-  },
-  "rationale": "선지가 (1) 사슴과 풀의 인과 관계 뒤집기 + (2) 늑대 사라짐과 사슴 개체수 증가의 정면 충돌, 두 독립된 오류를 병렬로 포함. analysis가 두 오류를 모두 명시했으나 pat이 단일 R2로 처리됨.",
-  "test_intent": "두 개의 독립된 사실/관계 왜곡이 명시적으로 병렬 지적되었으나 단일 pat으로 처리된 E_COMPOSITE_ERROR 케이스 (R2_006과 다른 패턴 — 인과 전도 + 사실 충돌)"
+  }
 }
 ```
 
-### 데이터 엔지니어 작업 시 반영 사항
+기존 `meta.error_type_distribution` 단일 필드는 제거 — 시점·의미 모호.
+3개 필드 (`target_distribution` / `actual_distribution` / `discarded_distribution`)로 분리, 각 의미 `_meaning` 필드로 명시.
 
-1. `config/d_engine_gold_samples_phase1.json` — gold_R2_010 추가
-2. `config/d_engine_dryrun_inputs.json` — R2_010 input 추가
-3. `config/dryrun_results_test.json` — R2_010 3회 결과 기록
-4. `meta.current_count`: 14 → 18
-5. `meta.error_type_distribution.E_COMPOSITE_ERROR`: 2 (R2_002, R2_006이 1개로 잘못 기록되어 있다면 R2_010 포함하여 2개로 수정)
+`pending_slots.user_to_author` = 2건 (R1_007, R2_007). R1_008은 `discarded_samples`로 이동.
 
-⚠️ Phase 1 잔여 미작성 슬롯 2개 (gold_R1_007 NONE, gold_R2_007 NONE) 처리 방침은 다음 중 1택 — 데이터 엔지니어 채팅에서 결정:
-- (a) 18개로 Phase 1 종결, 잔여 2개 폐기
-- (b) NONE 분포 보강을 위해 2개 추가 작성 (대표가 원작성자였음, 본 채팅 또는 다른 세션에서 처리)
+### 정합성 검산 (갱신 후)
 
-권고: (a) 채택. NONE은 이미 6개 확보, 추가 보강 가치 낮음. 90% 완료율로 Phase 1 종결 후 Stage 2 진입.
+```
+distribution_plan 합계: 5 + 11 + 1 + 2 + 2 = 21 = _total_attempted ✅
+_total_active = 17 = samples 배열 길이 ✅
+target_distribution._total = 20 = target_total ✅
+discarded_distribution._total = 2 = discarded_samples 배열 길이 ✅
+discarded_distribution._samples 2개 = 등재 sample_id 일치 ✅
+pending_slots.user_to_author 2개 = to_be_authored_by_user 일치 ✅
+```
+
+v1 시점 5개 모순 전부 해소 + R1_008 추적 가능성 회복.
+
+### Phase 1 종결 선언
+
+본 §10 v2 패치 완료 시점에 Phase 1 종결.
+
+다음 단계: §4.1 wrapper + §4.2 majority 판정 함수 (✅ 별도 commit) + §4.3 needs_human 큐 + §4.5 로깅. Stage 2 pilot 진입은 §4 구현 완료 후.
+
+### 본 §10 v2의 의미
+
+- "20개 작성"은 명목 목표. 실제는 17개로 Stage 2 진입
+- discarded 2건은 학습 데이터로 보존 (Phase 2 stress test 또는 의제 4 분석 시 참조)
+- target_distribution은 계획값으로 보존, actual_distribution이 실운용 기준
+- meta 시점 분리 명확화: 어느 분포가 어느 시점인지 `_meaning` 필드로 자명화
