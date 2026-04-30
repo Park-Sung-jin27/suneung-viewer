@@ -37,3 +37,44 @@ pipeline/test_data/
 
 # Legacy data folder (now using public/data/)
 src/data/
+
+# ─── 2026-04-27 백로그 A 보강 ───
+
+# Vercel
+.vercel/
+
+# Claude Code 머신별 설정
+.claude/launch.json
+.claude/settings.json
+
+# 백업 (전 패턴)
+*.bak
+*.bak_*
+*.bak.*
+
+# Pipeline 산출물·일회성·임시
+pipeline/backups/
+pipeline/outputs/
+pipeline/reports/
+pipeline/archive/
+pipeline/quality_report.json
+pipeline/reanalyze_positive_report.json
+pipeline/temp.txt
+
+# Drafts
+_annotation_drafts/
+_para_drafts/
+
+# 임시·인벤토리
+_tmp_*
+_needs_human_list.txt
+debug_log.txt
+delete_candidates.csv
+file_inventory.txt
+inventory.csv
+inventory_files.ps1
+
+# 루트 산출물
+reports/
+results/
+pipeline/_smoke_wrapper_caller.mjs
