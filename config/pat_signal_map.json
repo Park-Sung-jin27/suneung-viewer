@@ -1,0 +1,160 @@
+{
+  "description": "pat별 analysis/choice 키워드 매핑. analysis_signals 는 analysis 본문에서 찾는 signal, choice_axis 는 choice.t에서 찾는 판단 축. hit당 weight 가산. boundary_against 에 명시된 pat은 현 pat의 hit가 2개 이상일 때 감점 대상.",
+  "version": "2026-04-20-v3",
+  "R1": {
+    "label": "사실 왜곡",
+    "analysis_signals": [
+      { "pattern": "사실\\s*왜곡|팩트\\s*왜곡", "weight": 3 },
+      { "pattern": "정반대", "weight": 3 },
+      { "pattern": "역전|뒤집", "weight": 2 },
+      { "pattern": "방향.*뒤집|뒤집.*방향", "weight": 3 },
+      { "pattern": "수치.*왜곡|상태.*왜곡", "weight": 2 },
+      { "pattern": "표시\\s*대상.*잘못", "weight": 3 }
+    ],
+    "choice_axis": [
+      { "pattern": "이다$|있다$|없다$|된다$|한다$", "weight": 1 },
+      { "pattern": "서술|명시|직접", "weight": 1 }
+    ],
+    "boundary_against": ["R2", "R4"]
+  },
+  "R2": {
+    "label": "인과·관계 전도",
+    "analysis_signals": [
+      { "pattern": "인과", "weight": 3 },
+      { "pattern": "관계\\s*전도", "weight": 3 },
+      { "pattern": "주체-?객체", "weight": 2 },
+      { "pattern": "뒤바|바꿔치기", "weight": 2 },
+      { "pattern": "원인과\\s*결과", "weight": 2 },
+      { "pattern": "\\b원인\\b", "weight": 2 },
+      { "pattern": "\\b결과\\b", "weight": 1 },
+      { "pattern": "계기", "weight": 2 },
+      { "pattern": "영향|초래|유발", "weight": 2 },
+      { "pattern": "완화\\s*방안|해결\\s*방안", "weight": 2 },
+      { "pattern": "반문(?!\\s*의\\s*기능)", "weight": 1 },
+      { "pattern": "질문의\\s*기능", "weight": 2 }
+    ],
+    "choice_axis": [
+      { "pattern": "때문|으로\\s*인해", "weight": 2 },
+      { "pattern": "원인|결과|따라서|그래서", "weight": 1 }
+    ],
+    "boundary_against": ["R1"]
+  },
+  "R3": {
+    "label": "과잉 추론",
+    "analysis_signals": [
+      { "pattern": "과도한\\s*추론|과잉\\s*추론", "weight": 3 },
+      { "pattern": "지문에\\s*없", "weight": 2 },
+      { "pattern": "근거\\s*부재|비약|외삽", "weight": 2 }
+    ],
+    "choice_axis": [
+      { "pattern": "일반화|모든|항상|결코", "weight": 1 },
+      { "pattern": "언제나|반드시|결국", "weight": 1 }
+    ],
+    "boundary_against": []
+  },
+  "R4": {
+    "label": "개념 혼합",
+    "analysis_signals": [
+      { "pattern": "개념\\s*혼합|개념\\s*짜깁기|개념어\\s*혼동", "weight": 3 },
+      { "pattern": "프레임.*오대입|개념\\s*오대입|보기.*프레임.*잘못", "weight": 3 },
+      { "pattern": "\\b개념\\b", "weight": 1 },
+      { "pattern": "범주", "weight": 2 },
+      { "pattern": "혼동", "weight": 2 },
+      { "pattern": "대사\\s*체중|체중.*대사|체중(?!\\s*감량)", "weight": 2 },
+      { "pattern": "평가\\s*절상|평가\\s*절하|평가절상|평가절하", "weight": 3 },
+      { "pattern": "객관성.*주관성|주관성.*객관성", "weight": 2 },
+      { "pattern": "개념쌍\\s*변경|용어\\s*치환", "weight": 3 }
+    ],
+    "choice_axis": [
+      { "pattern": "개념|정의|용어|분류", "weight": 1 }
+    ],
+    "boundary_against": ["R1"]
+  },
+  "L1": {
+    "label": "표현·형식 오독",
+    "analysis_signals": [
+      { "pattern": "시어\\s*오독|이미지\\s*오독|수사\\s*오독", "weight": 3 },
+      { "pattern": "표현.*오독|형식\\s*오독|표기\\s*오독", "weight": 2 },
+      { "pattern": "사실\\s*오독", "weight": 2 },
+      { "pattern": "반대\\s*방향으로\\s*왜곡|정반대\\s*성격", "weight": 2 },
+      { "pattern": "\\b시어\\b", "weight": 2 },
+      { "pattern": "표현\\s*방식|표현\\s*기법", "weight": 2 },
+      { "pattern": "수사적\\s*물음", "weight": 2 },
+      { "pattern": "\\b어조\\b|\\b말투\\b", "weight": 2 },
+      { "pattern": "특정\\s*표현|시적\\s*표현", "weight": 2 },
+      { "pattern": "묘사\\s*방식|서술\\s*방식", "weight": 2 },
+      { "pattern": "행동.*오독|상태.*오독|상황.*직접\\s*오독", "weight": 2 }
+    ],
+    "choice_axis": [
+      { "pattern": "표현|시어|이미지|수사", "weight": 1 },
+      { "pattern": "반복|변주|대구|점층|어조|말투", "weight": 1 }
+    ],
+    "boundary_against": ["L4"]
+  },
+  "L2": {
+    "label": "정서·태도 오독",
+    "analysis_signals": [
+      { "pattern": "정서\\s*오독|감정\\s*오독|심리\\s*오독|태도\\s*오독", "weight": 3 },
+      { "pattern": "양립\\s*불가|상대\\s*입장.*인정", "weight": 2 }
+    ],
+    "choice_axis": [
+      { "pattern": "정서|감정|태도|심리|마음", "weight": 1 },
+      { "pattern": "느끼|생각|여기", "weight": 1 }
+    ],
+    "boundary_against": []
+  },
+  "L3": {
+    "label": "주제·의미 과잉",
+    "analysis_signals": [
+      { "pattern": "주제\\s*과잉|의미\\s*과잉|확대\\s*해석", "weight": 3 },
+      { "pattern": "지문에\\s*없는\\s*(개념|의미)", "weight": 3 },
+      { "pattern": "덧붙여.*과잉|끼워\\s*넣", "weight": 2 }
+    ],
+    "choice_axis": [
+      { "pattern": "의미|상징|주제|암시|비유", "weight": 1 }
+    ],
+    "boundary_against": []
+  },
+  "L4": {
+    "label": "구조·맥락 오류",
+    "analysis_signals": [
+      { "pattern": "구조.*오류|맥락.*오류", "weight": 3 },
+      { "pattern": "시점|시간\\s*관계", "weight": 2 },
+      { "pattern": "\\b순서\\b|서사\\s*흐름", "weight": 2 },
+      { "pattern": "구성|장면\\s*전환|서사\\s*전개", "weight": 2 },
+      { "pattern": "계기(?!.*결과적)", "weight": 2 },
+      { "pattern": "계기.*결과|전개.*잘못", "weight": 3 },
+      { "pattern": "\\b전개\\b", "weight": 2 },
+      { "pattern": "질문의\\s*기능", "weight": 3 },
+      { "pattern": "반문(?!\\s*적\\s*물음)", "weight": 2 },
+      { "pattern": "촉구|건의|요청", "weight": 2 },
+      { "pattern": "\\b기능\\b(?!하지)", "weight": 1 },
+      { "pattern": "발화\\s*기능|발화\\s*의도", "weight": 3 }
+    ],
+    "choice_axis": [
+      { "pattern": "구조|시점|시간|공간|전환|장면|배경", "weight": 1 },
+      { "pattern": "계기|전개|순서|기능|건의|요청|촉구", "weight": 2 }
+    ],
+    "boundary_against": ["L1"]
+  },
+  "L5": {
+    "label": "보기 대입 오류",
+    "analysis_signals": [
+      { "pattern": "보기\\s*대입|보기\\s*오독", "weight": 3 },
+      { "pattern": "보기\\s*조건.*잘못|보기.*잘못\\s*적용", "weight": 3 }
+    ],
+    "choice_axis": [
+      { "pattern": "보기|조건|관점|전제", "weight": 1 }
+    ],
+    "boundary_against": []
+  },
+  "V": {
+    "label": "어휘 치환",
+    "analysis_signals": [
+      { "pattern": "문맥\\s*속\\s*의미", "weight": 3 },
+      { "pattern": "치환|바꿔\\s*쓰", "weight": 2 }
+    ],
+    "choice_axis": [],
+    "boundary_against": []
+  }
+}

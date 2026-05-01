@@ -1,0 +1,19 @@
+{
+  "description": "ok 값 자체가 재검토 필요 상태인 선지 목록. 이 큐에 들어있는 선지는 pat_decision_engine에서 판정 보류(source: ok_recheck_required)되며, 사람이 ok 확정하기 전까지 override 대상에서도 제외된다.",
+  "version": "2026-04-20-v1",
+  "updated_at": "2026-04-20",
+  "queue": [
+    {
+      "exam": "2022수능", "setId": "r2022b", "qId": 8, "num": 4,
+      "current_pat": "R4",
+      "issue": "R1/R4 pat 재확정 필요 — 개념 프레임 vs 사실 왜곡 판별 대기",
+      "added_at": "2026-04-20"
+    },
+    {
+      "exam": "2022수능", "setId": "r2022c", "qId": 13, "num": 5,
+      "current_pat": "R1",
+      "issue": "ok 값(true/false) 자체 재검토 필요 — 환율 방향 논증의 기준 재확인 대기",
+      "added_at": "2026-04-20"
+    }
+  ]
+}

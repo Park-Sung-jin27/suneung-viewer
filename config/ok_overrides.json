@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "description": "사람이 확정한 choice.ok 강제 덮어쓰기. step3 postProcess 가 이 map 을 참조해 ok 값을 최종 고정한다. 이후 _ok_analysis_mismatch flag 는 자동 제거 경로를 탄다.",
+    "key_format": "<setId>:<questionId>:<choiceNum>",
+    "value_format": "true | false",
+    "policy": "이 파일에 등재된 choice 는 answerKey 기반 자동 ok 보정 이후, 사람 확정값으로 최종 덮어쓰기. pat 은 영향 없음 (pat_overrides.json 로 별도 관리)."
+  },
+  "overrides": {}
+}

@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "reviewer": "성진(AI 1차 제안)",
+    "reviewed_at": "2026-04-20T12:30:00Z",
+    "round_label": "2026-04-20-R1",
+    "report_snapshot": {
+      "exam": "2026수능",
+      "report_generated_at": "2026-04-20T11:54:51.646Z",
+      "rules_version": "2026-04-20-v2",
+      "signal_map_version": "2026-04-20-v3",
+      "override_version": "2026-04-20-v2"
+    },
+    "notes": "2026수능 human_review_pack 3건 1차 채움. AI 초안 — 성진님 확정 전에 loader 게이트 통과 검증용. 2025수능 3건은 engine을 --exam 2025수능 으로 재실행 후 별도 results 파일에서 처리."
+  },
+  "reviews": [
+    {
+      "choice_id": "2026수능/s3/Q10/#4",
+      "exam": "2026수능",
+      "category": "mismatch_medium",
+      "engine_snapshot": {
+        "existing_pat": "R2",
+        "suggested_pat": "R1",
+        "match_type": "mismatch",
+        "soft_conflict_risk_tier": "medium",
+        "ok_recheck_candidate_score": 0.25,
+        "applied_rule_id": "signal.fact_distortion",
+        "conflict_flags": ["label_vs_signal_disagree"],
+        "primary_decision": "send_to_pat_review_queue",
+        "secondary_decision": "send_to_ok_recheck_queue",
+        "decision_confidence": 0.5,
+        "ok_issue_reason_suggested": "axis_mismatch",
+        "pat_issue_reason_suggested": "cause_vs_fact"
+      },
+      "ok_issue_reason": "none",
+      "pat_issue_reason": "cause_vs_fact",
+      "final_decision": "send_to_pat_review_queue",
+      "human_pat_suggestion": null,
+      "human_ok_suggestion": null,
+      "agreed_with_engine": true,
+      "notes": "signal.fact_distortion 발화 · label=R2 vs signal top1=R1 — 인과/사실 왜곡 축이 더 직접적. ok 축은 일관된 것으로 가정하고 pat 재검토 큐로. (AI 초안)"
+    },
+    {
+      "choice_id": "2026수능/l2026b/Q26/#2",
+      "exam": "2026수능",
+      "category": "keep_existing_medium",
+      "engine_snapshot": {
+        "existing_pat": "L1",
+        "suggested_pat": "L1",
+        "match_type": "keep_existing_match",
+        "soft_conflict_risk_tier": "medium",
+        "ok_recheck_candidate_score": 0.2,
+        "applied_rule_id": "fallback.keep_existing",
+        "conflict_flags": ["top2_gap_small"],
+        "primary_decision": "send_to_ok_recheck_queue",
+        "secondary_decision": "send_to_pat_review_queue",
+        "decision_confidence": 0.55,
+        "ok_issue_reason_suggested": "keep_existing_risk",
+        "pat_issue_reason_suggested": "unclear"
+      },
+      "ok_issue_reason": "keep_existing_risk",
+      "pat_issue_reason": "unclear",
+      "final_decision": "send_to_ok_recheck_queue",
+      "human_pat_suggestion": null,
+      "human_ok_suggestion": null,
+      "agreed_with_engine": true,
+      "notes": "fallback.keep_existing로 L1 겉보기 match. top2 경합(L1 vs L4 추정) — 해설이 실제 설명 축과 어긋날 위험. ok 재검토 큐에 올려 원문 확인 필요. (AI 초안)"
+    },
+    {
+      "choice_id": "2026수능/s3/Q12/#5",
+      "exam": "2026수능",
+      "category": "label_signal_disagree",
+      "engine_snapshot": {
+        "existing_pat": "R1",
+        "suggested_pat": "R2",
+        "match_type": "mismatch",
+        "soft_conflict_risk_tier": "medium",
+        "ok_recheck_candidate_score": 0.25,
+        "applied_rule_id": "signal.causal_inversion",
+        "conflict_flags": ["label_vs_signal_disagree"],
+        "primary_decision": "send_to_pat_review_queue",
+        "secondary_decision": "send_to_ok_recheck_queue",
+        "decision_confidence": 0.5,
+        "ok_issue_reason_suggested": "axis_mismatch",
+        "pat_issue_reason_suggested": "cause_vs_fact"
+      },
+      "ok_issue_reason": "none",
+      "pat_issue_reason": "cause_vs_fact",
+      "final_decision": "send_to_pat_review_queue",
+      "human_pat_suggestion": null,
+      "human_ok_suggestion": null,
+      "agreed_with_engine": true,
+      "notes": "signal.causal_inversion · label=R1(표현/서술 방식)과 signal top1=R2(인과)의 경계. 해설이 인과 뒤집기를 직접 짚고 있으면 R2, 서술 방식 전반이면 R1 유지. pat 재검토 큐. (AI 초안)"
+    }
+  ]
+}

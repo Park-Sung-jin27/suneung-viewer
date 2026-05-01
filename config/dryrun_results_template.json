@@ -1,0 +1,105 @@
+{
+  "_meta": {
+    "description": "GPT-5 dry-run 결과 기록 템플릿",
+    "usage": "각 sample_id에 GPT-5 응답 JSON을 그대로 붙여넣기. preamble/postamble 제거 후 JSON만.",
+    "fill_14_samples": "완성 후 compare_dryrun_results.mjs로 분석"
+  },
+  "gold_R1_001": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R1_002": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R1_003": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R2_001": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R2_002": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R1_004": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R1_005": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R1_006": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R2_003": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R2_004": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R2_005": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_R2_006": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_DOMAIN_001": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  },
+  "gold_DOMAIN_002": {
+    "pass": null,
+    "error_type": null,
+    "rule_hits": [],
+    "reason": null,
+    "confidence": null
+  }
+}

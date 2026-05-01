@@ -1,0 +1,40 @@
+{
+  "description": "ok:false 선지의 pat 판정 규칙. 우선순위 높은 규칙부터 순차 적용. 먼저 확정되면 이후 규칙은 검토하지 않음.",
+  "version": "2026-04-20-v2",
+  "priority": [
+    {
+      "id": "override_cases.locked",
+      "note": "config/pat_override_cases.json 수동 확정 케이스 — 무조건 우선. 엔진은 해당 pat을 그대로 제안."
+    },
+    {
+      "id": "ok_recheck_required",
+      "note": "config/pat_ok_recheck_queue.json 에 있는 선지 — ok 값 자체가 재검토 필요 상태라 pat 판정 보류. 엔진 제안 없음. 보고서에 ok_recheck_queue 로 집계."
+    },
+    {
+      "id": "domain_filter",
+      "note": "독서(r/kor/sep + reading array 소속) ↔ R1~R4/V/null, 문학(l/lsep + literature array 소속) ↔ L1~L5/null. 도메인 위반 pat은 교차 매핑 후 signal 재검토."
+    },
+    {
+      "id": "decision_rules",
+      "note": "analysis signal + choice axis weighted score + label hint + fallback 종합 판정"
+    }
+  ],
+  "auto_empty_pats": ["R3", "V"],
+  "required_cs_pats": ["R1", "R2", "R4", "L1", "L2", "L4", "L5"],
+  "valid_pats_by_section": {
+    "reading": ["R1", "R2", "R3", "R4", "V"],
+    "literature": ["L1", "L2", "L3", "L4", "L5"]
+  },
+  "domain_fallback": {
+    "reading": "R1",
+    "literature": "L1"
+  },
+  "cross_domain_mapping": {
+    "L1": "R1", "L2": "R1", "L3": "R3", "L4": "R2", "L5": "R4",
+    "R1": "L1", "R2": "L4", "R3": "L3", "R4": "L1"
+  },
+  "signal_threshold": {
+    "min_hits": 1,
+    "min_score": 1
+  }
+}

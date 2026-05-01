@@ -1,0 +1,132 @@
+{
+  "_meta": {
+    "description": "GPT-5 dry-run 결과 기록 템플릿",
+    "usage": "각 sample_id에 GPT-5 응답 JSON을 그대로 붙여넣기. preamble/postamble 제거 후 JSON만.",
+    "fill_14_samples": "완성 후 compare_dryrun_results.mjs로 분석"
+  },
+  "gold_R1_001": {
+"pass": false,
+"error_type": "P_MISMATCH",
+"rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH", "RULE_7_ANALYSIS_TOO_VAGUE"],
+"reason": "선지는 인과 방향을 반대로 뒤집은 오류인데(R2), pat을 R1로 판정했고 analysis도 단순 ‘다르게 서술’로 구조를 설명하지 않아 불일치이다.",
+"confidence": "high"
+}
+
+
+,
+  "gold_R1_002": {
+"pass": false,
+"error_type": "P_MISMATCH",
+"rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH", "RULE_7_ANALYSIS_TOO_VAGUE", "RULE_3_CONDITION_MISSING"],
+"reason": "선지는 인과 관계를 역전한 오류(R2)인데, pat을 R1로 지정했으며 분석에서도 인과 전도 구조를 명시하지 않아 pat과 불일치한다.",
+"confidence": "high"
+}
+,
+  "gold_R1_003": {
+"pass": false,
+"error_type": "E_CONDITION_MISSING",
+"rule_hits": ["RULE_2_EVIDENCE_NOT_DIRECT", "RULE_3_CONDITION_MISSING"],
+"reason": "analysis가 핵심 조건인 ‘참여자 수 증가와 가치 상승 관계’를 전혀 다루지 않고 다른 문장을 근거로 사용해 선지 판단에 직접 연결되지 않는다.",
+"confidence": "high"
+}
+,
+  "gold_R2_001": {
+"pass": true,
+"error_type": "NONE",
+"rule_hits": [],
+"reason": "원인과 결과의 방향을 뒤집은 인과 전도 오류로, R2 정의와 정확히 일치한다.",
+"confidence": "high"
+}
+
+,
+  "gold_R2_002": {
+"pass": false,
+"error_type": "E_COMPOSITE_ERROR",
+"rule_hits": ["RULE_4_COMPOSITE_ERROR"],
+"reason": "선지는 인과 관계 전도뿐 아니라 하천 정비의 영향을 부정하는 별도의 왜곡을 포함하고 있어 단일 R2로 환원되지 않는 복합 오류이다.",
+"confidence": "high"
+}
+
+,
+  "gold_R1_004": {
+"pass": true,
+"error_type": "NONE",
+"rule_hits": [],
+"reason": "대소 관계를 정반대로 서술한 것으로, 팩트 왜곡(R1)에 정확히 해당한다.",
+"confidence": "high"
+}
+
+,
+  "gold_R1_005": {
+"pass": false,
+"error_type": "P_MISMATCH",
+"rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
+"reason": "선지는 송신기와 수신기의 역할을 서로 뒤바꾼 것으로 주체-기능 관계의 반전이며, 이는 관계 전도에 해당하므로 R1이 아니라 R2 구조이다.",
+"confidence": "high"
+}
+,
+  "gold_R1_006": {
+"pass": false,
+"error_type": "E_EVIDENCE_WEAK",
+"rule_hits": ["RULE_2_EVIDENCE_NOT_DIRECT", "RULE_3_CONDITION_MISSING"],
+"reason": "지문 인용은 있으나 ‘확장’ 주장과 ‘왜곡/비판’의 직접 충돌을 명시적으로 연결하지 않았고, 두 인물 각각의 입장과 선지 조건이 충분히 대응되지 않았다.",
+"confidence": "high"
+}
+
+
+,
+  "gold_R2_003": {
+"pass": true,
+"error_type": "NONE",
+"rule_hits": [],
+"reason": "지문에서 제시된 원인(중력 감소)과 결과(속력 감소)의 인과 관계를 선지가 반대로 서술한 구조를 정확히 지적하고 있어 R2와 일치한다.",
+"confidence": "high"
+}
+
+,
+  "gold_R2_004": {
+"pass": false,
+"error_type": "P_MISMATCH",
+"rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
+"reason": "결과 방향을 '가까워짐→멀어짐'으로 반대로 바꾼 것은 인과 전도가 아니라 상태/방향 불일치로 R1에 해당한다.",
+"confidence": "high"
+}
+
+,
+  "gold_R2_005": {
+"pass": true,
+"error_type": "NONE",
+"rule_hits": [],
+"reason": "원인(도로가 젖음)과 결과(제동 거리 증가)를 뒤집은 인과 전도로, analysis와 R2 정의가 정확히 일치한다.",
+"confidence": "high"
+}
+
+,
+  "gold_R2_006": {
+"pass": true,
+"error_type": "NONE",
+"rule_hits": [],
+"reason": "선지는 지문의 인과 관계를 반대로 뒤집은 구조로, R2 정의와 analysis의 설명이 정확히 일치한다.",
+"confidence": "high"
+}
+
+,
+  "gold_DOMAIN_001": {
+"pass": false,
+"error_type": "E_DOMAIN_INVALID",
+"rule_hits": ["RULE_0_DOMAIN_INVALID", "RULE_1_PAT_DEFINITION_MISMATCH"],
+"reason": "reading 도메인에서 L3는 허용되지 않으며, 실제 오류는 '항상 바람직'을 '때로 해가 된다'로 뒤집은 팩트 왜곡(R1) 구조다.",
+"confidence": "high"
+}
+
+,
+  "gold_DOMAIN_002": {
+"pass": false,
+"error_type": "P_MISMATCH",
+"rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH", "RULE_5_OK_TRUE_WITH_PAT"],
+"reason": "선지는 지문과 일치하는 정답인데도 R1(팩트 왜곡)이 부여되어 오류 구조가 존재하지 않는다.",
+"confidence": "high"
+}
+
+
+}

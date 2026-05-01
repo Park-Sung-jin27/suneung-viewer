@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "reviewer": "성진(AI 1차 제안)",
+    "reviewed_at": "2026-04-20T12:35:00Z",
+    "round_label": "2026-04-20-R1",
+    "report_snapshot": {
+      "exam": "2025수능",
+      "report_generated_at": "2026-04-20T11:50:00.259Z",
+      "rules_version": "2026-04-20-v2",
+      "signal_map_version": "2026-04-20-v3",
+      "override_version": "2026-04-20-v2"
+    },
+    "notes": "2025수능 human_review_pack 3건 1차 채움. AI 초안 — loader 엄격 게이트 검증용."
+  },
+  "reviews": [
+    {
+      "choice_id": "2025수능/kor25_b/Q4/#1",
+      "exam": "2025수능",
+      "category": "mismatch_medium",
+      "engine_snapshot": {
+        "existing_pat": "R2",
+        "suggested_pat": "R1",
+        "match_type": "mismatch",
+        "soft_conflict_risk_tier": "medium",
+        "ok_recheck_candidate_score": 0.25,
+        "applied_rule_id": "signal.fact_distortion",
+        "conflict_flags": ["top2_gap_small", "label_vs_signal_disagree"],
+        "primary_decision": "send_to_pat_review_queue",
+        "secondary_decision": "send_to_ok_recheck_queue",
+        "decision_confidence": 0.5,
+        "ok_issue_reason_suggested": "axis_mismatch",
+        "pat_issue_reason_suggested": "cause_vs_fact"
+      },
+      "ok_issue_reason": "none",
+      "pat_issue_reason": "cause_vs_fact",
+      "final_decision": "send_to_pat_review_queue",
+      "human_pat_suggestion": null,
+      "human_ok_suggestion": null,
+      "agreed_with_engine": true,
+      "notes": "label=R2 vs signal top1=R1 · signal.fact_distortion 발화 + top2 경합. 해설이 사실 왜곡을 지적하면 R1. pat 재검토 큐. (AI 초안)"
+    },
+    {
+      "choice_id": "2025수능/kor25_a/Q2/#4",
+      "exam": "2025수능",
+      "category": "keep_existing_medium",
+      "engine_snapshot": {
+        "existing_pat": "R4",
+        "suggested_pat": "R4",
+        "match_type": "keep_existing_match",
+        "soft_conflict_risk_tier": "medium",
+        "ok_recheck_candidate_score": 0.15,
+        "applied_rule_id": "fallback.keep_existing",
+        "conflict_flags": ["top2_gap_small"],
+        "primary_decision": "send_to_ok_recheck_queue",
+        "secondary_decision": "send_to_pat_review_queue",
+        "decision_confidence": 0.55,
+        "ok_issue_reason_suggested": "axis_mismatch",
+        "pat_issue_reason_suggested": "unclear"
+      },
+      "ok_issue_reason": "keep_existing_risk",
+      "pat_issue_reason": "unclear",
+      "final_decision": "send_to_ok_recheck_queue",
+      "human_pat_suggestion": null,
+      "human_ok_suggestion": null,
+      "agreed_with_engine": true,
+      "notes": "fallback.keep_existing로 R4 유지 · top2 경합(R4 vs 타 후보) — 해설이 실제 축(개념 혼동 vs 보기대입)과 어긋날 위험. ok 재검토 필요. (AI 초안)"
+    },
+    {
+      "choice_id": "2025수능/l2025a/Q20/#1",
+      "exam": "2025수능",
+      "category": "keep_existing_medium_2",
+      "engine_snapshot": {
+        "existing_pat": "L1",
+        "suggested_pat": "L1",
+        "match_type": "keep_existing_match",
+        "soft_conflict_risk_tier": "medium",
+        "ok_recheck_candidate_score": 0.15,
+        "applied_rule_id": "fallback.keep_existing",
+        "conflict_flags": ["top2_gap_small"],
+        "primary_decision": "send_to_ok_recheck_queue",
+        "secondary_decision": "send_to_pat_review_queue",
+        "decision_confidence": 0.55,
+        "ok_issue_reason_suggested": "axis_mismatch",
+        "pat_issue_reason_suggested": "unclear"
+      },
+      "ok_issue_reason": "keep_existing_risk",
+      "pat_issue_reason": "unclear",
+      "final_decision": "send_to_ok_recheck_queue",
+      "human_pat_suggestion": null,
+      "human_ok_suggestion": null,
+      "agreed_with_engine": true,
+      "notes": "fallback.keep_existing L1 유지 · top2 경합(L1 vs L4 추정). 표현/정서(L1) vs 구조·전개(L4) 경계 — 해설 원문 확인 필요. ok 재검토 큐. (AI 초안)"
+    }
+  ]
+}

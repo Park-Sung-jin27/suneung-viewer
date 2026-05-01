@@ -1,0 +1,24 @@
+{
+  "description": "사람이 수동으로 확정한 pat locked 케이스. (exam, setId, qId, num) 매치 시 엔진 제안을 이 값으로 강제. ok 재검토가 필요한 선지는 pat_ok_recheck_queue.json 참조.",
+  "version": "2026-04-20-v2",
+  "updated_at": "2026-04-20",
+  "cases": [
+    { "exam": "2025수능", "setId": "l2025a",  "qId": 19, "num": 5, "pat": "L4", "reason": "계기↔결과 순서 뒤섞기 → 구조·순서 오독" },
+    { "exam": "2025수능", "setId": "l2025c",  "qId": 29, "num": 1, "pat": "L3", "reason": "지문에 없는 '새로운 세계관' 개념 추가 → 주제·의미 과잉" },
+    { "exam": "2025수능", "setId": "kor25_a", "qId": 3,  "num": 5, "pat": "R1", "reason": "annotated_image 표시 대상(호흡 정보) vs 선지 서술(주요 문장) 불일치 → 사실 왜곡" },
+
+    { "exam": "2024수능", "setId": "l2024a", "qId": 20, "num": 1, "pat": "L1", "reason": "문학 세트 — 표현·형식 오독" },
+    { "exam": "2024수능", "setId": "l2024a", "qId": 20, "num": 2, "pat": "L1", "reason": "문학 세트 — 표현·형식 오독" },
+    { "exam": "2024수능", "setId": "l2024a", "qId": 20, "num": 4, "pat": "L1", "reason": "문학 세트 — 표현·형식 오독" },
+    { "exam": "2024수능", "setId": "l2024a", "qId": 20, "num": 5, "pat": "L1", "reason": "문학 세트 — 표현·형식 오독" },
+    { "exam": "2024수능", "setId": "l2024b", "qId": 25, "num": 3, "pat": "L4", "reason": "서사 구조·맥락 오류" },
+
+    { "exam": "2023수능", "setId": "r2023d", "qId": 15, "num": 4, "pat": "R4", "reason": "개념 혼합 — null→R4 확정" },
+
+    { "exam": "2022수능", "setId": "l2022d", "qId": 34, "num": 3, "pat": "L1", "reason": "'수행 불가능한 난처함' → '책임 포기' 왜곡 → 사실 오독" }
+  ],
+  "_excluded_pending_human_review": [
+    "2022수능:r2022b:8:4  (R1/R4 재확정 전)",
+    "2022수능:r2022c:13:5 (ok 재검토 전)"
+  ]
+}

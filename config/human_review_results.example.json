@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "reviewer": "성진",
+    "reviewed_at": "2026-04-20T12:00:00Z",
+    "round_label": "2026-04-20-R1",
+    "report_snapshot": {
+      "exam": "2026수능",
+      "report_generated_at": "2026-04-20T11:30:00Z",
+      "rules_version": "2026-04-20-v2",
+      "signal_map_version": "2026-04-20-v3",
+      "override_version": "2026-04-20-v2"
+    },
+    "notes": "샘플 3건 응답 예시. 실제 사용 시 reviews 배열에 엔진이 생성한 샘플을 옮겨 담아 기록."
+  },
+  "reviews": [
+    {
+      "choice_id": "2026수능/s3/Q10/#4",
+      "exam": "2026수능",
+      "category": "mismatch_medium",
+      "engine_snapshot": {
+        "existing_pat": "R2",
+        "suggested_pat": "R1",
+        "match_type": "mismatch",
+        "soft_conflict_risk_tier": "medium",
+        "ok_recheck_candidate_score": 0.25,
+        "applied_rule_id": "signal.fact_distortion",
+        "conflict_flags": ["label_vs_signal_disagree"],
+        "primary_decision": "send_to_pat_review_queue",
+        "secondary_decision": "send_to_ok_recheck_queue",
+        "decision_confidence": 0.5,
+        "ok_issue_reason_suggested": "axis_mismatch",
+        "pat_issue_reason_suggested": "cause_vs_fact"
+      },
+      "ok_issue_reason": "none",
+      "pat_issue_reason": "cause_vs_fact",
+      "final_decision": "send_to_pat_review_queue",
+      "human_pat_suggestion": null,
+      "human_ok_suggestion": null,
+      "agreed_with_engine": true,
+      "notes": "해설은 선지의 인과 서술(~때문에)이 지문 사실을 정반대로 뒤집었다는 점을 바로 짚음. ok 쪽은 멀쩡, pat만 경계(R1 vs R2) 판단 필요."
+    },
+    {
+      "choice_id": "2026수능/l2026b/Q26/#2",
+      "exam": "2026수능",
+      "category": "keep_existing_medium",
+      "engine_snapshot": {
+        "existing_pat": "L1",
+        "suggested_pat": "L1",
+        "match_type": "keep_existing_match",
+        "soft_conflict_risk_tier": "medium",
+        "ok_recheck_candidate_score": 0.2,
+        "applied_rule_id": "fallback.keep_existing",
+        "conflict_flags": ["top2_gap_small"],
+        "primary_decision": "send_to_ok_recheck_queue",
+        "secondary_decision": "send_to_pat_review_queue",
+        "decision_confidence": 0.55,
+        "ok_issue_reason_suggested": "axis_mismatch",
+        "pat_issue_reason_suggested": "unclear"
+      },
+      "ok_issue_reason": "keep_existing_risk",
+      "pat_issue_reason": "structure_vs_form",
+      "final_decision": "send_to_override_candidate_queue",
+      "human_pat_suggestion": "L4",
+      "human_ok_suggestion": null,
+      "agreed_with_engine": false,
+      "notes": "fallback.keep_existing로 L1 유지됐지만 해설은 소리→문장 '구조적 대비'를 짚고 있음(keep_existing_risk). 실제 축은 L4로 제안 — 후보 큐에 올려 추가 검토."
+    },
+    {
+      "choice_id": "2026수능/s3/Q12/#5",
+      "exam": "2026수능",
+      "category": "label_signal_disagree",
+      "engine_snapshot": {
+        "existing_pat": "R1",
+        "suggested_pat": "R2",
+        "match_type": "mismatch",
+        "soft_conflict_risk_tier": "medium",
+        "ok_recheck_candidate_score": 0.25,
+        "applied_rule_id": "signal.causal_inversion",
+        "conflict_flags": ["label_vs_signal_disagree"],
+        "primary_decision": "send_to_pat_review_queue",
+        "secondary_decision": "send_to_ok_recheck_queue",
+        "decision_confidence": 0.5,
+        "ok_issue_reason_suggested": "axis_mismatch",
+        "pat_issue_reason_suggested": "cause_vs_fact"
+      },
+      "ok_issue_reason": "none",
+      "pat_issue_reason": "unclear",
+      "final_decision": "leave_as_is",
+      "human_pat_suggestion": null,
+      "human_ok_suggestion": null,
+      "agreed_with_engine": false,
+      "notes": "지문 문맥 더 봐야 판단 가능. 이번 라운드는 유지하고 다음에 샘플 재등장하면 재검토."
+    }
+  ]
+}
