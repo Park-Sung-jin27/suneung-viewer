@@ -6,10 +6,10 @@
 
 ## 담당 영역
 
-| | Code B |
-|---|---|
+|      | Code B                                                                        |
+| ---- | ----------------------------------------------------------------------------- |
 | 담당 | `pipeline/*`, `public/data/all_data_204.json`, `public/data/annotations.json` |
-| 금지 | `src/*.jsx` 수정 |
+| 금지 | `src/*.jsx` 수정                                                              |
 
 **동시 push 절대 금지 / 작업 전 git pull 필수**
 
@@ -114,15 +114,15 @@ annotate.js가 자동으로:
 
 ## 파이프라인 스크립트
 
-| 스크립트 | 역할 |
-|---|---|
-| `step3_analysis.js` | 해설 생성 (판정 엔진 구조) |
-| `step4_csids.js` | cs_ids + cs_spans 매핑 |
-| `annotate.js` | annotation draft 파싱 → annotations.json |
-| `gen_annotation_template.cjs` | 세트별 annotation 입력 템플릿 생성 |
-| `reanalyze_positive.mjs` | 해설 재생성 (MAX_RETRY=2) |
-| `quality_gate.mjs` | 품질 검사 단일 진입점 |
-| `fix_dead_csids.cjs` | DEAD_csid 수정 |
+| 스크립트                      | 역할                                     |
+| ----------------------------- | ---------------------------------------- |
+| `step3_analysis.js`           | 해설 생성 (판정 엔진 구조)               |
+| `step4_csids.js`              | cs_ids + cs_spans 매핑                   |
+| `annotate.js`                 | annotation draft 파싱 → annotations.json |
+| `gen_annotation_template.cjs` | 세트별 annotation 입력 템플릿 생성       |
+| `reanalyze_positive.mjs`      | 해설 재생성 (MAX_RETRY=2)                |
+| `quality_gate.mjs`            | 품질 검사 단일 진입점                    |
+| `fix_dead_csids.cjs`          | DEAD_csid 수정                           |
 
 ### 주요 명령어
 

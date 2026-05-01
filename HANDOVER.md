@@ -43,9 +43,9 @@ git push
 
 ## 📊 현재 quality_gate (--scope=suneung5)
 
-| 등급 | 건수 |
-|---|---|
-| 🔴 CRITICAL | 0건 ✅ |
-| 🟡 WARNING | 164건 (F_content_reversed 47 + H_cs_concentration 45 + G_ann_dead 72) |
-| ⚪ IGNORE | 7건 |
-| **상태** | 🟢 **release_ready** |
+| 등급        | 건수                                                                  |
+| ----------- | --------------------------------------------------------------------- |
+| 🔴 CRITICAL | 0건 ✅                                                                |
+| 🟡 WARNING  | 164건 (F_content_reversed 47 + H_cs_concentration 45 + G_ann_dead 72) |
+| ⚪ IGNORE   | 7건                                                                   |
+| **상태**    | 🟢 **release_ready**                                                  |
