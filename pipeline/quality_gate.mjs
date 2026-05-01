@@ -276,11 +276,39 @@ for (const yearKey of yearsToCheck) {
               path.resolve(__dirname, "../src/constants.js"),
               "utf8",
             );
-            const m = c.match(/FIGURE_IMAGE_MAP\s*=\s*\{([\s\S]*?)\}/);
+            // FIGURE_IMAGE_MAP = { ... } 블록 전체 (최상위 { } 균형 탐색)
+            const idx = c.indexOf("FIGURE_IMAGE_MAP");
+            let body = "";
+            if (idx >= 0) {
+              const start = c.indexOf("{", idx);
+              if (start >= 0) {
+                let depth = 0;
+                for (let i = start; i < c.length; i++) {
+                  if (c[i] === "{") depth++;
+                  else if (c[i] === "}") {
+                    depth--;
+                    if (depth === 0) {
+                      body = c.slice(start + 1, i);
+                      break;
+                    }
+                  }
+                }
+              }
+            }
             const map = new Set();
-            if (m) {
-              for (const mm of m[1].matchAll(/["']([a-zA-Z0-9_]+)["']\s*:/g)) {
-                map.add(mm[1]);
+            // 최상위 키만 추출 — depth 1에서 `<id>:` 패턴 (중첩 객체 내부 키 제외)
+            let d = 0;
+            for (const line of body.split(/\r?\n/)) {
+              // 이 줄 처리 전 depth가 0이면 최상위
+              if (d === 0) {
+                const m2 = line.match(
+                  /^\s*["']?([a-zA-Z_$][a-zA-Z0-9_$]*)["']?\s*:/,
+                );
+                if (m2) map.add(m2[1]);
+              }
+              for (const ch of line) {
+                if (ch === "{") d++;
+                else if (ch === "}") d--;
               }
             }
             globalThis.__figureMap = map;

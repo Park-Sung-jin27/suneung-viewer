@@ -110,7 +110,117 @@ async function verifySetByReanalysis(set, answerKey) {
   return mismatches;
 }
 
+// ─── [NEW] 결정적 검증 ─────────────────────────────────────
+//
+// rederive 기반 검증의 비결정성 문제(정상 Q33 도 randomly needsReview 로 떨어짐) 를
+// 해결하기 위해 step5 의 기본 경로는 다음 3가지 결정적 검사만 수행한다:
+//
+//   1. answerKey ↔ choice.ok 일치
+//      - questionType=positive: 정답 번호 선지만 ok:true, 나머지 ok:false
+//      - questionType=negative: 정답 번호 선지만 ok:false, 나머지 ok:true
+//
+//   2. cs_ids 존재 여부 (공개 가능 KPI — CLAUDE.md 출시 기준)
+//      - ok:true → cs_ids 비어있지 않아야 함
+//      - ok:false + pat ∈ {R3, V} 또는 pat === null → cs_ids [] 허용
+//      - 그 외 ok:false → cs_ids 비어있지 않아야 함
+//
+//   3. pat 도메인 유효성
+//      - ok:true → pat === null
+//      - ok:false + set.id r 프리픽스 → pat ∈ {R1,R2,R3,R4,V}
+//      - ok:false + set.id l 프리픽스 → pat ∈ {L1,L2,L3,L4,L5,V}
+//
+// 위 3개 중 하나라도 위반이면 해당 question 에 needsReview 플래그.
+const VALID_R_PATS = new Set(["R1", "R2", "R3", "R4", "V"]);
+const VALID_L_PATS = new Set(["L1", "L2", "L3", "L4", "L5", "V"]);
+const AUTO_EMPTY_CS_PATS = new Set(["R3", "V"]); // cs_ids=[] 허용
+
+function verifyDeterministic(set, answerKey) {
+  const issuesByQ = new Map(); // qId → [reasons]
+  const addIssue = (qId, reason) => {
+    if (!issuesByQ.has(qId)) issuesByQ.set(qId, []);
+    issuesByQ.get(qId).push(reason);
+  };
+  const isLit = (set.id || "").startsWith("l");
+  const validPats = isLit ? VALID_L_PATS : VALID_R_PATS;
+
+  for (const q of set.questions || []) {
+    const correct = answerKey[String(q.id)];
+    if (correct === undefined) continue;
+
+    for (const c of q.choices || []) {
+      // [NEW] ok/analysis 모순 flag 수집 — step3 postProcess 가 _ok_analysis_mismatch 부여
+      if (c._ok_analysis_mismatch) {
+        addIssue(
+          q.id,
+          `ok_analysis_mismatch:#${c.num} ${c._ok_analysis_mismatch.code}`,
+        );
+      }
+      const isCorrectNum = c.num === correct;
+      const expectedOk =
+        q.questionType === "positive" ? isCorrectNum : !isCorrectNum;
+
+      // 1. ok 일치
+      if (c.ok !== expectedOk) {
+        addIssue(
+          q.id,
+          `ok_mismatch:#${c.num} got=${c.ok} expected=${expectedOk}`,
+        );
+      }
+
+      // 3. pat 도메인 유효성
+      if (c.ok === true) {
+        if (c.pat !== null && c.pat !== undefined) {
+          addIssue(q.id, `pat_invalid:#${c.num} ok=true but pat=${c.pat}`);
+        }
+      } else if (c.ok === false) {
+        if (c.pat === null || c.pat === undefined || c.pat === 0) {
+          addIssue(q.id, `pat_missing:#${c.num} ok=false but pat=${c.pat}`);
+        } else if (!validPats.has(c.pat)) {
+          addIssue(
+            q.id,
+            `pat_out_of_domain:#${c.num} pat=${c.pat} not in ${isLit ? "L" : "R"} set`,
+          );
+        }
+      }
+
+      // 2. cs_ids 존재 여부
+      const cs = Array.isArray(c.cs_ids) ? c.cs_ids : null;
+      if (cs === null) {
+        addIssue(q.id, `cs_ids_not_array:#${c.num}`);
+      } else if (c.ok === true) {
+        if (cs.length === 0) addIssue(q.id, `cs_ids_empty_on_ok_true:#${c.num}`);
+      } else if (c.ok === false) {
+        const patKey = c.pat;
+        const autoEmptyAllowed =
+          patKey === null || patKey === undefined || AUTO_EMPTY_CS_PATS.has(patKey);
+        if (!autoEmptyAllowed && cs.length === 0) {
+          addIssue(
+            q.id,
+            `cs_ids_empty_on_ok_false:#${c.num} pat=${patKey}`,
+          );
+        }
+      }
+    }
+  }
+
+  const mismatches = [];
+  for (const [qId, reasons] of issuesByQ.entries()) {
+    mismatches.push({ qId, reasons });
+  }
+  return mismatches;
+}
+
 // ─── 메인 검증 루프 ────────────────────────────────────────
+//
+// [변경] 기본 경로는 결정적 검증(verifyDeterministic).
+// 레거시 rederive 경로는 STEP5_ENABLE_REDERIVE=true 로만 활성화.
+//
+// 결정적 검증 기준:
+//   1) answerKey ↔ choice.ok 일치
+//   2) cs_ids 존재 여부 (ok:true 필수, ok:false+R3/V 제외 필수)
+//   3) pat 도메인 유효성 (ok:true→null, ok:false→R/L 도메인 내)
+//
+// mismatch 발생 시 해당 question 에 needsReview: true + 상세 reason 배열 첨부.
 
 export async function verifyAndFix(
   step4Data,
@@ -123,34 +233,78 @@ export async function verifyAndFix(
   };
 
   const stats = { total: 0, matched: 0, needsReview: [] };
+  const useRederive = process.env.STEP5_ENABLE_REDERIVE === "true";
+  console.log(
+    `[step5] 검증 모드: ${useRederive ? "rederive (LEGACY, 비결정적)" : "deterministic (기본)"}`,
+  );
 
   for (const section of ["reading", "literature"]) {
     for (let si = 0; si < result[section].length; si++) {
       let set = result[section][si];
       console.log(`\n[step5] 검증 중: ${set.id} (${set.range})`);
 
-      let mismatches = await verifySetByReanalysis(set, answerKey);
+      // [기본 경로] 결정적 검증
+      let detMismatches = verifyDeterministic(set, answerKey);
+      // [옵션] rederive — 비결정성 있음, 기본 off
+      let rederiveMismatches = useRederive
+        ? await verifySetByReanalysis(set, answerKey)
+        : [];
+
+      // 통합 mismatch 결정:
+      //   - 기본(off): deterministic 만 사용
+      //   - rederive(on): deterministic ∪ rederive (둘 중 하나라도 걸리면 flag)
+      const mergedByQ = new Map();
+      for (const m of detMismatches) {
+        mergedByQ.set(m.qId, {
+          qId: m.qId,
+          deterministic_reasons: m.reasons,
+          rederive: null,
+        });
+      }
+      for (const m of rederiveMismatches) {
+        const prev = mergedByQ.get(m.qId) || {
+          qId: m.qId,
+          deterministic_reasons: null,
+        };
+        prev.rederive = { expected: m.expected, derived: m.derived };
+        mergedByQ.set(m.qId, prev);
+      }
+      let mismatches = [...mergedByQ.values()];
 
       if (mismatches.length === 0) {
-        console.log(`  ✅ 일치`);
+        console.log(`  ✅ 일치 (deterministic)`);
       } else {
-        console.log(
-          `  ❌ 불일치 ${mismatches.length}건: ${mismatches.map((m) => `${m.qId}번(기대:${m.expected} 재도출:${m.derived})`).join(", ")}`,
-        );
+        const summary = mismatches
+          .map((m) => {
+            const parts = [];
+            if (m.deterministic_reasons)
+              parts.push(`det:${m.deterministic_reasons.join("/")}`);
+            if (m.rederive)
+              parts.push(
+                `rederive:기대${m.rederive.expected}≠재도출${m.rederive.derived}`,
+              );
+            return `${m.qId}번(${parts.join(" | ")})`;
+          })
+          .join(", ");
+        console.log(`  ❌ 불일치 ${mismatches.length}건: ${summary}`);
 
         if (!step2Data) {
           console.log(`  ⚠️  step2Data 없음 — 재실행 불가, needsReview 플래그`);
           mismatches.forEach((m) =>
-            stats.needsReview.push({ setId: set.id, qId: m.qId }),
+            stats.needsReview.push({
+              setId: set.id,
+              qId: m.qId,
+              reasons: m.deterministic_reasons || [],
+              rederive: m.rederive || null,
+            }),
           );
         } else {
-          // 최대 3회 재시도
+          // 최대 maxRetries 회 재시도 — step3/step4 재실행 후 결정적 재검증
           let attempt = 0;
           while (mismatches.length > 0 && attempt < maxRetries) {
             attempt++;
             console.log(`  [retry ${attempt}/${maxRetries}] step3 재실행...`);
 
-            // step2 원본 세트 찾기
             const step2Set = [
               ...step2Data.reading,
               ...step2Data.literature,
@@ -160,7 +314,6 @@ export async function verifyAndFix(
               break;
             }
 
-            // step3 재실행 + postProcess
             let retried = await retrySet(step2Set, answerKey);
             const wrapped = {
               reading: section === "reading" ? [retried] : [],
@@ -169,7 +322,6 @@ export async function verifyAndFix(
             const processed = await postProcess(wrapped, answerKey);
             retried = processed[section][0];
 
-            // step4 재실행 (해당 세트만)
             const step4Wrapped = {
               reading: section === "reading" ? [retried] : [],
               literature: section === "literature" ? [retried] : [],
@@ -177,7 +329,28 @@ export async function verifyAndFix(
             const reassigned = await assignCsIds(step4Wrapped);
             set = reassigned[section][0];
 
-            mismatches = await verifySetByReanalysis(set, answerKey);
+            detMismatches = verifyDeterministic(set, answerKey);
+            rederiveMismatches = useRederive
+              ? await verifySetByReanalysis(set, answerKey)
+              : [];
+
+            const m2 = new Map();
+            for (const m of detMismatches)
+              m2.set(m.qId, {
+                qId: m.qId,
+                deterministic_reasons: m.reasons,
+                rederive: null,
+              });
+            for (const m of rederiveMismatches) {
+              const prev = m2.get(m.qId) || {
+                qId: m.qId,
+                deterministic_reasons: null,
+              };
+              prev.rederive = { expected: m.expected, derived: m.derived };
+              m2.set(m.qId, prev);
+            }
+            mismatches = [...m2.values()];
+
             if (mismatches.length === 0) {
               console.log(`  ✅ retry ${attempt}: 불일치 해소`);
             } else {
@@ -191,16 +364,26 @@ export async function verifyAndFix(
             console.log(
               `  ⚠️  ${maxRetries}회 후에도 불일치 — needsReview 플래그`,
             );
-            // 해당 문항에 needsReview: true 추가
             set = {
               ...set,
               questions: set.questions.map((q) => {
                 const m = mismatches.find((x) => x.qId === q.id);
-                return m ? { ...q, needsReview: true } : q;
+                if (!m) return q;
+                return {
+                  ...q,
+                  needsReview: true,
+                  needsReview_reasons: m.deterministic_reasons || [],
+                  needsReview_rederive: m.rederive || null,
+                };
               }),
             };
             mismatches.forEach((m) =>
-              stats.needsReview.push({ setId: set.id, qId: m.qId }),
+              stats.needsReview.push({
+                setId: set.id,
+                qId: m.qId,
+                reasons: m.deterministic_reasons || [],
+                rederive: m.rederive || null,
+              }),
             );
           }
         }
@@ -216,6 +399,47 @@ export async function verifyAndFix(
       }
 
       result[section][si] = set;
+    }
+  }
+
+  // [NEW] fail-fast: pat_out_of_domain / pat_missing 은 도메인 무결성 위반이므로
+  // 재시도 이후에도 남아 있으면 파이프라인을 즉시 중단한다.
+  // STEP5_FAIL_FAST=false 로만 해제 가능 (기본 enabled).
+  const FAIL_FAST_ENABLED = process.env.STEP5_FAIL_FAST !== "false";
+  const FATAL_PATTERNS = [
+    /^pat_out_of_domain/,
+    /^pat_missing/,
+    /^pat_invalid/,
+    /^ok_analysis_mismatch/, // [NEW] ok/analysis 모순도 release 차단
+  ];
+  const fatal = [];
+  for (const entry of stats.needsReview) {
+    for (const r of entry.reasons || []) {
+      if (FATAL_PATTERNS.some((re) => re.test(r))) {
+        fatal.push({ setId: entry.setId, qId: entry.qId, reason: r });
+      }
+    }
+  }
+  if (fatal.length > 0) {
+    console.error(
+      "\n" + "=".repeat(60),
+    );
+    console.error(
+      `[step5:FAIL-FAST] 도메인 무결성 위반 ${fatal.length}건 — 파이프라인 중단`,
+    );
+    console.error("=".repeat(60));
+    for (const f of fatal) {
+      console.error(`  🔴 [${f.setId}] Q${f.qId}: ${f.reason}`);
+    }
+    if (FAIL_FAST_ENABLED) {
+      console.error(
+        `\n→ STEP5_FAIL_FAST=false 로 일시 해제 가능하나, 릴리즈 전 반드시 해소 필요.`,
+      );
+      process.exit(1);
+    } else {
+      console.warn(
+        `\n⚠️  STEP5_FAIL_FAST=false 로 해제됨 — 경고만 출력하고 진행.`,
+      );
     }
   }
 

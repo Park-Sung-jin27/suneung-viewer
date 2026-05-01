@@ -45,64 +45,84 @@ if (!yd) {
 
 const ann = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));
 
-// [B-12] draft 파서 — _annotation_drafts/<yearKey>.txt의 marker 섹션을 annotations.json에 반영
-const DRAFT_PATH = path.resolve(
-  __dirname,
-  `../_annotation_drafts/${yearKey}.txt`,
-);
-if (process.argv.includes("--apply-draft") && fs.existsSync(DRAFT_PATH)) {
-  const draftText = fs.readFileSync(DRAFT_PATH, "utf8");
-  // 세트 단위로 파싱: 세트 헤더(set.id 줄) 뒤 marker: 섹션을 찾아 항목 수집
-  const setIds = new Set();
-  for (const sec of ["reading", "literature"])
-    for (const s of yd[sec] || []) setIds.add(s.id);
+// [B-12] draft 파서 — _annotation_drafts/<yearKey>.txt + <yearKey>_*.txt 모두 로드
+const DRAFT_DIR = path.resolve(__dirname, "../_annotation_drafts");
+function findDraftFiles(yk) {
+  if (!fs.existsSync(DRAFT_DIR)) return [];
+  const all = fs.readdirSync(DRAFT_DIR);
+  const exact = `${yk}.txt`;
+  const perSetPrefix = `${yk}_`;
+  return all
+    .filter(
+      (f) => f === exact || (f.startsWith(perSetPrefix) && f.endsWith(".txt")),
+    )
+    .map((f) => path.join(DRAFT_DIR, f));
+}
 
-  const lines = draftText.split(/\r?\n/);
-  let currentSet = null;
-  let inMarker = false;
-  const markerByset = {}; // setId → [{type, marker, sentId, text}]
-
-  // "  <마커> <sentId> "<어구>"" 포맷, 주석(#) 라인은 무시
-  const MARKER_LINE =
-    /^\s{2,}([ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\])\s+([a-zA-Z_0-9]+)\s+"([^"]+)"\s*$/;
-
-  for (const raw of lines) {
-    const setHeaderMatch = raw.match(/^([a-zA-Z_0-9]+)\s/);
-    if (setHeaderMatch && setIds.has(setHeaderMatch[1])) {
-      currentSet = setHeaderMatch[1];
-      inMarker = false;
-      continue;
-    }
-    if (/^marker:\s*$/.test(raw)) {
-      inMarker = true;
-      continue;
-    }
-    if (/^(bracket|box|underline)/.test(raw)) {
-      inMarker = false;
-      continue;
-    }
-    if (!inMarker || !currentSet) continue;
-    if (/^\s*#/.test(raw)) continue; // 주석 라인 스킵
-    const m = raw.match(MARKER_LINE);
-    if (!m) continue;
-    const [, marker, sentId, text] = m;
-    if (!markerByset[currentSet]) markerByset[currentSet] = [];
-    markerByset[currentSet].push({ type: "marker", marker, sentId, text });
-  }
-
-  // annotations.json에 병합 — 기존 항목 중 type:"marker" 만 교체
-  if (!ann[yearKey]) ann[yearKey] = {};
-  for (const [setId, markers] of Object.entries(markerByset)) {
-    const existing = (ann[yearKey][setId] || []).filter(
-      (a) => a.type !== "marker",
+if (process.argv.includes("--apply-draft")) {
+  const draftFiles = findDraftFiles(yearKey);
+  if (draftFiles.length === 0) {
+    console.log(
+      `\nℹ️  _annotation_drafts/${yearKey}.txt (또는 ${yearKey}_*.txt) 없음 — apply-draft 스킵\n`,
     );
-    ann[yearKey][setId] = [...existing, ...markers];
+  } else {
+    // 세트 단위로 파싱: 세트 헤더(set.id 줄) 뒤 marker: 섹션을 찾아 항목 수집
+    const setIds = new Set();
+    for (const sec of ["reading", "literature"])
+      for (const s of yd[sec] || []) setIds.add(s.id);
+
+    const markerByset = {}; // setId → [{type, marker, sentId, text}]
+
+    // "  <마커> <sentId> "<어구>"" 포맷 + 끝의 "  ← preview" 꼬리 허용
+    // 주석(#) 라인은 별도 스킵
+    const MARKER_LINE =
+      /^\s{2,}([ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\])\s+([a-zA-Z_0-9]+)\s+"([^"]+)"\s*(←.*)?$/;
+
+    for (const draftPath of draftFiles) {
+      const draftText = fs.readFileSync(draftPath, "utf8");
+      const lines = draftText.split(/\r?\n/);
+      let currentSet = null;
+      let inMarker = false;
+
+      for (const raw of lines) {
+        const setHeaderMatch = raw.match(/^([a-zA-Z_0-9]+)\s/);
+        if (setHeaderMatch && setIds.has(setHeaderMatch[1])) {
+          currentSet = setHeaderMatch[1];
+          inMarker = false;
+          continue;
+        }
+        if (/^marker:\s*$/.test(raw)) {
+          inMarker = true;
+          continue;
+        }
+        if (/^(bracket|box|underline)/.test(raw)) {
+          inMarker = false;
+          continue;
+        }
+        if (!inMarker || !currentSet) continue;
+        if (/^\s*#/.test(raw)) continue; // 주석 라인 스킵
+        const m = raw.match(MARKER_LINE);
+        if (!m) continue;
+        const [, marker, sentId, text] = m;
+        if (!markerByset[currentSet]) markerByset[currentSet] = [];
+        markerByset[currentSet].push({ type: "marker", marker, sentId, text });
+      }
+    }
+
+    // annotations.json에 병합 — 기존 항목 중 type:"marker" 만 교체
+    if (!ann[yearKey]) ann[yearKey] = {};
+    for (const [setId, markers] of Object.entries(markerByset)) {
+      const existing = (ann[yearKey][setId] || []).filter(
+        (a) => a.type !== "marker",
+      );
+      ann[yearKey][setId] = [...existing, ...markers];
+    }
+    fs.writeFileSync(ANN_PATH, JSON.stringify(ann, null, 2), "utf8");
+    const total = Object.values(markerByset).flat().length;
+    console.log(
+      `\n✅ draft ${draftFiles.length}개에서 marker ${total}개 파싱 → ${Object.keys(markerByset).length}개 세트 반영\n`,
+    );
   }
-  fs.writeFileSync(ANN_PATH, JSON.stringify(ann, null, 2), "utf8");
-  const total = Object.values(markerByset).flat().length;
-  console.log(
-    `\n✅ draft에서 marker ${total}개 파싱 → ${Object.keys(markerByset).length}개 세트 반영\n`,
-  );
 }
 
 // ── 출력 헬퍼 ─────────────────────────────────────────────────────────────────

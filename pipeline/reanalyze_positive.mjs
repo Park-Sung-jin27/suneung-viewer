@@ -36,13 +36,31 @@ const TARGET_YEARS = {
 
 const yearArg = process.argv[2];
 if (!yearArg) {
-  console.error("사용법: node pipeline/reanalyze_positive.mjs <연도키|all>");
+  console.error(
+    "사용법: node pipeline/reanalyze_positive.mjs <연도키|all|--scope=모의고사전체|--scope=suneung5>",
+  );
   process.exit(1);
 }
 
+// --scope 지원: 2022~2026 범위 내 6월/9월 모의고사 10개 또는 수능 5개
+const SCOPE_PRESETS = {
+  모의고사전체: [
+    "2022_6월", "2022_9월",
+    "2023_6월", "2023_9월",
+    "2024_6월", "2024_9월",
+    "2025_6월", "2025_9월",
+    "2026_6월", "2026_9월",
+  ],
+  suneung5: ["2022수능", "2023수능", "2024수능", "2025수능", "2026수능"],
+};
+
 // ─── 대상 연도 결정 ────────────────────────────────────────────────────────────
-const yearsToProcess =
-  yearArg === "all" ? Object.keys(TARGET_YEARS) : [yearArg];
+const scopeMatch = yearArg.match(/^--scope=(.+)$/);
+const yearsToProcess = scopeMatch
+  ? SCOPE_PRESETS[scopeMatch[1]] || [scopeMatch[1]]
+  : yearArg === "all"
+    ? Object.keys(TARGET_YEARS)
+    : [yearArg];
 
 // ─── analysis 생성 함수 ───────────────────────────────────────────────────────
 async function generateAnalysis(set, q, c) {

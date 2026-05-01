@@ -75,9 +75,19 @@ async function tryRun(yearKey, examPath, answerPath) {
   console.log(`  정답표: ${path.basename(answerPath)}`);
 
   try {
+    // [TEST_MODE ENFORCED] watcher 실행은 항상 테스트 모드.
+    // 부모 셸 설정과 무관하게 child 환경변수에 TEST_MODE=true 강제 주입 →
+    // pipeline/index.js::mergeSection 이 all_data_204.json 을 건드리지 않는다.
+    // 실 운영 병합이 필요하면 `node pipeline/index.js ...` 직접 실행할 것.
+    const childEnv = { ...process.env, TEST_MODE: "true" };
+    console.log("[watch] TEST_MODE=true 강제 주입 → merge 차단");
     execSync(
       `node pipeline/index.js "${examPath}" "${answerPath}" "${yearKey}" 45`,
-      { stdio: "inherit", cwd: path.resolve(__dirname, "..") },
+      {
+        stdio: "inherit",
+        cwd: path.resolve(__dirname, ".."),
+        env: childEnv,
+      },
     );
 
     // 완료 시 _done으로 이동
