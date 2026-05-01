@@ -78,3 +78,13 @@ inventory_files.ps1
 reports/
 results/
 pipeline/_smoke_wrapper_caller.mjs
+
+# Claude Code 자동 생성 worktrees
+.claude/worktrees/
+
+# 트랙 2-c 진단 임시 산출
+pipeline/track2c/diff_full.txt
+pipeline/track2c/baseline_*.json
+pipeline/track2c/cb640cb_*.json
+pipeline/track2c/4d_4d2_combined.patch
+pipeline/track2c/git_status_*.txt
