@@ -64,6 +64,34 @@ function cleanAnalysis(text) {
   );
 }
 
+// 오답 선지 1줄 패턴 설명 추출
+//   choice.analysis의 🔍 라인을 추출 + pat 라벨 prefix
+//   ok===false인 선지에서만 동작, 그 외 null 반환
+//   기존 해설 펼치기 영역과 분리된 컴팩트 1줄 노출용
+function explainWrong(choice) {
+  if (!choice || choice.ok !== false) return null;
+  const lines = (choice.analysis || "").split("\n").map((l) => l.trim());
+  const insightLine = lines.find((l) => l.startsWith("🔍")) || "";
+  const insight = insightLine.replace(/^🔍\s*/, "").trim();
+  const patLabels = {
+    R1: "팩트 왜곡",
+    R2: "인과 전도",
+    R3: "과잉 추론",
+    R4: "개념 짜깁기",
+    L1: "표현 오독",
+    L2: "정서 오독",
+    L3: "주제 과잉",
+    L4: "구조 오류",
+    L5: "보기 오류",
+    V: "어휘",
+  };
+  const patLabel = patLabels[choice.pat] || "";
+  if (!insight && !patLabel) return null;
+  const prefix = patLabel ? choice.pat + " " + patLabel : choice.pat || "";
+  const body = insight || "지문과 어긋남";
+  return "❌ " + prefix + ": " + body;
+}
+
 // [[sym:KEY]] → <img> 치환
 function renderWithSymbols(text) {
   if (!text) return null;
@@ -633,6 +661,31 @@ function ChoiceItem({
           </span>
         )}
       </div>
+      {/* 오답 1줄 패턴 설명 (정답 공개 후 ok:false 선지 전체) */}
+      {(showResult || isReview) &&
+        (() => {
+          const exp = explainWrong(choice);
+          return exp ? (
+            <div
+              style={{
+                marginTop: "4px",
+                padding: "4px 10px",
+                fontSize: "0.74rem",
+                color: "#b91c1c",
+                background: "#fef2f2",
+                borderLeft: "2px solid #ef4444",
+                borderRadius: "0 4px 4px 0",
+                lineHeight: "1.5",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+              title={exp}
+            >
+              {exp}
+            </div>
+          ) : null;
+        })()}
       {showAnalysis && choice.analysis && (
         <div
           style={{
