@@ -1,0 +1,41 @@
+[4-d-2] r2023b Q9 #2 analysis 내부 ID 제거 진입
+[4-d-2] CWD: C:\Users\downf\suneung-viewer
+[4-d-2] DATA_PATH: C:\Users\downf\suneung-viewer\public\data\all_data_204.json
+[4-d-2] BACKUP_PATH: C:\Users\downf\suneung-viewer\public\data\all_data_204.json.bak.4d2
+
+[STEP 1] 백업 확인
+  백업 생성: C:\Users\downf\suneung-viewer\public\data\all_data_204.json.bak.4d2 (10992747 bytes)
+
+[STEP 2] 입력 로드
+
+[STEP 3] 정정 적용
+  대상: r2023b Q9 #2 (set_idx=1, q_idx=5, c_idx=1)
+  pat 유지: "V" (변경 없음)
+  analysis 변경: Yes (old.length=348, new.length=336)
+
+[STEP 4] 저장
+  저장 완료: C:\Users\downf\suneung-viewer\public\data\all_data_204.json (10992735 bytes)
+
+=== Acceptance Tests ===
+(1) 백업 파일 존재 (.bak.4d2): PASS ✓
+(2) 내부 ID 패턴 0건: PASS ✓ (matches: 0)
+(3) pat = V 유지: PASS ✓ (actual: "V")
+(4) 다른 항목 변경 0건: PASS ✓
+    expected path (analysis only): 1/1
+    unexpected paths: 0
+(5) JSON parse 정상: PASS ✓
+
+[정정 후 analysis raw — r2023b Q9 #2]
+📌 지문 근거: "편찬 의도를 지식의 제공과 확산에 두었다."
+🔍 선지 분해: '계몽(啓蒙)하는'은 '무지한 사람을 깨우쳐 가르친다'는 의미로, 상하 관계에서 위에서 아래로 가르치는 일방적 교화의 뉘앙스를 담고 있다.
+🔎 정답 비교: 지문의 '확산'은 지식을 널리 퍼뜨린다는 중립적 의미로, 수평적 전파를 뜻한다. 반면 '계몽'은 무지몽매한 대상을 깨우친다는 수직적·계도적 의미를 내포하므로, 실학자들이 식자층을 대상으로 지식을 제공하고 퍼뜨리려 한 맥락과 어긋난다. 정답 선지 #2는 이처럼 원문의 중립적 전파 의도를 계도적 교화로 왜곡하여 부적절하다.
+❌ 지문과 어긋나는 부적절한 진술 [V]
+
+=== Summary ===
+(1) 백업 (.bak.4d2)    : PASS
+(2) 내부 ID 0건        : PASS
+(3) pat=V 유지         : PASS
+(4) 외부 변경 0건      : PASS
+(5) JSON parse 정상    : PASS
+
+[4-d-2] All Acceptance Tests: PASS ✓

@@ -1,0 +1,28 @@
+[dotenv@17.3.1] injecting env (6) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+
+════════════════════════════════════════════════════════════
+ QUALITY GATE REPORT
+════════════════════════════════════════════════════════════
+
+[ 연도별 이슈 ]
+  🔴 2023수능: 1건
+
+[ 🔴 CRITICAL (기능 깨짐): 0건 ]
+
+[ 🟡 WARNING (품질 문제): 126건 ]
+  H_cs_concentration: 54건
+  G_ann_dead: 72건
+
+[ ⚪ IGNORE (중요도 낮음): 2건 ]
+  F_conclusion_mismatch: 1건
+  E_pat_unclassifiable: 1건
+
+[ 자동수정 가능: 1건 ]
+  F_conclusion_mismatch: 1건
+
+→ 자동수정 적용: node pipeline/quality_gate.mjs --fix
+
+════════════════════════════════════════════════════════════
+✅ release_ready — CRITICAL 0건
+════════════════════════════════════════════════════════════
+

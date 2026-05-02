@@ -1,0 +1,51 @@
+[4-d] 트랙 2-c 4-d 패치 진입
+[4-d] CWD: C:\Users\downf\suneung-viewer
+[4-d] DATA_PATH: C:\Users\downf\suneung-viewer\public\data\all_data_204.json
+[4-d] BACKUP_PATH: C:\Users\downf\suneung-viewer\public\data\all_data_204.json.bak.4d
+
+[STEP 1] 백업 확인
+  백업 생성: C:\Users\downf\suneung-viewer\public\data\all_data_204.json.bak.4d (10991617 bytes)
+
+[STEP 2] 입력 로드
+  data 최상위 키 수: 48
+  4a results: mode_a=12 mode_b=6
+  4c results: mode_a_opt_i=15
+
+[STEP 5] 패치 적용
+  #1 r2023a Q2 #1: pat "R1" → "R4" (source=4c-run1, expected="R4")
+  #2 r2023a Q2 #2: pat "R1" → "R3" (source=4c-run1, expected="R3")
+  #3 r2023a Q2 #3: pat "R2" → "R2" (source=4c-run1, expected="R2")
+  #4 r2023a Q2 #4: pat "R1" → null (source=4c-run1, expected=null)
+  #5 r2023a Q2 #5: pat null → null (source=4c-run1, expected=null)
+  #6 r2023b Q5 #5: pat "R1" → "R1" (source=4a-run1, expected="R1")
+  #7 r2023b Q9 #2: pat "R2" → "V" (source=4a-run3, expected="V")
+  #8 r2023c Q11 #5: pat null → null (source=4a-run1, expected=null)
+
+[STEP 6] 저장
+  저장 완료: C:\Users\downf\suneung-viewer\public\data\all_data_204.json (10992747 bytes)
+
+=== Acceptance Tests ===
+(1) 백업 파일 존재: PASS ✓
+(2) 백업 vs 현재 diff 8건 (analysis+pat=16 paths): FAIL ✗
+    expected paths matched: 12/16
+    unexpected diffs: 0
+(3) 8건 pat 값 일치: PASS ✓
+    #1 r2023a Q2 #1: expected="R4" new="R4" ✓
+    #2 r2023a Q2 #2: expected="R3" new="R3" ✓
+    #3 r2023a Q2 #3: expected="R2" new="R2" ✓
+    #4 r2023a Q2 #4: expected=null new=null ✓
+    #5 r2023a Q2 #5: expected=null new=null ✓
+    #6 r2023b Q5 #5: expected="R1" new="R1" ✓
+    #7 r2023b Q9 #2: expected="V" new="V" ✓
+    #8 r2023c Q11 #5: expected=null new=null ✓
+(4) 다른 항목 변경 0건: PASS ✓
+(5) JSON parse 정상: PASS ✓
+
+=== Summary ===
+(1) 백업 파일 존재    : PASS
+(2) diff 16 paths     : FAIL
+(3) 8건 pat 일치      : PASS
+(4) 외부 변경 0건     : PASS
+(5) JSON parse 정상   : PASS
+
+[4-d] All Acceptance Tests: FAIL ✗
