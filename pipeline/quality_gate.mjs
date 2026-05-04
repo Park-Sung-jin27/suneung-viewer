@@ -230,14 +230,92 @@ const issues = []; // 발견된 문제 전체
 const autoFixed = []; // 자동 수정된 항목
 const manual = []; // 수동 처리 필요 항목
 
+// ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
+const SCOPE_DEMO = new Set(["2026수능"]);
+const SCOPE_PRIORITY = new Set([
+  "2025수능", "2025_9월", "2024수능", "2022_6월", "2022수능",
+  "2023수능", "2023_6월", "2023_9월", "2024_6월", "2026_9월",
+]);
+const SCOPE_VISIBLE_EXTRA = new Set([
+  "2024_9월", "2022_9월", "2025_6월", "2026_6월",
+]);
+function getScope(yk) {
+  if (SCOPE_DEMO.has(yk)) return "demo";
+  if (SCOPE_PRIORITY.has(yk)) return "priority";
+  if (SCOPE_VISIBLE_EXTRA.has(yk)) return "visible_extra";
+  return "legacy_post_5_8";
+}
+function getTier(yk) {
+  if (SCOPE_DEMO.has(yk)) return "T0";
+  if (SCOPE_PRIORITY.has(yk) || SCOPE_VISIBLE_EXTRA.has(yk)) return "T1";
+  return "T2";
+}
+const ACTION_CLASS_MAP = {
+  // ── 기존 검사 ──
+  DEAD_csid: "manual",
+  F_empty_analysis: "manual",
+  MISSING_csid_true: "manual",
+  MISSING_csid_false: "manual",
+  H_analysis_id_leak: "auto_safe",
+  H_cs_concentration: "manual",
+  C_figure_missing: "raw_required",
+  C_marker_pollution: "auto_safe",
+  C_work_mismatch: "manual",
+  C_label_domain_mismatch: "auto_safe",
+  C_vpat_dirty: "auto_safe",
+  C_quote_unreflected: "manual",
+  W_quote_unreflected: "manual",
+  C_highlight_analysis_divergence: "manual",
+  C_pat_mismatch: "manual",
+  C_choice_pollution: "auto_safe",
+  C_empty_choice: "raw_required",
+  D_true_has_pat: "auto_safe",
+  E_pat_zero: "manual",
+  E_pat_unclassifiable: "manual",
+  F_conclusion_mismatch: "auto_safe",
+  F_content_reversed: "manual",
+  W_argument_thin: "manual",
+  W_expression_analysis_missing: "manual",
+  W_single_evidence: "manual",
+  B_qt_missing: "auto_safe",
+  G_missing_bogi: "manual",
+  G_ann_sentid: "auto_safe",
+  G_ann_dead: "manual",
+  // ── [v2] 신규 6건 ──
+  E_ok_true_no_cs_ids: "manual",
+  E_required_cs_missing: "manual",
+  E_empty_pat_cs_present: "auto_safe",
+  E_questionType_ok_mismatch: "raw_required",
+  W_analysis_placeholder_real: "manual",
+  W_analysis_placeholder_suspect: "auto_safe",
+};
+function getActionClass(type) {
+  return ACTION_CLASS_MAP[type] || "manual";
+}
+
 function issue(type, yearKey, loc, message, severity = "warn") {
-  issues.push({ type, yearKey, loc, message, severity });
+  issues.push({
+    type, yearKey, loc, message, severity,
+    tier: getTier(yearKey),
+    scope: getScope(yearKey),
+    action_class: getActionClass(type),
+  });
 }
 function fixed(type, yearKey, loc, message) {
-  autoFixed.push({ type, yearKey, loc, message });
+  autoFixed.push({
+    type, yearKey, loc, message,
+    tier: getTier(yearKey),
+    scope: getScope(yearKey),
+    action_class: getActionClass(type),
+  });
 }
 function needsManual(type, yearKey, loc, message) {
-  manual.push({ type, yearKey, loc, message });
+  manual.push({
+    type, yearKey, loc, message,
+    tier: getTier(yearKey),
+    scope: getScope(yearKey),
+    action_class: getActionClass(type),
+  });
 }
 
 // ─── sentId 유효 세트 수집 ────────────────────────────────────────────────────
@@ -809,6 +887,83 @@ for (const yearKey of yearsToCheck) {
               }
             }
           }
+
+          // ── [v2] E_ok_true_no_cs_ids — ok:true인데 cs_ids 부재 ─────────
+          if (c.ok === true && !hasCsIds) {
+            issue(
+              "E_ok_true_no_cs_ids",
+              yearKey,
+              cLoc,
+              "ok=true인데 cs_ids 부재 (정답 형광펜 누락)",
+            );
+          }
+
+          // ── [v2] E_required_cs_missing — pat이 cs 필수인데 cs 부재 ────
+          if (c.ok === false && !hasCsIds) {
+            const REQ = ["R1", "R2", "R4", "L1", "L2", "L4", "L5"];
+            if (REQ.includes(c.pat)) {
+              issue(
+                "E_required_cs_missing",
+                yearKey,
+                cLoc,
+                `pat=${c.pat} 인데 cs_ids 부재 (왜곡 근거 미매핑)`,
+              );
+            }
+          }
+
+          // ── [v2] E_empty_pat_cs_present — pat=R3/V/null인데 cs 보유 ───
+          if (hasCsIds && (c.pat === "R3" || c.pat === "V" || c.pat === null || c.pat === undefined)) {
+            issue(
+              "E_empty_pat_cs_present",
+              yearKey,
+              cLoc,
+              `pat=${c.pat}인데 cs_ids ${c.cs_ids.length}건 (정의상 cs 부재 권장)`,
+            );
+          }
+
+          // ── [v2] W_analysis_placeholder_real — 명시 placeholder 마커 ──
+          if (c.analysis && /\[\?\]|\[확인 필요|TODO|placeholder/.test(c.analysis)) {
+            issue(
+              "W_analysis_placeholder_real",
+              yearKey,
+              cLoc,
+              "analysis에 명시적 placeholder 마커 ([?], TODO, placeholder, [확인 필요])",
+            );
+          }
+
+          // ── [v2] W_analysis_placeholder_suspect — suspect (`...`만) ────
+          if (
+            c.analysis &&
+            /\.\.\./.test(c.analysis) &&
+            !/\[\?\]|\[확인 필요|TODO|placeholder/.test(c.analysis)
+          ) {
+            issue(
+              "W_analysis_placeholder_suspect",
+              yearKey,
+              cLoc,
+              "analysis에 줄임표 (`...`) — 인용 영역 false-positive 가능",
+            );
+          }
+        }
+
+        // ── [v2] E_questionType_ok_mismatch — positive/negative 정합 ────
+        const __okT = (q.choices || []).filter((c) => c.ok === true).length;
+        const __okF = (q.choices || []).filter((c) => c.ok === false).length;
+        if (q.questionType === "positive" && __okT !== 1) {
+          issue(
+            "E_questionType_ok_mismatch",
+            yearKey,
+            qLoc,
+            `positive인데 okT=${__okT} (정합 1, okF=${__okF})`,
+          );
+        }
+        if (q.questionType === "negative" && __okF !== 1) {
+          issue(
+            "E_questionType_ok_mismatch",
+            yearKey,
+            qLoc,
+            `negative인데 okF=${__okF} (정합 1, okT=${__okT})`,
+          );
         }
 
         // ── bogi 없는 보기 문항 경고 ─────────────────────────────────────
@@ -981,6 +1136,14 @@ const SEVERITY_MAP = {
   E_pat_unclassifiable: "IGNORE",
   F_conclusion_mismatch: "IGNORE",
   E_pat_zero: "IGNORE",
+
+  // ── [v2] 신규 6건 severity 분류 ──
+  E_ok_true_no_cs_ids: "CRITICAL",
+  E_required_cs_missing: "CRITICAL",
+  E_empty_pat_cs_present: "WARNING",
+  E_questionType_ok_mismatch: "CRITICAL",
+  W_analysis_placeholder_real: "CRITICAL",
+  W_analysis_placeholder_suspect: "WARNING",
 };
 const ALL_FINDINGS = [...issues, ...manual];
 const bySeverity = { CRITICAL: [], WARNING: [], IGNORE: [] };
