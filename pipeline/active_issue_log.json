@@ -3,7 +3,7 @@
   "generated_at": "2026-05-05",
   "issues": [
     {
-      "issue_id": "QG-2026수능-s1-Q2",
+      "issue_id": "QG-2026수능-s1-Q2-answer-patch",
       "defect_category": [
         "QUESTIONTYPE_OK_MISMATCH",
         "ANSWER_KEY_MISMATCH"
@@ -24,10 +24,12 @@
         "4": "PASS",
         "5": "PASS [Confirmed via 라이브]"
       },
-      "viewer_impact": "上 (정답 라벨 5건 반전)"
+      "viewer_impact": "上 (정답 라벨 5건 반전)",
+      "renamed_via": "lock #2 issue_id 정밀화 정합 (commit 7)",
+      "previous_issue_id": "QG-2026수능-s1-Q2"
     },
     {
-      "issue_id": "QG-2025_9월-sep25_c-Q8",
+      "issue_id": "QG-2025_9월-sep25_c-Q8-data-contract-patch",
       "defect_category": [
         "Q_TEXT_POLLUTION",
         "QUESTIONTYPE_OK_MISMATCH"
@@ -49,10 +51,12 @@
         "4": "PASS",
         "5": "PASS [Confirmed via 라이브]"
       },
-      "viewer_impact": "上 (발문 prefix 제거 + bogiTable render)"
+      "viewer_impact": "上 (발문 prefix 제거 + bogiTable render)",
+      "renamed_via": "lock #2 issue_id 정밀화 정합 (commit 7)",
+      "previous_issue_id": "QG-2025_9월-sep25_c-Q8"
     },
     {
-      "issue_id": "QG-2026_9월-r20269a-Q3",
+      "issue_id": "QG-2026_9월-r20269a-Q3-pat-patch",
       "defect_category": [
         "AI_TRACE_LEAK",
         "PAT_DOMAIN_MISMATCH"
@@ -74,10 +78,12 @@
         "4": "PASS",
         "5": "PASS [Confirmed via DOM placeholder 0건]"
       },
-      "viewer_impact": "上 (9단계 자가 수정 본문 제거)"
+      "viewer_impact": "上 (9단계 자가 수정 본문 제거)",
+      "renamed_via": "lock #2 issue_id 정밀화 정합 (commit 7)",
+      "previous_issue_id": "QG-2026_9월-r20269a-Q3"
     },
     {
-      "issue_id": "QG-2023_6월-l20236a-sents",
+      "issue_id": "QG-2023_6월-l20236a-source-patch",
       "defect_category": [
         "SENT_MISSING",
         "SYMBOL_CONTEXT_MISSING"
@@ -98,33 +104,9 @@
         "4": "N/A",
         "5": "PASS [Confirmed via 페이지 6 11/11 발화]"
       },
-      "viewer_impact": "上 (페이지 6 본문 12 sents 신규 노출)"
-    },
-    {
-      "issue_id": "QG-2023_6월-l20236a-Q20",
-      "defect_category": [
-        "OK_TRUE_NO_CS",
-        "REQUIRED_CS_MISSING",
-        "PAT_DOMAIN_MISMATCH"
-      ],
-      "action_class": "manual_patch",
-      "required_raw": [
-        "3.pdf",
-        "정답표 Q20=④",
-        "Spec A 사후 sents"
-      ],
-      "patch_packet": {
-        "commit": "cfe14f7",
-        "status": "merged"
-      },
-      "post_gate": {
-        "1": "PASS",
-        "2": "PASS",
-        "3": "PASS",
-        "4": "PASS",
-        "5": "PASS [Confirmed via 라이브 DOM, 5 choices 본문 + ㉠/㉡ 본문 + placeholder 0]"
-      },
-      "viewer_impact": "上 (정답 형광펜 신규 작동, manual click 사후 추가 검증)"
+      "viewer_impact": "上 (페이지 6 본문 12 sents 신규 노출)",
+      "renamed_via": "lock #2 issue_id 정밀화 정합 (commit 7)",
+      "previous_issue_id": "QG-2023_6월-l20236a-sents"
     },
     {
       "issue_id": "QG-2025수능-kor25_d-Q17-source-patch",

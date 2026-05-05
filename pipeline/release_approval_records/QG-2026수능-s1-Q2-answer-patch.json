@@ -1,0 +1,43 @@
+{
+  "issue_id": "QG-2026수능-s1-Q2",
+  "release_status": "pending",
+  "integration": {
+    "commit_hash": "b2649e5",
+    "url": "https://suneung-viewer.vercel.app/viewer",
+    "rollback_plan": "git revert b2649e5"
+  },
+  "gate_5a_technical": {
+    "pass": null,
+    "url": null,
+    "exam": null,
+    "set_id": null,
+    "question_id": null,
+    "clicked_choice": null,
+    "dom_count": {
+      "highlight": null,
+      "placeholder": null,
+      "console_error": null
+    },
+    "screenshot_before": null,
+    "screenshot_after": null,
+    "verified_by": null
+  },
+  "gate_5b_learning": {
+    "pass": null,
+    "pdf_or_sents_raw": [],
+    "highlighted_sentences": [],
+    "analysis_quote": null,
+    "cs_ids": [],
+    "cs_spans": [],
+    "directness_judgment": null,
+    "verified_by": null
+  },
+  "qa_checks": {
+    "A_explanation_quality": "skip",
+    "B_evidence_alignment": "skip",
+    "C_literature_alignment": "skip",
+    "D_pattern_check": "skip"
+  },
+  "approved_by": null,
+  "timestamp": null
+}
