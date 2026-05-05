@@ -409,3 +409,102 @@ D fail 시 Step3 재호출 1회
 
 ### 5/15 (D-0):
 8. ✅ 모두의창업(한양대) 제출
+
+---
+
+## Lock System (Phase 0 + Phase A 진입 단계)
+
+### Lock 1~22 baseline
+
+본 영역은 HANDOVER_CHAT1.md §2 lock 1~22 본문 정합 인용.
+데이터 엔지니어 적용 시 HANDOVER_CHAT1.md §2 lock 1~22 본문 그대로 복사.
+
+```
+Lock #1  : push 분리 (Integration Push + Release Approval)
+Lock #2  : issue_id 정밀화 (QG-{exam}-{setId}-{Qn}-{patch_type})
+Lock #3  : pilot_ranking_v0_5
+Lock #4  : pilot_ranking_v2
+Lock #5  : Gate 5 분리 (5a Technical + 5b Learning)
+Lock #6  : defect_dict_runtime (sentry v0.1)
+Lock #7  : schedule_basis (Phase 기준만)
+Lock #8  : active_issue_log_validation
+Lock #9  : naming (issue_id 정본 / Spec A/B/C/D 보조명)
+Lock #10 : pat_branch (raw 사후 분기)
+Lock #11 : gate5_pass_evidence
+Lock #12 : 라벨 분리 ★ 본 회기 갱신 (신규 라벨 5건 + 운영 규칙 3건)
+Lock #13 : active_issue_log_phase1_automation
+Lock #14 : commit message issue_id 강제
+Lock #15 : release_approval_qa (독서 A·B·D / 문학 A·B·C·D)
+Lock #16 : (영역 통합)
+Lock #17 : release_approval_record_schema
+Lock #18 : issue_lifecycle (new → ... → closed 외 deferred/rejected/rolled_back/needs_human)
+Lock #19 : issue_id 6곳 강제
+Lock #20 : operating_doc_no_tool_dependency
+Lock #21 : pat_decision_rules
+Lock #22 : qa_mapping_minimization ★ patch 3분리 정합 (Data Contract / source / pattern)
+```
+
+### Lock #12 운영 규칙 3건 (commit 209c71e 정합)
+
+**A. raw 표기 규칙**
+`[Confirmed via 데이터 엔지니어]`는 PDF 원문 대조가 없는 경우 사용 금지.
+그 경우 `[Working-tree raw]` 또는 `[Pending source cross-check]`로 표기한다.
+
+**B. retro 라벨 정정 규칙**
+set 단위 손상 식별 시 하위 issue 라벨 retro 정정 의무.
+verified_no_change → source_integrity_hold_checked_candidate 자동 낮춤.
+retro 정정 commit 본문에 retro_via 필드 명시 의무.
+
+**C. 라이브 화면 격리 규칙** [Adopted via 본 회기 사용자 결정]
+set 단위 release_blocked 시 라이브 화면 격리 의무.
+★ 옵션 (i) 검수중 안내 배너 [Adopted] ★
+
+적용 단위:
+- `public/data/all_data_204.json` set entry 신규 필드 2건
+  - `set_status`: "release_blocked"
+  - `display_banner`: "검수중 — 본 set은 본문 정합화 작업 중입니다."
+- viewer (Chat 2 분기) set_status 감지 + 배너 렌더 의무
+
+### 신규 라벨 9건 정합 (commit 209c71e)
+
+**기존 4**: `[Adopted]` / `[Confirmed]` / `[Pending]` / `[Rejected]`
+
+**신규 5**:
+- `[Working-tree raw]`
+- `[Pending source cross-check]`
+- `blocked_by_source_integrity`
+- `release_blocked`
+- `source_integrity_hold_checked_candidate`
+
+### Self-test 7건 (HANDOVER_CHAT1.md §5 정합)
+
+```
+① "5/8" 단어 0건 (lock #7 정합)
+② Spec 명칭 단독 사용 0건 (issue_id 정본 사용, lock #9)
+③ 라벨 분리 사용 (lock #12 정합 — 신규 9 라벨)
+④ Gate 5a/5b 분리 사용 (lock #5)
+⑤ issue_id 정본 명명 (lock #2)
+⑥ commit message issue_id 강제 (lock #14)
+⑦ 운영 문서 도구 의존 표현 0건 (lock #20)
+```
+
+### Phase 매핑
+
+```
+Phase 0  : 종결 [Confirmed via 직전 회기 cfe14f7]
+Phase A  : 진입 단계 (현재 — Q20 release_approved + kor25_d 재추출)
+Phase B  : 신규 (Q20 종결 사후 — 8 set 본문 무결성 audit + audit 자동화 도구)
+Phase C  : audit 결과 set 별 source-patch sequencing
+Phase D  : Q14·Q15·Q17 unblock + atomic patch
+Phase 1  : pat_decision_rules.json 흡수 + active_issue_log 자동화
+```
+
+### 단일 진입점 정합 규칙
+
+| 도구 | 영역 |
+|---|---|
+| `CLAUDE.md` | lock 시스템 + Phase 매핑 + 운영 규칙 baseline (정규 도구) |
+| `HANDOVER_CHAT1.md` | 회기별 spec 분기 + 다음 액션 (회기 핸드오버 도구) |
+| `HANDOVER_CHAT2.md` | Chat 2 (프론트) 분기 핸드오버 도구 |
+
+mismatch 시 `CLAUDE.md` baseline 우선 (lock #20 정합).
