@@ -1,0 +1,53 @@
+{
+  "issue_id": "QG-2023_6월-l20236a-Q20-evidence-patch",
+  "release_status": "approved",
+  "approved_by": "사용자 (대표)",
+  "approved_basis": "[Adopted via 본 회기 결정문 1]",
+  "approved_timestamp": "2026-05-05T13:02:50Z",
+  "gates": {
+    "gate_5a_technical": {
+      "pass": true,
+      "confirmed_via": "직전 회기 (cfe14f7)",
+      "evidence": [
+        "DOM 5/5",
+        "㉠ 7건 하이라이트",
+        "㉡ 7건 하이라이트",
+        "placeholder 0",
+        "console error 0",
+        "screenshot ss_2354t5z92"
+      ]
+    },
+    "gate_5b_learning": {
+      "pass": true,
+      "confirmed_via": "본 회기 raw 12건 검수",
+      "evidence": [
+        "㉠ (l20236as11) 직접성 부분적: 단독 sent 당부 표현 직접 / 경솔함 염려 의도는 prelude (l20236as10) 의존",
+        "㉡ (l20236as13) 직접성 부분적: 단독 sent 행적 진술 직접 / 의심 회피 의도는 prelude (l20236as12) 의존",
+        "analysis 본문이 prelude 맥락 정확히 풀어냄",
+        "운영 가능 수준 [Inference 70%]"
+      ]
+    }
+  },
+  "qa_checks": {
+    "qa_b": {
+      "pass": true,
+      "evidence": [
+        "cs_ids 2건 1:1 매핑 (㉠↔l20236as11, ㉡↔l20236as13)",
+        "cs_spans null + sent 단독 sent → OVER-highlight 0"
+      ]
+    },
+    "qa_c": {
+      "pass": true,
+      "evidence": [
+        "work_title: 「소현성록」 / 작자 미상",
+        "발화 주체: ㉠=석씨 (둘째 부인) / ㉡=여씨 (셋째 부인)",
+        "작품 mismatch 0",
+        "작품 전체 하이라이트 0",
+        "인용 표현 정확"
+      ]
+    }
+  },
+  "rollback_plan": "pipeline/rollback_plan_20260505_184328.json",
+  "integration_pushed_commit": "cfe14f7",
+  "lock_compliance": "lock #1 + #14 + #15 + #17 + #22 정합"
+}
