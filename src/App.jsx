@@ -1287,6 +1287,14 @@ function ViewerPage({ user, isPro = false }) {
         type="info"
       />
 
+      {currentSet?.id === "kor25_d" && (
+        <Banner
+          bannerId="under-review-kor25_d"
+          message="🔧 검수 중인 시험입니다 — 정답·해설·형광펜에 부정확한 부분이 있을 수 있습니다"
+          type="warning"
+        />
+      )}
+
       {isStudy && isReview && (
         <div
           style={{
