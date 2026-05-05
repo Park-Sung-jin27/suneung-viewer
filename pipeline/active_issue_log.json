@@ -121,7 +121,7 @@
       ],
       "patch_packet": {
         "commit": null,
-        "status": "blocked_by_source_integrity"
+        "status": "resolved_via_full_rebuild"
       },
       "post_gate": {
         "1": "pending",
@@ -136,7 +136,9 @@
       ],
       "viewer_impact": "上 (sents 보강)",
       "alias": "Spec C (대화 보조)",
-      "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정"
+      "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정",
+      "unblock_via": "lock #12 운영 규칙 B + C — kor25_d set 전체 재구축 (PDF raw [Confirmed via 사용자 5+6페이지])",
+      "resolved_at": "2026-05-05"
     },
     {
       "issue_id": "QG-2025수능-kor25_d-Q17-pattern-patch",
@@ -155,7 +157,7 @@
       ],
       "patch_packet": {
         "commit": null,
-        "status": "blocked_by_source_integrity"
+        "status": "resolved_via_full_rebuild"
       },
       "post_gate": {
         "1": "pending",
@@ -177,7 +179,9 @@
         "R1_candidate": true,
         "decision": "pending (raw 사후 본 채팅 분기)"
       },
-      "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정"
+      "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정",
+      "unblock_via": "lock #12 운영 규칙 B + C — kor25_d set 전체 재구축 (PDF raw [Confirmed via 사용자 5+6페이지])",
+      "resolved_at": "2026-05-05"
     },
     {
       "issue_id": "QG-2025수능-kor25_d-Q14-answer-patch",
@@ -193,7 +197,7 @@
       ],
       "patch_packet": {
         "commit": null,
-        "status": "blocked_by_source_integrity"
+        "status": "resolved_via_full_rebuild"
       },
       "post_gate": {
         "1": "[Confirmed via 4.pdf]",
@@ -210,7 +214,9 @@
       ],
       "viewer_impact": "中 (ok swap + pat swap + analysis 2건)",
       "alias": "대화 보조명 부재",
-      "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정"
+      "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정",
+      "unblock_via": "lock #12 운영 규칙 B + C — kor25_d set 전체 재구축 (PDF raw [Confirmed via 사용자 5+6페이지])",
+      "resolved_at": "2026-05-05"
     },
     {
       "issue_id": "QG-2025수능-kor25_d-Q15-c3-explanation-patch",
@@ -225,7 +231,7 @@
       ],
       "patch_packet": {
         "commit": null,
-        "status": "blocked_by_source_integrity"
+        "status": "resolved_via_full_rebuild"
       },
       "post_gate": {
         "1": "[Confirmed via 4.pdf]",
@@ -240,7 +246,9 @@
       ],
       "viewer_impact": "中 (placeholder 제거)",
       "alias": "대화 보조명 부재",
-      "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정"
+      "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정",
+      "unblock_via": "lock #12 운영 규칙 B + C — kor25_d set 전체 재구축 (PDF raw [Confirmed via 사용자 5+6페이지])",
+      "resolved_at": "2026-05-05"
     },
     {
       "issue_id": "QG-2023_6월-l20236a-Q20-csids-enhancement",
@@ -320,8 +328,9 @@
       "verified_at": "2026-05-05",
       "verification_basis": "Q16 raw [Confirmed via 4.pdf 정답=#2 + 데이터 ok_distribution 정합 + bogi annotated_image 존재]",
       "optional_enhancement": "bogi 정합 Gate 5b 사용자 manual 의무",
-      "label": "source_integrity_hold_checked_candidate",
-      "retro_via": "lock #12 운영 규칙 B — kor25_d set 손상 식별 사후 retro"
+      "retro_via": "lock #12 운영 규칙 B — kor25_d set 손상 식별 사후 retro",
+      "retro_recovered_via": "kor25_d set 전체 재구축 사후 Q16 정합 회복",
+      "recovered_at": "2026-05-05"
     }
   ],
   "phase1_category_dict_draft": {
@@ -359,7 +368,7 @@
   "set_release_blocked": [
     {
       "set": "2025수능/kor25_d",
-      "status": "release_blocked",
+      "status": "unblocked",
       "blocked_at": "2026-05-05T13:02:50Z",
       "blocked_by": "lock #12 운영 규칙 C [Adopted via 본 회기]",
       "reason": "kor25_d set 본문 손상 식별 (ⓒⓓⓔ NONE + ds3·ds4·ds6·ds7·ds8 본문 절단/손상)",
@@ -373,7 +382,9 @@
         "2025수능/kor25_d/Q16"
       ],
       "display_banner": "검수중 — 본 set은 본문 정합화 작업 중입니다.",
-      "unblock_condition": "kor25_d set 재추출 + Q14·Q15·Q16·Q17 4 issue 모두 release_approved 사후"
+      "unblock_condition": "kor25_d set 재추출 + Q14·Q15·Q16·Q17 4 issue 모두 release_approved 사후",
+      "unblocked_at": "2026-05-05",
+      "unblock_via": "kor25_d set 전체 재구축 (sents 17 + questions 4 PDF 기준 신규)"
     }
   ]
 }
