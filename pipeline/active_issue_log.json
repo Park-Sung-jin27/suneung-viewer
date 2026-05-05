@@ -1,0 +1,371 @@
+{
+  "version": "0.1",
+  "generated_at": "2026-05-05",
+  "issues": [
+    {
+      "issue_id": "QG-2026수능-s1-Q2",
+      "defect_category": [
+        "QUESTIONTYPE_OK_MISMATCH",
+        "ANSWER_KEY_MISMATCH"
+      ],
+      "action_class": "manual_patch",
+      "required_raw": [
+        "평가원 정답표",
+        "현재 q.t/choices/ok/pat/analysis/cs_ids"
+      ],
+      "patch_packet": {
+        "commit": "b2649e5",
+        "status": "merged"
+      },
+      "post_gate": {
+        "1": "PASS",
+        "2": "PASS",
+        "3": "PASS",
+        "4": "PASS",
+        "5": "PASS [Confirmed via 라이브]"
+      },
+      "viewer_impact": "上 (정답 라벨 5건 반전)"
+    },
+    {
+      "issue_id": "QG-2025_9월-sep25_c-Q8",
+      "defect_category": [
+        "Q_TEXT_POLLUTION",
+        "QUESTIONTYPE_OK_MISMATCH"
+      ],
+      "action_class": "raw_required → manual_patch",
+      "required_raw": [
+        "PDF 발문",
+        "정답표",
+        "현재 choices"
+      ],
+      "patch_packet": {
+        "commit": "f420709",
+        "status": "merged"
+      },
+      "post_gate": {
+        "1": "PASS",
+        "2": "PASS",
+        "3": "PASS",
+        "4": "PASS",
+        "5": "PASS [Confirmed via 라이브]"
+      },
+      "viewer_impact": "上 (발문 prefix 제거 + bogiTable render)"
+    },
+    {
+      "issue_id": "QG-2026_9월-r20269a-Q3",
+      "defect_category": [
+        "AI_TRACE_LEAK",
+        "PAT_DOMAIN_MISMATCH"
+      ],
+      "action_class": "manual_patch",
+      "required_raw": [
+        "정답표",
+        "sents r20269as10~14",
+        "5 choices analysis 전체"
+      ],
+      "patch_packet": {
+        "commit": "62cf987",
+        "status": "merged"
+      },
+      "post_gate": {
+        "1": "PASS",
+        "2": "PASS",
+        "3": "PASS",
+        "4": "PASS",
+        "5": "PASS [Confirmed via DOM placeholder 0건]"
+      },
+      "viewer_impact": "上 (9단계 자가 수정 본문 제거)"
+    },
+    {
+      "issue_id": "QG-2023_6월-l20236a-sents",
+      "defect_category": [
+        "SENT_MISSING",
+        "SYMBOL_CONTEXT_MISSING"
+      ],
+      "action_class": "raw_required → manual_patch",
+      "required_raw": [
+        "3.pdf 페이지 6 본문",
+        "㉠/㉡ 위치"
+      ],
+      "patch_packet": {
+        "commit": "25ea534",
+        "status": "merged"
+      },
+      "post_gate": {
+        "1": "PASS",
+        "2": "PASS",
+        "3": "N/A",
+        "4": "N/A",
+        "5": "PASS [Confirmed via 페이지 6 11/11 발화]"
+      },
+      "viewer_impact": "上 (페이지 6 본문 12 sents 신규 노출)"
+    },
+    {
+      "issue_id": "QG-2023_6월-l20236a-Q20",
+      "defect_category": [
+        "OK_TRUE_NO_CS",
+        "REQUIRED_CS_MISSING",
+        "PAT_DOMAIN_MISMATCH"
+      ],
+      "action_class": "manual_patch",
+      "required_raw": [
+        "3.pdf",
+        "정답표 Q20=④",
+        "Spec A 사후 sents"
+      ],
+      "patch_packet": {
+        "commit": "cfe14f7",
+        "status": "merged"
+      },
+      "post_gate": {
+        "1": "PASS",
+        "2": "PASS",
+        "3": "PASS",
+        "4": "PASS",
+        "5": "PASS [Confirmed via 라이브 DOM, 5 choices 본문 + ㉠/㉡ 본문 + placeholder 0]"
+      },
+      "viewer_impact": "上 (정답 형광펜 신규 작동, manual click 사후 추가 검증)"
+    },
+    {
+      "issue_id": "QG-2025수능-kor25_d-Q17-source-patch",
+      "setRange": "Q14~17",
+      "defect_category": [
+        "SENT_MISSING",
+        "SYMBOL_CONTEXT_MISSING"
+      ],
+      "action_class": "raw_required",
+      "required_raw": [
+        "4.pdf 지문 본문 raw (ⓒⓓⓔ 위치)"
+      ],
+      "patch_packet": {
+        "commit": null,
+        "status": "raw_required"
+      },
+      "post_gate": {
+        "1": "pending",
+        "2": "pending",
+        "3": "pending",
+        "4": "pending",
+        "5a": "pending",
+        "5b": "pending"
+      },
+      "qa_required": [
+        "B"
+      ],
+      "viewer_impact": "上 (sents 보강)",
+      "alias": "Spec C (대화 보조)"
+    },
+    {
+      "issue_id": "QG-2025수능-kor25_d-Q17-pattern-patch",
+      "setRange": "Q14~17",
+      "defect_category": [
+        "QUESTIONTYPE_OK_MISMATCH",
+        "CONCLUSION_MISMATCH",
+        "PAT_DOMAIN_AMBIGUOUS",
+        "VOCAB_PATTERN"
+      ],
+      "action_class": "manual_patch",
+      "required_raw": [
+        "Q17 source-patch 사후 sents 존재",
+        "Q17 5 choices 전체 analysis",
+        "pat_decision_rules 적용"
+      ],
+      "patch_packet": {
+        "commit": null,
+        "status": "deferred (source-patch 사후 진입)"
+      },
+      "post_gate": {
+        "1": "pending",
+        "2": "pending",
+        "3": "pending",
+        "4": "pending",
+        "5a": "pending",
+        "5b": "pending"
+      },
+      "qa_required": [
+        "A",
+        "B",
+        "D"
+      ],
+      "viewer_impact": "上 (ok 라벨 + cs_ids + pat 분기)",
+      "alias": "Spec D (대화 보조)",
+      "pat_branch": {
+        "V_candidate": true,
+        "R1_candidate": true,
+        "decision": "pending (raw 사후 본 채팅 분기)"
+      }
+    },
+    {
+      "issue_id": "QG-2025수능-kor25_d-Q14-answer-patch",
+      "setRange": "Q14~17",
+      "defect_category": [
+        "ANSWER_KEY_MISMATCH"
+      ],
+      "action_class": "manual_patch",
+      "required_raw": [
+        "4.pdf 정답=#1 [Confirmed]",
+        "sents 본문 raw",
+        "Q14 5 choices analysis 전체"
+      ],
+      "patch_packet": {
+        "commit": null,
+        "status": "patch_packet_ready_pending"
+      },
+      "post_gate": {
+        "1": "[Confirmed via 4.pdf]",
+        "2": "pending",
+        "3": "pending",
+        "4": "pending",
+        "5a": "pending",
+        "5b": "pending"
+      },
+      "qa_required": [
+        "A",
+        "B",
+        "D"
+      ],
+      "viewer_impact": "中 (ok swap + pat swap + analysis 2건)",
+      "alias": "대화 보조명 부재"
+    },
+    {
+      "issue_id": "QG-2025수능-kor25_d-Q15-c3-explanation-patch",
+      "setRange": "Q14~17",
+      "defect_category": [
+        "AI_TRACE_LEAK"
+      ],
+      "action_class": "manual_patch",
+      "required_raw": [
+        "Q15 #3 analysis 전체",
+        "sents 본문 raw"
+      ],
+      "patch_packet": {
+        "commit": null,
+        "status": "patch_packet_ready_pending"
+      },
+      "post_gate": {
+        "1": "[Confirmed via 4.pdf]",
+        "2": "pending",
+        "3": "pending",
+        "4": "pending",
+        "5a": "pending",
+        "5b": "pending"
+      },
+      "qa_required": [
+        "A"
+      ],
+      "viewer_impact": "中 (placeholder 제거)",
+      "alias": "대화 보조명 부재"
+    },
+    {
+      "issue_id": "QG-2023_6월-l20236a-Q20-csids-enhancement",
+      "status": "new",
+      "priority": "enhancement",
+      "blocking": false,
+      "defect_category": "cs_ids_coverage_partial",
+      "영역": "Q20 #4 cs_ids 확장 검토 (prelude sent 포함)",
+      "current_state": {
+        "cs_ids": [
+          "l20236as11",
+          "l20236as13"
+        ],
+        "cs_spans": null
+      },
+      "proposed_state_options": [
+        {
+          "option": "(a) prelude sent 추가",
+          "cs_ids": [
+            "l20236as10",
+            "l20236as11",
+            "l20236as12",
+            "l20236as13"
+          ],
+          "cs_spans": null,
+          "효과": "㉠·㉡ 발화 의도 직접성 ↑ / 단 하이라이트 영역 4 sent로 확장"
+        },
+        {
+          "option": "(b) cs_spans 부분 하이라이트 추가",
+          "cs_ids": [
+            "l20236as10",
+            "l20236as11",
+            "l20236as12",
+            "l20236as13"
+          ],
+          "cs_spans": [
+            "TBD - 부분 하이라이트 영역 raw"
+          ],
+          "효과": "직접성 ↑ + 하이라이트 영역 정밀화"
+        }
+      ],
+      "rationale": "Q20 release_approved 검수 결과 ㉠·㉡ 단독 sent 직접성 부분적. prelude sent 추가 시 학습 직접성 ↑. 단 Release Approval 차단 사유 0 (운영 가능 수준).",
+      "required_raw": [
+        "l20236as10 본문 (석파 청운당 자랑 발화 prelude)",
+        "l20236as12 본문 (녹운당 엿듣기 발각 → 상서 책망 prelude)",
+        "(b) 옵션 시 cs_spans 부분 하이라이트 영역 raw"
+      ],
+      "patch_packet": "TBD (Phase A 종결 사후)",
+      "진입_조건": "Phase A 종결 사후 + Phase B 진입 사전",
+      "qa_매핑": "B (lock #22 — cs_ids 수정 → B 필수 / 문학 → B+C)"
+    }
+  ],
+  "category_distribution": {
+    "Q_TEXT_POLLUTION": 1,
+    "SYMBOL_CONTEXT_MISSING": 1,
+    "SENT_MISSING": 1,
+    "QUESTIONTYPE_OK_MISMATCH": 3,
+    "ANSWER_KEY_MISMATCH": 2,
+    "OK_TRUE_NO_CS": 1,
+    "REQUIRED_CS_MISSING": 1,
+    "PAT_DOMAIN_MISMATCH": 2,
+    "AI_TRACE_LEAK": 1
+  },
+  "action_class_distribution": {
+    "manual_patch": 5,
+    "raw_required → manual_patch": 1
+  },
+  "verified_no_change": [
+    {
+      "target": "2023_6월/l20236a/Q19",
+      "verified_at": "2026-05-05",
+      "verification_basis": "Q19 raw 회신 [Confirmed]: questionType ↔ ok 정합 / pat L2 정합 / placeholder 0 / cs_ids dead 0 / analysis 본문 정합",
+      "optional_enhancement": "l20236as14 cs_ids 보강 후보 (Phase 1 batch audit lock)"
+    },
+    {
+      "target": "2025수능/kor25_d/Q16",
+      "verified_at": "2026-05-05",
+      "verification_basis": "Q16 raw [Confirmed via 4.pdf 정답=#2 + 데이터 ok_distribution 정합 + bogi annotated_image 존재]",
+      "optional_enhancement": "bogi 정합 Gate 5b 사용자 manual 의무"
+    }
+  ],
+  "phase1_category_dict_draft": {
+    "categories": [
+      "VOCAB_PATTERN",
+      "PAT_DOMAIN_AMBIGUOUS",
+      "CONCLUSION_MISMATCH"
+    ],
+    "total": 19,
+    "note": "Phase 1 진입 사전 v0.1 = 19 카테고리. batch audit 진입 시 자연 도달 lock"
+  },
+  "operating_principles": {
+    "push_separation": "Integration Push (Gate 1·2 PASS) + Release Approval (Gate 1~5a·5b + QA 매핑 PASS)",
+    "issue_id_format": "QG-{exam}-{setId}-{Qn}-{patch_type} (단일 문항 정밀화)",
+    "pilot_ranking_v0_5": "all_data 단독 점수 (Phase 1 진입 사전 후보 추출용)",
+    "pilot_ranking_v2": "all_data + quality_report issue count 합산 (Phase 1 산출물)",
+    "gate5_split": "Gate 5a Technical (DOM/클릭/screenshot/console) + Gate 5b Learning (해설↔형광펜 학습 정합)",
+    "defect_dict_runtime": "sentry v0.1 entry는 quality_gate.mjs / normalize_quality.mjs 정규 도구 직접 참조",
+    "schedule_basis": "Phase 기준만 (일정 표현 폐기)",
+    "active_issue_log_validation": "backup + count + duplicate + diff 4건 raw 회신 의무",
+    "naming": "issue_id 정본 / Spec A/B/C/D = 대화 보조명",
+    "pat_branch": "raw 사후 분기 (사용자 결정 0, 본 채팅이 raw cross-check 사후 spec 발행)",
+    "gate5_pass_evidence": "Gate 5a = URL/문항/DOM count/screenshot/console error / Gate 5b = PDF·sents raw/하이라이트 문장/analysis 인용/cs_ids/근거 직접성 1문장",
+    "label_separation": "[Adopted] (정책 채택) / [Confirmed] (사실 확인) / [Pending] (검증 대기) / [Rejected] (폐기)",
+    "active_issue_log_phase1_automation": "Phase 1 통과 사후 normalize_quality.mjs가 active_issue_log 자동 생성. 수동 node -e 폐기",
+    "commit_message_issue_id": "commit message에 issue_id 의무 (예: fix(data): QG-2025수능-kor25_d-Q14-answer-patch ok swap)",
+    "release_approval_qa": "독서 = A·B·D 매핑 / 문학 = A·B·C·D 매핑 (C 필수)",
+    "release_approval_record_schema": "pipeline/release_approval_records/{issue_id}.json (Gate 5a + 5b + QA + integration + rollback_plan + approved_by + timestamp)",
+    "issue_lifecycle": "new → raw_required → raw_received → patch_packet_ready → integration_pushed → gate_5a_pass → gate_5b_pass → qa_pass → release_approved → closed (예외: deferred / rejected / rolled_back / needs_human)",
+    "issue_id_six_locations": "active_issue_log + quality_report + patch_packet + commit message + post_gate report + release_approval_record",
+    "operating_doc_no_tool_dependency": "javascript_tool / Claude in Chrome 등 도구 의존 표현 [Rejected]. Technical Viewer Gate 자동 검증 / Playwright 등 표준 용어 [Adopted]",
+    "pat_decision_rules": "V/R1 분기 기준 = config/pat_decision_rules.json 흡수 (Phase 1 산출물). Phase 0 = 본 채팅 raw 사후 분기",
+    "qa_mapping_minimization": "analysis 수정 → A 필수 / cs_ids 수정 → B 필수 / 문학 → B+C / pat 변경 → D / ok·questionType 변경 → Data Contract 필수"
+  }
+}
