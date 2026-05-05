@@ -88,3 +88,9 @@ pipeline/track2c/baseline_*.json
 pipeline/track2c/cb640cb_*.json
 pipeline/track2c/4d_4d2_combined.patch
 pipeline/track2c/git_status_*.txt
+
+# Claude 도구 설정 (개인 환경)
+.claude/
+
+# Gate-1 산출물 (매 회기 신규 생성)
+config/gate1_*.json

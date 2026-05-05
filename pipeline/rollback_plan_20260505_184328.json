@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-05-05T09:46:47.753Z",
+  "policy": "Integration Push 사후 Gate 5a FAIL 시 즉시 rollback. backup 보존 lock.",
+  "rollback_commands": [
+    {
+      "issue_id": "QG-2026수능-s1-Q2",
+      "commit": "b2649e5",
+      "revert_command": "git revert b2649e5",
+      "backup_path": "pipeline/active_issue_log.bak.*.json (latest)"
+    },
+    {
+      "issue_id": "QG-2025_9월-sep25_c-Q8",
+      "commit": "f420709",
+      "revert_command": "git revert f420709",
+      "backup_path": "pipeline/active_issue_log.bak.*.json (latest)"
+    },
+    {
+      "issue_id": "QG-2026_9월-r20269a-Q3",
+      "commit": "62cf987",
+      "revert_command": "git revert 62cf987",
+      "backup_path": "pipeline/active_issue_log.bak.*.json (latest)"
+    },
+    {
+      "issue_id": "QG-2023_6월-l20236a-sents",
+      "commit": "25ea534",
+      "revert_command": "git revert 25ea534",
+      "backup_path": "pipeline/active_issue_log.bak.*.json (latest)"
+    },
+    {
+      "issue_id": "QG-2023_6월-l20236a-Q20",
+      "commit": "cfe14f7",
+      "revert_command": "git revert cfe14f7",
+      "backup_path": "pipeline/active_issue_log.bak.*.json (latest)"
+    }
+  ]
+}
