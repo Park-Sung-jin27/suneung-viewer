@@ -32,7 +32,7 @@
 
 ```
 C:\Users\downf\suneung-viewer\
-├── src\data\all_data_204.json       # 정본 데이터 (~1.5MB)
+├── public\data\all_data_204.json     # 정본 데이터 (10.9MB)
 ├── src\data\annotations.json
 ├── public\images\
 ├── api\claude.js                    # Vercel Serverless (Anthropic SDK 미사용 / fetch only)
