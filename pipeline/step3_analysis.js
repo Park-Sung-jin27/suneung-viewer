@@ -1103,6 +1103,22 @@ export function atomicWrite(filePath, data) {
   fs.renameSync(tmpPath, filePath);
 }
 
+// step3 output 후 호출. 위반 시 needs_human 마킹, retry X.
+function validateStep3Output(set, choices) {
+  const issues = [];
+  for (const q of set.questions) {
+    for (const c of q.choices) {
+      if (c.ok === false && (c.pat === null || c.pat === undefined)) {
+        issues.push({ qid: q.id, num: c.num, code: 'PAT_MISSING_ON_FALSE' });
+      }
+      if (c.ok === true && c.pat !== null && c.pat !== undefined) {
+        issues.push({ qid: q.id, num: c.num, code: 'PAT_PRESENT_ON_TRUE' });
+      }
+    }
+  }
+  return issues;
+}
+
 // ─── 커맨드라인 ──────────────────────────────────────────────
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
