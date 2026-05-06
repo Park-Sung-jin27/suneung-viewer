@@ -7,10 +7,7 @@ import dotenv from "dotenv";
 import { jsonrepair } from "jsonrepair";
 import { postprocess } from "./step2_postprocess.mjs";
 import { getExamProfile, logProfile } from "./exam_profile.mjs";
-import {
-  extractPdfText,
-  parseQuestionBlocks,
-} from "./pdf_text_extractor.mjs";
+import { extractPdfText, parseQuestionBlocks } from "./pdf_text_extractor.mjs";
 import { validateQuestionSet } from "./extraction_validator.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -236,7 +233,13 @@ function stripMarkdown(text) {
 // 프롬프트 지시에도 불구하고 LLM 이 ok/pat/analysis/cs_ids/vocab 을 leak 할 수 있음.
 // 여기서 방어적으로 strip — 이 필드들은 step3/4 책임.
 // 원문 텍스트(sent.t, question.t, choice.t, bogi) 는 절대 건드리지 않음.
-const STEP2_FORBIDDEN_CHOICE_FIELDS = ["ok", "pat", "analysis", "cs_ids", "cs_spans"];
+const STEP2_FORBIDDEN_CHOICE_FIELDS = [
+  "ok",
+  "pat",
+  "analysis",
+  "cs_ids",
+  "cs_spans",
+];
 const STEP2_FORBIDDEN_SET_FIELDS = ["vocab"];
 
 function sanitizeToStructureOnly(sets) {
@@ -275,7 +278,6 @@ function sanitizeToStructureOnly(sets) {
   }
   return { sets, stats };
 }
-
 
 function fixUnescapedQuotes(jsonStr) {
   const result = [];
@@ -599,12 +601,27 @@ PDF의 ${fromQ}번~${endQ}번 문학 영역을 원문 구조만 추출해줘.`;
 //       이 단계는 "원문자 보존" 과 "구조 무결성" 만 우선 확보.
 
 const NEG_PATTERNS_INLINE = [
-  "않은", "않는", "틀린", "아닌", "없는", "거리가 먼",
-  "잘못", "적절하지", "맞지 않", "옳지 않", "부적절",
-  "해당하지", "일치하지", "어색한", "알 수 없는", "옳지않", "적합하지",
+  "않은",
+  "않는",
+  "틀린",
+  "아닌",
+  "없는",
+  "거리가 먼",
+  "잘못",
+  "적절하지",
+  "맞지 않",
+  "옳지 않",
+  "부적절",
+  "해당하지",
+  "일치하지",
+  "어색한",
+  "알 수 없는",
+  "옳지않",
+  "적합하지",
 ];
 function detectQTypeFromStem(t) {
-  for (const p of NEG_PATTERNS_INLINE) if ((t || "").includes(p)) return "negative";
+  for (const p of NEG_PATTERNS_INLINE)
+    if ((t || "").includes(p)) return "negative";
   return "positive";
 }
 
@@ -651,10 +668,7 @@ function buildSetsFromPdfText(fullText, questions, sec, yearKey) {
   let letterIdx = 0;
   for (const pr of uniqueHeaders) {
     const firstQInRange = questions.find(
-      (q) =>
-        q.id >= pr.start &&
-        q.id <= pr.end &&
-        !globallyAssigned.has(q.id),
+      (q) => q.id >= pr.start && q.id <= pr.end && !globallyAssigned.has(q.id),
     );
     if (!firstQInRange) continue; // 이 헤더에 할당할 Q 없음 → skip
 
@@ -676,6 +690,7 @@ function buildSetsFromPdfText(fullText, questions, sec, yearKey) {
         (s) =>
           !/^--\s*\d+\s*of\s*\d+\s*--$/.test(s) &&
           !/^홀수형\s*\d+$/.test(s) &&
+          !/^짝수형\s*\d+$/.test(s) &&
           !/저작권은 한국교육과정평가원/.test(s),
       );
 
@@ -689,9 +704,7 @@ function buildSetsFromPdfText(fullText, questions, sec, yearKey) {
     const setQs = questions
       .filter(
         (q) =>
-          q.id >= pr.start &&
-          q.id <= pr.end &&
-          !globallyAssigned.has(q.id),
+          q.id >= pr.start && q.id <= pr.end && !globallyAssigned.has(q.id),
       )
       .map((q) => {
         globallyAssigned.add(q.id);
@@ -724,6 +737,15 @@ function buildSetsFromPdfText(fullText, questions, sec, yearKey) {
 
 async function extractViaPdfParse(pdfPath, yearKey, sec, profile) {
   const { fullText, numpages } = await extractPdfText(pdfPath);
+
+  // [NEW v2 입력 검증] 합본 PDF 거부 — silent defect 차단
+  if (numpages >= 28) {
+    throw new Error(
+      `[step2] 합본 PDF 입력 거부 (${numpages}p): ${path.basename(pdfPath)}. ` +
+        `홀수형 단독 PDF (16~22p) 만 허용. 합본은 set 단위 무작위 형 추출하여 silent defect 발생.`,
+    );
+  }
+
   console.log(
     `[extractor] pdf-parse 텍스트 추출: ${fullText.length}자, ${numpages || "?"}페이지`,
   );
@@ -774,7 +796,12 @@ async function extractViaPdfParse(pdfPath, yearKey, sec, profile) {
  * Gemini API로 PDF에서 텍스트 추출
  * Claude API 대비 PDF 파싱 안정성이 높음
  */
-async function callGemini(pdfPath, prompt, yearKey = "unknown", section = "unknown") {
+async function callGemini(
+  pdfPath,
+  prompt,
+  yearKey = "unknown",
+  section = "unknown",
+) {
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
   const pdfBuffer = fs.readFileSync(pdfPath);
   const pdfBase64 = pdfBuffer.toString("base64");
@@ -1161,9 +1188,7 @@ export async function extractStructure(
         const reasons = pp.reasons
           ? pp.reasons
           : (pp.validation?.error_questions || [])
-              .map(
-                (e) => `Q${e.qId}:${(e.issue_codes || []).join(",")}`,
-              )
+              .map((e) => `Q${e.qId}:${(e.issue_codes || []).join(",")}`)
               .slice(0, 5);
         const gapReasons = pp.validation?.id_gaps?.length
           ? [`id_gaps:${pp.validation.id_gaps.join(",")}`]
@@ -1224,11 +1249,7 @@ export async function extractStructure(
         lit1.flatMap((s) => s.questions?.map((q) => q.id) || []),
       );
       const missingQs = [];
-      for (
-        let q = effectiveLiteratureStart;
-        q <= effectiveLiteratureEnd;
-        q++
-      ) {
+      for (let q = effectiveLiteratureStart; q <= effectiveLiteratureEnd; q++) {
         if (!coveredQs.has(q)) missingQs.push(q);
       }
 
@@ -1266,7 +1287,12 @@ export async function extractStructure(
           `\n\n[이미 추출 완료 — 절대 다시 추출하지 마라]\n${extractedSummary}` +
           `\n\n[시작 위치]\n다음 텍스트 이후부터 추출해줘: "${lastText}"`;
 
-        const lit2 = await callGemini(pdfPath, prompt2, yearKey, `${sec}_pass2`);
+        const lit2 = await callGemini(
+          pdfPath,
+          prompt2,
+          yearKey,
+          `${sec}_pass2`,
+        );
 
         // ★ ID 강제 재할당 (1차 결과 이후 순서로)
         const allIds = "abcdefgh".split("");

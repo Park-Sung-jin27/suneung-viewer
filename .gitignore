@@ -94,3 +94,4 @@ pipeline/track2c/git_status_*.txt
 
 # Gate-1 산출물 (매 회기 신규 생성)
 config/gate1_*.json
+public/data/all_data_204.backup.*.json
