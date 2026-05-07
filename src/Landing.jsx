@@ -936,9 +936,9 @@ export default function Landing({ onStart }) {
               animation: "fadeUp 0.8s ease 0.2s both",
             }}
           >
-            14일 무료로 시작하고,
+            선지마다 지문 근거를
             <br />
-            <span style={{ color: C.mid }}>내 오답 패턴을 확인하세요</span>
+            <span style={{ color: C.mid }}>형광펜으로 보여드립니다</span>
           </h1>
 
           <p
@@ -951,10 +951,9 @@ export default function Landing({ onStart }) {
               animation: "fadeUp 0.8s ease 0.3s both",
             }}
           >
-            문제를 풀고, 형광펜으로 근거를 복기하고,
+            김과외 상위 0.1% 강사가 직접 설계한 수능 국어 분석 도구.
             <br />
-            어떤 <strong style={{ color: C.ink }}>오답 패턴</strong>에 자주
-            걸리는지 스스로 파악하세요.
+            우리 아이가 왜 틀렸는지, 지문 어느 문장 때문인지까지 한 화면에.
           </p>
 
           <div
@@ -963,7 +962,17 @@ export default function Landing({ onStart }) {
               marginBottom: "10px",
             }}
           >
-            <Btn label="14일 무료로 시작하기 →" onClick={onStart} size="lg" />
+            <Btn
+              label="무료로 진단 시작"
+              onClick={() =>
+                window.open(
+                  "https://tally.so/r/81jOpo",
+                  "_blank",
+                  "noopener,noreferrer",
+                )
+              }
+              size="lg"
+            />
           </div>
           <p
             style={{
@@ -973,7 +982,7 @@ export default function Landing({ onStart }) {
               marginBottom: "52px",
             }}
           >
-            신용카드 없이 시작 · 언제든 해지 가능
+            1:1 전문가 진단 포함 — 토탈 5석 한정 / 89,000원/월부터
           </p>
         </div>
       </section>
@@ -2012,6 +2021,22 @@ export default function Landing({ onStart }) {
               ]}
               cta="상담 후 시작"
               onStart={onStart}
+            />
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.2}>
+          <div style={{ textAlign: "center", marginTop: "32px" }}>
+            <Btn
+              label="출시 알림 받기 (1차 베타 100명 한정)"
+              onClick={() =>
+                window.open(
+                  "https://tally.so/r/81jOpo",
+                  "_blank",
+                  "noopener,noreferrer",
+                )
+              }
+              variant="ghost"
+              size="md"
             />
           </div>
         </FadeIn>
