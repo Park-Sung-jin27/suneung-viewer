@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-05-02T14:50:06.448Z",
+  "source": "C:\\Users\\downf\\suneung-viewer\\config\\d_engine_dryrun_inputs.json",
+  "mode": "smoke",
+  "total_samples": 17,
+  "target_samples": 1,
+  "results": [
+    {
+      "sample_id": "gold_R1_001",
+      "decision": "single_pass",
+      "pass": true,
+      "error_type": "NONE",
+      "rule_hits": [],
+      "reason": "선지는 지문의 ‘거절할 수 있다’를 ‘거절할 수 없다’로 반전한 명시적 내용 왜곡으로 R1에 부합한다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": true,
+            "error_type": "NONE",
+            "rule_hits": [],
+            "reason": "선지는 지문의 ‘거절할 수 있다’를 ‘거절할 수 없다’로 반전한 명시적 내용 왜곡으로 R1에 부합한다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-02T14:50:06.447Z",
+        "api_call_durations_ms": [
+          16952
+        ]
+      }
+    }
+  ]
+}

@@ -21,7 +21,7 @@ import Banner from "./Banner";
 import Landing from "./Landing";
 import AcademyPreview from "./AcademyPreview";
 import ResultPage from "./ResultPage";
-import { YEAR_INFO, MODE } from "./constants";
+import { YEAR_INFO, MODE, isSetUnderReview } from "./constants";
 import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
 import { supabase } from "./supabase";
 import { saveAnswer } from "./hooks/useAnswerTracker";
@@ -1287,9 +1287,9 @@ function ViewerPage({ user, isPro = false }) {
         type="info"
       />
 
-      {currentSet?.id === "kor25_d" && (
+      {currentSet && isSetUnderReview(currentSet.id) && (
         <Banner
-          bannerId="under-review-kor25_d"
+          bannerId={`under-review-${currentSet.id}`}
           message="🔧 검수 중인 시험입니다 — 정답·해설·형광펜에 부정확한 부분이 있을 수 있습니다"
           type="warning"
         />

@@ -3,6 +3,27 @@
 // 패턴 정의(R1~R4 독서, L1~L5 문학), 선지 색상 팔레트, 전역 상수
 // ============================================================
 
+// ────────────────────────────────────────────────────────────
+// 검수중 (under-review) 세트 — 진입 시 상단 배너로 사용자에게 고지.
+//
+// 사용:
+//   import { isSetUnderReview } from "./constants";
+//   {currentSet && isSetUnderReview(currentSet.id) && <Banner ... />}
+//
+// "*" sentinel: 모든 세트에 배너 일괄 적용 (Gate 1 구현 전 일시적 안전 모드).
+// Gate 1 통과 + v5 빌드 필터 도입 후에는 set_status + release_approval_record
+// 가 통과한 set 만 빌드 산출물에 포함되므로, 그 시점에 "*" 를 제거하고
+// 개별 setId 만 등재하도록 전환할 것.
+// ────────────────────────────────────────────────────────────
+export const BLOCKED_SETS = ["*"];
+
+export function isSetUnderReview(setId) {
+  if (!Array.isArray(BLOCKED_SETS)) return false;
+  if (BLOCKED_SETS.includes("*")) return true;
+  if (!setId) return false;
+  return BLOCKED_SETS.includes(setId);
+}
+
 // 오답 패턴 정의 (R1~R4: 독서, L1~L5: 문학)
 export const P = {
   R1: {
