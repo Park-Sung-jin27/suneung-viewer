@@ -1,178 +1,145 @@
-# 현 진행 상황 (current_state.md)
+# 현 진행 status (current_state)
 
-> 본 문서는 매주 1번 갱신. 회기 specific 내용 (HANDOVER_*.md 패턴) 모두 본 문서로 통합.
-> 갱신 책임: 데이터 엔지니어 (Chat 1) + 프론트엔드 (Chat 2) + 품질 심사관
+## 메타
 
----
-
-## 갱신: 2026-05-07
-
----
-
-## 1. Phase 위치
-
-| Phase | 상태 |
+| 영역 | 값 |
 |---|---|
-| **Phase 0** (architecture Layer 1~7 구축) | 종결 [Confirmed via 2026-05-05] |
-| **Phase A** (현재 fatal 처리) | **진행 중** |
-| Phase B (5 수능 + Pro tier 정정) | 미진입 |
-| Phase C (장기 리팩토링) | 미진입 |
+| 갱신 | 2026-05-08 (Chat 1, 품질 심사관 회기 종결) |
+| 갱신 주기 | 주 1회 (CLAUDE.md docs/ 정합) |
+| HANDOVER 영역 | 본 file 단독 (별도 HANDOVER file 영역 X) |
 
 ---
 
-## 2. 5 수능 재추출 (FREE_YEARS, Phase A 핵심)
+## 본 회기 핵심 결정 영역 (2026-05-08)
 
-### 진행 상태 (sequential 직접 실행)
+### 1. 회기 path roadmap 영구 보존
 
-| 시험 | step1 | step2 | step3 | step4 | step5 |
-|---|---|---|---|---|---|
-| 2022수능 | cache | ✓ | step5 retry 진행 중 | - | 미완 |
-| 2023수능 | 큐 대기 | - | - | - | - |
-| 2024수능 | 큐 대기 | - | - | - | - |
-| 2025수능 | 큐 대기 | - | - | - | - |
-| 2026수능 | 큐 대기 | - | - | - | - |
+`docs/pipeline_evolution_roadmap.md` (commit `c764ade`) 영구 보존 — 회기 1~10 + 회기 0.5 영입 path.
 
-### 진행 path
+종합 ETA: ~6~8주 (병행 path 정합).
 
-watch.js 13시간 hang 발견 → kill → sequential 직접 실행 (β 분기) 진입.
+### 2. 회기 0.5 (set-level checkpoint) 영입 종결
 
-### 종결 trigger
+`pipeline/step5_verify.js` 영역 정정 (commit `95c8b55`) — 단절 영역 발생 시 step5_progress 자동 보존 path.
 
-5/5 시험 `step5_result_*수능*.json` 산출 시 → Phase 2 자동 검증 진입 (Gate 1 + 짝수형 silent defect + Hz cross-check).
+영입 영역:
+- `loadStep5Progress` / `saveStep5Progress` / `clearStep5Progress` / `appendStep5Result` 영역 신규
+- verifyAndFix signature 정정 (`yearTag` + `dataDir`)
+- set 종결 시 progress + step5_result 영역 부분 보존
 
----
+### 3. 통합 정정 path 결정 (레드팀 + 본 chat 종합)
 
-## 3. step3 prompt 강화 (working tree, commit 미)
+| 영역 | 결정 |
+|---|---|
+| LLM prompt bracket 영입 path | **폐기** — label drift 위험 |
+| max_tokens 영역 정정 | **사후 분기** (측정 사전 의무) |
+| bracket repair path | `normalizeAnalysisPatLabel` (3 case 모두) — append X |
+| 핵심 차별점 우선 | cs_ids 영역 > bracket pat 영역 |
+| 자동화 우선 | 사용자 검수 ~10% lock (Khanmigo 표준) |
 
-### 적용 내용 (line 197 사후)
+### 4. 학부모 리포트 path 결정
 
-```
-[보기·지문 인용 절대 룰]
-- bogi 필드 수치·고유명사·인용문은 반드시 원문 그대로
-- 변형·추정·반올림·일반 예시 대체 금지
-- 보기·지문 인용 따옴표 안 텍스트는 글자/숫자 그대로
-- 지문 근거 인용 시 sents 의 t 필드 텍스트 그대로
-```
-
-### 효과
-
-silent defect (Hz 임의 값 hallucination 등) 영구 차단. 5 수능 재추출 결과에 즉시 적용.
-
-### Commit 시점
-
-5 수능 재추출 종결 + Phase 2 자동 검증 통과 후 1회 통합 commit.
+| 영역 | 결정 |
+|---|---|
+| 진입 시점 | pipeline 회기 9 (Post-LLM Guardrail) 종결 사후 lock |
+| MVP 기능 | 11개 (10 + P8 인간 검수 queue) |
+| M9 (PDF 변환) | React-PDF 단독 (Puppeteer 폐기) |
+| 전략가 D+30 영역 | 폐기 — D+60~70 path 정정 |
+| 변호사 검토 | 추후 case study 사후 결정 |
 
 ---
 
-## 4. 진행 commit 누계 (Phase A)
+## 본 회기 진행 영역
+
+### 5 수능 sequential (FREE 5 수능)
+
+| 시험 | status |
+|---|---|
+| 2024수능 | release_blocked path (FAIL-FAST 58건 — 회기 4 정정 사후 patch path) |
+| **2025수능** | ⏳ vscode 영역 자율 진행 (회기 0.5 patch 사후 첫 진입) |
+| 2026수능 | 미진입 (회기 path 정정 사후 진행) |
+| 2023수능 | 옛 회기 산출물 단독 (4월 영역) — 회기 9 사후 patch path |
+| 2022수능 | 미진입 (회기 path 정정 사후 진행) |
+
+### 결함 영역 식별 (본 회기)
+
+1. **step3 prompt ↔ 검증 영역 정합성 결함** — wrong_no_pat_code 누적 ↑ — 회기 3 정정 path
+2. **step3 retry strengthening X** — 같은 prompt 재 호출 → 같은 결함 재현
+3. **step3 응답 영역 truncation** — JSON 파싱 fail 사례 다수 (r2024b position 8531 + r2025b retry 영역) — 회기 4 정정 path
+4. **본체 누출 영역** — r2024d Q15·Q16 (cross-set leak) — 회기 4 정정 path
+5. **D엔진 통합 X** — Stage 2 진입 사전 (Gold 17 → 20 보강 + dry-run 재실행 + needs_human 큐 인터페이스) 의무
+
+---
+
+## 직전 commit 영역
 
 | commit | 영역 |
 |---|---|
-| 92c0c9d | quality_gate v2 (분류 필드 + 6 신규 검사) |
-| b2649e5 | 2026수능 s1 Q2 ok 라벨 5건 반전 |
-| f420709 | 2025_9월 sep25_c Q8 questionType 정정 |
-| 62cf987 | 2026_9월 r20269a Q3 critical placeholder 정제 |
-| 25ea534 | 2023_6월 l20236a 페이지 6 본문 12 sents 보강 |
-| cfe14f7 | 2023_6월 l20236a Q20 cs_ids + analysis 정정 |
-| ff509a2 | step2 합본 PDF 거부 + 짝수형 footer 정합 |
+| `c764ade` | docs: 회기 0.5 (set-level checkpoint) 긴급 영역 영입 |
+| `95c8b55` | feat(pipeline): step5 set-level checkpoint 영입 + spec |
+| Chat 2 영역 4 commit | feat(landing): Tally 사전 신청 폼 / 학원 신청 강화 / Google OAuth / 메시지 위계 |
 
 ---
 
-## 5. 잔여 patch 작업 큐
+## 잔여 path 영역 (사용자 결정 의무)
 
-### Phase A 종결 사후 (Phase B 진입 사전)
+### 즉시 영역 (다음 세션 진입 시)
 
-#### A1. 2017_6월 r20176c Q32 atomic patch
+1. **vscode 영역 status 영역 회신** (5 수능 종결 사실?)
+2. **회기 1 (Phase 1 측정) 진입** — `docs/specs/session1_measurement_spec.md` 영역 paste path
+3. **credit 잔액 영역 점검** — $10 미만 시 추가 충전 ($20~30 영역)
 
-- **결함 유형**: B (step3 generation defect — Hz 임의 값)
-- **결함 영역**: Q32 #1, #3, #4 (analysis Hz 불일치)
-- **사용자 발견 path**: 수업 중 production 사용 (1건) + 자동 검증 (3건 확장)
-- **patch 작업**: cs_ids 매핑 (#1, #3, #4, #5) + analysis Hz 정정
-- **사전 의무**: r20176cs4 풀 raw + 사용자 평가원 정답 num 회신
+### 별도 분기 영역 (사후 결정)
 
-#### A2. 002adfe step3 validator 검증
-
-- 데이터 엔지니어 자가 외삽 commit
-- 본 채팅 spec 정합 검증 의무
-- 명령: `git show 002adfe -- pipeline/step3_analysis.js`
-
-#### A3. kor25_d 자동 해소 검증
-
-- 5 수능 재추출 종결 사후
-- kor25_d sents 손상 7항목 cross-check
-- 자동 해소 시 patch 5건 무효화 / 잔존 시 source_integrity_hold 적용
-
-#### A4. 레드팀 4건 적용 (5 수능 종결 사후)
-
-- commit 0: lock #12 라벨 규칙 갱신 (라벨 정의 선행)
-- commit 1: Q20 release_approval_record schema 충족
-- commit 2: Q20 cs_ids enhancement issue 분리
-- commit 3: kor25_d 자동 해소 결과별 적용
+1. **stash@{0} 영역 verbatim 룰** — main HEAD 영역 검증 사후 (α) path 결정
+2. **2024수능 release_blocked 영입** — 회기 4 정정 사후 set_status + display_banner path
+3. **사용자 의무 사전 작업** — 김과외 코멘트 10개 정리 (학부모 리포트 path 영역 사전 의무)
 
 ---
 
-## 6. Pro tier 미완성 시험 (Phase B 진입)
+## 자가 결함 영역 (52 — 본 회기 정합)
 
-### 분류 (47 연도 dry run 매트릭스 정합)
-
-| Tier | 시험 수 | errors 범위 | 작업 |
-|---|---|---|---|
-| Near-Complete | 9 | ≤ 5 | atomic 또는 step3 부분 재호출 |
-| Partial | 6 | 6~30 | step2 부분 + step3 재호출 |
-| Heavy | 12 | 30+ | step2~6 통째 재추출 |
-| read_fail | 4 | (0p PDF) | Gemini Vision OCR (별도 도구) |
-
-진입 시점: 5 수능 종결 + Phase A 잔여 patch 종결 사후.
+본 회기 영구 정정 lock 영역:
+1. LLM bracket 영입 path 폐기 (deterministic rendering 정합)
+2. 측정 사전 처방 path 의무 lock
+3. "영역" filler 사용 X lock
+4. 레드팀 검수 사전 의무 lock (lock D)
+5. 단절 영역 가능성 사전 점검 lock (회기 0.5 영입 path 정합)
 
 ---
 
-## 7. 즉시 구현 후보 (프론트엔드 영역, Chat 2)
+## 다음 세션 진입 path
 
-전략가 + 품질 심사관 검수 결과 (2026-05-07):
+### 1단계: 새 채팅 진입 (본 chat 영역 — 품질 심사관)
 
-1. **선지별 피드백 버튼** — 1순위 (학생 production 검증 도구)
-2. **문항별 오류 신고** — 2순위 (QA 결함 발견 직접)
-3. **오답 패턴 미니 카드** — 3순위 (차별점 직접 시각화)
-4. **세트 종료 1분 리포트** — 4순위 (학생 자기 인식)
+### 2단계: 핸드오프 영역 1줄 paste
 
-세부는 직원별 CLAUDE.md (`ops/employees/frontend/CLAUDE.md`) 참조.
+```
+직전 회기 (2026-05-08): 5 수능 sequential 진행 — 2025 종결 사후 회기 1 진입 path 정합.
+회기 0.5 (set-level checkpoint) 영입 종결. roadmap.md docs/ 영구 보존.
+docs/current_state.md 영역 정합 점검 path.
+```
 
-진입 시점: Phase A 종결 사후 (Chat 2 영역).
+### 3단계: vscode status 영역 회신
 
----
-
-## 8. 환경 상태
-
-| 영역 | 상태 |
+| 사실 | 본 chat 작업 |
 |---|---|
-| `.env` | working tree 적용 [Confirmed via 인증 정합] |
-| watch.js | sequential 직접 실행 path 채택 (β 분기) |
-| TEST_MODE | watch.js 자동 주입 (production merge 차단 — 정합) |
-| Anthropic credit | 정합 [Confirmed via API ping] |
-| 절전 차단 | 활성 (`powercfg /change standby-timeout-ac 0`) |
+| `2025 ✓` | 회기 1 진입 즉시 (`session1_measurement_spec.md` paste reminder) |
+| 단절 영역 발생 | 진단 + 재개 path |
+| 진행 중 | monitoring 단독 |
+
+### 4단계: 회기 1 진입 (5 수능 종결 사실 시)
+
+데이터 엔지니어 채팅 paste:
+```
+첨부 file: session1_measurement_spec.md
+명령: 본 spec 영역 4 산출물 raw 회신 의무
+```
+
+raw 회신 → 본 chat 검수 → 회기 2 (정정 분기 결정) 진입.
 
 ---
 
-## 9. 사용자 결정 대기 영역
+## 회기 path roadmap 영역 cross-reference
 
-| 영역 | 결정 의무 |
-|---|---|
-| 가격·요금제 | 출시 전 의무 (free tier 범위 + Pro 가격) |
-| 출시 시점 | Phase A 직후 vs Phase B Near-Complete 후 |
-| 사용자 확보 우선 path | (a) 김과외 학생 풀 (b) 학원 cold outreach (c) 콘텐츠 마케팅 |
-| 즉시 구현 4건 진입 시점 | Phase A 종결 직후 vs 1주 후 |
-
----
-
-## 10. 다음 회기 진입 1번째 액션
-
-1. 본 문서 + `CLAUDE.md` (루트) read
-2. 본인 채팅 영역 `ops/employees/{role}/CLAUDE.md` read
-3. 5 수능 sequential 진행 상태 검증 (step5_result file 개수)
-4. 응답 형식 (CLAUDE.md §1) 적용
-
----
-
-## 변경 이력
-
-- 2026-05-07: 정비된 단일 정본. 옛 HANDOVER_*.md 모두 archive 격리. 회기 specific 내용 본 문서로 통합.
+본 file ↔ `docs/pipeline_evolution_roadmap.md` 정합 사실 점검 의무. 회기 종결 사후 본 chat 자율 갱신 path 정합.
