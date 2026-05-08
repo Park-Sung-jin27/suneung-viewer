@@ -264,6 +264,11 @@ export function estimateGrade(correct, total, yearKey) {
   };
 }
 
+// 베타 사전 신청 Tally form (Landing 메인 CTA 통합 통로)
+//   학원 WaitlistForm 은 자체 supabase.from("waitlist") — 본 URL 무관.
+//   /auth 직접 접근 시 Google OAuth 정상 (마스터/검증자 통로 보존).
+export const TALLY_URL = "https://tally.so/r/81jOpo";
+
 // 선지 기호 이미지 매핑 ([[sym:box]] 등 치환용)
 export const SYMBOLS = {
   box: "/images/sym_box.png",

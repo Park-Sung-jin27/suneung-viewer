@@ -21,7 +21,7 @@ import Banner from "./Banner";
 import Landing from "./Landing";
 import AcademyPreview from "./AcademyPreview";
 import ResultPage from "./ResultPage";
-import { YEAR_INFO, MODE, isSetUnderReview } from "./constants";
+import { YEAR_INFO, MODE, isSetUnderReview, TALLY_URL } from "./constants";
 import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
 import { supabase } from "./supabase";
 import { saveAnswer } from "./hooks/useAnswerTracker";
@@ -1850,7 +1850,11 @@ export default function App() {
         path="/"
         element={
           !user ? (
-            <Landing onStart={() => navigate("/auth")} />
+            <Landing
+              onStart={() =>
+                window.open(TALLY_URL, "_blank", "noopener,noreferrer")
+              }
+            />
           ) : (
             <Layout user={user} onLogout={handleLogout}>
               <MainPage isPro={isPro} user={user} />
