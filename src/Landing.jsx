@@ -1154,7 +1154,7 @@ export default function Landing({ onStart }) {
 
         <FadeIn delay={0.35}>
           <div style={{ textAlign: "center" }}>
-            <Btn label="14일 무료로 시작하기 →" onClick={onStart} size="lg" />
+            <Btn label="무료로 진단 시작 →" onClick={onStart} size="lg" />
             <p
               style={{
                 fontSize: "0.73rem",
@@ -1961,11 +1961,10 @@ export default function Landing({ onStart }) {
                 marginBottom: "12px",
               }}
             >
-              무료로 시작, 필요하면 확장
+              진단부터 1:1까지 — 단계별 선택
             </h2>
             <p style={{ fontSize: "0.87rem", color: C.muted }}>
-              학원 월 수강료 평균 16.4만원의 1/4 가격 · 언제든 해지 · 30일 환불
-              보장
+              14일 무료 진단 → 월 구독 → 1:1 코칭 5석 · 30일 환불 보장
             </p>
           </div>
         </FadeIn>
@@ -2011,7 +2010,7 @@ export default function Landing({ onStart }) {
             <PriceCard
               plan="프리미엄"
               price="89,000"
-              period="/ 월 · 학생 1인"
+              period="/ 월 · 5석 한정"
               features={[
                 { text: "스탠다드 전체 포함", ok: true },
                 { text: "월 2회 전문가 1:1 리뷰", ok: true },
@@ -2019,7 +2018,7 @@ export default function Landing({ onStart }) {
                 { text: "학부모 리포트 공유", ok: true },
                 { text: "수능 전 긴급 점검 1회", ok: true },
               ]}
-              cta="상담 후 시작"
+              cta="5석 신청"
               onStart={onStart}
             />
           </div>
@@ -2096,7 +2095,7 @@ export default function Landing({ onStart }) {
             {
               icon: "🔓",
               title: "신용카드 없이 시작",
-              desc: "14일 무료 체험 동안 결제 정보 불필요. 모든 핵심 기능 체험 가능.",
+              desc: "스타터 tier 14일 무료 체험. 결제 정보 불필요. 핵심 기능 그대로 체험 가능.",
               color: C.mid,
               bg: C.bg,
               border: C.line,
@@ -2228,7 +2227,7 @@ export default function Landing({ onStart }) {
             국어 오답의 원인, 오늘 안에 알 수 있습니다.
           </p>
           <Btn
-            label="14일 무료로 시작하기 →"
+            label="무료로 진단 시작 →"
             onClick={onStart}
             variant="white"
             size="lg"
