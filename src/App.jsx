@@ -1544,8 +1544,14 @@ function AuthPage() {
   }
 
   async function handleGoogle() {
+    // redirectTo: 현재 origin 으로 명시 — Supabase Site URL fallback (localhost) 회피.
+    //   prod (vercel): https://suneung-viewer.vercel.app
+    //   dev (vite):    http://localhost:5173
+    //   ※ Supabase Dashboard → Authentication → URL Configuration → Redirect URLs
+    //     allowlist 에 두 origin 모두 등록 필요.
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
+      options: { redirectTo: window.location.origin },
     });
     if (error) setError(error.message);
   }
