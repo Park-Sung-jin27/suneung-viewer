@@ -258,7 +258,7 @@ function HighlightDemo({ onStart }) {
             margin: "0 12px",
           }}
         >
-          논리맵핑 — 2026수능
+          짚이 — 2026수능
         </div>
         <div style={{ width: 56 }} />
       </div>
@@ -910,17 +910,32 @@ export default function Landing({ onStart }) {
           justifyContent: "space-between",
         }}
       >
-        <span
-          style={{
-            fontFamily: "'Noto Serif KR', serif",
-            fontWeight: "700",
-            fontSize: "1rem",
-            color: C.ink,
-            letterSpacing: "-0.02em",
-          }}
-        >
-          논리맵핑
-        </span>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 200 200"
+            style={{ borderRadius: "7px" }}
+          >
+            <rect x="0" y="0" width="200" height="200" fill="#2d6e2d" />
+            <rect x="22" y="93" width="86" height="38" fill="#bef264" />
+            <polygon
+              points="100,75 158,75 178,100 158,125 100,125"
+              fill="#ffffff"
+            />
+          </svg>
+          <span
+            style={{
+              fontFamily: "'Noto Serif KR', serif",
+              fontWeight: 900,
+              fontSize: "20px",
+              color: C.ink,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            짚이
+          </span>
+        </div>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <span style={{ fontSize: "0.75rem", color: C.muted }}>14일 무료</span>
           <Btn label="14일 무료로 시작하기 →" onClick={onStart} size="sm" />
@@ -2325,10 +2340,10 @@ export default function Landing({ onStart }) {
             color: "rgba(255,255,255,0.35)",
           }}
         >
-          논리맵핑
+          짚이
         </span>
         <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.2)" }}>
-          © 2025 수능 국어 논리맵핑
+          © 2025 짚이
         </span>
       </footer>
     </div>
