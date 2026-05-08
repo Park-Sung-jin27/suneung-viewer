@@ -546,11 +546,70 @@ function WaitlistForm() {
             marginBottom: "8px",
           }}
         >
-          신청이 완료되었습니다
+          {form.academy_name
+            ? `${form.academy_name}님, 신청이 접수되었습니다`
+            : "신청이 접수되었습니다"}
         </p>
-        <p style={{ fontSize: "0.85rem", color: "#166534" }}>
-          담당자가 24시간 내에 연락드리겠습니다
+        <p
+          style={{
+            fontSize: "0.85rem",
+            color: "#166534",
+            marginBottom: "20px",
+          }}
+        >
+          담당자가 영업일 기준 24시간 내에 연락드립니다
         </p>
+
+        <div
+          style={{
+            textAlign: "left",
+            background: "#fff",
+            borderRadius: "10px",
+            padding: "16px 18px",
+            border: "1px solid #bbf7d0",
+            marginTop: "8px",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.78rem",
+              fontWeight: "700",
+              color: "#15803d",
+              marginBottom: "10px",
+              letterSpacing: "0.02em",
+            }}
+          >
+            🚀 곧 만나실 학원 전용 기능
+          </p>
+          <ul
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: "8px",
+              fontSize: "0.82rem",
+              color: "#1f2937",
+              lineHeight: 1.55,
+            }}
+          >
+            <li>📊 <strong>학원 대시보드</strong> — 학생별 약점 패턴 한눈에</li>
+            <li>👥 <strong>학원 전용 단가</strong> — 학생 수에 맞춘 합리적 가격</li>
+            <li>🎯 <strong>1:1 코칭 우선 배정</strong> — 학원생 먼저</li>
+            <li>🧪 <strong>도입 전 시범 운영</strong> — 부담 없이 체험</li>
+          </ul>
+          <p
+            style={{
+              fontSize: "0.72rem",
+              color: "#6b7280",
+              marginTop: "12px",
+              fontStyle: "italic",
+            }}
+          >
+            세부 일정·가격은 상담 시 안내드립니다.
+          </p>
+        </div>
       </div>
     );
   }
