@@ -17,6 +17,69 @@ const SYSTEM_PROMPT = `너는 수능 국어 문제를 검토하는 전문가다.
 반드시 순수 JSON만 출력하라.
 출력 형식: { "1": 3, "2": 1 } (문항번호: 정답선지번호)`;
 
+// ─── set-level checkpoint (회기 0.5) ─────────────────────────
+
+// step5 진입 시 set-level progress 영역 로드
+function loadStep5Progress(yearTag, dataDir) {
+  if (!yearTag || !dataDir) return { completedSets: [], timestamp: null };
+  const p = path.join(dataDir, `step5_progress_${yearTag}.json`);
+  if (fs.existsSync(p)) {
+    const prog = JSON.parse(fs.readFileSync(p, "utf8"));
+    console.log(
+      `  📍 step5 진행 영역 로드: ${prog.completedSets.length} set 종결 (${prog.timestamp})`,
+    );
+    return prog;
+  }
+  return { completedSets: [], timestamp: null };
+}
+
+function saveStep5Progress(yearTag, dataDir, completedSets) {
+  if (!yearTag || !dataDir) return;
+  const p = path.join(dataDir, `step5_progress_${yearTag}.json`);
+  fs.writeFileSync(
+    p,
+    JSON.stringify(
+      {
+        completedSets,
+        timestamp: new Date().toISOString(),
+      },
+      null,
+      2,
+    ),
+    "utf8",
+  );
+}
+
+function clearStep5Progress(yearTag, dataDir) {
+  if (!yearTag || !dataDir) return;
+  const p = path.join(dataDir, `step5_progress_${yearTag}.json`);
+  if (fs.existsSync(p)) fs.unlinkSync(p);
+}
+
+// 각 set 종결 사후 step5_result file 영역 부분 저장
+function appendStep5Result(yearTag, dataDir, setResult) {
+  if (!yearTag || !dataDir) return;
+  const p = path.join(dataDir, `step5_result_${yearTag}.json`);
+  let allResults = { reading: [], literature: [] };
+
+  if (fs.existsSync(p)) {
+    allResults = JSON.parse(fs.readFileSync(p, "utf8"));
+  }
+
+  const section = setResult.id.startsWith("r") ? "reading" : "literature";
+  // 같은 set id 영역 정합 사실 점검 (재 처리 영역 정합)
+  const existingIdx = allResults[section].findIndex(
+    (s) => s.id === setResult.id,
+  );
+  if (existingIdx >= 0) {
+    allResults[section][existingIdx] = setResult;
+  } else {
+    allResults[section].push(setResult);
+  }
+
+  fs.writeFileSync(p, JSON.stringify(allResults, null, 2), "utf8");
+}
+
 // ─── JSON 파싱 ─────────────────────────────────────────────
 
 function stripMarkdown(text) {
@@ -188,16 +251,16 @@ function verifyDeterministic(set, answerKey) {
       if (cs === null) {
         addIssue(q.id, `cs_ids_not_array:#${c.num}`);
       } else if (c.ok === true) {
-        if (cs.length === 0) addIssue(q.id, `cs_ids_empty_on_ok_true:#${c.num}`);
+        if (cs.length === 0)
+          addIssue(q.id, `cs_ids_empty_on_ok_true:#${c.num}`);
       } else if (c.ok === false) {
         const patKey = c.pat;
         const autoEmptyAllowed =
-          patKey === null || patKey === undefined || AUTO_EMPTY_CS_PATS.has(patKey);
+          patKey === null ||
+          patKey === undefined ||
+          AUTO_EMPTY_CS_PATS.has(patKey);
         if (!autoEmptyAllowed && cs.length === 0) {
-          addIssue(
-            q.id,
-            `cs_ids_empty_on_ok_false:#${c.num} pat=${patKey}`,
-          );
+          addIssue(q.id, `cs_ids_empty_on_ok_false:#${c.num} pat=${patKey}`);
         }
       }
     }
@@ -225,7 +288,7 @@ function verifyDeterministic(set, answerKey) {
 export async function verifyAndFix(
   step4Data,
   answerKey,
-  { step2Data, maxRetries = 3 } = {},
+  { step2Data, maxRetries = 3, yearTag, dataDir } = {},
 ) {
   const result = {
     reading: step4Data.reading.map((s) => ({ ...s })),
@@ -238,9 +301,19 @@ export async function verifyAndFix(
     `[step5] 검증 모드: ${useRederive ? "rederive (LEGACY, 비결정적)" : "deterministic (기본)"}`,
   );
 
+  // [회기 0.5] set-level checkpoint 영역 로드
+  const progress = loadStep5Progress(yearTag, dataDir);
+
   for (const section of ["reading", "literature"]) {
     for (let si = 0; si < result[section].length; si++) {
       let set = result[section][si];
+
+      // [회기 0.5] 이전 회기 종결 set 영역 skip
+      if (progress.completedSets.includes(set.id)) {
+        console.log(`  ⏩  ${set.id} skip (이전 회기 종결)`);
+        continue;
+      }
+
       console.log(`\n[step5] 검증 중: ${set.id} (${set.range})`);
 
       // [기본 경로] 결정적 검증
@@ -399,8 +472,16 @@ export async function verifyAndFix(
       }
 
       result[section][si] = set;
+
+      // [회기 0.5] set 종결 즉시 progress + step5_result 부분 저장
+      progress.completedSets.push(set.id);
+      saveStep5Progress(yearTag, dataDir, progress.completedSets);
+      appendStep5Result(yearTag, dataDir, set);
     }
   }
+
+  // [회기 0.5] 정상 종결 사후 progress file 영역 자동 삭제
+  clearStep5Progress(yearTag, dataDir);
 
   // [NEW] fail-fast: pat_out_of_domain / pat_missing 은 도메인 무결성 위반이므로
   // 재시도 이후에도 남아 있으면 파이프라인을 즉시 중단한다.
@@ -421,9 +502,7 @@ export async function verifyAndFix(
     }
   }
   if (fatal.length > 0) {
-    console.error(
-      "\n" + "=".repeat(60),
-    );
+    console.error("\n" + "=".repeat(60));
     console.error(
       `[step5:FAIL-FAST] 도메인 무결성 위반 ${fatal.length}건 — 파이프라인 중단`,
     );
@@ -478,7 +557,19 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.warn("[step5] step2 데이터 없음 — 불일치 시 재실행 불가");
   }
 
-  verifyAndFix(step4Data, answerKey, { step2Data })
+  // [회기 0.5] yearTag 자동 추론 (step4 file 이름 영역)
+  const step4Base = path.basename(step4Path_abs, ".json");
+  const yearTagMatch = step4Base.match(/step4[_a-z]*_(.+)$/);
+  const yearTag = yearTagMatch ? yearTagMatch[1] : null;
+  if (yearTag) {
+    console.log(`[step5] yearTag 추론: ${yearTag}`);
+  } else {
+    console.warn(
+      `[step5] yearTag 추론 실패 (${step4Base}) — set-level checkpoint 비활성`,
+    );
+  }
+
+  verifyAndFix(step4Data, answerKey, { step2Data, yearTag, dataDir: dir })
     .then(({ result, stats }) => {
       console.log("\n" + "=".repeat(50));
       console.log("[step5] 최종 결과");
