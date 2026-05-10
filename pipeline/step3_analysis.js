@@ -121,9 +121,19 @@ function detectOkAnalysisMismatch(choice) {
   if (!hasTick && !hasX) return null; // 결론 마커 부재 — 판단 보류
   if (hasTick && hasX) return null; // 혼재 — 판단 보류
   if (choice.ok === true && hasX)
-    return { code: "ok_true_but_analysis_negates", has_tick: false, has_x: true, region_len: region.length };
+    return {
+      code: "ok_true_but_analysis_negates",
+      has_tick: false,
+      has_x: true,
+      region_len: region.length,
+    };
   if (choice.ok === false && hasTick)
-    return { code: "ok_false_but_analysis_confirms", has_tick: true, has_x: false, region_len: region.length };
+    return {
+      code: "ok_false_but_analysis_confirms",
+      has_tick: true,
+      has_x: false,
+      region_len: region.length,
+    };
   return null;
 }
 
@@ -441,9 +451,7 @@ function detectPatFromAnalysis(a, sec) {
   // [NEW] 보기 조건 왜곡 — Q26#2 케이스. 문학=L5(보기대입), 독서=R2(관계전도)
   if (/조건\s*왜곡|보기\s*조건\s*왜곡|조건\s*오독/.test(a))
     return sec === "reading" ? "R2" : "L5";
-  if (
-    /팩트 왜곡|사실 왜곡|의미 왜곡|정반대|역전된/.test(a)
-  )
+  if (/팩트 왜곡|사실 왜곡|의미 왜곡|정반대|역전된/.test(a))
     return sec === "reading" ? "R1" : "L1";
   if (
     /관계[··]인과|인과 전도|인과관계 왜곡|논리 왜곡|반박-지지|대상 바꿔치기|순서 역전/.test(
@@ -503,7 +511,11 @@ function enforcePatDomain(pat, setId /*, analysis */) {
   if (pat === null || pat === undefined || pat === 0) {
     return {
       pat,
-      error: { code: "pat_missing", pat_seen: pat, expected_domain: expectedDomain },
+      error: {
+        code: "pat_missing",
+        pat_seen: pat,
+        expected_domain: expectedDomain,
+      },
     };
   }
 
@@ -511,7 +523,11 @@ function enforcePatDomain(pat, setId /*, analysis */) {
   if (!VALID_PATS.has(pat)) {
     return {
       pat,
-      error: { code: "pat_invalid", pat_seen: pat, expected_domain: expectedDomain },
+      error: {
+        code: "pat_invalid",
+        pat_seen: pat,
+        expected_domain: expectedDomain,
+      },
     };
   }
 
@@ -604,6 +620,14 @@ choices 배열만 JSON으로 반환해줘.
     ),
   );
 
+  console.log(`[diagnostic] stop_reason=${response.stop_reason}`);
+  console.log(
+    `[diagnostic] response length=${response.content[0].text.length}`,
+  );
+  console.log(
+    `[diagnostic] response tail (last 100): ${response.content[0].text.slice(-100)}`,
+  );
+
   return parseJSON(response.content[0].text);
 }
 
@@ -681,7 +705,11 @@ function validateAnalysisQuality(choice, question) {
   // ok:false 결론 형식
   if (choice.ok === false) {
     if (!a.includes("❌")) issues.push("wrong_no_negation_mark");
-    if (!/\[\s*(R[1-4]|L[1-5]|V)\s*[:： ].*?\]|\[\s*(R[1-4]|L[1-5]|V)\s*\]/.test(a))
+    if (
+      !/\[\s*(R[1-4]|L[1-5]|V)\s*[:： ].*?\]|\[\s*(R[1-4]|L[1-5]|V)\s*\]/.test(
+        a,
+      )
+    )
       issues.push("wrong_no_pat_code");
   }
 
@@ -689,7 +717,14 @@ function validateAnalysisQuality(choice, question) {
   if (choice.ok === true) {
     if (!a.includes("✅")) issues.push("correct_no_positive_mark");
     const beforeDiscrim = a.split("🔎")[0] || a;
-    const FORBIDDEN_POS = ["어긋나", "왜곡", "잘못", "부적절", "맞지 않", "일치하지 않"];
+    const FORBIDDEN_POS = [
+      "어긋나",
+      "왜곡",
+      "잘못",
+      "부적절",
+      "맞지 않",
+      "일치하지 않",
+    ];
     for (const w of FORBIDDEN_POS) {
       if (beforeDiscrim.includes(w)) {
         issues.push(`correct_forbidden_phrase:${w}`);
@@ -824,7 +859,8 @@ export async function postProcess(result, answerKey) {
           // override 가 적용된 choice 는 사람 확정이므로 모순 감지에서 제외.
           {
             if (choice._ok_overridden) {
-              if (choice._ok_analysis_mismatch) delete choice._ok_analysis_mismatch;
+              if (choice._ok_analysis_mismatch)
+                delete choice._ok_analysis_mismatch;
             } else {
               const mismatch = detectOkAnalysisMismatch(choice);
               if (mismatch) {
@@ -1109,10 +1145,10 @@ function validateStep3Output(set, choices) {
   for (const q of set.questions) {
     for (const c of q.choices) {
       if (c.ok === false && (c.pat === null || c.pat === undefined)) {
-        issues.push({ qid: q.id, num: c.num, code: 'PAT_MISSING_ON_FALSE' });
+        issues.push({ qid: q.id, num: c.num, code: "PAT_MISSING_ON_FALSE" });
       }
       if (c.ok === true && c.pat !== null && c.pat !== undefined) {
-        issues.push({ qid: q.id, num: c.num, code: 'PAT_PRESENT_ON_TRUE' });
+        issues.push({ qid: q.id, num: c.num, code: "PAT_PRESENT_ON_TRUE" });
       }
     }
   }
