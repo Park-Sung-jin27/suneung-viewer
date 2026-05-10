@@ -744,6 +744,59 @@ const DISCRIMINATIVE_MAX_RETRIES = Number(
   process.env.STEP3_DISCRIMINATIVE_MAX_RETRIES || 2,
 );
 
+// ─── normalizeAnalysisPatLabel: deterministic [pat] bracket rendering ──
+// 회기 2 — 2단계 spec (회기 1 측정: wrong_no_pat_code 49건/65건 = 75.4%)
+//
+// 3 case 처리:
+//   1. 누락:   ok:false + pat ∈ {R/L/V} + analysis 영역 [pat] bracket 부재 → ❌ 결말에 추가
+//   2. 불일치: choice.pat="R2" + analysis 결말 line "...[R1]" → [R1] 제거 + [R2] 추가
+//              본문 인용 [R1] 영역 보존 (❌ 결말 line 단독 처리)
+//   3. 옛 라벨: analysis="...[패턴3]" 또는 "...[오류유형②]" → 단독 제거 + [pat] 추가
+//              한글 자유 라벨 ([인과관계 역전] 등) 영역 보존
+//
+// dry-run 검증: false positive 0/6, case 1/2/3 정합 ✓, 가드 정합 ✓
+export function normalizeAnalysisPatLabel(choice) {
+  if (choice.ok !== false || !choice.pat) return choice.analysis;
+  if (choice.pat === 0 || choice.pat === "0") return choice.analysis;
+
+  const validPats = ["R1", "R2", "R3", "R4", "L1", "L2", "L3", "L4", "L5", "V"];
+  if (!validPats.includes(choice.pat)) return choice.analysis;
+
+  let a = choice.analysis || "";
+
+  // case 3: 옛 라벨만 단독 제거
+  a = a.replace(/\[\s*패턴\s*\d+\s*\]/g, "");
+  a = a.replace(/\[\s*오류\s*유형[^\]]*\]/g, "");
+
+  // case 2: 다른 pat code — ❌ 결말 line 단독 (본문 인용 보존)
+  const otherPats = validPats.filter((p) => p !== choice.pat);
+  const lines = a.split("\n");
+  for (let i = 0; i < lines.length; i++) {
+    if (!lines[i].includes("❌")) continue;
+    for (const p of otherPats) {
+      const re = new RegExp(String.raw`\[\s*${p}\s*([:： ][^\]]*)?\]`, "g");
+      lines[i] = lines[i].replace(re, "");
+    }
+  }
+  a = lines.join("\n");
+
+  a = a.replace(/\s+$/, "");
+
+  // case 1: choice.pat bracket 부재 → 결말 영입
+  const targetRe = new RegExp(
+    String.raw`\[\s*${choice.pat}\s*([:： ][^\]]*)?\]`,
+  );
+  if (!targetRe.test(a)) {
+    if (a.includes("❌")) {
+      a = a.replace(/(❌[^\n]*)$/, `$1 [${choice.pat}]`);
+    } else {
+      a = a + ` [${choice.pat}]`;
+    }
+  }
+
+  return a;
+}
+
 export async function postProcess(result, answerKey) {
   const correctedSets = { reading: [], literature: [] };
   let totalOkFixed = 0,
@@ -905,6 +958,10 @@ export async function postProcess(result, answerKey) {
               );
             }
           }
+
+          // [NEW 회기 2-2단계] deterministic [pat] bracket rendering
+          // — wrong_no_pat_code 자동 해소 (회기 1 측정: 75.4% 비중)
+          choice.analysis = normalizeAnalysisPatLabel(choice);
 
           // [NEW] 변별 판단 품질 검증 + 재생성 루프
           if (DISCRIMINATIVE_VALIDATION_ENABLED) {
