@@ -3,7 +3,6 @@
 // ============================================================
 
 import { useState, useEffect, useRef } from "react";
-import { supabase } from "./supabase";
 
 // ── 토큰 ────────────────────────────────────────────────────
 const C = {
@@ -504,209 +503,6 @@ function StatCard({ stat, label, sub, color = C.mid }) {
         </div>
       )}
     </div>
-  );
-}
-
-// ── 가격 플랜 ────────────────────────────────────────────────
-function WaitlistForm() {
-  const [form, setForm] = useState({
-    academy_name: "",
-    phone: "",
-    student_count: "",
-  });
-  const [status, setStatus] = useState("idle"); // idle | submitting | done | error
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!form.academy_name || !form.phone || !form.student_count) return;
-    setStatus("submitting");
-    const { error } = await supabase.from("waitlist").insert([form]);
-    setStatus(error ? "error" : "done");
-  }
-
-  if (status === "done") {
-    return (
-      <div
-        style={{
-          maxWidth: 440,
-          margin: "0 auto",
-          textAlign: "center",
-          padding: "40px 20px",
-          background: "#f0fdf4",
-          border: "1px solid #86efac",
-          borderRadius: "16px",
-        }}
-      >
-        <div style={{ fontSize: "2rem", marginBottom: "12px" }}>✅</div>
-        <p
-          style={{
-            fontSize: "1rem",
-            fontWeight: "700",
-            color: "#15803d",
-            marginBottom: "8px",
-          }}
-        >
-          {form.academy_name
-            ? `${form.academy_name}님, 신청이 접수되었습니다`
-            : "신청이 접수되었습니다"}
-        </p>
-        <p
-          style={{
-            fontSize: "0.85rem",
-            color: "#166534",
-            marginBottom: "20px",
-          }}
-        >
-          담당자가 영업일 기준 24시간 내에 연락드립니다
-        </p>
-
-        <div
-          style={{
-            textAlign: "left",
-            background: "#fff",
-            borderRadius: "10px",
-            padding: "16px 18px",
-            border: "1px solid #bbf7d0",
-            marginTop: "8px",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "0.78rem",
-              fontWeight: "700",
-              color: "#15803d",
-              marginBottom: "10px",
-              letterSpacing: "0.02em",
-            }}
-          >
-            🚀 곧 만나실 학원 전용 기능
-          </p>
-          <ul
-            style={{
-              listStyle: "none",
-              padding: 0,
-              margin: 0,
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-              fontSize: "0.82rem",
-              color: "#1f2937",
-              lineHeight: 1.55,
-            }}
-          >
-            <li>📊 <strong>학원 대시보드</strong> — 학생별 약점 패턴 한눈에</li>
-            <li>👥 <strong>학원 전용 단가</strong> — 학생 수에 맞춘 합리적 가격</li>
-            <li>🎯 <strong>1:1 코칭 우선 배정</strong> — 학원생 먼저</li>
-            <li>🧪 <strong>도입 전 시범 운영</strong> — 부담 없이 체험</li>
-          </ul>
-          <p
-            style={{
-              fontSize: "0.72rem",
-              color: "#6b7280",
-              marginTop: "12px",
-              fontStyle: "italic",
-            }}
-          >
-            세부 일정·가격은 상담 시 안내드립니다.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        maxWidth: 440,
-        margin: "0 auto",
-        display: "flex",
-        flexDirection: "column",
-        gap: "14px",
-      }}
-    >
-      <input
-        type="text"
-        placeholder="학원명"
-        required
-        value={form.academy_name}
-        onChange={(e) =>
-          setForm((f) => ({ ...f, academy_name: e.target.value }))
-        }
-        style={{
-          padding: "13px 16px",
-          borderRadius: "10px",
-          border: "1px solid #d1d5db",
-          fontSize: "0.9rem",
-          fontFamily: "'Noto Sans KR', sans-serif",
-          outline: "none",
-        }}
-      />
-      <input
-        type="tel"
-        placeholder="원장님 연락처"
-        required
-        value={form.phone}
-        onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-        style={{
-          padding: "13px 16px",
-          borderRadius: "10px",
-          border: "1px solid #d1d5db",
-          fontSize: "0.9rem",
-          fontFamily: "'Noto Sans KR', sans-serif",
-          outline: "none",
-        }}
-      />
-      <select
-        required
-        value={form.student_count}
-        onChange={(e) =>
-          setForm((f) => ({ ...f, student_count: e.target.value }))
-        }
-        style={{
-          padding: "13px 16px",
-          borderRadius: "10px",
-          border: "1px solid #d1d5db",
-          fontSize: "0.9rem",
-          fontFamily: "'Noto Sans KR', sans-serif",
-          outline: "none",
-          color: form.student_count ? "#1f2937" : "#9ca3af",
-          background: "#fff",
-        }}
-      >
-        <option value="" disabled>
-          학생 수
-        </option>
-        <option value="10명 미만">10명 미만</option>
-        <option value="10~30명">10~30명</option>
-        <option value="30명 이상">30명 이상</option>
-      </select>
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        style={{
-          padding: "14px",
-          borderRadius: "10px",
-          background: "#2d6e2d",
-          color: "#fff",
-          border: "none",
-          fontSize: "0.95rem",
-          fontWeight: "700",
-          cursor: "pointer",
-          fontFamily: "'Noto Sans KR', sans-serif",
-          opacity: status === "submitting" ? 0.6 : 1,
-        }}
-      >
-        {status === "submitting" ? "신청 중..." : "신청하기"}
-      </button>
-      {status === "error" && (
-        <p
-          style={{ fontSize: "0.8rem", color: "#dc2626", textAlign: "center" }}
-        >
-          오류가 발생했습니다. 다시 시도해주세요.
-        </p>
-      )}
-    </form>
   );
 }
 
@@ -2253,7 +2049,79 @@ export default function Landing({ onStart }) {
           </div>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <WaitlistForm />
+          <div style={{ maxWidth: 560, margin: "0 auto" }}>
+            <div
+              style={{
+                background: "#fff",
+                borderRadius: "12px",
+                padding: "20px 22px",
+                border: `1px solid ${C.border}`,
+                marginBottom: "20px",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "0.78rem",
+                  fontWeight: "700",
+                  color: C.green,
+                  marginBottom: "12px",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                🚀 곧 만나실 학원 전용 기능
+              </p>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                  fontSize: "0.85rem",
+                  color: C.ink,
+                  lineHeight: 1.55,
+                }}
+              >
+                <li>
+                  📊 <strong>학원 대시보드</strong> — 학생별 약점 패턴 한눈에
+                </li>
+                <li>
+                  👥 <strong>학원 전용 단가</strong> — 학생 수에 맞춘 합리적
+                  가격
+                </li>
+                <li>
+                  🎯 <strong>1:1 코칭 우선 배정</strong> — 학원생 먼저
+                </li>
+                <li>
+                  🧪 <strong>도입 전 시범 운영</strong> — 부담 없이 체험
+                </li>
+              </ul>
+              <p
+                style={{
+                  fontSize: "0.72rem",
+                  color: C.muted,
+                  marginTop: "14px",
+                  fontStyle: "italic",
+                }}
+              >
+                세부 일정·가격은 문의 시 안내드립니다.
+              </p>
+            </div>
+            <div style={{ textAlign: "center" }}>
+              <Btn
+                label="🏢 학원 도입 문의 →"
+                onClick={() =>
+                  window.open(
+                    "https://tally.so/r/gDYZ74?src=landing-academy",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
+                size="lg"
+              />
+            </div>
+          </div>
         </FadeIn>
       </section>
 
