@@ -612,7 +612,7 @@ choices 배열만 JSON으로 반환해줘.
     client.messages.create(
       {
         model: "claude-sonnet-4-5",
-        max_tokens: 8000,
+        max_tokens: 16000,
         system: systemPrompt,
         messages: [{ role: "user", content: userPrompt }],
       },
@@ -654,7 +654,7 @@ neighbor_choices: ${JSON.stringify(neighbor_choices)}
     client.messages.create(
       {
         model: "claude-sonnet-4-5",
-        max_tokens: 2000,
+        max_tokens: 8000,
         system: REANALYSIS_SYSTEM_PROMPT,
         messages: [{ role: "user", content: userPrompt }],
       },
