@@ -199,17 +199,6 @@ questionType: "negative" (적절하지 않은 것은?)
 [ok:true 해설 필수 규칙]
 ok:true 해설에서는 부정 판정 표현을 절대 사용하지 말 것 (단, 🔎 배제 근거 섹션에서 타 선지 왜 틀린지 기술하는 것은 허용).
 금지 표현 (정답 선지 자체에 대한 기술에서만): 어긋나다, 왜곡, 잘못, 부적절, 맞지 않다, 일치하지 않다
-
-[β patch B] ok:true 결론 line 절대 금지
-- ok:true 선지의 결론 line은 ✅ 단독 사용 의무. ❌ emoji 절대 금지.
-- 🔎 배제 근거 본문에서도 ❌ emoji 사용 금지 (텍스트만 사용).
-- ❌ emoji는 ok:false 선지 전용.
-
-[β patch C-2] 본문 안 금지 단어 lock
-- ok:true 본문 안 (📌 지문 근거 + 🔍 선지 분해 영역) "잘못/왜곡/어긋남/부적절" 사용 금지.
-- 지문 인용 ("..." 큰따옴표 안) 영역은 무관.
-- 🔎 배제 근거 영역은 위 단어 사용 가능 (타 선지 비교 기술 영역).
-
 정답 해설은 아래 4가지 기술:
 - 지문 근거 (어디서 확인했는지)
 - 선지와의 직접 일치 (어떻게 같은지)
@@ -706,39 +695,78 @@ function validateAnalysisQuality(choice, question) {
   if (!a.includes("📌")) issues.push("no_passage_ref");
 
   const isPositiveQ = question?.questionType === "positive";
-  const isCorrect = choice.ok === isPositiveQ; // positive & ok:true, or negative & ok:false
+  const isCorrect = choice.ok === isPositiveQ;
 
   // 🔎 섹션 존재
-  const hasDiscriminator = a.includes("🔎");
-  if (!hasDiscriminator) issues.push("no_discriminator_section");
+  if (!a.includes("🔎")) issues.push("no_discriminator_section");
 
-  // 타 선지 참조 수 (#1~#5 또는 선지1~선지5)
+  // 타 선지 참조 수
   const refMatches = a.match(/#[1-5]|선지\s*[1-5]/g) || [];
   const refCount = new Set(refMatches.map((s) => s.replace(/\D/g, ""))).size;
-
   if (isCorrect) {
-    // 정답 선지: 4개 오답 전부 언급 기대. 3개 이상이면 허용 (엄격 4→완화 3)
     if (refCount < 3) issues.push(`correct_insufficient_refs:${refCount}`);
   } else {
-    // 오답 선지: 정답 선지 1개 이상 언급
-    if (refCount < 1) issues.push(`wrong_no_correct_ref`);
+    if (refCount < 1) issues.push("wrong_no_correct_ref");
   }
 
-  // ok:false 결론 형식
+  // γ patch: validator final-line 우선 + pat gate + issue code 세분화
+  const trimmed = a.trim();
+  const lines = trimmed.split(/\n+/);
+  const finalLine = (lines.at(-1) || "").trim();
+  const beforeFinal = lines.slice(0, -1).join("\n");
+  const VALID_PATS = [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "V",
+  ];
+  const patBracketRe = /\[\s*(R[1-4]|L[1-5]|V)\s*([:： ][^\]]*)?\]/;
+
+  // pat gate
+  if (choice.ok === true && choice.pat) {
+    issues.push(`OK_PAT_INCONSISTENCY:pat_${choice.pat}`);
+  }
   if (choice.ok === false) {
-    if (!a.includes("❌")) issues.push("wrong_no_negation_mark");
-    if (
-      !/\[\s*(R[1-4]|L[1-5]|V)\s*[:： ].*?\]|\[\s*(R[1-4]|L[1-5]|V)\s*\]/.test(
-        a,
-      )
-    )
-      issues.push("wrong_no_pat_code");
+    if (choice.pat === null || choice.pat === undefined) {
+      issues.push("PAT_FIELD_MISSING");
+    } else if (
+      !VALID_PATS.includes(choice.pat) ||
+      choice.pat === 0 ||
+      choice.pat === "0"
+    ) {
+      issues.push(`PAT_INVALID_NEEDS_HUMAN:invalid_${choice.pat}`);
+    }
   }
 
-  // ok:true 결론 형식 + 금지 표현 (🔎 섹션 앞 부분에 한해 체크)
-  // β patch C-1: 지문 인용 ("..." 큰따옴표 안) strip 사후 검출 — false positive 회피
+  // final-line 검사
   if (choice.ok === true) {
-    if (!a.includes("✅")) issues.push("correct_no_positive_mark");
+    if (!finalLine.startsWith("✅")) {
+      issues.push("FINAL_FOOTER_MISMATCH:ok_true_no_check");
+    }
+    if (patBracketRe.test(finalLine)) {
+      issues.push("FINAL_FOOTER_MISMATCH:ok_true_has_pat_bracket");
+    }
+  }
+  if (choice.ok === false && VALID_PATS.includes(choice.pat)) {
+    if (!finalLine.startsWith("❌")) {
+      issues.push("FINAL_FOOTER_MISMATCH:ok_false_no_x");
+    }
+    const m = finalLine.match(patBracketRe);
+    if (!m) {
+      issues.push("PAT_BRACKET_MISSING");
+    } else if (m[1] !== choice.pat) {
+      issues.push(`FINAL_FOOTER_MISMATCH:pat_${m[1]}_neq_${choice.pat}`);
+    }
+  }
+
+  // ok:true 금지 표현 (🔎 사전 영역, 지문 인용 strip — patch C-1 유지)
+  if (choice.ok === true) {
     const beforeDiscrim = a.split("🔎")[0] || a;
     const stripped = beforeDiscrim.replace(/"[^"]*"/g, "");
     const FORBIDDEN_POS = [
@@ -757,7 +785,18 @@ function validateAnalysisQuality(choice, question) {
     }
   }
 
-  return { ok: issues.length === 0, issues };
+  // BODY_CONFLICT_HINT (warning, ok 영역 0 영향)
+  const bodyConflicts = [];
+  for (const w of ["✅", "❌"]) {
+    if (beforeFinal.includes(w)) bodyConflicts.push(w);
+  }
+  if (bodyConflicts.length) {
+    issues.push(`BODY_CONFLICT_HINT:${bodyConflicts.join(",")}`);
+  }
+
+  // BODY_CONFLICT_HINT는 fatal 영역 외 (warning)
+  const fatalIssues = issues.filter((i) => !i.startsWith("BODY_CONFLICT_HINT"));
+  return { ok: fatalIssues.length === 0, issues };
 }
 
 // ─── 후처리 보정 ─────────────────────────────────────────────
@@ -831,6 +870,53 @@ export function normalizeAnalysisPatLabel(choice) {
   }
 
   return a;
+}
+
+// ─── γ patch: deterministic footer ────────────────────────────
+// expectedFooter / applyDeterministicFooter
+// 사양: choice.ok / choice.pat 기준 deterministic 생성 — Claude 응답 영역 외
+//   - 기존 final verdict line (✅ 또는 ❌ 시작) + 사후 본문 제거
+//   - expectedFooter replace (append 금지)
+//   - expectedFooter null 시 needs_human queue (pat:null 자동 부여 금지)
+
+export function expectedFooter(choice) {
+  if (choice?.ok === true) {
+    return "✅ 지문과 일치하는 적절한 진술";
+  }
+  if (choice?.ok === false && choice.pat) {
+    return `❌ 지문과 어긋나는 부적절한 진술 [${choice.pat}]`;
+  }
+  return null;
+}
+
+export function applyDeterministicFooter(choice) {
+  const expected = expectedFooter(choice);
+  if (expected === null) return choice.analysis;
+
+  const a = choice.analysis || "";
+  const lines = a.split("\n");
+
+  let lastVerdictIdx = -1;
+  for (let i = lines.length - 1; i >= 0; i--) {
+    const t = lines[i].trim();
+    if (t.startsWith("✅") || t.startsWith("❌")) {
+      lastVerdictIdx = i;
+      break;
+    }
+  }
+
+  if (lastVerdictIdx >= 0) {
+    lines.splice(lastVerdictIdx);
+  }
+
+  while (lines.length > 0 && lines[lines.length - 1].trim() === "") {
+    lines.pop();
+  }
+
+  lines.push("");
+  lines.push(expected);
+
+  return lines.join("\n");
 }
 
 export async function postProcess(result, answerKey) {
@@ -997,7 +1083,7 @@ export async function postProcess(result, answerKey) {
 
           // [NEW 회기 2-2단계] deterministic [pat] bracket rendering
           // — wrong_no_pat_code 자동 해소 (회기 1 측정: 75.4% 비중)
-          choice.analysis = normalizeAnalysisPatLabel(choice);
+          choice.analysis = applyDeterministicFooter(choice);
 
           // [NEW] 변별 판단 품질 검증 + 재생성 루프
           if (DISCRIMINATIVE_VALIDATION_ENABLED) {
@@ -1024,7 +1110,7 @@ export async function postProcess(result, answerKey) {
                 );
                 // [회기 4 patch 1] 변별 재생성 사후 normalize 재호출
                 // → wrong_no_pat_code 잔존 영역 자동 해소 (회기 3 보완)
-                choice.analysis = normalizeAnalysisPatLabel(choice);
+                choice.analysis = applyDeterministicFooter(choice);
                 totalDiscrimRegen++;
               } catch (err) {
                 console.warn(
