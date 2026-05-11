@@ -112,28 +112,34 @@ function extractConclusionRegion(a) {
   // fallback: 전체 analysis 의 마지막 100자
   return a.slice(-CONCLUSION_TAIL_LEN);
 }
+// δ patch: final-line 우선 — extractConclusionRegion 영역 본문 전체 검색 폐기
+//   ok:true: finalLine ❌ 시작 시 flag set / 본문 중간 ❌은 BODY_CONFLICT_HINT warning 영역 (validateAnalysisQuality cover)
+//   ok:false: finalLine ✅ 시작 시 flag set / 본문 중간 ✅은 BODY_CONFLICT_HINT warning 영역
 function detectOkAnalysisMismatch(choice) {
   const a = choice?.analysis || "";
   if (!a) return null;
-  const region = extractConclusionRegion(a);
-  const hasTick = region.includes("✅");
-  const hasX = region.includes("❌");
+  const trimmed = a.trim();
+  const lines = trimmed.split(/\n+/);
+  const finalLine = (lines.at(-1) || "").trim();
+  const hasTick = finalLine.startsWith("✅");
+  const hasX = finalLine.startsWith("❌");
   if (!hasTick && !hasX) return null; // 결론 마커 부재 — 판단 보류
-  if (hasTick && hasX) return null; // 혼재 — 판단 보류
-  if (choice.ok === true && hasX)
+  if (choice.ok === true && hasX) {
     return {
       code: "ok_true_but_analysis_negates",
       has_tick: false,
       has_x: true,
-      region_len: region.length,
+      final_line: finalLine.slice(0, 100),
     };
-  if (choice.ok === false && hasTick)
+  }
+  if (choice.ok === false && hasTick) {
     return {
       code: "ok_false_but_analysis_confirms",
       has_tick: true,
       has_x: false,
-      region_len: region.length,
+      final_line: finalLine.slice(0, 100),
     };
+  }
   return null;
 }
 
