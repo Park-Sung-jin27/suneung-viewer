@@ -299,18 +299,29 @@ const VOCAB_SYSTEM_PROMPT = `너는 수능 국어 어휘·표현 문제 전문 �
 
 // ─── 재시도 유틸 ─────────────────────────────────────────────
 
-async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
+// [회기 4 patch 2] retry 강화 — 10회 + 점진 backoff (총 ~25분 견딤)
+// Connection error / timeout 영역 적극 retry, API error (529/500) 동일 정책
+const RETRY_DELAYS_MS = [
+  5000, 15000, 30000, 60000, 120000, 300000, 300000, 300000, 300000, 300000,
+];
+async function callWithRetry(fn, maxRetries = 10) {
   for (let i = 0; i < maxRetries; i++) {
     try {
       return await fn();
     } catch (err) {
-      const isRetryable =
+      const isConnectionError =
         err.message?.includes("Connection") ||
         err.message?.includes("timeout") ||
-        err.status === 529 ||
-        err.status === 500;
+        err.message?.includes("ECONNRESET") ||
+        err.message?.includes("ETIMEDOUT");
+      const isApiError = err.status === 529 || err.status === 500;
+      const isRetryable = isConnectionError || isApiError;
       if (isRetryable && i < maxRetries - 1) {
-        console.warn(`  ⚠️ API 오류 (${i + 1}/${maxRetries}): ${err.message}`);
+        const delay = RETRY_DELAYS_MS[i] || 300000;
+        const errType = isConnectionError ? "Connection" : "API";
+        console.warn(
+          `  ⚠️ ${errType} 오류 (${i + 1}/${maxRetries}): ${err.message}`,
+        );
         console.warn(`  ${delay / 1000}초 후 재시도...`);
         await new Promise((r) => setTimeout(r, delay));
       } else {
@@ -986,6 +997,9 @@ export async function postProcess(result, answerKey) {
                   neighborSnapshot,
                   choice,
                 );
+                // [회기 4 patch 1] 변별 재생성 사후 normalize 재호출
+                // → wrong_no_pat_code 잔존 영역 자동 해소 (회기 3 보완)
+                choice.analysis = normalizeAnalysisPatLabel(choice);
                 totalDiscrimRegen++;
               } catch (err) {
                 console.warn(
