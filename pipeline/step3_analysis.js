@@ -199,6 +199,17 @@ questionType: "negative" (적절하지 않은 것은?)
 [ok:true 해설 필수 규칙]
 ok:true 해설에서는 부정 판정 표현을 절대 사용하지 말 것 (단, 🔎 배제 근거 섹션에서 타 선지 왜 틀린지 기술하는 것은 허용).
 금지 표현 (정답 선지 자체에 대한 기술에서만): 어긋나다, 왜곡, 잘못, 부적절, 맞지 않다, 일치하지 않다
+
+[β patch B] ok:true 결론 line 절대 금지
+- ok:true 선지의 결론 line은 ✅ 단독 사용 의무. ❌ emoji 절대 금지.
+- 🔎 배제 근거 본문에서도 ❌ emoji 사용 금지 (텍스트만 사용).
+- ❌ emoji는 ok:false 선지 전용.
+
+[β patch C-2] 본문 안 금지 단어 lock
+- ok:true 본문 안 (📌 지문 근거 + 🔍 선지 분해 영역) "잘못/왜곡/어긋남/부적절" 사용 금지.
+- 지문 인용 ("..." 큰따옴표 안) 영역은 무관.
+- 🔎 배제 근거 영역은 위 단어 사용 가능 (타 선지 비교 기술 영역).
+
 정답 해설은 아래 4가지 기술:
 - 지문 근거 (어디서 확인했는지)
 - 선지와의 직접 일치 (어떻게 같은지)
@@ -725,9 +736,11 @@ function validateAnalysisQuality(choice, question) {
   }
 
   // ok:true 결론 형식 + 금지 표현 (🔎 섹션 앞 부분에 한해 체크)
+  // β patch C-1: 지문 인용 ("..." 큰따옴표 안) strip 사후 검출 — false positive 회피
   if (choice.ok === true) {
     if (!a.includes("✅")) issues.push("correct_no_positive_mark");
     const beforeDiscrim = a.split("🔎")[0] || a;
+    const stripped = beforeDiscrim.replace(/"[^"]*"/g, "");
     const FORBIDDEN_POS = [
       "어긋나",
       "왜곡",
@@ -737,7 +750,7 @@ function validateAnalysisQuality(choice, question) {
       "일치하지 않",
     ];
     for (const w of FORBIDDEN_POS) {
-      if (beforeDiscrim.includes(w)) {
+      if (stripped.includes(w)) {
         issues.push(`correct_forbidden_phrase:${w}`);
         break;
       }
@@ -793,13 +806,25 @@ export function normalizeAnalysisPatLabel(choice) {
 
   a = a.replace(/\s+$/, "");
 
-  // case 1: choice.pat bracket 부재 → 결말 영입
+  // case 1 + 4 (β patch A): choice.pat bracket 부재 → 마지막 ❌ line 끝에 [pat] 추가
+  //   case 1: ❌ line 부재 → analysis 끝에 추가
+  //   case 4: ❌ line 안 [pat] 미포함 (한글 자유 라벨만 있어도) → 추가
+  //   (직전 case 1 regex `(❌[^\n]*)$`는 string 끝 단일 line만 match — multi-line ❌ 사후 본문 잔존 시 미작동)
   const targetRe = new RegExp(
     String.raw`\[\s*${choice.pat}\s*([:： ][^\]]*)?\]`,
   );
   if (!targetRe.test(a)) {
-    if (a.includes("❌")) {
-      a = a.replace(/(❌[^\n]*)$/, `$1 [${choice.pat}]`);
+    const allLines = a.split("\n");
+    let lastXIdx = -1;
+    for (let i = allLines.length - 1; i >= 0; i--) {
+      if (allLines[i].includes("❌")) {
+        lastXIdx = i;
+        break;
+      }
+    }
+    if (lastXIdx >= 0) {
+      allLines[lastXIdx] = allLines[lastXIdx] + ` [${choice.pat}]`;
+      a = allLines.join("\n");
     } else {
       a = a + ` [${choice.pat}]`;
     }
