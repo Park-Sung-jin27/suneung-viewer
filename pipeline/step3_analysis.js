@@ -1036,31 +1036,6 @@ export async function postProcess(result, answerKey) {
             }
           }
 
-          // [NEW] ok/analysis 모순 감지 — pat 문제 아님, ok 재검토 대상
-          // override 가 적용된 choice 는 사람 확정이므로 모순 감지에서 제외.
-          {
-            if (choice._ok_overridden) {
-              if (choice._ok_analysis_mismatch)
-                delete choice._ok_analysis_mismatch;
-            } else {
-              const mismatch = detectOkAnalysisMismatch(choice);
-              if (mismatch) {
-                choice._ok_analysis_mismatch = {
-                  ...mismatch,
-                  set_id: set.id,
-                  q_id: q.id,
-                  choice_num: c.num,
-                  ok: choice.ok,
-                };
-                console.warn(
-                  `  [postProcess:okMismatch] ${set.id} Q${q.id}#${c.num} ${mismatch.code} (ok=${choice.ok}, has_tick=${mismatch.has_tick}, has_x=${mismatch.has_x}) — ok_recheck 대상`,
-                );
-              } else if (choice._ok_analysis_mismatch) {
-                delete choice._ok_analysis_mismatch;
-              }
-            }
-          }
-
           if (okChanged) {
             console.log(
               `  [postProcess] analysis 재생성: ${set.id} ${q.id}번 선지${c.num}`,
@@ -1136,6 +1111,31 @@ export async function postProcess(result, answerKey) {
               console.warn(
                 `  [postProcess:discrim] ${set.id} Q${q.id}#${c.num} — ${attempt}회 후 기준 미달. needsReview 대상.`,
               );
+            }
+          }
+
+          // ε patch: ok/analysis 모순 감지 — 모든 정정 (applyDeterministicFooter + discriminative loop) 사후 final detect
+          // override 가 적용된 choice 는 사람 확정이므로 모순 감지에서 제외.
+          {
+            if (choice._ok_overridden) {
+              if (choice._ok_analysis_mismatch)
+                delete choice._ok_analysis_mismatch;
+            } else {
+              const mismatch = detectOkAnalysisMismatch(choice);
+              if (mismatch) {
+                choice._ok_analysis_mismatch = {
+                  ...mismatch,
+                  set_id: set.id,
+                  q_id: q.id,
+                  choice_num: c.num,
+                  ok: choice.ok,
+                };
+                console.warn(
+                  `  [postProcess:okMismatch] ${set.id} Q${q.id}#${c.num} ${mismatch.code} (ok=${choice.ok}, has_tick=${mismatch.has_tick}, has_x=${mismatch.has_x}) — ok_recheck 대상`,
+                );
+              } else if (choice._ok_analysis_mismatch) {
+                delete choice._ok_analysis_mismatch;
+              }
             }
           }
 
