@@ -1252,6 +1252,80 @@ function ViewerPage({ user, isPro = false }) {
       </div>
     );
 
+  // release_status 차단: set_status.json 의 release_status === "release" 외
+  //   set 은 dataLoader.loadYear 단계에서 이미 filter 되어 yearData 에 없음.
+  //   여기서는 (a) year 전체 release set 0 (b) URL ?set=... 직접 진입했으나 해당
+  //   set 이 release 외 → currentSet 못 찾음 경우 차단 화면.
+  if (yearData && (sets.length === 0 || (initSetId && !currentSet))) {
+    const yMeta = YEAR_INFO.find((y) => y.key === yearKey);
+    const yLabel = yMeta?.label ?? yearKey;
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          background: "#f9fafb",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "24px",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 440,
+            background: "#fff",
+            border: "1px solid #e5e7eb",
+            borderRadius: "14px",
+            padding: "32px 28px",
+            textAlign: "center",
+          }}
+        >
+          <div style={{ fontSize: "2rem", marginBottom: "12px" }}>🔧</div>
+          <h2
+            style={{
+              fontFamily: "'Noto Serif KR', serif",
+              fontSize: "1.1rem",
+              fontWeight: "700",
+              color: "#111827",
+              marginBottom: "10px",
+            }}
+          >
+            검수 중인 시험입니다
+          </h2>
+          <p
+            style={{
+              fontSize: "0.86rem",
+              color: "#6b7280",
+              lineHeight: 1.7,
+              marginBottom: "20px",
+            }}
+          >
+            {yLabel}
+            {initSetId ? ` (${initSetId})` : ""}은(는) 정답·해설·형광펜 검수
+            중이라 아직 노출되지 않습니다.
+            <br />
+            조속히 공개될 예정입니다.
+          </p>
+          <button
+            onClick={() => navigate("/")}
+            style={{
+              padding: "10px 22px",
+              borderRadius: "10px",
+              background: "#1f2937",
+              color: "#fff",
+              border: "none",
+              fontSize: "0.86rem",
+              fontWeight: "700",
+              cursor: "pointer",
+            }}
+          >
+            메인으로
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (submitted && !isReview) {
     const yearMeta = YEAR_INFO.find((y) => y.key === yearKey);
     return (

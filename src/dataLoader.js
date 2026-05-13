@@ -1,6 +1,7 @@
 // dataLoader.js
 let _cache = null;
 let _annCache = null;
+let _statusCache = null;
 
 async function _load() {
   if (_cache) return _cache;
@@ -8,6 +9,48 @@ async function _load() {
   if (!res.ok) throw new Error("데이터 로드 실패");
   _cache = await res.json();
   return _cache;
+}
+
+// pipeline/set_status.json — release_status 필터링 단일 진실
+//   구조: { [setId]: { setId, yearKey, release_status, ... } }
+//   release_status === "release" 외 (verifying / hidden / rebuild_required / out_of_scope)
+//   는 학생 노출 차단.
+//   파일 fetch 실패 시 _statusCache = {} → 모든 set이 release 아님으로 평가 → 전수 차단
+//   (안전한 default — Gate 1 전 일시 모드).
+async function _loadStatus() {
+  if (_statusCache !== null) return _statusCache;
+  try {
+    const res = await fetch("/pipeline/set_status.json");
+    if (!res.ok) {
+      _statusCache = {};
+      return _statusCache;
+    }
+    _statusCache = await res.json();
+  } catch {
+    _statusCache = {};
+  }
+  return _statusCache;
+}
+
+// setId 단위 release 검사 (동기 — set_status 사전 로드 필요)
+//   _statusCache 미로드 시 false (안전 default).
+//   미등록 setId 도 false (등록되지 않은 set은 노출 0).
+export function isReleaseSet(setId) {
+  if (!_statusCache || !setId) return false;
+  const entry = _statusCache[setId];
+  return entry?.release_status === "release";
+}
+
+// 비동기 release 검사 — _statusCache 자동 로드 후 판정
+export async function isReleaseSetAsync(setId) {
+  await _loadStatus();
+  return isReleaseSet(setId);
+}
+
+// release set만 통과시키는 filter (set 객체 → boolean)
+function _statusFilterFn(s) {
+  const sid = s.setId || s.id;
+  return isReleaseSet(sid);
 }
 
 // annotations.json은 optional — 없어도 앱은 정상 동작
@@ -82,6 +125,7 @@ function _buildSentCs(yearData) {
 export async function loadYear(yearKey) {
   const data = await _load();
   if (!data[yearKey]) throw new Error(`연도 데이터 없음: ${yearKey}`);
+  await _loadStatus(); // release_status 매핑 사전 로드
   const yd = data[yearKey];
   if (!yd._csBuilt) {
     _buildSentCs(yd);
@@ -92,10 +136,33 @@ export async function loadYear(yearKey) {
     _attachAnnotations(yd, annAll[yearKey]);
     yd._annBuilt = true;
   }
+  if (!yd._statusFiltered) {
+    // release set 만 학생 노출. enforcement 단일 진입점.
+    yd.reading = (yd.reading || []).filter(_statusFilterFn);
+    yd.literature = (yd.literature || []).filter(_statusFilterFn);
+    yd._statusFiltered = true;
+  }
   return yd;
 }
 
+// release set 이 1개 이상 있는 yearKey 만 반환 (학생 노출 정합).
+//   release set 0 인 year 는 selection UI 에서도 숨김.
 export async function getYearKeys() {
+  const data = await _load();
+  await _loadStatus();
+  const all = Object.keys(data);
+  return all.filter((yk) => {
+    const yd = data[yk];
+    const reading = yd.reading || [];
+    const literature = yd.literature || [];
+    return (
+      reading.some(_statusFilterFn) || literature.some(_statusFilterFn)
+    );
+  });
+}
+
+// 전체 yearKey 반환 (필터 X) — 디버깅·내부용
+export async function getAllYearKeys() {
   const data = await _load();
   return Object.keys(data);
 }
@@ -108,4 +175,12 @@ export async function loadAllData() {
   return await _load();
 }
 
-export default { loadYear, getYearKeys, getYearSync, loadAllData };
+export default {
+  loadYear,
+  getYearKeys,
+  getAllYearKeys,
+  getYearSync,
+  loadAllData,
+  isReleaseSet,
+  isReleaseSetAsync,
+};
