@@ -21,7 +21,13 @@ import Banner from "./Banner";
 import Landing from "./Landing";
 import AcademyPreview from "./AcademyPreview";
 import ResultPage from "./ResultPage";
-import { YEAR_INFO, MODE, isSetUnderReview, TALLY_URL } from "./constants";
+import {
+  YEAR_INFO,
+  MODE,
+  isSetUnderReview,
+  TALLY_URL,
+  isAllowlisted,
+} from "./constants";
 import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
 import { supabase } from "./supabase";
 import { saveAnswer } from "./hooks/useAnswerTracker";
@@ -647,9 +653,10 @@ function YearCard({ meta, locked, isFree, onClick }) {
 function MainPage({ isPro, user }) {
   const navigate = useNavigate();
   const [yearKeys, setYearKeys] = useState([]);
+  const isMaster = isAllowlisted(user?.email);
   useEffect(() => {
-    getYearKeys().then(setYearKeys);
-  }, []);
+    getYearKeys({ bypassFilter: isMaster }).then(setYearKeys);
+  }, [isMaster]);
   const [showProModal, setShowProModal] = useState(false);
   const [modeTarget, setModeTarget] = useState(null);
 
@@ -1019,6 +1026,7 @@ function MainPage({ isPro, user }) {
 // ViewerPage
 // ══════════════════════════════════════════════
 function ViewerPage({ user, isPro = false }) {
+  const isMaster = isAllowlisted(user?.email);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -1046,7 +1054,7 @@ function ViewerPage({ user, isPro = false }) {
       return;
     }
     setLoading(true);
-    loadYear(yearKey)
+    loadYear(yearKey, { bypassFilter: isMaster })
       .then((data) => {
         setYearData(data);
         if (initSetId) {
@@ -1068,7 +1076,7 @@ function ViewerPage({ user, isPro = false }) {
         setError(e.message);
         setLoading(false);
       });
-  }, [yearKey]); // eslint-disable-line
+  }, [yearKey, isMaster]); // eslint-disable-line
 
   const sets = yearData?.[section] ?? [];
   const currentSet = sets[setIdx] ?? null;
@@ -1360,6 +1368,24 @@ function ViewerPage({ user, isPro = false }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#f9fafb" }}>
+      {/* 마스터 검수 모드 배너 — release_status filter 우회된 진입 한정.
+          학생 path 에서는 절대 노출 0 (실수 노출 방지). */}
+      {isMaster && (
+        <div
+          style={{
+            background: "#7c3aed",
+            color: "#fff",
+            padding: "8px 20px",
+            textAlign: "center",
+            fontSize: "0.78rem",
+            fontWeight: "700",
+            letterSpacing: "0.02em",
+          }}
+        >
+          🔧 검수 모드 — 마스터 권한 (release_status filter 우회)
+        </div>
+      )}
+
       <Banner
         bannerId="how-to-use-v1"
         message="💡 시험지를 먼저 풀고 오세요 — 답을 입력하면 지문 근거와 해설이 표시됩니다"

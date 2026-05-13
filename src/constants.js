@@ -269,6 +269,19 @@ export function estimateGrade(correct, total, yearKey) {
 //   /auth 직접 접근 시 Google OAuth 정상 (마스터/검증자 통로 보존).
 export const TALLY_URL = "https://tally.so/r/81jOpo";
 
+// 마스터 / 검증자 이메일 allowlist — frontend 단독 filter 우회 통로.
+//   release_status filter 우회 → 모든 status (verifying / rebuild_required /
+//   hidden / out_of_scope) set 진입 허용.
+//   학생 path 영향 0 (release === "release" 단독 유지).
+//   ※ Supabase RLS 우회 X — frontend 표시 영역만.
+//   ※ 별도 검증자 추가 시 본 const 직접 정정.
+export const MASTER_ALLOWLIST = ["downfall121@gmail.com"];
+
+export function isAllowlisted(email) {
+  if (!email) return false;
+  return MASTER_ALLOWLIST.includes(email.toLowerCase().trim());
+}
+
 // 선지 기호 이미지 매핑 ([[sym:box]] 등 치환용)
 export const SYMBOLS = {
   box: "/images/sym_box.png",

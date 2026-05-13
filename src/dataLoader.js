@@ -122,7 +122,13 @@ function _buildSentCs(yearData) {
   }
 }
 
-export async function loadYear(yearKey) {
+// loadYear(yearKey, options)
+//   options.bypassFilter: true 시 release_status filter 우회 — 마스터/검증자 전용.
+//     모든 status (verifying / rebuild_required / hidden / out_of_scope) set 반환.
+//   cache mutation 0 — yd 원본은 보존하고 spread 후 reading/literature 만 새 배열.
+//     bypass 와 비bypass 호출이 교대로 와도 cache 상태에 영향 0.
+export async function loadYear(yearKey, options = {}) {
+  const { bypassFilter = false } = options;
   const data = await _load();
   if (!data[yearKey]) throw new Error(`연도 데이터 없음: ${yearKey}`);
   await _loadStatus(); // release_status 매핑 사전 로드
@@ -136,19 +142,26 @@ export async function loadYear(yearKey) {
     _attachAnnotations(yd, annAll[yearKey]);
     yd._annBuilt = true;
   }
-  if (!yd._statusFiltered) {
-    // release set 만 학생 노출. enforcement 단일 진입점.
-    yd.reading = (yd.reading || []).filter(_statusFilterFn);
-    yd.literature = (yd.literature || []).filter(_statusFilterFn);
-    yd._statusFiltered = true;
-  }
-  return yd;
+  // 매 호출 시 함수형 filter — bypass 시 원본 그대로, 비bypass 시 release-only.
+  // yd._origReading / _origLiterature 백업 불필요 — yd.reading 자체는 mutate 0.
+  return {
+    ...yd,
+    reading: bypassFilter
+      ? yd.reading || []
+      : (yd.reading || []).filter(_statusFilterFn),
+    literature: bypassFilter
+      ? yd.literature || []
+      : (yd.literature || []).filter(_statusFilterFn),
+  };
 }
 
 // release set 이 1개 이상 있는 yearKey 만 반환 (학생 노출 정합).
 //   release set 0 인 year 는 selection UI 에서도 숨김.
-export async function getYearKeys() {
+//   options.bypassFilter: true 시 전체 yearKey 반환 (마스터/검증자 전용).
+export async function getYearKeys(options = {}) {
+  const { bypassFilter = false } = options;
   const data = await _load();
+  if (bypassFilter) return Object.keys(data);
   await _loadStatus();
   const all = Object.keys(data);
   return all.filter((yk) => {
