@@ -369,7 +369,7 @@ export default function AcademyPreview() {
             }}
             onClick={() => navigate("/")}
           >
-            논리맵핑
+            짚이
           </span>
           <span
             style={{

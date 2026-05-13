@@ -359,7 +359,7 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
         method: "CARD",
         amount: { currency: "KRW", value: plan.price },
         orderId: `order_${user.id}_${Date.now()}`,
-        orderName: `논리맵핑 ${plan.name} 구독 (1개월)`,
+        orderName: `짚이 ${plan.name} 구독 (1개월)`,
         customerEmail: user.email,
         customerName: user.email,
         successUrl:

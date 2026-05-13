@@ -123,7 +123,7 @@ function Header({ user, onLogout }) {
               cursor: "pointer",
             }}
           >
-            {isViewer && yearMeta ? yearMeta.label : "논리맵핑"}
+            {isViewer && yearMeta ? yearMeta.label : "짚이"}
           </span>
         </div>
       </div>
@@ -1598,7 +1598,7 @@ function AuthPage() {
             textAlign: "center",
           }}
         >
-          논리맵핑
+          짚이
         </h2>
         <div
           style={{
