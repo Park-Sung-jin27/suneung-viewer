@@ -1,0 +1,130 @@
+{
+  "_meta": {
+    "version": "vFinal",
+    "generated_at": "2026-05-13T13:50:29.173Z",
+    "scan_method": "real_pdf_scan",
+    "source_root": "C:/Users/downf/suneung-viewer/_done",
+    "coverage": {
+      "scope": "FREE_YEARS_ONLY",
+      "not_yet_scanned": ["Scope B_NEAR", "Scope C_LEGACY"]
+    }
+  },
+  "examKeys": {
+    "2022수능": {
+      "examKey": "2022수능",
+      "candidate_exam_pdf_paths": [
+        {
+          "path": "C:/Users/downf/suneung-viewer/_done/2022수능/2022수능_시험지.pdf",
+          "priority": 1,
+          "type": "directory"
+        }
+      ],
+      "candidate_answer_pdf_paths": [
+        {
+          "path": "C:/Users/downf/suneung-viewer/_done/2022수능/2022수능_정답.pdf",
+          "priority": 1,
+          "type": "directory"
+        }
+      ],
+      "selected_exam_pdf_path": "C:/Users/downf/suneung-viewer/_done/2022수능/2022수능_시험지.pdf",
+      "selected_answer_pdf_path": "C:/Users/downf/suneung-viewer/_done/2022수능/2022수능_정답.pdf",
+      "status": "resolved",
+      "selection_reason": "priority_1_directory",
+      "size_bytes_exam": 3628553,
+      "size_bytes_answer": 46142,
+      "modified_time_exam": "2026-05-06T11:58:43.858Z",
+      "modified_time_answer": "2026-05-06T11:59:11.269Z",
+      "is_test_file_exam": false,
+      "is_test_file_answer": false,
+      "duplicate_candidates": []
+    },
+    "2023수능": {
+      "examKey": "2023수능",
+      "candidate_exam_pdf_paths": [
+        {
+          "path": "C:/Users/downf/suneung-viewer/_done/2023수능/2023수능_시험지.pdf",
+          "priority": 1,
+          "type": "directory"
+        }
+      ],
+      "candidate_answer_pdf_paths": [
+        {
+          "path": "C:/Users/downf/suneung-viewer/_done/2023수능/2023수능_정답.pdf",
+          "priority": 1,
+          "type": "directory"
+        }
+      ],
+      "selected_exam_pdf_path": "C:/Users/downf/suneung-viewer/_done/2023수능/2023수능_시험지.pdf",
+      "selected_answer_pdf_path": "C:/Users/downf/suneung-viewer/_done/2023수능/2023수능_정답.pdf",
+      "status": "resolved",
+      "selection_reason": "priority_1_directory",
+      "size_bytes_exam": 4405871,
+      "size_bytes_answer": 64125,
+      "modified_time_exam": "2026-05-06T11:57:04.514Z",
+      "modified_time_answer": "2026-05-06T11:56:28.679Z",
+      "is_test_file_exam": false,
+      "is_test_file_answer": false,
+      "duplicate_candidates": []
+    },
+    "2024수능": {
+      "examKey": "2024수능",
+      "candidate_exam_pdf_paths": [],
+      "candidate_answer_pdf_paths": [],
+      "selected_exam_pdf_path": null,
+      "selected_answer_pdf_path": null,
+      "status": "missing",
+      "selection_reason": "missing",
+      "size_bytes_exam": null,
+      "size_bytes_answer": null,
+      "modified_time_exam": null,
+      "modified_time_answer": null,
+      "is_test_file_exam": false,
+      "is_test_file_answer": false,
+      "duplicate_candidates": []
+    },
+    "2025수능": {
+      "examKey": "2025수능",
+      "candidate_exam_pdf_paths": [],
+      "candidate_answer_pdf_paths": [],
+      "selected_exam_pdf_path": null,
+      "selected_answer_pdf_path": null,
+      "status": "missing",
+      "selection_reason": "missing",
+      "size_bytes_exam": null,
+      "size_bytes_answer": null,
+      "modified_time_exam": null,
+      "modified_time_answer": null,
+      "is_test_file_exam": false,
+      "is_test_file_answer": false,
+      "duplicate_candidates": []
+    },
+    "2026수능": {
+      "examKey": "2026수능",
+      "candidate_exam_pdf_paths": [
+        {
+          "path": "C:/Users/downf/suneung-viewer/_done/2026수능_test_시험지.pdf",
+          "priority": 99,
+          "type": "test"
+        }
+      ],
+      "candidate_answer_pdf_paths": [
+        {
+          "path": "C:/Users/downf/suneung-viewer/_done/2026수능_test_정답.pdf",
+          "priority": 99,
+          "type": "test"
+        }
+      ],
+      "selected_exam_pdf_path": null,
+      "selected_answer_pdf_path": null,
+      "status": "test_only",
+      "selection_reason": "test_only_detected_production_path_missing",
+      "size_bytes_exam": null,
+      "size_bytes_answer": null,
+      "modified_time_exam": null,
+      "modified_time_answer": null,
+      "is_test_file_exam": true,
+      "is_test_file_answer": true,
+      "duplicate_candidates": []
+    }
+  }
+}
