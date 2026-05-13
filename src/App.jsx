@@ -1298,6 +1298,8 @@ function ViewerPage({ user, isPro = false }) {
               color: "#6b7280",
               lineHeight: 1.7,
               marginBottom: "20px",
+              wordBreak: "keep-all",
+              overflowWrap: "break-word",
             }}
           >
             {yLabel}
