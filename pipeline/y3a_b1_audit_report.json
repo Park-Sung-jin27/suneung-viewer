@@ -1,0 +1,16 @@
+{
+  "b1Audit": {
+    "expected_null_return_paths": 1,
+    "apply_null_check_sites": 1,
+    "needs_human_flag_refs": 8,
+    "apply_after_reanalyze_path": 2,
+    "safety_issues": []
+  },
+  "separation": {
+    "analysis_field_single_string": true,
+    "final_line_split_call_sites": 4,
+    "footer_field_separable": true,
+    "migration_impact": "high — 기존 all_data 안 모든 analysis field 영향 (302 set × ~170 choice = ~50000 choice migration 의무)",
+    "recommendation": "analysis_body + analysis_footer 분리 path 사용자 결정 의무 — viewer + cleanAnalysis logic 영향 검증 의무"
+  }
+}

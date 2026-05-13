@@ -1,130 +1,189 @@
 {
   "_meta": {
-    "version": "vFinal",
-    "generated_at": "2026-05-13T13:50:29.173Z",
-    "scan_method": "real_pdf_scan",
-    "source_root": "C:/Users/downf/suneung-viewer/_done",
+    "version": "vFinal_y3a",
+    "generated_at": "2026-05-13T14:07:04.472Z",
+    "scan_method": "real_pdf_scan_inbox_done_combined",
+    "source_roots": [
+      "C:/Users/downf/suneung-viewer/_done",
+      "C:/Users/downf/suneung-viewer/_inbox"
+    ],
     "coverage": {
       "scope": "FREE_YEARS_ONLY",
-      "not_yet_scanned": ["Scope B_NEAR", "Scope C_LEGACY"]
-    }
+      "not_yet_scanned": [
+        "Scope B_NEAR",
+        "Scope C_LEGACY"
+      ]
+    },
+    "note": "_inbox official → candidate_for_copy. test_name → user promote 의무. copy_promote = directory copy (rename 영구 금지)"
   },
   "examKeys": {
     "2022수능": {
       "examKey": "2022수능",
-      "candidate_exam_pdf_paths": [
+      "candidate_exam": [
         {
           "path": "C:/Users/downf/suneung-viewer/_done/2022수능/2022수능_시험지.pdf",
+          "root": "_done",
           "priority": 1,
-          "type": "directory"
+          "type": "official_name",
+          "size": 3628553,
+          "mtime": "2026-05-06T11:58:43.858Z",
+          "sha256": "c31e3b2ed7465bbe43dfa828a8d259515d7d897d8584811d0c623ef803acda4d"
         }
       ],
-      "candidate_answer_pdf_paths": [
+      "candidate_answer": [
         {
           "path": "C:/Users/downf/suneung-viewer/_done/2022수능/2022수능_정답.pdf",
+          "root": "_done",
           "priority": 1,
-          "type": "directory"
+          "type": "official_name",
+          "size": 46142,
+          "mtime": "2026-05-06T11:59:11.269Z",
+          "sha256": "12c4d5e75d82da3d32fa293820c98a663333e12c06c7b974609225f2bbc0d100"
         }
       ],
       "selected_exam_pdf_path": "C:/Users/downf/suneung-viewer/_done/2022수능/2022수능_시험지.pdf",
       "selected_answer_pdf_path": "C:/Users/downf/suneung-viewer/_done/2022수능/2022수능_정답.pdf",
-      "status": "resolved",
-      "selection_reason": "priority_1_directory",
-      "size_bytes_exam": 3628553,
-      "size_bytes_answer": 46142,
-      "modified_time_exam": "2026-05-06T11:58:43.858Z",
-      "modified_time_answer": "2026-05-06T11:59:11.269Z",
-      "is_test_file_exam": false,
-      "is_test_file_answer": false,
-      "duplicate_candidates": []
+      "selection_reason_exam": "_done_official_unique",
+      "selection_reason_answer": "_done_official_unique",
+      "status": "resolved"
     },
     "2023수능": {
       "examKey": "2023수능",
-      "candidate_exam_pdf_paths": [
+      "candidate_exam": [
         {
           "path": "C:/Users/downf/suneung-viewer/_done/2023수능/2023수능_시험지.pdf",
+          "root": "_done",
           "priority": 1,
-          "type": "directory"
+          "type": "official_name",
+          "size": 4405871,
+          "mtime": "2026-05-06T11:57:04.514Z",
+          "sha256": "a1e4e4ed585791c2fdde6cc1a6347e02c9060d9a245abfb44a98ea45afe0230d"
         }
       ],
-      "candidate_answer_pdf_paths": [
+      "candidate_answer": [
         {
           "path": "C:/Users/downf/suneung-viewer/_done/2023수능/2023수능_정답.pdf",
+          "root": "_done",
           "priority": 1,
-          "type": "directory"
+          "type": "official_name",
+          "size": 64125,
+          "mtime": "2026-05-06T11:56:28.679Z",
+          "sha256": "be8c56c486f49cf00713c4d98d226e78c26e357a711f184db853c8031a7ca56f"
         }
       ],
       "selected_exam_pdf_path": "C:/Users/downf/suneung-viewer/_done/2023수능/2023수능_시험지.pdf",
       "selected_answer_pdf_path": "C:/Users/downf/suneung-viewer/_done/2023수능/2023수능_정답.pdf",
-      "status": "resolved",
-      "selection_reason": "priority_1_directory",
-      "size_bytes_exam": 4405871,
-      "size_bytes_answer": 64125,
-      "modified_time_exam": "2026-05-06T11:57:04.514Z",
-      "modified_time_answer": "2026-05-06T11:56:28.679Z",
-      "is_test_file_exam": false,
-      "is_test_file_answer": false,
-      "duplicate_candidates": []
+      "selection_reason_exam": "_done_official_unique",
+      "selection_reason_answer": "_done_official_unique",
+      "status": "resolved"
     },
     "2024수능": {
       "examKey": "2024수능",
-      "candidate_exam_pdf_paths": [],
-      "candidate_answer_pdf_paths": [],
-      "selected_exam_pdf_path": null,
-      "selected_answer_pdf_path": null,
-      "status": "missing",
-      "selection_reason": "missing",
-      "size_bytes_exam": null,
-      "size_bytes_answer": null,
-      "modified_time_exam": null,
-      "modified_time_answer": null,
-      "is_test_file_exam": false,
-      "is_test_file_answer": false,
-      "duplicate_candidates": []
+      "candidate_exam": [
+        {
+          "path": "C:/Users/downf/suneung-viewer/_inbox/2024수능_시험지.pdf",
+          "root": "_inbox",
+          "priority": 3,
+          "type": "official_name",
+          "size": 2712966,
+          "mtime": "2026-05-06T12:01:05.303Z",
+          "sha256": "8e08181896c6111e33eb6411a2279e3fb49cf618619ee9535a837037f4588c14"
+        }
+      ],
+      "candidate_answer": [
+        {
+          "path": "C:/Users/downf/suneung-viewer/_inbox/2024수능_정답.pdf",
+          "root": "_inbox",
+          "priority": 3,
+          "type": "official_name",
+          "size": 46133,
+          "mtime": "2026-05-06T12:01:23.744Z",
+          "sha256": "a6650aef692fbdb7ad303b6123d0e2f093127694a8aa6a79a6d8a8fdb841f6a7"
+        }
+      ],
+      "selected_exam_pdf_path": "C:/Users/downf/suneung-viewer/_inbox/2024수능_시험지.pdf",
+      "selected_answer_pdf_path": "C:/Users/downf/suneung-viewer/_inbox/2024수능_정답.pdf",
+      "selection_reason_exam": "_inbox_official_candidate_for_copy",
+      "selection_reason_answer": "_inbox_official_candidate_for_copy",
+      "status": "candidate_for_copy"
     },
     "2025수능": {
       "examKey": "2025수능",
-      "candidate_exam_pdf_paths": [],
-      "candidate_answer_pdf_paths": [],
-      "selected_exam_pdf_path": null,
-      "selected_answer_pdf_path": null,
-      "status": "missing",
-      "selection_reason": "missing",
-      "size_bytes_exam": null,
-      "size_bytes_answer": null,
-      "modified_time_exam": null,
-      "modified_time_answer": null,
-      "is_test_file_exam": false,
-      "is_test_file_answer": false,
-      "duplicate_candidates": []
+      "candidate_exam": [
+        {
+          "path": "C:/Users/downf/suneung-viewer/_inbox/2025수능_시험지.pdf",
+          "root": "_inbox",
+          "priority": 3,
+          "type": "official_name",
+          "size": 4730286,
+          "mtime": "2026-05-06T12:02:45.681Z",
+          "sha256": "c4aa7b1e0bb69ea8ec2ee942d725563239ee7fbd73a0eb8455dae13cb42ede55"
+        }
+      ],
+      "candidate_answer": [
+        {
+          "path": "C:/Users/downf/suneung-viewer/_inbox/2025수능_정답.pdf",
+          "root": "_inbox",
+          "priority": 3,
+          "type": "official_name",
+          "size": 148753,
+          "mtime": "2026-05-06T12:03:56.911Z",
+          "sha256": "6fb45f8ba08fe263319226be2f44d4eb74d8dd3fc3bdc8a205032f5d9a6d8c9a"
+        }
+      ],
+      "selected_exam_pdf_path": "C:/Users/downf/suneung-viewer/_inbox/2025수능_시험지.pdf",
+      "selected_answer_pdf_path": "C:/Users/downf/suneung-viewer/_inbox/2025수능_정답.pdf",
+      "selection_reason_exam": "_inbox_official_candidate_for_copy",
+      "selection_reason_answer": "_inbox_official_candidate_for_copy",
+      "status": "candidate_for_copy"
     },
     "2026수능": {
       "examKey": "2026수능",
-      "candidate_exam_pdf_paths": [
+      "candidate_exam": [
         {
           "path": "C:/Users/downf/suneung-viewer/_done/2026수능_test_시험지.pdf",
+          "root": "_done",
           "priority": 99,
-          "type": "test"
+          "type": "test_name",
+          "size": 4135202,
+          "mtime": "2026-03-25T09:34:01.152Z",
+          "sha256": "ddb1ede52e317cb67c94172b39aad24b0150bf888455be33f8e333010ce16a0a"
+        },
+        {
+          "path": "C:/Users/downf/suneung-viewer/_inbox/2026수능_시험지.pdf",
+          "root": "_inbox",
+          "priority": 3,
+          "type": "official_name",
+          "size": 3885442,
+          "mtime": "2026-05-06T12:04:43.944Z",
+          "sha256": "122e7671972c9eaa3e8de8dc2d72d9438c9c7f81573ec6c94fe58abd5fe1910d"
         }
       ],
-      "candidate_answer_pdf_paths": [
+      "candidate_answer": [
         {
           "path": "C:/Users/downf/suneung-viewer/_done/2026수능_test_정답.pdf",
+          "root": "_done",
           "priority": 99,
-          "type": "test"
+          "type": "test_name",
+          "size": 80931,
+          "mtime": "2026-03-27T07:28:05.421Z",
+          "sha256": "e5912f96dca0cb54d05b6c5f3147cb79ab34f9a931462264a5b57f90e581aac8"
+        },
+        {
+          "path": "C:/Users/downf/suneung-viewer/_inbox/2026수능_정답.pdf",
+          "root": "_inbox",
+          "priority": 3,
+          "type": "official_name",
+          "size": 46114,
+          "mtime": "2026-05-06T12:05:08.968Z",
+          "sha256": "640149fc5123c972b46642fc8a5956521b0e04da8b381788336d5b5180fb40ce"
         }
       ],
-      "selected_exam_pdf_path": null,
-      "selected_answer_pdf_path": null,
-      "status": "test_only",
-      "selection_reason": "test_only_detected_production_path_missing",
-      "size_bytes_exam": null,
-      "size_bytes_answer": null,
-      "modified_time_exam": null,
-      "modified_time_answer": null,
-      "is_test_file_exam": true,
-      "is_test_file_answer": true,
-      "duplicate_candidates": []
+      "selected_exam_pdf_path": "C:/Users/downf/suneung-viewer/_inbox/2026수능_시험지.pdf",
+      "selected_answer_pdf_path": "C:/Users/downf/suneung-viewer/_inbox/2026수능_정답.pdf",
+      "selection_reason_exam": "_inbox_official_candidate_for_copy",
+      "selection_reason_answer": "_inbox_official_candidate_for_copy",
+      "status": "candidate_for_copy"
     }
   }
 }
