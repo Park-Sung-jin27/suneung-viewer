@@ -112,28 +112,34 @@ function extractConclusionRegion(a) {
   // fallback: 전체 analysis 의 마지막 100자
   return a.slice(-CONCLUSION_TAIL_LEN);
 }
+// δ patch: final-line 우선 — extractConclusionRegion 영역 본문 전체 검색 폐기
+//   ok:true: finalLine ❌ 시작 시 flag set / 본문 중간 ❌은 BODY_CONFLICT_HINT warning 영역 (validateAnalysisQuality cover)
+//   ok:false: finalLine ✅ 시작 시 flag set / 본문 중간 ✅은 BODY_CONFLICT_HINT warning 영역
 function detectOkAnalysisMismatch(choice) {
   const a = choice?.analysis || "";
   if (!a) return null;
-  const region = extractConclusionRegion(a);
-  const hasTick = region.includes("✅");
-  const hasX = region.includes("❌");
+  const trimmed = a.trim();
+  const lines = trimmed.split(/\n+/);
+  const finalLine = (lines.at(-1) || "").trim();
+  const hasTick = finalLine.startsWith("✅");
+  const hasX = finalLine.startsWith("❌");
   if (!hasTick && !hasX) return null; // 결론 마커 부재 — 판단 보류
-  if (hasTick && hasX) return null; // 혼재 — 판단 보류
-  if (choice.ok === true && hasX)
+  if (choice.ok === true && hasX) {
     return {
       code: "ok_true_but_analysis_negates",
       has_tick: false,
       has_x: true,
-      region_len: region.length,
+      final_line: finalLine.slice(0, 100),
     };
-  if (choice.ok === false && hasTick)
+  }
+  if (choice.ok === false && hasTick) {
     return {
       code: "ok_false_but_analysis_confirms",
       has_tick: true,
       has_x: false,
-      region_len: region.length,
+      final_line: finalLine.slice(0, 100),
     };
+  }
   return null;
 }
 
@@ -695,39 +701,80 @@ function validateAnalysisQuality(choice, question) {
   if (!a.includes("📌")) issues.push("no_passage_ref");
 
   const isPositiveQ = question?.questionType === "positive";
-  const isCorrect = choice.ok === isPositiveQ; // positive & ok:true, or negative & ok:false
+  const isCorrect = choice.ok === isPositiveQ;
 
   // 🔎 섹션 존재
-  const hasDiscriminator = a.includes("🔎");
-  if (!hasDiscriminator) issues.push("no_discriminator_section");
+  if (!a.includes("🔎")) issues.push("no_discriminator_section");
 
-  // 타 선지 참조 수 (#1~#5 또는 선지1~선지5)
+  // 타 선지 참조 수
   const refMatches = a.match(/#[1-5]|선지\s*[1-5]/g) || [];
   const refCount = new Set(refMatches.map((s) => s.replace(/\D/g, ""))).size;
-
   if (isCorrect) {
-    // 정답 선지: 4개 오답 전부 언급 기대. 3개 이상이면 허용 (엄격 4→완화 3)
     if (refCount < 3) issues.push(`correct_insufficient_refs:${refCount}`);
   } else {
-    // 오답 선지: 정답 선지 1개 이상 언급
-    if (refCount < 1) issues.push(`wrong_no_correct_ref`);
+    if (refCount < 1) issues.push("wrong_no_correct_ref");
   }
 
-  // ok:false 결론 형식
+  // γ patch: validator final-line 우선 + pat gate + issue code 세분화
+  const trimmed = a.trim();
+  const lines = trimmed.split(/\n+/);
+  const finalLine = (lines.at(-1) || "").trim();
+  const beforeFinal = lines.slice(0, -1).join("\n");
+  const VALID_PATS = [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "V",
+  ];
+  const patBracketRe = /\[\s*(R[1-4]|L[1-5]|V)\s*([:： ][^\]]*)?\]/;
+
+  // pat gate
+  if (choice.ok === true && choice.pat) {
+    issues.push(`OK_PAT_INCONSISTENCY:pat_${choice.pat}`);
+  }
   if (choice.ok === false) {
-    if (!a.includes("❌")) issues.push("wrong_no_negation_mark");
-    if (
-      !/\[\s*(R[1-4]|L[1-5]|V)\s*[:： ].*?\]|\[\s*(R[1-4]|L[1-5]|V)\s*\]/.test(
-        a,
-      )
-    )
-      issues.push("wrong_no_pat_code");
+    if (choice.pat === null || choice.pat === undefined) {
+      issues.push("PAT_FIELD_MISSING");
+    } else if (
+      !VALID_PATS.includes(choice.pat) ||
+      choice.pat === 0 ||
+      choice.pat === "0"
+    ) {
+      issues.push(`PAT_INVALID_NEEDS_HUMAN:invalid_${choice.pat}`);
+    }
   }
 
-  // ok:true 결론 형식 + 금지 표현 (🔎 섹션 앞 부분에 한해 체크)
+  // final-line 검사
   if (choice.ok === true) {
-    if (!a.includes("✅")) issues.push("correct_no_positive_mark");
+    if (!finalLine.startsWith("✅")) {
+      issues.push("FINAL_FOOTER_MISMATCH:ok_true_no_check");
+    }
+    if (patBracketRe.test(finalLine)) {
+      issues.push("FINAL_FOOTER_MISMATCH:ok_true_has_pat_bracket");
+    }
+  }
+  if (choice.ok === false && VALID_PATS.includes(choice.pat)) {
+    if (!finalLine.startsWith("❌")) {
+      issues.push("FINAL_FOOTER_MISMATCH:ok_false_no_x");
+    }
+    const m = finalLine.match(patBracketRe);
+    if (!m) {
+      issues.push("PAT_BRACKET_MISSING");
+    } else if (m[1] !== choice.pat) {
+      issues.push(`FINAL_FOOTER_MISMATCH:pat_${m[1]}_neq_${choice.pat}`);
+    }
+  }
+
+  // ok:true 금지 표현 (🔎 사전 영역, 지문 인용 strip — patch C-1 유지)
+  if (choice.ok === true) {
     const beforeDiscrim = a.split("🔎")[0] || a;
+    const stripped = beforeDiscrim.replace(/"[^"]*"/g, "");
     const FORBIDDEN_POS = [
       "어긋나",
       "왜곡",
@@ -737,14 +784,25 @@ function validateAnalysisQuality(choice, question) {
       "일치하지 않",
     ];
     for (const w of FORBIDDEN_POS) {
-      if (beforeDiscrim.includes(w)) {
+      if (stripped.includes(w)) {
         issues.push(`correct_forbidden_phrase:${w}`);
         break;
       }
     }
   }
 
-  return { ok: issues.length === 0, issues };
+  // BODY_CONFLICT_HINT (warning, ok 영역 0 영향)
+  const bodyConflicts = [];
+  for (const w of ["✅", "❌"]) {
+    if (beforeFinal.includes(w)) bodyConflicts.push(w);
+  }
+  if (bodyConflicts.length) {
+    issues.push(`BODY_CONFLICT_HINT:${bodyConflicts.join(",")}`);
+  }
+
+  // BODY_CONFLICT_HINT는 fatal 영역 외 (warning)
+  const fatalIssues = issues.filter((i) => !i.startsWith("BODY_CONFLICT_HINT"));
+  return { ok: fatalIssues.length === 0, issues };
 }
 
 // ─── 후처리 보정 ─────────────────────────────────────────────
@@ -793,19 +851,78 @@ export function normalizeAnalysisPatLabel(choice) {
 
   a = a.replace(/\s+$/, "");
 
-  // case 1: choice.pat bracket 부재 → 결말 영입
+  // case 1 + 4 (β patch A): choice.pat bracket 부재 → 마지막 ❌ line 끝에 [pat] 추가
+  //   case 1: ❌ line 부재 → analysis 끝에 추가
+  //   case 4: ❌ line 안 [pat] 미포함 (한글 자유 라벨만 있어도) → 추가
+  //   (직전 case 1 regex `(❌[^\n]*)$`는 string 끝 단일 line만 match — multi-line ❌ 사후 본문 잔존 시 미작동)
   const targetRe = new RegExp(
     String.raw`\[\s*${choice.pat}\s*([:： ][^\]]*)?\]`,
   );
   if (!targetRe.test(a)) {
-    if (a.includes("❌")) {
-      a = a.replace(/(❌[^\n]*)$/, `$1 [${choice.pat}]`);
+    const allLines = a.split("\n");
+    let lastXIdx = -1;
+    for (let i = allLines.length - 1; i >= 0; i--) {
+      if (allLines[i].includes("❌")) {
+        lastXIdx = i;
+        break;
+      }
+    }
+    if (lastXIdx >= 0) {
+      allLines[lastXIdx] = allLines[lastXIdx] + ` [${choice.pat}]`;
+      a = allLines.join("\n");
     } else {
       a = a + ` [${choice.pat}]`;
     }
   }
 
   return a;
+}
+
+// ─── γ patch: deterministic footer ────────────────────────────
+// expectedFooter / applyDeterministicFooter
+// 사양: choice.ok / choice.pat 기준 deterministic 생성 — Claude 응답 영역 외
+//   - 기존 final verdict line (✅ 또는 ❌ 시작) + 사후 본문 제거
+//   - expectedFooter replace (append 금지)
+//   - expectedFooter null 시 needs_human queue (pat:null 자동 부여 금지)
+
+export function expectedFooter(choice) {
+  if (choice?.ok === true) {
+    return "✅ 지문과 일치하는 적절한 진술";
+  }
+  if (choice?.ok === false && choice.pat) {
+    return `❌ 지문과 어긋나는 부적절한 진술 [${choice.pat}]`;
+  }
+  return null;
+}
+
+export function applyDeterministicFooter(choice) {
+  const expected = expectedFooter(choice);
+  if (expected === null) return choice.analysis;
+
+  const a = choice.analysis || "";
+  const lines = a.split("\n");
+
+  let lastVerdictIdx = -1;
+  for (let i = lines.length - 1; i >= 0; i--) {
+    const t = lines[i].trim();
+    if (t.startsWith("✅") || t.startsWith("❌")) {
+      lastVerdictIdx = i;
+      break;
+    }
+  }
+
+  if (lastVerdictIdx >= 0) {
+    lines.splice(lastVerdictIdx);
+  }
+
+  while (lines.length > 0 && lines[lines.length - 1].trim() === "") {
+    lines.pop();
+  }
+
+  lines.push("");
+  lines.push(expected);
+
+  return lines.join("\n");
 }
 
 export async function postProcess(result, answerKey) {
@@ -919,31 +1036,6 @@ export async function postProcess(result, answerKey) {
             }
           }
 
-          // [NEW] ok/analysis 모순 감지 — pat 문제 아님, ok 재검토 대상
-          // override 가 적용된 choice 는 사람 확정이므로 모순 감지에서 제외.
-          {
-            if (choice._ok_overridden) {
-              if (choice._ok_analysis_mismatch)
-                delete choice._ok_analysis_mismatch;
-            } else {
-              const mismatch = detectOkAnalysisMismatch(choice);
-              if (mismatch) {
-                choice._ok_analysis_mismatch = {
-                  ...mismatch,
-                  set_id: set.id,
-                  q_id: q.id,
-                  choice_num: c.num,
-                  ok: choice.ok,
-                };
-                console.warn(
-                  `  [postProcess:okMismatch] ${set.id} Q${q.id}#${c.num} ${mismatch.code} (ok=${choice.ok}, has_tick=${mismatch.has_tick}, has_x=${mismatch.has_x}) — ok_recheck 대상`,
-                );
-              } else if (choice._ok_analysis_mismatch) {
-                delete choice._ok_analysis_mismatch;
-              }
-            }
-          }
-
           if (okChanged) {
             console.log(
               `  [postProcess] analysis 재생성: ${set.id} ${q.id}번 선지${c.num}`,
@@ -972,7 +1064,7 @@ export async function postProcess(result, answerKey) {
 
           // [NEW 회기 2-2단계] deterministic [pat] bracket rendering
           // — wrong_no_pat_code 자동 해소 (회기 1 측정: 75.4% 비중)
-          choice.analysis = normalizeAnalysisPatLabel(choice);
+          choice.analysis = applyDeterministicFooter(choice);
 
           // [NEW] 변별 판단 품질 검증 + 재생성 루프
           if (DISCRIMINATIVE_VALIDATION_ENABLED) {
@@ -999,7 +1091,7 @@ export async function postProcess(result, answerKey) {
                 );
                 // [회기 4 patch 1] 변별 재생성 사후 normalize 재호출
                 // → wrong_no_pat_code 잔존 영역 자동 해소 (회기 3 보완)
-                choice.analysis = normalizeAnalysisPatLabel(choice);
+                choice.analysis = applyDeterministicFooter(choice);
                 totalDiscrimRegen++;
               } catch (err) {
                 console.warn(
@@ -1019,6 +1111,31 @@ export async function postProcess(result, answerKey) {
               console.warn(
                 `  [postProcess:discrim] ${set.id} Q${q.id}#${c.num} — ${attempt}회 후 기준 미달. needsReview 대상.`,
               );
+            }
+          }
+
+          // ε patch: ok/analysis 모순 감지 — 모든 정정 (applyDeterministicFooter + discriminative loop) 사후 final detect
+          // override 가 적용된 choice 는 사람 확정이므로 모순 감지에서 제외.
+          {
+            if (choice._ok_overridden) {
+              if (choice._ok_analysis_mismatch)
+                delete choice._ok_analysis_mismatch;
+            } else {
+              const mismatch = detectOkAnalysisMismatch(choice);
+              if (mismatch) {
+                choice._ok_analysis_mismatch = {
+                  ...mismatch,
+                  set_id: set.id,
+                  q_id: q.id,
+                  choice_num: c.num,
+                  ok: choice.ok,
+                };
+                console.warn(
+                  `  [postProcess:okMismatch] ${set.id} Q${q.id}#${c.num} ${mismatch.code} (ok=${choice.ok}, has_tick=${mismatch.has_tick}, has_x=${mismatch.has_x}) — ok_recheck 대상`,
+                );
+              } else if (choice._ok_analysis_mismatch) {
+                delete choice._ok_analysis_mismatch;
+              }
             }
           }
 

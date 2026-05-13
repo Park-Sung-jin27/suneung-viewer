@@ -47,18 +47,28 @@ const SYSTEM_PROMPT = `너는 수능 국어 선지와 지문 문장을 매칭하
 출력 형식:
 [{ "questionId": 1, "num": 1, "cs_ids": ["r2022a_s3", "r2022a_s4"] }, ...]`;
 
-async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
+// β patch D: retry 강화 — step3 정합 (10회 + 점진 backoff, 총 ~25분 견딤)
+const RETRY_DELAYS_MS = [
+  5000, 15000, 30000, 60000, 120000, 300000, 300000, 300000, 300000, 300000,
+];
+async function callWithRetry(fn, maxRetries = 10) {
   for (let i = 0; i < maxRetries; i++) {
     try {
       return await fn();
     } catch (err) {
-      const isRetryable =
+      const isConnectionError =
         err.message?.includes("Connection") ||
         err.message?.includes("timeout") ||
-        err.status === 529 ||
-        err.status === 500;
+        err.message?.includes("ECONNRESET") ||
+        err.message?.includes("ETIMEDOUT");
+      const isApiError = err.status === 529 || err.status === 500;
+      const isRetryable = isConnectionError || isApiError;
       if (isRetryable && i < maxRetries - 1) {
-        console.warn(`  ⚠️ API 오류 (${i + 1}/${maxRetries}): ${err.message}`);
+        const delay = RETRY_DELAYS_MS[i] || 300000;
+        const errType = isConnectionError ? "Connection" : "API";
+        console.warn(
+          `  ⚠️ ${errType} 오류 (${i + 1}/${maxRetries}): ${err.message}`,
+        );
         console.warn(`  ${delay / 1000}초 후 재시도...`);
         await new Promise((r) => setTimeout(r, delay));
       } else {
@@ -185,9 +195,12 @@ const _QUOTE_RE = /📌\s*지문\s*근거\s*:\s*["“]([^"”]{4,500})["”]/g;
 //   그 줄 안의 내부 인용 '…' / "…"를 span 후보로 수거한다.
 const _PO_LINE_RE = /📌\s*지문\s*근거\s*:\s*([^\n]{1,1200})/g;
 const _INNER_QUOTE_RE = /['‘]([^'’\n]{3,120})['’]|["“]([^"”\n]{3,200})["”]/g;
-const _NORM_RE = /[ⓐ-ⓩⒶ-Ⓩ㉠-㉯①-⑳]|\[[A-E]\]|[「」『』【】〔〕⟨⟩《》()（）\[\]{}]|[\u4E00-\u9FFF\u3400-\u4DBF]|[·ㆍ‧,.!?;:*…"“”'‘’`´]/g;
+const _NORM_RE =
+  /[ⓐ-ⓩⒶ-Ⓩ㉠-㉯①-⑳]|\[[A-E]\]|[「」『』【】〔〕⟨⟩《》()（）\[\]{}]|[\u4E00-\u9FFF\u3400-\u4DBF]|[·ㆍ‧,.!?;:*…"“”'‘’`´]/g;
 const _normSpan = (s) =>
-  String(s || "").replace(_NORM_RE, "").replace(/\s+/g, "");
+  String(s || "")
+    .replace(_NORM_RE, "")
+    .replace(/\s+/g, "");
 
 function extractAnalysisSpans(choice, setSents) {
   const ana = choice.analysis || "";
@@ -216,12 +229,18 @@ function extractAnalysisSpans(choice, setSents) {
       for (const id of csIdSet) {
         const s = idToSent.get(id);
         if (!s) continue;
-        if (_normSpan(s.t || "").includes(nq)) { hit = s; break; }
+        if (_normSpan(s.t || "").includes(nq)) {
+          hit = s;
+          break;
+        }
       }
       // 2) cs_ids 안에서 못 찾으면 세트 전체에서 찾기 (cs_ids 확장 후보)
       if (!hit) {
         for (const s of setSents) {
-          if (_normSpan(s.t || "").includes(nq)) { hit = s; break; }
+          if (_normSpan(s.t || "").includes(nq)) {
+            hit = s;
+            break;
+          }
         }
       }
       if (!hit) continue;
@@ -248,11 +267,17 @@ function extractAnalysisSpans(choice, setSents) {
       for (const id of csIdSet) {
         const s = idToSent.get(id);
         if (!s) continue;
-        if (_normSpan(s.t || "").includes(nq)) { hit = s; break; }
+        if (_normSpan(s.t || "").includes(nq)) {
+          hit = s;
+          break;
+        }
       }
       if (!hit) {
         for (const s of setSents) {
-          if (_normSpan(s.t || "").includes(nq)) { hit = s; break; }
+          if (_normSpan(s.t || "").includes(nq)) {
+            hit = s;
+            break;
+          }
         }
       }
       if (!hit) continue;
@@ -276,7 +301,10 @@ function extractAnalysisSpans(choice, setSents) {
       for (const id of csIdSet) {
         const s = idToSent.get(id);
         if (!s) continue;
-        if (_normSpan(s.t || "").includes(nq)) { hit = s; break; }
+        if (_normSpan(s.t || "").includes(nq)) {
+          hit = s;
+          break;
+        }
       }
       if (!hit) continue;
       const key = `${hit.id}::${inner}`;
@@ -559,11 +587,15 @@ async function retarget(targetYear) {
         const freq = new Map();
         for (const q of set.questions || []) {
           for (const c of q.choices || []) {
-            for (const id of c.cs_ids || []) freq.set(id, (freq.get(id) || 0) + 1);
+            for (const id of c.cs_ids || [])
+              freq.set(id, (freq.get(id) || 0) + 1);
           }
         }
         for (const cnt of freq.values()) {
-          if (cnt >= 5) { concentrationCase = true; break; }
+          if (cnt >= 5) {
+            concentrationCase = true;
+            break;
+          }
         }
         const needsWork = emptyCase || concentrationCase;
 
