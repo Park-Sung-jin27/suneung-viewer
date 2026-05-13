@@ -6,6 +6,7 @@
 //   onClose     {fn}
 
 import { useState, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import { P } from "./constants";
 
 // ── allData에서 question 탐색 ────────────────────────────────
@@ -133,6 +134,7 @@ function Bubble({ role, content }) {
         </div>
       )}
       <div
+        className={isAI ? "coach-md-ai" : "coach-md-user"}
         style={{
           maxWidth: "84%",
           background: isAI ? "#F9FAFB" : "#6366F1",
@@ -142,10 +144,127 @@ function Bubble({ role, content }) {
           padding: "11px 15px",
           fontSize: "0.84rem",
           lineHeight: "1.75",
-          whiteSpace: "pre-wrap",
+          whiteSpace: isAI ? "normal" : "pre-wrap",
         }}
       >
-        {content}
+        {isAI ? (
+          <ReactMarkdown
+            components={{
+              h1: ({ node, ...p }) => (
+                <h3
+                  style={{
+                    fontSize: "0.95rem",
+                    fontWeight: 700,
+                    margin: "10px 0 6px",
+                    color: "#111827",
+                  }}
+                  {...p}
+                />
+              ),
+              h2: ({ node, ...p }) => (
+                <h3
+                  style={{
+                    fontSize: "0.92rem",
+                    fontWeight: 700,
+                    margin: "10px 0 6px",
+                    color: "#111827",
+                  }}
+                  {...p}
+                />
+              ),
+              h3: ({ node, ...p }) => (
+                <h4
+                  style={{
+                    fontSize: "0.88rem",
+                    fontWeight: 700,
+                    margin: "8px 0 4px",
+                    color: "#1f2937",
+                  }}
+                  {...p}
+                />
+              ),
+              p: ({ node, ...p }) => (
+                <p style={{ margin: "6px 0" }} {...p} />
+              ),
+              strong: ({ node, ...p }) => (
+                <strong style={{ fontWeight: 700, color: "#111827" }} {...p} />
+              ),
+              ul: ({ node, ...p }) => (
+                <ul
+                  style={{ paddingLeft: "1.2em", margin: "6px 0" }}
+                  {...p}
+                />
+              ),
+              ol: ({ node, ...p }) => (
+                <ol
+                  style={{ paddingLeft: "1.2em", margin: "6px 0" }}
+                  {...p}
+                />
+              ),
+              li: ({ node, ...p }) => (
+                <li style={{ margin: "3px 0" }} {...p} />
+              ),
+              blockquote: ({ node, ...p }) => (
+                <blockquote
+                  style={{
+                    margin: "8px 0",
+                    paddingLeft: "10px",
+                    borderLeft: "3px solid #d1d5db",
+                    color: "#4b5563",
+                  }}
+                  {...p}
+                />
+              ),
+              code: ({ node, inline, ...p }) =>
+                inline ? (
+                  <code
+                    style={{
+                      background: "#eef2ff",
+                      padding: "1px 5px",
+                      borderRadius: "4px",
+                      fontSize: "0.82em",
+                      fontFamily: "ui-monospace, Consolas, monospace",
+                    }}
+                    {...p}
+                  />
+                ) : (
+                  <code
+                    style={{
+                      display: "block",
+                      background: "#f3f4f6",
+                      padding: "8px 10px",
+                      borderRadius: "6px",
+                      fontSize: "0.82em",
+                      whiteSpace: "pre-wrap",
+                      fontFamily: "ui-monospace, Consolas, monospace",
+                    }}
+                    {...p}
+                  />
+                ),
+              hr: () => (
+                <hr
+                  style={{
+                    border: "none",
+                    borderTop: "1px solid #e5e7eb",
+                    margin: "8px 0",
+                  }}
+                />
+              ),
+              a: ({ node, ...p }) => (
+                <a
+                  style={{ color: "#4f46e5", textDecoration: "underline" }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  {...p}
+                />
+              ),
+            }}
+          >
+            {content}
+          </ReactMarkdown>
+        ) : (
+          content
+        )}
       </div>
       {!isAI && (
         <div
