@@ -1296,17 +1296,20 @@ function ViewerPage({ user, isPro = false }) {
             style={{
               fontSize: "0.86rem",
               color: "#6b7280",
-              lineHeight: 1.7,
+              lineHeight: 1.75,
               marginBottom: "20px",
               wordBreak: "keep-all",
               overflowWrap: "break-word",
             }}
           >
             {yLabel}
-            {initSetId ? ` (${initSetId})` : ""}은(는) 정답·해설·형광펜 검수
-            중이라 아직 노출되지 않습니다.
+            {initSetId ? ` (${initSetId})` : ""}은(는)
             <br />
-            조속히 공개될 예정입니다.
+            정답·해설·형광펜 검수 중이라
+            <br />
+            아직 노출되지 않습니다.
+            <br />
+            <span style={{ color: "#9ca3af" }}>조속히 공개될 예정입니다.</span>
           </p>
           <button
             onClick={() => navigate("/")}
