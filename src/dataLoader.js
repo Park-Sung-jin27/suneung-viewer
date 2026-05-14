@@ -1,7 +1,6 @@
 // dataLoader.js
 let _cache = null;
 let _annCache = null;
-let _statusCache = null;
 
 async function _load() {
   if (_cache) return _cache;
@@ -11,39 +10,39 @@ async function _load() {
   return _cache;
 }
 
-// pipeline/set_status.json — release_status 필터링 단일 진실
-//   구조: { [setId]: { setId, yearKey, release_status, ... } }
-//   release_status === "release" 외 (verifying / hidden / rebuild_required / out_of_scope)
-//   는 학생 노출 차단.
-//   파일 fetch 실패 시 _statusCache = {} → 모든 set이 release 아님으로 평가 → 전수 차단
-//   (안전한 default — Gate 1 전 일시 모드).
-async function _loadStatus() {
-  if (_statusCache !== null) return _statusCache;
-  try {
-    const res = await fetch("/pipeline/set_status.json");
-    if (!res.ok) {
-      _statusCache = {};
-      return _statusCache;
-    }
-    _statusCache = await res.json();
-  } catch {
-    _statusCache = {};
-  }
-  return _statusCache;
-}
+// release 정합 39 set hardcode list — 단일 진실 source.
+//   기준: pipeline/release_approval_records/QG-{examKey}-{setId}-release-approval.json
+//        파일 존재 사양 — backfill 없이 frontend 단독 명시.
+//   set_status.json 의 release_status field 채택 X (lock #1 release_status
+//   자동 정정 금지 정합 보장).
+//   defer 사양: l2025b (2025수능 literature) — 데이터 존재하나 검수 미통과로 hidden.
+//   별도 release 추가 시 본 const 직접 정정 path.
+const RELEASE_SET_IDS = new Set([
+  // 2022수능
+  "r2022a", "r2022b", "r2022c", "r2022d",
+  "l2022a", "l2022b", "l2022c", "l2022d",
+  // 2023수능
+  "r2023a", "r2023b", "r2023c", "r2023d",
+  "l2023a", "l2023b", "l2023c", "l2023d",
+  // 2024수능
+  "r2024a", "r2024b", "r2024c", "r2024d",
+  "l2024a", "l2024b", "l2024c", "l2024d",
+  // 2025수능 (l2025b defer)
+  "kor25_a", "kor25_b", "kor25_c", "kor25_d",
+  "l2025a", "l2025c", "l2025d",
+  // 2026수능
+  "s1", "s2", "s3", "s4",
+  "l2026a", "l2026b", "l2026c", "l2026d",
+]);
 
-// setId 단위 release 검사 (동기 — set_status 사전 로드 필요)
-//   _statusCache 미로드 시 false (안전 default).
-//   미등록 setId 도 false (등록되지 않은 set은 노출 0).
+// setId 단위 release 검사 (동기 — hardcode set lookup).
 export function isReleaseSet(setId) {
-  if (!_statusCache || !setId) return false;
-  const entry = _statusCache[setId];
-  return entry?.release_status === "release";
+  if (!setId) return false;
+  return RELEASE_SET_IDS.has(setId);
 }
 
-// 비동기 release 검사 — _statusCache 자동 로드 후 판정
+// 비동기 호환 wrapper (기존 호출처 API 보존)
 export async function isReleaseSetAsync(setId) {
-  await _loadStatus();
   return isReleaseSet(setId);
 }
 
@@ -131,7 +130,6 @@ export async function loadYear(yearKey, options = {}) {
   const { bypassFilter = false } = options;
   const data = await _load();
   if (!data[yearKey]) throw new Error(`연도 데이터 없음: ${yearKey}`);
-  await _loadStatus(); // release_status 매핑 사전 로드
   const yd = data[yearKey];
   if (!yd._csBuilt) {
     _buildSentCs(yd);
@@ -162,7 +160,6 @@ export async function getYearKeys(options = {}) {
   const { bypassFilter = false } = options;
   const data = await _load();
   if (bypassFilter) return Object.keys(data);
-  await _loadStatus();
   const all = Object.keys(data);
   return all.filter((yk) => {
     const yd = data[yk];
