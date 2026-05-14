@@ -119,10 +119,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.658Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T09:52:51.996Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "kor25_b": {
     "setId": "kor25_b",
@@ -132,10 +133,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.658Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T09:52:51.996Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "kor25_c": {
     "setId": "kor25_c",
@@ -145,10 +147,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.658Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T09:52:51.996Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "kor25_d": {
     "setId": "kor25_d",
@@ -158,10 +161,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.658Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T09:52:51.996Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2025a": {
     "setId": "l2025a",
@@ -171,10 +175,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.658Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T09:52:51.996Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2025b": {
     "setId": "l2025b",
@@ -187,7 +192,8 @@
     "release_status": "verifying",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.658Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3",
+    "defer_reason": "sentType=undefined 30건 결함 — 별도 회기 path (Code B 영역)"
   },
   "l2025c": {
     "setId": "l2025c",
@@ -197,10 +203,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.658Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T09:52:51.996Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2025d": {
     "setId": "l2025d",
@@ -210,10 +217,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.658Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T09:52:51.996Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "sep25_a": {
     "setId": "sep25_a",
