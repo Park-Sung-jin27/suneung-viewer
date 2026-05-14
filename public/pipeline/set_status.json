@@ -447,10 +447,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T10:16:22.940Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "r2023b": {
     "setId": "r2023b",
@@ -460,10 +461,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T10:16:22.940Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "r2023c": {
     "setId": "r2023c",
@@ -473,10 +475,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T10:16:22.940Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "r2023d": {
     "setId": "r2023d",
@@ -486,10 +489,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T10:16:22.940Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2023a": {
     "setId": "l2023a",
@@ -499,10 +503,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T10:16:22.940Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2023b": {
     "setId": "l2023b",
@@ -512,10 +517,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T10:16:22.940Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2023c": {
     "setId": "l2023c",
@@ -525,10 +531,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T10:16:22.940Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2023d": {
     "setId": "l2023d",
@@ -538,10 +545,11 @@
     "gate1_status": "pending",
     "gate2_status": "pending",
     "gate3_status": "pending",
-    "release_status": "verifying",
+    "release_status": "release",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "released_at": "2026-05-14T10:16:22.940Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "r2022a": {
     "setId": "r2022a",
