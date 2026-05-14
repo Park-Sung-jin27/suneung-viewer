@@ -1,0 +1,54 @@
+{
+  "yearKey": "2026수능",
+  "setId": "l2026d",
+  "approved_at": "2026-05-14T07:39:54.799Z",
+  "approved_by": "downfall121@gmail.com",
+  "gate0_evidence": {
+    "report_path": "pipeline/gate0_source_fidelity_report.json",
+    "lane": "clean_existing",
+    "p0_count": 0,
+    "v9_mismatch_critical": 0,
+    "pass": true
+  },
+  "gate1_evidence": {
+    "quality_report_path": "pipeline/quality_report.json",
+    "critical_count": 0,
+    "pass": true,
+    "note": "warn N — release 영향 0"
+  },
+  "gate2_lite_evidence": "deferred — D engine production not integrated, no release impact",
+  "gate3_evidence": {
+    "method": "Code A Chrome MCP 검증",
+    "verified_at": "2025-05-14",
+    "console_error_count": 0,
+    "pass": true
+  },
+  "title_fix_record": {
+    "l2026c": {
+      "from": "골목 안 (이청준)",
+      "to": "독가촌 풍경 (박태순)",
+      "commit": "04ec677"
+    },
+    "l2026d": {
+      "from": "관서별곡·강호연군가·사설시조",
+      "to": "북새곡 (구강)·사설시조·사설시조",
+      "commit": "04ec677"
+    },
+    "note": "Source: Code A Chrome MCP + 사용자 직접 검수"
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "sets_cite_status": {
+      "s1": "no_cite_info_text",
+      "s2": "no_cite_info_text",
+      "s3": "no_cite_info_text",
+      "s4": "no_cite_info_text",
+      "l2026a": "cite_present_author_sentType",
+      "l2026b": "cite_present_author_sentType",
+      "l2026c": "cite_present_author_sentType",
+      "l2026d": "cite_present_author_sentType"
+    },
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "comment": "Phase A pilot 2026수능 8 set release — Gate 0/1/3 PASS, Gate 2-Lite deferred"
+}
