@@ -99,3 +99,9 @@ public/data/all_data_204.backup.*.json
 # backup files (PHASE 2 RETRY 정책)
 public/data/*.bak.*
 public/data/*.tmp.*
+
+# Z.2 — PDF binary file repo 도입 영구 차단
+_done/*.pdf
+_done/**/*.pdf
+_inbox/*.pdf
+_inbox/**/*.pdf

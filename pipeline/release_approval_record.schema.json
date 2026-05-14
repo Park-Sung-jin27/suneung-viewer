@@ -1,0 +1,165 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "release_approval_record",
+  "description": "Phase A pilot 사용자 최종 승인 record schema — 사전 정의 path (인스턴스 도입 X)",
+  "type": "object",
+  "required": [
+    "yearKey",
+    "setIds",
+    "approved_at",
+    "approved_by",
+    "gate0_evidence",
+    "gate1_evidence",
+    "gate2_lite_evidence",
+    "gate3_evidence",
+    "title_fix_record",
+    "cite_audit_record",
+    "comment"
+  ],
+  "properties": {
+    "yearKey": { "type": "string", "example": "2026수능" },
+    "setIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "example": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "l2026a",
+        "l2026b",
+        "l2026c",
+        "l2026d"
+      ]
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-05-14T16:30:00Z"
+    },
+    "approved_by": {
+      "type": "string",
+      "format": "email",
+      "example": "downfall121@gmail.com"
+    },
+    "gate0_evidence": {
+      "type": "object",
+      "properties": {
+        "report_path": {
+          "type": "string",
+          "example": "pipeline/gate0_source_fidelity_report.json"
+        },
+        "source_clean_candidates": { "type": "integer", "example": 8 },
+        "v9_mismatch_critical": { "type": "integer", "example": 0 },
+        "set_status_path": {
+          "type": "string",
+          "example": "pipeline/set_status.json"
+        }
+      }
+    },
+    "gate1_evidence": {
+      "type": "object",
+      "properties": {
+        "quality_report_path": {
+          "type": "string",
+          "example": "pipeline/quality_report.json"
+        },
+        "critical_count": { "type": "integer", "example": 0 },
+        "warning_count": { "type": "integer", "example": 113 },
+        "pass": { "type": "boolean", "example": true }
+      }
+    },
+    "gate2_lite_evidence": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "report_path": { "type": "string" },
+            "majority_confidence": { "type": "string" },
+            "needs_human_count": { "type": "integer" },
+            "pass": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "string",
+          "example": "deferred — D engine production not integrated (Gate 2-Lite)"
+        }
+      ]
+    },
+    "gate3_evidence": {
+      "type": "object",
+      "properties": {
+        "chrome_mcp_session_id": { "type": "string" },
+        "viewer_screenshot_paths": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "console_error_count": { "type": "integer", "example": 0 },
+        "highlight_render_pass": { "type": "boolean", "example": true },
+        "bogi_image_render_pass": { "type": "boolean" },
+        "pass": { "type": "boolean", "example": true }
+      }
+    },
+    "title_fix_record": {
+      "type": "object",
+      "properties": {
+        "fixes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "setId": { "type": "string" },
+              "from": { "type": "string" },
+              "to": { "type": "string" },
+              "commit_hash": { "type": "string" },
+              "source": {
+                "type": "string",
+                "example": "Code A Chrome MCP + 사용자 검수"
+              }
+            }
+          }
+        }
+      }
+    },
+    "cite_audit_record": {
+      "type": "object",
+      "properties": {
+        "8_sets_cite_status": {
+          "type": "object",
+          "example": {
+            "s1": "no_cite_info_text",
+            "s2": "no_cite_info_text",
+            "s3": "no_cite_info_text",
+            "s4": "no_cite_info_text",
+            "l2026a": "cite_present_author_sentType",
+            "l2026b": "cite_present_author_sentType",
+            "l2026c": "cite_present_author_sentType",
+            "l2026d": "cite_present_author_sentType"
+          }
+        },
+        "policy": {
+          "type": "string",
+          "example": "지문 안 작가 + 제목 cite 영구 포함 의무"
+        }
+      }
+    },
+    "comment": { "type": "string" }
+  },
+  "_meta": {
+    "version": "v1",
+    "generated_at": "2026-05-14",
+    "tool": "Z.3 Step B release_approval_record schema 사전 정의",
+    "instance_path_convention": "pipeline/release_approval_records/QG-<yearKey>-<setId>-release-approval.json",
+    "permanent_lock": {
+      "auto_release_status_change": "PERMANENTLY FORBIDDEN",
+      "release_status_change_requires": [
+        "gate0_pass",
+        "gate1_pass",
+        "gate2_lite_pass_or_deferred",
+        "gate3_pass",
+        "user_explicit_approval"
+      ],
+      "manual_record_creation_only": true
+    }
+  }
+}
