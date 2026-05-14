@@ -1,0 +1,32 @@
+{
+  "yearKey": "2023수능",
+  "setId": "l2023b",
+  "approved_at": "2026-05-14T10:16:22.940Z",
+  "approved_by": "downfall121@gmail.com",
+  "gate0_evidence": {
+    "lane": "clean_existing",
+    "p0_count": 0,
+    "v9_status": "ok",
+    "pass": true
+  },
+  "gate1_evidence": {
+    "critical_count": 0,
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — D engine production not integrated",
+  "gate3_evidence": {
+    "method": "Code A Chrome MCP 검증",
+    "console_error_count": 0,
+    "pass": true
+  },
+  "title_fix_record": {
+    "fixed_at": "2026-05-14T10:16:22.940Z",
+    "source": "Code A Chrome MCP + 사용자 검수"
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "section": "literature",
+    "defer_note": "cite 인용부호 결함 6건 잔존 (l2023b/c/d) — release 영향 0, 별도 회기 path"
+  },
+  "comment": "Phase D pilot 2023수능 8 set release"
+}
