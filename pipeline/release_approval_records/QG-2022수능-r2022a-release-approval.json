@@ -1,0 +1,29 @@
+{
+  "yearKey": "2022수능",
+  "setId": "r2022a",
+  "approved_at": "2026-05-14T10:44:47.805Z",
+  "approved_by": "downfall121@gmail.com",
+  "gate0_evidence": {
+    "lane": "clean_existing",
+    "p0_count": 0,
+    "v9_status": "ok",
+    "pass": true
+  },
+  "gate1_evidence": {
+    "critical_count": 0,
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — D engine production not integrated",
+  "gate3_evidence": {
+    "method": "Code A Chrome MCP 검증",
+    "console_error_count": 0,
+    "pass": true
+  },
+  "title_fix_record": "reading — title 정합",
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "section": "reading",
+    "defer_note": "no cite expected (info text)"
+  },
+  "comment": "Phase E pilot 2022수능 8 set release"
+}

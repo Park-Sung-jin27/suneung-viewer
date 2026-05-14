@@ -562,7 +562,10 @@
     "release_status": "verifying",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3",
+    "status": "release",
+    "released_at": "2026-05-14T10:44:47.805Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "r2022b": {
     "setId": "r2022b",
@@ -575,7 +578,10 @@
     "release_status": "verifying",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3",
+    "status": "release",
+    "released_at": "2026-05-14T10:44:47.805Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "r2022c": {
     "setId": "r2022c",
@@ -588,7 +594,10 @@
     "release_status": "verifying",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3",
+    "status": "release",
+    "released_at": "2026-05-14T10:44:47.805Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "r2022d": {
     "setId": "r2022d",
@@ -601,7 +610,10 @@
     "release_status": "verifying",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3",
+    "status": "release",
+    "released_at": "2026-05-14T10:44:47.805Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2022a": {
     "setId": "l2022a",
@@ -614,7 +626,10 @@
     "release_status": "verifying",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3",
+    "status": "release",
+    "released_at": "2026-05-14T10:44:47.805Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2022b": {
     "setId": "l2022b",
@@ -627,7 +642,10 @@
     "release_status": "verifying",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3",
+    "status": "release",
+    "released_at": "2026-05-14T10:44:47.805Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2022c": {
     "setId": "l2022c",
@@ -640,7 +658,10 @@
     "release_status": "verifying",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3",
+    "status": "release",
+    "released_at": "2026-05-14T10:44:47.805Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "l2022d": {
     "setId": "l2022d",
@@ -653,7 +674,10 @@
     "release_status": "verifying",
     "issues": [],
     "last_audit": "2026-05-13T06:43:40.659Z",
-    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3"
+    "_x2_safety_stopper": "auto_release_blocked_pending_gate1_2_3",
+    "status": "release",
+    "released_at": "2026-05-14T10:44:47.805Z",
+    "approved_by": "downfall121@gmail.com"
   },
   "r20226a": {
     "setId": "r20226a",

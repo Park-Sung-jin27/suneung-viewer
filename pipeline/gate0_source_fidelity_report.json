@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "vFinal",
-    "generated_at": "2026-05-14T10:16:18.924Z",
+    "generated_at": "2026-05-14T10:44:17.887Z",
     "tool": "gate0_source_fidelity.mjs vFinal"
   },
   "scope_manifest": {
@@ -49,9 +49,9 @@
     "source_missing_sets": 0
   },
   "issue_counts": {
-    "total_issues": 266,
+    "total_issues": 259,
     "issues_by_code": {
-      "V9_NEEDS_HUMAN": 68,
+      "V9_NEEDS_HUMAN": 61,
       "V7a_choice_count": 7,
       "V6_cross_set_leak": 88,
       "V3_range_qcount_mismatch": 20,
@@ -63,41 +63,41 @@
     },
     "issues_by_bucket": {
       "P0": 0,
-      "P1": 31,
+      "P1": 24,
       "P2": 234,
       "P3": 0,
       "OUT_OF_SCOPE": 1
     },
     "issues_by_scope": {
       "scopeA": 1,
-      "scopeB_FREE": 7,
+      "scopeB_FREE": 0,
       "scopeB_NEAR": 23,
       "scopeC_LEGACY": 235
     },
     "issues_by_severity": {
       "critical": 3,
-      "warning": 262,
+      "warning": 255,
       "info": 1
     }
   },
   "lane_counts": {
-    "clean_existing": 238,
+    "clean_existing": 245,
     "clean_new": 0,
     "broken_rebuild": 1,
-    "scope_pending": 62,
+    "scope_pending": 55,
     "out_of_scope": 1
   },
   "release_queue_counts": {
     "scopeA_gate0_pass": 7,
-    "scopeB_free_gate0_pass": 25,
+    "scopeB_free_gate0_pass": 32,
     "scopeB_near_gate0_pass": 56,
     "scopeC_legacy_gate0_pass": 150,
     "note": "gate0 PASS 단독. gate1/2/3 + 사용자 승인 사후만 release 결정."
   },
   "V9_summary": {
-    "ok": 240,
+    "ok": 247,
     "mismatch_critical": 1,
-    "needs_human": 60,
+    "needs_human": 53,
     "null_count": 0
   },
   "V9_mismatch_raw": [
@@ -129,62 +129,6 @@
     {
       "setId": "lsep25a",
       "yearKey": "2025_9월",
-      "code": "V9_NEEDS_HUMAN",
-      "severity": "warning",
-      "bucket": "P1",
-      "msg": "literature, sig 0"
-    },
-    {
-      "setId": "l2023a",
-      "yearKey": "2023수능",
-      "code": "V9_NEEDS_HUMAN",
-      "severity": "warning",
-      "bucket": "P1",
-      "msg": "literature, sig 0"
-    },
-    {
-      "setId": "l2023b",
-      "yearKey": "2023수능",
-      "code": "V9_NEEDS_HUMAN",
-      "severity": "warning",
-      "bucket": "P1",
-      "msg": "literature, sig 0"
-    },
-    {
-      "setId": "l2023c",
-      "yearKey": "2023수능",
-      "code": "V9_NEEDS_HUMAN",
-      "severity": "warning",
-      "bucket": "P1",
-      "msg": "literature, sig 0"
-    },
-    {
-      "setId": "l2023d",
-      "yearKey": "2023수능",
-      "code": "V9_NEEDS_HUMAN",
-      "severity": "warning",
-      "bucket": "P1",
-      "msg": "literature, sig 0"
-    },
-    {
-      "setId": "l2022a",
-      "yearKey": "2022수능",
-      "code": "V9_NEEDS_HUMAN",
-      "severity": "warning",
-      "bucket": "P1",
-      "msg": "literature, sig 0"
-    },
-    {
-      "setId": "l2022b",
-      "yearKey": "2022수능",
-      "code": "V9_NEEDS_HUMAN",
-      "severity": "warning",
-      "bucket": "P1",
-      "msg": "literature, sig 0"
-    },
-    {
-      "setId": "l2022d",
-      "yearKey": "2022수능",
       "code": "V9_NEEDS_HUMAN",
       "severity": "warning",
       "bucket": "P1",
