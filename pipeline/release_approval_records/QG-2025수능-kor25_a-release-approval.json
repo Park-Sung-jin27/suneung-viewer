@@ -1,0 +1,61 @@
+{
+  "yearKey": "2025수능",
+  "setId": "kor25_a",
+  "approved_at": "2026-05-14T09:52:51.236Z",
+  "approved_by": "downfall121@gmail.com",
+  "gate0_evidence": {
+    "report_path": "pipeline/gate0_source_fidelity_report.json",
+    "lane": "clean_existing",
+    "p0_count": 0,
+    "v9_status": "ok",
+    "pass": true
+  },
+  "gate1_evidence": {
+    "quality_report_path": "pipeline/quality_report.json",
+    "critical_count": 0,
+    "pass": true,
+    "note": "warn 115 — release 영향 0"
+  },
+  "gate2_lite_evidence": "deferred — D engine production not integrated, no release impact",
+  "gate3_evidence": {
+    "method": "Code B Chrome MCP 검증 (claude_redo path)",
+    "verified_at": "2026-05-14T09:52:51.236Z",
+    "viewer_url": "https://suneung-viewer.vercel.app",
+    "tab_title": "짚이 (Jippi) — 수능 국어 분석 도구",
+    "console_error_count": 0,
+    "page_text_pass": true,
+    "pass": true
+  },
+  "title_fix_record": {
+    "l2025a": {
+      "from": "충렬전 (고전소설)",
+      "to": "정을선전 (작자 미상)",
+      "commit": "a91c0f2"
+    },
+    "l2025c": {
+      "from": "배꼽을 주제로 한 변주곡",
+      "to": "배꼽을 주제로 한 변주곡 (이청준)",
+      "commit": "a91c0f2"
+    },
+    "l2025d": {
+      "from": "고전시가 복합",
+      "to": "갑민가·사설시조",
+      "commit": "a91c0f2"
+    }
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "sets_cite_status": {
+      "kor25_a": "no_cite_info_text",
+      "kor25_b": "no_cite_info_text",
+      "kor25_c": "no_cite_info_text",
+      "kor25_d": "no_cite_info_text",
+      "l2025a": "cite_present_author_sentType",
+      "l2025c": "cite_present_author_sentType",
+      "l2025d": "cite_present_author_sentType"
+    },
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무",
+    "defer_note": "l2025b sentType=undefined 30건 결함 — 별도 회기 path 정합"
+  },
+  "comment": "Phase B pilot 2025수능 7 set release (l2025b defer — sentType 결함 별도 회기)"
+}
