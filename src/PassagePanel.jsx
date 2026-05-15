@@ -358,14 +358,22 @@ function RenderSent({ sent, sel, anns }) {
             // span 매칭 실패 → 해당 라인 fallback (전체 하이라이트)
             return (
               <div key={i} style={hlStyle} data-hl="true">
-                <Lines text={line} />
+                {anns.length > 0 ? (
+                  applyInlineAnns(line, anns)
+                ) : (
+                  <Lines text={line} />
+                )}
               </div>
             );
           }
-          // pal 없음 또는 spans 없음 → 기존 동작
+          // pal 없음 또는 spans 없음 → 기존 동작 + anns 적용 (underline/box)
           return (
             <div key={i} style={pal ? hlStyle : {}}>
-              <Lines text={line} />
+              {anns.length > 0 ? (
+                applyInlineAnns(line, anns)
+              ) : (
+                <Lines text={line} />
+              )}
             </div>
           );
         })}
@@ -480,18 +488,48 @@ function renderAll(sents, sel, annotations) {
     );
 
     if (hasBracket) {
+      // 큰 대괄호 시각화: 좌측 세로선 + 상단·하단 짧은 가로선 (┌ │ └ 모양)
+      //   + 우측 상단 label [A]
+      //   sentFrom~sentTo 안 같은 buf flush 그룹은 단일 컨테이너로 감싸짐.
       result.push(
         <div
           key={"br_" + buf[0].id}
-          style={{ borderLeft: "3px solid #888", paddingLeft: "8px" }}
+          style={{
+            position: "relative",
+            paddingLeft: "18px",
+            paddingTop: "4px",
+            paddingBottom: "4px",
+            margin: "4px 0",
+          }}
         >
+          {/* 좌측 큰 대괄호 [ 모양 — left + top + bottom border */}
+          <span
+            aria-hidden
+            style={{
+              position: "absolute",
+              left: 0,
+              top: 0,
+              bottom: 0,
+              width: "10px",
+              borderLeft: "2px solid #555",
+              borderTop: "2px solid #555",
+              borderBottom: "2px solid #555",
+              borderTopLeftRadius: "2px",
+              borderBottomLeftRadius: "2px",
+            }}
+          />
+          {/* label [A] — 우측 상단, bracket 첫 sent 그룹에만 표시 */}
           {brInfo.isFirst && (
             <span
               style={{
-                fontSize: "11px",
-                color: "#888",
-                display: "block",
-                marginBottom: "2px",
+                position: "absolute",
+                right: "0",
+                top: "-2px",
+                fontSize: "0.78rem",
+                fontWeight: 700,
+                color: "#555",
+                background: "#fff",
+                padding: "0 4px",
               }}
             >
               [{brInfo.label}]
