@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { P, CC, MODE, SYMBOLS } from "./constants";
 import { BogiTable } from "./BogiTable";
 import QuestionQA from "./QuestionQA";
+import { saveEvidenceFeedback } from "./saveEvidenceFeedback";
 
 // ══════════════════════════════════════════════════════════
 // [1] 유틸 함수
@@ -486,7 +487,11 @@ function ChoiceItem({
   isReview,
   isVocab,
   passageSents,
+  user,
+  yearKey,
+  setId,
 }) {
+  const [evidenceVote, setEvidenceVote] = useState(null);
   const uid = `q${qid}_c${choice.num}`;
   const isActive = clicked === uid;
   const isMe = myAnswer === uid;
@@ -691,6 +696,79 @@ function ChoiceItem({
           ) : (
             <AnalysisBlock text={choice.analysis} />
           )}
+          {/* 근거 납득 KPI — 베타 측정용 */}
+          <div
+            style={{
+              marginTop: "10px",
+              paddingTop: "8px",
+              borderTop: "1px dashed #d1d5db",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              fontSize: "0.72rem",
+              color: "#6b7280",
+              flexWrap: "wrap",
+            }}
+          >
+            <span>근거가 납득되시나요?</span>
+            <button
+              disabled={evidenceVote !== null}
+              onClick={(e) => {
+                e.stopPropagation();
+                setEvidenceVote(true);
+                saveEvidenceFeedback({
+                  user,
+                  yearKey,
+                  setId,
+                  questionId: qid,
+                  choiceNum: choice.num,
+                  vote: true,
+                });
+              }}
+              style={{
+                border: "1px solid #d1d5db",
+                background: evidenceVote === true ? "#dcfce7" : "#fff",
+                borderRadius: "12px",
+                padding: "3px 10px",
+                cursor: evidenceVote === null ? "pointer" : "default",
+                fontSize: "0.72rem",
+                fontFamily: "'Noto Sans KR', sans-serif",
+              }}
+            >
+              👍 납득
+            </button>
+            <button
+              disabled={evidenceVote !== null}
+              onClick={(e) => {
+                e.stopPropagation();
+                setEvidenceVote(false);
+                saveEvidenceFeedback({
+                  user,
+                  yearKey,
+                  setId,
+                  questionId: qid,
+                  choiceNum: choice.num,
+                  vote: false,
+                });
+              }}
+              style={{
+                border: "1px solid #d1d5db",
+                background: evidenceVote === false ? "#fee2e2" : "#fff",
+                borderRadius: "12px",
+                padding: "3px 10px",
+                cursor: evidenceVote === null ? "pointer" : "default",
+                fontSize: "0.72rem",
+                fontFamily: "'Noto Sans KR', sans-serif",
+              }}
+            >
+              👎 안됨
+            </button>
+            {evidenceVote !== null && (
+              <span style={{ color: "#10b981", fontWeight: 600 }}>
+                고맙습니다
+              </span>
+            )}
+          </div>
         </div>
       )}
     </div>
@@ -721,6 +799,7 @@ function QuestionBlock({
   yearKey,
   passageSents,
   user,
+  setId,
 }) {
   const [clicked, setClicked] = useState(
     isReview ? null : (initialClicked ?? null),
@@ -853,6 +932,9 @@ function QuestionBlock({
             isReview={isReview}
             isVocab={isVocab}
             passageSents={passageSents}
+            user={user}
+            yearKey={yearKey}
+            setId={setId}
           />
         ))}
       </div>
@@ -1260,6 +1342,7 @@ export default function QuizPanel({
           yearKey={yearKey}
           passageSents={passageSet.sents}
           user={user}
+          setId={passageSet.id}
         />
       ))}
 

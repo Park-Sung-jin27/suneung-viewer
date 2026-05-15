@@ -21,6 +21,7 @@ import Banner from "./Banner";
 import Landing from "./Landing";
 import AcademyPreview from "./AcademyPreview";
 import ResultPage from "./ResultPage";
+import FeedbackButton from "./FeedbackButton";
 import {
   YEAR_INFO,
   MODE,
@@ -237,6 +238,7 @@ function Layout({ user, onLogout, children }) {
       `}</style>
       <Header user={user} onLogout={onLogout} />
       {children}
+      <FeedbackButton />
     </>
   );
 }
