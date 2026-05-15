@@ -2210,9 +2210,23 @@ export default function Landing({ onStart }) {
         >
           짚이
         </span>
-        <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.2)" }}>
-          © 2025 짚이
-        </span>
+        <div
+          style={{ display: "flex", alignItems: "center", gap: "14px" }}
+        >
+          <a
+            href="/privacy"
+            style={{
+              fontSize: "0.72rem",
+              color: "rgba(255,255,255,0.5)",
+              textDecoration: "underline",
+            }}
+          >
+            개인정보처리방침 · 이용약관
+          </a>
+          <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.2)" }}>
+            © 2025 짚이
+          </span>
+        </div>
       </footer>
     </div>
   );

@@ -22,6 +22,7 @@ import Landing from "./Landing";
 import AcademyPreview from "./AcademyPreview";
 import ResultPage from "./ResultPage";
 import FeedbackButton from "./FeedbackButton";
+import Privacy from "./Privacy";
 import {
   YEAR_INFO,
   MODE,
@@ -2026,6 +2027,14 @@ export default function App() {
         }
       />
       <Route path="/academy-preview" element={<AcademyPreview />} />
+      <Route
+        path="/privacy"
+        element={
+          <Layout user={user} onLogout={handleLogout}>
+            <Privacy />
+          </Layout>
+        }
+      />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
