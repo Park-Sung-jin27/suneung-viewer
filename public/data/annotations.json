@@ -909,29 +909,29 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2023b_s1",
-        "sentTo": "l2023bs3"
+        "sentFrom": "l2023bs3",
+        "sentTo": "l2023bs10"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2023bs8",
-        "sentTo": "l2023bs8"
+        "sentFrom": "l2023bs20",
+        "sentTo": "l2023bs22"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2023bs21",
-        "sentTo": "l2023bs24"
+        "sentFrom": "l2023bs54",
+        "sentTo": "l2023bs56"
       },
       {
         "type": "underline",
-        "sentId": "l2023bs11",
+        "sentId": "l2023bs35",
         "text": "작은 정자"
       },
       {
         "type": "underline",
-        "sentId": "l2023bs16",
+        "sentId": "l2023bs46",
         "text": "옛 망양정 자리"
       }
     ],
@@ -971,26 +971,38 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2023d_s9",
-        "sentTo": "l2023d_s9"
+        "sentFrom": "l2023ds20",
+        "sentTo": "l2023ds21"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2023d_s10",
-        "sentTo": "l2023d_s10"
+        "sentFrom": "l2023ds24",
+        "sentTo": "l2023ds25"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2023ds26",
+        "sentTo": "l2023ds27"
       },
       {
         "type": "bracket",
         "label": "D",
-        "sentFrom": "l2023d_s11",
-        "sentTo": "l2023d_s11"
+        "sentFrom": "l2023ds29",
+        "sentTo": "l2023ds31"
       },
       {
         "type": "bracket",
         "label": "E",
-        "sentFrom": "l2023d_s12",
-        "sentTo": "l2023d_s12"
+        "sentFrom": "l2023ds33",
+        "sentTo": "l2023ds34"
+      },
+      {
+        "type": "bracket",
+        "label": "F",
+        "sentFrom": "l2023ds35",
+        "sentTo": "l2023ds36"
       },
       {
         "type": "underline",
@@ -999,22 +1011,22 @@
       },
       {
         "type": "underline",
-        "sentId": "l2023ds3",
+        "sentId": "l2023ds6",
         "text": "지극히"
       },
       {
         "type": "underline",
-        "sentId": "l2023ds4",
+        "sentId": "l2023ds9",
         "text": "과분하지 말라"
       },
       {
         "type": "underline",
-        "sentId": "l2023ds5",
+        "sentId": "l2023ds15",
         "text": "많은 손님들"
       },
       {
         "type": "underline",
-        "sentId": "l2023ds6",
+        "sentId": "l2023ds16",
         "text": "빛나는 생명의 양상"
       }
     ]
