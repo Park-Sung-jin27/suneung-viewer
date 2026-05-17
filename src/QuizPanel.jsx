@@ -100,11 +100,11 @@ function renderWithSymbols(text) {
 function parseMarkdownTable(text) {
   if (!text || typeof text !== "string") return null;
   const lines = text.split("\n");
-  // separator row index 검출
+  // separator row index 검출 (직전 line includes("|") 조건 제거 — multi-line header 지원)
   const sepRe = /^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/;
   let sepIdx = -1;
   for (let i = 1; i < lines.length; i++) {
-    if (sepRe.test(lines[i]) && lines[i - 1].includes("|")) {
+    if (sepRe.test(lines[i])) {
       sepIdx = i;
       break;
     }
@@ -116,7 +116,16 @@ function parseMarkdownTable(text) {
       .replace(/\|\s*$/, "")
       .split("|")
       .map((c) => c.trim());
-  const header = splitRow(lines[sepIdx - 1]);
+  // header 영역: separator 직전부터 위로 올라가 빈 line(혹은 시작)까지 합쳐서
+  //   "\n" 보존 후 "|" split. cell 안 multi-line 지원 (예: "1차 조사\n선거일\n15일 전").
+  let headerStart = sepIdx;
+  while (headerStart > 0 && lines[headerStart - 1].trim() !== "") {
+    headerStart--;
+  }
+  if (headerStart >= sepIdx) return null;
+  const headerArea = lines.slice(headerStart, sepIdx).join("\n");
+  if (!headerArea.includes("|")) return null;
+  const header = splitRow(headerArea);
   const rows = [];
   let bodyEnd = sepIdx + 1;
   for (let i = sepIdx + 1; i < lines.length; i++) {
@@ -129,7 +138,7 @@ function parseMarkdownTable(text) {
     bodyEnd = i + 1;
   }
   if (rows.length === 0) return null;
-  const before = lines.slice(0, sepIdx - 1).join("\n").trim();
+  const before = lines.slice(0, headerStart).join("\n").trim();
   const after = lines.slice(bodyEnd).join("\n").trim();
   return { before, header, rows, after };
 }
