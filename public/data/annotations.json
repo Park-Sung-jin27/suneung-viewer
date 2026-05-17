@@ -755,20 +755,20 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2024d_s5",
-        "sentTo": "l2024d_s11"
+        "sentFrom": "l2024_32_34s2",
+        "sentTo": "l2024_32_34s3"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2024d_s17",
-        "sentTo": "l2024d_s22"
+        "sentFrom": "l2024_32_34s4",
+        "sentTo": "l2024_32_34s4"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2024d_s27",
-        "sentTo": "l2024d_s31"
+        "sentFrom": "l2024_32_34s4",
+        "sentTo": "l2024_32_34s4"
       }
     ]
   },
