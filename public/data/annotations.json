@@ -713,42 +713,42 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2024a_s2",
-        "sentTo": "l2024a_s6"
+        "sentFrom": "l2024_18_21s1",
+        "sentTo": "l2024_18_21s5"
       }
     ],
     "l2024b": [
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2024b_s12",
-        "sentTo": "l2024b_s12"
+        "sentFrom": "l2024_22_27s11",
+        "sentTo": "l2024_22_27s11"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2024b_s14",
-        "sentTo": "l2024b_s14"
+        "sentFrom": "l2024_22_27s12",
+        "sentTo": "l2024_22_27s12"
       }
     ],
     "l2024c": [
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2024c_s8",
-        "sentTo": "l2024c_s8"
+        "sentFrom": "l2024_28_31s6",
+        "sentTo": "l2024_28_31s6"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2024c_s9",
-        "sentTo": "l2024c_s9"
+        "sentFrom": "l2024_28_31s7",
+        "sentTo": "l2024_28_31s7"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2024c_s9",
-        "sentTo": "l2024c_s9"
+        "sentFrom": "l2024_28_31s7",
+        "sentTo": "l2024_28_31s7"
       }
     ],
     "l2024d": [
@@ -777,8 +777,8 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r2023a_s9",
-        "sentTo": "r2023a_s13"
+        "sentFrom": "r2023as9",
+        "sentTo": "r2023as13"
       },
       {
         "type": "underline",
@@ -790,8 +790,8 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r2023b_s2",
-        "sentTo": "r2023b_s9"
+        "sentFrom": "r2023bs2",
+        "sentTo": "r2023bs9"
       },
       {
         "type": "underline",
@@ -939,20 +939,20 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2023c_s2",
-        "sentTo": "l2023c_s2"
+        "sentFrom": "l2023cs2",
+        "sentTo": "l2023cs2"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2023c_s7",
-        "sentTo": "l2023c_s8"
+        "sentFrom": "l2023cs7",
+        "sentTo": "l2023cs8"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2023c_s11",
-        "sentTo": "l2023c_s13"
+        "sentFrom": "l2023cs11",
+        "sentTo": "l2023cs13"
       },
       {
         "type": "bracket",
@@ -1114,32 +1114,32 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2022a_s1",
-        "sentTo": "l2022a_s1"
+        "sentFrom": "l2022as1",
+        "sentTo": "l2022as1"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2022a_s2",
-        "sentTo": "l2022a_s2"
+        "sentFrom": "l2022as2",
+        "sentTo": "l2022as2"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2022a_s3",
-        "sentTo": "l2022a_s3"
+        "sentFrom": "l2022as3",
+        "sentTo": "l2022as3"
       },
       {
         "type": "bracket",
         "label": "D",
-        "sentFrom": "l2022a_s4",
-        "sentTo": "l2022a_s4"
+        "sentFrom": "l2022as4",
+        "sentTo": "l2022as4"
       },
       {
         "type": "bracket",
         "label": "E",
-        "sentFrom": "l2022a_s4",
-        "sentTo": "l2022a_s4"
+        "sentFrom": "l2022as4",
+        "sentTo": "l2022as4"
       },
       {
         "type": "box",
@@ -1156,8 +1156,8 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2022b_s1",
-        "sentTo": "l2022b_s5"
+        "sentFrom": "l2022bs1",
+        "sentTo": "l2022bs5"
       },
       {
         "type": "underline",
@@ -1174,32 +1174,32 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2022c_s1",
-        "sentTo": "l2022c_s2"
+        "sentFrom": "l2022cs1",
+        "sentTo": "l2022cs2"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2022c_s7",
-        "sentTo": "l2022c_s8"
+        "sentFrom": "l2022cs7",
+        "sentTo": "l2022cs8"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2022c_s11",
-        "sentTo": "l2022c_s12"
+        "sentFrom": "l2022cs11",
+        "sentTo": "l2022cs12"
       },
       {
         "type": "bracket",
         "label": "D",
-        "sentFrom": "l2022c_s16",
-        "sentTo": "l2022c_s17"
+        "sentFrom": "l2022cs16",
+        "sentTo": "l2022cs17"
       },
       {
         "type": "bracket",
         "label": "E",
-        "sentFrom": "l2022c_s19",
-        "sentTo": "l2022c_s20"
+        "sentFrom": "l2022cs19",
+        "sentTo": "l2022cs20"
       },
       {
         "type": "box",
@@ -1216,14 +1216,14 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2022d_s13",
-        "sentTo": "l2022d_s26"
+        "sentFrom": "l2022ds13",
+        "sentTo": "l2022ds26"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2022d_s32",
-        "sentTo": "l2022d_s34"
+        "sentFrom": "l2022ds32",
+        "sentTo": "l2022ds34"
       },
       {
         "type": "underline",
