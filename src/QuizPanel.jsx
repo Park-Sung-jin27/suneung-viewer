@@ -92,6 +92,48 @@ function renderWithSymbols(text) {
 //   { type: 'annotated_image', image }   → 이미지 보기
 //   { type: 'diagram', description, flow, items, layout } → 도식 보기
 //   (bogiType='table'은 BogiTable이 별도 처리)
+// markdown 표 파서 (단순 GFM 호환)
+//   bogi string 안 첫 번째 separator row(--- | ---) 검출 → header(직전 line) +
+//   separator + body(이후 연속 line). 표 외 영역은 before / after 분리.
+//   header 안 cell 안 '\n' 보존 (multi-line 헤더 지원).
+//   파싱 실패 시 null 반환 (호출측 fallback pre-wrap).
+function parseMarkdownTable(text) {
+  if (!text || typeof text !== "string") return null;
+  const lines = text.split("\n");
+  // separator row index 검출
+  const sepRe = /^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/;
+  let sepIdx = -1;
+  for (let i = 1; i < lines.length; i++) {
+    if (sepRe.test(lines[i]) && lines[i - 1].includes("|")) {
+      sepIdx = i;
+      break;
+    }
+  }
+  if (sepIdx < 1) return null;
+  const splitRow = (line) =>
+    line
+      .replace(/^\s*\|/, "")
+      .replace(/\|\s*$/, "")
+      .split("|")
+      .map((c) => c.trim());
+  const header = splitRow(lines[sepIdx - 1]);
+  const rows = [];
+  let bodyEnd = sepIdx + 1;
+  for (let i = sepIdx + 1; i < lines.length; i++) {
+    const l = lines[i];
+    if (!l.trim() || !l.includes("|")) {
+      bodyEnd = i;
+      break;
+    }
+    rows.push(splitRow(l));
+    bodyEnd = i + 1;
+  }
+  if (rows.length === 0) return null;
+  const before = lines.slice(0, sepIdx - 1).join("\n").trim();
+  const after = lines.slice(bodyEnd).join("\n").trim();
+  return { before, header, rows, after };
+}
+
 // ══════════════════════════════════════════════════════════
 function BogiRenderer({ bogi }) {
   if (!bogi) return null;
@@ -119,6 +161,82 @@ function BogiRenderer({ bogi }) {
 
   // ── 문자열 보기
   if (typeof bogi === "string") {
+    // markdown 표 detection — '|' + 'separator row(--- | ---)' 패턴
+    //   header / separator / body 분리 후 table 렌더. table 외 영역(서두/말미)은
+    //   별도 pre-wrap 블록으로 분리하여 정합 노출.
+    const mdTable = parseMarkdownTable(bogi);
+    if (mdTable) {
+      return wrap(
+        <>
+          {mdTable.before && (
+            <div
+              style={{
+                whiteSpace: "pre-wrap",
+                textAlign: "justify",
+                marginBottom: "10px",
+              }}
+            >
+              {replaceImagePlaceholders(mdTable.before)}
+            </div>
+          )}
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              fontSize: "0.78rem",
+              marginBottom: mdTable.after ? "10px" : 0,
+              border: "1px solid #d1d5db",
+            }}
+          >
+            <thead>
+              <tr>
+                {mdTable.header.map((h, i) => (
+                  <th
+                    key={i}
+                    style={{
+                      background: "#f3f4f6",
+                      border: "1px solid #d1d5db",
+                      padding: "6px 8px",
+                      textAlign: "center",
+                      fontWeight: 600,
+                      whiteSpace: "pre-wrap",
+                      verticalAlign: "middle",
+                    }}
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {mdTable.rows.map((row, ri) => (
+                <tr key={ri}>
+                  {row.map((cell, ci) => (
+                    <td
+                      key={ci}
+                      style={{
+                        border: "1px solid #d1d5db",
+                        padding: "6px 8px",
+                        textAlign: ci === 0 ? "left" : "center",
+                        whiteSpace: "pre-wrap",
+                        verticalAlign: "middle",
+                      }}
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {mdTable.after && (
+            <div style={{ whiteSpace: "pre-wrap", textAlign: "justify" }}>
+              {replaceImagePlaceholders(mdTable.after)}
+            </div>
+          )}
+        </>,
+      );
+    }
     return wrap(
       <div style={{ whiteSpace: "pre-wrap", textAlign: "justify" }}>
         {replaceImagePlaceholders(bogi)}
