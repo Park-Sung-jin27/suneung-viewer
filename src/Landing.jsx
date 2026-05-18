@@ -829,20 +829,33 @@ export default function Landing({ onStart }) {
           <div
             style={{
               animation: "fadeUp 0.8s ease 0.4s both",
-              marginBottom: "10px",
+              marginBottom: "14px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "10px",
             }}
           >
             <Btn
-              label="무료로 진단 시작"
-              onClick={() =>
-                window.open(
-                  "https://tally.so/r/81jOpo",
-                  "_blank",
-                  "noopener,noreferrer",
-                )
-              }
+              label="지금 체험하기 — 무료 5개년"
+              onClick={() => {
+                window.location.href = "/viewer?year=2026수능";
+              }}
               size="lg"
             />
+            <a
+              href="https://tally.so/r/81jOpo"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: "0.85rem",
+                color: C.muted,
+                textDecoration: "underline",
+                cursor: "pointer",
+              }}
+            >
+              1:1 진단 신청 →
+            </a>
           </div>
           <p
             style={{
@@ -852,7 +865,7 @@ export default function Landing({ onStart }) {
               marginBottom: "52px",
             }}
           >
-            1:1 전문가 진단 포함 — 토탈 5석 한정 / 89,000원/월부터
+            가입 없이 즉시 체험 가능 · 2026·2025·2024·2023·2022 수능 무료
           </p>
         </div>
       </section>
