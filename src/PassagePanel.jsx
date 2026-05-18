@@ -190,7 +190,12 @@ const BOX_STYLE = {
 };
 const UL_STYLE = { textDecoration: "underline", textUnderlineOffset: "3px" };
 
-function applyInlineAnns(text, anns) {
+// applyInlineAnns(text, anns)
+//   anns: [{ type: 'underline'|'box', text }]
+//   QuizPanel choice/bogi underline 사양 path 안 재사용 의무 export.
+//   Lines component dependency — PassagePanel 외부에서 사용 시 본 모듈 export
+//   path 안 단독 가능 (renderWithSymbols 없는 plain text 호출 path 한정).
+export function applyInlineAnns(text, anns) {
   if (!anns.length) return <Lines text={text} />;
   // 텍스트 내 등장 위치 순으로 정렬
   const sorted = anns
@@ -459,13 +464,18 @@ function getBracketInfo(sentId, brackets, sentIds) {
 }
 
 function renderAll(sents, sel, annotations) {
-  const brackets = annotations.filter((a) => a.type === "bracket");
+  // target field 호환 path: target 미존재 시 'passage' default.
+  // choice/bogi target annotation 은 PassagePanel 영역 외 — QuizPanel 처리.
+  const passageAnns = annotations.filter(
+    (a) => !a.target || a.target === "passage",
+  );
+  const brackets = passageAnns.filter((a) => a.type === "bracket");
   const inlineTypes = new Set(["box", "underline"]);
   const sentIds = sents.map((s) => s.id);
 
   // sentId → inline annotations 매핑
   const annMap = {};
-  for (const a of annotations) {
+  for (const a of passageAnns) {
     if (inlineTypes.has(a.type) && a.sentId) {
       (annMap[a.sentId] ||= []).push(a);
     }

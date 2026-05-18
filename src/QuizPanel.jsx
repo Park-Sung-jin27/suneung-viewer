@@ -85,6 +85,58 @@ function renderWithSymbols(text) {
   });
 }
 
+// applyInlineAnnsLocal(text, anns)
+//   QuizPanel 내부 inline annotation overlay helper.
+//   anns: [{ type: 'underline'|'box', text }] — text 안 substring match path
+//   renderWithSymbols (= [[sym:KEY]] → <img>) 도입 path 안 정합 의무 path
+//   PassagePanel applyInlineAnns 와 분리 — 각 컴포넌트 텍스트 처리 path 별개.
+function applyInlineAnnsLocal(text, anns) {
+  if (!text || !anns || anns.length === 0) return renderWithSymbols(text);
+  const sorted = anns
+    .map((a) => ({ text: a.text, type: a.type, idx: text.indexOf(a.text) }))
+    .filter((a) => a.idx >= 0)
+    .sort((a, b) => a.idx - b.idx);
+  if (!sorted.length) return renderWithSymbols(text);
+  const parts = [];
+  let cursor = 0;
+  for (const a of sorted) {
+    if (a.idx < cursor) continue;
+    if (a.idx > cursor) parts.push({ t: text.slice(cursor, a.idx), type: null });
+    parts.push({ t: a.text, type: a.type });
+    cursor = a.idx + a.text.length;
+  }
+  if (cursor < text.length) parts.push({ t: text.slice(cursor), type: null });
+  return parts.map((p, i) => {
+    const inner = renderWithSymbols(p.t);
+    if (p.type === "underline")
+      return (
+        <span
+          key={i}
+          style={{
+            textDecoration: "underline",
+            textUnderlineOffset: "3px",
+          }}
+        >
+          {inner}
+        </span>
+      );
+    if (p.type === "box")
+      return (
+        <span
+          key={i}
+          style={{
+            border: "1px solid #555",
+            borderRadius: "2px",
+            padding: "0 3px",
+          }}
+        >
+          {inner}
+        </span>
+      );
+    return <span key={i}>{inner}</span>;
+  });
+}
+
 // ══════════════════════════════════════════════════════════
 // [2] BogiRenderer — 보기 타입을 단일 컴포넌트에서 처리
 // bogi 값의 종류:
@@ -143,9 +195,64 @@ function parseMarkdownTable(text) {
   return { before, header, rows, after };
 }
 
+// applyBogiInlineAnns(text, anns)
+//   bogi string 안 inline underline/box overlay path.
+//   plain text + substring match path — replaceImagePlaceholders 미적용.
+//   [도식/사진] placeholder 사용 set 안 본 path 미적용 의무 (안 호환 path).
+function applyBogiInlineAnns(text, anns) {
+  if (!text || !anns || anns.length === 0) return text;
+  const sorted = anns
+    .map((a) => ({ text: a.text, type: a.type, idx: text.indexOf(a.text) }))
+    .filter((a) => a.idx >= 0)
+    .sort((a, b) => a.idx - b.idx);
+  if (!sorted.length) return text;
+  const parts = [];
+  let cursor = 0;
+  for (const a of sorted) {
+    if (a.idx < cursor) continue;
+    if (a.idx > cursor) parts.push({ t: text.slice(cursor, a.idx), type: null });
+    parts.push({ t: a.text, type: a.type });
+    cursor = a.idx + a.text.length;
+  }
+  if (cursor < text.length) parts.push({ t: text.slice(cursor), type: null });
+  return parts.map((p, i) => {
+    if (p.type === "underline")
+      return (
+        <span
+          key={i}
+          style={{
+            textDecoration: "underline",
+            textUnderlineOffset: "3px",
+          }}
+        >
+          {p.t}
+        </span>
+      );
+    if (p.type === "box")
+      return (
+        <span
+          key={i}
+          style={{
+            border: "1px solid #555",
+            borderRadius: "2px",
+            padding: "0 3px",
+          }}
+        >
+          {p.t}
+        </span>
+      );
+    return <span key={i}>{p.t}</span>;
+  });
+}
+
 // ══════════════════════════════════════════════════════════
-function BogiRenderer({ bogi }) {
+function BogiRenderer({ bogi, anns = [] }) {
   if (!bogi) return null;
+  // bogi string 안 inline underline/box overlay (target='bogi' annotation 도입 path).
+  //   anns 비어있으면 기존 replaceImagePlaceholders path 정합 maintain.
+  //   anns 있으면 본문에 substring underline overlay 추가.
+  //   annotated_image / diagram / table 분기 안 본 anns 영향 X (text 영역 단독).
+  const hasAnns = Array.isArray(anns) && anns.length > 0;
 
   const wrap = (children) => (
     <div
@@ -244,6 +351,17 @@ function BogiRenderer({ bogi }) {
             </div>
           )}
         </>,
+      );
+    }
+    // anns 있으면 substring underline overlay 우선 path.
+    //   replaceImagePlaceholders 호환 X path 안 부분 대체 의무 path.
+    //   대신 plain text + underline 사용. [도식/사진] placeholder 가 본 분기 안
+    //   재현 안 됨 — bogi 안 image placeholder 미사용 set 한정 path.
+    if (hasAnns) {
+      return wrap(
+        <div style={{ whiteSpace: "pre-wrap", textAlign: "justify" }}>
+          {applyBogiInlineAnns(bogi, anns)}
+        </div>,
       );
     }
     return wrap(
@@ -617,6 +735,7 @@ function ChoiceItem({
   user,
   yearKey,
   setId,
+  choiceAnns = [],
 }) {
   const [evidenceVote, setEvidenceVote] = useState(null);
   const uid = `q${qid}_c${choice.num}`;
@@ -756,7 +875,7 @@ function ChoiceItem({
             textAlign: "left",
           }}
         >
-          <span>{renderWithSymbols(choice.t)}</span>
+          <span>{applyInlineAnnsLocal(choice.t, choiceAnns)}</span>
           {showBadge && choice.pat && <PatternBadge pat={choice.pat} />}
         </div>
         {showIcon && icon && (
@@ -927,11 +1046,29 @@ function QuestionBlock({
   passageSents,
   user,
   setId,
+  annotations = [],
 }) {
   const [clicked, setClicked] = useState(
     isReview ? null : (initialClicked ?? null),
   );
   const isVocab = isVocabQuestion(question.t);
+
+  // 선지·<보기> annotation 분류 (target field 호환 path):
+  //   target === 'bogi' + qId === question.id → 본 문제 bogi 영역
+  //   target === 'choice' + qId === question.id → 본 문제 선지 영역
+  //     (choiceNum 별 분류는 ChoiceItem 안에서)
+  const bogiAnns = annotations.filter(
+    (a) =>
+      a.target === "bogi" &&
+      a.qId === question.id &&
+      (a.type === "underline" || a.type === "box"),
+  );
+  const choiceAnnsAll = annotations.filter(
+    (a) =>
+      a.target === "choice" &&
+      a.qId === question.id &&
+      (a.type === "underline" || a.type === "box"),
+  );
 
   function handleClick(uid, choice) {
     if (mode === MODE.STUDY && submitted && !isReview) return;
@@ -1023,7 +1160,7 @@ function QuestionBlock({
           }}
         />
       ) : (
-        <BogiRenderer bogi={question.bogi} />
+        <BogiRenderer bogi={question.bogi} anns={bogiAnns} />
       )}
 
       {/* 어휘 문제 안내 */}
@@ -1062,6 +1199,7 @@ function QuestionBlock({
             user={user}
             yearKey={yearKey}
             setId={setId}
+            choiceAnns={choiceAnnsAll.filter((a) => a.choiceNum === c.num)}
           />
         ))}
       </div>
@@ -1470,6 +1608,7 @@ export default function QuizPanel({
           passageSents={passageSet.sents}
           user={user}
           setId={passageSet.id}
+          annotations={passageSet.annotations || []}
         />
       ))}
 
