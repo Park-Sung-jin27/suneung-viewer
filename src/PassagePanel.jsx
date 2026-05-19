@@ -562,12 +562,23 @@ function renderAll(sents, sel, annotations) {
     "figure",
   ]);
 
+  // workTag 영역 종료 marker 식별: sentType=workTag + t==="[A]"~"[F]" 단독.
+  //   visual 본문 노출 NOT path — annotation bracket 라벨이 우측 상단 별도 노출.
+  //   sentIds 배열 유지 path (bracket annotation sentFrom/sentTo 정합 의무).
+  //   다른 workTag ((가), <제1수> 등) 본문 렌더링 유지 path.
+  const RE_AREA_END_MARKER = /^\[[A-F]\]$/;
+  function _isAreaEndMarker(s) {
+    if ((s.sentType || "") !== "workTag") return false;
+    return RE_AREA_END_MARKER.test((s.t || "").trim());
+  }
+
   // sent별 메타 사전 계산: sentType, isBlock, brInfo
   const items = sents.map((s) => {
     const st = s.sentType || (s.type === "image" ? "image" : "body");
     const isBlock = BLOCK_TYPES.has(st);
     const brInfo = getBracketInfo(s.id, brackets, sentIds, sents);
-    return { sent: s, st, isBlock, brInfo };
+    const skip = _isAreaEndMarker(s);
+    return { sent: s, st, isBlock, brInfo, skip };
   });
 
   const result = [];
@@ -575,6 +586,12 @@ function renderAll(sents, sel, annotations) {
 
   while (i < items.length) {
     const it = items[i];
+
+    // 영역 종료 marker: visual skip path
+    if (it.skip) {
+      i++;
+      continue;
+    }
 
     if (!it.isBlock) {
       // body run — 연속된 body sents 안 bracket 검출 sent 분리 + 나머지 <p> 묶음
@@ -627,6 +644,7 @@ function renderAll(sents, sel, annotations) {
       while (
         i < items.length &&
         items[i].isBlock &&
+        !items[i].skip &&
         items[i].brInfo &&
         items[i].brInfo.label === label
       ) {
