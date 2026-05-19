@@ -30,6 +30,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
+import { auditBrackets } from "./bracket_audit.mjs";
 
 // ─── 인라인 헬퍼 (step2_postprocess / step3_rules 핵심 로직 내장) ─────────────
 const NEG_PATTERNS = [
@@ -179,11 +180,16 @@ const SCOPE = (() => {
 const SCOPE_YEARS = {
   suneung5: ["2022수능", "2023수능", "2024수능", "2025수능", "2026수능"],
   모의고사전체: [
-    "2022_6월", "2022_9월",
-    "2023_6월", "2023_9월",
-    "2024_6월", "2024_9월",
-    "2025_6월", "2025_9월",
-    "2026_6월", "2026_9월",
+    "2022_6월",
+    "2022_9월",
+    "2023_6월",
+    "2023_9월",
+    "2024_6월",
+    "2024_9월",
+    "2025_6월",
+    "2025_9월",
+    "2026_6월",
+    "2026_9월",
   ],
 };
 const YEAR = args.find((a) => !a.startsWith("--"));
@@ -233,11 +239,22 @@ const manual = []; // 수동 처리 필요 항목
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
 const SCOPE_PRIORITY = new Set([
-  "2025수능", "2025_9월", "2024수능", "2022_6월", "2022수능",
-  "2023수능", "2023_6월", "2023_9월", "2024_6월", "2026_9월",
+  "2025수능",
+  "2025_9월",
+  "2024수능",
+  "2022_6월",
+  "2022수능",
+  "2023수능",
+  "2023_6월",
+  "2023_9월",
+  "2024_6월",
+  "2026_9월",
 ]);
 const SCOPE_VISIBLE_EXTRA = new Set([
-  "2024_9월", "2022_9월", "2025_6월", "2026_6월",
+  "2024_9월",
+  "2022_9월",
+  "2025_6월",
+  "2026_6월",
 ]);
 function getScope(yk) {
   if (SCOPE_DEMO.has(yk)) return "demo";
@@ -295,7 +312,11 @@ function getActionClass(type) {
 
 function issue(type, yearKey, loc, message, severity = "warn") {
   issues.push({
-    type, yearKey, loc, message, severity,
+    type,
+    yearKey,
+    loc,
+    message,
+    severity,
     tier: getTier(yearKey),
     scope: getScope(yearKey),
     action_class: getActionClass(type),
@@ -303,7 +324,10 @@ function issue(type, yearKey, loc, message, severity = "warn") {
 }
 function fixed(type, yearKey, loc, message) {
   autoFixed.push({
-    type, yearKey, loc, message,
+    type,
+    yearKey,
+    loc,
+    message,
     tier: getTier(yearKey),
     scope: getScope(yearKey),
     action_class: getActionClass(type),
@@ -311,7 +335,10 @@ function fixed(type, yearKey, loc, message) {
 }
 function needsManual(type, yearKey, loc, message) {
   manual.push({
-    type, yearKey, loc, message,
+    type,
+    yearKey,
+    loc,
+    message,
     tier: getTier(yearKey),
     scope: getScope(yearKey),
     action_class: getActionClass(type),
@@ -344,9 +371,11 @@ for (const yearKey of yearsToCheck) {
       // ── [Gate 5] C_figure_missing — figure sent이 있으나 FIGURE_IMAGE_MAP에 미매핑 ─
       //   constants.js의 FIGURE_IMAGE_MAP을 로드해 매핑 누락 figure 탐지
       //   --golden 모드일 땐 골든셋에 등록된 세트만 검사
-      const _goldenSetAllowed = !GOLDEN_ONLY || GOLDEN.some(
-        (g) => g.year === yearKey && (!g.setId || g.setId === set.id),
-      );
+      const _goldenSetAllowed =
+        !GOLDEN_ONLY ||
+        GOLDEN.some(
+          (g) => g.year === yearKey && (!g.setId || g.setId === set.id),
+        );
       if (GATE5 && _goldenSetAllowed) {
         if (!globalThis.__figureMap) {
           try {
@@ -602,11 +631,17 @@ for (const yearKey of yearsToCheck) {
             //   W_quote_unreflected (WARNING): cs_ids sent 본문에만 없음
             //   C_quote_unreflected (WARNING/승격후보): sent + cs_spans + analysis 전부 부재
             const quoteMatches = [
-              ...(c.t || "").matchAll(/['‘]([^'’]{2,40})['’]|["“]([^"”]{2,40})["”]/g),
-            ].map((m) => (m[1] || m[2] || "").trim()).filter(Boolean);
+              ...(c.t || "").matchAll(
+                /['‘]([^'’]{2,40})['’]|["“]([^"”]{2,40})["”]/g,
+              ),
+            ]
+              .map((m) => (m[1] || m[2] || "").trim())
+              .filter(Boolean);
             const norm = (s) => String(s || "").replace(/\s+/g, "");
             const joined = norm(csSents.map((s) => s.t || "").join(" "));
-            const spansText = norm((c.cs_spans || []).map((s) => s.text || "").join(" "));
+            const spansText = norm(
+              (c.cs_spans || []).map((s) => s.text || "").join(" "),
+            );
             const analysisText = norm(ana || "");
             for (const quote of quoteMatches) {
               const nq = norm(quote);
@@ -644,10 +679,13 @@ for (const yearKey of yearsToCheck) {
                 ),
               ),
             ];
-            const stemIsGeneric = /\((가|나|다|라)\)\s*[~∼]\s*\((가|나|다|라)\)/.test(
-              q.t || "",
-            );
-            if (workMarksChoice.length > 0 && csSents.length > 0 && !stemIsGeneric) {
+            const stemIsGeneric =
+              /\((가|나|다|라)\)\s*[~∼]\s*\((가|나|다|라)\)/.test(q.t || "");
+            if (
+              workMarksChoice.length > 0 &&
+              csSents.length > 0 &&
+              !stemIsGeneric
+            ) {
               // workTag 경계 수집
               const tagIdx = [];
               set.sents.forEach((s, i) => {
@@ -699,7 +737,8 @@ for (const yearKey of yearsToCheck) {
               const re = /[ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\]/g;
               for (const qq of set.questions) {
                 for (const cc of qq.choices || []) {
-                  for (const m of (cc.t || "").matchAll(re)) referenced.add(m[0]);
+                  for (const m of (cc.t || "").matchAll(re))
+                    referenced.add(m[0]);
                 }
                 for (const m of (qq.t || "").matchAll(re)) referenced.add(m[0]);
               }
@@ -707,7 +746,8 @@ for (const yearKey of yearsToCheck) {
               for (const s of set.sents) {
                 if (s.sentType !== "body") continue;
                 for (const m of (s.t || "").matchAll(re)) {
-                  if (!referenced.has(m[0])) pollution.push({ id: s.id, mk: m[0] });
+                  if (!referenced.has(m[0]))
+                    pollution.push({ id: s.id, mk: m[0] });
                 }
               }
               set.__q5_marker_cache = pollution;
@@ -727,17 +767,16 @@ for (const yearKey of yearsToCheck) {
             // C_pat_mismatch — ok:false인데 analysis가 주장하는 오류 성격과 pat 명백히 불일치
             if (c.ok === false && c.pat && typeof c.pat === "string") {
               const a = ana || "";
-              const claimsReverse = /정반대|역전|반대로 서술|뒤집|반대되는/.test(a);
+              const claimsReverse =
+                /정반대|역전|반대로 서술|뒤집|반대되는/.test(a);
               const claimsCausal = /인과|관계 전도|뒤바|주체-객체/.test(a);
-              const claimsOveraim = /지문에 없|과잉 추론|과도한 추론|끼워 넣|외삽/.test(a);
+              const claimsOveraim =
+                /지문에 없|과잉 추론|과도한 추론|끼워 넣|외삽/.test(a);
               const p = c.pat;
               let mismatch = false;
               if (claimsOveraim && !/^(R3|L3)$/.test(p)) mismatch = true;
               else if (claimsCausal && !/^(R2|L2|L4)$/.test(p)) mismatch = true;
-              else if (
-                claimsReverse &&
-                !/^(R1|L1|L2)$/.test(p)
-              )
+              else if (claimsReverse && !/^(R1|L1|L2)$/.test(p))
                 mismatch = true;
               if (mismatch) {
                 issue(
@@ -750,7 +789,9 @@ for (const yearKey of yearsToCheck) {
             }
 
             // C_highlight_analysis_divergence — analysis의 📌 지문 근거 인용문이 cs_ids 본문에 완전 부재
-            const anchorMatch = (ana || "").match(/📌\s*(?:지문 근거|보기 근거)\s*:\s*["“]([^"”]{10,200})["”]/);
+            const anchorMatch = (ana || "").match(
+              /📌\s*(?:지문 근거|보기 근거)\s*:\s*["“]([^"”]{10,200})["”]/,
+            );
             if (anchorMatch && csSents.length > 0) {
               const needle = norm(anchorMatch[1].slice(0, 30));
               if (needle.length >= 10 && !joined.includes(needle)) {
@@ -764,14 +805,27 @@ for (const yearKey of yearsToCheck) {
             }
 
             // W_argument_thin — ok:false 인데 분해 표지(①②③/첫째/둘째) 없음
-            if (c.ok === false && ana && !/①|②|③|❶|❷|❸|조건 ?분해|첫째|둘째|\[선지 조건/.test(ana)) {
-              issue("W_argument_thin", yearKey, cLoc, "선지 조건 분해 없음 (①②③ 미사용)");
+            if (
+              c.ok === false &&
+              ana &&
+              !/①|②|③|❶|❷|❸|조건 ?분해|첫째|둘째|\[선지 조건/.test(ana)
+            ) {
+              issue(
+                "W_argument_thin",
+                yearKey,
+                cLoc,
+                "선지 조건 분해 없음 (①②③ 미사용)",
+              );
             }
 
             // W_expression_analysis_missing — 선지에 인용/원문자 있는데 표현 기능 키워드 부재
             const hasExprMarker =
               /[ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\]|['‘].+['’]|["“].+["”]/.test(c.t || "");
-            if (hasExprMarker && ana && !/기능|상징|효과|평가|표현|인용|의미|전달|강조/.test(ana)) {
+            if (
+              hasExprMarker &&
+              ana &&
+              !/기능|상징|효과|평가|표현|인용|의미|전달|강조/.test(ana)
+            ) {
               issue(
                 "W_expression_analysis_missing",
                 yearKey,
@@ -806,11 +860,7 @@ for (const yearKey of yearsToCheck) {
             if (c.ok === false && typeof c.pat === "string" && c.analysis) {
               const isR = /^R[1-4]$/.test(c.pat);
               const isL = /^L[1-5]$/.test(c.pat);
-              const wrongRe = isR
-                ? /\[L[1-5]\]/g
-                : isL
-                  ? /\[R[1-4]\]/g
-                  : null;
+              const wrongRe = isR ? /\[L[1-5]\]/g : isL ? /\[R[1-4]\]/g : null;
               if (wrongRe && wrongRe.test(c.analysis)) {
                 if (FIX) {
                   const before = c.analysis;
@@ -912,7 +962,13 @@ for (const yearKey of yearsToCheck) {
           }
 
           // ── [v2] E_empty_pat_cs_present — pat=R3/V/null인데 cs 보유 ───
-          if (hasCsIds && (c.pat === "R3" || c.pat === "V" || c.pat === null || c.pat === undefined)) {
+          if (
+            hasCsIds &&
+            (c.pat === "R3" ||
+              c.pat === "V" ||
+              c.pat === null ||
+              c.pat === undefined)
+          ) {
             issue(
               "E_empty_pat_cs_present",
               yearKey,
@@ -922,7 +978,10 @@ for (const yearKey of yearsToCheck) {
           }
 
           // ── [v2] W_analysis_placeholder_real — 명시 placeholder 마커 ──
-          if (c.analysis && /\[\?\]|\[확인 필요|TODO|placeholder/.test(c.analysis)) {
+          if (
+            c.analysis &&
+            /\[\?\]|\[확인 필요|TODO|placeholder/.test(c.analysis)
+          ) {
             issue(
               "W_analysis_placeholder_real",
               yearKey,
@@ -1108,21 +1167,21 @@ const SEVERITY_MAP = {
   F_empty_analysis: "CRITICAL",
   MISSING_csid_true: "CRITICAL",
   MISSING_csid_false: "CRITICAL",
-  H_analysis_id_leak: "CRITICAL",      // Tier 1
-  C_figure_missing: "CRITICAL",        // Tier 1
-  C_marker_pollution: "CRITICAL",      // Tier 1
-  C_work_mismatch: "CRITICAL",         // Tier 1
+  H_analysis_id_leak: "CRITICAL", // Tier 1
+  C_figure_missing: "CRITICAL", // Tier 1
+  C_marker_pollution: "CRITICAL", // Tier 1
+  C_work_mismatch: "CRITICAL", // Tier 1
   C_label_domain_mismatch: "CRITICAL", // Tier 1 (pat R ↔ 라벨 L / 반대)
-  C_vpat_dirty: "CRITICAL",            // Tier 1 (pat=V 인데 cs_ids/cs_spans 비어있지 않음)
+  C_vpat_dirty: "CRITICAL", // Tier 1 (pat=V 인데 cs_ids/cs_spans 비어있지 않음)
 
   // WARNING (품질 향상) — Tier 2·3
   // Tier 2 (검증 필요 — 승격 후보, false positive 검수 후 CRITICAL로)
-  C_quote_unreflected: "WARNING",              // Tier 2: sent/spans/analysis 전부 부재
-  C_highlight_analysis_divergence: "WARNING",  // Tier 2
-  W_quote_unreflected: "WARNING",              // 약한 변형: cs_ids sent 본문에만 부재
+  C_quote_unreflected: "WARNING", // Tier 2: sent/spans/analysis 전부 부재
+  C_highlight_analysis_divergence: "WARNING", // Tier 2
+  W_quote_unreflected: "WARNING", // 약한 변형: cs_ids sent 본문에만 부재
 
   // Tier 3 (승격 금지)
-  C_pat_mismatch: "WARNING",                   // Tier 3
+  C_pat_mismatch: "WARNING", // Tier 3
 
   // 기존 WARNING
   F_content_reversed: "WARNING",
@@ -1144,7 +1203,37 @@ const SEVERITY_MAP = {
   E_questionType_ok_mismatch: "CRITICAL",
   W_analysis_placeholder_real: "CRITICAL",
   W_analysis_placeholder_suspect: "WARNING",
+
+  // ── bracket_audit.mjs integration (Phase 1.21) ──
+  // CRITICAL — 출시 차단: DEAD sentId / 위치 불일치 / 본문 마커 부재
+  BRACKET_DEAD_SENTFROM: "CRITICAL",
+  BRACKET_DEAD_SENTTO: "CRITICAL",
+  BRACKET_INVERTED_RANGE: "CRITICAL",
+  BRACKET_WORKTAG_POSITION_MISMATCH: "CRITICAL",
+  BRACKET_BODY_MARKER_MISSING: "CRITICAL",
+  // WARNING — 품질 향상: 범위 outlier / inline out of range
+  BRACKET_NON_BODY_IN_RANGE: "WARNING",
+  BRACKET_INLINE_OUT_OF_RANGE: "WARNING",
+  BRACKET_RANGE_SIZE_OUTLIER: "WARNING",
 };
+
+// ─── bracket_audit integration (Phase 1.21) ───────────────────────────────
+try {
+  const annJson = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));
+  const bracketFindings = auditBrackets(data, annJson);
+  for (const bf of bracketFindings) {
+    issue(
+      `BRACKET_${bf.code}`,
+      bf.yearKey,
+      `${bf.setId} [${bf.label}]`,
+      bf.msg,
+      bf.severity.toLowerCase(),
+    );
+  }
+} catch (e) {
+  console.warn(`bracket_audit skipped: ${e.message}`);
+}
+
 const ALL_FINDINGS = [...issues, ...manual];
 const bySeverity = { CRITICAL: [], WARNING: [], IGNORE: [] };
 for (const f of ALL_FINDINGS) {
@@ -1232,10 +1321,13 @@ if (GOLDEN_ONLY && GATE5) {
     // loc에서 setId/qId 추출 — 두 포맷 지원
     //   "<yearKey> <setId> Q<n>-[<num>]"
     //   "<setId> <sentId>"  (figure·marker pollution 등 세트 레벨)
-    let setId = null, qId = null;
+    let setId = null,
+      qId = null;
     const mq = f.loc.match(/([a-zA-Z0-9_]+) Q(\d+)/);
-    if (mq) { setId = mq[1]; qId = +mq[2]; }
-    else {
+    if (mq) {
+      setId = mq[1];
+      qId = +mq[2];
+    } else {
       const ms = f.loc.match(/^([a-zA-Z0-9_]+)(?:\s|$)/);
       if (ms) setId = ms[1];
     }
@@ -1251,7 +1343,8 @@ if (GOLDEN_ONLY && GATE5) {
     for (const f of unexpected.slice(0, 20)) {
       console.log(`   [${f.type}] ${f.yearKey} ${f.loc}: ${f.message}`);
     }
-    if (unexpected.length > 20) console.log(`   ... 외 ${unexpected.length - 20}건`);
+    if (unexpected.length > 20)
+      console.log(`   ... 외 ${unexpected.length - 20}건`);
   }
   console.log("═".repeat(60) + "\n");
 }
