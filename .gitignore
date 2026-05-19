@@ -105,3 +105,7 @@ _done/*.pdf
 _done/**/*.pdf
 _inbox/*.pdf
 _inbox/**/*.pdf
+
+# visual_audit.mjs 산출물 (screenshot + report — 영구 도구 path)
+out/
+pipeline/bracket_audit_report.json
