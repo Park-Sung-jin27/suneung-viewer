@@ -451,14 +451,16 @@ function RenderSent({ sent, sel, anns }) {
 
 // ── bracket 유틸: sentIds 배열에서 범위 판정 ──
 // set 전체 sents 안 "[label]" inline text 박힘 검출 path.
-//   workTag t="[A]" 단독 + body t.startsWith("[A]\n") 등 본문 워크태그 path
-//   모두 자동 감지 path — annotations.json 수정 없이 단일 path 안 39 set 정합.
-//   bracket range 안/밖 무관 path (l2022d 안 annotation range=s13~s26 +
-//   workTag [A]=s28 range 밖 path 정합 의무 path).
+//   body sentType t 안 "[A]" 인라인 ([A]\n... 본문 워크태그) → 라벨 생략 ✓
+//   workTag sentType t === "[A]" 단독 → 영역 종료 마커 path → 라벨 생략 NOT ✗
+//   bracket range 안/밖 무관 path (l2022d 안 annotation range=s14~s27 +
+//   workTag [A]=s28 range 밖 path 정합 의무 path 안 영역 라벨 NOT 식별).
 function _hasInlineBracketLabel(sents, br) {
   if (!sents || sents.length === 0) return false;
   const pattern = "[" + br.label + "]";
   for (const s of sents) {
+    const st = s.sentType || "body";
+    if (st !== "body") continue; // workTag 단독 마커 제외
     if ((s.t || "").includes(pattern)) return true;
   }
   return false;
@@ -476,6 +478,60 @@ function getBracketInfo(sentId, brackets, sentIds, sents) {
     }
   }
   return null;
+}
+
+// bracket 컨테이너: body sent 단독 ([ ] 큰 대괄호) 시각화
+function renderBodyBracket(s, brInfo, sel, anns) {
+  const inner = (
+    <p key={"p_" + s.id} style={{ margin: "0 0 5px 0" }}>
+      <RenderSent key={s.id} sent={s} sel={sel} anns={anns} />
+    </p>
+  );
+  return (
+    <div
+      key={"br_" + s.id}
+      style={{
+        position: "relative",
+        paddingLeft: "18px",
+        paddingTop: "4px",
+        paddingBottom: "4px",
+        margin: "4px 0",
+      }}
+    >
+      <span
+        aria-hidden
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: "10px",
+          borderLeft: "2px solid #555",
+          borderTop: "2px solid #555",
+          borderBottom: "2px solid #555",
+          borderTopLeftRadius: "2px",
+          borderBottomLeftRadius: "2px",
+        }}
+      />
+      {brInfo.isFirst && !brInfo.hideLabel && (
+        <span
+          style={{
+            position: "absolute",
+            right: "0",
+            top: "-2px",
+            fontSize: "0.78rem",
+            fontWeight: 700,
+            color: "#555",
+            background: "#fff",
+            padding: "0 4px",
+          }}
+        >
+          [{brInfo.label}]
+        </span>
+      )}
+      {inner}
+    </div>
+  );
 }
 
 function renderAll(sents, sel, annotations) {
@@ -496,133 +552,130 @@ function renderAll(sents, sel, annotations) {
     }
   }
 
+  const BLOCK_TYPES = new Set([
+    "workTag",
+    "omission",
+    "author",
+    "footnote",
+    "image",
+    "verse",
+    "figure",
+  ]);
+
+  // sent별 메타 사전 계산: sentType, isBlock, brInfo
+  const items = sents.map((s) => {
+    const st = s.sentType || (s.type === "image" ? "image" : "body");
+    const isBlock = BLOCK_TYPES.has(st);
+    const brInfo = getBracketInfo(s.id, brackets, sentIds, sents);
+    return { sent: s, st, isBlock, brInfo };
+  });
+
   const result = [];
-  let buf = [];
+  let i = 0;
 
-  function flush() {
-    if (!buf.length) return;
-    const brInfo = getBracketInfo(buf[0].id, brackets, sentIds, sents);
-    const hasBracket = !!brInfo;
+  while (i < items.length) {
+    const it = items[i];
 
-    const inner = (
-      <p key={"p_" + buf[0].id} style={{ margin: "0 0 5px 0" }}>
-        {buf.map((s) => (
-          <RenderSent key={s.id} sent={s} sel={sel} anns={annMap[s.id] || []} />
-        ))}
-      </p>
-    );
+    if (!it.isBlock) {
+      // body run — 연속된 body sents 안 bracket 검출 sent 분리 + 나머지 <p> 묶음
+      // 결함 1 정정: flush 영역 안 buf[0]만 보지 않고 각 sent 개별 검사 path.
+      let pending = [];
+      const flushPending = () => {
+        if (!pending.length) return;
+        const head = pending[0];
+        result.push(
+          <p key={"p_" + head.sent.id} style={{ margin: "0 0 5px 0" }}>
+            {pending.map((p) => (
+              <RenderSent
+                key={p.sent.id}
+                sent={p.sent}
+                sel={sel}
+                anns={annMap[p.sent.id] || []}
+              />
+            ))}
+          </p>,
+        );
+        pending = [];
+      };
+      while (i < items.length && !items[i].isBlock) {
+        const cur = items[i];
+        if (cur.brInfo) {
+          flushPending();
+          result.push(
+            renderBodyBracket(
+              cur.sent,
+              cur.brInfo,
+              sel,
+              annMap[cur.sent.id] || [],
+            ),
+          );
+        } else {
+          pending.push(cur);
+        }
+        i++;
+      }
+      flushPending();
+      continue;
+    }
 
-    if (hasBracket) {
-      // 큰 대괄호 시각화: 좌측 세로선 + 상단·하단 짧은 가로선 (┌ │ └ 모양)
-      //   + 우측 상단 label [A]
-      //   sentFrom~sentTo 안 같은 buf flush 그룹은 단일 컨테이너로 감싸짐.
+    // block sent (verse/workTag/etc)
+    if (it.brInfo) {
+      // 결함 2 정정: 연속 block sents 안 같은 bracket label path 안 단일 <div>
+      // 안 묶음 → borderLeft 단일 연속 선 시각화 path.
+      const label = it.brInfo.label;
+      const group = [];
+      while (
+        i < items.length &&
+        items[i].isBlock &&
+        items[i].brInfo &&
+        items[i].brInfo.label === label
+      ) {
+        group.push(items[i]);
+        i++;
+      }
+      const head = group[0];
       result.push(
         <div
-          key={"br_" + buf[0].id}
+          key={"brv_" + head.sent.id}
           style={{
-            position: "relative",
-            paddingLeft: "18px",
-            paddingTop: "4px",
-            paddingBottom: "4px",
-            margin: "4px 0",
+            borderLeft: "3px solid #888",
+            paddingLeft: "8px",
           }}
         >
-          {/* 좌측 큰 대괄호 [ 모양 — left + top + bottom border */}
-          <span
-            aria-hidden
-            style={{
-              position: "absolute",
-              left: 0,
-              top: 0,
-              bottom: 0,
-              width: "10px",
-              borderLeft: "2px solid #555",
-              borderTop: "2px solid #555",
-              borderBottom: "2px solid #555",
-              borderTopLeftRadius: "2px",
-              borderBottomLeftRadius: "2px",
-            }}
-          />
-          {/* label [A] — 우측 상단, bracket 첫 sent 그룹에만 표시
-              본문 sent.t 안 "[label]" inline text 박힘 시 hideLabel path 안 생략. */}
-          {brInfo.isFirst && !brInfo.hideLabel && (
+          {head.brInfo.isFirst && !head.brInfo.hideLabel && (
             <span
               style={{
-                position: "absolute",
-                right: "0",
-                top: "-2px",
-                fontSize: "0.78rem",
-                fontWeight: 700,
-                color: "#555",
-                background: "#fff",
-                padding: "0 4px",
+                fontSize: "11px",
+                color: "#888",
+                display: "block",
+                marginBottom: "2px",
               }}
             >
-              [{brInfo.label}]
+              [{label}]
             </span>
           )}
-          {inner}
+          {group.map((g) => (
+            <RenderSent
+              key={g.sent.id}
+              sent={g.sent}
+              sel={sel}
+              anns={annMap[g.sent.id] || []}
+            />
+          ))}
         </div>,
       );
     } else {
-      result.push(inner);
-    }
-    buf = [];
-  }
-
-  for (const s of sents) {
-    const st = s.sentType || (s.type === "image" ? "image" : "body");
-    if (
-      [
-        "workTag",
-        "omission",
-        "author",
-        "footnote",
-        "image",
-        "verse",
-        "figure",
-      ].includes(st)
-    ) {
-      flush();
-      // bracket 범위 안 verse/workTag/etc sent path 안 큰 대괄호 컨테이너 감싸기
-      //   buf 그룹화 우회 path 안 bracket 시각화 X path 결함 정정.
-      //   isFirst 첫 sent 단독 label 표시, 인접 sent 들은 borderLeft 만 적용 path.
-      const brInfo = getBracketInfo(s.id, brackets, sentIds, sents);
-      const inner = (
-        <RenderSent key={s.id} sent={s} sel={sel} anns={annMap[s.id] || []} />
+      result.push(
+        <RenderSent
+          key={it.sent.id}
+          sent={it.sent}
+          sel={sel}
+          anns={annMap[it.sent.id] || []}
+        />,
       );
-      if (brInfo) {
-        result.push(
-          <div
-            key={"brv_" + s.id}
-            style={{
-              borderLeft: "3px solid #888",
-              paddingLeft: "8px",
-            }}
-          >
-            {brInfo.isFirst && !brInfo.hideLabel && (
-              <span
-                style={{
-                  fontSize: "11px",
-                  color: "#888",
-                  display: "block",
-                  marginBottom: "2px",
-                }}
-              >
-                [{brInfo.label}]
-              </span>
-            )}
-            {inner}
-          </div>,
-        );
-      } else {
-        result.push(inner);
-      }
-    } else {
-      buf.push(s);
+      i++;
     }
   }
-  flush();
   return result;
 }
 
