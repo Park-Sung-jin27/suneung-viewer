@@ -450,16 +450,16 @@ function RenderSent({ sent, sel, anns }) {
 }
 
 // ── bracket 유틸: sentIds 배열에서 범위 판정 ──
-// bracket 범위 안 sent.t 안 "[label]" inline text 박힘 검출 path.
+// set 전체 sents 안 "[label]" inline text 박힘 검출 path.
 //   workTag t="[A]" 단독 + body t.startsWith("[A]\n") 등 본문 워크태그 path
 //   모두 자동 감지 path — annotations.json 수정 없이 단일 path 안 39 set 정합.
+//   bracket range 안/밖 무관 path (l2022d 안 annotation range=s13~s26 +
+//   workTag [A]=s28 range 밖 path 정합 의무 path).
 function _hasInlineBracketLabel(sents, br) {
-  const fromIdx = sents.findIndex((s) => s.id === br.sentFrom);
-  const toIdx = sents.findIndex((s) => s.id === br.sentTo);
-  if (fromIdx < 0 || toIdx < 0) return false;
+  if (!sents || sents.length === 0) return false;
   const pattern = "[" + br.label + "]";
-  for (let i = fromIdx; i <= toIdx; i++) {
-    if ((sents[i].t || "").includes(pattern)) return true;
+  for (const s of sents) {
+    if ((s.t || "").includes(pattern)) return true;
   }
   return false;
 }
