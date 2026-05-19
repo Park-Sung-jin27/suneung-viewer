@@ -450,14 +450,29 @@ function RenderSent({ sent, sel, anns }) {
 }
 
 // ── bracket 유틸: sentIds 배열에서 범위 판정 ──
-function getBracketInfo(sentId, brackets, sentIds) {
+// bracket 범위 안 sent.t 안 "[label]" inline text 박힘 검출 path.
+//   workTag t="[A]" 단독 + body t.startsWith("[A]\n") 등 본문 워크태그 path
+//   모두 자동 감지 path — annotations.json 수정 없이 단일 path 안 39 set 정합.
+function _hasInlineBracketLabel(sents, br) {
+  const fromIdx = sents.findIndex((s) => s.id === br.sentFrom);
+  const toIdx = sents.findIndex((s) => s.id === br.sentTo);
+  if (fromIdx < 0 || toIdx < 0) return false;
+  const pattern = "[" + br.label + "]";
+  for (let i = fromIdx; i <= toIdx; i++) {
+    if ((sents[i].t || "").includes(pattern)) return true;
+  }
+  return false;
+}
+
+function getBracketInfo(sentId, brackets, sentIds, sents) {
   for (const br of brackets) {
     const from = sentIds.indexOf(br.sentFrom);
     const to = sentIds.indexOf(br.sentTo);
     const cur = sentIds.indexOf(sentId);
     if (from < 0 || to < 0 || cur < 0) continue;
     if (cur >= from && cur <= to) {
-      return { label: br.label, isFirst: cur === from };
+      const hideLabel = sents ? _hasInlineBracketLabel(sents, br) : false;
+      return { label: br.label, isFirst: cur === from, hideLabel };
     }
   }
   return null;
@@ -486,7 +501,7 @@ function renderAll(sents, sel, annotations) {
 
   function flush() {
     if (!buf.length) return;
-    const brInfo = getBracketInfo(buf[0].id, brackets, sentIds);
+    const brInfo = getBracketInfo(buf[0].id, brackets, sentIds, sents);
     const hasBracket = !!brInfo;
 
     const inner = (
@@ -528,8 +543,9 @@ function renderAll(sents, sel, annotations) {
               borderBottomLeftRadius: "2px",
             }}
           />
-          {/* label [A] — 우측 상단, bracket 첫 sent 그룹에만 표시 */}
-          {brInfo.isFirst && (
+          {/* label [A] — 우측 상단, bracket 첫 sent 그룹에만 표시
+              본문 sent.t 안 "[label]" inline text 박힘 시 hideLabel path 안 생략. */}
+          {brInfo.isFirst && !brInfo.hideLabel && (
             <span
               style={{
                 position: "absolute",
@@ -571,7 +587,7 @@ function renderAll(sents, sel, annotations) {
       // bracket 범위 안 verse/workTag/etc sent path 안 큰 대괄호 컨테이너 감싸기
       //   buf 그룹화 우회 path 안 bracket 시각화 X path 결함 정정.
       //   isFirst 첫 sent 단독 label 표시, 인접 sent 들은 borderLeft 만 적용 path.
-      const brInfo = getBracketInfo(s.id, brackets, sentIds);
+      const brInfo = getBracketInfo(s.id, brackets, sentIds, sents);
       const inner = (
         <RenderSent key={s.id} sent={s} sel={sel} anns={annMap[s.id] || []} />
       );
@@ -584,7 +600,7 @@ function renderAll(sents, sel, annotations) {
               paddingLeft: "8px",
             }}
           >
-            {brInfo.isFirst && (
+            {brInfo.isFirst && !brInfo.hideLabel && (
               <span
                 style={{
                   fontSize: "11px",
