@@ -1119,32 +1119,32 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2022as1",
-        "sentTo": "l2022as1"
+        "sentFrom": "l2022as3",
+        "sentTo": "l2022as4"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2022as2",
-        "sentTo": "l2022as2"
+        "sentFrom": "l2022as10",
+        "sentTo": "l2022as11"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2022as3",
-        "sentTo": "l2022as3"
+        "sentFrom": "l2022as15",
+        "sentTo": "l2022as16"
       },
       {
         "type": "bracket",
         "label": "D",
-        "sentFrom": "l2022as4",
-        "sentTo": "l2022as4"
+        "sentFrom": "l2022as21",
+        "sentTo": "l2022as22"
       },
       {
         "type": "bracket",
         "label": "E",
-        "sentFrom": "l2022as4",
-        "sentTo": "l2022as4"
+        "sentFrom": "l2022as25",
+        "sentTo": "l2022as26"
       },
       {
         "type": "box",
@@ -1179,32 +1179,14 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2022cs1",
-        "sentTo": "l2022cs2"
+        "sentFrom": "l2022cs4",
+        "sentTo": "l2022cs4"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2022cs7",
-        "sentTo": "l2022cs8"
-      },
-      {
-        "type": "bracket",
-        "label": "C",
-        "sentFrom": "l2022cs11",
-        "sentTo": "l2022cs12"
-      },
-      {
-        "type": "bracket",
-        "label": "D",
-        "sentFrom": "l2022cs16",
-        "sentTo": "l2022cs17"
-      },
-      {
-        "type": "bracket",
-        "label": "E",
-        "sentFrom": "l2022cs19",
-        "sentTo": "l2022cs20"
+        "sentFrom": "l2022cs10",
+        "sentTo": "l2022cs10"
       },
       {
         "type": "box",
