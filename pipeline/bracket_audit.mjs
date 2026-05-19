@@ -132,29 +132,50 @@ function auditSet(data, ann, yearKey, setId) {
     const labelStr = `[${label}]`;
 
     // Check 3: body workTag [X] position
+    // workTag with content matching bracket label "[X]" should be either:
+    //   (a) immediately BEFORE bracket start  (start marker style, e.g., l2022a)
+    //   (b) immediately AFTER bracket end     (end marker style, e.g., l2022d)
+    //   (c) INSIDE bracket range              (composite work boundary, e.g., l2023b)
+    // Otherwise CRITICAL position mismatch
     const workTagIdx = sents.findIndex(
       (s) => s.sentType === "workTag" && s.t === labelStr,
     );
     if (workTagIdx >= 0) {
-      if (fromIdx <= workTagIdx) {
+      const isStartMarker = workTagIdx === fromIdx - 1;
+      const isEndMarker = workTagIdx === toIdx + 1;
+      const isInsideRange = workTagIdx >= fromIdx && workTagIdx <= toIdx;
+      if (!isStartMarker && !isEndMarker && !isInsideRange) {
+        const suggested = {};
+        // suggest either before-start (preferred) or after-end position
+        const beforeStart = sents[workTagIdx + 1]?.id || null;
+        const afterEnd = sents[workTagIdx - 1]?.id || null;
+        if (beforeStart) suggested.sentFrom_if_start_marker = beforeStart;
+        if (afterEnd) suggested.sentTo_if_end_marker = afterEnd;
         findings.push({
           code: "WORKTAG_POSITION_MISMATCH",
           severity: "CRITICAL",
           yearKey,
           setId,
           label,
-          msg: `bracket [${label}] sentFrom (${sentFrom}, idx ${fromIdx}) is at or before workTag (${sents[workTagIdx].id}, idx ${workTagIdx})`,
-          suggested: {
-            sentFrom: sents[workTagIdx + 1]?.id || null,
-          },
+          msg: `bracket [${label}] workTag (${sents[workTagIdx].id}, idx ${workTagIdx}) not adjacent to nor inside range ${fromIdx}~${toIdx}`,
+          suggested,
         });
       }
     }
 
     // Check 4: body inline [X] vs annotation range (WARNING)
+    // Skip:
+    //   - workTag (handled by Check 3)
+    //   - verse-type sents starting with `[X]` (verse subsection label, not bracket marker)
+    //     e.g., l2023d s23 [verse] "[A] 서로에게 기댄 채..." — 시 stanza label
     const inlineHits = sents
       .map((s, idx) => ({ s, idx }))
-      .filter(({ s }) => s.sentType !== "workTag" && s.t.includes(labelStr));
+      .filter(({ s }) => {
+        if (s.sentType === "workTag") return false;
+        if (!s.t.includes(labelStr)) return false;
+        if (s.sentType === "verse" && s.t.startsWith(labelStr)) return false;
+        return true;
+      });
     if (inlineHits.length > 0) {
       const firstInline = inlineHits[0];
       const lastInline = inlineHits[inlineHits.length - 1];
