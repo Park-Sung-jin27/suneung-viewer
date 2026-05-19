@@ -31,6 +31,31 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { execSync } from "child_process";
+
+function safeGitCmd(cmd) {
+  try {
+    return execSync(cmd, { encoding: "utf8" }).trim();
+  } catch (e) {
+    return null;
+  }
+}
+
+function getCommitChain() {
+  const audit_commit = safeGitCmd("git rev-parse HEAD") || "unknown";
+  const data_commit =
+    safeGitCmd("git log -1 --format=%H -- public/data/all_data_204.json") ||
+    "unknown";
+  const ann_commit =
+    safeGitCmd("git log -1 --format=%H -- public/data/annotations.json") ||
+    "unknown";
+  const viewer_commit =
+    safeGitCmd("git log -1 --format=%H -- src/") || "unknown";
+  const mixed_commit =
+    audit_commit !== "unknown" &&
+    (audit_commit !== data_commit || audit_commit !== viewer_commit);
+  return { audit_commit, data_commit, ann_commit, viewer_commit, mixed_commit };
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -141,7 +166,8 @@ async function auditSet(yearKey, setId) {
 
     if (brackets.length === 0) {
       result.findings.push({
-        code: "NO_BRACKET_DOM",
+        code: "RENDER_NO_BRACKET_DOM",
+        tier: "RENDER",
         severity: "WARNING",
         msg: "bracket DOM 요소 검출 부재",
       });
@@ -149,7 +175,8 @@ async function auditSet(yearKey, setId) {
       const noBorder = brackets.filter((b) => !b.hasBorderLeft);
       if (noBorder.length > 0) {
         result.findings.push({
-          code: "MISSING_BORDER_LEFT",
+          code: "RENDER_MISSING_BORDER_LEFT",
+          tier: "RENDER",
           severity: "WARNING",
           msg: `bracket 컨테이너 ${noBorder.length}건 안 borderLeft 부재`,
         });
@@ -172,7 +199,8 @@ async function auditSet(yearKey, setId) {
     for (const [lbl, cnt] of Object.entries(labelCounts)) {
       if (cnt > 1) {
         result.findings.push({
-          code: "LABEL_DUPLICATE",
+          code: "RENDER_LABEL_DUPLICATE",
+          tier: "RENDER",
           severity: "WARNING",
           label: lbl,
           count: cnt,
@@ -197,7 +225,8 @@ async function auditSet(yearKey, setId) {
     );
     if (workTagExposed.length > 0) {
       result.findings.push({
-        code: "WORKTAG_BODY_EXPOSURE",
+        code: "RENDER_WORKTAG_BODY_EXPOSURE",
+        tier: "RENDER",
         severity: "WARNING",
         labels: workTagExposed,
         msg: `본문 안 workTag [${workTagExposed.join(",")}] 노출 의심 (Code A render 처리 결함 잠재)`,
@@ -222,7 +251,8 @@ async function auditSet(yearKey, setId) {
   } catch (e) {
     result.status = "ERROR";
     result.findings.push({
-      code: "NAVIGATION_ERROR",
+      code: "RENDER_NAVIGATION_ERROR",
+      tier: "RENDER",
       severity: "CRITICAL",
       msg: e.message,
     });
@@ -254,8 +284,10 @@ for (const { yearKey, setId } of targetSets) {
 await browser.close();
 
 // ─── 리포트 출력 ──────────────────────────────────────────────────────────
+const commits = getCommitChain();
 const report = {
   generated_at: new Date().toISOString(),
+  commits,
   url: urlArg,
   target_count: targetSets.length,
   summary: counters,
@@ -264,7 +296,16 @@ const report = {
 fs.writeFileSync(reportArg, JSON.stringify(report, null, 2), "utf8");
 
 console.log("─".repeat(60));
-console.log("[ Summary ]");
+console.log("[ Commit chain ]");
+console.log(`  audit_commit:  ${commits.audit_commit.substring(0, 8)}`);
+console.log(`  data_commit:   ${commits.data_commit.substring(0, 8)}`);
+console.log(`  ann_commit:    ${commits.ann_commit.substring(0, 8)}`);
+console.log(`  viewer_commit: ${commits.viewer_commit.substring(0, 8)}`);
+console.log(`  mixed_commit:  ${commits.mixed_commit}`);
+if (commits.mixed_commit) {
+  console.log("  ⚠ mixed_commit=true → release 판단 차단 lock 사양 path");
+}
+console.log("\n[ Summary ]");
 console.log(`  ✅ PASS:    ${counters.PASS || 0}`);
 console.log(`  🟡 WARNING: ${counters.WARNING || 0}`);
 console.log(`  🔴 FAIL:    ${counters.FAIL || 0}`);

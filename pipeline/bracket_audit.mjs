@@ -8,13 +8,24 @@
  *   node pipeline/bracket_audit.mjs --year=2024수능        → 특정 연도만
  *   node pipeline/bracket_audit.mjs --report=path         → JSON 출력 경로 지정
  *
- * 검사 항목 (6가지):
- *   (1) sentId existence (sentFrom/sentTo)             → CRITICAL DEAD_SENTFROM/DEAD_SENTTO
- *   (2) 범위 안 비-body/verse sent 포함                  → WARNING NON_BODY_IN_RANGE
- *   (3) 본문 워크태그 [X] vs annotation 위치 정합          → CRITICAL WORKTAG_POSITION_MISMATCH
- *   (4) 본문 인라인 [X] vs annotation 범위 정합           → WARNING INLINE_OUT_OF_RANGE
- *   (5) 본문 [X] 부재 + annotation label 잔존            → CRITICAL BODY_MARKER_MISSING
- *   (6) 범위 sent 개수 outlier (>30)                    → WARNING RANGE_SIZE_OUTLIER
+ * 3단계 분류 (audit chain):
+ *   SOURCE_*     — all_data 안 sents 원문 marker 정합 검증
+ *   ANNOTATION_* — annotations.json span 정합 검증
+ *   (RENDER_*    — visual_audit.mjs 안 DOM 시각 정합 — 별도 도구)
+ *
+ * 검사 항목:
+ *   (1) ANNOTATION_DEAD_SENTFROM / DEAD_SENTTO  — CRITICAL
+ *   (2) ANNOTATION_INVERTED_RANGE                — CRITICAL
+ *   (3) ANNOTATION_NON_BODY_IN_RANGE             — WARNING
+ *   (4) ANNOTATION_RANGE_SIZE_OUTLIER            — WARNING
+ *   (5) SOURCE_WORKTAG_POSITION_MISMATCH         — CRITICAL
+ *   (6) SOURCE_INLINE_OUT_OF_RANGE               — WARNING
+ *   (7) SOURCE_BODY_MARKER_MISSING               — CRITICAL
+ *
+ * Report 안 commit hash 추가:
+ *   - audit_commit (현 HEAD)
+ *   - data_commit  (public/data/all_data_204.json 최근 commit)
+ *   - mixed_commit (audit_commit ≠ data_commit 시 true)
  *
  * 사용 (다른 도구 안 import):
  *   import { auditBrackets } from './bracket_audit.mjs';
@@ -24,11 +35,35 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { execSync } from "child_process";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function loadJson(p) {
   return JSON.parse(fs.readFileSync(p, "utf8"));
+}
+
+function safeGitCmd(cmd) {
+  try {
+    return execSync(cmd, { encoding: "utf8" }).trim();
+  } catch (e) {
+    return null;
+  }
+}
+
+export function getCommitHashes() {
+  const audit_commit = safeGitCmd("git rev-parse HEAD") || "unknown";
+  const data_commit =
+    safeGitCmd("git log -1 --format=%H -- public/data/all_data_204.json") ||
+    "unknown";
+  const ann_commit =
+    safeGitCmd("git log -1 --format=%H -- public/data/annotations.json") ||
+    "unknown";
+  const mixed_commit =
+    audit_commit !== "unknown" &&
+    data_commit !== "unknown" &&
+    audit_commit !== data_commit;
+  return { audit_commit, data_commit, ann_commit, mixed_commit };
 }
 
 function findSet(data, setId) {
@@ -72,12 +107,13 @@ function auditSet(data, ann, yearKey, setId) {
     const sentFrom = b.sentFrom;
     const sentTo = b.sentTo;
 
-    // Check 1: sentId existence
+    // ANNOTATION audit 1: sentId existence
     const fromOk = sentIds.has(sentFrom);
     const toOk = sentIds.has(sentTo);
     if (!fromOk) {
       findings.push({
-        code: "DEAD_SENTFROM",
+        code: "ANNOTATION_DEAD_SENTFROM",
+        tier: "ANNOTATION",
         severity: "CRITICAL",
         yearKey,
         setId,
@@ -87,7 +123,8 @@ function auditSet(data, ann, yearKey, setId) {
     }
     if (!toOk) {
       findings.push({
-        code: "DEAD_SENTTO",
+        code: "ANNOTATION_DEAD_SENTTO",
+        tier: "ANNOTATION",
         severity: "CRITICAL",
         yearKey,
         setId,
@@ -101,7 +138,8 @@ function auditSet(data, ann, yearKey, setId) {
     const toIdx = sents.findIndex((s) => s.id === sentTo);
     if (fromIdx > toIdx) {
       findings.push({
-        code: "INVERTED_RANGE",
+        code: "ANNOTATION_INVERTED_RANGE",
+        tier: "ANNOTATION",
         severity: "CRITICAL",
         yearKey,
         setId,
@@ -113,13 +151,14 @@ function auditSet(data, ann, yearKey, setId) {
 
     const range = sents.slice(fromIdx, toIdx + 1);
 
-    // Check 2: range contains non-body/verse sents (WARNING)
+    // ANNOTATION audit 2: range contains non-body/verse sents
     const nonBody = range.filter(
       (s) => s.sentType !== "body" && s.sentType !== "verse",
     );
     if (nonBody.length > 0) {
       findings.push({
-        code: "NON_BODY_IN_RANGE",
+        code: "ANNOTATION_NON_BODY_IN_RANGE",
+        tier: "ANNOTATION",
         severity: "WARNING",
         yearKey,
         setId,
@@ -131,12 +170,11 @@ function auditSet(data, ann, yearKey, setId) {
 
     const labelStr = `[${label}]`;
 
-    // Check 3: body workTag [X] position
+    // SOURCE audit 1: body workTag [X] position
     // workTag with content matching bracket label "[X]" should be either:
     //   (a) immediately BEFORE bracket start  (start marker style, e.g., l2022a)
     //   (b) immediately AFTER bracket end     (end marker style, e.g., l2022d)
     //   (c) INSIDE bracket range              (composite work boundary, e.g., l2023b)
-    // Otherwise CRITICAL position mismatch
     const workTagIdx = sents.findIndex(
       (s) => s.sentType === "workTag" && s.t === labelStr,
     );
@@ -146,13 +184,13 @@ function auditSet(data, ann, yearKey, setId) {
       const isInsideRange = workTagIdx >= fromIdx && workTagIdx <= toIdx;
       if (!isStartMarker && !isEndMarker && !isInsideRange) {
         const suggested = {};
-        // suggest either before-start (preferred) or after-end position
         const beforeStart = sents[workTagIdx + 1]?.id || null;
         const afterEnd = sents[workTagIdx - 1]?.id || null;
         if (beforeStart) suggested.sentFrom_if_start_marker = beforeStart;
         if (afterEnd) suggested.sentTo_if_end_marker = afterEnd;
         findings.push({
-          code: "WORKTAG_POSITION_MISMATCH",
+          code: "SOURCE_WORKTAG_POSITION_MISMATCH",
+          tier: "SOURCE",
           severity: "CRITICAL",
           yearKey,
           setId,
@@ -163,11 +201,10 @@ function auditSet(data, ann, yearKey, setId) {
       }
     }
 
-    // Check 4: body inline [X] vs annotation range (WARNING)
+    // SOURCE audit 2: body inline [X] vs annotation range
     // Skip:
-    //   - workTag (handled by Check 3)
-    //   - verse-type sents starting with `[X]` (verse subsection label, not bracket marker)
-    //     e.g., l2023d s23 [verse] "[A] 서로에게 기댄 채..." — 시 stanza label
+    //   - workTag (handled separately)
+    //   - verse-type sents starting with `[X]` (verse subsection label)
     const inlineHits = sents
       .map((s, idx) => ({ s, idx }))
       .filter(({ s }) => {
@@ -181,7 +218,8 @@ function auditSet(data, ann, yearKey, setId) {
       const lastInline = inlineHits[inlineHits.length - 1];
       if (firstInline.idx < fromIdx || lastInline.idx > toIdx) {
         findings.push({
-          code: "INLINE_OUT_OF_RANGE",
+          code: "SOURCE_INLINE_OUT_OF_RANGE",
+          tier: "SOURCE",
           severity: "WARNING",
           yearKey,
           setId,
@@ -198,11 +236,12 @@ function auditSet(data, ann, yearKey, setId) {
       }
     }
 
-    // Check 5: body [X] missing (CRITICAL)
+    // SOURCE audit 3: body [X] missing
     const hasInBody = sents.some((s) => s.t.includes(labelStr));
     if (!hasInBody) {
       findings.push({
-        code: "BODY_MARKER_MISSING",
+        code: "SOURCE_BODY_MARKER_MISSING",
+        tier: "SOURCE",
         severity: "CRITICAL",
         yearKey,
         setId,
@@ -212,11 +251,12 @@ function auditSet(data, ann, yearKey, setId) {
       });
     }
 
-    // Check 6: range sent count outlier
+    // ANNOTATION audit 3: range sent count outlier
     const rangeSize = toIdx - fromIdx + 1;
     if (rangeSize > 30) {
       findings.push({
-        code: "RANGE_SIZE_OUTLIER",
+        code: "ANNOTATION_RANGE_SIZE_OUTLIER",
+        tier: "ANNOTATION",
         severity: "WARNING",
         yearKey,
         setId,
@@ -259,23 +299,39 @@ if (isMain) {
   const years = yearArg ? [yearArg] : null;
 
   const findings = auditBrackets(data, ann, { years });
+  const commits = getCommitHashes();
 
   const bySev = { CRITICAL: 0, WARNING: 0 };
+  const byTier = { SOURCE: 0, ANNOTATION: 0 };
   const byCode = {};
   const bySet = {};
   for (const f of findings) {
     bySev[f.severity] = (bySev[f.severity] || 0) + 1;
+    byTier[f.tier] = (byTier[f.tier] || 0) + 1;
     byCode[f.code] = (byCode[f.code] || 0) + 1;
     const key = `${f.yearKey}/${f.setId}`;
     bySet[key] = (bySet[key] || 0) + 1;
   }
 
   console.log("═".repeat(60));
-  console.log(" BRACKET AUDIT REPORT");
+  console.log(" BRACKET AUDIT REPORT (3-tier classification)");
   console.log("═".repeat(60));
-  console.log("[ Severity ]");
+  console.log("[ Commit chain ]");
+  console.log(`  audit_commit: ${commits.audit_commit.substring(0, 8)}`);
+  console.log(`  data_commit:  ${commits.data_commit.substring(0, 8)}`);
+  console.log(`  ann_commit:   ${commits.ann_commit.substring(0, 8)}`);
+  console.log(`  mixed_commit: ${commits.mixed_commit}`);
+  if (commits.mixed_commit) {
+    console.log("  ⚠ mixed_commit=true → release 판단 차단 lock 사양 path");
+  }
+
+  console.log("\n[ Severity ]");
   console.log(`  🔴 CRITICAL: ${bySev.CRITICAL || 0}`);
   console.log(`  🟡 WARNING:  ${bySev.WARNING || 0}`);
+
+  console.log("\n[ Tier ]");
+  console.log(`  📂 SOURCE:     ${byTier.SOURCE || 0}`);
+  console.log(`  🏷  ANNOTATION: ${byTier.ANNOTATION || 0}`);
 
   console.log("\n[ By Code ]");
   for (const [code, count] of Object.entries(byCode).sort(
@@ -288,7 +344,7 @@ if (isMain) {
   for (const f of findings.slice(0, 50)) {
     const sev = f.severity === "CRITICAL" ? "🔴" : "🟡";
     console.log(
-      `  ${sev} ${f.yearKey}/${f.setId} [${f.label}] ${f.code} :: ${f.msg}`,
+      `  ${sev} [${f.tier}] ${f.yearKey}/${f.setId} [${f.label}] ${f.code} :: ${f.msg}`,
     );
   }
   if (findings.length > 50) {
@@ -297,10 +353,12 @@ if (isMain) {
 
   const report = {
     generated_at: new Date().toISOString(),
+    commits,
     summary: {
       total_findings: findings.length,
       critical: bySev.CRITICAL || 0,
       warning: bySev.WARNING || 0,
+      by_tier: byTier,
       by_code: byCode,
       by_set: bySet,
     },

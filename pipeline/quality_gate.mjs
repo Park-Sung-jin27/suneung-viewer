@@ -1204,26 +1204,29 @@ const SEVERITY_MAP = {
   W_analysis_placeholder_real: "CRITICAL",
   W_analysis_placeholder_suspect: "WARNING",
 
-  // ── bracket_audit.mjs integration (Phase 1.21) ──
-  // CRITICAL — 출시 차단: DEAD sentId / 위치 불일치 / 본문 마커 부재
-  BRACKET_DEAD_SENTFROM: "CRITICAL",
-  BRACKET_DEAD_SENTTO: "CRITICAL",
-  BRACKET_INVERTED_RANGE: "CRITICAL",
-  BRACKET_WORKTAG_POSITION_MISMATCH: "CRITICAL",
-  BRACKET_BODY_MARKER_MISSING: "CRITICAL",
-  // WARNING — 품질 향상: 범위 outlier / inline out of range
-  BRACKET_NON_BODY_IN_RANGE: "WARNING",
-  BRACKET_INLINE_OUT_OF_RANGE: "WARNING",
-  BRACKET_RANGE_SIZE_OUTLIER: "WARNING",
+  // ── bracket_audit.mjs integration (3-tier classification) ──
+  // SOURCE tier — all_data 안 sents 원문 marker 정합
+  SOURCE_BODY_MARKER_MISSING: "CRITICAL",
+  SOURCE_WORKTAG_POSITION_MISMATCH: "CRITICAL",
+  SOURCE_INLINE_OUT_OF_RANGE: "WARNING",
+  // ANNOTATION tier — annotations.json span 정합
+  ANNOTATION_DEAD_SENTFROM: "CRITICAL",
+  ANNOTATION_DEAD_SENTTO: "CRITICAL",
+  ANNOTATION_INVERTED_RANGE: "CRITICAL",
+  ANNOTATION_NON_BODY_IN_RANGE: "WARNING",
+  ANNOTATION_RANGE_SIZE_OUTLIER: "WARNING",
+  // RENDER tier — visual_audit.mjs (별도 도구, integration 사양 X)
+  // AUDIT tier — false positive 정정 영역 (placeholder)
 };
 
-// ─── bracket_audit integration (Phase 1.21) ───────────────────────────────
+// ─── bracket_audit integration (3-tier classification) ───────────────────
 try {
   const annJson = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));
   const bracketFindings = auditBrackets(data, annJson);
   for (const bf of bracketFindings) {
+    // bf.code already prefixed: SOURCE_* or ANNOTATION_*
     issue(
-      `BRACKET_${bf.code}`,
+      bf.code,
       bf.yearKey,
       `${bf.setId} [${bf.label}]`,
       bf.msg,
