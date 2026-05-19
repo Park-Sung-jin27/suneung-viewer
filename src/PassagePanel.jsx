@@ -568,9 +568,40 @@ function renderAll(sents, sel, annotations) {
       ].includes(st)
     ) {
       flush();
-      result.push(
-        <RenderSent key={s.id} sent={s} sel={sel} anns={annMap[s.id] || []} />,
+      // bracket 범위 안 verse/workTag/etc sent path 안 큰 대괄호 컨테이너 감싸기
+      //   buf 그룹화 우회 path 안 bracket 시각화 X path 결함 정정.
+      //   isFirst 첫 sent 단독 label 표시, 인접 sent 들은 borderLeft 만 적용 path.
+      const brInfo = getBracketInfo(s.id, brackets, sentIds);
+      const inner = (
+        <RenderSent key={s.id} sent={s} sel={sel} anns={annMap[s.id] || []} />
       );
+      if (brInfo) {
+        result.push(
+          <div
+            key={"brv_" + s.id}
+            style={{
+              borderLeft: "3px solid #888",
+              paddingLeft: "8px",
+            }}
+          >
+            {brInfo.isFirst && (
+              <span
+                style={{
+                  fontSize: "11px",
+                  color: "#888",
+                  display: "block",
+                  marginBottom: "2px",
+                }}
+              >
+                [{brInfo.label}]
+              </span>
+            )}
+            {inner}
+          </div>,
+        );
+      } else {
+        result.push(inner);
+      }
     } else {
       buf.push(s);
     }
