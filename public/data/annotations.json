@@ -729,6 +729,12 @@
         "label": "B",
         "sentFrom": "l2024_22_27s12",
         "sentTo": "l2024_22_27s12"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2024_22_27s13",
+        "sentTo": "l2024_22_27s13"
       }
     ],
     "l2024c": [

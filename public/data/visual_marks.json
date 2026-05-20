@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-20T00:51:58.887Z",
-  "audit_commit": "c0d5ab63794c0bfbe0e1075440ec04a8381bfd45",
+  "generated_at": "2026-05-20T00:56:23.382Z",
+  "audit_commit": "748677caef1c803bbeff7a5f4b53a97b66b763de",
   "data_commit": "b2ac7b87d8747b897dd9b45077280eca8d0a341e",
   "ann_commit": "fb11d663da66332a5acb3b4d39f35787581d74c8",
   "viewer_commit": "09ea66aa4f6e3a39bfa47012257189bca104b046",
@@ -9,20 +9,20 @@
   "audit_includes_ann": true,
   "audit_includes_viewer": true,
   "summary": {
-    "total": 481,
+    "total": 482,
     "by_type": {
       "inline_label": 55,
-      "bracket": 87,
+      "bracket": 88,
       "box": 27,
       "underline": 312
     },
     "by_status": {
       "verified": 443,
-      "needs_human": 33,
+      "needs_human": 34,
       "non_blocking": 1,
       "broken": 4
     },
-    "release_blocking": 141
+    "release_blocking": 142
   },
   "marks": [
     {
@@ -6791,7 +6791,52 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024c_bracket_A_199",
+      "id": "vm_2024수능_l2024b_bracket_C_199",
+      "yearKey": "2024수능",
+      "setId": "l2024b",
+      "type": "bracket",
+      "label": "C",
+      "target": "sent_range",
+      "sentIds": [
+        "l2024_22_27s13"
+      ],
+      "start": {
+        "sentId": "l2024_22_27s13",
+        "offset": 0
+      },
+      "end": {
+        "sentId": "l2024_22_27s13",
+        "offset": 88
+      },
+      "source": "migrated_from_annotations",
+      "status": "needs_human",
+      "release_block": true,
+      "audit_source": "ANNOTATION_BRACKET + SOURCE_BODY_MARKER_MISSING",
+      "referenced_in": [
+        {
+          "qId": 24,
+          "loc": "choice",
+          "choiceNum": 4
+        },
+        {
+          "qId": 24,
+          "loc": "analysis",
+          "choiceNum": 4
+        },
+        {
+          "qId": 24,
+          "loc": "choice",
+          "choiceNum": 5
+        },
+        {
+          "qId": 24,
+          "loc": "analysis",
+          "choiceNum": 5
+        }
+      ]
+    },
+    {
+      "id": "vm_2024수능_l2024c_bracket_A_200",
       "yearKey": "2024수능",
       "setId": "l2024c",
       "type": "bracket",
@@ -6845,7 +6890,7 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024c_bracket_B_200",
+      "id": "vm_2024수능_l2024c_bracket_B_201",
       "yearKey": "2024수능",
       "setId": "l2024c",
       "type": "bracket",
@@ -6900,7 +6945,7 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024c_bracket_C_201",
+      "id": "vm_2024수능_l2024c_bracket_C_202",
       "yearKey": "2024수능",
       "setId": "l2024c",
       "type": "bracket",
@@ -6954,7 +6999,7 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024d_bracket_A_202",
+      "id": "vm_2024수능_l2024d_bracket_A_203",
       "yearKey": "2024수능",
       "setId": "l2024d",
       "type": "bracket",
@@ -7009,7 +7054,7 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024d_bracket_B_203",
+      "id": "vm_2024수능_l2024d_bracket_B_204",
       "yearKey": "2024수능",
       "setId": "l2024d",
       "type": "bracket",
@@ -7049,7 +7094,7 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024d_bracket_C_204",
+      "id": "vm_2024수능_l2024d_bracket_C_205",
       "yearKey": "2024수능",
       "setId": "l2024d",
       "type": "bracket",
@@ -7093,7 +7138,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_r2023a_bracket_A_205",
+      "id": "vm_2023수능_r2023a_bracket_A_206",
       "yearKey": "2023수능",
       "setId": "r2023a",
       "type": "bracket",
@@ -7131,7 +7176,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_r2023a_underline_x_206",
+      "id": "vm_2023수능_r2023a_underline_x_207",
       "yearKey": "2023수능",
       "setId": "r2023a",
       "type": "underline",
@@ -7155,7 +7200,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_bracket_A_207",
+      "id": "vm_2023수능_r2023b_bracket_A_208",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "bracket",
@@ -7196,7 +7241,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_208",
+      "id": "vm_2023수능_r2023b_underline_x_209",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
@@ -7220,7 +7265,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_209",
+      "id": "vm_2023수능_r2023b_underline_x_210",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
@@ -7244,7 +7289,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_210",
+      "id": "vm_2023수능_r2023b_underline_x_211",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
@@ -7268,7 +7313,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_211",
+      "id": "vm_2023수능_r2023b_underline_x_212",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
@@ -7292,7 +7337,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_212",
+      "id": "vm_2023수능_r2023b_underline_x_213",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
@@ -7316,7 +7361,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_213",
+      "id": "vm_2023수능_r2023b_underline_x_214",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
@@ -7340,7 +7385,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_214",
+      "id": "vm_2023수능_r2023b_underline_x_215",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
@@ -7364,7 +7409,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_215",
+      "id": "vm_2023수능_r2023b_underline_x_216",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
@@ -7388,7 +7433,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_216",
+      "id": "vm_2023수능_r2023b_underline_x_217",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
@@ -7412,7 +7457,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023c_underline_x_217",
+      "id": "vm_2023수능_r2023c_underline_x_218",
       "yearKey": "2023수능",
       "setId": "r2023c",
       "type": "underline",
@@ -7436,7 +7481,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023c_underline_x_218",
+      "id": "vm_2023수능_r2023c_underline_x_219",
       "yearKey": "2023수능",
       "setId": "r2023c",
       "type": "underline",
@@ -7460,7 +7505,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023c_underline_x_219",
+      "id": "vm_2023수능_r2023c_underline_x_220",
       "yearKey": "2023수능",
       "setId": "r2023c",
       "type": "underline",
@@ -7484,7 +7529,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023c_underline_x_220",
+      "id": "vm_2023수능_r2023c_underline_x_221",
       "yearKey": "2023수능",
       "setId": "r2023c",
       "type": "underline",
@@ -7508,7 +7553,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023c_underline_x_221",
+      "id": "vm_2023수능_r2023c_underline_x_222",
       "yearKey": "2023수능",
       "setId": "r2023c",
       "type": "underline",
@@ -7532,7 +7577,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023d_underline_x_222",
+      "id": "vm_2023수능_r2023d_underline_x_223",
       "yearKey": "2023수능",
       "setId": "r2023d",
       "type": "underline",
@@ -7556,7 +7601,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023d_underline_x_223",
+      "id": "vm_2023수능_r2023d_underline_x_224",
       "yearKey": "2023수능",
       "setId": "r2023d",
       "type": "underline",
@@ -7580,7 +7625,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023a_underline_x_224",
+      "id": "vm_2023수능_l2023a_underline_x_225",
       "yearKey": "2023수능",
       "setId": "l2023a",
       "type": "underline",
@@ -7604,7 +7649,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023a_underline_x_225",
+      "id": "vm_2023수능_l2023a_underline_x_226",
       "yearKey": "2023수능",
       "setId": "l2023a",
       "type": "underline",
@@ -7628,7 +7673,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023a_underline_x_226",
+      "id": "vm_2023수능_l2023a_underline_x_227",
       "yearKey": "2023수능",
       "setId": "l2023a",
       "type": "underline",
@@ -7652,7 +7697,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023a_underline_x_227",
+      "id": "vm_2023수능_l2023a_underline_x_228",
       "yearKey": "2023수능",
       "setId": "l2023a",
       "type": "underline",
@@ -7676,7 +7721,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023a_underline_x_228",
+      "id": "vm_2023수능_l2023a_underline_x_229",
       "yearKey": "2023수능",
       "setId": "l2023a",
       "type": "underline",
@@ -7700,7 +7745,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023b_bracket_A_229",
+      "id": "vm_2023수능_l2023b_bracket_A_230",
       "yearKey": "2023수능",
       "setId": "l2023b",
       "type": "bracket",
@@ -7766,7 +7811,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023b_bracket_B_230",
+      "id": "vm_2023수능_l2023b_bracket_B_231",
       "yearKey": "2023수능",
       "setId": "l2023b",
       "type": "bracket",
@@ -7827,7 +7872,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023b_bracket_C_231",
+      "id": "vm_2023수능_l2023b_bracket_C_232",
       "yearKey": "2023수능",
       "setId": "l2023b",
       "type": "bracket",
@@ -7883,7 +7928,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023b_underline_x_232",
+      "id": "vm_2023수능_l2023b_underline_x_233",
       "yearKey": "2023수능",
       "setId": "l2023b",
       "type": "underline",
@@ -7907,7 +7952,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023b_underline_x_233",
+      "id": "vm_2023수능_l2023b_underline_x_234",
       "yearKey": "2023수능",
       "setId": "l2023b",
       "type": "underline",
@@ -7931,7 +7976,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023c_bracket_A_234",
+      "id": "vm_2023수능_l2023c_bracket_A_235",
       "yearKey": "2023수능",
       "setId": "l2023c",
       "type": "bracket",
@@ -7965,7 +8010,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023c_bracket_B_235",
+      "id": "vm_2023수능_l2023c_bracket_B_236",
       "yearKey": "2023수능",
       "setId": "l2023c",
       "type": "bracket",
@@ -8001,7 +8046,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023c_bracket_C_236",
+      "id": "vm_2023수능_l2023c_bracket_C_237",
       "yearKey": "2023수능",
       "setId": "l2023c",
       "type": "bracket",
@@ -8038,7 +8083,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023c_bracket_D_237",
+      "id": "vm_2023수능_l2023c_bracket_D_238",
       "yearKey": "2023수능",
       "setId": "l2023c",
       "type": "bracket",
@@ -8074,7 +8119,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023c_bracket_E_238",
+      "id": "vm_2023수능_l2023c_bracket_E_239",
       "yearKey": "2023수능",
       "setId": "l2023c",
       "type": "bracket",
@@ -8115,7 +8160,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_A_239",
+      "id": "vm_2023수능_l2023d_bracket_A_240",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
@@ -8155,7 +8200,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_B_240",
+      "id": "vm_2023수능_l2023d_bracket_B_241",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
@@ -8201,7 +8246,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_C_241",
+      "id": "vm_2023수능_l2023d_bracket_C_242",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
@@ -8247,7 +8292,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_D_242",
+      "id": "vm_2023수능_l2023d_bracket_D_243",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
@@ -8294,7 +8339,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_E_243",
+      "id": "vm_2023수능_l2023d_bracket_E_244",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
@@ -8340,7 +8385,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_F_244",
+      "id": "vm_2023수능_l2023d_bracket_F_245",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
@@ -8385,7 +8430,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_underline_x_245",
+      "id": "vm_2023수능_l2023d_underline_x_246",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "underline",
@@ -8409,7 +8454,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023d_underline_x_246",
+      "id": "vm_2023수능_l2023d_underline_x_247",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "underline",
@@ -8433,7 +8478,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023d_underline_x_247",
+      "id": "vm_2023수능_l2023d_underline_x_248",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "underline",
@@ -8457,7 +8502,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023d_underline_x_248",
+      "id": "vm_2023수능_l2023d_underline_x_249",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "underline",
@@ -8481,7 +8526,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023d_underline_x_249",
+      "id": "vm_2023수능_l2023d_underline_x_250",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "underline",
@@ -8505,7 +8550,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022a_underline_x_250",
+      "id": "vm_2022수능_r2022a_underline_x_251",
       "yearKey": "2022수능",
       "setId": "r2022a",
       "type": "underline",
@@ -8529,7 +8574,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022a_underline_x_251",
+      "id": "vm_2022수능_r2022a_underline_x_252",
       "yearKey": "2022수능",
       "setId": "r2022a",
       "type": "underline",
@@ -8553,7 +8598,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022b_box_x_252",
+      "id": "vm_2022수능_r2022b_box_x_253",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "box",
@@ -8577,7 +8622,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_r2022b_underline_x_253",
+      "id": "vm_2022수능_r2022b_underline_x_254",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "underline",
@@ -8601,7 +8646,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022b_underline_x_254",
+      "id": "vm_2022수능_r2022b_underline_x_255",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "underline",
@@ -8625,7 +8670,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022b_underline_x_255",
+      "id": "vm_2022수능_r2022b_underline_x_256",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "underline",
@@ -8649,7 +8694,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022b_underline_x_256",
+      "id": "vm_2022수능_r2022b_underline_x_257",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "underline",
@@ -8673,7 +8718,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022b_box_x_257",
+      "id": "vm_2022수능_r2022b_box_x_258",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "box",
@@ -8697,7 +8742,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_r2022c_underline_x_258",
+      "id": "vm_2022수능_r2022c_underline_x_259",
       "yearKey": "2022수능",
       "setId": "r2022c",
       "type": "underline",
@@ -8721,7 +8766,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022c_underline_x_259",
+      "id": "vm_2022수능_r2022c_underline_x_260",
       "yearKey": "2022수능",
       "setId": "r2022c",
       "type": "underline",
@@ -8745,7 +8790,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022c_underline_x_260",
+      "id": "vm_2022수능_r2022c_underline_x_261",
       "yearKey": "2022수능",
       "setId": "r2022c",
       "type": "underline",
@@ -8769,7 +8814,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022d_box_x_261",
+      "id": "vm_2022수능_r2022d_box_x_262",
       "yearKey": "2022수능",
       "setId": "r2022d",
       "type": "box",
@@ -8793,7 +8838,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_r2022d_underline_x_262",
+      "id": "vm_2022수능_r2022d_underline_x_263",
       "yearKey": "2022수능",
       "setId": "r2022d",
       "type": "underline",
@@ -8817,7 +8862,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022d_underline_x_263",
+      "id": "vm_2022수능_r2022d_underline_x_264",
       "yearKey": "2022수능",
       "setId": "r2022d",
       "type": "underline",
@@ -8841,7 +8886,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022d_underline_x_264",
+      "id": "vm_2022수능_r2022d_underline_x_265",
       "yearKey": "2022수능",
       "setId": "r2022d",
       "type": "underline",
@@ -8865,7 +8910,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022a_bracket_A_265",
+      "id": "vm_2022수능_l2022a_bracket_A_266",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "bracket",
@@ -8905,7 +8950,7 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022a_bracket_B_266",
+      "id": "vm_2022수능_l2022a_bracket_B_267",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "bracket",
@@ -8941,7 +8986,7 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022a_bracket_C_267",
+      "id": "vm_2022수능_l2022a_bracket_C_268",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "bracket",
@@ -8977,7 +9022,7 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022a_bracket_D_268",
+      "id": "vm_2022수능_l2022a_bracket_D_269",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "bracket",
@@ -9013,7 +9058,7 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022a_bracket_E_269",
+      "id": "vm_2022수능_l2022a_bracket_E_270",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "bracket",
@@ -9053,7 +9098,7 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022a_box_x_270",
+      "id": "vm_2022수능_l2022a_box_x_271",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "box",
@@ -9077,7 +9122,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_l2022a_box_x_271",
+      "id": "vm_2022수능_l2022a_box_x_272",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "box",
@@ -9101,7 +9146,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_l2022b_bracket_A_272",
+      "id": "vm_2022수능_l2022b_bracket_A_273",
       "yearKey": "2022수능",
       "setId": "l2022b",
       "type": "bracket",
@@ -9159,7 +9204,7 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022b_underline_x_273",
+      "id": "vm_2022수능_l2022b_underline_x_274",
       "yearKey": "2022수능",
       "setId": "l2022b",
       "type": "underline",
@@ -9183,7 +9228,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022b_underline_x_274",
+      "id": "vm_2022수능_l2022b_underline_x_275",
       "yearKey": "2022수능",
       "setId": "l2022b",
       "type": "underline",
@@ -9207,7 +9252,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022c_bracket_A_275",
+      "id": "vm_2022수능_l2022c_bracket_A_276",
       "yearKey": "2022수능",
       "setId": "l2022c",
       "type": "bracket",
@@ -9281,7 +9326,7 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022c_bracket_B_276",
+      "id": "vm_2022수능_l2022c_bracket_B_277",
       "yearKey": "2022수능",
       "setId": "l2022c",
       "type": "bracket",
@@ -9360,7 +9405,7 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022c_box_x_277",
+      "id": "vm_2022수능_l2022c_box_x_278",
       "yearKey": "2022수능",
       "setId": "l2022c",
       "type": "box",
@@ -9384,7 +9429,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_l2022c_box_x_278",
+      "id": "vm_2022수능_l2022c_box_x_279",
       "yearKey": "2022수능",
       "setId": "l2022c",
       "type": "box",
@@ -9408,7 +9453,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_l2022d_bracket_A_279",
+      "id": "vm_2022수능_l2022d_bracket_A_280",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "bracket",
@@ -9485,7 +9530,7 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022d_bracket_B_280",
+      "id": "vm_2022수능_l2022d_bracket_B_281",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "bracket",
@@ -9551,7 +9596,7 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022d_underline_x_281",
+      "id": "vm_2022수능_l2022d_underline_x_282",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "underline",
@@ -9575,7 +9620,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022d_underline_x_282",
+      "id": "vm_2022수능_l2022d_underline_x_283",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "underline",
@@ -9599,7 +9644,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022d_underline_x_283",
+      "id": "vm_2022수능_l2022d_underline_x_284",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "underline",
@@ -9623,7 +9668,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022d_underline_x_284",
+      "id": "vm_2022수능_l2022d_underline_x_285",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "underline",
@@ -9647,7 +9692,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022d_underline_x_285",
+      "id": "vm_2022수능_l2022d_underline_x_286",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "underline",
@@ -9671,7 +9716,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226a_underline_x_286",
+      "id": "vm_2022_6월_r20226a_underline_x_287",
       "yearKey": "2022_6월",
       "setId": "r20226a",
       "type": "underline",
@@ -9695,7 +9740,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226b_bracket_A_287",
+      "id": "vm_2022_6월_r20226b_bracket_A_288",
       "yearKey": "2022_6월",
       "setId": "r20226b",
       "type": "bracket",
@@ -9742,7 +9787,7 @@
       ]
     },
     {
-      "id": "vm_2022_6월_r20226b_underline_x_288",
+      "id": "vm_2022_6월_r20226b_underline_x_289",
       "yearKey": "2022_6월",
       "setId": "r20226b",
       "type": "underline",
@@ -9766,7 +9811,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226b_underline_x_289",
+      "id": "vm_2022_6월_r20226b_underline_x_290",
       "yearKey": "2022_6월",
       "setId": "r20226b",
       "type": "underline",
@@ -9790,7 +9835,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226b_underline_x_290",
+      "id": "vm_2022_6월_r20226b_underline_x_291",
       "yearKey": "2022_6월",
       "setId": "r20226b",
       "type": "underline",
@@ -9814,7 +9859,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_291",
+      "id": "vm_2022_6월_r20226c_underline_x_292",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
@@ -9838,7 +9883,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_292",
+      "id": "vm_2022_6월_r20226c_underline_x_293",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
@@ -9862,7 +9907,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_293",
+      "id": "vm_2022_6월_r20226c_underline_x_294",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
@@ -9886,7 +9931,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_294",
+      "id": "vm_2022_6월_r20226c_underline_x_295",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
@@ -9910,7 +9955,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_295",
+      "id": "vm_2022_6월_r20226c_underline_x_296",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
@@ -9934,7 +9979,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_296",
+      "id": "vm_2022_6월_r20226c_underline_x_297",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
@@ -9958,7 +10003,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226d_bracket_A_297",
+      "id": "vm_2022_6월_r20226d_bracket_A_298",
       "yearKey": "2022_6월",
       "setId": "r20226d",
       "type": "bracket",
@@ -9985,7 +10030,7 @@
       ]
     },
     {
-      "id": "vm_2022_6월_r20226d_underline_x_298",
+      "id": "vm_2022_6월_r20226d_underline_x_299",
       "yearKey": "2022_6월",
       "setId": "r20226d",
       "type": "underline",
@@ -10009,7 +10054,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226d_underline_x_299",
+      "id": "vm_2022_6월_r20226d_underline_x_300",
       "yearKey": "2022_6월",
       "setId": "r20226d",
       "type": "underline",
@@ -10033,7 +10078,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226a_underline_x_300",
+      "id": "vm_2022_6월_l20226a_underline_x_301",
       "yearKey": "2022_6월",
       "setId": "l20226a",
       "type": "underline",
@@ -10057,7 +10102,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226a_underline_x_301",
+      "id": "vm_2022_6월_l20226a_underline_x_302",
       "yearKey": "2022_6월",
       "setId": "l20226a",
       "type": "underline",
@@ -10081,7 +10126,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226a_underline_x_302",
+      "id": "vm_2022_6월_l20226a_underline_x_303",
       "yearKey": "2022_6월",
       "setId": "l20226a",
       "type": "underline",
@@ -10105,7 +10150,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226a_underline_x_303",
+      "id": "vm_2022_6월_l20226a_underline_x_304",
       "yearKey": "2022_6월",
       "setId": "l20226a",
       "type": "underline",
@@ -10129,7 +10174,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226b_bracket_A_304",
+      "id": "vm_2022_6월_l20226b_bracket_A_305",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "bracket",
@@ -10221,7 +10266,7 @@
       ]
     },
     {
-      "id": "vm_2022_6월_l20226b_bracket_B_305",
+      "id": "vm_2022_6월_l20226b_bracket_B_306",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "bracket",
@@ -10313,7 +10358,7 @@
       ]
     },
     {
-      "id": "vm_2022_6월_l20226b_underline_x_306",
+      "id": "vm_2022_6월_l20226b_underline_x_307",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "underline",
@@ -10337,7 +10382,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226b_underline_x_307",
+      "id": "vm_2022_6월_l20226b_underline_x_308",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "underline",
@@ -10361,7 +10406,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226b_underline_x_308",
+      "id": "vm_2022_6월_l20226b_underline_x_309",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "underline",
@@ -10385,7 +10430,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226b_underline_x_309",
+      "id": "vm_2022_6월_l20226b_underline_x_310",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "underline",
@@ -10409,7 +10454,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226b_underline_x_310",
+      "id": "vm_2022_6월_l20226b_underline_x_311",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "underline",
@@ -10433,7 +10478,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226c_underline_x_311",
+      "id": "vm_2022_6월_l20226c_underline_x_312",
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "type": "underline",
@@ -10457,7 +10502,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226c_underline_x_312",
+      "id": "vm_2022_6월_l20226c_underline_x_313",
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "type": "underline",
@@ -10481,7 +10526,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226c_underline_x_313",
+      "id": "vm_2022_6월_l20226c_underline_x_314",
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "type": "underline",
@@ -10505,7 +10550,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226c_underline_x_314",
+      "id": "vm_2022_6월_l20226c_underline_x_315",
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "type": "underline",
@@ -10529,7 +10574,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226c_underline_x_315",
+      "id": "vm_2022_6월_l20226c_underline_x_316",
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "type": "underline",
@@ -10553,7 +10598,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236a_bracket_A_316",
+      "id": "vm_2023_6월_r20236a_bracket_A_317",
       "yearKey": "2023_6월",
       "setId": "r20236a",
       "type": "bracket",
@@ -10585,7 +10630,7 @@
       ]
     },
     {
-      "id": "vm_2023_6월_r20236a_underline_x_317",
+      "id": "vm_2023_6월_r20236a_underline_x_318",
       "yearKey": "2023_6월",
       "setId": "r20236a",
       "type": "underline",
@@ -10609,7 +10654,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236a_underline_x_318",
+      "id": "vm_2023_6월_r20236a_underline_x_319",
       "yearKey": "2023_6월",
       "setId": "r20236a",
       "type": "underline",
@@ -10633,7 +10678,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236a_underline_x_319",
+      "id": "vm_2023_6월_r20236a_underline_x_320",
       "yearKey": "2023_6월",
       "setId": "r20236a",
       "type": "underline",
@@ -10657,7 +10702,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_320",
+      "id": "vm_2023_6월_r20236b_underline_x_321",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
@@ -10681,7 +10726,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_321",
+      "id": "vm_2023_6월_r20236b_underline_x_322",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
@@ -10705,7 +10750,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_322",
+      "id": "vm_2023_6월_r20236b_underline_x_323",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
@@ -10729,7 +10774,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_323",
+      "id": "vm_2023_6월_r20236b_underline_x_324",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
@@ -10753,7 +10798,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_324",
+      "id": "vm_2023_6월_r20236b_underline_x_325",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
@@ -10777,7 +10822,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_325",
+      "id": "vm_2023_6월_r20236b_underline_x_326",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
@@ -10801,7 +10846,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_326",
+      "id": "vm_2023_6월_r20236b_underline_x_327",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
@@ -10825,7 +10870,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_327",
+      "id": "vm_2023_6월_r20236b_underline_x_328",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
@@ -10849,7 +10894,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236c_box_x_328",
+      "id": "vm_2023_6월_r20236c_box_x_329",
       "yearKey": "2023_6월",
       "setId": "r20236c",
       "type": "box",
@@ -10873,7 +10918,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2023_6월_r20236c_underline_x_329",
+      "id": "vm_2023_6월_r20236c_underline_x_330",
       "yearKey": "2023_6월",
       "setId": "r20236c",
       "type": "underline",
@@ -10897,7 +10942,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236c_underline_x_330",
+      "id": "vm_2023_6월_r20236c_underline_x_331",
       "yearKey": "2023_6월",
       "setId": "r20236c",
       "type": "underline",
@@ -10921,7 +10966,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_box_x_331",
+      "id": "vm_2023_6월_r20236d_box_x_332",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "box",
@@ -10945,7 +10990,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_332",
+      "id": "vm_2023_6월_r20236d_underline_x_333",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
@@ -10969,7 +11014,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_333",
+      "id": "vm_2023_6월_r20236d_underline_x_334",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
@@ -10993,7 +11038,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_334",
+      "id": "vm_2023_6월_r20236d_underline_x_335",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
@@ -11017,7 +11062,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_335",
+      "id": "vm_2023_6월_r20236d_underline_x_336",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
@@ -11041,7 +11086,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_336",
+      "id": "vm_2023_6월_r20236d_underline_x_337",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
@@ -11065,7 +11110,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_337",
+      "id": "vm_2023_6월_r20236d_underline_x_338",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
@@ -11089,7 +11134,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236b_box_x_338",
+      "id": "vm_2023_6월_l20236b_box_x_339",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "box",
@@ -11113,7 +11158,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2023_6월_l20236b_underline_x_339",
+      "id": "vm_2023_6월_l20236b_underline_x_340",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "underline",
@@ -11137,7 +11182,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236b_underline_x_340",
+      "id": "vm_2023_6월_l20236b_underline_x_341",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "underline",
@@ -11161,7 +11206,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236b_underline_x_341",
+      "id": "vm_2023_6월_l20236b_underline_x_342",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "underline",
@@ -11185,7 +11230,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236b_underline_x_342",
+      "id": "vm_2023_6월_l20236b_underline_x_343",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "underline",
@@ -11209,7 +11254,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236b_underline_x_343",
+      "id": "vm_2023_6월_l20236b_underline_x_344",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "underline",
@@ -11233,7 +11278,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236c_underline_x_344",
+      "id": "vm_2023_6월_l20236c_underline_x_345",
       "yearKey": "2023_6월",
       "setId": "l20236c",
       "type": "underline",
@@ -11257,7 +11302,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236c_underline_x_345",
+      "id": "vm_2023_6월_l20236c_underline_x_346",
       "yearKey": "2023_6월",
       "setId": "l20236c",
       "type": "underline",
@@ -11281,7 +11326,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_bracket_A_346",
+      "id": "vm_2023_6월_l20236d_bracket_A_347",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "bracket",
@@ -11335,7 +11380,7 @@
       ]
     },
     {
-      "id": "vm_2023_6월_l20236d_bracket_B_347",
+      "id": "vm_2023_6월_l20236d_bracket_B_348",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "bracket",
@@ -11370,7 +11415,7 @@
       ]
     },
     {
-      "id": "vm_2023_6월_l20236d_bracket_C_348",
+      "id": "vm_2023_6월_l20236d_bracket_C_349",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "bracket",
@@ -11410,7 +11455,7 @@
       ]
     },
     {
-      "id": "vm_2023_6월_l20236d_bracket_D_349",
+      "id": "vm_2023_6월_l20236d_bracket_D_350",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "bracket",
@@ -11455,7 +11500,7 @@
       ]
     },
     {
-      "id": "vm_2023_6월_l20236d_bracket_E_350",
+      "id": "vm_2023_6월_l20236d_bracket_E_351",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "bracket",
@@ -11509,7 +11554,7 @@
       ]
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_351",
+      "id": "vm_2023_6월_l20236d_underline_x_352",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
@@ -11533,7 +11578,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_352",
+      "id": "vm_2023_6월_l20236d_underline_x_353",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
@@ -11557,7 +11602,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_353",
+      "id": "vm_2023_6월_l20236d_underline_x_354",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
@@ -11581,7 +11626,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_354",
+      "id": "vm_2023_6월_l20236d_underline_x_355",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
@@ -11605,7 +11650,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_355",
+      "id": "vm_2023_6월_l20236d_underline_x_356",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
@@ -11629,7 +11674,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_356",
+      "id": "vm_2023_6월_l20236d_underline_x_357",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
@@ -11653,7 +11698,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_357",
+      "id": "vm_2023_6월_l20236d_underline_x_358",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
@@ -11677,7 +11722,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239a_bracket_A_358",
+      "id": "vm_2023_9월_r20239a_bracket_A_359",
       "yearKey": "2023_9월",
       "setId": "r20239a",
       "type": "bracket",
@@ -11712,7 +11757,7 @@
       ]
     },
     {
-      "id": "vm_2023_9월_r20239a_underline_x_359",
+      "id": "vm_2023_9월_r20239a_underline_x_360",
       "yearKey": "2023_9월",
       "setId": "r20239a",
       "type": "underline",
@@ -11736,7 +11781,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_box_x_360",
+      "id": "vm_2023_9월_r20239b_box_x_361",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "box",
@@ -11760,7 +11805,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_361",
+      "id": "vm_2023_9월_r20239b_underline_x_362",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
@@ -11784,7 +11829,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_362",
+      "id": "vm_2023_9월_r20239b_underline_x_363",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
@@ -11808,7 +11853,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_363",
+      "id": "vm_2023_9월_r20239b_underline_x_364",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
@@ -11832,7 +11877,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_364",
+      "id": "vm_2023_9월_r20239b_underline_x_365",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
@@ -11856,7 +11901,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_365",
+      "id": "vm_2023_9월_r20239b_underline_x_366",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
@@ -11880,7 +11925,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_366",
+      "id": "vm_2023_9월_r20239b_underline_x_367",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
@@ -11904,7 +11949,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_367",
+      "id": "vm_2023_9월_r20239b_underline_x_368",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
@@ -11928,7 +11973,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239c_underline_x_368",
+      "id": "vm_2023_9월_r20239c_underline_x_369",
       "yearKey": "2023_9월",
       "setId": "r20239c",
       "type": "underline",
@@ -11952,7 +11997,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239d_underline_x_369",
+      "id": "vm_2023_9월_r20239d_underline_x_370",
       "yearKey": "2023_9월",
       "setId": "r20239d",
       "type": "underline",
@@ -11976,7 +12021,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239d_underline_x_370",
+      "id": "vm_2023_9월_r20239d_underline_x_371",
       "yearKey": "2023_9월",
       "setId": "r20239d",
       "type": "underline",
@@ -12000,7 +12045,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239d_underline_x_371",
+      "id": "vm_2023_9월_r20239d_underline_x_372",
       "yearKey": "2023_9월",
       "setId": "r20239d",
       "type": "underline",
@@ -12024,7 +12069,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_372",
+      "id": "vm_2023_9월_l20239a_underline_x_373",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
@@ -12048,7 +12093,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_373",
+      "id": "vm_2023_9월_l20239a_underline_x_374",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
@@ -12072,7 +12117,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_374",
+      "id": "vm_2023_9월_l20239a_underline_x_375",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
@@ -12096,7 +12141,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_375",
+      "id": "vm_2023_9월_l20239a_underline_x_376",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
@@ -12120,7 +12165,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_376",
+      "id": "vm_2023_9월_l20239a_underline_x_377",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
@@ -12144,7 +12189,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_377",
+      "id": "vm_2023_9월_l20239a_underline_x_378",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
@@ -12168,7 +12213,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_378",
+      "id": "vm_2023_9월_l20239a_underline_x_379",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
@@ -12192,7 +12237,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_A_379",
+      "id": "vm_2023_9월_l20239b_bracket_A_380",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
@@ -12242,7 +12287,7 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_B_380",
+      "id": "vm_2023_9월_l20239b_bracket_B_381",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
@@ -12298,7 +12343,7 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_C_381",
+      "id": "vm_2023_9월_l20239b_bracket_C_382",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
@@ -12345,7 +12390,7 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_D_382",
+      "id": "vm_2023_9월_l20239b_bracket_D_383",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
@@ -12382,7 +12427,7 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_E_383",
+      "id": "vm_2023_9월_l20239b_bracket_E_384",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
@@ -12418,7 +12463,7 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_F_384",
+      "id": "vm_2023_9월_l20239b_bracket_F_385",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
@@ -12458,7 +12503,7 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239c_underline_x_385",
+      "id": "vm_2023_9월_l20239c_underline_x_386",
       "yearKey": "2023_9월",
       "setId": "l20239c",
       "type": "underline",
@@ -12482,7 +12527,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239c_underline_x_386",
+      "id": "vm_2023_9월_l20239c_underline_x_387",
       "yearKey": "2023_9월",
       "setId": "l20239c",
       "type": "underline",
@@ -12506,7 +12551,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_bracket_A_387",
+      "id": "vm_2023_9월_l20239d_bracket_A_388",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "bracket",
@@ -12567,7 +12612,7 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239d_bracket_B_388",
+      "id": "vm_2023_9월_l20239d_bracket_B_389",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "bracket",
@@ -12632,7 +12677,7 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_389",
+      "id": "vm_2023_9월_l20239d_underline_x_390",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
@@ -12656,7 +12701,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_390",
+      "id": "vm_2023_9월_l20239d_underline_x_391",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
@@ -12680,7 +12725,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_391",
+      "id": "vm_2023_9월_l20239d_underline_x_392",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
@@ -12704,7 +12749,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_392",
+      "id": "vm_2023_9월_l20239d_underline_x_393",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
@@ -12728,7 +12773,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_393",
+      "id": "vm_2023_9월_l20239d_underline_x_394",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
@@ -12752,7 +12797,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_394",
+      "id": "vm_2023_9월_l20239d_underline_x_395",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
@@ -12776,7 +12821,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246a_bracket_A_395",
+      "id": "vm_2024_6월_r20246a_bracket_A_396",
       "yearKey": "2024_6월",
       "setId": "r20246a",
       "type": "bracket",
@@ -12811,7 +12856,7 @@
       ]
     },
     {
-      "id": "vm_2024_6월_r20246b_underline_x_396",
+      "id": "vm_2024_6월_r20246b_underline_x_397",
       "yearKey": "2024_6월",
       "setId": "r20246b",
       "type": "underline",
@@ -12835,7 +12880,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246b_underline_x_397",
+      "id": "vm_2024_6월_r20246b_underline_x_398",
       "yearKey": "2024_6월",
       "setId": "r20246b",
       "type": "underline",
@@ -12859,7 +12904,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246b_underline_x_398",
+      "id": "vm_2024_6월_r20246b_underline_x_399",
       "yearKey": "2024_6월",
       "setId": "r20246b",
       "type": "underline",
@@ -12883,7 +12928,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246b_underline_x_399",
+      "id": "vm_2024_6월_r20246b_underline_x_400",
       "yearKey": "2024_6월",
       "setId": "r20246b",
       "type": "underline",
@@ -12907,7 +12952,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246b_underline_x_400",
+      "id": "vm_2024_6월_r20246b_underline_x_401",
       "yearKey": "2024_6월",
       "setId": "r20246b",
       "type": "underline",
@@ -12931,7 +12976,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246c_underline_x_401",
+      "id": "vm_2024_6월_r20246c_underline_x_402",
       "yearKey": "2024_6월",
       "setId": "r20246c",
       "type": "underline",
@@ -12955,7 +13000,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_402",
+      "id": "vm_2024_6월_r20246d_underline_x_403",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
@@ -12979,7 +13024,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_403",
+      "id": "vm_2024_6월_r20246d_underline_x_404",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
@@ -13003,7 +13048,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_404",
+      "id": "vm_2024_6월_r20246d_underline_x_405",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
@@ -13027,7 +13072,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_405",
+      "id": "vm_2024_6월_r20246d_underline_x_406",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
@@ -13051,7 +13096,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_406",
+      "id": "vm_2024_6월_r20246d_underline_x_407",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
@@ -13075,7 +13120,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_407",
+      "id": "vm_2024_6월_r20246d_underline_x_408",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
@@ -13099,7 +13144,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_408",
+      "id": "vm_2024_6월_r20246d_underline_x_409",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
@@ -13123,7 +13168,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246a_underline_x_409",
+      "id": "vm_2024_6월_l20246a_underline_x_410",
       "yearKey": "2024_6월",
       "setId": "l20246a",
       "type": "underline",
@@ -13147,7 +13192,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246a_underline_x_410",
+      "id": "vm_2024_6월_l20246a_underline_x_411",
       "yearKey": "2024_6월",
       "setId": "l20246a",
       "type": "underline",
@@ -13171,7 +13216,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246b_bracket_A_411",
+      "id": "vm_2024_6월_l20246b_bracket_A_412",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "bracket",
@@ -13212,7 +13257,7 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246b_bracket_B_412",
+      "id": "vm_2024_6월_l20246b_bracket_B_413",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "bracket",
@@ -13249,7 +13294,7 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246b_bracket_C_413",
+      "id": "vm_2024_6월_l20246b_bracket_C_414",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "bracket",
@@ -13286,7 +13331,7 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246b_bracket_D_414",
+      "id": "vm_2024_6월_l20246b_bracket_D_415",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "bracket",
@@ -13326,7 +13371,7 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246b_bracket_E_415",
+      "id": "vm_2024_6월_l20246b_bracket_E_416",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "bracket",
@@ -13370,7 +13415,7 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246b_box_x_416",
+      "id": "vm_2024_6월_l20246b_box_x_417",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "box",
@@ -13394,7 +13439,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2024_6월_l20246b_box_x_417",
+      "id": "vm_2024_6월_l20246b_box_x_418",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "box",
@@ -13418,7 +13463,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2024_6월_l20246b_underline_x_418",
+      "id": "vm_2024_6월_l20246b_underline_x_419",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "underline",
@@ -13442,7 +13487,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246b_underline_x_419",
+      "id": "vm_2024_6월_l20246b_underline_x_420",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "underline",
@@ -13466,7 +13511,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246b_underline_x_420",
+      "id": "vm_2024_6월_l20246b_underline_x_421",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "underline",
@@ -13490,7 +13535,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246b_underline_x_421",
+      "id": "vm_2024_6월_l20246b_underline_x_422",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "underline",
@@ -13514,7 +13559,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246b_underline_x_422",
+      "id": "vm_2024_6월_l20246b_underline_x_423",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "underline",
@@ -13538,7 +13583,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_bracket_A_423",
+      "id": "vm_2024_6월_l20246c_bracket_A_424",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "bracket",
@@ -13572,7 +13617,7 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246c_bracket_B_424",
+      "id": "vm_2024_6월_l20246c_bracket_B_425",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "bracket",
@@ -13609,7 +13654,7 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_425",
+      "id": "vm_2024_6월_l20246c_underline_x_426",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
@@ -13633,7 +13678,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_426",
+      "id": "vm_2024_6월_l20246c_underline_x_427",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
@@ -13657,7 +13702,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_427",
+      "id": "vm_2024_6월_l20246c_underline_x_428",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
@@ -13681,7 +13726,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_428",
+      "id": "vm_2024_6월_l20246c_underline_x_429",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
@@ -13705,7 +13750,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_429",
+      "id": "vm_2024_6월_l20246c_underline_x_430",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
@@ -13729,7 +13774,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_430",
+      "id": "vm_2024_6월_l20246c_underline_x_431",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
@@ -13753,7 +13798,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_431",
+      "id": "vm_2024_6월_l20246c_underline_x_432",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
@@ -13777,7 +13822,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_box_x_432",
+      "id": "vm_2024_6월_l20246d_box_x_433",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "box",
@@ -13801,7 +13846,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_433",
+      "id": "vm_2024_6월_l20246d_underline_x_434",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
@@ -13825,7 +13870,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_434",
+      "id": "vm_2024_6월_l20246d_underline_x_435",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
@@ -13849,7 +13894,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_435",
+      "id": "vm_2024_6월_l20246d_underline_x_436",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
@@ -13873,7 +13918,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_436",
+      "id": "vm_2024_6월_l20246d_underline_x_437",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
@@ -13897,7 +13942,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_437",
+      "id": "vm_2024_6월_l20246d_underline_x_438",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
@@ -13921,7 +13966,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_438",
+      "id": "vm_2024_6월_l20246d_underline_x_439",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
@@ -13945,7 +13990,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_439",
+      "id": "vm_2024_6월_l20246d_underline_x_440",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
@@ -13969,7 +14014,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_440",
+      "id": "vm_2024_6월_l20246d_underline_x_441",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
@@ -13993,7 +14038,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_441",
+      "id": "vm_2024_6월_l20246d_underline_x_442",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
@@ -14017,7 +14062,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269a_bracket_A_442",
+      "id": "vm_2026_9월_r20269a_bracket_A_443",
       "yearKey": "2026_9월",
       "setId": "r20269a",
       "type": "bracket",
@@ -14070,7 +14115,7 @@
       ]
     },
     {
-      "id": "vm_2026_9월_r20269a_underline_x_443",
+      "id": "vm_2026_9월_r20269a_underline_x_444",
       "yearKey": "2026_9월",
       "setId": "r20269a",
       "type": "underline",
@@ -14094,7 +14139,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269a_underline_x_444",
+      "id": "vm_2026_9월_r20269a_underline_x_445",
       "yearKey": "2026_9월",
       "setId": "r20269a",
       "type": "underline",
@@ -14118,7 +14163,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269a_underline_x_445",
+      "id": "vm_2026_9월_r20269a_underline_x_446",
       "yearKey": "2026_9월",
       "setId": "r20269a",
       "type": "underline",
@@ -14142,7 +14187,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269b_bracket_A_446",
+      "id": "vm_2026_9월_r20269b_bracket_A_447",
       "yearKey": "2026_9월",
       "setId": "r20269b",
       "type": "bracket",
@@ -14173,7 +14218,7 @@
       ]
     },
     {
-      "id": "vm_2026_9월_r20269b_box_x_447",
+      "id": "vm_2026_9월_r20269b_box_x_448",
       "yearKey": "2026_9월",
       "setId": "r20269b",
       "type": "box",
@@ -14197,7 +14242,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2026_9월_r20269b_box_x_448",
+      "id": "vm_2026_9월_r20269b_box_x_449",
       "yearKey": "2026_9월",
       "setId": "r20269b",
       "type": "box",
@@ -14221,7 +14266,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2026_9월_r20269b_underline_x_449",
+      "id": "vm_2026_9월_r20269b_underline_x_450",
       "yearKey": "2026_9월",
       "setId": "r20269b",
       "type": "underline",
@@ -14245,7 +14290,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_450",
+      "id": "vm_2026_9월_r20269c_underline_x_451",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
@@ -14269,7 +14314,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_451",
+      "id": "vm_2026_9월_r20269c_underline_x_452",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
@@ -14293,7 +14338,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_452",
+      "id": "vm_2026_9월_r20269c_underline_x_453",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
@@ -14317,7 +14362,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_453",
+      "id": "vm_2026_9월_r20269c_underline_x_454",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
@@ -14341,7 +14386,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_454",
+      "id": "vm_2026_9월_r20269c_underline_x_455",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
@@ -14365,7 +14410,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_455",
+      "id": "vm_2026_9월_r20269c_underline_x_456",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
@@ -14389,7 +14434,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269d_box_x_456",
+      "id": "vm_2026_9월_r20269d_box_x_457",
       "yearKey": "2026_9월",
       "setId": "r20269d",
       "type": "box",
@@ -14413,7 +14458,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2026_9월_l20269a_bracket_A_457",
+      "id": "vm_2026_9월_l20269a_bracket_A_458",
       "yearKey": "2026_9월",
       "setId": "l20269a",
       "type": "bracket",
@@ -14492,7 +14537,7 @@
       ]
     },
     {
-      "id": "vm_2026_9월_l20269a_bracket_B_458",
+      "id": "vm_2026_9월_l20269a_bracket_B_459",
       "yearKey": "2026_9월",
       "setId": "l20269a",
       "type": "bracket",
@@ -14571,7 +14616,7 @@
       ]
     },
     {
-      "id": "vm_2026_9월_l20269a_underline_x_459",
+      "id": "vm_2026_9월_l20269a_underline_x_460",
       "yearKey": "2026_9월",
       "setId": "l20269a",
       "type": "underline",
@@ -14595,7 +14640,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269a_underline_x_460",
+      "id": "vm_2026_9월_l20269a_underline_x_461",
       "yearKey": "2026_9월",
       "setId": "l20269a",
       "type": "underline",
@@ -14619,7 +14664,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269a_underline_x_461",
+      "id": "vm_2026_9월_l20269a_underline_x_462",
       "yearKey": "2026_9월",
       "setId": "l20269a",
       "type": "underline",
@@ -14643,7 +14688,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269b_underline_x_462",
+      "id": "vm_2026_9월_l20269b_underline_x_463",
       "yearKey": "2026_9월",
       "setId": "l20269b",
       "type": "underline",
@@ -14667,7 +14712,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269b_underline_x_463",
+      "id": "vm_2026_9월_l20269b_underline_x_464",
       "yearKey": "2026_9월",
       "setId": "l20269b",
       "type": "underline",
@@ -14691,7 +14736,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269b_underline_x_464",
+      "id": "vm_2026_9월_l20269b_underline_x_465",
       "yearKey": "2026_9월",
       "setId": "l20269b",
       "type": "underline",
@@ -14715,7 +14760,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269b_underline_x_465",
+      "id": "vm_2026_9월_l20269b_underline_x_466",
       "yearKey": "2026_9월",
       "setId": "l20269b",
       "type": "underline",
@@ -14739,7 +14784,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_bracket_A_466",
+      "id": "vm_2026_9월_l20269c_bracket_A_467",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "bracket",
@@ -14797,7 +14842,7 @@
       ]
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_467",
+      "id": "vm_2026_9월_l20269c_underline_x_468",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
@@ -14821,7 +14866,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_468",
+      "id": "vm_2026_9월_l20269c_underline_x_469",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
@@ -14845,7 +14890,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_469",
+      "id": "vm_2026_9월_l20269c_underline_x_470",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
@@ -14869,7 +14914,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_470",
+      "id": "vm_2026_9월_l20269c_underline_x_471",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
@@ -14893,7 +14938,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_471",
+      "id": "vm_2026_9월_l20269c_underline_x_472",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
@@ -14917,7 +14962,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_472",
+      "id": "vm_2026_9월_l20269c_underline_x_473",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
@@ -14941,7 +14986,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_473",
+      "id": "vm_2026_9월_l20269c_underline_x_474",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
@@ -14965,7 +15010,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_474",
+      "id": "vm_2026_9월_l20269c_underline_x_475",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
@@ -14989,7 +15034,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_475",
+      "id": "vm_2026_9월_l20269d_underline_x_476",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
@@ -15013,7 +15058,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_476",
+      "id": "vm_2026_9월_l20269d_underline_x_477",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
@@ -15037,7 +15082,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_477",
+      "id": "vm_2026_9월_l20269d_underline_x_478",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
@@ -15061,7 +15106,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_478",
+      "id": "vm_2026_9월_l20269d_underline_x_479",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
@@ -15085,7 +15130,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_479",
+      "id": "vm_2026_9월_l20269d_underline_x_480",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
@@ -15109,7 +15154,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_480",
+      "id": "vm_2026_9월_l20269d_underline_x_481",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
@@ -15133,7 +15178,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_481",
+      "id": "vm_2026_9월_l20269d_underline_x_482",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
