@@ -1,27 +1,43 @@
 import { useEffect, useRef } from "react";
 import { CC, FIGURE_IMAGE_MAP } from "./constants";
 
-// ── 기호 밑줄 (/g 플래그 금지) ───────────────────────────
-const SYM_SPLIT = /([㉠-㉮ⓐ-ⓩ①-⑤])/;
-const SYM_TEST = /[㉠-㉮ⓐ-ⓩ①-⑤]/;
+// ── 기호 밑줄 + 영역 라벨 hide (/g 플래그 금지) ──
+// SYM_SPLIT: ㉠-㉮ⓐ-ⓩ①-⑤ + [A-F] 라벨 단독 path 안 단일 정규식 분리.
+//   hideLabels 플래그 안 라벨 [A-F] = visibility:hidden 적용 (글자 안 보임 +
+//   자리 유지) path → body / verse sentType 단독 적용 (RenderSent path 안 결정).
+const SYM_SPLIT = /([㉠-㉮ⓐ-ⓩ①-⑤]|\[[A-F]\])/;
+const SYM_TEST = /[㉠-㉮ⓐ-ⓩ①-⑤]|\[[A-F]\]/;
+const SYM_UNDERLINE_RE = /^[㉠-㉮ⓐ-ⓩ①-⑤]$/;
+const LABEL_RE = /^\[[A-F]\]$/;
 
-function Underlined({ text }) {
+function Underlined({ text, hideLabels }) {
   if (!SYM_TEST.test(text)) return <>{text}</>;
   const parts = text.split(SYM_SPLIT);
   return (
     <>
-      {parts.map((p, i) =>
-        SYM_TEST.test(p) ? (
-          <span
-            key={i}
-            style={{ textDecoration: "underline", textUnderlineOffset: "3px" }}
-          >
-            {p}
-          </span>
-        ) : (
-          <span key={i}>{p}</span>
-        ),
-      )}
+      {parts.map((p, i) => {
+        if (LABEL_RE.test(p)) {
+          if (hideLabels) {
+            return (
+              <span key={i} style={{ visibility: "hidden" }}>
+                {p}
+              </span>
+            );
+          }
+          return <span key={i}>{p}</span>;
+        }
+        if (SYM_UNDERLINE_RE.test(p)) {
+          return (
+            <span
+              key={i}
+              style={{ textDecoration: "underline", textUnderlineOffset: "3px" }}
+            >
+              {p}
+            </span>
+          );
+        }
+        return <span key={i}>{p}</span>;
+      })}
     </>
   );
 }
@@ -35,15 +51,16 @@ function stripSymTags(text) {
     .replace(/\[(?:도식|사진|그림|이미지)\s*:[^\]]+\]/g, "🖼");
 }
 
-function Lines({ text }) {
+function Lines({ text, hideLabels }) {
   const cleaned = stripSymTags(text || "");
-  if (!cleaned.includes("\n")) return <Underlined text={cleaned} />;
+  if (!cleaned.includes("\n"))
+    return <Underlined text={cleaned} hideLabels={hideLabels} />;
   const rows = cleaned.split("\n");
   return (
     <>
       {rows.map((row, i) => (
         <span key={i}>
-          <Underlined text={row} />
+          <Underlined text={row} hideLabels={hideLabels} />
           {i < rows.length - 1 && <br />}
         </span>
       ))}
@@ -143,7 +160,7 @@ function findSpanRanges(rawText, spanTexts) {
   return ranges;
 }
 
-function renderWithRanges(text, ranges, hlStyle) {
+function renderWithRanges(text, ranges, hlStyle, hideLabels) {
   if (!ranges || ranges.length === 0) return null;
   const parts = [];
   let cursor = 0;
@@ -161,10 +178,10 @@ function renderWithRanges(text, ranges, hlStyle) {
       {parts.map((p, i) =>
         p.hl ? (
           <span key={i} style={hlStyle} data-hl="true">
-            <Lines text={p.t} />
+            <Lines text={p.t} hideLabels={hideLabels} />
           </span>
         ) : (
-          <Lines key={i} text={p.t} />
+          <Lines key={i} text={p.t} hideLabels={hideLabels} />
         ),
       )}
     </>
@@ -175,11 +192,11 @@ function renderWithRanges(text, ranges, hlStyle) {
 //   spans: ["어구1", "어구2"] — text 내부 문자열
 //   반환: JSX — 모든 span 매칭 성공 시 해당 부분만 hlStyle
 //   매칭 실패(하나라도) 시 null → 호출측에서 전체 하이라이트 fallback
-function renderSpanParts(text, spans, hlStyle) {
+function renderSpanParts(text, spans, hlStyle, hideLabels) {
   if (!text || !spans || spans.length === 0) return null;
   const ranges = findSpanRanges(text, spans);
   if (!ranges || ranges.length === 0) return null;
-  return renderWithRanges(text, ranges, hlStyle);
+  return renderWithRanges(text, ranges, hlStyle, hideLabels);
 }
 
 // ── inline annotation 스타일 ──
@@ -195,14 +212,14 @@ const UL_STYLE = { textDecoration: "underline", textUnderlineOffset: "3px" };
 //   QuizPanel choice/bogi underline 사양 path 안 재사용 의무 export.
 //   Lines component dependency — PassagePanel 외부에서 사용 시 본 모듈 export
 //   path 안 단독 가능 (renderWithSymbols 없는 plain text 호출 path 한정).
-export function applyInlineAnns(text, anns) {
-  if (!anns.length) return <Lines text={text} />;
+export function applyInlineAnns(text, anns, hideLabels) {
+  if (!anns.length) return <Lines text={text} hideLabels={hideLabels} />;
   // 텍스트 내 등장 위치 순으로 정렬
   const sorted = anns
     .map((a) => ({ text: a.text, type: a.type, idx: text.indexOf(a.text) }))
     .filter((a) => a.idx >= 0)
     .sort((a, b) => a.idx - b.idx);
-  if (!sorted.length) return <Lines text={text} />;
+  if (!sorted.length) return <Lines text={text} hideLabels={hideLabels} />;
 
   const parts = [];
   let cursor = 0;
@@ -221,16 +238,16 @@ export function applyInlineAnns(text, anns) {
         if (p.type === "box")
           return (
             <span key={i} style={BOX_STYLE}>
-              <Lines text={p.t} />
+              <Lines text={p.t} hideLabels={hideLabels} />
             </span>
           );
         if (p.type === "underline")
           return (
             <span key={i} style={UL_STYLE}>
-              <Lines text={p.t} />
+              <Lines text={p.t} hideLabels={hideLabels} />
             </span>
           );
-        return <Lines key={i} text={p.t} />;
+        return <Lines key={i} text={p.t} hideLabels={hideLabels} />;
       })}
     </>
   );
@@ -355,7 +372,7 @@ function RenderSent({ sent, sel, anns }) {
         {lines.map((line, i) => {
           // spans 있으면 라인별 부분 하이라이트 시도
           if (pal && spans) {
-            const spanJsx = renderSpanParts(line, spans, hlStyle);
+            const spanJsx = renderSpanParts(line, spans, hlStyle, true);
             if (spanJsx) {
               // span 매칭 성공 → 라인 전체 outline 없이 span만 강조
               return <div key={i}>{spanJsx}</div>;
@@ -364,9 +381,9 @@ function RenderSent({ sent, sel, anns }) {
             return (
               <div key={i} style={hlStyle} data-hl="true">
                 {anns.length > 0 ? (
-                  applyInlineAnns(line, anns)
+                  applyInlineAnns(line, anns, true)
                 ) : (
-                  <Lines text={line} />
+                  <Lines text={line} hideLabels={true} />
                 )}
               </div>
             );
@@ -375,9 +392,9 @@ function RenderSent({ sent, sel, anns }) {
           return (
             <div key={i} style={pal ? hlStyle : {}}>
               {anns.length > 0 ? (
-                applyInlineAnns(line, anns)
+                applyInlineAnns(line, anns, true)
               ) : (
-                <Lines text={line} />
+                <Lines text={line} hideLabels={true} />
               )}
             </div>
           );
@@ -434,14 +451,18 @@ function RenderSent({ sent, sel, anns }) {
   if (pal && spans) {
     // box/underline annotation보다 span 하이라이트 우선
     // (annotation은 span 매칭 실패 시 fallback 경로에서 처리)
-    const spanJsx = renderSpanParts(t, spans, hlStyle);
+    const spanJsx = renderSpanParts(t, spans, hlStyle, true);
     if (spanJsx) {
       return <span>{spanJsx} </span>;
     }
     // span 매칭 실패 → 전체 하이라이트 fallback
   }
   const content =
-    anns.length > 0 ? applyInlineAnns(t, anns) : <Lines text={t} />;
+    anns.length > 0 ? (
+      applyInlineAnns(t, anns, true)
+    ) : (
+      <Lines text={t} hideLabels={true} />
+    );
   return (
     <span style={hlStyle} data-hl={pal ? "true" : undefined}>
       {content}{" "}
@@ -449,57 +470,44 @@ function RenderSent({ sent, sel, anns }) {
   );
 }
 
-// ── bracket 유틸 (Phase 2.1) ──
-// hideLabel 결정 path: body sentType sent.t 안 "[X]" 인라인 substring 존재 ↔ true.
-//   결함 3 정정: inline_label visual_marks 안 위치 결함 (l2023d 영역 종료 마커
-//   위치 안 [X] 라벨 vm) 회피 path → 본문 텍스트 단독 source.
-//   workTag sentType t === "[X]" 단독 = 영역 종료 마커 = hide trigger NOT.
-function _hasInlineBracketLabel(sents, br) {
-  if (!sents || sents.length === 0) return false;
-  const pattern = "[" + br.label + "]";
-  for (const s of sents) {
-    const st = s.sentType || "body";
-    if (st !== "body") continue; // workTag END marker 제외
-    if ((s.t || "").includes(pattern)) return true;
-  }
-  return false;
-}
-
-function getBracketInfo(sentId, brackets, sentIds, sents) {
+// ── bracket 유틸 (Phase 2.2 — 통합 시각 path) ──
+// hideLabel path 폐기 (결함 B+C 정정): body / verse sent.t 안 "[X]" 인라인 텍스트
+//   = RenderSent path 안 hideLabels=true 안 visibility:hidden 적용 (자리 유지) →
+//   좌측 측면 라벨 단독 노출 (l2022a 형태) 통일 path. hide trigger 결정 X.
+function getBracketInfo(sentId, brackets, sentIds) {
   for (const br of brackets) {
     const from = sentIds.indexOf(br.sentFrom);
     const to = sentIds.indexOf(br.sentTo);
     const cur = sentIds.indexOf(sentId);
     if (from < 0 || to < 0 || cur < 0) continue;
     if (cur >= from && cur <= to) {
-      const hideLabel = _hasInlineBracketLabel(sents, br);
-      return { label: br.label, isFirst: cur === from, hideLabel };
+      return { label: br.label, isFirst: cur === from };
     }
   }
   return null;
 }
 
 // 통합 bracket 컨테이너 (결함 1 정정): body + verse + workTag 등 모든 sentType
-//   단일 시각 형태 (좌측 큰 대괄호 [) path. verse 전용 borderLeft 분기 폐기.
-//   결함 2 정정: 라벨 위치 = 좌측 측면 (대괄호 바깥쪽) + 세로 중앙 정렬 path.
-//   children: bracket 안 sents 안 mixed 렌더 결과 (body <p> + block sent 등).
-function BracketContainer({ label, hideLabel, children }) {
+//   단일 시각 형태 (좌측 큰 대괄호 [) path.
+// 결함 A 정정 (option 2): 외부 wrapper paddingLeft 44px 통일 path 안 bracket
+//   안/밖 본문 동일 좌측 정렬. 라벨/대괄호 = container 좌측 음수 위치 (wrapper
+//   padding 영역 안 노출).
+function BracketContainer({ label, children }) {
   return (
     <div
       style={{
         position: "relative",
-        paddingLeft: "42px", // 라벨 영역 (~24px) + 대괄호 영역 (~18px)
         paddingTop: "4px",
         paddingBottom: "4px",
         margin: "4px 0",
       }}
     >
-      {/* 좌측 큰 대괄호 [ — paddingLeft 안쪽 18px 위치 */}
+      {/* 좌측 큰 대괄호 [ — container 좌측 외부 18px 위치 */}
       <span
         aria-hidden
         style={{
           position: "absolute",
-          left: "24px",
+          left: "-18px",
           top: 0,
           bottom: 0,
           width: "10px",
@@ -511,23 +519,21 @@ function BracketContainer({ label, hideLabel, children }) {
         }}
       />
       {/* 라벨 [X] — 대괄호 바깥 좌측 + 세로 중앙 정렬 */}
-      {!hideLabel && (
-        <span
-          style={{
-            position: "absolute",
-            left: 0,
-            top: "50%",
-            transform: "translateY(-50%)",
-            fontSize: "0.82rem",
-            fontWeight: 700,
-            color: "#555",
-            padding: "0 2px",
-            lineHeight: 1,
-          }}
-        >
-          [{label}]
-        </span>
-      )}
+      <span
+        style={{
+          position: "absolute",
+          left: "-44px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          fontSize: "0.82rem",
+          fontWeight: 700,
+          color: "#555",
+          padding: "0 2px",
+          lineHeight: 1,
+        }}
+      >
+        [{label}]
+      </span>
       {children}
     </div>
   );
@@ -590,11 +596,10 @@ function renderAll(sents, sel, annotations, visualMarks) {
   }
 
   // sent별 메타 사전 계산: sentType, isBlock, brInfo
-  //   hideLabel 결정 path = body 텍스트 단독 source (sents 4번째 인자 정합).
   const items = sents.map((s) => {
     const st = s.sentType || (s.type === "image" ? "image" : "body");
     const isBlock = BLOCK_TYPES.has(st);
-    const brInfo = getBracketInfo(s.id, brackets, sentIds, sents);
+    const brInfo = getBracketInfo(s.id, brackets, sentIds);
     const skip = _isAreaEndMarker(s);
     return { sent: s, st, isBlock, brInfo, skip };
   });
@@ -655,8 +660,6 @@ function renderAll(sents, sel, annotations, visualMarks) {
     }
     const curLabel = items[i].brInfo ? items[i].brInfo.label : null;
     const group = [];
-    let isFirstInBracket = false;
-    let hideLabel = false;
     while (i < items.length) {
       const it = items[i];
       if (it.skip) {
@@ -665,10 +668,6 @@ function renderAll(sents, sel, annotations, visualMarks) {
       }
       const lbl = it.brInfo ? it.brInfo.label : null;
       if (lbl !== curLabel) break;
-      if (it.brInfo && it.brInfo.isFirst && !group.length) {
-        isFirstInBracket = true;
-        hideLabel = it.brInfo.hideLabel;
-      }
       group.push(it);
       i++;
     }
@@ -676,11 +675,7 @@ function renderAll(sents, sel, annotations, visualMarks) {
     const keyHead = group[0].sent.id;
     if (curLabel) {
       result.push(
-        <BracketContainer
-          key={"br_" + keyHead}
-          label={curLabel}
-          hideLabel={!isFirstInBracket || hideLabel}
-        >
+        <BracketContainer key={"br_" + keyHead} label={curLabel}>
           {renderGroupChildren(group, "br_" + keyHead)}
         </BracketContainer>,
       );
@@ -760,6 +755,10 @@ export default function PassagePanel({ passageSet, sel, mode }) {
           lineHeight: "2.0",
           color: "#1f2937",
           fontFamily: "'Noto Serif KR', serif",
+          // 결함 A 정정 (option 2): bracket 안/밖 본문 좌측 정렬 통일 path 안
+          // wrapper paddingLeft 44px 확보 → BracketContainer 라벨 left:-44px,
+          // 대괄호 left:-18px 음수 위치 path 안 wrapper padding 영역 안 노출.
+          paddingLeft: "44px",
         }}
       >
         {renderAll(passageSet.sents || [], sel, annotations, visualMarks)}
