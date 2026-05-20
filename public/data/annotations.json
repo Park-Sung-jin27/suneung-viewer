@@ -783,8 +783,8 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r2023as9",
-        "sentTo": "r2023as13"
+        "sentFrom": "r2023as8",
+        "sentTo": "r2023as12"
       },
       {
         "type": "underline",
@@ -928,7 +928,7 @@
         "type": "bracket",
         "label": "C",
         "sentFrom": "l2023bs54",
-        "sentTo": "l2023bs56"
+        "sentTo": "l2023bs57"
       },
       {
         "type": "underline",

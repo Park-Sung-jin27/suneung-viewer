@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-20T07:02:21.617Z",
-  "audit_commit": "2d636c869223536e0ff3cd1a967dd9c41e09c69f",
+  "generated_at": "2026-05-20T07:26:33.638Z",
+  "audit_commit": "f9ccfcb5ee0ff0f422c935cb81c894210165b1ba",
   "data_commit": "2d636c869223536e0ff3cd1a967dd9c41e09c69f",
-  "ann_commit": "bb1c2ea399231316769a5410cbffffd3bd7ddc4e",
+  "ann_commit": "f9ccfcb5ee0ff0f422c935cb81c894210165b1ba",
   "viewer_commit": "09ea66aa4f6e3a39bfa47012257189bca104b046",
   "mixed_commit": false,
   "audit_includes_data": true,
@@ -17,9 +17,9 @@
       "bracket": 72
     },
     "by_status": {
-      "verified": 435,
+      "verified": 436,
       "non_blocking": 1,
-      "needs_human": 26,
+      "needs_human": 25,
       "broken": 4
     },
     "release_blocking": 126
@@ -12417,24 +12417,24 @@
       "label": "A",
       "target": "sent_range",
       "sentIds": [
+        "r2023as8",
         "r2023as9",
         "r2023as10",
         "r2023as11",
-        "r2023as12",
-        "r2023as13"
+        "r2023as12"
       ],
       "start": {
-        "sentId": "r2023as9",
+        "sentId": "r2023as8",
         "offset": 0
       },
       "end": {
-        "sentId": "r2023as13",
-        "offset": 34
+        "sentId": "r2023as12",
+        "offset": 46
       },
       "source": "migrated_from_annotations",
-      "status": "needs_human",
+      "status": "verified",
       "release_block": true,
-      "audit_source": "ANNOTATION_BRACKET + SOURCE_INLINE_OUT_OF_RANGE",
+      "audit_source": "ANNOTATION_BRACKET",
       "referenced_in": [
         {
           "qId": 2,
@@ -12498,15 +12498,16 @@
       "sentIds": [
         "l2023bs54",
         "l2023bs55",
-        "l2023bs56"
+        "l2023bs56",
+        "l2023bs57"
       ],
       "start": {
         "sentId": "l2023bs54",
         "offset": 0
       },
       "end": {
-        "sentId": "l2023bs56",
-        "offset": 70
+        "sentId": "l2023bs57",
+        "offset": 147
       },
       "source": "migrated_from_annotations",
       "status": "verified",
