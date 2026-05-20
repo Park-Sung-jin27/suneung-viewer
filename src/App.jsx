@@ -18,7 +18,6 @@ import WrongNote from "./WrongNote";
 import PatternReport from "./PatternReport";
 import Payment from "./Payment";
 import Banner from "./Banner";
-import Landing from "./Landing";
 import AcademyPreview from "./AcademyPreview";
 import ResultPage from "./ResultPage";
 import FeedbackButton from "./FeedbackButton";
@@ -780,8 +779,11 @@ function MainPage({ isPro, user }) {
             animation: "fadeUp 0.6s ease 0.3s both",
           }}
         >
+          {/* 비로그인 / 로그인 무관 — 베타 테스터 신청 (Tally B2C). */}
           <button
-            onClick={() => navigate("/report")}
+            onClick={() =>
+              window.open(TALLY_URL, "_blank", "noopener,noreferrer")
+            }
             style={{
               padding: "10px 22px",
               borderRadius: "10px",
@@ -794,8 +796,27 @@ function MainPage({ isPro, user }) {
               fontFamily: "'Noto Sans KR', sans-serif",
             }}
           >
-            📊 내 패턴 분석 보기
+            🚀 베타 테스터 신청
           </button>
+          {/* 로그인 사용자 단독 — 내 패턴 분석. */}
+          {user && (
+            <button
+              onClick={() => navigate("/report")}
+              style={{
+                padding: "10px 22px",
+                borderRadius: "10px",
+                background: "transparent",
+                color: MC.green,
+                border: `1.5px solid ${MC.line}`,
+                fontWeight: "700",
+                fontSize: "0.87rem",
+                cursor: "pointer",
+                fontFamily: "'Noto Sans KR', sans-serif",
+              }}
+            >
+              📊 내 패턴 분석 보기
+            </button>
+          )}
           <button
             onClick={() => navigate("/payment")}
             style={{
@@ -833,7 +854,7 @@ function MainPage({ isPro, user }) {
           >
             <span>🆓</span>
             <span>
-              <strong>2026·2025학년도 수능</strong> 무료 — 전체 시험은 Pro에서
+              <strong>최근 5개년 수능</strong> 무료 — 전체 시험은 Pro에서
             </span>
             <button
               onClick={() => navigate("/payment")}
@@ -915,7 +936,9 @@ function MainPage({ isPro, user }) {
             </h2>
           </div>
           <span style={{ fontSize: "0.72rem", color: MC.subtle }}>
-            {isPro ? "전체 개방" : `무료 2개 · Pro ${yearKeys.length - 2}개`}
+            {isPro
+              ? "전체 개방"
+              : `무료 ${FREE_YEARS.length}개 · Pro ${Math.max(0, yearKeys.length - FREE_YEARS.length)}개`}
           </span>
         </div>
 
@@ -1954,20 +1977,15 @@ export default function App() {
 
   return (
     <Routes>
+      {/* / 경로: 비로그인 포함 MainPage 단독 노출 path.
+          5개년 무료 수능 즉시 view 가능 → 모두의창업 심사 등 외부 평가 정합.
+          베타 테스터 신청 (Tally B2C) = MainPage hero CTA 안 통합. */}
       <Route
         path="/"
         element={
-          !user ? (
-            <Landing
-              onStart={() =>
-                window.open(TALLY_URL, "_blank", "noopener,noreferrer")
-              }
-            />
-          ) : (
-            <Layout user={user} onLogout={handleLogout}>
-              <MainPage isPro={isPro} user={user} />
-            </Layout>
-          )
+          <Layout user={user} onLogout={handleLogout}>
+            <MainPage isPro={isPro} user={user} />
+          </Layout>
         }
       />
       <Route path="/auth" element={user ? <AuthRedirect /> : <AuthPage />} />
