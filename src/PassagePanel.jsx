@@ -449,31 +449,29 @@ function RenderSent({ sent, sel, anns }) {
   );
 }
 
-// ── bracket 유틸: sentIds 배열에서 범위 판정 ──
-// set 전체 sents 안 "[label]" inline text 박힘 검출 path.
-//   body sentType t 안 "[A]" 인라인 ([A]\n... 본문 워크태그) → 라벨 생략 ✓
-//   workTag sentType t === "[A]" 단독 → 영역 종료 마커 path → 라벨 생략 NOT ✗
-//   bracket range 안/밖 무관 path (l2022d 안 annotation range=s14~s27 +
-//   workTag [A]=s28 range 밖 path 정합 의무 path 안 영역 라벨 NOT 식별).
-function _hasInlineBracketLabel(sents, br) {
-  if (!sents || sents.length === 0) return false;
-  const pattern = "[" + br.label + "]";
-  for (const s of sents) {
-    const st = s.sentType || "body";
-    if (st !== "body") continue; // workTag 단독 마커 제외
-    if ((s.t || "").includes(pattern)) return true;
+// ── bracket 유틸: visual_marks 단독 source path (Phase 2) ──
+// visual_marks 안 type=inline_label entry 존재 시 → 본문 안 이미 [X] 노출 path →
+//   bracket 라벨 별도 노출 NOT (중복 방지).
+//   ex) l2024a body s1 t="[A]\n황상과..." 안 inline_label vm 존재 → hideLabel=true.
+function _hasInlineLabelVm(visualMarks, label) {
+  if (!visualMarks || visualMarks.length === 0) return false;
+  for (const m of visualMarks) {
+    if (m.type !== "inline_label") continue;
+    if (m.label !== label) continue;
+    if (m.status === "broken") continue; // broken vm 무시
+    return true;
   }
   return false;
 }
 
-function getBracketInfo(sentId, brackets, sentIds, sents) {
+function getBracketInfo(sentId, brackets, sentIds, visualMarks) {
   for (const br of brackets) {
     const from = sentIds.indexOf(br.sentFrom);
     const to = sentIds.indexOf(br.sentTo);
     const cur = sentIds.indexOf(sentId);
     if (from < 0 || to < 0 || cur < 0) continue;
     if (cur >= from && cur <= to) {
-      const hideLabel = sents ? _hasInlineBracketLabel(sents, br) : false;
+      const hideLabel = _hasInlineLabelVm(visualMarks, br.label);
       return { label: br.label, isFirst: cur === from, hideLabel };
     }
   }
@@ -534,13 +532,31 @@ function renderBodyBracket(s, brInfo, sel, anns) {
   );
 }
 
-function renderAll(sents, sel, annotations) {
+function renderAll(sents, sel, annotations, visualMarks) {
   // target field 호환 path: target 미존재 시 'passage' default.
   // choice/bogi target annotation 은 PassagePanel 영역 외 — QuizPanel 처리.
   const passageAnns = annotations.filter(
     (a) => !a.target || a.target === "passage",
   );
-  const brackets = passageAnns.filter((a) => a.type === "bracket");
+  // bracket source: visual_marks 단독 (Phase 2 — annotations.json bracket path 폐기).
+  //   sent_range target + status≠broken 만 채택.
+  //   adapt: vm.sentIds[0] → sentFrom, vm.sentIds[last] → sentTo (기존 내부 포맷 정합).
+  const vmList = Array.isArray(visualMarks) ? visualMarks : [];
+  const brackets = vmList
+    .filter(
+      (m) =>
+        m.type === "bracket" &&
+        m.target === "sent_range" &&
+        m.status !== "broken" &&
+        Array.isArray(m.sentIds) &&
+        m.sentIds.length > 0,
+    )
+    .map((m) => ({
+      label: m.label,
+      sentFrom: m.sentIds[0],
+      sentTo: m.sentIds[m.sentIds.length - 1],
+    }));
+  // underline / box / marker 등 — annotations.json path 유지 (Phase 2.5 마이그레이션).
   const inlineTypes = new Set(["box", "underline"]);
   const sentIds = sents.map((s) => s.id);
 
@@ -576,7 +592,7 @@ function renderAll(sents, sel, annotations) {
   const items = sents.map((s) => {
     const st = s.sentType || (s.type === "image" ? "image" : "body");
     const isBlock = BLOCK_TYPES.has(st);
-    const brInfo = getBracketInfo(s.id, brackets, sentIds, sents);
+    const brInfo = getBracketInfo(s.id, brackets, sentIds, vmList);
     const skip = _isAreaEndMarker(s);
     return { sent: s, st, isBlock, brInfo, skip };
   });
@@ -737,6 +753,7 @@ export default function PassagePanel({ passageSet, sel, mode }) {
 
   if (!passageSet) return null;
   const annotations = passageSet.annotations ?? [];
+  const visualMarks = passageSet.visualMarks ?? [];
   // 풀이 모드에서 sel이 있어도 '전체 제출' 전(submitted 알 수 없으므로)
   // QuizPanel이 submitted 전엔 onSelChange를 호출하지 않으므로 sel은 null 유지됨
   // → 별도 처리 없이 sel 그대로 사용
@@ -766,7 +783,7 @@ export default function PassagePanel({ passageSet, sel, mode }) {
           fontFamily: "'Noto Serif KR', serif",
         }}
       >
-        {renderAll(passageSet.sents || [], sel, annotations)}
+        {renderAll(passageSet.sents || [], sel, annotations, visualMarks)}
       </div>
     </div>
   );

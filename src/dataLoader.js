@@ -1,6 +1,7 @@
 // dataLoader.js
 let _cache = null;
 let _annCache = null;
+let _vmCache = null;
 
 async function _load() {
   if (_cache) return _cache;
@@ -66,6 +67,42 @@ async function _loadAnn() {
     _annCache = {};
   }
   return _annCache;
+}
+
+// visual_marks.json optional — 없어도 앱 정상 동작 path.
+//   schema: { generated_at, audit_commit, ..., marks: [ {yearKey, setId, type, ...} ] }
+//   Phase 2 source — bracket / inline_label 단독 진실 path.
+async function _loadVm() {
+  if (_vmCache !== null) return _vmCache;
+  try {
+    const res = await fetch("/data/visual_marks.json");
+    if (!res.ok) {
+      _vmCache = [];
+      return _vmCache;
+    }
+    const j = await res.json();
+    _vmCache = Array.isArray(j?.marks) ? j.marks : [];
+  } catch {
+    _vmCache = [];
+  }
+  return _vmCache;
+}
+
+// visual_marks 안 set 단위 묶음 안 yearData 안 set.visualMarks 영역 주입.
+//   release set 단독 필터 X — bypass path 도 동일하게 visualMarks 영역 노출.
+function _attachVisualMarks(yearData, yearKey, allMarks) {
+  const byset = {};
+  for (const m of allMarks) {
+    if (m?.yearKey !== yearKey || !m?.setId) continue;
+    (byset[m.setId] ||= []).push(m);
+  }
+  for (const sec of ["reading", "literature"]) {
+    for (const set of yearData[sec] || []) {
+      const setId = set.setId || set.id;
+      if (!setId) continue;
+      set.visualMarks = byset[setId] || [];
+    }
+  }
 }
 
 // annotations를 해당 year의 set.annotations로 주입
@@ -139,6 +176,11 @@ export async function loadYear(yearKey, options = {}) {
     const annAll = await _loadAnn();
     _attachAnnotations(yd, annAll[yearKey]);
     yd._annBuilt = true;
+  }
+  if (!yd._vmBuilt) {
+    const vmAll = await _loadVm();
+    _attachVisualMarks(yd, yearKey, vmAll);
+    yd._vmBuilt = true;
   }
   // 매 호출 시 함수형 filter — bypass 시 원본 그대로, 비bypass 시 release-only.
   // yd._origReading / _origLiterature 백업 불필요 — yd.reading 자체는 mutate 0.
