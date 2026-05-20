@@ -192,15 +192,20 @@ function auditSet(data, ann, yearKey, setId) {
 
     // SOURCE audit 1: body workTag [X] position
     // workTag with content matching bracket label "[X]" should be either:
-    //   (a) immediately BEFORE bracket start  (start marker style, e.g., l2022a)
-    //   (b) immediately AFTER bracket end     (end marker style, e.g., l2022d)
-    //   (c) INSIDE bracket range              (composite work boundary, e.g., l2023b)
+    //   (a) BEFORE bracket start  (start marker style, e.g., l2022a)
+    //         — tolerance 사양 안 1~2 sent gap 허용 path (예: l2022a [B] = workTag idx 7 + fromIdx 9)
+    //   (b) AFTER bracket end     (end marker style, e.g., l2022d)
+    //         — tolerance 사양 안 1~2 sent gap 허용 path
+    //   (c) INSIDE bracket range  (composite work boundary, e.g., l2023b)
+    const WORKTAG_GAP_TOLERANCE = 3; // immediately adjacent (1) + 1~2 sent gap (2~3)
     const workTagIdx = sents.findIndex(
       (s) => s.sentType === "workTag" && s.t === labelStr,
     );
     if (workTagIdx >= 0) {
-      const isStartMarker = workTagIdx === fromIdx - 1;
-      const isEndMarker = workTagIdx === toIdx + 1;
+      const isStartMarker =
+        workTagIdx < fromIdx && fromIdx - workTagIdx <= WORKTAG_GAP_TOLERANCE;
+      const isEndMarker =
+        workTagIdx > toIdx && workTagIdx - toIdx <= WORKTAG_GAP_TOLERANCE;
       const isInsideRange = workTagIdx >= fromIdx && workTagIdx <= toIdx;
       if (!isStartMarker && !isEndMarker && !isInsideRange) {
         const suggested = {};
