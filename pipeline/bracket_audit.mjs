@@ -122,6 +122,22 @@ function auditSet(data, ann, yearKey, setId) {
 
   if (brackets.length === 0) return findings;
 
+  // ── DETECTOR_FALSE_POSITIVE 사전 조건 (set-level, 한 번만 계산) ────────────
+  // Rule A.1 — SOURCE_BODY_MARKER_MISSING 오탐 조건
+  //   (a) sub-sent domain: set 안 이미 분리된 sub-sent 존재 (s{N}_{M} 형식)
+  //   (b) overflow sent domain: set 안 미분리 overflow verse sent 존재 (>5 lines)
+  //   (c) all-untyped range: annotation 범위 안 모든 sent.sentType 미설정
+  const hasSubSentsInSet = sents.some((s) => /s\d+_\d+$/.test(s.id));
+  const hasOverflowSentsInSet = sents.some(
+    (s) => s.sentType === "verse" && (s.t || "").split("\n").length > 5,
+  );
+  // Rule A.2 — SOURCE_WORKTAG_POSITION_MISMATCH 오탐 조건
+  //   composite 작품 set: (가)/(나)/(다) style workTag 2개 이상
+  const compositeWorkTagCount = sents.filter(
+    (s) => s.sentType === "workTag" && /^\([가-힣]\)$/.test(s.t || ""),
+  ).length;
+  const isCompositeWork = compositeWorkTagCount >= 2;
+
   for (const b of brackets) {
     const label = b.label || "?";
     const sentFrom = b.sentFrom;
@@ -208,21 +224,35 @@ function auditSet(data, ann, yearKey, setId) {
         workTagIdx > toIdx && workTagIdx - toIdx <= WORKTAG_GAP_TOLERANCE;
       const isInsideRange = workTagIdx >= fromIdx && workTagIdx <= toIdx;
       if (!isStartMarker && !isEndMarker && !isInsideRange) {
-        const suggested = {};
-        const beforeStart = sents[workTagIdx + 1]?.id || null;
-        const afterEnd = sents[workTagIdx - 1]?.id || null;
-        if (beforeStart) suggested.sentFrom_if_start_marker = beforeStart;
-        if (afterEnd) suggested.sentTo_if_end_marker = afterEnd;
-        findings.push({
-          code: "SOURCE_WORKTAG_POSITION_MISMATCH",
-          family: "VISUAL_MARK_DEFECT",
-          severity: "CRITICAL",
-          yearKey,
-          setId,
-          label,
-          msg: `bracket [${label}] workTag (${sents[workTagIdx].id}, idx ${workTagIdx}) not adjacent to nor inside range ${fromIdx}~${toIdx}`,
-          suggested,
-        });
+        if (isCompositeWork) {
+          // Rule A.2: composite 작품 set — workTag position mismatch 는 오탐
+          findings.push({
+            code: "SOURCE_WORKTAG_POSITION_MISMATCH",
+            family: "DETECTOR_FALSE_POSITIVE",
+            severity: "INFO",
+            yearKey,
+            setId,
+            label,
+            compositeWorkTagCount,
+            msg: `bracket [${label}] workTag position mismatch — composite 작품 구조 (${compositeWorkTagCount}개 work-divider workTag, false positive)`,
+          });
+        } else {
+          const suggested = {};
+          const beforeStart = sents[workTagIdx + 1]?.id || null;
+          const afterEnd = sents[workTagIdx - 1]?.id || null;
+          if (beforeStart) suggested.sentFrom_if_start_marker = beforeStart;
+          if (afterEnd) suggested.sentTo_if_end_marker = afterEnd;
+          findings.push({
+            code: "SOURCE_WORKTAG_POSITION_MISMATCH",
+            family: "VISUAL_MARK_DEFECT",
+            severity: "CRITICAL",
+            yearKey,
+            setId,
+            label,
+            msg: `bracket [${label}] workTag (${sents[workTagIdx].id}, idx ${workTagIdx}) not adjacent to nor inside range ${fromIdx}~${toIdx}`,
+            suggested,
+          });
+        }
       }
     }
 
@@ -264,16 +294,40 @@ function auditSet(data, ann, yearKey, setId) {
     // SOURCE audit 3: body [X] missing
     const hasInBody = sents.some((s) => s.t.includes(labelStr));
     if (!hasInBody) {
-      findings.push({
-        code: "SOURCE_BODY_MARKER_MISSING",
-        family: "SOURCE_TEXT_DEFECT",
-        severity: "CRITICAL",
-        yearKey,
-        setId,
-        label,
-        msg: `bracket [${label}] no ${labelStr} marker in body — annotation excess 의심`,
-        action: "review_for_removal",
-      });
+      // Rule A.1: annotation 단독 시각화 — 오탐 여부 판정
+      //   (a) sub-sent domain, (b) overflow sent domain, (c) all-untyped range
+      const allRangeUntyped =
+        range.length > 0 && range.every((s) => !s.sentType);
+      const isFalsePositive =
+        hasSubSentsInSet || hasOverflowSentsInSet || allRangeUntyped;
+      if (isFalsePositive) {
+        const reason = hasSubSentsInSet
+          ? "sub-sent domain"
+          : hasOverflowSentsInSet
+            ? "overflow sent domain"
+            : "all-untyped sent range";
+        findings.push({
+          code: "SOURCE_BODY_MARKER_MISSING",
+          family: "DETECTOR_FALSE_POSITIVE",
+          severity: "INFO",
+          yearKey,
+          setId,
+          label,
+          reason,
+          msg: `bracket [${label}] no ${labelStr} marker — annotation 단독 시각화 (false positive: ${reason})`,
+        });
+      } else {
+        findings.push({
+          code: "SOURCE_BODY_MARKER_MISSING",
+          family: "SOURCE_TEXT_DEFECT",
+          severity: "CRITICAL",
+          yearKey,
+          setId,
+          label,
+          msg: `bracket [${label}] no ${labelStr} marker in body — annotation excess 의심`,
+          action: "review_for_removal",
+        });
+      }
     }
 
     // ANNOTATION audit 3: range sent count outlier

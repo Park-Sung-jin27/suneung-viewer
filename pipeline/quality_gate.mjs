@@ -1227,8 +1227,12 @@ const SEVERITY_MAP = {
 // ─── bracket_audit integration (3-tier classification) ───────────────────
 try {
   const annJson = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));
-  const bracketFindings = auditBrackets(data, annJson);
+  // scope/year 필터 정합: --scope 또는 --year 지정 시 같은 연도만 감사
+  const bracketOpts = SCOPE || YEAR ? { years: yearsToCheck } : {};
+  const bracketFindings = auditBrackets(data, annJson, bracketOpts);
   for (const bf of bracketFindings) {
+    // DETECTOR_FALSE_POSITIVE (severity=INFO) — quality_gate 집계 제외
+    if (bf.family === "DETECTOR_FALSE_POSITIVE") continue;
     // bf.code already prefixed: SOURCE_* or ANNOTATION_*
     issue(
       bf.code,

@@ -376,11 +376,24 @@ function applyBracketAuditCrossCheck(marks) {
     const codes = fs_.map((f) => f.code).join(",");
     mark.audit_source += " + " + codes;
 
-    const hasCritical = fs_.some((f) => f.severity === "CRITICAL");
-    if (hasCritical) {
-      // DEAD_* / INVERTED_RANGE → broken; else needs_human
-      const isStructural = fs_.some((f) => /DEAD|INVERTED/.test(f.code));
+    // DETECTOR_FALSE_POSITIVE 제외한 실제 CRITICAL 여부 판정
+    const hasRealCritical = fs_.some(
+      (f) =>
+        f.severity === "CRITICAL" && f.family !== "DETECTOR_FALSE_POSITIVE",
+    );
+    const hasFalsePositive = fs_.some(
+      (f) => f.family === "DETECTOR_FALSE_POSITIVE",
+    );
+
+    if (hasRealCritical) {
+      // 구조 결함(DEAD/INVERTED) → broken; 기타 CRITICAL → needs_human
+      const isStructural = fs_.some(
+        (f) => f.severity === "CRITICAL" && /DEAD|INVERTED/.test(f.code),
+      );
       mark.status = isStructural ? "broken" : "needs_human";
+    } else if (hasFalsePositive) {
+      // annotation 단독 시각화 정합 — status = "verified"
+      mark.status = "verified";
     } else if (mark.status === "verified") {
       mark.status = "needs_human";
     }
