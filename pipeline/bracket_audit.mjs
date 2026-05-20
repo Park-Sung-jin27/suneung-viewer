@@ -100,6 +100,26 @@ function auditSet(data, ann, yearKey, setId) {
   const annotations = (ann[yearKey] && ann[yearKey][setId]) || [];
   const brackets = annotations.filter((x) => x.type === "bracket");
 
+  // SOURCE audit: verse line overflow (sent-level, no bracket required)
+  // 단일 verse sent.t 안 line count > 5 path 안 통합 sent 결함 의심 (sent break 의무 path 잠재)
+  for (const s of sents) {
+    if (s.sentType !== "verse") continue;
+    const lineCount = (s.t || "").split("\n").length;
+    if (lineCount > 5) {
+      findings.push({
+        code: "SOURCE_VERSE_LINE_OVERFLOW",
+        tier: "SOURCE",
+        severity: "WARNING",
+        yearKey,
+        setId,
+        label: null,
+        sentId: s.id,
+        lineCount,
+        msg: `verse sent ${s.id} contains ${lineCount} lines (>5 outlier — sent break 의무 path 잠재)`,
+      });
+    }
+  }
+
   if (brackets.length === 0) return findings;
 
   for (const b of brackets) {

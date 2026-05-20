@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-20T00:56:23.382Z",
-  "audit_commit": "748677caef1c803bbeff7a5f4b53a97b66b763de",
+  "generated_at": "2026-05-20T01:14:18.042Z",
+  "audit_commit": "499c231cf653f4c0ca7a189f3b7ee9b3cdba7fa5",
   "data_commit": "b2ac7b87d8747b897dd9b45077280eca8d0a341e",
-  "ann_commit": "fb11d663da66332a5acb3b4d39f35787581d74c8",
+  "ann_commit": "499c231cf653f4c0ca7a189f3b7ee9b3cdba7fa5",
   "viewer_commit": "09ea66aa4f6e3a39bfa47012257189bca104b046",
   "mixed_commit": false,
   "audit_includes_data": true,
@@ -7061,15 +7061,20 @@
       "label": "B",
       "target": "sent_range",
       "sentIds": [
-        "l2024_32_34s4"
+        "l2024_32_34s4_1",
+        "l2024_32_34s4_2",
+        "l2024_32_34s4_3",
+        "l2024_32_34s4_4",
+        "l2024_32_34s4_5",
+        "l2024_32_34s4_6"
       ],
       "start": {
-        "sentId": "l2024_32_34s4",
+        "sentId": "l2024_32_34s4_1",
         "offset": 0
       },
       "end": {
-        "sentId": "l2024_32_34s4",
-        "offset": 343
+        "sentId": "l2024_32_34s4_6",
+        "offset": 18
       },
       "source": "migrated_from_annotations",
       "status": "needs_human",
@@ -7101,15 +7106,19 @@
       "label": "C",
       "target": "sent_range",
       "sentIds": [
-        "l2024_32_34s4"
+        "l2024_32_34s4_11",
+        "l2024_32_34s4_12",
+        "l2024_32_34s4_13",
+        "l2024_32_34s4_14",
+        "l2024_32_34s4_15"
       ],
       "start": {
-        "sentId": "l2024_32_34s4",
+        "sentId": "l2024_32_34s4_11",
         "offset": 0
       },
       "end": {
-        "sentId": "l2024_32_34s4",
-        "offset": 343
+        "sentId": "l2024_32_34s4_15",
+        "offset": 21
       },
       "source": "migrated_from_annotations",
       "status": "needs_human",
