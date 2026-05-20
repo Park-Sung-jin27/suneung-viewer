@@ -1204,20 +1204,24 @@ const SEVERITY_MAP = {
   W_analysis_placeholder_real: "CRITICAL",
   W_analysis_placeholder_suspect: "WARNING",
 
-  // ── bracket_audit.mjs integration (3-tier classification) ──
-  // SOURCE tier — all_data 안 sents 원문 marker 정합
+  // ── bracket_audit.mjs integration (Pipeline v2 — 8 issue family) ──
+  // 1. SOURCE_TEXT_DEFECT (Lock S1~S4) — sent.t 안 source-level 결함
   SOURCE_BODY_MARKER_MISSING: "CRITICAL",
-  SOURCE_WORKTAG_POSITION_MISMATCH: "CRITICAL",
   SOURCE_INLINE_OUT_OF_RANGE: "WARNING",
+  // 2. SENT_SEGMENTATION_DEFECT (Lock SP1~SP3) — sent split 의무 path
   SOURCE_VERSE_LINE_OVERFLOW: "WARNING",
-  // ANNOTATION tier — annotations.json span 정합
+  // 3. VISUAL_MARK_DEFECT — workTag/marker 위치 사양
+  SOURCE_WORKTAG_POSITION_MISMATCH: "CRITICAL",
+  // 4. ANNOTATION_REFERENCE_DEFECT (Lock A1~A5) — annotations.json reference 결함
   ANNOTATION_DEAD_SENTFROM: "CRITICAL",
   ANNOTATION_DEAD_SENTTO: "CRITICAL",
   ANNOTATION_INVERTED_RANGE: "CRITICAL",
   ANNOTATION_NON_BODY_IN_RANGE: "WARNING",
   ANNOTATION_RANGE_SIZE_OUTLIER: "WARNING",
-  // RENDER tier — visual_audit.mjs (별도 도구, integration 사양 X)
-  // AUDIT tier — false positive 정정 영역 (placeholder)
+  // 5. DOWNSTREAM_REFERENCE_DEFECT — cs_ids/cs_spans 깨진 참조 (별도 회기 검출 path)
+  // 6. RENDERER_DEFECT — visual_audit RENDER_* (별도 도구 path)
+  // 7. DETECTOR_FALSE_POSITIVE — 도구 안 오탐 (release 영향 NOT, INFO 단독)
+  // 8. RELEASE_POLICY_DEFECT — release_block vs non_blocking 분리 path
 };
 
 // ─── bracket_audit integration (3-tier classification) ───────────────────

@@ -108,7 +108,7 @@ function auditSet(data, ann, yearKey, setId) {
     if (lineCount > 5) {
       findings.push({
         code: "SOURCE_VERSE_LINE_OVERFLOW",
-        tier: "SOURCE",
+        family: "SENT_SEGMENTATION_DEFECT",
         severity: "WARNING",
         yearKey,
         setId,
@@ -133,7 +133,7 @@ function auditSet(data, ann, yearKey, setId) {
     if (!fromOk) {
       findings.push({
         code: "ANNOTATION_DEAD_SENTFROM",
-        tier: "ANNOTATION",
+        family: "ANNOTATION_REFERENCE_DEFECT",
         severity: "CRITICAL",
         yearKey,
         setId,
@@ -144,7 +144,7 @@ function auditSet(data, ann, yearKey, setId) {
     if (!toOk) {
       findings.push({
         code: "ANNOTATION_DEAD_SENTTO",
-        tier: "ANNOTATION",
+        family: "ANNOTATION_REFERENCE_DEFECT",
         severity: "CRITICAL",
         yearKey,
         setId,
@@ -159,7 +159,7 @@ function auditSet(data, ann, yearKey, setId) {
     if (fromIdx > toIdx) {
       findings.push({
         code: "ANNOTATION_INVERTED_RANGE",
-        tier: "ANNOTATION",
+        family: "ANNOTATION_REFERENCE_DEFECT",
         severity: "CRITICAL",
         yearKey,
         setId,
@@ -178,7 +178,7 @@ function auditSet(data, ann, yearKey, setId) {
     if (nonBody.length > 0) {
       findings.push({
         code: "ANNOTATION_NON_BODY_IN_RANGE",
-        tier: "ANNOTATION",
+        family: "ANNOTATION_REFERENCE_DEFECT",
         severity: "WARNING",
         yearKey,
         setId,
@@ -215,7 +215,7 @@ function auditSet(data, ann, yearKey, setId) {
         if (afterEnd) suggested.sentTo_if_end_marker = afterEnd;
         findings.push({
           code: "SOURCE_WORKTAG_POSITION_MISMATCH",
-          tier: "SOURCE",
+          family: "VISUAL_MARK_DEFECT",
           severity: "CRITICAL",
           yearKey,
           setId,
@@ -244,7 +244,7 @@ function auditSet(data, ann, yearKey, setId) {
       if (firstInline.idx < fromIdx || lastInline.idx > toIdx) {
         findings.push({
           code: "SOURCE_INLINE_OUT_OF_RANGE",
-          tier: "SOURCE",
+          family: "SOURCE_TEXT_DEFECT",
           severity: "WARNING",
           yearKey,
           setId,
@@ -266,7 +266,7 @@ function auditSet(data, ann, yearKey, setId) {
     if (!hasInBody) {
       findings.push({
         code: "SOURCE_BODY_MARKER_MISSING",
-        tier: "SOURCE",
+        family: "SOURCE_TEXT_DEFECT",
         severity: "CRITICAL",
         yearKey,
         setId,
@@ -281,7 +281,7 @@ function auditSet(data, ann, yearKey, setId) {
     if (rangeSize > 30) {
       findings.push({
         code: "ANNOTATION_RANGE_SIZE_OUTLIER",
-        tier: "ANNOTATION",
+        family: "ANNOTATION_REFERENCE_DEFECT",
         severity: "WARNING",
         yearKey,
         setId,
@@ -327,19 +327,29 @@ if (isMain) {
   const commits = getCommitHashes();
 
   const bySev = { CRITICAL: 0, WARNING: 0 };
-  const byTier = { SOURCE: 0, ANNOTATION: 0 };
+  const byFamily = {
+    SOURCE_TEXT_DEFECT: 0,
+    SENT_SEGMENTATION_DEFECT: 0,
+    VISUAL_MARK_DEFECT: 0,
+    ANNOTATION_REFERENCE_DEFECT: 0,
+    DOWNSTREAM_REFERENCE_DEFECT: 0,
+    RENDERER_DEFECT: 0,
+    DETECTOR_FALSE_POSITIVE: 0,
+    RELEASE_POLICY_DEFECT: 0,
+  };
   const byCode = {};
   const bySet = {};
   for (const f of findings) {
     bySev[f.severity] = (bySev[f.severity] || 0) + 1;
-    byTier[f.tier] = (byTier[f.tier] || 0) + 1;
+    const fam = f.family || "UNCATEGORIZED";
+    byFamily[fam] = (byFamily[fam] || 0) + 1;
     byCode[f.code] = (byCode[f.code] || 0) + 1;
     const key = `${f.yearKey}/${f.setId}`;
     bySet[key] = (bySet[key] || 0) + 1;
   }
 
   console.log("═".repeat(60));
-  console.log(" BRACKET AUDIT REPORT (3-tier classification)");
+  console.log(" BRACKET AUDIT REPORT (Pipeline v2 — 8 family)");
   console.log("═".repeat(60));
   console.log("[ Commit chain ]");
   console.log(`  audit_commit: ${commits.audit_commit.substring(0, 8)}`);
@@ -354,9 +364,13 @@ if (isMain) {
   console.log(`  🔴 CRITICAL: ${bySev.CRITICAL || 0}`);
   console.log(`  🟡 WARNING:  ${bySev.WARNING || 0}`);
 
-  console.log("\n[ Tier ]");
-  console.log(`  📂 SOURCE:     ${byTier.SOURCE || 0}`);
-  console.log(`  🏷  ANNOTATION: ${byTier.ANNOTATION || 0}`);
+  console.log("\n[ Family (Pipeline v2 — 8 issue family) ]");
+  for (const [fam, count] of Object.entries(byFamily).sort(
+    (a, b) => b[1] - a[1],
+  )) {
+    if (count === 0) continue;
+    console.log(`  ${fam}: ${count}`);
+  }
 
   console.log("\n[ By Code ]");
   for (const [code, count] of Object.entries(byCode).sort(
@@ -369,7 +383,7 @@ if (isMain) {
   for (const f of findings.slice(0, 50)) {
     const sev = f.severity === "CRITICAL" ? "🔴" : "🟡";
     console.log(
-      `  ${sev} [${f.tier}] ${f.yearKey}/${f.setId} [${f.label}] ${f.code} :: ${f.msg}`,
+      `  ${sev} [${f.family || "?"}] ${f.yearKey}/${f.setId} [${f.label}] ${f.code} :: ${f.msg}`,
     );
   }
   if (findings.length > 50) {
@@ -383,7 +397,7 @@ if (isMain) {
       total_findings: findings.length,
       critical: bySev.CRITICAL || 0,
       warning: bySev.WARNING || 0,
-      by_tier: byTier,
+      by_family: byFamily,
       by_code: byCode,
       by_set: bySet,
     },
