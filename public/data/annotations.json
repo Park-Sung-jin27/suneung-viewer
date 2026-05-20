@@ -951,26 +951,26 @@
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2023cs7",
-        "sentTo": "l2023cs8"
+        "sentFrom": "l2023cs6",
+        "sentTo": "l2023cs7"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2023cs11",
-        "sentTo": "l2023cs13"
+        "sentFrom": "l2023cs10",
+        "sentTo": "l2023cs12"
       },
       {
         "type": "bracket",
         "label": "D",
-        "sentFrom": "l2023cs15",
-        "sentTo": "l2023cs16"
+        "sentFrom": "l2023cs14",
+        "sentTo": "l2023cs14"
       },
       {
         "type": "bracket",
         "label": "E",
-        "sentFrom": "l2023cs26",
-        "sentTo": "l2023cs28"
+        "sentFrom": "l2023cs28",
+        "sentTo": "l2023cs29"
       }
     ],
     "l2023d": [
