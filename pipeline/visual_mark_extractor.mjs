@@ -48,9 +48,27 @@ const dryRun = args.includes("--dry-run");
 // ─── commit chain ─────────────────────────────────────────────────────────
 function safeGit(cmd) {
   try {
-    return execSync(cmd, { encoding: "utf8" }).trim();
+    return execSync(cmd, {
+      encoding: "utf8",
+      stdio: ["pipe", "pipe", "pipe"],
+    }).trim();
   } catch {
     return null;
+  }
+}
+function isAncestor(maybeAncestor, descendant) {
+  // 정합 사양: maybeAncestor commit 안 descendant commit 안 ancestor 사양
+  // → descendant 안 maybeAncestor 변경 사양 모두 포함 path 정합
+  if (!maybeAncestor || maybeAncestor === "unknown") return false;
+  if (!descendant || descendant === "unknown") return false;
+  if (maybeAncestor === descendant) return true;
+  try {
+    execSync(`git merge-base --is-ancestor ${maybeAncestor} ${descendant}`, {
+      stdio: ["pipe", "pipe", "pipe"],
+    });
+    return true; // exit code 0 = ancestor
+  } catch {
+    return false; // exit code != 0 = not ancestor
   }
 }
 function getCommitChain() {
@@ -60,10 +78,25 @@ function getCommitChain() {
   const ann_commit =
     safeGit("git log -1 --format=%H -- " + ANN_PATH) || "unknown";
   const viewer_commit = safeGit("git log -1 --format=%H -- src/") || "unknown";
+  // ancestry check path 정합 — audit 안 data/ann/viewer 모두 포함 path
+  const audit_includes_data = isAncestor(data_commit, audit_commit);
+  const audit_includes_ann = isAncestor(ann_commit, audit_commit);
+  const audit_includes_viewer = isAncestor(viewer_commit, audit_commit);
   const mixed_commit =
-    audit_commit !== "unknown" &&
-    (audit_commit !== data_commit || audit_commit !== viewer_commit);
-  return { audit_commit, data_commit, ann_commit, viewer_commit, mixed_commit };
+    audit_commit === "unknown" ||
+    !audit_includes_data ||
+    !audit_includes_ann ||
+    !audit_includes_viewer;
+  return {
+    audit_commit,
+    data_commit,
+    ann_commit,
+    viewer_commit,
+    mixed_commit,
+    audit_includes_data,
+    audit_includes_ann,
+    audit_includes_viewer,
+  };
 }
 
 // ─── 데이터 로드 ──────────────────────────────────────────────────────────
