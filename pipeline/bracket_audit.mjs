@@ -192,16 +192,33 @@ function auditSet(data, ann, yearKey, setId) {
       (s) => s.sentType !== "body" && s.sentType !== "verse",
     );
     if (nonBody.length > 0) {
-      findings.push({
-        code: "ANNOTATION_NON_BODY_IN_RANGE",
-        family: "ANNOTATION_REFERENCE_DEFECT",
-        severity: "WARNING",
-        yearKey,
-        setId,
-        label,
-        count: nonBody.length,
-        msg: `bracket [${label}] range contains ${nonBody.length} non-body/verse sents (off-by-one 의심)`,
-      });
+      // Rule B: composite 작품 set + sub-marker workTag(<제N수> 등) 포함 범위 → 오탐
+      const hasSubMarkerInRange = nonBody.some(
+        (s) => s.sentType === "workTag" && /^<[^>]+>$/.test(s.t || ""),
+      );
+      if (isCompositeWork && hasSubMarkerInRange) {
+        findings.push({
+          code: "ANNOTATION_NON_BODY_IN_RANGE",
+          family: "DETECTOR_FALSE_POSITIVE",
+          severity: "INFO",
+          yearKey,
+          setId,
+          label,
+          count: nonBody.length,
+          msg: `bracket [${label}] range contains ${nonBody.length} non-body/verse sents — composite 작품 안 sub-marker workTag 포함 (false positive)`,
+        });
+      } else {
+        findings.push({
+          code: "ANNOTATION_NON_BODY_IN_RANGE",
+          family: "ANNOTATION_REFERENCE_DEFECT",
+          severity: "WARNING",
+          yearKey,
+          setId,
+          label,
+          count: nonBody.length,
+          msg: `bracket [${label}] range contains ${nonBody.length} non-body/verse sents (off-by-one 의심)`,
+        });
+      }
     }
 
     const labelStr = `[${label}]`;

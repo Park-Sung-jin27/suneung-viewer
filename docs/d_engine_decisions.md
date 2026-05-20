@@ -115,30 +115,30 @@ RULE_7 카테고리 유지. 단:
 
 ### 17개 active samples
 
-| error_type | 개수 | sample_id |
-|---|---|---|
-| NONE | 6 | R1_001, R2_001, R1_004, R2_003, R2_005, R2_006 |
-| P_MISMATCH | 4 | R1_002, R1_005, R2_004, DOMAIN_002 |
-| E_CONDITION_MISSING | 2 | R1_003, R1_009 |
-| E_COMPOSITE_ERROR | 2 | R2_002, R2_010 |
-| E_LOGIC_UNCLEAR | 1 | R1_006 |
-| E_EVIDENCE_WEAK | 1 | R2_008 |
-| E_DOMAIN_INVALID | 1 | DOMAIN_001 |
-| **합계** | **17** | |
+| error_type          | 개수   | sample_id                                      |
+| ------------------- | ------ | ---------------------------------------------- |
+| NONE                | 6      | R1_001, R2_001, R1_004, R2_003, R2_005, R2_006 |
+| P_MISMATCH          | 4      | R1_002, R1_005, R2_004, DOMAIN_002             |
+| E_CONDITION_MISSING | 2      | R1_003, R1_009                                 |
+| E_COMPOSITE_ERROR   | 2      | R2_002, R2_010                                 |
+| E_LOGIC_UNCLEAR     | 1      | R1_006                                         |
+| E_EVIDENCE_WEAK     | 1      | R2_008                                         |
+| E_DOMAIN_INVALID    | 1      | DOMAIN_001                                     |
+| **합계**            | **17** |                                                |
 
 ### Discarded 2건 (β 전환, 추적 보존)
 
-| sample_id | planned | reason |
-|---|---|---|
-| gold_R1_010 | E_LOGIC_UNCLEAR | 3/3 NONE 판정. 엔진 RULE_7 미감지 확정 |
+| sample_id   | planned                      | reason                                                 |
+| ----------- | ---------------------------- | ------------------------------------------------------ |
+| gold_R1_010 | E_LOGIC_UNCLEAR              | 3/3 NONE 판정. 엔진 RULE_7 미감지 확정                 |
 | gold_R1_008 | P_MISMATCH (R4→R2 흡수 의도) | P_MISMATCH 분포 4건 충분으로 폐기. 의제 4 분석 시 참조 |
 
 ### Pending 2건 (5/15 후 보강 또는 폐기)
 
-| sample_id | planned |
-|---|---|
-| gold_R1_007 | NONE |
-| gold_R2_007 | NONE |
+| sample_id   | planned |
+| ----------- | ------- |
+| gold_R1_007 | NONE    |
+| gold_R2_007 | NONE    |
 
 ---
 
@@ -157,6 +157,38 @@ D fail 시 Step3 재호출 1회
 ```
 
 **핵심 원칙**: "apply 는 바보처럼, D엔진은 집요하게"
+
+---
+
+## D엔진 위치 (파이프라인 안 진입 path)
+
+Gate 0 Source Fidelity 통과 사후 의무:
+
+```
+1. step2 extract              (PDF → text)
+2. step2_postprocess          (SENT_SEGMENTATION_DEFECT 검출 + 정정)
+   + step2_postprocess_vNext  (overflow split / DEAD_CSSPAN retroactive patch)
+3. Gate 0                     (source_text_contract + sent_split_contract 정합)
+   ── Gate 0 통과 사후만 ↓ (L_DE_1 lock) ──────────────────────────────────
+4. step3 analysis             (Claude 해설 생성: pat + analysis)
+5. D엔진 Lite                 (pat 의미 + analysis_body vs ok/pat 모순 반증)
+6. step4 csids + cs_spans     (Evidence QA 별도 path, L_DE_2)
+7. step5 verify + gate1
+8. step6 merge
+9. step7 deploy
+```
+
+### 영구 lock
+
+```
+L_DE_1: D엔진 호출 = Gate 0 통과 사후만 의무
+         Gate 0 미통과 set 안 D엔진 호출 금지
+         (source 오염 set 안 pat 판정은 신뢰 불가)
+
+L_DE_2: D엔진 input 안 cs_ids / referenced_sentences / cs_spans 부재 path
+         → Evidence QA 별도 검증 의무
+         (D엔진은 pat/analysis 반증만 담당, Evidence 검증 미담당)
+```
 
 ---
 
@@ -189,3 +221,4 @@ D fail 시 Step3 재호출 1회
 
 - v1.0 (2026-04-25): 의제 1·2·3 최종 결정 (대표 직접 재가)
 - v2 (2026-04-27): Phase 1 Gold 정합성 복구 (17개 확정)
+- v3 (2026-05-20): D엔진 위치 명시 (L_DE_1 / L_DE_2 영구 lock, Pipeline v2 commit 7)
