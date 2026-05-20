@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-20T07:26:33.638Z",
-  "audit_commit": "f9ccfcb5ee0ff0f422c935cb81c894210165b1ba",
+  "generated_at": "2026-05-20T09:17:49.641Z",
+  "audit_commit": "e7dbdaab6908de8c3fe75c194e2085fa08725a9d",
   "data_commit": "2d636c869223536e0ff3cd1a967dd9c41e09c69f",
-  "ann_commit": "f9ccfcb5ee0ff0f422c935cb81c894210165b1ba",
+  "ann_commit": "e7dbdaab6908de8c3fe75c194e2085fa08725a9d",
   "viewer_commit": "09ea66aa4f6e3a39bfa47012257189bca104b046",
   "mixed_commit": false,
   "audit_includes_data": true,
@@ -17,9 +17,9 @@
       "bracket": 72
     },
     "by_status": {
-      "verified": 436,
+      "verified": 437,
       "non_blocking": 1,
-      "needs_human": 25,
+      "needs_human": 24,
       "broken": 4
     },
     "release_blocking": 126
@@ -11057,9 +11057,9 @@
         "offset": 20
       },
       "source": "migrated_from_annotations",
-      "status": "needs_human",
+      "status": "verified",
       "release_block": true,
-      "audit_source": "ANNOTATION_BRACKET + SOURCE_WORKTAG_POSITION_MISMATCH",
+      "audit_source": "ANNOTATION_BRACKET",
       "referenced_in": [
         {
           "qId": 19,
@@ -11750,7 +11750,7 @@
       "source": "migrated_from_annotations",
       "status": "needs_human",
       "release_block": true,
-      "audit_source": "ANNOTATION_BRACKET + ANNOTATION_NON_BODY_IN_RANGE",
+      "audit_source": "ANNOTATION_BRACKET + ANNOTATION_NON_BODY_IN_RANGE,SOURCE_BODY_MARKER_MISSING",
       "referenced_in": [
         {
           "qId": 27,
