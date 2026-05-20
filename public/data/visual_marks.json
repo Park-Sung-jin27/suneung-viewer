@@ -1,25 +1,28 @@
 {
-  "generated_at": "2026-05-20T00:36:23.303Z",
-  "audit_commit": "b4b9a5f759c8743132848de6e3c3308c76cd4e0d",
+  "generated_at": "2026-05-20T00:56:23.382Z",
+  "audit_commit": "748677caef1c803bbeff7a5f4b53a97b66b763de",
   "data_commit": "b2ac7b87d8747b897dd9b45077280eca8d0a341e",
   "ann_commit": "fb11d663da66332a5acb3b4d39f35787581d74c8",
   "viewer_commit": "09ea66aa4f6e3a39bfa47012257189bca104b046",
-  "mixed_commit": true,
+  "mixed_commit": false,
+  "audit_includes_data": true,
+  "audit_includes_ann": true,
+  "audit_includes_viewer": true,
   "summary": {
-    "total": 481,
+    "total": 482,
     "by_type": {
       "inline_label": 55,
-      "bracket": 87,
+      "bracket": 88,
       "box": 27,
       "underline": 312
     },
     "by_status": {
       "verified": 443,
-      "needs_human": 33,
+      "needs_human": 34,
       "non_blocking": 1,
       "broken": 4
     },
-    "release_blocking": 141
+    "release_blocking": 142
   },
   "marks": [
     {
@@ -29,7 +32,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r2026d_s11"],
+      "sentIds": [
+        "r2026d_s11"
+      ],
       "start": {
         "sentId": "r2026d_s11",
         "offset": 0
@@ -81,7 +86,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r2024as4"],
+      "sentIds": [
+        "r2024as4"
+      ],
       "start": {
         "sentId": "r2024as4",
         "offset": 0
@@ -118,7 +125,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l2024_18_21s1"],
+      "sentIds": [
+        "l2024_18_21s1"
+      ],
       "start": {
         "sentId": "l2024_18_21s1",
         "offset": 0
@@ -160,7 +169,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l2024_28_31s6"],
+      "sentIds": [
+        "l2024_28_31s6"
+      ],
       "start": {
         "sentId": "l2024_28_31s6",
         "offset": 151
@@ -212,7 +223,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["l2024_28_31s7"],
+      "sentIds": [
+        "l2024_28_31s7"
+      ],
       "start": {
         "sentId": "l2024_28_31s7",
         "offset": 64
@@ -265,7 +278,9 @@
       "type": "inline_label",
       "label": "C",
       "target": "text_span",
-      "sentIds": ["l2024_28_31s7"],
+      "sentIds": [
+        "l2024_28_31s7"
+      ],
       "start": {
         "sentId": "l2024_28_31s7",
         "offset": 200
@@ -317,7 +332,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r2023as8"],
+      "sentIds": [
+        "r2023as8"
+      ],
       "start": {
         "sentId": "r2023as8",
         "offset": 0
@@ -349,7 +366,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r2023bs5"],
+      "sentIds": [
+        "r2023bs5"
+      ],
       "start": {
         "sentId": "r2023bs5",
         "offset": 0
@@ -381,7 +400,11 @@
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l2023bs3", "l2023bs4", "l2023bs5"],
+      "sentIds": [
+        "l2023bs3",
+        "l2023bs4",
+        "l2023bs5"
+      ],
       "start": {
         "sentId": "l2023bs3",
         "offset": 0
@@ -512,7 +535,9 @@
       "type": "inline_label",
       "label": "C",
       "target": "text_span",
-      "sentIds": ["l2023bs56"],
+      "sentIds": [
+        "l2023bs56"
+      ],
       "start": {
         "sentId": "l2023bs56",
         "offset": 49
@@ -564,7 +589,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l2023cs2"],
+      "sentIds": [
+        "l2023cs2"
+      ],
       "start": {
         "sentId": "l2023cs2",
         "offset": 31
@@ -596,7 +623,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["l2023cs6"],
+      "sentIds": [
+        "l2023cs6"
+      ],
       "start": {
         "sentId": "l2023cs6",
         "offset": 0
@@ -629,7 +658,9 @@
       "type": "inline_label",
       "label": "C",
       "target": "text_span",
-      "sentIds": ["l2023cs10"],
+      "sentIds": [
+        "l2023cs10"
+      ],
       "start": {
         "sentId": "l2023cs10",
         "offset": 0
@@ -662,7 +693,9 @@
       "type": "inline_label",
       "label": "D",
       "target": "text_span",
-      "sentIds": ["l2023cs14"],
+      "sentIds": [
+        "l2023cs14"
+      ],
       "start": {
         "sentId": "l2023cs14",
         "offset": 0
@@ -695,7 +728,9 @@
       "type": "inline_label",
       "label": "E",
       "target": "text_span",
-      "sentIds": ["l2023cs28"],
+      "sentIds": [
+        "l2023cs28"
+      ],
       "start": {
         "sentId": "l2023cs28",
         "offset": 22
@@ -732,7 +767,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l2023ds23"],
+      "sentIds": [
+        "l2023ds23"
+      ],
       "start": {
         "sentId": "l2023ds23",
         "offset": 0
@@ -769,7 +806,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["l2023ds25"],
+      "sentIds": [
+        "l2023ds25"
+      ],
       "start": {
         "sentId": "l2023ds25",
         "offset": 0
@@ -812,7 +851,9 @@
       "type": "inline_label",
       "label": "C",
       "target": "text_span",
-      "sentIds": ["l2023ds28"],
+      "sentIds": [
+        "l2023ds28"
+      ],
       "start": {
         "sentId": "l2023ds28",
         "offset": 0
@@ -855,7 +896,9 @@
       "type": "inline_label",
       "label": "D",
       "target": "text_span",
-      "sentIds": ["l2023ds31"],
+      "sentIds": [
+        "l2023ds31"
+      ],
       "start": {
         "sentId": "l2023ds31",
         "offset": 0
@@ -898,7 +941,9 @@
       "type": "inline_label",
       "label": "E",
       "target": "text_span",
-      "sentIds": ["l2023ds33"],
+      "sentIds": [
+        "l2023ds33"
+      ],
       "start": {
         "sentId": "l2023ds33",
         "offset": 0
@@ -941,7 +986,9 @@
       "type": "inline_label",
       "label": "F",
       "target": "text_span",
-      "sentIds": ["l2023ds36"],
+      "sentIds": [
+        "l2023ds36"
+      ],
       "start": {
         "sentId": "l2023ds36",
         "offset": 0
@@ -983,7 +1030,13 @@
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2022as3", "l2022as4", "l2022as5", "l2022as6", "l2022as7"],
+      "sentIds": [
+        "l2022as3",
+        "l2022as4",
+        "l2022as5",
+        "l2022as6",
+        "l2022as7"
+      ],
       "start": {
         "sentId": "l2022as3",
         "offset": 0
@@ -1094,7 +1147,11 @@
       "type": "bracket",
       "label": "E",
       "target": "sent_range",
-      "sentIds": ["l2022as21", "l2022as22", "l2022as23"],
+      "sentIds": [
+        "l2022as21",
+        "l2022as22",
+        "l2022as23"
+      ],
       "start": {
         "sentId": "l2022as21",
         "offset": 0
@@ -1131,7 +1188,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l2022bs2"],
+      "sentIds": [
+        "l2022bs2"
+      ],
       "start": {
         "sentId": "l2022bs2",
         "offset": 155
@@ -1183,7 +1242,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l2022cs4"],
+      "sentIds": [
+        "l2022cs4"
+      ],
       "start": {
         "sentId": "l2022cs4",
         "offset": 0
@@ -1255,7 +1316,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["l2022cs10"],
+      "sentIds": [
+        "l2022cs10"
+      ],
       "start": {
         "sentId": "l2022cs10",
         "offset": 0
@@ -1414,7 +1477,11 @@
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2022ds36", "l2022ds37", "l2022ds38"],
+      "sentIds": [
+        "l2022ds36",
+        "l2022ds37",
+        "l2022ds38"
+      ],
       "start": {
         "sentId": "l2022ds36",
         "offset": 0
@@ -1476,7 +1543,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r20226bs24"],
+      "sentIds": [
+        "r20226bs24"
+      ],
       "start": {
         "sentId": "r20226bs24",
         "offset": 9
@@ -1523,7 +1592,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r20226ds23"],
+      "sentIds": [
+        "r20226ds23"
+      ],
       "start": {
         "sentId": "r20226ds23",
         "offset": 36
@@ -1550,7 +1621,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l20226as24"],
+      "sentIds": [
+        "l20226as24"
+      ],
       "start": {
         "sentId": "l20226as24",
         "offset": 158
@@ -1597,7 +1670,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l20226bs40"],
+      "sentIds": [
+        "l20226bs40"
+      ],
       "start": {
         "sentId": "l20226bs40",
         "offset": 95
@@ -1689,7 +1764,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["l20226bs41"],
+      "sentIds": [
+        "l20226bs41"
+      ],
       "start": {
         "sentId": "l20226bs41",
         "offset": 123
@@ -1781,7 +1858,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l20226cs16"],
+      "sentIds": [
+        "l20226cs16"
+      ],
       "start": {
         "sentId": "l20226cs16",
         "offset": 250
@@ -1813,7 +1892,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l20236es6"],
+      "sentIds": [
+        "l20236es6"
+      ],
       "start": {
         "sentId": "l20236es6",
         "offset": 0
@@ -1865,7 +1946,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["l20236es7"],
+      "sentIds": [
+        "l20236es7"
+      ],
       "start": {
         "sentId": "l20236es7",
         "offset": 0
@@ -1898,7 +1981,9 @@
       "type": "inline_label",
       "label": "C",
       "target": "text_span",
-      "sentIds": ["l20236es8"],
+      "sentIds": [
+        "l20236es8"
+      ],
       "start": {
         "sentId": "l20236es8",
         "offset": 0
@@ -1936,7 +2021,9 @@
       "type": "inline_label",
       "label": "D",
       "target": "text_span",
-      "sentIds": ["l20236es10"],
+      "sentIds": [
+        "l20236es10"
+      ],
       "start": {
         "sentId": "l20236es10",
         "offset": 0
@@ -1979,7 +2066,9 @@
       "type": "inline_label",
       "label": "E",
       "target": "text_span",
-      "sentIds": ["l20236es11"],
+      "sentIds": [
+        "l20236es11"
+      ],
       "start": {
         "sentId": "l20236es11",
         "offset": 0
@@ -2105,7 +2194,11 @@
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l20246bs7", "l20246bs8", "l20246bs9"],
+      "sentIds": [
+        "l20246bs7",
+        "l20246bs8",
+        "l20246bs9"
+      ],
       "start": {
         "sentId": "l20246bs7",
         "offset": 0
@@ -2142,7 +2235,11 @@
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l20246bs16", "l20246bs17", "l20246bs18"],
+      "sentIds": [
+        "l20246bs16",
+        "l20246bs17",
+        "l20246bs18"
+      ],
       "start": {
         "sentId": "l20246bs16",
         "offset": 0
@@ -2175,7 +2272,11 @@
       "type": "bracket",
       "label": "C",
       "target": "sent_range",
-      "sentIds": ["l20246bs21", "l20246bs22", "l20246bs23"],
+      "sentIds": [
+        "l20246bs21",
+        "l20246bs22",
+        "l20246bs23"
+      ],
       "start": {
         "sentId": "l20246bs21",
         "offset": 0
@@ -2208,7 +2309,9 @@
       "type": "bracket",
       "label": "D",
       "target": "sent_range",
-      "sentIds": ["l20246bs34"],
+      "sentIds": [
+        "l20246bs34"
+      ],
       "start": {
         "sentId": "l20246bs34",
         "offset": 0
@@ -2246,7 +2349,9 @@
       "type": "bracket",
       "label": "E",
       "target": "sent_range",
-      "sentIds": ["l20246bs39"],
+      "sentIds": [
+        "l20246bs39"
+      ],
       "start": {
         "sentId": "l20246bs39",
         "offset": 0
@@ -2288,7 +2393,10 @@
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l20246cs2", "l20246cs3"],
+      "sentIds": [
+        "l20246cs2",
+        "l20246cs3"
+      ],
       "start": {
         "sentId": "l20246cs2",
         "offset": 0
@@ -2320,7 +2428,12 @@
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l20246cs9", "l20246cs10", "l20246cs11", "l20246cs12"],
+      "sentIds": [
+        "l20246cs9",
+        "l20246cs10",
+        "l20246cs11",
+        "l20246cs12"
+      ],
       "start": {
         "sentId": "l20246cs9",
         "offset": 0
@@ -2352,7 +2465,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r20249bs16"],
+      "sentIds": [
+        "r20249bs16"
+      ],
       "start": {
         "sentId": "r20249bs16",
         "offset": 0
@@ -2414,7 +2529,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["r20249bs21"],
+      "sentIds": [
+        "r20249bs21"
+      ],
       "start": {
         "sentId": "r20249bs21",
         "offset": 0
@@ -2466,7 +2583,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l20249as3"],
+      "sentIds": [
+        "l20249as3"
+      ],
       "start": {
         "sentId": "l20249as3",
         "offset": 64
@@ -2523,7 +2642,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["l20249as9"],
+      "sentIds": [
+        "l20249as9"
+      ],
       "start": {
         "sentId": "l20249as9",
         "offset": 161
@@ -2585,7 +2706,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r20256ds31"],
+      "sentIds": [
+        "r20256ds31"
+      ],
       "start": {
         "sentId": "r20256ds31",
         "offset": 0
@@ -2622,7 +2745,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r20269as6"],
+      "sentIds": [
+        "r20269as6"
+      ],
       "start": {
         "sentId": "r20269as6",
         "offset": 0
@@ -2669,7 +2794,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l20269as18"],
+      "sentIds": [
+        "l20269as18"
+      ],
       "start": {
         "sentId": "l20269as18",
         "offset": 0
@@ -2746,7 +2873,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["l20269as29"],
+      "sentIds": [
+        "l20269as29"
+      ],
       "start": {
         "sentId": "l20269as29",
         "offset": 0
@@ -2823,7 +2952,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l20269cs27"],
+      "sentIds": [
+        "l20269cs27"
+      ],
       "start": {
         "sentId": "l20269cs27",
         "offset": 0
@@ -2875,7 +3006,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l20266as20"],
+      "sentIds": [
+        "l20266as20"
+      ],
       "start": {
         "sentId": "l20266as20",
         "offset": 162
@@ -2922,7 +3055,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l20266bs15"],
+      "sentIds": [
+        "l20266bs15"
+      ],
       "start": {
         "sentId": "l20266bs15",
         "offset": 22
@@ -2959,7 +3094,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l20266ds4"],
+      "sentIds": [
+        "l20266ds4"
+      ],
       "start": {
         "sentId": "l20266ds4",
         "offset": 21
@@ -2991,7 +3128,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["l20266ds11"],
+      "sentIds": [
+        "l20266ds11"
+      ],
       "start": {
         "sentId": "l20266ds11",
         "offset": 18
@@ -3024,7 +3163,9 @@
       "type": "inline_label",
       "label": "C",
       "target": "text_span",
-      "sentIds": ["l20266ds18"],
+      "sentIds": [
+        "l20266ds18"
+      ],
       "start": {
         "sentId": "l20266ds18",
         "offset": 11
@@ -3052,7 +3193,9 @@
       "type": "inline_label",
       "label": "D",
       "target": "text_span",
-      "sentIds": ["l20266ds21"],
+      "sentIds": [
+        "l20266ds21"
+      ],
       "start": {
         "sentId": "l20266ds21",
         "offset": 17
@@ -3080,7 +3223,9 @@
       "type": "inline_label",
       "label": "E",
       "target": "text_span",
-      "sentIds": ["l20266ds24"],
+      "sentIds": [
+        "l20266ds24"
+      ],
       "start": {
         "sentId": "l20266ds24",
         "offset": 14
@@ -3117,7 +3262,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l2014cs18"],
+      "sentIds": [
+        "l2014cs18"
+      ],
       "start": {
         "sentId": "l2014cs18",
         "offset": 0
@@ -3139,7 +3286,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r2021as7"],
+      "sentIds": [
+        "r2021as7"
+      ],
       "start": {
         "sentId": "r2021as7",
         "offset": 64
@@ -3186,7 +3335,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["r2021bs12"],
+      "sentIds": [
+        "r2021bs12"
+      ],
       "start": {
         "sentId": "r2021bs12",
         "offset": 0
@@ -3213,7 +3364,9 @@
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
-      "sentIds": ["l2021as18"],
+      "sentIds": [
+        "l2021as18"
+      ],
       "start": {
         "sentId": "l2021as18",
         "offset": 10
@@ -3295,7 +3448,9 @@
       "type": "inline_label",
       "label": "B",
       "target": "text_span",
-      "sentIds": ["l2021as60"],
+      "sentIds": [
+        "l2021as60"
+      ],
       "start": {
         "sentId": "l2021as60",
         "offset": 26
@@ -3372,7 +3527,9 @@
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2026a_s3"],
+      "sentIds": [
+        "r2026a_s3"
+      ],
       "start": {
         "sentId": "r2026a_s3",
         "offset": 0
@@ -3394,7 +3551,9 @@
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2026b_s34"],
+      "sentIds": [
+        "r2026b_s34"
+      ],
       "start": {
         "sentId": "r2026b_s34",
         "offset": 0
@@ -3416,7 +3575,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2026b_s3"],
+      "sentIds": [
+        "r2026b_s3"
+      ],
       "start": {
         "sentId": "r2026b_s3",
         "offset": 0
@@ -3438,7 +3599,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2026b_s5"],
+      "sentIds": [
+        "r2026b_s5"
+      ],
       "start": {
         "sentId": "r2026b_s5",
         "offset": 0
@@ -3460,7 +3623,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2026b_s12"],
+      "sentIds": [
+        "r2026b_s12"
+      ],
       "start": {
         "sentId": "r2026b_s12",
         "offset": 0
@@ -3482,7 +3647,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2026b_s24"],
+      "sentIds": [
+        "r2026b_s24"
+      ],
       "start": {
         "sentId": "r2026b_s24",
         "offset": 0
@@ -3504,7 +3671,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2026b_s36"],
+      "sentIds": [
+        "r2026b_s36"
+      ],
       "start": {
         "sentId": "r2026b_s36",
         "offset": 0
@@ -3526,7 +3695,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2026b_s26"],
+      "sentIds": [
+        "r2026b_s26"
+      ],
       "start": {
         "sentId": "r2026b_s26",
         "offset": 0
@@ -3548,7 +3719,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2026c_s3"],
+      "sentIds": [
+        "r2026c_s3"
+      ],
       "start": {
         "sentId": "r2026c_s3",
         "offset": 0
@@ -3570,7 +3743,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2026c_s9"],
+      "sentIds": [
+        "r2026c_s9"
+      ],
       "start": {
         "sentId": "r2026c_s9",
         "offset": 0
@@ -3592,7 +3767,11 @@
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["r2026d_s9", "r2026d_s10", "r2026d_s11"],
+      "sentIds": [
+        "r2026d_s9",
+        "r2026d_s10",
+        "r2026d_s11"
+      ],
       "start": {
         "sentId": "r2026d_s9",
         "offset": 0
@@ -3644,7 +3823,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026as4"],
+      "sentIds": [
+        "l2026as4"
+      ],
       "start": {
         "sentId": "l2026as4",
         "offset": 0
@@ -3666,7 +3847,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026as4"],
+      "sentIds": [
+        "l2026as4"
+      ],
       "start": {
         "sentId": "l2026as4",
         "offset": 0
@@ -3688,7 +3871,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026as6"],
+      "sentIds": [
+        "l2026as6"
+      ],
       "start": {
         "sentId": "l2026as6",
         "offset": 0
@@ -3710,7 +3895,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026as6"],
+      "sentIds": [
+        "l2026as6"
+      ],
       "start": {
         "sentId": "l2026as6",
         "offset": 0
@@ -3732,7 +3919,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026as7"],
+      "sentIds": [
+        "l2026as7"
+      ],
       "start": {
         "sentId": "l2026as7",
         "offset": 0
@@ -3754,7 +3943,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026as9"],
+      "sentIds": [
+        "l2026as9"
+      ],
       "start": {
         "sentId": "l2026as9",
         "offset": 0
@@ -3776,7 +3967,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026as10"],
+      "sentIds": [
+        "l2026as10"
+      ],
       "start": {
         "sentId": "l2026as10",
         "offset": 0
@@ -3798,7 +3991,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026as11"],
+      "sentIds": [
+        "l2026as11"
+      ],
       "start": {
         "sentId": "l2026as11",
         "offset": 0
@@ -3820,7 +4015,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026as12"],
+      "sentIds": [
+        "l2026as12"
+      ],
       "start": {
         "sentId": "l2026as12",
         "offset": 0
@@ -3842,7 +4039,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026bs2"],
+      "sentIds": [
+        "l2026bs2"
+      ],
       "start": {
         "sentId": "l2026bs2",
         "offset": 0
@@ -3864,7 +4063,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026bs2"],
+      "sentIds": [
+        "l2026bs2"
+      ],
       "start": {
         "sentId": "l2026bs2",
         "offset": 0
@@ -3886,7 +4087,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026bs2"],
+      "sentIds": [
+        "l2026bs2"
+      ],
       "start": {
         "sentId": "l2026bs2",
         "offset": 0
@@ -3908,7 +4111,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026bs5"],
+      "sentIds": [
+        "l2026bs5"
+      ],
       "start": {
         "sentId": "l2026bs5",
         "offset": 0
@@ -3930,7 +4135,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026bs5"],
+      "sentIds": [
+        "l2026bs5"
+      ],
       "start": {
         "sentId": "l2026bs5",
         "offset": 0
@@ -3952,7 +4159,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026bs7"],
+      "sentIds": [
+        "l2026bs7"
+      ],
       "start": {
         "sentId": "l2026bs7",
         "offset": 0
@@ -3974,7 +4183,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026bs7"],
+      "sentIds": [
+        "l2026bs7"
+      ],
       "start": {
         "sentId": "l2026bs7",
         "offset": 0
@@ -3996,7 +4207,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026bs29"],
+      "sentIds": [
+        "l2026bs29"
+      ],
       "start": {
         "sentId": "l2026bs29",
         "offset": 0
@@ -4018,7 +4231,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026bs29"],
+      "sentIds": [
+        "l2026bs29"
+      ],
       "start": {
         "sentId": "l2026bs29",
         "offset": 0
@@ -4079,7 +4294,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026cs1"],
+      "sentIds": [
+        "l2026cs1"
+      ],
       "start": {
         "sentId": "l2026cs1",
         "offset": 0
@@ -4101,7 +4318,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026cs15"],
+      "sentIds": [
+        "l2026cs15"
+      ],
       "start": {
         "sentId": "l2026cs15",
         "offset": 0
@@ -4123,7 +4342,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026cs18"],
+      "sentIds": [
+        "l2026cs18"
+      ],
       "start": {
         "sentId": "l2026cs18",
         "offset": 0
@@ -4145,7 +4366,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026cs26"],
+      "sentIds": [
+        "l2026cs26"
+      ],
       "start": {
         "sentId": "l2026cs26",
         "offset": 0
@@ -4167,7 +4390,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026cs27"],
+      "sentIds": [
+        "l2026cs27"
+      ],
       "start": {
         "sentId": "l2026cs27",
         "offset": 0
@@ -4189,7 +4414,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026cs34"],
+      "sentIds": [
+        "l2026cs34"
+      ],
       "start": {
         "sentId": "l2026cs34",
         "offset": 0
@@ -4211,7 +4438,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026cs36"],
+      "sentIds": [
+        "l2026cs36"
+      ],
       "start": {
         "sentId": "l2026cs36",
         "offset": 0
@@ -4233,7 +4462,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026ds2"],
+      "sentIds": [
+        "l2026ds2"
+      ],
       "start": {
         "sentId": "l2026ds2",
         "offset": 0
@@ -4255,7 +4486,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026ds2"],
+      "sentIds": [
+        "l2026ds2"
+      ],
       "start": {
         "sentId": "l2026ds2",
         "offset": 0
@@ -4277,7 +4510,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026ds2"],
+      "sentIds": [
+        "l2026ds2"
+      ],
       "start": {
         "sentId": "l2026ds2",
         "offset": 0
@@ -4299,7 +4534,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026ds2"],
+      "sentIds": [
+        "l2026ds2"
+      ],
       "start": {
         "sentId": "l2026ds2",
         "offset": 0
@@ -4321,7 +4558,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026ds2"],
+      "sentIds": [
+        "l2026ds2"
+      ],
       "start": {
         "sentId": "l2026ds2",
         "offset": 0
@@ -4343,7 +4582,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026ds7"],
+      "sentIds": [
+        "l2026ds7"
+      ],
       "start": {
         "sentId": "l2026ds7",
         "offset": 0
@@ -4365,7 +4606,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2026ds10"],
+      "sentIds": [
+        "l2026ds10"
+      ],
       "start": {
         "sentId": "l2026ds10",
         "offset": 0
@@ -4387,7 +4630,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_as17"],
+      "sentIds": [
+        "kor25_as17"
+      ],
       "start": {
         "sentId": "kor25_as17",
         "offset": 0
@@ -4409,7 +4654,9 @@
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_bs1"],
+      "sentIds": [
+        "kor25_bs1"
+      ],
       "start": {
         "sentId": "kor25_bs1",
         "offset": 0
@@ -4431,7 +4678,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_bs15"],
+      "sentIds": [
+        "kor25_bs15"
+      ],
       "start": {
         "sentId": "kor25_bs15",
         "offset": 0
@@ -4453,7 +4702,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_bs27"],
+      "sentIds": [
+        "kor25_bs27"
+      ],
       "start": {
         "sentId": "kor25_bs27",
         "offset": 0
@@ -4475,7 +4726,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_bs29"],
+      "sentIds": [
+        "kor25_bs29"
+      ],
       "start": {
         "sentId": "kor25_bs29",
         "offset": 0
@@ -4497,7 +4750,9 @@
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_cs14"],
+      "sentIds": [
+        "kor25_cs14"
+      ],
       "start": {
         "sentId": "kor25_cs14",
         "offset": 0
@@ -4519,7 +4774,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_ds1"],
+      "sentIds": [
+        "kor25_ds1"
+      ],
       "start": {
         "sentId": "kor25_ds1",
         "offset": 0
@@ -4541,7 +4798,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_ds2"],
+      "sentIds": [
+        "kor25_ds2"
+      ],
       "start": {
         "sentId": "kor25_ds2",
         "offset": 0
@@ -4563,7 +4822,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_ds4"],
+      "sentIds": [
+        "kor25_ds4"
+      ],
       "start": {
         "sentId": "kor25_ds4",
         "offset": 0
@@ -4585,7 +4846,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_ds6"],
+      "sentIds": [
+        "kor25_ds6"
+      ],
       "start": {
         "sentId": "kor25_ds6",
         "offset": 0
@@ -4607,7 +4870,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_ds7"],
+      "sentIds": [
+        "kor25_ds7"
+      ],
       "start": {
         "sentId": "kor25_ds7",
         "offset": 0
@@ -4629,7 +4894,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_ds10"],
+      "sentIds": [
+        "kor25_ds10"
+      ],
       "start": {
         "sentId": "kor25_ds10",
         "offset": 0
@@ -4651,7 +4918,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_ds12"],
+      "sentIds": [
+        "kor25_ds12"
+      ],
       "start": {
         "sentId": "kor25_ds12",
         "offset": 0
@@ -4673,7 +4942,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_ds14"],
+      "sentIds": [
+        "kor25_ds14"
+      ],
       "start": {
         "sentId": "kor25_ds14",
         "offset": 0
@@ -4695,7 +4966,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_ds16"],
+      "sentIds": [
+        "kor25_ds16"
+      ],
       "start": {
         "sentId": "kor25_ds16",
         "offset": 0
@@ -4717,7 +4990,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["kor25_ds17"],
+      "sentIds": [
+        "kor25_ds17"
+      ],
       "start": {
         "sentId": "kor25_ds17",
         "offset": 0
@@ -4739,7 +5014,9 @@
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as105"],
+      "sentIds": [
+        "l2025as105"
+      ],
       "start": {
         "sentId": "l2025as105",
         "offset": 0
@@ -4761,7 +5038,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as106"],
+      "sentIds": [
+        "l2025as106"
+      ],
       "start": {
         "sentId": "l2025as106",
         "offset": 0
@@ -4783,7 +5062,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as106"],
+      "sentIds": [
+        "l2025as106"
+      ],
       "start": {
         "sentId": "l2025as106",
         "offset": 0
@@ -4805,7 +5086,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025bs7"],
+      "sentIds": [
+        "l2025bs7"
+      ],
       "start": {
         "sentId": "l2025bs7",
         "offset": 0
@@ -4827,7 +5110,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025bs31"],
+      "sentIds": [
+        "l2025bs31"
+      ],
       "start": {
         "sentId": "l2025bs31",
         "offset": 0
@@ -4849,7 +5134,9 @@
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as161"],
+      "sentIds": [
+        "l2025as161"
+      ],
       "start": {
         "sentId": "l2025as161",
         "offset": 0
@@ -4871,7 +5158,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as160"],
+      "sentIds": [
+        "l2025as160"
+      ],
       "start": {
         "sentId": "l2025as160",
         "offset": 0
@@ -4893,7 +5182,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as168"],
+      "sentIds": [
+        "l2025as168"
+      ],
       "start": {
         "sentId": "l2025as168",
         "offset": 0
@@ -4915,7 +5206,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as170"],
+      "sentIds": [
+        "l2025as170"
+      ],
       "start": {
         "sentId": "l2025as170",
         "offset": 0
@@ -4937,7 +5230,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as190"],
+      "sentIds": [
+        "l2025as190"
+      ],
       "start": {
         "sentId": "l2025as190",
         "offset": 0
@@ -4959,7 +5254,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as191"],
+      "sentIds": [
+        "l2025as191"
+      ],
       "start": {
         "sentId": "l2025as191",
         "offset": 0
@@ -4981,7 +5278,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as205"],
+      "sentIds": [
+        "l2025as205"
+      ],
       "start": {
         "sentId": "l2025as205",
         "offset": 0
@@ -5003,7 +5302,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as219"],
+      "sentIds": [
+        "l2025as219"
+      ],
       "start": {
         "sentId": "l2025as219",
         "offset": 0
@@ -5025,7 +5326,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2025as249"],
+      "sentIds": [
+        "l2025as249"
+      ],
       "start": {
         "sentId": "l2025as249",
         "offset": 0
@@ -5047,7 +5350,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_as11"],
+      "sentIds": [
+        "sep25_as11"
+      ],
       "start": {
         "sentId": "sep25_as11",
         "offset": 0
@@ -5069,7 +5374,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_bs2"],
+      "sentIds": [
+        "sep25_bs2"
+      ],
       "start": {
         "sentId": "sep25_bs2",
         "offset": 0
@@ -5091,7 +5398,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_bs2"],
+      "sentIds": [
+        "sep25_bs2"
+      ],
       "start": {
         "sentId": "sep25_bs2",
         "offset": 0
@@ -5113,7 +5422,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_bs19"],
+      "sentIds": [
+        "sep25_bs19"
+      ],
       "start": {
         "sentId": "sep25_bs19",
         "offset": 0
@@ -5135,7 +5446,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_cs17"],
+      "sentIds": [
+        "sep25_cs17"
+      ],
       "start": {
         "sentId": "sep25_cs17",
         "offset": 0
@@ -5157,7 +5470,9 @@
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_ds20"],
+      "sentIds": [
+        "sep25_ds20"
+      ],
       "start": {
         "sentId": "sep25_ds20",
         "offset": 0
@@ -5179,7 +5494,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_ds6"],
+      "sentIds": [
+        "sep25_ds6"
+      ],
       "start": {
         "sentId": "sep25_ds6",
         "offset": 0
@@ -5201,7 +5518,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_ds10"],
+      "sentIds": [
+        "sep25_ds10"
+      ],
       "start": {
         "sentId": "sep25_ds10",
         "offset": 0
@@ -5223,7 +5542,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_ds16"],
+      "sentIds": [
+        "sep25_ds16"
+      ],
       "start": {
         "sentId": "sep25_ds16",
         "offset": 0
@@ -5245,7 +5566,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_ds18"],
+      "sentIds": [
+        "sep25_ds18"
+      ],
       "start": {
         "sentId": "sep25_ds18",
         "offset": 0
@@ -5267,7 +5590,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_ds20"],
+      "sentIds": [
+        "sep25_ds20"
+      ],
       "start": {
         "sentId": "sep25_ds20",
         "offset": 0
@@ -5289,7 +5614,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["sep25_ds28"],
+      "sentIds": [
+        "sep25_ds28"
+      ],
       "start": {
         "sentId": "sep25_ds28",
         "offset": 0
@@ -5311,7 +5638,11 @@
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["lsep25as2", "lsep25as3", "lsep25as4"],
+      "sentIds": [
+        "lsep25as2",
+        "lsep25as3",
+        "lsep25as4"
+      ],
       "start": {
         "sentId": "lsep25as2",
         "offset": 0
@@ -5383,7 +5714,9 @@
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25as8"],
+      "sentIds": [
+        "lsep25as8"
+      ],
       "start": {
         "sentId": "lsep25as8",
         "offset": 0
@@ -5405,7 +5738,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25as6"],
+      "sentIds": [
+        "lsep25as6"
+      ],
       "start": {
         "sentId": "lsep25as6",
         "offset": 0
@@ -5427,7 +5762,9 @@
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25bs5"],
+      "sentIds": [
+        "lsep25bs5"
+      ],
       "start": {
         "sentId": "lsep25bs5",
         "offset": 0
@@ -5449,7 +5786,9 @@
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25bs10"],
+      "sentIds": [
+        "lsep25bs10"
+      ],
       "start": {
         "sentId": "lsep25bs10",
         "offset": 0
@@ -5471,7 +5810,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25bs2"],
+      "sentIds": [
+        "lsep25bs2"
+      ],
       "start": {
         "sentId": "lsep25bs2",
         "offset": 0
@@ -5493,7 +5834,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25bs3"],
+      "sentIds": [
+        "lsep25bs3"
+      ],
       "start": {
         "sentId": "lsep25bs3",
         "offset": 0
@@ -5515,7 +5858,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25bs3"],
+      "sentIds": [
+        "lsep25bs3"
+      ],
       "start": {
         "sentId": "lsep25bs3",
         "offset": 0
@@ -5537,7 +5882,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25bs3"],
+      "sentIds": [
+        "lsep25bs3"
+      ],
       "start": {
         "sentId": "lsep25bs3",
         "offset": 0
@@ -5559,7 +5906,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25bs4"],
+      "sentIds": [
+        "lsep25bs4"
+      ],
       "start": {
         "sentId": "lsep25bs4",
         "offset": 0
@@ -5581,7 +5930,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25bs6"],
+      "sentIds": [
+        "lsep25bs6"
+      ],
       "start": {
         "sentId": "lsep25bs6",
         "offset": 0
@@ -5603,7 +5954,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25bs9"],
+      "sentIds": [
+        "lsep25bs9"
+      ],
       "start": {
         "sentId": "lsep25bs9",
         "offset": 0
@@ -5686,7 +6039,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25cs6"],
+      "sentIds": [
+        "lsep25cs6"
+      ],
       "start": {
         "sentId": "lsep25cs6",
         "offset": 0
@@ -5708,7 +6063,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25cs9"],
+      "sentIds": [
+        "lsep25cs9"
+      ],
       "start": {
         "sentId": "lsep25cs9",
         "offset": 0
@@ -5730,7 +6087,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["lsep25cs10"],
+      "sentIds": [
+        "lsep25cs10"
+      ],
       "start": {
         "sentId": "lsep25cs10",
         "offset": 0
@@ -5752,7 +6111,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024as13"],
+      "sentIds": [
+        "r2024as13"
+      ],
       "start": {
         "sentId": "r2024as13",
         "offset": 0
@@ -5774,7 +6135,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024as14"],
+      "sentIds": [
+        "r2024as14"
+      ],
       "start": {
         "sentId": "r2024as14",
         "offset": 0
@@ -5796,7 +6159,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024as14"],
+      "sentIds": [
+        "r2024as14"
+      ],
       "start": {
         "sentId": "r2024as14",
         "offset": 0
@@ -5818,7 +6183,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024as15"],
+      "sentIds": [
+        "r2024as15"
+      ],
       "start": {
         "sentId": "r2024as15",
         "offset": 0
@@ -5840,7 +6207,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024as15"],
+      "sentIds": [
+        "r2024as15"
+      ],
       "start": {
         "sentId": "r2024as15",
         "offset": 0
@@ -5862,7 +6231,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024bs1"],
+      "sentIds": [
+        "r2024bs1"
+      ],
       "start": {
         "sentId": "r2024bs1",
         "offset": 0
@@ -5884,7 +6255,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024bs7"],
+      "sentIds": [
+        "r2024bs7"
+      ],
       "start": {
         "sentId": "r2024bs7",
         "offset": 0
@@ -5906,7 +6279,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024bs9"],
+      "sentIds": [
+        "r2024bs9"
+      ],
       "start": {
         "sentId": "r2024bs9",
         "offset": 0
@@ -5928,7 +6303,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024bs10"],
+      "sentIds": [
+        "r2024bs10"
+      ],
       "start": {
         "sentId": "r2024bs10",
         "offset": 0
@@ -5950,7 +6327,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024bs14"],
+      "sentIds": [
+        "r2024bs14"
+      ],
       "start": {
         "sentId": "r2024bs14",
         "offset": 0
@@ -5972,7 +6351,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024bs17"],
+      "sentIds": [
+        "r2024bs17"
+      ],
       "start": {
         "sentId": "r2024bs17",
         "offset": 0
@@ -5994,7 +6375,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024bs18"],
+      "sentIds": [
+        "r2024bs18"
+      ],
       "start": {
         "sentId": "r2024bs18",
         "offset": 0
@@ -6016,7 +6399,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024cs2"],
+      "sentIds": [
+        "r2024cs2"
+      ],
       "start": {
         "sentId": "r2024cs2",
         "offset": 0
@@ -6038,7 +6423,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024cs3"],
+      "sentIds": [
+        "r2024cs3"
+      ],
       "start": {
         "sentId": "r2024cs3",
         "offset": 0
@@ -6060,7 +6447,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024cs9"],
+      "sentIds": [
+        "r2024cs9"
+      ],
       "start": {
         "sentId": "r2024cs9",
         "offset": 0
@@ -6082,7 +6471,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024cs12"],
+      "sentIds": [
+        "r2024cs12"
+      ],
       "start": {
         "sentId": "r2024cs12",
         "offset": 0
@@ -6104,7 +6495,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024cs18"],
+      "sentIds": [
+        "r2024cs18"
+      ],
       "start": {
         "sentId": "r2024cs18",
         "offset": 0
@@ -6126,7 +6519,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024cs19"],
+      "sentIds": [
+        "r2024cs19"
+      ],
       "start": {
         "sentId": "r2024cs19",
         "offset": 0
@@ -6148,7 +6543,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024cs23"],
+      "sentIds": [
+        "r2024cs23"
+      ],
       "start": {
         "sentId": "r2024cs23",
         "offset": 0
@@ -6170,7 +6567,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024ds2"],
+      "sentIds": [
+        "r2024ds2"
+      ],
       "start": {
         "sentId": "r2024ds2",
         "offset": 0
@@ -6192,7 +6591,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024ds25"],
+      "sentIds": [
+        "r2024ds25"
+      ],
       "start": {
         "sentId": "r2024ds25",
         "offset": 0
@@ -6214,7 +6615,9 @@
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2024ds30"],
+      "sentIds": [
+        "r2024ds30"
+      ],
       "start": {
         "sentId": "r2024ds30",
         "offset": 0
@@ -6284,7 +6687,9 @@
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l2024_22_27s11"],
+      "sentIds": [
+        "l2024_22_27s11"
+      ],
       "start": {
         "sentId": "l2024_22_27s11",
         "offset": 0
@@ -6332,7 +6737,9 @@
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2024_22_27s12"],
+      "sentIds": [
+        "l2024_22_27s12"
+      ],
       "start": {
         "sentId": "l2024_22_27s12",
         "offset": 0
@@ -6384,13 +6791,60 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024c_bracket_A_199",
+      "id": "vm_2024수능_l2024b_bracket_C_199",
+      "yearKey": "2024수능",
+      "setId": "l2024b",
+      "type": "bracket",
+      "label": "C",
+      "target": "sent_range",
+      "sentIds": [
+        "l2024_22_27s13"
+      ],
+      "start": {
+        "sentId": "l2024_22_27s13",
+        "offset": 0
+      },
+      "end": {
+        "sentId": "l2024_22_27s13",
+        "offset": 88
+      },
+      "source": "migrated_from_annotations",
+      "status": "needs_human",
+      "release_block": true,
+      "audit_source": "ANNOTATION_BRACKET + SOURCE_BODY_MARKER_MISSING",
+      "referenced_in": [
+        {
+          "qId": 24,
+          "loc": "choice",
+          "choiceNum": 4
+        },
+        {
+          "qId": 24,
+          "loc": "analysis",
+          "choiceNum": 4
+        },
+        {
+          "qId": 24,
+          "loc": "choice",
+          "choiceNum": 5
+        },
+        {
+          "qId": 24,
+          "loc": "analysis",
+          "choiceNum": 5
+        }
+      ]
+    },
+    {
+      "id": "vm_2024수능_l2024c_bracket_A_200",
       "yearKey": "2024수능",
       "setId": "l2024c",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l2024_28_31s6"],
+      "sentIds": [
+        "l2024_28_31s6"
+      ],
       "start": {
         "sentId": "l2024_28_31s6",
         "offset": 0
@@ -6436,13 +6890,15 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024c_bracket_B_200",
+      "id": "vm_2024수능_l2024c_bracket_B_201",
       "yearKey": "2024수능",
       "setId": "l2024c",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2024_28_31s7"],
+      "sentIds": [
+        "l2024_28_31s7"
+      ],
       "start": {
         "sentId": "l2024_28_31s7",
         "offset": 0
@@ -6489,13 +6945,15 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024c_bracket_C_201",
+      "id": "vm_2024수능_l2024c_bracket_C_202",
       "yearKey": "2024수능",
       "setId": "l2024c",
       "type": "bracket",
       "label": "C",
       "target": "sent_range",
-      "sentIds": ["l2024_28_31s7"],
+      "sentIds": [
+        "l2024_28_31s7"
+      ],
       "start": {
         "sentId": "l2024_28_31s7",
         "offset": 0
@@ -6541,13 +6999,16 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024d_bracket_A_202",
+      "id": "vm_2024수능_l2024d_bracket_A_203",
       "yearKey": "2024수능",
       "setId": "l2024d",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l2024_32_34s2", "l2024_32_34s3"],
+      "sentIds": [
+        "l2024_32_34s2",
+        "l2024_32_34s3"
+      ],
       "start": {
         "sentId": "l2024_32_34s2",
         "offset": 0
@@ -6593,13 +7054,15 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024d_bracket_B_203",
+      "id": "vm_2024수능_l2024d_bracket_B_204",
       "yearKey": "2024수능",
       "setId": "l2024d",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2024_32_34s4"],
+      "sentIds": [
+        "l2024_32_34s4"
+      ],
       "start": {
         "sentId": "l2024_32_34s4",
         "offset": 0
@@ -6631,13 +7094,15 @@
       ]
     },
     {
-      "id": "vm_2024수능_l2024d_bracket_C_204",
+      "id": "vm_2024수능_l2024d_bracket_C_205",
       "yearKey": "2024수능",
       "setId": "l2024d",
       "type": "bracket",
       "label": "C",
       "target": "sent_range",
-      "sentIds": ["l2024_32_34s4"],
+      "sentIds": [
+        "l2024_32_34s4"
+      ],
       "start": {
         "sentId": "l2024_32_34s4",
         "offset": 0
@@ -6673,7 +7138,7 @@
       ]
     },
     {
-      "id": "vm_2023수능_r2023a_bracket_A_205",
+      "id": "vm_2023수능_r2023a_bracket_A_206",
       "yearKey": "2023수능",
       "setId": "r2023a",
       "type": "bracket",
@@ -6711,13 +7176,15 @@
       ]
     },
     {
-      "id": "vm_2023수능_r2023a_underline_x_206",
+      "id": "vm_2023수능_r2023a_underline_x_207",
       "yearKey": "2023수능",
       "setId": "r2023a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023as14"],
+      "sentIds": [
+        "r2023as14"
+      ],
       "start": {
         "sentId": "r2023as14",
         "offset": 0
@@ -6733,7 +7200,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_bracket_A_207",
+      "id": "vm_2023수능_r2023b_bracket_A_208",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "bracket",
@@ -6774,13 +7241,15 @@
       ]
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_208",
+      "id": "vm_2023수능_r2023b_underline_x_209",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023bs7"],
+      "sentIds": [
+        "r2023bs7"
+      ],
       "start": {
         "sentId": "r2023bs7",
         "offset": 0
@@ -6796,13 +7265,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_209",
+      "id": "vm_2023수능_r2023b_underline_x_210",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023bs11"],
+      "sentIds": [
+        "r2023bs11"
+      ],
       "start": {
         "sentId": "r2023bs11",
         "offset": 0
@@ -6818,13 +7289,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_210",
+      "id": "vm_2023수능_r2023b_underline_x_211",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023bs14"],
+      "sentIds": [
+        "r2023bs14"
+      ],
       "start": {
         "sentId": "r2023bs14",
         "offset": 0
@@ -6840,13 +7313,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_211",
+      "id": "vm_2023수능_r2023b_underline_x_212",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023bs15"],
+      "sentIds": [
+        "r2023bs15"
+      ],
       "start": {
         "sentId": "r2023bs15",
         "offset": 0
@@ -6862,13 +7337,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_212",
+      "id": "vm_2023수능_r2023b_underline_x_213",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023bs22"],
+      "sentIds": [
+        "r2023bs22"
+      ],
       "start": {
         "sentId": "r2023bs22",
         "offset": 0
@@ -6884,13 +7361,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_213",
+      "id": "vm_2023수능_r2023b_underline_x_214",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023bs22"],
+      "sentIds": [
+        "r2023bs22"
+      ],
       "start": {
         "sentId": "r2023bs22",
         "offset": 0
@@ -6906,13 +7385,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_214",
+      "id": "vm_2023수능_r2023b_underline_x_215",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023bs23"],
+      "sentIds": [
+        "r2023bs23"
+      ],
       "start": {
         "sentId": "r2023bs23",
         "offset": 0
@@ -6928,13 +7409,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_215",
+      "id": "vm_2023수능_r2023b_underline_x_216",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023bs25"],
+      "sentIds": [
+        "r2023bs25"
+      ],
       "start": {
         "sentId": "r2023bs25",
         "offset": 0
@@ -6950,13 +7433,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023b_underline_x_216",
+      "id": "vm_2023수능_r2023b_underline_x_217",
       "yearKey": "2023수능",
       "setId": "r2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023bs27"],
+      "sentIds": [
+        "r2023bs27"
+      ],
       "start": {
         "sentId": "r2023bs27",
         "offset": 0
@@ -6972,13 +7457,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023c_underline_x_217",
+      "id": "vm_2023수능_r2023c_underline_x_218",
       "yearKey": "2023수능",
       "setId": "r2023c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023cs3"],
+      "sentIds": [
+        "r2023cs3"
+      ],
       "start": {
         "sentId": "r2023cs3",
         "offset": 0
@@ -6994,13 +7481,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023c_underline_x_218",
+      "id": "vm_2023수능_r2023c_underline_x_219",
       "yearKey": "2023수능",
       "setId": "r2023c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023cs4"],
+      "sentIds": [
+        "r2023cs4"
+      ],
       "start": {
         "sentId": "r2023cs4",
         "offset": 0
@@ -7016,13 +7505,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023c_underline_x_219",
+      "id": "vm_2023수능_r2023c_underline_x_220",
       "yearKey": "2023수능",
       "setId": "r2023c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023cs11"],
+      "sentIds": [
+        "r2023cs11"
+      ],
       "start": {
         "sentId": "r2023cs11",
         "offset": 0
@@ -7038,13 +7529,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023c_underline_x_220",
+      "id": "vm_2023수능_r2023c_underline_x_221",
       "yearKey": "2023수능",
       "setId": "r2023c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023cs16"],
+      "sentIds": [
+        "r2023cs16"
+      ],
       "start": {
         "sentId": "r2023cs16",
         "offset": 0
@@ -7060,13 +7553,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023c_underline_x_221",
+      "id": "vm_2023수능_r2023c_underline_x_222",
       "yearKey": "2023수능",
       "setId": "r2023c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023cs19"],
+      "sentIds": [
+        "r2023cs19"
+      ],
       "start": {
         "sentId": "r2023cs19",
         "offset": 0
@@ -7082,13 +7577,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023d_underline_x_222",
+      "id": "vm_2023수능_r2023d_underline_x_223",
       "yearKey": "2023수능",
       "setId": "r2023d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023ds5"],
+      "sentIds": [
+        "r2023ds5"
+      ],
       "start": {
         "sentId": "r2023ds5",
         "offset": 0
@@ -7104,13 +7601,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_r2023d_underline_x_223",
+      "id": "vm_2023수능_r2023d_underline_x_224",
       "yearKey": "2023수능",
       "setId": "r2023d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2023ds5"],
+      "sentIds": [
+        "r2023ds5"
+      ],
       "start": {
         "sentId": "r2023ds5",
         "offset": 0
@@ -7126,13 +7625,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023a_underline_x_224",
+      "id": "vm_2023수능_l2023a_underline_x_225",
       "yearKey": "2023수능",
       "setId": "l2023a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023as6"],
+      "sentIds": [
+        "l2023as6"
+      ],
       "start": {
         "sentId": "l2023as6",
         "offset": 0
@@ -7148,13 +7649,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023a_underline_x_225",
+      "id": "vm_2023수능_l2023a_underline_x_226",
       "yearKey": "2023수능",
       "setId": "l2023a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023as7"],
+      "sentIds": [
+        "l2023as7"
+      ],
       "start": {
         "sentId": "l2023as7",
         "offset": 0
@@ -7170,13 +7673,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023a_underline_x_226",
+      "id": "vm_2023수능_l2023a_underline_x_227",
       "yearKey": "2023수능",
       "setId": "l2023a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023as9"],
+      "sentIds": [
+        "l2023as9"
+      ],
       "start": {
         "sentId": "l2023as9",
         "offset": 0
@@ -7192,13 +7697,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023a_underline_x_227",
+      "id": "vm_2023수능_l2023a_underline_x_228",
       "yearKey": "2023수능",
       "setId": "l2023a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023as11"],
+      "sentIds": [
+        "l2023as11"
+      ],
       "start": {
         "sentId": "l2023as11",
         "offset": 0
@@ -7214,13 +7721,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023a_underline_x_228",
+      "id": "vm_2023수능_l2023a_underline_x_229",
       "yearKey": "2023수능",
       "setId": "l2023a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023as12"],
+      "sentIds": [
+        "l2023as12"
+      ],
       "start": {
         "sentId": "l2023as12",
         "offset": 0
@@ -7236,7 +7745,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023b_bracket_A_229",
+      "id": "vm_2023수능_l2023b_bracket_A_230",
       "yearKey": "2023수능",
       "setId": "l2023b",
       "type": "bracket",
@@ -7302,13 +7811,17 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023b_bracket_B_230",
+      "id": "vm_2023수능_l2023b_bracket_B_231",
       "yearKey": "2023수능",
       "setId": "l2023b",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2023bs20", "l2023bs21", "l2023bs22"],
+      "sentIds": [
+        "l2023bs20",
+        "l2023bs21",
+        "l2023bs22"
+      ],
       "start": {
         "sentId": "l2023bs20",
         "offset": 0
@@ -7359,13 +7872,17 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023b_bracket_C_231",
+      "id": "vm_2023수능_l2023b_bracket_C_232",
       "yearKey": "2023수능",
       "setId": "l2023b",
       "type": "bracket",
       "label": "C",
       "target": "sent_range",
-      "sentIds": ["l2023bs54", "l2023bs55", "l2023bs56"],
+      "sentIds": [
+        "l2023bs54",
+        "l2023bs55",
+        "l2023bs56"
+      ],
       "start": {
         "sentId": "l2023bs54",
         "offset": 0
@@ -7411,13 +7928,15 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023b_underline_x_232",
+      "id": "vm_2023수능_l2023b_underline_x_233",
       "yearKey": "2023수능",
       "setId": "l2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023bs35"],
+      "sentIds": [
+        "l2023bs35"
+      ],
       "start": {
         "sentId": "l2023bs35",
         "offset": 0
@@ -7433,13 +7952,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023b_underline_x_233",
+      "id": "vm_2023수능_l2023b_underline_x_234",
       "yearKey": "2023수능",
       "setId": "l2023b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023bs46"],
+      "sentIds": [
+        "l2023bs46"
+      ],
       "start": {
         "sentId": "l2023bs46",
         "offset": 0
@@ -7455,13 +7976,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023c_bracket_A_234",
+      "id": "vm_2023수능_l2023c_bracket_A_235",
       "yearKey": "2023수능",
       "setId": "l2023c",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l2023cs2"],
+      "sentIds": [
+        "l2023cs2"
+      ],
       "start": {
         "sentId": "l2023cs2",
         "offset": 0
@@ -7487,13 +8010,16 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023c_bracket_B_235",
+      "id": "vm_2023수능_l2023c_bracket_B_236",
       "yearKey": "2023수능",
       "setId": "l2023c",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2023cs7", "l2023cs8"],
+      "sentIds": [
+        "l2023cs7",
+        "l2023cs8"
+      ],
       "start": {
         "sentId": "l2023cs7",
         "offset": 0
@@ -7520,13 +8046,17 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023c_bracket_C_236",
+      "id": "vm_2023수능_l2023c_bracket_C_237",
       "yearKey": "2023수능",
       "setId": "l2023c",
       "type": "bracket",
       "label": "C",
       "target": "sent_range",
-      "sentIds": ["l2023cs11", "l2023cs12", "l2023cs13"],
+      "sentIds": [
+        "l2023cs11",
+        "l2023cs12",
+        "l2023cs13"
+      ],
       "start": {
         "sentId": "l2023cs11",
         "offset": 0
@@ -7553,13 +8083,16 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023c_bracket_D_237",
+      "id": "vm_2023수능_l2023c_bracket_D_238",
       "yearKey": "2023수능",
       "setId": "l2023c",
       "type": "bracket",
       "label": "D",
       "target": "sent_range",
-      "sentIds": ["l2023cs15", "l2023cs16"],
+      "sentIds": [
+        "l2023cs15",
+        "l2023cs16"
+      ],
       "start": {
         "sentId": "l2023cs15",
         "offset": 0
@@ -7586,13 +8119,17 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023c_bracket_E_238",
+      "id": "vm_2023수능_l2023c_bracket_E_239",
       "yearKey": "2023수능",
       "setId": "l2023c",
       "type": "bracket",
       "label": "E",
       "target": "sent_range",
-      "sentIds": ["l2023cs26", "l2023cs27", "l2023cs28"],
+      "sentIds": [
+        "l2023cs26",
+        "l2023cs27",
+        "l2023cs28"
+      ],
       "start": {
         "sentId": "l2023cs26",
         "offset": 0
@@ -7623,13 +8160,16 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_A_239",
+      "id": "vm_2023수능_l2023d_bracket_A_240",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l2023ds20", "l2023ds21"],
+      "sentIds": [
+        "l2023ds20",
+        "l2023ds21"
+      ],
       "start": {
         "sentId": "l2023ds20",
         "offset": 0
@@ -7660,13 +8200,16 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_B_240",
+      "id": "vm_2023수능_l2023d_bracket_B_241",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2023ds24", "l2023ds25"],
+      "sentIds": [
+        "l2023ds24",
+        "l2023ds25"
+      ],
       "start": {
         "sentId": "l2023ds24",
         "offset": 0
@@ -7703,13 +8246,16 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_C_241",
+      "id": "vm_2023수능_l2023d_bracket_C_242",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
       "label": "C",
       "target": "sent_range",
-      "sentIds": ["l2023ds26", "l2023ds27"],
+      "sentIds": [
+        "l2023ds26",
+        "l2023ds27"
+      ],
       "start": {
         "sentId": "l2023ds26",
         "offset": 0
@@ -7746,13 +8292,17 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_D_242",
+      "id": "vm_2023수능_l2023d_bracket_D_243",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
       "label": "D",
       "target": "sent_range",
-      "sentIds": ["l2023ds29", "l2023ds30", "l2023ds31"],
+      "sentIds": [
+        "l2023ds29",
+        "l2023ds30",
+        "l2023ds31"
+      ],
       "start": {
         "sentId": "l2023ds29",
         "offset": 0
@@ -7789,13 +8339,16 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_E_243",
+      "id": "vm_2023수능_l2023d_bracket_E_244",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
       "label": "E",
       "target": "sent_range",
-      "sentIds": ["l2023ds33", "l2023ds34"],
+      "sentIds": [
+        "l2023ds33",
+        "l2023ds34"
+      ],
       "start": {
         "sentId": "l2023ds33",
         "offset": 0
@@ -7832,13 +8385,16 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_bracket_F_244",
+      "id": "vm_2023수능_l2023d_bracket_F_245",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "bracket",
       "label": "F",
       "target": "sent_range",
-      "sentIds": ["l2023ds35", "l2023ds36"],
+      "sentIds": [
+        "l2023ds35",
+        "l2023ds36"
+      ],
       "start": {
         "sentId": "l2023ds35",
         "offset": 0
@@ -7874,13 +8430,15 @@
       ]
     },
     {
-      "id": "vm_2023수능_l2023d_underline_x_245",
+      "id": "vm_2023수능_l2023d_underline_x_246",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023ds2"],
+      "sentIds": [
+        "l2023ds2"
+      ],
       "start": {
         "sentId": "l2023ds2",
         "offset": 0
@@ -7896,13 +8454,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023d_underline_x_246",
+      "id": "vm_2023수능_l2023d_underline_x_247",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023ds6"],
+      "sentIds": [
+        "l2023ds6"
+      ],
       "start": {
         "sentId": "l2023ds6",
         "offset": 0
@@ -7918,13 +8478,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023d_underline_x_247",
+      "id": "vm_2023수능_l2023d_underline_x_248",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023ds9"],
+      "sentIds": [
+        "l2023ds9"
+      ],
       "start": {
         "sentId": "l2023ds9",
         "offset": 0
@@ -7940,13 +8502,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023d_underline_x_248",
+      "id": "vm_2023수능_l2023d_underline_x_249",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023ds15"],
+      "sentIds": [
+        "l2023ds15"
+      ],
       "start": {
         "sentId": "l2023ds15",
         "offset": 0
@@ -7962,13 +8526,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023수능_l2023d_underline_x_249",
+      "id": "vm_2023수능_l2023d_underline_x_250",
       "yearKey": "2023수능",
       "setId": "l2023d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2023ds16"],
+      "sentIds": [
+        "l2023ds16"
+      ],
       "start": {
         "sentId": "l2023ds16",
         "offset": 0
@@ -7984,13 +8550,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022a_underline_x_250",
+      "id": "vm_2022수능_r2022a_underline_x_251",
       "yearKey": "2022수능",
       "setId": "r2022a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022as3"],
+      "sentIds": [
+        "r2022as3"
+      ],
       "start": {
         "sentId": "r2022as3",
         "offset": 0
@@ -8006,13 +8574,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022a_underline_x_251",
+      "id": "vm_2022수능_r2022a_underline_x_252",
       "yearKey": "2022수능",
       "setId": "r2022a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022as10"],
+      "sentIds": [
+        "r2022as10"
+      ],
       "start": {
         "sentId": "r2022as10",
         "offset": 0
@@ -8028,13 +8598,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022b_box_x_252",
+      "id": "vm_2022수능_r2022b_box_x_253",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022bs10"],
+      "sentIds": [
+        "r2022bs10"
+      ],
       "start": {
         "sentId": "r2022bs10",
         "offset": 0
@@ -8050,13 +8622,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_r2022b_underline_x_253",
+      "id": "vm_2022수능_r2022b_underline_x_254",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022bs1"],
+      "sentIds": [
+        "r2022bs1"
+      ],
       "start": {
         "sentId": "r2022bs1",
         "offset": 0
@@ -8072,13 +8646,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022b_underline_x_254",
+      "id": "vm_2022수능_r2022b_underline_x_255",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022bs5"],
+      "sentIds": [
+        "r2022bs5"
+      ],
       "start": {
         "sentId": "r2022bs5",
         "offset": 0
@@ -8094,13 +8670,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022b_underline_x_255",
+      "id": "vm_2022수능_r2022b_underline_x_256",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022bs8"],
+      "sentIds": [
+        "r2022bs8"
+      ],
       "start": {
         "sentId": "r2022bs8",
         "offset": 0
@@ -8116,13 +8694,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022b_underline_x_256",
+      "id": "vm_2022수능_r2022b_underline_x_257",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022bs18"],
+      "sentIds": [
+        "r2022bs18"
+      ],
       "start": {
         "sentId": "r2022bs18",
         "offset": 0
@@ -8138,13 +8718,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022b_box_x_257",
+      "id": "vm_2022수능_r2022b_box_x_258",
       "yearKey": "2022수능",
       "setId": "r2022b",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022bs10"],
+      "sentIds": [
+        "r2022bs10"
+      ],
       "start": {
         "sentId": "r2022bs10",
         "offset": 0
@@ -8160,13 +8742,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_r2022c_underline_x_258",
+      "id": "vm_2022수능_r2022c_underline_x_259",
       "yearKey": "2022수능",
       "setId": "r2022c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022cs6"],
+      "sentIds": [
+        "r2022cs6"
+      ],
       "start": {
         "sentId": "r2022cs6",
         "offset": 0
@@ -8182,13 +8766,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022c_underline_x_259",
+      "id": "vm_2022수능_r2022c_underline_x_260",
       "yearKey": "2022수능",
       "setId": "r2022c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022cs8"],
+      "sentIds": [
+        "r2022cs8"
+      ],
       "start": {
         "sentId": "r2022cs8",
         "offset": 0
@@ -8204,13 +8790,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022c_underline_x_260",
+      "id": "vm_2022수능_r2022c_underline_x_261",
       "yearKey": "2022수능",
       "setId": "r2022c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022cs22"],
+      "sentIds": [
+        "r2022cs22"
+      ],
       "start": {
         "sentId": "r2022cs22",
         "offset": 0
@@ -8226,13 +8814,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022d_box_x_261",
+      "id": "vm_2022수능_r2022d_box_x_262",
       "yearKey": "2022수능",
       "setId": "r2022d",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022ds2"],
+      "sentIds": [
+        "r2022ds2"
+      ],
       "start": {
         "sentId": "r2022ds2",
         "offset": 0
@@ -8248,13 +8838,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_r2022d_underline_x_262",
+      "id": "vm_2022수능_r2022d_underline_x_263",
       "yearKey": "2022수능",
       "setId": "r2022d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022ds9"],
+      "sentIds": [
+        "r2022ds9"
+      ],
       "start": {
         "sentId": "r2022ds9",
         "offset": 0
@@ -8270,13 +8862,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022d_underline_x_263",
+      "id": "vm_2022수능_r2022d_underline_x_264",
       "yearKey": "2022수능",
       "setId": "r2022d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022ds12"],
+      "sentIds": [
+        "r2022ds12"
+      ],
       "start": {
         "sentId": "r2022ds12",
         "offset": 0
@@ -8292,13 +8886,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_r2022d_underline_x_264",
+      "id": "vm_2022수능_r2022d_underline_x_265",
       "yearKey": "2022수능",
       "setId": "r2022d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r2022ds14"],
+      "sentIds": [
+        "r2022ds14"
+      ],
       "start": {
         "sentId": "r2022ds14",
         "offset": 0
@@ -8314,13 +8910,16 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022a_bracket_A_265",
+      "id": "vm_2022수능_l2022a_bracket_A_266",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l2022as3", "l2022as4"],
+      "sentIds": [
+        "l2022as3",
+        "l2022as4"
+      ],
       "start": {
         "sentId": "l2022as3",
         "offset": 0
@@ -8351,13 +8950,16 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022a_bracket_B_266",
+      "id": "vm_2022수능_l2022a_bracket_B_267",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2022as10", "l2022as11"],
+      "sentIds": [
+        "l2022as10",
+        "l2022as11"
+      ],
       "start": {
         "sentId": "l2022as10",
         "offset": 0
@@ -8384,13 +8986,16 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022a_bracket_C_267",
+      "id": "vm_2022수능_l2022a_bracket_C_268",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "bracket",
       "label": "C",
       "target": "sent_range",
-      "sentIds": ["l2022as15", "l2022as16"],
+      "sentIds": [
+        "l2022as15",
+        "l2022as16"
+      ],
       "start": {
         "sentId": "l2022as15",
         "offset": 0
@@ -8417,13 +9022,16 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022a_bracket_D_268",
+      "id": "vm_2022수능_l2022a_bracket_D_269",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "bracket",
       "label": "D",
       "target": "sent_range",
-      "sentIds": ["l2022as21", "l2022as22"],
+      "sentIds": [
+        "l2022as21",
+        "l2022as22"
+      ],
       "start": {
         "sentId": "l2022as21",
         "offset": 0
@@ -8450,13 +9058,16 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022a_bracket_E_269",
+      "id": "vm_2022수능_l2022a_bracket_E_270",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "bracket",
       "label": "E",
       "target": "sent_range",
-      "sentIds": ["l2022as25", "l2022as26"],
+      "sentIds": [
+        "l2022as25",
+        "l2022as26"
+      ],
       "start": {
         "sentId": "l2022as25",
         "offset": 0
@@ -8487,13 +9098,15 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022a_box_x_270",
+      "id": "vm_2022수능_l2022a_box_x_271",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022as1"],
+      "sentIds": [
+        "l2022as1"
+      ],
       "start": {
         "sentId": "l2022as1",
         "offset": 0
@@ -8509,13 +9122,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_l2022a_box_x_271",
+      "id": "vm_2022수능_l2022a_box_x_272",
       "yearKey": "2022수능",
       "setId": "l2022a",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022as6"],
+      "sentIds": [
+        "l2022as6"
+      ],
       "start": {
         "sentId": "l2022as6",
         "offset": 0
@@ -8531,13 +9146,19 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_l2022b_bracket_A_272",
+      "id": "vm_2022수능_l2022b_bracket_A_273",
       "yearKey": "2022수능",
       "setId": "l2022b",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l2022bs1", "l2022bs2", "l2022bs3", "l2022bs4", "l2022bs5"],
+      "sentIds": [
+        "l2022bs1",
+        "l2022bs2",
+        "l2022bs3",
+        "l2022bs4",
+        "l2022bs5"
+      ],
       "start": {
         "sentId": "l2022bs1",
         "offset": 0
@@ -8583,13 +9204,15 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022b_underline_x_273",
+      "id": "vm_2022수능_l2022b_underline_x_274",
       "yearKey": "2022수능",
       "setId": "l2022b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022bs11"],
+      "sentIds": [
+        "l2022bs11"
+      ],
       "start": {
         "sentId": "l2022bs11",
         "offset": 0
@@ -8605,13 +9228,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022b_underline_x_274",
+      "id": "vm_2022수능_l2022b_underline_x_275",
       "yearKey": "2022수능",
       "setId": "l2022b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022bs32"],
+      "sentIds": [
+        "l2022bs32"
+      ],
       "start": {
         "sentId": "l2022bs32",
         "offset": 0
@@ -8627,13 +9252,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022c_bracket_A_275",
+      "id": "vm_2022수능_l2022c_bracket_A_276",
       "yearKey": "2022수능",
       "setId": "l2022c",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l2022cs4"],
+      "sentIds": [
+        "l2022cs4"
+      ],
       "start": {
         "sentId": "l2022cs4",
         "offset": 0
@@ -8699,13 +9326,15 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022c_bracket_B_276",
+      "id": "vm_2022수능_l2022c_bracket_B_277",
       "yearKey": "2022수능",
       "setId": "l2022c",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2022cs10"],
+      "sentIds": [
+        "l2022cs10"
+      ],
       "start": {
         "sentId": "l2022cs10",
         "offset": 0
@@ -8776,13 +9405,15 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022c_box_x_277",
+      "id": "vm_2022수능_l2022c_box_x_278",
       "yearKey": "2022수능",
       "setId": "l2022c",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022cs5"],
+      "sentIds": [
+        "l2022cs5"
+      ],
       "start": {
         "sentId": "l2022cs5",
         "offset": 0
@@ -8798,13 +9429,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_l2022c_box_x_278",
+      "id": "vm_2022수능_l2022c_box_x_279",
       "yearKey": "2022수능",
       "setId": "l2022c",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022cs22"],
+      "sentIds": [
+        "l2022cs22"
+      ],
       "start": {
         "sentId": "l2022cs22",
         "offset": 0
@@ -8820,7 +9453,7 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2022수능_l2022d_bracket_A_279",
+      "id": "vm_2022수능_l2022d_bracket_A_280",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "bracket",
@@ -8897,13 +9530,17 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022d_bracket_B_280",
+      "id": "vm_2022수능_l2022d_bracket_B_281",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l2022ds36", "l2022ds37", "l2022ds38"],
+      "sentIds": [
+        "l2022ds36",
+        "l2022ds37",
+        "l2022ds38"
+      ],
       "start": {
         "sentId": "l2022ds36",
         "offset": 0
@@ -8959,13 +9596,15 @@
       ]
     },
     {
-      "id": "vm_2022수능_l2022d_underline_x_281",
+      "id": "vm_2022수능_l2022d_underline_x_282",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022ds4"],
+      "sentIds": [
+        "l2022ds4"
+      ],
       "start": {
         "sentId": "l2022ds4",
         "offset": 0
@@ -8981,13 +9620,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022d_underline_x_282",
+      "id": "vm_2022수능_l2022d_underline_x_283",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022ds9"],
+      "sentIds": [
+        "l2022ds9"
+      ],
       "start": {
         "sentId": "l2022ds9",
         "offset": 0
@@ -9003,13 +9644,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022d_underline_x_283",
+      "id": "vm_2022수능_l2022d_underline_x_284",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022ds12"],
+      "sentIds": [
+        "l2022ds12"
+      ],
       "start": {
         "sentId": "l2022ds12",
         "offset": 0
@@ -9025,13 +9668,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022d_underline_x_284",
+      "id": "vm_2022수능_l2022d_underline_x_285",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022ds30"],
+      "sentIds": [
+        "l2022ds30"
+      ],
       "start": {
         "sentId": "l2022ds30",
         "offset": 0
@@ -9047,13 +9692,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022수능_l2022d_underline_x_285",
+      "id": "vm_2022수능_l2022d_underline_x_286",
       "yearKey": "2022수능",
       "setId": "l2022d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l2022ds38"],
+      "sentIds": [
+        "l2022ds38"
+      ],
       "start": {
         "sentId": "l2022ds38",
         "offset": 0
@@ -9069,13 +9716,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226a_underline_x_286",
+      "id": "vm_2022_6월_r20226a_underline_x_287",
       "yearKey": "2022_6월",
       "setId": "r20226a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226as1"],
+      "sentIds": [
+        "r20226as1"
+      ],
       "start": {
         "sentId": "r20226as1",
         "offset": 0
@@ -9091,7 +9740,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226b_bracket_A_287",
+      "id": "vm_2022_6월_r20226b_bracket_A_288",
       "yearKey": "2022_6월",
       "setId": "r20226b",
       "type": "bracket",
@@ -9138,13 +9787,15 @@
       ]
     },
     {
-      "id": "vm_2022_6월_r20226b_underline_x_288",
+      "id": "vm_2022_6월_r20226b_underline_x_289",
       "yearKey": "2022_6월",
       "setId": "r20226b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226bs33"],
+      "sentIds": [
+        "r20226bs33"
+      ],
       "start": {
         "sentId": "r20226bs33",
         "offset": 0
@@ -9160,13 +9811,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226b_underline_x_289",
+      "id": "vm_2022_6월_r20226b_underline_x_290",
       "yearKey": "2022_6월",
       "setId": "r20226b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226bs37"],
+      "sentIds": [
+        "r20226bs37"
+      ],
       "start": {
         "sentId": "r20226bs37",
         "offset": 0
@@ -9182,13 +9835,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226b_underline_x_290",
+      "id": "vm_2022_6월_r20226b_underline_x_291",
       "yearKey": "2022_6월",
       "setId": "r20226b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226bs38"],
+      "sentIds": [
+        "r20226bs38"
+      ],
       "start": {
         "sentId": "r20226bs38",
         "offset": 0
@@ -9204,13 +9859,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_291",
+      "id": "vm_2022_6월_r20226c_underline_x_292",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226cs5"],
+      "sentIds": [
+        "r20226cs5"
+      ],
       "start": {
         "sentId": "r20226cs5",
         "offset": 0
@@ -9226,13 +9883,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_292",
+      "id": "vm_2022_6월_r20226c_underline_x_293",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226cs14"],
+      "sentIds": [
+        "r20226cs14"
+      ],
       "start": {
         "sentId": "r20226cs14",
         "offset": 0
@@ -9248,13 +9907,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_293",
+      "id": "vm_2022_6월_r20226c_underline_x_294",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226cs15"],
+      "sentIds": [
+        "r20226cs15"
+      ],
       "start": {
         "sentId": "r20226cs15",
         "offset": 0
@@ -9270,13 +9931,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_294",
+      "id": "vm_2022_6월_r20226c_underline_x_295",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226cs19"],
+      "sentIds": [
+        "r20226cs19"
+      ],
       "start": {
         "sentId": "r20226cs19",
         "offset": 0
@@ -9292,13 +9955,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_295",
+      "id": "vm_2022_6월_r20226c_underline_x_296",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226cs20"],
+      "sentIds": [
+        "r20226cs20"
+      ],
       "start": {
         "sentId": "r20226cs20",
         "offset": 0
@@ -9314,13 +9979,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226c_underline_x_296",
+      "id": "vm_2022_6월_r20226c_underline_x_297",
       "yearKey": "2022_6월",
       "setId": "r20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226cs24"],
+      "sentIds": [
+        "r20226cs24"
+      ],
       "start": {
         "sentId": "r20226cs24",
         "offset": 0
@@ -9336,7 +10003,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226d_bracket_A_297",
+      "id": "vm_2022_6월_r20226d_bracket_A_298",
       "yearKey": "2022_6월",
       "setId": "r20226d",
       "type": "bracket",
@@ -9363,13 +10030,15 @@
       ]
     },
     {
-      "id": "vm_2022_6월_r20226d_underline_x_298",
+      "id": "vm_2022_6월_r20226d_underline_x_299",
       "yearKey": "2022_6월",
       "setId": "r20226d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226ds15"],
+      "sentIds": [
+        "r20226ds15"
+      ],
       "start": {
         "sentId": "r20226ds15",
         "offset": 0
@@ -9385,13 +10054,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_r20226d_underline_x_299",
+      "id": "vm_2022_6월_r20226d_underline_x_300",
       "yearKey": "2022_6월",
       "setId": "r20226d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20226ds17"],
+      "sentIds": [
+        "r20226ds17"
+      ],
       "start": {
         "sentId": "r20226ds17",
         "offset": 0
@@ -9407,13 +10078,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226a_underline_x_300",
+      "id": "vm_2022_6월_l20226a_underline_x_301",
       "yearKey": "2022_6월",
       "setId": "l20226a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226as5"],
+      "sentIds": [
+        "l20226as5"
+      ],
       "start": {
         "sentId": "l20226as5",
         "offset": 0
@@ -9429,13 +10102,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226a_underline_x_301",
+      "id": "vm_2022_6월_l20226a_underline_x_302",
       "yearKey": "2022_6월",
       "setId": "l20226a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226as8"],
+      "sentIds": [
+        "l20226as8"
+      ],
       "start": {
         "sentId": "l20226as8",
         "offset": 0
@@ -9451,13 +10126,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226a_underline_x_302",
+      "id": "vm_2022_6월_l20226a_underline_x_303",
       "yearKey": "2022_6월",
       "setId": "l20226a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226as10"],
+      "sentIds": [
+        "l20226as10"
+      ],
       "start": {
         "sentId": "l20226as10",
         "offset": 0
@@ -9473,13 +10150,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226a_underline_x_303",
+      "id": "vm_2022_6월_l20226a_underline_x_304",
       "yearKey": "2022_6월",
       "setId": "l20226a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226as12"],
+      "sentIds": [
+        "l20226as12"
+      ],
       "start": {
         "sentId": "l20226as12",
         "offset": 0
@@ -9495,7 +10174,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226b_bracket_A_304",
+      "id": "vm_2022_6월_l20226b_bracket_A_305",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "bracket",
@@ -9587,7 +10266,7 @@
       ]
     },
     {
-      "id": "vm_2022_6월_l20226b_bracket_B_305",
+      "id": "vm_2022_6월_l20226b_bracket_B_306",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "bracket",
@@ -9679,13 +10358,15 @@
       ]
     },
     {
-      "id": "vm_2022_6월_l20226b_underline_x_306",
+      "id": "vm_2022_6월_l20226b_underline_x_307",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226bs15"],
+      "sentIds": [
+        "l20226bs15"
+      ],
       "start": {
         "sentId": "l20226bs15",
         "offset": 0
@@ -9701,13 +10382,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226b_underline_x_307",
+      "id": "vm_2022_6월_l20226b_underline_x_308",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226bs18"],
+      "sentIds": [
+        "l20226bs18"
+      ],
       "start": {
         "sentId": "l20226bs18",
         "offset": 0
@@ -9723,13 +10406,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226b_underline_x_308",
+      "id": "vm_2022_6월_l20226b_underline_x_309",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226bs19"],
+      "sentIds": [
+        "l20226bs19"
+      ],
       "start": {
         "sentId": "l20226bs19",
         "offset": 0
@@ -9745,13 +10430,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226b_underline_x_309",
+      "id": "vm_2022_6월_l20226b_underline_x_310",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226bs26"],
+      "sentIds": [
+        "l20226bs26"
+      ],
       "start": {
         "sentId": "l20226bs26",
         "offset": 0
@@ -9767,13 +10454,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226b_underline_x_310",
+      "id": "vm_2022_6월_l20226b_underline_x_311",
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226bs27"],
+      "sentIds": [
+        "l20226bs27"
+      ],
       "start": {
         "sentId": "l20226bs27",
         "offset": 0
@@ -9789,13 +10478,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226c_underline_x_311",
+      "id": "vm_2022_6월_l20226c_underline_x_312",
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226cs3"],
+      "sentIds": [
+        "l20226cs3"
+      ],
       "start": {
         "sentId": "l20226cs3",
         "offset": 0
@@ -9811,13 +10502,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226c_underline_x_312",
+      "id": "vm_2022_6월_l20226c_underline_x_313",
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226cs6"],
+      "sentIds": [
+        "l20226cs6"
+      ],
       "start": {
         "sentId": "l20226cs6",
         "offset": 0
@@ -9833,13 +10526,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226c_underline_x_313",
+      "id": "vm_2022_6월_l20226c_underline_x_314",
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226cs6"],
+      "sentIds": [
+        "l20226cs6"
+      ],
       "start": {
         "sentId": "l20226cs6",
         "offset": 0
@@ -9855,13 +10550,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226c_underline_x_314",
+      "id": "vm_2022_6월_l20226c_underline_x_315",
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226cs7"],
+      "sentIds": [
+        "l20226cs7"
+      ],
       "start": {
         "sentId": "l20226cs7",
         "offset": 0
@@ -9877,13 +10574,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2022_6월_l20226c_underline_x_315",
+      "id": "vm_2022_6월_l20226c_underline_x_316",
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20226cs9"],
+      "sentIds": [
+        "l20226cs9"
+      ],
       "start": {
         "sentId": "l20226cs9",
         "offset": 0
@@ -9899,13 +10598,18 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236a_bracket_A_316",
+      "id": "vm_2023_6월_r20236a_bracket_A_317",
       "yearKey": "2023_6월",
       "setId": "r20236a",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["r20236a_s3", "r20236a_s4", "r20236a_s5", "r20236a_s6"],
+      "sentIds": [
+        "r20236a_s3",
+        "r20236a_s4",
+        "r20236a_s5",
+        "r20236a_s6"
+      ],
       "start": {
         "sentId": "r20236a_s3",
         "offset": 0
@@ -9926,13 +10630,15 @@
       ]
     },
     {
-      "id": "vm_2023_6월_r20236a_underline_x_317",
+      "id": "vm_2023_6월_r20236a_underline_x_318",
       "yearKey": "2023_6월",
       "setId": "r20236a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236a_s3"],
+      "sentIds": [
+        "r20236a_s3"
+      ],
       "start": {
         "sentId": "r20236a_s3",
         "offset": 0
@@ -9948,13 +10654,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236a_underline_x_318",
+      "id": "vm_2023_6월_r20236a_underline_x_319",
       "yearKey": "2023_6월",
       "setId": "r20236a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236a_s3"],
+      "sentIds": [
+        "r20236a_s3"
+      ],
       "start": {
         "sentId": "r20236a_s3",
         "offset": 0
@@ -9970,13 +10678,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236a_underline_x_319",
+      "id": "vm_2023_6월_r20236a_underline_x_320",
       "yearKey": "2023_6월",
       "setId": "r20236a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236a_s10"],
+      "sentIds": [
+        "r20236a_s10"
+      ],
       "start": {
         "sentId": "r20236a_s10",
         "offset": 0
@@ -9992,13 +10702,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_320",
+      "id": "vm_2023_6월_r20236b_underline_x_321",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236b_s1"],
+      "sentIds": [
+        "r20236b_s1"
+      ],
       "start": {
         "sentId": "r20236b_s1",
         "offset": 0
@@ -10014,13 +10726,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_321",
+      "id": "vm_2023_6월_r20236b_underline_x_322",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236b_s3"],
+      "sentIds": [
+        "r20236b_s3"
+      ],
       "start": {
         "sentId": "r20236b_s3",
         "offset": 0
@@ -10036,13 +10750,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_322",
+      "id": "vm_2023_6월_r20236b_underline_x_323",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236b_s4"],
+      "sentIds": [
+        "r20236b_s4"
+      ],
       "start": {
         "sentId": "r20236b_s4",
         "offset": 0
@@ -10058,13 +10774,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_323",
+      "id": "vm_2023_6월_r20236b_underline_x_324",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236b_s9"],
+      "sentIds": [
+        "r20236b_s9"
+      ],
       "start": {
         "sentId": "r20236b_s9",
         "offset": 0
@@ -10080,13 +10798,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_324",
+      "id": "vm_2023_6월_r20236b_underline_x_325",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236b_s9"],
+      "sentIds": [
+        "r20236b_s9"
+      ],
       "start": {
         "sentId": "r20236b_s9",
         "offset": 0
@@ -10102,13 +10822,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_325",
+      "id": "vm_2023_6월_r20236b_underline_x_326",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236b_s10"],
+      "sentIds": [
+        "r20236b_s10"
+      ],
       "start": {
         "sentId": "r20236b_s10",
         "offset": 0
@@ -10124,13 +10846,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_326",
+      "id": "vm_2023_6월_r20236b_underline_x_327",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236b_s18"],
+      "sentIds": [
+        "r20236b_s18"
+      ],
       "start": {
         "sentId": "r20236b_s18",
         "offset": 0
@@ -10146,13 +10870,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236b_underline_x_327",
+      "id": "vm_2023_6월_r20236b_underline_x_328",
       "yearKey": "2023_6월",
       "setId": "r20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236b_s20"],
+      "sentIds": [
+        "r20236b_s20"
+      ],
       "start": {
         "sentId": "r20236b_s20",
         "offset": 0
@@ -10168,13 +10894,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236c_box_x_328",
+      "id": "vm_2023_6월_r20236c_box_x_329",
       "yearKey": "2023_6월",
       "setId": "r20236c",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236c_s17"],
+      "sentIds": [
+        "r20236c_s17"
+      ],
       "start": {
         "sentId": "r20236c_s17",
         "offset": 0
@@ -10190,13 +10918,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2023_6월_r20236c_underline_x_329",
+      "id": "vm_2023_6월_r20236c_underline_x_330",
       "yearKey": "2023_6월",
       "setId": "r20236c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236c_s15"],
+      "sentIds": [
+        "r20236c_s15"
+      ],
       "start": {
         "sentId": "r20236c_s15",
         "offset": 0
@@ -10212,13 +10942,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236c_underline_x_330",
+      "id": "vm_2023_6월_r20236c_underline_x_331",
       "yearKey": "2023_6월",
       "setId": "r20236c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236c_s15"],
+      "sentIds": [
+        "r20236c_s15"
+      ],
       "start": {
         "sentId": "r20236c_s15",
         "offset": 0
@@ -10234,13 +10966,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_box_x_331",
+      "id": "vm_2023_6월_r20236d_box_x_332",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236d_s8"],
+      "sentIds": [
+        "r20236d_s8"
+      ],
       "start": {
         "sentId": "r20236d_s8",
         "offset": 0
@@ -10256,13 +10990,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_332",
+      "id": "vm_2023_6월_r20236d_underline_x_333",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236d_s4"],
+      "sentIds": [
+        "r20236d_s4"
+      ],
       "start": {
         "sentId": "r20236d_s4",
         "offset": 0
@@ -10278,13 +11014,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_333",
+      "id": "vm_2023_6월_r20236d_underline_x_334",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236d_s13"],
+      "sentIds": [
+        "r20236d_s13"
+      ],
       "start": {
         "sentId": "r20236d_s13",
         "offset": 0
@@ -10300,13 +11038,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_334",
+      "id": "vm_2023_6월_r20236d_underline_x_335",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236d_s14"],
+      "sentIds": [
+        "r20236d_s14"
+      ],
       "start": {
         "sentId": "r20236d_s14",
         "offset": 0
@@ -10322,13 +11062,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_335",
+      "id": "vm_2023_6월_r20236d_underline_x_336",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236d_s17"],
+      "sentIds": [
+        "r20236d_s17"
+      ],
       "start": {
         "sentId": "r20236d_s17",
         "offset": 0
@@ -10344,13 +11086,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_336",
+      "id": "vm_2023_6월_r20236d_underline_x_337",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236d_s18"],
+      "sentIds": [
+        "r20236d_s18"
+      ],
       "start": {
         "sentId": "r20236d_s18",
         "offset": 0
@@ -10366,13 +11110,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_r20236d_underline_x_337",
+      "id": "vm_2023_6월_r20236d_underline_x_338",
       "yearKey": "2023_6월",
       "setId": "r20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20236d_s21"],
+      "sentIds": [
+        "r20236d_s21"
+      ],
       "start": {
         "sentId": "r20236d_s21",
         "offset": 0
@@ -10388,13 +11134,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236b_box_x_338",
+      "id": "vm_2023_6월_l20236b_box_x_339",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20238as20"],
+      "sentIds": [
+        "l20238as20"
+      ],
       "start": {
         "sentId": "l20238as20",
         "offset": 0
@@ -10410,13 +11158,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2023_6월_l20236b_underline_x_339",
+      "id": "vm_2023_6월_l20236b_underline_x_340",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20238as13"],
+      "sentIds": [
+        "l20238as13"
+      ],
       "start": {
         "sentId": "l20238as13",
         "offset": 0
@@ -10432,13 +11182,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236b_underline_x_340",
+      "id": "vm_2023_6월_l20236b_underline_x_341",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20238as14"],
+      "sentIds": [
+        "l20238as14"
+      ],
       "start": {
         "sentId": "l20238as14",
         "offset": 0
@@ -10454,13 +11206,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236b_underline_x_341",
+      "id": "vm_2023_6월_l20236b_underline_x_342",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20238as15"],
+      "sentIds": [
+        "l20238as15"
+      ],
       "start": {
         "sentId": "l20238as15",
         "offset": 0
@@ -10476,13 +11230,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236b_underline_x_342",
+      "id": "vm_2023_6월_l20236b_underline_x_343",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20238as16"],
+      "sentIds": [
+        "l20238as16"
+      ],
       "start": {
         "sentId": "l20238as16",
         "offset": 0
@@ -10498,13 +11254,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236b_underline_x_343",
+      "id": "vm_2023_6월_l20236b_underline_x_344",
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20238as17"],
+      "sentIds": [
+        "l20238as17"
+      ],
       "start": {
         "sentId": "l20238as17",
         "offset": 0
@@ -10520,13 +11278,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236c_underline_x_344",
+      "id": "vm_2023_6월_l20236c_underline_x_345",
       "yearKey": "2023_6월",
       "setId": "l20236c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l202311as6"],
+      "sentIds": [
+        "l202311as6"
+      ],
       "start": {
         "sentId": "l202311as6",
         "offset": 0
@@ -10542,13 +11302,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236c_underline_x_345",
+      "id": "vm_2023_6월_l20236c_underline_x_346",
       "yearKey": "2023_6월",
       "setId": "l20236c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l202311as17"],
+      "sentIds": [
+        "l202311as17"
+      ],
       "start": {
         "sentId": "l202311as17",
         "offset": 0
@@ -10564,13 +11326,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_bracket_A_346",
+      "id": "vm_2023_6월_l20236d_bracket_A_347",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l20236es6"],
+      "sentIds": [
+        "l20236es6"
+      ],
       "start": {
         "sentId": "l20236es6",
         "offset": 0
@@ -10616,13 +11380,15 @@
       ]
     },
     {
-      "id": "vm_2023_6월_l20236d_bracket_B_347",
+      "id": "vm_2023_6월_l20236d_bracket_B_348",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l20236es7"],
+      "sentIds": [
+        "l20236es7"
+      ],
       "start": {
         "sentId": "l20236es7",
         "offset": 0
@@ -10649,13 +11415,15 @@
       ]
     },
     {
-      "id": "vm_2023_6월_l20236d_bracket_C_348",
+      "id": "vm_2023_6월_l20236d_bracket_C_349",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "bracket",
       "label": "C",
       "target": "sent_range",
-      "sentIds": ["l20236es8"],
+      "sentIds": [
+        "l20236es8"
+      ],
       "start": {
         "sentId": "l20236es8",
         "offset": 0
@@ -10687,13 +11455,15 @@
       ]
     },
     {
-      "id": "vm_2023_6월_l20236d_bracket_D_349",
+      "id": "vm_2023_6월_l20236d_bracket_D_350",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "bracket",
       "label": "D",
       "target": "sent_range",
-      "sentIds": ["l20236es10"],
+      "sentIds": [
+        "l20236es10"
+      ],
       "start": {
         "sentId": "l20236es10",
         "offset": 0
@@ -10730,13 +11500,15 @@
       ]
     },
     {
-      "id": "vm_2023_6월_l20236d_bracket_E_350",
+      "id": "vm_2023_6월_l20236d_bracket_E_351",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "bracket",
       "label": "E",
       "target": "sent_range",
-      "sentIds": ["l20236es11"],
+      "sentIds": [
+        "l20236es11"
+      ],
       "start": {
         "sentId": "l20236es11",
         "offset": 0
@@ -10782,13 +11554,15 @@
       ]
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_351",
+      "id": "vm_2023_6월_l20236d_underline_x_352",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20236es2"],
+      "sentIds": [
+        "l20236es2"
+      ],
       "start": {
         "sentId": "l20236es2",
         "offset": 0
@@ -10804,13 +11578,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_352",
+      "id": "vm_2023_6월_l20236d_underline_x_353",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20236es6"],
+      "sentIds": [
+        "l20236es6"
+      ],
       "start": {
         "sentId": "l20236es6",
         "offset": 0
@@ -10826,13 +11602,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_353",
+      "id": "vm_2023_6월_l20236d_underline_x_354",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20236es12"],
+      "sentIds": [
+        "l20236es12"
+      ],
       "start": {
         "sentId": "l20236es12",
         "offset": 0
@@ -10848,13 +11626,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_354",
+      "id": "vm_2023_6월_l20236d_underline_x_355",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20236es16"],
+      "sentIds": [
+        "l20236es16"
+      ],
       "start": {
         "sentId": "l20236es16",
         "offset": 0
@@ -10870,13 +11650,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_355",
+      "id": "vm_2023_6월_l20236d_underline_x_356",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20236es17"],
+      "sentIds": [
+        "l20236es17"
+      ],
       "start": {
         "sentId": "l20236es17",
         "offset": 0
@@ -10892,13 +11674,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_356",
+      "id": "vm_2023_6월_l20236d_underline_x_357",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20236es18"],
+      "sentIds": [
+        "l20236es18"
+      ],
       "start": {
         "sentId": "l20236es18",
         "offset": 0
@@ -10914,13 +11698,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_6월_l20236d_underline_x_357",
+      "id": "vm_2023_6월_l20236d_underline_x_358",
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20236es18"],
+      "sentIds": [
+        "l20236es18"
+      ],
       "start": {
         "sentId": "l20236es18",
         "offset": 0
@@ -10936,7 +11722,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239a_bracket_A_358",
+      "id": "vm_2023_9월_r20239a_bracket_A_359",
       "yearKey": "2023_9월",
       "setId": "r20239a",
       "type": "bracket",
@@ -10971,13 +11757,15 @@
       ]
     },
     {
-      "id": "vm_2023_9월_r20239a_underline_x_359",
+      "id": "vm_2023_9월_r20239a_underline_x_360",
       "yearKey": "2023_9월",
       "setId": "r20239a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239a_s11"],
+      "sentIds": [
+        "r20239a_s11"
+      ],
       "start": {
         "sentId": "r20239a_s11",
         "offset": 0
@@ -10993,13 +11781,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_box_x_360",
+      "id": "vm_2023_9월_r20239b_box_x_361",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239b_s2"],
+      "sentIds": [
+        "r20239b_s2"
+      ],
       "start": {
         "sentId": "r20239b_s2",
         "offset": 0
@@ -11015,13 +11805,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_361",
+      "id": "vm_2023_9월_r20239b_underline_x_362",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239b_s4"],
+      "sentIds": [
+        "r20239b_s4"
+      ],
       "start": {
         "sentId": "r20239b_s4",
         "offset": 0
@@ -11037,13 +11829,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_362",
+      "id": "vm_2023_9월_r20239b_underline_x_363",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239b_s17"],
+      "sentIds": [
+        "r20239b_s17"
+      ],
       "start": {
         "sentId": "r20239b_s17",
         "offset": 0
@@ -11059,13 +11853,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_363",
+      "id": "vm_2023_9월_r20239b_underline_x_364",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239b_s20"],
+      "sentIds": [
+        "r20239b_s20"
+      ],
       "start": {
         "sentId": "r20239b_s20",
         "offset": 0
@@ -11081,13 +11877,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_364",
+      "id": "vm_2023_9월_r20239b_underline_x_365",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239b_s23"],
+      "sentIds": [
+        "r20239b_s23"
+      ],
       "start": {
         "sentId": "r20239b_s23",
         "offset": 0
@@ -11103,13 +11901,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_365",
+      "id": "vm_2023_9월_r20239b_underline_x_366",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239b_s25"],
+      "sentIds": [
+        "r20239b_s25"
+      ],
       "start": {
         "sentId": "r20239b_s25",
         "offset": 0
@@ -11125,13 +11925,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_366",
+      "id": "vm_2023_9월_r20239b_underline_x_367",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239b_s26"],
+      "sentIds": [
+        "r20239b_s26"
+      ],
       "start": {
         "sentId": "r20239b_s26",
         "offset": 0
@@ -11147,13 +11949,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239b_underline_x_367",
+      "id": "vm_2023_9월_r20239b_underline_x_368",
       "yearKey": "2023_9월",
       "setId": "r20239b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239b_s27"],
+      "sentIds": [
+        "r20239b_s27"
+      ],
       "start": {
         "sentId": "r20239b_s27",
         "offset": 0
@@ -11169,13 +11973,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239c_underline_x_368",
+      "id": "vm_2023_9월_r20239c_underline_x_369",
       "yearKey": "2023_9월",
       "setId": "r20239c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239c_s19"],
+      "sentIds": [
+        "r20239c_s19"
+      ],
       "start": {
         "sentId": "r20239c_s19",
         "offset": 0
@@ -11191,13 +11997,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239d_underline_x_369",
+      "id": "vm_2023_9월_r20239d_underline_x_370",
       "yearKey": "2023_9월",
       "setId": "r20239d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239d_s2"],
+      "sentIds": [
+        "r20239d_s2"
+      ],
       "start": {
         "sentId": "r20239d_s2",
         "offset": 0
@@ -11213,13 +12021,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239d_underline_x_370",
+      "id": "vm_2023_9월_r20239d_underline_x_371",
       "yearKey": "2023_9월",
       "setId": "r20239d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239d_s7"],
+      "sentIds": [
+        "r20239d_s7"
+      ],
       "start": {
         "sentId": "r20239d_s7",
         "offset": 0
@@ -11235,13 +12045,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_r20239d_underline_x_371",
+      "id": "vm_2023_9월_r20239d_underline_x_372",
       "yearKey": "2023_9월",
       "setId": "r20239d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20239d_s18"],
+      "sentIds": [
+        "r20239d_s18"
+      ],
       "start": {
         "sentId": "r20239d_s18",
         "offset": 0
@@ -11257,13 +12069,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_372",
+      "id": "vm_2023_9월_l20239a_underline_x_373",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239as2"],
+      "sentIds": [
+        "l20239as2"
+      ],
       "start": {
         "sentId": "l20239as2",
         "offset": 0
@@ -11279,13 +12093,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_373",
+      "id": "vm_2023_9월_l20239a_underline_x_374",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239as14"],
+      "sentIds": [
+        "l20239as14"
+      ],
       "start": {
         "sentId": "l20239as14",
         "offset": 0
@@ -11301,13 +12117,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_374",
+      "id": "vm_2023_9월_l20239a_underline_x_375",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239as19"],
+      "sentIds": [
+        "l20239as19"
+      ],
       "start": {
         "sentId": "l20239as19",
         "offset": 0
@@ -11323,13 +12141,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_375",
+      "id": "vm_2023_9월_l20239a_underline_x_376",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239as23"],
+      "sentIds": [
+        "l20239as23"
+      ],
       "start": {
         "sentId": "l20239as23",
         "offset": 0
@@ -11345,13 +12165,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_376",
+      "id": "vm_2023_9월_l20239a_underline_x_377",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239as26"],
+      "sentIds": [
+        "l20239as26"
+      ],
       "start": {
         "sentId": "l20239as26",
         "offset": 0
@@ -11367,13 +12189,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_377",
+      "id": "vm_2023_9월_l20239a_underline_x_378",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239as30"],
+      "sentIds": [
+        "l20239as30"
+      ],
       "start": {
         "sentId": "l20239as30",
         "offset": 0
@@ -11389,13 +12213,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239a_underline_x_378",
+      "id": "vm_2023_9월_l20239a_underline_x_379",
       "yearKey": "2023_9월",
       "setId": "l20239a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239as36"],
+      "sentIds": [
+        "l20239as36"
+      ],
       "start": {
         "sentId": "l20239as36",
         "offset": 0
@@ -11411,13 +12237,16 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_A_379",
+      "id": "vm_2023_9월_l20239b_bracket_A_380",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l20239bs19", "l20239bs20"],
+      "sentIds": [
+        "l20239bs19",
+        "l20239bs20"
+      ],
       "start": {
         "sentId": "l20239bs19",
         "offset": 0
@@ -11458,13 +12287,16 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_B_380",
+      "id": "vm_2023_9월_l20239b_bracket_B_381",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l20239bs23", "l20239bs24"],
+      "sentIds": [
+        "l20239bs23",
+        "l20239bs24"
+      ],
       "start": {
         "sentId": "l20239bs23",
         "offset": 0
@@ -11511,13 +12343,17 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_C_381",
+      "id": "vm_2023_9월_l20239b_bracket_C_382",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
       "label": "C",
       "target": "sent_range",
-      "sentIds": ["l20239bs25", "l20239bs26", "l20239bs27"],
+      "sentIds": [
+        "l20239bs25",
+        "l20239bs26",
+        "l20239bs27"
+      ],
       "start": {
         "sentId": "l20239bs25",
         "offset": 0
@@ -11554,13 +12390,17 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_D_382",
+      "id": "vm_2023_9월_l20239b_bracket_D_383",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
       "label": "D",
       "target": "sent_range",
-      "sentIds": ["l20239bs31", "l20239bs32", "l20239bs33"],
+      "sentIds": [
+        "l20239bs31",
+        "l20239bs32",
+        "l20239bs33"
+      ],
       "start": {
         "sentId": "l20239bs31",
         "offset": 0
@@ -11587,13 +12427,16 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_E_383",
+      "id": "vm_2023_9월_l20239b_bracket_E_384",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
       "label": "E",
       "target": "sent_range",
-      "sentIds": ["l20239bs34", "l20239bs35"],
+      "sentIds": [
+        "l20239bs34",
+        "l20239bs35"
+      ],
       "start": {
         "sentId": "l20239bs34",
         "offset": 0
@@ -11620,13 +12463,16 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239b_bracket_F_384",
+      "id": "vm_2023_9월_l20239b_bracket_F_385",
       "yearKey": "2023_9월",
       "setId": "l20239b",
       "type": "bracket",
       "label": "F",
       "target": "sent_range",
-      "sentIds": ["l20239bs38", "l20239bs39"],
+      "sentIds": [
+        "l20239bs38",
+        "l20239bs39"
+      ],
       "start": {
         "sentId": "l20239bs38",
         "offset": 0
@@ -11657,13 +12503,15 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239c_underline_x_385",
+      "id": "vm_2023_9월_l20239c_underline_x_386",
       "yearKey": "2023_9월",
       "setId": "l20239c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239cs26"],
+      "sentIds": [
+        "l20239cs26"
+      ],
       "start": {
         "sentId": "l20239cs26",
         "offset": 0
@@ -11679,13 +12527,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239c_underline_x_386",
+      "id": "vm_2023_9월_l20239c_underline_x_387",
       "yearKey": "2023_9월",
       "setId": "l20239c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239cs52"],
+      "sentIds": [
+        "l20239cs52"
+      ],
       "start": {
         "sentId": "l20239cs52",
         "offset": 0
@@ -11701,13 +12551,17 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_bracket_A_387",
+      "id": "vm_2023_9월_l20239d_bracket_A_388",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l20239ds7", "l20239ds8", "l20239ds9"],
+      "sentIds": [
+        "l20239ds7",
+        "l20239ds8",
+        "l20239ds9"
+      ],
       "start": {
         "sentId": "l20239ds7",
         "offset": 0
@@ -11758,7 +12612,7 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239d_bracket_B_388",
+      "id": "vm_2023_9월_l20239d_bracket_B_389",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "bracket",
@@ -11823,13 +12677,15 @@
       ]
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_389",
+      "id": "vm_2023_9월_l20239d_underline_x_390",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239ds15"],
+      "sentIds": [
+        "l20239ds15"
+      ],
       "start": {
         "sentId": "l20239ds15",
         "offset": 0
@@ -11845,13 +12701,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_390",
+      "id": "vm_2023_9월_l20239d_underline_x_391",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239ds17"],
+      "sentIds": [
+        "l20239ds17"
+      ],
       "start": {
         "sentId": "l20239ds17",
         "offset": 0
@@ -11867,13 +12725,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_391",
+      "id": "vm_2023_9월_l20239d_underline_x_392",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239ds24"],
+      "sentIds": [
+        "l20239ds24"
+      ],
       "start": {
         "sentId": "l20239ds24",
         "offset": 0
@@ -11889,13 +12749,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_392",
+      "id": "vm_2023_9월_l20239d_underline_x_393",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239ds25"],
+      "sentIds": [
+        "l20239ds25"
+      ],
       "start": {
         "sentId": "l20239ds25",
         "offset": 0
@@ -11911,13 +12773,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_393",
+      "id": "vm_2023_9월_l20239d_underline_x_394",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239ds43"],
+      "sentIds": [
+        "l20239ds43"
+      ],
       "start": {
         "sentId": "l20239ds43",
         "offset": 0
@@ -11933,13 +12797,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2023_9월_l20239d_underline_x_394",
+      "id": "vm_2023_9월_l20239d_underline_x_395",
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20239ds48v"],
+      "sentIds": [
+        "l20239ds48v"
+      ],
       "start": {
         "sentId": "l20239ds48v",
         "offset": 0
@@ -11955,7 +12821,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246a_bracket_A_395",
+      "id": "vm_2024_6월_r20246a_bracket_A_396",
       "yearKey": "2024_6월",
       "setId": "r20246a",
       "type": "bracket",
@@ -11990,13 +12856,15 @@
       ]
     },
     {
-      "id": "vm_2024_6월_r20246b_underline_x_396",
+      "id": "vm_2024_6월_r20246b_underline_x_397",
       "yearKey": "2024_6월",
       "setId": "r20246b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246b_s4"],
+      "sentIds": [
+        "r20246b_s4"
+      ],
       "start": {
         "sentId": "r20246b_s4",
         "offset": 0
@@ -12012,13 +12880,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246b_underline_x_397",
+      "id": "vm_2024_6월_r20246b_underline_x_398",
       "yearKey": "2024_6월",
       "setId": "r20246b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246b_s5"],
+      "sentIds": [
+        "r20246b_s5"
+      ],
       "start": {
         "sentId": "r20246b_s5",
         "offset": 0
@@ -12034,13 +12904,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246b_underline_x_398",
+      "id": "vm_2024_6월_r20246b_underline_x_399",
       "yearKey": "2024_6월",
       "setId": "r20246b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246b_s8"],
+      "sentIds": [
+        "r20246b_s8"
+      ],
       "start": {
         "sentId": "r20246b_s8",
         "offset": 0
@@ -12056,13 +12928,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246b_underline_x_399",
+      "id": "vm_2024_6월_r20246b_underline_x_400",
       "yearKey": "2024_6월",
       "setId": "r20246b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246b_s10"],
+      "sentIds": [
+        "r20246b_s10"
+      ],
       "start": {
         "sentId": "r20246b_s10",
         "offset": 0
@@ -12078,13 +12952,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246b_underline_x_400",
+      "id": "vm_2024_6월_r20246b_underline_x_401",
       "yearKey": "2024_6월",
       "setId": "r20246b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246b_s15"],
+      "sentIds": [
+        "r20246b_s15"
+      ],
       "start": {
         "sentId": "r20246b_s15",
         "offset": 0
@@ -12100,13 +12976,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246c_underline_x_401",
+      "id": "vm_2024_6월_r20246c_underline_x_402",
       "yearKey": "2024_6월",
       "setId": "r20246c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246c_s20"],
+      "sentIds": [
+        "r20246c_s20"
+      ],
       "start": {
         "sentId": "r20246c_s20",
         "offset": 0
@@ -12122,13 +13000,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_402",
+      "id": "vm_2024_6월_r20246d_underline_x_403",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246d_s5"],
+      "sentIds": [
+        "r20246d_s5"
+      ],
       "start": {
         "sentId": "r20246d_s5",
         "offset": 0
@@ -12144,13 +13024,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_403",
+      "id": "vm_2024_6월_r20246d_underline_x_404",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246d_s12"],
+      "sentIds": [
+        "r20246d_s12"
+      ],
       "start": {
         "sentId": "r20246d_s12",
         "offset": 0
@@ -12166,13 +13048,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_404",
+      "id": "vm_2024_6월_r20246d_underline_x_405",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246d_s15"],
+      "sentIds": [
+        "r20246d_s15"
+      ],
       "start": {
         "sentId": "r20246d_s15",
         "offset": 0
@@ -12188,13 +13072,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_405",
+      "id": "vm_2024_6월_r20246d_underline_x_406",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246d_s18"],
+      "sentIds": [
+        "r20246d_s18"
+      ],
       "start": {
         "sentId": "r20246d_s18",
         "offset": 0
@@ -12210,13 +13096,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_406",
+      "id": "vm_2024_6월_r20246d_underline_x_407",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246d_s25"],
+      "sentIds": [
+        "r20246d_s25"
+      ],
       "start": {
         "sentId": "r20246d_s25",
         "offset": 0
@@ -12232,13 +13120,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_407",
+      "id": "vm_2024_6월_r20246d_underline_x_408",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246d_s39"],
+      "sentIds": [
+        "r20246d_s39"
+      ],
       "start": {
         "sentId": "r20246d_s39",
         "offset": 0
@@ -12254,13 +13144,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_r20246d_underline_x_408",
+      "id": "vm_2024_6월_r20246d_underline_x_409",
       "yearKey": "2024_6월",
       "setId": "r20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20246d_s43"],
+      "sentIds": [
+        "r20246d_s43"
+      ],
       "start": {
         "sentId": "r20246d_s43",
         "offset": 0
@@ -12276,13 +13168,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246a_underline_x_409",
+      "id": "vm_2024_6월_l20246a_underline_x_410",
       "yearKey": "2024_6월",
       "setId": "l20246a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246as4"],
+      "sentIds": [
+        "l20246as4"
+      ],
       "start": {
         "sentId": "l20246as4",
         "offset": 0
@@ -12298,13 +13192,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246a_underline_x_410",
+      "id": "vm_2024_6월_l20246a_underline_x_411",
       "yearKey": "2024_6월",
       "setId": "l20246a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246as20"],
+      "sentIds": [
+        "l20246as20"
+      ],
       "start": {
         "sentId": "l20246as20",
         "offset": 0
@@ -12320,13 +13216,17 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246b_bracket_A_411",
+      "id": "vm_2024_6월_l20246b_bracket_A_412",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l20246bs7", "l20246bs8", "l20246bs9"],
+      "sentIds": [
+        "l20246bs7",
+        "l20246bs8",
+        "l20246bs9"
+      ],
       "start": {
         "sentId": "l20246bs7",
         "offset": 0
@@ -12357,13 +13257,17 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246b_bracket_B_412",
+      "id": "vm_2024_6월_l20246b_bracket_B_413",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l20246bs16", "l20246bs17", "l20246bs18"],
+      "sentIds": [
+        "l20246bs16",
+        "l20246bs17",
+        "l20246bs18"
+      ],
       "start": {
         "sentId": "l20246bs16",
         "offset": 0
@@ -12390,13 +13294,17 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246b_bracket_C_413",
+      "id": "vm_2024_6월_l20246b_bracket_C_414",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "bracket",
       "label": "C",
       "target": "sent_range",
-      "sentIds": ["l20246bs21", "l20246bs22", "l20246bs23"],
+      "sentIds": [
+        "l20246bs21",
+        "l20246bs22",
+        "l20246bs23"
+      ],
       "start": {
         "sentId": "l20246bs21",
         "offset": 0
@@ -12423,13 +13331,15 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246b_bracket_D_414",
+      "id": "vm_2024_6월_l20246b_bracket_D_415",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "bracket",
       "label": "D",
       "target": "sent_range",
-      "sentIds": ["l20246bs34"],
+      "sentIds": [
+        "l20246bs34"
+      ],
       "start": {
         "sentId": "l20246bs34",
         "offset": 0
@@ -12461,13 +13371,15 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246b_bracket_E_415",
+      "id": "vm_2024_6월_l20246b_bracket_E_416",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "bracket",
       "label": "E",
       "target": "sent_range",
-      "sentIds": ["l20246bs41"],
+      "sentIds": [
+        "l20246bs41"
+      ],
       "start": {
         "sentId": "l20246bs41",
         "offset": 0
@@ -12503,13 +13415,15 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246b_box_x_416",
+      "id": "vm_2024_6월_l20246b_box_x_417",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246bs39"],
+      "sentIds": [
+        "l20246bs39"
+      ],
       "start": {
         "sentId": "l20246bs39",
         "offset": 0
@@ -12525,13 +13439,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2024_6월_l20246b_box_x_417",
+      "id": "vm_2024_6월_l20246b_box_x_418",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246bs39"],
+      "sentIds": [
+        "l20246bs39"
+      ],
       "start": {
         "sentId": "l20246bs39",
         "offset": 0
@@ -12547,13 +13463,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2024_6월_l20246b_underline_x_418",
+      "id": "vm_2024_6월_l20246b_underline_x_419",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246bs3"],
+      "sentIds": [
+        "l20246bs3"
+      ],
       "start": {
         "sentId": "l20246bs3",
         "offset": 0
@@ -12569,13 +13487,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246b_underline_x_419",
+      "id": "vm_2024_6월_l20246b_underline_x_420",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246bs5"],
+      "sentIds": [
+        "l20246bs5"
+      ],
       "start": {
         "sentId": "l20246bs5",
         "offset": 0
@@ -12591,13 +13511,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246b_underline_x_420",
+      "id": "vm_2024_6월_l20246b_underline_x_421",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246bs21"],
+      "sentIds": [
+        "l20246bs21"
+      ],
       "start": {
         "sentId": "l20246bs21",
         "offset": 0
@@ -12613,13 +13535,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246b_underline_x_421",
+      "id": "vm_2024_6월_l20246b_underline_x_422",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246bs27"],
+      "sentIds": [
+        "l20246bs27"
+      ],
       "start": {
         "sentId": "l20246bs27",
         "offset": 0
@@ -12635,13 +13559,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246b_underline_x_422",
+      "id": "vm_2024_6월_l20246b_underline_x_423",
       "yearKey": "2024_6월",
       "setId": "l20246b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246bs28"],
+      "sentIds": [
+        "l20246bs28"
+      ],
       "start": {
         "sentId": "l20246bs28",
         "offset": 0
@@ -12657,13 +13583,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_bracket_A_423",
+      "id": "vm_2024_6월_l20246c_bracket_A_424",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l20246cs5"],
+      "sentIds": [
+        "l20246cs5"
+      ],
       "start": {
         "sentId": "l20246cs5",
         "offset": 0
@@ -12689,13 +13617,18 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246c_bracket_B_424",
+      "id": "vm_2024_6월_l20246c_bracket_B_425",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l20246cs11", "l20246cs12", "l20246cs13", "l20246cs14"],
+      "sentIds": [
+        "l20246cs11",
+        "l20246cs12",
+        "l20246cs13",
+        "l20246cs14"
+      ],
       "start": {
         "sentId": "l20246cs11",
         "offset": 0
@@ -12721,13 +13654,15 @@
       ]
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_425",
+      "id": "vm_2024_6월_l20246c_underline_x_426",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246cs3"],
+      "sentIds": [
+        "l20246cs3"
+      ],
       "start": {
         "sentId": "l20246cs3",
         "offset": 0
@@ -12743,13 +13678,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_426",
+      "id": "vm_2024_6월_l20246c_underline_x_427",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246cs5"],
+      "sentIds": [
+        "l20246cs5"
+      ],
       "start": {
         "sentId": "l20246cs5",
         "offset": 0
@@ -12765,13 +13702,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_427",
+      "id": "vm_2024_6월_l20246c_underline_x_428",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246cs6"],
+      "sentIds": [
+        "l20246cs6"
+      ],
       "start": {
         "sentId": "l20246cs6",
         "offset": 0
@@ -12787,13 +13726,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_428",
+      "id": "vm_2024_6월_l20246c_underline_x_429",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246cs7"],
+      "sentIds": [
+        "l20246cs7"
+      ],
       "start": {
         "sentId": "l20246cs7",
         "offset": 0
@@ -12809,13 +13750,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_429",
+      "id": "vm_2024_6월_l20246c_underline_x_430",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246cs7"],
+      "sentIds": [
+        "l20246cs7"
+      ],
       "start": {
         "sentId": "l20246cs7",
         "offset": 0
@@ -12831,13 +13774,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_430",
+      "id": "vm_2024_6월_l20246c_underline_x_431",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246cs10"],
+      "sentIds": [
+        "l20246cs10"
+      ],
       "start": {
         "sentId": "l20246cs10",
         "offset": 0
@@ -12853,13 +13798,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246c_underline_x_431",
+      "id": "vm_2024_6월_l20246c_underline_x_432",
       "yearKey": "2024_6월",
       "setId": "l20246c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246cs12"],
+      "sentIds": [
+        "l20246cs12"
+      ],
       "start": {
         "sentId": "l20246cs12",
         "offset": 0
@@ -12875,13 +13822,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_box_x_432",
+      "id": "vm_2024_6월_l20246d_box_x_433",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246ds17"],
+      "sentIds": [
+        "l20246ds17"
+      ],
       "start": {
         "sentId": "l20246ds17",
         "offset": 0
@@ -12897,13 +13846,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_433",
+      "id": "vm_2024_6월_l20246d_underline_x_434",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246ds27"],
+      "sentIds": [
+        "l20246ds27"
+      ],
       "start": {
         "sentId": "l20246ds27",
         "offset": 0
@@ -12919,13 +13870,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_434",
+      "id": "vm_2024_6월_l20246d_underline_x_435",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246ds32"],
+      "sentIds": [
+        "l20246ds32"
+      ],
       "start": {
         "sentId": "l20246ds32",
         "offset": 0
@@ -12941,13 +13894,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_435",
+      "id": "vm_2024_6월_l20246d_underline_x_436",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246ds33"],
+      "sentIds": [
+        "l20246ds33"
+      ],
       "start": {
         "sentId": "l20246ds33",
         "offset": 0
@@ -12963,13 +13918,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_436",
+      "id": "vm_2024_6월_l20246d_underline_x_437",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246ds34"],
+      "sentIds": [
+        "l20246ds34"
+      ],
       "start": {
         "sentId": "l20246ds34",
         "offset": 0
@@ -12985,13 +13942,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_437",
+      "id": "vm_2024_6월_l20246d_underline_x_438",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246ds35"],
+      "sentIds": [
+        "l20246ds35"
+      ],
       "start": {
         "sentId": "l20246ds35",
         "offset": 0
@@ -13007,13 +13966,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_438",
+      "id": "vm_2024_6월_l20246d_underline_x_439",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246ds36"],
+      "sentIds": [
+        "l20246ds36"
+      ],
       "start": {
         "sentId": "l20246ds36",
         "offset": 0
@@ -13029,13 +13990,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_439",
+      "id": "vm_2024_6월_l20246d_underline_x_440",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246ds37"],
+      "sentIds": [
+        "l20246ds37"
+      ],
       "start": {
         "sentId": "l20246ds37",
         "offset": 0
@@ -13051,13 +14014,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_440",
+      "id": "vm_2024_6월_l20246d_underline_x_441",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246ds38"],
+      "sentIds": [
+        "l20246ds38"
+      ],
       "start": {
         "sentId": "l20246ds38",
         "offset": 0
@@ -13073,13 +14038,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2024_6월_l20246d_underline_x_441",
+      "id": "vm_2024_6월_l20246d_underline_x_442",
       "yearKey": "2024_6월",
       "setId": "l20246d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20246ds39"],
+      "sentIds": [
+        "l20246ds39"
+      ],
       "start": {
         "sentId": "l20246ds39",
         "offset": 0
@@ -13095,7 +14062,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269a_bracket_A_442",
+      "id": "vm_2026_9월_r20269a_bracket_A_443",
       "yearKey": "2026_9월",
       "setId": "r20269a",
       "type": "bracket",
@@ -13148,13 +14115,15 @@
       ]
     },
     {
-      "id": "vm_2026_9월_r20269a_underline_x_443",
+      "id": "vm_2026_9월_r20269a_underline_x_444",
       "yearKey": "2026_9월",
       "setId": "r20269a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269as11"],
+      "sentIds": [
+        "r20269as11"
+      ],
       "start": {
         "sentId": "r20269as11",
         "offset": 0
@@ -13170,13 +14139,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269a_underline_x_444",
+      "id": "vm_2026_9월_r20269a_underline_x_445",
       "yearKey": "2026_9월",
       "setId": "r20269a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269as11"],
+      "sentIds": [
+        "r20269as11"
+      ],
       "start": {
         "sentId": "r20269as11",
         "offset": 0
@@ -13192,13 +14163,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269a_underline_x_445",
+      "id": "vm_2026_9월_r20269a_underline_x_446",
       "yearKey": "2026_9월",
       "setId": "r20269a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269as12"],
+      "sentIds": [
+        "r20269as12"
+      ],
       "start": {
         "sentId": "r20269as12",
         "offset": 0
@@ -13214,13 +14187,17 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269b_bracket_A_446",
+      "id": "vm_2026_9월_r20269b_bracket_A_447",
       "yearKey": "2026_9월",
       "setId": "r20269b",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["r20269bs32", "r20269bs33", "r20269bs34"],
+      "sentIds": [
+        "r20269bs32",
+        "r20269bs33",
+        "r20269bs34"
+      ],
       "start": {
         "sentId": "r20269bs32",
         "offset": 0
@@ -13241,13 +14218,15 @@
       ]
     },
     {
-      "id": "vm_2026_9월_r20269b_box_x_447",
+      "id": "vm_2026_9월_r20269b_box_x_448",
       "yearKey": "2026_9월",
       "setId": "r20269b",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269bs21"],
+      "sentIds": [
+        "r20269bs21"
+      ],
       "start": {
         "sentId": "r20269bs21",
         "offset": 0
@@ -13263,13 +14242,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2026_9월_r20269b_box_x_448",
+      "id": "vm_2026_9월_r20269b_box_x_449",
       "yearKey": "2026_9월",
       "setId": "r20269b",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269bs28"],
+      "sentIds": [
+        "r20269bs28"
+      ],
       "start": {
         "sentId": "r20269bs28",
         "offset": 0
@@ -13285,13 +14266,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2026_9월_r20269b_underline_x_449",
+      "id": "vm_2026_9월_r20269b_underline_x_450",
       "yearKey": "2026_9월",
       "setId": "r20269b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269bs15"],
+      "sentIds": [
+        "r20269bs15"
+      ],
       "start": {
         "sentId": "r20269bs15",
         "offset": 0
@@ -13307,13 +14290,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_450",
+      "id": "vm_2026_9월_r20269c_underline_x_451",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269cs3"],
+      "sentIds": [
+        "r20269cs3"
+      ],
       "start": {
         "sentId": "r20269cs3",
         "offset": 0
@@ -13329,13 +14314,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_451",
+      "id": "vm_2026_9월_r20269c_underline_x_452",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269cs3"],
+      "sentIds": [
+        "r20269cs3"
+      ],
       "start": {
         "sentId": "r20269cs3",
         "offset": 0
@@ -13351,13 +14338,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_452",
+      "id": "vm_2026_9월_r20269c_underline_x_453",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269cs6"],
+      "sentIds": [
+        "r20269cs6"
+      ],
       "start": {
         "sentId": "r20269cs6",
         "offset": 0
@@ -13373,13 +14362,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_453",
+      "id": "vm_2026_9월_r20269c_underline_x_454",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269cs10"],
+      "sentIds": [
+        "r20269cs10"
+      ],
       "start": {
         "sentId": "r20269cs10",
         "offset": 0
@@ -13395,13 +14386,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_454",
+      "id": "vm_2026_9월_r20269c_underline_x_455",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269cs15"],
+      "sentIds": [
+        "r20269cs15"
+      ],
       "start": {
         "sentId": "r20269cs15",
         "offset": 0
@@ -13417,13 +14410,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269c_underline_x_455",
+      "id": "vm_2026_9월_r20269c_underline_x_456",
       "yearKey": "2026_9월",
       "setId": "r20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269cs17"],
+      "sentIds": [
+        "r20269cs17"
+      ],
       "start": {
         "sentId": "r20269cs17",
         "offset": 0
@@ -13439,13 +14434,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_r20269d_box_x_456",
+      "id": "vm_2026_9월_r20269d_box_x_457",
       "yearKey": "2026_9월",
       "setId": "r20269d",
       "type": "box",
       "label": null,
       "target": "text_span",
-      "sentIds": ["r20269ds14"],
+      "sentIds": [
+        "r20269ds14"
+      ],
       "start": {
         "sentId": "r20269ds14",
         "offset": 0
@@ -13461,13 +14458,15 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2026_9월_l20269a_bracket_A_457",
+      "id": "vm_2026_9월_l20269a_bracket_A_458",
       "yearKey": "2026_9월",
       "setId": "l20269a",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
-      "sentIds": ["l20269as18"],
+      "sentIds": [
+        "l20269as18"
+      ],
       "start": {
         "sentId": "l20269as18",
         "offset": 0
@@ -13538,13 +14537,15 @@
       ]
     },
     {
-      "id": "vm_2026_9월_l20269a_bracket_B_458",
+      "id": "vm_2026_9월_l20269a_bracket_B_459",
       "yearKey": "2026_9월",
       "setId": "l20269a",
       "type": "bracket",
       "label": "B",
       "target": "sent_range",
-      "sentIds": ["l20269as29"],
+      "sentIds": [
+        "l20269as29"
+      ],
       "start": {
         "sentId": "l20269as29",
         "offset": 0
@@ -13615,13 +14616,15 @@
       ]
     },
     {
-      "id": "vm_2026_9월_l20269a_underline_x_459",
+      "id": "vm_2026_9월_l20269a_underline_x_460",
       "yearKey": "2026_9월",
       "setId": "l20269a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269as3"],
+      "sentIds": [
+        "l20269as3"
+      ],
       "start": {
         "sentId": "l20269as3",
         "offset": 0
@@ -13637,13 +14640,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269a_underline_x_460",
+      "id": "vm_2026_9월_l20269a_underline_x_461",
       "yearKey": "2026_9월",
       "setId": "l20269a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269as17"],
+      "sentIds": [
+        "l20269as17"
+      ],
       "start": {
         "sentId": "l20269as17",
         "offset": 0
@@ -13659,13 +14664,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269a_underline_x_461",
+      "id": "vm_2026_9월_l20269a_underline_x_462",
       "yearKey": "2026_9월",
       "setId": "l20269a",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269as28"],
+      "sentIds": [
+        "l20269as28"
+      ],
       "start": {
         "sentId": "l20269as28",
         "offset": 0
@@ -13681,13 +14688,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269b_underline_x_462",
+      "id": "vm_2026_9월_l20269b_underline_x_463",
       "yearKey": "2026_9월",
       "setId": "l20269b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269bs41"],
+      "sentIds": [
+        "l20269bs41"
+      ],
       "start": {
         "sentId": "l20269bs41",
         "offset": 0
@@ -13703,13 +14712,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269b_underline_x_463",
+      "id": "vm_2026_9월_l20269b_underline_x_464",
       "yearKey": "2026_9월",
       "setId": "l20269b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269bs42"],
+      "sentIds": [
+        "l20269bs42"
+      ],
       "start": {
         "sentId": "l20269bs42",
         "offset": 0
@@ -13725,13 +14736,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269b_underline_x_464",
+      "id": "vm_2026_9월_l20269b_underline_x_465",
       "yearKey": "2026_9월",
       "setId": "l20269b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269bs43"],
+      "sentIds": [
+        "l20269bs43"
+      ],
       "start": {
         "sentId": "l20269bs43",
         "offset": 0
@@ -13747,13 +14760,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269b_underline_x_465",
+      "id": "vm_2026_9월_l20269b_underline_x_466",
       "yearKey": "2026_9월",
       "setId": "l20269b",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269bs43"],
+      "sentIds": [
+        "l20269bs43"
+      ],
       "start": {
         "sentId": "l20269bs43",
         "offset": 0
@@ -13769,7 +14784,7 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_bracket_A_466",
+      "id": "vm_2026_9월_l20269c_bracket_A_467",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "bracket",
@@ -13827,13 +14842,15 @@
       ]
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_467",
+      "id": "vm_2026_9월_l20269c_underline_x_468",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269cs2"],
+      "sentIds": [
+        "l20269cs2"
+      ],
       "start": {
         "sentId": "l20269cs2",
         "offset": 0
@@ -13849,13 +14866,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_468",
+      "id": "vm_2026_9월_l20269c_underline_x_469",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269cs3"],
+      "sentIds": [
+        "l20269cs3"
+      ],
       "start": {
         "sentId": "l20269cs3",
         "offset": 0
@@ -13871,13 +14890,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_469",
+      "id": "vm_2026_9월_l20269c_underline_x_470",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269cs5"],
+      "sentIds": [
+        "l20269cs5"
+      ],
       "start": {
         "sentId": "l20269cs5",
         "offset": 0
@@ -13893,13 +14914,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_470",
+      "id": "vm_2026_9월_l20269c_underline_x_471",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269cs13"],
+      "sentIds": [
+        "l20269cs13"
+      ],
       "start": {
         "sentId": "l20269cs13",
         "offset": 0
@@ -13915,13 +14938,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_471",
+      "id": "vm_2026_9월_l20269c_underline_x_472",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269cs15"],
+      "sentIds": [
+        "l20269cs15"
+      ],
       "start": {
         "sentId": "l20269cs15",
         "offset": 0
@@ -13937,13 +14962,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_472",
+      "id": "vm_2026_9월_l20269c_underline_x_473",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269cs16"],
+      "sentIds": [
+        "l20269cs16"
+      ],
       "start": {
         "sentId": "l20269cs16",
         "offset": 0
@@ -13959,13 +14986,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_473",
+      "id": "vm_2026_9월_l20269c_underline_x_474",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269cs20"],
+      "sentIds": [
+        "l20269cs20"
+      ],
       "start": {
         "sentId": "l20269cs20",
         "offset": 0
@@ -13981,13 +15010,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269c_underline_x_474",
+      "id": "vm_2026_9월_l20269c_underline_x_475",
       "yearKey": "2026_9월",
       "setId": "l20269c",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269cs22"],
+      "sentIds": [
+        "l20269cs22"
+      ],
       "start": {
         "sentId": "l20269cs22",
         "offset": 0
@@ -14003,13 +15034,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_475",
+      "id": "vm_2026_9월_l20269d_underline_x_476",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269ds14"],
+      "sentIds": [
+        "l20269ds14"
+      ],
       "start": {
         "sentId": "l20269ds14",
         "offset": 0
@@ -14025,13 +15058,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_476",
+      "id": "vm_2026_9월_l20269d_underline_x_477",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269ds40"],
+      "sentIds": [
+        "l20269ds40"
+      ],
       "start": {
         "sentId": "l20269ds40",
         "offset": 0
@@ -14047,13 +15082,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_477",
+      "id": "vm_2026_9월_l20269d_underline_x_478",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269ds47"],
+      "sentIds": [
+        "l20269ds47"
+      ],
       "start": {
         "sentId": "l20269ds47",
         "offset": 0
@@ -14069,13 +15106,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_478",
+      "id": "vm_2026_9월_l20269d_underline_x_479",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269ds48"],
+      "sentIds": [
+        "l20269ds48"
+      ],
       "start": {
         "sentId": "l20269ds48",
         "offset": 0
@@ -14091,13 +15130,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_479",
+      "id": "vm_2026_9월_l20269d_underline_x_480",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269es2"],
+      "sentIds": [
+        "l20269es2"
+      ],
       "start": {
         "sentId": "l20269es2",
         "offset": 0
@@ -14113,13 +15154,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_480",
+      "id": "vm_2026_9월_l20269d_underline_x_481",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269fs3"],
+      "sentIds": [
+        "l20269fs3"
+      ],
       "start": {
         "sentId": "l20269fs3",
         "offset": 0
@@ -14135,13 +15178,15 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2026_9월_l20269d_underline_x_481",
+      "id": "vm_2026_9월_l20269d_underline_x_482",
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "type": "underline",
       "label": null,
       "target": "text_span",
-      "sentIds": ["l20269fs4"],
+      "sentIds": [
+        "l20269fs4"
+      ],
       "start": {
         "sentId": "l20269fs4",
         "offset": 0
