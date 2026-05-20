@@ -767,14 +767,14 @@
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2024_32_34s4",
-        "sentTo": "l2024_32_34s4"
+        "sentFrom": "l2024_32_34s4_1",
+        "sentTo": "l2024_32_34s4_6"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2024_32_34s4",
-        "sentTo": "l2024_32_34s4"
+        "sentFrom": "l2024_32_34s4_11",
+        "sentTo": "l2024_32_34s4_15"
       }
     ]
   },
