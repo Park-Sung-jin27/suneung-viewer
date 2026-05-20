@@ -1,0 +1,418 @@
+[
+  {
+    "id": "fx01",
+    "family": "SENT_SEGMENTATION_DEFECT",
+    "description": "verse >5 lines + bracket ref → safeToApply=false",
+    "tool": "step2_vNext",
+    "data": {
+      "2024수능": {
+        "literature": [
+          {
+            "id": "l2024fx01",
+            "sents": [
+              { "id": "l2024fx01s1", "t": "(가)", "sentType": "workTag" },
+              {
+                "id": "l2024fx01s2",
+                "t": "line1\nline2\nline3\nline4\nline5\nline6",
+                "sentType": "verse"
+              },
+              { "id": "l2024fx01s3", "t": "본문 내용.", "sentType": "body" }
+            ],
+            "questions": []
+          }
+        ]
+      }
+    },
+    "annotations": {
+      "2024수능": {
+        "l2024fx01": [
+          {
+            "type": "bracket",
+            "label": "A",
+            "sentFrom": "l2024fx01s1",
+            "sentTo": "l2024fx01s2"
+          }
+        ]
+      }
+    },
+    "expected": {
+      "finding_code": "SOURCE_VERSE_LINE_OVERFLOW",
+      "safeToApply": false,
+      "safeToApply_reason_contains": "bracket annotation"
+    }
+  },
+  {
+    "id": "fx02",
+    "family": "SENT_SEGMENTATION_DEFECT",
+    "description": "body sent with \\n — overflow rule verse-only, no finding",
+    "tool": "step2_vNext",
+    "data": {
+      "2024수능": {
+        "reading": [
+          {
+            "id": "r2024fx02",
+            "sents": [
+              {
+                "id": "r2024fx02s1",
+                "t": "문장1\n문장2\n문장3\n문장4\n문장5\n문장6",
+                "sentType": "body"
+              }
+            ],
+            "questions": []
+          }
+        ]
+      }
+    },
+    "annotations": { "2024수능": {} },
+    "expected": {
+      "expect_no_findings": true,
+      "no_finding_code": "SOURCE_VERSE_LINE_OVERFLOW"
+    }
+  },
+  {
+    "id": "fx03",
+    "family": "SOURCE_TEXT_DEFECT",
+    "description": "INLINE_MARKER_MISSING_CLOSE — 미구현 rule (PENDING_TOOL)",
+    "tool": "bracket_audit",
+    "pending_tool": true,
+    "data": {
+      "2024수능": {
+        "reading": [
+          {
+            "id": "r2024fx03",
+            "sents": [
+              {
+                "id": "r2024fx03s1",
+                "t": "여기서 [A 열기만 있고 닫기 없음.",
+                "sentType": "body"
+              },
+              { "id": "r2024fx03s2", "t": "일반 문장.", "sentType": "body" }
+            ],
+            "questions": []
+          }
+        ]
+      }
+    },
+    "annotations": {
+      "2024수능": {
+        "r2024fx03": [
+          {
+            "type": "bracket",
+            "label": "A",
+            "sentFrom": "r2024fx03s1",
+            "sentTo": "r2024fx03s2"
+          }
+        ]
+      }
+    },
+    "expected": {
+      "finding_code": "INLINE_MARKER_MISSING_CLOSE",
+      "severity": "WARNING"
+    }
+  },
+  {
+    "id": "fx04",
+    "family": "SOURCE_TEXT_DEFECT",
+    "description": "[A] inline 범위 앞 이탈 → SOURCE_INLINE_OUT_OF_RANGE WARNING",
+    "tool": "bracket_audit",
+    "data": {
+      "2024수능": {
+        "reading": [
+          {
+            "id": "r2024fx04",
+            "sents": [
+              {
+                "id": "r2024fx04s1",
+                "t": "[A] 기준이 되는 개념.",
+                "sentType": "body"
+              },
+              { "id": "r2024fx04s2", "t": "본론 시작.", "sentType": "body" },
+              { "id": "r2024fx04s3", "t": "본론 끝.", "sentType": "body" }
+            ],
+            "questions": []
+          }
+        ]
+      }
+    },
+    "annotations": {
+      "2024수능": {
+        "r2024fx04": [
+          {
+            "type": "bracket",
+            "label": "A",
+            "sentFrom": "r2024fx04s2",
+            "sentTo": "r2024fx04s3"
+          }
+        ]
+      }
+    },
+    "expected": {
+      "finding_code": "SOURCE_INLINE_OUT_OF_RANGE",
+      "severity": "WARNING",
+      "suggested_sentFrom": "r2024fx04s1"
+    }
+  },
+  {
+    "id": "fx05",
+    "family": "SOURCE_TEXT_DEFECT",
+    "description": "bracket 있으나 [A] 마커 body에 없음 → CRITICAL",
+    "tool": "bracket_audit",
+    "data": {
+      "2024수능": {
+        "reading": [
+          {
+            "id": "r2024fx05",
+            "sents": [
+              { "id": "r2024fx05s1", "t": "본문 첫 문장.", "sentType": "body" },
+              {
+                "id": "r2024fx05s2",
+                "t": "본문 둘째 문장.",
+                "sentType": "body"
+              },
+              {
+                "id": "r2024fx05s3",
+                "t": "본문 셋째 문장.",
+                "sentType": "body"
+              }
+            ],
+            "questions": []
+          }
+        ]
+      }
+    },
+    "annotations": {
+      "2024수능": {
+        "r2024fx05": [
+          {
+            "type": "bracket",
+            "label": "A",
+            "sentFrom": "r2024fx05s1",
+            "sentTo": "r2024fx05s3"
+          }
+        ]
+      }
+    },
+    "expected": {
+      "finding_code": "SOURCE_BODY_MARKER_MISSING",
+      "severity": "CRITICAL",
+      "family": "SOURCE_TEXT_DEFECT"
+    }
+  },
+  {
+    "id": "fx06",
+    "family": "SOURCE_TEXT_DEFECT",
+    "description": "고립 자모 노이즈 — ORPHAN_JAMO_NOISE (미구현 rule, PENDING_TOOL)",
+    "tool": "step2_vNext",
+    "pending_tool": true,
+    "data": {
+      "2024수능": {
+        "reading": [
+          {
+            "id": "r2024fx06",
+            "sents": [
+              {
+                "id": "r2024fx06s1",
+                "t": "이 문장에는 ㄱ 고립 자모가 있다.",
+                "sentType": "body"
+              },
+              { "id": "r2024fx06s2", "t": "정상 문장.", "sentType": "body" }
+            ],
+            "questions": []
+          }
+        ]
+      }
+    },
+    "annotations": { "2024수능": {} },
+    "expected": {
+      "finding_code": "ORPHAN_JAMO_NOISE",
+      "severity": "WARNING"
+    }
+  },
+  {
+    "id": "fx07",
+    "family": "SOURCE_TEXT_DEFECT",
+    "description": "[B] inline 범위 뒤 이탈 → SOURCE_INLINE_OUT_OF_RANGE WARNING",
+    "tool": "bracket_audit",
+    "data": {
+      "2024수능": {
+        "reading": [
+          {
+            "id": "r2024fx07",
+            "sents": [
+              { "id": "r2024fx07s1", "t": "본문 시작.", "sentType": "body" },
+              { "id": "r2024fx07s2", "t": "본문 내용.", "sentType": "body" },
+              {
+                "id": "r2024fx07s3",
+                "t": "[B]의 기준을 이와 같이 설명한다.",
+                "sentType": "body"
+              }
+            ],
+            "questions": []
+          }
+        ]
+      }
+    },
+    "annotations": {
+      "2024수능": {
+        "r2024fx07": [
+          {
+            "type": "bracket",
+            "label": "B",
+            "sentFrom": "r2024fx07s1",
+            "sentTo": "r2024fx07s2"
+          }
+        ]
+      }
+    },
+    "expected": {
+      "finding_code": "SOURCE_INLINE_OUT_OF_RANGE",
+      "severity": "WARNING",
+      "suggested_sentTo": "r2024fx07s3"
+    }
+  },
+  {
+    "id": "fx08",
+    "family": "DETECTOR_FALSE_POSITIVE",
+    "description": "복합 작품 bracket 범위 안 <제2수> sub-marker → DETECTOR_FALSE_POSITIVE INFO",
+    "tool": "bracket_audit",
+    "data": {
+      "2024수능": {
+        "literature": [
+          {
+            "id": "l2024fx08",
+            "sents": [
+              { "id": "l2024fx08s1", "t": "(가)", "sentType": "workTag" },
+              {
+                "id": "l2024fx08s2",
+                "t": "[A]로 시작하는 시 구절.",
+                "sentType": "verse"
+              },
+              { "id": "l2024fx08s3", "t": "<제2수>", "sentType": "workTag" },
+              {
+                "id": "l2024fx08s4",
+                "t": "두 번째 수 내용.",
+                "sentType": "verse"
+              },
+              { "id": "l2024fx08s5", "t": "(나)", "sentType": "workTag" },
+              { "id": "l2024fx08s6", "t": "나 작품 내용.", "sentType": "verse" }
+            ],
+            "questions": []
+          }
+        ]
+      }
+    },
+    "annotations": {
+      "2024수능": {
+        "l2024fx08": [
+          {
+            "type": "bracket",
+            "label": "A",
+            "sentFrom": "l2024fx08s2",
+            "sentTo": "l2024fx08s4"
+          }
+        ]
+      }
+    },
+    "expected": {
+      "finding_code": "ANNOTATION_NON_BODY_IN_RANGE",
+      "family": "DETECTOR_FALSE_POSITIVE",
+      "severity": "INFO"
+    }
+  },
+  {
+    "id": "fx09",
+    "family": "SOURCE_TEXT_DEFECT",
+    "description": "[C] sentFrom 이탈 — 정정 suggested_sentFrom 검증",
+    "tool": "bracket_audit",
+    "data": {
+      "2024수능": {
+        "reading": [
+          {
+            "id": "r2024fx09",
+            "sents": [
+              { "id": "r2024fx09s1", "t": "서론 문장.", "sentType": "body" },
+              {
+                "id": "r2024fx09s2",
+                "t": "[C]의 개념을 여기서 정의한다.",
+                "sentType": "body"
+              },
+              { "id": "r2024fx09s3", "t": "본론 시작.", "sentType": "body" },
+              { "id": "r2024fx09s4", "t": "본론 끝.", "sentType": "body" }
+            ],
+            "questions": []
+          }
+        ]
+      }
+    },
+    "annotations": {
+      "2024수능": {
+        "r2024fx09": [
+          {
+            "type": "bracket",
+            "label": "C",
+            "sentFrom": "r2024fx09s3",
+            "sentTo": "r2024fx09s4"
+          }
+        ]
+      }
+    },
+    "expected": {
+      "finding_code": "SOURCE_INLINE_OUT_OF_RANGE",
+      "severity": "WARNING",
+      "suggested_sentFrom": "r2024fx09s2"
+    }
+  },
+  {
+    "id": "fx10",
+    "family": "SENT_SEGMENTATION_DEFECT",
+    "description": "cs_spans dead sent_id → DEAD_CSSPAN_SENTID CRITICAL",
+    "tool": "step2_vNext",
+    "data": {
+      "2024수능": {
+        "reading": [
+          {
+            "id": "r2024fx10",
+            "sents": [
+              {
+                "id": "r2024fx10s1",
+                "t": "본문 첫 문장.",
+                "sentType": "body"
+              },
+              {
+                "id": "r2024fx10s2",
+                "t": "본문 둘째 문장.",
+                "sentType": "body"
+              }
+            ],
+            "questions": [
+              {
+                "id": "r2024fx10q1",
+                "choices": [
+                  {
+                    "num": 1,
+                    "t": "선지 내용",
+                    "ok": true,
+                    "pat": null,
+                    "analysis": "해설",
+                    "cs_ids": ["r2024fx10s1"],
+                    "cs_spans": [
+                      {
+                        "sent_id": "r2024fx10s99",
+                        "text": "존재하지 않는 sent"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "annotations": { "2024수능": {} },
+    "expected": {
+      "finding_code": "DEAD_CSSPAN_SENTID",
+      "severity": "CRITICAL"
+    }
+  }
+]
