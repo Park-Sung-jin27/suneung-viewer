@@ -167,25 +167,60 @@ function extractSourceMarks() {
   for (const { yearKey, set } of iterSets()) {
     const sents = set.sents || [];
 
-    // 1-a: workTag bracket — 직전 verse/body 연속 path
+    // 1-a: workTag bracket — adjacent verse/body 연속 path
+    //   - End-marker style (verses 사양 안 sentTo 사후 workTag): walk backward (예: l2022d)
+    //   - Start-marker style (workTag 사양 안 sentFrom 사전 verses): walk forward (예: l2022a)
     for (let i = 0; i < sents.length; i++) {
       const s = sents[i];
       if (s.sentType !== "workTag") continue;
       const m = s.t.match(/^\[([A-F])\]$/);
       if (!m) continue;
       const label = m[1];
-      // walk backward to find start of verse/body block
-      let startIdx = i - 1;
-      while (
-        startIdx >= 0 &&
-        (sents[startIdx].sentType === "verse" ||
-          sents[startIdx].sentType === "body")
-      ) {
-        // stop if encountering another workTag boundary marker
-        startIdx--;
+
+      const prevIsContent =
+        i > 0 &&
+        (sents[i - 1].sentType === "verse" || sents[i - 1].sentType === "body");
+      const nextIsContent =
+        i < sents.length - 1 &&
+        (sents[i + 1].sentType === "verse" || sents[i + 1].sentType === "body");
+
+      let sentIds = [];
+      let startSentId = null;
+      let endSentId = null;
+      let endOffset = 0;
+
+      if (prevIsContent) {
+        // End-marker style: walk backward
+        let startIdx = i - 1;
+        while (
+          startIdx >= 0 &&
+          (sents[startIdx].sentType === "verse" ||
+            sents[startIdx].sentType === "body")
+        ) {
+          startIdx--;
+        }
+        startIdx = Math.max(startIdx + 1, 0);
+        sentIds = sents.slice(startIdx, i).map((x) => x.id);
+        startSentId = sentIds[0];
+        endSentId = sentIds[sentIds.length - 1];
+        endOffset = sents[i - 1].t.length;
+      } else if (nextIsContent) {
+        // Start-marker style: walk forward
+        let endIdx = i + 1;
+        while (
+          endIdx < sents.length &&
+          (sents[endIdx].sentType === "verse" ||
+            sents[endIdx].sentType === "body")
+        ) {
+          endIdx++;
+        }
+        endIdx = Math.min(endIdx, sents.length);
+        sentIds = sents.slice(i + 1, endIdx).map((x) => x.id);
+        startSentId = sentIds[0];
+        endSentId = sentIds[sentIds.length - 1];
+        endOffset = sents[endIdx - 1].t.length;
       }
-      startIdx = Math.max(startIdx + 1, 0);
-      const sentIds = sents.slice(startIdx, i).map((x) => x.id);
+
       if (sentIds.length === 0) continue;
       marks.push({
         id: newId(yearKey, set.id, "bracket", label),
@@ -195,11 +230,8 @@ function extractSourceMarks() {
         label,
         target: "sent_range",
         sentIds,
-        start: { sentId: sentIds[0], offset: 0 },
-        end: {
-          sentId: sentIds[sentIds.length - 1],
-          offset: sents[i - 1].t.length,
-        },
+        start: { sentId: startSentId, offset: 0 },
+        end: { sentId: endSentId, offset: endOffset },
         source: "auto_text_parser",
         status: "verified",
         release_block: false, // will be set in Step 3
@@ -374,7 +406,56 @@ const annMarks = extractAnnotationMarks();
 console.log("[ Step 1 - source ]      " + sourceMarks.length + " marks");
 console.log("[ Step 2 - annotations ] " + annMarks.length + " marks");
 
-const allMarks = [...sourceMarks, ...annMarks];
+// ─── Dedup: 동일 setId + type=bracket + label 안 중복 제거 ─────────────────
+// 우선순위: migrated_from_annotations (사용자 PDF 검증 완료 path) > auto_text_parser
+function dedupBrackets(marks) {
+  const seen = {}; // key = setId/label → mark (winner)
+  const result = [];
+  // First pass: index by setId/label, preferring annotation source
+  for (const m of marks) {
+    if (m.type !== "bracket" || !m.label) {
+      result.push(m);
+      continue;
+    }
+    const key = `${m.setId}/${m.label}`;
+    const existing = seen[key];
+    if (!existing) {
+      seen[key] = m;
+    } else {
+      // existing 사양 안 annotation source 사양 우선 유지 — 외 path 안 새로 들어온 entry 안 정합 검토
+      const existingPrio =
+        existing.source === "migrated_from_annotations" ? 1 : 0;
+      const incomingPrio = m.source === "migrated_from_annotations" ? 1 : 0;
+      if (incomingPrio > existingPrio) seen[key] = m;
+    }
+  }
+  // Second pass: emit non-bracket + dedupped bracket
+  const emittedKeys = new Set();
+  for (const m of marks) {
+    if (m.type !== "bracket" || !m.label) continue;
+    const key = `${m.setId}/${m.label}`;
+    if (emittedKeys.has(key)) continue;
+    emittedKeys.add(key);
+    result.push(seen[key]);
+  }
+  return result;
+}
+const beforeDedup =
+  sourceMarks.filter((m) => m.type === "bracket" && m.label).length +
+  annMarks.filter((m) => m.type === "bracket" && m.label).length;
+const allMarks = dedupBrackets([...sourceMarks, ...annMarks]);
+const afterDedup = allMarks.filter(
+  (m) => m.type === "bracket" && m.label,
+).length;
+console.log(
+  "[ Dedup ] bracket entries: " +
+    beforeDedup +
+    " → " +
+    afterDedup +
+    " (delta -" +
+    (beforeDedup - afterDedup) +
+    ")",
+);
 
 applyReferenceCrossCheck(allMarks);
 console.log("[ Step 3 - reference cross-check ] applied");
