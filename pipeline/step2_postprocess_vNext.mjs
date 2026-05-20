@@ -19,25 +19,22 @@
  * [commit 4 — sent_split_migration 적용]
  *   --apply 플래그: safeToApply=true plan 단독 자동 적용 (Lock SP2 정합)
  *   safeToApply=false → unsafe_cases 출력만, 자동 적용 금지
+ *   적용: set.sents split + cs_ids Option A + cs_spans exact match 갱신
+ *   backup: out/backups/all_data_204_backup_<ts>.json (lock #1 정합)
  *
- *   적용 내용:
- *     set.sents  : oldSentId → newSentIds (line-by-line 분리)
- *     cs_ids     : oldSentId → 모든 newSentIds 확장 (Option A)
- *     cs_spans   : sent_id === oldSentId → 해당 sub-sent ID 갱신 (exact match)
- *
- *   backup:
- *     적용 전 data 파일 → out/backups/all_data_204_backup_<timestamp>.json
- *     (lock #1 정합 — Integration Push 분리 보조 단계)
- *
- *   verify (사전 검증):
- *     적용 후 in-memory 재검출 → oldSentId 부재 확인
- *     실패 시 write 중단 (rollback 불필요 — in-memory 조작 후 미write)
+ * [commit 4.1 — DEAD_CSSPAN retroactive patch]
+ *   DEAD_CSSPAN_SENTID 안 dead sent_id → sub-sent ID 갱신 (사후 보정)
+ *   safeToApply 판정:
+ *     - sub-sents (prefix "${deadSentId}_") 존재 + text 단일 sub-sent 내 포함
+ *   text offset 재계산:
+ *     - 갱신된 sub-sent 안 sp.text.indexOf() 결과 report 출력
+ *     - data 스키마 변경 없음 (renderer 가 런타임 indexOf 수행)
+ *   --apply 시 safePlans + safeDeadPatches 동시 적용
  *
  * [후속 commit 예정]
  *   commit 3.1: SOURCE_TEXT_DEFECT
  *   commit 3.2: VISUAL_MARK_DEFECT
  *   commit 3.3: ANNOTATION_REFERENCE_DEFECT
- *   commit 4.1: DEAD_CSSPAN retroactive patch logic
  *
  * 사용법:
  *   # 검출만 (write 없음)
@@ -58,7 +55,10 @@
  *   node pipeline/step2_postprocess_vNext.mjs --apply --target=l2024d \
  *     --data-path=pipeline/fixtures/l2024d_s4_presplit_fixture.json \
  *     --ann-path=pipeline/fixtures/l2024d_s4_presplit_annotations.json
- *   → l2024_32_34s4 (17 lines) split + cs_ids Option A + cs_spans 갱신 검증
+ *
+ * [Phase 1.29 — l2024d DEAD_CSSPAN 8건 retroactive patch]
+ *   node pipeline/step2_postprocess_vNext.mjs --apply --target=l2024d
+ *   → DEAD_CSSPAN 8건 자동 갱신: l2024_32_34s4 → s4_4/5/6/12/13/15/16/17
  */
 
 import fs from "fs";
@@ -177,7 +177,6 @@ function buildMapping(oldSentId, lines) {
  * 반환: { csIdsRefs, csSpansRefs, annotationRefs }
  */
 function findAffected(annObj, yearKey, set, oldSentId, subSentTexts) {
-  // cs_ids
   const csIdsRefs = [];
   for (const q of set.questions ?? []) {
     for (const c of q.choices ?? []) {
@@ -187,7 +186,6 @@ function findAffected(annObj, yearKey, set, oldSentId, subSentTexts) {
     }
   }
 
-  // cs_spans
   const csSpansRefs = [];
   for (const q of set.questions ?? []) {
     for (const c of q.choices ?? []) {
@@ -205,7 +203,6 @@ function findAffected(annObj, yearKey, set, oldSentId, subSentTexts) {
     }
   }
 
-  // annotations bracket — sentFrom 또는 sentTo === oldSentId
   const annotationRefs = [];
   for (const b of getBracketAnnotations(annObj, yearKey, set.id)) {
     if (b.sentFrom === oldSentId || b.sentTo === oldSentId) {
@@ -224,7 +221,7 @@ function findAffected(annObj, yearKey, set, oldSentId, subSentTexts) {
  * safeToApply 판정
  * - cs_ids: 항상 safe (Option A)
  * - cs_spans: 각 span text 안 단일 sub-sent 일치 시 safe
- * - annotations: bracket reference → unsafe (사용자 명시 의무)
+ * - annotations: bracket reference → unsafe
  */
 function computeSafeToApply(affected) {
   for (const sp of affected.csSpansRefs) {
@@ -255,32 +252,32 @@ function computeSafeToApply(affected) {
   };
 }
 
-// ─── apply helper ─────────────────────────────────────────────────────────────
+// ─── apply helpers ────────────────────────────────────────────────────────────
 
-/**
- * in-memory 안 plan 적용 (write 없음)
- * 반환: { appliedSentIds: string[] }  — 삽입된 newSentId 목록
- */
-function applyPlan(dataObj, plan) {
-  const { yearKey, setId, oldSentId, affected } = plan;
-
-  // set 탐색
-  let targetSet = null;
+/** set 탐색 헬퍼 */
+function findSet(dataObj, yearKey, setId) {
   for (const domain of ["reading", "literature"]) {
     const sets = dataObj[yearKey]?.[domain];
     if (!Array.isArray(sets)) continue;
     const s = sets.find((x) => x.id === setId);
-    if (s) {
-      targetSet = s;
-      break;
-    }
+    if (s) return s;
   }
+  return null;
+}
+
+/**
+ * in-memory 안 overflow plan 적용
+ * 반환: { appliedSentIds: string[] }
+ */
+function applyPlan(dataObj, plan) {
+  const { yearKey, setId, oldSentId } = plan;
+  const targetSet = findSet(dataObj, yearKey, setId);
   if (!targetSet)
     throw new Error(`applyPlan: set not found — ${yearKey}/${setId}`);
 
   const oldSent = (targetSet.sents ?? []).find((s) => s.id === oldSentId);
   if (!oldSent)
-    throw new Error(`applyPlan: oldSentId not found in sents — ${oldSentId}`);
+    throw new Error(`applyPlan: oldSentId not found — ${oldSentId}`);
 
   const lines = oldSent.t.split("\n");
   const newSentIds = buildNewSentIds(oldSentId, lines);
@@ -298,21 +295,18 @@ function applyPlan(dataObj, plan) {
   for (const q of targetSet.questions ?? []) {
     for (const c of q.choices ?? []) {
       const idx = (c.cs_ids ?? []).indexOf(oldSentId);
-      if (idx !== -1) {
-        c.cs_ids.splice(idx, 1, ...newSentIds);
-      }
+      if (idx !== -1) c.cs_ids.splice(idx, 1, ...newSentIds);
     }
   }
 
   // 3. cs_spans: sent_id === oldSentId → 매칭 sub-sent ID 갱신
-  const newSentsMap = new Map(newSents.map((s) => [s.id, s.t]));
   for (const q of targetSet.questions ?? []) {
     for (const c of q.choices ?? []) {
       for (const sp of c.cs_spans ?? []) {
         if (sp.sent_id !== oldSentId) continue;
-        const matchEntry = newSents.find((ns) => ns.t.includes(sp.text));
-        if (matchEntry) sp.sent_id = matchEntry.id;
-        // no match → leave as-is (will be DEAD_CSSPAN_SENTID in next audit)
+        const match = newSents.find((ns) => ns.t.includes(sp.text));
+        if (match) sp.sent_id = match.id;
+        // no match → leave as-is (DEAD_CSSPAN_SENTID will catch it)
       }
     }
   }
@@ -320,21 +314,10 @@ function applyPlan(dataObj, plan) {
   return { appliedSentIds: newSentIds };
 }
 
-/**
- * 적용 후 검증: oldSentId 가 sents 안 부재 + newSentIds 전부 존재 확인
- */
+/** overflow plan 적용 검증: oldSentId 부재 + newSentIds 전부 존재 */
 function verifyApply(dataObj, plan) {
   const { yearKey, setId, oldSentId, newSentIds: expectedIds } = plan;
-  let targetSet = null;
-  for (const domain of ["reading", "literature"]) {
-    const sets = dataObj[yearKey]?.[domain];
-    if (!Array.isArray(sets)) continue;
-    const s = sets.find((x) => x.id === setId);
-    if (s) {
-      targetSet = s;
-      break;
-    }
-  }
+  const targetSet = findSet(dataObj, yearKey, setId);
   if (!targetSet) return { ok: false, reason: "set not found after apply" };
   const sentIdSet = new Set((targetSet.sents ?? []).map((s) => s.id));
   if (sentIdSet.has(oldSentId))
@@ -345,11 +328,70 @@ function verifyApply(dataObj, plan) {
   return { ok: true };
 }
 
-// ─── detection (reusable — called for both dry-run and pre-apply scan) ─────────
+/**
+ * DEAD_CSSPAN retroactive patch 적용 (commit 4.1)
+ * patch.items 안 safeMapping=true 항목 단독 갱신
+ * 반환: { fixedCount }
+ */
+function applyDeadCsSpanPatch(dataObj, patch) {
+  const { yearKey, setId, deadSentId, items } = patch;
+  const targetSet = findSet(dataObj, yearKey, setId);
+  if (!targetSet)
+    throw new Error(
+      `applyDeadCsSpanPatch: set not found — ${yearKey}/${setId}`,
+    );
 
+  let fixedCount = 0;
+  for (const item of items) {
+    if (!item.safeMapping) continue;
+    for (const q of targetSet.questions ?? []) {
+      if (q.id !== item.qId) continue;
+      for (const c of q.choices ?? []) {
+        if (c.num !== item.choiceNum) continue;
+        for (const sp of c.cs_spans ?? []) {
+          if (sp.sent_id === deadSentId && sp.text === item.text) {
+            sp.sent_id = item.targetSentId;
+            // occurrence 유지 (sub-sent 안 1회 출현 정합)
+            fixedCount++;
+            break;
+          }
+        }
+      }
+    }
+  }
+  return { fixedCount };
+}
+
+/** DEAD_CSSPAN patch 검증: dead sent_id 안 cs_spans 잔존 없음 확인 */
+function verifyDeadCsSpanPatch(dataObj, patch) {
+  const { yearKey, setId, deadSentId } = patch;
+  const targetSet = findSet(dataObj, yearKey, setId);
+  if (!targetSet) return { ok: false, reason: "set not found after patch" };
+  for (const q of targetSet.questions ?? []) {
+    for (const c of q.choices ?? []) {
+      for (const sp of c.cs_spans ?? []) {
+        if (sp.sent_id === deadSentId) {
+          return {
+            ok: false,
+            reason: `cs_span still references dead sentId: qId=${q.id}, choiceNum=${c.num}, text="${sp.text.slice(0, 30)}"`,
+          };
+        }
+      }
+    }
+  }
+  return { ok: true };
+}
+
+// ─── detection ────────────────────────────────────────────────────────────────
+
+/**
+ * runDetection
+ * 반환: { findings, migrationPlans, deadCsSpanPatches }
+ */
 function runDetection(dataObj, annObj, targetSets, sentArgFilter) {
   const findings = [];
   const migrationPlans = [];
+  const deadCsSpanPatches = []; // commit 4.1
 
   for (const { yearKey, set } of targetSets) {
     const sentIdSet = new Set((set.sents ?? []).map((s) => s.id));
@@ -429,11 +471,15 @@ function runDetection(dataObj, annObj, targetSets, sentArgFilter) {
       });
     }
 
-    // ── DEAD_CSSPAN_SENTID (full set scan) ─────────────────────────────────
+    // ── DEAD_CSSPAN_SENTID — finding + patch plan (commit 4.1) ─────────────
+    const deadGroups = new Map(); // deadSentId → { subSents, items }
+
     for (const q of set.questions ?? []) {
       for (const c of q.choices ?? []) {
         for (const sp of c.cs_spans ?? []) {
           if (sentIdSet.has(sp.sent_id)) continue;
+
+          // finding (unchanged)
           findings.push({
             family: "SENT_SEGMENTATION_DEFECT",
             code: "DEAD_CSSPAN_SENTID",
@@ -443,12 +489,53 @@ function runDetection(dataObj, annObj, targetSets, sentArgFilter) {
             sentId: sp.sent_id,
             detail: `cs_spans.sent_id="${sp.sent_id}" not in set.sents (qId=${q.id}, choiceNum=${c.num}, text="${sp.text.slice(0, 40)}")`,
           });
+
+          // build patch group
+          if (!deadGroups.has(sp.sent_id)) {
+            const prefix = `${sp.sent_id}_`;
+            const subSents = (set.sents ?? []).filter((s) =>
+              s.id.startsWith(prefix),
+            );
+            deadGroups.set(sp.sent_id, { subSents, items: [] });
+          }
+          const group = deadGroups.get(sp.sent_id);
+          const matchSent = group.subSents.find((ss) => ss.t.includes(sp.text));
+          group.items.push({
+            qId: q.id,
+            choiceNum: c.num,
+            text: sp.text,
+            occurrence: sp.occurrence ?? 1,
+            targetSentId: matchSent?.id ?? null,
+            // textOffset: sub-sent 안 text 시작 위치 (commit 4.1 스펙 정합)
+            textOffset: matchSent ? matchSent.t.indexOf(sp.text) : -1,
+            safeMapping: !!matchSent,
+          });
         }
       }
     }
+
+    // patch plan 빌드
+    for (const [deadSentId, group] of deadGroups) {
+      const allSafe =
+        group.subSents.length > 0 && group.items.every((i) => i.safeMapping);
+      const unsafeItems = group.items.filter((i) => !i.safeMapping);
+      deadCsSpanPatches.push({
+        yearKey,
+        setId: set.id,
+        deadSentId,
+        subSentCount: group.subSents.length,
+        items: group.items,
+        safeToApply: allSafe,
+        safeToApply_reason: allSafe
+          ? `all ${group.items.length} spans text found in exactly 1 sub-sent`
+          : group.subSents.length === 0
+            ? `no sub-sents with prefix "${deadSentId}_" — cannot auto-map`
+            : `${unsafeItems.length} spans text not found in single sub-sent`,
+      });
+    }
   }
 
-  return { findings, migrationPlans };
+  return { findings, migrationPlans, deadCsSpanPatches };
 }
 
 // ─── target sets ──────────────────────────────────────────────────────────────
@@ -468,7 +555,7 @@ if (targetArg) {
 
 // ─── detect ───────────────────────────────────────────────────────────────────
 
-const { findings, migrationPlans } = runDetection(
+const { findings, migrationPlans, deadCsSpanPatches } = runDetection(
   data,
   ann,
   targetSets,
@@ -550,22 +637,57 @@ if (deadF.length > 0) {
   console.log("");
 }
 
+// DEAD_CSSPAN_PATCH_PLAN (commit 4.1)
+const safeDeadPatches = deadCsSpanPatches.filter((p) => p.safeToApply);
+const unsafeDeadPatches = deadCsSpanPatches.filter((p) => !p.safeToApply);
+
+if (deadCsSpanPatches.length > 0) {
+  console.log("[ DEAD_CSSPAN_PATCH_PLAN ] — commit 4.1");
+  console.log(dash);
+  for (const patch of deadCsSpanPatches) {
+    const safe = patch.safeToApply ? "✓ true" : "✗ false";
+    console.log(
+      `  ${patch.yearKey} / ${patch.setId} / ${patch.deadSentId} (${patch.items.length} spans)`,
+    );
+    console.log(`    safeToApply : ${safe}`);
+    console.log(`    reason      : ${patch.safeToApply_reason}`);
+    for (const item of patch.items) {
+      const offsetStr =
+        item.textOffset >= 0 ? ` offset=${item.textOffset}` : "";
+      const targetStr = item.targetSentId
+        ? `→ ${item.targetSentId}${offsetStr}`
+        : "→ (no match)";
+      console.log(
+        `    q${item.qId}.c${item.choiceNum}: "${item.text.slice(0, 35)}" ${targetStr}`,
+      );
+    }
+    console.log("");
+  }
+}
+
 // summary
 const safePlans = migrationPlans.filter((p) => p.safeToApply);
 const unsafePlans = migrationPlans.filter((p) => !p.safeToApply);
 console.log(dash);
 console.log("Summary:");
-console.log(`  findings total    : ${findings.length}`);
-console.log(`  overflow (WARNING): ${overflowF.length}`);
-console.log(`  dead_csspan (CRIT): ${deadF.length}`);
-console.log(`  migration_plans   : ${migrationPlans.length}`);
-console.log(`  safe_plans        : ${safePlans.length}`);
-console.log(`  unsafe_cases      : ${unsafePlans.length}`);
+console.log(`  findings total       : ${findings.length}`);
+console.log(`  overflow (WARNING)   : ${overflowF.length}`);
+console.log(`  dead_csspan (CRIT)   : ${deadF.length}`);
+console.log(
+  `  migration_plans      : ${migrationPlans.length} (safe: ${safePlans.length} / unsafe: ${unsafePlans.length})`,
+);
+console.log(
+  `  dead_csspan_patches  : ${deadCsSpanPatches.length} (safe: ${safeDeadPatches.length} / unsafe: ${unsafeDeadPatches.length})`,
+);
 if (unsafePlans.length > 0) {
-  console.log("  unsafe_cases:");
-  for (const u of unsafePlans) {
+  console.log("  unsafe_overflow:");
+  for (const u of unsafePlans)
     console.log(`    ${u.oldSentId}: ${u.safeToApply_reason}`);
-  }
+}
+if (unsafeDeadPatches.length > 0) {
+  console.log("  unsafe_dead_patches:");
+  for (const u of unsafeDeadPatches)
+    console.log(`    ${u.deadSentId}: ${u.safeToApply_reason}`);
 }
 console.log("");
 
@@ -582,10 +704,19 @@ if (dryRun) {
     sent: sentArg,
     findings,
     migration_plans: migrationPlans,
-    unsafe_cases: unsafePlans.map((p) => ({
-      oldSentId: p.oldSentId,
-      reason: p.safeToApply_reason,
-    })),
+    dead_csspan_patches: deadCsSpanPatches,
+    unsafe_cases: [
+      ...unsafePlans.map((p) => ({
+        type: "overflow",
+        sentId: p.oldSentId,
+        reason: p.safeToApply_reason,
+      })),
+      ...unsafeDeadPatches.map((p) => ({
+        type: "dead_csspan",
+        sentId: p.deadSentId,
+        reason: p.safeToApply_reason,
+      })),
+    ],
   };
   const outPath = path.join(outDir, "step2_vNext_report.json");
   fs.writeFileSync(outPath, JSON.stringify(report, null, 2), "utf8");
@@ -597,11 +728,12 @@ if (dryRun) {
 // ─── APPLY SECTION ────────────────────────────────────────────────────────────
 // (--apply 시만 실행)
 
-if (safePlans.length === 0) {
-  console.log("[ APPLY ] safe_plans=0 — 적용 대상 없음.");
-  if (unsafePlans.length > 0) {
+if (safePlans.length === 0 && safeDeadPatches.length === 0) {
+  console.log("[ APPLY ] safe_plans=0, safe_dead_patches=0 — 적용 대상 없음.");
+  if (unsafePlans.length > 0 || unsafeDeadPatches.length > 0) {
+    const total = unsafePlans.length + unsafeDeadPatches.length;
     console.log(
-      `  unsafe_cases ${unsafePlans.length}건 → 사용자 명시 path 후 manual apply 의무 (Lock SP2).`,
+      `  unsafe_cases ${total}건 → 사용자 명시 path 후 manual apply 의무 (Lock SP2).`,
     );
   }
   console.log("");
@@ -613,40 +745,85 @@ const ts = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
 const backupDir = path.join(outDir, "backups");
 fs.mkdirSync(backupDir, { recursive: true });
 const backupFile = path.join(backupDir, `all_data_204_backup_${ts}.json`);
-
-const backupSource = DATA_PATH;
-fs.copyFileSync(backupSource, backupFile);
+fs.copyFileSync(DATA_PATH, backupFile);
 console.log(`[ APPLY ] backup → ${path.relative(process.cwd(), backupFile)}`);
+console.log("");
 
-// 2. Apply each safe plan (in-memory)
+// 2a. Apply overflow plans (in-memory)
 const applyResults = [];
 for (const plan of safePlans) {
   try {
     const result = applyPlan(data, plan);
     applyResults.push({ plan, result, error: null });
     console.log(
-      `[ APPLY ] ✓ ${plan.oldSentId} → ${result.appliedSentIds.length} sub-sents`,
+      `[ APPLY ] ✓ overflow: ${plan.oldSentId} → ${result.appliedSentIds.length} sub-sents`,
     );
   } catch (err) {
     applyResults.push({ plan, result: null, error: err.message });
-    console.log(`[ APPLY ] ✗ ${plan.oldSentId}: ${err.message}`);
+    console.log(`[ APPLY ] ✗ overflow: ${plan.oldSentId}: ${err.message}`);
   }
 }
 
+// 2b. Apply dead csspan patches (in-memory) — commit 4.1
+const deadPatchResults = [];
+for (const patch of safeDeadPatches) {
+  try {
+    const result = applyDeadCsSpanPatch(data, patch);
+    deadPatchResults.push({ patch, result, error: null });
+    console.log(
+      `[ APPLY ] ✓ dead_csspan: ${patch.deadSentId} → ${result.fixedCount}건 갱신`,
+    );
+  } catch (err) {
+    deadPatchResults.push({ patch, result: null, error: err.message });
+    console.log(`[ APPLY ] ✗ dead_csspan: ${patch.deadSentId}: ${err.message}`);
+  }
+}
+
+console.log("");
+
 // 3. Verify (in-memory, before write)
 const verifyFails = [];
+
 for (const { plan, result, error } of applyResults) {
   if (error) {
-    verifyFails.push({ oldSentId: plan.oldSentId, reason: error });
+    verifyFails.push({ type: "overflow", id: plan.oldSentId, reason: error });
     continue;
   }
   const vr = verifyApply(data, plan);
   if (!vr.ok) {
-    verifyFails.push({ oldSentId: plan.oldSentId, reason: vr.reason });
-    console.log(`[ VERIFY ] ✗ ${plan.oldSentId}: ${vr.reason}`);
+    verifyFails.push({
+      type: "overflow",
+      id: plan.oldSentId,
+      reason: vr.reason,
+    });
+    console.log(`[ VERIFY ] ✗ overflow ${plan.oldSentId}: ${vr.reason}`);
   } else {
     console.log(
-      `[ VERIFY ] ✓ ${plan.oldSentId}: oldSentId 부재 + ${plan.newSentIds.length} newSentIds 존재 확인`,
+      `[ VERIFY ] ✓ overflow ${plan.oldSentId}: oldSentId 부재 + ${plan.newSentIds.length} newSentIds 존재`,
+    );
+  }
+}
+
+for (const { patch, result, error } of deadPatchResults) {
+  if (error) {
+    verifyFails.push({
+      type: "dead_csspan",
+      id: patch.deadSentId,
+      reason: error,
+    });
+    continue;
+  }
+  const vr = verifyDeadCsSpanPatch(data, patch);
+  if (!vr.ok) {
+    verifyFails.push({
+      type: "dead_csspan",
+      id: patch.deadSentId,
+      reason: vr.reason,
+    });
+    console.log(`[ VERIFY ] ✗ dead_csspan ${patch.deadSentId}: ${vr.reason}`);
+  } else {
+    console.log(
+      `[ VERIFY ] ✓ dead_csspan ${patch.deadSentId}: 잔존 dead ref 0건 확인 (${result.fixedCount}건 갱신)`,
     );
   }
 }
@@ -656,9 +833,8 @@ if (verifyFails.length > 0) {
   console.log(
     `[ ABORT ] verify 실패 ${verifyFails.length}건 — write 중단 (backup 보존).`,
   );
-  for (const f of verifyFails) {
-    console.log(`  ${f.oldSentId}: ${f.reason}`);
-  }
+  for (const f of verifyFails)
+    console.log(`  [${f.type}] ${f.id}: ${f.reason}`);
   console.log("");
   process.exit(1);
 }
@@ -678,7 +854,7 @@ const applyReport = {
   sent: sentArg,
   data_path: DATA_PATH,
   backup_path: backupFile,
-  applied_plans: applyResults
+  applied_overflow_plans: applyResults
     .filter((r) => !r.error)
     .map((r) => ({
       oldSentId: r.plan.oldSentId,
@@ -688,24 +864,51 @@ const applyReport = {
       newSentCount: r.result.appliedSentIds.length,
       newSentIds: r.result.appliedSentIds,
     })),
-  unsafe_cases: unsafePlans.map((p) => ({
-    oldSentId: p.oldSentId,
-    reason: p.safeToApply_reason,
-  })),
+  applied_dead_patches: deadPatchResults
+    .filter((r) => !r.error)
+    .map((r) => ({
+      deadSentId: r.patch.deadSentId,
+      yearKey: r.patch.yearKey,
+      setId: r.patch.setId,
+      fixedCount: r.result.fixedCount,
+      items: r.patch.items.map((i) => ({
+        qId: i.qId,
+        choiceNum: i.choiceNum,
+        text: i.text,
+        targetSentId: i.targetSentId,
+        textOffset: i.textOffset,
+      })),
+    })),
+  unsafe_cases: [
+    ...unsafePlans.map((p) => ({
+      type: "overflow",
+      sentId: p.oldSentId,
+      reason: p.safeToApply_reason,
+    })),
+    ...unsafeDeadPatches.map((p) => ({
+      type: "dead_csspan",
+      sentId: p.deadSentId,
+      reason: p.safeToApply_reason,
+    })),
+  ],
 };
 const reportPath = path.join(outDir, "step2_vNext_apply_report.json");
 fs.writeFileSync(reportPath, JSON.stringify(applyReport, null, 2), "utf8");
 console.log(`[ APPLY ] JSON report → out/step2_vNext_apply_report.json`);
 console.log("");
 
+const overflowApplied = applyResults.filter((r) => !r.error).length;
+const deadApplied = deadPatchResults.filter((r) => !r.error).length;
 console.log(dash);
 console.log(
-  `완료: ${applyResults.filter((r) => !r.error).length}건 적용 / unsafe ${unsafePlans.length}건 보류`,
+  `완료: overflow ${overflowApplied}건 / dead_csspan ${deadApplied}건 적용`,
 );
-if (unsafePlans.length > 0) {
-  console.log("보류 항목 (Lock SP2 — 사용자 명시 path 후 manual apply 의무):");
-  for (const u of unsafePlans) {
-    console.log(`  ${u.oldSentId}: ${u.safeToApply_reason}`);
-  }
+const totalUnsafe = unsafePlans.length + unsafeDeadPatches.length;
+if (totalUnsafe > 0) {
+  console.log(`보류 ${totalUnsafe}건 (Lock SP2 — 사용자 명시 path 의무):`);
+  for (const u of unsafePlans)
+    console.log(`  [overflow] ${u.oldSentId}: ${u.safeToApply_reason}`);
+  for (const u of unsafeDeadPatches)
+    console.log(`  [dead_csspan] ${u.deadSentId}: ${u.safeToApply_reason}`);
 }
 console.log("");
