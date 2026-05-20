@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Visual Marks Contract — Phase 1",
+  "description": "bracket / underline / box / inline_label 사양 단일 source of truth schema",
+  "type": "object",
+  "properties": {
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "자동 생성 시각 (ISO 8601)"
+    },
+    "audit_commit": {
+      "type": "string",
+      "description": "본 생성 시점 git HEAD commit"
+    },
+    "data_commit": {
+      "type": "string",
+      "description": "all_data_204.json 마지막 commit"
+    },
+    "ann_commit": {
+      "type": "string",
+      "description": "annotations.json 마지막 commit"
+    },
+    "viewer_commit": {
+      "type": "string",
+      "description": "src/ 마지막 commit"
+    },
+    "mixed_commit": {
+      "type": "boolean",
+      "description": "audit/data/viewer commit 사양 불일치 시 true (release 차단 lock)"
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "total": { "type": "integer" },
+        "by_type": { "type": "object" },
+        "by_status": { "type": "object" },
+        "release_blocking": { "type": "integer" }
+      }
+    },
+    "marks": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/visualMark" }
+    }
+  },
+  "required": ["generated_at", "audit_commit", "mixed_commit", "marks"],
+
+  "definitions": {
+    "visualMark": {
+      "type": "object",
+      "required": [
+        "id",
+        "yearKey",
+        "setId",
+        "type",
+        "target",
+        "source",
+        "status",
+        "release_block"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^vm_",
+          "description": "유니크 식별자 (vm_{yearKey}_{setId}_{type}_{label}_{counter})"
+        },
+        "yearKey": {
+          "type": "string",
+          "description": "예: 2024수능"
+        },
+        "setId": {
+          "type": "string",
+          "description": "예: l2024a"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["bracket", "underline", "box", "inline_label"]
+        },
+        "label": {
+          "type": ["string", "null"],
+          "description": "예: A / B / C ... (없으면 null)"
+        },
+        "target": {
+          "type": "string",
+          "enum": ["sent_range", "text_span"]
+        },
+        "sentIds": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "sent_range path 안 포함 sentId 목록"
+        },
+        "start": {
+          "type": "object",
+          "properties": {
+            "sentId": { "type": "string" },
+            "offset": { "type": "integer", "minimum": 0 }
+          },
+          "required": ["sentId"]
+        },
+        "end": {
+          "type": "object",
+          "properties": {
+            "sentId": { "type": "string" },
+            "offset": { "type": "integer", "minimum": 0 }
+          },
+          "required": ["sentId"]
+        },
+        "text": {
+          "type": "string",
+          "description": "text_span path 안 underline/box 안 단어/어구"
+        },
+        "source": {
+          "type": "string",
+          "enum": ["auto_text_parser", "manual", "migrated_from_annotations"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["verified", "needs_human", "broken", "non_blocking"]
+        },
+        "release_block": {
+          "type": "boolean",
+          "description": "release 차단 여부 (true 사후 status=verified 의무)"
+        },
+        "audit_source": {
+          "type": "string",
+          "description": "bracket_audit code 추적 path"
+        },
+        "referenced_in": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "qId": { "type": ["integer", "string"] },
+              "loc": {
+                "type": "string",
+                "enum": ["stem", "choice", "analysis", "bogi"]
+              },
+              "choiceNum": { "type": "integer" }
+            }
+          },
+          "description": "문항/선지 안 본 mark 참조 path"
+        }
+      }
+    }
+  }
+}

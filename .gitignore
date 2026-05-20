@@ -109,3 +109,6 @@ _inbox/**/*.pdf
 # visual_audit.mjs 산출물 (screenshot + report — 영구 도구 path)
 out/
 pipeline/bracket_audit_report.json
+
+# visual_mark_extractor.mjs 검수 raw (auto-regenerated path)
+pipeline/visual_marks_report.json
