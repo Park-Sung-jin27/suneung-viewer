@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-20T01:26:02.844Z",
-  "audit_commit": "bb1c2ea399231316769a5410cbffffd3bd7ddc4e",
-  "data_commit": "bb1c2ea399231316769a5410cbffffd3bd7ddc4e",
+  "generated_at": "2026-05-20T07:02:21.617Z",
+  "audit_commit": "2d636c869223536e0ff3cd1a967dd9c41e09c69f",
+  "data_commit": "2d636c869223536e0ff3cd1a967dd9c41e09c69f",
   "ann_commit": "bb1c2ea399231316769a5410cbffffd3bd7ddc4e",
   "viewer_commit": "09ea66aa4f6e3a39bfa47012257189bca104b046",
   "mixed_commit": false,
@@ -17,9 +17,9 @@
       "bracket": 72
     },
     "by_status": {
-      "verified": 432,
+      "verified": 435,
       "non_blocking": 1,
-      "needs_human": 29,
+      "needs_human": 26,
       "broken": 4
     },
     "release_blocking": 126
@@ -12586,21 +12586,21 @@
       "label": "B",
       "target": "sent_range",
       "sentIds": [
-        "l2023cs7",
-        "l2023cs8"
+        "l2023cs6",
+        "l2023cs7"
       ],
       "start": {
-        "sentId": "l2023cs7",
+        "sentId": "l2023cs6",
         "offset": 0
       },
       "end": {
-        "sentId": "l2023cs8",
-        "offset": 13
+        "sentId": "l2023cs7",
+        "offset": 10
       },
       "source": "migrated_from_annotations",
-      "status": "needs_human",
+      "status": "verified",
       "release_block": true,
-      "audit_source": "ANNOTATION_BRACKET + SOURCE_INLINE_OUT_OF_RANGE",
+      "audit_source": "ANNOTATION_BRACKET",
       "referenced_in": [
         {
           "qId": 28,
@@ -12622,22 +12622,22 @@
       "label": "C",
       "target": "sent_range",
       "sentIds": [
+        "l2023cs10",
         "l2023cs11",
-        "l2023cs12",
-        "l2023cs13"
+        "l2023cs12"
       ],
       "start": {
-        "sentId": "l2023cs11",
+        "sentId": "l2023cs10",
         "offset": 0
       },
       "end": {
-        "sentId": "l2023cs13",
-        "offset": 77
+        "sentId": "l2023cs12",
+        "offset": 31
       },
       "source": "migrated_from_annotations",
-      "status": "needs_human",
+      "status": "verified",
       "release_block": true,
-      "audit_source": "ANNOTATION_BRACKET + SOURCE_INLINE_OUT_OF_RANGE",
+      "audit_source": "ANNOTATION_BRACKET",
       "referenced_in": [
         {
           "qId": 28,
@@ -12659,21 +12659,20 @@
       "label": "D",
       "target": "sent_range",
       "sentIds": [
-        "l2023cs15",
-        "l2023cs16"
+        "l2023cs14"
       ],
       "start": {
-        "sentId": "l2023cs15",
+        "sentId": "l2023cs14",
         "offset": 0
       },
       "end": {
-        "sentId": "l2023cs16",
-        "offset": 64
+        "sentId": "l2023cs14",
+        "offset": 121
       },
       "source": "migrated_from_annotations",
-      "status": "needs_human",
+      "status": "verified",
       "release_block": true,
-      "audit_source": "ANNOTATION_BRACKET + SOURCE_INLINE_OUT_OF_RANGE",
+      "audit_source": "ANNOTATION_BRACKET",
       "referenced_in": [
         {
           "qId": 28,
@@ -12695,17 +12694,16 @@
       "label": "E",
       "target": "sent_range",
       "sentIds": [
-        "l2023cs26",
-        "l2023cs27",
-        "l2023cs28"
+        "l2023cs28",
+        "l2023cs29"
       ],
       "start": {
-        "sentId": "l2023cs26",
+        "sentId": "l2023cs28",
         "offset": 0
       },
       "end": {
-        "sentId": "l2023cs28",
-        "offset": 50
+        "sentId": "l2023cs29",
+        "offset": 17
       },
       "source": "migrated_from_annotations",
       "status": "verified",
