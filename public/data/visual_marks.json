@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-21T07:13:47.609Z",
-  "audit_commit": "1ada7049f98985bf5df6bc21955d435ded2ad531",
+  "generated_at": "2026-05-21T07:32:08.184Z",
+  "audit_commit": "90ced7a661a9d906554df5a6872b1c456b21883d",
   "data_commit": "b26a7915b7cb8db74c7c39bbc5847c6f85ce3925",
-  "ann_commit": "e7dbdaab6908de8c3fe75c194e2085fa08725a9d",
+  "ann_commit": "90ced7a661a9d906554df5a6872b1c456b21883d",
   "viewer_commit": "a43adbdbb257711945165ae27cfc5502614f4e83",
   "mixed_commit": false,
   "audit_includes_data": true,
@@ -16,8 +16,7 @@
       "bracket": 4
     },
     "by_status": {
-      "verified": 9,
-      "needs_human": 1
+      "verified": 10
     },
     "release_blocking": 8
   },
@@ -319,62 +318,24 @@
       "label": "A",
       "target": "sent_range",
       "sentIds": [
-        "r2021as1",
-        "r2021as2",
-        "r2021as3",
-        "r2021as4",
         "r2021as5",
         "r2021as6",
         "r2021as7",
         "r2021as8",
-        "r2021as9",
-        "r2021as10",
-        "r2021as11",
-        "r2021as12",
-        "r2021as13",
-        "r2021as14",
-        "r2021as15",
-        "r2021as16",
-        "r2021as17",
-        "r2021as18",
-        "r2021as19",
-        "r2021as20",
-        "r2021as21",
-        "r2021as22",
-        "r2021as23",
-        "r2021as24",
-        "r2021as25",
-        "r2021as26",
-        "r2021as27",
-        "r2021as28",
-        "r2021as29",
-        "r2021as30",
-        "r2021as31",
-        "r2021as32",
-        "r2021as33",
-        "r2021as34",
-        "r2021as35",
-        "r2021as36",
-        "r2021as37",
-        "r2021as38",
-        "r2021as39",
-        "r2021as40",
-        "r2021as41",
-        "r2021as42",
-        "r2021as43"
+        "r2021as9"
       ],
       "start": {
-        "sentId": "r2021as1",
+        "sentId": "r2021as5",
         "offset": 0
       },
       "end": {
-        "sentId": "r2021as43",
-        "offset": 82
+        "sentId": "r2021as9",
+        "offset": 88
       },
       "source": "migrated_from_annotations",
-      "status": "needs_human",
+      "status": "verified",
       "release_block": true,
-      "audit_source": "ANNOTATION_BRACKET + ANNOTATION_NON_BODY_IN_RANGE,ANNOTATION_RANGE_SIZE_OUTLIER",
+      "audit_source": "ANNOTATION_BRACKET",
       "referenced_in": [
         {
           "qId": 20,
