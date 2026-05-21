@@ -361,6 +361,24 @@ function auditSet(data, ann, yearKey, setId) {
         msg: `bracket [${label}] range size = ${rangeSize} sents (>30 outlier)`,
       });
     }
+
+    // SOURCE audit 4: inline [X] open marker missing close "]"
+    // e.g. sent.t = "여기서 [A 내용" → [A 있으나 ] 없음
+    const openRe = new RegExp(`\\[${label}(?!\\])`);
+    for (const s of sents) {
+      if (openRe.test(s.t || "")) {
+        findings.push({
+          code: "INLINE_MARKER_MISSING_CLOSE",
+          family: "SOURCE_TEXT_DEFECT",
+          severity: "WARNING",
+          yearKey,
+          setId,
+          label,
+          sentId: s.id,
+          msg: `sent ${s.id}: "[${label}" open marker missing close "]" in "${(s.t || "").slice(0, 60)}"`,
+        });
+      }
+    }
   }
 
   return findings;

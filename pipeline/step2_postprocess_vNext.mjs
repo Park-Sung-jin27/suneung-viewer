@@ -484,6 +484,22 @@ function runDetection(dataObj, annObj, targetSets, sentArgFilter) {
       });
     }
 
+    // ── ORPHAN_JAMO_NOISE ─────────────────────────────────────────────────────
+    // 단독 자모(ㄱ-ㅎ, ㅏ-ㅣ) 가 공백으로 둘러싸인 채 sent.t 안에 잔존 → SOURCE_TEXT_DEFECT
+    const orphanJamoRe = /(?:^|\s)[ㄱ-ㅎㅏ-ㅣ](?=\s|$)/;
+    for (const sent of set.sents ?? []) {
+      if (!orphanJamoRe.test(sent.t ?? "")) continue;
+      findings.push({
+        family: "SOURCE_TEXT_DEFECT",
+        code: "ORPHAN_JAMO_NOISE",
+        severity: "WARNING",
+        yearKey,
+        setId: set.id,
+        sentId: sent.id,
+        detail: `orphan jamo in "${(sent.t ?? "").slice(0, 60)}"`,
+      });
+    }
+
     // ── DEAD_CSSPAN_SENTID — finding + patch plan (commit 4.1) ─────────────
     const deadGroups = new Map(); // deadSentId → { subSents, items }
 

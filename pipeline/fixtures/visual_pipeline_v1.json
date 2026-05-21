@@ -72,9 +72,8 @@
   {
     "id": "fx03",
     "family": "SOURCE_TEXT_DEFECT",
-    "description": "INLINE_MARKER_MISSING_CLOSE — 미구현 rule (PENDING_TOOL)",
+    "description": "INLINE_MARKER_MISSING_CLOSE — bracket set 안 [X 닫기 ] 누락",
     "tool": "bracket_audit",
-    "pending_tool": true,
     "data": {
       "2024수능": {
         "reading": [
@@ -201,9 +200,8 @@
   {
     "id": "fx06",
     "family": "SOURCE_TEXT_DEFECT",
-    "description": "고립 자모 노이즈 — ORPHAN_JAMO_NOISE (미구현 rule, PENDING_TOOL)",
+    "description": "고립 자모 노이즈 — ORPHAN_JAMO_NOISE",
     "tool": "step2_vNext",
-    "pending_tool": true,
     "data": {
       "2024수능": {
         "reading": [
