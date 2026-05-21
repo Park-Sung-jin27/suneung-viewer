@@ -2344,5 +2344,171 @@
         "text": "자, 자유다 마음대로 뛰어라."
       }
     ]
+  },
+  "2021수능": {
+    "r2021a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2021as1",
+        "sentTo": "r2021as43"
+      },
+      {
+        "type": "box",
+        "sentId": "r2021as13",
+        "text": "평등견"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "r2021as6",
+        "text": "보존된"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "r2021as12",
+        "text": "도외시하지"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓒ",
+        "sentId": "r2021as19",
+        "text": "한정되지"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓓ",
+        "sentId": "r2021as22",
+        "text": "자극하였다"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓔ",
+        "sentId": "r2021as27",
+        "text": "성행하였다"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r2021as31",
+        "text": "심각한 위기의 씨앗들이 뿌려지고 있었다"
+      }
+    ],
+    "r2021b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2021bs12",
+        "sentTo": "r2021bs19"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "r2021bs3",
+        "text": "가진"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "r2021bs16",
+        "text": "받기"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓒ",
+        "sentId": "r2021bs20",
+        "text": "생길"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓓ",
+        "sentId": "r2021bs23",
+        "text": "물을"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓔ",
+        "sentId": "r2021bs24",
+        "text": "끼치는"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r2021bs10",
+        "text": "기차 탑승을 위해 미리 돈을 지불하고 승차권을 구입하는 것"
+      }
+    ],
+    "r2021c": [
+      {
+        "type": "box",
+        "sentId": "r2021cs3",
+        "text": "모델링"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r2021cs20",
+        "text": "그래픽처리장치(GPU)"
+      }
+    ],
+    "l2021a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2021as18",
+        "sentTo": "l2021as45"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2021as55",
+        "sentTo": "l2021as67"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "l2021as1",
+        "text": "모든 사물"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "l2021as53",
+        "text": "물건"
+      }
+    ],
+    "l2021d": [
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l2021ds24",
+        "text": "꽝꽝"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l2021ds33",
+        "text": "쇠르르 와르르"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l2021ds34",
+        "text": "청청히"
+      },
+      {
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "l2021ds37",
+        "text": "까르르 까르르"
+      },
+      {
+        "type": "marker",
+        "marker": "㉤",
+        "sentId": "l2021ds40",
+        "text": "또랗또랗"
+      }
+    ]
   }
 }
