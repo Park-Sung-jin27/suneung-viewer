@@ -9,6 +9,7 @@
  * 검출 규칙:
  *   PAT_TRUE_HAS_PAT  — ok=true 인데 pat 존재 (null 이어야 함)
  *   PAT_FALSE_MISSING — ok=false 인데 pat=null (오류 패턴 분류 의무)
+ *   PAT_INVALID_TYPE  — pat 값이 유효 집합 외 (예: 숫자 0) — CRITICAL
  *
  * 사용 (다른 도구 안 import):
  *   import { auditPatRules } from './pat_rule_audit.mjs';
@@ -27,6 +28,12 @@ const DEFAULT_DATA_PATH = path.join(
 );
 
 const SUNEUNG5 = ["2022수능", "2023수능", "2024수능", "2025수능", "2026수능"];
+
+const VALID_PAT_SET = new Set([
+  "R1", "R2", "R3", "R4",
+  "L1", "L2", "L3", "L4", "L5",
+  "V",
+]);
 
 // ─── isMain guard ─────────────────────────────────────────────────────────────
 
@@ -90,6 +97,26 @@ export function auditPatRules(data, options = {}) {
                 msg: `${loc}: ok=false 인데 pat=null (오류 패턴 분류 의무)`,
               });
             }
+
+            // 위반 3: pat 값이 유효 집합 외 (예: 숫자 0)
+            if (
+              c.pat !== null &&
+              c.pat !== undefined &&
+              !VALID_PAT_SET.has(c.pat)
+            ) {
+              findings.push({
+                code: "PAT_INVALID_TYPE",
+                severity: "CRITICAL",
+                yearKey,
+                setId: set.id,
+                domain,
+                qId: q.id,
+                choiceNum: c.num,
+                ok: c.ok,
+                pat: c.pat,
+                msg: `${loc}: pat=${JSON.stringify(c.pat)} — 유효 집합(R1~R4/L1~L5/V) 외 값`,
+              });
+            }
           }
         }
       }
@@ -141,6 +168,9 @@ if (isMain) {
   console.log(
     `  PAT_FALSE_MISSING : ${byCode.PAT_FALSE_MISSING ?? 0}건  (ok=false + pat=null)`,
   );
+  console.log(
+    `  PAT_INVALID_TYPE  : ${byCode.PAT_INVALID_TYPE ?? 0}건  (유효 집합 외 pat 값) [CRITICAL]`,
+  );
   console.log(`  합계              : ${findings.length}건`);
 
   if (findings.length > 0) {
@@ -159,8 +189,9 @@ if (isMain) {
 
   const v1 = byCode.PAT_TRUE_HAS_PAT ?? 0;
   const v2 = byCode.PAT_FALSE_MISSING ?? 0;
+  const v3 = byCode.PAT_INVALID_TYPE ?? 0;
 
-  if (v1 === 0 && v2 === 0) {
+  if (v1 === 0 && v2 === 0 && v3 === 0) {
     console.log("✅ pat_rule_audit PASS — 위반 0건");
   } else {
     if (v1 > 0)
@@ -170,6 +201,10 @@ if (isMain) {
     if (v2 > 0)
       console.log(
         `🟡 PAT_FALSE_MISSING ${v2}건 — ok:false 인데 pat=null (수동 분류 의무)`,
+      );
+    if (v3 > 0)
+      console.log(
+        `🔴 PAT_INVALID_TYPE ${v3}건 — 유효 집합(R1~R4/L1~L5/V) 외 pat 값 (수동 정정 의무)`,
       );
   }
   console.log(sep);
