@@ -1,0 +1,32 @@
+{
+  "yearKey": "2021수능",
+  "setId": "r2021b",
+  "approved_at": "2026-05-22T07:42:56.214Z",
+  "approved_by": "downfall121@gmail.com",
+  "gate0_evidence": {
+    "report_path": "pipeline/gate0_source_fidelity_report.json",
+    "lane": "clean_existing",
+    "p0_count": 0,
+    "v9_status": "ok",
+    "pass": true
+  },
+  "gate1_evidence": {
+    "critical_count": 0,
+    "pass": true,
+    "note": "4기준 PASS: ok:true cs_ids[]=0 / DEAD=0 / empty_analysis=0 / 왜곡 cs_ids[]=0"
+  },
+  "gate2_lite_evidence": "deferred — D engine production not integrated, no release impact",
+  "gate3_evidence": {
+    "method": "Code B visual_marks 사실 점검 (2026-05-22)",
+    "visual_marks_entries": 2,
+    "visual_marks_breakdown": {
+      "inline_label": 1,
+      "bracket": 1
+    },
+    "visual_marks_needs_human": 0,
+    "release_block": 2,
+    "note": "release_block=2: bracket/inline_label referenced in Q (정상). status=verified all.",
+    "pass": true
+  },
+  "comment": "Phase A-3 2021수능 r2021b approval. gate0 clean. visual_marks verified."
+}
