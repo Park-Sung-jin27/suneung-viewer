@@ -11,12 +11,13 @@ async function _load() {
   return _cache;
 }
 
-// release 정합 39 set hardcode list — 단일 진실 source.
+// release 정합 40 set hardcode list — 단일 진실 source.
 //   기준: pipeline/release_approval_records/QG-{examKey}-{setId}-release-approval.json
 //        파일 존재 사양 — backfill 없이 frontend 단독 명시.
 //   set_status.json 의 release_status field 채택 X (lock #1 release_status
 //   자동 정정 금지 정합 보장).
-//   defer 사양: l2025b (2025수능 literature) — 데이터 존재하나 검수 미통과로 hidden.
+//   l2025b (2025수능 literature) — 2026-05-21 release 추가
+//     (sentType=undefined 30건 accepted 별도 회기 path / approval aed7e10).
 //   별도 release 추가 시 본 const 직접 정정 path.
 const RELEASE_SET_IDS = new Set([
   // 2022수능
@@ -28,9 +29,9 @@ const RELEASE_SET_IDS = new Set([
   // 2024수능
   "r2024a", "r2024b", "r2024c", "r2024d",
   "l2024a", "l2024b", "l2024c", "l2024d",
-  // 2025수능 (l2025b defer)
+  // 2025수능 (l2025b 추가 — 2026-05-21 release)
   "kor25_a", "kor25_b", "kor25_c", "kor25_d",
-  "l2025a", "l2025c", "l2025d",
+  "l2025a", "l2025b", "l2025c", "l2025d",
   // 2026수능
   "s1", "s2", "s3", "s4",
   "l2026a", "l2026b", "l2026c", "l2026d",
