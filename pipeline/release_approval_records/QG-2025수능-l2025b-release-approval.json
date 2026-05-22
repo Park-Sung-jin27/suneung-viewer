@@ -1,0 +1,40 @@
+{
+  "yearKey": "2025수능",
+  "setId": "l2025b",
+  "approved_at": "2026-05-22T07:27:22.248Z",
+  "approved_by": "downfall121@gmail.com",
+  "gate0_evidence": {
+    "report_path": "pipeline/gate0_source_fidelity_report.json",
+    "lane": "clean_existing",
+    "p0_count": 0,
+    "v9_status": "ok",
+    "pass": true
+  },
+  "gate1_evidence": {
+    "quality_report_path": "pipeline/quality_report.json",
+    "critical_count": 0,
+    "pass": true,
+    "note": "warn 115 — release 영향 0. 4기준 ok:true cs_ids[]=0 / DEAD_csid=0 / F_empty_analysis=0 / ok:false 왜곡 cs_ids[]=0"
+  },
+  "gate2_lite_evidence": "deferred — D engine production not integrated, no release impact",
+  "gate3_evidence": {
+    "method": "Code B visual_marks 사실 점검 (2026-05-22)",
+    "visual_marks_entries": 2,
+    "visual_marks_breakdown": { "underline": 2 },
+    "visual_marks_status": { "verified": 2 },
+    "visual_marks_release_block": 0,
+    "bracket_entries": 0,
+    "pass": true,
+    "note": "bracket 0건 path — sentType 의존 frontend render 영향 잠재 작음 [Inference]"
+  },
+  "known_defect_accepted": {
+    "code": "SENTYPE_UNDEFINED",
+    "detail": "l2025b 전체 30 sents sentType=undefined 잔존",
+    "impact_assessment": "bracket visual_marks 0건 path 안 frontend render 영향 잠재 작음 [Inference]. quality_gate 4기준 미차단.",
+    "resolution_path": "별도 회기 — l2025b 30 sents verse 분류 + visual_mark_extractor 재실행 + record amendment",
+    "accepted_by": "downfall121@gmail.com",
+    "accepted_at": "2026-05-22T07:27:22.248Z",
+    "user_decision_quote": "선택 B + 별도 회기 sentType 정정 (2026-05-21 사용자 결정)"
+  },
+  "comment": "Phase B 2025수능 l2025b approval — sentType=undefined 30건 accepted (별도 회기 정정 path). 5수능 40/40 complete."
+}
