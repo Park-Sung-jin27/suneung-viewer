@@ -1257,8 +1257,8 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r20226b_s14",
-        "sentTo": "r20226b_s23"
+        "sentFrom": "r20226bs14",
+        "sentTo": "r20226bs23"
       },
       {
         "type": "underline",
@@ -1312,8 +1312,8 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r20226d_s22",
-        "sentTo": "r20226d_s24"
+        "sentFrom": "r20226ds22",
+        "sentTo": "r20226ds24"
       },
       {
         "type": "underline",
@@ -1352,14 +1352,14 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l20226b_s23",
-        "sentTo": "l20226b_s25"
+        "sentFrom": "l20226bs23",
+        "sentTo": "l20226bs25"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l20226b_s25",
-        "sentTo": "l20226b_s25"
+        "sentFrom": "l20226bs25",
+        "sentTo": "l20226bs25"
       },
       {
         "type": "underline",
