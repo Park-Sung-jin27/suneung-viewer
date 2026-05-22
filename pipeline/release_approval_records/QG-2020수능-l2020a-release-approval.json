@@ -1,0 +1,37 @@
+{
+  "yearKey": "2020수능",
+  "setId": "l2020a",
+  "approved_at": "2026-05-22T08:30:00.000Z",
+  "approved_by": "downfall121@gmail.com",
+  "gate0_evidence": {
+    "report_path": "pipeline/gate0_source_fidelity_report.json",
+    "lane": "clean_existing",
+    "p0_count": 0,
+    "v9_status": "needs_human",
+    "pass": true,
+    "note": "V9_NEEDS_HUMAN: literature sig 0 — accepted (별도 회기 path)"
+  },
+  "gate1_evidence": {
+    "critical_count": 0,
+    "pass": true,
+    "note": "4기준 PASS: ok:true cs_ids[]=0 / DEAD=0 / empty_analysis=0 / 왜곡 cs_ids[]=0"
+  },
+  "gate2_lite_evidence": "deferred — D engine production not integrated, no release impact",
+  "gate3_evidence": {
+    "method": "Code B visual_marks 사실 점검 (2026-05-22)",
+    "visual_marks_entries": 0,
+    "visual_marks_breakdown": {},
+    "visual_marks_needs_human": 0,
+    "release_block": 0,
+    "pass": true
+  },
+  "known_defect_accepted": {
+    "code": "V9_NEEDS_HUMAN",
+    "detail": "literature sig 0건",
+    "resolution_path": "별도 회기 — sig(출처 정보) 추가 + record amendment",
+    "accepted_by": "downfall121@gmail.com",
+    "accepted_at": "2026-05-22T08:30:00.000Z",
+    "user_decision_quote": "Phase B 2020수능 7 sets approval 진입 (2026-05-21 사용자 결정)"
+  },
+  "comment": "Phase B 2020수능 l2020a approval. V9_NEEDS_HUMAN accepted. visual_marks 0건. Q21~25."
+}
