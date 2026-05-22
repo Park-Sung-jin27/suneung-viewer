@@ -48,11 +48,11 @@
 (본 채팅 직접 검수 영역)
 
 1. 지금 하면 안 되는 작업인가
-2. 5 수능 파이프라인과 충돌하는가
+2. 13개년 (2014~2026) 파이프라인과 충돌하는가 — FREE 5수능 (2022~2026) 베타 정합 + LEGACY 8개년 (2014~2021) 즉시 병행 path 정합
 3. 데이터 구조 변경이 필요한가
-4. 출시 범위를 흐리는가
+4. 출시 범위를 흐리는가 (FREE 5수능 우선 — 베타 검증 우선)
 5. 베타 검증에 직접 도움이 되는가
-6. 유료 전환 가설과 연결되는가
+6. 유료 전환 가설과 연결되는가 (LEGACY 8개년 유료 컨텐츠 잠재)
 7. 대표 집중력을 분산시키는가
 
 ---
@@ -108,6 +108,48 @@ CLAUDE.md 원칙 "파이프라인 본체 직접 수정, scripts/ 증가 지양" 
 4 samples 실험으로 엔진 전체 특성 결정 X.
 
 **규칙**: provisional → Stage 2 pilot 후 confirmed 승격.
+
+### 교훈 16 — release 진척 점검 dual 의무 (2026-05-21 본 회기 자가 결함 #3)
+
+set_status.json `release_status="verifying"` 단독 read 시 진척 오기 발생. 5수능 39/40 = 97.5% 진척을 "1/5 = 20%"로 오기 → 사용자 결정 부정 영향.
+
+**규칙**: release 진척 점검 시 다음 2개 동시 read 의무:
+1. `set_status.json` (release_status 필드)
+2. `pipeline/release_approval_records/QG-{yearKey}-{setId}-release-approval.json` (approved_by 필드)
+
+approval record 존재 = release ✅ 정합. set_status.json은 자동 갱신 path 없음.
+
+### 교훈 17 — 사용자 목표 직접 confirm 의무 (2026-05-21 본 회기 자가 결함 #1)
+
+CLAUDE.md/인수인계서 안 "5개년 (FREE_YEARS) 100% 탑재" 표현을 사용자 목표로 액면가 수용 → 실제 사용자 목표 = 13개년 전체. 운영 문서 mismatch 잠재.
+
+**규칙**: 신규 회기 진입 시 사용자 목표 직접 confirm 의무. 운영 문서 단독 신뢰 X. 정합 점검 사후 우선순위 결정.
+
+### 교훈 18 — git log 깊이 부실 회피 (2026-05-21 본 회기 자가 결함 #2)
+
+진입 시 `git log -10` 단독 시 직원별 commit 시퀀스 사전 식별 NOT. 본 회기 안 frontend 측 9 commit이 git log -10 위쪽에 안 보임 → 사용자 회신 사전 commit 미확인 사유.
+
+**규칙**: 회기 진입 시 `git log --oneline -30` 또는 `-50` 의무. 직원별 영역 (src/ vs pipeline/) 별도 grep 사후 진척 점검 path.
+
+### 교훈 19 — 검증 사양 dual source 의무 (2026-05-21 본 회기 자가 결함 #4 + #5 + #6 통합)
+
+본 회기 안 사실 점검 미흡 결함 3건 식별:
+
+- **#4**: Chrome MCP 안 bracket label 검출 path = 큰 대괄호 visual ↔ inline 텍스트 [X] 구분 사양 X → l2022c/l2023d "PASS" 오판정
+- **#5**: body.innerText regex 검출 단독 신뢰 → DOM querySelectorAll 안 0건 사양 mismatch 사전 식별 NOT
+- **#6**: Code A 진단 안 "annotations.json sentId schema 위반 (l2022a_s1 언더스코어)" path 단독 신뢰 → 모의평가 setId 안 언더스코어 정합 path 사실 점검 NOT (user_preferences §8 위반)
+
+**규칙**: 진단 시 dual source 의무. 단독 source 안 신뢰 X.
+
+| 진단 영역 | dual source 의무 |
+|---|---|
+| DOM 안 visual 검출 | `querySelectorAll` 안 element + wrapper CSS 사양 (paddingLeft/borderLeft) 동시 점검 |
+| visual_marks 정합 | git file source + Vercel fetch source 동시 점검 |
+| release 진척 | set_status.json + release_approval_records 동시 점검 (교훈 16 정합) |
+| 다른 직원 진단 | 진단 사양 read + 본 채팅 안 raw 사실 점검 (CLAUDE.md user_preferences §8 정합 — 레드팀 검증 의무) |
+| sentId schema 위반 | annotations.json + all_data 안 실제 sentId 형식 cross-check (수능 vs 모의평가 setId 안 언더스코어 path 차이 인지) |
+
+**release_approval_qa 강화 (lock #15)**: approval 사양 = quality_gate 4기준 단독 정합 X. visual 정합 사실 (visual_marks 안 entries N건) + 라이브 view 사실 (Chrome MCP cross-check) 동시 점검 의무. approval 사양 mismatch path 회피.
 
 ---
 
@@ -179,3 +221,5 @@ CLAUDE.md 원칙 "파이프라인 본체 직접 수정, scripts/ 증가 지양" 
 
 - v1.0 (2026-05-07): 정비된 단일 정본
 - v1.1 (2026-05-07): HANDOVER_QUALITY_REVIEWER.md 흡수 — 교훈 12·13·14·15 + Decision 2 RULE_7 재정의 방향 + 엔진 특성 3가지
+- v1.2 (2026-05-21): 교훈 16·17·18 추가 (본 회기 자가 결함 3건 영구 보존). 검수 7기준 #2 정정 (5수능 → 13개년 정합).
+- v1.3 (2026-05-21): 교훈 19 추가 (자가 결함 #4·#5·#6 통합 — 검증 사양 dual source 의무). release_approval_qa lock #15 강화 (visual 정합 동시 점검 의무).

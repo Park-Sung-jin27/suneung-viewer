@@ -194,7 +194,8 @@ isReversed 판정: 결론 이모지(✅/❌) vs ok 값 일치 여부
 작업:
 완료 기준 충족: Y/N
 결과:
-5개년 CRITICAL:
+FREE 5수능 (2022~2026) CRITICAL:
+LEGACY (2014~2021) CRITICAL:
 문제:
 다음 액션 1개:
 ```
