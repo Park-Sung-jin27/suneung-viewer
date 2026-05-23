@@ -1,0 +1,29 @@
+{
+  "yearKey": "2017수능",
+  "setId": "l2017c",
+  "approved_at": "2026-05-22T09:00:00.000Z",
+  "approved_by": "downfall121@gmail.com",
+  "gate0_evidence": {
+    "report_path": "pipeline/gate0_source_fidelity_report.json",
+    "lane": "clean_existing",
+    "p0_count": 0,
+    "v9_status": "ok",
+    "pass": true,
+    "note": "l2017b(V9_NEEDS_HUMAN + V7a) duplicate 삭제 → l2017c 정본 채택(author 태그 보유, gate0 warning 0건)"
+  },
+  "gate1_evidence": {
+    "critical_count": 0,
+    "pass": true,
+    "note": "4기준 PASS: ok:true cs_ids[]=0 / DEAD=0 / empty_analysis=0 / 왜곡 cs_ids[]=0. l2017b duplicate 삭제 완료(2026-05-22)."
+  },
+  "gate2_lite_evidence": "deferred — D engine production not integrated, no release impact",
+  "gate3_evidence": {
+    "method": "Code B visual_marks 사실 점검 (2026-05-22)",
+    "visual_marks_entries": 0,
+    "visual_marks_breakdown": {},
+    "visual_marks_needs_human": 0,
+    "release_block": 0,
+    "pass": true
+  },
+  "comment": "Phase B 2017수능 l2017c approval. l2017b duplicate 삭제 완료(author 태그 누락본). l2017c = author 태그 보유 정본. Q43~45. 연행가(홍순학)."
+}

@@ -1,0 +1,37 @@
+{
+  "yearKey": "2017수능",
+  "setId": "r2017c",
+  "approved_at": "2026-05-22T09:00:00.000Z",
+  "approved_by": "downfall121@gmail.com",
+  "gate0_evidence": {
+    "report_path": "pipeline/gate0_source_fidelity_report.json",
+    "lane": "clean_existing",
+    "p0_count": 0,
+    "v9_status": "ok",
+    "pass": true,
+    "note": "V7a_ok_distribution 2건 (ok=1, ok=0) accepted — ok=0 source: Q42 all ok=false (known_defect)"
+  },
+  "gate1_evidence": {
+    "critical_count": 0,
+    "pass": true,
+    "note": "4기준 PASS: ok:true cs_ids[]=0 / DEAD=0 / empty_analysis=0 / 왜곡 cs_ids[]=0. r2017d duplicate 삭제 완료(2026-05-22)."
+  },
+  "gate2_lite_evidence": "deferred — D engine production not integrated, no release impact",
+  "gate3_evidence": {
+    "method": "Code B visual_marks 사실 점검 (2026-05-22)",
+    "visual_marks_entries": 0,
+    "visual_marks_breakdown": {},
+    "visual_marks_needs_human": 0,
+    "release_block": 0,
+    "pass": true
+  },
+  "known_defect_accepted": {
+    "code": "Q42_OK_DISTRIBUTION",
+    "detail": "Q42(questionType=negative) choices 5개 모두 ok=false — 정상 ok 분포(ok:true 4, ok:false 1) 미충족. 4기준 미차단(distortion pat + cs_ids=[] 조건 미해당).",
+    "resolution_path": "별도 회기 — Q42 ch[1~4] ok=false→true 정정 + 근거 확인",
+    "accepted_by": "downfall121@gmail.com",
+    "accepted_at": "2026-05-22T09:00:00.000Z",
+    "user_decision_quote": "Phase B 2017수능 approval 진입 (2026-05-21 사용자 결정)"
+  },
+  "comment": "Phase B 2017수능 r2017c approval. V7a warning accepted. r2017d duplicate 삭제 완료. Q37~42. 보험·고지의무."
+}
