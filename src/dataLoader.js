@@ -29,8 +29,9 @@ async function _load() {
 //   2017수능 (LEGACY 3/8) — 2026-05-21 release 추가 (Code B 8b0fbd1).
 //     3 sets (reading 2 + literature 1) — r2017b / l2017a 보류 사양
 //     (별도 회기 정정 path). r2017d / l2017b duplicate 사양 안 삭제 path.
-//     r2017c Q42 안 critical 결함 (ch[1~4] ok=false 안 정답 표시 X path)
-//     — 다음 회기 정정 path.
+//     r2017c Q42 critical 결함: ch[1~5] 5건 모두 ok=false (ok:true=0) —
+//     2026-05-24 raw 확인 완료. questionType=negative → ok:true 4건 필요.
+//     다음 회기 즉시 정정 path (ch[2~5] ok=false→true + pat/근거 확인).
 //   LEGACY T1/T2 33 sets (2014~2021 6월/9월+수능) — 2026-05-24 release 추가 (Code B 61c6fdb).
 //     A/B 중복 setId 15개 holdback (가형·나형 양쪽 4기준 미확인):
 //       r20146d/l20146a/l20146c, r20149a/b/d/e,

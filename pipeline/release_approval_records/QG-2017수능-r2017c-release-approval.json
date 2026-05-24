@@ -28,7 +28,7 @@
   "known_defect_accepted": {
     "code": "Q42_OK_DISTRIBUTION",
     "detail": "Q42(questionType=negative) choices 5개 모두 ok=false — 정상 ok 분포(ok:true 4, ok:false 1) 미충족. 4기준 미차단(distortion pat + cs_ids=[] 조건 미해당).",
-    "resolution_path": "별도 회기 — Q42 ch[1~4] ok=false→true 정정 + 근거 확인",
+    "resolution_path": "별도 회기 즉시 정정 — Q42 ch[2~5] ok=false→true (ch[1] R2 pat 보유, ok=false 유지). raw 확인: 2026-05-24.",
     "accepted_by": "downfall121@gmail.com",
     "accepted_at": "2026-05-22T09:00:00.000Z",
     "user_decision_quote": "Phase B 2017수능 approval 진입 (2026-05-21 사용자 결정)"
