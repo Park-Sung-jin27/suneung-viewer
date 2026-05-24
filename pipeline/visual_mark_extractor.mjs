@@ -321,6 +321,31 @@ function extractAnnotationMarks() {
           release_block: false,
           audit_source: "ANNOTATION_" + a.type.toUpperCase(),
         });
+      } else if (a.type === "marker") {
+        // ㉠~㉥ / ⓐ~ⓢ 사양 marker — sent 안 a.text 위치 사후 부분 하이라이트 path.
+        //   sent.t 안 a.text indexOf 사양 안 offset 계산. 일치 X 시 offset=0 fallback.
+        //   frontend Phase 2.5 마이그레이션 사후 marker label (㉠/ⓐ 등) inline 노출 path.
+        const sent = sents.find((s) => s.id === a.sentId);
+        const idx = sent && a.text ? (sent.t || "").indexOf(a.text) : -1;
+        const startOff = idx >= 0 ? idx : 0;
+        const endOff =
+          idx >= 0 ? idx + (a.text || "").length : (a.text || "").length;
+        marks.push({
+          id: newId(yearKey, set.id, "marker", a.marker || null),
+          yearKey,
+          setId: set.id,
+          type: "marker",
+          label: a.marker || null,
+          target: "text_span",
+          sentIds: [a.sentId],
+          start: { sentId: a.sentId, offset: startOff },
+          end: { sentId: a.sentId, offset: endOff },
+          text: a.text || "",
+          source: "migrated_from_annotations",
+          status: "verified",
+          release_block: false,
+          audit_source: "ANNOTATION_MARKER",
+        });
       }
     }
   }
