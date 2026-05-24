@@ -30,7 +30,10 @@ function Underlined({ text, hideLabels }) {
           return (
             <span
               key={i}
-              style={{ textDecoration: "underline", textUnderlineOffset: "3px" }}
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "3px",
+              }}
             >
               {p}
             </span>
@@ -206,17 +209,32 @@ const BOX_STYLE = {
   padding: "0 3px",
 };
 const UL_STYLE = { textDecoration: "underline", textUnderlineOffset: "3px" };
+// marker label (㉠ ⓐ 등) — 위첨자 위치 안 underline text 사전 노출 path.
+//   annotations.json schema: { type:"marker", marker:"ⓐ", sentId, text }
+//   visual_marks.json schema: { type:"marker", label:"ⓐ", text, ... }
+const MARKER_LABEL_STYLE = {
+  verticalAlign: "super",
+  fontSize: "0.72em",
+  fontWeight: 700,
+  color: "#374151",
+  marginRight: "1px",
+};
 
 // applyInlineAnns(text, anns)
-//   anns: [{ type: 'underline'|'box', text }]
+//   anns: [{ type: 'underline'|'box'|'marker', text, marker? }]
+//   marker type 사양: ann.marker 안 라벨 (㉠ ⓐ 등) — text 사전 위첨자 노출 path
+//     + text 안 underline 데코 추가 (Korean 수능 PDF 사양 정합).
 //   QuizPanel choice/bogi underline 사양 path 안 재사용 의무 export.
-//   Lines component dependency — PassagePanel 외부에서 사용 시 본 모듈 export
-//   path 안 단독 가능 (renderWithSymbols 없는 plain text 호출 path 한정).
 export function applyInlineAnns(text, anns, hideLabels) {
   if (!anns.length) return <Lines text={text} hideLabels={hideLabels} />;
   // 텍스트 내 등장 위치 순으로 정렬
   const sorted = anns
-    .map((a) => ({ text: a.text, type: a.type, idx: text.indexOf(a.text) }))
+    .map((a) => ({
+      text: a.text,
+      type: a.type,
+      marker: a.marker || a.label || null,
+      idx: text.indexOf(a.text),
+    }))
     .filter((a) => a.idx >= 0)
     .sort((a, b) => a.idx - b.idx);
   if (!sorted.length) return <Lines text={text} hideLabels={hideLabels} />;
@@ -227,7 +245,7 @@ export function applyInlineAnns(text, anns, hideLabels) {
     if (a.idx < cursor) continue;
     if (a.idx > cursor)
       parts.push({ t: text.slice(cursor, a.idx), type: null });
-    parts.push({ t: a.text, type: a.type });
+    parts.push({ t: a.text, type: a.type, marker: a.marker });
     cursor = a.idx + a.text.length;
   }
   if (cursor < text.length) parts.push({ t: text.slice(cursor), type: null });
@@ -245,6 +263,15 @@ export function applyInlineAnns(text, anns, hideLabels) {
           return (
             <span key={i} style={UL_STYLE}>
               <Lines text={p.t} hideLabels={hideLabels} />
+            </span>
+          );
+        if (p.type === "marker")
+          return (
+            <span key={i}>
+              {p.marker && <sup style={MARKER_LABEL_STYLE}>{p.marker}</sup>}
+              <span style={UL_STYLE}>
+                <Lines text={p.t} hideLabels={hideLabels} />
+              </span>
             </span>
           );
         return <Lines key={i} text={p.t} hideLabels={hideLabels} />;
@@ -563,8 +590,9 @@ function renderAll(sents, sel, annotations, visualMarks) {
       sentFrom: m.sentIds[0],
       sentTo: m.sentIds[m.sentIds.length - 1],
     }));
-  // underline / box / marker 등 — annotations.json path 유지 (Phase 2.5 마이그레이션).
-  const inlineTypes = new Set(["box", "underline"]);
+  // underline / box / marker — annotations.json path 유지 (Phase 2.5 마이그레이션 대기).
+  //   marker 추가 (Code B 0d3c2dc visual_marks 472→496 +24 entries 정합).
+  const inlineTypes = new Set(["box", "underline", "marker"]);
   const sentIds = sents.map((s) => s.id);
 
   // sentId → inline annotations 매핑
