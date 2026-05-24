@@ -11,7 +11,7 @@ async function _load() {
   return _cache;
 }
 
-// release 정합 54 set hardcode list — 단일 진실 source.
+// release 정합 57 set hardcode list — 단일 진실 source.
 //   기준: pipeline/release_approval_records/QG-{examKey}-{setId}-release-approval.json
 //        파일 존재 사양 — backfill 없이 frontend 단독 명시.
 //   set_status.json 의 release_status field 채택 X (lock #1 release_status
@@ -23,8 +23,18 @@ async function _load() {
 //   2020수능 (LEGACY 2/8) — 2026-05-21 release 추가 (Code B f712c3e).
 //     7 sets (reading 2 + literature 5) — r2020a~d 부재 path 정합 (의도).
 //     l2020e ↔ l2020d sentId 공유 사실 — 별도 회기 구조 정정 path.
+//   2017수능 (LEGACY 3/8) — 2026-05-21 release 추가 (Code B 8b0fbd1).
+//     3 sets (reading 2 + literature 1) — r2017b / l2017a 보류 사양
+//     (별도 회기 정정 path). r2017d / l2017b duplicate 사양 안 삭제 path.
+//     r2017c Q42 안 critical 결함 (ch[1~4] ok=false 안 정답 표시 X path)
+//     — 다음 회기 정정 path.
 //   별도 release 추가 시 본 const 직접 정정 path.
 const RELEASE_SET_IDS = new Set([
+  // 2017수능 (LEGACY 3/8 — 2026-05-21 release 추가)
+  "r2017a", "r2017c", "l2017c",
+  // r2017b 보류 (C3=10, analysis 누락 별도 회기).
+  // l2017a 보류 (C1+C4=9, cs_ids 누락 별도 회기).
+  // r2017d / l2017b 삭제 (duplicate 사양 정합 — Code B 8b0fbd1).
   // 2020수능 (LEGACY 2/8 — 2026-05-21 release 추가)
   "r2020e", "r2020f",
   "l2020a", "l2020b", "l2020c", "l2020d", "l2020e",
