@@ -11,11 +11,14 @@ async function _load() {
   return _cache;
 }
 
-// release 정합 57 set hardcode list — 단일 진실 source.
+// release 정합 90 set hardcode list — 단일 진실 source.
 //   기준: pipeline/release_approval_records/QG-{examKey}-{setId}-release-approval.json
 //        파일 존재 사양 — backfill 없이 frontend 단독 명시.
 //   set_status.json 의 release_status field 채택 X (lock #1 release_status
 //   자동 정정 금지 정합 보장).
+//   ⚠️ setId는 yearKey 미포함 — 2014~2016 A/B 시험 중복 setId 주의:
+//        같은 setId가 가형(A)/나형(B) 양쪽에 존재하면 양쪽 모두 release.
+//        양쪽 모두 4기준 PASS 확인 시에만 추가. 미확인 15개 holdback (하단 주석).
 //   l2025b (2025수능 literature) — 2026-05-21 release 추가
 //     (sentType=undefined 30건 accepted 별도 회기 path / approval aed7e10).
 //   2021수능 (LEGACY 1/8) — 2026-05-21 release 추가 (Code B caf0b00).
@@ -28,6 +31,10 @@ async function _load() {
 //     (별도 회기 정정 path). r2017d / l2017b duplicate 사양 안 삭제 path.
 //     r2017c Q42 안 critical 결함 (ch[1~4] ok=false 안 정답 표시 X path)
 //     — 다음 회기 정정 path.
+//   LEGACY T1/T2 33 sets (2014~2021 6월/9월+수능) — 2026-05-24 release 추가 (Code B 61c6fdb).
+//     A/B 중복 setId 15개 holdback (가형·나형 양쪽 4기준 미확인):
+//       r20146d/l20146a/l20146c, r20149a/b/d/e,
+//       r20156b/c/e, l2014a, r2015a, r20166a/b/c
 //   별도 release 추가 시 본 const 직접 정정 path.
 const RELEASE_SET_IDS = new Set([
   // 2017수능 (LEGACY 3/8 — 2026-05-21 release 추가)
@@ -48,6 +55,37 @@ const RELEASE_SET_IDS = new Set([
   // V9_NEEDS_HUMAN warning 3건 (l2021a/c/d) + V7a warning 1건 (l2021c)
   // accepted — 별도 회기 정정 path.
   // r2021d 부재 = 2021수능 reading 3 sets 단독 path 정합 (의도 path).
+  // LEGACY T1/T2 (2014~2021 6월/9월+수능) — 2026-05-24 release 추가 (Code B 61c6fdb)
+  // 33 sets: A/B 중복 없는 고유 setId만 포함.
+  // 2014_9월B (T1_CLEAN)
+  "r20149f",
+  // 2015_9월A (T1_CLEAN)
+  "l20159c",
+  // 2016_6월A (T1_CLEAN — l20166d는 2016_6월B에 없음)
+  "l20166d",
+  // 2016수능B (T1_CLEAN)
+  "r2016e",
+  // 2017_6월 (T1_CLEAN)
+  "l20176b",
+  // 2017_9월 (T1_CLEAN)
+  "r20179b",
+  // 2018수능 (T1_CLEAN)
+  "r2018b",
+  // 2019_9월 (T1_CLEAN)
+  "r20199b",
+  // 2019수능 (T1+T2 — r2019d는 r2019c 구조 정정 후 canonical, Code B a62c683)
+  "r2019a", "r2019d", "r2019e",
+  "l2019a", "l2019b",
+  // 2020_6월 (T1+T2_WARN)
+  "r20206a", "r20206b", "r20206d", "r20206e",
+  // 2020_9월 (T1+T2_WARN)
+  "r20209a", "r20209b", "r20209c", "r20209d",
+  // 2021_6월 (T1+T2_WARN)
+  "r20216b", "r20216c",
+  "l20216a", "l20216c", "l20216d",
+  // 2021_9월 (T1+T2_WARN)
+  "r20219b", "r20219c", "r20219d", "r20219e",
+  "l20219a", "l20219b", "l20219c",
   // 2022수능
   "r2022a", "r2022b", "r2022c", "r2022d",
   "l2022a", "l2022b", "l2022c", "l2022d",
