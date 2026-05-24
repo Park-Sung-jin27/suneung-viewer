@@ -1,0 +1,37 @@
+{
+  "yearKey": "2014_6월A",
+  "setId": "l20146c",
+  "approved_at": "2026-05-24T00:00:00.000Z",
+  "approved_by": "downfall121@gmail.com",
+  "gate0_evidence": {
+    "report_path": "pipeline/gate0_source_fidelity_report.json",
+    "lane": "clean_existing",
+    "p0_count": 0,
+    "v9_status": "ok",
+    "pass": true,
+    "note": "P0=0. warnings accepted: V7a(2). 4기준 PASS."
+  },
+  "gate1_evidence": {
+    "critical_count": 0,
+    "pass": true,
+    "note": "4기준 PASS: ok:true cs_ids[]=0 / DEAD=0 / empty_analysis=0 / 왜곡 cs_ids[]=0"
+  },
+  "gate2_lite_evidence": "deferred — D engine production not integrated, no release impact",
+  "gate3_evidence": {
+    "method": "Code B visual_marks 사실 점검 (2026-05-24)",
+    "visual_marks_entries": 0,
+    "visual_marks_breakdown": {},
+    "visual_marks_needs_human": 0,
+    "release_block": 0,
+    "pass": true
+  },
+  "known_defect_accepted": {
+    "code": "V7a_ok_distribution",
+    "detail": "l20146c (2014_6월A) V7a_ok_distribution 2건 — ok 비율 이상. 4기준 미차단.",
+    "resolution_path": "별도 회기 — ok 분포 정밀 검토",
+    "accepted_by": "downfall121@gmail.com",
+    "accepted_at": "2026-05-24T00:00:00.000Z",
+    "user_decision_quote": "LEGACY Phase B 일괄 승인 — Auto Mode (2026-05-24 사용자 지시)"
+  },
+  "comment": "Phase B LEGACY 2014_6월A l20146c approval. T2_WARN_ONLY. gate0 warnings accepted: V7a(2). 4기준 PASS."
+}
