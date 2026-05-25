@@ -137,15 +137,11 @@ ${JSON.stringify(input, null, 2)}
 // Step 1 보조: input 필수 필드 검증
 function validateInput(input) {
   if (input === null || typeof input !== "object") {
-    throw new Error(
-      "callDEngineWithMajority: input must be an object"
-    );
+    throw new Error("callDEngineWithMajority: input must be an object");
   }
   for (const f of REQUIRED_INPUT_FIELDS) {
     if (!(f in input)) {
-      throw new Error(
-        `callDEngineWithMajority: missing required field '${f}'`
-      );
+      throw new Error(`callDEngineWithMajority: missing required field '${f}'`);
     }
   }
 }
@@ -165,7 +161,7 @@ function validateResponse(response) {
   }
   if (!VALID_ERROR_TYPES.has(response.error_type)) {
     throw new Error(
-      `response.error_type='${response.error_type}' not in valid enum`
+      `response.error_type='${response.error_type}' not in valid enum`,
     );
   }
   if (!Array.isArray(response.rule_hits)) {
@@ -176,7 +172,7 @@ function validateResponse(response) {
   }
   if (!VALID_CONFIDENCE.has(response.confidence)) {
     throw new Error(
-      `response.confidence='${response.confidence}' not in valid enum`
+      `response.confidence='${response.confidence}' not in valid enum`,
     );
   }
 }
@@ -188,7 +184,7 @@ function withTimeout(promise, timeoutMs) {
   const timeoutPromise = new Promise((_, reject) => {
     timer = setTimeout(
       () => reject(new Error(`caller timeout after ${timeoutMs}ms`)),
-      timeoutMs
+      timeoutMs,
     );
   });
   return Promise.race([
@@ -208,7 +204,7 @@ async function callOnce(
   callerOptions,
   max_format_retries,
   max_caller_retries,
-  timeout
+  timeout,
 ) {
   // caller_retries: 네트워크/throw 실패 retry (지수 백오프)
   let callerLastError = null;
@@ -250,7 +246,7 @@ async function callOnce(
           try {
             currentResponse = await withTimeout(
               caller(prompt, callerOptions),
-              timeout
+              timeout,
             );
           } catch (callErr) {
             formatLastError = callErr;
@@ -270,7 +266,7 @@ async function callOnce(
   throw new Error(
     `callOnce failed after ${max_caller_retries + 1} caller attempts: ${
       callerLastError?.message ?? "unknown"
-    }`
+    }`,
   );
 }
 
@@ -296,14 +292,20 @@ export async function callDEngineWithMajority(input, options = {}) {
     // caller-level
     model = "gpt-5",
     temperature = 0,
-    max_tokens = 1000,
+    // [2026-05-25 정정: 1000 → 4000]
+    // 사유: GPT-5 reasoning model 사양 — reasoning tokens + JSON 출력 사양 안 1000 불충분.
+    //       격리 test (pipeline/archive/test_d_engine_isolated.mjs) 사실:
+    //         gold_R1_003 안 max_tokens=1000 → finish_reason=length + EMPTY content
+    //         max_tokens=4000 → finish_reason=stop + valid JSON (completion 2049)
+    //       API ERR 6건 (gold_R1_003/006/009, R2_008/010, DOMAIN_002) 본 정정 사양 해소 잠재.
+    max_tokens = 4000,
   } = options;
 
   // ── Step 1: 입력 검증 ──────────────────────────────────────────
   validateInput(input);
   if (typeof caller !== "function") {
     throw new Error(
-      "callDEngineWithMajority: options.caller must be a function"
+      "callDEngineWithMajority: options.caller must be a function",
     );
   }
 
@@ -324,11 +326,11 @@ export async function callDEngineWithMajority(input, options = {}) {
       callerOptions,
       max_format_retries,
       max_caller_retries,
-      timeout
+      timeout,
     );
   } catch (e) {
     throw new Error(
-      `callDEngineWithMajority: 1차 호출 max_retries 실패 — ${e.message}`
+      `callDEngineWithMajority: 1차 호출 max_retries 실패 — ${e.message}`,
     );
   }
   api_call_durations_ms.push(Date.now() - start1);
@@ -374,7 +376,7 @@ export async function callDEngineWithMajority(input, options = {}) {
         callerOptions,
         max_format_retries,
         max_caller_retries,
-        timeout
+        timeout,
       );
       return { response, duration: Date.now() - start };
     });
@@ -407,7 +409,7 @@ export async function callDEngineWithMajority(input, options = {}) {
           callerOptions,
           max_format_retries,
           max_caller_retries,
-          timeout
+          timeout,
         );
         runs.push(response);
         api_call_durations_ms.push(Date.now() - start);
