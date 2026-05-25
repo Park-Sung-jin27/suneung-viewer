@@ -17,6 +17,15 @@ Rule 3. 선지의 주요 조건이 analysis에 반영되었는가
 Rule 4. 복합 오류가 단일 pat에 꽂혀 있는가
 Rule 5. analysis가 너무 vague해서 pat 검증이 불가능한가
 
+RULE_1 엄격 적용 lock (필수 — P_MISMATCH 과민 사양 방지):
+- RULE_1 발동 사양 = **choice 자체** 안 pat 정의 위배 사양 단독
+- 발동 사양 X 사실 (RULE_1 hit 금지) = choice가 pat 정의 정합 사양 안, analysis 안 근거 약함 / 조건 누락 / 논리 vague 사양 단독 사양
+- analysis 안 근거 사양 결함 = RULE_2 (직접성) / RULE_3 (조건 누락) / RULE_7 (논리 vague) 영역 사양
+
+판정 사양 (실예):
+- 사양 (RULE_1 발동 X): pat=R1 + choice 안 사실 왜곡 사실 (네트워크 효과 부정 등) + analysis 안 근거 약함 → RULE_2/3 단독 hit, RULE_1 hit X
+- 사양 (RULE_1 발동): pat=R1 + choice 안 인과 전도 사실 (R2 구조) → RULE_1 + RULE_4 hit + P_MISMATCH
+
 메타-고백 감지 lock (필수 — pat 정합 판정 우선):
 analysis 본문 안 다음 자기 고백 표현이 직접 인용된 경우, pat이 정합으로 보이더라도 사양 우위 판정 의무:
 
