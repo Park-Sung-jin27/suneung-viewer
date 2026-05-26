@@ -39,7 +39,6 @@ async function _load() {
 //   별도 release 추가 시 본 const 직접 정정 path.
 const RELEASE_SET_IDS = new Set([
   // 2017수능 (LEGACY 3/8 — 2026-05-21 release 추가)
-  "r2017a", "r2017c", "l2017c",
   // r2017b 보류 (C3=10, analysis 누락 별도 회기).
   // l2017a 보류 (C1+C4=9, cs_ids 누락 별도 회기).
   // r2017d / l2017b 삭제 (duplicate 사양 정합 — Code B 8b0fbd1).
@@ -59,7 +58,6 @@ const RELEASE_SET_IDS = new Set([
   // LEGACY T1/T2 (2014~2021 6월/9월+수능) — 2026-05-24 release 추가 (Code B 61c6fdb)
   // 33 sets: A/B 중복 없는 고유 setId만 포함.
   // 2014_9월B (T1_CLEAN)
-  "r20149f",
   // 2015_9월A (T1_CLEAN)
   "l20159c",
   // 2016_6월A (T1_CLEAN — l20166d는 2016_6월B에 없음)
@@ -69,9 +67,7 @@ const RELEASE_SET_IDS = new Set([
   // 2017_6월 (T1_CLEAN)
   "l20176b",
   // 2017_9월 (T1_CLEAN)
-  "r20179b",
   // 2018수능 (T1_CLEAN)
-  "r2018b",
   // 2019_9월 (T1_CLEAN)
   "r20199b",
   // 2019수능 (T1+T2 — r2019d는 r2019c 구조 정정 후 canonical, Code B a62c683)
@@ -80,7 +76,6 @@ const RELEASE_SET_IDS = new Set([
   // 2020_6월 (T1+T2_WARN)
   "r20206a", "r20206b", "r20206d", "r20206e",
   // 2020_9월 (T1+T2_WARN)
-  "r20209a", "r20209b", "r20209c", "r20209d",
   // 2021_6월 (T1+T2_WARN)
   "r20216b", "r20216c",
   "l20216a", "l20216c", "l20216d",
