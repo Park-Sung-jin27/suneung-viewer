@@ -880,14 +880,30 @@
     ],
     "r2023d": [
       {
-        "type": "underline",
-        "sentId": "r2023ds5",
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r2023ds6",
         "text": "직접법"
       },
       {
-        "type": "underline",
-        "sentId": "r2023ds5",
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "r2023ds7",
         "text": "간접법"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "target": "bogi",
+        "qid": 17,
+        "text": "게딱지 폭"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "target": "bogi",
+        "qid": 17,
+        "text": "큰 집게발의 길이"
       }
     ],
     "l2023a": [

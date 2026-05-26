@@ -394,7 +394,7 @@ function BogiRenderer({ bogi, anns = [] }) {
     );
     const textEl = bogi.text ? (
       <div style={{ whiteSpace: "pre-wrap", textAlign: "justify", flex: 1 }}>
-        {bogi.text}
+        {applyBogiInlineAnns(bogi.text, anns)}
       </div>
     ) : null;
 
