@@ -591,27 +591,27 @@
     "r2024a": [
       {
         "type": "underline",
-        "sentId": "r2024as13",
+        "sentId": "r2024as12",
         "text": "지금 사용하고 있는 전략을 계속 사용할 것인지"
       },
       {
         "type": "underline",
-        "sentId": "r2024as14",
+        "sentId": "r2024as13",
         "text": "문제 해결을 위한 다른 전략에는 무엇이 있는지"
       },
       {
         "type": "underline",
-        "sentId": "r2024as14",
+        "sentId": "r2024as13",
         "text": "각 전략의 특징과 사용 절차, 조건 등은 무엇인지"
       },
       {
         "type": "underline",
-        "sentId": "r2024as15",
+        "sentId": "r2024as14",
         "text": "전략들의 적절한 적용 순서가 무엇인지"
       },
       {
         "type": "underline",
-        "sentId": "r2024as15",
+        "sentId": "r2024as14",
         "text": "현재의 상황에서 최적의 전략이 무엇인지"
       }
     ],
@@ -883,28 +883,33 @@
     ],
     "l2023a": [
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "㉠",
         "sentId": "l2023as6",
         "text": "매월 초하루"
       },
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "㉡",
         "sentId": "l2023as7",
         "text": "정월 초하루"
       },
       {
-        "type": "underline",
-        "sentId": "l2023as9",
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l2023as10",
         "text": "그달"
       },
       {
-        "type": "underline",
-        "sentId": "l2023as11",
-        "text": "매양 꽃 피는 아침과 달 뜬 밤"
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "l2023as12",
+        "text": "매양"
       },
       {
-        "type": "underline",
-        "sentId": "l2023as12",
+        "type": "marker",
+        "marker": "㉤",
+        "sentId": "l2023as13",
         "text": "어느 봄날 밤"
       }
     ],
