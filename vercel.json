@@ -1,3 +1,11 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/auth", "destination": "/index.html" },
+    { "source": "/viewer", "destination": "/index.html" },
+    { "source": "/report", "destination": "/index.html" },
+    { "source": "/wrongnote", "destination": "/index.html" },
+    { "source": "/payment", "destination": "/index.html" },
+    { "source": "/academy-preview", "destination": "/index.html" },
+    { "source": "/privacy", "destination": "/index.html" }
+  ]
 }

@@ -733,6 +733,28 @@ export default function Landing({ onStart }) {
           </span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <a
+            href="/fortune/"
+            style={{
+              color: C.mid,
+              fontSize: "0.78rem",
+              fontWeight: 800,
+              textDecoration: "none",
+            }}
+          >
+            운세 리포트
+          </a>
+          <a
+            href="/suneung/"
+            style={{
+              color: C.mid,
+              fontSize: "0.78rem",
+              fontWeight: 800,
+              textDecoration: "none",
+            }}
+          >
+            이용권 결제
+          </a>
           <span style={{ fontSize: "0.75rem", color: C.muted }}>14일 무료</span>
           <Btn label="14일 무료로 시작하기 →" onClick={onStart} size="sm" />
         </div>

@@ -833,6 +833,42 @@ function MainPage({ isPro, user }) {
           >
             💳 요금제 보기
           </button>
+          <button
+            onClick={() => {
+              window.location.href = "/suneung/";
+            }}
+            style={{
+              padding: "10px 22px",
+              borderRadius: "10px",
+              background: "transparent",
+              color: MC.green,
+              border: `1.5px solid ${MC.line}`,
+              fontWeight: "700",
+              fontSize: "0.87rem",
+              cursor: "pointer",
+              fontFamily: "'Noto Sans KR', sans-serif",
+            }}
+          >
+            수능뷰어 결제
+          </button>
+          <button
+            onClick={() => {
+              window.location.href = "/fortune/";
+            }}
+            style={{
+              padding: "10px 22px",
+              borderRadius: "10px",
+              background: "transparent",
+              color: MC.green,
+              border: `1.5px solid ${MC.line}`,
+              fontWeight: "700",
+              fontSize: "0.87rem",
+              cursor: "pointer",
+              fontFamily: "'Noto Sans KR', sans-serif",
+            }}
+          >
+            운세 리포트
+          </button>
         </div>
 
         {/* 구독 상태 배너 */}
