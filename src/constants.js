@@ -25,7 +25,7 @@ export const RELEASED_SETS = [
   "r2024a", "r2024b", "r2024c", "r2024d",
   "l2024a", "l2024b", "l2024c", "l2024d",
   // 2023수능 (7 set — r2023a/b/c 독서 + l2023a/b/c/d 문학; r2023d 만 hasFig 결손 보류)
-  "r2023a", "r2023b", "r2023c",
+  "r2023a", "r2023b", "r2023c", "r2023d",
   "l2023a", "l2023b", "l2023c", "l2023d",
   // 2022수능 (8 set — 전부)
   "r2022a", "r2022b", "r2022c", "r2022d",
@@ -316,7 +316,7 @@ export const FIGURE_IMAGE_MAP = {
     alt: "제2차 세계 대전 당시 폐허가 된 런던 건물 안에서 사람들이 책을 보고 있는 사진",
   },
   r2023ds17: {
-    url: "/images/2023_r2023d_sent17_lgraph.png",
+    url: "/images/2023_r2023d_lgraph.png",
     alt: "L-그래프의 가로축 X와 세로축 Y, 편차, 기울기를 표시",
   },
   r2021cs24: {
