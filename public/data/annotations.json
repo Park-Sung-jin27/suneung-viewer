@@ -66,61 +66,58 @@
     ],
     "l2026a": [
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "ⓐ",
         "sentId": "l2026as4",
         "text": "반기 듣고"
       },
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "ⓑ",
         "sentId": "l2026as4",
         "text": "깜짝 놀래여"
       },
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "ⓒ",
         "sentId": "l2026as6",
         "text": "깜짝 놀래여"
       },
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "㉠",
         "sentId": "l2026as6",
         "text": "이 산중"
       },
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "ⓓ",
         "sentId": "l2026as7",
         "text": "반기 듣고"
       },
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "ⓔ",
         "sentId": "l2026as9",
         "text": "깜짝 놀래"
       },
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "㉡",
         "sentId": "l2026as10",
         "text": "수궁"
       },
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "ⓕ",
         "sentId": "l2026as11",
         "text": "질색허여"
       },
       {
-        "type": "underline",
+        "type": "marker",
+        "marker": "㉢",
         "sentId": "l2026as12",
         "text": "세수람 고개"
-      },
-      {
-        "type": "marker",
-        "marker": "ⓐ",
-        "sentId": "l2026as8",
-        "text": "어설피 물랴다가"
-      },
-      {
-        "type": "marker",
-        "marker": "㉡",
-        "sentId": "l2026as16",
-        "text": "수궁 퇴락허여"
       }
     ],
     "l2026b": [
