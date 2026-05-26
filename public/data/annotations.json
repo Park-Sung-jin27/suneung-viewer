@@ -892,15 +892,13 @@
         "text": "간접법"
       },
       {
-        "type": "marker",
-        "marker": "ⓐ",
+        "type": "underline",
         "target": "bogi",
         "qid": 17,
         "text": "게딱지 폭"
       },
       {
-        "type": "marker",
-        "marker": "ⓑ",
+        "type": "underline",
         "target": "bogi",
         "qid": 17,
         "text": "큰 집게발의 길이"
