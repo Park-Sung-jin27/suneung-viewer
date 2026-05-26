@@ -11,7 +11,7 @@
       {
         "type": "box",
         "sentId": "r2026b_s34",
-        "text": "연대보증인"
+        "text": "연대 보증인"
       },
       {
         "type": "underline",
@@ -392,7 +392,7 @@
       {
         "type": "underline",
         "sentId": "l2025as168",
-        "text": "― 그깟 놈의 배꼽, 안 가지고 있음 어때."
+        "text": "―그깟 놈의 배꼽, 안 가지고 있음 어때."
       },
       {
         "type": "underline",
@@ -697,12 +697,12 @@
       },
       {
         "type": "underline",
-        "sentId": "r2024ds25",
+        "sentId": "r2024ds24",
         "text": "유학자의 입장"
       },
       {
         "type": "underline",
-        "sentId": "r2024ds30",
+        "sentId": "r2024ds29",
         "text": "학문적 소신"
       }
     ],
@@ -785,7 +785,7 @@
       },
       {
         "type": "underline",
-        "sentId": "r2023as14",
+        "sentId": "r2023as13",
         "text": "다른 독자와 소통하는 즐거움"
       }
     ],
@@ -1052,12 +1052,12 @@
     "r2022a": [
       {
         "type": "underline",
-        "sentId": "r2022as3",
+        "sentId": "r2022as4",
         "text": "폐허 속에서도 사람들이 책을 찾아 서가 앞에 선 이유는 무엇일까?"
       },
       {
         "type": "underline",
-        "sentId": "r2022as10",
+        "sentId": "r2022as11",
         "text": "독서는 자신을 둘러싼 현실을 올바로 인식하고 당면한 문제를 해결할 논리와 힘을 지니게 한다."
       }
     ],
@@ -1065,7 +1065,7 @@
       {
         "type": "box",
         "sentId": "r2022bs10",
-        "text": "직관ㆍ표상ㆍ사유"
+        "text": "직관·표상·사유"
       },
       {
         "type": "underline",
@@ -1165,12 +1165,12 @@
       },
       {
         "type": "box",
-        "sentId": "l2022as1",
+        "sentId": "l2022as7",
         "text": "묵화(墨畫)"
       },
       {
         "type": "box",
-        "sentId": "l2022as6",
+        "sentId": "l2022as29",
         "text": "북창"
       }
     ],
@@ -1188,7 +1188,7 @@
       },
       {
         "type": "underline",
-        "sentId": "l2022bs32",
+        "sentId": "l2022bs38",
         "text": "우산 이상의 것"
       }
     ],
