@@ -245,8 +245,8 @@ export function applyInlineAnns(text, anns, hideLabels) {
     if (a.idx < cursor) continue;
     if (a.idx > cursor)
       parts.push({ t: text.slice(cursor, a.idx), type: null });
-    // suppressSup: avoid duplicate marker label when sent.t already has it inline
-    const before = a.idx > 0 ? text.slice(Math.max(0, a.idx - 3), a.idx) : "";
+    // suppressSup: avoid duplicate marker label when sent.t already has it inline (anywhere before a.idx)
+    const before = a.idx > 0 ? text.slice(0, a.idx) : "";
     const suppressSup =
       a.type === "marker" && a.marker && before.includes(a.marker);
     parts.push({ t: a.text, type: a.type, marker: a.marker, suppressSup });
