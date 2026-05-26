@@ -1221,28 +1221,33 @@
         "sentTo": "l2022ds38"
       },
       {
-        "type": "underline",
-        "sentId": "l2022ds4",
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l2022ds5",
         "text": "올벼 씨 한 말은 반 넘게 쥐 먹었고"
       },
       {
-        "type": "underline",
-        "sentId": "l2022ds9",
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l2022ds10",
         "text": "솥 시루 버려두니 붉은 빛이 다 되었다"
       },
       {
-        "type": "underline",
-        "sentId": "l2022ds12",
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l2022ds13",
         "text": "이 얼굴 지녀 있어 어려운 일 하고 많다"
       },
       {
-        "type": "underline",
-        "sentId": "l2022ds30",
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "l2022ds34",
         "text": "두어라 차례 정한 일이니 매는 대로 매리라"
       },
       {
-        "type": "underline",
-        "sentId": "l2022ds38",
+        "type": "marker",
+        "marker": "㉤",
+        "sentId": "l2022ds43",
         "text": "아마도 밥 들이고 잔 잡을 때에 흥에 겨워 하노라"
       }
     ]
