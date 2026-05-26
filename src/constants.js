@@ -10,18 +10,25 @@
 //   import { isSetUnderReview } from "./constants";
 //   {currentSet && isSetUnderReview(currentSet.id) && <Banner ... />}
 //
-// "*" sentinel: 모든 세트에 배너 일괄 적용 (Gate 1 구현 전 일시적 안전 모드).
-// Gate 1 통과 + v5 빌드 필터 도입 후에는 set_status + release_approval_record
-// 가 통과한 set 만 빌드 산출물에 포함되므로, 그 시점에 "*" 를 제거하고
-// 개별 setId 만 등재하도록 전환할 것.
+// allowlist 방식: RELEASED_SETS 에 명시된 set 은 검수 완료 = 배너 미표시.
+// 그 외 모든 set 은 검수 중 = 상단 배너 노출 (기존 보호 정합).
+// 신규 set 정정 종결 시 사용자가 본 list 에 setId 추가 의무.
 // ────────────────────────────────────────────────────────────
-export const BLOCKED_SETS = ["*"];
+export const RELEASED_SETS = [
+  // 2026수능
+  "l2026a",
+  // 2024수능
+  "r2024a",
+  // 2023수능
+  "l2023a",
+  "r2023b",
+  // 2022수능
+  "l2022d",
+];
 
 export function isSetUnderReview(setId) {
-  if (!Array.isArray(BLOCKED_SETS)) return false;
-  if (BLOCKED_SETS.includes("*")) return true;
-  if (!setId) return false;
-  return BLOCKED_SETS.includes(setId);
+  if (!setId) return true;
+  return !RELEASED_SETS.includes(setId);
 }
 
 // 오답 패턴 정의 (R1~R4: 독서, L1~L5: 문학)
