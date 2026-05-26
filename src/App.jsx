@@ -2028,20 +2028,16 @@ export default function App() {
       <Route
         path="/payment"
         element={
-          user ? (
-            <Layout user={user} onLogout={handleLogout}>
-              <Payment
-                user={user}
-                onPaySuccess={() => {
-                  setIsPro(true);
-                  navigate("/");
-                }}
-                onFreeStart={() => navigate("/")}
-              />
-            </Layout>
-          ) : (
-            <Navigate to="/auth" replace />
-          )
+          <Layout user={user} onLogout={handleLogout}>
+            <Payment
+              user={user}
+              onPaySuccess={() => {
+                setIsPro(true);
+                navigate("/");
+              }}
+              onFreeStart={() => navigate("/")}
+            />
+          </Layout>
         }
       />
       <Route path="/academy-preview" element={<AcademyPreview />} />

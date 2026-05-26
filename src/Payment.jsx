@@ -352,7 +352,13 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
   }, [user]);
 
   async function handlePay(plan) {
-    if (!tossPayments || !user || !plan.available) return;
+    if (!plan.available) return;
+    if (!user) {
+      // 비로그인 → 로그인 페이지로 이동 (로그인 후 다시 요금제 진입 가능)
+      window.location.href = "/auth";
+      return;
+    }
+    if (!tossPayments) return;
     setLoading(true);
     try {
       await tossPayments.requestPayment({
@@ -378,6 +384,11 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
   }
 
   function handleFreeStart() {
+    // 비로그인 시 → 로그인 페이지 (계정 생성 후 무료 시작)
+    if (!user) {
+      window.location.href = "/auth";
+      return;
+    }
     // 무료 플랜 — Pro 부여하지 않고 메인으로만 이동
     onFreeStart?.();
   }
