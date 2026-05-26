@@ -793,52 +793,61 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r2023bs2",
-        "sentTo": "r2023bs9"
+        "sentFrom": "r2023bs1",
+        "sentTo": "r2023bs8"
       },
       {
-        "type": "underline",
-        "sentId": "r2023bs7",
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "r2023bs6",
         "text": "따라"
       },
       {
-        "type": "underline",
-        "sentId": "r2023bs11",
+        "type": "marker",
+        "marker": "㉮",
+        "sentId": "r2023bs10",
         "text": "실학자들의 유서"
       },
       {
-        "type": "underline",
-        "sentId": "r2023bs14",
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "r2023bs13",
         "text": "이어받는"
       },
       {
-        "type": "underline",
-        "sentId": "r2023bs15",
+        "type": "marker",
+        "marker": "ⓒ",
+        "sentId": "r2023bs14",
         "text": "쉽게"
       },
       {
-        "type": "underline",
-        "sentId": "r2023bs22",
+        "type": "marker",
+        "marker": "ⓓ",
+        "sentId": "r2023bs20",
         "text": "뒤섞여"
       },
       {
-        "type": "underline",
-        "sentId": "r2023bs22",
+        "type": "marker",
+        "marker": "㉯",
+        "sentId": "r2023bs20",
         "text": "일부 주자학자의 비판"
       },
       {
-        "type": "underline",
-        "sentId": "r2023bs23",
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r2023bs21",
         "text": "성호사설"
       },
       {
-        "type": "underline",
-        "sentId": "r2023bs25",
+        "type": "marker",
+        "marker": "ⓔ",
+        "sentId": "r2023bs23",
         "text": "바꾸어"
       },
       {
-        "type": "underline",
-        "sentId": "r2023bs27",
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "r2023bs25",
         "text": "오주연문장전산고"
       }
     ],
