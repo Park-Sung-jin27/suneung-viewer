@@ -1079,6 +1079,16 @@ function ViewerPage({ user, isPro = false }) {
       navigate("/");
       return;
     }
+    // Pro lock guard — block non-FREE year for non-Pro non-master users
+    const isFree = FREE_YEARS.includes(yearKey);
+    if (!isFree && !isPro && !isMaster) {
+      if (!user) {
+        navigate("/auth", { replace: true });
+      } else {
+        navigate("/?pro_required=1", { replace: true });
+      }
+      return;
+    }
     setLoading(true);
     loadYear(yearKey, { bypassFilter: isMaster })
       .then((data) => {
