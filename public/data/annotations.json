@@ -894,14 +894,14 @@
       {
         "type": "underline",
         "target": "bogi",
-        "qid": 17,
-        "text": "게딱지 폭"
+        "text": "게딱지 폭",
+        "qId": 17
       },
       {
         "type": "underline",
         "target": "bogi",
-        "qid": 17,
-        "text": "큰 집게발의 길이"
+        "text": "큰 집게발의 길이",
+        "qId": 17
       }
     ],
     "l2023a": [
