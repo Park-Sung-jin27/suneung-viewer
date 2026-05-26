@@ -358,7 +358,7 @@
       {
         "type": "underline",
         "sentId": "l2025bs7",
-        "text": "치병과 환후는 각각 따로인 것을"
+        "text": "치병*과 환후*는 각각 따로인 것을"
       },
       {
         "type": "underline",
@@ -1204,16 +1204,6 @@
         "label": "B",
         "sentFrom": "l2022cs10",
         "sentTo": "l2022cs10"
-      },
-      {
-        "type": "box",
-        "sentId": "l2022cs5",
-        "text": "묵화(墨畫)"
-      },
-      {
-        "type": "box",
-        "sentId": "l2022cs22",
-        "text": "북창"
       }
     ],
     "l2022d": [
