@@ -17,7 +17,6 @@ import QuizPanel from "./QuizPanel";
 import WrongNote from "./WrongNote";
 import PatternReport from "./PatternReport";
 import Payment from "./Payment";
-import EnglishStructure from "./EnglishStructure";
 import Banner from "./Banner";
 import AcademyPreview from "./AcademyPreview";
 import ResultPage from "./ResultPage";
