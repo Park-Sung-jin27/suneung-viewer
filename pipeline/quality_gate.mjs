@@ -305,6 +305,11 @@ const ACTION_CLASS_MAP = {
   E_questionType_ok_mismatch: "raw_required",
   W_analysis_placeholder_real: "manual",
   W_analysis_placeholder_suspect: "auto_safe",
+  // ── 본문 품질 + 선지 수 검증 ──
+  S_sent_count_zero: "raw_required",
+  S_sent_count_low: "raw_required",
+  S_sent_ratio_low: "raw_required",
+  S_choices_missing: "raw_required",
 };
 function getActionClass(type) {
   return ACTION_CLASS_MAP[type] || "manual";
@@ -1055,6 +1060,73 @@ for (const yearKey of yearsToCheck) {
           );
         }
       }
+
+      // ── S: 본문 sent 수 최소 기준 (release_ready 5번째) ──────────────────
+      const sentCount = (set.sents || []).length;
+      const questionCount = (set.questions || []).length;
+      const setLoc = `${yearKey} ${set.id}`;
+
+      if (sentCount === 0) {
+        issue(
+          "S_sent_count_zero",
+          yearKey,
+          setLoc,
+          `본문 sent 0개 — 완전 재구축 필요 (D등급)`,
+          "critical",
+        );
+      } else if (sec === "reading") {
+        if (sentCount < 10) {
+          issue(
+            "S_sent_count_low",
+            yearKey,
+            setLoc,
+            `독서 set sent_count=${sentCount} (최소 10 필요)`,
+            "critical",
+          );
+        }
+        if (questionCount > 0 && sentCount / questionCount < 3.0) {
+          issue(
+            "S_sent_ratio_low",
+            yearKey,
+            setLoc,
+            `독서 set sent/question=${(sentCount / questionCount).toFixed(1)} (최소 3.0 필요)`,
+            "critical",
+          );
+        }
+      } else if (sec === "literature") {
+        if (sentCount < 5) {
+          issue(
+            "S_sent_count_low",
+            yearKey,
+            setLoc,
+            `문학 set sent_count=${sentCount} (최소 5 필요)`,
+            "critical",
+          );
+        }
+        if (questionCount > 0 && sentCount / questionCount < 1.5) {
+          issue(
+            "S_sent_ratio_low",
+            yearKey,
+            setLoc,
+            `문학 set sent/question=${(sentCount / questionCount).toFixed(1)} (최소 1.5 필요)`,
+            "critical",
+          );
+        }
+      }
+
+      // ── S: 선지 5개 검증 (release_ready 6번째) ───────────────────────────
+      for (const q of set.questions || []) {
+        const choiceCount = (q.choices || []).length;
+        if (choiceCount !== 5) {
+          issue(
+            "S_choices_missing",
+            yearKey,
+            `${yearKey} ${set.id} Q${q.id}`,
+            `choices=${choiceCount} (5개 필요)`,
+            "critical",
+          );
+        }
+      }
     }
   }
 }
@@ -1203,6 +1275,12 @@ const SEVERITY_MAP = {
   E_questionType_ok_mismatch: "CRITICAL",
   W_analysis_placeholder_real: "CRITICAL",
   W_analysis_placeholder_suspect: "WARNING",
+
+  // ── 본문 품질 + 선지 수 검증 ──
+  S_sent_count_zero: "CRITICAL",
+  S_sent_count_low: "CRITICAL",
+  S_sent_ratio_low: "CRITICAL",
+  S_choices_missing: "CRITICAL",
 
   // ── bracket_audit.mjs integration (Pipeline v2 — 8 issue family) ──
   // 1. SOURCE_TEXT_DEFECT (Lock S1~S4) — sent.t 안 source-level 결함

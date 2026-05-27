@@ -279,16 +279,27 @@ R2 **아님**:
 ❌ 대응 관계의 역할 교환 (R1)
 ❌ 정의 왜곡 (R1 또는 R3)
 
-### release_ready 4기준
+### release_ready 6기준
 
-다음 4개 모두 **0건** 시 release_ready:
+다음 6개 모두 **0건** 시 release_ready:
 
 ```
 1. ok:true cs_ids=[]                                  → 0건  (근거 누락)
 2. DEAD_csid                                          → 0건  (존재하지 않는 sentId 참조)
 3. F_empty_analysis                                   → 0건  (해설 누락)
 4. ok:false + R1/R2/R4/L1/L2/L4/L5 + cs_ids=[]      → 0건  (왜곡 출처 누락)
+5. 본문 sent 수 최소 기준                    → 위반 시 release 불가
+   - 독서 set: sent_count ≥ 10 AND sent_count/question_count ≥ 3.0
+   - 문학 set: sent_count ≥ 5 AND sent_count/question_count ≥ 1.5
+   - sent_count == 0 → 완전 재구축 필요 (D등급)
+6. 모든 question 의 choices 수 == 5            → 위반 시 release 불가
 ```
+
+**5번 배경**: 2026-05-27 LEGACY 수능 일괄 RELEASED 시, release_ready 4기준(cs_ids/해설/정답)만 검사하고 본문 sent 수를 안 봐서 PDF 추출 실패 set 8개가 RELEASED에 포함됨. sent 3~5개인 독서 set은 정상 지문(20~40 sent)의 10~25% 수준으로 학생에게 빈 화면 노출.
+
+**발견된 결함 set (8건)**:
+- r2014a(B) 0sent, r2014b(B) 5sent, r2014c(B) 3sent, r2014d(B) 3sent
+- r2014e(A) 3sent, r2016d(B) 5sent, r2018a 5sent, r2018b 5sent
 
 자동 검증:
 ```powershell
