@@ -17,6 +17,7 @@ import QuizPanel from "./QuizPanel";
 import WrongNote from "./WrongNote";
 import PatternReport from "./PatternReport";
 import Payment from "./Payment";
+import EnglishStructure from "./EnglishStructure";
 import Banner from "./Banner";
 import AcademyPreview from "./AcademyPreview";
 import ResultPage from "./ResultPage";
@@ -64,9 +65,13 @@ function Header({ user, onLogout }) {
   const navigate = useNavigate();
   const location = useLocation();
   const isViewer = location.pathname === "/viewer";
-  const showBack = ["/viewer", "/report", "/wrongnote", "/payment"].includes(
-    location.pathname,
-  );
+  const showBack = [
+    "/viewer",
+    "/report",
+    "/wrongnote",
+    "/payment",
+    "/english-structure",
+  ].includes(location.pathname);
   const yearKey = new URLSearchParams(location.search).get("year");
   const yearMeta = YEAR_INFO.find((y) => y.key === yearKey) ?? null;
 
@@ -834,6 +839,22 @@ function MainPage({ isPro, user }) {
             💳 요금제 보기
           </button>
           <button
+            onClick={() => navigate("/english-structure")}
+            style={{
+              padding: "10px 22px",
+              borderRadius: "10px",
+              background: "transparent",
+              color: MC.green,
+              border: `1.5px solid ${MC.line}`,
+              fontWeight: "700",
+              fontSize: "0.87rem",
+              cursor: "pointer",
+              fontFamily: "'Noto Sans KR', sans-serif",
+            }}
+          >
+            영어 구조독해
+          </button>
+          <button
             onClick={() => {
               window.location.href = "/suneung/";
             }}
@@ -1106,6 +1127,8 @@ function ViewerPage({ user, isPro = false }) {
   const [sel, setSel] = useState(null);
   const [studyAnswers, setStudyAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [submittedSets, setSubmittedSets] = useState({}); // set 단위 제출 상태 — UX W2
+  const [setScoreToast, setSetScoreToast] = useState(null); // set 채점 toast
   const [submitting, setSubmitting] = useState(false);
   const [isReview, setIsReview] = useState(false);
   const [warningMsg, setWarningMsg] = useState(null);
@@ -1208,6 +1231,45 @@ function ViewerPage({ user, isPro = false }) {
       [sid]: { ...prev[sid], [qid]: choiceNum },
     }));
     setWarningMsg(null);
+  }
+
+  // 지문(set) 단위 제출 — UX W2 (학습 지속 직격)
+  async function handleSubmitSet(setObj) {
+    if (!setObj) return;
+    const sid = setObj.id;
+    const qs = setObj.questions || [];
+    // 미답 체크
+    const missing = qs.find((q) => studyAnswers[sid]?.[q.id] == null);
+    if (missing) {
+      setWarningMsg(`⚠️ ${missing.id}번 문항에 답이 체크되지 않았습니다.`);
+      return;
+    }
+    setSubmitting(true);
+    let correctCount = 0;
+    for (const q of qs) {
+      const choiceNum = studyAnswers[sid]?.[q.id];
+      if (choiceNum == null) continue;
+      const choice = q.choices.find((c) => c.num === choiceNum);
+      if (!choice) continue;
+      const qt = q.questionType ?? "negative";
+      const isCorrect =
+        qt === "positive" ? choice.ok === true : choice.ok === false;
+      if (isCorrect) correctCount += 1;
+      try {
+        await saveAnswer({
+          user, yearKey, setId: sid,
+          questionId: q.id, choiceNum, isCorrect,
+          pat: choice.pat ?? null,
+        });
+      } catch (e) {
+        console.warn("[saveAnswer 무시]", e?.message);
+      }
+    }
+    setSubmitting(false);
+    setSubmittedSets((prev) => ({ ...prev, [sid]: true }));
+    setSetScoreToast({ sid, correct: correctCount, total: qs.length });
+    // 다음 지문 자동 이동 — 5초 후
+    setTimeout(() => setSetScoreToast(null), 5000);
   }
 
   async function handleSubmitAll() {
@@ -1509,41 +1571,170 @@ function ViewerPage({ user, isPro = false }) {
         </div>
       )}
 
-      {isStudy && !submitted && (
-        <div
-          style={{
-            position: "sticky",
-            top: "52px",
-            zIndex: 90,
-            background: "#1f2937",
-            padding: "7px 20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
-            gap: "12px",
-          }}
-        >
-          <span style={{ fontSize: "0.78rem", color: "#9ca3af" }}>
-            {totalAnswered}/{totalQCount} 선택
-          </span>
-          <button
-            onClick={handleSubmitAll}
-            disabled={submitting}
+      {isStudy && !submitted && (() => {
+        const curQs = currentSet?.questions ?? [];
+        const curQCount = curQs.length;
+        const curAnswered = curQs.filter(
+          (q) => studyAnswers[currentSet?.id]?.[q.id] != null,
+        ).length;
+        const isSetSubmitted = currentSet
+          ? !!submittedSets[currentSet.id]
+          : false;
+        return (
+          <div
             style={{
-              padding: "6px 16px",
-              borderRadius: "6px",
-              background: submitting ? "#6b7280" : "#f9fafb",
-              color: submitting ? "#fff" : "#1f2937",
-              border: "none",
-              fontWeight: "700",
-              cursor: submitting ? "not-allowed" : "pointer",
-              fontSize: "0.85rem",
-              opacity: submitting ? 0.8 : 1,
-              transition: "all 0.15s",
+              position: "sticky",
+              top: "52px",
+              zIndex: 90,
+              background: "#1f2937",
+              padding: "7px 20px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              gap: "10px",
+              flexWrap: "wrap",
             }}
           >
-            {submitting ? "저장 중…" : `제출 (${totalAnswered}/${totalQCount})`}
-          </button>
+            <span style={{ fontSize: "0.74rem", color: "#9ca3af" }}>
+              이 지문 {curAnswered}/{curQCount}
+            </span>
+            <button
+              onClick={() => handleSubmitSet(currentSet)}
+              disabled={submitting || isSetSubmitted || !currentSet}
+              style={{
+                padding: "6px 14px",
+                borderRadius: "6px",
+                background: isSetSubmitted
+                  ? "#10b981"
+                  : submitting
+                    ? "#6b7280"
+                    : "#3b82f6",
+                color: "#fff",
+                border: "none",
+                fontWeight: "700",
+                cursor:
+                  submitting || isSetSubmitted ? "not-allowed" : "pointer",
+                fontSize: "0.82rem",
+                opacity: submitting ? 0.8 : 1,
+                transition: "all 0.15s",
+              }}
+              title="현재 지문만 채점합니다"
+            >
+              {isSetSubmitted
+                ? "✓ 이 지문 제출됨"
+                : submitting
+                  ? "저장 중…"
+                  : `이 지문 제출 (${curAnswered}/${curQCount})`}
+            </button>
+            <span
+              style={{
+                fontSize: "0.72rem",
+                color: "#6b7280",
+                margin: "0 4px",
+              }}
+            >
+              |
+            </span>
+            <span style={{ fontSize: "0.74rem", color: "#9ca3af" }}>
+              전체 {totalAnswered}/{totalQCount}
+            </span>
+            <button
+              onClick={handleSubmitAll}
+              disabled={submitting}
+              style={{
+                padding: "6px 14px",
+                borderRadius: "6px",
+                background: submitting ? "#6b7280" : "#f9fafb",
+                color: submitting ? "#fff" : "#1f2937",
+                border: "none",
+                fontWeight: "700",
+                cursor: submitting ? "not-allowed" : "pointer",
+                fontSize: "0.82rem",
+                opacity: submitting ? 0.8 : 1,
+                transition: "all 0.15s",
+              }}
+              title="모든 지문을 한 번에 채점합니다"
+            >
+              {submitting ? "저장 중…" : "전체 제출"}
+            </button>
+          </div>
+        );
+      })()}
+
+      {/* 지문 단위 채점 toast — UX W2 (A4) */}
+      {setScoreToast && (
+        <div
+          style={{
+            position: "fixed",
+            top: "100px",
+            right: "20px",
+            zIndex: 200,
+            background: "#fff",
+            border: "2px solid #10b981",
+            borderRadius: "10px",
+            padding: "14px 18px",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
+            minWidth: "240px",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "0.72rem",
+              color: "#6b7280",
+              fontWeight: "600",
+              marginBottom: "4px",
+            }}
+          >
+            이 지문 채점 결과
+          </div>
+          <div
+            style={{
+              fontSize: "1.4rem",
+              fontWeight: "800",
+              color: "#10b981",
+              marginBottom: "8px",
+            }}
+          >
+            {setScoreToast.correct} / {setScoreToast.total} 정답
+          </div>
+          <div style={{ display: "flex", gap: "8px" }}>
+            {hasNext && (
+              <button
+                onClick={() => {
+                  setSetScoreToast(null);
+                  handleNavSet(1);
+                }}
+                style={{
+                  flex: 1,
+                  padding: "6px 12px",
+                  borderRadius: "6px",
+                  background: "#3b82f6",
+                  color: "#fff",
+                  border: "none",
+                  fontWeight: "700",
+                  cursor: "pointer",
+                  fontSize: "0.78rem",
+                }}
+              >
+                다음 지문 →
+              </button>
+            )}
+            <button
+              onClick={() => setSetScoreToast(null)}
+              style={{
+                padding: "6px 12px",
+                borderRadius: "6px",
+                background: "#f3f4f6",
+                color: "#374151",
+                border: "1px solid #d1d5db",
+                fontWeight: "600",
+                cursor: "pointer",
+                fontSize: "0.78rem",
+              }}
+            >
+              닫기
+            </button>
+          </div>
         </div>
       )}
 
