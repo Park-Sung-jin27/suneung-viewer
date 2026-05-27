@@ -1597,6 +1597,20 @@ function ViewerPage({ user, isPro = false }) {
             <span style={{ fontSize: "0.74rem", color: "#9ca3af" }}>
               이 지문 {curAnswered}/{curQCount}
             </span>
+            {isSetSubmitted && (
+              <span
+                style={{
+                  fontSize: "0.7rem",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                }}
+                title="채점 색상 안내"
+              >
+                <span style={{ color: "#6ee7b7" }}>● 정답</span>
+                <span style={{ color: "#fca5a5" }}>● 내 답</span>
+              </span>
+            )}
             <button
               onClick={() => handleSubmitSet(currentSet)}
               disabled={submitting || isSetSubmitted || !currentSet}
@@ -1620,11 +1634,37 @@ function ViewerPage({ user, isPro = false }) {
               title="현재 지문만 채점합니다"
             >
               {isSetSubmitted
-                ? "✓ 이 지문 제출됨"
+                ? "✓ 채점됨"
                 : submitting
                   ? "저장 중…"
                   : `이 지문 제출 (${curAnswered}/${curQCount})`}
             </button>
+            {isSetSubmitted && (
+              <button
+                onClick={() => {
+                  // 되돌리기 — 해당 set 의 submitted 상태만 해제 (답안은 보존)
+                  setSubmittedSets((prev) => {
+                    const next = { ...prev };
+                    delete next[currentSet.id];
+                    return next;
+                  });
+                  setSetScoreToast(null);
+                }}
+                style={{
+                  padding: "5px 10px",
+                  borderRadius: "6px",
+                  background: "transparent",
+                  color: "#fca5a5",
+                  border: "1px solid #fca5a5",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  fontSize: "0.72rem",
+                }}
+                title="답안 수정 가능 상태로 돌아갑니다 (답안은 보존)"
+              >
+                ↺ 되돌리기
+              </button>
+            )}
             <span
               style={{
                 fontSize: "0.72rem",
@@ -1813,7 +1853,11 @@ function ViewerPage({ user, isPro = false }) {
           <PassagePanel
             passageSet={currentSet}
             sel={sel}
-            mode={isReview ? MODE.VIEW : mode}
+            mode={
+              isReview || !!submittedSets[currentSet?.id]
+                ? MODE.VIEW
+                : mode
+            }
           />
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -1824,7 +1868,7 @@ function ViewerPage({ user, isPro = false }) {
             user={user}
             yearKey={yearKey}
             mode={mode}
-            isReview={isReview}
+            isReview={isReview || !!submittedSets[currentSet?.id]}
             studyAnswers={studyAnswers[currentSet?.id] ?? {}}
             onStudyAnswer={handleStudyAnswer}
             submitted={submitted}
