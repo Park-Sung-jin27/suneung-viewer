@@ -1,0 +1,2202 @@
+[
+  {
+    "name": "가야대학교",
+    "campus": "본교",
+    "unvCd": "0002748",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "가천대학교",
+    "campus": "본교",
+    "unvCd": "0000063",
+    "region": "경기",
+    "type": "사립",
+    "competition_susi_25": 28.13,
+    "competition_jeongsi_25": 7.44,
+    "intake": 4021
+  },
+  {
+    "name": "가톨릭관동대학교",
+    "campus": "본교",
+    "unvCd": "0000072",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "가톨릭꽃동네대학교",
+    "campus": "본교",
+    "unvCd": "0000215",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "가톨릭대학교",
+    "campus": "본교",
+    "unvCd": "0000046",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "가톨릭대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000048",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "가톨릭대학교",
+    "campus": "제3캠퍼스",
+    "unvCd": "0000049",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "감리교신학대학교",
+    "campus": "본교",
+    "unvCd": "0000050",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "강남대학교",
+    "campus": "본교",
+    "unvCd": "0000051",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "강서대학교",
+    "campus": "본교",
+    "unvCd": "0000079",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "강원대학교",
+    "campus": "본교",
+    "unvCd": "0000003",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "강원대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000004",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "강원대학교",
+    "campus": "제3캠퍼스",
+    "unvCd": "0003363",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "강원대학교",
+    "campus": "제4캠퍼스",
+    "unvCd": "0003364",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "건국대학교(글로컬)",
+    "campus": "분교",
+    "unvCd": "0000053",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "건국대학교",
+    "campus": "본교",
+    "unvCd": "0000052",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "건양대학교",
+    "campus": "본교",
+    "unvCd": "0000054",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "건양대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000055",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경기대학교",
+    "campus": "본교",
+    "unvCd": "0000056",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경기대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000058",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경남대학교",
+    "campus": "본교",
+    "unvCd": "0000059",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경동대학교",
+    "campus": "본교",
+    "unvCd": "0000060",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경동대학교",
+    "campus": "제3캠퍼스",
+    "unvCd": "0002574",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경동대학교",
+    "campus": "제4캠퍼스",
+    "unvCd": "0002744",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경북대학교",
+    "campus": "본교",
+    "unvCd": "0000005",
+    "region": "대구",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경상국립대학교",
+    "campus": "본교",
+    "unvCd": "0000007",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경성대학교",
+    "campus": "본교",
+    "unvCd": "0000062",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경운대학교",
+    "campus": "본교",
+    "unvCd": "0000244",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경인교육대학교",
+    "campus": "본교",
+    "unvCd": "0000256",
+    "region": "인천",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경일대학교",
+    "campus": "본교",
+    "unvCd": "0000064",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "경희대학교",
+    "campus": "본교",
+    "unvCd": "0000066",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "계명대학교",
+    "campus": "본교",
+    "unvCd": "0000068",
+    "region": "대구",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "고려대학교(세종)",
+    "campus": "분교",
+    "unvCd": "0000070",
+    "region": "세종",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "고려대학교",
+    "campus": "본교",
+    "unvCd": "0000069",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "고신대학교",
+    "campus": "본교",
+    "unvCd": "0000071",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "공주교육대학교",
+    "campus": "본교",
+    "unvCd": "0000251",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "광신대학교",
+    "campus": "본교",
+    "unvCd": "0000073",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "광운대학교",
+    "campus": "본교",
+    "unvCd": "0000074",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "광주가톨릭대학교",
+    "campus": "본교",
+    "unvCd": "0000075",
+    "region": "전남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "광주교육대학교",
+    "campus": "본교",
+    "unvCd": "0000252",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "광주대학교",
+    "campus": "본교",
+    "unvCd": "0000231",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "광주여자대학교",
+    "campus": "본교",
+    "unvCd": "0000076",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립강릉원주대학교",
+    "campus": "본교",
+    "unvCd": "0000001",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립강릉원주대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000002",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립경국대학교",
+    "campus": "본교",
+    "unvCd": "0000021",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립공주대학교",
+    "campus": "본교",
+    "unvCd": "0000008",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립군산대학교",
+    "campus": "본교",
+    "unvCd": "0000009",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립금오공과대학교",
+    "campus": "본교",
+    "unvCd": "0000010",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립목포대학교",
+    "campus": "본교",
+    "unvCd": "0000011",
+    "region": "전남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립목포해양대학교",
+    "campus": "본교",
+    "unvCd": "0000012",
+    "region": "전남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립부경대학교",
+    "campus": "본교",
+    "unvCd": "0000013",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립순천대학교",
+    "campus": "본교",
+    "unvCd": "0000020",
+    "region": "전남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립창원대학교",
+    "campus": "본교",
+    "unvCd": "0000028",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립창원대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0003297",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립창원대학교",
+    "campus": "제3캠퍼스",
+    "unvCd": "0003298",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립한국교통대학교",
+    "campus": "본교",
+    "unvCd": "0000034",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립한국해양대학교",
+    "campus": "본교",
+    "unvCd": "0000033",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국립한밭대학교",
+    "campus": "본교",
+    "unvCd": "0000039",
+    "region": "대전",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "국민대학교",
+    "campus": "본교",
+    "unvCd": "0000078",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "극동대학교",
+    "campus": "본교",
+    "unvCd": "0000080",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "금강대학교",
+    "campus": "본교",
+    "unvCd": "0000224",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "김천대학교",
+    "campus": "본교",
+    "unvCd": "0000241",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "나사렛대학교",
+    "campus": "본교",
+    "unvCd": "0000081",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "남부대학교",
+    "campus": "본교",
+    "unvCd": "0000216",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "남서울대학교",
+    "campus": "본교",
+    "unvCd": "0000245",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "단국대학교",
+    "campus": "본교",
+    "unvCd": "0000082",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "단국대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0002726",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "대구가톨릭대학교",
+    "campus": "본교",
+    "unvCd": "0000088",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "대구교육대학교",
+    "campus": "본교",
+    "unvCd": "0000253",
+    "region": "대구",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "대구대학교",
+    "campus": "본교",
+    "unvCd": "0000084",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "대구예술대학교",
+    "campus": "본교",
+    "unvCd": "0000087",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "대구한의대학교",
+    "campus": "본교",
+    "unvCd": "0000061",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "대신대학교",
+    "campus": "본교",
+    "unvCd": "0000093",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "대전가톨릭대학교",
+    "campus": "본교",
+    "unvCd": "0000094",
+    "region": "대전",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "대전대학교",
+    "campus": "본교",
+    "unvCd": "0000095",
+    "region": "대전",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "대전신학대학교",
+    "campus": "본교",
+    "unvCd": "0000238",
+    "region": "대전",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "대진대학교",
+    "campus": "본교",
+    "unvCd": "0000097",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "덕성여자대학교",
+    "campus": "본교",
+    "unvCd": "0000099",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "동국대학교(WISE)",
+    "campus": "분교",
+    "unvCd": "0000101",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "동국대학교",
+    "campus": "본교",
+    "unvCd": "0000100",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "동덕여자대학교",
+    "campus": "본교",
+    "unvCd": "0000102",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "동명대학교",
+    "campus": "본교",
+    "unvCd": "0000235",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "동서대학교",
+    "campus": "본교",
+    "unvCd": "0000103",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "동신대학교",
+    "campus": "본교",
+    "unvCd": "0000104",
+    "region": "전남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "동아대학교",
+    "campus": "본교",
+    "unvCd": "0000105",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "동양대학교",
+    "campus": "본교",
+    "unvCd": "0000106",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "동의대학교",
+    "campus": "본교",
+    "unvCd": "0000107",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "루터대학교",
+    "campus": "본교",
+    "unvCd": "0000108",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "명지대학교",
+    "campus": "본교",
+    "unvCd": "0000109",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "명지대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000111",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "목원대학교",
+    "campus": "본교",
+    "unvCd": "0000112",
+    "region": "대전",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "목포가톨릭대학교",
+    "campus": "본교",
+    "unvCd": "0000221",
+    "region": "전남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "배재대학교",
+    "campus": "본교",
+    "unvCd": "0000113",
+    "region": "대전",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "백석대학교",
+    "campus": "본교",
+    "unvCd": "0000178",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "부산가톨릭대학교",
+    "campus": "본교",
+    "unvCd": "0000114",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "부산교육대학교",
+    "campus": "본교",
+    "unvCd": "0000254",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "부산대학교",
+    "campus": "본교",
+    "unvCd": "0000014",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "부산외국어대학교",
+    "campus": "본교",
+    "unvCd": "0000115",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "부산장신대학교",
+    "campus": "본교",
+    "unvCd": "0000222",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "삼육대학교",
+    "campus": "본교",
+    "unvCd": "0000116",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "상명대학교",
+    "campus": "본교",
+    "unvCd": "0000117",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "상명대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0002959",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "상지대학교",
+    "campus": "본교",
+    "unvCd": "0000119",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서강대학교",
+    "campus": "본교",
+    "unvCd": "0000120",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서경대학교",
+    "campus": "본교",
+    "unvCd": "0000121",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서울과학기술대학교",
+    "campus": "본교",
+    "unvCd": "0000036",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서울교육대학교",
+    "campus": "본교",
+    "unvCd": "0000255",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서울기독대학교",
+    "campus": "본교",
+    "unvCd": "0000098",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서울대학교",
+    "campus": "본교",
+    "unvCd": "0000019",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서울시립대학교",
+    "campus": "본교",
+    "unvCd": "0000040",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서울신학대학교",
+    "campus": "본교",
+    "unvCd": "0000125",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서울여자대학교",
+    "campus": "본교",
+    "unvCd": "0000126",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서울장신대학교",
+    "campus": "본교",
+    "unvCd": "0000127",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서울한영대학교",
+    "campus": "본교",
+    "unvCd": "0000205",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "서원대학교",
+    "campus": "본교",
+    "unvCd": "0000128",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "선문대학교",
+    "campus": "본교",
+    "unvCd": "0000129",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "성결대학교",
+    "campus": "본교",
+    "unvCd": "0000131",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "성공회대학교",
+    "campus": "본교",
+    "unvCd": "0000132",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "성균관대학교",
+    "campus": "본교",
+    "unvCd": "0000133",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "성신여자대학교",
+    "campus": "본교",
+    "unvCd": "0000136",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "세명대학교",
+    "campus": "본교",
+    "unvCd": "0000137",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "세종대학교",
+    "campus": "본교",
+    "unvCd": "0000138",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "세한대학교",
+    "campus": "본교",
+    "unvCd": "0000092",
+    "region": "전남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "송원대학교",
+    "campus": "본교",
+    "unvCd": "0000243",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "수원가톨릭대학교",
+    "campus": "본교",
+    "unvCd": "0000139",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "수원대학교",
+    "campus": "본교",
+    "unvCd": "0000140",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "숙명여자대학교",
+    "campus": "본교",
+    "unvCd": "0000141",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "순천향대학교",
+    "campus": "본교",
+    "unvCd": "0000142",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "숭실대학교",
+    "campus": "본교",
+    "unvCd": "0000143",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "신경주대학교",
+    "campus": "본교",
+    "unvCd": "0000065",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "신라대학교",
+    "campus": "본교",
+    "unvCd": "0000144",
+    "region": "부산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "신한대학교",
+    "campus": "본교",
+    "unvCd": "0002712",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "신한대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0002800",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "아신대학교",
+    "campus": "본교",
+    "unvCd": "0000145",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "아주대학교",
+    "campus": "본교",
+    "unvCd": "0000146",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "안양대학교",
+    "campus": "본교",
+    "unvCd": "0000147",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "안양대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000148",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "연세대학교(미래)",
+    "campus": "분교",
+    "unvCd": "0000150",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "연세대학교",
+    "campus": "본교",
+    "unvCd": "0000149",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "영남대학교",
+    "campus": "본교",
+    "unvCd": "0000151",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "영남신학대학교",
+    "campus": "본교",
+    "unvCd": "0000153",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "영산대학교",
+    "campus": "본교",
+    "unvCd": "0003193",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "영산대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0003194",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "영산선학대학교",
+    "campus": "본교",
+    "unvCd": "0000155",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "예수대학교",
+    "campus": "본교",
+    "unvCd": "0000228",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "예원예술대학교",
+    "campus": "본교",
+    "unvCd": "0000218",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "예원예술대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000219",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "용인대학교",
+    "campus": "본교",
+    "unvCd": "0000156",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "우석대학교",
+    "campus": "본교",
+    "unvCd": "0000157",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "우송대학교",
+    "campus": "본교",
+    "unvCd": "0000240",
+    "region": "대전",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "울산대학교",
+    "campus": "본교",
+    "unvCd": "0000158",
+    "region": "울산",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "원광대학교",
+    "campus": "본교",
+    "unvCd": "0000159",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "위덕대학교",
+    "campus": "본교",
+    "unvCd": "0000160",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "유원대학교",
+    "campus": "본교",
+    "unvCd": "0000154",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "을지대학교",
+    "campus": "본교",
+    "unvCd": "0000161",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "을지대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000162",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "을지대학교",
+    "campus": "제3캠퍼스",
+    "unvCd": "0002911",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "이화여자대학교",
+    "campus": "본교",
+    "unvCd": "0000163",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "인제대학교",
+    "campus": "본교",
+    "unvCd": "0000164",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "인천가톨릭대학교",
+    "campus": "본교",
+    "unvCd": "0000168",
+    "region": "인천",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "인천가톨릭대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000167",
+    "region": "인천",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "인천대학교",
+    "campus": "본교",
+    "unvCd": "0002660",
+    "region": "인천",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "인하대학교",
+    "campus": "본교",
+    "unvCd": "0000169",
+    "region": "인천",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "장로회신학대학교",
+    "campus": "본교",
+    "unvCd": "0000170",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "전남대학교",
+    "campus": "본교",
+    "unvCd": "0000023",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "전남대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000024",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "전북대학교",
+    "campus": "본교",
+    "unvCd": "0000025",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "전주교육대학교",
+    "campus": "본교",
+    "unvCd": "0000258",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "전주대학교",
+    "campus": "본교",
+    "unvCd": "0000171",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "제주국제대학교",
+    "campus": "본교",
+    "unvCd": "0000248",
+    "region": "제주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "제주대학교",
+    "campus": "본교",
+    "unvCd": "0000027",
+    "region": "제주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "조선대학교",
+    "campus": "본교",
+    "unvCd": "0000172",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "중부대학교",
+    "campus": "본교",
+    "unvCd": "0000173",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "중앙대학교",
+    "campus": "본교",
+    "unvCd": "0000175",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "중앙대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0000174",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "중앙승가대학교",
+    "campus": "본교",
+    "unvCd": "0000177",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "중원대학교",
+    "campus": "본교",
+    "unvCd": "0000239",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "진주교육대학교",
+    "campus": "본교",
+    "unvCd": "0000260",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "차의과학대학교",
+    "campus": "본교",
+    "unvCd": "0000187",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "창신대학교",
+    "campus": "본교",
+    "unvCd": "0000249",
+    "region": "경남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "청운대학교",
+    "campus": "본교",
+    "unvCd": "0000284",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "청주교육대학교",
+    "campus": "본교",
+    "unvCd": "0000261",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "청주대학교",
+    "campus": "본교",
+    "unvCd": "0000179",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "초당대학교",
+    "campus": "본교",
+    "unvCd": "0000246",
+    "region": "전남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "총신대학교",
+    "campus": "본교",
+    "unvCd": "0000180",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "추계예술대학교",
+    "campus": "본교",
+    "unvCd": "0000181",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "춘천교육대학교",
+    "campus": "본교",
+    "unvCd": "0000262",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "충남대학교",
+    "campus": "본교",
+    "unvCd": "0000029",
+    "region": "대전",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "충북대학교",
+    "campus": "본교",
+    "unvCd": "0000030",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "칼빈대학교",
+    "campus": "본교",
+    "unvCd": "0000184",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "평택대학교",
+    "campus": "본교",
+    "unvCd": "0000186",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "포항공과대학교",
+    "campus": "본교",
+    "unvCd": "0000188",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한경국립대학교",
+    "campus": "본교",
+    "unvCd": "0000037",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한국공학대학교",
+    "campus": "본교",
+    "unvCd": "0000247",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한국교원대학교",
+    "campus": "본교",
+    "unvCd": "0000031",
+    "region": "충북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한국기술교육대학교",
+    "campus": "본교",
+    "unvCd": "0000189",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한국성서대학교",
+    "campus": "본교",
+    "unvCd": "0000191",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한국외국어대학교",
+    "campus": "본교",
+    "unvCd": "0000192",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한국체육대학교",
+    "campus": "본교",
+    "unvCd": "0000032",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한국침례신학대학교",
+    "campus": "본교",
+    "unvCd": "0000182",
+    "region": "대전",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한국항공대학교",
+    "campus": "본교",
+    "unvCd": "0000194",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한남대학교",
+    "campus": "본교",
+    "unvCd": "0000195",
+    "region": "대전",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한동대학교",
+    "campus": "본교",
+    "unvCd": "0000196",
+    "region": "경북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한라대학교",
+    "campus": "본교",
+    "unvCd": "0000197",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한림대학교",
+    "campus": "본교",
+    "unvCd": "0000198",
+    "region": "강원",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한서대학교",
+    "campus": "본교",
+    "unvCd": "0000199",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한성대학교",
+    "campus": "본교",
+    "unvCd": "0000200",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한세대학교",
+    "campus": "본교",
+    "unvCd": "0000201",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한신대학교",
+    "campus": "본교",
+    "unvCd": "0000202",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한양대학교(ERICA)",
+    "campus": "분교",
+    "unvCd": "0000204",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한양대학교",
+    "campus": "본교",
+    "unvCd": "0000203",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "한일장신대학교",
+    "campus": "본교",
+    "unvCd": "0000206",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "협성대학교",
+    "campus": "본교",
+    "unvCd": "0000207",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "호남대학교",
+    "campus": "본교",
+    "unvCd": "0000208",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "호남신학대학교",
+    "campus": "본교",
+    "unvCd": "0000209",
+    "region": "광주",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "호서대학교",
+    "campus": "본교",
+    "unvCd": "0000211",
+    "region": "충남",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "호원대학교",
+    "campus": "본교",
+    "unvCd": "0000282",
+    "region": "전북",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "홍익대학교",
+    "campus": "본교",
+    "unvCd": "0000212",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "홍익대학교",
+    "campus": "제2캠퍼스",
+    "unvCd": "0002949",
+    "region": "서울",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  },
+  {
+    "name": "화성의과학대학교",
+    "campus": "본교",
+    "unvCd": "0000233",
+    "region": "경기",
+    "type": null,
+    "competition_susi_25": null,
+    "competition_jeongsi_25": null,
+    "intake": null
+  }
+]

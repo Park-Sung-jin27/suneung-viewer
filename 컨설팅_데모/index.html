@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지니쌤 컨설팅 워크스페이스 — 데모</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__brand">
+        <div class="logo">G</div>
+        <span>지니쌤 컨설팅 워크스페이스</span>
+      </div>
+      <div class="header__meta">
+        <span class="header__chip header__chip--season">📅 9월 수시 시즌</span>
+        <span class="header__chip">학원: 지니아카데미</span>
+        <span class="header__chip">rule_version: 2027.5</span>
+      </div>
+    </header>
+
+    <div class="app">
+      <!-- ===== 좌측: 학생 컨텍스트 ===== -->
+      <aside class="sidebar">
+        <div class="student-picker">
+          <select id="student-select"></select>
+          <button id="add-student-btn" style="margin-top:8px; width:100%; padding:8px 12px; background:var(--purple-600); color:white; border:none; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;">+ 학생 추가</button>
+          <button id="delete-student-btn" style="margin-top:4px; width:100%; padding:6px 12px; background:transparent; color:var(--gray-500); border:1px solid var(--gray-300); border-radius:8px; font-size:11px; cursor:pointer;">현재 학생 삭제 (저장된 학생만)</button>
+        </div>
+        <div id="student-card"></div>
+      </aside>
+
+      <!-- ===== 학생 추가 모달 ===== -->
+      <div id="add-student-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+        <div style="background:white; border-radius:16px; padding:24px; width:520px; max-height:90vh; overflow-y:auto;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <h3 style="font-size:18px; font-weight:700;">학생 추가</h3>
+            <button id="close-modal-btn" style="background:none; border:none; font-size:20px; cursor:pointer; color:var(--gray-500);">✕</button>
+          </div>
+          <form id="add-student-form" style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+              <label style="font-size:11px; color:var(--gray-700);">이름 <input name="name" required style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;" placeholder="홍길동"/></label>
+              <label style="font-size:11px; color:var(--gray-700);">학년
+                <select name="grade" style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;">
+                  <option>고3</option><option>고2</option><option>고1</option><option>N수생</option>
+                </select>
+              </label>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+              <label style="font-size:11px; color:var(--gray-700);">계열
+                <select name="track" style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;">
+                  <option value="자연">자연</option>
+                  <option value="인문">인문</option>
+                </select>
+              </label>
+              <label style="font-size:11px; color:var(--gray-700);">내신 (1~9) <input name="naesin" type="number" step="0.01" min="1" max="9" required style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;" placeholder="2.8"/></label>
+            </div>
+
+            <div style="font-size:11px; color:var(--gray-500); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-top:8px;">수능 점수 (직전 모평 기준)</div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
+              <label style="font-size:11px;">국어 표점 <input name="kor_std" type="number" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="130"/></label>
+              <label style="font-size:11px;">국어 백분위 <input name="kor_pct" type="number" min="0" max="100" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="92"/></label>
+              <label style="font-size:11px;">국어 등급 <input name="kor_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="2"/></label>
+              <label style="font-size:11px;">한국사 등급 <input name="hist_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="3"/></label>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
+              <label style="font-size:11px;">수학 선택
+                <select name="math_elec" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;">
+                  <option>미적분</option><option>확률과통계</option><option>기하</option>
+                </select>
+              </label>
+              <label style="font-size:11px;">수학 표점 <input name="math_std" type="number" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="135"/></label>
+              <label style="font-size:11px;">수학 백분위 <input name="math_pct" type="number" min="0" max="100" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="95"/></label>
+              <label style="font-size:11px;">수학 등급 <input name="math_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="2"/></label>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+              <label style="font-size:11px;">영어 등급 <input name="eng_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="2"/></label>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
+              <label style="font-size:11px;">탐구1 과목 <input name="t1_subject" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="물리1"/></label>
+              <label style="font-size:11px;">탐구1 표점 <input name="t1_std" type="number" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="65"/></label>
+              <label style="font-size:11px;">탐구1 백분위 <input name="t1_pct" type="number" min="0" max="100" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="88"/></label>
+              <label style="font-size:11px;">탐구1 등급 <input name="t1_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="3"/></label>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
+              <label style="font-size:11px;">탐구2 과목 <input name="t2_subject" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="화학1"/></label>
+              <label style="font-size:11px;">탐구2 표점 <input name="t2_std" type="number" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="67"/></label>
+              <label style="font-size:11px;">탐구2 백분위 <input name="t2_pct" type="number" min="0" max="100" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="90"/></label>
+              <label style="font-size:11px;">탐구2 등급 <input name="t2_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="2"/></label>
+            </div>
+
+            <div style="font-size:11px; color:var(--gray-500); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-top:8px;">희망</div>
+
+            <label style="font-size:11px;">희망 계열 (쉼표 구분)
+              <input name="wish_fields" required style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;" placeholder="공학, 자연과학 (선택: 경영, 경제, 심리, IT, 의학, 약학, 교육, 어문, 사회 등)"/>
+            </label>
+            <label style="font-size:11px;">희망 지역 (쉼표 구분)
+              <input name="wish_regions" required style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;" placeholder="서울, 수도권"/>
+            </label>
+
+            <button type="submit" style="margin-top:8px; padding:10px; background:var(--purple-600); color:white; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer;">학생 저장 + 즉시 시나리오 산출</button>
+            <div style="font-size:10px; color:var(--gray-500); text-align:center;">브라우저 localStorage 저장. 다른 PC·시크릿창에서는 보이지 않음.</div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ===== 메인: 5블록 ===== -->
+      <main class="main">
+        <!-- 데이터 잠정 배너 -->
+        <div class="disclaimer">
+          ⚠️ 데이터 잠정: 환산공식 30개 대학 / 시험_변환표 작년 11월 수능 기준.
+          6월 모평 후 갱신 권장.
+        </div>
+
+        <!-- KPI 메트릭 -->
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric__label">담당 학생</div>
+            <div class="metric__val">
+              3<span
+                style="
+                  font-size: 14px;
+                  color: var(--gray-500);
+                  font-weight: 500;
+                "
+              >
+                명</span
+              >
+            </div>
+            <div class="metric__delta">데모용 샘플</div>
+          </div>
+          <div class="metric">
+            <div class="metric__label">시나리오 산출</div>
+            <div class="metric__val" id="m-scenario-count">—</div>
+            <div class="metric__delta">자동 매칭 완료</div>
+          </div>
+          <div class="metric">
+            <div class="metric__label">균형권 학과</div>
+            <div class="metric__val" id="m-balanced-count">—</div>
+            <div class="metric__delta">50% 구간</div>
+          </div>
+          <div class="metric">
+            <div class="metric__label">데이터 신뢰도</div>
+            <div class="metric__val">잠정</div>
+            <div class="metric__delta" style="color: var(--orange-600)">
+              검증 필요 30/220
+            </div>
+          </div>
+        </div>
+
+        <!-- 블록 1: 수시 시나리오 3안 (메인 - 9월 시즌) -->
+        <div class="section">
+          <div class="section__title">
+            수시 시나리오 3안
+            <span class="section__title-tag">9월 시즌 · 자동 산출</span>
+            <span class="section__title-tag" style="background:var(--green-100); color:var(--green-600);">메인</span>
+          </div>
+          <div class="scenarios" id="susi-grid"></div>
+        </div>
+
+        <!-- 블록 2: 정시 백업안 (보조) -->
+        <div class="section">
+          <div class="section__title">
+            정시 백업안
+            <span class="section__title-tag">잠정 · 6월 모평 후 갱신</span>
+          </div>
+          <div class="scenarios" id="jeongsi-grid"></div>
+        </div>
+
+        <!-- 블록 3 + 4: 균형안 근거 + 리스크 -->
+        <div class="section">
+          <div class="row-2">
+            <div class="panel panel--rationale">
+              <div class="panel__title">📌 수시 균형안 근거</div>
+              <div id="rationale-body"></div>
+            </div>
+            <div class="panel panel--risk">
+              <div class="panel__title">⚠️ 리스크 + 데이터 신뢰도</div>
+              <ul class="risk-list" id="risk-list"></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 블록 5: 5~9년 추이 그래프 -->
+        <div class="section">
+          <div class="section__title">
+            학과별 다년 추이
+            <span class="section__title-tag">가천대 9년치 (2017~2025) · 확장 예정</span>
+          </div>
+          <div id="trend-panel"></div>
+        </div>
+
+        <!-- 블록 4 + 5: 학부모 리포트 + 원장 스크립트 -->
+        <div class="section">
+          <div class="row-2-equal">
+            <div class="parent-report" id="parent-report"></div>
+            <div class="director-script" id="director-script"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/trend_data.js"></script>
+    <script src="js/scenario_engine.js"></script>
+    <script>
+      // ===== 데이터 로드 (window.DEMO_DATA) =====
+      let STATE = {
+        data: null,
+        students: [],
+        selected: null,
+      };
+
+      function loadAll() {
+        const D = window.DEMO_DATA;
+        if (!D) throw new Error("DEMO_DATA 미로드 — js/data.js 확인");
+        STATE.data = {
+          universities: D.universities,
+          formulas: D.formulas,
+          jeongsi_cuts: D.jeongsi_cutoffs,
+        };
+        STATE.students = D.students;
+        const students = D.students;
+
+        // 학생 picker 채우기
+        const sel = document.getElementById("student-select");
+        students.forEach((s, i) => {
+          const opt = document.createElement("option");
+          opt.value = i;
+          opt.textContent = `${s.name} (${s.grade}, ${s.track}, 내신 ${s.내신})${s.이탈위험 ? " ⚠️" : ""}`;
+          sel.appendChild(opt);
+        });
+        sel.addEventListener("change", (e) => render(parseInt(e.target.value)));
+
+        // localStorage 저장 학생 로드 + picker 갱신
+        loadSavedStudents();
+        bindStudentForm();
+
+        render(0);
+      }
+
+      // ===== localStorage 학생 관리 =====
+      const LS_KEY = "consulting_demo_students_v1";
+
+      function getSavedStudents() {
+        try {
+          const raw = localStorage.getItem(LS_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch (e) { return []; }
+      }
+
+      function setSavedStudents(arr) {
+        localStorage.setItem(LS_KEY, JSON.stringify(arr));
+      }
+
+      function loadSavedStudents() {
+        const saved = getSavedStudents();
+        saved.forEach((s) => STATE.students.push(s));
+        rebuildPicker();
+      }
+
+      function rebuildPicker() {
+        const sel = document.getElementById("student-select");
+        const cur = sel.value;
+        sel.innerHTML = "";
+        STATE.students.forEach((s, i) => {
+          const opt = document.createElement("option");
+          opt.value = i;
+          const tag = s._saved ? " 💾" : "";
+          opt.textContent = `${s.name} (${s.grade}, ${s.track}, 내신 ${s.내신})${s.이탈위험 ? " ⚠️" : ""}${tag}`;
+          sel.appendChild(opt);
+        });
+        if (cur) sel.value = cur;
+      }
+
+      function bindStudentForm() {
+        const btn = document.getElementById("add-student-btn");
+        const modal = document.getElementById("add-student-modal");
+        const close = document.getElementById("close-modal-btn");
+        const form = document.getElementById("add-student-form");
+        const delBtn = document.getElementById("delete-student-btn");
+
+        btn.addEventListener("click", () => { modal.style.display = "flex"; });
+        close.addEventListener("click", () => { modal.style.display = "none"; });
+        modal.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const f = new FormData(form);
+          const num = (k) => { const v = f.get(k); return v === "" || v == null ? null : Number(v); };
+          const str = (k) => { const v = f.get(k); return v == null ? "" : String(v).trim(); };
+          const student = {
+            id: "U" + Date.now(),
+            name: str("name"),
+            grade: str("grade") || "고3",
+            track: str("track") || "자연",
+            scores: {
+              "국어": { std: num("kor_std"), percentile: num("kor_pct"), grade: num("kor_grade") },
+              "수학": { elective: str("math_elec") || "미적분", std: num("math_std"), percentile: num("math_pct"), grade: num("math_grade") },
+              "영어": { grade: num("eng_grade") },
+              "탐구1": { subject: str("t1_subject") || "탐구1", std: num("t1_std"), percentile: num("t1_pct"), grade: num("t1_grade") },
+              "탐구2": { subject: str("t2_subject") || "탐구2", std: num("t2_std"), percentile: num("t2_pct"), grade: num("t2_grade") },
+              "한국사": { grade: num("hist_grade") },
+            },
+            "내신": num("naesin"),
+            "수상": [],
+            "희망_계열": str("wish_fields").split(",").map((x) => x.trim()).filter(Boolean),
+            "희망_지역": str("wish_regions").split(",").map((x) => x.trim()).filter(Boolean),
+            "제약": [],
+            "이탈위험": false,
+            "마지막상담": new Date().toISOString().slice(0, 10),
+            _saved: true,
+          };
+
+          // localStorage 저장
+          const saved = getSavedStudents();
+          saved.push(student);
+          setSavedStudents(saved);
+
+          // STATE 추가 + picker 갱신
+          STATE.students.push(student);
+          rebuildPicker();
+
+          // 새 학생 선택 + 시나리오 산출
+          const sel = document.getElementById("student-select");
+          sel.value = STATE.students.length - 1;
+          render(STATE.students.length - 1);
+
+          // 모달 닫기 + 폼 리셋
+          modal.style.display = "none";
+          form.reset();
+        });
+
+        delBtn.addEventListener("click", () => {
+          const idx = parseInt(document.getElementById("student-select").value);
+          const s = STATE.students[idx];
+          if (!s || !s._saved) {
+            alert("이 학생은 샘플 데이터입니다. 저장된 학생만 삭제 가능.");
+            return;
+          }
+          if (!confirm(`${s.name} 학생을 삭제하시겠습니까?`)) return;
+          // localStorage 동기화
+          const saved = getSavedStudents().filter((x) => x.id !== s.id);
+          setSavedStudents(saved);
+          // STATE 동기화
+          STATE.students = STATE.students.filter((x) => x.id !== s.id);
+          rebuildPicker();
+          render(0);
+        });
+      }
+
+      // ===== 학생 카드 렌더 =====
+      function renderStudentCard(student) {
+        const sc = student.scores;
+        const wishTags = (student.희망_계열 || [])
+          .map((f) => `<span class="tag">${f}</span>`)
+          .join("");
+        const constraintTags = (student.제약 || [])
+          .map((c) => `<span class="tag tag--gray">${c}</span>`)
+          .join("");
+        const awardTags = (student.수상 || [])
+          .map((a) => `<span class="tag tag--gray">${a}</span>`)
+          .join("");
+
+        return `
+    <div class="student-card">
+      <div class="student-card__name">${student.name} ${student.이탈위험 ? '<span style="color:var(--red-600); font-size:11px;">⚠️ 이탈위험</span>' : ""}</div>
+      <div class="student-card__meta">${student.grade} · ${student.track} · 내신 ${student.내신} · 마지막상담 ${student.마지막상담}</div>
+
+      <h4>📊 수능 (잠정)</h4>
+      <div class="score-grid">
+        <div class="score-item"><div class="score-item__label">국어</div><div class="score-item__val">${sc.국어.std} / ${sc.국어.percentile}%</div></div>
+        <div class="score-item"><div class="score-item__label">수학 (${sc.수학.elective})</div><div class="score-item__val">${sc.수학.std} / ${sc.수학.percentile}%</div></div>
+        <div class="score-item"><div class="score-item__label">영어</div><div class="score-item__val">${sc.영어.grade}등급</div></div>
+        <div class="score-item"><div class="score-item__label">한국사</div><div class="score-item__val">${sc.한국사.grade}등급</div></div>
+        <div class="score-item"><div class="score-item__label">${sc.탐구1.subject}</div><div class="score-item__val">${sc.탐구1.std} / ${sc.탐구1.percentile}%</div></div>
+        <div class="score-item"><div class="score-item__label">${sc.탐구2.subject}</div><div class="score-item__val">${sc.탐구2.std} / ${sc.탐구2.percentile}%</div></div>
+      </div>
+
+      <h4>🎯 희망 계열</h4>
+      <div class="tag-list">${wishTags || '<span class="tag tag--gray">미설정</span>'}</div>
+
+      <h4>📍 희망 지역</h4>
+      <div class="tag-list">${(student.희망_지역 || []).map((r) => `<span class="tag">${r}</span>`).join("")}</div>
+
+      <h4>🚧 제약</h4>
+      <div class="tag-list">${constraintTags || '<span class="tag tag--gray">없음</span>'}</div>
+
+      <h4>🏆 수상·활동</h4>
+      <div class="tag-list">${awardTags || '<span class="tag tag--gray">없음</span>'}</div>
+    </div>
+  `;
+      }
+
+      // ===== 시나리오 3안 렌더 =====
+      function renderScenarios(picks, scenarios) {
+        const card = (key, label, badge, picks_arr, isRecommended) => {
+          const total = scenarios[key] ? scenarios[key].length : 0;
+          const items = picks_arr
+            .map(
+              (p, i) => `
+      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}">
+        <div class="name">${p.univ} · ${p.dept}</div>
+        <div class="meta">컷 ${p.cut70} | 학생 ${p.student_score} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${p.group || "정시"} | 경쟁률 ${p.competition || "—"}</div>
+      </li>
+    `,
+            )
+            .join("");
+
+          const probText =
+            key === "safe"
+              ? "약 80%"
+              : key === "balanced"
+                ? "약 50%"
+                : "약 20%";
+          return `
+      <div class="scenario-card ${isRecommended ? "scenario-card--recommended" : ""}">
+        ${isRecommended ? '<span class="scenario-card__rec">★ 추천</span>' : ""}
+        <span class="scenario-card__badge badge--${key}">${label} · ${probText}</span>
+        <div class="scenario-card__count">${total}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 학과</span></div>
+        <div class="scenario-card__sub">매칭된 학과 수 (희망/지역 필터 적용)</div>
+        <ul class="scenario-list">
+          ${items || '<li class="scenario-list__empty">매칭 없음 — 조건 완화 권장</li>'}
+        </ul>
+      </div>
+    `;
+        };
+
+        // 정시 매칭 0건 시 자동 라벨
+        const j_total = scenarios.safe.length + scenarios.balanced.length + scenarios.reach.length;
+        if (j_total === 0) {
+          document.getElementById("jeongsi-grid").innerHTML = `
+      <div style="grid-column: 1 / -1; background: var(--orange-100); color: var(--orange-600); padding: 24px; border-radius: 12px; text-align: center; font-size: 14px; font-weight: 500;">
+        ⚠️ 정시 매칭 없음 — 현재 학생 점수로는 환산공식 검증된 17개 대학에서 정시 균형권이 잡히지 않음.<br/>
+        <span style="font-size:12px; color:var(--gray-700);">→ 수시 우선 전략 권장. 6월 모평 후 백분위 확정 시 환산공식 확장 (220개 대학) 으로 재산정 가능.</span>
+      </div>`;
+        } else {
+          document.getElementById("jeongsi-grid").innerHTML =
+            card("safe", "안전", "safe", picks.safe, false) +
+            card("balanced", "균형", "balanced", picks.balanced, true) +
+            card("reach", "도전", "reach", picks.reach, false);
+        }
+
+        document.getElementById("m-scenario-count").innerHTML =
+          `${scenarios.safe.length + scenarios.balanced.length + scenarios.reach.length}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 학과</span>`;
+        document.getElementById("m-balanced-count").innerHTML =
+          `${scenarios.balanced.length}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 학과</span>`;
+      }
+
+      // ===== 균형안 근거 =====
+      function renderRationale(picks) {
+        const b = picks.balanced[0];
+        if (!b) {
+          document.getElementById("rationale-body").innerHTML = `
+      <div class="rationale-body">균형권 학과 없음. 희망 계열/지역 조건을 완화하거나 6월 모평 후 재산정 필요.</div>
+    `;
+          return;
+        }
+        const rationale = ScenarioEngine.generateBalancedRationale(b);
+        document.getElementById("rationale-body").innerHTML = `
+    <div class="rationale-body">${rationale}</div>
+    <div class="rationale-breakdown">
+      <div class="rationale-breakdown__item"><div class="val">${b.breakdown.국어}</div><div class="label">국어</div></div>
+      <div class="rationale-breakdown__item"><div class="val">${b.breakdown.수학}</div><div class="label">수학</div></div>
+      <div class="rationale-breakdown__item"><div class="val">${b.breakdown.탐구}</div><div class="label">탐구</div></div>
+      <div class="rationale-breakdown__item"><div class="val">${b.breakdown.영어}</div><div class="label">영어</div></div>
+      <div class="rationale-breakdown__item"><div class="val">${b.breakdown.한국사}</div><div class="label">한국사</div></div>
+    </div>
+    <div style="margin-top:10px; font-size:11px; color:var(--gray-500);">출처: ${b.formula_source || "잠정"} · 만점 ${b.max_score}</div>
+  `;
+      }
+
+      // ===== 리스크 =====
+      function renderRisks(scenarios, student) {
+        const risks = ScenarioEngine.generateRisks(scenarios, student);
+        document.getElementById("risk-list").innerHTML = risks
+          .map((r) => {
+            const cls = r.startsWith("ℹ️") ? "risk-info" : "";
+            return `<li class="${cls}">${r}</li>`;
+          })
+          .join("");
+      }
+
+      // ===== 학부모 리포트 =====
+      function renderParentReport(picks, student) {
+        const p = ScenarioEngine.generateParentSummary(picks, student);
+        const opt = (key, label) => {
+          const o = p.three_options[key];
+          if (!o)
+            return `<div class="parent-option parent-option--${key === "balanced" ? "balanced" : ""}">
+      <div class="parent-option__label">${label}</div>
+      <div class="parent-option__name" style="color:var(--gray-500);">미확보</div>
+    </div>`;
+          return `<div class="parent-option ${key === "balanced" ? "parent-option--balanced" : ""}">
+      <div class="parent-option__label">${label}</div>
+      <div class="parent-option__name">${o.name}</div>
+      <div class="parent-option__prob">${o.prob}</div>
+    </div>`;
+        };
+
+        document.getElementById("parent-report").innerHTML = `
+    <div class="parent-report__brand">📋 학부모 1페이지 요약</div>
+    <div class="parent-report__title">${p.headline}</div>
+    <div class="parent-options">
+      ${opt("safe", "안전")}
+      ${opt("balanced", "균형")}
+      ${opt("reach", "도전")}
+    </div>
+    <div class="parent-section parent-section--do">
+      <h5>✓ 이번 주 확인할 것</h5>
+      <ul>${p.this_week_do.map((x) => `<li>${x}</li>`).join("")}</ul>
+    </div>
+    <div class="parent-section parent-section--dont">
+      <h5>✕ 하지 말아야 할 것</h5>
+      <ul>${p.this_week_dont.map((x) => `<li>${x}</li>`).join("")}</ul>
+    </div>
+    <div style="margin-top:14px; padding-top:10px; border-top:1px solid var(--gray-100); font-size:11px; color:var(--gray-500);">
+      다음 상담: ${p.next_meeting} · ${p.season_label}
+    </div>
+  `;
+      }
+
+      // ===== 원장 3문장 스크립트 =====
+      function renderDirectorScript(picks, student) {
+        const lines = ScenarioEngine.generateDirectorScript(picks, student);
+        document.getElementById("director-script").innerHTML = `
+    <div class="director-script__title">🎤 원장 상담 스크립트 (3문장)</div>
+    <ol>
+      ${lines.map((l) => `<li>${l}</li>`).join("")}
+    </ol>
+    <div style="margin-top:14px; font-size:11px; opacity:0.7;">
+      ※ 상담 중 그대로 읽어도 작동 · 학생 이름/숫자만 자동 치환됨
+    </div>
+  `;
+      }
+
+      // ===== 수시 시나리오 3안 렌더 =====
+      function renderSusiScenarios(picks, scenarios) {
+        const card = (key, label, picks_arr, isRecommended) => {
+          const total = scenarios[key] ? scenarios[key].length : 0;
+          const items = picks_arr
+            .map(
+              (p, i) => `
+      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}">
+        <div class="name">${p.univ} · ${p.dept}</div>
+        <div class="meta">컷 ${p.cut70_grade}등급 | 학생 ${p.student_grade} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${p["전형분류"] || "수시"} | 경쟁률 ${p.competition || "—"}</div>
+      </li>
+    `,
+            )
+            .join("");
+          const probText = key === "safe" ? "약 80%" : key === "balanced" ? "약 50%" : "약 20%";
+          return `
+      <div class="scenario-card ${isRecommended ? "scenario-card--recommended" : ""}">
+        ${isRecommended ? '<span class="scenario-card__rec">★ 추천</span>' : ""}
+        <span class="scenario-card__badge badge--${key}">${label} · ${probText}</span>
+        <div class="scenario-card__count">${total}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 학과</span></div>
+        <div class="scenario-card__sub">희망/지역 필터 + 특별전형 제외</div>
+        <ul class="scenario-list">
+          ${items || '<li class="scenario-list__empty">매칭 없음 — 조건 완화 권장</li>'}
+        </ul>
+      </div>
+    `;
+        };
+        document.getElementById("susi-grid").innerHTML =
+          card("safe", "안전", picks.safe, false) +
+          card("balanced", "균형", picks.balanced, true) +
+          card("reach", "도전", picks.reach, false);
+        const susiTotal = scenarios.safe.length + scenarios.balanced.length + scenarios.reach.length;
+        document.getElementById("m-scenario-count").innerHTML =
+          `${susiTotal}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 수시 학과</span>`;
+        document.getElementById("m-balanced-count").innerHTML =
+          `${scenarios.balanced.length}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 수시 학과</span>`;
+      }
+
+      // ===== 수시 균형안 근거 =====
+      function renderSusiRationale(picks) {
+        const b = picks.balanced[0];
+        if (!b) {
+          document.getElementById("rationale-body").innerHTML = `<div class="rationale-body">수시 균형권 학과 없음. 희망 계열/지역 조건 완화 권장.</div>`;
+          return;
+        }
+        const rationale = ScenarioEngine.generateSusiRationale(b);
+        document.getElementById("rationale-body").innerHTML = `
+    <div class="rationale-body">${rationale}</div>
+    <div style="margin-top:12px; display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; font-size:11px;">
+      <div class="rationale-breakdown__item"><div class="val">${b.cut70_grade}</div><div class="label">작년 70cut</div></div>
+      <div class="rationale-breakdown__item"><div class="val">${b.student_grade}</div><div class="label">학생 내신</div></div>
+      <div class="rationale-breakdown__item"><div class="val">${b.capacity}</div><div class="label">모집인원</div></div>
+      <div class="rationale-breakdown__item"><div class="val">${b.competition || "—"}</div><div class="label">경쟁률</div></div>
+    </div>
+    <div style="margin-top:10px; font-size:11px; color:var(--gray-500);">전형: ${b["전형"] || "—"} · 출처: ${b.source || "—"}</div>`;
+      }
+
+      // ===== 통합 학부모 리포트 (수시 + 정시) =====
+      function renderCombinedParentReport(jeongsi_picks, susi_picks, student) {
+        const p = ScenarioEngine.generateCombinedParentSummary(jeongsi_picks, susi_picks, student);
+        const opt = (data, key, label, isBalanced) => {
+          const o = data ? data[key] : null;
+          if (!o) return `<div class="parent-option ${isBalanced ? "parent-option--balanced" : ""}"><div class="parent-option__label">${label}</div><div class="parent-option__name" style="color:var(--gray-500);">미확보</div></div>`;
+          return `<div class="parent-option ${isBalanced ? "parent-option--balanced" : ""}"><div class="parent-option__label">${label}</div><div class="parent-option__name">${o.name}</div><div class="parent-option__prob">${o.type ? o.type + " · " : ""}${o.prob}</div></div>`;
+        };
+        document.getElementById("parent-report").innerHTML = `
+    <div class="parent-report__brand">📋 학부모 1페이지 요약 — ${p.season_label}</div>
+    <div class="parent-report__title">${p.headline}</div>
+    <div style="font-size:11px; color:var(--purple-700); font-weight:700; margin:8px 0 6px;">수시 3안</div>
+    <div class="parent-options">
+      ${opt(p.susi_picks, "safe", "안전", false)}
+      ${opt(p.susi_picks, "balanced", "균형", true)}
+      ${opt(p.susi_picks, "reach", "도전", false)}
+    </div>
+    <div style="font-size:11px; color:var(--gray-500); font-weight:700; margin:12px 0 6px;">정시 백업안</div>
+    <div class="parent-options">
+      ${opt(p.jeongsi_picks, "safe", "안전", false)}
+      ${opt(p.jeongsi_picks, "balanced", "균형", true)}
+      ${opt(p.jeongsi_picks, "reach", "도전", false)}
+    </div>
+    <div class="parent-section parent-section--do"><h5>✓ 이번 주 확인할 것</h5><ul>${p.this_week_do.map((x) => `<li>${x}</li>`).join("")}</ul></div>
+    <div class="parent-section parent-section--dont"><h5>✕ 하지 말아야 할 것</h5><ul>${p.this_week_dont.map((x) => `<li>${x}</li>`).join("")}</ul></div>
+    <div style="margin-top:14px; padding-top:10px; border-top:1px solid var(--gray-100); font-size:11px; color:var(--gray-500);">다음 상담: ${p.next_meeting}</div>`;
+      }
+
+      // ===== 통합 원장 스크립트 =====
+      function renderCombinedDirectorScript(jeongsi_picks, susi_picks, student) {
+        const lines = ScenarioEngine.generateCombinedDirectorScript(jeongsi_picks, susi_picks, student);
+        document.getElementById("director-script").innerHTML = `
+    <div class="director-script__title">🎤 원장 상담 스크립트 (수시 + 정시 통합)</div>
+    <ol>${lines.map((l) => `<li>${l}</li>`).join("")}</ol>
+    <div style="margin-top:14px; font-size:11px; opacity:0.7;">※ 상담 중 그대로 읽어도 작동 · 학생 이름/숫자만 자동 치환됨</div>`;
+      }
+
+      // ===== 5년 추이 그래프 렌더 =====
+      let _trendCharts = [];
+      function renderTrend(jeongsi_picks, susi_picks) {
+        // 기존 차트 정리
+        _trendCharts.forEach((c) => c.destroy());
+        _trendCharts = [];
+
+        const panel = document.getElementById("trend-panel");
+        const T = window.TREND_DATA || {};
+
+        // 후보: 정시·수시 picks 의 safe/balanced/reach 전체 (각 최대 5개)
+        const candidates = [];
+        const addCands = (picks, type_label) => {
+          if (!picks) return;
+          ["balanced", "safe", "reach"].forEach((bucket) => {
+            (picks[bucket] || []).forEach((p) => {
+              candidates.push({ pick: p, label: `${type_label} ${bucket === "balanced" ? "균형" : bucket === "safe" ? "안전" : "도전"}`, type: type_label });
+            });
+          });
+        };
+        addCands(susi_picks, "수시");
+        addCands(jeongsi_picks, "정시");
+
+        // 매칭 시도 (전 후보 순회)
+        const matched = [];
+        const seen = new Set();
+        candidates.forEach((c) => {
+          const tryKeys = [
+            `${c.pick.univ}|${c.pick.dept}|${c.type}`,
+            `${c.pick.univ}학교|${c.pick.dept}|${c.type}`,
+            `${c.pick.univ.replace("대", "대학교")}|${c.pick.dept}|${c.type}`,
+          ];
+          let found = null;
+          for (const k of tryKeys) {
+            if (T[k] && !seen.has(k)) { found = { key: k, data: T[k] }; seen.add(k); break; }
+          }
+          if (found) matched.push({ ...c, ...found });
+        });
+        // 최대 2개만 표시
+        const matched_top = matched.slice(0, 2);
+        const unmatched = matched.length === 0 ? candidates.slice(0, 3).map((c) => ({ ...c })) : [];
+
+        if (matched_top.length === 0) {
+          panel.innerHTML = `
+      <div style="background: var(--gray-100); padding: 20px; border-radius: 12px; text-align: center; color: var(--gray-500); font-size: 13px;">
+        📊 이 학생 추천 학과 중 다년치 데이터 있는 학과 없음.<br/>
+        <span style="font-size:11px;">현재 가천대 9년치만 보유. 광운·숙명·경기·경북·동국·SKY 확장 예정 (N 작업).</span>
+      </div>`;
+          return;
+        }
+
+        // 매칭된 학과별 차트 카드 그리기
+        let html = '<div style="display:grid; grid-template-columns: repeat(' + Math.min(matched_top.length, 2) + ', 1fr); gap: 16px;">';
+        matched_top.forEach((m, idx) => {
+          const cid = `trend-chart-${idx}`;
+          html += `
+      <div class="panel">
+        <div class="panel__title">${m.label} — ${m.pick.univ} ${m.pick.dept} <span style="font-size:11px; color:var(--gray-500); font-weight:400;">(${m.data.length}년치)</span></div>
+        <canvas id="${cid}" height="180"></canvas>
+        <div style="margin-top:10px; font-size:11px; color:var(--gray-500);">
+          ${m.data.length}년 평균 cut70: ${(m.data.reduce((s, x) => s + (x.cut70 || 0), 0) / m.data.length).toFixed(1)} ·
+          최신(${m.data[m.data.length - 1].year}): ${m.data[m.data.length - 1].cut70}
+        </div>
+      </div>`;
+        });
+        html += '</div>';
+        // 매칭된 학과 외 추가 카운트 표시
+        if (matched.length > matched_top.length) {
+          html += `<div style="margin-top:8px; font-size:11px; color:var(--gray-500); text-align:right;">+${matched.length - matched_top.length}개 학과 다년치 데이터 추가 보유</div>`;
+        }
+        panel.innerHTML = html;
+
+        // 차트 그리기
+        matched_top.forEach((m, idx) => {
+          const cid = `trend-chart-${idx}`;
+          const ctx = document.getElementById(cid);
+          if (!ctx) return;
+          const chart = new Chart(ctx, {
+            type: "line",
+            data: {
+              labels: m.data.map((d) => d.year + "학년도"),
+              datasets: [
+                {
+                  label: "cut70 환산점수",
+                  data: m.data.map((d) => d.cut70),
+                  borderColor: "#7c3aed",
+                  backgroundColor: "rgba(124, 58, 237, 0.1)",
+                  tension: 0.3,
+                  yAxisID: "y",
+                },
+                {
+                  label: "경쟁률",
+                  data: m.data.map((d) => d.competition),
+                  borderColor: "#d97706",
+                  backgroundColor: "rgba(217, 119, 6, 0.1)",
+                  tension: 0.3,
+                  yAxisID: "y1",
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { position: "bottom", labels: { font: { size: 11 } } },
+                tooltip: { mode: "index", intersect: false },
+              },
+              scales: {
+                y: {
+                  type: "linear",
+                  position: "left",
+                  title: { display: true, text: "cut70", font: { size: 10 } },
+                  ticks: { font: { size: 10 } },
+                },
+                y1: {
+                  type: "linear",
+                  position: "right",
+                  title: { display: true, text: "경쟁률", font: { size: 10 } },
+                  ticks: { font: { size: 10 } },
+                  grid: { drawOnChartArea: false },
+                },
+                x: { ticks: { font: { size: 10 } } },
+              },
+            },
+          });
+          _trendCharts.push(chart);
+        });
+      }
+
+      // ===== 메인 렌더 =====
+      function render(idx) {
+        const student = STATE.students[idx];
+        STATE.selected = student;
+        document.getElementById("student-card").innerHTML =
+          renderStudentCard(student);
+
+        // 정시
+        const j_scenarios = ScenarioEngine.generateScenarios(student, STATE.data);
+        const j_picks = ScenarioEngine.pickRecommendation(j_scenarios);
+        renderScenarios(j_picks, j_scenarios);
+
+        // 수시
+        const s_scenarios = ScenarioEngine.generateSusiScenarios(student, {
+          universities: STATE.data.universities,
+          susi_cutoffs: window.DEMO_DATA.susi_cutoffs,
+        });
+        const s_picks = ScenarioEngine.pickSusiRecommendation(s_scenarios);
+        renderSusiScenarios(s_picks, s_scenarios);
+
+        // 근거 + 리스크 (수시 기준)
+        renderSusiRationale(s_picks);
+        const combined_risk_obj = {
+          balanced: s_scenarios.balanced.concat(j_scenarios.balanced),
+          safe: s_scenarios.safe.concat(j_scenarios.safe),
+          reach: s_scenarios.reach.concat(j_scenarios.reach),
+        };
+        renderRisks(combined_risk_obj, student);
+
+        // 통합 리포트 + 스크립트
+        renderCombinedParentReport(j_picks, s_picks, student);
+        renderCombinedDirectorScript(j_picks, s_picks, student);
+
+        // 5년 추이 그래프
+        renderTrend(j_picks, s_picks);
+      }
+
+      // 부트
+      try {
+        loadAll();
+      } catch (e) {
+        document.body.innerHTML = `<div style="padding:40px;">로드 실패: ${e.message}</div>`;
+        console.error(e);
+      }
+    </script>
+  </body>
+</html>

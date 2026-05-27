@@ -1,0 +1,770 @@
+[
+  {
+    "univ": "서울대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 33.3,
+      "수학": 40,
+      "영어": 0,
+      "탐구": 26.7,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "표점"
+    },
+    "english_grade_table": [0, -0.5, -1, -1.5, -2, -2.5, -3, -3.5, -4],
+    "korean_history_grade_table": [0, 0, 0, -0.4, -0.8, -1.2, -1.6, -2, -2.4],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "감점방식",
+    "max_score": 1200,
+    "source": "잠정-검증필요"
+  },
+  {
+    "univ": "서울대학교",
+    "campus": "본교",
+    "track": "자연",
+    "weights": {
+      "국어": 33.3,
+      "수학": 40,
+      "영어": 0,
+      "탐구": 26.7,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "표점"
+    },
+    "english_grade_table": [0, -0.5, -1, -1.5, -2, -2.5, -3, -3.5, -4],
+    "korean_history_grade_table": [0, 0, 0, -0.4, -0.8, -1.2, -1.6, -2, -2.4],
+    "math_constraint": "미적·기하 필수",
+    "explore_constraint": "과탐 필수",
+    "bonus": "과탐2 가산",
+    "max_score": 1200,
+    "source": "잠정"
+  },
+  {
+    "univ": "연세대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 33.3,
+      "수학": 33.3,
+      "영어": 0,
+      "탐구": 33.3,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 95, 87.5, 75, 60, 40, 25, 12.5, 5],
+    "korean_history_grade_table": [10, 10, 10, 10, 10, 9, 8, 7, 6],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "2025 ksat PDF"
+  },
+  {
+    "univ": "연세대학교",
+    "campus": "본교",
+    "track": "자연",
+    "weights": {
+      "국어": 22.2,
+      "수학": 33.3,
+      "영어": 0,
+      "탐구": 44.4,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 95, 87.5, 75, 60, 40, 25, 12.5, 5],
+    "korean_history_grade_table": [10, 10, 10, 10, 10, 9, 8, 7, 6],
+    "math_constraint": "미적·기하",
+    "explore_constraint": "과탐",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "2025 ksat PDF"
+  },
+  {
+    "univ": "고려대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 35.7,
+      "수학": 35.7,
+      "영어": 0,
+      "탐구": 28.6,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [200, 196, 188, 178, 165, 140, 80, 40, 0],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "고려대학교",
+    "campus": "본교",
+    "track": "자연",
+    "weights": {
+      "국어": 31.3,
+      "수학": 37.5,
+      "영어": 0,
+      "탐구": 31.3,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [200, 196, 188, 178, 165, 140, 80, 40, 0],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "미적·기하",
+    "explore_constraint": "과탐",
+    "bonus": "과탐2 가산3%",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "서강대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 36.7,
+      "수학": 43.3,
+      "영어": 0,
+      "탐구": 20,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 99, 98, 97, 96, 95, 94, 93, 92],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "서강대학교",
+    "campus": "본교",
+    "track": "자연",
+    "weights": {
+      "국어": 36.7,
+      "수학": 43.3,
+      "영어": 0,
+      "탐구": 20,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 99, 98, 97, 96, 95, 94, 93, 92],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "성균관대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 35,
+      "수학": 40,
+      "영어": 0,
+      "탐구": 25,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 92, 86, 75, 64, 58, 53, 50],
+    "korean_history_grade_table": [10, 10, 10, 10, 9.8, 9.6, 9.4, 9.2, 9],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "성균관대학교",
+    "campus": "본교",
+    "track": "자연",
+    "weights": {
+      "국어": 30,
+      "수학": 40,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 92, 86, 75, 64, 58, 53, 50],
+    "korean_history_grade_table": [10, 10, 10, 10, 9.8, 9.6, 9.4, 9.2, 9],
+    "math_constraint": "미적·기하",
+    "explore_constraint": "과탐",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "한양대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 96, 90, 82, 72, 60, 46, 30, 12],
+    "korean_history_grade_table": [10, 10, 10, 10, 10, 9, 8, 7, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "한양대학교",
+    "campus": "본교",
+    "track": "자연",
+    "weights": {
+      "국어": 20,
+      "수학": 35,
+      "영어": 0,
+      "탐구": 35,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 96, 90, 82, 72, 60, 46, 30, 12],
+    "korean_history_grade_table": [10, 10, 10, 10, 10, 9, 8, 7, 5],
+    "math_constraint": "미적·기하",
+    "explore_constraint": "과탐",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "중앙대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 35,
+      "수학": 40,
+      "영어": 0,
+      "탐구": 25,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 98, 95, 92, 86, 75, 64, 58, 50],
+    "korean_history_grade_table": [10, 10, 9.8, 9.6, 9.4, 9.2, 9, 8, 7],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "중앙대학교",
+    "campus": "본교",
+    "track": "자연",
+    "weights": {
+      "국어": 25,
+      "수학": 40,
+      "영어": 0,
+      "탐구": 35,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 98, 95, 92, 86, 75, 64, 58, 50],
+    "korean_history_grade_table": [10, 10, 9.8, 9.6, 9.4, 9.2, 9, 8, 7],
+    "math_constraint": "미적·기하",
+    "explore_constraint": "과탐",
+    "bonus": "과탐2 가산",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "경희대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 35,
+      "수학": 35,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [200, 196, 188, 178, 165, 140, 80, 40, 0],
+    "korean_history_grade_table": [10, 10, 10, 10, 10, 9, 8, 7, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "경희대학교",
+    "campus": "본교",
+    "track": "자연",
+    "weights": {
+      "국어": 25,
+      "수학": 35,
+      "영어": 0,
+      "탐구": 40,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [200, 196, 188, 178, 165, 140, 80, 40, 0],
+    "korean_history_grade_table": [10, 10, 10, 10, 10, 9, 8, 7, 5],
+    "math_constraint": "미적·기하",
+    "explore_constraint": "과탐",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "한국외국어대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 98, 94, 88, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "서울시립대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 28,
+      "수학": 32,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 98, 94, 88, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 9.8, 9.6, 9.4, 9.2, 9, 8, 7],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "서울시립대학교",
+    "campus": "본교",
+    "track": "자연",
+    "weights": {
+      "국어": 24,
+      "수학": 36,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 98, 94, 88, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 9.8, 9.6, 9.4, 9.2, 9, 8, 7],
+    "math_constraint": "미적·기하",
+    "explore_constraint": "과탐",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "이화여자대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [250, 240, 230, 220, 210, 200, 180, 160, 140],
+    "korean_history_grade_table": [10, 10, 10, 10, 10, 9, 8, 7, 6],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "건국대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 93, 87, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "동국대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 93, 87, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "홍익대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 93, 87, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "숙명여자대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 93, 87, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "가천대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": "우수3영역",
+      "수학": "우수3영역",
+      "영어": 0,
+      "탐구": 20,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "백분위",
+      "수학": "백분위",
+      "탐구": "백분위"
+    },
+    "english_grade_table": [98, 95, 92, 86, 80, 60, 50, 40, 30],
+    "korean_history_grade_table": [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 300,
+    "source": "2027 시행계획"
+  },
+  {
+    "univ": "가천대학교",
+    "campus": "본교",
+    "track": "자연",
+    "weights": {
+      "국어": "우수3영역",
+      "수학": "우수3영역",
+      "영어": 0,
+      "탐구": 20,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "백분위",
+      "수학": "백분위",
+      "탐구": "백분위"
+    },
+    "english_grade_table": [98, 95, 92, 86, 80, 60, 50, 40, 30],
+    "korean_history_grade_table": [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    "math_constraint": "미적·기하 권장",
+    "explore_constraint": "과탐 권장",
+    "bonus": "없음",
+    "max_score": 300,
+    "source": "2027 시행계획"
+  },
+  {
+    "univ": "광운대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 93, 87, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "경기대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 25,
+      "수학": 25,
+      "영어": 0,
+      "탐구": 25,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 96, 90, 82, 72, 60, 46, 30, 12],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "경북대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 93, 87, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "부산대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 93, 87, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "충남대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 93, 87, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  },
+  {
+    "univ": "전남대학교",
+    "campus": "본교",
+    "track": "인문",
+    "weights": {
+      "국어": 30,
+      "수학": 30,
+      "영어": 0,
+      "탐구": 30,
+      "한국사": 0
+    },
+    "metric": {
+      "국어": "표점",
+      "수학": "표점",
+      "탐구": "변환표점"
+    },
+    "english_grade_table": [100, 97, 93, 87, 80, 70, 58, 42, 22],
+    "korean_history_grade_table": [10, 10, 10, 10, 9, 8, 7, 6, 5],
+    "math_constraint": "자유",
+    "explore_constraint": "자유",
+    "bonus": "없음",
+    "max_score": 1000,
+    "source": "잠정"
+  }
+]

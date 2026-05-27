@@ -249,91 +249,91 @@
     ]
   },
   "2025수능": {
-    "kor25_a": [
+    "r2025a": [
       {
         "type": "underline",
-        "sentId": "kor25_as17",
+        "sentId": "r2025as17",
         "text": "밑줄 긋기의 방법을 이해하고 잘 사용하는 것"
       }
     ],
-    "kor25_b": [
+    "r2025b": [
       {
         "type": "box",
-        "sentId": "kor25_bs1",
+        "sentId": "r2025bs1",
         "text": "개화"
       },
       {
         "type": "underline",
-        "sentId": "kor25_bs15",
+        "sentId": "r2025bs15",
         "text": "근대 국가 건설과 새로운 주체의 형성에 주목하여 문명에 대한 견해를 제시했다."
       },
       {
         "type": "underline",
-        "sentId": "kor25_bs27",
+        "sentId": "r2025bs27",
         "text": "과학의 근거 위에서만 민주 정치의 실현이 가능하다고 주장했다"
       },
       {
         "type": "underline",
-        "sentId": "kor25_bs29",
+        "sentId": "r2025bs29",
         "text": "그칠"
       }
     ],
-    "kor25_c": [
+    "r2025c": [
       {
         "type": "box",
-        "sentId": "kor25_cs14",
+        "sentId": "r2025cs14",
         "text": "잠재 표현"
       }
     ],
-    "kor25_d": [
+    "r2025d": [
       {
         "type": "underline",
-        "sentId": "kor25_ds1",
+        "sentId": "r2025ds1",
         "text": "이루어진다고"
       },
       {
         "type": "underline",
-        "sentId": "kor25_ds2",
+        "sentId": "r2025ds2",
         "text": "불러내어"
       },
       {
         "type": "underline",
-        "sentId": "kor25_ds4",
+        "sentId": "r2025ds4",
         "text": "나타난다고"
       },
       {
         "type": "underline",
-        "sentId": "kor25_ds6",
+        "sentId": "r2025ds6",
         "text": "감추고"
       },
       {
         "type": "underline",
-        "sentId": "kor25_ds7",
+        "sentId": "r2025ds7",
         "text": "넘쳐 나는"
       },
       {
         "type": "underline",
-        "sentId": "kor25_ds10",
+        "sentId": "r2025ds10",
         "text": "인정하는 입장"
       },
       {
         "type": "underline",
-        "sentId": "kor25_ds12",
+        "sentId": "r2025ds12",
         "text": "인정하지 않는 입장"
       },
       {
         "type": "underline",
-        "sentId": "kor25_ds14",
+        "sentId": "r2025ds14",
         "text": "대법원"
       },
       {
         "type": "underline",
-        "sentId": "kor25_ds16",
+        "sentId": "r2025ds16",
         "text": "다수 의견"
       },
       {
         "type": "underline",
-        "sentId": "kor25_ds17",
+        "sentId": "r2025ds17",
         "text": "소수 의견"
       }
     ],

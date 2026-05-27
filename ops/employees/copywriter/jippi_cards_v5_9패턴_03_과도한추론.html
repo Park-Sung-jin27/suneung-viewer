@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>짚이 카드뉴스 v5 — 9패턴 시리즈 ③ 과도한 추론</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root {
+    --dark-green: #1B4220;
+    --lime: #BEF264;
+    --paper: #FAF8F4;
+    --ink: #1A1A1A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #2a2a2a;
+    font-family: "Noto Sans KR", sans-serif;
+    color: var(--paper);
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+  h1.page-title {
+    text-align: center;
+    font-family: "Noto Serif KR", serif;
+    font-weight: 900;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  p.page-sub {
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 24px;
+  }
+  .toolbar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .toolbar button {
+    padding: 12px 24px;
+    background: var(--lime);
+    color: var(--ink);
+    border: none;
+    border-radius: 8px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform .15s;
+  }
+  .toolbar button:hover { transform: translateY(-2px); }
+  .toolbar button.secondary {
+    background: #444;
+    color: var(--paper);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(540px, max-content));
+    gap: 32px;
+    justify-content: center;
+  }
+  .card-wrap {
+    width: 540px;
+    height: 540px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  }
+  .card-wrap .card {
+    transform: scale(0.5);
+    transform-origin: top left;
+  }
+
+  .card {
+    width: 1080px;
+    height: 1080px;
+    padding: 130px 90px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .card.dark {
+    background: var(--dark-green);
+    color: var(--paper);
+  }
+  .card.light {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .progress {
+    position: absolute;
+    top: 60px;
+    left: 90px;
+    display: flex;
+    gap: 12px;
+  }
+  .progress .dot {
+    width: 38px;
+    height: 4px;
+    background: rgba(255,255,255,.25);
+  }
+  .card.light .progress .dot {
+    background: rgba(0,0,0,.15);
+  }
+  .progress .dot.active { background: var(--lime); }
+
+  .series-label {
+    position: absolute;
+    top: 90px;
+    left: 90px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.05em;
+    color: var(--lime);
+  }
+  .card.light .series-label { color: var(--dark-green); }
+
+  .brand {
+    position: absolute;
+    bottom: 60px;
+    right: 90px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Noto Serif KR", serif;
+    font-weight: 700;
+    font-size: 24px;
+  }
+  .card.light .brand { color: var(--dark-green); }
+  .card.dark .brand { color: var(--paper); }
+  .brand svg { width: 28px; height: 28px; }
+
+  .head {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 900;
+    font-size: 64px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    margin-top: 80px;
+  }
+  .head.huge {
+    font-size: 110px;
+    line-height: 1.2;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.65;
+    margin-top: 40px;
+  }
+  .body.center { text-align: center; }
+  .body strong { font-weight: 900; }
+
+  .example-box {
+    background: rgba(27, 66, 32, 0.06);
+    border-left: 6px solid var(--dark-green);
+    padding: 30px 36px;
+    margin-top: 30px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 34px;
+    line-height: 1.6;
+    border-radius: 4px;
+  }
+  .example-box .label {
+    display: block;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  .example-box .text {
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .example-box + .example-box { margin-top: 20px; }
+  .arrow-line {
+    margin-top: 28px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--dark-green);
+  }
+
+  .steps { margin-top: 30px; }
+  .steps .step {
+    display: flex;
+    gap: 22px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+  .steps .step-num {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: var(--lime);
+    color: var(--dark-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Noto Serif KR", serif;
+    font-weight: 900;
+    font-size: 32px;
+    margin-top: 4px;
+  }
+  .steps .step-text {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.5;
+    color: var(--paper);
+  }
+
+  .card.light .hl {
+    background: linear-gradient(transparent 58%, var(--lime) 58%, var(--lime) 94%, transparent 94%);
+    padding: 0 4px;
+    font-weight: 900;
+  }
+  .card.dark .hl {
+    color: var(--lime);
+    font-weight: 900;
+  }
+
+  .cta-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .cta-logo svg.pen {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 20px;
+  }
+  .cta-brand {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 900;
+    font-size: 130px;
+    line-height: 1;
+    color: var(--paper);
+    margin-bottom: 22px;
+  }
+  .cta-tag {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.3;
+    color: var(--lime);
+    margin-bottom: 30px;
+  }
+  .cta-divider {
+    width: 100px;
+    height: 4px;
+    background: var(--lime);
+    margin: 0 auto 30px;
+  }
+  .cta-next {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.5;
+    color: var(--paper);
+    margin-bottom: 30px;
+  }
+  .cta-next .next-pat {
+    color: var(--lime);
+    font-weight: 900;
+  }
+  .cta-link {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.5;
+    color: var(--paper);
+  }
+  .cta-link .url {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: "Noto Serif KR", serif;
+    font-weight: 900;
+    font-size: 50px;
+    color: var(--lime);
+  }
+
+  .caption-box {
+    max-width: 720px;
+    margin: 48px auto 0;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 28px;
+    color: var(--paper);
+    font-family: "Noto Sans KR", sans-serif;
+  }
+  .caption-box h2 {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 900;
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: var(--lime);
+  }
+  .caption-box pre {
+    white-space: pre-wrap;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--paper);
+  }
+  .caption-box button {
+    margin-top: 16px;
+    padding: 10px 20px;
+    background: var(--lime);
+    color: var(--ink);
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .capturing { transform: none !important; }
+  .capturing.card-wrap {
+    width: 1080px !important;
+    height: 1080px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">짚이 카드뉴스 v5 — 9패턴 시리즈 ③ 과도한 추론</h1>
+<p class="page-sub">1080×1080 (1:1) dense / 학생 3~4등급 / CTA: 출시 알림 + 다음 편 예고</p>
+
+<div class="toolbar">
+  <button onclick="downloadAll()">📥 전체 7장 PNG 다운로드</button>
+  <button class="secondary" onclick="downloadOne(0)">1장만</button>
+  <button class="secondary" onclick="downloadOne(1)">2장만</button>
+  <button class="secondary" onclick="downloadOne(2)">3장만</button>
+  <button class="secondary" onclick="downloadOne(3)">4장만</button>
+  <button class="secondary" onclick="downloadOne(4)">5장만</button>
+  <button class="secondary" onclick="downloadOne(5)">6장만</button>
+  <button class="secondary" onclick="downloadOne(6)">7장만</button>
+</div>
+
+<div class="grid">
+
+  <!-- ① HOOK (다크) -->
+  <div class="card-wrap" id="wrap-1">
+    <div class="card dark">
+      <div class="progress">
+        <div class="dot active"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="series-label">9가지 오답 패턴 ③</div>
+      <div class="head">수능 국어 오답<br>9가지 패턴.<br><br>오늘은 3편.<br><span class="hl">'과도한 추론.'</span></div>
+      <div class="body">지문에 없는 내용을<br>선지에 슬쩍 추가한 함정. 🤔</div>
+      <div class="brand">
+        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#BEF264"/><rect x="13" y="18" width="4" height="8" fill="#FAF8F4"/></svg>
+        짚이 · Jippi
+      </div>
+    </div>
+  </div>
+
+  <!-- ② 개념 (라이트) -->
+  <div class="card-wrap" id="wrap-2">
+    <div class="card light">
+      <div class="progress">
+        <div class="dot"></div><div class="dot active"></div>
+        <div class="dot"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="series-label">개념</div>
+      <div class="head">과도한 추론이란?</div>
+      <div class="body">지문에 명시되지 않은 내용을<br><span class="hl">'상식적으로 맞을 것 같다'</span>는<br>이유로 선지에 추가한 것.<br><br>지문은 A까지만 말했는데<br>선지는 B까지 추론.<br><span class="hl">한 단계 비약.</span></div>
+      <div class="brand">
+        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#1B4220"/><rect x="13" y="18" width="4" height="8" fill="#1B4220"/></svg>
+        짚이 · Jippi
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ 핵심 (다크 huge) -->
+  <div class="card-wrap" id="wrap-3">
+    <div class="card dark">
+      <div class="progress">
+        <div class="dot"></div><div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="series-label">핵심</div>
+      <div class="head huge" style="margin-top: 80px;">한 단계 비약.</div>
+      <div class="body center">지문에 없는 내용을<br>'상식'으로 채운다.<br><br><span class="hl">객관식 시험 최대 함정.</span></div>
+      <div class="brand">
+        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#BEF264"/><rect x="13" y="18" width="4" height="8" fill="#FAF8F4"/></svg>
+        짚이 · Jippi
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 사례 (라이트) -->
+  <div class="card-wrap" id="wrap-4">
+    <div class="card light">
+      <div class="progress">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="series-label">빈출 예시</div>
+      <div class="head" style="font-size: 56px;">이런 함정입니다.</div>
+      <div class="example-box">
+        <span class="label">📖 지문</span>
+        <span class="text">"X는 Y를 <strong>좋아한다</strong>."</span>
+      </div>
+      <div class="example-box">
+        <span class="label">⭕ 선지</span>
+        <span class="text">"X는 Y와 <strong>결혼할 것이다</strong>."</span>
+      </div>
+      <div class="arrow-line">→ '좋아한다'는 <span class="hl">명시.</span><br>&nbsp;&nbsp;&nbsp;'결혼한다'는 <span class="hl">추론.</span></div>
+      <div class="brand">
+        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#1B4220"/><rect x="13" y="18" width="4" height="8" fill="#1B4220"/></svg>
+        짚이 · Jippi
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 식별법 (다크) -->
+  <div class="card-wrap" id="wrap-5">
+    <div class="card dark">
+      <div class="progress">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="series-label">식별 3단계</div>
+      <div class="head" style="font-size: 60px;">이렇게 잡습니다.</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">선지 안 <span class="hl">단정 표현</span>에 형광펜.<br>('~할 것이다', '~이 분명하다')</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">그 단정의 <span class="hl">근거를 지문</span>에서 찾기.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">지문에 <span class="hl">직접 표현이 없으면</span><br>과도한 추론 의심.</div>
+        </div>
+      </div>
+      <div class="brand">
+        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#BEF264"/><rect x="13" y="18" width="4" height="8" fill="#FAF8F4"/></svg>
+        짚이 · Jippi
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ 짚이 솔루션 (라이트) -->
+  <div class="card-wrap" id="wrap-6">
+    <div class="card light">
+      <div class="progress">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="series-label">짚이 솔루션</div>
+      <div class="head" style="font-size: 60px;">짚이는 자동으로<br>잡아냅니다.</div>
+      <div class="body">선지마다 지문 근거를<br><span class="hl">형광펜으로 1:1 매핑.</span><br><br>근거 있는 선지 = OK<br>근거 없는 선지 = <span class="hl">즉시 표시.</span><br><br>9패턴 자동 분류로<br>본인 약점이 누적됩니다.</div>
+      <div class="brand">
+        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#1B4220"/><rect x="13" y="18" width="4" height="8" fill="#1B4220"/></svg>
+        짚이 · Jippi
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑦ CTA (다크) -->
+  <div class="card-wrap" id="wrap-7">
+    <div class="card dark">
+      <div class="progress">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot active"></div>
+      </div>
+      <div class="cta-logo">
+        <svg class="pen" viewBox="0 0 100 100">
+          <polygon points="50,8 20,62 80,62" fill="#BEF264" stroke="#FAF8F4" stroke-width="2"/>
+          <rect x="44" y="62" width="12" height="22" fill="#FAF8F4"/>
+        </svg>
+        <div class="cta-brand">짚이</div>
+        <div class="cta-tag">선지마다 근거를<br>형광펜으로.</div>
+        <div class="cta-divider"></div>
+        <div class="cta-next">
+          오늘 ③ 과도한 추론<br>
+          다음 편 ④ <span class="next-pat">'개념 짜깁기'</span>
+        </div>
+        <div class="cta-link">
+          ☝️ 프로필 링크<br>
+          <span class="url">jippi.kr</span><br>
+          출시 알림 신청
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 캡션 박스 -->
+<div class="caption-box">
+  <h2>📋 인스타 캡션 + 해시태그</h2>
+  <pre id="caption-text">분명히 그럴 것 같았는데... 왜 틀렸을까? 🤔
+
+수능 국어 9가지 오답 패턴 중 가장 큰 함정 — '과도한 추론.'
+지문에 없는 내용을 '상식적으로 맞을 것 같다'는 이유로 선지에 슬쩍 추가하는 패턴입니다.
+
+📖 지문: "X는 Y를 좋아한다."
+⭕ 선지: "X는 Y와 결혼할 것이다."
+→ '좋아한다'는 명시. '결혼한다'는 추론. 한 단계 비약.
+
+[식별 3단계]
+① 선지의 단정 표현('~할 것이다', '~분명하다')에 형광펜.
+② 그 단정의 근거를 지문에서 찾는다.
+③ 지문에 직접 표현이 없으면 과도한 추론 의심.
+
+짚이는 선지마다 지문 근거를 형광펜으로 1:1 매핑.
+근거 없는 선지는 즉시 표시됩니다.
+
+다음 편 ④ '개념 짜깁기'
+
+☝️ 프로필 링크 → jippi.kr (출시 알림)
+
+#수능국어 #모의고사 #국어공부 #수능 #국어1등급 #수능공부 #고3 #국어성적 #수능국어공부 #공부법 #짚이 #jippi #수능국어강의 #국어인강 #6월모의고사 #수능D-200 #오답분석</pre>
+  <button onclick="copyCaption()">📋 전체 복사</button>
+</div>
+
+<script>
+  function copyCaption() {
+    const text = document.getElementById("caption-text").innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      alert("✅ 캡션 복사 완료. 인스타에 바로 붙여넣기 가능.");
+    });
+  }
+
+  async function captureCard(idx) {
+    const wrap = document.getElementById("wrap-" + (idx + 1));
+    const card = wrap.querySelector(".card");
+    wrap.classList.add("capturing");
+    card.classList.add("capturing");
+    await new Promise(r => setTimeout(r, 100));
+    const canvas = await html2canvas(card, {
+      scale: 2,
+      backgroundColor: null,
+      width: 1080,
+      height: 1080,
+      windowWidth: 1080,
+      windowHeight: 1080,
+    });
+    wrap.classList.remove("capturing");
+    card.classList.remove("capturing");
+    return canvas;
+  }
+
+  async function downloadOne(idx) {
+    await document.fonts.ready;
+    await new Promise(r => setTimeout(r, 150));
+    const canvas = await captureCard(idx);
+    const link = document.createElement("a");
+    const num = String(idx + 1).padStart(2, "0");
+    link.download = "jippi_v5_03_card_" + num + ".png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  }
+
+  async function downloadAll() {
+    await document.fonts.ready;
+    await new Promise(r => setTimeout(r, 150));
+    for (let i = 0; i < 7; i++) {
+      await downloadOne(i);
+      await new Promise(r => setTimeout(r, 400));
+    }
+  }
+</script>
+
+</body>
+</html>

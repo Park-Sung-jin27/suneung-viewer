@@ -1,0 +1,530 @@
+{
+  "generated_at": "2026-05-25T07:02:01.511Z",
+  "source": "C:\\Users\\downf\\suneung-viewer\\config\\d_engine_dryrun_inputs.json",
+  "mode": "full",
+  "total_samples": 17,
+  "target_samples": 17,
+  "results": [
+    {
+      "sample_id": "gold_R1_001",
+      "decision": "single_pass",
+      "pass": true,
+      "error_type": "NONE",
+      "rule_hits": [],
+      "reason": "선지는 지문의 ‘거절할 수 있다’를 ‘거절할 수 없다’로 반전하여 R1(팩트 왜곡)에 해당하며, 분석은 지문 인용으로 이를 직접 지적했다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": true,
+            "error_type": "NONE",
+            "rule_hits": [],
+            "reason": "선지는 지문의 ‘거절할 수 있다’를 ‘거절할 수 없다’로 반전하여 R1(팩트 왜곡)에 해당하며, 분석은 지문 인용으로 이를 직접 지적했다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T06:57:54.327Z",
+        "api_call_durations_ms": [6942]
+      }
+    },
+    {
+      "sample_id": "gold_R1_002",
+      "decision": "single_pass",
+      "pass": false,
+      "error_type": "P_MISMATCH",
+      "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
+      "reason": "선지의 오류는 원인-결과 관계를 뒤집은 것으로 R2가 맞는데, R1로 분류했다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": false,
+            "error_type": "P_MISMATCH",
+            "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
+            "reason": "선지의 오류는 원인-결과 관계를 뒤집은 것으로 R2가 맞는데, R1로 분류했다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T06:58:09.807Z",
+        "api_call_durations_ms": [15476]
+      }
+    },
+    {
+      "sample_id": "gold_R1_003",
+      "decision": "single_pass",
+      "pass": false,
+      "error_type": "P_MISMATCH",
+      "rule_hits": [
+        "RULE_1_PAT_DEFINITION_MISMATCH",
+        "RULE_2_EVIDENCE_NOT_DIRECT",
+        "RULE_3_CONDITION_MISSING"
+      ],
+      "reason": "분석은 '다양한 산업 영향'을 근거로 제시해 선지의 핵심 조건(참여자 수와 가치)을 다루지 않았고, 근거와 판단의 직접 연결도 없다. 따라서 pat=R1과 실제 오류 구조가 일치하지 않는다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": false,
+            "error_type": "P_MISMATCH",
+            "rule_hits": [
+              "RULE_1_PAT_DEFINITION_MISMATCH",
+              "RULE_2_EVIDENCE_NOT_DIRECT",
+              "RULE_3_CONDITION_MISSING"
+            ],
+            "reason": "분석은 '다양한 산업 영향'을 근거로 제시해 선지의 핵심 조건(참여자 수와 가치)을 다루지 않았고, 근거와 판단의 직접 연결도 없다. 따라서 pat=R1과 실제 오류 구조가 일치하지 않는다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T06:58:33.479Z",
+        "api_call_durations_ms": [23671]
+      }
+    },
+    {
+      "sample_id": "gold_R2_001",
+      "decision": "single_pass",
+      "pass": true,
+      "error_type": "NONE",
+      "rule_hits": [],
+      "reason": "선지는 원인-결과를 역전했으며, 분석도 이를 근거로 지적해 R2와 일치한다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": true,
+            "error_type": "NONE",
+            "rule_hits": [],
+            "reason": "선지는 원인-결과를 역전했으며, 분석도 이를 근거로 지적해 R2와 일치한다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T06:58:43.533Z",
+        "api_call_durations_ms": [10053]
+      }
+    },
+    {
+      "sample_id": "gold_R2_002",
+      "decision": "single_pass",
+      "pass": true,
+      "error_type": "NONE",
+      "rule_hits": [],
+      "reason": "선지는 인과를 뒤집고 원인을 부정하며, 제시된 pat R2(관계·인과 전도)와 분석 내용이 지문과의 충돌 구조에 부합한다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": true,
+            "error_type": "NONE",
+            "rule_hits": [],
+            "reason": "선지는 인과를 뒤집고 원인을 부정하며, 제시된 pat R2(관계·인과 전도)와 분석 내용이 지문과의 충돌 구조에 부합한다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T06:59:11.758Z",
+        "api_call_durations_ms": [28225]
+      }
+    },
+    {
+      "sample_id": "gold_R1_004",
+      "decision": "single_pass",
+      "pass": true,
+      "error_type": "NONE",
+      "rule_hits": [],
+      "reason": "지문은 속력 기반 질량이 더 크다고 했는데, 선지는 이를 반대로 진술했음을 analysis가 직접 지적하여 R1(팩트 방향 불일치)에 부합한다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": true,
+            "error_type": "NONE",
+            "rule_hits": [],
+            "reason": "지문은 속력 기반 질량이 더 크다고 했는데, 선지는 이를 반대로 진술했음을 analysis가 직접 지적하여 R1(팩트 방향 불일치)에 부합한다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T06:59:20.377Z",
+        "api_call_durations_ms": [8618]
+      }
+    },
+    {
+      "sample_id": "gold_R1_005",
+      "decision": "single_pass",
+      "pass": false,
+      "error_type": "P_MISMATCH",
+      "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
+      "reason": "분석은 송신기/수신기 역할의 반전을 지적하고 있어 관계·주체 반전 성격(R2)에 가깝지만, pat을 R1로 제시했다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": false,
+            "error_type": "P_MISMATCH",
+            "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
+            "reason": "분석은 송신기/수신기 역할의 반전을 지적하고 있어 관계·주체 반전 성격(R2)에 가깝지만, pat을 R1로 제시했다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T06:59:26.274Z",
+        "api_call_durations_ms": [5897]
+      }
+    },
+    {
+      "sample_id": "gold_R1_006",
+      "decision": "majority_accepted",
+      "pass": false,
+      "error_type": "E_LOGIC_UNCLEAR",
+      "rule_hits": ["RULE_7_ANALYSIS_TOO_VAGUE"],
+      "reason": "",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 3,
+        "trigger_reason": "rule_7_detected",
+        "diversity_count": 1,
+        "majority_count": 3,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": ["RULE_2_EVIDENCE_NOT_DIRECT"],
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": false,
+            "error_type": "E_LOGIC_UNCLEAR",
+            "rule_hits": ["RULE_7_ANALYSIS_TOO_VAGUE"],
+            "reason": "analysis에서 선지와의 충돌을 어떻게 설명하는지 명시하지 않는다고 스스로 고백하여, 근거→판단 연결이 불명확하다. 이로 인해 제시된 pat의 정합성 검증이 불가하다.",
+            "confidence": "high"
+          },
+          {
+            "pass": false,
+            "error_type": "E_LOGIC_UNCLEAR",
+            "rule_hits": [
+              "RULE_7_ANALYSIS_TOO_VAGUE",
+              "RULE_2_EVIDENCE_NOT_DIRECT"
+            ],
+            "reason": "analysis에서 근거와 선지의 충돌을 어떻게 설명하는지 스스로 누락을 고백하여 판단 논리가 불명확하다. 이로 인해 제시된 pat의 정합성을 검증할 수 없다.",
+            "confidence": "high"
+          },
+          {
+            "pass": false,
+            "error_type": "E_LOGIC_UNCLEAR",
+            "rule_hits": [
+              "RULE_7_ANALYSIS_TOO_VAGUE",
+              "RULE_2_EVIDENCE_NOT_DIRECT"
+            ],
+            "reason": "analysis에 ‘어떻게 충돌하는지 설명하지 않는다’는 자기 고백이 있어 근거→판단 연결이 누락되었다. 인용 근거가 선지 판단으로 직접 연결되지 않아 pat 검증이 불가하다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T07:00:17.824Z",
+        "api_call_durations_ms": [12844, 19323, 19382]
+      }
+    },
+    {
+      "sample_id": "gold_R2_003",
+      "decision": "single_pass",
+      "pass": true,
+      "error_type": "NONE",
+      "rule_hits": [],
+      "reason": "지문은 중력 감소 → 속력 감소인데, 선지는 이를 반대로 진술했고 analysis가 인과 전도(R2)로 정확히 짚었다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": true,
+            "error_type": "NONE",
+            "rule_hits": [],
+            "reason": "지문은 중력 감소 → 속력 감소인데, 선지는 이를 반대로 진술했고 analysis가 인과 전도(R2)로 정확히 짚었다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T07:00:26.123Z",
+        "api_call_durations_ms": [8299]
+      }
+    },
+    {
+      "sample_id": "gold_R2_004",
+      "decision": "single_pass",
+      "pass": false,
+      "error_type": "P_MISMATCH",
+      "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
+      "reason": "선지는 동일한 원인에서 결과 방향만 반대로 진술한 것으로, 인과 전도(R2)가 아니라 방향 불일치에 해당한다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": false,
+            "error_type": "P_MISMATCH",
+            "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
+            "reason": "선지는 동일한 원인에서 결과 방향만 반대로 진술한 것으로, 인과 전도(R2)가 아니라 방향 불일치에 해당한다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T07:00:34.374Z",
+        "api_call_durations_ms": [8250]
+      }
+    },
+    {
+      "sample_id": "gold_R2_005",
+      "decision": "single_pass",
+      "pass": true,
+      "error_type": "NONE",
+      "rule_hits": [],
+      "reason": "선지는 제동 거리 증가를 도로 젖음의 원인으로 뒤집어 서술하여 원인-결과 전도(R2)에 해당한다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": true,
+            "error_type": "NONE",
+            "rule_hits": [],
+            "reason": "선지는 제동 거리 증가를 도로 젖음의 원인으로 뒤집어 서술하여 원인-결과 전도(R2)에 해당한다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T07:00:42.706Z",
+        "api_call_durations_ms": [8332]
+      }
+    },
+    {
+      "sample_id": "gold_R2_006",
+      "decision": "single_pass",
+      "pass": true,
+      "error_type": "NONE",
+      "rule_hits": [],
+      "reason": "선지는 인과 방향을 뒤집어 서술했으므로 R2(관계·인과 전도)와 일치한다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": true,
+            "error_type": "NONE",
+            "rule_hits": [],
+            "reason": "선지는 인과 방향을 뒤집어 서술했으므로 R2(관계·인과 전도)와 일치한다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T07:00:49.931Z",
+        "api_call_durations_ms": [7225]
+      }
+    },
+    {
+      "sample_id": "gold_DOMAIN_001",
+      "decision": "single_pass",
+      "pass": false,
+      "error_type": "E_DOMAIN_INVALID",
+      "rule_hits": ["RULE_0_DOMAIN_INVALID"],
+      "reason": "reading 도메인에서는 R1~R4, V만 허용되는데 제시된 pat이 L3라서 도메인 위반이다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": false,
+            "error_type": "E_DOMAIN_INVALID",
+            "rule_hits": ["RULE_0_DOMAIN_INVALID"],
+            "reason": "reading 도메인에서는 R1~R4, V만 허용되는데 제시된 pat이 L3라서 도메인 위반이다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T07:00:55.265Z",
+        "api_call_durations_ms": [5333]
+      }
+    },
+    {
+      "sample_id": "gold_DOMAIN_002",
+      "decision": "single_pass",
+      "pass": false,
+      "error_type": "P_MISMATCH",
+      "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
+      "reason": "분석은 선지가 지문과 일치함을 근거로 드는데, 이를 R1(팩트 왜곡)으로 분류한 pat은 오류 구조와 맞지 않는다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": false,
+            "error_type": "P_MISMATCH",
+            "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
+            "reason": "분석은 선지가 지문과 일치함을 근거로 드는데, 이를 R1(팩트 왜곡)으로 분류한 pat은 오류 구조와 맞지 않는다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T07:01:11.888Z",
+        "api_call_durations_ms": [16623]
+      }
+    },
+    {
+      "sample_id": "gold_R1_009",
+      "decision": "single_pass",
+      "pass": false,
+      "error_type": "E_CONDITION_MISSING",
+      "rule_hits": ["RULE_3_CONDITION_MISSING"],
+      "reason": "분석이 선지의 두 번째 조건(계약서의 법적 효력 필수 요건 주장)을 ‘직접 검토하지 않는다’고 명시해 복합 조건의 핵심을 누락했다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": false,
+            "error_type": "E_CONDITION_MISSING",
+            "rule_hits": ["RULE_3_CONDITION_MISSING"],
+            "reason": "분석이 선지의 두 번째 조건(계약서의 법적 효력 필수 요건 주장)을 ‘직접 검토하지 않는다’고 명시해 복합 조건의 핵심을 누락했다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T07:01:27.806Z",
+        "api_call_durations_ms": [15918]
+      }
+    },
+    {
+      "sample_id": "gold_R2_008",
+      "decision": "single_pass",
+      "pass": false,
+      "error_type": "E_EVIDENCE_WEAK",
+      "rule_hits": ["RULE_2_EVIDENCE_NOT_DIRECT"],
+      "reason": "선지의 핵심 조건(위변조 가능성)에 대한 직접 근거가 아닌 ‘중앙 관리자 부재’ 문장을 인용하여 판단했다. 지문의 ‘위변조가 사실상 불가능’ 근거를 사용하지 않아 판단 근거가 직접적이지 않다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": false,
+            "error_type": "E_EVIDENCE_WEAK",
+            "rule_hits": ["RULE_2_EVIDENCE_NOT_DIRECT"],
+            "reason": "선지의 핵심 조건(위변조 가능성)에 대한 직접 근거가 아닌 ‘중앙 관리자 부재’ 문장을 인용하여 판단했다. 지문의 ‘위변조가 사실상 불가능’ 근거를 사용하지 않아 판단 근거가 직접적이지 않다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T07:01:44.084Z",
+        "api_call_durations_ms": [16278]
+      }
+    },
+    {
+      "sample_id": "gold_R2_010",
+      "decision": "single_pass",
+      "pass": false,
+      "error_type": "E_COMPOSITE_ERROR",
+      "rule_hits": ["RULE_4_COMPOSITE_ERROR"],
+      "reason": "선지는 ‘사슴-풀’ 인과 전도(R2)와 ‘늑대 소멸→사슴 증가’ 부정(증가↔비증가의 사실 불일치) 두 가지 오류가 섞여 있는데, pat을 단일 R2로만 지정했다.",
+      "confidence": "high",
+      "_metadata": {
+        "run_count": 1,
+        "trigger_reason": "no_trigger",
+        "diversity_count": 1,
+        "majority_count": 1,
+        "low_confidence_flag": false,
+        "discarded_rule_hits": null,
+        "candidate_for_human_review": false,
+        "runs": [
+          {
+            "pass": false,
+            "error_type": "E_COMPOSITE_ERROR",
+            "rule_hits": ["RULE_4_COMPOSITE_ERROR"],
+            "reason": "선지는 ‘사슴-풀’ 인과 전도(R2)와 ‘늑대 소멸→사슴 증가’ 부정(증가↔비증가의 사실 불일치) 두 가지 오류가 섞여 있는데, pat을 단일 R2로만 지정했다.",
+            "confidence": "high"
+          }
+        ],
+        "timestamp": "2026-05-25T07:02:01.511Z",
+        "api_call_durations_ms": [17427]
+      }
+    }
+  ]
+}

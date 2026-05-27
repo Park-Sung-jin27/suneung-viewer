@@ -1,0 +1,1991 @@
+[
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "화법과작문",
+    "raw": 100,
+    "std": 142,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "화법과작문",
+    "raw": 90,
+    "std": 135,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "화법과작문",
+    "raw": 80,
+    "std": 128,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "화법과작문",
+    "raw": 70,
+    "std": 118,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "화법과작문",
+    "raw": 60,
+    "std": 105,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "화법과작문",
+    "raw": 50,
+    "std": 90,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "화법과작문",
+    "raw": 40,
+    "std": 75,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "화법과작문",
+    "raw": 30,
+    "std": 60,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "화법과작문",
+    "raw": 20,
+    "std": 45,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "언어와매체",
+    "raw": 100,
+    "std": 147,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "언어와매체",
+    "raw": 90,
+    "std": 140,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "언어와매체",
+    "raw": 80,
+    "std": 133,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "언어와매체",
+    "raw": 70,
+    "std": 123,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "언어와매체",
+    "raw": 60,
+    "std": 110,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "언어와매체",
+    "raw": 50,
+    "std": 95,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "언어와매체",
+    "raw": 40,
+    "std": 80,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "언어와매체",
+    "raw": 30,
+    "std": 65,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "국어",
+    "elective": "언어와매체",
+    "raw": 20,
+    "std": 50,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "미적분",
+    "raw": 100,
+    "std": 148,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "미적분",
+    "raw": 90,
+    "std": 140,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "미적분",
+    "raw": 80,
+    "std": 130,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "미적분",
+    "raw": 70,
+    "std": 118,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "미적분",
+    "raw": 60,
+    "std": 105,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "미적분",
+    "raw": 50,
+    "std": 90,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "미적분",
+    "raw": 40,
+    "std": 75,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "미적분",
+    "raw": 30,
+    "std": 60,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "미적분",
+    "raw": 20,
+    "std": 45,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "확률과통계",
+    "raw": 100,
+    "std": 140,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "확률과통계",
+    "raw": 90,
+    "std": 132,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "확률과통계",
+    "raw": 80,
+    "std": 122,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "확률과통계",
+    "raw": 70,
+    "std": 110,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "확률과통계",
+    "raw": 60,
+    "std": 97,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "확률과통계",
+    "raw": 50,
+    "std": 82,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "확률과통계",
+    "raw": 40,
+    "std": 68,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "확률과통계",
+    "raw": 30,
+    "std": 55,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "확률과통계",
+    "raw": 20,
+    "std": 40,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "기하",
+    "raw": 100,
+    "std": 142,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "기하",
+    "raw": 90,
+    "std": 134,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "기하",
+    "raw": 80,
+    "std": 124,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "기하",
+    "raw": 70,
+    "std": 112,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "기하",
+    "raw": 60,
+    "std": 99,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "기하",
+    "raw": 50,
+    "std": 84,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "기하",
+    "raw": 40,
+    "std": 70,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "기하",
+    "raw": 30,
+    "std": 57,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "수학",
+    "elective": "기하",
+    "raw": 20,
+    "std": 42,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 100,
+    "std": null,
+    "percentile": null,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 90,
+    "std": null,
+    "percentile": null,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 85,
+    "std": null,
+    "percentile": null,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 80,
+    "std": null,
+    "percentile": null,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 75,
+    "std": null,
+    "percentile": null,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 70,
+    "std": null,
+    "percentile": null,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 60,
+    "std": null,
+    "percentile": null,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 50,
+    "std": null,
+    "percentile": null,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 40,
+    "std": null,
+    "percentile": null,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 30,
+    "std": null,
+    "percentile": null,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 20,
+    "std": null,
+    "percentile": null,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "영어",
+    "elective": "-",
+    "raw": 10,
+    "std": null,
+    "percentile": null,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 50,
+    "std": null,
+    "percentile": null,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 45,
+    "std": null,
+    "percentile": null,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 40,
+    "std": null,
+    "percentile": null,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 35,
+    "std": null,
+    "percentile": null,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 30,
+    "std": null,
+    "percentile": null,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 25,
+    "std": null,
+    "percentile": null,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 20,
+    "std": null,
+    "percentile": null,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 15,
+    "std": null,
+    "percentile": null,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 10,
+    "std": null,
+    "percentile": null,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 5,
+    "std": null,
+    "percentile": null,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "한국사",
+    "elective": "-",
+    "raw": 0,
+    "std": null,
+    "percentile": null,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생활과윤리",
+    "raw": 50,
+    "std": 68,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생활과윤리",
+    "raw": 45,
+    "std": 65,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생활과윤리",
+    "raw": 40,
+    "std": 60,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생활과윤리",
+    "raw": 35,
+    "std": 55,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생활과윤리",
+    "raw": 30,
+    "std": 48,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생활과윤리",
+    "raw": 25,
+    "std": 40,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생활과윤리",
+    "raw": 20,
+    "std": 33,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생활과윤리",
+    "raw": 15,
+    "std": 25,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생활과윤리",
+    "raw": 10,
+    "std": 15,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "사회·문화",
+    "raw": 50,
+    "std": 68,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "사회·문화",
+    "raw": 45,
+    "std": 65,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "사회·문화",
+    "raw": 40,
+    "std": 60,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "사회·문화",
+    "raw": 35,
+    "std": 55,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "사회·문화",
+    "raw": 30,
+    "std": 48,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "사회·문화",
+    "raw": 25,
+    "std": 40,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "사회·문화",
+    "raw": 20,
+    "std": 33,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "사회·문화",
+    "raw": 15,
+    "std": 25,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "사회·문화",
+    "raw": 10,
+    "std": 15,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "한국지리",
+    "raw": 50,
+    "std": 68,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "한국지리",
+    "raw": 45,
+    "std": 65,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "한국지리",
+    "raw": 40,
+    "std": 60,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "한국지리",
+    "raw": 35,
+    "std": 55,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "한국지리",
+    "raw": 30,
+    "std": 48,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "한국지리",
+    "raw": 25,
+    "std": 40,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "한국지리",
+    "raw": 20,
+    "std": 33,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "한국지리",
+    "raw": 15,
+    "std": 25,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "한국지리",
+    "raw": 10,
+    "std": 15,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계지리",
+    "raw": 50,
+    "std": 68,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계지리",
+    "raw": 45,
+    "std": 65,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계지리",
+    "raw": 40,
+    "std": 60,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계지리",
+    "raw": 35,
+    "std": 55,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계지리",
+    "raw": 30,
+    "std": 48,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계지리",
+    "raw": 25,
+    "std": 40,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계지리",
+    "raw": 20,
+    "std": 33,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계지리",
+    "raw": 15,
+    "std": 25,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계지리",
+    "raw": 10,
+    "std": 15,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "윤리와사상",
+    "raw": 50,
+    "std": 68,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "윤리와사상",
+    "raw": 45,
+    "std": 65,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "윤리와사상",
+    "raw": 40,
+    "std": 60,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "윤리와사상",
+    "raw": 35,
+    "std": 55,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "윤리와사상",
+    "raw": 30,
+    "std": 48,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "윤리와사상",
+    "raw": 25,
+    "std": 40,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "윤리와사상",
+    "raw": 20,
+    "std": 33,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "윤리와사상",
+    "raw": 15,
+    "std": 25,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "윤리와사상",
+    "raw": 10,
+    "std": 15,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "동아시아사",
+    "raw": 50,
+    "std": 68,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "동아시아사",
+    "raw": 45,
+    "std": 65,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "동아시아사",
+    "raw": 40,
+    "std": 60,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "동아시아사",
+    "raw": 35,
+    "std": 55,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "동아시아사",
+    "raw": 30,
+    "std": 48,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "동아시아사",
+    "raw": 25,
+    "std": 40,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "동아시아사",
+    "raw": 20,
+    "std": 33,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "동아시아사",
+    "raw": 15,
+    "std": 25,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "동아시아사",
+    "raw": 10,
+    "std": 15,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계사",
+    "raw": 50,
+    "std": 68,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계사",
+    "raw": 45,
+    "std": 65,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계사",
+    "raw": 40,
+    "std": 60,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계사",
+    "raw": 35,
+    "std": 55,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계사",
+    "raw": 30,
+    "std": 48,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계사",
+    "raw": 25,
+    "std": 40,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계사",
+    "raw": 20,
+    "std": 33,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계사",
+    "raw": 15,
+    "std": 25,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "세계사",
+    "raw": 10,
+    "std": 15,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "경제",
+    "raw": 50,
+    "std": 68,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "경제",
+    "raw": 45,
+    "std": 65,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "경제",
+    "raw": 40,
+    "std": 60,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "경제",
+    "raw": 35,
+    "std": 55,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "경제",
+    "raw": 30,
+    "std": 48,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "경제",
+    "raw": 25,
+    "std": 40,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "경제",
+    "raw": 20,
+    "std": 33,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "경제",
+    "raw": 15,
+    "std": 25,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "경제",
+    "raw": 10,
+    "std": 15,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "정치와법",
+    "raw": 50,
+    "std": 68,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "정치와법",
+    "raw": 45,
+    "std": 65,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "정치와법",
+    "raw": 40,
+    "std": 60,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "정치와법",
+    "raw": 35,
+    "std": 55,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "정치와법",
+    "raw": 30,
+    "std": 48,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "정치와법",
+    "raw": 25,
+    "std": 40,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "정치와법",
+    "raw": 20,
+    "std": 33,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "정치와법",
+    "raw": 15,
+    "std": 25,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "정치와법",
+    "raw": 10,
+    "std": 15,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅰ",
+    "raw": 50,
+    "std": 70,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅰ",
+    "raw": 45,
+    "std": 67,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅰ",
+    "raw": 40,
+    "std": 62,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅰ",
+    "raw": 35,
+    "std": 57,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅰ",
+    "raw": 30,
+    "std": 50,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅰ",
+    "raw": 25,
+    "std": 42,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅰ",
+    "raw": 20,
+    "std": 35,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅰ",
+    "raw": 15,
+    "std": 27,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅰ",
+    "raw": 10,
+    "std": 17,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅰ",
+    "raw": 50,
+    "std": 70,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅰ",
+    "raw": 45,
+    "std": 67,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅰ",
+    "raw": 40,
+    "std": 62,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅰ",
+    "raw": 35,
+    "std": 57,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅰ",
+    "raw": 30,
+    "std": 50,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅰ",
+    "raw": 25,
+    "std": 42,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅰ",
+    "raw": 20,
+    "std": 35,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅰ",
+    "raw": 15,
+    "std": 27,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅰ",
+    "raw": 10,
+    "std": 17,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅰ",
+    "raw": 50,
+    "std": 70,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅰ",
+    "raw": 45,
+    "std": 67,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅰ",
+    "raw": 40,
+    "std": 62,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅰ",
+    "raw": 35,
+    "std": 57,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅰ",
+    "raw": 30,
+    "std": 50,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅰ",
+    "raw": 25,
+    "std": 42,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅰ",
+    "raw": 20,
+    "std": 35,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅰ",
+    "raw": 15,
+    "std": 27,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅰ",
+    "raw": 10,
+    "std": 17,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅰ",
+    "raw": 50,
+    "std": 70,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅰ",
+    "raw": 45,
+    "std": 67,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅰ",
+    "raw": 40,
+    "std": 62,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅰ",
+    "raw": 35,
+    "std": 57,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅰ",
+    "raw": 30,
+    "std": 50,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅰ",
+    "raw": 25,
+    "std": 42,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅰ",
+    "raw": 20,
+    "std": 35,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅰ",
+    "raw": 15,
+    "std": 27,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅰ",
+    "raw": 10,
+    "std": 17,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅱ",
+    "raw": 50,
+    "std": 70,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅱ",
+    "raw": 45,
+    "std": 67,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅱ",
+    "raw": 40,
+    "std": 62,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅱ",
+    "raw": 35,
+    "std": 57,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅱ",
+    "raw": 30,
+    "std": 50,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅱ",
+    "raw": 25,
+    "std": 42,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅱ",
+    "raw": 20,
+    "std": 35,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅱ",
+    "raw": 15,
+    "std": 27,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "물리학Ⅱ",
+    "raw": 10,
+    "std": 17,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅱ",
+    "raw": 50,
+    "std": 70,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅱ",
+    "raw": 45,
+    "std": 67,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅱ",
+    "raw": 40,
+    "std": 62,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅱ",
+    "raw": 35,
+    "std": 57,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅱ",
+    "raw": 30,
+    "std": 50,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅱ",
+    "raw": 25,
+    "std": 42,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅱ",
+    "raw": 20,
+    "std": 35,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅱ",
+    "raw": 15,
+    "std": 27,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "화학Ⅱ",
+    "raw": 10,
+    "std": 17,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅱ",
+    "raw": 50,
+    "std": 70,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅱ",
+    "raw": 45,
+    "std": 67,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅱ",
+    "raw": 40,
+    "std": 62,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅱ",
+    "raw": 35,
+    "std": 57,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅱ",
+    "raw": 30,
+    "std": 50,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅱ",
+    "raw": 25,
+    "std": 42,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅱ",
+    "raw": 20,
+    "std": 35,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅱ",
+    "raw": 15,
+    "std": 27,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "생명과학Ⅱ",
+    "raw": 10,
+    "std": 17,
+    "percentile": 1,
+    "grade": 9
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅱ",
+    "raw": 50,
+    "std": 70,
+    "percentile": 99,
+    "grade": 1
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅱ",
+    "raw": 45,
+    "std": 67,
+    "percentile": 95,
+    "grade": 2
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅱ",
+    "raw": 40,
+    "std": 62,
+    "percentile": 87,
+    "grade": 3
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅱ",
+    "raw": 35,
+    "std": 57,
+    "percentile": 72,
+    "grade": 4
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅱ",
+    "raw": 30,
+    "std": 50,
+    "percentile": 50,
+    "grade": 5
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅱ",
+    "raw": 25,
+    "std": 42,
+    "percentile": 28,
+    "grade": 6
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅱ",
+    "raw": 20,
+    "std": 35,
+    "percentile": 13,
+    "grade": 7
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅱ",
+    "raw": 15,
+    "std": 27,
+    "percentile": 5,
+    "grade": 8
+  },
+  {
+    "exam": "2025수능",
+    "area": "탐구",
+    "elective": "지구과학Ⅱ",
+    "raw": 10,
+    "std": 17,
+    "percentile": 1,
+    "grade": 9
+  }
+]

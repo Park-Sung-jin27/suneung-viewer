@@ -3791,21 +3791,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_a_underline_x_119",
+      "id": "vm_2025수능_r2025a_underline_x_119",
       "yearKey": "2025수능",
-      "setId": "kor25_a",
+      "setId": "r2025a",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_as17"
+        "r2025as17"
       ],
       "start": {
-        "sentId": "kor25_as17",
+        "sentId": "r2025as17",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_as17",
+        "sentId": "r2025as17",
         "offset": 24
       },
       "text": "밑줄 긋기의 방법을 이해하고 잘 사용하는 것",
@@ -3815,21 +3815,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_b_box_x_120",
+      "id": "vm_2025수능_r2025b_box_x_120",
       "yearKey": "2025수능",
-      "setId": "kor25_b",
+      "setId": "r2025b",
       "type": "box",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_bs1"
+        "r2025bs1"
       ],
       "start": {
-        "sentId": "kor25_bs1",
+        "sentId": "r2025bs1",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_bs1",
+        "sentId": "r2025bs1",
         "offset": 2
       },
       "text": "개화",
@@ -3839,21 +3839,21 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2025수능_kor25_b_underline_x_121",
+      "id": "vm_2025수능_r2025b_underline_x_121",
       "yearKey": "2025수능",
-      "setId": "kor25_b",
+      "setId": "r2025b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_bs15"
+        "r2025bs15"
       ],
       "start": {
-        "sentId": "kor25_bs15",
+        "sentId": "r2025bs15",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_bs15",
+        "sentId": "r2025bs15",
         "offset": 43
       },
       "text": "근대 국가 건설과 새로운 주체의 형성에 주목하여 문명에 대한 견해를 제시했다.",
@@ -3863,21 +3863,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_b_underline_x_122",
+      "id": "vm_2025수능_r2025b_underline_x_122",
       "yearKey": "2025수능",
-      "setId": "kor25_b",
+      "setId": "r2025b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_bs27"
+        "r2025bs27"
       ],
       "start": {
-        "sentId": "kor25_bs27",
+        "sentId": "r2025bs27",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_bs27",
+        "sentId": "r2025bs27",
         "offset": 33
       },
       "text": "과학의 근거 위에서만 민주 정치의 실현이 가능하다고 주장했다",
@@ -3887,21 +3887,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_b_underline_x_123",
+      "id": "vm_2025수능_r2025b_underline_x_123",
       "yearKey": "2025수능",
-      "setId": "kor25_b",
+      "setId": "r2025b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_bs29"
+        "r2025bs29"
       ],
       "start": {
-        "sentId": "kor25_bs29",
+        "sentId": "r2025bs29",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_bs29",
+        "sentId": "r2025bs29",
         "offset": 2
       },
       "text": "그칠",
@@ -3911,21 +3911,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_c_box_x_124",
+      "id": "vm_2025수능_r2025c_box_x_124",
       "yearKey": "2025수능",
-      "setId": "kor25_c",
+      "setId": "r2025c",
       "type": "box",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_cs14"
+        "r2025cs14"
       ],
       "start": {
-        "sentId": "kor25_cs14",
+        "sentId": "r2025cs14",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_cs14",
+        "sentId": "r2025cs14",
         "offset": 5
       },
       "text": "잠재 표현",
@@ -3935,21 +3935,21 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2025수능_kor25_d_underline_x_125",
+      "id": "vm_2025수능_r2025d_underline_x_125",
       "yearKey": "2025수능",
-      "setId": "kor25_d",
+      "setId": "r2025d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_ds1"
+        "r2025ds1"
       ],
       "start": {
-        "sentId": "kor25_ds1",
+        "sentId": "r2025ds1",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_ds1",
+        "sentId": "r2025ds1",
         "offset": 6
       },
       "text": "이루어진다고",
@@ -3959,21 +3959,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_d_underline_x_126",
+      "id": "vm_2025수능_r2025d_underline_x_126",
       "yearKey": "2025수능",
-      "setId": "kor25_d",
+      "setId": "r2025d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_ds2"
+        "r2025ds2"
       ],
       "start": {
-        "sentId": "kor25_ds2",
+        "sentId": "r2025ds2",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_ds2",
+        "sentId": "r2025ds2",
         "offset": 4
       },
       "text": "불러내어",
@@ -3983,21 +3983,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_d_underline_x_127",
+      "id": "vm_2025수능_r2025d_underline_x_127",
       "yearKey": "2025수능",
-      "setId": "kor25_d",
+      "setId": "r2025d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_ds4"
+        "r2025ds4"
       ],
       "start": {
-        "sentId": "kor25_ds4",
+        "sentId": "r2025ds4",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_ds4",
+        "sentId": "r2025ds4",
         "offset": 5
       },
       "text": "나타난다고",
@@ -4007,21 +4007,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_d_underline_x_128",
+      "id": "vm_2025수능_r2025d_underline_x_128",
       "yearKey": "2025수능",
-      "setId": "kor25_d",
+      "setId": "r2025d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_ds6"
+        "r2025ds6"
       ],
       "start": {
-        "sentId": "kor25_ds6",
+        "sentId": "r2025ds6",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_ds6",
+        "sentId": "r2025ds6",
         "offset": 3
       },
       "text": "감추고",
@@ -4031,21 +4031,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_d_underline_x_129",
+      "id": "vm_2025수능_r2025d_underline_x_129",
       "yearKey": "2025수능",
-      "setId": "kor25_d",
+      "setId": "r2025d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_ds7"
+        "r2025ds7"
       ],
       "start": {
-        "sentId": "kor25_ds7",
+        "sentId": "r2025ds7",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_ds7",
+        "sentId": "r2025ds7",
         "offset": 5
       },
       "text": "넘쳐 나는",
@@ -4055,21 +4055,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_d_underline_x_130",
+      "id": "vm_2025수능_r2025d_underline_x_130",
       "yearKey": "2025수능",
-      "setId": "kor25_d",
+      "setId": "r2025d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_ds10"
+        "r2025ds10"
       ],
       "start": {
-        "sentId": "kor25_ds10",
+        "sentId": "r2025ds10",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_ds10",
+        "sentId": "r2025ds10",
         "offset": 7
       },
       "text": "인정하는 입장",
@@ -4079,21 +4079,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_d_underline_x_131",
+      "id": "vm_2025수능_r2025d_underline_x_131",
       "yearKey": "2025수능",
-      "setId": "kor25_d",
+      "setId": "r2025d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_ds12"
+        "r2025ds12"
       ],
       "start": {
-        "sentId": "kor25_ds12",
+        "sentId": "r2025ds12",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_ds12",
+        "sentId": "r2025ds12",
         "offset": 10
       },
       "text": "인정하지 않는 입장",
@@ -4103,21 +4103,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_d_underline_x_132",
+      "id": "vm_2025수능_r2025d_underline_x_132",
       "yearKey": "2025수능",
-      "setId": "kor25_d",
+      "setId": "r2025d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_ds14"
+        "r2025ds14"
       ],
       "start": {
-        "sentId": "kor25_ds14",
+        "sentId": "r2025ds14",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_ds14",
+        "sentId": "r2025ds14",
         "offset": 3
       },
       "text": "대법원",
@@ -4127,21 +4127,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_d_underline_x_133",
+      "id": "vm_2025수능_r2025d_underline_x_133",
       "yearKey": "2025수능",
-      "setId": "kor25_d",
+      "setId": "r2025d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_ds16"
+        "r2025ds16"
       ],
       "start": {
-        "sentId": "kor25_ds16",
+        "sentId": "r2025ds16",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_ds16",
+        "sentId": "r2025ds16",
         "offset": 5
       },
       "text": "다수 의견",
@@ -4151,21 +4151,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025수능_kor25_d_underline_x_134",
+      "id": "vm_2025수능_r2025d_underline_x_134",
       "yearKey": "2025수능",
-      "setId": "kor25_d",
+      "setId": "r2025d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "kor25_ds17"
+        "r2025ds17"
       ],
       "start": {
-        "sentId": "kor25_ds17",
+        "sentId": "r2025ds17",
         "offset": 0
       },
       "end": {
-        "sentId": "kor25_ds17",
+        "sentId": "r2025ds17",
         "offset": 5
       },
       "text": "소수 의견",
