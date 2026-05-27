@@ -1851,6 +1851,7 @@ function ViewerPage({ user, isPro = false }) {
           }}
         >
           <PassagePanel
+            key={`p-${currentSet?.id}-${submittedSets[currentSet?.id] ? "r" : "s"}`}
             passageSet={currentSet}
             sel={sel}
             mode={
@@ -1862,6 +1863,7 @@ function ViewerPage({ user, isPro = false }) {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           <QuizPanel
+            key={`q-${currentSet?.id}-${submittedSets[currentSet?.id] ? "r" : "s"}`}
             passageSet={currentSet}
             sel={sel}
             onSelChange={handleSelChange}
