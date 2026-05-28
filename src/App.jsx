@@ -260,8 +260,8 @@ function Footer() {
     사업자등록번호: "297-93-01982",
     통신판매업신고번호: "2026-서울강북-0428호",
     사업장주소: "서울특별시 강북구 도봉로50길 15 301호",
-    고객센터: "seongjinpak12@gmail.com",
-    개인정보관리책임자: "박성진 / seongjinpak12@gmail.com",
+    고객센터: "seongjinpark12@gmail.com",
+    개인정보관리책임자: "박성진 / seongjinpark12@gmail.com",
   };
   const rowStyle = {
     display: "inline-block",
