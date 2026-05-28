@@ -96,7 +96,7 @@ export default function Privacy() {
           <tbody>
             <tr>
               <th style={TH_STYLE}>상호</th>
-              <td style={TD_STYLE}>짚이 (Jippi)</td>
+              <td style={TD_STYLE}>박성진</td>
             </tr>
             <tr>
               <th style={TH_STYLE}>대표자</th>
@@ -108,19 +108,19 @@ export default function Privacy() {
             </tr>
             <tr>
               <th style={TH_STYLE}>사업장 주소</th>
-              <td style={TD_STYLE}>서울특별시 강북구 (상세주소 추후 갱신)</td>
+              <td style={TD_STYLE}>서울특별시 강북구 도봉로50길 15 301호</td>
             </tr>
             <tr>
               <th style={TH_STYLE}>통신판매업 신고번호</th>
-              <td style={TD_STYLE}>추후 갱신</td>
+              <td style={TD_STYLE}>2026-서울강북-0428호</td>
             </tr>
             <tr>
-              <th style={TH_STYLE}>대표 전화</th>
-              <td style={TD_STYLE}>추후 갱신</td>
+              <th style={TH_STYLE}>고객센터</th>
+              <td style={TD_STYLE}>seongjinpak12@gmail.com</td>
             </tr>
             <tr>
-              <th style={TH_STYLE}>이메일</th>
-              <td style={TD_STYLE}>seongjinpark12@gmail.com</td>
+              <th style={TH_STYLE}>개인정보관리책임자</th>
+              <td style={TD_STYLE}>박성진 / seongjinpak12@gmail.com</td>
             </tr>
             <tr>
               <th style={TH_STYLE}>서비스명</th>
@@ -288,7 +288,7 @@ export default function Privacy() {
           <li>개인정보 수집·이용 동의 철회 (= 회원 탈퇴)</li>
           <li>
             위 권리 행사:{" "}
-            <strong>seongjinpark12@gmail.com</strong> 으로 요청
+            <strong>seongjinpak12@gmail.com</strong> 으로 요청
           </li>
         </ul>
 
@@ -336,7 +336,7 @@ export default function Privacy() {
             </tr>
             <tr>
               <th style={TH_STYLE}>이메일</th>
-              <td style={TD_STYLE}>seongjinpark12@gmail.com</td>
+              <td style={TD_STYLE}>seongjinpak12@gmail.com</td>
             </tr>
           </tbody>
         </table>
@@ -445,7 +445,7 @@ export default function Privacy() {
           textAlign: "center",
         }}
       >
-        문의: seongjinpark12@gmail.com · 시행일 2026년 5월 15일
+        문의: seongjinpak12@gmail.com · 시행일 2026년 5월 15일
       </p>
     </div>
   );

@@ -255,13 +255,13 @@ function Footer() {
   // ※ 사업자등록증 / 통신판매업신고증 기준 정합 의무.
   //   값 변경 시 /privacy 페이지(src/Privacy.jsx)도 동시 갱신.
   const info = {
-    상호: "짚이 (Jippi)",
+    상호명: "박성진",
     대표자: "박성진",
     사업자등록번호: "297-93-01982",
-    통신판매업신고번호: "추후 갱신",
-    사업장주소: "서울특별시 강북구 (상세주소 추후 갱신)",
-    대표전화: "추후 갱신",
-    이메일: "seongjinpark12@gmail.com",
+    통신판매업신고번호: "2026-서울강북-0428호",
+    사업장주소: "서울특별시 강북구 도봉로50길 15 301호",
+    고객센터: "seongjinpak12@gmail.com",
+    개인정보관리책임자: "박성진 / seongjinpak12@gmail.com",
   };
   const rowStyle = {
     display: "inline-block",
