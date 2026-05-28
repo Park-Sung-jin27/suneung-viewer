@@ -25,7 +25,7 @@ function loadTossSDK() {
       return;
     }
     const s = document.createElement("script");
-    s.src = "https://js.tosspayments.com/v2/base";
+    s.src = "https://js.tosspayments.com/v2/standard";
     s.onload = () => {
       if (typeof TossPayments !== "undefined") resolve(TossPayments);
       else if (window.TossPayments) resolve(window.TossPayments);
@@ -730,4 +730,3 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
     </div>
   );
 }
-

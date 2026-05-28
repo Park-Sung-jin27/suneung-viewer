@@ -1,6 +1,6 @@
 (function () {
   const TOSS_CLIENT_KEY = "test_ck_pP2YxJ4K872Yyekv1dGmrRGZwXLO";
-  const TOSS_SDK_URL = "https://js.tosspayments.com/v2/base";
+  const TOSS_SDK_URL = "https://js.tosspayments.com/v2/standard";
 
   const PRODUCTS = {
     fortune_theme_card: {
