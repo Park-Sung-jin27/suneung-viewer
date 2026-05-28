@@ -368,10 +368,8 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
         orderName: `짚이 ${plan.name} 구독 (1개월)`,
         customerEmail: user.email,
         customerName: user.email,
-        successUrl:
-          window.location.origin +
-          "/?paymentKey={paymentKey}&orderId={orderId}&amount={amount}",
-        failUrl: window.location.origin + "/?code={code}&message={message}",
+        successUrl: window.location.origin + "/payment-success.html",
+        failUrl: window.location.origin + "/payment-fail.html",
       });
       onPaySuccess?.();
     } catch (err) {
