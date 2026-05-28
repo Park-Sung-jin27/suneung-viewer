@@ -199,32 +199,38 @@
       {
         "type": "underline",
         "sentId": "r2026bs3",
-        "text": "구성하는"
+        "text": "구성하는",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
         "sentId": "r2026bs5",
-        "text": "고려하여"
+        "text": "고려하여",
+        "marker": "ⓑ"
       },
       {
         "type": "underline",
         "sentId": "r2026bs12",
-        "text": "파기하고"
+        "text": "파기하고",
+        "marker": "ⓒ"
       },
       {
         "type": "underline",
         "sentId": "r2026bs24",
-        "text": "성립하려면"
+        "text": "성립하려면",
+        "marker": "ⓓ"
       },
       {
         "type": "underline",
         "sentId": "r2026bs36",
-        "text": "규정하고"
+        "text": "규정하고",
+        "marker": "ⓔ"
       },
       {
         "type": "underline",
         "sentId": "r2026bs26",
-        "text": "이는 주채무자와 보증인 간에 보증의 대가를 지급하기로 하는 계약이 별도로 체결되었더라도 마찬가지이다."
+        "text": "이는 주채무자와 보증인 간에 보증의 대가를 지급하기로 하는 계약이 별도로 체결되었더라도 마찬가지이다.",
+        "marker": "㉠"
       }
     ],
     "r2026c": [
