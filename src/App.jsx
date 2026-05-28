@@ -243,7 +243,73 @@ function Layout({ user, onLogout, children }) {
       <Header user={user} onLogout={onLogout} />
       {children}
       <FeedbackButton />
+      <Footer />
     </>
+  );
+}
+
+// ══════════════════════════════════════════════
+// Footer — 전 페이지 하단 사업자정보 (토스 페이먼츠 심사 요구)
+// ══════════════════════════════════════════════
+function Footer() {
+  // ※ 사업자등록증 / 통신판매업신고증 기준 정합 의무.
+  //   값 변경 시 /privacy 페이지(src/Privacy.jsx)도 동시 갱신.
+  const info = {
+    상호: "짚이 (Jippi)",
+    대표자: "박성진",
+    사업자등록번호: "297-93-01982",
+    통신판매업신고번호: "추후 갱신",
+    사업장주소: "서울특별시 강북구 (상세주소 추후 갱신)",
+    대표전화: "추후 갱신",
+    이메일: "seongjinpark12@gmail.com",
+  };
+  const rowStyle = {
+    display: "inline-block",
+    marginRight: "16px",
+    marginBottom: "4px",
+    fontSize: "0.72rem",
+    color: "#6b7280",
+    lineHeight: 1.7,
+  };
+  return (
+    <footer
+      style={{
+        marginTop: "60px",
+        background: "#1f2937",
+        padding: "28px 24px 32px",
+        color: "#d1d5db",
+        fontFamily: "'Noto Sans KR', sans-serif",
+      }}
+    >
+      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+        <div
+          style={{
+            fontSize: "0.85rem",
+            fontWeight: "700",
+            color: "#f9fafb",
+            marginBottom: "10px",
+          }}
+        >
+          짚이 (Jippi)
+        </div>
+        <div style={{ color: "#9ca3af", marginBottom: "12px" }}>
+          {Object.entries(info).map(([k, v]) => (
+            <span key={k} style={rowStyle}>
+              <span style={{ color: "#9ca3af" }}>{k}</span>{" "}
+              <span style={{ color: "#e5e7eb" }}>{v}</span>
+            </span>
+          ))}
+        </div>
+        <div style={{ display: "flex", gap: "14px", marginBottom: "10px" }}>
+          <a href="/privacy" style={{ color: "#9ca3af", fontSize: "0.75rem", textDecoration: "none" }}>개인정보처리방침</a>
+          <a href="/privacy" style={{ color: "#9ca3af", fontSize: "0.75rem", textDecoration: "none" }}>이용약관</a>
+          <a href="/payment" style={{ color: "#9ca3af", fontSize: "0.75rem", textDecoration: "none" }}>요금제</a>
+        </div>
+        <div style={{ fontSize: "0.68rem", color: "#6b7280" }}>
+          © 2026 짚이 (Jippi). All rights reserved.
+        </div>
+      </div>
+    </footer>
   );
 }
 

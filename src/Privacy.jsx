@@ -108,10 +108,18 @@ export default function Privacy() {
             </tr>
             <tr>
               <th style={TH_STYLE}>사업장 주소</th>
-              <td style={TD_STYLE}>서울특별시 강북구</td>
+              <td style={TD_STYLE}>서울특별시 강북구 (상세주소 추후 갱신)</td>
             </tr>
             <tr>
-              <th style={TH_STYLE}>연락처</th>
+              <th style={TH_STYLE}>통신판매업 신고번호</th>
+              <td style={TD_STYLE}>추후 갱신</td>
+            </tr>
+            <tr>
+              <th style={TH_STYLE}>대표 전화</th>
+              <td style={TD_STYLE}>추후 갱신</td>
+            </tr>
+            <tr>
+              <th style={TH_STYLE}>이메일</th>
               <td style={TD_STYLE}>seongjinpark12@gmail.com</td>
             </tr>
             <tr>
@@ -120,7 +128,7 @@ export default function Privacy() {
             </tr>
             <tr>
               <th style={TH_STYLE}>도메인</th>
-              <td style={TD_STYLE}>suneung-viewer.vercel.app</td>
+              <td style={TD_STYLE}>jippi.kr</td>
             </tr>
           </tbody>
         </table>

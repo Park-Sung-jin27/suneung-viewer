@@ -67,7 +67,7 @@ const PLANS = [
       { text: "1:1 전문가 리뷰", ok: false },
     ],
     cta: "지금 시작하기",
-    available: false, // 토스 심사 후 true로
+    available: true, // 토스 심사용 활성화 — 결제창 연동 검증
   },
   {
     id: "premium",
