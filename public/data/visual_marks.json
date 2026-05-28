@@ -28,7 +28,7 @@
     {
       "id": "vm_2026수능_s4_inline_label_A_1",
       "yearKey": "2026수능",
-      "setId": "s4",
+      "setId": "r2026d",
       "type": "inline_label",
       "label": "A",
       "target": "text_span",
@@ -2737,7 +2737,7 @@
     {
       "id": "vm_2026수능_s1_box_x_73",
       "yearKey": "2026수능",
-      "setId": "s1",
+      "setId": "r2026a",
       "type": "box",
       "label": null,
       "target": "text_span",
@@ -2761,7 +2761,7 @@
     {
       "id": "vm_2026수능_s2_box_x_74",
       "yearKey": "2026수능",
-      "setId": "s2",
+      "setId": "r2026b",
       "type": "box",
       "label": null,
       "target": "text_span",
@@ -2785,7 +2785,7 @@
     {
       "id": "vm_2026수능_s2_underline_x_75",
       "yearKey": "2026수능",
-      "setId": "s2",
+      "setId": "r2026b",
       "type": "underline",
       "label": null,
       "target": "text_span",
@@ -2809,7 +2809,7 @@
     {
       "id": "vm_2026수능_s2_underline_x_76",
       "yearKey": "2026수능",
-      "setId": "s2",
+      "setId": "r2026b",
       "type": "underline",
       "label": null,
       "target": "text_span",
@@ -2833,7 +2833,7 @@
     {
       "id": "vm_2026수능_s2_underline_x_77",
       "yearKey": "2026수능",
-      "setId": "s2",
+      "setId": "r2026b",
       "type": "underline",
       "label": null,
       "target": "text_span",
@@ -2857,7 +2857,7 @@
     {
       "id": "vm_2026수능_s2_underline_x_78",
       "yearKey": "2026수능",
-      "setId": "s2",
+      "setId": "r2026b",
       "type": "underline",
       "label": null,
       "target": "text_span",
@@ -2881,7 +2881,7 @@
     {
       "id": "vm_2026수능_s2_underline_x_79",
       "yearKey": "2026수능",
-      "setId": "s2",
+      "setId": "r2026b",
       "type": "underline",
       "label": null,
       "target": "text_span",
@@ -2905,7 +2905,7 @@
     {
       "id": "vm_2026수능_s2_underline_x_80",
       "yearKey": "2026수능",
-      "setId": "s2",
+      "setId": "r2026b",
       "type": "underline",
       "label": null,
       "target": "text_span",
@@ -2929,7 +2929,7 @@
     {
       "id": "vm_2026수능_s3_underline_x_81",
       "yearKey": "2026수능",
-      "setId": "s3",
+      "setId": "r2026c",
       "type": "underline",
       "label": null,
       "target": "text_span",
@@ -2953,7 +2953,7 @@
     {
       "id": "vm_2026수능_s3_underline_x_82",
       "yearKey": "2026수능",
-      "setId": "s3",
+      "setId": "r2026c",
       "type": "underline",
       "label": null,
       "target": "text_span",
@@ -12290,7 +12290,7 @@
     {
       "id": "vm_2026수능_s4_bracket_A_83",
       "yearKey": "2026수능",
-      "setId": "s4",
+      "setId": "r2026d",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",

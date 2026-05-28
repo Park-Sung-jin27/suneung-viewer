@@ -1967,7 +1967,7 @@ function AuthRedirect() {
   }, []);
   if (justSignedUpRef.current) {
     return (
-      <Navigate to="/viewer?year=2026수능&set=s1&q=1&mode=study" replace />
+      <Navigate to="/viewer?year=2026수능&set=r2026a&q=1&mode=study" replace />
     );
   }
   return <Navigate to="/" replace />;

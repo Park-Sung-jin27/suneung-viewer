@@ -1,69 +1,5 @@
 {
   "2026수능": {
-    "s1": [
-      {
-        "type": "box",
-        "sentId": "r2026a_s3",
-        "text": "단순 관점"
-      }
-    ],
-    "s2": [
-      {
-        "type": "box",
-        "sentId": "r2026b_s34",
-        "text": "연대 보증인"
-      },
-      {
-        "type": "underline",
-        "sentId": "r2026b_s3",
-        "text": "구성하는"
-      },
-      {
-        "type": "underline",
-        "sentId": "r2026b_s5",
-        "text": "고려하여"
-      },
-      {
-        "type": "underline",
-        "sentId": "r2026b_s12",
-        "text": "파기하고"
-      },
-      {
-        "type": "underline",
-        "sentId": "r2026b_s24",
-        "text": "성립하려면"
-      },
-      {
-        "type": "underline",
-        "sentId": "r2026b_s36",
-        "text": "규정하고"
-      },
-      {
-        "type": "underline",
-        "sentId": "r2026b_s26",
-        "text": "이는 주채무자와 보증인 간에 보증의 대가를 지급하기로 하는 계약이 별도로 체결되었더라도 마찬가지이다."
-      }
-    ],
-    "s3": [
-      {
-        "type": "underline",
-        "sentId": "r2026c_s3",
-        "text": "얻는"
-      },
-      {
-        "type": "underline",
-        "sentId": "r2026c_s9",
-        "text": "돌아온다"
-      }
-    ],
-    "s4": [
-      {
-        "type": "bracket",
-        "label": "A",
-        "sentFrom": "r2026d_s9",
-        "sentTo": "r2026d_s11"
-      }
-    ],
     "l2026a": [
       {
         "type": "marker",
@@ -246,6 +182,70 @@
         "sentId": "l2026ds10",
         "text": "연"
       }
+    ],
+    "r2026a": [
+      {
+        "type": "box",
+        "sentId": "r2026as3",
+        "text": "단순 관점"
+      }
+    ],
+    "r2026b": [
+      {
+        "type": "box",
+        "sentId": "r2026bs34",
+        "text": "연대 보증인"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026bs3",
+        "text": "구성하는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026bs5",
+        "text": "고려하여"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026bs12",
+        "text": "파기하고"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026bs24",
+        "text": "성립하려면"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026bs36",
+        "text": "규정하고"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026bs26",
+        "text": "이는 주채무자와 보증인 간에 보증의 대가를 지급하기로 하는 계약이 별도로 체결되었더라도 마찬가지이다."
+      }
+    ],
+    "r2026c": [
+      {
+        "type": "underline",
+        "sentId": "r2026cs3",
+        "text": "얻는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2026cs9",
+        "text": "돌아온다"
+      }
+    ],
+    "r2026d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2026ds9",
+        "sentTo": "r2026ds11"
+      }
     ]
   },
   "2025수능": {
@@ -381,49 +381,49 @@
     "l2025c": [
       {
         "type": "box",
-        "sentId": "l2025as161",
+        "sentId": "l2025cs161",
         "text": "비밀"
       },
       {
         "type": "underline",
-        "sentId": "l2025as160",
+        "sentId": "l2025cs160",
         "text": "불편스런 일이 한두 가지가 아니었다"
       },
       {
         "type": "underline",
-        "sentId": "l2025as168",
+        "sentId": "l2025cs168",
         "text": "―그깟 놈의 배꼽, 안 가지고 있음 어때."
       },
       {
         "type": "underline",
-        "sentId": "l2025as170",
+        "sentId": "l2025cs170",
         "text": "자신으로부터 배꼽이 사라져 버린 사실을, 그리고 그 때문에 생긴 모든 불편을 잊고, 그 배꼽 없는 생활에 스스로 익숙해져 버리기를 바라 마지않았다"
       },
       {
         "type": "underline",
-        "sentId": "l2025as190",
+        "sentId": "l2025cs190",
         "text": "어느 해 여름이었다."
       },
       {
         "type": "underline",
-        "sentId": "l2025as191",
+        "sentId": "l2025cs191",
         "text": "하니까 그것은 허원이 자신의 배꼽을 잃어버리고 나서 불편하기 그지없는 세 번째의 여름을 맞고 있을 때였다."
       },
       {
         "type": "underline",
-        "sentId": "l2025as205",
+        "sentId": "l2025cs205",
         "text": "배꼽에 관한 논의가 그렇듯 갑자기 시중 일반에까지 성행하기 시작한 것이다."
       }
     ],
     "l2025d": [
       {
         "type": "underline",
-        "sentId": "l2025as219",
+        "sentId": "l2025ds219",
         "text": "인삼"
       },
       {
         "type": "underline",
-        "sentId": "l2025as249",
+        "sentId": "l2025ds249",
         "text": "고기"
       }
     ]
@@ -710,8 +710,8 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2024_18_21s1",
-        "sentTo": "l2024_18_21s5"
+        "sentFrom": "l2024as1",
+        "sentTo": "l2024as5"
       }
     ],
     "l2024b": [
@@ -758,20 +758,20 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l2024_32_34s2",
-        "sentTo": "l2024_32_34s3"
+        "sentFrom": "l2024ds2",
+        "sentTo": "l2024ds3"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l2024_32_34s4_1",
-        "sentTo": "l2024_32_34s4_6"
+        "sentFrom": "l2024ds_x1",
+        "sentTo": "l2024ds_x6"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2024_32_34s4_11",
-        "sentTo": "l2024_32_34s4_15"
+        "sentFrom": "l2024ds_x11",
+        "sentTo": "l2024ds_x15"
       }
     ]
   },
@@ -1644,17 +1644,17 @@
       },
       {
         "type": "underline",
-        "sentId": "l20269es2",
+        "sentId": "l20269ds2",
         "text": "공명을 헤아리니 영욕이 반이로다"
       },
       {
         "type": "underline",
-        "sentId": "l20269fs3",
+        "sentId": "l20269ds3",
         "text": "청산이 둘러 있고 벽수도 흘러간다"
       },
       {
         "type": "underline",
-        "sentId": "l20269fs4",
+        "sentId": "l20269ds4",
         "text": "백운(白雲)"
       }
     ]
@@ -1664,118 +1664,118 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r20236a_s3",
-        "sentTo": "r20236a_s6"
+        "sentFrom": "r20236as3",
+        "sentTo": "r20236as6"
       },
       {
         "type": "underline",
-        "sentId": "r20236a_s3",
+        "sentId": "r20236as3",
         "text": "어휘력이 높은 학생들"
       },
       {
         "type": "underline",
-        "sentId": "r20236a_s3",
+        "sentId": "r20236as3",
         "text": "어휘력이 낮은 학생들"
       },
       {
         "type": "underline",
-        "sentId": "r20236a_s10",
+        "sentId": "r20236as10",
         "text": "글 읽는 능력을 매튜 효과로만 설명하는 데에는 문제가 있다."
       }
     ],
     "r20236b": [
       {
         "type": "underline",
-        "sentId": "r20236b_s1",
+        "sentId": "r20236bs1",
         "text": "기도했다"
       },
       {
         "type": "underline",
-        "sentId": "r20236b_s3",
+        "sentId": "r20236bs3",
         "text": "흡수하여"
       },
       {
         "type": "underline",
-        "sentId": "r20236b_s4",
+        "sentId": "r20236bs4",
         "text": "숭상하던"
       },
       {
         "type": "underline",
-        "sentId": "r20236b_s9",
+        "sentId": "r20236bs9",
         "text": "통물(統物)"
       },
       {
         "type": "underline",
-        "sentId": "r20236b_s9",
+        "sentId": "r20236bs9",
         "text": "통변(通變)"
       },
       {
         "type": "underline",
-        "sentId": "r20236b_s10",
+        "sentId": "r20236bs10",
         "text": "인의(仁義)"
       },
       {
         "type": "underline",
-        "sentId": "r20236b_s18",
+        "sentId": "r20236bs18",
         "text": "개입되었다는"
       },
       {
         "type": "underline",
-        "sentId": "r20236b_s20",
+        "sentId": "r20236bs20",
         "text": "계속되었지만"
       }
     ],
     "r20236c": [
       {
         "type": "box",
-        "sentId": "r20236c_s17",
+        "sentId": "r20236cs17",
         "text": "칼슘의 역설"
       },
       {
         "type": "underline",
-        "sentId": "r20236c_s15",
+        "sentId": "r20236cs15",
         "text": "비타민 K1"
       },
       {
         "type": "underline",
-        "sentId": "r20236c_s15",
+        "sentId": "r20236cs15",
         "text": "비타민 K2"
       }
     ],
     "r20236d": [
       {
         "type": "box",
-        "sentId": "r20236d_s8",
+        "sentId": "r20236ds8",
         "text": "이중차분법"
       },
       {
         "type": "underline",
-        "sentId": "r20236d_s4",
+        "sentId": "r20236ds4",
         "text": "날"
       },
       {
         "type": "underline",
-        "sentId": "r20236d_s13",
+        "sentId": "r20236ds13",
         "text": "바꿨는데"
       },
       {
         "type": "underline",
-        "sentId": "r20236d_s14",
+        "sentId": "r20236ds14",
         "text": "내렸다"
       },
       {
         "type": "underline",
-        "sentId": "r20236d_s17",
+        "sentId": "r20236ds17",
         "text": "어떤 노동자 교육 프로그램의 고용 증가 효과를 평가할 때, 일자리가 급격히 줄어드는 산업에 종사하는 노동자의 비중이 비교집단에 비해 시행집단에서 더 큰 경우"
       },
       {
         "type": "underline",
-        "sentId": "r20236d_s18",
+        "sentId": "r20236ds18",
         "text": "높이려고"
       },
       {
         "type": "underline",
-        "sentId": "r20236d_s21",
+        "sentId": "r20236ds21",
         "text": "줄일"
       }
     ],
@@ -1783,32 +1783,32 @@
     "l20236b": [
       {
         "type": "box",
-        "sentId": "l20238as20",
+        "sentId": "l20236bs20",
         "text": "비밀들"
       },
       {
         "type": "underline",
-        "sentId": "l20238as13",
+        "sentId": "l20236bs13",
         "text": "천문구중(天門九重)에 갈 길이 아득하니"
       },
       {
         "type": "underline",
-        "sentId": "l20238as14",
+        "sentId": "l20236bs14",
         "text": "음력 섣달 거의로다 새봄이면 늦으리라"
       },
       {
         "type": "underline",
-        "sentId": "l20238as15",
+        "sentId": "l20236bs15",
         "text": "간장이 다 썩어 넋조차 그쳤으니"
       },
       {
         "type": "underline",
-        "sentId": "l20238as16",
+        "sentId": "l20236bs16",
         "text": "백일(白日)이 무정하니 뒤집힌 동이에 비칠쏘냐"
       },
       {
         "type": "underline",
-        "sentId": "l20238as17",
+        "sentId": "l20236bs17",
         "text": "은쟁(銀箏)을 꺼내어 원곡(怨曲)을 슬피 타니"
       }
     ],
@@ -1816,78 +1816,78 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l20236es6",
-        "sentTo": "l20236es6"
+        "sentFrom": "l20236ds6",
+        "sentTo": "l20236ds6"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l20236es7",
-        "sentTo": "l20236es7"
+        "sentFrom": "l20236ds7",
+        "sentTo": "l20236ds7"
       },
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l20236es8",
-        "sentTo": "l20236es8"
+        "sentFrom": "l20236ds8",
+        "sentTo": "l20236ds8"
       },
       {
         "type": "bracket",
         "label": "D",
-        "sentFrom": "l20236es10",
-        "sentTo": "l20236es10"
+        "sentFrom": "l20236ds10",
+        "sentTo": "l20236ds10"
       },
       {
         "type": "bracket",
         "label": "E",
-        "sentFrom": "l20236es11",
-        "sentTo": "l20236es11"
+        "sentFrom": "l20236ds11",
+        "sentTo": "l20236ds11"
       },
       {
         "type": "underline",
-        "sentId": "l20236es2",
+        "sentId": "l20236ds2",
         "text": "내가 엠피*헌테 말 한마디문, 전 어느 지경 갈지 모를 줄 모르구서."
       },
       {
         "type": "underline",
-        "sentId": "l20236es6",
+        "sentId": "l20236ds6",
         "text": "이백 석 추수의 토지와, 만 원짜리 저금통장과, 만 원어치가 넘는 옷이며 비단과, 역시 만 원어치가 넘는 여편네의 패물과를 장만하였다."
       },
       {
         "type": "underline",
-        "sentId": "l20236es12",
+        "sentId": "l20236ds12",
         "text": "어떻게 하면 이 분풀이를 할까, ⓐ 어떻게 하면 빼앗긴 돈과 물건을 도로 다 찾을까 하고 궁리를 하는 것이나, 아무런 묘책도 없었다."
       },
       {
         "type": "underline",
-        "sentId": "l20236es16",
+        "sentId": "l20236ds16",
         "text": "그러고는 내 집으루 갑시다, 하고 잡아끄는 대로 끌리어 온 것이었었다."
       },
       {
         "type": "underline",
-        "sentId": "l20236es17",
+        "sentId": "l20236ds17",
         "text": "진소위 개천에서 용이 났다고 할 것인지."
       },
       {
         "type": "underline",
-        "sentId": "l20236es18",
+        "sentId": "l20236ds18",
         "text": "또 한 번 어깨가 움츠러듦을 느끼지 아니치 못하였다"
       },
       {
         "type": "underline",
-        "sentId": "l20236es18",
+        "sentId": "l20236ds18",
         "text": "엔간히 자리를 털고 일어설 생각이 몇 번이나 나지 아니한 것도 아니었었다. 그러나 참았다."
       }
     ],
     "l20236c": [
       {
         "type": "underline",
-        "sentId": "l202311as6",
+        "sentId": "l20236cs6",
         "text": "정자나무 마을"
       },
       {
         "type": "underline",
-        "sentId": "l202311as17",
+        "sentId": "l20236cs17",
         "text": "그 골목"
       }
     ]
@@ -1897,78 +1897,78 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r20239a_s3",
-        "sentTo": "r20239a_s9"
+        "sentFrom": "r20239as3",
+        "sentTo": "r20239as9"
       },
       {
         "type": "underline",
-        "sentId": "r20239a_s11",
+        "sentId": "r20239as11",
         "text": "이전보다 고정 횟수와 고정 시간이 줄어들고 단어를 건너뛰는 긴 도약이 자주 일어나는 모습이 관찰된다."
       }
     ],
     "r20239b": [
       {
         "type": "box",
-        "sentId": "r20239b_s2",
+        "sentId": "r20239bs2",
         "text": "아도르노가 보는 대중 예술"
       },
       {
         "type": "underline",
-        "sentId": "r20239b_s4",
+        "sentId": "r20239bs4",
         "text": "전락시키는"
       },
       {
         "type": "underline",
-        "sentId": "r20239b_s17",
+        "sentId": "r20239bs17",
         "text": "유리된"
       },
       {
         "type": "underline",
-        "sentId": "r20239b_s20",
+        "sentId": "r20239bs20",
         "text": "응시하는"
       },
       {
         "type": "underline",
-        "sentId": "r20239b_s23",
+        "sentId": "r20239bs23",
         "text": "아도르노의 미학에서는 주관의 재현이라는 미메시스가 부정되고 있다."
       },
       {
         "type": "underline",
-        "sentId": "r20239b_s25",
+        "sentId": "r20239bs25",
         "text": "전위 예술의 관점에서 예술의 동일화를 시도하고 있다."
       },
       {
         "type": "underline",
-        "sentId": "r20239b_s26",
+        "sentId": "r20239bs26",
         "text": "박탈한다"
       },
       {
         "type": "underline",
-        "sentId": "r20239b_s27",
+        "sentId": "r20239bs27",
         "text": "발견하는"
       }
     ],
     "r20239c": [
       {
         "type": "underline",
-        "sentId": "r20239c_s19",
+        "sentId": "r20239cs19",
         "text": "유류분의 취지에 비추어 상속 개시 당시의 시가를 기준으로 해야 한다."
       }
     ],
     "r20239d": [
       {
         "type": "underline",
-        "sentId": "r20239d_s2",
+        "sentId": "r20239ds2",
         "text": "넘는"
       },
       {
         "type": "underline",
-        "sentId": "r20239d_s7",
+        "sentId": "r20239ds7",
         "text": "중요도"
       },
       {
         "type": "underline",
-        "sentId": "r20239d_s18",
+        "sentId": "r20239ds18",
         "text": "적합도"
       }
     ],
@@ -2099,7 +2099,7 @@
       },
       {
         "type": "underline",
-        "sentId": "l20239ds48v",
+        "sentId": "l20239ds48",
         "text": "⑫동파(東坡) 적벽유(赤壁遊)*인들 이내 흥(興)에 미치겠는가"
       }
     ]
@@ -2109,78 +2109,78 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "r20246a_s4",
-        "sentTo": "r20246a_s10"
+        "sentFrom": "r20246as4",
+        "sentTo": "r20246as10"
       }
     ],
     "r20246b": [
       {
         "type": "underline",
-        "sentId": "r20246b_s4",
+        "sentId": "r20246bs4",
         "text": "치우쳤다고"
       },
       {
         "type": "underline",
-        "sentId": "r20246b_s5",
+        "sentId": "r20246bs5",
         "text": "불렀다"
       },
       {
         "type": "underline",
-        "sentId": "r20246b_s8",
+        "sentId": "r20246bs8",
         "text": "겪을"
       },
       {
         "type": "underline",
-        "sentId": "r20246b_s10",
+        "sentId": "r20246bs10",
         "text": "보냈다고"
       },
       {
         "type": "underline",
-        "sentId": "r20246b_s15",
+        "sentId": "r20246bs15",
         "text": "주지"
       }
     ],
     "r20246c": [
       {
         "type": "underline",
-        "sentId": "r20246c_s20",
+        "sentId": "r20246cs20",
         "text": "금속을 활성 성분으로 사용하는 고체 촉매"
       }
     ],
     "r20246d": [
       {
         "type": "underline",
-        "sentId": "r20246d_s5",
+        "sentId": "r20246ds5",
         "text": "본다"
       },
       {
         "type": "underline",
-        "sentId": "r20246d_s12",
+        "sentId": "r20246ds12",
         "text": "일어나는"
       },
       {
         "type": "underline",
-        "sentId": "r20246d_s15",
+        "sentId": "r20246ds15",
         "text": "따르면"
       },
       {
         "type": "underline",
-        "sentId": "r20246d_s18",
+        "sentId": "r20246ds18",
         "text": "알아보기"
       },
       {
         "type": "underline",
-        "sentId": "r20246d_s25",
+        "sentId": "r20246ds25",
         "text": "이러한 확장된 인지 과정은 인지 주체의 것일 때에만, 다시 말해 환경의 변화를 탐지하고 그에 맞춰 행위를 조절하는 주체와 통합되어 있을 때에만 성립할 수 있다."
       },
       {
         "type": "underline",
-        "sentId": "r20246d_s39",
+        "sentId": "r20246ds39",
         "text": "만지는"
       },
       {
         "type": "underline",
-        "sentId": "r20246d_s43",
+        "sentId": "r20246ds43",
         "text": "지각과 감각은 서로 구분되지 않는다."
       }
     ],
