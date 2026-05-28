@@ -1734,12 +1734,14 @@
       {
         "type": "underline",
         "sentId": "r20236cs15",
-        "text": "비타민 K1"
+        "text": "㉠비타민 K1",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "r20236cs15",
-        "text": "비타민 K2"
+        "text": "㉡비타민 K2",
+        "marker": "㉡"
       }
     ],
     "r20236d": [
