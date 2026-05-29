@@ -960,41 +960,6 @@
       },
       {
         "type": "underline",
-        "target": "bogi",
-        "qId": 26,
-        "text": "너는 잊는 것이 병이라고 생각하느냐?",
-        "marker": "ⓐ"
-      },
-      {
-        "type": "underline",
-        "target": "bogi",
-        "qId": 26,
-        "text": "그렇다면 잊지 않는 것이 병이 되고, 잊는 것이 도리어 병이 아니라는 말은 무슨 근거로 할까?",
-        "marker": "ⓑ"
-      },
-      {
-        "type": "underline",
-        "target": "bogi",
-        "qId": 26,
-        "text": "그 말이 옳을까?",
-        "marker": "ⓒ"
-      },
-      {
-        "type": "underline",
-        "target": "bogi",
-        "qId": 26,
-        "text": "먼 것을 보고 나면 가까운 것을 잊고, 새것을 보고 나면 옛것을 잊는다.",
-        "marker": "ⓓ"
-      },
-      {
-        "type": "underline",
-        "target": "bogi",
-        "qId": 26,
-        "text": "그렇기 때문에 하늘이 잊지 못해 벌을 내리기도 하고, 남들이 잊지 못해 질시의 눈길을 보내며, 귀신이 잊지 못해 재앙을 내린다.",
-        "marker": "ⓔ"
-      },
-      {
-        "type": "underline",
         "sentId": "l2024_22_27s4",
         "text": "문",
         "marker": "㉠"
@@ -1004,6 +969,24 @@
         "sentId": "l2024_22_27s11",
         "text": "가지",
         "marker": "㉡"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024_22_27s17",
+        "text": "그렇다면 잊지 않는 것이 병이 되고, 잊는 것이 도리어 병이 아니라는 말은 무슨 근거로 할까?",
+        "marker": "ⓑ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024_22_27s17",
+        "text": "그 말이 옳을까?",
+        "marker": "ⓒ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024_22_27s19",
+        "text": "그렇기 때문에 하늘이 잊지 못해 벌을 내리기도 하고, 남들이 잊지 못해 질시의 눈길을 보내며, 귀신이 잊지 못해 재앙을 내린다.",
+        "marker": "ⓔ"
       }
     ],
     "l2024c": [

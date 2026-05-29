@@ -346,7 +346,30 @@
         ],
         "viewerMove": "어려운 문장을 문장 역할과 함께 쪼개서, 해석이 아니라 정답 판단에 필요한 부분만 표시한다."
       }
-    ]
+    ],
+    "pilotCuration": {
+      "status": "대표 패턴 2개 × 3문항 시범 정본화",
+      "sourceCheck": "6문항 모두 PDF 핵심문·정답 선지 부분 문자열 대조 완료",
+      "patternIds": [
+        "contrast-thesis",
+        "problem-need-solution"
+      ],
+      "itemIds": [
+        "2024-6월-20",
+        "2024-9월-20",
+        "2026-6월-23",
+        "2024-9월-22",
+        "2025-수능-22",
+        "2026-수능-24"
+      ],
+      "fields": [
+        "answerProof",
+        "proofSteps",
+        "choiceDiagnostics",
+        "syntaxFocus",
+        "vocabFocus"
+      ]
+    }
   },
   "items": [
     {
@@ -439,14 +462,62 @@
       ],
       "rawPreview": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은? Certain hindrances to multifaceted creative activity may lie in premature specialization, i.e., having to choose the direction of education or to focus on developing one ability too early in life. However, development of creative ability in one domain may enhance effectiveness in other domains that require similar skills, and flexible switching between generality and specificity is helpful to productivity in many domains. Excessive specificity may result in information from outside the domain being underestimated and unavailable, which leads to fixedness of thinking, whereas excessive generality causes chaos, vagueness, and shallowness. Both tendencies pose a threat to the transfer of knowledge and skills between domains. What should therefore be optimal for the development of cross-domain creativity is support for young people in taking up creative chal",
       "sourceFile": "2024학년도 6월 영어 문제.pdf",
-      "reviewStatus": "자동 패턴 초안",
+      "reviewStatus": "시범 정본화",
       "steps": [
         "초반 소재: domains, creative, domain, skills, ability, development",
         "논설문 가능성 높음로 먼저 가정",
         "글쓴이의 가장 강한 의견/평가 문장 찾기",
         "선지 표현이 지문 구조와 같은지 역추론",
         "너무 좁은 예시 선지와 너무 넓은 배경 선지 제거"
-      ]
+      ],
+      "pilotCuration": {
+        "status": "시범 정본화",
+        "sourceCheck": "PDF 핵심문·정답 선지 부분 문자열 대조 완료",
+        "patternId": "contrast-thesis",
+        "patternName": "역접 뒤 주제문",
+        "answerProof": "However에서 조기 특화의 문제를 꺾고, therefore 문장이 특정 영역 도전과 다른 영역 지식·기술 적용을 결론으로 제시한다. ④가 이 결론을 정확히 일반화한다.",
+        "proofSteps": [
+          "초반 소재는 창의성과 영역 특화다.",
+          "However 뒤에서 한 영역의 창의성이 다른 영역에도 도움 된다고 방향이 바뀐다.",
+          "therefore 문장이 특정 영역 훈련과 영역 간 적용 장려를 결론으로 묶는다."
+        ],
+        "choiceDiagnostics": [
+          {
+            "num": 1,
+            "verdict": "오답",
+            "reason": "도전과 실패 두려움이 핵심이 아니다."
+          },
+          {
+            "num": 2,
+            "verdict": "오답",
+            "reason": "집중 투자와 전수는 영역 간 활용 결론을 놓친다."
+          },
+          {
+            "num": 3,
+            "verdict": "오답",
+            "reason": "다양한 교육과정은 너무 넓고 핵심 관계가 빠진다."
+          },
+          {
+            "num": 4,
+            "verdict": "정답",
+            "reason": "특정 영역에서 개발된 창의성을 다른 영역에 활용한다는 결론과 맞다."
+          },
+          {
+            "num": 5,
+            "verdict": "오답",
+            "reason": "조기 전문가 양성은 첫 문장의 premature specialization 경계와 반대다."
+          }
+        ],
+        "syntaxFocus": {
+          "sentence": "What should therefore be optimal ... is support ... and coupling it with encouragement ...",
+          "point": "What절 전체가 주어이고, is 뒤에서 정답 핵심인 support와 encouragement가 병렬로 나온다."
+        },
+        "vocabFocus": [
+          "premature specialization",
+          "cross-domain creativity",
+          "transfer"
+        ]
+      }
     },
     {
       "id": "2024-6월-21",
@@ -2300,14 +2371,63 @@
       ],
       "rawPreview": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은? Confident is not the same as comfortable. One of the biggest misconceptions about becoming self-confident is that it means living fearlessly. The key to building confidence is quite the opposite. It means we are willing to let fear be present as we do the things that matter to us. When we establish some self-confidence in something, it feels good. We want to stay there and hold on to it. But if we only go where we feel confident, then confidence never expands beyond that. If we only do the things we know we can do well, fear of the new and unknown tends to grow. Building confidence inevitably demands that we make friends with vulnerability because it is the only way to be without confidence for a while. But the only way confidence can grow is when we are willing to be without it. When we can step into fear and sit with the unknown, it is the courage of d",
       "sourceFile": "2024학년도 9월 영어 문제.pdf",
-      "reviewStatus": "자동 패턴 초안",
+      "reviewStatus": "시범 정본화",
       "steps": [
         "초반 소재: confidence, fear, confident, means, building, willing",
         "설명문/논설문 판정 필요로 먼저 가정",
         "소재에 대해 무엇을 설명하는지 일반화",
         "선지 표현이 지문 구조와 같은지 역추론",
         "너무 좁은 예시 선지와 너무 넓은 배경 선지 제거"
-      ]
+      ],
+      "pilotCuration": {
+        "status": "시범 정본화",
+        "sourceCheck": "PDF 핵심문·정답 선지 부분 문자열 대조 완료",
+        "patternId": "contrast-thesis",
+        "patternName": "역접 뒤 주제문",
+        "answerProof": "자신감은 편안함과 같지 않다는 통념 반박 뒤, But 문장들이 편한 곳에만 머무르면 자신감이 커지지 않는다고 결론을 밀어 올린다. ②가 두려움 속으로 들어가는 용기를 잡는다.",
+        "proofSteps": [
+          "처음에 confidence와 comfortable을 분리한다.",
+          "But 뒤에서 자신 있는 일만 하면 자신감이 확장되지 않는다고 꺾는다.",
+          "마지막 문장이 fear와 unknown에 들어가는 courage를 자신감 형성 조건으로 제시한다."
+        ],
+        "choiceDiagnostics": [
+          {
+            "num": 1,
+            "verdict": "오답",
+            "reason": "적성 탐색이 아니라 자신감 형성 조건이 핵심이다."
+          },
+          {
+            "num": 2,
+            "verdict": "정답",
+            "reason": "낯설고 두려운 일에 들어가는 용기가 결론과 맞다."
+          },
+          {
+            "num": 3,
+            "verdict": "오답",
+            "reason": "계획 수립은 지문 핵심 근거가 아니다."
+          },
+          {
+            "num": 4,
+            "verdict": "오답",
+            "reason": "약점 분석이 아니라 두려움 수용과 도전이 핵심이다."
+          },
+          {
+            "num": 5,
+            "verdict": "오답",
+            "reason": "경험·지식 기반 대처는 새로운 것과 두려움을 다루는 구조와 다르다."
+          }
+        ],
+        "syntaxFocus": {
+          "sentence": "But if we only go where we feel confident, then confidence never expands beyond that.",
+          "point": "if절이 조건, then 뒤가 결과다. only가 붙은 조건이 오히려 성장 불가의 원인이 된다."
+        },
+        "vocabFocus": [
+          "confident",
+          "comfortable",
+          "vulnerability",
+          "unknown"
+        ]
+      }
     },
     {
       "id": "2024-9월-21",
@@ -2549,14 +2669,63 @@
       ],
       "rawPreview": "22. 다음 글의 요지로 가장 적절한 것은? The need to assimilate values and lifestyle of the host culture has become a growing conflict. Multiculturalists suggest that there should be a model of partial assimilation in which immigrants retain some of their customs, beliefs, and language. There is pressure to conform rather than to maintain their cultural identities, however, and these conflicts are greatly determined by the community to which one migrates. These experiences are not new; many Europeans experienced exclusion and poverty during the first two waves of immigration in the 19th and 20th centuries. Eventually, these immigrants transformed this country with significant changes that included enlightenment and acceptance of diversity. People of color, however, continue to struggle for acceptance. Once again, the challenge is to recognize that other cultures think and act differently and that they h",
       "sourceFile": "2024학년도 9월 영어 문제.pdf",
-      "reviewStatus": "자동 패턴 초안",
+      "reviewStatus": "시범 정본화",
       "steps": [
         "초반 소재: immigrants, acceptance, need, assimilate, values, lifestyle",
         "논설문 가능성 높음로 먼저 가정",
         "글쓴이의 가장 강한 의견/평가 문장 찾기",
         "선지 표현이 지문 구조와 같은지 역추론",
         "너무 좁은 예시 선지와 너무 넓은 배경 선지 제거"
-      ]
+      ],
+      "pilotCuration": {
+        "status": "시범 정본화",
+        "sourceCheck": "PDF 핵심문·정답 선지 부분 문자열 대조 완료",
+        "patternId": "problem-need-solution",
+        "patternName": "문제 제기 -> 필요성/해결책",
+        "answerProof": "동화 압력과 정체성 유지 갈등이 문제로 제시되고, challenge is to recognize에서 다른 문화의 차이와 권리를 인정해야 한다는 해결 방향이 나온다. ①이 이 필요성을 담는다.",
+        "proofSteps": [
+          "문제는 host culture에 동화하라는 압력과 정체성 유지 갈등이다.",
+          "partial assimilation과 retain customs가 해결 방향의 단서다.",
+          "마지막 challenge가 다른 문화의 권리를 인정하는 필요성으로 정리된다."
+        ],
+        "choiceDiagnostics": [
+          {
+            "num": 1,
+            "verdict": "정답",
+            "reason": "이민자 고유 정체성을 유지할 권리 인식이 결론과 맞다."
+          },
+          {
+            "num": 2,
+            "verdict": "오답",
+            "reason": "정책 수립이 아니라 공동체의 인정 문제가 핵심이다."
+          },
+          {
+            "num": 3,
+            "verdict": "오답",
+            "reason": "미래 사회 변화의 역할은 부차적 예시 방향이다."
+          },
+          {
+            "num": 4,
+            "verdict": "오답",
+            "reason": "국제 협력은 지문에 없는 해결책이다."
+          },
+          {
+            "num": 5,
+            "verdict": "오답",
+            "reason": "문화적 동화 자체를 목표로 삼아 지문 방향과 어긋난다."
+          }
+        ],
+        "syntaxFocus": {
+          "sentence": "the challenge is to recognize that other cultures think and act differently and that they have the right to do so.",
+          "point": "to recognize 뒤에 that절 두 개가 병렬이다. 차이를 인정하고 권리도 인정하는 구조다."
+        },
+        "vocabFocus": [
+          "assimilate",
+          "retain",
+          "cultural identities",
+          "acceptance"
+        ]
+      }
     },
     {
       "id": "2024-9월-23",
@@ -9600,14 +9769,63 @@
       ],
       "rawPreview": "22. 다음 글의 요지로 가장 적절한 것은? The ability to understand emotions ― to have a diverse emotion vocabulary and to understand the causes and consequences of emotion ― is particularly relevant in group settings. Individuals who are skilled in this domain are able to express emotions, feelings and moods accurately and thus, may facilitate clear communication between co-workers. Furthermore, they may be more likely to act in ways that accommodate their own needs as well as the needs of others (i.e. cooperate). In a group conflict situation, for example, a member with a strong ability to understand emotion will be able to express how he feels about the problem and why he feels this way. He also should be able to take the perspective of the other group members and understand why they are reacting in a certain manner. Appreciation of differences creates an arena for open communication and promotes cons",
       "sourceFile": "2025학년도 수능 영어 문제.pdf",
-      "reviewStatus": "자동 패턴 초안",
+      "reviewStatus": "시범 정본화",
       "steps": [
         "초반 소재: understand, group, emotion, able, ability, emotions",
         "논설문 가능성 높음로 먼저 가정",
         "글쓴이의 가장 강한 의견/평가 문장 찾기",
         "선지 표현이 지문 구조와 같은지 역추론",
         "너무 좁은 예시 선지와 너무 넓은 배경 선지 제거"
-      ]
+      ],
+      "pilotCuration": {
+        "status": "시범 정본화",
+        "sourceCheck": "PDF 핵심문·정답 선지 부분 문자열 대조 완료",
+        "patternId": "problem-need-solution",
+        "patternName": "문제 제기 -> 필요성/해결책",
+        "answerProof": "집단 상황에서 감정을 이해하는 능력이 필요하다고 시작하고, 갈등 상황 예시 뒤 결론에서 open communication과 conflict resolution을 만든다고 정리한다. ②가 소통과 협력 촉진을 일반화한다.",
+        "proofSteps": [
+          "소재는 group settings에서 emotion 이해 능력이다.",
+          "중간 예시는 group conflict situation이다.",
+          "결론은 차이 이해가 소통과 갈등 해결, 집단 기능을 촉진한다는 것이다."
+        ],
+        "choiceDiagnostics": [
+          {
+            "num": 1,
+            "verdict": "오답",
+            "reason": "감정 조절로 좁혀져 감정 이해와 소통·협력 결과를 놓친다."
+          },
+          {
+            "num": 2,
+            "verdict": "정답",
+            "reason": "감정 이해 능력이 소통과 협력을 촉진한다는 전체 구조와 맞다."
+          },
+          {
+            "num": 3,
+            "verdict": "오답",
+            "reason": "공감이 자신의 표현 능력을 높인다는 방향은 지문 핵심이 아니다."
+          },
+          {
+            "num": 4,
+            "verdict": "오답",
+            "reason": "어휘 지식은 emotion vocabulary 일부만 잡은 좁은 선지다."
+          },
+          {
+            "num": 5,
+            "verdict": "오답",
+            "reason": "자기 감정 이해와 사회성으로 좁혀져 집단 소통·협력이 빠진다."
+          }
+        ],
+        "syntaxFocus": {
+          "sentence": "The ability to understand emotions ― to have a diverse emotion vocabulary and to understand the causes and consequences of emotion ― is particularly relevant in group settings.",
+          "point": "대시 안은 ability의 구체 내용이다. 핵심 주어는 The ability to understand emotions다."
+        },
+        "vocabFocus": [
+          "emotion vocabulary",
+          "accommodate",
+          "cooperate",
+          "constructive conflict resolution"
+        ]
+      }
     },
     {
       "id": "2025-수능-23",
@@ -11482,14 +11700,63 @@
       ],
       "rawPreview": "23. 다음 글의 주제로 가장 적절한 것은? The purpose of class discussions is to encourage you to be an active participant, not a passive recorder. Much of the emphasis in a discussion is on getting students involved in thinking, reacting, and responding. These are important intellectual activities in the learning process, for through them you are supposed to discover and express your opinions. Writing is an invaluable tool for accomplishing these tasks. Unfortunately, too many times, when class discussion begins, pens and pencils go down. Admittedly, it is considerably more difficult to take notes from discussions than from lectures, for, unlike lectures, discussions tend to be disorganized and difficult to follow. Also, students usually don’t know how much of what other students are saying is important. And if you are an active participant, it is not easy to take notes and formulate what you want to sa",
       "sourceFile": "2026학년도 6월 영어 문제.pdf",
-      "reviewStatus": "자동 패턴 초안",
+      "reviewStatus": "시범 정본화",
       "steps": [
         "초반 소재: discussions, active, discussion, students, important, class",
         "논설문 가능성 높음로 먼저 가정",
         "글쓴이의 가장 강한 의견/평가 문장 찾기",
         "선지 표현이 지문 구조와 같은지 역추론",
         "너무 좁은 예시 선지와 너무 넓은 배경 선지 제거"
-      ]
+      ],
+      "pilotCuration": {
+        "status": "시범 정본화",
+        "sourceCheck": "PDF 핵심문·정답 선지 부분 문자열 대조 완료",
+        "patternId": "contrast-thesis",
+        "patternName": "역접 뒤 주제문",
+        "answerProof": "토론 중 필기가 어렵다는 인정 뒤 But에서 필기는 가능하고 중요하다고 뒤집는다. 마지막 문장이 active, organization, speak를 근거로 제시하므로 ③이 맞다.",
+        "proofSteps": [
+          "초반 소재는 class discussions와 active participant다.",
+          "중반은 토론 중 필기가 어려운 이유를 제시한다.",
+          "But 뒤에서 note taking의 중요성을 제시하고 마지막 문장이 이점을 정리한다."
+        ],
+        "choiceDiagnostics": [
+          {
+            "num": 1,
+            "verdict": "오답",
+            "reason": "토론 절차 표준화가 아니라 필기의 의미가 핵심이다."
+          },
+          {
+            "num": 2,
+            "verdict": "오답",
+            "reason": "public speaking을 위한 기술 향상이 아니라 토론 참여를 위한 필기다."
+          },
+          {
+            "num": 3,
+            "verdict": "정답",
+            "reason": "토론 참여를 활성화하는 필기의 중요성을 정확히 잡는다."
+          },
+          {
+            "num": 4,
+            "verdict": "오답",
+            "reason": "수업 후 요약·복습은 지문 결론이 아니다."
+          },
+          {
+            "num": 5,
+            "verdict": "오답",
+            "reason": "brainstorming과 writing tasks는 소재가 벗어난다."
+          }
+        ],
+        "syntaxFocus": {
+          "sentence": "But note taking in discussions is not only manageable, it is also important.",
+          "point": "not only A, also B 구조다. 어려움 인정 뒤 가능성과 중요성을 동시에 세운다."
+        },
+        "vocabFocus": [
+          "active participant",
+          "manageable",
+          "organization",
+          "alert"
+        ]
+      }
     },
     {
       "id": "2026-6월-24",
@@ -15236,14 +15503,64 @@
       ],
       "rawPreview": "24. 다음 글의 제목으로 가장 적절한 것은? [3점] The economic benefit of culturtainment makes it attractive to politicians and policy makers alike. A potential increase in inbound visitor numbers coupled with their demand for related goods and services (travel, accommodation, retail) is an incentive for those within governments and authorities to work with cultural groups in order to develop celebrations and commemorations into larger and more high-profile events. However, such commercialization risks culturtainment becoming homogeneous and losing its original ‘message’ that could lead to a dilution of audiences. This could also lead to smaller non-commercial independent events being set up that would only serve to divide audiences further. This is something that planners and stakeholders will need to balance against potential financial gain. Changing political, social and religious landscapes will lead t",
       "sourceFile": "2026학년도 수능 영어 문제.pdf",
-      "reviewStatus": "자동 패턴 초안",
+      "reviewStatus": "시범 정본화",
       "steps": [
         "초반 소재: culturtainment, lead, potential, events, homogeneous, dilution",
         "논설문 가능성 높음로 먼저 가정",
         "글쓴이의 가장 강한 의견/평가 문장 찾기",
         "선지 표현이 지문 구조와 같은지 역추론",
         "너무 좁은 예시 선지와 너무 넓은 배경 선지 제거"
-      ]
+      ],
+      "pilotCuration": {
+        "status": "시범 정본화",
+        "sourceCheck": "PDF 핵심문·정답 선지 부분 문자열 대조 완료",
+        "patternId": "problem-need-solution",
+        "patternName": "문제 제기 -> 필요성/해결책",
+        "answerProof": "culturtainment의 경제적 이익이 매력으로 제시된 뒤 However에서 상업화가 본래 메시지를 희석할 위험을 제기한다. need to balance가 해결 방향이므로 ②의 Cash or Soul이 제목으로 맞다.",
+        "proofSteps": [
+          "초반은 culturtainment의 경제적 이익이다.",
+          "However 뒤에서 상업화가 동질화와 메시지 상실을 일으킬 위험을 제시한다.",
+          "need to balance가 돈과 문화적 본질 사이의 균형 필요성을 결론으로 만든다."
+        ],
+        "choiceDiagnostics": [
+          {
+            "num": 1,
+            "verdict": "오답",
+            "reason": "상업화의 예상 밖 이익만 강조해 위험과 균형을 놓친다."
+          },
+          {
+            "num": 2,
+            "verdict": "정답",
+            "reason": "돈과 문화의 본질 사이 균형이라는 제목 구조가 맞다."
+          },
+          {
+            "num": 3,
+            "verdict": "오답",
+            "reason": "오락이 문화가 되려는 야망이 핵심이 아니다."
+          },
+          {
+            "num": 4,
+            "verdict": "오답",
+            "reason": "새 문화 자체를 독으로 단정해 균형 관점을 잃는다."
+          },
+          {
+            "num": 5,
+            "verdict": "오답",
+            "reason": "투자 균형으로 일반화돼 culturtainment의 문화적 본질 문제가 빠진다."
+          }
+        ],
+        "syntaxFocus": {
+          "sentence": "However, such commercialization risks culturtainment becoming homogeneous and losing its original message.",
+          "point": "risk 뒤 목적어와 -ing가 이어진다. 상업화가 culturtainment를 동질화하고 메시지를 잃게 만드는 위험이다."
+        },
+        "vocabFocus": [
+          "culturtainment",
+          "commercialization",
+          "homogeneous",
+          "dilution",
+          "balance"
+        ]
+      }
     },
     {
       "id": "2026-수능-31",
