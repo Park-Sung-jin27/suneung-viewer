@@ -379,6 +379,26 @@
         "type": "underline",
         "sentId": "l2025as106",
         "text": "처음에 그놈이 충렬부인 방에 간 줄 어찌 알으셨나이까?"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 18,
+        "text": "\"이 일은 소자가 이미 아는 바이오니 염려 마옵소서.\"",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 18,
+        "text": "\"처음에 그놈이 충렬부인 방에 간 줄 어찌 알으셨나이까?\"",
+        "marker": "㉡"
+      },
+      {
+        "type": "box",
+        "target": "bogi",
+        "qId": 18,
+        "text": "누명"
       }
     ],
     "l2025b": [
@@ -440,6 +460,47 @@
         "type": "underline",
         "sentId": "l2025cs205",
         "text": "배꼽에 관한 논의가 그렇듯 갑자기 시중 일반에까지 성행하기 시작한 것이다."
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 28,
+        "text": "불편스런 일이 한두 가지가 아니었다.",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 28,
+        "text": "― 그깟 놈의 배꼽, 안 가지고 있음 어때.",
+        "marker": "㉡"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 28,
+        "text": "자신으로부터 배꼽이 사라져 버린 사실을, 그리고 그 때문에 생긴 모든 불편을 잊고, 그 배꼽 없는 생활에 스스로 익숙해져 버리기를 바라 마지않았다.",
+        "marker": "㉢"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 28,
+        "text": "어느 해 여름이었다. 하니까 그것은 허원이 자신의 배꼽을 잃어버리고 나서 불편하기 그지없는 세 번째의 여름을 맞고 있을 때였다.",
+        "marker": "㉣"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 28,
+        "text": "배꼽에 관한 논의가 그렇듯 갑자기 시중 일반에까지 성행하기 시작한 것이다.",
+        "marker": "㉤"
+      },
+      {
+        "type": "box",
+        "target": "bogi",
+        "qId": 28,
+        "text": "비밀"
       }
     ],
     "l2025d": [
@@ -452,6 +513,20 @@
         "type": "underline",
         "sentId": "l2025ds249",
         "text": "고기"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 33,
+        "text": "인삼",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 33,
+        "text": "고기",
+        "marker": "㉡"
       }
     ]
   },
@@ -1031,6 +1106,12 @@
         "type": "underline",
         "sentId": "r2023cs19",
         "text": "재량 준칙"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2023cs11",
+        "text": "받을",
+        "marker": "ⓒ"
       }
     ],
     "r2023d": [
