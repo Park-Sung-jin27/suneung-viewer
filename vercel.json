@@ -6,6 +6,7 @@
     { "source": "/wrongnote", "destination": "/index.html" },
     { "source": "/payment", "destination": "/index.html" },
     { "source": "/academy-preview", "destination": "/index.html" },
-    { "source": "/privacy", "destination": "/index.html" }
+    { "source": "/privacy", "destination": "/index.html" },
+    { "source": "/audit/(.*)", "destination": "/index.html" }
   ]
 }
