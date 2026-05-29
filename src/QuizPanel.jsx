@@ -196,14 +196,42 @@ function parseMarkdownTable(text) {
 }
 
 // applyBogiInlineAnns(text, anns)
-//   bogi string 안 inline underline/box overlay path.
+//   bogi string 안 inline underline/box/blank-box overlay path.
 //   plain text + substring match path — replaceImagePlaceholders 미적용.
 //   [도식/사진] placeholder 사용 set 안 본 path 미적용 의무 (안 호환 path).
+//   blank-box: marker 또는 [label] 패턴을 회색 박스(width 지정)로 표시.
 function applyBogiInlineAnns(text, anns) {
   if (!text || !anns || anns.length === 0) return text;
+  // 각 ann 에 대해 검색할 substring (matchText) 과 표시할 내용(displayText) 결정.
+  //   - underline / box: a.text 그대로
+  //   - blank-box marker: a.marker 검색, marker 표시
+  //   - blank-box label: "[a.label]" 검색, label 표시
   const sorted = anns
-    .map((a) => ({ text: a.text, type: a.type, idx: text.indexOf(a.text) }))
-    .filter((a) => a.idx >= 0)
+    .map((a) => {
+      let matchText = null;
+      let displayText = null;
+      if (a.type === "blank-box") {
+        if (a.marker) {
+          matchText = a.marker;
+          displayText = a.marker;
+        } else if (a.label) {
+          matchText = `[${a.label}]`;
+          displayText = a.label;
+        }
+      } else {
+        matchText = a.text;
+        displayText = a.text;
+      }
+      if (!matchText) return null;
+      return {
+        matchText,
+        displayText,
+        type: a.type,
+        width: a.width,
+        idx: text.indexOf(matchText),
+      };
+    })
+    .filter((a) => a && a.idx >= 0)
     .sort((a, b) => a.idx - b.idx);
   if (!sorted.length) return text;
   const parts = [];
@@ -211,8 +239,8 @@ function applyBogiInlineAnns(text, anns) {
   for (const a of sorted) {
     if (a.idx < cursor) continue;
     if (a.idx > cursor) parts.push({ t: text.slice(cursor, a.idx), type: null });
-    parts.push({ t: a.text, type: a.type });
-    cursor = a.idx + a.text.length;
+    parts.push({ t: a.displayText, type: a.type, width: a.width });
+    cursor = a.idx + a.matchText.length;
   }
   if (cursor < text.length) parts.push({ t: text.slice(cursor), type: null });
   return parts.map((p, i) => {
@@ -236,6 +264,25 @@ function applyBogiInlineAnns(text, anns) {
             border: "1px solid #555",
             borderRadius: "2px",
             padding: "0 3px",
+          }}
+        >
+          {p.t}
+        </span>
+      );
+    if (p.type === "blank-box")
+      return (
+        <span
+          key={i}
+          style={{
+            display: "inline-block",
+            width: p.width || "3em",
+            background: "#f3f4f6",
+            border: "1px solid #9ca3af",
+            borderRadius: "4px",
+            padding: "0 6px",
+            color: "#6b7280",
+            textAlign: "center",
+            verticalAlign: "baseline",
           }}
         >
           {p.t}

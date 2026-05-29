@@ -5,7 +5,7 @@
 // 기능:
 //   ① 본문 sents + 발문/선지/bogi marker 시각화
 //   ② annotation (underline/marker/bracket/box) 표시
-//   ③ 자동 의심 이슈 (marker/underline/bracket/DEAD 분리)
+//   ③ 자동 의심 이슈 (marker_body / marker_bogi / underline / bracket / DEAD 분리)
 // ============================================================
 
 import { useEffect, useState } from "react";
@@ -33,22 +33,36 @@ function extractBodyMarkers(sents) {
   return map;
 }
 
-// 발문/선지/bogi 의 marker 추출
+// 발문/선지/bogi 의 marker 추출 (scope 별로 분리)
 function extractQuestionMarkers(questions) {
   const out = [];
   for (const q of questions) {
-    const qm = new Set();
-    const fields = [q.t, getBogiText(q.bogi)];
+    const qStem = new Set();   // q.t (발문)
+    const qChoice = new Set(); // choices
+    const qBogi = new Set();   // bogi
+    const stemT = typeof q.t === "string" ? q.t : "";
+    const stemMs = stemT.match(MARKER_RE);
+    if (stemMs) stemMs.forEach((m) => qStem.add(m));
     for (const c of q.choices || []) {
-      if (typeof c === "string") fields.push(c);
-      else fields.push(c.t || c.text || "");
+      const cT = typeof c === "string" ? c : (c.t || c.text || "");
+      if (typeof cT !== "string") continue;
+      const ms = cT.match(MARKER_RE);
+      if (ms) ms.forEach((m) => qChoice.add(m));
     }
-    for (const f of fields) {
-      if (typeof f !== "string") continue;
-      const ms = f.match(MARKER_RE);
-      if (ms) ms.forEach((m) => qm.add(m));
+    const bogiT = getBogiText(q.bogi);
+    if (typeof bogiT === "string") {
+      const ms = bogiT.match(MARKER_RE);
+      if (ms) ms.forEach((m) => qBogi.add(m));
     }
-    if (qm.size > 0) out.push({ qid: q.id, markers: [...qm].sort() });
+    if (qStem.size + qChoice.size + qBogi.size > 0) {
+      out.push({
+        qid: q.id,
+        stemMarkers: [...qStem].sort(),
+        choiceMarkers: [...qChoice].sort(),
+        bogiMarkers: [...qBogi].sort(),
+        markers: [...new Set([...qStem, ...qChoice, ...qBogi])].sort(),
+      });
+    }
   }
   return out;
 }
@@ -64,37 +78,100 @@ function auditSet(set, annList) {
   const allQMarkers = new Set();
   for (const q of qMarkers) q.markers.forEach((m) => allQMarkers.add(m));
 
-  const issues = { marker: [], underline: [], bracket: [], dead: [] };
+  // scope 별 marker 집합
+  const stemSet = new Set();
+  const choiceSet = new Set();
+  const bogiSet = new Set();
+  for (const q of qMarkers) {
+    q.stemMarkers.forEach((m) => stemSet.add(m));
+    q.choiceMarkers.forEach((m) => choiceSet.add(m));
+    q.bogiMarkers.forEach((m) => bogiSet.add(m));
+  }
 
-  // ── A. marker 이슈 ──
-  // 발문/선지/bogi 에 marker 있는데 본문에 없음 (verbatim 위반)
-  for (const m of allQMarkers) {
+  const issues = {
+    marker_body: [],
+    marker_bogi: [],
+    underline: [],
+    bracket: [],
+    dead: [],
+  };
+
+  // ── A-1. 발문(q.t) marker — 본문에 없으면 결함 ──
+  for (const m of stemSet) {
     if (!bodyMarkers.has(m)) {
-      const qs = qMarkers.filter((q) => q.markers.includes(m)).map((q) => q.qid);
-      issues.marker.push({
-        kind: "Q_has_no_body",
+      const qs = qMarkers.filter((q) => q.stemMarkers.includes(m)).map((q) => q.qid);
+      issues.marker_body.push({
+        kind: "q_in_body_missing",
+        scope: "q",
         marker: m,
-        detail: `발문/선지/bogi(Q${qs.join(",")})에 있으나 본문에 없음`,
+        detail: `발문(Q${qs.join(",")})에 있으나 본문에 없음`,
       });
     }
   }
-  // 본문에 marker 있는데 발문/선지/bogi 어디에도 없음 (orphan)
+
+  // ── A-2. 선지(c.t) marker — 본문 OR bogi 에 있으면 OK ──
+  for (const m of choiceSet) {
+    if (!bodyMarkers.has(m) && !bogiSet.has(m)) {
+      const qs = qMarkers.filter((q) => q.choiceMarkers.includes(m)).map((q) => q.qid);
+      issues.marker_body.push({
+        kind: "choice_in_body_missing",
+        scope: "choice",
+        marker: m,
+        detail: `선지(Q${qs.join(",")})에 있으나 본문/bogi 어디에도 없음`,
+      });
+    }
+  }
+
+  // ── A-3. 본문 marker — 발문/선지/bogi 어디에도 없으면 orphan ──
   for (const m of bodyMarkers) {
     if (!allQMarkers.has(m)) {
       const sids = [];
       for (const [sid, ms] of bodyMarkerMap)
         if (ms.includes(m)) sids.push(sid);
-      issues.marker.push({
+      issues.marker_body.push({
         kind: "body_orphan",
+        scope: "body",
         marker: m,
         detail: `본문(${sids.slice(0, 2).join(", ")})에 있으나 문제 어디에도 없음`,
       });
     }
   }
 
+  // ── A-4. bogi marker — 본문에 있으면 정상 패턴, 없으면 자체정의 또는 orphan ──
+  for (const m of bogiSet) {
+    const qs = qMarkers.filter((q) => q.bogiMarkers.includes(m)).map((q) => q.qid);
+    if (bodyMarkers.has(m)) {
+      // 본문에 있음 — bogi 가 본문 marker 를 인용하는 정상 패턴 (결함 아님)
+      continue;
+    }
+    // 본문에 없음 → bogi 자체정의 가능성
+    const referencedByStem = qMarkers.some(
+      (q) => q.bogiMarkers.includes(m) && q.stemMarkers.includes(m),
+    );
+    const referencedByChoice = qMarkers.some(
+      (q) => q.bogiMarkers.includes(m) && q.choiceMarkers.includes(m),
+    );
+    if (referencedByStem || referencedByChoice) {
+      // 자체정의 marker — 발문/선지에서 참조 O → 정상 (정보 표시)
+      issues.marker_bogi.push({
+        kind: "bogi_self_definition",
+        scope: "bogi",
+        marker: m,
+        detail: `bogi(Q${qs.join(",")})에서 자체 정의 — 발문/선지에서 참조 O (정상)`,
+      });
+    } else {
+      // 발문/선지에서 참조 X → orphan
+      issues.marker_bogi.push({
+        kind: "bogi_orphan",
+        scope: "bogi",
+        marker: m,
+        detail: `bogi(Q${qs.join(",")})에 있으나 발문/선지에서 참조 X`,
+      });
+    }
+  }
+
   // ── B. underline 이슈 ──
   const underlines = annList.filter((a) => a.type === "underline");
-  // 본문 marker 수 vs underline 수
   const bodyMarkerCount = [...bodyMarkers].length;
   if (underlines.length < bodyMarkerCount) {
     issues.underline.push({
@@ -102,7 +179,6 @@ function auditSet(set, annList) {
       detail: `본문 marker ${bodyMarkerCount}개 vs underline ${underlines.length}개 — ${bodyMarkerCount - underlines.length}개 누락`,
     });
   }
-  // underline 의 text 가 본문 sent 에 실제 있는지
   for (const u of underlines) {
     const sentT = sents.find((s) => s.id === u.sentId)?.t || "";
     if (typeof sentT === "string" && u.text && !sentT.includes(u.text)) {
@@ -112,7 +188,6 @@ function auditSet(set, annList) {
       });
     }
   }
-  // marker 필드 vs 본문 위치 일치
   for (const u of underlines) {
     if (!u.marker) continue;
     const sentT = sents.find((s) => s.id === u.sentId)?.t || "";
@@ -162,7 +237,6 @@ function auditSet(set, annList) {
       }
     }
   }
-  // cs_ids DEAD
   for (const q of set.questions || []) {
     for (const c of q.choices || []) {
       for (const cid of c.cs_ids || []) {
@@ -454,9 +528,14 @@ export default function AuditPanel({ user }) {
 
           <Section title="🚨 의심 이슈 (자동 검증)">
             <IssueBlock
-              label="marker"
+              label="marker (body)"
               color="#ef4444"
-              issues={audit.issues.marker}
+              issues={audit.issues.marker_body}
+            />
+            <IssueBlock
+              label="marker (bogi)"
+              color="#ec4899"
+              issues={audit.issues.marker_bogi}
             />
             <IssueBlock
               label="underline"
@@ -550,7 +629,38 @@ function IssueBlock({ label, color, issues }) {
                 borderBottom: i < issues.length - 1 ? "1px dashed #f3f4f6" : "none",
               }}
             >
-              <strong style={{ color }}>[{iss.kind}]</strong> {iss.detail}
+              <strong style={{ color }}>[{iss.kind}]</strong>
+              {iss.scope && (
+                <span
+                  style={{
+                    marginLeft: 4,
+                    background: "#f3f4f6",
+                    color: "#374151",
+                    padding: "1px 5px",
+                    borderRadius: 2,
+                    fontSize: 10,
+                    fontWeight: 600,
+                  }}
+                >
+                  {iss.scope}
+                </span>
+              )}
+              {iss.marker && (
+                <span
+                  style={{
+                    marginLeft: 4,
+                    background: "#fcd34d",
+                    color: "#7c2d12",
+                    padding: "1px 5px",
+                    borderRadius: 2,
+                    fontSize: 11,
+                    fontWeight: 700,
+                  }}
+                >
+                  {iss.marker}
+                </span>
+              )}{" "}
+              {iss.detail}
             </div>
           ))}
         </div>
