@@ -22,6 +22,7 @@ import AcademyPreview from "./AcademyPreview";
 import ResultPage from "./ResultPage";
 import FeedbackButton from "./FeedbackButton";
 import Privacy from "./Privacy";
+import AuditPanel from "./AuditPanel";
 import {
   YEAR_INFO,
   MODE,

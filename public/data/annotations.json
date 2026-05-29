@@ -118,7 +118,8 @@
       {
         "type": "underline",
         "sentId": "l2026cs15",
-        "text": "이야기"
+        "text": "이야기",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
@@ -128,7 +129,8 @@
       {
         "type": "underline",
         "sentId": "l2026cs26",
-        "text": "소문"
+        "text": "소문",
+        "marker": "ⓑ"
       },
       {
         "type": "underline",
@@ -150,37 +152,44 @@
       {
         "type": "underline",
         "sentId": "l2026ds2",
-        "text": "우리 말이 지쳤구나"
+        "text": "우리 말이 지쳤구나",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "l2026ds2",
-        "text": "촌인(村人)의 솜씨 아녀"
+        "text": "촌인(村人)의 솜씨 아녀",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "l2026ds2",
-        "text": "수상히 오는 손"
+        "text": "수상히 오는 손",
+        "marker": "㉢"
       },
       {
         "type": "underline",
         "sentId": "l2026ds2",
-        "text": "유심터라 이 부사야"
+        "text": "유심터라 이 부사야",
+        "marker": "㉣"
       },
       {
         "type": "underline",
         "sentId": "l2026ds2",
-        "text": "억지로 발 드리운들"
+        "text": "억지로 발 드리운들",
+        "marker": "㉤"
       },
       {
         "type": "underline",
         "sentId": "l2026ds7",
-        "text": "방패연"
+        "text": "방패연",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
         "sentId": "l2026ds10",
-        "text": "연"
+        "text": "연",
+        "marker": "ⓑ"
       }
     ],
     "r2026a": [
@@ -237,12 +246,14 @@
       {
         "type": "underline",
         "sentId": "r2026cs3",
-        "text": "얻는"
+        "text": "얻는",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
         "sentId": "r2026cs9",
-        "text": "돌아온다"
+        "text": "돌아온다",
+        "marker": "ⓑ"
       }
     ],
     "r2026d": [
@@ -295,52 +306,62 @@
       {
         "type": "underline",
         "sentId": "r2025ds1",
-        "text": "이루어진다고"
+        "text": "이루어진다고",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
         "sentId": "r2025ds2",
-        "text": "불러내어"
+        "text": "불러내어",
+        "marker": "ⓑ"
       },
       {
         "type": "underline",
         "sentId": "r2025ds4",
-        "text": "나타난다고"
+        "text": "나타난다고",
+        "marker": "ⓒ"
       },
       {
         "type": "underline",
         "sentId": "r2025ds6",
-        "text": "감추고"
+        "text": "감추고",
+        "marker": "ⓓ"
       },
       {
         "type": "underline",
         "sentId": "r2025ds7",
-        "text": "넘쳐 나는"
+        "text": "넘쳐 나는",
+        "marker": "ⓔ"
       },
       {
         "type": "underline",
         "sentId": "r2025ds10",
-        "text": "인정하는 입장"
+        "text": "인정하는 입장",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "r2025ds12",
-        "text": "인정하지 않는 입장"
+        "text": "인정하지 않는 입장",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "r2025ds14",
-        "text": "대법원"
+        "text": "대법원",
+        "marker": "㉮"
       },
       {
         "type": "underline",
         "sentId": "r2025ds16",
-        "text": "다수 의견"
+        "text": "다수 의견",
+        "marker": "㉯"
       },
       {
         "type": "underline",
         "sentId": "r2025ds17",
-        "text": "소수 의견"
+        "text": "소수 의견",
+        "marker": "㉰"
       }
     ],
     "l2025a": [
@@ -381,7 +402,7 @@
         "type": "marker",
         "marker": "ⓑ",
         "sentId": "l2025bs31",
-        "text": "누군가가 듣기를 바라는 모든 고백"
+        "text": "누군가가 듣기를 바라는 모든 고백이란, 위선이 아니면 위악이다."
       }
     ],
     "l2025c": [
@@ -435,163 +456,174 @@
     ]
   },
   "2025_9월": {
-    "sep25_a": [
+    "r20259a": [
       {
         "type": "underline",
-        "sentId": "sep25_as11",
+        "sentId": "r20259as11",
         "text": "글 내용과 관련된 시각 자료를 포함한 글을 읽을 때"
       }
     ],
-    "sep25_b": [
+    "r20259b": [
       {
         "type": "underline",
-        "sentId": "sep25_bs2",
-        "text": "재판매 가격 유지 행위"
+        "sentId": "r20259bs2",
+        "text": "재판매 가격 유지 행위",
+        "marker": "㉠"
       },
       {
         "type": "underline",
-        "sentId": "sep25_bs2",
-        "text": "붙여"
+        "sentId": "r20259bs2",
+        "text": "붙여",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
-        "sentId": "sep25_bs19",
-        "text": "이용후기 광고"
+        "sentId": "r20259bs19",
+        "text": "이용후기 광고",
+        "marker": "㉡"
       }
     ],
-    "sep25_c": [
+    "r20259c": [
       {
         "type": "underline",
-        "sentId": "sep25_cs17",
-        "text": "블록체인에 포함된 데이터는 일부가 지워지더라도 복원이 용이하다"
+        "sentId": "r20259cs17",
+        "text": "블록체인에 포함된 데이터는 일부가 지워지더라도 복원이 용이하다",
+        "marker": "㉠"
       }
     ],
-    "sep25_d": [
+    "r20259d": [
       {
         "type": "box",
-        "sentId": "sep25_ds20",
+        "sentId": "r20259ds20",
         "text": "정신분석학적 영화 이론"
       },
       {
         "type": "underline",
-        "sentId": "sep25_ds6",
-        "text": "새로운"
+        "sentId": "r20259ds6",
+        "text": "새로운",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
-        "sentId": "sep25_ds10",
-        "text": "깨뜨릴"
+        "sentId": "r20259ds10",
+        "text": "깨뜨릴",
+        "marker": "ⓑ"
       },
       {
         "type": "underline",
-        "sentId": "sep25_ds16",
-        "text": "마주하는"
+        "sentId": "r20259ds16",
+        "text": "마주하는",
+        "marker": "ⓒ"
       },
       {
         "type": "underline",
-        "sentId": "sep25_ds18",
-        "text": "쓰는"
+        "sentId": "r20259ds18",
+        "text": "쓰는",
+        "marker": "ⓓ"
       },
       {
         "type": "underline",
-        "sentId": "sep25_ds20",
-        "text": "관객이 영화에서 느끼는 현실감은 상상적인 것이며 환영이다"
+        "sentId": "r20259ds20",
+        "text": "관객이 영화에서 느끼는 현실감은 상상적인 것이며 환영이다",
+        "marker": "㉠"
       },
       {
         "type": "underline",
-        "sentId": "sep25_ds28",
-        "text": "없앤다"
+        "sentId": "r20259ds28",
+        "text": "없앤다",
+        "marker": "ⓔ"
       }
     ],
-    "lsep25a": [
+    "l20259a": [
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "lsep25as2",
-        "sentTo": "lsep25as4"
+        "sentFrom": "l20259as2",
+        "sentTo": "l20259as4"
       },
       {
         "type": "box",
-        "sentId": "lsep25as8",
+        "sentId": "l20259as8",
         "text": "꽃그늘"
       },
       {
         "type": "underline",
-        "sentId": "lsep25as6",
-        "text": "(어찌 그렇지 않을 수 있겠는가?)"
+        "sentId": "l20259as6",
+        "text": "(어찌 그렇지 않을 수 있겠는가?)",
+        "marker": "㉠"
       }
     ],
-    "lsep25b": [
+    "l20259b": [
       {
         "type": "box",
-        "sentId": "lsep25bs5",
+        "sentId": "l20259bs5",
         "text": "태반"
       },
       {
         "type": "box",
-        "sentId": "lsep25bs10",
+        "sentId": "l20259bs10",
         "text": "생가"
       },
       {
         "type": "underline",
-        "sentId": "lsep25bs2",
+        "sentId": "l20259bs2",
         "text": "부여를 숙신을 발해를 여진을 요를 금을 흥안령을 음산을 아무우르를 숭가리를"
       },
       {
         "type": "underline",
-        "sentId": "lsep25bs3",
+        "sentId": "l20259bs3",
         "text": "자작나무와 이깔나무의 슬퍼하던 것을 기억한다"
       },
       {
         "type": "underline",
-        "sentId": "lsep25bs3",
+        "sentId": "l20259bs3",
         "text": "갈대와 장풍의 붙드던 말도 잊지 않았다"
       },
       {
         "type": "underline",
-        "sentId": "lsep25bs3",
+        "sentId": "l20259bs3",
         "text": "오로촌이 멧돝을 잡아 나를 잔치해 보내던 것도 쏠론이 십릿길을 따라 나와 울던 것도 잊지 않았다"
       },
       {
         "type": "underline",
-        "sentId": "lsep25bs4",
+        "sentId": "l20259bs4",
         "text": "아무 이기지 못할 슬픔도 시름도 없이"
       },
       {
         "type": "underline",
-        "sentId": "lsep25bs6",
+        "sentId": "l20259bs6",
         "text": "아, 나의 조상은 형제는 일가친척은 정다운 이웃은 그리운 것은 사랑하는 것은 우러르는 것은 나의 자랑은 나의 힘은 없다"
       },
       {
         "type": "underline",
-        "sentId": "lsep25bs9",
+        "sentId": "l20259bs9",
         "text": "살얼음의 창"
       }
     ],
-    "lsep25c": [
+    "l20259c": [
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "lsep25cs20",
-        "sentTo": "lsep25cs27"
+        "sentFrom": "l20259cs20",
+        "sentTo": "l20259cs27"
       },
       {
         "type": "underline",
-        "sentId": "lsep25cs6",
+        "sentId": "l20259cs6",
         "text": "나머지 절반"
       },
       {
         "type": "underline",
-        "sentId": "lsep25cs9",
+        "sentId": "l20259cs9",
         "text": "야릇한 웃음"
       },
       {
         "type": "underline",
-        "sentId": "lsep25cs10",
+        "sentId": "l20259cs10",
         "text": "눈이 휘둥그레진"
       }
     ],
-    "lsep25d": []
+    "l20259d": []
   },
   "2024수능": {
     "r2024a": [
@@ -625,37 +657,44 @@
       {
         "type": "underline",
         "sentId": "r2024bs1",
-        "text": "경마식 보도"
+        "text": "경마식 보도",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "r2024bs7",
-        "text": "「공직선거법」"
+        "text": "「공직선거법」",
+        "marker": "㉮"
       },
       {
         "type": "underline",
         "sentId": "r2024bs9",
-        "text": "선거방송심의에 관한 특별규정"
+        "text": "선거방송심의에 관한 특별규정",
+        "marker": "㉯"
       },
       {
         "type": "underline",
         "sentId": "r2024bs10",
-        "text": "선거여론조사보도준칙"
+        "text": "선거여론조사보도준칙",
+        "marker": "㉰"
       },
       {
         "type": "underline",
         "sentId": "r2024bs14",
-        "text": "공직선거법」의 선거 방송 토론회 규정"
+        "text": "공직선거법」의 선거 방송 토론회 규정",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "r2024bs17",
-        "text": "다수 의견"
+        "text": "다수 의견",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
         "sentId": "r2024bs18",
-        "text": "소수 의견"
+        "text": "소수 의견",
+        "marker": "ⓑ"
       }
     ],
     "r2024c": [
@@ -912,34 +951,34 @@
     ],
     "l2023a": [
       {
-        "type": "marker",
-        "marker": "㉠",
+        "type": "underline",
         "sentId": "l2023as6",
-        "text": "매월 초하루"
+        "text": "매월 초하루",
+        "marker": "㉠"
       },
       {
-        "type": "marker",
-        "marker": "㉡",
+        "type": "underline",
         "sentId": "l2023as7",
-        "text": "정월 초하루"
+        "text": "정월 초하루",
+        "marker": "㉡"
       },
       {
-        "type": "marker",
-        "marker": "㉢",
+        "type": "underline",
         "sentId": "l2023as10",
-        "text": "그달"
+        "text": "그달",
+        "marker": "㉢"
       },
       {
-        "type": "marker",
-        "marker": "㉣",
+        "type": "underline",
         "sentId": "l2023as12",
-        "text": "매양"
+        "text": "매양 꽃 피는 아침과 달 뜬 밤",
+        "marker": "㉣"
       },
       {
-        "type": "marker",
-        "marker": "㉤",
+        "type": "underline",
         "sentId": "l2023as13",
-        "text": "어느 봄날 밤"
+        "text": "어느 봄날 밤",
+        "marker": "㉤"
       }
     ],
     "l2023b": [
@@ -1487,6 +1526,18 @@
         "type": "underline",
         "sentId": "r20269bs15",
         "text": "이러한 '역사화'는 미래를 다룬 SF의 경우에도 해당된다."
+      },
+      {
+        "type": "underline",
+        "sentId": "r20269bs17",
+        "text": "둔다고",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20269bs30",
+        "text": "두고",
+        "marker": "ⓑ"
       }
     ],
     "r20269c": [
@@ -1676,59 +1727,70 @@
       {
         "type": "underline",
         "sentId": "r20236as3",
-        "text": "어휘력이 높은 학생들"
+        "text": "어휘력이 높은 학생들",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "r20236as3",
-        "text": "어휘력이 낮은 학생들"
+        "text": "어휘력이 낮은 학생들",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "r20236as10",
-        "text": "글 읽는 능력을 매튜 효과로만 설명하는 데에는 문제가 있다."
+        "text": "글 읽는 능력을 매튜 효과로만 설명하는 데에는 문제가 있다.",
+        "marker": "ⓐ"
       }
     ],
     "r20236b": [
       {
         "type": "underline",
         "sentId": "r20236bs1",
-        "text": "기도했다"
+        "text": "기도했다",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
         "sentId": "r20236bs3",
-        "text": "흡수하여"
+        "text": "흡수하여",
+        "marker": "ⓑ"
       },
       {
         "type": "underline",
         "sentId": "r20236bs4",
-        "text": "숭상하던"
+        "text": "숭상하던",
+        "marker": "ⓒ"
       },
       {
         "type": "underline",
         "sentId": "r20236bs9",
-        "text": "통물(統物)"
+        "text": "통물(統物)",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "r20236bs9",
-        "text": "통변(通變)"
+        "text": "통변(通變)",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "r20236bs10",
-        "text": "인의(仁義)"
+        "text": "인의(仁義)",
+        "marker": "㉢"
       },
       {
         "type": "underline",
         "sentId": "r20236bs18",
-        "text": "개입되었다는"
+        "text": "개입되었다는",
+        "marker": "ⓓ"
       },
       {
         "type": "underline",
         "sentId": "r20236bs20",
-        "text": "계속되었지만"
+        "text": "계속되었지만",
+        "marker": "ⓔ"
       }
     ],
     "r20236c": [
@@ -1787,7 +1849,20 @@
         "text": "줄일"
       }
     ],
-    "l20236a": [],
+    "l20236a": [
+      {
+        "type": "underline",
+        "sentId": "l20236as11",
+        "text": "후일은 그런 말을 마소서",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20236as13",
+        "text": "문안 후 소 부인의 운취각에 갔더이다",
+        "marker": "㉡"
+      }
+    ],
     "l20236b": [
       {
         "type": "box",
@@ -2536,6 +2611,257 @@
         "marker": "㉤",
         "sentId": "l2021ds40",
         "text": "또랗또랗"
+      }
+    ]
+  },
+  "2026_6월": {
+    "l20266d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20266ds2",
+        "sentTo": "l20266ds5"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20266ds8",
+        "sentTo": "l20266ds11"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l20266ds17",
+        "sentTo": "l20266ds20"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l20266ds21",
+        "sentTo": "l20266ds23"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l20266ds24",
+        "sentTo": "l20266ds25"
+      }
+    ]
+  },
+  "2020수능": {
+    "l2020b": [
+      {
+        "type": "underline",
+        "sentId": "l2020bs4",
+        "text": "그 구멍가게에 대한 아버지의 몰두와 자존심은 각별했다.",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2020bs6",
+        "text": "나는 그 무허가 불량 식품인 캐러멜 네 개가 끈끈하게 녹아내릴 때까지 먹지 않고 쥔 채 서 있었다.",
+        "marker": "㉡"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2020bs10",
+        "text": "아버지의 얼굴은 맞보기가 민망할 정도로 금세 하얗게 질렸다.",
+        "marker": "㉢"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2020bs12",
+        "text": "혹부리 영감은 풍기 때문에 왼쪽으로 힐끗 돌아간 두터운 입술을 떠들쳐 굵은 침방울을 내 얼굴에 마구 튀겼다",
+        "marker": "㉣"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2020bs13",
+        "text": "당신의 자그마한 구멍가게로 돌아와 나머지 열여덟 병의 소주를 넋 나간 사람처럼 쓰다듬던 아버지는 기어코 아들인 내 앞에서 눈물을 보이고 말았다",
+        "marker": "㉤"
+      }
+    ],
+    "l2020c": [
+      {
+        "type": "underline",
+        "sentId": "l2020cs8",
+        "text": "이화정",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2020cs17",
+        "text": "이화정",
+        "marker": "㉡"
+      },
+      {
+        "type": "box",
+        "sentId": "l2020cs3",
+        "text": "이같이 좋지 않은 일"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2020cs12",
+        "sentTo": "l2020cs12"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2020cs16",
+        "sentTo": "l2020cs16"
+      }
+    ],
+    "l2020d": [
+      {
+        "type": "underline",
+        "sentId": "l2020ds4",
+        "text": "바람이 부는데",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2020ds9",
+        "text": "바람이 자꾸 부는데",
+        "marker": "㉡"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2020ds20",
+        "text": "울음 실은 공기가 자유로이 드나드는",
+        "marker": "㉢"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2020ds23",
+        "text": "날개를 힘껏 떠받쳐 줄 공기",
+        "marker": "㉣"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2020ds29",
+        "text": "걸으면서, 가끔, 창살 사이를 채우고 있는 바람을",
+        "marker": "㉤"
+      }
+    ]
+  },
+  "2019수능": {
+    "l2019b": [
+      {
+        "type": "underline",
+        "sentId": "l2019bs15",
+        "text": "이런 구경",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2019bs26",
+        "text": "장(壯)한 구경",
+        "marker": "㉡"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2019bs18",
+        "sentTo": "l2019bs18"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2019bs19",
+        "sentTo": "l2019bs22"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2019bs23",
+        "sentTo": "l2019bs24"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l2019bs25",
+        "sentTo": "l2019bs27"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l2019bs33",
+        "sentTo": "l2019bs37"
+      }
+    ]
+  },
+  "2016수능A": {
+    "l2016c": [
+      {
+        "type": "underline",
+        "sentId": "l2016cs7",
+        "text": "이상한 공기",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2016cs14",
+        "text": "최후 결단",
+        "marker": "㉡"
+      }
+    ]
+  },
+  "2015수능A": {
+    "l2015b": [
+      {
+        "type": "underline",
+        "sentId": "l2015bs1",
+        "text": "책상",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2015bs2",
+        "text": "조대",
+        "marker": "ⓑ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2015bs3",
+        "text": "조대",
+        "marker": "ⓒ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2015bs4",
+        "text": "형산백옥이 돌 속에 섞였으니",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2015bs12",
+        "text": "명감(明鑑)",
+        "marker": "㉡"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2015bs21",
+        "text": "이곳",
+        "marker": "ⓓ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2015bs35",
+        "text": "소나무 밑",
+        "marker": "ⓔ"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2015bs3",
+        "sentTo": "l2015bs5"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2015bs21",
+        "sentTo": "l2015bs22"
       }
     ]
   }

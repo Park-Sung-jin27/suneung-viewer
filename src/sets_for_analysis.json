@@ -3764,7 +3764,7 @@
   {
     "yr": "2025_9월",
     "sec": "reading",
-    "id": "sep25_a",
+    "id": "r20259a",
     "range": "1~3번",
     "title": "시각 자료와 학습",
     "vocab": [],
@@ -3920,7 +3920,7 @@
   {
     "yr": "2025_9월",
     "sec": "reading",
-    "id": "sep25_b",
+    "id": "r20259b",
     "range": "4~7번",
     "title": "공정거래법·표시광고법",
     "vocab": [],
@@ -4127,7 +4127,7 @@
   {
     "yr": "2025_9월",
     "sec": "reading",
-    "id": "sep25_c",
+    "id": "r20259c",
     "range": "8~11번",
     "title": "블록체인 기술",
     "vocab": [],
@@ -4338,7 +4338,7 @@
   {
     "yr": "2025_9월",
     "sec": "reading",
-    "id": "sep25_d",
+    "id": "r20259d",
     "range": "12~17번",
     "title": "영화미학·바쟁",
     "vocab": [],
@@ -4647,7 +4647,7 @@
   {
     "yr": "2025_9월",
     "sec": "literature",
-    "id": "lsep25a",
+    "id": "l20259a",
     "range": "18~21번",
     "title": "이화전",
     "vocab": [],
@@ -4850,7 +4850,7 @@
   {
     "yr": "2025_9월",
     "sec": "literature",
-    "id": "lsep25b",
+    "id": "l20259b",
     "range": "22~27번",
     "title": "현대시·고전시가 복합",
     "vocab": [],
@@ -5133,7 +5133,7 @@
   {
     "yr": "2025_9월",
     "sec": "literature",
-    "id": "lsep25c",
+    "id": "l20259c",
     "range": "28~31번",
     "title": "현대소설",
     "vocab": [],
@@ -5343,7 +5343,7 @@
   {
     "yr": "2025_9월",
     "sec": "literature",
-    "id": "lsep25d",
+    "id": "l20259d",
     "range": "32~34번",
     "title": "고전시가 복합",
     "vocab": [],

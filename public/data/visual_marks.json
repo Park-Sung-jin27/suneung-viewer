@@ -4559,21 +4559,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_a_underline_x_151",
+      "id": "vm_2025_9월_r20259a_underline_x_151",
       "yearKey": "2025_9월",
-      "setId": "sep25_a",
+      "setId": "r20259a",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_as11"
+        "r20259as11"
       ],
       "start": {
-        "sentId": "sep25_as11",
+        "sentId": "r20259as11",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_as11",
+        "sentId": "r20259as11",
         "offset": 28
       },
       "text": "글 내용과 관련된 시각 자료를 포함한 글을 읽을 때",
@@ -4583,21 +4583,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_b_underline_x_152",
+      "id": "vm_2025_9월_r20259b_underline_x_152",
       "yearKey": "2025_9월",
-      "setId": "sep25_b",
+      "setId": "r20259b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_bs2"
+        "r20259bs2"
       ],
       "start": {
-        "sentId": "sep25_bs2",
+        "sentId": "r20259bs2",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_bs2",
+        "sentId": "r20259bs2",
         "offset": 12
       },
       "text": "재판매 가격 유지 행위",
@@ -4607,21 +4607,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_b_underline_x_153",
+      "id": "vm_2025_9월_r20259b_underline_x_153",
       "yearKey": "2025_9월",
-      "setId": "sep25_b",
+      "setId": "r20259b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_bs2"
+        "r20259bs2"
       ],
       "start": {
-        "sentId": "sep25_bs2",
+        "sentId": "r20259bs2",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_bs2",
+        "sentId": "r20259bs2",
         "offset": 2
       },
       "text": "붙여",
@@ -4631,21 +4631,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_b_underline_x_154",
+      "id": "vm_2025_9월_r20259b_underline_x_154",
       "yearKey": "2025_9월",
-      "setId": "sep25_b",
+      "setId": "r20259b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_bs19"
+        "r20259bs19"
       ],
       "start": {
-        "sentId": "sep25_bs19",
+        "sentId": "r20259bs19",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_bs19",
+        "sentId": "r20259bs19",
         "offset": 7
       },
       "text": "이용후기 광고",
@@ -4655,21 +4655,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_c_underline_x_155",
+      "id": "vm_2025_9월_r20259c_underline_x_155",
       "yearKey": "2025_9월",
-      "setId": "sep25_c",
+      "setId": "r20259c",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_cs17"
+        "r20259cs17"
       ],
       "start": {
-        "sentId": "sep25_cs17",
+        "sentId": "r20259cs17",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_cs17",
+        "sentId": "r20259cs17",
         "offset": 34
       },
       "text": "블록체인에 포함된 데이터는 일부가 지워지더라도 복원이 용이하다",
@@ -4679,21 +4679,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_d_box_x_156",
+      "id": "vm_2025_9월_r20259d_box_x_156",
       "yearKey": "2025_9월",
-      "setId": "sep25_d",
+      "setId": "r20259d",
       "type": "box",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_ds20"
+        "r20259ds20"
       ],
       "start": {
-        "sentId": "sep25_ds20",
+        "sentId": "r20259ds20",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_ds20",
+        "sentId": "r20259ds20",
         "offset": 12
       },
       "text": "정신분석학적 영화 이론",
@@ -4703,21 +4703,21 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2025_9월_sep25_d_underline_x_157",
+      "id": "vm_2025_9월_r20259d_underline_x_157",
       "yearKey": "2025_9월",
-      "setId": "sep25_d",
+      "setId": "r20259d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_ds6"
+        "r20259ds6"
       ],
       "start": {
-        "sentId": "sep25_ds6",
+        "sentId": "r20259ds6",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_ds6",
+        "sentId": "r20259ds6",
         "offset": 3
       },
       "text": "새로운",
@@ -4727,21 +4727,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_d_underline_x_158",
+      "id": "vm_2025_9월_r20259d_underline_x_158",
       "yearKey": "2025_9월",
-      "setId": "sep25_d",
+      "setId": "r20259d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_ds10"
+        "r20259ds10"
       ],
       "start": {
-        "sentId": "sep25_ds10",
+        "sentId": "r20259ds10",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_ds10",
+        "sentId": "r20259ds10",
         "offset": 3
       },
       "text": "깨뜨릴",
@@ -4751,21 +4751,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_d_underline_x_159",
+      "id": "vm_2025_9월_r20259d_underline_x_159",
       "yearKey": "2025_9월",
-      "setId": "sep25_d",
+      "setId": "r20259d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_ds16"
+        "r20259ds16"
       ],
       "start": {
-        "sentId": "sep25_ds16",
+        "sentId": "r20259ds16",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_ds16",
+        "sentId": "r20259ds16",
         "offset": 4
       },
       "text": "마주하는",
@@ -4775,21 +4775,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_d_underline_x_160",
+      "id": "vm_2025_9월_r20259d_underline_x_160",
       "yearKey": "2025_9월",
-      "setId": "sep25_d",
+      "setId": "r20259d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_ds18"
+        "r20259ds18"
       ],
       "start": {
-        "sentId": "sep25_ds18",
+        "sentId": "r20259ds18",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_ds18",
+        "sentId": "r20259ds18",
         "offset": 2
       },
       "text": "쓰는",
@@ -4799,21 +4799,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_d_underline_x_161",
+      "id": "vm_2025_9월_r20259d_underline_x_161",
       "yearKey": "2025_9월",
-      "setId": "sep25_d",
+      "setId": "r20259d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_ds20"
+        "r20259ds20"
       ],
       "start": {
-        "sentId": "sep25_ds20",
+        "sentId": "r20259ds20",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_ds20",
+        "sentId": "r20259ds20",
         "offset": 31
       },
       "text": "관객이 영화에서 느끼는 현실감은 상상적인 것이며 환영이다",
@@ -4823,21 +4823,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_sep25_d_underline_x_162",
+      "id": "vm_2025_9월_r20259d_underline_x_162",
       "yearKey": "2025_9월",
-      "setId": "sep25_d",
+      "setId": "r20259d",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "sep25_ds28"
+        "r20259ds28"
       ],
       "start": {
-        "sentId": "sep25_ds28",
+        "sentId": "r20259ds28",
         "offset": 0
       },
       "end": {
-        "sentId": "sep25_ds28",
+        "sentId": "r20259ds28",
         "offset": 3
       },
       "text": "없앤다",
@@ -4847,21 +4847,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25a_box_x_164",
+      "id": "vm_2025_9월_l20259a_box_x_164",
       "yearKey": "2025_9월",
-      "setId": "lsep25a",
+      "setId": "l20259a",
       "type": "box",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25as8"
+        "l20259as8"
       ],
       "start": {
-        "sentId": "lsep25as8",
+        "sentId": "l20259as8",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25as8",
+        "sentId": "l20259as8",
         "offset": 3
       },
       "text": "꽃그늘",
@@ -4871,21 +4871,21 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2025_9월_lsep25a_underline_x_165",
+      "id": "vm_2025_9월_l20259a_underline_x_165",
       "yearKey": "2025_9월",
-      "setId": "lsep25a",
+      "setId": "l20259a",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25as6"
+        "l20259as6"
       ],
       "start": {
-        "sentId": "lsep25as6",
+        "sentId": "l20259as6",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25as6",
+        "sentId": "l20259as6",
         "offset": 19
       },
       "text": "(어찌 그렇지 않을 수 있겠는가?)",
@@ -4895,21 +4895,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25b_box_x_166",
+      "id": "vm_2025_9월_l20259b_box_x_166",
       "yearKey": "2025_9월",
-      "setId": "lsep25b",
+      "setId": "l20259b",
       "type": "box",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25bs5"
+        "l20259bs5"
       ],
       "start": {
-        "sentId": "lsep25bs5",
+        "sentId": "l20259bs5",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25bs5",
+        "sentId": "l20259bs5",
         "offset": 2
       },
       "text": "태반",
@@ -4919,21 +4919,21 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2025_9월_lsep25b_box_x_167",
+      "id": "vm_2025_9월_l20259b_box_x_167",
       "yearKey": "2025_9월",
-      "setId": "lsep25b",
+      "setId": "l20259b",
       "type": "box",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25bs10"
+        "l20259bs10"
       ],
       "start": {
-        "sentId": "lsep25bs10",
+        "sentId": "l20259bs10",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25bs10",
+        "sentId": "l20259bs10",
         "offset": 2
       },
       "text": "생가",
@@ -4943,21 +4943,21 @@
       "audit_source": "ANNOTATION_BOX"
     },
     {
-      "id": "vm_2025_9월_lsep25b_underline_x_168",
+      "id": "vm_2025_9월_l20259b_underline_x_168",
       "yearKey": "2025_9월",
-      "setId": "lsep25b",
+      "setId": "l20259b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25bs2"
+        "l20259bs2"
       ],
       "start": {
-        "sentId": "lsep25bs2",
+        "sentId": "l20259bs2",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25bs2",
+        "sentId": "l20259bs2",
         "offset": 41
       },
       "text": "부여를 숙신을 발해를 여진을 요를 금을 흥안령을 음산을 아무우르를 숭가리를",
@@ -4967,21 +4967,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25b_underline_x_169",
+      "id": "vm_2025_9월_l20259b_underline_x_169",
       "yearKey": "2025_9월",
-      "setId": "lsep25b",
+      "setId": "l20259b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25bs3"
+        "l20259bs3"
       ],
       "start": {
-        "sentId": "lsep25bs3",
+        "sentId": "l20259bs3",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25bs3",
+        "sentId": "l20259bs3",
         "offset": 24
       },
       "text": "자작나무와 이깔나무의 슬퍼하던 것을 기억한다",
@@ -4991,21 +4991,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25b_underline_x_170",
+      "id": "vm_2025_9월_l20259b_underline_x_170",
       "yearKey": "2025_9월",
-      "setId": "lsep25b",
+      "setId": "l20259b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25bs3"
+        "l20259bs3"
       ],
       "start": {
-        "sentId": "lsep25bs3",
+        "sentId": "l20259bs3",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25bs3",
+        "sentId": "l20259bs3",
         "offset": 21
       },
       "text": "갈대와 장풍의 붙드던 말도 잊지 않았다",
@@ -5015,21 +5015,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25b_underline_x_171",
+      "id": "vm_2025_9월_l20259b_underline_x_171",
       "yearKey": "2025_9월",
-      "setId": "lsep25b",
+      "setId": "l20259b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25bs3"
+        "l20259bs3"
       ],
       "start": {
-        "sentId": "lsep25bs3",
+        "sentId": "l20259bs3",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25bs3",
+        "sentId": "l20259bs3",
         "offset": 53
       },
       "text": "오로촌이 멧돝을 잡아 나를 잔치해 보내던 것도 쏠론이 십릿길을 따라 나와 울던 것도 잊지 않았다",
@@ -5039,21 +5039,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25b_underline_x_172",
+      "id": "vm_2025_9월_l20259b_underline_x_172",
       "yearKey": "2025_9월",
-      "setId": "lsep25b",
+      "setId": "l20259b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25bs4"
+        "l20259bs4"
       ],
       "start": {
-        "sentId": "lsep25bs4",
+        "sentId": "l20259bs4",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25bs4",
+        "sentId": "l20259bs4",
         "offset": 20
       },
       "text": "아무 이기지 못할 슬픔도 시름도 없이",
@@ -5063,21 +5063,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25b_underline_x_173",
+      "id": "vm_2025_9월_l20259b_underline_x_173",
       "yearKey": "2025_9월",
-      "setId": "lsep25b",
+      "setId": "l20259b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25bs6"
+        "l20259bs6"
       ],
       "start": {
-        "sentId": "lsep25bs6",
+        "sentId": "l20259bs6",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25bs6",
+        "sentId": "l20259bs6",
         "offset": 66
       },
       "text": "아, 나의 조상은 형제는 일가친척은 정다운 이웃은 그리운 것은 사랑하는 것은 우러르는 것은 나의 자랑은 나의 힘은 없다",
@@ -5087,21 +5087,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25b_underline_x_174",
+      "id": "vm_2025_9월_l20259b_underline_x_174",
       "yearKey": "2025_9월",
-      "setId": "lsep25b",
+      "setId": "l20259b",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25bs9"
+        "l20259bs9"
       ],
       "start": {
-        "sentId": "lsep25bs9",
+        "sentId": "l20259bs9",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25bs9",
+        "sentId": "l20259bs9",
         "offset": 6
       },
       "text": "살얼음의 창",
@@ -5111,21 +5111,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25c_underline_x_176",
+      "id": "vm_2025_9월_l20259c_underline_x_176",
       "yearKey": "2025_9월",
-      "setId": "lsep25c",
+      "setId": "l20259c",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25cs6"
+        "l20259cs6"
       ],
       "start": {
-        "sentId": "lsep25cs6",
+        "sentId": "l20259cs6",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25cs6",
+        "sentId": "l20259cs6",
         "offset": 6
       },
       "text": "나머지 절반",
@@ -5135,21 +5135,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25c_underline_x_177",
+      "id": "vm_2025_9월_l20259c_underline_x_177",
       "yearKey": "2025_9월",
-      "setId": "lsep25c",
+      "setId": "l20259c",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25cs9"
+        "l20259cs9"
       ],
       "start": {
-        "sentId": "lsep25cs9",
+        "sentId": "l20259cs9",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25cs9",
+        "sentId": "l20259cs9",
         "offset": 6
       },
       "text": "야릇한 웃음",
@@ -5159,21 +5159,21 @@
       "audit_source": "ANNOTATION_UNDERLINE"
     },
     {
-      "id": "vm_2025_9월_lsep25c_underline_x_178",
+      "id": "vm_2025_9월_l20259c_underline_x_178",
       "yearKey": "2025_9월",
-      "setId": "lsep25c",
+      "setId": "l20259c",
       "type": "underline",
       "label": null,
       "target": "text_span",
       "sentIds": [
-        "lsep25cs10"
+        "l20259cs10"
       ],
       "start": {
-        "sentId": "lsep25cs10",
+        "sentId": "l20259cs10",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25cs10",
+        "sentId": "l20259cs10",
         "offset": 8
       },
       "text": "눈이 휘둥그레진",
@@ -12383,23 +12383,23 @@
       ]
     },
     {
-      "id": "vm_2025_9월_lsep25a_bracket_A_163",
+      "id": "vm_2025_9월_l20259a_bracket_A_163",
       "yearKey": "2025_9월",
-      "setId": "lsep25a",
+      "setId": "l20259a",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
       "sentIds": [
-        "lsep25as2",
-        "lsep25as3",
-        "lsep25as4"
+        "l20259as2",
+        "l20259as3",
+        "l20259as4"
       ],
       "start": {
-        "sentId": "lsep25as2",
+        "sentId": "l20259as2",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25as4",
+        "sentId": "l20259as4",
         "offset": 92
       },
       "source": "migrated_from_annotations",
@@ -12459,28 +12459,28 @@
       ]
     },
     {
-      "id": "vm_2025_9월_lsep25c_bracket_A_175",
+      "id": "vm_2025_9월_l20259c_bracket_A_175",
       "yearKey": "2025_9월",
-      "setId": "lsep25c",
+      "setId": "l20259c",
       "type": "bracket",
       "label": "A",
       "target": "sent_range",
       "sentIds": [
-        "lsep25cs20",
-        "lsep25cs21",
-        "lsep25cs22",
-        "lsep25cs23",
-        "lsep25cs24",
-        "lsep25cs25",
-        "lsep25cs26",
-        "lsep25cs27"
+        "l20259cs20",
+        "l20259cs21",
+        "l20259cs22",
+        "l20259cs23",
+        "l20259cs24",
+        "l20259cs25",
+        "l20259cs26",
+        "l20259cs27"
       ],
       "start": {
-        "sentId": "lsep25cs20",
+        "sentId": "l20259cs20",
         "offset": 0
       },
       "end": {
-        "sentId": "lsep25cs27",
+        "sentId": "l20259cs27",
         "offset": 116
       },
       "source": "migrated_from_annotations",

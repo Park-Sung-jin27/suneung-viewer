@@ -746,6 +746,8 @@ for (const yearKey of yearsToCheck) {
                     referenced.add(m[0]);
                 }
                 for (const m of (qq.t || "").matchAll(re)) referenced.add(m[0]);
+                for (const m of String(qq.bogi || "").matchAll(re))
+                  referenced.add(m[0]);
               }
               const pollution = [];
               for (const s of set.sents) {
