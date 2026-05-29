@@ -1978,6 +1978,12 @@
   "2023_9월": {
     "r20239a": [
       {
+        "type": "underline",
+        "sentId": "r20239as11",
+        "text": "이전보다 고정 횟수와 고정 시간이 줄어들고 단어를 건너뛰는 긴 도약이 자주 일어나는 모습",
+        "marker": "㉠"
+      },
+      {
         "type": "bracket",
         "label": "A",
         "sentFrom": "r20239as3",
@@ -1985,8 +1991,38 @@
       },
       {
         "type": "underline",
-        "sentId": "r20239as11",
-        "text": "이전보다 고정 횟수와 고정 시간이 줄어들고 단어를 건너뛰는 긴 도약이 자주 일어나는 모습이 관찰된다."
+        "target": "bogi",
+        "qId": 2,
+        "text": "중요하다고 생각하는 단어만 확인하는 읽기를 했다.",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 2,
+        "text": "글의 진행 방향에 따라 읽어 나갔다",
+        "marker": "ⓑ"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 2,
+        "text": "앞에 읽었던 부분으로 돌아가서",
+        "marker": "ⓒ"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 2,
+        "text": "그와 관련된 단어들에 집중하며 읽어 나갔다",
+        "marker": "ⓓ"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 2,
+        "text": "'대신하여'와 달리 '파피루스'와 '양피지'처럼 생소한 단어는 하나씩 확인하며 읽었다.",
+        "marker": "ⓔ"
       }
     ],
     "r20239b": [
