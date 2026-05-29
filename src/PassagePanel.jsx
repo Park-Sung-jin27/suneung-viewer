@@ -480,6 +480,51 @@ function RenderSent({ sent, sel, anns }) {
       </div>
     );
 
+  // sentClass — 안내장 등 특수 시각 효과 (block-level 단독 렌더)
+  //   announcement-title: 큰 글씨 + 중앙 정렬 (안내장 제목)
+  //   announcement: 다른 폰트 + 옅은 색 + 상하 여백 (안내장 본문)
+  //   cs_ids 하이라이트와 inline annotation(box/underline/marker)은 그대로 적용.
+  const sc = sent.sentClass || "";
+  if (sc === "announcement-title" || sc === "announcement") {
+    const scStyle =
+      sc === "announcement-title"
+        ? {
+            fontSize: "1.4rem",
+            fontWeight: 700,
+            textAlign: "center",
+            marginBottom: "16px",
+          }
+        : {
+            fontFamily: "'Noto Serif KR', serif",
+            color: "#4b5563",
+            paddingTop: "8px",
+            paddingBottom: "8px",
+          };
+    let inner;
+    if (pal && spans) {
+      const spanJsx = renderSpanParts(t, spans, hlStyle, true);
+      if (spanJsx) {
+        inner = spanJsx;
+      }
+    }
+    if (!inner) {
+      const content =
+        anns.length > 0 ? (
+          applyInlineAnns(t, anns, true)
+        ) : (
+          <Lines text={t} hideLabels={true} />
+        );
+      inner = pal ? (
+        <span style={hlStyle} data-hl="true">
+          {content}
+        </span>
+      ) : (
+        content
+      );
+    }
+    return <div style={scStyle}>{inner}</div>;
+  }
+
   // body — spans 우선, 실패 시 기존 전체 하이라이트 fallback
   if (pal && spans) {
     // box/underline annotation보다 span 하이라이트 우선
