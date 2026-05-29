@@ -2398,6 +2398,7 @@ export default function App() {
           </Layout>
         }
       />
+      <Route path="/audit/:setId" element={<Layout user={user} onLogout={handleLogout}><AuditPanel user={user} /></Layout>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
