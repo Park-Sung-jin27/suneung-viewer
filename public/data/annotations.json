@@ -3148,6 +3148,66 @@
         "qId": 29,
         "text": "진옥을 모함하는 말을 들은 황제에 의해 진옥의 가족은 위기에 처하게 되었다.",
         "marker": "㉲"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20266cs8",
+        "marker": "㉠",
+        "text": "㉠대성통곡"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20266cs10",
+        "marker": "㉡",
+        "text": "㉡대성통곡"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20266cs33",
+        "marker": "㉢",
+        "text": "㉢대희"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20266cs38",
+        "marker": "㉣",
+        "text": "㉣대경실색"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20266cs51",
+        "marker": "㉤",
+        "text": "㉤대로"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20266cs11",
+        "marker": "ⓐ",
+        "text": "ⓐ옥피리"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20266cs11",
+        "marker": "ⓑ",
+        "text": "ⓑ일엽편주"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20266cs22",
+        "marker": "ⓒ",
+        "text": "ⓒ백옥상"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20266cs51",
+        "marker": "ⓓ",
+        "text": "ⓓ청전검"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20266cs52",
+        "marker": "ⓔ",
+        "text": "ⓔ항서"
       }
     ]
   },
