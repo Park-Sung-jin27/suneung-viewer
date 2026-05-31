@@ -2517,6 +2517,48 @@
         "type": "underline",
         "sentId": "l20239as36",
         "text": "①서찰을 본즉 태부인의 서찰이라."
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239as2",
+        "marker": "㉠",
+        "text": "㉠마침 정 상서"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239as14",
+        "marker": "㉡",
+        "text": "㉡황명이 급하오니 수이 행장 차리소서."
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239as19",
+        "marker": "ⓐ",
+        "text": "ⓐ 장계"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239as23",
+        "marker": "㉢",
+        "text": "㉢정 상서께서 지난달 보름께 별세하셨나이다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239as26",
+        "marker": "㉣",
+        "text": "㉣대원수 호왕에 승리하여"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239as30",
+        "marker": "ⓑ",
+        "text": "ⓑ첩서"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239as36",
+        "marker": "㉤",
+        "text": "㉤서찰"
       }
     ],
     "l20239b": [
@@ -2567,6 +2609,18 @@
         "type": "underline",
         "sentId": "l20239cs52",
         "text": "⑤ 바위틈"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239cs26",
+        "marker": "㉠",
+        "text": "㉠은신처"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239cs52",
+        "marker": "㉡",
+        "text": "㉡바위틈"
       }
     ],
     "l20239d": [
