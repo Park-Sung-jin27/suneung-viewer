@@ -2495,6 +2495,36 @@
         "sentId": "l20239ds102",
         "text": "㉤ \"동파(東坡) 적벽유(赤壁遊)*인들 이내 흥(興)에 미치겠는가\"",
         "marker": "㉤"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239ds15",
+        "marker": "㉠",
+        "text": "㉠산두(山頭)에 한운(閑雲) 일고 수중(水中)에 백구(白鷗) 난다"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239ds17",
+        "marker": "㉡",
+        "text": "㉡ 일생에 시름을 잊고 너를 좇아 놀리라"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239ds24",
+        "marker": "㉢",
+        "text": "㉢ 바람에 떨어진 갈대꽃 갠 하늘에 눈이 되어"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239ds25",
+        "marker": "㉢",
+        "text": "석양에 높이 날아 어지러이 뿌리는데"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20239ds43",
+        "marker": "㉣",
+        "text": "㉣ 아이야 닻 들어라 만조(晚潮)에 띄워 가자"
       }
     ]
   },
