@@ -197,6 +197,9 @@ export default function AuditPanel({ user }) {
   const [csCandidates, setCsCandidates] = useState(null);
   const [csApprovals, setCsApprovals] = useState({}); // key: "qId-cNum" → { sentId, score }
 
+  // v3.2: deletion staging — conditional return 앞에 위치 의무 (React Hooks 규칙)
+  const [stagedDeletions, setStagedDeletions] = useState([]);
+
   const [uMarker, setUMarker] = useState("");
   const [uText, setUText] = useState("");
   const [mkMarker, setMkMarker] = useState("");
@@ -302,8 +305,7 @@ export default function AuditPanel({ user }) {
     return lines.join("\n");
   };
 
-  // v3.2: deletion staging — 기존 annotation entry 삭제 명세
-  const [stagedDeletions, setStagedDeletions] = useState([]);
+  // v3.2: deletion staging — 함수들 (state 는 위 conditional return 앞에 선언됨)
   const addDeletion = (ann) => {
     // ann = annotations.json 안 한 entry. 식별자 = sentId + type + (marker || text)
     const key = JSON.stringify({
