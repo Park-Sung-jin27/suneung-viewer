@@ -327,6 +327,10 @@ function RenderSent({ sent, sel, anns }) {
         padding: "1px 3px",
         outline: `1.5px solid ${pal.border}`,
         outlineOffset: "1px",
+        // line wrap 시 background/outline 이 줄 끝(여백)까지 차는 결함 fix:
+        // box-decoration-break: clone → wrap 된 각 line 의 background 가 텍스트 폭에서 끊김
+        boxDecorationBreak: "clone",
+        WebkitBoxDecorationBreak: "clone",
       }
     : {};
 
