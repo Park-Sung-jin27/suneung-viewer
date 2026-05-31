@@ -1,6 +1,6 @@
 {
   "tool_version": "1.0",
-  "generated_at": "2026-05-31T03:26:51.849Z",
+  "generated_at": "2026-05-31T03:42:50.834Z",
   "thresholds": {
     "version": "1.0",
     "auto_apply_hard_conditions": {
@@ -35,14 +35,14 @@
   },
   "totals": {
     "total_choices_all": 6645,
-    "total_choices_empty_needing_cs": 1075,
+    "total_choices_empty_needing_cs": 979,
     "safety_distribution": {
       "safe": 180,
       "suspect": 130,
       "rebuild_needed": 40
     },
     "decision_distribution": {
-      "auto_apply": 96,
+      "auto_apply": 0,
       "batch_review": 103,
       "manual_needed": 827,
       "no_quote_extractable": 49
@@ -6334,41 +6334,6 @@
     {
       "yearKey": "2014_6월A",
       "setId": "r20146a",
-      "questionId": 17,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이처럼 대기가 없는 달과 달리 지구는 산란 효과에 의해 파란 하늘과 흰 구름을 볼 수 있는 것이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20146as17",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이처럼 대기가 없는 달과 달리 지구는 산란 효과에 의해 파란 하늘과 흰 구름을 볼 수 있는 것이다."
-          ],
-          "sentText": "개미나 벌도 사회를 이루고 살지만 사람은 아니다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_6월A",
-      "setId": "r20146a",
       "questionId": 18,
       "choiceNum": 1,
       "ok": false,
@@ -7020,41 +6985,6 @@
       "yearKey": "2014_6월A",
       "setId": "r20146d",
       "questionId": 26,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이로 인해 냉전 책임론은 크게 후퇴하고 구체적인 정책 형성에 대한 연구가 부각되었다"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20146ds18",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이로 인해 냉전 책임론은 크게 후퇴하고 구체적인 정책 형성에 대한 연구가 부각되었다"
-          ],
-          "sentText": "이로 인해 냉전 책임론은 크게 후퇴하고 구체적인 정책 형성에 대한 연구가 부각되었다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_6월A",
-      "setId": "r20146d",
-      "questionId": 26,
       "choiceNum": 5,
       "ok": true,
       "pat": null,
@@ -7197,41 +7127,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2014_6월A",
-      "setId": "r20146e",
-      "questionId": 28,
-      "choiceNum": 3,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "상대방에게 불법 행위의 책임이 있다고 주장하는 피해자는 소송에서 원고가 되어, 앞의 민법 조문에서 규정하는 요건들이 이루어졌다고 입증해야 한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20146es12",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "상대방에게 불법 행위의 책임이 있다고 주장하는 피해자는 소송에서 원고가 되어, 앞의 민법 조문에서 규정하는 요건들이 이루어졌다고 입증해야 한다."
-          ],
-          "sentText": "그리하여 상대방에게 불법 행위의 책임이 있다고 주장하는 피해자는 소송에서 원고가 되어, 앞의 민법 조문에서 규정하는 요건들이 이루어졌다고 입증해야 한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2014_6월A",
@@ -7774,41 +7669,6 @@
       "yearKey": "2014_6월A",
       "setId": "l20146b",
       "questionId": 31,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "야삼경(夜三更) 남 다 자는 밤이 깊으면"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20146bs17",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "야삼경(夜三更) 남 다 자는 밤이 깊으면"
-          ],
-          "sentText": "귀먹어서 삼 년이요 눈 어두워 삼 년이요"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_6월A",
-      "setId": "l20146b",
-      "questionId": 31,
       "choiceNum": 5,
       "ok": true,
       "pat": null,
@@ -7851,41 +7711,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2014_6월A",
-      "setId": "l20146b",
-      "questionId": 32,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "의붓어미 시샘에 죽었습니다"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20146bs10",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "의붓어미 시샘에 죽었습니다"
-          ],
-          "sentText": "아홉 솥에 불을 때고 열두 방에 자리 걷고,"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2014_6월A",
@@ -7967,41 +7792,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2014_6월A",
-      "setId": "l20146b",
-      "questionId": 32,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "시새움에 몸이 죽은 우리 누나는"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20146bs13",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "시새움에 몸이 죽은 우리 누나는"
-          ],
-          "sentText": "시아버니 호랑새요 시어머니 꾸중새요"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2014_6월A",
@@ -9509,41 +9299,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2014_6월B",
-      "setId": "l20146d",
-      "questionId": 44,
-      "choiceNum": 4,
-      "ok": false,
-      "pat": "L1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "누가 봄을 젊은이의 것이요, 늙은이의 것이 아니라 하던가."
-      ],
-      "candidates": [
-        {
-          "sentId": "l20146ds2",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "누가 봄을 젊은이의 것이요, 늙은이의 것이 아니라 하던가."
-          ],
-          "sentText": "누가 봄을 젊은이의 것이요, 늙은이의 것이 아니라 하던가."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2014_6월B",
@@ -11148,41 +10903,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2015_6월A",
-      "setId": "l20156c",
-      "questionId": 40,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "선조 때부터 둑을 맨들고 물과 싸워 가며 살아온 우리들은 대관절 우찌 되는기요?"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20156cs13",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "선조 때부터 둑을 맨들고 물과 싸워 가며 살아온 우리들은 대관절 우찌 되는기요?"
-          ],
-          "sentText": "\"쥑일 놈들.\"\n건우 할아버지는 그렇게 해서 다시 국회의원, 다음은 하천 부지의 매립 허가를 얻은 유력자 …… 이런 식으로 소유자가 둔갑되어 간 사연들을 죽 들먹거리더니,\n\"이 꼴이 되고 보니 선조 때부터 둑을 맨들"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2015_6월A",
@@ -12894,41 +12614,6 @@
       "yearKey": "2015_6월B",
       "setId": "r20156f",
       "questionId": 28,
-      "choiceNum": 1,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "광고에 대한 기업의 책임감에서 비롯된 자율 규제는 법적 규제를 보완하는 효과가 있다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20156fs22",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "광고에 대한 기업의 책임감에서 비롯된 자율 규제는 법적 규제를 보완하는 효과가 있다."
-          ],
-          "sentText": "광고에 대한 기업의 책임감에서 비롯된 자율 규제는 법적 규제를 보완하는 효과가 있다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_6월B",
-      "setId": "r20156f",
-      "questionId": 28,
       "choiceNum": 2,
       "ok": false,
       "pat": "R1",
@@ -12983,41 +12668,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2015_6월B",
-      "setId": "r20156f",
-      "questionId": 28,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "상품에 응용된 과학 기술이 복잡해지고 첨단화되면서 상품 정보에 대한 소비자의 정확한 이해도 기대하기 어려워졌다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20156fs11",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "상품에 응용된 과학 기술이 복잡해지고 첨단화되면서 상품 정보에 대한 소비자의 정확한 이해도 기대하기 어려워졌다."
-          ],
-          "sentText": "시장의 독과점 상황이 광범위해지면서 소비자의 자유로운 선택이 어려워졌고, 상품에 응용된 과학 기술이 복잡해지고 첨단화되면서 상품 정보에 대한 소비자의 정확한 이해도 기대하기 어려워졌다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2015_6월B",
@@ -13164,41 +12814,6 @@
     {
       "yearKey": "2015_6월B",
       "setId": "r20156f",
-      "questionId": 29,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "광고에서 기업과 소비자의 이익이 상충되는 경우도 있고 광고가 사회 전체에 폐해를 낳는 경우도 있어, 다양한 규제 방식이 모색되었다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20156fs5",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "광고에서 기업과 소비자의 이익이 상충되는 경우도 있고 광고가 사회 전체에 폐해를 낳는 경우도 있어, 다양한 규제 방식이 모색되었다."
-          ],
-          "sentText": "그러나 광고에서 기업과 소비자의 이익이 상충되는 경우도 있고 광고가 사회 전체에 폐해를 낳는 경우도 있어, 다양한 규제 방식이 모색되었다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_6월B",
-      "setId": "r20156f",
       "questionId": 30,
       "choiceNum": 2,
       "ok": true,
@@ -13296,41 +12911,6 @@
       "yearKey": "2015_6월B",
       "setId": "l20156a",
       "questionId": 32,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "차단―한 등불이 하나 비인 하늘에 걸려 있다. / 내 호올로 어딜 가라는 슬픈 신호냐."
-      ],
-      "candidates": [
-        {
-          "sentId": "l20156as1",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "차단―한 등불이 하나 비인 하늘에 걸려 있다. / 내 호올로 어딜 가라는 슬픈 신호냐."
-          ],
-          "sentText": "(가) 차단―한 등불이 하나 비인 하늘에 걸려 있다. / 내 호올로 어딜 가라는 슬픈 신호냐."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_6월B",
-      "setId": "l20156a",
-      "questionId": 32,
       "choiceNum": 2,
       "ok": false,
       "pat": "L1",
@@ -13362,76 +12942,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2015_6월B",
-      "setId": "l20156a",
-      "questionId": 32,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "길―게 늘인 그림자"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20156as4",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "길―게 늘인 그림자"
-          ],
-          "sentText": "공허한 군중의 행렬에 섞이어 / 내 어디서 그리 무거운 비애를 지니고 왔기에 / 길―게 늘인 그림자 이다지 어두워 / 내 어디로 어떻게 가라는 슬픈 신호기 / 차단―한 등불이 하나 비인 하늘에 걸리어 있다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_6월B",
-      "setId": "l20156a",
-      "questionId": 32,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "아지랑이가 피듯 태양이 타듯 / 제비가 날듯 길을 따라 물이 흐르듯"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20156as7",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "아지랑이가 피듯 태양이 타듯 / 제비가 날듯 길을 따라 물이 흐르듯"
-          ],
-          "sentText": "그 길에 아지랑이가 피듯 태양이 타듯 / 제비가 날듯 길을 따라 물이 흐르듯 그렇게 / 그렇게"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2015_6월B",
@@ -14418,111 +13928,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2019_6월",
-      "setId": "r20196a",
-      "questionId": 18,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "서학에 대한 조정(朝廷)의 금지 조치도 걸림돌이었다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20196as13",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "서학에 대한 조정(朝廷)의 금지 조치도 걸림돌이었다."
-          ],
-          "sentText": "서양 해부학이 야기하는 윤리적 문제도 서양 의학의 영향력을 제한하는 요인으로 작용하였으며, 서학에 대한 조정(朝廷)의 금지 조치도 걸림돌이었다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2019_6월",
-      "setId": "r20196a",
-      "questionId": 18,
-      "choiceNum": 2,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "당시에 전해진 서양 의학 지식은 내용 면에서도 부족했을 뿐 아니라"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20196as12",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "당시에 전해진 서양 의학 지식은 내용 면에서도 부족했을 뿐 아니라"
-          ],
-          "sentText": "당시에 전해진 서양 의학 지식은 내용 면에서도 부족했을 뿐 아니라, 지구가 둥글다거나 움직인다는 주장만큼 충격적이지는 않았다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2019_6월",
-      "setId": "r20196a",
-      "questionId": 18,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "서양 해부학이 야기하는 윤리적 문제도 서양 의학의 영향력을 제한하는 요인으로 작용하였으며"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20196as13",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "서양 해부학이 야기하는 윤리적 문제도 서양 의학의 영향력을 제한하는 요인으로 작용하였으며"
-          ],
-          "sentText": "서양 해부학이 야기하는 윤리적 문제도 서양 의학의 영향력을 제한하는 요인으로 작용하였으며, 서학에 대한 조정(朝廷)의 금지 조치도 걸림돌이었다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2019_6월",
@@ -15665,76 +15070,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2019_6월",
-      "setId": "r20196c",
-      "questionId": 21,
-      "choiceNum": 2,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "자신의 생각을 제시하였다"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20196cs5",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "자신의 생각을 제시하였다"
-          ],
-          "sentText": "그는 「서국의(西國醫)」라는 글에서 아담 샬이 쓴 『주제군징(主制群徵)』의 일부를 채록하면서 자신의 생각을 제시하였다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2019_6월",
-      "setId": "r20196c",
-      "questionId": 21,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "기독교를 효과적으로 전파하기 위해"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20196cs7",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "기독교를 효과적으로 전파하기 위해"
-          ],
-          "sentText": "대신 기독교를 효과적으로 전파하기 위해 신의 존재를 증명하려 했던 로마 시대의 생리설, 중세의 해부 지식 등이 실려 있었다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2019_6월",
@@ -17751,76 +17086,6 @@
       "yearKey": "2019_6월",
       "setId": "l20196a",
       "questionId": 40,
-      "choiceNum": 2,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "남의 재물 갖고 제 마음대로 쓰는 놈은 어떤 놈의 팔자인고. 찾아가서 내 집 망종 보고 죽자."
-      ],
-      "candidates": [
-        {
-          "sentId": "l20196as15",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "남의 재물 갖고 제 마음대로 쓰는 놈은 어떤 놈의 팔자인고. 찾아가서 내 집 망종 보고 죽자."
-          ],
-          "sentText": "하루는 주효를 낭자케 장만하고 원근에 모모한 친구며 사방 사람을 청좌하여 대연을 배설할 제, 이때의 참옹고집 전전걸식하다가 맹랑촌 옹고집 활인구제한단 말 듣고 분심으로 하는 말이, \"남의 재물 갖고 제 마음대로 쓰는"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2019_6월",
-      "setId": "l20196a",
-      "questionId": 40,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "과연 마을 뒷산에 앉아 잔치하는 데를 보고 눈물을 흘리고 앉았거늘"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20196as17",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "과연 마을 뒷산에 앉아 잔치하는 데를 보고 눈물을 흘리고 앉았거늘"
-          ],
-          "sentText": "사환 등이 영을 듣고 사방으로 나가 보니 과연 마을 뒷산에 앉아 잔치하는 데를 보고 눈물을 흘리고 앉았거늘 사환들이 바로 가서 엉겁결에 배례하고 문안하니, 슬프다. 참옹고집이 대성통곡 절로 난다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2019_6월",
-      "setId": "l20196a",
-      "questionId": 40,
       "choiceNum": 5,
       "ok": true,
       "pat": null,
@@ -18454,146 +17719,6 @@
     {
       "yearKey": "2014_9월A",
       "setId": "r20149a",
-      "questionId": 16,
-      "choiceNum": 5,
-      "ok": false,
-      "pat": "R1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "기억된 영상은 어떤 각도에서 바라보는지에 따라 달라지기에, 이 방법을 활용하는 꿀벌은 특정 장소를 특정 각도에서 본 영상으로 기억해 두었다가 다시 그곳으로 갈 때는 자신이 보는 영상과 기억된 영상이 일치하도록 비행한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149as4",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "기억된 영상은 어떤 각도에서 바라보는지에 따라 달라지기에, 이 방법을 활용하는 꿀벌은 특정 장소를 특정 각도에서 본 영상으로 기억해 두었다가 다시 그곳으로 갈 때는 자신이 보는 영상과 기억된 영상이 일치하도록 비행한다."
-          ],
-          "sentText": "[풀이] ㅇ을 순음 아래 이어 쓰면 순경음이 된다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월A",
-      "setId": "r20149a",
-      "questionId": 17,
-      "choiceNum": 2,
-      "ok": false,
-      "pat": "R1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "'경로적분'은 곤충과 새의 가장 기본적인 길찾기 방법으로 이를 활용하는 능력은 타고나는 것으로 알려졌다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149as10",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "'경로적분'은 곤충과 새의 가장 기본적인 길찾기 방법으로 이를 활용하는 능력은 타고나는 것으로 알려졌다."
-          ],
-          "sentText": "'경로적분'은 곤충과 새의 가장 기본적인 길찾기 방법으로 이를 활용하는 능력은 타고나는 것으로 알려졌다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월A",
-      "setId": "r20149a",
-      "questionId": 17,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "사막개미는 장소기억 능력이 있지만 눈에 띄는 지형지물이 거의 없는 사막에서는 장소기억을 사용할 수 없기 때문에 경로적분을 활용한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149as12",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "사막개미는 장소기억 능력이 있지만 눈에 띄는 지형지물이 거의 없는 사막에서는 장소기억을 사용할 수 없기 때문에 경로적분을 활용한다."
-          ],
-          "sentText": "사막개미는 장소기억 능력이 있지만 눈에 띄는 지형지물이 거의 없는 사막에서는 장소기억을 사용할 수 없기 때문에 경로적분을 활용한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월A",
-      "setId": "r20149a",
-      "questionId": 17,
-      "choiceNum": 4,
-      "ok": false,
-      "pat": "R1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "사막개미는 집 근처를 이리저리 탐색하다가 일단 먹이를 찾으면 집을 향해 거의 일직선으로 돌아온다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149as11",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "사막개미는 집 근처를 이리저리 탐색하다가 일단 먹이를 찾으면 집을 향해 거의 일직선으로 돌아온다."
-          ],
-          "sentText": "예를 들어 먹이를 찾아 길을 나선 사하라 사막의 사막개미는 집 근처를 이리저리 탐색하다가 일단 먹이를 찾으면 집을 향해 거의 일직선으로 돌아온다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월A",
-      "setId": "r20149a",
       "questionId": 17,
       "choiceNum": 5,
       "ok": false,
@@ -19171,41 +18296,6 @@
       "yearKey": "2014_9월A",
       "setId": "l20149b",
       "questionId": 34,
-      "choiceNum": 4,
-      "ok": false,
-      "pat": "L1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "타일을 바른 이층 양옥"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20149bs7",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "타일을 바른 이층 양옥"
-          ],
-          "sentText": "오직 알라의 신만이"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월A",
-      "setId": "l20149b",
-      "questionId": 34,
       "choiceNum": 5,
       "ok": false,
       "pat": "L2",
@@ -19238,43 +18328,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2014_9월A",
-      "setId": "l20149b",
-      "questionId": 35,
-      "choiceNum": 2,
-      "ok": false,
-      "pat": "L2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "운영은 각자의 호주머니 셈속이었지만 종합 병원의 원장 자리는 의젓이 자기가 차지하고 있다",
-        "각자의 호주머니 셈속"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20149bs9",
-          "raw_score": 2,
-          "normalized_score": 1,
-          "exact_count": 2,
-          "norm_count": 0,
-          "quotes_matched": [
-            "운영은 각자의 호주머니 셈속이었지만 종합 병원의 원장 자리는 의젓이 자기가 차지하고 있다",
-            "각자의 호주머니 셈속"
-          ],
-          "sentText": "그 열렬한 고독 가운데"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2014_9월A",
@@ -19322,41 +18375,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2014_9월A",
-      "setId": "l20149b",
-      "questionId": 35,
-      "choiceNum": 5,
-      "ok": false,
-      "pat": "L2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "그 순간 자기 자신은 아이들을 소학교부터 일본 학교에 보낸 것을 얼마나 다행으로 여겼던 것인가"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20149bs48",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "그 순간 자기 자신은 아이들을 소학교부터 일본 학교에 보낸 것을 얼마나 다행으로 여겼던 것인가"
-          ],
-          "sentText": "㉤ 그 순간 자기 자신은 아이들을 소학교부터 일본 학교에 보낸 것을 얼마나 다행으로 여겼던 것인가."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2014_9월A",
@@ -19956,41 +18974,6 @@
     {
       "yearKey": "2014_9월B",
       "setId": "r20149c",
-      "questionId": 21,
-      "choiceNum": 5,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "현대 미술이 미술의 개념 자체를 묻는 일종의 철학이 되고, 작품의 생산과 감상을 매개하는 이론적 행위로서 비평의 중요성이 부각된 이유가 바로 여기에 있다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149cs15",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "현대 미술이 미술의 개념 자체를 묻는 일종의 철학이 되고, 작품의 생산과 감상을 매개하는 이론적 행위로서 비평의 중요성이 부각된 이유가 바로 여기에 있다."
-          ],
-          "sentText": "현대 미술이 미술의 개념 자체를 묻는 일종의 철학이 되고, 작품의 생산과 감상을 매개하는 이론적 행위로서 비평의 중요성이 부각된 이유가 바로 여기에 있다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149c",
       "questionId": 22,
       "choiceNum": 1,
       "ok": true,
@@ -20251,224 +19234,6 @@
     },
     {
       "yearKey": "2014_9월B",
-      "setId": "r20149c",
-      "questionId": 23,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이제 그러한 구분은 대상이 어떤 것이든 그것에 미술 작품의 자격을 부여하는 지적인 행위, 곧 작품 밖의 '비전시적 요소'에 의존할 따름이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149cs14",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이제 그러한 구분은 대상이 어떤 것이든 그것에 미술 작품의 자격을 부여하는 지적인 행위, 곧 작품 밖의 '비전시적 요소'에 의존할 따름이다."
-          ],
-          "sentText": "이제 그러한 구분은 대상이 어떤 것이든 그것에 미술 작품의 자격을 부여하는 지적인 행위, 곧 작품 밖의 '비전시적 요소'에 의존할 따름이다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149c",
-      "questionId": 23,
-      "choiceNum": 2,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이전 시대까지는 '미술'과 '미술 아닌 것'의 구분은 '무엇을 그리는가?' 또는 '어떻게 그리는가?'의 문제, 곧 내용 형식 재료처럼 지각 가능한 '전시적 요소'에 의존하여 가능했다.",
-        "무엇을 그리는가?",
-        "어떻게 그리는가?"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149cs12",
-          "raw_score": 3,
-          "normalized_score": 1,
-          "exact_count": 3,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이전 시대까지는 '미술'과 '미술 아닌 것'의 구분은 '무엇을 그리는가?' 또는 '어떻게 그리는가?'의 문제, 곧 내용 형식 재료처럼 지각 가능한 '전시적 요소'에 의존하여 가능했다.",
-            "무엇을 그리는가?",
-            "어떻게 그리는가?"
-          ],
-          "sentText": "이전 시대까지는 '미술'과 '미술 아닌 것'의 구분은 '무엇을 그리는가?' 또는 '어떻게 그리는가?'의 문제, 곧 내용 형식 재료처럼 지각 가능한 '전시적 요소'에 의존하여 가능했다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149c",
-      "questionId": 23,
-      "choiceNum": 3,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "20세기에는 빈 캔버스, 자연물, 기성품 등도 '작품'으로 인정되는 데에서 보듯, 전시적 요소로는 더 이상 그러한 구분이 불가능해진 것이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149cs13",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "20세기에는 빈 캔버스, 자연물, 기성품 등도 '작품'으로 인정되는 데에서 보듯, 전시적 요소로는 더 이상 그러한 구분이 불가능해진 것이다."
-          ],
-          "sentText": "반면, 20세기에는 빈 캔버스, 자연물, 기성품 등도 '작품'으로 인정되는 데에서 보듯, 전시적 요소로는 더 이상 그러한 구분이 불가능해진 것이다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149c",
-      "questionId": 23,
-      "choiceNum": 4,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이제 그러한 구분은 대상이 어떤 것이든 그것에 미술 작품의 자격을 부여하는 지적인 행위, 곧 작품 밖의 '비전시적 요소'에 의존할 따름이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149cs14",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이제 그러한 구분은 대상이 어떤 것이든 그것에 미술 작품의 자격을 부여하는 지적인 행위, 곧 작품 밖의 '비전시적 요소'에 의존할 따름이다."
-          ],
-          "sentText": "이제 그러한 구분은 대상이 어떤 것이든 그것에 미술 작품의 자격을 부여하는 지적인 행위, 곧 작품 밖의 '비전시적 요소'에 의존할 따름이다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149c",
-      "questionId": 23,
-      "choiceNum": 5,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이전 시대까지는 '미술'과 '미술 아닌 것'의 구분은 '무엇을 그리는가?' 또는 '어떻게 그리는가?'의 문제, 곧 내용 형식 재료처럼 지각 가능한 '전시적 요소'에 의존하여 가능했다.",
-        "무엇을 그리는가?",
-        "어떻게 그리는가?"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149cs12",
-          "raw_score": 3,
-          "normalized_score": 1,
-          "exact_count": 3,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이전 시대까지는 '미술'과 '미술 아닌 것'의 구분은 '무엇을 그리는가?' 또는 '어떻게 그리는가?'의 문제, 곧 내용 형식 재료처럼 지각 가능한 '전시적 요소'에 의존하여 가능했다.",
-            "무엇을 그리는가?",
-            "어떻게 그리는가?"
-          ],
-          "sentText": "이전 시대까지는 '미술'과 '미술 아닌 것'의 구분은 '무엇을 그리는가?' 또는 '어떻게 그리는가?'의 문제, 곧 내용 형식 재료처럼 지각 가능한 '전시적 요소'에 의존하여 가능했다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149d",
-      "questionId": 25,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "선정 당사자 제도를 이용할 수도 있는데, 이는 갑과 같은 이를 선정 당사자로 삼아 그에게 모두의 소송을 맡기는 것이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149ds8",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "선정 당사자 제도를 이용할 수도 있는데, 이는 갑과 같은 이를 선정 당사자로 삼아 그에게 모두의 소송을 맡기는 것이다."
-          ],
-          "sentText": "또한 선정 당사자 제도를 이용할 수도 있는데, 이는 갑과 같은 이를 선정 당사자로 삼아 그에게 모두의 소송을 맡기는 것이다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월B",
       "setId": "r20149d",
       "questionId": 25,
       "choiceNum": 2,
@@ -20508,41 +19273,6 @@
       "yearKey": "2014_9월B",
       "setId": "r20149d",
       "questionId": 25,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "단체 소송은 법률이 정한, 전문성과 경험을 갖춘 단체가 기업을 상대로 침해 행위의 중지를 청구하는 소를 제기할 수 있도록 하는 제도이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149ds16",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "단체 소송은 법률이 정한, 전문성과 경험을 갖춘 단체가 기업을 상대로 침해 행위의 중지를 청구하는 소를 제기할 수 있도록 하는 제도이다."
-          ],
-          "sentText": "단체 소송은 법률이 정한, 전문성과 경험을 갖춘 단체가 기업을 상대로 침해 행위의 중지를 청구하는 소를 제기할 수 있도록 하는 제도이다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149d",
-      "questionId": 25,
       "choiceNum": 4,
       "ok": true,
       "pat": null,
@@ -20561,78 +19291,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149d",
-      "questionId": 25,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "집단 소송에서 대표 당사자가 수행하여 이루어진 판결은 원칙적으로 소송에 참가하지 않은 사람들에게도 그 효력이 미친다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149ds14",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "집단 소송에서 대표 당사자가 수행하여 이루어진 판결은 원칙적으로 소송에 참가하지 않은 사람들에게도 그 효력이 미친다."
-          ],
-          "sentText": "만일 갑을 비롯한 피해자들이 공동 소송을 하여 승소한다면 이들만 배상을 받게 된다. 반면에 집단 소송에서 대표 당사자가 수행하여 이루어진 판결은 원칙적으로 소송에 참가하지 않은 사람들에게도 그 효력이 미친다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149d",
-      "questionId": 26,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다.",
-        "사이트 운영의 중지"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149ds5",
-          "raw_score": 2,
-          "normalized_score": 1,
-          "exact_count": 2,
-          "norm_count": 0,
-          "quotes_matched": [
-            "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다.",
-            "사이트 운영의 중지"
-          ],
-          "sentText": "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2014_9월B",
@@ -20656,41 +19314,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149d",
-      "questionId": 26,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149ds5",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다."
-          ],
-          "sentText": "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2014_9월B",
@@ -20750,76 +19373,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149e",
-      "questionId": 28,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "회전체의 회전 관성은 회전체를 구성하는 질량 요소들의 회전 관성의 합과 같은데, 질량 요소들의 회전 관성은 질량 요소가 회전축에서 떨어져 있는 거리가 멀수록 커진다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149es12",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "회전체의 회전 관성은 회전체를 구성하는 질량 요소들의 회전 관성의 합과 같은데, 질량 요소들의 회전 관성은 질량 요소가 회전축에서 떨어져 있는 거리가 멀수록 커진다."
-          ],
-          "sentText": "회전체의 회전 관성은 회전체를 구성하는 질량 요소들의 회전 관성의 합과 같은데, 질량 요소들의 회전 관성은 질량 요소가 회전축에서 떨어져 있는 거리가 멀수록 커진다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "r20149e",
-      "questionId": 28,
-      "choiceNum": 5,
-      "ok": false,
-      "pat": "R1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "각속도는 회전 운동에서 물체가 단위 시간당 회전하는 각이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20149es9",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "각속도는 회전 운동에서 물체가 단위 시간당 회전하는 각이다."
-          ],
-          "sentText": "여기에서 각속도는 회전 운동에서 물체가 단위 시간당 회전하는 각이다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2014_9월B",
@@ -21291,43 +19844,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2014_9월B",
-      "setId": "l20149a",
-      "questionId": 33,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "가만이 향기(香氣) 노아 황혼월(黃昏月)을 기약(期約)니",
-        "황혼월(黃昏月)"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20149as6",
-          "raw_score": 2,
-          "normalized_score": 1,
-          "exact_count": 2,
-          "norm_count": 0,
-          "quotes_matched": [
-            "가만이 향기(香氣) 노아 황혼월(黃昏月)을 기약(期約)니",
-            "황혼월(黃昏月)"
-          ],
-          "sentText": "가만이 향기(香氣) 노아 황혼월(黃昏月)을 기약(期約)니"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2014_9월B",
@@ -22426,181 +20942,6 @@
     {
       "yearKey": "2015_9월A",
       "setId": "r20159b",
-      "questionId": 19,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "한 개의 CPU는 한 번에 하나의 프로그램만을 실행할 수 있다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20159bs6",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "한 개의 CPU는 한 번에 하나의 프로그램만을 실행할 수 있다."
-          ],
-          "sentText": "추사 김정희가 25세 되던 해에 그린 <석란(石蘭)>은 당시 청나라에서도 유행하던 전형적인 양식을 따른 묵란화이다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_9월A",
-      "setId": "r20159b",
-      "questionId": 19,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "어떤 프로그램이 실행될 때 컴퓨터 운영 체제는 실행할 프로그램을 주기억 장치에 저장하고 실행 대기 프로그램의 목록인 '작업큐'에 등록한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20159bs4",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "어떤 프로그램이 실행될 때 컴퓨터 운영 체제는 실행할 프로그램을 주기억 장치에 저장하고 실행 대기 프로그램의 목록인 '작업큐'에 등록한다."
-          ],
-          "sentText": "이런 인식은 묵란화에도 이어져 난초를 칠 때는 글씨의 획을 그을 때와 같은 붓놀림을 구사했다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_9월A",
-      "setId": "r20159b",
-      "questionId": 20,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이 시간은 순수하게 프로그램의 실행에만 소요된 시간인 '총실행 시간'에 '교체 시간'과 작업큐에서 실행을 기다리는 '대기 시간'을 모두 합한 것이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20159bs19",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이 시간은 순수하게 프로그램의 실행에만 소요된 시간인 '총실행 시간'에 '교체 시간'과 작업큐에서 실행을 기다리는 '대기 시간'을 모두 합한 것이다."
-          ],
-          "sentText": "김정희도 <부작란도>에 '우연히 그린 그림에서 참모습을 얻었다'고 적어 두었다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_9월A",
-      "setId": "r20159b",
-      "questionId": 20,
-      "choiceNum": 2,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이 시간은 순수하게 프로그램의 실행에만 소요된 시간인 '총실행 시간'에 '교체 시간'과 작업큐에서 실행을 기다리는 '대기 시간'을 모두 합한 것이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20159bs19",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이 시간은 순수하게 프로그램의 실행에만 소요된 시간인 '총실행 시간'에 '교체 시간'과 작업큐에서 실행을 기다리는 '대기 시간'을 모두 합한 것이다."
-          ],
-          "sentText": "김정희도 <부작란도>에 '우연히 그린 그림에서 참모습을 얻었다'고 적어 두었다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_9월A",
-      "setId": "r20159b",
-      "questionId": 20,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이 시간은 순수하게 프로그램의 실행에만 소요된 시간인 '총실행 시간'에 '교체 시간'과 작업큐에서 실행을 기다리는 '대기 시간'을 모두 합한 것이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20159bs19",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이 시간은 순수하게 프로그램의 실행에만 소요된 시간인 '총실행 시간'에 '교체 시간'과 작업큐에서 실행을 기다리는 '대기 시간'을 모두 합한 것이다."
-          ],
-          "sentText": "김정희도 <부작란도>에 '우연히 그린 그림에서 참모습을 얻었다'고 적어 두었다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_9월A",
-      "setId": "r20159b",
       "questionId": 20,
       "choiceNum": 4,
       "ok": false,
@@ -22633,41 +20974,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2015_9월A",
-      "setId": "r20159b",
-      "questionId": 20,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이처럼 작업큐에 등록된 프로그램의 수가 많아지면 각 프로그램의 대기 시간은 그에 비례하여 늘어난다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20159bs25",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이처럼 작업큐에 등록된 프로그램의 수가 많아지면 각 프로그램의 대기 시간은 그에 비례하여 늘어난다."
-          ],
-          "sentText": "이처럼 작업큐에 등록된 프로그램의 수가 많아지면 각 프로그램의 대기 시간은 그에 비례하여 늘어난다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2015_9월A",
@@ -23048,41 +21354,6 @@
       "yearKey": "2015_9월A",
       "setId": "r20159e",
       "questionId": 28,
-      "choiceNum": 1,
-      "ok": false,
-      "pat": "R1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이성의 올바른 인도를 통해 다다르게 되는 자연법은 국가와 실정법을 초월하는 규범이라고 보았다"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20159es10",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이성의 올바른 인도를 통해 다다르게 되는 자연법은 국가와 실정법을 초월하는 규범이라고 보았다"
-          ],
-          "sentText": "이성의 올바른 인도를 통해 다다르게 되는 자연법은 국가와 실정법을 초월하는 규범이라고 보았다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_9월A",
-      "setId": "r20159e",
-      "questionId": 28,
       "choiceNum": 2,
       "ok": false,
       "pat": "R1",
@@ -23359,41 +21630,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2015_9월A",
-      "setId": "l20159a",
-      "questionId": 32,
-      "choiceNum": 3,
-      "ok": false,
-      "pat": "L2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "버티면서 거부하면서"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20159as12",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "버티면서 거부하면서"
-          ],
-          "sentText": "버티면서 거부하면서 영하에서"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2015_9월A",
@@ -24076,41 +22312,6 @@
       "yearKey": "2015_9월B",
       "setId": "r20159a",
       "questionId": 18,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "부모에게 효도하는 것은 '인'이고, 형을 공경하는 것은 '의'라고 하여 '의'를 가족 성원 간에도 지켜야 할 규범이라고 규정하였다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20159as8",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "부모에게 효도하는 것은 '인'이고, 형을 공경하는 것은 '의'라고 하여 '의'를 가족 성원 간에도 지켜야 할 규범이라고 규정하였다."
-          ],
-          "sentText": "그는 부모에게 효도하는 것은 '인'이고, 형을 공경하는 것은 '의'라고 하여 '의'를 가족 성원 간에도 지켜야 할 규범이라고 규정하였다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2015_9월B",
-      "setId": "r20159a",
-      "questionId": 18,
       "choiceNum": 4,
       "ok": false,
       "pat": "R1",
@@ -24130,41 +22331,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2015_9월B",
-      "setId": "r20159a",
-      "questionId": 18,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "'의'의 의미를 확장하여 '의'를 '인'과 대등한 지위로 격상하였다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20159as7",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "'의'의 의미를 확장하여 '의'를 '인'과 대등한 지위로 격상하였다."
-          ],
-          "sentText": "맹자는 공자와 마찬가지로 혈연관계에서 자연스럽게 드러나는 도덕 감정인 '인'의 확산이 필요함을 강조하면서도, '의'의 의미를 확장하여 '의'를 '인'과 대등한 지위로 격상하였다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2015_9월B",
@@ -26581,111 +24747,6 @@
       "yearKey": "2016_6월B",
       "setId": "r20166b",
       "questionId": 22,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "전 세계적인 노동 시장의 유연화 경향에 따라 정규직과 비정규직, 생산직과 사무직 등 다양한 형태로 분절화된 노동자들이 이제는 계급적 연대 속에서 이해관계를 공유하지 못하게 되었다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20166bs6",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "전 세계적인 노동 시장의 유연화 경향에 따라 정규직과 비정규직, 생산직과 사무직 등 다양한 형태로 분절화된 노동자들이 이제는 계급적 연대 속에서 이해관계를 공유하지 못하게 되었다."
-          ],
-          "sentText": "또한 전 세계적인 노동 시장의 유연화 경향에 따라 정규직과 비정규직, 생산직과 사무직 등 다양한 형태로 분절화된 노동자들이 이제는 계급적 연대 속에서 이해관계를 공유하지 못하게 되었다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_6월B",
-      "setId": "r20166b",
-      "questionId": 22,
-      "choiceNum": 2,
-      "ok": false,
-      "pat": "R1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "개인에 대한 국가의 통제력도 현저하게 약화되고 있다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20166bs5",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "개인에 대한 국가의 통제력도 현저하게 약화되고 있다."
-          ],
-          "sentText": "교통과 통신 수단의 발달에 따라 국경을 넘나드는 자본과 노동의 이동이 가속화되었고, 개인에 대한 국가의 통제력도 현저하게 약화되고 있다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_6월B",
-      "setId": "r20166b",
-      "questionId": 22,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "핵가족화 추세에 더하여 일인 가구가 급속도로 늘어나는 등 가족의 해체 현상도 많이 나타나고 있다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20166bs7",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "핵가족화 추세에 더하여 일인 가구가 급속도로 늘어나는 등 가족의 해체 현상도 많이 나타나고 있다."
-          ],
-          "sentText": "핵가족화 추세에 더하여 일인 가구가 급속도로 늘어나는 등 가족의 해체 현상도 많이 나타나고 있다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_6월B",
-      "setId": "r20166b",
-      "questionId": 22,
       "choiceNum": 4,
       "ok": true,
       "pat": null,
@@ -26984,41 +25045,6 @@
       "yearKey": "2016_6월B",
       "setId": "r20166c",
       "questionId": 26,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "실제 관측 결과, 나선 은하 중심부 밖에서 공전하는 별의 속력은 <그림>의 곡선 B에서처럼"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20166cs8",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "실제 관측 결과, 나선 은하 중심부 밖에서 공전하는 별의 속력은 <그림>의 곡선 B에서처럼"
-          ],
-          "sentText": "그렇지만 실제 관측 결과, 나선 은하 중심부 밖에서 공전하는 별의 속력은 <그림>의 곡선 B에서처럼 중심으로부터의 거리와 무관하게 거의 일정하다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_6월B",
-      "setId": "r20166c",
-      "questionId": 26,
       "choiceNum": 2,
       "ok": true,
       "pat": null,
@@ -27097,41 +25123,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2016_6월B",
-      "setId": "r20166c",
-      "questionId": 26,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "은하 중심에서 멀리 떨어진 별일수록 은하 중심 쪽으로 그 별을 당기는 물질이 그 별의 공전 궤도 안쪽에 많아져서"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20166cs9",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "은하 중심에서 멀리 떨어진 별일수록 은하 중심 쪽으로 그 별을 당기는 물질이 그 별의 공전 궤도 안쪽에 많아져서"
-          ],
-          "sentText": "이것은 은하 중심에서 멀리 떨어진 별일수록 은하 중심 쪽으로 그 별을 당기는 물질이 그 별의 공전 궤도 안쪽에 많아져서 거리가 멀어질수록 줄어드는 중력을 보충해 주기 때문으로 보인다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2016_6월B",
@@ -27778,115 +25769,6 @@
     {
       "yearKey": "2016_9월B",
       "setId": "r20169a",
-      "questionId": 17,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "샐먼의 인과적 설명 이론은 헴펠의 이론보다 우리의 일상적 직관에 더 부합한다는 장점이 있다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169as16",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "샐먼의 인과적 설명 이론은 헴펠의 이론보다 우리의 일상적 직관에 더 부합한다는 장점이 있다."
-          ],
-          "sentText": "예를 들어 ○○ 온라인 경매 사이트에서 일방향성과 충돌회피성을 만족시키는 해시 함수 G가 모든 경매 참여자와 운영자에게 공개되어 있다고 하자."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월B",
-      "setId": "r20169a",
-      "questionId": 18,
-      "choiceNum": 2,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "먼저 일상적 직관에 따르면 설명으로 인정되지만, 헴펠에 따르면 설명이 아니라고 판단해야 하는 경우가 있다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169as12",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "먼저 일상적 직관에 따르면 설명으로 인정되지만, 헴펠에 따르면 설명이 아니라고 판단해야 하는 경우가 있다."
-          ],
-          "sentText": "그리고 충돌회피성이란 특정 해시 값을 갖는 서로 다른 데이터를 찾아내는 것이 현실적으로 불가능하다는 것을 의미한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월B",
-      "setId": "r20169a",
-      "questionId": 18,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이때 건전한 논증은 '논증의 전제가 모두 참'이라는 조건과 '논증의 전제가 모두 참이라면 결론도 반드시 참'이라는 조건을 모두 만족하는 논증이다.",
-        "논증의 전제가 모두 참",
-        "논증의 전제가 모두 참이라면 결론도 반드시 참"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169as9",
-          "raw_score": 3,
-          "normalized_score": 1,
-          "exact_count": 3,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이때 건전한 논증은 '논증의 전제가 모두 참'이라는 조건과 '논증의 전제가 모두 참이라면 결론도 반드시 참'이라는 조건을 모두 만족하는 논증이다.",
-            "논증의 전제가 모두 참",
-            "논증의 전제가 모두 참이라면 결론도 반드시 참"
-          ],
-          "sentText": "그런데 해시 함수가 ㉠ 일방향성과 ㉡ 충돌회피성을 만족시키면 암호 기술로도 활용된다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월B",
-      "setId": "r20169a",
       "questionId": 18,
       "choiceNum": 4,
       "ok": true,
@@ -27979,76 +25861,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2016_9월B",
-      "setId": "r20169a",
-      "questionId": 19,
-      "choiceNum": 1,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "설명을 인과로 이해하려는 시도는 설명이라는 불명료한 개념을 인과라는 또 하나의 불명료한 개념으로 대체하는 것에 불과할 수 있기 때문이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169as21",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "설명을 인과로 이해하려는 시도는 설명이라는 불명료한 개념을 인과라는 또 하나의 불명료한 개념으로 대체하는 것에 불과할 수 있기 때문이다."
-          ],
-          "sentText": "그것이 없다면, 설명을 인과로 이해하려는 시도는 설명이라는 불명료한 개념을 인과라는 또 하나의 불명료한 개념으로 대체하는 것에 불과할 수 있기 때문이다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월B",
-      "setId": "r20169a",
-      "questionId": 19,
-      "choiceNum": 2,
-      "ok": false,
-      "pat": "R1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "결과를 일으킨 원인을 골라내는 문제는 결국 원인과 결과가 시공간적으로 어떻게 연결되는가에 대한 철학적 분석을 필요로 한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169as20",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "결과를 일으킨 원인을 골라내는 문제는 결국 원인과 결과가 시공간적으로 어떻게 연결되는가에 대한 철학적 분석을 필요로 한다."
-          ],
-          "sentText": "논스 : 입찰가를 추측할 수 없게 하기 위해 입찰가에 더해지는 임의의 숫자."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2016_9월B",
@@ -28311,41 +26123,6 @@
         "quote_long_enough": true
       },
       "decision": "batch_review"
-    },
-    {
-      "yearKey": "2016_9월B",
-      "setId": "r20169c",
-      "questionId": 27,
-      "choiceNum": 5,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "명암 대비가 뚜렷이 드러나도록 촬영하고, 원판을 합성하여 구도를 만들고, 특수한 감광액으로 질감에 변화를 주는"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169cs18",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "명암 대비가 뚜렷이 드러나도록 촬영하고, 원판을 합성하여 구도를 만들고, 특수한 감광액으로 질감에 변화를 주는"
-          ],
-          "sentText": "이처럼 스타이컨은 명암 대비가 뚜렷이 드러나도록 촬영하고, 원판을 합성하여 구도를 만들고, 특수한 감광액으로 질감에 변화를 주는 등의 방식으로 사진이 회화와 같은 방식으로 창작되고 표현될 수 있는 예술임을 보여 주고"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2016_9월B",
@@ -29477,76 +27254,6 @@
       "yearKey": "2016_9월B",
       "setId": "r20169g",
       "questionId": 42,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "또한 저 아이는 이미 주머니 속에 든 물건이나 다름이 없게 되었다. 서두르지 않는다고 달아날 곳이 있겠느냐?"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169gs30",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "또한 저 아이는 이미 주머니 속에 든 물건이나 다름이 없게 되었다. 서두르지 않는다고 달아날 곳이 있겠느냐?"
-          ],
-          "sentText": "\"인정상 본디 그럴 것이니 그 말대로 따르도록 하거라. 또한 저 아이는 이미 주머니 속에 든 물건이나 다름이 없게 되었다. 서두르지 않는다고 달아날 곳이 있겠느냐?\""
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월B",
-      "setId": "r20169g",
-      "questionId": 42,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "진 소저는 공의 행차가 이미 멀리까지 갔으리라 짐작하고 유모 및 시녀 운섬 등과 함께 야밤에 간단하게 행장을 꾸렸다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169gs37",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "진 소저는 공의 행차가 이미 멀리까지 갔으리라 짐작하고 유모 및 시녀 운섬 등과 함께 야밤에 간단하게 행장을 꾸렸다."
-          ],
-          "sentText": "다시 10여 일이 지난 뒤 진 소저는 공의 행차가 이미 멀리까지 갔으리라 짐작하고 유모 및 시녀 운섬 등과 함께 야밤에 간단하게 행장을 꾸렸다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월B",
-      "setId": "r20169g",
-      "questionId": 42,
       "choiceNum": 5,
       "ok": true,
       "pat": null,
@@ -29818,41 +27525,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2016_9월B",
-      "setId": "l20169a",
-      "questionId": 31,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "아야 자해(紫蟹) 황계(黃鷄)로 안주 쟝만야라"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20169as11",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "아야 자해(紫蟹) 황계(黃鷄)로 안주 쟝만야라"
-          ],
-          "sentText": "산화 작용에 의한 산패는 불포화 지방산이 결합된 지방질에서 일어나며, 이중결합의 수가 많을수록 잘 일어난다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2016_9월B",
@@ -30223,41 +27895,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2016_9월A",
-      "setId": "r20169a",
-      "questionId": 17,
-      "choiceNum": 4,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "충돌회피성이란 특정 해시 값을 갖는 서로 다른 데이터를 찾아내는 것이 현실적으로 불가능하다는 것을 의미한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169as12",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "충돌회피성이란 특정 해시 값을 갖는 서로 다른 데이터를 찾아내는 것이 현실적으로 불가능하다는 것을 의미한다."
-          ],
-          "sentText": "그리고 충돌회피성이란 특정 해시 값을 갖는 서로 다른 데이터를 찾아내는 것이 현실적으로 불가능하다는 것을 의미한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2016_9월A",
@@ -30776,76 +28413,6 @@
     {
       "yearKey": "2016_9월A",
       "setId": "r20169d",
-      "questionId": 16,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "상호 간에 동일한 해시 함수를 사용한다고 할 때, 전자 문서와 그 문서의 해시 값을 함께 전송하면 상대방은 수신한 전자 문서에 동일한 해시 함수를 적용하여 결과 값을 얻은 뒤 전송받은 해시 값과 비교함으로써 문서가 변경되었는지 확인할 수 있다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169ds8",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "상호 간에 동일한 해시 함수를 사용한다고 할 때, 전자 문서와 그 문서의 해시 값을 함께 전송하면 상대방은 수신한 전자 문서에 동일한 해시 함수를 적용하여 결과 값을 얻은 뒤 전송받은 해시 값과 비교함으로써 문서가 변경되었는지 확인할 수 있다."
-          ],
-          "sentText": "가령, 상호 간에 동일한 해시 함수를 사용한다고 할 때, 전자 문서와 그 문서의 해시 값을 함께 전송하면 상대방은 수신한 전자 문서에 동일한 해시 함수를 적용하여 결과 값을 얻은 뒤 전송받은 해시 값과 비교함으로써 "
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월A",
-      "setId": "r20169d",
-      "questionId": 17,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "일방향성이란 주어진 해시 값에 대응하는 입력 데이터의 복원이 불가능하다는 것을 말한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20169ds10",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "일방향성이란 주어진 해시 값에 대응하는 입력 데이터의 복원이 불가능하다는 것을 말한다."
-          ],
-          "sentText": "일방향성이란 주어진 해시 값에 대응하는 입력 데이터의 복원이 불가능하다는 것을 말한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월A",
-      "setId": "r20169d",
       "questionId": 17,
       "choiceNum": 2,
       "ok": false,
@@ -31025,41 +28592,6 @@
     {
       "yearKey": "2016_9월A",
       "setId": "l20169a",
-      "questionId": 19,
-      "choiceNum": 5,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "지방질 한 분자에는 글리세롤 한 분자와 지방산 세 분자가 결합되어 있다."
-      ],
-      "candidates": [
-        {
-          "sentId": "l20169as6",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "지방질 한 분자에는 글리세롤 한 분자와 지방산 세 분자가 결합되어 있다."
-          ],
-          "sentText": "일반적으로 지방질은 사슬 모양을 ⓑ 이루고 있으며 지방질 한 분자에는 글리세롤 한 분자와 지방산 세 분자가 결합되어 있다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월A",
-      "setId": "l20169a",
       "questionId": 20,
       "choiceNum": 1,
       "ok": true,
@@ -31092,41 +28624,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2016_9월A",
-      "setId": "l20169a",
-      "questionId": 20,
-      "choiceNum": 2,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "생성된 하이드로퍼옥사이드는 분해되어 알코올, 알데히드 등의 화합물로 변화한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "l20169as22",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "생성된 하이드로퍼옥사이드는 분해되어 알코올, 알데히드 등의 화합물로 변화한다."
-          ],
-          "sentText": "이로 인해 하이드로퍼옥사이드가 계속 생성되고, 생성된 하이드로퍼옥사이드는 분해되어 알코올, 알데히드 등의 화합물로 변화한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2016_9월A",
@@ -31197,41 +28694,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2016_9월A",
-      "setId": "l20169a",
-      "questionId": 20,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "퍼옥시 라디칼은 주위에 있는 다른 오메가-6 지방산 사슬과 반응하여 새로운 알릴 라디칼을 만들고, 자신은 비(非)라디칼 분자인 하이드로퍼옥사이드로 변화한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "l20169as20",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "퍼옥시 라디칼은 주위에 있는 다른 오메가-6 지방산 사슬과 반응하여 새로운 알릴 라디칼을 만들고, 자신은 비(非)라디칼 분자인 하이드로퍼옥사이드로 변화한다."
-          ],
-          "sentText": "퍼옥시 라디칼은 주위에 있는 다른 오메가-6 지방산 사슬과 반응하여 새로운 알릴 라디칼을 만들고, 자신은 비(非)라디칼 분자인 하이드로퍼옥사이드로 변화한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2016_9월A",
@@ -32273,111 +29735,6 @@
     {
       "yearKey": "2016_9월A",
       "setId": "l20169d",
-      "questionId": 44,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "겨울을 덥다 한들 몸을 어이 가릴꼬"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20169ds23",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "겨울을 덥다 한들 몸을 어이 가릴꼬"
-          ],
-          "sentText": "㉢ 겨울을 덥다 한들 몸을 어이 가릴꼬"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월A",
-      "setId": "l20169d",
-      "questionId": 44,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "솥 시루도 버려두니 붉은빛이 다 되었다"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20169ds25",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "솥 시루도 버려두니 붉은빛이 다 되었다"
-          ],
-          "sentText": "㉣ 솥 시루도 버려두니 붉은빛이 다 되었다"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월A",
-      "setId": "l20169d",
-      "questionId": 44,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "원근 친척 손님들은 어이하여 접대할꼬"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20169ds27",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "원근 친척 손님들은 어이하여 접대할꼬"
-          ],
-          "sentText": "㉤ 원근 친척 손님들은 어이하여 접대할꼬"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2016_9월A",
-      "setId": "l20169d",
       "questionId": 45,
       "choiceNum": 3,
       "ok": true,
@@ -32588,216 +29945,6 @@
     {
       "yearKey": "2018_6월",
       "setId": "r20186a",
-      "questionId": 17,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "'이'와 '기'는 사물의 구성 요소로서 서로 다른 성질을 갖지만, '이'는 현실 세계에서 항상 '기'와 더불어 실제로 존재한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20186as7",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "'이'와 '기'는 사물의 구성 요소로서 서로 다른 성질을 갖지만, '이'는 현실 세계에서 항상 '기'와 더불어 실제로 존재한다."
-          ],
-          "sentText": "'이'와 '기'는 사물의 구성 요소로서 서로 다른 성질을 갖지만, '이'는 현실 세계에서 항상 '기'와 더불어 실제로 존재한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "r20186a",
-      "questionId": 17,
-      "choiceNum": 2,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "율곡은 '이'를 형체도 없고 시간과 공간의 제약을 받지 않고 존재하는 만물의 법칙이자 원리로 보고, '기'를 시간적인 선후와 공간적인 시작과 끝을 가지면서 끊임없이 변화하며 작동하는 물질적 요소로 본다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20186as6",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "율곡은 '이'를 형체도 없고 시간과 공간의 제약을 받지 않고 존재하는 만물의 법칙이자 원리로 보고, '기'를 시간적인 선후와 공간적인 시작과 끝을 가지면서 끊임없이 변화하며 작동하는 물질적 요소로 본다."
-          ],
-          "sentText": "존재론의 측면에서 율곡은 '이'를 형체도 없고 시간과 공간의 제약을 받지 않고 존재하는 만물의 법칙이자 원리로 보고, '기'를 시간적인 선후와 공간적인 시작과 끝을 가지면서 끊임없이 변화하며 작동하는 물질적 요소로 "
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "r20186a",
-      "questionId": 17,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "'이'라 할 수 있는 왕도나 오륜을 고치려 하는 것이 아니라, 그것을 구현할 수 있도록 법제를 개혁하여야 한다는 것이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20186as17",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "'이'라 할 수 있는 왕도나 오륜을 고치려 하는 것이 아니라, 그것을 구현할 수 있도록 법제를 개혁하여야 한다는 것이다."
-          ],
-          "sentText": "곧, '이'라 할 수 있는 왕도나 오륜을 고치려 하는 것이 아니라, 그것을 구현할 수 있도록 법제를 개혁하여야 한다는 것이다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "r20186a",
-      "questionId": 17,
-      "choiceNum": 4,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "일반인이라도 기질상의 병폐를 제거하고 탁한 기질을 정화하면 '이'의 선한 본성이 회복되어 성인의 경지에 이를 수 있다"
-      ],
-      "candidates": [
-        {
-          "sentId": "r20186as11",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "일반인이라도 기질상의 병폐를 제거하고 탁한 기질을 정화하면 '이'의 선한 본성이 회복되어 성인의 경지에 이를 수 있다"
-          ],
-          "sentText": "또한 이러한 이통기국론은, 성인과 일반인이 기질의 차이는 있지만 동일한 '이'를 갖기 때문에 일반인이라도 기질상의 병폐를 제거하고 탁한 기질을 정화하면 '이'의 선한 본성이 회복되어 성인의 경지에 이를 수 있다는 기"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "r20186a",
-      "questionId": 17,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "만물이 하나의 동일한 '이'를 공유하지만, 다양한 '기'의 성질로 인해 서로 다른 모습으로 나타날 수 있음을 의미한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20186as10",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "만물이 하나의 동일한 '이'를 공유하지만, 다양한 '기'의 성질로 인해 서로 다른 모습으로 나타날 수 있음을 의미한다."
-          ],
-          "sentText": "이것은 만물이 하나의 동일한 '이'를 공유하지만, 다양한 '기'의 성질로 인해 서로 다른 모습으로 나타날 수 있음을 의미한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "r20186a",
-      "questionId": 18,
-      "choiceNum": 1,
-      "ok": false,
-      "pat": "R4",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "'수기'는 사물을 탐구하고 앎을 투철히 하고 뜻을 성실하게 하고 마음을 바르게 하여 자신을 닦는 일이며, '치인'은 집안을 바르게 하고 나라를 통치하고 세상을 평화롭게 하는 것을 의미한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20186as2",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "'수기'는 사물을 탐구하고 앎을 투철히 하고 뜻을 성실하게 하고 마음을 바르게 하여 자신을 닦는 일이며, '치인'은 집안을 바르게 하고 나라를 통치하고 세상을 평화롭게 하는 것을 의미한다."
-          ],
-          "sentText": "'수기'는 사물을 탐구하고 앎을 투철히 하고 뜻을 성실하게 하고 마음을 바르게 하여 자신을 닦는 일이며, '치인'은 집안을 바르게 하고 나라를 통치하고 세상을 평화롭게 하는 것을 의미한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "r20186a",
       "questionId": 18,
       "choiceNum": 2,
       "ok": false,
@@ -32835,41 +29982,6 @@
       "yearKey": "2018_6월",
       "setId": "r20186a",
       "questionId": 18,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "인간에게 내재된 천도를 실현하려는 율곡의 수양론은 사회의 폐단을 제거하여 천도를 실현하려는 경세론으로 이어진다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20186as13",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "인간에게 내재된 천도를 실현하려는 율곡의 수양론은 사회의 폐단을 제거하여 천도를 실현하려는 경세론으로 이어진다."
-          ],
-          "sentText": "인간에게 내재된 천도를 실현하려는 율곡의 수양론은 사회의 폐단을 제거하여 천도를 실현하려는 경세론으로 이어진다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "r20186a",
-      "questionId": 18,
       "choiceNum": 4,
       "ok": false,
       "pat": "R4",
@@ -32901,41 +30013,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "r20186a",
-      "questionId": 18,
-      "choiceNum": 5,
-      "ok": false,
-      "pat": "R2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "율곡은 흐트러진 마음을 거두어들이는 거경(居敬), 경전을 읽고 공부하여 시비를 분별하는 궁리(窮理), 그리고 몸과 마음을 다스려 사욕을 극복하는 역행(力行)을 기질 변화를 위한 중요한 수양 방법으로 제시한다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20186as12",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "율곡은 흐트러진 마음을 거두어들이는 거경(居敬), 경전을 읽고 공부하여 시비를 분별하는 궁리(窮理), 그리고 몸과 마음을 다스려 사욕을 극복하는 역행(力行)을 기질 변화를 위한 중요한 수양 방법으로 제시한다."
-          ],
-          "sentText": "율곡은 흐트러진 마음을 거두어들이는 거경(居敬), 경전을 읽고 공부하여 시비를 분별하는 궁리(窮理), 그리고 몸과 마음을 다스려 사욕을 극복하는 역행(力行)을 기질 변화를 위한 중요한 수양 방법으로 제시한다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2018_6월",
@@ -32977,41 +30054,6 @@
       "yearKey": "2018_6월",
       "setId": "r20186a",
       "questionId": 20,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "자신의 이기론을 바탕으로 더 나은 세상을 이루려 했던 율곡 이이의 노력은 수기치인의 실천이라 할 만하다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20186as35",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "자신의 이기론을 바탕으로 더 나은 세상을 이루려 했던 율곡 이이의 노력은 수기치인의 실천이라 할 만하다."
-          ],
-          "sentText": "자신의 이기론을 바탕으로 더 나은 세상을 이루려 했던 율곡 이이의 노력은 수기치인의 실천이라 할 만하다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "r20186a",
-      "questionId": 20,
       "choiceNum": 2,
       "ok": false,
       "pat": "R1",
@@ -33031,41 +30073,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "r20186a",
-      "questionId": 20,
-      "choiceNum": 3,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "결국 조종성헌에 해당하지 않는 부당한 법령을 오래된 선왕의 법이라며 고칠 수 없다고 고집하는 권세가들에 대하여, 그런 법령은 변하지 않아야 할 '이'의 영역에 속하는 것이 아니라는 이론적인 공박을 펼친 것이다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20186as34",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "결국 조종성헌에 해당하지 않는 부당한 법령을 오래된 선왕의 법이라며 고칠 수 없다고 고집하는 권세가들에 대하여, 그런 법령은 변하지 않아야 할 '이'의 영역에 속하는 것이 아니라는 이론적인 공박을 펼친 것이다."
-          ],
-          "sentText": "결국 조종성헌에 해당하지 않는 부당한 법령을 오래된 선왕의 법이라며 고칠 수 없다고 고집하는 권세가들에 대하여, 그런 법령은 변하지 않아야 할 '이'의 영역에 속하는 것이 아니라는 이론적인 공박을 펼친 것이다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2018_6월",
@@ -34451,41 +31458,6 @@
       "yearKey": "2018_6월",
       "setId": "l20186b",
       "questionId": 28,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "곱아라 고아라 진정 아름다운지고"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20186bs7",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "곱아라 고아라 진정 아름다운지고"
-          ],
-          "sentText": "㉡ 곱아라 고아라 진정 아름다운지고"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "l20186b",
-      "questionId": 28,
       "choiceNum": 2,
       "ok": true,
       "pat": null,
@@ -35144,41 +32116,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2018_6월",
-      "setId": "l20186d",
-      "questionId": 40,
-      "choiceNum": 5,
-      "ok": false,
-      "pat": "L2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "나는 문득 고향의 그 큰 산이 떠오르려고 하는 것을 머리를 설레설레 흔들어 지워 버렸다."
-      ],
-      "candidates": [
-        {
-          "sentId": "l20186ds35",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "나는 문득 고향의 그 큰 산이 떠오르려고 하는 것을 머리를 설레설레 흔들어 지워 버렸다."
-          ],
-          "sentText": "나는 문득 고향의 그 큰 산이 떠오르려고 하는 것을 머리를 설레설레 흔들어 지워 버렸다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2018_6월",
@@ -36097,41 +33034,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2019_9월",
-      "setId": "l20199a",
-      "questionId": 16,
-      "choiceNum": 3,
-      "ok": false,
-      "pat": "L2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "진주 장터 생어물전"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20199as29",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "진주 장터 생어물전"
-          ],
-          "sentText": "진주 장터 생어물전에는"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2019_9월",
@@ -37574,41 +34476,6 @@
       "yearKey": "2017_6월",
       "setId": "r20176a",
       "questionId": 19,
-      "choiceNum": 4,
-      "ok": false,
-      "pat": "R1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "이러한 과정을 다양한 학습 데이터에 대하여 반복하면 출력값들이 각각의 정답 값에 수렴하게 되고 판정 성능이 좋아진다."
-      ],
-      "candidates": [
-        {
-          "sentId": "r20176as18",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "이러한 과정을 다양한 학습 데이터에 대하여 반복하면 출력값들이 각각의 정답 값에 수렴하게 되고 판정 성능이 좋아진다."
-          ],
-          "sentText": "이러한 과정을 다양한 학습 데이터에 대하여 반복하면 출력값들이 각각의 정답 값에 수렴하게 되고 판정 성능이 좋아진다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2017_6월",
-      "setId": "r20176a",
-      "questionId": 19,
       "choiceNum": 5,
       "ok": false,
       "pat": "R4",
@@ -38816,41 +35683,6 @@
     {
       "yearKey": "2017_6월",
       "setId": "l20176a",
-      "questionId": 25,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "특히 남녀 간의 사랑 노래는 그 화자와 대상이 '신하'와 '임금'의 구도로 치환되기 용이했기 때문에 궁중악으로 편입될 수 있었다."
-      ],
-      "candidates": [
-        {
-          "sentId": "l20176as10",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "특히 남녀 간의 사랑 노래는 그 화자와 대상이 '신하'와 '임금'의 구도로 치환되기 용이했기 때문에 궁중악으로 편입될 수 있었다."
-          ],
-          "sentText": "특히 남녀 간의 사랑 노래는 그 화자와 대상이 '신하'와 '임금'의 구도로 치환되기 용이했기 때문에 궁중악으로 편입될 수 있었다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2017_6월",
-      "setId": "l20176a",
       "questionId": 26,
       "choiceNum": 1,
       "ok": false,
@@ -39329,41 +36161,6 @@
     {
       "yearKey": "2017_6월",
       "setId": "l20176c",
-      "questionId": 39,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "정미소 아니라 모두 내놓으라셔도 못 드릴 것은 아닙니다마는, 늘 이렇게만 하시면야 어디 드릴 수 있겠습니까?"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20176cs29",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "정미소 아니라 모두 내놓으라셔도 못 드릴 것은 아닙니다마는, 늘 이렇게만 하시면야 어디 드릴 수 있겠습니까?"
-          ],
-          "sentText": "\"정미소 아니라 모두 내놓으라셔도 못 드릴 것은 아닙니다마는, 늘 이렇게만 하시면야 어디 드릴 수 있겠습니까?\""
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2017_6월",
-      "setId": "l20176c",
       "questionId": 40,
       "choiceNum": 1,
       "ok": false,
@@ -39515,76 +36312,6 @@
         "quote_long_enough": true
       },
       "decision": "manual_needed"
-    },
-    {
-      "yearKey": "2017_6월",
-      "setId": "l20176c",
-      "questionId": 41,
-      "choiceNum": 1,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "너같이 오륙천 원씩 학교에 디밀고 제 손으로 가르친 남의 딸자식 유인하는 것이 유리하게 쓰는 방법이냐?"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20176cs12",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "너같이 오륙천 원씩 학교에 디밀고 제 손으로 가르친 남의 딸자식 유인하는 것이 유리하게 쓰는 방법이냐?"
-          ],
-          "sentText": "\"어떻게 유리하게 쓰란 말이냐? 너같이 오륙천 원씩 학교에 디밀고 제 손으로 가르친 남의 딸자식 유인하는 것이 유리하게 쓰는 방법이냐?\""
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2017_6월",
-      "setId": "l20176c",
-      "questionId": 41,
-      "choiceNum": 2,
-      "ok": true,
-      "pat": null,
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "신앙을 잃어버리고 사회적으로 활약할 야심이나 희망까지 길이 막히고 보면야, 생활이 거칠어 가는 수밖에는 없을 것이라고 동정도 하는 한편인데"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20176cs33",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "신앙을 잃어버리고 사회적으로 활약할 야심이나 희망까지 길이 막히고 보면야, 생활이 거칠어 가는 수밖에는 없을 것이라고 동정도 하는 한편인데"
-          ],
-          "sentText": "부친은 신경질이 일어났는지 별안간 달려들더니 주먹으로 뺨을 갈기려는 것을 덕기가 벌떡 일어서니까 주먹이 어깨에 맞았다. 병적인지 벌써 망녕인지는 모르겠으나 점점 흥분하게 해서는 아니 되겠다 하고 마루로 피해 나와 버"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2017_6월",
@@ -40583,43 +37310,6 @@
       "yearKey": "2017_9월",
       "setId": "l20179c",
       "questionId": 24,
-      "choiceNum": 3,
-      "ok": false,
-      "pat": "L2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "나는 그 여자의 건강이 ― 아니 내 건강도 속히 회복되기를 바라며",
-        "회복되기를 바라며"
-      ],
-      "candidates": [
-        {
-          "sentId": "l20179cs10",
-          "raw_score": 2,
-          "normalized_score": 1,
-          "exact_count": 2,
-          "norm_count": 0,
-          "quotes_matched": [
-            "나는 그 여자의 건강이 ― 아니 내 건강도 속히 회복되기를 바라며",
-            "회복되기를 바라며"
-          ],
-          "sentText": "나는 그 여자의 건강이 ― 아니 내 건강도 속히 회복되기를 바라며 그가 누웠던 자리에 누워 본다."
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2017_9월",
-      "setId": "l20179c",
-      "questionId": 24,
       "choiceNum": 5,
       "ok": true,
       "pat": null,
@@ -41521,41 +38211,6 @@
       "yearKey": "2017_9월",
       "setId": "l20179e",
       "questionId": 44,
-      "choiceNum": 2,
-      "ok": true,
-      "pat": "L1",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "당신과 그날 깊은 산골짜기에서 헤어진 뒤 속절없이 짝 잃은 새가 되었던 것입니다."
-      ],
-      "candidates": [
-        {
-          "sentId": "l20179es52",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "당신과 그날 깊은 산골짜기에서 헤어진 뒤 속절없이 짝 잃은 새가 되었던 것입니다."
-          ],
-          "sentText": "\"장차 백년해로의 낙을 누리려 했는데 어찌 횡액(橫厄)을 만나 구렁에 넘어질 줄 알았겠습니까? 이리 같은 놈들에게 정조를 잃지는 않았으나, 육체는 진흙탕에서 찢겼사옵니다. 절개는 중하고 목숨은 가벼워 해골은 들판에 "
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
-    },
-    {
-      "yearKey": "2017_9월",
-      "setId": "l20179e",
-      "questionId": 44,
       "choiceNum": 3,
       "ok": true,
       "pat": null,
@@ -41600,41 +38255,6 @@
         "quote_long_enough": true
       },
       "decision": "batch_review"
-    },
-    {
-      "yearKey": "2017_9월",
-      "setId": "l20179e",
-      "questionId": 44,
-      "choiceNum": 5,
-      "ok": true,
-      "pat": "L2",
-      "currentCsIds": [],
-      "set_safety": "safe",
-      "analysis_quotes": [
-        "만일 제가 인간 세상을 그리워해 미련을 가지면 저승의 법에 위반되고, 죄가 제게만이 아니라 낭군님께도 미칠 것입니다."
-      ],
-      "candidates": [
-        {
-          "sentId": "l20179es68",
-          "raw_score": 1,
-          "normalized_score": 1,
-          "exact_count": 1,
-          "norm_count": 0,
-          "quotes_matched": [
-            "만일 제가 인간 세상을 그리워해 미련을 가지면 저승의 법에 위반되고, 죄가 제게만이 아니라 낭군님께도 미칠 것입니다."
-          ],
-          "sentText": "최낭은, \"낭군의 수명은 아직 남아 있으나 저는 이미 저승의 명부에 이름이 올라 있어 더 이상 머물 수 없습니다. 만일 제가 인간 세상을 그리워해 미련을 가지면 저승의 법에 위반되고, 죄가 제게만이 아니라 낭군님께도"
-        }
-      ],
-      "hard_checks": {
-        "safe_grade": true,
-        "existing_empty": true,
-        "unique_match": true,
-        "top_score": 1,
-        "gap": 1,
-        "quote_long_enough": true
-      },
-      "decision": "auto_apply"
     },
     {
       "yearKey": "2017_9월",

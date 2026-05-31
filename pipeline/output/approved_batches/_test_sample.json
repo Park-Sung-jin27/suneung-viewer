@@ -1,0 +1,18 @@
+{
+  "tool": "cs_ids_review_v3.1",
+  "ts": "2026-05-31T03:40:00.000Z",
+  "setId": "r2025b",
+  "yearKey": "2025수능",
+  "approvals": [
+    {
+      "yearKey": "2025수능",
+      "setId": "r2025b",
+      "questionId": 9,
+      "choiceNum": 1,
+      "cs_ids": ["r2025bs10"],
+      "score": 0.85,
+      "quote": "예시 인용",
+      "source": "batch_approval"
+    }
+  ]
+}
