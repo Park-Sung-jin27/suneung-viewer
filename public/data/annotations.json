@@ -1961,6 +1961,42 @@
         "type": "underline",
         "sentId": "r20269cs17",
         "text": "달성되는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20269cs3",
+        "marker": "ⓐ",
+        "text": "ⓐ괴리되고"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20269cs3",
+        "marker": "ⓑ",
+        "text": "ⓑ기피하였다"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20269cs6",
+        "marker": "ⓒ",
+        "text": "ⓒ분별할"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20269cs10",
+        "marker": "㉠",
+        "text": "㉠파편화된 공중의 유기적인 결합"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20269cs15",
+        "marker": "ⓓ",
+        "text": "ⓓ적합한"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20269cs17",
+        "marker": "ⓔ",
+        "text": "ⓔ달성되는"
       }
     ],
     "r20269d": [
@@ -2284,6 +2320,36 @@
         "type": "underline",
         "sentId": "l20236bs17",
         "text": "은쟁(銀箏)을 꺼내어 원곡(怨曲)을 슬피 타니"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20236bs13",
+        "marker": "㉠",
+        "text": "㉠천문구중"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20236bs14",
+        "marker": "㉡",
+        "text": "㉡음력 섣달"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20236bs15",
+        "marker": "㉢",
+        "text": "㉢ 간장이 다 썩어 넋조차 그쳤으니"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20236bs16",
+        "marker": "㉣",
+        "text": "㉣백일"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20236bs17",
+        "marker": "㉤",
+        "text": "㉤은쟁(銀箏)을 꺼내어 원곡(怨曲)을 슬피 타니"
       }
     ],
     "l20236d": [
