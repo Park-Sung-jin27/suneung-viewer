@@ -3952,6 +3952,36 @@
         "sentId": "l20256ds33",
         "marker": "ⓑ",
         "text": "ⓑ 관습"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256ds4",
+        "marker": "㉠",
+        "text": "㉠흐리던 산길"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256ds14",
+        "marker": "㉡",
+        "text": "㉡가늘게 흩어지"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256ds17",
+        "marker": "㉢",
+        "text": "㉢비비는"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256ds32",
+        "marker": "㉣",
+        "text": "㉣스스로"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256ds39",
+        "marker": "㉤",
+        "text": "㉤이제는"
       }
     ]
   }
