@@ -1669,22 +1669,44 @@
       {
         "type": "underline",
         "sentId": "l20226as5",
-        "text": "나는 긴장했다."
+        "text": "㉠ 나는 긴장했다.",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "l20226as9",
-        "text": "더구나 이리루 들어 오시자 머리를 깎구 수염까지 기르셨거든요."
+        "text": "㉡더구나 이리루 들어 오시자 머리를 깎구 수염까지 기르셨거든요.",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "l20226as11",
-        "text": "묘한 철학"
+        "text": "ⓐ 묘한 철학",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
         "sentId": "l20226as13",
-        "text": "'모두 썩어라, 철저히 썩어라'가 그분이 세상을 보는 이상한 눈입니다."
+        "text": "㉢'모두 썩어라, 철저히 썩어라'가 그분이 세상을 보는 이상한 눈입니다.",
+        "marker": "㉢"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20226as19",
+        "marker": "㉣",
+        "text": "㉣ 아니 그는 그 얼마 후에 내 앞에서 정말로 깨끗하게 사라져 버린 것이다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l20226as21",
+        "marker": "㉤",
+        "text": "㉤ 당신이 미련하다고 말씀하는 건 우습게 들리시겠지만 착한 일을 뜻하시는 것이었습니다."
+      },
+      {
+        "type": "underline",
+        "sentId": "l20226as24",
+        "marker": "ⓑ",
+        "text": "ⓑ 요설들"
       }
     ],
     "l20226b": [
