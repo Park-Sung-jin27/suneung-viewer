@@ -1613,6 +1613,18 @@
         "type": "underline",
         "sentId": "r20226bs43",
         "text": "전반적 대응설"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20226bs37",
+        "marker": "㉠",
+        "text": "㉠예언화 경향"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20226bs43",
+        "marker": "㉡",
+        "text": "㉡ 전반적 대응설"
       }
     ],
     "r20226c": [
@@ -1645,6 +1657,12 @@
         "type": "underline",
         "sentId": "r20226cs26",
         "text": "세웠다는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20226cs14",
+        "marker": "ⓑ",
+        "text": "ⓑ가로막는"
       }
     ],
     "r20226d": [
@@ -1663,6 +1681,18 @@
         "type": "underline",
         "sentId": "r20226ds17",
         "text": "형광 표식 탐침"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20226ds15",
+        "marker": "㉠",
+        "text": "㉠이중 가닥 DNA 특이 염료"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20226ds17",
+        "marker": "㉡",
+        "text": "㉡형광 표식 탐침"
       }
     ],
     "l20226a": [
@@ -1778,6 +1808,12 @@
         "type": "underline",
         "sentId": "l20226cs15",
         "text": "이미 반년이라"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20226cs10",
+        "marker": "ⓐ",
+        "text": "ⓐ공사 문첩 한 장"
       }
     ],
     "l20226d": []
