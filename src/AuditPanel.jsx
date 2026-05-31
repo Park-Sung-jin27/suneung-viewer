@@ -658,7 +658,10 @@ function CsIdsReviewSection({ csCandidates, setId, foundYear, foundSet, csApprov
     batch_review: setCands.filter((c) => c.decision === "batch_review"),
     manual_needed: setCands.filter((c) => c.decision === "manual_needed"),
     no_quote_extractable: setCands.filter((c) => c.decision === "no_quote_extractable"),
+    duplicate_sentid_hold: setCands.filter((c) => c.decision === "duplicate_sentid_hold"),
   };
+  // v2: duplicate sentId hold 표시 — 자동/배치 금지
+  const isDuplicateHold = byDecision.duplicate_sentid_hold.length > 0 || setCands.some((c) => c.set_safety === "duplicate_sentid_hold");
   const approvalKey = (c) => `${c.questionId}-${c.choiceNum}`;
   const approve = (c, sentId, score) => {
     setCsApprovals((prev) => ({ ...prev, [approvalKey(c)]: { sentId, score, quote: c.candidates?.[0]?.quotes_matched?.[0] || null } }));
@@ -702,6 +705,11 @@ function CsIdsReviewSection({ csCandidates, setId, foundYear, foundSet, csApprov
 
   return (
     <Section title={`🔗 cs_ids 후보 검토 (${setCands.length}건) — 승인 ${approvedCount}건`}>
+      {isDuplicateHold && (
+        <div style={{ background: "#fee2e2", border: "1px solid #fca5a5", borderRadius: 8, padding: 12, marginBottom: 8, fontSize: 12, color: "#991b1b", fontWeight: 700 }}>
+          ⚠️ duplicate_sent_id 결함: 본 set 안 sentId 중복 — cs_ids 자동/배치 반영 금지. sentId 재매핑 sprint 후 처리.
+        </div>
+      )}
       <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 8, padding: 12, fontSize: 13 }}>
         <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap", fontSize: 11 }}>
           <span style={{ background: "#dcfce7", color: "#166534", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>auto: {byDecision.auto_apply.length}</span>

@@ -627,7 +627,7 @@
       },
       {
         "type": "underline",
-        "sentId": "l20259as6",
+        "sentId": "l20259as14",
         "text": "(어찌 그렇지 않을 수 있겠는가?)",
         "marker": "㉠"
       }
@@ -646,7 +646,7 @@
       {
         "type": "underline",
         "sentId": "l20259bs2",
-        "text": "부여를 숙신을 발해를 여진을 요를 금을 흥안령을 음산을 아무우르를 숭가리를"
+        "text": "부여를 숙신을 발해를 여진을 요를 금을\n흥안령을 음산을 아무우르를 숭가리를"
       },
       {
         "type": "underline",
@@ -661,7 +661,7 @@
       {
         "type": "underline",
         "sentId": "l20259bs3",
-        "text": "오로촌이 멧돝을 잡아 나를 잔치해 보내던 것도 쏠론이 십릿길을 따라 나와 울던 것도 잊지 않았다"
+        "text": "오로촌이 멧돝을 잡아 나를 잔치해 보내던 것도\n쏠론이 십릿길을 따라 나와 울던 것도 잊지 않았다"
       },
       {
         "type": "underline",
@@ -1601,17 +1601,17 @@
       },
       {
         "type": "underline",
-        "sentId": "r20226bs33",
+        "sentId": "r20226bs37",
         "text": "예언화 경향"
       },
       {
         "type": "underline",
-        "sentId": "r20226bs37",
+        "sentId": "r20226bs42",
         "text": "찾고자"
       },
       {
         "type": "underline",
-        "sentId": "r20226bs38",
+        "sentId": "r20226bs43",
         "text": "전반적 대응설"
       }
     ],
@@ -1633,17 +1633,17 @@
       },
       {
         "type": "underline",
-        "sentId": "r20226cs19",
+        "sentId": "r20226cs21",
         "text": "무디어져"
       },
       {
         "type": "underline",
-        "sentId": "r20226cs20",
+        "sentId": "r20226cs22",
         "text": "크나큰"
       },
       {
         "type": "underline",
-        "sentId": "r20226cs24",
+        "sentId": "r20226cs26",
         "text": "세웠다는"
       }
     ],
@@ -1673,17 +1673,17 @@
       },
       {
         "type": "underline",
-        "sentId": "l20226as8",
+        "sentId": "l20226as9",
         "text": "더구나 이리루 들어 오시자 머리를 깎구 수염까지 기르셨거든요."
       },
       {
         "type": "underline",
-        "sentId": "l20226as10",
+        "sentId": "l20226as11",
         "text": "묘한 철학"
       },
       {
         "type": "underline",
-        "sentId": "l20226as12",
+        "sentId": "l20226as13",
         "text": "'모두 썩어라, 철저히 썩어라'가 그분이 세상을 보는 이상한 눈입니다."
       }
     ],
@@ -1722,34 +1722,34 @@
       },
       {
         "type": "underline",
-        "sentId": "l20226bs27",
+        "sentId": "l20226bs44",
         "text": "막상 나 자신이 그런 심경에 처해 있고 보니 고인(古人)의 불우한 그 심정을 넉넉히 동감하게 된다."
       }
     ],
     "l20226c": [
       {
         "type": "underline",
-        "sentId": "l20226cs3",
+        "sentId": "l20226cs5",
         "text": "이때 마침"
       },
       {
         "type": "underline",
-        "sentId": "l20226cs6",
+        "sentId": "l20226cs10",
         "text": "하루는"
       },
       {
         "type": "underline",
-        "sentId": "l20226cs6",
+        "sentId": "l20226cs10",
         "text": "공사 문첩 한 장"
       },
       {
         "type": "underline",
-        "sentId": "l20226cs7",
+        "sentId": "l20226cs13",
         "text": "요사이"
       },
       {
         "type": "underline",
-        "sentId": "l20226cs9",
+        "sentId": "l20226cs15",
         "text": "이미 반년이라"
       }
     ],
@@ -2203,22 +2203,22 @@
       {
         "type": "underline",
         "sentId": "l20236ds2",
-        "text": "내가 엠피*헌테 말 한마디문, 전 어느 지경 갈지 모를 줄 모르구서."
+        "text": "내가 엠피*헌테 말 한마디문, 전 어느 지경 갈지 모를\n줄 모르구서."
       },
       {
         "type": "underline",
         "sentId": "l20236ds6",
-        "text": "이백 석 추수의 토지와, 만 원짜리 저금통장과, 만 원어치가 넘는 옷이며 비단과, 역시 만 원어치가 넘는 여편네의 패물과를 장만하였다."
+        "text": "이백 석 추수의 토지와, 만 원짜리\n저금통장과, 만 원어치가 넘는 옷이며 비단과, 역시 만 원어치가\n넘는 여편네의 패물과를 장만하였다."
       },
       {
         "type": "underline",
         "sentId": "l20236ds12",
-        "text": "어떻게 하면 이 분풀이를 할까, ⓐ 어떻게 하면 빼앗긴 돈과 물건을 도로 다 찾을까 하고 궁리를 하는 것이나, 아무런 묘책도 없었다."
+        "text": "어떻게 하면 이 분풀이를 할까, ⓐ 어떻게 하면 빼앗긴 돈과\n물건을 도로 다 찾을까 하고 궁리를 하는 것이나, 아무런 묘책도\n없었다."
       },
       {
         "type": "underline",
         "sentId": "l20236ds16",
-        "text": "그러고는 내 집으루 갑시다, 하고 잡아끄는 대로 끌리어 온 것이었었다."
+        "text": "그러고는 내 집으루 갑시다, 하고 잡아끄는 대로 끌리어\n온 것이었었다."
       },
       {
         "type": "underline",
@@ -2228,12 +2228,12 @@
       {
         "type": "underline",
         "sentId": "l20236ds18",
-        "text": "또 한 번 어깨가 움츠러듦을 느끼지 아니치 못하였다"
+        "text": "또 한 번 어깨가 움츠러듦을 느끼지\n아니치 못하였다"
       },
       {
         "type": "underline",
         "sentId": "l20236ds18",
-        "text": "엔간히 자리를 털고 일어설 생각이 몇 번이나 나지 아니한 것도 아니었었다. 그러나 참았다."
+        "text": "엔간히 자리를 털고 일어설\n생각이 몇 번이나 나지 아니한 것도 아니었었다. 그러나 참았다."
       }
     ],
     "l20236c": [
@@ -3124,7 +3124,7 @@
     "l2020b": [
       {
         "type": "underline",
-        "sentId": "l2020bs4",
+        "sentId": "l2020bs1",
         "text": "그 구멍가게에 대한 아버지의 몰두와 자존심은 각별했다.",
         "marker": "㉠"
       },
@@ -3148,7 +3148,7 @@
       },
       {
         "type": "underline",
-        "sentId": "l2020bs13",
+        "sentId": "l2020bs14",
         "text": "당신의 자그마한 구멍가게로 돌아와 나머지 열여덟 병의 소주를 넋 나간 사람처럼 쓰다듬던 아버지는 기어코 아들인 내 앞에서 눈물을 보이고 말았다",
         "marker": "㉤"
       }
@@ -3199,7 +3199,7 @@
       },
       {
         "type": "underline",
-        "sentId": "l2020ds20",
+        "sentId": "l2020ds18",
         "text": "울음 실은 공기가 자유로이 드나드는",
         "marker": "㉢"
       },

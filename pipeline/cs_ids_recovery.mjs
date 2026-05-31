@@ -101,6 +101,17 @@ function classifySetSafety(yearKey, area, set) {
   const sentCount = realSents.length;
   const qCount = (set.questions || []).length;
 
+  // v2 보강: set 내 sentId 중복 감지 — (가)/(나) 두 지문 sent.id 가 같은 번호로 등록된 결함.
+  // duplicate_sent_id 인 set 은 자동 후보 생성 / 자동 반영 금지 (식별자 결함 우선 해결 의무).
+  const sentIdCount = {};
+  for (const s of sents) {
+    const id = s.id || "";
+    if (!id) continue;
+    sentIdCount[id] = (sentIdCount[id] || 0) + 1;
+  }
+  const dupIds = Object.keys(sentIdCount).filter((k) => sentIdCount[k] > 1);
+  const hasDuplicateSentId = dupIds.length > 0;
+
   // 영역 추정 (config-free): area 키 또는 set.id prefix
   const isLiterature = area === "literature" || set.id?.startsWith("l");
   const minSent = isLiterature
@@ -126,19 +137,52 @@ function classifySetSafety(yearKey, area, set) {
   ).length;
   const deadRatio = annTotal ? (deadSentId + textMismatch) / annTotal : 0;
 
-  // 본문 marker 추출 결함 = 해설 안 marker 인용 vs 본문 sent.t marker
+  // v2 보강: 본문 marker pool 확장 — sent.t + bogi text + bogi.diagram.items[].label + annotation.marker
+  // 학생 화면에 marker 가 노출되는 모든 source 인정. r2023d (bogi marker), r2025c (bogi.diagram), l2025d (annotation marker) false positive 제거.
   const bodyMarkers = new Set();
+  // (a) sent.t
   for (const s of sents) {
     for (const ch of s.t || "") if (PASSAGE_MARKERS.has(ch)) bodyMarkers.add(ch);
   }
+  // (b) bogi text + bogi.diagram.items[].label
+  for (const q of set.questions || []) {
+    const bogi = q.bogi;
+    if (typeof bogi === "string") {
+      for (const ch of bogi) if (PASSAGE_MARKERS.has(ch)) bodyMarkers.add(ch);
+    } else if (bogi && typeof bogi === "object") {
+      const t = bogi.text || bogi.description || "";
+      for (const ch of t) if (PASSAGE_MARKERS.has(ch)) bodyMarkers.add(ch);
+      // bogi.diagram items
+      if (Array.isArray(bogi.items)) {
+        for (const it of bogi.items) {
+          const lbl = it.label || "";
+          for (const ch of lbl) if (PASSAGE_MARKERS.has(ch)) bodyMarkers.add(ch);
+        }
+      }
+    }
+  }
+  // (c) annotation.marker 필드
+  for (const e of annList) {
+    if (e.marker && PASSAGE_MARKERS.has(e.marker)) bodyMarkers.add(e.marker);
+  }
+
+  // 해설/stem/선지/bogi 안 인용된 marker (= reference markers)
   const analysisMarkers = new Set();
   for (const q of set.questions || []) {
+    const stem = q.stem || q.t || "";
+    for (const ch of stem) if (PASSAGE_MARKERS.has(ch)) analysisMarkers.add(ch);
     for (const c of q.choices || []) {
+      const cText = typeof c === "string" ? c : (c.text || c.t || "");
+      for (const ch of cText) if (PASSAGE_MARKERS.has(ch)) analysisMarkers.add(ch);
       for (const ch of c.analysis || "")
         if (PASSAGE_MARKERS.has(ch)) analysisMarkers.add(ch);
     }
   }
   const markerMissing = [...analysisMarkers].filter((m) => !bodyMarkers.has(m));
+  // markerMissing > 0 인 경우 후보:
+  //   (i) 본문 추출 결함 (PDF 에 marker 있는데 sent.t 누락) — 정정 path
+  //   (ii) LLM 환각 (PDF 에 marker 없는데 해설/stem 에 환각 추가) — 정정 path
+  // 도구는 둘 구분 못 함 → 사용자 PDF cross-check 의무. 결과를 hallucination_suspect 로 표시.
 
   const flags = {
     sent_below_min: sentCount < minSent,
@@ -146,11 +190,21 @@ function classifySetSafety(yearKey, area, set) {
       qCount > 0 && sentCount / qCount < (isLiterature ? 1.5 : 3.0),
     annotation_dead_or_mismatch: deadSentId + textMismatch > 0,
     body_marker_extraction_broken: markerMissing.length > 0,
+    hallucination_suspect: markerMissing.length > 0, // v2: marker 환각 또는 본문 누락 — PDF cross-check 필수
+    duplicate_sent_id: hasDuplicateSentId, // v2: sentId 중복 — 자동 반영 금지
+    duplicate_ids_count: dupIds.length,
     dead_ratio: deadRatio,
+    // diagnosis 정보
+    body_markers: [...bodyMarkers].sort(),
+    analysis_markers: [...analysisMarkers].sort(),
+    missing_markers: markerMissing.sort(),
   };
 
   let grade = "safe";
-  if (
+  // v2: sentId 중복 set 은 식별자 결함 — 자동 처리 금지 등급
+  if (hasDuplicateSentId) {
+    grade = "duplicate_sentid_hold";
+  } else if (
     flags.sent_below_min ||
     flags.qc_ratio_violation ||
     flags.dead_ratio >=
@@ -275,7 +329,9 @@ function scoreChoice(setObj, q, c, safetyGrade) {
     quotes.some((qq) => qq.length >= hard.min_quote_length_chars);
 
   let decision;
-  if (passAuto) decision = "auto_apply";
+  // v2: duplicate_sentid_hold set 은 자동/배치 모두 금지 — 식별자 결함 우선 정정 의무
+  if (safetyGrade === "duplicate_sentid_hold") decision = "duplicate_sentid_hold";
+  else if (passAuto) decision = "auto_apply";
   else if (
     top &&
     top.normalized_score >= thresh.batch_review_band.min_score &&
@@ -305,12 +361,13 @@ function scoreChoice(setObj, q, c, safetyGrade) {
 
 // ── 메인 ────────────────────────────────────────────────
 const candidatesOut = [];
-const safetyDist = { safe: 0, suspect: 0, rebuild_needed: 0 };
+const safetyDist = { safe: 0, suspect: 0, rebuild_needed: 0, duplicate_sentid_hold: 0 };
 const decisionDist = {
   auto_apply: 0,
   batch_review: 0,
   manual_needed: 0,
   no_quote_extractable: 0,
+  duplicate_sentid_hold: 0,
 };
 let totalChoicesEmpty = 0;
 let totalChoicesAll = 0;
@@ -421,23 +478,13 @@ const manualPct = ((decisionDist.manual_needed / denom) * 100).toFixed(1);
 const nqPct = ((decisionDist.no_quote_extractable / denom) * 100).toFixed(1);
 report.push(``);
 report.push(`- 자동 가능: ${autoPct}%`);
-report.push(`- 배치 검수: ${batchPct}%`);
-report.push(`- 수동 필요: ${manualPct}%`);
-report.push(`- 인용 추출 불가: ${nqPct}%`);
-report.push(``);
-report.push(`## 다음 단계`);
-report.push(``);
-report.push(`- Day 2 자동 반영 cutoff 조정 가능 (현재 min_score=${thresh.auto_apply_hard_conditions.min_score}, gap=${thresh.auto_apply_hard_conditions.min_top_vs_runner_up_gap})`);
-report.push(`- 본 도구는 read-only — all_data_204.json 미수정`);
-report.push(`- 출력: pipeline/output/cs_ids_candidates.json (후보 전체) + 본 리포트`);
+report.push("- manual needed: " + manualPct + "%");
+report.push("- no quote: " + nqPct + "%");
+report.push("");
 
 fs.writeFileSync(path.join(OUTPUT_DIR, "day1_report.md"), report.join("\n"), "utf-8");
 
-console.log(`✓ cs_ids_recovery Day 1 dry-run 완료`);
-console.log(`  - candidates: pipeline/output/cs_ids_candidates.json`);
-console.log(`  - report:     pipeline/output/day1_report.md`);
-console.log(``);
-console.log(`총 choice: ${totalChoicesAll}`);
-console.log(`cs_ids 비어있고 의무 있는 choice: ${totalChoicesEmpty}`);
-console.log(`safety: safe=${safetyDist.safe} suspect=${safetyDist.suspect} rebuild=${safetyDist.rebuild_needed}`);
-console.log(`decision: auto=${decisionDist.auto_apply} batch=${decisionDist.batch_review} manual=${decisionDist.manual_needed} no_quote=${decisionDist.no_quote_extractable}`);
+console.log("cs_ids_recovery v2 done");
+console.log("  candidates: " + candidatesOut.length);
+console.log("  safety: safe=" + safetyDist.safe + " suspect=" + safetyDist.suspect + " rebuild=" + safetyDist.rebuild_needed + " duplicate_sentid_hold=" + (safetyDist.duplicate_sentid_hold||0));
+console.log("done");
