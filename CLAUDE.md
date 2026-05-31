@@ -532,14 +532,27 @@ suneung-viewer/
 ├── public/
 │   ├── data/all_data_204.json     # 정본 데이터
 │   ├── data/annotations.json
+│   ├── audit_data/                # master audit 보드 fetch 용 (검수 보드 v3.1)
+│   │   └── cs_ids_candidates.json
 │   └── images/
 ├── src/                            # 프론트엔드 영역
+│   ├── AuditPanel.jsx              # 검수 보드 v3.2 (cs_ids review + annotation 삭제 staging)
+│   └── PassagePanel.jsx            # cs_ids 형광펜 (box-decoration-break clone)
 ├── api/claude.js                   # Vercel Serverless (Anthropic SDK 미사용 / fetch only)
-├── pipeline/                       # 데이터 엔지니어 영역
+├── pipeline/                       # 데이터 엔지니어 영역 — 영구 자산
 │   ├── INTEGRATION_GUIDE.md       # 파이프라인 통합 가이드
+│   ├── cs_ids_recovery.mjs        # v2: 후보 산출 read-only + duplicate_sent_id flag
+│   ├── cs_ids_apply.mjs           # auto + batch 2 mode (--dry-run default)
+│   ├── cs_ids_revert.mjs          # audit_log 기반 일괄 되돌리기
+│   ├── annotation_delete.mjs      # JSON spec deletions[] 일괄 처리
+│   ├── quality_gate.mjs           # release_ready 6기준 자동 검증
+│   ├── output/                     # 도구 출력 (cs_ids_candidates.json / audit_log.jsonl / day1_report.md)
+│   ├── backups/                    # 도구 적용 전 백업 (자동)
 │   ├── archive/                    # 일회성 스크립트 격리 (.gitignore)
 │   └── specs/                      # 함수·wrapper spec 보관
-├── config/                         # D엔진 산출물 + override JSON
+├── config/                         # D엔진 + cs_ids 도구 영구 설정
+│   ├── cs_ids_recovery_thresholds.json   # 점수/길이/격차 cutoff
+│   ├── marker_chars.json                 # marker 문자 집합 (신규 시험 추가 시 수정)
 │   ├── d_engine_gold_samples_phase1.json
 │   ├── d_engine_prompt.txt
 │   ├── pat_overrides.json
@@ -547,8 +560,9 @@ suneung-viewer/
 │   ├── pat_decision_rules.json
 │   └── pat_signal_map.json
 ├── docs/                           # 정비된 문서
-│   ├── current_state.md           # 현 진행 (매주 1번 갱신)
+│   ├── current_state.md           # 현 진행 (주 1회 갱신)
 │   ├── d_engine_decisions.md      # D엔진 의제 결정 (영구)
+│   ├── lock_baseline.md           # lock 1~22 raw
 │   └── archive/                    # 옛 핸드오버 격리
 └── ops/                            # 운영 메타
     ├── employees/
@@ -604,4 +618,5 @@ mismatch 시 **`CLAUDE.md` 우선** (lock #20 정합).
 
 - v1.0 (2026-05-07): 정비된 단일 정본. 12개 분산 문서 통합. 회기 specific 내용 archive 분리. AI 직원 자율 권한 명시.
 - v1.1 (2026-05-07): §3 "Claude Code 작업 4 원칙" 신규 흡수 (Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution). 이후 §4~§16 shift. 외부 참조 CLAUDE.md best practice 정합.
+- v1.2 (2026-05-31): cs_ids 영구 자산 도구 추가 (`pipeline/cs_ids_recovery.mjs` v2 + `cs_ids_apply.mjs` auto+batch + `cs_ids_revert.mjs` + `annotation_delete.mjs`). 진단 도구 v2 보강 (bogi.diagram + 환각 marker + duplicate_sent_id flag). 검수 보드 v3.1 (cs_ids review) + v3.2 (annotation 삭제 staging). 신규 PDF (교육청/LEET/사관/선택영역) 진입 시 도구 자동 작동 — yearKey/setId/marker 문자 hardcode X / config 분리 (`config/cs_ids_recovery_thresholds.json` + `config/marker_chars.json`). FREE 5수능 release_ready 40/40 통과. duplicate_sentid_hold 2 set 재매핑 완료.
 - 이전 이력은 archive 참조.
