@@ -1,6 +1,6 @@
 {
   "tool_version": "1.0",
-  "generated_at": "2026-05-31T08:47:34.920Z",
+  "generated_at": "2026-05-31T13:55:32.814Z",
   "thresholds": {
     "version": "1.0",
     "auto_apply_hard_conditions": {
@@ -37,10 +37,10 @@
     "total_choices_all": 6645,
     "total_choices_empty_needing_cs": 979,
     "safety_distribution": {
-      "safe": 167,
-      "suspect": 142,
-      "rebuild_needed": 39,
-      "duplicate_sentid_hold": 2
+      "safe": 177,
+      "suspect": 140,
+      "rebuild_needed": 33,
+      "duplicate_sentid_hold": 0
     },
     "decision_distribution": {
       "auto_apply": 8,
@@ -685,18 +685,18 @@
       "yearKey": "2025_9월",
       "setId": "l20259a",
       "area": "literature",
-      "grade": "rebuild_needed",
+      "grade": "safe",
       "sent_count": 16,
       "q_count": 4,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": false,
         "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 1,
+        "dead_ratio": 0,
         "body_markers": [
           "㉠"
         ],
@@ -717,12 +717,12 @@
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": true,
         "hallucination_suspect": true,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 0.2857142857142857,
+        "dead_ratio": 0,
         "body_markers": [],
         "analysis_markers": [
           "ⓐ",
@@ -1369,18 +1369,18 @@
       "yearKey": "2022수능",
       "setId": "r2022b",
       "area": "reading",
-      "grade": "duplicate_sentid_hold",
+      "grade": "safe",
       "sent_count": 33,
       "q_count": 6,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": false,
         "hallucination_suspect": false,
-        "duplicate_sent_id": true,
-        "duplicate_ids_count": 15,
-        "dead_ratio": 0.75,
+        "duplicate_sent_id": false,
+        "duplicate_ids_count": 0,
+        "dead_ratio": 0,
         "body_markers": [
           "ⓐ",
           "ⓑ",
@@ -1600,22 +1600,26 @@
       "yearKey": "2022_6월",
       "setId": "r20226b",
       "area": "reading",
-      "grade": "rebuild_needed",
+      "grade": "safe",
       "sent_count": 43,
       "q_count": 6,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": false,
         "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 1,
+        "dead_ratio": 0,
         "body_markers": [
+          "㉠",
+          "㉡",
           "㉮"
         ],
-        "analysis_markers": [],
+        "analysis_markers": [
+          "㉠"
+        ],
         "missing_markers": []
       },
       "body_marker_missing": []
@@ -1623,28 +1627,6 @@
     {
       "yearKey": "2022_6월",
       "setId": "r20226c",
-      "area": "reading",
-      "grade": "rebuild_needed",
-      "sent_count": 26,
-      "q_count": 4,
-      "flags": {
-        "sent_below_min": false,
-        "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
-        "body_marker_extraction_broken": false,
-        "hallucination_suspect": false,
-        "duplicate_sent_id": false,
-        "duplicate_ids_count": 0,
-        "dead_ratio": 0.5,
-        "body_markers": [],
-        "analysis_markers": [],
-        "missing_markers": []
-      },
-      "body_marker_missing": []
-    },
-    {
-      "yearKey": "2022_6월",
-      "setId": "r20226d",
       "area": "reading",
       "grade": "safe",
       "sent_count": 26,
@@ -1660,34 +1642,9 @@
         "dead_ratio": 0,
         "body_markers": [
           "ⓐ",
-          "ⓑ"
-        ],
-        "analysis_markers": [
-          "ⓐ",
-          "ⓑ"
-        ],
-        "missing_markers": []
-      },
-      "body_marker_missing": []
-    },
-    {
-      "yearKey": "2022_6월",
-      "setId": "l20226a",
-      "area": "literature",
-      "grade": "rebuild_needed",
-      "sent_count": 22,
-      "q_count": 4,
-      "flags": {
-        "sent_below_min": false,
-        "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
-        "body_marker_extraction_broken": true,
-        "hallucination_suspect": true,
-        "duplicate_sent_id": false,
-        "duplicate_ids_count": 0,
-        "dead_ratio": 0.75,
-        "body_markers": [
-          "ⓐ",
+          "ⓑ",
+          "ⓒ",
+          "ⓓ",
           "ⓔ"
         ],
         "analysis_markers": [
@@ -1697,36 +1654,114 @@
           "ⓓ",
           "ⓔ"
         ],
-        "missing_markers": [
+        "missing_markers": []
+      },
+      "body_marker_missing": []
+    },
+    {
+      "yearKey": "2022_6월",
+      "setId": "r20226d",
+      "area": "reading",
+      "grade": "suspect",
+      "sent_count": 26,
+      "q_count": 4,
+      "flags": {
+        "sent_below_min": false,
+        "qc_ratio_violation": false,
+        "annotation_dead_or_mismatch": false,
+        "body_marker_extraction_broken": true,
+        "hallucination_suspect": true,
+        "duplicate_sent_id": false,
+        "duplicate_ids_count": 0,
+        "dead_ratio": 0,
+        "body_markers": [
+          "ⓐ",
+          "ⓑ",
+          "㉠",
+          "㉡"
+        ],
+        "analysis_markers": [
+          "ⓐ",
           "ⓑ",
           "ⓒ",
-          "ⓓ"
+          "㉠"
+        ],
+        "missing_markers": [
+          "ⓒ"
         ]
       },
       "body_marker_missing": [
-        "ⓑ",
-        "ⓒ",
-        "ⓓ"
+        "ⓒ"
       ]
+    },
+    {
+      "yearKey": "2022_6월",
+      "setId": "l20226a",
+      "area": "literature",
+      "grade": "safe",
+      "sent_count": 22,
+      "q_count": 4,
+      "flags": {
+        "sent_below_min": false,
+        "qc_ratio_violation": false,
+        "annotation_dead_or_mismatch": false,
+        "body_marker_extraction_broken": false,
+        "hallucination_suspect": false,
+        "duplicate_sent_id": false,
+        "duplicate_ids_count": 0,
+        "dead_ratio": 0,
+        "body_markers": [
+          "ⓐ",
+          "ⓑ",
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
+        ],
+        "analysis_markers": [
+          "ⓐ",
+          "ⓑ",
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
+        ],
+        "missing_markers": []
+      },
+      "body_marker_missing": []
     },
     {
       "yearKey": "2022_6월",
       "setId": "l20226b",
       "area": "literature",
-      "grade": "rebuild_needed",
+      "grade": "safe",
       "sent_count": 36,
       "q_count": 6,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": false,
         "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 1,
-        "body_markers": [],
-        "analysis_markers": [],
+        "dead_ratio": 0,
+        "body_markers": [
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
+        ],
+        "analysis_markers": [
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
+        ],
         "missing_markers": []
       },
       "body_marker_missing": []
@@ -1735,23 +1770,32 @@
       "yearKey": "2022_6월",
       "setId": "l20226c",
       "area": "literature",
-      "grade": "rebuild_needed",
+      "grade": "safe",
       "sent_count": 20,
       "q_count": 4,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": false,
         "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 1,
+        "dead_ratio": 0,
         "body_markers": [
-          "ⓑ"
+          "ⓐ",
+          "ⓑ",
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
         ],
         "analysis_markers": [
-          "ⓑ"
+          "ⓐ",
+          "ⓑ",
+          "㉠",
+          "㉣"
         ],
         "missing_markers": []
       },
@@ -1949,32 +1993,35 @@
       "yearKey": "2023_6월",
       "setId": "l20236b",
       "area": "literature",
-      "grade": "suspect",
+      "grade": "safe",
       "sent_count": 18,
       "q_count": 6,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
         "annotation_dead_or_mismatch": false,
-        "body_marker_extraction_broken": true,
-        "hallucination_suspect": true,
+        "body_marker_extraction_broken": false,
+        "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
         "dead_ratio": 0,
         "body_markers": [
-          "㉢"
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
         ],
         "analysis_markers": [
+          "㉠",
+          "㉡",
           "㉢",
-          "㉣"
+          "㉣",
+          "㉤"
         ],
-        "missing_markers": [
-          "㉣"
-        ]
+        "missing_markers": []
       },
-      "body_marker_missing": [
-        "㉣"
-      ]
+      "body_marker_missing": []
     },
     {
       "yearKey": "2023_6월",
@@ -2011,18 +2058,18 @@
       "yearKey": "2023_6월",
       "setId": "l20236d",
       "area": "literature",
-      "grade": "rebuild_needed",
+      "grade": "suspect",
       "sent_count": 17,
       "q_count": 4,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": true,
         "hallucination_suspect": true,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 0.8571428571428571,
+        "dead_ratio": 0,
         "body_markers": [
           "ⓐ"
         ],
@@ -2192,37 +2239,33 @@
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": false,
-        "body_marker_extraction_broken": true,
-        "hallucination_suspect": true,
+        "annotation_dead_or_mismatch": true,
+        "body_marker_extraction_broken": false,
+        "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 0,
+        "dead_ratio": 0.2857142857142857,
         "body_markers": [
           "ⓐ",
-          "㉢"
-        ],
-        "analysis_markers": [
-          "ⓐ",
+          "ⓑ",
           "㉠",
           "㉡",
           "㉢",
           "㉣",
           "㉤"
         ],
-        "missing_markers": [
+        "analysis_markers": [
+          "ⓐ",
+          "ⓑ",
           "㉠",
           "㉡",
+          "㉢",
           "㉣",
           "㉤"
-        ]
+        ],
+        "missing_markers": []
       },
-      "body_marker_missing": [
-        "㉠",
-        "㉡",
-        "㉣",
-        "㉤"
-      ]
+      "body_marker_missing": []
     },
     {
       "yearKey": "2023_9월",
@@ -2250,20 +2293,26 @@
       "yearKey": "2023_9월",
       "setId": "l20239c",
       "area": "literature",
-      "grade": "safe",
+      "grade": "suspect",
       "sent_count": 62,
       "q_count": 4,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": false,
+        "annotation_dead_or_mismatch": true,
         "body_marker_extraction_broken": false,
         "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 0,
-        "body_markers": [],
-        "analysis_markers": [],
+        "dead_ratio": 0.25,
+        "body_markers": [
+          "㉠",
+          "㉡"
+        ],
+        "analysis_markers": [
+          "㉠",
+          "㉡"
+        ],
         "missing_markers": []
       },
       "body_marker_missing": []
@@ -2272,8 +2321,8 @@
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "area": "literature",
-      "grade": "suspect",
-      "sent_count": 39,
+      "grade": "rebuild_needed",
+      "sent_count": 42,
       "q_count": 3,
       "flags": {
         "sent_below_min": false,
@@ -2283,9 +2332,21 @@
         "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 0.16666666666666666,
-        "body_markers": [],
-        "analysis_markers": [],
+        "dead_ratio": 0.36363636363636365,
+        "body_markers": [
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
+        ],
+        "analysis_markers": [
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
+        ],
         "missing_markers": []
       },
       "body_marker_missing": []
@@ -3190,60 +3251,60 @@
       "setId": "l20256a",
       "area": "literature",
       "grade": "rebuild_needed",
-      "sent_count": 4,
+      "sent_count": 5,
       "q_count": 4,
       "flags": {
-        "sent_below_min": true,
+        "sent_below_min": false,
         "qc_ratio_violation": true,
         "annotation_dead_or_mismatch": false,
-        "body_marker_extraction_broken": true,
-        "hallucination_suspect": true,
+        "body_marker_extraction_broken": false,
+        "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
         "dead_ratio": 0,
-        "body_markers": [],
-        "analysis_markers": [
-          "ⓐ",
-          "ⓑ",
-          "ⓒ",
-          "ⓓ",
-          "ⓔ"
+        "body_markers": [
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
         ],
-        "missing_markers": [
-          "ⓐ",
-          "ⓑ",
-          "ⓒ",
-          "ⓓ",
-          "ⓔ"
-        ]
+        "analysis_markers": [
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
+        ],
+        "missing_markers": []
       },
-      "body_marker_missing": [
-        "ⓐ",
-        "ⓑ",
-        "ⓒ",
-        "ⓓ",
-        "ⓔ"
-      ]
+      "body_marker_missing": []
     },
     {
       "yearKey": "2025_6월",
       "setId": "l20256b",
       "area": "literature",
-      "grade": "suspect",
+      "grade": "safe",
       "sent_count": 33,
       "q_count": 5,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
         "annotation_dead_or_mismatch": false,
-        "body_marker_extraction_broken": true,
-        "hallucination_suspect": true,
+        "body_marker_extraction_broken": false,
+        "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
         "dead_ratio": 0,
         "body_markers": [
           "ⓐ",
-          "ⓒ"
+          "ⓑ",
+          "ⓒ",
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
         ],
         "analysis_markers": [
           "ⓐ",
@@ -3255,74 +3316,16 @@
           "㉣",
           "㉤"
         ],
-        "missing_markers": [
-          "ⓑ",
-          "㉠",
-          "㉡",
-          "㉢",
-          "㉣",
-          "㉤"
-        ]
+        "missing_markers": []
       },
-      "body_marker_missing": [
-        "ⓑ",
-        "㉠",
-        "㉡",
-        "㉢",
-        "㉣",
-        "㉤"
-      ]
+      "body_marker_missing": []
     },
     {
       "yearKey": "2025_6월",
       "setId": "l20256c",
       "area": "literature",
-      "grade": "suspect",
-      "sent_count": 10,
-      "q_count": 4,
-      "flags": {
-        "sent_below_min": false,
-        "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": false,
-        "body_marker_extraction_broken": true,
-        "hallucination_suspect": true,
-        "duplicate_sent_id": false,
-        "duplicate_ids_count": 0,
-        "dead_ratio": 0,
-        "body_markers": [
-          "ⓐ",
-          "㉡"
-        ],
-        "analysis_markers": [
-          "ⓐ",
-          "ⓑ",
-          "ⓒ",
-          "ⓓ",
-          "ⓔ",
-          "㉮"
-        ],
-        "missing_markers": [
-          "ⓑ",
-          "ⓒ",
-          "ⓓ",
-          "ⓔ",
-          "㉮"
-        ]
-      },
-      "body_marker_missing": [
-        "ⓑ",
-        "ⓒ",
-        "ⓓ",
-        "ⓔ",
-        "㉮"
-      ]
-    },
-    {
-      "yearKey": "2025_6월",
-      "setId": "l20256d",
-      "area": "literature",
       "grade": "safe",
-      "sent_count": 40,
+      "sent_count": 11,
       "q_count": 4,
       "flags": {
         "sent_below_min": false,
@@ -3335,15 +3338,71 @@
         "dead_ratio": 0,
         "body_markers": [
           "ⓐ",
-          "ⓑ"
+          "ⓑ",
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤",
+          "㉮"
         ],
         "analysis_markers": [
           "ⓐ",
-          "ⓑ"
+          "ⓑ",
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤",
+          "㉮"
         ],
         "missing_markers": []
       },
       "body_marker_missing": []
+    },
+    {
+      "yearKey": "2025_6월",
+      "setId": "l20256d",
+      "area": "literature",
+      "grade": "suspect",
+      "sent_count": 40,
+      "q_count": 4,
+      "flags": {
+        "sent_below_min": false,
+        "qc_ratio_violation": false,
+        "annotation_dead_or_mismatch": false,
+        "body_marker_extraction_broken": true,
+        "hallucination_suspect": true,
+        "duplicate_sent_id": false,
+        "duplicate_ids_count": 0,
+        "dead_ratio": 0,
+        "body_markers": [
+          "ⓐ",
+          "ⓑ",
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
+        ],
+        "analysis_markers": [
+          "ⓐ",
+          "ⓑ",
+          "ⓒ",
+          "ⓓ",
+          "ⓔ"
+        ],
+        "missing_markers": [
+          "ⓒ",
+          "ⓓ",
+          "ⓔ"
+        ]
+      },
+      "body_marker_missing": [
+        "ⓒ",
+        "ⓓ",
+        "ⓔ"
+      ]
     },
     {
       "yearKey": "2026_9월",
@@ -3419,8 +3478,20 @@
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
         "dead_ratio": 0,
-        "body_markers": [],
-        "analysis_markers": [],
+        "body_markers": [
+          "ⓐ",
+          "ⓑ",
+          "ⓒ",
+          "ⓓ",
+          "ⓔ",
+          "㉠"
+        ],
+        "analysis_markers": [
+          "ⓐ",
+          "ⓑ",
+          "ⓒ",
+          "㉠"
+        ],
         "missing_markers": []
       },
       "body_marker_missing": []
@@ -3566,7 +3637,7 @@
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "area": "literature",
-      "grade": "duplicate_sentid_hold",
+      "grade": "rebuild_needed",
       "sent_count": 62,
       "q_count": 4,
       "flags": {
@@ -3575,9 +3646,9 @@
         "annotation_dead_or_mismatch": true,
         "body_marker_extraction_broken": true,
         "hallucination_suspect": true,
-        "duplicate_sent_id": true,
-        "duplicate_ids_count": 12,
-        "dead_ratio": 0.14285714285714285,
+        "duplicate_sent_id": false,
+        "duplicate_ids_count": 0,
+        "dead_ratio": 0.42857142857142855,
         "body_markers": [
           "ⓐ",
           "ⓑ"
@@ -4371,6 +4442,7 @@
         "body_markers": [
           "ⓐ",
           "ⓑ",
+          "ⓒ",
           "ⓓ",
           "ⓔ",
           "㉠",
@@ -4378,7 +4450,6 @@
           "㉢",
           "㉣",
           "㉤",
-          "㉥",
           "㉮"
         ],
         "analysis_markers": [
@@ -4396,11 +4467,11 @@
           "㉮"
         ],
         "missing_markers": [
-          "ⓒ"
+          "㉥"
         ]
       },
       "body_marker_missing": [
-        "ⓒ"
+        "㉥"
       ]
     },
     {
@@ -10991,18 +11062,18 @@
       "yearKey": "2020수능",
       "setId": "l2020b",
       "area": "literature",
-      "grade": "rebuild_needed",
+      "grade": "safe",
       "sent_count": 13,
       "q_count": 3,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": false,
         "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 0.8,
+        "dead_ratio": 0,
         "body_markers": [
           "㉠",
           "㉡",
@@ -11059,18 +11130,18 @@
       "yearKey": "2020수능",
       "setId": "l2020d",
       "area": "literature",
-      "grade": "suspect",
+      "grade": "safe",
       "sent_count": 31,
       "q_count": 3,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": false,
         "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 0.2,
+        "dead_ratio": 0,
         "body_markers": [
           "㉠",
           "㉡",
@@ -11563,18 +11634,18 @@
       "yearKey": "2021수능",
       "setId": "l2021d",
       "area": "literature",
-      "grade": "suspect",
+      "grade": "safe",
       "sent_count": 43,
       "q_count": 3,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": false,
         "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 0.2,
+        "dead_ratio": 0,
         "body_markers": [
           "㉠",
           "㉡",
