@@ -411,20 +411,33 @@ function RenderSent({ sent, sel, anns }) {
               return <div key={i}>{spanJsx}</div>;
             }
             // span 매칭 실패 → 해당 라인 fallback (전체 하이라이트)
+            // verse 결함 정정: <div> 가 block-level 이라 line 끝 여백까지 background 가 차는 결함.
+            //   <span style={hlStyle}> 로 inline wrap → 텍스트 폭만큼만 background 적용.
             return (
-              <div key={i} style={hlStyle} data-hl="true">
-                {anns.length > 0 ? (
-                  applyInlineAnns(line, anns, true)
-                ) : (
-                  <Lines text={line} hideLabels={true} />
-                )}
+              <div key={i}>
+                <span style={hlStyle} data-hl="true">
+                  {anns.length > 0 ? (
+                    applyInlineAnns(line, anns, true)
+                  ) : (
+                    <Lines text={line} hideLabels={true} />
+                  )}
+                </span>
               </div>
             );
           }
           // pal 없음 또는 spans 없음 → 기존 동작 + anns 적용 (underline/box)
+          // verse 결함 정정: pal 있는 경우 <span> wrap (line 끝 여백까지 background 안 차도록)
           return (
-            <div key={i} style={pal ? hlStyle : {}}>
-              {anns.length > 0 ? (
+            <div key={i}>
+              {pal ? (
+                <span style={hlStyle} data-hl="true">
+                  {anns.length > 0 ? (
+                    applyInlineAnns(line, anns, true)
+                  ) : (
+                    <Lines text={line} hideLabels={true} />
+                  )}
+                </span>
+              ) : anns.length > 0 ? (
                 applyInlineAnns(line, anns, true)
               ) : (
                 <Lines text={line} hideLabels={true} />
