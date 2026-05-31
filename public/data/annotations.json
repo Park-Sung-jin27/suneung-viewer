@@ -1663,6 +1663,30 @@
         "sentId": "r20226cs14",
         "marker": "ⓑ",
         "text": "ⓑ가로막는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20226cs5",
+        "marker": "ⓐ",
+        "text": "ⓐ누리기로"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20226cs21",
+        "marker": "ⓒ",
+        "text": "ⓒ무디어져"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20226cs22",
+        "marker": "ⓓ",
+        "text": "ⓓ크나큰"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20226cs26",
+        "marker": "ⓔ",
+        "text": "ⓔ세웠다는"
       }
     ],
     "r20226d": [
@@ -1814,6 +1838,36 @@
         "sentId": "l20226cs10",
         "marker": "ⓐ",
         "text": "ⓐ공사 문첩 한 장"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20226cs5",
+        "marker": "㉠",
+        "text": "㉠이때 마침"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20226cs10",
+        "marker": "㉡",
+        "text": "㉡하루는"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20226cs13",
+        "marker": "㉢",
+        "text": "㉢요사이"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20226cs15",
+        "marker": "㉣",
+        "text": "㉣이미 반년이라"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20226cs22",
+        "marker": "㉤",
+        "text": "㉤이때 이 감사는"
       }
     ],
     "l20226d": []
