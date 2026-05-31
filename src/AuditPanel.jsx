@@ -193,6 +193,10 @@ export default function AuditPanel({ user }) {
   const [bracketStartSent, setBracketStartSent] = useState(null);
   const [bracketEndSent, setBracketEndSent] = useState(null);
 
+  // v3.1: cs_ids review state
+  const [csCandidates, setCsCandidates] = useState(null);
+  const [csApprovals, setCsApprovals] = useState({}); // key: "qId-cNum" → { sentId, score }
+
   const [uMarker, setUMarker] = useState("");
   const [uText, setUText] = useState("");
   const [mkMarker, setMkMarker] = useState("");
@@ -212,6 +216,11 @@ export default function AuditPanel({ user }) {
   useEffect(() => {
     loadAllData().then((data) => setAllData(data)).catch((e) => setErr(e.message));
     fetch("/data/annotations.json").then((r) => r.json()).then((a) => setAnnotations(a)).catch((e) => setErr(e.message));
+    // v3.1: cs_ids candidates fetch (optional — 없어도 보드 동작)
+    fetch("/audit_data/cs_ids_candidates.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((c) => setCsCandidates(c))
+      .catch(() => setCsCandidates(null));
   }, []);
 
   if (err) return <div style={{ padding: 20 }}>오류: {err}</div>;
@@ -407,6 +416,16 @@ export default function AuditPanel({ user }) {
             <IssueBlock label="bracket" color="#3b82f6" issues={audit.issues.bracket} />
             <IssueBlock label="DEAD" color="#7c3aed" issues={audit.issues.dead} />
           </Section>
+
+          <CsIdsReviewSection
+            csCandidates={csCandidates}
+            setId={setId}
+            foundYear={foundYear}
+            foundSet={foundSet}
+            csApprovals={csApprovals}
+            setCsApprovals={setCsApprovals}
+            copyToClipboard={copyToClipboard}
+          />
         </div>
       </div>
 
@@ -606,4 +625,160 @@ function renderTextWithMarkers(text) {
   }
   if (last < text.length) parts.push(text.slice(last));
   return parts;
+}
+
+// ────────────────────────────────────────────────────────
+// v3.1: cs_ids 후보 검토 섹션
+// ────────────────────────────────────────────────────────
+function CsIdsReviewSection({ csCandidates, setId, foundYear, foundSet, csApprovals, setCsApprovals, copyToClipboard }) {
+  if (!csCandidates) {
+    return (
+      <Section title="🔗 cs_ids 후보 검토 (v3.1)">
+        <div style={{ color: "#9ca3af", fontSize: 12, padding: 12, background: "#fff", border: "1px solid #e5e7eb", borderRadius: 8 }}>
+          cs_ids_candidates.json 로딩 안 됨. `pipeline/cs_ids_recovery.mjs` 실행 + `public/audit_data/cs_ids_candidates.json` 복사 필요.
+        </div>
+      </Section>
+    );
+  }
+  // 현재 set 의 후보만 필터
+  const setCands = (csCandidates.candidates || []).filter(
+    (c) => c.setId === setId && c.yearKey === foundYear,
+  );
+  if (setCands.length === 0) {
+    return (
+      <Section title="🔗 cs_ids 후보 검토 (v3.1)">
+        <div style={{ color: "#10b981", fontSize: 12, padding: 12, background: "#fff", border: "1px solid #e5e7eb", borderRadius: 8 }}>
+          ✓ 이 set 에 cs_ids 비어있는 choice 없음 (또는 후보 산출 불가)
+        </div>
+      </Section>
+    );
+  }
+  const byDecision = {
+    auto_apply: setCands.filter((c) => c.decision === "auto_apply"),
+    batch_review: setCands.filter((c) => c.decision === "batch_review"),
+    manual_needed: setCands.filter((c) => c.decision === "manual_needed"),
+    no_quote_extractable: setCands.filter((c) => c.decision === "no_quote_extractable"),
+  };
+  const approvalKey = (c) => `${c.questionId}-${c.choiceNum}`;
+  const approve = (c, sentId, score) => {
+    setCsApprovals((prev) => ({ ...prev, [approvalKey(c)]: { sentId, score, quote: c.candidates?.[0]?.quotes_matched?.[0] || null } }));
+  };
+  const unapprove = (c) => {
+    setCsApprovals((prev) => {
+      const next = { ...prev };
+      delete next[approvalKey(c)];
+      return next;
+    });
+  };
+  const approvedCount = Object.keys(csApprovals).filter((k) => {
+    return setCands.some((c) => approvalKey(c) === k);
+  }).length;
+
+  const exportApprovals = () => {
+    const items = [];
+    for (const c of setCands) {
+      const a = csApprovals[approvalKey(c)];
+      if (!a) continue;
+      items.push({
+        yearKey: c.yearKey,
+        setId: c.setId,
+        questionId: c.questionId,
+        choiceNum: c.choiceNum,
+        cs_ids: [a.sentId],
+        score: a.score,
+        quote: a.quote,
+        source: "batch_approval",
+      });
+    }
+    const payload = {
+      tool: "cs_ids_review_v3.1",
+      ts: new Date().toISOString(),
+      setId,
+      yearKey: foundYear,
+      approvals: items,
+    };
+    copyToClipboard(JSON.stringify(payload, null, 2));
+  };
+
+  return (
+    <Section title={`🔗 cs_ids 후보 검토 (${setCands.length}건) — 승인 ${approvedCount}건`}>
+      <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 8, padding: 12, fontSize: 13 }}>
+        <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap", fontSize: 11 }}>
+          <span style={{ background: "#dcfce7", color: "#166534", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>auto: {byDecision.auto_apply.length}</span>
+          <span style={{ background: "#fef3c7", color: "#92400e", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>batch: {byDecision.batch_review.length}</span>
+          <span style={{ background: "#fee2e2", color: "#991b1b", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>manual: {byDecision.manual_needed.length}</span>
+          <span style={{ background: "#f3f4f6", color: "#374151", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>no_quote: {byDecision.no_quote_extractable.length}</span>
+          {approvedCount > 0 && (
+            <button type="button" onClick={exportApprovals} style={{ marginLeft: "auto", fontSize: 11, padding: "3px 10px", background: "#2563eb", color: "#fff", border: "none", borderRadius: 4, cursor: "pointer", fontWeight: 700 }}>
+              📋 승인 {approvedCount}건 JSON 복사
+            </button>
+          )}
+        </div>
+
+        {/* batch_review + manual_needed 만 표시 (auto 는 이미 반영 또는 안전) */}
+        {[...byDecision.batch_review, ...byDecision.manual_needed].map((c) => {
+          const key = approvalKey(c);
+          const approved = csApprovals[key];
+          const choiceObj = (foundSet.questions || [])
+            .find((q) => q.id === c.questionId)
+            ?.choices?.find((cc) => cc.num === c.choiceNum);
+          return (
+            <div key={key} style={{ borderBottom: "1px solid #f3f4f6", padding: "8px 0", marginBottom: 4 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                <div>
+                  <strong style={{ color: "#1f2937" }}>Q{c.questionId} 선지{c.choiceNum}</strong>
+                  <span style={{ marginLeft: 8, fontSize: 11, color: c.ok ? "#16a34a" : "#dc2626", fontWeight: 700 }}>
+                    {c.ok ? "✓ ok:true" : `✗ ok:false${c.pat ? ` (${c.pat})` : ""}`}
+                  </span>
+                  <span style={{ marginLeft: 8, fontSize: 11, background: c.decision === "batch_review" ? "#fef3c7" : "#fee2e2", color: c.decision === "batch_review" ? "#92400e" : "#991b1b", padding: "1px 6px", borderRadius: 3, fontWeight: 700 }}>
+                    {c.decision}
+                  </span>
+                </div>
+                {approved && (
+                  <button type="button" onClick={() => unapprove(c)} style={{ fontSize: 10, padding: "2px 7px", background: "#dc2626", color: "#fff", border: "none", borderRadius: 3, cursor: "pointer", fontWeight: 700 }}>
+                    승인 해제
+                  </button>
+                )}
+              </div>
+              {choiceObj?.analysis && (
+                <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4, padding: "4px 6px", background: "#f9fafb", borderRadius: 3, maxHeight: 60, overflow: "auto" }}>
+                  📝 {(choiceObj.analysis || "").slice(0, 220)}
+                </div>
+              )}
+              {c.analysis_quotes?.length > 0 && (
+                <div style={{ fontSize: 11, color: "#374151", marginBottom: 6 }}>
+                  💬 인용문: {c.analysis_quotes.map((q, i) => (<span key={i} style={{ background: "#fef9c3", padding: "1px 4px", borderRadius: 2, marginRight: 4 }}>"{q.slice(0, 50)}"</span>))}
+                </div>
+              )}
+              {c.candidates?.length === 0 ? (
+                <div style={{ fontSize: 11, color: "#dc2626" }}>후보 없음 — 수동 입력 필요</div>
+              ) : (
+                <div>
+                  {c.candidates.slice(0, 3).map((cand, idx) => {
+                    const isApproved = approved?.sentId === cand.sentId;
+                    return (
+                      <div key={idx} style={{ display: "flex", gap: 8, alignItems: "flex-start", padding: "4px 6px", background: isApproved ? "#dcfce7" : "transparent", borderRadius: 3, marginBottom: 2 }}>
+                        <input type="radio" name={key} checked={isApproved} onChange={() => approve(c, cand.sentId, cand.normalized_score)} style={{ marginTop: 4 }} />
+                        <div style={{ flex: 1, fontSize: 12 }}>
+                          <code style={{ color: "#6b7280" }}>{cand.sentId}</code>
+                          <span style={{ marginLeft: 6, fontSize: 10, color: cand.normalized_score >= 0.8 ? "#16a34a" : cand.normalized_score >= 0.5 ? "#ca8a04" : "#dc2626", fontWeight: 700 }}>
+                            score={cand.normalized_score.toFixed(2)}
+                          </span>
+                          <div style={{ fontSize: 11, color: "#374151", marginTop: 2 }}>{cand.sentText}</div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          );
+        })}
+
+        {byDecision.batch_review.length === 0 && byDecision.manual_needed.length === 0 && (
+          <div style={{ color: "#9ca3af", fontSize: 12 }}>이 set 은 batch/manual 후보 없음 (auto 만 또는 후보 없음)</div>
+        )}
+      </div>
+    </Section>
+  );
 }
