@@ -3682,6 +3682,24 @@
         "qId": 20,
         "label": "A",
         "width": "20em"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256as4",
+        "marker": "㉠",
+        "text": "㉠용궁"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256as4",
+        "marker": "㉡",
+        "text": "㉡황성"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256as5",
+        "marker": "㉢",
+        "text": "㉢해도"
       }
     ],
     "l20256c": [
@@ -3738,6 +3756,70 @@
         "sentId": "l20256cs11",
         "marker": "㉯",
         "text": "㉯쑥부쟁이와 엉겅퀴꽃"
+      }
+    ],
+    "l20256b": [
+      {
+        "type": "underline",
+        "sentId": "l20256bs2",
+        "marker": "ⓐ",
+        "text": "ⓐ꽁생원"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256bs5",
+        "marker": "㉠",
+        "text": "㉠음양술수"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256bs8",
+        "marker": "㉡",
+        "text": "㉡처자식"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256bs13",
+        "marker": "㉢",
+        "text": "㉢청질"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256bs16",
+        "marker": "㉣",
+        "text": "㉣핀잔"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256bs18",
+        "marker": "㉤",
+        "text": "㉤감언이설"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256bs34",
+        "marker": "ⓑ",
+        "text": "ⓑ게으른 농부"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256bs37",
+        "marker": "ⓒ",
+        "text": "ⓒ선비들"
+      }
+    ],
+    "l20256d": [
+      {
+        "type": "underline",
+        "sentId": "l20256ds12",
+        "marker": "ⓐ",
+        "text": "ⓐ 관습들"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256ds33",
+        "marker": "ⓑ",
+        "text": "ⓑ 관습"
       }
     ]
   }
