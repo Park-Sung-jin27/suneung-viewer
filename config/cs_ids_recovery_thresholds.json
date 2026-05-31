@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "auto_apply_hard_conditions": {
+    "set_safety_required": "safe",
+    "existing_cs_ids_must_be_empty": true,
+    "analysis_quote_unique_match": true,
+    "min_quote_length_chars": 8,
+    "min_score": 0.85,
+    "min_top_vs_runner_up_gap": 0.15
+  },
+  "batch_review_band": {
+    "min_score": 0.55,
+    "max_score": 0.85
+  },
+  "set_safety_classification": {
+    "safe_requires": {
+      "sent_count_min_reading": 10,
+      "sent_count_min_literature": 5,
+      "annotation_dead_sentid_zero": true,
+      "annotation_text_mismatch_zero": true,
+      "body_marker_extraction_ok": true
+    },
+    "rebuild_needed_if": {
+      "sent_count_below_min": true,
+      "annotation_dead_ratio_above": 0.3
+    }
+  }
+}
