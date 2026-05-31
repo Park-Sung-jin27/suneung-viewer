@@ -509,12 +509,14 @@
       {
         "type": "underline",
         "sentId": "l2025ds219",
-        "text": "인삼"
+        "text": "㉠ 인삼",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "l2025ds249",
-        "text": "고기"
+        "text": "㉡ 고기",
+        "marker": "㉡"
       },
       {
         "type": "underline",
