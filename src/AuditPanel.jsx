@@ -302,8 +302,43 @@ export default function AuditPanel({ user }) {
     return lines.join("\n");
   };
 
+  // v3.2: deletion staging — 기존 annotation entry 삭제 명세
+  const [stagedDeletions, setStagedDeletions] = useState([]);
+  const addDeletion = (ann) => {
+    // ann = annotations.json 안 한 entry. 식별자 = sentId + type + (marker || text)
+    const key = JSON.stringify({
+      type: ann.type,
+      sentId: ann.sentId || null,
+      sentFrom: ann.sentFrom || null,
+      sentTo: ann.sentTo || null,
+      marker: ann.marker || null,
+      text: ann.text || null,
+      label: ann.label || null,
+      target: ann.target || null,
+      qId: ann.qId || null,
+    });
+    setStagedDeletions((prev) => prev.includes(key) ? prev : [...prev, key]);
+  };
+  const removeDeletion = (idx) => setStagedDeletions((prev) => prev.filter((_, i) => i !== idx));
+  const clearDeletions = () => setStagedDeletions([]);
+  const isStagedForDeletion = (ann) => {
+    const key = JSON.stringify({
+      type: ann.type,
+      sentId: ann.sentId || null,
+      sentFrom: ann.sentFrom || null,
+      sentTo: ann.sentTo || null,
+      marker: ann.marker || null,
+      text: ann.text || null,
+      label: ann.label || null,
+      target: ann.target || null,
+      qId: ann.qId || null,
+    });
+    return stagedDeletions.includes(key);
+  };
+
   const buildJsonSpec = () => {
-    return JSON.stringify({ setId, year: foundYear, additions: stagedItems, deletions: [] }, null, 2);
+    const deletions = stagedDeletions.map((k) => JSON.parse(k));
+    return JSON.stringify({ setId, year: foundYear, additions: stagedItems, deletions }, null, 2);
   };
 
   const copyToClipboard = (text) => {
@@ -415,6 +450,42 @@ export default function AuditPanel({ user }) {
             <IssueBlock label="underline" color="#f59e0b" issues={audit.issues.underline} />
             <IssueBlock label="bracket" color="#3b82f6" issues={audit.issues.bracket} />
             <IssueBlock label="DEAD" color="#7c3aed" issues={audit.issues.dead} />
+          </Section>
+
+          <Section title={`📋 기존 annotation 목록 (${annList.length}건) — 삭제 staging`}>
+            <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 8, padding: 12, fontSize: 12, maxHeight: 320, overflowY: "auto" }}>
+              {annList.length === 0 ? (
+                <div style={{ color: "#9ca3af" }}>annotation 없음</div>
+              ) : (
+                annList.map((ann, i) => {
+                  const staged = isStagedForDeletion(ann);
+                  return (
+                    <div key={i} style={{ padding: 6, marginBottom: 4, background: staged ? "#fee2e2" : typeColor(ann.type), borderRadius: 4, display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 6, opacity: staged ? 0.6 : 1 }}>
+                      <div style={{ flex: 1, wordBreak: "break-all" }}>
+                        <strong>{ann.type}</strong>
+                        {ann.marker && (<span style={{ marginLeft: 6, background: "#1f2937", color: "#fff", padding: "1px 6px", borderRadius: 3, fontWeight: 700 }}>{ann.marker}</span>)}
+                        {ann.label && (<span style={{ marginLeft: 6, fontWeight: 700 }}>[{ann.label}]</span>)}{" "}
+                        {ann.sentId && (<code style={{ color: "#6b7280" }}>{ann.sentId}</code>)}
+                        {ann.sentFrom && (<code style={{ color: "#6b7280" }}>{ann.sentFrom}~{ann.sentTo}</code>)}
+                        {ann.target && (<span style={{ marginLeft: 6, color: "#374151" }}>({ann.target}{ann.qId ? `/Q${ann.qId}` : ""})</span>)}
+                        {ann.text && (<div style={{ color: "#374151", marginTop: 2 }}>"{ann.text.slice(0, 80)}"</div>)}
+                      </div>
+                      {staged ? (
+                        <span style={{ fontSize: 10, color: "#991b1b", fontWeight: 700, padding: "2px 6px" }}>삭제 예정</span>
+                      ) : (
+                        <button type="button" onClick={() => addDeletion(ann)} style={btnSmStyle("#dc2626")}>삭제</button>
+                      )}
+                    </div>
+                  );
+                })
+              )}
+              {stagedDeletions.length > 0 && (
+                <div style={{ marginTop: 8, padding: 8, background: "#fef2f2", border: "1px solid #fca5a5", borderRadius: 6 }}>
+                  <div style={{ fontSize: 11, color: "#991b1b", fontWeight: 700, marginBottom: 4 }}>삭제 staging: {stagedDeletions.length}건</div>
+                  <button type="button" onClick={clearDeletions} style={btnSmStyle("#6b7280")}>모두 취소</button>
+                </div>
+              )}
+            </div>
           </Section>
 
           <CsIdsReviewSection
