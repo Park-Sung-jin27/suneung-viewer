@@ -3566,6 +3566,62 @@
         "label": "A",
         "width": "20em"
       }
+    ],
+    "l20256c": [
+      {
+        "type": "underline",
+        "sentId": "l20256cs1",
+        "marker": "ⓐ",
+        "text": "ⓐ 한마디"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256cs1",
+        "marker": "㉠",
+        "text": "㉠바로 그 순간부터"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256cs5",
+        "marker": "㉡",
+        "text": "㉡ 나는 담배를 피워 물었다"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256cs101",
+        "marker": "㉢",
+        "text": "㉢언젠가 어머니의 낡은 반닫이"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256cs10",
+        "marker": "㉣",
+        "text": "㉣ 저것 봐라이"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256cs10",
+        "marker": "㉤",
+        "text": "㉤ 불현듯 시야가 부옇게 흐려 왔다"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256cs9",
+        "marker": "ⓑ",
+        "text": "ⓑ 한마디씩"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256cs10",
+        "marker": "㉮",
+        "text": "㉮ 날짐승"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20256cs11",
+        "marker": "㉯",
+        "text": "㉯쑥부쟁이와 엉겅퀴꽃"
+      }
     ]
   }
 }
