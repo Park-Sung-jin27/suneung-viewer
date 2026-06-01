@@ -2170,6 +2170,18 @@
         "sentId": "l20269ds203",
         "marker": "㉤",
         "text": "㉤청산이 둘러 있고 벽수도 흘러간다"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20269ds6",
+        "marker": "ⓐ",
+        "text": "ⓐ 꽃"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20269ds204",
+        "marker": "ⓑ",
+        "text": "ⓑ 백운(白雲)"
       }
     ]
   },

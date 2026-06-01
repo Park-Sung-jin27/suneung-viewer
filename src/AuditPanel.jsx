@@ -126,25 +126,35 @@ function auditSet(set, annList) {
     }
   }
 
+  // v3.3 (2026-06-01): false positive 정정 — bogi target 분리 + marker_position_mismatch silent (text 안 marker 포함 시)
   const underlines = annList.filter((a) => a.type === "underline");
+  const passageUnderlines = underlines.filter((u) => !u.target || u.target === "passage");
+
+  // count_mismatch: 본문 passage underline 만 비교 (bogi/choice 별도)
   const bodyMarkerCount = [...bodyMarkers].length;
-  if (underlines.length < bodyMarkerCount) {
-    issues.underline.push({ kind: "count_mismatch", detail: `본문 marker ${bodyMarkerCount}개 vs underline ${underlines.length}개 — ${bodyMarkerCount - underlines.length}개 누락` });
+  if (bodyMarkerCount > 0 && passageUnderlines.length < bodyMarkerCount) {
+    issues.underline.push({ kind: "count_mismatch", detail: `본문 marker ${bodyMarkerCount}개 vs passage underline ${passageUnderlines.length}개 — ${bodyMarkerCount - passageUnderlines.length}개 누락 (info)` });
   }
-  for (const u of underlines) {
+
+  // text_not_found: bogi target underline 은 sent.t 비교 X — bogi text 와 매칭이라 sent 안 없는 게 정상
+  for (const u of passageUnderlines) {
     const sentT = sents.find((s) => s.id === u.sentId)?.t || "";
     if (typeof sentT === "string" && u.text && !sentT.includes(u.text)) {
       issues.underline.push({ kind: "text_not_found", detail: `underline @ ${u.sentId} text="${u.text.slice(0, 30)}..." — 본문에 없음` });
     }
   }
-  for (const u of underlines) {
+
+  // marker_position_mismatch: ann.text 가 marker 문자로 시작 시 silent (이미 marker 포함 = 정합)
+  for (const u of passageUnderlines) {
     if (!u.marker) continue;
+    if (u.text && u.text.startsWith(u.marker)) continue; // ann.text 자체에 marker 포함 — 정합 (silent)
     const sentT = sents.find((s) => s.id === u.sentId)?.t || "";
     if (typeof sentT !== "string" || !u.text) continue;
     const idx = sentT.indexOf(u.text);
     if (idx <= 0) continue;
     const prev = sentT[idx - 1];
-    if (prev !== u.marker) {
+    if (prev !== u.marker && prev !== " ") {
+      // 직전 문자가 marker 거나 공백 (마커 + 공백 + text 패턴) 이면 silent
       issues.underline.push({ kind: "marker_position_mismatch", detail: `underline @ ${u.sentId} marker="${u.marker}" — 본문 직전 문자 "${prev}" 불일치` });
     }
   }
