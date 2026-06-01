@@ -1,0 +1,222 @@
+{
+  "approvals": [
+    {
+      "yearKey": "2014_6월A",
+      "area": "reading",
+      "setId": "r20146c",
+      "questionId": 23,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20146cs13"
+      ],
+      "score": 0.6,
+      "quote": "광장의 가운데에 배치된 기마상은 타원이 지닌 두 개의 초점을 사라지게 하는 효과를 나타내어 광장을 하나의 중심을 가진 원형 공간처럼 변모시킨 것"
+    },
+    {
+      "yearKey": "2019_6월",
+      "area": "literature",
+      "setId": "l20196a",
+      "questionId": 40,
+      "choiceNum": 5,
+      "cs_ids": [
+        "l20196as18"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "사환들이 가자 하니, '갈 마음 전혀 없다.'"
+    },
+    {
+      "yearKey": "2014_9월B",
+      "area": "reading",
+      "setId": "r20149c",
+      "questionId": 22,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20149cs2"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "어떤 내용을 어떤 재료와 어떤 형식으로 작품화하건 미술적 창조로 인정되고, 심지어 창작 행위가 가해지지 않은 것도 '작품'의 자격을 얻을 수 있"
+    },
+    {
+      "yearKey": "2014_9월B",
+      "area": "literature",
+      "setId": "l20149a",
+      "questionId": 33,
+      "choiceNum": 4,
+      "cs_ids": [
+        "l20149as7"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "아마도 아치고절(雅致高節)은 너인가 노라"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "reading",
+      "setId": "r20166d",
+      "questionId": 29,
+      "choiceNum": 1,
+      "cs_ids": [
+        "r20166ds9"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "손해 배상을 더욱 충실히 할 수 있는 방안들이 요구되는데"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "reading",
+      "setId": "r20166d",
+      "questionId": 29,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20166ds12"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "이 제도는 민사적 수단인 손해 배상 제도이면서도 피해자가 받는 배상금 안에 벌금과 비슷한 성격이 가미된 배상금이 포함된다는 점 때문에"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "literature",
+      "setId": "l20166c",
+      "questionId": 39,
+      "choiceNum": 4,
+      "cs_ids": [
+        "l20166cs35"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "천자 들으시고 한참 뒤에, '평국이 전일에는 출세하였기로 불러 국사를 의논하였거니와 지금은 규중 여자라 어찌 영으로 불러 들여 전장에 보내리오."
+    },
+    {
+      "yearKey": "2016_6월B",
+      "area": "reading",
+      "setId": "r20166d",
+      "questionId": 29,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20166ds11"
+      ],
+      "score": 0.75,
+      "quote": "일반적인 손해 배상 제도에서는 피해자가 손해액을 초과하여 배상받는 것이 불가능하지만 징벌적 손해 배상 제도에서는 그것이 가능하다는 점에서 이례적"
+    },
+    {
+      "yearKey": "2016_9월B",
+      "area": "reading",
+      "setId": "r20169a",
+      "questionId": 18,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20169as7"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "보편 법칙이 구체적으로 적용되는 맥락을 나타내는 '소크라테스는 사람이다.'와 같은 선행 조건이 설명항에 하나 이상 있어야 한다."
+    },
+    {
+      "yearKey": "2016_9월B",
+      "area": "reading",
+      "setId": "r20169c",
+      "questionId": 27,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20169cs12"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "로댕은 사물의 외형만을 재현하려는 당시 예술계의 경향에서 벗어나 생명력과 표현성을 강조하는 조각을 하고 있었는데, 스타이컨은 이를 높이 평가하고"
+    },
+    {
+      "yearKey": "2016_9월B",
+      "area": "reading",
+      "setId": "r20169e",
+      "questionId": 27,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20169es12"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "로댕은 사물의 외형만을 재현하려는 당시 예술계의 경향에서 벗어나 생명력과 표현성을 강조하는 조각을 하고 있었는데, 스타이컨은 이를 높이 평가하고"
+    },
+    {
+      "yearKey": "2016_9월B",
+      "area": "reading",
+      "setId": "r20169f",
+      "questionId": 28,
+      "choiceNum": 1,
+      "cs_ids": [
+        "r20169fs9"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "단순히 근경과 원경을 합성한 것이 아니라, 두 사진의 피사체들이 작가가 의도한 바에 따라 하나의 프레임 속에서 자리 잡을 수 있도록 당시로서는 "
+    },
+    {
+      "yearKey": "2016_9월B",
+      "area": "reading",
+      "setId": "r20169f",
+      "questionId": 28,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20169fs16"
+      ],
+      "score": 0.75,
+      "quote": "원경에서 희고 밝게 빛나는 <빅토르 위고>는 근경에 있는 로댕과 <생각하는 사람>의 어두운 모습에 대비되어 창조의 영감을 발산하는 모습으로 나타"
+    },
+    {
+      "yearKey": "2016_9월A",
+      "area": "literature",
+      "setId": "l20169d",
+      "questionId": 45,
+      "choiceNum": 5,
+      "cs_ids": [
+        "l20169ds28"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "이 얼굴 지녀 있어 어려운 일 하고많다"
+    },
+    {
+      "yearKey": "2018_6월",
+      "area": "reading",
+      "setId": "r20186b",
+      "questionId": 24,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20186bs25"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "정책 신뢰성은 중요하지만, 이를 위해 중앙은행이 반드시 준칙에 얽매일 필요는 없다는 것이다"
+    },
+    {
+      "yearKey": "2019_9월",
+      "area": "literature",
+      "setId": "l20199e",
+      "questionId": 43,
+      "choiceNum": 1,
+      "cs_ids": [
+        "l20199es1"
+      ],
+      "score": 0.8,
+      "quote": "아직도 자리 잡히지 않은 이 거리의 누렇던 길이 매연과 발걸음에 나날이 짙어서 꺼멓게 멍들기 시작한"
+    },
+    {
+      "yearKey": "2019_9월",
+      "area": "literature",
+      "setId": "l20199e",
+      "questionId": 43,
+      "choiceNum": 3,
+      "cs_ids": [
+        "l20199es6"
+      ],
+      "score": 0.6,
+      "quote": "피곤한 병일이는 사무실에서 돌아올 때마다 이 지루한 장마는 언제까지나 계속할 셈인가고 중얼거렸다"
+    },
+    {
+      "yearKey": "2017_9월",
+      "area": "literature",
+      "setId": "l20179c",
+      "questionId": 25,
+      "choiceNum": 4,
+      "cs_ids": [
+        "l20179cs10"
+      ],
+      "score": 0.6666666666666666,
+      "quote": "나는 그 여자의 건강이 ― 아니 내 건강도 속히 회복되기를 바라며"
+    }
+  ],
+  "generated_at": "2026-06-01",
+  "tier": "phase2b_score_0.6_to_0.84_live_reviewed"
+}
