@@ -592,9 +592,9 @@ function BracketContainer({ label, children }) {
     <div
       style={{
         position: "relative",
-        paddingTop: "4px",
-        paddingBottom: "4px",
-        margin: "4px 0",
+        paddingTop: "0",
+        paddingBottom: "0",
+        margin: "0",
       }}
     >
       {/* 좌측 큰 대괄호 [ — container 좌측 외부 18px 위치 */}
