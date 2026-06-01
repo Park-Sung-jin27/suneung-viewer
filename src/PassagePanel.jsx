@@ -640,11 +640,11 @@ function renderAll(sents, sel, annotations, visualMarks) {
   const passageAnns = annotations.filter(
     (a) => !a.target || a.target === "passage",
   );
-  // bracket source: visual_marks 단독 (Phase 2 — annotations.json bracket path 폐기).
-  //   sent_range target + status≠broken 만 채택.
-  //   adapt: vm.sentIds[0] → sentFrom, vm.sentIds[last] → sentTo (기존 내부 포맷 정합).
+  // bracket source: visual_marks + annotations.json bracket 둘 다 인정.
+  //   v2 보강 (2026-06-01): 39 set 의 bracket 이 annotations.json 에만 있고 visualMarks 미등록 결함 발견.
+  //   양쪽 source 모두 인정하여 학습 viewer 에 표시 의무.
   const vmList = Array.isArray(visualMarks) ? visualMarks : [];
-  const brackets = vmList
+  const vmBrackets = vmList
     .filter(
       (m) =>
         m.type === "bracket" &&
@@ -658,6 +658,27 @@ function renderAll(sents, sel, annotations, visualMarks) {
       sentFrom: m.sentIds[0],
       sentTo: m.sentIds[m.sentIds.length - 1],
     }));
+  const annBrackets = passageAnns
+    .filter(
+      (a) =>
+        a.type === "bracket" &&
+        a.sentFrom &&
+        a.sentTo,
+    )
+    .map((a) => ({
+      label: a.label,
+      sentFrom: a.sentFrom,
+      sentTo: a.sentTo,
+    }));
+  // 중복 제거 (label + sentFrom + sentTo 동일 시 한 번만)
+  const bracketKey = (b) => `${b.label}|${b.sentFrom}|${b.sentTo}`;
+  const seenKeys = new Set();
+  const brackets = [...vmBrackets, ...annBrackets].filter((b) => {
+    const k = bracketKey(b);
+    if (seenKeys.has(k)) return false;
+    seenKeys.add(k);
+    return true;
+  });
   // underline / box / marker — annotations.json path 유지 (Phase 2.5 마이그레이션 대기).
   //   marker 추가 (Code B 0d3c2dc visual_marks 472→496 +24 entries 정합).
   const inlineTypes = new Set(["box", "underline", "marker"]);
