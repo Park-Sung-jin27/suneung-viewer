@@ -1,0 +1,798 @@
+{
+  "approvals": [
+    {
+      "yearKey": "2014_6월A",
+      "area": "reading",
+      "setId": "r20146b",
+      "questionId": 19,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20146bs22"
+      ],
+      "score": 1,
+      "quote": "플래시 메모리는 EPROM과 EEPROM의 장점을 취하여 만든 메모리이다."
+    },
+    {
+      "yearKey": "2014_6월A",
+      "area": "reading",
+      "setId": "r20146b",
+      "questionId": 20,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20146bs26"
+      ],
+      "score": 1,
+      "quote": "플래시 메모리는 플로팅 게이트가 절연체로 둘러싸여 있기 때문에 전원을 꺼도 1이나 0의 상태가 유지되므로 비휘발성 메모리이다."
+    },
+    {
+      "yearKey": "2014_6월B",
+      "area": "reading",
+      "setId": "r20146c",
+      "questionId": 24,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20146cs4"
+      ],
+      "score": 1,
+      "quote": "이러한 광장의 구성은 기하학적 도형들이 대칭적으로 조합되어 정제된 조형미를 표현하고 있다."
+    },
+    {
+      "yearKey": "2014_6월B",
+      "area": "reading",
+      "setId": "r20146c",
+      "questionId": 25,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20146cs13"
+      ],
+      "score": 1,
+      "quote": "광장의 가운데에 배치된 기마상은 타원이 지닌 두 개의 초점을 사라지게 하는 효과를 나타내어 광장을 하나의 중심을 가진 원형 공간처럼 변모시킨 것"
+    },
+    {
+      "yearKey": "2015_6월A",
+      "area": "reading",
+      "setId": "r20156c",
+      "questionId": 24,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20156cs17"
+      ],
+      "score": 1,
+      "quote": "유물을 사용한 사람의 사회적 위치와 기호 변화 등 사회문화적 요인으로 유물의 의미를 설명하려는 관점"
+    },
+    {
+      "yearKey": "2015_6월A",
+      "area": "literature",
+      "setId": "l20156a",
+      "questionId": 31,
+      "choiceNum": 3,
+      "cs_ids": [
+        "l20156as15"
+      ],
+      "score": 1,
+      "quote": "가만히 들었습니다 저녁이 오는 소리를"
+    },
+    {
+      "yearKey": "2015_6월A",
+      "area": "literature",
+      "setId": "l20156a",
+      "questionId": 32,
+      "choiceNum": 2,
+      "cs_ids": [
+        "l20156as6"
+      ],
+      "score": 1,
+      "quote": "멀리로 멀리로만 지나쳤을 뿐입니다"
+    },
+    {
+      "yearKey": "2015_6월A",
+      "area": "literature",
+      "setId": "l20156b",
+      "questionId": 35,
+      "choiceNum": 3,
+      "cs_ids": [
+        "l20156bs9"
+      ],
+      "score": 1,
+      "quote": "사과 궤짝 같은 것에 종이를 발라 쓰는 책상 위에는 몇 권 안 되는 책들이 나란히 꽂혀 있었다."
+    },
+    {
+      "yearKey": "2015_6월A",
+      "area": "literature",
+      "setId": "l20156b",
+      "questionId": 35,
+      "choiceNum": 4,
+      "cs_ids": [
+        "l20156bs22"
+      ],
+      "score": 1,
+      "quote": "그래도 선거 때가 되면 소속 육지에서 똑딱선을 가지고 섬 백성을 모시러 오는 알뜰한 정당이 있어, 이들은 다만, 그 배로 실려 가서 실상 자기네"
+    },
+    {
+      "yearKey": "2015_6월B",
+      "area": "reading",
+      "setId": "r20156b",
+      "questionId": 21,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20156bs24"
+      ],
+      "score": 1,
+      "quote": "설명적 연관이 정확하게 어떤 의미인지, 그리고 그 연관의 긴밀도가 어떻게 측정될 수 있는지는 아직 완전히 해결되지 않은 문제이다."
+    },
+    {
+      "yearKey": "2015_6월B",
+      "area": "reading",
+      "setId": "r20156b",
+      "questionId": 22,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20156bs7"
+      ],
+      "score": 1,
+      "quote": "동시에 참이 될 수도 없고 또 동시에 거짓이 될 수도 없는 명제들 간의 관계"
+    },
+    {
+      "yearKey": "2015_6월B",
+      "area": "reading",
+      "setId": "r20156d",
+      "questionId": 28,
+      "choiceNum": 1,
+      "cs_ids": [
+        "r20156ds5"
+      ],
+      "score": 1,
+      "quote": "자율 규제는 법적 규제를 보완하는 효과가 있다"
+    },
+    {
+      "yearKey": "2015_6월B",
+      "area": "reading",
+      "setId": "r20156d",
+      "questionId": 28,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20156ds3"
+      ],
+      "score": 1,
+      "quote": "상품에 응용된 과학 기술이 복잡해지고 첨단화되면서 상품 정보에 대한 소비자의 정확한 이해도 기대하기 어려워졌다"
+    },
+    {
+      "yearKey": "2015_6월B",
+      "area": "reading",
+      "setId": "r20156d",
+      "questionId": 29,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20156ds3"
+      ],
+      "score": 1,
+      "quote": "경제적, 사회․문화적 측면에서 광고로부터 소비자를 보호해야 한다는 당위를 바탕으로 기업이 광고에 대해 책임을 져야 한다는 공감대가 확산"
+    },
+    {
+      "yearKey": "2015_6월B",
+      "area": "reading",
+      "setId": "r20156d",
+      "questionId": 29,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20156ds2"
+      ],
+      "score": 1,
+      "quote": "광고 정보가 정직한 것인지와는 상관없이"
+    },
+    {
+      "yearKey": "2015_6월B",
+      "area": "reading",
+      "setId": "r20156d",
+      "questionId": 29,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20156ds1"
+      ],
+      "score": 1,
+      "quote": "광고가 사회 전체에 폐해를 낳는 경우도 있어, 다양한 규제 방식이 모색되었다"
+    },
+    {
+      "yearKey": "2015_6월B",
+      "area": "literature",
+      "setId": "l20156b",
+      "questionId": 35,
+      "choiceNum": 1,
+      "cs_ids": [
+        "l20156bs1"
+      ],
+      "score": 1,
+      "quote": "유달리 자그마한 손이 상일에 거칠어 있는 양이 보기에 더욱 안타까울 정도였다."
+    },
+    {
+      "yearKey": "2015_6월B",
+      "area": "literature",
+      "setId": "l20156b",
+      "questionId": 35,
+      "choiceNum": 3,
+      "cs_ids": [
+        "l20156bs4"
+      ],
+      "score": 1,
+      "quote": "사과 궤짝 같은 것에 종이를 발라 쓰는 책상 위에는 몇 권 안 되는 책들이 나란히 꽂혀 있었다."
+    },
+    {
+      "yearKey": "2015_6월B",
+      "area": "literature",
+      "setId": "l20156b",
+      "questionId": 35,
+      "choiceNum": 4,
+      "cs_ids": [
+        "l20156bs7"
+      ],
+      "score": 1,
+      "quote": "그래도 선거 때가 되면 소속 육지에서 똑딱선을 가지고 섬 백성을 모시러 오는 알뜰한 정당이 있어, 이들은 다만, 그 배로 실려 가서 실상 자기네"
+    },
+    {
+      "yearKey": "2019_6월",
+      "area": "reading",
+      "setId": "r20196d",
+      "questionId": 22,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20196ds28"
+      ],
+      "score": 1,
+      "quote": "이 경우 계약의 자유를 제한하려면 필요한 만큼만 최소로 제한해야 한다는 '비례 원칙'이 적용된다."
+    },
+    {
+      "yearKey": "2019_6월",
+      "area": "reading",
+      "setId": "r20196f",
+      "questionId": 17,
+      "choiceNum": 1,
+      "cs_ids": [
+        "r20196fs17"
+      ],
+      "score": 1,
+      "quote": "그는 이 개념을 본격적으로 사용하기에 앞서 인체를 형체와 내부 장기로 구성된 일종의 기계로 파악하고 있었다"
+    },
+    {
+      "yearKey": "2019_6월",
+      "area": "reading",
+      "setId": "r20196f",
+      "questionId": 17,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20196fs9"
+      ],
+      "score": 1,
+      "quote": "뇌가 몸의 운동과 지각 활동을 주관한다는 아담 샬의 설명에 대해, 이익은 몸의 운동을 뇌가 주관한다는 것은 긍정하였지만, 지각 활동은 심장이 주"
+    },
+    {
+      "yearKey": "2019_6월",
+      "area": "reading",
+      "setId": "r20196f",
+      "questionId": 18,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20196fs12"
+      ],
+      "score": 1,
+      "quote": "당시에 전해진 서양 의학 지식은 내용 면에서도 부족했을 뿐 아니라"
+    },
+    {
+      "yearKey": "2019_6월",
+      "area": "reading",
+      "setId": "r20196f",
+      "questionId": 18,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20196fs13"
+      ],
+      "score": 1,
+      "quote": "서양 해부학이 야기하는 윤리적 문제도 서양 의학의 영향력을 제한하는 요인으로 작용하였으며"
+    },
+    {
+      "yearKey": "2019_6월",
+      "area": "reading",
+      "setId": "r20196f",
+      "questionId": 21,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20196fs7"
+      ],
+      "score": 1,
+      "quote": "기독교를 효과적으로 전파하기 위해"
+    },
+    {
+      "yearKey": "2019_6월",
+      "area": "reading",
+      "setId": "r20196f",
+      "questionId": 21,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20196fs7"
+      ],
+      "score": 1,
+      "quote": "로마 시대의 생리설, 중세의 해부 지식 등이 실려 있었다"
+    },
+    {
+      "yearKey": "2014_9월A",
+      "area": "reading",
+      "setId": "r20149c",
+      "questionId": 23,
+      "choiceNum": 1,
+      "cs_ids": [
+        "r20149cs12"
+      ],
+      "score": 1,
+      "quote": "또한 선정 당사자 제도를 이용할 수도 있는데, 이는 갑과 같은 이를 선정 당사자로 삼아 그에게 모두의 소송을 맡기는 것이다."
+    },
+    {
+      "yearKey": "2014_9월A",
+      "area": "reading",
+      "setId": "r20149c",
+      "questionId": 23,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20149cs21"
+      ],
+      "score": 1,
+      "quote": "단체 소송은 법률이 정한, 전문성과 경험을 갖춘 단체가 기업을 상대로 침해 행위의 중지를 청구하는 소를 제기할 수 있도록 하는 제도이다."
+    },
+    {
+      "yearKey": "2014_9월A",
+      "area": "reading",
+      "setId": "r20149c",
+      "questionId": 23,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20149cs19"
+      ],
+      "score": 1,
+      "quote": "집단 소송에서 대표 당사자가 수행하여 이루어진 판결은 원칙적으로 소송에 참가하지 않은 사람들에게도 그 효력이 미친다."
+    },
+    {
+      "yearKey": "2014_9월A",
+      "area": "reading",
+      "setId": "r20149c",
+      "questionId": 24,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20149cs7"
+      ],
+      "score": 1,
+      "quote": "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다."
+    },
+    {
+      "yearKey": "2014_9월A",
+      "area": "literature",
+      "setId": "l20149a",
+      "questionId": 31,
+      "choiceNum": 5,
+      "cs_ids": [
+        "l20149as5"
+      ],
+      "score": 1,
+      "quote": "충분히 흔들리자"
+    },
+    {
+      "yearKey": "2014_9월B",
+      "area": "literature",
+      "setId": "l20149b",
+      "questionId": 38,
+      "choiceNum": 3,
+      "cs_ids": [
+        "l20149bs35"
+      ],
+      "score": 1,
+      "quote": "날나리를 불꺼나"
+    },
+    {
+      "yearKey": "2015_9월A",
+      "area": "reading",
+      "setId": "r20159a",
+      "questionId": 16,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20159as6"
+      ],
+      "score": 1,
+      "quote": "개[犬]가 10억 개에 이르는 후각 수용기를 갖고 있는 것에 비해 인간의 후각 수용기는 1천만 개에 불과하여"
+    },
+    {
+      "yearKey": "2015_9월A",
+      "area": "reading",
+      "setId": "r20159a",
+      "questionId": 16,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20159as5"
+      ],
+      "score": 1,
+      "quote": "물론 인간도 다른 동물과 마찬가지로 취기재의 분자 하나에도 민감하게 반응하는 후각 수용기를 갖고 있다."
+    },
+    {
+      "yearKey": "2015_9월A",
+      "area": "reading",
+      "setId": "r20159a",
+      "questionId": 17,
+      "choiceNum": 1,
+      "cs_ids": [
+        "r20159as26"
+      ],
+      "score": 1,
+      "quote": "이에 따르면 어떤 냄새를 맡았을 때 그 냄새와 관련된 과거의 경험이나 감정이 떠오르는 일은 매우 자연스러운 현상이다."
+    },
+    {
+      "yearKey": "2015_9월A",
+      "area": "reading",
+      "setId": "r20159a",
+      "questionId": 17,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20159as16"
+      ],
+      "score": 1,
+      "quote": "같은 취기재들 사이에서는 농도가 평균 11 % 정도 차이가 나야 냄새의 세기 차이를 구별할 수 있다고 알려져 있다."
+    },
+    {
+      "yearKey": "2015_9월A",
+      "area": "reading",
+      "setId": "r20159a",
+      "questionId": 18,
+      "choiceNum": 1,
+      "cs_ids": [
+        "r20159as12"
+      ],
+      "score": 1,
+      "quote": "취기재의 농도가 탐지 역치 정도의 수준에서는 냄새가 나는지 안 나는지 정도를 탐지할 수는 있지만 그 냄새가 무슨 냄새인지 인식하지 못한다."
+    },
+    {
+      "yearKey": "2015_9월A",
+      "area": "reading",
+      "setId": "r20159a",
+      "questionId": 18,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20159as12"
+      ],
+      "score": 1,
+      "quote": "취기재의 농도가 탐지 역치 정도의 수준에서는 냄새가 나는지 안 나는지 정도를 탐지할 수는 있지만 그 냄새가 무슨 냄새인지 인식하지 못한다."
+    },
+    {
+      "yearKey": "2015_9월A",
+      "area": "reading",
+      "setId": "r20159a",
+      "questionId": 18,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20159as14"
+      ],
+      "score": 1,
+      "quote": "취기재의 정체를 인식하려면 취기재의 농도가 탐지 역치보다 3배가량은 높아야 한다."
+    },
+    {
+      "yearKey": "2015_9월A",
+      "area": "reading",
+      "setId": "r20159a",
+      "questionId": 18,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20159as12"
+      ],
+      "score": 1,
+      "quote": "취기재의 농도가 탐지 역치 정도의 수준에서는 냄새가 나는지 안 나는지 정도를 탐지할 수는 있지만"
+    },
+    {
+      "yearKey": "2015_9월A",
+      "area": "reading",
+      "setId": "r20159a",
+      "questionId": 18,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20159as14"
+      ],
+      "score": 1,
+      "quote": "취기재의 정체를 인식하려면 취기재의 농도가 탐지 역치보다 3배가량은 높아야 한다."
+    },
+    {
+      "yearKey": "2015_9월A",
+      "area": "reading",
+      "setId": "r20159d",
+      "questionId": 28,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20159ds9"
+      ],
+      "score": 1,
+      "quote": "이성을 통해 확인되고 인간 본성에 합치하는 법 규범은 자연법이자 신의 의지라고 말하면서"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "reading",
+      "setId": "r20166d",
+      "questionId": 27,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20166ds2"
+      ],
+      "score": 1,
+      "quote": "현행법상 불법 행위에 대한 금전적 제재 수단에는 민사적 수단인 손해 배상, 형사적 수단인 벌금, 행정적 수단인 과징금이 있으며"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "reading",
+      "setId": "r20166d",
+      "questionId": 28,
+      "choiceNum": 1,
+      "cs_ids": [
+        "r20166ds2"
+      ],
+      "score": 1,
+      "quote": "현행법상 불법 행위에 대한 금전적 제재 수단에는 민사적 수단인 손해 배상, 형사적 수단인 벌금, 행정적 수단인 과징금이 있으며"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "reading",
+      "setId": "r20166d",
+      "questionId": 28,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20166ds3"
+      ],
+      "score": 1,
+      "quote": "예를 들어 기업들이 담합하여 제품 가격을 인상했다가 적발된 경우, 그 기업들은 피해자에게 손해 배상 소송을 제기당하거나 법원으로부터 벌금형을 선"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "reading",
+      "setId": "r20166d",
+      "questionId": 28,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20166ds2"
+      ],
+      "score": 1,
+      "quote": "이들은 각각 피해자의 구제, 가해자의 징벌, 법 위반 상태의 시정을 목적으로 한다"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "reading",
+      "setId": "r20166d",
+      "questionId": 28,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20166ds4"
+      ],
+      "score": 1,
+      "quote": "이처럼 하나의 불법 행위에 대해 세 가지 금전적 제재가 내려질 수 있지만 제재의 목적이 서로 다르므로 중복 제재는 아니라는 것이 법원의 판단이다"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "reading",
+      "setId": "r20166d",
+      "questionId": 29,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20166ds11"
+      ],
+      "score": 1,
+      "quote": "일반적인 손해 배상 제도에서는 피해자가 손해액을 초과하여 배상받는 것이 불가능하지만 징벌적 손해 배상 제도에서는 그것이 가능하다"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "literature",
+      "setId": "l20166c",
+      "questionId": 39,
+      "choiceNum": 1,
+      "cs_ids": [
+        "l20166cs4"
+      ],
+      "score": 1,
+      "quote": "평국과 보국이 또한 엎드려 먼 길에 평안히 행차하심을 치하하더라."
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "literature",
+      "setId": "l20166c",
+      "questionId": 39,
+      "choiceNum": 2,
+      "cs_ids": [
+        "l20166cs11"
+      ],
+      "score": 1,
+      "quote": "평국이 전장에 다녀온 후로 자연 몸이 곤하여 병이 침중하니 집안이 경동하여 주야 약으로 치료하니"
+    },
+    {
+      "yearKey": "2016_6월A",
+      "area": "literature",
+      "setId": "l20166c",
+      "questionId": 39,
+      "choiceNum": 3,
+      "cs_ids": [
+        "l20166cs26"
+      ],
+      "score": 1,
+      "quote": "즉시 남복을 벗고 여복을 입고 부모 앞에 뵈어 느끼며 뺨에 두 줄기 눈물이 종횡하거늘"
+    },
+    {
+      "yearKey": "2016_6월B",
+      "area": "reading",
+      "setId": "r20166d",
+      "questionId": 28,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20166ds4"
+      ],
+      "score": 1,
+      "quote": "하나의 불법 행위에 대해 세 가지 금전적 제재가 내려질 수 있지만 제재의 목적이 서로 다르므로 중복 제재는 아니라는 것이 법원의 판단이다."
+    },
+    {
+      "yearKey": "2016_9월B",
+      "area": "reading",
+      "setId": "r20169d",
+      "questionId": 26,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20169ds2"
+      ],
+      "score": 1,
+      "quote": "파클리탁셀과 같은 세포 독성 항암제는 세포 분열을 방해하여 세포가 증식하지 못하고 사멸에 이르게 한다."
+    },
+    {
+      "yearKey": "2016_9월B",
+      "area": "reading",
+      "setId": "r20169d",
+      "questionId": 26,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20169ds6"
+      ],
+      "score": 1,
+      "quote": "암세포에서는 변형된 유전자가 만들어 낸 비정상적인 단백질이 세포 분열을 위한 신호 전달 과정을 왜곡하여 과다한 세포 증식을 일으킨다."
+    },
+    {
+      "yearKey": "2016_9월A",
+      "area": "literature",
+      "setId": "l20169b",
+      "questionId": 32,
+      "choiceNum": 5,
+      "cs_ids": [
+        "l20169bs37"
+      ],
+      "score": 1,
+      "quote": "평안도 암행어사 이혈룡"
+    },
+    {
+      "yearKey": "2018_6월",
+      "area": "reading",
+      "setId": "r20186b",
+      "questionId": 23,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20186bs20"
+      ],
+      "score": 1,
+      "quote": "준칙주의자들은 이런 경우에 중앙은행이 애초의 약속을 일관되게 지키는 편이 바람직하다고 주장한다."
+    },
+    {
+      "yearKey": "2018_6월",
+      "area": "reading",
+      "setId": "r20186c",
+      "questionId": 31,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20186cs6"
+      ],
+      "score": 1,
+      "quote": "공격자가 보낸 응답 패킷이 네임서버가 보낸 응답 패킷보다 클라이언트에 먼저 도착하고 클라이언트는 공격자가 보낸 응답 패킷을 옳은 패킷으로 인식하"
+    },
+    {
+      "yearKey": "2019_9월",
+      "area": "reading",
+      "setId": "r20199a",
+      "questionId": 22,
+      "choiceNum": 1,
+      "cs_ids": [
+        "r20199as20"
+      ],
+      "score": 1,
+      "quote": "은행 ㉠갑은, 기업 ㉡을이 발행한 채권을 매입하면서"
+    },
+    {
+      "yearKey": "2019_9월",
+      "area": "reading",
+      "setId": "r20199a",
+      "questionId": 22,
+      "choiceNum": 2,
+      "cs_ids": [
+        "r20199as17"
+      ],
+      "score": 1,
+      "quote": "보장 매도자는, 보장 매입자가 보유한 채권에서 부도가 나면 이에 따른 손실을 보상하는 역할을 한다"
+    },
+    {
+      "yearKey": "2019_9월",
+      "area": "literature",
+      "setId": "l20199d",
+      "questionId": 39,
+      "choiceNum": 5,
+      "cs_ids": [
+        "l20199ds43"
+      ],
+      "score": 1,
+      "quote": "소피 : 이 병장이 끝까지 보호하려고 하는 사람… 오경필의 안전이에요."
+    },
+    {
+      "yearKey": "2019_9월",
+      "area": "literature",
+      "setId": "l20199d",
+      "questionId": 41,
+      "choiceNum": 2,
+      "cs_ids": [
+        "l20199ds10"
+      ],
+      "score": 1,
+      "quote": "보타의 설명 사이사이, 한국전 당시 거제도 포로수용소의 생활과 좌우 투쟁, 종전 후 공산 포로 북송, 반공 포로 석방 및 제3국행 포로의 출발과"
+    },
+    {
+      "yearKey": "2017_6월",
+      "area": "reading",
+      "setId": "r20176b",
+      "questionId": 21,
+      "choiceNum": 4,
+      "cs_ids": [
+        "r20176bs5"
+      ],
+      "score": 1,
+      "quote": "이를 바탕으로 이들은 동물 실험이 인간에게 명백하고 중요한 이익을 준다고 주장한다."
+    },
+    {
+      "yearKey": "2017_6월",
+      "area": "reading",
+      "setId": "r20176c",
+      "questionId": 31,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20176cs3"
+      ],
+      "score": 1,
+      "quote": "음색은 부분음들로 구성된 복합음의 구조, 즉 부분음들의 진동수와 상대적 세기에 의해 결정된다"
+    },
+    {
+      "yearKey": "2017_6월",
+      "area": "reading",
+      "setId": "r20176c",
+      "questionId": 32,
+      "choiceNum": 1,
+      "cs_ids": [
+        "r20176cs4"
+      ],
+      "score": 1,
+      "quote": "'도'와 '미' 사이처럼 장3도 음정은 5/4이고"
+    },
+    {
+      "yearKey": "2017_6월",
+      "area": "reading",
+      "setId": "r20176c",
+      "questionId": 32,
+      "choiceNum": 3,
+      "cs_ids": [
+        "r20176cs4"
+      ],
+      "score": 1,
+      "quote": "약분된 분수의 분자와 분모가 1, 2, 3, 4, 5, 6으로만 표현되는 음정은 협화 음정, 그 외의 음정은 불협화 음정으로 보았다."
+    },
+    {
+      "yearKey": "2017_6월",
+      "area": "reading",
+      "setId": "r20176c",
+      "questionId": 32,
+      "choiceNum": 5,
+      "cs_ids": [
+        "r20176cs4"
+      ],
+      "score": 1,
+      "quote": "일반적으로 음정을 나타내는 분수를 약분했을 때 분자와 분모에 들어가는 수가 커질수록 협화도는 작아진다고 본다. 가령, 음정이 2/1인 옥타브, "
+    }
+  ],
+  "generated_at": "2026-06-01",
+  "tier": "score_1.00_unique_match"
+}
