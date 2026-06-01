@@ -66,7 +66,19 @@ export function getCommitHashes() {
   return { audit_commit, data_commit, ann_commit, mixed_commit };
 }
 
-function findSet(data, setId) {
+// v2: yearKey 우선 검색 (setId 충돌 — LEGACY A/B형 33 set 대응).
+// 호출 측에서 yearKey 를 알면 정확한 set 매칭 가능. 미지정 시 첫 매칭 (백워드 호환).
+function findSet(data, setId, yearKey) {
+  if (yearKey) {
+    const year = data[yearKey];
+    if (!year) return null;
+    for (const sec of ["reading", "literature"]) {
+      if (!year[sec]) continue;
+      const set = year[sec].find((s) => s.id === setId);
+      if (set) return { yearKey, section: sec, set };
+    }
+    return null;
+  }
   for (const yk of Object.keys(data)) {
     for (const sec of ["reading", "literature"]) {
       if (!data[yk] || !data[yk][sec]) continue;
@@ -92,7 +104,7 @@ function getAllSetIds(data) {
 
 function auditSet(data, ann, yearKey, setId) {
   const findings = [];
-  const loc = findSet(data, setId);
+  const loc = findSet(data, setId, yearKey); // v2: yearKey 격리
   if (!loc) return findings;
   const set = loc.set;
   const sents = set.sents || [];

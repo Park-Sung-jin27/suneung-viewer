@@ -357,7 +357,7 @@ function applyReferenceCrossCheck(marks) {
   for (const mark of marks) {
     if (!mark.label) continue;
     if (!["bracket", "inline_label"].includes(mark.type)) continue;
-    const loc = findSet(mark.setId);
+    const loc = findSet(mark.setId, mark.yearKey); // v2: yearKey 격리 (setId 충돌 33 set 대응)
     if (!loc) continue;
     const refs = findReferences(loc.set, mark.label);
     mark.referenced_in = refs;
@@ -369,7 +369,18 @@ function applyReferenceCrossCheck(marks) {
     }
   }
 }
-function findSet(setId) {
+// v2: yearKey 우선 검색 (setId 충돌 — LEGACY A/B형 33 set 대응)
+function findSet(setId, yearKey) {
+  if (yearKey) {
+    const year = data[yearKey];
+    if (!year) return null;
+    for (const sec of ["reading", "literature"]) {
+      if (!year[sec]) continue;
+      const set = year[sec].find((s) => s.id === setId);
+      if (set) return { yearKey, section: sec, set };
+    }
+    return null;
+  }
   for (const yk of Object.keys(data)) {
     for (const sec of ["reading", "literature"]) {
       if (!data[yk] || !data[yk][sec]) continue;

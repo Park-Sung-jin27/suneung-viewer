@@ -37,7 +37,7 @@ const THRESH_PATH = path.join(ROOT, "config/cs_ids_recovery_thresholds.json");
 const MARKER_PATH = path.join(ROOT, "config/marker_chars.json");
 const OUTPUT_DIR = path.join(ROOT, "pipeline/output");
 
-const TOOL_VERSION = "1.0";
+const TOOL_VERSION = "3.0"; // v3: 전역 sentIndex 폐기 — setId 충돌 (LEGACY A/B형 33 set) 대응
 
 // ── CLI args ─────────────────────────────────────────────
 const args = Object.fromEntries(
@@ -58,20 +58,10 @@ const PASSAGE_MARKERS = new Set(markerCfg.passage_markers);
 
 if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
-// ── sentId → sent.t 인덱스 (yearKey 무관) ──────────────────
-const sentIndex = new Map();
-for (const [yk, year] of Object.entries(data)) {
-  if (!year || typeof year !== "object") continue;
-  for (const [areaKey, areaArr] of Object.entries(year)) {
-    if (!Array.isArray(areaArr)) continue;
-    for (const set of areaArr) {
-      if (!set || !Array.isArray(set.sents)) continue;
-      for (const sent of set.sents) {
-        if (sent.id) sentIndex.set(sent.id, sent.t || "");
-      }
-    }
-  }
-}
+// v3: 전역 sentIndex 폐기.
+// 이유: 동일 setId 가 다른 yearKey 에 중복 존재 (LEGACY A/B형 33 set) 시 sent.t 가
+//       덮어쓰여 검수 보드 표시 + annotation 안전 등급 검증이 잘못 동작.
+// 대안: annotation 검증 / sentText 표시 모두 해당 set 의 sents 만 lookup.
 
 // ── set 순회 (영역 자동 인식) ────────────────────────────
 function* iterSets() {
@@ -118,19 +108,23 @@ function classifySetSafety(yearKey, area, set) {
     ? thresh.set_safety_classification.safe_requires.sent_count_min_literature
     : thresh.set_safety_classification.safe_requires.sent_count_min_reading;
 
-  // annotation 결함 카운트
+  // annotation 결함 카운트 (v3: set 내부 sents 기준)
   const annList = anns?.[yearKey]?.[set.id] || [];
+  const localSentMap = new Map();
+  for (const s of sents) {
+    if (s.id) localSentMap.set(s.id, s.t || "");
+  }
   let deadSentId = 0,
     textMismatch = 0;
   for (const e of annList) {
     if (!["underline", "marker"].includes(e.type)) continue;
     const sId = e.sentId;
     if (!sId) continue;
-    if (!sentIndex.has(sId)) {
+    if (!localSentMap.has(sId)) {
       deadSentId++;
       continue;
     }
-    if (e.text && !sentIndex.get(sId).includes(e.text)) textMismatch++;
+    if (e.text && !localSentMap.get(sId).includes(e.text)) textMismatch++;
   }
   const annTotal = annList.filter((e) =>
     ["underline", "marker"].includes(e.type),
@@ -274,6 +268,12 @@ function scoreChoice(setObj, q, c, safetyGrade) {
       decision: "no_quote_extractable",
     };
 
+  // v3: setObj 내부 sents 의 sentId → sent.t map (전역 sentIndex 폐기 대안)
+  const localSentMap = new Map();
+  for (const s of setObj.sents || []) {
+    if (s.id) localSentMap.set(s.id, s.t || "");
+  }
+
   // 후보 sent별 점수 집계
   const scoreMap = new Map(); // sentId → {score, hits, exactCount, quotesMatched}
   for (const q_ of quotes) {
@@ -305,7 +305,7 @@ function scoreChoice(setObj, q, c, safetyGrade) {
       exact_count: v.exactCount,
       norm_count: v.normCount,
       quotes_matched: v.quotesMatched,
-      sentText: (sentIndex.get(sentId) || "").slice(0, 120),
+      sentText: (localSentMap.get(sentId) || "").slice(0, 120),
     }))
     .sort((a, b) => b.normalized_score - a.normalized_score);
 
@@ -403,6 +403,7 @@ for (const { yearKey, area, set } of iterSets()) {
       decisionDist[r.decision]++;
       candidatesOut.push({
         yearKey,
+        area, // v3: setId 충돌 대응 (apply 안전장치 + 검수 보드 source_ref)
         setId: set.id,
         questionId: q.id,
         choiceNum: c.num,
@@ -460,6 +461,7 @@ report.push(`| cs_ids 비어있고 의무 있는 choice | ${totalChoicesEmpty} |
 report.push(`| set_safety: safe | ${safetyDist.safe} |`);
 report.push(`| set_safety: suspect | ${safetyDist.suspect} |`);
 report.push(`| set_safety: rebuild_needed | ${safetyDist.rebuild_needed} |`);
+report.push(`| set_safety: duplicate_sentid_hold | ${safetyDist.duplicate_sentid_hold || 0} |`);
 report.push(``);
 report.push(`## 자동/배치/수동 분류`);
 report.push(``);
@@ -484,7 +486,14 @@ report.push("");
 
 fs.writeFileSync(path.join(OUTPUT_DIR, "day1_report.md"), report.join("\n"), "utf-8");
 
-console.log("cs_ids_recovery v2 done");
+console.log("cs_ids_recovery v" + TOOL_VERSION + " done");
+console.log("  candidates: " + candidatesOut.length);
+console.log("  safety: safe=" + safetyDist.safe + " suspect=" + safetyDist.suspect + " rebuild=" + safetyDist.rebuild_needed + " duplicate_sentid_hold=" + (safetyDist.duplicate_sentid_hold||0));
+console.log("done");
+
+fs.writeFileSync(path.join(OUTPUT_DIR, "day1_report.md"), report.join("\n"), "utf-8");
+
+console.log("cs_ids_recovery v" + TOOL_VERSION + " done");
 console.log("  candidates: " + candidatesOut.length);
 console.log("  safety: safe=" + safetyDist.safe + " suspect=" + safetyDist.suspect + " rebuild=" + safetyDist.rebuild_needed + " duplicate_sentid_hold=" + (safetyDist.duplicate_sentid_hold||0));
 console.log("done");

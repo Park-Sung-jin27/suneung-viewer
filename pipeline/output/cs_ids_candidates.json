@@ -1,6 +1,6 @@
 {
-  "tool_version": "1.0",
-  "generated_at": "2026-06-01T09:26:32.579Z",
+  "tool_version": "3.0",
+  "generated_at": "2026-06-01T10:11:15.425Z",
   "thresholds": {
     "version": "1.0",
     "auto_apply_hard_conditions": {
@@ -11654,6 +11654,7 @@
   "candidates": [
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 17,
       "choiceNum": 1,
@@ -11677,6 +11678,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 17,
       "choiceNum": 2,
@@ -11700,6 +11702,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 17,
       "choiceNum": 3,
@@ -11723,6 +11726,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 17,
       "choiceNum": 4,
@@ -11746,6 +11750,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 18,
       "choiceNum": 1,
@@ -11770,6 +11775,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 18,
       "choiceNum": 2,
@@ -11794,6 +11800,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 18,
       "choiceNum": 3,
@@ -11818,6 +11825,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 18,
       "choiceNum": 4,
@@ -11842,6 +11850,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 18,
       "choiceNum": 5,
@@ -11863,7 +11872,7 @@
           "quotes_matched": [
             "미 산란은 입자의 직경이 파장의 1/10보다 큰 경우에"
           ],
-          "sentText": "그런데 어떤 대상에 대해서 약정적이지 않으면서 완벽하고 정확한 정의를 내리기 어렵다는 사실은 반본질주의의 주장에 힘을 실어 준다."
+          "sentText": "미 산란은 입자의 직경이 파장의 1/10보다 큰 경우에 일어나는 산란을 말하는데 주로 에어로졸이나 구름 입자 등에 의해 일어난다."
         }
       ],
       "hard_checks": {
@@ -11878,6 +11887,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 19,
       "choiceNum": 5,
@@ -11898,7 +11908,7 @@
           "quotes_matched": [
             "플래시 메모리는 EPROM과 EEPROM의 장점을 취하여 만든 메모리이다."
           ],
-          "sentText": "또 디지털 환경에서는 사용료 지불 절차 등이 간단해져서 '저작물의 공정한 이용' 규정을 별도로 신설할 필요가 없었다고 본다."
+          "sentText": "플래시 메모리는 EPROM과 EEPROM의 장점을 취하여 만든 메모리이다."
         }
       ],
       "hard_checks": {
@@ -11913,6 +11923,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 20,
       "choiceNum": 1,
@@ -11937,6 +11948,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 20,
       "choiceNum": 2,
@@ -11962,6 +11974,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 20,
       "choiceNum": 3,
@@ -11986,6 +11999,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 20,
       "choiceNum": 5,
@@ -12021,6 +12035,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 21,
       "choiceNum": 1,
@@ -12048,6 +12063,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 21,
       "choiceNum": 2,
@@ -12074,6 +12090,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 21,
       "choiceNum": 3,
@@ -12095,7 +12112,7 @@
           "quotes_matched": [
             "데이터를 저장하려면 1을 쓰려는 셀의 G에 약 20V, p형 반도체에는 0V의 전압을 가한다"
           ],
-          "sentText": "한편 다른 시각을 가진 사람들도 있다."
+          "sentText": "데이터를 저장하려면 1을 쓰려는 셀의 G에 약 20V, p형 반도체에는 0V의 전압을 가한다."
         }
       ],
       "hard_checks": {
@@ -12110,6 +12127,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 21,
       "choiceNum": 5,
@@ -12132,7 +12150,7 @@
           "quotes_matched": [
             "이와 같은 과정을 거친 후에야 데이터 쓰기가 가능하다."
           ],
-          "sentText": "그러나 캠페인에 참여한 저작물을 이용할 때 허용된 범위를 벗어난 경우 법적 책임을 질 수 있다."
+          "sentText": "이와 같은 과정을 거친 후에야 데이터 쓰기가 가능하다."
         }
       ],
       "hard_checks": {
@@ -12147,6 +12165,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 22,
       "choiceNum": 4,
@@ -12182,6 +12201,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 22,
       "choiceNum": 5,
@@ -12205,6 +12225,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 23,
       "choiceNum": 2,
@@ -12225,7 +12246,7 @@
           "quotes_matched": [
             "광장의 가운데에 배치된 기마상은 타원이 지닌 두 개의 초점을 사라지게 하는 효과를 나타내어 광장을 하나의 중심을 가진 원형 공간처럼 변모시킨 것이다."
           ],
-          "sentText": "광장의 가운데에 배치된 기마상은 타원이 지닌 두 개의 초점을 사라지게 하는 효과를 나타내어 광장을 하나의 중심을 가진 원형 공간처럼 변모시킨 것이다."
+          "sentText": "광장의 가운데에 배치된 기마상은 타원이 지닌 두 개의 초점을 ⓒ사라지게 하는 효과를 나타내어 광장을 하나의 중심을 가진 원형 공간처럼 변모시킨 것이다."
         }
       ],
       "hard_checks": {
@@ -12240,6 +12261,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 24,
       "choiceNum": 1,
@@ -12276,6 +12298,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 24,
       "choiceNum": 2,
@@ -12300,6 +12323,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 24,
       "choiceNum": 3,
@@ -12336,6 +12360,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 24,
       "choiceNum": 4,
@@ -12372,6 +12397,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 24,
       "choiceNum": 5,
@@ -12396,6 +12422,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146d",
       "questionId": 26,
       "choiceNum": 5,
@@ -12419,6 +12446,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146d",
       "questionId": 27,
       "choiceNum": 1,
@@ -12443,6 +12471,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146d",
       "questionId": 27,
       "choiceNum": 2,
@@ -12467,6 +12496,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146d",
       "questionId": 27,
       "choiceNum": 3,
@@ -12491,6 +12521,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146d",
       "questionId": 27,
       "choiceNum": 4,
@@ -12519,6 +12550,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146d",
       "questionId": 27,
       "choiceNum": 5,
@@ -12543,6 +12575,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146e",
       "questionId": 28,
       "choiceNum": 4,
@@ -12566,6 +12599,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146e",
       "questionId": 28,
       "choiceNum": 5,
@@ -12591,6 +12625,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146e",
       "questionId": 29,
       "choiceNum": 1,
@@ -12628,6 +12663,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146e",
       "questionId": 29,
       "choiceNum": 2,
@@ -12664,6 +12700,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146e",
       "questionId": 29,
       "choiceNum": 3,
@@ -12688,6 +12725,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146e",
       "questionId": 29,
       "choiceNum": 4,
@@ -12712,6 +12750,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146e",
       "questionId": 29,
       "choiceNum": 5,
@@ -12748,6 +12787,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146f",
       "questionId": 40,
       "choiceNum": 1,
@@ -12772,6 +12812,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146f",
       "questionId": 40,
       "choiceNum": 2,
@@ -12796,6 +12837,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146f",
       "questionId": 40,
       "choiceNum": 3,
@@ -12819,6 +12861,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146f",
       "questionId": 40,
       "choiceNum": 4,
@@ -12843,6 +12886,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "reading",
       "setId": "r20146f",
       "questionId": 40,
       "choiceNum": 5,
@@ -12868,6 +12912,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146a",
       "questionId": 38,
       "choiceNum": 3,
@@ -12889,7 +12934,7 @@
           "quotes_matched": [
             "형님 온다 형님 온다"
           ],
-          "sentText": "(가) 성현의 경전을 읽고 자기를 돌이켜 보아서 환히 이해되지 않는 곳이 있거든, 모름지기 성인이 준 가르침이란 반드시 사람이 알 수 있고 행할 수도 있는 것에 대하여 말한 것임을 생각하라. 성현의 말과 나의 소견이"
+          "sentText": "형님 온다 형님 온다 분고개로 형님 온다."
         },
         {
           "sentId": "l20146as26",
@@ -12915,6 +12960,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146a",
       "questionId": 38,
       "choiceNum": 4,
@@ -12929,6 +12975,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146a",
       "questionId": 39,
       "choiceNum": 2,
@@ -12952,6 +12999,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146a",
       "questionId": 39,
       "choiceNum": 3,
@@ -12975,6 +13023,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146a",
       "questionId": 39,
       "choiceNum": 4,
@@ -12998,6 +13047,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146a",
       "questionId": 39,
       "choiceNum": 5,
@@ -13022,6 +13072,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 31,
       "choiceNum": 3,
@@ -13043,7 +13094,7 @@
           "quotes_matched": [
             "진두강 가람 가에"
           ],
-          "sentText": "이애 이애 그 말 마라 시집살이 개집살이."
+          "sentText": "진두강 가람 가에 살던 누나는"
         },
         {
           "sentId": "l20146bs9",
@@ -13054,7 +13105,7 @@
           "quotes_matched": [
             "진두강 가람 가에"
           ],
-          "sentText": "오 리(五里) 물을 길어다가 십 리(十里) 방아 찧어다가,"
+          "sentText": "진두강 가람 가에 살던 누나는"
         },
         {
           "sentId": "l20146bs5",
@@ -13065,7 +13116,7 @@
           "quotes_matched": [
             "진두강 앞마을에"
           ],
-          "sentText": "앞밭에는 당추 심고 뒷밭에는 고추 심어,"
+          "sentText": "진두강 앞마을에"
         }
       ],
       "hard_checks": {
@@ -13080,6 +13131,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 31,
       "choiceNum": 5,
@@ -13101,7 +13153,7 @@
           "quotes_matched": [
             "진두강 가람 가에 살던 누나는"
           ],
-          "sentText": "이애 이애 그 말 마라 시집살이 개집살이."
+          "sentText": "진두강 가람 가에 살던 누나는"
         },
         {
           "sentId": "l20146bs9",
@@ -13112,7 +13164,7 @@
           "quotes_matched": [
             "진두강 가람 가에 살던 누나는"
           ],
-          "sentText": "오 리(五里) 물을 길어다가 십 리(十里) 방아 찧어다가,"
+          "sentText": "진두강 가람 가에 살던 누나는"
         }
       ],
       "hard_checks": {
@@ -13127,6 +13179,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 32,
       "choiceNum": 3,
@@ -13148,7 +13201,7 @@
           "quotes_matched": [
             "진두강 가람 가에 살던 누나는"
           ],
-          "sentText": "이애 이애 그 말 마라 시집살이 개집살이."
+          "sentText": "진두강 가람 가에 살던 누나는"
         },
         {
           "sentId": "l20146bs9",
@@ -13159,7 +13212,7 @@
           "quotes_matched": [
             "진두강 가람 가에 살던 누나는"
           ],
-          "sentText": "오 리(五里) 물을 길어다가 십 리(十里) 방아 찧어다가,"
+          "sentText": "진두강 가람 가에 살던 누나는"
         },
         {
           "sentId": "l20146bs10",
@@ -13170,7 +13223,7 @@
           "quotes_matched": [
             "의붓어미 시샘에 죽었습니다"
           ],
-          "sentText": "아홉 솥에 불을 때고 열두 방에 자리 걷고,"
+          "sentText": "의붓어미 시샘에 죽었습니다"
         }
       ],
       "hard_checks": {
@@ -13185,6 +13238,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 32,
       "choiceNum": 4,
@@ -13208,6 +13262,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 33,
       "choiceNum": 1,
@@ -13229,7 +13284,7 @@
           "quotes_matched": [
             "죽어서도 못 잊어 차마 못 잊어"
           ],
-          "sentText": "자식 하난 우는 새요 나 하나만 썩는 샐세."
+          "sentText": "죽어서도 못 잊어 차마 못 잊어"
         }
       ],
       "hard_checks": {
@@ -13244,6 +13299,7 @@
     },
     {
       "yearKey": "2014_6월A",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 33,
       "choiceNum": 2,
@@ -13268,7 +13324,7 @@
           "quotes_matched": [
             "의붓어미 시샘에 죽었습니다"
           ],
-          "sentText": "아홉 솥에 불을 때고 열두 방에 자리 걷고,"
+          "sentText": "의붓어미 시샘에 죽었습니다"
         },
         {
           "sentId": "l20146bs13",
@@ -13279,7 +13335,7 @@
           "quotes_matched": [
             "시새움에 몸이 죽은"
           ],
-          "sentText": "시아버니 호랑새요 시어머니 꾸중새요"
+          "sentText": "시새움에 몸이 죽은 우리 누나는"
         }
       ],
       "hard_checks": {
@@ -13294,6 +13350,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 17,
       "choiceNum": 4,
@@ -13341,6 +13398,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 17,
       "choiceNum": 5,
@@ -13364,6 +13422,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 18,
       "choiceNum": 1,
@@ -13401,6 +13460,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 18,
       "choiceNum": 2,
@@ -13451,6 +13511,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 18,
       "choiceNum": 3,
@@ -13501,6 +13562,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 18,
       "choiceNum": 4,
@@ -13551,6 +13613,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 19,
       "choiceNum": 1,
@@ -13576,6 +13639,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 19,
       "choiceNum": 2,
@@ -13614,6 +13678,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 19,
       "choiceNum": 3,
@@ -13663,6 +13728,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 19,
       "choiceNum": 4,
@@ -13715,6 +13781,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146a",
       "questionId": 19,
       "choiceNum": 5,
@@ -13739,6 +13806,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 23,
       "choiceNum": 1,
@@ -13775,6 +13843,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 23,
       "choiceNum": 2,
@@ -13812,6 +13881,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 23,
       "choiceNum": 3,
@@ -13860,6 +13930,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 23,
       "choiceNum": 4,
@@ -13909,6 +13980,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146b",
       "questionId": 23,
       "choiceNum": 5,
@@ -13946,6 +14018,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 24,
       "choiceNum": 4,
@@ -13981,6 +14054,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 24,
       "choiceNum": 5,
@@ -14004,6 +14078,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 25,
       "choiceNum": 2,
@@ -14039,6 +14114,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 26,
       "choiceNum": 1,
@@ -14075,6 +14151,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 26,
       "choiceNum": 2,
@@ -14099,6 +14176,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 26,
       "choiceNum": 3,
@@ -14125,6 +14203,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 26,
       "choiceNum": 4,
@@ -14161,6 +14240,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "reading",
       "setId": "r20146c",
       "questionId": 26,
       "choiceNum": 5,
@@ -14185,6 +14265,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 31,
       "choiceNum": 3,
@@ -14209,6 +14290,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 31,
       "choiceNum": 4,
@@ -14223,6 +14305,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 32,
       "choiceNum": 2,
@@ -14263,6 +14346,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 32,
       "choiceNum": 3,
@@ -14287,6 +14371,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 32,
       "choiceNum": 4,
@@ -14310,6 +14395,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 32,
       "choiceNum": 5,
@@ -14333,6 +14419,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 33,
       "choiceNum": 1,
@@ -14356,6 +14443,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 33,
       "choiceNum": 3,
@@ -14394,6 +14482,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146b",
       "questionId": 33,
       "choiceNum": 5,
@@ -14418,6 +14507,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146c",
       "questionId": 38,
       "choiceNum": 5,
@@ -14465,6 +14555,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146c",
       "questionId": 39,
       "choiceNum": 1,
@@ -14488,6 +14579,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146c",
       "questionId": 39,
       "choiceNum": 2,
@@ -14535,6 +14627,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146c",
       "questionId": 39,
       "choiceNum": 3,
@@ -14558,6 +14651,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146c",
       "questionId": 39,
       "choiceNum": 5,
@@ -14581,6 +14675,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146c",
       "questionId": 40,
       "choiceNum": 1,
@@ -14629,6 +14724,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146c",
       "questionId": 40,
       "choiceNum": 2,
@@ -14666,6 +14762,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146c",
       "questionId": 40,
       "choiceNum": 4,
@@ -14690,6 +14787,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146c",
       "questionId": 40,
       "choiceNum": 5,
@@ -14715,6 +14813,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146d",
       "questionId": 44,
       "choiceNum": 5,
@@ -14763,6 +14862,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146d",
       "questionId": 45,
       "choiceNum": 1,
@@ -14811,6 +14911,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146d",
       "questionId": 45,
       "choiceNum": 2,
@@ -14858,6 +14959,7 @@
     },
     {
       "yearKey": "2014_6월B",
+      "area": "literature",
       "setId": "l20146d",
       "questionId": 45,
       "choiceNum": 4,
@@ -14917,6 +15019,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156a",
       "questionId": 19,
       "choiceNum": 3,
@@ -14953,6 +15056,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156a",
       "questionId": 19,
       "choiceNum": 4,
@@ -14989,6 +15093,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156a",
       "questionId": 19,
       "choiceNum": 5,
@@ -15026,6 +15131,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156c",
       "questionId": 23,
       "choiceNum": 5,
@@ -15047,7 +15153,7 @@
           "quotes_matched": [
             "전분이 많은 씨앗들은 높은 온도에서 장시간 끓일 때 음식으로서의 가치가 크게 높아진다는 사실"
           ],
-          "sentText": "과학자들은 단위 시간 동안 단위 면적에 입사하는 빛 에너지의 총량을 '복사 플럭스'라고 정의하였는데 이 값이 클수록 별이 더 밝게 관측된다."
+          "sentText": "이 설명은 두께가 얇은 토기는 상대적으로 열을 더 잘 전달하기 때문에 기능적으로 우수하다는 사실과 전분이 많은 씨앗들은 높은 온도에서 장시간 끓일 때 음식으로서의 가치가 크게 높아진다는 사실에 근거한다."
         }
       ],
       "hard_checks": {
@@ -15062,6 +15168,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156c",
       "questionId": 24,
       "choiceNum": 1,
@@ -15083,7 +15190,7 @@
           "quotes_matched": [
             "유물을 사용한 사람의 사회적 위치와 기호 변화 등 사회문화적 요인으로 유물의 의미를 설명하려는 관점"
           ],
-          "sentText": "어떤 별의 거리 지수가 0이면 지구와 그 별 사이의 거리가 10파섹임을 나타내고, 0보다 크면 10파섹보다 멀다는 것을 의미한다."
+          "sentText": "진화고고학과는 달리 유물의 의미를 해석할 때 기능적 요인보다는 개개의 유물이 사용된 맥락을 찾는 것이 더 중요하다고 보고, 그 유물을 사용한 사람의 사회적 위치와 기호 변화 등 사회문화적 요인으로 유물의 의미를 설명"
         }
       ],
       "hard_checks": {
@@ -15098,6 +15205,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156c",
       "questionId": 24,
       "choiceNum": 4,
@@ -15119,7 +15227,7 @@
           "quotes_matched": [
             "유물을 사용한 사람의 사회적 위치와 기호 변화 등 사회문화적 요인으로 유물의 의미를 설명하려는 관점"
           ],
-          "sentText": "어떤 별의 거리 지수가 0이면 지구와 그 별 사이의 거리가 10파섹임을 나타내고, 0보다 크면 10파섹보다 멀다는 것을 의미한다."
+          "sentText": "진화고고학과는 달리 유물의 의미를 해석할 때 기능적 요인보다는 개개의 유물이 사용된 맥락을 찾는 것이 더 중요하다고 보고, 그 유물을 사용한 사람의 사회적 위치와 기호 변화 등 사회문화적 요인으로 유물의 의미를 설명"
         }
       ],
       "hard_checks": {
@@ -15134,6 +15242,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156c",
       "questionId": 24,
       "choiceNum": 5,
@@ -15154,7 +15263,7 @@
           "quotes_matched": [
             "유물을 사용한 사람의 사회적 위치와 기호 변화 등 사회문화적 요인으로 유물의 의미를 설명하려는 관점"
           ],
-          "sentText": "어떤 별의 거리 지수가 0이면 지구와 그 별 사이의 거리가 10파섹임을 나타내고, 0보다 크면 10파섹보다 멀다는 것을 의미한다."
+          "sentText": "진화고고학과는 달리 유물의 의미를 해석할 때 기능적 요인보다는 개개의 유물이 사용된 맥락을 찾는 것이 더 중요하다고 보고, 그 유물을 사용한 사람의 사회적 위치와 기호 변화 등 사회문화적 요인으로 유물의 의미를 설명"
         }
       ],
       "hard_checks": {
@@ -15169,6 +15278,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 26,
       "choiceNum": 4,
@@ -15192,6 +15302,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 27,
       "choiceNum": 1,
@@ -15216,6 +15327,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 27,
       "choiceNum": 2,
@@ -15252,6 +15364,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 27,
       "choiceNum": 3,
@@ -15288,6 +15401,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 27,
       "choiceNum": 4,
@@ -15324,6 +15438,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 27,
       "choiceNum": 5,
@@ -15360,6 +15475,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 31,
       "choiceNum": 3,
@@ -15397,6 +15513,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 31,
       "choiceNum": 4,
@@ -15419,7 +15536,7 @@
           "quotes_matched": [
             "여러 겹의 마음을 가진"
           ],
-          "sentText": "(가) 차단―한 등불이 하나 비인 하늘에 걸려 있다. / 내 호올로 어딜 가라는 슬픈 신호냐."
+          "sentText": "너무도 여러 겹의 마음을 가진"
         },
         {
           "sentId": "l20156as11",
@@ -15445,6 +15562,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 32,
       "choiceNum": 1,
@@ -15466,7 +15584,7 @@
           "quotes_matched": [
             "여러 겹의 마음"
           ],
-          "sentText": "(가) 차단―한 등불이 하나 비인 하늘에 걸려 있다. / 내 호올로 어딜 가라는 슬픈 신호냐."
+          "sentText": "너무도 여러 겹의 마음을 가진"
         },
         {
           "sentId": "l20156as12",
@@ -15492,6 +15610,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 32,
       "choiceNum": 2,
@@ -15514,7 +15633,7 @@
             "멀리로 멀리로만 지나쳤을 뿐입니다",
             "멀리로 멀리로만"
           ],
-          "sentText": "(나) 머리가 마늘쪽같이 생긴 고향의 소녀와 / 한여름을 알몸으로 사는 고향의 소년과 / 같이 낯이 설어도 사랑스러운 들길이 있다"
+          "sentText": "멀리로 멀리로만 지나쳤을 뿐입니다"
         }
       ],
       "hard_checks": {
@@ -15529,6 +15648,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 32,
       "choiceNum": 3,
@@ -15552,6 +15672,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 32,
       "choiceNum": 4,
@@ -15574,7 +15695,7 @@
           "quotes_matched": [
             "피우고 싶은 꽃빛"
           ],
-          "sentText": "- 박용래, 울타리 밖 -"
+          "sentText": "피우고 싶은 꽃빛이 너무 많은 그 나무는"
         }
       ],
       "hard_checks": {
@@ -15589,6 +15710,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 32,
       "choiceNum": 5,
@@ -15625,6 +15747,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 33,
       "choiceNum": 1,
@@ -15652,6 +15775,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 33,
       "choiceNum": 2,
@@ -15689,6 +15813,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 33,
       "choiceNum": 3,
@@ -15726,6 +15851,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 33,
       "choiceNum": 4,
@@ -15764,6 +15890,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 33,
       "choiceNum": 5,
@@ -15789,6 +15916,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 34,
       "choiceNum": 4,
@@ -15811,7 +15939,7 @@
           "quotes_matched": [
             "부지런하고 친절한 여성"
           ],
-          "sentText": "\"섬 얘기? 저건 무슨 책이지?\" 나는 건우를 돌아보고 물었다. \"암것도 아입니더.\" \"소설?\" \"아입니더.\" \"어디 가져와 봐!\" 건우는 싫어도 무가내라 뽑아 오면서, \"일기랑 또 책 같은 거 보고 적은 김더.\" "
+          "sentText": "이러한 집 안팎 광경들을 통해서 나는 건우 어머니가 꽤 부지런하고 친절한 여성이라는 것을 고대 짐작할 수가 있었다."
         }
       ],
       "hard_checks": {
@@ -15826,6 +15954,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 34,
       "choiceNum": 5,
@@ -15840,6 +15969,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 35,
       "choiceNum": 1,
@@ -15863,6 +15993,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 35,
       "choiceNum": 3,
@@ -15883,7 +16014,7 @@
           "quotes_matched": [
             "사과 궤짝 같은 것에 종이를 발라 쓰는 책상 위에는 몇 권 안 되는 책들이 나란히 꽂혀 있었다."
           ],
-          "sentText": "건우 할아버지와 윤춘삼 씨가 들려준 조마이섬 이야기는 언젠가 건우가 써냈던 <섬 얘기>에 몇 가지 기막히는 일화가 붙은 것이었다."
+          "sentText": "사과 궤짝 같은 것에 종이를 발라 쓰는 책상 위에는 몇 권 안 되는 책들이 나란히 꽂혀 있었다."
         }
       ],
       "hard_checks": {
@@ -15898,6 +16029,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 35,
       "choiceNum": 4,
@@ -15933,6 +16065,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 35,
       "choiceNum": 5,
@@ -15956,6 +16089,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 36,
       "choiceNum": 1,
@@ -15980,6 +16114,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 36,
       "choiceNum": 2,
@@ -16017,6 +16152,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 36,
       "choiceNum": 3,
@@ -16041,6 +16177,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 36,
       "choiceNum": 4,
@@ -16055,6 +16192,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 36,
       "choiceNum": 5,
@@ -16091,6 +16229,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 37,
       "choiceNum": 3,
@@ -16127,6 +16266,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 37,
       "choiceNum": 4,
@@ -16163,6 +16303,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 37,
       "choiceNum": 5,
@@ -16188,6 +16329,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 38,
       "choiceNum": 1,
@@ -16211,6 +16353,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 38,
       "choiceNum": 2,
@@ -16235,6 +16378,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 38,
       "choiceNum": 3,
@@ -16259,6 +16403,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 38,
       "choiceNum": 4,
@@ -16295,6 +16440,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 38,
       "choiceNum": 5,
@@ -16319,6 +16465,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156c",
       "questionId": 41,
       "choiceNum": 1,
@@ -16356,6 +16503,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156c",
       "questionId": 41,
       "choiceNum": 2,
@@ -16404,6 +16552,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156c",
       "questionId": 41,
       "choiceNum": 3,
@@ -16442,6 +16591,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156c",
       "questionId": 41,
       "choiceNum": 4,
@@ -16479,6 +16629,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156c",
       "questionId": 41,
       "choiceNum": 5,
@@ -16517,6 +16668,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 43,
       "choiceNum": 4,
@@ -16531,6 +16683,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 43,
       "choiceNum": 5,
@@ -16556,6 +16709,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 44,
       "choiceNum": 1,
@@ -16579,6 +16733,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 44,
       "choiceNum": 2,
@@ -16602,6 +16757,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 44,
       "choiceNum": 3,
@@ -16627,6 +16783,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 44,
       "choiceNum": 4,
@@ -16663,6 +16820,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 44,
       "choiceNum": 5,
@@ -16687,6 +16845,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 45,
       "choiceNum": 1,
@@ -16711,6 +16870,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 45,
       "choiceNum": 3,
@@ -16748,6 +16908,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 45,
       "choiceNum": 4,
@@ -16774,6 +16935,7 @@
     },
     {
       "yearKey": "2015_6월A",
+      "area": "literature",
       "setId": "l20156d",
       "questionId": 45,
       "choiceNum": 5,
@@ -16799,6 +16961,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156a",
       "questionId": 20,
       "choiceNum": 3,
@@ -16835,6 +16998,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156a",
       "questionId": 20,
       "choiceNum": 4,
@@ -16871,6 +17035,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156a",
       "questionId": 20,
       "choiceNum": 5,
@@ -16908,6 +17073,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 21,
       "choiceNum": 4,
@@ -16968,6 +17134,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 21,
       "choiceNum": 5,
@@ -17003,6 +17170,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 22,
       "choiceNum": 1,
@@ -17087,6 +17255,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 22,
       "choiceNum": 2,
@@ -17124,6 +17293,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 22,
       "choiceNum": 3,
@@ -17159,6 +17329,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 22,
       "choiceNum": 4,
@@ -17196,6 +17367,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 22,
       "choiceNum": 5,
@@ -17233,6 +17405,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 23,
       "choiceNum": 1,
@@ -17258,6 +17431,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 23,
       "choiceNum": 2,
@@ -17298,6 +17472,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 23,
       "choiceNum": 3,
@@ -17324,6 +17499,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 23,
       "choiceNum": 4,
@@ -17349,6 +17525,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156b",
       "questionId": 23,
       "choiceNum": 5,
@@ -17375,6 +17552,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 28,
       "choiceNum": 1,
@@ -17410,6 +17588,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 28,
       "choiceNum": 2,
@@ -17433,6 +17612,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 28,
       "choiceNum": 3,
@@ -17456,6 +17636,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 28,
       "choiceNum": 4,
@@ -17491,6 +17672,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 28,
       "choiceNum": 5,
@@ -17515,6 +17697,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 29,
       "choiceNum": 1,
@@ -17539,6 +17722,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 29,
       "choiceNum": 2,
@@ -17574,6 +17758,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 29,
       "choiceNum": 3,
@@ -17609,6 +17794,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156d",
       "questionId": 29,
       "choiceNum": 5,
@@ -17644,6 +17830,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 18,
       "choiceNum": 1,
@@ -17682,6 +17869,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 18,
       "choiceNum": 2,
@@ -17717,6 +17905,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 18,
       "choiceNum": 3,
@@ -17752,6 +17941,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 18,
       "choiceNum": 4,
@@ -17799,6 +17989,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 18,
       "choiceNum": 5,
@@ -17834,6 +18025,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 19,
       "choiceNum": 1,
@@ -17857,6 +18049,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 19,
       "choiceNum": 2,
@@ -17894,6 +18087,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 19,
       "choiceNum": 4,
@@ -17929,6 +18123,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 19,
       "choiceNum": 5,
@@ -17952,6 +18147,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 20,
       "choiceNum": 4,
@@ -17988,6 +18184,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156e",
       "questionId": 20,
       "choiceNum": 5,
@@ -18025,6 +18222,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156f",
       "questionId": 28,
       "choiceNum": 2,
@@ -18061,6 +18259,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156f",
       "questionId": 28,
       "choiceNum": 3,
@@ -18084,6 +18283,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156f",
       "questionId": 28,
       "choiceNum": 5,
@@ -18108,6 +18308,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156f",
       "questionId": 29,
       "choiceNum": 1,
@@ -18132,6 +18333,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156f",
       "questionId": 29,
       "choiceNum": 2,
@@ -18179,6 +18381,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156f",
       "questionId": 29,
       "choiceNum": 3,
@@ -18203,6 +18406,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156f",
       "questionId": 29,
       "choiceNum": 4,
@@ -18226,6 +18430,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156f",
       "questionId": 30,
       "choiceNum": 2,
@@ -18262,6 +18467,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156f",
       "questionId": 30,
       "choiceNum": 3,
@@ -18286,6 +18492,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "reading",
       "setId": "r20156f",
       "questionId": 30,
       "choiceNum": 5,
@@ -18322,6 +18529,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 32,
       "choiceNum": 2,
@@ -18358,6 +18566,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 32,
       "choiceNum": 5,
@@ -18381,6 +18590,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 33,
       "choiceNum": 1,
@@ -18444,6 +18654,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 33,
       "choiceNum": 2,
@@ -18505,6 +18716,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 33,
       "choiceNum": 3,
@@ -18554,6 +18766,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 33,
       "choiceNum": 4,
@@ -18590,6 +18803,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156a",
       "questionId": 33,
       "choiceNum": 5,
@@ -18640,6 +18854,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 34,
       "choiceNum": 4,
@@ -18690,6 +18905,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 35,
       "choiceNum": 1,
@@ -18727,6 +18943,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 35,
       "choiceNum": 3,
@@ -18764,6 +18981,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 35,
       "choiceNum": 4,
@@ -18799,6 +19017,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 35,
       "choiceNum": 5,
@@ -18823,6 +19042,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 36,
       "choiceNum": 1,
@@ -18847,6 +19067,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 36,
       "choiceNum": 2,
@@ -18884,6 +19105,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 36,
       "choiceNum": 3,
@@ -18908,6 +19130,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 36,
       "choiceNum": 5,
@@ -18931,6 +19154,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 37,
       "choiceNum": 4,
@@ -18968,6 +19192,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 37,
       "choiceNum": 5,
@@ -18994,6 +19219,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 38,
       "choiceNum": 1,
@@ -19030,6 +19256,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 38,
       "choiceNum": 2,
@@ -19066,6 +19293,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 38,
       "choiceNum": 3,
@@ -19102,6 +19330,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 38,
       "choiceNum": 4,
@@ -19138,6 +19367,7 @@
     },
     {
       "yearKey": "2015_6월B",
+      "area": "literature",
       "setId": "l20156b",
       "questionId": 38,
       "choiceNum": 5,
@@ -19174,6 +19404,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196a",
       "questionId": 17,
       "choiceNum": 1,
@@ -19197,6 +19428,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196a",
       "questionId": 17,
       "choiceNum": 2,
@@ -19234,6 +19466,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196a",
       "questionId": 17,
       "choiceNum": 3,
@@ -19271,6 +19504,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196a",
       "questionId": 17,
       "choiceNum": 4,
@@ -19308,6 +19542,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196a",
       "questionId": 17,
       "choiceNum": 5,
@@ -19344,6 +19579,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196a",
       "questionId": 18,
       "choiceNum": 5,
@@ -19367,6 +19603,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196a",
       "questionId": 21,
       "choiceNum": 4,
@@ -19403,6 +19640,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196a",
       "questionId": 21,
       "choiceNum": 5,
@@ -19442,6 +19680,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 22,
       "choiceNum": 4,
@@ -19465,6 +19704,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 22,
       "choiceNum": 5,
@@ -19488,6 +19728,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 23,
       "choiceNum": 2,
@@ -19535,6 +19776,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 24,
       "choiceNum": 1,
@@ -19571,6 +19813,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 24,
       "choiceNum": 2,
@@ -19607,6 +19850,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 24,
       "choiceNum": 3,
@@ -19643,6 +19887,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 24,
       "choiceNum": 4,
@@ -19679,6 +19924,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 24,
       "choiceNum": 5,
@@ -19715,6 +19961,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 25,
       "choiceNum": 3,
@@ -19739,6 +19986,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 25,
       "choiceNum": 4,
@@ -19775,6 +20023,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 25,
       "choiceNum": 5,
@@ -19811,6 +20060,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 26,
       "choiceNum": 1,
@@ -19848,6 +20098,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 26,
       "choiceNum": 2,
@@ -19872,6 +20123,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 26,
       "choiceNum": 3,
@@ -19896,6 +20148,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 26,
       "choiceNum": 4,
@@ -19920,6 +20173,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196b",
       "questionId": 26,
       "choiceNum": 5,
@@ -19958,6 +20212,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 17,
       "choiceNum": 1,
@@ -19994,6 +20249,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 17,
       "choiceNum": 2,
@@ -20019,6 +20275,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 17,
       "choiceNum": 3,
@@ -20043,6 +20300,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 17,
       "choiceNum": 4,
@@ -20080,6 +20338,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 17,
       "choiceNum": 5,
@@ -20104,6 +20363,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 18,
       "choiceNum": 1,
@@ -20127,6 +20387,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 18,
       "choiceNum": 2,
@@ -20150,6 +20411,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 18,
       "choiceNum": 4,
@@ -20173,6 +20435,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 18,
       "choiceNum": 5,
@@ -20196,6 +20459,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 19,
       "choiceNum": 4,
@@ -20245,6 +20509,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 19,
       "choiceNum": 5,
@@ -20282,6 +20547,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 20,
       "choiceNum": 1,
@@ -20318,6 +20584,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 20,
       "choiceNum": 2,
@@ -20366,6 +20633,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 20,
       "choiceNum": 3,
@@ -20390,6 +20658,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 20,
       "choiceNum": 4,
@@ -20438,6 +20707,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 20,
       "choiceNum": 5,
@@ -20462,6 +20732,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 21,
       "choiceNum": 1,
@@ -20486,6 +20757,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 21,
       "choiceNum": 4,
@@ -20522,6 +20794,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196c",
       "questionId": 21,
       "choiceNum": 5,
@@ -20559,6 +20832,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 22,
       "choiceNum": 3,
@@ -20595,6 +20869,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 22,
       "choiceNum": 4,
@@ -20630,6 +20905,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 22,
       "choiceNum": 5,
@@ -20677,6 +20953,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 23,
       "choiceNum": 1,
@@ -20725,6 +21002,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 23,
       "choiceNum": 2,
@@ -20774,6 +21052,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 23,
       "choiceNum": 3,
@@ -20811,6 +21090,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 23,
       "choiceNum": 4,
@@ -20859,6 +21139,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 23,
       "choiceNum": 5,
@@ -20908,6 +21189,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 24,
       "choiceNum": 1,
@@ -20955,6 +21237,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 24,
       "choiceNum": 2,
@@ -20991,6 +21274,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 24,
       "choiceNum": 4,
@@ -21038,6 +21322,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 24,
       "choiceNum": 5,
@@ -21086,6 +21371,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 25,
       "choiceNum": 3,
@@ -21124,6 +21410,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 25,
       "choiceNum": 4,
@@ -21160,6 +21447,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 25,
       "choiceNum": 5,
@@ -21210,6 +21498,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 26,
       "choiceNum": 1,
@@ -21248,6 +21537,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 26,
       "choiceNum": 2,
@@ -21286,6 +21576,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 26,
       "choiceNum": 3,
@@ -21324,6 +21615,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 26,
       "choiceNum": 4,
@@ -21362,6 +21654,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196d",
       "questionId": 26,
       "choiceNum": 5,
@@ -21402,6 +21695,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196e",
       "questionId": 35,
       "choiceNum": 4,
@@ -21449,6 +21743,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196e",
       "questionId": 35,
       "choiceNum": 5,
@@ -21496,6 +21791,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196e",
       "questionId": 36,
       "choiceNum": 1,
@@ -21519,6 +21815,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196e",
       "questionId": 36,
       "choiceNum": 2,
@@ -21542,6 +21839,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196e",
       "questionId": 36,
       "choiceNum": 4,
@@ -21578,6 +21876,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196e",
       "questionId": 36,
       "choiceNum": 5,
@@ -21625,6 +21924,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196e",
       "questionId": 37,
       "choiceNum": 1,
@@ -21672,6 +21972,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196e",
       "questionId": 37,
       "choiceNum": 2,
@@ -21719,6 +22020,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 17,
       "choiceNum": 1,
@@ -21754,6 +22056,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 17,
       "choiceNum": 2,
@@ -21789,6 +22092,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 17,
       "choiceNum": 3,
@@ -21839,6 +22143,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 17,
       "choiceNum": 4,
@@ -21875,6 +22180,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 17,
       "choiceNum": 5,
@@ -21911,6 +22217,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 18,
       "choiceNum": 1,
@@ -21958,6 +22265,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 18,
       "choiceNum": 2,
@@ -21993,6 +22301,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 18,
       "choiceNum": 4,
@@ -22028,6 +22337,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 18,
       "choiceNum": 5,
@@ -22051,6 +22361,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 19,
       "choiceNum": 3,
@@ -22077,6 +22388,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 19,
       "choiceNum": 4,
@@ -22102,6 +22414,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 19,
       "choiceNum": 5,
@@ -22127,6 +22440,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 20,
       "choiceNum": 1,
@@ -22163,6 +22477,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 20,
       "choiceNum": 2,
@@ -22188,6 +22503,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 20,
       "choiceNum": 3,
@@ -22212,6 +22528,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 20,
       "choiceNum": 4,
@@ -22236,6 +22553,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 20,
       "choiceNum": 5,
@@ -22259,6 +22577,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 21,
       "choiceNum": 1,
@@ -22295,6 +22614,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 21,
       "choiceNum": 2,
@@ -22318,6 +22638,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 21,
       "choiceNum": 3,
@@ -22353,6 +22674,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 21,
       "choiceNum": 4,
@@ -22388,6 +22710,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "reading",
       "setId": "r20196f",
       "questionId": 21,
       "choiceNum": 5,
@@ -22424,6 +22747,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "literature",
       "setId": "l20196a",
       "questionId": 39,
       "choiceNum": 4,
@@ -22447,6 +22771,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "literature",
       "setId": "l20196a",
       "questionId": 39,
       "choiceNum": 5,
@@ -22461,6 +22786,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "literature",
       "setId": "l20196a",
       "questionId": 40,
       "choiceNum": 1,
@@ -22497,6 +22823,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "literature",
       "setId": "l20196a",
       "questionId": 40,
       "choiceNum": 5,
@@ -22535,6 +22862,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "literature",
       "setId": "l20196a",
       "questionId": 41,
       "choiceNum": 2,
@@ -22571,6 +22899,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "literature",
       "setId": "l20196a",
       "questionId": 41,
       "choiceNum": 3,
@@ -22607,6 +22936,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "literature",
       "setId": "l20196a",
       "questionId": 41,
       "choiceNum": 4,
@@ -22643,6 +22973,7 @@
     },
     {
       "yearKey": "2019_6월",
+      "area": "literature",
       "setId": "l20196a",
       "questionId": 41,
       "choiceNum": 5,
@@ -22679,6 +23010,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 16,
       "choiceNum": 3,
@@ -22705,6 +23037,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 17,
       "choiceNum": 1,
@@ -22729,6 +23062,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 17,
       "choiceNum": 2,
@@ -22753,6 +23087,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 17,
       "choiceNum": 4,
@@ -22767,6 +23102,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 17,
       "choiceNum": 5,
@@ -22781,6 +23117,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 18,
       "choiceNum": 1,
@@ -22804,6 +23141,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 18,
       "choiceNum": 2,
@@ -22827,6 +23165,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 18,
       "choiceNum": 3,
@@ -22850,6 +23189,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 18,
       "choiceNum": 4,
@@ -22864,6 +23204,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 18,
       "choiceNum": 5,
@@ -22887,6 +23228,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 19,
       "choiceNum": 1,
@@ -22910,6 +23252,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 19,
       "choiceNum": 5,
@@ -22924,6 +23267,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 20,
       "choiceNum": 1,
@@ -22947,6 +23291,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 20,
       "choiceNum": 3,
@@ -22961,6 +23306,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 21,
       "choiceNum": 1,
@@ -22986,6 +23332,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 21,
       "choiceNum": 2,
@@ -23010,6 +23357,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 21,
       "choiceNum": 3,
@@ -23034,6 +23382,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 21,
       "choiceNum": 4,
@@ -23059,6 +23408,7 @@
     },
     {
       "yearKey": "2014수능B",
+      "area": "reading",
       "setId": "r2014aB",
       "questionId": 21,
       "choiceNum": 5,
@@ -23084,6 +23434,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149a",
       "questionId": 16,
       "choiceNum": 4,
@@ -23105,7 +23456,7 @@
           "quotes_matched": [
             "'재정위'는 방향 기억이 헝클어진 상황에서도 장소의 기하학적 특징을 활용하여 방향을 다시 찾는 방법이다."
           ],
-          "sentText": "[풀이] 초성 글자를 합하여 사용할 때에는 나란히 써라."
+          "sentText": "'재정위'는 방향 기억이 헝클어진 상황에서도 장소의 기하학적 특징을 활용하여 방향을 다시 찾는 방법이다."
         },
         {
           "sentId": "r20149as9",
@@ -23131,6 +23482,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149a",
       "questionId": 17,
       "choiceNum": 5,
@@ -23167,6 +23519,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149a",
       "questionId": 18,
       "choiceNum": 3,
@@ -23205,6 +23558,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149a",
       "questionId": 18,
       "choiceNum": 4,
@@ -23244,6 +23598,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 23,
       "choiceNum": 1,
@@ -23264,7 +23619,7 @@
           "quotes_matched": [
             "또한 선정 당사자 제도를 이용할 수도 있는데, 이는 갑과 같은 이를 선정 당사자로 삼아 그에게 모두의 소송을 맡기는 것이다."
           ],
-          "sentText": "이전 시대까지는 '미술'과 '미술 아닌 것'의 구분은 '무엇을 그리는가?' 또는 '어떻게 그리는가?'의 문제, 곧 내용 형식 재료처럼 지각 가능한 '전시적 요소'에 의존하여 가능했다."
+          "sentText": "또한 선정 당사자 제도를 이용할 수도 있는데, 이는 갑과 같은 이를 선정 당사자로 삼아 그에게 모두의 소송을 맡기는 것이다."
         }
       ],
       "hard_checks": {
@@ -23279,6 +23634,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 23,
       "choiceNum": 2,
@@ -23303,6 +23659,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 23,
       "choiceNum": 3,
@@ -23338,6 +23695,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 23,
       "choiceNum": 4,
@@ -23359,7 +23717,7 @@
           "quotes_matched": [
             "개별적으로 수행할 수 있는 소송들"
           ],
-          "sentText": "17세기의 네덜란드 화가들은 신이나 성인(聖人)을 그리던 오랜 관행에서 벗어나 친근한 일상을 집중적으로 그리기 시작했고, 19세기 낭만주의에 와서는 내면의 무한한 표출이 예술의 생명이 되기에 이르렀다."
+          "sentText": "이는 저마다 개별적으로 수행할 수 있는 소송들을 하나의 절차에서 한꺼번에 심리하고 진행할 수 있도록 배려하는 것으로서, 경제적이고 효율적으로 일괄 구제할 수 있다는 장점이 있다."
         }
       ],
       "hard_checks": {
@@ -23374,6 +23732,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 23,
       "choiceNum": 5,
@@ -23409,6 +23768,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 24,
       "choiceNum": 1,
@@ -23431,7 +23791,7 @@
             "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다.",
             "사이트 운영의 중지"
           ],
-          "sentText": "르네상스 화가들은 주문된 내용도 오직 자신만의 방식으로 이미지화했다."
+          "sentText": "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다."
         },
         {
           "sentId": "r20149cs4",
@@ -23442,7 +23802,7 @@
           "quotes_matched": [
             "사이트 운영의 중지"
           ],
-          "sentText": "미술의 '종말'은 결과적으로 모든 것이 미술 작품이 될 수 있게 된 개방적이고 생산적인 상황을 뜻한다."
+          "sentText": "이 사실을 알게 된 갑은 A회사에 사이트 운영의 중지와 배상을 요구하였지만, A회사는 거부하였다."
         }
       ],
       "hard_checks": {
@@ -23457,6 +23817,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 24,
       "choiceNum": 2,
@@ -23480,6 +23841,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 24,
       "choiceNum": 3,
@@ -23500,7 +23862,7 @@
           "quotes_matched": [
             "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다."
           ],
-          "sentText": "르네상스 화가들은 주문된 내용도 오직 자신만의 방식으로 이미지화했다."
+          "sentText": "갑은 이들과 함께 공동 소송을 하여 A회사에 사이트 운영의 중지와 피해의 배상을 청구하였다."
         }
       ],
       "hard_checks": {
@@ -23515,6 +23877,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 24,
       "choiceNum": 4,
@@ -23539,6 +23902,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 24,
       "choiceNum": 5,
@@ -23562,6 +23926,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 31,
       "choiceNum": 4,
@@ -23583,7 +23948,7 @@
           "quotes_matched": [
             "흔들리는 부평초"
           ],
-          "sentText": "아마도 아치고절(雅致高節)은 너인가 노라"
+          "sentText": "뿌리 없이 흔들리는 부평초 잎이라도"
         },
         {
           "sentId": "l20149as8",
@@ -23594,7 +23959,7 @@
           "quotes_matched": [
             "물 고이면 꽃은 피거니"
           ],
-          "sentText": "<제3수>"
+          "sentText": "물 고이면 꽃은 피거니"
         }
       ],
       "hard_checks": {
@@ -23609,6 +23974,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 31,
       "choiceNum": 5,
@@ -23629,7 +23995,7 @@
           "quotes_matched": [
             "충분히 흔들리자"
           ],
-          "sentText": "빙자옥질(氷姿玉質)이여 눈 속에 네로구나"
+          "sentText": "충분히 흔들리자 상한 영혼이여"
         }
       ],
       "hard_checks": {
@@ -23644,6 +24010,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 33,
       "choiceNum": 4,
@@ -23668,6 +24035,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 33,
       "choiceNum": 5,
@@ -23693,6 +24061,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 34,
       "choiceNum": 2,
@@ -23707,6 +24076,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 34,
       "choiceNum": 5,
@@ -23721,6 +24091,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 35,
       "choiceNum": 1,
@@ -23744,6 +24115,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 35,
       "choiceNum": 3,
@@ -23765,7 +24137,7 @@
           "quotes_matched": [
             "숨을 헐레벌떡이며 이야기하는 혜숙의 말에 이인국 박사는 아무 대꾸도 없이 눈만 껌벅이며 도로 앉았다"
           ],
-          "sentText": "비료 값도 안 나오는 농사 따위야"
+          "sentText": "숨을 헐레벌떡이며 이야기하는 혜숙의 말에 이인국 박사는 아무 대꾸도 없이 눈만 껌벅이며 도로 앉았다."
         },
         {
           "sentId": "l20149bs33",
@@ -23776,7 +24148,7 @@
           "quotes_matched": [
             "한참 동안 아무 거동도 못 하고 바깥쪽을 내려다보고만 있었다"
           ],
-          "sentText": "쇠전을 거쳐 도수장 앞에 와 돌 때"
+          "sentText": "혜숙이 내려간 뒤에도 이인국 박사는 ㉢ 한참 동안 아무 거동도 못 하고 바깥쪽을 내려다보고만 있었다."
         }
       ],
       "hard_checks": {
@@ -23791,6 +24163,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 36,
       "choiceNum": 2,
@@ -23813,7 +24186,7 @@
           "quotes_matched": [
             "그 후 삼십여 년, 자기 주변의 모든 것은 변하여 갔지만 시계만은 옛 모습 그대로다"
           ],
-          "sentText": "답답하고 고달프게 사는 것이 원통하다"
+          "sentText": "그 후 삼십여 년, 자기 주변의 모든 것은 변하여 갔지만 시계만은 옛 모습 그대로다."
         },
         {
           "sentId": "l20149bs25",
@@ -23824,7 +24197,7 @@
           "quotes_matched": [
             "일제 시대, 소련군 점령하의 감옥 생활, 6 25 사변, 38선"
           ],
-          "sentText": "처녀애들은 기름집 담벽에 붙어 서서"
+          "sentText": "일제 시대, 소련군 점령하의 감옥 생활, 6 25 사변, 38선, 미군 부대, 그동안 몇 차례의 ⓐ 아슬아슬한 죽음의 고비를 넘긴 것인가."
         }
       ],
       "hard_checks": {
@@ -23839,6 +24212,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 36,
       "choiceNum": 3,
@@ -23860,7 +24234,7 @@
           "quotes_matched": [
             "반드시 풀어서 등기 서류, 저금통장 등이 들어 있는 비상용 캐비닛 속에 넣고야 잠자리에 드는 것이었다"
           ],
-          "sentText": "오동나무에 전등이 매어달린 가설 무대"
+          "sentText": "반드시 풀어서 등기 서류, 저금통장 등이 들어 있는 비상용 캐비닛 속에 넣고야 잠자리에 드는 것이었다."
         }
       ],
       "hard_checks": {
@@ -23875,6 +24249,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 36,
       "choiceNum": 4,
@@ -23896,7 +24271,7 @@
           "quotes_matched": [
             "각모(角帽)와 쓰메에리(목닫이) 학생복을 벗어 버리고 신사복으로 갈아입던 그날의 감회를 더욱 새롭게 해 주는"
           ],
-          "sentText": "꺽정이처럼 울부짖고 또 어떤 녀석은"
+          "sentText": "시간을 보고는 습성처럼 째각째각 소리에 귀 기울이는 때의 그의 가느다란 눈매에는 흘러간 인생의 축도가 서리는 것이었고, 그 속에서는 각모(角帽)와 쓰메에리(목닫이) 학생복을 벗어 버리고 신사복으로 갈아입던 그날의 감"
         }
       ],
       "hard_checks": {
@@ -23911,6 +24286,7 @@
     },
     {
       "yearKey": "2014_9월A",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 36,
       "choiceNum": 5,
@@ -23932,7 +24308,7 @@
           "quotes_matched": [
             "여러 날째 라디오에서 오늘 입성 예정이라고 했으니 인제 정말 오는가 보다 싶었다"
           ],
-          "sentText": "아예 여편네에게나 맡겨 두고"
+          "sentText": "여러 날째 라디오에서 오늘 입성 예정이라고 했으니 인제 정말 오는가 보다 싶었다."
         }
       ],
       "hard_checks": {
@@ -23947,6 +24323,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149b",
       "questionId": 17,
       "choiceNum": 4,
@@ -24006,6 +24383,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149b",
       "questionId": 17,
       "choiceNum": 5,
@@ -24042,6 +24420,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149b",
       "questionId": 18,
       "choiceNum": 1,
@@ -24089,6 +24468,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149b",
       "questionId": 18,
       "choiceNum": 2,
@@ -24126,6 +24506,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149b",
       "questionId": 18,
       "choiceNum": 3,
@@ -24173,6 +24554,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149b",
       "questionId": 18,
       "choiceNum": 4,
@@ -24196,6 +24578,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149b",
       "questionId": 18,
       "choiceNum": 5,
@@ -24232,6 +24615,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149b",
       "questionId": 19,
       "choiceNum": 1,
@@ -24268,6 +24652,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149b",
       "questionId": 19,
       "choiceNum": 4,
@@ -24304,6 +24689,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149b",
       "questionId": 19,
       "choiceNum": 5,
@@ -24340,6 +24726,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 21,
       "choiceNum": 3,
@@ -24363,6 +24750,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 21,
       "choiceNum": 4,
@@ -24386,6 +24774,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 22,
       "choiceNum": 1,
@@ -24461,6 +24850,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 22,
       "choiceNum": 2,
@@ -24509,6 +24899,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 22,
       "choiceNum": 3,
@@ -24559,6 +24950,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 22,
       "choiceNum": 4,
@@ -24609,6 +25001,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149c",
       "questionId": 22,
       "choiceNum": 5,
@@ -24647,6 +25040,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149d",
       "questionId": 25,
       "choiceNum": 2,
@@ -24684,6 +25078,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149d",
       "questionId": 25,
       "choiceNum": 4,
@@ -24707,6 +25102,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149d",
       "questionId": 26,
       "choiceNum": 2,
@@ -24730,6 +25126,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149d",
       "questionId": 26,
       "choiceNum": 4,
@@ -24766,6 +25163,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149d",
       "questionId": 26,
       "choiceNum": 5,
@@ -24789,6 +25187,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149e",
       "questionId": 29,
       "choiceNum": 1,
@@ -24825,6 +25224,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149e",
       "questionId": 29,
       "choiceNum": 2,
@@ -24861,6 +25261,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149e",
       "questionId": 29,
       "choiceNum": 3,
@@ -24898,6 +25299,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149e",
       "questionId": 29,
       "choiceNum": 4,
@@ -24934,6 +25336,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149e",
       "questionId": 29,
       "choiceNum": 5,
@@ -24958,6 +25361,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "reading",
       "setId": "r20149f",
       "questionId": 30,
       "choiceNum": 5,
@@ -24972,6 +25376,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 31,
       "choiceNum": 3,
@@ -24996,6 +25401,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 31,
       "choiceNum": 4,
@@ -25010,6 +25416,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 31,
       "choiceNum": 5,
@@ -25024,6 +25431,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 32,
       "choiceNum": 1,
@@ -25051,6 +25459,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 32,
       "choiceNum": 2,
@@ -25076,6 +25485,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 32,
       "choiceNum": 3,
@@ -25113,6 +25523,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 32,
       "choiceNum": 4,
@@ -25137,6 +25548,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 32,
       "choiceNum": 5,
@@ -25176,6 +25588,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 33,
       "choiceNum": 1,
@@ -25223,6 +25636,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 33,
       "choiceNum": 2,
@@ -25260,6 +25674,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149a",
       "questionId": 33,
       "choiceNum": 4,
@@ -25298,6 +25713,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 38,
       "choiceNum": 2,
@@ -25345,6 +25761,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 38,
       "choiceNum": 3,
@@ -25380,6 +25797,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 38,
       "choiceNum": 4,
@@ -25404,6 +25822,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 38,
       "choiceNum": 5,
@@ -25452,6 +25871,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 39,
       "choiceNum": 1,
@@ -25489,6 +25909,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 39,
       "choiceNum": 2,
@@ -25539,6 +25960,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 39,
       "choiceNum": 4,
@@ -25577,6 +25999,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 39,
       "choiceNum": 5,
@@ -25602,6 +26025,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 40,
       "choiceNum": 1,
@@ -25662,6 +26086,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 40,
       "choiceNum": 2,
@@ -25685,6 +26110,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 40,
       "choiceNum": 4,
@@ -25734,6 +26160,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149b",
       "questionId": 40,
       "choiceNum": 5,
@@ -25770,6 +26197,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149c",
       "questionId": 44,
       "choiceNum": 4,
@@ -25793,6 +26221,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149c",
       "questionId": 45,
       "choiceNum": 1,
@@ -25829,6 +26258,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149c",
       "questionId": 45,
       "choiceNum": 2,
@@ -25866,6 +26296,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149c",
       "questionId": 45,
       "choiceNum": 3,
@@ -25916,6 +26347,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149c",
       "questionId": 45,
       "choiceNum": 4,
@@ -25954,6 +26386,7 @@
     },
     {
       "yearKey": "2014_9월B",
+      "area": "literature",
       "setId": "l20149c",
       "questionId": 45,
       "choiceNum": 5,
@@ -25991,6 +26424,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 16,
       "choiceNum": 4,
@@ -26011,7 +26445,7 @@
           "quotes_matched": [
             "개[犬]가 10억 개에 이르는 후각 수용기를 갖고 있는 것에 비해 인간의 후각 수용기는 1천만 개에 불과하여"
           ],
-          "sentText": "이때 공자는 '의'를 '인'의 실천에 필요한 합리적 기준으로서 '정당함'을 의미한다고 보았다."
+          "sentText": "하지만 개[犬]가 10억 개에 이르는 후각 수용기를 갖고 있는 것에 비해 인간의 후각 수용기는 1천만 개에 불과하여 인간의 후각이 개의 후각보다 둔한 것이다."
         }
       ],
       "hard_checks": {
@@ -26026,6 +26460,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 16,
       "choiceNum": 5,
@@ -26046,7 +26481,7 @@
           "quotes_matched": [
             "물론 인간도 다른 동물과 마찬가지로 취기재의 분자 하나에도 민감하게 반응하는 후각 수용기를 갖고 있다."
           ],
-          "sentText": "공자가 '인'을 강조한 이유는 자연스러운 도덕 감정인 '인'을 사회 전체로 확산했을 때 비로소 사회가 안정될 것이라고 보았기 때문이다."
+          "sentText": "물론 인간도 다른 동물과 마찬가지로 취기재의 분자 하나에도 민감하게 반응하는 후각 수용기를 갖고 있다."
         }
       ],
       "hard_checks": {
@@ -26061,6 +26496,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 17,
       "choiceNum": 1,
@@ -26096,6 +26532,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 17,
       "choiceNum": 2,
@@ -26119,6 +26556,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 17,
       "choiceNum": 4,
@@ -26142,6 +26580,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 17,
       "choiceNum": 5,
@@ -26162,7 +26601,7 @@
           "quotes_matched": [
             "같은 취기재들 사이에서는 농도가 평균 11 % 정도 차이가 나야 냄새의 세기 차이를 구별할 수 있다고 알려져 있다."
           ],
-          "sentText": "그는 인간이라면 누구나 도덕 행위를 할 수 있는 선한 마음이 선천적으로 내면에 갖춰져 있다는 일종의 도덕 내재주의를 주장하였다."
+          "sentText": "한편 같은 취기재들 사이에서는 농도가 평균 11 % 정도 차이가 나야 냄새의 세기 차이를 구별할 수 있다고 알려져 있다."
         }
       ],
       "hard_checks": {
@@ -26177,6 +26616,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 18,
       "choiceNum": 1,
@@ -26197,7 +26637,7 @@
           "quotes_matched": [
             "취기재의 농도가 탐지 역치 정도의 수준에서는 냄새가 나는지 안 나는지 정도를 탐지할 수는 있지만 그 냄새가 무슨 냄새인지 인식하지 못한다."
           ],
-          "sentText": "이러한 입장에서 그는 사적인 욕망으로부터 비롯된 이익의 추구는 개인적으로는 '의'의 실천을 가로막고, 사회적으로는 혼란을 야기한다고 보았다."
+          "sentText": "취기재의 농도가 탐지 역치 정도의 수준에서는 냄새가 나는지 안 나는지 정도를 탐지할 수는 있지만 그 냄새가 무슨 냄새인지 인식하지 못한다."
         }
       ],
       "hard_checks": {
@@ -26212,6 +26652,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 18,
       "choiceNum": 2,
@@ -26234,7 +26675,7 @@
             "취기재의 농도가 탐지 역치 정도의 수준에서는 냄새가 나는지 안 나는지 정도를 탐지할 수는 있지만 그 냄새가 무슨 냄새인지 인식하지 못한다.",
             "탐지 역치 정도의 수준"
           ],
-          "sentText": "이러한 입장에서 그는 사적인 욕망으로부터 비롯된 이익의 추구는 개인적으로는 '의'의 실천을 가로막고, 사회적으로는 혼란을 야기한다고 보았다."
+          "sentText": "취기재의 농도가 탐지 역치 정도의 수준에서는 냄새가 나는지 안 나는지 정도를 탐지할 수는 있지만 그 냄새가 무슨 냄새인지 인식하지 못한다."
         }
       ],
       "hard_checks": {
@@ -26249,6 +26690,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 18,
       "choiceNum": 3,
@@ -26269,7 +26711,7 @@
           "quotes_matched": [
             "취기재의 정체를 인식하려면 취기재의 농도가 탐지 역치보다 3배가량은 높아야 한다."
           ],
-          "sentText": "그래서 그는 사회 안정을 위해 사적인 욕망과 결부된 이익의 추구는 '의'에서 배제되어야 한다고 주장하였다."
+          "sentText": "취기재의 정체를 인식하려면 취기재의 농도가 탐지 역치보다 3배가량은 높아야 한다."
         }
       ],
       "hard_checks": {
@@ -26284,6 +26726,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 18,
       "choiceNum": 4,
@@ -26304,7 +26747,7 @@
           "quotes_matched": [
             "취기재의 농도가 탐지 역치 정도의 수준에서는 냄새가 나는지 안 나는지 정도를 탐지할 수는 있지만"
           ],
-          "sentText": "이러한 입장에서 그는 사적인 욕망으로부터 비롯된 이익의 추구는 개인적으로는 '의'의 실천을 가로막고, 사회적으로는 혼란을 야기한다고 보았다."
+          "sentText": "취기재의 농도가 탐지 역치 정도의 수준에서는 냄새가 나는지 안 나는지 정도를 탐지할 수는 있지만 그 냄새가 무슨 냄새인지 인식하지 못한다."
         }
       ],
       "hard_checks": {
@@ -26319,6 +26762,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 18,
       "choiceNum": 5,
@@ -26339,7 +26783,7 @@
           "quotes_matched": [
             "취기재의 정체를 인식하려면 취기재의 농도가 탐지 역치보다 3배가량은 높아야 한다."
           ],
-          "sentText": "그래서 그는 사회 안정을 위해 사적인 욕망과 결부된 이익의 추구는 '의'에서 배제되어야 한다고 주장하였다."
+          "sentText": "취기재의 정체를 인식하려면 취기재의 농도가 탐지 역치보다 3배가량은 높아야 한다."
         }
       ],
       "hard_checks": {
@@ -26354,6 +26798,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159b",
       "questionId": 20,
       "choiceNum": 4,
@@ -26375,7 +26820,7 @@
           "quotes_matched": [
             "총실행 시간이 구간 시간보다 긴 프로그램이 실행될 때는 구간 실행 횟수가 많아져서 교체 시간의 총합은 늘어난다."
           ],
-          "sentText": "여기서 우연히 얻은 참모습을 자신이 처한 모습을 적절하게 표현하는 것이라 한다면 이때 우연이란 요행이 아니라 오랜 기간 훈련된 감성이 어느 한 순간의 계기에 의해 표출된 필연적인 우연이라고 해야 할 것이다."
+          "sentText": "총실행 시간이 구간 시간보다 긴 프로그램이 실행될 때는 구간 실행 횟수가 많아져서 교체 시간의 총합은 늘어난다."
         }
       ],
       "hard_checks": {
@@ -26390,6 +26835,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159b",
       "questionId": 21,
       "choiceNum": 4,
@@ -26413,7 +26859,7 @@
           "quotes_matched": [
             "A의 구간 실행이 끝나면 A의 실행이 정지되고 다음번 구간 시간 동안 실행할 프로그램을 선택한다."
           ],
-          "sentText": "그 잎과 평행한 꽃대 하나, 바람에 맞서며 한 송이 꽃을 피웠다."
+          "sentText": "A의 구간 실행이 끝나면 A의 실행이 정지되고 다음번 구간 시간 동안 실행할 프로그램을 선택한다."
         }
       ],
       "hard_checks": {
@@ -26428,6 +26874,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159c",
       "questionId": 24,
       "choiceNum": 2,
@@ -26477,6 +26924,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159c",
       "questionId": 24,
       "choiceNum": 3,
@@ -26524,6 +26972,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159c",
       "questionId": 24,
       "choiceNum": 4,
@@ -26549,6 +26998,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159c",
       "questionId": 24,
       "choiceNum": 5,
@@ -26596,6 +27046,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159d",
       "questionId": 28,
       "choiceNum": 2,
@@ -26632,6 +27083,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159d",
       "questionId": 28,
       "choiceNum": 3,
@@ -26669,6 +27121,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159d",
       "questionId": 28,
       "choiceNum": 4,
@@ -26716,6 +27169,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159d",
       "questionId": 28,
       "choiceNum": 5,
@@ -26765,6 +27219,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159e",
       "questionId": 28,
       "choiceNum": 2,
@@ -26801,6 +27256,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159e",
       "questionId": 28,
       "choiceNum": 3,
@@ -26837,6 +27293,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "reading",
       "setId": "r20159e",
       "questionId": 28,
       "choiceNum": 4,
@@ -26884,6 +27341,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 31,
       "choiceNum": 1,
@@ -26898,6 +27356,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 31,
       "choiceNum": 3,
@@ -26912,6 +27371,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 31,
       "choiceNum": 4,
@@ -26926,6 +27386,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 31,
       "choiceNum": 5,
@@ -26940,6 +27401,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 32,
       "choiceNum": 1,
@@ -26999,6 +27461,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 32,
       "choiceNum": 2,
@@ -27046,6 +27509,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 32,
       "choiceNum": 4,
@@ -27093,6 +27557,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 32,
       "choiceNum": 5,
@@ -27140,6 +27605,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 33,
       "choiceNum": 1,
@@ -27164,6 +27630,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 33,
       "choiceNum": 2,
@@ -27201,6 +27668,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 33,
       "choiceNum": 3,
@@ -27225,6 +27693,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 33,
       "choiceNum": 4,
@@ -27262,6 +27731,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159a",
       "questionId": 33,
       "choiceNum": 5,
@@ -27287,6 +27757,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 34,
       "choiceNum": 3,
@@ -27310,6 +27781,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 34,
       "choiceNum": 5,
@@ -27324,6 +27796,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 35,
       "choiceNum": 1,
@@ -27361,6 +27834,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 35,
       "choiceNum": 2,
@@ -27384,6 +27858,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 35,
       "choiceNum": 3,
@@ -27432,6 +27907,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 35,
       "choiceNum": 4,
@@ -27479,6 +27955,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 36,
       "choiceNum": 2,
@@ -27529,6 +28006,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 36,
       "choiceNum": 3,
@@ -27553,6 +28031,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 36,
       "choiceNum": 4,
@@ -27578,6 +28057,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 36,
       "choiceNum": 5,
@@ -27614,6 +28094,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 37,
       "choiceNum": 4,
@@ -27663,6 +28144,7 @@
     },
     {
       "yearKey": "2015_9월A",
+      "area": "literature",
       "setId": "l20159b",
       "questionId": 37,
       "choiceNum": 5,
@@ -27687,6 +28169,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 18,
       "choiceNum": 2,
@@ -27723,6 +28206,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 18,
       "choiceNum": 4,
@@ -27747,6 +28231,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 19,
       "choiceNum": 1,
@@ -27783,6 +28268,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 19,
       "choiceNum": 2,
@@ -27819,6 +28305,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 19,
       "choiceNum": 3,
@@ -27856,6 +28343,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 19,
       "choiceNum": 5,
@@ -27904,6 +28392,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 20,
       "choiceNum": 3,
@@ -27928,6 +28417,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 20,
       "choiceNum": 4,
@@ -27952,6 +28442,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 20,
       "choiceNum": 5,
@@ -27988,6 +28479,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 21,
       "choiceNum": 1,
@@ -28012,6 +28504,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 21,
       "choiceNum": 2,
@@ -28037,6 +28530,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 21,
       "choiceNum": 3,
@@ -28062,6 +28556,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 21,
       "choiceNum": 4,
@@ -28087,6 +28582,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159a",
       "questionId": 21,
       "choiceNum": 5,
@@ -28112,6 +28608,7 @@
     },
     {
       "yearKey": "2015_9월B",
+      "area": "reading",
       "setId": "r20159b",
       "questionId": 24,
       "choiceNum": 5,
@@ -28159,6 +28656,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 27,
       "choiceNum": 3,
@@ -28194,6 +28692,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 27,
       "choiceNum": 5,
@@ -28242,6 +28741,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 28,
       "choiceNum": 1,
@@ -28277,6 +28777,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 28,
       "choiceNum": 2,
@@ -28312,6 +28813,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 28,
       "choiceNum": 3,
@@ -28347,6 +28849,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 28,
       "choiceNum": 4,
@@ -28382,6 +28885,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 28,
       "choiceNum": 5,
@@ -28419,6 +28923,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 29,
       "choiceNum": 1,
@@ -28468,6 +28973,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 29,
       "choiceNum": 2,
@@ -28505,6 +29011,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 29,
       "choiceNum": 3,
@@ -28552,6 +29059,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 29,
       "choiceNum": 4,
@@ -28601,6 +29109,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 29,
       "choiceNum": 5,
@@ -28681,6 +29190,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 31,
       "choiceNum": 3,
@@ -28703,7 +29213,7 @@
           "quotes_matched": [
             "남녀노소 몰두하니"
           ],
-          "sentText": "오늘 갔다 내일 오는 건 해 달이지만"
+          "sentText": "남녀노소 몰두하니 집에 있을 틈이 없어"
         },
         {
           "sentId": "l20166as25",
@@ -28714,7 +29224,7 @@
           "quotes_matched": [
             "목화를 많이 가꾸소"
           ],
-          "sentText": "당신이 날만침만 생각을 한다면"
+          "sentText": "목화를 많이 가꾸소 길쌈의 근본이라"
         }
       ],
       "hard_checks": {
@@ -28729,6 +29239,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 31,
       "choiceNum": 4,
@@ -28751,7 +29262,7 @@
           "quotes_matched": [
             "어디서 길 가는 손님네 아는 듯이 머무는고"
           ],
-          "sentText": "아우라지 뱃사공아 배 좀 건너 주게"
+          "sentText": "어디서 길 가는 손님네 아는 듯이 머무는고 <제4수>"
         },
         {
           "sentId": "l20166as25",
@@ -28762,7 +29273,7 @@
           "quotes_matched": [
             "목화를 많이 가꾸소"
           ],
-          "sentText": "당신이 날만침만 생각을 한다면"
+          "sentText": "목화를 많이 가꾸소 길쌈의 근본이라"
         }
       ],
       "hard_checks": {
@@ -28777,6 +29288,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 31,
       "choiceNum": 5,
@@ -28800,7 +29312,7 @@
           "quotes_matched": [
             "노고지리 우지진다"
           ],
-          "sentText": "어이 못 오던다 무슨 일로 못 오던다"
+          "sentText": "동창이 밝았느냐 노고지리 우지진다"
         },
         {
           "sentId": "l20166as14",
@@ -28811,7 +29323,7 @@
           "quotes_matched": [
             "긴 휘파람 흘리 불 제"
           ],
-          "sentText": "아리랑 고개 고개로 나를 넘겨 주게"
+          "sentText": "청풍에 옷깃 열고 긴 휘파람 흘리 불 제"
         },
         {
           "sentId": "l20166as20",
@@ -28822,7 +29334,7 @@
           "quotes_matched": [
             "뻐꾹새 자주 울고"
           ],
-          "sentText": "정 들이고 가시는 임은 가고 싶어 가나"
+          "sentText": "떡갈잎 퍼질 때에 뻐꾹새 자주 울고"
         },
         {
           "sentId": "l20166as21",
@@ -28833,7 +29345,7 @@
           "quotes_matched": [
             "꾀꼬리 노래한다"
           ],
-          "sentText": "성님 성님 사촌 성님 시집살이가 어떻던가"
+          "sentText": "보리 이삭 패어 나니 꾀꼬리 노래한다"
         }
       ],
       "hard_checks": {
@@ -28848,6 +29360,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 32,
       "choiceNum": 1,
@@ -28871,6 +29384,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 32,
       "choiceNum": 2,
@@ -28894,6 +29408,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 32,
       "choiceNum": 3,
@@ -28917,6 +29432,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 32,
       "choiceNum": 4,
@@ -28940,6 +29456,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 32,
       "choiceNum": 5,
@@ -28963,6 +29480,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 33,
       "choiceNum": 2,
@@ -28984,7 +29502,7 @@
           "quotes_matched": [
             "남녀노소 몰두하니 집에 있을 틈이 없어"
           ],
-          "sentText": "오늘 갔다 내일 오는 건 해 달이지만"
+          "sentText": "남녀노소 몰두하니 집에 있을 틈이 없어"
         }
       ],
       "hard_checks": {
@@ -28999,6 +29517,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 33,
       "choiceNum": 3,
@@ -29021,7 +29540,7 @@
           "quotes_matched": [
             "수수 동부 녹두 참깨"
           ],
-          "sentText": "가시밭길 천 리라도 신발 벗고 오리라"
+          "sentText": "수수 동부 녹두 참깨 부룩을 적게 하소"
         }
       ],
       "hard_checks": {
@@ -29036,6 +29555,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 33,
       "choiceNum": 4,
@@ -29059,7 +29579,7 @@
           "quotes_matched": [
             "둘러내자 둘러내자 우거진 고랑 둘러내자"
           ],
-          "sentText": "우리도 님 보러 밧비 옵는 길이오매 전동 말동 여라"
+          "sentText": "둘러내자 둘러내자 우거진 고랑 둘러내자"
         },
         {
           "sentId": "l20166as23",
@@ -29070,7 +29590,7 @@
           "quotes_matched": [
             "남녀노소 몰두하니"
           ],
-          "sentText": "오늘 갔다 내일 오는 건 해 달이지만"
+          "sentText": "남녀노소 몰두하니 집에 있을 틈이 없어"
         },
         {
           "sentId": "l20166as28",
@@ -29081,7 +29601,7 @@
           "quotes_matched": [
             "물 댄 논을 써레질하고 이른모를 내어 보세"
           ],
-          "sentText": "뒤주 : 쌀 따위의 곡식을 담아 두는 세간의 하나."
+          "sentText": "물 댄 논을 써레질하고 이른모를 내어 보세"
         }
       ],
       "hard_checks": {
@@ -29096,6 +29616,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 33,
       "choiceNum": 5,
@@ -29118,7 +29639,7 @@
           "quotes_matched": [
             "도롱이에 호미 걸고 뿔 굽은 검은 소 몰고"
           ],
-          "sentText": "(나)"
+          "sentText": "도롱이에 호미 걸고 뿔 굽은 검은 소 몰고"
         },
         {
           "sentId": "l20166as8",
@@ -29129,7 +29650,7 @@
           "quotes_matched": [
             "고동풀 뜯기면서 개울물 가 내려갈 제"
           ],
-          "sentText": "청천(靑天)에 떠서 울고 가는 외기러기 날지 말고 말 들어"
+          "sentText": "고동풀 뜯기면서 개울물 가 내려갈 제"
         }
       ],
       "hard_checks": {
@@ -29144,6 +29665,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 34,
       "choiceNum": 1,
@@ -29158,6 +29680,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 34,
       "choiceNum": 3,
@@ -29229,6 +29752,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 34,
       "choiceNum": 4,
@@ -29288,6 +29812,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 34,
       "choiceNum": 5,
@@ -29302,6 +29827,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 35,
       "choiceNum": 1,
@@ -29349,6 +29875,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 35,
       "choiceNum": 5,
@@ -29396,6 +29923,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 36,
       "choiceNum": 1,
@@ -29419,6 +29947,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 36,
       "choiceNum": 2,
@@ -29443,6 +29972,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 36,
       "choiceNum": 3,
@@ -29466,6 +29996,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 36,
       "choiceNum": 4,
@@ -29503,6 +30034,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166b",
       "questionId": 37,
       "choiceNum": 5,
@@ -29564,6 +30096,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 38,
       "choiceNum": 3,
@@ -29611,6 +30144,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 38,
       "choiceNum": 4,
@@ -29625,6 +30159,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 38,
       "choiceNum": 5,
@@ -29662,6 +30197,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 39,
       "choiceNum": 1,
@@ -29697,6 +30233,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 39,
       "choiceNum": 2,
@@ -29732,6 +30269,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 39,
       "choiceNum": 3,
@@ -29767,6 +30305,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 39,
       "choiceNum": 4,
@@ -29805,6 +30344,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 39,
       "choiceNum": 5,
@@ -29855,6 +30395,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 40,
       "choiceNum": 1,
@@ -29903,6 +30444,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 40,
       "choiceNum": 2,
@@ -29939,6 +30481,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 40,
       "choiceNum": 3,
@@ -29990,6 +30533,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 40,
       "choiceNum": 4,
@@ -30037,6 +30581,7 @@
     },
     {
       "yearKey": "2016_6월A",
+      "area": "literature",
       "setId": "l20166c",
       "questionId": 40,
       "choiceNum": 5,
@@ -30086,6 +30631,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166a",
       "questionId": 19,
       "choiceNum": 4,
@@ -30122,6 +30668,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166a",
       "questionId": 19,
       "choiceNum": 5,
@@ -30158,6 +30705,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166b",
       "questionId": 22,
       "choiceNum": 4,
@@ -30181,6 +30729,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166b",
       "questionId": 22,
       "choiceNum": 5,
@@ -30217,6 +30766,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166b",
       "questionId": 23,
       "choiceNum": 1,
@@ -30253,6 +30803,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166b",
       "questionId": 23,
       "choiceNum": 2,
@@ -30289,6 +30840,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166b",
       "questionId": 23,
       "choiceNum": 3,
@@ -30312,6 +30864,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166b",
       "questionId": 23,
       "choiceNum": 4,
@@ -30348,6 +30901,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166b",
       "questionId": 23,
       "choiceNum": 5,
@@ -30372,6 +30926,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166c",
       "questionId": 25,
       "choiceNum": 4,
@@ -30419,6 +30974,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166c",
       "questionId": 25,
       "choiceNum": 5,
@@ -30456,6 +31012,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166c",
       "questionId": 26,
       "choiceNum": 2,
@@ -30503,6 +31060,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166c",
       "questionId": 26,
       "choiceNum": 3,
@@ -30539,6 +31097,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 28,
       "choiceNum": 1,
@@ -30562,6 +31121,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 28,
       "choiceNum": 2,
@@ -30585,6 +31145,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 28,
       "choiceNum": 3,
@@ -30608,6 +31169,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 28,
       "choiceNum": 4,
@@ -30643,6 +31205,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 28,
       "choiceNum": 5,
@@ -30680,6 +31243,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 29,
       "choiceNum": 1,
@@ -30717,6 +31281,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 29,
       "choiceNum": 2,
@@ -30757,6 +31322,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 29,
       "choiceNum": 3,
@@ -30807,6 +31373,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "reading",
       "setId": "r20166d",
       "questionId": 29,
       "choiceNum": 5,
@@ -30857,6 +31424,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 32,
       "choiceNum": 1,
@@ -30880,6 +31448,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 32,
       "choiceNum": 2,
@@ -30916,6 +31485,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 32,
       "choiceNum": 3,
@@ -30964,6 +31534,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 32,
       "choiceNum": 5,
@@ -30988,6 +31559,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 33,
       "choiceNum": 1,
@@ -31012,6 +31584,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 33,
       "choiceNum": 2,
@@ -31050,6 +31623,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 33,
       "choiceNum": 3,
@@ -31097,6 +31671,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 33,
       "choiceNum": 4,
@@ -31144,6 +31719,7 @@
     },
     {
       "yearKey": "2016_6월B",
+      "area": "literature",
       "setId": "l20166a",
       "questionId": 33,
       "choiceNum": 5,
@@ -31181,6 +31757,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169a",
       "questionId": 18,
       "choiceNum": 4,
@@ -31204,7 +31781,7 @@
             "보편 법칙이 구체적으로 적용되는 맥락을 나타내는 '소크라테스는 사람이다.'와 같은 선행 조건이 설명항에 하나 이상 있어야 한다.",
             "소크라테스는 사람이다."
           ],
-          "sentText": "이러한 특성을 갖고 있기 때문에 해시 함수는 데이터의 내용이 변경되었는지 여부를 확인하는 데 이용된다."
+          "sentText": "둘째, 보편 법칙이 구체적으로 적용되는 맥락을 나타내는 '소크라테스는 사람이다.'와 같은 선행 조건이 설명항에 하나 이상 있어야 한다."
         },
         {
           "sentId": "r20169as10",
@@ -31215,7 +31792,7 @@
           "quotes_matched": [
             "이처럼 헴펠의 설명 이론은 피설명항이 보편 법칙의 개별 사례로서 마땅히 일어날 만한 일이었음을 보여 주기 위한 설명의 요건을 제시했다는 점에서 의의가 있다."
           ],
-          "sentText": "일방향성이란 주어진 해시 값에 대응하는 입력 데이터의 복원이 불가능하다는 것을 말한다."
+          "sentText": "이처럼 헴펠의 설명 이론은 피설명항이 보편 법칙의 개별 사례로서 마땅히 일어날 만한 일이었음을 보여 주기 위한 설명의 요건을 제시했다는 점에서 의의가 있다."
         }
       ],
       "hard_checks": {
@@ -31230,6 +31807,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169a",
       "questionId": 18,
       "choiceNum": 5,
@@ -31251,7 +31829,7 @@
           "quotes_matched": [
             "셋째, 피설명항은 설명항으로부터 '건전한 논증'을 통해 도출되어야 한다."
           ],
-          "sentText": "가령, 상호 간에 동일한 해시 함수를 사용한다고 할 때, 전자 문서와 그 문서의 해시 값을 함께 전송하면 상대방은 수신한 전자 문서에 동일한 해시 함수를 적용하여 결과 값을 얻은 뒤 전송받은 해시 값과 비교함으로써 "
+          "sentText": "셋째, 피설명항은 설명항으로부터 '건전한 논증'을 통해 도출되어야 한다."
         },
         {
           "sentId": "r20169as3",
@@ -31262,7 +31840,7 @@
           "quotes_matched": [
             "기본적으로 논증은 전제로부터 결론이 논리적으로 도출되는 형식을 띤다."
           ],
-          "sentText": "해시 함수란 입력 데이터 x에 대응하는 하나의 결과 값을 일정한 길이의 문자열로 표시하는 수학적 함수이다."
+          "sentText": "기본적으로 논증은 전제로부터 결론이 논리적으로 도출되는 형식을 띤다."
         }
       ],
       "hard_checks": {
@@ -31277,6 +31855,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169a",
       "questionId": 19,
       "choiceNum": 4,
@@ -31299,7 +31878,7 @@
           "quotes_matched": [
             "왜냐하면 결과를 일으키는 원인은 무수히 많고 연쇄적으로 서로 얽혀 있기 때문이다."
           ],
-          "sentText": "해시 값 게시 기한이 지난 후 각 참여자는 본인의 입찰가와 논스를 운영자에게 전송하고 운영자는 최고 입찰가를 제출한 사람을 낙찰자로 선정한다."
+          "sentText": "왜냐하면 결과를 일으키는 원인은 무수히 많고 연쇄적으로 서로 얽혀 있기 때문이다."
         },
         {
           "sentId": "r20169as19",
@@ -31310,7 +31889,7 @@
           "quotes_matched": [
             "예를 들어 소크라테스가 죽게 된 원인은 독을 마신 것이지만, 독을 마시게 된 원인은 사형 선고를 받은 것이고, 사형 선고를 받게 된 원인도 여러 가지를 떠올릴 수 있다."
           ],
-          "sentText": "이로써 온라인 경매 진행 시 발생할 수 있는 다양한 보안상의 문제를 해결할 수 있다."
+          "sentText": "예를 들어 소크라테스가 죽게 된 원인은 독을 마신 것이지만, 독을 마시게 된 원인은 사형 선고를 받은 것이고, 사형 선고를 받게 된 원인도 여러 가지를 떠올릴 수 있다."
         },
         {
           "sentId": "r20169as20",
@@ -31321,7 +31900,7 @@
           "quotes_matched": [
             "이에 결과를 일으킨 원인을 골라내는 문제는 결국 원인과 결과가 시공간적으로 어떻게 연결되는가에 대한 철학적 분석을 필요로 한다."
           ],
-          "sentText": "논스 : 입찰가를 추측할 수 없게 하기 위해 입찰가에 더해지는 임의의 숫자."
+          "sentText": "이에 결과를 일으킨 원인을 골라내는 문제는 결국 원인과 결과가 시공간적으로 어떻게 연결되는가에 대한 철학적 분석을 필요로 한다."
         }
       ],
       "hard_checks": {
@@ -31336,6 +31915,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169b",
       "questionId": 25,
       "choiceNum": 2,
@@ -31359,6 +31939,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169b",
       "questionId": 25,
       "choiceNum": 4,
@@ -31382,6 +31963,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169b",
       "questionId": 25,
       "choiceNum": 5,
@@ -31405,6 +31987,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169b",
       "questionId": 26,
       "choiceNum": 1,
@@ -31429,6 +32012,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169b",
       "questionId": 26,
       "choiceNum": 3,
@@ -31453,6 +32037,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169b",
       "questionId": 26,
       "choiceNum": 4,
@@ -31477,6 +32062,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169b",
       "questionId": 26,
       "choiceNum": 5,
@@ -31501,6 +32087,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 27,
       "choiceNum": 4,
@@ -31539,6 +32126,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 25,
       "choiceNum": 4,
@@ -31561,7 +32149,7 @@
           "quotes_matched": [
             "신호 전달 경로는 암의 종류에 따라 다르므로 신호 전달 억제제는 특정한 암에만 치료 효과를 나타낸다."
           ],
-          "sentText": "일방향성이란 주어진 해시 값에 대응하는 입력 데이터의 복원이 불가능하다는 것을 말한다."
+          "sentText": "신호 전달 경로는 암의 종류에 따라 다르므로 신호 전달 억제제는 특정한 암에만 치료 효과를 나타낸다."
         },
         {
           "sentId": "r20169ds22",
@@ -31587,6 +32175,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 25,
       "choiceNum": 5,
@@ -31608,7 +32197,7 @@
           "quotes_matched": [
             "이러한 원리에 착안하여 Bcr-Abl 단백질에 달라붙어 그것의 작용을 방해하는 이마티닙이 개발되었다."
           ],
-          "sentText": "해시 함수는 온라인 경매에도 이용될 수 있다."
+          "sentText": "이러한 원리에 착안하여 Bcr-Abl 단백질에 달라붙어 그것의 작용을 방해하는 이마티닙이 개발되었다."
         }
       ],
       "hard_checks": {
@@ -31623,6 +32212,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 26,
       "choiceNum": 1,
@@ -31646,6 +32236,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 26,
       "choiceNum": 2,
@@ -31667,7 +32258,7 @@
           "quotes_matched": [
             "암세포가 증식하여 종양이 되고 그 종양이 자라려면 산소와 영양분이 계속 공급되어야 한다"
           ],
-          "sentText": "이때 각 입찰 참여자는 자신의 입찰가를 감추기 위해 논스의 해시 값과, 입찰가에 논스를 더한 것의 해시 값을 함께 게시판에 게시한다."
+          "sentText": "암세포가 증식하여 종양이 되고 그 종양이 자라려면 산소와 영양분이 계속 공급되어야 한다."
         }
       ],
       "hard_checks": {
@@ -31682,6 +32273,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 26,
       "choiceNum": 3,
@@ -31702,7 +32294,7 @@
           "quotes_matched": [
             "파클리탁셀과 같은 세포 독성 항암제는 세포 분열을 방해하여 세포가 증식하지 못하고 사멸에 이르게 한다."
           ],
-          "sentText": "예를 들어 전자 화폐의 일종인 비트코인은 해시 함수를 이용하여 화폐 거래의 안전성을 유지한다."
+          "sentText": "파클리탁셀과 같은 세포 독성 항암제는 세포 분열을 방해하여 세포가 증식하지 못하고 사멸에 이르게 한다."
         }
       ],
       "hard_checks": {
@@ -31717,6 +32309,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 26,
       "choiceNum": 4,
@@ -31738,7 +32331,7 @@
           "quotes_matched": [
             "암세포가 증식하여 종양이 되고 그 종양이 자라려면 산소와 영양분이 계속 공급되어야 한다."
           ],
-          "sentText": "이때 각 입찰 참여자는 자신의 입찰가를 감추기 위해 논스의 해시 값과, 입찰가에 논스를 더한 것의 해시 값을 함께 게시판에 게시한다."
+          "sentText": "암세포가 증식하여 종양이 되고 그 종양이 자라려면 산소와 영양분이 계속 공급되어야 한다."
         }
       ],
       "hard_checks": {
@@ -31753,6 +32346,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 26,
       "choiceNum": 5,
@@ -31777,7 +32371,7 @@
             "비정상적인 단백질",
             "신호 전달 과정을 왜곡"
           ],
-          "sentText": "현재 여러 해시 함수가 이용되고 있는데, 해시 값을 표시하는 문자열의 길이는 각 해시 함수마다 다를 수 있지만 특정 해시 함수에서의 그 길이는 고정되어 있다."
+          "sentText": "암세포에서는 변형된 유전자가 만들어 낸 비정상적인 단백질이 세포 분열을 위한 신호 전달 과정을 왜곡하여 과다한 세포 증식을 일으킨다."
         }
       ],
       "hard_checks": {
@@ -31792,6 +32386,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169e",
       "questionId": 27,
       "choiceNum": 4,
@@ -31830,6 +32425,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169e",
       "questionId": 27,
       "choiceNum": 5,
@@ -31869,6 +32465,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169e",
       "questionId": 28,
       "choiceNum": 1,
@@ -31905,6 +32502,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169e",
       "questionId": 28,
       "choiceNum": 2,
@@ -31929,6 +32527,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169e",
       "questionId": 28,
       "choiceNum": 3,
@@ -31976,6 +32575,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169e",
       "questionId": 28,
       "choiceNum": 5,
@@ -32024,6 +32624,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169e",
       "questionId": 29,
       "choiceNum": 1,
@@ -32061,6 +32662,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169e",
       "questionId": 29,
       "choiceNum": 2,
@@ -32098,6 +32700,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169e",
       "questionId": 29,
       "choiceNum": 3,
@@ -32135,6 +32738,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169e",
       "questionId": 29,
       "choiceNum": 5,
@@ -32183,6 +32787,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 27,
       "choiceNum": 2,
@@ -32208,6 +32813,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 27,
       "choiceNum": 3,
@@ -32233,6 +32839,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 27,
       "choiceNum": 4,
@@ -32256,6 +32863,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 27,
       "choiceNum": 5,
@@ -32270,6 +32878,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 28,
       "choiceNum": 1,
@@ -32308,6 +32917,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 28,
       "choiceNum": 2,
@@ -32359,6 +32969,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 28,
       "choiceNum": 3,
@@ -32408,6 +33019,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 28,
       "choiceNum": 5,
@@ -32458,6 +33070,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 29,
       "choiceNum": 1,
@@ -32507,6 +33120,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 29,
       "choiceNum": 2,
@@ -32543,6 +33157,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 29,
       "choiceNum": 3,
@@ -32592,6 +33207,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 29,
       "choiceNum": 4,
@@ -32629,6 +33245,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169f",
       "questionId": 29,
       "choiceNum": 5,
@@ -32665,6 +33282,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169g",
       "questionId": 42,
       "choiceNum": 5,
@@ -32701,6 +33319,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169g",
       "questionId": 43,
       "choiceNum": 1,
@@ -32748,6 +33367,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169g",
       "questionId": 43,
       "choiceNum": 2,
@@ -32784,6 +33404,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169g",
       "questionId": 44,
       "choiceNum": 2,
@@ -32821,6 +33442,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169g",
       "questionId": 44,
       "choiceNum": 3,
@@ -32869,6 +33491,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169g",
       "questionId": 44,
       "choiceNum": 4,
@@ -32893,6 +33516,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "reading",
       "setId": "r20169g",
       "questionId": 44,
       "choiceNum": 5,
@@ -32941,6 +33565,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 32,
       "choiceNum": 1,
@@ -32965,6 +33590,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 32,
       "choiceNum": 2,
@@ -32986,7 +33612,7 @@
           "quotes_matched": [
             "우리도 새 즐겨 다가 이 백발이 되얏노라"
           ],
-          "sentText": "알릴 라디칼은 산소와 결합하여 퍼옥시 라디칼로 변화한다."
+          "sentText": "우리도 새 즐겨 다가 이 백발이 되얏노라"
         }
       ],
       "hard_checks": {
@@ -33001,6 +33627,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 32,
       "choiceNum": 3,
@@ -33022,7 +33649,7 @@
           "quotes_matched": [
             "헌 세월이 소년(少年) 아사 가니라"
           ],
-          "sentText": "A 지방질의 이중결합 바로 옆에 있는 탄소가 열이나 빛의 영향을 ⓓ 받으면, A 지방질 분자가 에너지가 높고 불안정한 알릴 라디칼로 변화한다."
+          "sentText": "헌 세월이 소년(少年) 아사 가니라"
         }
       ],
       "hard_checks": {
@@ -33037,6 +33664,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 32,
       "choiceNum": 4,
@@ -33061,6 +33689,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 32,
       "choiceNum": 5,
@@ -33082,7 +33711,7 @@
           "quotes_matched": [
             "우리도 새 즐겨 다가 이 백발이 되얏노라"
           ],
-          "sentText": "알릴 라디칼은 산소와 결합하여 퍼옥시 라디칼로 변화한다."
+          "sentText": "우리도 새 즐겨 다가 이 백발이 되얏노라"
         }
       ],
       "hard_checks": {
@@ -33097,6 +33726,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 33,
       "choiceNum": 1,
@@ -33120,6 +33750,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 33,
       "choiceNum": 2,
@@ -33144,7 +33775,7 @@
           "quotes_matched": [
             "아야 쇼 됴히 머겨"
           ],
-          "sentText": "산패는 저장 중인 식품에서 비정상적인 맛과 냄새가 나는 현상을 말한다."
+          "sentText": "아야 쇼 됴히 머겨 논밧 갈게 야라"
         },
         {
           "sentId": "l20169as7",
@@ -33155,7 +33786,7 @@
           "quotes_matched": [
             "아야 계면됴 불러라"
           ],
-          "sentText": "지방산은 탄소끼리의 결합을 중심으로 탄소와 수소, 탄소와 산소의 결합을 포함한 사슬 구조로 이루어져 있으며 글리세롤과 결합된 탄소를 제외한 모든 탄소는 수소와 결합되어 있다."
+          "sentText": "아야 계면됴 불러라 긴 조롬 오쟈"
         },
         {
           "sentId": "l20169as11",
@@ -33166,7 +33797,7 @@
           "quotes_matched": [
             "아야 자해(紫蟹) 황계(黃鷄)로"
           ],
-          "sentText": "산화 작용에 의한 산패는 불포화 지방산이 결합된 지방질에서 일어나며, 이중결합의 수가 많을수록 잘 일어난다."
+          "sentText": "아야 자해(紫蟹) 황계(黃鷄)로 안주 쟝만야라"
         },
         {
           "sentId": "l20169as15",
@@ -33177,7 +33808,7 @@
           "quotes_matched": [
             "아야 두죽(豆粥) 니것냐"
           ],
-          "sentText": "대부분의 분자들은 짝수의 전자를 가지는데, 외부 에너지의 영향으로 홀수의 전자를 갖는 분자로 변화되기도 한다."
+          "sentText": "아야 두죽(豆粥) 니것냐 먹고 자랴 로라"
         }
       ],
       "hard_checks": {
@@ -33192,6 +33823,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 33,
       "choiceNum": 3,
@@ -33216,6 +33848,7 @@
     },
     {
       "yearKey": "2016_9월B",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 33,
       "choiceNum": 4,
@@ -33238,7 +33871,7 @@
           "quotes_matched": [
             "아야 쇼 됴히 머겨 논밧 갈게 야라"
           ],
-          "sentText": "산패는 저장 중인 식품에서 비정상적인 맛과 냄새가 나는 현상을 말한다."
+          "sentText": "아야 쇼 됴히 머겨 논밧 갈게 야라"
         },
         {
           "sentId": "l20169as10",
@@ -33249,7 +33882,7 @@
           "quotes_matched": [
             "자채(自蔡)로 비 술이 마 아니 니것냐"
           ],
-          "sentText": "오메가-3 지방산이나 오메가-6 지방산은 대표적인 불포화 지방산이다."
+          "sentText": "자채(自蔡)로 비 술이 마 아니 니것냐"
         }
       ],
       "hard_checks": {
@@ -33264,6 +33897,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169a",
       "questionId": 17,
       "choiceNum": 3,
@@ -33311,6 +33945,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169a",
       "questionId": 17,
       "choiceNum": 5,
@@ -33348,6 +33983,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169a",
       "questionId": 18,
       "choiceNum": 1,
@@ -33372,6 +34008,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169a",
       "questionId": 18,
       "choiceNum": 2,
@@ -33408,6 +34045,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169a",
       "questionId": 18,
       "choiceNum": 4,
@@ -33444,6 +34082,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 27,
       "choiceNum": 3,
@@ -33468,6 +34107,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 27,
       "choiceNum": 4,
@@ -33504,6 +34144,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 27,
       "choiceNum": 5,
@@ -33527,6 +34168,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 28,
       "choiceNum": 1,
@@ -33562,6 +34204,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 28,
       "choiceNum": 2,
@@ -33597,6 +34240,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 28,
       "choiceNum": 3,
@@ -33644,6 +34288,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 28,
       "choiceNum": 5,
@@ -33691,6 +34336,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 29,
       "choiceNum": 1,
@@ -33715,6 +34361,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 29,
       "choiceNum": 2,
@@ -33763,6 +34410,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 29,
       "choiceNum": 3,
@@ -33800,6 +34448,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169c",
       "questionId": 29,
       "choiceNum": 5,
@@ -33825,6 +34474,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 17,
       "choiceNum": 2,
@@ -33861,6 +34511,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 17,
       "choiceNum": 4,
@@ -33884,6 +34535,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 18,
       "choiceNum": 1,
@@ -33908,6 +34560,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "reading",
       "setId": "r20169d",
       "questionId": 18,
       "choiceNum": 2,
@@ -33957,6 +34610,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 19,
       "choiceNum": 4,
@@ -34004,6 +34658,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 20,
       "choiceNum": 1,
@@ -34040,6 +34695,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 20,
       "choiceNum": 3,
@@ -34087,6 +34743,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 20,
       "choiceNum": 4,
@@ -34110,6 +34767,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169a",
       "questionId": 21,
       "choiceNum": 4,
@@ -34134,6 +34792,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169b",
       "questionId": 31,
       "choiceNum": 4,
@@ -34171,6 +34830,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169b",
       "questionId": 32,
       "choiceNum": 1,
@@ -34219,6 +34879,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169b",
       "questionId": 32,
       "choiceNum": 2,
@@ -34233,6 +34894,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169b",
       "questionId": 32,
       "choiceNum": 4,
@@ -34256,6 +34918,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169b",
       "questionId": 32,
       "choiceNum": 5,
@@ -34291,6 +34954,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169b",
       "questionId": 33,
       "choiceNum": 1,
@@ -34327,6 +34991,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169b",
       "questionId": 33,
       "choiceNum": 2,
@@ -34364,6 +35029,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169b",
       "questionId": 33,
       "choiceNum": 3,
@@ -34403,6 +35069,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169b",
       "questionId": 33,
       "choiceNum": 4,
@@ -34440,6 +35107,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169b",
       "questionId": 33,
       "choiceNum": 5,
@@ -34477,6 +35145,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 34,
       "choiceNum": 3,
@@ -34500,6 +35169,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 34,
       "choiceNum": 5,
@@ -34575,6 +35245,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 35,
       "choiceNum": 1,
@@ -34613,6 +35284,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 35,
       "choiceNum": 2,
@@ -34661,6 +35333,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 35,
       "choiceNum": 3,
@@ -34711,6 +35384,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 35,
       "choiceNum": 4,
@@ -34759,6 +35433,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 36,
       "choiceNum": 1,
@@ -34784,6 +35459,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 36,
       "choiceNum": 3,
@@ -34821,6 +35497,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 36,
       "choiceNum": 4,
@@ -34845,6 +35522,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 36,
       "choiceNum": 5,
@@ -34872,6 +35550,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 38,
       "choiceNum": 1,
@@ -34897,6 +35576,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 38,
       "choiceNum": 2,
@@ -34922,6 +35602,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 38,
       "choiceNum": 3,
@@ -34946,6 +35627,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169c",
       "questionId": 38,
       "choiceNum": 5,
@@ -34970,6 +35652,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169d",
       "questionId": 43,
       "choiceNum": 3,
@@ -35017,6 +35700,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169d",
       "questionId": 43,
       "choiceNum": 5,
@@ -35076,6 +35760,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169d",
       "questionId": 44,
       "choiceNum": 1,
@@ -35123,6 +35808,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169d",
       "questionId": 44,
       "choiceNum": 2,
@@ -35147,6 +35833,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169d",
       "questionId": 45,
       "choiceNum": 3,
@@ -35198,6 +35885,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169d",
       "questionId": 45,
       "choiceNum": 4,
@@ -35248,6 +35936,7 @@
     },
     {
       "yearKey": "2016_9월A",
+      "area": "literature",
       "setId": "l20169d",
       "questionId": 45,
       "choiceNum": 5,
@@ -35297,6 +35986,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 16,
       "choiceNum": 4,
@@ -35320,6 +36010,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 16,
       "choiceNum": 5,
@@ -35357,6 +36048,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 18,
       "choiceNum": 2,
@@ -35393,6 +36085,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 18,
       "choiceNum": 4,
@@ -35429,6 +36122,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 19,
       "choiceNum": 4,
@@ -35465,6 +36159,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 20,
       "choiceNum": 2,
@@ -35489,6 +36184,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 20,
       "choiceNum": 4,
@@ -35525,6 +36221,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 20,
       "choiceNum": 5,
@@ -35548,6 +36245,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 21,
       "choiceNum": 1,
@@ -35584,6 +36282,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 21,
       "choiceNum": 2,
@@ -35607,6 +36306,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186a",
       "questionId": 21,
       "choiceNum": 5,
@@ -35630,6 +36330,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186b",
       "questionId": 23,
       "choiceNum": 1,
@@ -35654,6 +36355,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186b",
       "questionId": 23,
       "choiceNum": 2,
@@ -35678,6 +36380,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186b",
       "questionId": 23,
       "choiceNum": 3,
@@ -35701,6 +36404,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186b",
       "questionId": 23,
       "choiceNum": 4,
@@ -35724,6 +36428,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186b",
       "questionId": 23,
       "choiceNum": 5,
@@ -35761,6 +36466,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186b",
       "questionId": 24,
       "choiceNum": 1,
@@ -35808,6 +36514,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186b",
       "questionId": 24,
       "choiceNum": 2,
@@ -35844,6 +36551,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186b",
       "questionId": 24,
       "choiceNum": 3,
@@ -35867,6 +36575,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186b",
       "questionId": 24,
       "choiceNum": 4,
@@ -35905,6 +36614,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186b",
       "questionId": 24,
       "choiceNum": 5,
@@ -35929,6 +36639,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 31,
       "choiceNum": 3,
@@ -35967,6 +36678,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 31,
       "choiceNum": 5,
@@ -36004,6 +36716,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 32,
       "choiceNum": 1,
@@ -36063,6 +36776,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 32,
       "choiceNum": 2,
@@ -36087,6 +36801,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 32,
       "choiceNum": 3,
@@ -36123,6 +36838,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 32,
       "choiceNum": 4,
@@ -36159,6 +36875,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 33,
       "choiceNum": 4,
@@ -36196,6 +36913,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 33,
       "choiceNum": 5,
@@ -36232,6 +36950,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 34,
       "choiceNum": 1,
@@ -36256,6 +36975,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 34,
       "choiceNum": 2,
@@ -36293,6 +37013,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 34,
       "choiceNum": 3,
@@ -36332,6 +37053,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 34,
       "choiceNum": 4,
@@ -36357,6 +37079,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "reading",
       "setId": "r20186c",
       "questionId": 34,
       "choiceNum": 5,
@@ -36382,6 +37105,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186a",
       "questionId": 26,
       "choiceNum": 4,
@@ -36419,6 +37143,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186a",
       "questionId": 26,
       "choiceNum": 5,
@@ -36470,6 +37195,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186a",
       "questionId": 27,
       "choiceNum": 1,
@@ -36518,6 +37244,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186a",
       "questionId": 27,
       "choiceNum": 2,
@@ -36554,6 +37281,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186a",
       "questionId": 27,
       "choiceNum": 3,
@@ -36602,6 +37330,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186a",
       "questionId": 27,
       "choiceNum": 4,
@@ -36651,6 +37380,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186b",
       "questionId": 26,
       "choiceNum": 5,
@@ -36698,6 +37428,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186b",
       "questionId": 27,
       "choiceNum": 1,
@@ -36722,6 +37453,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186b",
       "questionId": 27,
       "choiceNum": 2,
@@ -36759,6 +37491,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186b",
       "questionId": 27,
       "choiceNum": 3,
@@ -36807,6 +37540,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186b",
       "questionId": 27,
       "choiceNum": 4,
@@ -36845,6 +37579,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186b",
       "questionId": 27,
       "choiceNum": 5,
@@ -36869,6 +37604,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186b",
       "questionId": 28,
       "choiceNum": 2,
@@ -36883,6 +37619,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186b",
       "questionId": 28,
       "choiceNum": 3,
@@ -36919,6 +37656,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186b",
       "questionId": 28,
       "choiceNum": 4,
@@ -36942,6 +37680,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186b",
       "questionId": 28,
       "choiceNum": 5,
@@ -36966,6 +37705,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 35,
       "choiceNum": 4,
@@ -36991,6 +37731,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 35,
       "choiceNum": 5,
@@ -37029,6 +37770,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 36,
       "choiceNum": 1,
@@ -37067,6 +37809,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 36,
       "choiceNum": 2,
@@ -37093,6 +37836,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 36,
       "choiceNum": 3,
@@ -37130,6 +37874,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 36,
       "choiceNum": 4,
@@ -37167,6 +37912,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 36,
       "choiceNum": 5,
@@ -37217,6 +37963,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 37,
       "choiceNum": 1,
@@ -37255,6 +38002,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 37,
       "choiceNum": 2,
@@ -37278,6 +38026,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 37,
       "choiceNum": 3,
@@ -37301,6 +38050,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 37,
       "choiceNum": 5,
@@ -37337,6 +38087,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 38,
       "choiceNum": 4,
@@ -37361,6 +38112,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186c",
       "questionId": 38,
       "choiceNum": 5,
@@ -37385,6 +38137,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186d",
       "questionId": 39,
       "choiceNum": 4,
@@ -37409,6 +38162,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186d",
       "questionId": 39,
       "choiceNum": 5,
@@ -37433,6 +38187,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186d",
       "questionId": 40,
       "choiceNum": 2,
@@ -37471,6 +38226,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186d",
       "questionId": 40,
       "choiceNum": 4,
@@ -37532,6 +38288,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186d",
       "questionId": 41,
       "choiceNum": 1,
@@ -37582,6 +38339,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186d",
       "questionId": 41,
       "choiceNum": 2,
@@ -37618,6 +38376,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186d",
       "questionId": 41,
       "choiceNum": 3,
@@ -37656,6 +38415,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186d",
       "questionId": 41,
       "choiceNum": 4,
@@ -37707,6 +38467,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186e",
       "questionId": 42,
       "choiceNum": 3,
@@ -37754,6 +38515,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186e",
       "questionId": 42,
       "choiceNum": 4,
@@ -37814,6 +38576,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186e",
       "questionId": 43,
       "choiceNum": 3,
@@ -37864,6 +38627,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186e",
       "questionId": 44,
       "choiceNum": 1,
@@ -37888,6 +38652,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186e",
       "questionId": 44,
       "choiceNum": 2,
@@ -37912,6 +38677,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186e",
       "questionId": 44,
       "choiceNum": 3,
@@ -37937,6 +38703,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186e",
       "questionId": 44,
       "choiceNum": 4,
@@ -37974,6 +38741,7 @@
     },
     {
       "yearKey": "2018_6월",
+      "area": "literature",
       "setId": "l20186e",
       "questionId": 44,
       "choiceNum": 5,
@@ -38023,6 +38791,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "reading",
       "setId": "r20199a",
       "questionId": 21,
       "choiceNum": 4,
@@ -38046,6 +38815,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "reading",
       "setId": "r20199a",
       "questionId": 21,
       "choiceNum": 5,
@@ -38093,6 +38863,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "reading",
       "setId": "r20199a",
       "questionId": 22,
       "choiceNum": 1,
@@ -38128,6 +38899,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "reading",
       "setId": "r20199a",
       "questionId": 22,
       "choiceNum": 2,
@@ -38163,6 +38935,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "reading",
       "setId": "r20199a",
       "questionId": 22,
       "choiceNum": 4,
@@ -38210,6 +38983,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "reading",
       "setId": "r20199a",
       "questionId": 23,
       "choiceNum": 1,
@@ -38258,6 +39032,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "reading",
       "setId": "r20199a",
       "questionId": 23,
       "choiceNum": 2,
@@ -38306,6 +39081,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "reading",
       "setId": "r20199a",
       "questionId": 23,
       "choiceNum": 3,
@@ -38354,6 +39130,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "reading",
       "setId": "r20199a",
       "questionId": 23,
       "choiceNum": 4,
@@ -38402,6 +39179,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "reading",
       "setId": "r20199a",
       "questionId": 23,
       "choiceNum": 5,
@@ -38450,6 +39228,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 16,
       "choiceNum": 4,
@@ -38497,6 +39276,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 16,
       "choiceNum": 5,
@@ -38511,6 +39291,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 17,
       "choiceNum": 1,
@@ -38559,6 +39340,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 17,
       "choiceNum": 3,
@@ -38583,6 +39365,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 17,
       "choiceNum": 4,
@@ -38620,6 +39403,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 17,
       "choiceNum": 5,
@@ -38644,6 +39428,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 18,
       "choiceNum": 1,
@@ -38668,6 +39453,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 18,
       "choiceNum": 2,
@@ -38705,6 +39491,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 18,
       "choiceNum": 3,
@@ -38729,6 +39516,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 18,
       "choiceNum": 4,
@@ -38766,6 +39554,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 18,
       "choiceNum": 5,
@@ -38792,6 +39581,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 20,
       "choiceNum": 2,
@@ -38828,6 +39618,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 20,
       "choiceNum": 3,
@@ -38864,6 +39655,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 20,
       "choiceNum": 4,
@@ -38900,6 +39692,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199a",
       "questionId": 20,
       "choiceNum": 5,
@@ -38947,6 +39740,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199b",
       "questionId": 27,
       "choiceNum": 3,
@@ -38984,6 +39778,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199c",
       "questionId": 27,
       "choiceNum": 3,
@@ -39007,6 +39802,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199c",
       "questionId": 27,
       "choiceNum": 5,
@@ -39030,6 +39826,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199c",
       "questionId": 28,
       "choiceNum": 1,
@@ -39054,6 +39851,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199c",
       "questionId": 28,
       "choiceNum": 2,
@@ -39090,6 +39888,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199c",
       "questionId": 28,
       "choiceNum": 3,
@@ -39114,6 +39913,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199c",
       "questionId": 28,
       "choiceNum": 4,
@@ -39138,6 +39938,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199c",
       "questionId": 28,
       "choiceNum": 5,
@@ -39174,6 +39975,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 39,
       "choiceNum": 5,
@@ -39209,6 +40011,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 40,
       "choiceNum": 1,
@@ -39232,6 +40035,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 40,
       "choiceNum": 2,
@@ -39280,6 +40084,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 40,
       "choiceNum": 3,
@@ -39303,6 +40108,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 40,
       "choiceNum": 4,
@@ -39326,6 +40132,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 40,
       "choiceNum": 5,
@@ -39373,6 +40180,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 41,
       "choiceNum": 1,
@@ -39420,6 +40228,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 41,
       "choiceNum": 2,
@@ -39455,6 +40264,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 41,
       "choiceNum": 3,
@@ -39478,6 +40288,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 41,
       "choiceNum": 4,
@@ -39501,6 +40312,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199d",
       "questionId": 41,
       "choiceNum": 5,
@@ -39537,6 +40349,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 42,
       "choiceNum": 1,
@@ -39551,6 +40364,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 42,
       "choiceNum": 3,
@@ -39565,6 +40379,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 42,
       "choiceNum": 5,
@@ -39588,6 +40403,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 43,
       "choiceNum": 1,
@@ -39625,6 +40441,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 43,
       "choiceNum": 2,
@@ -39648,6 +40465,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 43,
       "choiceNum": 3,
@@ -39683,6 +40501,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 43,
       "choiceNum": 5,
@@ -39706,6 +40525,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 44,
       "choiceNum": 1,
@@ -39742,6 +40562,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 44,
       "choiceNum": 2,
@@ -39778,6 +40599,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 44,
       "choiceNum": 3,
@@ -39814,6 +40636,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 44,
       "choiceNum": 4,
@@ -39850,6 +40673,7 @@
     },
     {
       "yearKey": "2019_9월",
+      "area": "literature",
       "setId": "l20199e",
       "questionId": 44,
       "choiceNum": 5,
@@ -39887,6 +40711,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176a",
       "questionId": 19,
       "choiceNum": 5,
@@ -39914,6 +40739,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 20,
       "choiceNum": 4,
@@ -39937,6 +40763,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 21,
       "choiceNum": 2,
@@ -39973,6 +40800,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 21,
       "choiceNum": 4,
@@ -40008,6 +40836,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 21,
       "choiceNum": 5,
@@ -40031,6 +40860,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 22,
       "choiceNum": 1,
@@ -40067,6 +40897,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 22,
       "choiceNum": 2,
@@ -40091,6 +40922,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 22,
       "choiceNum": 3,
@@ -40114,6 +40946,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 22,
       "choiceNum": 5,
@@ -40150,6 +40983,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 23,
       "choiceNum": 4,
@@ -40174,6 +41008,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 23,
       "choiceNum": 5,
@@ -40197,6 +41032,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 24,
       "choiceNum": 1,
@@ -40222,6 +41058,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 24,
       "choiceNum": 2,
@@ -40246,6 +41083,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 24,
       "choiceNum": 3,
@@ -40270,6 +41108,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 24,
       "choiceNum": 4,
@@ -40297,6 +41136,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176b",
       "questionId": 24,
       "choiceNum": 5,
@@ -40322,6 +41162,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 30,
       "choiceNum": 1,
@@ -40360,6 +41201,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 30,
       "choiceNum": 2,
@@ -40396,6 +41238,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 30,
       "choiceNum": 3,
@@ -40432,6 +41275,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 30,
       "choiceNum": 4,
@@ -40482,6 +41326,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 30,
       "choiceNum": 5,
@@ -40518,6 +41363,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 31,
       "choiceNum": 4,
@@ -40555,6 +41401,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 31,
       "choiceNum": 5,
@@ -40590,6 +41437,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 32,
       "choiceNum": 1,
@@ -40627,6 +41475,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 32,
       "choiceNum": 2,
@@ -40650,6 +41499,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 32,
       "choiceNum": 3,
@@ -40687,6 +41537,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 32,
       "choiceNum": 4,
@@ -40723,6 +41574,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 32,
       "choiceNum": 5,
@@ -40758,6 +41610,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 33,
       "choiceNum": 1,
@@ -40781,6 +41634,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 33,
       "choiceNum": 2,
@@ -40804,6 +41658,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 33,
       "choiceNum": 3,
@@ -40827,6 +41682,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 33,
       "choiceNum": 4,
@@ -40850,6 +41706,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176c",
       "questionId": 33,
       "choiceNum": 5,
@@ -40873,6 +41730,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176d",
       "questionId": 23,
       "choiceNum": 4,
@@ -40899,6 +41757,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176d",
       "questionId": 23,
       "choiceNum": 5,
@@ -40926,6 +41785,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176d",
       "questionId": 24,
       "choiceNum": 1,
@@ -40962,6 +41822,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176d",
       "questionId": 24,
       "choiceNum": 2,
@@ -40998,6 +41859,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176d",
       "questionId": 24,
       "choiceNum": 3,
@@ -41034,6 +41896,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176d",
       "questionId": 24,
       "choiceNum": 4,
@@ -41070,6 +41933,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "reading",
       "setId": "r20176d",
       "questionId": 24,
       "choiceNum": 5,
@@ -41095,6 +41959,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176a",
       "questionId": 26,
       "choiceNum": 1,
@@ -41118,6 +41983,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176a",
       "questionId": 26,
       "choiceNum": 2,
@@ -41166,6 +42032,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176a",
       "questionId": 26,
       "choiceNum": 3,
@@ -41202,6 +42069,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176a",
       "questionId": 26,
       "choiceNum": 4,
@@ -41285,6 +42153,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176a",
       "questionId": 26,
       "choiceNum": 5,
@@ -41321,6 +42190,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176a",
       "questionId": 27,
       "choiceNum": 1,
@@ -41368,6 +42238,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176a",
       "questionId": 27,
       "choiceNum": 2,
@@ -41415,6 +42286,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176a",
       "questionId": 27,
       "choiceNum": 3,
@@ -41451,6 +42323,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176a",
       "questionId": 27,
       "choiceNum": 4,
@@ -41489,6 +42362,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176a",
       "questionId": 27,
       "choiceNum": 5,
@@ -41537,6 +42411,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 39,
       "choiceNum": 4,
@@ -41573,6 +42448,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 40,
       "choiceNum": 1,
@@ -41610,6 +42486,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 40,
       "choiceNum": 2,
@@ -41646,6 +42523,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 40,
       "choiceNum": 3,
@@ -41669,6 +42547,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 40,
       "choiceNum": 4,
@@ -41692,6 +42571,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 40,
       "choiceNum": 5,
@@ -41728,6 +42608,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 41,
       "choiceNum": 3,
@@ -41742,6 +42623,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 41,
       "choiceNum": 4,
@@ -41789,6 +42671,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 41,
       "choiceNum": 5,
@@ -41836,6 +42719,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 42,
       "choiceNum": 3,
@@ -41873,6 +42757,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 42,
       "choiceNum": 4,
@@ -41896,6 +42781,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176c",
       "questionId": 42,
       "choiceNum": 5,
@@ -41920,6 +42806,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176d",
       "questionId": 44,
       "choiceNum": 5,
@@ -41967,6 +42854,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176d",
       "questionId": 45,
       "choiceNum": 1,
@@ -42015,6 +42903,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176d",
       "questionId": 45,
       "choiceNum": 2,
@@ -42051,6 +42940,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176d",
       "questionId": 45,
       "choiceNum": 3,
@@ -42088,6 +42978,7 @@
     },
     {
       "yearKey": "2017_6월",
+      "area": "literature",
       "setId": "l20176d",
       "questionId": 45,
       "choiceNum": 4,
@@ -42136,6 +43027,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179a",
       "questionId": 16,
       "choiceNum": 4,
@@ -42172,6 +43064,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179a",
       "questionId": 16,
       "choiceNum": 5,
@@ -42208,6 +43101,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179a",
       "questionId": 17,
       "choiceNum": 4,
@@ -42261,6 +43155,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179a",
       "questionId": 18,
       "choiceNum": 4,
@@ -42285,6 +43180,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179a",
       "questionId": 19,
       "choiceNum": 4,
@@ -42309,6 +43205,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 20,
       "choiceNum": 4,
@@ -42345,6 +43242,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 20,
       "choiceNum": 5,
@@ -42368,6 +43266,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 21,
       "choiceNum": 2,
@@ -42394,6 +43293,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 21,
       "choiceNum": 3,
@@ -42418,6 +43318,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 21,
       "choiceNum": 4,
@@ -42456,6 +43357,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 22,
       "choiceNum": 1,
@@ -42494,6 +43396,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 22,
       "choiceNum": 2,
@@ -42532,6 +43435,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 22,
       "choiceNum": 3,
@@ -42556,6 +43460,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 22,
       "choiceNum": 4,
@@ -42582,6 +43487,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 22,
       "choiceNum": 5,
@@ -42611,6 +43517,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 23,
       "choiceNum": 1,
@@ -42636,6 +43543,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 23,
       "choiceNum": 2,
@@ -42650,6 +43558,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 23,
       "choiceNum": 3,
@@ -42674,6 +43583,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 23,
       "choiceNum": 4,
@@ -42698,6 +43608,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179b",
       "questionId": 23,
       "choiceNum": 5,
@@ -42721,6 +43632,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179c",
       "questionId": 24,
       "choiceNum": 5,
@@ -42810,6 +43722,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179c",
       "questionId": 25,
       "choiceNum": 1,
@@ -42882,6 +43795,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179c",
       "questionId": 25,
       "choiceNum": 2,
@@ -42974,6 +43888,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179c",
       "questionId": 25,
       "choiceNum": 3,
@@ -43047,6 +43962,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179c",
       "questionId": 25,
       "choiceNum": 4,
@@ -43096,6 +44012,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179c",
       "questionId": 25,
       "choiceNum": 5,
@@ -43156,6 +44073,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179d",
       "questionId": 11,
       "choiceNum": 4,
@@ -43180,6 +44098,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179d",
       "questionId": 11,
       "choiceNum": 5,
@@ -43216,6 +44135,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179d",
       "questionId": 12,
       "choiceNum": 2,
@@ -43269,6 +44189,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 40,
       "choiceNum": 4,
@@ -43293,6 +44214,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 40,
       "choiceNum": 5,
@@ -43316,6 +44238,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 41,
       "choiceNum": 1,
@@ -43340,6 +44263,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 41,
       "choiceNum": 2,
@@ -43363,6 +44287,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 41,
       "choiceNum": 3,
@@ -43387,6 +44312,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 41,
       "choiceNum": 4,
@@ -43425,6 +44351,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 42,
       "choiceNum": 1,
@@ -43473,6 +44400,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 42,
       "choiceNum": 2,
@@ -43523,6 +44451,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 42,
       "choiceNum": 3,
@@ -43549,6 +44478,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 43,
       "choiceNum": 3,
@@ -43586,6 +44516,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 44,
       "choiceNum": 1,
@@ -43622,6 +44553,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 44,
       "choiceNum": 3,
@@ -43671,6 +44603,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 45,
       "choiceNum": 1,
@@ -43719,6 +44652,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 45,
       "choiceNum": 2,
@@ -43767,6 +44701,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 45,
       "choiceNum": 3,
@@ -43814,6 +44749,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 45,
       "choiceNum": 4,
@@ -43853,6 +44789,7 @@
     },
     {
       "yearKey": "2017_9월",
+      "area": "literature",
       "setId": "l20179e",
       "questionId": 45,
       "choiceNum": 5,
@@ -43900,6 +44837,7 @@
     },
     {
       "yearKey": "2017수능",
+      "area": "reading",
       "setId": "r2017b",
       "questionId": 36,
       "choiceNum": 1,
@@ -43914,6 +44852,7 @@
     },
     {
       "yearKey": "2017수능",
+      "area": "reading",
       "setId": "r2017b",
       "questionId": 36,
       "choiceNum": 2,
@@ -43928,6 +44867,7 @@
     },
     {
       "yearKey": "2017수능",
+      "area": "reading",
       "setId": "r2017b",
       "questionId": 36,
       "choiceNum": 4,
@@ -43942,6 +44882,7 @@
     },
     {
       "yearKey": "2017수능",
+      "area": "reading",
       "setId": "r2017b",
       "questionId": 36,
       "choiceNum": 5,
@@ -43956,6 +44897,7 @@
     },
     {
       "yearKey": "2018_9월",
+      "area": "reading",
       "setId": "r20189a",
       "questionId": 18,
       "choiceNum": 4,
@@ -43979,6 +44921,7 @@
     },
     {
       "yearKey": "2018_9월",
+      "area": "reading",
       "setId": "r20189a",
       "questionId": 18,
       "choiceNum": 5,
@@ -44003,6 +44946,7 @@
     },
     {
       "yearKey": "2018_9월",
+      "area": "reading",
       "setId": "r20189b",
       "questionId": 28,
       "choiceNum": 1,
@@ -44040,6 +44984,7 @@
     },
     {
       "yearKey": "2018_9월",
+      "area": "reading",
       "setId": "r20189b",
       "questionId": 28,
       "choiceNum": 2,
@@ -44063,6 +45008,7 @@
     },
     {
       "yearKey": "2018_9월",
+      "area": "reading",
       "setId": "r20189b",
       "questionId": 28,
       "choiceNum": 5,
@@ -44086,6 +45032,7 @@
     },
     {
       "yearKey": "2020_6월",
+      "area": "reading",
       "setId": "r20206c",
       "questionId": 31,
       "choiceNum": 1,
@@ -44111,6 +45058,7 @@
     },
     {
       "yearKey": "2020_6월",
+      "area": "reading",
       "setId": "r20206c",
       "questionId": 31,
       "choiceNum": 3,
@@ -44137,6 +45085,7 @@
     },
     {
       "yearKey": "2020_6월",
+      "area": "reading",
       "setId": "r20206c",
       "questionId": 31,
       "choiceNum": 4,
@@ -44163,6 +45112,7 @@
     },
     {
       "yearKey": "2020_6월",
+      "area": "reading",
       "setId": "r20206c",
       "questionId": 31,
       "choiceNum": 5,
@@ -44189,6 +45139,7 @@
     },
     {
       "yearKey": "2020_6월",
+      "area": "literature",
       "setId": "l20206a",
       "questionId": 24,
       "choiceNum": 4,
@@ -44203,6 +45154,7 @@
     },
     {
       "yearKey": "2020_6월",
+      "area": "literature",
       "setId": "l20206b",
       "questionId": 32,
       "choiceNum": 2,
@@ -44241,6 +45193,7 @@
     },
     {
       "yearKey": "2020_6월",
+      "area": "literature",
       "setId": "l20206b",
       "questionId": 32,
       "choiceNum": 5,
@@ -44255,6 +45208,7 @@
     },
     {
       "yearKey": "2020_6월",
+      "area": "literature",
       "setId": "l20206c",
       "questionId": 43,
       "choiceNum": 4,
@@ -44269,6 +45223,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "reading",
       "setId": "r20216d",
       "questionId": 31,
       "choiceNum": 5,
@@ -44292,6 +45247,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 34,
       "choiceNum": 2,
@@ -44306,6 +45262,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 35,
       "choiceNum": 1,
@@ -44329,6 +45286,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 35,
       "choiceNum": 2,
@@ -44352,6 +45310,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 35,
       "choiceNum": 3,
@@ -44375,6 +45334,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 35,
       "choiceNum": 4,
@@ -44398,6 +45358,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 35,
       "choiceNum": 5,
@@ -44421,6 +45382,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 36,
       "choiceNum": 4,
@@ -44435,6 +45397,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 37,
       "choiceNum": 1,
@@ -44458,6 +45421,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 37,
       "choiceNum": 2,
@@ -44482,6 +45446,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 37,
       "choiceNum": 3,
@@ -44506,6 +45471,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 37,
       "choiceNum": 4,
@@ -44529,6 +45495,7 @@
     },
     {
       "yearKey": "2021_6월",
+      "area": "literature",
       "setId": "l20216b",
       "questionId": 37,
       "choiceNum": 5,
@@ -44543,6 +45510,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 23,
       "choiceNum": 1,
@@ -44557,6 +45525,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 23,
       "choiceNum": 3,
@@ -44571,6 +45540,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 23,
       "choiceNum": 4,
@@ -44585,6 +45555,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 23,
       "choiceNum": 5,
@@ -44599,6 +45570,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 24,
       "choiceNum": 1,
@@ -44613,6 +45585,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 24,
       "choiceNum": 2,
@@ -44627,6 +45600,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 24,
       "choiceNum": 3,
@@ -44652,6 +45626,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 24,
       "choiceNum": 4,
@@ -44675,6 +45650,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 24,
       "choiceNum": 5,
@@ -44698,6 +45674,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 25,
       "choiceNum": 4,
@@ -44725,6 +45702,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219a",
       "questionId": 25,
       "choiceNum": 5,
@@ -44751,6 +45729,7 @@
     },
     {
       "yearKey": "2021_9월",
+      "area": "reading",
       "setId": "r20219d",
       "questionId": 34,
       "choiceNum": 1,

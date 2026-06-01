@@ -227,8 +227,10 @@ const raw = fs.readFileSync(DATA_PATH, "utf8");
 const data = JSON.parse(raw);
 
 let ann = null;
+let rawAnn = null; // v2: annotations 백업 의무 (--fix 시 동일 시점 백업)
 try {
-  ann = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));
+  rawAnn = fs.readFileSync(ANN_PATH, "utf8");
+  ann = JSON.parse(rawAnn);
 } catch {}
 
 // ─── 결과 수집 ────────────────────────────────────────────────────────────────
@@ -1369,9 +1371,16 @@ if (FIX) {
     path.join(BACKUP_DIR, `all_data_204_backup_${ts}.json`),
     raw,
   );
+  // v2: annotations.json 동일 시점 백업 의무 (덮어쓰기 전)
+  if (ann && rawAnn) {
+    fs.writeFileSync(
+      path.join(BACKUP_DIR, `annotations_backup_${ts}.json`),
+      rawAnn,
+    );
+  }
   fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
   if (ann) fs.writeFileSync(ANN_PATH, JSON.stringify(ann, null, 2), "utf8");
-  console.log("✅ 파일 저장 완료 (백업 포함)");
+  console.log("✅ 파일 저장 완료 (all_data + annotations 백업 포함)");
 }
 
 if (REPORT) {

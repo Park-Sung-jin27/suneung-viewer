@@ -52,22 +52,26 @@ const targets = logs.filter((e) => {
   return true;
 });
 
-function findChoice(yearKey, setId, qId, choiceNum) {
+// v2: 정확히 1개 매칭만 허용. 2+ 매칭 시 ambiguous_choice_ref skip.
+// 입력 area 가 있으면 area 도 일치 의무 (setId 충돌 + 동일 yearKey 안 다중 area 대응).
+function findChoice(yearKey, setId, qId, choiceNum, area) {
   const year = data[yearKey];
-  if (!year) return null;
-  for (const areaArr of Object.values(year)) {
+  if (!year) return { ref: null, count: 0 };
+  const matches = [];
+  for (const [areaKey, areaArr] of Object.entries(year)) {
     if (!Array.isArray(areaArr)) continue;
+    if (area && areaKey !== area) continue;
     for (const set of areaArr) {
       if (set.id !== setId) continue;
       for (const q of set.questions || []) {
         if (q.id !== qId) continue;
         for (const c of q.choices || []) {
-          if (c.num === choiceNum) return c;
+          if (c.num === choiceNum) matches.push(c);
         }
       }
     }
   }
-  return null;
+  return { ref: matches.length === 1 ? matches[0] : null, count: matches.length };
 }
 
 const reverted = [];
@@ -75,9 +79,9 @@ const skipped = [];
 
 // LIFO 순서로 revert (가장 최근 batch 먼저)
 for (const e of targets.slice().reverse()) {
-  const c = findChoice(e.yearKey, e.setId, e.questionId, e.choiceNum);
+  const { ref: c, count } = findChoice(e.yearKey, e.setId, e.questionId, e.choiceNum, e.area);
   if (!c) {
-    skipped.push({ ...e, skip_reason: "choice_not_found" });
+    skipped.push({ ...e, skip_reason: count > 1 ? "ambiguous_choice_ref" : "choice_not_found", match_count: count });
     continue;
   }
   // 현재 값이 audit log 의 after 와 정합하는지 확인 (그 사이 수동 변경 검출)

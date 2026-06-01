@@ -11,7 +11,7 @@ const DATA_PATH = path.join(ROOT, "public/data/all_data_204.json");
 const CAND_PATH = path.join(ROOT, "pipeline/output/cs_ids_candidates.json");
 const AUDIT_LOG_PATH = path.join(ROOT, "pipeline/output/audit_log.jsonl");
 const BACKUP_DIR = path.join(ROOT, "pipeline/backups");
-const TOOL_VERSION = "1.1";
+const TOOL_VERSION = "1.2"; // v1.2: ambiguous_choice_ref skip 안전장치 (setId 충돌 대응)
 
 const args = Object.fromEntries(
   process.argv.slice(2).map((a) => {
@@ -40,6 +40,7 @@ if (batchPath) {
     .filter((a) => (!scopeYear || a.yearKey === scopeYear) && (!scopeSetId || a.setId === scopeSetId))
     .map((a) => ({
       yearKey: a.yearKey,
+      area: a.area, // v1.2: 선택. setId 충돌 시 ambiguous_choice_ref skip 회피.
       setId: a.setId,
       questionId: a.questionId,
       choiceNum: a.choiceNum,
@@ -55,22 +56,26 @@ if (batchPath) {
   );
 }
 
-function findChoice(yearKey, setId, qId, choiceNum) {
+// v1.2: 정확히 1개 매칭만 허용. 2+ 매칭 시 ambiguous_choice_ref skip.
+// 입력 area 가 있으면 area 도 일치 의무 (setId 충돌 + 동일 yearKey 안 다중 area 대응).
+function findChoice(yearKey, setId, qId, choiceNum, area) {
   const year = data[yearKey];
-  if (!year) return null;
-  for (const areaArr of Object.values(year)) {
+  if (!year) return { ref: null, count: 0 };
+  const matches = [];
+  for (const [areaKey, areaArr] of Object.entries(year)) {
     if (!Array.isArray(areaArr)) continue;
+    if (area && areaKey !== area) continue;
     for (const set of areaArr) {
       if (set.id !== setId) continue;
       for (const q of set.questions || []) {
         if (q.id !== qId) continue;
         for (const c of q.choices || []) {
-          if (c.num === choiceNum) return { set, q, c };
+          if (c.num === choiceNum) matches.push({ set, q, c, area: areaKey });
         }
       }
     }
   }
-  return null;
+  return { ref: matches.length === 1 ? matches[0] : null, count: matches.length };
 }
 
 const auditEntries = [];
@@ -78,8 +83,11 @@ const skipped = [];
 const applied = [];
 
 for (const t of targets) {
-  const ref = findChoice(t.yearKey, t.setId, t.questionId, t.choiceNum);
-  if (!ref) { skipped.push({ ...t, skip_reason: "choice_not_found" }); continue; }
+  const { ref, count } = findChoice(t.yearKey, t.setId, t.questionId, t.choiceNum, t.area);
+  if (!ref) {
+    skipped.push({ ...t, skip_reason: count > 1 ? "ambiguous_choice_ref" : "choice_not_found", match_count: count });
+    continue;
+  }
   const existing = ref.c.cs_ids || [];
   if (existing.length > 0) { skipped.push({ ...t, skip_reason: "existing_cs_ids_nonempty" }); continue; }
   const top = t.candidates[0];
