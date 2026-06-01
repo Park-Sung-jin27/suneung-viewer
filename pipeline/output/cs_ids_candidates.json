@@ -1,6 +1,6 @@
 {
   "tool_version": "1.0",
-  "generated_at": "2026-05-31T13:55:32.814Z",
+  "generated_at": "2026-06-01T09:26:32.579Z",
   "thresholds": {
     "version": "1.0",
     "auto_apply_hard_conditions": {
@@ -37,9 +37,9 @@
     "total_choices_all": 6645,
     "total_choices_empty_needing_cs": 979,
     "safety_distribution": {
-      "safe": 177,
+      "safe": 179,
       "suspect": 140,
-      "rebuild_needed": 33,
+      "rebuild_needed": 31,
       "duplicate_sentid_hold": 0
     },
     "decision_distribution": {
@@ -2321,18 +2321,18 @@
       "yearKey": "2023_9월",
       "setId": "l20239d",
       "area": "literature",
-      "grade": "rebuild_needed",
+      "grade": "safe",
       "sent_count": 42,
       "q_count": 3,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
+        "annotation_dead_or_mismatch": false,
         "body_marker_extraction_broken": false,
         "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 0.36363636363636365,
+        "dead_ratio": 0,
         "body_markers": [
           "㉠",
           "㉡",
@@ -3637,47 +3637,39 @@
       "yearKey": "2026_9월",
       "setId": "l20269d",
       "area": "literature",
-      "grade": "rebuild_needed",
+      "grade": "safe",
       "sent_count": 62,
       "q_count": 4,
       "flags": {
         "sent_below_min": false,
         "qc_ratio_violation": false,
-        "annotation_dead_or_mismatch": true,
-        "body_marker_extraction_broken": true,
-        "hallucination_suspect": true,
+        "annotation_dead_or_mismatch": false,
+        "body_marker_extraction_broken": false,
+        "hallucination_suspect": false,
         "duplicate_sent_id": false,
         "duplicate_ids_count": 0,
-        "dead_ratio": 0.42857142857142855,
+        "dead_ratio": 0,
         "body_markers": [
           "ⓐ",
-          "ⓑ"
+          "ⓑ",
+          "㉠",
+          "㉡",
+          "㉢",
+          "㉣",
+          "㉤"
         ],
         "analysis_markers": [
+          "ⓐ",
+          "ⓑ",
           "㉠",
           "㉡",
           "㉢",
           "㉣",
-          "㉤",
-          "㉮"
+          "㉤"
         ],
-        "missing_markers": [
-          "㉠",
-          "㉡",
-          "㉢",
-          "㉣",
-          "㉤",
-          "㉮"
-        ]
+        "missing_markers": []
       },
-      "body_marker_missing": [
-        "㉠",
-        "㉡",
-        "㉢",
-        "㉣",
-        "㉤",
-        "㉮"
-      ]
+      "body_marker_missing": []
     },
     {
       "yearKey": "2014_6월A",
