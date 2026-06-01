@@ -10,7 +10,7 @@
 // ============================================================
 
 import { useEffect, useState } from "react";
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams, useSearchParams, Navigate, Link } from "react-router-dom";
 import { isAllowlisted } from "./constants";
 import { loadAllData } from "./dataLoader";
 
@@ -194,6 +194,8 @@ function auditSet(set, annList) {
 
 export default function AuditPanel({ user }) {
   const { setId } = useParams();
+  const [searchParams] = useSearchParams();
+  const yearKeyParam = searchParams.get("yearKey");
   const [allData, setAllData] = useState(null);
   const [annotations, setAnnotations] = useState(null);
   const [err, setErr] = useState(null);
@@ -239,19 +241,61 @@ export default function AuditPanel({ user }) {
   if (err) return <div style={{ padding: 20 }}>오류: {err}</div>;
   if (!allData || !annotations) return <div style={{ padding: 20 }}>데이터 로딩 중…</div>;
 
-  let foundSet = null;
-  let foundYear = null;
+  // v4: setId 충돌 (동일 setId 가 여러 yearKey 에 존재 — LEGACY A/B형 33 set) 대응:
+  //   ?yearKey= 명시 → 해당 set 사용
+  //   미명시 + 매칭 1개 → 그 set 사용 (백워드 호환, 충돌 X 317 set)
+  //   미명시 + 매칭 2+ → yearKey 선택 화면 표시 (잘못된 본문 검수 방지)
+  const matches = [];
   for (const yk of Object.keys(allData)) {
     for (const dom of ["reading", "literature"]) {
       const list = allData[yk]?.[dom] || [];
       const found = list.find((s) => s.id === setId);
-      if (found) { foundSet = found; foundYear = yk; break; }
+      if (found) matches.push({ yearKey: yk, area: dom, set: found });
     }
-    if (foundSet) break;
   }
 
-  if (!foundSet) return (<div style={{ padding: 20 }}>setId={setId} 못 찾음. <Link to="/">홈으로</Link></div>);
+  if (matches.length === 0) {
+    return (<div style={{ padding: 20 }}>setId={setId} 못 찾음. <Link to="/">홈으로</Link></div>);
+  }
 
+  let chosen = null;
+  if (yearKeyParam) {
+    chosen = matches.find((m) => m.yearKey === yearKeyParam);
+    if (!chosen) {
+      return (
+        <div style={{ padding: 20 }}>
+          setId={setId} 안 yearKey={yearKeyParam} 못 찾음.{" "}
+          <Link to={`/audit/${setId}`}>yearKey 선택 화면으로</Link> · <Link to="/">홈으로</Link>
+        </div>
+      );
+    }
+  } else if (matches.length === 1) {
+    chosen = matches[0];
+  } else {
+    // setId 충돌 — yearKey 선택 화면
+    return (
+      <div style={{ padding: 20, fontFamily: "system-ui, sans-serif" }}>
+        <h2 style={{ marginTop: 0 }}>setId 충돌 — yearKey 선택 의무</h2>
+        <p>
+          <code>{setId}</code> 는 {matches.length}개 yearKey 에 존재합니다. 검수할 yearKey 를 선택하세요.
+        </p>
+        <ul>
+          {matches.map((m) => (
+            <li key={m.yearKey} style={{ margin: "8px 0" }}>
+              <Link to={`/audit/${setId}?yearKey=${encodeURIComponent(m.yearKey)}`}>
+                <strong>{m.yearKey}</strong> ({m.area}) — sent {m.set.sents?.length || 0}, Q {(m.set.questions || []).length}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link to="/">홈으로</Link>
+      </div>
+    );
+  }
+
+  const foundSet = chosen.set;
+  const foundYear = chosen.yearKey;
+  const foundArea = chosen.area;
   const annList = annotations[foundYear]?.[setId] || [];
   const audit = auditSet(foundSet, annList);
 
