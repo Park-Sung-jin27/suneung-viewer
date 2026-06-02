@@ -2913,6 +2913,36 @@
         "type": "underline",
         "sentId": "r20246bs15",
         "text": "주지"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20246bs4",
+        "text": "㉠치우쳤다고",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20246bs5",
+        "text": "㉡불렀다",
+        "marker": "㉡"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20246bs8",
+        "text": "㉢겪을",
+        "marker": "㉢"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20246bs10",
+        "text": "㉣보냈다고",
+        "marker": "㉣"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20246bs15",
+        "text": "㉤주지",
+        "marker": "㉤"
       }
     ],
     "r20246c": [
@@ -2971,6 +3001,36 @@
         "qId": 12,
         "marker": "㉯",
         "width": "3em"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20246ds1",
+        "text": "ⓐ본다",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20246ds12",
+        "text": "ⓑ일어나는",
+        "marker": "ⓑ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20246ds15",
+        "text": "ⓒ따르면",
+        "marker": "ⓒ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20246ds18",
+        "text": "ⓓ알아보기",
+        "marker": "ⓓ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20246ds39",
+        "text": "ⓔ만지는",
+        "marker": "ⓔ"
       }
     ],
     "l20246a": [
@@ -3099,6 +3159,36 @@
         "type": "underline",
         "sentId": "l20246cs12",
         "text": "서늘한 감각"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20246cs3",
+        "text": "ⓐ여기 대한 상속세",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20246cs6",
+        "text": "ⓑ도장을 치고 난 용팔이",
+        "marker": "ⓑ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20246cs7",
+        "text": "ⓒ그걸 못 해",
+        "marker": "ⓒ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20246cs7",
+        "text": "ⓓ정일이는 실험의 결과",
+        "marker": "ⓓ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20246cs10",
+        "text": "ⓔ아버지는 한 번도",
+        "marker": "ⓔ"
       }
     ],
     "l20246d": [
@@ -3773,6 +3863,108 @@
         "qId": 27,
         "text": "하나의 상황을 O.L.(오버랩)을 활용하여 제시하기",
         "marker": "ⓔ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20229bs9",
+        "marker": "ⓐ",
+        "text": "ⓐ아무래도 변의 징조"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20229bs19",
+        "marker": "ⓑ",
+        "text": "ⓑ비를 몰아치는 바람"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20229bs22",
+        "marker": "ⓒ",
+        "text": "ⓒ마을 사람들은 뒤 언덕배기"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20229bs25",
+        "marker": "ⓓ",
+        "text": "ⓓ마을은 그야말로 난장판"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20229bs29",
+        "marker": "ⓔ",
+        "text": "ⓔ바다는 언제 그런 일이"
+      }
+    ],
+    "r20229b": [
+      {
+        "type": "box",
+        "sentId": "r20229bs4",
+        "text": "독점적 지위"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20229bs28",
+        "marker": "ⓐ",
+        "text": "ⓐ들어가므로"
+      }
+    ],
+    "l20229a": [
+      {
+        "type": "box",
+        "sentId": "l20229as18",
+        "text": "조그마한 돛대 세운 배"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20229as2",
+        "marker": "ⓐ",
+        "text": "ⓐ여보게"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20229as4",
+        "marker": "ⓑ",
+        "text": "ⓑ이 사람"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20229as9",
+        "marker": "ⓒ",
+        "text": "ⓒ여보시오"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20229as20",
+        "marker": "ⓓ",
+        "text": "ⓓ어이"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20229as30",
+        "marker": "ⓔ",
+        "text": "ⓔ노형"
+      }
+    ],
+    "r20229c": [
+      {
+        "type": "underline",
+        "sentId": "r20229cs31",
+        "marker": "ⓐ",
+        "text": "ⓐ욕구 충족적 자유의지"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20229cs32",
+        "marker": "ⓑ",
+        "text": "ⓑ여기서"
+      }
+    ],
+    "r20229d": [
+      {
+        "type": "underline",
+        "sentId": "r20229ds15",
+        "marker": "ⓐ",
+        "text": "ⓐ맞춰"
       }
     ]
   },
