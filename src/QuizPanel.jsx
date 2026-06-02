@@ -870,8 +870,10 @@ function ChoiceItem({
       ].sort((a, b) => a - b)
     : [];
 
-  // 패턴 뱃지: 오답일 때만
-  const showBadge = isActive && !isCorrect && (isReview || showResult);
+  // 패턴 뱃지: 결과 표시 시점 (isReview || showResult) + pat 있는 모든 선지에 표시
+  //   - 학생이 클릭한 선지뿐 아니라 모든 ok:false 선지 (적절하지 않은 진술) 의 오답 패턴 학습 path
+  //   - choice.pat 는 ok:false 인 경우만 부여 (release_ready 4기준 정합)
+  const showBadge = (isReview || showResult) && choice.pat;
 
   // 아이콘: 복습 모드는 정답/원래오답에 항상, 일반은 클릭+결과
   const showIcon = isReview ? isCorrect || isMe : isActive && showResult;
