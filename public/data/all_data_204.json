@@ -49143,7 +49143,11 @@
                   "label": "ⓓ",
                   "desc": "그래프 점"
                 }
-              ]
+              ],
+              "image": {
+                "url": "/images/2024_r20246c_q11_bogi.png",
+                "alt": "여러 금속의 물질 X 흡착 세기와 촉매 활성 그래프 (ⓐⓑⓒⓓ 점)"
+              }
             },
             "questionType": "positive",
             "choices": [
