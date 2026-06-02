@@ -2564,6 +2564,36 @@
         "type": "underline",
         "sentId": "r20239bs27",
         "text": "발견하는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20239bs4",
+        "marker": "ⓐ",
+        "text": "ⓐ전락시키는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20239bs17",
+        "marker": "ⓑ",
+        "text": "ⓑ유리된"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20239bs20",
+        "marker": "ⓒ",
+        "text": "ⓒ응시하는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20239bs26",
+        "marker": "ⓓ",
+        "text": "ⓓ박탈한다"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20239bs27",
+        "marker": "ⓔ",
+        "text": "ⓔ발견하는"
       }
     ],
     "r20239c": [
