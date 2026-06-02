@@ -743,6 +743,7 @@ function AnalysisBlock({ text }) {
 // ══════════════════════════════════════════════════════════
 function PatternBadge({ pat }) {
   if (!pat || !P[pat]) return null;
+  if (pat === "V") return null; // 어휘 = 단순 어휘 문제, badge 미표시 (사용자 결정)
   const p = P[pat];
   return (
     <span
