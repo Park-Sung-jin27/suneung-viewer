@@ -677,6 +677,23 @@
         "type": "underline",
         "sentId": "l20259bs9",
         "text": "살얼음의 창"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20259bs9",
+        "text": "ⓐ살얼음의 창",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20259bs14",
+        "text": "ⓑ기둥",
+        "marker": "ⓑ"
+      },
+      {
+        "type": "box",
+        "sentId": "l20259bs11",
+        "text": "태반, 마음아, 너도 아직 이 '생가' 에 살고 있는가"
       }
     ],
     "l20259c": [
