@@ -717,6 +717,24 @@
         "type": "underline",
         "sentId": "l20259cs10",
         "text": "눈이 휘둥그레진"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20259cs33",
+        "marker": "ⓒ",
+        "text": "ⓒ거듭되는 재촉"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20259cs35",
+        "marker": "ⓓ",
+        "text": "ⓓ숨이 턱 막혀 옴"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20259cs38",
+        "marker": "ⓔ",
+        "text": "ⓔ지각한 사람을 야유하는"
       }
     ],
     "l20259d": []
