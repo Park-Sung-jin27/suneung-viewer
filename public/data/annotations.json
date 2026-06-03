@@ -437,25 +437,25 @@
         "text": "비밀"
       },
       {
-        "type": "underline",
+        "type": "marker",
         "sentId": "l2025cs160",
         "text": "불편스런 일이 한두 가지가 아니었다",
         "marker": "㉠"
       },
       {
-        "type": "underline",
+        "type": "marker",
         "sentId": "l2025cs168",
         "text": "―그깟 놈의 배꼽, 안 가지고 있음 어때.",
         "marker": "㉡"
       },
       {
-        "type": "underline",
+        "type": "marker",
         "sentId": "l2025cs170",
         "text": "자신으로부터 배꼽이 사라져 버린 사실을, 그리고 그 때문에 생긴 모든 불편을 잊고, 그 배꼽 없는 생활에 스스로 익숙해져 버리기를 바라 마지않았다",
         "marker": "㉢"
       },
       {
-        "type": "underline",
+        "type": "marker",
         "sentId": "l2025cs190",
         "text": "어느 해 여름이었다.",
         "marker": "㉣"
@@ -466,7 +466,7 @@
         "text": "하니까 그것은 허원이 자신의 배꼽을 잃어버리고 나서 불편하기 그지없는 세 번째의 여름을 맞고 있을 때였다."
       },
       {
-        "type": "underline",
+        "type": "marker",
         "sentId": "l2025cs205",
         "text": "배꼽에 관한 논의가 그렇듯 갑자기 시중 일반에까지 성행하기 시작한 것이다.",
         "marker": "㉤"
