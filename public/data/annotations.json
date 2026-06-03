@@ -387,20 +387,23 @@
         "target": "bogi",
         "qId": 18,
         "text": "\"이 일은 소자가 이미 아는 바이오니 염려 마옵소서.\"",
-        "marker": "㉠"
+        "marker": "㉠",
+        "sentId": "l2025as106"
       },
       {
         "type": "underline",
         "target": "bogi",
         "qId": 18,
         "text": "\"처음에 그놈이 충렬부인 방에 간 줄 어찌 알으셨나이까?\"",
-        "marker": "㉡"
+        "marker": "㉡",
+        "sentId": "l2025as106"
       },
       {
         "type": "box",
         "target": "bogi",
         "qId": 18,
-        "text": "누명"
+        "text": "누명",
+        "sentId": "l2025as105"
       }
     ],
     "l2025b": [
@@ -487,14 +490,16 @@
         "target": "bogi",
         "qId": 33,
         "text": "인삼",
-        "marker": "㉠"
+        "marker": "㉠",
+        "sentId": "l2025ds219"
       },
       {
         "type": "underline",
         "target": "bogi",
         "qId": 33,
         "text": "고기",
-        "marker": "㉡"
+        "marker": "㉡",
+        "sentId": "l2025ds249"
       }
     ]
   },
@@ -735,35 +740,40 @@
         "target": "bogi",
         "qId": 3,
         "text": "지금 사용하고 있는 전략을 계속 사용할 것인지",
-        "marker": "㉠"
+        "marker": "㉠",
+        "sentId": "r2024as12"
       },
       {
         "type": "underline",
         "target": "bogi",
         "qId": 3,
         "text": "문제 해결을 위한 다른 전략에는 무엇이 있는지",
-        "marker": "㉡"
+        "marker": "㉡",
+        "sentId": "r2024as13"
       },
       {
         "type": "underline",
         "target": "bogi",
         "qId": 3,
         "text": "각 전략의 특징과 사용 절차, 조건 등은 무엇인지",
-        "marker": "㉢"
+        "marker": "㉢",
+        "sentId": "r2024as13"
       },
       {
         "type": "underline",
         "target": "bogi",
         "qId": 3,
         "text": "전략들의 적절한 적용 순서가 무엇인지",
-        "marker": "㉣"
+        "marker": "㉣",
+        "sentId": "r2024as14"
       },
       {
         "type": "underline",
         "target": "bogi",
         "qId": 3,
         "text": "현재의 상황에서 최적의 전략이 무엇인지",
-        "marker": "㉤"
+        "marker": "㉤",
+        "sentId": "r2024as14"
       },
       {
         "type": "marker",
@@ -2877,14 +2887,16 @@
         "target": "bogi",
         "qId": 3,
         "text": "독서 행위",
-        "marker": "㉡"
+        "marker": "㉡",
+        "sentId": "r20246as4"
       },
       {
         "type": "underline",
         "target": "bogi",
         "qId": 3,
         "text": "독서의 즐거움과 유익함",
-        "marker": "㉢"
+        "marker": "㉢",
+        "sentId": "r20246as13"
       }
     ],
     "r20246b": [
