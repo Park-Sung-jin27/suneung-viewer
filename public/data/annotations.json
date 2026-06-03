@@ -3522,6 +3522,11 @@
         "qId": 17,
         "marker": "㉮",
         "width": "8em"
+      },
+      {
+        "type": "box",
+        "sentId": "r20266ds1",
+        "text": "플로리디의 정보 철학"
       }
     ],
     "l20266a": [
@@ -3642,6 +3647,70 @@
         "sentId": "l20266cs52",
         "marker": "ⓔ",
         "text": "ⓔ항서"
+      }
+    ],
+    "r20266b": [
+      {
+        "type": "underline",
+        "sentId": "r20266bs1",
+        "text": "ⓐ삼았다",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20266bs12",
+        "text": "ⓑ부딪힌다",
+        "marker": "ⓑ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20266bs13",
+        "text": "ⓒ어렵다",
+        "marker": "ⓒ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20266bs14",
+        "text": "ⓓ남는다",
+        "marker": "ⓓ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20266bs17",
+        "text": "ⓔ내놓는",
+        "marker": "ⓔ"
+      }
+    ],
+    "r20266c": [
+      {
+        "type": "underline",
+        "sentId": "r20266cs4",
+        "text": "ⓐ줄일",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20266cs8",
+        "text": "ⓑ만들며",
+        "marker": "ⓑ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20266cs15",
+        "text": "ⓒ쓰이는",
+        "marker": "ⓒ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20266cs18",
+        "text": "ⓓ얻어지는데",
+        "marker": "ⓓ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20266cs25",
+        "text": "ⓔ일어나지",
+        "marker": "ⓔ"
       }
     ]
   },
@@ -4281,6 +4350,99 @@
         "sentId": "l20256ds39",
         "marker": "㉤",
         "text": "㉤이제는"
+      }
+    ]
+  },
+  "2024_9월": {
+    "r20249b": [
+      {
+        "type": "underline",
+        "sentId": "r20249bs7",
+        "text": "ⓐ쉬워져",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20249bs14",
+        "text": "ⓑ따라",
+        "marker": "ⓑ"
+      }
+    ],
+    "r20249d": [
+      {
+        "type": "underline",
+        "sentId": "r20249ds12",
+        "text": "ⓐ굳어졌다",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "box",
+        "sentId": "r20249ds22",
+        "text": "일련의 개혁론"
+      }
+    ],
+    "l20249b": [
+      {
+        "type": "underline",
+        "sentId": "l20249bs31",
+        "text": "ⓐ신위",
+        "marker": "ⓐ"
+      }
+    ],
+    "r20249a": [
+      {
+        "type": "box",
+        "sentId": "r20249as2",
+        "text": "대부분의 읽기 발달 연구"
+      }
+    ],
+    "l20249c": [
+      {
+        "type": "box",
+        "sentId": "l20249cs1",
+        "text": "형제슈퍼"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20249cs5",
+        "text": "ⓐ이거, 또 시예요?",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20249cs6",
+        "text": "ⓑ그래. 슬픈 시야",
+        "marker": "ⓑ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20249cs7",
+        "text": "ⓒ이제 다 나았어요?",
+        "marker": "ⓒ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20249cs8",
+        "text": "ⓓ시를 읽으면서 누워 있",
+        "marker": "ⓓ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20249cs11",
+        "text": "ⓔ김 반장이 아저씨를 쫓아내",
+        "marker": "ⓔ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20249cs12",
+        "text": "ⓕ김 반장은 나쁜 사람",
+        "marker": "ⓕ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20249cs13",
+        "text": "ⓖ그렇지요? 맞죠?",
+        "marker": "ⓖ"
       }
     ]
   }
