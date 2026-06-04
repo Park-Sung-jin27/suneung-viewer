@@ -4089,6 +4089,18 @@
         "qId": 3,
         "text": "'동물 소유권에 관한 다양한 논의'에 대한 정보를 추출하였다.",
         "marker": "ⓔ"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20256as5",
+        "marker": "㉠",
+        "text": "㉠ 신뢰성 평가"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20256as6",
+        "marker": "㉡",
+        "text": "㉡ 관련성 평가"
       }
     ],
     "r20256c": [
@@ -4105,6 +4117,18 @@
         "qId": 10,
         "text": "직선형 구조의 사슬들",
         "marker": "㉯"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20256cs1",
+        "marker": "ⓐ",
+        "text": "ⓐ 접할"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20256cs19",
+        "marker": "㉠",
+        "text": "㉠ 이 중합 과정"
       }
     ],
     "r20256d": [
@@ -4140,8 +4164,55 @@
         "type": "underline",
         "target": "bogi",
         "qId": 14,
-        "text": "행크스 : 옳지 않다. 단독으로 진술된 문장은 조건문의 일부로 사용된 때와 내용 차이가 없기 때문이다.",
+        "text": "행크스: 옳지 않다. 단독으로 진술된 문장은 조건문의 일부로 사용된 때와 내용 차이가 없기 때문이다.",
         "marker": "⑤"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20256ds1",
+        "marker": "ⓐ",
+        "text": "ⓐ 찾는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20256ds2",
+        "marker": "ⓑ",
+        "text": "ⓑ 내놓지"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20256ds3",
+        "marker": "ⓒ",
+        "text": "ⓒ 펼쳤다"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20256ds10",
+        "marker": "ⓓ",
+        "text": "ⓓ 불러일으키는"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20256ds18",
+        "marker": "ⓔ",
+        "text": "ⓔ 열어"
+      },
+      {
+        "type": "underline",
+        "sentId": "r20256ds26",
+        "marker": "㉠",
+        "text": "㉠ 몇몇 논리학자들이 제기한 문제"
+      },
+      {
+        "type": "box",
+        "sentId": "r20256ds3",
+        "text": "에이어"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20256ds31",
+        "sentTo": "r20256ds40"
       }
     ],
     "l20256a": [
