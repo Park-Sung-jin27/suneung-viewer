@@ -1,4 +1,4 @@
-# 현 진행 상황 — 2026-06-04
+# 현 진행 상황 — 2026-06-04 (일과 종결)
 
 ## 현황
 
@@ -75,10 +75,11 @@
 
 ## 다음 액션 (우선순위)
 
-1. **viewer 측 target='bogi' annotation 처리 path** (코드 변경 — bogi underline 시각화)
-3. **LEGACY 모의 14~21 본격 진입** — 156 set 의무 영역 (13개년 비전 path)
-4. **Phase 2b reject 9건 manual 정정** (PDF cross-check 의무)
-5. 토스 페이먼츠 결제 연동 (심사 대기)
+0. (회기 시작 시) 베타 무작위 3 set 형광펜 클릭 육안 검수 — 06-04 대량 정정 후 안전 확인
+1. **방향 결정 (대표)**: viewer 측 target='bogi' annotation 처리 (코드 변경) vs LEGACY 모의 14~21 진입 (156 set, 13개년 비전 path)
+2. **LEGACY cs_spans 420건** — LEGACY 진입 시 본문 품질 검증과 함께 처리 (베타용 자동 스크립트 무검토 적용 금지)
+3. **Phase 2b reject 9건 manual 정정** (PDF cross-check 의무)
+4. 토스 페이먼츠 결제 연동 (심사 대기)
 
 ---
 
@@ -100,6 +101,8 @@
 - **Cowork 환경 file 절단 결함**: Edit/Write 도구 사용 시 file 일부 잘림 결함 반복. cat heredoc 또는 cp 명령 path 우선 권고.
 - **viewer 측 target='bogi' 처리 path**: schema 확장 완료, 코드 변경 의무 잔존.
 - **LEGACY 모의 14~21**: 156 set 완전 미진입. 13개년 비전 달성 path 최대 영역.
+- **LEGACY cs_spans 420건** (dead 303 + text_miss 117): 베타는 0건 달성, LEGACY는 미착수.
+- **quality_gate 사전 존재 CRITICAL**: suneung5 21건 (bracket 의심 14 + analysis_id_leak 5 + questionType 2) — 오늘 변경과 무관한 사전 존재분, 검토 sprint 필요.
 
 ---
 

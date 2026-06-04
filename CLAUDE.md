@@ -44,6 +44,17 @@
 - ✅ 강제: "이 명령어를 PowerShell 에 붙여넣고 엔터: `npm run build`"
 - 코드 변경 시: 어느 파일 몇 번째 줄을 어떻게 바꾸는지 지정
 
+### D. 명확한 설명 강제 (사용자 토큰 절약)
+
+- ❌ 금지: 다중 옵션 (A/B/C/D), 추측 가설 나열, 의미 모호한 추론
+- ❌ 금지: "본인 추정", "잠재", "가능성" 같은 모호 표현 반복
+- ✅ 강제: **결론 먼저 1줄로**, 그 다음 사실 + 사용자 결정 의무
+- ✅ 강제: 사용자가 검증해야 할 영역은 **즉시 검증 가능한 sample** 제공 (3건 이하)
+- ✅ 강제: 본인이 가설일 때 = 가설 명시 + **사용자가 yes/no 답할 수 있는 form**
+- ✅ 강제: 다중 가설 = 가장 가능성 큰 1개만 제시, 나머지는 보류
+
+**Precedent**: 2026-06-03 사용자 명시 — "내용을 이해가 안 되게 어렵게 설명을 하니까, 내가 다시 확인하는 과정을 거치면서 토큰을 쓰게 되잖아". 옵션 나열 X, 결론 + sample 제공.
+
 ---
 
 ## 2. AI 직원 자율 권한 명시
@@ -454,6 +465,7 @@ Lock #22 : qa_mapping_minimization (analysis 수정 → A 필수 / cs_ids → B 
 
 - `[Confirmed via 데이터 엔지니어]` 사용 금지 (PDF 원문 대조 0 시)
 - 그 경우 `[Working-tree raw]` 또는 `[Pending source cross-check]` 사용
+- **PDF 원천 = repo `_done/{yearKey}/{yearKey}_시험지.pdf` + `_정답.pdf`** (2014~2026 전체 보유). AI 직원이 pdftotext로 직접 대조 가능 → 사용자 인용 의뢰 불요, 대조 완료 시 `[Confirmed]` 충족 (2026-06-04 실증: marker 35건 + 정답표 3개 yearKey + cs_spans 1,245건 정정 전부 본 path)
 
 ### §C. 라이브 화면 격리 (lock #12-C)
 
@@ -633,4 +645,6 @@ mismatch 시 **`CLAUDE.md` 우선** (lock #20 정합).
 - v1.0 (2026-05-07): 정비된 단일 정본. 12개 분산 문서 통합. 회기 specific 내용 archive 분리. AI 직원 자율 권한 명시.
 - v1.1 (2026-05-07): §3 "Claude Code 작업 4 원칙" 신규 흡수 (Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution). 이후 §4~§16 shift. 외부 참조 CLAUDE.md best practice 정합.
 - v1.2 (2026-05-31): cs_ids 영구 자산 도구 추가 (`pipeline/cs_ids_recovery.mjs` v2 + `cs_ids_apply.mjs` auto+batch + `cs_ids_revert.mjs` + `annotation_delete.mjs`). 진단 도구 v2 보강 (bogi.diagram + 환각 marker + duplicate_sent_id flag). 검수 보드 v3.1 (cs_ids review) + v3.2 (annotation 삭제 staging). 신규 PDF (교육청/LEET/사관/선택영역) 진입 시 도구 자동 작동 — yearKey/setId/marker 문자 hardcode X / config 분리 (`config/cs_ids_recovery_thresholds.json` + `config/marker_chars.json`). FREE 5수능 release_ready 40/40 통과. duplicate_sentid_hold 2 set 재매핑 완료.
+- v1.3 (2026-06-03): §1.D "명확한 설명 강제" 신규 흡수 (결론 먼저 / 옵션 나열 X / 검증 가능 sample 의무). §6 메타 발문 예외 룰 추가 ("답을 찾을 수 없는 질문" 등 특수 발문 = 발문 정답성 ≠ 지문 일치성 / 정답 = ok:false + R1). setId 충돌 안전장치 sprint (cs_ids_recovery v3.0 전역 sentIndex 폐기 + apply/revert ambiguous_choice_ref skip + bracket_audit/visual_mark_extractor yearKey 격리 + quality_gate annotations 백업 + step4 백업 + apply_para archive). AuditPanel v4 (?yearKey= 라우팅 + 충돌 set 선택 화면 + LEGACY A/B형 33 set 검수 가능화). V (어휘) pat 사양 추가 + QuizPanel V badge skip. annotation schema 확장 — `target='bogi'` + `qId` 필드 (None-None entries 72건 매핑). 본문 marker 정정 batch (2022_9월/2023_9월/2024_6월/2024_9월/2025_9월/2026_6월) — 사용자 PDF 인용 협업 path 영구화.
+- v1.4 (2026-06-04): §9.B PDF 원천 직접 대조 path 명문화 (`_done/` 시험지·정답표 = [Confirmed] 충족, 사용자 인용 의뢰 불요). 당일 4 sprint: 2025_6월 4 set 정합 + 잔여 yearKey 16건 (Q19 발문 유형·ok 재배정 포함) + cs_spans 무결성 — 베타 영역 (수능+모의 22~26) cs_spans 결함 0건 달성. 베타 영역 marker·annotation·span 정합 path 완결.
 - 이전 이력은 archive 참조.
