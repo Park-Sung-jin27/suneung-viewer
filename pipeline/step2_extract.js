@@ -685,7 +685,7 @@ function buildSetsFromPdfText(fullText, questions, sec, yearKey) {
     const sentLines = passageText
       .split(/\n+/)
       .map((s) => s.replace(/[ \t]+/g, " ").trim())
-      .filter((s) => s.length > 3)
+      .filter((s) => s.length > 3 || /^\((가|나|다|라)\)$/.test(s)) // (가)~(라) 단독 줄은 workTag 로 보존 (2027_6월 소실 결함 정정)
       .filter(
         (s) =>
           !/^--\s*\d+\s*of\s*\d+\s*--$/.test(s) &&

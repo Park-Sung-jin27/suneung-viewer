@@ -173346,107 +173346,128 @@
           {
             "id": "r20276as1",
             "t": "'학습을 위한 읽기'는 글의 내용에 해당하는 지식을 습득하기 위한 목적의 읽기로, 내용을 정확하게 파악하고 기억하는 것이 필수적이다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 1
           },
           {
             "id": "r20276as2",
             "t": "대표적인 읽기 전략으로는 SQ3R이 있다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 1
           },
           {
             "id": "r20276as3",
             "t": "SQ3R은 '훑어보기', '질문하기', '읽기', '암송하기', '재검토하기'의 다섯 활동으로 진행된다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276as4",
             "t": "먼저 제목, 목차, 요약문 등을 훑어보면서 글의 핵심 내용을 개관하고 예측한다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276as5",
             "t": "그리고 훑어보는 과정에서 얻은 정보를 토대로 질문을 만든다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276as6",
             "t": "다음으로, 만든 질문에 대한 답을 찾아보며 글을 읽는다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276as7",
             "t": "읽은 후에는 글에서 중요한 내용을 자신의 언어로 표현해 보는 과정을 통해 기억하며 암송한다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276as8",
             "t": "마지막으로, 글의 전체 내용을 다시 확인해 보고, 읽은 내용을 재검토한다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276as9",
             "t": "이 전략의 읽기 전 활동인 '훑어보기'와 '질문하기'는 능동적 읽기에서 매우 중요하다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276as10",
             "t": "훑어보기는 글의 내용이 '무엇에 관한 것'인지 미리 파악하는 것이다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276as11",
             "t": "독자는 대강의 내용을 훑어봄으로써 중점적으로 읽어야 할 내용을 찾고, 글의 전반적인 내용을 확인함으로써 배경지식을 활성화한다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276as12",
             "t": "이를 통해 독자는 글에 대한 적응력이 높아져 읽는 속도가 빨라지고, 읽은 내용을 짜임새 있게 구성하여 더 오래 기억할 수 있게 된다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276as13",
             "t": "질문하기는 읽는 목적을 고려하여 질문을 만드는 것이다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276as14",
             "t": "읽는 과정에서 독자가 질문을 활용하면, 답을 찾으며 읽기 때문에 중요한 내용을 더 잘 선별할 수 있게 된다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276as15",
             "t": "또 질문의 답을 찾는 과정에서 내용에 집중하여 읽기 때문에 더 오랫동안 기억하고 회상할 수 있게 된다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276as16",
             "t": "이러한 질문하기의 효과는 타인이 질문을 제공한 경우에도 발생할 수 있지만 스스로 만든 질문을 활용하여 읽으면 독자의 능동성은 더욱 강화된다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276as17",
             "t": "SQ3R에 ㉠ 새로운 활동을 추가한 여러 전략들도 제시되었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276as18",
             "t": "그중 하나는 '관점 바꾸기'를 추가한 전략이다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276as19",
             "t": "'관점 바꾸기'는 글의 내용을 수동적으로 받아들이는 것이 아니라 자신이 저자의 입장이라면 내용을 효과적으로 전달하기 위해 어떻게 글의 순서를 짤 것인지, 어떤 내용 전달 방법을 활용할 것인지 등을 생각해 보며 읽는 활동이다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276as20",
             "t": "저자의 입장에서 글을 읽는 태도를 갖기 시작하면 내용을 분석적으로 읽을 수 있다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276as21",
             "t": "또 다른 전략에서는 '숙고하기'를 추가하였는데, 이는 글을 읽은 뒤에 자신의 배경지식과 이해한 내용을 연결하여 글의 내용을 깊이 있게 이해하는 활동이다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           }
         ],
         "questions": [
@@ -173768,168 +173789,201 @@
         "sents": [
           {
             "id": "r20276bs1",
-            "t": "조선 시대의 노비는 주인이 상속·매매할 수 있는 물적 성격을 지녔지만, 재산권 및 소송권 등 자유와 권리도 부분적으로 인정받았다.",
-            "sentType": "body"
+            "t": "(가) 조선 시대의 노비는 주인이 상속·매매할 수 있는 물적 성격을 지녔지만, 재산권 및 소송권 등 자유와 권리도 부분적으로 인정받았다.",
+            "sentType": "body",
+            "para": 1
           },
           {
             "id": "r20276bs2",
             "t": "조선 전기에 증가하던 노비의 수는 왜란과 호란 이후에 감소 추세를 보였고, 여러 사정으로 양인과 노비의 신분 격차도 줄어들었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 1
           },
           {
             "id": "r20276bs3",
             "t": "이러한 변화는 노비에 대한 인식 변화로 이어졌고, 이전에는 찾기 어려운 ㉠ 양반들의 노비에 대한 글로 구체화되었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 1
           },
           {
             "id": "r20276bs4",
             "t": "양반들은 노비의 죽음을 애도하거나 행적을 기록한 여러 글을 통해 노비에 대한 다양한 시각을 표면화하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276bs5",
             "t": "충성스러운 노비를 충(忠)이라는 성리학적 이념을 투사하여 칭송하였고, 노비를 작고 연약한 존재로 형상화한 시선은 주인이 노비를 대하는 온정적 차원에 머물렀다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276bs6",
             "t": "노비의 의연한 행동과 의지를 강조하면서도 노비의 불평등한 여건과 처지는 거론하지 않았다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276bs7",
             "t": "빈한한 주인을 위해 희생하는 노비의 애환에 관심을 ⓐ 두면서 노비에 대한 미안한 심경은 드러냈지만 신분 질서를 정면에서 문제 삼지 않았다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276bs8",
             "t": "이러한 양반들의 시각과 달리, 실학자 ㉮ 이익(李瀷)은 다른 각도에서 노비 문제에 접근하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276bs9",
             "t": "그는 인간의 힘으로 어찌할 수 없는 천명(天命), 천체의 운행에 따라 길흉을 점치는 영역인 성명(星命), 시세(時勢)에 따라 인간의 힘이 참여하는 조명(造命)으로 운명을 나누었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276bs10",
             "t": "천명과 성명은 인간이 하는 일에 관여하지 않는 자연 이치로 간주하고, 조명은 인간이 능동적으로 대처하면서 빈부, 귀천 등을 바꾸어 가는 것이라고 규정하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276bs11",
             "t": "그는 조명의 대상을 왕과 고관대작으로 한정했던 이전 학자들의 논의와 달리, 노비를 포함한 모든 사람으로 확대하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276bs12",
             "t": "그는 사회의 전 구성원이 주어진 상황에서 각자의 노력으로 운명을 변화시킬 수 있다고 보았다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276bs13",
             "t": "신분은 세습이 아닌 개인의 재주와 덕행에 따라 결정되어야 한다고 본 그는, 노비의 매매와 세습을 금지하면 노비가 점차 사라질 것이라고 주장하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276bs14",
             "t": "이처럼 그는 양반 중심의 사회에서 벗어나 모두에게 기회를 개방하고자 하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276bs15",
             "t": "그에게 인간 삶의 변화는 각자가 감당해야 할 몫이었고, 국가의 역할은 조명이 가능한 최소한의 기반을 보장해주고 결과에 개입하지 않는 것이었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276bs16",
-            "t": "19세기 말부터 서구의 기본권 사상이 알려지면서 민권에 대한 논의가 구체화되었다.",
-            "sentType": "body"
+            "t": "(나) 19세기 말부터 서구의 기본권 사상이 알려지면서 민권에 대한 논의가 구체화되었다.",
+            "sentType": "body",
+            "para": 5
           },
           {
             "id": "r20276bs17",
             "t": "임오군란 이후, 급진 개화파는 사회 개혁의 핵심 중 하나로 민권 신장에 관심을 기울였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 5
           },
           {
             "id": "r20276bs18",
             "t": "㉯ 유길준은 근대 국민 국가 달성을 위해 필요한 존재로 민(民)에 주목하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 5
           },
           {
             "id": "r20276bs19",
             "t": "그는 민에게는 절대적인 천부 인권 이외에 사회 계약에 의한 상대적 권리인 인위적 권리가 있고, 두 권리를 실질적으로 보장하려면 근대적인 법률의 제정과 시행이 필수적이라고 역설하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 5
           },
           {
             "id": "r20276bs20",
             "t": "하지만 그에게 민은 무지한 존재였기 때문에 교육받지 않으면 사회 혼란을 초래할 수 있는 존재로 간주되었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 5
           },
           {
             "id": "r20276bs21",
             "t": "박영효는 민권이 보장되지 않으면 국권(國權)도 위태롭다고 보았다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 5
           },
           {
             "id": "r20276bs22",
             "t": "그리고 민의 자유와 권리는 법을 통해서만 존재 가능하고, 법을 지킬 때만 보호받을 수 있다고 주장하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 5
           },
           {
             "id": "r20276bs23",
             "t": "김윤식을 비롯한 온건 개화파는 국가의 노비 세습 금지령 공포에 대해 전적으로 지지한다는 입장을 표명하면서도 인간은 타고난 능력에 따라 귀천이 생기고 이에 따라 부림을 받는 것이 정당하다고 주장하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           },
           {
             "id": "r20276bs24",
             "t": "민의 평등을 인정하면서도 신분 차별을 정당화하는 양면적 태도를 보인 것이다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           },
           {
             "id": "r20276bs25",
             "t": "민권에 관한 개화파의 주장은 여러 상황과 맞물려 갑오개혁의 신분제 폐지라는 법제상 조치로 이어졌지만, 노비는 잔존했고 사회적 차별도 지속되었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           },
           {
             "id": "r20276bs26",
             "t": "이러한 상황에서 독립 협회는 자유와 평등은 하늘이 준 권리임을 근거로 노비 소유와 매매를 맹렬히 비판하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           },
           {
             "id": "r20276bs27",
             "t": "일제 강점기에도 신분 차별이 이어지는 가운데 차별받던 백정들의 인권 존중을 요구하는 형평 운동이 전개되었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           },
           {
             "id": "r20276bs28",
             "t": "1923년에 경남 진주에서 형평사가 조직되어 시작된 이 운동은 경제적 부를 쌓은 백정들과 사회 운동가들이 결합하여 본격화되었고, 이후 대중의 호응을 이끌며 전국화되었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           },
           {
             "id": "r20276bs29",
             "t": "이 운동은 인간의 존엄성과 평등을 이루려는 인권 운동이자 참여자들에게 실질적인 혜택을 제공하는 공동체 운동의 성격을 가졌다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           },
           {
             "id": "r20276bs30",
             "t": "이 운동의 도화선이 교육 차별이었던 만큼, 사회적 대우를 받으려면 소양을 갖춰야 한다는 인식에 따라 교육 활동이 펼쳐졌다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           },
           {
             "id": "r20276bs31",
             "t": "그리고 회원들은 인간의 존엄과 평등을 실현하기 위한 활동을 일상에서 실천하고 이를 제도화하고자 분투하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           },
           {
             "id": "r20276bs32",
             "t": "다른 사회 운동과의 연대를 통해 변화를 모색했던 형평 운동은 내부 분열과 갈등, 일제의 억압이 이어지면서 위축되었고, 1935년에 형평사가 대동사로 개칭되면서 운동 본래의 성격을 잃었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           },
           {
             "id": "r20276bs33",
             "t": "하지만 불평등한 사회의 개혁을 추구한 이 운동은 이후의 인권 운동에 적지 않은 영향을 끼쳤다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 6
           }
         ],
         "questions": [
@@ -174441,112 +174495,134 @@
           {
             "id": "r20276cs1",
             "t": "완전경쟁시장의 경제 주체는 완전한 거래 정보를 갖는다고 가정되지만, 현실의 경제 주체는 정보 획득을 위한 투입 비용의 차이에 따라 취득 정보의 양과 질에서 차이가 발생하는 정보 비대칭 상황에 처한다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 1
           },
           {
             "id": "r20276cs2",
             "t": "대표적인 정보 비대칭 상황은 거래의 한쪽이 상대방에 비해 정보를 더 적게 가지는 경우이고, 이때 정보를 적게 가진 경제 주체는 낮은 품질의 상품을 상대적으로 더 비싼 가격에 선택하는 역선택 문제에 직면한다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 1
           },
           {
             "id": "r20276cs3",
             "t": "정보 비대칭 상황을 해소하기 위해 정부는 법에 근거하여 시장에 개입한다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 1
           },
           {
             "id": "r20276cs4",
             "t": "예컨대 정부는 합리적 소비에 필요한 성분이나 효능 등의 정보를 소비자에게 제공할 것을 공급자에게 강제한다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 1
           },
           {
             "id": "r20276cs5",
             "t": "정보 비대칭 문제는 온라인 상거래에서도 발생한다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276cs6",
             "t": "생성형 인공 지능이 활용되면서 이용자가 정보의 진위나 의도, 편향 등의 여부를 알기 어려운 허위·과장 광고가 증가하고 있다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276cs7",
             "t": "이에 정부는 ⓐ 관련 법률 조항을 통해, 인공 지능을 활용한 제품 또는 서비스를 제공하는 사업자에게 생성형 인공 지능 사용 여부를 표시하도록 하는 생성물 표시 의무를 강제하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276cs8",
             "t": "하지만 광고성 정보를 제작하여 게시한 정보 제공자와 광고성 정보가 유통되는 플랫폼 사업자에게도 그와 같은 의무를 부과해야 한다는 주장이 제기되고 있다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276cs9",
             "t": "이렇듯 온라인 정보 비대칭 상황에 대한 정부 개입에 관하여 엇갈리는 주장이 대두되고 있다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276cs10",
             "t": "이 외에도 사회적·정치적 견해 표명에 대한 정부 개입 여부를 두고도 구분되는 입장이 제시되고 있다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 2
           },
           {
             "id": "r20276cs11",
             "t": "완전경쟁시장 모델을 상정하는 ㉠ 사상의 자유 시장 이론에 따르면, 어떤 표현의 진위나 가치 여부는 다양한 의견 간의 경쟁을 통해 결정되어야 하며 정부가 개입하면 안 된다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276cs12",
             "t": "이를 근거로 미국 연방 대법원은 명백하고 현존하는 위험에 해당하지 않는 표현은 기본권으로 보호하고, 플랫폼 시장에도 사업자의 자율 규제를 적용하고 있다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276cs13",
             "t": "우리나라 헌법 재판소도 사회적·정치적 표현의 진위나 가치 여부는 사상과 의견의 경쟁으로 해결되어야 한다는 입장을 유지하고 있다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 3
           },
           {
             "id": "r20276cs14",
             "t": "㉡ 사상의 자유 시장 이론에 대한 비판론도 제기되었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276cs15",
             "t": "비판론에 따르면, 진실한 정보는 과소 공급되고 허위·왜곡 정보가 대량 공급되는 상황에서는 다양한 의견 간의 경쟁이 이루어질 수 없다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276cs16",
             "t": "또 허위·왜곡 정보가 시민의 사회적·정치적 사안 판단에 쓰이고, 정책 담당자도 특정 개인이나 집단이 의도적으로 유통한 정보를 시민의 진정한 의견으로 오인할 수 있다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276cs17",
             "t": "이러한 입장에 따라 비판론은 민주주의 의사 결정의 왜곡을 막기 위해 플랫폼과 정부의 공동 규제가 강화되어야 한다고 주장한다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276cs18",
             "t": "표현의 자유가 기본권이라는 점을 감안해 법적 근거를 갖추되, 유해하거나 불법인 정보를 플랫폼 사업자가 사전에 자율적으로 삭제하거나 차단하고, 미흡하면 사후에 정부가 규제해야 한다는 것이다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 4
           },
           {
             "id": "r20276cs19",
             "t": "정부 개입 여부에 대한 엇갈린 논의는 헌법 재판소의 ⓑ 실명확인 사건에서 표면화되었다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 5
           },
           {
             "id": "r20276cs20",
             "t": "선거 운동 기간 중에 게시판 이용자의 실명 확인 조치를 하지 않은 인터넷 언론사를 제재하는 법률 규정의 위헌 여부에 대해, 헌법 재판소 '다수 의견'은 해당 규정이 위헌이라고 결정하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 5
           },
           {
             "id": "r20276cs21",
             "t": "반면 '소수 의견'은 비판론과 같은 취지에서 허위·왜곡 정보는 토론 등 자율적 방법으로 교정되기 어렵다고 주장하였다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 5
           },
           {
             "id": "r20276cs22",
             "t": "플랫폼과 인공 지능 활용이 일상이 된 시대에 새겨 봐야 할 대목이다.",
-            "sentType": "body"
+            "sentType": "body",
+            "para": 5
           }
         ],
         "questions": [
@@ -175497,14 +175573,9 @@
     "literature": [
       {
         "id": "l20276a",
-        "title": "다음 글을 읽고 물음에 답하시오.",
+        "title": "나룻배 이야기",
         "range": "18~21번",
         "sents": [
-          {
-            "id": "l20276as1",
-            "t": "다음 글을 읽고 물음에 답하시오.",
-            "sentType": "body"
-          },
           {
             "id": "l20276as2",
             "t": "아들 천달이의 안부를 모르는 양 생원은 절로 한숨이 쉬어졌다.",
@@ -175741,11 +175812,6 @@
             "sentType": "body"
           },
           {
-            "id": "l20276as49",
-            "t": "7 20",
-            "sentType": "body"
-          },
-          {
             "id": "l20276as50",
             "t": "“옳지!”",
             "sentType": "body"
@@ -175873,12 +175939,12 @@
           {
             "id": "l20276as75",
             "t": "- 하근찬, ｢나룻배 이야기｣ -",
-            "sentType": "body"
+            "sentType": "author"
           },
           {
             "id": "l20276as76",
             "t": "* 골무샅 : ‘골목’의 사투리.",
-            "sentType": "body"
+            "sentType": "footnote"
           }
         ],
         "questions": [
@@ -176245,238 +176311,243 @@
       },
       {
         "id": "l20276b",
-        "title": "다음 글을 읽고 물음에 답하시오.",
+        "title": "그 나무, 나무, 노인과 꽃",
         "range": "22~27번",
         "sents": [
           {
-            "id": "l20276bs1",
-            "t": "다음 글을 읽고 물음에 답하시오.",
-            "sentType": "body"
+            "id": "l20276bs201",
+            "t": "(가)",
+            "sentType": "workTag"
           },
           {
             "id": "l20276bs2",
             "t": "한 해의 꽃잎을 ㉠ 며칠 만에 활짝 피웠다 지운",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs3",
             "t": "벚꽃 가로 따라가다가",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs4",
             "t": "미처 제 꽃 한 송이도 펼쳐 들지 못하고 멈칫거리는",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs5",
             "t": "늦된 그 나무 발견했지요.",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs6",
             "t": "들킨 게 부끄러운지, 그 나무",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs7",
             "t": "시멘트 개울 한 구석으로 비틀린 뿌리 감춰놓고",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs8",
             "t": "앞줄 아름드리 ⓐ 그늘 속에 반쯤 숨어 있었지요.",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs9",
             "t": "봄은 그 나무에게만 더디고 더뎌서",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs10",
             "t": "꽃철 이미 지난 줄도 모르는지,",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs11",
             "t": "그래도 여느 꽃나무와 다름없이",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs12",
             "t": "가지 가득 매달고 있는 멍울 어딘가 안쓰러웠지요.",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs13",
             "t": "늦된 나무가 비로소 밝혀드는 꽃불 성화,",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs14",
             "t": "환하게 타오를 것이므로 나도 이미 길이 끝난 줄",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs15",
             "t": "까마득하게 잊어버리고 한참이나 거기 멈춰 서 있었지요.",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs16",
             "t": "산에서 내려 ㉡ 두 달거리나 제자릴 찾지 못해",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs17",
             "t": "헤매고 다녔던 저 난만한 봄길 어디,",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs18",
             "t": "늦깎이 깨달음 함께 얻으려고 한나절",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs19",
             "t": "나도 병든 그 나무 곁에서 서성거렸지요.",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs20",
             "t": "이 봄 가기 전 저 나무도 푸릇한 잎새 매달까요?",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs21",
             "t": "무거운 청록으로 여름도 지치고 말면",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs22",
             "t": "불타는 소신공양 틈새 가난한 소지*",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs23",
             "t": "저 나무도 가지가지마다 지펴 올릴 수 있을까요?",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs24",
             "t": "- 김명인, ｢그 나무｣ -",
-            "sentType": "body"
+            "sentType": "author"
           },
           {
             "id": "l20276bs25",
             "t": "* 소지 : 부정을 없애고 소원을 빌기 위해 태워 올리는 종이.",
-            "sentType": "body"
+            "sentType": "footnote"
+          },
+          {
+            "id": "l20276bs202",
+            "t": "(나)",
+            "sentType": "workTag"
           },
           {
             "id": "l20276bs26",
             "t": "대패로 깎아낸 자리마다 무늬가 보인다",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs27",
             "t": "희고 밝은 목질 사이를 지나가는",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs28",
             "t": "어둡고 딱딱한 나이테들",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs29",
             "t": "이 단단한 흔적들은 필시",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs30",
             "t": "겨울이 지나갔던 자리이리라",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs31",
             "t": "꽃과 잎으로 자유로이 드나들며 숨쉬던",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs32",
             "t": "모든 틈과 통로가",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs33",
             "t": "일제히 딱딱하게 오므리고",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs34",
             "t": "한겨울 추위를 막아내던 자리이리라",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs35",
             "t": "두꺼운 껍질도 끝내 견디지 못하고",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs36",
             "t": "거칠게 갈라졌던 자리이리라",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs37",
             "t": "뿌리가 빨아들인 맑은 자양들은",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs38",
             "t": "물관 속에서 호흡과 움직임을 멈추고",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs39",
             "t": "나무 밖의 거대한 힘에 귀기울였으리라",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs40",
             "t": "추위의 난폭한 힘은 기어코 껍질을 뚫고 들어가",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs41",
             "t": "수액 깊이 맵게 스며들었으리라",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs42",
             "t": "수액을 찾아 들어왔던 햇빛과 공기들은",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs43",
             "t": "그 자리에서 ㉢ 겨우내 얼었다가",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs44",
             "t": "독한 향기와 푸르고 진한 빛으로 익어갔으리라",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs45",
             "t": "해마다 얼마나 많은 잎과 꽃들이",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs46",
             "t": "이 무늬를 거쳐 ㉣ 봄에 이르렀을까",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276bs47",
@@ -176496,7 +176567,12 @@
           {
             "id": "l20276bs50",
             "t": "- 김기택, ｢나무｣ -",
-            "sentType": "body"
+            "sentType": "author"
+          },
+          {
+            "id": "l20276bs203",
+            "t": "(다)",
+            "sentType": "workTag"
           },
           {
             "id": "l20276bs51",
@@ -176621,22 +176697,22 @@
           {
             "id": "l20276bs75",
             "t": "- 정지용, ｢노인과 꽃｣ -",
-            "sentType": "body"
+            "sentType": "author"
           },
           {
             "id": "l20276bs76",
             "t": "* 노래 : ‘늘그막’을 점잖게 이르는 말.",
-            "sentType": "body"
+            "sentType": "footnote"
           },
           {
             "id": "l20276bs77",
             "t": "* 고담한 : 예스럽고 맑은 느낌이 있는.",
-            "sentType": "body"
+            "sentType": "footnote"
           },
           {
             "id": "l20276bs78",
             "t": "* 노경 : 늙음의 때 또는 노년의 경지.",
-            "sentType": "body"
+            "sentType": "footnote"
           }
         ],
         "questions": [
@@ -177298,14 +177374,9 @@
       },
       {
         "id": "l20276c",
-        "title": "다음 글을 읽고 물음에 답하시오.",
+        "title": "홍길동전",
         "range": "28~31번",
         "sents": [
-          {
-            "id": "l20276cs1",
-            "t": "다음 글을 읽고 물음에 답하시오.",
-            "sentType": "body"
-          },
           {
             "id": "l20276cs2",
             "t": "그날에 길동이 도적을 데리고 분부하여 왈,",
@@ -177754,12 +177825,7 @@
           {
             "id": "l20276cs91",
             "t": "- ｢홍길동전｣ -",
-            "sentType": "body"
-          },
-          {
-            "id": "l20276cs92",
-            "t": "11 20",
-            "sentType": "body"
+            "sentType": "author"
           }
         ],
         "questions": [
@@ -178204,123 +178270,133 @@
       },
       {
         "id": "l20276d",
-        "title": "다음 글을 읽고 물음에 답하시오.",
+        "title": "만전춘별사, 시조 2수",
         "range": "32~34번",
         "sents": [
           {
-            "id": "l20276ds1",
-            "t": "다음 글을 읽고 물음에 답하시오.",
-            "sentType": "body"
+            "id": "l20276ds201",
+            "t": "(가)",
+            "sentType": "workTag"
           },
           {
             "id": "l20276ds2",
             "t": "얼음 위에 댓잎 자리 보아 임과 나와 얼어 죽을망정",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds3",
             "t": "얼음 위에 댓잎 자리 보아 임과 나와 얼어 죽을망정",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds4",
             "t": "정 둔 오늘 밤 더디 새오시라 더디 새오시라",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds5",
             "t": "경경 고침상*에 어느 잠이 오리오",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds6",
             "t": "서창을 열어하니 도화가 발하도다",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds7",
             "t": "도화는 시름없어 소춘풍*하도다 소춘풍하도다",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds8",
             "t": "넋이라도 임과 한데 지내겠다고 여겼더니",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds9",
             "t": "넋이라도 임과 한데 지내겠다고 여겼더니",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds10",
             "t": "어기신 이가 뉘러시니잇가 뉘러시니잇가",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds11",
             "t": "- 작자 미상, ｢만전춘별사｣ -",
-            "sentType": "body"
+            "sentType": "author"
           },
           {
             "id": "l20276ds12",
             "t": "* 경경 고침상 : 근심에 싸여 있는 외로운 잠자리.",
-            "sentType": "body"
+            "sentType": "footnote"
           },
           {
             "id": "l20276ds13",
             "t": "* 소춘풍 : 봄바람을 희롱함.",
-            "sentType": "body"
+            "sentType": "footnote"
+          },
+          {
+            "id": "l20276ds202",
+            "t": "(나)",
+            "sentType": "workTag"
           },
           {
             "id": "l20276ds14",
             "t": "시름을 꺼내 들어 얽어 매고 둘러 묶어",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds15",
             "t": "푸른 강물에 풍덩 들입다 띄워 두면",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds16",
             "t": "자연히 이리저리 떠다니다 절로 삭으리라",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds17",
             "t": "- 김수장 -",
-            "sentType": "body"
+            "sentType": "author"
+          },
+          {
+            "id": "l20276ds203",
+            "t": "(다)",
+            "sentType": "workTag"
           },
           {
             "id": "l20276ds18",
             "t": "임으란 회양 금성 오리나무 되고 나는 삼사월 칡넝쿨이 되어",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds19",
             "t": "그 나무에 그 칡이 납거미 나비 감듯 이리로 칭칭 저리로 칭칭",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds20",
             "t": "외오 풀어 옳게 감아 얽어지고 틀어져 밑부터 끝까지 조금도 빈틈",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds21",
             "t": "없이 찬찬 굽이 나게 휘휘 감겨 주야장상 뒤틀어져 감겨 있어",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds22",
             "t": "동 섣달 바람 비 눈 서리를 아무리 맞은들 떨어질 줄 있으랴",
-            "sentType": "body"
+            "sentType": "verse"
           },
           {
             "id": "l20276ds23",
             "t": "- 이정보 -",
-            "sentType": "body"
+            "sentType": "author"
           }
         ],
         "questions": [

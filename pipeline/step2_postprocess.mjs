@@ -120,8 +120,67 @@ function cleanChoiceText(c, ctx = {}) {
  * @param {string} sec  - 'reading' | 'literature'
  * @returns {Array}      - 정제된 세트 배열 (원본 mutate)
  */
+// [NEW 2026-06-05] sents 구조 정제 — 2027_6월 검수에서 발견된 오염 class 자동화
+//   ① 발문 sent 혼입 제거 ② 페이지 노이즈("7 20") 제거 ③ author/footnote/workTag/omission 분류
+//   ④ 문학 verse 추정 (작품 구간 평균 행 길이 기준) ⑤ 문학 title 작품명 자동 추출
+//   한계: 독서 (가)(나) prefix 소실·시각 marker 검증은 추출기(extractor) 책임 — 본 모듈 범위 밖.
+export function cleanSentStructure(set, sec) {
+  const stats = { removed: 0, typed: 0, verse: 0, title: false };
+  if (!Array.isArray(set.sents)) return stats;
+  // ①② 제거
+  const before = set.sents.length;
+  set.sents = set.sents.filter((x) => {
+    const t = (x.t || "").trim();
+    if (t === "다음 글을 읽고 물음에 답하시오.") return false;
+    if (/^\d{1,2}\s+\d{1,2}$/.test(t)) return false;
+    if (/^이 문제지에 관한 저작권/.test(t)) return false;
+    return true;
+  });
+  stats.removed = before - set.sents.length;
+  // ③ 분류
+  for (const x of set.sents) {
+    const t = (x.t || "").trim();
+    if (x.sentType && x.sentType !== "body") continue;
+    if (/^-\s?.+\s?-$/.test(t) && t.length < 40) { x.sentType = "author"; stats.typed++; }
+    else if (/^\*\s?.{1,24}?\s?:/.test(t)) { x.sentType = "footnote"; stats.typed++; }
+    else if (/^\((가|나|다|라)\)$/.test(t)) { x.sentType = "workTag"; stats.typed++; }
+    else if (/^\(중략\)$|^\(중\s?략\)$/.test(t)) { x.sentType = "omission"; stats.typed++; }
+  }
+  // ④ 문학 verse 추정: author/workTag 경계로 작품 구간 분할 → 평균 행 길이 ≤ 32자 && 행 3+ → verse
+  if (sec === "literature") {
+    let seg = [];
+    const flush = () => {
+      const bodies = seg.filter((x) => (x.sentType || "body") === "body");
+      if (bodies.length >= 3) {
+        const avg = bodies.reduce((a, x) => a + (x.t || "").length, 0) / bodies.length;
+        const maxLen = Math.max(...bodies.map((x) => (x.t || "").length));
+        // 시 행: 짧고(평균 ≤26자) 최장 행도 컬럼 폭 미달(≤38자). 소설 줄글은 꽉 차므로 배제.
+        if (avg <= 26 && maxLen <= 38 && bodies.length <= 45) { bodies.forEach((x) => { x.sentType = "verse"; }); stats.verse += bodies.length; }
+      }
+      seg = [];
+    };
+    for (const x of set.sents) {
+      if ((x.sentType || "") === "author") { flush(); continue; }
+      seg.push(x);
+    }
+    flush();
+  }
+  // ⑤ 문학 title: author 안 ｢작품명｣ 수집
+  if (sec === "literature" && (!set.title || /물음에 답하시오/.test(set.title))) {
+    const names = [];
+    for (const x of set.sents) {
+      if ((x.sentType || "") !== "author") continue;
+      const m = (x.t || "").match(/｢([^｣]+)｣/);
+      if (m) names.push(m[1]);
+      else { const m2 = (x.t || "").match(/^-\s?(.+?)\s?-$/); if (m2) names.push(m2[1] + " 시조"); }
+    }
+    if (names.length) { set.title = names.join(", "); stats.title = true; }
+  }
+  return stats;
+}
+
 export function postprocess(sets, sec, ctx = {}) {
-  const stats = { qt: 0, bogi: 0, choice: 0 };
+  const stats = { qt: 0, bogi: 0, choice: 0, sent: 0 };
   const yearKey = ctx.yearKey ?? null;
 
   for (const set of sets) {
@@ -147,8 +206,14 @@ export function postprocess(sets, sec, ctx = {}) {
     }
   }
 
+  for (const set of sets) {
+    const st = cleanSentStructure(set, sec);
+    stats.sent += st.removed + st.typed + st.verse + (st.title ? 1 : 0);
+  }
+
   const parts = [];
   if (stats.qt) parts.push(`questionType:${stats.qt}`);
+  if (stats.sent) parts.push(`sents구조:${stats.sent}`);
   if (stats.bogi) parts.push(`bogi분리:${stats.bogi}`);
   if (stats.choice) parts.push(`선지정제:${stats.choice}`);
   if (parts.length) console.log(`  [postprocess] ${parts.join(" ")}`);
