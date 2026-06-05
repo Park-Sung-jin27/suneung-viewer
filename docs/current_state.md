@@ -1,4 +1,4 @@
-# 현 진행 상황 — 2026-06-05
+# 현 진행 상황 — 2026-06-05 (일과 종결)
 
 ## 현황
 
@@ -101,12 +101,14 @@
 - **viewer 측 target='bogi' 처리 path**: schema 확장 완료, 코드 변경 의무 잔존.
 - **LEGACY 모의 14~21**: 156 set 완전 미진입. 13개년 비전 달성 path 최대 영역.
 - **LEGACY cs_spans 420건** (dead 303 + text_miss 117): 베타는 0건 달성, LEGACY는 미착수.
+- **para 미부여 독서 12 set**: 자동 추출 불가 (PDF 들여쓰기 신호 부재·복합 지문) — PDF 수동 대조 sprint 필요.
 - **quality_gate 사전 존재 CRITICAL**: suneung5 21건 (bracket 의심 14 + analysis_id_leak 5 + questionType 2) — 오늘 변경과 무관한 사전 존재분, 검토 sprint 필요.
 
 ---
 
 ## 변경 이력
 
+- **2026-06-05 (오늘) 3차 — 신규 시험 진입 + 문단 기능**: ① **2027_6월 진입 완료** (8 set, 라이브 검수 모드 노출): 정답표 PNG 신형식 — step1_answer.js 본체 PNG/JPG/WebP 지원 추가, PNG 추출 34문항 = AI 직접 판독과 100% 일치. step2 독서 4 set Gemini 경로 marker 오염 (①ⓕⓖ 오염·한 칸 밀림·㉮㉯ 소실) → 시험지 PDF 대조 전수 정정 + 재정박 14건, 최종 본문=문항 marker 4/4 정합·정답 34/34·치명 0. 문학 4 set = pdf-parse 경로 원본 보존. 원천 PDF·PNG `_done/2027_6월/` 보관. release_status 미지정 = 학생 비노출 (release 전환은 검수 후 대표 결정). ② **독서 문단 기능 출시**: `pipeline/para_assign.mjs` 영구 도구 (PDF -layout 들여쓰기 기반 경계 추출 + --bounds 옵션) + 베타 독서 51 set + 2027_6월 3 set para 부여 + PassagePanel 문단 들여쓰기 렌더 + QuizPanel 'N문단' badge 활성화 (해설 무수정). para 미부여 12 set = 수동 목록 (r2022d/r20256d/r20229d/r20239d/r20259c/r20259d/r2024c/r20249c/r20249d/r20249a/r20276d 등 — (가)(나) 복합·본문 결함 set). ③ Gemini 크레딧 소진 1회 (충전 후 재개). 환경 결함 추가 기록: host 쓰기 파일의 sandbox 캐시 절단 (Edit 도구·사용자 머신 node 쓰기 모두 해당) → 해당 파일 commit·검증은 대표 머신 path 의무.
 - **2026-06-05 (오늘)**: 오염 글자·marker 누락 잔존 sprint — 회기 시작 검수에서 ⑦계열(⑥~⑪) 오염 글자 class 발견 (기존 검출기 공백: ㉠ⓐ㉮ 계열만 탐지). 베타 전수 스캔 후 9 set 정정: l20246a Q20 (stem '과에 대한' + ⑦①→㉠㉡ + body ㉠㉡ 삽입) / l20246b Q23 (⑦~⑪→㉠~㉤ + body 5건 삽입, s27 '큰'=㉣ 오독 정정) / l20246c Q29 (⑦→㉠) / l20256a Q20 (③⑥→ⓐⓑ + 선지 번호 prefix 제거 + body ⓐⓑ 삽입) / r20266c Q11 (marker 한 칸 밀림 — ⑦→㉠, ㉠→㉡ swap + body ⑦·㉡ 오염 3건 정정 + ㉡ 정위치 삽입) / r20226b Q7 (㉡ 4건 drop) / r2023a Q3 (ⓔ→㉠ + body ㉠ 삽입) / l20259a (body ㉠ 삽입) / l20249c (원미동 시인 — ⓓ 누락으로 화자 marker 한 칸 shift: ⓓ 삽입 + ⓓⓔⓕ→ⓔⓕⓖ + Q29 stem 'ⓐ~ⓖ' + 선지·해설 재구성, 정답표 ④ 정합). 이미지·도식 보기 내 marker 4건 (r2025c/r2023d/r20246a/r20246c) = 정상 판정. 베타 span 0건 유지, 손댄 yearKey QG CRITICAL 신규 0.
 - **2026-06-04 4차**: cs_spans 잔존 138건 종결 — PDF 대조 분류 (본문 누락 0건 확인 / 인용 의역·표기 차이) 후 재정박: LCS 정규화 v2 (한자 병기 괄호 제거 + 인용부호·쉼표 무시) 자동 133건 + 수동 5건 (따옴표 종류 차이 3 / 쓰레기 조각 삭제 1 / l20266c s51 ㉥ 오염 글자 본문 정정 1). **베타 영역 cs_spans 결함 0건 달성** (dead 0 / text_miss 0). 안전 규칙: 동일 문장 재정박 또는 일치율 0.85+ 한정, 전 건 원문 substring 검증. LEGACY 420건 잔존 (별도 sprint). suneung5 QG CRITICAL 21건 동일 (신규 0).
 - **2026-06-04 (오늘) 3차**: cs_spans 무결성 sprint (베타 영역 15 yearKey) — dead sentId 참조(구 포맷 r20236d_s* / l2024_18_21s* / l202311as* 등) + 인용 text 불일치 전수 정정. 정규화 매칭(marker/인용부호/공백 무시 → 원문 substring 복원) 기반 자동 정정 1,107건 (remap 811 + text 재계산 233 + 전체탐색 41 + fragment 22). 베타 잔존 1,245→138 (-89%) — 잔존분은 본문에 해당 구절 부재(고전 표기 차이·본문 축약) = PDF cross-check 의무 needs_human. LEGACY 420건 미착수 (별도 sprint). suneung5 quality_gate CRITICAL 21건 동일 (신규 0). 백업: pipeline/backups/all_data_204.before_span_fix_20260604.json
