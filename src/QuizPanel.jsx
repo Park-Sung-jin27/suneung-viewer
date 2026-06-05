@@ -301,6 +301,11 @@ function BogiRenderer({ bogi, anns = [] }) {
   //   annotated_image / diagram / table 분기 안 본 anns 영향 X (text 영역 단독).
   const hasAnns = Array.isArray(anns) && anns.length > 0;
 
+  // 수업 대화·학습 활동 박스(예: "선생님 : ...")는 시험지 원문에 <보기> 라벨이 없음
+  //   → 라벨 없이 텍스트 박스만 렌더 (2027_6월 Q30 사양, 2026-06-05)
+  const isActivityBox =
+    typeof bogi === "string" && /^\s*선생님\s*[:：]/.test(bogi);
+
   const wrap = (children) => (
     <div
       style={{
@@ -313,11 +318,17 @@ function BogiRenderer({ bogi, anns = [] }) {
         lineHeight: "1.75",
       }}
     >
-      <div
-        style={{ fontWeight: "700", marginBottom: "8px", textAlign: "center" }}
-      >
-        〈보기〉
-      </div>
+      {!isActivityBox && (
+        <div
+          style={{
+            fontWeight: "700",
+            marginBottom: "8px",
+            textAlign: "center",
+          }}
+        >
+          〈보기〉
+        </div>
+      )}
       {children}
     </div>
   );

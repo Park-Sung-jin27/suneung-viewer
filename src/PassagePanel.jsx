@@ -459,7 +459,8 @@ function RenderSent({ sent, sel, anns }) {
           textAlign: "center",
           color: "#9ca3af",
           fontSize: "0.83rem",
-          margin: "10px 0",
+          // 중략·줄거리 표시는 앞뒤 지문과 한 줄씩 띄움 (2026-06-05 사양)
+          margin: "1.6em 0",
           letterSpacing: "0.1em",
         }}
       >
