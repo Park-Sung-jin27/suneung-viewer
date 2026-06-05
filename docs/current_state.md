@@ -99,7 +99,7 @@
 
 - **Cowork 환경 file 절단 결함**: Edit/Write 도구 사용 시 file 일부 잘림 결함 반복. cat heredoc 또는 cp 명령 path 우선 권고.
 - **viewer 측 target='bogi' 처리 path**: schema 확장 완료, 코드 변경 의무 잔존.
-- **LEGACY 모의 14~21**: 156 set 완전 미진입. 13개년 비전 달성 path 최대 영역.
+- **LEGACY 모의 14~21**: 진입 개시 (06-05) — marker 1차 198건 완료. 잔존: marker 99건(2차)·구조 12 set·분포 14 set. 해설·cs_ids 생성은 구조 정합 완료 후 별도 결정(LLM 비용).
 - **LEGACY cs_spans 420건** (dead 303 + text_miss 117): 베타는 0건 달성, LEGACY는 미착수.
 - **para 보류 2 set** (r20249d·r20259d 내부 문단): 이미지 판독 신뢰 한계 — 검수 보드에서 경계 직접 지정 path 후보. 작품 구분·발문 결함은 06-05 정정 완료.
 - **release_ready 기준 공백**: 발문·선지의 시험지 원문 일치를 검사하지 않음 — r2025b Q5 환각 문항이 기준 통과한 채 FREE 공개돼 있었음 (06-05 정정). 차기 gate 보강 후보 (PDF 원문 대조 자동화).
@@ -108,6 +108,7 @@
 
 ## 변경 이력
 
+- **2026-06-05 (오늘) 7차 — 2027_6월 해설 개편 + LEGACY 모의 진입**: ① 2027_6월 해설 품질 개편 — ok:true 91건 전부 '근거→뜻풀이→선지 판정' 3단 서술로 재작성 (3~5등급 눈높이), 🔎 배제근거/정답비교 블록 170건 제거 (선지 해설 자립), Q6 ㉮㉯ 근거 라벨 교정, 문학 c5 페이지 푸터 4건 해소 + step2 tail-cutter 푸터 규칙 2종 본체 추가. 전수 원문 대조(정규화 substring) 신규 검수법 확립 — 검사기 오탐 3건 제외 실결함 전부 정정. ② LEGACY 모의 14~21 진입 — 1단계 전수 진단 (156 set 중 결함 88: marker 75 / 분포 14 / 구조 12 / 오염 1) + 2단계 marker batch 1차: PDF anchor 유일 매칭 198건 자동 삽입 (295→99건, 75→43 set, span 영향 0, 라이브 검증 ✓). 잔존: marker 2차 99건(fitz 좌표 정밀), 구조 12 set(본문 재구축), 분포 14 set(메타 발문 판별).
 - **2026-06-05 (오늘) 6차 — para 미부여 종결**: fitz 좌표 기반 정밀 들여쓰기 추출(특수문자 『』󰡔󰡕 정규화 + y그룹 5pt)로 8 set 경계 회수·적용 — 베타 독서 para 커버 62/64. 추가 발견·정정: r20249d (가)(나) prefix 소실 복원, r20259d s1 발문 쪼가리 제거 + (나) prefix 복원 (둘 다 r20276b class). 잔존 2 set 내부 문단 = 보류 (무리한 추정 대신 검수 보드 직접 지정 path 권고). 사본 경유 적용 + suneung5 gate CRITICAL 0 유지.
 - **2026-06-05 (오늘) 5차 — suneung5 CRITICAL 21건 종결 (FREE 공개 영역)**: ① **r2025b Q5 환각 문항 발견·전면 재구축** — 발문("개화에 대한 이해로 적절하지 않은 것은?")·선지 5개가 통째로 원문과 다른 상태로 공개 중이었음. 시험지 PDF 원문 교체 + questionType negative 정정 + 해설 5건 지문 근거 재작성 + 내부 ID 노출 5건 해소 (ok 분포는 정답표 ⑤ 정합으로 유지). ② bracket 14건 본문 [X] 복원 — workTag 단독 sent 삽입 (viewer 숨김 사양, 렌더 영향 0). ③ r2022c Q10 = 메타 발문 정상 데이터 확인 → quality_gate에 §6 메타 발문 예외 추가 (오탐 정정, 데이터 무수정). gate 결과: **suneung5 CRITICAL 0건 — release_ready 회복**. 작업 경로: sandbox all_data 캐시 결함 우회 위해 사본(pipeline/test_data/all_data_working.json) 경유 + 역복사. 발견된 기준 공백: release_ready가 발문·선지 원문 일치 미검사 — 차기 gate 보강 후보.
 - **2026-06-05 (오늘) 4차 — 2027_6월 검수 + 추출 자동화 본체 반영**: ① annotation 0건 상태 발견 → PDF 도형 좌표(fitz line/rect) + 고해상 crop 판독으로 46건 신규 (밑줄 41 멀티라인 포함 + bracket 5: 나룻배[A]·홍길동[A]·만전춘[A][B][C]). ② 해설 내부 ID 노출 11건 제거 + 보기 유형 라벨 11건 (§7 정합). ③ 구조 검수: 발문 sent 혼입 4 + 페이지 노이즈 2 제거, 문학 title 4건 작품명 추출, verse/workTag/author/footnote 분류, (가)(나)(다) 6건 삽입 + 독서 r20276b (가)(나) prefix 복원, para 캐시 직접 부여(재머지 보존). ④ **본체 자동화**: step2_postprocess.cleanSentStructure 신설 (발문·노이즈·분류·verse 추정·title 추출 — 백업본 검증으로 수동 정정과 대등 확인) + step2_extract "(가)" 3자 필터 소실 결함 수정. 잔여 차기 과제: 독서 marker 오염 자동 검증, annotation 자동 초안 도구화, 연(stanza) 스키마(대표 결정). 라이브 검증 완결 (만전춘 set: workTag+bracket+verse 렌더 ✓).
