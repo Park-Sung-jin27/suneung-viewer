@@ -68,6 +68,18 @@ const CHOICE_CLEAN_RULES = [
     desc: "저작권 고지 문구",
   },
   {
+    id: "R2b_copyright_multiline_tail",
+    // [2026-06-05] 2027_6월 l20276a/b/c c5 — 페이지 경계 선지 꼬리에 줄바꿈 포함 푸터 혼입
+    //   "...있다.\n이 문제지에 관한 저작권은...\n-- 8 of 20 --\n9\n9 20" 형태 전체 절단
+    regex: /\s*이 문제지에 관한 저작권은[\s\S]*$/,
+    desc: "줄바꿈 포함 저작권 고지 + 페이지 푸터 전체",
+  },
+  {
+    id: "R2c_page_footer_tail",
+    regex: /\s*--\s*\d+\s*of\s*\d+\s*--[\s\S]*$/,
+    desc: "-- N of M -- 페이지 푸터 + 이후 전부",
+  },
+  {
     id: "R3_verification_tail",
     regex: /\s*\*\s*확인 사항[\s\S]*$/,
     desc: "* 확인 사항 + 이후 전부",
