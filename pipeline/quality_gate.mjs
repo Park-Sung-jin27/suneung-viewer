@@ -1015,9 +1015,13 @@ for (const yearKey of yearsToCheck) {
         }
 
         // ── [v2] E_questionType_ok_mismatch — positive/negative 정합 ────
+        // [2026-06-05] 메타 발문 예외 (CLAUDE.md §6, precedent r2022c Q10 2026-06-01 사용자 결정):
+        //   "답을 찾을 수 없는 질문은?" 류 = 발문이 '지문 무관'을 요구 → 정답 = ok:false
+        //   → positive 라도 okF=1 / okT=4 분포가 정상. false-positive 방지.
+        const __isMetaStem = /답을 찾을 수 없는|알 수 없는 것은\?|추론할 수 없는 것은\?/.test(q.t || "");
         const __okT = (q.choices || []).filter((c) => c.ok === true).length;
         const __okF = (q.choices || []).filter((c) => c.ok === false).length;
-        if (q.questionType === "positive" && __okT !== 1) {
+        if (q.questionType === "positive" && __okT !== 1 && !(__isMetaStem && __okF === 1)) {
           issue(
             "E_questionType_ok_mismatch",
             yearKey,
