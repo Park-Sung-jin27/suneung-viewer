@@ -9,10 +9,37 @@ dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-export async function extractAnswers(pdfPath) {
-  const pdfBuffer = fs.readFileSync(pdfPath);
-  const pdfBase64 = pdfBuffer.toString("base64");
+// 정답표 입력 형식: PDF + 이미지(png/jpg/webp) 지원
+//   2027학년도 6월 모평부터 정답표가 PNG 로 배포됨 (2026-06-05) — 본체 직접 수정 (일회성 변환 스크립트 금지 원칙)
+const IMAGE_TYPES = {
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".webp": "image/webp",
+};
 
+function buildSourceBlock(filePath) {
+  const ext = path.extname(filePath).toLowerCase();
+  const data = fs.readFileSync(filePath).toString("base64");
+  if (ext === ".pdf") {
+    return {
+      type: "document",
+      source: { type: "base64", media_type: "application/pdf", data },
+    };
+  }
+  const mediaType = IMAGE_TYPES[ext];
+  if (!mediaType) {
+    throw new Error(
+      `지원하지 않는 정답표 형식: ${ext} (지원: .pdf, ${Object.keys(IMAGE_TYPES).join(", ")})`,
+    );
+  }
+  return {
+    type: "image",
+    source: { type: "base64", media_type: mediaType, data },
+  };
+}
+
+export async function extractAnswers(answerPath) {
   const response = await client.messages.create({
     model: "claude-sonnet-4-5",
     max_tokens: 1024,
@@ -26,14 +53,7 @@ export async function extractAnswers(pdfPath) {
       {
         role: "user",
         content: [
-          {
-            type: "document",
-            source: {
-              type: "base64",
-              media_type: "application/pdf",
-              data: pdfBase64,
-            },
-          },
+          buildSourceBlock(answerPath),
           {
             type: "text",
             text: "이 정답표에서 모든 문항의 정답을 추출해라.",
@@ -52,17 +72,17 @@ export async function extractAnswers(pdfPath) {
 
 // 테스트 실행
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const pdfPath = process.argv[2];
+  const answerPath = process.argv[2];
   const maxQuestion = parseInt(process.argv[3]) || 45;
 
-  if (!pdfPath) {
+  if (!answerPath) {
     console.error(
-      "사용법: node pipeline/step1_answer.js [정답표PDF경로] [최대문항수]",
+      "사용법: node pipeline/step1_answer.js [정답표 PDF/PNG 경로] [최대문항수]",
     );
     process.exit(1);
   }
 
-  extractAnswers(pdfPath)
+  extractAnswers(answerPath)
     .then((result) => {
       Object.keys(result).forEach((key) => {
         if (parseInt(key) > maxQuestion) delete result[key];

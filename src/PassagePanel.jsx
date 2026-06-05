@@ -729,10 +729,17 @@ function renderAll(sents, sel, annotations, visualMarks) {
     const flushBody = () => {
       if (!bodyBuf.length) return;
       const head = bodyBuf[0];
+      // para 필드(독서 문단 번호)가 있는 문단 = 시험지와 동일한 첫 줄 들여쓰기 + 문단 간격.
+      //   para 없는 set(문학·LEGACY 미부여)은 기존 렌더 그대로 (영향 0).
+      const hasPara = head.sent.para != null;
       out.push(
         <p
           key={keyPrefix + "_p_" + head.sent.id}
-          style={{ margin: "0 0 5px 0" }}
+          style={
+            hasPara
+              ? { margin: "0 0 10px 0", textIndent: "1em" }
+              : { margin: "0 0 5px 0" }
+          }
         >
           {bodyBuf.map((b) => (
             <RenderSent
@@ -758,6 +765,14 @@ function renderAll(sents, sel, annotations, visualMarks) {
           />,
         );
       } else {
+        // para 경계: 직전 누적 sent 와 문단 번호가 달라지면 새 <p> 시작
+        if (
+          bodyBuf.length &&
+          g.sent.para != null &&
+          bodyBuf[bodyBuf.length - 1].sent.para !== g.sent.para
+        ) {
+          flushBody();
+        }
         bodyBuf.push(g);
       }
     }
