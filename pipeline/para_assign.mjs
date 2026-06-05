@@ -29,6 +29,7 @@ const getArg = (n) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] :
 const APPLY = args.includes("--apply");
 const yearArg = getArg("--year");
 const scope = getArg("--scope");
+const boundsFile = getArg("--bounds"); // 사전 산출 경계 파일 {setId:[sentIdx,...]} — pdftotext 없는 환경(Windows)용
 const years = yearArg ? [yearArg] : scope === "beta" ? BETA : null;
 if (!years) { console.error("사용법: --year <yearKey> | --scope beta [--apply]"); process.exit(1); }
 
@@ -85,17 +86,33 @@ function assignSet(set, heads) {
   return { bounds, totalParas: para, assigned };
 }
 
+function assignFromBounds(set, bounds) {
+  const sents = set.sents || [];
+  let para = 1;
+  const boundSet = new Set(bounds.filter((i) => i > 0));
+  const assigned = sents.map((s, i) => { if (boundSet.has(i)) para++; return para; });
+  return { bounds, totalParas: para, assigned };
+}
+
 const d = JSON.parse(fs.readFileSync(DATA, "utf8"));
 let applied = 0, skipped = 0;
 const report = [];
 for (const yk of years) {
   const Y = d[yk];
   if (!Y) { report.push(`${yk}: yearKey 없음 — skip`); continue; }
-  const lines = pdfLines(yk);
-  if (!lines) { report.push(`${yk}: PDF 없음 — skip`); skipped++; continue; }
-  const heads = paraStartHeads(lines);
+  let preBounds = null;
+  if (boundsFile) preBounds = JSON.parse(fs.readFileSync(boundsFile, "utf8"));
+  let heads = null;
+  if (!preBounds) {
+    const lines = pdfLines(yk);
+    if (!lines) { report.push(`${yk}: PDF 없음 — skip`); skipped++; continue; }
+    heads = paraStartHeads(lines);
+  }
   for (const set of Y.reading || []) {
-    const { bounds, totalParas, assigned } = assignSet(set, heads);
+    if (preBounds && !preBounds[set.id]) { report.push(`  ${yk} ${set.id}: bounds 파일에 없음 — skip`); skipped++; continue; }
+    const { bounds, totalParas, assigned } = preBounds
+      ? assignFromBounds(set, preBounds[set.id])
+      : assignSet(set, heads);
     const sc = (set.sents || []).length;
     const avg = sc / totalParas;
     if (totalParas < 2 || totalParas > 15 || avg > 11) {
