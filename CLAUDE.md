@@ -343,6 +343,12 @@ node pipeline/quality_gate.mjs --scope=suneung5
 - 보기·지문 인용 따옴표 안 텍스트는 글자/숫자 그대로 복사
 - 지문 근거 인용 시 sents 의 t 필드 텍스트 그대로 (의역·요약·글자 변형 금지)
 
+### 해설 서술 사양 (2026-06-05 대표 결정 — 2027_6월 개편 precedent)
+
+- **ok:true(적절) 선지 해설 = 3단 서술 의무**: ① 지문 근거 인용 → ② 그 근거가 뜻하는 바 풀이 → ③ 그래서 선지가 옳은 이유 연결. 타깃(3~4등급) 눈높이의 쉬운 문장.
+- **선지별 해설 안 타 선지 배제 근거 금지** (🔎 배제 근거/정답 비교 블록 금지) — 각 선지 해설은 자립. 배제 논리는 해당 선지 자신의 해설에 녹임.
+- 신규 시험 step3 prompt 작성·개정 시 본 사양 반영 의무.
+
 ### 보기 문제 오류 유형
 
 bogi 필드 비어있지 않은 문항 → analysis 에 다음 중 하나 명시:
@@ -647,4 +653,5 @@ mismatch 시 **`CLAUDE.md` 우선** (lock #20 정합).
 - v1.2 (2026-05-31): cs_ids 영구 자산 도구 추가 (`pipeline/cs_ids_recovery.mjs` v2 + `cs_ids_apply.mjs` auto+batch + `cs_ids_revert.mjs` + `annotation_delete.mjs`). 진단 도구 v2 보강 (bogi.diagram + 환각 marker + duplicate_sent_id flag). 검수 보드 v3.1 (cs_ids review) + v3.2 (annotation 삭제 staging). 신규 PDF (교육청/LEET/사관/선택영역) 진입 시 도구 자동 작동 — yearKey/setId/marker 문자 hardcode X / config 분리 (`config/cs_ids_recovery_thresholds.json` + `config/marker_chars.json`). FREE 5수능 release_ready 40/40 통과. duplicate_sentid_hold 2 set 재매핑 완료.
 - v1.3 (2026-06-03): §1.D "명확한 설명 강제" 신규 흡수 (결론 먼저 / 옵션 나열 X / 검증 가능 sample 의무). §6 메타 발문 예외 룰 추가 ("답을 찾을 수 없는 질문" 등 특수 발문 = 발문 정답성 ≠ 지문 일치성 / 정답 = ok:false + R1). setId 충돌 안전장치 sprint (cs_ids_recovery v3.0 전역 sentIndex 폐기 + apply/revert ambiguous_choice_ref skip + bracket_audit/visual_mark_extractor yearKey 격리 + quality_gate annotations 백업 + step4 백업 + apply_para archive). AuditPanel v4 (?yearKey= 라우팅 + 충돌 set 선택 화면 + LEGACY A/B형 33 set 검수 가능화). V (어휘) pat 사양 추가 + QuizPanel V badge skip. annotation schema 확장 — `target='bogi'` + `qId` 필드 (None-None entries 72건 매핑). 본문 marker 정정 batch (2022_9월/2023_9월/2024_6월/2024_9월/2025_9월/2026_6월) — 사용자 PDF 인용 협업 path 영구화.
 - v1.4 (2026-06-04): §9.B PDF 원천 직접 대조 path 명문화 (`_done/` 시험지·정답표 = [Confirmed] 충족, 사용자 인용 의뢰 불요). 당일 4 sprint: 2025_6월 4 set 정합 + 잔여 yearKey 16건 (Q19 발문 유형·ok 재배정 포함) + cs_spans 무결성 — 베타 영역 (수능+모의 22~26) cs_spans 결함 0건 달성. 베타 영역 marker·annotation·span 정합 path 완결.
+- v1.5 (2026-06-05): §7 해설 서술 사양 추가 (3단 서술 + 배제 블록 금지 — 2027_6월 170건 개편 precedent). 당일: 2027_6월 진입·검수·해설 개편 완결 + FREE 영역 CRITICAL 21건 종결 (r2025b Q5 환각 문항 재구축 — release_ready의 원문 일치 미검사 공백 확인) + 문단 기능 62/64 + LEGACY 모의 진입 (marker 1차 198건). 전수 원문 대조 검수법(정규화 substring ↔ 시험지 PDF) 확립.
 - 이전 이력은 archive 참조.
