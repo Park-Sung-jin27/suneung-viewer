@@ -4791,5 +4791,15 @@
         "sentTo": "l20276ds10"
       }
     ]
+  },
+  "2014_6월A": {
+    "l20146a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20146as1",
+        "sentTo": "l20146as6"
+      }
+    ]
   }
 }
