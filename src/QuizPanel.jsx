@@ -12,30 +12,51 @@ import { saveEvidenceFeedback } from "./saveEvidenceFeedback";
 // 실제 이미지가 연결되지 않은 경우 중립적 박스로 노출 (원본 설명문 숨김)
 function replaceImagePlaceholders(text) {
   if (!text) return text;
-  const re = /\[(?:도식|사진|그림|이미지)\s*:[^\]]+\]/g;
+  // [그림src:/images/x.png] → 실제 인라인 <img> (2014_6월B Q23 공유 마크 사양, 2026-06-07)
+  // [그림: 설명] → 점선 placeholder 칩 (기존 path 유지)
+  const re = /\[(?:도식|사진|그림|이미지)(?:src)?\s*:[^\]]+\]/g;
   if (!re.test(text)) return text;
-  const parts = text.split(/\[(?:도식|사진|그림|이미지)\s*:[^\]]+\]/g);
+  const tokens = text.match(re);
+  const parts = text.split(re);
   const result = [];
   for (let i = 0; i < parts.length; i++) {
     if (parts[i]) result.push(parts[i]);
     if (i < parts.length - 1) {
-      result.push(
-        <span
-          key={"img-ph-" + i}
-          style={{
-            display: "inline-block",
-            padding: "2px 10px",
-            margin: "0 2px",
-            border: "1px dashed #9ca3af",
-            borderRadius: "4px",
-            fontSize: "0.72rem",
-            color: "#6b7280",
-            background: "#f9fafb",
-          }}
-        >
-          🖼 이미지
-        </span>,
-      );
+      const tok = tokens[i] || "";
+      const srcM = tok.match(/^\[(?:도식|사진|그림|이미지)src\s*:\s*([^\]|]+)\]$/);
+      if (srcM) {
+        result.push(
+          <img
+            key={"img-inl-" + i}
+            src={srcM[1].trim()}
+            alt=""
+            style={{
+              height: "1.5em",
+              verticalAlign: "-0.35em",
+              display: "inline",
+              margin: "0 2px",
+            }}
+          />,
+        );
+      } else {
+        result.push(
+          <span
+            key={"img-ph-" + i}
+            style={{
+              display: "inline-block",
+              padding: "2px 10px",
+              margin: "0 2px",
+              border: "1px dashed #9ca3af",
+              borderRadius: "4px",
+              fontSize: "0.72rem",
+              color: "#6b7280",
+              background: "#f9fafb",
+            }}
+          >
+            🖼 이미지
+          </span>,
+        );
+      }
     }
   }
   return result;

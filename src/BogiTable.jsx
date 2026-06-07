@@ -30,6 +30,7 @@ function DataTable({ instruction, headers, rows }) {
             background: "#f9fafb",
             borderBottom: "1px solid #d1d5db",
             letterSpacing: "-0.01em",
+            whiteSpace: "pre-line",
           }}
         >
           {instruction}
