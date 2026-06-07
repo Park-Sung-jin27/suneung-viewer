@@ -251,6 +251,12 @@
 ```
 **언더스코어 없음** (중요).
 
+### 글자 표준 (2026-06-07 확립)
+
+- **한양PUA 등 비표준 글자 금지**: 겹낫표는 『』, 옛한글은 첫가끝 유니코드(ᄒᆞ 등). PDF 추출 시 PUA 잔존하면 변환 의무 (hypua2jamo path)
+- **어휘 문제 판별 = 키워드 + set 마지막 문항 한정** (마커 범위 ㉠~㉤ 단독 판별 금지 — QuizPanel isVocabQuestion, 2026-06-07 대표 결정)
+- **bogi 표는 bogiTable** (선지 ○×표 / 데이터표 양형 자동 판별), **bogi 내 인라인 이미지는 `[그림src:/images/…]`** placeholder
+
 ### ok 필드 (절대 규칙)
 
 - `ok: true` = 지문과 사실 일치
@@ -654,4 +660,5 @@ mismatch 시 **`CLAUDE.md` 우선** (lock #20 정합).
 - v1.3 (2026-06-03): §1.D "명확한 설명 강제" 신규 흡수 (결론 먼저 / 옵션 나열 X / 검증 가능 sample 의무). §6 메타 발문 예외 룰 추가 ("답을 찾을 수 없는 질문" 등 특수 발문 = 발문 정답성 ≠ 지문 일치성 / 정답 = ok:false + R1). setId 충돌 안전장치 sprint (cs_ids_recovery v3.0 전역 sentIndex 폐기 + apply/revert ambiguous_choice_ref skip + bracket_audit/visual_mark_extractor yearKey 격리 + quality_gate annotations 백업 + step4 백업 + apply_para archive). AuditPanel v4 (?yearKey= 라우팅 + 충돌 set 선택 화면 + LEGACY A/B형 33 set 검수 가능화). V (어휘) pat 사양 추가 + QuizPanel V badge skip. annotation schema 확장 — `target='bogi'` + `qId` 필드 (None-None entries 72건 매핑). 본문 marker 정정 batch (2022_9월/2023_9월/2024_6월/2024_9월/2025_9월/2026_6월) — 사용자 PDF 인용 협업 path 영구화.
 - v1.4 (2026-06-04): §9.B PDF 원천 직접 대조 path 명문화 (`_done/` 시험지·정답표 = [Confirmed] 충족, 사용자 인용 의뢰 불요). 당일 4 sprint: 2025_6월 4 set 정합 + 잔여 yearKey 16건 (Q19 발문 유형·ok 재배정 포함) + cs_spans 무결성 — 베타 영역 (수능+모의 22~26) cs_spans 결함 0건 달성. 베타 영역 marker·annotation·span 정합 path 완결.
 - v1.5 (2026-06-05): §7 해설 서술 사양 추가 (3단 서술 + 배제 블록 금지 — 2027_6월 170건 개편 precedent). 당일: 2027_6월 진입·검수·해설 개편 완결 + FREE 영역 CRITICAL 21건 종결 (r2025b Q5 환각 문항 재구축 — release_ready의 원문 일치 미검사 공백 확인) + 문단 기능 62/64 + LEGACY 모의 진입 (marker 1차 198건). 전수 원문 대조 검수법(정규화 substring ↔ 시험지 PDF) 확립.
+- v1.6 (2026-06-07): §6 글자 표준 신설 (PUA 금지·어휘 판별 마지막 문항 룰·bogiTable/인라인 이미지 사양). 당일 8 sprint: ① LEGACY 모의 marker 2차 59건 (fitz 좌표+문장경계 anchor) ② 중복 set 22개 dedupe (모의 19 + 수능 3, 문항 보전 이관) ③ 구조 재구축 14 set (분할 8·전면 재구축 3·검증 3 — r20219e (나) 복원·Q23 이미지 보기 재구축, 황만근 본문 교체, 보리 수필 "전문 생략" placeholder 복원) ④ 분포 이상 14건 ok 반전 (정답표 대조) ⑤ bogi 누락 7건 (표 3 판독·그림 4 추출) ⑥ PUA 표준화 225건 (겹낫표 194→『』·네모가→[가]·옛한글 24→첫가끝 — 폰트 교체 불요 확인) ⑦ LEGACY 독서 para 93 set (각주 오인 post-pass 포함) ⑧ cs_spans 415건 재정박 (B형 suffix 282·한자병기·말줄임·라벨 strip) — **전체 350 set cs_spans 결함 0**. 베타 측: 2026_9월 Q17 데이터표·Q25 어휘 오판·set 정렬 12곳·l20269b Q25 해설 marker 재정박 5건. 잔여: LEGACY 해설·cs_ids 생성 결정(LLM 비용), LEGACY 수능 결함 8 set 재구축, para 미검출 28 set.
 - 이전 이력은 archive 참조.
