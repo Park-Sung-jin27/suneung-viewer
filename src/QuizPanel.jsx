@@ -1087,10 +1087,12 @@ function ChoiceItem({
 // [6] QuestionBlock
 // ══════════════════════════════════════════════════════════
 
-// 어휘 문제 판별 — 발문에 아래 키워드 포함 시
-function isVocabQuestion(questionText) {
+// 어휘 문제 판별 — 어휘 키워드 + set 마지막 문항 한정 (2026-06-07 대표 결정)
+// 마커 범위(㉠~㉤/ⓐ~ⓔ) 단독은 판별 근거 금지 — 이해·감상 문항 오판 원인
+function isVocabQuestion(questionText, isLastQuestion) {
+  if (isLastQuestion === false) return false;
   const t = questionText ?? "";
-  return /사전적\s*의미|문맥상\s*의미|문맥적\s*의미|밑줄\s*친.*의미|㉠.*~.*㉤|ⓐ.*~.*ⓔ|단어의\s*뜻/i.test(
+  return /사전적\s*의미|문맥(상|적)\s*의미|밑줄\s*친.*의미|단어의\s*뜻|바꾸?어\s*쓰기|바꿔\s*쓰기|가까운\s*의미|의미를\s*설명/i.test(
     t,
   );
 }
@@ -1109,11 +1111,12 @@ function QuestionBlock({
   user,
   setId,
   annotations = [],
+  isLastQuestion,
 }) {
   const [clicked, setClicked] = useState(
     isReview ? null : (initialClicked ?? null),
   );
-  const isVocab = isVocabQuestion(question.t);
+  const isVocab = isVocabQuestion(question.t, isLastQuestion);
 
   // 선지·<보기> annotation 분류 (target field 호환 path):
   //   target === 'bogi' + qId === question.id → 본 문제 bogi 영역
@@ -1651,10 +1654,11 @@ export default function QuizPanel({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-      {passageSet.questions.map((q) => (
+      {passageSet.questions.map((q, qIdx) => (
         <QuestionBlock
           key={`${passageSet.id}-${q.id}`}
           question={q}
+          isLastQuestion={qIdx === passageSet.questions.length - 1}
           passageId={passageSet.id}
           sel={sel}
           onSelect={handleSelect}
