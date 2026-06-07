@@ -4801,5 +4801,21 @@
         "sentTo": "l20146as6"
       }
     ]
+  },
+  "2021_6월": {
+    "l20216b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20216bs68",
+        "sentTo": "l20216bs68"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20216bs69",
+        "sentTo": "l20216bs69"
+      }
+    ]
   }
 }
