@@ -195,6 +195,10 @@
 - **가산적 조건 분기 금지** → 단일 통합 컴포넌트 (예: BogiRenderer)
 - **`public/data/all_data_204.json` 단일 파일 구조 유지**
 
+### release 전환 2중 목록 (갱신 의무)
+
+- set release 전환 시 **양쪽 모두** 갱신: ① `src/dataLoader.js` RELEASE_SET_IDS (노출 필터) ② `src/constants.js` RELEASED_SETS (검수 배너 해제). 한쪽만 갱신 시 비노출 또는 배너 잔존 (2026-06-08 실증). 단일 소스 통합은 정리 회기 후보.
+
 ### 핵심 차별점 보호 (절대 의무)
 
 - **사용자 목표 = 2014~2026학년도 13개년 전체 완성** (2026-05-21 명시)
