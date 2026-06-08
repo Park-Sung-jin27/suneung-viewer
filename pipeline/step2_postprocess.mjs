@@ -35,6 +35,15 @@ function detectQuestionType(t) {
   return "positive";
 }
 
+// bogi 맨 앞의 중복 <보기> 라벨 strip — 뷰어가 〈보기〉 헤더를 자동 렌더하므로 중복.
+//   문자열 bogi / annotated_image·diagram 등 object.text 양형 지원 (2026-06-08).
+const BOGI_LABEL_HEAD = /^\s*(-\s*)?[<〈]\s*보\s*기\s*[>〉](\s*-)?\s*\n?/;
+function stripBogiLabel(q) {
+  if (typeof q.bogi === "string") q.bogi = q.bogi.replace(BOGI_LABEL_HEAD, "").trim();
+  else if (q.bogi && typeof q.bogi.text === "string")
+    q.bogi.text = q.bogi.text.replace(BOGI_LABEL_HEAD, "").trim();
+}
+
 function splitBogiFromQt(q) {
   const t = q.t || "";
   // <보 기> (공백 포함) — Gemini가 보기 내용을 q.t에 붙여서 추출한 케이스
@@ -42,6 +51,7 @@ function splitBogiFromQt(q) {
   if (bogiIdx !== -1) {
     if (!q.bogi || q.bogi === "") q.bogi = t.slice(bogiIdx).trim();
     q.t = t.slice(0, bogiIdx).trim();
+    stripBogiLabel(q);
     return true;
   }
   // <학습 활동> 두 번 등장 — 두 번째부터 bogi로 이동
@@ -202,8 +212,9 @@ export function postprocess(sets, sec, ctx = {}) {
         q.questionType = detectQuestionType(q.t);
         stats.qt++;
       }
-      // 2. bogi 분리
+      // 2. bogi 분리 + 맨 앞 중복 <보기> 라벨 strip (이미 bogi에 있는 경우 포함)
       if (splitBogiFromQt(q)) stats.bogi++;
+      stripBogiLabel(q);
       // 3. 선지 텍스트 정제 — yearKey/set_id/question_id 를 cleanChoiceText 로 전달
       for (const c of q.choices) {
         if (
