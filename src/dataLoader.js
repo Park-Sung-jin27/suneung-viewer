@@ -38,6 +38,10 @@ async function _load() {
 //       r20156b/c/e, l2014a, r2015a, r20166a/b/c
 //   별도 release 추가 시 본 const 직접 정정 path.
 const RELEASE_SET_IDS = new Set([
+  // 2027_6월 (2026-06-08 release 추가 — 대표 결정: R3/V 22건 근거 보강 완결 후 전환.
+  //   해설 3단 서술 신기준 + 전수 원문 대조 + quality_gate CRITICAL 0 충족.)
+  "r20276a", "r20276b", "r20276c", "r20276d",
+  "l20276a", "l20276b", "l20276c", "l20276d",
   // 2017수능 (LEGACY 3/8 — 2026-05-21 release 추가)
   // r2017b 보류 (C3=10, analysis 누락 별도 회기).
   // l2017a 보류 (C1+C4=9, cs_ids 누락 별도 회기).
