@@ -865,19 +865,6 @@ export default function Landing({ onStart }) {
               }}
               size="lg"
             />
-            <a
-              href="https://tally.so/r/81jOpo"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                fontSize: "0.85rem",
-                color: C.muted,
-                textDecoration: "underline",
-                cursor: "pointer",
-              }}
-            >
-              1:1 진단 신청 →
-            </a>
           </div>
           <p
             style={{
@@ -1931,14 +1918,10 @@ export default function Landing({ onStart }) {
         <FadeIn delay={0.2}>
           <div style={{ textAlign: "center", marginTop: "32px" }}>
             <Btn
-              label="출시 알림 받기 (1차 베타 100명 한정)"
-              onClick={() =>
-                window.open(
-                  "https://tally.so/r/81jOpo",
-                  "_blank",
-                  "noopener,noreferrer",
-                )
-              }
+              label="무료로 시작하기 →"
+              onClick={() => {
+                window.location.href = "/viewer?year=2026수능";
+              }}
               variant="ghost"
               size="md"
             />

@@ -28,7 +28,6 @@ import {
   YEAR_INFO,
   MODE,
   isSetUnderReview,
-  TALLY_URL,
   isAllowlisted,
 } from "./constants";
 import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
@@ -851,11 +850,9 @@ function MainPage({ isPro, user }) {
             animation: "fadeUp 0.6s ease 0.3s both",
           }}
         >
-          {/* 비로그인 / 로그인 무관 — 베타 테스터 신청 (Tally B2C). */}
+          {/* 2026-06-10 출시 전환 — Tally 베타 신청 폐지, 무료 즉시 체험 CTA. */}
           <button
-            onClick={() =>
-              window.open(TALLY_URL, "_blank", "noopener,noreferrer")
-            }
+            onClick={() => navigate("/viewer?year=2026수능")}
             style={{
               padding: "10px 22px",
               borderRadius: "10px",
@@ -868,7 +865,7 @@ function MainPage({ isPro, user }) {
               fontFamily: "'Noto Sans KR', sans-serif",
             }}
           >
-            🚀 베타 테스터 신청
+            🚀 무료로 시작하기
           </button>
           {/* 로그인 사용자 단독 — 내 패턴 분석. */}
           {user && (
@@ -2328,16 +2325,14 @@ export default function App() {
   return (
     <Routes>
       {/* / 경로: 비로그인 → Landing(랜딩 먼저), 로그인 → MainPage(시험 목록).
-          2026-06-10 복구 — 모두의창업 심사용 MainPage 단독 path를 원복.
-          Landing onStart = Tally 베타 리드 수집 / Hero "지금 체험하기" = 무료 즉시 진입. */}
+          2026-06-10 출시 전환 — Tally 베타 신청 폐지, 메인 CTA = 무료 즉시 체험.
+          onStart = 가입 없이 2026수능 즉시 진입 (0명 단계 사용·데이터 확보 우선). */}
       <Route
         path="/"
         element={
           !user ? (
             <Landing
-              onStart={() =>
-                window.open(TALLY_URL, "_blank", "noopener,noreferrer")
-              }
+              onStart={() => navigate("/viewer?year=2026수능")}
             />
           ) : (
             <Layout user={user} onLogout={handleLogout}>

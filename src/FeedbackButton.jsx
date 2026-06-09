@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// 베타 피드백 Tally form (사용자 = 성진 paste).
+// 의견 보내기 form (출시 후 사용자 피드백 수집 — 효과/개선 데이터 채널 유지).
 //   별도 form 교체 path: 본 const 직접 정정.
 const TALLY_FEEDBACK_URL = "https://tally.so/r/jaJZEY";
 
@@ -30,9 +30,9 @@ export default function FeedbackButton() {
         boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
         transition: "background 0.15s",
       }}
-      aria-label="피드백 보내기"
+      aria-label="의견 보내기"
     >
-      💬 베타 피드백
+      💬 의견 보내기
     </button>
   );
 }
