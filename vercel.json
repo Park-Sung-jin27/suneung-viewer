@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/auth", "destination": "/index.html" },
+    { "source": "/exams", "destination": "/index.html" },
     { "source": "/viewer", "destination": "/index.html" },
     { "source": "/report", "destination": "/index.html" },
     { "source": "/wrongnote", "destination": "/index.html" },
