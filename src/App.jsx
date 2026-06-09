@@ -2363,20 +2363,28 @@ export default function App() {
   return (
     <Routes>
       {/* / 경로: 비로그인 → Landing(랜딩 먼저), 로그인 → MainPage(시험 목록).
-          2026-06-10 출시 전환 — Tally 베타 신청 폐지, 메인 CTA = 무료 즉시 체험.
-          onStart = 가입 없이 2026수능 즉시 진입 (0명 단계 사용·데이터 확보 우선). */}
+          2026-06-10 출시 전환 — Tally 베타 신청 폐지, 메인 CTA = 시험 목록(/exams).
+          onStart = 랜딩 "시작하기" → 시험 목록 화면(가입 없이 무료 시험 선택). */}
       <Route
         path="/"
         element={
           !user ? (
-            <Landing
-              onStart={() => navigate("/viewer?year=2026수능")}
-            />
+            <Landing onStart={() => navigate("/exams")} />
           ) : (
             <Layout user={user} onLogout={handleLogout}>
               <MainPage isPro={isPro} user={user} />
             </Layout>
           )
+        }
+      />
+      {/* /exams: 비로그인 포함 시험 목록 단독 노출 (랜딩 CTA 도착지).
+          MainPage는 user=null이면 무료 release 시험만 표시 → 가입 없이 선택·체험. */}
+      <Route
+        path="/exams"
+        element={
+          <Layout user={user} onLogout={handleLogout}>
+            <MainPage isPro={isPro} user={user} />
+          </Layout>
         }
       />
       <Route path="/auth" element={user ? <AuthRedirect /> : <AuthPage />} />
