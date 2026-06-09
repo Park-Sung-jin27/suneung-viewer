@@ -19,6 +19,7 @@ import PatternReport from "./PatternReport";
 import Payment from "./Payment";
 import Banner from "./Banner";
 import AcademyPreview from "./AcademyPreview";
+import Landing from "./Landing";
 import ResultPage from "./ResultPage";
 import FeedbackButton from "./FeedbackButton";
 import Privacy from "./Privacy";
@@ -2326,15 +2327,23 @@ export default function App() {
 
   return (
     <Routes>
-      {/* / 경로: 비로그인 포함 MainPage 단독 노출 path.
-          5개년 무료 수능 즉시 view 가능 → 모두의창업 심사 등 외부 평가 정합.
-          베타 테스터 신청 (Tally B2C) = MainPage hero CTA 안 통합. */}
+      {/* / 경로: 비로그인 → Landing(랜딩 먼저), 로그인 → MainPage(시험 목록).
+          2026-06-10 복구 — 모두의창업 심사용 MainPage 단독 path를 원복.
+          Landing onStart = Tally 베타 리드 수집 / Hero "지금 체험하기" = 무료 즉시 진입. */}
       <Route
         path="/"
         element={
-          <Layout user={user} onLogout={handleLogout}>
-            <MainPage isPro={isPro} user={user} />
-          </Layout>
+          !user ? (
+            <Landing
+              onStart={() =>
+                window.open(TALLY_URL, "_blank", "noopener,noreferrer")
+              }
+            />
+          ) : (
+            <Layout user={user} onLogout={handleLogout}>
+              <MainPage isPro={isPro} user={user} />
+            </Layout>
+          )
         }
       />
       <Route path="/auth" element={user ? <AuthRedirect /> : <AuthPage />} />
