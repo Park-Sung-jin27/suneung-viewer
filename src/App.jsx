@@ -2034,6 +2034,17 @@ function AuthPage() {
     if (error) setError(error.message);
   }
 
+  async function handleKakao() {
+    // 2026-06-10 카카오 로그인 추가. redirectTo origin 명시 (구글과 동일 path).
+    //   ※ Supabase Kakao provider: Client ID=REST API 키 / Client Secret=앱 키 편집페이지 코드
+    //   ※ 비즈앱 아니면 이메일 미수집 → Supabase "Allow users without an email" ON 필요.
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "kakao",
+      options: { redirectTo: window.location.origin },
+    });
+    if (error) setError(error.message);
+  }
+
   const inp = {
     width: "100%",
     padding: "10px 14px",
@@ -2204,6 +2215,33 @@ function AuthPage() {
             />
           </svg>
           Google로 계속하기
+        </button>
+        <button
+          onClick={handleKakao}
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginTop: "10px",
+            borderRadius: "8px",
+            background: "#FEE500",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "0.85rem",
+            fontWeight: "600",
+            color: "#191600",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+          }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 3C6.48 3 2 6.58 2 10.94c0 2.82 1.87 5.29 4.68 6.68-.21.77-.76 2.78-.87 3.21-.14.54.2.53.42.39.17-.11 2.71-1.84 3.81-2.59.63.09 1.28.14 1.96.14 5.52 0 10-3.58 10-7.94S17.52 3 12 3z"
+              fill="#191600"
+            />
+          </svg>
+          카카오로 계속하기
         </button>
         {error && (
           <div
