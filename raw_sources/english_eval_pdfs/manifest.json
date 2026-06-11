@@ -1,0 +1,971 @@
+{
+  "createdAt": "2026-06-09T16:17:28.438Z",
+  "source": "EBSi previousPaperListAjax",
+  "sourcePage": "https://www.ebsi.co.kr/ebs/xip/xipc/previousPaperList.ebs?targetCd=D300",
+  "range": "2017학년도~2027학년도 6월 현재, 평가원 6월/9월/수능 영어, 수능은 홀수형 기준",
+  "items": [
+    {
+      "schoolYear": 2017,
+      "actualYear": 2016,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2016,
+      "files": {
+        "problem": {
+          "fileName": "2017학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20160602/go3/eng_mun_BBsQwY6Y.pdf",
+          "ok": true,
+          "size": 2268729,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2017학년도_6월_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20160602/mobile/h3_e_eng_r860EWmR.jpg",
+          "ok": true,
+          "size": 176262,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2017학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20160602/go3/eng_hsj_HkidcDjo.pdf",
+          "ok": true,
+          "size": 420233,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2017,
+      "actualYear": 2016,
+      "month": "9월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2016,
+      "files": {
+        "problem": {
+          "fileName": "2017학년도_9월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20160901/go3/eng_mun_HM3SOlbp.pdf",
+          "ok": true,
+          "size": 2836862,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2017학년도_9월_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20160901/mobile/h3_e_eng_IIZS2TRq.jpg",
+          "ok": true,
+          "size": 172342,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2017학년도_9월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20160901/go3/eng_hsj_H71yEXUI3.pdf",
+          "ok": true,
+          "size": 413268,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2017,
+      "actualYear": 2016,
+      "month": "11월",
+      "examType": "수능",
+      "title": "2017학년도 대학수학능력시험 영어 홀수형",
+      "sourceBlockYear": 2016,
+      "files": {
+        "problem": {
+          "fileName": "2017학년도_수능_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20161117/go3/eng1_mun_HfKsp3MS.pdf",
+          "ok": true,
+          "size": 1346153,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2017학년도_수능_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20161117/mobile/h3_e_eng1_Q6on7gz3.jpg",
+          "ok": true,
+          "size": 147201,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2017학년도_수능_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20161117/go3/eng1_hsj_i6xzmeWg1.pdf",
+          "ok": true,
+          "size": 413647,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2018,
+      "actualYear": 2017,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2017,
+      "files": {
+        "problem": {
+          "fileName": "2018학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20170601/go3/eng_mun_1JOMyQlm_3.pdf",
+          "ok": true,
+          "size": 1758573,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2018학년도_6월_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20170601/mobile/h3_e_eng_seCaa23t_3.jpg",
+          "ok": true,
+          "size": 146930,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2018학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20170601/go3/eng_hsj_LFQG101s_1.pdf",
+          "ok": true,
+          "size": 442144,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2018,
+      "actualYear": 2017,
+      "month": "9월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2017,
+      "files": {
+        "problem": {
+          "fileName": "2018학년도_9월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20170906/go3/eng_mun_080Gxw8Z_1.pdf",
+          "ok": true,
+          "size": 1709932,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2018학년도_9월_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20170906/mobile/h3_e_eng_8olkDTM9.jpg",
+          "ok": true,
+          "size": 151605,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2018학년도_9월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20170906/go3/eng_hsj_w5V6Qcqn_1.pdf",
+          "ok": true,
+          "size": 374445,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2018,
+      "actualYear": 2017,
+      "month": "11월",
+      "examType": "수능",
+      "title": "2018학년도 대학수학능력시험 영어 홀수형",
+      "sourceBlockYear": 2017,
+      "files": {
+        "problem": {
+          "fileName": "2018학년도_수능_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20171116/go3/eng1_mun_aFc3leDM.pdf",
+          "ok": true,
+          "size": 383502,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2018학년도_수능_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20171116/mobile/h3_e_eng1_U781HieY.jpg",
+          "ok": true,
+          "size": 161958,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2018학년도_수능_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20171116/go3/eng1_hsj_Lh9FrKAt_02.pdf",
+          "ok": true,
+          "size": 412107,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2019,
+      "actualYear": 2018,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2018,
+      "files": {
+        "problem": {
+          "fileName": "2019학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20180607/go3/eng_mun_yXz41jDE_02_10.pdf",
+          "ok": true,
+          "size": 1776415,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2019학년도_6월_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20180607/mobile/h3_e_eng_RQyi0Jhs.jpg",
+          "ok": true,
+          "size": 157494,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2019학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20180607/go3/eng_hsj_4oTk9v7A_11.pdf",
+          "ok": true,
+          "size": 314134,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2019,
+      "actualYear": 2018,
+      "month": "9월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2018,
+      "files": {
+        "problem": {
+          "fileName": "2019학년도_9월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20180905/go3/eng_mun_CyPgEjw1_10.pdf",
+          "ok": true,
+          "size": 1991908,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2019학년도_9월_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20180905/mobile/h3_e_eng_T2mXNx3m.jpg",
+          "ok": true,
+          "size": 166055,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2019학년도_9월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20180905/go3/eng_hsj_ZLFjwscT_11.pdf",
+          "ok": true,
+          "size": 427287,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2019,
+      "actualYear": 2018,
+      "month": "11월",
+      "examType": "수능",
+      "title": "2019학년도 대학수학능력시험 영어 홀수형",
+      "sourceBlockYear": 2018,
+      "files": {
+        "problem": {
+          "fileName": "2019학년도_수능_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20181115/go3/eng1_mun_4xOjIL2j_11.pdf",
+          "ok": true,
+          "size": 2049784,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2019학년도_수능_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20181115/mobile/h3_e_eng1_FRaqbC8w.jpg",
+          "ok": true,
+          "size": 167236,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2019학년도_수능_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20181115/go3/eng1_hsj_pWkfb81I_11.pdf",
+          "ok": true,
+          "size": 302171,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2020,
+      "actualYear": 2019,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2019,
+      "files": {
+        "problem": {
+          "fileName": "2020학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20190604/go3/eng_mun_IIZS2TRq_10.pdf",
+          "ok": true,
+          "size": 1586638,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2020학년도_6월_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20190604/mobile/h3_m_eng_hsj_abigPasS.jpg",
+          "ok": true,
+          "size": 166976,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2020학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20190604/go3/eng_hsj_ZuNY1SWo_11.pdf",
+          "ok": true,
+          "size": 297771,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2020,
+      "actualYear": 2019,
+      "month": "9월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2019,
+      "files": {
+        "problem": {
+          "fileName": "2020학년도_9월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20190904/go3/eng_mun_U2812ZU3_10.pdf",
+          "ok": true,
+          "size": 2882908,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2020학년도_9월_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20190904/mobile/h3_m_eng_hsj_R3IQYPUR.jpg",
+          "ok": true,
+          "size": 164484,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2020학년도_9월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20190904/go3/eng_hsj_576CED6K_11.pdf",
+          "ok": true,
+          "size": 303570,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2020,
+      "actualYear": 2019,
+      "month": "11월",
+      "examType": "수능",
+      "title": "2020학년도 대학수학능력시험 영어 홀수형",
+      "sourceBlockYear": 2019,
+      "files": {
+        "problem": {
+          "fileName": "2020학년도_수능_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20191114/go3/eng_mun_D76AAM3H_10.pdf",
+          "ok": true,
+          "size": 1632578,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2020학년도_수능_영어_정답.jpg",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20191114/mobile/h3_m_eng_hsj_8RFJ756V.jpg",
+          "ok": true,
+          "size": 61293,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2020학년도_수능_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20191114/go3/eng_hsj_5I29RAO6_11.pdf",
+          "ok": true,
+          "size": 310984,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2021,
+      "actualYear": 2020,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2020,
+      "files": {
+        "problem": {
+          "fileName": "2021학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20200618/go3/eng_mun_V98AZ88U.pdf",
+          "ok": true,
+          "size": 1937939,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2021학년도_6월_영어_정답.png",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20200618/mobile/h3_m_eng_ans_HD3E7FA2.png",
+          "ok": true,
+          "size": 33088,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2021학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20200618/go3/eng_hsj_KKFWZ4N4.pdf",
+          "ok": true,
+          "size": 445020,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2021,
+      "actualYear": 2020,
+      "month": "9월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2020,
+      "files": {
+        "problem": {
+          "fileName": "2021학년도_9월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20200916/go3/eng_mun_3QL46T62.pdf",
+          "ok": true,
+          "size": 1622006,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2021학년도_9월_영어_정답.png",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20200916/mobile/h3_m_eng_ans_3TN36C2T.png",
+          "ok": true,
+          "size": 19734,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2021학년도_9월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20200916/go3/eng_hsj_68O4PW8O.pdf",
+          "ok": true,
+          "size": 310572,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2021,
+      "actualYear": 2020,
+      "month": "12월",
+      "examType": "수능",
+      "title": "2021학년도 대학수학능력시험_12.3 시행 영어 홀수형",
+      "sourceBlockYear": 2020,
+      "files": {
+        "problem": {
+          "fileName": "2021학년도_수능_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20201203/go3/eng_mun_8JGC8T6P.pdf",
+          "ok": true,
+          "size": 6200042,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2021학년도_수능_영어_정답.png",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20201203/mobile/h3_m_eng_ans_A2117MYA.png",
+          "ok": true,
+          "size": 20759,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2021학년도_수능_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20201203/go3/eng_hsj_P1H5NJC3_3.pdf",
+          "ok": true,
+          "size": 319697,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2022,
+      "actualYear": 2021,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2021,
+      "files": {
+        "problem": {
+          "fileName": "2022학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20210603/go3/eng_mun_FU76Z29U.pdf",
+          "ok": true,
+          "size": 1498922,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2022학년도_6월_영어_정답.png",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20210603/mobile/h3_m_eng_ans_R6I2J5Y8.png",
+          "ok": true,
+          "size": 22711,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2022학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20210603/go3/eng_hsj_9D3Q87Z5.pdf",
+          "ok": true,
+          "size": 319141,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2022,
+      "actualYear": 2021,
+      "month": "9월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2021,
+      "files": {
+        "problem": {
+          "fileName": "2022학년도_9월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20210901/go3/eng_mun_LE8A1S8Z.pdf",
+          "ok": true,
+          "size": 2135798,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2022학년도_9월_영어_정답.png",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20210901/mobile/h3_m_eng_ans_MB551NX8.png",
+          "ok": true,
+          "size": 32092,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2022학년도_9월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20210901/go3/eng_hsj_71599998.pdf",
+          "ok": true,
+          "size": 320612,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2022,
+      "actualYear": 2021,
+      "month": "11월",
+      "examType": "수능",
+      "title": "2022학년도 대학수학능력시험 영어 홀수형",
+      "sourceBlockYear": 2021,
+      "files": {
+        "problem": {
+          "fileName": "2022학년도_수능_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20211118/go3/eng_mun_LMP621U2.pdf",
+          "ok": true,
+          "size": 1756140,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2022학년도_수능_영어_정답.png",
+          "url": "http://wdown.ebsi.co.kr/W61001/01exam/20211118/mobile/h3_m_eng_ans_4EVI2VA4.png",
+          "ok": true,
+          "size": 18084,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2022학년도_수능_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20211118/go3/eng_hsj_G2ZP4G8M_1.pdf",
+          "ok": true,
+          "size": 293730,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2023,
+      "actualYear": 2022,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2022,
+      "files": {
+        "problem": {
+          "fileName": "2023학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20220609/go3/eng_mun_9M5Z4AHZ.pdf",
+          "ok": true,
+          "size": 1384487,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2023학년도_6월_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20220609/mobile/h3_m_eng_ans_C6XOXJRM.png",
+          "ok": true,
+          "size": 21578,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2023학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20220609/go3/eng_hsj_328296J8_2.pdf",
+          "ok": true,
+          "size": 298643,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2023,
+      "actualYear": 2022,
+      "month": "8월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2022,
+      "files": {
+        "problem": {
+          "fileName": "2023학년도_9월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20220901/go3/eng_mun_597GPHX6.pdf",
+          "ok": true,
+          "size": 1393698,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2023학년도_9월_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20220901/mobile/h3_m_eng_ans_AM7UH41C.png",
+          "ok": true,
+          "size": 21815,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2023학년도_9월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20220901/go3/eng_hsj_99VPWT1Q.pdf",
+          "ok": true,
+          "size": 286780,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2023,
+      "actualYear": 2022,
+      "month": "11월",
+      "examType": "수능",
+      "title": "2023학년도 대학수학능력시험 영어 홀수형",
+      "sourceBlockYear": 2022,
+      "files": {
+        "problem": {
+          "fileName": "2023학년도_수능_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20221117/go3/eng_mun_31646247.pdf",
+          "ok": true,
+          "size": 4072457,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2023학년도_수능_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20221117/mobile/h3_m_eng_ans_V985P515.png",
+          "ok": true,
+          "size": 22368,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2023학년도_수능_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20221117/go3/eng_hsj_8A583AK8_1.pdf",
+          "ok": true,
+          "size": 528056,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2023,
+      "files": {
+        "problem": {
+          "fileName": "2024학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20230601/go3/eng_mun_9ALEM3R5.pdf",
+          "ok": true,
+          "size": 1794215,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2024학년도_6월_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20230601/mobile/h3_m_eng_ans_OLQMO6P5.png",
+          "ok": true,
+          "size": 14530,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2024학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20230601/go3/eng_hsj_O8Y8J8P9.pdf",
+          "ok": true,
+          "size": 371572,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "month": "9월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2023,
+      "files": {
+        "problem": {
+          "fileName": "2024학년도_9월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20230906/go3/eng_mun_34BYO45U.pdf",
+          "ok": true,
+          "size": 1774170,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2024학년도_9월_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20230906/mobile/h3_m_eng_ans_B59L6843.png",
+          "ok": true,
+          "size": 14799,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2024학년도_9월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20230906/go3/eng_hsj_GA8I7278_1.pdf",
+          "ok": true,
+          "size": 377302,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "month": "11월",
+      "examType": "수능",
+      "title": "2024학년도 대학수학능력시험 영어 홀수형",
+      "sourceBlockYear": 2023,
+      "files": {
+        "problem": {
+          "fileName": "2024학년도_수능_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20231116/go3/eng_1_mun_A3KO1N22.pdf",
+          "ok": true,
+          "size": 1637224,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2024학년도_수능_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20231116/mobile/h3_m_eng_1_ans_UO3A2YAF.png",
+          "ok": true,
+          "size": 20911,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2024학년도_수능_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20231116/go3/eng_1_hsj_YANDRG8A_3.pdf",
+          "ok": true,
+          "size": 288110,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2024,
+      "files": {
+        "problem": {
+          "fileName": "2025학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20240604/go3/eng_mun_9NH1T355.pdf",
+          "ok": true,
+          "size": 1324773,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2025학년도_6월_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20240604/mobile/h3_m_eng_ans_RWXXVX66.png",
+          "ok": true,
+          "size": 21106,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2025학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20240604/go3/eng_hsj_37W2M6I6_2.pdf",
+          "ok": true,
+          "size": 289734,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "month": "9월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2024,
+      "files": {
+        "problem": {
+          "fileName": "2025학년도_9월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20240904/go3/eng_1_mun_7A2L4V1X.pdf",
+          "ok": true,
+          "size": 1813338,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2025학년도_9월_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20240904/mobile/h3_m_eng_1_ans_8GA5ZP85_1.png",
+          "ok": true,
+          "size": 20858,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2025학년도_9월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20240904/go3/eng_main_hsj_N5791Z56_1.pdf",
+          "ok": true,
+          "size": 286968,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "month": "11월",
+      "examType": "수능",
+      "title": "2025학년도 대학수학능력시험 영어 홀수형",
+      "sourceBlockYear": 2024,
+      "files": {
+        "problem": {
+          "fileName": "2025학년도_수능_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20241114/go3/eng_1_mun_ZAJ67FV9_1.pdf",
+          "ok": true,
+          "size": 1906778,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2025학년도_수능_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20241114/mobile/h3_m_eng_1_ans_721ALOVS.png",
+          "ok": true,
+          "size": 20218,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2025학년도_수능_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20241114/go3/eng_1_hsj_A2H869V6_3.pdf",
+          "ok": true,
+          "size": 288070,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2025,
+      "files": {
+        "problem": {
+          "fileName": "2026학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20250604/go3/eng_1_mun_B6TBU193.pdf",
+          "ok": true,
+          "size": 1592669,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2026학년도_6월_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20250604/mobile/h3_m_eng_1_ans_9W81DUYU.png",
+          "ok": true,
+          "size": 20850,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2026학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20250604/go3/eng_1_hsj_4GI4O697.pdf",
+          "ok": true,
+          "size": 291331,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "month": "9월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2025,
+      "files": {
+        "problem": {
+          "fileName": "2026학년도_9월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20250903/go3/eng_1_mun_5Y1AF5I8.pdf",
+          "ok": true,
+          "size": 1335041,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2026학년도_9월_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20250903/mobile/h3_m_eng_1_ans_5XX8J41X.png",
+          "ok": true,
+          "size": 21059,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2026학년도_9월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20250903/go3/eng_1_hsj_1P59S4P5.pdf",
+          "ok": true,
+          "size": 284854,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "month": "11월",
+      "examType": "수능",
+      "title": "2026학년도 대학수학능력시험 영어 홀수형",
+      "sourceBlockYear": 2025,
+      "files": {
+        "problem": {
+          "fileName": "2026학년도_수능_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20251113/go3/eng_1_mun_9VSFX7CB.pdf",
+          "ok": true,
+          "size": 1858707,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2026학년도_수능_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20251113/mobile/h3_m_eng_1_ans_UP5L2L99.png",
+          "ok": true,
+          "size": 19790,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2026학년도_수능_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20251113/go3/eng_1_hsj_J63ZOH64.pdf",
+          "ok": true,
+          "size": 292775,
+          "error": ""
+        }
+      }
+    },
+    {
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "month": "6월",
+      "examType": "6월",
+      "title": "고3 6월 모평(평가원) 영어",
+      "sourceBlockYear": 2026,
+      "files": {
+        "problem": {
+          "fileName": "2027학년도_6월_영어_문제.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20260604/go3/eng_1_mun_4J56KPU4.pdf",
+          "ok": true,
+          "size": 1790501,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2027학년도_6월_영어_정답.png",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20260604/mobile/h3_m_eng_1_ans_N9A3KJ88.png",
+          "ok": true,
+          "size": 18743,
+          "error": ""
+        },
+        "explain": {
+          "fileName": "2027학년도_6월_영어_해설.pdf",
+          "url": "https://wdown.ebsi.co.kr/W61001/01exam/20260604/go3/eng_1_hsj_7712E7U1_2.pdf",
+          "ok": true,
+          "size": 306955,
+          "error": ""
+        }
+      }
+    }
+  ],
+  "missing": [],
+  "cleanedAt": "2026-06-09T16:18:41.855Z"
+}

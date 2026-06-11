@@ -167,7 +167,8 @@
         <div class="section">
           <div class="section__title">
             정시 백업안
-            <span class="section__title-tag">잠정 · 6월 모평 후 갱신</span>
+            <span class="section__title-tag" style="background:var(--green-100); color:var(--green-600);">검증된 4개대만</span>
+            <span class="section__title-tag">잠정 28개 제외 · 7월 모집요강 후 확장</span>
           </div>
           <div class="scenarios" id="jeongsi-grid"></div>
         </div>
@@ -206,9 +207,9 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script src="js/data.js"></script>
-    <script src="js/trend_data.js"></script>
-    <script src="js/scenario_engine.js"></script>
+    <script src="js/data.js?v=20260608"></script>
+    <script src="js/trend_data.js?v=20260608"></script>
+    <script src="js/scenario_engine.js?v=20260608"></script>
     <script>
       // ===== 데이터 로드 (window.DEMO_DATA) =====
       let STATE = {
@@ -437,8 +438,8 @@
         if (j_total === 0) {
           document.getElementById("jeongsi-grid").innerHTML = `
       <div style="grid-column: 1 / -1; background: var(--orange-100); color: var(--orange-600); padding: 24px; border-radius: 12px; text-align: center; font-size: 14px; font-weight: 500;">
-        ⚠️ 정시 매칭 없음 — 현재 학생 점수로는 환산공식 검증된 17개 대학에서 정시 균형권이 잡히지 않음.<br/>
-        <span style="font-size:12px; color:var(--gray-700);">→ 수시 우선 전략 권장. 6월 모평 후 백분위 확정 시 환산공식 확장 (220개 대학) 으로 재산정 가능.</span>
+        ⚠️ 정시 매칭 없음 — 현재 검증된 환산공식 4개 대학 (연세대 인문·자연, 가천대 인문·자연) 만 사용 중.<br/>
+        <span style="font-size:12px; color:var(--gray-700);">→ 수시 우선 전략 권장. 잠정 환산공식 28개 대학은 7월 정시 모집요강 발표 후 검증 + 재산정 예정.</span>
       </div>`;
         } else {
           document.getElementById("jeongsi-grid").innerHTML =
@@ -686,13 +687,15 @@
         }
 
         // 매칭된 학과별 차트 카드 그리기
-        let html = '<div style="display:grid; grid-template-columns: repeat(' + Math.min(matched_top.length, 2) + ', 1fr); gap: 16px;">';
+        let html = '<div class="trend-grid">';
         matched_top.forEach((m, idx) => {
           const cid = `trend-chart-${idx}`;
           html += `
-      <div class="panel">
+      <div class="panel trend-card">
         <div class="panel__title">${m.label} — ${m.pick.univ} ${m.pick.dept} <span style="font-size:11px; color:var(--gray-500); font-weight:400;">(${m.data.length}년치)</span></div>
-        <canvas id="${cid}" height="180"></canvas>
+        <div class="trend-chart-wrap">
+          <canvas id="${cid}"></canvas>
+        </div>
         <div style="margin-top:10px; font-size:11px; color:var(--gray-500);">
           ${m.data.length}년 평균 cut70: ${(m.data.reduce((s, x) => s + (x.cut70 || 0), 0) / m.data.length).toFixed(1)} ·
           최신(${m.data[m.data.length - 1].year}): ${m.data[m.data.length - 1].cut70}

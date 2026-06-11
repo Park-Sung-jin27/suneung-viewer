@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>수능 수학 발상맵 MVP</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --ink: #171923;
+      --muted: #667085;
+      --line: #d8dde6;
+      --blue: #2563eb;
+      --green: #15803d;
+      --orange: #c2410c;
+      --violet: #7c3aed;
+      --red: #be123c;
+      --yellow: #a16207;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      letter-spacing: 0;
+      line-height: 1.55;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      min-height: 100vh;
+      background: var(--panel);
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand {
+      padding: 20px 18px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 23px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fafafa;
+      padding: 9px;
+    }
+
+    .metric b {
+      display: block;
+      font-size: 18px;
+    }
+
+    .metric span {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .filters {
+      padding: 12px 14px;
+      display: grid;
+      gap: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .filters select,
+    .filters input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      padding: 9px 10px;
+      color: var(--ink);
+    }
+
+    .problem-list {
+      padding: 10px;
+      overflow: auto;
+      display: grid;
+      gap: 8px;
+    }
+
+    .problem-card {
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 11px;
+      cursor: pointer;
+    }
+
+    .problem-card:hover,
+    .problem-card.active {
+      border-color: var(--blue);
+    }
+
+    .problem-card.active {
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .problem-card small {
+      display: block;
+      color: var(--muted);
+      margin-top: 6px;
+      font-size: 12px;
+    }
+
+    .main {
+      min-width: 0;
+      padding: 20px 24px 28px;
+      overflow: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .topbar h2 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.22;
+    }
+
+    .topbar p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mode-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .icon-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 7px;
+      padding: 8px 11px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .icon-btn.active {
+      border-color: var(--blue);
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.75fr);
+      gap: 14px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .problem-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .problem-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: #fff;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .chip.blue { border-color: #bfdbfe; color: #1d4ed8; background: #eff6ff; }
+    .chip.green { border-color: #bbf7d0; color: #166534; background: #f0fdf4; }
+    .chip.orange { border-color: #fed7aa; color: #9a3412; background: #fff7ed; }
+    .chip.violet { border-color: #ddd6fe; color: #6d28d9; background: #f5f3ff; }
+    .chip.red { border-color: #fecdd3; color: #9f1239; background: #fff1f2; }
+
+    .prompt {
+      font-size: 16px;
+      white-space: pre-wrap;
+    }
+
+    .choices {
+      display: grid;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .choice {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+
+    .choice.answer {
+      border-color: #22c55e;
+      background: #f0fdf4;
+    }
+
+    .idea-flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .flow-step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      min-height: 126px;
+      position: relative;
+    }
+
+    .flow-step::after {
+      content: ">";
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-weight: 800;
+    }
+
+    .flow-step:last-child::after {
+      display: none;
+    }
+
+    .flow-step b {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: #344054;
+      font-size: 13px;
+    }
+
+    .drill {
+      display: grid;
+      gap: 10px;
+    }
+
+    .drill-question {
+      border-left: 4px solid var(--blue);
+      background: #f8fafc;
+      border-radius: 7px;
+      padding: 10px 12px;
+    }
+
+    .drill-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .option-btn {
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .option-btn.correct {
+      border-color: #22c55e;
+      background: #f0fdf4;
+    }
+
+    .option-btn.wrong {
+      border-color: #fb7185;
+      background: #fff1f2;
+    }
+
+    .steps {
+      display: grid;
+      gap: 8px;
+      counter-reset: step;
+    }
+
+    .solution-step {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 9px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .solution-step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #e2e8f0;
+      color: #334155;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .solution-step b {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .solution-step span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mistake-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mistake {
+      border-left: 4px solid var(--red);
+      background: #fff1f2;
+      border-radius: 7px;
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    .mistake b {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .signal-list,
+    .product-list,
+    .ai-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .signal,
+    .product-item,
+    .ai-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      font-size: 13px;
+    }
+
+    .signal b,
+    .product-item b,
+    .ai-item b {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .ai-item.ok { border-color: #bbf7d0; background: #f0fdf4; }
+    .ai-item.warn { border-color: #fed7aa; background: #fff7ed; }
+
+    .routine {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .routine div {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      min-height: 92px;
+    }
+
+    .routine b {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .routine span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 1160px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        min-height: auto;
+      }
+
+      .problem-list {
+        max-height: 310px;
+      }
+
+      .layout,
+      .routine {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .main {
+        padding: 16px 14px 22px;
+      }
+
+      .topbar {
+        flex-direction: column;
+      }
+
+      .mode-buttons {
+        justify-content: flex-start;
+      }
+
+      .idea-flow,
+      .drill-options {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <section class="brand">
+        <h1>수능 수학 발상맵</h1>
+        <div class="subtitle">3~5등급 학생이 4점 문항의 첫 줄을 떠올리게 만드는 MVP</div>
+        <div class="metric-row">
+          <div class="metric"><b>4</b><span>예시 문항</span></div>
+          <div class="metric"><b>5</b><span>발상 단계</span></div>
+          <div class="metric"><b>10분</b><span>하루 루틴</span></div>
+        </div>
+      </section>
+
+      <section class="filters">
+        <select id="domainFilter" aria-label="단원 필터">
+          <option value="all">전체 단원</option>
+          <option value="수학 I">수학 I</option>
+          <option value="수학 II">수학 II</option>
+          <option value="확률과 통계">확률과 통계</option>
+          <option value="미적분">미적분</option>
+        </select>
+        <input id="searchInput" type="search" placeholder="발상, 단원, 실수 검색" />
+      </section>
+
+      <section class="problem-list" id="problemList" aria-label="문항 목록"></section>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h2 id="title"></h2>
+          <p id="summary"></p>
+        </div>
+        <div class="mode-buttons" role="tablist" aria-label="학습 모드">
+          <button class="icon-btn active" data-tab="map" type="button">발상맵</button>
+          <button class="icon-btn" data-tab="first" type="button">첫 줄</button>
+          <button class="icon-btn" data-tab="solution" type="button">풀이</button>
+          <button class="icon-btn" data-tab="mistake" type="button">실수</button>
+          <button class="icon-btn" data-tab="product" type="button">상품성</button>
+        </div>
+      </div>
+
+      <div class="layout">
+        <section class="panel">
+          <div class="problem-box">
+            <div class="problem-meta" id="meta"></div>
+            <div class="prompt" id="prompt"></div>
+            <div class="choices" id="choices"></div>
+          </div>
+
+          <section id="tab-map">
+            <h3>조건에서 첫 줄까지</h3>
+            <div class="idea-flow" id="ideaFlow"></div>
+          </section>
+
+          <section id="tab-first" class="hidden">
+            <h3>첫 줄 훈련</h3>
+            <div class="drill">
+              <div class="drill-question" id="drillQuestion"></div>
+              <div class="drill-options" id="drillOptions"></div>
+            </div>
+          </section>
+
+          <section id="tab-solution" class="hidden">
+            <h3>풀이 순서</h3>
+            <div class="steps" id="solutionSteps"></div>
+          </section>
+
+          <section id="tab-mistake" class="hidden">
+            <h3>자주 틀리는 이유</h3>
+            <div class="mistake-list" id="mistakes"></div>
+          </section>
+
+          <section id="tab-product" class="hidden">
+            <h3>판매 상품으로 만들 때의 화면</h3>
+            <div class="routine">
+              <div><b>1. 오늘의 첫 줄</b><span>문항 전체 풀이 전에 첫 판단만 고르게 함</span></div>
+              <div><b>2. 발상 확인</b><span>조건이 어떤 개념을 부르는지 시각화</span></div>
+              <div><b>3. 풀이 열기</b><span>힌트, 첫 줄, 전체 풀이를 단계별 공개</span></div>
+              <div><b>4. 오답 저장</b><span>실수 유형을 누적해 다음 문제 추천</span></div>
+            </div>
+            <p class="footer-note">이 MVP는 실제 평가원 문항 복제가 아니라 판매 경험을 보기 위한 자체 제작 예시입니다.</p>
+          </section>
+        </section>
+
+        <aside class="side-stack">
+          <section class="panel">
+            <h3>이 문항의 발상 신호</h3>
+            <div class="signal-list" id="signals"></div>
+          </section>
+
+          <section class="panel">
+            <h3>AI는 어디에 쓰나</h3>
+            <div class="ai-list">
+              <div class="ai-item ok">
+                <b>초안 생성</b>
+                문항을 단원, 발상, 실수 유형으로 먼저 분류합니다.
+              </div>
+              <div class="ai-item ok">
+                <b>학생 풀이 첨삭</b>
+                사진으로 올린 풀이에서 조건 누락, 계산 실수, 개념 착각을 잡습니다.
+              </div>
+              <div class="ai-item warn">
+                <b>검수 필요</b>
+                최종 해설과 정답 판단은 강사 검수 뒤에 노출해야 합니다.
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h3>상품 포지션</h3>
+            <div class="product-list">
+              <div class="product-item">
+                <b>대상</b>
+                기출 해설을 보면 이해하지만 혼자 시작을 못하는 3~5등급.
+              </div>
+              <div class="product-item">
+                <b>가격</b>
+                월 14,900원부터 시작. 4주 캠프형은 39,000원 전후.
+              </div>
+              <div class="product-item">
+                <b>차별점</b>
+                정답 풀이가 아니라 첫 발상과 실수 원인을 판다.
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const problems = [
+      {
+        id: "p1",
+        domain: "수학 II",
+        level: "4점",
+        title: "도함수 부호와 그래프 개형",
+        summary: "증가/감소 조건을 보고 미분부터 떠올리는 문항",
+        pattern: "조건 번역형",
+        prompt: "함수 f(x)=x^3-3x^2+a에 대하여, 닫힌구간 [0, 3]에서 f(x)의 최댓값과 최솟값의 합이 5가 되도록 하는 실수 a의 값을 구하시오.",
+        choices: ["3", "4", "9/2", "5", "6"],
+        answer: 2,
+        tags: ["극값", "닫힌구간", "도함수", "끝점 비교"],
+        signals: [
+          ["닫힌구간", "끝점과 극값 후보를 모두 비교해야 한다."],
+          ["최댓값+최솟값", "그래프를 그리기보다 후보값 표를 만든다."],
+          ["상수 a", "전체 그래프를 위아래로 움직이는 값이다."]
+        ],
+        flow: [
+          ["조건 읽기", "닫힌구간 [0,3]이 있으므로 끝점 0,3과 내부 극값을 같이 본다."],
+          ["발상 신호", "최댓값/최솟값은 미분으로 후보를 찾고 함수값 표로 결정한다."],
+          ["떠올릴 도구", "f'(x)=0, 끝점 대입, 상수 a는 모든 함수값에 똑같이 더해짐."],
+          ["첫 줄", "f'(x)=3x^2-6x=3x(x-2)이므로 후보는 x=0,2,3."],
+          ["검산", "a가 모든 후보값에 더해지므로 최댓값+최솟값도 2a만큼 이동한다."]
+        ],
+        drill: {
+          question: "이 문제에서 가장 먼저 써야 할 첫 줄은?",
+          options: [
+            "f(0), f(3)을 바로 더한다.",
+            "f'(x)=3x^2-6x=3x(x-2)를 구한다.",
+            "a=0이라고 놓고 그래프를 그린다.",
+            "최댓값과 최솟값이 같은 경우를 찾는다."
+          ],
+          correct: 1,
+          feedback: "닫힌구간 최댓값/최솟값은 내부 극값 후보와 끝점을 함께 봐야 하므로 도함수부터 구한다."
+        },
+        solution: [
+          ["후보 찾기", "f'(x)=3x(x-2), 내부 임계점은 x=2이고 끝점은 x=0,3이다."],
+          ["함수값 비교", "f(0)=a, f(2)=a-4, f(3)=a이다."],
+          ["최대/최소 결정", "최댓값은 a, 최솟값은 a-4이다."],
+          ["조건 대입", "a+(a-4)=5, 따라서 2a=9."],
+          ["정답 처리", "a=9/2이므로 정답은 3번이다."]
+        ],
+        mistakes: [
+          ["끝점 누락", "닫힌구간인데 x=0,3을 빼고 x=2만 보는 실수."],
+          ["상수 a 오해", "a가 극값 위치를 바꾼다고 생각하는 실수. 위치는 도함수로 결정되고 a는 높이만 바꾼다."],
+          ["최댓값 판단 실수", "f(0)=f(3)처럼 같은 값이 나와도 후보에서 제외하면 안 된다."]
+        ]
+      },
+      {
+        id: "p2",
+        domain: "수학 I",
+        level: "4점",
+        title: "수열 규칙의 고정점 찾기",
+        summary: "점화식이 나오면 항을 몇 개 써서 구조를 잡는 문항",
+        pattern: "반복 구조형",
+        prompt: "수열 {a_n}이 a_1=2, a_{n+1}=2a_n-3을 만족한다. b_n=a_n-3이라 할 때, b_5의 값을 구하시오.",
+        choices: ["-16", "-8", "0", "8", "16"],
+        answer: 0,
+        tags: ["점화식", "치환", "등비수열", "고정점"],
+        signals: [
+          ["a_{n+1}=2a_n-3", "그대로 전개하면 계산이 길어진다."],
+          ["b_n=a_n-3", "문제가 치환 방향을 이미 알려준다."],
+          ["반복", "같은 형태가 되도록 식을 바꾸는 것이 핵심이다."]
+        ],
+        flow: [
+          ["조건 읽기", "다음 항이 이전 항의 일차식으로 정해진다."],
+          ["발상 신호", "b_n=a_n-3을 주었으므로 a_n-3을 한 덩어리로 만든다."],
+          ["떠올릴 도구", "b_{n+1}=a_{n+1}-3으로 바꿔 점화식을 단순화한다."],
+          ["첫 줄", "b_{n+1}=a_{n+1}-3=2a_n-6=2(a_n-3)=2b_n."],
+          ["검산", "b_1=a_1-3=-1, 등비수열이므로 b_5=-16."]
+        ],
+        drill: {
+          question: "b_n이 주어진 이유를 가장 잘 설명한 것은?",
+          options: [
+            "a_n을 모두 없애기 위해서",
+            "점화식을 등비수열 꼴로 바꾸기 위해서",
+            "초항을 양수로 만들기 위해서",
+            "n을 없애고 상수만 남기기 위해서"
+          ],
+          correct: 1,
+          feedback: "치환은 반복되는 식을 단순한 등비 구조로 바꾸라는 신호다."
+        },
+        solution: [
+          ["치환 대입", "b_{n+1}=a_{n+1}-3."],
+          ["점화식 변형", "a_{n+1}=2a_n-3이므로 b_{n+1}=2a_n-6=2(a_n-3)."],
+          ["등비 확인", "b_{n+1}=2b_n이므로 공비가 2인 등비수열이다."],
+          ["초항 계산", "b_1=a_1-3=-1."],
+          ["목표 계산", "b_5=b_1*2^4=-16."]
+        ],
+        mistakes: [
+          ["치환 무시", "a_2, a_3을 계속 구하다가 계산만 하고 구조를 놓친다."],
+          ["상수 처리", "2a_n-3-3을 2(a_n-3)으로 묶지 못한다."],
+          ["지수 착각", "5번째 항은 공비를 4번 곱한다."]
+        ]
+      },
+      {
+        id: "p3",
+        domain: "확률과 통계",
+        level: "4점",
+        title: "조건부확률의 표 만들기",
+        summary: "말 조건을 표로 바꿔 분모를 먼저 잡는 문항",
+        pattern: "분모 고정형",
+        prompt: "한 상자에 빨간 공 3개, 파란 공 2개가 있다. 공을 두 번 꺼내되 꺼낸 공은 다시 넣지 않는다. 두 번째 공이 파란 공일 때, 첫 번째 공이 빨간 공일 확률을 구하시오.",
+        choices: ["1/3", "1/2", "3/5", "2/3", "3/4"],
+        answer: 4,
+        tags: ["조건부확률", "분모", "나열", "복원 없음"],
+        signals: [
+          ["~일 때", "조건부확률. 뒤 조건을 분모로 잡는다."],
+          ["다시 넣지 않는다", "첫 번째 결과가 두 번째 확률을 바꾼다."],
+          ["첫 번째/두 번째", "순서가 있는 경우로 계산한다."]
+        ],
+        flow: [
+          ["조건 읽기", "두 번째가 파란 공이라는 조건이 이미 주어져 있다."],
+          ["발상 신호", "'~일 때'는 분모를 먼저 고정하라는 말이다."],
+          ["떠올릴 도구", "P(첫 빨간 ∩ 둘째 파란) / P(둘째 파란)."],
+          ["첫 줄", "구하는 값은 P(R1 ∩ B2) / P(B2)."],
+          ["검산", "대칭적으로 둘째가 파란 확률은 전체 파란 비율 2/5이다."]
+        ],
+        drill: {
+          question: "조건부확률에서 가장 먼저 정해야 할 것은?",
+          options: [
+            "전체 공의 개수",
+            "분자 사건",
+            "분모 사건",
+            "선택지의 분모 통일"
+          ],
+          correct: 2,
+          feedback: "'두 번째 공이 파란 공일 때'가 조건이므로 P(B2)가 분모다."
+        },
+        solution: [
+          ["사건 설정", "R1: 첫 번째 빨간 공, B2: 두 번째 파란 공."],
+          ["분자 계산", "P(R1 ∩ B2)=3/5 * 2/4=3/10."],
+          ["분모 계산", "P(B2)=2/5. 두 번째 위치도 전체적으로 파란 공 비율과 같다."],
+          ["나누기", "(3/10)/(2/5)=3/4."],
+          ["정답 처리", "조건을 분모로 잡아야 답이 흔들리지 않는다."]
+        ],
+        mistakes: [
+          ["조건 무시", "그냥 첫 번째가 빨간 확률 3/5로 답하는 실수."],
+          ["복원 착각", "다시 넣지 않는데도 두 번째 확률을 항상 2/5로만 계산한다."],
+          ["분모/분자 반전", "P(B2 | R1)을 구해 놓고 답으로 쓰는 실수."]
+        ]
+      },
+      {
+        id: "p4",
+        domain: "미적분",
+        level: "4점",
+        title: "합성함수의 미분 신호",
+        summary: "겉함수와 속함수를 분리해 체인룰을 쓰는 문항",
+        pattern: "구조 분리형",
+        prompt: "g(x)=sin(2x+1)일 때, g'(0)의 값을 구하시오.",
+        choices: ["cos 1", "2cos 1", "-cos 1", "-2cos 1", "sin 1"],
+        answer: 1,
+        tags: ["합성함수", "체인룰", "속미분", "삼각함수"],
+        signals: [
+          ["sin(2x+1)", "삼각함수 안에 또 식이 들어 있다."],
+          ["g'(0)", "미분한 뒤 x=0을 대입한다."],
+          ["2x+1", "속미분 2가 빠지기 쉬운 자리다."]
+        ],
+        flow: [
+          ["조건 읽기", "g(x)는 sin 안에 2x+1이 들어간 합성함수다."],
+          ["발상 신호", "겉은 sin, 속은 2x+1로 나눈다."],
+          ["떠올릴 도구", "(sin u)'=cos u * u'."],
+          ["첫 줄", "g'(x)=cos(2x+1)*2."],
+          ["검산", "x=0을 넣으면 2cos1이다."]
+        ],
+        drill: {
+          question: "이 문제에서 가장 많이 빠뜨리는 것은?",
+          options: [
+            "sin의 미분",
+            "속미분 2",
+            "x=0 대입",
+            "라디안 단위"
+          ],
+          correct: 1,
+          feedback: "합성함수는 겉미분 뒤에 속미분을 곱해야 한다."
+        },
+        solution: [
+          ["구조 분리", "겉함수는 sin u, 속함수는 u=2x+1이다."],
+          ["미분", "g'(x)=cos(2x+1)*(2x+1)'."],
+          ["속미분", "(2x+1)'=2."],
+          ["대입", "g'(0)=2cos(1)."],
+          ["선택지 확인", "정답은 2cos1이다."]
+        ],
+        mistakes: [
+          ["속미분 누락", "cos(2x+1)까지만 쓰고 2를 곱하지 않는다."],
+          ["대입 순서", "x=0을 먼저 넣어 상수함수처럼 생각한다."],
+          ["부호 실수", "sin의 미분을 -cos로 착각한다."]
+        ]
+      }
+    ];
+
+    let selectedId = problems[0].id;
+    let activeTab = "map";
+    let selectedDrill = null;
+
+    const listEl = document.getElementById("problemList");
+    const domainFilter = document.getElementById("domainFilter");
+    const searchInput = document.getElementById("searchInput");
+
+    function currentProblem() {
+      return problems.find((p) => p.id === selectedId) || problems[0];
+    }
+
+    function renderList() {
+      const domain = domainFilter.value;
+      const keyword = searchInput.value.trim();
+      const filtered = problems.filter((p) => {
+        const domainOk = domain === "all" || p.domain === domain;
+        const haystack = [p.title, p.summary, p.domain, p.pattern, ...p.tags].join(" ");
+        const keywordOk = !keyword || haystack.includes(keyword);
+        return domainOk && keywordOk;
+      });
+
+      listEl.innerHTML = "";
+      filtered.forEach((p) => {
+        const btn = document.createElement("button");
+        btn.className = "problem-card" + (p.id === selectedId ? " active" : "");
+        btn.type = "button";
+        btn.innerHTML = `
+          <div class="card-top">
+            <span>${p.title}</span>
+            <span class="badge">${p.level}</span>
+          </div>
+          <small>${p.domain} · ${p.pattern}</small>
+          <small>${p.summary}</small>
+        `;
+        btn.addEventListener("click", () => {
+          selectedId = p.id;
+          selectedDrill = null;
+          render();
+        });
+        listEl.appendChild(btn);
+      });
+    }
+
+    function renderProblem() {
+      const p = currentProblem();
+      document.getElementById("title").textContent = p.title;
+      document.getElementById("summary").textContent = p.summary;
+      document.getElementById("meta").innerHTML = [
+        `<span class="chip blue">${p.domain}</span>`,
+        `<span class="chip green">${p.level}</span>`,
+        `<span class="chip orange">${p.pattern}</span>`,
+        ...p.tags.map((tag) => `<span class="chip">${tag}</span>`)
+      ].join("");
+      document.getElementById("prompt").textContent = p.prompt;
+      document.getElementById("choices").innerHTML = p.choices.map((choice, idx) => `
+        <div class="choice ${idx === p.answer ? "answer" : ""}">
+          <b>${idx + 1}</b> ${choice}
+        </div>
+      `).join("");
+    }
+
+    function renderMap() {
+      const p = currentProblem();
+      document.getElementById("ideaFlow").innerHTML = p.flow.map((item, idx) => `
+        <div class="flow-step">
+          <b>${idx + 1}. ${item[0]}</b>
+          <p>${item[1]}</p>
+        </div>
+      `).join("");
+    }
+
+    function renderFirstLine() {
+      const p = currentProblem();
+      const drill = p.drill;
+      document.getElementById("drillQuestion").textContent = drill.question;
+      document.getElementById("drillOptions").innerHTML = drill.options.map((option, idx) => {
+        let cls = "";
+        if (selectedDrill !== null) {
+          if (idx === drill.correct) cls = " correct";
+          else if (idx === selectedDrill) cls = " wrong";
+        }
+        return `<button class="option-btn${cls}" data-option="${idx}" type="button"><b>${idx + 1}</b> ${option}</button>`;
+      }).join("");
+      document.querySelectorAll("[data-option]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          selectedDrill = Number(btn.dataset.option);
+          renderFirstLine();
+        });
+      });
+      if (selectedDrill !== null) {
+        const feedback = document.createElement("div");
+        feedback.className = "drill-question";
+        feedback.textContent = drill.feedback;
+        document.getElementById("drillOptions").after(feedback);
+      }
+    }
+
+    function renderSolution() {
+      const p = currentProblem();
+      document.getElementById("solutionSteps").innerHTML = p.solution.map((item) => `
+        <div class="solution-step">
+          <div>
+            <b>${item[0]}</b>
+            <span>${item[1]}</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderMistakes() {
+      const p = currentProblem();
+      document.getElementById("mistakes").innerHTML = p.mistakes.map((item) => `
+        <div class="mistake">
+          <b>${item[0]}</b>
+          ${item[1]}
+        </div>
+      `).join("");
+    }
+
+    function renderSignals() {
+      const p = currentProblem();
+      document.getElementById("signals").innerHTML = p.signals.map((item) => `
+        <div class="signal">
+          <b>${item[0]}</b>
+          ${item[1]}
+        </div>
+      `).join("");
+    }
+
+    function renderTabs() {
+      document.querySelectorAll("[data-tab]").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.tab === activeTab);
+      });
+      ["map", "first", "solution", "mistake", "product"].forEach((tab) => {
+        document.getElementById(`tab-${tab}`).classList.toggle("hidden", tab !== activeTab);
+      });
+    }
+
+    function render() {
+      renderList();
+      renderProblem();
+      renderMap();
+      renderFirstLine();
+      renderSolution();
+      renderMistakes();
+      renderSignals();
+      renderTabs();
+    }
+
+    document.querySelectorAll("[data-tab]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        activeTab = btn.dataset.tab;
+        renderTabs();
+      });
+    });
+
+    domainFilter.addEventListener("change", renderList);
+    searchInput.addEventListener("input", renderList);
+
+    render();
+  </script>
+</body>
+</html>
