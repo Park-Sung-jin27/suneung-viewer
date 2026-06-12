@@ -291,6 +291,8 @@ function generateSusiScenarios(student, data) {
     // 이상 데이터 제외
     if (c.dept === "모집단위" || c.dept === "모집인원" ||
         c.dept.indexOf("모집단위") === 0 || c.dept.indexOf("모집인원") === 0) continue;
+    if (c["전형"] === "모집단위" || c["전형"] === "모집인원" ||
+        (c["전형"] && (c["전형"].indexOf("모집단위") === 0 || c["전형"].indexOf("모집인원") === 0))) continue;
     if (typeof c.cut70_grade !== "number") continue;
     if (c.cut70_grade < 1 || c.cut70_grade > 9) continue;
     if (c.cut70_grade >= 8.5) continue;
