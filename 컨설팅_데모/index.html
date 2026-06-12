@@ -839,14 +839,34 @@
 
       // ===== 학과 상세 팝업 (이전 입시결과 + 전형 파일) =====
       function closeDetail() { document.getElementById("detail-modal").style.display = "none"; }
+      function deptCore(d) { return (d || "").replace(/[()\[\]··\s]/g, "").replace(/(학과|학부|전공|계열|과)$/, ""); }
       let __JLOOK = null;
       function jeongsiLookup() {
         if (__JLOOK) return __JLOOK;
-        __JLOOK = { cut: {}, max: {} };
+        __JLOOK = { cut: {}, max: {}, coreCut: {}, tcore: {} };
         const D = window.DEMO_DATA || {};
+        const T = window.TREND_DATA || {};
         const N = (window.ScenarioEngine && ScenarioEngine.normalizeUniv) ? ScenarioEngine.normalizeUniv : function (x) { return x; };
-        (D.jeongsi_cutoffs || []).forEach(function (c) { const k = N(c.univ) + "|" + c.dept; if (!__JLOOK.cut[k]) __JLOOK.cut[k] = c; });
+        const cs = {};
+        (D.jeongsi_cutoffs || []).forEach(function (c) {
+          const k = N(c.univ) + "|" + c.dept;
+          if (!__JLOOK.cut[k]) __JLOOK.cut[k] = c;
+          const ck = N(c.univ) + "|" + deptCore(c.dept);
+          if (deptCore(c.dept).length >= 2) {
+            if (!(ck in cs)) { cs[ck] = c.dept; __JLOOK.coreCut[ck] = c; }
+            else if (cs[ck] !== c.dept) { __JLOOK.coreCut[ck] = null; }
+          }
+        });
         (D.universities || []).forEach(function (u) { if (u.cut_max_official) __JLOOK.max[N(u.name)] = u.cut_max_official; });
+        const ts = {};
+        Object.keys(T).forEach(function (key) {
+          const p = key.split("|");
+          const ck = N(p[0]) + "|" + deptCore(p[1]);
+          if (deptCore(p[1]).length >= 2) {
+            if (!(ck in ts)) { ts[ck] = p[1]; __JLOOK.tcore[ck] = { series: T[key], type: p[2] }; }
+            else if (ts[ck] !== p[1]) { __JLOOK.tcore[ck] = null; }
+          }
+        });
         return __JLOOK;
       }
       function openDetail(el) {
@@ -862,7 +882,7 @@
         html += '<div style="font-size:13px; font-weight:600; margin-bottom:4px;">작년 수시 결과</div>';
         html += '<div style="font-size:13px; color:var(--gray-700,#444); margin-bottom:12px;">70%컷 ' + (sCut || "—") + '등급 · 경쟁률 ' + (sComp || "—") + ' · 모집 ' + (sCap || "—") + '명' + (sJh ? ' · ' + sJh : '') + '</div>';
         const J = jeongsiLookup();
-        const jc = J.cut[N(univ) + "|" + dept];
+        const jc = J.cut[N(univ) + "|" + dept] || J.coreCut[N(univ) + "|" + deptCore(dept)] || null;
         if (jc) {
           const mx = J.max[N(univ)];
           html += '<div style="font-size:13px; font-weight:600; margin-bottom:4px;">작년 정시 결과</div>';
@@ -870,8 +890,9 @@
         }
         const T = window.TREND_DATA || {};
         let trend = T[univ + "|" + dept + "|수시"] || T[univ + "|" + dept + "|정시"] || null;
+        let typ = T[univ + "|" + dept + "|수시"] ? "수시" : (T[univ + "|" + dept + "|정시"] ? "정시" : "");
+        if (!trend) { const tc = J.tcore[N(univ) + "|" + deptCore(dept)]; if (tc) { trend = tc.series; typ = tc.type; } }
         if (trend && trend.length) {
-          const typ = T[univ + "|" + dept + "|수시"] ? "수시" : "정시";
           html += '<div style="font-size:13px; font-weight:600; margin-bottom:6px;">다년 추이 (' + typ + ')</div>';
           html += '<table style="width:100%; font-size:13px; border-collapse:collapse; margin-bottom:14px;">';
           html += '<tr style="color:var(--gray-500);"><td style="padding:3px 0;">연도</td><td style="text-align:right;">70%컷</td><td style="text-align:right;">경쟁률</td><td style="text-align:right;">모집</td></tr>';
