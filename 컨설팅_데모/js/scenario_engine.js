@@ -51,6 +51,11 @@ function normalizeUniv(name) {
   return name;
 }
 
+function isWomensUniv(univ) {
+  if (!univ) return false;
+  return /여자대학/.test(univ) || /여대$/.test(normalizeUniv(univ));
+}
+
 function normalizeCampus(name) {
   if (!name) return "본";
   if (name === "본교" || name === "본") return "본";
@@ -203,6 +208,7 @@ function generateScenarios(student, data) {
       if (!matchesWish(dept.dept, student["희망_계열"])) continue;
       var reg = region_index[norm_univ];
       if (reg && !matchesRegion(reg, student["희망_지역"])) continue;
+      if (student["성별"] === "남" && isWomensUniv(formula.univ)) continue;
       var diff = Math.round((student_scaled - dept.cut70) * 10) / 10;
       var ratio = (student_scaled - dept.cut70) / cut_max;
       var bucket = ratio >= 0.015 ? "safe" : (ratio >= -0.010 ? "balanced" : (ratio >= -0.030 ? "reach" : "fail"));
@@ -337,6 +343,7 @@ function generateSusiScenarios(student, data) {
     if (!matchesWish(c.dept, student["희망_계열"])) continue;
     var reg = region_index[normalizeUniv(c.univ)];
     if (reg && !matchesRegion(reg, student["희망_지역"])) continue;
+    if (student["성별"] === "남" && isWomensUniv(c.univ)) continue;
     var bucket = classifySusi(student_grade, c.cut70_grade);
     var diff = Math.round((c.cut70_grade - student_grade) * 100) / 100;
     var trans_type = classifyTransType(tname);

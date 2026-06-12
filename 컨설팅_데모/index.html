@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>지니쌤 컨설팅 워크스페이스 — 데모</title>
     <link rel="stylesheet" href="css/main.css" />
+    <style>
+      .scenario-card .scenario-list__item--extra { display: none; }
+      .scenario-card.show-all .scenario-list__item--extra { display: block; }
+      .scenario-more-btn {
+        margin-top: 8px; width: 100%; padding: 6px 8px;
+        font-size: 12px; font-weight: 600; color: var(--purple-600);
+        background: #f5f3ff; border: 1px solid #ddd6fe;
+        border-radius: 6px; cursor: pointer;
+      }
+      .scenario-more-btn:hover { background: #ede9fe; }
+    </style>
   </head>
   <body>
     <header class="header">
@@ -46,7 +57,14 @@
                 </select>
               </label>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
+              <label style="font-size:11px; color:var(--gray-700);">성별
+                <select name="gender" style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;">
+                  <option value="">선택</option>
+                  <option value="남">남</option>
+                  <option value="여">여</option>
+                </select>
+              </label>
               <label style="font-size:11px; color:var(--gray-700);">계열
                 <select name="track" style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;">
                   <option value="자연">자연</option>
@@ -301,6 +319,7 @@
             name: str("name"),
             grade: str("grade") || "고3",
             track: str("track") || "자연",
+            "성별": str("gender") || "",
             scores: {
               "국어": { std: num("kor_std"), percentile: num("kor_pct"), grade: num("kor_grade") },
               "수학": { elective: str("math_elec") || "미적분", std: num("math_std"), percentile: num("math_pct"), grade: num("math_grade") },
@@ -543,12 +562,13 @@
 
       // ===== 수시 시나리오 3안 렌더 =====
       function renderSusiScenarios(picks, scenarios) {
-        const card = (key, label, picks_arr, isRecommended) => {
-          const total = scenarios[key] ? scenarios[key].length : 0;
-          const items = picks_arr
+        const card = (key, label, isRecommended) => {
+          const full = scenarios[key] || [];
+          const total = full.length;
+          const items = full
             .map(
               (p, i) => `
-      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}">
+      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}${i >= 5 ? " scenario-list__item--extra" : ""}">
         <div class="name">${p.univ} · ${p.dept}</div>
         <div class="meta">컷 ${p.cut70_grade}등급 | 학생 ${p.student_grade} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${p["전형분류"] || "수시"} | 경쟁률 ${p.competition || "—"}</div>
       </li>
@@ -556,6 +576,9 @@
             )
             .join("");
           const probText = key === "safe" ? "약 80%" : key === "balanced" ? "약 50%" : "약 20%";
+          const moreBtn = total > 5
+            ? `<button type="button" class="scenario-more-btn" onclick="const c=this.closest('.scenario-card'); c.classList.toggle('show-all'); this.textContent=c.classList.contains('show-all')?'접기':('더보기 (전체 ${total}개)');">더보기 (전체 ${total}개)</button>`
+            : "";
           return `
       <div class="scenario-card ${isRecommended ? "scenario-card--recommended" : ""}">
         ${isRecommended ? '<span class="scenario-card__rec">★ 추천</span>' : ""}
@@ -565,13 +588,14 @@
         <ul class="scenario-list">
           ${items || '<li class="scenario-list__empty">매칭 없음 — 조건 완화 권장</li>'}
         </ul>
+        ${moreBtn}
       </div>
     `;
         };
         document.getElementById("susi-grid").innerHTML =
-          card("safe", "안전", picks.safe, false) +
-          card("balanced", "균형", picks.balanced, true) +
-          card("reach", "도전", picks.reach, false);
+          card("safe", "안전", false) +
+          card("balanced", "균형", true) +
+          card("reach", "도전", false);
         const susiTotal = scenarios.safe.length + scenarios.balanced.length + scenarios.reach.length;
         document.getElementById("m-scenario-count").innerHTML =
           `${susiTotal}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 수시 학과</span>`;
