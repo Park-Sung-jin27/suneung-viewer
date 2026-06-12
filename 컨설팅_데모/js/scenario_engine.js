@@ -415,12 +415,59 @@ function generateCombinedDirectorScript(jp, sp, student) {
   ];
 }
 
+function studentPercentileAvg(student) {
+  var sc = student.scores;
+  if (!sc) return null;
+  var k = sc["국어"] && sc["국어"].percentile;
+  var m = sc["수학"] && sc["수학"].percentile;
+  var t1 = sc["탐구1"] && sc["탐구1"].percentile;
+  var t2 = sc["탐구2"] && sc["탐구2"].percentile;
+  if (typeof k !== "number" || typeof m !== "number" || typeof t1 !== "number" || typeof t2 !== "number") return null;
+  return Math.round((k + m + (t1 + t2) / 2) / 3 * 10) / 10;
+}
+
+function generateJeongsiReference(student, trendData) {
+  var avg = studentPercentileAvg(student);
+  if (avg === null) return { avg: null, safe: [], balanced: [], reach: [] };
+  var wish = student["희망_계열"];
+  var results = { avg: avg, safe: [], balanced: [], reach: [] };
+  var keys = Object.keys(trendData || {});
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    if (key.indexOf("|정시") === -1) continue;
+    var arr = trendData[key];
+    if (!arr || !arr.length) continue;
+    var nums = arr.filter(function (x) { return typeof x.cut70 === "number" && x.cut70 <= 100; });
+    if (nums.length < 2) continue;
+    var parts = key.split("|");
+    var dept = parts[1];
+    if (!matchesWish(dept, wish)) continue;
+    var last3 = nums.slice(-3);
+    var sum = 0;
+    for (var j = 0; j < last3.length; j++) sum += last3[j].cut70;
+    var avgcut = Math.round(sum / last3.length * 100) / 100;
+    var diff = Math.round((avg - avgcut) * 10) / 10;
+    var bucket = diff >= 2 ? "safe" : (diff >= -1.5 ? "balanced" : (diff >= -4 ? "reach" : null));
+    if (!bucket) continue;
+    results[bucket].push({
+      univ: parts[0], dept: dept, avgcut: avgcut,
+      latest: nums[nums.length - 1].cut70,
+      yfrom: nums[0].year, yto: nums[nums.length - 1].year, yrs: nums.length, diff: diff
+    });
+  }
+  results.safe.sort(function (a, b) { return Math.abs(a.diff) - Math.abs(b.diff); });
+  results.balanced.sort(function (a, b) { return Math.abs(a.diff) - Math.abs(b.diff); });
+  results.reach.sort(function (a, b) { return Math.abs(a.diff) - Math.abs(b.diff); });
+  return results;
+}
+
 var __api = {
   computeStudentScore: computeStudentScore, classify: classify,
   generateScenarios: generateScenarios, pickRecommendation: pickRecommendation,
   generateBalancedRationale: generateBalancedRationale, generateRisks: generateRisks,
   generateParentSummary: generateParentSummary, generateDirectorScript: generateDirectorScript,
   generateSusiScenarios: generateSusiScenarios, pickSusiRecommendation: pickSusiRecommendation,
+  generateJeongsiReference: generateJeongsiReference, studentPercentileAvg: studentPercentileAvg,
   generateSusiRationale: generateSusiRationale,
   generateCombinedParentSummary: generateCombinedParentSummary,
   generateCombinedDirectorScript: generateCombinedDirectorScript,

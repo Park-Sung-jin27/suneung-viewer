@@ -178,6 +178,13 @@
             <span class="section__title-tag">9월 시즌 · 자동 산출</span>
             <span class="section__title-tag" style="background:var(--green-100); color:var(--green-600);">메인</span>
           </div>
+          <div style="display:flex; gap:8px; margin-bottom:10px;">
+            <input id="susi-search" oninput="applySusiFilter()" placeholder="학교·학과 검색" style="flex:1; padding:6px 10px; border:1px solid var(--gray-300); border-radius:8px; font-size:13px;" />
+            <select id="susi-region" onchange="applySusiFilter()" style="padding:6px 10px; border:1px solid var(--gray-300); border-radius:8px; font-size:13px;">
+              <option value="">전체 지역</option>
+              <option>서울</option><option>경기</option><option>인천</option><option>수도권</option><option>강원</option><option>충북</option><option>충남</option><option>대전</option><option>세종</option><option>전북</option><option>전남</option><option>광주</option><option>경북</option><option>대구</option><option>경남</option><option>부산</option><option>울산</option><option>제주</option>
+            </select>
+          </div>
           <div class="scenarios" id="susi-grid"></div>
         </div>
 
@@ -189,6 +196,16 @@
             <span class="section__title-tag">잠정 28개 제외 · 7월 모집요강 후 확장</span>
           </div>
           <div class="scenarios" id="jeongsi-grid"></div>
+        </div>
+
+        <!-- 블록 2-2: 정시 다년 기록 참고선 (백분위 기반) -->
+        <div class="section">
+          <div class="section__title">
+            정시 다년 기록 참고선
+            <span class="section__title-tag" style="background:var(--orange-100, #ffedd5); color:var(--orange-600);">예측 아님 · 참고선</span>
+            <span class="section__title-tag" id="jeongsi-ref-avg"></span>
+          </div>
+          <div class="scenarios" id="jeongsi-ref-grid"></div>
         </div>
 
         <!-- 블록 3 + 4: 균형안 근거 + 리스크 -->
@@ -568,7 +585,7 @@
           const items = full
             .map(
               (p, i) => `
-      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}${i >= 5 ? " scenario-list__item--extra" : ""}">
+      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}${i >= 5 ? " scenario-list__item--extra" : ""}" data-name="${(p.univ + " " + p.dept).toLowerCase()}" data-region="${p.region || ""}">
         <div class="name">${p.univ} · ${p.dept}</div>
         <div class="meta">컷 ${p.cut70_grade}등급 | 학생 ${p.student_grade} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${p["전형분류"] || "수시"} | 경쟁률 ${p.competition || "—"}</div>
       </li>
@@ -601,6 +618,7 @@
           `${susiTotal}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 수시 학과</span>`;
         document.getElementById("m-balanced-count").innerHTML =
           `${scenarios.balanced.length}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 수시 학과</span>`;
+        applySusiFilter();
       }
 
       // ===== 수시 균형안 근거 =====
@@ -790,6 +808,113 @@
         });
       }
 
+      // ===== 수시 필터/검색 =====
+      function applySusiFilter() {
+        const qel = document.getElementById("susi-search");
+        const rel = document.getElementById("susi-region");
+        const q = ((qel && qel.value) || "").trim().toLowerCase();
+        const reg = (rel && rel.value) || "";
+        const active = q || reg;
+        const sudo = ["서울", "경기", "인천"];
+        document.querySelectorAll("#susi-grid .scenario-list__item").forEach((li) => {
+          const name = li.getAttribute("data-name") || "";
+          const r = li.getAttribute("data-region") || "";
+          const mq = !q || name.indexOf(q) !== -1;
+          const mr = !reg || r === reg || (reg === "수도권" && sudo.indexOf(r) !== -1);
+          if (active) li.style.display = (mq && mr) ? "block" : "none";
+          else li.style.display = "";
+        });
+      }
+
+      // ===== 정시 다년 기록 참고선 렌더 =====
+      function renderJeongsiReference(jref) {
+        const avgEl = document.getElementById("jeongsi-ref-avg");
+        const grid = document.getElementById("jeongsi-ref-grid");
+        if (!jref || jref.avg === null) {
+          if (avgEl) avgEl.textContent = "백분위 미입력 — 계산 불가";
+          grid.innerHTML =
+            '<div style="padding:16px; color:var(--gray-500); font-size:13px;">국·수·탐 백분위를 입력하면 다년 기록 기준 지원 가능선을 보여줍니다.</div>';
+          return;
+        }
+        if (avgEl) avgEl.textContent = "학생 백분위 평균 " + jref.avg;
+        const card = (key, label, isRecommended) => {
+          const full = jref[key] || [];
+          const total = full.length;
+          const items = full
+            .map(
+              (p, i) => `
+      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}${i >= 5 ? " scenario-list__item--extra" : ""}">
+        <div class="name">${p.univ} · ${p.dept}</div>
+        <div class="meta">다년 평균 ${p.avgcut} | 학생 ${jref.avg} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${p.yrs}년 기록(${p.yfrom}~${p.yto})</div>
+      </li>
+    `,
+            )
+            .join("");
+          const moreBtn =
+            total > 5
+              ? `<button type="button" class="scenario-more-btn" onclick="const c=this.closest('.scenario-card'); c.classList.toggle('show-all'); this.textContent=c.classList.contains('show-all')?'접기':('더보기 (전체 ${total}개)');">더보기 (전체 ${total}개)</button>`
+              : "";
+          return `
+      <div class="scenario-card ${isRecommended ? "scenario-card--recommended" : ""}">
+        ${isRecommended ? '<span class="scenario-card__rec">★ 참고</span>' : ""}
+        <span class="scenario-card__badge badge--${key}">${label}</span>
+        <div class="scenario-card__count">${total}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 학과</span></div>
+        <div class="scenario-card__sub">백분위 다년 평균 기준 · 환산공식 미적용 참고선</div>
+        <ul class="scenario-list">
+          ${items || '<li class="scenario-list__empty">해당 구간 기록 없음</li>'}
+        </ul>
+        ${moreBtn}
+      </div>
+    `;
+        };
+        grid.innerHTML =
+          card("safe", "지원 안정권", false) +
+          card("balanced", "지원 적정권", true) +
+          card("reach", "상향 도전권", false);
+      }
+
+      // ===== 합격 가능선 (백분위 누적) =====
+      function renderJeongsiLine(jref) {
+        const el = document.getElementById("jeongsi-line");
+        if (!el) return;
+        if (!jref || jref.avg === null) { el.innerHTML = ""; return; }
+        const all = jref.safe.concat(jref.balanced, jref.reach);
+        if (all.length === 0) { el.innerHTML = ""; return; }
+        const byU = {};
+        all.forEach((x) => { if (!byU[x.univ] || x.avgcut < byU[x.univ].cut) byU[x.univ] = { univ: x.univ, cut: x.avgcut }; });
+        const schools = Object.values(byU);
+        const avg = jref.avg;
+        const cuts = schools.map((s) => s.cut);
+        let lo = Math.floor(Math.min(avg, Math.min.apply(null, cuts))) - 1;
+        let hi = Math.ceil(Math.max(avg, Math.max.apply(null, cuts))) + 1;
+        if (hi - lo < 6) hi = lo + 6;
+        const W = 760, axisY = 64, x0 = 24, x1 = W - 24;
+        const sx = (v) => x0 + ((v - lo) / (hi - lo)) * (x1 - x0);
+        const ax = Math.round(sx(avg));
+        const reachable = schools.filter((s) => s.cut <= avg).sort((a, b) => b.cut - a.cut);
+        let dots = "";
+        schools.forEach((s) => {
+          const cx = Math.round(sx(s.cut));
+          const reach = s.cut <= avg;
+          dots += '<circle cx="' + cx + '" cy="' + axisY + '" r="5" fill="' + (reach ? "#1D9E75" : "#D85A30") + '" fill-opacity="0.85" stroke="#fff" stroke-width="1"><title>' + s.univ + " (" + s.cut + ")</title></circle>";
+        });
+        const top = reachable[0];
+        const svg =
+          '<svg width="100%" viewBox="0 0 ' + W + ' 96" style="max-width:100%;">' +
+          '<rect x="' + x0 + '" y="' + (axisY - 14) + '" width="' + (ax - x0) + '" height="28" fill="#1D9E75" fill-opacity="0.10"/>' +
+          '<line x1="' + x0 + '" y1="' + axisY + '" x2="' + x1 + '" y2="' + axisY + '" stroke="var(--gray-300,#ccc)" stroke-width="1"/>' +
+          '<line x1="' + ax + '" y1="' + (axisY - 22) + '" x2="' + ax + '" y2="' + (axisY + 18) + '" stroke="#185FA5" stroke-width="2"/>' +
+          '<text x="' + ax + '" y="' + (axisY - 26) + '" text-anchor="middle" font-size="12" fill="#185FA5" font-weight="600">내 백분위 ' + avg + '</text>' +
+          dots +
+          '<text x="' + x0 + '" y="' + (axisY + 32) + '" font-size="11" fill="var(--gray-500,#888)">백분위 ' + lo + '</text>' +
+          '<text x="' + x1 + '" y="' + (axisY + 32) + '" text-anchor="end" font-size="11" fill="var(--gray-500,#888)">' + hi + '</text>' +
+          '</svg>';
+        const summary = reachable.length
+          ? '<div style="font-size:13px; color:var(--gray-700,#444); margin-top:2px;">백분위 <b>' + avg + '</b> 기준 — 작년까지 기록상 이 선 이하 <b>' + reachable.length + '개교</b>가 지원권입니다. <span style="color:var(--gray-500,#888);">초록=지원권 · 주황=상향 (점에 마우스=학교명)</span></div>'
+          : '<div style="font-size:13px; color:var(--gray-500,#888); margin-top:2px;">백분위 ' + avg + ' 기준 지원권 학교가 아직 없습니다 (상향만 가능).</div>';
+        el.innerHTML = svg + summary;
+      }
+
       // ===== 메인 렌더 =====
       function render(idx) {
         const student = STATE.students[idx];
@@ -825,6 +950,10 @@
 
         // 5년 추이 그래프
         renderTrend(j_picks, s_picks);
+
+        // 정시 다년 기록 참고선 (백분위 기반)
+        const jref = ScenarioEngine.generateJeongsiReference(student, window.TREND_DATA || {});
+        renderJeongsiReference(jref);
       }
 
       // 부트
