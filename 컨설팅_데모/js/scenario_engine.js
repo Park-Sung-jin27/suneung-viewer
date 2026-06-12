@@ -20,8 +20,31 @@ var FIELD_KEYWORDS = {
   "기계공학": ["기계"]
 };
 
+var UNIV_ALIAS = {
+  "서울과기대학교": "서울과학기술대학교",
+  "부산외대학교": "부산외국어대학교",
+  "한국기술교대학교": "한국기술교육대학교",
+  "한국체대학교": "한국체육대학교",
+  "광주교대학교": "광주교육대학교",
+  "춘천교대학교": "춘천교육대학교",
+  "서울교대학교": "서울교육대학교",
+  "공주교대학교": "공주교육대학교",
+  "청주교대학교": "청주교육대학교",
+  "진주교대학교": "진주교육대학교",
+  "부산교대학교": "부산교육대학교",
+  "경인교대학교": "경인교육대학교",
+  "대구교대학교": "대구교육대학교",
+  "전주교대학교": "전주교육대학교",
+  "한양대(ERICA)": "한양대학교(ERICA)",
+  "동국대(WISE)": "동국대학교(WISE)",
+  "건국대(글로컬)": "건국대학교(글로컬)",
+  "연세대(미래)": "연세대학교(미래)",
+  "고려대(세종)": "고려대학교(세종)"
+};
+
 function normalizeUniv(name) {
   if (!name) return name;
+  if (UNIV_ALIAS[name]) name = UNIV_ALIAS[name];
   name = name.replace(/여자대학교$/, "여대");
   name = name.replace(/한국외국어대학교$/, "한국외대");
   name = name.replace(/대학교$/, "대");
@@ -134,8 +157,10 @@ function generateScenarios(student, data) {
   });
 
   var univ_index = {};
+  var region_index = {};
   universities.forEach(function (u) {
     univ_index[normalizeUniv(u.name) + "|" + normalizeCampus(u.campus)] = u;
+    if (u.region) region_index[normalizeUniv(u.name)] = u.region;
   });
 
   var cuts_by_univ = {};
@@ -176,8 +201,8 @@ function generateScenarios(student, data) {
       if (typeof dept.cut70 !== "number" || dept.cut70 < 50) continue;
       if (dept.cut70 < cut_max * 0.5) continue;
       if (!matchesWish(dept.dept, student["희망_계열"])) continue;
-      var u = univ_index[norm_univ + "|" + f_campus];
-      if (u && !matchesRegion(u.region, student["희망_지역"])) continue;
+      var reg = region_index[norm_univ];
+      if (reg && !matchesRegion(reg, student["희망_지역"])) continue;
       var diff = Math.round((student_scaled - dept.cut70) * 10) / 10;
       var ratio = (student_scaled - dept.cut70) / cut_max;
       var bucket = ratio >= 0.015 ? "safe" : (ratio >= -0.010 ? "balanced" : (ratio >= -0.030 ? "reach" : "fail"));
@@ -187,7 +212,7 @@ function generateScenarios(student, data) {
         competition: dept.competition, cut70: dept.cut70,
         student_score: student_scaled, max_score: Math.round(cut_max * 10) / 10,
         diff: diff, breakdown: sc.breakdown, formula_source: formula.source,
-        region: u ? u.region : null
+        region: reg || null
       });
     }
   }
@@ -282,6 +307,11 @@ function generateSusiScenarios(student, data) {
     univ_index[normalizeUniv(u.name) + "|" + normalizeCampus(u.campus)] = u;
   });
 
+  var region_index = {};
+  universities.forEach(function (u) {
+    if (u.region) region_index[normalizeUniv(u.name)] = u.region;
+  });
+
   var results = { safe: [], balanced: [], reach: [], fail: [] };
   var SPECIAL = ["취업자", "장애인", "교육기회배려자", "기회균형", "농어촌", "특수교육", "특성화고", "재외국민", "북한", "탈북", "다문화"];
 
@@ -305,9 +335,8 @@ function generateSusiScenarios(student, data) {
     }
     if (skip) continue;
     if (!matchesWish(c.dept, student["희망_계열"])) continue;
-    var key = normalizeUniv(c.univ) + "|" + normalizeCampus(c.campus);
-    var u = univ_index[key];
-    if (u && !matchesRegion(u.region, student["희망_지역"])) continue;
+    var reg = region_index[normalizeUniv(c.univ)];
+    if (reg && !matchesRegion(reg, student["희망_지역"])) continue;
     var bucket = classifySusi(student_grade, c.cut70_grade);
     var diff = Math.round((c.cut70_grade - student_grade) * 100) / 100;
     var trans_type = classifyTransType(tname);
@@ -316,7 +345,7 @@ function generateSusiScenarios(student, data) {
       dept: c.dept, "전형": tname, "전형분류": trans_type,
       capacity: c.capacity, competition: c.competition,
       cut70_grade: c.cut70_grade, student_grade: student_grade,
-      diff: diff, region: u ? u.region : null, source: c.source
+      diff: diff, region: reg || null, source: c.source
     });
   }
   results.safe.sort(function (a, b) { return b.diff - a.diff; });
