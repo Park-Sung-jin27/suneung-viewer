@@ -94,7 +94,7 @@ def extract_gachon():
                 "competition": round(sum(comps) / len(comps), 2) if comps else None,
                 "capacity": sum(caps),
             })
-        if len(agg) >= 3:
+        if len(agg) >= 2:
             key = "가천대학교|" + dept + "|" + type_
             aggregated[key] = agg
     return aggregated
@@ -254,7 +254,7 @@ def aggregate_adiga():
                 "competition": round(sum(comps) / len(comps), 2) if comps else None,
                 "capacity": sum(caps),
             })
-        if len(agg) >= 3:
+        if len(agg) >= 2:
             key = univ + "|" + dept + "|" + type_
             aggregated[key] = agg
     return aggregated

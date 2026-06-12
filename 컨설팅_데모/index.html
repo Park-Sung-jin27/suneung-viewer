@@ -42,6 +42,16 @@
       </aside>
 
       <!-- ===== 학생 추가 모달 ===== -->
+      <div id="detail-modal" onclick="if(event.target===this)closeDetail()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1100; justify-content:center; align-items:center;">
+        <div style="background:white; border-radius:16px; padding:22px 24px; width:440px; max-height:85vh; overflow-y:auto;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+            <div id="detail-title" style="font-size:17px; font-weight:700;"></div>
+            <button onclick="closeDetail()" style="background:none; border:none; font-size:20px; cursor:pointer; color:var(--gray-500);">✕</button>
+          </div>
+          <div id="detail-body"></div>
+        </div>
+      </div>
+
       <div id="add-student-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
         <div style="background:white; border-radius:16px; padding:24px; width:520px; max-height:90vh; overflow-y:auto;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
@@ -244,6 +254,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="js/data.js?v=20260608"></script>
     <script src="js/trend_data.js?v=20260608"></script>
+    <script src="js/jeonhyeong_files.js?v=20260612"></script>
     <script src="js/scenario_engine.js?v=20260608"></script>
     <script>
       // ===== 데이터 로드 (window.DEMO_DATA) =====
@@ -585,7 +596,7 @@
           const items = full
             .map(
               (p, i) => `
-      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}${i >= 5 ? " scenario-list__item--extra" : ""}" data-name="${(p.univ + " " + p.dept).toLowerCase()}" data-region="${p.region || ""}">
+      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}${i >= 5 ? " scenario-list__item--extra" : ""}" data-name="${(p.univ + " " + p.dept).toLowerCase()}" data-region="${p.region || ""}" data-univ="${p.univ}" data-dept="${p.dept}" data-cut="${p.cut70_grade}" data-comp="${p.competition || ""}" data-cap="${p.capacity || ""}" data-jh="${p["전형분류"] || ""}" onclick="openDetail(this)" style="cursor:pointer;">
         <div class="name">${p.univ} · ${p.dept}</div>
         <div class="meta">컷 ${p.cut70_grade}등급 | 학생 ${p.student_grade} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${p["전형분류"] || "수시"} | 경쟁률 ${p.competition || "—"}</div>
       </li>
@@ -824,6 +835,62 @@
           if (active) li.style.display = (mq && mr) ? "block" : "none";
           else li.style.display = "";
         });
+      }
+
+      // ===== 학과 상세 팝업 (이전 입시결과 + 전형 파일) =====
+      function closeDetail() { document.getElementById("detail-modal").style.display = "none"; }
+      let __JLOOK = null;
+      function jeongsiLookup() {
+        if (__JLOOK) return __JLOOK;
+        __JLOOK = { cut: {}, max: {} };
+        const D = window.DEMO_DATA || {};
+        const N = (window.ScenarioEngine && ScenarioEngine.normalizeUniv) ? ScenarioEngine.normalizeUniv : function (x) { return x; };
+        (D.jeongsi_cutoffs || []).forEach(function (c) { const k = N(c.univ) + "|" + c.dept; if (!__JLOOK.cut[k]) __JLOOK.cut[k] = c; });
+        (D.universities || []).forEach(function (u) { if (u.cut_max_official) __JLOOK.max[N(u.name)] = u.cut_max_official; });
+        return __JLOOK;
+      }
+      function openDetail(el) {
+        const univ = el.getAttribute("data-univ") || "";
+        const dept = el.getAttribute("data-dept") || "";
+        const sCut = el.getAttribute("data-cut") || "";
+        const sComp = el.getAttribute("data-comp") || "";
+        const sCap = el.getAttribute("data-cap") || "";
+        const sJh = el.getAttribute("data-jh") || "";
+        document.getElementById("detail-title").textContent = univ + " · " + dept;
+        const N = (window.ScenarioEngine && ScenarioEngine.normalizeUniv) ? ScenarioEngine.normalizeUniv : function (x) { return x; };
+        let html = "";
+        html += '<div style="font-size:13px; font-weight:600; margin-bottom:4px;">작년 수시 결과</div>';
+        html += '<div style="font-size:13px; color:var(--gray-700,#444); margin-bottom:12px;">70%컷 ' + (sCut || "—") + '등급 · 경쟁률 ' + (sComp || "—") + ' · 모집 ' + (sCap || "—") + '명' + (sJh ? ' · ' + sJh : '') + '</div>';
+        const J = jeongsiLookup();
+        const jc = J.cut[N(univ) + "|" + dept];
+        if (jc) {
+          const mx = J.max[N(univ)];
+          html += '<div style="font-size:13px; font-weight:600; margin-bottom:4px;">작년 정시 결과</div>';
+          html += '<div style="font-size:13px; color:var(--gray-700,#444); margin-bottom:12px;">환산 70%컷 ' + (jc.cut70 != null ? jc.cut70 : "—") + (mx ? ' / 만점 ' + mx : '') + ' · 경쟁률 ' + (jc.competition != null ? jc.competition : "—") + ' · 모집 ' + (jc.capacity != null ? jc.capacity : "—") + '명 <span style="color:var(--gray-500);">(환산점수)</span></div>';
+        }
+        const T = window.TREND_DATA || {};
+        let trend = T[univ + "|" + dept + "|수시"] || T[univ + "|" + dept + "|정시"] || null;
+        if (trend && trend.length) {
+          const typ = T[univ + "|" + dept + "|수시"] ? "수시" : "정시";
+          html += '<div style="font-size:13px; font-weight:600; margin-bottom:6px;">다년 추이 (' + typ + ')</div>';
+          html += '<table style="width:100%; font-size:13px; border-collapse:collapse; margin-bottom:14px;">';
+          html += '<tr style="color:var(--gray-500);"><td style="padding:3px 0;">연도</td><td style="text-align:right;">70%컷</td><td style="text-align:right;">경쟁률</td><td style="text-align:right;">모집</td></tr>';
+          trend.forEach(function (r) {
+            html += '<tr style="border-top:0.5px solid var(--gray-200,#eee);"><td style="padding:3px 0;">' + r.year + '</td><td style="text-align:right;">' + (r.cut70 != null ? r.cut70 : "—") + '</td><td style="text-align:right;">' + (r.competition != null ? r.competition : "—") + '</td><td style="text-align:right;">' + (r.capacity != null ? r.capacity : "—") + '</td></tr>';
+          });
+          html += '</table>';
+        }
+        const M = window.JEONHYEONG_FILES || {};
+        const file = M[univ];
+        if (file) {
+          const href = "../" + encodeURIComponent("모집요강_2027_수시") + "/" + encodeURIComponent(file);
+          html += '<a href="' + href + '" target="_blank" style="display:inline-block; padding:8px 14px; background:var(--purple-600); color:white; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none;">전형 파일 열기 (수시모집요강 PDF)</a>';
+          html += '<div style="font-size:11px; color:var(--gray-500); margin-top:6px;">' + file + '</div>';
+        } else {
+          html += '<div style="font-size:13px; color:var(--gray-500);">전형 파일(모집요강 PDF)을 찾지 못했습니다.</div>';
+        }
+        document.getElementById("detail-body").innerHTML = html;
+        document.getElementById("detail-modal").style.display = "flex";
       }
 
       // ===== 정시 다년 기록 참고선 렌더 =====
