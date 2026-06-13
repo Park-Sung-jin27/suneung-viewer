@@ -384,7 +384,12 @@ async function callClaude(pdfBase64, userPrompt, systemPrompt = SYSTEM_PROMPT) {
 const GEMINI_READING_PROMPT = (yearKey, lastQ, startQ = null) => {
   const year = yearKey.replace(/[^0-9]/g, "");
   const fromQ = startQ || getReadingStartQ(yearKey);
-  const readingEndQ = hasElectiveSection(yearKey) ? Math.min(lastQ, 34) : 17;
+  const _rprof = getExamProfile(yearKey);
+  const readingEndQ = _rprof?.reading_range
+    ? _rprof.reading_range[1]
+    : hasElectiveSection(yearKey)
+      ? Math.min(lastQ, 34)
+      : 17;
   return `너는 수능 국어 시험지 PDF에서 **원문 구조만** 추출하는 전문가야.
 아래 JSON 스키마에 맞게 독서 영역(${fromQ}번~${readingEndQ}번 범위의 독서 지문)만 추출해줘.
 ※ ${fromQ > 1 ? `1~${fromQ - 1}번은 화법/작문/문법 선택영역이므로 절대 추출하지 마라.` : ""}
@@ -923,7 +928,11 @@ export function validateExtraction(sets, section, lastQuestion, yearKey = "") {
   }
 
   const readingMin = yearKey ? getReadingStartQ(yearKey) : 1;
-  const readingRange = { min: readingMin, max: lastQuestion };
+  const _vprof = yearKey ? getExamProfile(yearKey) : null;
+  const readingMax = _vprof?.reading_range
+    ? _vprof.reading_range[1]
+    : lastQuestion;
+  const readingRange = { min: readingMin, max: readingMax };
   const litRange = { min: 18, max: lastQuestion };
   const expectedRange = section === "reading" ? readingRange : litRange;
   const expectedPrefix = section === "reading" ? "r" : "l";
@@ -1322,7 +1331,11 @@ export async function extractStructure(
       errors.forEach((e) => console.warn(`  - ${e}`));
       // 범위 밖 Q번호를 가진 세트 필터링
       const minQ = sec === "reading" ? startQ : 18;
-      const maxQ = lastQuestion;
+      const _fprof = getExamProfile(yearKey);
+      const maxQ =
+        sec === "reading" && _fprof?.reading_range
+          ? _fprof.reading_range[1]
+          : lastQuestion;
       const before = sets.length;
       sets = sets.filter((s) => {
         const qIds = (s.questions || []).map((q) => q.id).filter(Boolean);
