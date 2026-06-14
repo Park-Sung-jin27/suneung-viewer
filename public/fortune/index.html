@@ -1728,13 +1728,12 @@ function orderPayload(){const code='UR-'+new Date().toISOString().slice(0,10).re
 function prepareOrder(show=true){const o=orderPayload();orderCache=o;$('orderCodeInput').value=o.orderCode;$('orderJsonInput').value=JSON.stringify(o,null,2);$('selectedProductInput').value=o.product.name;$('totalPriceInput').value=o.totalPrice;const sum=$('orderSummary');sum.classList.remove('hidden');sum.innerHTML=`<h3>주문 확인</h3><div class="summary-grid"><div class="summary-item"><span>주문코드</span><b>${o.orderCode}</b></div><div class="summary-item"><span>상품</span><b>${o.product.name}</b></div><div class="summary-item"><span>리포트 구성</span><b>${o.options.selectedInterests.map(x=>x.label).join(', ')}</b></div><div class="summary-item"><span>총 결제금액</span><b>${fmt(o.totalPrice)}</b></div></div><p class="notice">주문 내용을 확인한 뒤 결제를 진행해 주세요. 결제하기 버튼을 누르면 토스페이먼츠 카드·간편결제 창이 열립니다. 결제 확인 후 입력하신 정보를 기준으로 맞춤 리포트가 제작됩니다.</p>`;if(show)toast('주문서를 생성했습니다.');return o}
 function initDateYearLimit(){document.querySelectorAll('input[type="date"]').forEach(input=>{input.setAttribute('min','1900-01-01');input.setAttribute('max','2099-12-31');input.addEventListener('input',()=>{const m=input.value.match(/^(\d{5,})-(\d{2})-(\d{2})$/);if(m)input.value=`${m[1].slice(0,4)}-${m[2]}-${m[3]}`;});input.addEventListener('change',()=>{if(input.value&&!/^\d{4}-\d{2}-\d{2}$/.test(input.value)){input.value='';toast('생년은 숫자 4자리로 입력해 주세요.');}});});}
 async function copyOrder(){const o=prepareOrder(false);try{await navigator.clipboard.writeText(JSON.stringify(o,null,2));toast('운영자 도구용 주문 JSON을 복사했습니다.')}catch{toast('복사 권한이 없습니다.')}}function unlockOperatorTools(){try{localStorage.setItem('jippiOperatorUnlocked','1');sessionStorage.setItem('jippiOperatorUnlocked','1')}catch(e){console.warn('운영자 접근 플래그 저장 실패',e)}}function sendToBuilder(){const o=prepareOrder(false);unlockOperatorTools();localStorage.setItem('fortuneOrderJson',JSON.stringify(o));location.href='builder.html?operator=1'}function sendToAdmin(){const o=prepareOrder(false);unlockOperatorTools();localStorage.setItem('fortuneOrderJson',JSON.stringify(o));location.href='admin.html?operator=1'}const PAYMENT_PRODUCT_MAP={theme_card:'fortune_theme_card',theme_career:'fortune_theme_career',theme_love:'fortune_theme_love',theme_destiny:'fortune_theme_destiny',theme_premium:'fortune_theme_premium'};function paymentUrl(){return CONFIG.paymentLinks[selectedProductId]||CONFIG.defaultPaymentUrl||''}async function goPay(){if(!checked('privacyConsent')||!checked('refundConsent')){toast('결제 전 필수 동의가 필요합니다.');return}const o=prepareOrder(false);try{localStorage.setItem('lastFortuneOrder',JSON.stringify(o));sessionStorage.setItem('lastFortuneOrder',JSON.stringify(o))}catch(err){console.warn('주문 임시 저장 실패',err)}const payProductId=PAYMENT_PRODUCT_MAP[selectedProductId];const url=paymentUrl();if(url){location.href=url;return}if(!window.JippiPayments||!payProductId){toast('결제 모듈을 불러오지 못했습니다.');alert(`${CONFIG.bankTransferText}\n\n주문코드: ${o.orderCode}\n결제금액: ${fmt(o.totalPrice)}`);return}const btn=$('payBtn');const original=btn.textContent;btn.disabled=true;btn.textContent='결제창 여는 중';try{await window.JippiPayments.requestPayment(payProductId,{orderName:o.product.name,customerName:o.customer.name,customerEmail:o.customer.email,customerPhone:o.customer.contact,fortuneOrder:o})}catch(err){if(err.code!=='PAY_PROCESS_CANCELED')alert(err.message||'결제창을 열지 못했습니다.');btn.disabled=false;btn.textContent=original}}function submitOrder(e){
+  e.preventDefault();
   if(!checked('privacyConsent')||!checked('refundConsent')){
-    e.preventDefault();
     toast('필수 동의가 필요합니다.');
     return false;
   }
   if(requiresAdult()&&!checked('adultConsent')){
-    e.preventDefault();
     toast('심화 관계 해석은 추가 확인이 필요합니다.');
     return false;
   }
@@ -1745,12 +1744,9 @@ async function copyOrder(){const o=prepareOrder(false);try{await navigator.clipb
   }catch(err){
     console.warn('주문 임시 저장 실패', err);
   }
-  const successAction=new URL('success.html', window.location.href).href;
-  e.currentTarget.setAttribute('action', successAction);
-  toast('주문을 접수합니다. 접수 완료 화면으로 이동합니다.');
-  // Netlify Forms 안정화를 위해 AJAX가 아니라 브라우저의 기본 form POST를 사용합니다.
-  // preventDefault를 호출하지 않으면 form action="success.html"로 POST되고 Netlify가 fortune-order 제출을 저장합니다.
-  return true;
+  toast('주문 확인 화면으로 이동합니다.');
+  window.location.href=new URL('success.html', window.location.href).href;
+  return false;
 }
 function initAnchorScroll(){document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',event=>{const target=document.querySelector(anchor.getAttribute('href'));if(!target)return;event.preventDefault();history.pushState(null,'',anchor.getAttribute('href'));target.scrollIntoView({behavior:'smooth',block:'start'});});});}
 function init(){if(new URLSearchParams(location.search).get('operator')==='1')document.body.classList.add('operator-on');renderProducts();syncProductOptions();initAnchorScroll();initDateYearLimit();$('productSelect').addEventListener('change',e=>selectProduct(e.target.value));$('partnerMode').addEventListener('change',togglePartner);$('premiumErosAddon')?.addEventListener('change',()=>{syncProductOptions();prepareOrder(false)});$('deliverySpeed')?.addEventListener('change',()=>prepareOrder(false));$('prepareBtn').addEventListener('click',()=>prepareOrder(true));$('copyOrderBtn').addEventListener('click',copyOrder);$('builderBtn').addEventListener('click',sendToBuilder);$('adminBtn').addEventListener('click',sendToAdmin);$('payBtn').addEventListener('click',goPay);$('orderForm').addEventListener('submit',submitOrder);autoPartnerMode()}init();
