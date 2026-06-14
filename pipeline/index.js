@@ -323,7 +323,9 @@ async function main() {
       console.log(`  📂 캐시 로드: ${path.basename(akPath)}`);
       answerKey = JSON.parse(fs.readFileSync(akPath, "utf8"));
     } else {
-      answerKey = await extractAnswers(answerPdfPath);
+      const _akMaxQ =
+        parseInt((examKey.match(/^\d{4}/) || ["9999"])[0]) <= 2021 ? 45 : 34;
+      answerKey = await extractAnswers(answerPdfPath, _akMaxQ);
       fs.writeFileSync(akPath, JSON.stringify(answerKey, null, 2), "utf8");
       console.log(`  💾 저장: ${path.basename(akPath)}`);
     }
@@ -480,7 +482,8 @@ async function main() {
       if (issues.length > 0) {
         console.error(`\n❌ 검증 실패 (${issues.length}건):`);
         issues.slice(0, 20).forEach((i) => console.error("  " + i));
-        if (issues.length > 20) console.error(`  ... 외 ${issues.length - 20}건`);
+        if (issues.length > 20)
+          console.error(`  ... 외 ${issues.length - 20}건`);
         process.exit(1);
       }
       console.log("  ✅ 검증 통과");

@@ -39,14 +39,19 @@ function buildSourceBlock(filePath) {
   };
 }
 
-export async function extractAnswers(answerPath) {
+export async function extractAnswers(answerPath, maxQ = 34) {
+  const rangeRule =
+    maxQ >= 35
+      ? `정답표의 1번~${maxQ}번 문항을 모두 추출하라. (선택과목 분리가 없는 통합 형식이므로 35번 이후도 추출 대상이다.)`
+      : `반드시 1번~${maxQ}번만 추출하라. ${maxQ + 1}번 이상은 선택과목이므로 절대 포함하지 않는다.`;
   const response = await client.messages.create({
     model: "claude-sonnet-4-5",
     max_tokens: 1024,
     system:
       "너는 수능 정답표에서 문항번호와 정답을 추출하는 전문가다.\n" +
       "반드시 순수 JSON만 출력하라. 설명, 마크다운, 기타 텍스트 없음.\n" +
-      "반드시 1번~34번만 추출하라. 35번 이상은 선택과목이므로 절대 포함하지 않는다.\n" +
+      rangeRule +
+      "\n" +
       "존재하지 않는 문항은 절대 만들어내지 말 것.\n" +
       '출력 형식: { "1": 3, "2": 1, "3": 5 } (문항번호: 정답번호)',
     messages: [
