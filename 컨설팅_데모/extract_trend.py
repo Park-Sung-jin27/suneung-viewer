@@ -260,62 +260,6 @@ def aggregate_adiga():
     return aggregated
 
 
-def extract_codex_jeongsi():
-    """Codex 수집 어디가 정시 결과(2022~2026) → 정시 다년 추이. 대학코드(unvCd)로 매칭."""
-    src = Path(__file__).parent / "data" / "adiga_jeongsi_2022_2026.xlsx"
-    if not src.exists():
-        return {}
-    import json as _json
-    ua = _json.loads((Path(__file__).parent / "data" / "universities.json").read_text(encoding="utf-8"))
-    ua = ua if isinstance(ua, list) else ua.get("universities", [])
-    code2name = {}
-    for u in ua:
-        if u.get("unvCd"):
-            try:
-                code2name[int(u["unvCd"])] = u["name"]
-            except (ValueError, TypeError):
-                pass
-    wb2 = openpyxl.load_workbook(src, read_only=True, data_only=True)
-    ws = wb2["정시결과"]
-    it = ws.iter_rows(values_only=True)
-    header = list(next(it))
-    ix = {h: i for i, h in enumerate(header)}
-    grouped = defaultdict(lambda: defaultdict(list))
-    for r in it:
-        if r[ix["상태"]] != "ok":
-            continue
-        cut = r[ix["환산점수_70"]]
-        if not isinstance(cut, (int, float)) or cut <= 0 or cut >= 9999:
-            continue
-        code = r[ix["대학코드"]]
-        name = code2name.get(int(code)) if code is not None else None
-        if not name:
-            continue
-        dept = r[ix["모집단위"]]
-        if not dept:
-            continue
-        y = r[ix["결과학년도"]]
-        grouped[(normalize_univ(name), str(dept).strip())][int(y)].append(
-            (cut, r[ix["경쟁률"]], r[ix["모집인원"]]))
-    out = {}
-    for (nm, dept), years in grouped.items():
-        if len(years) < 2:
-            continue
-        agg = []
-        for y in sorted(years):
-            vals = years[y]
-            cuts = [v[0] for v in vals]
-            comps = [v[1] for v in vals if isinstance(v[1], (int, float))]
-            caps = [v[2] for v in vals if isinstance(v[2], (int, float)) and v[2] > 0]
-            agg.append({
-                "year": y, "cut70": round(sum(cuts) / len(cuts), 2),
-                "competition": round(sum(comps) / len(comps), 2) if comps else None,
-                "capacity": int(sum(caps)) if caps else None,
-            })
-        out[nm + "|" + dept + "|정시"] = agg
-    return out
-
-
 def main():
     trend = {}
 
@@ -331,12 +275,6 @@ def main():
     for k, v in a.items():
         if k not in trend:
             trend[k] = v
-
-    print("Codex 어디가 정시 추출:")
-    c = extract_codex_jeongsi()
-    print("Codex 정시 추이 학과: " + str(len(c)))
-    for k, v in c.items():
-        trend[k] = v  # 공식 정시 결과 우선 (덮어쓰기)
 
     by_univ = defaultdict(int)
     by_type = defaultdict(int)
