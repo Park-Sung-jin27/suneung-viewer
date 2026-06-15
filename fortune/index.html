@@ -1479,7 +1479,7 @@
         <h2>리포트 신청서</h2>
         <p class="desc">상품을 고른 뒤 출생 정보와 현재 고민을 입력해 주세요. 각 상품은 테마별 기본 구성이 이미 포함되어 있으며, 궁합·재회·커플 분석은 상대 정보가 함께 있을 때 더 구체적으로 제작됩니다.</p>
 
-        <form id="orderForm" name="fortune-order" method="POST" data-netlify="true" netlify="true" data-netlify-honeypot="bot-field" action="success.html" enctype="application/x-www-form-urlencoded">
+        <form id="orderForm" name="fortune-order" method="GET" data-netlify="true" netlify="true" data-netlify-honeypot="bot-field" action="success.html" enctype="application/x-www-form-urlencoded" onsubmit="return submitOrder(event)">
           <p class="hidden"><label>봇 방지 필드<input name="bot-field" /></label></p>
           <input type="hidden" name="form-name" value="fortune-order" />
           <input type="hidden" name="bot-field" value="" />
@@ -1592,7 +1592,7 @@
 
           <div class="pay-actions">
             <button type="button" class="btn outline" id="prepareBtn">주문서 확인</button>
-            <button type="submit" class="btn dark" id="submitBtn">주문 접수</button>
+            <button type="button" class="btn dark" id="submitBtn" onclick="return submitOrder(event)">주문 접수</button>
             <button type="button" class="btn primary" id="payBtn">결제하기 →</button>
             <button type="button" class="btn outline operator-only" id="copyOrderBtn">주문내용 복사</button>
             <button type="button" class="btn outline operator-only" id="builderBtn">계산 도구로 보내기</button>
@@ -1775,7 +1775,7 @@ async function copyOrder(){const o=prepareOrder(false);try{await navigator.clipb
   return false;
 }
 function initAnchorScroll(){document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',event=>{const target=document.querySelector(anchor.getAttribute('href'));if(!target)return;event.preventDefault();history.pushState(null,'',anchor.getAttribute('href'));target.scrollIntoView({behavior:'smooth',block:'start'});});});}
-function init(){if(new URLSearchParams(location.search).get('operator')==='1')document.body.classList.add('operator-on');renderProducts();if(!$('productSelect')?.options?.length)renderProducts();syncProductOptions();initAnchorScroll();initDateYearLimit();$('productSelect').addEventListener('change',e=>selectProduct(e.target.value));$('partnerMode').addEventListener('change',togglePartner);$('premiumErosAddon')?.addEventListener('change',()=>{syncProductOptions();prepareOrder(false)});$('deliverySpeed')?.addEventListener('change',()=>prepareOrder(false));$('prepareBtn').addEventListener('click',()=>prepareOrder(true));$('copyOrderBtn').addEventListener('click',copyOrder);$('builderBtn').addEventListener('click',sendToBuilder);$('adminBtn').addEventListener('click',sendToAdmin);$('payBtn').addEventListener('click',goPay);$('orderForm').addEventListener('submit',submitOrder);autoPartnerMode()}init();
+function init(){if(new URLSearchParams(location.search).get('operator')==='1')document.body.classList.add('operator-on');renderProducts();if(!$('productSelect')?.options?.length)renderProducts();syncProductOptions();initAnchorScroll();initDateYearLimit();$('productSelect').addEventListener('change',e=>selectProduct(e.target.value));$('partnerMode').addEventListener('change',togglePartner);$('premiumErosAddon')?.addEventListener('change',()=>{syncProductOptions();prepareOrder(false)});$('deliverySpeed')?.addEventListener('change',()=>prepareOrder(false));$('prepareBtn').addEventListener('click',()=>prepareOrder(true));$('copyOrderBtn').addEventListener('click',copyOrder);$('builderBtn').addEventListener('click',sendToBuilder);$('adminBtn').addEventListener('click',sendToAdmin);$('payBtn').addEventListener('click',goPay);autoPartnerMode()}init();
 </script>
 </body>
 </html>
