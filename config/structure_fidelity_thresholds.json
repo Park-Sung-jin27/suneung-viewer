@@ -1,0 +1,7 @@
+{
+  "_NOTE": "structure_fidelity.mjs 임계값. similarity_threshold 미만 = 구조 의심(사람 검토). 보정으로 조정.",
+  "similarity_threshold": 0.6,
+  "exam_block_max_chars": 1600,
+  "min_exam_anchors": 5,
+  "min_data_chars": 20
+}
