@@ -112,3 +112,4 @@ pipeline/bracket_audit_report.json
 
 # visual_mark_extractor.mjs 검수 raw (auto-regenerated path)
 pipeline/visual_marks_report.json
+.vercel
