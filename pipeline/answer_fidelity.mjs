@@ -40,8 +40,11 @@ function keyFromPdf(yk) {
     let raw = "";
     try {
       raw = execSync(
-        `python3 -c "import fitz;dd=fitz.open('${dir}/${hit}');print(''.join(p.get_text() for p in dd))"`,
-        { maxBuffer: 1e8 },
+        `python3 -X utf8 -c "import fitz;dd=fitz.open('${dir}/${hit}');print(''.join(p.get_text() for p in dd))"`,
+        {
+          maxBuffer: 1e8,
+          env: { ...process.env, PYTHONUTF8: "1", PYTHONIOENCODING: "utf-8" },
+        },
       ).toString();
     } catch {
       return { ans: null, status: "extract_fail" };
