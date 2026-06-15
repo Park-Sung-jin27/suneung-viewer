@@ -1744,8 +1744,33 @@ async function copyOrder(){const o=prepareOrder(false);try{await navigator.clipb
   }catch(err){
     console.warn('주문 임시 저장 실패', err);
   }
-  toast('주문 확인 화면으로 이동합니다.');
-  window.location.href=new URL('success.html', window.location.href).href;
+  const btn=$('submitBtn');
+  const original=btn?.textContent||'주문 접수';
+  if(btn){
+    btn.disabled=true;
+    btn.textContent='접수 중';
+  }
+  try{
+    const response=await fetch('/api/fortune-order',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(o)
+    });
+    const result=await response.json().catch(()=>({}));
+    if(!response.ok||!result.ok){
+      throw new Error(result.error||'주문 자동 접수에 실패했습니다.');
+    }
+    toast('주문이 접수되었습니다.');
+    window.location.href=new URL('success.html', window.location.href).href;
+  }catch(err){
+    console.error('주문 자동 접수 실패', err);
+    toast('주문 자동 접수에 실패했습니다.');
+    alert('주문 자동 접수가 완료되지 않았습니다.\n주문코드: '+o.orderCode+'\n잠시 후 다시 시도하거나, 화면의 주문 JSON 복사 기능으로 운영자에게 전달해주세요.');
+    if(btn){
+      btn.disabled=false;
+      btn.textContent=original;
+    }
+  }
   return false;
 }
 function initAnchorScroll(){document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',event=>{const target=document.querySelector(anchor.getAttribute('href'));if(!target)return;event.preventDefault();history.pushState(null,'',anchor.getAttribute('href'));target.scrollIntoView({behavior:'smooth',block:'start'});});});}
