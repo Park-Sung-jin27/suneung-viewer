@@ -112,6 +112,8 @@
 
 - **2026-06-14 — 13개년 수능 placeholder + [B] 재작성 cascade 종결**: bracket workTag 24건 일괄 복구 (l20259a/c + r2021b + 2014~2020 22건) / placeholder [?]제거·✅ 플립 16건 (2015B·2016B·2018·2019 yearKey별 단독 commit) / [B] 재작성 4건 (2016B Q41-[4] L1·2020 Q43-[2] L1·2019 Q40-[2] R1·2017 Q24-[3] L3) + cs_ids 매핑 정합 사실 — 각 yearKey 게이트0 CRITICAL 0. 잔여 보류: **l2017a 본문 누락(굶주린 이리떼 구간) 복원 필요** — 사용자 명시 raw 인용("사람들은 굶주린 이리떼처럼…") ↔ 현 지문 안 사양("갈가마귀떼처럼") mismatch 식별 사실, Q24-[3] = 갈가마귀떼 사양 정합 정정 사실 단 — 원문 사양 안 굶주린 이리떼 구간 누락 잠재 (PDF 대조 의무 path). l2014bB [A][B][C] = PDF 참조 없음 사양 보류.
 
+- **2026-06-14 (2차) — step1 LEGACY 정답 보강 + 정답 충실도 게이트 신설**: step1_answer.js LEGACY 정답 1~45 통합추출 보강(선택과목 분리 이전 형식) [Confirmed: commit 1c6c3cf]. `pipeline/answer_fidelity.mjs` 영구 게이트 신설 — 데이터 정답 사양 ↔ 시험지 정답표 PDF 대조, 검증된 영역 0 불일치 [Confirmed: commit d3fb1ae]. 정답표 커버리지 진단: 미대조 1319건 = 전부 정답표 PDF 형식차 (2025수능 = image-only PDF → step1 LLM 폴백 필요 / 2018~2021수능 = 홀짝 2표 형식 / 모의 = 형식차) [Inference]. 보강 시 LEGACY 35~45 전수 검증 완성 — 차기 1순위.
+
 - **2026-06-13 — 2025_9월 8 set 재추출·재구축 종결**: 2025_9월 8 set 전수 재추출(Gemini PDF) + 재구축. 중간 Gemini 재추출 사양 안 회귀 사고 발생 + 복구 완료. [A] workTag 복원 (l20259a + l20259c 안 사양 보강 사실). step2_extract.js 가드 정정 — `getExamProfile().reading_range[1]` 기반 상한 사양 안 r20259e/f 회귀 원천 차단 (3 영역 정정). 검증: node --check 정합.
 
 - **2026-06-09 — 2027_6월 출시 + LEGACY 수능 결함 종결**: 2027학년도 6월 정식 release(양쪽 목록+R3/V 22건 정박). LEGACY 수능 결함 set 재구축(r2014aB 문법 삭제·bB/cB/dB 전사·선지 절단 3 set 정답표 복원). 2027 Q6 3중 결함(마커 주체·해설 ㉮㉯ 인물 역전·cs) 정정. 중복 <보기> 라벨 전수 32건 제거+step2 본체 규칙. 완성도 실측: 베타 126 해설100%/cs98%, LEG수능 72 해설97%/cs91%, LEG모의 136 cs56%(해설 생성 미결). 다음 1순위=LEGACY 모의 해설 생성(대표 머신 LLM).
