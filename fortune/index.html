@@ -385,6 +385,7 @@
       width:100%;border:1px solid #decebe;border-radius:14px;padding:13px 14px;
       background:#fff;color:var(--ink);outline:none;transition:.15s;font-size:.96rem
     }
+    select option{background:#fff;color:#1c1318}
     input:focus,select:focus,textarea:focus{
       border-color:var(--gold);box-shadow:0 0 0 4px rgba(216,161,93,.18)
     }
@@ -1774,7 +1775,7 @@ async function copyOrder(){const o=prepareOrder(false);try{await navigator.clipb
   return false;
 }
 function initAnchorScroll(){document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',event=>{const target=document.querySelector(anchor.getAttribute('href'));if(!target)return;event.preventDefault();history.pushState(null,'',anchor.getAttribute('href'));target.scrollIntoView({behavior:'smooth',block:'start'});});});}
-function init(){if(new URLSearchParams(location.search).get('operator')==='1')document.body.classList.add('operator-on');renderProducts();syncProductOptions();initAnchorScroll();initDateYearLimit();$('productSelect').addEventListener('change',e=>selectProduct(e.target.value));$('partnerMode').addEventListener('change',togglePartner);$('premiumErosAddon')?.addEventListener('change',()=>{syncProductOptions();prepareOrder(false)});$('deliverySpeed')?.addEventListener('change',()=>prepareOrder(false));$('prepareBtn').addEventListener('click',()=>prepareOrder(true));$('copyOrderBtn').addEventListener('click',copyOrder);$('builderBtn').addEventListener('click',sendToBuilder);$('adminBtn').addEventListener('click',sendToAdmin);$('payBtn').addEventListener('click',goPay);$('orderForm').addEventListener('submit',submitOrder);autoPartnerMode()}init();
+function init(){if(new URLSearchParams(location.search).get('operator')==='1')document.body.classList.add('operator-on');renderProducts();if(!$('productSelect')?.options?.length)renderProducts();syncProductOptions();initAnchorScroll();initDateYearLimit();$('productSelect').addEventListener('change',e=>selectProduct(e.target.value));$('partnerMode').addEventListener('change',togglePartner);$('premiumErosAddon')?.addEventListener('change',()=>{syncProductOptions();prepareOrder(false)});$('deliverySpeed')?.addEventListener('change',()=>prepareOrder(false));$('prepareBtn').addEventListener('click',()=>prepareOrder(true));$('copyOrderBtn').addEventListener('click',copyOrder);$('builderBtn').addEventListener('click',sendToBuilder);$('adminBtn').addEventListener('click',sendToAdmin);$('payBtn').addEventListener('click',goPay);$('orderForm').addEventListener('submit',submitOrder);autoPartnerMode()}init();
 </script>
 </body>
 </html>
