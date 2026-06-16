@@ -24,12 +24,8 @@ import ResultPage from "./ResultPage";
 import FeedbackButton from "./FeedbackButton";
 import Privacy from "./Privacy";
 import AuditPanel from "./AuditPanel";
-import {
-  YEAR_INFO,
-  MODE,
-  isSetUnderReview,
-  isAllowlisted,
-} from "./constants";
+import { YEAR_INFO, MODE, isSetUnderReview, isAllowlisted } from "./constants";
+import { formatExamTitle } from "./examTitle";
 import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
 import { supabase } from "./supabase";
 import { saveAnswer } from "./hooks/useAnswerTracker";
@@ -135,7 +131,7 @@ function Header({ user, onLogout }) {
               cursor: "pointer",
             }}
           >
-            {isViewer && yearMeta ? yearMeta.label : "짚이"}
+            {isViewer && yearKey ? formatExamTitle(yearKey) : "짚이"}
           </span>
         </div>
       </div>
@@ -302,9 +298,36 @@ function Footer() {
           ))}
         </div>
         <div style={{ display: "flex", gap: "14px", marginBottom: "10px" }}>
-          <a href="/privacy" style={{ color: "#9ca3af", fontSize: "0.75rem", textDecoration: "none" }}>개인정보처리방침</a>
-          <a href="/privacy" style={{ color: "#9ca3af", fontSize: "0.75rem", textDecoration: "none" }}>이용약관</a>
-          <a href="/payment" style={{ color: "#9ca3af", fontSize: "0.75rem", textDecoration: "none" }}>요금제</a>
+          <a
+            href="/privacy"
+            style={{
+              color: "#9ca3af",
+              fontSize: "0.75rem",
+              textDecoration: "none",
+            }}
+          >
+            개인정보처리방침
+          </a>
+          <a
+            href="/privacy"
+            style={{
+              color: "#9ca3af",
+              fontSize: "0.75rem",
+              textDecoration: "none",
+            }}
+          >
+            이용약관
+          </a>
+          <a
+            href="/payment"
+            style={{
+              color: "#9ca3af",
+              fontSize: "0.75rem",
+              textDecoration: "none",
+            }}
+          >
+            요금제
+          </a>
         </div>
         <div style={{ fontSize: "0.68rem", color: "#6b7280" }}>
           © 2026 짚이 (Jippi). All rights reserved.
@@ -447,7 +470,7 @@ function ModeSelectModal({ yearKey, meta, user, onClose, onSelect }) {
               color: "#111827",
             }}
           >
-            {meta.label}
+            {formatExamTitle(yearKey)}
           </div>
           <div
             style={{ fontSize: "0.72rem", color: "#9ca3af", marginTop: "3px" }}
@@ -613,7 +636,7 @@ function ProModal({ onClose, onSubscribe }) {
 // ══════════════════════════════════════════════
 // YearCard — 리디자인
 // ══════════════════════════════════════════════
-function YearCard({ meta, locked, isFree, onClick }) {
+function YearCard({ yearKey, meta, locked, isFree, onClick }) {
   const [hov, setHov] = useState(false);
   return (
     <button
@@ -692,7 +715,7 @@ function YearCard({ meta, locked, isFree, onClick }) {
           letterSpacing: "-0.02em",
         }}
       >
-        {meta.label}
+        {formatExamTitle(yearKey)}
       </div>
       <div
         style={{
@@ -1074,8 +1097,10 @@ function MainPage({ isPro, user }) {
         >
           {yearKeys.map((yearKey) => {
             const meta = YEAR_INFO.find((y) => y.key === yearKey);
+            // label 필드 폐기 — 제목 source 단독 formatExamTitle(yearKey) path.
+            //   yd.label 잔존 path 안 ModeSelectModal handleCardClick path 안
+            //   하위 호환 default fallback (meta 부재 path 안 yearKey 단독).
             const yd = {
-              label: meta?.label ?? yearKey,
               color: meta?.color ?? "#374151",
               badge: meta?.badge ?? "",
               tag: meta?.tag ?? "",
@@ -1085,6 +1110,7 @@ function MainPage({ isPro, user }) {
             return (
               <YearCard
                 key={yearKey}
+                yearKey={yearKey}
                 meta={yd}
                 locked={locked}
                 isFree={isFree}
@@ -1182,6 +1208,7 @@ function ViewerPage({ user, isPro = false }) {
   const initQId = searchParams.get("q") ?? null;
   const modeParam = searchParams.get("mode") ?? MODE.VIEW;
   const mode = modeParam === MODE.STUDY ? MODE.STUDY : MODE.VIEW;
+  const reviewParam = searchParams.get("review") === "1";
 
   const [yearData, setYearData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -1194,7 +1221,8 @@ function ViewerPage({ user, isPro = false }) {
   const [submittedSets, setSubmittedSets] = useState({}); // set 단위 제출 상태 — UX W2
   const [setScoreToast, setSetScoreToast] = useState(null); // set 채점 toast
   const [submitting, setSubmitting] = useState(false);
-  const [isReview, setIsReview] = useState(false);
+  const [localReview, setLocalReview] = useState(false);
+  const isReview = reviewParam || localReview;
   const [warningMsg, setWarningMsg] = useState(null);
 
   useEffect(() => {
@@ -1264,6 +1292,13 @@ function ViewerPage({ user, isPro = false }) {
     document.getElementById("passage-panel")?.scrollTo({ top: 0 });
   }
 
+  function exitReviewMode() {
+    setLocalReview(false);
+    const next = new URLSearchParams(searchParams);
+    next.delete("review");
+    setSearchParams(next, { replace: true });
+  }
+
   function handleNavSet(delta) {
     const target = allSets[allSetIdx + delta];
     if (!target) return;
@@ -1280,10 +1315,11 @@ function ViewerPage({ user, isPro = false }) {
   useEffect(() => {
     if (!yearKey || !currentSet) return;
     const next = { year: yearKey, set: currentSet.id, mode };
+    if (isReview) next.review = "1";
     if (sel) next.q = sel.split("_")[0].replace("q", "");
     else if (initQId) next.q = initQId;
     setSearchParams(next, { replace: true });
-  }, [yearKey, currentSet, sel]); // eslint-disable-line
+  }, [yearKey, currentSet, sel, isReview]); // eslint-disable-line
 
   const handleSelChange = useCallback((uid) => setSel(uid), []);
 
@@ -1318,11 +1354,22 @@ function ViewerPage({ user, isPro = false }) {
       const qt = q.questionType ?? "negative";
       const isCorrect =
         qt === "positive" ? choice.ok === true : choice.ok === false;
+      const correctChoice = q.choices.find((c) =>
+        qt === "positive" ? c.ok === true : c.ok === false,
+      );
       if (isCorrect) correctCount += 1;
       try {
         await saveAnswer({
-          user, yearKey, setId: sid,
-          questionId: q.id, choiceNum, isCorrect,
+          user,
+          yearKey,
+          setId: sid,
+          questionId: q.id,
+          choiceNum,
+          choiceText: choice.t,
+          correctChoiceNum: correctChoice?.num ?? null,
+          correctChoiceText: correctChoice?.t ?? null,
+          questionType: qt,
+          isCorrect,
           pat: choice.pat ?? null,
         });
       } catch (e) {
@@ -1365,6 +1412,9 @@ function ViewerPage({ user, isPro = false }) {
         const qt = q.questionType ?? "negative";
         const isCorrect =
           qt === "positive" ? choice.ok === true : choice.ok === false;
+        const correctChoice = q.choices.find((c) =>
+          qt === "positive" ? c.ok === true : c.ok === false,
+        );
         try {
           await saveAnswer({
             user,
@@ -1372,6 +1422,10 @@ function ViewerPage({ user, isPro = false }) {
             setId: s.id,
             questionId: q.id,
             choiceNum,
+            choiceText: choice.t,
+            correctChoiceNum: correctChoice?.num ?? null,
+            correctChoiceText: correctChoice?.t ?? null,
+            questionType: qt,
             isCorrect,
             pat: choice.pat ?? null,
           });
@@ -1463,8 +1517,7 @@ function ViewerPage({ user, isPro = false }) {
   //   여기서는 (a) year 전체 release set 0 (b) URL ?set=... 직접 진입했으나 해당
   //   set 이 release 외 → currentSet 못 찾음 경우 차단 화면.
   if (yearData && (sets.length === 0 || (initSetId && !currentSet))) {
-    const yMeta = YEAR_INFO.find((y) => y.key === yearKey);
-    const yLabel = yMeta?.label ?? yearKey;
+    const yLabel = formatExamTitle(yearKey);
     return (
       <div
         style={{
@@ -1538,13 +1591,12 @@ function ViewerPage({ user, isPro = false }) {
   }
 
   if (submitted && !isReview) {
-    const yearMeta = YEAR_INFO.find((y) => y.key === yearKey);
     return (
       <ResultPage
         user={user}
         isPro={isPro}
         yearKey={yearKey}
-        yearLabel={yearMeta?.label ?? yearKey}
+        yearLabel={formatExamTitle(yearKey)}
         studyAnswers={studyAnswers}
         allSets={allSets}
         onReview={(setId) => {
@@ -1556,7 +1608,7 @@ function ViewerPage({ user, isPro = false }) {
           );
           if (idx >= 0) setSetIdx(idx);
           setSel(null);
-          setIsReview(true);
+          setLocalReview(true);
           window.scrollTo({ top: 0 });
         }}
         onBack={() => navigate("/")}
@@ -1617,7 +1669,7 @@ function ViewerPage({ user, isPro = false }) {
             · 정답 <span style={{ color: "#6ee7b7" }}>초록</span>
           </span>
           <button
-            onClick={() => setIsReview(false)}
+            onClick={exitReviewMode}
             style={{
               flexShrink: 0,
               padding: "5px 14px",
@@ -1635,135 +1687,137 @@ function ViewerPage({ user, isPro = false }) {
         </div>
       )}
 
-      {isStudy && !submitted && (() => {
-        const curQs = currentSet?.questions ?? [];
-        const curQCount = curQs.length;
-        const curAnswered = curQs.filter(
-          (q) => studyAnswers[currentSet?.id]?.[q.id] != null,
-        ).length;
-        const isSetSubmitted = currentSet
-          ? !!submittedSets[currentSet.id]
-          : false;
-        return (
-          <div
-            style={{
-              position: "sticky",
-              top: "52px",
-              zIndex: 90,
-              background: "#1f2937",
-              padding: "7px 20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              gap: "10px",
-              flexWrap: "wrap",
-            }}
-          >
-            <span style={{ fontSize: "0.74rem", color: "#9ca3af" }}>
-              이 지문 {curAnswered}/{curQCount}
-            </span>
-            {isSetSubmitted && (
+      {isStudy &&
+        !submitted &&
+        (() => {
+          const curQs = currentSet?.questions ?? [];
+          const curQCount = curQs.length;
+          const curAnswered = curQs.filter(
+            (q) => studyAnswers[currentSet?.id]?.[q.id] != null,
+          ).length;
+          const isSetSubmitted = currentSet
+            ? !!submittedSets[currentSet.id]
+            : false;
+          return (
+            <div
+              style={{
+                position: "sticky",
+                top: "52px",
+                zIndex: 90,
+                background: "#1f2937",
+                padding: "7px 20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                gap: "10px",
+                flexWrap: "wrap",
+              }}
+            >
+              <span style={{ fontSize: "0.74rem", color: "#9ca3af" }}>
+                이 지문 {curAnswered}/{curQCount}
+              </span>
+              {isSetSubmitted && (
+                <span
+                  style={{
+                    fontSize: "0.7rem",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                  }}
+                  title="채점 색상 안내"
+                >
+                  <span style={{ color: "#6ee7b7" }}>● 정답</span>
+                  <span style={{ color: "#fca5a5" }}>● 내 답</span>
+                </span>
+              )}
+              <button
+                onClick={() => handleSubmitSet(currentSet)}
+                disabled={submitting || isSetSubmitted || !currentSet}
+                style={{
+                  padding: "6px 14px",
+                  borderRadius: "6px",
+                  background: isSetSubmitted
+                    ? "#10b981"
+                    : submitting
+                      ? "#6b7280"
+                      : "#3b82f6",
+                  color: "#fff",
+                  border: "none",
+                  fontWeight: "700",
+                  cursor:
+                    submitting || isSetSubmitted ? "not-allowed" : "pointer",
+                  fontSize: "0.82rem",
+                  opacity: submitting ? 0.8 : 1,
+                  transition: "all 0.15s",
+                }}
+                title="현재 지문만 채점합니다"
+              >
+                {isSetSubmitted
+                  ? "✓ 채점됨"
+                  : submitting
+                    ? "저장 중…"
+                    : `이 지문 제출 (${curAnswered}/${curQCount})`}
+              </button>
+              {isSetSubmitted && (
+                <button
+                  onClick={() => {
+                    // 되돌리기 — 해당 set 의 submitted 상태만 해제 (답안은 보존)
+                    setSubmittedSets((prev) => {
+                      const next = { ...prev };
+                      delete next[currentSet.id];
+                      return next;
+                    });
+                    setSetScoreToast(null);
+                  }}
+                  style={{
+                    padding: "5px 10px",
+                    borderRadius: "6px",
+                    background: "transparent",
+                    color: "#fca5a5",
+                    border: "1px solid #fca5a5",
+                    fontWeight: "600",
+                    cursor: "pointer",
+                    fontSize: "0.72rem",
+                  }}
+                  title="답안 수정 가능 상태로 돌아갑니다 (답안은 보존)"
+                >
+                  ↺ 되돌리기
+                </button>
+              )}
               <span
                 style={{
-                  fontSize: "0.7rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "6px",
-                }}
-                title="채점 색상 안내"
-              >
-                <span style={{ color: "#6ee7b7" }}>● 정답</span>
-                <span style={{ color: "#fca5a5" }}>● 내 답</span>
-              </span>
-            )}
-            <button
-              onClick={() => handleSubmitSet(currentSet)}
-              disabled={submitting || isSetSubmitted || !currentSet}
-              style={{
-                padding: "6px 14px",
-                borderRadius: "6px",
-                background: isSetSubmitted
-                  ? "#10b981"
-                  : submitting
-                    ? "#6b7280"
-                    : "#3b82f6",
-                color: "#fff",
-                border: "none",
-                fontWeight: "700",
-                cursor:
-                  submitting || isSetSubmitted ? "not-allowed" : "pointer",
-                fontSize: "0.82rem",
-                opacity: submitting ? 0.8 : 1,
-                transition: "all 0.15s",
-              }}
-              title="현재 지문만 채점합니다"
-            >
-              {isSetSubmitted
-                ? "✓ 채점됨"
-                : submitting
-                  ? "저장 중…"
-                  : `이 지문 제출 (${curAnswered}/${curQCount})`}
-            </button>
-            {isSetSubmitted && (
-              <button
-                onClick={() => {
-                  // 되돌리기 — 해당 set 의 submitted 상태만 해제 (답안은 보존)
-                  setSubmittedSets((prev) => {
-                    const next = { ...prev };
-                    delete next[currentSet.id];
-                    return next;
-                  });
-                  setSetScoreToast(null);
-                }}
-                style={{
-                  padding: "5px 10px",
-                  borderRadius: "6px",
-                  background: "transparent",
-                  color: "#fca5a5",
-                  border: "1px solid #fca5a5",
-                  fontWeight: "600",
-                  cursor: "pointer",
                   fontSize: "0.72rem",
+                  color: "#6b7280",
+                  margin: "0 4px",
                 }}
-                title="답안 수정 가능 상태로 돌아갑니다 (답안은 보존)"
               >
-                ↺ 되돌리기
+                |
+              </span>
+              <span style={{ fontSize: "0.74rem", color: "#9ca3af" }}>
+                전체 {totalAnswered}/{totalQCount}
+              </span>
+              <button
+                onClick={handleSubmitAll}
+                disabled={submitting}
+                style={{
+                  padding: "6px 14px",
+                  borderRadius: "6px",
+                  background: submitting ? "#6b7280" : "#f9fafb",
+                  color: submitting ? "#fff" : "#1f2937",
+                  border: "none",
+                  fontWeight: "700",
+                  cursor: submitting ? "not-allowed" : "pointer",
+                  fontSize: "0.82rem",
+                  opacity: submitting ? 0.8 : 1,
+                  transition: "all 0.15s",
+                }}
+                title="모든 지문을 한 번에 채점합니다"
+              >
+                {submitting ? "저장 중…" : "전체 제출"}
               </button>
-            )}
-            <span
-              style={{
-                fontSize: "0.72rem",
-                color: "#6b7280",
-                margin: "0 4px",
-              }}
-            >
-              |
-            </span>
-            <span style={{ fontSize: "0.74rem", color: "#9ca3af" }}>
-              전체 {totalAnswered}/{totalQCount}
-            </span>
-            <button
-              onClick={handleSubmitAll}
-              disabled={submitting}
-              style={{
-                padding: "6px 14px",
-                borderRadius: "6px",
-                background: submitting ? "#6b7280" : "#f9fafb",
-                color: submitting ? "#fff" : "#1f2937",
-                border: "none",
-                fontWeight: "700",
-                cursor: submitting ? "not-allowed" : "pointer",
-                fontSize: "0.82rem",
-                opacity: submitting ? 0.8 : 1,
-                transition: "all 0.15s",
-              }}
-              title="모든 지문을 한 번에 채점합니다"
-            >
-              {submitting ? "저장 중…" : "전체 제출"}
-            </button>
-          </div>
-        );
-      })()}
+            </div>
+          );
+        })()}
 
       {/* 지문 단위 채점 toast — UX W2 (A4) */}
       {setScoreToast && (
@@ -1920,9 +1974,7 @@ function ViewerPage({ user, isPro = false }) {
             passageSet={currentSet}
             sel={sel}
             mode={
-              isReview || !!submittedSets[currentSet?.id]
-                ? MODE.VIEW
-                : mode
+              isReview || !!submittedSets[currentSet?.id] ? MODE.VIEW : mode
             }
           />
         </div>
@@ -2357,7 +2409,7 @@ export default function App() {
 
   const goToQuestion = (yearKey, setId, questionId) =>
     navigate(
-      `/viewer?year=${encodeURIComponent(yearKey)}&set=${setId}&q=${questionId}&mode=${MODE.VIEW}`,
+      `/viewer?year=${encodeURIComponent(yearKey)}&set=${setId}&q=${questionId}&mode=${MODE.STUDY}&review=1`,
     );
 
   return (
@@ -2448,7 +2500,14 @@ export default function App() {
           </Layout>
         }
       />
-      <Route path="/audit/:setId" element={<Layout user={user} onLogout={handleLogout}><AuditPanel user={user} /></Layout>} />
+      <Route
+        path="/audit/:setId"
+        element={
+          <Layout user={user} onLogout={handleLogout}>
+            <AuditPanel user={user} />
+          </Layout>
+        }
+      />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
