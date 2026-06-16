@@ -11,6 +11,14 @@ const args = process.argv.slice(2);
 const ykFilter = (args.find((a) => a.startsWith("--yk=")) || "").split("=")[1];
 const CIRC = { "①": 1, "②": 2, "③": 3, "④": 4, "⑤": 5 };
 
+// image_only 정답 PDF 폴백용 수동 정답 소스 (품질심사관 판독본)
+let MANUAL = {};
+try {
+  MANUAL = JSON.parse(
+    fs.readFileSync("config/manual_answer_keys.json", "utf8"),
+  );
+} catch {}
+
 // 데이터 yk 하나에 대응되는 _done 디렉터리 후보 (A/B형 포함)
 function resolveDirs(yk) {
   const dirs = [];
@@ -30,10 +38,10 @@ function parseTable(raw) {
   return ans;
 }
 
-// {ans, status}  status: ok | image_only | no_pdf | no_dir | extract_fail
+// {ans, status}  status: ok | manual | image_only | no_pdf | no_dir | extract_fail
 function keyFromPdf(yk) {
   const dirs = resolveDirs(yk);
-  if (!dirs.length) return { ans: null, status: "no_dir" };
+  let pdfStatus = dirs.length ? "no_pdf" : "no_dir";
   for (const dir of dirs) {
     const hit = fs.readdirSync(dir).find((x) => x.endsWith("정답.pdf"));
     if (!hit) continue;
@@ -47,12 +55,23 @@ function keyFromPdf(yk) {
         },
       ).toString();
     } catch {
-      return { ans: null, status: "extract_fail" };
+      pdfStatus = "extract_fail";
+      continue;
     }
-    if (raw.trim().length === 0) return { ans: null, status: "image_only" };
+    if (raw.trim().length === 0) {
+      pdfStatus = "image_only";
+      continue;
+    }
     return { ans: parseTable(raw), status: "ok" };
   }
-  return { ans: null, status: "no_pdf" };
+  // 폴백: PDF 미가용(image_only/no_pdf 등) 시 수동 정답 소스 사용
+  const mk = MANUAL[yk] && MANUAL[yk].answers;
+  if (mk) {
+    const m = {};
+    for (const k of Object.keys(mk)) m[+k] = mk[k];
+    return { ans: m, status: "manual" };
+  }
+  return { ans: null, status: pdfStatus };
 }
 
 const bad = [],
