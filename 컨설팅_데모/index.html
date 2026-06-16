@@ -6,15 +6,27 @@
     <title>지니쌤 컨설팅 워크스페이스 — 데모</title>
     <link rel="stylesheet" href="css/main.css" />
     <style>
-      .scenario-card .scenario-list__item--extra { display: none; }
-      .scenario-card.show-all .scenario-list__item--extra { display: block; }
-      .scenario-more-btn {
-        margin-top: 8px; width: 100%; padding: 6px 8px;
-        font-size: 12px; font-weight: 600; color: var(--purple-600);
-        background: #f5f3ff; border: 1px solid #ddd6fe;
-        border-radius: 6px; cursor: pointer;
+      .scenario-card .scenario-list__item--extra {
+        display: none;
       }
-      .scenario-more-btn:hover { background: #ede9fe; }
+      .scenario-card.show-all .scenario-list__item--extra {
+        display: block;
+      }
+      .scenario-more-btn {
+        margin-top: 8px;
+        width: 100%;
+        padding: 6px 8px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--purple-600);
+        background: #f5f3ff;
+        border: 1px solid #ddd6fe;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .scenario-more-btn:hover {
+        background: #ede9fe;
+      }
     </style>
   </head>
   <body>
@@ -35,104 +47,628 @@
       <aside class="sidebar">
         <div class="student-picker">
           <select id="student-select"></select>
-          <button id="add-student-btn" style="margin-top:8px; width:100%; padding:8px 12px; background:var(--purple-600); color:white; border:none; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;">+ 학생 추가</button>
-          <button id="delete-student-btn" style="margin-top:4px; width:100%; padding:6px 12px; background:transparent; color:var(--gray-500); border:1px solid var(--gray-300); border-radius:8px; font-size:11px; cursor:pointer;">현재 학생 삭제 (저장된 학생만)</button>
+          <button
+            id="add-student-btn"
+            style="
+              margin-top: 8px;
+              width: 100%;
+              padding: 8px 12px;
+              background: var(--purple-600);
+              color: white;
+              border: none;
+              border-radius: 8px;
+              font-size: 13px;
+              font-weight: 600;
+              cursor: pointer;
+            "
+          >
+            + 학생 추가
+          </button>
+          <button
+            id="delete-student-btn"
+            style="
+              margin-top: 4px;
+              width: 100%;
+              padding: 6px 12px;
+              background: transparent;
+              color: var(--gray-500);
+              border: 1px solid var(--gray-300);
+              border-radius: 8px;
+              font-size: 11px;
+              cursor: pointer;
+            "
+          >
+            현재 학생 삭제 (저장된 학생만)
+          </button>
         </div>
         <div id="student-card"></div>
       </aside>
 
       <!-- ===== 학생 추가 모달 ===== -->
-      <div id="detail-modal" onclick="if(event.target===this)closeDetail()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1100; justify-content:center; align-items:center;">
-        <div style="background:white; border-radius:16px; padding:22px 24px; width:440px; max-height:85vh; overflow-y:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
-            <div id="detail-title" style="font-size:17px; font-weight:700;"></div>
-            <button onclick="closeDetail()" style="background:none; border:none; font-size:20px; cursor:pointer; color:var(--gray-500);">✕</button>
+      <div
+        id="detail-modal"
+        onclick="if (event.target === this) closeDetail();"
+        style="
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 1100;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div
+          style="
+            background: white;
+            border-radius: 16px;
+            padding: 22px 24px;
+            width: 440px;
+            max-height: 85vh;
+            overflow-y: auto;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              margin-bottom: 12px;
+            "
+          >
+            <div
+              id="detail-title"
+              style="font-size: 17px; font-weight: 700"
+            ></div>
+            <button
+              onclick="closeDetail()"
+              style="
+                background: none;
+                border: none;
+                font-size: 20px;
+                cursor: pointer;
+                color: var(--gray-500);
+              "
+            >
+              ✕
+            </button>
           </div>
           <div id="detail-body"></div>
         </div>
       </div>
 
-      <div id="add-student-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
-        <div style="background:white; border-radius:16px; padding:24px; width:520px; max-height:90vh; overflow-y:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-            <h3 style="font-size:18px; font-weight:700;">학생 추가</h3>
-            <button id="close-modal-btn" style="background:none; border:none; font-size:20px; cursor:pointer; color:var(--gray-500);">✕</button>
+      <div
+        id="add-student-modal"
+        style="
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 1000;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div
+          style="
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            width: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 16px;
+            "
+          >
+            <h3 style="font-size: 18px; font-weight: 700">학생 추가</h3>
+            <button
+              id="close-modal-btn"
+              style="
+                background: none;
+                border: none;
+                font-size: 20px;
+                cursor: pointer;
+                color: var(--gray-500);
+              "
+            >
+              ✕
+            </button>
           </div>
-          <form id="add-student-form" style="display:flex; flex-direction:column; gap:12px;">
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-              <label style="font-size:11px; color:var(--gray-700);">이름 <input name="name" required style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;" placeholder="홍길동"/></label>
-              <label style="font-size:11px; color:var(--gray-700);">학년
-                <select name="grade" style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;">
-                  <option>고3</option><option>고2</option><option>고1</option><option>N수생</option>
+          <form
+            id="add-student-form"
+            style="display: flex; flex-direction: column; gap: 12px"
+          >
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px"
+            >
+              <label style="font-size: 11px; color: var(--gray-700)"
+                >이름
+                <input
+                  name="name"
+                  required
+                  style="
+                    width: 100%;
+                    padding: 6px 8px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 4px;
+                  "
+                  placeholder="홍길동"
+              /></label>
+              <label style="font-size: 11px; color: var(--gray-700)"
+                >학년
+                <select
+                  name="grade"
+                  style="
+                    width: 100%;
+                    padding: 6px 8px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 4px;
+                  "
+                >
+                  <option>고3</option>
+                  <option>고2</option>
+                  <option>고1</option>
+                  <option>N수생</option>
                 </select>
               </label>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
-              <label style="font-size:11px; color:var(--gray-700);">성별
-                <select name="gender" style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 8px;
+              "
+            >
+              <label style="font-size: 11px; color: var(--gray-700)"
+                >성별
+                <select
+                  name="gender"
+                  style="
+                    width: 100%;
+                    padding: 6px 8px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 4px;
+                  "
+                >
                   <option value="">선택</option>
                   <option value="남">남</option>
                   <option value="여">여</option>
                 </select>
               </label>
-              <label style="font-size:11px; color:var(--gray-700);">계열
-                <select name="track" style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;">
+              <label style="font-size: 11px; color: var(--gray-700)"
+                >계열
+                <select
+                  name="track"
+                  style="
+                    width: 100%;
+                    padding: 6px 8px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 4px;
+                  "
+                >
                   <option value="자연">자연</option>
                   <option value="인문">인문</option>
                 </select>
               </label>
-              <label style="font-size:11px; color:var(--gray-700);">내신 (1~9) <input name="naesin" type="number" step="0.01" min="1" max="9" required style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;" placeholder="2.8"/></label>
+              <label style="font-size: 11px; color: var(--gray-700)"
+                >내신 (1~9)
+                <input
+                  name="naesin"
+                  type="number"
+                  step="0.01"
+                  min="1"
+                  max="9"
+                  required
+                  style="
+                    width: 100%;
+                    padding: 6px 8px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 4px;
+                  "
+                  placeholder="2.8"
+              /></label>
             </div>
 
-            <div style="font-size:11px; color:var(--gray-500); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-top:8px;">수능 점수 (직전 모평 기준)</div>
-
-            <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
-              <label style="font-size:11px;">국어 표점 <input name="kor_std" type="number" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="130"/></label>
-              <label style="font-size:11px;">국어 백분위 <input name="kor_pct" type="number" min="0" max="100" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="92"/></label>
-              <label style="font-size:11px;">국어 등급 <input name="kor_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="2"/></label>
-              <label style="font-size:11px;">한국사 등급 <input name="hist_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="3"/></label>
+            <div
+              style="
+                font-size: 11px;
+                color: var(--gray-500);
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                margin-top: 8px;
+              "
+            >
+              수능 점수 (직전 모평 기준)
             </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
-              <label style="font-size:11px;">수학 선택
-                <select name="math_elec" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;">
-                  <option>미적분</option><option>확률과통계</option><option>기하</option>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 6px;
+              "
+            >
+              <label style="font-size: 11px"
+                >국어 표점
+                <input
+                  name="kor_std"
+                  type="number"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="130"
+              /></label>
+              <label style="font-size: 11px"
+                >국어 백분위
+                <input
+                  name="kor_pct"
+                  type="number"
+                  min="0"
+                  max="100"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="92"
+              /></label>
+              <label style="font-size: 11px"
+                >국어 등급
+                <input
+                  name="kor_grade"
+                  type="number"
+                  min="1"
+                  max="9"
+                  required
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="2"
+              /></label>
+              <label style="font-size: 11px"
+                >한국사 등급
+                <input
+                  name="hist_grade"
+                  type="number"
+                  min="1"
+                  max="9"
+                  required
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="3"
+              /></label>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 6px;
+              "
+            >
+              <label style="font-size: 11px"
+                >수학 선택
+                <select
+                  name="math_elec"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                >
+                  <option>미적분</option>
+                  <option>확률과통계</option>
+                  <option>기하</option>
                 </select>
               </label>
-              <label style="font-size:11px;">수학 표점 <input name="math_std" type="number" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="135"/></label>
-              <label style="font-size:11px;">수학 백분위 <input name="math_pct" type="number" min="0" max="100" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="95"/></label>
-              <label style="font-size:11px;">수학 등급 <input name="math_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="2"/></label>
+              <label style="font-size: 11px"
+                >수학 표점
+                <input
+                  name="math_std"
+                  type="number"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="135"
+              /></label>
+              <label style="font-size: 11px"
+                >수학 백분위
+                <input
+                  name="math_pct"
+                  type="number"
+                  min="0"
+                  max="100"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="95"
+              /></label>
+              <label style="font-size: 11px"
+                >수학 등급
+                <input
+                  name="math_grade"
+                  type="number"
+                  min="1"
+                  max="9"
+                  required
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="2"
+              /></label>
             </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
-              <label style="font-size:11px;">영어 등급 <input name="eng_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="2"/></label>
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px"
+            >
+              <label style="font-size: 11px"
+                >영어 등급
+                <input
+                  name="eng_grade"
+                  type="number"
+                  min="1"
+                  max="9"
+                  required
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="2"
+              /></label>
             </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
-              <label style="font-size:11px;">탐구1 과목 <input name="t1_subject" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="물리1"/></label>
-              <label style="font-size:11px;">탐구1 표점 <input name="t1_std" type="number" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="65"/></label>
-              <label style="font-size:11px;">탐구1 백분위 <input name="t1_pct" type="number" min="0" max="100" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="88"/></label>
-              <label style="font-size:11px;">탐구1 등급 <input name="t1_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="3"/></label>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 6px;
+              "
+            >
+              <label style="font-size: 11px"
+                >탐구1 과목
+                <input
+                  name="t1_subject"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="물리1"
+              /></label>
+              <label style="font-size: 11px"
+                >탐구1 표점
+                <input
+                  name="t1_std"
+                  type="number"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="65"
+              /></label>
+              <label style="font-size: 11px"
+                >탐구1 백분위
+                <input
+                  name="t1_pct"
+                  type="number"
+                  min="0"
+                  max="100"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="88"
+              /></label>
+              <label style="font-size: 11px"
+                >탐구1 등급
+                <input
+                  name="t1_grade"
+                  type="number"
+                  min="1"
+                  max="9"
+                  required
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="3"
+              /></label>
             </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
-              <label style="font-size:11px;">탐구2 과목 <input name="t2_subject" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="화학1"/></label>
-              <label style="font-size:11px;">탐구2 표점 <input name="t2_std" type="number" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="67"/></label>
-              <label style="font-size:11px;">탐구2 백분위 <input name="t2_pct" type="number" min="0" max="100" style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="90"/></label>
-              <label style="font-size:11px;">탐구2 등급 <input name="t2_grade" type="number" min="1" max="9" required style="width:100%; padding:5px 6px; border:1px solid var(--gray-300); border-radius:6px; margin-top:2px;" placeholder="2"/></label>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 6px;
+              "
+            >
+              <label style="font-size: 11px"
+                >탐구2 과목
+                <input
+                  name="t2_subject"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="화학1"
+              /></label>
+              <label style="font-size: 11px"
+                >탐구2 표점
+                <input
+                  name="t2_std"
+                  type="number"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="67"
+              /></label>
+              <label style="font-size: 11px"
+                >탐구2 백분위
+                <input
+                  name="t2_pct"
+                  type="number"
+                  min="0"
+                  max="100"
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="90"
+              /></label>
+              <label style="font-size: 11px"
+                >탐구2 등급
+                <input
+                  name="t2_grade"
+                  type="number"
+                  min="1"
+                  max="9"
+                  required
+                  style="
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid var(--gray-300);
+                    border-radius: 6px;
+                    margin-top: 2px;
+                  "
+                  placeholder="2"
+              /></label>
             </div>
 
-            <div style="font-size:11px; color:var(--gray-500); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-top:8px;">희망</div>
+            <div
+              style="
+                font-size: 11px;
+                color: var(--gray-500);
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                margin-top: 8px;
+              "
+            >
+              희망
+            </div>
 
-            <label style="font-size:11px;">희망 계열 (쉼표 구분)
-              <input name="wish_fields" required style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;" placeholder="공학, 자연과학 (선택: 경영, 경제, 심리, IT, 의학, 약학, 교육, 어문, 사회 등)"/>
+            <label style="font-size: 11px"
+              >희망 계열 (쉼표 구분)
+              <input
+                name="wish_fields"
+                required
+                style="
+                  width: 100%;
+                  padding: 6px 8px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 6px;
+                  margin-top: 4px;
+                "
+                placeholder="공학, 자연과학 (선택: 경영, 경제, 심리, IT, 의학, 약학, 교육, 어문, 사회 등)"
+              />
             </label>
-            <label style="font-size:11px;">희망 지역 (쉼표 구분)
-              <input name="wish_regions" required style="width:100%; padding:6px 8px; border:1px solid var(--gray-300); border-radius:6px; margin-top:4px;" placeholder="서울, 수도권"/>
+            <label style="font-size: 11px"
+              >희망 지역 (쉼표 구분)
+              <input
+                name="wish_regions"
+                required
+                style="
+                  width: 100%;
+                  padding: 6px 8px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 6px;
+                  margin-top: 4px;
+                "
+                placeholder="서울, 수도권"
+              />
             </label>
 
-            <button type="submit" style="margin-top:8px; padding:10px; background:var(--purple-600); color:white; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer;">학생 저장 + 즉시 시나리오 산출</button>
-            <div style="font-size:10px; color:var(--gray-500); text-align:center;">브라우저 localStorage 저장. 다른 PC·시크릿창에서는 보이지 않음.</div>
+            <button
+              type="submit"
+              style="
+                margin-top: 8px;
+                padding: 10px;
+                background: var(--purple-600);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+              "
+            >
+              학생 저장 + 즉시 시나리오 산출
+            </button>
+            <div
+              style="
+                font-size: 10px;
+                color: var(--gray-500);
+                text-align: center;
+              "
+            >
+              브라우저 localStorage 저장. 다른 PC·시크릿창에서는 보이지 않음.
+            </div>
           </form>
         </div>
       </div>
@@ -186,13 +722,54 @@
           <div class="section__title">
             수시 시나리오 3안
             <span class="section__title-tag">9월 시즌 · 자동 산출</span>
-            <span class="section__title-tag" style="background:var(--green-100); color:var(--green-600);">메인</span>
+            <span
+              class="section__title-tag"
+              style="background: var(--green-100); color: var(--green-600)"
+              >메인</span
+            >
           </div>
-          <div style="display:flex; gap:8px; margin-bottom:10px;">
-            <input id="susi-search" oninput="applySusiFilter()" placeholder="학교·학과 검색" style="flex:1; padding:6px 10px; border:1px solid var(--gray-300); border-radius:8px; font-size:13px;" />
-            <select id="susi-region" onchange="applySusiFilter()" style="padding:6px 10px; border:1px solid var(--gray-300); border-radius:8px; font-size:13px;">
+          <div style="display: flex; gap: 8px; margin-bottom: 10px">
+            <input
+              id="susi-search"
+              oninput="applySusiFilter()"
+              placeholder="학교·학과 검색"
+              style="
+                flex: 1;
+                padding: 6px 10px;
+                border: 1px solid var(--gray-300);
+                border-radius: 8px;
+                font-size: 13px;
+              "
+            />
+            <select
+              id="susi-region"
+              onchange="applySusiFilter()"
+              style="
+                padding: 6px 10px;
+                border: 1px solid var(--gray-300);
+                border-radius: 8px;
+                font-size: 13px;
+              "
+            >
               <option value="">전체 지역</option>
-              <option>서울</option><option>경기</option><option>인천</option><option>수도권</option><option>강원</option><option>충북</option><option>충남</option><option>대전</option><option>세종</option><option>전북</option><option>전남</option><option>광주</option><option>경북</option><option>대구</option><option>경남</option><option>부산</option><option>울산</option><option>제주</option>
+              <option>서울</option>
+              <option>경기</option>
+              <option>인천</option>
+              <option>수도권</option>
+              <option>강원</option>
+              <option>충북</option>
+              <option>충남</option>
+              <option>대전</option>
+              <option>세종</option>
+              <option>전북</option>
+              <option>전남</option>
+              <option>광주</option>
+              <option>경북</option>
+              <option>대구</option>
+              <option>경남</option>
+              <option>부산</option>
+              <option>울산</option>
+              <option>제주</option>
             </select>
           </div>
           <div class="scenarios" id="susi-grid"></div>
@@ -202,8 +779,14 @@
         <div class="section">
           <div class="section__title">
             정시 백업안
-            <span class="section__title-tag" style="background:var(--green-100); color:var(--green-600);">검증된 4개대만</span>
-            <span class="section__title-tag">잠정 28개 제외 · 7월 모집요강 후 확장</span>
+            <span
+              class="section__title-tag"
+              style="background: var(--green-100); color: var(--green-600)"
+              >검증된 4개대만</span
+            >
+            <span class="section__title-tag"
+              >잠정 28개 제외 · 7월 모집요강 후 확장</span
+            >
           </div>
           <div class="scenarios" id="jeongsi-grid"></div>
         </div>
@@ -212,10 +795,199 @@
         <div class="section">
           <div class="section__title">
             정시 다년 기록 참고선
-            <span class="section__title-tag" style="background:var(--orange-100, #ffedd5); color:var(--orange-600);">예측 아님 · 참고선</span>
+            <span
+              class="section__title-tag"
+              style="
+                background: var(--orange-100, #ffedd5);
+                color: var(--orange-600);
+              "
+              >예측 아님 · 참고선</span
+            >
             <span class="section__title-tag" id="jeongsi-ref-avg"></span>
           </div>
           <div class="scenarios" id="jeongsi-ref-grid"></div>
+        </div>
+
+        <!-- 블록 2-3: 정시 환산 계산기 -->
+        <div class="section">
+          <div class="section__title">
+            정시 환산 계산기
+            <span
+              class="section__title-tag"
+              style="background: var(--green-100); color: var(--green-600)"
+              >검증 4 + 잠정 28</span
+            >
+            <span class="section__title-tag" id="calc-student-tag"></span>
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              align-items: center;
+              margin-bottom: 12px;
+              flex-wrap: wrap;
+            "
+          >
+            <select
+              id="calc-school"
+              onchange="calcConvert()"
+              style="
+                flex: 1;
+                min-width: 240px;
+                padding: 8px 10px;
+                border: 1px solid var(--gray-300);
+                border-radius: 8px;
+                font-size: 13px;
+              "
+            ></select>
+          </div>
+          <div id="calc-result"></div>
+        </div>
+
+        <!-- 블록 2-4: 수시 교과 환산 계산기 -->
+        <div class="section">
+          <div class="section__title">
+            수시 교과 환산 계산기
+            <span
+              class="section__title-tag"
+              style="
+                background: var(--orange-100, #ffedd5);
+                color: var(--orange-600);
+              "
+              >교과전형만 · 가천대 프로토타입</span
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 8px;
+              flex-wrap: wrap;
+              margin-bottom: 10px;
+              align-items: flex-end;
+              font-size: 11px;
+              color: var(--gray-700);
+            "
+          >
+            <label
+              >국어<input
+                id="gg-국어"
+                type="number"
+                step="0.1"
+                min="1"
+                max="9"
+                oninput="calcSusiGyogwa()"
+                style="
+                  display: block;
+                  width: 60px;
+                  padding: 5px 6px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 6px;
+                  margin-top: 2px;
+                "
+                placeholder="2.0"
+            /></label>
+            <label
+              >수학<input
+                id="gg-수학"
+                type="number"
+                step="0.1"
+                min="1"
+                max="9"
+                oninput="calcSusiGyogwa()"
+                style="
+                  display: block;
+                  width: 60px;
+                  padding: 5px 6px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 6px;
+                  margin-top: 2px;
+                "
+                placeholder="1.5"
+            /></label>
+            <label
+              >영어<input
+                id="gg-영어"
+                type="number"
+                step="0.1"
+                min="1"
+                max="9"
+                oninput="calcSusiGyogwa()"
+                style="
+                  display: block;
+                  width: 60px;
+                  padding: 5px 6px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 6px;
+                  margin-top: 2px;
+                "
+                placeholder="2.5"
+            /></label>
+            <label
+              >사회<input
+                id="gg-사회"
+                type="number"
+                step="0.1"
+                min="1"
+                max="9"
+                oninput="calcSusiGyogwa()"
+                style="
+                  display: block;
+                  width: 60px;
+                  padding: 5px 6px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 6px;
+                  margin-top: 2px;
+                "
+                placeholder="3.0"
+            /></label>
+            <label
+              >과학<input
+                id="gg-과학"
+                type="number"
+                step="0.1"
+                min="1"
+                max="9"
+                oninput="calcSusiGyogwa()"
+                style="
+                  display: block;
+                  width: 60px;
+                  padding: 5px 6px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 6px;
+                  margin-top: 2px;
+                "
+                placeholder="1.8"
+            /></label>
+            <label
+              >진로선택<input
+                id="gg-진로"
+                type="number"
+                step="0.1"
+                min="1"
+                max="9"
+                oninput="calcSusiGyogwa()"
+                style="
+                  display: block;
+                  width: 60px;
+                  padding: 5px 6px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 6px;
+                  margin-top: 2px;
+                "
+                placeholder="2.2"
+            /></label>
+            <select
+              id="gg-school"
+              onchange="calcSusiGyogwa()"
+              style="
+                padding: 6px 10px;
+                border: 1px solid var(--gray-300);
+                border-radius: 8px;
+                font-size: 13px;
+              "
+            ></select>
+          </div>
+          <div id="gg-result"></div>
         </div>
 
         <!-- 블록 3 + 4: 균형안 근거 + 리스크 -->
@@ -236,7 +1008,9 @@
         <div class="section">
           <div class="section__title">
             학과별 다년 추이
-            <span class="section__title-tag">가천대 9년치 (2017~2025) · 확장 예정</span>
+            <span class="section__title-tag"
+              >가천대 9년치 (2017~2025) · 확장 예정</span
+            >
           </div>
           <div id="trend-panel"></div>
         </div>
@@ -255,6 +1029,7 @@
     <script src="js/data.js?v=20260608"></script>
     <script src="js/trend_data.js?v=20260608"></script>
     <script src="js/jeonhyeong_files.js?v=20260612"></script>
+    <script src="js/gyogwa_banyeong.js?v=20260613"></script>
     <script src="js/scenario_engine.js?v=20260608"></script>
     <script>
       // ===== 데이터 로드 (window.DEMO_DATA) =====
@@ -299,7 +1074,9 @@
         try {
           const raw = localStorage.getItem(LS_KEY);
           return raw ? JSON.parse(raw) : [];
-        } catch (e) { return []; }
+        } catch (e) {
+          return [];
+        }
       }
 
       function setSavedStudents(arr) {
@@ -333,36 +1110,73 @@
         const form = document.getElementById("add-student-form");
         const delBtn = document.getElementById("delete-student-btn");
 
-        btn.addEventListener("click", () => { modal.style.display = "flex"; });
-        close.addEventListener("click", () => { modal.style.display = "none"; });
-        modal.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
+        btn.addEventListener("click", () => {
+          modal.style.display = "flex";
+        });
+        close.addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) modal.style.display = "none";
+        });
 
         form.addEventListener("submit", (e) => {
           e.preventDefault();
           const f = new FormData(form);
-          const num = (k) => { const v = f.get(k); return v === "" || v == null ? null : Number(v); };
-          const str = (k) => { const v = f.get(k); return v == null ? "" : String(v).trim(); };
+          const num = (k) => {
+            const v = f.get(k);
+            return v === "" || v == null ? null : Number(v);
+          };
+          const str = (k) => {
+            const v = f.get(k);
+            return v == null ? "" : String(v).trim();
+          };
           const student = {
             id: "U" + Date.now(),
             name: str("name"),
             grade: str("grade") || "고3",
             track: str("track") || "자연",
-            "성별": str("gender") || "",
+            성별: str("gender") || "",
             scores: {
-              "국어": { std: num("kor_std"), percentile: num("kor_pct"), grade: num("kor_grade") },
-              "수학": { elective: str("math_elec") || "미적분", std: num("math_std"), percentile: num("math_pct"), grade: num("math_grade") },
-              "영어": { grade: num("eng_grade") },
-              "탐구1": { subject: str("t1_subject") || "탐구1", std: num("t1_std"), percentile: num("t1_pct"), grade: num("t1_grade") },
-              "탐구2": { subject: str("t2_subject") || "탐구2", std: num("t2_std"), percentile: num("t2_pct"), grade: num("t2_grade") },
-              "한국사": { grade: num("hist_grade") },
+              국어: {
+                std: num("kor_std"),
+                percentile: num("kor_pct"),
+                grade: num("kor_grade"),
+              },
+              수학: {
+                elective: str("math_elec") || "미적분",
+                std: num("math_std"),
+                percentile: num("math_pct"),
+                grade: num("math_grade"),
+              },
+              영어: { grade: num("eng_grade") },
+              탐구1: {
+                subject: str("t1_subject") || "탐구1",
+                std: num("t1_std"),
+                percentile: num("t1_pct"),
+                grade: num("t1_grade"),
+              },
+              탐구2: {
+                subject: str("t2_subject") || "탐구2",
+                std: num("t2_std"),
+                percentile: num("t2_pct"),
+                grade: num("t2_grade"),
+              },
+              한국사: { grade: num("hist_grade") },
             },
-            "내신": num("naesin"),
-            "수상": [],
-            "희망_계열": str("wish_fields").split(",").map((x) => x.trim()).filter(Boolean),
-            "희망_지역": str("wish_regions").split(",").map((x) => x.trim()).filter(Boolean),
-            "제약": [],
-            "이탈위험": false,
-            "마지막상담": new Date().toISOString().slice(0, 10),
+            내신: num("naesin"),
+            수상: [],
+            희망_계열: str("wish_fields")
+              .split(",")
+              .map((x) => x.trim())
+              .filter(Boolean),
+            희망_지역: str("wish_regions")
+              .split(",")
+              .map((x) => x.trim())
+              .filter(Boolean),
+            제약: [],
+            이탈위험: false,
+            마지막상담: new Date().toISOString().slice(0, 10),
             _saved: true,
           };
 
@@ -481,7 +1295,10 @@
         };
 
         // 정시 매칭 0건 시 자동 라벨
-        const j_total = scenarios.safe.length + scenarios.balanced.length + scenarios.reach.length;
+        const j_total =
+          scenarios.safe.length +
+          scenarios.balanced.length +
+          scenarios.reach.length;
         if (j_total === 0) {
           document.getElementById("jeongsi-grid").innerHTML = `
       <div style="grid-column: 1 / -1; background: var(--orange-100); color: var(--orange-600); padding: 24px; border-radius: 12px; text-align: center; font-size: 14px; font-weight: 500;">
@@ -603,10 +1420,16 @@
     `,
             )
             .join("");
-          const probText = key === "safe" ? "약 80%" : key === "balanced" ? "약 50%" : "약 20%";
-          const moreBtn = total > 5
-            ? `<button type="button" class="scenario-more-btn" onclick="const c=this.closest('.scenario-card'); c.classList.toggle('show-all'); this.textContent=c.classList.contains('show-all')?'접기':('더보기 (전체 ${total}개)');">더보기 (전체 ${total}개)</button>`
-            : "";
+          const probText =
+            key === "safe"
+              ? "약 80%"
+              : key === "balanced"
+                ? "약 50%"
+                : "약 20%";
+          const moreBtn =
+            total > 5
+              ? `<button type="button" class="scenario-more-btn" onclick="const c=this.closest('.scenario-card'); c.classList.toggle('show-all'); this.textContent=c.classList.contains('show-all')?'접기':('더보기 (전체 ${total}개)');">더보기 (전체 ${total}개)</button>`
+              : "";
           return `
       <div class="scenario-card ${isRecommended ? "scenario-card--recommended" : ""}">
         ${isRecommended ? '<span class="scenario-card__rec">★ 추천</span>' : ""}
@@ -624,7 +1447,10 @@
           card("safe", "안전", false) +
           card("balanced", "균형", true) +
           card("reach", "도전", false);
-        const susiTotal = scenarios.safe.length + scenarios.balanced.length + scenarios.reach.length;
+        const susiTotal =
+          scenarios.safe.length +
+          scenarios.balanced.length +
+          scenarios.reach.length;
         document.getElementById("m-scenario-count").innerHTML =
           `${susiTotal}<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 수시 학과</span>`;
         document.getElementById("m-balanced-count").innerHTML =
@@ -636,7 +1462,8 @@
       function renderSusiRationale(picks) {
         const b = picks.balanced[0];
         if (!b) {
-          document.getElementById("rationale-body").innerHTML = `<div class="rationale-body">수시 균형권 학과 없음. 희망 계열/지역 조건 완화 권장.</div>`;
+          document.getElementById("rationale-body").innerHTML =
+            `<div class="rationale-body">수시 균형권 학과 없음. 희망 계열/지역 조건 완화 권장.</div>`;
           return;
         }
         const rationale = ScenarioEngine.generateSusiRationale(b);
@@ -653,10 +1480,15 @@
 
       // ===== 통합 학부모 리포트 (수시 + 정시) =====
       function renderCombinedParentReport(jeongsi_picks, susi_picks, student) {
-        const p = ScenarioEngine.generateCombinedParentSummary(jeongsi_picks, susi_picks, student);
+        const p = ScenarioEngine.generateCombinedParentSummary(
+          jeongsi_picks,
+          susi_picks,
+          student,
+        );
         const opt = (data, key, label, isBalanced) => {
           const o = data ? data[key] : null;
-          if (!o) return `<div class="parent-option ${isBalanced ? "parent-option--balanced" : ""}"><div class="parent-option__label">${label}</div><div class="parent-option__name" style="color:var(--gray-500);">미확보</div></div>`;
+          if (!o)
+            return `<div class="parent-option ${isBalanced ? "parent-option--balanced" : ""}"><div class="parent-option__label">${label}</div><div class="parent-option__name" style="color:var(--gray-500);">미확보</div></div>`;
           return `<div class="parent-option ${isBalanced ? "parent-option--balanced" : ""}"><div class="parent-option__label">${label}</div><div class="parent-option__name">${o.name}</div><div class="parent-option__prob">${o.type ? o.type + " · " : ""}${o.prob}</div></div>`;
         };
         document.getElementById("parent-report").innerHTML = `
@@ -680,8 +1512,16 @@
       }
 
       // ===== 통합 원장 스크립트 =====
-      function renderCombinedDirectorScript(jeongsi_picks, susi_picks, student) {
-        const lines = ScenarioEngine.generateCombinedDirectorScript(jeongsi_picks, susi_picks, student);
+      function renderCombinedDirectorScript(
+        jeongsi_picks,
+        susi_picks,
+        student,
+      ) {
+        const lines = ScenarioEngine.generateCombinedDirectorScript(
+          jeongsi_picks,
+          susi_picks,
+          student,
+        );
         document.getElementById("director-script").innerHTML = `
     <div class="director-script__title">🎤 원장 상담 스크립트 (수시 + 정시 통합)</div>
     <ol>${lines.map((l) => `<li>${l}</li>`).join("")}</ol>
@@ -704,7 +1544,11 @@
           if (!picks) return;
           ["balanced", "safe", "reach"].forEach((bucket) => {
             (picks[bucket] || []).forEach((p) => {
-              candidates.push({ pick: p, label: `${type_label} ${bucket === "balanced" ? "균형" : bucket === "safe" ? "안전" : "도전"}`, type: type_label });
+              candidates.push({
+                pick: p,
+                label: `${type_label} ${bucket === "balanced" ? "균형" : bucket === "safe" ? "안전" : "도전"}`,
+                type: type_label,
+              });
             });
           });
         };
@@ -722,13 +1566,20 @@
           ];
           let found = null;
           for (const k of tryKeys) {
-            if (T[k] && !seen.has(k)) { found = { key: k, data: T[k] }; seen.add(k); break; }
+            if (T[k] && !seen.has(k)) {
+              found = { key: k, data: T[k] };
+              seen.add(k);
+              break;
+            }
           }
           if (found) matched.push({ ...c, ...found });
         });
         // 최대 2개만 표시
         const matched_top = matched.slice(0, 2);
-        const unmatched = matched.length === 0 ? candidates.slice(0, 3).map((c) => ({ ...c })) : [];
+        const unmatched =
+          matched.length === 0
+            ? candidates.slice(0, 3).map((c) => ({ ...c }))
+            : [];
 
         if (matched_top.length === 0) {
           panel.innerHTML = `
@@ -755,7 +1606,7 @@
         </div>
       </div>`;
         });
-        html += '</div>';
+        html += "</div>";
         // 매칭된 학과 외 추가 카운트 표시
         if (matched.length > matched_top.length) {
           html += `<div style="margin-top:8px; font-size:11px; color:var(--gray-500); text-align:right;">+${matched.length - matched_top.length}개 학과 다년치 데이터 추가 보유</div>`;
@@ -827,44 +1678,68 @@
         const reg = (rel && rel.value) || "";
         const active = q || reg;
         const sudo = ["서울", "경기", "인천"];
-        document.querySelectorAll("#susi-grid .scenario-list__item").forEach((li) => {
-          const name = li.getAttribute("data-name") || "";
-          const r = li.getAttribute("data-region") || "";
-          const mq = !q || name.indexOf(q) !== -1;
-          const mr = !reg || r === reg || (reg === "수도권" && sudo.indexOf(r) !== -1);
-          if (active) li.style.display = (mq && mr) ? "block" : "none";
-          else li.style.display = "";
-        });
+        document
+          .querySelectorAll("#susi-grid .scenario-list__item")
+          .forEach((li) => {
+            const name = li.getAttribute("data-name") || "";
+            const r = li.getAttribute("data-region") || "";
+            const mq = !q || name.indexOf(q) !== -1;
+            const mr =
+              !reg || r === reg || (reg === "수도권" && sudo.indexOf(r) !== -1);
+            if (active) li.style.display = mq && mr ? "block" : "none";
+            else li.style.display = "";
+          });
       }
 
       // ===== 학과 상세 팝업 (이전 입시결과 + 전형 파일) =====
-      function closeDetail() { document.getElementById("detail-modal").style.display = "none"; }
-      function deptCore(d) { return (d || "").replace(/[()\[\]··\s]/g, "").replace(/(학과|학부|전공|계열|과)$/, ""); }
+      function closeDetail() {
+        document.getElementById("detail-modal").style.display = "none";
+      }
+      function deptCore(d) {
+        return (d || "")
+          .replace(/[()\[\]··\s]/g, "")
+          .replace(/(학과|학부|전공|계열|과)$/, "");
+      }
       let __JLOOK = null;
       function jeongsiLookup() {
         if (__JLOOK) return __JLOOK;
         __JLOOK = { cut: {}, max: {}, coreCut: {}, tcore: {} };
         const D = window.DEMO_DATA || {};
         const T = window.TREND_DATA || {};
-        const N = (window.ScenarioEngine && ScenarioEngine.normalizeUniv) ? ScenarioEngine.normalizeUniv : function (x) { return x; };
+        const N =
+          window.ScenarioEngine && ScenarioEngine.normalizeUniv
+            ? ScenarioEngine.normalizeUniv
+            : function (x) {
+                return x;
+              };
         const cs = {};
         (D.jeongsi_cutoffs || []).forEach(function (c) {
           const k = N(c.univ) + "|" + c.dept;
           if (!__JLOOK.cut[k]) __JLOOK.cut[k] = c;
           const ck = N(c.univ) + "|" + deptCore(c.dept);
           if (deptCore(c.dept).length >= 2) {
-            if (!(ck in cs)) { cs[ck] = c.dept; __JLOOK.coreCut[ck] = c; }
-            else if (cs[ck] !== c.dept) { __JLOOK.coreCut[ck] = null; }
+            if (!(ck in cs)) {
+              cs[ck] = c.dept;
+              __JLOOK.coreCut[ck] = c;
+            } else if (cs[ck] !== c.dept) {
+              __JLOOK.coreCut[ck] = null;
+            }
           }
         });
-        (D.universities || []).forEach(function (u) { if (u.cut_max_official) __JLOOK.max[N(u.name)] = u.cut_max_official; });
+        (D.universities || []).forEach(function (u) {
+          if (u.cut_max_official) __JLOOK.max[N(u.name)] = u.cut_max_official;
+        });
         const ts = {};
         Object.keys(T).forEach(function (key) {
           const p = key.split("|");
           const ck = N(p[0]) + "|" + deptCore(p[1]);
           if (deptCore(p[1]).length >= 2) {
-            if (!(ck in ts)) { ts[ck] = p[1]; __JLOOK.tcore[ck] = { series: T[key], type: p[2] }; }
-            else if (ts[ck] !== p[1]) { __JLOOK.tcore[ck] = null; }
+            if (!(ck in ts)) {
+              ts[ck] = p[1];
+              __JLOOK.tcore[ck] = { series: T[key], type: p[2] };
+            } else if (ts[ck] !== p[1]) {
+              __JLOOK.tcore[ck] = null;
+            }
           }
         });
         return __JLOOK;
@@ -876,39 +1751,105 @@
         const sComp = el.getAttribute("data-comp") || "";
         const sCap = el.getAttribute("data-cap") || "";
         const sJh = el.getAttribute("data-jh") || "";
-        document.getElementById("detail-title").textContent = univ + " · " + dept;
-        const N = (window.ScenarioEngine && ScenarioEngine.normalizeUniv) ? ScenarioEngine.normalizeUniv : function (x) { return x; };
+        document.getElementById("detail-title").textContent =
+          univ + " · " + dept;
+        const N =
+          window.ScenarioEngine && ScenarioEngine.normalizeUniv
+            ? ScenarioEngine.normalizeUniv
+            : function (x) {
+                return x;
+              };
         let html = "";
-        html += '<div style="font-size:13px; font-weight:600; margin-bottom:4px;">작년 수시 결과</div>';
-        html += '<div style="font-size:13px; color:var(--gray-700,#444); margin-bottom:12px;">70%컷 ' + (sCut || "—") + '등급 · 경쟁률 ' + (sComp || "—") + ' · 모집 ' + (sCap || "—") + '명' + (sJh ? ' · ' + sJh : '') + '</div>';
+        html +=
+          '<div style="font-size:13px; font-weight:600; margin-bottom:4px;">작년 수시 결과</div>';
+        html +=
+          '<div style="font-size:13px; color:var(--gray-700,#444); margin-bottom:12px;">70%컷 ' +
+          (sCut || "—") +
+          "등급 · 경쟁률 " +
+          (sComp || "—") +
+          " · 모집 " +
+          (sCap || "—") +
+          "명" +
+          (sJh ? " · " + sJh : "") +
+          "</div>";
         const J = jeongsiLookup();
-        const jc = J.cut[N(univ) + "|" + dept] || J.coreCut[N(univ) + "|" + deptCore(dept)] || null;
+        const jc =
+          J.cut[N(univ) + "|" + dept] ||
+          J.coreCut[N(univ) + "|" + deptCore(dept)] ||
+          null;
         if (jc) {
           const mx = J.max[N(univ)];
-          html += '<div style="font-size:13px; font-weight:600; margin-bottom:4px;">작년 정시 결과</div>';
-          html += '<div style="font-size:13px; color:var(--gray-700,#444); margin-bottom:12px;">환산 70%컷 ' + (jc.cut70 != null ? jc.cut70 : "—") + (mx ? ' / 만점 ' + mx : '') + ' · 경쟁률 ' + (jc.competition != null ? jc.competition : "—") + ' · 모집 ' + (jc.capacity != null ? jc.capacity : "—") + '명 <span style="color:var(--gray-500);">(환산점수)</span></div>';
+          html +=
+            '<div style="font-size:13px; font-weight:600; margin-bottom:4px;">작년 정시 결과</div>';
+          html +=
+            '<div style="font-size:13px; color:var(--gray-700,#444); margin-bottom:12px;">환산 70%컷 ' +
+            (jc.cut70 != null ? jc.cut70 : "—") +
+            (mx ? " / 만점 " + mx : "") +
+            " · 경쟁률 " +
+            (jc.competition != null ? jc.competition : "—") +
+            " · 모집 " +
+            (jc.capacity != null ? jc.capacity : "—") +
+            '명 <span style="color:var(--gray-500);">(환산점수)</span></div>';
         }
         const T = window.TREND_DATA || {};
-        let trend = T[univ + "|" + dept + "|수시"] || T[univ + "|" + dept + "|정시"] || null;
-        let typ = T[univ + "|" + dept + "|수시"] ? "수시" : (T[univ + "|" + dept + "|정시"] ? "정시" : "");
-        if (!trend) { const tc = J.tcore[N(univ) + "|" + deptCore(dept)]; if (tc) { trend = tc.series; typ = tc.type; } }
+        let trend =
+          T[univ + "|" + dept + "|수시"] ||
+          T[univ + "|" + dept + "|정시"] ||
+          null;
+        let typ = T[univ + "|" + dept + "|수시"]
+          ? "수시"
+          : T[univ + "|" + dept + "|정시"]
+            ? "정시"
+            : "";
+        if (!trend) {
+          const tc = J.tcore[N(univ) + "|" + deptCore(dept)];
+          if (tc) {
+            trend = tc.series;
+            typ = tc.type;
+          }
+        }
         if (trend && trend.length) {
-          html += '<div style="font-size:13px; font-weight:600; margin-bottom:6px;">다년 추이 (' + typ + ')</div>';
-          html += '<table style="width:100%; font-size:13px; border-collapse:collapse; margin-bottom:14px;">';
-          html += '<tr style="color:var(--gray-500);"><td style="padding:3px 0;">연도</td><td style="text-align:right;">70%컷</td><td style="text-align:right;">경쟁률</td><td style="text-align:right;">모집</td></tr>';
+          html +=
+            '<div style="font-size:13px; font-weight:600; margin-bottom:6px;">다년 추이 (' +
+            typ +
+            ")</div>";
+          html +=
+            '<table style="width:100%; font-size:13px; border-collapse:collapse; margin-bottom:14px;">';
+          html +=
+            '<tr style="color:var(--gray-500);"><td style="padding:3px 0;">연도</td><td style="text-align:right;">70%컷</td><td style="text-align:right;">경쟁률</td><td style="text-align:right;">모집</td></tr>';
           trend.forEach(function (r) {
-            html += '<tr style="border-top:0.5px solid var(--gray-200,#eee);"><td style="padding:3px 0;">' + r.year + '</td><td style="text-align:right;">' + (r.cut70 != null ? r.cut70 : "—") + '</td><td style="text-align:right;">' + (r.competition != null ? r.competition : "—") + '</td><td style="text-align:right;">' + (r.capacity != null ? r.capacity : "—") + '</td></tr>';
+            html +=
+              '<tr style="border-top:0.5px solid var(--gray-200,#eee);"><td style="padding:3px 0;">' +
+              r.year +
+              '</td><td style="text-align:right;">' +
+              (r.cut70 != null ? r.cut70 : "—") +
+              '</td><td style="text-align:right;">' +
+              (r.competition != null ? r.competition : "—") +
+              '</td><td style="text-align:right;">' +
+              (r.capacity != null ? r.capacity : "—") +
+              "</td></tr>";
           });
-          html += '</table>';
+          html += "</table>";
         }
         const M = window.JEONHYEONG_FILES || {};
         const file = M[univ];
         if (file) {
-          const href = "../" + encodeURIComponent("모집요강_2027_수시") + "/" + encodeURIComponent(file);
-          html += '<a href="' + href + '" target="_blank" style="display:inline-block; padding:8px 14px; background:var(--purple-600); color:white; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none;">전형 파일 열기 (수시모집요강 PDF)</a>';
-          html += '<div style="font-size:11px; color:var(--gray-500); margin-top:6px;">' + file + '</div>';
+          const href =
+            "../" +
+            encodeURIComponent("모집요강_2027_수시") +
+            "/" +
+            encodeURIComponent(file);
+          html +=
+            '<a href="' +
+            href +
+            '" target="_blank" style="display:inline-block; padding:8px 14px; background:var(--purple-600); color:white; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none;">전형 파일 열기 (수시모집요강 PDF)</a>';
+          html +=
+            '<div style="font-size:11px; color:var(--gray-500); margin-top:6px;">' +
+            file +
+            "</div>";
         } else {
-          html += '<div style="font-size:13px; color:var(--gray-500);">전형 파일(모집요강 PDF)을 찾지 못했습니다.</div>';
+          html +=
+            '<div style="font-size:13px; color:var(--gray-500);">전형 파일(모집요강 PDF)을 찾지 못했습니다.</div>';
         }
         document.getElementById("detail-body").innerHTML = html;
         document.getElementById("detail-modal").style.display = "flex";
@@ -965,42 +1906,286 @@
       function renderJeongsiLine(jref) {
         const el = document.getElementById("jeongsi-line");
         if (!el) return;
-        if (!jref || jref.avg === null) { el.innerHTML = ""; return; }
+        if (!jref || jref.avg === null) {
+          el.innerHTML = "";
+          return;
+        }
         const all = jref.safe.concat(jref.balanced, jref.reach);
-        if (all.length === 0) { el.innerHTML = ""; return; }
+        if (all.length === 0) {
+          el.innerHTML = "";
+          return;
+        }
         const byU = {};
-        all.forEach((x) => { if (!byU[x.univ] || x.avgcut < byU[x.univ].cut) byU[x.univ] = { univ: x.univ, cut: x.avgcut }; });
+        all.forEach((x) => {
+          if (!byU[x.univ] || x.avgcut < byU[x.univ].cut)
+            byU[x.univ] = { univ: x.univ, cut: x.avgcut };
+        });
         const schools = Object.values(byU);
         const avg = jref.avg;
         const cuts = schools.map((s) => s.cut);
         let lo = Math.floor(Math.min(avg, Math.min.apply(null, cuts))) - 1;
         let hi = Math.ceil(Math.max(avg, Math.max.apply(null, cuts))) + 1;
         if (hi - lo < 6) hi = lo + 6;
-        const W = 760, axisY = 64, x0 = 24, x1 = W - 24;
+        const W = 760,
+          axisY = 64,
+          x0 = 24,
+          x1 = W - 24;
         const sx = (v) => x0 + ((v - lo) / (hi - lo)) * (x1 - x0);
         const ax = Math.round(sx(avg));
-        const reachable = schools.filter((s) => s.cut <= avg).sort((a, b) => b.cut - a.cut);
+        const reachable = schools
+          .filter((s) => s.cut <= avg)
+          .sort((a, b) => b.cut - a.cut);
         let dots = "";
         schools.forEach((s) => {
           const cx = Math.round(sx(s.cut));
           const reach = s.cut <= avg;
-          dots += '<circle cx="' + cx + '" cy="' + axisY + '" r="5" fill="' + (reach ? "#1D9E75" : "#D85A30") + '" fill-opacity="0.85" stroke="#fff" stroke-width="1"><title>' + s.univ + " (" + s.cut + ")</title></circle>";
+          dots +=
+            '<circle cx="' +
+            cx +
+            '" cy="' +
+            axisY +
+            '" r="5" fill="' +
+            (reach ? "#1D9E75" : "#D85A30") +
+            '" fill-opacity="0.85" stroke="#fff" stroke-width="1"><title>' +
+            s.univ +
+            " (" +
+            s.cut +
+            ")</title></circle>";
         });
         const top = reachable[0];
         const svg =
-          '<svg width="100%" viewBox="0 0 ' + W + ' 96" style="max-width:100%;">' +
-          '<rect x="' + x0 + '" y="' + (axisY - 14) + '" width="' + (ax - x0) + '" height="28" fill="#1D9E75" fill-opacity="0.10"/>' +
-          '<line x1="' + x0 + '" y1="' + axisY + '" x2="' + x1 + '" y2="' + axisY + '" stroke="var(--gray-300,#ccc)" stroke-width="1"/>' +
-          '<line x1="' + ax + '" y1="' + (axisY - 22) + '" x2="' + ax + '" y2="' + (axisY + 18) + '" stroke="#185FA5" stroke-width="2"/>' +
-          '<text x="' + ax + '" y="' + (axisY - 26) + '" text-anchor="middle" font-size="12" fill="#185FA5" font-weight="600">내 백분위 ' + avg + '</text>' +
+          '<svg width="100%" viewBox="0 0 ' +
+          W +
+          ' 96" style="max-width:100%;">' +
+          '<rect x="' +
+          x0 +
+          '" y="' +
+          (axisY - 14) +
+          '" width="' +
+          (ax - x0) +
+          '" height="28" fill="#1D9E75" fill-opacity="0.10"/>' +
+          '<line x1="' +
+          x0 +
+          '" y1="' +
+          axisY +
+          '" x2="' +
+          x1 +
+          '" y2="' +
+          axisY +
+          '" stroke="var(--gray-300,#ccc)" stroke-width="1"/>' +
+          '<line x1="' +
+          ax +
+          '" y1="' +
+          (axisY - 22) +
+          '" x2="' +
+          ax +
+          '" y2="' +
+          (axisY + 18) +
+          '" stroke="#185FA5" stroke-width="2"/>' +
+          '<text x="' +
+          ax +
+          '" y="' +
+          (axisY - 26) +
+          '" text-anchor="middle" font-size="12" fill="#185FA5" font-weight="600">내 백분위 ' +
+          avg +
+          "</text>" +
           dots +
-          '<text x="' + x0 + '" y="' + (axisY + 32) + '" font-size="11" fill="var(--gray-500,#888)">백분위 ' + lo + '</text>' +
-          '<text x="' + x1 + '" y="' + (axisY + 32) + '" text-anchor="end" font-size="11" fill="var(--gray-500,#888)">' + hi + '</text>' +
-          '</svg>';
+          '<text x="' +
+          x0 +
+          '" y="' +
+          (axisY + 32) +
+          '" font-size="11" fill="var(--gray-500,#888)">백분위 ' +
+          lo +
+          "</text>" +
+          '<text x="' +
+          x1 +
+          '" y="' +
+          (axisY + 32) +
+          '" text-anchor="end" font-size="11" fill="var(--gray-500,#888)">' +
+          hi +
+          "</text>" +
+          "</svg>";
         const summary = reachable.length
-          ? '<div style="font-size:13px; color:var(--gray-700,#444); margin-top:2px;">백분위 <b>' + avg + '</b> 기준 — 작년까지 기록상 이 선 이하 <b>' + reachable.length + '개교</b>가 지원권입니다. <span style="color:var(--gray-500,#888);">초록=지원권 · 주황=상향 (점에 마우스=학교명)</span></div>'
-          : '<div style="font-size:13px; color:var(--gray-500,#888); margin-top:2px;">백분위 ' + avg + ' 기준 지원권 학교가 아직 없습니다 (상향만 가능).</div>';
+          ? '<div style="font-size:13px; color:var(--gray-700,#444); margin-top:2px;">백분위 <b>' +
+            avg +
+            "</b> 기준 — 작년까지 기록상 이 선 이하 <b>" +
+            reachable.length +
+            '개교</b>가 지원권입니다. <span style="color:var(--gray-500,#888);">초록=지원권 · 주황=상향 (점에 마우스=학교명)</span></div>'
+          : '<div style="font-size:13px; color:var(--gray-500,#888); margin-top:2px;">백분위 ' +
+            avg +
+            " 기준 지원권 학교가 아직 없습니다 (상향만 가능).</div>";
         el.innerHTML = svg + summary;
+      }
+
+      // ===== 정시 환산 계산기 =====
+      function populateCalcSchools() {
+        const sel = document.getElementById("calc-school");
+        if (!sel || sel.options.length > 1) return;
+        const fs = (STATE.data && STATE.data.formulas) || [];
+        const opts = ['<option value="">학교·계열 선택…</option>'];
+        fs.forEach(function (f, i) {
+          const verified = !/잠정|검증필요/.test(String(f.source || ""));
+          const camp =
+            f.campus && f.campus !== "본교" ? "(" + f.campus + ")" : "";
+          opts.push(
+            '<option value="' +
+              i +
+              '">' +
+              f.univ +
+              camp +
+              " · " +
+              (f.track || "") +
+              (verified ? " ✓검증" : " (잠정)") +
+              "</option>",
+          );
+        });
+        sel.innerHTML = opts.join("");
+      }
+      function calcConvert() {
+        const sel = document.getElementById("calc-school");
+        const out = document.getElementById("calc-result");
+        const tag = document.getElementById("calc-student-tag");
+        if (!sel || !out) return;
+        const s = STATE.selected;
+        if (tag) tag.textContent = s ? s.name + " 점수 기준" : "";
+        if (!s) {
+          out.innerHTML =
+            '<div style="color:var(--gray-500);font-size:13px;">학생을 먼저 선택하세요.</div>';
+          return;
+        }
+        if (sel.value === "") {
+          out.innerHTML =
+            '<div style="color:var(--gray-500);font-size:13px;">학교·계열을 선택하면 ' +
+            s.name +
+            " 학생 점수로 환산값이 계산됩니다.</div>";
+          return;
+        }
+        const f = STATE.data.formulas[parseInt(sel.value, 10)];
+        let sc;
+        try {
+          sc = ScenarioEngine.computeStudentScore(s, f);
+        } catch (e) {
+          out.innerHTML =
+            '<div style="color:var(--gray-500);font-size:13px;">환산 계산 불가 — 표점/백분위 입력을 확인하세요.</div>';
+          return;
+        }
+        if (!sc || isNaN(sc.total)) {
+          out.innerHTML =
+            '<div style="color:var(--gray-500);font-size:13px;">이 공식에 필요한 점수(표점/백분위)가 비어 있습니다.</div>';
+          return;
+        }
+        const verified = !/잠정|검증필요/.test(String(f.source || ""));
+        const b = sc.breakdown;
+        out.innerHTML =
+          '<div style="background:#fff; border:0.5px solid var(--gray-200,#eee); border-radius:12px; padding:14px 16px;">' +
+          '<div style="display:flex; align-items:baseline; gap:10px; margin-bottom:8px;">' +
+          '<span style="font-size:26px; font-weight:700;">' +
+          sc.total +
+          "</span>" +
+          '<span style="font-size:14px; color:var(--gray-500);">/ 만점 ' +
+          sc.max_score +
+          "</span>" +
+          '<span style="margin-left:auto; font-size:11px; padding:2px 10px; border-radius:8px; background:' +
+          (verified ? "#e1f5ee" : "#fdeee0") +
+          "; color:" +
+          (verified ? "#0f6e56" : "#9a6a00") +
+          ';">' +
+          (verified ? "검증 공식" : "잠정(작년 기준)") +
+          "</span>" +
+          "</div>" +
+          '<div style="font-size:12px; color:var(--gray-600);">국어 ' +
+          b.국어 +
+          " · 수학 " +
+          b.수학 +
+          " · 탐구 " +
+          b.탐구 +
+          " · 영어 " +
+          b.영어 +
+          " · 한국사 " +
+          b.한국사 +
+          "</div>" +
+          (verified
+            ? ""
+            : '<div style="font-size:11px; color:var(--gray-500); margin-top:6px;">작년 기준 잠정 공식 — 2027 가중치 변경 시 달라질 수 있습니다(참고용).</div>') +
+          "</div>";
+      }
+
+      // ===== 수시 교과 환산 계산기 =====
+      function populateGyogwaSchools() {
+        const sel = document.getElementById("gg-school");
+        if (!sel || sel.options.length > 1) return;
+        const rows = window.GYOGWA_BANYEONG || [];
+        const opts = ['<option value="">학교·전형 선택…</option>'];
+        rows.forEach(function (r, i) {
+          opts.push(
+            '<option value="' +
+              i +
+              '">' +
+              r.대학명 +
+              " · " +
+              r.전형명 +
+              "</option>",
+          );
+        });
+        sel.innerHTML = opts.join("");
+      }
+      function calcSusiGyogwa() {
+        const sel = document.getElementById("gg-school");
+        const out = document.getElementById("gg-result");
+        if (!sel || !out) return;
+        const grades = {};
+        ["국어", "수학", "영어", "사회", "과학"].forEach(function (k) {
+          const el = document.getElementById("gg-" + k);
+          const v = el ? parseFloat(el.value) : NaN;
+          if (!isNaN(v)) grades[k] = v;
+        });
+        const jel = document.getElementById("gg-진로");
+        const jinroV = jel ? parseFloat(jel.value) : NaN;
+        const track = (STATE.selected && STATE.selected.track) || "자연";
+        if (sel.value === "") {
+          out.innerHTML =
+            '<div style="color:var(--gray-500);font-size:13px;">교과 등급을 입력하고 학교·전형을 선택하세요. (계열: ' +
+            track +
+            ")</div>";
+          return;
+        }
+        const b = (window.GYOGWA_BANYEONG || [])[parseInt(sel.value, 10)];
+        const student = {
+          track: track,
+          교과등급: grades,
+          진로선택등급: isNaN(jinroV) ? undefined : jinroV,
+        };
+        const res = ScenarioEngine.computeSusiGyogwa(student, b);
+        if (!res) {
+          out.innerHTML =
+            '<div style="color:var(--gray-500);font-size:13px;">반영교과(' +
+            (track === "자연" ? b.반영교과_자연 : b.반영교과_인문) +
+            ") 등급을 입력하세요.</div>";
+          return;
+        }
+        out.innerHTML =
+          '<div style="background:#fff; border:0.5px solid var(--gray-200,#eee); border-radius:12px; padding:14px 16px;">' +
+          '<div style="display:flex; align-items:baseline; gap:10px; margin-bottom:8px;">' +
+          '<span style="font-size:26px; font-weight:700;">' +
+          res.avg +
+          '<span style="font-size:14px; font-weight:500; color:var(--gray-500);"> 등급</span></span>' +
+          '<span style="margin-left:auto; font-size:11px; padding:2px 10px; border-radius:8px; background:#fdeee0; color:#9a6a00;">잠정(작년 기준)</span>' +
+          "</div>" +
+          '<div style="font-size:12px; color:var(--gray-600);">반영교과 ' +
+          res.subjects.join("·") +
+          " · 일반평균 " +
+          res.ilban +
+          " · 진로 " +
+          res.jinro +
+          " · 비율 진로" +
+          (b.진로선택_반영비율 || 0) +
+          "/일반" +
+          (b.일반선택_반영비율 != null ? b.일반선택_반영비율 : 100) +
+          "</div>" +
+          '<div style="font-size:11px; color:var(--gray-500); margin-top:6px;">' +
+          (b.반영학년도 || "") +
+          " 기준 잠정 · 등급환산표(석차변환 등)는 v2에서 점수화 예정(현재 평균등급).</div>" +
+          "</div>";
       }
 
       // ===== 메인 렌더 =====
@@ -1011,7 +2196,10 @@
           renderStudentCard(student);
 
         // 정시
-        const j_scenarios = ScenarioEngine.generateScenarios(student, STATE.data);
+        const j_scenarios = ScenarioEngine.generateScenarios(
+          student,
+          STATE.data,
+        );
         const j_picks = ScenarioEngine.pickRecommendation(j_scenarios);
         renderScenarios(j_picks, j_scenarios);
 
@@ -1040,8 +2228,15 @@
         renderTrend(j_picks, s_picks);
 
         // 정시 다년 기록 참고선 (백분위 기반)
-        const jref = ScenarioEngine.generateJeongsiReference(student, window.TREND_DATA || {});
+        const jref = ScenarioEngine.generateJeongsiReference(
+          student,
+          window.TREND_DATA || {},
+        );
         renderJeongsiReference(jref);
+        populateCalcSchools();
+        calcConvert();
+        populateGyogwaSchools();
+        calcSusiGyogwa();
       }
 
       // 부트
