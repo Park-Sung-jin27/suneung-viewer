@@ -13,6 +13,24 @@ const ALLOWED_TASKS = new Set([
 ]);
 const rateBuckets = new Map();
 
+function getSupabaseConfig() {
+  const supabaseUrl = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
+  const supabaseAnonKey =
+    process.env.SUPABASE_ANON_KEY ?? process.env.VITE_SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error("Supabase auth is not configured");
+  }
+  return { supabaseUrl, supabaseAnonKey };
+}
+
+function createUserClient(token) {
+  const { supabaseUrl, supabaseAnonKey } = getSupabaseConfig();
+  return createClient(supabaseUrl, supabaseAnonKey, {
+    auth: { persistSession: false },
+    global: { headers: { Authorization: `Bearer ${token}` } },
+  });
+}
+
 function getBearerToken(req) {
   const header = req.headers.authorization || "";
   const match = header.match(/^Bearer\s+(.+)$/i);
@@ -23,19 +41,10 @@ async function getAuthedUser(req) {
   const token = getBearerToken(req);
   if (!token) return null;
 
-  const supabaseUrl = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
-  const supabaseAnonKey =
-    process.env.SUPABASE_ANON_KEY ?? process.env.VITE_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error("Supabase auth is not configured");
-  }
-
-  const client = createClient(supabaseUrl, supabaseAnonKey, {
-    auth: { persistSession: false },
-  });
+  const client = createUserClient(token);
   const { data, error } = await client.auth.getUser(token);
   if (error) return null;
-  return data.user ?? null;
+  return data.user ? { user: data.user, client } : null;
 }
 
 function isRateLimited(key) {
@@ -61,6 +70,20 @@ function getTask(body) {
   return ALLOWED_TASKS.has(task) ? task : null;
 }
 
+async function consumeQuota(client, task) {
+  const { data, error } = await client.rpc("consume_ai_quota", {
+    p_task: task,
+  });
+  if (error) {
+    throw new Error("AI quota is not configured");
+  }
+  return data;
+}
+
+async function refundQuota(client) {
+  await client.rpc("refund_ai_quota");
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -72,10 +95,11 @@ export default async function handler(req, res) {
   }
 
   try {
-    const user = await getAuthedUser(req);
-    if (!user) {
+    const auth = await getAuthedUser(req);
+    if (!auth) {
       return res.status(401).json({ error: "Login required" });
     }
+    const { user, client } = auth;
 
     if (isRateLimited(user.id)) {
       return res.status(429).json({ error: "Too many AI requests" });
@@ -92,11 +116,19 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Prompt required" });
     }
 
+    const quota = await consumeQuota(client, task);
+    if (!quota?.allowed) {
+      return res.status(429).json({
+        error: "AI question limit reached",
+        quota,
+      });
+    }
+
     const guardPrompt = `You are a Korean CSAT language tutor for the product "Jini teacher".
 Answer only questions about Korean CSAT reading, literature, grammar, writing, speech, and media.
 Use only the passage, choices, student answer, answer key, commentary, and evidence sentences provided by the app.
 If the evidence is not enough, say that the app data is not enough to confirm the answer.
-If the user asks about an unrelated topic, reply in Korean: "수능 국어 문제에 대해서만 도와드릴 수 있어요."
+If the user asks about an unrelated topic, reply in Korean: "CSAT Korean questions only."
 Keep explanations short, concrete, and student-friendly.
 Task: ${task}`;
 
@@ -117,10 +149,12 @@ Task: ${task}`;
 
     if (!response.ok) {
       const err = await response.text();
+      await refundQuota(client);
       return res.status(response.status).json({ error: err });
     }
 
     const data = await response.json();
+    data.quota = quota;
     return res.status(200).json(data);
   } catch (e) {
     console.error("[/api/claude]", e);

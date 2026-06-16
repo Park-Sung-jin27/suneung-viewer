@@ -51,6 +51,58 @@ CREATE TABLE IF NOT EXISTS question_comments (
   created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS ai_usage_monthly (
+  user_id     UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  month_key   TEXT NOT NULL,
+  plan        TEXT NOT NULL DEFAULT 'free',
+  limit_count INT NOT NULL DEFAULT 3,
+  used_count  INT NOT NULL DEFAULT 0,
+  updated_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY (user_id, month_key)
+);
+
+CREATE TABLE IF NOT EXISTS ai_usage_events (
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id     UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  month_key   TEXT NOT NULL,
+  task        TEXT NOT NULL,
+  created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS training_items (
+  id                 UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  pat                TEXT NOT NULL,
+  section            TEXT NOT NULL,
+  status             TEXT NOT NULL DEFAULT 'approved',
+  quality_score      INT NOT NULL DEFAULT 50,
+  source_year_key    TEXT,
+  source_set_id      TEXT,
+  source_question_id INT,
+  source_choice_num  INT,
+  passage            TEXT NOT NULL,
+  sentence           TEXT NOT NULL,
+  is_correct         BOOLEAN NOT NULL,
+  evidence_sentence  TEXT,
+  explanation        TEXT,
+  source_label       TEXT,
+  created_at         TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at         TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS training_attempts (
+  id                 UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id            UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  training_item_id   UUID REFERENCES training_items(id) ON DELETE SET NULL,
+  pat                TEXT NOT NULL,
+  selected_answer    TEXT NOT NULL,
+  is_correct         BOOLEAN NOT NULL,
+  source_year_key    TEXT,
+  source_set_id      TEXT,
+  source_question_id INT,
+  source_choice_num  INT,
+  created_at         TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 -- ── 3. 패턴별 누적 통계 (집계 캐시) ─────────────────────────
 CREATE TABLE IF NOT EXISTS user_stats (
   user_id       UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -83,6 +135,18 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_answers_unique_question
 CREATE INDEX IF NOT EXISTS idx_sessions_user    ON user_sessions(user_id);
 CREATE INDEX IF NOT EXISTS idx_question_comments_user_question
   ON question_comments(user_id, question_key, created_at);
+CREATE INDEX IF NOT EXISTS idx_ai_usage_events_user_month
+  ON ai_usage_events(user_id, month_key, created_at);
+CREATE INDEX IF NOT EXISTS idx_training_items_pat_status
+  ON training_items(pat, status, quality_score DESC);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_training_items_source_choice
+  ON training_items(source_year_key, source_set_id, source_question_id, source_choice_num, pat)
+  WHERE source_year_key IS NOT NULL
+    AND source_set_id IS NOT NULL
+    AND source_question_id IS NOT NULL
+    AND source_choice_num IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_training_attempts_user_pat
+  ON training_attempts(user_id, pat, created_at DESC);
 
 -- ── 6. RLS 활성화 ─────────────────────────────────────────
 ALTER TABLE user_sessions    ENABLE ROW LEVEL SECURITY;
@@ -90,6 +154,10 @@ ALTER TABLE user_answers     ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_stats       ENABLE ROW LEVEL SECURITY;
 ALTER TABLE subscriptions    ENABLE ROW LEVEL SECURITY;
 ALTER TABLE question_comments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE ai_usage_monthly ENABLE ROW LEVEL SECURITY;
+ALTER TABLE ai_usage_events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE training_items ENABLE ROW LEVEL SECURITY;
+ALTER TABLE training_attempts ENABLE ROW LEVEL SECURITY;
 
 -- ── 7. RLS 정책 — 본인 데이터만 접근 ────────────────────────
 CREATE POLICY "본인 세션만" ON user_sessions
@@ -105,6 +173,23 @@ CREATE POLICY "본인 구독만" ON subscriptions
   FOR ALL USING (auth.uid() = user_id);
 
 CREATE POLICY "own question comments" ON question_comments
+  FOR ALL USING (auth.uid() = user_id)
+  WITH CHECK (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "own ai usage monthly" ON ai_usage_monthly;
+CREATE POLICY "own ai usage monthly" ON ai_usage_monthly
+  FOR SELECT USING (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "own ai usage events" ON ai_usage_events;
+CREATE POLICY "own ai usage events" ON ai_usage_events
+  FOR SELECT USING (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "read approved training items" ON training_items;
+CREATE POLICY "read approved training items" ON training_items
+  FOR SELECT USING (status = 'approved');
+
+DROP POLICY IF EXISTS "own training attempts" ON training_attempts;
+CREATE POLICY "own training attempts" ON training_attempts
   FOR ALL USING (auth.uid() = user_id)
   WITH CHECK (auth.uid() = user_id);
 
@@ -161,3 +246,106 @@ RETURNS BOOLEAN AS $$
       AND (expires_at IS NULL OR expires_at > now())
   );
 $$ LANGUAGE sql SECURITY DEFINER;
+
+CREATE OR REPLACE FUNCTION get_ai_monthly_limit(p_plan TEXT)
+RETURNS INT AS $$
+BEGIN
+  RETURN CASE lower(coalesce(p_plan, 'free'))
+    WHEN 'basic' THEN 20
+    WHEN 'pro' THEN 80
+    WHEN 'premium' THEN 200
+    ELSE 3
+  END;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION get_ai_plan(p_user_id UUID)
+RETURNS TEXT AS $$
+DECLARE
+  v_plan TEXT;
+BEGIN
+  SELECT plan INTO v_plan
+  FROM subscriptions
+  WHERE user_id = p_user_id
+    AND status = 'active'
+    AND (expires_at IS NULL OR expires_at > now())
+  ORDER BY started_at DESC
+  LIMIT 1;
+
+  RETURN coalesce(v_plan, 'free');
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
+CREATE OR REPLACE FUNCTION consume_ai_quota(p_task TEXT)
+RETURNS JSONB AS $$
+DECLARE
+  v_user_id UUID := auth.uid();
+  v_month_key TEXT := to_char(timezone('Asia/Seoul', now()), 'YYYY-MM');
+  v_plan TEXT;
+  v_limit INT;
+  v_used INT;
+BEGIN
+  IF v_user_id IS NULL THEN
+    RAISE EXCEPTION 'not_authenticated';
+  END IF;
+
+  v_plan := get_ai_plan(v_user_id);
+  v_limit := get_ai_monthly_limit(v_plan);
+
+  INSERT INTO ai_usage_monthly(user_id, month_key, plan, limit_count, used_count, updated_at)
+  VALUES (v_user_id, v_month_key, v_plan, v_limit, 0, now())
+  ON CONFLICT (user_id, month_key) DO UPDATE SET
+    plan = excluded.plan,
+    limit_count = excluded.limit_count,
+    updated_at = now()
+  RETURNING used_count INTO v_used;
+
+  IF v_used >= v_limit THEN
+    RETURN jsonb_build_object(
+      'allowed', false,
+      'plan', v_plan,
+      'month', v_month_key,
+      'used', v_used,
+      'limit', v_limit,
+      'remaining', 0
+    );
+  END IF;
+
+  UPDATE ai_usage_monthly
+  SET used_count = used_count + 1,
+      updated_at = now()
+  WHERE user_id = v_user_id
+    AND month_key = v_month_key
+  RETURNING used_count INTO v_used;
+
+  INSERT INTO ai_usage_events(user_id, month_key, task)
+  VALUES (v_user_id, v_month_key, coalesce(p_task, 'unknown'));
+
+  RETURN jsonb_build_object(
+    'allowed', true,
+    'plan', v_plan,
+    'month', v_month_key,
+    'used', v_used,
+    'limit', v_limit,
+    'remaining', greatest(v_limit - v_used, 0)
+  );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
+CREATE OR REPLACE FUNCTION refund_ai_quota()
+RETURNS VOID AS $$
+DECLARE
+  v_user_id UUID := auth.uid();
+  v_month_key TEXT := to_char(timezone('Asia/Seoul', now()), 'YYYY-MM');
+BEGIN
+  IF v_user_id IS NULL THEN
+    RETURN;
+  END IF;
+
+  UPDATE ai_usage_monthly
+  SET used_count = greatest(used_count - 1, 0),
+      updated_at = now()
+  WHERE user_id = v_user_id
+    AND month_key = v_month_key;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;

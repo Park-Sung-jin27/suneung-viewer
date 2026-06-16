@@ -47,6 +47,23 @@ async function getClaudeHeaders() {
   };
 }
 
+async function readAIError(res) {
+  let payload = null;
+  try {
+    payload = await res.json();
+  } catch {
+    payload = null;
+  }
+
+  if (res.status === 429 && payload?.quota) {
+    const limit = payload.quota.limit ?? 0;
+    const used = payload.quota.used ?? limit;
+    return `이번 달 AI 질문권 ${used}/${limit}개를 모두 사용했어요.`;
+  }
+  if (res.status === 401) return "로그인 후 코칭을 받을 수 있어요.";
+  return payload?.error ?? `AI 코칭을 가져오지 못했어요. (${res.status})`;
+}
+
 // ── 초기 코칭 AI 호출 ────────────────────────────────────────
 async function fetchInitialCoaching({ patKey, patName, wrongItems }) {
   const count = wrongItems.length;
@@ -89,7 +106,7 @@ ${itemsText}
       prompt,
     }),
   });
-  if (!res.ok) throw new Error(`API ${res.status}`);
+  if (!res.ok) throw new Error(await readAIError(res));
   const data = await res.json();
   return (
     data.content?.map((b) => b.text ?? "").join("") ??
@@ -126,7 +143,7 @@ async function fetchReply({ patKey, patName, wrongItems, history }) {
       prompt,
     }),
   });
-  if (!res.ok) throw new Error(`API ${res.status}`);
+  if (!res.ok) throw new Error(await readAIError(res));
   const data = await res.json();
   return (
     data.content?.map((b) => b.text ?? "").join("") ??
@@ -450,11 +467,12 @@ export default function PatternCoach({
       .then((text) => {
         setHistory([{ role: "assistant", content: text }]);
       })
-      .catch(() => {
+      .catch((e) => {
         setHistory([
           {
             role: "assistant",
             content:
+              e.message ||
               "코칭 내용을 불러오지 못했습니다. 아래에서 직접 질문해보세요.",
           },
         ]);
@@ -485,8 +503,8 @@ export default function PatternCoach({
         history: newHistory,
       });
       setHistory((prev) => [...prev, { role: "assistant", content: reply }]);
-    } catch {
-      setError("오류가 발생했어요. 다시 시도해주세요.");
+    } catch (e) {
+      setError(e.message || "오류가 발생했어요. 다시 시도해주세요.");
     } finally {
       setLoadingReply(false);
     }

@@ -266,7 +266,74 @@ const COMMENTS = {
 // ══════════════════════════════════════════════
 // [기출 패턴 훈련 모달]
 // ══════════════════════════════════════════════
-async function fetchTrainingQuestion(patKey) {
+function sourceKeyOf(item) {
+  return [
+    item.sourceYearKey ?? item.source_year_key,
+    item.sourceSetId ?? item.source_set_id,
+    item.sourceQuestionId ?? item.source_question_id,
+    item.sourceChoiceNum ?? item.source_choice_num,
+  ].join("|");
+}
+
+function rowToTrainingQuestion(row) {
+  return {
+    id: row.id,
+    source: "bank",
+    passage: row.passage,
+    sentence: row.sentence,
+    isCorrect: row.is_correct === true,
+    evidenceSentence: row.evidence_sentence ?? "",
+    explanation: row.explanation ?? "",
+    sourceLabel: row.source_label ?? "저장된 훈련 문제",
+    sourceYearKey: row.source_year_key,
+    sourceSetId: row.source_set_id,
+    sourceQuestionId: row.source_question_id,
+    sourceChoiceNum: row.source_choice_num,
+  };
+}
+
+async function fetchBankTrainingQuestion({ patKey, user, excludedKeys }) {
+  if (!user) return null;
+
+  const { data: items, error } = await supabase
+    .from("training_items")
+    .select(
+      "id, passage, sentence, is_correct, evidence_sentence, explanation, source_label, source_year_key, source_set_id, source_question_id, source_choice_num",
+    )
+    .eq("pat", patKey)
+    .eq("status", "approved")
+    .order("quality_score", { ascending: false })
+    .limit(80);
+
+  if (error || !items?.length) return null;
+
+  const { data: attempts } = await supabase
+    .from("training_attempts")
+    .select("training_item_id")
+    .eq("user_id", user.id)
+    .eq("pat", patKey)
+    .not("training_item_id", "is", null)
+    .order("created_at", { ascending: false })
+    .limit(200);
+
+  const attemptedIds = new Set(
+    (attempts ?? []).map((attempt) => attempt.training_item_id),
+  );
+  const unseen = items.filter(
+    (item) => !attemptedIds.has(item.id) && !excludedKeys.has(sourceKeyOf(item)),
+  );
+  const pool = unseen.length > 0 ? unseen : items;
+  return rowToTrainingQuestion(pool[Math.floor(Math.random() * pool.length)]);
+}
+
+async function fetchTrainingQuestion(patKey, { user, excludedKeys }) {
+  const bankQuestion = await fetchBankTrainingQuestion({
+    patKey,
+    user,
+    excludedKeys,
+  });
+  if (bankQuestion) return bankQuestion;
+
   const isLit = patKey.startsWith("L");
   const targetSection = isLit ? "literature" : "reading";
   const res = await fetch("/data/all_data_204.json");
@@ -292,11 +359,18 @@ async function fetchTrainingQuestion(patKey) {
           const evidence = (choice.cs_ids ?? [])
             .map((sid) => set.sents?.find((sent) => sent.id === sid)?.t)
             .filter(Boolean);
+          const sourceKey = `${yearKey}|${set.id}|${question.id}|${choice.num}`;
+          if (excludedKeys.has(sourceKey)) continue;
           const item = {
+            source: "live_data",
             passage,
             sentence: choice.t,
             isCorrect: choice.ok === true,
             evidenceSentence: evidence[0] ?? "",
+            sourceYearKey: yearKey,
+            sourceSetId: set.id,
+            sourceQuestionId: question.id,
+            sourceChoiceNum: choice.num,
             explanation:
               choice.analysis ??
               "해설이 없는 선지입니다. 지문 근거와 선지를 직접 대조하세요.",
@@ -322,7 +396,23 @@ async function fetchTrainingQuestion(patKey) {
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
-function PatternTrainer({ patKey, onClose }) {
+async function recordTrainingAttempt({ user, patKey, question, ans, isRight }) {
+  if (!user || !question) return;
+
+  await supabase.from("training_attempts").insert({
+    user_id: user.id,
+    training_item_id: question.source === "bank" ? question.id : null,
+    pat: patKey,
+    selected_answer: ans,
+    is_correct: isRight,
+    source_year_key: question.sourceYearKey ?? null,
+    source_set_id: question.sourceSetId ?? null,
+    source_question_id: question.sourceQuestionId ?? null,
+    source_choice_num: question.sourceChoiceNum ?? null,
+  });
+}
+
+function PatternTrainer({ patKey, user, wrongAnswers = [], onClose }) {
   const info = P[patKey] ?? P0;
 
   const [phase, setPhase] = useState("loading"); // loading | question | result | error
@@ -336,7 +426,13 @@ function PatternTrainer({ patKey, onClose }) {
     setPhase("loading");
     setSelected(null);
     try {
-      const q = await fetchTrainingQuestion(patKey);
+      const excludedKeys = new Set(
+        wrongAnswers.map(
+          (answer) =>
+            `${answer.year_key}|${answer.set_id}|${answer.question_id}|${answer.choice_num}`,
+        ),
+      );
+      const q = await fetchTrainingQuestion(patKey, { user, excludedKeys });
       setQuestion(q);
       setPhase("question");
     } catch (e) {
@@ -356,6 +452,9 @@ function PatternTrainer({ patKey, onClose }) {
     setCount((c) => c + 1);
     const isRight = (ans === "O") === question.isCorrect;
     if (isRight) setCorrect((c) => c + 1);
+    recordTrainingAttempt({ user, patKey, question, ans, isRight }).catch(
+      () => {},
+    );
   }
 
   const isRight =
@@ -1528,6 +1627,10 @@ export default function PatternReport({ user, onGoToQuestion }) {
       {activeTrainPat && (
         <PatternTrainer
           patKey={activeTrainPat}
+          user={user}
+          wrongAnswers={answers.filter(
+            (answer) => !answer.is_correct && String(answer.pat) === activeTrainPat,
+          )}
           onClose={() => setActiveTrainPat(null)}
         />
       )}

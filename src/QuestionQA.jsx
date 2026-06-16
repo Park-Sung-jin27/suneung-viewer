@@ -155,12 +155,29 @@ async function fetchAIAnswer({
     }),
   });
 
-  if (!res.ok) throw new Error(`API 오류: ${res.status}`);
+  if (!res.ok) throw new Error(await readAIError(res));
   const dataJson = await res.json();
   return (
     dataJson.content?.map((b) => b.text ?? "").join("") ??
     "답변을 가져오지 못했습니다."
   );
+}
+
+async function readAIError(res) {
+  let payload = null;
+  try {
+    payload = await res.json();
+  } catch {
+    payload = null;
+  }
+
+  if (res.status === 429 && payload?.quota) {
+    const limit = payload.quota.limit ?? 0;
+    const used = payload.quota.used ?? limit;
+    return `이번 달 AI 질문권 ${used}/${limit}개를 모두 사용했어요.`;
+  }
+  if (res.status === 401) return "로그인 후 질문할 수 있어요.";
+  return payload?.error ?? `AI 답변을 가져오지 못했어요. (${res.status})`;
 }
 
 function QAItem({ item }) {
@@ -327,7 +344,7 @@ export default function QuestionQA({
       setItems((prev) => [...prev, data]);
       setInput("");
     } catch (e) {
-      setError("오류가 발생했어요. 잠시 후 다시 시도해주세요.");
+      setError(e.message || "오류가 발생했어요. 잠시 후 다시 시도해주세요.");
       console.error("[QuestionQA]", e);
     } finally {
       setLoading(false);
