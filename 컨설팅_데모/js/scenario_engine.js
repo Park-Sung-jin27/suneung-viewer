@@ -803,9 +803,50 @@ function computeSusiGyogwa(student, banyeong) {
   };
 }
 
+function aggregateGyogwaByYear(yearGrades) {
+  var out = {};
+  Object.keys(yearGrades || {}).forEach(function (k) {
+    var arr = (yearGrades[k] || []).filter(function (v) { return typeof v === "number" && v >= 1 && v <= 9; });
+    if (arr.length) out[k] = Math.round((arr.reduce(function (a, b) { return a + b; }, 0) / arr.length) * 100) / 100;
+  });
+  return out;
+}
+
+function recommendSusiByGyogwa(student, banyeongList, susiCuts) {
+  var results = { safe: [], balanced: [], reach: [], fail: [] };
+  (banyeongList || []).forEach(function (b) {
+    var res = computeSusiGyogwa(student, b);
+    if (!res) return;
+    (susiCuts || []).forEach(function (c) {
+      if (typeof c.cut70_grade !== "number") return;
+      if (normalizeUniv(c.univ) !== normalizeUniv(b["대학명"])) return;
+      var jt = String(c["전형"] || "").replace(/\s+/g, "");
+      var bt = String(b["전형명"] || "").replace(/\s+/g, "");
+      while (/(전형|선발)$/.test(jt)) jt = jt.replace(/(전형|선발)$/, "");
+      while (/(전형|선발)$/.test(bt)) bt = bt.replace(/(전형|선발)$/, "");
+      if (!bt || (jt.indexOf(bt) === -1 && bt.indexOf(jt) === -1)) return;
+      if (!isValidDept(c.dept)) return;
+      if (!matchesWish(c.dept, student["희망_계열"])) return;
+      var bucket = classifySusi(res.avg, c.cut70_grade);
+      results[bucket].push({
+        univ: b["대학명"], dept: c.dept, "전형": b["전형명"],
+        환산등급: res.avg, cut70_grade: c.cut70_grade,
+        diff: Math.round((c.cut70_grade - res.avg) * 100) / 100,
+        capacity: c.capacity, competition: c.competition, source: c.source
+      });
+    });
+  });
+  ["safe", "balanced", "reach", "fail"].forEach(function (k) {
+    results[k].sort(function (a, b) { return b.diff - a.diff; });
+  });
+  return results;
+}
+
 var __api = {
   computeStudentScore: computeStudentScore,
   computeSusiGyogwa: computeSusiGyogwa,
+  aggregateGyogwaByYear: aggregateGyogwaByYear,
+  recommendSusiByGyogwa: recommendSusiByGyogwa,
   classify: classify,
   generateScenarios: generateScenarios,
   pickRecommendation: pickRecommendation,

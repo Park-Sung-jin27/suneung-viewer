@@ -847,14 +847,14 @@
         <!-- 블록 2-4: 수시 교과 환산 계산기 -->
         <div class="section">
           <div class="section__title">
-            수시 교과 환산 계산기
+            수시 교과 평균등급 계산기
             <span
               class="section__title-tag"
               style="
                 background: var(--orange-100, #ffedd5);
                 color: var(--orange-600);
               "
-              >교과전형만 · 가천대 프로토타입</span
+              >교과전형 · 평균등급 근사(공식 환산점수 아님) · 가천대 프로토타입</span
             >
           </div>
           <div
@@ -988,6 +988,16 @@
             ></select>
           </div>
           <div id="gg-result"></div>
+        </div>
+
+        <!-- 블록 2-5: 수시 교과 추천 (교과등급 → 학교·학과·전형) -->
+        <div class="section">
+          <div class="section__title">
+            수시 교과 추천
+            <span class="section__title-tag" style="background:var(--orange-100, #ffedd5); color:var(--orange-600);">평균등급 근사 · 교과전형</span>
+            <span class="section__title-tag" id="gg-rec-tag"></span>
+          </div>
+          <div class="scenarios" id="gg-rec-grid"></div>
         </div>
 
         <!-- 블록 3 + 4: 균형안 근거 + 리스크 -->
@@ -2130,6 +2140,7 @@
         sel.innerHTML = opts.join("");
       }
       function calcSusiGyogwa() {
+        renderGyogwaRecommend();
         const sel = document.getElementById("gg-school");
         const out = document.getElementById("gg-result");
         if (!sel || !out) return;
@@ -2186,6 +2197,49 @@
           (b.반영학년도 || "") +
           " 기준 잠정 · 등급환산표(석차변환 등)는 v2에서 점수화 예정(현재 평균등급).</div>" +
           "</div>";
+      }
+
+      // ===== 수시 교과 추천 렌더 =====
+      function renderGyogwaRecommend() {
+        const grid = document.getElementById("gg-rec-grid");
+        const tag = document.getElementById("gg-rec-tag");
+        if (!grid) return;
+        const grades = {};
+        ["국어", "수학", "영어", "사회", "과학"].forEach(function (k) {
+          const el = document.getElementById("gg-" + k);
+          const v = el ? parseFloat(el.value) : NaN;
+          if (!isNaN(v)) grades[k] = v;
+        });
+        const jel = document.getElementById("gg-진로");
+        const jinroV = jel ? parseFloat(jel.value) : NaN;
+        const s = STATE.selected;
+        const track = (s && s.track) || "자연";
+        if (Object.keys(grades).length < 2) {
+          if (tag) tag.textContent = "";
+          grid.innerHTML = '<div style="padding:12px; color:var(--gray-500); font-size:13px;">위 계산기에 교과 등급을 입력하면, 갈 수 있는 학교·학과·전형이 추천됩니다.</div>';
+          return;
+        }
+        const student = { track: track, 교과등급: grades, 진로선택등급: isNaN(jinroV) ? undefined : jinroV, 희망_계열: (s && s.희망_계열) || [], 희망_지역: (s && s.희망_지역) || [] };
+        const cuts = (window.DEMO_DATA && window.DEMO_DATA.susi_cutoffs) || [];
+        const rec = ScenarioEngine.recommendSusiByGyogwa(student, window.GYOGWA_BANYEONG || [], cuts);
+        if (tag) tag.textContent = (s ? s.name + " " : "") + "교과등급 기준 · " + track;
+        const card = function (key, label, arr, isRec) {
+          const total = arr.length;
+          const items = arr.map(function (p, i) {
+            return '<li class="scenario-list__item ' + (i === 0 ? "scenario-list__item--top" : "") + (i >= 5 ? " scenario-list__item--extra" : "") +
+              '"><div class="name">' + p.univ + " · " + p.dept + '</div><div class="meta">컷 ' + p.cut70_grade + "등급 | 내 환산 " + p.환산등급 +
+              " (" + (p.diff >= 0 ? "+" : "") + p.diff + ") | " + p["전형"] + "</div></li>";
+          }).join("");
+          const more = total > 5 ? '<button type="button" class="scenario-more-btn" onclick="const c=this.closest(\'.scenario-card\'); c.classList.toggle(\'show-all\'); this.textContent=c.classList.contains(\'show-all\')?\'접기\':(\'더보기 (전체 ' + total + '개)\');">더보기 (전체 ' + total + "개)</button>" : "";
+          return '<div class="scenario-card ' + (isRec ? "scenario-card--recommended" : "") + '">' + (isRec ? '<span class="scenario-card__rec">★ 추천</span>' : "") +
+            '<span class="scenario-card__badge badge--' + key + '">' + label + '</span><div class="scenario-card__count">' + total +
+            '<span style="font-size:14px; color:var(--gray-500); font-weight:500;"> 학과</span></div><div class="scenario-card__sub">교과 평균등급 vs 작년 컷 · 근사</div><ul class="scenario-list">' +
+            (items || '<li class="scenario-list__empty">해당 구간 없음</li>') + "</ul>" + more + "</div>";
+        };
+        grid.innerHTML =
+          card("safe", "안전", rec.safe.slice(0, 30), false) +
+          card("balanced", "적정", rec.balanced.slice(0, 30), true) +
+          card("reach", "도전", rec.reach.slice(0, 30), false);
       }
 
       // ===== 메인 렌더 =====
