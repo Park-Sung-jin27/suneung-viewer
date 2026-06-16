@@ -1,0 +1,9 @@
+{
+  "_NOTE": "passage_fidelity.mjs 임계값. 포함도(데이터 sent의 한글 윈도가 시험지에 존재하는 비율) < inclusion_threshold = 본문 교체/환각/오염 의심(사람 검토). sent_types=대조 대상 sentType.",
+  "inclusion_threshold": 0.85,
+  "window": 20,
+  "stride": 10,
+  "min_hangul": 10,
+  "min_exam_hangul": 3000,
+  "sent_types": ["body"]
+}
