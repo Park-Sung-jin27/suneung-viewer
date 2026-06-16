@@ -1,5 +1,5 @@
 // ============================================================
-// PatternReport.jsx — 오답 패턴 리포트 + AI 코칭 + AI 패턴 훈련
+// PatternReport.jsx — 오답 패턴 리포트 + AI 코칭 + 기출 패턴 훈련
 // ============================================================
 
 import { useState, useEffect } from "react";
@@ -174,29 +174,26 @@ function PatternBar({ patKey, count, maxCount, isTop, onCoach, onTrain }) {
           >
             🎯 훈련
           </button>
-          {/* AI 코칭 — 오답 1건 이상에만 */}
-          {count > 0 && (
-            <button
-              onClick={() => onCoach(patKey)}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "4px",
-                padding: "3px 10px",
-                background: isTop ? info.color : "#F9FAFB",
-                color: isTop ? "#fff" : info.color,
-                border: `1px solid ${info.color}66`,
-                borderRadius: "5px",
-                fontSize: "0.68rem",
-                fontWeight: "700",
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                transition: "all 0.15s",
-              }}
-            >
-              🤖 코칭
-            </button>
-          )}
+          <button
+            onClick={() => onCoach(patKey)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+              padding: "3px 10px",
+              background: isTop ? info.color : "#F9FAFB",
+              color: isTop ? "#fff" : info.color,
+              border: `1px solid ${info.color}66`,
+              borderRadius: "5px",
+              fontSize: "0.68rem",
+              fontWeight: "700",
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+              transition: "all 0.15s",
+            }}
+          >
+            🤖 코칭
+          </button>
         </div>
       </div>
     </div>
@@ -267,45 +264,62 @@ const COMMENTS = {
 };
 
 // ══════════════════════════════════════════════
-// [AI 패턴 훈련 모달]
+// [기출 패턴 훈련 모달]
 // ══════════════════════════════════════════════
 async function fetchTrainingQuestion(patKey) {
-  const info = P[patKey] ?? P0;
   const isLit = patKey.startsWith("L");
+  const targetSection = isLit ? "literature" : "reading";
+  const res = await fetch("/data/all_data_204.json");
+  if (!res.ok) throw new Error("기출 데이터를 불러오지 못했습니다.");
+  const allData = await res.json();
+  const patternItems = [];
+  const trueControls = [];
 
-  const prompt = `너는 수능 국어 출제 전문가야. 아래 오답 패턴을 연습할 수 있는 문제를 만들어줘.
+  for (const [yearKey, yearData] of Object.entries(allData)) {
+    for (const set of yearData[targetSection] ?? []) {
+      const passage = (set.sents ?? [])
+        .filter(
+          (sent) =>
+            sent.sentType !== "author" &&
+            sent.sentType !== "footnote" &&
+            sent.sentType !== "omission",
+        )
+        .map((sent) => sent.t)
+        .join("\n");
 
-패턴: ${patKey} — ${info.name}
-설명: ${info.desc}
-영역: ${isLit ? "문학" : "독서"}
+      for (const question of set.questions ?? []) {
+        for (const choice of question.choices ?? []) {
+          const evidence = (choice.cs_ids ?? [])
+            .map((sid) => set.sents?.find((sent) => sent.id === sid)?.t)
+            .filter(Boolean);
+          const item = {
+            passage,
+            sentence: choice.t,
+            isCorrect: choice.ok === true,
+            evidenceSentence: evidence[0] ?? "",
+            explanation:
+              choice.analysis ??
+              "해설이 없는 선지입니다. 지문 근거와 선지를 직접 대조하세요.",
+            sourceLabel: `${yearKey} · ${set.title ?? set.id} · ${question.id}번 ${choice.num}번 선지`,
+          };
 
-다음 JSON 형식으로만 응답해. 설명·마크다운·코드블록 없이 순수 JSON만:
-{
-  "passage": "${isLit ? "현대시 또는 고전시가 3~5행 (실제 평가원 출제 스타일, 시적 화자·이미지·정서 포함)" : "자연과학·사회·인문·예술 중 하나의 소재로 평가원 수준 3~4문장 독서 지문"}",
-  "sentence": "지문을 바탕으로 한 판단 선지 (1문장, 수능 선지 스타일)",
-  "isCorrect": true 또는 false,
-  "evidenceSentence": "지문에서 근거가 되는 핵심 문장 (passage에서 그대로)",
-  "explanation": "${patKey} 패턴 관점에서 왜 맞는지/틀린지 2~3문장 설명"
-}
+          if (choice.pat === patKey && choice.ok === false) {
+            patternItems.push(item);
+          } else if (choice.ok === true && evidence.length > 0) {
+            trueControls.push(item);
+          }
+        }
+      }
+    }
+  }
 
-isCorrect가 false이면 반드시 ${patKey}(${info.name}) 오류를 담은 선지를 만들어.
-isCorrect는 이번에 ${Math.random() > 0.5 ? "true" : "false"}로 설정해.`;
-
-  const res = await fetch("/api/claude", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model: "claude-sonnet-4-6",
-      max_tokens: 1000,
-      messages: [{ role: "user", content: prompt }],
-    }),
-  });
-
-  if (!res.ok) throw new Error(`API 오류: ${res.status}`);
-  const data = await res.json();
-  const text = data.content?.map((b) => b.text ?? "").join("") ?? "";
-  const clean = text.replace(/```json|```/g, "").trim();
-  return JSON.parse(clean);
+  const usePatternItem =
+    patternItems.length > 0 &&
+    (Math.random() < 0.75 || trueControls.length === 0);
+  const pool = usePatternItem ? patternItems : trueControls;
+  if (pool.length === 0)
+    throw new Error(`${patKey} 훈련 선지를 찾지 못했습니다.`);
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
 function PatternTrainer({ patKey, onClose }) {
@@ -442,7 +456,7 @@ function PatternTrainer({ patKey, onClose }) {
             lineHeight: 1.6,
           }}
         >
-          <strong style={{ color: C.green }}>훈련 방법:</strong> AI가 생성한
+          <strong style={{ color: C.green }}>훈련 방법:</strong> 실제 기출
           지문과 선지를 읽고, 선지가 지문 내용과 일치하면 <strong>O</strong>,
           다르면 <strong>X</strong>를 선택하세요.
         </div>
@@ -462,12 +476,12 @@ function PatternTrainer({ patKey, onClose }) {
               }}
             />
             <div style={{ fontSize: "0.85rem", color: C.muted }}>
-              평가원 스타일 문제 생성 중...
+              기출 선지 불러오는 중...
             </div>
             <div
               style={{ fontSize: "0.75rem", color: C.subtle, marginTop: "6px" }}
             >
-              {patKey} 패턴 적용 중
+              {patKey} 패턴 찾는 중
             </div>
           </div>
         )}
@@ -526,6 +540,18 @@ function PatternTrainer({ patKey, onClose }) {
               >
                 지문
               </div>
+              {question.sourceLabel && (
+                <div
+                  style={{
+                    fontSize: "0.68rem",
+                    color: C.subtle,
+                    marginBottom: "8px",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {question.sourceLabel}
+                </div>
+              )}
               <p
                 style={{
                   fontSize: "0.85rem",
@@ -789,6 +815,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
   }
   const allPatKeys = [...READING_PATS, ...LIT_PATS];
   const maxCount = Math.max(0, ...allPatKeys.map((k) => patCounts[k] ?? 0));
+  const totalWrong = Object.values(patCounts).reduce((sum, n) => sum + n, 0);
   const topPat =
     allPatKeys.length > 0
       ? allPatKeys.reduce(
@@ -798,6 +825,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
         )
       : null;
   const hasTopPat = topPat !== null && (patCounts[topPat] ?? 0) > 0;
+  const hasReliableTopPat = hasTopPat && totalWrong >= 3;
   const p0Count = patCounts["0"] ?? 0;
 
   const yearMap = {};
@@ -817,6 +845,8 @@ export default function PatternReport({ user, onGoToQuestion }) {
   function getComment(tp) {
     if (!tp)
       return "아직 분석할 데이터가 부족합니다. 더 많은 문제를 풀어보세요.";
+    if (totalWrong < 3)
+      return "오답 수가 아직 적어 약점을 단정할 수 없습니다. 지금 보이는 패턴은 초기 신호로만 참고하세요.";
     if (tp === "0")
       return "P0(미분류)에 오답이 많습니다. 틀린 이유를 스스로 분석하고 패턴을 파악하세요.";
     const info = P[tp] ?? P0;
@@ -974,7 +1004,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
                 lineHeight: 1.7,
               }}
             >
-              💡 기출을 풀지 않아도 <strong>🎯 훈련</strong> 버튼으로 AI 패턴
+              💡 기출을 풀지 않아도 <strong>🎯 훈련</strong> 버튼으로 기출 패턴
               훈련을 바로 시작할 수 있어요
             </div>
           </div>
@@ -1038,7 +1068,9 @@ export default function PatternReport({ user, onGoToQuestion }) {
                         marginBottom: "12px",
                       }}
                     >
-                      핵심 취약 패턴은{" "}
+                      {hasReliableTopPat
+                        ? "핵심 취약 패턴은 "
+                        : "초기 의심 패턴은 "}
                       <span style={{ color: topInfo.color }}>
                         {topPat} {topInfo.name}
                       </span>
@@ -1186,8 +1218,8 @@ export default function PatternReport({ user, onGoToQuestion }) {
                 lineHeight: 1.7,
               }}
             >
-              🎯 <strong>AI 패턴 훈련</strong> — 각 패턴 옆 훈련 버튼을 누르면
-              평가원 스타일 지문으로 해당 패턴을 집중 연습할 수 있습니다
+              🎯 <strong>기출 패턴 훈련</strong> — 각 패턴 옆 훈련 버튼을 누르면
+              실제 기출 선지로 해당 패턴을 집중 연습할 수 있습니다
             </div>
           </>
         )}
@@ -1228,7 +1260,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
                       patKey={pk}
                       count={patCounts[pk] ?? 0}
                       maxCount={maxCount}
-                      isTop={hasTopPat && topPat === pk}
+                      isTop={hasReliableTopPat && topPat === pk}
                       onCoach={setActiveCoachPat}
                       onTrain={setActiveTrainPat}
                     />
@@ -1267,7 +1299,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
                       patKey={pk}
                       count={patCounts[pk] ?? 0}
                       maxCount={maxCount}
-                      isTop={hasTopPat && topPat === pk}
+                      isTop={hasReliableTopPat && topPat === pk}
                       onCoach={setActiveCoachPat}
                       onTrain={setActiveTrainPat}
                     />

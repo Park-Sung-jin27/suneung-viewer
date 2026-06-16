@@ -1,57 +1,168 @@
 // QuestionQA.jsx — 문제별 AI Q&A 컴포넌트
 // 복습 모드에서 각 문제 아래 표시됨
-// Supabase: question_comments 테이블 필요 (하단 SQL 참고)
 
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 
-// ── AI 답변 요청 ──────────────────────────────────────────
-async function fetchAIAnswer({
+const MAX_PASSAGE_CHARS = 4500;
+const MAX_BOGI_CHARS = 2000;
+const MAX_USER_QUESTION_CHARS = 500;
+
+function compact(text, limit) {
+  const value = String(text ?? "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (value.length <= limit) return value;
+  return value.slice(0, limit) + "\n[이하 생략]";
+}
+
+function stringifyBogi(bogi) {
+  if (!bogi) return "";
+  if (typeof bogi === "string") return bogi;
+  if (Array.isArray(bogi)) return bogi.join("\n");
+  if (typeof bogi === "object") {
+    return [
+      bogi.text,
+      bogi.description,
+      Array.isArray(bogi.items)
+        ? bogi.items.map((item) => item.text ?? item.label ?? "").join("\n")
+        : "",
+      Array.isArray(bogi.flow) ? bogi.flow.join(" ") : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
+  return String(bogi);
+}
+
+function isCorrectChoice(question, choice) {
+  const questionType = question?.questionType ?? "negative";
+  return questionType === "positive" ? choice.ok === true : choice.ok === false;
+}
+
+function evidenceForChoice(choice, passageSents) {
+  const sents = passageSents ?? [];
+  return (choice.cs_ids ?? [])
+    .map((sid) => {
+      const sent = sents.find((s) => s.id === sid);
+      return sent ? `${sid}: ${sent.t}` : `${sid}: [근거 문장 없음]`;
+    })
+    .join("\n");
+}
+
+function buildPrompt({
+  question,
   questionText,
   choices,
   passageSents,
+  selectedChoiceNum,
   userQuestion,
 }) {
+  const q = question ?? { t: questionText, choices };
+  const qChoices = q.choices ?? choices ?? [];
   const passageText = (passageSents ?? [])
-    .filter((s) => s.sentType === "body")
-    .map((s) => s.t)
-    .join(" ");
+    .filter((s) => s.sentType !== "footnote" && s.sentType !== "author")
+    .map((s) => `${s.id}: ${s.t}`)
+    .join("\n");
+  const bodyText = compact(passageText, MAX_PASSAGE_CHARS);
+  const bogiText = compact(stringifyBogi(q.bogi), MAX_BOGI_CHARS);
+  const selectedChoice = qChoices.find(
+    (choice) => Number(choice.num) === Number(selectedChoiceNum),
+  );
+  const correctChoices = qChoices.filter((choice) =>
+    isCorrectChoice(q, choice),
+  );
 
-  const choiceText = choices.map((c) => `${c.num}번: ${c.t}`).join("\n");
+  const choiceText = qChoices
+    .map((choice) => {
+      const tags = [
+        Number(choice.num) === Number(selectedChoiceNum) ? "학생 선택" : "",
+        isCorrectChoice(q, choice) ? "정답 선지" : "오답 선지",
+        choice.pat ? `오답 패턴 ${choice.pat}` : "",
+      ].filter(Boolean);
+      const evidence = evidenceForChoice(choice, passageSents);
+      return [
+        `${choice.num}번 (${tags.join(", ") || "태그 없음"})`,
+        `선지: ${choice.t}`,
+        choice.analysis ? `해설: ${choice.analysis}` : null,
+        evidence ? `근거 문장:\n${evidence}` : "근거 문장: 없음",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    })
+    .join("\n\n");
 
-  const prompt = `수능 국어 문제에 대한 학생의 질문에 답해주세요. 간결하고 명확하게, 핵심만 200자 이내로 답하세요.
+  return `학생이 수능 국어 문항에 대해 질문했습니다.
+아래 제공된 지문, 보기, 선지, 해설, 근거 문장만 사용해 답하세요.
+근거가 부족하면 추측하지 말고 부족하다고 말하세요.
+답변은 300자 이내로, 3~4등급 학생도 이해하게 쉽게 설명하세요.
 
-[문제]
-${questionText}
+[발문]
+${q.t ?? questionText ?? ""}
 
-[선지]
+[문항 유형]
+${q.questionType ?? "negative"}
+
+[보기]
+${bogiText || "없음"}
+
+[지문]
+${bodyText}
+
+[선지와 근거]
 ${choiceText}
 
-[지문 일부]
-${passageText.slice(0, 600)}
+[학생이 고른 선지]
+${selectedChoice ? `${selectedChoice.num}번: ${selectedChoice.t}` : "확인 불가"}
+
+[정답 선지]
+${correctChoices.map((choice) => `${choice.num}번: ${choice.t}`).join("\n")}
 
 [학생 질문]
-${userQuestion}`;
+${compact(userQuestion, MAX_USER_QUESTION_CHARS)}`;
+}
+
+async function fetchAIAnswer({
+  question,
+  questionText,
+  choices,
+  passageSents,
+  selectedChoiceNum,
+  userQuestion,
+}) {
+  const { data } = await supabase.auth.getSession();
+  const token = data.session?.access_token;
+  if (!token) throw new Error("로그인이 필요합니다.");
+
+  const prompt = buildPrompt({
+    question,
+    questionText,
+    choices,
+    passageSents,
+    selectedChoiceNum,
+    userQuestion,
+  });
 
   const res = await fetch("/api/claude", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify({
-      model: "claude-sonnet-4-6",
-      max_tokens: 1000,
-      messages: [{ role: "user", content: prompt }],
+      task: "question_qa",
+      prompt,
     }),
   });
 
   if (!res.ok) throw new Error(`API 오류: ${res.status}`);
-  const data = await res.json();
+  const dataJson = await res.json();
   return (
-    data.content?.map((b) => b.text ?? "").join("") ??
+    dataJson.content?.map((b) => b.text ?? "").join("") ??
     "답변을 가져오지 못했습니다."
   );
 }
 
-// ── 단일 Q&A 아이템 ──────────────────────────────────────
 function QAItem({ item }) {
   const [open, setOpen] = useState(false);
   return (
@@ -63,7 +174,6 @@ function QAItem({ item }) {
         overflow: "hidden",
       }}
     >
-      {/* 질문 */}
       <div
         onClick={() => setOpen((v) => !v)}
         style={{
@@ -107,7 +217,6 @@ function QAItem({ item }) {
         </span>
       </div>
 
-      {/* AI 답변 */}
       {open && (
         <div
           style={{
@@ -147,12 +256,13 @@ function QAItem({ item }) {
   );
 }
 
-// ── 메인 컴포넌트 ─────────────────────────────────────────
 export default function QuestionQA({
   questionKey,
   questionText,
   choices,
+  question,
   passageSents,
+  selectedChoiceNum,
   user,
 }) {
   const [items, setItems] = useState([]);
@@ -162,23 +272,27 @@ export default function QuestionQA({
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(null);
 
-  // 기존 Q&A 로드
   useEffect(() => {
-    if (!questionKey) return;
+    if (!questionKey || !user) {
+      setItems([]);
+      setFetching(false);
+      return;
+    }
     setFetching(true);
     supabase
       .from("question_comments")
       .select("id, user_question, ai_answer, created_at")
       .eq("question_key", questionKey)
+      .eq("user_id", user.id)
       .order("created_at", { ascending: true })
-      .then(({ data, error }) => {
-        if (!error) setItems(data ?? []);
+      .then(({ data, error: fetchError }) => {
+        if (!fetchError) setItems(data ?? []);
         setFetching(false);
       });
-  }, [questionKey]);
+  }, [questionKey, user]);
 
   async function handleAsk() {
-    const q = input.trim();
+    const q = input.trim().slice(0, MAX_USER_QUESTION_CHARS);
     if (!q || loading) return;
     if (!user) {
       setError("로그인 후 질문할 수 있어요");
@@ -190,15 +304,18 @@ export default function QuestionQA({
 
     try {
       const aiAnswer = await fetchAIAnswer({
+        question,
         questionText,
         choices,
         passageSents,
+        selectedChoiceNum,
         userQuestion: q,
       });
 
       const { data, error: dbErr } = await supabase
         .from("question_comments")
         .insert({
+          user_id: user.id,
           question_key: questionKey,
           user_question: q,
           ai_answer: aiAnswer,
@@ -221,7 +338,6 @@ export default function QuestionQA({
 
   return (
     <div style={{ marginTop: "8px" }}>
-      {/* 토글 버튼 */}
       <button
         onClick={() => setOpen((v) => !v)}
         style={{
@@ -265,7 +381,6 @@ export default function QuestionQA({
             gap: "8px",
           }}
         >
-          {/* 기존 Q&A 목록 */}
           {fetching ? (
             <div
               style={{
@@ -286,7 +401,6 @@ export default function QuestionQA({
             items.map((item) => <QAItem key={item.id} item={item} />)
           )}
 
-          {/* 질문 입력 */}
           <div
             style={{
               background: "#fff",
@@ -300,7 +414,9 @@ export default function QuestionQA({
           >
             <textarea
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) =>
+                setInput(e.target.value.slice(0, MAX_USER_QUESTION_CHARS))
+              }
               placeholder="이해가 안 되는 부분을 질문하세요&#10;예) 왜 2번이 틀렸나요? / ㉠의 의미가 뭔가요?"
               rows={3}
               style={{
@@ -333,7 +449,9 @@ export default function QuestionQA({
               }}
             >
               <span style={{ fontSize: "0.72rem", color: "#94a3b8" }}>
-                {user ? "⌘+Enter로 전송" : "로그인 필요"}
+                {user
+                  ? `⌘+Enter로 전송 · ${input.length}/${MAX_USER_QUESTION_CHARS}`
+                  : "로그인 필요"}
               </span>
               <button
                 onClick={handleAsk}

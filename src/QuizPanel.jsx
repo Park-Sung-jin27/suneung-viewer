@@ -23,7 +23,9 @@ function replaceImagePlaceholders(text) {
     if (parts[i]) result.push(parts[i]);
     if (i < parts.length - 1) {
       const tok = tokens[i] || "";
-      const srcM = tok.match(/^\[(?:도식|사진|그림|이미지)src\s*:\s*([^\]|]+)\]$/);
+      const srcM = tok.match(
+        /^\[(?:도식|사진|그림|이미지)src\s*:\s*([^\]|]+)\]$/,
+      );
       if (srcM) {
         result.push(
           <img
@@ -122,7 +124,8 @@ function applyInlineAnnsLocal(text, anns) {
   let cursor = 0;
   for (const a of sorted) {
     if (a.idx < cursor) continue;
-    if (a.idx > cursor) parts.push({ t: text.slice(cursor, a.idx), type: null });
+    if (a.idx > cursor)
+      parts.push({ t: text.slice(cursor, a.idx), type: null });
     parts.push({ t: a.text, type: a.type });
     cursor = a.idx + a.text.length;
   }
@@ -259,7 +262,8 @@ function applyBogiInlineAnns(text, anns) {
   let cursor = 0;
   for (const a of sorted) {
     if (a.idx < cursor) continue;
-    if (a.idx > cursor) parts.push({ t: text.slice(cursor, a.idx), type: null });
+    if (a.idx > cursor)
+      parts.push({ t: text.slice(cursor, a.idx), type: null });
     parts.push({ t: a.displayText, type: a.type, width: a.width });
     cursor = a.idx + a.matchText.length;
   }
@@ -1138,6 +1142,10 @@ function QuestionBlock({
     isReview ? null : (initialClicked ?? null),
   );
   const isVocab = isVocabQuestion(question.t, isLastQuestion);
+  const selectedUid = clicked ?? initialClicked ?? null;
+  const selectedChoiceNum =
+    selectedUid != null ? Number(String(selectedUid).split("_c")[1]) : null;
+  const showQuestionQA = isReview || submitted || selectedUid != null;
 
   // 선지·<보기> annotation 분류 (target field 호환 path):
   //   target === 'bogi' + qId === question.id → 본 문제 bogi 영역
@@ -1290,13 +1298,14 @@ function QuestionBlock({
         ))}
       </div>
 
-      {/* AI Q&A — 복습 모드에서만 */}
-      {isReview && (
+      {showQuestionQA && (
         <QuestionQA
           questionKey={`${yearKey}_${passageId}_${question.id}`}
           questionText={question.t}
           choices={question.choices}
+          question={question}
           passageSents={passageSents}
+          selectedChoiceNum={selectedChoiceNum}
           user={user}
         />
       )}

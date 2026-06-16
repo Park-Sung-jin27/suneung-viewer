@@ -28,7 +28,27 @@ CREATE TABLE IF NOT EXISTS user_answers (
   reviewed_at   TIMESTAMPTZ,           -- 재출제 후 다시 풀면 업데이트
   next_review   TIMESTAMPTZ,           -- 다음 재출제 예정일 (스페이스드 리피티션)
   review_count  INT NOT NULL DEFAULT 0, -- 재출제 횟수
+  attempt_count INT NOT NULL DEFAULT 1,
+  choice_text   TEXT,
+  correct_choice_num  INT,
+  correct_choice_text TEXT,
+  question_type TEXT,
   answered_at   TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+ALTER TABLE user_answers ADD COLUMN IF NOT EXISTS attempt_count INT NOT NULL DEFAULT 1;
+ALTER TABLE user_answers ADD COLUMN IF NOT EXISTS choice_text TEXT;
+ALTER TABLE user_answers ADD COLUMN IF NOT EXISTS correct_choice_num INT;
+ALTER TABLE user_answers ADD COLUMN IF NOT EXISTS correct_choice_text TEXT;
+ALTER TABLE user_answers ADD COLUMN IF NOT EXISTS question_type TEXT;
+
+CREATE TABLE IF NOT EXISTS question_comments (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id       UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  question_key  TEXT NOT NULL,
+  user_question TEXT NOT NULL,
+  ai_answer     TEXT NOT NULL,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 -- ── 3. 패턴별 누적 통계 (집계 캐시) ─────────────────────────
@@ -58,13 +78,18 @@ CREATE TABLE IF NOT EXISTS subscriptions (
 CREATE INDEX IF NOT EXISTS idx_answers_user     ON user_answers(user_id);
 CREATE INDEX IF NOT EXISTS idx_answers_review   ON user_answers(user_id, next_review) WHERE next_review IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_answers_set      ON user_answers(user_id, set_id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_answers_unique_question
+  ON user_answers(user_id, year_key, set_id, question_id);
 CREATE INDEX IF NOT EXISTS idx_sessions_user    ON user_sessions(user_id);
+CREATE INDEX IF NOT EXISTS idx_question_comments_user_question
+  ON question_comments(user_id, question_key, created_at);
 
 -- ── 6. RLS 활성화 ─────────────────────────────────────────
 ALTER TABLE user_sessions    ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_answers     ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_stats       ENABLE ROW LEVEL SECURITY;
 ALTER TABLE subscriptions    ENABLE ROW LEVEL SECURITY;
+ALTER TABLE question_comments ENABLE ROW LEVEL SECURITY;
 
 -- ── 7. RLS 정책 — 본인 데이터만 접근 ────────────────────────
 CREATE POLICY "본인 세션만" ON user_sessions
@@ -78,6 +103,10 @@ CREATE POLICY "본인 통계만" ON user_stats
 
 CREATE POLICY "본인 구독만" ON subscriptions
   FOR ALL USING (auth.uid() = user_id);
+
+CREATE POLICY "own question comments" ON question_comments
+  FOR ALL USING (auth.uid() = user_id)
+  WITH CHECK (auth.uid() = user_id);
 
 -- ── 8. user_stats 자동 생성 트리거 ──────────────────────────
 CREATE OR REPLACE FUNCTION create_user_stats()

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 import { P, YEAR_INFO } from "./constants";
+import { updateReviewResult } from "./hooks/useAnswerTracker";
 
 const COLORS = {
   beige: "#f9f5ed",
@@ -80,6 +81,7 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
   const [loading, setLoading] = useState(true);
   const [yearFilter, setYearFilter] = useState("all");
   const [patFilter, setPatFilter] = useState("all");
+  const [updatingId, setUpdatingId] = useState(null);
 
   useEffect(() => {
     if (!user) {
@@ -114,6 +116,28 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
   const patKeys = [
     ...new Set(answers.map((a) => a.pat).filter((p) => p != null)),
   ].sort();
+
+  async function handleReviewResult(e, answer, isCorrect) {
+    e.stopPropagation();
+    if (!answer || updatingId) return;
+
+    setUpdatingId(answer.id);
+    const { data, error } = await updateReviewResult({
+      user,
+      answer,
+      isCorrect,
+    });
+    if (error) {
+      console.warn("[WrongNote] 복습 갱신 실패:", error.message);
+    } else if (isCorrect) {
+      setAnswers((prev) => prev.filter((item) => item.id !== answer.id));
+    } else if (data) {
+      setAnswers((prev) =>
+        prev.map((item) => (item.id === answer.id ? data : item)),
+      );
+    }
+    setUpdatingId(null);
+  }
 
   if (!user) {
     return (
@@ -289,11 +313,17 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
               const reviewDue = isReviewDue(a.next_review);
 
               return (
-                <button
+                <div
                   key={a.id}
                   onClick={() =>
                     onGoToQuestion?.(a.year_key, a.set_id, a.question_id)
                   }
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter")
+                      onGoToQuestion?.(a.year_key, a.set_id, a.question_id);
+                  }}
+                  role="button"
+                  tabIndex={0}
                   style={{
                     background: reviewDue ? COLORS.wrongBg : "#fff",
                     border: `1px solid ${reviewDue ? COLORS.wrong + "44" : COLORS.beigeDark}`,
@@ -306,6 +336,7 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
                     display: "flex",
                     flexDirection: "column",
                     gap: "6px",
+                    outline: "none",
                   }}
                 >
                   {/* 상단: 연도 + 날짜 + 복습 뱃지 */}
@@ -400,7 +431,48 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
                     </span>
                     {a.pat != null && <PatternBadge pat={a.pat} />}
                   </div>
-                </button>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "8px",
+                      marginTop: "6px",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <button
+                      onClick={(e) => handleReviewResult(e, a, true)}
+                      disabled={updatingId === a.id}
+                      style={{
+                        padding: "6px 10px",
+                        borderRadius: "6px",
+                        border: `1px solid ${COLORS.greenBorder}`,
+                        background: COLORS.greenLight,
+                        color: COLORS.green,
+                        fontSize: "0.74rem",
+                        fontWeight: "700",
+                        cursor: updatingId === a.id ? "not-allowed" : "pointer",
+                      }}
+                    >
+                      복습 완료
+                    </button>
+                    <button
+                      onClick={(e) => handleReviewResult(e, a, false)}
+                      disabled={updatingId === a.id}
+                      style={{
+                        padding: "6px 10px",
+                        borderRadius: "6px",
+                        border: "1px solid #f2b8b5",
+                        background: "#fff5f5",
+                        color: COLORS.wrong,
+                        fontSize: "0.74rem",
+                        fontWeight: "700",
+                        cursor: updatingId === a.id ? "not-allowed" : "pointer",
+                      }}
+                    >
+                      다시 틀림
+                    </button>
+                  </div>
+                </div>
               );
             })}
           </div>

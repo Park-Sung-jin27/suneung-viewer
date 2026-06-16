@@ -8,12 +8,23 @@
 import { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { P } from "./constants";
+import { supabase } from "./supabase";
+
+function withoutMarkdownNode(props) {
+  const cleanProps = { ...props };
+  delete cleanProps.node;
+  return cleanProps;
+}
 
 // ── allData에서 question 탐색 ────────────────────────────────
 // user_answers 스키마: set_id (e.g. 'r2026a') + question_id (숫자)
-function findQuestion(allData, setId, questionId) {
+function findQuestion(allData, yearKey, setId, questionId) {
   if (!setId || questionId == null || !allData) return null;
-  for (const yearData of Object.values(allData)) {
+  const yearEntries = yearKey
+    ? [[yearKey, allData[yearKey]]]
+    : Object.entries(allData);
+  for (const [, yearData] of yearEntries) {
+    if (!yearData) continue;
     for (const section of ["reading", "literature"]) {
       const set = (yearData[section] ?? []).find((s) => s.id === setId);
       if (!set) continue;
@@ -24,6 +35,16 @@ function findQuestion(allData, setId, questionId) {
     }
   }
   return null;
+}
+
+async function getClaudeHeaders() {
+  const { data } = await supabase.auth.getSession();
+  const token = data.session?.access_token;
+  if (!token) throw new Error("로그인이 필요합니다.");
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
 }
 
 // ── 초기 코칭 AI 호출 ────────────────────────────────────────
@@ -62,11 +83,10 @@ ${itemsText}
 
   const res = await fetch("/api/claude", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: await getClaudeHeaders(),
     body: JSON.stringify({
-      model: "claude-sonnet-4-6",
-      max_tokens: 1000,
-      messages: [{ role: "user", content: prompt }],
+      task: "pattern_coach_initial",
+      prompt,
     }),
   });
   if (!res.ok) throw new Error(`API ${res.status}`);
@@ -80,20 +100,30 @@ ${itemsText}
 // ── 후속 질문 AI 호출 ────────────────────────────────────────
 async function fetchReply({ patKey, patName, wrongItems, history }) {
   const context = wrongItems
-    .map(
-      (item, i) =>
-        `오답${i + 1}: ${item.choiceText} / ${item.analysis || "해설 없음"}`,
+    .map((item, i) =>
+      [
+        `오답${i + 1}: ${item.choiceText}`,
+        item.analysis ? `해설: ${item.analysis}` : "해설 없음",
+        item.groundingSents?.length
+          ? `근거: ${item.groundingSents.slice(0, 2).join(" ")}`
+          : "근거 없음",
+      ].join(" / "),
     )
     .join("\n");
+  const prompt = [
+    `현재 학생의 ${patKey}(${patName}) 오답 패턴 코칭 세션입니다.`,
+    `분석된 오답:\n${context}`,
+    "아래 대화 흐름을 이어서 답하세요.",
+    "200자 이내, 존댓말로 답하세요.",
+    history.map((msg) => `${msg.role}: ${msg.content}`).join("\n"),
+  ].join("\n\n");
 
   const res = await fetch("/api/claude", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: await getClaudeHeaders(),
     body: JSON.stringify({
-      model: "claude-sonnet-4-6",
-      max_tokens: 1000,
-      system: `수능 국어 전문 튜터. 현재 학생의 ${patKey}(${patName}) 오답 패턴 코칭 세션 중.\n분석된 오답:\n${context}\n\n200자 이내, 존댓말로 답하세요.`,
-      messages: history,
+      task: "pattern_coach_reply",
+      prompt,
     }),
   });
   if (!res.ok) throw new Error(`API ${res.status}`);
@@ -150,7 +180,7 @@ function Bubble({ role, content }) {
         {isAI ? (
           <ReactMarkdown
             components={{
-              h1: ({ node, ...p }) => (
+              h1: (props) => (
                 <h3
                   style={{
                     fontSize: "0.95rem",
@@ -158,10 +188,10 @@ function Bubble({ role, content }) {
                     margin: "10px 0 6px",
                     color: "#111827",
                   }}
-                  {...p}
+                  {...withoutMarkdownNode(props)}
                 />
               ),
-              h2: ({ node, ...p }) => (
+              h2: (props) => (
                 <h3
                   style={{
                     fontSize: "0.92rem",
@@ -169,10 +199,10 @@ function Bubble({ role, content }) {
                     margin: "10px 0 6px",
                     color: "#111827",
                   }}
-                  {...p}
+                  {...withoutMarkdownNode(props)}
                 />
               ),
-              h3: ({ node, ...p }) => (
+              h3: (props) => (
                 <h4
                   style={{
                     fontSize: "0.88rem",
@@ -180,31 +210,40 @@ function Bubble({ role, content }) {
                     margin: "8px 0 4px",
                     color: "#1f2937",
                   }}
-                  {...p}
+                  {...withoutMarkdownNode(props)}
                 />
               ),
-              p: ({ node, ...p }) => (
-                <p style={{ margin: "6px 0" }} {...p} />
+              p: (props) => (
+                <p
+                  style={{ margin: "6px 0" }}
+                  {...withoutMarkdownNode(props)}
+                />
               ),
-              strong: ({ node, ...p }) => (
-                <strong style={{ fontWeight: 700, color: "#111827" }} {...p} />
+              strong: (props) => (
+                <strong
+                  style={{ fontWeight: 700, color: "#111827" }}
+                  {...withoutMarkdownNode(props)}
+                />
               ),
-              ul: ({ node, ...p }) => (
+              ul: (props) => (
                 <ul
                   style={{ paddingLeft: "1.2em", margin: "6px 0" }}
-                  {...p}
+                  {...withoutMarkdownNode(props)}
                 />
               ),
-              ol: ({ node, ...p }) => (
+              ol: (props) => (
                 <ol
                   style={{ paddingLeft: "1.2em", margin: "6px 0" }}
-                  {...p}
+                  {...withoutMarkdownNode(props)}
                 />
               ),
-              li: ({ node, ...p }) => (
-                <li style={{ margin: "3px 0" }} {...p} />
+              li: (props) => (
+                <li
+                  style={{ margin: "3px 0" }}
+                  {...withoutMarkdownNode(props)}
+                />
               ),
-              blockquote: ({ node, ...p }) => (
+              blockquote: (props) => (
                 <blockquote
                   style={{
                     margin: "8px 0",
@@ -212,11 +251,13 @@ function Bubble({ role, content }) {
                     borderLeft: "3px solid #d1d5db",
                     color: "#4b5563",
                   }}
-                  {...p}
+                  {...withoutMarkdownNode(props)}
                 />
               ),
-              code: ({ node, inline, ...p }) =>
-                inline ? (
+              code: (props) => {
+                const p = withoutMarkdownNode(props);
+                const { inline, ...codeProps } = p;
+                return inline ? (
                   <code
                     style={{
                       background: "#eef2ff",
@@ -225,7 +266,7 @@ function Bubble({ role, content }) {
                       fontSize: "0.82em",
                       fontFamily: "ui-monospace, Consolas, monospace",
                     }}
-                    {...p}
+                    {...codeProps}
                   />
                 ) : (
                   <code
@@ -238,9 +279,10 @@ function Bubble({ role, content }) {
                       whiteSpace: "pre-wrap",
                       fontFamily: "ui-monospace, Consolas, monospace",
                     }}
-                    {...p}
+                    {...codeProps}
                   />
-                ),
+                );
+              },
               hr: () => (
                 <hr
                   style={{
@@ -250,12 +292,12 @@ function Bubble({ role, content }) {
                   }}
                 />
               ),
-              a: ({ node, ...p }) => (
+              a: (props) => (
                 <a
                   style={{ color: "#4f46e5", textDecoration: "underline" }}
                   target="_blank"
                   rel="noopener noreferrer"
-                  {...p}
+                  {...withoutMarkdownNode(props)}
                 />
               ),
             }}
@@ -375,7 +417,12 @@ export default function PatternCoach({
     const items = [];
     for (const wa of wrongAnswers) {
       if (!wa.set_id || wa.question_id == null) continue;
-      const found = findQuestion(allData, wa.set_id, wa.question_id);
+      const found = findQuestion(
+        allData,
+        wa.year_key,
+        wa.set_id,
+        wa.question_id,
+      );
       if (!found) continue;
       const { question, set } = found;
       const choice = question.choices?.find((c) => c.num === wa.choice_num);
@@ -532,7 +579,9 @@ export default function PatternCoach({
             <div
               style={{ fontSize: "0.7rem", color: "#9CA3AF", marginTop: "1px" }}
             >
-              내 오답 {wrongAnswers.length}건 기반 맞춤 분석
+              {wrongAnswers.length > 0
+                ? `내 오답 ${wrongAnswers.length}건 기반 맞춤 분석`
+                : "아직 오답이 없어 기본 패턴 코칭으로 시작"}
             </div>
           </div>
           <button
@@ -631,7 +680,7 @@ export default function PatternCoach({
                   >
                     {Object.values(groups).map((g, gi) => (
                       <div
-                        key={g.setId}
+                        key={`${g.yearKey}-${g.setId}`}
                         style={{
                           borderBottom:
                             gi < Object.values(groups).length - 1
