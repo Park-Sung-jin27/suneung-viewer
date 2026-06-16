@@ -25,7 +25,7 @@ import FeedbackButton from "./FeedbackButton";
 import Privacy from "./Privacy";
 import AuditPanel from "./AuditPanel";
 import { YEAR_INFO, MODE, isSetUnderReview, isAllowlisted } from "./constants";
-import { formatExamTitle } from "./examTitle";
+import { formatExamTitle, formatExamDate } from "./examTitle";
 import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
 import { supabase } from "./supabase";
 import { saveAnswer } from "./hooks/useAnswerTracker";
@@ -1086,7 +1086,10 @@ function MainPage({ isPro, user }) {
           </span>
         </div>
 
-        {/* 연도 카드 그리드 */}
+        {/* 연도 카드 그리드 — 시행일 내림차순 정렬 (최신 먼저 path).
+            정렬 키 = formatExamDate(yearKey) "YYYY.MM" 문자열 단독.
+            tiebreak (동일 시행일 A/B형) = yearKey 사전순 (A < B).
+            non-matching yearKey path (formatExamDate "" 반환) → 최후 정렬 path. */}
         <div
           style={{
             display: "grid",
@@ -1095,7 +1098,18 @@ function MainPage({ isPro, user }) {
             marginBottom: "32px",
           }}
         >
-          {yearKeys.map((yearKey) => {
+          {[...yearKeys]
+            .sort((a, b) => {
+              const da = formatExamDate(a);
+              const db = formatExamDate(b);
+              // 빈 문자열 (non-matching) → 최후 path 정합
+              if (!da && !db) return a < b ? -1 : a > b ? 1 : 0;
+              if (!da) return 1;
+              if (!db) return -1;
+              if (db !== da) return db < da ? -1 : 1; // 내림차순
+              return a < b ? -1 : a > b ? 1 : 0; // tiebreak: yearKey 사전순
+            })
+            .map((yearKey) => {
             const meta = YEAR_INFO.find((y) => y.key === yearKey);
             // label 필드 폐기 — 제목 source 단독 formatExamTitle(yearKey) path.
             //   yd.label 잔존 path 안 ModeSelectModal handleCardClick path 안
