@@ -1,0 +1,9 @@
+# 정본 데이터 — 포매터 재포맷 금지
+# (압축 단일라인 구조 유지. format-on-save가 들여쓰기로 재포맷하면 11MB diff·대량 오염 commit 위험)
+public/data/all_data_204.json
+public/data/annotations.json
+public/data/visual_marks.json
+
+# 도구 출력·백업 (검토용 JSON / 대용량 데이터 백업)
+pipeline/output/
+pipeline/backups/
