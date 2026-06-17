@@ -89,6 +89,14 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  // Content-Type 검증 path — application/json 단독 허용 (form/multipart 차단 path).
+  const ct = req.headers["content-type"] || "";
+  if (!ct.toLowerCase().includes("application/json")) {
+    return res
+      .status(415)
+      .json({ error: "Content-Type must be application/json" });
+  }
+
   const apiKey = process.env.ANTHROPIC_API_KEY ?? process.env.ANTHROPIC_API;
   if (!apiKey) {
     return res.status(500).json({ error: "API key not configured" });
@@ -148,16 +156,27 @@ Task: ${task}`;
     });
 
     if (!response.ok) {
-      const err = await response.text();
+      // Anthropic raw 에러 body 안 내부 정보 (model id, api key prefix, etc)
+      // 누설 path 차단 — server log 단독 + client 안 일반화 메시지 path 정합.
+      const rawErr = await response.text();
+      console.error("[/api/claude] anthropic", response.status, rawErr);
       await refundQuota(client);
-      return res.status(response.status).json({ error: err });
+      const status = response.status >= 500 ? 502 : response.status;
+      const generic =
+        status === 429
+          ? "AI service is busy. Please try again."
+          : status === 401 || status === 403
+            ? "AI service authorization failed."
+            : "AI service unavailable.";
+      return res.status(status).json({ error: generic });
     }
 
     const data = await response.json();
     data.quota = quota;
     return res.status(200).json(data);
   } catch (e) {
+    // 내부 예외 메시지 (stack / module path / env 정보) 누설 path 차단.
     console.error("[/api/claude]", e);
-    return res.status(500).json({ error: e.message });
+    return res.status(500).json({ error: "Internal server error" });
   }
 }
