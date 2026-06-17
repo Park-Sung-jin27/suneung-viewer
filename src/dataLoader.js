@@ -11,253 +11,257 @@ async function _load() {
   return _cache;
 }
 
-// release 정합 90 set hardcode list — 단일 진실 source.
+// release 정합 composite key (yearKey::setId) hardcode list — 단일 진실 source.
 //   기준: pipeline/release_approval_records/QG-{examKey}-{setId}-release-approval.json
 //        파일 존재 사양 — backfill 없이 frontend 단독 명시.
 //   set_status.json 의 release_status field 채택 X (lock #1 release_status
 //   자동 정정 금지 정합 보장).
-//   ⚠️ setId는 yearKey 미포함 — 2014~2016 A/B 시험 중복 setId 주의:
-//        같은 setId가 가형(A)/나형(B) 양쪽에 존재하면 양쪽 모두 release.
-//        양쪽 모두 4기준 PASS 확인 시에만 추가. 미확인 15개 holdback (하단 주석).
-//   l2025b (2025수능 literature) — 2026-05-21 release 추가
-//     (sentType=undefined 30건 accepted 별도 회기 path / approval aed7e10).
-//   2021수능 (LEGACY 1/8) — 2026-05-21 release 추가 (Code B caf0b00).
-//     7 sets (reading 3 + literature 4) — r2021d 부재 path 정합 (의도).
-//   2020수능 (LEGACY 2/8) — 2026-05-21 release 추가 (Code B f712c3e).
-//     7 sets (reading 2 + literature 5) — r2020a~d 부재 path 정합 (의도).
-//     l2020e ↔ l2020d sentId 공유 사실 — 별도 회기 구조 정정 path.
-//   2017수능 (LEGACY 3/8) — 2026-05-21 release 추가 (Code B 8b0fbd1).
-//     3 sets (reading 2 + literature 1) — r2017b / l2017a 보류 사양
-//     (별도 회기 정정 path). r2017d / l2017b duplicate 사양 안 삭제 path.
-//     r2017c Q42 critical 결함: ch[1~5] 5건 모두 ok=false (ok:true=0) —
-//     2026-05-24 raw 확인 완료. questionType=negative → ok:true 4건 필요.
-//     다음 회기 즉시 정정 path (ch[2~5] ok=false→true + pat/근거 확인).
-//   LEGACY T1/T2 33 sets (2014~2021 6월/9월+수능) — 2026-05-24 release 추가 (Code B 61c6fdb).
-//     A/B 중복 setId 15개 holdback (가형·나형 양쪽 4기준 미확인):
-//       r20146d/l20146a/l20146c, r20149a/b/d/e,
-//       r20156b/c/e, l2014a, r2015a, r20166a/b/c
+//
+//   ⚠️ 2026-06-13 yearKey-aware 전환: 직전 setId 단독 Set path → composite path.
+//   문제: 2014~2016 A/B 공유 setId (예: r20146a) 한쪽 form 단독 release 사양 NOT
+//         path → 양쪽 form 동반노출 안 미준비 form 노출 안 충돌-혼합 8 출시 불가.
+//   정정: "yearKey::setId" composite key 단독 path → A/B form 분리 노출 정합.
+//   migration 정합: 직전 RELEASE_SET_IDS 안 모든 setId × all_data 안 yearKey 정합
+//                   composite 펼침 (regression 0 path — 현 노출 상태 100% 보존).
+//                   직전 RSI 안 orphan 7건 (l2020e/r20206b/r20206e/r20216b/r20219b/
+//                   r2014f/r2016d) = all_data 안 부재 path → drop 정합 (사용자 노출 0).
+//
 //   별도 release 추가 시 본 const 직접 정정 path.
-const RELEASE_SET_IDS = new Set([
-  // 2027_6월 (2026-06-08 release 추가 — 대표 결정: R3/V 22건 근거 보강 완결 후 전환.
-  //   해설 3단 서술 신기준 + 전수 원문 대조 + quality_gate CRITICAL 0 충족.)
-  "r20276a",
-  "r20276b",
-  "r20276c",
-  "r20276d",
-  "l20276a",
-  "l20276b",
-  "l20276c",
-  "l20276d",
-  // 2017수능 (LEGACY 3/8 — 2026-05-21 release 추가)
-  // r2017b 보류 (C3=10, analysis 누락 별도 회기).
-  // l2017a 보류 (C1+C4=9, cs_ids 누락 별도 회기).
-  // r2017d / l2017b 삭제 (duplicate 사양 정합 — Code B 8b0fbd1).
-  // 2020수능 (LEGACY 2/8 — 2026-05-21 release 추가)
-  "r2020e",
-  "r2020f",
-  "l2020a",
-  "l2020b",
-  "l2020c",
-  "l2020d",
-  "l2020e",
-  // V9_NEEDS_HUMAN warning 4건 (l2020a/b/d/e) + l2020d V7a warning accepted —
-  // 별도 회기 정정 path.
-  // r2020a~d 부재 = 의도적 scope (r2020e/f 2 sets 단독 path).
-  // l2020e ↔ l2020d sentId 공유 사실 (별도 회기 구조 정정 path).
-  // 2021수능 (LEGACY 1/8 — 2026-05-21 release 추가)
-  "r2021a",
-  "r2021b",
-  "r2021c",
-  "l2021a",
-  "l2021b",
-  "l2021c",
-  "l2021d",
-  // V9_NEEDS_HUMAN warning 3건 (l2021a/c/d) + V7a warning 1건 (l2021c)
-  // accepted — 별도 회기 정정 path.
-  // r2021d 부재 = 2021수능 reading 3 sets 단독 path 정합 (의도 path).
-  // LEGACY T1/T2 (2014~2021 6월/9월+수능) — 2026-05-24 release 추가 (Code B 61c6fdb)
-  // 33 sets: A/B 중복 없는 고유 setId만 포함.
-  // 2014_9월B (T1_CLEAN)
-  // 2015_9월A (T1_CLEAN)
-  "l20159c",
-  // 2016_6월A (T1_CLEAN — l20166d는 2016_6월B에 없음)
-  "l20166d",
-  // 2016수능B (T1_CLEAN)
-  // 2017_6월 (T1_CLEAN)
-  "l20176b",
-  // 2017_9월 (T1_CLEAN)
-  // 2018수능 (T1_CLEAN)
-  // 2019_9월 (T1_CLEAN)
-  "r20199b",
-  // 2019수능 (T1+T2 — r2019d는 r2019c 구조 정정 후 canonical, Code B a62c683)
-  "r2019a",
-  "r2019d",
-  "r2019e",
-  "l2019a",
-  "l2019b",
-  // 2020_6월 (T1+T2_WARN)
-  "r20206a",
-  "r20206b",
-  "r20206d",
-  "r20206e",
-  // 2020_9월 (T1+T2_WARN)
-  // 2021_6월 (T1+T2_WARN)
-  "r20216b",
-  "r20216c",
-  "l20216a",
-  "l20216c",
-  "l20216d",
-  // 2021_9월 (T1+T2_WARN)
-  "r20219b",
-  "r20219c",
-  "r20219d",
-  "r20219e",
-  "l20219a",
-  "l20219b",
-  "l20219c",
-  // 2022수능
-  "r2022a",
-  "r2022b",
-  "r2022d",
-  "l2022a",
-  "l2022b",
-  "l2022c",
-  "l2022d",
-  // 2023수능
-  "r2023b",
-  "l2023a",
-  "l2023b",
-  "l2023c",
-  "l2023d",
-  // 2024수능
-  "r2024b",
-  "l2024d",
-  // 2025수능 (l2025b 추가 — 2026-05-21 release)
-  "r2025a",
-  "r2025d",
-  "l2025b", // 2026수능
-  "r2026a",
-  "r2026c",
-  "r2026d",
-  "l2026a",
-  "l2026b",
-  "l2026c",
-  "l2026d",
-  // ── LEGACY 수능 2014~2021 (55 set) ──
-  // 2014수능A 전체 — 2026-06-11 재출시 (재구축+해설+형광펜 완료 / 검수중 배너 유지: RELEASED_SETS 미추가)
-  "r2014a",
-  "r2014b",
-  "r2014c",
-  "r2014d",
-  "r2014e",
-  "l2014a",
-  "l2014b",
-  "l2014e",
-  "l2014c",
-  "l2014d",
-  "l2015b",
-  "l2016c",
-  "l2016d",
-  "l2016e",
-  "l2019a",
-  "l2019b",
-  "l2020b",
-  "l2020c",
-  "l2020d",
-  "l2021b",
-  "l2021c",
-  "l2021d",
-  "r2014f",
-  "r2016a",
-  "r2016d",
-  "r2021c",
-  // ── 수능 B형 (2014~2016) ──
-  // 2014수능B l2014aB/bB — 2026-06-10 격리 (본문 비어있음/OCR 오염, 재구축 후 재출시)
-  "l2016aB",
-  "l2016bB",
-  "r2016bB",
-  "r2016cB",
-  // ── 모의평가 22~26 (78 set) ──
-  "r20269a",
-  "r20269b",
-  "r20269c",
-  "r20269d",
-  "l20269b",
-  "l20266b",
-  "l20266d",
-  "r20259a",
-  "r20259b",
-  "r20259c",
-  "r20259d",
-  "l20259a",
-  "l20259d",
-  "r20256b",
-  "l20256d",
-  "l20249d",
-  "l20246a",
-  "l20246b",
-  "l20239b",
-  "l20239c",
-  "l20239d",
-  "r20236a",
-  "r20236b",
-  "r20236c",
-  "l20236a",
-  "r20226b",
-  "r20226c",
-  "l20226c",
-  "l20226d",
-  // ── LEGACY 모의 1차 배치 (2026-06-12 release 추가 — Code B 2850543) ──
-  // 40 setId: 양쪽 form 모두 즉시가능 setId 단독 path.
-  //   충돌-혼합 8 (A·B 공유 setId 한쪽 form 미준비) + l20219a 육안 보류 +
-  //   2017_9월 3 (구조 붕괴 Phase B) = 별도 회기 path 정합 (legacy_release_batch1.md §3).
-  // 2014_6월
-  "l20146c", "l20146d",
-  "r20146a", "r20146b", "r20146c", "r20146e",
-  // 2014_9월
-  "l20149c",
-  "r20149c", "r20149d", "r20149e",
-  // 2015_6월
-  "l20156c",
-  "r20156a", "r20156b", "r20156c", "r20156d", "r20156e",
-  // 2015_9월
-  "r20159b", "r20159c", "r20159e",
-  // 2016_6월
-  "r20166a", "r20166b", "r20166c", "r20166d",
-  // 2016_9월
-  "l20169d",
-  "r20169a", "r20169c", "r20169d", "r20169e", "r20169g",
-  // 2017_6월
-  "l20176d",
-  "r20176a",
-  // 2018_6월
-  "l20186d",
-  // 2019_6월
-  "r20196f",
-  // 2019_9월
-  "l20199c", "l20199d",
-  "r20199a",
-  // 2020_6월
-  "r20206c",
-  // 2020_9월
-  "r20209a", "r20209b", "r20209d",
+const RELEASE_KEYS = new Set([
+  // 2014_6월A (5)
+  "2014_6월A::l20146c",
+  "2014_6월A::r20146a",
+  "2014_6월A::r20146b",
+  "2014_6월A::r20146c",
+  "2014_6월A::r20146e",
+  // 2014_6월B (5)
+  "2014_6월B::l20146c",
+  "2014_6월B::l20146d",
+  "2014_6월B::r20146a",
+  "2014_6월B::r20146b",
+  "2014_6월B::r20146c",
+  // 2014_9월A (3)
+  "2014_9월A::r20149c",
+  "2014_9월A::r20149d",
+  "2014_9월A::r20149e",
+  // 2014_9월B (4)
+  "2014_9월B::l20149c",
+  "2014_9월B::r20149c",
+  "2014_9월B::r20149d",
+  "2014_9월B::r20149e",
+  // 2014수능A (10)
+  "2014수능A::l2014a",
+  "2014수능A::l2014b",
+  "2014수능A::l2014c",
+  "2014수능A::l2014d",
+  "2014수능A::l2014e",
+  "2014수능A::r2014a",
+  "2014수능A::r2014b",
+  "2014수능A::r2014c",
+  "2014수능A::r2014d",
+  "2014수능A::r2014e",
+  // 2015_6월A (6)
+  "2015_6월A::l20156c",
+  "2015_6월A::r20156a",
+  "2015_6월A::r20156b",
+  "2015_6월A::r20156c",
+  "2015_6월A::r20156d",
+  "2015_6월A::r20156e",
+  // 2015_6월B (3)
+  "2015_6월B::r20156b",
+  "2015_6월B::r20156c",
+  "2015_6월B::r20156e",
+  // 2015_9월A (4)
+  "2015_9월A::l20159c",
+  "2015_9월A::r20159b",
+  "2015_9월A::r20159c",
+  "2015_9월A::r20159e",
+  // 2015_9월B (1)
+  "2015_9월B::r20159b",
+  // 2015수능A (1)
+  "2015수능A::l2015b",
+  // 2016_6월A (5)
+  "2016_6월A::l20166d",
+  "2016_6월A::r20166a",
+  "2016_6월A::r20166b",
+  "2016_6월A::r20166c",
+  "2016_6월A::r20166d",
+  // 2016_6월B (4)
+  "2016_6월B::r20166a",
+  "2016_6월B::r20166b",
+  "2016_6월B::r20166c",
+  "2016_6월B::r20166d",
+  // 2016_9월A (3)
+  "2016_9월A::l20169d",
+  "2016_9월A::r20169a",
+  "2016_9월A::r20169c",
+  // 2016_9월B (4)
+  "2016_9월B::r20169a",
+  "2016_9월B::r20169d",
+  "2016_9월B::r20169e",
+  "2016_9월B::r20169g",
+  // 2016수능A (4)
+  "2016수능A::l2016c",
+  "2016수능A::l2016d",
+  "2016수능A::l2016e",
+  "2016수능A::r2016a",
+  // 2016수능B (4)
+  "2016수능B::l2016aB",
+  "2016수능B::l2016bB",
+  "2016수능B::r2016bB",
+  "2016수능B::r2016cB",
+  // 2017_6월 (3)
+  "2017_6월::l20176b",
+  "2017_6월::l20176d",
+  "2017_6월::r20176a",
+  // 2018_6월 (1)
+  "2018_6월::l20186d",
+  // 2019_6월 (1)
+  "2019_6월::r20196f",
+  // 2019_9월 (4)
+  "2019_9월::l20199c",
+  "2019_9월::l20199d",
+  "2019_9월::r20199a",
+  "2019_9월::r20199b",
+  // 2019수능 (5)
+  "2019수능::l2019a",
+  "2019수능::l2019b",
+  "2019수능::r2019a",
+  "2019수능::r2019d",
+  "2019수능::r2019e",
+  // 2020_6월 (3)
+  "2020_6월::r20206a",
+  "2020_6월::r20206c",
+  "2020_6월::r20206d",
+  // 2020_9월 (3)
+  "2020_9월::r20209a",
+  "2020_9월::r20209b",
+  "2020_9월::r20209d",
+  // 2020수능 (6)
+  "2020수능::l2020a",
+  "2020수능::l2020b",
+  "2020수능::l2020c",
+  "2020수능::l2020d",
+  "2020수능::r2020e",
+  "2020수능::r2020f",
+  // 2021_6월 (4)
+  "2021_6월::l20216a",
+  "2021_6월::l20216c",
+  "2021_6월::l20216d",
+  "2021_6월::r20216c",
+  // 2021_9월 (6)
+  "2021_9월::l20219a",
+  "2021_9월::l20219b",
+  "2021_9월::l20219c",
+  "2021_9월::r20219c",
+  "2021_9월::r20219d",
+  "2021_9월::r20219e",
+  // 2021수능 (7)
+  "2021수능::l2021a",
+  "2021수능::l2021b",
+  "2021수능::l2021c",
+  "2021수능::l2021d",
+  "2021수능::r2021a",
+  "2021수능::r2021b",
+  "2021수능::r2021c",
+  // 2022_6월 (4)
+  "2022_6월::l20226c",
+  "2022_6월::l20226d",
+  "2022_6월::r20226b",
+  "2022_6월::r20226c",
+  // 2022수능 (7)
+  "2022수능::l2022a",
+  "2022수능::l2022b",
+  "2022수능::l2022c",
+  "2022수능::l2022d",
+  "2022수능::r2022a",
+  "2022수능::r2022b",
+  "2022수능::r2022d",
+  // 2023_6월 (4)
+  "2023_6월::l20236a",
+  "2023_6월::r20236a",
+  "2023_6월::r20236b",
+  "2023_6월::r20236c",
+  // 2023_9월 (3)
+  "2023_9월::l20239b",
+  "2023_9월::l20239c",
+  "2023_9월::l20239d",
+  // 2023수능 (5)
+  "2023수능::l2023a",
+  "2023수능::l2023b",
+  "2023수능::l2023c",
+  "2023수능::l2023d",
+  "2023수능::r2023b",
+  // 2024_6월 (2)
+  "2024_6월::l20246a",
+  "2024_6월::l20246b",
+  // 2024_9월 (1)
+  "2024_9월::l20249d",
+  // 2024수능 (2)
+  "2024수능::l2024d",
+  "2024수능::r2024b",
+  // 2025_6월 (2)
+  "2025_6월::l20256d",
+  "2025_6월::r20256b",
+  // 2025_9월 (6)
+  "2025_9월::l20259a",
+  "2025_9월::l20259d",
+  "2025_9월::r20259a",
+  "2025_9월::r20259b",
+  "2025_9월::r20259c",
+  "2025_9월::r20259d",
+  // 2025수능 (3)
+  "2025수능::l2025b",
+  "2025수능::r2025a",
+  "2025수능::r2025d",
+  // 2026_6월 (2)
+  "2026_6월::l20266b",
+  "2026_6월::l20266d",
+  // 2026_9월 (5)
+  "2026_9월::l20269b",
+  "2026_9월::r20269a",
+  "2026_9월::r20269b",
+  "2026_9월::r20269c",
+  "2026_9월::r20269d",
+  // 2026수능 (7)
+  "2026수능::l2026a",
+  "2026수능::l2026b",
+  "2026수능::l2026c",
+  "2026수능::l2026d",
+  "2026수능::r2026a",
+  "2026수능::r2026c",
+  "2026수능::r2026d",
+  // 2027_6월 (8)
+  "2027_6월::l20276a",
+  "2027_6월::l20276b",
+  "2027_6월::l20276c",
+  "2027_6월::l20276d",
+  "2027_6월::r20276a",
+  "2027_6월::r20276b",
+  "2027_6월::r20276c",
+  "2027_6월::r20276d",
 ]);
 
-// setId 단위 release 검사 (동기 — hardcode set lookup).
-export function isReleaseSet(setId) {
-  if (!setId) return false;
-  return RELEASE_SET_IDS.has(setId);
+// yearKey-aware release 검사 (동기 — composite key lookup).
+//   ⚠️ 2026-06-13 sig 정정: isReleaseSet(setId) → isReleaseSet(yearKey, setId).
+//   yearKey 또는 setId 누락 path → false 안전 default.
+export function isReleaseSet(yearKey, setId) {
+  if (!yearKey || !setId) return false;
+  return RELEASE_KEYS.has(yearKey + "::" + setId);
 }
 
-// 비동기 호환 wrapper (기존 호출처 API 보존)
-export async function isReleaseSetAsync(setId) {
-  return isReleaseSet(setId);
+// 비동기 호환 wrapper (기존 호출처 API 보존).
+export async function isReleaseSetAsync(yearKey, setId) {
+  return isReleaseSet(yearKey, setId);
 }
 
-// release set만 통과시키는 filter (set 객체 → boolean)
-function _statusFilterFn(s) {
-  const sid = s.setId || s.id;
-  return isReleaseSet(sid);
+// release set 단독 통과 filter (curried — yearKey 단독 closure path).
+//   loadYear / getYearKeys 안 yk 단독 묶음 안 호출 path 정합.
+function _statusFilterFor(yearKey) {
+  return (s) => {
+    const sid = s.setId || s.id;
+    return isReleaseSet(yearKey, sid);
+  };
 }
 
 // annotations.json은 optional — 없어도 앱은 정상 동작
@@ -391,14 +395,13 @@ export async function loadYear(yearKey, options = {}) {
   }
   // 매 호출 시 함수형 filter — bypass 시 원본 그대로, 비bypass 시 release-only.
   // yd._origReading / _origLiterature 백업 불필요 — yd.reading 자체는 mutate 0.
+  const filter = _statusFilterFor(yearKey);
   return {
     ...yd,
-    reading: bypassFilter
-      ? yd.reading || []
-      : (yd.reading || []).filter(_statusFilterFn),
+    reading: bypassFilter ? yd.reading || [] : (yd.reading || []).filter(filter),
     literature: bypassFilter
       ? yd.literature || []
-      : (yd.literature || []).filter(_statusFilterFn),
+      : (yd.literature || []).filter(filter),
   };
 }
 
@@ -414,7 +417,8 @@ export async function getYearKeys(options = {}) {
     const yd = data[yk];
     const reading = yd.reading || [];
     const literature = yd.literature || [];
-    return reading.some(_statusFilterFn) || literature.some(_statusFilterFn);
+    const filter = _statusFilterFor(yk);
+    return reading.some(filter) || literature.some(filter);
   });
 }
 

@@ -1656,7 +1656,7 @@ function ViewerPage({ user, isPro = false }) {
         type="info"
       />
 
-      {currentSet && isSetUnderReview(currentSet.id) && (
+      {currentSet && isSetUnderReview(yearKey, currentSet.id) && (
         <Banner
           bannerId={`under-review-${currentSet.id}`}
           message="🔧 검수 중인 시험입니다 — 정답·해설·형광펜에 부정확한 부분이 있을 수 있습니다"
