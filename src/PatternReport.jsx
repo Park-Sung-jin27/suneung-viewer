@@ -275,6 +275,14 @@ function sourceKeyOf(item) {
   ].join("|");
 }
 
+function isUsableTrainingSentence(text) {
+  const value = String(text ?? "").trim();
+  const compact = value.replace(/\s+/g, "");
+  if (compact.length < 8) return false;
+  if (/^[㉠-㉿ⓐ-ⓩ①-⑳]+$/.test(compact)) return false;
+  return /[가-힣A-Za-z0-9]/.test(value);
+}
+
 function rowToTrainingQuestion(row) {
   return {
     id: row.id,
@@ -320,9 +328,16 @@ async function fetchBankTrainingQuestion({ patKey, user, excludedKeys }) {
     (attempts ?? []).map((attempt) => attempt.training_item_id),
   );
   const unseen = items.filter(
-    (item) => !attemptedIds.has(item.id) && !excludedKeys.has(sourceKeyOf(item)),
+    (item) =>
+      !attemptedIds.has(item.id) &&
+      !excludedKeys.has(sourceKeyOf(item)) &&
+      isUsableTrainingSentence(item.sentence),
   );
-  const pool = unseen.length > 0 ? unseen : items;
+  const usableItems = items.filter((item) =>
+    isUsableTrainingSentence(item.sentence),
+  );
+  const pool = unseen.length > 0 ? unseen : usableItems;
+  if (pool.length === 0) return null;
   return rowToTrainingQuestion(pool[Math.floor(Math.random() * pool.length)]);
 }
 
@@ -361,6 +376,7 @@ async function fetchTrainingQuestion(patKey, { user, excludedKeys }) {
             .filter(Boolean);
           const sourceKey = `${yearKey}|${set.id}|${question.id}|${choice.num}`;
           if (excludedKeys.has(sourceKey)) continue;
+          if (!isUsableTrainingSentence(choice.t)) continue;
           const item = {
             source: "live_data",
             passage,
