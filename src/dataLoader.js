@@ -223,12 +223,13 @@ const RELEASE_KEYS = new Set([
   "2026_9월::r20269b",
   "2026_9월::r20269c",
   "2026_9월::r20269d",
-  // 2026수능 (7)
+  // 2026수능 (8) — r2026b 추가 (사용자 실측 누락 정정 2026-06-13)
   "2026수능::l2026a",
   "2026수능::l2026b",
   "2026수능::l2026c",
   "2026수능::l2026d",
   "2026수능::r2026a",
+  "2026수능::r2026b",
   "2026수능::r2026c",
   "2026수능::r2026d",
   // 2027_6월 (8)
@@ -248,6 +249,30 @@ const RELEASE_KEYS = new Set([
 export function isReleaseSet(yearKey, setId) {
   if (!yearKey || !setId) return false;
   return RELEASE_KEYS.has(yearKey + "::" + setId);
+}
+
+// release 통계 (Landing 등 외부 표기 path 안 동적 산출 단독 source).
+//   setCount = composite key 총 수 (A/B 분리 노출 path 안 단위 카드 수).
+//   yearKeyCount = release 영역 안 unique yearKey 수.
+//   yearRange = {min, max} (yearKey 안 학년도 4자리 정합).
+export function getReleaseStats() {
+  const yearKeys = new Set();
+  const years = [];
+  for (const k of RELEASE_KEYS) {
+    const sep = k.indexOf("::");
+    if (sep < 0) continue;
+    const yk = k.slice(0, sep);
+    yearKeys.add(yk);
+    const m = yk.match(/^(\d{4})/);
+    if (m) years.push(parseInt(m[1], 10));
+  }
+  return {
+    setCount: RELEASE_KEYS.size,
+    yearKeyCount: yearKeys.size,
+    yearRange: years.length
+      ? { min: Math.min(...years), max: Math.max(...years) }
+      : null,
+  };
 }
 
 // 비동기 호환 wrapper (기존 호출처 API 보존).
@@ -398,7 +423,9 @@ export async function loadYear(yearKey, options = {}) {
   const filter = _statusFilterFor(yearKey);
   return {
     ...yd,
-    reading: bypassFilter ? yd.reading || [] : (yd.reading || []).filter(filter),
+    reading: bypassFilter
+      ? yd.reading || []
+      : (yd.reading || []).filter(filter),
     literature: bypassFilter
       ? yd.literature || []
       : (yd.literature || []).filter(filter),
@@ -444,4 +471,5 @@ export default {
   loadAllData,
   isReleaseSet,
   isReleaseSetAsync,
+  getReleaseStats,
 };

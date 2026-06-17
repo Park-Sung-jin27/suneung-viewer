@@ -3,6 +3,15 @@
 // ============================================================
 
 import { useState, useEffect, useRef } from "react";
+import { getReleaseStats } from "./dataLoader";
+
+// release 통계 단독 source — 카피 안 stale 수치 회피 path.
+//   yearRange 안 학년도 범주 단독 (수능은 2014~2026 13개년 path 안 안전 claim).
+//   setCount = composite 단위 (A/B form 분리 노출 path 안 카드 수 정합).
+const RELEASE_STATS = getReleaseStats();
+const SUNEUNG_YEAR_MAX = 2026; // 학년도 안 수능 단독 최신 (2027_6월 모의평가 미포함 path).
+const SUNEUNG_YEAR_MIN = 2014;
+const SUNEUNG_YEAR_SPAN = SUNEUNG_YEAR_MAX - SUNEUNG_YEAR_MIN + 1; // 13
 
 // ── 토큰 ────────────────────────────────────────────────────
 const C = {
@@ -808,7 +817,8 @@ export default function Landing({ onStart }) {
             >
               <Pill color={C.green}>11년 현장 검증 방법론</Pill>
               <Pill color="#b45309" bg="#fef9ec">
-                204문항 오류 데이터베이스
+                {SUNEUNG_YEAR_SPAN}개년 정합 검증 {RELEASE_STATS.setCount}+
+                시험지
               </Pill>
               <Pill color="#1d4ed8" bg="#eff6ff">
                 AI 실시간 패턴 진단
@@ -1789,7 +1799,8 @@ export default function Landing({ onStart }) {
           >
             11년차 입시 강사가 만든 독해 오류 교정 훈련 도구
             <br />
-            2022~2026학년도 수능·모의평가 204문항 · 선지별 근거 형광펜
+            {SUNEUNG_YEAR_MIN}~{SUNEUNG_YEAR_MAX}학년도 {SUNEUNG_YEAR_SPAN}개년
+            수능·모의평가 {RELEASE_STATS.setCount}+ 시험지 · 선지별 근거 형광펜
           </p>
           <div
             style={{
@@ -1802,13 +1813,15 @@ export default function Landing({ onStart }) {
             }}
           >
             {[
-              { label: "2026수능", free: true },
-              { label: "2025수능", free: true },
-              { label: "2025_9월 모의", free: false },
-              { label: "2024수능", free: false },
-              { label: "2023수능", free: false },
-              { label: "2022수능", free: false },
-              { label: "2022_6월 모의", free: false },
+              // 무료 = 최근 5개년 수능 (FREE_YEARS 정합 path).
+              // 유료 = LEGACY 수능 + 모의평가 전 영역 path.
+              { label: "2026학년도 수능", free: true },
+              { label: "2025학년도 수능", free: true },
+              { label: "2024학년도 수능", free: true },
+              { label: "2023학년도 수능", free: true },
+              { label: "2022학년도 수능", free: true },
+              { label: "2014~2021학년도 수능", free: false },
+              { label: "수능·모의평가 (전체)", free: false },
             ].map((item) => (
               <span
                 key={item.label}
@@ -2228,9 +2241,7 @@ export default function Landing({ onStart }) {
         >
           짚이
         </span>
-        <div
-          style={{ display: "flex", alignItems: "center", gap: "14px" }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
           <a
             href="/privacy"
             style={{
@@ -2242,7 +2253,7 @@ export default function Landing({ onStart }) {
             개인정보처리방침 · 이용약관
           </a>
           <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.2)" }}>
-            © 2025 짚이
+            © 2026 짚이
           </span>
         </div>
       </footer>
