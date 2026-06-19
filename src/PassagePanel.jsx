@@ -498,6 +498,44 @@ function RenderSent({ sent, sel, anns }) {
       </div>
     );
 
+  // 극문학 (stage 지시문 / speech 대사) — 각 sent 단독 줄 path.
+  //   cs_ids 형광펜 + inline annotation (box/underline/marker) 회귀 0 유지.
+  //   spans 우선 fallback → anns 우선 fallback → Lines 단독 path.
+  if (st === "stage" || st === "speech") {
+    const isStage = st === "stage";
+    const stStyle = isStage
+      ? {
+          fontStyle: "italic",
+          color: "#6b7280",
+          paddingLeft: "1.2em",
+          margin: "2px 0",
+        }
+      : {
+          margin: "2px 0",
+        };
+    let inner;
+    if (pal && spans) {
+      const spanJsx = renderSpanParts(t, spans, hlStyle, true);
+      if (spanJsx) inner = spanJsx;
+    }
+    if (!inner) {
+      const content =
+        anns.length > 0 ? (
+          applyInlineAnns(t, anns, true)
+        ) : (
+          <Lines text={t} hideLabels={true} />
+        );
+      inner = pal ? (
+        <span style={hlStyle} data-hl="true">
+          {content}
+        </span>
+      ) : (
+        content
+      );
+    }
+    return <div style={stStyle}>{inner}</div>;
+  }
+
   // sentClass — 안내장 등 특수 시각 효과 (block-level 단독 렌더)
   //   announcement-title: 큰 글씨 + 중앙 정렬 (안내장 제목)
   //   announcement: 다른 폰트 + 옅은 색 + 상하 여백 (안내장 본문)
@@ -660,12 +698,7 @@ function renderAll(sents, sel, annotations, visualMarks) {
       sentTo: m.sentIds[m.sentIds.length - 1],
     }));
   const annBrackets = passageAnns
-    .filter(
-      (a) =>
-        a.type === "bracket" &&
-        a.sentFrom &&
-        a.sentTo,
-    )
+    .filter((a) => a.type === "bracket" && a.sentFrom && a.sentTo)
     .map((a) => ({
       label: a.label,
       sentFrom: a.sentFrom,
@@ -701,6 +734,8 @@ function renderAll(sents, sel, annotations, visualMarks) {
     "image",
     "verse",
     "figure",
+    "stage", // 극문학 지시문 — 각 sent 단독 줄 path
+    "speech", // 극문학 대사 — 각 sent 단독 줄 path
   ]);
 
   // workTag 영역 종료 marker 식별: sentType=workTag + t==="[A]"~"[F]" 단독.
