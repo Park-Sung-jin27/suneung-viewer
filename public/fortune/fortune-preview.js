@@ -123,11 +123,32 @@
 
   function $(id){ return document.getElementById(id); }
 
+  function normalizeBirthDateInput(value){
+    const digits = String(value || '').replace(/\D/g, '').slice(0, 8);
+    if(digits.length <= 4) return digits;
+    if(digits.length <= 6) return digits.slice(0, 4) + '-' + digits.slice(4);
+    return digits.slice(0, 4) + '-' + digits.slice(4, 6) + '-' + digits.slice(6);
+  }
+
+  function parseBirthDateInput(value){
+    const formatted = normalizeBirthDateInput(value);
+    const match = formatted.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if(!match) return null;
+    const y = Number(match[1]);
+    const m = Number(match[2]);
+    const d = Number(match[3]);
+    if(!y || !m || !d) return null;
+    return { y, m, d, formatted };
+  }
+
   function run(){
-    const dateStr = ($('fpBirthDate') || {}).value || '';
+    const dateInput = $('fpBirthDate');
+    const dateStr = (dateInput || {}).value || '';
     if(!dateStr){ alert('생년월일을 입력해 주세요.'); return; }
-    const parts = dateStr.split('-').map(Number);
-    const y = parts[0], m = parts[1], d = parts[2];
+    const parsed = parseBirthDateInput(dateStr);
+    if(!parsed){ alert('생년월일은 YYYY-MM-DD 형식으로 입력해 주세요.'); return; }
+    if(dateInput) dateInput.value = parsed.formatted;
+    const { y, m, d } = parsed;
     if(!y || !m || !d){ alert('생년월일 형식이 올바르지 않습니다.'); return; }
     if(y < 1900 || y > 2100){ alert('1900~2100년 사이만 지원합니다.'); return; }
 
@@ -162,6 +183,20 @@
   function init(){
     const btn = $('fpRunBtn');
     if(btn) btn.addEventListener('click', run);
+    const birthInput = $('fpBirthDate');
+    if(birthInput){
+      birthInput.addEventListener('input', () => {
+        birthInput.value = normalizeBirthDateInput(birthInput.value);
+      });
+      birthInput.addEventListener('blur', () => {
+        birthInput.value = normalizeBirthDateInput(birthInput.value);
+      });
+      birthInput.addEventListener('paste', () => {
+        setTimeout(() => {
+          birthInput.value = normalizeBirthDateInput(birthInput.value);
+        }, 0);
+      });
+    }
   }
 
   if(document.readyState === 'loading'){
