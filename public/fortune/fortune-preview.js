@@ -123,43 +123,12 @@
 
   function $(id){ return document.getElementById(id); }
 
-  function normalizeBirthDateInput(value){
-    const digits = String(value || '').replace(/\D/g, '').slice(0, 8);
-    const y = digits.slice(0, 4);
-    const m = digits.slice(4, 6);
-    const d = digits.slice(6, 8);
-    if(d) return y + '-' + m + '-' + d;
-    if(m) return y + '-' + m;
-    return y;
-  }
-
-  function parseBirthDateInput(value){
-    const formatted = normalizeBirthDateInput(value);
-    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(formatted);
-    if(!match) return null;
-    const y = Number(match[1]);
-    const m = Number(match[2]);
-    const d = Number(match[3]);
-    const dt = new Date(Date.UTC(y, m - 1, d));
-    if(
-      !y || !m || !d ||
-      dt.getUTCFullYear() !== y ||
-      dt.getUTCMonth() + 1 !== m ||
-      dt.getUTCDate() !== d
-    ){
-      return null;
-    }
-    return { y, m, d, formatted };
-  }
-
   function run(){
-    const dateInput = $('fpBirthDate');
-    const dateStr = (dateInput || {}).value || '';
+    const dateStr = ($('fpBirthDate') || {}).value || '';
     if(!dateStr){ alert('생년월일을 입력해 주세요.'); return; }
-    const parsed = parseBirthDateInput(dateStr);
-    if(!parsed){ alert('생년월일은 1999-09-09처럼 4자리 연도로 입력해 주세요.'); return; }
-    if(dateInput) dateInput.value = parsed.formatted;
-    const y = parsed.y, m = parsed.m, d = parsed.d;
+    const parts = dateStr.split('-').map(Number);
+    const y = parts[0], m = parts[1], d = parts[2];
+    if(!y || !m || !d){ alert('생년월일 형식이 올바르지 않습니다.'); return; }
     if(y < 1900 || y > 2100){ alert('1900~2100년 사이만 지원합니다.'); return; }
 
     const cal = ($('fpCalendar') || {}).value || 'solar';
@@ -192,20 +161,6 @@
 
   function init(){
     const btn = $('fpRunBtn');
-    const birthInput = $('fpBirthDate');
-    if(birthInput){
-      birthInput.addEventListener('input', () => {
-        birthInput.value = normalizeBirthDateInput(birthInput.value);
-      });
-      birthInput.addEventListener('blur', () => {
-        birthInput.value = normalizeBirthDateInput(birthInput.value);
-      });
-      birthInput.addEventListener('paste', () => {
-        setTimeout(() => {
-          birthInput.value = normalizeBirthDateInput(birthInput.value);
-        }, 0);
-      });
-    }
     if(btn) btn.addEventListener('click', run);
   }
 
