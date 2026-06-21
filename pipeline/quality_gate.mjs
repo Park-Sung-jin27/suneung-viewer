@@ -194,6 +194,23 @@ const SCOPE_YEARS = {
 };
 const YEAR = args.find((a) => !a.startsWith("--"));
 
+// ─── --scope=release: 출시 set 198건만 검사 ──────────────────────────────────
+// 단일 진실 = src/dataLoader.js의 RELEASE_KEYS = new Set([...]) (composite "yearKey::setId").
+// fidelity_gate가 소스 정규식 파싱을 쓰는 패턴 재사용.
+const RELEASE_KEYS_SET = (() => {
+  if (SCOPE !== "release") return null;
+  const src = fs.readFileSync(
+    path.resolve(__dirname, "../src/dataLoader.js"),
+    "utf8",
+  );
+  const idx = src.indexOf("RELEASE_KEYS");
+  if (idx < 0)
+    throw new Error("RELEASE_KEYS를 src/dataLoader.js에서 찾지 못함");
+  const block = src.slice(idx, src.indexOf("]", idx));
+  const keys = [...block.matchAll(/"([^"]+::[^"]+)"/g)].map((m) => m[1]);
+  return new Set(keys);
+})();
+
 // ─── Gate 7 골든셋 로드 ────────────────────────────────────────────────────────
 const GOLDEN_PATH = path.resolve(__dirname, "golden_set.json");
 let GOLDEN = [];
@@ -361,11 +378,15 @@ for (const yd of Object.values(data))
 
 // ─── 메인 순회 ────────────────────────────────────────────────────────────────
 const yearsToCheck =
-  SCOPE && SCOPE_YEARS[SCOPE]
-    ? SCOPE_YEARS[SCOPE]
-    : YEAR
-      ? [YEAR]
-      : Object.keys(data);
+  SCOPE === "release"
+    ? Object.keys(data) // release는 setId 단위 필터(아래) — 연도는 전체로
+    : SCOPE && SCOPE_YEARS[SCOPE]
+      ? SCOPE_YEARS[SCOPE]
+      : YEAR
+        ? [YEAR]
+        : Object.keys(data);
+
+let _releaseSetCount = 0; // --scope=release 순회 set 수 검증용
 
 for (const yearKey of yearsToCheck) {
   if (!data[yearKey]) {
@@ -375,6 +396,10 @@ for (const yearKey of yearsToCheck) {
 
   for (const sec of ["reading", "literature"]) {
     for (const set of data[yearKey][sec] || []) {
+      // ── --scope=release: 출시 set(composite key)만 검사 ──
+      if (SCOPE === "release" && !RELEASE_KEYS_SET.has(yearKey + "::" + set.id))
+        continue;
+      if (SCOPE === "release") _releaseSetCount++;
       // ── [Gate 5] C_figure_missing — figure sent이 있으나 FIGURE_IMAGE_MAP에 미매핑 ─
       //   constants.js의 FIGURE_IMAGE_MAP을 로드해 매핑 누락 figure 탐지
       //   --golden 모드일 땐 골든셋에 등록된 세트만 검사
@@ -553,22 +578,32 @@ for (const yearKey of yearsToCheck) {
           // - ok:true + 결론 ❌ → reversed
           // - ok:false + 결론 ✅ → reversed
           // - 결론 이모지 없음 → reversed (포맷 파손)
+          // §13⑤ 정밀화: 판정 기준 = 결론줄(라인) 단위.
+          //   결론줄 = ✅/❌를 포함하는 마지막 줄. 그 줄의 시작 이모지(맨 앞 ✅/❌)가
+          //   c.ok와 불일치하면 reversed. 본문 중간이 ✅·❌ 양쪽을 언급해도 결론줄만 보므로 오탐 방지.
+          //   결론줄 자체가 없으면 reversed(포맷 파손).
           let contentReversed = false;
           if (!ana.trim()) {
             // 빈 analysis는 F_empty_analysis로 별도 처리
           } else {
-            const lastPos = Math.max(
-              ana.lastIndexOf("✅"),
-              ana.lastIndexOf("❌"),
-            );
-            if (lastPos < 0) {
-              contentReversed = true;
+            const lines = ana.split(/\r?\n/);
+            let conclLine = null;
+            for (let i = lines.length - 1; i >= 0; i--) {
+              if (lines[i].includes("✅") || lines[i].includes("❌")) {
+                conclLine = lines[i];
+                break;
+              }
+            }
+            if (conclLine === null) {
+              contentReversed = true; // 결론줄 없음 = 포맷 파손
             } else {
-              const conclusion = ana.slice(lastPos);
-              if (c.ok === true && conclusion.startsWith("❌"))
-                contentReversed = true;
-              if (c.ok === false && conclusion.startsWith("✅"))
-                contentReversed = true;
+              // 결론줄 맨 앞 이모지 = ✅/❌ 첫 출현
+              const iOk = conclLine.indexOf("✅");
+              const iNg = conclLine.indexOf("❌");
+              const firstEmoji =
+                iOk < 0 ? "❌" : iNg < 0 ? "✅" : iOk < iNg ? "✅" : "❌";
+              if (c.ok === true && firstEmoji === "❌") contentReversed = true;
+              if (c.ok === false && firstEmoji === "✅") contentReversed = true;
             }
           }
 
@@ -579,6 +614,49 @@ for (const yearKey of yearsToCheck) {
               cLoc,
               "결론 이모지(✅/❌) vs ok 불일치 → reanalyze 필요",
             );
+          }
+
+          // ── C_anchor_exact_fail (§13⑥, 정밀화): 📌 지문 근거 공백 artifact 한정 CRITICAL ──
+          //   1차 대상은 "지문 근거"만(보기 근거는 후속). exact 판정은 raw String.includes.
+          //   분류: (a) cs_ids/다문장-연결 exact 매칭 → 정상  (b) 말줄임표(…) → 비연속 인용(정상)
+          //         (c) exact 실패 + 공백정규화 시 매칭 → artifact(l2022b류, sent.t 교정 대상) = CRITICAL
+          //         (d) 그 외(paraphrase) → 미flag(별도 검토). artifact만 release 차단.
+          if (ana && ana.includes("지문 근거")) {
+            const csJoin = (c.cs_ids || [])
+              .map((id) => (set.sents || []).find((s) => s.id === id))
+              .filter(Boolean)
+              .map((s) => s.t || "")
+              .join(" ");
+            const setJoin = (set.sents || []).map((s) => s.t || "").join(" ");
+            const noSpace = (x) => x.replace(/\s/g, "");
+            const setJoinNS = noSpace(setJoin);
+            for (const line of ana.split(/\r?\n/)) {
+              if (!line.includes("📌") || !line.includes("지문 근거")) continue;
+              if (line.includes("보기 근거")) continue; // 1차: 지문 근거만
+              const quotes = [
+                ...line.matchAll(
+                  /"([^"]{4,})"|“([^”]{4,})”|'([^']{4,})'|‘([^’]{4,})’/g,
+                ),
+              ]
+                .map((m) => m[1] || m[2] || m[3] || m[4] || "")
+                .filter(Boolean);
+              for (const q of quotes) {
+                // (a) raw exact (단일/다문장-연결) → 정상
+                if (csJoin.includes(q) || setJoin.includes(q)) continue;
+                // (b) 말줄임표 포함 = 비연속 인용 → 정상(검사 대상 외)
+                if (/…|\.{2,}/.test(q)) continue;
+                // (c) 공백만 제거 시 매칭 = artifact → CRITICAL
+                if (setJoinNS.includes(noSpace(q))) {
+                  needsManual(
+                    "C_anchor_exact_fail",
+                    yearKey,
+                    cLoc,
+                    `📌 지문 근거 "${q.slice(0, 28)}…" 공백 artifact (sent.t 교정 대상)`,
+                  );
+                }
+                // (d) 그 외(paraphrase/비verbatim) → 미flag(별도 검토 backlog)
+              }
+            }
           }
 
           // ── F-3: analysis 비어있음 ─────────────────────────────────────
@@ -1018,10 +1096,17 @@ for (const yearKey of yearsToCheck) {
         // [2026-06-05] 메타 발문 예외 (CLAUDE.md §6, precedent r2022c Q10 2026-06-01 사용자 결정):
         //   "답을 찾을 수 없는 질문은?" 류 = 발문이 '지문 무관'을 요구 → 정답 = ok:false
         //   → positive 라도 okF=1 / okT=4 분포가 정상. false-positive 방지.
-        const __isMetaStem = /답을 찾을 수 없는|알 수 없는 것은\?|추론할 수 없는 것은\?/.test(q.t || "");
+        const __isMetaStem =
+          /답을 찾을 수 없는|알 수 없는 것은\?|추론할 수 없는 것은\?/.test(
+            q.t || "",
+          );
         const __okT = (q.choices || []).filter((c) => c.ok === true).length;
         const __okF = (q.choices || []).filter((c) => c.ok === false).length;
-        if (q.questionType === "positive" && __okT !== 1 && !(__isMetaStem && __okF === 1)) {
+        if (
+          q.questionType === "positive" &&
+          __okT !== 1 &&
+          !(__isMetaStem && __okF === 1)
+        ) {
           issue(
             "E_questionType_ok_mismatch",
             yearKey,
@@ -1263,8 +1348,12 @@ const SEVERITY_MAP = {
   // Tier 3 (승격 금지)
   C_pat_mismatch: "WARNING", // Tier 3
 
+  // 결론줄=ok 검사 (§13⑤) — 출시 차단 CRITICAL 승격 (이전 WARNING)
+  F_content_reversed: "CRITICAL",
+  // 📌 지문 근거 exact-substring 검사 (§13⑥) — CRITICAL
+  C_anchor_exact_fail: "CRITICAL",
+
   // 기존 WARNING
-  F_content_reversed: "WARNING",
   D_true_has_pat: "WARNING",
   H_cs_concentration: "WARNING",
   W_argument_thin: "WARNING",
@@ -1330,6 +1419,12 @@ try {
   }
 } catch (e) {
   console.warn(`bracket_audit skipped: ${e.message}`);
+}
+
+if (SCOPE === "release") {
+  console.log(
+    `\n[ --scope=release: 출시 set ${_releaseSetCount}개 순회 (RELEASE_KEYS ${RELEASE_KEYS_SET.size}건) ]`,
+  );
 }
 
 const ALL_FINDINGS = [...issues, ...manual];
