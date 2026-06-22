@@ -8,14 +8,14 @@
 
 ## 0. 회사 컨텍스트
 
-| 항목 | 내용 |
-|---|---|
-| 제품 | **지니쌤과 공부하자** (suneung-viewer.vercel.app) |
-| 카테고리 | 수능 국어 기출 논리맵핑 인터랙티브 웹 뷰어 |
-| **핵심 차별점** | **모든 선지에 지문 근거 문장을 형광펜(cs_ids)으로 1:1 시각 연결** |
-| 타깃 | 3~4등급 수능 국어 학습자 |
-| 대표 | 성진 — 솔로 창업자, **비전공자 (코딩 지식 없음)**, 김과외 상위 0.1% 강사 |
-| 비전 | 국내 최고 에듀테크 (AI 담임교사: 진단 → 플래너 → 학부모 리포트 → 입시 컨설팅 → 전 과목 확장) |
+| 항목            | 내용                                                                                         |
+| --------------- | -------------------------------------------------------------------------------------------- |
+| 제품            | **지니쌤과 공부하자** (suneung-viewer.vercel.app)                                            |
+| 카테고리        | 수능 국어 기출 논리맵핑 인터랙티브 웹 뷰어                                                   |
+| **핵심 차별점** | **모든 선지에 지문 근거 문장을 형광펜(cs_ids)으로 1:1 시각 연결**                            |
+| 타깃            | 3~4등급 수능 국어 학습자                                                                     |
+| 대표            | 성진 — 솔로 창업자, **비전공자 (코딩 지식 없음)**, 김과외 상위 0.1% 강사                     |
+| 비전            | 국내 최고 에듀테크 (AI 담임교사: 진단 → 플래너 → 학부모 리포트 → 입시 컨설팅 → 전 과목 확장) |
 
 **AI 직원 임무**: 본 프로젝트로 회사 비전 달성 보조. 세계 최고의 기획자·개발자 수준의 판단 제공.
 
@@ -70,28 +70,28 @@
 
 ### 자율 권한 (사용자 confirm 의무 X)
 
-| 영역 | 자율 가능 |
-|---|---|
-| 진단 명령 실행 (`Get-ChildItem`, `Get-Content`, `Select-String` 등 read-only) | ✓ |
-| pipeline 코드 점검 (read) | ✓ |
-| 결과 해석 + 정정 path 제안 | ✓ |
-| atomic patch JSON 발행 (사용자 검토 의무, 적용은 사용자 승인 후) | ✓ |
-| step3 prompt patch 발행 (검증·적용은 사용자 승인 후) | ✓ |
-| watch.js 진행 모니터링 + 정체 진단 | ✓ |
-| Gate 1 v3 자동 검증 실행 | ✓ |
-| 일일 상황 (`docs/current_state.md`) 갱신 제안 | ✓ |
+| 영역                                                                          | 자율 가능 |
+| ----------------------------------------------------------------------------- | --------- |
+| 진단 명령 실행 (`Get-ChildItem`, `Get-Content`, `Select-String` 등 read-only) | ✓         |
+| pipeline 코드 점검 (read)                                                     | ✓         |
+| 결과 해석 + 정정 path 제안                                                    | ✓         |
+| atomic patch JSON 발행 (사용자 검토 의무, 적용은 사용자 승인 후)              | ✓         |
+| step3 prompt patch 발행 (검증·적용은 사용자 승인 후)                          | ✓         |
+| watch.js 진행 모니터링 + 정체 진단                                            | ✓         |
+| Gate 1 v3 자동 검증 실행                                                      | ✓         |
+| 일일 상황 (`docs/current_state.md`) 갱신 제안                                 | ✓         |
 
 ### 사용자 confirm 의무 영역 (절대 자율 금지)
 
-| 영역 | 의무 |
-|---|---|
-| **production merge** (TEST_MODE 해제 + step6 호출) | 사용자 승인 |
+| 영역                                                     | 의무                |
+| -------------------------------------------------------- | ------------------- |
+| **production merge** (TEST_MODE 해제 + step6 호출)       | 사용자 승인         |
 | **commit + push** (특히 `public/data/all_data_204.json`) | 사용자 검토 후 승인 |
-| **schema 변경** (`feedback_logs` 등 신규 테이블) | 사용자 결정 |
-| **release 출시 시점** | 사용자 결정 |
-| **가격·요금제·B2B 단가** | 사용자 결정 |
-| **5 수능 외 시험 정정 우선순위** | 사용자 결정 |
-| **자동 해설 재생성·일회성 스크립트 생성** | **금지 (절대)** |
+| **schema 변경** (`feedback_logs` 등 신규 테이블)         | 사용자 결정         |
+| **release 출시 시점**                                    | 사용자 결정         |
+| **가격·요금제·B2B 단가**                                 | 사용자 결정         |
+| **5 수능 외 시험 정정 우선순위**                         | 사용자 결정         |
+| **자동 해설 재생성·일회성 스크립트 생성**                | **금지 (절대)**     |
 
 ---
 
@@ -118,12 +118,14 @@
 ### 3. Surgical Changes — 의무 영역만 변경. 본인이 만든 영역만 정리.
 
 **기존 코드 편집 시**:
+
 - 인접 코드 / 주석 / 형식 "개선" X
 - 깨지지 않은 영역 refactor X
 - 기존 스타일 일치 (본인이 다르게 했을 영역도)
 - 무관한 dead code 발견 시 — 명시만, 삭제 X
 
 **변경이 orphan 생성 시**:
+
 - 본인 변경으로 unused 된 import / variable / function 삭제
 - 사전 존재 dead code — 요청 없으면 삭제 X
 
@@ -135,11 +137,11 @@
 
 작업을 검증 가능한 목표로 변환:
 
-| 약한 표현 | 강한 표현 |
-|---|---|
+| 약한 표현         | 강한 표현                              |
+| ----------------- | -------------------------------------- |
 | "validation 추가" | "invalid inputs test 작성 → pass 확인" |
-| "버그 fix" | "버그 재현 test 작성 → pass 확인" |
-| "X refactor" | "전후 모든 test pass 확인" |
+| "버그 fix"        | "버그 재현 test 작성 → pass 확인"      |
+| "X refactor"      | "전후 모든 test pass 확인"             |
 
 **multi-step 작업 시**: brief plan 사전 명시.
 
@@ -164,15 +166,15 @@
 
 ### 직원 구성 (4 상시 + 2 온디맨드 + 지휘부)
 
-| 채팅 | 역할 | 도구 |
-|---|---|---|
-| **품질 심사관** | 통합 지휘 (직원 아닌 지휘부) | 일반 Claude |
-| **데이터 엔지니어** | 파이프라인·D엔진·데이터 (Chat 1) | **Claude Code** |
-| **프론트엔드** | React·UX·Supabase (Chat 2) | **Claude Code** |
-| 전략가 | 사업 결정 sparring | 일반 Claude |
-| 카피라이터 | 텍스트·랜딩 | 일반 Claude |
-| 디자이너 (온디맨드) | UI 디자인 | - |
-| 기능 기획자 (온디맨드) | 신기능 사양 | - |
+| 채팅                   | 역할                             | 도구            |
+| ---------------------- | -------------------------------- | --------------- |
+| **품질 심사관**        | 통합 지휘 (직원 아닌 지휘부)     | 일반 Claude     |
+| **데이터 엔지니어**    | 파이프라인·D엔진·데이터 (Chat 1) | **Claude Code** |
+| **프론트엔드**         | React·UX·Supabase (Chat 2)       | **Claude Code** |
+| 전략가                 | 사업 결정 sparring               | 일반 Claude     |
+| 카피라이터             | 텍스트·랜딩                      | 일반 Claude     |
+| 디자이너 (온디맨드)    | UI 디자인                        | -               |
+| 기능 기획자 (온디맨드) | 신기능 사양                      | -               |
 
 ### 채팅 운영 규칙
 
@@ -262,6 +264,7 @@
 ```
 {setId}s{번호}      예: r2026as1, l2026bs5
 ```
+
 **언더스코어 없음** (중요).
 
 ### 글자 표준 (2026-06-07 확립)
@@ -282,25 +285,29 @@
 
 다음 메타 발문은 일반 룰 (positive → ok:true 정답) 미적용:
 
-| 발문 유형 | 정답 의미 | ok 판정 | pat 부여 |
-|---|---|---|---|
-| "답을 찾을 수 없는 질문은?" | 지문 안 답 없음 = 지문 무관 | 정답 = **ok:false** + pat=R1 (사실 왜곡) | 오답 (지문 정합) = ok:true + pat=null |
-| "지문에서 알 수 없는 것은?" | 동일 | 동일 | 동일 |
-| "윗글의 내용으로 추론할 수 없는 것은?" | 추론 불가 = 지문 외 | 동일 | 동일 |
+| 발문 유형                              | 정답 의미                   | ok 판정                                     | pat 부여                              |
+| -------------------------------------- | --------------------------- | ------------------------------------------- | ------------------------------------- |
+| "답을 찾을 수 없는 질문은?"            | 지문 안 답 없음 = 지문 무관 | 정답 = **ok:false** + pat=R3 (지문 밖 내용) | 오답 (지문 정합) = ok:true + pat=null |
+| "지문에서 알 수 없는 것은?"            | 동일                        | 동일                                        | 동일                                  |
+| "윗글의 내용으로 추론할 수 없는 것은?" | 추론 불가 = 지문 외         | 동일                                        | 동일                                  |
 
 **원칙**: 발문 자체가 "지문 무관" 을 요구할 때 ok 판정 = 지문 일치성 기준 그대로. 단 정답 = 지문 무관 = ok:false 의무.
+
+**pat = R3 확정 ([Adopted 2026-06-21])**: 메타발문 정답은 지문 무관이라 왜곡출처 sentId가 부재 → R1(사실 왜곡)+cs_ids=[]는 release_ready 4번째(ok:false+R1+cs_ids=[] = 0건) gate CRITICAL과 충돌. R3(지문 밖 내용)는 정의상 cs_ids=[]가 허용(release_ready 4번째 REQUIRES_CS 제외)이라 의미·gate 양립. §13⑨ 정합. (기존 R1 표기 set은 R3로 정렬 의무.)
 
 **Precedent**: r2022c Q10 (2026-06-01 사용자 결정). 동 유형 발문 만나면 본 path 동일 적용.
 
 ### 오답 패턴 (총 9종 + V)
 
 **독서 (R1~R4)**
+
 - R1: 팩트 왜곡 (수치·상태·방향 불일치)
 - R2: 인과·관계 전도 (원인-결과 / 주체-객체 반전)
 - R3: 과도한 추론 (지문에 없는 내용 / 1단계 이상 비약)
 - R4: 개념 짜깁기 (다른 문단 개념 혼합)
 
 **문학 (L1~L5)**
+
 - L1: 표현·형식 오독
 - L2: 정서·태도 오독
 - L3: 주제·의미 과잉
@@ -342,10 +349,12 @@ R2 **아님**:
 **5번 배경**: 2026-05-27 LEGACY 수능 일괄 RELEASED 시, release_ready 4기준(cs_ids/해설/정답)만 검사하고 본문 sent 수를 안 봐서 PDF 추출 실패 set 8개가 RELEASED에 포함됨. sent 3~5개인 독서 set은 정상 지문(20~40 sent)의 10~25% 수준으로 학생에게 빈 화면 노출.
 
 **발견된 결함 set (8건)**:
+
 - r2014a(B) 0sent, r2014b(B) 5sent, r2014c(B) 3sent, r2014d(B) 3sent
 - r2014e(A) 3sent, r2016d(B) 5sent, r2018a 5sent, r2018b 5sent
 
 자동 검증:
+
 ```powershell
 node pipeline/quality_gate.mjs --scope=suneung5
 ```
@@ -371,6 +380,7 @@ node pipeline/quality_gate.mjs --scope=suneung5
 ### 보기 문제 오류 유형
 
 bogi 필드 비어있지 않은 문항 → analysis 에 다음 중 하나 명시:
+
 1. **보기 오독**: 보기 조건 자체를 잘못 이해
 2. **보기 대입 오류**: 보기 조건을 지문/작품에 잘못 적용
 3. **지문 오독**: 보기와 무관하게 지문 사실 자체 왜곡
@@ -397,12 +407,14 @@ Step3 Claude (생성)
 ### Layer 0 역할 (엄격 제한)
 
 **허용**:
+
 - domain mismatch 감지
 - pat missing 감지
 - composite label 감지 ("및"/"+"/"/")
 - bracket recovery A-1 (직접 표기된 bracket 단일 매핑)
 
 **금지**:
+
 - semantic diff_type 확정
 - value_conflict → pat 자동 부여
 - entity_match 판단
@@ -412,12 +424,14 @@ Step3 Claude (생성)
 ### Phase 체계 (두 가지 다른 체계 명확화)
 
 **Phase A~D = 아키텍처 구축 단계**
+
 - Phase A: Layer 1~7 아키텍처 구축
 - Phase B: 현재 fatal 처리
 - Phase C: 연도 확장
 - Phase D: 장기 리팩토링
 
 **Phase 1~3 = D엔진 개발 단계**
+
 - Phase 1: Gold 샘플 설계 + dry-run 검증
 - Phase 2: 파이프라인 통합 (Stage 2 진입 선결 조건 후)
 - Phase 3: R3, R4, 문학 L1~L5 확장
@@ -474,12 +488,14 @@ Lock #22 : qa_mapping_minimization (analysis 수정 → A 필수 / cs_ids → B 
 ### §A. 라벨 분리 (9 라벨)
 
 **기존 4** (의사 결정 라벨):
+
 - `[Adopted]` (정책 채택)
 - `[Confirmed]` (사실 확인 — PDF 등 원천 cross-check 후)
 - `[Pending]` (검증 대기)
 - `[Rejected]` (폐기)
 
 **신규 5** (set 무결성 라벨):
+
 - `[Working-tree raw]` (working tree raw 만 확인, PDF cross-check X)
 - `[Pending source cross-check]` (PDF cross-check 사전 의무)
 - `blocked_by_source_integrity` (set 본문 손상 사유 하위 issue 봉쇄)
@@ -525,11 +541,13 @@ git push origin main
 ### 머신 전환 체크리스트
 
 **노트북 떠나기 전**
+
 - [ ] `git status` 깨끗
 - [ ] `git push` 완료
 - [ ] Supabase 대시보드 변경사항 메모
 
 **데스크톱 켠 직후**
+
 - [ ] `git pull`
 - [ ] `npm install` (package.json 변경 시)
 - [ ] `.env` 확인 (Vercel 환경변수 싱크)
@@ -629,14 +647,22 @@ suneung-viewer/
 ### 정규 도구 vs 폐기 도구
 
 **정규** (영구 가치):
+
 - `CLAUDE.md` (본 문서)
 - `docs/d_engine_decisions.md`
 - `pipeline/INTEGRATION_GUIDE.md`
 - `pipeline/quality_gate.mjs`
+- `pipeline/answer_fidelity.mjs` (정답↔정답표 PDF 대조; **python3 호출 PYTHONUTF8=1 필수** — cp949 mojibake로 ①②③④⑤ 손실 방지; image_only 정답표는 `config/manual_answer_keys.json` 폴백)
+- `pipeline/structure_fidelity.mjs` (시험지↔데이터 발문·선지 구조 대조 — 오번호/중복/오삽입/환각 색출; answer_fidelity가 못 잡는 구조결함·환각)
+- `pipeline/passage_fidelity.mjs` (데이터 지문↔시험지 본문 대조 — 교체/환각; 옛한글·verse는 acceptable 다수)
+- `config/manual_answer_keys.json`, `config/structure_fidelity_thresholds.json`, `config/passage_fidelity_thresholds.json`
 - `config/d_engine_*.json`
 
+> **release 안전 룰**: ① FREE/release 후보 set은 위 3게이트(정답·본문·구조) 통과 의무. ② 마스터 모드는 release_status 필터 우회 → 출시 검증은 **비마스터 계정**으로만. ③ setId 충돌(2014~2016 A/B형이 setId 공유, 예 r20146a) — dataLoader `RELEASE_SET_IDS.has(setId)` 전역 판정이라 충돌-혼합(한쪽 form 미준비) 등록 시 미준비 form 동반노출 → yearKey-aware 메커니즘 전까지 충돌-혼합 RELEASE_SET_IDS 금지. ④ **gate↔push 분리 (절대)**: quality_gate 결과 확인과 commit/push를 **같은 bash 체인에 넣지 말 것** — 같은 체인 시 게이트 결과 확인 전 push되어 "CRITICAL 0" 오기재 위험(2026-06-21 ea40cc2 실증). 별도 단계로 gate=0 확인 **후** push. ⑤ **결론줄=ok 검사 의무**: 출시 set은 전 선지의 결론줄(마지막 ✅/❌)이 ok와 일치하는지 검사 — REV(오결론)=정답 반대 노출=오학습(치명). 단 §7 본문이 ✅·❌ 양 이모지를 언급하면 오탐 → **결론줄 라인 기준**으로 정밀 판정(본문 이모지 포함 ≠ 오결론). ⑥ **📌 근거 exact-substring 검증**: 해설 📌 지문 근거 verbatim 검증은 **공백·특수문자(～ U+FF5E·따옴표·줄바꿈→공백 artifact) 정규화 금지** = exact match. sent 자체 artifact(추출 시 줄바꿈→공백 등)면 sent.t 교정 + passage_fidelity 재확인(2026-06-21 l2022b s7 선례). ⑦ **동일 어구 다출현 시 마커 정박 = 인라인 마커 기호 위치로 확정**(text 검색 단독 금지 — l2016c ㉡ 선례). ⑧ **극문학(희곡/시나리오) 표준**: (나)/극 본문 sents 전수를 `stage`(지시문)·`speech`(화자 대사) sentType으로 분류 → PassagePanel 렌더가 sent별 개행(stage=이탤릭/들여쓰기) + 마커/밑줄 합성. (가) 고전소설 산문은 body 유지. setId 충돌 set은 yk 지정으로 form 격리. 시극(verse+희곡 혼재, 예 l2017b)은 별도 설계. ⑨ **메타발문 정답 pat = R3 (cs[] 허용)**: "답을 찾을 수 없는 질문은?" 류 정답은 지문 무관이라 왜곡출처 sentId 부재 → R1+cs[]는 gate CRITICAL 충돌. R3(지문 밖 내용)가 의미·gate 양립([Adopted 2026-06-21]; §6 메타 예외표 R1 표기는 R3로 보정 대상). ⑩ **출시 전 게이트 의무 ([Adopted 2026-06-22])**: 출시(RELEASE_KEYS 추가)·정정 push 전 `node pipeline/quality_gate.mjs --scope=release` CRITICAL **0** 확인 = release_ready 단일 신호. 자동 판정 = ⑤ 결론줄=ok(REV 차단)·⑥ 📌 지문근거 단어내공백 artifact(`C_anchor_exact_fail`; 다문장·말줄임표·verse \n·화자표지 콜론·paraphrase 제외)·구간 bracket FP 제거(`bracket_audit` `isMultiSentRange`). WARNING(`C_anchor_marker_space`·paraphrase·placeholder_suspect 등)은 비차단 = 별도 품질 회기. 도구↔데이터 push 분리(④) 준수.
+
 **폐기** [Rejected]:
-- 회기별 HANDOVER_*.md (대신 `docs/current_state.md` 매주 갱신)
+
+- 회기별 HANDOVER\_\*.md (대신 `docs/current_state.md` 매주 갱신)
 - `node -e` 인라인 패치 스크립트
 - 일회성 `.cjs` / `.mjs` 진단 도구
 
@@ -644,13 +670,13 @@ suneung-viewer/
 
 ## 14. 단일 진입점 정합 규칙
 
-| 도구 | 영역 | 갱신 주기 |
-|---|---|---|
-| **`CLAUDE.md`** (본 문서) | 운영 원칙 + 직원 권한 + 응답 형식 + lock 시스템 baseline | 원칙 변경 시만 |
-| `docs/lock_baseline.md` | lock 1~22 raw + 운영 규칙 | lock 변경 시만 |
-| `docs/current_state.md` | 현 진행 + 다음 액션 | 주 1회 |
-| `docs/d_engine_decisions.md` | D엔진 의제 결정 (영구) | 신규 의제 결정 시 |
-| `ops/employees/{role}/CLAUDE.md` | 직원별 specific 규칙 | 역할 변경 시 |
+| 도구                             | 영역                                                     | 갱신 주기         |
+| -------------------------------- | -------------------------------------------------------- | ----------------- |
+| **`CLAUDE.md`** (본 문서)        | 운영 원칙 + 직원 권한 + 응답 형식 + lock 시스템 baseline | 원칙 변경 시만    |
+| `docs/lock_baseline.md`          | lock 1~22 raw + 운영 규칙                                | lock 변경 시만    |
+| `docs/current_state.md`          | 현 진행 + 다음 액션                                      | 주 1회            |
+| `docs/d_engine_decisions.md`     | D엔진 의제 결정 (영구)                                   | 신규 의제 결정 시 |
+| `ops/employees/{role}/CLAUDE.md` | 직원별 specific 규칙                                     | 역할 변경 시      |
 
 mismatch 시 **`CLAUDE.md` 우선** (lock #20 정합).
 
@@ -675,4 +701,6 @@ mismatch 시 **`CLAUDE.md` 우선** (lock #20 정합).
 - v1.5 (2026-06-05): §7 해설 서술 사양 추가 (3단 서술 + 배제 블록 금지 — 2027_6월 170건 개편 precedent). 당일: 2027_6월 진입·검수·해설 개편 완결 + FREE 영역 CRITICAL 21건 종결 (r2025b Q5 환각 문항 재구축 — release_ready의 원문 일치 미검사 공백 확인) + 문단 기능 62/64 + LEGACY 모의 진입 (marker 1차 198건). 전수 원문 대조 검수법(정규화 substring ↔ 시험지 PDF) 확립.
 - v1.6 (2026-06-07): §6 글자 표준 신설 (PUA 금지·어휘 판별 마지막 문항 룰·bogiTable/인라인 이미지 사양). 당일 8 sprint: ① LEGACY 모의 marker 2차 59건 (fitz 좌표+문장경계 anchor) ② 중복 set 22개 dedupe (모의 19 + 수능 3, 문항 보전 이관) ③ 구조 재구축 14 set (분할 8·전면 재구축 3·검증 3 — r20219e (나) 복원·Q23 이미지 보기 재구축, 황만근 본문 교체, 보리 수필 "전문 생략" placeholder 복원) ④ 분포 이상 14건 ok 반전 (정답표 대조) ⑤ bogi 누락 7건 (표 3 판독·그림 4 추출) ⑥ PUA 표준화 225건 (겹낫표 194→『』·네모가→[가]·옛한글 24→첫가끝 — 폰트 교체 불요 확인) ⑦ LEGACY 독서 para 93 set (각주 오인 post-pass 포함) ⑧ cs_spans 415건 재정박 (B형 suffix 282·한자병기·말줄임·라벨 strip) — **전체 350 set cs_spans 결함 0**. 베타 측: 2026_9월 Q17 데이터표·Q25 어휘 오판·set 정렬 12곳·l20269b Q25 해설 marker 재정박 5건. 잔여: LEGACY 해설·cs_ids 생성 결정(LLM 비용), LEGACY 수능 결함 8 set 재구축, para 미검출 28 set.
 - v1.7 (2026-06-09): 2027학년도 6월 **정식 출시** (RELEASE_SET_IDS + RELEASED_SETS 양쪽 8 set 추가, R3/V 22건 근거 정박 완결). LEGACY 수능 결함 set 재구축 (r2014aB 문법영역 삭제·r2014bB/cB/dB PDF 전사 재구축·r2014e 분할·선지 절단 3 set[2019_6월·2019수능·2020_6월] 정답표 복원). 2027_6월 Q6 = 선지 마커 주체 역전(②⑤) + 해설 5건 ㉮㉯ 인물 정체 전면 역전 + cs 재정박 (정답표 ① 정합) — 마커 비교 문항(㉮㉯·ⓐⓑ)은 본문 정의↔해설 라벨 일치 자동대조 검사 후보. 중복 <보기> 라벨 전수 제거 32건(2027 8 + 기존 24) + step2 stripBogiLabel 본체 규칙. **운영 결함 발견**: 일부 push에서 sandbox write한 all_data가 git에 누락된 채 commit된 사례 — push 후 `git log -1`+`git status`로 잔여 M 확인 의무. 현 완성도: 베타 126 set 해설 100%/cs 98%(출시), LEGACY 수능 72 set 해설 97%/cs 91%, LEGACY 모의 136 set cs 56%(해설 생성 미결 — 비노출).
+- v1.8 (2026-06-17): **충실도 게이트 3종 신설** (§13) — `answer_fidelity`(정답↔정답표; python3 PYTHONUTF8 필수 — cp949 mojibake로 ①~⑤ 손실 방지; image_only는 `manual_answer_keys.json` 폴백) / `structure_fidelity`(시험지↔데이터 발문·선지 구조·환각) / `passage_fidelity`(데이터 지문↔시험지 본문 교체·환각). **release 안전 룰**(3게이트 통과 의무 / 마스터 모드 필터 우회 → 비마스터 검증 / setId 충돌 2014~2016 A/B 공유 → 충돌-혼합 RELEASE_SET_IDS 금지). 당일: answer_fidelity 인코딩버그 수정 → 가려졌던 정답오류 21건 적발·정정(13개년 정답충실도 0) + r2025b Q4 환각(LIVE FREE) 재구축 + FREE 수능 3중 게이트 통과 입증 + 2025수능 manual 정답소스(image_only 폐쇄) + formatExamTitle 라벨 통일 + LEGACY 모의 1차 53 setId 출시(setId 충돌 안전분류; '해설 미생성·cs56%' 가정 stale 판명 — 해설 거의 완비).
+- v1.9 (2026-06-21): **LIVE 감사 — 출시 set 198/198 CRITICAL 0 달성** + 극문학 표준 확립 + 운영 원칙 5종 신설(§13 ④~⑨). ① **LIVE 감사**: 현 RELEASE_KEYS 198 출시 set에 quality_gate 전수 → 결함 25건 적발(REV/PH/empty/cs0, 전부 학생 노출 중) → 오탐 필터(결론줄=ok 기준) 후 진짜 24 set 정정 완결(커밋 ~10, 7561f91~0e0d195). 정답-반대 오결론(REV)이 핵심 — FREE l2022b Q26 포함. 각 set gate=0 + answer_fidelity 0 + gate↔push 분리. ② **극문학 stage/speech 표준**(§13⑧): l20216d(전우치 시나리오) 표준화 — s47·s48 merged 분리+cs 재매핑, ㉠~㉤ marker 밑줄(PDF 벡터 경계), (나) 전 구간 stage/speech 전수 분류. Code A 렌더 path 페어(e5606d2). 이어 l20199d·l2016c 복제(출시 극문학 산문-blob 해소). ③ **운영 원칙**: gate↔push 분리·결론줄=ok 검사·📌 근거 exact-substring(공백/특수문자 정규화 금지, l2022b s7 artifact 교정)·마커 인라인 정박(l2016c ㉡)·메타발문 R3([Adopted]). ④ **주의/잔여**: 마커 밑줄 exact-fail 36건(비-FREE, 밑줄 미렌더·정답해설 무영향 — FREE 2024수능 8은 audit setId 추론 버그 오탐)·D 극문학 2(l20166d·l2016cB)·stale "판단불가" 2(r2014e·l20229a)·**해설 더 자세히(2027_6월) 사양 개편 대기**(강사 예시 입력 필요). **차기 1순위 의제: 출시 게이트에 §13 ⑤⑥(결론줄=ok+exact-substring) 자동화 박아 live 결함 재발 차단.** **환경 주의: sandbox all_data_204.json 대용량 JSON이 동기화 중 truncate되어 json.load 간헐 실패 → raw grep/text-search 폴백.**
 - 이전 이력은 archive 참조.

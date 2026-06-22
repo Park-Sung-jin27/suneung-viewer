@@ -1,19 +1,19 @@
-# 현 진행 상황 — 2026-06-13 (일과 종결)
+# 현 진행 상황 — 2026-06-22 (일과 종결)
 
 > **운영 메모 (2026-06-12)**: 컨설팅\_데모 `js/scenario_engine.js` 4건 수정(① 수시 전형필터 ② 정시 capacity/모집단위 필터 ③ 학교명 오타 14종 정규화 ④ 분교 5종 지역연결 + 이름기반 region_index)이 수능 커밋 `23e367e`("기출 충실도…")에 **혼입된 채 push됨**. 변경 자체는 origin/main 반영 완료(손실 없음), 워킹트리=HEAD 동일. 원인=동시 세션 `git add .` 일괄 스테이징(§4 동시 push 금지 정황). 재발 방지: 커밋 시 파일 지정(`git add <경로>`), 동시 활성 채팅 시 한쪽만 push.
 
 ## 현황
 
-| 범위                                 | 진척                                      | 비율             |
-| ------------------------------------ | ----------------------------------------- | ---------------- |
-| **전체**                             | 350 set                                   | 100%             |
-| 수능 22~26                           | 40/40 release_ready 통과                  | 100% ✓           |
-| 모의 22~26                           | 78/78 marker 정합 + annotation 정합       | 100% ✓           |
-| LEGACY 수능 14~21                    | 61/76                                     | 80%              |
-| LEGACY 모의 14~21                    | 0/156 (cs_ids 자동/batch 170건 반영)      | 0% (cs_ids 부분) |
-| cs_ids 결함 (release_ready 1/4 위반) | 1075 → 887 (188 자동/batch 반영)          | -17.5%           |
-| setId 충돌 33 set 안전화             | 영구 자산화 ✓                             |                  |
-| annotation None-None entries         | 78건 정정 (60 target=bogi 매핑 + 18 정정) | ✓                |
+| 범위                                 | 진척                                              | 비율              |
+| ------------------------------------ | ------------------------------------------------- | ----------------- |
+| **전체**                             | 350 set                                           | 100%              |
+| 수능 22~26                           | 40/40 release_ready 통과                          | 100% ✓            |
+| 모의 22~26                           | 78/78 marker 정합 + annotation 정합               | 100% ✓            |
+| LEGACY 수능 14~21                    | 61/76                                             | 80%               |
+| LEGACY 모의 14~21                    | 1차 53 setId 출시 / 136 set (Phase A 즉시가능 81) | 진행중 (2차 대기) |
+| cs_ids 결함 (release_ready 1/4 위반) | 1075 → 887 (188 자동/batch 반영)                  | -17.5%            |
+| setId 충돌 33 set 안전화             | 영구 자산화 ✓                                     |                   |
+| annotation None-None entries         | 78건 정정 (60 target=bogi 매핑 + 18 정정)         | ✓                 |
 
 ---
 
@@ -75,12 +75,13 @@
 
 ---
 
-## 다음 액션 (우선순위)
+## 다음 액션 (우선순위) — 2026-06-21 기준
 
-1. **방향 결정 (대표)**: viewer 측 target='bogi' annotation 처리 (코드 변경) vs LEGACY 모의 14~21 진입 (156 set, 13개년 비전 path)
-2. **LEGACY cs_spans 420건** — LEGACY 진입 시 본문 품질 검증과 함께 처리 (베타용 자동 스크립트 무검토 적용 금지)
-3. **Phase 2b reject 9건 manual 정정** (PDF cross-check 의무)
-4. 토스 페이먼츠 결제 연동 (심사 대기)
+1. **대표 결정 (A vs B)**: (A) **해설 더 자세히(2027_6월) 사양 개편** — 강사가 부족한 해설 2~3개 + 본인 방식 재작성 1개 입력 시 착수(학습가치 ROI 최대; 입력 없으면 시작 불가) / (B) non-CRITICAL 백로그 mechanical cleanup 계속
+2. ~~**출시 게이트 강화 (차기 1순위 의제)**~~ → **✅ 완료 (2026-06-22)**: `quality_gate.mjs --scope=release` CRITICAL 0 = release_ready 단일 신호로 가동. 결론줄=ok(REV 자동 차단) + 📌 지문근거 artifact CRITICAL + 구간 bracket FP 제거 자동화. 상세는 변경 이력 참조.
+3. **메타발문 R3 룰 확정 (대표 한마디)**: "R3 확정" 시 CLAUDE.md §6 메타 예외표 R1→R3 보정 + 기존 메타 set(r2022c Q10 등) 정렬. 미확정 시 Code B는 R3+보고로 진행
+4. **non-CRITICAL 백로그**: 마커 밑줄 exact-fail 36(출시 14 우선·per-case: artifact는 본문 교정/오타는 annotation)·D 극문학 l20166d(이강백 결혼)·l2016cB(채만식 제향날)·stale "판단불가" 2(r2014e·l20229a)
+5. **토스 결제**: 운세 /fortune 별도 mid 연동 — 결제 코드(api/fortune-order.js·assets/jippi-payments.js)가 **미커밋 워킹트리 잔존**(라이브 미배포 가능) → 누가 commit/push할지 확정
 
 ---
 
@@ -109,6 +110,12 @@
 ---
 
 ## 변경 이력
+
+- **2026-06-22 — 출시 게이트 자동화 완료(차기 1순위 의제 종결) + release CRITICAL 0**: §13⑤⑥를 `quality_gate.mjs --scope=release`(src/dataLoader.js `RELEASE_KEYS` 198 정규식 파싱, setId 단위 필터)에 **출시 전 자동 차단**으로 박음. ① `F_content_reversed` **결론줄(라인) 정밀화**(마지막 ✅/❌ 줄 맨 앞 이모지 vs ok, 본문 중간 이모지 오탐 차단) + **CRITICAL 승격** = REV(정답-반대 오결론) 자동 차단. ② `C_anchor_exact_fail` 신설 — 📌 지문근거를 **raw exact**(정규화 금지) 판정, **단어내 공백 artifact 한정 CRITICAL**(다문장 연결·말줄임표·verse \n·화자표지 콜론·paraphrase는 정상으로 제외; 마커 앞뒤 공백=`C_anchor_marker_space` WARNING 강등). ③ `bracket_audit` FP룰에 **다문장 구간 bracket**(`isMultiSentRange`, [A]~[F] box 렌더=인라인 마커 불요) 추가 → `SOURCE_BODY_MARKER_MISSING` FP 제거 + bracket findings RELEASE_KEYS 필터(scope-갭 수정). **검출 실결함 정정**: 📌 공백 artifact sent.t 교정 8건(FREE r2025b/r2025c·r2024d PDF 확정 포함, passage_fidelity 라이브 0) / 화자표지 콜론 analysis quote 교정 3건(sent "왕 : " 보존) / F_content 결론줄 추가 4건 / r20176a Q19⑤ **LLM 스크래치패드 누출 재작성**(결론 동일·R4). CRITICAL 추이 **74→31→22→11→0**. 커밋: 도구 9f3ac06(scope/F_content/C_anchor v1)·d1d4d88(C_anchor v2)·c126a26(bracket FP) / 데이터 e04e8bb·75726ea. 전부 gate↔push 분리 + 결제(fortune) 미커밋 워크트리 무손상(워크트리 격리 push). **운영 룰 신설: 출시 전 `node pipeline/quality_gate.mjs --scope=release` CRITICAL 0 = release_ready 단일 신호.** 남은 WARNING(비차단, 별도 품질 회기): `C_anchor_marker_space` 6·`E_empty_pat_cs_present` 2147·paraphrase 1093·placeholder_suspect 492. **§6 메타 예외표 R1→R3 보정 완료**(대표 R3 확정, §13⑨ 정합).
+
+- **2026-06-21 — LIVE 감사: 출시 set 198/198 CRITICAL 0 + 극문학 stage/speech 표준**: ① **2021_6월 whole-exam 완성**(per-yearKey CRITICAL 0) — l20216c·d 오결론 controlled 정정+pat null(Step1)·ok:false 정답 pat 부여+cs 트림(Step2)·**l20216b "전우치전 구조결함"은 오귀속 → 실제는 지문 교체 후 stale 해설**(황만근 PDF 정합, 해설 20선지 §7 전면 재작성, Step3)·l20216d cs density 644→38 재정박+r20216a Q21 어휘 빈해설(Step4·5). ② **극문학 표준 확립**: l20216d(전우치 시나리오)에 stage/speech sentType 전수 분류(Code A 렌더 e5606d2 페어)+㉠~㉤ 마커 밑줄(PDF 벡터 경계, ㉣ 부분 밑줄 시각확정)+merged sent 분리. 라이브 DOM 검증(행 구분+밑줄 ✓). l20199d·l2016c 복제(출시 산문-blob 해소). ③ **LIVE 감사**: RELEASE_KEYS 198 출시 set 전수 quality_gate → 25 결함 적발 → 오탐 필터(결론줄=ok 기준) → 진짜 24 set 정정 완결(REV 오결론=정답 반대 노출 중이었음; FREE l2022b Q26 포함, 본문 재작성). 커밋 ~10(7561f91~0e0d195), 전부 gate↔push 분리+answer_fidelity 0+📌 exact-substring 준수. ④ **신설 운영 원칙**(CLAUDE.md §13 ④~⑨): gate↔push 분리·결론줄=ok 검사·📌 exact-substring(공백/특수문자 정규화 금지; l2022b s7 줄바꿈→공백 artifact 교정)·마커 인라인 정박(l2016c ㉡ 동일어구 2회 함정)·극문학 stage/speech·메타발문 R3[Adopted]. **주의(주요 발견)**: ㉠ "출시 후 검증 없이 나간 배치"가 정답-반대 오결론을 누적 노출 → 출시 게이트에 결론줄=ok+exact-substring 자동화 박는 게 차기 1순위. ㉡ sandbox 대용량 JSON 동기화 중 truncate로 json.load 간헐 실패 → raw grep 폴백. ㉢ 마커 audit의 setId 추론 버그(비정규 sentId `l2024_22_27sN`)로 FREE 8건 오탐(44→36 보정). **잔여 백로그(non-CRITICAL)**: 마커 밑줄 exact-fail 36(밑줄 미렌더, 정답해설 무영향)·D 극문학 2(l20166d·l2016cB)·stale 2(r2014e·l20229a)·**해설 더 자세히(2027_6월) 사양 개편 — 강사 예시 입력 대기**.
+
+- **2026-06-17 — 게이트 3종 체계 + FREE 3중 통과 + LEGACY 모의 1차 출시**: (8차 이후) structure_fidelity·passage_fidelity 게이트 신설(pipeline/). ① structure_fidelity가 r2015cB Q27 신채호 오삽입 + **r2025b Q4 환각(LIVE FREE)** 적발→재구축(정답④, 동 set 2번째 환각). ② passage_fidelity로 FREE 본문 verbatim 정렬: r2026 5 sent·r2024 2 sent·고전 오타 3(앓는/얽은/낯). ③ 2025수능 manual 정답소스(config/manual_answer_keys.json)+answer_fidelity image_only 폴백 → 미대조 68→34(2027_6월 no_pdf만). **FREE 수능(2022~2026) 3중 게이트(정답·본문·구조) 통과 입증.** ④ formatExamTitle 라벨 통일(src/examTitle.js, 76e58b3). ⑤ LEGACY 모의 1차 배치 출시(42b03a5) — Phase A 진단으로 '해설 미생성·cs56%' 가정 **stale 판명**(해설 거의 완비), setId 충돌 안전분류로 53 setId(69 instance) release(batch1.md), 비마스터 라이브 확인. **주의: api/claude.js 무인증=비용누수 미해결(차기 P0) / python3 게이트 PYTHONUTF8 필수(cp949 mojibake) / setId 충돌(2014~2016 A/B 공유) release 시 충돌-혼합 금지.** 차기: LEGACY 2차 완성·AI P0 보안·문법 MVP(2028 통합 대비).
 
 - **2026-06-14 (8차) — LEGACY 정답 충실도 0 달성**: answer_fidelity 적발 14건 전건 해소(정답오류 9 정정 + 구조결함 5=흥부전 재구축 4 + 숙향전 Q36 재구축 1). 흥부전(l20156c): 모래톱 중복본 제거 후 시험지 전사 복원(지문 19 sent+Q39~42+선지20, commit 946cfe4). 숙향전(r2015dB): 시 중복 Q36 제거+본문 확장(post-중략 s23~s33 신규 전사+㉠~㉤ 마커)+Q36 교체(commit 97bd1bb). answer_fidelity 14→0(잔존 ok분포1=r2022c Q10 메타발문 정상, 미대조68=image_only+no_pdf 인프라). 품질심사관 검증: ok-map 정답표 대조 + 신규 전사 11/11 한글단위 PDF 일치. 출시영역 회귀 0.
 
