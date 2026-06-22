@@ -616,11 +616,13 @@ for (const yearKey of yearsToCheck) {
             );
           }
 
-          // ── C_anchor_exact_fail (§13⑥, 정밀화): 📌 지문 근거 공백 artifact 한정 CRITICAL ──
+          // ── C_anchor_exact_fail (§13⑥, 정밀화 v2): 📌 지문 근거 단어내 공백 artifact 한정 CRITICAL ──
           //   1차 대상은 "지문 근거"만(보기 근거는 후속). exact 판정은 raw String.includes.
-          //   분류: (a) cs_ids/다문장-연결 exact 매칭 → 정상  (b) 말줄임표(…) → 비연속 인용(정상)
-          //         (c) exact 실패 + 공백정규화 시 매칭 → artifact(l2022b류, sent.t 교정 대상) = CRITICAL
-          //         (d) 그 외(paraphrase) → 미flag(별도 검토). artifact만 release 차단.
+          //   분류: (a)cs_ids/다문장-연결 exact → 정상  (b)말줄임표 → 비연속(정상)
+          //         (c)단일 sent noSpace 매칭 안 됨 → 다문장 boundary(정상, 미flag)
+          //         (d)verse sent 또는 region에 줄바꿈 → 운문 \n↔공백(정상, 미flag)
+          //         (e)마커(ⓐ-ⓩ㉠-㉭) 인접 공백차 → C_anchor_marker_space (WARNING 강등)
+          //         (f)순수 단어내 공백 artifact(l2022b류) → C_anchor_exact_fail (CRITICAL, sent.t 교정)
           if (ana && ana.includes("지문 근거")) {
             const csJoin = (c.cs_ids || [])
               .map((id) => (set.sents || []).find((s) => s.id === id))
@@ -629,7 +631,7 @@ for (const yearKey of yearsToCheck) {
               .join(" ");
             const setJoin = (set.sents || []).map((s) => s.t || "").join(" ");
             const noSpace = (x) => x.replace(/\s/g, "");
-            const setJoinNS = noSpace(setJoin);
+            const MARKER_RE = /[ⓐ-ⓩ㉠-㉭]/;
             for (const line of ana.split(/\r?\n/)) {
               if (!line.includes("📌") || !line.includes("지문 근거")) continue;
               if (line.includes("보기 근거")) continue; // 1차: 지문 근거만
@@ -641,20 +643,41 @@ for (const yearKey of yearsToCheck) {
                 .map((m) => m[1] || m[2] || m[3] || m[4] || "")
                 .filter(Boolean);
               for (const q of quotes) {
-                // (a) raw exact (단일/다문장-연결) → 정상
-                if (csJoin.includes(q) || setJoin.includes(q)) continue;
-                // (b) 말줄임표 포함 = 비연속 인용 → 정상(검사 대상 외)
-                if (/…|\.{2,}/.test(q)) continue;
-                // (c) 공백만 제거 시 매칭 = artifact → CRITICAL
-                if (setJoinNS.includes(noSpace(q))) {
-                  needsManual(
-                    "C_anchor_exact_fail",
+                if (csJoin.includes(q) || setJoin.includes(q)) continue; // (a) raw exact
+                if (/…|\.{2,}/.test(q)) continue; // (b) 말줄임표
+                const nq = noSpace(q);
+                // (c) 단일 sent noSpace 매칭 (없으면 다문장 boundary → 정상)
+                const ms = (set.sents || []).find((s) =>
+                  noSpace(s.t || "").includes(nq),
+                );
+                if (!ms) continue;
+                // region 복원 (noSpace 인덱스→raw)
+                const st = ms.t || "";
+                const map = [];
+                for (let k = 0; k < st.length; k++)
+                  if (!/\s/.test(st[k])) map.push(k);
+                const at = noSpace(st).indexOf(nq);
+                const region = st.slice(map[at], map[at + nq.length - 1] + 1);
+                if (region === q) continue; // exact (도달 안 함)
+                // (d) verse / 줄바꿈 → 운문 정상
+                if (ms.sentType === "verse" || region.includes("\n")) continue;
+                // (e) 마커 인접 공백차 → WARNING 강등
+                if (MARKER_RE.test(region) || MARKER_RE.test(q)) {
+                  issue(
+                    "C_anchor_marker_space",
                     yearKey,
                     cLoc,
-                    `📌 지문 근거 "${q.slice(0, 28)}…" 공백 artifact (sent.t 교정 대상)`,
+                    `📌 지문 근거 "${q.slice(0, 24)}…" 마커 인접 공백차 (관례·검수)`,
                   );
+                  continue;
                 }
-                // (d) 그 외(paraphrase/비verbatim) → 미flag(별도 검토 backlog)
+                // (f) 순수 단어내 공백 artifact → CRITICAL
+                needsManual(
+                  "C_anchor_exact_fail",
+                  yearKey,
+                  cLoc,
+                  `📌 지문 근거 "${q.slice(0, 24)}…" 단어내 공백 artifact (${ms.id} sent.t 교정 대상)`,
+                );
               }
             }
           }
@@ -1350,8 +1373,9 @@ const SEVERITY_MAP = {
 
   // 결론줄=ok 검사 (§13⑤) — 출시 차단 CRITICAL 승격 (이전 WARNING)
   F_content_reversed: "CRITICAL",
-  // 📌 지문 근거 exact-substring 검사 (§13⑥) — CRITICAL
+  // 📌 지문 근거 exact-substring 검사 (§13⑥) — 단어내 공백 artifact만 CRITICAL
   C_anchor_exact_fail: "CRITICAL",
+  C_anchor_marker_space: "WARNING", // 마커 인접 공백차(관례·검수)
 
   // 기존 WARNING
   D_true_has_pat: "WARNING",
@@ -1408,6 +1432,12 @@ try {
   for (const bf of bracketFindings) {
     // DETECTOR_FALSE_POSITIVE (severity=INFO) — quality_gate 집계 제외
     if (bf.family === "DETECTOR_FALSE_POSITIVE") continue;
+    // --scope=release: bracket findings도 출시 set만 (set 루프 밖이라 별도 필터)
+    if (
+      SCOPE === "release" &&
+      !RELEASE_KEYS_SET.has(bf.yearKey + "::" + bf.setId)
+    )
+      continue;
     // bf.code already prefixed: SOURCE_* or ANNOTATION_*
     issue(
       bf.code,
