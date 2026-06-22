@@ -324,17 +324,24 @@ function auditSet(data, ann, yearKey, setId) {
     const hasInBody = sents.some((s) => s.t.includes(labelStr));
     if (!hasInBody) {
       // Rule A.1: annotation 단독 시각화 — 오탐 여부 판정
-      //   (a) sub-sent domain, (b) overflow sent domain, (c) all-untyped range
+      //   (a) sub-sent domain, (b) overflow sent domain, (c) all-untyped range,
+      //   (d) 다문장 구간 bracket(sentFrom≠sentTo) — 구간 box 렌더라 본문 인라인 [X] 마커 불요
       const allRangeUntyped =
         range.length > 0 && range.every((s) => !s.sentType);
+      const isMultiSentRange = toIdx > fromIdx;
       const isFalsePositive =
-        hasSubSentsInSet || hasOverflowSentsInSet || allRangeUntyped;
+        hasSubSentsInSet ||
+        hasOverflowSentsInSet ||
+        allRangeUntyped ||
+        isMultiSentRange;
       if (isFalsePositive) {
         const reason = hasSubSentsInSet
           ? "sub-sent domain"
           : hasOverflowSentsInSet
             ? "overflow sent domain"
-            : "all-untyped sent range";
+            : allRangeUntyped
+              ? "all-untyped sent range"
+              : "multi-sent range bracket (box 렌더)";
         findings.push({
           code: "SOURCE_BODY_MARKER_MISSING",
           family: "DETECTOR_FALSE_POSITIVE",
