@@ -2,7 +2,7 @@
 // PatternReport.jsx — 오답 패턴 리포트 + AI 코칭 + 기출 패턴 훈련
 // ============================================================
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabase";
 import { P, P0, YEAR_INFO } from "./constants";
@@ -24,6 +24,34 @@ const C = {
 
 const READING_PATS = ["R1", "R2", "R3", "R4"];
 const LIT_PATS = ["L1", "L2", "L3", "L4", "L5"];
+
+// ISO week key (Mon-start) — "YYYY-Wxx" path. 답안 안 answered_at 단독 기준.
+//   주별 정답률 추세 path 안 결정적 bucket key 정합.
+function isoWeekKey(date) {
+  if (!(date instanceof Date) || isNaN(date.getTime())) return null;
+  const d = new Date(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
+  );
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+  return `${d.getUTCFullYear()}-W${String(weekNo).padStart(2, "0")}`;
+}
+
+// 사용자 표기 path: "YYYY-Wxx" → "M/D 주" 단독 (가장 최근 6주 단독 표기).
+function isoWeekLabel(wk) {
+  const m = (wk || "").match(/^(\d{4})-W(\d{2})$/);
+  if (!m) return wk || "";
+  const year = parseInt(m[1], 10);
+  const week = parseInt(m[2], 10);
+  // ISO week → Monday date
+  const simple = new Date(Date.UTC(year, 0, 1 + (week - 1) * 7));
+  const dayOfWeek = simple.getUTCDay() || 7;
+  const mon = new Date(simple);
+  mon.setUTCDate(simple.getUTCDate() - dayOfWeek + 1);
+  return `${mon.getUTCMonth() + 1}/${mon.getUTCDate()}`;
+}
 
 // ── 요약 카드 ────────────────────────────────────────────────
 function SummaryCard({ label, value, sub }) {
@@ -887,7 +915,9 @@ export default function PatternReport({ user, onGoToQuestion }) {
         supabase.from("user_stats").select("*").eq("user_id", user.id).single(),
         supabase
           .from("user_answers")
-          .select("year_key, is_correct, pat, set_id, question_id, choice_num")
+          .select(
+            "year_key, is_correct, pat, set_id, question_id, choice_num, answered_at, attempt_count",
+          )
           .eq("user_id", user.id)
           .order("answered_at", { ascending: false })
           .limit(200),
@@ -956,6 +986,75 @@ export default function PatternReport({ user, onGoToQuestion }) {
   });
 
   const hasData = totalAnswered > 0 || answers.length > 0;
+
+  // 진척 추세 (주별 정답률 + delta + 체감 카피) — 표시 단독 path.
+  //   user_answers.answered_at 단독 source (upsert 사양 안 attempt_count 동반
+  //   사실은 표기 단독 path, 추세 계산 단독 path).
+  const trend = useMemo(() => {
+    if (!answers || answers.length === 0) return null;
+    const byWeek = new Map();
+    for (const a of answers) {
+      if (!a.answered_at) continue;
+      const d = new Date(a.answered_at);
+      const wk = isoWeekKey(d);
+      if (!wk) continue;
+      let bucket = byWeek.get(wk);
+      if (!bucket) {
+        bucket = { wk, total: 0, correct: 0, wrongByPat: {} };
+        byWeek.set(wk, bucket);
+      }
+      bucket.total++;
+      if (a.is_correct) bucket.correct++;
+      else if (a.pat)
+        bucket.wrongByPat[String(a.pat)] =
+          (bucket.wrongByPat[String(a.pat)] ?? 0) + 1;
+    }
+    const weeks = [...byWeek.values()].sort((x, y) =>
+      x.wk < y.wk ? -1 : x.wk > y.wk ? 1 : 0,
+    );
+    if (weeks.length === 0) return null;
+    const recent = weeks.slice(-6); // 최근 6주 단독 표기
+    const last = weeks[weeks.length - 1];
+    const prev = weeks.length >= 2 ? weeks[weeks.length - 2] : null;
+    const lastAcc = last.total
+      ? Math.round((last.correct / last.total) * 100)
+      : 0;
+    const prevAcc =
+      prev && prev.total
+        ? Math.round((prev.correct / prev.total) * 100)
+        : null;
+    const deltaAcc = prevAcc != null ? lastAcc - prevAcc : null;
+    // 이번 주 안 톱 약점 pat (오답 빈도 단독)
+    const sortedLastPat = Object.entries(last.wrongByPat).sort(
+      (a, b) => b[1] - a[1],
+    );
+    const topPatLast = sortedLastPat[0]?.[0] ?? null;
+    let topPatDelta = null;
+    if (topPatLast && prev) {
+      const prevCnt = prev.wrongByPat[topPatLast] ?? 0;
+      const lastCnt = last.wrongByPat[topPatLast] ?? 0;
+      topPatDelta = {
+        pat: topPatLast,
+        prev: prevCnt,
+        last: lastCnt,
+        change: lastCnt - prevCnt,
+      };
+    }
+    // 체감 카피 안 데이터 단독 생성 path
+    let message = "";
+    if (deltaAcc != null) {
+      if (deltaAcc > 0) message = `지난주보다 정답률 +${deltaAcc}%p`;
+      else if (deltaAcc < 0) message = `지난주보다 정답률 ${deltaAcc}%p`;
+      else message = "정답률은 지난주와 같아요";
+      if (topPatDelta && topPatDelta.change < 0)
+        message += `, ${topPatDelta.pat} 오답이 줄고 있어요`;
+      else if (topPatDelta && topPatDelta.change > 0)
+        message += `, ${topPatDelta.pat} 오답이 늘었어요`;
+    } else if (weeks.length === 1) {
+      message = `이번 주 정답률 ${lastAcc}% — 다음 주 비교 데이터 누적 중`;
+    }
+    return { recent, last, prev, lastAcc, prevAcc, deltaAcc, topPatDelta, message };
+  }, [answers]);
 
   function getComment(tp) {
     if (!tp)
@@ -1143,6 +1242,144 @@ export default function PatternReport({ user, onGoToQuestion }) {
                 sub="일 연속"
               />
             </div>
+
+            {/* 📈 진척 추세 — 주별 정답률 + 지난주 대비 delta + 체감 카피 */}
+            {trend && (
+              <div
+                style={{
+                  background: C.white,
+                  border: `1px solid ${C.border}`,
+                  borderRadius: "14px",
+                  padding: "18px 18px 16px",
+                  marginBottom: "16px",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "0.68rem",
+                    fontWeight: "700",
+                    color: C.subtle,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    marginBottom: "12px",
+                  }}
+                >
+                  📈 진척 추세 (최근 {trend.recent.length}주)
+                </div>
+                {/* 주별 정답률 미니 막대 */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    gap: "6px",
+                    height: "72px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  {trend.recent.map((w) => {
+                    const acc = w.total
+                      ? Math.round((w.correct / w.total) * 100)
+                      : 0;
+                    const h = Math.max(4, Math.round((acc / 100) * 60));
+                    const isLast = w.wk === trend.last.wk;
+                    return (
+                      <div
+                        key={w.wk}
+                        style={{
+                          flex: 1,
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "4px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            fontSize: "0.62rem",
+                            fontWeight: "700",
+                            color: isLast ? C.green : C.subtle,
+                          }}
+                        >
+                          {acc}%
+                        </div>
+                        <div
+                          style={{
+                            width: "100%",
+                            height: `${h}px`,
+                            background: isLast ? C.green : C.line,
+                            borderRadius: "3px 3px 0 0",
+                          }}
+                        />
+                        <div
+                          style={{
+                            fontSize: "0.6rem",
+                            color: C.subtle,
+                            marginTop: "2px",
+                          }}
+                        >
+                          {isoWeekLabel(w.wk)}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                {/* 지난주 대비 delta + 톱 약점 pat 변화 */}
+                {trend.deltaAcc != null && (
+                  <div
+                    style={{
+                      fontSize: "0.78rem",
+                      color: C.muted,
+                      marginBottom: "6px",
+                      borderTop: `1px dashed ${C.border}`,
+                      paddingTop: "10px",
+                    }}
+                  >
+                    이번 주{" "}
+                    <strong style={{ color: C.ink }}>{trend.lastAcc}%</strong>{" "}
+                    · 지난 주{" "}
+                    <strong style={{ color: C.ink }}>{trend.prevAcc}%</strong>{" "}
+                    ·{" "}
+                    <span
+                      style={{
+                        color:
+                          trend.deltaAcc > 0
+                            ? C.green
+                            : trend.deltaAcc < 0
+                              ? "#b91c1c"
+                              : C.subtle,
+                        fontWeight: "700",
+                      }}
+                    >
+                      {trend.deltaAcc > 0 ? "+" : ""}
+                      {trend.deltaAcc}%p
+                    </span>
+                    {trend.topPatDelta && (
+                      <>
+                        {" · "}
+                        <span style={{ color: C.muted }}>
+                          {trend.topPatDelta.pat} 오답{" "}
+                          {trend.topPatDelta.prev}→{trend.topPatDelta.last}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                )}
+                {/* 체감 카피 1줄 */}
+                {trend.message && (
+                  <div
+                    style={{
+                      fontSize: "0.82rem",
+                      fontWeight: "700",
+                      color: C.green,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {trend.message}
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* AI 진단 메시지 */}
             {hasTopPat &&
@@ -1645,7 +1882,8 @@ export default function PatternReport({ user, onGoToQuestion }) {
           patKey={activeTrainPat}
           user={user}
           wrongAnswers={answers.filter(
-            (answer) => !answer.is_correct && String(answer.pat) === activeTrainPat,
+            (answer) =>
+              !answer.is_correct && String(answer.pat) === activeTrainPat,
           )}
           onClose={() => setActiveTrainPat(null)}
         />
