@@ -57,20 +57,28 @@
   function loadTossSDK() {
     if (window.TossPayments) return Promise.resolve(window.TossPayments);
     return new Promise((resolve, reject) => {
+      const timer = setTimeout(
+        () => reject(new Error("TossPayments SDK load timed out. Check the live domain and network policy.")),
+        10000,
+      );
+      const done = (fn, value) => {
+        clearTimeout(timer);
+        fn(value);
+      };
       const existing = document.querySelector(`script[src="${TOSS_SDK_URL}"]`);
       if (existing) {
-        existing.addEventListener("load", () => resolve(window.TossPayments));
-        existing.addEventListener("error", () => reject(new Error("토스페이먼츠 SDK를 불러오지 못했습니다.")));
+        existing.addEventListener("load", () => done(resolve, window.TossPayments));
+        existing.addEventListener("error", () => done(reject, new Error("토스페이먼츠 SDK를 불러오지 못했습니다.")));
         return;
       }
       const script = document.createElement("script");
       script.src = TOSS_SDK_URL;
       script.async = true;
       script.onload = () => {
-        if (window.TossPayments) resolve(window.TossPayments);
-        else reject(new Error("토스페이먼츠 SDK 초기화에 실패했습니다."));
+        if (window.TossPayments) done(resolve, window.TossPayments);
+        else done(reject, new Error("토스페이먼츠 SDK 초기화에 실패했습니다."));
       };
-      script.onerror = () => reject(new Error("토스페이먼츠 SDK를 불러오지 못했습니다."));
+      script.onerror = () => done(reject, new Error("토스페이먼츠 SDK를 불러오지 못했습니다."));
       document.head.appendChild(script);
     });
   }
@@ -108,6 +116,24 @@
     }
   }
 
+  async function notifyFortuneOrder(order, payment, source) {
+    if (!order || !order.orderCode) return;
+    try {
+      await fetch("/api/fortune-order", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          ...order,
+          intakeSource: source,
+          payment: { ...(order.payment || {}), ...payment },
+        }),
+        keepalive: true,
+      });
+    } catch (error) {
+      console.warn("[JIPPI payment] order notice failed", error);
+    }
+  }
+
   function getPendingOrder(orderId) {
     try {
       if (orderId) {
@@ -131,7 +157,6 @@
     const product = PRODUCTS[productId];
     if (!product) throw new Error("결제 상품 정보를 찾을 수 없습니다.");
 
-    const TossPayments = await loadTossSDK();
     const orderId = meta.orderId || createOrderId(product);
     const order = {
       ...product,
@@ -146,7 +171,15 @@
       meta,
     };
     storePending(order);
+    notifyFortuneOrder(meta.fortuneOrder, {
+      status: "payment_started",
+      tossOrderId: orderId,
+      amount: product.amount,
+      productId,
+      requestedAt: order.requestedAt,
+    }, "payment-start");
 
+    const TossPayments = await loadTossSDK();
     const tossPayments = TossPayments(TOSS_CLIENT_KEY);
     const payment = tossPayments.payment({ customerKey: getCustomerKey() });
     return payment.requestPayment({

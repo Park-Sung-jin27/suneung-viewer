@@ -438,7 +438,7 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
         <p style={{ fontSize: "0.9rem", color: C.muted, lineHeight: 1.8 }}>
           학원 월 수강료 평균 16.4만원의 1/4 가격
           <br />
-          언제든 해지 · 30일 전액 환불 보장
+          언제든 해지 · 결제 전 무료 진단
         </p>
       </div>
 
@@ -496,9 +496,9 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
       >
         {[
           {
-            icon: "🛡️",
-            title: "30일 전액 환불",
-            desc: "이유 불문, 문의 한 통으로 완료",
+            icon: "🔎",
+            title: "결제 전 무료 진단",
+            desc: "카드 등록 없이 핵심 진단 흐름 먼저 확인",
           },
           {
             icon: "🔓",

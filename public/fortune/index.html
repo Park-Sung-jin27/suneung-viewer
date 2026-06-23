@@ -1581,10 +1581,10 @@
           </div>
 
           <label class="switch"><input id="privacyConsent" name="privacyConsent" type="checkbox" required /> 개인정보 수집·이용 및 리포트 제작을 위한 입력값 사용에 동의합니다. <a href="privacy.html" target="_blank">개인정보처리방침 보기</a></label>
-          <label class="switch"><input id="refundConsent" name="refundConsent" type="checkbox" required /> 맞춤 제작 리포트 특성상 제작 착수 후 환불이 제한될 수 있음을 확인했습니다. <a href="refund.html" target="_blank">환불·제작 안내 보기</a></label>
+          <label class="switch"><input id="productionConsent" name="productionConsent" type="checkbox" required /> 맞춤 제작 디지털 리포트의 제작 방식과 전달 조건을 확인했습니다. <a href="terms.html" target="_blank">이용약관 보기</a></label>
 
           <div class="trust-strip">
-            <div class="trust-item"><span class="trust-ic">✓</span><b>제작 착수 전 100% 환불</b><span>결제 후 제작 시작 전이면 전액 환불</span></div>
+            <div class="trust-item"><span class="trust-ic">✓</span><b>결제 전 최종 확인</b><span>상품명과 금액을 주문서에서 다시 확인</span></div>
             <div class="trust-item"><span class="trust-ic">✓</span><b>통신판매업 정식 신고</b><span>2026-서울강북-0428호 · 사업자 297-93-01982</span></div>
             <div class="trust-item"><span class="trust-ic">✓</span><b>1:1 맞춤 HTML 리포트</b><span>다른 사람과 같은 리포트는 나오지 않습니다</span></div>
             <div class="trust-item"><span class="trust-ic">✓</span><b>입력 정보 안전 보관</b><span>리포트 전달 후 1년 내 파기 · 제3자 제공 없음</span></div>
@@ -1608,14 +1608,13 @@
     <section id="legal" class="section">
       <div class="wrap">
         <p class="section-tag">ORDER & POLICY</p>
-        <h2>주문 전, <em>제작·결제·환불 기준</em>을 확인해 주세요</h2>
+        <h2>주문 전, <em>제작·결제 기준</em>을 확인해 주세요</h2>
         <p class="desc">지피사주는 실물 배송 상품이 아니라, 신청자가 입력한 출생 정보와 질문을 바탕으로 제작되는 맞춤형 디지털 HTML 리포트입니다. 카드·간편결제 확인 후 순차 제작되며, 이메일·문자 링크 등 정보통신망을 통해 전달됩니다.</p>
         <div class="legal-panel">
           <h3>카드·간편결제 안내</h3>
           <p>주문서 확인 후 결제하기 버튼을 누르면 토스페이먼츠 결제창이 열립니다. 결제 인증이 완료되면 주문 정보와 결제 내역을 기준으로 제작 순서가 배정됩니다.</p>
           <div class="legal-links">
             <a href="#order">신청서 작성하기</a>
-            <a href="refund.html" class="light">환불·제작 안내</a>
             <a href="terms.html" class="light">이용약관</a>
             <a href="privacy.html" class="light">개인정보처리방침</a>
           </div>
@@ -1624,9 +1623,9 @@
           <h3>주문 접수와 결제 확인</h3>
           <ul>
             <li>주문서 확인 후 생성되는 <code>주문코드</code>와 결제 내역을 기준으로 제작이 시작됩니다.</li>
-            <li>결제 전에는 상품명, 금액, 환불 기준을 다시 확인해 주세요.</li>
+            <li>결제 전에는 상품명, 금액, 입력 정보를 다시 확인해 주세요.</li>
             <li>카드·간편결제 이용이 어려운 경우 고객센터로 별도 문의할 수 있습니다.</li>
-            <li>결제 확인 후 제작이 시작되며, 제작 착수 후에는 맞춤형 디지털 콘텐츠 특성상 환불이 제한될 수 있습니다.</li>
+            <li>결제 확인 후 주문 정보와 결제 내역을 기준으로 제작이 시작됩니다.</li>
           </ul>
         </div>
       </div>
@@ -1655,8 +1654,8 @@
             <p>주문 확인 후 순차적으로 제작됩니다. 런칭 기간에는 상품별 안내에 따라 HTML 리포트 열람 링크를 전달하며, 주문량이 많을 경우 접수 순서대로 진행됩니다.</p>
           </details>
           <details>
-            <summary>환불은 되나요?</summary>
-            <p>맞춤 제작 리포트 특성상 제작 착수 이후에는 환불이 제한됩니다. 결제 직후, 제작 착수 전이라면 전액 환불이 가능합니다.</p>
+            <summary>리포트 전달은 어떻게 받나요?</summary>
+            <p>주문 정보와 결제 내역이 확인되면 순차적으로 제작되며, 완성된 HTML 리포트 열람 링크를 이메일 또는 문자 링크로 전달합니다.</p>
           </details>
         </div>
       </div>
@@ -1678,7 +1677,6 @@
       <div class="footer-links">
         <a href="terms.html">이용약관</a>
         <a href="privacy.html">개인정보처리방침</a>
-        <a href="refund.html">환불 및 제작 안내</a>
         <a href="/suneung/">수능뷰어 상품</a>
         
       </div>
@@ -1728,9 +1726,9 @@ function product(){return CONFIG.products.find(p=>p.id===selectedProductId)||CON
 function orderPayload(){const code='UR-'+new Date().toISOString().slice(0,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,7).toUpperCase();return {orderCode:orderCache?.orderCode||code,createdAt:new Date().toISOString(),product:product(),totalPrice:total(),options:{deliverySpeed:val('deliverySpeed'),selectedInterests:selectedInterests(),premiumErosAddon:premiumEros(),requiresAdult:requiresAdult(),adultConsent:checked('adultConsent'),relationshipPatternStatus:val('relationshipPatternStatus'),leadPreference:val('leadPreference'),afterRhythm:val('afterRhythm'),relationshipPatternText:val('relationshipPatternText')},customer:{name:val('customerName'),contact:val('contact'),email:val('email'),delivery:val('delivery')},self:{gender:val('gender'),birthDate:val('birthDate'),calendar:val('calendar'),leapMonth:val('leapMonth'),birthTime:val('birthTime'),timeAccuracy:val('timeAccuracy'),birthCity:val('birthCity'),relationshipStatus:val('relationshipStatus')},partnerMode:checked('partnerMode'),partner:{name:val('partnerName'),gender:val('partnerGender'),birthDate:val('partnerBirthDate'),calendar:val('partnerCalendar'),leapMonth:val('partnerLeapMonth'),birthTime:val('partnerBirthTime'),timeAccuracy:val('partnerTimeAccuracy'),birthCity:val('partnerBirthCity')},context:{mainConcern:val('mainConcern'),optionA:val('optionA'),optionB:val('optionB'),period:val('period'),analysisYear:val('analysisYear'),lifeArea:val('lifeArea'),frequentPlaces:val('frequentPlaces'),desiredOutcome:val('desiredOutcome'),firstMeetDate:val('firstMeetDate'),relationshipStartDate:val('relationshipStartDate'),breakupDate:val('breakupDate'),lastContactDate:val('lastContactDate'),contactStatus:val('contactStatus'),conflictTopic:val('conflictTopic'),questions:val('questions'),exclude:val('exclude')}}}
 function prepareOrder(show=true){const o=orderPayload();orderCache=o;$('orderCodeInput').value=o.orderCode;$('orderJsonInput').value=JSON.stringify(o,null,2);$('selectedProductInput').value=o.product.name;$('totalPriceInput').value=o.totalPrice;const sum=$('orderSummary');sum.classList.remove('hidden');sum.innerHTML=`<h3>주문 확인</h3><div class="summary-grid"><div class="summary-item"><span>주문코드</span><b>${o.orderCode}</b></div><div class="summary-item"><span>상품</span><b>${o.product.name}</b></div><div class="summary-item"><span>리포트 구성</span><b>${o.options.selectedInterests.map(x=>x.label).join(', ')}</b></div><div class="summary-item"><span>총 결제금액</span><b>${fmt(o.totalPrice)}</b></div></div><p class="notice">주문 내용을 확인한 뒤 결제를 진행해 주세요. 결제하기 버튼을 누르면 토스페이먼츠 카드·간편결제 창이 열립니다. 결제 확인 후 입력하신 정보를 기준으로 맞춤 리포트가 제작됩니다.</p>`;if(show)toast('주문서를 생성했습니다.');return o}
 function initDateYearLimit(){['birthDate','partnerBirthDate'].forEach(id=>{const input=$(id);if(!input)return;input.addEventListener('input',()=>{const digits=input.value.replace(/\D/g,'').slice(0,8);let next=digits;if(digits.length>4)next=digits.slice(0,4)+'-'+digits.slice(4);if(digits.length>6)next=digits.slice(0,4)+'-'+digits.slice(4,6)+'-'+digits.slice(6);input.value=next;});input.addEventListener('blur',()=>{if(input.value&&!/^\d{4}-\d{2}-\d{2}$/.test(input.value)){toast('생년월일은 YYYY-MM-DD 형식으로 입력해 주세요.');}});});}
-async function copyOrder(){const o=prepareOrder(false);try{await navigator.clipboard.writeText(JSON.stringify(o,null,2));toast('운영자 도구용 주문 JSON을 복사했습니다.')}catch{toast('복사 권한이 없습니다.')}}function unlockOperatorTools(){try{localStorage.setItem('jippiOperatorUnlocked','1');sessionStorage.setItem('jippiOperatorUnlocked','1')}catch(e){console.warn('운영자 접근 플래그 저장 실패',e)}}function sendToBuilder(){const o=prepareOrder(false);unlockOperatorTools();localStorage.setItem('fortuneOrderJson',JSON.stringify(o));location.href='builder.html?operator=1'}function sendToAdmin(){const o=prepareOrder(false);unlockOperatorTools();localStorage.setItem('fortuneOrderJson',JSON.stringify(o));location.href='admin.html?operator=1'}const PAYMENT_PRODUCT_MAP={theme_card:'fortune_theme_card',theme_career:'fortune_theme_career',theme_love:'fortune_theme_love',theme_destiny:'fortune_theme_destiny',theme_premium:'fortune_theme_premium'};function paymentUrl(){return CONFIG.paymentLinks[selectedProductId]||CONFIG.defaultPaymentUrl||''}async function goPay(){if(!checked('privacyConsent')||!checked('refundConsent')){toast('결제 전 필수 동의가 필요합니다.');return}const o=prepareOrder(false);try{localStorage.setItem('lastFortuneOrder',JSON.stringify(o));sessionStorage.setItem('lastFortuneOrder',JSON.stringify(o))}catch(err){console.warn('주문 임시 저장 실패',err)}const payProductId=PAYMENT_PRODUCT_MAP[selectedProductId];const url=paymentUrl();if(url){location.href=url;return}if(!window.JippiPayments||!payProductId){toast('결제 모듈을 불러오지 못했습니다.');alert(`${CONFIG.bankTransferText}\n\n주문코드: ${o.orderCode}\n결제금액: ${fmt(o.totalPrice)}`);return}const btn=$('payBtn');const original=btn.textContent;btn.disabled=true;btn.textContent='결제창 여는 중';try{await window.JippiPayments.requestPayment(payProductId,{orderName:o.product.name,customerName:o.customer.name,customerEmail:o.customer.email,customerPhone:o.customer.contact,fortuneOrder:o})}catch(err){if(err.code!=='PAY_PROCESS_CANCELED')alert(err.message||'결제창을 열지 못했습니다.');btn.disabled=false;btn.textContent=original}}async function submitOrder(e){
+async function copyOrder(){const o=prepareOrder(false);try{await navigator.clipboard.writeText(JSON.stringify(o,null,2));toast('운영자 도구용 주문 JSON을 복사했습니다.')}catch{toast('복사 권한이 없습니다.')}}function unlockOperatorTools(){try{localStorage.setItem('jippiOperatorUnlocked','1');sessionStorage.setItem('jippiOperatorUnlocked','1')}catch(e){console.warn('운영자 접근 플래그 저장 실패',e)}}function sendToBuilder(){const o=prepareOrder(false);unlockOperatorTools();localStorage.setItem('fortuneOrderJson',JSON.stringify(o));location.href='builder.html?operator=1'}function sendToAdmin(){const o=prepareOrder(false);unlockOperatorTools();localStorage.setItem('fortuneOrderJson',JSON.stringify(o));location.href='admin.html?operator=1'}const PAYMENT_PRODUCT_MAP={theme_card:'fortune_theme_card',theme_career:'fortune_theme_career',theme_love:'fortune_theme_love',theme_destiny:'fortune_theme_destiny',theme_premium:'fortune_theme_premium'};function paymentUrl(){return CONFIG.paymentLinks[selectedProductId]||CONFIG.defaultPaymentUrl||''}async function goPay(){if(!checked('privacyConsent')||!checked('productionConsent')){toast('결제 전 필수 동의가 필요합니다.');return}const o=prepareOrder(false);try{localStorage.setItem('lastFortuneOrder',JSON.stringify(o));sessionStorage.setItem('lastFortuneOrder',JSON.stringify(o))}catch(err){console.warn('주문 임시 저장 실패',err)}const payProductId=PAYMENT_PRODUCT_MAP[selectedProductId];const url=paymentUrl();if(url){location.href=url;return}if(!window.JippiPayments||!payProductId){toast('결제 모듈을 불러오지 못했습니다.');alert(`${CONFIG.bankTransferText}\n\n주문코드: ${o.orderCode}\n결제금액: ${fmt(o.totalPrice)}`);return}const btn=$('payBtn');const original=btn.textContent;btn.disabled=true;btn.textContent='결제창 여는 중';try{await window.JippiPayments.requestPayment(payProductId,{orderName:o.product.name,customerName:o.customer.name,customerEmail:o.customer.email,customerPhone:o.customer.contact,fortuneOrder:o})}catch(err){if(err.code!=='PAY_PROCESS_CANCELED')alert(err.message||'결제창을 열지 못했습니다.');btn.disabled=false;btn.textContent=original}}async function submitOrder(e){
   e.preventDefault();
-  if(!checked('privacyConsent')||!checked('refundConsent')){
+  if(!checked('privacyConsent')||!checked('productionConsent')){
     toast('필수 동의가 필요합니다.');
     return false;
   }

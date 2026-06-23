@@ -18,6 +18,7 @@ function summarizeOrder(order) {
   const self = order?.self || {};
   const partner = order?.partner || {};
   const context = order?.context || {};
+  const payment = order?.payment || {};
   const topics = Array.isArray(order?.options?.selectedInterests)
     ? order.options.selectedInterests.map((item) => item?.label).filter(Boolean).join(", ")
     : "";
@@ -25,8 +26,11 @@ function summarizeOrder(order) {
   return [
     "[JIPPI Fortune Order]",
     `orderCode: ${text(order?.orderCode, 80)}`,
+    `intakeSource: ${text(order?.intakeSource || order?.source, 120)}`,
     `product: ${text(product, 200)}`,
     `totalPrice: ${total} KRW`,
+    `paymentStatus: ${text(payment.status, 120)}`,
+    `tossOrderId: ${text(payment.tossOrderId, 160)}`,
     "",
     "[customer]",
     `name: ${text(customer.name, 200)}`,

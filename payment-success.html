@@ -26,7 +26,7 @@
     </div>
   </section>
 </main>
-<script src="/assets/jippi-payments.js"></script>
+<script src="/assets/jippi-payments.js?v=20260619-order-intake-4"></script>
 <script>
 function fmt(n){return Number(n||0).toLocaleString("ko-KR")+"원"}
 function item(k,v){return `<div class="item"><span>${k}</span><b>${v||"-"}</b></div>`}
@@ -35,6 +35,32 @@ const orderId=params.get("orderId");
 const amount=params.get("amount");
 const paymentKey=params.get("paymentKey");
 const pending=window.JippiPayments?.getPendingOrder(orderId)||{};
+async function notifyPaymentReturned(){
+  const fortuneOrder=pending.meta?.fortuneOrder;
+  if(!fortuneOrder?.orderCode)return;
+  try{
+    await fetch("/api/fortune-order",{
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify({
+        ...fortuneOrder,
+        intakeSource:"payment-success",
+        payment:{
+          ...(fortuneOrder.payment||{}),
+          status:"payment_returned_unverified",
+          tossOrderId:orderId||pending.orderId,
+          amount:Number(amount||pending.amount||0),
+          paymentKey:paymentKey||"",
+          returnedAt:new Date().toISOString()
+        }
+      }),
+      keepalive:true
+    });
+  }catch(error){
+    console.warn("payment return order notice failed",error);
+  }
+}
+notifyPaymentReturned();
 document.getElementById("summary").innerHTML=[
   item("상품",pending.name),
   item("주문번호",orderId||pending.orderId),

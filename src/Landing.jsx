@@ -1869,7 +1869,7 @@ export default function Landing({ onStart }) {
               진단부터 1:1까지 — 단계별 선택
             </h2>
             <p style={{ fontSize: "0.87rem", color: C.muted }}>
-              14일 무료 진단 → 월 구독 → 1:1 코칭 5석 · 30일 환불 보장
+              14일 무료 진단 → 월 구독 → 1:1 코칭 5석 · 언제든 해지 가능
             </p>
           </div>
         </FadeIn>
@@ -1942,7 +1942,7 @@ export default function Landing({ onStart }) {
         </FadeIn>
       </section>
 
-      {/* ══ 보장 ══ */}
+      {/* ══ 결제 전 확인 ══ */}
       <section
         style={{
           background: C.paper,
@@ -1952,7 +1952,7 @@ export default function Landing({ onStart }) {
         <FadeIn>
           <div style={{ textAlign: "center", marginBottom: "40px" }}>
             <div style={{ marginBottom: 14 }}>
-              <Pill>리스크 제거</Pill>
+              <Pill>결제 전 확인</Pill>
             </div>
             <h2
               style={{
@@ -1963,7 +1963,7 @@ export default function Landing({ onStart }) {
                 letterSpacing: "-0.03em",
               }}
             >
-              돈 낭비 걱정 없게 만듭니다
+              먼저 써보고 결정하게 합니다
             </h2>
           </div>
         </FadeIn>
@@ -1978,17 +1978,17 @@ export default function Landing({ onStart }) {
         >
           {[
             {
-              icon: "🛡️",
-              title: "30일 전액 환불 보장",
-              desc: "가입 후 30일 이내 이유 불문 전액 환불. 문의 한 통이면 완료. 질문 없음.",
+              icon: "🔎",
+              title: "14일 무료 진단 제공",
+              desc: "결제 전 핵심 진단 흐름을 먼저 확인할 수 있습니다. 카드 등록 없이 시작합니다.",
               color: "#15803d",
               bg: "#f0fdf4",
               border: "#86efac",
             },
             {
-              icon: "🎁",
-              title: "진단 불만족 시 무료 연장",
-              desc: "첫 진단 리포트가 기대에 못 미치면 1개월 무료 연장 제공. 자동 적용.",
+              icon: "✅",
+              title: "유료 전환 전 조건 확인",
+              desc: "월 구독과 1:1 코칭은 결제 전에 금액과 이용 조건을 다시 확인합니다.",
               color: "#15803d",
               bg: "#f0fdf4",
               border: "#86efac",
