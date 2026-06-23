@@ -21,7 +21,7 @@
       service: "fortune",
       productId: "fortune_theme_love",
       orderPrefix: "JIPPI-FORTUNE",
-      name: "지피사주 연애·재회·결혼 리포트",
+      name: "지피사주 연애·재회·궁합 리포트",
       amount: 19900,
     },
     fortune_theme_destiny: {
