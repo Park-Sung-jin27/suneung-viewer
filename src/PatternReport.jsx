@@ -911,18 +911,48 @@ export default function PatternReport({ user, onGoToQuestion }) {
     }
     (async () => {
       setLoading(true);
-      const [{ data: statsData }, { data: answersData }] = await Promise.all([
-        supabase.from("user_stats").select("*").eq("user_id", user.id).single(),
-        supabase
-          .from("user_answers")
-          .select(
-            "year_key, is_correct, pat, set_id, question_id, choice_num, answered_at, attempt_count",
-          )
-          .eq("user_id", user.id)
-          .order("answered_at", { ascending: false })
-          .limit(200),
-      ]);
+      // user_stats path — 안전 path 정합 (single row 단독).
+      const { data: statsData } = await supabase
+        .from("user_stats")
+        .select("*")
+        .eq("user_id", user.id)
+        .single();
       if (statsData) setStats(statsData);
+
+      // user_answers path — answered_at 안 schema 부재 path 안 graceful
+      // fallback 정합 (attempt_count 폐기 path — trend 계산 단독 미사용).
+      const primaryCols =
+        "year_key, is_correct, pat, set_id, question_id, choice_num, answered_at";
+      const fallbackCols =
+        "year_key, is_correct, pat, set_id, question_id, choice_num";
+      let answersData = null;
+      const { data: ansPrimary, error: errPrimary } = await supabase
+        .from("user_answers")
+        .select(primaryCols)
+        .eq("user_id", user.id)
+        .order("answered_at", { ascending: false })
+        .limit(200);
+      if (errPrimary) {
+        console.warn(
+          "[/report] user_answers answered_at SELECT 실패, fallback:",
+          errPrimary.message,
+        );
+        const { data: ansFallback, error: errFallback } = await supabase
+          .from("user_answers")
+          .select(fallbackCols)
+          .eq("user_id", user.id)
+          .limit(200);
+        if (errFallback) {
+          console.warn(
+            "[/report] user_answers fallback SELECT 실패:",
+            errFallback.message,
+          );
+        } else {
+          answersData = ansFallback;
+        }
+      } else {
+        answersData = ansPrimary;
+      }
       if (answersData) setAnswers(answersData);
       setLoading(false);
     })();
@@ -1251,9 +1281,10 @@ export default function PatternReport({ user, onGoToQuestion }) {
             </div>
 
             {/* 📈 진척 추세 — 주별 정답률 + 지난주 대비 delta + 체감 카피.
-                trend=null + answers>0 path (= answered_at 기존 행 누락 path)
-                안 빈 화면 회피 path 안 안내문 단독 노출 정합. */}
-            {!trend && answers.length > 0 && (
+                trend=null + hasData path (answered_at 부재 / 행 fetch
+                실패 / 모두 NULL 등 path 통합) 안 빈 화면 회피 path 안
+                안내문 단독 노출 정합. */}
+            {!trend && hasData && (
               <div
                 style={{
                   background: C.white,
