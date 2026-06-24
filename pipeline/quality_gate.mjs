@@ -1128,19 +1128,16 @@ for (const yearKey of yearsToCheck) {
             }
           }
 
-          // ── [v2] E_empty_pat_cs_present — pat=R3/V/null인데 cs 보유 ───
-          if (
-            hasCsIds &&
-            (c.pat === "R3" ||
-              c.pat === "V" ||
-              c.pat === null ||
-              c.pat === undefined)
-          ) {
+          // ── [v2] E_empty_pat_cs_present — ok:false R3/V인데 cs 보유 ───
+          //   ok:true 선지의 cs 보유는 정상(근거) → 제외. pat=null도 제외
+          //   (ok:true null 정상 / ok:false null은 별도 pat-missing 검사 영역).
+          //   R3(지문 밖)·V(어휘)는 규칙상 cs=[] → cs 보유 시만 flag.
+          if (c.ok === false && hasCsIds && (c.pat === "R3" || c.pat === "V")) {
             issue(
               "E_empty_pat_cs_present",
               yearKey,
               cLoc,
-              `pat=${c.pat}인데 cs_ids ${c.cs_ids.length}건 (정의상 cs 부재 권장)`,
+              `ok:false pat=${c.pat}인데 cs_ids ${c.cs_ids.length}건 (R3/V는 cs=[] 규칙)`,
             );
           }
 
@@ -1157,18 +1154,29 @@ for (const yearKey of yearsToCheck) {
             );
           }
 
-          // ── [v2] W_analysis_placeholder_suspect — suspect (`...`만) ────
+          // ── [v2] W_analysis_placeholder_suspect — 인용부호 밖 `...`만 ────
+          //   📌 verbatim 인용 내부 말줄임표(작품/지문 원문)는 정상 → 제외.
+          //   쌍·홑따옴표·낫표 내부를 strip 후에도 남는 `...`만 의심 대상.
+          //   (표본 검증: strip 전 788건 거의 전부 인용 생략표 = 오탐 / 후 ~3건)
           if (
             c.analysis &&
-            /\.\.\./.test(c.analysis) &&
             !/\[\?\]|\[확인 필요|TODO|placeholder/.test(c.analysis)
           ) {
-            issue(
-              "W_analysis_placeholder_suspect",
-              yearKey,
-              cLoc,
-              "analysis에 줄임표 (`...`) — 인용 영역 false-positive 가능",
-            );
+            const _bareAna = c.analysis
+              .replace(/"[^"]*"/g, "")
+              .replace(/[“][^”]*[”]/g, "")
+              .replace(/[「][^」]*[」]/g, "")
+              .replace(/[『][^』]*[』]/g, "")
+              .replace(/[‘][^’]*[’]/g, "")
+              .replace(/'[^']*'/g, "");
+            if (/\.\.\./.test(_bareAna)) {
+              issue(
+                "W_analysis_placeholder_suspect",
+                yearKey,
+                cLoc,
+                "analysis 인용부호 밖에 줄임표 (`...`) — 미완 의심",
+              );
+            }
           }
         }
 
