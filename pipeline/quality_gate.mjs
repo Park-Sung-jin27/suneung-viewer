@@ -709,12 +709,23 @@ for (const yearKey of yearsToCheck) {
               );
             }
             // W_scratchpad_leak: LLM 스크래치패드 누출 패턴
-            if (/아 잠깐|아, 잠깐|정답 정보를|다시 보니|스크래치/.test(ana)) {
+            //   ① 한글 메타-고백  ② 영어 추론 어구  ③ 연속 영어 단어 3개+
+            //   (국어 해설에 영어 추론문 = 거의 확실한 누출. 누출 스니펫을 메시지에 노출)
+            const _scratchKo =
+              /아 잠깐|아, 잠깐|정답 정보를|다시 보니|스크래치/;
+            const _scratchEn =
+              /\bI need to\b|\bI should\b|\bLet me\b|\bBased on\b|\bappears in\b|\blikely\b|\breconstruct\b|\bWait\b|\bActually\b|\bLooking at\b|\bThe answer\b/i;
+            const _engRun = /[A-Za-z]{2,}(?:\s+[A-Za-z]{2,}){2,}/; // 영어 단어 3개+ 연속
+            const _leak =
+              ana.match(_scratchKo) ||
+              ana.match(_scratchEn) ||
+              ana.match(_engRun);
+            if (_leak) {
               issue(
                 "W_scratchpad_leak",
                 yearKey,
                 cLoc,
-                "analysis에 LLM 스크래치패드 누출 패턴",
+                `누출 스니펫: "${_leak[0].slice(0, 50)}"`,
               );
             }
             // W_verbose: 해설 과다(700자 초과 — 검수 트리거)
