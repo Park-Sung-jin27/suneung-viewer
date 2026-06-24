@@ -1020,9 +1020,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
       ? Math.round((last.correct / last.total) * 100)
       : 0;
     const prevAcc =
-      prev && prev.total
-        ? Math.round((prev.correct / prev.total) * 100)
-        : null;
+      prev && prev.total ? Math.round((prev.correct / prev.total) * 100) : null;
     const deltaAcc = prevAcc != null ? lastAcc - prevAcc : null;
     // 이번 주 안 톱 약점 pat (오답 빈도 단독)
     const sortedLastPat = Object.entries(last.wrongByPat).sort(
@@ -1053,7 +1051,16 @@ export default function PatternReport({ user, onGoToQuestion }) {
     } else if (weeks.length === 1) {
       message = `이번 주 정답률 ${lastAcc}% — 다음 주 비교 데이터 누적 중`;
     }
-    return { recent, last, prev, lastAcc, prevAcc, deltaAcc, topPatDelta, message };
+    return {
+      recent,
+      last,
+      prev,
+      lastAcc,
+      prevAcc,
+      deltaAcc,
+      topPatDelta,
+      message,
+    };
   }, [answers]);
 
   function getComment(tp) {
@@ -1243,7 +1250,38 @@ export default function PatternReport({ user, onGoToQuestion }) {
               />
             </div>
 
-            {/* 📈 진척 추세 — 주별 정답률 + 지난주 대비 delta + 체감 카피 */}
+            {/* 📈 진척 추세 — 주별 정답률 + 지난주 대비 delta + 체감 카피.
+                trend=null + answers>0 path (= answered_at 기존 행 누락 path)
+                안 빈 화면 회피 path 안 안내문 단독 노출 정합. */}
+            {!trend && answers.length > 0 && (
+              <div
+                style={{
+                  background: C.white,
+                  border: `1px dashed ${C.border}`,
+                  borderRadius: "14px",
+                  padding: "16px 18px",
+                  marginBottom: "16px",
+                  fontSize: "0.78rem",
+                  color: C.muted,
+                  lineHeight: 1.6,
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "0.68rem",
+                    fontWeight: "700",
+                    color: C.subtle,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    marginBottom: "6px",
+                  }}
+                >
+                  📈 진척 추세
+                </div>
+                진척 데이터 누적 중 — 다음 풀이 시점부터 주별 정답률 추세가
+                표시됩니다.
+              </div>
+            )}
             {trend && (
               <div
                 style={{
@@ -1336,10 +1374,9 @@ export default function PatternReport({ user, onGoToQuestion }) {
                     }}
                   >
                     이번 주{" "}
-                    <strong style={{ color: C.ink }}>{trend.lastAcc}%</strong>{" "}
-                    · 지난 주{" "}
-                    <strong style={{ color: C.ink }}>{trend.prevAcc}%</strong>{" "}
-                    ·{" "}
+                    <strong style={{ color: C.ink }}>{trend.lastAcc}%</strong> ·
+                    지난 주{" "}
+                    <strong style={{ color: C.ink }}>{trend.prevAcc}%</strong> ·{" "}
                     <span
                       style={{
                         color:
@@ -1358,8 +1395,8 @@ export default function PatternReport({ user, onGoToQuestion }) {
                       <>
                         {" · "}
                         <span style={{ color: C.muted }}>
-                          {trend.topPatDelta.pat} 오답{" "}
-                          {trend.topPatDelta.prev}→{trend.topPatDelta.last}
+                          {trend.topPatDelta.pat} 오답 {trend.topPatDelta.prev}→
+                          {trend.topPatDelta.last}
                         </span>
                       </>
                     )}
