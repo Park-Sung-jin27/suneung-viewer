@@ -682,6 +682,40 @@ for (const yearKey of yearsToCheck) {
             }
           }
 
+          // ── rubric v1 신설 게이트 3종 (WARNING·비차단, 재정비 트리거) ──
+          if (ana && ana.trim()) {
+            // W_struct_missing: ok:false인데 🔍/📌/❌ 3단 블록 부재
+            if (
+              c.ok === false &&
+              !(ana.includes("🔍") && ana.includes("📌") && ana.includes("❌"))
+            ) {
+              issue(
+                "W_struct_missing",
+                yearKey,
+                cLoc,
+                "ok:false 해설에 🔍/📌/❌ 3단 블록 부재",
+              );
+            }
+            // W_scratchpad_leak: LLM 스크래치패드 누출 패턴
+            if (/아 잠깐|아, 잠깐|정답 정보를|다시 보니|스크래치/.test(ana)) {
+              issue(
+                "W_scratchpad_leak",
+                yearKey,
+                cLoc,
+                "analysis에 LLM 스크래치패드 누출 패턴",
+              );
+            }
+            // W_verbose: 해설 과다(700자 초과 — 검수 트리거)
+            if (ana.length > 700) {
+              issue(
+                "W_verbose",
+                yearKey,
+                cLoc,
+                `analysis ${ana.length}자(>700 검수 트리거)`,
+              );
+            }
+          }
+
           // ── F-3: analysis 비어있음 ─────────────────────────────────────
           if (!ana.trim()) {
             needsManual(
@@ -1381,6 +1415,10 @@ const SEVERITY_MAP = {
   D_true_has_pat: "WARNING",
   H_cs_concentration: "WARNING",
   W_argument_thin: "WARNING",
+  // rubric v1 신설 (WARNING·비차단)
+  W_struct_missing: "WARNING",
+  W_scratchpad_leak: "WARNING",
+  W_verbose: "WARNING",
   W_expression_analysis_missing: "WARNING",
   W_single_evidence: "WARNING",
 
