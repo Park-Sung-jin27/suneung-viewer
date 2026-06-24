@@ -219,6 +219,43 @@ function parseMarkdownTable(text) {
   return { before, header, rows, after };
 }
 
+// 흐름도 (flowchart) 파서 — Code B↔A 합의 포맷 path:
+//   포맷: 보기 text 안 "↓" 단독 line (whitespace 허용) 안 박스 구분자 path.
+//   ex)  ○ box1 line A
+//        ○ box1 line B ⓐ
+//        ↓
+//        ○ box2 line A
+//        ↓
+//        ○ box3 line A ⓒ
+//   각 box = 연속 line 묶음 path. 박스 사이 ↓ 안 시각 화살표 path 정합.
+//   단일 ↓ 없으면 null 반환 path → plain text fallback path.
+//   r2024a Q3 단독 (FREE 1문항 §5) — 범용 흐름도 엔진 NOT path.
+const FLOW_ARROW_RE = /^\s*↓\s*$/;
+function parseFlowchart(text) {
+  if (!text || typeof text !== "string") return null;
+  const lines = text.split("\n");
+  // 단독 ↓ line 검출 (1건 이상 path 정합)
+  const hasArrow = lines.some((l) => FLOW_ARROW_RE.test(l));
+  if (!hasArrow) return null;
+  const boxes = [];
+  let buf = [];
+  for (const l of lines) {
+    if (FLOW_ARROW_RE.test(l)) {
+      if (buf.length > 0) {
+        boxes.push(buf.join("\n").trim());
+        buf = [];
+      }
+    } else {
+      buf.push(l);
+    }
+  }
+  if (buf.length > 0) boxes.push(buf.join("\n").trim());
+  // 빈 박스 제거 path
+  const filtered = boxes.filter((b) => b.length > 0);
+  if (filtered.length < 2) return null; // 단일 박스 path 안 flowchart NOT
+  return { boxes: filtered };
+}
+
 // applyBogiInlineAnns(text, anns)
 //   bogi string 안 inline underline/box/blank-box overlay path.
 //   plain text + substring match path — replaceImagePlaceholders 미적용.
@@ -434,6 +471,54 @@ function BogiRenderer({ bogi, anns = [] }) {
             </div>
           )}
         </>,
+      );
+    }
+    // 흐름도 detection — bogi 안 단독 ↓ line 검출 시 박스 + 화살표 렌더 path.
+    //   r2024a Q3 PDF p.1 단독 사양 (FREE 1문항 §5).
+    //   anns 영향 NOT path (flowchart box 안 plain text 단독 — annotation
+    //   overlay 미적용 의무 path 안 r2024a Q3 안 bogi annotation 부재 정합).
+    const flow = parseFlowchart(bogi);
+    if (flow) {
+      return wrap(
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "6px",
+          }}
+        >
+          {flow.boxes.map((box, i) => (
+            <div key={i} style={{ width: "100%" }}>
+              <div
+                style={{
+                  border: "1px solid #6b7280",
+                  borderRadius: "4px",
+                  padding: "10px 12px",
+                  whiteSpace: "pre-wrap",
+                  textAlign: "left",
+                  background: "#fafafa",
+                }}
+              >
+                {box}
+              </div>
+              {i < flow.boxes.length - 1 && (
+                <div
+                  aria-hidden
+                  style={{
+                    textAlign: "center",
+                    fontSize: "1.1rem",
+                    color: "#6b7280",
+                    lineHeight: 1,
+                    marginTop: "4px",
+                  }}
+                >
+                  ↓
+                </div>
+              )}
+            </div>
+          ))}
+        </div>,
       );
     }
     // anns 있으면 substring underline overlay 우선 path.
