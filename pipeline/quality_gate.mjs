@@ -685,8 +685,20 @@ for (const yearKey of yearsToCheck) {
           // ── rubric v1 신설 게이트 3종 (WARNING·비차단, 재정비 트리거) ──
           if (ana && ana.trim()) {
             // W_struct_missing: ok:false인데 🔍/📌/❌ 3단 블록 부재
+            //   어휘/문맥 의미 문항 제외 — §6 isVocabQuestion(키워드+마지막문항) 또는
+            //   문맥 의미 해설 format("[문맥 속 의미]"). 단 보기 문항(감상)은 제외에서 빼냄.
+            const _isLastQ =
+              q.id === Math.max(...set.questions.map((x) => x.id));
+            const _vocabKw =
+              /사전적\s*의미|문맥(상|적)\s*의미|밑줄\s*친.*의미|단어의\s*뜻|바꾸?어\s*쓰기|바꿔\s*쓰기|가까운\s*의미|의미를\s*설명/.test(
+                q.t || "",
+              );
+            const _hasBogi = !!(q.bogi && String(q.bogi).trim());
+            const _isVocabLike =
+              (_isLastQ && _vocabKw) || ana.includes("[문맥 속 의미]");
             if (
               c.ok === false &&
+              !(_isVocabLike && !_hasBogi) &&
               !(ana.includes("🔍") && ana.includes("📌") && ana.includes("❌"))
             ) {
               issue(
