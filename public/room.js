@@ -223,6 +223,75 @@
     if(av === bv) return high ? a : b;
     return high ? (av > bv ? a : b) : (av < bv ? a : b);
   }
+  const CHEM_KEYS = ["speed","attraction","expression","stability","recovery"];
+  function axisValue(person,key){ return axis(person.profile,key).score; }
+  function axisGapFor(a,b,key){ return Math.abs(axisValue(a,key) - axisValue(b,key)); }
+  function axisAvgFor(a,b,key){ return (axisValue(a,key) + axisValue(b,key)) / 2; }
+  function secondaryKey(a,b,skip=[]){
+    const skipped = new Set(skip);
+    return CHEM_KEYS
+      .filter((key)=>!skipped.has(key))
+      .map((key,index)=>({
+        key,
+        index,
+        gap:axisGapFor(a,b,key),
+        edge:Math.abs(axisAvgFor(a,b,key)-60)
+      }))
+      .sort((x,y)=>y.gap-x.gap || y.edge-x.edge || x.index-y.index)[0].key;
+  }
+  function elementFlavor(person){
+    const flavors = {
+      목:"새 얘깃거리를 잘 여는 쪽",
+      화:"분위기를 먼저 밝히는 쪽",
+      토:"자리를 오래 지키는 쪽",
+      금:"기준을 또렷하게 잡는 쪽",
+      수:"조용히 오래 보는 쪽"
+    };
+    return flavors[person?.profile?.element] || "자기 결이 분명한 쪽";
+  }
+  function secondaryDetail(key,a,b){
+    if(key==="speed"){
+      const fast=roleByScore(a,b,"speed",true), slow=roleByScore(a,b,"speed",false);
+      return {
+        label:"템포차",
+        line:topic(fast) + " 먼저 움직이고, " + topic(slow) + " 그 움직임이 괜찮은지 한 번 더 봐요.",
+        point:"한 명은 바로 약속을 잡고, 한 명은 날짜와 분위기를 확인합니다. 그래서 즉흥도 되고 안전핀도 생겨요."
+      };
+    }
+    if(key==="expression"){
+      const loud=roleByScore(a,b,"expression",true), quiet=roleByScore(a,b,"expression",false);
+      return {
+        label:"말투차",
+        line:topic(loud) + " 표정과 말이 먼저 보이고, " + topic(quiet) + " 짧게 받다가 나중에 한마디로 정리해요.",
+        point:"둘이 있으면 누가 분위기를 켜고 누가 자막을 다는지 금방 보여요."
+      };
+    }
+    if(key==="recovery"){
+      const quick=roleByScore(a,b,"recovery",false), slow=roleByScore(a,b,"recovery",true);
+      return {
+        label:"푸는 방식차",
+        line:"뭔가 엇갈리면 " + topic(quick) + " 빨리 털고 싶고, " + topic(slow) + " 조금 두었다가 말이 나와요.",
+        point:"한 명은 바로 톡, 한 명은 읽고 생각하다가 한 줄. 둘 다 나름의 회복 버튼이 다릅니다."
+      };
+    }
+    if(key==="stability"){
+      const anchor=roleByScore(a,b,"stability",true), mover=roleByScore(a,b,"stability",false);
+      return {
+        label:"자리감차",
+        line:topic(anchor) + " 기본 자리를 잡고, " + topic(mover) + " 그 안에서 재미있는 틈을 찾아요.",
+        point:"모임을 잡으면 한 명은 시간표, 한 명은 사이드퀘스트. 계획이 덜 심심해집니다."
+      };
+    }
+    const spark=roleByScore(a,b,"attraction",true), steady=roleByScore(a,b,"attraction",false);
+    return {
+      label:"친해지는 결차",
+      line:subject(spark) + " 장면의 재미를 먼저 보고, " + subject(steady) + " 그 자리가 편한지 한 번 더 봐요.",
+      point:"한 명은 색다른 메뉴, 한 명은 오래 앉기 좋은 자리. 그래서 애매하게 좋은 균형이 나옵니다."
+    };
+  }
+  function defaultPointByElement(a,b){
+    return topic(a) + " " + elementFlavor(a) + ", " + topic(b) + " " + elementFlavor(b) + "이라 같은 자리에서도 보는 포인트가 살짝 달라요.";
+  }
   function chem(a,b){
     const pa=a.profile, pb=b.profile;
     const speedGap=Math.abs(axis(pa,"speed").score - axis(pb,"speed").score);
@@ -239,48 +308,121 @@
     let point="처음엔 조용해도 묘하게 편해서, 나중에 보면 둘만 아는 농담이 하나씩 쌓입니다.";
     if(speedGap>=28){
       const fast=roleByScore(a,b,"speed",true), slow=roleByScore(a,b,"speed",false);
-      label="불 지르고 천천히 데우는 사이";
-      line=topic(fast) + " 먼저 '가자'가 나오고, " + topic(slow) + " '잠깐, 진짜?'를 한 번 거쳐요.";
-      point="여행 가면 출발 버튼은 한 명, 브레이크와 방향감각은 한 명. 속도차가 은근히 그림이 됩니다.";
+      const second=secondaryKey(a,b,["speed"]);
+      const detail=secondaryDetail(second,a,b);
+      if(second==="expression") label="불 지르고 자막 맞추는 사이";
+      else if(second==="recovery") label="먼저 달리고 나중에 풀어가는 사이";
+      else if(second==="stability") label="출발 버튼과 안전벨트 사이";
+      else if(second==="attraction") label="먼저 가자는 쪽과 자리 보는 쪽";
+      else label="불 지르고 천천히 데우는 사이";
+      line=topic(fast) + " 먼저 '가자'가 나오고, " + topic(slow) + " '잠깐, 진짜?'를 한 번 거쳐요. " + detail.line;
+      point=detail.point + " " + topic(fast) + " " + elementFlavor(fast) + "이라 장면을 먼저 움직입니다.";
     } else if(attractionAvg>=74){
-      label="앉자마자 말 붙는 사이";
-      line="둘은 메뉴 고르기도 전에 얘기가 먼저 새는 조합이에요.";
-      point="누가 시동 걸었는지 모르게 웃고 있다가, 계산할 때쯤 '우리 왜 이렇게 많이 말했지?' 하는 그림.";
+      const second=secondaryKey(a,b,["attraction"]);
+      const detail=secondaryDetail(second,a,b);
+      if(second==="expression") label="앉자마자 받아치는 사이";
+      else if(second==="speed") label="말 붙고 바로 움직이는 사이";
+      else if(second==="recovery") label="웃다가 각자 식히는 사이";
+      else if(second==="stability") label="재밌는데 자리도 잡는 사이";
+      else label="앉자마자 말 붙는 사이";
+      line="둘은 메뉴 고르기도 전에 얘기가 먼저 새는 사이예요. " + detail.line;
+      point=detail.point;
     } else if(stabilityAvg>=74){
-      label="텐션은 낮은데 유통기한 긴 사이";
-      line="둘은 매일 요란하지 않아도 잘 안 끊겨요.";
-      point="며칠 조용하다가 '뭐해' 한마디면 바로 어제 본 듯. 오래 두고 봐도 맛이 안 빠지는 편안함이 있어요.";
+      const second=secondaryKey(a,b,["stability"]);
+      const detail=secondaryDetail(second,a,b);
+      if(second==="expression") label="조용한데 한마디가 정확한 사이";
+      else if(second==="recovery") label="뜸해도 다시 이어지는 사이";
+      else if(second==="speed") label="느긋한데 템포는 다른 사이";
+      else if(second==="attraction") label="편해서 자꾸 앉게 되는 사이";
+      else label="텐션은 낮은데 유통기한 긴 사이";
+      line="둘은 매일 요란하지 않아도 잘 안 끊겨요. " + detail.line;
+      point="며칠 조용하다가 '뭐해' 한마디면 바로 어제 본 듯합니다. " + detail.point;
     } else if(expressionGap>=22){
       const loud=roleByScore(a,b,"expression",true), quiet=roleByScore(a,b,"expression",false);
-      label="자막 켜는 쪽과 무음모드 쪽";
-      line=topic(loud) + " 표정과 말이 바로 보이고, " + topic(quiet) + " 반응을 짧게 남기는 편이에요.";
-      point="그래서 가끔 '지금 웃긴 거 맞지?' 확인 타임이 생깁니다. 묘하게 그게 둘의 웃음 포인트예요.";
+      const second=secondaryKey(a,b,["expression"]);
+      const detail=secondaryDetail(second,a,b);
+      if(second==="speed") label="자막 켜고 템포 맞추는 사이";
+      else if(second==="recovery") label="말 많은 쪽과 묵히는 쪽";
+      else if(second==="stability") label="리액션과 기준선이 만나는 사이";
+      else if(second==="attraction") label="표현은 다른데 장면은 같이 줍는 사이";
+      else label="자막 켜는 쪽과 무음모드 쪽";
+      line=topic(loud) + " 표정과 말이 바로 보이고, " + topic(quiet) + " 반응을 짧게 남기는 편이에요. " + detail.line;
+      point="가끔 '지금 웃긴 거 맞지?' 확인 타임이 생깁니다. " + detail.point;
     } else if(recoveryGap>=24){
       const quick=roleByScore(a,b,"recovery",false), slow=roleByScore(a,b,"recovery",true);
-      label="바로 풀기와 숙성시키기 사이";
-      line="뭔가 걸리면 " + topic(quick) + " 빨리 털고 싶고, " + topic(slow) + " 잠깐 조용히 뒀다가 돌아오는 쪽이에요.";
-      point="단톡방에서도 한 명은 바로 톡, 한 명은 읽고 생각하다가 늦게 한 줄. 그래도 판은 쉽게 안 깨집니다.";
+      const second=secondaryKey(a,b,["recovery"]);
+      const detail=secondaryDetail(second,a,b);
+      if(second==="expression") label="바로 말하기와 늦게 정리하기 사이";
+      else if(second==="speed") label="빨리 풀고 천천히 따라오는 사이";
+      else if(second==="stability") label="툭 풀고 다시 자리 잡는 사이";
+      else if(second==="attraction") label="엇갈려도 다시 재밌어지는 사이";
+      else label="바로 풀기와 숙성시키기 사이";
+      line="뭔가 걸리면 " + topic(quick) + " 빨리 털고 싶고, " + topic(slow) + " 잠깐 조용히 뒀다가 돌아오는 쪽이에요. " + detail.line;
+      point="그래도 판은 쉽게 안 깨집니다. " + detail.point;
     } else if(speedAvg>=72){
-      label="번개가 번개를 부르는 사이";
-      line="둘 다 불 붙는 속도가 빨라서 '잠깐 볼래?'가 진짜 약속이 되기 쉬워요.";
-      point="계획표보다 현장감. 만나면 코스가 중간에 자꾸 바뀌는데 이상하게 그게 더 재밌습니다.";
+      const second=secondaryKey(a,b,["speed"]);
+      const detail=secondaryDetail(second,a,b);
+      if(second==="expression") label="번개에 리액션까지 빠른 사이";
+      else if(second==="stability") label="즉흥인데 은근 질서 있는 사이";
+      else if(second==="recovery") label="빨리 모이고 빨리 푸는 사이";
+      else if(second==="attraction") label="가자마자 새 장면 찾는 사이";
+      else label="번개가 번개를 부르는 사이";
+      line="둘 다 움직이는 속도가 빨라서 '잠깐 볼래?'가 진짜 약속이 되기 쉬워요. " + detail.line;
+      point="계획표보다 현장감이 먼저입니다. " + detail.point;
     } else if(speedAvg<=48 && recoveryAvg>=72){
-      label="각자 잘 사는데 묘하게 안 끊기는 사이";
-      line="둘 다 자주 확인하지 않아도 자기 자리에서 조용히 이어지는 편이에요.";
-      point="연락이 뜸해도 어색함보다 '아, 얘 원래 이렇지'가 먼저 와요. 오래된 북마크 같은 사이.";
+      const second=secondaryKey(a,b,["speed","recovery"]);
+      const detail=secondaryDetail(second,a,b);
+      if(second==="expression") label="말은 적어도 자막이 남는 사이";
+      else if(second==="stability") label="각자 잘 사는데 자리 잡힌 사이";
+      else if(second==="attraction") label="조용한데 장면은 기억나는 사이";
+      else label="각자 잘 사는데 묘하게 안 끊기는 사이";
+      line="둘 다 자주 확인하지 않아도 자기 자리에서 조용히 이어지는 편이에요. " + detail.line;
+      point="오래된 북마크처럼, 자주 열지 않아도 사라지지 않는 느낌이 있습니다. " + defaultPointByElement(a,b);
     } else if(stabilityGap>=22){
       const anchor=roleByScore(a,b,"stability",true), mover=roleByScore(a,b,"stability",false);
-      label="판 까는 사람과 빈틈 찾는 사람";
-      line=topic(anchor) + " 자리를 안정시키고, " + topic(mover) + " 그 안에서 재미있는 틈을 찾아요.";
-      point="모임 잡으면 한 명은 시간표, 한 명은 사이드퀘스트. 둘이 붙으면 계획이 덜 심심해집니다.";
+      const second=secondaryKey(a,b,["stability"]);
+      const detail=secondaryDetail(second,a,b);
+      if(second==="expression") label="판 깔고 말맛 살리는 사이";
+      else if(second==="speed") label="자리 잡고 움직임 넣는 사이";
+      else if(second==="recovery") label="흔들려도 다시 앉는 사이";
+      else if(second==="attraction") label="기준과 재미가 같이 있는 사이";
+      else label="판 까는 사람과 빈틈 찾는 사람";
+      line=topic(anchor) + " 자리를 안정시키고, " + topic(mover) + " 그 안에서 재미있는 틈을 찾아요. " + detail.line;
+      point=detail.point;
     } else if(attractionGap>=22){
       const spark=roleByScore(a,b,"attraction",true), steady=roleByScore(a,b,"attraction",false);
-      label="분위기 줍는 쪽과 기준 보는 쪽";
-      line=subject(spark) + " 장면의 재미를 먼저 보고, " + subject(steady) + " 그 장면이 편한지 한 번 더 봐요.";
-      point="그래서 둘이 고른 장소는 너무 튀지도, 너무 심심하지도 않은 애매하게 좋은 곳이 됩니다.";
+      const second=secondaryKey(a,b,["attraction"]);
+      const detail=secondaryDetail(second,a,b);
+      if(second==="expression") label="장면 줍고 말맛 살리는 사이";
+      else if(second==="speed") label="재미 찾는 속도가 다른 사이";
+      else if(second==="recovery") label="다르게 놀고 다르게 쉬는 사이";
+      else if(second==="stability") label="분위기와 기준이 같이 앉는 사이";
+      else label="분위기 줍는 쪽과 기준 보는 쪽";
+      line=subject(spark) + " 장면의 재미를 먼저 보고, " + subject(steady) + " 그 장면이 편한지 한 번 더 봐요. " + detail.line;
+      point="그래서 둘이 고른 장소는 너무 튀지도, 너무 심심하지도 않은 애매하게 좋은 곳이 됩니다. " + detail.point;
     }
     const distinct = Math.round(speedGap + expressionGap + recoveryGap + Math.abs(stabilityAvg-60) + Math.abs(attractionAvg-60));
     return { label,line,point,score:distinct };
+  }
+  function normalizeCardText(text,me,other){
+    return String(text || "")
+      .split(personName(me)).join("나")
+      .split(personName(other)).join("상대");
+  }
+  function warnDuplicateCards(cards,me){
+    const seen = new Map();
+    cards.forEach((item)=>{
+      const key = [
+        item.data.label,
+        normalizeCardText(item.data.line,me,item.other),
+        normalizeCardText(item.data.point,me,item.other)
+      ].join("|");
+      const names = seen.get(key) || [];
+      names.push(item.other.name);
+      seen.set(key,names);
+    });
+    const duplicates = Array.from(seen.entries()).filter(([,names])=>names.length>1);
+    if(duplicates.length) console.warn("[JIPPI room] duplicate chemistry cards", duplicates.map(([key,names])=>({ key, names })));
   }
   function renderRoom(){
     const room=state.room;
@@ -299,6 +441,7 @@
       return;
     }
     const cards = others.map((other)=>({ other, data:chem(me,other) })).sort((a,b)=>b.data.score-a.data.score);
+    warnDuplicateCards(cards,me);
     const top = cards.slice(0,2).map((item)=>escapeHtml(me.name) + " ↔ " + escapeHtml(item.other.name) + " = " + escapeHtml(item.data.label)).join(" · ");
     $("highlightBox").classList.remove("hidden");
     $("highlightBox").innerHTML = "<b>이 방에서 눈에 띄는 결</b><br>" + top;
