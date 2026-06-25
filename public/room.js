@@ -179,9 +179,9 @@
     const code = state.room?.code || state.code;
     if(!code) return;
     const url = roomUrl(code);
-    const text = "JIPPI 인연 케미 방에 들어와서 나랑 어떤 결로 통하는지 봐줘.\n" + url;
+    const text = "JIPPI 단톡 케미 무료로 알아보기에서 나랑 어떤 결로 통하는지 봐줘.\n" + url;
     if(navigator.share){
-      try { await navigator.share({ title:"JIPPI 인연 케미 방", text, url }); return; } catch(e) {}
+      try { await navigator.share({ title:"JIPPI 단톡 케미 무료로 알아보기", text, url }); return; } catch(e) {}
     }
     await copyRoomLink();
   }
@@ -541,7 +541,7 @@
       history.replaceState(null, "", "/room/" + state.code);
       setupMode();
       renderRoom();
-      setStatus("케미 방이 열렸어요.");
+      setStatus("단톡 케미가 열렸어요.");
     } catch(e) {
       setStatus(e.message || "처리하지 못했어요.");
     } finally {
