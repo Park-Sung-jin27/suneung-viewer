@@ -10,10 +10,14 @@ function nowIso() {
 }
 
 function hasBlobConfig() {
-  return Boolean(
-    process.env.BLOB_READ_WRITE_TOKEN ||
-      (process.env.BLOB_STORE_ID && process.env.VERCEL_OIDC_TOKEN),
-  );
+  return Boolean(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
+}
+
+function blobAuthOptions() {
+  const options = {};
+  if (process.env.BLOB_READ_WRITE_TOKEN) options.token = process.env.BLOB_READ_WRITE_TOKEN;
+  if (process.env.BLOB_STORE_ID) options.storeId = process.env.BLOB_STORE_ID;
+  return options;
 }
 
 function sendJson(res, status, body) {
@@ -123,7 +127,7 @@ async function blobText(result) {
 async function readRoom(code) {
   if (!hasBlobConfig()) throw new Error("BLOB_STORAGE_NOT_CONFIGURED");
   try {
-    const result = await get(roomKey(code), { access: BLOB_ACCESS });
+    const result = await get(roomKey(code), { access: BLOB_ACCESS, ...blobAuthOptions() });
     const text = await blobText(result);
     return text ? JSON.parse(text) : null;
   } catch (error) {
@@ -139,6 +143,7 @@ async function writeRoom(room) {
     contentType: "application/json; charset=utf-8",
     allowOverwrite: true,
     cacheControlMaxAge: 60,
+    ...blobAuthOptions(),
   });
 }
 
@@ -243,7 +248,7 @@ export async function handleInyeonRoom(req, res, rawCode = "") {
     return sendJson(res, missingStore ? 503 : badRequest ? 400 : 500, {
       ok: false,
       error: message,
-      needsEnv: missingStore ? ["BLOB_READ_WRITE_TOKEN or BLOB_STORE_ID + VERCEL_OIDC_TOKEN"] : undefined,
+      needsEnv: missingStore ? ["BLOB_READ_WRITE_TOKEN or BLOB_STORE_ID"] : undefined,
     });
   }
 }
