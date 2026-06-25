@@ -493,10 +493,17 @@ for (const yearKey of yearsToCheck) {
           }
         }
         const mkSet = globalThis.__mkChars;
-        // available: 지문 sent.t 안 마커 char ∪ annotation 마커
+        // available: 지문 sent.t ∪ annotation 마커 ∪ 보기-정의 라벨(diagram/annotated_image의
+        //   description·items[].label·text 안 ㉠/ⓐ — 보기 내부 라벨은 지문 정박 불요, FP 차단)
         const avail = new Set();
         for (const s of set.sents || [])
           for (const ch of s.t || "") if (mkSet.has(ch)) avail.add(ch);
+        for (const q of set.questions || []) {
+          if (!q.bogi) continue;
+          const bstr =
+            typeof q.bogi === "string" ? q.bogi : JSON.stringify(q.bogi);
+          for (const ch of bstr) if (mkSet.has(ch)) avail.add(ch);
+        }
         const annList = (globalThis.__annAll[yearKey] || {})[set.id] || [];
         let hasBracketAnn = false;
         for (const a of annList) {
