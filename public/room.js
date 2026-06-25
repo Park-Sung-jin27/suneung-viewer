@@ -249,6 +249,59 @@
     };
     return flavors[person?.profile?.element] || "자기 결이 분명한 쪽";
   }
+  function topAxis(person){
+    return CHEM_KEYS
+      .map((key,index)=>({
+        key,
+        index,
+        score:axisValue(person,key),
+        edge:Math.abs(axisValue(person,key)-60)
+      }))
+      .sort((x,y)=>y.score-x.score || y.edge-x.edge || x.index-y.index)[0]?.key || "stability";
+  }
+  function hashText(value){
+    let hash=2166136261;
+    String(value || "").split("").forEach((ch)=>{
+      hash ^= ch.charCodeAt(0);
+      hash = Math.imul(hash, 16777619);
+    });
+    return hash >>> 0;
+  }
+  function pickByHash(list,hash,offset=0){
+    return list[(hash + offset) % list.length];
+  }
+  function signaturePhrase(person){
+    const element = person?.profile?.element || "토";
+    const key = topAxis(person);
+    const elementPhrases = {
+      목:["같이 배우고 넓히는","새 얘깃거리를 여는","얘기를 자연스럽게 넓히는"],
+      화:["표정이 환한","반응이 빨리 밝아지는","먼저 웃음을 켜는"],
+      토:["자리를 편하게 만드는","흐름을 차분히 붙잡는","믿고 앉게 만드는"],
+      금:["기준이 또렷한","말을 깔끔하게 정리하는","선이 분명한"],
+      수:["조용히 오래 보는","분위기를 깊게 읽는","말보다 여운이 긴"]
+    };
+    const axisPhrases = {
+      speed:["첫 박자가 빠른","타이밍을 빨리 잡는","먼저 움직이는"],
+      attraction:["같이 놀 포인트를 빨리 찾는","장면의 재미를 잘 줍는","분위기를 빨리 읽는"],
+      expression:["리액션이 선명한","표정이 잘 보이는","말맛이 살아 있는"],
+      stability:["자리를 편하게 잡는","흐름을 안정시키는","오래 앉아도 편한"],
+      recovery:["잠깐 쉬고 돌아오는","분위기를 다시 누그러뜨리는","끊어진 말을 다시 이어주는"]
+    };
+    const seed = [
+      personName(person),
+      element,
+      key,
+      person?.profile?.dayPillar || "",
+      person?.profile?.hourPillar || ""
+    ].join("|");
+    const hash = hashText(seed);
+    const first = pickByHash(elementPhrases[element] || elementPhrases.토, hash);
+    const second = pickByHash(axisPhrases[key] || axisPhrases.stability, Math.floor(hash / 7));
+    return first === second ? first : first + ", " + second;
+  }
+  function signatureLead(person){
+    return signaturePhrase(person) + " 느낌이라,";
+  }
   function secondaryDetail(key,a,b){
     if(key==="speed"){
       const fast=roleByScore(a,b,"speed",true), slow=roleByScore(a,b,"speed",false);
@@ -401,6 +454,7 @@
       line=subject(spark) + " 장면의 재미를 먼저 보고, " + subject(steady) + " 그 장면이 편한지 한 번 더 봐요. " + detail.line;
       point="그래서 둘이 고른 장소는 너무 튀지도, 너무 심심하지도 않은 애매하게 좋은 곳이 됩니다. " + detail.point;
     }
+    line = signatureLead(b) + " " + line;
     const distinct = Math.round(speedGap + expressionGap + recoveryGap + Math.abs(stabilityAvg-60) + Math.abs(attractionAvg-60));
     return { label,line,point,score:distinct };
   }
