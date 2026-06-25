@@ -23,7 +23,11 @@ function blobAuthOptions() {
 function sendJson(res, status, body) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json; charset=utf-8");
-  res.setHeader("Cache-Control", "no-store");
+  res.setHeader("Cache-Control", "no-store, max-age=0");
+  res.setHeader("CDN-Cache-Control", "no-store");
+  res.setHeader("Vercel-CDN-Cache-Control", "no-store");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   res.end(JSON.stringify(body));
 }
 
@@ -127,7 +131,7 @@ async function blobText(result) {
 async function readRoom(code) {
   if (!hasBlobConfig()) throw new Error("BLOB_STORAGE_NOT_CONFIGURED");
   try {
-    const result = await get(roomKey(code), { access: BLOB_ACCESS, ...blobAuthOptions() });
+    const result = await get(roomKey(code), { access: BLOB_ACCESS, useCache: false, ...blobAuthOptions() });
     const text = await blobText(result);
     return text ? JSON.parse(text) : null;
   } catch (error) {

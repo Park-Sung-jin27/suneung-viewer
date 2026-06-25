@@ -143,7 +143,9 @@
     return match ? match[1].toUpperCase() : "";
   }
   async function api(path, options){
-    const res = await fetch(path, { headers:{ "content-type":"application/json" }, ...options });
+    const method = String(options?.method || "GET").toUpperCase();
+    const url = method === "GET" ? path + (path.includes("?") ? "&" : "?") + "t=" + Date.now() : path;
+    const res = await fetch(url, { cache:"no-store", headers:{ "content-type":"application/json" }, ...options });
     const data = await res.json().catch(() => ({}));
     if(!res.ok || !data.ok) throw new Error(data.error || "요청을 처리하지 못했습니다.");
     return data.room;
