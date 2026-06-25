@@ -9,6 +9,8 @@
     }
   ],
   "rewrites": [
+    { "source": "/room", "destination": "/room.html" },
+    { "source": "/room/(.*)", "destination": "/room.html" },
     { "source": "/auth", "destination": "/index.html" },
     { "source": "/exams", "destination": "/index.html" },
     { "source": "/viewer", "destination": "/index.html" },

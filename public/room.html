@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>인연 케미 방 | JIPPI</title>
+  <meta name="description" content="친구들과 생년월일로 보는 무료 인연 케미 방. 누구와 어떤 결로 잘 통하는지 가볍게 확인해보세요." />
+  <meta property="og:title" content="JIPPI 인연 케미 방" />
+  <meta property="og:description" content="단톡방 친구들과 누구와 어떤 결로 잘 통하는지 무료로 확인해보세요." />
+  <meta property="og:type" content="website" />
+  <script defer src="/room.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#191512;
+      --panel:#241f1a;
+      --panel2:#2d2720;
+      --line:rgba(226,180,109,.24);
+      --gold:#f1c987;
+      --mint:#a9d7bf;
+      --text:#fff6e8;
+      --muted:#d9bda2;
+      --deep:#10100f;
+      --green:#315e59;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Pretendard,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(74,112,91,.34), transparent 32%),
+        radial-gradient(circle at 80% 18%, rgba(142,91,49,.26), transparent 30%),
+        linear-gradient(180deg,#181411 0%,#211b16 48%,#151311 100%);
+      letter-spacing:0;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1080px,calc(100% - 32px));margin:0 auto}
+    .top{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(14px);
+      background:rgba(25,21,18,.82);
+      border-bottom:1px solid rgba(226,180,109,.14)
+    }
+    .top-inner{height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:950}
+    .brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#4f7f39,#f1c987);display:grid;place-items:center;color:#17110c;font-weight:950}
+    .top a.btn{padding:9px 13px;border-radius:999px;border:1px solid rgba(241,201,135,.34);color:#ffe1b8;font-weight:850;font-size:.86rem}
+    .hero{padding:52px 0 30px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(340px,.98fr);gap:26px;align-items:start}
+    .eyebrow{display:inline-flex;align-items:center;gap:7px;color:#ffdca7;background:rgba(241,201,135,.12);border:1px solid rgba(241,201,135,.22);border-radius:999px;padding:7px 12px;font-weight:900;font-size:.82rem}
+    h1{font-family:"Nanum Myeongjo",serif;font-size:clamp(2.2rem,5vw,4.35rem);line-height:1.08;margin:18px 0 16px;letter-spacing:0}
+    h1 em{font-style:normal;color:var(--gold)}
+    .lead{font-size:1.06rem;line-height:1.78;color:#f3dcc4;margin:0 0 22px;word-break:keep-all}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:6px;
+      border:0;border-radius:999px;padding:12px 16px;
+      font:inherit;font-weight:900;cursor:pointer;transition:.16s ease;
+      min-height:44px
+    }
+    .btn.primary{background:var(--gold);color:#20140e}
+    .btn.ghost{background:rgba(255,255,255,.06);color:#fff1db;border:1px solid rgba(241,201,135,.25)}
+    .btn:disabled{opacity:.52;cursor:not-allowed}
+    .panel{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
+      border-radius:20px;
+      padding:22px;
+      box-shadow:0 24px 70px rgba(0,0,0,.28)
+    }
+    .panel h2,.panel h3{font-family:"Nanum Myeongjo",serif;letter-spacing:0;margin:0 0 10px}
+    .panel p{color:var(--muted);line-height:1.68;margin:0 0 14px;word-break:keep-all}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    label{display:grid;gap:6px;color:#ffdca7;font-weight:800;font-size:.86rem}
+    label.full{grid-column:1/-1}
+    input,select{
+      width:100%;min-height:46px;border-radius:12px;border:1px solid rgba(241,201,135,.22);
+      background:rgba(0,0,0,.2);color:#fff7e8;padding:0 12px;font:inherit;font-size:1rem
+    }
+    .tiny{font-size:.8rem;color:#c9aa8b;line-height:1.55;margin-top:10px}
+    .hidden{display:none!important}
+    .status{margin-top:12px;color:#ffe0aa;font-weight:800;min-height:22px}
+    .share-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+    .room-link{font-size:.9rem;line-height:1.55;color:#ffe8c8;word-break:break-all;background:rgba(0,0,0,.22);border:1px solid rgba(241,201,135,.18);border-radius:12px;padding:11px 12px;margin-top:12px}
+    .section{padding:26px 0 58px}
+    .room-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:14px}
+    .room-head h2{font-family:"Nanum Myeongjo",serif;font-size:2rem;margin:0}
+    .room-head p{margin:5px 0 0;color:#d8bda1}
+    .people{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+    .chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:7px 11px;background:rgba(241,201,135,.12);border:1px solid rgba(241,201,135,.22);color:#ffe4bd;font-weight:850;font-size:.84rem}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .chem-card{
+      border:1px solid rgba(241,201,135,.2);
+      background:rgba(255,255,255,.055);
+      border-radius:16px;
+      padding:16px;
+      min-height:280px
+    }
+    .chem-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:9px}
+    .names{font-weight:950;color:#fff4e0;font-size:1.02rem}
+    .tag{flex:0 0 auto;border-radius:999px;background:rgba(169,215,191,.16);border:1px solid rgba(169,215,191,.26);color:#d8ffeb;padding:5px 9px;font-size:.76rem;font-weight:900}
+    .chem-card p{margin:0 0 11px;color:#efd8bd;line-height:1.64;word-break:keep-all}
+    .radar-row{display:grid;grid-template-columns:130px minmax(0,1fr);gap:12px;align-items:center;margin-top:10px}
+    .radar-row svg{width:130px;height:130px;display:block}
+    .axis-list{display:grid;gap:5px}
+    .axis-list div{background:rgba(0,0,0,.16);border:1px solid rgba(241,201,135,.12);border-radius:10px;padding:7px 8px;color:#dec4a8;font-size:.78rem;line-height:1.38}
+    .axis-list b{display:block;color:#fff0d7;margin-bottom:2px}
+    .highlight{
+      margin-bottom:14px;
+      padding:14px 16px;
+      border-radius:16px;
+      border:1px solid rgba(169,215,191,.25);
+      background:rgba(169,215,191,.09);
+      color:#e8fff2;
+      line-height:1.65
+    }
+    .notice{border:1px solid rgba(241,201,135,.2);background:rgba(0,0,0,.18);border-radius:16px;padding:14px 16px;color:#e8cdb0;line-height:1.65;margin-top:14px}
+    .cta-band{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+    @media(max-width:760px){
+      .hero{padding-top:34px}
+      .hero-grid,.grid{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+      label.full{grid-column:auto}
+      .room-head{display:block}
+      .radar-row{grid-template-columns:1fr}
+      .radar-row svg{margin:0 auto}
+      .panel{padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">J</span>
+        <span>JIPPI 인연 케미 방</span>
+      </a>
+      <a class="btn" href="/#preview">무료 미리보기</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">단톡방 친구들과 보는 무료 케미</span>
+          <h1>누가 더 낫나보다,<br><em>어떤 결로 통하는지</em> 봅니다</h1>
+          <p class="lead">생년월일과 생시를 넣으면 친구들과의 케미를 각 쌍마다 다르게 보여줍니다. 빠르게 불붙는 결, 천천히 깊어지는 결, 편하게 오래 가는 결처럼 서로 다른 리듬을 가볍게 확인해보세요.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#joinPanel">내 케미 보기</a>
+            <button class="btn ghost" type="button" id="heroShareBtn">방 링크 공유</button>
+          </div>
+        </div>
+
+        <section class="panel" id="joinPanel">
+          <h2 id="formTitle">인연 케미 방 만들기</h2>
+          <p id="formDesc">먼저 내 정보를 넣고 방을 만들면, 친구들이 같은 링크로 들어와 각자 케미를 확인할 수 있어요.</p>
+          <form id="roomForm">
+            <div class="form-grid">
+              <label class="full">표시 이름
+                <input id="displayName" maxlength="20" placeholder="예: 지우" autocomplete="nickname" required />
+              </label>
+              <label class="full">생년월일
+                <input id="birthDate" type="text" inputmode="numeric" maxlength="10" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="1999-09-09" required />
+              </label>
+              <label>양력/음력
+                <select id="calendar">
+                  <option value="solar">양력</option>
+                  <option value="lunar">음력</option>
+                </select>
+              </label>
+              <label>태어난 시간
+                <input id="birthTime" type="time" />
+              </label>
+              <label class="full">성인 여부
+                <select id="adultFlag">
+                  <option value="unknown">선택 안 함 · 친구 케미로 보기</option>
+                  <option value="adult">만 19세 이상</option>
+                  <option value="minor">만 19세 미만</option>
+                </select>
+              </label>
+            </div>
+            <button class="btn primary" id="submitBtn" type="submit" style="width:100%;margin-top:14px">방 만들기</button>
+            <p class="tiny">생년월일은 브라우저에서 계산한 뒤, 서버에는 일주·시주와 요약 좌표만 저장합니다. 미성년이 포함된 방은 친구 케미로만 보여줍니다.</p>
+            <div class="status" id="statusText"></div>
+          </form>
+          <div class="room-link hidden" id="roomLinkBox"></div>
+          <div class="share-row hidden" id="shareRow">
+            <button class="btn primary" type="button" id="shareBtn">단톡방에 공유</button>
+            <button class="btn ghost" type="button" id="copyBtn">링크 복사</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section hidden" id="resultSection">
+      <div class="wrap">
+        <div class="room-head">
+          <div>
+            <h2>이 방의 케미</h2>
+            <p id="roomSummary">친구들이 들어오면 케미 카드가 열립니다.</p>
+          </div>
+          <button class="btn ghost" type="button" id="refreshBtn">새로고침</button>
+        </div>
+        <div class="people" id="peopleList"></div>
+        <div id="highlightBox" class="highlight hidden"></div>
+        <div class="grid" id="chemGrid"></div>
+        <div class="notice">이 결과는 친구 사이의 리듬을 가볍게 보는 무료 케미입니다. 누가 더 좋고 나쁘다는 비교가 아니라, 각 쌍이 어떤 방식으로 편해지고 어디에서 살짝 엇갈리기 쉬운지를 보여줍니다.</div>
+        <div class="cta-band">
+          <a class="btn primary" href="/#products">내 전체 리포트 보기</a>
+          <a class="btn ghost" href="/#order">출시 알림 받기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
