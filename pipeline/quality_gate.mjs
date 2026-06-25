@@ -467,6 +467,112 @@ for (const yearKey of yearsToCheck) {
         }
       }
 
+      // ── [Gate] MARKER_INTEGRITY — 문항/선지 참조 마커·bracket ⊆ (지문 sent.t ∪ annotation) ──
+      //   위반 = 형광펜 정박 불가(학생이 선지의 ㉠/ⓐ를 지문에서 못 찾음) → CRITICAL.
+      //   [A]~[F] bracket은 set이 bracket annotation 보유 시 제외(오탐 방지).
+      {
+        if (!globalThis.__mkChars) {
+          try {
+            globalThis.__mkChars = new Set(
+              JSON.parse(
+                fs.readFileSync(
+                  path.resolve(__dirname, "../config/marker_chars.json"),
+                  "utf8",
+                ),
+              ).passage_markers,
+            );
+          } catch {
+            globalThis.__mkChars = new Set();
+          }
+        }
+        if (!globalThis.__annAll) {
+          try {
+            globalThis.__annAll = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));
+          } catch {
+            globalThis.__annAll = {};
+          }
+        }
+        const mkSet = globalThis.__mkChars;
+        // available: 지문 sent.t 안 마커 char ∪ annotation 마커
+        const avail = new Set();
+        for (const s of set.sents || [])
+          for (const ch of s.t || "") if (mkSet.has(ch)) avail.add(ch);
+        const annList = (globalThis.__annAll[yearKey] || {})[set.id] || [];
+        let hasBracketAnn = false;
+        for (const a of annList) {
+          if (a.marker && mkSet.has(a.marker)) avail.add(a.marker);
+          // [A]~[F]는 bracket/box/underline annotation(범위 정의) 또는 visual_marks로 제공됨.
+          //   bracket 무결성은 bracket_audit.mjs(SOURCE_BODY_MARKER_MISSING)가 전담 →
+          //   여기선 annotation 보유 set의 bracket 검사 제외(오탐 차단), 마커 전담.
+          if (
+            a.type === "bracket" ||
+            a.type === "box" ||
+            a.type === "underline"
+          )
+            hasBracketAnn = true;
+        }
+        // 지문 sent.t 안 [A]~[F]
+        const bracketAvail = new Set();
+        for (const s of set.sents || []) {
+          const bm = (s.t || "").match(/\[[A-F]\]/g);
+          if (bm) bm.forEach((b) => bracketAvail.add(b));
+        }
+        // visual_marks.json의 bracket/inline_label도 정박 소스 (정본 bracket 정의)
+        if (!globalThis.__vmMap) {
+          const vm = {};
+          try {
+            const vmJson = JSON.parse(
+              fs.readFileSync(
+                path.resolve(__dirname, "../public/data/visual_marks.json"),
+                "utf8",
+              ),
+            );
+            for (const m of vmJson.marks || []) {
+              if (!m.label) continue;
+              const key = (m.yearKey || "") + "::" + (m.setId || "");
+              (vm[key] ||= new Set()).add(`[${m.label}]`);
+            }
+          } catch {
+            /* visual_marks 없으면 무시 */
+          }
+          globalThis.__vmMap = vm;
+        }
+        const vmLabels = globalThis.__vmMap[yearKey + "::" + set.id];
+        if (vmLabels) for (const b of vmLabels) bracketAvail.add(b);
+        // referenced: 발문 + 선지만 (보기 제외 — 보기 내부 ⓐ~ⓔ 라벨은 지문 마커 아님, FP 차단)
+        const refMk = new Set();
+        const refBr = new Set();
+        for (const q of set.questions || []) {
+          let txt = q.t || "";
+          for (const c of q.choices || []) txt += c.t || "";
+          for (const ch of txt) if (mkSet.has(ch)) refMk.add(ch);
+          const bm = txt.match(/\[[A-F]\]/g);
+          if (bm) bm.forEach((b) => refBr.add(b));
+        }
+        for (const m of refMk) {
+          if (!avail.has(m))
+            issue(
+              "MARKER_INTEGRITY_FAIL",
+              yearKey,
+              `${set.id} ${m}`,
+              `문항/선지 참조 마커 ${m}이 지문/annotation에 부재 (형광펜 정박 불가)`,
+              "fatal",
+            );
+        }
+        if (!hasBracketAnn) {
+          for (const b of refBr) {
+            if (!bracketAvail.has(b))
+              issue(
+                "MARKER_INTEGRITY_FAIL",
+                yearKey,
+                `${set.id} ${b}`,
+                `문항/선지 참조 ${b}이 지문/bracket annotation에 부재`,
+                "fatal",
+              );
+          }
+        }
+      }
+
       for (const q of set.questions) {
         // [Gate 7] --golden 지정 시 골든셋 외 스킵
         if (GOLDEN_ONLY && !goldenMatch(yearKey, set.id, q.id)) continue;
@@ -1426,6 +1532,7 @@ const SEVERITY_MAP = {
   C_work_mismatch: "CRITICAL", // Tier 1
   C_label_domain_mismatch: "CRITICAL", // Tier 1 (pat R ↔ 라벨 L / 반대)
   C_vpat_dirty: "CRITICAL", // Tier 1 (pat=V 인데 cs_ids/cs_spans 비어있지 않음)
+  MARKER_INTEGRITY_FAIL: "CRITICAL", // Tier 1 (참조 마커/bracket이 지문·annotation에 부재 = 형광펜 정박 불가)
 
   // WARNING (품질 향상) — Tier 2·3
   // Tier 2 (검증 필요 — 승격 후보, false positive 검수 후 CRITICAL로)
