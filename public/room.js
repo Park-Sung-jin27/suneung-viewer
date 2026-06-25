@@ -8,14 +8,14 @@
   const ELEM_BY_STEM = ["목","목","화","화","토","토","금","금","수","수"];
   const AXES = [
     { key:"speed", label:"반응 속도" },
-    { key:"attraction", label:"끌림 방식" },
+    { key:"attraction", label:"친해지는 결" },
     { key:"expression", label:"표현" },
     { key:"stability", label:"편안함" },
     { key:"recovery", label:"회복" }
   ];
   const ELEMENT_COORDS = {
-    목:{ label:"자라나는 결", teaser:"같이 배우고 넓히는 흐름에 마음이 열립니다.", scores:{speed:68,attraction:70,expression:66,stability:56,recovery:58}, levels:{speed:"먼저 움직임",attraction:"같이 성장",expression:"제안형",stability:"변화 필요",recovery:"대화로 회복"} },
-    화:{ label:"밝게 켜지는 결", teaser:"표현과 반응이 살아날 때 가까워집니다.", scores:{speed:84,attraction:82,expression:78,stability:48,recovery:52}, levels:{speed:"빠르게 켜짐",attraction:"순간 호감",expression:"표현 선명",stability:"온도 변화",recovery:"사과가 중요"} },
+    목:{ label:"자라나는 결", teaser:"같이 배우고 넓히는 흐름에서 대화가 열립니다.", scores:{speed:68,attraction:70,expression:66,stability:56,recovery:58}, levels:{speed:"먼저 움직임",attraction:"같이 성장",expression:"제안형",stability:"변화 필요",recovery:"대화로 회복"} },
+    화:{ label:"밝게 켜지는 결", teaser:"표현과 반응이 살아날 때 금세 가까워집니다.", scores:{speed:84,attraction:82,expression:78,stability:48,recovery:52}, levels:{speed:"빠르게 켜짐",attraction:"금세 친해짐",expression:"표현 선명",stability:"온도 변화",recovery:"사과가 중요"} },
     토:{ label:"천천히 쌓이는 결", teaser:"반복되는 태도와 약속에서 편해집니다.", scores:{speed:52,attraction:58,expression:52,stability:82,recovery:70}, levels:{speed:"천천히 확인",attraction:"익숙함",expression:"담백함",stability:"약속 중심",recovery:"시간으로 회복"} },
     금:{ label:"선명한 기준의 결", teaser:"말과 행동이 맞을 때 신뢰가 생깁니다.", scores:{speed:62,attraction:64,expression:60,stability:76,recovery:56}, levels:{speed:"판단 빠름",attraction:"태도 확인",expression:"짧고 정확",stability:"기준 중심",recovery:"정리 필요"} },
     수:{ label:"깊게 스미는 결", teaser:"재촉 없이 기다릴 때 마음이 깊어집니다.", scores:{speed:38,attraction:62,expression:44,stability:68,recovery:82}, levels:{speed:"천천히 깊게",attraction:"분위기",expression:"늦게 표현",stability:"안심 필요",recovery:"혼자 정리"} }
@@ -334,7 +334,6 @@
       const body = {
         participantId: state.code ? participantId() : (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2)),
         name:$("displayName").value,
-        isAdult:$("adultFlag").value === "adult",
         profile
       };
       const path = state.code ? "/api/inyeon-room/" + state.code : "/api/inyeon-room";
