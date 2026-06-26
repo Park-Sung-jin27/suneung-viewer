@@ -141,7 +141,7 @@ export default function Privacy() {
         <h2 style={H2_STYLE}>1. 개인정보처리방침</h2>
 
         <p style={P_STYLE}>
-          짚이(이하 "서비스")는 「개인정보 보호법」을 정합하여 이용자의 개인정보를
+          짚이(이하 "서비스")는 「개인정보 보호법」을 준수하여 이용자의 개인정보를
           보호하고 권익을 보장하기 위해 본 방침을 수립·공개합니다.
         </p>
 
@@ -198,7 +198,7 @@ export default function Privacy() {
           <li>학습 진척도 추적 및 개인 맞춤 분석 제공</li>
           <li>오답 패턴 진단 및 학습 리포트 생성</li>
           <li>서비스 품질 개선 (피드백 분석)</li>
-          <li>법령 의무 정합 및 분쟁 대응</li>
+          <li>법령 의무 준수 및 분쟁 대응</li>
         </ul>
 
         <h3 style={H3_STYLE}>1-3. 보유·이용 기간</h3>
@@ -210,7 +210,7 @@ export default function Privacy() {
           <li>풀이 기록·피드백: 회원 탈퇴 시 즉시 파기 또는 익명화 처리</li>
           <li>자동 수집 로그: 최대 3개월 보유 후 파기</li>
           <li>
-            전자상거래법 정합 보존 (결제 활성화 시 적용):
+            전자상거래법에 따른 보존 (결제 활성화 시 적용):
             <ul style={UL_STYLE}>
               <li>계약·청약철회 기록: 5년</li>
               <li>대금결제·재화공급 기록: 5년</li>
@@ -269,14 +269,14 @@ export default function Privacy() {
             </tr>
             <tr>
               <td style={TD_STYLE}>OpenAI, L.L.C.</td>
-              <td style={TD_STYLE}>데이터 정합 보조 (백엔드 처리)</td>
+              <td style={TD_STYLE}>데이터 정확성 보조 (백엔드 처리)</td>
               <td style={TD_STYLE}>미국</td>
             </tr>
           </tbody>
         </table>
         <p style={P_STYLE}>
-          각 수탁사는 자체 보안 정책 정합 운영하며, 서비스는 위탁 계약 의무를
-          정합 점검합니다.
+          각 수탁사는 자체 보안 정책에 따라 운영하며, 서비스는 위탁 계약 의무를
+          정기적으로 점검합니다.
         </p>
 
         <h3 style={H3_STYLE}>1-6. 이용자 권리</h3>
@@ -364,7 +364,7 @@ export default function Privacy() {
         <h3 style={H3_STYLE}>2-1. 목적</h3>
         <p style={P_STYLE}>
           본 약관은 짚이(이하 "서비스")가 제공하는 수능 국어 분석 도구 이용에
-          관한 권리와 의무를 정합합니다.
+          관한 권리와 의무를 규정합니다.
         </p>
 
         <h3 style={H3_STYLE}>2-2. 회원 가입 및 탈퇴</h3>
@@ -372,7 +372,7 @@ export default function Privacy() {
           <li>이용자는 Google 계정으로 회원가입할 수 있습니다.</li>
           <li>
             이용자는 언제든지 회원 탈퇴를 요청할 수 있으며, 탈퇴 시 개인정보는 본
-            방침 1-3 정합 처리됩니다.
+            방침 1-3에 따라 처리됩니다.
           </li>
           <li>만 14세 미만 사용자는 법정대리인 동의 후 가입해야 합니다.</li>
         </ul>
@@ -427,8 +427,8 @@ export default function Privacy() {
 
         <h3 style={H3_STYLE}>2-7. 분쟁 해결</h3>
         <p style={P_STYLE}>
-          본 약관은 대한민국 법령 정합 적용되며, 서비스 이용과 관련된 분쟁은
-          민사소송법 정합 관할 법원에서 해결합니다.
+          본 약관은 대한민국 법령에 따라 적용되며, 서비스 이용과 관련된 분쟁은
+          민사소송법에 따라 정해진 관할 법원에서 해결합니다.
         </p>
 
         <h3 style={H3_STYLE}>2-8. 약관 변경</h3>

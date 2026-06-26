@@ -310,7 +310,8 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
               🎯 복습 큐 {dueItems.length}건
             </div>
             <div style={{ fontSize: "0.72rem", color: "#b45309" }}>
-              SRS 인터벌 안 복습 시점 도달 path. 연속 풀이 모드 단독 진행.
+              지금 복습하면 가장 효과적인 문제들이에요. 한 문제씩 차근차근
+              복습해 보세요.
             </div>
           </div>
           <button
@@ -498,7 +499,8 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
                     }}
                   >
                     Q{cur.question_id}.{" "}
-                    {q?.t || "(문항 텍스트 path 안 부재 — 지문 다시 보기 단독)"}
+                    {q?.t ||
+                      "(문항을 불러올 수 없어요 — '지문 다시 보기'를 눌러 확인하세요)"}
                   </div>
                   {/* 사용자 오답 / 정답 비교 */}
                   {userChoice && (
