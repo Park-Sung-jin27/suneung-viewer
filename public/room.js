@@ -165,25 +165,47 @@
     $("roomLinkBox").textContent = url;
     $("shareRow").classList.remove("hidden");
   }
-  async function copyRoomLink(){
-    if(!state.room) return;
-    const url = roomUrl(state.room.code);
+  async function copyUrl(url,message){
     try {
       await navigator.clipboard.writeText(url);
-      setStatus("방 링크를 복사했어요.");
+      setStatus(message || "방 링크를 복사했어요.");
     } catch(e) {
       prompt("방 링크를 복사해 주세요.", url);
     }
+  }
+  async function copyRoomLink(){
+    const code = state.room?.code || state.code;
+    if(!code) return;
+    await copyUrl(roomUrl(code));
+  }
+  function canOpenNativeShare(data){
+    if(typeof navigator.share !== "function") return false;
+    if(typeof navigator.canShare !== "function") return true;
+    try { return navigator.canShare(data); } catch(e) { return false; }
   }
   async function shareRoom(){
     const code = state.room?.code || state.code;
     if(!code) return;
     const url = roomUrl(code);
-    const text = "JIPPI 단톡 케미 무료로 알아보기에서 나랑 어떤 결로 통하는지 봐줘.\n" + url;
-    if(navigator.share){
-      try { await navigator.share({ title:"JIPPI 단톡 케미 무료로 알아보기", text, url }); return; } catch(e) {}
+    const shareData = {
+      title:"JIPPI 단톡 케미 무료로 알아보기",
+      text:"나랑 어떤 결로 통하는지 봐줘.",
+      url
+    };
+    if(canOpenNativeShare(shareData)){
+      try {
+        await navigator.share(shareData);
+        setStatus("공유창을 열었어요.");
+        return;
+      } catch(e) {
+        if(e?.name === "AbortError") {
+          setStatus("공유를 취소했어요.");
+          return;
+        }
+        console.warn("[JIPPI room] native share failed", e);
+      }
     }
-    await copyRoomLink();
+    await copyUrl(url, "이 브라우저에서는 공유창을 열 수 없어 링크를 복사했어요. 모바일 크롬이나 사파리에서는 앱 공유창이 열립니다.");
   }
   function coordPoint(index,total,score,radius,cx,cy){
     const angle = Math.PI * 2 * index / total - Math.PI / 2;
