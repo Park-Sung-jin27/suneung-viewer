@@ -488,6 +488,20 @@
       font-size:.92rem
     }
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    .launch-modal{
+      position:fixed;inset:0;z-index:120;display:grid;place-items:center;
+      padding:20px;background:rgba(22,13,10,.58);backdrop-filter:blur(10px)
+    }
+    .launch-modal-card{
+      width:min(100%,420px);background:#fffaf3;border:1px solid #e8cbb5;
+      border-radius:22px;box-shadow:0 22px 70px rgba(28,19,24,.25);
+      padding:26px;color:#38261f;position:relative
+    }
+    .launch-modal-kicker{display:inline-flex;margin-bottom:10px;border-radius:999px;background:#f1c987;color:#24150d;padding:5px 10px;font-size:.76rem;font-weight:900;letter-spacing:.06em}
+    .launch-modal-card h2{margin:0 0 10px;font-family:"Nanum Myeongjo",serif;color:#5a2e1d;font-size:1.55rem}
+    .launch-modal-card p{margin:0 0 18px;color:#5d4535;line-height:1.7}
+    .launch-modal-close{position:absolute;right:14px;top:12px;border:0;background:transparent;color:#8a6d57;font-size:1.6rem;line-height:1;cursor:pointer}
+    body.modal-open{overflow:hidden}
 
     .operator-only{display:none}
     .operator-on .operator-only{display:flex}
@@ -1608,7 +1622,7 @@
         <h2>리포트 신청서</h2>
         <p class="desc">상품을 고른 뒤 출생 정보와 현재 고민을 입력해 주세요. 각 상품은 테마별 기본 구성이 이미 포함되어 있으며, 궁합·재회·커플 분석은 상대 정보가 함께 있을 때 더 구체적으로 제작됩니다.</p>
 
-        <form id="orderForm" name="fortune-order" method="POST" action="/api/fortune-order" onsubmit="return submitOrder(event)">
+        <form id="orderForm" name="fortune-order" method="POST" action="#" onsubmit="return launchPendingOrder(event)">
           <p class="hidden"><label>봇 방지 필드<input name="bot-field" /></label></p>
           <input type="hidden" name="form-name" value="fortune-order" />
           <input type="hidden" name="bot-field" value="" />
@@ -1720,9 +1734,7 @@
           </div>
 
           <div class="pay-actions">
-            <button type="button" class="btn outline" id="prepareBtn">주문서 확인</button>
-            <button type="button" class="btn dark" id="submitBtn" onclick="return submitOrder(event)">주문 접수</button>
-            <button type="button" class="btn primary" id="payBtn">결제하기 →</button>
+            <button type="button" class="btn primary" id="launchOrderBtn">리포트 신청하기 →</button>
             <button type="button" class="btn outline operator-only" id="copyOrderBtn">주문내용 복사</button>
             <button type="button" class="btn outline operator-only" id="builderBtn">계산 도구로 보내기</button>
             <button type="button" class="btn outline operator-only" id="adminBtn">운영자 도구로 보내기</button>
@@ -1738,10 +1750,10 @@
       <div class="wrap">
         <p class="section-tag">ORDER & POLICY</p>
         <h2>주문 전, <em>제작·결제 기준</em>을 확인해 주세요</h2>
-        <p class="desc">지피사주는 실물 배송 상품이 아니라, 신청자가 입력한 출생 정보와 질문을 바탕으로 제작되는 맞춤형 디지털 HTML 리포트입니다. 카드·간편결제 확인 후 순차 제작되며, 이메일·문자 링크 등 정보통신망을 통해 전달됩니다.</p>
+        <p class="desc">지피사주는 실물 배송 상품이 아니라, 신청자가 입력한 출생 정보와 질문을 바탕으로 제작되는 맞춤형 디지털 HTML 리포트입니다. 정식 오픈 후에는 카드·간편결제 확인 뒤 순차 제작되며, 이메일·문자 링크 등 정보통신망을 통해 전달됩니다.</p>
         <div class="legal-panel">
           <h3>카드·간편결제 안내</h3>
-          <p>주문서 확인 후 결제하기 버튼을 누르면 토스페이먼츠 결제창이 열립니다. 결제 인증이 완료되면 주문 정보와 결제 내역을 기준으로 제작 순서가 배정됩니다.</p>
+          <p>현재 토스페이먼츠 결제 심사 중이라 정식 주문과 결제는 아직 열지 않았습니다. 심사 완료 후 신청서 확인과 결제를 한 흐름으로 진행할 수 있도록 준비하고 있습니다.</p>
           <div class="legal-links">
             <a href="#order">신청서 작성하기</a>
             <a href="terms.html" class="light">이용약관</a>
@@ -1751,10 +1763,10 @@
         <div class="pay-guide">
           <h3>주문 접수와 결제 확인</h3>
           <ul>
-            <li>주문서 확인 후 생성되는 <code>주문코드</code>와 결제 내역을 기준으로 제작이 시작됩니다.</li>
-            <li>결제 전에는 상품명, 금액, 입력 정보를 다시 확인해 주세요.</li>
-            <li>카드·간편결제 이용이 어려운 경우 고객센터로 별도 문의할 수 있습니다.</li>
-            <li>결제 확인 후 주문 정보와 결제 내역을 기준으로 제작이 시작됩니다.</li>
+            <li>정식 오픈 후에는 신청서 확인, 주문 접수, 결제가 한 번에 이어집니다.</li>
+            <li>결제 전에는 상품명, 금액, 입력 정보를 한 화면에서 다시 확인할 수 있게 준비 중입니다.</li>
+            <li>지금은 출시 전 안내 단계이며, 입력 정보는 실제 주문으로 접수되지 않습니다.</li>
+            <li>결제 심사가 완료되면 카드·간편결제 기준으로 제작 순서가 배정됩니다.</li>
           </ul>
         </div>
       </div>
@@ -1819,12 +1831,21 @@
         <div class="biz-item"><span>개인정보관리책임자</span><b>박성진 / seongjinpark12@gmail.com</b></div>
         <div class="biz-item"><span>호스팅 제공자</span><b>Vercel Inc.</b></div>
       </div>
-      <p class="small">본 서비스는 오락·상담·참고 목적의 운세 콘텐츠이며, 법률·의료·투자·심리치료·진로 결정의 전문 자문을 대체하지 않습니다. 맞춤형 디지털 리포트는 주문 정보와 결제 확인 후 제작되며, 이메일·문자 링크 등 정보통신망을 통해 전달됩니다.</p>
+      <p class="small">본 서비스는 오락·상담·참고 목적의 운세 콘텐츠이며, 법률·의료·투자·심리치료·진로 결정의 전문 자문을 대체하지 않습니다. 맞춤형 디지털 리포트는 정식 오픈 후 주문 정보와 결제 확인을 거쳐 제작되며, 이메일·문자 링크 등 정보통신망을 통해 전달됩니다.</p>
       <p class="small">© 2026 지피사주 · JIPPI SAJU. All rights reserved.</p>
     </div>
   </footer>
 
   <div class="toast" id="toast"></div>
+  <div class="launch-modal hidden" id="launchModal" role="dialog" aria-modal="true" aria-labelledby="launchModalTitle">
+    <div class="launch-modal-card">
+      <button type="button" class="launch-modal-close" id="launchModalClose" aria-label="닫기">×</button>
+      <span class="launch-modal-kicker">COMING SOON</span>
+      <h2 id="launchModalTitle">아직 출시 준비중입니다</h2>
+      <p>현재 토스페이먼츠 결제 심사 중이라 주문 접수와 결제는 아직 열지 않았어요. 심사 완료 후 신청부터 결제까지 한 번에 진행할 수 있게 준비하고 있습니다.</p>
+      <button type="button" class="btn primary" id="launchModalOk">확인</button>
+    </div>
+  </div>
 
 <script src="/assets/jippi-payments.js"></script>
 <script>
@@ -1847,62 +1868,21 @@ function productTopics(id, premiumEros=false){
   if(id==='theme_premium'&&premiumEros){arr.push('심화 관계 해석','갈등 리듬·회복 방식');}
   return arr.map((label,i)=>({key:`topic_${i+1}`,label}));
 }
-const $=id=>document.getElementById(id);const fmt=n=>Number(n||0).toLocaleString('ko-KR')+'원';const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)};let selectedProductId='theme_card';let orderCache=null;function val(id){return ($(id)?.value||'').trim()}function checked(id){return !!$(id)?.checked}function premiumEros(){return false}function requiresAdult(){return false}function selectedInterests(){return productTopics(selectedProductId,premiumEros())}
+const $=id=>document.getElementById(id);const fmt=n=>Number(n||0).toLocaleString('ko-KR')+'원';const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)};let selectedProductId='theme_card';let orderCache=null;let launchModalShown=false;function val(id){return ($(id)?.value||'').trim()}function checked(id){return !!$(id)?.checked}function premiumEros(){return false}function requiresAdult(){return false}function selectedInterests(){return productTopics(selectedProductId,premiumEros())}
 function discountPct(p){if(!p.regular||p.regular<=p.price)return 0;return Math.round((1-p.price/p.regular)*100);}
 function priceHtml(p){const pct=discountPct(p);if(pct>0)return `<div class="price"><span class="price-regular">${fmt(p.regular)}</span><span class="price-now">${fmt(p.price)}</span><span class="price-pct">${pct}%↓</span></div>`;return `<div class="price"><span class="price-now">${fmt(p.price)}</span></div>`;}
 function renderProducts(){const box=$('productList'),sel=$('productSelect');box.innerHTML='';sel.innerHTML='';let current='';let group=null;CONFIG.products.forEach(p=>{if(p.theme!==current){current=p.theme;const lab=document.createElement('div');lab.className='theme-label';lab.textContent=current;box.appendChild(lab);group=document.createElement('div');group.className='products';box.appendChild(group)}const card=document.createElement('button');card.type='button';card.className='product '+(p.id===selectedProductId?'selected':'');card.innerHTML=`<span class="badge">${p.badge}</span><h3>${p.name}</h3>${priceHtml(p)}<p>${p.desc}</p><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><ul class="product-includes">${(p.includes||[]).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`;card.onclick=()=>selectProduct(p.id);group.appendChild(card);const opt=document.createElement('option');opt.value=p.id;opt.textContent=`${p.name} · ${fmt(p.price)}`;sel.appendChild(opt)});sel.value=selectedProductId}
-function product(){return CONFIG.products.find(p=>p.id===selectedProductId)||CONFIG.products[0]}function selectProduct(id){selectedProductId=id;$('productSelect').value=id;renderProducts();autoPartnerMode();syncProductOptions();prepareOrder(false)}function autoPartnerMode(){const needs=['theme_love'].includes(selectedProductId);if(needs)$('partnerMode').checked=true;togglePartner()}function togglePartner(){ $('partnerBlock').classList.toggle('hidden', !$('partnerMode').checked) }function total(){return product().price}function syncProductOptions(){if($('premiumErosAddon'))$('premiumErosAddon').checked=false;const topics=selectedInterests();const panel=$('productCompositionPanel');if(panel){panel.innerHTML=`<b>${product().name}</b> 기본 구성<ul>${topics.map(x=>`<li>${x.label}</li>`).join('')}</ul>`}const premiumRow=$('premiumErosAddonRow');if(premiumRow)premiumRow.classList.add('hidden');const adult=false;$('adultConsentRow').classList.toggle('hidden',!adult);$('adultDetailsBlock')?.classList.toggle('hidden',!adult);if(!adult){$('adultConsent').checked=false;['relationshipPatternStatus','leadPreference','afterRhythm','relationshipPatternText'].forEach(id=>{if($(id)&&id==='relationshipPatternStatus')$(id).value='none';else if($(id)&&$(id).tagName==='SELECT')$(id).selectedIndex=0;else if($(id))$(id).value=''})}}
+function product(){return CONFIG.products.find(p=>p.id===selectedProductId)||CONFIG.products[0]}function selectProduct(id){selectedProductId=id;$('productSelect').value=id;renderProducts();autoPartnerMode();syncProductOptions();orderCache=null}function autoPartnerMode(){const needs=['theme_love'].includes(selectedProductId);if(needs)$('partnerMode').checked=true;togglePartner()}function togglePartner(){ $('partnerBlock').classList.toggle('hidden', !$('partnerMode').checked) }function total(){return product().price}function syncProductOptions(){if($('premiumErosAddon'))$('premiumErosAddon').checked=false;const topics=selectedInterests();const panel=$('productCompositionPanel');if(panel){panel.innerHTML=`<b>${product().name}</b> 기본 구성<ul>${topics.map(x=>`<li>${x.label}</li>`).join('')}</ul>`}const premiumRow=$('premiumErosAddonRow');if(premiumRow)premiumRow.classList.add('hidden');const adult=false;$('adultConsentRow').classList.toggle('hidden',!adult);$('adultDetailsBlock')?.classList.toggle('hidden',!adult);if(!adult){$('adultConsent').checked=false;['relationshipPatternStatus','leadPreference','afterRhythm','relationshipPatternText'].forEach(id=>{if($(id)&&id==='relationshipPatternStatus')$(id).value='none';else if($(id)&&$(id).tagName==='SELECT')$(id).selectedIndex=0;else if($(id))$(id).value=''})}}
 function orderPayload(){const code='UR-'+new Date().toISOString().slice(0,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,7).toUpperCase();return {orderCode:orderCache?.orderCode||code,createdAt:new Date().toISOString(),product:product(),totalPrice:total(),options:{deliverySpeed:val('deliverySpeed'),selectedInterests:selectedInterests(),premiumErosAddon:premiumEros(),requiresAdult:requiresAdult(),adultConsent:checked('adultConsent'),relationshipPatternStatus:val('relationshipPatternStatus'),leadPreference:val('leadPreference'),afterRhythm:val('afterRhythm'),relationshipPatternText:val('relationshipPatternText')},customer:{name:val('customerName'),contact:val('contact'),email:val('email'),delivery:val('delivery')},self:{gender:val('gender'),birthDate:val('birthDate'),calendar:val('calendar'),leapMonth:val('leapMonth'),birthTime:val('birthTime'),timeAccuracy:val('timeAccuracy'),birthCity:val('birthCity'),relationshipStatus:val('relationshipStatus')},partnerMode:checked('partnerMode'),partner:{name:val('partnerName'),gender:val('partnerGender'),birthDate:val('partnerBirthDate'),calendar:val('partnerCalendar'),leapMonth:val('partnerLeapMonth'),birthTime:val('partnerBirthTime'),timeAccuracy:val('partnerTimeAccuracy'),birthCity:val('partnerBirthCity')},context:{mainConcern:val('mainConcern'),optionA:val('optionA'),optionB:val('optionB'),period:val('period'),analysisYear:val('analysisYear'),lifeArea:val('lifeArea'),frequentPlaces:val('frequentPlaces'),desiredOutcome:val('desiredOutcome'),firstMeetDate:val('firstMeetDate'),relationshipStartDate:val('relationshipStartDate'),breakupDate:val('breakupDate'),lastContactDate:val('lastContactDate'),contactStatus:val('contactStatus'),conflictTopic:val('conflictTopic'),questions:val('questions'),exclude:val('exclude')}}}
-function prepareOrder(show=true){const o=orderPayload();orderCache=o;$('orderCodeInput').value=o.orderCode;$('orderJsonInput').value=JSON.stringify(o,null,2);$('selectedProductInput').value=o.product.name;$('totalPriceInput').value=o.totalPrice;const sum=$('orderSummary');sum.classList.remove('hidden');sum.innerHTML=`<h3>주문 확인</h3><div class="summary-grid"><div class="summary-item"><span>주문코드</span><b>${o.orderCode}</b></div><div class="summary-item"><span>상품</span><b>${o.product.name}</b></div><div class="summary-item"><span>리포트 구성</span><b>${o.options.selectedInterests.map(x=>x.label).join(', ')}</b></div><div class="summary-item"><span>총 결제금액</span><b>${fmt(o.totalPrice)}</b></div></div><p class="notice">주문 내용을 확인한 뒤 결제를 진행해 주세요. 결제하기 버튼을 누르면 토스페이먼츠 카드·간편결제 창이 열립니다. 결제 확인 후 입력하신 정보를 기준으로 맞춤 리포트가 제작됩니다.</p>`;if(show)toast('주문서를 생성했습니다.');return o}
+function prepareOrder(show=true){const o=orderPayload();orderCache=o;$('orderCodeInput').value=o.orderCode;$('orderJsonInput').value=JSON.stringify(o,null,2);$('selectedProductInput').value=o.product.name;$('totalPriceInput').value=o.totalPrice;const sum=$('orderSummary');sum.classList.remove('hidden');sum.innerHTML=`<h3>주문 확인</h3><div class="summary-grid"><div class="summary-item"><span>주문코드</span><b>${o.orderCode}</b></div><div class="summary-item"><span>상품</span><b>${o.product.name}</b></div><div class="summary-item"><span>리포트 구성</span><b>${o.options.selectedInterests.map(x=>x.label).join(', ')}</b></div><div class="summary-item"><span>예정 결제금액</span><b>${fmt(o.totalPrice)}</b></div></div><p class="notice">현재 토스페이먼츠 결제 심사 중이라 고객 주문과 결제는 아직 열지 않았습니다. 이 주문 확인 화면은 운영자 점검용입니다.</p>`;if(show)toast('주문서를 생성했습니다.');return o}
 function initDateYearLimit(){['birthDate','partnerBirthDate'].forEach(id=>{const input=$(id);if(!input)return;input.addEventListener('input',()=>{const digits=input.value.replace(/\D/g,'').slice(0,8);let next=digits;if(digits.length>4)next=digits.slice(0,4)+'-'+digits.slice(4);if(digits.length>6)next=digits.slice(0,4)+'-'+digits.slice(4,6)+'-'+digits.slice(6);input.value=next;});input.addEventListener('blur',()=>{if(input.value&&!/^\d{4}-\d{2}-\d{2}$/.test(input.value)){toast('생년월일은 YYYY-MM-DD 형식으로 입력해 주세요.');}});});}
-async function copyOrder(){const o=prepareOrder(false);try{await navigator.clipboard.writeText(JSON.stringify(o,null,2));toast('운영자 도구용 주문 JSON을 복사했습니다.')}catch{toast('복사 권한이 없습니다.')}}function unlockOperatorTools(){try{localStorage.setItem('jippiOperatorUnlocked','1');sessionStorage.setItem('jippiOperatorUnlocked','1')}catch(e){console.warn('운영자 접근 플래그 저장 실패',e)}}function sendToBuilder(){const o=prepareOrder(false);unlockOperatorTools();localStorage.setItem('fortuneOrderJson',JSON.stringify(o));location.href='builder.html?operator=1'}function sendToAdmin(){const o=prepareOrder(false);unlockOperatorTools();localStorage.setItem('fortuneOrderJson',JSON.stringify(o));location.href='admin.html?operator=1'}const PAYMENT_PRODUCT_MAP={theme_card:'fortune_theme_card',theme_career:'fortune_theme_career',theme_love:'fortune_theme_love',theme_destiny:'fortune_theme_destiny',theme_premium:'fortune_theme_premium'};function paymentUrl(){return CONFIG.paymentLinks[selectedProductId]||CONFIG.defaultPaymentUrl||''}async function goPay(){if(!checked('privacyConsent')||!checked('productionConsent')){toast('결제 전 필수 동의가 필요합니다.');return}const o=prepareOrder(false);try{localStorage.setItem('lastFortuneOrder',JSON.stringify(o));sessionStorage.setItem('lastFortuneOrder',JSON.stringify(o))}catch(err){console.warn('주문 임시 저장 실패',err)}const payProductId=PAYMENT_PRODUCT_MAP[selectedProductId];const url=paymentUrl();if(url){location.href=url;return}if(!window.JippiPayments||!payProductId){toast('결제 모듈을 불러오지 못했습니다.');alert(`${CONFIG.bankTransferText}\n\n주문코드: ${o.orderCode}\n결제금액: ${fmt(o.totalPrice)}`);return}const btn=$('payBtn');const original=btn.textContent;btn.disabled=true;btn.textContent='결제창 여는 중';try{await window.JippiPayments.requestPayment(payProductId,{orderName:o.product.name,customerName:o.customer.name,customerEmail:o.customer.email,customerPhone:o.customer.contact,fortuneOrder:o})}catch(err){if(err.code!=='PAY_PROCESS_CANCELED')alert(err.message||'결제창을 열지 못했습니다.');btn.disabled=false;btn.textContent=original}}async function submitOrder(e){
-  e.preventDefault();
-  if(!checked('privacyConsent')||!checked('productionConsent')){
-    toast('필수 동의가 필요합니다.');
-    return false;
-  }
-  if(requiresAdult()&&!checked('adultConsent')){
-    toast('심화 관계 해석은 추가 확인이 필요합니다.');
-    return false;
-  }
-  const o=prepareOrder(false);
-  try{
-    localStorage.setItem('lastFortuneOrder', JSON.stringify(o));
-    sessionStorage.setItem('lastFortuneOrder', JSON.stringify(o));
-  }catch(err){
-    console.warn('주문 임시 저장 실패', err);
-  }
-  const btn=$('submitBtn');
-  const original=btn?.textContent||'주문 접수';
-  if(btn){
-    btn.disabled=true;
-    btn.textContent='접수 중';
-  }
-  try{
-    const response=await fetch('/api/fortune-order',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(o)
-    });
-    const result=await response.json().catch(()=>({}));
-    if(!response.ok||!result.ok){
-      throw new Error(result.error||'주문 자동 접수에 실패했습니다.');
-    }
-    toast('주문이 접수되었습니다.');
-    window.location.href=new URL('success.html', window.location.href).href;
-  }catch(err){
-    console.error('주문 자동 접수 실패', err);
-    toast('주문 자동 접수에 실패했습니다.');
-    alert('주문 자동 접수가 완료되지 않았습니다.\n주문코드: '+o.orderCode+'\n잠시 후 다시 시도하거나, 화면의 주문 JSON 복사 기능으로 운영자에게 전달해주세요.');
-    if(btn){
-      btn.disabled=false;
-      btn.textContent=original;
-    }
-  }
-  return false;
-}
+function showLaunchModal(force=false){if(!force&&launchModalShown)return false;launchModalShown=true;const modal=$('launchModal');if(!modal){alert('아직 출시 준비중입니다. 토스페이먼츠 결제 심사 완료 후 주문과 결제가 열릴 예정입니다.');return false}modal.classList.remove('hidden');document.body.classList.add('modal-open');setTimeout(()=>$('launchModalOk')?.focus({preventScroll:true}),0);return false}
+function hideLaunchModal(){const modal=$('launchModal');if(!modal)return;modal.classList.add('hidden');document.body.classList.remove('modal-open')}
+function launchPendingOrder(event){event?.preventDefault?.();showLaunchModal(true);return false}
+function initLaunchGate(){const nameInput=$('customerName');const openOnce=()=>showLaunchModal(false);nameInput?.addEventListener('focus',openOnce);nameInput?.addEventListener('input',openOnce);$('launchOrderBtn')?.addEventListener('click',launchPendingOrder);$('launchModalClose')?.addEventListener('click',hideLaunchModal);$('launchModalOk')?.addEventListener('click',hideLaunchModal);$('launchModal')?.addEventListener('click',event=>{if(event.target===$('launchModal'))hideLaunchModal()});document.addEventListener('keydown',event=>{if(event.key==='Escape')hideLaunchModal()})}
+async function copyOrder(){const o=prepareOrder(false);try{await navigator.clipboard.writeText(JSON.stringify(o,null,2));toast('운영자 도구용 주문 JSON을 복사했습니다.')}catch{toast('복사 권한이 없습니다.')}}function unlockOperatorTools(){try{localStorage.setItem('jippiOperatorUnlocked','1');sessionStorage.setItem('jippiOperatorUnlocked','1')}catch(e){console.warn('운영자 접근 플래그 저장 실패',e)}}function sendToBuilder(){const o=prepareOrder(false);unlockOperatorTools();localStorage.setItem('fortuneOrderJson',JSON.stringify(o));location.href='builder.html?operator=1'}function sendToAdmin(){const o=prepareOrder(false);unlockOperatorTools();localStorage.setItem('fortuneOrderJson',JSON.stringify(o));location.href='admin.html?operator=1'}function goPay(event){return launchPendingOrder(event)}function submitOrder(event){return launchPendingOrder(event)}
 function initAnchorScroll(){document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',event=>{const target=document.querySelector(anchor.getAttribute('href'));if(!target)return;event.preventDefault();history.pushState(null,'',anchor.getAttribute('href'));target.scrollIntoView({behavior:'smooth',block:'start'});});});}
-function init(){if(new URLSearchParams(location.search).get('operator')==='1')document.body.classList.add('operator-on');renderProducts();if(!$('productSelect')?.options?.length)renderProducts();syncProductOptions();initAnchorScroll();initDateYearLimit();$('productSelect').addEventListener('change',e=>selectProduct(e.target.value));$('partnerMode').addEventListener('change',togglePartner);$('premiumErosAddon')?.addEventListener('change',()=>{syncProductOptions();prepareOrder(false)});$('deliverySpeed')?.addEventListener('change',()=>prepareOrder(false));$('prepareBtn').addEventListener('click',()=>prepareOrder(true));$('copyOrderBtn').addEventListener('click',copyOrder);$('builderBtn').addEventListener('click',sendToBuilder);$('adminBtn').addEventListener('click',sendToAdmin);$('payBtn').addEventListener('click',goPay);autoPartnerMode()}init();
+function init(){if(new URLSearchParams(location.search).get('operator')==='1')document.body.classList.add('operator-on');renderProducts();if(!$('productSelect')?.options?.length)renderProducts();syncProductOptions();initAnchorScroll();initDateYearLimit();initLaunchGate();$('productSelect').addEventListener('change',e=>selectProduct(e.target.value));$('partnerMode').addEventListener('change',togglePartner);$('premiumErosAddon')?.addEventListener('change',()=>{syncProductOptions();orderCache=null});$('deliverySpeed')?.addEventListener('change',()=>{orderCache=null});$('copyOrderBtn').addEventListener('click',copyOrder);$('builderBtn').addEventListener('click',sendToBuilder);$('adminBtn').addEventListener('click',sendToAdmin);autoPartnerMode()}init();
 </script>
 </body>
 </html>
