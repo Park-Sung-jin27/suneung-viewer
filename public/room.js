@@ -241,10 +241,10 @@
   }
   function elementFlavor(person){
     const flavors = {
-      목:"새 얘깃거리를 잘 여는 쪽",
+      목:"얘깃거리를 잘 여는 쪽",
       화:"분위기를 먼저 밝히는 쪽",
-      토:"자리를 오래 지키는 쪽",
-      금:"기준을 또렷하게 잡는 쪽",
+      토:"자리를 편하게 잡는 쪽",
+      금:"기준을 딱 잡는 쪽",
       수:"조용히 오래 보는 쪽"
     };
     return flavors[person?.profile?.element] || "자기 결이 분명한 쪽";
@@ -274,18 +274,18 @@
     const element = person?.profile?.element || "토";
     const key = topAxis(person);
     const elementPhrases = {
-      목:["같이 배우고 넓히는","새 얘깃거리를 여는","얘기를 자연스럽게 넓히는"],
-      화:["표정이 환한","반응이 빨리 밝아지는","먼저 웃음을 켜는"],
+      목:["같이 해볼 걸 잘 찾는","새 얘깃거리를 잘 꺼내는","얘기를 자연스럽게 넓히는"],
+      화:["표정이 밝은","반응이 바로 오는","먼저 웃음을 터뜨리는"],
       토:["자리를 편하게 만드는","흐름을 차분히 붙잡는","믿고 앉게 만드는"],
       금:["기준이 또렷한","말을 깔끔하게 정리하는","선이 분명한"],
-      수:["조용히 오래 보는","분위기를 깊게 읽는","말보다 여운이 긴"]
+      수:["조용히 오래 보는","분위기를 깊게 읽는","말은 적어도 오래 남는"]
     };
     const axisPhrases = {
       speed:["첫 박자가 빠른","타이밍을 빨리 잡는","먼저 움직이는"],
-      attraction:["같이 놀 포인트를 빨리 찾는","장면의 재미를 잘 줍는","분위기를 빨리 읽는"],
+      attraction:["같이 놀 포인트를 잘 찾는","재밌는 장면을 잘 줍는","분위기를 빨리 읽는"],
       expression:["리액션이 선명한","표정이 잘 보이는","말맛이 살아 있는"],
-      stability:["자리를 편하게 잡는","흐름을 안정시키는","오래 앉아도 편한"],
-      recovery:["잠깐 쉬고 돌아오는","분위기를 다시 누그러뜨리는","끊어진 말을 다시 이어주는"]
+      stability:["같이 있어도 편한","흐름을 안정시키는","오래 앉아도 편한"],
+      recovery:["잠깐 쉬고 다시 오는","분위기를 다시 풀어주는","끊긴 말을 다시 이어주는"]
     };
     const seed = [
       personName(person),
@@ -300,50 +300,89 @@
     return first === second ? first : first + ", " + second;
   }
   function signatureLead(person){
-    return signaturePhrase(person) + " 느낌이라,";
+    return signaturePhrase(person) + " 쪽이라,";
+  }
+  function signaturePoint(person){
+    const key = topAxis(person);
+    const phrases = {
+      speed:[
+        "말보다 약속이 먼저 잡히는 편.",
+        "얘기하다 보면 어느새 시간이 정해져 있어요.",
+        "생각보다 시작 버튼이 빨리 눌리는 편."
+      ],
+      attraction:[
+        "사진 하나, 메뉴 하나로 얘기가 다시 살아나요.",
+        "같이 있으면 할 얘기가 옆으로 잘 새요.",
+        "재밌는 포인트를 툭툭 잘 주워요."
+      ],
+      expression:[
+        "리액션이 보여야 더 잘 굴러가요.",
+        "표정이 살아 있어서 분위기 읽기가 쉬워요.",
+        "한마디 반응이 판을 살리는 쪽."
+      ],
+      stability:[
+        "같이 있어도 힘이 덜 빠지는 쪽.",
+        "급하게 안 굴려도 편한 쪽.",
+        "앉아 있는 시간이 길어도 덜 어색해요."
+      ],
+      recovery:[
+        "조금 쉬면 다시 말 붙는 쪽.",
+        "잠깐 끊겨도 다시 이어붙일 수 있어요.",
+        "식었다가도 톡 하나로 돌아오는 편."
+      ]
+    };
+    const seed = [
+      personName(person),
+      key,
+      person?.profile?.element || "",
+      person?.profile?.dayPillar || "",
+      person?.profile?.hourPillar || "",
+      "point"
+    ].join("|");
+    return pickByHash(phrases[key] || phrases.stability, hashText(seed));
   }
   function secondaryDetail(key,a,b){
     if(key==="speed"){
       const fast=roleByScore(a,b,"speed",true), slow=roleByScore(a,b,"speed",false);
       return {
         label:"템포차",
-        line:topic(fast) + " 먼저 움직이고, " + topic(slow) + " 그 움직임이 괜찮은지 한 번 더 봐요.",
-        point:"한 명은 바로 약속을 잡고, 한 명은 날짜와 분위기를 확인합니다. 그래서 즉흥도 되고 안전핀도 생겨요."
+        line:topic(fast) + " '일단 하자'가 빠르고, " + topic(slow) + " '잠깐, 언제?'를 한 번 물어봐요.",
+        point:"약속 잡을 때 딱 보여요. 한 명은 바로 날짜를 던지고, 한 명은 시간표랑 분위기를 봐요. 그래서 즉흥인데 크게 안 흔들려요."
       };
     }
     if(key==="expression"){
       const loud=roleByScore(a,b,"expression",true), quiet=roleByScore(a,b,"expression",false);
       return {
         label:"말투차",
-        line:topic(loud) + " 표정과 말이 먼저 보이고, " + topic(quiet) + " 짧게 받다가 나중에 한마디로 정리해요.",
-        point:"둘이 있으면 누가 분위기를 켜고 누가 자막을 다는지 금방 보여요."
+        line:topic(loud) + " 표정이 먼저 나오고, " + topic(quiet) + " 옆에서 짧게 받다가 나중에 한마디 툭 해요.",
+        point:"단톡에서도 보여요. 한 명은 분위기를 켜고, 한 명은 뒤에서 딱 맞는 자막 하나 얹는 쪽."
       };
     }
     if(key==="recovery"){
       const quick=roleByScore(a,b,"recovery",false), slow=roleByScore(a,b,"recovery",true);
       return {
         label:"푸는 방식차",
-        line:"뭔가 엇갈리면 " + topic(quick) + " 빨리 털고 싶고, " + topic(slow) + " 조금 두었다가 말이 나와요.",
-        point:"한 명은 바로 톡, 한 명은 읽고 생각하다가 한 줄. 둘 다 나름의 회복 버튼이 다릅니다."
+        line:"뭔가 살짝 엇갈리면 " + topic(quick) + " 바로 풀고 싶고, " + topic(slow) + " 읽고 조금 있다가 답이 와요.",
+        point:"한 명은 '지금 말하자', 한 명은 '나 잠깐만' 쪽. 그래도 다시 말 붙을 구멍은 있어요."
       };
     }
     if(key==="stability"){
       const anchor=roleByScore(a,b,"stability",true), mover=roleByScore(a,b,"stability",false);
       return {
         label:"자리감차",
-        line:topic(anchor) + " 기본 자리를 잡고, " + topic(mover) + " 그 안에서 재미있는 틈을 찾아요.",
-        point:"모임을 잡으면 한 명은 시간표, 한 명은 사이드퀘스트. 계획이 덜 심심해집니다."
+        line:topic(anchor) + " 먼저 자리를 잡아두고, " + topic(mover) + " 그 안에서 작은 재미를 찾아요.",
+        point:"약속 잡으면 한 명은 시간과 장소 먼저, 한 명은 '근데 근처에 뭐 있지?'를 봐요. 계획이 덜 딱딱해져요."
       };
     }
     const spark=roleByScore(a,b,"attraction",true), steady=roleByScore(a,b,"attraction",false);
     return {
       label:"친해지는 결차",
-      line:subject(spark) + " 장면의 재미를 먼저 보고, " + subject(steady) + " 그 자리가 편한지 한 번 더 봐요.",
-      point:"한 명은 색다른 메뉴, 한 명은 오래 앉기 좋은 자리. 그래서 애매하게 좋은 균형이 나옵니다."
+      line:subject(spark) + " '이거 재밌겠다'를 먼저 줍고, " + subject(steady) + " '여기 편하긴 해?'를 한 번 봐요.",
+      point:"한 명은 새 메뉴, 한 명은 오래 앉기 좋은 자리. 그래서 막 튀진 않는데 은근 괜찮은 쪽으로 가요."
     };
   }
   function defaultPointByElement(a,b){
-    return topic(a) + " " + elementFlavor(a) + ", " + topic(b) + " " + elementFlavor(b) + "이라 같은 자리에서도 보는 포인트가 살짝 달라요.";
+    return topic(a) + " " + elementFlavor(a) + ", " + topic(b) + " " + elementFlavor(b) + "이라 똑같은 자리에서도 보는 포인트가 달라요.";
   }
   function chem(a,b){
     const pa=a.profile, pb=b.profile;
@@ -357,8 +396,8 @@
     const recoveryGap=Math.abs(axis(pa,"recovery").score - axis(pb,"recovery").score);
     const recoveryAvg=(axis(pa,"recovery").score + axis(pb,"recovery").score)/2;
     let label="잔잔한데 은근 붙는 사이";
-    let line="둘은 한 번에 확 붙기보다, 같이 있다 보면 어느새 같은 테이블에 오래 남는 그림이에요.";
-    let point="처음엔 조용해도 묘하게 편해서, 나중에 보면 둘만 아는 농담이 하나씩 쌓입니다.";
+    let line="처음부터 확 붙는 건 아닌데, 같이 앉아 있으면 은근 오래 남는 사이예요.";
+    let point="처음엔 조용해도 나중엔 둘만 아는 농담이 생겨요. 딱히 큰 사건 없이도요.";
     if(speedGap>=28){
       const fast=roleByScore(a,b,"speed",true), slow=roleByScore(a,b,"speed",false);
       const second=secondaryKey(a,b,["speed"]);
@@ -368,8 +407,8 @@
       else if(second==="stability") label="출발 버튼과 안전벨트 사이";
       else if(second==="attraction") label="먼저 가자는 쪽과 자리 보는 쪽";
       else label="불 지르고 천천히 데우는 사이";
-      line=topic(fast) + " 먼저 '가자'가 나오고, " + topic(slow) + " '잠깐, 진짜?'를 한 번 거쳐요. " + detail.line;
-      point=detail.point + " " + topic(fast) + " " + elementFlavor(fast) + "이라 장면을 먼저 움직입니다.";
+      line="한 명이 '야 이거 하자' 던지면, 한 명은 '오 근데 진짜?' 하고 한 박자 재요. " + detail.line;
+      point=topic(fast) + " 먼저 '해보자'를 던지고, " + topic(slow) + " 그게 괜찮은지 봐요. 한쪽은 액셀, 한쪽은 브레이크. " + detail.point;
     } else if(attractionAvg>=74){
       const second=secondaryKey(a,b,["attraction"]);
       const detail=secondaryDetail(second,a,b);
@@ -378,8 +417,8 @@
       else if(second==="recovery") label="웃다가 각자 식히는 사이";
       else if(second==="stability") label="재밌는데 자리도 잡는 사이";
       else label="앉자마자 말 붙는 사이";
-      line="둘은 메뉴 고르기도 전에 얘기가 먼저 새는 사이예요. " + detail.line;
-      point=detail.point;
+      line="둘은 메뉴 고르다 얘기가 옆길로 새는 사이예요. '아 맞다 이것도' 하다가 30분 지나 있어요. " + detail.line;
+      point="단톡에서도 한 명이 사진 하나 툭 던지면 얘기가 다시 살아나요. " + detail.point;
     } else if(stabilityAvg>=74){
       const second=secondaryKey(a,b,["stability"]);
       const detail=secondaryDetail(second,a,b);
@@ -388,8 +427,8 @@
       else if(second==="speed") label="느긋한데 템포는 다른 사이";
       else if(second==="attraction") label="편해서 자꾸 앉게 되는 사이";
       else label="텐션은 낮은데 유통기한 긴 사이";
-      line="둘은 매일 요란하지 않아도 잘 안 끊겨요. " + detail.line;
-      point="며칠 조용하다가 '뭐해' 한마디면 바로 어제 본 듯합니다. " + detail.point;
+      line="막 매일 연락하는 사이는 아닌데, 며칠 조용하다 한 명이 '뭐해' 하면 바로 어제 본 것처럼 풀려요. " + detail.line;
+      point="둘 사이엔 '오랜만'이 좀 약해요. 자주 안 봐도 자리 하나 남겨둔 느낌. " + detail.point;
     } else if(expressionGap>=22){
       const loud=roleByScore(a,b,"expression",true), quiet=roleByScore(a,b,"expression",false);
       const second=secondaryKey(a,b,["expression"]);
@@ -399,8 +438,8 @@
       else if(second==="stability") label="리액션과 기준선이 만나는 사이";
       else if(second==="attraction") label="표현은 다른데 장면은 같이 줍는 사이";
       else label="자막 켜는 쪽과 무음모드 쪽";
-      line=topic(loud) + " 표정과 말이 바로 보이고, " + topic(quiet) + " 반응을 짧게 남기는 편이에요. " + detail.line;
-      point="가끔 '지금 웃긴 거 맞지?' 확인 타임이 생깁니다. " + detail.point;
+      line=topic(loud) + " 리액션이 얼굴에 바로 뜨고, " + topic(quiet) + " 옆에서 짧게 받다가 나중에 툭 한마디 해요. " + detail.line;
+      point="단톡에선 한 명이 말문 열고, 한 명이 마지막에 정확히 꽂는 쪽. 가끔 그 한마디가 제일 웃겨요. " + detail.point;
     } else if(recoveryGap>=24){
       const quick=roleByScore(a,b,"recovery",false), slow=roleByScore(a,b,"recovery",true);
       const second=secondaryKey(a,b,["recovery"]);
@@ -410,8 +449,8 @@
       else if(second==="stability") label="툭 풀고 다시 자리 잡는 사이";
       else if(second==="attraction") label="엇갈려도 다시 재밌어지는 사이";
       else label="바로 풀기와 숙성시키기 사이";
-      line="뭔가 걸리면 " + topic(quick) + " 빨리 털고 싶고, " + topic(slow) + " 잠깐 조용히 뒀다가 돌아오는 쪽이에요. " + detail.line;
-      point="그래도 판은 쉽게 안 깨집니다. " + detail.point;
+      line="뭔가 걸리면 " + topic(quick) + " 바로 말하고 싶고, " + topic(slow) + " 잠깐 조용해졌다가 돌아와요. " + detail.line;
+      point="한쪽은 지금 풀자는 쪽, 한쪽은 조금 식히고 오자는 쪽. 그래도 대화창은 잘 안 닫혀요. " + detail.point;
     } else if(speedAvg>=72){
       const second=secondaryKey(a,b,["speed"]);
       const detail=secondaryDetail(second,a,b);
@@ -420,8 +459,8 @@
       else if(second==="recovery") label="빨리 모이고 빨리 푸는 사이";
       else if(second==="attraction") label="가자마자 새 장면 찾는 사이";
       else label="번개가 번개를 부르는 사이";
-      line="둘 다 움직이는 속도가 빨라서 '잠깐 볼래?'가 진짜 약속이 되기 쉬워요. " + detail.line;
-      point="계획표보다 현장감이 먼저입니다. " + detail.point;
+      line="둘 다 움직임이 빨라서 '잠깐 볼래?'가 진짜 약속이 되기 쉬워요. 시간 맞으면 바로 나가는 쪽. " + detail.line;
+      point="계획표보다 현장감이 먼저예요. 일단 만나고, 디테일은 가면서 맞춰요. " + detail.point;
     } else if(speedAvg<=48 && recoveryAvg>=72){
       const second=secondaryKey(a,b,["speed","recovery"]);
       const detail=secondaryDetail(second,a,b);
@@ -429,8 +468,8 @@
       else if(second==="stability") label="각자 잘 사는데 자리 잡힌 사이";
       else if(second==="attraction") label="조용한데 장면은 기억나는 사이";
       else label="각자 잘 사는데 묘하게 안 끊기는 사이";
-      line="둘 다 자주 확인하지 않아도 자기 자리에서 조용히 이어지는 편이에요. " + detail.line;
-      point="오래된 북마크처럼, 자주 열지 않아도 사라지지 않는 느낌이 있습니다. " + defaultPointByElement(a,b);
+      line="둘 다 자주 확인하는 쪽은 아닌데, 한 번 이어진 얘기는 오래 남아요. 단톡이 식어도 누가 사진 하나 툭 올리면 다시 이어져요. " + detail.line;
+      point="오래된 북마크 같은 사이예요. 자주 열진 않아도 없어지진 않는 느낌. " + defaultPointByElement(a,b);
     } else if(stabilityGap>=22){
       const anchor=roleByScore(a,b,"stability",true), mover=roleByScore(a,b,"stability",false);
       const second=secondaryKey(a,b,["stability"]);
@@ -440,8 +479,8 @@
       else if(second==="recovery") label="흔들려도 다시 앉는 사이";
       else if(second==="attraction") label="기준과 재미가 같이 있는 사이";
       else label="판 까는 사람과 빈틈 찾는 사람";
-      line=topic(anchor) + " 자리를 안정시키고, " + topic(mover) + " 그 안에서 재미있는 틈을 찾아요. " + detail.line;
-      point=detail.point;
+      line=topic(anchor) + " 먼저 시간과 장소를 잡아두고, " + topic(mover) + " 그 안에서 작은 재미를 찾아요. " + detail.line;
+      point="한 명은 약속을 편하게 만들고, 한 명은 '그래서 뭐 하지?'를 붙여요. 그래서 편한데 심심하진 않아요. " + detail.point;
     } else if(attractionGap>=22){
       const spark=roleByScore(a,b,"attraction",true), steady=roleByScore(a,b,"attraction",false);
       const second=secondaryKey(a,b,["attraction"]);
@@ -451,10 +490,11 @@
       else if(second==="recovery") label="다르게 놀고 다르게 쉬는 사이";
       else if(second==="stability") label="분위기와 기준이 같이 앉는 사이";
       else label="분위기 줍는 쪽과 기준 보는 쪽";
-      line=subject(spark) + " 장면의 재미를 먼저 보고, " + subject(steady) + " 그 장면이 편한지 한 번 더 봐요. " + detail.line;
-      point="그래서 둘이 고른 장소는 너무 튀지도, 너무 심심하지도 않은 애매하게 좋은 곳이 됩니다. " + detail.point;
+      line=subject(spark) + " '이거 재밌겠다'를 먼저 줍고, " + subject(steady) + " '근데 여기 편하긴 해?'를 한 번 봐요. " + detail.line;
+      point="한 명은 새 메뉴, 한 명은 오래 앉기 좋은 자리. 그래서 너무 튀지도, 너무 심심하지도 않게 가요. " + detail.point;
     }
     line = signatureLead(b) + " " + line;
+    point = signaturePoint(b) + " " + point;
     const distinct = Math.round(speedGap + expressionGap + recoveryGap + Math.abs(stabilityAvg-60) + Math.abs(attractionAvg-60));
     return { label,line,point,score:distinct };
   }
