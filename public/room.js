@@ -7,18 +7,18 @@
   const BRANCHES_KO = ["자","축","인","묘","진","사","오","미","신","유","술","해"];
   const ELEM_BY_STEM = ["목","목","화","화","토","토","금","금","수","수"];
   const AXES = [
-    { key:"speed", label:"반응 속도" },
-    { key:"attraction", label:"친해지는 결" },
-    { key:"expression", label:"표현" },
-    { key:"stability", label:"편안함" },
-    { key:"recovery", label:"회복" }
+    { key:"speed", label:"다가가는 속도" },
+    { key:"attraction", label:"친해지는 방식" },
+    { key:"expression", label:"말 꺼내는 법" },
+    { key:"stability", label:"편한 정도" },
+    { key:"recovery", label:"다시 푸는 법" }
   ];
   const ELEMENT_COORDS = {
-    목:{ label:"자라나는 결", teaser:"같이 배우고 넓히는 흐름에서 대화가 열립니다.", scores:{speed:68,attraction:70,expression:66,stability:56,recovery:58}, levels:{speed:"먼저 움직임",attraction:"같이 성장",expression:"제안형",stability:"변화 필요",recovery:"대화로 회복"} },
-    화:{ label:"밝게 켜지는 결", teaser:"표현과 반응이 살아날 때 금세 가까워집니다.", scores:{speed:84,attraction:82,expression:78,stability:48,recovery:52}, levels:{speed:"빠르게 켜짐",attraction:"금세 친해짐",expression:"표현 선명",stability:"온도 변화",recovery:"사과가 중요"} },
-    토:{ label:"천천히 쌓이는 결", teaser:"반복되는 태도와 약속에서 편해집니다.", scores:{speed:52,attraction:58,expression:52,stability:82,recovery:70}, levels:{speed:"천천히 확인",attraction:"익숙함",expression:"담백함",stability:"약속 중심",recovery:"시간으로 회복"} },
-    금:{ label:"선명한 기준의 결", teaser:"말과 행동이 맞을 때 신뢰가 생깁니다.", scores:{speed:62,attraction:64,expression:60,stability:76,recovery:56}, levels:{speed:"판단 빠름",attraction:"태도 확인",expression:"짧고 정확",stability:"기준 중심",recovery:"정리 필요"} },
-    수:{ label:"깊게 스미는 결", teaser:"재촉 없이 기다릴 때 마음이 깊어집니다.", scores:{speed:38,attraction:62,expression:44,stability:68,recovery:82}, levels:{speed:"천천히 깊게",attraction:"분위기",expression:"늦게 표현",stability:"안심 필요",recovery:"혼자 정리"} }
+    목:{ label:"자라나는 결", teaser:"같이 배우고 넓히는 흐름에서 대화가 열립니다.", scores:{speed:68,attraction:70,expression:66,stability:56,recovery:58}, levels:{speed:"먼저 제안함",attraction:"새 얘기 좋아함",expression:"아이디어 냄",stability:"변화가 편함",recovery:"말로 풀림"} },
+    화:{ label:"밝게 켜지는 결", teaser:"표현과 반응이 살아날 때 금세 가까워집니다.", scores:{speed:84,attraction:82,expression:78,stability:48,recovery:52}, levels:{speed:"먼저 가자는 쪽",attraction:"금세 친해짐",expression:"리액션 큼",stability:"온도 오르내림",recovery:"바로 풀어야 함"} },
+    토:{ label:"천천히 쌓이는 결", teaser:"반복되는 태도와 약속에서 편해집니다.", scores:{speed:52,attraction:58,expression:52,stability:82,recovery:70}, levels:{speed:"천천히 확인",attraction:"익숙하면 편함",expression:"담백하게 말함",stability:"약속이 편함",recovery:"시간 지나 풀림"} },
+    금:{ label:"선명한 기준의 결", teaser:"말과 행동이 맞을 때 신뢰가 생깁니다.", scores:{speed:62,attraction:64,expression:60,stability:76,recovery:56}, levels:{speed:"판단 빠른 편",attraction:"태도 먼저 봄",expression:"짧고 정확함",stability:"기준이 편함",recovery:"정리 후 풀림"} },
+    수:{ label:"깊게 스미는 결", teaser:"재촉 없이 기다릴 때 마음이 깊어집니다.", scores:{speed:38,attraction:62,expression:44,stability:68,recovery:82}, levels:{speed:"천천히 스며듦",attraction:"천천히 친해짐",expression:"늦게 말함",stability:"편해야 열림",recovery:"혼자 쉬고 옴"} }
   };
   const BRANCH_ADJUST = {
     인:{speed:7,attraction:5}, 묘:{attraction:9,expression:4}, 사:{speed:8,expression:7}, 오:{speed:10,attraction:7},
@@ -108,10 +108,10 @@
     const adj = hour ? BRANCH_ADJUST[hour.branchKo] : null;
     if(adj){
       Object.keys(adj).forEach((key) => { scores[key] = clamp((scores[key] || 56) + adj[key], 24, 90); });
-      if(hour.branchKo==="사" || hour.branchKo==="오") levels.expression = "표현이 살아남";
-      if(hour.branchKo==="자" || hour.branchKo==="해") levels.recovery = "혼자 정리";
-      if(hour.branchKo==="유" || hour.branchKo==="신") levels.stability = "태도와 기준";
-      if(hour.branchKo==="묘") levels.attraction = "다정한 대화";
+      if(hour.branchKo==="사" || hour.branchKo==="오") levels.expression = "말이 잘 나옴";
+      if(hour.branchKo==="자" || hour.branchKo==="해") levels.recovery = "혼자 쉬고 옴";
+      if(hour.branchKo==="유" || hour.branchKo==="신") levels.stability = "기준이 또렷";
+      if(hour.branchKo==="묘") levels.attraction = "말이 부드러움";
     }
     return {
       element:pillar.element,
@@ -194,11 +194,26 @@
     const cx=82, cy=82, radius=52, colors=["#f1c987","#a9d7bf"];
     const rings=[33,66,100].map((level)=>"<polygon points=\"" + AXES.map((_,i)=>{ const p=coordPoint(i,AXES.length,level,radius,cx,cy); return p.x.toFixed(1)+","+p.y.toFixed(1); }).join(" ") + "\" fill=\"none\" stroke=\"rgba(241,201,135,.25)\"/>").join("");
     const polys=[a,b].map((person,pi)=>"<polygon points=\"" + person.profile.axes.map((axis,i)=>{ const p=coordPoint(i,person.profile.axes.length,axis.score,radius,cx,cy); return p.x.toFixed(1)+","+p.y.toFixed(1); }).join(" ") + "\" fill=\"" + colors[pi] + "\" fill-opacity=\".16\" stroke=\"" + colors[pi] + "\" stroke-width=\"2.2\"/>").join("");
-    const labels=AXES.map((axis,i)=>{ const p=coordPoint(i,AXES.length,123,radius,cx,cy); return "<text x=\"" + p.x.toFixed(1) + "\" y=\"" + (p.y+3).toFixed(1) + "\" text-anchor=\"middle\" font-size=\"9\" font-weight=\"900\" fill=\"#ffe8c8\">" + axis.label.replace(" ","") + "</text>"; }).join("");
+    const labels=AXES.map((axis,i)=>{ const p=coordPoint(i,AXES.length,123,radius,cx,cy); return "<text x=\"" + p.x.toFixed(1) + "\" y=\"" + (p.y+3).toFixed(1) + "\" text-anchor=\"middle\" font-size=\"9\" font-weight=\"900\" fill=\"#ffe8c8\">" + axis.label.replace(/\s/g,"") + "</text>"; }).join("");
     return "<svg viewBox=\"0 0 164 164\" role=\"img\" aria-label=\"케미 레이더\">" + rings + polys + labels + "<circle cx=\"82\" cy=\"82\" r=\"2.8\" fill=\"#f1c987\"/></svg>";
   }
+  function hourBranchKoFromProfile(profile){
+    const match = /^([갑을병정무기경신임계])([자축인묘진사오미신유술해])/.exec(String(profile?.hourPillar || ""));
+    return match ? match[2] : "";
+  }
+  function displayLevels(profile){
+    const base = ELEMENT_COORDS[profile?.element] || ELEMENT_COORDS.토;
+    const levels = { ...base.levels };
+    const branchKo = hourBranchKoFromProfile(profile);
+    if(branchKo==="사" || branchKo==="오") levels.expression = "말이 잘 나옴";
+    if(branchKo==="자" || branchKo==="해") levels.recovery = "혼자 쉬고 옴";
+    if(branchKo==="유" || branchKo==="신") levels.stability = "기준이 또렷";
+    if(branchKo==="묘") levels.attraction = "말이 부드러움";
+    return levels;
+  }
   function axis(profile,key){
-    return profile.axes.find((item)=>item.key===key) || { score:56, level:"중간" };
+    const item = (profile?.axes || []).find((axisItem)=>axisItem.key===key) || { score:56, level:"중간" };
+    return { ...item, level:displayLevels(profile)[key] || item.level || "중간" };
   }
   function hasFinalConsonant(value){
     const chars = String(value || "").trim();
