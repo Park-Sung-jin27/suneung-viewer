@@ -216,7 +216,7 @@
     const cx=82, cy=82, radius=56, colors=["#f1c987","#a9d7bf"];
     const rings=[33,66,100].map((level)=>"<polygon points=\"" + AXES.map((_,i)=>{ const p=coordPoint(i,AXES.length,level,radius,cx,cy); return p.x.toFixed(1)+","+p.y.toFixed(1); }).join(" ") + "\" fill=\"none\" stroke=\"rgba(241,201,135,.25)\"/>").join("");
     const polys=[a,b].map((person,pi)=>"<polygon points=\"" + person.profile.axes.map((axis,i)=>{ const p=coordPoint(i,person.profile.axes.length,axis.score,radius,cx,cy); return p.x.toFixed(1)+","+p.y.toFixed(1); }).join(" ") + "\" fill=\"" + colors[pi] + "\" fill-opacity=\".16\" stroke=\"" + colors[pi] + "\" stroke-width=\"2.2\"/>").join("");
-    const labels=AXES.map((axis,i)=>{ const p=coordPoint(i,AXES.length,123,radius,cx,cy); return "<text x=\"" + p.x.toFixed(1) + "\" y=\"" + (p.y+3).toFixed(1) + "\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"900\" fill=\"#ffe8c8\">" + axis.label.replace(/\s/g,"") + "</text>"; }).join("");
+    const labels=AXES.map((axis,i)=>{ const p=coordPoint(i,AXES.length,123,radius,cx,cy); return "<text x=\"" + p.x.toFixed(1) + "\" y=\"" + (p.y+3).toFixed(1) + "\" text-anchor=\"middle\" font-size=\"10\" fill=\"#ffe8c8\">" + axis.label.replace(/\s/g,"") + "</text>"; }).join("");
     return "<svg viewBox=\"0 0 164 164\" role=\"img\" aria-label=\"케미 레이더\">" + rings + polys + labels + "<circle cx=\"82\" cy=\"82\" r=\"2.8\" fill=\"#f1c987\"/></svg>";
   }
   function radarLegend(a,b){
@@ -598,10 +598,23 @@
     const people=room.participants || [];
     $("resultSection").classList.remove("hidden");
     $("roomSummary").textContent = people.length + "명이 들어왔어요. 각 쌍의 다른 결을 따로 보여드립니다.";
-    $("peopleList").innerHTML = people.map((p)=>"<span class=\"chip\">" + escapeHtml(p.name) + " · " + escapeHtml(p.profile.dayPillar || p.profile.element) + "</span>").join("");
     showShare(room.code);
     const myId = state.participantId || localStorage.getItem("jippi-inyeon-id-" + room.code) || "";
     const me = people.find((p)=>p.id===myId) || people[0];
+    if(me) state.participantId = me.id;
+    $("peopleList").innerHTML = people.map((p)=>{
+      const active = p.id===me?.id;
+      return "<button class=\"chip person-chip" + (active ? " active" : "") + "\" type=\"button\" data-participant-id=\"" + escapeHtml(p.id) + "\" aria-pressed=\"" + (active ? "true" : "false") + "\">" +
+        escapeHtml(p.name) + " · " + escapeHtml(p.profile.dayPillar || p.profile.element) + (active ? "<em>기준</em>" : "") +
+        "</button>";
+    }).join("");
+    $("peopleList").querySelectorAll("[data-participant-id]").forEach((button)=>{
+      button.addEventListener("click", ()=>{
+        state.participantId = button.dataset.participantId || "";
+        localStorage.setItem("jippi-inyeon-id-" + room.code, state.participantId);
+        renderRoom();
+      });
+    });
     const others = people.filter((p)=>p.id!==me?.id);
     if(!me || !others.length){
       $("highlightBox").classList.add("hidden");
