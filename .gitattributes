@@ -1,3 +1,8 @@
-﻿public/data/all_data_204.json merge=ours
-public/data/all_data_204.json binary
-public/data/all_data_204.json binary
+# EOL 정책 — 모든 text 안 LF 단독 (repo) path.
+#   * text=auto: git 안 binary/text 자동 감지 path.
+#   * eol=lf: text 안 working tree 안 LF 단독 path
+#            (Windows checkout 안 CRLF 회피 정합 — 직전 554 churn 차단).
+* text=auto eol=lf
+
+# all_data_204.json — binary 단독 path (merge attempt + EOL norm NOT).
+public/data/all_data_204.json binary merge=ours
