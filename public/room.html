@@ -129,6 +129,17 @@
     }
     .notice{border:1px solid rgba(241,201,135,.2);background:rgba(0,0,0,.18);border-radius:16px;padding:14px 16px;color:#e8cdb0;line-height:1.65;margin-top:14px}
     .cta-band{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+    .waitlist-panel{
+      margin-top:12px;
+      border:1px solid rgba(241,201,135,.2);
+      background:rgba(0,0,0,.16);
+      border-radius:16px;
+      padding:14px;
+    }
+    .waitlist-panel p{margin:0 0 10px;color:#e8cdb0;line-height:1.55}
+    .waitlist-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+    .waitlist-form input{min-height:44px}
+    .waitlist-form .tiny{grid-column:1/-1;margin:0;color:#c9aa8b}
     @media(max-width:760px){
       .hero{padding-top:34px}
       .hero-grid,.grid{grid-template-columns:1fr}
@@ -137,6 +148,7 @@
       .room-head{display:block}
       .radar-row{grid-template-columns:1fr}
       .radar-row svg{width:100%;height:auto;max-width:240px;margin:0 auto}
+      .waitlist-form{grid-template-columns:1fr}
       .panel{padding:18px}
     }
   </style>
@@ -213,8 +225,16 @@
         <div class="grid" id="chemGrid"></div>
         <div class="notice">이 결과는 친구 사이의 리듬을 가볍게 보는 무료 케미입니다. 누가 더 좋고 나쁘다는 비교가 아니라, 각 쌍이 어떤 방식으로 편해지고 어디에서 살짝 엇갈리기 쉬운지를 보여줍니다.</div>
         <div class="cta-band">
-          <a class="btn primary" href="/#products">내 전체 리포트 보기</a>
-          <a class="btn ghost" href="/#order">출시 알림 받기</a>
+          <a class="btn primary" id="fullReportCta" href="/fortune/#products">내 전체 리포트 보기</a>
+          <button class="btn ghost" id="waitlistToggleBtn" type="button">출시 알림 받기</button>
+        </div>
+        <div class="waitlist-panel hidden" id="waitlistPanel">
+          <p>토스 결제가 열리면 한 번만 알려드릴게요.</p>
+          <form class="waitlist-form" id="waitlistForm">
+            <input id="waitlistContact" type="text" inputmode="email" autocomplete="email" placeholder="이메일 또는 연락처" required />
+            <button class="btn primary" id="waitlistSubmitBtn" type="submit">알림 받기</button>
+            <span class="tiny">출시 안내와 지피 리포트 오픈 소식 전달에만 사용합니다.</span>
+          </form>
         </div>
       </div>
     </section>

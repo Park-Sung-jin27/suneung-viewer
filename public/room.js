@@ -150,6 +150,33 @@
     if(!res.ok || !data.ok) throw new Error(data.error || "요청을 처리하지 못했습니다.");
     return data.room;
   }
+  function eventPayload(event, extra={}){
+    return {
+      event,
+      source:"room",
+      roomCode:state.room?.code || state.code || "",
+      participantId:state.participantId || "",
+      path:location.pathname,
+      ...extra
+    };
+  }
+  function track(event, extra={}){
+    const body = JSON.stringify(eventPayload(event, extra));
+    if(navigator.sendBeacon){
+      try {
+        const ok = navigator.sendBeacon("/api/inyeon-event", new Blob([body], { type:"application/json" }));
+        if(ok) return;
+      } catch(e) {
+        console.warn("[JIPPI room] beacon failed", e);
+      }
+    }
+    fetch("/api/inyeon-event", {
+      method:"POST",
+      headers:{ "content-type":"application/json" },
+      body,
+      keepalive:true
+    }).catch((e)=>console.warn("[JIPPI room] event failed", e));
+  }
   function setStatus(text){ $("statusText").textContent = text || ""; }
   function roomUrl(code){ return location.origin + "/room/" + code; }
   function setupMode(){
@@ -176,6 +203,7 @@
   async function copyRoomLink(){
     const code = state.room?.code || state.code;
     if(!code) return;
+    track("room_share_click", { target:"copy_link" });
     await copyUrl(roomUrl(code));
   }
   function canOpenNativeShare(data){
@@ -186,6 +214,7 @@
   async function shareRoom(){
     const code = state.room?.code || state.code;
     if(!code) return;
+    track("room_share_click", { target:"native_share" });
     const url = roomUrl(code);
     const shareData = {
       title:"JIPPI 단톡 케미 무료로 알아보기",
@@ -661,11 +690,13 @@
         name:$("displayName").value,
         profile
       };
+      const isJoin = Boolean(state.code);
       const path = state.code ? "/api/inyeon-room/" + state.code : "/api/inyeon-room";
       state.room = await api(path, { method:"POST", body:JSON.stringify(body) });
       state.code = state.room.code;
       state.participantId = body.participantId;
       localStorage.setItem("jippi-inyeon-id-" + state.code, body.participantId);
+      track(isJoin ? "room_join" : "room_create");
       history.replaceState(null, "", "/room/" + state.code);
       setupMode();
       renderRoom();
@@ -675,6 +706,59 @@
     } finally {
       $("submitBtn").disabled = false;
     }
+  }
+  function openWaitlist(){
+    const panel = $("waitlistPanel");
+    if(!panel) return;
+    track("room_cta_click", { target:"waitlist_open" });
+    panel.classList.remove("hidden");
+    setTimeout(()=>$("waitlistContact")?.focus({ preventScroll:true }), 0);
+  }
+  async function submitWaitlist(event){
+    event.preventDefault();
+    const contact = $("waitlistContact")?.value.trim() || "";
+    if(contact.length < 3){
+      setStatus("알림 받을 이메일이나 연락처를 입력해 주세요.");
+      return;
+    }
+    const button = $("waitlistSubmitBtn");
+    const original = button?.textContent || "알림 받기";
+    if(button){
+      button.disabled = true;
+      button.textContent = "저장 중";
+    }
+    try {
+      const response = await fetch("/api/waitlist", {
+        method:"POST",
+        headers:{ "content-type":"application/json" },
+        body:JSON.stringify({
+          source:"room",
+          name:$("displayName")?.value || "",
+          contact,
+          roomCode:state.room?.code || state.code || "",
+          participantId:state.participantId || "",
+          path:location.pathname
+        })
+      });
+      const data = await response.json().catch(() => ({}));
+      if(!response.ok || !data.ok) throw new Error(data.error || "WAITLIST_FAILED");
+      setStatus("출시 알림 신청이 저장됐어요.");
+      $("waitlistForm")?.reset();
+      $("waitlistPanel")?.classList.add("hidden");
+    } catch(e) {
+      console.warn("[JIPPI room] waitlist failed", e);
+      setStatus("알림 신청을 저장하지 못했어요. 잠시 후 다시 시도해 주세요.");
+    } finally {
+      if(button){
+        button.disabled = false;
+        button.textContent = original;
+      }
+    }
+  }
+  function bindCtas(){
+    $("fullReportCta")?.addEventListener("click", () => track("room_cta_click", { target:"full_report" }));
+    $("waitlistToggleBtn")?.addEventListener("click", openWaitlist);
+    $("waitlistForm")?.addEventListener("submit", submitWaitlist);
   }
   function bindDateMask(){
     const input = $("birthDate");
@@ -689,6 +773,7 @@
     $("copyBtn").addEventListener("click", copyRoomLink);
     $("heroShareBtn").addEventListener("click", () => state.room || state.code ? shareRoom() : document.getElementById("joinPanel").scrollIntoView({behavior:"smooth"}));
     $("refreshBtn").addEventListener("click", loadRoom);
+    bindCtas();
     loadRoom();
   }
 
