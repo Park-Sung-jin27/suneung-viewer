@@ -337,7 +337,9 @@
     return first === second ? first : first + ", " + second;
   }
   function signatureLead(person){
-    return topic(person) + " " + signaturePhrase(person) + " 쪽이에요.";
+    const parts = signaturePhrase(person).split(", ");
+    if(parts.length >= 2) return topic(person) + " " + parts[0] + " 편이고, " + parts[1] + " 쪽이에요.";
+    return topic(person) + " " + parts[0] + " 쪽이에요.";
   }
   function signaturePoint(person){
     const key = topAxis(person);
