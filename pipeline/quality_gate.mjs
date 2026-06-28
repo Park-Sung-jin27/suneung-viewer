@@ -869,6 +869,30 @@ for (const yearKey of yearsToCheck) {
             }
           }
 
+          // ── CS_ALL_NONHIGHLIGHTABLE — cs_ids 전부 비-하이라이트 sentType → 형광펜 미렌더 ──
+          //   getHL(PassagePanel)는 body/verse/stage/speech 등만 하이라이트. cs가 전부
+          //   footnote/author/omission/workTag(각주/작가행/중략/「(가)」 표지)면 형광펜 0개.
+          //   cs_ids 빈 경우(len=0)는 미해당(release_ready 1·4 관할).
+          if (Array.isArray(c.cs_ids) && c.cs_ids.length > 0) {
+            const NONHL = new Set([
+              "footnote",
+              "author",
+              "omission",
+              "workTag",
+            ]);
+            const csS = c.cs_ids
+              .map((id) => set.sents.find((s) => s.id === id))
+              .filter(Boolean);
+            if (csS.length > 0 && csS.every((s) => NONHL.has(s.sentType))) {
+              issue(
+                "CS_ALL_NONHIGHLIGHTABLE",
+                yearKey,
+                cLoc,
+                "cs_ids가 전부 비-하이라이트 sentType(각주/표지/중략/작가) → 형광펜 미렌더",
+              );
+            }
+          }
+
           // ── H: analysis 내부 ID 노출 ────────────────────────────────────
           // [r2024cs11], r2024cs11, (as11), (as11~as15), q1_c3 등
           const ID_LEAK_RE =
@@ -1540,6 +1564,7 @@ const SEVERITY_MAP = {
   C_label_domain_mismatch: "CRITICAL", // Tier 1 (pat R ↔ 라벨 L / 반대)
   C_vpat_dirty: "CRITICAL", // Tier 1 (pat=V 인데 cs_ids/cs_spans 비어있지 않음)
   MARKER_INTEGRITY_FAIL: "CRITICAL", // Tier 1 (참조 마커/bracket이 지문·annotation에 부재 = 형광펜 정박 불가)
+  CS_ALL_NONHIGHLIGHTABLE: "CRITICAL", // Tier 1 (cs_ids 전부 비-하이라이트 sentType = 형광펜 미렌더)
 
   // WARNING (품질 향상) — Tier 2·3
   // Tier 2 (검증 필요 — 승격 후보, false positive 검수 후 CRITICAL로)
