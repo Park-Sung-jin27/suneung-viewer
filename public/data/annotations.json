@@ -586,17 +586,17 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l20259as2",
-        "sentTo": "l20259as4"
+        "sentFrom": "l20259as6",
+        "sentTo": "l20259as12"
       },
       {
         "type": "box",
-        "sentId": "l20259as8",
+        "sentId": "l20259as49",
         "text": "꽃그늘"
       },
       {
         "type": "underline",
-        "sentId": "l20259as14",
+        "sentId": "l20259as38",
         "text": "(어찌 그렇지 않을 수 있겠는가?)",
         "marker": "㉠"
       }
