@@ -556,8 +556,36 @@ for (const yearKey of yearsToCheck) {
           const bm = txt.match(/\[[A-F]\]/g);
           if (bm) bm.forEach((b) => refBr.add(b));
         }
+        // [refine] 발문이 "<보기>의/학습 활동의 [마커(범위)]"로 마커를 보기·학습활동
+        //   라벨로 선언하면 그 마커는 지문 마커가 아님 → credit(제외). 보기/학습활동
+        //   본문 누락은 MARKER_INTEGRITY가 아니라 별도 보기 복원 트랙 소관. (FP 영구 차단)
+        const bogiLabelMk = new Set();
+        for (const q of set.questions || []) {
+          const stem = q.t || "";
+          const declRe = /(?:보기[^가-힣]{0,3}의|학습\s*활동의)/g;
+          let dm;
+          while ((dm = declRe.exec(stem))) {
+            const tail = stem.slice(
+              dm.index + dm[0].length,
+              dm.index + dm[0].length + 8,
+            );
+            const found = [...tail].filter((ch) => mkSet.has(ch));
+            if (found.length === 0) continue;
+            if (found.length >= 2 && /[~∼～]/.test(tail)) {
+              // 범위 선언(예: ㉮~㉲ / ⓐ~ⓔ) → 양 끝 사이 전개
+              const a = found[0].codePointAt(0);
+              const b = found[found.length - 1].codePointAt(0);
+              if (b > a && b - a < 30)
+                for (let cp = a; cp <= b; cp++)
+                  bogiLabelMk.add(String.fromCodePoint(cp));
+              else found.forEach((c) => bogiLabelMk.add(c));
+            } else {
+              found.forEach((c) => bogiLabelMk.add(c));
+            }
+          }
+        }
         for (const m of refMk) {
-          if (!avail.has(m))
+          if (!avail.has(m) && !bogiLabelMk.has(m))
             issue(
               "MARKER_INTEGRITY_FAIL",
               yearKey,
