@@ -503,6 +503,19 @@ for (const yearKey of yearsToCheck) {
           const bstr =
             typeof q.bogi === "string" ? q.bogi : JSON.stringify(q.bogi);
           for (const ch of bstr) if (mkSet.has(ch)) avail.add(ch);
+          // 보기 구조 텍스트 내 마커 범위(예: annotated_image.text "㉠～㉣은 …위치")
+          //   전개 → 중간 마커(㉡㉢)도 보기 라벨로 credit (도식 라벨 FP 차단)
+          const rangeRe = /([㉠-㉿ⓐ-ⓩ])\s*[~∼～]\s*([㉠-㉿ⓐ-ⓩ])/g;
+          let rm;
+          while ((rm = rangeRe.exec(bstr))) {
+            const a = rm[1].codePointAt(0);
+            const b = rm[2].codePointAt(0);
+            if (b > a && b - a < 30)
+              for (let cp = a; cp <= b; cp++) {
+                const c = String.fromCodePoint(cp);
+                if (mkSet.has(c)) avail.add(c);
+              }
+          }
         }
         const annList = (globalThis.__annAll[yearKey] || {})[set.id] || [];
         let hasBracketAnn = false;
