@@ -3868,6 +3868,14 @@
         "sentId": "r2020fs27",
         "text": "이상적인 이식편"
       }
+    ],
+    "l2020a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2020as5",
+        "sentTo": "l2020as12"
+      }
     ]
   },
   "2019수능": {
