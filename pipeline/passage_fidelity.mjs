@@ -27,17 +27,17 @@ const MIN = cfg.min_hangul ?? 10;
 const MINEXAM = cfg.min_exam_hangul ?? 200;
 const TYPES = new Set(cfg.sent_types ?? ["body", "verse"]);
 
-// RELEASE_SET_IDS(노출 세트)를 src/dataLoader.js에서 파싱 (단일 진실, hardcode 회피)
+// RELEASE_KEYS(출시 세트, 복합키 yearKey::setId)를 src/dataLoader.js에서 파싱
+//   (단일 진실, hardcode 회피). 구 RELEASE_SET_IDS(setId 단독)는 폐기됨 — 복합키만 정본.
+//   setId 단독 판정은 collision(2014~2016 A/B 공유)·rename으로 라이브를 비노출로 오분류함.
 function loadReleaseSet() {
-  const ids = new Set();
+  const keys = new Set();
   try {
     const src = fs.readFileSync("src/dataLoader.js", "utf8");
-    const m = src.match(/RELEASE_SET_IDS\s*=\s*new Set\(\[([\s\S]*?)\]\)/);
-    if (m)
-      for (const mm of m[1].matchAll(/"([rl]\d{4,6}[a-zA-Z]?)"/g))
-        ids.add(mm[1]);
+    const m = src.match(/RELEASE_KEYS\s*=\s*new Set\(\[([\s\S]*?)\]\)/);
+    if (m) for (const mm of m[1].matchAll(/"([^"]+::[^"]+)"/g)) keys.add(mm[1]);
   } catch {}
-  return ids;
+  return keys;
 }
 const RELEASE = loadReleaseSet();
 
@@ -107,7 +107,7 @@ for (const yk of Object.keys(d)) {
   }
   for (const cat of ["reading", "literature"])
     for (const s of d[yk][cat] || []) {
-      const isLive = RELEASE.has(s.id);
+      const isLive = RELEASE.has(yk + "::" + s.id);
       for (const sent of s.sents || []) {
         if (!TYPES.has(sent.sentType)) continue;
         const inc = inclusion(H(sent.t), examH);
@@ -119,12 +119,24 @@ for (const yk of Object.keys(d)) {
 }
 live.sort((a, b) => a.inc - b.inc);
 other.sort((a, b) => a.inc - b.inc);
+// 포함도 0 = 시험지에 한 윈도도 안 잡힘 = 교체/환각이거나 옛한글/고전시가 추출 mismatch.
+//   게이트가 자동 판별 불가(맹점) → UNVERIFIABLE_OLDHANGUL: 수동 직독 필요로 플래그.
+const liveZero = live.filter((x) => x.inc === 0);
 console.log(
-  `본문 의심: 라이브 ${live.length} + 비노출 ${other.length} | 미대조 yk: ${nokey.length} | 임계 포함도<${TH} | data=${dataPath}`,
+  `본문 의심: 라이브 ${live.length}(그중 포함도0=UNVERIFIABLE ${liveZero.length}) + 비노출 ${other.length} | 미대조 yk: ${nokey.length} | 임계 포함도<${TH} | data=${dataPath}`,
+);
+if (liveZero.length)
+  console.log(
+    `=== ⚠️ UNVERIFIABLE_OLDHANGUL (라이브·포함도 0 — 수동 PDF 직독 필요, 게이트 자동판별 불가) ${liveZero.length}건 ===`,
+  );
+liveZero.forEach((x) =>
+  console.log(`  ⚠️ ${x.yk} ${x.setId} ${x.sentId}: 포함도=0 → 직독 요`),
 );
 console.log("=== 🔴 라이브(RELEASE) 세트 본문 의심 (포함도 오름차순) ===");
 live.forEach((x) =>
-  console.log(`  ${x.yk} ${x.setId} ${x.sentId}: 포함도=${x.inc}`),
+  console.log(
+    `  ${x.yk} ${x.setId} ${x.sentId}: 포함도=${x.inc}${x.inc === 0 ? " ⚠️UNVERIFIABLE" : ""}`,
+  ),
 );
 console.log("=== ⚪ 비노출 세트 본문 의심 (포함도 오름차순, 최대 60) ===");
 other
