@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-06-30T14:14:23.238Z",
+  "row_count": 10944,
+  "categories": {
+    "교과": 3717,
+    "종합": 6572,
+    "논술": 83,
+    "기타": 360,
+    "실기": 97,
+    "혼합전형": 115
+  },
+  "universities": 184,
+  "duplicate_key_definition": "univ|campus|dept|admission|admission_type",
+  "checks": {
+    "source_missing": 0,
+    "polluted_rows": 0,
+    "cut70_null": 0,
+    "duplicate_key": 0,
+    "duplicate_rows": 0,
+    "duplicate_universities": 0,
+    "near_duplicate_dept_key": 0,
+    "question_mark_dept_rows": 0,
+    "mojibake_rows": 0,
+    "mixed_admission_rows": 115
+  }
+}
