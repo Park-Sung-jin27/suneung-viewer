@@ -32,7 +32,11 @@
    - **✅ UNVERIFIABLE 3건 직독 완료**: l2025d s217=갑민가 오타(교정) / l2020b s5·l2020c s14=**검증 클린**(짧은 대사 포함도0 FP). 현재 UNVERIFIABLE 2건은 검증된 acceptable.
    - **✅ r2019a s39 마커 garbling 교정**(147b5b4, LIVE): '㉡갑이러한 갑의'→'이러한 ㉡갑의'(마커 위치오류+갑 중복). program-diff로 적발.
    - **✅ program-diff 선별법 확립**: pdftotext로 시험지 한글 추출 → 각 데이터 sent `한글 in 시험지` exact-substring 검사 → **미존재(부분존재=1글자 의심)만 render 직독**. 29 전수 render 불요. image-only(2014수능A/B)·추출빈약 set 제외. 결과 **50 오타후보** 선별(SET 전실패 옛한글=0).
-   - **🔴 다음 세션 1순위: program-diff 50 오타후보 render 직독**(재현: 위 선별법 재실행). 주의: 옛한글 verse(l2020a·l2021c·l2022d·l2024d) 다수는 PUA 정상변형 가능 / 명백 garbling(마커누출·중복)만 교정. 갑민가·r2019a식 LIVE 오타 추가 가능. + 비노출 23건.
+   - **✅ l20266b s66 교정**(6d8016d, LIVE): '홀고의적삼'→'홑고의적삼'(홑겹). early-break(끊김@1)+시각 render 확정.
+   - **이번 세션 program-diff로 적발한 LIVE 본문 결함 = 총 5건**: 갑민가 3·r2019a s39·l20266b s66. release 버그가 가려온 실재 결함.
+   - **⚠️ char-diff 자동확정 불가 교훈**: 50후보 char-diff 시도 → PDF get_text() 자체가 일부 글자를 garbling(삐·뵈·뢴·긷·뵐·솰 등 = 추출 artifact, 데이터는 정상). 따라서 **자동 char 비교로 typo 확정 불가 → 시각 render만 신뢰**. number-drop(과정 2가)·column-interleave도 FP 양산.
+   - **🔴 다음 세션 1순위: program-diff 잔여 mid-break 후보 ~25건 시각 render 직독**(재현: 선별법 재실행 → 끊김@중간[숫자/마커 아닌] body만 render). 옛한글 verse 9건(전부 PUA)=정규화 트랙 별도(교체 아님, 유지). 명백 garbling만 교정 원칙.
+   - 비노출 23건 직독.
 4. **structure-번호 트랙 (text 환각 아님)**: 2017_9월 l20179a/b/c = 직접구성요소 **문법** set인데 데이터 Q16~~19 라벨. 시험지 렌더는 Q11~~14, 정답표상 문법은 Q11~~15 영역(독서 16~~) → **데이터 +5 오추출 강력**(LEGACY Q16~~34 관례 위반). 내용 정상이라 우선순위 낮으나 원문 번호 정합 위해 별 트랙 정정 대상(데이터 16~~19 → 11~14 재배정 검토).
 5. **r2014e Q30 보기표** PDF 대조 + 해설(patch 대기, patch_r2014e_recon.json 지시 4·5).
 6. **l2015bB (나) 유한라산기 본문 누락 복원**(비노출, _done/2015수능B PDF 전사).
