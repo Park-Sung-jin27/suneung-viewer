@@ -3942,6 +3942,14 @@
         "text": "나올",
         "marker": "ⓐ"
       }
+    ],
+    "r2019d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2019ds16",
+        "sentTo": "r2019ds18"
+      }
     ]
   },
   "2016수능A": {
@@ -4615,6 +4623,14 @@
         "sentId": "l20249cs13",
         "text": "ⓖ그렇지요? 맞죠?",
         "marker": "ⓖ"
+      }
+    ],
+    "l20249d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20249ds19",
+        "sentTo": "l20249ds31"
       }
     ]
   },
@@ -5374,6 +5390,32 @@
         "marker": "㉥",
         "sentId": "l20199ds26",
         "text": "소피, 당황한 듯 잠시 침묵했다가 군복 안에 받쳐 입은 터틀넥 스웨터의 목을 젖혀 보인다. 목에 나 있는 피멍 자국."
+      }
+    ],
+    "r20199a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20199as20",
+        "sentTo": "r20199as21"
+      }
+    ]
+  },
+  "2020_9월": {
+    "r20209b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20209bs5",
+        "sentTo": "r20209bs10"
+      }
+    ],
+    "r20209a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20209as38",
+        "sentTo": "r20209as41"
       }
     ]
   }
