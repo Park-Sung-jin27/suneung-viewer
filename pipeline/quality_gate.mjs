@@ -621,6 +621,50 @@ for (const yearKey of yearsToCheck) {
         }
       }
 
+      // ── [Gate] BOGI_IMAGE_MISSING — 보기 이미지 파일 실존 검사 ──────────────
+      //   [그림src:/images/…] 또는 bogi.image.url / bogi.images[]가 가리키는 파일이
+      //   public/ 아래 실재하는지. 누락 시 학생이 보기(도식/그림)를 못 봐 답 불가.
+      //   answer/structure/passage 게이트가 못 잡는 사각(파일 존재는 별 차원).
+      {
+        const imgPaths = new Set();
+        const collectImg = (str) => {
+          if (typeof str !== "string") return;
+          const re = /\[그림src:([^\]]+)\]/g;
+          let m;
+          while ((m = re.exec(str))) imgPaths.add(m[1].trim());
+        };
+        for (const s of set.sents || []) collectImg(s.t);
+        for (const q of set.questions || []) {
+          if (typeof q.bogi === "string") collectImg(q.bogi);
+          else if (q.bogi && typeof q.bogi === "object") {
+            collectImg(JSON.stringify(q.bogi));
+            const img = q.bogi.image;
+            if (typeof img === "string") imgPaths.add(img);
+            else if (img && typeof img === "object" && img.url)
+              imgPaths.add(img.url);
+            if (Array.isArray(q.bogi.images))
+              for (const im of q.bogi.images) {
+                if (typeof im === "string") imgPaths.add(im);
+                else if (im && im.url) imgPaths.add(im.url);
+              }
+          }
+          for (const c of q.choices || []) collectImg(c.t);
+        }
+        const PUBLIC_DIR = path.resolve(__dirname, "../public");
+        for (const ip of imgPaths) {
+          const rel = String(ip).replace(/^[\\/]/, "");
+          if (!rel.startsWith("images/")) continue; // 자산 경로만 검사
+          if (!fs.existsSync(path.join(PUBLIC_DIR, rel)))
+            issue(
+              "BOGI_IMAGE_MISSING",
+              yearKey,
+              `${set.id}`,
+              `보기 이미지 파일 부재: ${ip} (학생이 보기 못 봄 = 문항 답 불가)`,
+              "fatal",
+            );
+        }
+      }
+
       for (const q of set.questions) {
         // [Gate 7] --golden 지정 시 골든셋 외 스킵
         if (GOLDEN_ONLY && !goldenMatch(yearKey, set.id, q.id)) continue;
@@ -1606,6 +1650,7 @@ const SEVERITY_MAP = {
   C_vpat_dirty: "CRITICAL", // Tier 1 (pat=V 인데 cs_ids/cs_spans 비어있지 않음)
   MARKER_INTEGRITY_FAIL: "CRITICAL", // Tier 1 (참조 마커/bracket이 지문·annotation에 부재 = 형광펜 정박 불가)
   CS_ALL_NONHIGHLIGHTABLE: "CRITICAL", // Tier 1 (cs_ids 전부 비-하이라이트 sentType = 형광펜 미렌더)
+  BOGI_IMAGE_MISSING: "CRITICAL", // Tier 1 (보기 이미지 파일 부재 = 학생이 보기 못 봐 답 불가)
 
   // WARNING (품질 향상) — Tier 2·3
   // Tier 2 (검증 필요 — 승격 후보, false positive 검수 후 CRITICAL로)
