@@ -36,16 +36,18 @@
    - **이번 세션 program-diff로 적발한 LIVE 본문 결함 = 총 5건**: 갑민가 3·r2019a s39·l20266b s66. release 버그가 가려온 실재 결함.
    - **⚠️ char-diff 자동확정 불가 교훈**: 50후보 char-diff 시도 → PDF get_text() 자체가 일부 글자를 garbling(삐·뵈·뢴·긷·뵐·솰 등 = 추출 artifact, 데이터는 정상). 따라서 **자동 char 비교로 typo 확정 불가 → 시각 render만 신뢰**. number-drop(과정 2가)·column-interleave도 FP 양산.
    - **mid-break 후보 대표 4건 spot-check = 전부 FP**(l20226c s10 column-interleave·r2026c s8 '<그림>과 같이' 도표참조 생략·l2026a s12/s18 장문 판소리 break@160 wrap). **패턴 확정: 진짜 typo는 갑민가식 clean early-break(끊김@초반·짧은 행), mid/deep-break은 detection artifact(도표참조·column-interleave·장문 wrap·PDF 글자 garbling) 우세.** → 5건 fixed가 cleanly-detectable LIVE typo의 사실상 전부로 추정.
-   - **🔴 다음 세션(선택, 저수율): 잔여 mid-break ~20건 잔여 시각확인으로 '텍스트-추출 LIVE 진짜 0' 확정**(재현: 선별법 → **끊김@초반(<10)·짧은 sent 우선**, deep-break은 FP 가능성 高 후순위). 옛한글 verse 9(PUA)=정규화 별 트랙(교체 아님).
+   - **✅ editdist-1 검출기 확립 (대표)**: PDF와 정확히 1글자 다른 LIVE sent 전수 선별(`typo_editdist1.json`·`progdiff_live.json`). **6번째 LIVE typo 적발: l2020c s14 '좋음→좇음'**(77d8c61, 古語 '좇다'=따르다; 앞서 Code B가 '클린' 판정한 1글자 古語 diff). → **LIVE text random typo 6건으로 수렴·종결**(갑민가3·r2019a·l20266b·l2020c). 잔여 45 editdist 후보 = FP(del→흔한음절·sub→PUA artifact) + 古語(아래 트랙).
    - 비노출 23건 직독.
 4. **structure-번호 트랙 (text 환각 아님)**: 2017_9월 l20179a/b/c = 직접구성요소 **문법** set인데 데이터 Q16~~19 라벨. 시험지 렌더는 Q11~~14, 정답표상 문법은 Q11~~15 영역(독서 16~~) → **데이터 +5 오추출 강력**(LEGACY Q16~~34 관례 위반). 내용 정상이라 우선순위 낮으나 원문 번호 정합 위해 별 트랙 정정 대상(데이터 16~~19 → 11~14 재배정 검토).
 5. **🆕🔴 2014 image-only LIVE set 전수 render 트랙 (승격, 대표 2026-06-30 지정)**: 2014수능 A/B(+추출빈약 set)는 pdftotext 추출 0 → **program-diff 원천 맹점**(exact-substring·끊김 선별 자체가 불가). 텍스트-추출 LIVE는 program-diff로 좁혔으나 image set은 **전수 페이지 render만 유일 검증법**. **현 6번 r2014e(단일 set 보기표)보다 범위 큼** — image-only LIVE set의 본문·선지 전수 직독. release 버그 fix로 '라이브 0' 거짓이 드러난 것과 동일 맥락의 미검증 영역.
-6. **r2014e Q30 보기표** PDF 대조 + 해설(patch 대기, patch_r2014e_recon.json 지시 4·5) — 위 5번 트랙의 일부 set(2014수능A).
-7. **l2015bB (나) 유한라산기 본문 누락 복원**(비노출, _done/2015수능B PDF 전사).
+6. **🆕🔴 古語 audit 트랙 (신설, 대표 결정: PDF 원문 그대로)**: 고전 set의 古語 표기를 시험지 PDF와 일치하도록 전수 render 직독 교정(normalization 방향 = **PDF 원문 그대로**, 임의 현대화 금지). 대상 = 쫓/좇·던/뎐·긔·늣 등 古語 표기 편차. **editdist-1 후보 12건 = 시작점**(l2020c s14가 그 첫 사례), 단 editdist 자동검출은 FP 많아 **render-검증 필수**. random typo(위 6건 종결)와 구분되는 체계적 古語 정합 트랙.
+7. **r2014e Q30 보기표** PDF 대조 + 해설(patch 대기, patch_r2014e_recon.json 지시 4·5) — 위 5번 트랙의 일부 set(2014수능A).
+8. **l2015bB (나) 유한라산기 본문 누락 복원**(비노출, _done/2015수능B PDF 전사).
 
 ### 운영 강화 (이번 세션 확립)
 
 - 게이트↔push 분리 준수 / 데이터·도구·이미지·annotations **단독 push**(fortune 가드) / 표·학습지·도식 문항은 **페이지 이미지 직독이 유일 검증법**(pdftotext 불가).
+- **⚠️ 인시던트 교훈 (대표, all_data 손상)**: sandbox sync truncation이 `all_data_204.json`을 손상시킨 사례 발생. → **데이터/annotations 편집은 git-object 우회 강제**: `git show HEAD:public/data/all_data_204.json` → 검증(JSON.parse) → in-place write → readback 확인. **mount plain read+write 금지**(truncation 위험). CLAUDE.md §16 DO NOT TOUCH('node -e 인라인 수동 패치 금지')와 'sandbox truncate' 환경주의(v1.9) 실증.
 
 ---
 
