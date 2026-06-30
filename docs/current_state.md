@@ -35,7 +35,8 @@
    - **✅ l20266b s66 교정**(6d8016d, LIVE): '홀고의적삼'→'홑고의적삼'(홑겹). early-break(끊김@1)+시각 render 확정.
    - **이번 세션 program-diff로 적발한 LIVE 본문 결함 = 총 5건**: 갑민가 3·r2019a s39·l20266b s66. release 버그가 가려온 실재 결함.
    - **⚠️ char-diff 자동확정 불가 교훈**: 50후보 char-diff 시도 → PDF get_text() 자체가 일부 글자를 garbling(삐·뵈·뢴·긷·뵐·솰 등 = 추출 artifact, 데이터는 정상). 따라서 **자동 char 비교로 typo 확정 불가 → 시각 render만 신뢰**. number-drop(과정 2가)·column-interleave도 FP 양산.
-   - **🔴 다음 세션 1순위: program-diff 잔여 mid-break 후보 ~25건 시각 render 직독**(재현: 선별법 재실행 → 끊김@중간[숫자/마커 아닌] body만 render). 옛한글 verse 9건(전부 PUA)=정규화 트랙 별도(교체 아님, 유지). 명백 garbling만 교정 원칙.
+   - **mid-break 후보 대표 4건 spot-check = 전부 FP**(l20226c s10 column-interleave·r2026c s8 '<그림>과 같이' 도표참조 생략·l2026a s12/s18 장문 판소리 break@160 wrap). **패턴 확정: 진짜 typo는 갑민가식 clean early-break(끊김@초반·짧은 행), mid/deep-break은 detection artifact(도표참조·column-interleave·장문 wrap·PDF 글자 garbling) 우세.** → 5건 fixed가 cleanly-detectable LIVE typo의 사실상 전부로 추정.
+   - **🔴 다음 세션(선택, 저수율): 잔여 mid-break ~20건 잔여 시각확인으로 '텍스트-추출 LIVE 진짜 0' 확정**(재현: 선별법 → **끊김@초반(<10)·짧은 sent 우선**, deep-break은 FP 가능성 高 후순위). 옛한글 verse 9(PUA)=정규화 별 트랙(교체 아님).
    - 비노출 23건 직독.
 4. **structure-번호 트랙 (text 환각 아님)**: 2017_9월 l20179a/b/c = 직접구성요소 **문법** set인데 데이터 Q16~~19 라벨. 시험지 렌더는 Q11~~14, 정답표상 문법은 Q11~~15 영역(독서 16~~) → **데이터 +5 오추출 강력**(LEGACY Q16~~34 관례 위반). 내용 정상이라 우선순위 낮으나 원문 번호 정합 위해 별 트랙 정정 대상(데이터 16~~19 → 11~14 재배정 검토).
 5. **r2014e Q30 보기표** PDF 대조 + 해설(patch 대기, patch_r2014e_recon.json 지시 4·5).
