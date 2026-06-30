@@ -1477,6 +1477,12 @@
         "type": "underline",
         "sentId": "r2022ds14",
         "text": "위에서 내려다보는 시점의 영상"
+      },
+      {
+        "type": "underline",
+        "sentId": "r2022ds5",
+        "text": "ⓐ지날",
+        "marker": "ⓐ"
       }
     ],
     "l2022a": [
