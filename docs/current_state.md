@@ -1,5 +1,19 @@
 # 현 진행 상황 — 2026-06-30 (일과 종결)
 
+## 2026-06-30 (품질 심사관) — 운영 규칙 명문화 (대표 지시)
+
+- **[Adopted] repo에 일회성 스크립트 파일 생성 절대 금지 (특히 Cowork/샌드박스 세션)**: 데이터 교정 시 `*.mjs`/`*.py` 패치 스크립트를 repo 루트에 생성하지 말 것. **사유: 샌드박스는 mount 파일을 unlink 못 함 → 생성하면 사용자가 수동 삭제해야 함(누적·정리 불가).** §5 "일회성 파일 생성 금지"의 Cowork 맥락 강화. 데이터 교정은 ⓐ 데이터 엔지니어(Claude Code) 위임 ⓑ 또는 임시파일 없이 인라인(heredoc, 비저장)으로만.
+- **[재확인] §13⑪ mount plain read+write 금지**: 인라인이라도 `open(mount).read()→write()`는 truncation 위험(같은 바이트라도 sync 중 절단 가능). 원칙은 `git show HEAD` 읽기. 단 미커밋 변경을 스택할 때는 **선행 변경을 먼저 commit한 뒤** HEAD 기준 우회.
+- **[교훈] "크기 동일 ≠ 미변경"**: 古語/마커 교정은 same-byte 글자 치환이라 파일 바이트수가 그대로다. 적용 여부는 **반드시 내용(특정 글자 grep)**으로 판정. 크기·`diff --stat` Bin 표기만으로 "미적용" 단정 금지.
+
+## 2026-06-30 QG-FREE문학고전-원문직독-batch1 (품질심사관 트랙)
+
+- **정책 [Adopted]**: 무료 5개년(2022~2026수능) 문학 고전 13 set **전수 sent-by-sent 시각 직독**(시험지 PDF render 1:1). **candidate/program-diff/char-diff 폐기** — 다글자차·본문누락은 자동검출 원천 불가(l2025a 실증: program-diff가 흉계→꾀·본문누락 못 잡음). 시각 직독만 신뢰(§13⑬).
+- **완료(전수 직독·심사관 인증)**: **l2025a 정을선전 6 fix** — s97 바삐·s106 뵈온대·s111 아뢴대(원 아된대)·s113 서융을·s111 꾀에(원 흉계에)·s113 본문누락 마지막문장 복원. commits **4e54f30·f4c1269·5c80710**.
+- **부분(글자오류만 교정, 본문 누락 재직독 필요)**: l2022c(clean-text 인증·[A][B] bracket 정확)·l2022d(s25 여읠, 03346de)·l2024d(s2 뵐, 4e54f30).
+- **잔여 전수직독 9 set**: l2022a·l2023a·l2023b·l2024a·l2024b·l2025d·l2026a·l2026b·l2026d(+l2024d 잔여). **구조 병행: l2026b(36 sent)·l2026d(4 sent) sentType='?' 누락** → sentType 부여 + 텍스트 직독.
+- **적용 규약**: git-object 우회(§13⑪)·set-scoped(cs_spans/analysis 동반 치환)·gate MARKER 51 유지·新 0·all_data↔annotations 분리·staged blob(git cat-file size+JSON) 검증. 세션당 1~2 set 페이스(set당 다수 render+대조).
+
 ## 2026-06-30 세션 (Code B) — 출시 정합 sprint
 
 ### 완료 (push)
