@@ -1,26 +1,35 @@
 {
-  "generated_at": "2026-06-30T14:14:23.238Z",
-  "row_count": 10944,
+  "generated_at": "2026-07-01T02:06:12.482Z",
+  "row_count": 10933,
   "categories": {
-    "교과": 3717,
-    "종합": 6572,
-    "논술": 83,
+    "교과": 3706,
     "기타": 360,
+    "논술": 83,
     "실기": 97,
+    "종합": 6572,
     "혼합전형": 115
   },
   "universities": 184,
-  "duplicate_key_definition": "univ|campus|dept|admission|admission_type",
+  "duplicate_key_definition": "univ|campus|dept|전형|전형유형",
+  "runtime_duplicate_key_definition": "normalizeUniv(univ)|normalizeCampus(campus)|dept|전형|전형유형",
+  "cross_type_duplicate_key_definition": "univ|campus|dept|전형",
+  "runtime_cross_type_duplicate_key_definition": "normalizeUniv(univ)|normalizeCampus(campus)|dept|전형",
   "checks": {
     "source_missing": 0,
     "polluted_rows": 0,
     "cut70_null": 0,
     "duplicate_key": 0,
     "duplicate_rows": 0,
+    "runtime_duplicate_key": 0,
+    "runtime_duplicate_rows": 0,
+    "cross_type_duplicate_key": 0,
+    "cross_type_duplicate_rows": 0,
+    "runtime_cross_type_duplicate_key": 0,
+    "runtime_cross_type_duplicate_rows": 0,
     "duplicate_universities": 0,
-    "near_duplicate_dept_key": 0,
     "question_mark_dept_rows": 0,
     "mojibake_rows": 0,
-    "mixed_admission_rows": 115
+    "mixed_admission_rows": 115,
+    "near_duplicate_dept_key": 0
   }
 }
