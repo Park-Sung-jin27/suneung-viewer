@@ -5432,5 +5432,39 @@
         "sentTo": "r20209as41"
       }
     ]
+  },
+  "2019_6월": {
+    "l20196b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20196bs14",
+        "sentTo": "l20196bs15"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20196bs16",
+        "sentTo": "l20196bs17"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l20196bs20",
+        "sentTo": "l20196bs21"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l20196bs22",
+        "sentTo": "l20196bs24"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l20196bs25",
+        "sentTo": "l20196bs27"
+      }
+    ]
   }
 }
