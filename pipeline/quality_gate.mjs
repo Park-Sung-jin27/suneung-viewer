@@ -597,6 +597,24 @@ for (const yearKey of yearsToCheck) {
             }
           }
         }
+        // [refine 2] <보기> 학생 감상/이해 enumeration 라벨 credit:
+        //   발문이 "학생[들] …감상/이해한 내용…이다. [마커]~[마커] 중" 문맥이면 그 범위
+        //   마커(ⓐ~ⓔ 등)는 감상 선지 enumeration 라벨 = 지문 형광펜 대상 아님 → credit.
+        //   가드: stem에 '학생…감상/이해' 문맥 필수 → 일반 지문 마커 문항(㉠~㉤ 정박형)은
+        //   절대 credit 안 함(FP만 차단, 진짜 마커 누락 은폐 방지). (l20196b Q31 실증)
+        for (const q of set.questions || []) {
+          const stem = q.t || "";
+          if (!/학생[들]?[^.]{0,40}(감상|이해)/.test(stem)) continue;
+          const enumRe = /([㉠-㉿ⓐ-ⓩ])\s*[~∼～]\s*([㉠-㉿ⓐ-ⓩ])\s*중/g;
+          let em;
+          while ((em = enumRe.exec(stem))) {
+            const a = em[1].codePointAt(0);
+            const b = em[2].codePointAt(0);
+            if (b > a && b - a < 30)
+              for (let cp = a; cp <= b; cp++)
+                bogiLabelMk.add(String.fromCodePoint(cp));
+          }
+        }
         for (const m of refMk) {
           if (!avail.has(m) && !bogiLabelMk.has(m))
             issue(
