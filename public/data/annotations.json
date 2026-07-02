@@ -5473,6 +5473,14 @@
         "sentFrom": "l20196cs11",
         "sentTo": "l20196cs18"
       }
+    ],
+    "r20196b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20196bs1",
+        "sentTo": "r20196bs4"
+      }
     ]
   }
 }
