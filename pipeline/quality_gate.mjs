@@ -750,6 +750,37 @@ for (const yearKey of yearsToCheck) {
         }
       }
 
+      // ── [발주6-D] F_encoding_corruption: U+FFFD(멀티바이트 손상) 전 텍스트 필드 검출 ──
+      //   'git show|node' stdin 청크분할 손상(d85b6c4 인시던트) 재발·잠복 차단. §13⑪.
+      {
+        const scanFFFD = (txt, loc, field) => {
+          if (typeof txt !== "string" || !txt.includes("�")) return;
+          const i = txt.indexOf("�");
+          issue(
+            "F_encoding_corruption",
+            yearKey,
+            loc,
+            `U+FFFD 인코딩 손상 [${field}] "…${txt.slice(Math.max(0, i - 12), i + 3)}…"`,
+          );
+        };
+        scanFFFD(set.title, `${set.id}`, "title");
+        for (const s of set.sents || [])
+          scanFFFD(s.t, `${set.id} ${s.id}`, "sent.t");
+        for (const q of set.questions || []) {
+          scanFFFD(q.t, `${set.id} Q${q.id}`, "q.t");
+          if (q.bogi)
+            scanFFFD(
+              typeof q.bogi === "string" ? q.bogi : JSON.stringify(q.bogi),
+              `${set.id} Q${q.id}`,
+              "bogi",
+            );
+          for (const c of q.choices || []) {
+            scanFFFD(c.t, `${set.id} Q${q.id}-[${c.num}]`, "choice.t");
+            scanFFFD(c.analysis, `${set.id} Q${q.id}-[${c.num}]`, "analysis");
+          }
+        }
+      }
+
       for (const q of set.questions) {
         // [Gate 7] --golden 지정 시 골든셋 외 스킵
         if (GOLDEN_ONLY && !goldenMatch(yearKey, set.id, q.id)) continue;
@@ -1865,6 +1896,8 @@ const SEVERITY_MAP = {
   W_struct_missing: "WARNING",
   W_scratchpad_leak: "WARNING",
   W_verbose: "WARNING",
+  // ── [발주6-D] 인코딩 손상 ──
+  F_encoding_corruption: "CRITICAL", // U+FFFD(멀티바이트 손상) = 깨진 글자 학생 노출
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
@@ -1943,6 +1976,32 @@ if (SCOPE === "release") {
   console.log(
     `\n[ --scope=release: 출시 set ${_releaseSetCount}개 순회 (RELEASE_KEYS ${RELEASE_KEYS_SET.size}건) ]`,
   );
+}
+
+// ── [발주6-D] annotations.json U+FFFD 스캔 (전 텍스트 필드) ──
+try {
+  const annObj = JSON.parse(rawAnn);
+  for (const [yk, sets] of Object.entries(annObj)) {
+    if (!sets || typeof sets !== "object") continue;
+    for (const [setId, anns] of Object.entries(sets)) {
+      for (const a of anns || []) {
+        for (const field of ["text", "marker"]) {
+          const v = a[field];
+          if (typeof v === "string" && v.includes("�")) {
+            const i = v.indexOf("�");
+            issue(
+              "F_encoding_corruption",
+              yk,
+              `${setId} [annotation ${a.type || ""} ${a.sentId || ""}]`,
+              `U+FFFD 인코딩 손상 [annotation.${field}] "…${v.slice(Math.max(0, i - 8), i + 3)}…"`,
+            );
+          }
+        }
+      }
+    }
+  }
+} catch (e) {
+  console.warn(`annotations U+FFFD scan skipped: ${e.message}`);
 }
 
 const ALL_FINDINGS = [...issues, ...manual];
