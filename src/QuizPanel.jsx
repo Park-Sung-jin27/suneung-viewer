@@ -1236,6 +1236,7 @@ function QuestionBlock({
   setId,
   annotations = [],
   isLastQuestion,
+  onCitationClick,
 }) {
   const [clicked, setClicked] = useState(
     isReview ? null : (initialClicked ?? null),
@@ -1406,6 +1407,7 @@ function QuestionBlock({
           passageSents={passageSents}
           selectedChoiceNum={selectedChoiceNum}
           user={user}
+          onCitationClick={onCitationClick}
         />
       )}
     </div>
@@ -1689,6 +1691,7 @@ export default function QuizPanel({
   onNext,
   hasPrev,
   hasNext,
+  onCitationClick,
 }) {
   const isStudy = mode === MODE.STUDY;
 
@@ -1804,6 +1807,7 @@ export default function QuizPanel({
           user={user}
           setId={passageSet.id}
           annotations={passageSet.annotations || []}
+          onCitationClick={onCitationClick}
         />
       ))}
 

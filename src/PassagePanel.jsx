@@ -286,7 +286,19 @@ export function applyInlineAnns(text, anns, hideLabels) {
   );
 }
 
-function RenderSent({ sent, sel, anns }) {
+// AI 인용 형광펜 스타일 (노란 강조 path) — sel/cs_ids 형광펜 안 배타 정합
+//   path: 배경 옅은 노랑 + 진한 노랑 outline + 클릭 스크롤 대상 marker.
+const AI_CITED_STYLE = {
+  background: "#fef3c7",
+  outline: "1.5px solid #f59e0b",
+  outlineOffset: "1px",
+  borderRadius: "3px",
+  padding: "1px 3px",
+  boxDecorationBreak: "clone",
+  WebkitBoxDecorationBreak: "clone",
+};
+
+function RenderSent({ sent, sel, anns, aiCited }) {
   if (sent.type === "image") {
     return (
       <div style={{ margin: "16px 0", textAlign: "center" }}>
@@ -587,7 +599,16 @@ function RenderSent({ sent, sel, anns }) {
     // (annotation은 span 매칭 실패 시 fallback 경로에서 처리)
     const spanJsx = renderSpanParts(t, spans, hlStyle, true);
     if (spanJsx) {
-      return <span>{spanJsx} </span>;
+      // AI 인용 path 안 spans 형광펜 우선 정합 유지 + 외부 wrapper 안
+      // 노란 outline 부가 정합 path 정합 (겹침 시각 명확 정합).
+      return (
+        <span
+          style={aiCited ? AI_CITED_STYLE : undefined}
+          data-ai-cited={aiCited ? "true" : undefined}
+        >
+          {spanJsx}{" "}
+        </span>
+      );
     }
     // span 매칭 실패 → 전체 하이라이트 fallback
   }
@@ -597,8 +618,15 @@ function RenderSent({ sent, sel, anns }) {
     ) : (
       <Lines text={t} hideLabels={true} />
     );
+  // AI 인용 안 sel 형광펜 배타 정합 path — pal 존재 시 sel 우선, 부재 시 AI
+  //   형광펜 단독 노출 정합 (겹침 사실 잠재 path 회피).
+  const combinedStyle = aiCited && !pal ? AI_CITED_STYLE : hlStyle;
   return (
-    <span style={hlStyle} data-hl={pal ? "true" : undefined}>
+    <span
+      style={combinedStyle}
+      data-hl={pal ? "true" : undefined}
+      data-ai-cited={aiCited ? "true" : undefined}
+    >
       {content}{" "}
     </span>
   );
@@ -673,7 +701,7 @@ function BracketContainer({ label, children }) {
   );
 }
 
-function renderAll(sents, sel, annotations, visualMarks) {
+function renderAll(sents, sel, annotations, visualMarks, aiCitedSentId) {
   // target field 호환 path: target 미존재 시 'passage' default.
   // choice/bogi target annotation 은 PassagePanel 영역 외 — QuizPanel 처리.
   const passageAnns = annotations.filter(
@@ -783,6 +811,7 @@ function renderAll(sents, sel, annotations, visualMarks) {
               sent={b.sent}
               sel={sel}
               anns={annMap[b.sent.id] || []}
+              aiCited={aiCitedSentId === b.sent.id}
             />
           ))}
         </p>,
@@ -798,6 +827,7 @@ function renderAll(sents, sel, annotations, visualMarks) {
             sent={g.sent}
             sel={sel}
             anns={annMap[g.sent.id] || []}
+            aiCited={aiCitedSentId === g.sent.id}
           />,
         );
       } else {
@@ -855,17 +885,20 @@ function renderAll(sents, sel, annotations, visualMarks) {
   return result;
 }
 
-export default function PassagePanel({ passageSet, sel, mode }) {
+export default function PassagePanel({
+  passageSet,
+  sel,
+  mode,
+  aiCitedSentId,
+}) {
   const panelRef = useRef(null);
 
-  useEffect(() => {
-    if (!sel || !panelRef.current) return;
-    // 다음 프레임까지 대기 — 자식 RenderSent가 [data-hl] 붙인 후 조회 보장
+  // 스크롤 helper — [data-hl] 또는 [data-ai-cited] 안 first 자동 검색 path.
+  function scrollToSelector(selector) {
+    if (!panelRef.current) return;
     const id = requestAnimationFrame(() => {
-      const first = panelRef.current?.querySelector("[data-hl]");
+      const first = panelRef.current?.querySelector(selector);
       if (!first) return;
-
-      // 가장 가까운 스크롤 가능한 조상 찾기 (부모 컨테이너 overflow 기반)
       let scroller = first.parentElement;
       while (scroller) {
         const oy = getComputedStyle(scroller).overflowY;
@@ -876,9 +909,7 @@ export default function PassagePanel({ passageSet, sel, mode }) {
           break;
         scroller = scroller.parentElement;
       }
-
       if (scroller && scroller !== document.documentElement) {
-        // 컨테이너 수동 스크롤 — Chrome Windows smooth 무시 회피
         const top =
           first.getBoundingClientRect().top -
           scroller.getBoundingClientRect().top +
@@ -891,7 +922,18 @@ export default function PassagePanel({ passageSet, sel, mode }) {
       }
     });
     return () => cancelAnimationFrame(id);
+  }
+
+  useEffect(() => {
+    if (!sel) return;
+    return scrollToSelector("[data-hl]");
   }, [sel]);
+
+  // AI 인용 안 [N] pill 클릭 path 안 해당 sent 안 스크롤 + 노란 형광 자동 path.
+  useEffect(() => {
+    if (!aiCitedSentId) return;
+    return scrollToSelector("[data-ai-cited]");
+  }, [aiCitedSentId]);
 
   if (!passageSet) return null;
   const annotations = passageSet.annotations ?? [];
@@ -929,7 +971,13 @@ export default function PassagePanel({ passageSet, sel, mode }) {
           paddingLeft: "44px",
         }}
       >
-        {renderAll(passageSet.sents || [], sel, annotations, visualMarks)}
+        {renderAll(
+          passageSet.sents || [],
+          sel,
+          annotations,
+          visualMarks,
+          aiCitedSentId,
+        )}
       </div>
     </div>
   );

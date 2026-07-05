@@ -50,6 +50,21 @@ function evidenceForChoice(choice, passageSents) {
     .join("\n");
 }
 
+// 지문 sentId ↔ [N] 번호 매핑 path — buildPrompt 안 filter 정합 유지 의무.
+//   AI 답변 안 [N] 인용 path 안 sentId lookup 정합 사실 (형광펜 연동 path).
+export function buildCitationMap(passageSents) {
+  const map = new Map();
+  const rev = new Map();
+  (passageSents ?? [])
+    .filter((s) => s.sentType !== "footnote" && s.sentType !== "author")
+    .forEach((s, i) => {
+      const n = i + 1;
+      map.set(n, s.id);
+      rev.set(s.id, n);
+    });
+  return { byNumber: map, bySentId: rev };
+}
+
 function buildPrompt({
   question,
   questionText,
@@ -96,6 +111,9 @@ function buildPrompt({
 아래 제공된 지문, 보기, 선지, 해설, 근거 문장만 사용해 답하세요.
 근거가 부족하면 추측하지 말고 부족하다고 말하세요.
 답변은 300자 이내로, 3~4등급 학생도 이해하게 쉽게 설명하세요.
+
+지문 문장을 인용할 때는 [지문] 섹션 앞에 표시된 [1], [2] 등의 번호를 함께 표기하세요.
+예: "[3] 문장에서 …라고 했으므로 …" 형태. 문장 번호는 학생 화면에서 형광펜으로 자동 강조됩니다.
 
 [발문]
 ${q.t ?? questionText ?? ""}
@@ -163,6 +181,67 @@ async function fetchAIAnswer({
   );
 }
 
+// P1 안전망 — AI 답변 안 내부 sentId 안 실수 누출 path 안 정규식 제거 path.
+//   예: r2020fs23 / l2022ds17 등 [rl]YYYY[a-z][s|_s]NN path.
+//   P0 안 지문 안 sentId 제거 path 사후 잔존 잠재 path 안 이중 차단.
+const INTERNAL_ID_RE = /\b[rl]20\d{2}[a-z0-9_]*s\d+\b/gi;
+function sanitizeAiAnswer(text) {
+  if (!text) return "";
+  return String(text).replace(INTERNAL_ID_RE, "").replace(/\s{2,}/g, " ");
+}
+
+// 답변 안 [N] 인용 renderer path — sentIdMap 정합 사실 안 clickable pill
+//   렌더 (onCitationClick(sentId) 안 형광펜 자동 연동 path 트리거).
+//   map 부재 또는 [N] 미매칭 path 안 plain text fallback 정합.
+function renderAnswerWithCitations(text, citationMap, onCitationClick) {
+  const safe = sanitizeAiAnswer(text);
+  if (!citationMap?.byNumber || citationMap.byNumber.size === 0) return safe;
+  const parts = safe.split(/(\[\d+\])/);
+  return parts.map((p, i) => {
+    const m = p.match(/^\[(\d+)\]$/);
+    if (m) {
+      const n = Number(m[1]);
+      const sid = citationMap.byNumber.get(n);
+      if (sid) {
+        return (
+          <span
+            key={i}
+            role="button"
+            tabIndex={0}
+            onClick={(e) => {
+              e.stopPropagation();
+              onCitationClick?.(sid);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.stopPropagation();
+                onCitationClick?.(sid);
+              }
+            }}
+            style={{
+              display: "inline-block",
+              padding: "0 6px",
+              margin: "0 2px",
+              background: "#fef3c7",
+              color: "#92400e",
+              border: "1px solid #fbbf24",
+              borderRadius: "4px",
+              fontSize: "0.75rem",
+              fontWeight: "700",
+              cursor: "pointer",
+              outline: "none",
+            }}
+            title="지문에서 이 문장을 형광펜으로 표시"
+          >
+            [{n}]
+          </span>
+        );
+      }
+    }
+    return <span key={i}>{p}</span>;
+  });
+}
+
 async function readAIError(res) {
   let payload = null;
   try {
@@ -180,7 +259,7 @@ async function readAIError(res) {
   return payload?.error ?? `AI 답변을 가져오지 못했어요. (${res.status})`;
 }
 
-function QAItem({ item }) {
+function QAItem({ item, citationMap, onCitationClick }) {
   const [open, setOpen] = useState(false);
   return (
     <div
@@ -265,7 +344,11 @@ function QAItem({ item }) {
               whiteSpace: "pre-wrap",
             }}
           >
-            {item.ai_answer}
+            {renderAnswerWithCitations(
+              item.ai_answer,
+              citationMap,
+              onCitationClick,
+            )}
           </span>
         </div>
       )}
@@ -281,7 +364,10 @@ export default function QuestionQA({
   passageSents,
   selectedChoiceNum,
   user,
+  onCitationClick,
 }) {
+  // 지문 sentId ↔ [N] 매핑 path — buildPrompt 안 동일 filter 사양 정합.
+  const citationMap = buildCitationMap(passageSents);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
@@ -320,7 +406,7 @@ export default function QuestionQA({
     setError(null);
 
     try {
-      const aiAnswer = await fetchAIAnswer({
+      const rawAnswer = await fetchAIAnswer({
         question,
         questionText,
         choices,
@@ -328,6 +414,8 @@ export default function QuestionQA({
         selectedChoiceNum,
         userQuestion: q,
       });
+      // P1 안전망 — insert 사전 안 sanitize 정합 (DB 안 내부 ID 저장 사전 차단).
+      const aiAnswer = sanitizeAiAnswer(rawAnswer);
 
       const { data, error: dbErr } = await supabase
         .from("question_comments")
@@ -415,7 +503,14 @@ export default function QuestionQA({
               아직 질문이 없어요. 첫 번째로 질문해보세요!
             </div>
           ) : (
-            items.map((item) => <QAItem key={item.id} item={item} />)
+            items.map((item) => (
+              <QAItem
+                key={item.id}
+                item={item}
+                citationMap={citationMap}
+                onCitationClick={onCitationClick}
+              />
+            ))
           )}
 
           <div

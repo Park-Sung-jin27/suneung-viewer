@@ -1110,28 +1110,28 @@ function MainPage({ isPro, user }) {
               return a < b ? -1 : a > b ? 1 : 0; // tiebreak: yearKey 사전순
             })
             .map((yearKey) => {
-            const meta = YEAR_INFO.find((y) => y.key === yearKey);
-            // label 필드 폐기 — 제목 source 단독 formatExamTitle(yearKey) path.
-            //   yd.label 잔존 path 안 ModeSelectModal handleCardClick path 안
-            //   하위 호환 default fallback (meta 부재 path 안 yearKey 단독).
-            const yd = {
-              color: meta?.color ?? "#374151",
-              badge: meta?.badge ?? "",
-              tag: meta?.tag ?? "",
-            };
-            const locked = !isPro && !FREE_YEARS.includes(yearKey);
-            const isFree = FREE_YEARS.includes(yearKey);
-            return (
-              <YearCard
-                key={yearKey}
-                yearKey={yearKey}
-                meta={yd}
-                locked={locked}
-                isFree={isFree}
-                onClick={() => handleCardClick(yearKey, yd, locked)}
-              />
-            );
-          })}
+              const meta = YEAR_INFO.find((y) => y.key === yearKey);
+              // label 필드 폐기 — 제목 source 단독 formatExamTitle(yearKey) path.
+              //   yd.label 잔존 path 안 ModeSelectModal handleCardClick path 안
+              //   하위 호환 default fallback (meta 부재 path 안 yearKey 단독).
+              const yd = {
+                color: meta?.color ?? "#374151",
+                badge: meta?.badge ?? "",
+                tag: meta?.tag ?? "",
+              };
+              const locked = !isPro && !FREE_YEARS.includes(yearKey);
+              const isFree = FREE_YEARS.includes(yearKey);
+              return (
+                <YearCard
+                  key={yearKey}
+                  yearKey={yearKey}
+                  meta={yd}
+                  locked={locked}
+                  isFree={isFree}
+                  onClick={() => handleCardClick(yearKey, yd, locked)}
+                />
+              );
+            })}
         </div>
 
         {/* 기능 요약 카드 3개 */}
@@ -1230,6 +1230,9 @@ function ViewerPage({ user, isPro = false }) {
   const [section, setSection] = useState("reading");
   const [setIdx, setSetIdx] = useState(0);
   const [sel, setSel] = useState(null);
+  // AI 코칭 안 [N] 인용 클릭 → 지문 안 해당 sentId 형광펜 자동 연동 path.
+  //   set 이동 사후 자동 클리어 정합 (currentSet.id 안 useEffect 반영).
+  const [aiCitedSentId, setAiCitedSentId] = useState(null);
   const [studyAnswers, setStudyAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [submittedSets, setSubmittedSets] = useState({}); // set 단위 제출 상태 — UX W2
@@ -1322,6 +1325,7 @@ function ViewerPage({ user, isPro = false }) {
     );
     if (idx >= 0) setSetIdx(idx);
     setSel(null);
+    setAiCitedSentId(null);
     setWarningMsg(null);
     resetScroll();
   }
@@ -1336,6 +1340,12 @@ function ViewerPage({ user, isPro = false }) {
   }, [yearKey, currentSet, sel, isReview]); // eslint-disable-line
 
   const handleSelChange = useCallback((uid) => setSel(uid), []);
+  const handleAiCitationClick = useCallback((sentId) => {
+    // 동일 sentId 안 연속 클릭 path 안 재 highlight + 재 scroll 트리거 정합
+    //   (setState 안 동일값 안 no-op 회피 path — null → 값 안 2-tick path).
+    setAiCitedSentId(null);
+    requestAnimationFrame(() => setAiCitedSentId(sentId));
+  }, []);
 
   function handleStudyAnswer(qid, choiceNum) {
     const sid = currentSet?.id;
@@ -1987,6 +1997,7 @@ function ViewerPage({ user, isPro = false }) {
             key={`p-${currentSet?.id}-${submittedSets[currentSet?.id] ? "r" : "s"}`}
             passageSet={currentSet}
             sel={sel}
+            aiCitedSentId={aiCitedSentId}
             mode={
               isReview || !!submittedSets[currentSet?.id] ? MODE.VIEW : mode
             }
@@ -2009,6 +2020,7 @@ function ViewerPage({ user, isPro = false }) {
             onNext={() => handleNavSet(1)}
             hasPrev={hasPrev}
             hasNext={hasNext}
+            onCitationClick={handleAiCitationClick}
           />
         </div>
       </div>
