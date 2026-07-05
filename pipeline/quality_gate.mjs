@@ -276,6 +276,7 @@ const manual = []; // 수동 처리 필요 항목
 const cslessAnchorCands = []; // 1-A W_csless_with_anchor
 const metaLeakCands = []; // 1-B F_meta_leak (해설 메타-누출)
 const footnoteMarkerCands = []; // 1-C FOOTNOTE_MARKER_INTEGRITY
+const structMissingCands = []; // 1-D W_struct_missing (§7 3단 구조 미달)
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -966,9 +967,13 @@ for (const yearKey of yearsToCheck) {
 
           // ── rubric v1 신설 게이트 3종 (WARNING·비차단, 재정비 트리거) ──
           if (ana && ana.trim()) {
-            // W_struct_missing: ok:false인데 🔍/📌/❌ 3단 블록 부재
-            //   어휘/문맥 의미 문항 제외 — §6 isVocabQuestion(키워드+마지막문항) 또는
-            //   문맥 의미 해설 format("[문맥 속 의미]"). 단 보기 문항(감상)은 제외에서 빼냄.
+            // ── [발주1 1-D] W_struct_missing: §7 3단 구조 미달 (대표 지적, ok:true 확장) ──
+            //   내용문항 해설(어휘 제외)이 §7 3단 미충족:
+            //     · 🔍(풀이/선지분해) 부재 = 근거→결론 직행 (ok:true·false 공통) / 또는
+            //     · ok==false인데 📌(지문 대조) 부재 = 결론 한 줄만
+            //   제외(FP): pat==V 또는 [문맥 속 의미]·[치환 판단]·[호응 성분] 어휘 포맷.
+            //   단 보기 문항(감상, bogi 존재)은 제외에서 빼냄.
+            //   ⚠ 구조 존재만 검사 — 논리 설득력(semantic)은 자동 불가(재작성 후 표본 검수 필수).
             const _isLastQ =
               q.id === Math.max(...set.questions.map((x) => x.id));
             const _vocabKw =
@@ -976,19 +981,36 @@ for (const yearKey of yearsToCheck) {
                 q.t || "",
               );
             const _hasBogi = !!(q.bogi && String(q.bogi).trim());
-            const _isVocabLike =
-              (_isLastQ && _vocabKw) || ana.includes("[문맥 속 의미]");
-            if (
-              c.ok === false &&
-              !(_isVocabLike && !_hasBogi) &&
-              !(ana.includes("🔍") && ana.includes("📌") && ana.includes("❌"))
-            ) {
+            // 어휘 명시 포맷([문맥 속 의미]·[치환 판단]·[호응 성분]) = 보기 무관 무조건 제외
+            //   (다른 정상 구조라 §7 emoji 3단 미적용). 키워드-휴리스틱 vocab은 보기 없을 때만.
+            const _vocabFormat =
+              ana.includes("[문맥 속 의미]") ||
+              ana.includes("[치환 판단]") ||
+              ana.includes("[호응 성분]");
+            const _vocabByKw = _isLastQ && _vocabKw && !_hasBogi;
+            const _structFail =
+              c.pat !== "V" &&
+              !_vocabFormat &&
+              !_vocabByKw &&
+              (!ana.includes("🔍") || (c.ok === false && !ana.includes("📌")));
+            if (_structFail) {
               issue(
                 "W_struct_missing",
                 yearKey,
                 cLoc,
-                "ok:false 해설에 🔍/📌/❌ 3단 블록 부재",
+                !ana.includes("🔍")
+                  ? "🔍(풀이/선지분해) 부재 = 근거→결론 직행"
+                  : "ok:false 해설에 📌(지문 대조) 부재 = 결론 한 줄",
               );
+              structMissingCands.push({
+                yearKey,
+                setId: set.id,
+                qId: q.id,
+                choice: c.num,
+                pat: c.pat,
+                ok: c.ok,
+                live: LIVE_KEYS_SET.has(yearKey + "::" + set.id),
+              });
             }
             // W_scratchpad_leak: LLM 스크래치패드 누출 패턴
             //   ① 한글 메타-고백  ② 영어 추론 어구  ③ 연속 영어 단어 3개+
@@ -1946,12 +1968,17 @@ for (const f of ALL_FINDINGS) {
     path.join(OUT_DIR, "footnote_marker_missing.json"),
     JSON.stringify(footnoteMarkerCands, null, 2),
   );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "struct_missing.json"),
+    JSON.stringify(structMissingCands, null, 2),
+  );
   const _liveN = (a) => a.filter((x) => x.live).length;
   console.log(
     `\n📋 [발주1] 후보 → pipeline/output/  ` +
       `csless_with_anchor=${cslessAnchorCands.length}(LIVE ${_liveN(cslessAnchorCands)}) ` +
       `scratchpad_leak=${metaLeakCands.length}(LIVE ${_liveN(metaLeakCands)}) ` +
-      `footnote_marker=${footnoteMarkerCands.length}(LIVE ${_liveN(footnoteMarkerCands)})`,
+      `footnote_marker=${footnoteMarkerCands.length}(LIVE ${_liveN(footnoteMarkerCands)}) ` +
+      `struct_missing=${structMissingCands.length}(LIVE ${_liveN(structMissingCands)})`,
   );
 }
 
