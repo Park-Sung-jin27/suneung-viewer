@@ -138,6 +138,7 @@ Use only the passage, choices, student answer, answer key, commentary, and evide
 If the evidence is not enough, say that the app data is not enough to confirm the answer.
 If the user asks about an unrelated topic, reply in Korean: "CSAT Korean questions only."
 Keep explanations short, concrete, and student-friendly.
+Never reveal internal codes/IDs (e.g. r2020fs23) to the student. Quote the passage sentence text directly in quotation marks instead.
 Task: ${task}`;
 
     const response = await fetch("https://api.anthropic.com/v1/messages", {

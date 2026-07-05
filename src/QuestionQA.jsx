@@ -45,7 +45,7 @@ function evidenceForChoice(choice, passageSents) {
   return (choice.cs_ids ?? [])
     .map((sid) => {
       const sent = sents.find((s) => s.id === sid);
-      return sent ? `${sid}: ${sent.t}` : `${sid}: [근거 문장 없음]`;
+      return sent ? sent.t : "[근거 문장 없음]";
     })
     .join("\n");
 }
@@ -62,7 +62,7 @@ function buildPrompt({
   const qChoices = q.choices ?? choices ?? [];
   const passageText = (passageSents ?? [])
     .filter((s) => s.sentType !== "footnote" && s.sentType !== "author")
-    .map((s) => `${s.id}: ${s.t}`)
+    .map((s, i) => `[${i + 1}] ${s.t}`)
     .join("\n");
   const bodyText = compact(passageText, MAX_PASSAGE_CHARS);
   const bogiText = compact(stringifyBogi(q.bogi), MAX_BOGI_CHARS);
