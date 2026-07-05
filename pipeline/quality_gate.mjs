@@ -211,6 +211,24 @@ const RELEASE_KEYS_SET = (() => {
   return new Set(keys);
 })();
 
+// LIVE_KEYS_SET: scope 무관 항상 파싱 (발주1 후보 리스트 live 플래그용).
+// 파서 괄호버그 회피 위해 "])" 기준 robust slice.
+const LIVE_KEYS_SET = (() => {
+  try {
+    const src = fs.readFileSync(
+      path.resolve(__dirname, "../src/dataLoader.js"),
+      "utf8",
+    );
+    const idx = src.indexOf("RELEASE_KEYS");
+    if (idx < 0) return new Set();
+    const end = src.indexOf("])", idx);
+    const block = src.slice(idx, end < 0 ? undefined : end);
+    return new Set([...block.matchAll(/"([^"]+::[^"]+)"/g)].map((m) => m[1]));
+  } catch {
+    return new Set();
+  }
+})();
+
 // ─── Gate 7 골든셋 로드 ────────────────────────────────────────────────────────
 const GOLDEN_PATH = path.resolve(__dirname, "golden_set.json");
 let GOLDEN = [];
@@ -254,6 +272,10 @@ try {
 const issues = []; // 발견된 문제 전체
 const autoFixed = []; // 자동 수정된 항목
 const manual = []; // 수동 처리 필요 항목
+// ── 발주1 후보 리스트 (read-only triage 입력, 발주2·3의 입력) ──
+const cslessAnchorCands = []; // 1-A W_csless_with_anchor
+const metaLeakCands = []; // 1-B F_meta_leak (해설 메타-누출)
+const footnoteMarkerCands = []; // 1-C FOOTNOTE_MARKER_INTEGRITY
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -683,6 +705,50 @@ for (const yearKey of yearsToCheck) {
         }
       }
 
+      // ── [발주1 1-C] FOOTNOTE_MARKER_INTEGRITY: 각주 정의어 X의 본문 각주표시(*) 대칭 ──
+      //   footnote sent가 "*X: 정의" 형태로 정의한 용어 X에 대해, 본문(비-footnote)에
+      //   X는 있으나 X*(각주표시)가 없으면 = 각주표시 누락 (l2024b 정밀*·도반* class, 4회 반복 결함).
+      {
+        const _footSents = (set.sents || []).filter(
+          (s) => s.sentType === "footnote",
+        );
+        const _bodyText = (set.sents || [])
+          .filter(
+            (s) =>
+              s.sentType &&
+              !["footnote", "author", "workTag", "omission"].includes(
+                s.sentType,
+              ),
+          )
+          .map((s) => s.t || "")
+          .join("\n");
+        const _defined = new Set();
+        for (const fsent of _footSents) {
+          for (const m of (fsent.t || "").matchAll(
+            /\*\s*([^\s:：*][^:：*]{0,18}?)\s*[:：]/g,
+          )) {
+            const term = (m[1] || "").trim();
+            if (term.length >= 2) _defined.add(term);
+          }
+        }
+        for (const term of _defined) {
+          if (!_bodyText.includes(term)) continue; // 본문에 X 없음 → 미해당
+          if (_bodyText.includes(term + "*")) continue; // X* 존재 → 정상
+          issue(
+            "FOOTNOTE_MARKER_INTEGRITY",
+            yearKey,
+            `${set.id} [${term}]`,
+            `각주 정의어 '${term}' 본문 각주표시(*) 누락`,
+          );
+          footnoteMarkerCands.push({
+            yearKey,
+            setId: set.id,
+            term,
+            live: LIVE_KEYS_SET.has(yearKey + "::" + set.id),
+          });
+        }
+      }
+
       for (const q of set.questions) {
         // [Gate 7] --golden 지정 시 골든셋 외 스킵
         if (GOLDEN_ONLY && !goldenMatch(yearKey, set.id, q.id)) continue;
@@ -952,6 +1018,90 @@ for (const yearKey of yearsToCheck) {
                 cLoc,
                 `analysis ${ana.length}자(>700 검수 트리거)`,
               );
+            }
+
+            // ── [발주1 1-B] F_meta_leak: 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설 CRITICAL ──
+            //   정상 R3 표현("지문에 제시되지 않은 내용"·"지문에서 확인할 수 없는")과 구분되게
+            //   좁은 패턴만 사용(넓은 패턴은 121건 과탐 실증). r2022d Q17 c1 class.
+            // 주의: 발주 원안의 `문항\d+번은`은 정상 서술("문항 27번은 ~를 묻는다")을
+            //   과탐(r20219c Q27 FP 실증) → 제거. 나머지 좁은 밑줄/확인불가 패턴만 사용.
+            const META_LEAK_RE =
+              /밑줄이 그어져 있지 않|밑줄 친 단어나|밑줄 친 부분이 무엇|무엇인지 확인할 수 없|확인할 수 없는 상태|제시되지 않아 확인|밑줄[^.]{0,6}표시되지 않아/;
+            const _ml = ana.match(META_LEAK_RE);
+            if (_ml) {
+              issue(
+                "F_meta_leak",
+                yearKey,
+                cLoc,
+                `메타-누출: "${_ml[0].slice(0, 30)}"`,
+              );
+              metaLeakCands.push({
+                yearKey,
+                setId: set.id,
+                qId: q.id,
+                choice: c.num,
+                pat: c.pat,
+                live: LIVE_KEYS_SET.has(yearKey + "::" + set.id),
+              });
+            }
+
+            // ── [발주1 1-A] W_csless_with_anchor: ok:false+cs_ids=[] 인데 📌 지문근거가 본문 실재 = 형광펜 누락 후보 ──
+            //   마커(①㉠ⓐ)·공백·* 정규화 후 부분문자열 매칭. pat=V·보기 근거 라벨 제외.
+            //   본문(비-footnote/author/workTag/omission) sent만 대상 → bogi-only 인용 자동 제외.
+            if (
+              c.ok === false &&
+              (c.cs_ids || []).length === 0 &&
+              c.pat !== "V" &&
+              ana.includes("지문 근거")
+            ) {
+              const stripNorm = (x) => (x || "").replace(/[①-⓿㉠-㉿*\s]/g, "");
+              const setNorm = (set.sents || [])
+                .filter(
+                  (s) =>
+                    !["footnote", "author", "workTag", "omission"].includes(
+                      s.sentType,
+                    ),
+                )
+                .map((s) => stripNorm(s.t))
+                .join("");
+              let _hit = null;
+              for (const line of ana.split(/\r?\n/)) {
+                if (!line.includes("📌") || !line.includes("지문 근거"))
+                  continue;
+                if (line.includes("보기 근거")) continue;
+                const quotes = [
+                  ...line.matchAll(
+                    /"([^"]{10,})"|“([^”]{10,})”|'([^']{10,})'|‘([^’]{10,})’/g,
+                  ),
+                ]
+                  .map((m) => m[1] || m[2] || m[3] || m[4] || "")
+                  .filter(Boolean);
+                for (const qq of quotes) {
+                  const nq = stripNorm(qq);
+                  if (nq.length < 10) continue;
+                  if (setNorm.includes(nq)) {
+                    _hit = qq;
+                    break;
+                  }
+                }
+                if (_hit) break;
+              }
+              if (_hit) {
+                issue(
+                  "W_csless_with_anchor",
+                  yearKey,
+                  cLoc,
+                  `cs_ids=[] 이나 📌 "${_hit.slice(0, 24)}…" 본문 실재 (형광펜 누락 후보, pat=${c.pat})`,
+                );
+                cslessAnchorCands.push({
+                  yearKey,
+                  setId: set.id,
+                  qId: q.id,
+                  choice: c.num,
+                  pat: c.pat,
+                  live: LIVE_KEYS_SET.has(yearKey + "::" + set.id),
+                });
+              }
             }
           }
 
@@ -1693,6 +1843,10 @@ const SEVERITY_MAP = {
   W_struct_missing: "WARNING",
   W_scratchpad_leak: "WARNING",
   W_verbose: "WARNING",
+  // ── [발주1] 게이트 3종 신설 ──
+  F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
+  W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
+  FOOTNOTE_MARKER_INTEGRITY: "WARNING", // 1-C 각주표시(*) 대칭 누락
   W_expression_analysis_missing: "WARNING",
   W_single_evidence: "WARNING",
 
@@ -1774,6 +1928,31 @@ const bySeverity = { CRITICAL: [], WARNING: [], IGNORE: [] };
 for (const f of ALL_FINDINGS) {
   const sev = SEVERITY_MAP[f.type] || "WARNING";
   bySeverity[sev].push(f);
+}
+
+// ── [발주1] 후보 리스트 3종 출력 (read-only triage 입력 = 발주2·3의 입력) ──
+{
+  const OUT_DIR = path.resolve(__dirname, "output");
+  if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
+  fs.writeFileSync(
+    path.join(OUT_DIR, "csless_with_anchor.json"),
+    JSON.stringify(cslessAnchorCands, null, 2),
+  );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "scratchpad_leak.json"),
+    JSON.stringify(metaLeakCands, null, 2),
+  );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "footnote_marker_missing.json"),
+    JSON.stringify(footnoteMarkerCands, null, 2),
+  );
+  const _liveN = (a) => a.filter((x) => x.live).length;
+  console.log(
+    `\n📋 [발주1] 후보 → pipeline/output/  ` +
+      `csless_with_anchor=${cslessAnchorCands.length}(LIVE ${_liveN(cslessAnchorCands)}) ` +
+      `scratchpad_leak=${metaLeakCands.length}(LIVE ${_liveN(metaLeakCands)}) ` +
+      `footnote_marker=${footnoteMarkerCands.length}(LIVE ${_liveN(footnoteMarkerCands)})`,
+  );
 }
 
 function printSeverity(label, arr, icon) {
