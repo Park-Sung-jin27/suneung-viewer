@@ -1179,7 +1179,7 @@ for (const yearKey of yearsToCheck) {
           // ── W_csspan_stale / W_csspan_broken (B track, 발주B-2 정련) ──
           //   cs_span.text가 sent.t의 exact-substring이 아닌 경우 분류:
           //     제외 = 말줄임표 다문장(…/..) · 따옴표 정규화("↔') 매치 · verse \n↔공백 매치
-          //     ▸ 공백만 다름(공백-collapse 매치) = render indexOf 실패 = 형광펜 깨짐 → W_csspan_broken(CRITICAL)
+          //     ▸ 공백만 다름(공백-collapse 매치) = render indexOf 실패 = 형광펜 깨짐 → W_csspan_broken(WARNING 고순위)
           //     ▸ 내용 불일치(collapse도 불일치) = 옛 형태/오앵커 → W_csspan_stale(WARNING)
           //   MARKER_INTEGRITY(마커 존재만)·C_anchor(📌만)가 못 잡는 사각(l2023a/l2024a/l2025d/l2026a 실증)
           for (const sp of c.cs_spans || []) {
