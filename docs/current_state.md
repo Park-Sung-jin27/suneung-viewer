@@ -60,9 +60,22 @@
 - **정책 [Adopted]**: 무료 5개년(2022~2026수능) 문학 고전 13 set **전수 sent-by-sent 시각 직독**(시험지 PDF render 1:1). **candidate/program-diff/char-diff 폐기** — 다글자차·본문누락은 자동검출 원천 불가(l2025a 실증: program-diff가 흉계→꾀·본문누락 못 잡음). 시각 직독만 신뢰(§13⑬).
 - **완료(전수 직독·심사관 인증)**: **l2025a 정을선전 6 fix** — s97 바삐·s106 뵈온대·s111 아뢴대(원 아된대)·s113 서융을·s111 꾀에(원 흉계에)·s113 본문누락 마지막문장 복원. commits **4e54f30·f4c1269·5c80710**.
 - **부분(글자오류만 교정, 본문 누락 재직독 필요)**: l2022c(clean-text 인증·[A][B] bracket 정확)·l2022d(s25 여읠, 03346de)·l2024d(s2 뵐, 4e54f30).
-- **심사관 인증 완료 8 set (2026-07-05~06)**: l2023b·l2024d·l2026d·l2026b·l2022a·l2024b·l2023a·**l2024a** — 전수 시각 직독 + 정정(본문누락 복원·다글자·각주표시*·author 괄호·한자·줄표). l2026d/l2026b 통짜 blob→verse 분리 + sentType 부여, l2026b (나) 본문누락(ⓐ바람) 복원 포함. **l2023a(최척전)**: s1~~s45 PDF 일치, 유일 결함 s13 ㉤ 마커 위치('날씨가'→'어느 봄날 밤') — sent.t + analysis 2 + cs_span 2 총 5곳 정합(652476f·63c1700). **l2024a(김원전)**: s1~~s19·마커 5종(ⓐⓑⓒⓓ㉠)·[A] PDF clean, 유일 결함 Q19c1 cs_span 공백누락('뉘이 짐승'→'뉘 이 짐승', dd59e1c).
-- **잔여 직독 = 1 set (확정)**: **l2026a** — 전수 시각 직독 대기. 조밀 직독 필요: verse 행 분리 정합(발주2 blob→verse 이력)·古語/띄어쓰기 편차·마커 보유 시 cs_span/analysis 3계층 동시 대조. l2025d(갑민가)는 program-diff/editdist 트랙에서 random typo 3건 종결로 batch1 잔여에서 제외(위 06-30 세션 참조).
-- **⚠️ 마커 위치 결함 class (l2023a 실증, 대표 절차 승격 검토)**: annotations 밑줄은 정확하나 sent.t **인라인 마커**만 오배치 → 라벨/밑줄 렌더 불일치. MARKER_INTEGRITY 게이트는 마커 **존재**만 검사(위치·marker-strip 사각). **자발 채택 절차**: "마커 이동 = 해당 어구 set 전역 grep → sent.t·analysis·cs_span 전 복사본 동시 교정". 게이트로 못 막아 절차로만 차단 → CLAUDE.md §13 표준 승격 여부 **대표 결정 대기**.
+- **★ batch1 body-직독 13/13 종결 (2026-07-05~06) — "완전 클린" 아님(cs_span은 B track 별도)**: FREE 문학 고전 13 set **본문(sent.t) 전수 시각 직독 완료**. 본문 인증 세트: l2023b·l2024d·l2026d·l2026b·l2022a·l2024b·l2023a·l2024a·l2026a(+l2025a·l2022c·l2022d 등 06-30분). **주의: 본문 인증 ≠ cs_span 인증** — 여러 set에 stale cs_span 잔존(B track, 아래 표).
+  - **l2023a(최척전)**: s1~s45 PDF 일치, s13 ㉤ 마커 위치 교정('날씨가'→'어느 봄날 밤') 5곳 정합(652476f·63c1700).
+  - **l2024a(김원전)**: s1~s19·마커 5종·[A] clean, Q19c1 cs_span 공백('뉘이'→'뉘 이', dd59e1c).
+  - **l2026a(수궁가)**: 29 sents·장단 14·마커 8종 PDF clean, 본문 결함 0. cs_span은 B(Q19c4·Q21c2교정·Q21c4).
+- **B track — stale cs_span (신설 게이트 `W_csspan_stale`)**: 본문 sent.t 교정 후 cs_span/analysis 복사본이 옛 형태로 잔존 → 렌더 indexOf 실패로 부분 하이라이트 소실. MARKER/C_anchor 사각. 게이트 신설(32ac038, WARNING, 독서까지 커버). **FREE 잔여 13(즉시 4건 교정 후) / release 75**.
+
+  | set                        | 문항                                  | 비고                                                                    |
+  | -------------------------- | ------------------------------------- | ----------------------------------------------------------------------- |
+  | **즉시 4건 교정(ee5a7e4)** | l2025d Q32 c1·c2·c4 / l2026a Q21c2    | 현→헌·손→쏜·빚기→빗기·동의 보감→동의보감 (cs_span+analysis, §13⑭ 잔존0) |
+  | l2022a                     | Q21c2·Q22c2·Q22c3                     | 한폭→한 폭·위자→위자* 직독 후 잔존                                      |
+  | l2022b·l2022c              | Q26c4 / Q31c4                         | 문학                                                                    |
+  | l2024b·l2024d              | Q23c1(흰 벽에는——)·Q34c2(고사매)      | 줄표·각주* 직독 후 잔존                                                 |
+  | l2026a                     | Q19c4×2·Q21c4                         | 오앵커/공백                                                             |
+  | **독서(확장 스캔)**        | r2023b Q8c2·r2024d Q13c1·r2025c Q10c4 | 갑민가 패턴 독서 실증(공백 등)                                          |
+
+- **⚠️ 마커 위치 결함 class (l2023a 실증)**: annotations 밑줄 정확하나 sent.t **인라인 마커**만 오배치. **자발 채택 절차(§13⑭ 후보)**: "본문 교정 = 해당 어구 set 전역 grep → sent.t·analysis·cs_span 전 복사본 동시 교정 + 옛형태 잔존 0". 게이트 marker-strip 사각이라 절차로만 차단 → CLAUDE.md §13 표준 승격 **대표 결정 대기**.
 - **적용 규약**: git-object 우회(§13⑪)·set-scoped(cs_spans/analysis 동반 치환)·gate MARKER 51 유지·新 0·all_data↔annotations 분리·staged blob(git cat-file size+JSON) 검증. 세션당 1~2 set 페이스(set당 다수 render+대조).
 
 ## 2026-06-30 세션 (Code B) — 출시 정합 sprint
