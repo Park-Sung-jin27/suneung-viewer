@@ -60,8 +60,9 @@
 - **정책 [Adopted]**: 무료 5개년(2022~2026수능) 문학 고전 13 set **전수 sent-by-sent 시각 직독**(시험지 PDF render 1:1). **candidate/program-diff/char-diff 폐기** — 다글자차·본문누락은 자동검출 원천 불가(l2025a 실증: program-diff가 흉계→꾀·본문누락 못 잡음). 시각 직독만 신뢰(§13⑬).
 - **완료(전수 직독·심사관 인증)**: **l2025a 정을선전 6 fix** — s97 바삐·s106 뵈온대·s111 아뢴대(원 아된대)·s113 서융을·s111 꾀에(원 흉계에)·s113 본문누락 마지막문장 복원. commits **4e54f30·f4c1269·5c80710**.
 - **부분(글자오류만 교정, 본문 누락 재직독 필요)**: l2022c(clean-text 인증·[A][B] bracket 정확)·l2022d(s25 여읠, 03346de)·l2024d(s2 뵐, 4e54f30).
-- **심사관 인증 완료 6 set (2026-07-05~06)**: l2023b·l2024d·l2026d·l2026b·l2022a·l2024b — 전수 시각 직독 + 정정(본문누락 복원·다글자·각주표시*·author 괄호·한자·줄표). l2026d/l2026b 통짜 blob→verse 분리 + sentType 부여, l2026b (나) 본문누락(ⓐ바람) 복원 포함.
-- **잔여 직독 = 3 set (확정)**: **l2023a·l2024a·l2026a** — 전수 시각 직독 대기(부분 정정분 존재하나 전수 인증 미완). l2024a는 Q20 cs교정·§7는 완료(발주 3-D)이나 본문 전수 직독은 별개. l2025d(갑민가)는 program-diff/editdist 트랙에서 random typo 3건 종결로 batch1 잔여에서 제외(위 06-30 세션 참조).
+- **심사관 인증 완료 7 set (2026-07-05~06)**: l2023b·l2024d·l2026d·l2026b·l2022a·l2024b·**l2023a** — 전수 시각 직독 + 정정(본문누락 복원·다글자·각주표시*·author 괄호·한자·줄표). l2026d/l2026b 통짜 blob→verse 분리 + sentType 부여, l2026b (나) 본문누락(ⓐ바람) 복원 포함. **l2023a(최척전)**: s1~s45 PDF 전수 일치, 유일 결함 s13 ㉤ 마커 위치('날씨가'→'어느 봄날 밤') — sent.t + analysis 2 + cs_span 2 총 5곳 정합(652476f·63c1700).
+- **잔여 직독 = 2 set (확정)**: **l2024a·l2026a** — 전수 시각 직독 대기. l2024a는 Q20 cs교정·§7는 완료(발주 3-D)이나 본문 전수 직독은 별개(마커·다글자 교정 시 기존 §7·cs_span 정합 병행 확인). l2025d(갑민가)는 program-diff/editdist 트랙에서 random typo 3건 종결로 batch1 잔여에서 제외(위 06-30 세션 참조).
+- **⚠️ 마커 위치 결함 class (l2023a 실증, 대표 절차 승격 검토)**: annotations 밑줄은 정확하나 sent.t **인라인 마커**만 오배치 → 라벨/밑줄 렌더 불일치. MARKER_INTEGRITY 게이트는 마커 **존재**만 검사(위치·marker-strip 사각). **자발 채택 절차**: "마커 이동 = 해당 어구 set 전역 grep → sent.t·analysis·cs_span 전 복사본 동시 교정". 게이트로 못 막아 절차로만 차단 → CLAUDE.md §13 표준 승격 여부 **대표 결정 대기**.
 - **적용 규약**: git-object 우회(§13⑪)·set-scoped(cs_spans/analysis 동반 치환)·gate MARKER 51 유지·新 0·all_data↔annotations 분리·staged blob(git cat-file size+JSON) 검증. 세션당 1~2 set 페이스(set당 다수 render+대조).
 
 ## 2026-06-30 세션 (Code B) — 출시 정합 sprint
