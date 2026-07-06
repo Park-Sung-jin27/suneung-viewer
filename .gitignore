@@ -54,7 +54,7 @@ src/data/
 
 # Pipeline 산출물·일회성·임시
 pipeline/backups/
-pipeline/outputs/
+pipeline/output/
 pipeline/reports/
 pipeline/archive/
 pipeline/quality_report.json
@@ -66,6 +66,7 @@ _annotation_drafts/
 _para_drafts/
 
 # 임시·인벤토리
+tmp/
 _tmp_*
 _needs_human_list.txt
 debug_log.txt

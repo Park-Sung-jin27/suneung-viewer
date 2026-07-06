@@ -1,6 +1,0 @@
-{
-  "name": "consulting-demo",
-  "private": true,
-  "type": "commonjs",
-  "description": "데모 — suneung-viewer 본체 package.json type:module 격리"
-}
