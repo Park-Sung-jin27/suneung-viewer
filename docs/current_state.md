@@ -61,7 +61,7 @@
 - **완료(전수 직독·심사관 인증)**: **l2025a 정을선전 6 fix** — s97 바삐·s106 뵈온대·s111 아뢴대(원 아된대)·s113 서융을·s111 꾀에(원 흉계에)·s113 본문누락 마지막문장 복원. commits **4e54f30·f4c1269·5c80710**.
 - **부분(글자오류만 교정, 본문 누락 재직독 필요)**: l2022c(clean-text 인증·[A][B] bracket 정확)·l2022d(s25 여읠, 03346de)·l2024d(s2 뵐, 4e54f30).
 - **심사관 인증 완료 6 set (2026-07-05~06)**: l2023b·l2024d·l2026d·l2026b·l2022a·l2024b — 전수 시각 직독 + 정정(본문누락 복원·다글자·각주표시*·author 괄호·한자·줄표). l2026d/l2026b 통짜 blob→verse 분리 + sentType 부여, l2026b (나) 본문누락(ⓐ바람) 복원 포함.
-- **잔여 직독**: **l2023a**(최척전 미직독) + **l2024a·l2026a 전수 인증 여부 확인 필요**(부분 직독분 존재, 전수 인증 미확정). l2025d(갑민가)는 program-diff/editdist 트랙에서 random typo 3건 종결(위 06-30 세션 참조).
+- **잔여 직독 = 3 set (확정)**: **l2023a·l2024a·l2026a** — 전수 시각 직독 대기(부분 정정분 존재하나 전수 인증 미완). l2024a는 Q20 cs교정·§7는 완료(발주 3-D)이나 본문 전수 직독은 별개. l2025d(갑민가)는 program-diff/editdist 트랙에서 random typo 3건 종결로 batch1 잔여에서 제외(위 06-30 세션 참조).
 - **적용 규약**: git-object 우회(§13⑪)·set-scoped(cs_spans/analysis 동반 치환)·gate MARKER 51 유지·新 0·all_data↔annotations 분리·staged blob(git cat-file size+JSON) 검증. 세션당 1~2 set 페이스(set당 다수 render+대조).
 
 ## 2026-06-30 세션 (Code B) — 출시 정합 sprint
