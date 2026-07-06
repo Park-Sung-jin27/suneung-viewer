@@ -60,6 +60,11 @@ pipeline/archive/
 pipeline/quality_report.json
 pipeline/reanalyze_positive_report.json
 pipeline/temp.txt
+pipeline/*_raw_*.json
+pipeline/gate0_source_fidelity_report.json
+
+# 비뷰어 별도 프로젝트
+컨설팅_데모/
 
 # Drafts
 _annotation_drafts/
