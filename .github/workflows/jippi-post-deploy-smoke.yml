@@ -1,0 +1,99 @@
+name: JIPPI post-deploy smoke
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Wait for production aliases
+        run: sleep 120
+
+      - name: Check JIPPI production routes
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import sys
+          import urllib.request
+
+          urls = [
+              "https://www.jippi.kr/",
+              "https://www.jippi.kr/suneung",
+              "https://www.jippi.kr/tarot",
+              "https://www.jippi.kr/fortune",
+              "https://www.jippi.kr/room",
+          ]
+          failed = False
+          bodies = {}
+          for url in urls:
+              try:
+                  req = urllib.request.Request(url, headers={"user-agent": "jippi-github-smoke/1.0"})
+                  with urllib.request.urlopen(req, timeout=20) as res:
+                      body = res.read()
+                      status = res.status
+                      bodies[url] = body
+                  print(f"{'PASS' if status == 200 else 'FAIL'} {status} {url}")
+                  if status != 200:
+                      failed = True
+              except Exception as exc:
+                  print(f"FAIL ERR {url} :: {exc}")
+                  failed = True
+
+          left = bodies.get("https://www.jippi.kr/tarot", b"")
+          right_url = "https://jippi-saju.netlify.app/tarot"
+          try:
+              req = urllib.request.Request(right_url, headers={"user-agent": "jippi-github-smoke/1.0"})
+              with urllib.request.urlopen(req, timeout=20) as res:
+                  right = res.read()
+                  print(f"{'PASS' if res.status == 200 else 'FAIL'} {res.status} {right_url}")
+                  if res.status != 200:
+                      failed = True
+          except Exception as exc:
+              print(f"FAIL ERR {right_url} :: {exc}")
+              right = b""
+              failed = True
+
+          def stable_hash(body: bytes) -> str:
+              text = body.decode("utf-8", errors="ignore")
+              text = " ".join(text.split())
+              text = text.replace("https://www.jippi.kr", "https://HOST")
+              text = text.replace("https://jippi-saju.netlify.app", "https://HOST")
+              return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
+
+          left_hash = stable_hash(left)
+          right_hash = stable_hash(right)
+          same = left_hash == right_hash
+          print(f"{'PASS' if same else 'FAIL'} tarot hash www={left_hash} netlify={right_hash}")
+          if not same:
+              failed = True
+
+          if failed:
+              sys.exit(1)
+          PY
+
+      - name: Notify Discord on failure
+        if: failure() && secrets.JIPPI_DEPLOY_DISCORD_WEBHOOK != ''
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.JIPPI_DEPLOY_DISCORD_WEBHOOK }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          payload = {"content": f"[JIPPI deploy] post-deploy smoke failed\n{os.environ['RUN_URL']}"}
+          req = urllib.request.Request(
+              os.environ["DISCORD_WEBHOOK"],
+              data=json.dumps(payload).encode("utf-8"),
+              headers={"content-type": "application/json"},
+              method="POST",
+          )
+          urllib.request.urlopen(req, timeout=10).read()
+          PY

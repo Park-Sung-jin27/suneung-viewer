@@ -25,8 +25,15 @@
     }
   ],
   "rewrites": [
-    { "source": "/room", "destination": "/room.html" },
-    { "source": "/room/(.*)", "destination": "/room.html" },
+    { "source": "/tarot", "destination": "https://jippi-saju.netlify.app/tarot" },
+    { "source": "/tarot/", "destination": "https://jippi-saju.netlify.app/tarot" },
+    { "source": "/tarot/(.*)", "destination": "https://jippi-saju.netlify.app/tarot/$1" },
+    { "source": "/fortune", "destination": "https://jippi-saju.netlify.app/fortune" },
+    { "source": "/fortune/", "destination": "https://jippi-saju.netlify.app/fortune" },
+    { "source": "/fortune/(.*)", "destination": "https://jippi-saju.netlify.app/fortune/$1" },
+    { "source": "/room", "destination": "https://jippi-saju.netlify.app/room" },
+    { "source": "/room/", "destination": "https://jippi-saju.netlify.app/room" },
+    { "source": "/room/(.*)", "destination": "https://jippi-saju.netlify.app/room/$1" },
     { "source": "/auth", "destination": "/index.html" },
     { "source": "/exams", "destination": "/index.html" },
     { "source": "/viewer", "destination": "/index.html" },
