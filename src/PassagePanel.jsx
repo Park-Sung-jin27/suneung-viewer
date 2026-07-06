@@ -2,12 +2,14 @@ import { useEffect, useRef } from "react";
 import { CC, FIGURE_IMAGE_MAP } from "./constants";
 
 // ── 기호 밑줄 + 영역 라벨 hide (/g 플래그 금지) ──
-// SYM_SPLIT: ㉠-㉮ⓐ-ⓩ①-⑤ + [A-F] 라벨 단독 path 안 단일 정규식 분리.
+// SYM_SPLIT: ㉠-㉿ⓐ-ⓩ①-⑤ + [A-F] 라벨 단독 path 안 단일 정규식 분리.
+//   2026-06-27 발주 5-B 안 범위 확장 [㉠-㉮] → [㉠-㉿] path 정합
+//   (㉯~㉹ 안 15+ 마커 path 안 legacy 시험 지원 정합).
 //   hideLabels 플래그 안 라벨 [A-F] = visibility:hidden 적용 (글자 안 보임 +
 //   자리 유지) path → body / verse sentType 단독 적용 (RenderSent path 안 결정).
-const SYM_SPLIT = /([㉠-㉮ⓐ-ⓩ①-⑤]|\[[A-F]\])/;
-const SYM_TEST = /[㉠-㉮ⓐ-ⓩ①-⑤]|\[[A-F]\]/;
-const SYM_UNDERLINE_RE = /^[㉠-㉮ⓐ-ⓩ①-⑤]$/;
+const SYM_SPLIT = /([㉠-㉿ⓐ-ⓩ①-⑤]|\[[A-F]\])/;
+const SYM_TEST = /[㉠-㉿ⓐ-ⓩ①-⑤]|\[[A-F]\]/;
+const SYM_UNDERLINE_RE = /^[㉠-㉿ⓐ-ⓩ①-⑤]$/;
 const LABEL_RE = /^\[[A-F]\]$/;
 
 function Underlined({ text, hideLabels }) {
@@ -885,12 +887,7 @@ function renderAll(sents, sel, annotations, visualMarks, aiCitedSentId) {
   return result;
 }
 
-export default function PassagePanel({
-  passageSet,
-  sel,
-  mode,
-  aiCitedSentId,
-}) {
+export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
   const panelRef = useRef(null);
 
   // 스크롤 helper — [data-hl] 또는 [data-ai-cited] 안 first 자동 검색 path.

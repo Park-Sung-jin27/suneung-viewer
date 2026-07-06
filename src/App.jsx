@@ -2405,22 +2405,47 @@ export default function App() {
       return;
     }
     if (paymentKey && orderId && amount) {
-      supabase.auth.getSession().then(async ({ data: { session } }) => {
-        const uid = session?.user?.id;
-        if (!uid) return;
-        await supabase.from("subscriptions").upsert(
-          {
-            user_id: uid,
-            plan: "pro",
-            status: "active",
-            toss_payment_key: paymentKey,
-            toss_order_id: orderId,
-          },
-          { onConflict: "user_id" },
-        );
-        setIsPro(true);
-        navigate("/", { replace: true });
-      });
+      // 2026-06-27 발주 5-A: 서버 사이드 Toss confirm path 정합.
+      //   직전 client 안 amount 신뢰 + 직접 subscriptions upsert path →
+      //   서버 endpoint 안 Toss confirm + 금액 재검증 + service role
+      //   upsert 정합 (client 위조 회피 path).
+      (async () => {
+        try {
+          const {
+            data: { session },
+          } = await supabase.auth.getSession();
+          const token = session?.access_token;
+          if (!token) {
+            alert("로그인이 필요합니다");
+            navigate("/", { replace: true });
+            return;
+          }
+          const res = await fetch("/api/payment-confirm", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              paymentKey,
+              orderId,
+              amount: Number(amount),
+            }),
+          });
+          if (!res.ok) {
+            const j = await res.json().catch(() => ({}));
+            alert(j?.error || "결제 확인에 실패했습니다");
+            navigate("/", { replace: true });
+            return;
+          }
+          setIsPro(true);
+          navigate("/", { replace: true });
+        } catch (err) {
+          console.warn("[payment-confirm]", err?.message);
+          alert("결제 확인 중 오류가 발생했습니다");
+          navigate("/", { replace: true });
+        }
+      })();
     }
   }, []); // eslint-disable-line
 
