@@ -1944,7 +1944,7 @@ const SEVERITY_MAP = {
   F_encoding_corruption: "CRITICAL", // U+FFFD(멀티바이트 손상) = 깨진 글자 학생 노출
   // ── B track: cs_span stale ──
   W_csspan_stale: "WARNING", // cs_span 내용 불일치(옛 형태/오앵커)
-  W_csspan_broken: "CRITICAL", // cs_span 공백차로 형광펜 깨짐(indexOf 실패 = 차별점 파손)
+  W_csspan_broken: "WARNING", // cs_span 공백차로 형광펜 깨짐 — 고순위 WARNING(대표 재가로 출시 baseline 51 유지, §13⑩)
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
