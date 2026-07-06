@@ -119,3 +119,22 @@ pipeline/bracket_audit_report.json
 # visual_mark_extractor.mjs 검수 raw (auto-regenerated path)
 pipeline/visual_marks_report.json
 .vercel
+
+# 원문 직독 render scratch — 전 직독 이 단일 디렉토리에만 render. 캠페인 종료 시 host 1회 sweep
+.verify_scratch/
+
+# Consulting demo: track only the runnable demo and canonical data.
+!컨설팅_데모/
+컨설팅_데모/**
+!컨설팅_데모/index.html
+!컨설팅_데모/package.json
+!컨설팅_데모/css/
+!컨설팅_데모/css/**
+!컨설팅_데모/js/
+!컨설팅_데모/js/data.js
+!컨설팅_데모/data/
+!컨설팅_데모/data/susi_cutoffs.json
+!컨설팅_데모/data/susi_cutoffs_report.json
+!컨설팅_데모/data/susi_cutoffs_duplicates_report.json
+!컨설팅_데모/data/교과반영방법_수시.csv
+!컨설팅_데모/data/입결중복_복원_기록_2026-06-26.md
