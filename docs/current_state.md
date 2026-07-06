@@ -1,4 +1,53 @@
-# 현 진행 상황 — 2026-06-30 (일과 종결)
+# 현 진행 상황 — 2026-07-06 (일과 진행)
+
+## 2026-07-05~06 (품질 심사관 트랙) — 뷰어 완성 발주 패키지
+
+> 목표: "뷰어 완성" = 핵심 차별점(선지↔지문 형광펜 1:1)이 LIVE 전 선지에서 참. 실행순서 발주1(게이트)→2(형광펜 triage)→3(LIVE 콘텐츠)→4(미커밋 정리).
+
+### 발주 1 — 게이트 4종 신설 (`quality_gate.mjs`, read-only 후보 출력)
+
+- `W_csless_with_anchor`(WARNING): ok:false+cs_ids=[] 인데 📌 지문근거가 본문 실재 = 형광펜 누락 후보. LIVE 87(R3 70·L3 16).
+- `F_meta_leak`(**CRITICAL**): 좁은 한글 메타-고백(밑줄/확인불가)만. 발주 원안 `문항\d+번은`은 정상서술 과탐(r20219c 실증)이라 제거. 기존 `W_scratchpad_leak`(WARNING) 회귀 방지 위해 신규 타입으로 분리.
+- `FOOTNOTE_MARKER_INTEGRITY`(WARNING): 각주 정의어 X의 본문 각주표시(*) 대칭 누락. LIVE 72/30set.
+- `W_struct_missing`(WARNING): §7 emoji 3단 미달(ok:true 🔍 부재까지 확장, 대표 지적). 어휘 명시 포맷(`[문맥 속 의미]`·`[치환 판단]`·`[호응 성분]`) 보기 무관 무조건 제외. LIVE 27·FREE 6.
+- 출력: `pipeline/output/{csless_with_anchor,scratchpad_leak,footnote_marker_missing,struct_missing}.json`. 회귀 suneung5 CRITICAL 0. 커밋 6131d42·118a208.
+
+### 발주 6-D — `F_encoding_corruption` 게이트(CRITICAL) + 인코딩 인시던트
+
+- **인시던트**: r2026b 커밋 `d85b6c4`가 `git show HEAD:… | node -e '…d+=c…'`의 **stdin 청크 분할이 멀티바이트 문자(❌ 등)를 쪼개** U+FFFD로 184건 손상한 채 LIVE push(FREE 42건 노출 중이었음). 클린 base(5874dc3, `git cat-file` 바이트추출)에서 `fs.readFileSync` 안전읽기로 재적용 → 184건 전부 복구(`8d4d0c8`).
+- **게이트 신설**: all_data 전 텍스트필드 + annotations U+FFFD 검출 → CRITICAL + 위치. 양성검증(손상본 42건 검출)·현 LIVE 0. 커밋 `1e16cb1`. **[규율] 데이터 추출 = git cat-file/redirect + readFileSync만, `git show|node` stdin 파이프 금지. 편집 6단계에 U+FFFD 0 검증 상시.**
+
+### 발주 2 — 형광펜 triage FREE 4세트 ((a)오태깅 pat교정 / (b)정당R3L3 근거 cs부여 / (c)근거없음 cs=[])
+
+- **r2026b**(2026): Q5c4·Q6c1·Q7c2 (b) cs 부여, Q4c4 (c) 전개방식. `8d4d0c8`.
+- **r2024d**(2024): Q14c2 (a)R3→R4·c3 (a)R3→R1·c5 (b) + Q12 c4·c5 (c). `8d4d0c8`.
+- **r2022b**(2022): Q8c1 (a)R3→R1(소거↔중화) + 내부ID누출 제거, Q4 c2·c5 (c). `374dddc`.
+- **l2023b**(2023): Q22c4 (c) — 전무 내용은 앵커 부재라 cs=[] 유지(형제 c2/c3/c5는 실재요소 과잉이라 cs 보유). 무변경.
+- FREE LIVE csless 87→80. 남은 80 = LEGACY LIVE(Pro).
+
+### 발주 3-D — 해설 §7 3단 재작성 FREE 6건 (struct_missing FREE 27→0)
+
+- **l2024a Q20 c3**(고전소설): ★cs 오정박 `[s9,s16]→[s7,s13]`(ⓐ∈s7·ⓓ∈s13, LIVE 형광펜 결함) + §7 3단. `9edee8e`. 강사 검수 병행 대기.
+- **r2026b Q8 c5**(담보/보증): §7 3단(서명·날인 없음→계약 무효→해석 무관 지급의무 없음). `9edee8e`.
+- **r2024a Q3**(초인지): ★선지 5건 **마커 스왑 LIVE 손상** 발견 → 시험지 PDF 원문(`[보기]:[지문]`)으로 교정 + cs 재정박(c1→㉠s12·c2㉡c3㉢s13·c4㉣c5㉤s14) + §7 재구축. c1(정답) 포함. answer_fidelity가 정답번호만 검사해 놓친 구조 손상. `3f54e05`.
+
+### 발주 4 — 미커밋 정리 (579→270, 무손실)
+
+- `.gitignore` 오타 `pipeline/output**s**/`→`pipeline/output/` + `tmp/`·`컨설팅_데모/`·`pipeline/*_raw_*.json`·`gate0_source_fidelity_report.json` 추가. 커밋 4814058·64d968a.
+- `컨설팅_데모/`(295, 별도 프로젝트) + raw json 3 추적해제(로컬 보존). 잔여 270 = ①뷰어 219(pipeline 139 등, 대표 지정 대상) + ②fortune 44 + ③기타. **`git add .` 금지 유지**(fortune 삭제 3건 혼입 위험).
+
+### structure_fidelity FREE 마커 스왑 스캔 (r2024a class 종결)
+
+- structure_fidelity는 `H()`로 한글만 대조 → 마커 제거 = 스왑 원리적 사각. 별도 마커-순서 스캔 확립.
+- FREE dual-마커 매핑형 = r2024a Q3 단 1건(교정+PDF 일치). B 라벨형 10건 전수 PDF↔데이터 대조 **불일치 0**. structure_fidelity FREE 5년 구조의심 0. → **FREE 선지 마커 스왑/오번호 = 0 종결.**
+- 잔여 사각: **C class(산문형 마커 문항)** — 지문 sents·<보기> 내 ㉠/ⓐ 정박은 시각 render 직독만 확실(별도 발주 후보).
+
+### 기타
+
+- r2022d Q17 c1 메타-누출 해설 → 어휘 3단 재작성 + cs s1→s5 정박. `860bd64`.
+- **운영 주의(§4)**: 세션 중 프론트(Code A) 커밋(35f8bf9·5874dc3, api/claude.js·QuestionQA.jsx)이 제 데이터 커밋 사이에 낀 정황 반복 — 공유계정 동시 push, 파일 disjoint라 무충돌이나 조율 필요.
+
+---
 
 ## 2026-06-30 (품질 심사관) — 운영 규칙 명문화 (대표 지시)
 
@@ -11,7 +60,8 @@
 - **정책 [Adopted]**: 무료 5개년(2022~2026수능) 문학 고전 13 set **전수 sent-by-sent 시각 직독**(시험지 PDF render 1:1). **candidate/program-diff/char-diff 폐기** — 다글자차·본문누락은 자동검출 원천 불가(l2025a 실증: program-diff가 흉계→꾀·본문누락 못 잡음). 시각 직독만 신뢰(§13⑬).
 - **완료(전수 직독·심사관 인증)**: **l2025a 정을선전 6 fix** — s97 바삐·s106 뵈온대·s111 아뢴대(원 아된대)·s113 서융을·s111 꾀에(원 흉계에)·s113 본문누락 마지막문장 복원. commits **4e54f30·f4c1269·5c80710**.
 - **부분(글자오류만 교정, 본문 누락 재직독 필요)**: l2022c(clean-text 인증·[A][B] bracket 정확)·l2022d(s25 여읠, 03346de)·l2024d(s2 뵐, 4e54f30).
-- **잔여 전수직독 9 set**: l2022a·l2023a·l2023b·l2024a·l2024b·l2025d·l2026a·l2026b·l2026d(+l2024d 잔여). **구조 병행: l2026b(36 sent)·l2026d(4 sent) sentType='?' 누락** → sentType 부여 + 텍스트 직독.
+- **심사관 인증 완료 6 set (2026-07-05~06)**: l2023b·l2024d·l2026d·l2026b·l2022a·l2024b — 전수 시각 직독 + 정정(본문누락 복원·다글자·각주표시*·author 괄호·한자·줄표). l2026d/l2026b 통짜 blob→verse 분리 + sentType 부여, l2026b (나) 본문누락(ⓐ바람) 복원 포함.
+- **잔여 직독**: **l2023a**(최척전 미직독) + **l2024a·l2026a 전수 인증 여부 확인 필요**(부분 직독분 존재, 전수 인증 미확정). l2025d(갑민가)는 program-diff/editdist 트랙에서 random typo 3건 종결(위 06-30 세션 참조).
 - **적용 규약**: git-object 우회(§13⑪)·set-scoped(cs_spans/analysis 동반 치환)·gate MARKER 51 유지·新 0·all_data↔annotations 분리·staged blob(git cat-file size+JSON) 검증. 세션당 1~2 set 페이스(set당 다수 render+대조).
 
 ## 2026-06-30 세션 (Code B) — 출시 정합 sprint
