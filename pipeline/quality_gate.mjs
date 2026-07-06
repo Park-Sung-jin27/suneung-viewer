@@ -1175,6 +1175,28 @@ for (const yearKey of yearsToCheck) {
             }
           }
 
+          // ── W_csspan_stale (B track) — cs_span.text가 sent.t의 exact-substring 아님 ──
+          //   본문 sent.t 교정(마커 이동·다글자·공백) 후 cs_span 복사본이 옛 형태로 잔존 →
+          //   렌더 시 indexOf 실패로 형광펜이 whole-sent 폴백(부분 하이라이트 소실).
+          //   MARKER_INTEGRITY(마커 존재만)·C_anchor(📌 analysis quote)가 못 잡는 사각.
+          //   (l2023a ㉤·l2024a 뉘이·l2025d 갑민가·l2026a 실증)
+          for (const sp of c.cs_spans || []) {
+            const st = (set.sents || []).find((x) => x.id === sp.sent_id);
+            if (!st) continue; // dead sent_id는 별도(DEAD 계열)
+            if (
+              typeof sp.text === "string" &&
+              sp.text &&
+              !st.t.includes(sp.text)
+            ) {
+              issue(
+                "W_csspan_stale",
+                yearKey,
+                cLoc,
+                `cs_span "${sp.text.slice(0, 24)}…"가 ${sp.sent_id} sent.t에 부재(옛 형태 잔존/오앵커)`,
+              );
+            }
+          }
+
           // ── CS_ALL_NONHIGHLIGHTABLE — cs_ids 전부 비-하이라이트 sentType → 형광펜 미렌더 ──
           //   getHL(PassagePanel)는 body/verse/stage/speech 등만 하이라이트. cs가 전부
           //   footnote/author/omission/workTag(각주/작가행/중략/「(가)」 표지)면 형광펜 0개.
@@ -1898,6 +1920,8 @@ const SEVERITY_MAP = {
   W_verbose: "WARNING",
   // ── [발주6-D] 인코딩 손상 ──
   F_encoding_corruption: "CRITICAL", // U+FFFD(멀티바이트 손상) = 깨진 글자 학생 노출
+  // ── B track: cs_span stale ──
+  W_csspan_stale: "WARNING", // cs_span.text가 sent.t에 부재(교정 후 옛 형태 잔존) → 부분 하이라이트 소실
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
