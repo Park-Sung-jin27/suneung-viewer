@@ -856,6 +856,49 @@ for (const yearKey of yearsToCheck) {
         }
       }
 
+      // ── F_zerowidth_corruption: 제로폭/비가시 문자 검출 (F_encoding_corruption 자매) ──
+      //   ZWSP(U+200B)·ZWNJ(U+200C)·ZWJ(U+200D)·BOM(U+FEFF)·SHY(U+00AD)·WJ(U+2060).
+      //   PDF/추출 artifact가 단어 내 삽입되면 형광펜 indexOf·검색·verbatim 대조 실패(비가시라 육안 미검출).
+      {
+        const ZW = {
+          "​": "ZWSP",
+          "‌": "ZWNJ",
+          "‍": "ZWJ",
+          "﻿": "BOM",
+          "­": "SHY",
+          "⁠": "WJ",
+        };
+        const ZW_RE = /[​‌‍﻿­⁠]/;
+        const scanZW = (txt, loc, field) => {
+          if (typeof txt !== "string") return;
+          const m = txt.match(ZW_RE);
+          if (!m) return;
+          const i = txt.indexOf(m[0]);
+          issue(
+            "F_zerowidth_corruption",
+            yearKey,
+            loc,
+            `제로폭 ${ZW[m[0]]} [${field}] "…${txt.slice(Math.max(0, i - 8), i + 8).replace(ZW_RE, "␣")}…"`,
+          );
+        };
+        scanZW(set.title, `${set.id}`, "title");
+        for (const s of set.sents || [])
+          scanZW(s.t, `${set.id} ${s.id}`, "sent.t");
+        for (const q of set.questions || []) {
+          scanZW(q.t, `${set.id} Q${q.id}`, "q.t");
+          if (q.bogi)
+            scanZW(
+              typeof q.bogi === "string" ? q.bogi : JSON.stringify(q.bogi),
+              `${set.id} Q${q.id}`,
+              "bogi",
+            );
+          for (const c of q.choices || []) {
+            scanZW(c.t, `${set.id} Q${q.id}-[${c.num}]`, "choice.t");
+            scanZW(c.analysis, `${set.id} Q${q.id}-[${c.num}]`, "analysis");
+          }
+        }
+      }
+
       for (const q of set.questions) {
         // [Gate 7] --golden 지정 시 골든셋 외 스킵
         if (GOLDEN_ONLY && !goldenMatch(yearKey, set.id, q.id)) continue;
@@ -2016,6 +2059,7 @@ const SEVERITY_MAP = {
   W_verbose: "WARNING",
   // ── [발주6-D] 인코딩 손상 ──
   F_encoding_corruption: "CRITICAL", // U+FFFD(멀티바이트 손상) = 깨진 글자 학생 노출
+  F_zerowidth_corruption: "CRITICAL", // 제로폭/비가시 문자(ZWSP 등) = 형광펜·검색·verbatim 대조 실패
   // ── B track: cs_span stale ──
   W_csspan_stale: "WARNING", // cs_span 내용 불일치(옛 형태/오앵커)
   W_csspan_broken: "WARNING", // cs_span 공백차로 형광펜 깨짐 — 고순위 WARNING(대표 재가로 출시 baseline 51 유지, §13⑩)
