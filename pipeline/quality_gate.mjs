@@ -716,8 +716,14 @@ for (const yearKey of yearsToCheck) {
         const GENRE =
           /사설시조|시조|가사|민요|한시|판소리|잡가|향가|경기체가|악장|창가|고려가요|악부|타령/;
         for (const x of set.sents || []) {
-          if (x.sentType !== "author") continue;
           const t = x.t || "";
+          // 출전 포맷 라인: -/–/－ 로 시작·끝 + 짧고(≤70) 콤마(작가,작품) 또는 단독 작가명
+          //   sentType==author 단독 의존 사각 보완(workTag/body 오태깅 검출).
+          const isSourceFmt =
+            /^\s*[-–－]\s*.{1,70}?\s*[-–－]\s*$/.test(t) &&
+            (/[,，]/.test(t) ||
+              /^\s*[-–－]\s*[가-힣][가-힣\s]{1,14}\s*[-–－]\s*$/.test(t));
+          if (x.sentType !== "author" && !isSourceFmt) continue;
           const loc = `${set.id} ${x.id}`;
           const push = (kind, msg) => {
             issue("W_bracket_integrity", yearKey, loc, `[${kind}] ${msg}`);
@@ -730,6 +736,13 @@ for (const yearKey of yearsToCheck) {
               live: LIVE_KEYS_SET.has(yearKey + "::" + set.id),
             });
           };
+          // 출전 포맷인데 non-author sentType = 오태깅(workTag→굵은 헤더 오렌더). 낫표와 별개 flag.
+          if (x.sentType !== "author") {
+            push(
+              "sentType_mismatch",
+              `출전 포맷인데 sentType=${x.sentType} (author 아님): "${t.slice(0, 40)}"`,
+            );
+          }
           if (/[｢｣]/.test(t)) {
             push("halfwidth", `반각 낫표 ｢｣ 사용: "${t.slice(0, 40)}"`);
             continue;
