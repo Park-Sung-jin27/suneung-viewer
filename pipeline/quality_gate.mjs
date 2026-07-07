@@ -278,6 +278,7 @@ const metaLeakCands = []; // 1-B F_meta_leak (해설 메타-누출)
 const footnoteMarkerCands = []; // 1-C FOOTNOTE_MARKER_INTEGRITY
 const structMissingCands = []; // 1-D W_struct_missing (§7 3단 구조 미달)
 const csspanStaleCands = []; // B track W_csspan_stale/broken
+const bracketIntegrityCands = []; // W_bracket_integrity (출전행 작품명 낫표)
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -704,6 +705,66 @@ for (const yearKey of yearsToCheck) {
               `보기 이미지 파일 부재: ${ip} (학생이 보기 못 봄 = 문항 답 불가)`,
               "fatal",
             );
+        }
+      }
+
+      // ── W_bracket_integrity: 출전행(author) 작품명 낫표 충실도 ──
+      //   검출 ① corrupt('X」·홑겹혼용·한쪽만) ② halfwidth(｢｣) ③ stray('+낫표없음) ④ bare(작품명 무낫표 후보)
+      //   제외: author_only(작가만)·genre 라벨·(analysis 『책이름』은 author sent 아니라 미해당)
+      //   severity=WARNING(고순위, W_csspan 동일 논리 — 비본문·오독무영향, 출시 baseline 불변)
+      {
+        const GENRE =
+          /사설시조|시조|가사|민요|한시|판소리|잡가|향가|경기체가|악장|창가|고려가요|악부|타령/;
+        for (const x of set.sents || []) {
+          if (x.sentType !== "author") continue;
+          const t = x.t || "";
+          const loc = `${set.id} ${x.id}`;
+          const push = (kind, msg) => {
+            issue("W_bracket_integrity", yearKey, loc, `[${kind}] ${msg}`);
+            bracketIntegrityCands.push({
+              yearKey,
+              setId: set.id,
+              sentId: x.id,
+              kind,
+              t: t.slice(0, 60),
+              live: LIVE_KEYS_SET.has(yearKey + "::" + set.id),
+            });
+          };
+          if (/[｢｣]/.test(t)) {
+            push("halfwidth", `반각 낫표 ｢｣ 사용: "${t.slice(0, 40)}"`);
+            continue;
+          }
+          const o1 = (t.match(/「/g) || []).length;
+          const c1 = (t.match(/」/g) || []).length;
+          const o2 = (t.match(/『/g) || []).length;
+          const c2 = (t.match(/』/g) || []).length;
+          const hasBrk = o1 + c1 + o2 + c2 > 0;
+          if (hasBrk) {
+            if (
+              o1 !== c1 ||
+              o2 !== c2 ||
+              /「[^」『』]*』/.test(t) ||
+              /『[^』「」]*」/.test(t)
+            )
+              push("corrupt", `낫표 불균형/혼용: "${t.slice(0, 40)}"`);
+            continue;
+          }
+          // 낫표 전무 → stray(따옴표 래핑) 또는 bare 후보
+          if (/,\s*['‘’＇]/.test(t)) {
+            push("stray", `따옴표 래핑(낫표 아님): "${t.slice(0, 40)}"`);
+            continue;
+          }
+          // bare 후보: "- 작가, 작품 -" 형태 (콤마 뒤 비-genre 제목)
+          const inner = t.replace(/^\s*[-–]\s*/, "").replace(/\s*[-–]\s*$/, "");
+          if (inner.includes(",")) {
+            const after = inner.slice(inner.indexOf(",") + 1).trim();
+            if (
+              after &&
+              !GENRE.test(after) &&
+              !/^(외|등|작자 미상)$/.test(after)
+            )
+              push("bare", `작품명 무낫표 후보: "${t.slice(0, 40)}"`);
+          }
         }
       }
 
@@ -1945,6 +2006,7 @@ const SEVERITY_MAP = {
   // ── B track: cs_span stale ──
   W_csspan_stale: "WARNING", // cs_span 내용 불일치(옛 형태/오앵커)
   W_csspan_broken: "WARNING", // cs_span 공백차로 형광펜 깨짐 — 고순위 WARNING(대표 재가로 출시 baseline 51 유지, §13⑩)
+  W_bracket_integrity: "WARNING", // 출전행 작품명 낫표(corrupt/halfwidth/stray/bare) — 고순위 WARNING(비본문·출시 baseline 불변)
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
@@ -2081,6 +2143,10 @@ for (const f of ALL_FINDINGS) {
   fs.writeFileSync(
     path.join(OUT_DIR, "csspan_stale.json"),
     JSON.stringify(csspanStaleCands, null, 2),
+  );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "bracket_integrity.json"),
+    JSON.stringify(bracketIntegrityCands, null, 2),
   );
   const _liveN = (a) => a.filter((x) => x.live).length;
   console.log(
