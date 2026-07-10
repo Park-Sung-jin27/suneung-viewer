@@ -943,7 +943,7 @@ function MainPage({ isPro, user }) {
           </button>
           <button
             onClick={() => {
-              window.location.href = "/suneung/";
+              window.location.href = "/payment";
             }}
             style={{
               padding: "10px 22px",

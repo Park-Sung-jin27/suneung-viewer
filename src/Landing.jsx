@@ -754,7 +754,7 @@ export default function Landing({ onStart }) {
             운세 리포트
           </a>
           <a
-            href="/suneung/"
+            href="/payment"
             style={{
               color: C.mid,
               fontSize: "0.78rem",
