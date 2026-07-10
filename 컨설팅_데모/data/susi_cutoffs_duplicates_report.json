@@ -1,0 +1,8 @@
+{
+  "generated_at": "2026-07-10T23:35:03+09:00",
+  "duplicate_key_definition": "univ|campus|dept|admission|type",
+  "duplicate_key_count": 0,
+  "duplicate_row_count": 0,
+  "by_university": {},
+  "groups": []
+}

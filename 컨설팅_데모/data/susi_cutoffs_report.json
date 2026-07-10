@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-07-10T23:35:03+09:00",
+  "row_count": 11361,
+  "university_count": 184,
+  "checks": {
+    "duplicate_key": 0,
+    "source_missing": 0,
+    "cut70_null": 0,
+    "question_mark_dept_rows": 0,
+    "replacement_char_rows": 0,
+    "mojibake_rows": 0
+  },
+  "latest_action": "Confirmed 11,361 official-cutoff rows after Sangji, Tongmyong and Eulji additions. Updated consulting demo UI labels from admission-result-unlinked wording to public-cut-unconfirmed wording and tied the data reliability pending count to the live gyogwa pending queue.",
+  "source_counts": {
+    "SANGJI_2025_RESULT_PDF_70CUT": 45,
+    "TONGMYONG_2025_RESULT_XLSX_70CUT": 65,
+    "KYONGGI_2026_RESULT_PDF_70CUT": 59,
+    "KKOT_2025_RESULT_PDF_70CUT": 5,
+    "WOOSUK_2025_RESULT_PDF_70CUT": 30,
+    "DHU_2025_RESULT_XLSX_90CUT": 43,
+    "MOKWON_2025_RESULT_HTML_FINAL_LOWEST": 96,
+    "EULJI_2025_RESULT_PDF_70CUT": 11
+  }
+}
