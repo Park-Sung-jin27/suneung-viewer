@@ -5530,5 +5530,39 @@
         "sentTo": "l20156as15"
       }
     ]
+  },
+  "2016_6월B": {
+    "l20166a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20166as17",
+        "sentTo": "l20166as18"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20166as19",
+        "sentTo": "l20166as20"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l20166as21",
+        "sentTo": "l20166as22"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l20166as23",
+        "sentTo": "l20166as24"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l20166as25",
+        "sentTo": "l20166as26"
+      }
+    ]
   }
 }
