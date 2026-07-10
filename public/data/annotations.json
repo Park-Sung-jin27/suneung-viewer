@@ -5776,5 +5776,21 @@
         "sentTo": "l20169ds42"
       }
     ]
+  },
+  "2021_9월": {
+    "l20219a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20219as1",
+        "sentTo": "l20219as2"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20219as7",
+        "sentTo": "l20219as10"
+      }
+    ]
   }
 }
