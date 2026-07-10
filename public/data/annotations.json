@@ -5655,6 +5655,32 @@
         "sentFrom": "l20156cs14",
         "sentTo": "l20156cs16"
       }
+    ],
+    "l20156d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20156ds8",
+        "sentTo": "l20156ds8"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20156ds8a",
+        "sentTo": "l20156ds8a"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l20156ds8b",
+        "sentTo": "l20156ds8b"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l20156ds8c",
+        "sentTo": "l20156ds8c"
+      }
     ]
   },
   "2016_6월B": {
