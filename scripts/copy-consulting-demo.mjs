@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const SCRIPT_PATH = fileURLToPath(import.meta.url);
+const ROOT = path.resolve(path.dirname(SCRIPT_PATH), "..");
 const SOURCE = path.join(ROOT, "컨설팅_데모");
 const TARGET = path.join(ROOT, "public", "consulting-demo");
 
@@ -27,7 +28,12 @@ function copyFile(relativePath) {
   fs.copyFileSync(sourcePath, targetPath);
 }
 
-fs.rmSync(TARGET, { recursive: true, force: true });
-for (const file of FILES) copyFile(file);
+export function copyConsultingDemo() {
+  fs.rmSync(TARGET, { recursive: true, force: true });
+  for (const file of FILES) copyFile(file);
+  console.log(`Copied consulting demo to ${path.relative(ROOT, TARGET)}`);
+}
 
-console.log(`Copied consulting demo to ${path.relative(ROOT, TARGET)}`);
+if (process.argv[1] && path.resolve(process.argv[1]) === SCRIPT_PATH) {
+  copyConsultingDemo();
+}

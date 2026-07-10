@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/copy-consulting-demo.mjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
