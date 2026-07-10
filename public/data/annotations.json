@@ -5596,5 +5596,39 @@
         "sentTo": "l20166as26"
       }
     ]
+  },
+  "2016수능B": {
+    "l2016bB": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2016bBs16",
+        "sentTo": "l2016bBs18"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2016bBs21",
+        "sentTo": "l2016bBs23"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2016bBs24",
+        "sentTo": "l2016bBs27"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l2016bBs30",
+        "sentTo": "l2016bBs33"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l2016bBs36",
+        "sentTo": "l2016bBs38"
+      }
+    ]
   }
 }
