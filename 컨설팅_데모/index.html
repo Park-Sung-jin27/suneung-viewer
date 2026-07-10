@@ -6578,7 +6578,7 @@
           const items = susiScenarioDisplayItems(key, full)
             .map(
               (p, i) => `
-      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}${i >= 5 ? " scenario-list__item--extra" : ""}" data-name="${esc((p.univ + " " + p.dept).toLowerCase())}" data-region="${esc(p.region || "")}" data-univ="${esc(p.univ)}" data-dept="${esc(p.dept)}" data-admission="${esc(p["전형"] || "")}" data-type="${esc(p["전형분류"] || "")}" data-validation-tier="${esc(key)}" data-cut-basis="${esc(susiCutBasis(p))}" data-cut="${esc(p.cut70_grade)}" data-comp="${esc(p.competition || "")}" data-cap="${esc(p.capacity || "")}" data-jh="${esc(p["전형분류"] || "")}" data-year-label="${esc(candidateYearLabel(p))}" data-source-url="${esc(candidateSourceUrl(p))}" onclick="openDetail(this)" style="cursor:pointer;">
+      <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}${i >= 5 ? " scenario-list__item--extra" : ""}" data-name="${esc((p.univ + " " + p.dept).toLowerCase())}" data-region="${esc(p.region || "")}" data-univ="${esc(p.univ)}" data-dept="${esc(p.dept)}" data-admission="${esc(p["전형"] || "")}" data-type="${esc(p["전형분류"] || "")}" data-validation-tier="${esc(key)}" data-cut-basis="${esc(susiCutBasis(p))}" data-cut="${esc(p.cut70_grade)}" data-comp="${esc(p.competition || "")}" data-cap="${esc(p.capacity || "")}" data-jh="${esc(p["전형분류"] || "")}" data-year-label="${esc(candidateYearLabel(p))}" data-source-url="${esc(candidateSourceUrl(p))}" data-source-direct="${candidateDirectSourceUrl(p) ? "1" : "0"}" data-cut-source="${esc(p.source || p.label_source || "")}" onclick="openDetail(this)" style="cursor:pointer;">
         <div class="name">${p.univ} · ${p.dept}</div>
         <div class="meta">${deptScopeBadge(p.dept)}${susiCutBasis(p)} ${p.cut70_grade}등급 | 학생 ${p.student_grade} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${candidateYearText(p)} | ${p["전형분류"] || "수시"} | 경쟁률 ${p.competition || "—"} | ${candidateSourceLinkHtml(p)}${p.duplicateCut ? " | " + duplicateCutBadgeHtml(p) : ""}</div>
         ${candidateDecisionReasonBlockHtml(p)}
@@ -6923,6 +6923,8 @@
         const sCutBasis = el.getAttribute("data-cut-basis") || "70%컷";
         const sYearLabel = el.getAttribute("data-year-label") || "";
         const sSourceUrl = el.getAttribute("data-source-url") || "";
+        const sSourceDirect = el.getAttribute("data-source-direct") === "1";
+        const sCutSource = el.getAttribute("data-cut-source") || "";
         document.getElementById("detail-title").textContent =
           univ + " · " + dept;
         const N =
@@ -6960,8 +6962,24 @@
             '<div style="font-size:12px; margin:-6px 0 12px;">' +
             '<a href="' +
             esc(sSourceUrl) +
-            '" target="_blank" rel="noopener" style="font-weight:900; color:var(--purple-700); text-decoration:none;">입결 출처 열기</a>' +
+            '" target="_blank" rel="noopener" style="font-weight:900; color:var(--purple-700); text-decoration:none;">' +
+            (sSourceDirect ? "입결 원문 열기" : "대학 입결 페이지 열기") +
+            "</a>" +
+            (sCutSource
+              ? '<span style="color:var(--gray-500); margin-left:8px;">컷 출처: ' +
+                esc(sCutSource) +
+                "</span>"
+              : "") +
             "</div>";
+          if (!sSourceDirect) {
+            html +=
+              '<div style="font-size:12px; line-height:1.5; color:#92400e; background:#fff7ed; border:1px solid #fed7aa; border-radius:10px; padding:8px 10px; margin:-4px 0 12px;">이 링크는 대학 입결 확인 페이지입니다. 학과별 숫자는 원문 표에서 다시 확인하세요.</div>';
+          }
+        } else if (sCutSource) {
+          html +=
+            '<div style="font-size:12px; line-height:1.5; color:#92400e; background:#fff7ed; border:1px solid #fed7aa; border-radius:10px; padding:8px 10px; margin:-4px 0 12px;">컷 출처: ' +
+            esc(sCutSource) +
+            " · 상담 확정 전 원문 확인이 필요합니다.</div>";
         }
         const J = jeongsiLookup();
         const jc =
@@ -7052,9 +7070,9 @@
           html +=
             '<a href="' +
             href +
-            '" target="_blank" style="display:inline-block; padding:8px 14px; background:var(--purple-600); color:white; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none;">전형 파일 열기 (수시모집요강 PDF)</a>';
+            '" target="_blank" style="display:inline-block; padding:8px 14px; background:var(--purple-600); color:white; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none;">모집요강 PDF 열기 (전형방법 확인용)</a>';
           html +=
-            '<div style="font-size:11px; color:var(--gray-500); margin-top:6px;">' +
+            '<div style="font-size:11px; color:var(--gray-500); margin-top:6px;">컷 숫자의 직접 출처가 아니라 전형방법·지원자격 확인용입니다. · ' +
             file +
             "</div>";
         } else {
@@ -8804,18 +8822,24 @@
         return found && found.unvCd ? String(found.unvCd) : "";
       }
 
+      function candidateDirectSourceUrl(item) {
+        if (!item) return "";
+        return String(
+          item.source_url ||
+            item.sourceUrl ||
+            item.source_file_url ||
+            item.sourceFileUrl ||
+            item.label_source_url ||
+            item.labelSourceUrl ||
+            item["출처URL"] ||
+            "",
+        );
+      }
+
       function candidateSourceUrl(item) {
         if (!item) return "";
-        const direct =
-          item.source_url ||
-          item.sourceUrl ||
-          item.source_file_url ||
-          item.sourceFileUrl ||
-          item.label_source_url ||
-          item.labelSourceUrl ||
-          item["출처URL"] ||
-          "";
-        if (direct) return String(direct);
+        const direct = candidateDirectSourceUrl(item);
+        if (direct) return direct;
         const adigaUrl = adigaResultUrlByCode(candidateUniversityCode(item));
         if (adigaUrl) return adigaUrl;
         if (
