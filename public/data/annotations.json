@@ -5741,13 +5741,13 @@
       }
     ]
   },
-  "2016_6월A": {
-    "l20166d": [
+  "2017_6월": {
+    "l20176b": [
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l20166ds3",
-        "sentTo": "l20166ds4"
+        "sentFrom": "l20176bs5",
+        "sentTo": "l20176bs5"
       }
     ]
   }
