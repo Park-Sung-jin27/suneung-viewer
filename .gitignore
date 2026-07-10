@@ -133,7 +133,11 @@ pipeline/visual_marks_report.json
 !컨설팅_데모/css/**
 !컨설팅_데모/js/
 !컨설팅_데모/js/data.js
+!컨설팅_데모/js/gyogwa_banyeong.js
+!컨설팅_데모/js/jeonhyeong_files.js
 !컨설팅_데모/js/scenario_engine.js
+!컨설팅_데모/js/susi_minreq.js
+!컨설팅_데모/js/trend_data.js
 !컨설팅_데모/data/
 !컨설팅_데모/data/susi_cutoffs.json
 !컨설팅_데모/data/susi_cutoffs_report.json
@@ -144,3 +148,4 @@ pipeline/visual_marks_report.json
 !컨설팅_데모/backup_now.py
 !컨설팅_데모/sizes.json
 컨설팅_데모/backups/
+public/consulting-demo/
