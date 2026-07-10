@@ -6580,7 +6580,7 @@
               (p, i) => `
       <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}${i >= 5 ? " scenario-list__item--extra" : ""}" data-name="${esc((p.univ + " " + p.dept).toLowerCase())}" data-region="${esc(p.region || "")}" data-univ="${esc(p.univ)}" data-dept="${esc(p.dept)}" data-admission="${esc(p["전형"] || "")}" data-type="${esc(p["전형분류"] || "")}" data-validation-tier="${esc(key)}" data-cut-basis="${esc(susiCutBasis(p))}" data-cut="${esc(p.cut70_grade)}" data-comp="${esc(p.competition || "")}" data-cap="${esc(p.capacity || "")}" data-jh="${esc(p["전형분류"] || "")}" data-year-label="${esc(candidateYearLabel(p))}" data-source-url="${esc(candidateSourceUrl(p))}" data-source-direct="${candidateDirectSourceUrl(p) ? "1" : "0"}" data-cut-source="${esc(p.source || p.label_source || "")}" onclick="openDetail(this)" style="cursor:pointer;">
         <div class="name">${p.univ} · ${p.dept}</div>
-        <div class="meta">${deptScopeBadge(p.dept)}${susiCutBasis(p)} ${p.cut70_grade}등급 | 학생 ${p.student_grade} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${candidateYearText(p)} | ${p["전형분류"] || "수시"} | 경쟁률 ${p.competition || "—"} | ${candidateSourceLinkHtml(p)}${p.duplicateCut ? " | " + duplicateCutBadgeHtml(p) : ""}</div>
+        <div class="meta">${candidateAdmissionBadgeHtml(p)} ${deptScopeBadge(p.dept)}${susiCutBasis(p)} ${p.cut70_grade}등급 | 학생 ${p.student_grade} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${candidateYearText(p)} | ${p["전형분류"] || "수시"} | 경쟁률 ${p.competition || "—"} | ${candidateSourceLinkHtml(p)}${p.duplicateCut ? " | " + duplicateCutBadgeHtml(p) : ""}</div>
         ${candidateDecisionReasonBlockHtml(p)}
         ${validationControlsHtml(p, key)}
       </li>
@@ -8792,6 +8792,17 @@
         return (
           '<span style="display:inline-flex; align-items:center; border-radius:999px; padding:2px 7px; font-size:11px; font-weight:900; color:#4b5563; background:#f3f4f6;">' +
           esc(candidateYearLabel(item)) +
+          "</span>"
+        );
+      }
+
+      function candidateAdmissionBadgeHtml(item) {
+        const admission =
+          item && (item["전형"] || item.admission || item.admissionName);
+        if (!admission) return "";
+        return (
+          '<span style="display:inline-flex; align-items:center; border-radius:999px; padding:2px 7px; font-size:11px; font-weight:900; color:#1d4ed8; background:#dbeafe;">전형: ' +
+          esc(admission) +
           "</span>"
         );
       }
@@ -13703,6 +13714,8 @@
                 " · " +
                 p.dept +
                 '</div><div class="meta">' +
+                candidateAdmissionBadgeHtml(p) +
+                " " +
                 deptScopeBadge(p.dept) +
                 (p.preparing
                   ? "공개컷 미확인 · 원문 확인 필요 · 평균등급 " +
@@ -13726,8 +13739,6 @@
                 candidateYearBadgeHtml(p) +
                 " " +
                 candidateSourceLinkHtml(p) +
-                " | " +
-                p["전형"] +
                 metaSuffix +
                 "</div>" +
                 candidateDecisionReasonBlockHtml(p) +
