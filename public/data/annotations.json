@@ -5760,5 +5760,21 @@
         "sentTo": "l20166ds4"
       }
     ]
+  },
+  "2016_9월A": {
+    "l20169d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20169ds1",
+        "sentTo": "l20169ds2"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20169ds41",
+        "sentTo": "l20169ds42"
+      }
+    ]
   }
 }
