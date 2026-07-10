@@ -562,6 +562,16 @@ for (const yearKey of yearsToCheck) {
           const bm = (s.t || "").match(/\[[A-F]\]/g);
           if (bm) bm.forEach((b) => bracketAvail.add(b));
         }
+        // 보기(<보기>) 내부 정의 [A]~[F]도 정박원 (bogi 마커 credit과 동형).
+        //   보기가 [A]/[B]로 자료를 라벨링하면(예: 퍼셉트론 [A]설정/[B]데이터, 인용 [A]/[B])
+        //   그 라벨은 보기에서 시각 확인됨 → 지문 bracket 불요, FP 차단. (r20169g·r20176a 실증)
+        for (const q of set.questions || []) {
+          if (!q.bogi) continue;
+          const bstr =
+            typeof q.bogi === "string" ? q.bogi : JSON.stringify(q.bogi);
+          const bm = bstr.match(/\[[A-F]\]/g);
+          if (bm) bm.forEach((b) => bracketAvail.add(b));
+        }
         // visual_marks.json의 bracket/inline_label도 정박 소스 (정본 bracket 정의)
         if (!globalThis.__vmMap) {
           const vm = {};
