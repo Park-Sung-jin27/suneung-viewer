@@ -22,8 +22,8 @@
 import { createClient } from "@supabase/supabase-js";
 
 const ALLOWED_AMOUNTS = new Map([
-  [39900, "standard"],
-  [89000, "premium"],
+  [39900, "pro"],
+  [89000, "pro"],
 ]);
 
 function getSupabaseConfig() {
