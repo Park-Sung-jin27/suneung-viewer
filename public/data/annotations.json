@@ -3980,6 +3980,38 @@
         "text": "최후 결단",
         "marker": "㉡"
       }
+    ],
+    "l2016e": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2016es14",
+        "sentTo": "l2016es16"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2016es19",
+        "sentTo": "l2016es21"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2016es22",
+        "sentTo": "l2016es25"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l2016es28",
+        "sentTo": "l2016es31"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l2016es34",
+        "sentTo": "l2016es36"
+      }
     ]
   },
   "2015수능A": {
