@@ -15,7 +15,18 @@ _이전버전_archive/
 모집요강_2027_HWP변환필요/
 모집요강_2027_수시/
 입시결과_과거연도/
-컨설팅_데모/
+컨설팅_데모/**
+!컨설팅_데모/
+!컨설팅_데모/index.html
+!컨설팅_데모/css/
+!컨설팅_데모/css/main.css
+!컨설팅_데모/js/
+!컨설팅_데모/js/data.js
+!컨설팅_데모/js/trend_data.js
+!컨설팅_데모/js/jeonhyeong_files.js
+!컨설팅_데모/js/gyogwa_banyeong.js
+!컨설팅_데모/js/scenario_engine.js
+!컨설팅_데모/js/susi_minreq.js
 
 *.xlsx
 *.tmp
