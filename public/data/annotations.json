@@ -5496,5 +5496,39 @@
         "sentTo": "l20196as21"
       }
     ]
+  },
+  "2015_6월A": {
+    "l20156a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20156as1",
+        "sentTo": "l20156as3"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20156as4",
+        "sentTo": "l20156as6"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l20156as7",
+        "sentTo": "l20156as9"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l20156as10",
+        "sentTo": "l20156as12"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l20156as13",
+        "sentTo": "l20156as15"
+      }
+    ]
   }
 }
