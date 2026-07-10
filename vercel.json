@@ -24,8 +24,14 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/consulting-demo",
+      "destination": "/consulting-demo/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
-    { "source": "/consulting-demo", "destination": "/consulting-demo/index.html" },
     {
       "source": "/consulting-demo/",
       "destination": "/consulting-demo/index.html"
