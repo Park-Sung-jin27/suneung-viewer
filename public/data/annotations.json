@@ -3964,6 +3964,38 @@
         "sentFrom": "r2019ds16",
         "sentTo": "r2019ds18"
       }
+    ],
+    "l2019a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l2019as2",
+        "sentTo": "l2019as3"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l2019as7",
+        "sentTo": "l2019as9"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l2019as10",
+        "sentTo": "l2019as13"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l2019as14",
+        "sentTo": "l2019as15"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l2019as18",
+        "sentTo": "l2019as20"
+      }
     ]
   },
   "2016수능A": {
