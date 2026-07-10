@@ -5076,6 +5076,14 @@
         "sentFrom": "l20216as23",
         "sentTo": "l20216as26"
       }
+    ],
+    "l20216c": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20216cs9",
+        "sentTo": "l20216cs11"
+      }
     ]
   },
   "2014수능A": {
