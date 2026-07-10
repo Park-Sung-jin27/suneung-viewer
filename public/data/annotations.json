@@ -5607,6 +5607,26 @@
         "sentFrom": "l20156bs26",
         "sentTo": "l20156bs31"
       }
+    ],
+    "l20156c": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20156cs2",
+        "sentTo": "l20156cs4"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20156cs6",
+        "sentTo": "l20156cs9"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l20156cs14",
+        "sentTo": "l20156cs16"
+      }
     ]
   },
   "2016_6월B": {
