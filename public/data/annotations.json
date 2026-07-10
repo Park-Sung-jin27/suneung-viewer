@@ -5061,6 +5061,12 @@
         "marker": "㉤",
         "sentId": "l20216ds63",
         "text": "웃음 소리는 오래도록 왕을 언짢게 한다."
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20216ds3",
+        "sentTo": "l20216ds6"
       }
     ],
     "l20216a": [
