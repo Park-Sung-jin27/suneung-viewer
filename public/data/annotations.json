@@ -5696,5 +5696,21 @@
         "sentTo": "l2016bBs38"
       }
     ]
+  },
+  "2014_9월A": {
+    "l20149a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20149as1",
+        "sentTo": "l20149as6"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20149as7",
+        "sentTo": "l20149as13"
+      }
+    ]
   }
 }
