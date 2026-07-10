@@ -326,14 +326,19 @@ function auditSet(data, ann, yearKey, setId) {
       // Rule A.1: annotation 단독 시각화 — 오탐 여부 판정
       //   (a) sub-sent domain, (b) overflow sent domain, (c) all-untyped range,
       //   (d) 다문장 구간 bracket(sentFrom≠sentTo) — 구간 box 렌더라 본문 인라인 [X] 마커 불요
+      //   (e) 단일 typed sent bracket — 인용 작품/구간 1문장 box 렌더(예 l20176b [A]=관저 시 verse)
+      //       도 (d)와 동일 box 렌더라 인라인 [X] 마커 불요
       const allRangeUntyped =
         range.length > 0 && range.every((s) => !s.sentType);
       const isMultiSentRange = toIdx > fromIdx;
+      const isSingleTypedSent =
+        toIdx === fromIdx && range.length === 1 && !!range[0].sentType;
       const isFalsePositive =
         hasSubSentsInSet ||
         hasOverflowSentsInSet ||
         allRangeUntyped ||
-        isMultiSentRange;
+        isMultiSentRange ||
+        isSingleTypedSent;
       if (isFalsePositive) {
         const reason = hasSubSentsInSet
           ? "sub-sent domain"
