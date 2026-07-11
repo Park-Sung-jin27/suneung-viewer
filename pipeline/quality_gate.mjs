@@ -2264,6 +2264,17 @@ for (const f of ALL_FINDINGS) {
     path.join(OUT_DIR, "cs_anchor_mismatch.json"),
     JSON.stringify(csAnchorMismatchCands, null, 2),
   );
+  // CRITICAL 전체 덤프 (display 20+"외 N건" 절단 우회 = 출시 재스캔 정확도) — issues + manual(F_empty/DEAD) 합침
+  fs.writeFileSync(
+    path.join(OUT_DIR, "all_critical.json"),
+    JSON.stringify(
+      [...issues, ...manual]
+        .filter((i) => (SEVERITY_MAP[i.type] || "WARNING") === "CRITICAL")
+        .map((i) => ({ type: i.type, yearKey: i.yearKey, loc: i.loc })),
+      null,
+      0,
+    ),
+  );
   const _liveN = (a) => a.filter((x) => x.live).length;
   console.log(
     `\n📋 [발주1] 후보 → pipeline/output/  ` +
