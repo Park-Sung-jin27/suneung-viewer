@@ -10038,6 +10038,8 @@
                 " · " +
                 esc(candidateYearText(candidate)) +
                 " · " +
+                candidateSourceQualityBadgeHtml(candidate) +
+                " " +
                 candidateSourceLinkHtml(candidate) +
                 (candidate.duplicateCut ? " · 입결 다중 확인중" : "") +
                 "</div>" +
@@ -10436,6 +10438,8 @@
               " · " +
               candidateCutSummaryHtml(item) +
               " · " +
+              candidateSourceQualityBadgeHtml(item) +
+              " " +
               candidateSourceLinkHtml(item) +
               (item.duplicateCut ? " · " + duplicateCutBadgeHtml(item) : "") +
               " · 최저 " +
@@ -11307,6 +11311,8 @@
               " · " +
               candidateCutSummaryHtml(item) +
               " · " +
+              candidateSourceQualityBadgeHtml(item) +
+              " " +
               candidateSourceLinkHtml(item) +
               (item.duplicateCut ? " · " + duplicateCutBadgeHtml(item) : "") +
               " · " +
@@ -12946,6 +12952,8 @@
           '<div style="font-size:11px; color:var(--gray-600); line-height:1.55;">' +
           candidateCutSummaryHtml(item) +
           " · " +
+          candidateSourceQualityBadgeHtml(item) +
+          " " +
           candidateSourceLinkHtml(item) +
           (item.duplicateCut ? " · " + duplicateCutBadgeHtml(item) : "") +
           " · " +
