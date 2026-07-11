@@ -1208,6 +1208,15 @@
           <button
             class="workspace-tab"
             type="button"
+            data-workspace-tab="nonsul"
+            aria-selected="false"
+            onclick="setWorkspaceView('nonsul')"
+          >
+            논술전형<span>최저 · 경쟁률 · 후보</span>
+          </button>
+          <button
+            class="workspace-tab"
+            type="button"
             data-workspace-tab="jeongsi"
             aria-selected="false"
             onclick="setWorkspaceView('jeongsi')"
@@ -2718,6 +2727,73 @@
           <div id="mixed-hold-list"></div>
         </div>
 
+        <div class="section" data-workspace-view="nonsul" hidden>
+          <div class="section__title">
+            논술전형 후보 모음
+            <span
+              class="section__title-tag"
+              style="background: #eef2ff; color: #4338ca"
+              >기본 추천과 별도 검토</span
+            >
+            <span class="section__title-tag" id="nonsul-count"></span>
+          </div>
+          <div
+            style="
+              border: 1px solid var(--gray-200, #e5e7eb);
+              border-radius: 12px;
+              background: #fff;
+              padding: 12px;
+              margin-bottom: 12px;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                align-items: center;
+                margin-bottom: 10px;
+              "
+            >
+              <input
+                id="nonsul-search"
+                type="search"
+                placeholder="대학명·학과·전형명 검색"
+                oninput="renderNonsulAdmissions()"
+                style="
+                  flex: 1 1 260px;
+                  min-width: 220px;
+                  padding: 8px 10px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 8px;
+                  font-size: 13px;
+                "
+              />
+              <select
+                id="nonsul-sort"
+                onchange="renderNonsulAdmissions()"
+                style="
+                  padding: 8px 10px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 8px;
+                  font-size: 13px;
+                  background: #fff;
+                "
+              >
+                <option value="fit">현재 학생 기준</option>
+                <option value="competition">경쟁률 높은순</option>
+                <option value="capacity">모집인원 많은순</option>
+                <option value="univ">대학명순</option>
+              </select>
+            </div>
+            <div
+              id="nonsul-summary"
+              style="font-size: 12px; color: var(--gray-600); line-height: 1.5"
+            ></div>
+          </div>
+          <div id="nonsul-list"></div>
+        </div>
+
         <!-- 블록 5: 5~9년 추이 그래프 -->
         <div class="section" data-workspace-view="trend">
           <div class="section__title">
@@ -3252,6 +3328,7 @@
         admissionRecordDirty: false,
         gyogwaCandidateCache: [],
         directCandidateCache: [],
+        nonsulCandidateCache: [],
         lastGyogwaPendingQueue: [],
         workspaceView: "summary",
         calendarOpen: false,
@@ -3572,6 +3649,7 @@
           "record",
           "trend",
           "mixed",
+          "nonsul",
           "jeongsi",
           "report",
         ];
@@ -3596,6 +3674,9 @@
         }
         if (next === "mixed") {
           renderMixedAdmissionHolds();
+        }
+        if (next === "nonsul") {
+          renderNonsulAdmissions();
         }
         if (next === "report") {
           renderConsultScaffold();
@@ -8643,6 +8724,203 @@
           .join("");
       }
 
+      function getNonsulCutoffRows() {
+        const rows =
+          (window.DEMO_DATA && window.DEMO_DATA.susi_cutoffs) || [];
+        return rows.filter(function (row) {
+          const text = [
+            row && row.type,
+            row && row["전형유형"],
+            row && row["전형"],
+            row && row.admission,
+            row && row.source,
+          ]
+            .filter(Boolean)
+            .join(" ");
+          return /논술/.test(text);
+        });
+      }
+
+      function nonsulCandidateFromRow(row) {
+        const studentGrade = directStudentGrade();
+        const cut =
+          row && row.cut70_grade != null ? row.cut70_grade : row && row.cut70;
+        const cutNumber = Number(cut);
+        const diff =
+          Number.isFinite(cutNumber) && Number.isFinite(studentGrade)
+            ? Number((cutNumber - studentGrade).toFixed(2))
+            : null;
+        const rawMinreq =
+          (row && row.minreq) ||
+          directCandidateMinreq(
+            row && row.univ,
+            row && (row["전형"] || row.admission),
+          ) ||
+          "";
+        const minreq = evaluateMinreq(rawMinreq, STATE.selected);
+        const candidate = {
+          source: "논술",
+          tier: Number.isFinite(diff) ? tierLabelFromDiff(diff) : "검토",
+          univ: (row && row.univ) || "",
+          campus: (row && row.campus) || "",
+          dept: (row && row.dept) || "",
+          admission: (row && (row["전형"] || row.admission)) || "논술 전형",
+          전형분류: "논술",
+          cut: cut,
+          cutBasis: susiCutBasis(row),
+          sourceNote: (row && (row.source_note || row.sourceNote)) || "",
+          sourceUrl:
+            (row &&
+              (row.source_url ||
+                row.sourceUrl ||
+                row.label_source_url ||
+                row.labelSourceUrl)) ||
+            "",
+          resultYear: candidateResultYear(row),
+          guideYear: candidateGuideYear(row),
+          studentGrade: Number.isFinite(studentGrade) ? studentGrade : "—",
+          diff: diff,
+          capacity: row && row.capacity,
+          competition: row && row.competition,
+          elements: (row && (row.elements || row["전형요소"])) || "논술 전형",
+          minreq: rawMinreq,
+          minreqStatus: minreq.status,
+          minreqLabel: minreq.label,
+          minreqDetail: minreq.detail,
+          minreqColor: minreq.color,
+          minreqBg: minreq.bg,
+          eligibilityStatus: "review",
+          eligibilityLabel: "논술 준비도 확인",
+          eligibilityDetail: "논술 실력, 준비 시간, 수능최저를 별도 확인",
+        };
+        candidate.consultScore = candidateConsultScore(candidate);
+        return candidate;
+      }
+
+      function renderNonsulAdmissions() {
+        const listEl = document.getElementById("nonsul-list");
+        const summaryEl = document.getElementById("nonsul-summary");
+        const countEl = document.getElementById("nonsul-count");
+        if (!listEl || !summaryEl) return;
+        const rows = getNonsulCutoffRows();
+        const query = String(
+          (document.getElementById("nonsul-search") || {}).value || "",
+        )
+          .trim()
+          .toLowerCase();
+        const sort = String(
+          (document.getElementById("nonsul-sort") || {}).value || "fit",
+        );
+        STATE.nonsulCandidateCache = [];
+        const candidates = rows
+          .map(nonsulCandidateFromRow)
+          .filter(function (candidate) {
+            if (!query) return true;
+            return [
+              candidate.univ,
+              candidate.campus,
+              candidate.dept,
+              candidate.admission,
+              candidate.sourceNote,
+            ]
+              .join(" ")
+              .toLowerCase()
+              .indexOf(query) !== -1;
+          })
+          .sort(function (a, b) {
+            if (sort === "competition") {
+              return Number(b.competition || 0) - Number(a.competition || 0);
+            }
+            if (sort === "capacity") {
+              return Number(b.capacity || 0) - Number(a.capacity || 0);
+            }
+            if (sort === "univ") {
+              return (a.univ + a.dept).localeCompare(b.univ + b.dept);
+            }
+            return candidateConsultScore(b) - candidateConsultScore(a);
+          });
+        const minreqMissing = candidates.filter(function (candidate) {
+          return !candidate.minreq;
+        }).length;
+        const sourceLinked = candidates.filter(candidateSourceUrl).length;
+        if (countEl)
+          countEl.textContent = candidates.length + "/" + rows.length + "행";
+        summaryEl.innerHTML =
+          '<b style="color:var(--gray-900);">논술 전형 후보입니다.</b> ' +
+          "전체 " +
+          rows.length +
+          "행 · 현재 표시 " +
+          candidates.length +
+          "행 · 입결 링크 " +
+          sourceLinked +
+          "행 · 수능최저 미연결 " +
+          minreqMissing +
+          "행. 논술은 내신 컷만으로 확정하지 않고, 논술 준비도와 최저 가능성을 따로 봅니다.";
+        if (!candidates.length) {
+          listEl.innerHTML =
+            '<div style="padding:16px; color:var(--gray-500); background:#fff; border:1px solid var(--gray-200,#e5e7eb); border-radius:12px;">논술 검색 결과가 없습니다. 검색어를 줄여 보세요.</div>';
+          return;
+        }
+        listEl.innerHTML = candidates
+          .map(function (candidate) {
+            const cacheIndex = STATE.nonsulCandidateCache.length;
+            STATE.nonsulCandidateCache.push(candidate);
+            const saved = isCandidateSaved(candidate);
+            const minreq = candidateMinreqResult(candidate);
+            const diffText = Number.isFinite(Number(candidate.diff))
+              ? " · 학생 " +
+                esc(candidate.studentGrade) +
+                " (" +
+                (candidate.diff >= 0 ? "+" : "") +
+                esc(candidate.diff) +
+                ")"
+              : "";
+            const sourceText =
+              candidate.sourceUrl || candidateSourceUrl(candidate)
+                ? candidateSourceLinkHtml(candidate)
+                : '<span style="font-weight:900; color:#b45309;">입결출처 확인</span>';
+            return (
+              '<div style="border:1px solid var(--gray-200,#e5e7eb); border-radius:12px; background:#fff; padding:12px; margin-bottom:8px;">' +
+              '<div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">' +
+              '<div style="min-width:0;"><div style="font-size:15px; font-weight:900; color:var(--gray-900);">' +
+              esc(candidate.univ) +
+              " · " +
+              esc(candidate.dept) +
+              '</div><div style="font-size:12px; color:var(--gray-500); margin-top:3px;">' +
+              candidateAdmissionBadgeHtml(candidate) +
+              " " +
+              candidateSourceQualityBadgeHtml(candidate) +
+              " " +
+              candidateCutSummaryHtml(candidate) +
+              diffText +
+              " · 경쟁률 " +
+              esc(candidate.competition || "—") +
+              " · 모집 " +
+              esc(candidate.capacity || "—") +
+              "명 · " +
+              sourceText +
+              "</div>" +
+              '<div style="margin-top:6px;">' +
+              candidateDecisionReasonHtml(candidate) +
+              " " +
+              candidateMinreqBadgeHtml(candidate) +
+              (minreq.detail ? " " + esc(shortInline(minreq.detail, 42)) : "") +
+              " " +
+              candidateDataNeedBadgeHtml(candidate) +
+              "</div>" +
+              '<div style="font-size:12px; color:#1d4ed8; font-weight:800; line-height:1.45; margin-top:7px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:9px; padding:7px 8px;">상담기준: 논술 준비도 · 수능최저 원문 · 경쟁률을 확인한 뒤 6장에 넣습니다.</div>' +
+              "</div>" +
+              (saved
+                ? '<span style="border:1px solid #a7f3d0; background:#ecfdf5; color:#047857; border-radius:8px; padding:5px 8px; font-size:11px; font-weight:900; flex:0 0 auto;">담김</span>'
+                : '<button type="button" onclick="addNonsulCandidateFromCache(' +
+                  cacheIndex +
+                  ')" style="border:1px solid #c4b5fd; background:#f5f3ff; color:var(--purple-700); border-radius:8px; padding:5px 8px; font-size:11px; font-weight:900; cursor:pointer; flex:0 0 auto;">후보 담기</button>') +
+              "</div></div>"
+            );
+          })
+          .join("");
+      }
+
       function currentCandidateShortlist() {
         const key = selectedStudentRecordKey();
         if (!key) return [];
@@ -9146,6 +9424,13 @@
           return;
         }
         saveCandidateObject(STATE.gyogwaCandidateCache[index]);
+      }
+
+      function addNonsulCandidateFromCache(index) {
+        const candidate = STATE.nonsulCandidateCache[index];
+        if (!candidate) return;
+        saveCandidateObject(candidate);
+        renderNonsulAdmissions();
       }
 
       function candidateAutoTierKey(candidate) {
@@ -13871,6 +14156,7 @@
         renderConsultScaffold();
         updateAdmissionControls();
         renderConsultCalendar();
+        renderNonsulAdmissions();
       }
 
       // 부트
