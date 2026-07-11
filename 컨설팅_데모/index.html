@@ -8845,7 +8845,7 @@
           return !candidate.minreq;
         }).length;
         const minreqReview = candidates.filter(function (candidate) {
-          return candidate.minreq === "수능최저 원문 확인";
+          return candidate.minreq && candidateMinreqResult(candidate).status === "review";
         }).length;
         const sourceLinked = candidates.filter(candidateSourceUrl).length;
         if (countEl)

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T23:35:03+09:00",
+  "generated_at": "2026-07-12T00:00:00+09:00",
   "row_count": 11361,
   "university_count": 184,
   "checks": {
@@ -8,9 +8,15 @@
     "cut70_null": 0,
     "question_mark_dept_rows": 0,
     "replacement_char_rows": 0,
-    "mojibake_rows": 0
+    "mojibake_rows": 0,
+    "nonsul_minreq_total": 83,
+    "nonsul_minreq_missing": 0,
+    "nonsul_minreq_review_expected": 53,
+    "nonsul_minreq_direct_filled": 49,
+    "nonsul_minreq_fallback_review": 34,
+    "nonsul_minreq_exempt_expected": 14
   },
-  "latest_action": "Confirmed 11,361 official-cutoff rows after Sangji, Tongmyong and Eulji additions. Updated consulting demo UI labels from admission-result-unlinked wording to public-cut-unconfirmed wording and tied the data reliability pending count to the live gyogwa pending queue.",
+  "latest_action": "Added nonsul minreq fields: SeoulTech 1 no-minreq, Suwon 13 no-minreq, Dongguk 35 by track. UI fallback keeps Gachon 34 as source-confirm review. Conservative auto-pass remains blocked for include/required conditions.",
   "source_counts": {
     "SANGJI_2025_RESULT_PDF_70CUT": 45,
     "TONGMYONG_2025_RESULT_XLSX_70CUT": 65,

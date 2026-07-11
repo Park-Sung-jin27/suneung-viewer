@@ -1941,7 +1941,10 @@
     "cut70_grade": 3.45,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -2097,7 +2100,10 @@
     "cut70_grade": 5.2,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -2169,7 +2175,10 @@
     "cut70_grade": 6.55,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -2197,7 +2206,10 @@
     "cut70_grade": 4.66,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -2265,7 +2277,10 @@
     "cut70_grade": 5.08,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -2289,7 +2304,10 @@
     "cut70_grade": 5.65,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -2379,7 +2397,10 @@
     "cut70_grade": 4.83,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -2458,7 +2479,10 @@
     "cut70_grade": 4.77,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -2515,7 +2539,10 @@
     "cut70_grade": 5.11,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -2550,7 +2577,10 @@
     "cut70_grade": 5.48,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -2666,7 +2696,10 @@
     "cut70_grade": 6.34,
     "source": "CKU_2025_RESULT_PDF",
     "source_url": "https://ipsi.cku.ac.kr/bbs/iphak/1060/357563/artclView.do",
-    "merged_sources": ["CKU_2025_RESULT_PDF", "v0.8_수시"]
+    "merged_sources": [
+      "CKU_2025_RESULT_PDF",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "가톨릭관동대학교",
@@ -20330,7 +20363,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20358,7 +20394,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20395,7 +20434,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20445,7 +20487,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20473,7 +20518,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20578,7 +20626,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20593,7 +20644,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20621,7 +20675,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20660,7 +20717,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20675,7 +20735,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20714,7 +20777,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20740,7 +20806,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20755,7 +20824,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20805,7 +20877,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20833,7 +20908,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20859,7 +20937,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20907,7 +20988,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20933,7 +21017,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20959,7 +21046,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -20985,7 +21075,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21000,7 +21093,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21039,7 +21135,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21067,7 +21166,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21082,7 +21184,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21108,7 +21213,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21156,7 +21264,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21184,7 +21295,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21212,7 +21326,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21227,7 +21344,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21242,7 +21362,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21290,7 +21413,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21305,7 +21431,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21320,7 +21449,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21335,7 +21467,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21350,7 +21485,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21378,7 +21516,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21406,7 +21547,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21421,7 +21565,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21515,7 +21662,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21543,7 +21693,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21593,7 +21746,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21608,7 +21764,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21623,7 +21782,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21638,7 +21800,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21675,7 +21840,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21690,7 +21858,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21705,7 +21876,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21720,7 +21894,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21735,7 +21912,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21763,7 +21943,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21789,7 +21972,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21804,7 +21990,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -21843,7 +22032,10 @@
     "source": "adiga_2025",
     "label_source": "GNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gnu.ac.kr/new/cm/cntnts/cntntsView.do?cntntsId=8709&mi=19078",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25070,7 +25262,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25099,7 +25294,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25139,7 +25337,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25190,7 +25391,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25230,7 +25434,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25259,7 +25466,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25299,7 +25509,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25328,7 +25541,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25379,7 +25595,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25419,7 +25638,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25448,7 +25670,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25463,7 +25688,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25503,7 +25731,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25543,7 +25774,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25583,7 +25817,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25598,7 +25835,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25637,7 +25877,10 @@
     "cut70_grade": 3.89,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -25651,7 +25894,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25691,7 +25937,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25731,7 +25980,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25792,7 +26044,10 @@
     "cut70_grade": 6.3,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -25842,7 +26097,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25871,7 +26129,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25911,7 +26172,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25940,7 +26204,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -25980,7 +26247,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26009,7 +26279,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26038,7 +26311,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26067,7 +26343,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26107,7 +26386,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26122,7 +26404,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26151,7 +26436,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26179,7 +26467,10 @@
     "cut70_grade": 4.53,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -26193,7 +26484,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26222,7 +26516,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26251,7 +26548,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26276,7 +26576,10 @@
     "cut70_grade": 5.17,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -26315,7 +26618,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26377,7 +26683,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26417,7 +26726,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26446,7 +26758,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26475,7 +26790,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26490,7 +26808,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26530,7 +26851,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26570,7 +26894,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26610,7 +26937,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26639,7 +26969,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26679,7 +27012,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26718,7 +27054,10 @@
     "cut70_grade": 2.68,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -26731,7 +27070,10 @@
     "cut70_grade": 4.17,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -26745,7 +27087,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26773,7 +27118,10 @@
     "cut70_grade": 3.03,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -26786,7 +27134,10 @@
     "cut70_grade": 4.17,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -26800,7 +27151,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26829,7 +27183,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26858,7 +27215,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26887,7 +27247,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26960,7 +27323,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -26989,7 +27355,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27040,7 +27409,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27080,7 +27452,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27120,7 +27495,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27159,7 +27537,10 @@
     "cut70_grade": 4.86,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -27187,7 +27568,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27202,7 +27586,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27241,7 +27628,10 @@
     "cut70_grade": 3.71,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -27255,7 +27645,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27317,7 +27710,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27332,7 +27728,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27372,7 +27771,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27411,7 +27813,10 @@
     "cut70_grade": 5,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "계명대학교",
@@ -27425,7 +27830,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27465,7 +27873,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27494,7 +27905,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27534,7 +27948,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -27574,7 +27991,10 @@
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
     "label_source_note": "same university, department, capacity, and competition matched an existing ADIGA 2025 row",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -30167,7 +30587,10 @@
     "competition": 8.43,
     "cut70_grade": 2.94,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2023"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2023"
+    ],
     "label_note": "Merged near-duplicate department spellings: 학생부종합(기초생활수급자/ 차상위계층/한부모가족전형) / 학생부종합(기초생활수급자/차상위계층/한부모가족전형)"
   },
   {
@@ -31504,7 +31927,10 @@
     "source": "adiga_2025",
     "label_source": "GWNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gwnu.ac.kr/bbs/iphak/1609/146333/download.do",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "국립강릉원주대학교",
@@ -31605,7 +32031,10 @@
     "source": "adiga_2025",
     "label_source": "GWNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gwnu.ac.kr/bbs/iphak/1609/146333/download.do",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "국립강릉원주대학교",
@@ -31815,7 +32244,10 @@
     "source": "adiga_2025",
     "label_source": "GWNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gwnu.ac.kr/bbs/iphak/1609/146333/download.do",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "국립강릉원주대학교",
@@ -31923,7 +32355,10 @@
     "source": "adiga_2025",
     "label_source": "GWNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gwnu.ac.kr/bbs/iphak/1609/146333/download.do",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "국립강릉원주대학교",
@@ -32144,7 +32579,10 @@
     "source": "adiga_2025",
     "label_source": "GWNU_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://www.gwnu.ac.kr/bbs/iphak/1609/146333/download.do",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "국립강릉원주대학교",
@@ -36783,7 +37221,10 @@
     "competition": 49,
     "cut70_grade": 4,
     "source": "adiga_2024",
-    "merged_sources": ["adiga_2024", "adiga_2022"],
+    "merged_sources": [
+      "adiga_2024",
+      "adiga_2022"
+    ],
     "label_note": "Merged near-duplicate department spellings: 국제지역학부 (국제학전공,국제개발협력학전공) / 국제지역학부(국제학전공,국제개발협력학전공)"
   },
   {
@@ -41000,7 +41441,10 @@
     "competition": 11.6,
     "cut70_grade": 4.17,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2023"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2023"
+    ],
     "label_note": "Merged near-duplicate department spellings: 인공지능 소프트웨어학과 / 인공지능소프트웨어학과"
   },
   {
@@ -45257,7 +45701,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420321.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "단국대학교",
@@ -45306,7 +45753,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420321.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "단국대학교",
@@ -45366,7 +45816,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420321.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "단국대학교",
@@ -45764,7 +46217,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420321.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "단국대학교",
@@ -45901,7 +46357,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420321.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "단국대학교",
@@ -46295,7 +46754,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420321.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "단국대학교",
@@ -46781,7 +47243,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420321.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "단국대학교",
@@ -46874,7 +47339,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10420321.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "단국대학교",
@@ -50611,7 +51079,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50639,7 +51110,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50654,7 +51128,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50669,7 +51146,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50684,7 +51164,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50699,7 +51182,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "대구한의대학교",
@@ -50713,7 +51199,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50739,7 +51228,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50754,7 +51246,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50769,7 +51264,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50806,7 +51304,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50821,7 +51322,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50875,7 +51379,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -50914,7 +51421,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10160581.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -51756,7 +52266,10 @@
     "competition": 9.83,
     "cut70_grade": 2.84,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2023"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2023"
+    ],
     "label_note": "Merged near-duplicate department spellings: 글로벌융합대학 (유아교육과) / 글로벌융합대학(유아교육과)"
   },
   {
@@ -52838,7 +53351,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -52928,7 +53444,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -53018,7 +53537,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -53180,7 +53702,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 4 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 경찰행정학부 기준"
   },
   {
     "univ": "동국대학교",
@@ -53198,7 +53723,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 4 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 경찰행정학부 기준"
   },
   {
     "univ": "동국대학교",
@@ -53306,7 +53834,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -53396,7 +53927,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -53558,7 +54092,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -53648,7 +54185,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -53774,7 +54314,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -53954,7 +54497,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -54098,7 +54644,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -54332,7 +54881,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -54548,7 +55100,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -54638,7 +55193,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -54728,7 +55286,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -54800,7 +55361,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -54890,7 +55454,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -54962,7 +55529,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -55106,7 +55676,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -55268,7 +55841,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -55466,7 +56042,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -55538,7 +56117,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -55610,7 +56192,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -55682,7 +56267,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -55790,7 +56378,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -55898,7 +56489,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -55988,7 +56582,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -56168,7 +56765,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -56240,7 +56840,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 컴퓨터·AI학부(인문) 기준"
   },
   {
     "univ": "동국대학교",
@@ -56258,7 +56861,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -56384,7 +56990,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -56510,7 +57119,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 인문계열 기준"
   },
   {
     "univ": "동국대학교",
@@ -56600,7 +57212,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -56690,7 +57305,10 @@
     "source_note": "Dongguk University Seoul official 2026 admission result PDF. Final registered student record average grade is stored in cut70_grade for compatibility; cut_basis distinguishes it from 70% cut.",
     "label_source": "DGU_SEOUL_2026_RESULT_PDF",
     "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
-    "label_note": "Essay admission table; final registered student record average grade, not essay score."
+    "label_note": "Essay admission table; final registered student record average grade, not essay score.",
+    "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+    "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
   },
   {
     "univ": "동국대학교",
@@ -68173,7 +68791,10 @@
     "competition": 13.46,
     "cut70_grade": 3,
     "source": "adiga_2022",
-    "merged_sources": ["adiga_2022", "adiga_2021"],
+    "merged_sources": [
+      "adiga_2022",
+      "adiga_2021"
+    ],
     "label_note": "Merged near-duplicate department spellings: 보건학부 (간호학과) / 보건학부(간호학과)"
   },
   {
@@ -68736,7 +69357,10 @@
     "source": "adiga_2025",
     "label_source": "CUP_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://ddls.cup.ac.kr/pdf/ipsi/2025%ED%95%99%EB%85%84%EB%8F%84%20%EC%88%98%EC%8B%9C%EB%AA%A8%EC%A7%91%20%ED%95%99%EC%83%9D%EB%B6%80%EC%A2%85%ED%95%A9%EC%A0%84%ED%98%95%20%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "부산가톨릭대학교",
@@ -68763,7 +69387,10 @@
     "source": "adiga_2025",
     "label_source": "CUP_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://ddls.cup.ac.kr/pdf/ipsi/2025%ED%95%99%EB%85%84%EB%8F%84%20%EC%88%98%EC%8B%9C%EB%AA%A8%EC%A7%91%20%ED%95%99%EC%83%9D%EB%B6%80%EC%A2%85%ED%95%A9%EC%A0%84%ED%98%95%20%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "부산가톨릭대학교",
@@ -68905,7 +69532,10 @@
     "source": "adiga_2025",
     "label_source": "CUP_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://ddls.cup.ac.kr/pdf/ipsi/2025%ED%95%99%EB%85%84%EB%8F%84%20%EC%88%98%EC%8B%9C%EB%AA%A8%EC%A7%91%20%ED%95%99%EC%83%9D%EB%B6%80%EC%A2%85%ED%95%A9%EC%A0%84%ED%98%95%20%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "부산가톨릭대학교",
@@ -71717,7 +72347,10 @@
     "cut70_grade": 3.49,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "상명대학교",
@@ -71781,7 +72414,10 @@
     "cut70_grade": 2.93,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "상명대학교",
@@ -71867,7 +72503,10 @@
     "cut70_grade": 3.27,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "상명대학교",
@@ -71894,7 +72533,10 @@
     "cut70_grade": 1.98,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "상명대학교",
@@ -71921,7 +72563,10 @@
     "cut70_grade": 3.09,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "상명대학교",
@@ -72022,7 +72667,10 @@
     "cut70_grade": 2.81,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "상명대학교",
@@ -72086,7 +72734,10 @@
     "cut70_grade": 3.35,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "상명대학교",
@@ -72224,7 +72875,10 @@
     "cut70_grade": 2.81,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "상명대학교",
@@ -73106,7 +73760,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73132,7 +73789,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73213,7 +73873,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73239,7 +73902,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73265,7 +73931,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73302,7 +73971,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73341,7 +74013,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73367,7 +74042,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73393,7 +74071,10 @@
     "source": "SOGANG_2025_RESULT_PDF",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73408,7 +74089,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73434,7 +74118,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73460,7 +74147,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73508,7 +74198,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73534,7 +74227,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73595,7 +74291,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73621,7 +74320,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73647,7 +74349,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73673,7 +74378,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73710,7 +74418,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73749,7 +74460,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73788,7 +74502,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -73827,7 +74544,10 @@
     "source": "adiga_2025",
     "label_source": "SOGANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://admission.sogang.ac.kr/upload/GUIDES/202506092020198CGWTK.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -75715,7 +76435,10 @@
     "source_note": "SeoulTech official 2026 admission result PDF. Student record grades are simple averages; final registered 100% basis. cut70_grade stores either 70% cut or final registered average according to cut_basis.",
     "label_source": "SEOULTECH_2026_RESULT_PDF",
     "label_source_url": "https://admission.seoultech.ac.kr/cms/FR_BBS_CON/BoardView.do?SITE_NO=2&MENU_ID=810&BOARD_SEQ=22&BBS_SEQ=48",
-    "label_note": "Official PDF page 14 essay result table; final registered average stored for compatibility."
+    "label_note": "Official PDF page 14 essay result table; final registered average stored for compatibility.",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SEOULTECH_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "논술전형 수능최저 없음"
   },
   {
     "univ": "서울교육대학교",
@@ -76177,7 +76900,9 @@
     "competition": null,
     "cut70_grade": 1.35,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2024"],
+    "merged_sources": [
+      "adiga_2024"
+    ],
     "source_note": "서울대 학과명 가운데점 표기 변형(adiga_2024 ・ / adiga_2025 ·)은 adiga_2025 표기로 병합.",
     "type_note": "Reclassified: Seoul National University susi rows are displayed as comprehensive, not subject-only."
   },
@@ -76527,7 +77252,9 @@
     "competition": null,
     "cut70_grade": 1.43,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2024"],
+    "merged_sources": [
+      "adiga_2024"
+    ],
     "source_note": "서울대 학과명 가운데점 표기 변형(adiga_2024 ・ / adiga_2025 ·)은 adiga_2025 표기로 병합.",
     "type_note": "Reclassified: Seoul National University susi rows are displayed as comprehensive, not subject-only."
   },
@@ -76889,7 +77616,9 @@
     "competition": null,
     "cut70_grade": 1.06,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2024"],
+    "merged_sources": [
+      "adiga_2024"
+    ],
     "source_note": "서울대 학과명 가운데점 표기 변형(adiga_2024 ・ / adiga_2025 ·)은 adiga_2025 표기로 병합.",
     "type_note": "Reclassified: Seoul National University susi rows are displayed as comprehensive, not subject-only."
   },
@@ -76915,7 +77644,9 @@
     "competition": null,
     "cut70_grade": 1.42,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2024"],
+    "merged_sources": [
+      "adiga_2024"
+    ],
     "source_note": "서울대 학과명 가운데점 표기 변형(adiga_2024 ・ / adiga_2025 ·)은 adiga_2025 표기로 병합.",
     "type_note": "Reclassified: Seoul National University susi rows are displayed as comprehensive, not subject-only."
   },
@@ -80348,7 +81079,10 @@
     "cut70_grade": 2.63,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80373,7 +81107,10 @@
     "cut70_grade": 2.81,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80420,7 +81157,10 @@
     "cut70_grade": 2.5,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80489,7 +81229,10 @@
     "cut70_grade": 3.17,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80525,7 +81268,10 @@
     "cut70_grade": 3.21,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80586,7 +81332,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920311.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80633,7 +81382,10 @@
     "cut70_grade": 3.58,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80658,7 +81410,10 @@
     "cut70_grade": 3.55,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80694,7 +81449,10 @@
     "cut70_grade": 2.68,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80733,7 +81491,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920311.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80783,7 +81544,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920311.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80885,7 +81649,10 @@
     "cut70_grade": 3.38,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80935,7 +81702,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920311.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80971,7 +81741,10 @@
     "cut70_grade": 5.33,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -80996,7 +81769,10 @@
     "cut70_grade": 2.19,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81032,7 +81808,10 @@
     "cut70_grade": 2.73,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81115,7 +81894,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920311.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81154,7 +81936,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920311.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81193,7 +81978,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920311.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81218,7 +82006,10 @@
     "cut70_grade": 2.88,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81254,7 +82045,10 @@
     "cut70_grade": 2.38,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81301,7 +82095,10 @@
     "cut70_grade": 2.74,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81326,7 +82123,10 @@
     "cut70_grade": 1.27,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81464,7 +82264,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920311.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81511,7 +82314,10 @@
     "cut70_grade": 3.86,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81547,7 +82353,10 @@
     "cut70_grade": 2.84,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81583,7 +82392,10 @@
     "cut70_grade": 2.96,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -81641,7 +82453,10 @@
     "cut70_grade": 2.97,
     "source": "adiga_2025",
     "label_source": "ADIGA_2025_EXISTING_LABEL_MATCH",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -82237,7 +83052,10 @@
     "competition": 5.5,
     "cut70_grade": 3.14,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2022"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2022"
+    ],
     "label_note": "Merged near-duplicate department spellings: 수리통계데이터사이언스학부 (수학/핀테크) / 수리통계데이터사이언스학부(수학/핀테크)"
   },
   {
@@ -82250,7 +83068,10 @@
     "competition": 6.29,
     "cut70_grade": 2.71,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2022"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2022"
+    ],
     "label_note": "Merged near-duplicate department spellings: 수리통계데이터사이언스학부 (통계학/빅데이터사이언스) / 수리통계데이터사이언스학부(통계학/빅데이터사이언스)"
   },
   {
@@ -85157,7 +85978,10 @@
     "capacity": 15,
     "competition": 69.6,
     "cut70_grade": 4.09,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85168,7 +85992,10 @@
     "capacity": 30,
     "competition": 17.57,
     "cut70_grade": 4.33,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85190,7 +86017,10 @@
     "capacity": 30,
     "competition": 9.67,
     "cut70_grade": 4.5,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85201,7 +86031,10 @@
     "capacity": 10,
     "competition": 8.3,
     "cut70_grade": 4.85,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85212,7 +86045,10 @@
     "capacity": 10,
     "competition": 21.6,
     "cut70_grade": 4.23,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85223,7 +86059,10 @@
     "capacity": 15,
     "competition": 9.67,
     "cut70_grade": 4.35,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85234,7 +86073,10 @@
     "capacity": 15,
     "competition": 13.13,
     "cut70_grade": 4.15,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85245,7 +86087,10 @@
     "capacity": 30,
     "competition": 9.23,
     "cut70_grade": 5.08,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85267,7 +86112,10 @@
     "capacity": 10,
     "competition": 6.1,
     "cut70_grade": 5.35,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85322,7 +86170,10 @@
     "capacity": 30,
     "competition": 13.63,
     "cut70_grade": 4.75,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85333,7 +86184,10 @@
     "capacity": 10,
     "competition": 12.8,
     "cut70_grade": 4.4,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85344,7 +86198,10 @@
     "capacity": 30,
     "competition": 14.07,
     "cut70_grade": 4.2,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "수원대학교",
@@ -85366,7 +86223,10 @@
     "capacity": 30,
     "competition": 10.8,
     "cut70_grade": 4.45,
-    "source": "adiga_2024"
+    "source": "adiga_2024",
+    "minreq": "수능최저 없음",
+    "minreq_source": "SUWON_2027_SUSI_REVIEW_REPORT",
+    "minreq_note": "교과논술전형 수능최저 없음"
   },
   {
     "univ": "숙명여자대학교",
@@ -85991,7 +86851,10 @@
     "source": "adiga_2025",
     "label_source": "SCH_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%EC%88%9C%EC%B2%9C%ED%96%A5%EB%8C%80%ED%95%99%EA%B5%90/%EC%88%9C%EC%B2%9C%ED%96%A5%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "순천향대학교",
@@ -110210,7 +111073,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110238,7 +111104,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110266,7 +111135,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110292,7 +111164,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110333,7 +111208,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110361,7 +111239,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110376,7 +111257,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110391,7 +111275,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110406,7 +111293,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -110433,7 +111323,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110459,7 +111352,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110498,7 +111394,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110535,7 +111434,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -110549,7 +111451,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -110576,7 +111481,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -110636,7 +111544,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110664,7 +111575,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110692,7 +111606,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110720,7 +111637,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110748,7 +111668,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110763,7 +111686,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110791,7 +111717,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110806,7 +111735,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110821,7 +111753,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -110848,7 +111783,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110863,7 +111801,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110891,7 +111832,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -110973,7 +111917,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -110988,7 +111935,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111040,7 +111990,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111068,7 +112021,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111083,7 +112039,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111111,7 +112070,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111126,7 +112088,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111154,7 +112119,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111169,7 +112137,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -111196,7 +112167,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111211,7 +112185,11 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시", "adiga_2024"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시",
+      "adiga_2024"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8",
     "label_note": "Merged exact duplicate rows after middle-dot restoration: adiga_2025 / v0.8_수시 / adiga_2024"
   },
@@ -111227,7 +112205,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111264,7 +112245,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111279,7 +112263,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111305,7 +112292,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111331,7 +112321,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111372,7 +112365,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111400,7 +112396,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111505,7 +112504,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -111532,7 +112534,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111547,7 +112552,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -111574,7 +112582,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -111588,7 +112599,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111616,7 +112630,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111631,7 +112648,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -111680,7 +112700,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111708,7 +112731,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -111735,7 +112761,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "조선대학교",
@@ -111771,7 +112800,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111786,7 +112818,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -111856,7 +112891,11 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11300331.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시", "adiga_2024"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시",
+      "adiga_2024"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8",
     "label_note": "Merged exact duplicate rows after middle-dot restoration: adiga_2025 / v0.8_수시 / adiga_2024"
   },
@@ -116557,7 +117596,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11400361.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "충남대학교",
@@ -116595,7 +117637,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11400361.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "충남대학교",
@@ -116911,7 +117956,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11400361.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "충남대학교",
@@ -118138,7 +119186,10 @@
     "source": "adiga_2025",
     "label_source": "JINHAK_2025_COMPETITION_LABEL_MATCH",
     "label_source_url": "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11400361.html",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "충남대학교",
@@ -120126,7 +121177,10 @@
     "competition": 6.92,
     "cut70_grade": 5.13,
     "source": "adiga_2023",
-    "merged_sources": ["adiga_2023", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2023",
+      "v0.8_수시"
+    ],
     "label_note": "Merged near-duplicate department spellings: 아동·청소년 교육상담학과 / 아동·청소년교육상담학과"
   },
   {
@@ -121393,7 +122447,9 @@
     "competition": 10.58,
     "cut70_grade": 4.1,
     "source": "adiga_2023",
-    "merged_sources": ["v0.8_??"],
+    "merged_sources": [
+      "v0.8_??"
+    ],
     "source_note": "Merged near-duplicate v0.8 row with spaced department name; ADIGA row retained by source priority."
   },
   {
@@ -122396,7 +123452,10 @@
     "source": "adiga_2025",
     "label_source": "HUFS_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EA%B5%AD%EC%99%B8%EA%B5%AD%EC%96%B4%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EA%B5%AD%EC%99%B8%EA%B5%AD%EC%96%B4%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "한국외국어대학교",
@@ -128520,7 +129579,10 @@
     "competition": 11.3,
     "cut70_grade": 3.55,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2023"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2023"
+    ],
     "label_note": "Merged near-duplicate department spellings: 글로벌패션 산업학부(야) / 글로벌패션산업학부(야)"
   },
   {
@@ -128533,7 +129595,10 @@
     "competition": 13.2,
     "cut70_grade": 3.02,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2023"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2023"
+    ],
     "label_note": "Merged near-duplicate department spellings: 글로벌패션 산업학부(주) / 글로벌패션산업학부(주)"
   },
   {
@@ -128645,7 +129710,10 @@
     "competition": 11.4,
     "cut70_grade": 3.85,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2023"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2023"
+    ],
     "label_note": "Merged near-duplicate department spellings: 크리에이티브 인문학부(야) / 크리에이티브인문학부(야)"
   },
   {
@@ -128658,7 +129726,10 @@
     "competition": 10.4,
     "cut70_grade": 3.22,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2023"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2023"
+    ],
     "label_note": "Merged near-duplicate department spellings: 크리에이티브 인문학부(주) / 크리에이티브인문학부(주)"
   },
   {
@@ -130125,7 +131196,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130140,7 +131214,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130282,7 +131359,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130352,7 +131432,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130367,7 +131450,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130382,7 +131468,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130410,7 +131499,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "한양대학교",
@@ -130424,7 +131516,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130452,7 +131547,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "한양대학교",
@@ -130466,7 +131564,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130481,7 +131582,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130496,7 +131600,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130511,7 +131618,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "한양대학교",
@@ -130525,7 +131635,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130540,7 +131653,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130555,7 +131671,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130594,7 +131713,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130609,7 +131731,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130624,7 +131749,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130661,7 +131789,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130676,7 +131807,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130691,7 +131825,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130743,7 +131880,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130758,7 +131898,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130773,7 +131916,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130821,7 +131967,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130849,7 +131998,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130864,7 +132016,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130892,7 +132047,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130907,7 +132065,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130935,7 +132096,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130950,7 +132114,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130965,7 +132132,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -130980,7 +132150,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"]
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ]
   },
   {
     "univ": "한양대학교",
@@ -131018,7 +132191,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -131055,7 +132231,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -131083,7 +132262,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -131098,7 +132280,10 @@
     "source": "adiga_2025",
     "label_source": "HANYANG_2025_RESULT_PDF_LABEL_MATCH",
     "label_source_url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2025/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2025%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EC%9E%85%EC%8B%9C%EA%B2%B0%EA%B3%BC.pdf",
-    "merged_sources": ["adiga_2025", "v0.8_수시"],
+    "merged_sources": [
+      "adiga_2025",
+      "v0.8_수시"
+    ],
     "conflict_resolution": "ADIGA_2025_PREFERRED_OVER_V0_8"
   },
   {
@@ -132672,7 +133857,10 @@
     "competition": 10.15,
     "cut70_grade": 2.29,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2022"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2022"
+    ],
     "label_note": "Merged exact duplicate rows after middle-dot restoration: adiga_2025 / adiga_2022"
   },
   {
@@ -132883,7 +134071,10 @@
     "competition": 20.98,
     "cut70_grade": 2.77,
     "source": "adiga_2023",
-    "merged_sources": ["adiga_2023", "adiga_2022"],
+    "merged_sources": [
+      "adiga_2023",
+      "adiga_2022"
+    ],
     "label_note": "Merged exact duplicate rows after middle-dot restoration: adiga_2023 / adiga_2022"
   },
   {
@@ -132896,7 +134087,10 @@
     "competition": 8.22,
     "cut70_grade": 3.27,
     "source": "adiga_2023",
-    "merged_sources": ["adiga_2023", "adiga_2022"],
+    "merged_sources": [
+      "adiga_2023",
+      "adiga_2022"
+    ],
     "label_note": "Merged exact duplicate rows after middle-dot restoration: adiga_2023 / adiga_2022"
   },
   {
@@ -132942,7 +134136,10 @@
     "competition": 17.67,
     "cut70_grade": 2.24,
     "source": "adiga_2025",
-    "merged_sources": ["adiga_2025", "adiga_2022"],
+    "merged_sources": [
+      "adiga_2025",
+      "adiga_2022"
+    ],
     "label_note": "Merged exact duplicate rows after middle-dot restoration: adiga_2025 / adiga_2022"
   },
   {
