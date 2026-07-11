@@ -8844,6 +8844,9 @@
         const minreqMissing = candidates.filter(function (candidate) {
           return !candidate.minreq;
         }).length;
+        const minreqReview = candidates.filter(function (candidate) {
+          return candidate.minreq === "수능최저 원문 확인";
+        }).length;
         const sourceLinked = candidates.filter(candidateSourceUrl).length;
         if (countEl)
           countEl.textContent = candidates.length + "/" + rows.length + "행";
@@ -8855,7 +8858,9 @@
           candidates.length +
           "행 · 입결 링크 " +
           sourceLinked +
-          "행 · 수능최저 미연결 " +
+          "행 · 최저 원문확인 " +
+          minreqReview +
+          "행 · 최저 미연결 " +
           minreqMissing +
           "행. 논술은 내신 컷만으로 확정하지 않고, 논술 준비도와 최저 가능성을 따로 봅니다.";
         if (!candidates.length) {
