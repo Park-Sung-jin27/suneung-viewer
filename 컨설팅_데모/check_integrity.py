@@ -61,6 +61,29 @@ def check_data_contamination() -> list[str]:
     ]
 
 
+def check_susi_text_quality() -> list[str]:
+    data_path = ROOT / "data" / "susi_cutoffs.json"
+    if not data_path.exists():
+        return []
+
+    try:
+        rows = json.loads(data_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        return [f"data/susi_cutoffs.json: cannot be read ({exc})"]
+
+    failures: list[str] = []
+    for idx, row in enumerate(rows, start=1):
+        for field in ("minreq", "minreq_note"):
+            value = row.get(field)
+            if isinstance(value, str) and "?" in value:
+                univ = row.get("univ", "")
+                dept = row.get("dept", "")
+                failures.append(
+                    f"data/susi_cutoffs.json:{idx}: question mark in {field} ({univ} / {dept})"
+                )
+    return failures
+
+
 def main() -> int:
     previous = load_previous_sizes()
     current: dict[str, int] = {}
@@ -94,6 +117,10 @@ def main() -> int:
         print(f"OK   {rel_path}: {size} bytes ({size_note})")
 
     for failure in check_data_contamination():
+        failures.append(failure)
+        print(f"FAIL {failure}")
+
+    for failure in check_susi_text_quality():
         failures.append(failure)
         print(f"FAIL {failure}")
 

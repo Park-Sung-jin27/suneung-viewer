@@ -105130,7 +105130,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -105223,7 +105223,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -105316,7 +105316,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -105481,7 +105481,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 4 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 4 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 경찰행정학부 기준"
     },
@@ -105502,7 +105502,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 4 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 4 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 경찰행정학부 기준"
     },
@@ -105613,7 +105613,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -105706,7 +105706,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -105871,7 +105871,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -105964,7 +105964,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -106093,7 +106093,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -106276,7 +106276,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -106423,7 +106423,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -106660,7 +106660,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -106879,7 +106879,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -106972,7 +106972,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -107065,7 +107065,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -107140,7 +107140,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -107233,7 +107233,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -107308,7 +107308,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -107455,7 +107455,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -107620,7 +107620,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -107821,7 +107821,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -107896,7 +107896,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -107971,7 +107971,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -108046,7 +108046,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -108157,7 +108157,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -108268,7 +108268,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -108361,7 +108361,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -108544,7 +108544,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -108619,7 +108619,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 컴퓨터·AI학부(인문) 기준"
     },
@@ -108640,7 +108640,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -108769,7 +108769,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -108898,7 +108898,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 인문계열 기준"
     },
@@ -108991,7 +108991,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },
@@ -109084,7 +109084,7 @@ window.DEMO_DATA = {
       "label_source": "DGU_SEOUL_2026_RESULT_PDF",
       "label_source_url": "https://ipsi.dongguk.edu/admission/html/counsel/previous.asp",
       "label_note": "Essay admission table; final registered student record average grade, not essay score.",
-      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 ? 한국사 4등급 이내 ? 수학 또는 과학탐구 1개 이상 포함",
+      "minreq": "국어/수학/영어/탐구 2개 영역 등급 합 5 이내 · 한국사 4등급 이내 · 수학 또는 과학탐구 1개 이상 포함",
       "minreq_source": "DONGGUK_2027_SUSI_REVIEW_REPORT",
       "minreq_note": "논술전형 자연계열 기준. 수학 또는 과학탐구 포함 조건으로 자동 통과 금지."
     },

@@ -14,9 +14,11 @@
     "nonsul_minreq_review_expected": 53,
     "nonsul_minreq_direct_filled": 49,
     "nonsul_minreq_fallback_review": 34,
-    "nonsul_minreq_exempt_expected": 14
+    "nonsul_minreq_exempt_expected": 14,
+    "question_mark_minreq_rows": 0,
+    "question_mark_minreq_note_rows": 0
   },
-  "latest_action": "Added nonsul minreq fields: SeoulTech 1 no-minreq, Suwon 13 no-minreq, Dongguk 35 by track. UI fallback keeps Gachon 34 as source-confirm review. Conservative auto-pass remains blocked for include/required conditions.",
+  "latest_action": "Fixed Dongguk nonsul minreq separator mojibake and added integrity guard for question marks in minreq fields.",
   "source_counts": {
     "SANGJI_2025_RESULT_PDF_70CUT": 45,
     "TONGMYONG_2025_RESULT_XLSX_70CUT": 65,
