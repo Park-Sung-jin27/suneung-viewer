@@ -5848,6 +5848,16 @@
           (window.DEMO_DATA && window.DEMO_DATA.susi_cutoffs) || [];
         const cutoffUniversities = new Set(cutoffs.map((row) => row.univ));
         const cutoffUnivCount = cutoffUniversities.size;
+        const sourceQuality = cutoffs.reduce(
+          function (acc, row) {
+            if (candidateDirectSourceUrl(row)) acc.direct += 1;
+            else if (adigaResultUrlByCode(candidateUniversityCode(row))) {
+              acc.page += 1;
+            } else acc.missing += 1;
+            return acc;
+          },
+          { direct: 0, page: 0, missing: 0 },
+        );
         const pendingRows = STATE.lastGyogwaPendingQueue || [];
         const cutoffHoldUniversities = Array.from(
           new Set(
@@ -5879,19 +5889,24 @@
         detailEl.textContent =
           "입결 " +
           cutoffs.length.toLocaleString("ko-KR") +
-          "행 · " +
-          cutoffUnivCount +
-          "개 대학 · 공개컷 미확인 " +
-          pendingRows.length +
-          "건 / " +
-          cutoffHoldUniversities.length +
-          "개 대학";
+          "행 · 원문 " +
+          sourceQuality.direct.toLocaleString("ko-KR") +
+          " · 페이지 " +
+          sourceQuality.page.toLocaleString("ko-KR") +
+          " · 확인 " +
+          sourceQuality.missing.toLocaleString("ko-KR");
         detailEl.title =
           "입결 데이터는 수시 추천 카드의 작년 컷입니다. 공개컷 미확인: " +
           cutoffHoldUniversities.join(", ");
         detailEl.style.color = lowCount ? "#dc2626" : "var(--orange-600)";
         if (extraEl) {
           extraEl.textContent =
+            cutoffUnivCount +
+            "개 대학 · 공개컷 미확인 " +
+            pendingRows.length +
+            "건 / " +
+            cutoffHoldUniversities.length +
+            "개 대학 · " +
             "교과반영 " +
             main.length +
             "행 · 혼합전형 보류 " +
