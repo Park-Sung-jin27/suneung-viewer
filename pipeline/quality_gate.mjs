@@ -279,6 +279,7 @@ const footnoteMarkerCands = []; // 1-C FOOTNOTE_MARKER_INTEGRITY
 const structMissingCands = []; // 1-D W_struct_missing (§7 3단 구조 미달)
 const csspanStaleCands = []; // B track W_csspan_stale/broken
 const bracketIntegrityCands = []; // W_bracket_integrity (출전행 작품명 낫표)
+const csAnchorMismatchCands = []; // 근거형광펜정합 W_cs_anchor_mismatch (📌근거 sent ⊄ cs_ids)
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -1346,6 +1347,46 @@ for (const yearKey of yearsToCheck) {
             });
           }
 
+          // ── W_cs_anchor_mismatch (근거 형광펜 정합) ──
+          //   해설 📌 지문 근거로 verbatim 인용된 sent가 cs_ids에 없으면 = 형광펜이 해설
+          //   근거 문장을 안 칠함(근거↔형광펜 불일치). 정합 교차의 워크리스트.
+          //   조건: 인용 길이≥12 + 세트 내 유니크 verbatim 매치(다중매치=모호→제외),
+          //   보기 근거(📌 보기)·짧은 우연매치 제외. (LIVE 24건 실증)
+          if (c.analysis && (c.cs_ids || []).length) {
+            const NORMcs = (s) => (s || "").replace(/[\s·]/g, "");
+            const csSet = new Set(c.cs_ids);
+            const quotes = [
+              ...c.analysis.matchAll(
+                /📌 지문 근거:\s*((?:"[^"]+"(?:,\s*)?)+)/g,
+              ),
+            ].flatMap((m) => [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]));
+            for (const qt of quotes) {
+              if (qt.length < 12) continue;
+              const hits = (set.sents || [])
+                .filter((s) => NORMcs(s.t).includes(NORMcs(qt)))
+                .map((s) => s.id);
+              if (hits.length !== 1) continue; // 유니크 매치만
+              if (!csSet.has(hits[0])) {
+                issue(
+                  "W_cs_anchor_mismatch",
+                  yearKey,
+                  cLoc,
+                  `📌 근거 sent ${hits[0]}가 cs_ids(${c.cs_ids.join(",")})에 없음 = 형광펜↔해설근거 불일치: "${qt.slice(0, 20)}…"`,
+                );
+                csAnchorMismatchCands.push({
+                  yearKey,
+                  setId: set.id,
+                  qId: q.id,
+                  choice: c.num,
+                  anchorSent: hits[0],
+                  cs_ids: c.cs_ids,
+                  quote: qt.slice(0, 50),
+                  live: LIVE_KEYS_SET.has(yearKey + "::" + set.id),
+                });
+              }
+            }
+          }
+
           // ── CS_ALL_NONHIGHLIGHTABLE — cs_ids 전부 비-하이라이트 sentType → 형광펜 미렌더 ──
           //   getHL(PassagePanel)는 body/verse/stage/speech 등만 하이라이트. cs가 전부
           //   footnote/author/omission/workTag(각주/작가행/중략/「(가)」 표지)면 형광펜 0개.
@@ -2073,6 +2114,7 @@ const SEVERITY_MAP = {
   // ── B track: cs_span stale ──
   W_csspan_stale: "WARNING", // cs_span 내용 불일치(옛 형태/오앵커)
   W_csspan_broken: "WARNING", // cs_span 공백차로 형광펜 깨짐 — 고순위 WARNING(대표 재가로 출시 baseline 51 유지, §13⑩)
+  W_cs_anchor_mismatch: "WARNING", // 근거형광펜정합: 📌근거 sent가 cs_ids에 없음(형광펜↔해설근거 불일치)
   W_bracket_integrity: "WARNING", // 출전행 작품명 낫표(corrupt/halfwidth/stray/bare) — 고순위 WARNING(비본문·출시 baseline 불변)
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
@@ -2214,6 +2256,10 @@ for (const f of ALL_FINDINGS) {
   fs.writeFileSync(
     path.join(OUT_DIR, "bracket_integrity.json"),
     JSON.stringify(bracketIntegrityCands, null, 2),
+  );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "cs_anchor_mismatch.json"),
+    JSON.stringify(csAnchorMismatchCands, null, 2),
   );
   const _liveN = (a) => a.filter((x) => x.live).length;
   console.log(
