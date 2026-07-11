@@ -6580,7 +6580,7 @@
               (p, i) => `
       <li class="scenario-list__item ${i === 0 ? "scenario-list__item--top" : ""}${i >= 5 ? " scenario-list__item--extra" : ""}" data-name="${esc((p.univ + " " + p.dept).toLowerCase())}" data-region="${esc(p.region || "")}" data-univ="${esc(p.univ)}" data-dept="${esc(p.dept)}" data-admission="${esc(p["전형"] || "")}" data-type="${esc(p["전형분류"] || "")}" data-validation-tier="${esc(key)}" data-cut-basis="${esc(susiCutBasis(p))}" data-cut="${esc(p.cut70_grade)}" data-comp="${esc(p.competition || "")}" data-cap="${esc(p.capacity || "")}" data-jh="${esc(p["전형분류"] || "")}" data-year-label="${esc(candidateYearLabel(p))}" data-source-url="${esc(candidateSourceUrl(p))}" data-source-direct="${candidateDirectSourceUrl(p) ? "1" : "0"}" data-cut-source="${esc(p.source || p.label_source || "")}" onclick="openDetail(this)" style="cursor:pointer;">
         <div class="name">${p.univ} · ${p.dept}</div>
-        <div class="meta">${candidateAdmissionBadgeHtml(p)} ${deptScopeBadge(p.dept)}${susiCutBasis(p)} ${p.cut70_grade}등급 | 학생 ${p.student_grade} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${candidateYearText(p)} | ${p["전형분류"] || "수시"} | 경쟁률 ${p.competition || "—"} | ${candidateSourceLinkHtml(p)}${p.duplicateCut ? " | " + duplicateCutBadgeHtml(p) : ""}</div>
+        <div class="meta">${candidateAdmissionBadgeHtml(p)} ${candidateSourceQualityBadgeHtml(p)} ${deptScopeBadge(p.dept)}${susiCutBasis(p)} ${p.cut70_grade}등급 | 학생 ${p.student_grade} (${p.diff >= 0 ? "+" : ""}${p.diff}) | ${candidateYearText(p)} | ${p["전형분류"] || "수시"} | 경쟁률 ${p.competition || "—"} | ${candidateSourceLinkHtml(p)}${p.duplicateCut ? " | " + duplicateCutBadgeHtml(p) : ""}</div>
         ${candidateDecisionReasonBlockHtml(p)}
         ${validationControlsHtml(p, key)}
       </li>
@@ -6933,6 +6933,11 @@
             : function (x) {
                 return x;
               };
+        const sourceQualityBadge = sSourceDirect
+          ? '<span style="display:inline-flex; align-items:center; border-radius:999px; padding:2px 7px; font-size:11px; font-weight:900; color:#047857; background:#d1fae5;">입결 원문</span>'
+          : sSourceUrl
+            ? '<span style="display:inline-flex; align-items:center; border-radius:999px; padding:2px 7px; font-size:11px; font-weight:900; color:#92400e; background:#ffedd5;">대학 입결 페이지</span>'
+            : '<span style="display:inline-flex; align-items:center; border-radius:999px; padding:2px 7px; font-size:11px; font-weight:900; color:#b45309; background:#fef3c7;">입결 원문 확인</span>';
         let html = "";
         html +=
           '<div style="font-size:12px; font-weight:700; color:var(--purple-700); background:#f3e8ff; border:1px solid #ddd6fe; border-radius:10px; padding:8px 10px; margin-bottom:12px;">전형: ' +
@@ -6941,6 +6946,8 @@
           " · 컷 기준: " +
           esc(sCutBasis) +
           (sYearLabel ? " · " + esc(sYearLabel) : "") +
+          " · " +
+          sourceQualityBadge +
           "</div>";
         html +=
           '<div style="font-size:13px; font-weight:600; margin-bottom:4px;">작년 수시 결과</div>';
@@ -8895,6 +8902,18 @@
           esc(linkLabel) +
           "</a>"
         );
+      }
+
+      function candidateSourceQualityBadgeHtml(item) {
+        const url = candidateSourceUrl(item);
+        const direct = candidateDirectSourceUrl(item);
+        if (direct) {
+          return '<span style="display:inline-flex; align-items:center; border-radius:999px; padding:2px 7px; font-size:11px; font-weight:900; color:#047857; background:#d1fae5;">입결 원문</span>';
+        }
+        if (url && /adiga\.kr/i.test(url)) {
+          return '<span style="display:inline-flex; align-items:center; border-radius:999px; padding:2px 7px; font-size:11px; font-weight:900; color:#92400e; background:#ffedd5;">대학 입결 페이지</span>';
+        }
+        return '<span style="display:inline-flex; align-items:center; border-radius:999px; padding:2px 7px; font-size:11px; font-weight:900; color:#b45309; background:#fef3c7;">입결 원문 확인</span>';
       }
 
       function adigaResultUrlByCode(code) {
@@ -13715,6 +13734,8 @@
                 p.dept +
                 '</div><div class="meta">' +
                 candidateAdmissionBadgeHtml(p) +
+                " " +
+                candidateSourceQualityBadgeHtml(p) +
                 " " +
                 deptScopeBadge(p.dept) +
                 (p.preparing
