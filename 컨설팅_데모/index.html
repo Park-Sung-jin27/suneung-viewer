@@ -3312,6 +3312,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="js/data.js?v=20260709a"></script>
+    <script src="js/susi_minreq.js?v=20260711a"></script>
     <script src="js/trend_data.js?v=20260629b"></script>
     <script src="js/jeonhyeong_files.js?v=20260612"></script>
     <script src="js/gyogwa_banyeong.js?v=20260613"></script>
@@ -8725,8 +8726,7 @@
       }
 
       function getNonsulCutoffRows() {
-        const rows =
-          (window.DEMO_DATA && window.DEMO_DATA.susi_cutoffs) || [];
+        const rows = (window.DEMO_DATA && window.DEMO_DATA.susi_cutoffs) || [];
         return rows.filter(function (row) {
           const text = [
             row && row.type,
@@ -8816,16 +8816,18 @@
           .map(nonsulCandidateFromRow)
           .filter(function (candidate) {
             if (!query) return true;
-            return [
-              candidate.univ,
-              candidate.campus,
-              candidate.dept,
-              candidate.admission,
-              candidate.sourceNote,
-            ]
-              .join(" ")
-              .toLowerCase()
-              .indexOf(query) !== -1;
+            return (
+              [
+                candidate.univ,
+                candidate.campus,
+                candidate.dept,
+                candidate.admission,
+                candidate.sourceNote,
+              ]
+                .join(" ")
+                .toLowerCase()
+                .indexOf(query) !== -1
+            );
           })
           .sort(function (a, b) {
             if (sort === "competition") {
@@ -9842,6 +9844,55 @@
         return fallback || "기타";
       }
 
+      function minreqTextFromSusiMinreq(info) {
+        if (!info || info.has_min !== true) return "";
+        const areas = Array.isArray(info.areas) ? info.areas : [];
+        const areaTexts = Array.from(
+          new Set(
+            areas
+              .map(function (area) {
+                if (area && area.areas_count && area.sum) {
+                  return area.areas_count + "개 합 " + area.sum;
+                }
+                if (area && area.areas_count && area.each_grade) {
+                  return area.areas_count + "개 각 " + area.each_grade + "등급";
+                }
+                return "";
+              })
+              .filter(Boolean),
+          ),
+        );
+        if (areaTexts.length !== 1) return "";
+        const parts = [areaTexts[0]];
+        if (info.english_grade)
+          parts.push("영어 " + info.english_grade + "등급");
+        if (info.korean_history_grade)
+          parts.push("한국사 " + info.korean_history_grade + "등급");
+        return parts.join(" · ");
+      }
+
+      function susiMinreqForCandidate(univ, admission) {
+        const source = window.SUSI_MINREQ || {};
+        const info = source[univ];
+        if (!info) return "";
+        const text = minreqTextFromSusiMinreq(info);
+        if (!text) return "";
+        if (info.english_grade || info.korean_history_grade) {
+          return "수능최저 원문 확인";
+        }
+        const raw = [
+          admission,
+          info.raw_text,
+          ...(Array.isArray(info.raw_excerpts) ? info.raw_excerpts : []),
+        ]
+          .filter(Boolean)
+          .join(" ");
+        if (/미적|기하|확통|포함|필수|지정/.test(raw)) {
+          return "수능최저 원문 확인";
+        }
+        return text;
+      }
+
       function directCandidateMinreq(univ, admission) {
         const rows = (window.GYOGWA_BANYEONG || []).concat(
           window.GYOGWA_BANYEONG_REVIEW || [],
@@ -9855,7 +9906,7 @@
           );
         });
         if (sameAdmission) return sameAdmission.수능최저 || "";
-        return "";
+        return susiMinreqForCandidate(univ, admission);
       }
 
       function candidateMinreqText(item) {
