@@ -206,7 +206,10 @@ const RELEASE_KEYS_SET = (() => {
   const idx = src.indexOf("RELEASE_KEYS");
   if (idx < 0)
     throw new Error("RELEASE_KEYS를 src/dataLoader.js에서 찾지 못함");
-  const block = src.slice(idx, src.indexOf("]", idx));
+  // hardening: "])"(배열 닫힘) 기준 slice — 주석 내 "]"(예 [QG-…])에 조기 중단 방지.
+  //   (LIVE_KEYS_SET과 동일 robust 파싱; naive indexOf("]")는 대괄호 주석 시 RELEASE_KEYS 오인)
+  const end = src.indexOf("])", idx);
+  const block = src.slice(idx, end < 0 ? undefined : end);
   const keys = [...block.matchAll(/"([^"]+::[^"]+)"/g)].map((m) => m[1]);
   return new Set(keys);
 })();
