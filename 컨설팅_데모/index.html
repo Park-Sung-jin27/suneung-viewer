@@ -2785,6 +2785,40 @@
                 <option value="capacity">모집인원 많은순</option>
                 <option value="univ">대학명순</option>
               </select>
+              <select
+                id="nonsul-minreq-filter"
+                onchange="renderNonsulAdmissions()"
+                style="
+                  padding: 8px 10px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 8px;
+                  font-size: 13px;
+                  background: #fff;
+                "
+              >
+                <option value="all">최저 전체</option>
+                <option value="has">최저 있음</option>
+                <option value="none">최저 없음</option>
+                <option value="review">최저 원문확인</option>
+                <option value="missing">최저 미연결</option>
+              </select>
+              <select
+                id="nonsul-minreq-count-filter"
+                onchange="renderNonsulAdmissions()"
+                style="
+                  padding: 8px 10px;
+                  border: 1px solid var(--gray-300);
+                  border-radius: 8px;
+                  font-size: 13px;
+                  background: #fff;
+                "
+              >
+                <option value="all">과목 수 전체</option>
+                <option value="1">1과목 최저</option>
+                <option value="2">2과목 최저</option>
+                <option value="3">3과목 최저</option>
+                <option value="unknown">과목 수 확인필요</option>
+              </select>
             </div>
             <div
               id="nonsul-summary"
@@ -8797,6 +8831,48 @@
         return candidate;
       }
 
+      function nonsulMinreqKind(candidate) {
+        const text = String((candidate && candidate.minreq) || "");
+        if (!text) return "missing";
+        if (text.indexOf("\uC218\uB2A5\uCD5C\uC800 \uC5C6\uC74C") !== -1) return "none";
+        if (candidateMinreqResult(candidate).status === "review")
+          return "review";
+        return "has";
+      }
+
+      function nonsulMinreqSubjectCount(candidate) {
+        const text = String((candidate && candidate.minreq) || "");
+        if (!text || text.indexOf("\uC218\uB2A5\uCD5C\uC800 \uC5C6\uC74C") !== -1) return "none";
+        const countMatch = text.match(
+          /([123])\s*\uAC1C\s*(?:\uC601\uC5ED|\uACFC\uBAA9)?/,
+        );
+        if (countMatch) return countMatch[1];
+        return "unknown";
+      }
+
+      function nonsulMatchesMinreqFilters(
+        candidate,
+        minreqFilter,
+        countFilter,
+      ) {
+        const kind = nonsulMinreqKind(candidate);
+        const subjectCount = nonsulMinreqSubjectCount(candidate);
+        if (minreqFilter && minreqFilter !== "all") {
+          if (minreqFilter === "has") {
+            if (kind !== "has" && kind !== "review") return false;
+          } else if (kind !== minreqFilter) {
+            return false;
+          }
+        }
+        if (countFilter && countFilter !== "all") {
+          if (countFilter === "unknown") {
+            return subjectCount === "unknown" || kind === "missing";
+          }
+          return subjectCount === countFilter;
+        }
+        return true;
+      }
+
       function renderNonsulAdmissions() {
         const listEl = document.getElementById("nonsul-list");
         const summaryEl = document.getElementById("nonsul-summary");
@@ -8811,10 +8887,23 @@
         const sort = String(
           (document.getElementById("nonsul-sort") || {}).value || "fit",
         );
+        const minreqFilter = String(
+          (document.getElementById("nonsul-minreq-filter") || {}).value ||
+            "all",
+        );
+        const countFilter = String(
+          (document.getElementById("nonsul-minreq-count-filter") || {}).value ||
+            "all",
+        );
         STATE.nonsulCandidateCache = [];
         const candidates = rows
           .map(nonsulCandidateFromRow)
           .filter(function (candidate) {
+            if (
+              !nonsulMatchesMinreqFilters(candidate, minreqFilter, countFilter)
+            ) {
+              return false;
+            }
             if (!query) return true;
             return (
               [
@@ -8823,6 +8912,8 @@
                 candidate.dept,
                 candidate.admission,
                 candidate.sourceNote,
+                candidate.minreq,
+                candidate.minreqDetail,
               ]
                 .join(" ")
                 .toLowerCase()
@@ -8842,30 +8933,53 @@
             return candidateConsultScore(b) - candidateConsultScore(a);
           });
         const minreqMissing = candidates.filter(function (candidate) {
-          return !candidate.minreq;
+          return nonsulMinreqKind(candidate) === "missing";
         }).length;
         const minreqReview = candidates.filter(function (candidate) {
-          return (
-            candidate.minreq &&
-            candidateMinreqResult(candidate).status === "review"
-          );
+          return nonsulMinreqKind(candidate) === "review";
+        }).length;
+        const minreqNone = candidates.filter(function (candidate) {
+          return nonsulMinreqKind(candidate) === "none";
+        }).length;
+        const minreqHas = candidates.filter(function (candidate) {
+          const kind = nonsulMinreqKind(candidate);
+          return kind === "has" || kind === "review";
+        }).length;
+        const minreqOne = candidates.filter(function (candidate) {
+          return nonsulMinreqSubjectCount(candidate) === "1";
+        }).length;
+        const minreqTwo = candidates.filter(function (candidate) {
+          return nonsulMinreqSubjectCount(candidate) === "2";
+        }).length;
+        const minreqThree = candidates.filter(function (candidate) {
+          return nonsulMinreqSubjectCount(candidate) === "3";
         }).length;
         const sourceLinked = candidates.filter(candidateSourceUrl).length;
         if (countEl)
-          countEl.textContent = candidates.length + "/" + rows.length + "행";
+          countEl.textContent = candidates.length + "/" + rows.length + "?";
         summaryEl.innerHTML =
-          '<b style="color:var(--gray-900);">논술 전형 후보입니다.</b> ' +
-          "전체 " +
+          '<b style="color:var(--gray-900);">\uB17C\uC220 \uC804\uD615 \uD6C4\uBCF4\uC785\uB2C8\uB2E4.</b> ' +
+          "\uC804\uCCB4 " +
           rows.length +
-          "행 · 현재 표시 " +
+          "\uD589 \u00B7 \uD604\uC7AC \uD45C\uC2DC " +
           candidates.length +
-          "행 · 입결 링크 " +
+          "\uD589 \u00B7 \uC785\uACB0 \uB9C1\uD06C " +
           sourceLinked +
-          "행 · 최저 원문확인 " +
+          "\uD589 \u00B7 \uCD5C\uC800 \uC788\uC74C " +
+          minreqHas +
+          "\uD589 \u00B7 \uCD5C\uC800 \uC5C6\uC74C " +
+          minreqNone +
+          "\uD589 \u00B7 \uCD5C\uC800 \uC6D0\uBB38\uD655\uC778 " +
           minreqReview +
-          "행 · 최저 미연결 " +
+          "\uD589 \u00B7 \uCD5C\uC800 \uBBF8\uC5F0\uACB0 " +
           minreqMissing +
-          "행. 논술은 내신 컷만으로 확정하지 않고, 논술 준비도와 최저 가능성을 따로 봅니다.";
+          "\uD589 \u00B7 1/2/3\uACFC\uBAA9 \uCD5C\uC800 " +
+          minreqOne +
+          "/" +
+          minreqTwo +
+          "/" +
+          minreqThree +
+          "\uD589. \uB17C\uC220\uC740 \uB0B4\uC2E0 \uCEF7\uB9CC\uC73C\uB85C \uD655\uC815\uD558\uC9C0 \uC54A\uACE0, \uB17C\uC220 \uC900\uBE44\uB3C4\uC640 \uCD5C\uC800 \uAC00\uB2A5\uC131\uC744 \uB530\uB85C \uBD05\uB2C8\uB2E4.";
         if (!candidates.length) {
           listEl.innerHTML =
             '<div style="padding:16px; color:var(--gray-500); background:#fff; border:1px solid var(--gray-200,#e5e7eb); border-radius:12px;">논술 검색 결과가 없습니다. 검색어를 줄여 보세요.</div>';
