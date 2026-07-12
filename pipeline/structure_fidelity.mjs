@@ -106,8 +106,10 @@ function examBlocks(text, anc, qNum) {
 }
 
 const suspects = [],
+  positionSuspects = [],
   coverage = [],
   scanned = [];
+const NS = (x) => String(x).replace(/\s+/g, ""); // 공백 제거(줄바꿈 무관 위치 매칭)
 const statusByYk = {};
 for (const yk of Object.keys(d)) {
   if (ykFilter && yk !== ykFilter) continue;
@@ -165,11 +167,57 @@ for (const yk of Object.keys(d)) {
     };
     scanned.push(row);
     if (sim < SIM) suspects.push(row);
+
+    // Layer 3 — 위치-민감 선지 대조: 데이터 선지가 시험지 블록에서 num 순으로
+    //   출현하는지. 순서 역전/오배치 = 정답 번호가 틀린 선지 지시(오학습).
+    //   containment(위치 무관)·answer_fidelity(번호만)가 못 잡는 사각.
+    //   시험지 블록에서 각 선지 앞부분(≥18자) 위치를 찾아, num 순 위치가 단조
+    //   증가하지 않으면 flag. 미발견 선지(운문/古語/이미지)는 제외, 판정엔 ≥3 필요.
+    const rawBlocks = examBlocks(text, anc, q.id);
+    let best = null;
+    for (const rb of rawBlocks) {
+      const nb = NS(rb);
+      const found = [];
+      for (const c of q.choices || []) {
+        const key = NS(c.t).slice(0, 18);
+        if (key.length < 18) continue; // 짧은 선지(오탐 위험) 제외
+        const pos = nb.indexOf(key);
+        if (pos >= 0) found.push({ num: c.num, pos });
+      }
+      if (!best || found.length > best.length) best = found;
+    }
+    if (best && best.length >= 3) {
+      const seq = best.slice().sort((a, b) => a.num - b.num);
+      // tie(공유 prefix로 동일 pos) 허용 — 진짜 역행(pos 감소)만 flag
+      const inc = seq.every((x, i) => i === 0 || x.pos >= seq[i - 1].pos);
+      if (!inc)
+        positionSuspects.push({
+          yk,
+          setId: s.id,
+          q: q.id,
+          found: best.length,
+          order: seq.map((x) => x.num).join(""),
+          posOrder: seq
+            .slice()
+            .sort((a, b) => a.pos - b.pos)
+            .map((x) => x.num)
+            .join(""),
+        });
+    }
   }
 }
 suspects.sort((a, b) => a.sim - b.sim);
 console.log(
-  `구조 의심 문항: ${suspects.length} | 커버리지 이상 yk: ${coverage.length} | 스캔 문항: ${scanned.length} | 임계 sim<${SIM} | data=${dataPath}`,
+  `구조 의심 문항: ${suspects.length} | 선지 순서 의심: ${positionSuspects.length} | 커버리지 이상 yk: ${coverage.length} | 스캔 문항: ${scanned.length} | 임계 sim<${SIM} | data=${dataPath}`,
+);
+console.log(
+  "=== Layer3 선지 순서 의심 (데이터 num순 ≠ 시험지 출현순 = 정답 오지시) ===",
+);
+if (!positionSuspects.length) console.log("  (없음)");
+positionSuspects.forEach((x) =>
+  console.log(
+    `  ${x.yk} ${x.setId} Q${x.q}: 데이터순 ${x.order} → 시험지 출현순 ${x.posOrder} (매칭 ${x.found})`,
+  ),
 );
 console.log("=== Layer1 커버리지(범위 내 누락/추가) ===");
 coverage.forEach((c) => console.log("  " + c));
