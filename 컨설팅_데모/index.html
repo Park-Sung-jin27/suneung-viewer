@@ -8907,6 +8907,43 @@
         return true;
       }
 
+      function nonsulMinreqFilterLabel(value) {
+        if (value === "has") return "\uCD5C\uC800 \uC788\uC74C";
+        if (value === "none") return "\uCD5C\uC800 \uC5C6\uC74C";
+        if (value === "review") return "\uCD5C\uC800 \uC6D0\uBB38\uD655\uC778";
+        if (value === "missing") return "\uCD5C\uC800 \uBBF8\uC5F0\uACB0";
+        return "";
+      }
+
+      function nonsulMinreqCountFilterLabel(value) {
+        if (/^(1|2|3)$/.test(String(value || ""))) {
+          return value + "\uACFC\uBAA9 \uCD5C\uC800";
+        }
+        if (value === "unknown") return "\uACFC\uBAA9 \uC218 \uD655\uC778\uD544\uC694";
+        return "";
+      }
+
+      function nonsulActiveFilterHtml(minreqFilter, countFilter) {
+        const labels = [
+          nonsulMinreqFilterLabel(minreqFilter),
+          nonsulMinreqCountFilterLabel(countFilter),
+        ].filter(Boolean);
+        if (!labels.length) return "";
+        return (
+          '<div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;">' +
+          labels
+            .map(function (label) {
+              return (
+                '<span style="display:inline-flex; align-items:center; border:1px solid #c4b5fd; background:#f5f3ff; color:#6d28d9; border-radius:999px; padding:3px 8px; font-size:11px; font-weight:900;">' +
+                esc(label) +
+                "</span>"
+              );
+            })
+            .join("") +
+          "</div>"
+        );
+      }
+
       function renderNonsulAdmissions() {
         const listEl = document.getElementById("nonsul-list");
         const summaryEl = document.getElementById("nonsul-summary");
@@ -9013,7 +9050,8 @@
           minreqTwo +
           "/" +
           minreqThree +
-          "\uD589. \uB17C\uC220\uC740 \uB0B4\uC2E0 \uCEF7\uB9CC\uC73C\uB85C \uD655\uC815\uD558\uC9C0 \uC54A\uACE0, \uB17C\uC220 \uC900\uBE44\uB3C4\uC640 \uCD5C\uC800 \uAC00\uB2A5\uC131\uC744 \uB530\uB85C \uBD05\uB2C8\uB2E4.";
+          "\uD589. \uB17C\uC220\uC740 \uB0B4\uC2E0 \uCEF7\uB9CC\uC73C\uB85C \uD655\uC815\uD558\uC9C0 \uC54A\uACE0, \uB17C\uC220 \uC900\uBE44\uB3C4\uC640 \uCD5C\uC800 \uAC00\uB2A5\uC131\uC744 \uB530\uB85C \uBD05\uB2C8\uB2E4." +
+          nonsulActiveFilterHtml(minreqFilter, countFilter);
         if (!candidates.length) {
           listEl.innerHTML =
             '<div style="padding:16px; color:var(--gray-500); background:#fff; border:1px solid var(--gray-200,#e5e7eb); border-radius:12px;">논술 검색 결과가 없습니다. 검색어를 줄여 보세요.</div>';
