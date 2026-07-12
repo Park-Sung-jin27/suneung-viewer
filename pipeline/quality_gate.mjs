@@ -286,6 +286,7 @@ const csAnchorMismatchCands = []; // 근거형광펜정합 W_cs_anchor_mismatch 
 const annStaleCands = []; // annotation 무결성 W_annotation_stale (text ⊄ sent.t / bracket sentFrom·To 부재)
 const bracketCollapseCands = []; // W_bracket_collapse (동일 sentId 2+ bracket / 초대형 단일sent bracket)
 const bogiAnchorCands = []; // W_bogi_anchor (📌 보기 근거 ⊄ q.bogi exact substring)
+const analysisMarkerCands = []; // W_analysis_marker_mismatch (해설 마커 ⊄ 문항 문맥)
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -1320,6 +1321,54 @@ for (const yearKey of yearsToCheck) {
             }
           }
 
+          // ── W_analysis_marker_mismatch — 해설 마커 ⊄ (문항+지문+보기 ∪ 선지) ──
+          //   선지 analysis가 인용/언급한 마커(㉠·ⓐ·①·[A])가 문항 문맥 어디에도
+          //   없으면 = 존재하지 않는 마커 참조(오해설/오앵커). 선지 번호 ①~N은
+          //   '선지 마커'로 available. annotation 마커도 포함.
+          if (ana && ana.trim()) {
+            const MRK = /[㉠-㉿①-⑳Ⓐ-ⓩ]|\[[A-F]\]/g;
+            const mk = (str) => String(str || "").match(MRK) || [];
+            const avail = new Set();
+            for (const src of [
+              q.t,
+              typeof q.bogi === "string"
+                ? q.bogi
+                : JSON.stringify(q.bogi || ""),
+            ])
+              for (const m of mk(src)) avail.add(m);
+            for (const sn of set.sents || [])
+              for (const m of mk(sn.t)) avail.add(m);
+            for (const ch of q.choices || [])
+              for (const m of mk(ch.t)) avail.add(m);
+            const CIRC = "①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮";
+            for (let k = 0; k < (q.choices || []).length; k++)
+              avail.add(CIRC[k]);
+            const annL =
+              ((globalThis.__annAll || {})[yearKey] || {})[set.id] || [];
+            for (const o of annL) {
+              if (o.marker) for (const m of mk(o.marker)) avail.add(m);
+              if (o.text) for (const m of mk(o.text)) avail.add(m);
+              if (o.label && /^[A-F]$/.test(o.label)) avail.add(`[${o.label}]`);
+            }
+            const bad = [...new Set(mk(ana))].filter((x) => !avail.has(x));
+            if (bad.length) {
+              issue(
+                "W_analysis_marker_mismatch",
+                yearKey,
+                cLoc,
+                `해설 마커 [${bad.join(",")}] 문항 문맥에 부재 (존재하지 않는 마커 참조)`,
+              );
+              analysisMarkerCands.push({
+                yearKey,
+                setId: set.id,
+                qId: q.id,
+                choice: c.num,
+                markers: bad,
+                live: LIVE_KEYS_SET.has(yearKey + "::" + set.id),
+              });
+            }
+          }
+
           // ── rubric v1 신설 게이트 3종 (WARNING·비차단, 재정비 트리거) ──
           if (ana && ana.trim()) {
             // ── [발주1 1-D] W_struct_missing: §7 3단 구조 미달 (대표 지적, ok:true 확장) ──
@@ -2316,6 +2365,7 @@ const SEVERITY_MAP = {
   W_bracket_collapse: "WARNING", // 동일 sentId 2+ bracket / 초대형 단일 sent bracket(l2024c류 구간 collapse)
   W_choice_anno_stale: "WARNING", // sentId 없는 bogi/choice annotation(choice-underline·bogi marker) text ⊄ choice.t/bogi (QuizPanel 선지·보기 렌더 정합)
   W_bogi_anchor: "WARNING", // 📌 보기 근거 ⊄ q.bogi exact substring (C_anchor 보기 사각 보완, §13⑥ 확장)
+  W_analysis_marker_mismatch: "WARNING", // 해설 마커 ⊄ (문항+지문+보기 ∪ 선지) = 존재하지 않는 마커 참조
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
@@ -2472,6 +2522,10 @@ for (const f of ALL_FINDINGS) {
   fs.writeFileSync(
     path.join(OUT_DIR, "bogi_anchor.json"),
     JSON.stringify(bogiAnchorCands, null, 2),
+  );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "analysis_marker_mismatch.json"),
+    JSON.stringify(analysisMarkerCands, null, 2),
   );
   // CRITICAL 전체 덤프 (display 20+"외 N건" 절단 우회 = 출시 재스캔 정확도) — issues + manual(F_empty/DEAD) 합침
   fs.writeFileSync(
