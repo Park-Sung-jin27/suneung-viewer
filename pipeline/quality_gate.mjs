@@ -732,6 +732,48 @@ for (const yearKey of yearsToCheck) {
                   live,
                 });
               }
+            } else if (
+              o.text &&
+              !o.sentId &&
+              (o.target === "bogi" || o.target === "choice") &&
+              o.qId != null
+            ) {
+              // sentId 없는 bogi/choice annotation: qId/cNum → choice.t/bogi 대조
+              //   (QuizPanel 선지 밑줄·보기 마커 렌더 정합 — passage 형광펜과 별 축)
+              const q = (set.questions || []).find(
+                (x) => String(x.id) === String(o.qId),
+              );
+              if (q) {
+                let pool = "";
+                if (o.cNum != null) {
+                  const c = (q.choices || []).find(
+                    (x) => String(x.num) === String(o.cNum),
+                  );
+                  pool = c ? c.t : "";
+                } else {
+                  pool =
+                    typeof q.bogi === "string"
+                      ? q.bogi
+                      : JSON.stringify(q.bogi || "");
+                }
+                if (pool && !pool.includes(o.text)) {
+                  issue(
+                    "W_choice_anno_stale",
+                    yearKey,
+                    set.id,
+                    `${o.type} text ⊄ ${o.cNum != null ? "choice " + o.cNum : "bogi"}(q${o.qId}): "${String(o.text).slice(0, 20)}"`,
+                  );
+                  annStaleCands.push({
+                    yearKey,
+                    setId: set.id,
+                    type: o.type,
+                    ref: `q${o.qId}${o.cNum != null ? "c" + o.cNum : "/bogi"}`,
+                    text: String(o.text).slice(0, 40),
+                    reason: "choice/bogi text≠",
+                    live,
+                  });
+                }
+              }
             }
           }
           // W_bracket_collapse: 동일 sentId 2+ bracket
@@ -2229,6 +2271,7 @@ const SEVERITY_MAP = {
   // ── annotation 무결성(핵심 차별점 렌더 정합) — CRITICAL 승격 검토(정리 후) ──
   W_annotation_stale: "WARNING", // annotation text ⊄ sent.t / bracket sentFrom·To 부재(렌더 정박 실패)
   W_bracket_collapse: "WARNING", // 동일 sentId 2+ bracket / 초대형 단일 sent bracket(l2024c류 구간 collapse)
+  W_choice_anno_stale: "WARNING", // sentId 없는 bogi/choice annotation(choice-underline·bogi marker) text ⊄ choice.t/bogi (QuizPanel 선지·보기 렌더 정합)
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
