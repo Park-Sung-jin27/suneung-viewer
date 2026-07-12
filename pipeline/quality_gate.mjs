@@ -285,6 +285,7 @@ const bracketIntegrityCands = []; // W_bracket_integrity (출전행 작품명 �
 const csAnchorMismatchCands = []; // 근거형광펜정합 W_cs_anchor_mismatch (📌근거 sent ⊄ cs_ids)
 const annStaleCands = []; // annotation 무결성 W_annotation_stale (text ⊄ sent.t / bracket sentFrom·To 부재)
 const bracketCollapseCands = []; // W_bracket_collapse (동일 sentId 2+ bracket / 초대형 단일sent bracket)
+const bogiAnchorCands = []; // W_bogi_anchor (📌 보기 근거 ⊄ q.bogi exact substring)
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -1273,6 +1274,48 @@ for (const yearKey of yearsToCheck) {
                   cLoc,
                   `📌 지문 근거 "${q.slice(0, 24)}…" 단어내 공백 artifact (${ms.id} sent.t 교정 대상)`,
                 );
+              }
+            }
+          }
+
+          // ── W_bogi_anchor (§13⑥ 보기 확장) — 📌 보기 근거 ⊆ q.bogi exact substring ──
+          //   C_anchor는 지문 근거만 검사(보기 사각). 보기 인용도 verbatim 대상(§7).
+          //   대상 라인: "· 보기 \"…\"" (새 대조 포맷) / "📌 보기 근거: \"…\"" (구 포맷).
+          //   지문 라인·🎯 요약의 '…'(홑따옴표 풀이) 제외. 정규화 금지(exact). bogiTable(비-string) 제외.
+          if (ana && typeof q.bogi === "string" && q.bogi.trim()) {
+            const bogi = q.bogi;
+            // bogiTable 제외(발주): 마크다운 표(--- 구분행/| 다수)·bogiType=table은
+            //   셀 재구성 인용이 선형 substring 매칭 안 됨 → 별 축(표 정합).
+            const isTable =
+              q.bogiType === "table" ||
+              (bogi.match(/\|/g) || []).length >= 3 ||
+              /(^|\n)\s*-{2,}\s*\|/.test(bogi);
+            for (const line of isTable ? [] : ana.split(/\r?\n/)) {
+              // 보기 근거 라인만: 보기 바로 뒤 겹따옴표, 또는 📌 보기 근거:
+              const isBogiLine =
+                /(^|\s)보기\s*"/.test(line) || /📌\s*보기 근거/.test(line);
+              if (!isBogiLine) continue;
+              if (line.includes("지문")) continue; // 혼합 라인 방어
+              const quotes = [...line.matchAll(/"([^"]{12,})"|“([^”]{12,})”/g)]
+                .map((m) => m[1] || m[2] || "")
+                .filter(Boolean);
+              for (const qt of quotes) {
+                if (bogi.includes(qt)) continue; // exact substring
+                if (/…|\.{2,}/.test(qt)) continue; // 말줄임표(다구간)는 별 축
+                issue(
+                  "W_bogi_anchor",
+                  yearKey,
+                  cLoc,
+                  `📌 보기 근거 "${qt.slice(0, 24)}…" ⊄ q.bogi (exact substring 실패)`,
+                );
+                bogiAnchorCands.push({
+                  yearKey,
+                  setId: set.id,
+                  qId: q.id,
+                  choice: c.num,
+                  text: qt.slice(0, 60),
+                  live: LIVE_KEYS_SET.has(yearKey + "::" + set.id),
+                });
               }
             }
           }
@@ -2272,6 +2315,7 @@ const SEVERITY_MAP = {
   W_annotation_stale: "WARNING", // annotation text ⊄ sent.t / bracket sentFrom·To 부재(렌더 정박 실패)
   W_bracket_collapse: "WARNING", // 동일 sentId 2+ bracket / 초대형 단일 sent bracket(l2024c류 구간 collapse)
   W_choice_anno_stale: "WARNING", // sentId 없는 bogi/choice annotation(choice-underline·bogi marker) text ⊄ choice.t/bogi (QuizPanel 선지·보기 렌더 정합)
+  W_bogi_anchor: "WARNING", // 📌 보기 근거 ⊄ q.bogi exact substring (C_anchor 보기 사각 보완, §13⑥ 확장)
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
@@ -2424,6 +2468,10 @@ for (const f of ALL_FINDINGS) {
   fs.writeFileSync(
     path.join(OUT_DIR, "bracket_collapse.json"),
     JSON.stringify(bracketCollapseCands, null, 2),
+  );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "bogi_anchor.json"),
+    JSON.stringify(bogiAnchorCands, null, 2),
   );
   // CRITICAL 전체 덤프 (display 20+"외 N건" 절단 우회 = 출시 재스캔 정확도) — issues + manual(F_empty/DEAD) 합침
   fs.writeFileSync(
