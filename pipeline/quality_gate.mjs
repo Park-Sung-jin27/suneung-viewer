@@ -283,6 +283,8 @@ const structMissingCands = []; // 1-D W_struct_missing (§7 3단 구조 미달)
 const csspanStaleCands = []; // B track W_csspan_stale/broken
 const bracketIntegrityCands = []; // W_bracket_integrity (출전행 작품명 낫표)
 const csAnchorMismatchCands = []; // 근거형광펜정합 W_cs_anchor_mismatch (📌근거 sent ⊄ cs_ids)
+const annStaleCands = []; // annotation 무결성 W_annotation_stale (text ⊄ sent.t / bracket sentFrom·To 부재)
+const bracketCollapseCands = []; // W_bracket_collapse (동일 sentId 2+ bracket / 초대형 단일sent bracket)
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -675,6 +677,111 @@ for (const yearKey of yearsToCheck) {
                 "fatal",
               );
           }
+        }
+      }
+
+      // ── [Gate] W_annotation_stale / W_bracket_collapse — annotation 무결성 ──
+      //   핵심 차별점(선지↔지문 형광펜) 렌더 정합. 자동 stale-스캔이 못 잡는
+      //   "존재하나 틀린" bracket collapse 축까지 색출(l2024c류: [B][C]가 동일
+      //   초대형 sent에 겹침). W_annotation_stale = text ⊄ sent.t / bracket
+      //   sentFrom·To 부재. W_bracket_collapse = 동일 sentId 2+ bracket /
+      //   초대형 단일 sent bracket(>임계). LIVE 렌더 결함 재발 차단.
+      {
+        const annList2 =
+          ((globalThis.__annAll || {})[yearKey] || {})[set.id] || [];
+        if (annList2.length) {
+          const sm = {};
+          for (const s of set.sents || []) sm[s.id] = s.t;
+          const OVERSIZE_LEN = 300; // 단일 sent bracket 초대형 임계(측정: 실결함 427~673)
+          const live = LIVE_KEYS_SET.has(yearKey + "::" + set.id);
+          // W_annotation_stale
+          for (const o of annList2) {
+            if (o.type === "bracket") {
+              if (!sm[o.sentFrom] || !sm[o.sentTo]) {
+                issue(
+                  "W_annotation_stale",
+                  yearKey,
+                  set.id,
+                  `bracket [${o.label}] sentFrom/To 부재(${o.sentFrom}~${o.sentTo})`,
+                );
+                annStaleCands.push({
+                  yearKey,
+                  setId: set.id,
+                  type: "bracket",
+                  label: o.label,
+                  ref: `${o.sentFrom}~${o.sentTo}`,
+                  reason: "sentId 부재",
+                  live,
+                });
+              }
+            } else if (o.text && o.sentId) {
+              if (!sm[o.sentId] || !sm[o.sentId].includes(o.text)) {
+                issue(
+                  "W_annotation_stale",
+                  yearKey,
+                  set.id,
+                  `${o.type} text ⊄ sent.t(${o.sentId}): "${String(o.text).slice(0, 20)}"`,
+                );
+                annStaleCands.push({
+                  yearKey,
+                  setId: set.id,
+                  type: o.type,
+                  ref: o.sentId,
+                  text: String(o.text).slice(0, 40),
+                  reason: !sm[o.sentId] ? "sentId 부재" : "text≠sent",
+                  live,
+                });
+              }
+            }
+          }
+          // W_bracket_collapse: 동일 sentId 2+ bracket
+          const brByRange = {};
+          for (const o of annList2)
+            if (o.type === "bracket") {
+              const k = `${o.sentFrom}→${o.sentTo}`;
+              (brByRange[k] = brByRange[k] || []).push(o.label);
+            }
+          for (const k in brByRange)
+            if (brByRange[k].length >= 2) {
+              issue(
+                "W_bracket_collapse",
+                yearKey,
+                set.id,
+                `동일 구간 ${k}에 bracket ${brByRange[k].length}개 겹침[${brByRange[k].join(",")}] = 서로 다른 구간이 한 sent에 collapse`,
+              );
+              bracketCollapseCands.push({
+                yearKey,
+                setId: set.id,
+                range: k,
+                labels: brByRange[k],
+                kind: "overlap",
+                live,
+              });
+            }
+          // W_bracket_collapse: 초대형 단일 sent bracket
+          for (const o of annList2)
+            if (
+              o.type === "bracket" &&
+              o.sentFrom === o.sentTo &&
+              sm[o.sentFrom] &&
+              sm[o.sentFrom].length > OVERSIZE_LEN
+            ) {
+              issue(
+                "W_bracket_collapse",
+                yearKey,
+                set.id,
+                `bracket [${o.label}]=${o.sentFrom} 초대형 sent(${sm[o.sentFrom].length}자>${OVERSIZE_LEN}) = 구간 과다(narration 혼입 의심)`,
+              );
+              bracketCollapseCands.push({
+                yearKey,
+                setId: set.id,
+                range: o.sentFrom,
+                labels: [o.label],
+                kind: "oversize",
+                len: sm[o.sentFrom].length,
+                live,
+              });
+            }
         }
       }
 
@@ -2119,6 +2226,9 @@ const SEVERITY_MAP = {
   W_csspan_broken: "WARNING", // cs_span 공백차로 형광펜 깨짐 — 고순위 WARNING(대표 재가로 출시 baseline 51 유지, §13⑩)
   W_cs_anchor_mismatch: "WARNING", // 근거형광펜정합: 📌근거 sent가 cs_ids에 없음(형광펜↔해설근거 불일치)
   W_bracket_integrity: "WARNING", // 출전행 작품명 낫표(corrupt/halfwidth/stray/bare) — 고순위 WARNING(비본문·출시 baseline 불변)
+  // ── annotation 무결성(핵심 차별점 렌더 정합) — CRITICAL 승격 검토(정리 후) ──
+  W_annotation_stale: "WARNING", // annotation text ⊄ sent.t / bracket sentFrom·To 부재(렌더 정박 실패)
+  W_bracket_collapse: "WARNING", // 동일 sentId 2+ bracket / 초대형 단일 sent bracket(l2024c류 구간 collapse)
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
@@ -2263,6 +2373,14 @@ for (const f of ALL_FINDINGS) {
   fs.writeFileSync(
     path.join(OUT_DIR, "cs_anchor_mismatch.json"),
     JSON.stringify(csAnchorMismatchCands, null, 2),
+  );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "annotation_stale.json"),
+    JSON.stringify(annStaleCands, null, 2),
+  );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "bracket_collapse.json"),
+    JSON.stringify(bracketCollapseCands, null, 2),
   );
   // CRITICAL 전체 덤프 (display 20+"외 N건" 절단 우회 = 출시 재스캔 정확도) — issues + manual(F_empty/DEAD) 합침
   fs.writeFileSync(
