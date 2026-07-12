@@ -5775,6 +5775,14 @@
         "sentFrom": "l20176bs5",
         "sentTo": "l20176bs5"
       }
+    ],
+    "r20176c": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20176cs18",
+        "sentTo": "r20176cs24"
+      }
     ]
   },
   "2016_6월A": {
