@@ -409,24 +409,24 @@
     "l2025b": [
       {
         "type": "underline",
-        "sentId": "l2025bs7",
-        "text": "치병*과 환후*는 각각 따로인 것을"
+        "sentId": "l2025bs12",
+        "text": "치병과 환후는 각각 따로인 것을"
       },
       {
         "type": "underline",
-        "sentId": "l2025bs31",
+        "sentId": "l2025bs41",
         "text": "누군가가 듣기를 바라는 모든 고백이란, 위선이 아니면 위악이다."
       },
       {
         "type": "marker",
         "marker": "ⓐ",
-        "sentId": "l2025bs7",
-        "text": "단풍의 손바닥"
+        "sentId": "l2025bs12",
+        "text": "치병과 환후는 각각 따로인 것을"
       },
       {
         "type": "marker",
         "marker": "ⓑ",
-        "sentId": "l2025bs31",
+        "sentId": "l2025bs41",
         "text": "누군가가 듣기를 바라는 모든 고백이란, 위선이 아니면 위악이다."
       }
     ],
