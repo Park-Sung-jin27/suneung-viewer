@@ -8944,6 +8944,43 @@
         );
       }
 
+      function nonsulMinreqCompactBadgeHtml(candidate) {
+        const kind = nonsulMinreqKind(candidate);
+        const count = nonsulMinreqSubjectCount(candidate);
+        let label = "";
+        let style =
+          "background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8;";
+        if (kind === "none") {
+          label = "\uCD5C\uC800 \uC5C6\uC74C";
+          style =
+            "background:#ecfdf5; border-color:#bbf7d0; color:#047857;";
+        } else if (kind === "missing") {
+          label = "\uCD5C\uC800 \uBBF8\uC5F0\uACB0";
+          style =
+            "background:#f8fafc; border-color:#cbd5e1; color:#475569;";
+        } else if (kind === "review") {
+          label =
+            /^(1|2|3)$/.test(count)
+              ? count + "\uACFC\uBAA9 \uCD5C\uC800 \u00B7 \uC6D0\uBB38\uD655\uC778"
+              : "\uCD5C\uC800 \uC6D0\uBB38\uD655\uC778";
+          style =
+            "background:#fff7ed; border-color:#fed7aa; color:#c2410c;";
+        } else if (kind === "has") {
+          label =
+            /^(1|2|3)$/.test(count)
+              ? count + "\uACFC\uBAA9 \uCD5C\uC800"
+              : "\uCD5C\uC800 \uC788\uC74C";
+        }
+        if (!label) return "";
+        return (
+          '<span style="display:inline-flex; align-items:center; border:1px solid; border-radius:999px; padding:1px 6px; font-size:10px; font-weight:900; ' +
+          style +
+          '">' +
+          esc(label) +
+          "</span>"
+        );
+      }
+
       function renderNonsulAdmissions() {
         const listEl = document.getElementById("nonsul-list");
         const summaryEl = document.getElementById("nonsul-summary");
@@ -9086,6 +9123,8 @@
               candidateAdmissionBadgeHtml(candidate) +
               " " +
               candidateSourceQualityBadgeHtml(candidate) +
+              " " +
+              nonsulMinreqCompactBadgeHtml(candidate) +
               " " +
               candidateCutSummaryHtml(candidate) +
               diffText +
