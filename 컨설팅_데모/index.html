@@ -8784,8 +8784,16 @@
           Number.isFinite(cutNumber) && Number.isFinite(studentGrade)
             ? Number((cutNumber - studentGrade).toFixed(2))
             : null;
+        const fallbackMinreqInfo =
+          row && row.minreq
+            ? null
+            : susiMinreqInfoForCandidate(
+                row && row.univ,
+                row && (row["전형"] || row.admission),
+              );
         const rawMinreq =
           (row && row.minreq) ||
+          minreqTextForCandidateFromInfo(fallbackMinreqInfo, row && (row["전형"] || row.admission)) ||
           directCandidateMinreq(
             row && row.univ,
             row && (row["전형"] || row.admission),
@@ -8823,6 +8831,8 @@
           minreqDetail: minreq.detail,
           minreqColor: minreq.color,
           minreqBg: minreq.bg,
+          minreqSubjectCountHint:
+            nonsulMinreqSubjectCountFromInfo(fallbackMinreqInfo),
           eligibilityStatus: "review",
           eligibilityLabel: "논술 준비도 확인",
           eligibilityDetail: "논술 실력, 준비 시간, 수능최저를 별도 확인",
@@ -8841,6 +8851,12 @@
       }
 
       function nonsulMinreqSubjectCount(candidate) {
+        if (
+          candidate &&
+          /^(1|2|3)$/.test(String(candidate.minreqSubjectCountHint || ""))
+        ) {
+          return String(candidate.minreqSubjectCountHint);
+        }
         const text = String((candidate && candidate.minreq) || "");
         if (!text || text.indexOf("\uC218\uB2A5\uCD5C\uC800 \uC5C6\uC74C") !== -1) return "none";
         const countMatch = text.match(
@@ -8848,6 +8864,24 @@
         );
         if (countMatch) return countMatch[1];
         return "unknown";
+      }
+
+      function nonsulMinreqSubjectCountFromInfo(info) {
+        if (!info || info.has_min !== true) return "";
+        const areas = Array.isArray(info.areas) ? info.areas : [];
+        const counts = Array.from(
+          new Set(
+            areas
+              .map(function (area) {
+                return area && Number(area.areas_count);
+              })
+              .filter(function (count) {
+                return count >= 1 && count <= 3;
+              }),
+          ),
+        );
+        if (counts.length === 1) return String(counts[0]);
+        return "";
       }
 
       function nonsulMatchesMinreqFilters(
@@ -9993,9 +10027,12 @@
         return parts.join(" · ");
       }
 
-      function susiMinreqForCandidate(univ, admission) {
+      function susiMinreqInfoForCandidate(univ) {
         const source = window.SUSI_MINREQ || {};
-        const info = source[univ];
+        return source[univ] || null;
+      }
+
+      function minreqTextForCandidateFromInfo(info, admission) {
         if (!info) return "";
         const text = minreqTextFromSusiMinreq(info);
         if (!text) return "";
@@ -10013,6 +10050,13 @@
           return "수능최저 원문 확인";
         }
         return text;
+      }
+
+      function susiMinreqForCandidate(univ, admission) {
+        return minreqTextForCandidateFromInfo(
+          susiMinreqInfoForCandidate(univ),
+          admission,
+        );
       }
 
       function directCandidateMinreq(univ, admission) {
