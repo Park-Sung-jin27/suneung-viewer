@@ -90,10 +90,16 @@ for (const t of targets) {
     s2warn = 0,
     revBad = 0,
     dead = 0,
-    vDirty = 0;
+    vDirty = 0,
+    vocabPatBad = 0;
   const s2failEx = [];
   for (const q of s.questions || []) {
     const bogi = typeof q.bogi === "string" ? q.bogi : "";
+    // 어휘 문항 판별(§6): 발문 키워드(문맥상 의미·바꿔 쓰기·가장 가까운)
+    const isVocab =
+      /문맥상.{0,4}(의미|뜻)|의미가 가장 가까운|가장 가까운 것은|바꿔 쓰기에 적절|바꿔 쓸 수 있는/.test(
+        String(q.t || ""),
+      );
     for (const c of q.choices || []) {
       const a = c.analysis || "";
       // ① §2 전선지: 📌 인용(12+) ⊆ sents∪bogi. 다문장=WARNING, 그 외=FAIL
@@ -117,14 +123,16 @@ for (const t of targets) {
       for (const id of c.cs_ids || []) if (!sents.has(id)) dead++;
       // V 오답 cs 규칙(C_vpat_dirty 선제)
       if (c.ok === false && c.pat === "V" && (c.cs_ids || []).length) vDirty++;
+      // 어휘 문항 오답 pat != V (기존 데이터 pat 오분류 색출 겸용)
+      if (isVocab && c.ok === false && c.pat !== "V") vocabPatBad++;
     }
   }
   const crit = criticalForSet(yk, sid);
   const setCs = csAnchor.filter((x) => x.setId === sid);
   const setBogi = bogiAnchor.filter((x) => x.setId === sid);
   const setMk = markerMis.filter((x) => x.setId === sid);
-  // PASS: CRITICAL 0 AND §2 real-FAIL 0 AND 결론줄 위반 0 AND DEAD 0 AND V-dirty 0
-  const blocking = crit.length + s2fail + revBad + dead + vDirty;
+  // PASS: CRITICAL 0 AND §2 real-FAIL 0 AND 결론줄 위반 0 AND DEAD 0 AND V-dirty 0 AND 어휘pat 0
+  const blocking = crit.length + s2fail + revBad + dead + vDirty + vocabPatBad;
   const verdict = blocking === 0 ? "PASS" : "FAIL";
   results.push({
     set: t,
@@ -135,6 +143,7 @@ for (const t of targets) {
     concl_bad: revBad,
     dead,
     v_dirty: vDirty,
+    vocab_pat_bad: vocabPatBad,
     warn: {
       bogi_anchor: setBogi.length,
       marker_mismatch: setMk.length,
@@ -154,7 +163,7 @@ for (const r of results) {
     continue;
   }
   console.log(
-    `  [차단축] CRITICAL ${r.critical}${r.critTypes.length ? "(" + r.critTypes.join(",") + ")" : ""} · §2 FAIL ${r.s2_fail} · 결론줄위반 ${r.concl_bad} · DEAD ${r.dead} · V-dirty ${r.v_dirty}`,
+    `  [차단축] CRITICAL ${r.critical}${r.critTypes.length ? "(" + r.critTypes.join(",") + ")" : ""} · §2 FAIL ${r.s2_fail} · 결론줄위반 ${r.concl_bad} · DEAD ${r.dead} · V-dirty ${r.v_dirty} · 어휘pat오분류 ${r.vocab_pat_bad}`,
   );
   console.log(
     `  [비차단 WARNING] §2 다문장 ${r.s2_warn} · bogi_anchor ${r.warn.bogi_anchor} · marker ${r.warn.marker_mismatch} · cs_anchor ${r.warn.cs_anchor}`,
