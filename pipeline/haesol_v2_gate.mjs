@@ -85,13 +85,15 @@ for (const t of targets) {
     continue;
   }
   const sents = new Set((s.sents || []).map((x) => x.id));
-  const hay = (s.sents || []).map((x) => x.t).join("\n");
+  const sentArr = s.sents || [];
+  const hay = sentArr.map((x) => x.t).join("\n");
   let s2fail = 0,
     s2warn = 0,
     revBad = 0,
     dead = 0,
     vDirty = 0,
-    vocabPatBad = 0;
+    vocabPatBad = 0,
+    anchorGap = 0;
   const s2failEx = [];
   for (const q of s.questions || []) {
     const bogi = typeof q.bogi === "string" ? q.bogi : "";
@@ -103,9 +105,21 @@ for (const t of targets) {
     for (const c of q.choices || []) {
       const a = c.analysis || "";
       // ① §2 전선지: 📌 인용(12+) ⊆ sents∪bogi. 다문장=WARNING, 그 외=FAIL
+      // ④ 근거완전성(발주#4): 지문 인용 sent가 cs_ids에 없으면 FAIL(⚡·🧠 참조 누락 색출)
       for (const m of a.matchAll(/"([^"]{12,})"/g)) {
         const qt = m[1];
-        if (hay.includes(qt) || (bogi && bogi.includes(qt))) continue;
+        const hit = sentArr.find((sn) => (sn.t || "").includes(qt));
+        if (hit) {
+          if (!(c.cs_ids || []).includes(hit.id)) {
+            anchorGap++;
+            if (s2failEx.length < 6)
+              s2failEx.push(
+                `Q${q.id}c${c.num} 근거누락(cs∌${hit.id.replace(sid, "")}): ${qt.slice(0, 26)}`,
+              );
+          }
+          continue;
+        }
+        if (bogi && bogi.includes(qt)) continue; // 보기 인용(bogi)
         if (qt.split(/[.!?]/).filter(Boolean).length > 1 || /…|\.{2,}/.test(qt))
           s2warn++;
         else {
@@ -132,7 +146,8 @@ for (const t of targets) {
   const setBogi = bogiAnchor.filter((x) => x.setId === sid);
   const setMk = markerMis.filter((x) => x.setId === sid);
   // PASS: CRITICAL 0 AND §2 real-FAIL 0 AND 결론줄 위반 0 AND DEAD 0 AND V-dirty 0 AND 어휘pat 0
-  const blocking = crit.length + s2fail + revBad + dead + vDirty + vocabPatBad;
+  const blocking =
+    crit.length + s2fail + revBad + dead + vDirty + vocabPatBad + anchorGap;
   const verdict = blocking === 0 ? "PASS" : "FAIL";
   results.push({
     set: t,
@@ -144,6 +159,7 @@ for (const t of targets) {
     dead,
     v_dirty: vDirty,
     vocab_pat_bad: vocabPatBad,
+    anchor_gap: anchorGap,
     warn: {
       bogi_anchor: setBogi.length,
       marker_mismatch: setMk.length,
@@ -163,7 +179,7 @@ for (const r of results) {
     continue;
   }
   console.log(
-    `  [차단축] CRITICAL ${r.critical}${r.critTypes.length ? "(" + r.critTypes.join(",") + ")" : ""} · §2 FAIL ${r.s2_fail} · 결론줄위반 ${r.concl_bad} · DEAD ${r.dead} · V-dirty ${r.v_dirty} · 어휘pat오분류 ${r.vocab_pat_bad}`,
+    `  [차단축] CRITICAL ${r.critical}${r.critTypes.length ? "(" + r.critTypes.join(",") + ")" : ""} · §2 FAIL ${r.s2_fail} · 결론줄위반 ${r.concl_bad} · DEAD ${r.dead} · V-dirty ${r.v_dirty} · 어휘pat오분류 ${r.vocab_pat_bad} · 근거누락 ${r.anchor_gap}`,
   );
   console.log(
     `  [비차단 WARNING] §2 다문장 ${r.s2_warn} · bogi_anchor ${r.warn.bogi_anchor} · marker ${r.warn.marker_mismatch} · cs_anchor ${r.warn.cs_anchor}`,
