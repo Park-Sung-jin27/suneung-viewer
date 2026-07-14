@@ -98,8 +98,9 @@ for (const t of targets) {
   for (const q of s.questions || []) {
     const bogi = typeof q.bogi === "string" ? q.bogi : "";
     // 어휘 문항 판별(§6): 발문 키워드(문맥상 의미·바꿔 쓰기·가장 가까운)
+    // 어휘 판별: 의미/뜻/바꿔쓰기 필수(주장·관점·내용 '가장 가까운'은 어휘 아님 — FP 차단)
     const isVocab =
-      /문맥상.{0,4}(의미|뜻)|의미가 가장 가까운|가장 가까운 것은|바꿔 쓰기에 적절|바꿔 쓸 수 있는/.test(
+      /문맥[상적].{0,5}(의미|뜻)|(의미|뜻)[가와] 가장 가까운|바꿔 쓰기에 적절|바꿔 쓸 수 있는/.test(
         String(q.t || ""),
       );
     for (const c of q.choices || []) {
