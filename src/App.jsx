@@ -2365,6 +2365,8 @@ export default function App() {
   const [isPro, setIsPro] = useState(false);
   const [authReady, setAuthReady] = useState(false);
   const [allData, setAllData] = useState(null);
+  // 결제 확인 useEffect 중복 실행 가드 (StrictMode 이중 렌더/재마운트 대비 — 한 번만 POST)
+  const paymentConfirmedRef = useRef(false);
 
   useEffect(() => {
     loadAllData().then(setAllData);
@@ -2394,6 +2396,8 @@ export default function App() {
   }, [user]);
 
   useEffect(() => {
+    if (paymentConfirmedRef.current) return;
+    paymentConfirmedRef.current = true;
     const params = new URLSearchParams(window.location.search);
     const paymentKey = params.get("paymentKey");
     const orderId = params.get("orderId");
