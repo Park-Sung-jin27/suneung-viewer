@@ -87,6 +87,10 @@ for (const t of targets) {
   const sents = new Set((s.sents || []).map((x) => x.id));
   const sentArr = s.sents || [];
   const hay = sentArr.map((x) => x.t).join("\n");
+  // 문학 세트는 어휘(V) 판정 제외 — '의미/가까운' <보기> 문항은 L*(보기/감상)이지 어휘 아님
+  const isLit = ((d[yk] || {}).literature || []).some(
+    (x) => (x.setId || x.id) === sid,
+  );
   let s2fail = 0,
     s2warn = 0,
     revBad = 0,
@@ -138,8 +142,8 @@ for (const t of targets) {
       for (const id of c.cs_ids || []) if (!sents.has(id)) dead++;
       // V 오답 cs 규칙(C_vpat_dirty 선제)
       if (c.ok === false && c.pat === "V" && (c.cs_ids || []).length) vDirty++;
-      // 어휘 문항 오답 pat != V (기존 데이터 pat 오분류 색출 겸용)
-      if (isVocab && c.ok === false && c.pat !== "V") vocabPatBad++;
+      // 어휘 문항 오답 pat != V (기존 데이터 pat 오분류 색출 겸용) — 독서만(문학 제외)
+      if (isVocab && !isLit && c.ok === false && c.pat !== "V") vocabPatBad++;
     }
   }
   const crit = criticalForSet(yk, sid);
