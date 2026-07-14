@@ -1073,6 +1073,26 @@ function ChoiceItem({
             padding: "10px 14px",
           }}
         >
+          {/* AI 학습 해설 배지 — 해설(analysis)이 AI 생성임을 시각 구분 (선지·정답·형광펜=기출 검증과 분리) */}
+          <div
+            title="선지·정답·근거 형광펜은 기출 검증 데이터이며, 설명 문장은 AI가 생성한 학습 해설입니다."
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "4px",
+              marginBottom: "8px",
+              fontSize: "0.66rem",
+              fontWeight: "700",
+              color: "#6b7280",
+              background: "#f3f4f6",
+              border: "1px solid #e5e7eb",
+              borderRadius: "999px",
+              padding: "2px 9px",
+              cursor: "help",
+            }}
+          >
+            🤖 AI 학습 해설
+          </div>
           {/* 문단 참조 뱃지 — para 데이터가 있을 때만 표시 */}
           {paraNums.length > 0 && (
             <div style={{ marginBottom: "6px" }}>
