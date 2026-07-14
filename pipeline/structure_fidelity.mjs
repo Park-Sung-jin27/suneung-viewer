@@ -110,6 +110,48 @@ const suspects = [],
   coverage = [],
   scanned = [];
 const NS = (x) => String(x).replace(/\s+/g, ""); // 공백 제거(줄바꿈 무관 위치 매칭)
+// Layer3 순열 의심 재확인: 시험지 ①~⑤ 블록을 마커로 분할 후, 데이터 각 선지를
+//   최다 char-match(containment) 세그먼트에 배정. 데이터 num이 시험지 position과
+//   identity면 정상순(pdftotext jitter 오탐) → true(FP). 역순이면 false(진짜).
+//   5마커 블록 없으면 null(재확인 불가 → 원판정 유지).
+function confirmOrder(rawBlocks, choices) {
+  const CIRC = ["①", "②", "③", "④", "⑤"];
+  for (const rb of rawBlocks) {
+    const segs = {};
+    let okMarkers = true;
+    for (let i = 0; i < 5; i++) {
+      const st = rb.indexOf(CIRC[i]);
+      if (st < 0) {
+        okMarkers = false;
+        break;
+      }
+      const enRaw = i < 4 ? rb.indexOf(CIRC[i + 1], st + 1) : rb.length;
+      const en = enRaw < 0 ? rb.length : enRaw;
+      segs[i + 1] = H(rb.slice(st, en));
+    }
+    if (!okMarkers || Object.values(segs).some((x) => x.length < 5)) continue;
+    let identity = true;
+    for (const c of choices) {
+      const ct = H(c.t);
+      if (ct.length < 5) continue;
+      let bestSeg = -1,
+        bestScore = -1;
+      for (const segNum of Object.keys(segs)) {
+        const sc = containment(ct, segs[segNum]);
+        if (sc > bestScore) {
+          bestScore = sc;
+          bestSeg = +segNum;
+        }
+      }
+      if (bestSeg !== c.num) {
+        identity = false;
+        break;
+      }
+    }
+    return identity; // true=정상순(FP) / false=역순(진짜)
+  }
+  return null; // 5마커 블록 없음 → 재확인 불가
+}
 const statusByYk = {};
 for (const yk of Object.keys(d)) {
   if (ykFilter && yk !== ykFilter) continue;
@@ -190,7 +232,9 @@ for (const yk of Object.keys(d)) {
       const seq = best.slice().sort((a, b) => a.num - b.num);
       // tie(공유 prefix로 동일 pos) 허용 — 진짜 역행(pos 감소)만 flag
       const inc = seq.every((x, i) => i === 0 || x.pos >= seq[i - 1].pos);
-      if (!inc)
+      // 순열 의심 시 시험지 ①~⑤ 전문 char-match 재확인 → 정상순이면 FP 제외(jitter)
+      const confirmed = !inc ? confirmOrder(rawBlocks, q.choices || []) : null;
+      if (!inc && confirmed !== true)
         positionSuspects.push({
           yk,
           setId: s.id,
