@@ -306,6 +306,35 @@ export function isReleaseSet(yearKey, setId) {
   return RELEASE_KEYS.has(yearKey + "::" + setId);
 }
 
+// daily MVP: 출시 세트 목록 — TodayPanel "다음 미완료 세트" 판정용.
+//   정렬(대표 확정): 최신 수능 우선 → 수능 → 9월 → 6월, 각 학년도 내림차순.
+//   추천 알고리즘 X = 결정적 정렬만. (예: 2026수능 → 2025수능 → … → 모의)
+export function getReleasedSetList() {
+  const typeRank = (yk) =>
+    yk.includes("수능")
+      ? 3
+      : yk.includes("9월")
+        ? 2
+        : yk.includes("6월")
+          ? 1
+          : 0;
+  const yearOf = (yk) => {
+    const m = yk.match(/^(\d{4})/);
+    return m ? Number(m[1]) : 0;
+  };
+  const out = [];
+  for (const k of RELEASE_KEYS) {
+    const idx = k.indexOf("::");
+    if (idx < 0) continue;
+    out.push({ yearKey: k.slice(0, idx), setId: k.slice(idx + 2) });
+  }
+  return out.sort((a, b) => {
+    const tr = typeRank(b.yearKey) - typeRank(a.yearKey);
+    if (tr !== 0) return tr;
+    return yearOf(b.yearKey) - yearOf(a.yearKey);
+  });
+}
+
 // release 통계 (Landing 등 외부 표기 path 안 동적 산출 단독 source).
 //   setCount = composite key 총 수 (A/B 분리 노출 path 안 단위 카드 수).
 //   yearKeyCount = release 영역 안 unique yearKey 수.

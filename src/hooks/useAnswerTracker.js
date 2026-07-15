@@ -105,3 +105,39 @@ export function getNextReview(reviewCount) {
   dt.setDate(dt.getDate() + d);
   return dt.toISOString();
 }
+
+// daily MVP: 세트 완료 진도 (user_progress) — 세트 마지막 문항 채점 시 upsert.
+//   PK (user_id, year_key, set_id) — setId 연도·A/B형 충돌 회피 (composite).
+export async function saveSetProgress({ user, yearKey, setId }) {
+  if (!user || !yearKey || !setId) return;
+  try {
+    await supabase.from("user_progress").upsert(
+      {
+        user_id: user.id,
+        year_key: yearKey,
+        set_id: setId,
+        completed_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id,year_key,set_id" },
+    );
+  } catch (err) {
+    console.warn("[saveSetProgress] 저장 실패:", err.message);
+  }
+}
+
+// daily MVP: 로그인 유저 완료 세트 전체 조회.
+//   테이블 미생성/오류 시 [] graceful (앱 무중단).
+export async function fetchProgress(user) {
+  if (!user) return [];
+  try {
+    const { data, error } = await supabase
+      .from("user_progress")
+      .select("year_key, set_id, completed_at")
+      .eq("user_id", user.id);
+    if (error) throw error;
+    return data ?? [];
+  } catch (err) {
+    console.warn("[fetchProgress] 조회 실패:", err.message);
+    return [];
+  }
+}

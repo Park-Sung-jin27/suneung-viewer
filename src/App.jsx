@@ -28,7 +28,8 @@ import { YEAR_INFO, MODE, isSetUnderReview, isAllowlisted } from "./constants";
 import { formatExamTitle, formatExamDate } from "./examTitle";
 import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
 import { supabase } from "./supabase";
-import { saveAnswer } from "./hooks/useAnswerTracker";
+import { saveAnswer, saveSetProgress } from "./hooks/useAnswerTracker";
+import TodayPanel from "./TodayPanel";
 
 const _fl = document.createElement("link");
 _fl.rel = "stylesheet";
@@ -800,6 +801,8 @@ function MainPage({ isPro, user }) {
         />
       )}
 
+      <TodayPanel user={user} />
+
       {/* 히어로 */}
       <div
         style={{
@@ -1402,6 +1405,8 @@ function ViewerPage({ user, isPro = false }) {
       }
     }
     setSubmitting(false);
+    // daily MVP: 세트 완료 진도 기록 (로그인 유저 — user_progress upsert, fire-and-forget)
+    saveSetProgress({ user, yearKey, setId: sid });
     setSubmittedSets((prev) => ({ ...prev, [sid]: true }));
     setSetScoreToast({ sid, correct: correctCount, total: qs.length });
     // 다음 지문 자동 이동 — 5초 후
@@ -1460,6 +1465,8 @@ function ViewerPage({ user, isPro = false }) {
       }
     }
     setSubmitting(false);
+    // daily MVP: 제출된 전 세트 완료 진도 기록 (현재 연도 allSets)
+    for (const s of allSets) saveSetProgress({ user, yearKey, setId: s.id });
     setSubmitted(true);
     window.scrollTo({ top: 0 });
   }
