@@ -1094,6 +1094,29 @@ for (const yearKey of yearsToCheck) {
         for (const c of q.choices) {
           const cLoc = `${qLoc}-[${c.num}]`;
 
+          // ── [Gate 5 승격] C_vpat_dirty 전수 축 (choice 루프 최상단·무조건) ──
+          //   판정식(발주): pat=='V' && cs_ids.length>0 단독 → CRITICAL. 발문 매처(isVocab)
+          //   무관(매처 의존 시 사각 재발). 어휘 오답은 지문 왜곡출처 없음 → cs_ids=[].
+          //   (구 [Gate 5]는 nested 가드에 묻혀 dead였음 — 본 축이 정본.)
+          if (c.pat === "V" && Array.isArray(c.cs_ids) && c.cs_ids.length > 0) {
+            if (FIX) {
+              c.cs_ids = [];
+              fixed(
+                "C_vpat_dirty_fixed",
+                yearKey,
+                cLoc,
+                `V pat 정합 — cs_ids 비움`,
+              );
+            } else {
+              issue(
+                "C_vpat_dirty",
+                yearKey,
+                cLoc,
+                `pat=V인데 cs_ids=${(c.cs_ids || []).length}건`,
+              );
+            }
+          }
+
           // ── C: 선지 오염 텍스트 ────────────────────────────────────────
           const before = c.t || "";
           const wasCleaned = cleanChoiceText(c);
@@ -1950,10 +1973,9 @@ for (const yearKey of yearsToCheck) {
               }
             }
 
-            // [Gate 5] C_vpat_dirty — pat=V 인데 cs_ids/cs_spans 비어있지 않음
-            //   어휘 문항(V)은 cs_ids=[], cs_spans 없음이 규칙.
-            //   --fix 시 cs_ids=[], cs_spans 제거.
-            if (c.pat === "V") {
+            // [Gate 5 — superseded] C_vpat_dirty는 choice 루프 최상단 transverse 축으로 이설.
+            //   본 블록은 nested 가드에 묻혀 dead였음 → 무력화(이중 발화 방지).
+            if (false && c.pat === "V") {
               const dirtyIds = Array.isArray(c.cs_ids) && c.cs_ids.length > 0;
               const dirtySpans =
                 Array.isArray(c.cs_spans) && c.cs_spans.length > 0;
