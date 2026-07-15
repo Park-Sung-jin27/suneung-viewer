@@ -96,7 +96,7 @@ export default function Privacy() {
           <tbody>
             <tr>
               <th style={TH_STYLE}>상호</th>
-              <td style={TD_STYLE}>박성진</td>
+              <td style={TD_STYLE}>지니쌤과 공부하자</td>
             </tr>
             <tr>
               <th style={TH_STYLE}>대표자</th>
@@ -109,6 +109,10 @@ export default function Privacy() {
             <tr>
               <th style={TH_STYLE}>사업장 주소</th>
               <td style={TD_STYLE}>서울특별시 강북구 도봉로50길 15 301호</td>
+            </tr>
+            <tr>
+              <th style={TH_STYLE}>사업장 연락처</th>
+              <td style={TD_STYLE}>0502-1944-2070</td>
             </tr>
             <tr>
               <th style={TH_STYLE}>통신판매업 신고번호</th>
