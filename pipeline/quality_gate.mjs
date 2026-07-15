@@ -1095,24 +1095,28 @@ for (const yearKey of yearsToCheck) {
           const cLoc = `${qLoc}-[${c.num}]`;
 
           // ── [Gate 5 승격] C_vpat_dirty 전수 축 (choice 루프 최상단·무조건) ──
-          //   판정식(발주): pat=='V' && cs_ids.length>0 단독 → CRITICAL. 발문 매처(isVocab)
-          //   무관(매처 의존 시 사각 재발). 어휘 오답은 지문 왜곡출처 없음 → cs_ids=[].
-          //   (구 [Gate 5]는 nested 가드에 묻혀 dead였음 — 본 축이 정본.)
-          if (c.pat === "V" && Array.isArray(c.cs_ids) && c.cs_ids.length > 0) {
+          //   판정식(§13⑮): pat=='V' && (cs_ids.length + cs_spans.length > 0) → CRITICAL.
+          //   cs_ids 단독은 결함 클래스보다 좁아 거짓0(cs_spans도 _buildSentCs로 형광펜 렌더).
+          //   발문 매처(isVocab) 무관. (구 [Gate 5]는 nested 가드 dead — 본 축이 정본.)
+          if (
+            c.pat === "V" &&
+            (c.cs_ids?.length || 0) + (c.cs_spans?.length || 0) > 0
+          ) {
             if (FIX) {
               c.cs_ids = [];
+              if (c.cs_spans) delete c.cs_spans;
               fixed(
                 "C_vpat_dirty_fixed",
                 yearKey,
                 cLoc,
-                `V pat 정합 — cs_ids 비움`,
+                `V pat 정합 — cs_ids/cs_spans 비움`,
               );
             } else {
               issue(
                 "C_vpat_dirty",
                 yearKey,
                 cLoc,
-                `pat=V인데 cs_ids=${(c.cs_ids || []).length}건`,
+                `pat=V인데 cs_ids=${(c.cs_ids || []).length}/cs_spans=${(c.cs_spans || []).length}건`,
               );
             }
           }
