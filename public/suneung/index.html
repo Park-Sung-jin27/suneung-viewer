@@ -1,160 +1,669 @@
 ﻿<!doctype html>
 <html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JIPPI 수능 국어 논리진단 | 지피</title>
-<meta name="description" content="수능 국어 오답 원인을 오류 패턴으로 진단하고 형광펜 근거, 누적 리포트, 복기 훈련으로 관리하는 JIPPI 수능뷰어 상품 페이지입니다.">
-<style>
-:root{--bg:#f6f3ec;--panel:#fffdf8;--ink:#171b24;--muted:#626b78;--line:#d9d4c7;--green:#265846;--green2:#e9f2ee;--blue:#345c8c;--amber:#b57a29;--red:#a94c3d}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Pretendard,"Noto Sans KR",sans-serif;line-height:1.65;word-break:keep-all;overflow-wrap:break-word}.wrap{max-width:1120px;margin:0 auto;padding:0 20px}.topbar{position:sticky;top:0;z-index:20;background:rgba(246,243,236,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.topbar .inner{height:66px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:900;letter-spacing:-.03em}.brand span{color:var(--green)}.nav{display:flex;gap:18px;align-items:center;font-size:.92rem}.nav a{color:var(--muted);text-decoration:none;font-weight:800}.nav .cta{background:var(--green);color:#fff;border-radius:999px;padding:9px 14px}.hero{padding:68px 0 52px}.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 470px;gap:42px;align-items:center}.kicker{display:inline-flex;align-items:center;border:1px solid rgba(38,88,70,.22);background:var(--green2);color:var(--green);border-radius:999px;padding:6px 12px;font-weight:900;font-size:.78rem;letter-spacing:.04em;margin-bottom:18px}h1{margin:0 0 18px;font-size:clamp(2.15rem,5vw,4.4rem);line-height:1.08;letter-spacing:-.04em}h1 em{font-style:normal;color:var(--green)}.lead{font-size:1.08rem;color:#48515d;max-width:680px;margin:0 0 24px}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:999px;padding:13px 18px;font-weight:900;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;min-height:48px}.btn.primary{background:#171b24;color:#fff}.btn.green{background:var(--green);color:#fff}.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.viewer-shot{background:#161d29;border-radius:8px;box-shadow:0 26px 70px rgba(20,24,30,.22);padding:16px;color:#eef4ff;min-height:430px}.shot-head{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:12px;margin-bottom:14px}.shot-title{font-weight:900}.shot-pill{font-size:.78rem;color:#b7c7dd}.shot-body{display:grid;grid-template-columns:1fr 160px;gap:14px}.passage{background:#fff;color:#1d2430;border-radius:6px;padding:18px;min-height:330px}.passage h3{margin:0 0 12px;font-size:1rem}.passage p{font-size:.88rem;margin:0 0 10px;color:#354052}.mark{background:#fff2a8;border-radius:3px}.side{display:flex;flex-direction:column;gap:10px}.metric{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:12px}.metric b{display:block;font-size:.84rem;margin-bottom:8px}.bar{height:8px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:#81d29c}.section{padding:60px 0;border-top:1px solid rgba(217,212,199,.7)}.section h2{margin:0 0 14px;font-size:clamp(1.6rem,3vw,2.45rem);letter-spacing:-.035em}.desc{color:var(--muted);margin:0 0 26px;max-width:760px}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.feature{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px}.feature b{display:block;margin-bottom:8px;color:var(--green)}.feature p{margin:0;color:var(--muted);font-size:.92rem}.price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.price-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px}.price-card.featured{border:2px solid var(--green);box-shadow:0 16px 42px rgba(38,88,70,.14)}.price-top{display:flex;align-items:start;justify-content:space-between;gap:14px}.badge{background:var(--green2);color:var(--green);font-size:.75rem;font-weight:900;border-radius:999px;padding:5px 9px}.price-name{font-size:1.28rem;font-weight:900;letter-spacing:-.02em}.price{font-size:2.15rem;font-weight:900;letter-spacing:-.04em;margin:14px 0 4px}.period{color:var(--muted);font-size:.92rem}.features{list-style:none;margin:22px 0;padding:0;display:grid;gap:8px}.features li{padding-left:18px;position:relative;color:#3e4753}.features li:before{content:"";position:absolute;left:0;top:.68em;width:7px;height:7px;background:var(--green);border-radius:50%}.buyer{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.buyer label{font-size:.82rem;font-weight:800;color:var(--muted)}.buyer input{width:100%;margin-top:6px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:11px 12px;font:inherit}.policy{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px;color:var(--muted);font-size:.92rem}.footer{background:#151a22;color:#d8ded8;padding:34px 0}.footer a{color:#e9d7b8;text-decoration:none}.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.biz{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px}.biz span{display:block;color:#9aa6b5;font-size:.78rem}.biz b{font-size:.9rem}@media(max-width:900px){.hero-grid,.price-grid{grid-template-columns:1fr}.viewer-shot{min-height:0}.feature-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){.nav a:not(.cta){display:none}.hero{padding:46px 0 38px}.shot-body,.feature-grid,.buyer,.footer-grid{grid-template-columns:1fr}.viewer-shot{padding:12px}.passage{min-height:0}.price{font-size:1.85rem}}
-</style>
-</head>
-<body>
-<div class="topbar">
-  <div class="wrap inner">
-    <div class="brand">JIPPI <span>수능뷰어</span></div>
-    <nav class="nav">
-      <a href="/">운세 리포트</a>
-      <a href="#features">구성</a>
-      <a href="#pricing">상품</a>
-      <a class="cta" href="#pricing">이용권 구매</a>
-    </nav>
-  </div>
-</div>
-
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="kicker">수능 국어 오답 패턴 진단</div>
-      <h1>오답의 이유를 <em>패턴</em>으로 남기는 수능뷰어</h1>
-      <p class="lead">지문 근거, 선지 판단, 오류 유형을 한 화면에서 묶어 보여주는 국어 학습 도구입니다. 정답 해설을 읽고 끝내는 대신, 내가 반복해서 놓치는 사고 습관을 데이터로 관리합니다.</p>
-      <div class="actions">
-        <a class="btn green" href="#pricing">상품 선택</a>
-        <a class="btn ghost" href="https://suneung-viewer.vercel.app" rel="noopener">무료 체험 열기</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JIPPI 수능 국어 논리진단 | 지피</title>
+    <meta
+      name="description"
+      content="수능 국어 오답 원인을 오류 패턴으로 진단하고 형광펜 근거, 누적 리포트, 복기 훈련으로 관리하는 JIPPI 수능뷰어 상품 페이지입니다."
+    />
+    <style>
+      :root {
+        --bg: #f6f3ec;
+        --panel: #fffdf8;
+        --ink: #171b24;
+        --muted: #626b78;
+        --line: #d9d4c7;
+        --green: #265846;
+        --green2: #e9f2ee;
+        --blue: #345c8c;
+        --amber: #b57a29;
+        --red: #a94c3d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard,
+          "Noto Sans KR", sans-serif;
+        line-height: 1.65;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(246, 243, 236, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+      }
+      .topbar .inner {
+        height: 66px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .brand {
+        font-weight: 900;
+        letter-spacing: -0.03em;
+      }
+      .brand span {
+        color: var(--green);
+      }
+      .nav {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        font-size: 0.92rem;
+      }
+      .nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 800;
+      }
+      .nav .cta {
+        background: var(--green);
+        color: #fff;
+        border-radius: 999px;
+        padding: 9px 14px;
+      }
+      .hero {
+        padding: 68px 0 52px;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 470px;
+        gap: 42px;
+        align-items: center;
+      }
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(38, 88, 70, 0.22);
+        background: var(--green2);
+        color: var(--green);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-weight: 900;
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        margin-bottom: 18px;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2.15rem, 5vw, 4.4rem);
+        line-height: 1.08;
+        letter-spacing: -0.04em;
+      }
+      h1 em {
+        font-style: normal;
+        color: var(--green);
+      }
+      .lead {
+        font-size: 1.08rem;
+        color: #48515d;
+        max-width: 680px;
+        margin: 0 0 24px;
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        border: 0;
+        border-radius: 999px;
+        padding: 13px 18px;
+        font-weight: 900;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+      }
+      .btn.primary {
+        background: #171b24;
+        color: #fff;
+      }
+      .btn.green {
+        background: var(--green);
+        color: #fff;
+      }
+      .btn.ghost {
+        background: #fff;
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
+      .viewer-shot {
+        background: #161d29;
+        border-radius: 8px;
+        box-shadow: 0 26px 70px rgba(20, 24, 30, 0.22);
+        padding: 16px;
+        color: #eef4ff;
+        min-height: 430px;
+      }
+      .shot-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        padding-bottom: 12px;
+        margin-bottom: 14px;
+      }
+      .shot-title {
+        font-weight: 900;
+      }
+      .shot-pill {
+        font-size: 0.78rem;
+        color: #b7c7dd;
+      }
+      .shot-body {
+        display: grid;
+        grid-template-columns: 1fr 160px;
+        gap: 14px;
+      }
+      .passage {
+        background: #fff;
+        color: #1d2430;
+        border-radius: 6px;
+        padding: 18px;
+        min-height: 330px;
+      }
+      .passage h3 {
+        margin: 0 0 12px;
+        font-size: 1rem;
+      }
+      .passage p {
+        font-size: 0.88rem;
+        margin: 0 0 10px;
+        color: #354052;
+      }
+      .mark {
+        background: #fff2a8;
+        border-radius: 3px;
+      }
+      .side {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .metric {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 6px;
+        padding: 12px;
+      }
+      .metric b {
+        display: block;
+        font-size: 0.84rem;
+        margin-bottom: 8px;
+      }
+      .bar {
+        height: 8px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 99px;
+        overflow: hidden;
+      }
+      .bar i {
+        display: block;
+        height: 100%;
+        background: #81d29c;
+      }
+      .section {
+        padding: 60px 0;
+        border-top: 1px solid rgba(217, 212, 199, 0.7);
+      }
+      .section h2 {
+        margin: 0 0 14px;
+        font-size: clamp(1.6rem, 3vw, 2.45rem);
+        letter-spacing: -0.035em;
+      }
+      .desc {
+        color: var(--muted);
+        margin: 0 0 26px;
+        max-width: 760px;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .feature {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+      .feature b {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--green);
+      }
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .price-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .price-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 24px;
+      }
+      .price-card.featured {
+        border: 2px solid var(--green);
+        box-shadow: 0 16px 42px rgba(38, 88, 70, 0.14);
+      }
+      .price-top {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 14px;
+      }
+      .badge {
+        background: var(--green2);
+        color: var(--green);
+        font-size: 0.75rem;
+        font-weight: 900;
+        border-radius: 999px;
+        padding: 5px 9px;
+      }
+      .price-name {
+        font-size: 1.28rem;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .price {
+        font-size: 2.15rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        margin: 14px 0 4px;
+      }
+      .period {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .features {
+        list-style: none;
+        margin: 22px 0;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+      }
+      .features li {
+        padding-left: 18px;
+        position: relative;
+        color: #3e4753;
+      }
+      .features li:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.68em;
+        width: 7px;
+        height: 7px;
+        background: var(--green);
+        border-radius: 50%;
+      }
+      .buyer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 18px 0;
+      }
+      .buyer label {
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: var(--muted);
+      }
+      .buyer input {
+        width: 100%;
+        margin-top: 6px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        padding: 11px 12px;
+        font: inherit;
+      }
+      .policy {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .footer {
+        background: #151a22;
+        color: #d8ded8;
+        padding: 34px 0;
+      }
+      .footer a {
+        color: #e9d7b8;
+        text-decoration: none;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin: 18px 0;
+      }
+      .biz {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        padding: 12px;
+      }
+      .biz span {
+        display: block;
+        color: #9aa6b5;
+        font-size: 0.78rem;
+      }
+      .biz b {
+        font-size: 0.9rem;
+      }
+      @media (max-width: 900px) {
+        .hero-grid,
+        .price-grid {
+          grid-template-columns: 1fr;
+        }
+        .viewer-shot {
+          min-height: 0;
+        }
+        .feature-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 640px) {
+        .nav a:not(.cta) {
+          display: none;
+        }
+        .hero {
+          padding: 46px 0 38px;
+        }
+        .shot-body,
+        .feature-grid,
+        .buyer,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .viewer-shot {
+          padding: 12px;
+        }
+        .passage {
+          min-height: 0;
+        }
+        .price {
+          font-size: 1.85rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="wrap inner">
+        <div class="brand">JIPPI <span>수능뷰어</span></div>
+        <nav class="nav">
+          <a href="/">운세 리포트</a>
+          <a href="#features">구성</a>
+          <a href="#pricing">상품</a>
+          <a class="cta" href="#pricing">이용권 구매</a>
+        </nav>
       </div>
     </div>
-    <div class="viewer-shot" aria-label="수능뷰어 화면 예시">
-      <div class="shot-head">
-        <div class="shot-title">2026 수능 국어 · 독서</div>
-        <div class="shot-pill">오답 패턴 분석</div>
-      </div>
-      <div class="shot-body">
-        <div class="passage">
-          <h3>지문 근거 하이라이트</h3>
-          <p>독자는 글의 중심 내용을 파악하고, 문장 사이의 관계를 추론하며, 선지의 표현이 지문과 같은 방향인지 확인한다.</p>
-          <p><span class="mark">선지는 지문에 없는 조건을 추가하거나</span> 범위를 넓히는 방식으로 오답을 만든다.</p>
-          <p>따라서 정답 판단은 감이 아니라, 근거 문장과 선지 표현의 대응 관계를 확인하는 절차가 된다.</p>
+
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="kicker">수능 국어 오답 패턴 진단</div>
+          <h1>오답의 이유를 <em>패턴</em>으로 남기는 수능뷰어</h1>
+          <p class="lead">
+            지문 근거, 선지 판단, 오류 유형을 한 화면에서 묶어 보여주는 국어
+            학습 도구입니다. 정답 해설을 읽고 끝내는 대신, 내가 반복해서 놓치는
+            사고 습관을 데이터로 관리합니다.
+          </p>
+          <div class="actions">
+            <a class="btn green" href="#pricing">상품 선택</a>
+            <a class="btn ghost" href="/exams" rel="noopener">무료 체험 열기</a>
+          </div>
         </div>
-        <div class="side">
-          <div class="metric"><b>방향 반전</b><div class="bar"><i style="width:86%"></i></div></div>
-          <div class="metric"><b>범위 오류</b><div class="bar"><i style="width:74%"></i></div></div>
-          <div class="metric"><b>근거 없음</b><div class="bar"><i style="width:64%"></i></div></div>
-          <div class="metric"><b>혼합 함정</b><div class="bar"><i style="width:58%"></i></div></div>
+        <div class="viewer-shot" aria-label="수능뷰어 화면 예시">
+          <div class="shot-head">
+            <div class="shot-title">2026 수능 국어 · 독서</div>
+            <div class="shot-pill">오답 패턴 분석</div>
+          </div>
+          <div class="shot-body">
+            <div class="passage">
+              <h3>지문 근거 하이라이트</h3>
+              <p>
+                독자는 글의 중심 내용을 파악하고, 문장 사이의 관계를 추론하며,
+                선지의 표현이 지문과 같은 방향인지 확인한다.
+              </p>
+              <p>
+                <span class="mark">선지는 지문에 없는 조건을 추가하거나</span>
+                범위를 넓히는 방식으로 오답을 만든다.
+              </p>
+              <p>
+                따라서 정답 판단은 감이 아니라, 근거 문장과 선지 표현의 대응
+                관계를 확인하는 절차가 된다.
+              </p>
+            </div>
+            <div class="side">
+              <div class="metric">
+                <b>방향 반전</b>
+                <div class="bar"><i style="width: 86%"></i></div>
+              </div>
+              <div class="metric">
+                <b>범위 오류</b>
+                <div class="bar"><i style="width: 74%"></i></div>
+              </div>
+              <div class="metric">
+                <b>근거 없음</b>
+                <div class="bar"><i style="width: 64%"></i></div>
+              </div>
+              <div class="metric">
+                <b>혼합 함정</b>
+                <div class="bar"><i style="width: 58%"></i></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</header>
+    </header>
 
-<main>
-  <section class="section" id="features">
-    <div class="wrap">
-      <h2>해설보다 오래 남는 복기 구조</h2>
-      <p class="desc">문항을 풀고 난 뒤, 내가 왜 그 선지에 끌렸는지까지 남겨야 같은 실수를 줄일 수 있습니다. 수능뷰어는 지문, 선지, 오류 패턴, 누적 리포트를 한 흐름으로 묶습니다.</p>
-      <div class="feature-grid">
-        <div class="feature"><b>형광펜 근거</b><p>정답 판단에 필요한 지문 근거를 화면에서 바로 확인합니다.</p></div>
-        <div class="feature"><b>9종 오류 패턴</b><p>독서 4개, 문학 5개 기준으로 오답을 분류합니다.</p></div>
-        <div class="feature"><b>누적 리포트</b><p>문항별 기록을 쌓아 약점이 어느 유형에 몰리는지 봅니다.</p></div>
-        <div class="feature"><b>복기 훈련</b><p>틀린 문제를 다시 풀 때 선지 판단 기준을 반복해서 확인합니다.</p></div>
-      </div>
-    </div>
-  </section>
+    <main>
+      <section class="section" id="features">
+        <div class="wrap">
+          <h2>해설보다 오래 남는 복기 구조</h2>
+          <p class="desc">
+            문항을 풀고 난 뒤, 내가 왜 그 선지에 끌렸는지까지 남겨야 같은 실수를
+            줄일 수 있습니다. 수능뷰어는 지문, 선지, 오류 패턴, 누적 리포트를 한
+            흐름으로 묶습니다.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <b>형광펜 근거</b>
+              <p>정답 판단에 필요한 지문 근거를 화면에서 바로 확인합니다.</p>
+            </div>
+            <div class="feature">
+              <b>9종 오류 패턴</b>
+              <p>독서 4개, 문학 5개 기준으로 오답을 분류합니다.</p>
+            </div>
+            <div class="feature">
+              <b>누적 리포트</b>
+              <p>문항별 기록을 쌓아 약점이 어느 유형에 몰리는지 봅니다.</p>
+            </div>
+            <div class="feature">
+              <b>복기 훈련</b>
+              <p>
+                틀린 문제를 다시 풀 때 선지 판단 기준을 반복해서 확인합니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <section class="section" id="pricing">
-    <div class="wrap">
-      <h2>수능뷰어 이용권</h2>
-      <p class="desc">비회원도 결제창을 열 수 있도록 구성했습니다. 결제 후 입력한 이메일 기준으로 이용권 안내가 전달됩니다.</p>
-      <div class="buyer">
-        <label>이름<input id="buyerName" autocomplete="name" placeholder="예: 김지피"></label>
-        <label>연락처<input id="buyerPhone" autocomplete="tel" placeholder="010-0000-0000"></label>
-        <label>이메일<input id="buyerEmail" autocomplete="email" type="email" placeholder="study@example.com"></label>
-      </div>
-      <div class="price-grid">
-        <article class="price-card featured">
-          <div class="price-top"><div class="price-name">스탠다드</div><div class="badge">추천</div></div>
-          <div class="price">39,900원</div>
-          <div class="period">1개월 이용권</div>
-          <ul class="features">
-            <li>오답 패턴 진단과 전 시험 형광펜 복기</li>
-            <li>오류 패턴 9종 진단 문항 이용</li>
-            <li>누적 개인 리포트와 처방</li>
-            <li>주간 진도 트래킹</li>
-          </ul>
-          <button class="btn green" data-pay-product="suneung_standard">스탠다드 결제하기</button>
-        </article>
-        <article class="price-card">
-          <div class="price-top"><div class="price-name">프리미엄</div><div class="badge">심화</div></div>
-          <div class="price">89,000원</div>
-          <div class="period">1개월 · 학생 1인</div>
-          <ul class="features">
-            <li>스탠다드 전체 포함</li>
-            <li>사관학교·LEET 확장 문항 포함</li>
-            <li>AI 맞춤 패턴 훈련</li>
-            <li>월 2회 전문가 리뷰 안내</li>
-          </ul>
-          <button class="btn primary" data-pay-product="suneung_premium">프리미엄 결제하기</button>
-        </article>
-      </div>
-      <div class="policy">
-        결제 확인 후 입력하신 이메일과 연락처를 기준으로 이용권 안내가 발송됩니다. 이용권이 발급되면 학습 데이터 열람과 개인 기록 관리가 시작됩니다.
-      </div>
-    </div>
-  </section>
-</main>
+      <section class="section" id="pricing">
+        <div class="wrap">
+          <h2>수능뷰어 이용권</h2>
+          <p class="desc">
+            비회원도 결제창을 열 수 있도록 구성했습니다. 결제 후 입력한 이메일
+            기준으로 이용권 안내가 전달됩니다.
+          </p>
+          <div class="buyer">
+            <label
+              >이름<input
+                id="buyerName"
+                autocomplete="name"
+                placeholder="예: 김지피"
+            /></label>
+            <label
+              >연락처<input
+                id="buyerPhone"
+                autocomplete="tel"
+                placeholder="010-0000-0000"
+            /></label>
+            <label
+              >이메일<input
+                id="buyerEmail"
+                autocomplete="email"
+                type="email"
+                placeholder="study@example.com"
+            /></label>
+          </div>
+          <div class="price-grid">
+            <article class="price-card featured">
+              <div class="price-top">
+                <div class="price-name">스탠다드</div>
+                <div class="badge">추천</div>
+              </div>
+              <div class="price">39,900원</div>
+              <div class="period">1개월 이용권</div>
+              <ul class="features">
+                <li>오답 패턴 진단과 전 시험 형광펜 복기</li>
+                <li>오류 패턴 9종 진단 문항 이용</li>
+                <li>누적 개인 리포트와 처방</li>
+                <li>주간 진도 트래킹</li>
+              </ul>
+              <button class="btn green" data-pay-product="suneung_standard">
+                스탠다드 결제하기
+              </button>
+            </article>
+            <article class="price-card">
+              <div class="price-top">
+                <div class="price-name">프리미엄</div>
+                <div class="badge">심화</div>
+              </div>
+              <div class="price">89,000원</div>
+              <div class="period">1개월 · 학생 1인</div>
+              <ul class="features">
+                <li>스탠다드 전체 포함</li>
+                <li>사관학교·LEET 확장 문항 포함</li>
+                <li>AI 맞춤 패턴 훈련</li>
+                <li>월 2회 전문가 리뷰 안내</li>
+              </ul>
+              <button class="btn primary" data-pay-product="suneung_premium">
+                프리미엄 결제하기
+              </button>
+            </article>
+          </div>
+          <div class="policy">
+            결제 확인 후 입력하신 이메일과 연락처를 기준으로 이용권 안내가
+            발송됩니다. 이용권이 발급되면 학습 데이터 열람과 개인 기록 관리가
+            시작됩니다.
+          </div>
+        </div>
+      </section>
+    </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <b>JIPPI</b>
-    <p>운세 리포트와 수능 국어 학습 도구를 함께 운영하는 디지털 콘텐츠 서비스입니다.</p>
-    <p><a href="/terms.html">이용약관</a> · <a href="/privacy.html">개인정보처리방침</a> · <a href="/">운세 리포트</a></p>
-    <div class="footer-grid">
-      <div class="biz"><span>상호명</span><b>박성진</b></div>
-      <div class="biz"><span>대표자</span><b>박성진</b></div>
-      <div class="biz"><span>사업자등록번호</span><b>297-93-01982</b></div>
-      <div class="biz"><span>통신판매업 신고번호</span><b>2026-서울강북-0428호</b></div>
-      <div class="biz"><span>사업장 주소</span><b>서울특별시 강북구 도봉로50길 15 301호</b></div>
-      <div class="biz"><span>고객센터</span><b>seongjinpark12@gmail.com</b></div>
-      <div class="biz"><span>개인정보관리책임자</span><b>박성진 / seongjinpark12@gmail.com</b></div>
-      <div class="biz"><span>호스팅 제공자</span><b>Netlify, Inc.</b></div>
-    </div>
-  </div>
-</footer>
+    <footer class="footer">
+      <div class="wrap">
+        <b>JIPPI</b>
+        <p>
+          운세 리포트와 수능 국어 학습 도구를 함께 운영하는 디지털 콘텐츠
+          서비스입니다.
+        </p>
+        <p>
+          <a href="/terms.html">이용약관</a> ·
+          <a href="/privacy.html">개인정보처리방침</a> ·
+          <a href="/">운세 리포트</a>
+        </p>
+        <div class="footer-grid">
+          <div class="biz"><span>상호명</span><b>지니쌤과 공부하자</b></div>
+          <div class="biz"><span>대표자</span><b>박성진</b></div>
+          <div class="biz"><span>사업자등록번호</span><b>297-93-01982</b></div>
+          <div class="biz">
+            <span>통신판매업 신고번호</span><b>2026-서울강북-0428호</b>
+          </div>
+          <div class="biz">
+            <span>사업장 주소</span><b>서울특별시 강북구 도봉로50길 15 301호</b>
+          </div>
+          <div class="biz">
+            <span>사업장 연락처</span
+            ><b><a href="tel:050219442070">0502-1944-2070</a></b>
+          </div>
+          <div class="biz">
+            <span>고객센터 이메일</span><b>seongjinpark12@gmail.com</b>
+          </div>
+          <div class="biz">
+            <span>개인정보관리책임자</span
+            ><b>박성진 / seongjinpark12@gmail.com</b>
+          </div>
+          <div class="biz"><span>호스팅 제공자</span><b>Netlify, Inc.</b></div>
+        </div>
+      </div>
+    </footer>
 
-<script src="/assets/jippi-payments.js"></script>
-<script>
-function buyerMeta(){
-  return {
-    customerName: document.getElementById("buyerName").value.trim(),
-    customerPhone: document.getElementById("buyerPhone").value.trim(),
-    customerEmail: document.getElementById("buyerEmail").value.trim(),
-  };
-}
-document.querySelectorAll("[data-pay-product]").forEach((button)=>{
-  button.addEventListener("click", async ()=>{
-    button.disabled=true;
-    const original=button.textContent;
-    button.textContent="결제창 여는 중";
-    try{
-      await window.JippiPayments.requestPayment(button.dataset.payProduct,buyerMeta());
-    }catch(error){
-      if(error.code!=="PAY_PROCESS_CANCELED") alert(error.message||"결제창을 열지 못했습니다.");
-      button.disabled=false;
-      button.textContent=original;
-    }
-  });
-});
-</script>
-</body>
+    <script src="/assets/jippi-payments.js"></script>
+    <script>
+      function buyerMeta() {
+        return {
+          customerName: document.getElementById("buyerName").value.trim(),
+          customerPhone: document.getElementById("buyerPhone").value.trim(),
+          customerEmail: document.getElementById("buyerEmail").value.trim(),
+        };
+      }
+      document.querySelectorAll("[data-pay-product]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          button.disabled = true;
+          const original = button.textContent;
+          button.textContent = "결제창 여는 중";
+          try {
+            await window.JippiPayments.requestPayment(
+              button.dataset.payProduct,
+              buyerMeta(),
+            );
+          } catch (error) {
+            if (error.code !== "PAY_PROCESS_CANCELED")
+              alert(error.message || "결제창을 열지 못했습니다.");
+            button.disabled = false;
+            button.textContent = original;
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
-
