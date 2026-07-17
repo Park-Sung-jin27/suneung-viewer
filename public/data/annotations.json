@@ -1468,27 +1468,32 @@
       {
         "type": "underline",
         "sentId": "l2023ds2",
-        "text": "가 보아라"
+        "text": "가 보아라",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "l2023ds6",
-        "text": "지극히"
+        "text": "지극히",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "l2023ds9",
-        "text": "과분하지 말라"
+        "text": "과분하지 말라",
+        "marker": "㉢"
       },
       {
         "type": "underline",
         "sentId": "l2023ds15",
-        "text": "많은 손님들"
+        "text": "많은 손님들",
+        "marker": "㉣"
       },
       {
         "type": "underline",
         "sentId": "l2023ds16",
-        "text": "빛나는 생명의 양상"
+        "text": "빛나는 생명의 양상",
+        "marker": "㉤"
       }
     ]
   },
