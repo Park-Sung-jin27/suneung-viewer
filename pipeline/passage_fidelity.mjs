@@ -40,6 +40,9 @@ function loadReleaseSet() {
   return keys;
 }
 const RELEASE = loadReleaseSet();
+let scopeSets = 0,
+  scopeLive = 0,
+  scopeSents = 0; // 검사 스코프 분모(§13⑮)
 
 // answer_fidelity.mjs 규약
 function resolveDirs(yk) {
@@ -108,6 +111,10 @@ for (const yk of Object.keys(d)) {
   for (const cat of ["reading", "literature"])
     for (const s of d[yk][cat] || []) {
       const isLive = RELEASE.has(yk + "::" + s.id);
+      // 검사 스코프 분모 집계(§13⑮)
+      scopeSets++;
+      if (isLive) scopeLive++;
+      scopeSents += (s.sents || []).filter((x) => TYPES.has(x.sentType)).length;
       for (const sent of s.sents || []) {
         if (!TYPES.has(sent.sentType)) continue;
         const inc = inclusion(H(sent.t), examH);
@@ -122,6 +129,37 @@ other.sort((a, b) => a.inc - b.inc);
 // 포함도 0 = 시험지에 한 윈도도 안 잡힘 = 교체/환각이거나 옛한글/고전시가 추출 mismatch.
 //   게이트가 자동 판별 불가(맹점) → UNVERIFIABLE_OLDHANGUL: 수동 직독 필요로 플래그.
 const liveZero = live.filter((x) => x.inc === 0);
+// ── 검사 스코프 분모 + 가드 (§13⑮·§13⑫ 재발 차단) ──
+const _dataTotalSets = Object.keys(d).reduce(
+  (a, yk) =>
+    a +
+    ["reading", "literature"].reduce(
+      (b, c) => b + ((d[yk] || {})[c] || []).length,
+      0,
+    ),
+  0,
+);
+console.log(
+  `검사 스코프: 세트 ${scopeSets}(LIVE ${scopeLive}) / 본문sent ${scopeSents} → 위반 ${live.length + other.length}건`,
+);
+if (scopeSets === 0) {
+  console.error("🔴 SCOPE_EMPTY — 검사 대상 0건. clean 판정 무효");
+  process.exit(1);
+}
+if (scopeLive === 0 && RELEASE.size > 0) {
+  console.error(
+    `🔴 SCOPE_MISMATCH — LIVE 검사 0 ≠ RELEASE_KEYS ${RELEASE.size} (§13⑫ 스코프 붕괴)`,
+  );
+  process.exit(1);
+}
+if (!ykFilter && scopeLive !== RELEASE.size)
+  console.warn(
+    `⚠️  SCOPE_LIVE_GAP — LIVE 검사 ${scopeLive} ≠ RELEASE_KEYS ${RELEASE.size} (미검사 LIVE ${RELEASE.size - scopeLive}세트 — 시험지 미가용 yk)`,
+  );
+if (!ykFilter && scopeSets !== _dataTotalSets)
+  console.warn(
+    `⚠️  SCOPE_DIFF — 전수 검사 ${scopeSets} ≠ 데이터 총 ${_dataTotalSets} (차 ${_dataTotalSets - scopeSets})`,
+  );
 console.log(
   `본문 의심: 라이브 ${live.length}(그중 포함도0=UNVERIFIABLE ${liveZero.length}) + 비노출 ${other.length} | 미대조 yk: ${nokey.length} | 임계 포함도<${TH} | data=${dataPath}`,
 );

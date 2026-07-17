@@ -9,6 +9,9 @@ import { execSync } from "child_process";
 const d = JSON.parse(fs.readFileSync("public/data/all_data_204.json", "utf8"));
 const args = process.argv.slice(2);
 const ykFilter = (args.find((a) => a.startsWith("--yk=")) || "").split("=")[1];
+let scopeSets = 0,
+  scopeQ = 0,
+  scopeC = 0; // 검사 스코프 분모(§13⑮)
 const CIRC = { "①": 1, "②": 2, "③": 3, "④": 4, "⑤": 5 };
 
 // image_only 정답 PDF 폴백용 수동 정답 소스 (품질심사관 판독본)
@@ -90,7 +93,14 @@ for (const yk of Object.keys(d)) {
     continue;
   }
   for (const cat of ["reading", "literature"])
-    for (const s of d[yk][cat] || [])
+    for (const s of d[yk][cat] || []) {
+      // 검사 스코프 분모 집계(§13⑮) — 실제 순회분만
+      scopeSets++;
+      scopeQ += (s.questions || []).length;
+      scopeC += (s.questions || []).reduce(
+        (a, _q) => a + (_q.choices || []).length,
+        0,
+      );
       for (const q of s.questions || []) {
         const k = ans[q.id];
         if (k == null) {
@@ -110,8 +120,30 @@ for (const yk of Object.keys(d)) {
             `${yk} ${s.id} Q${q.id}: data=${cand[0].num} ↔ 정답표=${k} (qt=${qt})`,
           );
       }
+    }
 }
 const nokeyTotal = Object.values(nokeyByYk).reduce((a, b) => a + b, 0);
+// ── 검사 스코프 분모 + 가드 (§13⑮: 분모 없는 "0건"은 무효 신호) ──
+const _dataTotalSets = Object.keys(d).reduce(
+  (a, yk) =>
+    a +
+    ["reading", "literature"].reduce(
+      (b, c) => b + ((d[yk] || {})[c] || []).length,
+      0,
+    ),
+  0,
+);
+console.log(
+  `검사 스코프: 세트 ${scopeSets} / 문항 ${scopeQ} / 선지 ${scopeC} → 위반 ${bad.length}건`,
+);
+if (scopeSets === 0) {
+  console.error("🔴 SCOPE_EMPTY — 검사 대상 0건. clean 판정 무효");
+  process.exit(1);
+}
+if (!ykFilter && scopeSets !== _dataTotalSets)
+  console.warn(
+    `⚠️  SCOPE_DIFF — 전수 검사 ${scopeSets} ≠ 데이터 총 ${_dataTotalSets} (차 ${_dataTotalSets - scopeSets})`,
+  );
 console.log(
   `정답 불일치: ${bad.length} | ok분포이상: ${dist.length} | 미대조: ${nokeyTotal}`,
 );

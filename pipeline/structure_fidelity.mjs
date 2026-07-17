@@ -110,6 +110,9 @@ const suspects = [],
   coverage = [],
   scanned = [];
 const NS = (x) => String(x).replace(/\s+/g, ""); // 공백 제거(줄바꿈 무관 위치 매칭)
+let scopeSets = 0,
+  scopeQ = 0,
+  scopeC = 0; // 검사 스코프 분모(§13⑮)
 // Layer3 순열 의심 재확인: 시험지 ①~⑤ 블록을 마커로 분할 후, 데이터 각 선지를
 //   최다 char-match(containment) 세그먼트에 배정. 데이터 num이 시험지 position과
 //   identity면 정상순(pdftotext jitter 오탐) → true(FP). 역순이면 false(진짜).
@@ -175,8 +178,16 @@ for (const yk of Object.keys(d)) {
   }
   const dataQ = [];
   for (const cat of ["reading", "literature"])
-    for (const s of d[yk][cat] || [])
+    for (const s of d[yk][cat] || []) {
+      // 검사 스코프 분모 집계(§13⑮) — 실제 순회분만
+      scopeSets++;
+      scopeQ += (s.questions || []).length;
+      scopeC += (s.questions || []).reduce(
+        (a, _q) => a + (_q.choices || []).length,
+        0,
+      );
       for (const q of s.questions || []) dataQ.push({ s, q });
+    }
   if (!dataQ.length) continue;
   const dataNums = new Set(dataQ.map((x) => x.q.id));
   // Layer 1 — 커버리지: 데이터 범위 내 시험지 문항 누락/추가
@@ -250,6 +261,28 @@ for (const yk of Object.keys(d)) {
     }
   }
 }
+// ── 검사 스코프 분모 + 가드 (§13⑮: 분모 없는 "0건"은 무효 신호) ──
+const _dataTotalSets = Object.keys(d).reduce(
+  (a, yk) =>
+    a +
+    ["reading", "literature"].reduce(
+      (b, c) => b + ((d[yk] || {})[c] || []).length,
+      0,
+    ),
+  0,
+);
+console.log(
+  `검사 스코프: 세트 ${scopeSets} / 문항 ${scopeQ} / 선지 ${scopeC} → 위반 ${suspects.length + positionSuspects.length}건`,
+);
+if (scopeSets === 0) {
+  console.error("🔴 SCOPE_EMPTY — 검사 대상 0건. clean 판정 무효");
+  process.exit(1);
+}
+if (!ykFilter && scopeSets !== _dataTotalSets)
+  console.warn(
+    `⚠️  SCOPE_DIFF — 전수 검사 ${scopeSets} ≠ 데이터 총 ${_dataTotalSets} (차 ${_dataTotalSets - scopeSets})`,
+  );
+
 suspects.sort((a, b) => a.sim - b.sim);
 console.log(
   `구조 의심 문항: ${suspects.length} | 선지 순서 의심: ${positionSuspects.length} | 커버리지 이상 yk: ${coverage.length} | 스캔 문항: ${scanned.length} | 임계 sim<${SIM} | data=${dataPath}`,

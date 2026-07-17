@@ -272,6 +272,10 @@ try {
 } catch {}
 
 // ─── 결과 수집 ────────────────────────────────────────────────────────────────
+// ── 검사 스코프 분모 (§13⑮: "0개 검사 = clean" 거짓신호 차단) — 런타임 산출 ──
+let scopeSets = 0,
+  scopeQ = 0,
+  scopeC = 0;
 const issues = []; // 발견된 문제 전체
 const autoFixed = []; // 자동 수정된 항목
 const manual = []; // 수동 처리 필요 항목
@@ -433,6 +437,13 @@ for (const yearKey of yearsToCheck) {
       if (SCOPE === "release" && !RELEASE_KEYS_SET.has(yearKey + "::" + set.id))
         continue;
       if (SCOPE === "release") _releaseSetCount++;
+      // 검사 스코프 분모 집계(스코프 필터 통과분만) — 세트/문항/선지
+      scopeSets++;
+      scopeQ += (set.questions || []).length;
+      scopeC += (set.questions || []).reduce(
+        (a, _q) => a + (_q.choices || []).length,
+        0,
+      );
       // ── [Gate 5] C_figure_missing — figure sent이 있으나 FIGURE_IMAGE_MAP에 미매핑 ─
       //   constants.js의 FIGURE_IMAGE_MAP을 로드해 매핑 누락 figure 탐지
       //   --golden 모드일 땐 골든셋에 등록된 세트만 검사
@@ -2689,8 +2700,38 @@ if (GOLDEN_ONLY && GATE5) {
   console.log("═".repeat(60) + "\n");
 }
 
-// 릴리스 판정 — CRITICAL 0건이면 release_ready
+// ── 검사 스코프 분모 출력 + 가드 (§13⑮ — 분모 없는 "clean"은 무효 신호) ──
+//   분모는 데이터·RELEASE_KEYS에서 런타임 산출(하드코딩 금지).
+const _dataTotalSets = Object.keys(data).reduce(
+  (a, yk) =>
+    a +
+    ["reading", "literature"].reduce(
+      (b, sec) => b + ((data[yk] || {})[sec] || []).length,
+      0,
+    ),
+  0,
+);
 console.log("\n" + "═".repeat(60));
+console.log(
+  `검사 스코프: 세트 ${scopeSets} / 문항 ${scopeQ} / 선지 ${scopeC} → 위반 ${bySeverity.CRITICAL.length}건`,
+);
+if (scopeSets === 0) {
+  console.error("🔴 SCOPE_EMPTY — 검사 대상 0건. clean 판정 무효");
+  process.exit(1);
+}
+if (SCOPE === "release" && scopeSets !== RELEASE_KEYS_SET.size) {
+  console.error(
+    `🔴 SCOPE_MISMATCH — release 검사 ${scopeSets} ≠ RELEASE_KEYS ${RELEASE_KEYS_SET.size} (§13⑫ 스코프 붕괴)`,
+  );
+  process.exit(1);
+}
+if (!SCOPE && scopeSets !== _dataTotalSets) {
+  console.warn(
+    `⚠️  SCOPE_DIFF — 전수 검사 ${scopeSets} ≠ 데이터 총 ${_dataTotalSets} (차 ${_dataTotalSets - scopeSets})`,
+  );
+}
+
+// 릴리스 판정 — CRITICAL 0건이면 release_ready
 if (bySeverity.CRITICAL.length === 0) {
   console.log("✅ release_ready — CRITICAL 0건");
 } else {

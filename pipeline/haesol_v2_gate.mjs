@@ -76,6 +76,9 @@ const conclOf = (a) => {
     .split("\n");
   return ls[ls.length - 1].trim();
 };
+let scopeSets = 0,
+  scopeQ = 0,
+  scopeC = 0; // 검사 스코프 분모(§13⑮)
 const results = [];
 for (const t of targets) {
   const [yk, sid] = t.split("::");
@@ -84,6 +87,12 @@ for (const t of targets) {
     results.push({ set: t, verdict: "ERROR", reason: "세트 없음" });
     continue;
   }
+  scopeSets++;
+  scopeQ += (s.questions || []).length;
+  scopeC += (s.questions || []).reduce(
+    (a, _q) => a + (_q.choices || []).length,
+    0,
+  );
   const sents = new Set((s.sents || []).map((x) => x.id));
   const sentArr = s.sents || [];
   const hay = sentArr.map((x) => x.t).join("\n");
@@ -196,6 +205,18 @@ for (const r of results) {
 }
 const pass = results.filter((r) => r.verdict === "PASS").map((r) => r.set);
 const fail = results.filter((r) => r.verdict === "FAIL").map((r) => r.set);
+// ── 검사 스코프 분모 + 가드 (§13⑮: 분모 없는 판정은 무효 신호) ──
+console.log(
+  `\n검사 스코프: 세트 ${scopeSets} / 문항 ${scopeQ} / 선지 ${scopeC} → 요청 ${targets.length}세트 · FAIL ${fail.length}건`,
+);
+if (scopeSets === 0) {
+  console.error("🔴 SCOPE_EMPTY — 검사 대상 0건. clean 판정 무효");
+  process.exit(1);
+}
+if (scopeSets !== targets.length)
+  console.warn(
+    `⚠️  SCOPE_DIFF — 검사 ${scopeSets} ≠ 요청 ${targets.length}세트 (미발견 ${targets.length - scopeSets})`,
+  );
 console.log(`\n========== 요약 ==========`);
 console.log(`PASS(대표 검수 큐): ${pass.length} [${pass.join(", ")}]`);
 console.log(`FAIL(반려·재생성): ${fail.length} [${fail.join(", ")}]`);
