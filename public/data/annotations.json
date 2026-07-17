@@ -1582,17 +1582,20 @@
       {
         "type": "underline",
         "sentId": "r2022cs6",
-        "text": "금 본위 체제"
+        "text": "금 본위 체제",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "r2022cs8",
-        "text": "브레턴우즈 체제"
+        "text": "브레턴우즈 체제",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "r2022cs22",
-        "text": "어떠한 기축 통화도 없이 각각 다른 통화가 사용되는 경우"
+        "text": "어떠한 기축 통화도 없이 각각 다른 통화가 사용되는 경우",
+        "marker": "㉢"
       }
     ],
     "r2022d": [
