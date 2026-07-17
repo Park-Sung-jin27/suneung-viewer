@@ -140,10 +140,25 @@ if (scopeSets === 0) {
   console.error("🔴 SCOPE_EMPTY — 검사 대상 0건. clean 판정 무효");
   process.exit(1);
 }
-if (!ykFilter && scopeSets !== _dataTotalSets)
+if (!ykFilter && scopeSets !== _dataTotalSets) {
+  // 미검사 사유별 구분(§13⑮ 보완) — status: no_pdf | image_only | extract_fail | no_dir
+  //   "no-PDF"로 뭉뚱그리면 원인 오도(예: 2014수능A는 PDF 존재·image-only).
+  const skipped = {};
+  for (const yk of Object.keys(statusByYk)) {
+    const st = statusByYk[yk];
+    if (st === "ok" || st === "manual") continue;
+    const n = ["reading", "literature"].reduce(
+      (a, c) => a + ((d[yk] || {})[c] || []).length,
+      0,
+    );
+    if (n) (skipped[st] = skipped[st] || []).push(`${yk}(${n}세트)`);
+  }
   console.warn(
-    `⚠️  SCOPE_DIFF — 전수 검사 ${scopeSets} ≠ 데이터 총 ${_dataTotalSets} (차 ${_dataTotalSets - scopeSets})`,
+    `⚠️  SCOPE_DIFF — 전수 검사 ${scopeSets} ≠ 데이터 총 ${_dataTotalSets} (미검사 ${_dataTotalSets - scopeSets}세트)`,
   );
+  for (const st of Object.keys(skipped))
+    console.warn(`     └ ${st}: ${skipped[st].join(", ")}`);
+}
 console.log(
   `정답 불일치: ${bad.length} | ok분포이상: ${dist.length} | 미대조: ${nokeyTotal}`,
 );

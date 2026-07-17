@@ -194,7 +194,7 @@ const SCOPE_YEARS = {
 };
 const YEAR = args.find((a) => !a.startsWith("--"));
 
-// ─── --scope=release: 출시 set 198건만 검사 ──────────────────────────────────
+// ─── --scope=release: 출시 set(RELEASE_KEYS 전량)만 검사 ─────────────────────
 // 단일 진실 = src/dataLoader.js의 RELEASE_KEYS = new Set([...]) (composite "yearKey::setId").
 // fidelity_gate가 소스 정규식 파싱을 쓰는 패턴 재사용.
 const RELEASE_KEYS_SET = (() => {

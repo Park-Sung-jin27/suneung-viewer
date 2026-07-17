@@ -98,11 +98,14 @@ function inclusion(sH, examH) {
 const live = [],
   other = [],
   nokey = [];
+const skipStatus = {}; // 미검사 yk → 사유(§13⑮ 보완)
 for (const yk of Object.keys(d)) {
   if (ykFilter && yk !== ykFilter) continue;
   const { text, status } = examTextFromPdf(yk);
   const examH = H(text || "");
   if (examH.length < MINEXAM) {
+    // 미검사 사유 추적(§13⑮ 보완): status=ok인데 한글 부족 = image_only(PDF는 존재)
+    skipStatus[yk] = status === "ok" ? "image_only(추출<임계)" : status;
     nokey.push(
       `${yk}: 시험지 한글 ${examH.length}자 — 미대조 (status=${status})`,
     );
@@ -154,12 +157,30 @@ if (scopeLive === 0 && RELEASE.size > 0) {
 }
 if (!ykFilter && scopeLive !== RELEASE.size)
   console.warn(
-    `⚠️  SCOPE_LIVE_GAP — LIVE 검사 ${scopeLive} ≠ RELEASE_KEYS ${RELEASE.size} (미검사 LIVE ${RELEASE.size - scopeLive}세트 — 시험지 미가용 yk)`,
+    `⚠️  SCOPE_LIVE_GAP — LIVE 검사 ${scopeLive} ≠ RELEASE_KEYS ${RELEASE.size} (미검사 LIVE ${RELEASE.size - scopeLive}세트)`,
   );
 if (!ykFilter && scopeSets !== _dataTotalSets)
   console.warn(
-    `⚠️  SCOPE_DIFF — 전수 검사 ${scopeSets} ≠ 데이터 총 ${_dataTotalSets} (차 ${_dataTotalSets - scopeSets})`,
+    `⚠️  SCOPE_DIFF — 전수 검사 ${scopeSets} ≠ 데이터 총 ${_dataTotalSets} (미검사 ${_dataTotalSets - scopeSets}세트)`,
   );
+// 미검사 사유별 구분(§13⑮ 보완) — "no-PDF"로 뭉뚱그리면 원인 오도
+for (const yk of Object.keys(skipStatus)) {
+  const n = ["reading", "literature"].reduce(
+    (a, c) => a + ((d[yk] || {})[c] || []).length,
+    0,
+  );
+  const liveN = ["reading", "literature"].reduce(
+    (a, c) =>
+      a +
+      (((d[yk] || {})[c] || []).filter((s) => RELEASE.has(yk + "::" + s.id))
+        .length || 0),
+    0,
+  );
+  if (n)
+    console.warn(
+      `     └ ${skipStatus[yk]}: ${yk}(${n}세트${liveN ? `, LIVE ${liveN}` : ""})`,
+    );
+}
 console.log(
   `본문 의심: 라이브 ${live.length}(그중 포함도0=UNVERIFIABLE ${liveZero.length}) + 비노출 ${other.length} | 미대조 yk: ${nokey.length} | 임계 포함도<${TH} | data=${dataPath}`,
 );
