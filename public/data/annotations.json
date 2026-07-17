@@ -1386,12 +1386,14 @@
       {
         "type": "underline",
         "sentId": "l2023bs35",
-        "text": "작은 정자"
+        "text": "작은 정자",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "l2023bs46",
-        "text": "옛 망양정 자리"
+        "text": "옛 망양정 자리",
+        "marker": "㉡"
       }
     ],
     "l2023c": [
