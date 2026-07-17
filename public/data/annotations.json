@@ -1681,12 +1681,14 @@
       {
         "type": "underline",
         "sentId": "l2022bs11",
-        "text": "케이스"
+        "text": "케이스",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "l2022bs38",
-        "text": "우산 이상의 것"
+        "text": "우산 이상의 것",
+        "marker": "㉡"
       }
     ],
     "l2022c": [
