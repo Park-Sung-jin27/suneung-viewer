@@ -882,37 +882,44 @@
       {
         "type": "underline",
         "sentId": "r2024cs2",
-        "text": "나타내기"
+        "text": "나타내기",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
         "sentId": "r2024cs3",
-        "text": "빠져"
+        "text": "빠져",
+        "marker": "ⓑ"
       },
       {
         "type": "underline",
         "sentId": "r2024cs9",
-        "text": "생긴다"
+        "text": "생긴다",
+        "marker": "ⓒ"
       },
       {
         "type": "underline",
         "sentId": "r2024cs12",
-        "text": "대푯값으로 평균보다 중앙값을 주로 사용한다."
+        "text": "대푯값으로 평균보다 중앙값을 주로 사용한다.",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "r2024cs18",
-        "text": "이상치를 포함하는 데이터에서 직선 L을 찾는다고 하자"
+        "text": "이상치를 포함하는 데이터에서 직선 L을 찾는다고 하자",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "r2024cs19",
-        "text": "지나는"
+        "text": "지나는",
+        "marker": "ⓓ"
       },
       {
         "type": "underline",
         "sentId": "r2024cs23",
-        "text": "멀어"
+        "text": "멀어",
+        "marker": "ⓔ"
       }
     ],
     "r2024d": [
