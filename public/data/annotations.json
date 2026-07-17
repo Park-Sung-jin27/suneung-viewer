@@ -926,17 +926,20 @@
       {
         "type": "underline",
         "sentId": "r2024ds2",
-        "text": "담긴"
+        "text": "담긴",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
         "sentId": "r2024ds24",
-        "text": "유학자의 입장"
+        "text": "유학자의 입장",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "r2024ds29",
-        "text": "학문적 소신"
+        "text": "학문적 소신",
+        "marker": "㉡"
       },
       {
         "type": "choice-underline",
