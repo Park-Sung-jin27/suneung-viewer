@@ -149,3 +149,9 @@ pipeline/visual_marks_report.json
 !컨설팅_데모/sizes.json
 컨설팅_데모/backups/
 public/consulting-demo/
+
+# 임시 산출물 (Phase 2 triage — 트리 오염 영구 차단)
+tmp_pdf_work/
+tmp_pdf_work2/
+pipeline/outputs/
+*.~lock.*#
