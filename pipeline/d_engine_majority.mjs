@@ -79,7 +79,7 @@ export function applyMajority(responses) {
     throw new Error(
       `applyMajority: responses must be array of length 3, got ${
         Array.isArray(responses) ? responses.length : typeof responses
-      }`
+      }`,
     );
   }
   for (const [i, r] of responses.entries()) {
@@ -88,12 +88,12 @@ export function applyMajority(responses) {
     }
     if (!VALID_ERROR_TYPES.has(r.error_type)) {
       throw new Error(
-        `applyMajority: response[${i}].error_type='${r.error_type}' not in valid enum`
+        `applyMajority: response[${i}].error_type='${r.error_type}' not in valid enum`,
       );
     }
     if (!Array.isArray(r.rule_hits)) {
       throw new Error(
-        `applyMajority: response[${i}].rule_hits is not an array`
+        `applyMajority: response[${i}].rule_hits is not an array`,
       );
     }
   }
@@ -138,7 +138,7 @@ export function applyMajority(responses) {
 
   // 최빈 그룹 응답들 (3/3은 전부, 2/3은 동일 et 응답 2개)
   const majorityResponses = responses.filter(
-    (r) => r.error_type === majorityErrorType
+    (r) => r.error_type === majorityErrorType,
   );
 
   // 5-1, 5-2: rule_hits = majority 그룹 intersection

@@ -8,6 +8,7 @@
 ## 컨텍스트
 
 레드팀 + 품질 심사관 + 사용자 종합 결정 (2026-05-08):
+
 - prompt 강화 path 폐기 (label drift 위험)
 - max_tokens 정정 = 측정 사후 분기 의무
 - bracket repair = deterministic rendering (`normalizeAnalysisPatLabel`, append X)
@@ -23,6 +24,7 @@
 **필드**: `questions[].choices[]._discriminative_validation`
 
 **산출 형식**:
+
 ```
 [needsReview issue code 분포]
 
@@ -54,6 +56,7 @@ issue_code: wrong_no_pat_code
 **source**: 직전 turn raw log (2024수능 58건) + 2025수능 step5_result raw
 
 **산출 형식**:
+
 ```
 [step5 FAIL-FAST 분포 — 2024수능]
 
@@ -94,11 +97,14 @@ issue_code: wrong_no_pat_code
 // step3_analysis.js callAnalyze 영역 — 진단 로깅 단독 (기능 영역 변경 X)
 console.log(`[diagnostic] stop_reason=${response.stop_reason}`);
 console.log(`[diagnostic] response length=${response.content[0].text.length}`);
-console.log(`[diagnostic] response tail (last 100): ${response.content[0].text.slice(-100)}`);
+console.log(
+  `[diagnostic] response tail (last 100): ${response.content[0].text.slice(-100)}`,
+);
 console.log(`[diagnostic] usage=${JSON.stringify(response.usage)}`);
 ```
 
 **산출 형식**:
+
 ```
 [json_parse_fail 사례 분석]
 
@@ -135,6 +141,7 @@ console.log(`[diagnostic] usage=${JSON.stringify(response.usage)}`);
 **source**: 5 수능 step5_result + (가능 시) `quality_gate.mjs` cs_ids 영역
 
 **산출 형식**:
+
 ```
 [cs_ids 직접성 점검]
 
@@ -142,7 +149,7 @@ console.log(`[diagnostic] usage=${JSON.stringify(response.usage)}`);
   사례 1: r2024d Q15#5 — cs_ids=[r2024as87, r2024as86] (set d 영역에 set a sentId)
   사례 2: r2024d Q16#5 — cs_ids=[r2024as89, r2024as90, r2024as91]
   ... (모든 사례)
-  
+
   분포: setId 별 cross-set leak count
 
 #2. sentId allowlist 위반 사례
@@ -182,6 +189,7 @@ console.log(`[diagnostic] usage=${JSON.stringify(response.usage)}`);
 markdown 영역 (4 산출물 raw) → 품질 심사관 (Chat 1) 검수 → 회기 2 (정정 분기 결정) 진입
 
 산출물 대량 시 압축 path:
+
 - 분포 표 (count + ratio) + 대표 raw 3~5건 (raw 길이 단축)
 - 전체 raw = 별도 file (예: `docs/phase1_measurement_raw.json`) 보관
 

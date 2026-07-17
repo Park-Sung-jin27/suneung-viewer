@@ -22,8 +22,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 
 // ── 설정 ──────────────────────────────────────────────────────────────────
-const TASKS_PATH = process.argv.find(a => a.startsWith("--tasks="))
-  ?.split("=")[1] ?? path.join(__dirname, "tasks.json");
+const TASKS_PATH =
+  process.argv.find((a) => a.startsWith("--tasks="))?.split("=")[1] ??
+  path.join(__dirname, "tasks.json");
 
 const today = new Date().toISOString().slice(0, 10);
 const OUT_DIR = path.join(__dirname, "outputs", today);
@@ -59,17 +60,22 @@ for (const task of tasks) {
   process.stdout.write(`⏳ ${label} ... `);
 
   try {
-    const output = execSync(
-      `node "${PAYLOAD_SCRIPT}" ${args}`,
-      { cwd: ROOT, encoding: "utf8", timeout: 30000 }
-    );
+    const output = execSync(`node "${PAYLOAD_SCRIPT}" ${args}`, {
+      cwd: ROOT,
+      encoding: "utf8",
+      timeout: 30000,
+    });
 
     fs.writeFileSync(outFile, output);
     console.log(`✅ 저장됨`);
     log.tasks.push({ label, status: "success", file: outFile });
   } catch (err) {
     console.log(`❌ 실패: ${err.message.slice(0, 80)}`);
-    log.tasks.push({ label, status: "failed", error: err.message.slice(0, 200) });
+    log.tasks.push({
+      label,
+      status: "failed",
+      error: err.message.slice(0, 200),
+    });
   }
 }
 
@@ -77,8 +83,8 @@ for (const task of tasks) {
 const logPath = path.join(OUT_DIR, "run_log.json");
 fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
 
-const success = log.tasks.filter(t => t.status === "success").length;
-const failed  = log.tasks.filter(t => t.status === "failed").length;
+const success = log.tasks.filter((t) => t.status === "success").length;
+const failed = log.tasks.filter((t) => t.status === "failed").length;
 
 console.log(`\n${"─".repeat(50)}`);
 console.log(`✅ 완료: ${success}건 / ❌ 실패: ${failed}건`);

@@ -12,73 +12,82 @@
  *   { "gold_R1_001": { "pass": ..., "error_type": ..., "rule_hits": [...], "confidence": ... }, ... }
  */
 
-import { readFileSync } from 'fs';
+import { readFileSync } from "fs";
 
 function classifyDiff(expected, actual, intent) {
   const diffs = [];
 
   // 1. pass 일치
   if (expected.pass !== actual.pass) {
-    diffs.push({ field: 'pass', expected: expected.pass, actual: actual.pass });
+    diffs.push({ field: "pass", expected: expected.pass, actual: actual.pass });
   }
 
   // 2. error_type 일치
   if (expected.error_type !== actual.error_type) {
-    diffs.push({ field: 'error_type', expected: expected.error_type, actual: actual.error_type });
+    diffs.push({
+      field: "error_type",
+      expected: expected.error_type,
+      actual: actual.error_type,
+    });
   }
 
   // 3. rule_hits 부분 일치 허용 (expected ⊆ actual 또는 actual ⊆ expected)
   const expectedSet = new Set(expected.rule_hits || []);
   const actualSet = new Set(actual.rule_hits || []);
-  const intersection = [...expectedSet].filter(x => actualSet.has(x));
-  const onlyExpected = [...expectedSet].filter(x => !actualSet.has(x));
-  const onlyActual = [...actualSet].filter(x => !expectedSet.has(x));
+  const intersection = [...expectedSet].filter((x) => actualSet.has(x));
+  const onlyExpected = [...expectedSet].filter((x) => !actualSet.has(x));
+  const onlyActual = [...actualSet].filter((x) => !expectedSet.has(x));
 
-  let ruleHitsStatus = 'match';
+  let ruleHitsStatus = "match";
   if (expectedSet.size === 0 && actualSet.size === 0) {
-    ruleHitsStatus = 'match';
+    ruleHitsStatus = "match";
   } else if (intersection.length === 0) {
-    ruleHitsStatus = 'total_mismatch';
+    ruleHitsStatus = "total_mismatch";
   } else if (onlyExpected.length > 0 || onlyActual.length > 0) {
-    ruleHitsStatus = 'partial';
+    ruleHitsStatus = "partial";
   }
 
   // owner 분류
-  let owner = 'unknown';
-  let diff_type = 'UNKNOWN';
+  let owner = "unknown";
+  let diff_type = "UNKNOWN";
 
   const passMatch = expected.pass === actual.pass;
   const errorTypeMatch = expected.error_type === actual.error_type;
 
   // forbidden_alternatives 체크
-  const hitForbidden = intent?.forbidden_alternatives?.includes(actual.error_type);
+  const hitForbidden = intent?.forbidden_alternatives?.includes(
+    actual.error_type,
+  );
 
-  if (passMatch && errorTypeMatch && ruleHitsStatus === 'match') {
-    diff_type = 'FULL_MATCH';
-    owner = 'none';
+  if (passMatch && errorTypeMatch && ruleHitsStatus === "match") {
+    diff_type = "FULL_MATCH";
+    owner = "none";
   } else if (!passMatch) {
     // pass 뒤바뀜 - 심각
     if (expected.pass === true && actual.pass === false) {
-      diff_type = 'OVERFAIL';  // 정상 샘플을 fail로 판정
-      owner = 'engine';  // D엔진 문제 유력
+      diff_type = "OVERFAIL"; // 정상 샘플을 fail로 판정
+      owner = "engine"; // D엔진 문제 유력
     } else {
-      diff_type = 'MISSED_FAIL';  // 문제 샘플을 pass로 판정
-      owner = 'engine';  // D엔진 감지 실패
+      diff_type = "MISSED_FAIL"; // 문제 샘플을 pass로 판정
+      owner = "engine"; // D엔진 감지 실패
     }
   } else if (!errorTypeMatch && hitForbidden) {
     // forbidden_alternative로 튐
     // 주의: forbidden_alternative는 "이 error_type이 나오면 안 된다"는 지표이지,
     //       "샘플 문제다"의 증거가 아님. 엔진 문제일 수도, 샘플 문제일 수도 있음.
-    diff_type = 'FORBIDDEN_ALTERNATIVE';
-    owner = 'pending';  // 사람 판단 필요
+    diff_type = "FORBIDDEN_ALTERNATIVE";
+    owner = "pending"; // 사람 판단 필요
   } else if (!errorTypeMatch) {
-    diff_type = 'ERROR_TYPE_MISMATCH';
-    owner = 'sample_or_engine_pending';  // 사람 확인 필요
-  } else if (ruleHitsStatus === 'partial' || ruleHitsStatus === 'total_mismatch') {
-    diff_type = 'RULE_HITS_DIVERGENCE';
-    owner = 'acceptable';  // rule_hits 부분 불일치는 허용 범위
-    if (ruleHitsStatus === 'total_mismatch') {
-      owner = 'sample_or_engine_pending';
+    diff_type = "ERROR_TYPE_MISMATCH";
+    owner = "sample_or_engine_pending"; // 사람 확인 필요
+  } else if (
+    ruleHitsStatus === "partial" ||
+    ruleHitsStatus === "total_mismatch"
+  ) {
+    diff_type = "RULE_HITS_DIVERGENCE";
+    owner = "acceptable"; // rule_hits 부분 불일치는 허용 범위
+    if (ruleHitsStatus === "total_mismatch") {
+      owner = "sample_or_engine_pending";
     }
   }
 
@@ -96,12 +105,14 @@ function main() {
   const actualPath = process.argv[3];
 
   if (!goldPath || !actualPath) {
-    console.error('Usage: node compare_dryrun_results.mjs <gold_json> <actual_results_json>');
+    console.error(
+      "Usage: node compare_dryrun_results.mjs <gold_json> <actual_results_json>",
+    );
     process.exit(1);
   }
 
-  const gold = JSON.parse(readFileSync(goldPath, 'utf-8'));
-  const actual = JSON.parse(readFileSync(actualPath, 'utf-8'));
+  const gold = JSON.parse(readFileSync(goldPath, "utf-8"));
+  const actual = JSON.parse(readFileSync(actualPath, "utf-8"));
 
   const report = [];
   const summary = {
@@ -130,8 +141,8 @@ function main() {
     if (!actualResult) {
       report.push({
         sample_id: sid,
-        diff_type: 'NO_RESULT',
-        owner: 'pending',
+        diff_type: "NO_RESULT",
+        owner: "pending",
       });
       continue;
     }
@@ -139,8 +150,10 @@ function main() {
     const result = classifyDiff(expected, actualResult, intent);
 
     // 카운트
-    summary[result.diff_type.toLowerCase()] = (summary[result.diff_type.toLowerCase()] || 0) + 1;
-    summary[`owner_${result.owner}`] = (summary[`owner_${result.owner}`] || 0) + 1;
+    summary[result.diff_type.toLowerCase()] =
+      (summary[result.diff_type.toLowerCase()] || 0) + 1;
+    summary[`owner_${result.owner}`] =
+      (summary[`owner_${result.owner}`] || 0) + 1;
 
     report.push({
       sample_id: sid,

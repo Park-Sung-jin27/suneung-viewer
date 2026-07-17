@@ -1,326 +1,415 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8" />
-<title>짚이 프로필 로고 — 4가지 ver</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<style>
-  :root {
-    --dark-green: #1B4220;
-    --lime: #BEF264;
-    --paper: #FAF8F4;
-    --ink: #1A1A1A;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #2a2a2a;
-    font-family: "Noto Sans KR", sans-serif;
-    color: var(--paper);
-    padding: 40px 20px;
-    min-height: 100vh;
-  }
-  h1.page-title {
-    text-align: center;
-    font-family: "Noto Serif KR", serif;
-    font-weight: 900;
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
-  p.page-sub {
-    text-align: center;
-    font-size: 14px;
-    color: #aaa;
-    margin-bottom: 32px;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .logo-item {
-    background: #1a1a1a;
-    border-radius: 16px;
-    padding: 24px;
-    text-align: center;
-  }
-  .logo-item h2 {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--lime);
-    margin-bottom: 4px;
-  }
-  .logo-item .ver-sub {
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 16px;
-  }
-  .logo-wrap {
-    width: 320px;
-    height: 320px;
-    margin: 0 auto 16px;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,.3);
-    background: repeating-conic-gradient(#3a3a3a 0% 25%, #2a2a2a 0% 50%) 50% / 16px 16px;
-  }
-  .logo-wrap .logo-card {
-    transform: scale(0.296);
-    transform-origin: top left;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <title>짚이 프로필 로고 — 4가지 ver</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+      :root {
+        --dark-green: #1b4220;
+        --lime: #bef264;
+        --paper: #faf8f4;
+        --ink: #1a1a1a;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #2a2a2a;
+        font-family: "Noto Sans KR", sans-serif;
+        color: var(--paper);
+        padding: 40px 20px;
+        min-height: 100vh;
+      }
+      h1.page-title {
+        text-align: center;
+        font-family: "Noto Serif KR", serif;
+        font-weight: 900;
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+      p.page-sub {
+        text-align: center;
+        font-size: 14px;
+        color: #aaa;
+        margin-bottom: 32px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .logo-item {
+        background: #1a1a1a;
+        border-radius: 16px;
+        padding: 24px;
+        text-align: center;
+      }
+      .logo-item h2 {
+        font-family: "Noto Serif KR", serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--lime);
+        margin-bottom: 4px;
+      }
+      .logo-item .ver-sub {
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 16px;
+      }
+      .logo-wrap {
+        width: 320px;
+        height: 320px;
+        margin: 0 auto 16px;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        background: repeating-conic-gradient(#3a3a3a 0% 25%, #2a2a2a 0% 50%)
+          50% / 16px 16px;
+      }
+      .logo-wrap .logo-card {
+        transform: scale(0.296);
+        transform-origin: top left;
+      }
 
-  /* 실제 로고 카드 (1080×1080) */
-  .logo-card {
-    width: 1080px;
-    height: 1080px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+      /* 실제 로고 카드 (1080×1080) */
+      .logo-card {
+        width: 1080px;
+        height: 1080px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 
-  /* ===== ver A: 다크 — 인스타·카드뉴스 정합 ===== */
-  .logo-card.ver-a {
-    background: var(--dark-green);
-  }
-  .ver-a .pen-svg {
-    width: 320px;
-    height: 320px;
-    margin-bottom: 40px;
-  }
-  .ver-a .brand-name {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 900;
-    font-size: 260px;
-    line-height: 1;
-    color: var(--paper);
-    letter-spacing: -0.04em;
-  }
+      /* ===== ver A: 다크 — 인스타·카드뉴스 정합 ===== */
+      .logo-card.ver-a {
+        background: var(--dark-green);
+      }
+      .ver-a .pen-svg {
+        width: 320px;
+        height: 320px;
+        margin-bottom: 40px;
+      }
+      .ver-a .brand-name {
+        font-family: "Noto Serif KR", serif;
+        font-weight: 900;
+        font-size: 260px;
+        line-height: 1;
+        color: var(--paper);
+        letter-spacing: -0.04em;
+      }
 
-  /* ===== ver B: 라이트 — 김과외·숨고 정합 ===== */
-  .logo-card.ver-b {
-    background: var(--paper);
-  }
-  .ver-b .pen-svg {
-    width: 320px;
-    height: 320px;
-    margin-bottom: 40px;
-  }
-  .ver-b .brand-name {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 900;
-    font-size: 260px;
-    line-height: 1;
-    color: var(--dark-green);
-    letter-spacing: -0.04em;
-    position: relative;
-    z-index: 2;
-  }
-  .ver-b .hl-underline {
-    display: inline-block;
-    background: linear-gradient(transparent 58%, var(--lime) 58%, var(--lime) 94%, transparent 94%);
-    padding: 0 16px;
-  }
+      /* ===== ver B: 라이트 — 김과외·숨고 정합 ===== */
+      .logo-card.ver-b {
+        background: var(--paper);
+      }
+      .ver-b .pen-svg {
+        width: 320px;
+        height: 320px;
+        margin-bottom: 40px;
+      }
+      .ver-b .brand-name {
+        font-family: "Noto Serif KR", serif;
+        font-weight: 900;
+        font-size: 260px;
+        line-height: 1;
+        color: var(--dark-green);
+        letter-spacing: -0.04em;
+        position: relative;
+        z-index: 2;
+      }
+      .ver-b .hl-underline {
+        display: inline-block;
+        background: linear-gradient(
+          transparent 58%,
+          var(--lime) 58%,
+          var(--lime) 94%,
+          transparent 94%
+        );
+        padding: 0 16px;
+      }
 
-  /* ===== ver C: 펜촉 아이콘 단독 — 투명 배경, 아이콘용 ===== */
-  .logo-card.ver-c {
-    background: transparent;
-  }
-  .ver-c .pen-svg-large {
-    width: 720px;
-    height: 720px;
-  }
+      /* ===== ver C: 펜촉 아이콘 단독 — 투명 배경, 아이콘용 ===== */
+      .logo-card.ver-c {
+        background: transparent;
+      }
+      .ver-c .pen-svg-large {
+        width: 720px;
+        height: 720px;
+      }
 
-  /* ===== ver D: 한글+영문 콤보 ===== */
-  .logo-card.ver-d {
-    background: var(--dark-green);
-  }
-  .ver-d .pen-svg {
-    width: 240px;
-    height: 240px;
-    margin-bottom: 30px;
-  }
-  .ver-d .brand-name {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 900;
-    font-size: 200px;
-    line-height: 1;
-    color: var(--paper);
-    letter-spacing: -0.04em;
-  }
-  .ver-d .brand-en {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 700;
-    font-size: 84px;
-    line-height: 1;
-    color: var(--lime);
-    margin-top: 16px;
-    letter-spacing: 0.05em;
-  }
+      /* ===== ver D: 한글+영문 콤보 ===== */
+      .logo-card.ver-d {
+        background: var(--dark-green);
+      }
+      .ver-d .pen-svg {
+        width: 240px;
+        height: 240px;
+        margin-bottom: 30px;
+      }
+      .ver-d .brand-name {
+        font-family: "Noto Serif KR", serif;
+        font-weight: 900;
+        font-size: 200px;
+        line-height: 1;
+        color: var(--paper);
+        letter-spacing: -0.04em;
+      }
+      .ver-d .brand-en {
+        font-family: "Noto Serif KR", serif;
+        font-weight: 700;
+        font-size: 84px;
+        line-height: 1;
+        color: var(--lime);
+        margin-top: 16px;
+        letter-spacing: 0.05em;
+      }
 
-  .download-btn {
-    width: 100%;
-    padding: 12px 20px;
-    background: var(--lime);
-    color: var(--ink);
-    border: none;
-    border-radius: 8px;
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    transition: transform .15s;
-  }
-  .download-btn:hover { transform: translateY(-2px); }
-  .download-btn.transparent {
-    background: #444;
-    color: var(--paper);
-  }
+      .download-btn {
+        width: 100%;
+        padding: 12px 20px;
+        background: var(--lime);
+        color: var(--ink);
+        border: none;
+        border-radius: 8px;
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        transition: transform 0.15s;
+      }
+      .download-btn:hover {
+        transform: translateY(-2px);
+      }
+      .download-btn.transparent {
+        background: #444;
+        color: var(--paper);
+      }
 
-  .usage-info {
-    font-size: 11px;
-    color: #888;
-    margin-top: 10px;
-    line-height: 1.5;
-  }
+      .usage-info {
+        font-size: 11px;
+        color: #888;
+        margin-top: 10px;
+        line-height: 1.5;
+      }
 
-  /* 캡처 모드 */
-  .capturing { transform: none !important; }
-  .capturing.logo-wrap {
-    width: 1080px !important;
-    height: 1080px !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    background: transparent !important;
-  }
-</style>
-</head>
-<body>
+      /* 캡처 모드 */
+      .capturing {
+        transform: none !important;
+      }
+      .capturing.logo-wrap {
+        width: 1080px !important;
+        height: 1080px !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="page-title">짚이 프로필 로고 — 4가지 ver</h1>
+    <p class="page-sub">
+      1080×1080 (1:1 정사각형) · PNG export 2x · 인스타·김과외·숨고·카톡 등
+      프로필 정합
+    </p>
 
-<h1 class="page-title">짚이 프로필 로고 — 4가지 ver</h1>
-<p class="page-sub">1080×1080 (1:1 정사각형) · PNG export 2x · 인스타·김과외·숨고·카톡 등 프로필 정합</p>
+    <div class="grid">
+      <!-- ver A: 다크 -->
+      <div class="logo-item">
+        <h2>ver A — 다크</h2>
+        <div class="ver-sub">인스타 + 카드뉴스 정합 (피드 안 강조)</div>
+        <div class="logo-wrap" id="wrap-a">
+          <div class="logo-card ver-a">
+            <svg
+              class="pen-svg"
+              viewBox="0 0 100 100"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="50,8 20,62 80,62"
+                fill="#BEF264"
+                stroke="#FAF8F4"
+                stroke-width="2"
+              />
+              <rect x="44" y="62" width="12" height="22" fill="#FAF8F4" />
+            </svg>
+            <div class="brand-name">짚이</div>
+          </div>
+        </div>
+        <button class="download-btn" onclick="downloadLogo('a')">
+          📥 PNG 다운로드 (ver A)
+        </button>
+        <div class="usage-info">
+          권장: 인스타 프로필 · 카톡 채널 · 유튜브 채널
+        </div>
+      </div>
 
-<div class="grid">
+      <!-- ver B: 라이트 -->
+      <div class="logo-item">
+        <h2>ver B — 라이트</h2>
+        <div class="ver-sub">김과외 + 숨고 정합 (전문성 lock)</div>
+        <div class="logo-wrap" id="wrap-b">
+          <div class="logo-card ver-b">
+            <svg
+              class="pen-svg"
+              viewBox="0 0 100 100"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="50,8 20,62 80,62"
+                fill="#BEF264"
+                stroke="#1B4220"
+                stroke-width="2"
+              />
+              <rect x="44" y="62" width="12" height="22" fill="#1B4220" />
+            </svg>
+            <div class="brand-name"><span class="hl-underline">짚이</span></div>
+          </div>
+        </div>
+        <button class="download-btn" onclick="downloadLogo('b')">
+          📥 PNG 다운로드 (ver B)
+        </button>
+        <div class="usage-info">권장: 김과외 프로필 · 숨고 프로필 · 명함</div>
+      </div>
 
-  <!-- ver A: 다크 -->
-  <div class="logo-item">
-    <h2>ver A — 다크</h2>
-    <div class="ver-sub">인스타 + 카드뉴스 정합 (피드 안 강조)</div>
-    <div class="logo-wrap" id="wrap-a">
-      <div class="logo-card ver-a">
-        <svg class="pen-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="50,8 20,62 80,62" fill="#BEF264" stroke="#FAF8F4" stroke-width="2"/>
-          <rect x="44" y="62" width="12" height="22" fill="#FAF8F4"/>
-        </svg>
-        <div class="brand-name">짚이</div>
+      <!-- ver C: 아이콘 단독 (투명) -->
+      <div class="logo-item">
+        <h2>ver C — 펜촉 단독</h2>
+        <div class="ver-sub">투명 배경 · 다양한 배경 적용용</div>
+        <div class="logo-wrap" id="wrap-c">
+          <div class="logo-card ver-c">
+            <svg
+              class="pen-svg-large"
+              viewBox="0 0 100 100"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="50,8 20,62 80,62"
+                fill="#BEF264"
+                stroke="#1B4220"
+                stroke-width="2.5"
+              />
+              <rect x="44" y="62" width="12" height="22" fill="#1B4220" />
+            </svg>
+          </div>
+        </div>
+        <button class="download-btn transparent" onclick="downloadLogo('c')">
+          📥 PNG 다운로드 (투명)
+        </button>
+        <div class="usage-info">
+          권장: 워터마크 · favicon · 인쇄물 · 외부 배경 위 적용
+        </div>
+      </div>
+
+      <!-- ver D: 한글+영문 콤보 -->
+      <div class="logo-item">
+        <h2>ver D — 한글 + 영문</h2>
+        <div class="ver-sub">국제 노출 path 정합 (한글 + Jippi)</div>
+        <div class="logo-wrap" id="wrap-d">
+          <div class="logo-card ver-d">
+            <svg
+              class="pen-svg"
+              viewBox="0 0 100 100"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="50,8 20,62 80,62"
+                fill="#BEF264"
+                stroke="#FAF8F4"
+                stroke-width="2"
+              />
+              <rect x="44" y="62" width="12" height="22" fill="#FAF8F4" />
+            </svg>
+            <div class="brand-name">짚이</div>
+            <div class="brand-en">Jippi</div>
+          </div>
+        </div>
+        <button class="download-btn" onclick="downloadLogo('d')">
+          📥 PNG 다운로드 (ver D)
+        </button>
+        <div class="usage-info">
+          권장: 웹사이트 헤더 · 영문 노출 path · jippi.kr
+        </div>
       </div>
     </div>
-    <button class="download-btn" onclick="downloadLogo('a')">📥 PNG 다운로드 (ver A)</button>
-    <div class="usage-info">권장: 인스타 프로필 · 카톡 채널 · 유튜브 채널</div>
-  </div>
 
-  <!-- ver B: 라이트 -->
-  <div class="logo-item">
-    <h2>ver B — 라이트</h2>
-    <div class="ver-sub">김과외 + 숨고 정합 (전문성 lock)</div>
-    <div class="logo-wrap" id="wrap-b">
-      <div class="logo-card ver-b">
-        <svg class="pen-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="50,8 20,62 80,62" fill="#BEF264" stroke="#1B4220" stroke-width="2"/>
-          <rect x="44" y="62" width="12" height="22" fill="#1B4220"/>
-        </svg>
-        <div class="brand-name"><span class="hl-underline">짚이</span></div>
+    <div
+      style="
+        max-width: 1400px;
+        margin: 32px auto 0;
+        padding: 24px;
+        background: #1a1a1a;
+        border-radius: 12px;
+      "
+    >
+      <h2
+        style="
+          font-family: Noto Serif KR;
+          font-weight: 900;
+          font-size: 18px;
+          color: var(--lime);
+          margin-bottom: 12px;
+        "
+      >
+        💡 사용 가이드
+      </h2>
+      <div style="font-size: 13px; line-height: 1.7; color: #ccc">
+        <strong style="color: var(--paper)">인스타 프로필</strong> → ver A 권장.
+        피드 카드뉴스 (다크 그린 배경)와 시각 정합.<br />
+        <strong style="color: var(--paper)">김과외 / 숨고 프로필</strong> → ver
+        B 권장. 학부모 신뢰형 (라이트 배경 + 형광펜 강조).<br />
+        <strong style="color: var(--paper)">jippi.kr 웹사이트 헤더</strong> →
+        ver D 권장 (한글 + 영문 콤보).<br />
+        <strong style="color: var(--paper)">워터마크 / favicon</strong> → ver C
+        권장 (투명 배경).<br /><br />
+        📌 다운로드 PNG는 <strong>2160×2160 (2x 해상도)</strong>로 export됩니다.
+        인스타·김과외·숨고 등 모든 플랫폼 권장 해상도 충족.<br />
+        📌 ver C (투명)는 PNG로 export되며, 배경이 자동으로 투명 처리됩니다.
       </div>
     </div>
-    <button class="download-btn" onclick="downloadLogo('b')">📥 PNG 다운로드 (ver B)</button>
-    <div class="usage-info">권장: 김과외 프로필 · 숨고 프로필 · 명함</div>
-  </div>
 
-  <!-- ver C: 아이콘 단독 (투명) -->
-  <div class="logo-item">
-    <h2>ver C — 펜촉 단독</h2>
-    <div class="ver-sub">투명 배경 · 다양한 배경 적용용</div>
-    <div class="logo-wrap" id="wrap-c">
-      <div class="logo-card ver-c">
-        <svg class="pen-svg-large" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="50,8 20,62 80,62" fill="#BEF264" stroke="#1B4220" stroke-width="2.5"/>
-          <rect x="44" y="62" width="12" height="22" fill="#1B4220"/>
-        </svg>
-      </div>
-    </div>
-    <button class="download-btn transparent" onclick="downloadLogo('c')">📥 PNG 다운로드 (투명)</button>
-    <div class="usage-info">권장: 워터마크 · favicon · 인쇄물 · 외부 배경 위 적용</div>
-  </div>
+    <script>
+      async function captureLogo(ver) {
+        const wrap = document.getElementById("wrap-" + ver);
+        const card = wrap.querySelector(".logo-card");
+        wrap.classList.add("capturing");
+        card.classList.add("capturing");
+        await new Promise((r) => setTimeout(r, 100));
+        const isTransparent = ver === "c";
+        const canvas = await html2canvas(card, {
+          scale: 2,
+          backgroundColor: isTransparent ? null : null,
+          width: 1080,
+          height: 1080,
+          windowWidth: 1080,
+          windowHeight: 1080,
+        });
+        wrap.classList.remove("capturing");
+        card.classList.remove("capturing");
+        return canvas;
+      }
 
-  <!-- ver D: 한글+영문 콤보 -->
-  <div class="logo-item">
-    <h2>ver D — 한글 + 영문</h2>
-    <div class="ver-sub">국제 노출 path 정합 (한글 + Jippi)</div>
-    <div class="logo-wrap" id="wrap-d">
-      <div class="logo-card ver-d">
-        <svg class="pen-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="50,8 20,62 80,62" fill="#BEF264" stroke="#FAF8F4" stroke-width="2"/>
-          <rect x="44" y="62" width="12" height="22" fill="#FAF8F4"/>
-        </svg>
-        <div class="brand-name">짚이</div>
-        <div class="brand-en">Jippi</div>
-      </div>
-    </div>
-    <button class="download-btn" onclick="downloadLogo('d')">📥 PNG 다운로드 (ver D)</button>
-    <div class="usage-info">권장: 웹사이트 헤더 · 영문 노출 path · jippi.kr</div>
-  </div>
-
-</div>
-
-<div style="max-width:1400px; margin:32px auto 0; padding:24px; background:#1a1a1a; border-radius:12px;">
-  <h2 style="font-family:Noto Serif KR; font-weight:900; font-size:18px; color:var(--lime); margin-bottom:12px;">💡 사용 가이드</h2>
-  <div style="font-size:13px; line-height:1.7; color:#ccc;">
-    <strong style="color:var(--paper);">인스타 프로필</strong> → ver A 권장. 피드 카드뉴스 (다크 그린 배경)와 시각 정합.<br>
-    <strong style="color:var(--paper);">김과외 / 숨고 프로필</strong> → ver B 권장. 학부모 신뢰형 (라이트 배경 + 형광펜 강조).<br>
-    <strong style="color:var(--paper);">jippi.kr 웹사이트 헤더</strong> → ver D 권장 (한글 + 영문 콤보).<br>
-    <strong style="color:var(--paper);">워터마크 / favicon</strong> → ver C 권장 (투명 배경).<br><br>
-    📌 다운로드 PNG는 <strong>2160×2160 (2x 해상도)</strong>로 export됩니다. 인스타·김과외·숨고 등 모든 플랫폼 권장 해상도 충족.<br>
-    📌 ver C (투명)는 PNG로 export되며, 배경이 자동으로 투명 처리됩니다.
-  </div>
-</div>
-
-<script>
-  async function captureLogo(ver) {
-    const wrap = document.getElementById("wrap-" + ver);
-    const card = wrap.querySelector(".logo-card");
-    wrap.classList.add("capturing");
-    card.classList.add("capturing");
-    await new Promise(r => setTimeout(r, 100));
-    const isTransparent = ver === "c";
-    const canvas = await html2canvas(card, {
-      scale: 2,
-      backgroundColor: isTransparent ? null : null,
-      width: 1080,
-      height: 1080,
-      windowWidth: 1080,
-      windowHeight: 1080,
-    });
-    wrap.classList.remove("capturing");
-    card.classList.remove("capturing");
-    return canvas;
-  }
-
-  async function downloadLogo(ver) {
-    await document.fonts.ready;
-    await new Promise(r => setTimeout(r, 150));
-    const canvas = await captureLogo(ver);
-    const link = document.createElement("a");
-    link.download = "jippi_logo_ver-" + ver + ".png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  }
-</script>
-
-</body>
+      async function downloadLogo(ver) {
+        await document.fonts.ready;
+        await new Promise((r) => setTimeout(r, 150));
+        const canvas = await captureLogo(ver);
+        const link = document.createElement("a");
+        link.download = "jippi_logo_ver-" + ver + ".png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      }
+    </script>
+  </body>
 </html>

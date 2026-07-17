@@ -39,7 +39,11 @@ if (!fs.existsSync(AUDIT_LOG_PATH)) {
 }
 
 const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf-8"));
-const logLines = fs.readFileSync(AUDIT_LOG_PATH, "utf-8").trim().split("\n").filter(Boolean);
+const logLines = fs
+  .readFileSync(AUDIT_LOG_PATH, "utf-8")
+  .trim()
+  .split("\n")
+  .filter(Boolean);
 const logs = logLines.map((l) => JSON.parse(l));
 
 // 필터링
@@ -71,7 +75,10 @@ function findChoice(yearKey, setId, qId, choiceNum, area) {
       }
     }
   }
-  return { ref: matches.length === 1 ? matches[0] : null, count: matches.length };
+  return {
+    ref: matches.length === 1 ? matches[0] : null,
+    count: matches.length,
+  };
 }
 
 const reverted = [];
@@ -79,26 +86,51 @@ const skipped = [];
 
 // LIFO 순서로 revert (가장 최근 batch 먼저)
 for (const e of targets.slice().reverse()) {
-  const { ref: c, count } = findChoice(e.yearKey, e.setId, e.questionId, e.choiceNum, e.area);
+  const { ref: c, count } = findChoice(
+    e.yearKey,
+    e.setId,
+    e.questionId,
+    e.choiceNum,
+    e.area,
+  );
   if (!c) {
-    skipped.push({ ...e, skip_reason: count > 1 ? "ambiguous_choice_ref" : "choice_not_found", match_count: count });
+    skipped.push({
+      ...e,
+      skip_reason: count > 1 ? "ambiguous_choice_ref" : "choice_not_found",
+      match_count: count,
+    });
     continue;
   }
   // 현재 값이 audit log 의 after 와 정합하는지 확인 (그 사이 수동 변경 검출)
   const cur = JSON.stringify(c.cs_ids || []);
   const after = JSON.stringify(e.after || []);
   if (cur !== after) {
-    skipped.push({ ...e, skip_reason: "current_differs_from_audit_after", current: c.cs_ids });
+    skipped.push({
+      ...e,
+      skip_reason: "current_differs_from_audit_after",
+      current: c.cs_ids,
+    });
     continue;
   }
   if (!dryRun) c.cs_ids = e.before;
-  reverted.push({ ts: e.ts, yearKey: e.yearKey, setId: e.setId, qId: e.questionId, cNum: e.choiceNum, from: e.after, to: e.before });
+  reverted.push({
+    ts: e.ts,
+    yearKey: e.yearKey,
+    setId: e.setId,
+    qId: e.questionId,
+    cNum: e.choiceNum,
+    from: e.after,
+    to: e.before,
+  });
 }
 
 if (!dryRun && reverted.length > 0) {
   if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
   const ts = new Date().toISOString().replace(/[:.]/g, "-");
-  fs.copyFileSync(DATA_PATH, path.join(BACKUP_DIR, `all_data_204.before_revert.${ts}.json`));
+  fs.copyFileSync(
+    DATA_PATH,
+    path.join(BACKUP_DIR, `all_data_204.before_revert.${ts}.json`),
+  );
   fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf-8");
   // revert 자체도 audit_log 에 기록
   for (const r of reverted) {
@@ -121,19 +153,26 @@ if (!dryRun && reverted.length > 0) {
   }
 }
 
-console.log(`\n=== cs_ids_revert.mjs ${dryRun ? "[DRY-RUN]" : "[APPLIED]"} ===`);
-console.log(`scope: since=${since || "all"} setId=${scopeSetId || "all"} year=${scopeYear || "all"} tool=${scopeTool || "all"}`);
+console.log(
+  `\n=== cs_ids_revert.mjs ${dryRun ? "[DRY-RUN]" : "[APPLIED]"} ===`,
+);
+console.log(
+  `scope: since=${since || "all"} setId=${scopeSetId || "all"} year=${scopeYear || "all"} tool=${scopeTool || "all"}`,
+);
 console.log(`audit entries 일치: ${targets.length}`);
 console.log(`revert: ${reverted.length}`);
 console.log(`skip: ${skipped.length}`);
 if (skipped.length > 0) {
   const reasons = {};
-  for (const s of skipped) reasons[s.skip_reason] = (reasons[s.skip_reason] || 0) + 1;
+  for (const s of skipped)
+    reasons[s.skip_reason] = (reasons[s.skip_reason] || 0) + 1;
   console.log(`  skip 사유:`, reasons);
 }
 if (dryRun && reverted.length > 0) {
   console.log(`\n[DRY-RUN] revert 예정 sample (앞 5건):`);
   for (const r of reverted.slice(0, 5)) {
-    console.log(`  ${r.yearKey} ${r.setId} Q${r.qId} 선지${r.cNum}: ${JSON.stringify(r.from)} → ${JSON.stringify(r.to)}`);
+    console.log(
+      `  ${r.yearKey} ${r.setId} Q${r.qId} 선지${r.cNum}: ${JSON.stringify(r.from)} → ${JSON.stringify(r.to)}`,
+    );
   }
 }

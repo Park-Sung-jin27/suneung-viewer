@@ -17,20 +17,20 @@
  *   2 = invocation error (bad args / missing files / no sets matched)
  */
 
-'use strict';
+"use strict";
 
-const fs = require('fs');
-const path = require('path');
-const { validateSet } = require('./gate1_validate');
+const fs = require("fs");
+const path = require("path");
+const { validateSet } = require("./gate1_validate");
 
 function parseArgs(argv) {
   const out = {};
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
-    if (a.startsWith('--')) {
+    if (a.startsWith("--")) {
       const key = a.slice(2);
       const next = argv[i + 1];
-      if (!next || next.startsWith('--')) {
+      if (!next || next.startsWith("--")) {
         out[key] = true;
       } else {
         out[key] = next;
@@ -47,22 +47,28 @@ function main() {
   const dataPath =
     args.data ||
     process.env.SUNEUNG_DATA_PATH ||
-    path.resolve(__dirname, '../public/data/all_data_204.json');
+    path.resolve(__dirname, "../public/data/all_data_204.json");
 
   const year = args.year;
   if (!year) {
-    console.error('ERROR: --year required (e.g., --year 2026수능)');
+    console.error("ERROR: --year required (e.g., --year 2026수능)");
     process.exit(2);
   }
 
   // section validation — silent pass 차단
   const sectionFilter = args.section;
-  if (sectionFilter && sectionFilter !== 'reading' && sectionFilter !== 'literature') {
-    console.error(`ERROR: --section must be 'reading' or 'literature' (got: ${sectionFilter})`);
+  if (
+    sectionFilter &&
+    sectionFilter !== "reading" &&
+    sectionFilter !== "literature"
+  ) {
+    console.error(
+      `ERROR: --section must be 'reading' or 'literature' (got: ${sectionFilter})`,
+    );
     process.exit(2);
   }
 
-  const answerKeyPath = args['answer-key'];
+  const answerKeyPath = args["answer-key"];
   const reportPath = args.report;
 
   if (!fs.existsSync(dataPath)) {
@@ -70,11 +76,11 @@ function main() {
     process.exit(2);
   }
 
-  const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
   const yearData = data[year];
   if (!yearData) {
     console.error(`ERROR: year not found in data: ${year}`);
-    console.error(`Available years: ${Object.keys(data).join(', ')}`);
+    console.error(`Available years: ${Object.keys(data).join(", ")}`);
     process.exit(2);
   }
 
@@ -84,10 +90,10 @@ function main() {
       console.error(`ERROR: answer key not found: ${answerKeyPath}`);
       process.exit(2);
     }
-    answerKey = JSON.parse(fs.readFileSync(answerKeyPath, 'utf8'));
+    answerKey = JSON.parse(fs.readFileSync(answerKeyPath, "utf8"));
   }
 
-  const sections = sectionFilter ? [sectionFilter] : ['reading', 'literature'];
+  const sections = sectionFilter ? [sectionFilter] : ["reading", "literature"];
 
   const report = {
     year,
@@ -158,7 +164,9 @@ function main() {
   }
 
   if (report.summary.totalSets === 0) {
-    console.error(`ERROR: no sets matched (year=${year}, section=${sectionFilter || 'all'})`);
+    console.error(
+      `ERROR: no sets matched (year=${year}, section=${sectionFilter || "all"})`,
+    );
     process.exit(2);
   }
 
@@ -167,21 +175,25 @@ function main() {
   console.log(`source: ${dataPath}\n`);
 
   for (const s of report.sets) {
-    const tag = s.passed ? 'PASS' : 'FAIL';
-    const baseTag = s.inferredBase && s.inferredBase !== s.setId
-      ? ` [base=${s.inferredBase}]` : '';
+    const tag = s.passed ? "PASS" : "FAIL";
+    const baseTag =
+      s.inferredBase && s.inferredBase !== s.setId
+        ? ` [base=${s.inferredBase}]`
+        : "";
     console.log(
-      `[${tag}] ${s.section}/${s.setId}${baseTag} ${s.range || ''}  ` +
+      `[${tag}] ${s.section}/${s.setId}${baseTag} ${s.range || ""}  ` +
         `e=${s.errorCount} w=${s.warningCount} nh=${s.needsHumanCount}  ` +
         `(sents=${s.stats.sents}, q=${s.stats.questions}, ` +
-        `cs_filled=${s.stats.cs_ids_filled}/${s.stats.choices}, pat0=${s.stats.pat_zero_count})`
+        `cs_filled=${s.stats.cs_ids_filled}/${s.stats.choices}, pat0=${s.stats.pat_zero_count})`,
     );
     if (!s.passed) {
       for (const e of s.errors.slice(0, 5)) {
         const ctx = Object.entries(e)
-          .filter(([k]) => !['severity', 'code'].includes(k))
-          .map(([k, v]) => `${k}=${typeof v === 'string' ? v : JSON.stringify(v)}`)
-          .join(' ');
+          .filter(([k]) => !["severity", "code"].includes(k))
+          .map(
+            ([k, v]) => `${k}=${typeof v === "string" ? v : JSON.stringify(v)}`,
+          )
+          .join(" ");
         console.log(`       └─ ${e.code}  ${ctx}`);
       }
       if (s.errors.length > 5) {
@@ -194,23 +206,29 @@ function main() {
     `\nSummary: ${report.summary.passedSets}/${report.summary.totalSets} sets passed | ` +
       `errors=${report.summary.totalErrors} warnings=${report.summary.totalWarnings} ` +
       `needs_human=${report.summary.totalNeedsHuman} | ` +
-      `pat0=${report.summary.patZeroChoices} (in ${report.summary.patZeroSets} sets)`
+      `pat0=${report.summary.patZeroChoices} (in ${report.summary.patZeroSets} sets)`,
   );
 
-  const topE = Object.entries(report.summary.errorCodeCounts).sort((a, b) => b[1] - a[1]);
+  const topE = Object.entries(report.summary.errorCodeCounts).sort(
+    (a, b) => b[1] - a[1],
+  );
   if (topE.length) {
-    console.log('\nTop error codes:');
-    for (const [c, n] of topE.slice(0, 10)) console.log(`  ${String(n).padStart(4)} × ${c}`);
+    console.log("\nTop error codes:");
+    for (const [c, n] of topE.slice(0, 10))
+      console.log(`  ${String(n).padStart(4)} × ${c}`);
   }
-  const topW = Object.entries(report.summary.warningCodeCounts).sort((a, b) => b[1] - a[1]);
+  const topW = Object.entries(report.summary.warningCodeCounts).sort(
+    (a, b) => b[1] - a[1],
+  );
   if (topW.length) {
-    console.log('\nTop warning codes:');
-    for (const [c, n] of topW.slice(0, 10)) console.log(`  ${String(n).padStart(4)} × ${c}`);
+    console.log("\nTop warning codes:");
+    for (const [c, n] of topW.slice(0, 10))
+      console.log(`  ${String(n).padStart(4)} × ${c}`);
   }
 
   if (reportPath) {
     fs.mkdirSync(path.dirname(reportPath), { recursive: true });
-    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), 'utf8');
+    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), "utf8");
     console.log(`\nReport written: ${reportPath}`);
   }
 

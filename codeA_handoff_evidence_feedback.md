@@ -47,7 +47,7 @@ create index if not exists evidence_feedback_set_idx
 2. 질문 **3개만** lock:
    - "이 set 에서 가장 도움 된 것 1개?" (단답)
    - "가장 답답한 것 1개?" (단답)
-   - "다시 풀러 올 의향 1~5?" (1~5 평점)
+   - "다시 풀러 올 의향 1~~5?" (1~~5 평점)
 3. Publish → URL 복사 (예: `https://tally.so/r/XXXXXX`)
 4. 본 URL 을 Step 2 의 `TALLY_FEEDBACK_URL` 자리에 paste
 

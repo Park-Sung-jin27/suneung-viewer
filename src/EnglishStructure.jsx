@@ -441,7 +441,11 @@ function QuestionDetail({ question }) {
           <div className="es-section-title">문장별 역할표</div>
           <div className="es-sentences">
             {question.sentences.map((item, idx) => (
-              <SentenceRow key={`${question.id}-${idx}`} item={item} idx={idx} />
+              <SentenceRow
+                key={`${question.id}-${idx}`}
+                item={item}
+                idx={idx}
+              />
             ))}
           </div>
         </div>

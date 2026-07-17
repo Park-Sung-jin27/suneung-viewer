@@ -133,7 +133,9 @@ export function describeProfile(p) {
  *   [profile] old suneung detected: range-based reading/literature split disabled (version=old)
  */
 export function logProfile(p) {
-  console.log(`[profile] detected ${describeProfile(p)} (key="${p.raw_year_key}")`);
+  console.log(
+    `[profile] detected ${describeProfile(p)} (key="${p.raw_year_key}")`,
+  );
   if (p.exam_family === "suneung" && p.version === "new") {
     console.log(
       `[profile] new suneung reading=${p.reading_range.join("-")} literature=${p.literature_range.join("-")}`,

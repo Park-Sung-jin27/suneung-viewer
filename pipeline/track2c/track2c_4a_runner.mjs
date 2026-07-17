@@ -24,7 +24,10 @@ dotenv.config({ path: path.resolve(__dirname, "../../.env"), override: true });
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const MODEL = "claude-sonnet-4-5";
 const BETA_HEADER = { headers: { "anthropic-beta": "output-128k-2025-02-19" } };
-const DATA_PATH = path.resolve(__dirname, "../../public/data/all_data_204.json");
+const DATA_PATH = path.resolve(
+  __dirname,
+  "../../public/data/all_data_204.json",
+);
 const OUTPUT_PATH = path.resolve(__dirname, "./4a_results.json");
 
 // ============================================================
@@ -122,10 +125,34 @@ ok:true 선지 analysis 형식 (보기 문제):
 // 4 대상 lock (raw 인용 2 기반)
 // ============================================================
 const TARGETS = [
-  { set_id: "r2023a", question_id: 2, choice_num: 5, correct_num: 5, is_vocab_in_production: false },
-  { set_id: "r2023b", question_id: 5, choice_num: 5, correct_num: 5, is_vocab_in_production: false },
-  { set_id: "r2023b", question_id: 9, choice_num: 2, correct_num: 2, is_vocab_in_production: true }, // 어휘 치환
-  { set_id: "r2023c", question_id: 11, choice_num: 5, correct_num: 5, is_vocab_in_production: false },
+  {
+    set_id: "r2023a",
+    question_id: 2,
+    choice_num: 5,
+    correct_num: 5,
+    is_vocab_in_production: false,
+  },
+  {
+    set_id: "r2023b",
+    question_id: 5,
+    choice_num: 5,
+    correct_num: 5,
+    is_vocab_in_production: false,
+  },
+  {
+    set_id: "r2023b",
+    question_id: 9,
+    choice_num: 2,
+    correct_num: 2,
+    is_vocab_in_production: true,
+  }, // 어휘 치환
+  {
+    set_id: "r2023c",
+    question_id: 11,
+    choice_num: 5,
+    correct_num: 5,
+    is_vocab_in_production: false,
+  },
 ];
 
 const TARGET_SETS = ["r2023a", "r2023b", "r2023c"]; // Mode B 대상
@@ -140,7 +167,10 @@ function withNonce(systemPrompt, runId) {
 }
 
 function parseJSON(text) {
-  const cleaned = text.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
+  const cleaned = text
+    .replace(/```json\n?/g, "")
+    .replace(/```\n?/g, "")
+    .trim();
   return JSON.parse(cleaned);
 }
 
@@ -235,7 +265,9 @@ ${question.bogi ? `보기: ${question.bogi}` : ""}
 // ============================================================
 async function callModeB(set, runId) {
   const answerGuide = set.questions.map((q) => {
-    const correctTarget = TARGETS.find((t) => t.set_id === set.id && t.question_id === q.id);
+    const correctTarget = TARGETS.find(
+      (t) => t.set_id === set.id && t.question_id === q.id,
+    );
     const correctNum = correctTarget ? correctTarget.correct_num : null;
     if (correctNum === null) {
       // 대상 외 문항: 임의 정답 1번 (Mode B의 목적은 set 통째 호출 = 운영 환경 재현)
@@ -324,7 +356,9 @@ async function main() {
   for (let run = 1; run <= 3; run++) {
     for (const target of TARGETS) {
       const runId = `2026-04-30-MA-${run}-${target.set_id}-q${target.question_id}-c${target.choice_num}`;
-      console.log(`[A run ${run}] ${target.set_id} Q${target.question_id} #${target.choice_num} ...`);
+      console.log(
+        `[A run ${run}] ${target.set_id} Q${target.question_id} #${target.choice_num} ...`,
+      );
       try {
         const result = await callModeA(
           sets[target.set_id],
@@ -337,7 +371,9 @@ async function main() {
         results.mode_a.push(result);
         totalInputTokens += result.input_tokens;
         totalOutputTokens += result.output_tokens;
-        console.log(`  → ${result.elapsed_ms}ms, in ${result.input_tokens} / out ${result.output_tokens}`);
+        console.log(
+          `  → ${result.elapsed_ms}ms, in ${result.input_tokens} / out ${result.output_tokens}`,
+        );
       } catch (e) {
         results.mode_a.push({
           mode: "A",
@@ -364,9 +400,16 @@ async function main() {
         results.mode_b.push(result);
         totalInputTokens += result.input_tokens;
         totalOutputTokens += result.output_tokens;
-        console.log(`  → ${result.elapsed_ms}ms, in ${result.input_tokens} / out ${result.output_tokens}`);
+        console.log(
+          `  → ${result.elapsed_ms}ms, in ${result.input_tokens} / out ${result.output_tokens}`,
+        );
       } catch (e) {
-        results.mode_b.push({ mode: "B", run_id: runId, set_id: setId, error: e.message });
+        results.mode_b.push({
+          mode: "B",
+          run_id: runId,
+          set_id: setId,
+          error: e.message,
+        });
         console.error(`  ✗ ERROR: ${e.message}`);
       }
       await sleep(2000);
@@ -374,7 +417,8 @@ async function main() {
   }
 
   // 비용 추정 (claude-sonnet-4-5: $3/MTok input, $15/MTok output) [Inference, 2026-04 기준]
-  const costEstimateUsd = (totalInputTokens / 1_000_000) * 3 + (totalOutputTokens / 1_000_000) * 15;
+  const costEstimateUsd =
+    (totalInputTokens / 1_000_000) * 3 + (totalOutputTokens / 1_000_000) * 15;
 
   results.meta = {
     timestamp: new Date().toISOString(),
@@ -386,12 +430,15 @@ async function main() {
     total_output_tokens: totalOutputTokens,
     cost_estimate_usd: costEstimateUsd,
     targets: TARGETS,
-    system_prompt_source: "pipeline/step3_analysis.js L130~L216 (current modified state, 2026-04-22)",
+    system_prompt_source:
+      "pipeline/step3_analysis.js L130~L216 (current modified state, 2026-04-22)",
   };
 
   await fs.writeFile(OUTPUT_PATH, JSON.stringify(results, null, 2), "utf8");
   console.log(`\n[4-a] 완료. 결과: ${OUTPUT_PATH}`);
-  console.log(`[4-a] 총 토큰: in ${totalInputTokens} / out ${totalOutputTokens}`);
+  console.log(
+    `[4-a] 총 토큰: in ${totalInputTokens} / out ${totalOutputTokens}`,
+  );
   console.log(`[4-a] 비용 추정: $${costEstimateUsd.toFixed(4)}`);
 }
 

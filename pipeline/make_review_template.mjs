@@ -36,7 +36,8 @@ function getArg(name) {
 }
 const EXAM = getArg("--exam");
 const REVIEWER = getArg("--reviewer") || "TODO: reviewer_name";
-const ROUND = getArg("--round") || `TODO: ${new Date().toISOString().slice(0, 10)}-R?`;
+const ROUND =
+  getArg("--round") || `TODO: ${new Date().toISOString().slice(0, 10)}-R?`;
 
 if (!EXAM) {
   console.error(
@@ -45,7 +46,9 @@ if (!EXAM) {
   process.exit(1);
 }
 if (!fs.existsSync(REPORT_PATH)) {
-  console.error(`❌ 리포트 없음: ${REPORT_PATH}. pat_decision_engine 먼저 실행.`);
+  console.error(
+    `❌ 리포트 없음: ${REPORT_PATH}. pat_decision_engine 먼저 실행.`,
+  );
   process.exit(1);
 }
 
@@ -72,7 +75,10 @@ function buildExamIndex(data, exam) {
   const idx = new Map();
   const e = data[exam];
   if (!e) return idx;
-  for (const [section, domainChar] of [["reading", "R"], ["literature", "L"]]) {
+  for (const [section, domainChar] of [
+    ["reading", "R"],
+    ["literature", "L"],
+  ]) {
     const sets = e[section] || [];
     for (const set of sets) {
       idx.set(set.id, { domain: domainChar, section, set });
@@ -188,7 +194,8 @@ const reviews = samples
       human_pat_suggestion: null,
       human_ok_suggestion: null,
       agreed_with_engine: "TODO: true|false",
-      notes: "TODO: 간단 메모 (해설이 어느 축을 설명하는지, 선지가 어느 축에서 틀렸는지)",
+      notes:
+        "TODO: 간단 메모 (해설이 어느 축을 설명하는지, 선지가 어느 축에서 틀렸는지)",
       // ── 검수 참고용 (읽기 전용) ─────────────────────
       _engine_questions: {
         ok_recheck_question: s.ok_recheck_question,
@@ -235,16 +242,24 @@ const verifySamples = reviews.slice(0, Math.min(5, reviews.length));
 for (const rv of verifySamples) {
   const st = enrichmentFor(rv.choice_id, __examIndex)?._match_status || "?";
   console.log(`\n  • ${rv.choice_id}  [status=${st}]`);
-  console.log(`    set/q/#:       ${rv.set_id} / Q${rv.question_id} / #${rv.choice_num}  (domain=${rv.domain})`);
-  console.log(`    question_text: ${(rv.question_text || "(null)").slice(0, 100)}`);
-  console.log(`    choice_text:   ${(rv.choice_text || "(null)").slice(0, 100)}`);
+  console.log(
+    `    set/q/#:       ${rv.set_id} / Q${rv.question_id} / #${rv.choice_num}  (domain=${rv.domain})`,
+  );
+  console.log(
+    `    question_text: ${(rv.question_text || "(null)").slice(0, 100)}`,
+  );
+  console.log(
+    `    choice_text:   ${(rv.choice_text || "(null)").slice(0, 100)}`,
+  );
 }
 const badMatches = reviews.filter((rv) => {
   const st = enrichmentFor(rv.choice_id, __examIndex)?._match_status;
   return st !== "ok";
 });
 if (badMatches.length > 0) {
-  console.log(`\n  🔴 매핑 실패 ${badMatches.length}건: ${badMatches.map((r) => r.choice_id).join(", ")}`);
+  console.log(
+    `\n  🔴 매핑 실패 ${badMatches.length}건: ${badMatches.map((r) => r.choice_id).join(", ")}`,
+  );
 }
 
 console.log(`\n📄 저장: ${path.relative(ROOT, outPath)}`);

@@ -4,10 +4,7 @@
   "issues": [
     {
       "issue_id": "QG-2026수능-s1-Q2-answer-patch",
-      "defect_category": [
-        "QUESTIONTYPE_OK_MISMATCH",
-        "ANSWER_KEY_MISMATCH"
-      ],
+      "defect_category": ["QUESTIONTYPE_OK_MISMATCH", "ANSWER_KEY_MISMATCH"],
       "action_class": "manual_patch",
       "required_raw": [
         "평가원 정답표",
@@ -30,16 +27,9 @@
     },
     {
       "issue_id": "QG-2025_9월-sep25_c-Q8-data-contract-patch",
-      "defect_category": [
-        "Q_TEXT_POLLUTION",
-        "QUESTIONTYPE_OK_MISMATCH"
-      ],
+      "defect_category": ["Q_TEXT_POLLUTION", "QUESTIONTYPE_OK_MISMATCH"],
       "action_class": "raw_required → manual_patch",
-      "required_raw": [
-        "PDF 발문",
-        "정답표",
-        "현재 choices"
-      ],
+      "required_raw": ["PDF 발문", "정답표", "현재 choices"],
       "patch_packet": {
         "commit": "f420709",
         "status": "merged"
@@ -57,10 +47,7 @@
     },
     {
       "issue_id": "QG-2026_9월-r20269a-Q3-pat-patch",
-      "defect_category": [
-        "AI_TRACE_LEAK",
-        "PAT_DOMAIN_MISMATCH"
-      ],
+      "defect_category": ["AI_TRACE_LEAK", "PAT_DOMAIN_MISMATCH"],
       "action_class": "manual_patch",
       "required_raw": [
         "정답표",
@@ -84,15 +71,9 @@
     },
     {
       "issue_id": "QG-2023_6월-l20236a-source-patch",
-      "defect_category": [
-        "SENT_MISSING",
-        "SYMBOL_CONTEXT_MISSING"
-      ],
+      "defect_category": ["SENT_MISSING", "SYMBOL_CONTEXT_MISSING"],
       "action_class": "raw_required → manual_patch",
-      "required_raw": [
-        "3.pdf 페이지 6 본문",
-        "㉠/㉡ 위치"
-      ],
+      "required_raw": ["3.pdf 페이지 6 본문", "㉠/㉡ 위치"],
       "patch_packet": {
         "commit": "25ea534",
         "status": "merged"
@@ -111,14 +92,9 @@
     {
       "issue_id": "QG-2025수능-kor25_d-Q17-source-patch",
       "setRange": "Q14~17",
-      "defect_category": [
-        "SENT_MISSING",
-        "SYMBOL_CONTEXT_MISSING"
-      ],
+      "defect_category": ["SENT_MISSING", "SYMBOL_CONTEXT_MISSING"],
       "action_class": "raw_required",
-      "required_raw": [
-        "4.pdf 지문 본문 raw (ⓒⓓⓔ 위치)"
-      ],
+      "required_raw": ["4.pdf 지문 본문 raw (ⓒⓓⓔ 위치)"],
       "patch_packet": {
         "commit": null,
         "status": "resolved_via_full_rebuild"
@@ -131,9 +107,7 @@
         "5a": "pending",
         "5b": "pending"
       },
-      "qa_required": [
-        "B"
-      ],
+      "qa_required": ["B"],
       "viewer_impact": "上 (sents 보강)",
       "alias": "Spec C (대화 보조)",
       "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정",
@@ -167,11 +141,7 @@
         "5a": "pending",
         "5b": "pending"
       },
-      "qa_required": [
-        "A",
-        "B",
-        "D"
-      ],
+      "qa_required": ["A", "B", "D"],
       "viewer_impact": "上 (ok 라벨 + cs_ids + pat 분기)",
       "alias": "Spec D (대화 보조)",
       "pat_branch": {
@@ -186,9 +156,7 @@
     {
       "issue_id": "QG-2025수능-kor25_d-Q14-answer-patch",
       "setRange": "Q14~17",
-      "defect_category": [
-        "ANSWER_KEY_MISMATCH"
-      ],
+      "defect_category": ["ANSWER_KEY_MISMATCH"],
       "action_class": "manual_patch",
       "required_raw": [
         "4.pdf 정답=#1 [Confirmed]",
@@ -207,11 +175,7 @@
         "5a": "pending",
         "5b": "pending"
       },
-      "qa_required": [
-        "A",
-        "B",
-        "D"
-      ],
+      "qa_required": ["A", "B", "D"],
       "viewer_impact": "中 (ok swap + pat swap + analysis 2건)",
       "alias": "대화 보조명 부재",
       "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정",
@@ -221,14 +185,9 @@
     {
       "issue_id": "QG-2025수능-kor25_d-Q15-c3-explanation-patch",
       "setRange": "Q14~17",
-      "defect_category": [
-        "AI_TRACE_LEAK"
-      ],
+      "defect_category": ["AI_TRACE_LEAK"],
       "action_class": "manual_patch",
-      "required_raw": [
-        "Q15 #3 analysis 전체",
-        "sents 본문 raw"
-      ],
+      "required_raw": ["Q15 #3 analysis 전체", "sents 본문 raw"],
       "patch_packet": {
         "commit": null,
         "status": "resolved_via_full_rebuild"
@@ -241,9 +200,7 @@
         "5a": "pending",
         "5b": "pending"
       },
-      "qa_required": [
-        "A"
-      ],
+      "qa_required": ["A"],
       "viewer_impact": "中 (placeholder 제거)",
       "alias": "대화 보조명 부재",
       "retro_via": "lock #12 운영 규칙 B + C — kor25_d set release_blocked retro 정정",
@@ -258,35 +215,20 @@
       "defect_category": "cs_ids_coverage_partial",
       "영역": "Q20 #4 cs_ids 확장 검토 (prelude sent 포함)",
       "current_state": {
-        "cs_ids": [
-          "l20236as11",
-          "l20236as13"
-        ],
+        "cs_ids": ["l20236as11", "l20236as13"],
         "cs_spans": null
       },
       "proposed_state_options": [
         {
           "option": "(a) prelude sent 추가",
-          "cs_ids": [
-            "l20236as10",
-            "l20236as11",
-            "l20236as12",
-            "l20236as13"
-          ],
+          "cs_ids": ["l20236as10", "l20236as11", "l20236as12", "l20236as13"],
           "cs_spans": null,
           "효과": "㉠·㉡ 발화 의도 직접성 ↑ / 단 하이라이트 영역 4 sent로 확장"
         },
         {
           "option": "(b) cs_spans 부분 하이라이트 추가",
-          "cs_ids": [
-            "l20236as10",
-            "l20236as11",
-            "l20236as12",
-            "l20236as13"
-          ],
-          "cs_spans": [
-            "TBD - 부분 하이라이트 영역 raw"
-          ],
+          "cs_ids": ["l20236as10", "l20236as11", "l20236as12", "l20236as13"],
+          "cs_spans": ["TBD - 부분 하이라이트 영역 raw"],
           "효과": "직접성 ↑ + 하이라이트 영역 정밀화"
         }
       ],
@@ -378,9 +320,7 @@
         "QG-2025수능-kor25_d-Q17-source-patch",
         "QG-2025수능-kor25_d-Q17-pattern-patch"
       ],
-      "retro_verified": [
-        "2025수능/kor25_d/Q16"
-      ],
+      "retro_verified": ["2025수능/kor25_d/Q16"],
       "display_banner": "검수중 — 본 set은 본문 정합화 작업 중입니다.",
       "unblock_condition": "kor25_d set 재추출 + Q14·Q15·Q16·Q17 4 issue 모두 release_approved 사후",
       "unblocked_at": "2026-05-05",

@@ -111,7 +111,8 @@ if (fs.existsSync(REPORT_PATH)) {
   const samples =
     engineReport.summary?.human_review_pack?.recommended_3_samples || [];
   for (const entry of samples) {
-    if (entry?.sample?.choice_id) packByChoiceId.set(entry.sample.choice_id, entry.sample);
+    if (entry?.sample?.choice_id)
+      packByChoiceId.set(entry.sample.choice_id, entry.sample);
   }
   for (const r of engineReport.rows || []) {
     const id = r.choice_id || r.loc;
@@ -202,7 +203,9 @@ function snapshotMismatches(snap, engineRow) {
     // 느슨한 비교 (number, null 고려)
     const eq =
       now === then ||
-      (typeof now === "number" && typeof then === "number" && Math.abs(now - then) < 1e-9);
+      (typeof now === "number" &&
+        typeof then === "number" &&
+        Math.abs(now - then) < 1e-9);
     if (!eq) diffs.push({ field: f, snapshot: then, current: now });
   }
   return diffs;
@@ -245,17 +248,41 @@ function validateReview(rev, idx) {
     }
   }
   // enum 체크
-  if (rev.ok_issue_reason && !OK_ISSUE_ENUM.includes(rev.ok_issue_reason) && !isTodoString(rev.ok_issue_reason)) {
-    out.push({ code: "B-3", severity: "BLOCK", path: `reviews[${idx}].ok_issue_reason`,
-      message: `enum 외 값: ${rev.ok_issue_reason}` });
+  if (
+    rev.ok_issue_reason &&
+    !OK_ISSUE_ENUM.includes(rev.ok_issue_reason) &&
+    !isTodoString(rev.ok_issue_reason)
+  ) {
+    out.push({
+      code: "B-3",
+      severity: "BLOCK",
+      path: `reviews[${idx}].ok_issue_reason`,
+      message: `enum 외 값: ${rev.ok_issue_reason}`,
+    });
   }
-  if (rev.pat_issue_reason && !PAT_ISSUE_ENUM.includes(rev.pat_issue_reason) && !isTodoString(rev.pat_issue_reason)) {
-    out.push({ code: "B-3", severity: "BLOCK", path: `reviews[${idx}].pat_issue_reason`,
-      message: `enum 외 값: ${rev.pat_issue_reason}` });
+  if (
+    rev.pat_issue_reason &&
+    !PAT_ISSUE_ENUM.includes(rev.pat_issue_reason) &&
+    !isTodoString(rev.pat_issue_reason)
+  ) {
+    out.push({
+      code: "B-3",
+      severity: "BLOCK",
+      path: `reviews[${idx}].pat_issue_reason`,
+      message: `enum 외 값: ${rev.pat_issue_reason}`,
+    });
   }
-  if (rev.final_decision && !FINAL_DECISION_ENUM.includes(rev.final_decision) && !isTodoString(rev.final_decision)) {
-    out.push({ code: "B-3", severity: "BLOCK", path: `reviews[${idx}].final_decision`,
-      message: `enum 외 값: ${rev.final_decision}` });
+  if (
+    rev.final_decision &&
+    !FINAL_DECISION_ENUM.includes(rev.final_decision) &&
+    !isTodoString(rev.final_decision)
+  ) {
+    out.push({
+      code: "B-3",
+      severity: "BLOCK",
+      path: `reviews[${idx}].final_decision`,
+      message: `enum 외 값: ${rev.final_decision}`,
+    });
   }
 
   // choice_id 엔진 리포트 존재 (리포트 있을 때만)
@@ -268,8 +295,16 @@ function validateReview(rev, idx) {
     });
   }
   // B-6 engine_snapshot_stale — 리포트에 해당 choice가 있고 snapshot도 있을 때만
-  if (engineReport && rev.choice_id && engineRowById.has(rev.choice_id) && rev.engine_snapshot) {
-    const diffs = snapshotMismatches(rev.engine_snapshot, engineRowById.get(rev.choice_id));
+  if (
+    engineReport &&
+    rev.choice_id &&
+    engineRowById.has(rev.choice_id) &&
+    rev.engine_snapshot
+  ) {
+    const diffs = snapshotMismatches(
+      rev.engine_snapshot,
+      engineRowById.get(rev.choice_id),
+    );
     if (diffs.length > 0) {
       for (const d of diffs) {
         out.push({
@@ -290,10 +325,16 @@ function validateReview(rev, idx) {
   // W-1
   if (
     rev.final_decision === "send_to_override_candidate_queue" &&
-    (rev.human_pat_suggestion === null || rev.human_pat_suggestion === undefined)
+    (rev.human_pat_suggestion === null ||
+      rev.human_pat_suggestion === undefined)
   ) {
-    out.push({ code: "W-1", severity: "WARN", path: `reviews[${idx}]`,
-      message: "override_candidate_queue 인데 human_pat_suggestion 미제시 (다음 라운드 튜닝 신호 약화)" });
+    out.push({
+      code: "W-1",
+      severity: "WARN",
+      path: `reviews[${idx}]`,
+      message:
+        "override_candidate_queue 인데 human_pat_suggestion 미제시 (다음 라운드 튜닝 신호 약화)",
+    });
   }
   // W-2
   if (
@@ -301,8 +342,13 @@ function validateReview(rev, idx) {
     rev.final_decision &&
     rev.final_decision !== "send_to_ok_recheck_queue"
   ) {
-    out.push({ code: "W-2", severity: "WARN", path: `reviews[${idx}]`,
-      message: "ok_issue_reason=polarity_conflict 인데 final_decision이 ok_recheck_queue 아님" });
+    out.push({
+      code: "W-2",
+      severity: "WARN",
+      path: `reviews[${idx}]`,
+      message:
+        "ok_issue_reason=polarity_conflict 인데 final_decision이 ok_recheck_queue 아님",
+    });
   }
   // W-3
   if (
@@ -310,8 +356,12 @@ function validateReview(rev, idx) {
     engineMatchType &&
     engineMatchType !== "keep_existing_match"
   ) {
-    out.push({ code: "W-3", severity: "WARN", path: `reviews[${idx}]`,
-      message: `ok_issue_reason=keep_existing_risk 인데 engine match_type=${engineMatchType}` });
+    out.push({
+      code: "W-3",
+      severity: "WARN",
+      path: `reviews[${idx}]`,
+      message: `ok_issue_reason=keep_existing_risk 인데 engine match_type=${engineMatchType}`,
+    });
   }
   // W-4 (actionable pat reason만: unclear/none 제외)
   if (
@@ -320,19 +370,36 @@ function validateReview(rev, idx) {
     rev.pat_issue_reason !== "unclear" &&
     rev.final_decision === "leave_as_is"
   ) {
-    out.push({ code: "W-4", severity: "WARN", path: `reviews[${idx}]`,
-      message: "actionable pat_issue_reason 지정됐는데 final_decision=leave_as_is (pat 변경 신호 버려짐)" });
+    out.push({
+      code: "W-4",
+      severity: "WARN",
+      path: `reviews[${idx}]`,
+      message:
+        "actionable pat_issue_reason 지정됐는데 final_decision=leave_as_is (pat 변경 신호 버려짐)",
+    });
   }
   // W-5 / W-6
-  if (enginePrimary && rev.final_decision && typeof rev.agreed_with_engine === "boolean") {
+  if (
+    enginePrimary &&
+    rev.final_decision &&
+    typeof rev.agreed_with_engine === "boolean"
+  ) {
     const same = rev.final_decision === enginePrimary;
     if (rev.agreed_with_engine === true && !same) {
-      out.push({ code: "W-5", severity: "WARN", path: `reviews[${idx}]`,
-        message: `agreed_with_engine=true 인데 final_decision(${rev.final_decision}) != engine primary(${enginePrimary})` });
+      out.push({
+        code: "W-5",
+        severity: "WARN",
+        path: `reviews[${idx}]`,
+        message: `agreed_with_engine=true 인데 final_decision(${rev.final_decision}) != engine primary(${enginePrimary})`,
+      });
     }
     if (rev.agreed_with_engine === false && same) {
-      out.push({ code: "W-6", severity: "WARN", path: `reviews[${idx}]`,
-        message: `agreed_with_engine=false 인데 final_decision == engine primary(${enginePrimary})` });
+      out.push({
+        code: "W-6",
+        severity: "WARN",
+        path: `reviews[${idx}]`,
+        message: `agreed_with_engine=false 인데 final_decision == engine primary(${enginePrimary})`,
+      });
     }
   }
   // W-7
@@ -341,18 +408,35 @@ function validateReview(rev, idx) {
     rev.human_ok_suggestion !== undefined &&
     rev.ok_issue_reason === "none"
   ) {
-    out.push({ code: "W-7", severity: "WARN", path: `reviews[${idx}]`,
-      message: "human_ok_suggestion 값이 있는데 ok_issue_reason=none" });
+    out.push({
+      code: "W-7",
+      severity: "WARN",
+      path: `reviews[${idx}]`,
+      message: "human_ok_suggestion 값이 있는데 ok_issue_reason=none",
+    });
   }
   // W-8
   if (rev.ok_issue_reason === "unclear" && rev.pat_issue_reason === "unclear") {
-    out.push({ code: "W-8", severity: "WARN", path: `reviews[${idx}]`,
-      message: "ok/pat 둘 다 unclear — 이 row는 다음 라운드 학습 신호 0" });
+    out.push({
+      code: "W-8",
+      severity: "WARN",
+      path: `reviews[${idx}]`,
+      message: "ok/pat 둘 다 unclear — 이 row는 다음 라운드 학습 신호 0",
+    });
   }
   // W-9
-  if (typeof rev.notes === "string" && rev.notes.trim().length > 0 && rev.notes.trim().length < 10 && !isTodoString(rev.notes)) {
-    out.push({ code: "W-9", severity: "WARN", path: `reviews[${idx}]`,
-      message: `notes가 너무 짧음 (${rev.notes.trim().length}자, 근거 추적 약함)` });
+  if (
+    typeof rev.notes === "string" &&
+    rev.notes.trim().length > 0 &&
+    rev.notes.trim().length < 10 &&
+    !isTodoString(rev.notes)
+  ) {
+    out.push({
+      code: "W-9",
+      severity: "WARN",
+      path: `reviews[${idx}]`,
+      message: `notes가 너무 짧음 (${rev.notes.trim().length}자, 근거 추적 약함)`,
+    });
   }
   return out;
 }
@@ -366,7 +450,8 @@ for (let i = 0; i < reviews.length; i++) {
   const warns = issues.filter((x) => x.severity === "WARN");
   let tier;
   if (blocks.length > 0) tier = "incomplete";
-  else if (warns.some((w) => INCONSISTENT_CODES.has(w.code))) tier = "conflicting";
+  else if (warns.some((w) => INCONSISTENT_CODES.has(w.code)))
+    tier = "conflicting";
   else if (warns.length >= 3) tier = "incomplete";
   else if (warns.length > 0) tier = "near_complete";
   else tier = "complete";
@@ -375,19 +460,33 @@ for (let i = 0; i < reviews.length; i++) {
     choice_id: reviews[i].choice_id || `(reviews[${i}])`,
     category: reviews[i].category || null,
     completeness_tier: tier,
-    block_issues: blocks.map((b) => ({ code: b.code, path: b.path, message: b.message })),
-    warn_issues: warns.map((w) => ({ code: w.code, path: w.path, message: w.message })),
+    block_issues: blocks.map((b) => ({
+      code: b.code,
+      path: b.path,
+      message: b.message,
+    })),
+    warn_issues: warns.map((w) => ({
+      code: w.code,
+      path: w.path,
+      message: w.message,
+    })),
   });
 }
 
 // 집계
 const overall = {
-  block_total: schemaErrors.length + perReview.reduce((a, r) => a + r.block_issues.length, 0),
+  block_total:
+    schemaErrors.length +
+    perReview.reduce((a, r) => a + r.block_issues.length, 0),
   warn_total: perReview.reduce((a, r) => a + r.warn_issues.length, 0),
   complete: perReview.filter((r) => r.completeness_tier === "complete").length,
-  near_complete: perReview.filter((r) => r.completeness_tier === "near_complete").length,
-  conflicting: perReview.filter((r) => r.completeness_tier === "conflicting").length,
-  incomplete: perReview.filter((r) => r.completeness_tier === "incomplete").length,
+  near_complete: perReview.filter(
+    (r) => r.completeness_tier === "near_complete",
+  ).length,
+  conflicting: perReview.filter((r) => r.completeness_tier === "conflicting")
+    .length,
+  incomplete: perReview.filter((r) => r.completeness_tier === "incomplete")
+    .length,
   schema_ok: schemaOk,
 };
 
@@ -425,7 +524,12 @@ const report = {
   })(),
 };
 
-const OUT_PATH = path.join(ROOT, "pipeline", "reports", "review_feedback_report.json");
+const OUT_PATH = path.join(
+  ROOT,
+  "pipeline",
+  "reports",
+  "review_feedback_report.json",
+);
 fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
 fs.writeFileSync(OUT_PATH, JSON.stringify(report, null, 2), "utf8");
 
@@ -434,8 +538,12 @@ console.log("═".repeat(60));
 console.log(" load_review_results — 불완전 입력 경고 검증");
 console.log("═".repeat(60));
 console.log(`\n입력:      ${path.relative(ROOT, RESULTS_PATH)}`);
-console.log(`엔진 리포트: ${engineReport ? path.relative(ROOT, REPORT_PATH) : "(없음)"}`);
-console.log(`스키마:    ${path.relative(ROOT, SCHEMA_PATH)}  → ${schemaOk ? "OK" : "FAIL"}`);
+console.log(
+  `엔진 리포트: ${engineReport ? path.relative(ROOT, REPORT_PATH) : "(없음)"}`,
+);
+console.log(
+  `스키마:    ${path.relative(ROOT, SCHEMA_PATH)}  → ${schemaOk ? "OK" : "FAIL"}`,
+);
 
 console.log(`\n[총계]`);
 console.log(`  reviews:        ${reviews.length}`);

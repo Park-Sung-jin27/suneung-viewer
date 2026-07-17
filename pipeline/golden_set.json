@@ -3,7 +3,12 @@
   "_runner_official": "node pipeline/quality_gate.mjs --scope=suneung5 --gate5 --golden",
   "_runner_reference": "node pipeline/quality_gate.mjs --scope=suneung5 --gate5   (참고 리포트 전용, 머지 판단 금지)",
   "_tier_policy": {
-    "tier1_block": ["C_figure_missing", "C_marker_pollution", "C_work_mismatch", "H_analysis_id_leak"],
+    "tier1_block": [
+      "C_figure_missing",
+      "C_marker_pollution",
+      "C_work_mismatch",
+      "H_analysis_id_leak"
+    ],
     "tier2_verify": ["C_quote_unreflected", "C_highlight_analysis_divergence"],
     "tier3_no_promote": ["C_pat_mismatch"]
   },
@@ -20,7 +25,11 @@
       "setId": "l2026b",
       "questionId": 25,
       "criteria": ["expression_analysis", "argument_breakdown"],
-      "expected": ["C_quote_unreflected", "W_quote_unreflected", "W_expression_analysis_missing"]
+      "expected": [
+        "C_quote_unreflected",
+        "W_quote_unreflected",
+        "W_expression_analysis_missing"
+      ]
     },
     {
       "year": "2026수능",

@@ -40,8 +40,7 @@ function loadReleaseKeys() {
   try {
     const src = fs.readFileSync("src/dataLoader.js", "utf8");
     const m = src.match(/RELEASE_KEYS\s*=\s*new Set\(\[([\s\S]*?)\]\)/);
-    if (m)
-      for (const mm of m[1].matchAll(/"([^"]+::[^"]+)"/g)) keys.add(mm[1]);
+    if (m) for (const mm of m[1].matchAll(/"([^"]+::[^"]+)"/g)) keys.add(mm[1]);
   } catch {}
   return keys;
 }

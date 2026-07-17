@@ -35,11 +35,16 @@ const BACKUP_DIR = path.resolve(__dirname, "backups");
 
 const SCOPE_PRESETS = {
   모의고사전체: [
-    "2022_6월", "2022_9월",
-    "2023_6월", "2023_9월",
-    "2024_6월", "2024_9월",
-    "2025_6월", "2025_9월",
-    "2026_6월", "2026_9월",
+    "2022_6월",
+    "2022_9월",
+    "2023_6월",
+    "2023_9월",
+    "2024_6월",
+    "2024_9월",
+    "2025_6월",
+    "2025_9월",
+    "2026_6월",
+    "2026_9월",
   ],
   suneung5: ["2022수능", "2023수능", "2024수능", "2025수능", "2026수능"],
 };
@@ -104,23 +109,39 @@ const SYSTEM = `너는 수능 국어 전문 해설 작성자다.
 // ─── 유틸 ────────────────────────────────────────────────────────────────
 async function callWithRetry(fn, max = 3, delay = 4000) {
   for (let i = 0; i < max; i++) {
-    try { return await fn(); }
-    catch (e) {
-      const retryable = e.status === 529 || e.status === 500 || /timeout|Connection/i.test(e.message);
+    try {
+      return await fn();
+    } catch (e) {
+      const retryable =
+        e.status === 529 ||
+        e.status === 500 ||
+        /timeout|Connection/i.test(e.message);
       if (retryable && i < max - 1) {
-        console.warn(`  ⚠️ API 오류(${i+1}/${max}) ${e.message} — ${delay/1000}s 후 재시도`);
-        await new Promise(r => setTimeout(r, delay));
+        console.warn(
+          `  ⚠️ API 오류(${i + 1}/${max}) ${e.message} — ${delay / 1000}s 후 재시도`,
+        );
+        await new Promise((r) => setTimeout(r, delay));
       } else throw e;
     }
   }
 }
 function parseAnalysis(raw) {
-  const text = raw.trim().replace(/^```[a-z]*\n?/i, "").replace(/\n?```$/i, "");
-  try { return JSON.parse(text).analysis; } catch {}
+  const text = raw
+    .trim()
+    .replace(/^```[a-z]*\n?/i, "")
+    .replace(/\n?```$/i, "");
+  try {
+    return JSON.parse(text).analysis;
+  } catch {}
   const m = text.match(/\{[\s\S]*\}/);
   if (m) {
-    try { return JSON.parse(m[0]).analysis; }
-    catch { try { return JSON.parse(jsonrepair(m[0])).analysis; } catch {} }
+    try {
+      return JSON.parse(m[0]).analysis;
+    } catch {
+      try {
+        return JSON.parse(jsonrepair(m[0])).analysis;
+      } catch {}
+    }
   }
   return null;
 }
@@ -153,20 +174,28 @@ async function regenFormat(yearKey, data) {
   }
 
   console.log(`\n[${yearKey}] 타깃 ${targets.length}개 선지 재생성 시작`);
-  let okCount = 0, failCount = 0;
+  let okCount = 0,
+    failCount = 0;
   const failures = [];
 
   for (let i = 0; i < targets.length; i++) {
     const { set, q, c } = targets[i];
     const loc = `${yearKey}/${set.id}/Q${q.id}/#${c.num}`;
     const bogi = q.bogi
-      ? (typeof q.bogi === "string" ? q.bogi : q.bogi.description || "")
+      ? typeof q.bogi === "string"
+        ? q.bogi
+        : q.bogi.description || ""
       : "";
 
     // 지문 본문 (body/verse/author만, figure 제외) 자연어
     const sentsText = (set.sents || [])
-      .filter(s => ["body","verse","footnote","author","workTag"].includes(s.sentType) || !s.sentType)
-      .map(s => s.t || "")
+      .filter(
+        (s) =>
+          ["body", "verse", "footnote", "author", "workTag"].includes(
+            s.sentType,
+          ) || !s.sentType,
+      )
+      .map((s) => s.t || "")
       .join("\n");
 
     const userPrompt = `[지문 본문]
@@ -190,21 +219,30 @@ SYSTEM_PROMPT의 모든 규칙, 특히 [📌 지문 근거 절대 규칙]을 반
 반드시 📌 지문 근거: "지문 원문 직접 인용" 으로 쓸 것. paraphrase 금지.
 출력: { "analysis": "..." }`;
 
-    process.stdout.write(`  [${i+1}/${targets.length}] ${loc} (ok=${c.ok})... `);
+    process.stdout.write(
+      `  [${i + 1}/${targets.length}] ${loc} (ok=${c.ok})... `,
+    );
     try {
       const resp = await callWithRetry(() =>
-        client.messages.create({
-          model: "claude-sonnet-4-5",
-          max_tokens: 2200,
-          system: SYSTEM,
-          messages: [{ role: "user", content: userPrompt }],
-        }, { headers: { "anthropic-beta": "output-128k-2025-02-19" } })
+        client.messages.create(
+          {
+            model: "claude-sonnet-4-5",
+            max_tokens: 2200,
+            system: SYSTEM,
+            messages: [{ role: "user", content: userPrompt }],
+          },
+          { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
+        ),
       );
       const newAna = parseAnalysis(resp.content[0].text);
       if (!newAna) throw new Error("parse fail");
       if (!hasPoduhFormat(newAna)) {
         console.log("⚠️ 포맷 미준수 — skip");
-        failures.push({ loc, reason: "format_fail", preview: newAna.slice(0, 80) });
+        failures.push({
+          loc,
+          reason: "format_fail",
+          preview: newAna.slice(0, 80),
+        });
         failCount++;
         continue;
       }
@@ -213,7 +251,7 @@ SYSTEM_PROMPT의 모든 규칙, 특히 [📌 지문 근거 절대 규칙]을 반
       okCount++;
 
       // 10개마다 중간 저장
-      if ((okCount % 10) === 0) {
+      if (okCount % 10 === 0) {
         fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
       }
     } catch (e) {
@@ -227,7 +265,8 @@ SYSTEM_PROMPT의 모든 규칙, 특히 [📌 지문 근거 절대 규칙]을 반
   console.log(`\n[${yearKey}] 완료 — 성공 ${okCount} / 실패 ${failCount}`);
   if (failures.length > 0 && failures.length <= 20) {
     console.log("실패 목록:");
-    for (const f of failures) console.log(`  ${f.loc} — ${f.reason} ${f.preview||f.msg||""}`);
+    for (const f of failures)
+      console.log(`  ${f.loc} — ${f.reason} ${f.preview || f.msg || ""}`);
   }
   return { targets: targets.length, ok: okCount, fail: failCount };
 }
@@ -236,7 +275,8 @@ SYSTEM_PROMPT의 모든 규칙, 특히 [📌 지문 근거 절대 규칙]을 반
 function countTargets(yearKey, data) {
   const yd = data[yearKey];
   if (!yd) return { missing: true, total: 0, targets: 0, bySet: {} };
-  let total = 0, targets = 0;
+  let total = 0,
+    targets = 0;
   const bySet = {};
   for (const sec of ["reading", "literature"]) {
     for (const set of yd[sec] || []) {
@@ -294,7 +334,9 @@ function countTargets(yearKey, data) {
     const restMin = totalMin % 60;
     console.log(
       `  ${"합계".padEnd(12)} |      | ${String(totalTargets).padStart(4)} | ${String(totalTargets).padStart(13)} | ${
-        totalHr > 0 ? `${totalHr}시간 ${restMin}분` : `${totalMin}분 ${totalSec % 60}초`
+        totalHr > 0
+          ? `${totalHr}시간 ${restMin}분`
+          : `${totalMin}분 ${totalSec % 60}초`
       }`,
     );
 
@@ -310,21 +352,24 @@ function countTargets(yearKey, data) {
     }
 
     console.log("\n[비용 참고]");
-    console.log(`  평균 프롬프트 길이 ~2~3K 토큰 / 응답 ~0.5~1K 토큰 (sonnet 4.5)`);
+    console.log(
+      `  평균 프롬프트 길이 ~2~3K 토큰 / 응답 ~0.5~1K 토큰 (sonnet 4.5)`,
+    );
     console.log(`  총 API 호출: ${totalTargets}회`);
     console.log(`  실패율 ~25% (포맷 미준수 skip) — 2025_9월 실측 기준`);
     if (missingYears.length)
       console.log(`\n⚠️  데이터 없는 연도(스킵): ${missingYears.join(", ")}`);
-    console.log(
-      "\n실제 실행: --dry-run 플래그 제거 후 동일 명령 재실행",
-    );
+    console.log("\n실제 실행: --dry-run 플래그 제거 후 동일 명령 재실행");
     process.exit(0);
   }
 
   // 백업
   if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
   const ts = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
-  const bkp = path.join(BACKUP_DIR, `all_data_204_backup_${ts}_reanalyze_format.json`);
+  const bkp = path.join(
+    BACKUP_DIR,
+    `all_data_204_backup_${ts}_reanalyze_format.json`,
+  );
   fs.copyFileSync(DATA_PATH, bkp);
   console.log(`✅ 백업: ${bkp}`);
 
@@ -339,4 +384,7 @@ function countTargets(yearKey, data) {
   for (const [yr, s] of Object.entries(summary)) {
     console.log(`  ${yr}: 타깃 ${s.targets} / 성공 ${s.ok} / 실패 ${s.fail}`);
   }
-})().catch(e => { console.error("오류:", e); process.exit(1); });
+})().catch((e) => {
+  console.error("오류:", e);
+  process.exit(1);
+});

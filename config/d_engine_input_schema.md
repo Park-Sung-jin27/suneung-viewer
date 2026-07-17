@@ -7,12 +7,12 @@ Claude가 생성한 `analysis`와 `pat`이 실제 오류 구조와 일치하는�
 
 핵심 원칙:
 
-* D엔진은 **분류기**가 아니다.
-* D엔진은 `pat`을 새로 만들지 않는다.
-* D엔진은 **"이 pat이 틀렸다"**만 판정한다.
-* 애매하면 통과시키지 말고 `fail` 또는 사람 검수 경로로 보낸다.
-* Layer 0 precheck의 의미 판단을 계승하지 않는다.
-* `ok`는 참고 메타데이터일 뿐, pat 정당화 근거가 아니다.
+- D엔진은 **분류기**가 아니다.
+- D엔진은 `pat`을 새로 만들지 않는다.
+- D엔진은 **"이 pat이 틀렸다"**만 판정한다.
+- 애매하면 통과시키지 말고 `fail` 또는 사람 검수 경로로 보낸다.
+- Layer 0 precheck의 의미 판단을 계승하지 않는다.
+- `ok`는 참고 메타데이터일 뿐, pat 정당화 근거가 아니다.
 
 ---
 
@@ -40,32 +40,32 @@ Claude가 생성한 `analysis`와 `pat`이 실제 오류 구조와 일치하는�
 
 ### 필드 정의
 
-* `passage`: 지문 전문 또는 해당 선지 판단에 필요한 관련 문단
-* `question_text`: 발문 전문
-* `choice_text`: 선지 전문
-* `analysis`: Claude가 생성한 해설
-* `pat`: Claude가 생성한 현재 pat
-* `ok`: 현재 선지의 지문 사실 일치 여부 메타데이터
-* `questionType`: positive / negative
-* `bogi`: 보기 문항이면 보기 전문, 아니면 null
-* `domain`: reading / literature
-* `precheck_signals`: **참고용 플래그만 허용**
+- `passage`: 지문 전문 또는 해당 선지 판단에 필요한 관련 문단
+- `question_text`: 발문 전문
+- `choice_text`: 선지 전문
+- `analysis`: Claude가 생성한 해설
+- `pat`: Claude가 생성한 현재 pat
+- `ok`: 현재 선지의 지문 사실 일치 여부 메타데이터
+- `questionType`: positive / negative
+- `bogi`: 보기 문항이면 보기 전문, 아니면 null
+- `domain`: reading / literature
+- `precheck_signals`: **참고용 플래그만 허용**
 
-  * `domain_mismatch_detected`: 도메인 위반 감지 여부
-  * `pat_missing_detected`: pat 누락 여부
-  * `composite_label_detected`: 복합 오류 라벨 감지 여부
-  * `bracket_recovery_applied`: exact bracket recovery 적용 여부
+  - `domain_mismatch_detected`: 도메인 위반 감지 여부
+  - `pat_missing_detected`: pat 누락 여부
+  - `composite_label_detected`: 복합 오류 라벨 감지 여부
+  - `bracket_recovery_applied`: exact bracket recovery 적용 여부
 
 ### 입력 금지 사항
 
 다음은 입력에 넣지 않는다.
 
-* `numeric_conflict_detected`
-* `explicit_negation_detected`
-* semantic diff_type
-* entity_match 관련 필드
-* 구조 위치 / 표현 블록 / N-gram 관련 필드
-* suggested pat 후보
+- `numeric_conflict_detected`
+- `explicit_negation_detected`
+- semantic diff_type
+- entity_match 관련 필드
+- 구조 위치 / 표현 블록 / N-gram 관련 필드
+- suggested pat 후보
 
 이유: D엔진 독립성 약화 방지.
 
@@ -85,31 +85,35 @@ Claude가 생성한 `analysis`와 `pat`이 실제 오류 구조와 일치하는�
 
 ### 출력 필드 정의
 
-* `pass`
+- `pass`
 
-  * `true`: 현재 pat/analysis가 반증되지 않음
-  * `false`: 현재 pat/analysis에 구조적 문제가 있음
-* `error_type`
+  - `true`: 현재 pat/analysis가 반증되지 않음
+  - `false`: 현재 pat/analysis에 구조적 문제가 있음
 
-  * 대표 실패 유형 1개
-* `rule_hits`
+- `error_type`
 
-  * 매칭된 규칙 ID 배열
-* `reason`
+  - 대표 실패 유형 1개
 
-  * 1~2문장
-  * fail이면 구조적 이유를 구체적으로 적음
-* `confidence`
+- `rule_hits`
 
-  * high / mid / low
+  - 매칭된 규칙 ID 배열
+
+- `reason`
+
+  - 1~2문장
+  - fail이면 구조적 이유를 구체적으로 적음
+
+- `confidence`
+
+  - high / mid / low
 
 ### 출력 금지 사항
 
-* `suggested_pat`
-* 새 pat enum
-* 재생성된 analysis
-* cs_ids 수정 제안
-* ok 재판정
+- `suggested_pat`
+- 새 pat enum
+- 재생성된 analysis
+- cs_ids 수정 제안
+- ok 재판정
 
 ---
 
@@ -125,9 +129,9 @@ Claude가 생성한 `analysis`와 `pat`이 실제 오류 구조와 일치하는�
 
 예:
 
-* analysis는 인과 전도를 지적하는데 pat=R1
-* analysis는 의미 과잉을 말하는데 pat=L2
-* analysis는 지문에 없는 주장이라고 하는데 pat=R1
+- analysis는 인과 전도를 지적하는데 pat=R1
+- analysis는 의미 과잉을 말하는데 pat=L2
+- analysis는 지문에 없는 주장이라고 하는데 pat=R1
 
 ### E_EVIDENCE_WEAK
 
@@ -135,9 +139,9 @@ analysis의 근거가 선지 판단에 직접 쓰이지 않음.
 
 예:
 
-* 선지의 핵심 조건과 직접 연결되지 않는 문장을 근거로 듦
-* 배경 설명만 있고 판단 근거가 없음
-* 형광펜/근거 문장이 해설 내용과 직접 이어지지 않음
+- 선지의 핵심 조건과 직접 연결되지 않는 문장을 근거로 듦
+- 배경 설명만 있고 판단 근거가 없음
+- 형광펜/근거 문장이 해설 내용과 직접 이어지지 않음
 
 ### E_LOGIC_UNCLEAR
 
@@ -145,9 +149,9 @@ analysis의 논리 전개가 불명확하여 D엔진이 구조 판정을 확신�
 
 예:
 
-* 왜 해당 pat인지 설명이 비약적
-* 결론만 있고 오류 구조 설명이 없음
-* 지문/선지/분석의 연결이 흐림
+- 왜 해당 pat인지 설명이 비약적
+- 결론만 있고 오류 구조 설명이 없음
+- 지문/선지/분석의 연결이 흐림
 
 ### E_CONDITION_MISSING
 
@@ -155,7 +159,7 @@ analysis가 선지의 주요 조건 일부를 누락.
 
 예:
 
-* 선지의 전제 조건, 범위, 보기 적용 조건, 비교 조건을 분석하지 않음
+- 선지의 전제 조건, 범위, 보기 적용 조건, 비교 조건을 분석하지 않음
 
 ### E_DOMAIN_INVALID
 
@@ -163,10 +167,10 @@ analysis가 선지의 주요 조건 일부를 누락.
 
 예:
 
-* reading에서 L계열 pat
-* literature에서 R계열 pat
-* ok:true인데 pat 존재
-* ok:false인데 허용되지 않는 pat 사용
+- reading에서 L계열 pat
+- literature에서 R계열 pat
+- ok:true인데 pat 존재
+- ok:false인데 허용되지 않는 pat 사용
 
 ### E_COMPOSITE_ERROR
 
@@ -174,8 +178,8 @@ analysis가 복합 오류를 말하는데 pat이 단일로 처리됨.
 
 예:
 
-* "과도한 추론 및 내용 왜곡"
-* "소재 기능 오독 + 시적 상황 왜곡"
+- "과도한 추론 및 내용 왜곡"
+- "소재 기능 오독 + 시적 상황 왜곡"
 
 ---
 
@@ -220,14 +224,14 @@ RULE_7_ANALYSIS_TOO_VAGUE
 
 아래면 즉시 fail.
 
-* `domain=reading`인데 `pat ∈ {L1,L2,L3,L4,L5}`
-* `domain=literature`인데 `pat ∈ {R1,R2,R3,R4}`
-* `ok=true`인데 `pat != null`
-* `ok=false`인데 pat가 null이고 bracket recovery도 없음
+- `domain=reading`인데 `pat ∈ {L1,L2,L3,L4,L5}`
+- `domain=literature`인데 `pat ∈ {R1,R2,R3,R4}`
+- `ok=true`인데 `pat != null`
+- `ok=false`인데 pat가 null이고 bracket recovery도 없음
 
 출력:
 
-* `error_type = E_DOMAIN_INVALID`
+- `error_type = E_DOMAIN_INVALID`
 
 ---
 
@@ -237,20 +241,20 @@ RULE_7_ANALYSIS_TOO_VAGUE
 
 예시 기준:
 
-* R1: 사실값/상태/방향 불일치
-* R2: 관계·인과 전도
-* R3: 지문에 없는 내용 / 비약
-* R4: 개념 혼합
-* L1: 표현·형식 오독
-* L2: 정서·태도 오독
-* L3: 주제·의미 과잉
-* L4: 구조·맥락 오류
-* L5: 보기 적용 오류
-* V: 어휘 치환·문맥 의미 오류
+- R1: 사실값/상태/방향 불일치
+- R2: 관계·인과 전도
+- R3: 지문에 없는 내용 / 비약
+- R4: 개념 혼합
+- L1: 표현·형식 오독
+- L2: 정서·태도 오독
+- L3: 주제·의미 과잉
+- L4: 구조·맥락 오류
+- L5: 보기 적용 오류
+- V: 어휘 치환·문맥 의미 오류
 
 출력:
 
-* `error_type = P_MISMATCH`
+- `error_type = P_MISMATCH`
 
 ---
 
@@ -260,13 +264,13 @@ analysis의 근거가 선지 판단에 직접 쓰이지 않으면 fail.
 
 판정 질문:
 
-* analysis의 📌 근거가 선지의 핵심 주장에 직접 연결되는가?
-* 왜 맞고/틀린지 판단하는 데 필요한 문장인가?
-* 단순 배경 정보나 주변 설명만 제시한 것은 아닌가?
+- analysis의 📌 근거가 선지의 핵심 주장에 직접 연결되는가?
+- 왜 맞고/틀린지 판단하는 데 필요한 문장인가?
+- 단순 배경 정보나 주변 설명만 제시한 것은 아닌가?
 
 출력:
 
-* `error_type = E_EVIDENCE_WEAK`
+- `error_type = E_EVIDENCE_WEAK`
 
 ---
 
@@ -276,12 +280,12 @@ analysis가 선지의 핵심 조건을 빠뜨리면 fail.
 
 판정 질문:
 
-* 선지의 범위/조건/비교/전제/보기 적용 요소를 모두 다뤘는가?
-* 복합 선지라면 각 조건을 분해해 검증했는가?
+- 선지의 범위/조건/비교/전제/보기 적용 요소를 모두 다뤘는가?
+- 복합 선지라면 각 조건을 분해해 검증했는가?
 
 출력:
 
-* `error_type = E_CONDITION_MISSING`
+- `error_type = E_CONDITION_MISSING`
 
 ---
 
@@ -291,13 +295,13 @@ analysis가 둘 이상의 오류 구조를 동시에 말하면 fail.
 
 탐지 예:
 
-* "및", "+", "/"
-* "A도 틀리고 B도 틀리다" 식 복합 설명
-* 사실 왜곡 + 추론 비약 동시 언급
+- "및", "+", "/"
+- "A도 틀리고 B도 틀리다" 식 복합 설명
+- 사실 왜곡 + 추론 비약 동시 언급
 
 출력:
 
-* `error_type = E_COMPOSITE_ERROR`
+- `error_type = E_COMPOSITE_ERROR`
 
 ---
 
@@ -307,13 +311,13 @@ analysis가 pat 검증에 필요한 구조 설명을 제공하지 못하면 fail
 
 예:
 
-* "지문과 다르다"만 있고 왜 다른지 없음
-* "없다"만 있고 왜 없는지 없음
-* 3~4등급 학생도 따라가기 어려울 정도로 압축
+- "지문과 다르다"만 있고 왜 다른지 없음
+- "없다"만 있고 왜 없는지 없음
+- 3~4등급 학생도 따라가기 어려울 정도로 압축
 
 출력:
 
-* `error_type = E_LOGIC_UNCLEAR`
+- `error_type = E_LOGIC_UNCLEAR`
 
 ---
 
@@ -321,20 +325,20 @@ analysis가 pat 검증에 필요한 구조 설명을 제공하지 못하면 fail
 
 ### 하는 것
 
-* pat vs analysis 구조 일치성 검증
-* 근거 직접성 검증
-* 조건 누락 검증
-* 복합 오류 검증
-* 도메인 규칙 검증
+- pat vs analysis 구조 일치성 검증
+- 근거 직접성 검증
+- 조건 누락 검증
+- 복합 오류 검증
+- 도메인 규칙 검증
 
 ### 하지 않는 것
 
-* 새 pat 생성
-* ok 재판정
-* cs_ids 재매핑
-* 지문 전체의 사실 진위 판단
-* 선지 자체 품질 평가
-* Layer 0 semantic 대체
+- 새 pat 생성
+- ok 재판정
+- cs_ids 재매핑
+- 지문 전체의 사실 진위 판단
+- 선지 자체 품질 평가
+- Layer 0 semantic 대체
 
 ---
 
@@ -342,20 +346,20 @@ analysis가 pat 검증에 필요한 구조 설명을 제공하지 못하면 fail
 
 ### high
 
-* 규칙 위반이 명확
-* rule_hits가 직접적
-* reason을 1~2문장으로 명확히 쓸 수 있음
+- 규칙 위반이 명확
+- rule_hits가 직접적
+- reason을 1~2문장으로 명확히 쓸 수 있음
 
 ### mid
 
-* 위반은 보이지만 analysis 표현이 다소 애매
-* 재생성하면 개선 가능성이 높음
+- 위반은 보이지만 analysis 표현이 다소 애매
+- 재생성하면 개선 가능성이 높음
 
 ### low
 
-* analysis 자체가 지나치게 모호함
-* 규칙 위반이 확정적이지 않음
-* 사람 검수 없이는 안전 판정이 어려움
+- analysis 자체가 지나치게 모호함
+- 규칙 위반이 확정적이지 않음
+- 사람 검수 없이는 안전 판정이 어려움
 
 ### 중요 규칙
 
@@ -365,7 +369,7 @@ confidence=low 이면 pass=true 금지
 
 즉:
 
-* `confidence=low` → 항상 `pass=false`
+- `confidence=low` → 항상 `pass=false`
 
 ---
 
@@ -475,10 +479,10 @@ confidence=low > 40% → analysis 품질 또는 gold sample 확장 필요
 
 ### Stage 1. 오프라인 검증
 
-* 2026 독서 4세트 대상
-* Step3 출력 결과를 D엔진에 batch 투입
-* D fail 건 사람 audit
-* KPI 측정
+- 2026 독서 4세트 대상
+- Step3 출력 결과를 D엔진에 batch 투입
+- D fail 건 사람 audit
+- KPI 측정
 
 ### Stage 2. 파이프라인 통합
 
@@ -489,9 +493,9 @@ Step3 → precheck → D엔진 → (fail 시 Step3 재호출 1회) → 확정
 
 ### Stage 3. 확장
 
-* R3, R4
-* 문학 L1~L5
-* gold sample 점진 확대
+- R3, R4
+- 문학 L1~L5
+- gold sample 점진 확대
 
 ---
 
@@ -499,16 +503,16 @@ Step3 → precheck → D엔진 → (fail 시 Step3 재호출 1회) → 확정
 
 Layer 0은 아래를 절대 하지 않는다.
 
-* semantic diff_type 확정
-* value_conflict → pat 자동 부여
-* entity_match / 핵심 개념어 / 표현 블록 / 구조 위치 일치
-* "같은 대상인가?" 판단
-* suggested pat 생성
+- semantic diff_type 확정
+- value_conflict → pat 자동 부여
+- entity_match / 핵심 개념어 / 표현 블록 / 구조 위치 일치
+- "같은 대상인가?" 판단
+- suggested pat 생성
 
 Layer 0은 아래만 수행한다.
 
-* domain mismatch 감지
-* pat missing 감지
-* composite label 감지
-* bracket recovery(A-1 only)
-* supporting flag 기록
+- domain mismatch 감지
+- pat missing 감지
+- composite label 감지
+- bracket recovery(A-1 only)
+- supporting flag 기록

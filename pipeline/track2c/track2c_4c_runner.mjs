@@ -26,7 +26,10 @@ dotenv.config({ path: path.resolve(__dirname, "../../.env"), override: true });
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const MODEL = "claude-sonnet-4-5";
 const BETA_HEADER = { headers: { "anthropic-beta": "output-128k-2025-02-19" } };
-const DATA_PATH = path.resolve(__dirname, "../../public/data/all_data_204.json");
+const DATA_PATH = path.resolve(
+  __dirname,
+  "../../public/data/all_data_204.json",
+);
 const OUTPUT_PATH = path.resolve(__dirname, "./4c_results.json");
 
 // ============================================================
@@ -145,7 +148,10 @@ function buildSystemPrompt(setId, runId) {
 }
 
 function parseJSON(text) {
-  const cleaned = text.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
+  const cleaned = text
+    .replace(/```json\n?/g, "")
+    .replace(/```\n?/g, "")
+    .trim();
   return JSON.parse(cleaned);
 }
 
@@ -261,7 +267,9 @@ async function main() {
   for (let run = 1; run <= RUNS; run++) {
     for (const num of TARGET_CHOICE_NUMS) {
       const runId = `2026-04-30-MA_optI-${run}-${TARGET_SET}-q${TARGET_QID}-c${num}`;
-      console.log(`[opt-i run ${run}] ${TARGET_SET} Q${TARGET_QID} #${num} ...`);
+      console.log(
+        `[opt-i run ${run}] ${TARGET_SET} Q${TARGET_QID} #${num} ...`,
+      );
       try {
         const result = await callIsolatedWithOptI(
           set,
@@ -309,14 +317,19 @@ async function main() {
     total_output_tokens: totalOutputTokens,
     cost_estimate_usd: costEstimateUsd,
     option_i_template: OPTION_I_TEMPLATE,
-    option_i_resolved_example: OPTION_I_TEMPLATE.replace("{set_id}", TARGET_SET),
+    option_i_resolved_example: OPTION_I_TEMPLATE.replace(
+      "{set_id}",
+      TARGET_SET,
+    ),
     system_prompt_source:
       "pipeline/step3_analysis.js L130~L216 (current modified state, 2026-04-22) + 옵션 i 1줄",
   };
 
   await fs.writeFile(OUTPUT_PATH, JSON.stringify(results, null, 2), "utf8");
   console.log(`\n[4-c] 완료. 결과: ${OUTPUT_PATH}`);
-  console.log(`[4-c] 총 토큰: in ${totalInputTokens} / out ${totalOutputTokens}`);
+  console.log(
+    `[4-c] 총 토큰: in ${totalInputTokens} / out ${totalOutputTokens}`,
+  );
   console.log(`[4-c] 비용 추정: $${costEstimateUsd.toFixed(4)}`);
 }
 

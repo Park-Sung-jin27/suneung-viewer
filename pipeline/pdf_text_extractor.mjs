@@ -48,8 +48,7 @@ const Q_HEADER_RE = /^\s*(\d{1,2})\.\s*(?:\t|\s{2,})?(.*)$/;
 const LEADING_CIRCLED_RE = /^\s*([①②③④⑤])\s*(.*)$/;
 const LEADING_NUMBER_RE = /^\s*([1-5])\.\s+(.+)$/;
 // trailing: 끝에 '··· ①' 또는 '...  ①' — 점/공백 3자+ 후 원문자 + 종료
-const TRAILING_CIRCLED_RE =
-  /^(.*?)[·…\.\s]{3,}([①②③④⑤])\s*$/;
+const TRAILING_CIRCLED_RE = /^(.*?)[·…\.\s]{3,}([①②③④⑤])\s*$/;
 
 function circledToNum(ch) {
   const i = "①②③④⑤".indexOf(ch);
@@ -122,7 +121,9 @@ export function parseQuestionBlocks(fullText) {
         // 연속성 체크: 현재 선지가 없거나 num === 이전 num + 1 인 경우만 인정
         const prev = current._currentChoice;
         const acceptable =
-          !prev || num === prev.num + 1 || (num === 1 && current.choices.length === 0);
+          !prev ||
+          num === prev.num + 1 ||
+          (num === 1 && current.choices.length === 0);
         if (acceptable && num >= 1 && num <= 5) {
           current._section = "choice";
           current._currentChoice = { num, lines: [mB[2]] };
@@ -184,9 +185,8 @@ function isActivitySheet(rawLines) {
   const joined = rawLines.join("\n");
   const hasConceptHeader = /\[핵심 개념/.test(joined);
   const bulletCount = (joined.match(/(^|\n)\s*∙/g) || []).length;
-  const trailingMarkerCount = (
-    joined.match(/[·…\.\s]{3,}[①②③④⑤]\s*$/gm) || []
-  ).length;
+  const trailingMarkerCount = (joined.match(/[·…\.\s]{3,}[①②③④⑤]\s*$/gm) || [])
+    .length;
   return hasConceptHeader && bulletCount >= 4 && trailingMarkerCount >= 3;
 }
 
@@ -319,7 +319,10 @@ const MARKER_SETS = {
   circled_hangul: { chars: "㉠㉡㉢㉣㉤".split(""), label: "㉠~㉤" },
   circled_number: { chars: "①②③④⑤".split(""), label: "①~⑤" },
   circled_latin: { chars: "ⓐⓑⓒⓓⓔ".split(""), label: "ⓐ~ⓔ" },
-  section_bracket: { chars: ["(가)", "(나)", "(다)", "(라)"], label: "(가)~(라)" },
+  section_bracket: {
+    chars: ["(가)", "(나)", "(다)", "(라)"],
+    label: "(가)~(라)",
+  },
   square_letter: { chars: ["[A]", "[B]", "[C]"], label: "[A]~[C]" },
 };
 

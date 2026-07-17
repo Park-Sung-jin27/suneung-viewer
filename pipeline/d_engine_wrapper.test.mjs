@@ -22,7 +22,7 @@ import { callDEngineWithMajority } from "./d_engine_wrapper.mjs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const GOLD_PATH = pathResolve(
   __dirname,
-  "../config/d_engine_gold_samples_phase1.json"
+  "../config/d_engine_gold_samples_phase1.json",
 );
 const GOLD = JSON.parse(readFileSync(GOLD_PATH, "utf-8"));
 const SAMPLES = GOLD.samples; // 17개
@@ -112,7 +112,9 @@ async function main() {
   console.log("\n[§4.1 wrapper 회귀 테스트 12건]");
 
   // ── 케이스 1: Phase 1 Gold 17개 회귀 ────────────────────────────
-  console.log("\n1. Phase 1 Gold 17개 회귀 (single_pass 16 + majority_accepted 1)");
+  console.log(
+    "\n1. Phase 1 Gold 17개 회귀 (single_pass 16 + majority_accepted 1)",
+  );
   {
     let countSinglePass = 0;
     let countMajorityAccepted = 0;
@@ -147,18 +149,18 @@ async function main() {
     });
     ok(
       "trigger_reason = rule_7_detected",
-      out.metadata.trigger_reason === "rule_7_detected"
+      out.metadata.trigger_reason === "rule_7_detected",
     );
     ok("run_count = 3", out.metadata.run_count === 3);
     ok("runs.length = 3", out.metadata.runs.length === 3);
     ok(
       "final.error_type = E_LOGIC_UNCLEAR",
-      out.final.error_type === "E_LOGIC_UNCLEAR"
+      out.final.error_type === "E_LOGIC_UNCLEAR",
     );
     ok(
       "final.rule_hits intersection 보존",
       JSON.stringify(out.final.rule_hits) ===
-        JSON.stringify(["RULE_7_ANALYSIS_TOO_VAGUE"])
+        JSON.stringify(["RULE_7_ANALYSIS_TOO_VAGUE"]),
     );
   }
 
@@ -172,15 +174,18 @@ async function main() {
     ok("decision = single_pass", out.decision === "single_pass");
     ok(
       "trigger_reason = no_trigger",
-      out.metadata.trigger_reason === "no_trigger"
+      out.metadata.trigger_reason === "no_trigger",
     );
     ok("run_count = 1", out.metadata.run_count === 1);
     ok("runs.length = 1", out.metadata.runs.length === 1);
-    ok("low_confidence_flag = false (v1.1-5)", out.metadata.low_confidence_flag === false);
+    ok(
+      "low_confidence_flag = false (v1.1-5)",
+      out.metadata.low_confidence_flag === false,
+    );
     ok("discarded_rule_hits = null", out.metadata.discarded_rule_hits === null);
     ok(
       "candidate_for_human_review = false",
-      out.metadata.candidate_for_human_review === false
+      out.metadata.candidate_for_human_review === false,
     );
   }
 
@@ -195,7 +200,7 @@ async function main() {
     await expectThrow("필수 필드 누락 throw", async () => {
       await callDEngineWithMajority(
         { passage: "x" /* 나머지 9개 누락 */ },
-        { caller: spyCaller }
+        { caller: spyCaller },
       );
     });
     ok("caller 호출 안 됨", callerCalled === false);
@@ -217,11 +222,9 @@ async function main() {
         max_format_retries: 0,
       });
     });
-    ok(
-      "caller 호출 정확히 max_caller_retries+1회 (= 2회)",
-      attempts === 2,
-      { attempts }
-    );
+    ok("caller 호출 정확히 max_caller_retries+1회 (= 2회)", attempts === 2, {
+      attempts,
+    });
   }
 
   // ── 케이스 6: 형식 오류 후 정상 회복 (E2 보강) ──────────────────
@@ -229,7 +232,7 @@ async function main() {
   {
     const input = getInput("gold_R1_001");
     const validResponse = JSON.parse(
-      JSON.stringify(SAMPLES[0].expected_output)
+      JSON.stringify(SAMPLES[0].expected_output),
     );
     const seq = makeMockCallerWithSequence([
       { pass: true /* invalid */ }, // 1차: 형식 오류
@@ -249,8 +252,8 @@ async function main() {
     const input = getInput("gold_R1_006"); // RULE_7 트리거 sample
     const expected = JSON.parse(
       JSON.stringify(
-        SAMPLES.find((s) => s.sample_id === "gold_R1_006").expected_output
-      )
+        SAMPLES.find((s) => s.sample_id === "gold_R1_006").expected_output,
+      ),
     );
     const seq = makeMockCallerWithSequence([
       expected, // 1차 정상
@@ -267,12 +270,15 @@ async function main() {
     ok("final = null", out.final === null);
     ok(
       "candidate_for_human_review = true",
-      out.metadata.candidate_for_human_review === true
+      out.metadata.candidate_for_human_review === true,
     );
-    ok("errors 기록", Array.isArray(out.metadata.errors) && out.metadata.errors.length >= 1);
+    ok(
+      "errors 기록",
+      Array.isArray(out.metadata.errors) && out.metadata.errors.length >= 1,
+    );
     ok(
       "errors[0].error_level = caller (v1.1-6)",
-      out.metadata.errors[0].error_level === "caller"
+      out.metadata.errors[0].error_level === "caller",
     );
   }
 
@@ -290,22 +296,22 @@ async function main() {
     ok("majority_count 존재", typeof m.majority_count === "number");
     ok(
       "low_confidence_flag boolean",
-      typeof m.low_confidence_flag === "boolean"
+      typeof m.low_confidence_flag === "boolean",
     );
     ok(
       "discarded_rule_hits string[] | null",
-      m.discarded_rule_hits === null || Array.isArray(m.discarded_rule_hits)
+      m.discarded_rule_hits === null || Array.isArray(m.discarded_rule_hits),
     );
     ok(
       "candidate_for_human_review boolean",
-      typeof m.candidate_for_human_review === "boolean"
+      typeof m.candidate_for_human_review === "boolean",
     );
     ok("runs Array", Array.isArray(m.runs));
-    ok("timestamp ISO 8601", typeof m.timestamp === "string" && m.timestamp.includes("T"));
     ok(
-      "api_call_durations_ms Array",
-      Array.isArray(m.api_call_durations_ms)
+      "timestamp ISO 8601",
+      typeof m.timestamp === "string" && m.timestamp.includes("T"),
     );
+    ok("api_call_durations_ms Array", Array.isArray(m.api_call_durations_ms));
   }
 
   // ── 케이스 9: timestamp + api_call_durations_ms 정확성 ──────────
@@ -325,12 +331,12 @@ async function main() {
     });
     ok(
       "api_call_durations_ms.length === 1 (single_pass)",
-      out.metadata.api_call_durations_ms.length === 1
+      out.metadata.api_call_durations_ms.length === 1,
     );
     ok(
       "duration is number >= 0",
       typeof out.metadata.api_call_durations_ms[0] === "number" &&
-        out.metadata.api_call_durations_ms[0] >= 0
+        out.metadata.api_call_durations_ms[0] >= 0,
     );
   }
 
@@ -342,14 +348,11 @@ async function main() {
       caller: defaultMockCaller,
       parallel: true,
     });
-    ok(
-      "decision = majority_accepted",
-      out.decision === "majority_accepted"
-    );
+    ok("decision = majority_accepted", out.decision === "majority_accepted");
     ok("runs.length === 3", out.metadata.runs.length === 3);
     ok(
       "api_call_durations_ms.length === 3",
-      out.metadata.api_call_durations_ms.length === 3
+      out.metadata.api_call_durations_ms.length === 3,
     );
   }
 
@@ -369,11 +372,11 @@ async function main() {
     });
     ok(
       "decision = single_pass (RULE_7 미발동)",
-      out.decision === "single_pass"
+      out.decision === "single_pass",
     );
     ok(
       "final.error_type = P_MISMATCH (caller 그대로)",
-      out.final.error_type === "P_MISMATCH"
+      out.final.error_type === "P_MISMATCH",
     );
     ok("final.pass = false (caller 그대로)", out.final.pass === false);
   }
@@ -423,7 +426,8 @@ async function main() {
     console.log(`\n실패 ${failed}건:`);
     for (const f of failures) {
       console.log(`  - ${f.label}`);
-      if (f.info !== undefined) console.log(`    info: ${JSON.stringify(f.info)}`);
+      if (f.info !== undefined)
+        console.log(`    info: ${JSON.stringify(f.info)}`);
     }
     process.exit(1);
   } else {

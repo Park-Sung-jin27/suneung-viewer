@@ -67,7 +67,10 @@ function DataTable({ instruction, headers, rows }) {
 
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} style={{ background: i % 2 === 0 ? "#fff" : "#fafafa" }}>
+            <tr
+              key={i}
+              style={{ background: i % 2 === 0 ? "#fff" : "#fafafa" }}
+            >
               <td
                 style={{
                   padding: "8px 10px",

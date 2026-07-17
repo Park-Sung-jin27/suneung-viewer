@@ -42,23 +42,24 @@
       "P_MISMATCH": 1,
       "_total": 2,
       "_samples": ["gold_R1_010", "gold_R1_008"]
-    },"discarded_samples": [
-  {
-    "sample_id": "gold_R1_010",
-    "planned": "fail / E_LOGIC_UNCLEAR",
-    "reason": "3/3 NONE 판정. 엔진 RULE_7 미감지 확정. HANDOVER_QUALITY_REVIEWER.md 2026-04-24 기록 참조.",
-    "date": "2026-04-24"
-  },
-  {
-    "sample_id": "gold_R1_008",
-    "planned": "fail / P_MISMATCH (경계 케이스, R4→R2 흡수 의도)",
-    "reason": "Phase 1 옵션 A 채택 시 P_MISMATCH 분포 4건 충분으로 폐기. 향후 의제 4 (R4→R2 흡수) 분석 시 참조 자료로 보존.",
-    "date": "2026-04-25",
-    "verification_history": "GPT-5 3회 검증에서 3/3 R2 해석 (작성 의도는 R4였음)"
-  }
-],
-"phase_a_completion_date": "2026-04-24",
-"phase_a_status": "COMPLETE",
+    },
+    "discarded_samples": [
+      {
+        "sample_id": "gold_R1_010",
+        "planned": "fail / E_LOGIC_UNCLEAR",
+        "reason": "3/3 NONE 판정. 엔진 RULE_7 미감지 확정. HANDOVER_QUALITY_REVIEWER.md 2026-04-24 기록 참조.",
+        "date": "2026-04-24"
+      },
+      {
+        "sample_id": "gold_R1_008",
+        "planned": "fail / P_MISMATCH (경계 케이스, R4→R2 흡수 의도)",
+        "reason": "Phase 1 옵션 A 채택 시 P_MISMATCH 분포 4건 충분으로 폐기. 향후 의제 4 (R4→R2 흡수) 분석 시 참조 자료로 보존.",
+        "date": "2026-04-25",
+        "verification_history": "GPT-5 3회 검증에서 3/3 R2 해석 (작성 의도는 R4였음)"
+      }
+    ],
+    "phase_a_completion_date": "2026-04-24",
+    "phase_a_status": "COMPLETE",
     "coverage": {
       "currently_covered_error_types": [
         "NONE",
@@ -125,9 +126,7 @@
       "intent_validation": {
         "target_failure_mode": "NONE",
         "forbidden_alternatives": [],
-        "acceptable_confidence": [
-          "high"
-        ]
+        "acceptable_confidence": ["high"]
       }
     },
     {
@@ -160,9 +159,7 @@
       "expected_output": {
         "pass": false,
         "error_type": "P_MISMATCH",
-        "rule_hits": [
-          "RULE_1_PAT_DEFINITION_MISMATCH"
-        ],
+        "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
         "reason": "지문의 핵심 오류 구조는 단순 사실값 왜곡이 아니라 원인과 결과의 관계를 뒤집은 관계·인과 전도이다.",
         "confidence": "high"
       },
@@ -170,14 +167,8 @@
       "test_intent": "R1 오분류를 P_MISMATCH로 잡는 케이스",
       "intent_validation": {
         "target_failure_mode": "P_MISMATCH",
-        "forbidden_alternatives": [
-          "E_LOGIC_UNCLEAR",
-          "E_EVIDENCE_WEAK"
-        ],
-        "acceptable_confidence": [
-          "high",
-          "mid"
-        ]
+        "forbidden_alternatives": ["E_LOGIC_UNCLEAR", "E_EVIDENCE_WEAK"],
+        "acceptable_confidence": ["high", "mid"]
       }
     },
     {
@@ -210,10 +201,7 @@
       "expected_output": {
         "pass": false,
         "error_type": "E_CONDITION_MISSING",
-        "rule_hits": [
-          "RULE_2_EVIDENCE_NOT_DIRECT",
-          "RULE_3_CONDITION_MISSING"
-        ],
+        "rule_hits": ["RULE_2_EVIDENCE_NOT_DIRECT", "RULE_3_CONDITION_MISSING"],
         "reason": "analysis의 근거는 선지의 핵심 조건(참여자 수 증가-서비스 가치 상승)을 직접 다루지 않으며, 선지 주요 조건 자체가 반영되지 않았다.",
         "confidence": "high"
       },
@@ -221,15 +209,8 @@
       "test_intent": "근거 문장이 선지 조건과 무관하고 선지 조건 자체가 analysis에 반영되지 않은 케이스",
       "intent_validation": {
         "target_failure_mode": "E_CONDITION_MISSING",
-        "forbidden_alternatives": [
-          "NONE",
-          "P_MISMATCH",
-          "E_COMPOSITE_ERROR"
-        ],
-        "acceptable_confidence": [
-          "high",
-          "mid"
-        ]
+        "forbidden_alternatives": ["NONE", "P_MISMATCH", "E_COMPOSITE_ERROR"],
+        "acceptable_confidence": ["high", "mid"]
       }
     },
     {
@@ -271,9 +252,7 @@
       "intent_validation": {
         "target_failure_mode": "NONE",
         "forbidden_alternatives": [],
-        "acceptable_confidence": [
-          "high"
-        ]
+        "acceptable_confidence": ["high"]
       }
     },
     {
@@ -317,14 +296,8 @@
       "test_intent": "복합 오류를 단일 pat에 꽂은 케이스",
       "intent_validation": {
         "target_failure_mode": "E_COMPOSITE_ERROR",
-        "forbidden_alternatives": [
-          "P_MISMATCH",
-          "NONE"
-        ],
-        "acceptable_confidence": [
-          "high",
-          "mid"
-        ]
+        "forbidden_alternatives": ["P_MISMATCH", "NONE"],
+        "acceptable_confidence": ["high", "mid"]
       }
     },
     {
@@ -364,9 +337,7 @@
       "intent_validation": {
         "target_failure_mode": "NONE",
         "forbidden_alternatives": [],
-        "acceptable_confidence": [
-          "high"
-        ]
+        "acceptable_confidence": ["high"]
       }
     },
     {
@@ -397,9 +368,7 @@
       "expected_output": {
         "pass": false,
         "error_type": "P_MISMATCH",
-        "rule_hits": [
-          "RULE_1_PAT_DEFINITION_MISMATCH"
-        ],
+        "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
         "reason": "analysis는 '단순한 값 반전이 아니라 역할 대응 관계의 반전'이라고 명시하며 두 주체의 역할 반전을 지적한다. 이는 관계·인과 전도(R2)의 구조이며, 단일 사실값/상태의 왜곡(R1)과 구조가 다르다.",
         "confidence": "high"
       },
@@ -407,14 +376,8 @@
       "test_intent": "관계 전도 구조(R2)를 R1로 오분류한 P_MISMATCH 경계 케이스 (analysis 본문에 값 반전 아닌 관계 반전 명시)",
       "intent_validation": {
         "target_failure_mode": "P_MISMATCH",
-        "forbidden_alternatives": [
-          "NONE",
-          "E_LOGIC_UNCLEAR"
-        ],
-        "acceptable_confidence": [
-          "high",
-          "mid"
-        ]
+        "forbidden_alternatives": ["NONE", "E_LOGIC_UNCLEAR"],
+        "acceptable_confidence": ["high", "mid"]
       }
     },
     {
@@ -445,9 +408,7 @@
       "expected_output": {
         "pass": false,
         "error_type": "E_LOGIC_UNCLEAR",
-        "rule_hits": [
-          "RULE_7_ANALYSIS_TOO_VAGUE"
-        ],
+        "rule_hits": ["RULE_7_ANALYSIS_TOO_VAGUE"],
         "reason": "근거 문장은 맞지만, 그 근거가 선지 주장과 어떻게 충돌하는지 설명하지 않아 논리 전개가 불명확하다.",
         "confidence": "high"
       },
@@ -455,14 +416,8 @@
       "test_intent": "근거는 정확하나 근거→선지 판단의 논리 연결이 빠진 E_LOGIC_UNCLEAR 단일 케이스",
       "intent_validation": {
         "target_failure_mode": "E_LOGIC_UNCLEAR",
-        "forbidden_alternatives": [
-          "NONE",
-          "P_MISMATCH"
-        ],
-        "acceptable_confidence": [
-          "high",
-          "mid"
-        ]
+        "forbidden_alternatives": ["NONE", "P_MISMATCH"],
+        "acceptable_confidence": ["high", "mid"]
       }
     },
     {
@@ -502,9 +457,7 @@
       "intent_validation": {
         "target_failure_mode": "NONE",
         "forbidden_alternatives": [],
-        "acceptable_confidence": [
-          "high"
-        ]
+        "acceptable_confidence": ["high"]
       }
     },
     {
@@ -535,9 +488,7 @@
       "expected_output": {
         "pass": false,
         "error_type": "P_MISMATCH",
-        "rule_hits": [
-          "RULE_1_PAT_DEFINITION_MISMATCH"
-        ],
+        "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
         "reason": "analysis는 동일 조건에서 결과 방향만 반대로 바꾼 것이라고 설명한다. 두 실체의 역할 교환이 아니라 단일 결과값의 방향 반전이므로 구조는 R1에 해당하며, R2와 일치하지 않는다.",
         "confidence": "high"
       },
@@ -545,13 +496,8 @@
       "test_intent": "단일 결과값 방향 반전(R1)을 R2로 오분류한 P_MISMATCH 경계 케이스",
       "intent_validation": {
         "target_failure_mode": "P_MISMATCH",
-        "forbidden_alternatives": [
-          "NONE"
-        ],
-        "acceptable_confidence": [
-          "high",
-          "mid"
-        ]
+        "forbidden_alternatives": ["NONE"],
+        "acceptable_confidence": ["high", "mid"]
       }
     },
     {
@@ -593,9 +539,7 @@
       "intent_validation": {
         "target_failure_mode": "NONE",
         "forbidden_alternatives": [],
-        "acceptable_confidence": [
-          "high"
-        ]
+        "acceptable_confidence": ["high"]
       }
     },
     {
@@ -637,9 +581,7 @@
       "intent_validation": {
         "target_failure_mode": "NONE",
         "forbidden_alternatives": [],
-        "acceptable_confidence": [
-          "high"
-        ]
+        "acceptable_confidence": ["high"]
       }
     },
     {
@@ -681,12 +623,8 @@
       "test_intent": "domain 규칙 + pat 정의 불일치가 동시에 위반된 케이스 (인문 지문 + '주제적' 표현 함정 포함)",
       "intent_validation": {
         "target_failure_mode": "E_DOMAIN_INVALID",
-        "forbidden_alternatives": [
-          "NONE"
-        ],
-        "acceptable_confidence": [
-          "high"
-        ]
+        "forbidden_alternatives": ["NONE"],
+        "acceptable_confidence": ["high"]
       }
     },
     {
@@ -728,13 +666,8 @@
       "test_intent": "ok:true + pat 존재라는 형식 모순이 있는 케이스. analysis가 선지를 긍정해도 pat 적용 대상 자체가 아님.",
       "intent_validation": {
         "target_failure_mode": "P_MISMATCH",
-        "forbidden_alternatives": [
-          "NONE",
-          "E_DOMAIN_INVALID"
-        ],
-        "acceptable_confidence": [
-          "high"
-        ]
+        "forbidden_alternatives": ["NONE", "E_DOMAIN_INVALID"],
+        "acceptable_confidence": ["high"]
       }
     },
     {
@@ -767,9 +700,7 @@
       "expected_output": {
         "pass": false,
         "error_type": "E_CONDITION_MISSING",
-        "rule_hits": [
-          "RULE_3_CONDITION_MISSING"
-        ],
+        "rule_hits": ["RULE_3_CONDITION_MISSING"],
         "reason": "선지는 (1) 합의만으로는 성립하지 않음, (2) 계약서 작성이 필수 요건이라는 두 조건을 병렬로 주장하지만, analysis는 첫 조건만 명시적으로 다루고 두 번째 조건은 '직접 검토하지 않는다'고 스스로 명시한다.",
         "confidence": "high"
       },
@@ -783,10 +714,7 @@
           "E_COMPOSITE_ERROR",
           "E_EVIDENCE_WEAK"
         ],
-        "acceptable_confidence": [
-          "high",
-          "mid"
-        ]
+        "acceptable_confidence": ["high", "mid"]
       }
     },
     {
@@ -819,9 +747,7 @@
       "expected_output": {
         "pass": false,
         "error_type": "E_EVIDENCE_WEAK",
-        "rule_hits": [
-          "RULE_2_EVIDENCE_NOT_DIRECT"
-        ],
+        "rule_hits": ["RULE_2_EVIDENCE_NOT_DIRECT"],
         "reason": "analysis가 인용한 근거('중앙 관리자 없이 운영된다')는 블록체인 주제와 관련은 있으나 선지의 핵심 주장('위변조 용이')을 직접 반박하지 못한다. 지문에는 '위변조가 사실상 불가능하다'는 직접 반박 문장이 있음에도 analysis가 이를 인용하지 않았다.",
         "confidence": "high"
       },
@@ -836,10 +762,7 @@
           "E_COMPOSITE_ERROR",
           "E_LOGIC_UNCLEAR"
         ],
-        "acceptable_confidence": [
-          "high",
-          "mid"
-        ],
+        "acceptable_confidence": ["high", "mid"],
         "evidence_weak_subtype": "B_TOPIC_RELEVANT_NON_CAUSAL"
       }
     },
@@ -884,13 +807,8 @@
       "test_intent": "두 독립 오류 구조(R2 + R1)가 analysis에 병렬 명시된 상태에서 단일 pat으로 처리된 E_COMPOSITE_ERROR 케이스",
       "intent_validation": {
         "target_failure_mode": "E_COMPOSITE_ERROR",
-        "forbidden_alternatives": [
-          "NONE",
-          "P_MISMATCH"
-        ],
-        "acceptable_confidence": [
-          "high"
-        ],
+        "forbidden_alternatives": ["NONE", "P_MISMATCH"],
+        "acceptable_confidence": ["high"],
         "acceptable_rule_hits_variants": [
           ["RULE_4_COMPOSITE_ERROR"],
           ["RULE_4_COMPOSITE_ERROR", "RULE_1_PAT_DEFINITION_MISMATCH"]

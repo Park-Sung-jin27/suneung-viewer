@@ -14,7 +14,7 @@ const args = Object.fromEntries(
   process.argv.slice(2).map((a) => {
     const [k, v] = a.replace(/^--/, "").split("=");
     return [k, v ?? true];
-  })
+  }),
 );
 const dryRun = !args.apply;
 const batchPath = args.batch;
@@ -38,7 +38,16 @@ if (!ann[yk] || !Array.isArray(ann[yk][sid])) {
 function eq(a, b) {
   // 일치 비교: type 일치 + 명시된 모든 필드 일치
   if (a.type !== b.type) return false;
-  for (const k of ["sentId","sentFrom","sentTo","marker","text","label","target","qId"]) {
+  for (const k of [
+    "sentId",
+    "sentFrom",
+    "sentTo",
+    "marker",
+    "text",
+    "label",
+    "target",
+    "qId",
+  ]) {
     if (b[k] != null && a[k] !== b[k]) return false;
   }
   return true;
@@ -60,14 +69,25 @@ console.log("matched for deletion: " + removed.length);
 
 if (removed.length > 0) {
   for (const r of removed) {
-    console.log("  - " + JSON.stringify({type:r.type, sentId:r.sentId, marker:r.marker, text:(r.text||"").slice(0,50)}));
+    console.log(
+      "  - " +
+        JSON.stringify({
+          type: r.type,
+          sentId: r.sentId,
+          marker: r.marker,
+          text: (r.text || "").slice(0, 50),
+        }),
+    );
   }
 }
 
 if (!dryRun && removed.length > 0) {
   if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
   const ts = new Date().toISOString().replace(/[:.]/g, "-");
-  fs.copyFileSync(ANN_PATH, path.join(BACKUP_DIR, "annotations." + ts + ".json"));
+  fs.copyFileSync(
+    ANN_PATH,
+    path.join(BACKUP_DIR, "annotations." + ts + ".json"),
+  );
   ann[yk][sid] = remaining;
   fs.writeFileSync(ANN_PATH, JSON.stringify(ann, null, 2), "utf-8");
   console.log("APPLIED. backup saved.");

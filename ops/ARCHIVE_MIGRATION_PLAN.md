@@ -46,11 +46,13 @@ New-Item -Path "ops\archive" -ItemType Directory -Force
 ```
 
 검증:
+
 ```powershell
 Get-ChildItem ops -Recurse -Directory | Select-Object FullName
 ```
 
 기대 출력:
+
 ```
 ops\daily
 ops\archive
@@ -67,23 +69,25 @@ ops\employees\strategist
 ## 2. 오늘 생성 파일 배치 확인
 
 대표가 이미 배치한 항목:
+
 - `ops\employees\data_engineer\CLAUDE.md` (어제 v1, 오늘 v2로 덮어씀)
 - 루트 `CLAUDE_MASTER.md` (어제 v0, 오늘 v0.1로 덮어씀)
 
 오늘 추가 배치 필요 항목 (대표 액션 또는 데이터 엔지니어 확인):
 
-| 파일명 | 목표 위치 |
-|---|---|
-| `frontend_CLAUDE.md` | `ops\employees\frontend\CLAUDE.md` |
-| `quality_reviewer_CLAUDE.md` | `ops\employees\quality_reviewer\CLAUDE.md` |
-| `strategist_CLAUDE.md` | `ops\employees\strategist\CLAUDE.md` |
-| `copywriter_CLAUDE.md` | `ops\employees\copywriter\CLAUDE.md` |
+| 파일명                         | 목표 위치                                    |
+| ------------------------------ | -------------------------------------------- |
+| `frontend_CLAUDE.md`           | `ops\employees\frontend\CLAUDE.md`           |
+| `quality_reviewer_CLAUDE.md`   | `ops\employees\quality_reviewer\CLAUDE.md`   |
+| `strategist_CLAUDE.md`         | `ops\employees\strategist\CLAUDE.md`         |
+| `copywriter_CLAUDE.md`         | `ops\employees\copywriter\CLAUDE.md`         |
 | `quality_reviewer_HANDOVER.md` | `ops\employees\quality_reviewer\HANDOVER.md` |
-| `data_engineer_HANDOVER.md` | `ops\employees\data_engineer\HANDOVER.md` |
+| `data_engineer_HANDOVER.md`    | `ops\employees\data_engineer\HANDOVER.md`    |
 
 ⚠️ 다운로드한 파일명에는 직원명이 prefix로 붙어있으나, **목표 위치에서는 `CLAUDE.md` / `HANDOVER.md`로 단순화**해서 배치할 것 (각 폴더 안에 있으므로 이름 중복 불필요).
 
 검증:
+
 ```powershell
 Get-ChildItem ops\employees -Recurse -Filter "*.md" | Select-Object FullName
 ```
@@ -176,20 +180,24 @@ Select-String -Path "pipeline\step3_analysis.js" -Pattern "step3_rules"
 ### 결과별 처리
 
 **Case 1: 양쪽 다 import 있음 (통합 완료)**
+
 ```powershell
 Move-Item -Path "INTEGRATION_GUIDE.md" -Destination "ops\archive\INTEGRATION_GUIDE_v0.md" -Force
 ```
 
 **Case 2: import 없음 (통합 미완)**
+
 - archive 보류
 - 데이터 엔지니어 백로그에 "INTEGRATION_GUIDE.md 따라 step2/step3 수정" 추가
 - 통합 완료 후 archive
 
 **Case 3: 한쪽만 통합됨**
+
 - 통합 안 된 쪽만 추가 작업
 - 둘 다 완료 후 archive
 
 품질 심사관 보고 형식:
+
 ```
 INTEGRATION_GUIDE.md 점검 결과:
 - step2_extract.js: [통합 완료 / 미완]
@@ -205,7 +213,7 @@ INTEGRATION_GUIDE.md 점검 결과:
 
 ```powershell
 # pipeline 폴더 내에서 tasks.json 참조 검색
-Get-ChildItem -Path "pipeline" -Recurse -File -Include "*.js","*.mjs","*.cjs" | 
+Get-ChildItem -Path "pipeline" -Recurse -File -Include "*.js","*.mjs","*.cjs" |
   Select-String -Pattern "tasks\.json" |
   Select-Object Filename, LineNumber, Line
 ```
@@ -213,16 +221,19 @@ Get-ChildItem -Path "pipeline" -Recurse -File -Include "*.js","*.mjs","*.cjs" |
 ### 결과별 처리
 
 **Case 1: 참조 스크립트 없음**
+
 ```powershell
 Move-Item -Path "pipeline\tasks.json" -Destination "ops\archive\pipeline_tasks_v0.json" -Force
 ```
 
 **Case 2: 참조 스크립트 있음**
+
 - 해당 스크립트가 현재 사용 중인지 확인
 - 사용 중이면 **삭제 금지**. 그대로 유지
 - 미사용이면 스크립트와 함께 검토 (백로그 추가)
 
 **Case 3: setId 명명 규칙 불일치 (`lsep25a`, `sep25_a` 형식)**
+
 - 현재 표준(`r2025_9월a` 형식)과 다른 옛 형식
 - 사용처 없으면 archive
 - 사용처 있으면 **다음 처리는 보류** (5/15 이후 데이터 표준화)
@@ -367,12 +378,14 @@ PowerShell 관리자 권한 또는 경로 재확인.
 ### 롤백
 
 git commit 전이라면:
+
 ```powershell
 git checkout -- .              # working tree 복원
 git clean -fd                  # untracked 파일 제거 (주의: 백업 후)
 ```
 
 git commit 후라면:
+
 ```powershell
 git revert HEAD                # 마지막 커밋 되돌리기
 ```

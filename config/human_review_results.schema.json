@@ -12,9 +12,15 @@
       "required": ["reviewer", "reviewed_at", "round_label", "report_snapshot"],
       "additionalProperties": false,
       "properties": {
-        "reviewer": { "type": "string", "description": "검수자 식별 (예: 성진)" },
+        "reviewer": {
+          "type": "string",
+          "description": "검수자 식별 (예: 성진)"
+        },
         "reviewed_at": { "type": "string", "format": "date-time" },
-        "round_label": { "type": "string", "description": "라운드 구분 (예: 2026-04-20-R1)" },
+        "round_label": {
+          "type": "string",
+          "description": "라운드 구분 (예: 2026-04-20-R1)"
+        },
         "report_snapshot": {
           "type": "object",
           "required": ["exam", "report_generated_at"],
@@ -50,14 +56,38 @@
             "description": "예: 2026수능/l2026b/Q26/#2"
           },
           "exam": { "type": "string" },
-          "set_id": { "type": ["string", "null"], "description": "템플릿 생성기가 원문에서 보강한 setId. 사람 입력 아님." },
-          "question_id": { "type": ["string", "number", "null"], "description": "템플릿 생성기가 보강한 question id. 사람 입력 아님." },
-          "choice_num": { "type": ["integer", "null"], "description": "템플릿 생성기가 보강한 choice 번호. 사람 입력 아님." },
-          "domain": { "type": ["string", "null"], "description": "R|L|V|null — 템플릿 생성기가 보강. 사람 입력 아님." },
-          "question_text": { "type": ["string", "null"], "description": "문항 발문 원문. 템플릿 생성기가 보강. 사람 입력 아님." },
-          "bogi_text": { "type": ["string", "null"], "description": "<보기> 원문. 템플릿 생성기가 보강. 사람 입력 아님." },
-          "choice_text": { "type": ["string", "null"], "description": "선지 원문. 템플릿 생성기가 보강. 사람 입력 아님." },
-          "analysis_text": { "type": ["string", "null"], "description": "해설 원문. 템플릿 생성기가 보강. 사람 입력 아님." },
+          "set_id": {
+            "type": ["string", "null"],
+            "description": "템플릿 생성기가 원문에서 보강한 setId. 사람 입력 아님."
+          },
+          "question_id": {
+            "type": ["string", "number", "null"],
+            "description": "템플릿 생성기가 보강한 question id. 사람 입력 아님."
+          },
+          "choice_num": {
+            "type": ["integer", "null"],
+            "description": "템플릿 생성기가 보강한 choice 번호. 사람 입력 아님."
+          },
+          "domain": {
+            "type": ["string", "null"],
+            "description": "R|L|V|null — 템플릿 생성기가 보강. 사람 입력 아님."
+          },
+          "question_text": {
+            "type": ["string", "null"],
+            "description": "문항 발문 원문. 템플릿 생성기가 보강. 사람 입력 아님."
+          },
+          "bogi_text": {
+            "type": ["string", "null"],
+            "description": "<보기> 원문. 템플릿 생성기가 보강. 사람 입력 아님."
+          },
+          "choice_text": {
+            "type": ["string", "null"],
+            "description": "선지 원문. 템플릿 생성기가 보강. 사람 입력 아님."
+          },
+          "analysis_text": {
+            "type": ["string", "null"],
+            "description": "해설 원문. 템플릿 생성기가 보강. 사람 입력 아님."
+          },
           "category": {
             "enum": [
               "mismatch_medium",
@@ -79,7 +109,10 @@
               "soft_conflict_risk_tier": { "type": ["string", "null"] },
               "ok_recheck_candidate_score": { "type": "number" },
               "applied_rule_id": { "type": "string" },
-              "conflict_flags": { "type": "array", "items": { "type": "string" } },
+              "conflict_flags": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
               "primary_decision": { "type": "string" },
               "secondary_decision": { "type": ["string", "null"] },
               "decision_confidence": { "type": "number" },

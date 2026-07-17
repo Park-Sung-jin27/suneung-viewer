@@ -15,10 +15,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 const DATA_PATH = path.resolve(ROOT, "public/data/all_data_204.json");
-const BACKUP_PATH = path.resolve(
-  ROOT,
-  "public/data/all_data_204.json.bak.4d2",
-);
+const BACKUP_PATH = path.resolve(ROOT, "public/data/all_data_204.json.bak.4d2");
 
 console.log("[4-d-2] r2023b Q9 #2 analysis 내부 ID 제거 진입");
 console.log("[4-d-2] CWD:", process.cwd());
@@ -126,10 +123,7 @@ function flatDiff(before, after, prefix = "") {
     after === null ||
     after === undefined
   ) {
-    if (
-      before !== after &&
-      JSON.stringify(before) !== JSON.stringify(after)
-    ) {
+    if (before !== after && JSON.stringify(before) !== JSON.stringify(after)) {
       diffs.push({ path: prefix });
     }
     return diffs;
@@ -168,15 +162,11 @@ const unexpectedDiffs = allDiffs.filter((d) => d.path !== expectedPath);
 
 const t4 = expectedDiffs.length === 1 && unexpectedDiffs.length === 0;
 console.log(`(4) 다른 항목 변경 0건: ${t4 ? "PASS ✓" : "FAIL ✗"}`);
-console.log(
-  `    expected path (analysis only): ${expectedDiffs.length}/1`,
-);
+console.log(`    expected path (analysis only): ${expectedDiffs.length}/1`);
 console.log(`    unexpected paths: ${unexpectedDiffs.length}`);
 if (unexpectedDiffs.length > 0) {
   console.log("    UNEXPECTED PATHS:");
-  unexpectedDiffs
-    .slice(0, 10)
-    .forEach((d) => console.log(`      ${d.path}`));
+  unexpectedDiffs.slice(0, 10).forEach((d) => console.log(`      ${d.path}`));
   if (unexpectedDiffs.length > 10) {
     console.log(`      ... (+${unexpectedDiffs.length - 10} more)`);
   }
@@ -206,7 +196,5 @@ console.log(`(2) 내부 ID 0건        : ${t2 ? "PASS" : "FAIL"}`);
 console.log(`(3) pat=V 유지         : ${t3 ? "PASS" : "FAIL"}`);
 console.log(`(4) 외부 변경 0건      : ${t4 ? "PASS" : "FAIL"}`);
 console.log(`(5) JSON parse 정상    : ${t5 ? "PASS" : "FAIL"}`);
-console.log(
-  `\n[4-d-2] All Acceptance Tests: ${allPass ? "PASS ✓" : "FAIL ✗"}`,
-);
+console.log(`\n[4-d-2] All Acceptance Tests: ${allPass ? "PASS ✓" : "FAIL ✗"}`);
 process.exit(allPass ? 0 : 1);

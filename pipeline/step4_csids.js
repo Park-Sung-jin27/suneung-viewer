@@ -647,9 +647,14 @@ async function retarget(targetYear) {
   const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
   if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
   const ts = new Date().toISOString().replace(/[:.]/g, "-");
-  fs.copyFileSync(DATA_PATH, path.join(BACKUP_DIR, `all_data_204.before_step4_retarget.${ts}.json`));
+  fs.copyFileSync(
+    DATA_PATH,
+    path.join(BACKUP_DIR, `all_data_204.before_step4_retarget.${ts}.json`),
+  );
   fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
-  console.log(`\n✅ all_data_204.json 저장 완료 — ${totalFixed}건 cs_ids 채움 (백업 포함)`);
+  console.log(
+    `\n✅ all_data_204.json 저장 완료 — ${totalFixed}건 cs_ids 채움 (백업 포함)`,
+  );
 }
 
 // ─────────────────────────────────────────────
@@ -715,7 +720,10 @@ async function extractSpansMode(targetYear, setIdPrefix) {
   const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
   if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
   const ts = new Date().toISOString().replace(/[:.]/g, "-");
-  fs.copyFileSync(DATA_PATH, path.join(BACKUP_DIR, `all_data_204.before_step4_extract_spans.${ts}.json`));
+  fs.copyFileSync(
+    DATA_PATH,
+    path.join(BACKUP_DIR, `all_data_204.before_step4_extract_spans.${ts}.json`),
+  );
   fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
   console.log(
     `\n✅ extract-spans 완료 — ${totalChoicesTouched}개 선지 / spans +${totalExtracted} / cs_ids 확장 +${totalCsIdsExpanded}`,

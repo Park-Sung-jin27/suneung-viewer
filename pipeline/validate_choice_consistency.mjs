@@ -74,8 +74,15 @@ const FIX = args.includes("--fix");
 const REQUIRES_CS_PATS = new Set(["R1", "R2", "R4", "L1", "L2", "L4", "L5"]);
 const AUTO_EMPTY_PATS = new Set(["R3", "V"]);
 const VALID_PATS = new Set([
-  "R1", "R2", "R3", "R4",
-  "L1", "L2", "L3", "L4", "L5",
+  "R1",
+  "R2",
+  "R3",
+  "R4",
+  "L1",
+  "L2",
+  "L3",
+  "L4",
+  "L5",
   "V",
 ]);
 
@@ -120,7 +127,8 @@ const CHOICE_AXIS = {
 
 function sectionOf(setId) {
   const s = String(setId || "");
-  if (s[0] === "r" || s.startsWith("kor") || s.startsWith("sep")) return "reading";
+  if (s[0] === "r" || s.startsWith("kor") || s.startsWith("sep"))
+    return "reading";
   if (s[0] === "l" || s.startsWith("lsep")) return "literature";
   return null;
 }
@@ -152,8 +160,8 @@ function detectPolarity(analysis) {
     /옳지\s*않/,
     /지문과\s*어긋/,
   ];
-  for (const re of negPatterns) if (re.test(a))
-    return { polarity: "negative", signal: "text" };
+  for (const re of negPatterns)
+    if (re.test(a)) return { polarity: "negative", signal: "text" };
 
   const posPatterns = [
     /(?<!부)적절(?!하지|치\s*않)/,
@@ -164,8 +172,8 @@ function detectPolarity(analysis) {
     /적절한\s*진술/,
     /적절한\s*설명/,
   ];
-  for (const re of posPatterns) if (re.test(a))
-    return { polarity: "positive", signal: "text" };
+  for (const re of posPatterns)
+    if (re.test(a)) return { polarity: "positive", signal: "text" };
 
   return { polarity: "unknown", signal: "none" };
 }
@@ -182,7 +190,9 @@ function check_analysis_state(c) {
     };
   }
   const pol = detectPolarity(c.analysis);
-  const hasQuote = /📌\s*지문\s*근거\s*:\s*["“]([^"”]{4,})["”]/.test(c.analysis);
+  const hasQuote = /📌\s*지문\s*근거\s*:\s*["“]([^"”]{4,})["”]/.test(
+    c.analysis,
+  );
   const hasReason = /🔍[^\n]{15,}/.test(c.analysis);
 
   // ③ polarity 충돌
@@ -215,7 +225,8 @@ function check_analysis_state(c) {
       code: "unknown_polarity_with_quote",
       severity: "BLOCK",
       route: "reanalyze_format_queue",
-      message: "결론 신호 없음 — 📌 인용 또는 🔍 reasoning 존재 → reanalyze_format 큐",
+      message:
+        "결론 신호 없음 — 📌 인용 또는 🔍 reasoning 존재 → reanalyze_format 큐",
     };
   return null;
 }
@@ -322,7 +333,10 @@ function check_spans_ids_mismatch(c) {
 // ─── WARNING ────────────────────────────────────────────────────────────────
 function _norm(s) {
   return String(s || "")
-    .replace(/[ⓐ-ⓩⒶ-Ⓩ㉠-㉯①-⑳]|\[[A-E]\]|[「」『』【】()（）\[\]{}]|[\u4E00-\u9FFF]|[·ㆍ‧,.!?;:*…"“”'‘’`´]/g, "")
+    .replace(
+      /[ⓐ-ⓩⒶ-Ⓩ㉠-㉯①-⑳]|\[[A-E]\]|[「」『』【】()（）\[\]{}]|[\u4E00-\u9FFF]|[·ㆍ‧,.!?;:*…"“”'‘’`´]/g,
+      "",
+    )
     .replace(/\s+/g, "");
 }
 function check_literature_signals(c, setId) {
@@ -349,7 +363,7 @@ function check_literature_signals(c, setId) {
       });
     }
   }
-  const tagsInT = [...new Set((t.match(/\((가|나|다|라)\)/g) || []))];
+  const tagsInT = [...new Set(t.match(/\((가|나|다|라)\)/g) || [])];
   if (tagsInT.length >= 2 && !/\((가|나|다|라)\)/.test(ana)) {
     warns.push({
       code: "literature_work_target_missing",
@@ -524,7 +538,14 @@ for (const exam of examsToProcess) {
 
           // 4) --fix 적용
           for (const f of raw) {
-            const rec = { loc, exam, setId: set.id, qId: q.id, num: c.num, ...f };
+            const rec = {
+              loc,
+              exam,
+              setId: set.id,
+              qId: q.id,
+              num: c.num,
+              ...f,
+            };
             if (FIX && f.severity === "BLOCK") {
               if (f.route === "auto_fix_formal" && applyFixFormal(c, f)) {
                 rec.fixed = true;
@@ -633,7 +654,8 @@ fs.writeFileSync(outPath, JSON.stringify(report, null, 2), "utf8");
 console.log("═".repeat(60));
 console.log(" validate_choice_consistency");
 console.log("═".repeat(60));
-if (EXAM_FILTER) console.log(` 대상: ${EXAM_FILTER}${SET_FILTER ? ` / ${SET_FILTER}` : ""}`);
+if (EXAM_FILTER)
+  console.log(` 대상: ${EXAM_FILTER}${SET_FILTER ? ` / ${SET_FILTER}` : ""}`);
 if (FIX) console.log(" --fix 모드 (적용된 fixes: " + appliedFixes.length + ")");
 
 console.log(`\n[총계]`);
@@ -679,7 +701,9 @@ const unresolvedBlock = allFindings.filter(
   (f) => f.severity === "BLOCK" && !f.fixed,
 ).length;
 if (unresolvedBlock > 0) {
-  console.log(`\n🔴 migrate 차단 — BLOCK ${unresolvedBlock}건 (auto_fix 미적용 또는 needs_human)`);
+  console.log(
+    `\n🔴 migrate 차단 — BLOCK ${unresolvedBlock}건 (auto_fix 미적용 또는 needs_human)`,
+  );
   process.exit(2);
 } else {
   console.log(`\n✅ migrate 허용 — BLOCK 0건`);

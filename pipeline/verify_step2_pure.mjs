@@ -45,7 +45,11 @@ function unwrap(content) {
     return { sets: content.parsed, wrapper: "rawparsed" };
   }
   if (Array.isArray(content)) return { sets: content, wrapper: "array" };
-  if (content && typeof content === "object" && (content.reading || content.literature)) {
+  if (
+    content &&
+    typeof content === "object" &&
+    (content.reading || content.literature)
+  ) {
     return {
       sets: [...(content.reading || []), ...(content.literature || [])],
       wrapper: "sectioned",
@@ -80,7 +84,10 @@ function scanFile(filePath) {
       if (k in s) {
         stats[`set_${k}`]++;
         if (examples.length < 3)
-          examples.push({ where: `${s.id}.${k}`, value: JSON.stringify(s[k]).slice(0, 60) });
+          examples.push({
+            where: `${s.id}.${k}`,
+            value: JSON.stringify(s[k]).slice(0, 60),
+          });
       }
     }
     for (const q of s.questions || []) {
@@ -122,7 +129,9 @@ function listCandidates() {
 
 const files = listCandidates();
 if (files.length === 0) {
-  console.error("❌ 스캔 대상 파일 없음. pipeline/test_data/step2_* 파일 확인.");
+  console.error(
+    "❌ 스캔 대상 파일 없음. pipeline/test_data/step2_* 파일 확인.",
+  );
   process.exit(1);
 }
 
@@ -189,9 +198,13 @@ console.log(
   ` 집계: 파일 ${files.length}개, 깨끗 ${clean.length}, 잔존 ${dirty.length}, leak 합 ${totalLeakAll}`,
 );
 if (totalLeakAll === 0) {
-  console.log(" ✅ 전체 파일에서 forbidden QA 필드 0건 — step2 순수 구조화 검증 통과");
+  console.log(
+    " ✅ 전체 파일에서 forbidden QA 필드 0건 — step2 순수 구조화 검증 통과",
+  );
 } else {
-  console.log(" 🔴 forbidden 필드 잔존 — step2 sanitize 미적용 또는 재추출 필요");
+  console.log(
+    " 🔴 forbidden 필드 잔존 — step2 sanitize 미적용 또는 재추출 필요",
+  );
 }
 
 if (STRICT && totalLeakAll > 0) process.exit(2);

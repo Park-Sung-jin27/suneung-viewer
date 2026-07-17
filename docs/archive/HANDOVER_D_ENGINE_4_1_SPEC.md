@@ -158,7 +158,7 @@ Step 4 후 검증:
     metadata.errors = [...]
     metadata.candidate_for_human_review = true
     return  (Step 5 skip)
-  
+
   if (runs.length === 3):
     Step 5 진입
 - metadata.run_count = 3
@@ -354,7 +354,7 @@ ${JSON.stringify(input, null, 2)}
 ```javascript
 const response = await options.caller(buildPrompt(input), {
   model: options.model || "gpt-5",
-  temperature: 0
+  temperature: 0,
 });
 ```
 
@@ -503,7 +503,7 @@ node C:\Users\downf\suneung-viewer\pipeline\d_engine_wrapper.test.mjs
 
 ```javascript
 // Step 3 single_pass 분기 시
-metadata.low_confidence_flag = false;  // [v1.1-5 결정: 옵션 A]
+metadata.low_confidence_flag = false; // [v1.1-5 결정: 옵션 A]
 // caller 응답의 confidence가 'mid'/'low'여도 low_confidence_flag는 false 유지
 // final.confidence 필드로만 신뢰도 보존
 ```
@@ -530,11 +530,11 @@ v1.2 통합: SSoT (config/d_engine_prompt.txt와 단일 출처 통합)
 
 ### v1.1-2: caller markdown fence 처리
 
-```
+````
 구현 결정: caller 내부 markdown fence (```json ... ```) strip 처리
 사유: GPT-5 응답이 fence로 감쌀 가능성. mock 단계는 영향 없음
 v1.2 통합: caller 인터페이스 사양에 strip 책임 정식 명시
-```
+````
 
 ### v1.1-3: options 객체 분리
 
@@ -586,20 +586,20 @@ v1.2 통합: errors 배열 스키마 정식 분리
 
 ### 12건 정정 검증
 
-| 정정 | 평가 |
-|---|---|
-| Prompt const 상수 | ✅ |
-| buildPrompt 함수 | ✅ |
-| max_format_retries + max_caller_retries 분리 | ✅ |
-| Step 3 single_pass metadata 5 필드 | ✅ |
-| Step 4 length<3 단정 | ✅ |
-| E6 applyMajority throw 처리 | ✅ |
-| E7 Promise.race timeout | ✅ |
-| E8 Promise.allSettled | ✅ |
-| metadata.runs 길이 정책 | ✅ |
-| Caller 응답 객체 lock | ✅ |
-| Caller 시그니처 (prompt, options) | ✅ |
-| 회귀 테스트 11·12 추가 | ✅ |
+| 정정                                         | 평가 |
+| -------------------------------------------- | ---- |
+| Prompt const 상수                            | ✅   |
+| buildPrompt 함수                             | ✅   |
+| max_format_retries + max_caller_retries 분리 | ✅   |
+| Step 3 single_pass metadata 5 필드           | ✅   |
+| Step 4 length<3 단정                         | ✅   |
+| E6 applyMajority throw 처리                  | ✅   |
+| E7 Promise.race timeout                      | ✅   |
+| E8 Promise.allSettled                        | ✅   |
+| metadata.runs 길이 정책                      | ✅   |
+| Caller 응답 객체 lock                        | ✅   |
+| Caller 시그니처 (prompt, options)            | ✅   |
+| 회귀 테스트 11·12 추가                       | ✅   |
 
 ---
 
@@ -620,8 +620,9 @@ v1.2 통합: errors 배열 스키마 정식 분리
   - pipeline/d_engine_wrapper.mjs
   - pipeline/d_engine_wrapper.test.mjs
   - mockCaller fixture (별도 파일이면)
-  
+
   commit message: `feat: §4.1 D엔진 wrapper + mockCaller + 회귀 테스트 12건`
+
 - (g) push
 
 ---

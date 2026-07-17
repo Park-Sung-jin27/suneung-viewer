@@ -21,6 +21,7 @@ QG-{exam}-{setId}-{Qn}-{patch_type}
 ```
 
 단일 문항 단위. 예:
+
 - `QG-2025수능-kor25_d-Q14-answer-patch`
 - `QG-2026_9월-r20269a-Q3-explanation-patch`
 
@@ -64,6 +65,7 @@ sentry v0.1 entry 는 `quality_gate.mjs` / `normalize_quality.mjs` 정규 도구
 ## lock #8 — active_issue_log_validation
 
 active_issue_log.json 변경 시 4건 raw 회신 의무:
+
 1. backup
 2. count
 3. duplicate
@@ -100,12 +102,14 @@ raw **사후** 분기. 사용자 결정 0. 본 채팅이 raw cross-check 사후 
 ### 라벨 정의
 
 **기존 4** (의사 결정 라벨):
+
 - `[Adopted]` — 정책 채택
 - `[Confirmed]` — 사실 확인 (PDF 등 원천 cross-check 후)
 - `[Pending]` — 검증 대기
 - `[Rejected]` — 폐기
 
 **신규 5** (set 무결성 라벨):
+
 - `[Working-tree raw]` — working tree raw 만 확인, PDF cross-check 0
 - `[Pending source cross-check]` — PDF cross-check 사전 의무
 - `blocked_by_source_integrity` — set 본문 손상 사유 하위 issue 봉쇄
@@ -149,6 +153,7 @@ Phase 1 통과 사후 `normalize_quality.mjs` 가 active_issue_log 자동 생성
 ## lock #14 — commit message issue_id 강제
 
 예:
+
 ```
 fix(data): QG-2025수능-kor25_d-Q14-answer-patch ok swap
 ```
@@ -163,6 +168,7 @@ issue_id 누락 시 commit 거부 의무.
 - **문학**: A·B·C·D 매핑 (C 필수)
 
 QA dimension 분류:
+
 - A: analysis 정합
 - B: cs_ids 정합
 - C: 문학 specific (정서·표현 정합)
@@ -181,6 +187,7 @@ lock #15 영역 통합. 별도 운영 lock X.
 `pipeline/release_approval_records/{issue_id}.json` 영구 보존.
 
 스키마:
+
 ```json
 {
   "issue_id": "QG-...",
@@ -212,6 +219,7 @@ new
 ```
 
 예외 상태:
+
 - `deferred` (보류)
 - `rejected` (폐기)
 - `rolled_back` (롤백)
@@ -222,6 +230,7 @@ new
 ## lock #19 — issue_id 6곳 강제
 
 issue_id 명시 의무 6곳:
+
 1. `active_issue_log.json`
 2. `quality_report.json`
 3. `patch_packet`
@@ -240,6 +249,7 @@ mismatch 시 정합성 검산 fail.
 ❌ `javascript_tool` / `Claude in Chrome` / `Cowork` / `Anthropic SDK` 등 직접 명시 금지
 
 ✅ 표준 용어 [Adopted]:
+
 - "Technical Viewer Gate 자동 검증"
 - "Playwright"
 - "PowerShell native"
@@ -261,12 +271,12 @@ Phase 0 = 본 채팅 raw 사후 분기. Phase 1 진입 사후 자동화.
 
 QA dimension 매핑 최소화:
 
-| 변경 영역 | QA mapping |
-|---|---|
-| analysis 수정 | A 필수 |
-| cs_ids 수정 | B 필수 |
-| 문학 변경 | B + C |
-| pat 변경 | D |
+| 변경 영역            | QA mapping             |
+| -------------------- | ---------------------- |
+| analysis 수정        | A 필수                 |
+| cs_ids 수정          | B 필수                 |
+| 문학 변경            | B + C                  |
+| pat 변경             | D                      |
 | ok·questionType 변경 | **Data Contract 필수** |
 
 근거: patch 영역과 QA 영역 정합 의무. analysis 만 수정인데 D 까지 의무 X (불필요한 검수 부담).
@@ -308,7 +318,7 @@ Phase D  : Q14·Q15·Q17 unblock + atomic patch
 Phase 1  : pat_decision_rules.json 흡수 + active_issue_log 자동화
 ```
 
-(주: Phase A~D 는 architecture 영역, Phase 1~3 은 D엔진 개발 영역. 두 체계 다른 영역.)
+(주: Phase A~~D 는 architecture 영역, Phase 1~~3 은 D엔진 개발 영역. 두 체계 다른 영역.)
 
 ---
 

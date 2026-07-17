@@ -74,15 +74,25 @@ fs.mkdirSync(REPORT_DIR, { recursive: true });
 const REQUIRES_CS = new Set(["R1", "R2", "R4", "L1", "L2", "L4", "L5"]);
 const AUTO_EMPTY_PATS = new Set(["R3", "V", null, undefined]);
 const VALID_PATS = new Set([
-  "R1", "R2", "R3", "R4",
-  "L1", "L2", "L3", "L4", "L5",
+  "R1",
+  "R2",
+  "R3",
+  "R4",
+  "L1",
+  "L2",
+  "L3",
+  "L4",
+  "L5",
   "V",
 ]);
 
 // 정규화: 공백·원문자·괄호·한자·구두점 제거 후 비교
 const _NORM_RE =
   /[ⓐ-ⓩⒶ-Ⓩ㉠-㉯①-⑳]|\[[A-E]\]|[「」『』【】〔〕⟨⟩《》()（）\[\]{}]|[\u4E00-\u9FFF\u3400-\u4DBF]|[·ㆍ‧,.!?;:*…"“”'‘’`´]/g;
-const norm = (s) => String(s || "").replace(_NORM_RE, "").replace(/\s+/g, "");
+const norm = (s) =>
+  String(s || "")
+    .replace(_NORM_RE, "")
+    .replace(/\s+/g, "");
 
 // 내부 ID 노출 패턴 (독서/문학 공통)
 const ID_LEAK_RE = /\b[rl]\d{4}[a-z_0-9]*s\d+\b|\[[a-z_0-9]+s\d+\]/;
@@ -93,7 +103,8 @@ const MARKER_RE = /[ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\]/;
 function sectionOf(setId) {
   if (!setId) return null;
   const s = String(setId);
-  if (s[0] === "r" || s.startsWith("kor") || s.startsWith("sep")) return "reading";
+  if (s[0] === "r" || s.startsWith("kor") || s.startsWith("sep"))
+    return "reading";
   if (s[0] === "l" || s.startsWith("lsep")) return "literature";
   return null;
 }
@@ -132,11 +143,7 @@ function detectMissingRequiredCsIds(c) {
   const empty = !Array.isArray(c.cs_ids) || c.cs_ids.length === 0;
   if (!empty) return false;
   if (c.ok === true) return true;
-  if (
-    c.ok === false &&
-    typeof c.pat === "string" &&
-    REQUIRES_CS.has(c.pat)
-  )
+  if (c.ok === false && typeof c.pat === "string" && REQUIRES_CS.has(c.pat))
     return true;
   return false;
 }
@@ -256,7 +263,8 @@ function classifyField(c, field, ctx) {
     }
     case "conditions": {
       // 신규 스키마 필드. 현재 데이터에 미존재 → analysis에서 ①②③ 분해 있으면 transformable
-      if (Array.isArray(c.conditions) && c.conditions.length > 0) return "direct";
+      if (Array.isArray(c.conditions) && c.conditions.length > 0)
+        return "direct";
       const a = c.analysis || "";
       if (/①|②|③|❶|❷|❸|첫째|둘째|조건\s*분해/.test(a)) return "transformable";
       return c.ok === false ? "regenerate" : "transformable";
@@ -302,12 +310,11 @@ function score5Axis(c, ctx) {
   if (!/📌\s*지문\s*근거\s*:\s*["“]/.test(ana)) a2 -= 8;
   if (!/[✅❌]/.test(ana) && ana.trim()) a2 -= 4;
   if (typeof c.pat === "string") {
-    const wrong =
-      /^R[1-4]$/.test(c.pat)
-        ? /\[L[1-5]\]/
-        : /^L[1-5]$/.test(c.pat)
-          ? /\[R[1-4]\]/
-          : null;
+    const wrong = /^R[1-4]$/.test(c.pat)
+      ? /\[L[1-5]\]/
+      : /^L[1-5]$/.test(c.pat)
+        ? /\[R[1-4]\]/
+        : null;
     if (wrong && wrong.test(ana)) a2 -= 6;
   }
   if (c.ok === true && c.pat != null) a2 -= 4;
@@ -345,7 +352,9 @@ function score5Axis(c, ctx) {
   // 4) 학습 효용 (20)
   let a4 = 0;
   if (c.ok === false && /①|②|③|❶|❷|❸|첫째|둘째/.test(ana)) a4 += 6;
-  const hasMarker = MARKER_RE.test(c.t || "") || /['‘][^'’]{2,}['’]|["“][^"”]{2,}["”]/.test(c.t || "");
+  const hasMarker =
+    MARKER_RE.test(c.t || "") ||
+    /['‘][^'’]{2,}['’]|["“][^"”]{2,}["”]/.test(c.t || "");
   if (hasMarker) {
     if (/기능|상징|효과|평가|표현|의미|강조/.test(ana)) a4 += 6;
     else a4 += 2;
@@ -359,7 +368,8 @@ function score5Axis(c, ctx) {
   // 5) 운영 리스크 (10, 감점식)
   let a5 = 10;
   if (/\[\[[RL]\d\]\d\]/.test(ana)) a5 -= 3;
-  if (Array.isArray(c.cs_ids) && c.cs_ids.some((id) => !validIds.has(id))) a5 -= 5;
+  if (Array.isArray(c.cs_ids) && c.cs_ids.some((id) => !validIds.has(id)))
+    a5 -= 5;
   if (!ana.trim()) a5 -= 4;
   if (detectSourceTextPollution(c, sents)) a5 -= 2;
   if (a5 < 0) a5 = 0;
@@ -368,7 +378,8 @@ function score5Axis(c, ctx) {
 
   // 즉시 감점
   const penalties = [];
-  if (detectOkConflict(c)) penalties.push({ code: "ok_conclusion_conflict", minus: 40 });
+  if (detectOkConflict(c))
+    penalties.push({ code: "ok_conclusion_conflict", minus: 40 });
   if (detectPatDomainMismatch(c, setId))
     penalties.push({ code: "pat_domain_mismatch", minus: 40 });
   if (detectMissingRequiredCsIds(c))
@@ -448,9 +459,7 @@ function recommendRoute(examSummary) {
 }
 
 // ─── 메인 평가 루프 ─────────────────────────────────────────────────────────
-const examsToProcess = EXAM_FILTER
-  ? [EXAM_FILTER]
-  : Object.keys(data);
+const examsToProcess = EXAM_FILTER ? [EXAM_FILTER] : Object.keys(data);
 
 const choiceReport = []; // per-choice rows
 const setReport = []; // per-set aggregates
@@ -469,7 +478,8 @@ const FIELDS = [
 
 function emptyFieldCounter() {
   const o = {};
-  for (const f of FIELDS) o[f] = { direct: 0, transformable: 0, regenerate: 0, invalid: 0 };
+  for (const f of FIELDS)
+    o[f] = { direct: 0, transformable: 0, regenerate: 0, invalid: 0 };
   return o;
 }
 
@@ -520,8 +530,7 @@ for (const exam of examsToProcess) {
               examBlockingCounts[b] = (examBlockingCounts[b] || 0) + 1;
           }
           for (const p of s.penalties)
-            examPenaltyCounts[p.code] =
-              (examPenaltyCounts[p.code] || 0) + 1;
+            examPenaltyCounts[p.code] = (examPenaltyCounts[p.code] || 0) + 1;
 
           choiceReport.push({
             exam,
@@ -548,12 +557,16 @@ for (const exam of examsToProcess) {
           fieldPct[f] = {
             direct: +((setFields[f].direct / setChoiceCount) * 100).toFixed(1),
             transformable: +(
-              (setFields[f].transformable / setChoiceCount) * 100
+              (setFields[f].transformable / setChoiceCount) *
+              100
             ).toFixed(1),
             regenerate: +(
-              (setFields[f].regenerate / setChoiceCount) * 100
+              (setFields[f].regenerate / setChoiceCount) *
+              100
             ).toFixed(1),
-            invalid: +((setFields[f].invalid / setChoiceCount) * 100).toFixed(1),
+            invalid: +((setFields[f].invalid / setChoiceCount) * 100).toFixed(
+              1,
+            ),
           };
         }
         setReport.push({
@@ -588,17 +601,19 @@ for (const exam of examsToProcess) {
       fieldPct[f] = {
         direct: +((examFields[f].direct / examChoiceCount) * 100).toFixed(1),
         transformable: +(
-          (examFields[f].transformable / examChoiceCount) * 100
+          (examFields[f].transformable / examChoiceCount) *
+          100
         ).toFixed(1),
         regenerate: +(
-          (examFields[f].regenerate / examChoiceCount) * 100
+          (examFields[f].regenerate / examChoiceCount) *
+          100
         ).toFixed(1),
         invalid: +((examFields[f].invalid / examChoiceCount) * 100).toFixed(1),
       };
     }
-    const blockingPct = +(
-      (examBlockingCount / examChoiceCount) * 100
-    ).toFixed(1);
+    const blockingPct = +((examBlockingCount / examChoiceCount) * 100).toFixed(
+      1,
+    );
 
     const summary = {
       avg,
@@ -676,8 +691,12 @@ for (const [exam, r] of Object.entries(examReport)) {
   console.log(
     `  blocking: ${r.release_sensitive_blocking.count} (${r.release_sensitive_blocking.pct}%)`,
   );
-  console.log(`  blocking by_code: ${JSON.stringify(r.release_sensitive_blocking.by_code)}`);
-  console.log(`  immediate_penalty: ${JSON.stringify(r.immediate_penalty_counts)}`);
+  console.log(
+    `  blocking by_code: ${JSON.stringify(r.release_sensitive_blocking.by_code)}`,
+  );
+  console.log(
+    `  immediate_penalty: ${JSON.stringify(r.immediate_penalty_counts)}`,
+  );
   if (VERBOSE) {
     console.log(`  field_compatibility:`);
     for (const [f, pct] of Object.entries(r.field_compatibility)) {

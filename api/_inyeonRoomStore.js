@@ -10,12 +10,15 @@ function nowIso() {
 }
 
 function hasBlobConfig() {
-  return Boolean(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
+  return Boolean(
+    process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID,
+  );
 }
 
 function blobAuthOptions() {
   const options = {};
-  if (process.env.BLOB_READ_WRITE_TOKEN) options.token = process.env.BLOB_READ_WRITE_TOKEN;
+  if (process.env.BLOB_READ_WRITE_TOKEN)
+    options.token = process.env.BLOB_READ_WRITE_TOKEN;
   if (process.env.BLOB_STORE_ID) options.storeId = process.env.BLOB_STORE_ID;
   return options;
 }
@@ -41,7 +44,9 @@ function cleanName(value) {
 }
 
 function cleanCode(value) {
-  const code = String(value || "").trim().toUpperCase();
+  const code = String(value || "")
+    .trim()
+    .toUpperCase();
   if (!ROOM_CODE_RE.test(code)) throw new Error("INVALID_ROOM_CODE");
   return code;
 }
@@ -131,11 +136,16 @@ async function blobText(result) {
 async function readRoom(code) {
   if (!hasBlobConfig()) throw new Error("BLOB_STORAGE_NOT_CONFIGURED");
   try {
-    const result = await get(roomKey(code), { access: BLOB_ACCESS, useCache: false, ...blobAuthOptions() });
+    const result = await get(roomKey(code), {
+      access: BLOB_ACCESS,
+      useCache: false,
+      ...blobAuthOptions(),
+    });
     const text = await blobText(result);
     return text ? JSON.parse(text) : null;
   } catch (error) {
-    if (/not.?found|404|BlobNotFound/i.test(String(error?.message || error))) return null;
+    if (/not.?found|404|BlobNotFound/i.test(String(error?.message || error)))
+      return null;
     throw error;
   }
 }
@@ -191,7 +201,9 @@ async function createRoom(body) {
     createdAt: timestamp,
     updatedAt: timestamp,
     hostId: participant.id,
-    participants: [{ ...participant, joinedAt: timestamp, updatedAt: timestamp }],
+    participants: [
+      { ...participant, joinedAt: timestamp, updatedAt: timestamp },
+    ],
   };
   await writeRoom(room);
   return publicRoom(room);
@@ -228,19 +240,24 @@ async function readBody(req) {
 
 export async function handleInyeonRoom(req, res, rawCode = "") {
   try {
-    const code = rawCode ? cleanCode(Array.isArray(rawCode) ? rawCode[0] : rawCode) : "";
+    const code = rawCode
+      ? cleanCode(Array.isArray(rawCode) ? rawCode[0] : rawCode)
+      : "";
 
     if (req.method === "GET") {
-      if (!code) return sendJson(res, 400, { ok: false, error: "ROOM_CODE_REQUIRED" });
+      if (!code)
+        return sendJson(res, 400, { ok: false, error: "ROOM_CODE_REQUIRED" });
       const room = await readRoom(code);
-      if (!room) return sendJson(res, 404, { ok: false, error: "ROOM_NOT_FOUND" });
+      if (!room)
+        return sendJson(res, 404, { ok: false, error: "ROOM_NOT_FOUND" });
       return sendJson(res, 200, { ok: true, room: publicRoom(room) });
     }
 
     if (req.method === "POST") {
       const body = await readBody(req);
       const room = code ? await joinRoom(code, body) : await createRoom(body);
-      if (!room) return sendJson(res, 404, { ok: false, error: "ROOM_NOT_FOUND" });
+      if (!room)
+        return sendJson(res, 404, { ok: false, error: "ROOM_NOT_FOUND" });
       return sendJson(res, 200, { ok: true, room });
     }
 
@@ -252,7 +269,9 @@ export async function handleInyeonRoom(req, res, rawCode = "") {
     return sendJson(res, missingStore ? 503 : badRequest ? 400 : 500, {
       ok: false,
       error: message,
-      needsEnv: missingStore ? ["BLOB_READ_WRITE_TOKEN or BLOB_STORE_ID"] : undefined,
+      needsEnv: missingStore
+        ? ["BLOB_READ_WRITE_TOKEN or BLOB_STORE_ID"]
+        : undefined,
     });
   }
 }

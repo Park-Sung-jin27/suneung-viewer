@@ -341,13 +341,7 @@
     "target_set": "r2023a",
     "target_question_id": 2,
     "target_correct_num": 5,
-    "target_choice_nums": [
-      1,
-      2,
-      3,
-      4,
-      5
-    ],
+    "target_choice_nums": [1, 2, 3, 4, 5],
     "runs": 3,
     "total_calls": 15,
     "total_input_tokens": 68697,

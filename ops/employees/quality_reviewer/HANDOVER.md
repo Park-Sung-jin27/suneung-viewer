@@ -10,6 +10,7 @@
 5/15 모두의창업 제출까지 **D-20**.
 
 이번 주 목표:
+
 - 운영 체제 v0.1 안착 (오늘 4시간 작업으로 거의 완료)
 - 데이터 엔지니어 첫 가동 (git 정리 + 문서 구조 재편)
 - 5/15 소개서 점검 (전략가 첫 가동)
@@ -34,14 +35,14 @@
 
 ## 📂 오늘 생성된 파일 (배치 위치)
 
-| 파일 | 위치 |
-|---|---|
-| CLAUDE_MASTER.md (v0.1) | `C:\Users\downf\suneung-viewer\CLAUDE_MASTER.md` |
-| 데이터 엔지니어 CLAUDE.md (v2) | `ops\employees\data_engineer\CLAUDE.md` |
-| 프론트엔드 CLAUDE.md (v1) | `ops\employees\frontend\CLAUDE.md` |
-| 품질 심사관 CLAUDE.md (v1) | `ops\employees\quality_reviewer\CLAUDE.md` |
-| 전략가 CLAUDE.md (v0 스켈레톤) | `ops\employees\strategist\CLAUDE.md` |
-| 카피라이터 CLAUDE.md (v0 스켈레톤) | `ops\employees\copywriter\CLAUDE.md` |
+| 파일                               | 위치                                             |
+| ---------------------------------- | ------------------------------------------------ |
+| CLAUDE_MASTER.md (v0.1)            | `C:\Users\downf\suneung-viewer\CLAUDE_MASTER.md` |
+| 데이터 엔지니어 CLAUDE.md (v2)     | `ops\employees\data_engineer\CLAUDE.md`          |
+| 프론트엔드 CLAUDE.md (v1)          | `ops\employees\frontend\CLAUDE.md`               |
+| 품질 심사관 CLAUDE.md (v1)         | `ops\employees\quality_reviewer\CLAUDE.md`       |
+| 전략가 CLAUDE.md (v0 스켈레톤)     | `ops\employees\strategist\CLAUDE.md`             |
+| 카피라이터 CLAUDE.md (v0 스켈레톤) | `ops\employees\copywriter\CLAUDE.md`             |
 
 ---
 
@@ -50,16 +51,19 @@
 **데이터 엔지니어 첫 가동 (Cowork 모드)**
 
 배경:
+
 - 어제 발견한 git 미푸시 상태 (17 modified + 100+ Untracked)
 - 모든 후속 작업의 전제 조건
 - 데이터 엔지니어 백로그 A 항목
 
 대표 액션:
+
 1. 새 채팅 생성 (Cowork 권장)
 2. 첨부:
    - `CLAUDE_MASTER.md`
    - `ops/employees/data_engineer/CLAUDE.md`
 3. 첫 메시지:
+
 ```
 데이터 엔지니어 첫 가동.
 백로그 A (git 상태 정리) + B (문서 구조 재편) 동시 처리.
@@ -153,12 +157,12 @@
 
 `quality_gate --scope=suneung5` 기준 (4-15 측정, 최신 미반영):
 
-| 등급 | 건수 |
-|---|---|
-| 🔴 CRITICAL | 0건 ✅ |
-| 🟡 WARNING | 164건 |
-| ⚪ IGNORE | 7건 |
-| **상태** | 🟢 release_ready |
+| 등급        | 건수             |
+| ----------- | ---------------- |
+| 🔴 CRITICAL | 0건 ✅           |
+| 🟡 WARNING  | 164건            |
+| ⚪ IGNORE   | 7건              |
+| **상태**    | 🟢 release_ready |
 
 ⚠️ 단, 미푸시 상태이므로 배포 사이트 = 로컬 상태와 괴리 가능.
 
@@ -166,14 +170,14 @@
 
 ## 🚨 주요 리스크 추적
 
-| 리스크 | 영향 | 상태 |
-|---|---|---|
-| git 미푸시 누적 | 데스크톱 연동 차단 | 🔴 미해결 |
-| 정본 JSON 손상 가능 | release_ready 무효화 | 🟢 백업 정책 명문화 (v2) |
-| 일회성 스크립트 재증식 | 운영 부채 누적 | 🟢 원칙 명문화 |
-| 직원 가동 첫날 마찰 | 1~2일 지연 | 🟡 예상 가능 |
-| D엔진 RULE_7 양방향 실패 | Stage 2 진입 차단 | 🔴 미해결 |
-| 5/15 D-20 시간 압박 | 소개서 점검 지연 | 🟡 ROI 모니터링 |
+| 리스크                   | 영향                 | 상태                     |
+| ------------------------ | -------------------- | ------------------------ |
+| git 미푸시 누적          | 데스크톱 연동 차단   | 🔴 미해결                |
+| 정본 JSON 손상 가능      | release_ready 무효화 | 🟢 백업 정책 명문화 (v2) |
+| 일회성 스크립트 재증식   | 운영 부채 누적       | 🟢 원칙 명문화           |
+| 직원 가동 첫날 마찰      | 1~2일 지연           | 🟡 예상 가능             |
+| D엔진 RULE_7 양방향 실패 | Stage 2 진입 차단    | 🔴 미해결                |
+| 5/15 D-20 시간 압박      | 소개서 점검 지연     | 🟡 ROI 모니터링          |
 
 ---
 

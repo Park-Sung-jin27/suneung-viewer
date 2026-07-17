@@ -50,7 +50,10 @@ function collectQuestions(exam) {
   const e = data[exam];
   if (!e) return [];
   const bag = [];
-  for (const [section, domain] of [["reading", "R"], ["literature", "L"]]) {
+  for (const [section, domain] of [
+    ["reading", "R"],
+    ["literature", "L"],
+  ]) {
     for (const set of e[section] || []) {
       for (const q of set.questions || []) {
         bag.push({
@@ -73,9 +76,7 @@ function collectQuestions(exam) {
 // 균등 샘플링: reading 2 + literature 1 (exam 별 시드 고정)
 function pickSamples(exam) {
   const all = collectQuestions(exam);
-  const rand = seeded(
-    exam.split("").reduce((a, c) => a + c.charCodeAt(0), 17),
-  );
+  const rand = seeded(exam.split("").reduce((a, c) => a + c.charCodeAt(0), 17));
   const reading = all.filter((q) => q.section === "reading");
   const literature = all.filter((q) => q.section === "literature");
   function shuffle(arr) {
@@ -86,7 +87,10 @@ function pickSamples(exam) {
     }
     return a;
   }
-  const picked = [...shuffle(reading).slice(0, 2), ...shuffle(literature).slice(0, 1)];
+  const picked = [
+    ...shuffle(reading).slice(0, 2),
+    ...shuffle(literature).slice(0, 1),
+  ];
   // 부족 시 총 SAMPLES_PER_EXAM 까지 채움
   if (picked.length < SAMPLES_PER_EXAM) {
     for (const q of shuffle(all)) {
@@ -100,7 +104,8 @@ function pickSamples(exam) {
 // ── 휴리스틱 ────────────────────────────────────────────────────────────────
 const ICON_MARKERS = ["📌", "🔍", "✅", "❌"];
 const QUOTE_RE = /["“][^"”]{8,}["”]/;
-const PASSAGE_CUE_RE = /지문\s*근거|윗글|본문|\(가\)|\(나\)|\(다\)|㉠|㉡|㉢|㉣|㉤|㉥/;
+const PASSAGE_CUE_RE =
+  /지문\s*근거|윗글|본문|\(가\)|\(나\)|\(다\)|㉠|㉡|㉢|㉣|㉤|㉥/;
 
 function scoreAnalysis(an) {
   const txt = String(an || "");
@@ -118,7 +123,8 @@ function diagnoseQuestion(q) {
   const iconAllRate = analyses.filter((a) => a.hasIcons).length / nChoices;
   const iconAnyRate = analyses.filter((a) => a.hasAny).length / nChoices;
   const quoteRate = analyses.filter((a) => a.hasQuote).length / nChoices;
-  const passageCueRate = analyses.filter((a) => a.hasPassageCue).length / nChoices;
+  const passageCueRate =
+    analyses.filter((a) => a.hasPassageCue).length / nChoices;
 
   // H1: 전 선지 4아이콘 전부 포함 → 정형 LLM 포맷 의심
   const H1 = iconAllRate >= 0.8;
@@ -181,8 +187,9 @@ function diagnoseQuestion(q) {
       icon_any_rate: +iconAnyRate.toFixed(2),
       quote_rate: +quoteRate.toFixed(2),
       passage_cue_rate: +passageCueRate.toFixed(2),
-      avg_analysis_len:
-        +(analyses.reduce((a, b) => a + b.length, 0) / nChoices).toFixed(1),
+      avg_analysis_len: +(
+        analyses.reduce((a, b) => a + b.length, 0) / nChoices
+      ).toFixed(1),
     },
     llm_suspected,
     suspect_score: suspectScore,
@@ -267,7 +274,9 @@ for (const ex of EXAMS) {
     const c1 = e.choices?.[0];
     if (c1) {
       console.log(`     #1: ${(c1.choice_text || "").slice(0, 70)}`);
-      console.log(`     an: ${(c1.analysis_text || "").slice(0, 100).replace(/\n/g, " / ")}`);
+      console.log(
+        `     an: ${(c1.analysis_text || "").slice(0, 100).replace(/\n/g, " / ")}`,
+      );
     }
   }
 }

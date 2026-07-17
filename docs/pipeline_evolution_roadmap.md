@@ -50,7 +50,7 @@
 
 ---
 
-## 회기 1~10 단축 path (병행 영입, ~6~8주 ETA)
+## 회기 1~10 단축 path (병행 영입, ~~6~~8주 ETA)
 
 ```
 [Week 1]
@@ -91,7 +91,7 @@
 
 ### ETA
 
-~1~2시간
+~~1~~2시간
 
 ### spec file
 
@@ -473,17 +473,17 @@ file: `pipeline/post_llm_guardrail.js` (신규)
 | 5~6  | 회기 7                           |
 | 7~8  | 회기 9 + 회기 10                 |
 
-**총 ETA = ~6~8주 [Inference]**
+**총 ETA = ~~6~~8주 [Inference]**
 
 ---
 
 ## 회기 path 우선순위 분기 (사용자 결정 영역)
 
-| 분기                                      | 영역                                |
-| ----------------------------------------- | ----------------------------------- |
-| (a) 회기 1~4 사후 4/5 release (4주)       | 핵심 결함 해소 + production release |
-| (b) 회기 1~7 사후 release (8~10주)        | D엔진 통합 사후 lock release        |
-| (c) 회기 1~10 종결 사후 release (12~16주) | Continuous Loop 활성 사후 release   |
+| 분기                                        | 영역                                |
+| ------------------------------------------- | ----------------------------------- |
+| (a) 회기 1~4 사후 4/5 release (4주)         | 핵심 결함 해소 + production release |
+| (b) 회기 1~~7 사후 release (8~~10주)        | D엔진 통합 사후 lock release        |
+| (c) 회기 1~~10 종결 사후 release (12~~16주) | Continuous Loop 활성 사후 release   |
 
 본 chat 권고: **(a) 4주 release + (b)~(c) 병행 진행** (사용자 시간 영역 fake door 검증 + Chat 2 즉시 구현 4건 병행).
 

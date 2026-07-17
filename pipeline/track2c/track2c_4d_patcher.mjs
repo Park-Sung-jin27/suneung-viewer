@@ -78,14 +78,70 @@ function find4aRun(setId, qid, num, run) {
 // STEP 4: 패치 정의
 // ============================================================
 const patches = [
-  { id: 1, set: "r2023a", qid: 2, num: 1, source: "4c-run1", expected_pat: "R4" },
-  { id: 2, set: "r2023a", qid: 2, num: 2, source: "4c-run1", expected_pat: "R3" },
-  { id: 3, set: "r2023a", qid: 2, num: 3, source: "4c-run1", expected_pat: "R2" },
-  { id: 4, set: "r2023a", qid: 2, num: 4, source: "4c-run1", expected_pat: null },
-  { id: 5, set: "r2023a", qid: 2, num: 5, source: "4c-run1", expected_pat: null },
-  { id: 6, set: "r2023b", qid: 5, num: 5, source: "4a-run1", expected_pat: "R1" },
-  { id: 7, set: "r2023b", qid: 9, num: 2, source: "4a-run3", expected_pat: "V" },
-  { id: 8, set: "r2023c", qid: 11, num: 5, source: "4a-run1", expected_pat: null },
+  {
+    id: 1,
+    set: "r2023a",
+    qid: 2,
+    num: 1,
+    source: "4c-run1",
+    expected_pat: "R4",
+  },
+  {
+    id: 2,
+    set: "r2023a",
+    qid: 2,
+    num: 2,
+    source: "4c-run1",
+    expected_pat: "R3",
+  },
+  {
+    id: 3,
+    set: "r2023a",
+    qid: 2,
+    num: 3,
+    source: "4c-run1",
+    expected_pat: "R2",
+  },
+  {
+    id: 4,
+    set: "r2023a",
+    qid: 2,
+    num: 4,
+    source: "4c-run1",
+    expected_pat: null,
+  },
+  {
+    id: 5,
+    set: "r2023a",
+    qid: 2,
+    num: 5,
+    source: "4c-run1",
+    expected_pat: null,
+  },
+  {
+    id: 6,
+    set: "r2023b",
+    qid: 5,
+    num: 5,
+    source: "4a-run1",
+    expected_pat: "R1",
+  },
+  {
+    id: 7,
+    set: "r2023b",
+    qid: 9,
+    num: 2,
+    source: "4a-run3",
+    expected_pat: "V",
+  },
+  {
+    id: 8,
+    set: "r2023c",
+    qid: 11,
+    num: 5,
+    source: "4a-run1",
+    expected_pat: null,
+  },
 ];
 
 // ============================================================
@@ -167,10 +223,7 @@ function flatDiff(before, after, prefix = "") {
     after === null ||
     after === undefined
   ) {
-    if (
-      before !== after &&
-      JSON.stringify(before) !== JSON.stringify(after)
-    ) {
+    if (before !== after && JSON.stringify(before) !== JSON.stringify(after)) {
       diffs.push({ path: prefix, before, after });
     }
     return diffs;
@@ -199,10 +252,7 @@ function flatDiff(before, after, prefix = "") {
       diffs.push(...flatDiff(before[i], after[i], `${prefix}[${i}]`));
     }
   } else {
-    const allKeys = new Set([
-      ...Object.keys(before),
-      ...Object.keys(after),
-    ]);
+    const allKeys = new Set([...Object.keys(before), ...Object.keys(after)]);
     for (const k of allKeys) {
       diffs.push(...flatDiff(before[k], after[k], `${prefix}.${k}`));
     }
@@ -273,7 +323,5 @@ console.log(`(3) 8건 pat 일치      : ${t3 ? "PASS" : "FAIL"}`);
 console.log(`(4) 외부 변경 0건     : ${t4 ? "PASS" : "FAIL"}`);
 console.log(`(5) JSON parse 정상   : ${t5 ? "PASS" : "FAIL"}`);
 const allPass = t1 && t2 && t3 && t4 && t5;
-console.log(
-  `\n[4-d] All Acceptance Tests: ${allPass ? "PASS ✓" : "FAIL ✗"}`,
-);
+console.log(`\n[4-d] All Acceptance Tests: ${allPass ? "PASS ✓" : "FAIL ✗"}`);
 process.exit(allPass ? 0 : 1);

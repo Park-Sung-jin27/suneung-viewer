@@ -30,8 +30,15 @@
     "literature": "L1"
   },
   "cross_domain_mapping": {
-    "L1": "R1", "L2": "R1", "L3": "R3", "L4": "R2", "L5": "R4",
-    "R1": "L1", "R2": "L4", "R3": "L3", "R4": "L1"
+    "L1": "R1",
+    "L2": "R1",
+    "L3": "R3",
+    "L4": "R2",
+    "L5": "R4",
+    "R1": "L1",
+    "R2": "L4",
+    "R3": "L3",
+    "R4": "L1"
   },
   "signal_threshold": {
     "min_hits": 1,

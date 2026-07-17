@@ -106,14 +106,12 @@ const PAT_REASON_TO_SIGNAL = {
   structure_vs_form: {
     target: "signal.structure_misread",
     boundary: "L1↔L4",
-    hint:
-      "구조/서사 전개(L4) vs 표현 방식(L1) 경계 — L4 측 키워드 가중치 상향 후보",
+    hint: "구조/서사 전개(L4) vs 표현 방식(L1) 경계 — L4 측 키워드 가중치 상향 후보",
   },
   cause_vs_fact: {
     target: "signal.fact_distortion / signal.causal_inversion",
     boundary: "R1↔R2",
-    hint:
-      "사실 왜곡(R1) vs 인과 뒤집기(R2) 경계 — existing/suggested 방향성 확인 후 해당 signal keyword 가중치 조정 후보",
+    hint: "사실 왜곡(R1) vs 인과 뒤집기(R2) 경계 — existing/suggested 방향성 확인 후 해당 signal keyword 가중치 조정 후보",
   },
   concept_confusion: {
     target: "signal.concept_misuse",
@@ -128,12 +126,17 @@ const PAT_REASON_TO_SIGNAL = {
 };
 
 // ── ok_issue_reason 집계 기준 ────────────────────────────────────────────────
-const OK_REASON_SIGNALS = ["axis_mismatch", "analysis_self_conflict", "polarity_conflict", "keep_existing_risk"];
+const OK_REASON_SIGNALS = [
+  "axis_mismatch",
+  "analysis_self_conflict",
+  "polarity_conflict",
+  "keep_existing_risk",
+];
 
 // ── 리뷰 집계 ────────────────────────────────────────────────────────────────
 const reviews = Array.isArray(results.reviews) ? results.reviews : [];
 const patBuckets = {}; // pat_issue_reason → {count, choice_ids, pat_directions}
-const okBuckets = {};  // ok_issue_reason → {count, choice_ids}
+const okBuckets = {}; // ok_issue_reason → {count, choice_ids}
 const overrideCands = [];
 const disagreeRows = [];
 let agreedCount = 0;
@@ -144,7 +147,8 @@ for (const r of reviews) {
 
   const pr = r.pat_issue_reason;
   if (pr && pr !== "none" && pr !== "unclear") {
-    if (!patBuckets[pr]) patBuckets[pr] = { count: 0, choice_ids: [], pat_directions: [] };
+    if (!patBuckets[pr])
+      patBuckets[pr] = { count: 0, choice_ids: [], pat_directions: [] };
     patBuckets[pr].count++;
     patBuckets[pr].choice_ids.push(r.choice_id);
     const snap = r.engine_snapshot || {};
@@ -171,10 +175,9 @@ for (const r of reviews) {
       engine_match_type: snap.match_type ?? null,
       ok_issue_reason: r.ok_issue_reason,
       pat_issue_reason: r.pat_issue_reason,
-      reason:
-        r.human_pat_suggestion
-          ? `human 제안 pat=${r.human_pat_suggestion} — 후보 큐 승격 검토`
-          : "human이 override_candidate_queue 로 라우팅 — 후보 큐 승격 검토",
+      reason: r.human_pat_suggestion
+        ? `human 제안 pat=${r.human_pat_suggestion} — 후보 큐 승격 검토`
+        : "human이 override_candidate_queue 로 라우팅 — 후보 큐 승격 검토",
       confidence: "low", // human 1건 신호. 집계상 한 샘플 = low
       notes: r.notes || null,
     });
@@ -237,7 +240,9 @@ if (disagreeRows.length >= 1) {
 }
 
 // 3-c. ok_issue_reason 특정 축 몰림 → ok_recheck_candidate_score 가중치 축 조정
-const okMax = Object.entries(okBuckets).sort((a, b) => b[1].count - a[1].count)[0];
+const okMax = Object.entries(okBuckets).sort(
+  (a, b) => b[1].count - a[1].count,
+)[0];
 if (okMax && okMax[1].count >= 2) {
   thresholdCandidates.push({
     target: `ok_recheck_candidate_score 가중치 — "${okMax[0]}" 축`,
@@ -306,7 +311,9 @@ console.log("═".repeat(60));
 console.log(` generate_tuning_suggestions — ${EXAM}`);
 console.log("═".repeat(60));
 console.log(`\n입력:        ${path.relative(ROOT, RESULTS_PATH)}`);
-console.log(`엔진 리포트: ${engineReport ? path.relative(ROOT, REPORT_PATH) : "(없음/exam 불일치)"}`);
+console.log(
+  `엔진 리포트: ${engineReport ? path.relative(ROOT, REPORT_PATH) : "(없음/exam 불일치)"}`,
+);
 console.log(`\n[요약]`);
 console.log(`  reviews:               ${reviews.length}`);
 console.log(`  agreed_with_engine:    ${(agreedRate * 100).toFixed(1)}%`);
@@ -317,17 +324,23 @@ console.log(`  threshold_candidates:  ${thresholdCandidates.length}건`);
 if (signalWeightCandidates.length > 0) {
   console.log(`\n[signal_weight_candidates]`);
   for (const s of signalWeightCandidates)
-    console.log(`  · [${s.strength}] ${s.target} (${s.boundary}) ×${s.evidence_count}`);
+    console.log(
+      `  · [${s.strength}] ${s.target} (${s.boundary}) ×${s.evidence_count}`,
+    );
 }
 if (overrideCandidates.length > 0) {
   console.log(`\n[override_candidates]`);
   for (const o of overrideCandidates)
-    console.log(`  · ${o.choice_id}  ${o.current_pat}→${o.suggested_pat}  (${o.confidence})`);
+    console.log(
+      `  · ${o.choice_id}  ${o.current_pat}→${o.suggested_pat}  (${o.confidence})`,
+    );
 }
 if (thresholdCandidates.length > 0) {
   console.log(`\n[decision_threshold_candidates]`);
   for (const t of thresholdCandidates)
-    console.log(`  · [${t.strength}] ${t.target} · ${t.direction} ×${t.evidence_count}`);
+    console.log(
+      `  · [${t.strength}] ${t.target} · ${t.direction} ×${t.evidence_count}`,
+    );
 }
 for (const n of notes) console.log(`  ℹ ${n}`);
 

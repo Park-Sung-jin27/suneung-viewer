@@ -98,13 +98,7 @@
     "sourcePrefix": "원문 확인: ",
     "answerPrefix": "정답 교차 확인: ",
     "summaryTitle": "빠른 확인표",
-    "headers": [
-      "문항",
-      "유형",
-      "정답",
-      "배점",
-      "원문 위치"
-    ],
+    "headers": ["문항", "유형", "정답", "배점", "원문 위치"],
     "type": "유형",
     "originalLocation": "원문 확인",
     "points": "배점",

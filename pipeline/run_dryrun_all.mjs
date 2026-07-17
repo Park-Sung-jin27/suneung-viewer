@@ -33,7 +33,9 @@ if (tempRaw !== null && !Number.isFinite(temperature)) {
 }
 
 if (!outPath) {
-  console.error("Usage: node pipeline/run_dryrun_all.mjs --out <output_json> [--limit N] [--fail-fast] [--temperature T]");
+  console.error(
+    "Usage: node pipeline/run_dryrun_all.mjs --out <output_json> [--limit N] [--fail-fast] [--temperature T]",
+  );
   process.exit(1);
 }
 
@@ -43,7 +45,9 @@ if (limitRaw && (!Number.isFinite(limit) || limit <= 0)) {
 }
 
 console.log(`[run_dryrun_all] .env path: ${envPath}`);
-console.log(`[run_dryrun_all] OPENAI_API_KEY: ${process.env.OPENAI_API_KEY ? "loaded" : "MISSING"}`);
+console.log(
+  `[run_dryrun_all] OPENAI_API_KEY: ${process.env.OPENAI_API_KEY ? "loaded" : "MISSING"}`,
+);
 console.log(`[run_dryrun_all] temperature: ${temperature}`);
 
 if (!process.env.OPENAI_API_KEY) {
@@ -61,7 +65,9 @@ const inputs = JSON.parse(fs.readFileSync(inputsPath, "utf8"));
 const samples = inputs.samples || inputs;
 
 if (!Array.isArray(samples)) {
-  console.error("Invalid d_engine_dryrun_inputs.json: expected samples array or root array.");
+  console.error(
+    "Invalid d_engine_dryrun_inputs.json: expected samples array or root array.",
+  );
   process.exit(1);
 }
 
@@ -93,7 +99,10 @@ for (let i = 0; i < targetSamples.length; i++) {
   console.log(`[${i + 1}/${targetSamples.length}] ${sampleId} ...`);
 
   try {
-    const wrapperResult = await callDEngineWithMajority(input, { caller, temperature });
+    const wrapperResult = await callDEngineWithMajority(input, {
+      caller,
+      temperature,
+    });
     const final = wrapperResult.final || {};
 
     results.push({
@@ -104,11 +113,11 @@ for (let i = 0; i < targetSamples.length; i++) {
       rule_hits: final.rule_hits ?? [],
       reason: final.reason ?? "",
       confidence: final.confidence ?? null,
-      _metadata: wrapperResult.metadata ?? null
+      _metadata: wrapperResult.metadata ?? null,
     });
 
     console.log(
-      `  decision=${wrapperResult.decision} pass=${final.pass ?? "null"} error_type=${final.error_type ?? "null"}`
+      `  decision=${wrapperResult.decision} pass=${final.pass ?? "null"} error_type=${final.error_type ?? "null"}`,
     );
   } catch (error) {
     const msg = error?.message || String(error);
@@ -126,7 +135,7 @@ for (let i = 0; i < targetSamples.length; i++) {
       rule_hits: [],
       reason: msg,
       confidence: null,
-      error: msg
+      error: msg,
     });
   }
 }
@@ -137,10 +146,12 @@ const payload = {
   mode: limit ? "smoke" : "full",
   total_samples: samples.length,
   target_samples: targetSamples.length,
-  results
+  results,
 };
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, JSON.stringify(payload, null, 2));
 
-console.log(`[run_dryrun_all] wrote ${results.length} results to ${outputPath}`);
+console.log(
+  `[run_dryrun_all] wrote ${results.length} results to ${outputPath}`,
+);

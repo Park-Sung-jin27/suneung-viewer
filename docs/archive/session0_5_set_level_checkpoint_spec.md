@@ -10,6 +10,7 @@
 ## 결함 사실 (raw 점검 결과)
 
 `pipeline/index.js:140-148` — checkpoint = step1~7 단위 단독:
+
 ```javascript
 function saveCheckpoint(step) {
   const cp = { lastCompletedStep: step, ... };
@@ -44,7 +45,7 @@ function loadStep5Progress(yearTag, dataDir) {
   if (fs.existsSync(p)) {
     const prog = JSON.parse(fs.readFileSync(p, "utf8"));
     console.log(
-      `  📍 step5 진행 영역 로드: ${prog.completedSets.length} set 종결 (${prog.timestamp})`
+      `  📍 step5 진행 영역 로드: ${prog.completedSets.length} set 종결 (${prog.timestamp})`,
     );
     return prog;
   }
@@ -55,11 +56,15 @@ function saveStep5Progress(yearTag, dataDir, completedSets) {
   const p = path.join(dataDir, `step5_progress_${yearTag}.json`);
   fs.writeFileSync(
     p,
-    JSON.stringify({
-      completedSets,
-      timestamp: new Date().toISOString()
-    }, null, 2),
-    "utf8"
+    JSON.stringify(
+      {
+        completedSets,
+        timestamp: new Date().toISOString(),
+      },
+      null,
+      2,
+    ),
+    "utf8",
   );
 }
 
@@ -83,13 +88,13 @@ for (const set of allSets) {
     console.log(`  ⏩  ${set.id} skip (이전 회기 종결)`);
     continue;
   }
-  
+
   // ── 기존 set 처리 영역 그대로 ──────────────
   // - verifyDeterministic
   // - retry 3회 + step3 재호출
   // - postProcess
   // - needsReview 플래그
-  
+
   // ── set 종결 즉시 저장 ──────────────────────
   progress.completedSets.push(set.id);
   saveStep5Progress(yearTag, dataDir, progress.completedSets);
@@ -102,6 +107,7 @@ clearStep5Progress(yearTag, dataDir);
 ### 3. step5_result file 영역 부분 보존 path
 
 set 단위 step5_result file 영역 = 부분 보존 의무. 사례:
+
 - r2025a 종결 → step5_result_2025수능.json 부분 영역 영입
 - r2025b 단절 → step5_result_2025수능.json 영역에 r2025a 단독 영입
 
@@ -110,32 +116,34 @@ set 단위 step5_result file 영역 = 부분 보존 의무. 사례:
 function appendStep5Result(yearTag, dataDir, setResult) {
   const p = path.join(dataDir, `step5_result_${yearTag}.json`);
   let allResults = { reading: [], literature: [] };
-  
+
   if (fs.existsSync(p)) {
     allResults = JSON.parse(fs.readFileSync(p, "utf8"));
   }
-  
+
   const section = setResult.id.startsWith("r") ? "reading" : "literature";
   // 같은 set id 영역 정합 사실 점검 (재 처리 영역 정합)
-  const existingIdx = allResults[section].findIndex(s => s.id === setResult.id);
+  const existingIdx = allResults[section].findIndex(
+    (s) => s.id === setResult.id,
+  );
   if (existingIdx >= 0) {
     allResults[section][existingIdx] = setResult;
   } else {
     allResults[section].push(setResult);
   }
-  
+
   fs.writeFileSync(p, JSON.stringify(allResults, null, 2), "utf8");
 }
 ```
 
 ## 영향 점검 (회기 0.5 영입 사후)
 
-| 시나리오 | 정정 사전 | 정정 사후 |
-|---|---|---|
-| step5 영역 r2025b 진행 중 단절 | 8 set 모두 재 진행 (시간 ~30~40분) | r2025a skip + r2025b 부터 진행 (시간 ~5~10분) |
-| step5 영역 r2025d 진행 중 단절 | 8 set 모두 재 진행 | 4 set skip + r2025d 부터 진행 |
-| 정상 종결 path | 영향 X | 영향 X (progress file 자동 삭제) |
-| step3 / step4 영역 단절 | 영향 X (현재 cache 영역 정합) | 영향 X |
+| 시나리오                       | 정정 사전                            | 정정 사후                                       |
+| ------------------------------ | ------------------------------------ | ----------------------------------------------- |
+| step5 영역 r2025b 진행 중 단절 | 8 set 모두 재 진행 (시간 ~~30~~40분) | r2025a skip + r2025b 부터 진행 (시간 ~~5~~10분) |
+| step5 영역 r2025d 진행 중 단절 | 8 set 모두 재 진행                   | 4 set skip + r2025d 부터 진행                   |
+| 정상 종결 path                 | 영향 X                               | 영향 X (progress file 자동 삭제)                |
+| step3 / step4 영역 단절        | 영향 X (현재 cache 영역 정합)        | 영향 X                                          |
 
 → **시간 영역 절약 = 평균 ~50%** [Inference] (단절 시점 영역 무작위 가정).
 
@@ -149,13 +157,16 @@ function appendStep5Result(yearTag, dataDir, setResult) {
 ## 산출물
 
 ### file (수정)
+
 - `pipeline/step5_verify.js` — set loop 영역 정정 + 함수 3건 영입
 
 ### file (수정 X)
+
 - `pipeline/index.js` — 영역 변경 X (step5 단독 정정)
 - `pipeline/step3_analysis.js` / `step4_csids.js` — 영역 변경 X
 
 ### file (신규 — runtime 단독 영역)
+
 - `pipeline/test_data/step5_progress_{yearTag}.json` — runtime 단독 (정상 종결 사후 자동 삭제)
 
 ## 답변 의무 형식 (CLAUDE.md §1 정합)

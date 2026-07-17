@@ -68,11 +68,7 @@ export function createOpenAICaller(cfg = {}) {
     });
 
   return async function caller(prompt, options = {}) {
-    const {
-      model = "gpt-5",
-      temperature = 0,
-      max_tokens = 1000,
-    } = options;
+    const { model = "gpt-5", temperature = 0, max_tokens = 1000 } = options;
 
     const payload = buildCreatePayload(prompt, {
       model,
@@ -84,8 +80,7 @@ export function createOpenAICaller(cfg = {}) {
     try {
       response = await client.chat.completions.create(payload);
     } catch (e) {
-      const status =
-        e?.status ?? e?.response?.status ?? e?.code ?? null;
+      const status = e?.status ?? e?.response?.status ?? e?.code ?? null;
       const msg = e?.message ?? String(e);
 
       // [§4.1.5 결정 1] 401 unauthorized

@@ -68,7 +68,7 @@ async function run() {
     }
   }
   console.log(
-    `\n${passed}/${tests.length} passed${failed ? ` (${failed} failed)` : ""}`
+    `\n${passed}/${tests.length} passed${failed ? ` (${failed} failed)` : ""}`,
   );
   if (failed > 0) process.exit(1);
 }
@@ -84,8 +84,8 @@ test("1. 정상 응답 → parsed object 반환", async () => {
         rule_hits: ["RULE_1_PAT_DOMAIN_MISMATCH"],
         reason: "test reason",
         confidence: "high",
-      })
-    )
+      }),
+    ),
   );
   const caller = createOpenAICaller({ client });
   const result = await caller("test prompt", { model: "gpt-5" });
@@ -115,10 +115,7 @@ test("2. markdown fence (```json ... ```) strip 후 parse", async () => {
 test("3. 비-JSON 응답 → D_ENGINE_PARSE_ERROR throw", async () => {
   const client = makeMockClient(() => okResponse("이건 JSON 아닙니다."));
   const caller = createOpenAICaller({ client });
-  await assert.rejects(
-    () => caller("p", {}),
-    /D_ENGINE_PARSE_ERROR/
-  );
+  await assert.rejects(() => caller("p", {}), /D_ENGINE_PARSE_ERROR/);
 });
 
 test("4. 429 rate limit → D_ENGINE_RATE_429 throw", async () => {
@@ -146,17 +143,17 @@ test("6. 5xx server error → D_ENGINE_5XX_503 throw", async () => {
 });
 
 test("7. empty content → D_ENGINE_EMPTY_RESPONSE throw", async () => {
-  const client = makeMockClient(() =>
-    ({ choices: [{ message: { content: "" } }] })
-  );
+  const client = makeMockClient(() => ({
+    choices: [{ message: { content: "" } }],
+  }));
   const caller = createOpenAICaller({ client });
   await assert.rejects(() => caller("p", {}), /D_ENGINE_EMPTY_RESPONSE/);
 });
 
 test("8. null content → D_ENGINE_EMPTY_RESPONSE throw", async () => {
-  const client = makeMockClient(() =>
-    ({ choices: [{ message: { content: null } }] })
-  );
+  const client = makeMockClient(() => ({
+    choices: [{ message: { content: null } }],
+  }));
   const caller = createOpenAICaller({ client });
   await assert.rejects(() => caller("p", {}), /D_ENGINE_EMPTY_RESPONSE/);
 });
@@ -170,8 +167,8 @@ test("9. gpt-5 → max_completion_tokens 사용 (max_tokens 아님)", async () =
         rule_hits: [],
         reason: "",
         confidence: "high",
-      })
-    )
+      }),
+    ),
   );
   const caller = createOpenAICaller({ client });
   await caller("p", { model: "gpt-5", max_tokens: 500 });
@@ -189,8 +186,8 @@ test("10. gpt-4o → max_tokens 사용 (max_completion_tokens 아님)", async ()
         rule_hits: [],
         reason: "",
         confidence: "high",
-      })
-    )
+      }),
+    ),
   );
   const caller = createOpenAICaller({ client });
   await caller("p", { model: "gpt-4o", max_tokens: 500 });
@@ -201,19 +198,10 @@ test("10. gpt-4o → max_tokens 사용 (max_completion_tokens 아님)", async ()
 
 test("11. fence stripper 단위 검증", () => {
   const { stripMarkdownFence } = __test__;
-  assert.equal(
-    stripMarkdownFence("```json\n{\"a\":1}\n```"),
-    '{"a":1}'
-  );
-  assert.equal(
-    stripMarkdownFence("```\n{\"a\":1}\n```"),
-    '{"a":1}'
-  );
+  assert.equal(stripMarkdownFence('```json\n{"a":1}\n```'), '{"a":1}');
+  assert.equal(stripMarkdownFence('```\n{"a":1}\n```'), '{"a":1}');
   assert.equal(stripMarkdownFence('{"a":1}'), '{"a":1}');
-  assert.equal(
-    stripMarkdownFence("  ```json\n{\"a\":1}\n```  "),
-    '{"a":1}'
-  );
+  assert.equal(stripMarkdownFence('  ```json\n{"a":1}\n```  '), '{"a":1}');
 });
 
 // ─── 라이브 smoke (D_ENGINE_LIVE=1 시만 실행, $0.3~0.5) ──────────

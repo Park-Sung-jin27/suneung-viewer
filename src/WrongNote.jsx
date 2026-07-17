@@ -376,8 +376,7 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
                     color: COLORS.green,
                   }}
                 >
-                  복습 큐{" "}
-                  {isDone ? queueSnapshot.length : queueIdx + 1}/
+                  복습 큐 {isDone ? queueSnapshot.length : queueIdx + 1}/
                   {queueSnapshot.length}
                 </span>
                 <button
@@ -483,7 +482,9 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
                     >
                       {yearMeta?.label ?? cur.year_key}
                     </span>
-                    <span style={{ fontSize: "0.74rem", color: COLORS.textLight }}>
+                    <span
+                      style={{ fontSize: "0.74rem", color: COLORS.textLight }}
+                    >
                       {set?.title ?? cur.set_id}
                     </span>
                     {cur.pat != null && <PatternBadge pat={cur.pat} />}
@@ -578,7 +579,8 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
                         color: COLORS.wrong,
                         fontSize: "0.78rem",
                         fontWeight: "700",
-                        cursor: updatingId === cur.id ? "not-allowed" : "pointer",
+                        cursor:
+                          updatingId === cur.id ? "not-allowed" : "pointer",
                       }}
                     >
                       ✗ 또 틀렸어요
@@ -594,7 +596,8 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
                         color: "#fff",
                         fontSize: "0.78rem",
                         fontWeight: "700",
-                        cursor: updatingId === cur.id ? "not-allowed" : "pointer",
+                        cursor:
+                          updatingId === cur.id ? "not-allowed" : "pointer",
                       }}
                     >
                       ✓ 맞췄어요
@@ -610,7 +613,8 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
                         color: COLORS.textLight,
                         fontSize: "0.74rem",
                         fontWeight: "600",
-                        cursor: updatingId === cur.id ? "not-allowed" : "pointer",
+                        cursor:
+                          updatingId === cur.id ? "not-allowed" : "pointer",
                       }}
                     >
                       건너뛰기
@@ -624,296 +628,309 @@ export default function WrongNote({ user, allData, onGoToQuestion }) {
 
       {/* 필터 + 컨텐츠 — list 모드 단독 path */}
       {mode === "list" && (
-      <>
-      <div
-        style={{
-          padding: "14px 20px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "8px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            gap: "6px",
-            overflowX: "auto",
-            scrollbarWidth: "none",
-          }}
-        >
-          <FilterChip
-            label="전체"
-            active={yearFilter === "all"}
-            onClick={() => setYearFilter("all")}
-          />
-          {yearKeys.map((yk) => {
-            const meta = YEAR_INFO.find((y) => y.key === yk);
-            return (
-              <FilterChip
-                key={yk}
-                label={meta?.label ?? yk}
-                active={yearFilter === yk}
-                onClick={() => setYearFilter(yk)}
-              />
-            );
-          })}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            gap: "6px",
-            overflowX: "auto",
-            scrollbarWidth: "none",
-          }}
-        >
-          <FilterChip
-            label="전체 패턴"
-            active={patFilter === "all"}
-            onClick={() => setPatFilter("all")}
-          />
-          {patKeys.map((pk) => (
-            <FilterChip
-              key={pk}
-              label={`${pk} ${P[pk]?.name ?? ""}`}
-              active={patFilter === String(pk)}
-              onClick={() => setPatFilter(String(pk))}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* 컨텐츠 */}
-      <div
-        style={{ padding: "0 20px 40px", maxWidth: "640px", margin: "0 auto" }}
-      >
-        {loading ? (
-          <div style={{ textAlign: "center", padding: "48px 0" }}>
-            <div
-              style={{
-                width: "32px",
-                height: "32px",
-                margin: "0 auto 12px",
-                border: `3px solid ${COLORS.beigeDark}`,
-                borderTop: `3px solid ${COLORS.green}`,
-                borderRadius: "50%",
-                animation: "spin 0.7s linear infinite",
-              }}
-            />
-            <span style={{ fontSize: "0.85rem", color: COLORS.textLight }}>
-              불러오는 중...
-            </span>
-          </div>
-        ) : filtered.length === 0 ? (
+        <>
           <div
             style={{
-              textAlign: "center",
-              padding: "48px 24px",
-              background: "#fff",
-              borderRadius: "14px",
-              border: `1px solid ${COLORS.beigeDark}`,
-              marginTop: "14px",
-            }}
-          >
-            <div style={{ fontSize: "2rem", marginBottom: "12px" }}>🎉</div>
-            <p
-              style={{ fontSize: "0.9rem", color: COLORS.textLight, margin: 0 }}
-            >
-              {answers.length === 0
-                ? "아직 틀린 문제가 없습니다"
-                : "필터 조건에 맞는 오답이 없습니다"}
-            </p>
-          </div>
-        ) : (
-          <div
-            style={{
+              padding: "14px 20px",
               display: "flex",
               flexDirection: "column",
-              gap: "10px",
-              marginTop: "6px",
+              gap: "8px",
             }}
           >
             <div
               style={{
-                fontSize: "0.75rem",
-                color: COLORS.textLight,
-                padding: "0 2px",
+                display: "flex",
+                gap: "6px",
+                overflowX: "auto",
+                scrollbarWidth: "none",
               }}
             >
-              {filtered.length}개 오답
+              <FilterChip
+                label="전체"
+                active={yearFilter === "all"}
+                onClick={() => setYearFilter("all")}
+              />
+              {yearKeys.map((yk) => {
+                const meta = YEAR_INFO.find((y) => y.key === yk);
+                return (
+                  <FilterChip
+                    key={yk}
+                    label={meta?.label ?? yk}
+                    active={yearFilter === yk}
+                    onClick={() => setYearFilter(yk)}
+                  />
+                );
+              })}
             </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "6px",
+                overflowX: "auto",
+                scrollbarWidth: "none",
+              }}
+            >
+              <FilterChip
+                label="전체 패턴"
+                active={patFilter === "all"}
+                onClick={() => setPatFilter("all")}
+              />
+              {patKeys.map((pk) => (
+                <FilterChip
+                  key={pk}
+                  label={`${pk} ${P[pk]?.name ?? ""}`}
+                  active={patFilter === String(pk)}
+                  onClick={() => setPatFilter(String(pk))}
+                />
+              ))}
+            </div>
+          </div>
 
-            {filtered.map((a) => {
-              const meta = YEAR_INFO.find((y) => y.key === a.year_key);
-              const setTitle = findSetTitle(allData, a.set_id);
-              const reviewDue = isReviewDue(a.next_review);
-
-              return (
+          {/* 컨텐츠 */}
+          <div
+            style={{
+              padding: "0 20px 40px",
+              maxWidth: "640px",
+              margin: "0 auto",
+            }}
+          >
+            {loading ? (
+              <div style={{ textAlign: "center", padding: "48px 0" }}>
                 <div
-                  key={a.id}
-                  onClick={() =>
-                    onGoToQuestion?.(a.year_key, a.set_id, a.question_id)
-                  }
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter")
-                      onGoToQuestion?.(a.year_key, a.set_id, a.question_id);
-                  }}
-                  role="button"
-                  tabIndex={0}
                   style={{
-                    background: reviewDue ? COLORS.wrongBg : "#fff",
-                    border: `1px solid ${reviewDue ? COLORS.wrong + "44" : COLORS.beigeDark}`,
-                    borderLeft: `4px solid ${COLORS.wrong}`,
-                    borderRadius: "12px",
-                    padding: "14px 16px",
-                    cursor: "pointer",
-                    textAlign: "left",
-                    transition: "all 0.15s",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "6px",
-                    outline: "none",
+                    width: "32px",
+                    height: "32px",
+                    margin: "0 auto 12px",
+                    border: `3px solid ${COLORS.beigeDark}`,
+                    borderTop: `3px solid ${COLORS.green}`,
+                    borderRadius: "50%",
+                    animation: "spin 0.7s linear infinite",
+                  }}
+                />
+                <span style={{ fontSize: "0.85rem", color: COLORS.textLight }}>
+                  불러오는 중...
+                </span>
+              </div>
+            ) : filtered.length === 0 ? (
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "48px 24px",
+                  background: "#fff",
+                  borderRadius: "14px",
+                  border: `1px solid ${COLORS.beigeDark}`,
+                  marginTop: "14px",
+                }}
+              >
+                <div style={{ fontSize: "2rem", marginBottom: "12px" }}>🎉</div>
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    color: COLORS.textLight,
+                    margin: 0,
                   }}
                 >
-                  {/* 상단: 연도 + 날짜 + 복습 뱃지 */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}
-                  >
-                    {meta && (
-                      <span
-                        style={{
-                          width: "6px",
-                          height: "6px",
-                          borderRadius: "50%",
-                          background: meta.color,
-                          flexShrink: 0,
-                        }}
-                      />
-                    )}
-                    <span
+                  {answers.length === 0
+                    ? "아직 틀린 문제가 없습니다"
+                    : "필터 조건에 맞는 오답이 없습니다"}
+                </p>
+              </div>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                  marginTop: "6px",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "0.75rem",
+                    color: COLORS.textLight,
+                    padding: "0 2px",
+                  }}
+                >
+                  {filtered.length}개 오답
+                </div>
+
+                {filtered.map((a) => {
+                  const meta = YEAR_INFO.find((y) => y.key === a.year_key);
+                  const setTitle = findSetTitle(allData, a.set_id);
+                  const reviewDue = isReviewDue(a.next_review);
+
+                  return (
+                    <div
+                      key={a.id}
+                      onClick={() =>
+                        onGoToQuestion?.(a.year_key, a.set_id, a.question_id)
+                      }
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter")
+                          onGoToQuestion?.(a.year_key, a.set_id, a.question_id);
+                      }}
+                      role="button"
+                      tabIndex={0}
                       style={{
-                        fontSize: "0.78rem",
-                        fontWeight: "600",
-                        color: COLORS.text,
+                        background: reviewDue ? COLORS.wrongBg : "#fff",
+                        border: `1px solid ${reviewDue ? COLORS.wrong + "44" : COLORS.beigeDark}`,
+                        borderLeft: `4px solid ${COLORS.wrong}`,
+                        borderRadius: "12px",
+                        padding: "14px 16px",
+                        cursor: "pointer",
+                        textAlign: "left",
+                        transition: "all 0.15s",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "6px",
+                        outline: "none",
                       }}
                     >
-                      {meta?.label ?? a.year_key}
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "0.7rem",
-                        color: COLORS.textLight,
-                        marginLeft: "auto",
-                      }}
-                    >
-                      {new Date(a.answered_at).toLocaleDateString("ko-KR", {
-                        month: "short",
-                        day: "numeric",
-                      })}
-                    </span>
-                    {reviewDue && (
-                      <span
+                      {/* 상단: 연도 + 날짜 + 복습 뱃지 */}
+                      <div
                         style={{
-                          fontSize: "0.68rem",
-                          fontWeight: "700",
-                          color: "#fff",
-                          background: "#e67e22",
-                          borderRadius: "4px",
-                          padding: "1px 6px",
-                          whiteSpace: "nowrap",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "8px",
                         }}
                       >
-                        복습 필요
-                      </span>
-                    )}
-                  </div>
+                        {meta && (
+                          <span
+                            style={{
+                              width: "6px",
+                              height: "6px",
+                              borderRadius: "50%",
+                              background: meta.color,
+                              flexShrink: 0,
+                            }}
+                          />
+                        )}
+                        <span
+                          style={{
+                            fontSize: "0.78rem",
+                            fontWeight: "600",
+                            color: COLORS.text,
+                          }}
+                        >
+                          {meta?.label ?? a.year_key}
+                        </span>
+                        <span
+                          style={{
+                            fontSize: "0.7rem",
+                            color: COLORS.textLight,
+                            marginLeft: "auto",
+                          }}
+                        >
+                          {new Date(a.answered_at).toLocaleDateString("ko-KR", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </span>
+                        {reviewDue && (
+                          <span
+                            style={{
+                              fontSize: "0.68rem",
+                              fontWeight: "700",
+                              color: "#fff",
+                              background: "#e67e22",
+                              borderRadius: "4px",
+                              padding: "1px 6px",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            복습 필요
+                          </span>
+                        )}
+                      </div>
 
-                  {/* 중단: 세트 제목 */}
-                  <div
-                    style={{
-                      fontSize: "0.88rem",
-                      fontWeight: "600",
-                      color: COLORS.text,
-                    }}
-                  >
-                    {setTitle}
-                  </div>
+                      {/* 중단: 세트 제목 */}
+                      <div
+                        style={{
+                          fontSize: "0.88rem",
+                          fontWeight: "600",
+                          color: COLORS.text,
+                        }}
+                      >
+                        {setTitle}
+                      </div>
 
-                  {/* 하단: 문항번호 + 선택 선지 + 패턴 */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "0.82rem",
-                        fontWeight: "700",
-                        color: COLORS.wrong,
-                      }}
-                    >
-                      {a.question_id}번 문항
-                    </span>
-                    <span
-                      style={{ fontSize: "0.78rem", color: COLORS.textLight }}
-                    >
-                      선택: {a.choice_num}번
-                    </span>
-                    {a.pat != null && <PatternBadge pat={a.pat} />}
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "8px",
-                      marginTop: "6px",
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <button
-                      onClick={(e) => handleReviewResult(e, a, true)}
-                      disabled={updatingId === a.id}
-                      style={{
-                        padding: "6px 10px",
-                        borderRadius: "6px",
-                        border: `1px solid ${COLORS.greenBorder}`,
-                        background: COLORS.greenLight,
-                        color: COLORS.green,
-                        fontSize: "0.74rem",
-                        fontWeight: "700",
-                        cursor: updatingId === a.id ? "not-allowed" : "pointer",
-                      }}
-                    >
-                      복습 완료
-                    </button>
-                    <button
-                      onClick={(e) => handleReviewResult(e, a, false)}
-                      disabled={updatingId === a.id}
-                      style={{
-                        padding: "6px 10px",
-                        borderRadius: "6px",
-                        border: "1px solid #f2b8b5",
-                        background: "#fff5f5",
-                        color: COLORS.wrong,
-                        fontSize: "0.74rem",
-                        fontWeight: "700",
-                        cursor: updatingId === a.id ? "not-allowed" : "pointer",
-                      }}
-                    >
-                      다시 틀림
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+                      {/* 하단: 문항번호 + 선택 선지 + 패턴 */}
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "8px",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: "0.82rem",
+                            fontWeight: "700",
+                            color: COLORS.wrong,
+                          }}
+                        >
+                          {a.question_id}번 문항
+                        </span>
+                        <span
+                          style={{
+                            fontSize: "0.78rem",
+                            color: COLORS.textLight,
+                          }}
+                        >
+                          선택: {a.choice_num}번
+                        </span>
+                        {a.pat != null && <PatternBadge pat={a.pat} />}
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "8px",
+                          marginTop: "6px",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <button
+                          onClick={(e) => handleReviewResult(e, a, true)}
+                          disabled={updatingId === a.id}
+                          style={{
+                            padding: "6px 10px",
+                            borderRadius: "6px",
+                            border: `1px solid ${COLORS.greenBorder}`,
+                            background: COLORS.greenLight,
+                            color: COLORS.green,
+                            fontSize: "0.74rem",
+                            fontWeight: "700",
+                            cursor:
+                              updatingId === a.id ? "not-allowed" : "pointer",
+                          }}
+                        >
+                          복습 완료
+                        </button>
+                        <button
+                          onClick={(e) => handleReviewResult(e, a, false)}
+                          disabled={updatingId === a.id}
+                          style={{
+                            padding: "6px 10px",
+                            borderRadius: "6px",
+                            border: "1px solid #f2b8b5",
+                            background: "#fff5f5",
+                            color: COLORS.wrong,
+                            fontSize: "0.74rem",
+                            fontWeight: "700",
+                            cursor:
+                              updatingId === a.id ? "not-allowed" : "pointer",
+                          }}
+                        >
+                          다시 틀림
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      </>
+        </>
       )}
     </div>
   );

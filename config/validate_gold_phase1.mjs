@@ -21,60 +21,72 @@
  *   JSON { pass: boolean, issues: [...] }
  */
 
-import { readFileSync } from 'fs';
+import { readFileSync } from "fs";
 
 // ==============================
 // 검증 규칙
 // ==============================
 
 const CONTAMINATION_INPUT = [
-  '오답 패턴이 적용',
-  '패턴이 적용될 수 없',
-  '[사실 왜곡]',
-  '[팩트 왜곡]',
-  '[관계 전도]',
-  '[인과 전도]',
-  '[과도한 추론]',
-  '[개념 혼합]',
-  '[표현 형식 오독]',
-  '[정서 태도 오독]',
-  '[주제 의미 과잉]',
-  '[구조 맥락 오류]',
-  '[보기 적용 오류]',
-  '[어휘 오류]',
+  "오답 패턴이 적용",
+  "패턴이 적용될 수 없",
+  "[사실 왜곡]",
+  "[팩트 왜곡]",
+  "[관계 전도]",
+  "[인과 전도]",
+  "[과도한 추론]",
+  "[개념 혼합]",
+  "[표현 형식 오독]",
+  "[정서 태도 오독]",
+  "[주제 의미 과잉]",
+  "[구조 맥락 오류]",
+  "[보기 적용 오류]",
+  "[어휘 오류]",
 ];
 
 const CONTAMINATION_REASON = [
-  '이므로 pat이',
-  '이므로 pat은',
-  '존재할 수 없다',
-  '적용될 수 없',
-  'analysis도',
-  'analysis가 \'',
-  '인정하고 있음에도',
-  '명시하고 있음에도',
-  '긍정하고 있음에도',
-  '적절한 진술로 인정',
+  "이므로 pat이",
+  "이므로 pat은",
+  "존재할 수 없다",
+  "적용될 수 없",
+  "analysis도",
+  "analysis가 '",
+  "인정하고 있음에도",
+  "명시하고 있음에도",
+  "긍정하고 있음에도",
+  "적절한 진술로 인정",
 ];
 
 const META_GUIDANCE = [
-  'D엔진이 감지',
-  'D엔진이 판정',
-  'D엔진이 ',
-  '감지하는지 검증',
-  '판정하는지 검증',
-  'precheck 힌트',
-  '힌트 없이',
+  "D엔진이 감지",
+  "D엔진이 판정",
+  "D엔진이 ",
+  "감지하는지 검증",
+  "판정하는지 검증",
+  "precheck 힌트",
+  "힌트 없이",
 ];
 
 const FORBIDDEN_QUOTE_FORMAT = [
-  '...',  // 말줄임표
-  '…',    // 유니코드 말줄임표
+  "...", // 말줄임표
+  "…", // 유니코드 말줄임표
 ];
 
-const ALLOWED_PATS = ['R1','R2','R3','R4','L1','L2','L3','L4','L5','V',null];
-const READING_PATS = ['R1','R2','R3','R4','V',null];
-const LIT_PATS = ['L1','L2','L3','L4','L5','V',null];
+const ALLOWED_PATS = [
+  "R1",
+  "R2",
+  "R3",
+  "R4",
+  "L1",
+  "L2",
+  "L3",
+  "L4",
+  "L5",
+  "V",
+  null,
+];
+const READING_PATS = ["R1", "R2", "R3", "R4", "V", null];
+const LIT_PATS = ["L1", "L2", "L3", "L4", "L5", "V", null];
 
 // ==============================
 // 검증 함수
@@ -87,10 +99,10 @@ function validateQuoteInPassage(sample) {
   const match = analysis.match(/📌 지문 근거:\s*"([^"]+)"/);
   if (!match) {
     // ok:true 샘플은 근거 추출 생략
-    if (!analysis.includes('✅')) {
+    if (!analysis.includes("✅")) {
       issues.push({
-        code: 'QUOTE_PATTERN_MISSING',
-        message: '📌 지문 근거 패턴을 찾을 수 없음',
+        code: "QUOTE_PATTERN_MISSING",
+        message: "📌 지문 근거 패턴을 찾을 수 없음",
       });
     }
     return issues;
@@ -101,7 +113,7 @@ function validateQuoteInPassage(sample) {
   // Rule 1: contiguous substring exact match
   if (!passage.includes(quote)) {
     issues.push({
-      code: 'QUOTE_NOT_IN_PASSAGE',
+      code: "QUOTE_NOT_IN_PASSAGE",
       message: `근거 문자열이 passage의 연속 부분 문자열이 아님`,
       quote: quote.slice(0, 60),
       passage: passage.slice(0, 80),
@@ -124,14 +136,14 @@ function validateQuoteInPassage(sample) {
     const trimmedQuote = quote.trim();
     if (trimmedQuote !== quote) {
       issues.push({
-        code: 'QUOTE_HAS_LEADING_TRAILING_WHITESPACE',
-        message: '근거 문자열 앞뒤에 공백이 있음',
+        code: "QUOTE_HAS_LEADING_TRAILING_WHITESPACE",
+        message: "근거 문자열 앞뒤에 공백이 있음",
       });
     }
     if (!passage.includes(trimmedQuote)) {
       issues.push({
-        code: 'QUOTE_BOUNDARY_MISMATCH',
-        message: '근거 문자열이 경계 포함하여 정확히 일치하지 않음',
+        code: "QUOTE_BOUNDARY_MISMATCH",
+        message: "근거 문자열이 경계 포함하여 정확히 일치하지 않음",
         quote: trimmedQuote.slice(0, 60),
       });
     }
@@ -141,7 +153,7 @@ function validateQuoteInPassage(sample) {
   for (const forbidden of FORBIDDEN_QUOTE_FORMAT) {
     if (quote.includes(forbidden)) {
       issues.push({
-        code: 'FORBIDDEN_QUOTE_FORMAT',
+        code: "FORBIDDEN_QUOTE_FORMAT",
         message: `근거에 금지 형식 포함: "${forbidden}"`,
       });
     }
@@ -157,24 +169,32 @@ function validateSchemaCombo(sample) {
   // pat enum check
   if (!ALLOWED_PATS.includes(pat)) {
     issues.push({
-      code: 'INVALID_PAT',
+      code: "INVALID_PAT",
       message: `pat='${pat}'은 허용되지 않은 값`,
     });
   }
 
   // domain-pat 조합 체크 (단 DOMAIN 샘플은 의도적 위반이므로 예외)
-  const isDomainViolationSample = sample.sample_id.includes('DOMAIN');
+  const isDomainViolationSample = sample.sample_id.includes("DOMAIN");
 
   if (!isDomainViolationSample) {
-    if (domain === 'reading' && LIT_PATS.includes(pat) && !READING_PATS.includes(pat)) {
+    if (
+      domain === "reading" &&
+      LIT_PATS.includes(pat) &&
+      !READING_PATS.includes(pat)
+    ) {
       issues.push({
-        code: 'DOMAIN_PAT_MISMATCH',
+        code: "DOMAIN_PAT_MISMATCH",
         message: `reading 도메인에 ${pat}(문학 계열) 배정`,
       });
     }
-    if (domain === 'literature' && READING_PATS.includes(pat) && !LIT_PATS.includes(pat)) {
+    if (
+      domain === "literature" &&
+      READING_PATS.includes(pat) &&
+      !LIT_PATS.includes(pat)
+    ) {
       issues.push({
-        code: 'DOMAIN_PAT_MISMATCH',
+        code: "DOMAIN_PAT_MISMATCH",
         message: `literature 도메인에 ${pat}(독서 계열) 배정`,
       });
     }
@@ -182,7 +202,7 @@ function validateSchemaCombo(sample) {
     // ok:true인데 pat 존재 (DOMAIN이 아닌 경우만)
     if (ok === true && pat !== null) {
       issues.push({
-        code: 'OK_TRUE_WITH_PAT',
+        code: "OK_TRUE_WITH_PAT",
         message: `ok:true인데 pat='${pat}' 설정됨`,
       });
     }
@@ -190,7 +210,7 @@ function validateSchemaCombo(sample) {
     // ok:false인데 pat=null
     if (ok === false && pat === null) {
       issues.push({
-        code: 'OK_FALSE_WITHOUT_PAT',
+        code: "OK_FALSE_WITHOUT_PAT",
         message: `ok:false인데 pat이 null`,
       });
     }
@@ -203,12 +223,12 @@ function validateContamination(sample) {
   const issues = [];
 
   // Input contamination
-  for (const field of ['passage', 'question_text', 'choice_text', 'analysis']) {
-    const text = sample.input[field] || '';
+  for (const field of ["passage", "question_text", "choice_text", "analysis"]) {
+    const text = sample.input[field] || "";
     for (const pattern of CONTAMINATION_INPUT) {
       if (text.includes(pattern)) {
         issues.push({
-          code: 'CONTAMINATION_IN_INPUT',
+          code: "CONTAMINATION_IN_INPUT",
           field: `input.${field}`,
           pattern,
         });
@@ -217,23 +237,23 @@ function validateContamination(sample) {
   }
 
   // Reason contamination
-  const reason = sample.expected_output?.reason || '';
+  const reason = sample.expected_output?.reason || "";
   for (const pattern of CONTAMINATION_REASON) {
     if (reason.includes(pattern)) {
       issues.push({
-        code: 'CONTAMINATION_IN_REASON',
+        code: "CONTAMINATION_IN_REASON",
         pattern,
       });
     }
   }
 
   // Rationale / test_intent meta guidance
-  for (const field of ['rationale', 'test_intent']) {
-    const text = sample[field] || '';
+  for (const field of ["rationale", "test_intent"]) {
+    const text = sample[field] || "";
     for (const pattern of META_GUIDANCE) {
       if (text.includes(pattern)) {
         issues.push({
-          code: 'META_GUIDANCE',
+          code: "META_GUIDANCE",
           field,
           pattern,
         });
@@ -250,7 +270,7 @@ function validatePrecheckSignals(sample) {
   for (const [k, v] of Object.entries(signals)) {
     if (v !== false) {
       issues.push({
-        code: 'PRECHECK_SIGNALS_NON_FALSE',
+        code: "PRECHECK_SIGNALS_NON_FALSE",
         field: `precheck_signals.${k}`,
         value: v,
       });
@@ -266,8 +286,8 @@ function validateIntent(sample) {
 
   if (!intent) {
     issues.push({
-      code: 'INTENT_VALIDATION_MISSING',
-      message: 'intent_validation 필드 누락',
+      code: "INTENT_VALIDATION_MISSING",
+      message: "intent_validation 필드 누락",
     });
     return issues;
   }
@@ -275,7 +295,7 @@ function validateIntent(sample) {
   // target_failure_mode와 expected.error_type 일치 확인
   if (intent.target_failure_mode !== expected.error_type) {
     issues.push({
-      code: 'INTENT_TARGET_MISMATCH',
+      code: "INTENT_TARGET_MISMATCH",
       message: `target_failure_mode(${intent.target_failure_mode}) != expected.error_type(${expected.error_type})`,
     });
   }
@@ -283,15 +303,18 @@ function validateIntent(sample) {
   // forbidden_alternatives에 expected.error_type이 포함되면 자기모순
   if (intent.forbidden_alternatives?.includes(expected.error_type)) {
     issues.push({
-      code: 'INTENT_FORBIDDEN_COLLISION',
+      code: "INTENT_FORBIDDEN_COLLISION",
       message: `expected.error_type(${expected.error_type})가 forbidden_alternatives에 포함됨`,
     });
   }
 
   // acceptable_confidence에 expected.confidence 포함 확인
-  if (intent.acceptable_confidence && !intent.acceptable_confidence.includes(expected.confidence)) {
+  if (
+    intent.acceptable_confidence &&
+    !intent.acceptable_confidence.includes(expected.confidence)
+  ) {
     issues.push({
-      code: 'INTENT_CONFIDENCE_MISMATCH',
+      code: "INTENT_CONFIDENCE_MISMATCH",
       message: `expected.confidence(${expected.confidence})가 acceptable_confidence(${intent.acceptable_confidence})에 없음`,
     });
   }
@@ -322,7 +345,7 @@ function validateErrorTypeDistribution(data) {
     for (const [et, count] of Object.entries(declaredCounts)) {
       if (observed[et] !== count) {
         issues.push({
-          code: 'ACTUAL_DISTRIBUTION_MISMATCH',
+          code: "ACTUAL_DISTRIBUTION_MISMATCH",
           error_type: et,
           declared: count,
           observed: observed[et] || 0,
@@ -333,7 +356,7 @@ function validateErrorTypeDistribution(data) {
     for (const [et, count] of Object.entries(observed)) {
       if (!(et in declaredCounts)) {
         issues.push({
-          code: 'ACTUAL_DISTRIBUTION_UNDECLARED',
+          code: "ACTUAL_DISTRIBUTION_UNDECLARED",
           error_type: et,
           observed: count,
         });
@@ -342,7 +365,7 @@ function validateErrorTypeDistribution(data) {
     // _total 일치 확인
     if (declaredActual._total !== data.samples.length) {
       issues.push({
-        code: 'ACTUAL_TOTAL_MISMATCH',
+        code: "ACTUAL_TOTAL_MISMATCH",
         declared: declaredActual._total,
         observed: data.samples.length,
       });
@@ -351,13 +374,14 @@ function validateErrorTypeDistribution(data) {
     // (1-fallback) legacy error_type_distribution
     const declared = data.meta?.error_type_distribution || {};
     if (Object.keys(declared).length > 0) {
-      const pendingCount = (data.pending_slots?.user_to_author || []).length
-                        + (data.pending_slots?.claude_to_author || []).length;
+      const pendingCount =
+        (data.pending_slots?.user_to_author || []).length +
+        (data.pending_slots?.claude_to_author || []).length;
       const declaredTotal = Object.values(declared).reduce((a, b) => a + b, 0);
       const currentTotal = data.samples.length + pendingCount;
       if (declaredTotal !== currentTotal) {
         issues.push({
-          code: 'TOTAL_COUNT_MISMATCH',
+          code: "TOTAL_COUNT_MISMATCH",
           declared: declaredTotal,
           actual_plus_pending: currentTotal,
         });
@@ -372,7 +396,7 @@ function validateErrorTypeDistribution(data) {
     const discardedSamplesLen = (data.meta?.discarded_samples || []).length;
     if (declaredDiscarded._total !== discardedSamplesLen) {
       issues.push({
-        code: 'DISCARDED_TOTAL_MISMATCH',
+        code: "DISCARDED_TOTAL_MISMATCH",
         declared: declaredDiscarded._total,
         observed: discardedSamplesLen,
       });
@@ -381,18 +405,18 @@ function validateErrorTypeDistribution(data) {
 
   // (3) distribution_plan 합계 일치 검증 (§10 v2)
   const plan = data.meta?.distribution_plan || null;
-  if (plan && typeof plan._total_attempted === 'number') {
+  if (plan && typeof plan._total_attempted === "number") {
     const sumKeys = [
-      'existing_by_user',
-      'authored_by_claude',
-      'authored_by_quality_reviewer',
-      'to_be_authored_by_user',
-      'discarded',
+      "existing_by_user",
+      "authored_by_claude",
+      "authored_by_quality_reviewer",
+      "to_be_authored_by_user",
+      "discarded",
     ];
     const sum = sumKeys.reduce((a, k) => a + (plan[k] || 0), 0);
     if (sum !== plan._total_attempted) {
       issues.push({
-        code: 'DISTRIBUTION_PLAN_SUM_MISMATCH',
+        code: "DISTRIBUTION_PLAN_SUM_MISMATCH",
         declared: plan._total_attempted,
         sum,
       });
@@ -409,11 +433,11 @@ function validateErrorTypeDistribution(data) {
 function main() {
   const path = process.argv[2];
   if (!path) {
-    console.error('Usage: node validate_gold_phase1.mjs <gold_json_path>');
+    console.error("Usage: node validate_gold_phase1.mjs <gold_json_path>");
     process.exit(1);
   }
 
-  const data = JSON.parse(readFileSync(path, 'utf-8'));
+  const data = JSON.parse(readFileSync(path, "utf-8"));
   const allIssues = [];
 
   for (const sample of data.samples) {

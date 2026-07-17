@@ -8,7 +8,9 @@ function sendJson(res, status, body) {
 }
 
 function text(value, limit = 2000) {
-  return String(value ?? "").trim().slice(0, limit);
+  return String(value ?? "")
+    .trim()
+    .slice(0, limit);
 }
 
 function summarizeOrder(order) {
@@ -20,7 +22,10 @@ function summarizeOrder(order) {
   const context = order?.context || {};
   const payment = order?.payment || {};
   const topics = Array.isArray(order?.options?.selectedInterests)
-    ? order.options.selectedInterests.map((item) => item?.label).filter(Boolean).join(", ")
+    ? order.options.selectedInterests
+        .map((item) => item?.label)
+        .filter(Boolean)
+        .join(", ")
     : "";
 
   return [
@@ -98,7 +103,8 @@ async function sendResendEmail(order) {
 
 async function sendDiscordWebhook(order) {
   const webhook = process.env.ORDER_DISCORD_WEBHOOK_URL;
-  if (!webhook) return { skipped: true, reason: "ORDER_DISCORD_WEBHOOK_URL missing" };
+  if (!webhook)
+    return { skipped: true, reason: "ORDER_DISCORD_WEBHOOK_URL missing" };
 
   const content = `\`\`\`\n${summarizeOrder(order).slice(0, 1800)}\n\`\`\``;
   const response = await fetch(webhook, {
@@ -121,16 +127,27 @@ export default async function handler(req, res) {
   }
 
   try {
-    const order = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+    const order =
+      typeof req.body === "string" ? JSON.parse(req.body) : req.body;
     if (!order || typeof order !== "object") {
       return sendJson(res, 400, { ok: false, error: "Invalid order payload" });
     }
 
-    if (!order.orderCode || !order.product?.name || !order.customer?.name || !order.customer?.contact) {
+    if (
+      !order.orderCode ||
+      !order.product?.name ||
+      !order.customer?.name ||
+      !order.customer?.contact
+    ) {
       return sendJson(res, 400, {
         ok: false,
         error: "Missing required order fields",
-        required: ["orderCode", "product.name", "customer.name", "customer.contact"],
+        required: [
+          "orderCode",
+          "product.name",
+          "customer.name",
+          "customer.contact",
+        ],
       });
     }
 
@@ -144,7 +161,10 @@ export default async function handler(req, res) {
       return sendJson(res, 503, {
         ok: false,
         error: "No order notification sink configured",
-        needsEnv: ["RESEND_API_KEY + ORDER_NOTIFY_EMAIL", "or ORDER_DISCORD_WEBHOOK_URL"],
+        needsEnv: [
+          "RESEND_API_KEY + ORDER_NOTIFY_EMAIL",
+          "or ORDER_DISCORD_WEBHOOK_URL",
+        ],
       });
     }
 
@@ -155,6 +175,9 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     console.error("[/api/fortune-order]", error);
-    return sendJson(res, 500, { ok: false, error: error.message || "Order intake failed" });
+    return sendJson(res, 500, {
+      ok: false,
+      error: error.message || "Order intake failed",
+    });
   }
 }

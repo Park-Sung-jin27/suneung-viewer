@@ -31,9 +31,7 @@
           }
         ],
         "timestamp": "2026-05-02T15:08:54.771Z",
-        "api_call_durations_ms": [
-          18348
-        ]
+        "api_call_durations_ms": [18348]
       }
     },
     {
@@ -41,9 +39,7 @@
       "decision": "single_pass",
       "pass": false,
       "error_type": "P_MISMATCH",
-      "rule_hits": [
-        "RULE_1_PAT_DEFINITION_MISMATCH"
-      ],
+      "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
       "reason": "선지는 인과를 생산→기술로 전도하여 관계·인과 전도(R2) 오류인데, 이를 팩트 왜곡(R1)로 분류했다.",
       "confidence": "high",
       "_metadata": {
@@ -58,17 +54,13 @@
           {
             "pass": false,
             "error_type": "P_MISMATCH",
-            "rule_hits": [
-              "RULE_1_PAT_DEFINITION_MISMATCH"
-            ],
+            "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
             "reason": "선지는 인과를 생산→기술로 전도하여 관계·인과 전도(R2) 오류인데, 이를 팩트 왜곡(R1)로 분류했다.",
             "confidence": "high"
           }
         ],
         "timestamp": "2026-05-02T15:09:14.685Z",
-        "api_call_durations_ms": [
-          19912
-        ]
+        "api_call_durations_ms": [19912]
       }
     },
     {
@@ -107,9 +99,7 @@
           }
         ],
         "timestamp": "2026-05-02T15:10:06.860Z",
-        "api_call_durations_ms": [
-          8142
-        ]
+        "api_call_durations_ms": [8142]
       }
     },
     {
@@ -138,9 +128,7 @@
           }
         ],
         "timestamp": "2026-05-02T15:10:25.461Z",
-        "api_call_durations_ms": [
-          18601
-        ]
+        "api_call_durations_ms": [18601]
       }
     },
     {
@@ -169,9 +157,7 @@
           }
         ],
         "timestamp": "2026-05-02T15:10:30.403Z",
-        "api_call_durations_ms": [
-          4942
-        ]
+        "api_call_durations_ms": [4942]
       }
     },
     {
@@ -179,9 +165,7 @@
       "decision": "single_pass",
       "pass": false,
       "error_type": "P_MISMATCH",
-      "rule_hits": [
-        "RULE_1_PAT_DEFINITION_MISMATCH"
-      ],
+      "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
       "reason": "분석은 송신기/수신기의 역할 반전을 지적하는데, 이는 R2(관계 전도)에 해당하나 pat은 R1로 지정되어 불일치한다.",
       "confidence": "high",
       "_metadata": {
@@ -196,17 +180,13 @@
           {
             "pass": false,
             "error_type": "P_MISMATCH",
-            "rule_hits": [
-              "RULE_1_PAT_DEFINITION_MISMATCH"
-            ],
+            "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
             "reason": "분석은 송신기/수신기의 역할 반전을 지적하는데, 이는 R2(관계 전도)에 해당하나 pat은 R1로 지정되어 불일치한다.",
             "confidence": "high"
           }
         ],
         "timestamp": "2026-05-02T15:10:37.303Z",
-        "api_call_durations_ms": [
-          6900
-        ]
+        "api_call_durations_ms": [6900]
       }
     },
     {
@@ -235,9 +215,7 @@
           }
         ],
         "timestamp": "2026-05-02T15:11:11.004Z",
-        "api_call_durations_ms": [
-          33701
-        ]
+        "api_call_durations_ms": [33701]
       }
     },
     {
@@ -266,9 +244,7 @@
           }
         ],
         "timestamp": "2026-05-02T15:11:19.428Z",
-        "api_call_durations_ms": [
-          8424
-        ]
+        "api_call_durations_ms": [8424]
       }
     },
     {
@@ -276,9 +252,7 @@
       "decision": "single_pass",
       "pass": false,
       "error_type": "P_MISMATCH",
-      "rule_hits": [
-        "RULE_1_PAT_DEFINITION_MISMATCH"
-      ],
+      "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
       "reason": "선지는 결과 방향을 ‘가까워진다’→‘멀어진다’로 바꾼 것으로 방향 불일치(R1)에 해당하며, 인과·관계 전도(R2)는 아니다.",
       "confidence": "high",
       "_metadata": {
@@ -293,17 +267,13 @@
           {
             "pass": false,
             "error_type": "P_MISMATCH",
-            "rule_hits": [
-              "RULE_1_PAT_DEFINITION_MISMATCH"
-            ],
+            "rule_hits": ["RULE_1_PAT_DEFINITION_MISMATCH"],
             "reason": "선지는 결과 방향을 ‘가까워진다’→‘멀어진다’로 바꾼 것으로 방향 불일치(R1)에 해당하며, 인과·관계 전도(R2)는 아니다.",
             "confidence": "high"
           }
         ],
         "timestamp": "2026-05-02T15:11:30.828Z",
-        "api_call_durations_ms": [
-          11400
-        ]
+        "api_call_durations_ms": [11400]
       }
     },
     {
@@ -332,9 +302,7 @@
           }
         ],
         "timestamp": "2026-05-02T15:11:36.811Z",
-        "api_call_durations_ms": [
-          5983
-        ]
+        "api_call_durations_ms": [5983]
       }
     },
     {
@@ -363,9 +331,7 @@
           }
         ],
         "timestamp": "2026-05-02T15:11:44.412Z",
-        "api_call_durations_ms": [
-          7601
-        ]
+        "api_call_durations_ms": [7601]
       }
     },
     {
@@ -373,10 +339,7 @@
       "decision": "single_pass",
       "pass": false,
       "error_type": "E_DOMAIN_INVALID",
-      "rule_hits": [
-        "RULE_0_DOMAIN_INVALID",
-        "RULE_1_PAT_DEFINITION_MISMATCH"
-      ],
+      "rule_hits": ["RULE_0_DOMAIN_INVALID", "RULE_1_PAT_DEFINITION_MISMATCH"],
       "reason": "reading 도메인에 L3는 허용되지 않으며, 분석 내용도 주제 과잉이 아니라 지문과의 직접 모순을 지적한다.",
       "confidence": "high",
       "_metadata": {
@@ -400,9 +363,7 @@
           }
         ],
         "timestamp": "2026-05-02T15:11:51.328Z",
-        "api_call_durations_ms": [
-          6916
-        ]
+        "api_call_durations_ms": [6916]
       }
     },
     {

@@ -187,7 +187,9 @@ async function fetchAIAnswer({
 const INTERNAL_ID_RE = /\b[rl]20\d{2}[a-z0-9_]*s\d+\b/gi;
 function sanitizeAiAnswer(text) {
   if (!text) return "";
-  return String(text).replace(INTERNAL_ID_RE, "").replace(/\s{2,}/g, " ");
+  return String(text)
+    .replace(INTERNAL_ID_RE, "")
+    .replace(/\s{2,}/g, " ");
 }
 
 // 답변 안 [N] 인용 renderer path — sentIdMap 정합 사실 안 clickable pill

@@ -98,7 +98,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const cmd = process.argv[2];
   if (cmd === "list") {
     const rows = listNeedsHuman();
-    console.log(`needs_human ${rows.length}건 (current prompt: ${CURRENT_PROMPT_VERSION}):`);
+    console.log(
+      `needs_human ${rows.length}건 (current prompt: ${CURRENT_PROMPT_VERSION}):`,
+    );
     for (const r of rows)
       console.log(
         `  [${r.code}] ${r.loc} @${r.promptVersion} (시도 ${r.attempts}회)`,

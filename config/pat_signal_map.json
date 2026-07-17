@@ -56,7 +56,10 @@
     "label": "개념 혼합",
     "analysis_signals": [
       { "pattern": "개념\\s*혼합|개념\\s*짜깁기|개념어\\s*혼동", "weight": 3 },
-      { "pattern": "프레임.*오대입|개념\\s*오대입|보기.*프레임.*잘못", "weight": 3 },
+      {
+        "pattern": "프레임.*오대입|개념\\s*오대입|보기.*프레임.*잘못",
+        "weight": 3
+      },
       { "pattern": "\\b개념\\b", "weight": 1 },
       { "pattern": "범주", "weight": 2 },
       { "pattern": "혼동", "weight": 2 },
@@ -65,9 +68,7 @@
       { "pattern": "객관성.*주관성|주관성.*객관성", "weight": 2 },
       { "pattern": "개념쌍\\s*변경|용어\\s*치환", "weight": 3 }
     ],
-    "choice_axis": [
-      { "pattern": "개념|정의|용어|분류", "weight": 1 }
-    ],
+    "choice_axis": [{ "pattern": "개념|정의|용어|분류", "weight": 1 }],
     "boundary_against": ["R1"]
   },
   "L1": {
@@ -94,7 +95,10 @@
   "L2": {
     "label": "정서·태도 오독",
     "analysis_signals": [
-      { "pattern": "정서\\s*오독|감정\\s*오독|심리\\s*오독|태도\\s*오독", "weight": 3 },
+      {
+        "pattern": "정서\\s*오독|감정\\s*오독|심리\\s*오독|태도\\s*오독",
+        "weight": 3
+      },
       { "pattern": "양립\\s*불가|상대\\s*입장.*인정", "weight": 2 }
     ],
     "choice_axis": [
@@ -110,9 +114,7 @@
       { "pattern": "지문에\\s*없는\\s*(개념|의미)", "weight": 3 },
       { "pattern": "덧붙여.*과잉|끼워\\s*넣", "weight": 2 }
     ],
-    "choice_axis": [
-      { "pattern": "의미|상징|주제|암시|비유", "weight": 1 }
-    ],
+    "choice_axis": [{ "pattern": "의미|상징|주제|암시|비유", "weight": 1 }],
     "boundary_against": []
   },
   "L4": {
@@ -143,9 +145,7 @@
       { "pattern": "보기\\s*대입|보기\\s*오독", "weight": 3 },
       { "pattern": "보기\\s*조건.*잘못|보기.*잘못\\s*적용", "weight": 3 }
     ],
-    "choice_axis": [
-      { "pattern": "보기|조건|관점|전제", "weight": 1 }
-    ],
+    "choice_axis": [{ "pattern": "보기|조건|관점|전제", "weight": 1 }],
     "boundary_against": []
   },
   "V": {

@@ -9,6 +9,7 @@
 ## 1. 누적 진행 요약
 
 ### Brand
+
 - **짚이 (Jippi)** / 발음 짚-이 (jip-i)
 - 펜촉 로고 + 라임 stroke (`#2D6E2D` + `#BEF264`)
 - 태그라인: 선지마다 근거를 형광펜으로
@@ -16,11 +17,11 @@
 
 ### 도메인 (모두 결제·연결 완료)
 
-| 도메인 | 상태 | Vercel 설정 |
-|---|---|---|
-| jippi.kr | A 레코드 → 216.198.79.1 | 메인 (primary) |
-| www.jippi.kr | A 레코드 → 216.198.79.1 | redirect to root |
-| jippi.co.kr | A 레코드 → 216.198.79.1 | redirect to jippi.kr |
+| 도메인       | 상태                    | Vercel 설정          |
+| ------------ | ----------------------- | -------------------- |
+| jippi.kr     | A 레코드 → 216.198.79.1 | 메인 (primary)       |
+| www.jippi.kr | A 레코드 → 216.198.79.1 | redirect to root     |
+| jippi.co.kr  | A 레코드 → 216.198.79.1 | redirect to jippi.kr |
 
 - 가비아 결제 완료 (jippi.kr + jippi.co.kr)
 - jippi.com 미확보 (1년 후 재시도)
@@ -28,6 +29,7 @@
 - ISP DNS 캐시 풀림 대기 (30분~3시간 자연 해결)
 
 ### 인스타 핸들 (검증 대기)
+
 - 1순위: `@jippi.kr` / 2순위: `@jippi` / 3순위: `@jippi.official`
 - 인스타 로그인 일시 오류 → 복구 사후 검증 + 3개 동시 가입 의무
 
@@ -35,25 +37,26 @@
 
 ## 2. Code A commits (전체)
 
-| commit | 영역 | 변경 |
-|---|---|---|
-| c36f8ae | brand 정정 (1차) | index.html title/meta/OG/favicon + Landing.jsx sticky nav + "논리맵핑" → "짚이" 일괄 |
-| 1abcf6f | B2B Tally 통합 | Landing.jsx WaitlistForm 폐기 (-205 line) + 4건 카드 + B2B CTA (+73 line) |
-| 7142ae9 | og_image.png 배치 | public/og_image.png (569,321 bytes) |
+| commit  | 영역              | 변경                                                                                 |
+| ------- | ----------------- | ------------------------------------------------------------------------------------ |
+| c36f8ae | brand 정정 (1차)  | index.html title/meta/OG/favicon + Landing.jsx sticky nav + "논리맵핑" → "짚이" 일괄 |
+| 1abcf6f | B2B Tally 통합    | Landing.jsx WaitlistForm 폐기 (-205 line) + 4건 카드 + B2B CTA (+73 line)            |
+| 7142ae9 | og_image.png 배치 | public/og_image.png (569,321 bytes)                                                  |
 
 ---
 
 ## 3. 자산 (다운로드 가능)
 
-| 파일 | 위치 | 용도 |
-|---|---|---|
-| jippi_download.html | /mnt/user-data/outputs/ | 카드뉴스 7장 + PFP (1080×1080) |
-| jippi_og_image.html | /mnt/user-data/outputs/ | OG image HTML 원본 (1200×630) |
-| og_image.png | /mnt/user-data/outputs/ | OG image PNG (569KB, 배치 완료) |
-| HANDOVER_jippi_2026-05-08.md | /mnt/user-data/outputs/ | 1차 핸드오버 |
-| HANDOVER_jippi_2026-05-11.md | /mnt/user-data/outputs/ | 본 문서 (2차) |
+| 파일                         | 위치                    | 용도                            |
+| ---------------------------- | ----------------------- | ------------------------------- |
+| jippi_download.html          | /mnt/user-data/outputs/ | 카드뉴스 7장 + PFP (1080×1080)  |
+| jippi_og_image.html          | /mnt/user-data/outputs/ | OG image HTML 원본 (1200×630)   |
+| og_image.png                 | /mnt/user-data/outputs/ | OG image PNG (569KB, 배치 완료) |
+| HANDOVER_jippi_2026-05-08.md | /mnt/user-data/outputs/ | 1차 핸드오버                    |
+| HANDOVER_jippi_2026-05-11.md | /mnt/user-data/outputs/ | 본 문서 (2차)                   |
 
 ### Tally forms (라이브)
+
 - **B2C (출시 알림)**: `tally.so/r/81jOpo` (Landing Hero CTA, 3건 보존)
 - **B2B (학원·강사 문의)**: `tally.so/r/gDYZ74?src=landing-academy` (Landing 학원 도입 섹션, 1건 신규)
 - B2B 6필드: 이메일 / 학원·기관명 / 직책 / 학생 수 / 도입 시기 / 문의 내용
@@ -62,21 +65,22 @@
 
 ## 4. 검증 통과 항목 (라이브 작동) [Confirmed]
 
-| 영역 | 검증 path | 상태 |
-|---|---|---|
-| Vercel og_image.png 노출 | 사용자 직접 확인 | ✅ |
-| 카톡 OG 미리보기 (vercel.app 기준) | 사용자 직접 확인 | ✅ |
-| 학원 도입 섹션 → B2B Tally 연결 | Claude 크롬 도구 직접 검증 | ✅ |
-| 페이지 title "짚이 (Jippi) — 수능 국어 분석 도구" | Claude 검증 | ✅ |
-| Sticky nav 펜촉 로고 + "짚이" wordmark | Claude 검증 | ✅ |
-| Footer © 2025 짚이 | Claude 검증 | ✅ |
-| 모든 도메인 A 레코드 → 216.198.79.1 | Python DNS lookup | ✅ |
+| 영역                                              | 검증 path                  | 상태 |
+| ------------------------------------------------- | -------------------------- | ---- |
+| Vercel og_image.png 노출                          | 사용자 직접 확인           | ✅   |
+| 카톡 OG 미리보기 (vercel.app 기준)                | 사용자 직접 확인           | ✅   |
+| 학원 도입 섹션 → B2B Tally 연결                   | Claude 크롬 도구 직접 검증 | ✅   |
+| 페이지 title "짚이 (Jippi) — 수능 국어 분석 도구" | Claude 검증                | ✅   |
+| Sticky nav 펜촉 로고 + "짚이" wordmark            | Claude 검증                | ✅   |
+| Footer © 2025 짚이                                | Claude 검증                | ✅   |
+| 모든 도메인 A 레코드 → 216.198.79.1               | Python DNS lookup          | ✅   |
 
 ---
 
 ## 5. 미완 / 대기 (다음 세션)
 
 ### A. ISP DNS 캐시 풀림 (30분~3시간 자연 해결)
+
 - 시크릿 모드 `https://jippi.kr` 접속 → Vercel 페이지 노출 검증
 - Vercel SSL "Valid Configuration" 확인
 
@@ -108,12 +112,14 @@ Select-String -Path index.html -Pattern "suneung-viewer.vercel.app"
 ```
 
 ### C. 인스타 작업 (로그인 복구 사후)
+
 - @jippi.kr / @jippi / @jippi.official 동시 검증 + 가입
 - PFP 등록 (사용자 보고 완료 — 재확인 의무)
 - BIO 작성 (W1 lock 사후)
 - 카드뉴스 7장 carousel 업로드 + 캡션
 
 ### D. 사업자 등록 + 세금계산서 path (첫 inbound 즉시)
+
 - 홈택스 개인사업자 등록 (1일)
 - 업종: 정보처리 또는 교육 서비스업
 - 세무사 1회 자문

@@ -84,9 +84,14 @@ function classifySetSafety(yearKey, area, set) {
   const sents = set.sents || [];
   const realSents = sents.filter(
     (s) =>
-      !["workTag", "author", "omission", "footnote", "image", "figure"].includes(
-        s.sentType || "",
-      ),
+      ![
+        "workTag",
+        "author",
+        "omission",
+        "footnote",
+        "image",
+        "figure",
+      ].includes(s.sentType || ""),
   );
   const sentCount = realSents.length;
   const qCount = (set.questions || []).length;
@@ -136,7 +141,8 @@ function classifySetSafety(yearKey, area, set) {
   const bodyMarkers = new Set();
   // (a) sent.t
   for (const s of sents) {
-    for (const ch of s.t || "") if (PASSAGE_MARKERS.has(ch)) bodyMarkers.add(ch);
+    for (const ch of s.t || "")
+      if (PASSAGE_MARKERS.has(ch)) bodyMarkers.add(ch);
   }
   // (b) bogi text + bogi.diagram.items[].label
   for (const q of set.questions || []) {
@@ -150,7 +156,8 @@ function classifySetSafety(yearKey, area, set) {
       if (Array.isArray(bogi.items)) {
         for (const it of bogi.items) {
           const lbl = it.label || "";
-          for (const ch of lbl) if (PASSAGE_MARKERS.has(ch)) bodyMarkers.add(ch);
+          for (const ch of lbl)
+            if (PASSAGE_MARKERS.has(ch)) bodyMarkers.add(ch);
         }
       }
     }
@@ -166,8 +173,9 @@ function classifySetSafety(yearKey, area, set) {
     const stem = q.stem || q.t || "";
     for (const ch of stem) if (PASSAGE_MARKERS.has(ch)) analysisMarkers.add(ch);
     for (const c of q.choices || []) {
-      const cText = typeof c === "string" ? c : (c.text || c.t || "");
-      for (const ch of cText) if (PASSAGE_MARKERS.has(ch)) analysisMarkers.add(ch);
+      const cText = typeof c === "string" ? c : c.text || c.t || "";
+      for (const ch of cText)
+        if (PASSAGE_MARKERS.has(ch)) analysisMarkers.add(ch);
       for (const ch of c.analysis || "")
         if (PASSAGE_MARKERS.has(ch)) analysisMarkers.add(ch);
     }
@@ -202,7 +210,8 @@ function classifySetSafety(yearKey, area, set) {
     flags.sent_below_min ||
     flags.qc_ratio_violation ||
     flags.dead_ratio >=
-      thresh.set_safety_classification.rebuild_needed_if.annotation_dead_ratio_above
+      thresh.set_safety_classification.rebuild_needed_if
+        .annotation_dead_ratio_above
   ) {
     grade = "rebuild_needed";
   } else if (
@@ -211,17 +220,20 @@ function classifySetSafety(yearKey, area, set) {
   ) {
     grade = "suspect";
   }
-  return { grade, flags, sentCount, qCount, markerMissing, deadSentId, textMismatch };
+  return {
+    grade,
+    flags,
+    sentCount,
+    qCount,
+    markerMissing,
+    deadSentId,
+    textMismatch,
+  };
 }
 
 // ── analysis 안 인용문 추출 + cs_ids 후보 점수화 ──────────
 // 인용 패턴: 한국어 따옴표 + 영문 따옴표 모두 처리
-const QUOTE_PATTERNS = [
-  /"([^"]+)"/g,
-  /“([^”]+)”/g,
-  /'([^']+)'/g,
-  /‘([^’]+)’/g,
-];
+const QUOTE_PATTERNS = [/"([^"]+)"/g, /“([^”]+)”/g, /'([^']+)'/g, /‘([^’]+)’/g];
 
 function extractQuotes(text) {
   if (!text) return [];
@@ -230,7 +242,11 @@ function extractQuotes(text) {
     re.lastIndex = 0;
     let m;
     while ((m = re.exec(text)) !== null) {
-      if (m[1] && m[1].trim().length >= thresh.auto_apply_hard_conditions.min_quote_length_chars)
+      if (
+        m[1] &&
+        m[1].trim().length >=
+          thresh.auto_apply_hard_conditions.min_quote_length_chars
+      )
         out.push(m[1].trim());
     }
   }
@@ -249,7 +265,11 @@ function findSentMatches(quote, setSents) {
     // 마커 문자 무시한 정규화 매칭
     const norm = [...t].filter((ch) => !PASSAGE_MARKERS.has(ch)).join("");
     const qNorm = [...quote].filter((ch) => !PASSAGE_MARKERS.has(ch)).join("");
-    if (qNorm.length >= thresh.auto_apply_hard_conditions.min_quote_length_chars && norm.includes(qNorm)) {
+    if (
+      qNorm.length >=
+        thresh.auto_apply_hard_conditions.min_quote_length_chars &&
+      norm.includes(qNorm)
+    ) {
       matches.push({ sentId: sent.id, exact: false });
     }
   }
@@ -313,7 +333,12 @@ function scoreChoice(setObj, q, c, safetyGrade) {
   const hard = thresh.auto_apply_hard_conditions;
   const top = candidates[0];
   const runner = candidates[1];
-  const gap = top && runner ? top.normalized_score - runner.normalized_score : top ? 1.0 : 0;
+  const gap =
+    top && runner
+      ? top.normalized_score - runner.normalized_score
+      : top
+        ? 1.0
+        : 0;
   const isUnique =
     quotes.every((qq) => findSentMatches(qq, setObj.sents || []).length <= 1) &&
     candidates.length >= 1;
@@ -330,7 +355,8 @@ function scoreChoice(setObj, q, c, safetyGrade) {
 
   let decision;
   // v2: duplicate_sentid_hold set 은 자동/배치 모두 금지 — 식별자 결함 우선 정정 의무
-  if (safetyGrade === "duplicate_sentid_hold") decision = "duplicate_sentid_hold";
+  if (safetyGrade === "duplicate_sentid_hold")
+    decision = "duplicate_sentid_hold";
   else if (passAuto) decision = "auto_apply";
   else if (
     top &&
@@ -361,7 +387,12 @@ function scoreChoice(setObj, q, c, safetyGrade) {
 
 // ── 메인 ────────────────────────────────────────────────
 const candidatesOut = [];
-const safetyDist = { safe: 0, suspect: 0, rebuild_needed: 0, duplicate_sentid_hold: 0 };
+const safetyDist = {
+  safe: 0,
+  suspect: 0,
+  rebuild_needed: 0,
+  duplicate_sentid_hold: 0,
+};
 const decisionDist = {
   auto_apply: 0,
   batch_review: 0,
@@ -395,7 +426,10 @@ for (const { yearKey, area, set } of iterSets()) {
       // ok:false + 비왜곡 pat (V, R3 등) 은 cs_ids 의무 없음 — 제외
       const pat = c.pat;
       const okBool = c.ok;
-      const need = okBool === true || (okBool === false && ["R1","R2","R4","L1","L2","L4","L5"].includes(pat));
+      const need =
+        okBool === true ||
+        (okBool === false &&
+          ["R1", "R2", "R4", "L1", "L2", "L4", "L5"].includes(pat));
       if (!need) continue;
       totalChoicesEmpty++;
 
@@ -450,7 +484,9 @@ report.push(`# Day 1 리포트 — cs_ids_recovery dry-run`);
 report.push(``);
 report.push(`- tool_version: ${TOOL_VERSION}`);
 report.push(`- generated_at: ${new Date().toISOString()}`);
-report.push(`- scope: yearKey=${scopeYear || "all"} setId=${scopeSetId || "all"}`);
+report.push(
+  `- scope: yearKey=${scopeYear || "all"} setId=${scopeSetId || "all"}`,
+);
 report.push(``);
 report.push(`## 결과 요약`);
 report.push(``);
@@ -461,16 +497,24 @@ report.push(`| cs_ids 비어있고 의무 있는 choice | ${totalChoicesEmpty} |
 report.push(`| set_safety: safe | ${safetyDist.safe} |`);
 report.push(`| set_safety: suspect | ${safetyDist.suspect} |`);
 report.push(`| set_safety: rebuild_needed | ${safetyDist.rebuild_needed} |`);
-report.push(`| set_safety: duplicate_sentid_hold | ${safetyDist.duplicate_sentid_hold || 0} |`);
+report.push(
+  `| set_safety: duplicate_sentid_hold | ${safetyDist.duplicate_sentid_hold || 0} |`,
+);
 report.push(``);
 report.push(`## 자동/배치/수동 분류`);
 report.push(``);
 report.push(`| decision | count | 처리 path |`);
 report.push(`|---|---|---|`);
-report.push(`| auto_apply | ${decisionDist.auto_apply} | hard 6조건 만족 — Day 2 자동 반영 후보 |`);
-report.push(`| batch_review | ${decisionDist.batch_review} | 검수 보드 v3.1 배치 승인 |`);
+report.push(
+  `| auto_apply | ${decisionDist.auto_apply} | hard 6조건 만족 — Day 2 자동 반영 후보 |`,
+);
+report.push(
+  `| batch_review | ${decisionDist.batch_review} | 검수 보드 v3.1 배치 승인 |`,
+);
 report.push(`| manual_needed | ${decisionDist.manual_needed} | 수동 정정 |`);
-report.push(`| no_quote_extractable | ${decisionDist.no_quote_extractable} | 해설 안 따옴표 인용 없음 — 별도 path |`);
+report.push(
+  `| no_quote_extractable | ${decisionDist.no_quote_extractable} | 해설 안 따옴표 인용 없음 — 별도 path |`,
+);
 report.push(``);
 report.push(`## 처리 비율`);
 const denom = totalChoicesEmpty || 1;
@@ -484,16 +528,42 @@ report.push("- manual needed: " + manualPct + "%");
 report.push("- no quote: " + nqPct + "%");
 report.push("");
 
-fs.writeFileSync(path.join(OUTPUT_DIR, "day1_report.md"), report.join("\n"), "utf-8");
+fs.writeFileSync(
+  path.join(OUTPUT_DIR, "day1_report.md"),
+  report.join("\n"),
+  "utf-8",
+);
 
 console.log("cs_ids_recovery v" + TOOL_VERSION + " done");
 console.log("  candidates: " + candidatesOut.length);
-console.log("  safety: safe=" + safetyDist.safe + " suspect=" + safetyDist.suspect + " rebuild=" + safetyDist.rebuild_needed + " duplicate_sentid_hold=" + (safetyDist.duplicate_sentid_hold||0));
+console.log(
+  "  safety: safe=" +
+    safetyDist.safe +
+    " suspect=" +
+    safetyDist.suspect +
+    " rebuild=" +
+    safetyDist.rebuild_needed +
+    " duplicate_sentid_hold=" +
+    (safetyDist.duplicate_sentid_hold || 0),
+);
 console.log("done");
 
-fs.writeFileSync(path.join(OUTPUT_DIR, "day1_report.md"), report.join("\n"), "utf-8");
+fs.writeFileSync(
+  path.join(OUTPUT_DIR, "day1_report.md"),
+  report.join("\n"),
+  "utf-8",
+);
 
 console.log("cs_ids_recovery v" + TOOL_VERSION + " done");
 console.log("  candidates: " + candidatesOut.length);
-console.log("  safety: safe=" + safetyDist.safe + " suspect=" + safetyDist.suspect + " rebuild=" + safetyDist.rebuild_needed + " duplicate_sentid_hold=" + (safetyDist.duplicate_sentid_hold||0));
+console.log(
+  "  safety: safe=" +
+    safetyDist.safe +
+    " suspect=" +
+    safetyDist.suspect +
+    " rebuild=" +
+    safetyDist.rebuild_needed +
+    " duplicate_sentid_hold=" +
+    (safetyDist.duplicate_sentid_hold || 0),
+);
 console.log("done");

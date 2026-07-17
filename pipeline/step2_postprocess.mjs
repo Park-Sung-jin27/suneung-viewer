@@ -39,7 +39,8 @@ function detectQuestionType(t) {
 //   문자열 bogi / annotated_image·diagram 등 object.text 양형 지원 (2026-06-08).
 const BOGI_LABEL_HEAD = /^\s*(-\s*)?[<〈]\s*보\s*기\s*[>〉](\s*-)?\s*\n?/;
 function stripBogiLabel(q) {
-  if (typeof q.bogi === "string") q.bogi = q.bogi.replace(BOGI_LABEL_HEAD, "").trim();
+  if (typeof q.bogi === "string")
+    q.bogi = q.bogi.replace(BOGI_LABEL_HEAD, "").trim();
   else if (q.bogi && typeof q.bogi.text === "string")
     q.bogi.text = q.bogi.text.replace(BOGI_LABEL_HEAD, "").trim();
 }
@@ -163,10 +164,19 @@ export function cleanSentStructure(set, sec) {
   for (const x of set.sents) {
     const t = (x.t || "").trim();
     if (x.sentType && x.sentType !== "body") continue;
-    if (/^-\s?.+\s?-$/.test(t) && t.length < 40) { x.sentType = "author"; stats.typed++; }
-    else if (/^\*\s?.{1,24}?\s?:/.test(t)) { x.sentType = "footnote"; stats.typed++; }
-    else if (/^\((가|나|다|라)\)$/.test(t)) { x.sentType = "workTag"; stats.typed++; }
-    else if (/^\(중략\)$|^\(중\s?략\)$/.test(t)) { x.sentType = "omission"; stats.typed++; }
+    if (/^-\s?.+\s?-$/.test(t) && t.length < 40) {
+      x.sentType = "author";
+      stats.typed++;
+    } else if (/^\*\s?.{1,24}?\s?:/.test(t)) {
+      x.sentType = "footnote";
+      stats.typed++;
+    } else if (/^\((가|나|다|라)\)$/.test(t)) {
+      x.sentType = "workTag";
+      stats.typed++;
+    } else if (/^\(중략\)$|^\(중\s?략\)$/.test(t)) {
+      x.sentType = "omission";
+      stats.typed++;
+    }
   }
   // ④ 문학 verse 추정: author/workTag 경계로 작품 구간 분할 → 평균 행 길이 ≤ 32자 && 행 3+ → verse
   if (sec === "literature") {
@@ -174,29 +184,47 @@ export function cleanSentStructure(set, sec) {
     const flush = () => {
       const bodies = seg.filter((x) => (x.sentType || "body") === "body");
       if (bodies.length >= 3) {
-        const avg = bodies.reduce((a, x) => a + (x.t || "").length, 0) / bodies.length;
+        const avg =
+          bodies.reduce((a, x) => a + (x.t || "").length, 0) / bodies.length;
         const maxLen = Math.max(...bodies.map((x) => (x.t || "").length));
         // 시 행: 짧고(평균 ≤26자) 최장 행도 컬럼 폭 미달(≤38자). 소설 줄글은 꽉 차므로 배제.
-        if (avg <= 26 && maxLen <= 38 && bodies.length <= 45) { bodies.forEach((x) => { x.sentType = "verse"; }); stats.verse += bodies.length; }
+        if (avg <= 26 && maxLen <= 38 && bodies.length <= 45) {
+          bodies.forEach((x) => {
+            x.sentType = "verse";
+          });
+          stats.verse += bodies.length;
+        }
       }
       seg = [];
     };
     for (const x of set.sents) {
-      if ((x.sentType || "") === "author") { flush(); continue; }
+      if ((x.sentType || "") === "author") {
+        flush();
+        continue;
+      }
       seg.push(x);
     }
     flush();
   }
   // ⑤ 문학 title: author 안 ｢작품명｣ 수집
-  if (sec === "literature" && (!set.title || /물음에 답하시오/.test(set.title))) {
+  if (
+    sec === "literature" &&
+    (!set.title || /물음에 답하시오/.test(set.title))
+  ) {
     const names = [];
     for (const x of set.sents) {
       if ((x.sentType || "") !== "author") continue;
       const m = (x.t || "").match(/｢([^｣]+)｣/);
       if (m) names.push(m[1]);
-      else { const m2 = (x.t || "").match(/^-\s?(.+?)\s?-$/); if (m2) names.push(m2[1] + " 시조"); }
+      else {
+        const m2 = (x.t || "").match(/^-\s?(.+?)\s?-$/);
+        if (m2) names.push(m2[1] + " 시조");
+      }
     }
-    if (names.length) { set.title = names.join(", "); stats.title = true; }
+    if (names.length) {
+      set.title = names.join(", ");
+      stats.title = true;
+    }
   }
   return stats;
 }

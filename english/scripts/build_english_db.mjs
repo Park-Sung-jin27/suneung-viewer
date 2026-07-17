@@ -3,7 +3,11 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { PDFParse } from "pdf-parse";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
+const ROOT = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "..",
+);
 const SOURCE_DIR = path.join(ROOT, "raw_sources", "english_eval_pdfs");
 const MANIFEST_PATH = path.join(SOURCE_DIR, "manifest.json");
 const OUT_DIR = path.join(ROOT, "english", "data");
@@ -57,7 +61,9 @@ function rel(filePath) {
 }
 
 function compact(text) {
-  return String(text ?? "").replace(/\s+/g, " ").trim();
+  return String(text ?? "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function normalizeText(text) {
@@ -105,8 +111,8 @@ function extractAnswers(text) {
 
   const lines = head.split(/\r?\n/).map(compact).filter(Boolean);
   for (let idx = 0; idx < lines.length; idx += 1) {
-    const qids = [...lines[idx].matchAll(/\b0?([1-9]|[1-3]\d|4[0-5])\./g)].map((m) =>
-      Number(m[1]),
+    const qids = [...lines[idx].matchAll(/\b0?([1-9]|[1-3]\d|4[0-5])\./g)].map(
+      (m) => Number(m[1]),
     );
     const marks = [...lines[idx].matchAll(/[①②③④⑤]/g)].map((m) => m[0]);
 
@@ -119,7 +125,9 @@ function extractAnswers(text) {
       ? [...lines[idx + 1].matchAll(/[①②③④⑤]/g)].map((m) => m[0])
       : [];
     if (qids.length > 0 && nextMarks.length === qids.length) {
-      qids.forEach((qid, i) => answers.set(qid, CIRCLED_TO_NUM.get(nextMarks[i])));
+      qids.forEach((qid, i) =>
+        answers.set(qid, CIRCLED_TO_NUM.get(nextMarks[i])),
+      );
     }
   }
 
@@ -145,14 +153,22 @@ function extractSharedPassages(text) {
   const sharedPassages = new Map();
   let workingText = text;
 
-  const shared41 = removeSharedBlock(workingText, /\[\s*41\s*[～~\-–]\s*42\s*\]/, 41);
+  const shared41 = removeSharedBlock(
+    workingText,
+    /\[\s*41\s*[～~\-–]\s*42\s*\]/,
+    41,
+  );
   workingText = shared41.text;
   if (shared41.sharedText) {
     sharedPassages.set(41, shared41.sharedText);
     sharedPassages.set(42, shared41.sharedText);
   }
 
-  const shared43 = removeSharedBlock(workingText, /\[\s*43\s*[～~\-–]\s*45\s*\]/, 43);
+  const shared43 = removeSharedBlock(
+    workingText,
+    /\[\s*43\s*[～~\-–]\s*45\s*\]/,
+    43,
+  );
   workingText = shared43.text;
   if (shared43.sharedText) {
     sharedPassages.set(43, shared43.sharedText);
@@ -167,7 +183,8 @@ function findQuestionSpans(text) {
   const matches = [];
   for (const match of text.matchAll(/(^|\n)\s*(\d{1,2})\.\s/g)) {
     const qid = Number(match[2]);
-    if (qid >= 18 && qid <= 45) matches.push({ qid, index: match.index + match[1].length });
+    if (qid >= 18 && qid <= 45)
+      matches.push({ qid, index: match.index + match[1].length });
   }
   matches.sort((a, b) => a.index - b.index);
 
@@ -203,7 +220,9 @@ function extractChoices(raw) {
 function sortedObjectFromCounter(items) {
   const counts = new Map();
   items.forEach((item) => counts.set(item, (counts.get(item) ?? 0) + 1));
-  return Object.fromEntries([...counts.entries()].sort(([a], [b]) => a.localeCompare(b, "ko")));
+  return Object.fromEntries(
+    [...counts.entries()].sort(([a], [b]) => a.localeCompare(b, "ko")),
+  );
 }
 
 async function buildDb() {
@@ -226,7 +245,9 @@ async function buildDb() {
       answers = answerResult.answers;
       examWarnings.push(...answerResult.warnings);
     } catch (error) {
-      examWarnings.push(`answer_text_unreadable: ${error.name}: ${error.message}`);
+      examWarnings.push(
+        `answer_text_unreadable: ${error.name}: ${error.message}`,
+      );
     }
     examWarnings.forEach((warning) => warnings.push({ examId, warning }));
 
@@ -237,7 +258,10 @@ async function buildDb() {
       chunks = findQuestionSpans(extracted.text);
       sharedPassages = extracted.sharedPassages;
     } catch (error) {
-      warnings.push({ examId, warning: `problem_text_unreadable: ${error.name}: ${error.message}` });
+      warnings.push({
+        examId,
+        warning: `problem_text_unreadable: ${error.name}: ${error.message}`,
+      });
     }
 
     const missingQids = [];
@@ -247,8 +271,16 @@ async function buildDb() {
       if (!chunks.has(qid)) missingQids.push(qid);
       if (compact(chunks.get(qid) ?? "").length === 0) emptyQids.push(qid);
     }
-    if (missingQids.length > 0) warnings.push({ examId, warning: `missing_questions: ${missingQids.join(",")}` });
-    if (emptyQids.length > 0) warnings.push({ examId, warning: `empty_questions: ${emptyQids.join(",")}` });
+    if (missingQids.length > 0)
+      warnings.push({
+        examId,
+        warning: `missing_questions: ${missingQids.join(",")}`,
+      });
+    if (emptyQids.length > 0)
+      warnings.push({
+        examId,
+        warning: `empty_questions: ${emptyQids.join(",")}`,
+      });
 
     for (let qid = 18; qid <= 45; qid += 1) {
       const raw = chunks.get(qid) ?? "";
@@ -301,13 +333,18 @@ async function buildDb() {
     });
   }
 
-  const missingAnswers = questions.filter((q) => q.answer == null).map((q) => q.id);
-  const emptyRaw = questions.filter((q) => q.extraction.rawChars === 0).map((q) => q.id);
+  const missingAnswers = questions
+    .filter((q) => q.answer == null)
+    .map((q) => q.id);
+  const emptyRaw = questions
+    .filter((q) => q.extraction.rawChars === 0)
+    .map((q) => q.id);
 
   return {
     schemaVersion: "english-exam-db-v1",
     createdAt: new Date().toISOString(),
-    separationRule: "This English database is independent from public/data/all_data_204.json.",
+    separationRule:
+      "This English database is independent from public/data/all_data_204.json.",
     sourceManifest: rel(MANIFEST_PATH),
     scope: {
       fromSchoolYear: Math.min(...exams.map((exam) => exam.schoolYear)),
@@ -320,7 +357,8 @@ async function buildDb() {
     summary: {
       examCount: exams.length,
       questionCount: questions.length,
-      corePatternTargetCount: questions.filter((q) => q.corePatternTarget).length,
+      corePatternTargetCount: questions.filter((q) => q.corePatternTarget)
+        .length,
       countsByGroup: sortedObjectFromCounter(questions.map((q) => q.group)),
       countsByType: sortedObjectFromCounter(questions.map((q) => q.type)),
       missingAnswerCount: missingAnswers.length,

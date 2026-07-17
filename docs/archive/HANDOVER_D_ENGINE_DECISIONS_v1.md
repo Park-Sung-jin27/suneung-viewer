@@ -67,11 +67,11 @@ RULE_7 카테고리 유지. 단:
 
 ## 3. 결정 근거 (요약)
 
-| 의제 | 핵심 데이터 | 결정 근거 |
-|---|---|---|
-| 1 | 4 samples × 5 runs = 20회. R1_001/R2_004/R1_004 deterministic, R1_006 random | Hybrid가 비용 1.4x로 균형 최적. confidence 트리거는 R1_006에서 무효 확인 |
-| 2 | RULE_7 발동 ~3회 / 미발동 ~24회 (총 27회 표본, 11% 발동률) | 표본 부족해도 메타-고백형 패턴은 R1_006 Run 2/5에서 확인. 격하 운영이 정당 |
-| 3 | E_EVIDENCE_WEAK 표본 4건 (R1_003 실패 / R2_008 성공 / R2_009 부분 실패) | 구조적 차이 (A 실패, B 부분 성공). "표본 부족"이 아닌 "구조 성질" 문제로 결정 |
+| 의제 | 핵심 데이터                                                                  | 결정 근거                                                                     |
+| ---- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| 1    | 4 samples × 5 runs = 20회. R1_001/R2_004/R1_004 deterministic, R1_006 random | Hybrid가 비용 1.4x로 균형 최적. confidence 트리거는 R1_006에서 무효 확인      |
+| 2    | RULE_7 발동 ~3회 / 미발동 ~24회 (총 27회 표본, 11% 발동률)                   | 표본 부족해도 메타-고백형 패턴은 R1_006 Run 2/5에서 확인. 격하 운영이 정당    |
+| 3    | E_EVIDENCE_WEAK 표본 4건 (R1_003 실패 / R2_008 성공 / R2_009 부분 실패)      | 구조적 차이 (A 실패, B 부분 성공). "표본 부족"이 아닌 "구조 성질" 문제로 결정 |
 
 ### 결정 근거 캐비어트
 
@@ -225,16 +225,16 @@ Pilot 운영 시 모니터링하고 정기 보고:
 
 `config/d_engine_gold_samples_phase1.json` `samples` 배열 17개 실측 분포 (`actual_distribution`):
 
-| error_type | 개수 | sample_id |
-|---|---|---|
-| NONE | 6 | R1_001, R2_001, R1_004, R2_003, R2_005, R2_006 |
-| P_MISMATCH | 4 | R1_002, R1_005, R2_004, DOMAIN_002 |
-| E_CONDITION_MISSING | 2 | R1_003, R1_009 |
-| E_COMPOSITE_ERROR | 2 | R2_002, R2_010 |
-| E_LOGIC_UNCLEAR | 1 | R1_006 |
-| E_EVIDENCE_WEAK | 1 | R2_008 |
-| E_DOMAIN_INVALID | 1 | DOMAIN_001 |
-| **합계** | **17** | ✅ samples 배열 길이 일치 |
+| error_type          | 개수   | sample_id                                      |
+| ------------------- | ------ | ---------------------------------------------- |
+| NONE                | 6      | R1_001, R2_001, R1_004, R2_003, R2_005, R2_006 |
+| P_MISMATCH          | 4      | R1_002, R1_005, R2_004, DOMAIN_002             |
+| E_CONDITION_MISSING | 2      | R1_003, R1_009                                 |
+| E_COMPOSITE_ERROR   | 2      | R2_002, R2_010                                 |
+| E_LOGIC_UNCLEAR     | 1      | R1_006                                         |
+| E_EVIDENCE_WEAK     | 1      | R2_008                                         |
+| E_DOMAIN_INVALID    | 1      | DOMAIN_001                                     |
+| **합계**            | **17** | ✅ samples 배열 길이 일치                      |
 
 ### Phase 1 옵션 A 채택
 
@@ -247,9 +247,9 @@ Pilot 운영 시 모니터링하고 정기 보고:
 
 `discarded_samples` 배열에 2건 등재:
 
-| sample_id | planned | reason |
-|---|---|---|
-| gold_R1_010 | fail / E_LOGIC_UNCLEAR | 3/3 NONE 판정. 엔진 RULE_7 미감지 확정 |
+| sample_id   | planned                                          | reason                                                                                     |
+| ----------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| gold_R1_010 | fail / E_LOGIC_UNCLEAR                           | 3/3 NONE 판정. 엔진 RULE_7 미감지 확정                                                     |
 | gold_R1_008 | fail / P_MISMATCH (경계 케이스, R4→R2 흡수 의도) | Phase 1 옵션 A 채택 시 P_MISMATCH 분포 4건 충분으로 폐기. 의제 4 (R4→R2 흡수) 분석 시 참조 |
 
 ### 메타 데이터 갱신 (적용 완료, 2026-04-27)
@@ -273,16 +273,24 @@ Pilot 운영 시 모니터링하고 정기 보고:
     },
     "target_distribution": {
       "_meaning": "Phase 1 목표 도달 시(20개) 계획 분포",
-      "NONE": 6, "P_MISMATCH": 4, "E_EVIDENCE_WEAK": 2,
-      "E_CONDITION_MISSING": 2, "E_LOGIC_UNCLEAR": 2,
-      "E_COMPOSITE_ERROR": 2, "E_DOMAIN_INVALID": 2,
+      "NONE": 6,
+      "P_MISMATCH": 4,
+      "E_EVIDENCE_WEAK": 2,
+      "E_CONDITION_MISSING": 2,
+      "E_LOGIC_UNCLEAR": 2,
+      "E_COMPOSITE_ERROR": 2,
+      "E_DOMAIN_INVALID": 2,
       "_total": 20
     },
     "actual_distribution": {
       "_meaning": "samples 배열 실측 분포 (active만, discarded·pending 제외)",
-      "NONE": 6, "P_MISMATCH": 4, "E_CONDITION_MISSING": 2,
-      "E_COMPOSITE_ERROR": 2, "E_LOGIC_UNCLEAR": 1,
-      "E_EVIDENCE_WEAK": 1, "E_DOMAIN_INVALID": 1,
+      "NONE": 6,
+      "P_MISMATCH": 4,
+      "E_CONDITION_MISSING": 2,
+      "E_COMPOSITE_ERROR": 2,
+      "E_LOGIC_UNCLEAR": 1,
+      "E_EVIDENCE_WEAK": 1,
+      "E_DOMAIN_INVALID": 1,
       "_total": 17
     },
     "discarded_distribution": {

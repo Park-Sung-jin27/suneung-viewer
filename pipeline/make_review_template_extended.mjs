@@ -82,7 +82,10 @@ function buildExamIndex(data, exam) {
   const idx = new Map();
   const e = data[exam];
   if (!e) return idx;
-  for (const [section, domainChar] of [["reading", "R"], ["literature", "L"]]) {
+  for (const [section, domainChar] of [
+    ["reading", "R"],
+    ["literature", "L"],
+  ]) {
     const sets = e[section] || [];
     for (const set of sets) {
       idx.set(set.id, { domain: domainChar, section, set });
@@ -165,7 +168,10 @@ function isMedium(r) {
   return r.soft_conflict_risk_tier === "medium";
 }
 function hasLabelDisagree(r) {
-  return Array.isArray(r.conflict_flags) && r.conflict_flags.includes("label_vs_signal_disagree");
+  return (
+    Array.isArray(r.conflict_flags) &&
+    r.conflict_flags.includes("label_vs_signal_disagree")
+  );
 }
 
 const bucketA = []; // mismatch + medium + label_vs_signal_disagree
@@ -210,7 +216,8 @@ const added = picked.slice(0, ADD);
 // ── 카테고리 라벨 ────────────────────────────────────────────────────────────
 function categoryOf(r) {
   if (r.match_type === "keep_existing_match") return "keep_existing_medium";
-  if (r.match_type === "mismatch" && hasLabelDisagree(r)) return "label_signal_disagree";
+  if (r.match_type === "mismatch" && hasLabelDisagree(r))
+    return "label_signal_disagree";
   if (r.match_type === "mismatch") return "mismatch_medium";
   return "other";
 }
@@ -225,7 +232,8 @@ function okIssueReasonSuggested(r) {
 }
 function patIssueReasonSuggested(r) {
   const rid = r.applied_rule_id || "";
-  if (rid.includes("fact_distortion") || rid.includes("causal_inversion")) return "cause_vs_fact";
+  if (rid.includes("fact_distortion") || rid.includes("causal_inversion"))
+    return "cause_vs_fact";
   if (rid.includes("structure_misread")) return "structure_vs_form";
   if (rid.includes("concept_misuse")) return "concept_confusion";
   if (rid.includes("theme_vs_expression")) return "theme_vs_expression";
@@ -288,7 +296,8 @@ function buildReview(r) {
     human_pat_suggestion: null,
     human_ok_suggestion: null,
     agreed_with_engine: "TODO: true|false",
-    notes: "TODO: 간단 메모 (해설이 어느 축을 설명하는지, 선지가 어느 축에서 틀렸는지)",
+    notes:
+      "TODO: 간단 메모 (해설이 어느 축을 설명하는지, 선지가 어느 축에서 틀렸는지)",
     _engine_short_reason: `${r.match_type} ${r.existing_pat || "?"}→${r.suggested_pat || "?"} · risk=${r.soft_conflict_risk_tier} · rule=${r.applied_rule_id}`,
   };
 }
@@ -303,7 +312,10 @@ function snapOf(rev) {
   return rev.engine_snapshot || {};
 }
 const total = allReviews.length;
-let nOkRecheck = 0, nPatReview = 0, nOverride = 0, nLeave = 0;
+let nOkRecheck = 0,
+  nPatReview = 0,
+  nOverride = 0,
+  nLeave = 0;
 let nKeepExistingSampled = 0;
 for (const rv of allReviews) {
   const p = snapOf(rv).primary_decision;
@@ -338,8 +350,7 @@ const humanConfirmedPlaceholder = {
     "L1↔L4": null,
     "L1↔L3": null,
   },
-  note:
-    "값은 load_review_results 통과 후 generate_tuning_suggestions 의 human_vs_engine_diff 단계에서 채워진다.",
+  note: "값은 load_review_results 통과 후 generate_tuning_suggestions 의 human_vs_engine_diff 단계에서 채워진다.",
 };
 
 // ── 출력 템플릿 ──────────────────────────────────────────────────────────────
@@ -347,7 +358,9 @@ const out = {
   meta: {
     ...(base.meta || {}),
     reviewer: base.meta?.reviewer || "TODO: reviewer_name",
-    round_label: base.meta?.round_label || `TODO: ${new Date().toISOString().slice(0, 10)}-R?`,
+    round_label:
+      base.meta?.round_label ||
+      `TODO: ${new Date().toISOString().slice(0, 10)}-R?`,
     report_snapshot: {
       exam: EXAM,
       report_generated_at: report.meta.generated_at,
@@ -369,7 +382,10 @@ const out = {
 };
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
-const OUT_PATH = path.join(OUT_DIR, `human_review_template_extended_${EXAM}.json`);
+const OUT_PATH = path.join(
+  OUT_DIR,
+  `human_review_template_extended_${EXAM}.json`,
+);
 fs.writeFileSync(OUT_PATH, JSON.stringify(out, null, 2), "utf8");
 
 // ── 콘솔 ────────────────────────────────────────────────────────────────────
@@ -382,16 +398,29 @@ console.log(`총계:           ${allReviews.length}`);
 
 console.log(`\n[신규 7건 분포]`);
 const catCounts = {};
-for (const rv of addedReviews) catCounts[rv.category] = (catCounts[rv.category] || 0) + 1;
+for (const rv of addedReviews)
+  catCounts[rv.category] = (catCounts[rv.category] || 0) + 1;
 for (const [k, v] of Object.entries(catCounts)) console.log(`  · ${k}: ${v}건`);
 
 console.log(`\n[엔진 제안 분포 — 사람 검수 아님 / 샘플링 편향 포함]`);
-console.log(`  ok_recheck (제안):        ${(engineSuggested.ok_recheck_rate_suggested * 100).toFixed(1)}%`);
-console.log(`  pat_review (제안):        ${(engineSuggested.pat_review_rate_suggested * 100).toFixed(1)}%`);
-console.log(`  override_candidate (제안):${(engineSuggested.override_candidate_rate_suggested * 100).toFixed(1)}%`);
-console.log(`  leave_as_is (제안):       ${(engineSuggested.leave_as_is_rate_suggested * 100).toFixed(1)}%`);
-console.log(`  keep_existing_sampled:    ${(engineSuggested.keep_existing_sampled_rate * 100).toFixed(1)}%  (※ 샘플링 비율일 뿐, 실제 risk 적중률 아님)`);
-console.log(`\n[human_confirmed 분포]  → pending — 10건 검수 입력 후 generate_tuning_suggestions 가 채움`);
+console.log(
+  `  ok_recheck (제안):        ${(engineSuggested.ok_recheck_rate_suggested * 100).toFixed(1)}%`,
+);
+console.log(
+  `  pat_review (제안):        ${(engineSuggested.pat_review_rate_suggested * 100).toFixed(1)}%`,
+);
+console.log(
+  `  override_candidate (제안):${(engineSuggested.override_candidate_rate_suggested * 100).toFixed(1)}%`,
+);
+console.log(
+  `  leave_as_is (제안):       ${(engineSuggested.leave_as_is_rate_suggested * 100).toFixed(1)}%`,
+);
+console.log(
+  `  keep_existing_sampled:    ${(engineSuggested.keep_existing_sampled_rate * 100).toFixed(1)}%  (※ 샘플링 비율일 뿐, 실제 risk 적중률 아님)`,
+);
+console.log(
+  `\n[human_confirmed 분포]  → pending — 10건 검수 입력 후 generate_tuning_suggestions 가 채움`,
+);
 console.log(`  · engine_primary_retained_rate`);
 console.log(`  · flipped_to_ok_recheck_rate`);
 console.log(`  · retained_as_pat_review_rate`);
@@ -412,16 +441,24 @@ const verify = pickN(allReviews, 5);
 for (const rv of verify) {
   const st = enrichmentFor(rv.choice_id, __examIndex)?._match_status || "?";
   console.log(`\n  • ${rv.choice_id}  [status=${st}]`);
-  console.log(`    set/q/#:       ${rv.set_id} / Q${rv.question_id} / #${rv.choice_num}  (domain=${rv.domain})`);
-  console.log(`    question_text: ${(rv.question_text || "(null)").slice(0, 100)}`);
-  console.log(`    choice_text:   ${(rv.choice_text || "(null)").slice(0, 100)}`);
+  console.log(
+    `    set/q/#:       ${rv.set_id} / Q${rv.question_id} / #${rv.choice_num}  (domain=${rv.domain})`,
+  );
+  console.log(
+    `    question_text: ${(rv.question_text || "(null)").slice(0, 100)}`,
+  );
+  console.log(
+    `    choice_text:   ${(rv.choice_text || "(null)").slice(0, 100)}`,
+  );
 }
 const badMatches = allReviews.filter((rv) => {
   const st = enrichmentFor(rv.choice_id, __examIndex)?._match_status;
   return st !== "ok";
 });
 if (badMatches.length > 0) {
-  console.log(`\n  🔴 매핑 실패 ${badMatches.length}건: ${badMatches.map((r) => r.choice_id).join(", ")}`);
+  console.log(
+    `\n  🔴 매핑 실패 ${badMatches.length}건: ${badMatches.map((r) => r.choice_id).join(", ")}`,
+  );
 } else {
   console.log(`\n  ✅ 전체 ${allReviews.length}건 매핑 status=ok`);
 }
@@ -430,6 +467,10 @@ console.log(`\n📄 저장: ${path.relative(ROOT, OUT_PATH)}`);
 
 console.log(`\n${"─".repeat(60)}`);
 console.log("⚠️  현재 제안은 샘플 3건 기반 — 적용 금지");
-console.log("⚠️  위 분포는 '엔진 제안'이며 샘플링 편향 포함 — 사실이 아닌 가설");
-console.log("⚠️  다음 단계: 10건 사람 검수 입력 → engine vs human diff 로 판단");
+console.log(
+  "⚠️  위 분포는 '엔진 제안'이며 샘플링 편향 포함 — 사실이 아닌 가설",
+);
+console.log(
+  "⚠️  다음 단계: 10건 사람 검수 입력 → engine vs human diff 로 판단",
+);
 console.log(`${"─".repeat(60)}`);

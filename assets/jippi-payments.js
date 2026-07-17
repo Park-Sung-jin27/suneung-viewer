@@ -58,7 +58,12 @@
     if (window.TossPayments) return Promise.resolve(window.TossPayments);
     return new Promise((resolve, reject) => {
       const timer = setTimeout(
-        () => reject(new Error("TossPayments SDK load timed out. Check the live domain and network policy.")),
+        () =>
+          reject(
+            new Error(
+              "TossPayments SDK load timed out. Check the live domain and network policy.",
+            ),
+          ),
         10000,
       );
       const done = (fn, value) => {
@@ -67,8 +72,12 @@
       };
       const existing = document.querySelector(`script[src="${TOSS_SDK_URL}"]`);
       if (existing) {
-        existing.addEventListener("load", () => done(resolve, window.TossPayments));
-        existing.addEventListener("error", () => done(reject, new Error("토스페이먼츠 SDK를 불러오지 못했습니다.")));
+        existing.addEventListener("load", () =>
+          done(resolve, window.TossPayments),
+        );
+        existing.addEventListener("error", () =>
+          done(reject, new Error("토스페이먼츠 SDK를 불러오지 못했습니다.")),
+        );
         return;
       }
       const script = document.createElement("script");
@@ -78,7 +87,8 @@
         if (window.TossPayments) done(resolve, window.TossPayments);
         else done(reject, new Error("토스페이먼츠 SDK 초기화에 실패했습니다."));
       };
-      script.onerror = () => done(reject, new Error("토스페이먼츠 SDK를 불러오지 못했습니다."));
+      script.onerror = () =>
+        done(reject, new Error("토스페이먼츠 SDK를 불러오지 못했습니다."));
       document.head.appendChild(script);
     });
   }
@@ -171,13 +181,17 @@
       meta,
     };
     storePending(order);
-    notifyFortuneOrder(meta.fortuneOrder, {
-      status: "payment_started",
-      tossOrderId: orderId,
-      amount: product.amount,
-      productId,
-      requestedAt: order.requestedAt,
-    }, "payment-start");
+    notifyFortuneOrder(
+      meta.fortuneOrder,
+      {
+        status: "payment_started",
+        tossOrderId: orderId,
+        amount: product.amount,
+        productId,
+        requestedAt: order.requestedAt,
+      },
+      "payment-start",
+    );
 
     const TossPayments = await loadTossSDK();
     const tossPayments = TossPayments(TOSS_CLIENT_KEY);

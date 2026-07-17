@@ -22,8 +22,9 @@ const today = new Date().toISOString().slice(0, 10);
 // 대상 날짜 폴더 결정
 let targetDirs = [];
 if (arg === "--all") {
-  targetDirs = fs.readdirSync(OUT_ROOT)
-    .filter(d => fs.statSync(path.join(OUT_ROOT, d)).isDirectory())
+  targetDirs = fs
+    .readdirSync(OUT_ROOT)
+    .filter((d) => fs.statSync(path.join(OUT_ROOT, d)).isDirectory())
     .sort();
 } else {
   const date = arg || today;
@@ -33,11 +34,13 @@ if (arg === "--all") {
 for (const dir of targetDirs) {
   const dirPath = path.join(OUT_ROOT, dir);
   if (!fs.existsSync(dirPath)) {
-    console.log(`\n❌ 결과 없음: ${dir} (night_run이 실행되지 않았거나 날짜 확인 필요)`);
+    console.log(
+      `\n❌ 결과 없음: ${dir} (night_run이 실행되지 않았거나 날짜 확인 필요)`,
+    );
     continue;
   }
 
-  const files = fs.readdirSync(dirPath).filter(f => f !== "run_log.json");
+  const files = fs.readdirSync(dirPath).filter((f) => f !== "run_log.json");
   const logPath = path.join(dirPath, "run_log.json");
 
   console.log(`\n${"═".repeat(60)}`);
@@ -47,8 +50,8 @@ for (const dir of targetDirs) {
   // 로그 요약
   if (fs.existsSync(logPath)) {
     const log = JSON.parse(fs.readFileSync(logPath, "utf8"));
-    const success = log.tasks.filter(t => t.status === "success").length;
-    const failed  = log.tasks.filter(t => t.status === "failed").length;
+    const success = log.tasks.filter((t) => t.status === "success").length;
+    const failed = log.tasks.filter((t) => t.status === "failed").length;
     console.log(`✅ 성공: ${success}건 / ❌ 실패: ${failed}건`);
   }
 
@@ -57,7 +60,7 @@ for (const dir of targetDirs) {
   for (const f of files.sort()) {
     const fPath = path.join(dirPath, f);
     const size = fs.statSync(fPath).size;
-    const sizeStr = size > 1024 ? `${(size/1024).toFixed(1)}KB` : `${size}B`;
+    const sizeStr = size > 1024 ? `${(size / 1024).toFixed(1)}KB` : `${size}B`;
     console.log(`  📄 ${f} (${sizeStr})`);
   }
 
@@ -74,4 +77,6 @@ for (const dir of targetDirs) {
   }
 }
 
-console.log(`\n💡 특정 파일 전체 보기: type pipeline\\outputs\\${today}\\<파일명>.txt`);
+console.log(
+  `\n💡 특정 파일 전체 보기: type pipeline\\outputs\\${today}\\<파일명>.txt`,
+);

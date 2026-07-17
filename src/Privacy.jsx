@@ -145,8 +145,8 @@ export default function Privacy() {
         <h2 style={H2_STYLE}>1. 개인정보처리방침</h2>
 
         <p style={P_STYLE}>
-          짚이(이하 "서비스")는 「개인정보 보호법」을 준수하여 이용자의 개인정보를
-          보호하고 권익을 보장하기 위해 본 방침을 수립·공개합니다.
+          짚이(이하 "서비스")는 「개인정보 보호법」을 준수하여 이용자의
+          개인정보를 보호하고 권익을 보장하기 위해 본 방침을 수립·공개합니다.
         </p>
 
         <h3 style={H3_STYLE}>1-1. 수집하는 개인정보 항목</h3>
@@ -188,8 +188,8 @@ export default function Privacy() {
             <tr>
               <td style={TD_STYLE}>결제 (활성화 시)</td>
               <td style={TD_STYLE}>
-                결제 수단 정보는 결제대행사(Toss Payments)에서 직접 수집·처리하며,
-                서비스는 거래 식별번호만 보관
+                결제 수단 정보는 결제대행사(Toss Payments)에서 직접
+                수집·처리하며, 서비스는 거래 식별번호만 보관
               </td>
               <td style={TD_STYLE}>결제대행사 연동</td>
             </tr>
@@ -291,15 +291,14 @@ export default function Privacy() {
           <li>개인정보 열람·정정·삭제·처리정지 요청</li>
           <li>개인정보 수집·이용 동의 철회 (= 회원 탈퇴)</li>
           <li>
-            위 권리 행사:{" "}
-            <strong>seongjinpark12@gmail.com</strong> 으로 요청
+            위 권리 행사: <strong>seongjinpark12@gmail.com</strong> 으로 요청
           </li>
         </ul>
 
         <h3 style={H3_STYLE}>1-7. 만 14세 미만 아동의 개인정보</h3>
         <p style={P_STYLE}>
-          만 14세 미만 아동의 개인정보를 수집·이용·제공하기 위해서는 법정대리인의
-          동의가 필요합니다. 서비스는 다음과 같이 운영합니다.
+          만 14세 미만 아동의 개인정보를 수집·이용·제공하기 위해서는
+          법정대리인의 동의가 필요합니다. 서비스는 다음과 같이 운영합니다.
         </p>
         <ul style={UL_STYLE}>
           <li>
@@ -375,8 +374,8 @@ export default function Privacy() {
         <ul style={UL_STYLE}>
           <li>이용자는 Google 계정으로 회원가입할 수 있습니다.</li>
           <li>
-            이용자는 언제든지 회원 탈퇴를 요청할 수 있으며, 탈퇴 시 개인정보는 본
-            방침 1-3에 따라 처리됩니다.
+            이용자는 언제든지 회원 탈퇴를 요청할 수 있으며, 탈퇴 시 개인정보는
+            본 방침 1-3에 따라 처리됩니다.
           </li>
           <li>만 14세 미만 사용자는 법정대리인 동의 후 가입해야 합니다.</li>
         </ul>
@@ -386,8 +385,8 @@ export default function Privacy() {
           <li>무료 영역: 수능 5개년 (FREE_YEARS) 풀이·해설·형광펜 분석</li>
           <li>유료 영역: Pro 구독 (베타 단계 결제 미활성화)</li>
           <li>
-            서비스는 운영상 필요 시 일부 영역을 변경·중단할 수 있으며, 이용자에게
-            사전 공지합니다.
+            서비스는 운영상 필요 시 일부 영역을 변경·중단할 수 있으며,
+            이용자에게 사전 공지합니다.
           </li>
         </ul>
 
@@ -405,8 +404,8 @@ export default function Privacy() {
         <h3 style={H3_STYLE}>2-5. 책임 한계</h3>
         <ul style={UL_STYLE}>
           <li>
-            서비스는 수능 국어 학습 보조 도구이며, 학습 결과·시험 성적·입시 결과에
-            대해 책임을 지지 않습니다.
+            서비스는 수능 국어 학습 보조 도구이며, 학습 결과·시험 성적·입시
+            결과에 대해 책임을 지지 않습니다.
           </li>
           <li>
             AI 분석 결과(해설·진단·추천)는 참고용이며, 절대적 정확성을 보장하지

@@ -4,13 +4,19 @@
   "updated_at": "2026-04-20",
   "queue": [
     {
-      "exam": "2022수능", "setId": "r2022b", "qId": 8, "num": 4,
+      "exam": "2022수능",
+      "setId": "r2022b",
+      "qId": 8,
+      "num": 4,
       "current_pat": "R4",
       "issue": "R1/R4 pat 재확정 필요 — 개념 프레임 vs 사실 왜곡 판별 대기",
       "added_at": "2026-04-20"
     },
     {
-      "exam": "2022수능", "setId": "r2022c", "qId": 13, "num": 5,
+      "exam": "2022수능",
+      "setId": "r2022c",
+      "qId": 13,
+      "num": 5,
       "current_pat": "R1",
       "issue": "ok 값(true/false) 자체 재검토 필요 — 환율 방향 논증의 기준 재확인 대기",
       "added_at": "2026-04-20"

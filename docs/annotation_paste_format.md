@@ -1,6 +1,7 @@
 # Annotation 수동 검수 양식 (전체 set 표준)
 
 ## 목적
+
 PDF 정합 annotation 데이터를 사용자가 PDF 만 보고 입력 가능한 단일 양식.
 350 set 전체에 대해 전체 수동 검수 진행 시 사용.
 
@@ -13,11 +14,11 @@ N. {type} {라벨 (marker 인 경우)} "{표시된 text}"
 
 ## 필드 정의
 
-| 필드 | 의미 | 예 |
-|---|---|---|
-| type | annotation 종류 | underline / marker / box |
-| 라벨 | marker 의 원문자 (있는 경우만) | ㉠ ㉡ ㉢ ⓐ ⓑ |
-| text | 실제 underline / marker 된 글자 | "그달" |
+| 필드 | 의미                                           | 예                               |
+| ---- | ---------------------------------------------- | -------------------------------- |
+| type | annotation 종류                                | underline / marker / box         |
+| 라벨 | marker 의 원문자 (있는 경우만)                 | ㉠ ㉡ ㉢ ⓐ ⓑ                     |
+| text | 실제 underline / marker 된 글자                | "그달"                           |
 | 본문 | PDF 에서 그대로 드래그 복사한 한 문장 (5~30자) | "옥영은 ㉢그달에 바로 잉태해..." |
 
 ## 입력 예시
@@ -39,6 +40,7 @@ N. {type} {라벨 (marker 인 경우)} "{표시된 text}"
 ## AI 자동 매핑 path
 
 사용자 paste 받은 후 AI 가:
+
 1. 사용자 paste 의 "본문" 문장을 set 의 모든 sent.t 에서 substring search
 2. 단일 매칭 sent 의 id 를 annotation entry 의 sentId 로 자동 등록
 3. 매칭 X 인 경우 = 본문 추출 결함 = 사용자에게 즉시 보고
@@ -47,6 +49,7 @@ N. {type} {라벨 (marker 인 경우)} "{표시된 text}"
 ## 본문 추출 결함 진단
 
 사용자 paste 의 marker 라벨 (㉠ 등) 과 본문 sent.t 의 marker 라벨이 다른 경우:
+
 - 예: 사용자 PDF ㉠ vs 본문 sent.t ⑦
 - 본문 추출 시 marker 누락 또는 offset 결함
 - 해당 sent.t 의 marker 라벨을 PDF 정합으로 정정 (all_data 정정)
@@ -63,8 +66,8 @@ N. {type} {라벨 (marker 인 경우)} "{표시된 text}"
 
 - 솔로 창업자 시간 ROI 우선
 - 한 set 당 5~20 entry 예상
-- 시간 = 한 set 당 5~15분 (사용자 paste) + 1~2분 (AI 매핑 + audit)
-- 350 set 전체 = 30~80 시간 (1~2개월 분산 작업)
+- 시간 = 한 set 당 5~~15분 (사용자 paste) + 1~~2분 (AI 매핑 + audit)
+- 350 set 전체 = 30~~80 시간 (1~~2개월 분산 작업)
 
 ## 참고 commit
 

@@ -63,9 +63,15 @@ if (APPLY) {
 }
 
 // ─── 설정 로드 ────────────────────────────────────────────────────────────────
-const rules = JSON.parse(fs.readFileSync(path.join(CONFIG_DIR, "pat_decision_rules.json"), "utf8"));
-const signalMap = JSON.parse(fs.readFileSync(path.join(CONFIG_DIR, "pat_signal_map.json"), "utf8"));
-const overrideFile = JSON.parse(fs.readFileSync(path.join(CONFIG_DIR, "pat_override_cases.json"), "utf8"));
+const rules = JSON.parse(
+  fs.readFileSync(path.join(CONFIG_DIR, "pat_decision_rules.json"), "utf8"),
+);
+const signalMap = JSON.parse(
+  fs.readFileSync(path.join(CONFIG_DIR, "pat_signal_map.json"), "utf8"),
+);
+const overrideFile = JSON.parse(
+  fs.readFileSync(path.join(CONFIG_DIR, "pat_override_cases.json"), "utf8"),
+);
 // 선택적 — 파일 없으면 빈 큐
 let okRecheckFile = { queue: [] };
 try {
@@ -99,7 +105,7 @@ const RULE_INTENT = {
   L3: "signal.theme_overextension",
   L4: "signal.structure_misread",
   L5: "signal.bogi_misapplication",
-  V:  "signal.vocab_substitution",
+  V: "signal.vocab_substitution",
 };
 function intentOf(pat) {
   return RULE_INTENT[pat] || `signal.${String(pat).toLowerCase()}`;
@@ -108,7 +114,8 @@ function intentOf(pat) {
 // ─── 유틸 ────────────────────────────────────────────────────────────────────
 function sectionOf(setId) {
   const s = String(setId || "");
-  if (s[0] === "r" || s.startsWith("kor") || s.startsWith("sep")) return "reading";
+  if (s[0] === "r" || s.startsWith("kor") || s.startsWith("sep"))
+    return "reading";
   if (s[0] === "l" || s.startsWith("lsep")) return "literature";
   return null;
 }
@@ -150,13 +157,26 @@ function detectPolarity(analysis) {
   const a = analysis;
   const lastCheck = Math.max(a.lastIndexOf("✅"), a.lastIndexOf("❌"));
   const negPatterns = [
-    /부적절/, /어긋나/, /잘못\s*(읽|이해|해석|분류|파악)/, /왜곡/,
-    /맞지\s*않/, /일치하지\s*않/, /정반대/, /적절하지\s*않/,
-    /적절치\s*않/, /옳지\s*않/, /지문과\s*어긋/,
+    /부적절/,
+    /어긋나/,
+    /잘못\s*(읽|이해|해석|분류|파악)/,
+    /왜곡/,
+    /맞지\s*않/,
+    /일치하지\s*않/,
+    /정반대/,
+    /적절하지\s*않/,
+    /적절치\s*않/,
+    /옳지\s*않/,
+    /지문과\s*어긋/,
   ];
   const posPatterns = [
-    /(?<!부)적절(?!하지|치\s*않)/, /일치(?!하지)/, /부합/,
-    /올바르/, /합당/, /적절한\s*진술/, /적절한\s*설명/,
+    /(?<!부)적절(?!하지|치\s*않)/,
+    /일치(?!하지)/,
+    /부합/,
+    /올바르/,
+    /합당/,
+    /적절한\s*진술/,
+    /적절한\s*설명/,
   ];
   const hasNeg = negPatterns.some((r) => r.test(a));
   const hasPos = posPatterns.some((r) => r.test(a));
@@ -166,7 +186,13 @@ function detectPolarity(analysis) {
     if (tail.startsWith("✅")) emoji = "positive";
     if (tail.startsWith("❌")) emoji = "negative";
   }
-  const polarity = emoji || (hasNeg && !hasPos ? "negative" : hasPos && !hasNeg ? "positive" : "unknown");
+  const polarity =
+    emoji ||
+    (hasNeg && !hasPos
+      ? "negative"
+      : hasPos && !hasNeg
+        ? "positive"
+        : "unknown");
   const selfConflict = hasNeg && hasPos;
   return { polarity, selfConflict, emoji, hasNeg, hasPos };
 }
@@ -273,7 +299,13 @@ function decide(c, setId, exam, qId, sectionOverride) {
     const entry = signalMap[p] || {};
     const ss = scoreSignals(ana, entry);
     const as = scoreAxis(choiceT, entry);
-    scores[p] = { signal: ss.score, axis: as.score, total: ss.score * 2 + as.score, penalty: 0, bonus: 0 };
+    scores[p] = {
+      signal: ss.score,
+      axis: as.score,
+      total: ss.score * 2 + as.score,
+      penalty: 0,
+      bonus: 0,
+    };
     hitsByPat[p] = { analysis: ss.hits, choice: as.hits };
     signalHitCountByPat[p] = ss.hits.length;
   }
@@ -302,7 +334,9 @@ function decide(c, setId, exam, qId, sectionOverride) {
 
   // label_hint
   const labelMatch = ana.match(/\[(L[1-5]|R[1-4]|V)\]/g);
-  const labelHint = labelMatch ? labelMatch[labelMatch.length - 1].replace(/[\[\]]/g, "") : null;
+  const labelHint = labelMatch
+    ? labelMatch[labelMatch.length - 1].replace(/[\[\]]/g, "")
+    : null;
   const labelDomainOK = labelHint && cands.includes(labelHint);
 
   const minScore = (rules.signal_threshold || {}).min_score || 1;
@@ -350,9 +384,10 @@ function decide(c, setId, exam, qId, sectionOverride) {
     score: +(s.total / maxTotal).toFixed(3),
     raw_total: s.total,
   }));
-  const top2GapNorm = top2Normalized.length >= 2
-    ? +(top2Normalized[0].score - top2Normalized[1].score).toFixed(3)
-    : null;
+  const top2GapNorm =
+    top2Normalized.length >= 2
+      ? +(top2Normalized[0].score - top2Normalized[1].score).toFixed(3)
+      : null;
 
   return {
     suggested,
@@ -363,7 +398,10 @@ function decide(c, setId, exam, qId, sectionOverride) {
     candidate_scores_raw: scores,
     top2_candidates: top2Normalized,
     top2_gap: top2GapNorm,
-    matched_signals: { choice: chosenHits.choice, analysis: chosenHits.analysis },
+    matched_signals: {
+      choice: chosenHits.choice,
+      analysis: chosenHits.analysis,
+    },
     signal_hits_by_pat: signalHitCountByPat,
     labelHint,
   };
@@ -382,10 +420,13 @@ function classifyMismatch(row, pairCounts) {
 
   // D. ok_recheck_missing — hard 신호 + ok 모순
   const hardSignals = [];
-  if (cf.includes("analysis_polarity_conflict")) hardSignals.push("analysis_polarity_conflict");
+  if (cf.includes("analysis_polarity_conflict"))
+    hardSignals.push("analysis_polarity_conflict");
   if (cf.includes("hard_self_conflict")) hardSignals.push("hard_self_conflict");
-  if (cf.includes("admit_correctness_but_false")) hardSignals.push("admit_correctness_but_false");
-  if (cf.includes("deny_correctness_but_true")) hardSignals.push("deny_correctness_but_true");
+  if (cf.includes("admit_correctness_but_false"))
+    hardSignals.push("admit_correctness_but_false");
+  if (cf.includes("deny_correctness_but_true"))
+    hardSignals.push("deny_correctness_but_true");
   if (hardSignals.length > 0) {
     for (const s of hardSignals) basis.push(`flag:${s}`);
     return { bucket: "ok_recheck_missing", basis };
@@ -406,14 +447,16 @@ function classifyMismatch(row, pairCounts) {
   const pairKey = `${row.existing_pat || "null"}→${row.suggested_pat || "null"}`;
   if ((pairCounts[pairKey] || 0) >= 2) {
     basis.push(`pair_recurrence:${pairCounts[pairKey]}`);
-    if (cf.includes("soft_self_conflict")) basis.push("flag:soft_self_conflict");
+    if (cf.includes("soft_self_conflict"))
+      basis.push("flag:soft_self_conflict");
     return { bucket: "override_missing", basis };
   }
 
   // B. signal_issue — 기본
   basis.push("default:no_other_trigger");
   if (cf.includes("fallback_used")) basis.push("flag:fallback_used");
-  if (cf.includes("label_vs_signal_disagree")) basis.push("flag:label_vs_signal_disagree");
+  if (cf.includes("label_vs_signal_disagree"))
+    basis.push("flag:label_vs_signal_disagree");
   return { bucket: "signal_issue", basis };
 }
 
@@ -428,18 +471,32 @@ function countMatches(a, patterns) {
   return n;
 }
 const NEG_TEXT = [
-  /부적절/, /어긋나/, /잘못\s*(읽|이해|해석|분류|파악)/, /왜곡/,
-  /맞지\s*않/, /일치하지\s*않/, /정반대/, /적절하지\s*않/,
-  /적절치\s*않/, /옳지\s*않/, /지문과\s*어긋/,
+  /부적절/,
+  /어긋나/,
+  /잘못\s*(읽|이해|해석|분류|파악)/,
+  /왜곡/,
+  /맞지\s*않/,
+  /일치하지\s*않/,
+  /정반대/,
+  /적절하지\s*않/,
+  /적절치\s*않/,
+  /옳지\s*않/,
+  /지문과\s*어긋/,
 ];
 const POS_TEXT = [
-  /(?<!부)적절(?!하지|치\s*않)/, /일치(?!하지)/, /부합/,
-  /올바르/, /합당/, /적절한\s*진술/, /적절한\s*설명/,
+  /(?<!부)적절(?!하지|치\s*않)/,
+  /일치(?!하지)/,
+  /부합/,
+  /올바르/,
+  /합당/,
+  /적절한\s*진술/,
+  /적절한\s*설명/,
 ];
 
 function detectConflictFlags(c, row, polarity) {
   const flags = [];
-  if (row.top2_gap !== null && row.top2_gap < 0.25) flags.push("top2_gap_small");
+  if (row.top2_gap !== null && row.top2_gap < 0.25)
+    flags.push("top2_gap_small");
   if (row.source === "fallback") flags.push("fallback_used");
 
   const a = c.analysis || "";
@@ -447,22 +504,31 @@ function detectConflictFlags(c, row, polarity) {
   const posCount = countMatches(a, POS_TEXT);
 
   // hard_self_conflict: emoji 없음 + pos/neg 공존
-  if (polarity.selfConflict && !polarity.emoji) flags.push("hard_self_conflict");
+  if (polarity.selfConflict && !polarity.emoji)
+    flags.push("hard_self_conflict");
   // soft_self_conflict: emoji 있음 + 반대 방향 신호도 비정상적으로 많이 섞임
   //   예: ok:false + emoji:negative 인데 pos 텍스트 신호 3+ 건 → ok 재검 후보
-  if (polarity.emoji === "negative" && posCount >= 3) flags.push("soft_self_conflict");
-  if (polarity.emoji === "positive" && negCount >= 3) flags.push("soft_self_conflict");
+  if (polarity.emoji === "negative" && posCount >= 3)
+    flags.push("soft_self_conflict");
+  if (polarity.emoji === "positive" && negCount >= 3)
+    flags.push("soft_self_conflict");
 
   // emoji vs ok 정반대 (강한 모순)
-  if (c.ok === true && polarity.emoji === "negative") flags.push("analysis_polarity_conflict");
-  if (c.ok === false && polarity.emoji === "positive") flags.push("analysis_polarity_conflict");
+  if (c.ok === true && polarity.emoji === "negative")
+    flags.push("analysis_polarity_conflict");
+  if (c.ok === false && polarity.emoji === "positive")
+    flags.push("analysis_polarity_conflict");
   // emoji 부재 + 단방향 신호가 ok와 반대
   if (!polarity.emoji && c.ok === true && polarity.hasNeg && !polarity.hasPos)
     flags.push("admit_correctness_but_false");
   if (!polarity.emoji && c.ok === false && polarity.hasPos && !polarity.hasNeg)
     flags.push("deny_correctness_but_true");
 
-  if (row.label_hint && row.suggested_pat && row.label_hint !== row.suggested_pat) {
+  if (
+    row.label_hint &&
+    row.suggested_pat &&
+    row.label_hint !== row.suggested_pat
+  ) {
     flags.push("label_vs_signal_disagree");
   }
   row.__pos_count = posCount;
@@ -541,11 +607,15 @@ for (const sec of ["reading", "literature"]) {
         row.conflict_flags = detectConflictFlags(c, row, polarity);
         rows.push(row);
 
-        counts.by_source[decision.source] = (counts.by_source[decision.source] || 0) + 1;
+        counts.by_source[decision.source] =
+          (counts.by_source[decision.source] || 0) + 1;
         counts.applied_rule_counts[decision.applied_rule_id] =
           (counts.applied_rule_counts[decision.applied_rule_id] || 0) + 1;
         if (decision.source === "ok_true") counts.ok_true++;
-        else if (decision.source === "auto_empty" || decision.source === "vocab_keep")
+        else if (
+          decision.source === "auto_empty" ||
+          decision.source === "vocab_keep"
+        )
           counts.auto_empty++;
         else if (decision.source === "override_case") counts.override_applied++;
         else if (decision.source === "ok_recheck_required") counts.ok_recheck++;
@@ -556,7 +626,8 @@ for (const sec of ["reading", "literature"]) {
         else {
           counts.mismatch++;
           const mtype = `${row.existing_pat || "null"} → ${row.suggested_pat || "null"}`;
-          counts.mismatch_by_type[mtype] = (counts.mismatch_by_type[mtype] || 0) + 1;
+          counts.mismatch_by_type[mtype] =
+            (counts.mismatch_by_type[mtype] || 0) + 1;
         }
       }
     }
@@ -566,7 +637,12 @@ for (const sec of ["reading", "literature"]) {
 // 2차 패스: mismatch pair count + 버킷 분류
 const pairCounts = {};
 for (const r of rows) {
-  if (!r.match && r.suggested_pat !== null && r.source !== "ok_recheck_required" && r.source !== "ok_true") {
+  if (
+    !r.match &&
+    r.suggested_pat !== null &&
+    r.source !== "ok_recheck_required" &&
+    r.source !== "ok_true"
+  ) {
     const key = `${r.existing_pat || "null"}→${r.suggested_pat || "null"}`;
     pairCounts[key] = (pairCounts[key] || 0) + 1;
   }
@@ -605,7 +681,11 @@ const batchOverrideGroups = []; // (pair, applied_rule_id, axis, signals) 동일
 
 for (const [pair, group] of Object.entries(pairGroups)) {
   if (group.length < 2) {
-    trueOverridePairs.push({ pair, count: group.length, reason: "single_occurrence" });
+    trueOverridePairs.push({
+      pair,
+      count: group.length,
+      reason: "single_occurrence",
+    });
     continue;
   }
   // applied_rule_id 일관성
@@ -649,8 +729,12 @@ for (const [pair, group] of Object.entries(pairGroups)) {
         pair,
         count: n,
         applied_rule_id: sampleRow.applied_rule_id,
-        dominant_choice_axis: (sampleRow.matched_signals?.choice || []).slice().sort(),
-        dominant_signal_signature: (sampleRow.matched_signals?.analysis || []).slice().sort(),
+        dominant_choice_axis: (sampleRow.matched_signals?.choice || [])
+          .slice()
+          .sort(),
+        dominant_signal_signature: (sampleRow.matched_signals?.analysis || [])
+          .slice()
+          .sort(),
         sample_choice_ids: members.slice(0, 3).map((r) => r.choice_id || r.loc),
         safe_batch_candidate: true, // 4축 모두 동일 + ≥2건 → safe
       });
@@ -689,7 +773,11 @@ for (const r of rows) {
   if (r.polarity_emoji) polarityEmojiPresent++;
   const bothSignals = (r.__pos_count || 0) > 0 && (r.__neg_count || 0) > 0;
   if (r.polarity_emoji && bothSignals) emojiPresentAndCoexist++;
-  if (r.polarity_emoji && bothSignals && !r.conflict_flags?.includes("soft_self_conflict"))
+  if (
+    r.polarity_emoji &&
+    bothSignals &&
+    !r.conflict_flags?.includes("soft_self_conflict")
+  )
     softSelfConflictSuppressed++;
 }
 
@@ -698,16 +786,25 @@ function classifySoftRisk(r) {
   const bothSignals = (r.__pos_count || 0) > 0 && (r.__neg_count || 0) > 0;
   const hasHardFlag = r.conflict_flags?.includes("hard_self_conflict");
   const hasSoftFlag = r.conflict_flags?.includes("soft_self_conflict");
-  const hasPolarityConflict = r.conflict_flags?.includes("analysis_polarity_conflict");
+  const hasPolarityConflict = r.conflict_flags?.includes(
+    "analysis_polarity_conflict",
+  );
   const hasAdmitDeny =
     r.conflict_flags?.includes("admit_correctness_but_false") ||
     r.conflict_flags?.includes("deny_correctness_but_true");
   const isMismatch = r.match_type === "mismatch";
   const isKeepExisting = r.match_type === "keep_existing_match";
-  const hasLabelDisagree = r.conflict_flags?.includes("label_vs_signal_disagree");
+  const hasLabelDisagree = r.conflict_flags?.includes(
+    "label_vs_signal_disagree",
+  );
 
   // 위험 신호가 하나도 없으면 tier 없음
-  const anySoftSignal = bothSignals || hasSoftFlag || hasHardFlag || hasPolarityConflict || hasAdmitDeny;
+  const anySoftSignal =
+    bothSignals ||
+    hasSoftFlag ||
+    hasHardFlag ||
+    hasPolarityConflict ||
+    hasAdmitDeny;
   if (!anySoftSignal) return { tier: null, basis: [] };
 
   const basis = [];
@@ -753,17 +850,18 @@ function scoreOkRecheck(r) {
   const cf = r.conflict_flags || [];
   if (cf.includes("analysis_polarity_conflict")) score += 0.35;
   if (cf.includes("hard_self_conflict")) score += 0.25;
-  if (cf.includes("admit_correctness_but_false")) score += 0.20;
-  if (cf.includes("deny_correctness_but_true")) score += 0.20;
+  if (cf.includes("admit_correctness_but_false")) score += 0.2;
+  if (cf.includes("deny_correctness_but_true")) score += 0.2;
   if (cf.includes("soft_self_conflict")) score += 0.15;
-  const pos = r.__pos_count || 0, neg = r.__neg_count || 0;
+  const pos = r.__pos_count || 0,
+    neg = r.__neg_count || 0;
   if (pos > 0 && neg > 0) {
     const strength = Math.min(pos, neg) / 3;
     score += Math.min(0.15, strength * 0.15);
   }
-  if (r.match_type === "keep_existing_match") score += 0.10;
-  if (r.match_type === "mismatch") score += 0.10;
-  if (cf.includes("label_vs_signal_disagree")) score += 0.10;
+  if (r.match_type === "keep_existing_match") score += 0.1;
+  if (r.match_type === "mismatch") score += 0.1;
+  if (cf.includes("label_vs_signal_disagree")) score += 0.1;
   return Math.min(1, +score.toFixed(3));
 }
 
@@ -815,21 +913,26 @@ function metaOf(r) {
     conflict_flags: r.conflict_flags,
   };
 }
-const sortByScore = (a, b) => b.ok_recheck_candidate_score - a.ok_recheck_candidate_score;
+const sortByScore = (a, b) =>
+  b.ok_recheck_candidate_score - a.ok_recheck_candidate_score;
 const okRecheckPriorityCandidates = rows
-  .filter((r) =>
-    r.soft_conflict_risk_tier === "high" ||
-    (r.soft_conflict_risk_tier === "medium" &&
-      (r.match_type === "mismatch" || r.match_type === "keep_existing_match")),
+  .filter(
+    (r) =>
+      r.soft_conflict_risk_tier === "high" ||
+      (r.soft_conflict_risk_tier === "medium" &&
+        (r.match_type === "mismatch" ||
+          r.match_type === "keep_existing_match")),
   )
   .sort(sortByScore)
   .slice(0, 10)
   .map(metaOf);
 
 const keepExistingRiskCandidates = rows
-  .filter((r) =>
-    r.match_type === "keep_existing_match" &&
-    (r.soft_conflict_risk_tier === "high" || r.soft_conflict_risk_tier === "medium"),
+  .filter(
+    (r) =>
+      r.match_type === "keep_existing_match" &&
+      (r.soft_conflict_risk_tier === "high" ||
+        r.soft_conflict_risk_tier === "medium"),
   )
   .sort(sortByScore)
   .slice(0, 10)
@@ -842,8 +945,10 @@ const mismatchSoftConflictCandidates = rows
   .map(metaOf);
 
 const keepExistingRiskCount = rows.filter(
-  (r) => r.match_type === "keep_existing_match" &&
-    (r.soft_conflict_risk_tier === "high" || r.soft_conflict_risk_tier === "medium"),
+  (r) =>
+    r.match_type === "keep_existing_match" &&
+    (r.soft_conflict_risk_tier === "high" ||
+      r.soft_conflict_risk_tier === "medium"),
 ).length;
 
 const okRecheckCandidateTop10 = rows
@@ -873,14 +978,17 @@ function pickSample(predicate, excludeIds) {
 // 짧은 이유 + decision target + 질문 템플릿 생성
 function shortReasonOf(r) {
   const parts = [];
-  if (r.match_type === "mismatch") parts.push(`mismatch ${r.existing_pat||"null"}→${r.suggested_pat||"null"}`);
-  if (r.match_type === "keep_existing_match") parts.push(`keep_existing (fallback 유지) pat=${r.existing_pat||"null"}`);
+  if (r.match_type === "mismatch")
+    parts.push(
+      `mismatch ${r.existing_pat || "null"}→${r.suggested_pat || "null"}`,
+    );
+  if (r.match_type === "keep_existing_match")
+    parts.push(`keep_existing (fallback 유지) pat=${r.existing_pat || "null"}`);
   if (r.soft_conflict_risk_tier)
     parts.push(`risk=${r.soft_conflict_risk_tier}`);
   if (r.conflict_flags?.includes("label_vs_signal_disagree"))
     parts.push("label↔signal 불일치");
-  if (r.conflict_flags?.includes("top2_gap_small"))
-    parts.push("top2 경합");
+  if (r.conflict_flags?.includes("top2_gap_small")) parts.push("top2 경합");
   if ((r.__pos_count || 0) > 0 && (r.__neg_count || 0) > 0)
     parts.push(`pos/neg 공존(+${r.__pos_count}/-${r.__neg_count})`);
   return parts.join(" · ");
@@ -902,8 +1010,7 @@ function decisionTargetOf(r) {
     cf.includes("deny_correctness_but_true") ||
     cf.includes("hard_self_conflict");
   const hasAxisIssue =
-    cf.includes("label_vs_signal_disagree") ||
-    cf.includes("top2_gap_small");
+    cf.includes("label_vs_signal_disagree") || cf.includes("top2_gap_small");
   const bothSignals = (r.__pos_count || 0) > 0 && (r.__neg_count || 0) > 0;
 
   let primary = "leave_as_is",
@@ -916,7 +1023,8 @@ function decisionTargetOf(r) {
     confidence = 0.9;
   } else if (
     r.match_type === "keep_existing_match" &&
-    (r.soft_conflict_risk_tier === "medium" || r.soft_conflict_risk_tier === "high")
+    (r.soft_conflict_risk_tier === "medium" ||
+      r.soft_conflict_risk_tier === "high")
   ) {
     primary = "send_to_ok_recheck_queue";
     secondary = "send_to_pat_review_queue";
@@ -934,7 +1042,11 @@ function decisionTargetOf(r) {
     secondary = "leave_as_is";
     confidence = 0.6;
   }
-  return { primary_decision: primary, secondary_decision: secondary, decision_confidence: +confidence.toFixed(2) };
+  return {
+    primary_decision: primary,
+    secondary_decision: secondary,
+    decision_confidence: +confidence.toFixed(2),
+  };
 }
 
 // 이유 자동 추천 (사람이 최종 선택)
@@ -950,11 +1062,16 @@ function suggestOkIssueReason(r) {
   // keep_existing_match + medium/high tier → fallback로 겉보기 match이지만 해설 축이 어긋날 위험
   if (
     r.match_type === "keep_existing_match" &&
-    (r.soft_conflict_risk_tier === "medium" || r.soft_conflict_risk_tier === "high")
+    (r.soft_conflict_risk_tier === "medium" ||
+      r.soft_conflict_risk_tier === "high")
   )
     return "keep_existing_risk";
   const bothSignals = (r.__pos_count || 0) > 0 && (r.__neg_count || 0) > 0;
-  if ((cf.includes("label_vs_signal_disagree") || cf.includes("top2_gap_small")) && bothSignals)
+  if (
+    (cf.includes("label_vs_signal_disagree") ||
+      cf.includes("top2_gap_small")) &&
+    bothSignals
+  )
     return "axis_mismatch";
   return "unclear";
 }
@@ -962,9 +1079,12 @@ function suggestPatIssueReason(r) {
   const pair = `${r.existing_pat || ""}→${r.suggested_pat || ""}`;
   if (["L1→L4", "L4→L1"].includes(pair)) return "structure_vs_form";
   if (["R1→R2", "R2→R1"].includes(pair)) return "cause_vs_fact";
-  if (["R1→R4", "R4→R1", "R2→R4", "R4→R2"].includes(pair)) return "concept_confusion";
-  if (["L1→L3", "L3→L1", "L3→L2", "L1→L2"].includes(pair)) return "theme_vs_expression";
-  if ((r.existing_pat || "").startsWith(r.suggested_pat?.[0] || "")) return "unclear";
+  if (["R1→R4", "R4→R1", "R2→R4", "R4→R2"].includes(pair))
+    return "concept_confusion";
+  if (["L1→L3", "L3→L1", "L3→L2", "L1→L2"].includes(pair))
+    return "theme_vs_expression";
+  if ((r.existing_pat || "").startsWith(r.suggested_pat?.[0] || ""))
+    return "unclear";
   return "unclear";
 }
 const OK_ISSUE_REASON_OPTIONS = [
@@ -1033,7 +1153,9 @@ function enrichSample(r) {
 }
 
 // keep_existing 위험도를 먼저 계산 (샘플 구성이 이에 따라 달라짐)
-const keepExistingTotal = rows.filter((r) => r.match_type === "keep_existing_match").length;
+const keepExistingTotal = rows.filter(
+  (r) => r.match_type === "keep_existing_match",
+).length;
 const keepExistingMediumHighCount = keepExistingRiskCount;
 const keepExistingMediumRatio =
   keepExistingTotal > 0
@@ -1058,17 +1180,35 @@ function pickAndRecord(predicate) {
 
 let sampleSlots = [];
 if (keepExistingReviewPriority === "high") {
-  const s1 = pickAndRecord((r) => r.match_type === "mismatch" && r.soft_conflict_risk_tier === "medium");
-  const s2 = pickAndRecord((r) => r.match_type === "keep_existing_match" && r.soft_conflict_risk_tier === "medium");
-  const s3 = pickAndRecord((r) => r.match_type === "keep_existing_match" && r.soft_conflict_risk_tier === "medium");
+  const s1 = pickAndRecord(
+    (r) =>
+      r.match_type === "mismatch" && r.soft_conflict_risk_tier === "medium",
+  );
+  const s2 = pickAndRecord(
+    (r) =>
+      r.match_type === "keep_existing_match" &&
+      r.soft_conflict_risk_tier === "medium",
+  );
+  const s3 = pickAndRecord(
+    (r) =>
+      r.match_type === "keep_existing_match" &&
+      r.soft_conflict_risk_tier === "medium",
+  );
   sampleSlots = [
     { tag: "mismatch_medium", row: s1 },
     { tag: "keep_existing_medium", row: s2 },
     { tag: "keep_existing_medium_2", row: s3 },
   ];
 } else {
-  const s1 = pickAndRecord((r) => r.match_type === "mismatch" && r.soft_conflict_risk_tier === "medium");
-  const s2 = pickAndRecord((r) => r.match_type === "keep_existing_match" && r.soft_conflict_risk_tier === "medium");
+  const s1 = pickAndRecord(
+    (r) =>
+      r.match_type === "mismatch" && r.soft_conflict_risk_tier === "medium",
+  );
+  const s2 = pickAndRecord(
+    (r) =>
+      r.match_type === "keep_existing_match" &&
+      r.soft_conflict_risk_tier === "medium",
+  );
   const s3 = pickAndRecord(
     (r) =>
       (r.conflict_flags || []).includes("label_vs_signal_disagree") &&
@@ -1089,8 +1229,12 @@ const recommendedSamples = sampleSlots.map(({ tag, row }) => {
 });
 
 // 이유/결정 집계 (자동 추천값 기준 — 사람 입력 전 단계)
-const okIssueReasonCounts = Object.fromEntries(OK_ISSUE_REASON_OPTIONS.map((k) => [k, 0]));
-const patIssueReasonCounts = Object.fromEntries(PAT_ISSUE_REASON_OPTIONS.map((k) => [k, 0]));
+const okIssueReasonCounts = Object.fromEntries(
+  OK_ISSUE_REASON_OPTIONS.map((k) => [k, 0]),
+);
+const patIssueReasonCounts = Object.fromEntries(
+  PAT_ISSUE_REASON_OPTIONS.map((k) => [k, 0]),
+);
 const decisionTargetDistribution = {
   send_to_ok_recheck_queue: 0,
   send_to_pat_review_queue: 0,
@@ -1101,7 +1245,11 @@ let confidenceSum = 0;
 let confidenceCount = 0;
 
 for (const r of rows) {
-  if (r.match_type === "ok_true_pass" || r.match_type === "auto_empty_pass" || r.match_type === "vocab_keep")
+  if (
+    r.match_type === "ok_true_pass" ||
+    r.match_type === "auto_empty_pass" ||
+    r.match_type === "vocab_keep"
+  )
     continue;
   const d = decisionTargetOf(r);
   decisionTargetDistribution[d.primary_decision] =
@@ -1145,24 +1293,33 @@ let overrideMatch = 0;
 let naturalMatch = 0;
 for (const r of rows) {
   if (!r.match) continue;
-  if (r.source === "ok_true" || r.source === "auto_empty" || r.source === "vocab_keep") continue;
+  if (
+    r.source === "ok_true" ||
+    r.source === "auto_empty" ||
+    r.source === "vocab_keep"
+  )
+    continue;
   if (r.source === "ok_recheck_required") continue;
   naturalMatch++;
   if (r.source === "override_case") overrideMatch++;
   else if (r.source === "fallback_keep_existing") keepExistingMatch++;
-  else if (r.source === "analysis_signal" || r.source === "label_hint") engineTrueMatch++;
+  else if (r.source === "analysis_signal" || r.source === "label_hint")
+    engineTrueMatch++;
 }
 
 // ─── soft conflict 경고 + review candidates ─────────────────────────────────
 const softRate =
-  counts.total > 0 ? +(softSelfConflictSuppressed / counts.total).toFixed(3) : 0;
+  counts.total > 0
+    ? +(softSelfConflictSuppressed / counts.total).toFixed(3)
+    : 0;
 const sensitivityWarning = softRate > 0.15;
 
 const softReviewCandidates = rows
   .filter((r) => {
     const bothSignals = (r.__pos_count || 0) > 0 && (r.__neg_count || 0) > 0;
     if (!(r.polarity_emoji && bothSignals)) return false;
-    const inMismatch = !r.match && r.source !== "ok_recheck_required" && r.source !== "ok_true";
+    const inMismatch =
+      !r.match && r.source !== "ok_recheck_required" && r.source !== "ok_true";
     const inKeepExisting = r.match && r.source === "fallback_keep_existing";
     return inMismatch || inKeepExisting;
   })
@@ -1179,12 +1336,19 @@ const softReviewCandidates = rows
 
 // ─── boundary_pair_counts ────────────────────────────────────────────────────
 const BOUNDARY_KEYS = [
-  "L1→L4", "L4→L1", "L1→L3", "L3→L1",
-  "R1→R2", "R2→R1", "R1→R4", "R4→R1",
+  "L1→L4",
+  "L4→L1",
+  "L1→L3",
+  "L3→L1",
+  "R1→R2",
+  "R2→R1",
+  "R1→R4",
+  "R4→R1",
 ];
 const boundaryPairCounts = Object.fromEntries(BOUNDARY_KEYS.map((k) => [k, 0]));
 for (const r of rows) {
-  if (r.match || r.source === "ok_true" || r.source === "ok_recheck_required") continue;
+  if (r.match || r.source === "ok_true" || r.source === "ok_recheck_required")
+    continue;
   const key = `${r.existing_pat || "null"}→${r.suggested_pat || "null"}`;
   if (key in boundaryPairCounts) boundaryPairCounts[key]++;
 }
@@ -1264,7 +1428,9 @@ fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), "utf8");
 
 // ─── 콘솔 ────────────────────────────────────────────────────────────────────
 console.log("═".repeat(60));
-console.log(` pat_decision_engine — ${EXAM}${SET ? ` / ${SET}` : ""} (${DRY_RUN ? "dry-run" : "apply"})`);
+console.log(
+  ` pat_decision_engine — ${EXAM}${SET ? ` / ${SET}` : ""} (${DRY_RUN ? "dry-run" : "apply"})`,
+);
 console.log("═".repeat(60));
 console.log(`\n[총계] 선지 ${counts.total}`);
 console.log(`  일치(match):       ${counts.match}`);
@@ -1281,39 +1447,62 @@ for (const [s, n] of Object.entries(counts.by_source))
 console.log(`\n[mismatch 버킷]`);
 for (const [b, n] of Object.entries(counts.mismatch_reason_counts))
   console.log(`  ${b.padEnd(20)} ${n}`);
-console.log(`  ok_recheck_missed_suspects: ${counts.ok_recheck_missed_suspects}`);
+console.log(
+  `  ok_recheck_missed_suspects: ${counts.ok_recheck_missed_suspects}`,
+);
 
 console.log(`\n[match 분해]`);
 console.log(`  natural_match              ${naturalMatch}`);
 console.log(`  ├ engine_true_match        ${engineTrueMatch}`);
-console.log(`  ├ keep_existing_match      ${keepExistingMatch}${keepExistingMatch > 0 ? "  (← 엔진 정확도 아님, fallback 유지)" : ""}`);
+console.log(
+  `  ├ keep_existing_match      ${keepExistingMatch}${keepExistingMatch > 0 ? "  (← 엔진 정확도 아님, fallback 유지)" : ""}`,
+);
 console.log(`  └ override_match           ${overrideMatch}`);
 
-console.log(`\n[self_conflict] soft ${softSelfConflict} / hard ${hardSelfConflict}`);
+console.log(
+  `\n[self_conflict] soft ${softSelfConflict} / hard ${hardSelfConflict}`,
+);
 console.log(`[polarity 보조]`);
-console.log(`  polarity_emoji_present_count:            ${polarityEmojiPresent}`);
-console.log(`  emoji_present_and_pos_neg_coexist_count: ${emojiPresentAndCoexist}`);
-console.log(`  soft_self_conflict_suppressed_count:     ${softSelfConflictSuppressed}`);
-console.log(`  soft_self_conflict_rate:                 ${softRate}${sensitivityWarning ? "  ⚠️ WARNING (> 0.15)" : ""}`);
+console.log(
+  `  polarity_emoji_present_count:            ${polarityEmojiPresent}`,
+);
+console.log(
+  `  emoji_present_and_pos_neg_coexist_count: ${emojiPresentAndCoexist}`,
+);
+console.log(
+  `  soft_self_conflict_suppressed_count:     ${softSelfConflictSuppressed}`,
+);
+console.log(
+  `  soft_self_conflict_rate:                 ${softRate}${sensitivityWarning ? "  ⚠️ WARNING (> 0.15)" : ""}`,
+);
 console.log(`  ok_recheck_sensitivity_warning:          ${sensitivityWarning}`);
 
 console.log(`\n[boundary_pair_counts]`);
 const col1 = BOUNDARY_KEYS.slice(0, 4);
 const col2 = BOUNDARY_KEYS.slice(4);
 for (let i = 0; i < col1.length; i++) {
-  console.log(`  ${col1[i].padEnd(8)} ${String(boundaryPairCounts[col1[i]]).padStart(2)}    ${col2[i].padEnd(8)} ${String(boundaryPairCounts[col2[i]]).padStart(2)}`);
+  console.log(
+    `  ${col1[i].padEnd(8)} ${String(boundaryPairCounts[col1[i]]).padStart(2)}    ${col2[i].padEnd(8)} ${String(boundaryPairCounts[col2[i]]).padStart(2)}`,
+  );
 }
 
-console.log(`\n[soft_conflict_risk_counts]  low ${softRiskCounts.low} / medium ${softRiskCounts.medium} / high ${softRiskCounts.high}`);
+console.log(
+  `\n[soft_conflict_risk_counts]  low ${softRiskCounts.low} / medium ${softRiskCounts.medium} / high ${softRiskCounts.high}`,
+);
 console.log(`[soft_conflict_by_match_type]`);
 for (const [k, v] of Object.entries(softByMatchType)) {
   if (v > 0) console.log(`  ${k.padEnd(22)} ${v}`);
 }
-console.log(`[keep_existing_risk_count]  ${keepExistingRiskCount} (keep_existing_match 중 risk medium/high)`);
+console.log(
+  `[keep_existing_risk_count]  ${keepExistingRiskCount} (keep_existing_match 중 risk medium/high)`,
+);
 
 function printCandidateList(label, list) {
   console.log(`\n[${label} top ${list.length}]`);
-  if (list.length === 0) { console.log("  (없음)"); return; }
+  if (list.length === 0) {
+    console.log("  (없음)");
+    return;
+  }
   for (const c of list) {
     console.log(
       `  ${c.choice_id}  score=${c.ok_recheck_candidate_score}  tier=${c.soft_conflict_risk_tier}  mt=${c.match_type}  route=${c.route}  emoji=${c.polarity_emoji || "-"}`,
@@ -1321,15 +1510,26 @@ function printCandidateList(label, list) {
   }
 }
 if (args.includes("--verbose")) {
-  printCandidateList("ok_recheck_priority_candidates", okRecheckPriorityCandidates);
-  printCandidateList("keep_existing_risk_candidates", keepExistingRiskCandidates);
-  printCandidateList("mismatch_soft_conflict_candidates", mismatchSoftConflictCandidates);
+  printCandidateList(
+    "ok_recheck_priority_candidates",
+    okRecheckPriorityCandidates,
+  );
+  printCandidateList(
+    "keep_existing_risk_candidates",
+    keepExistingRiskCandidates,
+  );
+  printCandidateList(
+    "mismatch_soft_conflict_candidates",
+    mismatchSoftConflictCandidates,
+  );
 
   console.log(
     `\n[keep_existing_review_priority] ${keepExistingReviewPriority}  (medium/high 비율 = ${keepExistingMediumRatio}, total ${keepExistingTotal})`,
   );
 
-  console.log(`\n[decision_target_distribution] OK:${decisionTargetDistribution.send_to_ok_recheck_queue} / PAT:${decisionTargetDistribution.send_to_pat_review_queue} / leave_as_is:${decisionTargetDistribution.leave_as_is}  (decision_confidence_avg=${decisionConfidenceAvg})`);
+  console.log(
+    `\n[decision_target_distribution] OK:${decisionTargetDistribution.send_to_ok_recheck_queue} / PAT:${decisionTargetDistribution.send_to_pat_review_queue} / leave_as_is:${decisionTargetDistribution.leave_as_is}  (decision_confidence_avg=${decisionConfidenceAvg})`,
+  );
   console.log(`[ok_issue_reason_counts (자동 추천 분포)]`);
   for (const [k, v] of Object.entries(okIssueReasonCounts))
     if (v > 0) console.log(`  ${k.padEnd(28)} ${v}`);
@@ -1337,7 +1537,9 @@ if (args.includes("--verbose")) {
   for (const [k, v] of Object.entries(patIssueReasonCounts))
     if (v > 0) console.log(`  ${k.padEnd(28)} ${v}`);
 
-  console.log(`\n[human_review_pack — recommended samples (${recommendedSamples.length})]`);
+  console.log(
+    `\n[human_review_pack — recommended samples (${recommendedSamples.length})]`,
+  );
   for (const entry of recommendedSamples) {
     console.log(`\n── [${entry.category}] ──`);
     if (!entry.sample) {
@@ -1346,32 +1548,50 @@ if (args.includes("--verbose")) {
     }
     const s = entry.sample;
     console.log(`  choice_id:      ${s.choice_id}`);
-    console.log(`  existing→sugg:  ${s.existing_pat}→${s.suggested_pat}  (match_type=${s.match_type}, tier=${s.soft_conflict_risk_tier}, score=${s.ok_recheck_candidate_score})`);
+    console.log(
+      `  existing→sugg:  ${s.existing_pat}→${s.suggested_pat}  (match_type=${s.match_type}, tier=${s.soft_conflict_risk_tier}, score=${s.ok_recheck_candidate_score})`,
+    );
     console.log(`  applied_rule:   ${s.applied_rule_id}`);
-    console.log(`  flags:          ${(s.conflict_flags||[]).join(", ") || "(없음)"}`);
+    console.log(
+      `  flags:          ${(s.conflict_flags || []).join(", ") || "(없음)"}`,
+    );
     console.log(`  short_reason:   ${s.short_reason}`);
-    console.log(`  primary→${s.primary_decision}  (conf=${s.decision_confidence})`);
+    console.log(
+      `  primary→${s.primary_decision}  (conf=${s.decision_confidence})`,
+    );
     console.log(`  secondary→${s.secondary_decision || "(없음)"}`);
     console.log(`  ok_recheck_Q:   ${s.ok_recheck_question}`);
     console.log(`  pat_recheck_Q:  ${s.pat_recheck_question}`);
-    console.log(`  ok_issue_reason options: [${s.ok_issue_reason_options.join("|")}]  suggested=${s.ok_issue_reason_suggested}`);
-    console.log(`  pat_issue_reason options: [${s.pat_issue_reason_options.join("|")}]  suggested=${s.pat_issue_reason_suggested}`);
+    console.log(
+      `  ok_issue_reason options: [${s.ok_issue_reason_options.join("|")}]  suggested=${s.ok_issue_reason_suggested}`,
+    );
+    console.log(
+      `  pat_issue_reason options: [${s.pat_issue_reason_options.join("|")}]  suggested=${s.pat_issue_reason_suggested}`,
+    );
   }
 }
 
 console.log(`\n[rule_candidate_pairs (규칙 흡수 후보, 상위 5)]`);
 for (const r of ruleCandidatePairs.slice(0, 5))
-  console.log(`  ${r.pair.padEnd(14)} ×${r.count}  rule=${r.applied_rule_id}  sig_ratio=${r.dominant_ratio}`);
+  console.log(
+    `  ${r.pair.padEnd(14)} ×${r.count}  rule=${r.applied_rule_id}  sig_ratio=${r.dominant_ratio}`,
+  );
 
 console.log(`\n[true_override_pairs (개별 override 필요, 상위 5)]`);
 for (const r of trueOverridePairs.slice(0, 5))
-  console.log(`  ${r.pair.padEnd(14)} ×${r.count}  reason=${r.reason}${r.distinct_rules ? ` rules=${r.distinct_rules.join("|")}` : ""}`);
+  console.log(
+    `  ${r.pair.padEnd(14)} ×${r.count}  reason=${r.reason}${r.distinct_rules ? ` rules=${r.distinct_rules.join("|")}` : ""}`,
+  );
 
-console.log(`\n[batch_override 후보 그룹 수: ${batchOverrideGroups.length}] (safe=강화 기준 충족, 상위 5)`);
+console.log(
+  `\n[batch_override 후보 그룹 수: ${batchOverrideGroups.length}] (safe=강화 기준 충족, 상위 5)`,
+);
 for (const g of batchOverrideGroups.slice(0, 5)) {
   const axis = (g.dominant_choice_axis || []).slice(0, 3).join(",");
   const sig = (g.dominant_signal_signature || []).slice(0, 3).join(",");
-  console.log(`  ${g.pair.padEnd(12)} ×${g.count}  rule=${g.applied_rule_id.padEnd(28)}  axis=[${axis}]  signal=[${sig}]  safe=${g.safe_batch_candidate}`);
+  console.log(
+    `  ${g.pair.padEnd(12)} ×${g.count}  rule=${g.applied_rule_id.padEnd(28)}  axis=[${axis}]  signal=[${sig}]  safe=${g.safe_batch_candidate}`,
+  );
   console.log(`    samples: ${(g.sample_choice_ids || []).join(", ")}`);
 }
 
@@ -1383,15 +1603,25 @@ if (VERBOSE) {
     console.log(`  ${p.from.padEnd(6)} → ${p.to.padEnd(6)}  ${p.count}`);
 
   console.log(`\n[applied_rule_counts (상위 15)]`);
-  const ranked = Object.entries(counts.applied_rule_counts).sort((a, b) => b[1] - a[1]);
-  for (const [r, n] of ranked.slice(0, 15)) console.log(`  ${r.padEnd(36)} ${n}`);
+  const ranked = Object.entries(counts.applied_rule_counts).sort(
+    (a, b) => b[1] - a[1],
+  );
+  for (const [r, n] of ranked.slice(0, 15))
+    console.log(`  ${r.padEnd(36)} ${n}`);
 
   console.log(`\n[mismatch 상세 (버킷 포함, 상위 20)]`);
   const mrows = rows
-    .filter((r) => !r.match && r.source !== "ok_true" && r.source !== "ok_recheck_required")
+    .filter(
+      (r) =>
+        !r.match &&
+        r.source !== "ok_true" &&
+        r.source !== "ok_recheck_required",
+    )
     .slice(0, 20);
   for (const r of mrows) {
-    const flags = r.conflict_flags.length ? ` [${r.conflict_flags.join(",")}]` : "";
+    const flags = r.conflict_flags.length
+      ? ` [${r.conflict_flags.join(",")}]`
+      : "";
     const gap = r.top2_gap !== null ? ` gap=${r.top2_gap}` : "";
     console.log(
       `  ${r.loc}  ${r.existing_pat || "null"}→${r.suggested_pat || "null"}  [${r.mismatch_reason_code || "-"}]  (${r.applied_rule_id})${gap}${flags}`,
@@ -1401,7 +1631,9 @@ if (VERBOSE) {
   console.log(`\n[top_mismatch_pairs (상위 5)]`);
   for (const p of topPairs.slice(0, 5))
     console.log(`  ${p.from.padEnd(6)} → ${p.to.padEnd(6)}  ${p.count}`);
-  console.log(`\n(상세는 --verbose 또는 pipeline/reports/pat_decision_report.json 참조)`);
+  console.log(
+    `\n(상세는 --verbose 또는 pipeline/reports/pat_decision_report.json 참조)`,
+  );
 }
 
 console.log(`\n📄 저장: ${path.relative(ROOT, reportPath)}`);

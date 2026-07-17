@@ -30,8 +30,15 @@ const DEFAULT_DATA_PATH = path.join(
 const SUNEUNG5 = ["2022수능", "2023수능", "2024수능", "2025수능", "2026수능"];
 
 const VALID_PAT_SET = new Set([
-  "R1", "R2", "R3", "R4",
-  "L1", "L2", "L3", "L4", "L5",
+  "R1",
+  "R2",
+  "R3",
+  "R4",
+  "L1",
+  "L2",
+  "L3",
+  "L4",
+  "L5",
   "V",
 ]);
 

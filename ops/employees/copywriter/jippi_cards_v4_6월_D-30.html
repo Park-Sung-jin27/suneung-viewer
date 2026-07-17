@@ -1,419 +1,521 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8" />
-<title>짚이 카드뉴스 v4 — 6월 모의고사 D-30 (1:1)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<style>
-  :root {
-    --dark-green: #1B4220;
-    --lime: #BEF264;
-    --paper: #FAF8F4;
-    --ink: #1A1A1A;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #2a2a2a;
-    font-family: "Noto Sans KR", sans-serif;
-    color: var(--paper);
-    padding: 40px 20px;
-    min-height: 100vh;
-  }
-  h1.page-title {
-    text-align: center;
-    font-family: "Noto Serif KR", serif;
-    font-weight: 900;
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
-  p.page-sub {
-    text-align: center;
-    font-size: 14px;
-    color: #aaa;
-    margin-bottom: 24px;
-  }
-  .toolbar {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-  }
-  .toolbar button {
-    padding: 12px 24px;
-    background: var(--lime);
-    color: var(--ink);
-    border: none;
-    border-radius: 8px;
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    transition: transform .15s;
-  }
-  .toolbar button:hover { transform: translateY(-2px); }
-  .toolbar button.secondary {
-    background: #444;
-    color: var(--paper);
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <title>짚이 카드뉴스 v4 — 6월 모의고사 D-30 (1:1)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+      :root {
+        --dark-green: #1b4220;
+        --lime: #bef264;
+        --paper: #faf8f4;
+        --ink: #1a1a1a;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #2a2a2a;
+        font-family: "Noto Sans KR", sans-serif;
+        color: var(--paper);
+        padding: 40px 20px;
+        min-height: 100vh;
+      }
+      h1.page-title {
+        text-align: center;
+        font-family: "Noto Serif KR", serif;
+        font-weight: 900;
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+      p.page-sub {
+        text-align: center;
+        font-size: 14px;
+        color: #aaa;
+        margin-bottom: 24px;
+      }
+      .toolbar {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 32px;
+        flex-wrap: wrap;
+      }
+      .toolbar button {
+        padding: 12px 24px;
+        background: var(--lime);
+        color: var(--ink);
+        border: none;
+        border-radius: 8px;
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        transition: transform 0.15s;
+      }
+      .toolbar button:hover {
+        transform: translateY(-2px);
+      }
+      .toolbar button.secondary {
+        background: #444;
+        color: var(--paper);
+      }
 
-  /* 카드 grid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(540px, max-content));
-    gap: 32px;
-    justify-content: center;
-  }
-  /* 미리보기 wrapper (1:1, scale 0.5) */
-  .card-wrap {
-    width: 540px;
-    height: 540px;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,.4);
-  }
-  .card-wrap .card {
-    transform: scale(0.5);
-    transform-origin: top left;
-  }
+      /* 카드 grid */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(540px, max-content));
+        gap: 32px;
+        justify-content: center;
+      }
+      /* 미리보기 wrapper (1:1, scale 0.5) */
+      .card-wrap {
+        width: 540px;
+        height: 540px;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      }
+      .card-wrap .card {
+        transform: scale(0.5);
+        transform-origin: top left;
+      }
 
-  /* 실제 카드 (1080x1080) */
-  .card {
-    width: 1080px;
-    height: 1080px;
-    padding: 130px 80px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-  }
-  .card.dark {
-    background: var(--dark-green);
-    color: var(--paper);
-  }
-  .card.light {
-    background: var(--paper);
-    color: var(--ink);
-  }
+      /* 실제 카드 (1080x1080) */
+      .card {
+        width: 1080px;
+        height: 1080px;
+        padding: 130px 80px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .card.dark {
+        background: var(--dark-green);
+        color: var(--paper);
+      }
+      .card.light {
+        background: var(--paper);
+        color: var(--ink);
+      }
 
-  /* progress dots */
-  .progress {
-    position: absolute;
-    top: 60px;
-    left: 80px;
-    display: flex;
-    gap: 12px;
-  }
-  .progress .dot {
-    width: 38px;
-    height: 4px;
-    background: rgba(255,255,255,.25);
-  }
-  .card.light .progress .dot {
-    background: rgba(0,0,0,.15);
-  }
-  .progress .dot.active { background: var(--lime); }
+      /* progress dots */
+      .progress {
+        position: absolute;
+        top: 60px;
+        left: 80px;
+        display: flex;
+        gap: 12px;
+      }
+      .progress .dot {
+        width: 38px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .card.light .progress .dot {
+        background: rgba(0, 0, 0, 0.15);
+      }
+      .progress .dot.active {
+        background: var(--lime);
+      }
 
-  /* brand corner */
-  .brand {
-    position: absolute;
-    bottom: 60px;
-    right: 80px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: "Noto Serif KR", serif;
-    font-weight: 700;
-    font-size: 24px;
-  }
-  .card.light .brand { color: var(--dark-green); }
-  .card.dark .brand { color: var(--paper); }
-  .brand svg { width: 28px; height: 28px; }
+      /* brand corner */
+      .brand {
+        position: absolute;
+        bottom: 60px;
+        right: 80px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Noto Serif KR", serif;
+        font-weight: 700;
+        font-size: 24px;
+      }
+      .card.light .brand {
+        color: var(--dark-green);
+      }
+      .card.dark .brand {
+        color: var(--paper);
+      }
+      .brand svg {
+        width: 28px;
+        height: 28px;
+      }
 
-  /* 헤드 */
-  .head {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 900;
-    font-size: 96px;
-    line-height: 1.3;
-    letter-spacing: -0.02em;
-    white-space: pre-line;
-  }
-  .head.huge {
-    font-size: 130px;
-    line-height: 1.2;
-    text-align: center;
-  }
-  .sub {
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
-    font-size: 42px;
-    line-height: 1.6;
-    margin-top: 50px;
-    white-space: pre-line;
-  }
-  .sub.center { text-align: center; }
+      /* 헤드 */
+      .head {
+        font-family: "Noto Serif KR", serif;
+        font-weight: 900;
+        font-size: 96px;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+        white-space: pre-line;
+      }
+      .head.huge {
+        font-size: 130px;
+        line-height: 1.2;
+        text-align: center;
+      }
+      .sub {
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: 500;
+        font-size: 42px;
+        line-height: 1.6;
+        margin-top: 50px;
+        white-space: pre-line;
+      }
+      .sub.center {
+        text-align: center;
+      }
 
-  /* hl 형광펜 */
-  .card.light .hl {
-    background: linear-gradient(transparent 58%, var(--lime) 58%, var(--lime) 94%, transparent 94%);
-    padding: 0 4px;
-    font-weight: 900;
-  }
-  .card.dark .hl {
-    color: var(--lime);
-    font-weight: 900;
-  }
+      /* hl 형광펜 */
+      .card.light .hl {
+        background: linear-gradient(
+          transparent 58%,
+          var(--lime) 58%,
+          var(--lime) 94%,
+          transparent 94%
+        );
+        padding: 0 4px;
+        font-weight: 900;
+      }
+      .card.dark .hl {
+        color: var(--lime);
+        font-weight: 900;
+      }
 
-  /* CTA card */
-  .cta-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-  }
-  .cta-logo svg.pen {
-    width: 180px;
-    height: 180px;
-    margin-bottom: 24px;
-  }
-  .cta-brand {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 900;
-    font-size: 180px;
-    line-height: 1;
-    color: var(--paper);
-    margin-bottom: 24px;
-  }
-  .cta-tag {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 700;
-    font-size: 54px;
-    line-height: 1.3;
-    color: var(--lime);
-    margin-bottom: 50px;
-  }
-  .cta-divider {
-    width: 100px;
-    height: 4px;
-    background: var(--lime);
-    margin: 0 auto 40px;
-  }
-  .cta-link {
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 700;
-    font-size: 38px;
-    line-height: 1.5;
-    color: var(--paper);
-  }
-  .cta-link .url {
-    display: inline-block;
-    margin-top: 12px;
-    font-family: "Noto Serif KR", serif;
-    font-weight: 900;
-    font-size: 56px;
-    color: var(--lime);
-  }
+      /* CTA card */
+      .cta-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+      }
+      .cta-logo svg.pen {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 24px;
+      }
+      .cta-brand {
+        font-family: "Noto Serif KR", serif;
+        font-weight: 900;
+        font-size: 180px;
+        line-height: 1;
+        color: var(--paper);
+        margin-bottom: 24px;
+      }
+      .cta-tag {
+        font-family: "Noto Serif KR", serif;
+        font-weight: 700;
+        font-size: 54px;
+        line-height: 1.3;
+        color: var(--lime);
+        margin-bottom: 50px;
+      }
+      .cta-divider {
+        width: 100px;
+        height: 4px;
+        background: var(--lime);
+        margin: 0 auto 40px;
+      }
+      .cta-link {
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 1.5;
+        color: var(--paper);
+      }
+      .cta-link .url {
+        display: inline-block;
+        margin-top: 12px;
+        font-family: "Noto Serif KR", serif;
+        font-weight: 900;
+        font-size: 56px;
+        color: var(--lime);
+      }
 
-  /* 캡션 박스 */
-  .caption-box {
-    max-width: 720px;
-    margin: 48px auto 0;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 12px;
-    padding: 28px;
-    color: var(--paper);
-    font-family: "Noto Sans KR", sans-serif;
-  }
-  .caption-box h2 {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 900;
-    font-size: 18px;
-    margin-bottom: 16px;
-    color: var(--lime);
-  }
-  .caption-box pre {
-    white-space: pre-wrap;
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--paper);
-  }
-  .caption-box button {
-    margin-top: 16px;
-    padding: 10px 20px;
-    background: var(--lime);
-    color: var(--ink);
-    border: none;
-    border-radius: 6px;
-    font-weight: 700;
-    cursor: pointer;
-  }
+      /* 캡션 박스 */
+      .caption-box {
+        max-width: 720px;
+        margin: 48px auto 0;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 28px;
+        color: var(--paper);
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      .caption-box h2 {
+        font-family: "Noto Serif KR", serif;
+        font-weight: 900;
+        font-size: 18px;
+        margin-bottom: 16px;
+        color: var(--lime);
+      }
+      .caption-box pre {
+        white-space: pre-wrap;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--paper);
+      }
+      .caption-box button {
+        margin-top: 16px;
+        padding: 10px 20px;
+        background: var(--lime);
+        color: var(--ink);
+        border: none;
+        border-radius: 6px;
+        font-weight: 700;
+        cursor: pointer;
+      }
 
-  /* 캡처 모드 */
-  .capturing { transform: none !important; }
-  .capturing.card-wrap {
-    width: 1080px !important;
-    height: 1080px !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-  }
-</style>
-</head>
-<body>
+      /* 캡처 모드 */
+      .capturing {
+        transform: none !important;
+      }
+      .capturing.card-wrap {
+        width: 1080px !important;
+        height: 1080px !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="page-title">짚이 카드뉴스 v4 — 6월 모의고사 D-30</h1>
+    <p class="page-sub">
+      1080×1080 (1:1) / 학생 3~4등급 / CTA: 출시 알림 / #6월모의고사 #수능D-200
+    </p>
 
-<h1 class="page-title">짚이 카드뉴스 v4 — 6월 모의고사 D-30</h1>
-<p class="page-sub">1080×1080 (1:1) / 학생 3~4등급 / CTA: 출시 알림 / #6월모의고사 #수능D-200</p>
-
-<div class="toolbar">
-  <button onclick="downloadAll()">📥 전체 7장 PNG 다운로드</button>
-  <button class="secondary" onclick="downloadOne(0)">1장만</button>
-  <button class="secondary" onclick="downloadOne(1)">2장만</button>
-  <button class="secondary" onclick="downloadOne(2)">3장만</button>
-  <button class="secondary" onclick="downloadOne(3)">4장만</button>
-  <button class="secondary" onclick="downloadOne(4)">5장만</button>
-  <button class="secondary" onclick="downloadOne(5)">6장만</button>
-  <button class="secondary" onclick="downloadOne(6)">7장만</button>
-</div>
-
-<div class="grid">
-
-  <!-- ① HOOK (다크) -->
-  <div class="card-wrap" id="wrap-1">
-    <div class="card dark">
-      <div class="progress">
-        <div class="dot active"></div>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-      </div>
-      <div class="head">6월 모의고사까지<br>30일.<br><br>선지 앞에서<br><span class="hl">망설이고</span> 계신가요? 🤔</div>
-      <div class="brand">
-        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#BEF264"/><rect x="13" y="18" width="4" height="8" fill="#FAF8F4"/></svg>
-        짚이 · Jippi
-      </div>
+    <div class="toolbar">
+      <button onclick="downloadAll()">📥 전체 7장 PNG 다운로드</button>
+      <button class="secondary" onclick="downloadOne(0)">1장만</button>
+      <button class="secondary" onclick="downloadOne(1)">2장만</button>
+      <button class="secondary" onclick="downloadOne(2)">3장만</button>
+      <button class="secondary" onclick="downloadOne(3)">4장만</button>
+      <button class="secondary" onclick="downloadOne(4)">5장만</button>
+      <button class="secondary" onclick="downloadOne(5)">6장만</button>
+      <button class="secondary" onclick="downloadOne(6)">7장만</button>
     </div>
-  </div>
 
-  <!-- ② 진단 (라이트) -->
-  <div class="card-wrap" id="wrap-2">
-    <div class="card light">
-      <div class="progress">
-        <div class="dot"></div><div class="dot active"></div>
-        <div class="dot"></div><div class="dot"></div>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="grid">
+      <!-- ① HOOK (다크) -->
+      <div class="card-wrap" id="wrap-1">
+        <div class="card dark">
+          <div class="progress">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="head">
+            6월 모의고사까지<br />30일.<br /><br />선지 앞에서<br /><span
+              class="hl"
+              >망설이고</span
+            >
+            계신가요? 🤔
+          </div>
+          <div class="brand">
+            <svg viewBox="0 0 30 30">
+              <polygon points="15,2 6,18 24,18" fill="#BEF264" />
+              <rect x="13" y="18" width="4" height="8" fill="#FAF8F4" />
+            </svg>
+            짚이 · Jippi
+          </div>
+        </div>
       </div>
-      <div class="head">문제집은 풀었고<br>인강도 들었습니다.<br><br>그런데<br><span class="hl">선지에서 망설입니다.</span><br><br>원인은 한 가지.</div>
-      <div class="brand">
-        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#1B4220"/><rect x="13" y="18" width="4" height="8" fill="#1B4220"/></svg>
-        짚이 · Jippi
-      </div>
-    </div>
-  </div>
 
-  <!-- ③ 핵심 (다크 huge) -->
-  <div class="card-wrap" id="wrap-3">
-    <div class="card dark">
-      <div class="progress">
-        <div class="dot"></div><div class="dot"></div>
-        <div class="dot active"></div>
-        <div class="dot"></div><div class="dot"></div>
-        <div class="dot"></div><div class="dot"></div>
+      <!-- ② 진단 (라이트) -->
+      <div class="card-wrap" id="wrap-2">
+        <div class="card light">
+          <div class="progress">
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="head">
+            문제집은 풀었고<br />인강도 들었습니다.<br /><br />그런데<br /><span
+              class="hl"
+              >선지에서 망설입니다.</span
+            ><br /><br />원인은 한 가지.
+          </div>
+          <div class="brand">
+            <svg viewBox="0 0 30 30">
+              <polygon points="15,2 6,18 24,18" fill="#1B4220" />
+              <rect x="13" y="18" width="4" height="8" fill="#1B4220" />
+            </svg>
+            짚이 · Jippi
+          </div>
+        </div>
       </div>
-      <div class="head huge">공부량 ≠ 점수</div>
-      <div class="sub center">이유는 <span class="hl">'왜 오답인지'</span><br>모르기 때문.</div>
-      <div class="brand">
-        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#BEF264"/><rect x="13" y="18" width="4" height="8" fill="#FAF8F4"/></svg>
-        짚이 · Jippi
-      </div>
-    </div>
-  </div>
 
-  <!-- ④ 인사이트 (라이트) -->
-  <div class="card-wrap" id="wrap-4">
-    <div class="card light">
-      <div class="progress">
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dot active"></div>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <!-- ③ 핵심 (다크 huge) -->
+      <div class="card-wrap" id="wrap-3">
+        <div class="card dark">
+          <div class="progress">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="head huge">공부량 ≠ 점수</div>
+          <div class="sub center">
+            이유는 <span class="hl">'왜 오답인지'</span><br />모르기 때문.
+          </div>
+          <div class="brand">
+            <svg viewBox="0 0 30 30">
+              <polygon points="15,2 6,18 24,18" fill="#BEF264" />
+              <rect x="13" y="18" width="4" height="8" fill="#FAF8F4" />
+            </svg>
+            짚이 · Jippi
+          </div>
+        </div>
       </div>
-      <div class="head">수능 국어 오답에는<br><span class="hl">9가지 유형</span>이<br>있습니다.<br><br>같은 유형이<br><span class="hl">회차마다 반복</span>됩니다.</div>
-      <div class="brand">
-        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#1B4220"/><rect x="13" y="18" width="4" height="8" fill="#1B4220"/></svg>
-        짚이 · Jippi
-      </div>
-    </div>
-  </div>
 
-  <!-- ⑤ 솔루션① (다크) -->
-  <div class="card-wrap" id="wrap-5">
-    <div class="card dark">
-      <div class="progress">
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dot active"></div>
-        <div class="dot"></div><div class="dot"></div>
+      <!-- ④ 인사이트 (라이트) -->
+      <div class="card-wrap" id="wrap-4">
+        <div class="card light">
+          <div class="progress">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="head">
+            수능 국어 오답에는<br /><span class="hl">9가지 유형</span
+            >이<br />있습니다.<br /><br />같은 유형이<br /><span class="hl"
+              >회차마다 반복</span
+            >됩니다.
+          </div>
+          <div class="brand">
+            <svg viewBox="0 0 30 30">
+              <polygon points="15,2 6,18 24,18" fill="#1B4220" />
+              <rect x="13" y="18" width="4" height="8" fill="#1B4220" />
+            </svg>
+            짚이 · Jippi
+          </div>
+        </div>
       </div>
-      <div class="head">선지마다<br>지문 근거를<br><span class="hl">형광펜으로.</span></div>
-      <div class="sub">1:1로 매핑됩니다.</div>
-      <div class="brand">
-        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#BEF264"/><rect x="13" y="18" width="4" height="8" fill="#FAF8F4"/></svg>
-        짚이 · Jippi
-      </div>
-    </div>
-  </div>
 
-  <!-- ⑥ 솔루션② (라이트) -->
-  <div class="card-wrap" id="wrap-6">
-    <div class="card light">
-      <div class="progress">
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dot active"></div>
-        <div class="dot"></div>
+      <!-- ⑤ 솔루션① (다크) -->
+      <div class="card-wrap" id="wrap-5">
+        <div class="card dark">
+          <div class="progress">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="head">
+            선지마다<br />지문 근거를<br /><span class="hl">형광펜으로.</span>
+          </div>
+          <div class="sub">1:1로 매핑됩니다.</div>
+          <div class="brand">
+            <svg viewBox="0 0 30 30">
+              <polygon points="15,2 6,18 24,18" fill="#BEF264" />
+              <rect x="13" y="18" width="4" height="8" fill="#FAF8F4" />
+            </svg>
+            짚이 · Jippi
+          </div>
+        </div>
       </div>
-      <div class="head"><span class="hl">9가지</span><br>오답 패턴<br><span class="hl">자동 분류.</span></div>
-      <div class="sub">본인 약점이<br>회차마다 누적됩니다.</div>
-      <div class="brand">
-        <svg viewBox="0 0 30 30"><polygon points="15,2 6,18 24,18" fill="#1B4220"/><rect x="13" y="18" width="4" height="8" fill="#1B4220"/></svg>
-        짚이 · Jippi
-      </div>
-    </div>
-  </div>
 
-  <!-- ⑦ CTA (다크) -->
-  <div class="card-wrap" id="wrap-7">
-    <div class="card dark">
-      <div class="progress">
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dot active"></div>
+      <!-- ⑥ 솔루션② (라이트) -->
+      <div class="card-wrap" id="wrap-6">
+        <div class="card light">
+          <div class="progress">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="head">
+            <span class="hl">9가지</span><br />오답 패턴<br /><span class="hl"
+              >자동 분류.</span
+            >
+          </div>
+          <div class="sub">본인 약점이<br />회차마다 누적됩니다.</div>
+          <div class="brand">
+            <svg viewBox="0 0 30 30">
+              <polygon points="15,2 6,18 24,18" fill="#1B4220" />
+              <rect x="13" y="18" width="4" height="8" fill="#1B4220" />
+            </svg>
+            짚이 · Jippi
+          </div>
+        </div>
       </div>
-      <div class="cta-logo">
-        <svg class="pen" viewBox="0 0 100 100">
-          <polygon points="50,8 20,62 80,62" fill="#BEF264" stroke="#FAF8F4" stroke-width="2"/>
-          <rect x="44" y="62" width="12" height="22" fill="#FAF8F4"/>
-        </svg>
-        <div class="cta-brand">짚이</div>
-        <div class="cta-tag">선지마다 근거를<br>형광펜으로.</div>
-        <div class="cta-divider"></div>
-        <div class="cta-link">
-          ☝️ 프로필 링크<br>
-          <span class="url">jippi.kr</span><br>
-          출시 알림 신청
+
+      <!-- ⑦ CTA (다크) -->
+      <div class="card-wrap" id="wrap-7">
+        <div class="card dark">
+          <div class="progress">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+          </div>
+          <div class="cta-logo">
+            <svg class="pen" viewBox="0 0 100 100">
+              <polygon
+                points="50,8 20,62 80,62"
+                fill="#BEF264"
+                stroke="#FAF8F4"
+                stroke-width="2"
+              />
+              <rect x="44" y="62" width="12" height="22" fill="#FAF8F4" />
+            </svg>
+            <div class="cta-brand">짚이</div>
+            <div class="cta-tag">선지마다 근거를<br />형광펜으로.</div>
+            <div class="cta-divider"></div>
+            <div class="cta-link">
+              ☝️ 프로필 링크<br />
+              <span class="url">jippi.kr</span><br />
+              출시 알림 신청
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-</div>
-
-<!-- 캡션 박스 -->
-<div class="caption-box">
-  <h2>📋 인스타 캡션 + 해시태그</h2>
-  <pre id="caption-text">6월 모의고사까지 30일. 선지 앞에서 망설이고 계신가요? 🤔
+    <!-- 캡션 박스 -->
+    <div class="caption-box">
+      <h2>📋 인스타 캡션 + 해시태그</h2>
+      <pre id="caption-text">
+6월 모의고사까지 30일. 선지 앞에서 망설이고 계신가요? 🤔
 
 문제집은 풀었고, 인강도 들었습니다.
 그런데 선지 앞에서 망설입니다.
@@ -427,56 +529,55 @@
 ☝️ 프로필 링크 → jippi.kr (출시 알림)
 
 #수능국어 #모의고사 #국어공부 #수능 #국어1등급 #수능공부 #고3 #국어성적 #수능국어공부 #공부법 #짚이 #jippi #수능국어강의 #국어인강 #6월모의고사 #수능D-200</pre>
-  <button onclick="copyCaption()">📋 전체 복사</button>
-</div>
+      <button onclick="copyCaption()">📋 전체 복사</button>
+    </div>
 
-<script>
-  function copyCaption() {
-    const text = document.getElementById("caption-text").innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      alert("✅ 캡션 복사 완료. 인스타에 바로 붙여넣기 가능.");
-    });
-  }
+    <script>
+      function copyCaption() {
+        const text = document.getElementById("caption-text").innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          alert("✅ 캡션 복사 완료. 인스타에 바로 붙여넣기 가능.");
+        });
+      }
 
-  async function captureCard(idx) {
-    const wrap = document.getElementById("wrap-" + (idx + 1));
-    const card = wrap.querySelector(".card");
-    wrap.classList.add("capturing");
-    card.classList.add("capturing");
-    await new Promise(r => setTimeout(r, 100));
-    const canvas = await html2canvas(card, {
-      scale: 2,
-      backgroundColor: null,
-      width: 1080,
-      height: 1080,
-      windowWidth: 1080,
-      windowHeight: 1080,
-    });
-    wrap.classList.remove("capturing");
-    card.classList.remove("capturing");
-    return canvas;
-  }
+      async function captureCard(idx) {
+        const wrap = document.getElementById("wrap-" + (idx + 1));
+        const card = wrap.querySelector(".card");
+        wrap.classList.add("capturing");
+        card.classList.add("capturing");
+        await new Promise((r) => setTimeout(r, 100));
+        const canvas = await html2canvas(card, {
+          scale: 2,
+          backgroundColor: null,
+          width: 1080,
+          height: 1080,
+          windowWidth: 1080,
+          windowHeight: 1080,
+        });
+        wrap.classList.remove("capturing");
+        card.classList.remove("capturing");
+        return canvas;
+      }
 
-  async function downloadOne(idx) {
-    await document.fonts.ready;
-    await new Promise(r => setTimeout(r, 150));
-    const canvas = await captureCard(idx);
-    const link = document.createElement("a");
-    const num = String(idx + 1).padStart(2, "0");
-    link.download = "jippi_card_" + num + ".png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  }
+      async function downloadOne(idx) {
+        await document.fonts.ready;
+        await new Promise((r) => setTimeout(r, 150));
+        const canvas = await captureCard(idx);
+        const link = document.createElement("a");
+        const num = String(idx + 1).padStart(2, "0");
+        link.download = "jippi_card_" + num + ".png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      }
 
-  async function downloadAll() {
-    await document.fonts.ready;
-    await new Promise(r => setTimeout(r, 150));
-    for (let i = 0; i < 7; i++) {
-      await downloadOne(i);
-      await new Promise(r => setTimeout(r, 400));
-    }
-  }
-</script>
-
-</body>
+      async function downloadAll() {
+        await document.fonts.ready;
+        await new Promise((r) => setTimeout(r, 150));
+        for (let i = 0; i < 7; i++) {
+          await downloadOne(i);
+          await new Promise((r) => setTimeout(r, 400));
+        }
+      }
+    </script>
+  </body>
 </html>

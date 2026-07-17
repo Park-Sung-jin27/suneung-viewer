@@ -17,17 +17,17 @@
 
 ## 산출물 9개 (`/pipeline/d_engine/` 권장 위치)
 
-| 파일 | 역할 |
-|---|---|
-| `d_engine_input_schema.md` | 스키마 정본 (514줄) |
-| `d_engine_gold_samples_phase1.json` | Gold 14개 (intent_validation 포함) |
-| `d_engine_prompt.txt` | GPT-5 프롬프트 |
-| `d_engine_dryrun_inputs.json` | 14개 sample input (D엔진 전달용) |
-| `dryrun_results_template.json` | 결과 기록 템플릿 |
-| `compare_dryrun_results.mjs` | 결과 자동 분석 스크립트 |
-| `validate_gold_phase1.mjs` | Gold 자동 검증 (구조 + 의도 + quote boundary) |
-| `gold_authoring_rules.md` | Gold 작성 규칙 정본 (Rule 1~7) |
-| `d_engine_dryrun_guide.md` | 실행 가이드 |
+| 파일                                | 역할                                          |
+| ----------------------------------- | --------------------------------------------- |
+| `d_engine_input_schema.md`          | 스키마 정본 (514줄)                           |
+| `d_engine_gold_samples_phase1.json` | Gold 14개 (intent_validation 포함)            |
+| `d_engine_prompt.txt`               | GPT-5 프롬프트                                |
+| `d_engine_dryrun_inputs.json`       | 14개 sample input (D엔진 전달용)              |
+| `dryrun_results_template.json`      | 결과 기록 템플릿                              |
+| `compare_dryrun_results.mjs`        | 결과 자동 분석 스크립트                       |
+| `validate_gold_phase1.mjs`          | Gold 자동 검증 (구조 + 의도 + quote boundary) |
+| `gold_authoring_rules.md`           | Gold 작성 규칙 정본 (Rule 1~7)                |
+| `d_engine_dryrun_guide.md`          | 실행 가이드                                   |
 
 ---
 
@@ -43,22 +43,22 @@ E_COMPOSITE_ERROR: 2/2 ✅
 E_DOMAIN_INVALID: 2/2 ✅
 ```
 
-| sample_id | pat | error_type | 작성자 | PDF |
-|---|---|---|---|---|
-| gold_R1_001 | R1 | NONE | user | - |
-| gold_R1_002 | R1 | P_MISMATCH | user | - |
-| gold_R1_003 | R1 | E_EVIDENCE_WEAK | user | - (타입 A: 배경 설명) |
-| gold_R2_001 | R2 | NONE | user | - |
-| gold_R2_002 | R2 | E_COMPOSITE_ERROR | user | - |
-| gold_R1_004 | R1 | NONE | claude | 3.pdf Q25 |
-| gold_R1_005 | R1 | P_MISMATCH | claude | 2.pdf Q38 |
-| gold_R1_006 | R1 | E_LOGIC_UNCLEAR | claude | 1.pdf Q18 (근거 연결 누락형) |
-| gold_R2_003 | R2 | NONE | claude | 3.pdf Q26 |
-| gold_R2_004 | R2 | P_MISMATCH | claude | 9.pdf Q15 (경계 케이스) |
-| gold_R2_005 | R2 | E_CONDITION_MISSING | claude | 5.pdf Q24 |
-| gold_R2_006 | R2 | E_COMPOSITE_ERROR | claude | 7.pdf Q14 |
-| gold_DOMAIN_001 | L3 | E_DOMAIN_INVALID | claude | 1.pdf Q17 (함정: "주제적" 표현) |
-| gold_DOMAIN_002 | R1 | E_DOMAIN_INVALID | claude | 6.pdf Q10 (함정: ok:true + pat) |
+| sample_id       | pat | error_type          | 작성자 | PDF                             |
+| --------------- | --- | ------------------- | ------ | ------------------------------- |
+| gold_R1_001     | R1  | NONE                | user   | -                               |
+| gold_R1_002     | R1  | P_MISMATCH          | user   | -                               |
+| gold_R1_003     | R1  | E_EVIDENCE_WEAK     | user   | - (타입 A: 배경 설명)           |
+| gold_R2_001     | R2  | NONE                | user   | -                               |
+| gold_R2_002     | R2  | E_COMPOSITE_ERROR   | user   | -                               |
+| gold_R1_004     | R1  | NONE                | claude | 3.pdf Q25                       |
+| gold_R1_005     | R1  | P_MISMATCH          | claude | 2.pdf Q38                       |
+| gold_R1_006     | R1  | E_LOGIC_UNCLEAR     | claude | 1.pdf Q18 (근거 연결 누락형)    |
+| gold_R2_003     | R2  | NONE                | claude | 3.pdf Q26                       |
+| gold_R2_004     | R2  | P_MISMATCH          | claude | 9.pdf Q15 (경계 케이스)         |
+| gold_R2_005     | R2  | E_CONDITION_MISSING | claude | 5.pdf Q24                       |
+| gold_R2_006     | R2  | E_COMPOSITE_ERROR   | claude | 7.pdf Q14                       |
+| gold_DOMAIN_001 | L3  | E_DOMAIN_INVALID    | claude | 1.pdf Q17 (함정: "주제적" 표현) |
+| gold_DOMAIN_002 | R1  | E_DOMAIN_INVALID    | claude | 6.pdf Q10 (함정: ok:true + pat) |
 
 ---
 
@@ -75,21 +75,23 @@ E_DOMAIN_INVALID: 2/2 ✅
 ```
 
 **절대 금지**:
+
 - 결과 수정 / 해석 / 재작성
 - 결과 이상하다고 재실행 (**형식 오류만 재실행**)
 - 프롬프트 수정
 - 다른 모델 사용 (GPT-5 고정)
 
 **재실행 기준표**:
-| 상황 | 재실행 |
-|---|---|
-| JSON 깨짐 | ⭕ |
-| 필드 누락 | ⭕ |
-| error_type 오타 (enum 외) | ⭕ |
-| JSON 외 설명 텍스트 혼입 | ⭕ |
-| 결과가 expected와 다름 | ❌ |
-| rule_hits 1개만 나옴 | ❌ |
-| "이건 틀린 것 같은데" | ❌ |
+
+| 상황                      | 재실행 |
+| ------------------------- | ------ |
+| JSON 깨짐                 | ⭕     |
+| 필드 누락                 | ⭕     |
+| error_type 오타 (enum 외) | ⭕     |
+| JSON 외 설명 텍스트 혼입  | ⭕     |
+| 결과가 expected와 다름    | ❌     |
+| rule_hits 1개만 나옴      | ❌     |
+| "이건 틀린 것 같은데"     | ❌     |
 
 ### Step 2. 결과 자동 분석
 
@@ -101,14 +103,14 @@ node compare_dryrun_results.mjs \
 
 ### Step 3. 분석 결과별 조치
 
-| diff_type | owner | 조치 |
-|---|---|---|
-| FULL_MATCH | none | 없음 |
-| OVERFAIL | engine | D엔진 프롬프트 강화 |
-| MISSED_FAIL | engine | D엔진 규칙 강화 |
-| FORBIDDEN_ALTERNATIVE | pending | 사람 판단 |
-| ERROR_TYPE_MISMATCH | pending | 사람 판단 |
-| RULE_HITS_DIVERGENCE | acceptable/pending | 허용 범위 확인 |
+| diff_type             | owner              | 조치                |
+| --------------------- | ------------------ | ------------------- |
+| FULL_MATCH            | none               | 없음                |
+| OVERFAIL              | engine             | D엔진 프롬프트 강화 |
+| MISSED_FAIL           | engine             | D엔진 규칙 강화     |
+| FORBIDDEN_ALTERNATIVE | pending            | 사람 판단           |
+| ERROR_TYPE_MISMATCH   | pending            | 사람 판단           |
+| RULE_HITS_DIVERGENCE  | acceptable/pending | 허용 범위 확인      |
 
 ### Step 4. 나머지 6개 Gold 작성 (사용자)
 
@@ -124,6 +126,7 @@ gold_R2_008  fail / E_EVIDENCE_WEAK (타입 B — 관련 있으나 직접 반박
 ```
 
 **사용자 작성 시 체크리스트**:
+
 1. 📌 근거는 passage 내 연속 원문 문자열인가
 2. expected error_type 외 다른 해석 가능성이 강하지 않은가
 3. ok/pat/domain 조합이 형식 규칙과 충돌하지 않는가
@@ -139,18 +142,22 @@ gold_R2_008  fail / E_EVIDENCE_WEAK (타입 B — 관련 있으나 직접 반박
 ## 주요 체크 포인트 (dry-run 관찰 대상)
 
 ### 1. gold_R1_006 (E_LOGIC_UNCLEAR)
+
 - 기대: `E_LOGIC_UNCLEAR` / `[RULE_7]`
 - 위험: D엔진이 `E_EVIDENCE_WEAK` / `RULE_2`로 판정
 
 ### 2. gold_R2_004 (P_MISMATCH)
+
 - 기대: `P_MISMATCH` / `[RULE_1]`
 - 위험: D엔진이 pat=R2 수용하고 `pass: true`
 
 ### 3. gold_DOMAIN_002 (E_DOMAIN_INVALID)
+
 - 기대: `E_DOMAIN_INVALID` / `[RULE_0, RULE_5]`
 - 위험: analysis가 ✅로 긍정해서 D엔진이 형식 위반 놓침
 
 ### 4. 정상 pass 케이스 overfail (가장 치명적)
+
 - 해당: gold_R1_001, gold_R1_004, gold_R2_001, gold_R2_003
 - 위험: D엔진 과도 엄격 → 정상을 fail로
 
@@ -159,23 +166,28 @@ gold_R2_008  fail / E_EVIDENCE_WEAK (타입 B — 관련 있으나 직접 반박
 ## 이번 세션에서 내재화된 교훈
 
 ### 1. Gold 오염 유형 4가지 (반복 발견)
+
 1. **정답 힌트**: "따라서 오답 패턴이 적용될 수 없다" 등
 2. **규칙 설명**: "ok:true이므로 pat이 존재할 수 없다" 등 if-then 공식
 3. **input 해석**: "analysis도 ~로 인정하고 있음에도" 등
 4. **D엔진 행동 유도**: "D엔진이 ~감지하는지 검증" 등
 
 ### 2. 근거 인용 규칙 정식화
+
 - "문자 그대로 일치" → "**contiguous substring exact match**"
 - paraphrase / 말줄임표 / 단어 축약 / 외부 문장 전부 금지
 
 ### 3. 검증기 2층 구조
+
 - **구조 검증**: 문자열, 오염, 스키마, 분포
 - **의도 검증**: target_failure_mode / forbidden_alternatives / acceptable_confidence
 
 ### 4. FORBIDDEN_ALTERNATIVE owner
+
 - `sample` 아닌 `pending` (엔진 문제일 수도 있음)
 
 ### 5. 실행 원칙
+
 - **부분 검증 금지**: 14개 전부 실행해야 패턴 감지 가능
 - **D엔진 결과 수정 금지**: 사람 해석이 오히려 오염
 - **제가 자기 검증 금지**: Claude가 Gold 작성자이자 심판이 되면 독립성 훼손
