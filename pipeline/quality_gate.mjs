@@ -276,6 +276,11 @@ try {
 let scopeSets = 0,
   scopeQ = 0,
   scopeC = 0;
+// W_orphan_marker 전용 분모 (마커 보유 세트가 진짜 분모 — 전체 세트 수 아님)
+let scopeMarkerSets = 0,
+  scopeOrphanSets = 0,
+  scopeOrphanMarkers = 0,
+  scopeOrphanLiveSets = 0;
 const issues = []; // 발견된 문제 전체
 const autoFixed = []; // 자동 수정된 항목
 const manual = []; // 수동 처리 필요 항목
@@ -291,6 +296,7 @@ const annStaleCands = []; // annotation 무결성 W_annotation_stale (text ⊄ s
 const bracketCollapseCands = []; // W_bracket_collapse (동일 sentId 2+ bracket / 초대형 단일sent bracket)
 const bogiAnchorCands = []; // W_bogi_anchor (📌 보기 근거 ⊄ q.bogi exact substring)
 const analysisMarkerCands = []; // W_analysis_marker_mismatch (해설 마커 ⊄ 문항 문맥)
+const orphanMarkerCands = []; // W_orphan_marker (지문 마커 ⊄ 전 문항 참조 = 환각 후보)
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -444,6 +450,56 @@ for (const yearKey of yearsToCheck) {
         (a, _q) => a + (_q.choices || []).length,
         0,
       );
+      // ── [Gate] W_orphan_marker — 지문에 박혔으나 어떤 문항도 참조 않는 마커 ──
+      //   기존 스캔은 전부 "문항이 참조하는데 범위 annotation 없음"(결손) 단방향.
+      //   반대 방향(데이터엔 있는데 시험지·문항엔 없음 = 환각)은 미검사 = §13⑮-(3)
+      //   worklist 방향 사각. 수능 지문의 ㉠~㉤·ⓐ~ⓔ는 반드시 문항이 참조하므로
+      //   미참조 = 강한 환각 신호. 실증: 2019_9월 r20199a ㉣㉤(대표 육안 발견).
+      //   판정식은 발문 매처 비의존 — sents ↔ questions/bogi/choices 원문 직접 대조.
+      //   WARNING 고정: 시험지 대조 전이므로 자동 CRITICAL 금지(대소문자 오식 등
+      //   환각 아닌 원인 잔존 — 실증 2015_9월A l20159b Ⓔ = ⓔ 오식).
+      {
+        const OMRK = /[㉠-㉿]|[ⓐ-ⓩⒶ-Ⓩ]|[①-⑳]/g;
+        const omk = (s) => String(s || "").match(OMRK) || [];
+        const inSents = new Map(); // marker → 최초 출현 sentId
+        for (const sn of set.sents || [])
+          for (const m of omk(sn.t)) if (!inSents.has(m)) inSents.set(m, sn.id);
+        if (inSents.size) {
+          scopeMarkerSets++;
+          const referenced = new Set();
+          for (const _q of set.questions || []) {
+            for (const m of omk(_q.t)) referenced.add(m);
+            for (const m of omk(
+              typeof _q.bogi === "string"
+                ? _q.bogi
+                : JSON.stringify(_q.bogi || ""),
+            ))
+              referenced.add(m);
+            for (const _c of _q.choices || [])
+              for (const m of omk(_c.t)) referenced.add(m);
+          }
+          const orphans = [...inSents.keys()].filter((m) => !referenced.has(m));
+          if (orphans.length) {
+            const live = LIVE_KEYS_SET.has(yearKey + "::" + set.id);
+            scopeOrphanSets++;
+            scopeOrphanMarkers += orphans.length;
+            if (live) scopeOrphanLiveSets++;
+            issue(
+              "W_orphan_marker",
+              yearKey,
+              set.id,
+              `지문 마커 [${orphans.join("")}] 전 문항 미참조 = 환각 후보${live ? " (LIVE)" : ""} — 시험지 대조 의무`,
+            );
+            orphanMarkerCands.push({
+              yearKey,
+              setId: set.id,
+              markers: orphans,
+              sentIds: orphans.map((m) => inSents.get(m)),
+              live,
+            });
+          }
+        }
+      }
       // ── [Gate 5] C_figure_missing — figure sent이 있으나 FIGURE_IMAGE_MAP에 미매핑 ─
       //   constants.js의 FIGURE_IMAGE_MAP을 로드해 매핑 누락 figure 탐지
       //   --golden 모드일 땐 골든셋에 등록된 세트만 검사
@@ -2403,6 +2459,7 @@ const SEVERITY_MAP = {
   W_choice_anno_stale: "WARNING", // sentId 없는 bogi/choice annotation(choice-underline·bogi marker) text ⊄ choice.t/bogi (QuizPanel 선지·보기 렌더 정합)
   W_bogi_anchor: "WARNING", // 📌 보기 근거 ⊄ q.bogi exact substring (C_anchor 보기 사각 보완, §13⑥ 확장)
   W_analysis_marker_mismatch: "WARNING", // 해설 마커 ⊄ (문항+지문+보기 ∪ 선지) = 존재하지 않는 마커 참조
+  W_orphan_marker: "WARNING", // 지문 마커 ⊄ 전 문항 참조 = 환각 후보(시험지 대조 전 자동 CRITICAL 금지)
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
@@ -2564,6 +2621,10 @@ for (const f of ALL_FINDINGS) {
     path.join(OUT_DIR, "analysis_marker_mismatch.json"),
     JSON.stringify(analysisMarkerCands, null, 2),
   );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "orphan_marker.json"),
+    JSON.stringify(orphanMarkerCands, null, 2),
+  );
   // CRITICAL 전체 덤프 (display 20+"외 N건" 절단 우회 = 출시 재스캔 정확도) — issues + manual(F_empty/DEAD) 합침
   fs.writeFileSync(
     path.join(OUT_DIR, "all_critical.json"),
@@ -2714,6 +2775,10 @@ const _dataTotalSets = Object.keys(data).reduce(
 console.log("\n" + "═".repeat(60));
 console.log(
   `검사 스코프: 세트 ${scopeSets} / 문항 ${scopeQ} / 선지 ${scopeC} → 위반 ${bySeverity.CRITICAL.length}건`,
+);
+// W_orphan_marker 분모 (§13⑮: 마커 보유 세트가 진짜 분모 — 전체 세트 아님)
+console.log(
+  `W_orphan_marker: 마커 보유 세트 ${scopeMarkerSets} 중 고아 ${scopeOrphanSets}세트 / 고아 마커 ${scopeOrphanMarkers}개 (LIVE ${scopeOrphanLiveSets}세트)`,
 );
 if (scopeSets === 0) {
   console.error("🔴 SCOPE_EMPTY — 검사 대상 0건. clean 판정 무효");
