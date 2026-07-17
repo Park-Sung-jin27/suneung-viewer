@@ -983,6 +983,36 @@
         "label": "A",
         "sentFrom": "l2024as1",
         "sentTo": "l2024as5"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024as8",
+        "text": "국변",
+        "marker": "㉠"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024as7",
+        "text": "짐은 불행하여 공주를 잃고 종적을 모르니 통한함을 어찌 측량하리오.",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024as9",
+        "text": "자식을 불러 들으심이 마땅하올까 하나이다.",
+        "marker": "ⓑ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024as12",
+        "text": "내 병이 조금 나았으니 사오일 후 세상에 나가 남두성을 잡아 죽여 이 원한을 풀리라. 너희는 나를 위하여 마음을 위로하라.",
+        "marker": "ⓒ"
+      },
+      {
+        "type": "underline",
+        "sentId": "l2024as13",
+        "text": "수이 차도를 얻사오면 남두성 잡기야 어찌 근심하리오? 주찬을 대령하였사오니 다 드시어 첩 등의 우러르는 마음을 즐겁게 하소서.",
+        "marker": "ⓓ"
       }
     ],
     "l2024b": [
