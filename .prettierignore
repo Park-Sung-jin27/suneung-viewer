@@ -7,3 +7,9 @@ public/data/visual_marks.json
 # 도구 출력·백업 (검토용 JSON / 대용량 데이터 백업)
 pipeline/output/
 pipeline/backups/
+
+# 마크다운 전면 제외 ([Adopted 2026-07 심사관 정책])
+#   문서에 파일명·setId·경로 식별자(언더스코어 포함)가 많아, prettier가 _x_ 를
+#   강조(이탤릭)로 해석해 파일명을 왜곡함 (예: 2025수능_시험지.pdf → 2025수능*시험지*.pdf).
+#   본 프로젝트는 문서가 정본(CLAUDE.md 체계)이라 왜곡이 치명적 → 코드만 포맷 대상.
+*.md
