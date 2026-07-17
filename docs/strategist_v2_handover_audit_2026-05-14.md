@@ -18,26 +18,26 @@
 
 ### v2 §16 자산 list 18건 점검
 
-| v2 §16 항목                                        | SESSION_LOG 주장       | 실재 (디스크) |
-| -------------------------------------------------- | ---------------------- | ------------- |
-| 00_SESSION_LOG_2026-05-09.md                       | -                      | ✅            |
-| 3개월*대체불가능성*로드맵.md                       | -                      | ❌ 부재       |
-| B2B*가격*운영\_spec.md                             | -                      | ❌ 부재       |
-| 01*assets/R패턴*분류법\_brand.pdf ⭐               | "오늘 완료"            | ❌ 부재       |
-| 01*assets/R패턴\_PDF*미리보기.png                  | -                      | ❌ 부재       |
-| 01*assets/YouTube_Short*시각자료.pdf               | -                      | ❌ 부재       |
-| 01*assets/YouTube_Short*미리보기.png               | -                      | ✅            |
-| 01*assets/품질약속*페이지.html                     | "HTML 완료"            | ❌ 부재       |
-| 02*frontend_specs/Frontend_14일trial*폐기\_spec.md | -                      | ❌ 부재       |
-| 02*frontend_specs/근거납득률\_UX*구현.md           | "코드 완료"            | ❌ 부재       |
-| 02*frontend_specs/메인페이지\_messaging*카피.md    | "카피 완료"            | ❌ 부재       |
-| 03*content_templates/YouTube_Short*스크립트.md     | -                      | ❌ 부재       |
-| 03*content_templates/베타초대*이메일\_template.md  | "이메일 template 완료" | ❌ 부재       |
-| 04_legal/00_README.md                              | -                      | ✅            |
-| 04_legal/01_TERMS_OF_SERVICE_v0.1_DRAFT.md         | -                      | ✅            |
-| 04_legal/02_PRIVACY_POLICY_v0.1_DRAFT.md ⭐        | -                      | ✅            |
-| 04_legal/03_REFUND_POLICY_v0.1_DRAFT.md            | -                      | ✅            |
-| 04_legal/04_B2B_TERMS_v0.1_DRAFT.md                | -                      | ✅            |
+| v2 §16 항목                                         | SESSION_LOG 주장       | 실재 (디스크) |
+| --------------------------------------------------- | ---------------------- | ------------- |
+| 00_SESSION_LOG_2026-05-09.md                        | -                      | ✅            |
+| `3개월_대체불가능성_로드맵.md`                      | -                      | ❌ 부재       |
+| `B2B_가격_운영_spec.md`                             | -                      | ❌ 부재       |
+| `01_assets/R패턴_분류법_brand.pdf` ⭐               | "오늘 완료"            | ❌ 부재       |
+| `01_assets/R패턴_PDF_미리보기.png`                  | -                      | ❌ 부재       |
+| `01_assets/YouTube_Short_시각자료.pdf`              | -                      | ❌ 부재       |
+| `01_assets/YouTube_Short_미리보기.png`              | -                      | ✅            |
+| `01_assets/품질약속_페이지.html`                    | "HTML 완료"            | ❌ 부재       |
+| `02_frontend_specs/Frontend_14일trial_폐기_spec.md` | -                      | ❌ 부재       |
+| `02_frontend_specs/근거납득률_UX_구현.md`           | "코드 완료"            | ❌ 부재       |
+| `02_frontend_specs/메인페이지_messaging_카피.md`    | "카피 완료"            | ❌ 부재       |
+| `03_content_templates/YouTube_Short_스크립트.md`    | -                      | ❌ 부재       |
+| `03_content_templates/베타초대_이메일_template.md`  | "이메일 template 완료" | ❌ 부재       |
+| 04_legal/00_README.md                               | -                      | ✅            |
+| 04_legal/01_TERMS_OF_SERVICE_v0.1_DRAFT.md          | -                      | ✅            |
+| 04_legal/02_PRIVACY_POLICY_v0.1_DRAFT.md ⭐         | -                      | ✅            |
+| 04_legal/03_REFUND_POLICY_v0.1_DRAFT.md             | -                      | ✅            |
+| 04_legal/04_B2B_TERMS_v0.1_DRAFT.md                 | -                      | ✅            |
 
 **실재 5건 / 부재 13건**. 부재율 72%.
 

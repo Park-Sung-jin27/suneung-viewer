@@ -68,7 +68,7 @@ function rejectIfCombinedPDF(pdfPath) {
 
 #### 시험지 ↔ 정답 PDF 영역 정합
 
-- 시험지 PDF 시험 키 ↔ 정답 PDF 시험 키 정합 (예: 2025수능*시험지.pdf + 2025수능*정답.pdf)
+- 시험지 PDF 시험 키 ↔ 정답 PDF 시험 키 정합 (예: `2025수능_시험지.pdf` + `2025수능_정답.pdf`)
 - 불일치 시 → reject
 
 ### 8-3. step1 + step2 사전 진입 점검
