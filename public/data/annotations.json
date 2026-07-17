@@ -1607,17 +1607,20 @@
       {
         "type": "underline",
         "sentId": "r2022ds9",
-        "text": "촬영된 영상"
+        "text": "촬영된 영상",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "r2022ds12",
-        "text": "왜곡이 보정된 영상"
+        "text": "왜곡이 보정된 영상",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "r2022ds14",
-        "text": "위에서 내려다보는 시점의 영상"
+        "text": "위에서 내려다보는 시점의 영상",
+        "marker": "㉢"
       },
       {
         "type": "underline",
