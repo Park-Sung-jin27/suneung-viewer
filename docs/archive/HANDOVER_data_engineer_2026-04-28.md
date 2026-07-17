@@ -24,14 +24,14 @@
 
 ## ✅ 어제 4-28 완료 — §4.1 wrapper commit `eadd1fa`
 
-| Step | 산출물 | 상태 |
-|---|---|---|
-| (a) | `HANDOVER_D_ENGINE_4_1_SPEC.md` (629줄) | ✅ |
-| (b) | `pipeline/d_engine_wrapper.mjs` (497줄, 코드 주석 v1.1-1~6 의무) | ✅ |
-| (c)+(d) | `pipeline/d_engine_wrapper.test.mjs` (438줄, mockCaller inline) | ✅ |
-| (e) | 회귀 50/50 통과 (12 케이스) | ✅ |
-| 정정 | Promise.resolve defensive + async 7개 추가 | ✅ |
-| (f)+(g) | commit `eadd1fa` + push origin main | ✅ |
+| Step    | 산출물                                                           | 상태 |
+| ------- | ---------------------------------------------------------------- | ---- |
+| (a)     | `HANDOVER_D_ENGINE_4_1_SPEC.md` (629줄)                          | ✅   |
+| (b)     | `pipeline/d_engine_wrapper.mjs` (497줄, 코드 주석 v1.1-1~6 의무) | ✅   |
+| (c)+(d) | `pipeline/d_engine_wrapper.test.mjs` (438줄, mockCaller inline)  | ✅   |
+| (e)     | 회귀 50/50 통과 (12 케이스)                                      | ✅   |
+| 정정    | Promise.resolve defensive + async 7개 추가                       | ✅   |
+| (f)+(g) | commit `eadd1fa` + push origin main                              | ✅   |
 
 **합계**: 1564 insertions across 3 파일. D엔진 완성 7단계 중 §4.1 종결 (3/7 = 43%).
 
@@ -51,16 +51,17 @@
 
 ### 트랙 분리 (병렬)
 
-| 트랙 | 채팅 | 작업 |
-|---|---|---|
-| 1 | 별도 채팅 (품질 심사관 또는 신규) | §4.1.5 실제 GPT-5 caller 사양 작성 |
-| 2 | **본 채팅 (데이터 엔지니어)** | 2023수능 독서 PDF Gemini 추출 시작 |
+| 트랙 | 채팅                              | 작업                               |
+| ---- | --------------------------------- | ---------------------------------- |
+| 1    | 별도 채팅 (품질 심사관 또는 신규) | §4.1.5 실제 GPT-5 caller 사양 작성 |
+| 2    | **본 채팅 (데이터 엔지니어)**     | 2023수능 독서 PDF Gemini 추출 시작 |
 
 ### 트랙 2 (본 채팅 — 4-29 오전 진입)
 
 **대상**: 2023수능 독서 PDF (현재 진행 중, 85/170 해설)
 
 **참고**: 데이터 엔지니어 CLAUDE.md §6 명령어:
+
 ```powershell
 node C:\Users\downf\suneung-viewer\pipeline\step2_extract.js [PDF경로]
 ```
@@ -76,42 +77,43 @@ node C:\Users\downf\suneung-viewer\pipeline\step2_extract.js [PDF경로]
 
 ## 📋 4-30 작업 흐름
 
-| 항목 | 담당 |
-|---|---|
-| §4.5 로깅 (6개 항목) | 데이터 엔지니어 |
-| §4.3 needs_human 큐 | 데이터 엔지니어 |
-| §4.1.5 실제 GPT-5 caller 구현 | 데이터 엔지니어 |
-| `OPENAI_API_KEY` 등록 (.env + Vercel) | 대표 직접 |
-| AI 코칭 결함 2건 처리 | 프론트엔드 채팅 (신규 가동, 오후) |
-| 2022수능 독서 Gemini 추출 시작 | 데이터 엔지니어 |
-| 2023수능 해설 작성 시작 | 대표 |
+| 항목                                  | 담당                              |
+| ------------------------------------- | --------------------------------- |
+| §4.5 로깅 (6개 항목)                  | 데이터 엔지니어                   |
+| §4.3 needs_human 큐                   | 데이터 엔지니어                   |
+| §4.1.5 실제 GPT-5 caller 구현         | 데이터 엔지니어                   |
+| `OPENAI_API_KEY` 등록 (.env + Vercel) | 대표 직접                         |
+| AI 코칭 결함 2건 처리                 | 프론트엔드 채팅 (신규 가동, 오후) |
+| 2022수능 독서 Gemini 추출 시작        | 데이터 엔지니어                   |
+| 2023수능 해설 작성 시작               | 대표                              |
 
 ---
 
 ## 📋 5월 일정 분산 (4-28 정정, 옵션 A + 옵션 C)
 
-| 일자 | 작업 |
-|---|---|
-| **4/29~5/2** | D엔진 (§4.1.5 + §4.5 + §4.3) + 해설 + AI 코칭 + Gemini 추출 |
-| **5/3~5/4** | 파일명 v2.1 일괄 rename + 이미지 뷰어 코드 삽입 (옵션 C 신규 트랙, ~5시간) |
-| **5/5** | 베타 유저 요청 + Stage 2 pilot 시작 |
-| **5/5~5/9** | Stage 2 pilot 5일 |
-| **5/10~5/14** | v1.1 보정 + 5/15 모두의창업 소개서 마무리 |
-| **5/15** | 모두의창업 제출 |
+| 일자          | 작업                                                                       |
+| ------------- | -------------------------------------------------------------------------- |
+| **4/29~5/2**  | D엔진 (§4.1.5 + §4.5 + §4.3) + 해설 + AI 코칭 + Gemini 추출                |
+| **5/3~5/4**   | 파일명 v2.1 일괄 rename + 이미지 뷰어 코드 삽입 (옵션 C 신규 트랙, ~5시간) |
+| **5/5**       | 베타 유저 요청 + Stage 2 pilot 시작                                        |
+| **5/5~5/9**   | Stage 2 pilot 5일                                                          |
+| **5/10~5/14** | v1.1 보정 + 5/15 모두의창업 소개서 마무리                                  |
+| **5/15**      | 모두의창업 제출                                                            |
 
 ### 베타 출시 점검 항목 5건 — 진행률 (4-28 2차 정정)
 
 annotation ↔ images 분리 반영 (대표 명시):
+
 - annotation = bracket + box + underline (텍스트 마크업)
 - images = 캡처 이미지 + 뷰어 코드 삽입 (별도)
 
-| # | 항목 | 상태 |
-|---|---|---|
-| 1 | 5개년 데이터 + 해설 (release_ready 4기준) | ✅ |
-| 2 | D엔진 §4.1 wrapper | ✅ (4-28 commit) |
-| 3 | annotation (bracket/box/underline) 5개년 | ⏳ 4/29 검증 (시나리오 A/B/C) |
-| 4 | images 캡처 | ✅ 5개년 캡처 완료 |
-| 5 | images 뷰어 코드 삽입 | 🔴 미완 (5/3~5/4 작업) |
+| #   | 항목                                      | 상태                          |
+| --- | ----------------------------------------- | ----------------------------- |
+| 1   | 5개년 데이터 + 해설 (release_ready 4기준) | ✅                            |
+| 2   | D엔진 §4.1 wrapper                        | ✅ (4-28 commit)              |
+| 3   | annotation (bracket/box/underline) 5개년  | ⏳ 4/29 검증 (시나리오 A/B/C) |
+| 4   | images 캡처                               | ✅ 5개년 캡처 완료            |
+| 5   | images 뷰어 코드 삽입                     | 🔴 미완 (5/3~5/4 작업)        |
 
 **진행률 정정**: 직전 3.0/4 (75%) → 2.5/4 (62.5%) → **2/5 (40%)**
 
@@ -125,20 +127,20 @@ annotation ↔ images 분리 반영 (대표 명시):
 
 ### 트랙
 
-| 트랙 | 채팅 | 작업 | 시간 |
-|---|---|---|---|
-| 1 | 별도 채팅 | §4.1.5 실제 GPT-5 caller 사양 작성 | 오전~오후 |
-| 2-a | **본 채팅 (데이터 엔지니어)** | annotation 5개년 현황 파악 (우선) | 15~30분 |
-| 2-b | **본 채팅 (데이터 엔지니어)** | q3_reading_material set_id 검증 | 5분 |
-| 2-c | **본 채팅 (데이터 엔지니어)** | 2023수능 독서 Gemini 추출 | 오전~오후 |
-| 병렬 | **대표 직접** | annotation 양식 입력 (gen 후 누락분 채우기) | 2~3시간 |
+| 트랙 | 채팅                          | 작업                                        | 시간      |
+| ---- | ----------------------------- | ------------------------------------------- | --------- |
+| 1    | 별도 채팅                     | §4.1.5 실제 GPT-5 caller 사양 작성          | 오전~오후 |
+| 2-a  | **본 채팅 (데이터 엔지니어)** | annotation 5개년 현황 파악 (우선)           | 15~30분   |
+| 2-b  | **본 채팅 (데이터 엔지니어)** | q3_reading_material set_id 검증             | 5분       |
+| 2-c  | **본 채팅 (데이터 엔지니어)** | 2023수능 독서 Gemini 추출                   | 오전~오후 |
+| 병렬 | **대표 직접**                 | annotation 양식 입력 (gen 후 누락분 채우기) | 2~3시간   |
 
 ### 트랙 2-a 출력 형식
 
-| 시험 | 지문 | bracket | box | underline | 비고 |
-|---|---|---|---|---|---|
-| 2026수능 | r2026a | ? | ? | ? | |
-| ... | ... | | | | |
+| 시험     | 지문   | bracket | box | underline | 비고 |
+| -------- | ------ | ------- | --- | --------- | ---- |
+| 2026수능 | r2026a | ?       | ?   | ?         |      |
+| ...      | ...    |         |     |           |      |
 
 베타 출시 5개년 (2022~2026) 우선 + 부차 시험 후순위.
 
@@ -208,7 +210,7 @@ node C:\Users\downf\suneung-viewer\pipeline\annotate.js {yearKey} --apply-draft
      - 작업 2: 파일명 v2.1 일괄 rename (1.5~2시간)
      - 작업 3: 이미지 코드 삽입 분담 — 프론트엔드 채팅에서 처리 (3~4시간)
      - 작업 4: kor prefix 정정 → 5/15 후 미룸
-   - 데이터 엔지니어 5/3~5/4 작업 비용 [Inference]: **5.5~7시간**
+   - 데이터 엔지니어 5/3~~5/4 작업 비용 [Inference]: **5.5~~7시간**
    - 베타 출시 5/5 정합성 보호 ✅
    - 작업 분담: 데이터 엔지니어 (검증 + rename + JSON 매핑) / 프론트엔드 (jsx 코드 삽입)
    - 5/3 진입 직전 작업 분담 결정 회기 1회 권고
@@ -247,7 +249,7 @@ node C:\Users\downf\suneung-viewer\pipeline\annotate.js {yearKey} --apply-draft
 
 ## 🚨 절대 금지 (CLAUDE_MASTER §6 + 데이터 엔지니어 CLAUDE.md §1)
 
-- src/*.jsx 수정
+- src/\*.jsx 수정
 - public/data/all_data_204.json 직접 수동 편집 (파이프라인 통과 필수)
 - 검증 안 된 수정을 main 직반영
 - 프론트엔드 직원과 동시 push
@@ -262,12 +264,14 @@ node C:\Users\downf\suneung-viewer\pipeline\annotate.js {yearKey} --apply-draft
 ## 📅 일별 누적
 
 ### 2026-04-28 (§4.1 wrapper)
+
 - §4.1 D엔진 wrapper commit `eadd1fa` (HANDOVER_SPEC + wrapper.mjs + test.mjs)
 - 회귀 50/50 통과
 - 1564 insertions
 - D엔진 완성 7단계 중 3/7 종결
 
 ### 2026-04-27 (인프라 정비 + §10 v2 + §4.2 v2)
+
 - 백로그 A·B 인프라 부분 완료
 - §10 v2 정합성 복구 commit `fa5562e`
 - validator commit `ce77119`
@@ -276,13 +280,16 @@ node C:\Users\downf\suneung-viewer\pipeline\annotate.js {yearKey} --apply-draft
 - .gitignore 22항목 보강
 
 ### 2026-04-25 (D엔진 의제 분석 + 인벤토리)
+
 - 의제 1·2 잠정안 도출
 - 952개/818MB 삭제 후보 + 493개/165MB 검토 대상 식별
 
 ### 2026-04-23 (D엔진 Phase 1 종료)
+
 - Gold 14개 dry-run 86% FULL_MATCH+acceptable
 - Stage 2 진입 선결 조건 4건 식별
 
 ### 2026-04-15 (release_ready 달성)
+
 - 5개 수능 CRITICAL 0건
 - DEAD_csid 0건, 내부 ID 0건

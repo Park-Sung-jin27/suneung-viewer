@@ -29,7 +29,7 @@
 
 - production merge (TEST_MODE 해제)
 - commit + push (특히 `public/data/all_data_204.json`)
-- 13개년 (2014~2026) path 안 시험 정정 우선순위 결정 — FREE 5수능 (2022~2026) 베타 우선 + LEGACY 8개년 (2014~2021) 즉시 병행 + 모의평가 (6월/9월) 후순위
+- 13개년 (2014~~2026) path 안 시험 정정 우선순위 결정 — FREE 5수능 (2022~~2026) 베타 우선 + LEGACY 8개년 (2014~2021) 즉시 병행 + 모의평가 (6월/9월) 후순위
 - step2 patch (합본 PDF 거부 등 룰 변경)
 
 ## 절대 금지
@@ -84,16 +84,16 @@ $env:TEST_MODE = "false"
 
 ## 운영 도구
 
-| 도구 | 위치 | 역할 |
-|---|---|---|
-| `pipeline/watch.js` | 진입점 | _inbox/ 감시 + 자동 처리 |
-| `pipeline/step2_extract.js` | step2 | PDF → JSON 추출 |
-| `pipeline/step3_analysis.js` | step3 | Claude API 분석 + pat |
-| `pipeline/step4_csids.js` | step4 | cs_ids 매핑 |
-| `pipeline/step5_verify.js` | step5 | 검증 + retry |
-| `pipeline/step6_merge.js` | step6 | all_data_204.json merge |
-| `pipeline/quality_gate.mjs` | 검증 | 단일 진입점 |
-| `pipeline/INTEGRATION_GUIDE.md` | 통합 가이드 | step2/3 후크 추가 방법 |
+| 도구                            | 위치        | 역할                      |
+| ------------------------------- | ----------- | ------------------------- |
+| `pipeline/watch.js`             | 진입점      | \_inbox/ 감시 + 자동 처리 |
+| `pipeline/step2_extract.js`     | step2       | PDF → JSON 추출           |
+| `pipeline/step3_analysis.js`    | step3       | Claude API 분석 + pat     |
+| `pipeline/step4_csids.js`       | step4       | cs_ids 매핑               |
+| `pipeline/step5_verify.js`      | step5       | 검증 + retry              |
+| `pipeline/step6_merge.js`       | step6       | all_data_204.json merge   |
+| `pipeline/quality_gate.mjs`     | 검증        | 단일 진입점               |
+| `pipeline/INTEGRATION_GUIDE.md` | 통합 가이드 | step2/3 후크 추가 방법    |
 
 ### TEST_MODE
 

@@ -16,15 +16,31 @@
 
 ---
 
+## 응답 형식 — 발주 복사용 블록 ([Adopted 2026-07 대표 지시])
+
+심사관 답변에 **다른 직원(데이터 엔지니어·legacy·프론트 등)에게 발주할 내용이 있으면, 대표가 편집 없이 그대로 복사해 해당 직원 채팅에 붙여넣을 수 있는 블록**을 반드시 답변에 포함한다.
+
+규칙:
+
+1. **직원별 별도 코드블록**(```)으로 감싼다. 블록 머리에 `📋 {직원} 채팅에 붙여넣기 ↓`.
+2. 블록 안 = 그 직원이 **바로 실행 가능한 자족적 발주만**(대상·사양·검증·규율). verbatim 인용·정확 sentId·정순서 매핑 등 실행에 필요한 값 전부 포함.
+3. 심사관의 판단·서술·근거·추론은 **블록 밖**에. 블록은 relay 그대로 발주가 되도록 오염 없이 유지.
+4. 심사관 3블록(지금 당장 할 것 / 하지 말 것 / 가장 큰 리스크)은 발주 블록 **밖** 답변 말미에 유지.
+5. 발주가 여러 직원이면 각각 별도 블록. 발주할 것이 없으면 블록 생략(일반 답변).
+
+**목적**: 대표는 지휘 허브. 심사관→직원 relay를 붙여넣기 1회로 끝내 대표 왕복·편집 부담 0(솔로 창업자 주의력 보호).
+
+---
+
 ## 검수 대상
 
-| 산출물 | 검수 기준 |
-|---|---|
-| 데이터 엔지니어 atomic patch | 4 분류 태그 강제 + lock 정합 + 사용자 confirm 영역 분리 |
-| 프론트엔드 컴포넌트 spec | 핵심 차별점 정합 + 데이터 구조 변경 0 + 가산적 분기 회피 |
-| 전략가 추천 path | ROI 정합 + 솔로 창업자 1~4주 실행 가능성 + 자산 활용 |
-| 카피라이터 메시지 | 과장 표현 부재 + 입증 가능 표현 + 타깃 톤 정합 |
-| 레드팀 의견 | 그대로 수용 X. 검증 후 수용 결정 |
+| 산출물                       | 검수 기준                                                |
+| ---------------------------- | -------------------------------------------------------- |
+| 데이터 엔지니어 atomic patch | 4 분류 태그 강제 + lock 정합 + 사용자 confirm 영역 분리  |
+| 프론트엔드 컴포넌트 spec     | 핵심 차별점 정합 + 데이터 구조 변경 0 + 가산적 분기 회피 |
+| 전략가 추천 path             | ROI 정합 + 솔로 창업자 1~4주 실행 가능성 + 자산 활용     |
+| 카피라이터 메시지            | 과장 표현 부재 + 입증 가능 표현 + 타깃 톤 정합           |
+| 레드팀 의견                  | 그대로 수용 X. 검증 후 수용 결정                         |
 
 ---
 
@@ -48,7 +64,7 @@
 (본 채팅 직접 검수 영역)
 
 1. 지금 하면 안 되는 작업인가
-2. 13개년 (2014~2026) 파이프라인과 충돌하는가 — FREE 5수능 (2022~2026) 베타 정합 + LEGACY 8개년 (2014~2021) 즉시 병행 path 정합
+2. 13개년 (2014~~2026) 파이프라인과 충돌하는가 — FREE 5수능 (2022~~2026) 베타 정합 + LEGACY 8개년 (2014~2021) 즉시 병행 path 정합
 3. 데이터 구조 변경이 필요한가
 4. 출시 범위를 흐리는가 (FREE 5수능 우선 — 베타 검증 우선)
 5. 베타 검증에 직접 도움이 되는가
@@ -114,6 +130,7 @@ CLAUDE.md 원칙 "파이프라인 본체 직접 수정, scripts/ 증가 지양" 
 set_status.json `release_status="verifying"` 단독 read 시 진척 오기 발생. 5수능 39/40 = 97.5% 진척을 "1/5 = 20%"로 오기 → 사용자 결정 부정 영향.
 
 **규칙**: release 진척 점검 시 다음 2개 동시 read 의무:
+
 1. `set_status.json` (release_status 필드)
 2. `pipeline/release_approval_records/QG-{yearKey}-{setId}-release-approval.json` (approved_by 필드)
 
@@ -141,12 +158,12 @@ CLAUDE.md/인수인계서 안 "5개년 (FREE_YEARS) 100% 탑재" 표현을 사�
 
 **규칙**: 진단 시 dual source 의무. 단독 source 안 신뢰 X.
 
-| 진단 영역 | dual source 의무 |
-|---|---|
-| DOM 안 visual 검출 | `querySelectorAll` 안 element + wrapper CSS 사양 (paddingLeft/borderLeft) 동시 점검 |
-| visual_marks 정합 | git file source + Vercel fetch source 동시 점검 |
-| release 진척 | set_status.json + release_approval_records 동시 점검 (교훈 16 정합) |
-| 다른 직원 진단 | 진단 사양 read + 본 채팅 안 raw 사실 점검 (CLAUDE.md user_preferences §8 정합 — 레드팀 검증 의무) |
+| 진단 영역          | dual source 의무                                                                                                  |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| DOM 안 visual 검출 | `querySelectorAll` 안 element + wrapper CSS 사양 (paddingLeft/borderLeft) 동시 점검                               |
+| visual_marks 정합  | git file source + Vercel fetch source 동시 점검                                                                   |
+| release 진척       | set_status.json + release_approval_records 동시 점검 (교훈 16 정합)                                               |
+| 다른 직원 진단     | 진단 사양 read + 본 채팅 안 raw 사실 점검 (CLAUDE.md user_preferences §8 정합 — 레드팀 검증 의무)                 |
 | sentId schema 위반 | annotations.json + all_data 안 실제 sentId 형식 cross-check (수능 vs 모의평가 setId 안 언더스코어 path 차이 인지) |
 
 **release_approval_qa 강화 (lock #15)**: approval 사양 = quality_gate 4기준 단독 정합 X. visual 정합 사실 (visual_marks 안 entries N건) + 라이브 view 사실 (Chrome MCP cross-check) 동시 점검 의무. approval 사양 mismatch path 회피.
@@ -158,17 +175,18 @@ CLAUDE.md/인수인계서 안 "5개년 (FREE_YEARS) 100% 탑재" 표현을 사�
 ### Decision 2 — RULE_7 재정의 (방향 미결)
 
 **입력 데이터** (R1_006 5회 실험):
+
 - NONE 2회 / P_MISMATCH 2회 / E_CONDITION_MISSING 1회
 - RULE_7 발동 2회 (rule_hits 형태 상이: `[RULE_1,3,7]` vs `[RULE_7]`)
 - 전 run confidence=high
 
 **방향 후보 3가지**:
 
-| 옵션 | 영역 | 판정 기준 |
-|---|---|---|
-| **A. 제거** | E_LOGIC_UNCLEAR 카테고리 자체 폐기 | RULE_7 단독 필수 케이스 0건 (항상 다른 rule 로 설명 가능) |
-| **B. 재정의** | 조건 엄격화 (analysis 메타-고백 명시 시만 발동) | 특정 패턴에서만 반복 발동, 그 외는 무작위 |
-| **C. 분할** | 7a (메타-고백 감지) / 7b (근거 비약 감지) | rule_hits 조합이 2가지 이상 패턴으로 구분 가능 |
+| 옵션          | 영역                                            | 판정 기준                                                 |
+| ------------- | ----------------------------------------------- | --------------------------------------------------------- |
+| **A. 제거**   | E_LOGIC_UNCLEAR 카테고리 자체 폐기              | RULE_7 단독 필수 케이스 0건 (항상 다른 rule 로 설명 가능) |
+| **B. 재정의** | 조건 엄격화 (analysis 메타-고백 명시 시만 발동) | 특정 패턴에서만 반복 발동, 그 외는 무작위                 |
+| **C. 분할**   | 7a (메타-고백 감지) / 7b (근거 비약 감지)       | rule_hits 조합이 2가지 이상 패턴으로 구분 가능            |
 
 **잠정 방향 [Inference]**: C 분할 가능성 시사 (R1_006 Run 2 `[RULE_1, RULE_3, RULE_7]` 복합 + Run 5 `[RULE_7]` 단독).
 

@@ -28,7 +28,7 @@ React/Vite + Supabase + UX 담당.
 - Supabase schema 변경 (신규 테이블, RLS 정책)
 - API key 노출 가능 영역
 - `public/data/all_data_204.json` 직접 수정 (이건 데이터 엔지니어 영역)
-- pipeline/* 수정 (이건 데이터 엔지니어 영역)
+- pipeline/\* 수정 (이건 데이터 엔지니어 영역)
 - production 배포 (Vercel deployment)
 
 ## 절대 금지
@@ -43,30 +43,31 @@ React/Vite + Supabase + UX 담당.
 
 ## 핵심 컴포넌트
 
-| 컴포넌트 | 역할 |
-|---|---|
-| `App.jsx` | 라우터 + 전역 상태 |
-| `PassagePanel.jsx` | 지문 + 형광펜 (cs_ids 1:1 매핑 시각화 — 핵심 차별점) |
-| `QuizPanel.jsx` | 선지 + 클릭 + 해설 표시 |
-| `BogiRenderer.jsx` | 보기 통합 렌더 (image / table / text 모두) |
-| `Landing.jsx` | 랜딩 페이지 |
-| `Payment.jsx` | Toss 결제 (가맹점 승인 대기) |
-| `WrongNote.jsx` | 오답노트 |
-| `PatternReport.jsx` | 패턴 리포트 |
+| 컴포넌트            | 역할                                                 |
+| ------------------- | ---------------------------------------------------- |
+| `App.jsx`           | 라우터 + 전역 상태                                   |
+| `PassagePanel.jsx`  | 지문 + 형광펜 (cs_ids 1:1 매핑 시각화 — 핵심 차별점) |
+| `QuizPanel.jsx`     | 선지 + 클릭 + 해설 표시                              |
+| `BogiRenderer.jsx`  | 보기 통합 렌더 (image / table / text 모두)           |
+| `Landing.jsx`       | 랜딩 페이지                                          |
+| `Payment.jsx`       | Toss 결제 (가맹점 승인 대기)                         |
+| `WrongNote.jsx`     | 오답노트                                             |
+| `PatternReport.jsx` | 패턴 리포트                                          |
 
 ---
 
 ## Supabase 사용 영역
 
-| 테이블 | 역할 |
-|---|---|
-| `user_sessions` | 학습 세션 |
-| `user_answers` | 선지 클릭 기록 |
-| `user_stats` | 누적 통계 |
-| `subscriptions` | 구독 상태 |
-| `question_comments` | 문항별 댓글 |
+| 테이블              | 역할           |
+| ------------------- | -------------- |
+| `user_sessions`     | 학습 세션      |
+| `user_answers`      | 선지 클릭 기록 |
+| `user_stats`        | 누적 통계      |
+| `subscriptions`     | 구독 상태      |
+| `question_comments` | 문항별 댓글    |
 
 향후 추가 예정 (전략 결정 사후):
+
 - `feedback_logs` (선지별 피드백 — Top 1 기능)
 - `error_reports` (오류 신고)
 
