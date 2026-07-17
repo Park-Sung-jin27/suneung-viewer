@@ -1330,6 +1330,20 @@
         "target": "bogi",
         "text": "큰 집게발의 길이",
         "qId": 17
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 17,
+        "text": "게딱지 폭",
+        "marker": "ⓐ"
+      },
+      {
+        "type": "underline",
+        "target": "bogi",
+        "qId": 17,
+        "text": "큰 집게발의 길이",
+        "marker": "ⓑ"
       }
     ],
     "l2023a": [
