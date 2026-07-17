@@ -832,6 +832,12 @@
         "text": "이 용어와 관련된 분야의 책을 찾아보는 것이 가장 좋겠어.",
         "marker": "ⓔ",
         "endMarker": true
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2024as4",
+        "sentTo": "r2024as10"
       }
     ],
     "r2024b": [
