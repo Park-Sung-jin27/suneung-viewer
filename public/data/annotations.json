@@ -60,47 +60,56 @@
       {
         "type": "underline",
         "sentId": "l2026bs2",
-        "text": "한 목소리"
+        "text": "한 목소리",
+        "marker": "㉠"
       },
       {
         "type": "underline",
         "sentId": "l2026bs2",
-        "text": "외마디 소리"
+        "text": "외마디 소리",
+        "marker": "㉡"
       },
       {
         "type": "underline",
         "sentId": "l2026bs3b",
-        "text": "바람"
+        "text": "바람",
+        "marker": "ⓐ"
       },
       {
         "type": "underline",
         "sentId": "l2026bs5",
-        "text": "오색딱다구리"
+        "text": "오색딱다구리",
+        "marker": "ⓑ"
       },
       {
         "type": "underline",
         "sentId": "l2026bs5",
-        "text": "청설모"
+        "text": "청설모",
+        "marker": "ⓒ"
       },
       {
         "type": "underline",
         "sentId": "l2026bs7",
-        "text": "흰 구름"
+        "text": "흰 구름",
+        "marker": "ⓓ"
       },
       {
         "type": "underline",
         "sentId": "l2026bs7",
-        "text": "장대비"
+        "text": "장대비",
+        "marker": "ⓔ"
       },
       {
         "type": "underline",
         "sentId": "l2026bs29",
-        "text": "사람의 소리"
+        "text": "사람의 소리",
+        "marker": "㉢"
       },
       {
         "type": "underline",
         "sentId": "l2026bs29",
-        "text": "좋은 소리"
+        "text": "좋은 소리",
+        "marker": "㉣"
       }
     ],
     "l2026c": [
