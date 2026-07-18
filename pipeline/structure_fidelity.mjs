@@ -8,6 +8,7 @@
 // resolveDirs / fitz+PYTHONUTF8 추출 방식은 answer_fidelity.mjs와 동일 규약.
 import fs from "fs";
 import { execSync } from "child_process";
+import { expandMarkerRanges } from "./marker_range.mjs";
 
 const args = process.argv.slice(2);
 const ykFilter = (args.find((a) => a.startsWith("--yk=")) || "").split("=")[1];
@@ -108,7 +109,9 @@ function examBlocks(text, anc, qNum) {
 const suspects = [],
   positionSuspects = [],
   coverage = [],
-  scanned = [];
+  scanned = [],
+  rangeMismatch = [], // Layer4 CRITICAL: 발문 범위표기 데이터↔시험지 불일치
+  rangeUnverified = []; // 시험지에서 범위표기 미검출(추출 한계) — 비차단
 const NS = (x) => String(x).replace(/\s+/g, ""); // 공백 제거(줄바꿈 무관 위치 매칭)
 let scopeSets = 0,
   scopeQ = 0,
@@ -227,6 +230,38 @@ for (const yk of Object.keys(d)) {
     //   시험지 블록에서 각 선지 앞부분(≥18자) 위치를 찾아, num 순 위치가 단조
     //   증가하지 않으면 flag. 미발견 선지(운문/古語/이미지)는 제외, 판정엔 ≥3 필요.
     const rawBlocks = examBlocks(text, anc, q.id);
+
+    // Layer 4 — 발문 마커 범위표기 대조: 데이터 발문 "ⓐ~ⓔ"를 시험지 원문과 대조.
+    //   범위 절단(데이터 "ⓐ~ⓒ" ↔ 시험지 "ⓐ~ⓔ")은 정답 근거 마커를 지문에서
+    //   소거해 학생이 못 푸는 문항을 만든다(§13⑥ r2023c 실증). Layer2 통째 유사도는
+    //   1글자 차라 통과 = 사각. W_orphan과 같은 공용 파서 공유(사각 비분리).
+    //   ★ 방향 판정(§13⑬·⑮): CRITICAL은 "시험지에 있는데 데이터에 없는 마커"(=절단)만.
+    //   데이터가 더 많은 쪽(데이터⊋시험지)은 fitz가 끝 원문자를 garbling한 추출 실패가
+    //   대부분(실증 2026_9월 l20269c: 시험지 "ⓐ~ⓔ"를 fitz가 "ⓐ~ⓓ+�"로 추출) → 비차단.
+    //   데이터 환각 초과는 W_orphan_marker/answer_fidelity가 담당(축 분리).
+    const dataRange = expandMarkerRanges(q.t);
+    if (dataRange.size) {
+      const examRange = new Set();
+      for (const rb of rawBlocks)
+        for (const m of expandMarkerRanges(rb)) examRange.add(m);
+      const dKey = [...dataRange].sort().join("");
+      const examMinusData = [...examRange].filter((m) => !dataRange.has(m));
+      if (examMinusData.length) {
+        // 시험지에 있는데 데이터에 없음 = 절단 = CRITICAL(정답 근거 소거)
+        rangeMismatch.push({
+          yk,
+          setId: s.id,
+          q: q.id,
+          data: dKey,
+          exam: [...examRange].sort().join(""),
+          missing: examMinusData.join(""),
+        });
+      } else if (!examRange.size || dataRange.size > examRange.size) {
+        // 시험지 범위표기 미검출/데이터가 더 많음 = fitz garbling 추출실패 의심, 비차단
+        rangeUnverified.push({ yk, setId: s.id, q: q.id, data: dKey });
+      }
+    }
+
     let best = null;
     for (const rb of rawBlocks) {
       const nb = NS(rb);
@@ -300,8 +335,21 @@ if (!ykFilter && scopeSets !== _dataTotalSets) {
 
 suspects.sort((a, b) => a.sim - b.sim);
 console.log(
-  `구조 의심 문항: ${suspects.length} | 선지 순서 의심: ${positionSuspects.length} | 커버리지 이상 yk: ${coverage.length} | 스캔 문항: ${scanned.length} | 임계 sim<${SIM} | data=${dataPath}`,
+  `구조 의심 문항: ${suspects.length} | 선지 순서 의심: ${positionSuspects.length} | 발문범위 불일치(CRITICAL): ${rangeMismatch.length} | 커버리지 이상 yk: ${coverage.length} | 스캔 문항: ${scanned.length} | 임계 sim<${SIM} | data=${dataPath}`,
 );
+console.log(
+  "=== Layer4 발문 마커 범위 불일치 (CRITICAL — 절단/오표기 = 정답 근거 소거) ===",
+);
+if (!rangeMismatch.length) console.log("  (없음)");
+rangeMismatch.forEach((x) =>
+  console.log(
+    `  ${x.yk} ${x.setId} Q${x.q}: 데이터[${x.data}] ↔ 시험지[${x.exam}] — 데이터 누락 마커[${x.missing}]`,
+  ),
+);
+if (rangeUnverified.length)
+  console.log(
+    `  (미대조 ${rangeUnverified.length}: 시험지 범위표기 추출 실패 — 비차단)`,
+  );
 console.log(
   "=== Layer3 선지 순서 의심 (데이터 num순 ≠ 시험지 출현순 = 정답 오지시) ===",
 );
@@ -324,4 +372,12 @@ if (showAll) {
   scanned
     .sort((a, b) => a.sim - b.sim)
     .forEach((x) => console.log(`  ${x.yk} ${x.setId} Q${x.q}: sim=${x.sim}`));
+}
+
+// Layer4 불일치 = CRITICAL(정답 근거 소거) → exit 1. 나머지 의심(Layer1~3)은 비차단 유지.
+if (rangeMismatch.length) {
+  console.error(
+    `🔴 발문 마커 범위 불일치 ${rangeMismatch.length}건 (CRITICAL)`,
+  );
+  process.exit(1);
 }

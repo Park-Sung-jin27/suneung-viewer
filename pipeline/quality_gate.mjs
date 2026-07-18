@@ -31,6 +31,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { auditBrackets } from "./bracket_audit.mjs";
+import { expandMarkerRanges } from "./marker_range.mjs";
 
 // ─── 인라인 헬퍼 (step2_postprocess / step3_rules 핵심 로직 내장) ─────────────
 const NEG_PATTERNS = [
@@ -469,12 +470,14 @@ for (const yearKey of yearsToCheck) {
           const referenced = new Set();
           for (const _q of set.questions || []) {
             for (const m of omk(_q.t)) referenced.add(m);
-            for (const m of omk(
+            // 범위표기 "ⓐ~ⓔ" 전개(ⓑⓒⓓ 생략자 포함) — 공용 파서, structure와 공유
+            for (const m of expandMarkerRanges(_q.t)) referenced.add(m);
+            const bogiStr =
               typeof _q.bogi === "string"
                 ? _q.bogi
-                : JSON.stringify(_q.bogi || ""),
-            ))
-              referenced.add(m);
+                : JSON.stringify(_q.bogi || "");
+            for (const m of omk(bogiStr)) referenced.add(m);
+            for (const m of expandMarkerRanges(bogiStr)) referenced.add(m);
             for (const _c of _q.choices || [])
               for (const m of omk(_c.t)) referenced.add(m);
           }
