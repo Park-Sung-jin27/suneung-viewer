@@ -31,7 +31,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { auditBrackets } from "./bracket_audit.mjs";
-import { expandMarkerRanges } from "./marker_range.mjs";
+import { expandMarkerRanges, misplacedMarkers } from "./marker_range.mjs";
 
 // ─── 인라인 헬퍼 (step2_postprocess / step3_rules 핵심 로직 내장) ─────────────
 const NEG_PATTERNS = [
@@ -298,6 +298,7 @@ const bracketCollapseCands = []; // W_bracket_collapse (동일 sentId 2+ bracket
 const bogiAnchorCands = []; // W_bogi_anchor (📌 보기 근거 ⊄ q.bogi exact substring)
 const analysisMarkerCands = []; // W_analysis_marker_mismatch (해설 마커 ⊄ 문항 문맥)
 const orphanMarkerCands = []; // W_orphan_marker (지문 마커 ⊄ 전 문항 참조 = 환각 후보)
+const markerMisplacedCands = []; // W_marker_misplaced (인라인 sentId ≠ ann sentId = 오정박)
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -501,6 +502,39 @@ for (const yearKey of yearsToCheck) {
               live,
             });
           }
+        }
+      }
+      // ── [Gate] W_marker_misplaced — 인라인 마커 sentId ≠ annotation sentId ──
+      //   같은 마커가 sent.t 인라인·annotation 양쪽에 있는데 sentId가 안 겹침 =
+      //   인라인 기호가 잘못된 sent에 오정박(동일 어구 다출현 시 첫 출현에 오배치 등).
+      //   annotation을 정본으로(payload 렌더 기준). structure Layer4(시험지↔데이터)와
+      //   상보적 = 데이터 내부 인라인↔ann 정합. WARNING(자동 수정 아닌 sent.t 이설 대상).
+      //   실증: r2022b ㉡(s9↔s18) · l2024b ⓓ(s19↔s18). §13⑦·⑭ 정합.
+      {
+        if (!globalThis.__annAll) {
+          try {
+            globalThis.__annAll = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));
+          } catch {
+            globalThis.__annAll = {};
+          }
+        }
+        const annList = (globalThis.__annAll[yearKey] || {})[set.id] || [];
+        for (const mp of misplacedMarkers(set.sents || [], annList)) {
+          const live = LIVE_KEYS_SET.has(yearKey + "::" + set.id);
+          issue(
+            "W_marker_misplaced",
+            yearKey,
+            set.id,
+            `인라인 마커 ${mp.marker} 위치[${mp.inline.join(",")}] ≠ annotation[${mp.ann.join(",")}]${live ? " (LIVE)" : ""} — sent.t 인라인 이설 대상`,
+          );
+          markerMisplacedCands.push({
+            yearKey,
+            setId: set.id,
+            marker: mp.marker,
+            inline: mp.inline,
+            ann: mp.ann,
+            live,
+          });
         }
       }
       // ── [Gate 5] C_figure_missing — figure sent이 있으나 FIGURE_IMAGE_MAP에 미매핑 ─
@@ -2463,6 +2497,7 @@ const SEVERITY_MAP = {
   W_bogi_anchor: "WARNING", // 📌 보기 근거 ⊄ q.bogi exact substring (C_anchor 보기 사각 보완, §13⑥ 확장)
   W_analysis_marker_mismatch: "WARNING", // 해설 마커 ⊄ (문항+지문+보기 ∪ 선지) = 존재하지 않는 마커 참조
   W_orphan_marker: "WARNING", // 지문 마커 ⊄ 전 문항 참조 = 환각 후보(시험지 대조 전 자동 CRITICAL 금지)
+  W_marker_misplaced: "WARNING", // 인라인 마커 sentId ≠ annotation sentId = 오정박(sent.t 이설 대상)
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
@@ -2628,6 +2663,10 @@ for (const f of ALL_FINDINGS) {
     path.join(OUT_DIR, "orphan_marker.json"),
     JSON.stringify(orphanMarkerCands, null, 2),
   );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "marker_misplaced.json"),
+    JSON.stringify(markerMisplacedCands, null, 2),
+  );
   // CRITICAL 전체 덤프 (display 20+"외 N건" 절단 우회 = 출시 재스캔 정확도) — issues + manual(F_empty/DEAD) 합침
   fs.writeFileSync(
     path.join(OUT_DIR, "all_critical.json"),
@@ -2782,6 +2821,9 @@ console.log(
 // W_orphan_marker 분모 (§13⑮: 마커 보유 세트가 진짜 분모 — 전체 세트 아님)
 console.log(
   `W_orphan_marker: 마커 보유 세트 ${scopeMarkerSets} 중 고아 ${scopeOrphanSets}세트 / 고아 마커 ${scopeOrphanMarkers}개 (LIVE ${scopeOrphanLiveSets}세트)`,
+);
+console.log(
+  `W_marker_misplaced: 오정박 ${markerMisplacedCands.length}건 (LIVE ${markerMisplacedCands.filter((x) => x.live).length}) — 인라인↔ann sentId 불일치`,
 );
 if (scopeSets === 0) {
   console.error("🔴 SCOPE_EMPTY — 검사 대상 0건. clean 판정 무효");
