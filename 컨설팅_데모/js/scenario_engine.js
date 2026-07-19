@@ -696,19 +696,16 @@ function generateBalancedRationale(p) {
 
 function generateRisks(scenarios, student) {
   var risks = [];
+  var scores = (student && student.scores) || {};
   if (scenarios.balanced.length === 0) risks.push("균형권 학과 없음");
   if (scenarios.safe.length < 2)
     risks.push("안전권 부족 — 추가 안전권 확보 필요");
   if (scenarios.reach.length === 0 && scenarios.balanced.length > 0)
     risks.push("도전권 없음 — 보수적 포트폴리오");
-  if (student.scores["영어"] && student.scores["영어"].grade >= 4)
-    risks.push(
-      "영어 " + student.scores["영어"].grade + "등급 — 감점 큰 대학 불리",
-    );
-  if (student.scores["한국사"] && student.scores["한국사"].grade >= 5)
-    risks.push(
-      "한국사 " + student.scores["한국사"].grade + "등급 — 일부 대학 감점",
-    );
+  if (scores["영어"] && scores["영어"].grade >= 4)
+    risks.push("영어 " + scores["영어"].grade + "등급 — 감점 큰 대학 불리");
+  if (scores["한국사"] && scores["한국사"].grade >= 5)
+    risks.push("한국사 " + scores["한국사"].grade + "등급 — 일부 대학 감점");
   var formulaReview = scenarios.formula_review || {
     verified_rows: 4,
     pending_rows: 28,

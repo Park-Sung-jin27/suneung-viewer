@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-12T00:00:00+09:00",
-  "row_count": 11361,
+  "generated_at": "2026-07-19T00:00:00+09:00",
+  "row_count": 11347,
   "university_count": 184,
   "checks": {
     "duplicate_key": 0,
@@ -16,9 +16,19 @@
     "nonsul_minreq_fallback_review": 34,
     "nonsul_minreq_exempt_expected": 14,
     "question_mark_minreq_rows": 0,
-    "question_mark_minreq_note_rows": 0
+    "question_mark_minreq_note_rows": 0,
+    "cut_source_url_present": 11341,
+    "cut_source_url_missing": 6,
+    "legacy_v0_8_unverified": 6,
+    "normalized_legacy_duplicates_removed": 14,
+    "legacy_exact_source_promoted": 2772,
+    "legacy_source_multi_year_held": 0,
+    "legacy_admission_corrected_promoted": 688,
+    "hanyang_erica_official_pdf_promoted": 21,
+    "adiga_official_page_promoted": 60,
+    "malformed_source_columns_excluded": 6
   },
-  "latest_action": "Fixed Dongguk nonsul minreq separator mojibake and added integrity guard for question marks in minreq fields.",
+  "latest_action": "Linked Hanyang ERICA and seven universities' 2025 rows to official result pages after department, official admission mapping, capacity, competition, and 70% cut matching; held six malformed Busan Foreign Studies rows out of recommendations.",
   "source_counts": {
     "SANGJI_2025_RESULT_PDF_70CUT": 45,
     "TONGMYONG_2025_RESULT_XLSX_70CUT": 65,
