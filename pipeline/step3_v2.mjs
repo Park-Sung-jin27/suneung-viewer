@@ -29,13 +29,18 @@ const yk = opt("yk");
 const setFilter = opt("set");
 const qFilter = opt("q");
 
-if (!yk) {
+// CLI 진입 여부 — import(테스트·재사용) 시 아래 종료 로직이 돌지 않게 가드
+const IS_CLI =
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (IS_CLI && !yk) {
   console.error("--yk=<yearKey> 필수 (배치 단위)");
   process.exit(1);
 }
 
 const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
-if (!data[yk]) {
+if (IS_CLI && !data[yk]) {
   console.error(`SCOPE_EMPTY: ${yk} 데이터 없음`);
   process.exit(1);
 }
@@ -93,6 +98,62 @@ choices 배열만 JSON으로 반환해줘.
 반드시 qId(문항 id)를 포함해줘.`;
 }
 
+// ── 인용 자동 복원 (마커 기호 누락 한정) ──────────────────────────────────────
+//   LLM이 인용문에서 마커 기호(㉠·ⓐ·[A])를 "편집 기호"로 보고 지우는 경향이 있어
+//   exact-substring이 깨진다(프롬프트 지시로 교정되지 않음 — 2026-07-20 실호출 2회 실증).
+//   기계적 패턴이므로 결정적 로직으로 복원한다.
+//   안전장치: 마커 제거 후 exact 매치가 "유일"할 때만 치환. 0건/2건 이상은 손대지 않고
+//   FAIL로 남긴다(오교정 방지). 부분 유사도·정규화 매칭 금지. 다문장 병합·보기 변형은
+//   복원 대상이 아니다(그건 진짜 규칙 위반).
+const MARKER_STRIP_RE = /[㉠-㉿]|[ⓐ-ⓩ]|[Ⓐ-Ⓩ]|\[[A-F가-힣]\]/g;
+
+export function repairQuotes(analysis, sents) {
+  let out = String(analysis || "");
+  const repairs = [];
+  for (const m of [...out.matchAll(/·\s*(?:\((?:가|나|다)\)\s*)?"([^"]+)"/g)]) {
+    const q = m[1];
+    if (sents.some((s) => String(s.t || "").includes(q))) continue; // 이미 정상
+    // 마커 제거본에서 후보 탐색
+    const hits = [];
+    for (const s of sents) {
+      const raw = String(s.t || "");
+      const stripped = raw.replace(MARKER_STRIP_RE, "");
+      let from = 0;
+      for (;;) {
+        const i = stripped.indexOf(q, from);
+        if (i < 0) break;
+        hits.push({ sentId: s.id, raw, stripped, i });
+        from = i + 1;
+      }
+    }
+    if (hits.length !== 1) continue; // 0건·다중 = 치환 금지(FAIL로 남김)
+    const { sentId, raw, i } = hits[0];
+    // stripped 인덱스 i..i+q.length 를 raw 인덱스로 역매핑(제거된 마커를 되살림)
+    let si = 0,
+      start = -1,
+      end = -1;
+    for (let ri = 0; ri <= raw.length; ri++) {
+      if (si === i && start < 0) start = ri;
+      if (si === i + q.length) {
+        end = ri;
+        break;
+      }
+      if (ri === raw.length) break;
+      const ch = raw[ri];
+      MARKER_STRIP_RE.lastIndex = 0;
+      if (!MARKER_STRIP_RE.test(ch)) si++;
+    }
+    if (start < 0 || end < 0) continue;
+    let restored = raw.slice(start, end);
+    // 복원 결과가 실제로 원문 substring인지 최종 확인(불변식)
+    if (!raw.includes(restored) || restored.replace(MARKER_STRIP_RE, "") !== q)
+      continue;
+    out = out.split(`"${q}"`).join(`"${restored}"`);
+    repairs.push({ sentId, before: q, after: restored });
+  }
+  return { analysis: out, repairs };
+}
+
 // 기존 step3 산출물 호환 파서 (마크다운 펜스 제거 후 JSON 배열 추출)
 function parseChoices(text) {
   let t = String(text || "").trim();
@@ -103,8 +164,8 @@ function parseChoices(text) {
   return JSON.parse(t.slice(lo, hi + 1));
 }
 
-const sets = selectSets();
-if (!sets.length) {
+const sets = IS_CLI ? selectSets() : [];
+if (IS_CLI && !sets.length) {
   console.error(
     `SCOPE_EMPTY: ${yk}${setFilter ? "::" + setFilter : ""} 검사 대상 0세트`,
   );
@@ -167,6 +228,19 @@ async function main() {
       { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
     );
     const choices = parseChoices(resp.content[0].text);
+    // 마커 기호 누락 자동 복원(유일 매치만). 감사성 로그 출력.
+    let repairN = 0;
+    for (const c of choices) {
+      const { analysis, repairs } = repairQuotes(c.analysis, set.sents);
+      c.analysis = analysis;
+      for (const r of repairs) {
+        repairN++;
+        console.log(
+          `[repair] Q${c.qId}[${c.num}] @${r.sentId}: ${JSON.stringify(r.before.slice(0, 30))} → ${JSON.stringify(r.after.slice(0, 30))}`,
+        );
+      }
+    }
+    if (repairN) console.log(`[repair] 마커 복원 ${repairN}건`);
     const fpath = path.join(OUT_DIR, `${yk}_${set.id}_result.json`);
     fs.writeFileSync(fpath, JSON.stringify(choices, null, 2), "utf8");
     // 실단가 측정용 usage 기록 (배치 예산 산출 근거 — 추정 아닌 실측)
@@ -192,7 +266,8 @@ async function main() {
   }
 }
 
-main().catch((e) => {
-  console.error("ERROR:", e.message);
-  process.exit(1);
-});
+if (IS_CLI)
+  main().catch((e) => {
+    console.error("ERROR:", e.message);
+    process.exit(1);
+  });
