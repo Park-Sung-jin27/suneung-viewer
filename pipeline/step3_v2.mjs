@@ -47,6 +47,18 @@ if (IS_CLI && !data[yk]) {
 // 프롬프트 정본 = 파일 단일 소스 (하드코딩 금지)
 const systemPrompt = fs.readFileSync(PROMPT_V2_PATH, "utf8");
 
+// ── 어휘(V) 문항 판별 — API 생성 대상에서 제외 ──────────────────────────────
+//   v2 구조의 일반 지시("📌 지문 근거를 대라")와 어휘 예외("V 오답은 📌에 지문 인용
+//   금지")가 충돌해 LLM이 2회 모두 일반 지시를 따랐다(2026-07-20 r2025b 실증).
+//   문구로 교정되지 않으므로 payload에서 아예 제외하고 옵션 B로 작성한다.
+//   판별: 선지에 pat=V가 있거나, 발문이 어휘 유형.
+const VOCAB_STEM_RE =
+  /바꿔 쓰기에|문맥상.*의미|가장 가까운|의미로 쓰인|의미로 적절하지/;
+export function isVocabQuestion(q) {
+  if ((q.choices || []).some((c) => c.pat === "V")) return true;
+  return VOCAB_STEM_RE.test(String(q.t || ""));
+}
+
 function selectSets() {
   const out = [];
   for (const sec of ["reading", "literature"])
@@ -192,7 +204,7 @@ async function main() {
 
   for (const set of sets) {
     // --q 필터: 해당 문항만 남긴 세트 사본(sents는 전체 유지 = 근거 문맥 보존)
-    const scoped = qFilter
+    let scoped = qFilter
       ? {
           ...set,
           questions: set.questions.filter(
@@ -200,6 +212,21 @@ async function main() {
           ),
         }
       : set;
+    // 어휘(V) 문항 제외 — 옵션 B 대상(감사성 로그 필수)
+    const vocabQs = scoped.questions.filter(isVocabQuestion);
+    if (vocabQs.length) {
+      scoped = {
+        ...scoped,
+        questions: scoped.questions.filter((q) => !isVocabQuestion(q)),
+      };
+      console.log(
+        `[제외] 어휘 문항 ${vocabQs.length}개 API 제외 → 옵션 B 대상: Q${vocabQs.map((q) => q.id).join(", Q")}`,
+      );
+    }
+    if (!scoped.questions.length) {
+      console.warn(`  ${set.id}: API 대상 문항 0 — skip(전부 어휘 문항)`);
+      continue;
+    }
     if (qFilter && !scoped.questions.length) {
       console.warn(`  ${set.id}: 문항 ${qFilter} 없음 — skip`);
       continue;
