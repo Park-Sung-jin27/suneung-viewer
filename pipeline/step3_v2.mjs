@@ -224,13 +224,40 @@ async function main() {
     const resp = await client.messages.create(
       {
         model: "claude-sonnet-4-5",
-        max_tokens: 16000,
+        // 30선지 세트는 16000으로 잘려 JSON이 미완성됨(2026-07-20 r2025b 실증).
+        // 30선지 세트는 16000으로 잘려 JSON이 미완성됨(2026-07-20 r2025b 실증).
+        // 16000 초과는 SDK가 스트리밍을 요구하므로 stream:true와 함께 상향한다.
+        max_tokens: 40000,
+        stream: true,
         system: systemPrompt,
         messages: [{ role: "user", content: userPrompt }],
       },
       { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
     );
-    const choices = parseChoices(resp.content[0].text);
+    // 스트리밍 응답을 텍스트·usage로 합산 (16000 초과 요청은 SDK가 스트리밍을 요구)
+    let text = "",
+      stopReason = null;
+    const usage = { input_tokens: 0, output_tokens: 0 };
+    for await (const ev of resp) {
+      if (ev.type === "message_start" && ev.message?.usage) {
+        usage.input_tokens = ev.message.usage.input_tokens ?? 0;
+        usage.output_tokens = ev.message.usage.output_tokens ?? 0;
+      }
+      if (ev.type === "content_block_delta" && ev.delta?.text)
+        text += ev.delta.text;
+      if (ev.type === "message_delta") {
+        if (ev.usage?.output_tokens != null)
+          usage.output_tokens = ev.usage.output_tokens;
+        if (ev.delta?.stop_reason) stopReason = ev.delta.stop_reason;
+      }
+    }
+    // 파싱 실패 진단용 원문 보존(절단·형식 이탈 원인 규명)
+    fs.writeFileSync(
+      path.join(OUT_DIR, `${yk}_${set.id}_raw.txt`),
+      `stop_reason=${stopReason}\nusage=${JSON.stringify(usage)}\n\n${text}`,
+      "utf8",
+    );
+    const choices = parseChoices(text);
     // 마커 기호 누락 자동 복원(유일 매치만). 감사성 로그 출력.
     let repairN = 0;
     for (const c of choices) {
@@ -247,9 +274,9 @@ async function main() {
     const fpath = path.join(OUT_DIR, `${yk}_${set.id}_result.json`);
     fs.writeFileSync(fpath, JSON.stringify(choices, null, 2), "utf8");
     // 실단가 측정용 usage 기록 (배치 예산 산출 근거 — 추정 아닌 실측)
-    const u = resp.usage || {};
+    const u = usage;
     console.log(
-      `[생성] ${set.id}: ${choices.length}선지 → ${path.relative(ROOT, fpath)} (stop=${resp.stop_reason})`,
+      `[생성] ${set.id}: ${choices.length}선지 → ${path.relative(ROOT, fpath)} (stop=${stopReason})`,
     );
     console.log(
       `[usage] input=${u.input_tokens ?? "?"} output=${u.output_tokens ?? "?"}` +
