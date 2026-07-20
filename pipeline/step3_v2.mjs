@@ -169,8 +169,25 @@ async function main() {
     const choices = parseChoices(resp.content[0].text);
     const fpath = path.join(OUT_DIR, `${yk}_${set.id}_result.json`);
     fs.writeFileSync(fpath, JSON.stringify(choices, null, 2), "utf8");
+    // 실단가 측정용 usage 기록 (배치 예산 산출 근거 — 추정 아닌 실측)
+    const u = resp.usage || {};
     console.log(
       `[생성] ${set.id}: ${choices.length}선지 → ${path.relative(ROOT, fpath)} (stop=${resp.stop_reason})`,
+    );
+    console.log(
+      `[usage] input=${u.input_tokens ?? "?"} output=${u.output_tokens ?? "?"}` +
+        (u.cache_read_input_tokens != null
+          ? ` cache_read=${u.cache_read_input_tokens}`
+          : ""),
+    );
+    fs.writeFileSync(
+      path.join(OUT_DIR, `${yk}_${set.id}_usage.json`),
+      JSON.stringify(
+        { setId: set.id, choices: choices.length, usage: u },
+        null,
+        2,
+      ),
+      "utf8",
     );
   }
 }
