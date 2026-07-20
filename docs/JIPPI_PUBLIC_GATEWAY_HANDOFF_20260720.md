@@ -15,7 +15,7 @@
 | `/assets/jippi-payments.js`, `/assets/jippi-analytics.js` | Vercel URL 유지 | Netlify Fortune 자산 |
 | `/payment-success.html`, `/payment-fail.html` | Vercel URL 유지 | Netlify Fortune 완료 페이지 |
 
-`vercel.json`의 external rewrite가 위의 Vercel URL을 Netlify 업스트림으로 연결한다. 앱 코드에서 `jippi-saju.netlify.app`을 직접 링크하지 말고, 항상 공개 경로를 사용한다. 서버 API 호출만 `backendBase()`를 통해 Netlify 업스트림을 선택할 수 있다.
+`vercel.json`의 external rewrite가 위의 Vercel URL을 Netlify 업스트림으로 연결한다. 앱 코드와 브라우저 API 호출 모두 `jippi-saju.netlify.app`을 직접 쓰지 않고, 항상 공개 경로를 사용한다.
 
 ## 중복 정적 파일 금지
 
