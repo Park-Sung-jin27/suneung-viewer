@@ -110,7 +110,10 @@ const MARKER_STRIP_RE = /[㉠-㉿]|[ⓐ-ⓩ]|[Ⓐ-Ⓩ]|\[[A-F가-힣]\]/g;
 export function repairQuotes(analysis, sents) {
   let out = String(analysis || "");
   const repairs = [];
-  for (const m of [...out.matchAll(/·\s*(?:\((?:가|나|다)\)\s*)?"([^"]+)"/g)]) {
+  // 인용 위치는 불릿(·)·📌 라인·본문 어디든 될 수 있으므로 큰따옴표 전체를 후보로 본다.
+  //   (불릿만 보면 `📌 지문 근거: ㉠ = "..."` 형식의 마커 누락을 놓친다 — 2026-07-20 실증)
+  //   복원은 "마커 제거 후 유일 매치"일 때만 일어나므로 과다 치환은 발생하지 않는다.
+  for (const m of [...out.matchAll(/"([^"]{6,})"/g)]) {
     const q = m[1];
     if (sents.some((s) => String(s.t || "").includes(q))) continue; // 이미 정상
     // 마커 제거본에서 후보 탐색
