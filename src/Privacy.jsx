@@ -108,7 +108,7 @@ export default function Privacy() {
             </tr>
             <tr>
               <th style={TH_STYLE}>사업장 주소</th>
-              <td style={TD_STYLE}>서울특별시 강북구 도봉로50길 15 301호</td>
+              <td style={TD_STYLE}>서울특별시 강북구 도봉로50길 15</td>
             </tr>
             <tr>
               <th style={TH_STYLE}>사업장 연락처</th>

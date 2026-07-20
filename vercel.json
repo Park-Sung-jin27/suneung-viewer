@@ -1,6 +1,106 @@
 {
   "headers": [
     {
+      "source": "/.netlify/functions/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/fortune/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/fortune",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/fortune/",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/payment-success.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/payment-fail.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/assets/jippi-payments.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/assets/jippi-waitlist.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/assets/jippi-analytics.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/fortune-preview.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/operator/orders",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" },
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
       "source": "/api/inyeon-room",
       "headers": [
         { "key": "Cache-Control", "value": "no-store, max-age=0" },
@@ -35,6 +135,86 @@
     {
       "source": "/consulting-demo/",
       "destination": "/consulting-demo/index.html"
+    },
+    {
+      "source": "/api/(.*).js",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/netlify/functions/(.*).js",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/netlify/functions/(.*).mjs",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/.netlify/functions/fortune-order-submit",
+      "destination": "https://jippi-saju.netlify.app/.netlify/functions/fortune-order-submit"
+    },
+    {
+      "source": "/.netlify/functions/fortune-order-admin",
+      "destination": "https://jippi-saju.netlify.app/.netlify/functions/fortune-order-admin"
+    },
+    {
+      "source": "/.netlify/functions/fortune-payment-confirm",
+      "destination": "https://jippi-saju.netlify.app/.netlify/functions/fortune-payment-confirm"
+    },
+    {
+      "source": "/.netlify/functions/suneung-payment-confirm",
+      "destination": "https://jippi-saju.netlify.app/.netlify/functions/suneung-payment-confirm"
+    },
+    {
+      "source": "/.netlify/functions/payment-config",
+      "destination": "https://jippi-saju.netlify.app/.netlify/functions/payment-config"
+    },
+    {
+      "source": "/.netlify/functions/jippi-analytics-event",
+      "destination": "https://jippi-saju.netlify.app/.netlify/functions/jippi-analytics-event"
+    },
+    {
+      "source": "/operator/orders",
+      "destination": "https://jippi-saju.netlify.app/operator/orders"
+    },
+    {
+      "source": "/payment-success.html",
+      "destination": "https://jippi-saju.netlify.app/payment-success.html"
+    },
+    {
+      "source": "/payment-fail.html",
+      "destination": "https://jippi-saju.netlify.app/payment-fail.html"
+    },
+    {
+      "source": "/fortune-preview.js",
+      "destination": "https://jippi-saju.netlify.app/fortune-preview.js"
+    },
+    {
+      "source": "/assets/jippi-payments.js",
+      "destination": "https://jippi-saju.netlify.app/assets/jippi-payments.js"
+    },
+    {
+      "source": "/assets/jippi-waitlist.js",
+      "destination": "https://jippi-saju.netlify.app/assets/jippi-waitlist.js"
+    },
+    {
+      "source": "/assets/jippi-analytics.js",
+      "destination": "https://jippi-saju.netlify.app/assets/jippi-analytics.js"
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "https://jippi-saju.netlify.app/privacy.html"
+    },
+    {
+      "source": "/terms.html",
+      "destination": "https://jippi-saju.netlify.app/terms.html"
+    },
+    {
+      "source": "/refund.html",
+      "destination": "https://jippi-saju.netlify.app/refund.html"
+    },
+    {
+      "source": "/commerce-exemption.html",
+      "destination": "https://jippi-saju.netlify.app/commerce-exemption.html"
     },
     {
       "source": "/tarot",
