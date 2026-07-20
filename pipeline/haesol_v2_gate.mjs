@@ -109,7 +109,14 @@ for (const t of targets) {
     anchorGap = 0;
   const s2failEx = [];
   for (const q of s.questions || []) {
-    const bogi = typeof q.bogi === "string" ? q.bogi : "";
+    // 객체형 보기(annotated_image 등)도 텍스트를 살려야 함 — 빈 문자열로 두면
+    // 정당한 <보기> 인용이 전부 §2 FAIL로 오탐(실증 2026-07-20 r2026c Q12).
+    const bogi =
+      typeof q.bogi === "string"
+        ? q.bogi
+        : q.bogi
+          ? JSON.stringify(q.bogi)
+          : "";
     // 어휘 문항 판별(§6): 발문 키워드(문맥상 의미·바꿔 쓰기·가장 가까운)
     // 어휘 판별(확장): 의미/뜻·바꿔쓰기(삽입어 허용)·가장 가까운 의미로 쓰인.
     //   제외: '의미를 추론/파악'(추론 문항)·'주장/관점/내용…가까운'(내용 문항) — 어휘 아님.
