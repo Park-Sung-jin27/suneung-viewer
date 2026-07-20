@@ -282,6 +282,9 @@ let scopeMarkerSets = 0,
   scopeOrphanSets = 0,
   scopeOrphanMarkers = 0,
   scopeOrphanLiveSets = 0;
+// W_choice_passage_echo 분모 (ok:false 선지가 진짜 분모)
+let scopeEchoChoices = 0,
+  scopeEchoHits = 0;
 const issues = []; // 발견된 문제 전체
 const autoFixed = []; // 자동 수정된 항목
 const manual = []; // 수동 처리 필요 항목
@@ -299,6 +302,7 @@ const bogiAnchorCands = []; // W_bogi_anchor (📌 보기 근거 ⊄ q.bogi exac
 const analysisMarkerCands = []; // W_analysis_marker_mismatch (해설 마커 ⊄ 문항 문맥)
 const orphanMarkerCands = []; // W_orphan_marker (지문 마커 ⊄ 전 문항 참조 = 환각 후보)
 const markerMisplacedCands = []; // W_marker_misplaced (인라인 sentId ≠ ann sentId = 오정박)
+const choiceEchoCands = []; // W_choice_passage_echo (ok:false 선지 ≈ 지문 원문 = 치환형 손상)
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -501,6 +505,57 @@ for (const yearKey of yearsToCheck) {
               sentIds: orphans.map((m) => inSents.get(m)),
               live,
             });
+          }
+        }
+      }
+      // ── [Gate] W_choice_passage_echo — ok:false 선지가 지문을 그대로 옮김 ──
+      //   ok:false는 정의상 지문과 어긋나야 하므로, 선지 대부분이 지문에 연속으로
+      //   실재하면 = 한 단어 치환형 데이터 손상 신호(시험지의 오답 선지를 원문으로
+      //   되돌려 놓아 "지문과 일치하는데 오답"이 된 상태 → 학생이 풀 수 없음).
+      //   실증: 2026수능 r2026d Q14④ — 시험지 "의식을 매개로" ↔ 데이터 "신체를 매개로".
+      //   answer_fidelity(번호만)·structure Layer2(유사도)·Layer4(발문 범위) 모두의 사각.
+      //   WARNING 고정 — 정답 판정이 아니라 후보 색출(시험지 대조 전 자동 수정 금지).
+      {
+        const NRM = (s) =>
+          String(s || "")
+            .replace(/[㉠-㉿ⓐ-ⓩⒶ-Ⓩ①-⑳]/g, "")
+            .replace(/[\s\p{P}]/gu, "");
+        const passage = NRM((set.sents || []).map((s) => s.t).join(""));
+        for (const q of set.questions || []) {
+          for (const c of q.choices || []) {
+            if (c.ok !== false) continue;
+            scopeEchoChoices++;
+            const ct = NRM(c.t);
+            if (ct.length < 22) continue;
+            // 최장 공통 부분문자열 (선지 기준 슬라이딩 — 선지가 짧아 비용 낮음)
+            let best = 0;
+            for (let i = 0; i < ct.length && ct.length - i > best; i++) {
+              for (let len = ct.length - i; len > best; len--) {
+                if (passage.includes(ct.slice(i, i + len))) {
+                  best = len;
+                  break;
+                }
+              }
+            }
+            if (best >= 22 && best / ct.length >= 0.7) {
+              const live = LIVE_KEYS_SET.has(yearKey + "::" + set.id);
+              scopeEchoHits++;
+              issue(
+                "W_choice_passage_echo",
+                yearKey,
+                `${set.id} Q${q.id}[${c.num}]`,
+                `ok:false 선지가 지문과 ${best}자 연속 일치(선지의 ${Math.round((100 * best) / ct.length)}%)${live ? " (LIVE)" : ""} — 한 단어 치환형 손상 의심, 시험지 대조 의무`,
+              );
+              choiceEchoCands.push({
+                yearKey,
+                setId: set.id,
+                qId: q.id,
+                choice: c.num,
+                matchLen: best,
+                ratio: +(best / ct.length).toFixed(2),
+                live,
+              });
+            }
           }
         }
       }
@@ -2498,6 +2553,7 @@ const SEVERITY_MAP = {
   W_analysis_marker_mismatch: "WARNING", // 해설 마커 ⊄ (문항+지문+보기 ∪ 선지) = 존재하지 않는 마커 참조
   W_orphan_marker: "WARNING", // 지문 마커 ⊄ 전 문항 참조 = 환각 후보(시험지 대조 전 자동 CRITICAL 금지)
   W_marker_misplaced: "WARNING", // 인라인 마커 sentId ≠ annotation sentId = 오정박(sent.t 이설 대상)
+  W_choice_passage_echo: "WARNING", // ok:false 선지가 지문 원문과 대부분 일치 = 한 단어 치환형 손상 후보
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
@@ -2667,6 +2723,10 @@ for (const f of ALL_FINDINGS) {
     path.join(OUT_DIR, "marker_misplaced.json"),
     JSON.stringify(markerMisplacedCands, null, 2),
   );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "choice_passage_echo.json"),
+    JSON.stringify(choiceEchoCands, null, 2),
+  );
   // CRITICAL 전체 덤프 (display 20+"외 N건" 절단 우회 = 출시 재스캔 정확도) — issues + manual(F_empty/DEAD) 합침
   fs.writeFileSync(
     path.join(OUT_DIR, "all_critical.json"),
@@ -2825,6 +2885,11 @@ console.log(
 console.log(
   `W_marker_misplaced: 오정박 ${markerMisplacedCands.length}건 (LIVE ${markerMisplacedCands.filter((x) => x.live).length}) — 인라인↔ann sentId 불일치`,
 );
+console.log(
+  `W_choice_passage_echo: ok:false 선지 ${scopeEchoChoices} 중 후보 ${scopeEchoHits}건 (LIVE ${choiceEchoCands.filter((x) => x.live).length}) — 지문 원문 반향(치환형 손상 의심)`,
+);
+if (scopeEchoChoices === 0 && scopeSets > 0)
+  console.error("🔴 SCOPE_EMPTY(echo) — ok:false 선지 0건. 판정 무효");
 if (scopeSets === 0) {
   console.error("🔴 SCOPE_EMPTY — 검사 대상 0건. clean 판정 무효");
   process.exit(1);
