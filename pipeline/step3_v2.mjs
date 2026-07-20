@@ -89,10 +89,26 @@ function buildUserPrompt(set) {
     })
     .join("\n\n");
 
+  // 선지별 ok 정본 — LLM이 스스로 적절/부적절을 판단하면 결론줄이 뒤집힌다
+  //   (2026-07-20 r2025b: Q7①④⑤·Q8① 4건이 반대로 서술됨 = 오학습 직결).
+  //   ok는 데이터에 확정된 값이므로 판단 여지를 주지 않고 명시한다.
+  const okBlocks = set.questions
+    .map(
+      (q) =>
+        `문항 ${q.id}: ` +
+        (q.choices || [])
+          .map((c) => `${"①②③④⑤⑥⑦"[c.num - 1] || c.num}ok:${c.ok === true}`)
+          .join(" "),
+    )
+    .join("\n");
+
   return `다음 세트를 분석해줘.
 
 [정답 정보]
 ${answerGuide}
+
+[선지 판정 — 정본(절대)]
+${okBlocks}
 
 [마커 범위 — 문항별 정본]
 ${markerBlocks}
@@ -118,6 +134,12 @@ choices 배열만 JSON으로 반환해줘.
 //   FAIL로 남긴다(오교정 방지). 부분 유사도·정규화 매칭 금지. 다문장 병합·보기 변형은
 //   복원 대상이 아니다(그건 진짜 규칙 위반).
 const MARKER_STRIP_RE = /[㉠-㉿]|[ⓐ-ⓩ]|[Ⓐ-Ⓩ]|\[[A-F가-힣]\]/g;
+// 정규화: 마커 기호 + 공백 제거. 지문에 PDF 추출 artifact(단어 내 공백, 예 "시급 하지만")가
+//   있으면 LLM이 자연스럽게 붙여 인용해 exact가 깨진다 — 원문 구간으로 되돌린다(§13⑥).
+const normForMatch = (s) =>
+  String(s || "")
+    .replace(MARKER_STRIP_RE, "")
+    .replace(/\s+/g, "");
 
 export function repairQuotes(analysis, sents) {
   let out = String(analysis || "");
@@ -128,41 +150,44 @@ export function repairQuotes(analysis, sents) {
   for (const m of [...out.matchAll(/"([^"]{6,})"/g)]) {
     const q = m[1];
     if (sents.some((s) => String(s.t || "").includes(q))) continue; // 이미 정상
-    // 마커 제거본에서 후보 탐색
+    // 정규화본(마커·공백 제거)에서 후보 탐색
+    const qn = normForMatch(q);
+    if (qn.length < 6) continue;
+    const skip = (ch) => {
+      MARKER_STRIP_RE.lastIndex = 0;
+      return /\s/.test(ch) || MARKER_STRIP_RE.test(ch);
+    };
     const hits = [];
     for (const s of sents) {
       const raw = String(s.t || "");
-      const stripped = raw.replace(MARKER_STRIP_RE, "");
+      const norm = normForMatch(raw);
       let from = 0;
       for (;;) {
-        const i = stripped.indexOf(q, from);
+        const i = norm.indexOf(qn, from);
         if (i < 0) break;
-        hits.push({ sentId: s.id, raw, stripped, i });
+        hits.push({ sentId: s.id, raw, i });
         from = i + 1;
       }
     }
     if (hits.length !== 1) continue; // 0건·다중 = 치환 금지(FAIL로 남김)
     const { sentId, raw, i } = hits[0];
-    // stripped 인덱스 i..i+q.length 를 raw 인덱스로 역매핑(제거된 마커를 되살림)
+    // 정규화 인덱스 i..i+qn.length 를 raw 인덱스로 역매핑(제거된 마커·공백을 되살림)
     let si = 0,
       start = -1,
       end = -1;
     for (let ri = 0; ri <= raw.length; ri++) {
       if (si === i && start < 0) start = ri;
-      if (si === i + q.length) {
+      if (si === i + qn.length) {
         end = ri;
         break;
       }
       if (ri === raw.length) break;
-      const ch = raw[ri];
-      MARKER_STRIP_RE.lastIndex = 0;
-      if (!MARKER_STRIP_RE.test(ch)) si++;
+      if (!skip(raw[ri])) si++;
     }
     if (start < 0 || end < 0) continue;
-    let restored = raw.slice(start, end);
-    // 복원 결과가 실제로 원문 substring인지 최종 확인(불변식)
-    if (!raw.includes(restored) || restored.replace(MARKER_STRIP_RE, "") !== q)
-      continue;
+    const restored = raw.slice(start, end);
+    // 복원 결과가 실제로 원문 substring이고 내용이 동일한지 최종 확인(불변식)
+    if (!raw.includes(restored) || normForMatch(restored) !== qn) continue;
     out = out.split(`"${q}"`).join(`"${restored}"`);
     repairs.push({ sentId, before: q, after: restored });
   }
@@ -196,7 +221,13 @@ async function main() {
     const { default: Anthropic } = await import("@anthropic-ai/sdk");
     const { default: dotenv } = await import("dotenv");
     dotenv.config({ path: path.join(ROOT, ".env"), override: true });
-    client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    // 스트리밍 장문 생성은 SDK 기본 타임아웃(10분)을 넘길 수 있다
+    //   (2026-07-20 r2025b: 834초에 terminated). 30분으로 상향.
+    client = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+      timeout: 30 * 60 * 1000,
+      maxRetries: 2,
+    });
     fs.mkdirSync(OUT_DIR, { recursive: true });
   } else {
     fs.mkdirSync(OUT_DIR, { recursive: true });
