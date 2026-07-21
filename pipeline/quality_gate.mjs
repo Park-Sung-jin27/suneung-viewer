@@ -285,6 +285,11 @@ let scopeMarkerSets = 0,
 // W_choice_passage_echo 분모 (ok:false 선지가 진짜 분모)
 let scopeEchoChoices = 0,
   scopeEchoHits = 0;
+// W_domain_mismatch 분모 (pat 보유 선지 = V·null 제외가 진짜 분모)
+let scopeDomainChoices = 0,
+  scopeDomainHits = 0,
+  scopeDomainSetHits = 0,
+  scopeDomainChoiceSetHits = 0;
 const issues = []; // 발견된 문제 전체
 const autoFixed = []; // 자동 수정된 항목
 const manual = []; // 수동 처리 필요 항목
@@ -303,6 +308,7 @@ const analysisMarkerCands = []; // W_analysis_marker_mismatch (해설 마커 ⊄
 const orphanMarkerCands = []; // W_orphan_marker (지문 마커 ⊄ 전 문항 참조 = 환각 후보)
 const markerMisplacedCands = []; // W_marker_misplaced (인라인 sentId ≠ ann sentId = 오정박)
 const choiceEchoCands = []; // W_choice_passage_echo (ok:false 선지 ≈ 지문 원문 = 치환형 손상)
+const domainMismatchCands = []; // W_domain_mismatch (배열 ↔ pat 계열 불일치, §6 도메인 엄수)
 
 // ─── [v2] scope / tier / action_class 분류 ────────────────────────────────────
 const SCOPE_DEMO = new Set(["2026수능"]);
@@ -383,13 +389,18 @@ function getActionClass(type) {
   return ACTION_CLASS_MAP[type] || "manual";
 }
 
-function issue(type, yearKey, loc, message, severity = "warn") {
+// extra: 구조화 필드(setId·qId·num). loc 문자열 파싱은 형식이 축마다 달라
+//   매핑 실패를 낳는다(2026-07-21 MARKER_INTEGRITY_FAIL loc="setId 마커" 실증 —
+//   parts[1] 파싱이 yearKey를 못 찾아 출시 후보 72세트 오산출 → 롤백).
+//   신규 축은 loc 대신 extra로 setId를 직접 실어 소비자가 파싱하지 않게 한다.
+function issue(type, yearKey, loc, message, severity = "warn", extra = null) {
   issues.push({
     type,
     yearKey,
     loc,
     message,
     severity,
+    ...(extra || {}),
     tier: getTier(yearKey),
     scope: getScope(yearKey),
     action_class: getActionClass(type),
@@ -557,6 +568,64 @@ for (const yearKey of yearsToCheck) {
               });
             }
           }
+        }
+      }
+      // ── [Gate] W_domain_mismatch — 배열(reading/literature) ↔ pat 계열 불일치 ──
+      //   §6 "도메인 엄수: 독서에 L* 금지, 문학에 R* 금지". 오학습은 아니나
+      //   PatternReport/PatternCoach의 약점 진단이 오염된다(문학 문제를 R1로 집계 →
+      //   학생에게 잘못된 약점 제시). 학원 판매 제품에서 경시 불가.
+      //   실증: 2016_9월A l20169a(지방질 산패 = 과학 독서가 literature 배열, 100%) ·
+      //         2016_9월B r20169g(창선감의록 = 고전소설이 reading 배열, 100%).
+      //   ★ 두 층위를 분리 출력 — 처리 방법이 다르다:
+      //     (A) 세트 배열 이관 = 오분율 100%(pat 보유 선지 전부가 반대 계열)
+      //         → 세트를 반대 배열로 옮겨야 함(렌더·정렬·setId 충돌 확인 필요)
+      //     (B) 선지 pat 계열 교정 = 오분율 < 100%(일부 선지만 반대 계열)
+      //         → 해당 선지의 pat만 같은 계열로 재부여
+      //   V·null은 계열이 없으므로 분모에서 제외.
+      //   ⚠ WARNING 고정(계측 단계) — 지금 CRITICAL로 넣으면 기존 LIVE 세트가 걸려
+      //     모든 push가 잠긴다. 51선지 교정 완료 후 CRITICAL 승격(대표 결정 2026-07-21).
+      {
+        const wrong = sec === "literature" ? "R" : "L";
+        const bad = [];
+        let patChoices = 0;
+        for (const q of set.questions || []) {
+          for (const c of q.choices || []) {
+            const p = c.pat;
+            if (!p || p === "V") continue;
+            patChoices++;
+            if (p[0] === wrong) bad.push({ qId: q.id, num: c.num, pat: p });
+          }
+        }
+        scopeDomainChoices += patChoices;
+        if (bad.length) {
+          const live = LIVE_KEYS_SET.has(yearKey + "::" + set.id);
+          const rate = bad.length / patChoices;
+          const setLevel = rate === 1; // 전부 반대 계열 = 세트 자체가 반대 배열
+          scopeDomainHits += bad.length;
+          if (setLevel) scopeDomainSetHits++;
+          else scopeDomainChoiceSetHits++;
+          issue(
+            "W_domain_mismatch",
+            yearKey,
+            set.id,
+            setLevel
+              ? `[A 세트 배열 이관] ${sec} 배열인데 pat 전량 ${wrong}* (${bad.length}/${patChoices} = 100%)${live ? " (LIVE)" : ""} — 세트를 반대 배열로 이관 대상`
+              : `[B 선지 pat 교정] ${sec} 배열에 ${wrong}* 선지 ${bad.length}/${patChoices} (${Math.round(rate * 100)}%)${live ? " (LIVE)" : ""} — ${bad.map((b) => `Q${b.qId}[${b.num}]=${b.pat}`).join(" ")}`,
+            "warn",
+            { setId: set.id, section: sec, level: setLevel ? "set" : "choice" },
+          );
+          domainMismatchCands.push({
+            yearKey,
+            setId: set.id,
+            section: sec,
+            level: setLevel ? "set" : "choice",
+            wrongFamily: wrong,
+            badCount: bad.length,
+            patChoices,
+            rate: +rate.toFixed(2),
+            choices: bad,
+            live,
+          });
         }
       }
       // ── [Gate] W_marker_misplaced — 인라인 마커 sentId ≠ annotation sentId ──
@@ -2554,6 +2623,7 @@ const SEVERITY_MAP = {
   W_orphan_marker: "WARNING", // 지문 마커 ⊄ 전 문항 참조 = 환각 후보(시험지 대조 전 자동 CRITICAL 금지)
   W_marker_misplaced: "WARNING", // 인라인 마커 sentId ≠ annotation sentId = 오정박(sent.t 이설 대상)
   W_choice_passage_echo: "WARNING", // ok:false 선지가 지문 원문과 대부분 일치 = 한 단어 치환형 손상 후보
+  W_domain_mismatch: "WARNING", // 배열↔pat 계열 불일치(§6) — 계측 단계. 51선지 교정 후 CRITICAL 승격
   // ── [발주1] 게이트 3종 신설 ──
   F_meta_leak: "CRITICAL", // 1-B 해설 메타-누출(좁은 한글 메타-고백) = 깨진 해설
   W_csless_with_anchor: "WARNING", // 1-A 형광펜 누락 후보(cs_ids=[] 인데 📌 본문 실재) — triage 대상
@@ -2727,6 +2797,10 @@ for (const f of ALL_FINDINGS) {
     path.join(OUT_DIR, "choice_passage_echo.json"),
     JSON.stringify(choiceEchoCands, null, 2),
   );
+  fs.writeFileSync(
+    path.join(OUT_DIR, "domain_mismatch.json"),
+    JSON.stringify(domainMismatchCands, null, 2),
+  );
   // CRITICAL 전체 덤프 (display 20+"외 N건" 절단 우회 = 출시 재스캔 정확도) — issues + manual(F_empty/DEAD) 합침
   fs.writeFileSync(
     path.join(OUT_DIR, "all_critical.json"),
@@ -2890,6 +2964,26 @@ console.log(
 );
 if (scopeEchoChoices === 0 && scopeSets > 0)
   console.error("🔴 SCOPE_EMPTY(echo) — ok:false 선지 0건. 판정 무효");
+// W_domain_mismatch — 두 층위 구분 출력(처리 방법이 다름). 후보 JSON도 함께 발행.
+{
+  const liveSet = domainMismatchCands.filter(
+    (x) => x.level === "set" && x.live,
+  ).length;
+  const liveCho = domainMismatchCands.filter(
+    (x) => x.level === "choice" && x.live,
+  ).length;
+  console.log(
+    `W_domain_mismatch: pat 보유 선지 ${scopeDomainChoices} 중 계열 불일치 ${scopeDomainHits}선지 / ${domainMismatchCands.length}세트`,
+  );
+  console.log(
+    `  ├ [A 세트 배열 이관] ${scopeDomainSetHits}세트 (LIVE ${liveSet}) — 오분율 100%, 배열 이관 대상`,
+  );
+  console.log(
+    `  └ [B 선지 pat 교정] ${scopeDomainChoiceSetHits}세트 (LIVE ${liveCho}) — 부분 불일치, pat만 재부여`,
+  );
+  if (scopeDomainChoices === 0 && scopeSets > 0)
+    console.error("🔴 SCOPE_EMPTY(domain) — pat 보유 선지 0건. 판정 무효");
+}
 if (scopeSets === 0) {
   console.error("🔴 SCOPE_EMPTY — 검사 대상 0건. clean 판정 무효");
   process.exit(1);
