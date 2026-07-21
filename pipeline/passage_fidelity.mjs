@@ -78,9 +78,16 @@ function examTextFromPdf(yk) {
 const H = (s) => (s || "").replace(/[^가-힣]/g, ""); // 한글만
 
 // 포함도: sent 한글을 WIN자 윈도(STRIDE stride)로 쪼개 시험지 한글 전체에 존재하는 비율
+//   반환 {r, broken}: r=비율(기존 임계 판정), broken=미발견 윈도 수(절대 기준 판정).
+//   비율만으로는 긴 문장을 못 잡는다 — 1점 변조는 길이와 무관하게 윈도 2개만 깨뜨리므로
+//   문장이 길수록 분모만 커져 임계 위로 떠오른다(한글 133자↑ 구조적 미검출, 실증 130자 경계).
+//   임계·윈도·stride 수치 조정으로는 닫히지 않아(비율 판정식 자체의 성질) broken을 병행 노출.
 function inclusion(sH, examH) {
   if (sH.length < MIN) return null; // 짧은 대사·인용부호 스킵
-  if (sH.length < WIN) return examH.includes(sH) ? 1 : 0;
+  if (sH.length < WIN) {
+    const hit = examH.includes(sH);
+    return { r: hit ? 1 : 0, broken: hit ? 0 : 1 };
+  }
   let total = 0,
     found = 0;
   for (let i = 0; i + WIN <= sH.length; i += STRIDE) {
@@ -92,11 +99,14 @@ function inclusion(sH, examH) {
     total++;
     if (examH.includes(sH.slice(lastStart))) found++;
   }
-  return total ? found / total : null;
+  return total ? { r: found / total, broken: total - found } : null;
 }
 
+const ABS = cfg.absolute_broken_warn ?? 0; // 0 = 절대 기준 비활성
 const live = [],
   other = [],
+  absLive = [], // 비율은 통과했으나 미발견 윈도 ≥ ABS (길이 사각 — WARNING)
+  absOther = [],
   nokey = [];
 const skipStatus = {}; // 미검사 yk → 사유(§13⑮ 보완)
 for (const yk of Object.keys(d)) {
@@ -120,10 +130,19 @@ for (const yk of Object.keys(d)) {
       scopeSents += (s.sents || []).filter((x) => TYPES.has(x.sentType)).length;
       for (const sent of s.sents || []) {
         if (!TYPES.has(sent.sentType)) continue;
-        const inc = inclusion(H(sent.t), examH);
-        if (inc === null) continue;
-        const row = { yk, setId: s.id, sentId: sent.id, inc: +inc.toFixed(3) };
-        if (inc < TH) (isLive ? live : other).push(row);
+        const res = inclusion(H(sent.t), examH);
+        if (res === null) continue;
+        const row = {
+          yk,
+          setId: s.id,
+          sentId: sent.id,
+          inc: +res.r.toFixed(3),
+          broken: res.broken,
+          len: H(sent.t).length,
+        };
+        if (res.r < TH) (isLive ? live : other).push(row);
+        else if (ABS && res.broken >= ABS)
+          (isLive ? absLive : absOther).push(row);
       }
     }
 }
@@ -203,6 +222,32 @@ other
   .forEach((x) =>
     console.log(`  ${x.yk} ${x.setId} ${x.sentId}: 포함도=${x.inc}`),
   );
+if (other.length > 60)
+  console.log(`  … 외 ${other.length - 60}건 (표시 절단 — 전량은 아님)`);
+// ── 절대 기준(WARNING) — 비율은 통과했으나 미발견 윈도가 있는 sent ──
+//   긴 문장 사각 전용. 결함 확정이 아니라 후보(시험지 추출 artifact도 섞임).
+if (ABS) {
+  console.log(
+    `=== 🟡 W_window_broken (미발견 윈도 ≥ ${ABS} · 비율은 통과 — 길이 사각) 라이브 ${absLive.length} + 비노출 ${absOther.length} ===`,
+  );
+  absLive
+    .sort((a, b) => b.broken - a.broken || b.len - a.len)
+    .forEach((x) =>
+      console.log(
+        `  🟡 ${x.yk} ${x.setId} ${x.sentId}: ${x.len}자 · 포함도=${x.inc} · 미발견 윈도 ${x.broken}`,
+      ),
+    );
+  absOther
+    .sort((a, b) => b.broken - a.broken || b.len - a.len)
+    .slice(0, 30)
+    .forEach((x) =>
+      console.log(
+        `  ⚪ ${x.yk} ${x.setId} ${x.sentId}: ${x.len}자 · 포함도=${x.inc} · 미발견 윈도 ${x.broken}`,
+      ),
+    );
+  if (absOther.length > 30)
+    console.log(`  … 외 ${absOther.length - 30}건 (표시 절단)`);
+}
 console.log("=== 미대조 yk ===");
 nokey.forEach((x) => console.log("  " + x));
 if (showAll) console.log(`(--all: 의심만 출력, 전체 통과분 생략)`);
