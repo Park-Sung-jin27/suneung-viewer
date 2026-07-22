@@ -1459,7 +1459,13 @@ for (const yearKey of yearsToCheck) {
             }
           }
 
-          if (contentReversed && !conclusionMismatch) {
+          // ⚠ 억제 제거 (2026-07-22) — 직전까지 `&& !conclusionMismatch` 조건이 붙어 있었다.
+          //   F_content_reversed는 CRITICAL(§13⑤ 출시 차단축)이고 F_conclusion_mismatch는
+          //   IGNORE인데, 해설에 ❌만 있고 ✅가 없으면 후자가 참이 되어 **CRITICAL이 IGNORE에
+          //   흡수**됐다. 두 축을 따로 보면 각각 정상이라 발견이 늦었다(14건 은폐, LIVE 1건 =
+          //   2026_6월 l20266a Q20③이 정답 반대로 노출 중이었음).
+          //   원칙(§13⑮): CRITICAL 축은 다른 축으로 억제하지 않는다. 축별 독립 카운트.
+          if (contentReversed) {
             needsManual(
               "F_content_reversed",
               yearKey,
