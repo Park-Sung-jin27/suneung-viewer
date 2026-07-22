@@ -148,8 +148,15 @@ for (const yk of Object.keys(d)) {
 }
 live.sort((a, b) => a.inc - b.inc);
 other.sort((a, b) => a.inc - b.inc);
-// 포함도 0 = 시험지에 한 윈도도 안 잡힘 = 교체/환각이거나 옛한글/고전시가 추출 mismatch.
-//   게이트가 자동 판별 불가(맹점) → UNVERIFIABLE_OLDHANGUL: 수동 직독 필요로 플래그.
+// 포함도 0 = 시험지에 한 윈도도 안 잡힘. 다수는 옛한글 구간이다.
+//   ⚠ 개칭 (2026-07-22): 구 명칭 UNVERIFIABLE_OLDHANGUL = "게이트가 판별 불가, 수동 직독 필요".
+//   그 이름이 원인을 단정했고 4주간 오진을 고정했다. 실측 결과 원인은 추출 실패가 아니라
+//   **데이터 측 옛한글 오변환**이다 — 시험지 PDF에는 한양PUA가 살아 있고(42시험지 1,311자)
+//   데이터에는 PUA 0 · 첫가끝 정상표기 35 sent뿐이며, 나머지는 임의 현대음절로 치환돼 있다
+//   (hypua2jamo 복원 실증: ᄒᆞᆫ→'호' · ᄒᆞ→'흐' · ᄒᆡ→'히'). 한 세트 안에서도 갈린다(부분 변환).
+//   → 자동 검출·교정후보 생성이 가능하다. pipeline/oldhangul_audit.mjs 참조.
+//   ★ 명명 원칙(§6): 게이트 축은 원인 단정이 아니라 관측 사실로 명명한다.
+const liveZero_LABEL = "W_oldhangul_mismatch";
 const liveZero = live.filter((x) => x.inc === 0);
 // ── 검사 스코프 분모 + 가드 (§13⑮·§13⑫ 재발 차단) ──
 const _dataTotalSets = Object.keys(d).reduce(
@@ -201,19 +208,19 @@ for (const yk of Object.keys(skipStatus)) {
     );
 }
 console.log(
-  `본문 의심: 라이브 ${live.length}(그중 포함도0=UNVERIFIABLE ${liveZero.length}) + 비노출 ${other.length} | 미대조 yk: ${nokey.length} | 임계 포함도<${TH} | data=${dataPath}`,
+  `본문 의심: 라이브 ${live.length}(그중 포함도0=${liveZero_LABEL} ${liveZero.length}) + 비노출 ${other.length} | 미대조 yk: ${nokey.length} | 임계 포함도<${TH} | data=${dataPath}`,
 );
 if (liveZero.length)
   console.log(
-    `=== ⚠️ UNVERIFIABLE_OLDHANGUL (라이브·포함도 0 — 수동 PDF 직독 필요, 게이트 자동판별 불가) ${liveZero.length}건 ===`,
+    `=== ⚠️ ${liveZero_LABEL} (라이브·포함도 0 — 한 윈도도 불일치. 다수는 데이터 옛한글 오변환 = 교정 대상, oldhangul_audit로 원문 대조) ${liveZero.length}건 ===`,
   );
 liveZero.forEach((x) =>
-  console.log(`  ⚠️ ${x.yk} ${x.setId} ${x.sentId}: 포함도=0 → 직독 요`),
+  console.log(`  ⚠️ ${x.yk} ${x.setId} ${x.sentId}: 포함도=0 → 원문 대조 요`),
 );
 console.log("=== 🔴 라이브(RELEASE) 세트 본문 의심 (포함도 오름차순) ===");
 live.forEach((x) =>
   console.log(
-    `  ${x.yk} ${x.setId} ${x.sentId}: 포함도=${x.inc}${x.inc === 0 ? " ⚠️UNVERIFIABLE" : ""}`,
+    `  ${x.yk} ${x.setId} ${x.sentId}: 포함도=${x.inc}${x.inc === 0 ? ` ⚠️${liveZero_LABEL}` : ""}`,
   ),
 );
 console.log("=== ⚪ 비노출 세트 본문 의심 (포함도 오름차순, 최대 60) ===");

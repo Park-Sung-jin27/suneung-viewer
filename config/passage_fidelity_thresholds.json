@@ -1,6 +1,6 @@
 {
   "_NOTE": "passage_fidelity.mjs 임계값. 포함도(데이터 sent의 한글 윈도가 시험지에 존재하는 비율) < inclusion_threshold = 본문 교체/환각/오염 의심(사람 검토). sent_types=대조 대상 sentType.",
-  "_NOTE_sent_types": "2026-07-21까지 [body] 단독이라 verse(시 본문) 1,479 + speech/stage(극문학 대사·지시문) 124 + none 108 = 본문 1,711 sent가 LIVE에서 한 번도 대조되지 않았음. §13⑧ 극문학 stage/speech 표준화가 오히려 해당 세트를 게이트 밖으로 밀어낸 구조. 확대 비용 실측 = 신규 후보 56건(그중 52는 포함도 0 = 옛한글·고전시가 추출 mismatch → UNVERIFIABLE 경로 흡수, 실질 4건).",
+  "_NOTE_sent_types": "2026-07-21까지 [body] 단독이라 verse(시 본문) 1,479 + speech/stage(극문학 대사·지시문) 124 + none 108 = 본문 1,711 sent가 LIVE에서 한 번도 대조되지 않았음. §13⑧ 극문학 stage/speech 표준화가 오히려 해당 세트를 게이트 밖으로 밀어낸 구조. 확대 비용 실측 = 신규 후보 56건(그중 52는 포함도 0 = 옛한글 구간 → W_oldhangul_mismatch 경로 흡수, 실질 4건).",
   "_NOTE_absolute": "absolute_broken_warn: 포함도 비율은 1점 변조가 깨뜨리는 윈도 수(2개)를 문장 길이로 나누므로 긴 문장에서 임계 위로 떠오름 = 한글 133자 이상 구조적 미검출(실증 130자 경계 · LIVE 126 sent). 임계·윈도·stride 수치 조정으로는 닫히지 않아(비율 판정식 자체의 성질) 절대 기준을 병행함. WARNING 고정 — CRITICAL 승격은 기존 18건 정리 후.",
   "inclusion_threshold": 0.85,
   "window": 20,
