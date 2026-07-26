@@ -161,7 +161,7 @@ function fixAnalysisConclusion(ana, ok) {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
-const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+let DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
 const ANN_PATH = path.resolve(__dirname, "../public/data/annotations.json");
 const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
 
@@ -178,6 +178,24 @@ const SCOPE = (() => {
   if (!scopeArg) return null;
   return scopeArg.split("=")[1];
 })();
+// --data=<경로> : 판정 대상 데이터 오버라이드 (v2 생성물 검사용, haesol_v2_gate --target).
+//   ⚠ --scope=release 에서는 무시하고 항상 배포본 — release 판정 단일 소스 보호(§13⑫).
+//   기본값 불변(배포본). 실행 대상 경로는 아래에서 stdout에 1줄 출력.
+{
+  const dataArg = (args.find((a) => a.startsWith("--data=")) || "").split(
+    "=",
+  )[1];
+  if (dataArg) {
+    if (SCOPE === "release") {
+      console.error(
+        "[gate] ⚠ --data 무시 — --scope=release 는 항상 배포본 검사(§13⑫ release 판정 단일 소스)",
+      );
+    } else {
+      DATA_PATH = path.resolve(process.cwd(), dataArg);
+    }
+  }
+}
+console.log(`[gate] data=${DATA_PATH}`);
 const SCOPE_YEARS = {
   suneung5: ["2022수능", "2023수능", "2024수능", "2025수능", "2026수능"],
   모의고사전체: [
