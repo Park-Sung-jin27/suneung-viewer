@@ -231,13 +231,21 @@ if (IS_CLI) {
         );
       for (const c of q.choices || []) {
         const a = c.analysis || "";
+        // [결정1(A)] 근거누락(anchor_gap) 면제 — ok:false + pat∈{R3,V} + cs_ids=[] 선지만.
+        //   R3(지문 밖 내용)·V(어휘)는 규칙상 cs_ids=[](release_ready #4가 R3 면제, §6 V 면제)이므로
+        //   해설이 📌로 지문을 인용해 sent가 잡혀도 "근거누락"으로 집계하지 않는다(AUTO_EMPTY 정합).
+        //   ⚠ 좁게: R3/V AND cs=[] 만. R1·R2·R4·L*(근거 필수 pat) 및 cs 비어있지 않은 선지는 그대로 flag.
+        const anchorExempt =
+          c.ok === false &&
+          (c.pat === "R3" || c.pat === "V") &&
+          (c.cs_ids || []).length === 0;
         // ① §2 전선지: 📌 인용(12+) ⊆ sents∪bogi. 다문장=WARNING, 그 외=FAIL
         // ④ 근거완전성(발주#4): 지문 인용 sent가 cs_ids에 없으면 FAIL(⚡·🧠 참조 누락 색출)
         for (const m of a.matchAll(/"([^"]{12,})"/g)) {
           const qt = m[1];
           const hit = sentArr.find((sn) => (sn.t || "").includes(qt));
           if (hit) {
-            if (!(c.cs_ids || []).includes(hit.id)) {
+            if (!(c.cs_ids || []).includes(hit.id) && !anchorExempt) {
               anchorGap++;
               if (s2failEx.length < 6)
                 s2failEx.push(
