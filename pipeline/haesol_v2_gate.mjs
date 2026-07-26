@@ -59,7 +59,25 @@ if (IS_CLI) {
   const TARGET = (args.find((a) => a.startsWith("--target=")) || "").split(
     "=",
   )[1];
+  // --data=<경로> : 사전 구축된 임시(v2 analysis + step4 cs_ids)를 재주입 없이 직접 검사.
+  //   step4 --data=임시로 cs_ids를 재산출한 뒤, 그 결과를 그대로 판정해야 하므로
+  //   --target(재주입=cs_ids 원복)과 상호 배타. quality_gate와 동일 패턴.
+  const DATA_OVERRIDE = (args.find((a) => a.startsWith("--data=")) || "").split(
+    "=",
+  )[1];
   let GATE_DATA = null; // quality_gate에 넘길 --data (null=배포본)
+  if (TARGET === "v2_dryrun" && DATA_OVERRIDE) {
+    console.error(
+      "[gate] 🔴 --target=v2_dryrun 과 --data 는 동시 사용 불가(재주입이 step4 cs_ids를 원복시킴)",
+    );
+    process.exit(2);
+  }
+  if (DATA_OVERRIDE) {
+    GATE_DATA = path.resolve(process.cwd(), DATA_OVERRIDE);
+    console.log(
+      `[gate] --data=${GATE_DATA} (사전 구축 임시 직접 검사, 재주입 없음)`,
+    );
+  }
   if (TARGET === "v2_dryrun") {
     const base = JSON.parse(fs.readFileSync(ALLDATA, "utf8"));
     const findIn = (yk, sid) => {

@@ -10,6 +10,18 @@ dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
+// --data=<경로> : retarget/extract-spans의 읽기·기록 대상 데이터 오버라이드
+//   (v2 생성물 임시 검사용, quality_gate와 동일 패턴). 기본값 불변(배포본).
+//   실행 대상 경로는 각 모드에서 stdout에 1줄 출력. 오버라이드 시 backups/ 백업 생략(임시라 무의미).
+const DATA_OVERRIDE = (() => {
+  const a = process.argv.slice(2).find((x) => x.startsWith("--data="));
+  return a ? path.resolve(process.cwd(), a.split("=")[1]) : null;
+})();
+const DEFAULT_DATA_PATH = path.resolve(
+  __dirname,
+  "../public/data/all_data_204.json",
+);
+
 // ─────────────────────────────────────────────
 // [수정 1] 코드 레벨에서 자동 [] 처리할 패턴
 // R3: 과도한 추론 — 지문에 근거 없음
@@ -190,7 +202,17 @@ const MARKER_IN_CHOICE_RE = /[ⓐ-ⓘ㉠-㉦①-⑨]|\[[A-E]\]/g;
 //   - 정규화 매칭(공백·원문자·한자·괄호 제거 후 포함 여부)
 //   - 인용문 길이 8자 이상만 유효 span 후보 (너무 짧은 조각은 sent 특정 실패 확률↑)
 // ─────────────────────────────────────────────
-const _QUOTE_RE = /📌\s*지문\s*근거\s*:\s*["“]([^"”]{4,500})["”]/g;
+// [Fix A] v2 해설의 지문 인용은 두 형식으로 나온다:
+//   · ok:true  → "📌 지문 근거: "…"" (한 줄, 콜론)
+//   · ok:false → "📌 지문 대조" 헤더 + "· "…"" 불릿 (다중 줄)
+//   옛 _QUOTE_RE는 콜론형만 잡아 대조형(오답 다수)을 놓쳤다(2026-07-26 실증: r2023a s14 미확장).
+//   → 📌 지문(근거|대조) 헤더부터 다음 섹션 경계까지 "블록"을 떠서 그 안의 큰따옴표 인용을
+//     전량 수집한다. 경계 = 다음 📌 / 이모지 섹션(🎯🔍⚡🧠🔗🔎) / 결론줄(❌✅) / 끝.
+//   보기 인용은 "📌 보기 …"라 헤더 매칭에서 제외(지문 대상만). 작은따옴표('…')는 선지 어구라
+//   수집하지 않는다(큰따옴표 = 지문 verbatim, v2 프롬프트 규약).
+const _JIMOON_BLOCK_RE =
+  /📌\s*지문\s*(?:근거|대조)[\s\S]*?(?=\n\s*📌|\n\s*(?:🎯|🔍|⚡|🧠|🔗|🔎|❌|✅)|$)/g;
+const _DQUOTE_RE = /["“]([^"”]{4,500})["”]/g;
 // [B-14.1] 📌 지문 근거: 줄이 따옴표 없이 paraphrase로 쓰인 경우에도
 //   그 줄 안의 내부 인용 '…' / "…"를 span 후보로 수거한다.
 const _PO_LINE_RE = /📌\s*지문\s*근거\s*:\s*([^\n]{1,1200})/g;
@@ -211,8 +233,12 @@ function extractAnalysisSpans(choice, setSents) {
   const out = [];
   const seen = new Set();
 
-  for (const m of ana.matchAll(_QUOTE_RE)) {
-    let quote = (m[1] || "").trim();
+  // [Fix A] 📌 지문(근거|대조) 블록 전체에서 큰따옴표 인용을 수집(콜론형+헤더-불릿형 모두).
+  const _jimoonQuotes = [];
+  for (const bm of ana.matchAll(_JIMOON_BLOCK_RE))
+    for (const qm of (bm[0] || "").matchAll(_DQUOTE_RE))
+      _jimoonQuotes.push((qm[1] || "").trim());
+  for (const quote of _jimoonQuotes) {
     if (quote.length < 8) continue;
     // 인용문에 "..." / "…" / 중간 공백 많은 케이스는 split 후 각각 시도
     // 주요 구분: "…" 또는 " / "
@@ -477,6 +503,9 @@ ${markerHint}
     const q = set.questions.find((x) => x.id === match.questionId);
     const c = q?.choices.find((x) => x.num === match.num);
     if (!c) return match;
+    // [Fix B] ok:false + V/R3/null(AUTO_EMPTY_PATS) 선지는 cs_ids=[] 규칙 —
+    //   spans/cs_ids 확장 금지(matchCsIds 분류와 동일). C_vpat_dirty 유발 차단.
+    if (c.ok === false && AUTO_EMPTY_PATS.has(c.pat)) return match;
     const extracted = extractAnalysisSpans(
       { cs_ids: match.cs_ids || [], analysis: c.analysis || "" },
       set.sents || [],
@@ -546,8 +575,9 @@ export async function assignCsIds(step3Data, annotations = {}) {
 //   node pipeline/step4_csids.js --retarget          (전체 5개 시험)
 // ─────────────────────────────────────────────
 async function retarget(targetYear) {
-  const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+  const DATA_PATH = DATA_OVERRIDE || DEFAULT_DATA_PATH;
   const ANN_PATH = path.resolve(__dirname, "../public/data/annotations.json");
+  console.log(`[step4] data=${DATA_PATH}`);
   const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
   let ann = {};
   try {
@@ -643,17 +673,21 @@ async function retarget(targetYear) {
     console.log(`✅ ${yr} 완료`);
   }
 
-  // v2: 백업 의무 (덮어쓰기 전 동일 시점 백업)
-  const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
-  if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
-  const ts = new Date().toISOString().replace(/[:.]/g, "-");
-  fs.copyFileSync(
-    DATA_PATH,
-    path.join(BACKUP_DIR, `all_data_204.before_step4_retarget.${ts}.json`),
-  );
+  // v2: 백업 의무 (덮어쓰기 전 동일 시점 백업) — 배포본 대상일 때만.
+  //   --data 오버라이드(임시)는 backups/를 오염시키지 않도록 백업 생략.
+  if (!DATA_OVERRIDE) {
+    const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
+    if (!fs.existsSync(BACKUP_DIR))
+      fs.mkdirSync(BACKUP_DIR, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, "-");
+    fs.copyFileSync(
+      DATA_PATH,
+      path.join(BACKUP_DIR, `all_data_204.before_step4_retarget.${ts}.json`),
+    );
+  }
   fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
   console.log(
-    `\n✅ all_data_204.json 저장 완료 — ${totalFixed}건 cs_ids 채움 (백업 포함)`,
+    `\n✅ 저장 완료: ${DATA_PATH} — ${totalFixed}건 cs_ids 채움${DATA_OVERRIDE ? " (임시·백업생략)" : " (백업 포함)"}`,
   );
 }
 
@@ -667,7 +701,8 @@ async function retarget(targetYear) {
 //     setIdPrefix 지정 시 해당 setId 시작 세트만 (예: l2026 → l2026a~d 전부)
 // ─────────────────────────────────────────────
 async function extractSpansMode(targetYear, setIdPrefix) {
-  const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+  const DATA_PATH = DATA_OVERRIDE || DEFAULT_DATA_PATH;
+  console.log(`[step4] data=${DATA_PATH}`);
   const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
 
   const years = targetYear
@@ -690,6 +725,8 @@ async function extractSpansMode(targetYear, setIdPrefix) {
         for (const q of set.questions || []) {
           for (const c of q.choices || []) {
             if (!c.analysis || !Array.isArray(c.cs_ids)) continue;
+            // [Fix B] ok:false + V/R3/null 선지는 cs_ids=[] 규칙 — 확장 금지(C_vpat_dirty 차단).
+            if (c.ok === false && AUTO_EMPTY_PATS.has(c.pat)) continue;
             const extracted = extractAnalysisSpans(c, set.sents || []);
             if (extracted.length === 0) continue;
 
@@ -716,34 +753,42 @@ async function extractSpansMode(targetYear, setIdPrefix) {
       }
     }
   }
-  // v2: 백업 의무 (덮어쓰기 전 동일 시점 백업)
-  const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
-  if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
-  const ts = new Date().toISOString().replace(/[:.]/g, "-");
-  fs.copyFileSync(
-    DATA_PATH,
-    path.join(BACKUP_DIR, `all_data_204.before_step4_extract_spans.${ts}.json`),
-  );
+  // v2: 백업 의무 (덮어쓰기 전 동일 시점 백업) — 배포본 대상일 때만.
+  if (!DATA_OVERRIDE) {
+    const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
+    if (!fs.existsSync(BACKUP_DIR))
+      fs.mkdirSync(BACKUP_DIR, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, "-");
+    fs.copyFileSync(
+      DATA_PATH,
+      path.join(
+        BACKUP_DIR,
+        `all_data_204.before_step4_extract_spans.${ts}.json`,
+      ),
+    );
+  }
   fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), "utf8");
   console.log(
-    `\n✅ extract-spans 완료 — ${totalChoicesTouched}개 선지 / spans +${totalExtracted} / cs_ids 확장 +${totalCsIdsExpanded}`,
+    `\n✅ extract-spans 완료: ${DATA_PATH} — ${totalChoicesTouched}개 선지 / spans +${totalExtracted} / cs_ids 확장 +${totalCsIdsExpanded}`,
   );
 }
 
 // 커맨드라인
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const mode = process.argv[2];
+  // 위치 인자에서 플래그(--data= 등) 제거 — yearKey/prefix 오인식 방지.
+  const positional = process.argv.slice(3).filter((a) => !a.startsWith("--"));
 
   if (mode === "--extract-spans") {
-    const yr = process.argv[3] || null;
-    const prefix = process.argv[4] || null;
+    const yr = positional[0] || null;
+    const prefix = positional[1] || null;
     extractSpansMode(yr, prefix).catch((err) => {
       console.error("오류:", err.message);
       process.exit(1);
     });
   } else if (mode === "--retarget") {
     // 기존 데이터 타겟 재실행
-    const targetYear = process.argv[3] || null;
+    const targetYear = positional[0] || null;
     retarget(targetYear).catch((err) => {
       console.error("오류:", err.message);
       process.exit(1);
