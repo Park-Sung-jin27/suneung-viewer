@@ -70,10 +70,26 @@ function selectSets() {
 }
 
 // userPrompt = 기존 step3 형식(정답 정보 + 세트 데이터 + 반환 스키마) + 마커 범위 블록
+// 정답 선지 판정 — 발문 유형 무관 "소수(minority) 선지" 규칙.
+//   5지선다의 정답은 항상 홀로 다른 ok 값을 갖는 1개 선지다. 나머지 4개가 그 반대.
+//     · negative("적절하지 않은 것") → 정답 ok:false 1개 · 나머지 ok:true (722건)
+//     · positive("적절한 것")       → 정답 ok:true 1개 · 나머지 ok:false (642건)
+//     · positive 메타("답을 찾을 수 없는 질문") → 정답 ok:false 1개 (r2022c Q10, §6)
+//   구 로직 `find(c => c.ok)`는 첫 ok:true를 정답으로 봐서 부정발문 722건 전건 + 메타 1건을
+//   오답으로 전달했다(2026-07-23 실증). questionType 분기(isNeg)로는 positive 메타를 못 잡으므로
+//   소수 규칙으로 통합한다 — 전 코퍼스 1,365 문항 전건 정답 특정 성공.
+export function pickCorrect(q) {
+  const T = (q.choices || []).filter((c) => c.ok === true);
+  const F = (q.choices || []).filter((c) => c.ok === false);
+  if (T.length === 1 && F.length >= 1) return T[0];
+  if (F.length === 1 && T.length >= 1) return F[0];
+  return null; // 소수가 유일하지 않음 → answerGuide 생략(정답 특정 불가)
+}
+
 function buildUserPrompt(set) {
   const answerGuide = set.questions
     .map((q) => {
-      const correct = (q.choices || []).find((c) => c.ok);
+      const correct = pickCorrect(q);
       return correct
         ? `문항 ${q.id}번 (${q.questionType}): 정답 선지 = ${correct.num}번`
         : null;
