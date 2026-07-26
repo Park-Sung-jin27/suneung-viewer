@@ -249,6 +249,9 @@ async function main() {
     fs.mkdirSync(OUT_DIR, { recursive: true });
   }
 
+  // [발주A] 세트별 작업 수집 → runBatch로 격리·재시도·단언.
+  const jobs = [];
+
   for (const set of sets) {
     // --q 필터: 해당 문항만 남긴 세트 사본(sents는 전체 유지 = 근거 문맥 보존)
     let scoped = qFilter
@@ -294,80 +297,149 @@ async function main() {
       continue;
     }
 
-    // 실호출 (크레딧 필요) — 스키마: [{ qId, num, pat, analysis }]
-    const resp = await client.messages.create(
-      {
-        model: "claude-sonnet-4-5",
-        // 30선지 세트는 16000으로 잘려 JSON이 미완성됨(2026-07-20 r2025b 실증).
-        // 30선지 세트는 16000으로 잘려 JSON이 미완성됨(2026-07-20 r2025b 실증).
-        // 16000 초과는 SDK가 스트리밍을 요구하므로 stream:true와 함께 상향한다.
-        max_tokens: 40000,
-        stream: true,
-        system: systemPrompt,
-        messages: [{ role: "user", content: userPrompt }],
-      },
-      { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
+    // [발주A] 세트별 작업으로 수집 → runBatch가 격리·재시도·단언(테스트 가능하게 순수화).
+    const expectC = scoped.questions.reduce(
+      (a, q) => a + (q.choices || []).length,
+      0,
     );
-    // 스트리밍 응답을 텍스트·usage로 합산 (16000 초과 요청은 SDK가 스트리밍을 요구)
-    let text = "",
-      stopReason = null;
-    const usage = { input_tokens: 0, output_tokens: 0 };
-    for await (const ev of resp) {
-      if (ev.type === "message_start" && ev.message?.usage) {
-        usage.input_tokens = ev.message.usage.input_tokens ?? 0;
-        usage.output_tokens = ev.message.usage.output_tokens ?? 0;
-      }
-      if (ev.type === "content_block_delta" && ev.delta?.text)
-        text += ev.delta.text;
-      if (ev.type === "message_delta") {
-        if (ev.usage?.output_tokens != null)
-          usage.output_tokens = ev.usage.output_tokens;
-        if (ev.delta?.stop_reason) stopReason = ev.delta.stop_reason;
-      }
-    }
-    // 파싱 실패 진단용 원문 보존(절단·형식 이탈 원인 규명)
-    fs.writeFileSync(
-      path.join(OUT_DIR, `${yk}_${set.id}_raw.txt`),
-      `stop_reason=${stopReason}\nusage=${JSON.stringify(usage)}\n\n${text}`,
-      "utf8",
-    );
-    const choices = parseChoices(text);
-    // 마커 기호 누락 자동 복원(유일 매치만). 감사성 로그 출력.
-    let repairN = 0;
-    for (const c of choices) {
-      const { analysis, repairs } = repairQuotes(c.analysis, set.sents);
-      c.analysis = analysis;
-      for (const r of repairs) {
-        repairN++;
-        console.log(
-          `[repair] Q${c.qId}[${c.num}] @${r.sentId}: ${JSON.stringify(r.before.slice(0, 30))} → ${JSON.stringify(r.after.slice(0, 30))}`,
-        );
-      }
-    }
-    if (repairN) console.log(`[repair] 마커 복원 ${repairN}건`);
-    const fpath = path.join(OUT_DIR, `${yk}_${set.id}_result.json`);
-    fs.writeFileSync(fpath, JSON.stringify(choices, null, 2), "utf8");
-    // 실단가 측정용 usage 기록 (배치 예산 산출 근거 — 추정 아닌 실측)
-    const u = usage;
+    const _set = set,
+      _scoped = scoped,
+      _up = userPrompt,
+      _ec = expectC;
+    jobs.push({
+      id: set.id,
+      run: () => generateOneSet(client, _set, _scoped, _up, _ec),
+    });
+  } // end for(set)
+
+  const batch = await runBatch(jobs);
+  // [발주A] 종료 단언 — DRY 아닐 때만. 요청 세트 == 산출물(result.json) 수 대조.
+  if (!DRY) {
+    const resultFiles = fs
+      .readdirSync(OUT_DIR)
+      .filter((f) => f.startsWith(`${yk}_`) && f.endsWith("_result.json"));
     console.log(
-      `[생성] ${set.id}: ${choices.length}선지 → ${path.relative(ROOT, fpath)} (stop=${stopReason})`,
+      `\n[배치 요약] 요청 ${batch.requested.length} · 생성 ${batch.produced.length} · 실패 ${batch.failed.length} · result.json ${resultFiles.length}`,
     );
-    console.log(
-      `[usage] input=${u.input_tokens ?? "?"} output=${u.output_tokens ?? "?"}` +
-        (u.cache_read_input_tokens != null
-          ? ` cache_read=${u.cache_read_input_tokens}`
-          : ""),
-    );
-    fs.writeFileSync(
-      path.join(OUT_DIR, `${yk}_${set.id}_usage.json`),
-      JSON.stringify(
-        { setId: set.id, choices: choices.length, usage: u },
-        null,
-        2,
-      ),
-      "utf8",
-    );
+    if (batch.failed.length)
+      console.error(
+        `[배치 실패] ${batch.failed.map((f) => `${f.id}(${f.err.slice(0, 40)})`).join(" · ")}`,
+      );
+    if (batch.missing.length) {
+      console.error(
+        `🔴 미생성 ${batch.missing.length}세트: ${batch.missing.join(", ")} — 요청≠산출물(무증상 중단 차단)`,
+      );
+      process.exit(1);
+    }
   }
+}
+
+// [발주A] 배치 실행 — 세트별 격리 + 재시도 1회(§8 D엔진 retry 정합).
+//   한 세트 throw가 나머지를 중단시키지 않는다(실패는 기록·계속). 종료 시 missing 산출.
+//   job.run()은 async(성공=resolve, 실패=throw). §13⑮(7) 양성 회귀를 mock run으로 재현.
+export async function runBatch(jobs) {
+  const requested = [],
+    produced = [],
+    failed = [];
+  for (const j of jobs) {
+    requested.push(j.id);
+    let done = false;
+    for (let attempt = 1; attempt <= 2 && !done; attempt++) {
+      try {
+        await j.run();
+        produced.push(j.id);
+        done = true;
+      } catch (e) {
+        console.error(`[생성실패] ${j.id} 시도 ${attempt}/2: ${e.message}`);
+        if (attempt === 2) failed.push({ id: j.id, err: e.message });
+      }
+    }
+  }
+  const missing = requested.filter((id) => !produced.includes(id));
+  return { requested, produced, failed, missing };
+}
+
+// 세트 1개 생성: API 스트리밍 → 파싱 → 선지수 검증 → repair → 파일 쓰기.
+//   throw 시 호출측(재시도 루프)이 격리. 부분 성공(선지 누락)도 throw = 그 세트 실패.
+async function generateOneSet(client, set, scoped, userPrompt, expectC) {
+  // 실호출 (크레딧 필요) — 스키마: [{ qId, num, pat, analysis }]
+  const resp = await client.messages.create(
+    {
+      model: "claude-sonnet-4-5",
+      // 30선지 세트는 16000으로 잘려 JSON이 미완성됨(2026-07-20 r2025b 실증).
+      // 30선지 세트는 16000으로 잘려 JSON이 미완성됨(2026-07-20 r2025b 실증).
+      // 16000 초과는 SDK가 스트리밍을 요구하므로 stream:true와 함께 상향한다.
+      max_tokens: 40000,
+      stream: true,
+      system: systemPrompt,
+      messages: [{ role: "user", content: userPrompt }],
+    },
+    { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
+  );
+  // 스트리밍 응답을 텍스트·usage로 합산 (16000 초과 요청은 SDK가 스트리밍을 요구)
+  let text = "",
+    stopReason = null;
+  const usage = { input_tokens: 0, output_tokens: 0 };
+  for await (const ev of resp) {
+    if (ev.type === "message_start" && ev.message?.usage) {
+      usage.input_tokens = ev.message.usage.input_tokens ?? 0;
+      usage.output_tokens = ev.message.usage.output_tokens ?? 0;
+    }
+    if (ev.type === "content_block_delta" && ev.delta?.text)
+      text += ev.delta.text;
+    if (ev.type === "message_delta") {
+      if (ev.usage?.output_tokens != null)
+        usage.output_tokens = ev.usage.output_tokens;
+      if (ev.delta?.stop_reason) stopReason = ev.delta.stop_reason;
+    }
+  }
+  // 파싱 실패 진단용 원문 보존(절단·형식 이탈 원인 규명)
+  fs.writeFileSync(
+    path.join(OUT_DIR, `${yk}_${set.id}_raw.txt`),
+    `stop_reason=${stopReason}\nusage=${JSON.stringify(usage)}\n\n${text}`,
+    "utf8",
+  );
+  const choices = parseChoices(text);
+  // [발주A] 선지 개수 == 문항·선지 합 검증 — 누락 선지 = 그 세트 실패(throw로 재시도 유발).
+  if (choices.length !== expectC)
+    throw new Error(
+      `선지 개수 불일치 ${choices.length} ≠ 기대 ${expectC} (stop=${stopReason})`,
+    );
+  // 마커 기호 누락 자동 복원(유일 매치만). 감사성 로그 출력.
+  let repairN = 0;
+  for (const c of choices) {
+    const { analysis, repairs } = repairQuotes(c.analysis, set.sents);
+    c.analysis = analysis;
+    for (const r of repairs) {
+      repairN++;
+      console.log(
+        `[repair] Q${c.qId}[${c.num}] @${r.sentId}: ${JSON.stringify(r.before.slice(0, 30))} → ${JSON.stringify(r.after.slice(0, 30))}`,
+      );
+    }
+  }
+  if (repairN) console.log(`[repair] 마커 복원 ${repairN}건`);
+  const fpath = path.join(OUT_DIR, `${yk}_${set.id}_result.json`);
+  fs.writeFileSync(fpath, JSON.stringify(choices, null, 2), "utf8");
+  // 실단가 측정용 usage 기록 (배치 예산 산출 근거 — 추정 아닌 실측)
+  const u = usage;
+  console.log(
+    `[생성] ${set.id}: ${choices.length}선지 → ${path.relative(ROOT, fpath)} (stop=${stopReason})`,
+  );
+  console.log(
+    `[usage] input=${u.input_tokens ?? "?"} output=${u.output_tokens ?? "?"}` +
+      (u.cache_read_input_tokens != null
+        ? ` cache_read=${u.cache_read_input_tokens}`
+        : ""),
+  );
+  fs.writeFileSync(
+    path.join(OUT_DIR, `${yk}_${set.id}_usage.json`),
+    JSON.stringify(
+      { setId: set.id, choices: choices.length, usage: u },
+      null,
+      2,
+    ),
+    "utf8",
+  );
 }
 
 if (IS_CLI)
