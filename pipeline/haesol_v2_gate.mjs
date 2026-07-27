@@ -20,7 +20,8 @@ const OUT = path.join(__dirname, "output");
 //   용도 한정: §2 FAIL 직전, "구조표기만 다를 뿐 본문에 실재"하는 인용을 오탐에서 제외(cs·anchorGap 무영향).
 const _S2_NORM_RE =
   /[ⓐ-ⓩⒶ-Ⓩ㉠-㉯①-⑳]|\[[A-E]\]|[「」『』【】〔〕⟨⟩《》()（）[\]{}]|[一-鿿㐀-䶿]|[·ㆍ‧,.!?;:*…"“”'‘’`´]/g;
-const _s2norm = (s) =>
+// export: step3_v2 결정론 검증(결정B)이 동일 정규화를 재사용(drift 방지, §13⑮).
+export const _s2norm = (s) =>
   String(s || "")
     .replace(/[！-～]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0xfee0))
     .replace(_S2_NORM_RE, "")

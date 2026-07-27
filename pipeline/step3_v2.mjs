@@ -13,6 +13,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { buildMarkerBlock } from "./marker_context.mjs";
+import { _s2norm } from "./haesol_v2_gate.mjs"; // 결정B 검증 = 결정A 게이트와 동일 정규화(단일 소스)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -359,16 +360,86 @@ export async function runBatch(jobs) {
   return { requested, produced, failed, missing };
 }
 
-// 세트 1개 생성: API 스트리밍 → 파싱 → 선지수 검증 → repair → 파일 쓰기.
-//   throw 시 호출측(재시도 루프)이 격리. 부분 성공(선지 누락)도 throw = 그 세트 실패.
-async function generateOneSet(client, set, scoped, userPrompt, expectC) {
-  // 실호출 (크레딧 필요) — 스키마: [{ qId, num, pat, analysis }]
+// ── [결정B] 생성후 결정론 검증 — 📌 인용 exact substring(결정A _s2norm 정합) ──
+//   각 12+ 큰따옴표 인용이 sent.t/bogi에 (KNOWN 구조표기 정규화 후) 실재하는지 검사.
+//   char-level(古語 하난↔하나·의역·괄호 부연 삽입)은 _s2norm 후에도 불일치 → 실패.
+//   notation diff(각주*·전각·한자병기)는 통과 = 결정A 게이트와 동일 판정(헛 재호출 방지, B-3).
+//   또한 근거 필수 선지(ok:false + 비-AUTO pat)인데 유효 지문 앵커 0개면 실패
+//   (문학 E_required_cs_missing 예방 — 결정B③ 강제).
+const NO_ANCHOR_PATS = new Set(["R3", "V", null]);
+function _nearestSentId(quote, sents) {
+  if (!quote) return null;
+  const nq = _s2norm(quote);
+  let best = null,
+    bl = -1;
+  for (const s of sents) {
+    const B = _s2norm(s.t || "");
+    let i = 0;
+    while (i < nq.length && B.includes(nq.slice(0, i + 1))) i++;
+    if (i > bl) {
+      bl = i;
+      best = s;
+    }
+  }
+  return best ? best.id : null;
+}
+// 한 세트 선지 검증 → 실패 앵커 목록 [{qId,num,quote,nearestSentId[,reason]}].
+//   quote=null + reason:"no_anchor" = 근거 필수인데 유효 인용 자체가 없음.
+export function verifyAnchors(choices, set) {
+  const sents = set.sents || [];
+  const failures = [];
+  for (const c of choices) {
+    const q = (set.questions || []).find((x) => String(x.id) === String(c.qId));
+    const dc = q && (q.choices || []).find((x) => x.num === c.num);
+    const ok = dc ? dc.ok : undefined; // ok는 데이터 정본(생성물엔 없음)
+    const bogi =
+      q &&
+      (typeof q.bogi === "string"
+        ? q.bogi
+        : q.bogi
+          ? JSON.stringify(q.bogi)
+          : "");
+    let passSent = 0,
+      failedHere = false;
+    for (const m of String(c.analysis || "").matchAll(/"([^"]{12,})"/g)) {
+      const qt = m[1];
+      // 다문장은 WARNING(게이트 정합) — exact 대상 아님
+      if (qt.split(/[.!?]/).filter(Boolean).length > 1 || /…|\.{2,}/.test(qt))
+        continue;
+      const nq = _s2norm(qt);
+      if (nq.length < 6) continue;
+      if (sents.some((sn) => _s2norm(sn.t || "").includes(nq))) {
+        passSent++;
+        continue;
+      }
+      if (bogi && _s2norm(bogi).includes(nq)) continue; // 보기 인용(앵커로 안 셈)
+      failedHere = true;
+      failures.push({
+        qId: c.qId,
+        num: c.num,
+        quote: qt,
+        nearestSentId: _nearestSentId(qt, sents),
+      });
+    }
+    const needsAnchor = ok === false && !NO_ANCHOR_PATS.has(c.pat);
+    if (!failedHere && needsAnchor && passSent === 0)
+      failures.push({
+        qId: c.qId,
+        num: c.num,
+        quote: null,
+        nearestSentId: null,
+        reason: "no_anchor",
+      });
+  }
+  return failures;
+}
+
+// 세트 1개 API 생성 → 파싱 → 선지수 검증 → 마커 복원. write 없음(검증·병합은 generateOneSet).
+async function produceChoices(client, set, userPrompt, expectC, tag = "") {
   const resp = await client.messages.create(
     {
       model: "claude-sonnet-4-5",
-      // 30선지 세트는 16000으로 잘려 JSON이 미완성됨(2026-07-20 r2025b 실증).
-      // 30선지 세트는 16000으로 잘려 JSON이 미완성됨(2026-07-20 r2025b 실증).
-      // 16000 초과는 SDK가 스트리밍을 요구하므로 stream:true와 함께 상향한다.
+      // 16000 초과는 SDK가 스트리밍을 요구하므로 stream:true와 함께 상향(2026-07-20 r2025b 실증).
       max_tokens: 40000,
       stream: true,
       system: systemPrompt,
@@ -376,7 +447,6 @@ async function generateOneSet(client, set, scoped, userPrompt, expectC) {
     },
     { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
   );
-  // 스트리밍 응답을 텍스트·usage로 합산 (16000 초과 요청은 SDK가 스트리밍을 요구)
   let text = "",
     stopReason = null;
   const usage = { input_tokens: 0, output_tokens: 0 };
@@ -393,19 +463,16 @@ async function generateOneSet(client, set, scoped, userPrompt, expectC) {
       if (ev.delta?.stop_reason) stopReason = ev.delta.stop_reason;
     }
   }
-  // 파싱 실패 진단용 원문 보존(절단·형식 이탈 원인 규명)
   fs.writeFileSync(
-    path.join(OUT_DIR, `${yk}_${set.id}_raw.txt`),
+    path.join(OUT_DIR, `${yk}_${set.id}${tag}_raw.txt`),
     `stop_reason=${stopReason}\nusage=${JSON.stringify(usage)}\n\n${text}`,
     "utf8",
   );
   const choices = parseChoices(text);
-  // [발주A] 선지 개수 == 문항·선지 합 검증 — 누락 선지 = 그 세트 실패(throw로 재시도 유발).
   if (choices.length !== expectC)
     throw new Error(
       `선지 개수 불일치 ${choices.length} ≠ 기대 ${expectC} (stop=${stopReason})`,
     );
-  // 마커 기호 누락 자동 복원(유일 매치만). 감사성 로그 출력.
   let repairN = 0;
   for (const c of choices) {
     const { analysis, repairs } = repairQuotes(c.analysis, set.sents);
@@ -418,23 +485,70 @@ async function generateOneSet(client, set, scoped, userPrompt, expectC) {
     }
   }
   if (repairN) console.log(`[repair] 마커 복원 ${repairN}건`);
+  return { choices, usage, stopReason };
+}
+
+// 세트 1개: 생성 → [결정B] 결정론 검증 → 실패 시 재호출 1회 → 병합 → flagged 격리 → write.
+//   병합(B-4): 1차 통과 선지 원본 유지, 1차 실패 && 2차 통과 선지만 교체. 여전히 실패=flagged.
+//   throw 시 상위 runBatch가 격리(선지수 불일치 등). scoped는 호출 호환 위해 유지(미사용).
+async function generateOneSet(client, set, scoped, userPrompt, expectC) {
+  const r1 = await produceChoices(client, set, userPrompt, expectC);
+  let choices = r1.choices;
+  let usageNote = r1.usage;
+  const fpFlag = path.join(OUT_DIR, `${yk}_${set.id}_flagged.json`);
+  let flagged = [];
+
+  const fails1 = verifyAnchors(choices, set);
+  if (fails1.length) {
+    const failKeys = new Set(fails1.map((f) => `${f.qId}_${f.num}`));
+    console.log(
+      `[검증] ${set.id}: 1차 앵커 실패 ${fails1.length}건 [${[...failKeys].join(", ")}] → 재호출 1회`,
+    );
+    const r2 = await produceChoices(
+      client,
+      set,
+      userPrompt,
+      expectC,
+      "_recall",
+    );
+    const fails2Keys = new Set(
+      verifyAnchors(r2.choices, set).map((f) => `${f.qId}_${f.num}`),
+    );
+    const c2 = new Map(r2.choices.map((c) => [`${c.qId}_${c.num}`, c]));
+    // 병합: 1차 실패 && 2차 통과인 선지만 재호출본으로 교체
+    choices = choices.map((c) => {
+      const k = `${c.qId}_${c.num}`;
+      return failKeys.has(k) && !fails2Keys.has(k) && c2.has(k) ? c2.get(k) : c;
+    });
+    usageNote = { first: r1.usage, recall: r2.usage };
+    flagged = verifyAnchors(choices, set); // 병합 결과 재검증 = 잔여 실패
+  }
+
+  // flagged 파일: 잔여 있으면 기록, 없으면 이전 잔재 제거(재실행 청결)
+  if (flagged.length) {
+    fs.writeFileSync(fpFlag, JSON.stringify(flagged, null, 2), "utf8");
+    console.log(
+      `[flagged] ${set.id}: 잔여 ${flagged.length}건 옵션B 격리 → ${path.basename(fpFlag)}`,
+    );
+  } else if (fs.existsSync(fpFlag)) {
+    fs.unlinkSync(fpFlag);
+  }
+
   const fpath = path.join(OUT_DIR, `${yk}_${set.id}_result.json`);
   fs.writeFileSync(fpath, JSON.stringify(choices, null, 2), "utf8");
-  // 실단가 측정용 usage 기록 (배치 예산 산출 근거 — 추정 아닌 실측)
-  const u = usage;
   console.log(
-    `[생성] ${set.id}: ${choices.length}선지 → ${path.relative(ROOT, fpath)} (stop=${stopReason})`,
-  );
-  console.log(
-    `[usage] input=${u.input_tokens ?? "?"} output=${u.output_tokens ?? "?"}` +
-      (u.cache_read_input_tokens != null
-        ? ` cache_read=${u.cache_read_input_tokens}`
-        : ""),
+    `[생성] ${set.id}: ${choices.length}선지 → ${path.relative(ROOT, fpath)}` +
+      (flagged.length ? ` · flagged ${flagged.length}` : " · 앵커 clean"),
   );
   fs.writeFileSync(
     path.join(OUT_DIR, `${yk}_${set.id}_usage.json`),
     JSON.stringify(
-      { setId: set.id, choices: choices.length, usage: u },
+      {
+        setId: set.id,
+        choices: choices.length,
+        usage: usageNote,
+        flagged: flagged.length,
+      },
       null,
       2,
     ),
