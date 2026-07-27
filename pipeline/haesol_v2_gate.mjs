@@ -14,6 +14,18 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const OUT = path.join(__dirname, "output");
 
+// [결정A] §2 exact 오탐 필터용 정규화 — step4 _normSpan과 동일 KNOWN 구조표기 strip + 전각↔반각.
+//   제거: 마커(ⓐ㉠①[A])·각주 등 구두점(* 포함)·괄호류·한자(병기 포함)·공백, 그리고 전각ASCII→반각(＋→+).
+//   ⚠ §13⑥: char-level(오타·古語 하난↔하나)은 손대지 않음 → 정규화 후에도 불일치면 계속 FAIL.
+//   용도 한정: §2 FAIL 직전, "구조표기만 다를 뿐 본문에 실재"하는 인용을 오탐에서 제외(cs·anchorGap 무영향).
+const _S2_NORM_RE =
+  /[ⓐ-ⓩⒶ-Ⓩ㉠-㉯①-⑳]|\[[A-E]\]|[「」『』【】〔〕⟨⟩《》()（）[\]{}]|[一-鿿㐀-䶿]|[·ㆍ‧,.!?;:*…"“”'‘’`´]/g;
+const _s2norm = (s) =>
+  String(s || "")
+    .replace(/[！-～]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0xfee0))
+    .replace(_S2_NORM_RE, "")
+    .replace(/\s+/g, "");
+
 // [발주2] 산출물 읽기 — 파일 부재(정상)와 파싱 실패/필수 부재를 구분해 삼키지 않는다.
 //   기존 try/catch → [] 는 "게이트 미실행/산출물 손상"을 "결함 0"으로 오인시켰다.
 //   required=true(필수 산출물)는 부재 시 throw. 어느 경우든 JSON.parse 실패는 throw.
@@ -255,6 +267,18 @@ if (IS_CLI) {
             continue;
           }
           if (bogi && bogi.includes(qt)) continue; // 보기 인용(bogi)
+          // [결정A] KNOWN 구조표기(마커·각주*·전각↔반각·한자병기)만 다르고 본문에 실재 →
+          //   §2 오탐이므로 미집계. cs·anchorGap(위 raw hit)엔 영향 없음. char-level 차(오타·古語)는
+          //   정규화 후에도 불일치라 아래 s2fail로 계속 잡힌다(§13⑥·§13⑮ 양성회귀 대상).
+          {
+            const nqt = _s2norm(qt);
+            if (
+              nqt.length >= 6 &&
+              (sentArr.some((sn) => _s2norm(sn.t || "").includes(nqt)) ||
+                (bogi && _s2norm(bogi).includes(nqt)))
+            )
+              continue;
+          }
           if (
             qt.split(/[.!?]/).filter(Boolean).length > 1 ||
             /…|\.{2,}/.test(qt)
