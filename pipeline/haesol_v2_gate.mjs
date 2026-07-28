@@ -27,6 +27,40 @@ export const _s2norm = (s) =>
     .replace(_S2_NORM_RE, "")
     .replace(/\s+/g, "");
 
+// [verse 매처] 📌 인용이 " / "로 이은 "연속 verse 행"이면 각 행의 verse sent.id 배열 반환(아니면 null).
+//   §13⑬ 운문 다행 인용을 자동 유효 처리(형광펜 다중 정박). 단일 소스 — step4·gate §2·verifyAnchors 공용.
+//   가드1 연속성(adjacency): 매칭 verse 행이 sents 순서상 인접(i,i+1,…)일 때만. 비인접=스티칭 오류 → null.
+//   가드2 전행성: 각 조각이 그 verse 행의 대부분(정규화 길이 ≥60%)을 차지 — 짧은 substring 후렴 오정박 방지.
+//   가드3 유일성: 한 조각이 복수 verse 행에 매칭(후렴)돼 유일 결정 불가 → null(옵션B 유지).
+//   산문 " / "는 verse sent 부재라 자동 null. _s2norm 재사용.
+export function matchVerseMultiSent(quote, sents) {
+  const q = String(quote || "");
+  if (!/\s\/\s/.test(q)) return null;
+  const parts = q
+    .split(/\s*\/\s*/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  if (parts.length < 2) return null;
+  const verses = (sents || []).filter((s) => s.sentType === "verse");
+  if (!verses.length) return null;
+  const pos = new Map(verses.map((v, i) => [v.id, i]));
+  const ids = [];
+  for (const p of parts) {
+    const np = _s2norm(p);
+    if (np.length < 6) return null; // 가드2: 너무 짧은 조각(느슨 매칭 금지)
+    const hits = verses.filter((v) => {
+      const nv = _s2norm(v.t);
+      return nv.includes(np) && np.length >= nv.length * 0.6; // 가드2: 전행 대부분
+    });
+    if (hits.length !== 1) return null; // 가드3: 0개 or 후렴 다중 → null
+    ids.push(hits[0].id);
+  }
+  const idx = ids.map((id) => pos.get(id));
+  for (let i = 1; i < idx.length; i++)
+    if (idx[i] !== idx[i - 1] + 1) return null; // 가드1: 연속성
+  return ids;
+}
+
 // [발주2] 산출물 읽기 — 파일 부재(정상)와 파싱 실패/필수 부재를 구분해 삼키지 않는다.
 //   기존 try/catch → [] 는 "게이트 미실행/산출물 손상"을 "결함 0"으로 오인시켰다.
 //   required=true(필수 산출물)는 부재 시 throw. 어느 경우든 JSON.parse 실패는 throw.
@@ -280,6 +314,8 @@ if (IS_CLI) {
             )
               continue;
           }
+          // [verse 매처] 연속 verse 행을 " / "로 이은 다행 인용은 §13⑬ 정상 → 오탐 미집계.
+          if (matchVerseMultiSent(qt, sentArr)) continue;
           if (
             qt.split(/[.!?]/).filter(Boolean).length > 1 ||
             /…|\.{2,}/.test(qt)

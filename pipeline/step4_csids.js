@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { jsonrepair } from "jsonrepair";
+import { matchVerseMultiSent } from "./haesol_v2_gate.mjs"; // verse 다행 매처(단일 소스, §13⑮)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
@@ -240,6 +241,19 @@ function extractAnalysisSpans(choice, setSents) {
       _jimoonQuotes.push((qm[1] || "").trim());
   for (const quote of _jimoonQuotes) {
     if (quote.length < 8) continue;
+    // [verse 매처] 연속 verse 행을 " / "로 이은 다행 인용은 가드(연속·전행·유일) 통과 시
+    //   각 행 verse sent에 확정 정박(느슨 split 오정박 방지). 통과 못 하면 아래 일반 로직.
+    const _verseIds = matchVerseMultiSent(quote, setSents);
+    if (_verseIds) {
+      const _vparts = quote.split(/\s*\/\s*/).map((p) => p.trim());
+      for (let i = 0; i < _verseIds.length; i++) {
+        const key = `${_verseIds[i]}::${_vparts[i]}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        out.push({ sent_id: _verseIds[i], text: _vparts[i], occurrence: 1 });
+      }
+      continue;
+    }
     // 인용문에 "..." / "…" / 중간 공백 많은 케이스는 split 후 각각 시도
     // 주요 구분: "…" 또는 " / "
     const segments = quote

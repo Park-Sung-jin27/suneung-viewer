@@ -13,7 +13,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { buildMarkerBlock } from "./marker_context.mjs";
-import { _s2norm } from "./haesol_v2_gate.mjs"; // 결정B 검증 = 결정A 게이트와 동일 정규화(단일 소스)
+import { _s2norm, matchVerseMultiSent } from "./haesol_v2_gate.mjs"; // 결정B 검증 = 게이트와 동일 정규화·verse매처(단일 소스)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -417,6 +417,10 @@ export function verifyAnchors(choices, set) {
         continue;
       }
       if (bogi && _s2norm(bogi).includes(nq)) continue; // 보기 인용(앵커로 안 셈)
+      if (matchVerseMultiSent(qt, sents)) {
+        passSent++; // 연속 verse 다행 = 유효 앵커(§13⑬)
+        continue;
+      }
       failedHere = true;
       failures.push({
         qId: c.qId,
