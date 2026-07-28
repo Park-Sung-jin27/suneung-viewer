@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run check:business && vite build",
+    "build": "npm run check:business && npm run check:eng-math-public && vite build",
     "check:business": "node scripts/check-business-profile.mjs",
+    "check:eng-math-public": "node scripts/eng-math-public-data.mjs --check",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -19,6 +20,7 @@
     "chokidar": "^5.0.0",
     "dotenv": "^17.3.1",
     "jsonrepair": "^3.13.3",
+    "katex": "^0.16.47",
     "openai": "^6.35.0",
     "pdf-parse": "^2.4.5",
     "react": "^19.2.4",

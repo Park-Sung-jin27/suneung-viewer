@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 const SUBJECTS = [
   {
     key: "english",
+    id: "2026_csat_19",
     eyebrow: "ENGLISH",
     title: "영어 1문항 체험",
     description: "글의 흐름을 읽고 Sophie의 심경 변화를 골라 보세요.",
@@ -12,10 +13,11 @@ const SUBJECTS = [
   },
   {
     key: "math",
+    id: "2022_06_common_1",
     eyebrow: "MATH",
     title: "수학 1문항 체험",
-    description: "지수법칙으로 식을 정리해 정답까지 이어 가 보세요.",
-    detail: "2022학년도 6월 모의평가 · 1번",
+    description: "지수법칙으로 식을 정리해 정답을 확인해 보세요.",
+    detail: "2022학년도 6월 모의평가 · 공통 1번",
     accent: "#16705b",
     tint: "#eaf7f1",
   },
@@ -191,15 +193,11 @@ export default function EngMathProductHome() {
           지니쌤과 공부하자
         </div>
 
-        <section
-          className="eng-math-home__hero"
-          aria-labelledby="eng-math-home-title"
-        >
+        <section className="eng-math-home__hero" aria-labelledby="eng-math-home-title">
           <span className="eng-math-home__eyebrow">영어·수학 내부 베타 · 1문항 체험</span>
           <h1 id="eng-math-home-title">한 문제로, 공부 감각을 확인하세요.</h1>
           <p className="eng-math-home__lead">
-            영어와 수학에서 지금 바로 한 문제씩 풀고, 정답과 풀이를 이어서 볼 수
-            있습니다.
+            영어는 정답과 근거를, 수학은 정답 확인과 같은 문제 재풀이를 제공합니다.
           </p>
         </section>
 
@@ -209,9 +207,7 @@ export default function EngMathProductHome() {
               key={subject.key}
               className="eng-math-home__subject-card"
               type="button"
-              onClick={() =>
-                navigate(`/eng-math/practice?subject=${subject.key}`)
-              }
+              onClick={() => navigate(`/eng-math/practice?subject=${subject.key}&id=${subject.id}`)}
             >
               <span
                 className="eng-math-home__subject-eyebrow"

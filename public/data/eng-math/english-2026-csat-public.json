@@ -1,0 +1,1663 @@
+{
+  "questions": [
+    {
+      "id": "2026_csat_19",
+      "label": "2026학년도 수능 · 19번",
+      "prompt": "19. 다음 글에 드러난 Sophie의 심경 변화로 가장 적절한 것은?",
+      "passage": "“Where could it be?” Sophie asked herself. It had been more than ten years since she had last visited the area where she had grown up. The village had changed a lot over time. Uncertain, she awkwardly looked around at her surroundings. She walked the narrow streets of the village, unsure about which way to go. Suddenly, Sophie saw a familiar sight. “Yes, this must be it,” she thought. In front of her was a wall with flowers painted on it. Although the colors were now faded, the familiar shapes on the wall were the same ones she had painted with her father as a child. Sophie nodded, smiled brightly, and walked toward the gate. At last, she had finally found the house she had grown up in.",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "confused → pleased"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "confident → embarrassed"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "thrilled → anxious"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "relieved → nervous"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "bored → excited"
+        }
+      ],
+      "answer": 1,
+      "review": {
+        "summary": "정답 ①. Sophie는 처음에는 길을 몰라 혼란스럽고, 뒤에서는 집을 찾아 기뻐합니다.",
+        "approach": "목적·심경은 첫 문장부터 상황을 잡고, 마지막 행동이나 감정 변화가 선지와 맞는지 확인합니다.",
+        "reason": "앞부분의 Uncertain, unsure가 혼란을 만들고, 뒤에서는 familiar sight를 확인한 뒤 smile brightly로 감정이 바뀝니다. 그래서 confused에서 pleased로 가는 ①이 가장 정확합니다.",
+        "trap": {
+          "mark": "④",
+          "text": "relieved → nervous",
+          "reason": "긴장이 커지는 흐름이 아니라, 찾지 못하던 장소를 확인하면서 밝아지는 흐름입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "초반 감정",
+            "quote": "Uncertain,\nshe awkwardly looked around at her surroundings.",
+            "translation": "확신이 없어 주변을 어색하게 둘러본다."
+          },
+          {
+            "origin": "text",
+            "role": "후반 감정",
+            "quote": "Sophie nodded, smiled brightly, and walked toward\nthe gate.",
+            "translation": "고개를 끄덕이고 환하게 웃으며 문으로 걸어간다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_20",
+      "label": "2026학년도 수능 · 20번",
+      "prompt": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "passage": "The study of literature has repeatedly failed to recognize the influence of modern musical lyricists and their contributions to the evolution of language. Unlike Shakespeare, who has been studied and celebrated for his development of the English language, particularly in vocabulary and grammatical structure, modern songwriters have experienced restraints on the acknowledgement of their contributions and largely been ignored. Over the past century, we have witnessed an explosion of incredible literary works by these artists, who, through their music, have used linguistic manipulation and storytelling to enrich our language and literature. Producing lyrics of distinct and complex imagery, songwriters have had an incredible literary impact on our language. Their remarkable works, including influences on modern language development, must be recognized in the field of modern literature.\n* lyricist: 작사가\n** restraint: 제약",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "독특하고 복합적인 이미지 표현 기법을 작사 과정에 적용해야 한다."
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "가사를 통해 작사가들이 언어와 문학에 기여한 바를 인정해야 한다."
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "셰익스피어의 작품이 영문학 발전에 미친 영향을 분석해야 한다."
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "문학 작품을 감상하기 위해 스토리텔링 기법을 이해해야 한다."
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "문학 작품과 가사에 사용되는 언어의 차이를 연구해야 한다. 이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에 따라 답을 하시기 바랍니다. Dear students, I am Amanda Clark, the school club director, and I am writing to you about our school clubs. Over the last few semesters, there have been requests for more diverse school clubs. For this reason, the school decided to expand the number of clubs for extracurricular activities. This provides students with an opportunity to make additional clubs. Students can make any type of club based on their various interests, such as hip-hop, K-pop dancing, or coding. Therefore, I am encouraging you to submit a proposal for a new club that you would like to create. Please turn this in to my office by the end of this week. I look forward to seeing your great ideas. Best regards, Amanda Clark -- 2 of 8 -- 이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다. 홀수형 3 3 8"
+        }
+      ],
+      "answer": 2,
+      "review": {
+        "summary": "정답 ②. 글은 현대 작사가들의 언어·문학적 기여를 인정해야 한다고 주장합니다.",
+        "approach": "주제·요지·제목은 초반 소재를 잡고, 후반의 강한 판단·일반화 문장으로 답을 고릅니다.",
+        "reason": "초반에는 인정받지 못했다는 문제를 제기하고, 마지막에는 must be recognized로 강한 주장문을 제시합니다. 선지 ②가 이 구조를 그대로 일반화합니다.",
+        "trap": {
+          "mark": "③",
+          "text": "셰익스피어의 작품 영향 분석",
+          "reason": "Shakespeare는 비교 대상일 뿐, 글의 주장 대상은 현대 작사가들입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "문제 제기",
+            "quote": "The study of literature has repeatedly failed to recognize the\ninfluence of modern musical lyricists and their contributions\nto the evolution of language.",
+            "translation": "문학 연구가 현대 작사가들의 영향과 언어 발전 기여를 인정하지 못했다."
+          },
+          {
+            "origin": "text",
+            "role": "주장문",
+            "quote": "Their remarkable works,\nincluding influences on modern language development, must\nbe recognized in the field of modern literature.",
+            "translation": "그들의 뛰어난 작품과 현대 언어 발달에 미친 영향은 현대 문학 분야에서 인정되어야 한다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_21",
+      "label": "2026학년도 수능 · 21번",
+      "prompt": "21. 밑줄 친 made a lot of work less sticky가 다음 글에서 의미하는",
+      "passage": "바로 가장 적절한 것은? Digital platforms have made a lot of work less sticky. As work becomes ever more modularised, commoditised and standardised, and as markets for digital work are created, ties between service work and particular places can be disconnected. While the business process of outsourcing that emerged in the 1990s allowed large companies to take advantage of a ‘global reserve army’ by moving their call centres to cheap and distant labour markets, cloudwork changes the volume and granularity at which geographically non-proximate work can take place. A small business in New York can hire a freelance transcriber in Nairobi one day and New Delhi the next. No offices or factories need to be built, no local regulations are observed, and ― in most cases ― no local taxes are paid. The switch in the production network of work happens by simply sending some emails or clicking some buttons on a digital work platform. And, in this way, the employer leaves behind no material traces in the places where it was once an employer.\n* commoditise: 상품화하다\n** granularity: 과립상(顆粒狀)",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "settled the locational dilemma of the global markets"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "elevated the spatial flexibility in conducting business"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "weakened the geographical expansion of local business"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "relieved the strict legal processes of regional outsourcing"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "allowed business to be less complicated in its hiring process"
+        }
+      ],
+      "answer": 2,
+      "review": {
+        "summary": "정답 ②. less sticky는 일이 특정 장소에 붙어 있지 않고 공간적으로 유연해졌다는 뜻입니다.",
+        "approach": "빈칸·밑줄은 빈칸 주변의 앞뒤 논리를 먼저 보고, 마지막에 선지가 그 논리를 일반화하는지 확인합니다.",
+        "reason": "sticky는 특정 장소에 붙어 있다는 느낌입니다. 본문은 디지털 플랫폼 때문에 장소와 일이 분리되고, 고용 위치를 쉽게 바꿀 수 있다고 설명하므로 공간적 유연성을 높였다는 ②가 맞습니다.",
+        "trap": {
+          "mark": "⑤",
+          "text": "hiring process가 덜 복잡해짐",
+          "reason": "핵심은 채용 절차의 단순화가 아니라, 일이 수행되는 장소가 고정되지 않는다는 점입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "핵심 정의",
+            "quote": "ties between\nservice work and particular places can be disconnected.",
+            "translation": "서비스 일과 특정 장소의 연결이 끊어질 수 있다."
+          },
+          {
+            "origin": "text",
+            "role": "예시",
+            "quote": "A\nsmall business in New York can hire a freelance transcriber in\nNairobi one day and New Delhi the next.",
+            "translation": "뉴욕의 작은 회사가 하루는 나이로비, 다음 날은 뉴델리의 사람을 고용할 수 있다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_22",
+      "label": "2026학년도 수능 · 22번",
+      "prompt": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "passage": "A sport ecosystem exists based on the type and rate of coopetition existing. Coopetition is defined as “the simultaneous pursuit of cooperation and competition among firms to leverage strategically important resources for superior value creation purposes”. It is a useful way to understand the dynamic nature of sport businesses which need to collaborate for resource efficiency purposes but potentially compete with each other. This special relationship should be managed properly due to trust and confidence issues being paramount. It can be challenging to be collaborative and competitive in sport as they involve different forms of behaviour. This means a careful balancing act may be required in terms of the amount of emphasis placed on each activity. Often sport managers will try to be more competitive due to performance reasons and less collaborative. By necessity they may need to share information but do so in a cautious manner. This means it might be better to have plans in place about how to pursue both simultaneously. This will ensure one is not neglected at the expense of the other.\n* simultaneous: 동시의\n** paramount: 최고의",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "스포츠 산업에서는 협력과 경쟁 사이의 균형 잡힌 접근이 요구된다."
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "협력에 기반한 경쟁을 위해서 스포츠 정신 함양 교육이 필수적이다."
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "스포츠에서는 성과를 중요시하기 때문에 협력을 과소평가하기 쉽다."
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "스포츠 산업에서는 효율적 자원 활용을 위한 전략이 필요하다."
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "스포츠 산업에서의 성취는 경쟁을 필연적으로 수반한다."
+        }
+      ],
+      "answer": 1,
+      "review": {
+        "summary": "정답 ①. 스포츠 산업에서는 협력과 경쟁을 동시에 다루는 균형이 필요합니다.",
+        "approach": "주제·요지·제목은 초반 소재를 잡고, 후반의 강한 판단·일반화 문장으로 답을 고릅니다.",
+        "reason": "coopetition은 협력과 경쟁이 동시에 있는 상태입니다. 글은 둘 중 하나만 강조하지 말고 균형 있게 계획하라고 하므로 ①이 요지입니다.",
+        "trap": {
+          "mark": "③",
+          "text": "협력을 과소평가하기 쉽다",
+          "reason": "부분 내용은 맞지만, 답은 그 문제를 넘어 협력과 경쟁의 균형을 요구하는 전체 결론이어야 합니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "핵심 일반화",
+            "quote": "This means\na careful balancing act may be required in terms of the amount\nof emphasis placed on each activity.",
+            "translation": "각 활동에 어느 정도 비중을 둘지 신중한 균형 잡기가 필요할 수 있다."
+          },
+          {
+            "origin": "text",
+            "role": "결론",
+            "quote": "This will ensure one is not neglected at\nthe expense of the other.",
+            "translation": "한쪽 때문에 다른 한쪽이 소홀해지지 않게 한다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_23",
+      "label": "2026학년도 수능 · 23번",
+      "prompt": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "passage": "Emphasizing speed over frequency can make sense in contexts where everyone is expected to plan around the timetable, including peak-only commute services and very long trips with low demand. In all other contexts, though, it seems to be a common motorist’s error. Roads are there all the time, so their speed is the most important fact that distinguishes them. But transit is only there if it’s coming soon. If you have a car, you can use a road whenever you want and experience its speed. But transit has to exist when you need it (span), and it needs to be coming soon (frequency). Otherwise, waiting time will wipe out any time savings from a faster service. Unless you’re comfortable planning your life around a particular scheduled trip, speed is worthless without frequency, so a transit map that screams about speed and whispers about frequency may simply be planting confusion.\n* commute: 통근",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "consequences of adjusting frequency of transit"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "significance of designing an accurate transit map"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "importance of valuing frequency in public transportation"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "impact of creating high-speed public transportation systems"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "methods to improve speed and frequency of commute services"
+        }
+      ],
+      "answer": 3,
+      "review": {
+        "summary": "정답 ③. 대중교통은 빠른 것보다 자주 오는 것이 실제 이용 가능성을 결정합니다.",
+        "approach": "주제·요지·제목은 초반 소재를 잡고, 후반의 강한 판단·일반화 문장으로 답을 고릅니다.",
+        "reason": "초반에는 speed over frequency가 가능한 예외를 말하지만, though 이후 일반 상황에서는 frequency가 중요하다고 전환합니다. 따라서 ③이 글의 중심입니다.",
+        "trap": {
+          "mark": "②",
+          "text": "정확한 transit map 설계의 중요성",
+          "reason": "지도는 마지막 예시일 뿐이고, 글 전체의 기준은 frequency입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "전환 뒤 핵심",
+            "quote": "But transit is only there if it’s coming soon.",
+            "translation": "대중교통은 곧 올 때에만 이용 가능한 존재가 된다."
+          },
+          {
+            "origin": "text",
+            "role": "이유",
+            "quote": "Otherwise, waiting\ntime will wipe out any time savings from a faster service.",
+            "translation": "그렇지 않으면 기다리는 시간이 빠른 서비스의 시간 절약을 지워 버린다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_24",
+      "label": "2026학년도 수능 · 24번",
+      "prompt": "24. 다음 글의 제목으로 가장 적절한 것은? [3점]",
+      "passage": "The economic benefit of culturtainment makes it attractive to politicians and policy makers alike. A potential increase in inbound visitor numbers coupled with their demand for related goods and services (travel, accommodation, retail) is an incentive for those within governments and authorities to work with cultural groups in order to develop celebrations and commemorations into larger and more high-profile events. However, such commercialization risks culturtainment becoming homogeneous and losing its original ‘message’ that could lead to a dilution of audiences. This could also lead to smaller non-commercial independent events being set up that would only serve to divide audiences further. This is something that planners and stakeholders will need to balance against potential financial gain. Changing political, social and religious landscapes will lead to the emergence of new cultures, and with them new culturtainment experiences. Overall this is a healthy growth sector of the entertainment industry, but one that by its very nature is delicate in the face of exploitation.\n* homogeneous: 동종의\n** dilution: 희석\n*** exploitation: 착취",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "The Commercialization of Culture and Its Unexpected Benefits"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "Cash or Soul? When Culture Couples with Entertainment"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "Culturtainment: An Ambition of Entertainment to Be a Culture"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "New Cultures! The Poisonous Fruit of Culturtainment"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "Why Balanced Investments Matter in the Entertainment Industry -- 3 of 8 -- 이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다. 4 홀수형 4 8"
+        }
+      ],
+      "answer": 2,
+      "review": {
+        "summary": "정답 ②. 문화와 오락이 결합할 때 경제적 이익과 원래 메시지 보존 사이의 균형이 문제입니다.",
+        "approach": "주제·요지·제목은 초반 소재를 잡고, 후반의 강한 판단·일반화 문장으로 답을 고릅니다.",
+        "reason": "글은 돈이 되는 장점과 문화의 본래 의미가 약해지는 위험을 함께 말합니다. Cash or Soul?이라는 ②가 이 대립을 가장 잘 압축합니다.",
+        "trap": {
+          "mark": "①",
+          "text": "상업화의 예상 밖 이익",
+          "reason": "이익만 말하면 However 뒤의 위험과 균형 문제가 빠집니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "이익 제시",
+            "quote": "The economic benefit of culturtainment makes it attractive to\npoliticians and policy makers alike.",
+            "translation": "컬처테인먼트의 경제적 이익은 정치인과 정책 입안자 모두에게 매력적이다."
+          },
+          {
+            "origin": "text",
+            "role": "역접 뒤 문제",
+            "quote": "However, such commercialization risks culturtainment becoming\nhomogeneous and losing its original ‘message’",
+            "translation": "그러나 그런 상업화는 컬처테인먼트가 획일화되고 원래 메시지를 잃을 위험을 만든다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_25",
+      "label": "2026학년도 수능 · 25번",
+      "prompt": "25. 다음 도표의 내용과 일치하지 않는 것은?",
+      "passage": "The graph above shows the percentages of U.S. teenagers who spent time with friends by communication type, based on a survey conducted between 2014 and 2015.",
+      "figure": {
+        "kind": "stacked_horizontal_bar",
+        "assetPath": "/images/eng-math/english/2026-csat/q25-figure.png",
+        "title": "Percentages of U.S. Teenagers Who Spent Time with Friends by Communication Type (2014–2015)",
+        "alt": "매일과 덜 자주 친구와 시간을 보낸 미국 청소년의 의사소통 유형별 비율. 문자 55·13%, 전화 19·41%, 이메일 6·43%, 화상 채팅 7·37%.",
+        "unit": "%",
+        "categories": [
+          {
+            "id": "text_messaging",
+            "label": "Text Messaging"
+          },
+          {
+            "id": "talking_on_the_phone",
+            "label": "Talking on the Phone"
+          },
+          {
+            "id": "emailing",
+            "label": "Emailing"
+          },
+          {
+            "id": "video_chatting",
+            "label": "Video Chatting"
+          }
+        ],
+        "series": [
+          {
+            "id": "every_day",
+            "label": "Every Day",
+            "values": {
+              "text_messaging": 55,
+              "talking_on_the_phone": 19,
+              "emailing": 6,
+              "video_chatting": 7
+            }
+          },
+          {
+            "id": "less_often",
+            "label": "Less Often",
+            "values": {
+              "text_messaging": 13,
+              "talking_on_the_phone": 41,
+              "emailing": 43,
+              "video_chatting": 37
+            }
+          }
+        ],
+        "notes": [
+          "의사소통 유형별 응답자 수는 같습니다.",
+          "기타 빈도 응답과 무응답은 도표에서 제외됐습니다."
+        ]
+      },
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "In the category of Every Day, text messaging showed the highest percentage among the four types of communication that teenagers used to spend time with friends."
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "In the category of Less Often, the percentage of teenagers who spent time with friends through talking on the phone was more than twice that of teenagers who did so through text messaging."
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "The percentage of teenagers who spent time with friends through talking on the phone in the category of Every Day was lower than that of teenagers who did so in the category of Less Often."
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "In the category of Less Often, emailing was the second highest in percentage among the types of communication listed above."
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "The percentage of teenagers who spent time with friends through video chatting in the category of Less Often was higher than that of teenagers who did so in the category of Every Day."
+        }
+      ],
+      "answer": 4,
+      "review": {
+        "summary": "정답 ④. Less Often에서 Emailing은 43%로 가장 높고, Talking on the Phone이 41%로 두 번째입니다.",
+        "approach": "도표 내용 일치형은 범례를 먼저 나눈 뒤, 같은 범례 안에서 항목별 수치와 순위를 비교합니다.",
+        "reason": "④는 Less Often에서 Emailing이 두 번째라고 말합니다. 실제로는 Emailing 43%가 가장 높고 Talking on the Phone 41%가 두 번째이므로 ④가 도표와 일치하지 않습니다.",
+        "trap": {
+          "mark": "⑤",
+          "text": "video chatting 관련 비교",
+          "reason": "Video Chatting은 Less Often 37%, Every Day 7%이므로 Less Often이 더 높다는 ⑤는 맞는 설명입니다."
+        },
+        "evidence": [
+          {
+            "origin": "figure",
+            "role": "최고 비율",
+            "quote": "Emailing · Less Often · 43%",
+            "translation": "Less Often에서 Emailing은 43%로 가장 높습니다."
+          },
+          {
+            "origin": "figure",
+            "role": "두 번째 비율",
+            "quote": "Talking on the Phone · Less Often · 41%",
+            "translation": "Less Often에서 Talking on the Phone은 41%로 두 번째입니다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_26",
+      "label": "2026학년도 수능 · 26번",
+      "prompt": "26. Max Kleiber에 관한 다음 글의 내용과 일치하지 않는 것은?",
+      "passage": "Max Kleiber, a pioneer in the study of animal biology, was best known for his research on animal nutrition and metabolism. He was born in Zurich, Switzerland in 1893. Kleiber graduated from the Swiss Federal Institute of Technology in 1920 and earned his doctoral degree in 1924. He came to the University of California at Davis (UC Davis) in 1929 to conduct research on energy metabolism in animals. In 1952, Kleiber received the distinguished Borden Award from the American Institute of Nutrition and, a year later, the Morrison Award from the American Society for Animal Production. Kleiber’s book, The Fire of Life, was published in 1961 and subsequently translated into German, Polish, Spanish, and Japanese. Kleiber was an outstanding teacher popular with undergraduates and graduate students alike. Before his death, a new classroom building at UC Davis was named Kleiber Hall in his honor.\n* nutrition: 영양(학)\n** metabolism: 신진대사",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "스위스의 Zurich에서 태어났다."
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "1924년에 박사 학위를 받았다."
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "1952년에 Borden Award와 Morrison Award를 수상했다."
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "그의 저서 The Fire of Life는 여러 언어로 번역되었다."
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "대학생과 대학원생에게 인기 있는 뛰어난 선생님이었다."
+        }
+      ],
+      "answer": 3,
+      "review": {
+        "summary": "정답 ③. Borden Award는 1952년, Morrison Award는 그 다음 해에 받았습니다.",
+        "approach": "내용 일치형은 선지의 수치·시간·대상 표현을 지문 표현과 하나씩 대조합니다.",
+        "reason": "③은 두 상을 모두 1952년에 받은 것처럼 말합니다. 지문은 Morrison Award가 a year later라고 하므로 ③이 일치하지 않습니다.",
+        "trap": {
+          "mark": "④",
+          "text": "The Fire of Life 번역",
+          "reason": "번역 언어가 실제로 여러 개 제시되어 있어 맞는 선지입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "첫 수상 시점",
+            "quote": "In 1952, Kleiber received\nthe distinguished Borden Award",
+            "translation": "1952년에 Kleiber는 Borden Award를 받았다."
+          },
+          {
+            "origin": "text",
+            "role": "두 번째 수상 시점",
+            "quote": "a year later, the Morrison Award",
+            "translation": "1년 뒤 Morrison Award를 받았다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_27",
+      "label": "2026학년도 수능 · 27번",
+      "prompt": "27. School Bell Sound Contest에 관한 다음 안내문의 내용과",
+      "passage": "일치하지 않는 것은? School Bell Sound Contest Wakeville High School is holding a school bell sound contest. The theme of this contest is Happy School Life. Deadline: December 12, 2025 Participants: Wakeville High School students of all grades Application Details ∙Submit entries in MP3 format only. ∙Upload entries to our school website (file size limit: 1MB). ∙Include the description of the sound creation process. Selection Method ∙Three school bell sounds will be selected by student vote, based on creativity and suitability. Awards ∙The winning school bell sounds will replace our current bell sounds. ∙The winners of the contest will each get a wireless speaker.",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "주제는 행복한 학교생활이다."
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "Wakeville 고등학교 모든 학년의 학생이 참여할 수 있다."
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "출품작은 학교 웹사이트에 업로드해야 한다."
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "네 개의 학교 종소리가 학생 투표에 의해 선택될 것이다."
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "우승자는 무선 스피커를 받을 것이다."
+        }
+      ],
+      "answer": 4,
+      "review": {
+        "summary": "정답 ④. 학생 투표로 선택되는 종소리는 네 개가 아니라 세 개입니다.",
+        "approach": "내용 일치형은 선지의 수치·시간·대상 표현을 지문 표현과 하나씩 대조합니다.",
+        "reason": "선지 ④는 네 개라고 바꾸었습니다. 지문은 Three라고 분명히 말하므로 수량이 틀렸습니다.",
+        "trap": {
+          "mark": "⑤",
+          "text": "우승자는 무선 스피커를 받을 것이다",
+          "reason": "Awards 부분에 wireless speaker가 그대로 나오므로 맞는 내용입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "수량 근거",
+            "quote": "Three school bell sounds will be selected by student\nvote",
+            "translation": "세 개의 학교 종소리가 학생 투표로 선택된다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_28",
+      "label": "2026학년도 수능 · 28번",
+      "prompt": "28. Fun Bowling Season Pass에 관한 다음 안내문의 내용과",
+      "passage": "일치하는 것은? Fun Bowling Season Pass If you love bowling, don’t miss out on the best deal of the season! You can have fun with your friends and family. Where to Use: All branches of Bowl Heaven When to Use: January 1 to March 31, 2026 Pass Type Price Details Standard $40 Two free games a day (no discounts for shoe rentals) Silver $60 Three free games a day + 50% off shoe rentals Gold $80 Four free games a day + free shoe rentals ※ All passes include a 20% food and beverage discount. Purchase Details ∙The pass can be purchased only online. ∙Purchases are limited to only one per person. ∙The pass is not transferable to another person. ※ For more information, please visit www.*b#pa *s.com.",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "Bowl Heaven의 일부 지점에서는 사용이 제한된다."
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "스탠다드 패스로는 신발 대여가 할인된다."
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "골드 패스로는 하루에 다섯 번 무료로 게임을 한다."
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "온라인 구매만 가능하다."
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "타인에게 양도할 수 있다. -- 4 of 8 -- 이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다. 홀수형 5 5 8"
+        }
+      ],
+      "answer": 4,
+      "review": {
+        "summary": "정답 ④. 시즌 패스는 온라인에서만 구매할 수 있습니다.",
+        "approach": "내용 일치형은 선지의 수치·시간·대상 표현을 지문 표현과 하나씩 대조합니다.",
+        "reason": "일치 문항이므로 지문과 같은 말을 고르면 됩니다. only online이 ④의 온라인 구매만 가능하다는 말과 정확히 맞습니다.",
+        "trap": {
+          "mark": "⑤",
+          "text": "타인에게 양도할 수 있다",
+          "reason": "지문은 not transferable라고 하므로 정반대입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "구매 방식",
+            "quote": "The pass can be purchased only online.",
+            "translation": "패스는 온라인으로만 구매할 수 있다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_29",
+      "label": "2026학년도 수능 · 29번",
+      "prompt": "29. 다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?",
+      "passage": "We are exceptionally smart, and this helps us adapt to a wide range of environments. But we are not nearly smart enough as individuals ① to solve the adaptive problems that confronted modern humans as they spread across the globe. The package of tools, foraging techniques, ecological knowledge, and social arrangements used by any group of foragers ② being far too complex for any individual to create. We are able to learn all the things we need to know in each of the many different environments ③ in which we live only because we acquire information from others. We are much better at learning from others than other species are, and we are ④ motivated to learn from others even when we do not understand why our models are doing what they are doing. This psychology allows human populations to accumulate pools of adaptive information that ⑤ greatly exceed the inventive capacities of individuals.\n* forage: 구하러 다니다",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "to solve the adaptive problems that confronted modern humans as they spread across the globe. The package of tools, foraging techniques, ecological knowledge, and social arrangements used by any group of foragers"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "being far too complex for any individual to create. We are able to learn all the things we need to know in each of the many different environments"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "in which we live only because we acquire information from others. We are much better at learning from others than other species are, and we are"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "motivated to learn from others even when we do not understand why our models are doing what they are doing. This psychology allows human populations to accumulate pools of adaptive information that"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "greatly exceed the inventive capacities of individuals. * forage: 구하러 다니다"
+        }
+      ],
+      "answer": 2,
+      "review": {
+        "summary": "정답 ②. 주어 The package에 필요한 동사가 being이 아니라 is입니다.",
+        "approach": "표시형 문항은 ①~⑤가 붙은 바로 그 부분의 문법·의미·흐름 역할을 따져 답을 고릅니다.",
+        "reason": "The package가 문장의 주어이고, used by any group of foragers는 뒤에서 꾸며 주는 말입니다. 따라서 주어를 받아 줄 정동사 is가 필요하므로 ② being이 틀렸습니다.",
+        "trap": {
+          "mark": "⑤",
+          "text": "greatly exceed",
+          "reason": "that은 pools of adaptive information을 받고, 복수 동사 exceed가 자연스럽습니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "주어 덩어리",
+            "quote": "The \tpackage \tof \ttools, \tforaging \ttechniques, \tecological\nknowledge, and social arrangements used by any group of\nforagers",
+            "translation": "도구, 기술, 지식, 사회적 장치의 묶음이 주어이다."
+          },
+          {
+            "origin": "text",
+            "role": "틀린 술어",
+            "quote": "being far too complex for any individual to create.",
+            "translation": "한 개인이 만들기에는 너무 복잡하다는 뜻인데, 문장 동사가 되지 못한다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_30",
+      "label": "2026학년도 수능 · 30번",
+      "prompt": "30. 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지",
+      "passage": "않은 것은? [3점] Situational ethics is an ethical theory that takes into account the context of a situation or an act when judging whether it is ethical. Supporters of this theory willingly permit casting aside ① absolute moral standards. In the absence of a universal standard or law, what matters is the outcome or consequences; so, the end ② justifies the means. Possibly the following contrasting realities can help illustrate the application of situational ethics. In a pickup game of basketball played among friends, everyone is expected to call his or her own fouls or acknowledge knocking the ball out-of-bounds. Caring about one’s friends and maybe getting to ③ keep playing with the group leads to these actions. But, once an organized game is played with officials, most athletes will not admit to the same fouls or violations as the end goal of winning is more important than expressing ④ concern for competitors. Situational ethics has been extended by many athletes and coaches to mean trying to get away with as many actions on the field or court as possible to ⑤ abandon competitive advantages. [31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "absolute moral standards. In the absence of a universal standard or law, what matters is the outcome or consequences; so, the end"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "justifies the means. Possibly the following contrasting realities can help illustrate the application of situational ethics. In a pickup game of basketball played among friends, everyone is expected to call his or her own fouls or acknowledge knocking the ball out-of-bounds. Caring about one’s friends and maybe getting to"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "keep playing with the group leads to these actions. But, once an organized game is played with officials, most athletes will not admit to the same fouls or violations as the end goal of winning is more important than expressing"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "concern for competitors. Situational ethics has been extended by many athletes and coaches to mean trying to get away with as many actions on the field or court as possible to"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "abandon competitive advantages. [31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오."
+        }
+      ],
+      "answer": 5,
+      "review": {
+        "summary": "정답 ⑤. 경쟁 우위를 버리는 것이 아니라 얻으려는 문맥입니다.",
+        "approach": "표시형 문항은 ①~⑤가 붙은 바로 그 부분의 문법·의미·흐름 역할을 따져 답을 고릅니다.",
+        "reason": "상황 윤리의 예시는 경기에서 이기기 위해 유리함을 챙기는 방향입니다. 그래서 abandon은 문맥상 gain이나 secure 쪽으로 바뀌어야 합니다.",
+        "trap": {
+          "mark": "④",
+          "text": "concern",
+          "reason": "organized game에서는 경쟁자 배려보다 승리가 중요하다는 대조라서 concern은 자연스럽습니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "문맥 방향",
+            "quote": "the end goal of winning is more\nimportant than expressing",
+            "translation": "이기는 최종 목표가 더 중요해지는 문맥이다."
+          },
+          {
+            "origin": "text",
+            "role": "오류 위치",
+            "quote": "trying to get away with as many actions on the field or\ncourt as possible to ⑤ abandon competitive advantages.",
+            "translation": "가능한 많은 행동을 몰래 해내 경쟁 우위를 버린다는 말은 문맥과 반대이다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_31",
+      "label": "2026학년도 수능 · 31번",
+      "prompt": "31. The early grain trade firms were active in both",
+      "passage": "31.  ____ The  early  grain  trade  firms  were  active  in  both\n\nsurplus-producing and food deficit regions, and these firms made it their business to know the state of supply and demand in both. Because this information was the key to their , these firms worked in relative secrecy, frequently built on family ties, trust, and loyalty. In addition, these firms were able to benefit from the rise of commodity exchanges and commodities futures markets that emerged in the mid-1800s. Agricultural markets are naturally unstable, due to changes in harvest size that result from variable weather patterns and other factors. Locking-in prices by buying and selling grain for future delivery helped these firms to minimize such risks. It made sense for the grain trading companies to manage their risks within a single firm that was operating in more than one country, rather than operating as independent national companies trading with each other. Their access to information in multiple markets enabled them to easily cover the risks associated with agricultural commodity trade.\n* deficit: 부족",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "profitability"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "unification"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "innovation"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "reputation"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "morality"
+        }
+      ],
+      "answer": 1,
+      "review": {
+        "summary": "정답 ①. 정보가 곡물 무역 회사의 수익성을 좌우했다는 구조입니다.",
+        "approach": "빈칸·밑줄은 빈칸 주변의 앞뒤 논리를 먼저 보고, 마지막에 선지가 그 논리를 일반화하는지 확인합니다.",
+        "reason": "회사들이 공급과 수요 정보를 비밀스럽게 다룬 이유는 그것이 돈을 버는 능력과 직결되었기 때문입니다. 위험을 줄이고 거래를 유리하게 만드는 흐름이므로 profitability가 들어갑니다.",
+        "trap": {
+          "mark": "④",
+          "text": "reputation",
+          "reason": "신뢰와 가족 관계가 나오지만, 핵심은 평판 자체가 아니라 정보로 위험을 관리해 이익을 내는 것입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "빈칸 앞 논리",
+            "quote": "Because \tthis \tinformation \twas \tthe \tkey \tto \ttheir",
+            "translation": "이 정보가 그들의 무엇인가에 핵심이었다."
+          },
+          {
+            "origin": "text",
+            "role": "결론 근거",
+            "quote": "Their access to\ninformation in multiple markets enabled them to easily cover\nthe risks associated with agricultural commodity trade.",
+            "translation": "여러 시장 정보에 접근할 수 있어 농산물 거래 위험을 쉽게 덮을 수 있었다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_32",
+      "label": "2026학년도 수능 · 32번",
+      "prompt": "32. The basic guidelines for good style are not mysterious; in fact,",
+      "passage": "32.  ____ The basic guidelines for good style are not mysterious; in fact,\n\nyou use them every day in conversation. In conversation and in writing, we all rely heavily on cooperation to make sense of exchanges, and a polished practical style makes cooperation easier. Writers develop such a style by acknowledging that readers expect the same things that listeners expect in conversation: clarity, relevance, and proportion. If you listen to someone who is not clear, who cannot stay on the topic, or who offers too much or too little information, you will quickly lose interest in the conversation. Writers, too, need to be clear, stay on the topic, and give information appropriately. In fact, this attention to audience and appropriateness may be even more important in writing than in conversation because writing does not permit the nonverbal communication and immediate feedback that are part of conversation. As writers, we have to ; in effect, we have to imagine both halves of a virtual conversation. [3점]",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "recognize the limitations of writing and conversation"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "envision the reader’s preference for stylistic writing"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "picture the reader’s desire for more knowledge"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "develop collaborative writing with readers"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "anticipate the absent reader’s response -- 5 of 8 -- 이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다. 6 홀수형 6 8"
+        }
+      ],
+      "answer": 5,
+      "review": {
+        "summary": "정답 ⑤. 글쓰기는 독자의 즉각 반응이 없으므로 독자의 반응을 미리 예상해야 합니다.",
+        "approach": "빈칸·밑줄은 빈칸 주변의 앞뒤 논리를 먼저 보고, 마지막에 선지가 그 논리를 일반화하는지 확인합니다.",
+        "reason": "앞에서는 독자가 대화 상대처럼 명확성, 관련성, 균형을 기대한다고 했고, 뒤에서는 가상의 대화 양쪽을 상상해야 한다고 합니다. 따라서 없는 독자의 반응을 예상한다는 ⑤가 맞습니다.",
+        "trap": {
+          "mark": "④",
+          "text": "develop collaborative writing with readers",
+          "reason": "독자와 실제로 공동 글쓰기를 하라는 말이 아니라, 독자의 반응을 머릿속에서 예상하라는 뜻입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "문제 상황",
+            "quote": "writing does\nnot \tpermit \tthe \tnonverbal \tcommunication \tand \timmediate\nfeedback that are part of conversation.",
+            "translation": "글쓰기는 대화에 있는 비언어적 소통과 즉각 피드백을 허용하지 않는다."
+          },
+          {
+            "origin": "text",
+            "role": "빈칸 뒤 재진술",
+            "quote": "we have to imagine both halves of a virtual conversation.",
+            "translation": "가상의 대화 양쪽을 모두 상상해야 한다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_33",
+      "label": "2026학년도 수능 · 33번",
+      "prompt": "33. Giving clients sufficient opportunity to react to your designs",
+      "passage": "while in progress is a key to professional success. Similarly, involving prospective building users as well as clients is even more valuable in the long run. Say your client is a large corporation, such as a health care provider. While the hospital administration may serve as your client, no doubt the perspectives of administration personnel will differ significantly from those of doctors, interns, residents, nurses, and other medical staff who use the building regularly. In addition, the experiences of patients and visitors who use the building irregularly, often as a result of life-threatening emergencies, are altogether different as well. Understanding how each type of user experiences the current medical environment as well as how each reacts to your prospective designs inevitably produces a better building. People are likely to be more satisfied with a new building or addition if they ____. For a large institution, this can translate into increased productivity on the job, reduced absenteeism, less turnover, and lower costs.",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "have been engaged in multiple design training sessions"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "are given the opportunity to draft a new design"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "have established trust with the building designers"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "have been consulted in the design process"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "share their perspectives on the building with each other"
+        }
+      ],
+      "answer": 4,
+      "review": {
+        "summary": "정답 ④. 건물 사용자가 설계 과정에서 의견을 낼 때 더 나은 건물이 됩니다.",
+        "approach": "빈칸·밑줄은 빈칸 주변의 앞뒤 논리를 먼저 보고, 마지막에 선지가 그 논리를 일반화하는지 확인합니다.",
+        "reason": "글 전체가 다양한 사용자 집단의 경험과 반응을 설계 중에 반영해야 한다고 말합니다. 그래서 빈칸에는 설계 과정에서 의견을 들었다는 ④가 들어갑니다.",
+        "trap": {
+          "mark": "②",
+          "text": "직접 새 설계를 초안 작성",
+          "reason": "사용자를 참여시키는 것이지, 사용자가 설계를 직접 작성해야 한다는 말은 아닙니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "핵심 방향",
+            "quote": "involving prospective building users as well as clients is even\nmore valuable in the long run.",
+            "translation": "고객뿐 아니라 장래 건물 사용자까지 참여시키는 것이 장기적으로 더 가치 있다."
+          },
+          {
+            "origin": "text",
+            "role": "빈칸 문장",
+            "quote": "People are likely to be more satisfied with a new building or\naddition if they",
+            "translation": "사람들은 어떤 조건일 때 새 건물에 더 만족할 가능성이 크다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_34",
+      "label": "2026학년도 수능 · 34번",
+      "prompt": "34. Kant was a strong defender of the rule of law as the",
+      "passage": "ultimate guarantee, not only of security and peace, but also of freedom. He believed that human societies were moving towards more rational forms regulated by effective and binding legal frameworks because only such frameworks enabled people to live in harmony, to prosper and to co-operate. However, his belief in inevitable progress was not based on an optimistic or high-minded view of human nature. On the contrary, it comes close to Hobbes’s outlook: man’s violent and conflict-prone nature makes it necessary to establish and maintain an effective legal framework in order to secure peace. We cannot count on people’s benevolence or goodwill, but even ‘a nation of devils’ can live in harmony in a legal system that binds every citizen equally. Ideally, the law is the embodiment of those political principles that all rational beings would freely choose. If such laws forbid them to do something that they would not rationally choose to do anyway, then the law cannot be ____. [3점]\n* benevolence: 자비심",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "regarded as reasonably confining human liberty"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "viewed as a strong defender of the justice system"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "understood as a restraint on their freedom"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "enforced effectively to suppress their evil nature"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "accepted within the assumption of ideal legal frameworks"
+        }
+      ],
+      "answer": 3,
+      "review": {
+        "summary": "정답 ③. 합리적으로 선택하지 않을 행동을 금지하는 법은 자유의 제약으로 볼 수 없습니다.",
+        "approach": "빈칸·밑줄은 빈칸 주변의 앞뒤 논리를 먼저 보고, 마지막에 선지가 그 논리를 일반화하는지 확인합니다.",
+        "reason": "Kant에게 법은 자유를 없애는 장치가 아니라, 합리적 존재가 스스로 선택할 원칙의 구현입니다. 그러므로 그런 법은 자유에 대한 restraint로 이해될 수 없습니다.",
+        "trap": {
+          "mark": "④",
+          "text": "evil nature 억압",
+          "reason": "악한 본성 이야기는 법의 필요성을 설명하는 배경이고, 빈칸은 자유와 법의 관계를 묻습니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "법의 정의",
+            "quote": "Ideally, the law is the embodiment of those\npolitical \tprinciples \tthat \tall \trational \tbeings \twould \tfreely\nchoose.",
+            "translation": "이상적으로 법은 모든 합리적 존재가 자유롭게 선택할 정치 원칙의 구현이다."
+          },
+          {
+            "origin": "text",
+            "role": "빈칸 조건",
+            "quote": "If such laws forbid them to do something that they\nwould not rationally choose to do anyway, then the law cannot\nbe",
+            "translation": "어차피 합리적으로 선택하지 않을 일을 금지한다면, 그 법은 무엇으로 볼 수 없다는 조건이다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_35",
+      "label": "2026학년도 수능 · 35번",
+      "prompt": "35. 다음 글에서 전체 흐름과 관계 없는 문장은?",
+      "passage": "There are few of us who don’t at least want to make time for self-care activities such as exercise, hobbies, or relaxation. We start each day with the best of intentions but then get stuck by the flood of email messages or pulled into an unexpected meeting. ① As we struggle to reprioritize so we can get everything done before our deadlines, often our self-care activities are the first thing to be given up. ② No matter how much we plan, we all occasionally have days when that happens. ③ In the short term, the impact of missing that grant deadline may be greater than the impact of missing a woodworking class. ④ Needless to say, we should try to enroll in the woodworking class before the design class because it is more competitive to get into and more beneficial to us. ⑤ But it’s important to recognize the cumulative impact of not prioritizing self-care and to make sure that in the long term, this is the exception rather than the norm.",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "As we struggle to reprioritize so we can get everything done before our deadlines, often our self-care activities are the first thing to be given up."
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "No matter how much we plan, we all occasionally have days when that happens."
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "In the short term, the impact of missing that grant deadline may be greater than the impact of missing a woodworking class."
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "Needless to say, we should try to enroll in the woodworking class before the design class because it is more competitive to get into and more beneficial to us."
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "But it’s important to recognize the cumulative impact of not prioritizing self-care and to make sure that in the long term, this is the exception rather than the norm. [36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것을 고르시오."
+        }
+      ],
+      "answer": 4,
+      "review": {
+        "summary": "정답 ④. 글은 자기 관리 시간을 잃는 문제를 말하는데, ④만 수업 등록 경쟁 이야기를 합니다.",
+        "approach": "표시형 문항은 ①~⑤가 붙은 바로 그 부분의 문법·의미·흐름 역할을 따져 답을 고릅니다.",
+        "reason": "나머지는 바쁜 일정 때문에 자기 관리를 미루는 흐름입니다. ④는 목공 수업과 디자인 수업의 경쟁률 비교로 주제가 바뀌므로 전체 흐름에서 빠집니다.",
+        "trap": {
+          "mark": "③",
+          "text": "grant deadline과 woodworking class 비교",
+          "reason": "③은 단기적으로 마감이 자기 관리보다 커 보인다는 흐름을 이어 줍니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "글의 소재",
+            "quote": "self-care activities such as exercise, hobbies, or relaxation.",
+            "translation": "운동, 취미, 휴식 같은 자기 관리 활동이 소재이다."
+          },
+          {
+            "origin": "text",
+            "role": "무관 문장",
+            "quote": "Needless to say, we should try to enroll\nin the woodworking class before the design class because it is\nmore competitive to get into and more beneficial to us.",
+            "translation": "목공 수업을 디자인 수업보다 먼저 등록해야 한다는 문장이다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_36",
+      "label": "2026학년도 수능 · 36번",
+      "prompt": "36.",
+      "passage": "We usually think of a clock as a physical thing, like an alarm clock or a wristwatch. But a clock is really a process embodied in a machine, and the nature of that process is repetitive. (A) Indeed, it is almost impossible to think of a clock that does not depend on a repetitive cycle of events. The only example that comes to mind readily is a candle marked in hours. But here too there is iteration ― the repeated burning of molecules of wax ― so this too is an iterative process, although at first masked. (B) The use of radiocarbon dating is another, much longer scale clock that also appears to be like this. It seems to yield a smooth time scale but in fact does not: the decay of atoms of carbon-14 is repetitive, although on a large scale it gives the appearance of being continuous. (C) A clock can be almost any process that repeats itself over and over again for an indefinite period. Water clocks drip at a steady pace; quartz crystals vibrate regularly.\n* molecule: 분자\n** quartz: 석영(石英) ① ③ ⑤ (A) (B) (C) － － － (C) (C) (B) － － － (B) (A) (A) ② ④ (B) (C) － － (A) (A) － － (C) (B)",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": ""
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": ""
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "(A) (B) (C) － － － (C) (C) (B) － － － (B) (A) (A)"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": ""
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "(B) (C) － － (A) (A) － － (C) (B) -- 6 of 8 -- 이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다. 홀수형 7 7 8"
+        }
+      ],
+      "answer": 4,
+      "review": {
+        "summary": "정답 ④. 시계는 반복 과정이라는 정의 뒤에 C가 일반화, A와 B가 예시 확장으로 이어집니다.",
+        "approach": "순서·삽입은 주어진 문장과 각 후보 첫 문장의 연결고리, 그리고 뒤 문장이 받는 말을 함께 확인합니다.",
+        "reason": "주어진 글의 반복 과정이라는 정의를 C가 바로 받아 일반화합니다. A는 반복 주기 없는 시계를 상상하기 어렵다는 추가 설명이고, B의 another는 앞의 예시들이 나온 뒤에야 자연스럽습니다.",
+        "trap": {
+          "mark": "①",
+          "text": "(A)-(B)-(C)",
+          "reason": "B의 another가 받을 앞선 예시가 충분하지 않은 채 너무 일찍 나옵니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "주어진 글 핵심어",
+            "quote": "a clock is really a process\nembodied in a machine, and the nature of that process is\nrepetitive.",
+            "translation": "시계는 기계 속에 구현된 과정이고, 그 과정은 반복적이다."
+          },
+          {
+            "origin": "text",
+            "role": "C 첫 문장",
+            "quote": "A clock can be almost any process that repeats itself over\nand over again for an indefinite period.",
+            "translation": "시계는 무기한 반복되는 거의 모든 과정일 수 있다."
+          },
+          {
+            "origin": "text",
+            "role": "B 연결어",
+            "quote": "The use of radiocarbon dating is another, much longer\nscale clock",
+            "translation": "방사성 탄소 연대 측정은 또 다른 더 긴 규모의 시계이다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_37",
+      "label": "2026학년도 수능 · 37번",
+      "prompt": "37.",
+      "passage": "Philosophy allows us to ask much broader questions than many other scientific disciplines. It is capable of looking at the bigger picture and providing important insights into the relationships between different areas of knowledge. (A) This means that while philosophy can provide valuable insights into theoretical concepts and broader ethical questions, it needs to be supplemented by empirical findings and experiments to reach a more comprehensive understanding. (B) Philosophers tend to ask questions rather than provide definitive answers, and their contributions often consist of challenging established assumptions and proposing new research approaches. However, for a more comprehensive understanding of the nature of consciousness, close collaboration between philosophy and neuroscience is required. (C) Philosophy is particularly important for the interdisciplinary efforts of cognitive science, where it helps to bridge gaps between different disciplines and pioneer new ways for research. Unlike scientific methods, philosophizing is a non-empirical approach that attempts to validate concepts through logical thinking and argumentation. [3점]\n* empirical: 경험의 ① ③ ⑤ (A) (B) (C) － － － (C) (C) (B) － － － (B) (A) (A) ② ④ (B) (C) － － (A) (A) － － (C) (B) [38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장 적절한 곳을 고르시오.",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": ""
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": ""
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "(A) (B) (C) － － － (C) (C) (B) － － － (B) (A) (A)"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": ""
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "(B) (C) － － (A) (A) － － (C) (B) [38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장 적절한 곳을 고르시오."
+        }
+      ],
+      "answer": 5,
+      "review": {
+        "summary": "정답 ⑤. 철학의 큰 그림 역할에서 C의 학제 간 역할, B의 협업 필요, A의 This means로 이어집니다.",
+        "approach": "순서·삽입은 주어진 문장과 각 후보 첫 문장의 연결고리, 그리고 뒤 문장이 받는 말을 함께 확인합니다.",
+        "reason": "주어진 글의 different areas of knowledge를 C가 interdisciplinary efforts로 받습니다. B는 그중 철학과 신경과학의 협업 필요를 말하고, A의 This means가 그 협업의 의미를 정리합니다.",
+        "trap": {
+          "mark": "④",
+          "text": "(B)-(A)-(C)",
+          "reason": "A의 This means는 B 뒤에 올 수 있지만, C의 학제 간 틀을 먼저 깔아야 주어진 글과 자연스럽게 연결됩니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "주어진 글 연결고리",
+            "quote": "relationships between different areas of knowledge.",
+            "translation": "서로 다른 지식 영역 사이의 관계가 핵심 연결고리이다."
+          },
+          {
+            "origin": "text",
+            "role": "C 첫 문장",
+            "quote": "Philosophy is particularly important for the interdisciplinary\nefforts of cognitive science",
+            "translation": "철학은 인지과학의 학제 간 노력에 특히 중요하다."
+          },
+          {
+            "origin": "text",
+            "role": "B 후반",
+            "quote": "However, for a more comprehensive\nunderstanding \tof \tthe \tnature \tof \tconsciousness, \tclose\ncollaboration between philosophy and neuroscience is\nrequired.",
+            "translation": "의식의 본성을 더 포괄적으로 이해하려면 철학과 신경과학의 긴밀한 협업이 필요하다."
+          },
+          {
+            "origin": "text",
+            "role": "A 지시어",
+            "quote": "This means that while philosophy can provide valuable\ninsights",
+            "translation": "This means가 앞의 협업 필요성을 받아 설명한다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_38",
+      "label": "2026학년도 수능 · 38번",
+      "prompt": "38.",
+      "passage": "Sometimes these internal narratives we form not only shape our beliefs and opinions but also become deeply rooted in our identity. While stories clearly dominate statistics from both memorability and persuasiveness perspectives, it’s rarely a battle between facts and anecdotes ― or even facts and other facts. The real clash is actually between stories: the predominant incumbent and a new challenger. ( ① ) As storytelling creatures, we routinely form narratives to help us understand the world around us. ( ② ) When we experience different events or encounter various facts, our minds seek to make sense of them by forming stories around them. ( ③ ) For example, if you have had some bad experiences with graduates from a particular university, you may create a negative narrative in your mind about people who went to that school. ( ④ ) Suddenly, you judge everyone from the university by what you’ve experienced on just a few unfortunate occasions. ( ⑤ ) For example, the narratives you have formed around gun control or climate change are most likely related with your political ideology ― who you are as an individual.\n* anecdote: 일화\n** incumbent: 점유자",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": ") As storytelling creatures, we routinely form narratives to help us understand the world around us. ("
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": ") When we experience different events or encounter various facts, our minds seek to make sense of them by forming stories around them. ("
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": ") For example, if you have had some bad experiences with graduates from a particular university, you may create a negative narrative in your mind about people who went to that school. ("
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": ") Suddenly, you judge everyone from the university by what you’ve experienced on just a few unfortunate occasions. ("
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": ") For example, the narratives you have formed around gun control or climate change are most likely related with your political ideology ― who you are as an individual. * anecdote: 일화 ** incumbent: 점유자"
+        }
+      ],
+      "answer": 5,
+      "review": {
+        "summary": "정답 ⑤. 삽입문은 내러티브가 정체성에 뿌리내린다는 말이라, 정치 이념 예시 바로 앞에 들어갑니다.",
+        "approach": "순서·삽입은 주어진 문장과 각 후보 첫 문장의 연결고리, 그리고 뒤 문장이 받는 말을 함께 확인합니다.",
+        "reason": "④ 뒤까지는 내러티브가 판단을 바꾸는 예시입니다. 삽입문이 들어가면 그 다음 ⑤ 뒤의 정치 이념 예시가 정체성까지 뿌리내린 내러티브의 예시가 됩니다.",
+        "trap": {
+          "mark": "④",
+          "text": "④",
+          "reason": "④ 뒤에 넣으면 대학 예시의 판단 결과와 정체성 예시 사이 연결은 가능하지만, 삽입문 뒤에 바로 identity 예시가 이어지는 ⑤가 더 분명합니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "앞 예시",
+            "quote": "you may create a negative narrative in your mind\nabout people who went to that school.",
+            "translation": "특정 대학 출신에 대한 부정적 내러티브를 만들 수 있다."
+          },
+          {
+            "origin": "text",
+            "role": "믿음·판단 결과",
+            "quote": "Suddenly, you\njudge \teveryone \tfrom \tthe \tuniversity \tby \twhat \tyou’ve\nexperienced on just a few unfortunate occasions.",
+            "translation": "몇 번의 경험으로 그 대학 출신 모두를 판단하게 된다."
+          },
+          {
+            "origin": "text",
+            "role": "뒤 예시",
+            "quote": "For\nexample, the narratives you have formed around gun control\nor climate change are most likely related with your political\nideology",
+            "translation": "총기 규제나 기후 변화에 대한 내러티브는 정치 이념과 관련될 가능성이 크다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_39",
+      "label": "2026학년도 수능 · 39번",
+      "prompt": "39.",
+      "passage": "The difference is that the action in the game world can only be explored through the virtual bodily space of the avatar. A video game has its own model of reality, internal to itself and separate from the player’s external reality, the player’s bodily space and the avatar’s bodily space. ( ① ) The avatar’s bodily space, the potential actions of the avatar in the game world, is the only way in which the reality of the external reality of the game world can be perceived. ( ② ) As in the real world, perception requires action. ( ③ ) Players extend their perceptual field into the game, encompassing the available actions of the avatar. ( ④ ) The feedback loop of perception and action that enables you to navigate the world around you is now one step removed: instead of perceiving primarily through interaction of your own body with the external world, you’re perceiving the game world through interaction of the avatar. ( ⑤ ) The entire perceptual system has been extended into the game world. [3점]\n* encompass: 둘러싸다",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": ") The avatar’s bodily space, the potential actions of the avatar in the game world, is the only way in which the reality of the external reality of the game world can be perceived. ("
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": ") As in the real world, perception requires action. ("
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": ") Players extend their perceptual field into the game, encompassing the available actions of the avatar. ("
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": ") The feedback loop of perception and action that enables you to navigate the world around you is now one step removed: instead of perceiving primarily through interaction of your own body with the external world, you’re perceiving the game world through interaction of the avatar. ("
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": ") The entire perceptual system has been extended into the game world. [3점] * encompass: 둘러싸다"
+        }
+      ],
+      "answer": 3,
+      "review": {
+        "summary": "정답 ③. 현실과 게임 모두 지각에는 행동이 필요하지만, 게임에서는 그 행동이 아바타를 통해서만 가능하다는 차이가 들어가야 합니다.",
+        "approach": "순서·삽입은 주어진 문장과 각 후보 첫 문장의 연결고리, 그리고 뒤 문장이 받는 말을 함께 확인합니다.",
+        "reason": "② 뒤 문장은 현실과 게임의 공통점인 perception requires action입니다. 삽입문은 바로 그 action이 게임에서는 avatar를 통해서만 가능하다는 차이를 열고, ③ 뒤 문장이 available actions of the avatar로 그 차이를 이어받습니다.",
+        "trap": {
+          "mark": "④",
+          "text": "④",
+          "reason": "④ 뒤 문장은 이미 one step removed라는 결과를 말합니다. 차이를 처음 제시하는 문장이 그 결과 뒤로 가면 원인과 결과 순서가 늦어집니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "공통점",
+            "quote": "As in the\nreal world, perception requires action.",
+            "translation": "현실 세계에서처럼 지각에는 행동이 필요하다."
+          },
+          {
+            "origin": "text",
+            "role": "삽입문",
+            "quote": "The difference is that the action in the game world can only\nbe explored through the virtual bodily space of the avatar.",
+            "translation": "차이는 게임 세계의 행동이 아바타의 가상 신체 공간을 통해서만 탐색된다는 점이다."
+          },
+          {
+            "origin": "text",
+            "role": "뒤 문장",
+            "quote": "Players extend\ntheir perceptual field into the game, encompassing the available\nactions of the avatar.",
+            "translation": "플레이어는 아바타가 할 수 있는 행동을 포함해 자신의 지각 영역을 게임 안으로 확장한다."
+          },
+          {
+            "origin": "text",
+            "role": "결과 문장",
+            "quote": "The feedback loop of perception\nand action that enables you to navigate the world around you is\nnow one step removed",
+            "translation": "지각과 행동의 피드백 고리가 이제 한 단계 매개된다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_40",
+      "label": "2026학년도 수능 · 40번",
+      "prompt": "40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),",
+      "passage": "(B)에 들어갈 말로 가장 적절한 것은? In modern societies, the performing arts form a distinct category of public entertainment in opposition to the mass distribution through the media of expertly staged performances which have been recorded and edited. By contrast, theater, ballet, circus, concert, rodeo, storytelling, etc., unfold their signs in real space and time, and engage audiences who respond cognitively and emotionally on the spot. Performers and audiences are involved in shared enjoyment. But sometimes frustration occurs within the boundaries of such ritualistic events. In industrialized and computerized cultures, the performing arts become economically unstable because the institutions which sustain them increasingly depend on public and corporate funding. However, they retain their power of fascination for large, if not massive audiences, who prize the experiential, risk-loaded and one-time event quality they afford. In traditional and local cultures, performances still survive and provide their audiences with a unique fulfillment in smaller scale, economically sustainable institutional settings.\n* ritualistic: 의식의 󰀻 In a situation of financial (A) due to reliance on external funding, the performing arts, which provide unique and live experiences, (B) audiences who value those experiences. (A) (B) ① ③ ⑤ uncertainty challenges advantages …… …… …… lose secure support (A) (B) ② ④ imbalance stability …… …… split reach",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": ""
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": ""
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "uncertainty challenges advantages …… …… …… lose secure support (A) (B)"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": ""
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "imbalance stability …… …… split reach -- 7 of 8 -- 이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다. 8 홀수형 8 8"
+        }
+      ],
+      "answer": 3,
+      "review": {
+        "summary": "정답 ③. 공연예술은 외부 자금 의존으로 재정 불안정이 있지만, 생생한 일회성 경험 때문에 관객을 확보합니다.",
+        "approach": "요약문은 글의 문제 상황과 결론을 각각 빈칸에 압축해 넣는 방식으로 풉니다.",
+        "reason": "A는 external funding 때문에 생기는 financial uncertainty가 들어갑니다. B는 live, one-time event quality를 중시하는 관객을 여전히 끌어들인다는 방향이어야 합니다.",
+        "trap": {
+          "mark": "④",
+          "text": "stability / reach",
+          "reason": "reach는 뒤 흐름과 맞을 수 있지만, A의 stability는 economically unstable과 반대입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "A 근거",
+            "quote": "the \tperforming \tarts \tbecome\neconomically \tunstable \tbecause \tthe \tinstitutions \twhich\nsustain them increasingly depend on public and corporate\nfunding.",
+            "translation": "공연예술은 공공·기업 자금 의존 때문에 경제적으로 불안정해진다."
+          },
+          {
+            "origin": "text",
+            "role": "B 근거",
+            "quote": "they retain their power of fascination\nfor large, if not massive audiences",
+            "translation": "그럼에도 대규모 관객을 사로잡는 힘을 유지한다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_41",
+      "label": "2026학년도 수능 · 41번",
+      "prompt": "41. 윗글의 제목으로 가장 적절한 것은? [3점]",
+      "passage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nThere is an obvious problem with the history of dress in all\nof its displays and that is, although textiles survive from early\nperiods and cultures of recorded history, actual garments do\nnot provide an uninterrupted flow of evidence across the\nsame long time-span. Therefore, to give the study of dress equal\nsignificance to other areas such as architecture, painting,\nprints, drawings and sculpture, it was (a) inevitable that these\nother areas would provide much of the source material. The\nhistory of surviving dress really only starts in the 17th century,\nand like all artefacts described as fine or decorative art, is a\nhighly visual subject. However, unlike most of the categories\nof collection and study that make up those areas, it is fluid\nrather than static. Garments should be seen in (b) movement\non a human body, not frozen on a display figure. This is one\nof the many difficulties when curating collections of costume\nand also why some modern writers find costume collections\nphysically and intellectually (c) lifeless. Fortunately, in the\nperiod after 1660, when more items of dress survive to enrich\nour understanding of the history of the subject, there are\nalso many painted, printed, photographed and filmed sources\nof evidence of people in clothing, caught in movement.\nOften a variety of different types of illustrative examples will\n(d) provide evidence about how a garment was worn within\nthe period in which it was made. Without the information\ncontained in art in all of its forms, from drawing to sculpture,\nit is (e) unlikely that displays of historic dress would be\nawkward imitations of the intentions of their original makers\nand owners.\n* garment: 의복",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "Dress as Visual Arts: Record What You Wear Now!"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "Visual Sources: Filling in the Gaps of Dress History"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "Why Do Collectors Want the Unknown Dresses of History?"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "Dress Culture: Searching for the Origin of Human Clothing"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "Seeing Is Believing! Importance of Illustration in Dress Design"
+        }
+      ],
+      "answer": 2,
+      "review": {
+        "summary": "정답 ②. 의복 실물 자료의 빈틈을 시각 자료가 메운다는 글입니다.",
+        "approach": "장문은 공통 지문의 사건 순서와 반복되는 핵심 소재를 먼저 잡고, 문항별로 필요한 근거만 다시 확인합니다.",
+        "reason": "첫 문장은 의복사 자료의 빈틈을 말하고, 이후 회화·사진·영상 같은 시각 자료가 그 빈틈을 채운다고 설명합니다. 제목 ②가 이 구조를 정확히 잡습니다.",
+        "trap": {
+          "mark": "⑤",
+          "text": "Illustration in Dress Design",
+          "reason": "디자인에서 삽화가 중요하다는 글이 아니라, 역사 연구에서 시각 자료가 증거가 된다는 글입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "문제 제기",
+            "quote": "actual garments do\nnot provide an uninterrupted flow of evidence across the\nsame long time-span.",
+            "translation": "실제 의복은 긴 시간에 걸쳐 끊김 없는 증거를 제공하지 못한다."
+          },
+          {
+            "origin": "text",
+            "role": "해결 방식",
+            "quote": "these\nother areas would provide much of the source material.",
+            "translation": "다른 시각 예술 영역들이 많은 자료를 제공하게 된다."
+          },
+          {
+            "origin": "text",
+            "role": "예시 확장",
+            "quote": "painted, printed, photographed and filmed sources\nof evidence of people in clothing",
+            "translation": "옷 입은 사람들의 그림, 인쇄물, 사진, 영상 자료가 있다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_42",
+      "label": "2026학년도 수능 · 42번",
+      "prompt": "42. 밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은",
+      "passage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nThere is an obvious problem with the history of dress in all\nof its displays and that is, although textiles survive from early\nperiods and cultures of recorded history, actual garments do\nnot provide an uninterrupted flow of evidence across the\nsame long time-span. Therefore, to give the study of dress equal\nsignificance to other areas such as architecture, painting,\nprints, drawings and sculpture, it was (a) inevitable that these\nother areas would provide much of the source material. The\nhistory of surviving dress really only starts in the 17th century,\nand like all artefacts described as fine or decorative art, is a\nhighly visual subject. However, unlike most of the categories\nof collection and study that make up those areas, it is fluid\nrather than static. Garments should be seen in (b) movement\non a human body, not frozen on a display figure. This is one\nof the many difficulties when curating collections of costume\nand also why some modern writers find costume collections\nphysically and intellectually (c) lifeless. Fortunately, in the\nperiod after 1660, when more items of dress survive to enrich\nour understanding of the history of the subject, there are\nalso many painted, printed, photographed and filmed sources\nof evidence of people in clothing, caught in movement.\nOften a variety of different types of illustrative examples will\n(d) provide evidence about how a garment was worn within\nthe period in which it was made. Without the information\ncontained in art in all of its forms, from drawing to sculpture,\nit is (e) unlikely that displays of historic dress would be\nawkward imitations of the intentions of their original makers\nand owners.\n* garment: 의복",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "answer": 5,
+      "review": {
+        "summary": "정답 ⑤. art 정보가 없으면 전시가 어색한 모방이 될 가능성이 크므로 unlikely가 문맥상 반대입니다.",
+        "approach": "표시형 문항은 ①~⑤가 붙은 바로 그 부분의 문법·의미·흐름 역할을 따져 답을 고릅니다.",
+        "reason": "앞에서는 예술 자료가 의복 착용 방식의 증거를 제공한다고 했습니다. 그러므로 그 정보가 없으면 전시가 어색한 모방이 될 가능성이 커야 하니 unlikely가 부적절합니다.",
+        "trap": {
+          "mark": "③",
+          "text": "(c) lifeless",
+          "reason": "마네킹에 고정된 의복 전시가 생동감 없다고 느껴진다는 문맥이라 lifeless는 적절합니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "조건",
+            "quote": "Without the information\ncontained in art in all of its forms, from drawing to sculpture",
+            "translation": "그림부터 조각까지 모든 형태의 예술에 담긴 정보가 없다면"
+          },
+          {
+            "origin": "text",
+            "role": "결과",
+            "quote": "displays of historic dress would be\nawkward imitations of the intentions of their original makers\nand owners.",
+            "translation": "역사적 의복 전시는 원래 제작자와 소유자의 의도를 어색하게 모방한 것이 될 것이다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_43",
+      "label": "2026학년도 수능 · 43번",
+      "prompt": "43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로",
+      "passage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\n“Mia, let’s go walk our dog!” Julia called out, but there\nwas no answer. She checked her daughter’s room and found\nthat Mia was absorbed in her smartphone, wearing her\nearbuds. Julia was concerned about her daughter. She turned\nto her husband, Sam. “Mia seems to live inside her phone,\nnot with us.” Sam nodded, “I know. I feel like (a) she is\ngrowing distant from us. Why don’t we set up a family\nreading club?” Julia brightened at the suggestion, and Sam\npromised to talk with Mia about it.\n(B)\nMia’s family held their first book club meeting on Saturday\nafternoon. Everyone enjoyed the book Mia had chosen. Julia\nwas the first to speak: “Dr. Duvall nearly invented a drug for\neternal life, yet disappeared one day and ended up running\nCafé Paris. That’s such a mystery.” Mia responded, her eyes\nsparkling, “Mom, I understand him. He always dreamed\nof being a barista, and his dream came true.” Sam supported\n(b) his daughter, and their conversation grew lively. During\nthe discussion, Mia felt reconnected with her parents and\nalready looked forward to their next book club meeting.\n(C)\nAt the library, Mia scanned the shelves for nearly an hour,\nfeeling \tlost \tamong \tthe \tendless \ttitles. \tThen, \ta \tlibrarian\napproached and asked, “Looking for something in particular?”\n“I need a book for my family’s reading club,” Mia admitted.\n“What genre do you enjoy?” she asked kindly. “Hmm, I like\nmysteries,” Mia replied. The librarian handed her a book\ntitled Café Paris and said with a smile, “You’ll love this one.”\nMia thanked (c) her and checked it out.\n(D)\nWhen Sam suggested starting a family reading club, Mia\nimmediately shook her head and said, “No, Dad. I don’t have\ntime to read books. You know how busy (d) I am with exams\nall semester.” He didn’t give up. “But wouldn’t it be fun if\nwe all read the same story and shared our thoughts? You\ncould simply read for 20 minutes, maybe during your lunch\nbreak.” After some persuasion, Mia reluctantly agreed. Deep\ndown, (e) she knew she was spending too much time on her\nphone. So she asked, “Dad, can I choose the first book?” Sam\ngladly said, “Yes.”",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": ""
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": ""
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "(B) (C) (D) － － － (D) (D) (C) － － － (C) (B) (B)"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": ""
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "(C) (D) － － (B) (B) － － (D) (C)"
+        }
+      ],
+      "answer": 5,
+      "review": {
+        "summary": "정답 ⑤. A에서 독서 모임 제안, D에서 Mia의 거절과 수락, C에서 책 선택, B에서 첫 모임으로 이어집니다.",
+        "approach": "순서·삽입은 주어진 문장과 각 후보 첫 문장의 연결고리, 그리고 뒤 문장이 받는 말을 함께 확인합니다.",
+        "reason": "A의 제안 직후에는 Mia가 처음에 반대하는 D가 와야 합니다. 설득 뒤 Mia가 첫 책을 고르기로 했으므로 C가 이어지고, 책을 고른 뒤에야 B의 첫 모임이 가능합니다.",
+        "trap": {
+          "mark": "①",
+          "text": "(B)-(C)-(D)",
+          "reason": "첫 모임이 책을 고르기 전과 Mia의 수락 전보다 먼저 나올 수 없습니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "A 제안",
+            "quote": "Why don’t we set up a family\nreading club?",
+            "translation": "가족 독서 모임을 만들어 보는 게 어떻겠냐는 제안이다."
+          },
+          {
+            "origin": "text",
+            "role": "D 첫 문장",
+            "quote": "When Sam suggested starting a family reading club, Mia\nimmediately shook her head",
+            "translation": "Sam이 독서 모임을 제안하자 Mia가 바로 고개를 젓는다."
+          },
+          {
+            "origin": "text",
+            "role": "C 연결",
+            "quote": "I need a book for my family’s reading club",
+            "translation": "가족 독서 모임에 쓸 책이 필요하다고 말한다."
+          },
+          {
+            "origin": "text",
+            "role": "B 결과",
+            "quote": "Mia’s family held their first book club meeting on Saturday\nafternoon.",
+            "translation": "토요일 오후 첫 독서 모임을 열었다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_44",
+      "label": "2026학년도 수능 · 44번",
+      "prompt": "44. 밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른",
+      "passage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\n“Mia, let’s go walk our dog!” Julia called out, but there\nwas no answer. She checked her daughter’s room and found\nthat Mia was absorbed in her smartphone, wearing her\nearbuds. Julia was concerned about her daughter. She turned\nto her husband, Sam. “Mia seems to live inside her phone,\nnot with us.” Sam nodded, “I know. I feel like (a) she is\ngrowing distant from us. Why don’t we set up a family\nreading club?” Julia brightened at the suggestion, and Sam\npromised to talk with Mia about it.\n(B)\nMia’s family held their first book club meeting on Saturday\nafternoon. Everyone enjoyed the book Mia had chosen. Julia\nwas the first to speak: “Dr. Duvall nearly invented a drug for\neternal life, yet disappeared one day and ended up running\nCafé Paris. That’s such a mystery.” Mia responded, her eyes\nsparkling, “Mom, I understand him. He always dreamed\nof being a barista, and his dream came true.” Sam supported\n(b) his daughter, and their conversation grew lively. During\nthe discussion, Mia felt reconnected with her parents and\nalready looked forward to their next book club meeting.\n(C)\nAt the library, Mia scanned the shelves for nearly an hour,\nfeeling \tlost \tamong \tthe \tendless \ttitles. \tThen, \ta \tlibrarian\napproached and asked, “Looking for something in particular?”\n“I need a book for my family’s reading club,” Mia admitted.\n“What genre do you enjoy?” she asked kindly. “Hmm, I like\nmysteries,” Mia replied. The librarian handed her a book\ntitled Café Paris and said with a smile, “You’ll love this one.”\nMia thanked (c) her and checked it out.\n(D)\nWhen Sam suggested starting a family reading club, Mia\nimmediately shook her head and said, “No, Dad. I don’t have\ntime to read books. You know how busy (d) I am with exams\nall semester.” He didn’t give up. “But wouldn’t it be fun if\nwe all read the same story and shared our thoughts? You\ncould simply read for 20 minutes, maybe during your lunch\nbreak.” After some persuasion, Mia reluctantly agreed. Deep\ndown, (e) she knew she was spending too much time on her\nphone. So she asked, “Dad, can I choose the first book?” Sam\ngladly said, “Yes.”",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "answer": 3,
+      "review": {
+        "summary": "정답 ③. (c)의 her는 Mia가 아니라 librarian입니다.",
+        "approach": "장문은 공통 지문의 사건 순서와 반복되는 핵심 소재를 먼저 잡고, 문항별로 필요한 근거만 다시 확인합니다.",
+        "reason": "(a), (b), (d), (e)는 모두 Mia를 가리키는 흐름입니다. 하지만 (c)는 바로 앞에서 책을 건네준 librarian을 가리키므로 나머지와 다릅니다.",
+        "trap": {
+          "mark": "②",
+          "text": "(b)",
+          "reason": "Sam supported his daughter에서 his daughter는 Mia입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "지칭 대상 등장",
+            "quote": "Then, \ta \tlibrarian\napproached and asked",
+            "translation": "그때 사서가 다가와 물었다."
+          },
+          {
+            "origin": "text",
+            "role": "정답 위치",
+            "quote": "Mia thanked (c) her and checked it out.",
+            "translation": "Mia가 그녀에게 감사하고 책을 대출했다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_45",
+      "label": "2026학년도 수능 · 45번",
+      "prompt": "45. 윗글에 관한 내용으로 적절하지 않은 것은?",
+      "passage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\n“Mia, let’s go walk our dog!” Julia called out, but there\nwas no answer. She checked her daughter’s room and found\nthat Mia was absorbed in her smartphone, wearing her\nearbuds. Julia was concerned about her daughter. She turned\nto her husband, Sam. “Mia seems to live inside her phone,\nnot with us.” Sam nodded, “I know. I feel like (a) she is\ngrowing distant from us. Why don’t we set up a family\nreading club?” Julia brightened at the suggestion, and Sam\npromised to talk with Mia about it.\n(B)\nMia’s family held their first book club meeting on Saturday\nafternoon. Everyone enjoyed the book Mia had chosen. Julia\nwas the first to speak: “Dr. Duvall nearly invented a drug for\neternal life, yet disappeared one day and ended up running\nCafé Paris. That’s such a mystery.” Mia responded, her eyes\nsparkling, “Mom, I understand him. He always dreamed\nof being a barista, and his dream came true.” Sam supported\n(b) his daughter, and their conversation grew lively. During\nthe discussion, Mia felt reconnected with her parents and\nalready looked forward to their next book club meeting.\n(C)\nAt the library, Mia scanned the shelves for nearly an hour,\nfeeling \tlost \tamong \tthe \tendless \ttitles. \tThen, \ta \tlibrarian\napproached and asked, “Looking for something in particular?”\n“I need a book for my family’s reading club,” Mia admitted.\n“What genre do you enjoy?” she asked kindly. “Hmm, I like\nmysteries,” Mia replied. The librarian handed her a book\ntitled Café Paris and said with a smile, “You’ll love this one.”\nMia thanked (c) her and checked it out.\n(D)\nWhen Sam suggested starting a family reading club, Mia\nimmediately shook her head and said, “No, Dad. I don’t have\ntime to read books. You know how busy (d) I am with exams\nall semester.” He didn’t give up. “But wouldn’t it be fun if\nwe all read the same story and shared our thoughts? You\ncould simply read for 20 minutes, maybe during your lunch\nbreak.” After some persuasion, Mia reluctantly agreed. Deep\ndown, (e) she knew she was spending too much time on her\nphone. So she asked, “Dad, can I choose the first book?” Sam\ngladly said, “Yes.”",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "Julia는 스마트폰에 빠져 있는 Mia를 걱정했다."
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "가족들은 Mia가 선정한 책을 좋아했다."
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "Mia는 책장을 살펴보며 거의 한 시간을 보냈다."
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "Mia는 미스터리 장르를 좋아한다고 말했다."
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "Mia는 Sam의 독서 모임 제안을 처음부터 환영했다. * 확인 사항 ◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인 하시오. -- 8 of 8 --"
+        }
+      ],
+      "answer": 5,
+      "review": {
+        "summary": "정답 ⑤. Mia는 처음부터 환영한 것이 아니라 처음에는 거절했습니다.",
+        "approach": "장문은 공통 지문의 사건 순서와 반복되는 핵심 소재를 먼저 잡고, 문항별로 필요한 근거만 다시 확인합니다.",
+        "reason": "⑤는 처음부터 환영했다고 하지만, 지문은 immediately shook her head와 reluctantly agreed라고 말합니다. 따라서 ⑤가 내용과 일치하지 않습니다.",
+        "trap": {
+          "mark": "④",
+          "text": "Mia는 미스터리 장르를 좋아한다고 말했다",
+          "reason": "C에서 Mia가 I like mysteries라고 직접 말하므로 맞는 선지입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "반대 근거",
+            "quote": "When Sam suggested starting a family reading club, Mia\nimmediately shook her head and said, “No, Dad. I don’t have\ntime to read books.",
+            "translation": "Sam이 가족 독서 모임을 제안하자 Mia는 바로 고개를 젓고 시간이 없다고 말한다."
+          },
+          {
+            "origin": "text",
+            "role": "수락 방식",
+            "quote": "After some persuasion, Mia reluctantly agreed.",
+            "translation": "설득 뒤에야 Mia는 마지못해 동의했다."
+          }
+        ]
+      }
+    }
+  ]
+}
