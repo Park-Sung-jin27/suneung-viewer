@@ -450,18 +450,35 @@ async function produceChoices(client, set, userPrompt, expectC, tag = "") {
       // 16000 초과는 SDK가 스트리밍을 요구하므로 stream:true와 함께 상향(2026-07-20 r2025b 실증).
       max_tokens: 40000,
       stream: true,
-      system: systemPrompt,
+      // [캐싱] system(안정 프롬프트)만 블록화 + cache_control ephemeral(5분 TTL).
+      //   가변부(세트·answerGuide·okBlocks·markerBlocks)는 전부 userPrompt에 있어 system은 호출 간 완전 동일 → 캐시 warm.
+      system: [
+        {
+          type: "text",
+          text: systemPrompt,
+          cache_control: { type: "ephemeral" },
+        },
+      ],
       messages: [{ role: "user", content: userPrompt }],
     },
     { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
   );
   let text = "",
     stopReason = null;
-  const usage = { input_tokens: 0, output_tokens: 0 };
+  const usage = {
+    input_tokens: 0,
+    output_tokens: 0,
+    cache_read_input_tokens: 0,
+    cache_creation_input_tokens: 0,
+  };
   for await (const ev of resp) {
     if (ev.type === "message_start" && ev.message?.usage) {
       usage.input_tokens = ev.message.usage.input_tokens ?? 0;
       usage.output_tokens = ev.message.usage.output_tokens ?? 0;
+      usage.cache_read_input_tokens =
+        ev.message.usage.cache_read_input_tokens ?? 0;
+      usage.cache_creation_input_tokens =
+        ev.message.usage.cache_creation_input_tokens ?? 0;
     }
     if (ev.type === "content_block_delta" && ev.delta?.text)
       text += ev.delta.text;
@@ -471,6 +488,10 @@ async function produceChoices(client, set, userPrompt, expectC, tag = "") {
       if (ev.delta?.stop_reason) stopReason = ev.delta.stop_reason;
     }
   }
+  // [캐싱 검증] 캐시 적중(read>0) / 최초 기록(write>0) 로그 — 배치 비용 실측.
+  console.log(
+    `[usage] ${set.id}${tag}: in=${usage.input_tokens} out=${usage.output_tokens} cache_read=${usage.cache_read_input_tokens} cache_write=${usage.cache_creation_input_tokens}`,
+  );
   fs.writeFileSync(
     path.join(OUT_DIR, `${yk}_${set.id}${tag}_raw.txt`),
     `stop_reason=${stopReason}\nusage=${JSON.stringify(usage)}\n\n${text}`,
