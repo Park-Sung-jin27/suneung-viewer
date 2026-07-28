@@ -3,21 +3,21 @@ import { useNavigate } from "react-router-dom";
 const SUBJECTS = [
   {
     key: "english",
-    id: "2026_csat_19",
     eyebrow: "ENGLISH",
-    title: "영어 1문항 체험",
-    description: "글의 흐름을 읽고 Sophie의 심경 변화를 골라 보세요.",
-    detail: "2026학년도 수능 · 19번",
+    title: "영어 5문항 학습",
+    description:
+      "2026학년도 수능 19~23번을 연속으로 풀고, 제출할 때마다 정답과 근거를 확인하세요.",
+    detail: "19~23번 · 근거형 풀이",
     accent: "#3157a5",
     tint: "#eef3ff",
   },
   {
     key: "math",
-    id: "2022_06_common_1",
     eyebrow: "MATH",
-    title: "수학 1문항 체험",
-    description: "지수법칙으로 식을 정리해 정답을 확인해 보세요.",
-    detail: "2022학년도 6월 모의평가 · 공통 1번",
+    title: "수학 5문항 학습",
+    description:
+      "2022학년도 6월 모의평가 공통 5문항을 풀고, 정답을 확인한 뒤 다음 문제로 이어가세요.",
+    detail: "선다형 4문항 · 단답형 1문항",
     accent: "#16705b",
     tint: "#eaf7f1",
   },
@@ -193,11 +193,19 @@ export default function EngMathProductHome() {
           지니쌤과 공부하자
         </div>
 
-        <section className="eng-math-home__hero" aria-labelledby="eng-math-home-title">
-          <span className="eng-math-home__eyebrow">영어·수학 내부 베타 · 1문항 체험</span>
-          <h1 id="eng-math-home-title">한 문제로, 공부 감각을 확인하세요.</h1>
+        <section
+          className="eng-math-home__hero"
+          aria-labelledby="eng-math-home-title"
+        >
+          <span className="eng-math-home__eyebrow">
+            영어·수학 내부 베타 · 5문항 학습
+          </span>
+          <h1 id="eng-math-home-title">
+            다섯 문제를, 한 흐름으로 끝까지 풀어보세요.
+          </h1>
           <p className="eng-math-home__lead">
-            영어는 정답과 근거를, 수학은 정답 확인과 같은 문제 재풀이를 제공합니다.
+            영어는 제출할 때마다 정답과 근거를 확인합니다. 수학은 검증된
+            정답만 제공하며, 다섯 문제를 마치면 과목별 결과를 보여드립니다.
           </p>
         </section>
 
@@ -207,7 +215,11 @@ export default function EngMathProductHome() {
               key={subject.key}
               className="eng-math-home__subject-card"
               type="button"
-              onClick={() => navigate(`/eng-math/practice?subject=${subject.key}&id=${subject.id}`)}
+              onClick={() =>
+                navigate(
+                  `/eng-math/practice?subject=${subject.key}&mode=session`,
+                )
+              }
             >
               <span
                 className="eng-math-home__subject-eyebrow"
@@ -227,7 +239,9 @@ export default function EngMathProductHome() {
 
         <a className="eng-math-home__korean-link" href="/exams">
           <span>
-            <span className="eng-math-home__korean-title">국어 대표 제품으로 돌아가기</span>
+            <span className="eng-math-home__korean-title">
+              국어 대표 제품으로 돌아가기
+            </span>
             <span className="eng-math-home__korean-copy">
               국어 선지와 지문 근거를 확인하는 독립 제품으로 이동합니다.
             </span>

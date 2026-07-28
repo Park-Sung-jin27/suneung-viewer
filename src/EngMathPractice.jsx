@@ -13,6 +13,23 @@ const STARTER_IDS = {
   math: "2022_06_common_1",
 };
 
+const SESSION_IDS = {
+  english: [
+    "2026_csat_19",
+    "2026_csat_20",
+    "2026_csat_21",
+    "2026_csat_22",
+    "2026_csat_23",
+  ],
+  math: [
+    "2022_06_common_1",
+    "2022_06_common_2",
+    "2022_06_common_3",
+    "2022_06_common_5",
+    "2022_06_common_16",
+  ],
+};
+
 const SUBJECTS = {
   english: {
     name: "영어",
@@ -40,7 +57,8 @@ function MathText({ text, className = "" }) {
       {parts.map((part, index) => {
         const isBlock = part.startsWith("$$") && part.endsWith("$$");
         const isInline = !isBlock && part.startsWith("$") && part.endsWith("$");
-        if (!isBlock && !isInline) return <span key={`${part}-${index}`}>{part}</span>;
+        if (!isBlock && !isInline)
+          return <span key={`${part}-${index}`}>{part}</span>;
 
         const expression = isBlock ? part.slice(2, -2) : part.slice(1, -1);
         let html = expression;
@@ -56,7 +74,11 @@ function MathText({ text, className = "" }) {
         return (
           <span
             key={`${expression}-${index}`}
-            className={isBlock ? "eng-math-practice__math-block" : "eng-math-practice__math-inline"}
+            className={
+              isBlock
+                ? "eng-math-practice__math-block"
+                : "eng-math-practice__math-inline"
+            }
             dangerouslySetInnerHTML={{ __html: html }}
           />
         );
@@ -69,14 +91,21 @@ function ChoiceLabel({ choice, subject }) {
   return (
     <>
       <strong>{choice.mark}</strong>
-      {subject === "math" ? <MathText text={choice.text} /> : <span>{choice.text}</span>}
+      {subject === "math" ? (
+        <MathText text={choice.text} />
+      ) : (
+        <span>{choice.text}</span>
+      )}
     </>
   );
 }
 
 function EnglishFigure({ figure }) {
   return (
-    <figure className="eng-math-practice__figure" aria-labelledby="eng-math-practice-figure-title">
+    <figure
+      className="eng-math-practice__figure"
+      aria-labelledby="eng-math-practice-figure-title"
+    >
       <a
         className="eng-math-practice__figure-link"
         href={figure.assetPath}
@@ -89,16 +118,23 @@ function EnglishFigure({ figure }) {
           src={figure.assetPath}
           alt={figure.alt}
         />
-        <span className="eng-math-practice__figure-open">원본 도표 크게 보기</span>
+        <span className="eng-math-practice__figure-open">
+          원본 도표 크게 보기
+        </span>
       </a>
 
-      <figcaption id="eng-math-practice-figure-title" className="eng-math-practice__figure-title">
+      <figcaption
+        id="eng-math-practice-figure-title"
+        className="eng-math-practice__figure-title"
+      >
         {figure.title}
       </figcaption>
 
       <div className="eng-math-practice__figure-table-wrap">
         <table className="eng-math-practice__figure-table">
-          <caption className="eng-math-practice__sr-only">영어 25번 도표 수치</caption>
+          <caption className="eng-math-practice__sr-only">
+            영어 25번 도표 수치
+          </caption>
           <colgroup>
             <col className="eng-math-practice__figure-label-column" />
             {figure.series.map((series) => (
@@ -142,7 +178,10 @@ function EnglishFigure({ figure }) {
 
 function MathFigureDescription({ description }) {
   return (
-    <aside className="eng-math-practice__math-figure-description" aria-label="그림 설명">
+    <aside
+      className="eng-math-practice__math-figure-description"
+      aria-label="그림 설명"
+    >
       <h2>그림 설명</h2>
       <div className="eng-math-practice__math-figure-description-body">
         <MathText text={description} />
@@ -152,7 +191,12 @@ function MathFigureDescription({ description }) {
 }
 
 function usePublicQuestions(subject) {
-  const [state, setState] = useState({ subject: "", status: "loading", questions: [], error: "" });
+  const [state, setState] = useState({
+    subject: "",
+    status: "loading",
+    questions: [],
+    error: "",
+  });
 
   useEffect(() => {
     const controller = new AbortController();
@@ -163,28 +207,48 @@ function usePublicQuestions(subject) {
         return response.json();
       })
       .then((data) => {
-        if (!Array.isArray(data.questions)) throw new Error("문항 데이터 형식이 올바르지 않습니다.");
-        setState({ subject, status: "ready", questions: data.questions, error: "" });
+        if (!Array.isArray(data.questions))
+          throw new Error("문항 데이터 형식이 올바르지 않습니다.");
+        setState({
+          subject,
+          status: "ready",
+          questions: data.questions,
+          error: "",
+        });
       })
       .catch((error) => {
         if (error.name === "AbortError") return;
-        setState({ subject, status: "error", questions: [], error: error.message });
+        setState({
+          subject,
+          status: "error",
+          questions: [],
+          error: error.message,
+        });
       });
 
     return () => controller.abort();
   }, [subject]);
 
-  return state.subject === subject ? state : { status: "loading", questions: [], error: "" };
+  return state.subject === subject
+    ? state
+    : { status: "loading", questions: [], error: "" };
 }
 
 function getAnswerText(question, subject) {
-  if (subject === "math" && question.responseType === "short") return question.answer;
-  return question.choices.find((choice) => choice.number === question.answer)?.text ?? "";
+  if (subject === "math" && question.responseType === "short")
+    return question.answer;
+  return (
+    question.choices.find((choice) => choice.number === question.answer)
+      ?.text ?? ""
+  );
 }
 
 function getAnswerMark(question, subject) {
   if (subject === "math" && question.responseType === "short") return "정답";
-  return question.choices.find((choice) => choice.number === question.answer)?.mark ?? "정답";
+  return (
+    question.choices.find((choice) => choice.number === question.answer)
+      ?.mark ?? "정답"
+  );
 }
 
 function ResultAnswer({ question, subject }) {
@@ -193,7 +257,9 @@ function ResultAnswer({ question, subject }) {
 
   return (
     <p className="eng-math-practice__result-copy">
-      {subject === "math" && question.responseType === "short" ? "정답은 " : `정답은 ${answerMark} `}
+      {subject === "math" && question.responseType === "short"
+        ? "정답은 "
+        : `정답은 ${answerMark} `}
       {subject === "math" ? <MathText text={answerText} /> : answerText}입니다.
     </p>
   );
@@ -204,15 +270,28 @@ export default function EngMathPractice() {
   const location = useLocation();
   const parameters = new URLSearchParams(location.search);
   const subject = parameters.get("subject") === "math" ? "math" : "english";
+  const isSessionMode = parameters.get("mode") === "session";
   const questionId = parameters.get("id");
   const { status, questions, error } = usePublicQuestions(subject);
   const question = useMemo(
     () => questions.find((candidate) => candidate.id === questionId) ?? null,
     [questionId, questions],
   );
+  const sessionQuestions = useMemo(() => {
+    if (!isSessionMode) return [];
+    const questionsById = new Map(
+      questions.map((candidate) => [candidate.id, candidate]),
+    );
+    return SESSION_IDS[subject]
+      .map((id) => questionsById.get(id))
+      .filter(Boolean);
+  }, [isSessionMode, questions, subject]);
 
   const chooseSubject = (nextSubject) => {
-    navigate(`/eng-math/practice?subject=${nextSubject}&id=${STARTER_IDS[nextSubject]}`);
+    const nextUrl = isSessionMode
+      ? `/eng-math/practice?subject=${nextSubject}&mode=session`
+      : `/eng-math/practice?subject=${nextSubject}&id=${STARTER_IDS[nextSubject]}`;
+    navigate(nextUrl);
   };
 
   if (status === "loading") {
@@ -220,7 +299,33 @@ export default function EngMathPractice() {
   }
 
   if (status === "error") {
-    return <PracticeNotice message={error} onBack={() => navigate("/eng-math-beta")} />;
+    return (
+      <PracticeNotice
+        message={error}
+        onBack={() => navigate("/eng-math-beta")}
+      />
+    );
+  }
+
+  if (isSessionMode) {
+    if (sessionQuestions.length !== SESSION_IDS[subject].length) {
+      return (
+        <PracticeNotice
+          message="5문항 학습 구성을 확인하지 못했습니다."
+          onBack={() => navigate("/eng-math-beta")}
+        />
+      );
+    }
+
+    return (
+      <LearningSession
+        key={subject}
+        questions={sessionQuestions}
+        subject={subject}
+        navigate={navigate}
+        onSubjectChange={chooseSubject}
+      />
+    );
   }
 
   if (!question) {
@@ -247,7 +352,8 @@ function PracticeNotice({ message, onBack }) {
   return (
     <main className="eng-math-practice eng-math-practice--notice">
       <style>{`
-        .eng-math-practice--notice { min-height: 100svh; display: grid; place-items: center; padding: 24px; background: #f8fafc; font-family: "Noto Sans KR", system-ui, sans-serif; }
+        .eng-math-practice--notice { width: 100%; min-height: 100svh; display: grid; place-items: center; box-sizing: border-box; overflow-x: hidden; padding: 24px; background: #f8fafc; font-family: "Noto Sans KR", system-ui, sans-serif; }
+        .eng-math-practice--notice * { box-sizing: border-box; }
         .eng-math-practice__notice { width: min(100%, 390px); border: 1px solid #dce3ed; border-radius: 18px; background: #fff; padding: 26px; text-align: center; box-shadow: 0 14px 40px rgba(24,39,75,.08); }
         .eng-math-practice__notice p { margin: 0; color: #40506a; line-height: 1.6; }
         .eng-math-practice__notice button { margin-top: 16px; border: 0; border-radius: 10px; background: #3157a5; padding: 11px 14px; color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
@@ -264,15 +370,333 @@ function PracticeNotice({ message, onBack }) {
   );
 }
 
-function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
+function LearningSession({
+  questions,
+  subject,
+  navigate,
+  onSubjectChange,
+}) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [results, setResults] = useState([]);
+  const [finished, setFinished] = useState(false);
+  const question = questions[currentIndex];
+
+  const recordAnswer = (result) => {
+    setResults((current) => {
+      const next = [...current];
+      next[currentIndex] = result;
+      return next;
+    });
+  };
+
+  const moveForward = () => {
+    if (currentIndex === questions.length - 1) {
+      setFinished(true);
+      return;
+    }
+    setCurrentIndex((current) => current + 1);
+  };
+
+  const restartSession = () => {
+    setCurrentIndex(0);
+    setResults([]);
+    setFinished(false);
+  };
+
+  if (finished) {
+    return (
+      <SessionSummary
+        subject={subject}
+        results={results}
+        navigate={navigate}
+        onRestart={restartSession}
+        onSubjectChange={onSubjectChange}
+      />
+    );
+  }
+
+  return (
+    <PracticeQuestion
+      key={question.id}
+      question={question}
+      subject={subject}
+      navigate={navigate}
+      onSubjectChange={onSubjectChange}
+      session={{
+        current: currentIndex + 1,
+        total: questions.length,
+        isLast: currentIndex === questions.length - 1,
+        onAnswer: recordAnswer,
+        onNext: moveForward,
+      }}
+    />
+  );
+}
+
+function SessionSummary({
+  subject,
+  results,
+  navigate,
+  onRestart,
+  onSubjectChange,
+}) {
+  const profile = SUBJECTS[subject];
+  const correctCount = results.filter((result) => result.isCorrect).length;
+  const otherSubject = subject === "english" ? "math" : "english";
+
+  return (
+    <main className="eng-math-session-summary">
+      <style>{`
+        .eng-math-session-summary {
+          min-height: 100svh;
+          box-sizing: border-box;
+          padding: 24px 20px 48px;
+          background: #f8fafc;
+          color: #172033;
+          font-family: "Noto Sans KR", system-ui, sans-serif;
+        }
+        .eng-math-session-summary * { box-sizing: border-box; }
+        .eng-math-session-summary__inner { width: min(100%, 680px); margin: 0 auto; }
+        .eng-math-session-summary__brand {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 18px;
+          border: 0;
+          background: transparent;
+          padding: 4px 0;
+          color: #3157a5;
+          font: inherit;
+          font-size: 0.84rem;
+          font-weight: 800;
+          cursor: pointer;
+        }
+        .eng-math-session-summary__brand-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: currentColor;
+        }
+        .eng-math-session-summary__card {
+          overflow: hidden;
+          border: 1px solid #e0e6ef;
+          border-radius: 24px;
+          background: #fff;
+          box-shadow: 0 16px 42px rgba(24, 39, 75, 0.08);
+        }
+        .eng-math-session-summary__band { height: 7px; }
+        .eng-math-session-summary__content { padding: 32px; }
+        .eng-math-session-summary__eyebrow {
+          display: inline-flex;
+          min-height: 28px;
+          align-items: center;
+          padding: 5px 9px;
+          border-radius: 999px;
+          font-size: 0.75rem;
+          font-weight: 900;
+        }
+        .eng-math-session-summary h1 {
+          margin: 16px 0 10px;
+          color: #172033;
+          font-size: clamp(1.65rem, 6vw, 2.35rem);
+          line-height: 1.3;
+          letter-spacing: -0.05em;
+          word-break: keep-all;
+        }
+        .eng-math-session-summary__lead {
+          margin: 0;
+          color: #627087;
+          line-height: 1.65;
+          word-break: keep-all;
+        }
+        .eng-math-session-summary__score {
+          display: flex;
+          align-items: baseline;
+          gap: 8px;
+          margin: 25px 0 18px;
+          border-radius: 18px;
+          background: #f6f8fb;
+          padding: 20px;
+        }
+        .eng-math-session-summary__score strong {
+          color: #172033;
+          font-size: 2.15rem;
+          line-height: 1;
+        }
+        .eng-math-session-summary__score span {
+          color: #667085;
+          font-size: 0.9rem;
+          font-weight: 800;
+        }
+        .eng-math-session-summary__list {
+          display: grid;
+          gap: 9px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        .eng-math-session-summary__item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          min-height: 50px;
+          border: 1px solid #e0e6ef;
+          border-radius: 13px;
+          padding: 11px 13px;
+          color: #435168;
+          font-size: 0.86rem;
+          font-weight: 700;
+        }
+        .eng-math-session-summary__item span:last-child { flex: 0 0 auto; font-weight: 900; }
+        .eng-math-session-summary__item--correct span:last-child { color: #16705b; }
+        .eng-math-session-summary__item--wrong span:last-child { color: #b23d4a; }
+        .eng-math-session-summary__note {
+          margin: 18px 0 0;
+          border-left: 3px solid;
+          padding: 3px 0 3px 12px;
+          color: #657187;
+          font-size: 0.84rem;
+          line-height: 1.58;
+          word-break: keep-all;
+        }
+        .eng-math-session-summary__actions {
+          display: grid;
+          gap: 9px;
+          margin-top: 24px;
+        }
+        .eng-math-session-summary__actions button {
+          width: 100%;
+          min-height: 52px;
+          border-radius: 14px;
+          font: inherit;
+          font-size: 0.94rem;
+          font-weight: 900;
+          cursor: pointer;
+        }
+        .eng-math-session-summary__primary { border: 0; color: #fff; }
+        .eng-math-session-summary__secondary { border: 1px solid #cbd5e1; background: #fff; color: #3e4d61; }
+        .eng-math-session-summary__home { border: 0; background: transparent; color: #667085; }
+        @media (max-width: 440px) {
+          .eng-math-session-summary { padding: 16px 14px 32px; }
+          .eng-math-session-summary__content { padding: 24px 18px; }
+          .eng-math-session-summary h1 { font-size: 1.6rem; }
+        }
+      `}</style>
+
+      <div className="eng-math-session-summary__inner">
+        <button
+          className="eng-math-session-summary__brand"
+          type="button"
+          onClick={() => navigate("/eng-math-beta")}
+        >
+          <span
+            className="eng-math-session-summary__brand-dot"
+            aria-hidden="true"
+          />
+          지니쌤과 공부하자
+        </button>
+
+        <article className="eng-math-session-summary__card" aria-live="polite">
+          <div
+            className="eng-math-session-summary__band"
+            style={{ background: profile.accent }}
+          />
+          <div className="eng-math-session-summary__content">
+            <span
+              className="eng-math-session-summary__eyebrow"
+              style={{ background: profile.tint, color: profile.accent }}
+            >
+              {profile.name} · 5 / 5 완료
+            </span>
+            <h1>다섯 문제를 모두 풀었습니다.</h1>
+            <p className="eng-math-session-summary__lead">
+              이번 학습에서 맞힌 문제와 다시 확인할 문제를 구분했습니다.
+            </p>
+
+            <div className="eng-math-session-summary__score">
+              <strong>
+                {correctCount} / {results.length}
+              </strong>
+              <span>정답</span>
+            </div>
+
+            <ol
+              className="eng-math-session-summary__list"
+              aria-label="문항별 결과"
+            >
+              {results.map((result, index) => (
+                <li
+                  key={result.questionId}
+                  className={`eng-math-session-summary__item ${result.isCorrect ? "eng-math-session-summary__item--correct" : "eng-math-session-summary__item--wrong"}`}
+                >
+                  <span>
+                    {index + 1}. {result.label}
+                  </span>
+                  <span>{result.isCorrect ? "정답" : "다시 확인"}</span>
+                </li>
+              ))}
+            </ol>
+
+            <p
+              className="eng-math-session-summary__note"
+              style={{ borderColor: profile.accent }}
+            >
+              {subject === "english"
+                ? "영어 풀이는 각 문항을 제출한 직후 확인할 수 있습니다."
+                : "수학은 검증된 정답만 제공하며, 풀이는 아직 제공하지 않습니다."}
+            </p>
+
+            <div className="eng-math-session-summary__actions">
+              <button
+                className="eng-math-session-summary__primary"
+                type="button"
+                style={{ background: profile.accent }}
+                onClick={onRestart}
+              >
+                같은 과목 5문항 다시 풀기
+              </button>
+              <button
+                className="eng-math-session-summary__secondary"
+                type="button"
+                onClick={() => onSubjectChange(otherSubject)}
+              >
+                {SUBJECTS[otherSubject].name} 5문항 풀기
+              </button>
+              <button
+                className="eng-math-session-summary__home"
+                type="button"
+                onClick={() => navigate("/eng-math-beta")}
+              >
+                베타 처음으로
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+  );
+}
+
+function PracticeQuestion({
+  question,
+  subject,
+  navigate,
+  onSubjectChange,
+  session = null,
+}) {
   const profile = SUBJECTS[subject];
   const isShortAnswer = subject === "math" && question.responseType === "short";
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [shortAnswer, setShortAnswer] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
-  const currentAnswer = isShortAnswer ? normalizeShortAnswer(shortAnswer) : selectedChoice;
-  const isReadyToSubmit = isShortAnswer ? /^\d+$/.test(currentAnswer) : currentAnswer !== null;
+  const currentAnswer = isShortAnswer
+    ? normalizeShortAnswer(shortAnswer)
+    : selectedChoice;
+  const isReadyToSubmit = isShortAnswer
+    ? /^\d+$/.test(currentAnswer)
+    : currentAnswer !== null;
   const isCorrect = isShortAnswer
     ? currentAnswer === normalizeShortAnswer(question.answer)
     : selectedChoice === question.answer;
@@ -286,6 +710,18 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
 
   const selectChoice = (number) => {
     if (!submitted) setSelectedChoice(number);
+  };
+
+  const submitAnswer = () => {
+    if (!isReadyToSubmit || submitted) return;
+    setSubmitted(true);
+    if (session) {
+      session.onAnswer({
+        questionId: question.id,
+        label: question.label,
+        isCorrect,
+      });
+    }
   };
 
   return (
@@ -349,6 +785,34 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
         }
         .eng-math-practice__subject-band { height: 7px; }
         .eng-math-practice__content { padding: 30px; }
+        .eng-math-practice__progress {
+          margin-bottom: 18px;
+          border-bottom: 1px solid #edf0f5;
+          padding-bottom: 17px;
+        }
+        .eng-math-practice__progress-copy {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 9px;
+          color: #667085;
+          font-size: 0.78rem;
+          font-weight: 800;
+        }
+        .eng-math-practice__progress-copy strong { color: #344054; }
+        .eng-math-practice__progress-track {
+          overflow: hidden;
+          height: 7px;
+          border-radius: 999px;
+          background: #edf1f6;
+        }
+        .eng-math-practice__progress-value {
+          display: block;
+          height: 100%;
+          border-radius: inherit;
+          transition: width 180ms ease;
+        }
         .eng-math-practice__eyebrow {
           display: inline-flex;
           align-items: center;
@@ -558,7 +1022,10 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
         }
         .eng-math-practice__short-answer input:focus { border-color: #16705b; box-shadow: 0 0 0 3px rgba(22,112,91,0.13); }
         .eng-math-practice__short-answer input:disabled { background: #f4f6f8; color: #667085; }
-        .eng-math-practice__submit, .eng-math-practice__restart, .eng-math-practice__review-toggle {
+        .eng-math-practice__submit,
+        .eng-math-practice__restart,
+        .eng-math-practice__review-toggle,
+        .eng-math-practice__next {
           width: 100%;
           min-height: 53px;
           border: 0;
@@ -597,10 +1064,7 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
         .eng-math-practice__evidence-quote { color: #273b67; font-weight: 900; }
         .eng-math-practice__evidence-translation { color: #5b687d; font-size: 0.84rem; line-height: 1.55; }
         .eng-math-practice__restart { margin-top: 12px; border: 1px solid #cbd5e1; background: #fff; color: #3e4d61; }
-        .eng-math-practice--notice { display: grid; place-items: center; padding: 24px; }
-        .eng-math-practice__notice { width: min(100%, 390px); border: 1px solid #dce3ed; border-radius: 18px; background: #fff; padding: 26px; text-align: center; box-shadow: 0 14px 40px rgba(24,39,75,.08); }
-        .eng-math-practice__notice p { margin: 0; color: #40506a; line-height: 1.6; }
-        .eng-math-practice__notice button { margin-top: 16px; border: 0; border-radius: 10px; background: #3157a5; padding: 11px 14px; color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+        .eng-math-practice__next { margin-top: 12px; color: #fff; }
         @media (max-width: 440px) {
           .eng-math-practice { padding: 16px 14px 32px; }
           .eng-math-practice__topline { align-items: flex-start; }
@@ -622,17 +1086,28 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
 
       <div className="eng-math-practice__inner">
         <div className="eng-math-practice__topline">
-          <button className="eng-math-practice__brand" type="button" onClick={() => navigate("/eng-math-beta")}>
+          <button
+            className="eng-math-practice__brand"
+            type="button"
+            onClick={() => navigate("/eng-math-beta")}
+          >
             <span className="eng-math-practice__brand-dot" aria-hidden="true" />
             지니쌤과 공부하자
           </button>
-          <div className="eng-math-practice__subject-switcher" aria-label="과목 변경">
+          <div
+            className="eng-math-practice__subject-switcher"
+            aria-label="과목 변경"
+          >
             {Object.entries(SUBJECTS).map(([key, value]) => (
               <button
                 key={key}
                 type="button"
                 aria-current={key === subject ? "page" : undefined}
-                style={key === subject ? { color: value.accent, background: value.tint } : undefined}
+                style={
+                  key === subject
+                    ? { color: value.accent, background: value.tint }
+                    : undefined
+                }
                 onClick={() => onSubjectChange(key)}
               >
                 {value.name}
@@ -642,26 +1117,73 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
         </div>
 
         <article className="eng-math-practice__card">
-          <div className="eng-math-practice__subject-band" style={{ background: profile.accent }} />
+          <div
+            className="eng-math-practice__subject-band"
+            style={{ background: profile.accent }}
+          />
           <div className="eng-math-practice__content">
-            <span className="eng-math-practice__eyebrow" style={{ background: profile.tint, color: profile.accent }}>
-              {profile.name} · 1문항 체험
+            {session ? (
+              <section
+                className="eng-math-practice__progress"
+                aria-label={`${session.total}문항 중 ${session.current}번째`}
+              >
+                <div className="eng-math-practice__progress-copy">
+                  <span>5문항 연속 학습</span>
+                  <strong>
+                    {session.current} / {session.total}
+                  </strong>
+                </div>
+                <div
+                  className="eng-math-practice__progress-track"
+                  role="progressbar"
+                  aria-valuemin="1"
+                  aria-valuemax={session.total}
+                  aria-valuenow={session.current}
+                >
+                  <span
+                    className="eng-math-practice__progress-value"
+                    style={{
+                      width: `${(session.current / session.total) * 100}%`,
+                      background: profile.accent,
+                    }}
+                  />
+                </div>
+              </section>
+            ) : null}
+
+            <span
+              className="eng-math-practice__eyebrow"
+              style={{ background: profile.tint, color: profile.accent }}
+            >
+              {profile.name} · {session ? "5문항 학습" : "1문항 체험"}
             </span>
             <p className="eng-math-practice__label">{question.label}</p>
             <h1 className="eng-math-practice__heading">
-              {subject === "math" ? "문제를 읽고 정답을 확인하세요." : question.prompt}
+              {subject === "math"
+                ? "문제를 읽고 정답을 확인하세요."
+                : question.prompt}
             </h1>
 
-            {subject === "english" && question.figure ? <EnglishFigure figure={question.figure} /> : null}
-            {subject === "english" ? <p className="eng-math-practice__passage">{question.passage}</p> : null}
-            {subject === "math" ? <p className="eng-math-practice__math-prompt"><MathText text={question.prompt} /></p> : null}
+            {subject === "english" && question.figure ? (
+              <EnglishFigure figure={question.figure} />
+            ) : null}
+            {subject === "english" ? (
+              <p className="eng-math-practice__passage">{question.passage}</p>
+            ) : null}
+            {subject === "math" ? (
+              <p className="eng-math-practice__math-prompt">
+                <MathText text={question.prompt} />
+              </p>
+            ) : null}
             {subject === "math" && question.figureDescription ? (
               <MathFigureDescription description={question.figureDescription} />
             ) : null}
 
             {isShortAnswer ? (
               <div className="eng-math-practice__short-answer">
-                <label htmlFor="math-short-answer">정답을 숫자로 입력하세요.</label>
+                <label htmlFor="math-short-answer">
+                  정답을 숫자로 입력하세요.
+                </label>
                 <input
                   id="math-short-answer"
                   type="text"
@@ -669,18 +1191,27 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
                   autoComplete="off"
                   value={shortAnswer}
                   disabled={submitted}
-                  onChange={(event) => setShortAnswer(event.target.value.replace(/[^0-9]/g, ""))}
+                  onChange={(event) =>
+                    setShortAnswer(event.target.value.replace(/[^0-9]/g, ""))
+                  }
                 />
               </div>
             ) : (
-              <div className="eng-math-practice__choices" role="group" aria-label="답 선택">
+              <div
+                className="eng-math-practice__choices"
+                role="group"
+                aria-label="답 선택"
+              >
                 {question.choices.map((choice) => {
                   const isSelected = selectedChoice === choice.number;
                   const isAnswer = choice.number === question.answer;
                   const classNames = ["eng-math-practice__choice"];
-                  if (isSelected && !submitted) classNames.push("eng-math-practice__choice--selected");
-                  if (submitted && isAnswer) classNames.push("eng-math-practice__choice--correct");
-                  if (submitted && isSelected && !isAnswer) classNames.push("eng-math-practice__choice--wrong");
+                  if (isSelected && !submitted)
+                    classNames.push("eng-math-practice__choice--selected");
+                  if (submitted && isAnswer)
+                    classNames.push("eng-math-practice__choice--correct");
+                  if (submitted && isSelected && !isAnswer)
+                    classNames.push("eng-math-practice__choice--wrong");
 
                   return (
                     <button
@@ -704,7 +1235,7 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
                 type="button"
                 disabled={!isReadyToSubmit}
                 style={{ background: profile.accent }}
-                onClick={() => setSubmitted(true)}
+                onClick={submitAnswer}
               >
                 정답 확인하기
               </button>
@@ -731,12 +1262,16 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
                     </button>
 
                     {showExplanation ? (
-                      <section className="eng-math-practice__explanation" aria-label="풀이">
+                      <section
+                        className="eng-math-practice__explanation"
+                        aria-label="풀이"
+                      >
                         <h2>{question.review.approach}</h2>
                         <p>{question.review.summary}</p>
                         <p>{question.review.reason}</p>
                         <p>
-                          혼동하기 쉬운 {question.review.trap.mark} {question.review.trap.text}
+                          혼동하기 쉬운 {question.review.trap.mark}{" "}
+                          {question.review.trap.text}
                         </p>
                         <p>{question.review.trap.reason}</p>
                         {question.review.evidence.map((evidence) =>
@@ -745,8 +1280,12 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
                               key={`${evidence.role}-${evidence.quote}`}
                               className="eng-math-practice__evidence eng-math-practice__evidence--figure"
                             >
-                              <span className="eng-math-practice__evidence-role">{evidence.role}</span>
-                              <span className="eng-math-practice__evidence-quote">{evidence.quote}</span>
+                              <span className="eng-math-practice__evidence-role">
+                                {evidence.role}
+                              </span>
+                              <span className="eng-math-practice__evidence-quote">
+                                {evidence.quote}
+                              </span>
                               <span className="eng-math-practice__evidence-translation">
                                 {evidence.translation}
                               </span>
@@ -765,9 +1304,24 @@ function PracticeQuestion({ question, subject, navigate, onSubjectChange }) {
                   </>
                 ) : null}
 
-                <button className="eng-math-practice__restart" type="button" onClick={restart}>
-                  같은 문제 다시 풀기
-                </button>
+                {session ? (
+                  <button
+                    className="eng-math-practice__next"
+                    type="button"
+                    style={{ background: profile.accent }}
+                    onClick={session.onNext}
+                  >
+                    {session.isLast ? "5문항 결과 보기" : "다음 문제"}
+                  </button>
+                ) : (
+                  <button
+                    className="eng-math-practice__restart"
+                    type="button"
+                    onClick={restart}
+                  >
+                    같은 문제 다시 풀기
+                  </button>
+                )}
               </>
             )}
           </div>
