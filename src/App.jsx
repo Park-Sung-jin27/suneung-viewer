@@ -19,7 +19,8 @@ import PatternReport from "./PatternReport";
 import Payment from "./Payment";
 import Banner from "./Banner";
 import AcademyPreview from "./AcademyPreview";
-import Landing from "./Landing";
+import EngMathProductHome from "./EngMathProductHome";
+import EngMathPractice from "./EngMathPractice";
 import ResultPage from "./ResultPage";
 import FeedbackButton from "./FeedbackButton";
 import Privacy from "./Privacy";
@@ -62,13 +63,9 @@ function Header({ user, onLogout }) {
   const navigate = useNavigate();
   const location = useLocation();
   const isViewer = location.pathname === "/viewer";
-  const showBack = [
-    "/viewer",
-    "/report",
-    "/wrongnote",
-    "/payment",
-    "/english-structure",
-  ].includes(location.pathname);
+  const showBack = ["/viewer", "/report", "/wrongnote", "/payment"].includes(
+    location.pathname,
+  );
   const yearKey = new URLSearchParams(location.search).get("year");
   const yearMeta = YEAR_INFO.find((y) => y.key === yearKey) ?? null;
 
@@ -928,22 +925,6 @@ function MainPage({ isPro, user }) {
             }}
           >
             💳 요금제 보기
-          </button>
-          <button
-            onClick={() => navigate("/english-structure")}
-            style={{
-              padding: "10px 22px",
-              borderRadius: "10px",
-              background: "transparent",
-              color: MC.green,
-              border: `1.5px solid ${MC.line}`,
-              fontWeight: "700",
-              fontSize: "0.87rem",
-              cursor: "pointer",
-              fontFamily: "'Noto Sans KR', sans-serif",
-            }}
-          >
-            영어 구조독해
           </button>
           <button
             onClick={() => {
@@ -2477,21 +2458,8 @@ export default function App() {
 
   return (
     <Routes>
-      {/* / 경로: 비로그인 → Landing(랜딩 먼저), 로그인 → MainPage(시험 목록).
-          2026-06-10 출시 전환 — Tally 베타 신청 폐지, 메인 CTA = 시험 목록(/exams).
-          onStart = 랜딩 "시작하기" → 시험 목록 화면(가입 없이 무료 시험 선택). */}
-      <Route
-        path="/"
-        element={
-          !user ? (
-            <Landing onStart={() => navigate("/exams")} />
-          ) : (
-            <Layout user={user} onLogout={handleLogout}>
-              <MainPage isPro={isPro} user={user} />
-            </Layout>
-          )
-        }
-      />
+      <Route path="/" element={<EngMathProductHome />} />
+      <Route path="/eng-math/practice" element={<EngMathPractice />} />
       {/* /exams: 비로그인 포함 시험 목록 단독 노출 (랜딩 CTA 도착지).
           MainPage는 user=null이면 무료 release 시험만 표시 → 가입 없이 선택·체험. */}
       <Route
