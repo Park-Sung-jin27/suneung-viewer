@@ -403,6 +403,10 @@ export function verifyAnchors(choices, set) {
       failedHere = false;
     for (const m of String(c.analysis || "").matchAll(/"([^"]{12,})"/g)) {
       const qt = m[1];
+      // [보완] 따옴표 짝 꼬임 시 정규식이 여러 줄을 삼켜 만든 garbage 인용 제외.
+      //   지문 verbatim은 줄바꿈·풀이화살표(→)·섹션 이모지(📌🎯…)를 포함하지 않는다
+      //   (검증기 오탐 방지 — l2014a Q33c2 실증). 정상 인용은 이 토큰이 없어 그대로 추출.
+      if (/[\n→]|[📌🎯🔍⚡🧠🔗🔎❌✅]/u.test(qt)) continue;
       // 다문장은 WARNING(게이트 정합) — exact 대상 아님
       if (qt.split(/[.!?]/).filter(Boolean).length > 1 || /…|\.{2,}/.test(qt))
         continue;
