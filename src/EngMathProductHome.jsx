@@ -195,7 +195,7 @@ export default function EngMathProductHome() {
           className="eng-math-home__hero"
           aria-labelledby="eng-math-home-title"
         >
-          <span className="eng-math-home__eyebrow">영어·수학 1문항 체험</span>
+          <span className="eng-math-home__eyebrow">영어·수학 내부 베타 · 1문항 체험</span>
           <h1 id="eng-math-home-title">한 문제로, 공부 감각을 확인하세요.</h1>
           <p className="eng-math-home__lead">
             영어와 수학에서 지금 바로 한 문제씩 풀고, 정답과 풀이를 이어서 볼 수
@@ -231,7 +231,7 @@ export default function EngMathProductHome() {
 
         <a className="eng-math-home__korean-link" href="/exams">
           <span>
-            <span className="eng-math-home__korean-title">국어 근거 뷰어</span>
+            <span className="eng-math-home__korean-title">국어 대표 제품으로 돌아가기</span>
             <span className="eng-math-home__korean-copy">
               국어 선지와 지문 근거를 확인하는 독립 제품으로 이동합니다.
             </span>

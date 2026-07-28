@@ -249,6 +249,7 @@
       "source": "/room/(.*)",
       "destination": "https://jippi-saju.netlify.app/room/$1"
     },
+    { "source": "/eng-math-beta", "destination": "/index.html" },
     { "source": "/eng-math/practice", "destination": "/index.html" },
     { "source": "/auth", "destination": "/index.html" },
     { "source": "/exams", "destination": "/index.html" },

@@ -19,6 +19,7 @@ import PatternReport from "./PatternReport";
 import Payment from "./Payment";
 import Banner from "./Banner";
 import AcademyPreview from "./AcademyPreview";
+import Landing from "./Landing";
 import EngMathProductHome from "./EngMathProductHome";
 import EngMathPractice from "./EngMathPractice";
 import ResultPage from "./ResultPage";
@@ -2458,7 +2459,21 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<EngMathProductHome />} />
+      {/* / 경로: 비로그인 → 국어 Landing, 로그인 → 국어 시험 목록.
+          영어·수학은 데이터·기능 검증이 끝날 때까지 별도 베타 주소로 격리. */}
+      <Route
+        path="/"
+        element={
+          !user ? (
+            <Landing onStart={() => navigate("/exams")} />
+          ) : (
+            <Layout user={user} onLogout={handleLogout}>
+              <MainPage isPro={isPro} user={user} />
+            </Layout>
+          )
+        }
+      />
+      <Route path="/eng-math-beta" element={<EngMathProductHome />} />
       <Route path="/eng-math/practice" element={<EngMathPractice />} />
       {/* /exams: 비로그인 포함 시험 목록 단독 노출 (랜딩 CTA 도착지).
           MainPage는 user=null이면 무료 release 시험만 표시 → 가입 없이 선택·체험. */}
