@@ -1,10 +1,21 @@
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  writeFileSync,
+} from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const ENGLISH_DB_PATH = path.join(ROOT, "english", "data", "english_exam_db_v2_1.json");
+const ENGLISH_DB_PATH = path.join(
+  ROOT,
+  "english",
+  "data",
+  "english_exam_db_v2_1.json",
+);
 const ENGLISH_OUTPUT_PATH = path.join(
   ROOT,
   "public",
@@ -20,6 +31,16 @@ const MATH_OUTPUT_PATH = path.join(
   "math-full-no-figure-public.json",
 );
 const ENGLISH_EXCLUDED_IDS = new Set(["2026_csat_18"]);
+const ENGLISH_CHOICE_MARKS = ["①", "②", "③", "④", "⑤"];
+const ENGLISH_PUBLIC_CHOICE_FINGERPRINT =
+  "bbcfd28510d68d5193210254f08f0df4ac457b0b4bcd5849eb9d2ee5196f4a63";
+const ENGLISH_CHOICE_CONTAMINATION_PATTERNS = [
+  /--\s*\d+\s+of\s+\d+\s*--/i,
+  /이 문제지에 관한 저작권/,
+  /이제 듣기 문제가 끝났습니다/,
+  /\*?\s*확인 사항/,
+  /\[\d{2}\s*[~～－-]\s*\d{2}\]\s*(?:다음|주어진|글의)/,
+];
 const MATH_FIGURE_BLOCKED_IDS = [
   "2022_06_common_4",
   "2023_06_common_4",
@@ -152,8 +173,65 @@ function answerMark(answer) {
   return ["①", "②", "③", "④", "⑤"][Number(answer) - 1] ?? null;
 }
 
+function validateEnglishChoices(question) {
+  if (!Array.isArray(question.choices) || question.choices.length !== 5) {
+    fail("ENGLISH_CHOICE_COUNT", question.id);
+  }
+
+  const allowEmptyText = question.type === "문장 삽입";
+  question.choices.forEach((choice, index) => {
+    const expectedNumber = index + 1;
+    const text = choice.text;
+    if (Number(choice.num) !== expectedNumber) {
+      fail(
+        "ENGLISH_CHOICE_NUMBER_ORDER",
+        `${question.id}:${choice.num}!=${expectedNumber}`,
+      );
+    }
+    if (choice.mark !== ENGLISH_CHOICE_MARKS[index]) {
+      fail(
+        "ENGLISH_CHOICE_MARK_ORDER",
+        `${question.id}:${choice.mark}!=${ENGLISH_CHOICE_MARKS[index]}`,
+      );
+    }
+    if (typeof text !== "string" || (!allowEmptyText && !text.trim())) {
+      fail("ENGLISH_CHOICE_TEXT_MISSING", `${question.id}:${expectedNumber}`);
+    }
+    if (
+      ENGLISH_CHOICE_CONTAMINATION_PATTERNS.some((pattern) =>
+        pattern.test(text),
+      )
+    ) {
+      fail(
+        "ENGLISH_CHOICE_CONTAMINATION",
+        `${question.id}:${expectedNumber}`,
+      );
+    }
+  });
+
+  const answer = Number(question.answer);
+  if (!Number.isInteger(answer) || answer < 1 || answer > 5) {
+    fail("ENGLISH_ANSWER_INVALID", `${question.id}:${question.answer}`);
+  }
+}
+
+function englishChoiceFingerprint(questions) {
+  const fingerprintInput = questions.map((question) => [
+    question.id,
+    question.choices.map((choice) => [
+      Number(choice.num),
+      choice.mark,
+      choice.text,
+    ]),
+  ]);
+  return createHash("sha256")
+    .update(JSON.stringify(fingerprintInput))
+    .digest("hex");
+}
+
 function formatMathLabel(question) {
-  const sessionLabel = question.session === "6월" ? "6월 모의평가" : "9월 모의평가";
+  const sessionLabel =
+    question.session === "6월" ? "6월 모의평가" : "9월 모의평가";
   const trackLabel = {
     common: "공통",
     cal: "미적분",
@@ -175,32 +253,59 @@ function assertMatchingIds(actualIds, expectedIds, code) {
   const missing = [...expectedIds].filter((id) => !actualIds.has(id));
   const unexpected = [...actualIds].filter((id) => !expectedIds.has(id));
   if (missing.length || unexpected.length) {
-    fail(code, `missing=${missing.join(",") || "none"}; unexpected=${unexpected.join(",") || "none"}`);
+    fail(
+      code,
+      `missing=${missing.join(",") || "none"}; unexpected=${unexpected.join(",") || "none"}`,
+    );
   }
 }
 
 function validateMathFigurePolicy(mathDb) {
-  const blockedIds = uniqueIdSet(MATH_FIGURE_BLOCKED_IDS, "MATH_FIGURE_BLOCKED_DUPLICATE");
-  const descriptionIds = uniqueIdSet(MATH_FIGURE_DESCRIPTION_IDS, "MATH_FIGURE_DESCRIPTION_DUPLICATE");
-  const decorativeIds = uniqueIdSet(MATH_FIGURE_DECORATIVE_IDS, "MATH_FIGURE_DECORATIVE_DUPLICATE");
+  const blockedIds = uniqueIdSet(
+    MATH_FIGURE_BLOCKED_IDS,
+    "MATH_FIGURE_BLOCKED_DUPLICATE",
+  );
+  const descriptionIds = uniqueIdSet(
+    MATH_FIGURE_DESCRIPTION_IDS,
+    "MATH_FIGURE_DESCRIPTION_DUPLICATE",
+  );
+  const decorativeIds = uniqueIdSet(
+    MATH_FIGURE_DECORATIVE_IDS,
+    "MATH_FIGURE_DECORATIVE_DUPLICATE",
+  );
 
-  if (blockedIds.size !== 7) fail("MATH_FIGURE_BLOCKED_COUNT", String(blockedIds.size));
-  if (descriptionIds.size !== 55) fail("MATH_FIGURE_DESCRIPTION_COUNT", String(descriptionIds.size));
-  if (decorativeIds.size !== 12) fail("MATH_FIGURE_DECORATIVE_COUNT", String(decorativeIds.size));
+  if (blockedIds.size !== 7)
+    fail("MATH_FIGURE_BLOCKED_COUNT", String(blockedIds.size));
+  if (descriptionIds.size !== 55)
+    fail("MATH_FIGURE_DESCRIPTION_COUNT", String(descriptionIds.size));
+  if (decorativeIds.size !== 12)
+    fail("MATH_FIGURE_DECORATIVE_COUNT", String(decorativeIds.size));
 
-  const policyIds = new Set([...blockedIds, ...descriptionIds, ...decorativeIds]);
-  if (policyIds.size !== 74) fail("MATH_FIGURE_POLICY_COUNT", String(policyIds.size));
+  const policyIds = new Set([
+    ...blockedIds,
+    ...descriptionIds,
+    ...decorativeIds,
+  ]);
+  if (policyIds.size !== 74)
+    fail("MATH_FIGURE_POLICY_COUNT", String(policyIds.size));
 
   const fullFigureQuestions = mathDb.questions.filter(
-    (question) => question.answerCrossCheck === "full" && question.hasFigure === true,
+    (question) =>
+      question.answerCrossCheck === "full" && question.hasFigure === true,
   );
-  const fullFigureIds = new Set(fullFigureQuestions.map((question) => question.id));
-  if (fullFigureIds.size !== 74) fail("MATH_FULL_FIGURE_COUNT", String(fullFigureIds.size));
+  const fullFigureIds = new Set(
+    fullFigureQuestions.map((question) => question.id),
+  );
+  if (fullFigureIds.size !== 74)
+    fail("MATH_FULL_FIGURE_COUNT", String(fullFigureIds.size));
   assertMatchingIds(fullFigureIds, policyIds, "MATH_FIGURE_POLICY_MISMATCH");
 
-  const descriptionsById = new Map(fullFigureQuestions.map((question) => [question.id, question.figureDesc]));
+  const descriptionsById = new Map(
+    fullFigureQuestions.map((question) => [question.id, question.figureDesc]),
+  );
   for (const id of descriptionIds) {
-    if (!String(descriptionsById.get(id) ?? "").trim()) fail("MATH_FIGURE_DESCRIPTION_MISSING", id);
+    if (!String(descriptionsById.get(id) ?? "").trim())
+      fail("MATH_FIGURE_DESCRIPTION_MISSING", id);
   }
 
   return { blockedIds, descriptionIds, decorativeIds };
@@ -210,6 +315,7 @@ function hasInlineChoiceMarkers(question) {
   return (
     question.group === "grammar" ||
     question.group === "irrelevant" ||
+    question.group === "vocab" ||
     (question.group === "order" && (question.qid === 38 || question.qid === 39))
   );
 }
@@ -219,14 +325,13 @@ function stripPdfPageTail(text) {
 }
 
 function findLastChoiceBlockStart(text) {
-  const marks = ["①", "②", "③", "④", "⑤"];
   let best = -1;
-  let start = text.indexOf(marks[0]);
+  let start = text.indexOf(ENGLISH_CHOICE_MARKS[0]);
 
   while (start >= 0) {
     let position = start;
     let complete = true;
-    for (const mark of marks.slice(1)) {
+    for (const mark of ENGLISH_CHOICE_MARKS.slice(1)) {
       position = text.indexOf(mark, position + 1);
       if (position < 0) {
         complete = false;
@@ -234,10 +339,12 @@ function findLastChoiceBlockStart(text) {
       }
     }
     if (complete) best = start;
-    start = text.indexOf(marks[0], start + 1);
+    start = text.indexOf(ENGLISH_CHOICE_MARKS[0], start + 1);
   }
 
-  return best;
+  if (best >= 0) return best;
+  const fallback = text.lastIndexOf("\n①");
+  return fallback >= 0 ? fallback + 1 : -1;
 }
 
 function trimInlineMarkerTail(text) {
@@ -252,10 +359,12 @@ function trimInlineMarkerTail(text) {
     /\s+[A-Z][A-Za-z0-9'’.-]*(?:\s+[A-Z][A-Za-z0-9'’.-]*){0,5}\s+(?:Program|Festival|Event|Competition|Contest|Workshop|Camp|Notice)\b/,
   ]
     .map((pattern) => pattern.exec(tail))
-    .filter((match) => match && match.index > 30)
+    .filter(Boolean)
     .map((match) => searchFrom + match.index);
 
-  return cuts.length ? text.slice(0, Math.min(...cuts)).replace(/\s+$/, "") : text;
+  return cuts.length
+    ? text.slice(0, Math.min(...cuts)).replace(/\s+$/, "")
+    : text;
 }
 
 function restoreBlankMarker(question, text) {
@@ -265,8 +374,10 @@ function restoreBlankMarker(question, text) {
   if (text.includes("____")) return text.replace(/\t/g, " ");
 
   let restored = text.replace(/\t+\s*([.,;:?!])/, " ____$1");
-  if (restored === text) restored = restored.replace(/a\(n\)\s*\t+\s*/, "a(n) ____ ");
-  if (restored === text) restored = restored.replace(/\bthat\s*\n\s*\./, "that ____.");
+  if (restored === text)
+    restored = restored.replace(/a\(n\)\s*\t+\s*/, "a(n) ____ ");
+  if (restored === text)
+    restored = restored.replace(/\bthat\s*\n\s*\./, "that ____.");
   if (restored === text) restored = restored.replace(/\t+/, " ____ ");
   restored = restored.replace(/\t/g, " ");
   if (!restored.includes("____")) {
@@ -292,7 +403,12 @@ function normalizePassageLineBreaks(text) {
   const body = source
     .replace(/\n{3,}/g, "\n\n")
     .split(/\n{2,}/)
-    .map((part) => part.replace(/[ \t]*\n[ \t]*/g, " ").replace(/[ \t]{2,}/g, " ").trim())
+    .map((part) =>
+      part
+        .replace(/[ \t]*\n[ \t]*/g, " ")
+        .replace(/[ \t]{2,}/g, " ")
+        .trim(),
+    )
     .filter(Boolean)
     .join("\n\n")
     .replace(/(\S)\s+(\*+\s)/g, "$1\n$2");
@@ -311,28 +427,65 @@ function cutChoicesFromRaw(rawText, question) {
   ) {
     body = body.slice(0, choiceStart).replace(/\s+$/, "");
   }
-  return normalizePassageLineBreaks(restoreBlankMarker(question, body)).replace(/\s+$/, "");
+  return normalizePassageLineBreaks(restoreBlankMarker(question, body)).replace(
+    /\s+$/,
+    "",
+  );
 }
 
 function removeLeadingStem(passage, stem) {
   const normalizedStem = normalizePassageLineBreaks(stem).trim();
   const separator = passage.indexOf("\n\n");
-  const normalizedPrefix = passage.slice(0, separator >= 0 ? separator : passage.length).replace(/\s+/g, " ").trim();
-  if (separator >= 0 && normalizedPrefix === normalizedStem.replace(/\s+/g, " ")) {
+  const normalizedPrefix = passage
+    .slice(0, separator >= 0 ? separator : passage.length)
+    .replace(/\s+/g, " ")
+    .trim();
+  if (
+    separator >= 0 &&
+    normalizedPrefix === normalizedStem.replace(/\s+/g, " ")
+  ) {
     return passage.slice(separator + 2).trim();
   }
-  if (normalizedStem && passage.startsWith(normalizedStem)) return passage.slice(normalizedStem.length).trim();
+  if (normalizedStem && passage.startsWith(normalizedStem))
+    return passage.slice(normalizedStem.length).trim();
   return passage;
+}
+
+function validateEnglishPassage(question, passage) {
+  if (
+    ENGLISH_CHOICE_CONTAMINATION_PATTERNS.slice(0, -1).some((pattern) =>
+      pattern.test(passage),
+    )
+  ) {
+    fail("ENGLISH_PASSAGE_CONTAMINATION", question.id);
+  }
+  const nextQuestionMatch =
+    ENGLISH_CHOICE_CONTAMINATION_PATTERNS.at(-1).exec(passage);
+  if (
+    nextQuestionMatch &&
+    nextQuestionMatch.index > Math.max(80, passage.length * 0.35)
+  ) {
+    fail("ENGLISH_PASSAGE_NEXT_QUESTION_LEAK", question.id);
+  }
+  if (
+    !hasInlineChoiceMarkers(question) &&
+    ENGLISH_CHOICE_MARKS.every((mark) => passage.includes(mark))
+  ) {
+    fail("ENGLISH_PASSAGE_CHOICE_LEAK", question.id);
+  }
 }
 
 function assertNoForbiddenKeys(value, location = "root") {
   if (Array.isArray(value)) {
-    value.forEach((item, index) => assertNoForbiddenKeys(item, `${location}[${index}]`));
+    value.forEach((item, index) =>
+      assertNoForbiddenKeys(item, `${location}[${index}]`),
+    );
     return;
   }
   if (!value || typeof value !== "object") return;
   for (const [key, child] of Object.entries(value)) {
-    const isApprovedFigureNotes = key === "notes" && location.endsWith(".figure");
+    const isApprovedFigureNotes =
+      key === "notes" && location.endsWith(".figure");
     if (FORBIDDEN_PUBLIC_KEYS.has(key) && !isApprovedFigureNotes) {
       fail("PUBLIC_FIELD_LEAK", `${location}.${key}`);
     }
@@ -364,7 +517,10 @@ function projectEnglishFigure(question) {
   if (!Array.isArray(figure.series) || figure.series.length === 0) {
     fail("ENGLISH_FIGURE_SERIES", question.id);
   }
-  if (!Array.isArray(figure.notes) || figure.notes.some((note) => !String(note).trim())) {
+  if (
+    !Array.isArray(figure.notes) ||
+    figure.notes.some((note) => !String(note).trim())
+  ) {
     fail("ENGLISH_FIGURE_NOTES", question.id);
   }
 
@@ -372,7 +528,10 @@ function projectEnglishFigure(question) {
   if (
     new Set(categoryIds).size !== categoryIds.length ||
     figure.categories.some(
-      (category) => typeof category.id !== "string" || !category.id || !String(category.label).trim(),
+      (category) =>
+        typeof category.id !== "string" ||
+        !category.id ||
+        !String(category.label).trim(),
     )
   ) {
     fail("ENGLISH_FIGURE_CATEGORY_ID", question.id);
@@ -406,13 +565,23 @@ function projectEnglishFigure(question) {
   }
 
   for (const categoryId of categoryIds) {
-    const total = figure.series.reduce((sum, series) => sum + series.values[categoryId], 0);
-    if (total > 100) fail("ENGLISH_FIGURE_STACK_TOTAL", `${question.id}:${categoryId}`);
+    const total = figure.series.reduce(
+      (sum, series) => sum + series.values[categoryId],
+      0,
+    );
+    if (total > 100)
+      fail("ENGLISH_FIGURE_STACK_TOTAL", `${question.id}:${categoryId}`);
   }
 
   const publicRoot = path.join(ROOT, "public");
-  const assetPath = path.resolve(publicRoot, figure.assetPath.replace(/^[/\\]+/, ""));
-  if (!assetPath.startsWith(`${publicRoot}${path.sep}`) || !existsSync(assetPath)) {
+  const assetPath = path.resolve(
+    publicRoot,
+    figure.assetPath.replace(/^[/\\]+/, ""),
+  );
+  if (
+    !assetPath.startsWith(`${publicRoot}${path.sep}`) ||
+    !existsSync(assetPath)
+  ) {
     fail("ENGLISH_FIGURE_ASSET", question.id);
   }
 
@@ -434,22 +603,34 @@ function buildPublicData() {
   const englishDb = readJson(ENGLISH_DB_PATH, "english_exam_db_v2_1.json");
   const mathDb = readJson(mathDbPath, "math_exam_db_v2_0.json");
   const explanationDb = readJson(explainPath, "eng_explain_2026csat.json");
-  const explanations = new Map(Object.values(explanationDb.items).map((item) => [item.id, item]));
+  const explanations = new Map(
+    Object.values(explanationDb.items).map((item) => [item.id, item]),
+  );
 
-  const englishSource = englishDb.questions.filter((question) => question.examId === "2026_csat");
-  if (englishSource.length !== 28) fail("ENGLISH_SOURCE_SCOPE", String(englishSource.length));
+  const englishSource = englishDb.questions.filter(
+    (question) => question.examId === "2026_csat",
+  );
+  if (englishSource.length !== 28)
+    fail("ENGLISH_SOURCE_SCOPE", String(englishSource.length));
 
-  const english = englishSource
-    .filter(
-      (question) =>
-        !ENGLISH_EXCLUDED_IDS.has(question.id) && explanations.get(question.id)?.status === "ready",
-    )
-    .map((question) => {
+  const englishReadySource = englishSource.filter(
+    (question) =>
+      !ENGLISH_EXCLUDED_IDS.has(question.id) &&
+      explanations.get(question.id)?.status === "ready",
+  );
+  englishReadySource.forEach(validateEnglishChoices);
+  const choiceFingerprint = englishChoiceFingerprint(englishReadySource);
+  if (choiceFingerprint !== ENGLISH_PUBLIC_CHOICE_FINGERPRINT) {
+    fail(
+      "ENGLISH_CHOICE_FINGERPRINT",
+      `${choiceFingerprint} != ${ENGLISH_PUBLIC_CHOICE_FINGERPRINT}`,
+    );
+  }
+
+  const english = englishReadySource.map((question) => {
       const review = explanations.get(question.id);
-      if (String(question.answer) !== String(review.answer)) fail("ENGLISH_ANSWER_MISMATCH", question.id);
-      if (!Array.isArray(question.choices) || question.choices.length !== 5) {
-        fail("ENGLISH_CHOICE_COUNT", question.id);
-      }
+      if (String(question.answer) !== String(review.answer))
+        fail("ENGLISH_ANSWER_MISMATCH", question.id);
       if (!Array.isArray(review.evidence) || review.evidence.length === 0) {
         fail("ENGLISH_EVIDENCE_MISSING", question.id);
       }
@@ -457,20 +638,27 @@ function buildPublicData() {
         fail("ENGLISH_TRAP_MISSING", question.id);
       }
 
-      const rawPassage = question.sharedPassage?.trim() || cutChoicesFromRaw(question.rawText, question);
+      const rawPassage =
+        question.sharedPassage?.trim() ||
+        cutChoicesFromRaw(question.rawText, question);
       const passage = question.sharedPassage?.trim()
         ? rawPassage
         : removeLeadingStem(rawPassage, question.stem);
       if (!passage) fail("ENGLISH_PASSAGE_MISSING", question.id);
+      validateEnglishPassage(question, passage);
       const figure = projectEnglishFigure(question);
 
       const evidence = review.evidence.map((item, index) => {
         if (item.in === "figure") {
-          const series = question.figure?.series?.find((candidate) => candidate.id === item.seriesId);
+          const series = question.figure?.series?.find(
+            (candidate) => candidate.id === item.seriesId,
+          );
           const value = series?.values?.[item.categoryId];
           if (
             !figure ||
-            !question.figure.categories.some((category) => category.id === item.categoryId) ||
+            !question.figure.categories.some(
+              (category) => category.id === item.categoryId,
+            ) ||
             value !== item.value ||
             !String(item.display ?? "").trim()
           ) {
@@ -487,7 +675,10 @@ function buildPublicData() {
         const sourceText = question[item.in];
         if (
           typeof sourceText !== "string" ||
-          sourceText.slice(item.charStart, item.charStart + item.quote.length) !== item.quote
+          sourceText.slice(
+            item.charStart,
+            item.charStart + item.quote.length,
+          ) !== item.quote
         ) {
           fail("ENGLISH_EVIDENCE_MISMATCH", `${question.id}:${index}`);
         }
@@ -525,15 +716,21 @@ function buildPublicData() {
       };
     });
 
-  if (english.length !== 27) fail("ENGLISH_PUBLIC_COUNT", String(english.length));
-  const englishEvidenceCount = english.reduce((count, question) => count + question.review.evidence.length, 0);
-  if (englishEvidenceCount !== 61) fail("ENGLISH_EVIDENCE_COUNT", String(englishEvidenceCount));
+  if (english.length !== 27)
+    fail("ENGLISH_PUBLIC_COUNT", String(english.length));
+  const englishEvidenceCount = english.reduce(
+    (count, question) => count + question.review.evidence.length,
+    0,
+  );
+  if (englishEvidenceCount !== 61)
+    fail("ENGLISH_EVIDENCE_COUNT", String(englishEvidenceCount));
 
   const mathFigurePolicy = validateMathFigurePolicy(mathDb);
   const math = mathDb.questions
     .filter(
       (question) =>
-        question.answerCrossCheck === "full" && !mathFigurePolicy.blockedIds.has(question.id),
+        question.answerCrossCheck === "full" &&
+        !mathFigurePolicy.blockedIds.has(question.id),
     )
     .map((question) => {
       const isChoice = question.answerType === "choice";
@@ -542,19 +739,30 @@ function buildPublicData() {
         ? question.figureDesc
         : null;
       if (!isChoice && !isShort) fail("MATH_RESPONSE_TYPE", question.id);
-      if (!String(question.problem_latex ?? "").trim()) fail("MATH_PROMPT_MISSING", question.id);
-      if (!Array.isArray(question.choices)) fail("MATH_CHOICES_MISSING", question.id);
+      if (!String(question.problem_latex ?? "").trim())
+        fail("MATH_PROMPT_MISSING", question.id);
+      if (!Array.isArray(question.choices))
+        fail("MATH_CHOICES_MISSING", question.id);
       if (figureDescription !== null && !String(figureDescription).trim()) {
         fail("MATH_FIGURE_DESCRIPTION_MISSING", question.id);
       }
 
       if (isChoice) {
-        if (question.choices.length !== 5) fail("MATH_CHOICE_COUNT", question.id);
-        if (!question.choices.some((choice) => Number(choice.num) === Number(question.answer))) {
+        if (question.choices.length !== 5)
+          fail("MATH_CHOICE_COUNT", question.id);
+        if (
+          !question.choices.some(
+            (choice) => Number(choice.num) === Number(question.answer),
+          )
+        ) {
           fail("MATH_ANSWER_MISMATCH", question.id);
         }
       }
-      if (isShort && (question.choices.length !== 0 || !/^\d+$/.test(String(question.answer)))) {
+      if (
+        isShort &&
+        (question.choices.length !== 0 ||
+          !/^\d+$/.test(String(question.answer)))
+      ) {
         fail("MATH_SHORT_FORMAT", question.id);
       }
 
@@ -574,36 +782,55 @@ function buildPublicData() {
     });
 
   if (math.length !== 361) fail("MATH_PUBLIC_COUNT", String(math.length));
-  if (math.filter((question) => question.responseType === "choice").length !== 257) {
+  if (
+    math.filter((question) => question.responseType === "choice").length !== 257
+  ) {
     fail("MATH_CHOICE_SCOPE", "expected 257");
   }
-  if (math.filter((question) => question.responseType === "short").length !== 104) {
+  if (
+    math.filter((question) => question.responseType === "short").length !== 104
+  ) {
     fail("MATH_SHORT_SCOPE", "expected 104");
   }
   if (math.some((question) => mathFigurePolicy.blockedIds.has(question.id))) {
     fail("MATH_BLOCKED_FIGURE_LEAK", "public data");
   }
 
-  const describedQuestions = math.filter((question) => mathFigurePolicy.descriptionIds.has(question.id));
+  const describedQuestions = math.filter((question) =>
+    mathFigurePolicy.descriptionIds.has(question.id),
+  );
   if (
     describedQuestions.length !== 55 ||
-    describedQuestions.some((question) => !String(question.figureDescription ?? "").trim())
+    describedQuestions.some(
+      (question) => !String(question.figureDescription ?? "").trim(),
+    )
   ) {
-    fail("MATH_FIGURE_DESCRIPTION_PUBLIC_CHECK", String(describedQuestions.length));
+    fail(
+      "MATH_FIGURE_DESCRIPTION_PUBLIC_CHECK",
+      String(describedQuestions.length),
+    );
   }
 
-  const decorativeQuestions = math.filter((question) => mathFigurePolicy.decorativeIds.has(question.id));
+  const decorativeQuestions = math.filter((question) =>
+    mathFigurePolicy.decorativeIds.has(question.id),
+  );
   if (
     decorativeQuestions.length !== 12 ||
-    decorativeQuestions.some((question) => Object.hasOwn(question, "figureDescription"))
+    decorativeQuestions.some((question) =>
+      Object.hasOwn(question, "figureDescription"),
+    )
   ) {
-    fail("MATH_DECORATIVE_FIGURE_PUBLIC_CHECK", String(decorativeQuestions.length));
+    fail(
+      "MATH_DECORATIVE_FIGURE_PUBLIC_CHECK",
+      String(decorativeQuestions.length),
+    );
   }
 
   if (
     math.some(
       (question) =>
-        Object.hasOwn(question, "figureDescription") && !mathFigurePolicy.descriptionIds.has(question.id),
+        Object.hasOwn(question, "figureDescription") &&
+        !mathFigurePolicy.descriptionIds.has(question.id),
     )
   ) {
     fail("MATH_UNAPPROVED_FIGURE_DESCRIPTION", "public data");
@@ -615,12 +842,22 @@ function buildPublicData() {
 }
 
 function verifyArtifact(filePath, expected) {
-  if (!existsSync(filePath)) fail("PUBLIC_ARTIFACT_MISSING", path.relative(ROOT, filePath));
+  if (!existsSync(filePath))
+    fail("PUBLIC_ARTIFACT_MISSING", path.relative(ROOT, filePath));
   const actual = readFileSync(filePath, "utf8");
   if (actual !== stableJson(expected)) {
-    const expectedHash = createHash("sha256").update(stableJson(expected)).digest("hex").slice(0, 12);
-    const actualHash = createHash("sha256").update(actual).digest("hex").slice(0, 12);
-    fail("PUBLIC_ARTIFACT_DRIFT", `${path.basename(filePath)} ${actualHash} != ${expectedHash}`);
+    const expectedHash = createHash("sha256")
+      .update(stableJson(expected))
+      .digest("hex")
+      .slice(0, 12);
+    const actualHash = createHash("sha256")
+      .update(actual)
+      .digest("hex")
+      .slice(0, 12);
+    fail(
+      "PUBLIC_ARTIFACT_DRIFT",
+      `${path.basename(filePath)} ${actualHash} != ${expectedHash}`,
+    );
   }
 }
 
