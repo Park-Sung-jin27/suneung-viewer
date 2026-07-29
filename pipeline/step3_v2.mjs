@@ -14,6 +14,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { buildMarkerBlock } from "./marker_context.mjs";
 import { _s2norm, matchVerseMultiSent } from "./haesol_v2_gate.mjs"; // 결정B 검증 = 게이트와 동일 정규화·verse매처(단일 소스)
+import { jsonrepair } from "jsonrepair"; // 모델 malformed JSON 복구 fallback(parseChoices)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -218,7 +219,14 @@ function parseChoices(text) {
   const lo = t.indexOf("[");
   const hi = t.lastIndexOf("]");
   if (lo < 0 || hi < 0) throw new Error("JSON 배열 미검출");
-  return JSON.parse(t.slice(lo, hi + 1));
+  const slice = t.slice(lo, hi + 1);
+  try {
+    return JSON.parse(slice);
+  } catch (e) {
+    // 모델이 analysis 내 이스케이프 안 된 따옴표 등으로 JSON을 깨뜨리는 경우 복구 시도
+    //   (r2016c·l2016dB 실증 — plain JSON.parse 3회 실패). 복구도 실패하면 원 에러로 throw.
+    return JSON.parse(jsonrepair(slice));
+  }
 }
 
 const sets = IS_CLI ? selectSets() : [];
