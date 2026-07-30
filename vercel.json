@@ -201,6 +201,18 @@
       "destination": "https://jippi-saju.netlify.app/assets/jippi-analytics.js"
     },
     {
+      "source": "/assets/signatures/(.*)",
+      "destination": "https://jippi-saju.netlify.app/assets/signatures/$1"
+    },
+    {
+      "source": "/assets/mega_chapters/(.*)",
+      "destination": "https://jippi-saju.netlify.app/assets/mega_chapters/$1"
+    },
+    {
+      "source": "/fonts/(.*)",
+      "destination": "https://jippi-saju.netlify.app/fonts/$1"
+    },
+    {
       "source": "/privacy.html",
       "destination": "https://jippi-saju.netlify.app/privacy.html"
     },
