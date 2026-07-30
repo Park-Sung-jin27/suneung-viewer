@@ -48,15 +48,19 @@ export function acceptRegenChoice(analysis, pat, ok) {
       conclLine,
     );
   const narrativeOk = ok ? !negLang : true;
-  const accept = stampOk && patOk && narrativeOk;
+  // [축3 강등: 거부축 → 경고축] (심사관 2026-07-30 지시)
+  //   축3(서술역전)은 키워드 휴리스틱이라 (a)의미적으로 우회한 역전을 못 잡고(l20186c Q36-1 실증,
+  //   §13⑰: 형식 게이트로 내용역전 보증 불가) (b)정상 해설을 오탐할 수 있다. 따라서 채택은
+  //   기계적으로 확정적인 축1(스탬프)·축2(pat)로만 판정하고, 축3은 비차단 경고로만 표기한다.
+  //   의미 역전의 최종 방어선은 대표/옵션B 검수(§13⑰)이며 게이트는 보조 신호다.
+  const accept = stampOk && patOk;
+  const warn = accept && !narrativeOk ? "축3 서술역전 의심(경고·비차단)" : null;
   const reason = accept
     ? "OK"
     : !stampOk
       ? `축1 스탬프≠ok(ok=${ok}, 결론두자="${head || "?"}")`
-      : !patOk
-        ? `축2 pat≠ok(ok=${ok}, pat=${pat})`
-        : `축3 서술역전(ok:true인데 결론줄에 부적절어)`;
-  return { accept, reason };
+      : `축2 pat≠ok(ok=${ok}, pat=${pat})`;
+  return { accept, reason, warn };
 }
 
 // [verse 매처] 📌 인용이 " / "로 이은 "연속 verse 행"이면 각 행의 verse sent.id 배열 반환(아니면 null).
