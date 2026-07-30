@@ -78,11 +78,15 @@ jobs:
           PY
 
       - name: Notify Discord on failure
-        if: failure() && secrets.JIPPI_DEPLOY_DISCORD_WEBHOOK != ''
+        if: failure()
         env:
           DISCORD_WEBHOOK: ${{ secrets.JIPPI_DEPLOY_DISCORD_WEBHOOK }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "Discord webhook is not configured; skipping notification."
+            exit 0
+          fi
           python - <<'PY'
           import json
           import os

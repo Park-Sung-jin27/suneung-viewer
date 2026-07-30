@@ -65,6 +65,23 @@ export function acceptRegenChoice(analysis, pat, ok) {
   return { accept, reason, warn };
 }
 
+// 재생성 산출물을 기존 해설에 원자적으로 적용한다.
+// 채택 게이트가 거부하면 기존 해설을 그대로 돌려줘 부분 덮어쓰기를 막는다.
+export function chooseRegenAnalysis(
+  currentAnalysis,
+  regeneratedAnalysis,
+  pat,
+  ok,
+) {
+  const verdict = acceptRegenChoice(regeneratedAnalysis, pat, ok);
+  return {
+    ...verdict,
+    analysis: verdict.accept
+      ? String(regeneratedAnalysis || "")
+      : String(currentAnalysis || ""),
+  };
+}
+
 // [verse 매처] 📌 인용이 " / "로 이은 "연속 verse 행"이면 각 행의 verse sent.id 배열 반환(아니면 null).
 //   §13⑬ 운문 다행 인용을 자동 유효 처리(형광펜 다중 정박). 단일 소스 — step4·gate §2·verifyAnchors 공용.
 //   가드1 연속성(adjacency): 매칭 verse 행이 sents 순서상 인접(i,i+1,…)일 때만. 비인접=스티칭 오류 → null.
