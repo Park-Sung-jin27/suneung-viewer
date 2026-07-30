@@ -40,8 +40,11 @@ export function acceptRegenChoice(analysis, pat, ok) {
   const head = conclLine[0];
   const stampOk = ok ? head === "✅" : head === "❌";
   const patOk = ok ? pat == null : pat != null;
+  // ok:true 결론줄에 나오면 자기모순인 표현(부적절 단정 + '부합/일치하지 않아 적절' 류).
+  //   상위모델이 하드제약을 못 이겨 "지문에 부합하지 않아 적절한 선지" 같은 역전-결론을
+  //   내면 스탬프(✅)만 보고 통과되던 사각(2018_6월 l20186c Q36-1 실증) 차단.
   const negLang =
-    /부적절|어긋나|오독|과잉|짜깁기|전도|착각|혼동|오인|틀린|잘못/.test(
+    /부적절|어긋나|오독|과잉|짜깁기|전도|착각|혼동|오인|틀린|잘못|부합하지\s*(않|아니)|일치하지\s*(않|아니)|맞지\s*않/.test(
       conclLine,
     );
   const narrativeOk = ok ? !negLang : true;
