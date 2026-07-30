@@ -27,6 +27,35 @@ export const _s2norm = (s) =>
     .replace(_S2_NORM_RE, "")
     .replace(/\s+/g, "");
 
+// [재생성 채택 게이트] 상위모델 재생성 산출을 3자 정합으로 판정 — 통과분만 채택, 나머지 거부.
+//   축1 ok↔결론줄 스탬프: ok:true→마지막줄 ✅ / ok:false→❌.
+//   축2 ok↔pat: ok:true→pat null / ok:false→pat 있음.
+//   축3 ok↔서술 방향: ok:true인데 결론줄에 부적절 어휘(부적절·어긋·오독…)=역전 서술 → 거부.
+//   게이트 없이 재생성물을 덮어쓰면 A/B처럼 나빠진 결과가 조용히 반영된다(심사관 지시: 게이트 선행).
+export function acceptRegenChoice(analysis, pat, ok) {
+  const lines = String(analysis || "")
+    .trim()
+    .split("\n");
+  const conclLine = (lines[lines.length - 1] || "").trim();
+  const head = conclLine[0];
+  const stampOk = ok ? head === "✅" : head === "❌";
+  const patOk = ok ? pat == null : pat != null;
+  const negLang =
+    /부적절|어긋나|오독|과잉|짜깁기|전도|착각|혼동|오인|틀린|잘못/.test(
+      conclLine,
+    );
+  const narrativeOk = ok ? !negLang : true;
+  const accept = stampOk && patOk && narrativeOk;
+  const reason = accept
+    ? "OK"
+    : !stampOk
+      ? `축1 스탬프≠ok(ok=${ok}, 결론두자="${head || "?"}")`
+      : !patOk
+        ? `축2 pat≠ok(ok=${ok}, pat=${pat})`
+        : `축3 서술역전(ok:true인데 결론줄에 부적절어)`;
+  return { accept, reason };
+}
+
 // [verse 매처] 📌 인용이 " / "로 이은 "연속 verse 행"이면 각 행의 verse sent.id 배열 반환(아니면 null).
 //   §13⑬ 운문 다행 인용을 자동 유효 처리(형광펜 다중 정박). 단일 소스 — step4·gate §2·verifyAnchors 공용.
 //   가드1 연속성(adjacency): 매칭 verse 행이 sents 순서상 인접(i,i+1,…)일 때만. 비인접=스티칭 오류 → null.
