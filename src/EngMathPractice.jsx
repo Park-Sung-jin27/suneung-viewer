@@ -8,26 +8,20 @@ const DATA_URLS = {
   math: "/data/eng-math/math-full-no-figure-public.json",
 };
 
-const STARTER_IDS = {
-  english: "2026_csat_19",
-  math: "2022_06_common_1",
-};
+const ENGLISH_SESSION_NUMBER_GROUPS = [
+  [19, 20, 21, 22, 23],
+  [24, 25, 26, 27, 28],
+  [29, 30, 31, 32, 33],
+  [34, 35, 36, 37, 38],
+  [36, 37, 38, 39, 40],
+  [41, 42, 43, 44, 45],
+];
 
-const SESSION_IDS = {
-  english: [
-    "2026_csat_19",
-    "2026_csat_20",
-    "2026_csat_21",
-    "2026_csat_22",
-    "2026_csat_23",
-  ],
-  math: [
-    "2022_06_common_1",
-    "2022_06_common_2",
-    "2022_06_common_3",
-    "2022_06_common_5",
-    "2022_06_common_16",
-  ],
+const MATH_TRACKS = {
+  common: "공통",
+  cal: "미적분",
+  sta: "확률과통계",
+  geo: "기하",
 };
 
 const SUBJECTS = {
@@ -42,6 +36,189 @@ const SUBJECTS = {
     tint: "#eaf7f1",
   },
 };
+
+function questionNumberFromId(id) {
+  return Number(String(id).split("_").at(-1));
+}
+
+function parseMathQuestionId(id) {
+  const match = String(id).match(
+    /^(\d{4}_(?:06|09))_(common|cal|sta|geo)_(\d+)$/,
+  );
+  if (!match) return null;
+  return {
+    examKey: match[1],
+    trackKey: match[2],
+    scopeKey: `${match[1]}|${match[2]}`,
+    questionNumber: Number(match[3]),
+  };
+}
+
+function buildFiveQuestionGroups(questions) {
+  const ordered = [...questions].sort(
+    (left, right) =>
+      questionNumberFromId(left.id) - questionNumberFromId(right.id),
+  );
+  const groups = [];
+
+  for (let offset = 0; offset < ordered.length; offset += 5) {
+    const start =
+      ordered.length - offset >= 5 ? offset : Math.max(0, ordered.length - 5);
+    const group = ordered.slice(start, start + 5);
+    if (groups.some((candidate) => candidate[0]?.id === group[0]?.id)) continue;
+    groups.push(group);
+  }
+  return groups;
+}
+
+function buildEnglishCatalog(questions) {
+  const questionsByNumber = new Map(
+    questions.map((question) => [questionNumberFromId(question.id), question]),
+  );
+
+  return ENGLISH_SESSION_NUMBER_GROUPS.map((numbers, index) => {
+    const packQuestions = numbers
+      .map((number) => questionsByNumber.get(number))
+      .filter(Boolean);
+    return {
+      id: packQuestions[0]?.id ?? `english-pack-${index + 1}`,
+      scopeKey: "2026_csat",
+      examKey: "2026_csat",
+      examLabel: "2026학년도 수능",
+      trackKey: "english",
+      trackLabel: "영어",
+      label: `${numbers[0]}~${numbers.at(-1)}번`,
+      note:
+        index === 4
+          ? "앞 묶음의 3문항을 복습합니다."
+          : index === 5
+            ? "공통 지문 문항을 함께 풉니다."
+            : "",
+      questions: packQuestions,
+    };
+  });
+}
+
+function buildMathCatalog(questions) {
+  const questionsByScope = new Map();
+
+  for (const question of questions) {
+    const parsed = parseMathQuestionId(question.id);
+    if (!parsed) continue;
+    if (!questionsByScope.has(parsed.scopeKey)) {
+      questionsByScope.set(parsed.scopeKey, []);
+    }
+    questionsByScope.get(parsed.scopeKey).push(question);
+  }
+
+  const examKeys = [
+    ...new Set(
+      [...questionsByScope.keys()].map((scopeKey) => scopeKey.split("|")[0]),
+    ),
+  ].sort();
+  const catalog = [];
+
+  for (const examKey of examKeys) {
+    for (const [trackKey, trackLabel] of Object.entries(MATH_TRACKS)) {
+      const scopeKey = `${examKey}|${trackKey}`;
+      const scopedQuestions = questionsByScope.get(scopeKey) ?? [];
+      const examLabel = scopedQuestions[0]?.label.split(" · ")[0] ?? examKey;
+      const groups = buildFiveQuestionGroups(scopedQuestions);
+
+      groups.forEach((packQuestions, index) => {
+        const questionNumbers = packQuestions.map((question) =>
+          questionNumberFromId(question.id),
+        );
+        const choiceCount = packQuestions.filter(
+          (question) => question.responseType === "choice",
+        ).length;
+        const shortCount = packQuestions.length - choiceCount;
+        const responseSummary = [
+          choiceCount ? `선다형 ${choiceCount}` : "",
+          shortCount ? `단답형 ${shortCount}` : "",
+        ]
+          .filter(Boolean)
+          .join(" · ");
+
+        catalog.push({
+          id: packQuestions[0]?.id ?? `${scopeKey}-${index + 1}`,
+          scopeKey,
+          examKey,
+          examLabel,
+          trackKey,
+          trackLabel,
+          label: `${questionNumbers.join("·")}번`,
+          note:
+            index === groups.length - 1 && scopedQuestions.length % 5 !== 0
+              ? `마지막 ${scopedQuestions.length % 5}문항과 앞 문항을 함께 복습합니다.`
+              : "",
+          responseSummary,
+          questions: packQuestions,
+        });
+      });
+    }
+  }
+  return catalog;
+}
+
+function buildSessionCatalog(questions, subject) {
+  return subject === "math"
+    ? buildMathCatalog(questions)
+    : buildEnglishCatalog(questions);
+}
+
+function validateSessionCatalog(questions, catalog, subject) {
+  const expectedQuestionCount = subject === "math" ? 361 : 27;
+  const expectedPackCount = subject === "math" ? 88 : 6;
+  if (
+    questions.length !== expectedQuestionCount ||
+    catalog.length !== expectedPackCount
+  ) {
+    return "공개 문항 수와 5문항 학습 구성을 확인하지 못했습니다.";
+  }
+
+  const publicIds = new Set(questions.map((question) => question.id));
+  const coveredIds = new Set();
+  for (const pack of catalog) {
+    const packIds = pack.questions.map((question) => question.id);
+    if (packIds.length !== 5 || new Set(packIds).size !== 5) {
+      return "5문항 학습 구성에 중복 또는 누락이 있습니다.";
+    }
+    for (const question of pack.questions) {
+      if (!publicIds.has(question.id)) {
+        return "공개 범위 밖 문항이 학습 구성에 포함됐습니다.";
+      }
+      if (
+        subject === "math" &&
+        parseMathQuestionId(question.id)?.scopeKey !== pack.scopeKey
+      ) {
+        return "서로 다른 수학 시험 또는 영역이 한 묶음에 섞였습니다.";
+      }
+      coveredIds.add(question.id);
+    }
+  }
+
+  if (
+    coveredIds.size !== publicIds.size ||
+    [...publicIds].some((id) => !coveredIds.has(id))
+  ) {
+    return "일부 공개 문항이 5문항 학습 목록에서 빠졌습니다.";
+  }
+  return "";
+}
+
+function sessionUrl(subject, packId) {
+  return `/eng-math/practice?subject=${subject}&mode=session&pack=${encodeURIComponent(packId)}`;
+}
+
+function catalogUrl(subject, pack = null) {
+  const parameters = new URLSearchParams({ subject, mode: "catalog" });
+  if (subject === "math" && pack) {
+    parameters.set("exam", pack.examKey);
+    parameters.set("track", pack.trackKey);
+  }
+  return `/eng-math/practice?${parameters.toString()}`;
+}
 
 function normalizeShortAnswer(value) {
   const trimmed = String(value ?? "").trim();
@@ -270,28 +447,41 @@ export default function EngMathPractice() {
   const location = useLocation();
   const parameters = new URLSearchParams(location.search);
   const subject = parameters.get("subject") === "math" ? "math" : "english";
-  const isSessionMode = parameters.get("mode") === "session";
+  const mode = parameters.get("mode");
+  const isCatalogMode = mode === "catalog";
+  const isSessionMode = mode === "session";
   const questionId = parameters.get("id");
+  const packId = parameters.get("pack");
+  const initialExam = parameters.get("exam");
+  const initialTrack = parameters.get("track");
   const { status, questions, error } = usePublicQuestions(subject);
   const question = useMemo(
     () => questions.find((candidate) => candidate.id === questionId) ?? null,
     [questionId, questions],
   );
-  const sessionQuestions = useMemo(() => {
-    if (!isSessionMode) return [];
-    const questionsById = new Map(
-      questions.map((candidate) => [candidate.id, candidate]),
+  const catalog = useMemo(
+    () => buildSessionCatalog(questions, subject),
+    [questions, subject],
+  );
+  const catalogError = useMemo(
+    () => validateSessionCatalog(questions, catalog, subject),
+    [catalog, questions, subject],
+  );
+  const selectedPack = useMemo(
+    () => catalog.find((pack) => pack.id === packId) ?? null,
+    [catalog, packId],
+  );
+  const nextPack = useMemo(() => {
+    if (!selectedPack) return null;
+    const selectedIndex = catalog.findIndex(
+      (pack) => pack.id === selectedPack.id,
     );
-    return SESSION_IDS[subject]
-      .map((id) => questionsById.get(id))
-      .filter(Boolean);
-  }, [isSessionMode, questions, subject]);
+    const candidate = catalog[selectedIndex + 1] ?? null;
+    return candidate?.scopeKey === selectedPack.scopeKey ? candidate : null;
+  }, [catalog, selectedPack]);
 
   const chooseSubject = (nextSubject) => {
-    const nextUrl = isSessionMode
-      ? `/eng-math/practice?subject=${nextSubject}&mode=session`
-      : `/eng-math/practice?subject=${nextSubject}&id=${STARTER_IDS[nextSubject]}`;
-    navigate(nextUrl);
+    navigate(catalogUrl(nextSubject));
   };
 
   if (status === "loading") {
@@ -307,23 +497,52 @@ export default function EngMathPractice() {
     );
   }
 
+  if (catalogError) {
+    return (
+      <PracticeNotice
+        message={catalogError}
+        onBack={() => navigate("/eng-math-beta")}
+      />
+    );
+  }
+
+  if (isCatalogMode) {
+    return (
+      <QuestionCatalog
+        key={`${subject}-${initialExam}-${initialTrack}`}
+        catalog={catalog}
+        subject={subject}
+        initialExam={initialExam}
+        initialTrack={initialTrack}
+        navigate={navigate}
+        onSubjectChange={chooseSubject}
+      />
+    );
+  }
+
   if (isSessionMode) {
-    if (sessionQuestions.length !== SESSION_IDS[subject].length) {
+    if (!selectedPack) {
       return (
         <PracticeNotice
-          message="5문항 학습 구성을 확인하지 못했습니다."
-          onBack={() => navigate("/eng-math-beta")}
+          message="요청한 5문항 묶음을 찾지 못했습니다."
+          onBack={() => navigate(catalogUrl(subject))}
+          backLabel="문항 목록으로"
         />
       );
     }
 
     return (
       <LearningSession
-        key={subject}
-        questions={sessionQuestions}
+        key={`${subject}-${selectedPack.id}`}
+        questions={selectedPack.questions}
         subject={subject}
         navigate={navigate}
         onSubjectChange={chooseSubject}
+        packLabel={`${selectedPack.examLabel} · ${selectedPack.trackLabel} · ${selectedPack.label}`}
+        onNextPack={
+          nextPack ? () => navigate(sessionUrl(subject, nextPack.id)) : null
+        }
+        onCatalog={() => navigate(catalogUrl(subject, selectedPack))}
       />
     );
   }
@@ -332,7 +551,8 @@ export default function EngMathPractice() {
     return (
       <PracticeNotice
         message="요청한 문항을 찾지 못했습니다."
-        onBack={() => chooseSubject(subject)}
+        onBack={() => navigate(catalogUrl(subject))}
+        backLabel="문항 목록으로"
       />
     );
   }
@@ -348,7 +568,368 @@ export default function EngMathPractice() {
   );
 }
 
-function PracticeNotice({ message, onBack }) {
+function QuestionCatalog({
+  catalog,
+  subject,
+  initialExam,
+  initialTrack,
+  navigate,
+  onSubjectChange,
+}) {
+  const profile = SUBJECTS[subject];
+  const examOptions = useMemo(() => {
+    const options = new Map();
+    catalog.forEach((pack) => options.set(pack.examKey, pack.examLabel));
+    return [...options].map(([key, label]) => ({ key, label }));
+  }, [catalog]);
+  const defaultExam = examOptions.some((option) => option.key === initialExam)
+    ? initialExam
+    : examOptions[0]?.key;
+  const defaultTrack =
+    initialTrack && Object.hasOwn(MATH_TRACKS, initialTrack)
+      ? initialTrack
+      : "common";
+  const [selectedExam, setSelectedExam] = useState(defaultExam);
+  const [selectedTrack, setSelectedTrack] = useState(defaultTrack);
+  const visiblePacks =
+    subject === "math"
+      ? catalog.filter(
+          (pack) =>
+            pack.examKey === selectedExam && pack.trackKey === selectedTrack,
+        )
+      : catalog;
+  const visibleQuestionCount = new Set(
+    visiblePacks.flatMap((pack) =>
+      pack.questions.map((question) => question.id),
+    ),
+  ).size;
+
+  return (
+    <main className="eng-math-catalog">
+      <style>{`
+        .eng-math-catalog {
+          min-height: 100svh;
+          box-sizing: border-box;
+          overflow-x: hidden;
+          padding: 24px 20px 48px;
+          background: #f8fafc;
+          color: #172033;
+          font-family: "Noto Sans KR", system-ui, sans-serif;
+        }
+        .eng-math-catalog * { box-sizing: border-box; }
+        .eng-math-catalog__inner { width: min(100%, 920px); margin: 0 auto; }
+        .eng-math-catalog__topline {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+        }
+        .eng-math-catalog__brand {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          border: 0;
+          background: transparent;
+          padding: 4px 0;
+          color: #3157a5;
+          font: inherit;
+          font-size: 0.85rem;
+          font-weight: 900;
+          cursor: pointer;
+        }
+        .eng-math-catalog__brand-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: currentColor;
+        }
+        .eng-math-catalog__subject-switcher {
+          display: flex;
+          gap: 6px;
+        }
+        .eng-math-catalog__subject-switcher button {
+          min-height: 34px;
+          border: 1px solid transparent;
+          border-radius: 999px;
+          background: #fff;
+          padding: 6px 11px;
+          color: #64748b;
+          font: inherit;
+          font-size: 0.8rem;
+          font-weight: 900;
+          cursor: pointer;
+        }
+        .eng-math-catalog__subject-switcher button[aria-current="page"] {
+          border-color: currentColor;
+        }
+        .eng-math-catalog__hero {
+          max-width: 690px;
+          padding: 48px 0 28px;
+        }
+        .eng-math-catalog__eyebrow {
+          display: inline-flex;
+          min-height: 29px;
+          align-items: center;
+          border-radius: 999px;
+          padding: 5px 10px;
+          font-size: 0.76rem;
+          font-weight: 900;
+        }
+        .eng-math-catalog h1 {
+          margin: 15px 0 10px;
+          font-size: clamp(1.85rem, 6vw, 3rem);
+          line-height: 1.22;
+          letter-spacing: -0.055em;
+          word-break: keep-all;
+        }
+        .eng-math-catalog__lead {
+          margin: 0;
+          color: #627087;
+          line-height: 1.68;
+          word-break: keep-all;
+        }
+        .eng-math-catalog__filters {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+          margin-bottom: 20px;
+          border: 1px solid #dfe6ef;
+          border-radius: 18px;
+          background: #fff;
+          padding: 17px;
+        }
+        .eng-math-catalog__filter span {
+          display: block;
+          margin-bottom: 7px;
+          color: #58667b;
+          font-size: 0.78rem;
+          font-weight: 900;
+        }
+        .eng-math-catalog__filter select {
+          width: 100%;
+          min-width: 0;
+          min-height: 46px;
+          border: 1px solid #cbd5e1;
+          border-radius: 11px;
+          background: #fff;
+          padding: 0 12px;
+          color: #25324a;
+          font: inherit;
+          font-size: 0.9rem;
+          font-weight: 800;
+        }
+        .eng-math-catalog__summary {
+          margin: 0 0 12px;
+          color: #667085;
+          font-size: 0.84rem;
+          font-weight: 800;
+        }
+        .eng-math-catalog__grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+        }
+        .eng-math-catalog__pack {
+          width: 100%;
+          min-width: 0;
+          border: 1px solid #dfe5ef;
+          border-radius: 18px;
+          background: #fff;
+          padding: 19px;
+          color: inherit;
+          text-align: left;
+          cursor: pointer;
+          box-shadow: 0 9px 24px rgba(33, 54, 91, 0.06);
+        }
+        .eng-math-catalog__pack:hover,
+        .eng-math-catalog__pack:focus-visible {
+          border-color: #9aaac3;
+          outline: none;
+          transform: translateY(-1px);
+        }
+        .eng-math-catalog__pack-topline {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          color: #738097;
+          font-size: 0.73rem;
+          font-weight: 900;
+        }
+        .eng-math-catalog__pack-badge {
+          flex: 0 0 auto;
+          border-radius: 999px;
+          padding: 4px 8px;
+        }
+        .eng-math-catalog__pack h2 {
+          margin: 17px 0 7px;
+          color: #172033;
+          font-size: 1.25rem;
+          letter-spacing: -0.035em;
+        }
+        .eng-math-catalog__pack-copy,
+        .eng-math-catalog__pack-note {
+          margin: 0;
+          color: #627087;
+          font-size: 0.84rem;
+          line-height: 1.55;
+          word-break: keep-all;
+        }
+        .eng-math-catalog__pack-note {
+          margin-top: 8px;
+          color: #7a5b1f;
+        }
+        .eng-math-catalog__pack-action {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          margin-top: 16px;
+          font-size: 0.84rem;
+          font-weight: 900;
+        }
+        @media (max-width: 560px) {
+          .eng-math-catalog { padding: 17px 14px 34px; }
+          .eng-math-catalog__topline { align-items: flex-start; }
+          .eng-math-catalog__hero { padding: 38px 2px 23px; }
+          .eng-math-catalog__filters,
+          .eng-math-catalog__grid { grid-template-columns: 1fr; }
+          .eng-math-catalog__filters { padding: 14px; }
+          .eng-math-catalog__pack { padding: 17px; }
+        }
+      `}</style>
+
+      <div className="eng-math-catalog__inner">
+        <div className="eng-math-catalog__topline">
+          <button
+            className="eng-math-catalog__brand"
+            type="button"
+            onClick={() => navigate("/eng-math-beta")}
+          >
+            <span className="eng-math-catalog__brand-dot" aria-hidden="true" />
+            지니쌤과 공부하자
+          </button>
+
+          <div
+            className="eng-math-catalog__subject-switcher"
+            aria-label="과목 변경"
+          >
+            {Object.entries(SUBJECTS).map(([key, value]) => (
+              <button
+                key={key}
+                type="button"
+                aria-current={key === subject ? "page" : undefined}
+                style={
+                  key === subject
+                    ? { color: value.accent, background: value.tint }
+                    : undefined
+                }
+                onClick={() => onSubjectChange(key)}
+              >
+                {value.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <header className="eng-math-catalog__hero">
+          <span
+            className="eng-math-catalog__eyebrow"
+            style={{ background: profile.tint, color: profile.accent }}
+          >
+            {profile.name} · 5문항 묶음 선택
+          </span>
+          <h1>학습할 문항을 고르세요.</h1>
+          <p className="eng-math-catalog__lead">
+            {subject === "english"
+              ? "2026학년도 수능 27문항을 여섯 묶음으로 제공합니다. 제출할 때마다 정답과 근거형 풀이를 확인할 수 있습니다."
+              : "정답 대조가 끝난 8개 시험에서 공통 또는 선택과목을 고르세요. 수학 풀이는 아직 제공하지 않습니다."}
+          </p>
+        </header>
+
+        {subject === "math" ? (
+          <section
+            className="eng-math-catalog__filters"
+            aria-label="수학 시험과 영역 선택"
+          >
+            <label className="eng-math-catalog__filter">
+              <span>시험</span>
+              <select
+                value={selectedExam}
+                onChange={(event) => setSelectedExam(event.target.value)}
+              >
+                {examOptions.map((option) => (
+                  <option key={option.key} value={option.key}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="eng-math-catalog__filter">
+              <span>영역</span>
+              <select
+                value={selectedTrack}
+                onChange={(event) => setSelectedTrack(event.target.value)}
+              >
+                {Object.entries(MATH_TRACKS).map(([key, label]) => (
+                  <option key={key} value={key}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </section>
+        ) : null}
+
+        <p className="eng-math-catalog__summary">
+          {subject === "english"
+            ? "전체 27문항 · 6개 묶음"
+            : `선택한 범위 ${visibleQuestionCount}문항 · ${visiblePacks.length}개 묶음`}
+        </p>
+
+        <section className="eng-math-catalog__grid" aria-label="5문항 묶음">
+          {visiblePacks.map((pack) => (
+            <button
+              key={pack.id}
+              className="eng-math-catalog__pack"
+              type="button"
+              onClick={() => navigate(sessionUrl(subject, pack.id))}
+            >
+              <span className="eng-math-catalog__pack-topline">
+                <span>{pack.examLabel}</span>
+                <span
+                  className="eng-math-catalog__pack-badge"
+                  style={{ background: profile.tint, color: profile.accent }}
+                >
+                  5문항
+                </span>
+              </span>
+              <h2>{pack.label}</h2>
+              <p className="eng-math-catalog__pack-copy">
+                {pack.trackLabel} ·{" "}
+                {subject === "english"
+                  ? "근거형 풀이 제공"
+                  : pack.responseSummary}
+              </p>
+              {pack.note ? (
+                <p className="eng-math-catalog__pack-note">{pack.note}</p>
+              ) : null}
+              <span
+                className="eng-math-catalog__pack-action"
+                style={{ color: profile.accent }}
+              >
+                <span>이 묶음 학습하기</span>
+                <span aria-hidden="true">→</span>
+              </span>
+            </button>
+          ))}
+        </section>
+      </div>
+    </main>
+  );
+}
+
+function PracticeNotice({ message, onBack, backLabel = "베타로 돌아가기" }) {
   return (
     <main className="eng-math-practice eng-math-practice--notice">
       <style>{`
@@ -362,7 +943,7 @@ function PracticeNotice({ message, onBack }) {
         <p>{message}</p>
         {onBack ? (
           <button type="button" onClick={onBack}>
-            체험으로 돌아가기
+            {backLabel}
           </button>
         ) : null}
       </div>
@@ -375,6 +956,9 @@ function LearningSession({
   subject,
   navigate,
   onSubjectChange,
+  packLabel,
+  onNextPack,
+  onCatalog,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [results, setResults] = useState([]);
@@ -410,7 +994,9 @@ function LearningSession({
         results={results}
         navigate={navigate}
         onRestart={restartSession}
-        onSubjectChange={onSubjectChange}
+        packLabel={packLabel}
+        onNextPack={onNextPack}
+        onCatalog={onCatalog}
       />
     );
   }
@@ -438,11 +1024,12 @@ function SessionSummary({
   results,
   navigate,
   onRestart,
-  onSubjectChange,
+  packLabel,
+  onNextPack,
+  onCatalog,
 }) {
   const profile = SUBJECTS[subject];
   const correctCount = results.filter((result) => result.isCorrect).length;
-  const otherSubject = subject === "english" ? "math" : "english";
 
   return (
     <main className="eng-math-session-summary">
@@ -507,6 +1094,14 @@ function SessionSummary({
           margin: 0;
           color: #627087;
           line-height: 1.65;
+          word-break: keep-all;
+        }
+        .eng-math-session-summary__pack-label {
+          margin: 7px 0 0;
+          color: #46556d;
+          font-size: 0.84rem;
+          font-weight: 800;
+          line-height: 1.55;
           word-break: keep-all;
         }
         .eng-math-session-summary__score {
@@ -613,6 +1208,7 @@ function SessionSummary({
             <p className="eng-math-session-summary__lead">
               이번 학습에서 맞힌 문제와 다시 확인할 문제를 구분했습니다.
             </p>
+            <p className="eng-math-session-summary__pack-label">{packLabel}</p>
 
             <div className="eng-math-session-summary__score">
               <strong>
@@ -652,24 +1248,26 @@ function SessionSummary({
                 className="eng-math-session-summary__primary"
                 type="button"
                 style={{ background: profile.accent }}
-                onClick={onRestart}
+                onClick={onNextPack ?? onCatalog}
               >
-                같은 과목 5문항 다시 풀기
+                {onNextPack ? "다음 5문항 풀기" : "문항 목록으로"}
               </button>
               <button
                 className="eng-math-session-summary__secondary"
                 type="button"
-                onClick={() => onSubjectChange(otherSubject)}
+                onClick={onRestart}
               >
-                {SUBJECTS[otherSubject].name} 5문항 풀기
+                같은 5문항 전체 다시 풀기
               </button>
-              <button
-                className="eng-math-session-summary__home"
-                type="button"
-                onClick={() => navigate("/eng-math-beta")}
-              >
-                베타 처음으로
-              </button>
+              {onNextPack ? (
+                <button
+                  className="eng-math-session-summary__home"
+                  type="button"
+                  onClick={onCatalog}
+                >
+                  문항 목록으로
+                </button>
+              ) : null}
             </div>
           </div>
         </article>

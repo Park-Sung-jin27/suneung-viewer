@@ -4,20 +4,20 @@ const SUBJECTS = [
   {
     key: "english",
     eyebrow: "ENGLISH",
-    title: "영어 5문항 학습",
+    title: "영어 문항 선택",
     description:
-      "2026학년도 수능 19~23번을 연속으로 풀고, 제출할 때마다 정답과 근거를 확인하세요.",
-    detail: "19~23번 · 근거형 풀이",
+      "2026학년도 수능 19~45번을 5문항씩 골라 풀고, 제출할 때마다 정답과 근거를 확인하세요.",
+    detail: "27문항 · 6개 학습 묶음",
     accent: "#3157a5",
     tint: "#eef3ff",
   },
   {
     key: "math",
     eyebrow: "MATH",
-    title: "수학 5문항 학습",
+    title: "수학 문항 선택",
     description:
-      "2022학년도 6월 모의평가 공통 5문항을 풀고, 정답을 확인한 뒤 다음 문제로 이어가세요.",
-    detail: "선다형 4문항 · 단답형 1문항",
+      "2022~2025학년도 6월·9월 모의평가에서 시험과 영역을 고른 뒤 5문항을 학습하세요.",
+    detail: "361문항 · 시험·영역별 선택",
     accent: "#16705b",
     tint: "#eaf7f1",
   },
@@ -198,14 +198,14 @@ export default function EngMathProductHome() {
           aria-labelledby="eng-math-home-title"
         >
           <span className="eng-math-home__eyebrow">
-            영어·수학 내부 베타 · 5문항 학습
+            영어·수학 내부 베타 · 문항 선택
           </span>
           <h1 id="eng-math-home-title">
-            다섯 문제를, 한 흐름으로 끝까지 풀어보세요.
+            풀고 싶은 문항을 고르고, 다섯 문제를 끝까지 풀어보세요.
           </h1>
           <p className="eng-math-home__lead">
-            영어는 제출할 때마다 정답과 근거를 확인합니다. 수학은 검증된
-            정답만 제공하며, 다섯 문제를 마치면 과목별 결과를 보여드립니다.
+            영어는 27문항의 근거형 풀이를 제공합니다. 수학은 시험과 영역별로
+            검증된 361문항의 정답을 확인할 수 있습니다.
           </p>
         </section>
 
@@ -217,7 +217,7 @@ export default function EngMathProductHome() {
               type="button"
               onClick={() =>
                 navigate(
-                  `/eng-math/practice?subject=${subject.key}&mode=session`,
+                  `/eng-math/practice?subject=${subject.key}&mode=catalog`,
                 )
               }
             >

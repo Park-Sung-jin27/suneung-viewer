@@ -121,6 +121,25 @@ const MATH_FIGURE_DECORATIVE_IDS = [
   "2025_06_sta_27",
   "2025_06_sta_28",
 ];
+const ENGLISH_SESSION_NUMBER_GROUPS = [
+  [19, 20, 21, 22, 23],
+  [24, 25, 26, 27, 28],
+  [29, 30, 31, 32, 33],
+  [34, 35, 36, 37, 38],
+  [36, 37, 38, 39, 40],
+  [41, 42, 43, 44, 45],
+];
+const MATH_SESSION_EXAMS = [
+  "2022_06",
+  "2022_09",
+  "2023_06",
+  "2023_09",
+  "2024_06",
+  "2024_09",
+  "2025_06",
+  "2025_09",
+];
+const MATH_SESSION_TRACKS = ["common", "cal", "sta", "geo"];
 const SKIP_DIRECTORIES = new Set([".git", "dist", "node_modules"]);
 const FORBIDDEN_PUBLIC_KEYS = new Set([
   "answerCrossCheck",
@@ -173,6 +192,131 @@ function answerMark(answer) {
   return ["①", "②", "③", "④", "⑤"][Number(answer) - 1] ?? null;
 }
 
+function parseMathSessionId(id) {
+  const match = String(id).match(
+    /^(\d{4}_(?:06|09))_(common|cal|sta|geo)_(\d+)$/,
+  );
+  if (!match) fail("MATH_SESSION_ID_FORMAT", id);
+  return {
+    scopeKey: `${match[1]}|${match[2]}`,
+    questionNumber: Number(match[3]),
+  };
+}
+
+function buildFiveQuestionGroups(questions, scopeKey) {
+  if (questions.length < 5) {
+    fail("SESSION_SCOPE_TOO_SMALL", `${scopeKey}:${questions.length}`);
+  }
+
+  const groups = [];
+  for (let offset = 0; offset < questions.length; offset += 5) {
+    const start =
+      questions.length - offset >= 5 ? offset : questions.length - 5;
+    const group = questions.slice(start, start + 5);
+    if (groups.some((candidate) => candidate[0].id === group[0].id)) continue;
+    groups.push(group);
+  }
+  return groups;
+}
+
+function validateFiveQuestionGroup(group, scopeKey) {
+  if (group.length !== 5) {
+    fail("SESSION_QUESTION_COUNT", `${scopeKey}:${group.length}`);
+  }
+  if (new Set(group.map((question) => question.id)).size !== 5) {
+    fail("SESSION_QUESTION_DUPLICATE", scopeKey);
+  }
+}
+
+function validateSessionCatalog(english, math) {
+  const englishByNumber = new Map();
+  for (const question of english) {
+    const match = question.id.match(/^2026_csat_(\d+)$/);
+    if (!match) fail("ENGLISH_SESSION_ID_FORMAT", question.id);
+    englishByNumber.set(Number(match[1]), question);
+  }
+
+  const englishGroups = ENGLISH_SESSION_NUMBER_GROUPS.map((numbers) =>
+    numbers.map((number) => {
+      const question = englishByNumber.get(number);
+      if (!question) fail("ENGLISH_SESSION_QUESTION_MISSING", String(number));
+      return question;
+    }),
+  );
+  const englishCoverage = new Set();
+  for (const group of englishGroups) {
+    validateFiveQuestionGroup(group, "english");
+    group.forEach((question) => englishCoverage.add(question.id));
+  }
+  if (
+    englishGroups.length !== 6 ||
+    englishCoverage.size !== english.length ||
+    english.some((question) => !englishCoverage.has(question.id))
+  ) {
+    fail(
+      "ENGLISH_SESSION_COVERAGE",
+      `${englishGroups.length}:${englishCoverage.size}`,
+    );
+  }
+  if (
+    englishByNumber.get(41)?.passage !== englishByNumber.get(42)?.passage ||
+    englishByNumber.get(43)?.passage !== englishByNumber.get(44)?.passage ||
+    englishByNumber.get(44)?.passage !== englishByNumber.get(45)?.passage
+  ) {
+    fail("ENGLISH_SESSION_SHARED_PASSAGE", "41-45");
+  }
+
+  const mathByScope = new Map();
+  for (const question of math) {
+    const parsed = parseMathSessionId(question.id);
+    if (!mathByScope.has(parsed.scopeKey)) mathByScope.set(parsed.scopeKey, []);
+    mathByScope.get(parsed.scopeKey).push({
+      ...question,
+      sessionQuestionNumber: parsed.questionNumber,
+    });
+  }
+
+  const expectedScopeKeys = MATH_SESSION_EXAMS.flatMap((exam) =>
+    MATH_SESSION_TRACKS.map((track) => `${exam}|${track}`),
+  );
+  if (
+    mathByScope.size !== expectedScopeKeys.length ||
+    expectedScopeKeys.some((scopeKey) => !mathByScope.has(scopeKey))
+  ) {
+    fail("MATH_SESSION_SCOPE_COUNT", String(mathByScope.size));
+  }
+
+  let mathGroupCount = 0;
+  const mathCoverage = new Set();
+  for (const scopeKey of expectedScopeKeys) {
+    const scopedQuestions = mathByScope
+      .get(scopeKey)
+      .sort(
+        (left, right) =>
+          left.sessionQuestionNumber - right.sessionQuestionNumber,
+      );
+    const groups = buildFiveQuestionGroups(scopedQuestions, scopeKey);
+    mathGroupCount += groups.length;
+    for (const group of groups) {
+      validateFiveQuestionGroup(group, scopeKey);
+      for (const question of group) {
+        if (parseMathSessionId(question.id).scopeKey !== scopeKey) {
+          fail("MATH_SESSION_SCOPE_MIXED", question.id);
+        }
+        mathCoverage.add(question.id);
+      }
+    }
+  }
+
+  if (
+    mathGroupCount !== 88 ||
+    mathCoverage.size !== math.length ||
+    math.some((question) => !mathCoverage.has(question.id))
+  ) {
+    fail("MATH_SESSION_COVERAGE", `${mathGroupCount}:${mathCoverage.size}`);
+  }
+}
+
 function validateEnglishChoices(question) {
   if (!Array.isArray(question.choices) || question.choices.length !== 5) {
     fail("ENGLISH_CHOICE_COUNT", question.id);
@@ -202,10 +346,7 @@ function validateEnglishChoices(question) {
         pattern.test(text),
       )
     ) {
-      fail(
-        "ENGLISH_CHOICE_CONTAMINATION",
-        `${question.id}:${expectedNumber}`,
-      );
+      fail("ENGLISH_CHOICE_CONTAMINATION", `${question.id}:${expectedNumber}`);
     }
   });
 
@@ -628,93 +769,91 @@ function buildPublicData() {
   }
 
   const english = englishReadySource.map((question) => {
-      const review = explanations.get(question.id);
-      if (String(question.answer) !== String(review.answer))
-        fail("ENGLISH_ANSWER_MISMATCH", question.id);
-      if (!Array.isArray(review.evidence) || review.evidence.length === 0) {
-        fail("ENGLISH_EVIDENCE_MISSING", question.id);
-      }
-      if (!review.trap || typeof review.trap.reason !== "string") {
-        fail("ENGLISH_TRAP_MISSING", question.id);
-      }
+    const review = explanations.get(question.id);
+    if (String(question.answer) !== String(review.answer))
+      fail("ENGLISH_ANSWER_MISMATCH", question.id);
+    if (!Array.isArray(review.evidence) || review.evidence.length === 0) {
+      fail("ENGLISH_EVIDENCE_MISSING", question.id);
+    }
+    if (!review.trap || typeof review.trap.reason !== "string") {
+      fail("ENGLISH_TRAP_MISSING", question.id);
+    }
 
-      const rawPassage =
-        question.sharedPassage?.trim() ||
-        cutChoicesFromRaw(question.rawText, question);
-      const passage = question.sharedPassage?.trim()
-        ? rawPassage
-        : removeLeadingStem(rawPassage, question.stem);
-      if (!passage) fail("ENGLISH_PASSAGE_MISSING", question.id);
-      validateEnglishPassage(question, passage);
-      const figure = projectEnglishFigure(question);
+    const rawPassage =
+      question.sharedPassage?.trim() ||
+      cutChoicesFromRaw(question.rawText, question);
+    const passage = question.sharedPassage?.trim()
+      ? rawPassage
+      : removeLeadingStem(rawPassage, question.stem);
+    if (!passage) fail("ENGLISH_PASSAGE_MISSING", question.id);
+    validateEnglishPassage(question, passage);
+    const figure = projectEnglishFigure(question);
 
-      const evidence = review.evidence.map((item, index) => {
-        if (item.in === "figure") {
-          const series = question.figure?.series?.find(
-            (candidate) => candidate.id === item.seriesId,
-          );
-          const value = series?.values?.[item.categoryId];
-          if (
-            !figure ||
-            !question.figure.categories.some(
-              (category) => category.id === item.categoryId,
-            ) ||
-            value !== item.value ||
-            !String(item.display ?? "").trim()
-          ) {
-            fail("ENGLISH_FIGURE_EVIDENCE_MISMATCH", `${question.id}:${index}`);
-          }
-          return {
-            origin: "figure",
-            role: item.role,
-            quote: item.display,
-            translation: item.translation,
-          };
-        }
-
-        const sourceText = question[item.in];
+    const evidence = review.evidence.map((item, index) => {
+      if (item.in === "figure") {
+        const series = question.figure?.series?.find(
+          (candidate) => candidate.id === item.seriesId,
+        );
+        const value = series?.values?.[item.categoryId];
         if (
-          typeof sourceText !== "string" ||
-          sourceText.slice(
-            item.charStart,
-            item.charStart + item.quote.length,
-          ) !== item.quote
+          !figure ||
+          !question.figure.categories.some(
+            (category) => category.id === item.categoryId,
+          ) ||
+          value !== item.value ||
+          !String(item.display ?? "").trim()
         ) {
-          fail("ENGLISH_EVIDENCE_MISMATCH", `${question.id}:${index}`);
+          fail("ENGLISH_FIGURE_EVIDENCE_MISMATCH", `${question.id}:${index}`);
         }
         return {
-          origin: "text",
+          origin: "figure",
           role: item.role,
-          quote: item.quote,
+          quote: item.display,
           translation: item.translation,
         };
-      });
+      }
 
+      const sourceText = question[item.in];
+      if (
+        typeof sourceText !== "string" ||
+        sourceText.slice(item.charStart, item.charStart + item.quote.length) !==
+          item.quote
+      ) {
+        fail("ENGLISH_EVIDENCE_MISMATCH", `${question.id}:${index}`);
+      }
       return {
-        id: question.id,
-        label: `${question.schoolYear}학년도 수능 · ${question.qid}번`,
-        prompt: question.stem,
-        passage,
-        ...(figure ? { figure } : {}),
-        choices: question.choices.map((choice) => ({
-          number: choice.num,
-          mark: choice.mark,
-          text: choice.text,
-        })),
-        answer: Number(question.answer),
-        review: {
-          summary: review.summary,
-          approach: review.typeApproach,
-          reason: review.correctReason,
-          trap: {
-            mark: review.trap.mark,
-            text: review.trap.text,
-            reason: review.trap.reason,
-          },
-          evidence,
-        },
+        origin: "text",
+        role: item.role,
+        quote: item.quote,
+        translation: item.translation,
       };
     });
+
+    return {
+      id: question.id,
+      label: `${question.schoolYear}학년도 수능 · ${question.qid}번`,
+      prompt: question.stem,
+      passage,
+      ...(figure ? { figure } : {}),
+      choices: question.choices.map((choice) => ({
+        number: choice.num,
+        mark: choice.mark,
+        text: choice.text,
+      })),
+      answer: Number(question.answer),
+      review: {
+        summary: review.summary,
+        approach: review.typeApproach,
+        reason: review.correctReason,
+        trap: {
+          mark: review.trap.mark,
+          text: review.trap.text,
+          reason: review.trap.reason,
+        },
+        evidence,
+      },
+    };
+  });
 
   if (english.length !== 27)
     fail("ENGLISH_PUBLIC_COUNT", String(english.length));
@@ -836,6 +975,7 @@ function buildPublicData() {
     fail("MATH_UNAPPROVED_FIGURE_DESCRIPTION", "public data");
   }
 
+  validateSessionCatalog(english, math);
   const data = { english: { questions: english }, math: { questions: math } };
   assertNoForbiddenKeys(data);
   return data;
@@ -872,7 +1012,9 @@ if (mode === "--write") {
 } else if (mode === "--check") {
   verifyArtifact(ENGLISH_OUTPUT_PATH, data.english);
   verifyArtifact(MATH_OUTPUT_PATH, data.math);
-  console.log("ENG_MATH_PUBLIC_DATA: pass english=27 evidence=61 math=361");
+  console.log(
+    "ENG_MATH_PUBLIC_DATA: pass english=27 evidence=61 math=361 sessions=6/88",
+  );
 } else {
   fail("MODE_INVALID", mode);
 }
