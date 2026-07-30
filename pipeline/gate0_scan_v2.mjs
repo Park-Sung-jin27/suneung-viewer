@@ -220,9 +220,16 @@ const applyNullCheck = (step3.match(/expected\s*===\s*null|!expected/g) || [])
 const needsHumanFlag = (
   step3.match(/needs_human|_needs_recheck|_ok_analysis_mismatch/g) || []
 ).length;
-// reanalyze 사후 B1 재호출 path
+// reanalyze 사후 채택 게이트 + B1 재호출 path
+const regenGateAfterReanalyze = (
+  step3.match(
+    /reanalyzeSingleChoice[\s\S]{0,700}adoptRegeneratedAnalysis/g,
+  ) || []
+).length;
 const applyAfterReanalyze = (
-  step3.match(/reanalyzeSingleChoice[\s\S]{0,500}applyDeterministicFooter/g) ||
+  step3.match(
+    /reanalyzeSingleChoice[\s\S]{0,1200}adoptRegeneratedAnalysis[\s\S]{0,700}applyDeterministicFooter/g,
+  ) ||
   []
 ).length;
 
@@ -230,6 +237,7 @@ const b1Audit = {
   expected_null_return_paths: expectedNullPath,
   apply_null_check_sites: applyNullCheck,
   needs_human_flag_refs: needsHumanFlag,
+  regen_gate_after_reanalyze_path: regenGateAfterReanalyze,
   apply_after_reanalyze_path: applyAfterReanalyze,
   safety_issues: [],
 };
@@ -242,6 +250,11 @@ if (applyNullCheck > 0 && needsHumanFlag === 0) {
 if (applyAfterReanalyze === 0) {
   b1Audit.safety_issues.push(
     "reanalyzeSingleChoice 사후 applyDeterministicFooter 재호출 path 검출 0건 — reanalyze 사후 footer normalize 누락 위험",
+  );
+}
+if (regenGateAfterReanalyze < 2) {
+  b1Audit.safety_issues.push(
+    `reanalyzeSingleChoice 사후 adoptRegeneratedAnalysis path ${regenGateAfterReanalyze}건 — 재생성 2경로 중 채택 게이트 누락 위험`,
   );
 }
 

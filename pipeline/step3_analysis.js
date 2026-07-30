@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { jsonrepair } from "jsonrepair";
+import { chooseRegenAnalysis } from "./haesol_v2_gate.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
@@ -923,6 +924,34 @@ export async function postProcess(result, answerKey) {
     totalPatNullFixed = 0;
   let totalDiscrimRegen = 0,
     totalDiscrimGiveUp = 0;
+  let totalRegenAccepted = 0,
+    totalRegenRejected = 0,
+    totalRegenWarned = 0;
+
+  function adoptRegeneratedAnalysis(choice, regeneratedAnalysis, context) {
+    const verdict = chooseRegenAnalysis(
+      choice.analysis,
+      regeneratedAnalysis,
+      choice.pat,
+      choice.ok,
+    );
+    if (!verdict.accept) {
+      totalRegenRejected++;
+      console.warn(
+        `  [postProcess:regenGate] 거부 ${context}: ${verdict.reason} — 기존 analysis 보존`,
+      );
+      return false;
+    }
+    totalRegenAccepted++;
+    if (verdict.warn) {
+      totalRegenWarned++;
+      console.warn(
+        `  [postProcess:regenGate] 경고 ${context}: ${verdict.warn}`,
+      );
+    }
+    choice.analysis = verdict.analysis;
+    return true;
+  }
 
   for (const section of ["reading", "literature"]) {
     for (const set of result[section]) {
@@ -1041,10 +1070,15 @@ export async function postProcess(result, answerKey) {
                   ...q.choices.slice(updatedChoices.length + 1),
                 ],
               };
-              choice.analysis = await reanalyzeSingleChoice(
+              const regeneratedAnalysis = await reanalyzeSingleChoice(
                 set,
                 neighborSnapshot,
                 choice,
+              );
+              adoptRegeneratedAnalysis(
+                choice,
+                regeneratedAnalysis,
+                `${set.id} Q${q.id}#${c.num} ok보정`,
               );
             } catch (err) {
               console.warn(
@@ -1075,11 +1109,17 @@ export async function postProcess(result, answerKey) {
                 `  [postProcess:discrim] 변별 기준 미달 ${set.id} Q${q.id}#${c.num} (attempt ${attempt}/${DISCRIMINATIVE_MAX_RETRIES}) issues=${vres.issues.join(",")} — 재생성`,
               );
               try {
-                choice.analysis = await reanalyzeSingleChoice(
+                const regeneratedAnalysis = await reanalyzeSingleChoice(
                   set,
                   neighborSnapshot,
                   choice,
                 );
+                const adopted = adoptRegeneratedAnalysis(
+                  choice,
+                  regeneratedAnalysis,
+                  `${set.id} Q${q.id}#${c.num} 변별재생성 attempt=${attempt}`,
+                );
+                if (!adopted) continue;
                 // [회기 4 patch 1] 변별 재생성 사후 normalize 재호출
                 // → wrong_no_pat_code 잔존 영역 자동 해소 (회기 3 보완)
                 choice.analysis = applyDeterministicFooter(choice);
@@ -1152,6 +1192,9 @@ export async function postProcess(result, answerKey) {
   } else {
     console.log(`변별 검증: 비활성화 (STEP3_DISCRIMINATIVE_VALIDATION=false)`);
   }
+  console.log(
+    `재생성 채택 게이트: 채택 ${totalRegenAccepted}건 · 거부 ${totalRegenRejected}건 · 경고 ${totalRegenWarned}건`,
+  );
 
   let remaining = 0;
   for (const section of ["reading", "literature"]) {
