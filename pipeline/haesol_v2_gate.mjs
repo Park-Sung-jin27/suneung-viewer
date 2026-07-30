@@ -37,7 +37,9 @@ export function acceptRegenChoice(analysis, pat, ok) {
     .trim()
     .split("\n");
   const conclLine = (lines[lines.length - 1] || "").trim();
-  const head = conclLine[0];
+  // ✅/❌ are surrogate-pair code points in UTF-16. String indexing returns
+  // only the first code unit, so read the first Unicode code point instead.
+  const head = Array.from(conclLine)[0];
   const stampOk = ok ? head === "✅" : head === "❌";
   const patOk = ok ? pat == null : pat != null;
   // ok:true 결론줄에 나오면 자기모순인 표현(부적절 단정 + '부합/일치하지 않아 적절' 류).
