@@ -27,6 +27,44 @@ export const _s2norm = (s) =>
     .replace(_S2_NORM_RE, "")
     .replace(/\s+/g, "");
 
+// [재생성 채택 게이트] 상위모델 재생성 산출을 3자 정합으로 판정 — 통과분만 채택, 나머지 거부.
+//   축1 ok↔결론줄 스탬프: ok:true→마지막줄 ✅ / ok:false→❌.
+//   축2 ok↔pat: ok:true→pat null / ok:false→pat 있음.
+//   축3 ok↔서술 방향: ok:true인데 결론줄에 부적절 어휘(부적절·어긋·오독…)=역전 서술 → 거부.
+//   게이트 없이 재생성물을 덮어쓰면 A/B처럼 나빠진 결과가 조용히 반영된다(심사관 지시: 게이트 선행).
+export function acceptRegenChoice(analysis, pat, ok) {
+  const lines = String(analysis || "")
+    .trim()
+    .split("\n");
+  const conclLine = (lines[lines.length - 1] || "").trim();
+  // ✅/❌ are surrogate-pair code points in UTF-16. String indexing returns
+  // only the first code unit, so read the first Unicode code point instead.
+  const head = Array.from(conclLine)[0];
+  const stampOk = ok ? head === "✅" : head === "❌";
+  const patOk = ok ? pat == null : pat != null;
+  // ok:true 결론줄에 나오면 자기모순인 표현(부적절 단정 + '부합/일치하지 않아 적절' 류).
+  //   상위모델이 하드제약을 못 이겨 "지문에 부합하지 않아 적절한 선지" 같은 역전-결론을
+  //   내면 스탬프(✅)만 보고 통과되던 사각(2018_6월 l20186c Q36-1 실증) 차단.
+  const negLang =
+    /부적절|어긋나|오독|과잉|짜깁기|전도|착각|혼동|오인|틀린|잘못|부합하지\s*(않|아니)|일치하지\s*(않|아니)|맞지\s*않/.test(
+      conclLine,
+    );
+  const narrativeOk = ok ? !negLang : true;
+  // [축3 강등: 거부축 → 경고축] (심사관 2026-07-30 지시)
+  //   축3(서술역전)은 키워드 휴리스틱이라 (a)의미적으로 우회한 역전을 못 잡고(l20186c Q36-1 실증,
+  //   §13⑰: 형식 게이트로 내용역전 보증 불가) (b)정상 해설을 오탐할 수 있다. 따라서 채택은
+  //   기계적으로 확정적인 축1(스탬프)·축2(pat)로만 판정하고, 축3은 비차단 경고로만 표기한다.
+  //   의미 역전의 최종 방어선은 대표/옵션B 검수(§13⑰)이며 게이트는 보조 신호다.
+  const accept = stampOk && patOk;
+  const warn = accept && !narrativeOk ? "축3 서술역전 의심(경고·비차단)" : null;
+  const reason = accept
+    ? "OK"
+    : !stampOk
+      ? `축1 스탬프≠ok(ok=${ok}, 결론두자="${head || "?"}")`
+      : `축2 pat≠ok(ok=${ok}, pat=${pat})`;
+  return { accept, reason, warn };
+}
+
 // [verse 매처] 📌 인용이 " / "로 이은 "연속 verse 행"이면 각 행의 verse sent.id 배열 반환(아니면 null).
 //   §13⑬ 운문 다행 인용을 자동 유효 처리(형광펜 다중 정박). 단일 소스 — step4·gate §2·verifyAnchors 공용.
 //   가드1 연속성(adjacency): 매칭 verse 행이 sents 순서상 인접(i,i+1,…)일 때만. 비인접=스티칭 오류 → null.
