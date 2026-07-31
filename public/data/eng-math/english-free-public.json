@@ -1,0 +1,295 @@
+{
+  "packId": "english-01",
+  "questions": [
+    {
+      "id": "2026_csat_19",
+      "label": "2026학년도 수능 · 19번",
+      "prompt": "19. 다음 글에 드러난 Sophie의 심경 변화로 가장 적절한 것은?",
+      "passage": "“Where could it be?” Sophie asked herself. It had been more than ten years since she had last visited the area where she had grown up. The village had changed a lot over time. Uncertain, she awkwardly looked around at her surroundings. She walked the narrow streets of the village, unsure about which way to go. Suddenly, Sophie saw a familiar sight. “Yes, this must be it,” she thought. In front of her was a wall with flowers painted on it. Although the colors were now faded, the familiar shapes on the wall were the same ones she had painted with her father as a child. Sophie nodded, smiled brightly, and walked toward the gate. At last, she had finally found the house she had grown up in.",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "confused → pleased"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "confident → embarrassed"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "thrilled → anxious"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "relieved → nervous"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "bored → excited"
+        }
+      ],
+      "answer": 1,
+      "review": {
+        "summary": "정답 ①. Sophie는 처음에는 길을 몰라 혼란스럽고, 뒤에서는 집을 찾아 기뻐합니다.",
+        "approach": "목적·심경은 첫 문장부터 상황을 잡고, 마지막 행동이나 감정 변화가 선지와 맞는지 확인합니다.",
+        "reason": "앞부분의 Uncertain, unsure가 혼란을 만들고, 뒤에서는 familiar sight를 확인한 뒤 smile brightly로 감정이 바뀝니다. 그래서 confused에서 pleased로 가는 ①이 가장 정확합니다.",
+        "trap": {
+          "mark": "④",
+          "text": "relieved → nervous",
+          "reason": "긴장이 커지는 흐름이 아니라, 찾지 못하던 장소를 확인하면서 밝아지는 흐름입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "초반 감정",
+            "quote": "Uncertain,\nshe awkwardly looked around at her surroundings.",
+            "translation": "확신이 없어 주변을 어색하게 둘러본다."
+          },
+          {
+            "origin": "text",
+            "role": "후반 감정",
+            "quote": "Sophie nodded, smiled brightly, and walked toward\nthe gate.",
+            "translation": "고개를 끄덕이고 환하게 웃으며 문으로 걸어간다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_20",
+      "label": "2026학년도 수능 · 20번",
+      "prompt": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "passage": "The study of literature has repeatedly failed to recognize the influence of modern musical lyricists and their contributions to the evolution of language. Unlike Shakespeare, who has been studied and celebrated for his development of the English language, particularly in vocabulary and grammatical structure, modern songwriters have experienced restraints on the acknowledgement of their contributions and largely been ignored. Over the past century, we have witnessed an explosion of incredible literary works by these artists, who, through their music, have used linguistic manipulation and storytelling to enrich our language and literature. Producing lyrics of distinct and complex imagery, songwriters have had an incredible literary impact on our language. Their remarkable works, including influences on modern language development, must be recognized in the field of modern literature.\n* lyricist: 작사가\n** restraint: 제약",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "독특하고 복합적인 이미지 표현 기법을 작사 과정에 적용해야 한다."
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "가사를 통해 작사가들이 언어와 문학에 기여한 바를 인정해야 한다."
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "셰익스피어의 작품이 영문학 발전에 미친 영향을 분석해야 한다."
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "문학 작품을 감상하기 위해 스토리텔링 기법을 이해해야 한다."
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "문학 작품과 가사에 사용되는 언어의 차이를 연구해야 한다."
+        }
+      ],
+      "answer": 2,
+      "review": {
+        "summary": "정답 ②. 글은 현대 작사가들의 언어·문학적 기여를 인정해야 한다고 주장합니다.",
+        "approach": "주제·요지·제목은 초반 소재를 잡고, 후반의 강한 판단·일반화 문장으로 답을 고릅니다.",
+        "reason": "초반에는 인정받지 못했다는 문제를 제기하고, 마지막에는 must be recognized로 강한 주장문을 제시합니다. 선지 ②가 이 구조를 그대로 일반화합니다.",
+        "trap": {
+          "mark": "③",
+          "text": "셰익스피어의 작품 영향 분석",
+          "reason": "Shakespeare는 비교 대상일 뿐, 글의 주장 대상은 현대 작사가들입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "문제 제기",
+            "quote": "The study of literature has repeatedly failed to recognize the\ninfluence of modern musical lyricists and their contributions\nto the evolution of language.",
+            "translation": "문학 연구가 현대 작사가들의 영향과 언어 발전 기여를 인정하지 못했다."
+          },
+          {
+            "origin": "text",
+            "role": "주장문",
+            "quote": "Their remarkable works,\nincluding influences on modern language development, must\nbe recognized in the field of modern literature.",
+            "translation": "그들의 뛰어난 작품과 현대 언어 발달에 미친 영향은 현대 문학 분야에서 인정되어야 한다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_21",
+      "label": "2026학년도 수능 · 21번",
+      "prompt": "21. 밑줄 친 made a lot of work less sticky가 다음 글에서 의미하는",
+      "passage": "바로 가장 적절한 것은? Digital platforms have made a lot of work less sticky. As work becomes ever more modularised, commoditised and standardised, and as markets for digital work are created, ties between service work and particular places can be disconnected. While the business process of outsourcing that emerged in the 1990s allowed large companies to take advantage of a ‘global reserve army’ by moving their call centres to cheap and distant labour markets, cloudwork changes the volume and granularity at which geographically non-proximate work can take place. A small business in New York can hire a freelance transcriber in Nairobi one day and New Delhi the next. No offices or factories need to be built, no local regulations are observed, and ― in most cases ― no local taxes are paid. The switch in the production network of work happens by simply sending some emails or clicking some buttons on a digital work platform. And, in this way, the employer leaves behind no material traces in the places where it was once an employer.\n* commoditise: 상품화하다\n** granularity: 과립상(顆粒狀)",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "settled the locational dilemma of the global markets"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "elevated the spatial flexibility in conducting business"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "weakened the geographical expansion of local business"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "relieved the strict legal processes of regional outsourcing"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "allowed business to be less complicated in its hiring process"
+        }
+      ],
+      "answer": 2,
+      "review": {
+        "summary": "정답 ②. less sticky는 일이 특정 장소에 붙어 있지 않고 공간적으로 유연해졌다는 뜻입니다.",
+        "approach": "빈칸·밑줄은 빈칸 주변의 앞뒤 논리를 먼저 보고, 마지막에 선지가 그 논리를 일반화하는지 확인합니다.",
+        "reason": "sticky는 특정 장소에 붙어 있다는 느낌입니다. 본문은 디지털 플랫폼 때문에 장소와 일이 분리되고, 고용 위치를 쉽게 바꿀 수 있다고 설명하므로 공간적 유연성을 높였다는 ②가 맞습니다.",
+        "trap": {
+          "mark": "⑤",
+          "text": "hiring process가 덜 복잡해짐",
+          "reason": "핵심은 채용 절차의 단순화가 아니라, 일이 수행되는 장소가 고정되지 않는다는 점입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "핵심 정의",
+            "quote": "ties between\nservice work and particular places can be disconnected.",
+            "translation": "서비스 일과 특정 장소의 연결이 끊어질 수 있다."
+          },
+          {
+            "origin": "text",
+            "role": "예시",
+            "quote": "A\nsmall business in New York can hire a freelance transcriber in\nNairobi one day and New Delhi the next.",
+            "translation": "뉴욕의 작은 회사가 하루는 나이로비, 다음 날은 뉴델리의 사람을 고용할 수 있다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_22",
+      "label": "2026학년도 수능 · 22번",
+      "prompt": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "passage": "A sport ecosystem exists based on the type and rate of coopetition existing. Coopetition is defined as “the simultaneous pursuit of cooperation and competition among firms to leverage strategically important resources for superior value creation purposes”. It is a useful way to understand the dynamic nature of sport businesses which need to collaborate for resource efficiency purposes but potentially compete with each other. This special relationship should be managed properly due to trust and confidence issues being paramount. It can be challenging to be collaborative and competitive in sport as they involve different forms of behaviour. This means a careful balancing act may be required in terms of the amount of emphasis placed on each activity. Often sport managers will try to be more competitive due to performance reasons and less collaborative. By necessity they may need to share information but do so in a cautious manner. This means it might be better to have plans in place about how to pursue both simultaneously. This will ensure one is not neglected at the expense of the other.\n* simultaneous: 동시의\n** paramount: 최고의",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "스포츠 산업에서는 협력과 경쟁 사이의 균형 잡힌 접근이 요구된다."
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "협력에 기반한 경쟁을 위해서 스포츠 정신 함양 교육이 필수적이다."
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "스포츠에서는 성과를 중요시하기 때문에 협력을 과소평가하기 쉽다."
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "스포츠 산업에서는 효율적 자원 활용을 위한 전략이 필요하다."
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "스포츠 산업에서의 성취는 경쟁을 필연적으로 수반한다."
+        }
+      ],
+      "answer": 1,
+      "review": {
+        "summary": "정답 ①. 스포츠 산업에서는 협력과 경쟁을 동시에 다루는 균형이 필요합니다.",
+        "approach": "주제·요지·제목은 초반 소재를 잡고, 후반의 강한 판단·일반화 문장으로 답을 고릅니다.",
+        "reason": "coopetition은 협력과 경쟁이 동시에 있는 상태입니다. 글은 둘 중 하나만 강조하지 말고 균형 있게 계획하라고 하므로 ①이 요지입니다.",
+        "trap": {
+          "mark": "③",
+          "text": "협력을 과소평가하기 쉽다",
+          "reason": "부분 내용은 맞지만, 답은 그 문제를 넘어 협력과 경쟁의 균형을 요구하는 전체 결론이어야 합니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "핵심 일반화",
+            "quote": "This means\na careful balancing act may be required in terms of the amount\nof emphasis placed on each activity.",
+            "translation": "각 활동에 어느 정도 비중을 둘지 신중한 균형 잡기가 필요할 수 있다."
+          },
+          {
+            "origin": "text",
+            "role": "결론",
+            "quote": "This will ensure one is not neglected at\nthe expense of the other.",
+            "translation": "한쪽 때문에 다른 한쪽이 소홀해지지 않게 한다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2026_csat_23",
+      "label": "2026학년도 수능 · 23번",
+      "prompt": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "passage": "Emphasizing speed over frequency can make sense in contexts where everyone is expected to plan around the timetable, including peak-only commute services and very long trips with low demand. In all other contexts, though, it seems to be a common motorist’s error. Roads are there all the time, so their speed is the most important fact that distinguishes them. But transit is only there if it’s coming soon. If you have a car, you can use a road whenever you want and experience its speed. But transit has to exist when you need it (span), and it needs to be coming soon (frequency). Otherwise, waiting time will wipe out any time savings from a faster service. Unless you’re comfortable planning your life around a particular scheduled trip, speed is worthless without frequency, so a transit map that screams about speed and whispers about frequency may simply be planting confusion.\n* commute: 통근",
+      "choices": [
+        {
+          "number": 1,
+          "mark": "①",
+          "text": "consequences of adjusting frequency of transit"
+        },
+        {
+          "number": 2,
+          "mark": "②",
+          "text": "significance of designing an accurate transit map"
+        },
+        {
+          "number": 3,
+          "mark": "③",
+          "text": "importance of valuing frequency in public transportation"
+        },
+        {
+          "number": 4,
+          "mark": "④",
+          "text": "impact of creating high-speed public transportation systems"
+        },
+        {
+          "number": 5,
+          "mark": "⑤",
+          "text": "methods to improve speed and frequency of commute services"
+        }
+      ],
+      "answer": 3,
+      "review": {
+        "summary": "정답 ③. 대중교통은 빠른 것보다 자주 오는 것이 실제 이용 가능성을 결정합니다.",
+        "approach": "주제·요지·제목은 초반 소재를 잡고, 후반의 강한 판단·일반화 문장으로 답을 고릅니다.",
+        "reason": "초반에는 speed over frequency가 가능한 예외를 말하지만, though 이후 일반 상황에서는 frequency가 중요하다고 전환합니다. 따라서 ③이 글의 중심입니다.",
+        "trap": {
+          "mark": "②",
+          "text": "정확한 transit map 설계의 중요성",
+          "reason": "지도는 마지막 예시일 뿐이고, 글 전체의 기준은 frequency입니다."
+        },
+        "evidence": [
+          {
+            "origin": "text",
+            "role": "전환 뒤 핵심",
+            "quote": "But transit is only there if it’s coming soon.",
+            "translation": "대중교통은 곧 올 때에만 이용 가능한 존재가 된다."
+          },
+          {
+            "origin": "text",
+            "role": "이유",
+            "quote": "Otherwise, waiting\ntime will wipe out any time savings from a faster service.",
+            "translation": "그렇지 않으면 기다리는 시간이 빠른 서비스의 시간 절약을 지워 버린다."
+          }
+        ]
+      }
+    }
+  ]
+}

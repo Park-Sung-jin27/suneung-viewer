@@ -3,19 +3,25 @@ import { useLocation, useNavigate } from "react-router-dom";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 
-const DATA_URLS = {
-  english: "/data/eng-math/english-2026-csat-public.json",
-  math: "/data/eng-math/math-full-no-figure-public.json",
+const QUESTION_DATA_URLS = {
+  english: "/data/eng-math/english-free-public.json",
+  math: "/data/eng-math/math-free-public.json",
 };
-
-const ENGLISH_SESSION_NUMBER_GROUPS = [
-  [19, 20, 21, 22, 23],
-  [24, 25, 26, 27, 28],
-  [29, 30, 31, 32, 33],
-  [34, 35, 36, 37, 38],
-  [36, 37, 38, 39, 40],
-  [41, 42, 43, 44, 45],
-];
+const CATALOG_DATA_URL = "/data/eng-math/catalog-public.json";
+const EXPECTED_BOUNDARIES = {
+  english: {
+    totalQuestionCount: 27,
+    freeQuestionCount: 5,
+    lockedQuestionCount: 22,
+    packCount: 6,
+  },
+  math: {
+    totalQuestionCount: 361,
+    freeQuestionCount: 5,
+    lockedQuestionCount: 356,
+    packCount: 88,
+  },
+};
 
 const MATH_TRACKS = {
   common: "공통",
@@ -36,176 +42,6 @@ const SUBJECTS = {
     tint: "#eaf7f1",
   },
 };
-
-function questionNumberFromId(id) {
-  return Number(String(id).split("_").at(-1));
-}
-
-function parseMathQuestionId(id) {
-  const match = String(id).match(
-    /^(\d{4}_(?:06|09))_(common|cal|sta|geo)_(\d+)$/,
-  );
-  if (!match) return null;
-  return {
-    examKey: match[1],
-    trackKey: match[2],
-    scopeKey: `${match[1]}|${match[2]}`,
-    questionNumber: Number(match[3]),
-  };
-}
-
-function buildFiveQuestionGroups(questions) {
-  const ordered = [...questions].sort(
-    (left, right) =>
-      questionNumberFromId(left.id) - questionNumberFromId(right.id),
-  );
-  const groups = [];
-
-  for (let offset = 0; offset < ordered.length; offset += 5) {
-    const start =
-      ordered.length - offset >= 5 ? offset : Math.max(0, ordered.length - 5);
-    const group = ordered.slice(start, start + 5);
-    if (groups.some((candidate) => candidate[0]?.id === group[0]?.id)) continue;
-    groups.push(group);
-  }
-  return groups;
-}
-
-function buildEnglishCatalog(questions) {
-  const questionsByNumber = new Map(
-    questions.map((question) => [questionNumberFromId(question.id), question]),
-  );
-
-  return ENGLISH_SESSION_NUMBER_GROUPS.map((numbers, index) => {
-    const packQuestions = numbers
-      .map((number) => questionsByNumber.get(number))
-      .filter(Boolean);
-    return {
-      id: packQuestions[0]?.id ?? `english-pack-${index + 1}`,
-      scopeKey: "2026_csat",
-      examKey: "2026_csat",
-      examLabel: "2026학년도 수능",
-      trackKey: "english",
-      trackLabel: "영어",
-      label: `${numbers[0]}~${numbers.at(-1)}번`,
-      note:
-        index === 4
-          ? "앞 묶음의 3문항을 복습합니다."
-          : index === 5
-            ? "공통 지문 문항을 함께 풉니다."
-            : "",
-      questions: packQuestions,
-    };
-  });
-}
-
-function buildMathCatalog(questions) {
-  const questionsByScope = new Map();
-
-  for (const question of questions) {
-    const parsed = parseMathQuestionId(question.id);
-    if (!parsed) continue;
-    if (!questionsByScope.has(parsed.scopeKey)) {
-      questionsByScope.set(parsed.scopeKey, []);
-    }
-    questionsByScope.get(parsed.scopeKey).push(question);
-  }
-
-  const examKeys = [
-    ...new Set(
-      [...questionsByScope.keys()].map((scopeKey) => scopeKey.split("|")[0]),
-    ),
-  ].sort();
-  const catalog = [];
-
-  for (const examKey of examKeys) {
-    for (const [trackKey, trackLabel] of Object.entries(MATH_TRACKS)) {
-      const scopeKey = `${examKey}|${trackKey}`;
-      const scopedQuestions = questionsByScope.get(scopeKey) ?? [];
-      const examLabel = scopedQuestions[0]?.label.split(" · ")[0] ?? examKey;
-      const groups = buildFiveQuestionGroups(scopedQuestions);
-
-      groups.forEach((packQuestions, index) => {
-        const questionNumbers = packQuestions.map((question) =>
-          questionNumberFromId(question.id),
-        );
-        const choiceCount = packQuestions.filter(
-          (question) => question.responseType === "choice",
-        ).length;
-        const shortCount = packQuestions.length - choiceCount;
-        const responseSummary = [
-          choiceCount ? `선다형 ${choiceCount}` : "",
-          shortCount ? `단답형 ${shortCount}` : "",
-        ]
-          .filter(Boolean)
-          .join(" · ");
-
-        catalog.push({
-          id: packQuestions[0]?.id ?? `${scopeKey}-${index + 1}`,
-          scopeKey,
-          examKey,
-          examLabel,
-          trackKey,
-          trackLabel,
-          label: `${questionNumbers.join("·")}번`,
-          note:
-            index === groups.length - 1 && scopedQuestions.length % 5 !== 0
-              ? `마지막 ${scopedQuestions.length % 5}문항과 앞 문항을 함께 복습합니다.`
-              : "",
-          responseSummary,
-          questions: packQuestions,
-        });
-      });
-    }
-  }
-  return catalog;
-}
-
-function buildSessionCatalog(questions, subject) {
-  return subject === "math"
-    ? buildMathCatalog(questions)
-    : buildEnglishCatalog(questions);
-}
-
-function validateSessionCatalog(questions, catalog, subject) {
-  const expectedQuestionCount = subject === "math" ? 361 : 27;
-  const expectedPackCount = subject === "math" ? 88 : 6;
-  if (
-    questions.length !== expectedQuestionCount ||
-    catalog.length !== expectedPackCount
-  ) {
-    return "공개 문항 수와 5문항 학습 구성을 확인하지 못했습니다.";
-  }
-
-  const publicIds = new Set(questions.map((question) => question.id));
-  const coveredIds = new Set();
-  for (const pack of catalog) {
-    const packIds = pack.questions.map((question) => question.id);
-    if (packIds.length !== 5 || new Set(packIds).size !== 5) {
-      return "5문항 학습 구성에 중복 또는 누락이 있습니다.";
-    }
-    for (const question of pack.questions) {
-      if (!publicIds.has(question.id)) {
-        return "공개 범위 밖 문항이 학습 구성에 포함됐습니다.";
-      }
-      if (
-        subject === "math" &&
-        parseMathQuestionId(question.id)?.scopeKey !== pack.scopeKey
-      ) {
-        return "서로 다른 수학 시험 또는 영역이 한 묶음에 섞였습니다.";
-      }
-      coveredIds.add(question.id);
-    }
-  }
-
-  if (
-    coveredIds.size !== publicIds.size ||
-    [...publicIds].some((id) => !coveredIds.has(id))
-  ) {
-    return "일부 공개 문항이 5문항 학습 목록에서 빠졌습니다.";
-  }
-  return "";
-}
 
 function sessionUrl(subject, packId) {
   return `/eng-math/practice?subject=${subject}&mode=session&pack=${encodeURIComponent(packId)}`;
@@ -367,29 +203,87 @@ function MathFigureDescription({ description }) {
   );
 }
 
-function usePublicQuestions(subject) {
+function prepareLearningData(subject, questionData, catalogData) {
+  const expected = EXPECTED_BOUNDARIES[subject];
+  const boundary = catalogData?.subjects?.[subject];
+  const questions = questionData?.questions;
+  const packs = boundary?.packs;
+
+  if (!Array.isArray(questions) || !Array.isArray(packs)) {
+    throw new Error("무료 문항 데이터 형식이 올바르지 않습니다.");
+  }
+  for (const [key, value] of Object.entries(expected)) {
+    if (boundary[key] !== value) {
+      throw new Error("무료·잠금 문항 범위를 확인하지 못했습니다.");
+    }
+  }
+  if (
+    questions.length !== expected.freeQuestionCount ||
+    new Set(questions.map((question) => question.id)).size !==
+      expected.freeQuestionCount ||
+    packs.length !== expected.packCount ||
+    new Set(packs.map((pack) => pack.id)).size !== expected.packCount
+  ) {
+    throw new Error("무료 문항 또는 잠금 묶음 수가 올바르지 않습니다.");
+  }
+
+  const freePacks = packs.filter((pack) => pack.access === "free");
+  const lockedPacks = packs.filter((pack) => pack.access === "locked");
+  if (
+    freePacks.length !== 1 ||
+    freePacks[0].id !== boundary.freePackId ||
+    freePacks[0].id !== questionData.packId ||
+    lockedPacks.length !== expected.packCount - 1 ||
+    packs.some((pack) => pack.access !== "free" && pack.access !== "locked")
+  ) {
+    throw new Error("무료·잠금 묶음 구성이 올바르지 않습니다.");
+  }
+
+  return {
+    boundary,
+    questions,
+    catalog: packs.map((pack) => ({
+      ...pack,
+      questions: pack.id === questionData.packId ? questions : [],
+    })),
+  };
+}
+
+function usePublicLearningData(subject) {
   const [state, setState] = useState({
     subject: "",
     status: "loading",
     questions: [],
+    catalog: [],
+    boundary: null,
     error: "",
   });
 
   useEffect(() => {
     const controller = new AbortController();
 
-    fetch(DATA_URLS[subject], { signal: controller.signal })
-      .then((response) => {
-        if (!response.ok) throw new Error("문항 데이터를 불러오지 못했습니다.");
-        return response.json();
+    Promise.all([
+      fetch(QUESTION_DATA_URLS[subject], { signal: controller.signal }),
+      fetch(CATALOG_DATA_URL, { signal: controller.signal }),
+    ])
+      .then(async ([questionResponse, catalogResponse]) => {
+        if (!questionResponse.ok || !catalogResponse.ok) {
+          throw new Error("문항 데이터를 불러오지 못했습니다.");
+        }
+        return Promise.all([questionResponse.json(), catalogResponse.json()]);
       })
-      .then((data) => {
-        if (!Array.isArray(data.questions))
-          throw new Error("문항 데이터 형식이 올바르지 않습니다.");
+      .then(([questionData, catalogData]) => {
+        const learningData = prepareLearningData(
+          subject,
+          questionData,
+          catalogData,
+        );
         setState({
           subject,
           status: "ready",
-          questions: data.questions,
+          questions: learningData.questions,
+          catalog: learningData.catalog,
+          boundary: learningData.boundary,
           error: "",
         });
       })
@@ -399,6 +293,8 @@ function usePublicQuestions(subject) {
           subject,
           status: "error",
           questions: [],
+          catalog: [],
+          boundary: null,
           error: error.message,
         });
       });
@@ -408,7 +304,13 @@ function usePublicQuestions(subject) {
 
   return state.subject === subject
     ? state
-    : { status: "loading", questions: [], error: "" };
+    : {
+        status: "loading",
+        questions: [],
+        catalog: [],
+        boundary: null,
+        error: "",
+      };
 }
 
 function getAnswerText(question, subject) {
@@ -454,18 +356,11 @@ export default function EngMathPractice() {
   const packId = parameters.get("pack");
   const initialExam = parameters.get("exam");
   const initialTrack = parameters.get("track");
-  const { status, questions, error } = usePublicQuestions(subject);
+  const { status, questions, catalog, boundary, error } =
+    usePublicLearningData(subject);
   const question = useMemo(
     () => questions.find((candidate) => candidate.id === questionId) ?? null,
     [questionId, questions],
-  );
-  const catalog = useMemo(
-    () => buildSessionCatalog(questions, subject),
-    [questions, subject],
-  );
-  const catalogError = useMemo(
-    () => validateSessionCatalog(questions, catalog, subject),
-    [catalog, questions, subject],
   );
   const selectedPack = useMemo(
     () => catalog.find((pack) => pack.id === packId) ?? null,
@@ -477,7 +372,11 @@ export default function EngMathPractice() {
       (pack) => pack.id === selectedPack.id,
     );
     const candidate = catalog[selectedIndex + 1] ?? null;
-    return candidate?.scopeKey === selectedPack.scopeKey ? candidate : null;
+    return candidate?.access === "free" &&
+      candidate.examKey === selectedPack.examKey &&
+      candidate.trackKey === selectedPack.trackKey
+      ? candidate
+      : null;
   }, [catalog, selectedPack]);
 
   const chooseSubject = (nextSubject) => {
@@ -497,15 +396,6 @@ export default function EngMathPractice() {
     );
   }
 
-  if (catalogError) {
-    return (
-      <PracticeNotice
-        message={catalogError}
-        onBack={() => navigate("/eng-math-beta")}
-      />
-    );
-  }
-
   if (isCatalogMode) {
     return (
       <QuestionCatalog
@@ -516,6 +406,7 @@ export default function EngMathPractice() {
         initialTrack={initialTrack}
         navigate={navigate}
         onSubjectChange={chooseSubject}
+        boundary={boundary}
       />
     );
   }
@@ -526,6 +417,16 @@ export default function EngMathPractice() {
         <PracticeNotice
           message="요청한 5문항 묶음을 찾지 못했습니다."
           onBack={() => navigate(catalogUrl(subject))}
+          backLabel="문항 목록으로"
+        />
+      );
+    }
+
+    if (selectedPack.access === "locked") {
+      return (
+        <PracticeNotice
+          message={`${SUBJECTS[subject].name} ${selectedPack.label} 묶음은 현재 잠겨 있습니다. 무료 체험은 5문항 한 묶음만 제공하며 결제는 아직 연결하지 않았습니다.`}
+          onBack={() => navigate(catalogUrl(subject, selectedPack))}
           backLabel="문항 목록으로"
         />
       );
@@ -575,6 +476,7 @@ function QuestionCatalog({
   initialTrack,
   navigate,
   onSubjectChange,
+  boundary,
 }) {
   const profile = SUBJECTS[subject];
   const examOptions = useMemo(() => {
@@ -598,11 +500,10 @@ function QuestionCatalog({
             pack.examKey === selectedExam && pack.trackKey === selectedTrack,
         )
       : catalog;
-  const visibleQuestionCount = new Set(
-    visiblePacks.flatMap((pack) =>
-      pack.questions.map((question) => question.id),
-    ),
-  ).size;
+  const visibleQuestionCount = visiblePacks[0]?.scopeQuestionCount ?? 0;
+  const visibleFreePackCount = visiblePacks.filter(
+    (pack) => pack.access === "free",
+  ).length;
 
   return (
     <main className="eng-math-catalog">
@@ -747,6 +648,16 @@ function QuestionCatalog({
           outline: none;
           transform: translateY(-1px);
         }
+        .eng-math-catalog__pack--locked {
+          border-style: dashed;
+          background: #fbfcfe;
+          box-shadow: none;
+        }
+        .eng-math-catalog__pack--locked:hover,
+        .eng-math-catalog__pack--locked:focus-visible {
+          border-color: #aab4c4;
+          transform: none;
+        }
         .eng-math-catalog__pack-topline {
           display: flex;
           align-items: center;
@@ -760,6 +671,10 @@ function QuestionCatalog({
           flex: 0 0 auto;
           border-radius: 999px;
           padding: 4px 8px;
+        }
+        .eng-math-catalog__pack-badge--locked {
+          background: #eef1f5;
+          color: #667085;
         }
         .eng-math-catalog__pack h2 {
           margin: 17px 0 7px;
@@ -842,8 +757,8 @@ function QuestionCatalog({
           <h1>학습할 문항을 고르세요.</h1>
           <p className="eng-math-catalog__lead">
             {subject === "english"
-              ? "2026학년도 수능 27문항을 여섯 묶음으로 제공합니다. 제출할 때마다 정답과 근거형 풀이를 확인할 수 있습니다."
-              : "정답 대조가 끝난 8개 시험에서 공통 또는 선택과목을 고르세요. 수학 풀이는 아직 제공하지 않습니다."}
+              ? "19~23번 5문항은 무료로 풀 수 있습니다. 나머지 22문항은 결제 없이 잠금 상태로만 표시합니다."
+              : "2022학년도 6월 공통 첫 5문항은 무료입니다. 나머지 356문항은 잠금 상태이며 수학 풀이는 아직 제공하지 않습니다."}
           </p>
         </header>
 
@@ -883,25 +798,29 @@ function QuestionCatalog({
 
         <p className="eng-math-catalog__summary">
           {subject === "english"
-            ? "전체 27문항 · 6개 묶음"
-            : `선택한 범위 ${visibleQuestionCount}문항 · ${visiblePacks.length}개 묶음`}
+            ? `무료 ${boundary.freeQuestionCount}문항 · 잠금 ${boundary.lockedQuestionCount}문항 · 전체 ${boundary.packCount}개 묶음`
+            : `선택한 범위 ${visibleQuestionCount}문항 · ${visiblePacks.length}개 묶음 · ${visibleFreePackCount ? "무료 1개" : "현재 모두 잠금"}`}
         </p>
 
         <section className="eng-math-catalog__grid" aria-label="5문항 묶음">
           {visiblePacks.map((pack) => (
             <button
               key={pack.id}
-              className="eng-math-catalog__pack"
+              className={`eng-math-catalog__pack ${pack.access === "locked" ? "eng-math-catalog__pack--locked" : ""}`}
               type="button"
               onClick={() => navigate(sessionUrl(subject, pack.id))}
             >
               <span className="eng-math-catalog__pack-topline">
                 <span>{pack.examLabel}</span>
                 <span
-                  className="eng-math-catalog__pack-badge"
-                  style={{ background: profile.tint, color: profile.accent }}
+                  className={`eng-math-catalog__pack-badge ${pack.access === "locked" ? "eng-math-catalog__pack-badge--locked" : ""}`}
+                  style={
+                    pack.access === "free"
+                      ? { background: profile.tint, color: profile.accent }
+                      : undefined
+                  }
                 >
-                  5문항
+                  {pack.access === "free" ? "무료 5문항" : "잠금"}
                 </span>
               </span>
               <h2>{pack.label}</h2>
@@ -918,8 +837,14 @@ function QuestionCatalog({
                 className="eng-math-catalog__pack-action"
                 style={{ color: profile.accent }}
               >
-                <span>이 묶음 학습하기</span>
-                <span aria-hidden="true">→</span>
+                <span>
+                  {pack.access === "free"
+                    ? "무료로 학습하기"
+                    : "잠금 범위 확인"}
+                </span>
+                <span aria-hidden="true">
+                  {pack.access === "free" ? "→" : "🔒"}
+                </span>
               </span>
             </button>
           ))}

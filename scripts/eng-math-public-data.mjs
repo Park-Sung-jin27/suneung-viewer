@@ -4,6 +4,7 @@ import {
   mkdirSync,
   readFileSync,
   readdirSync,
+  unlinkSync,
   writeFileSync,
 } from "node:fs";
 import path from "node:path";
@@ -16,21 +17,54 @@ const ENGLISH_DB_PATH = path.join(
   "data",
   "english_exam_db_v2_1.json",
 );
-const ENGLISH_OUTPUT_PATH = path.join(
-  ROOT,
-  "public",
-  "data",
-  "eng-math",
-  "english-2026-csat-public.json",
+const PUBLIC_DATA_DIRECTORY = path.join(ROOT, "public", "data", "eng-math");
+const ENGLISH_FREE_OUTPUT_PATH = path.join(
+  PUBLIC_DATA_DIRECTORY,
+  "english-free-public.json",
 );
-const MATH_OUTPUT_PATH = path.join(
+const MATH_FREE_OUTPUT_PATH = path.join(
+  PUBLIC_DATA_DIRECTORY,
+  "math-free-public.json",
+);
+const CATALOG_OUTPUT_PATH = path.join(
+  PUBLIC_DATA_DIRECTORY,
+  "catalog-public.json",
+);
+const LEGACY_PUBLIC_DATA_PATHS = [
+  path.join(PUBLIC_DATA_DIRECTORY, "english-2026-csat-public.json"),
+  path.join(PUBLIC_DATA_DIRECTORY, "math-full-no-figure-public.json"),
+];
+const ENGLISH_FIGURE_PUBLIC_PATH = path.join(
   ROOT,
   "public",
-  "data",
+  "images",
   "eng-math",
-  "math-full-no-figure-public.json",
+  "english",
+  "2026-csat",
+  "q25-figure.png",
+);
+const ENGLISH_FIGURE_PROTECTED_PATH = path.join(
+  ROOT,
+  "english",
+  "assets",
+  "2026-csat",
+  "q25-figure.png",
 );
 const ENGLISH_EXCLUDED_IDS = new Set(["2026_csat_18"]);
+const ENGLISH_FREE_IDS = [
+  "2026_csat_19",
+  "2026_csat_20",
+  "2026_csat_21",
+  "2026_csat_22",
+  "2026_csat_23",
+];
+const MATH_FREE_IDS = [
+  "2022_06_common_1",
+  "2022_06_common_2",
+  "2022_06_common_3",
+  "2022_06_common_5",
+  "2022_06_common_6",
+];
 const ENGLISH_CHOICE_MARKS = ["①", "②", "③", "④", "⑤"];
 const ENGLISH_PUBLIC_CHOICE_FINGERPRINT =
   "bbcfd28510d68d5193210254f08f0df4ac457b0b4bcd5849eb9d2ee5196f4a63";
@@ -315,6 +349,151 @@ function validateSessionCatalog(english, math) {
   ) {
     fail("MATH_SESSION_COVERAGE", `${mathGroupCount}:${mathCoverage.size}`);
   }
+}
+
+function hasExactQuestionIds(questions, expectedIds) {
+  const actualIds = questions.map((question) => question.id);
+  return (
+    actualIds.length === expectedIds.length &&
+    actualIds.every((id, index) => id === expectedIds[index])
+  );
+}
+
+function buildPublicCatalog(english, math) {
+  const englishByNumber = new Map(
+    english.map((question) => [
+      Number(question.id.replace("2026_csat_", "")),
+      question,
+    ]),
+  );
+  const englishPacks = ENGLISH_SESSION_NUMBER_GROUPS.map((numbers, index) => {
+    const questions = numbers.map((number) => englishByNumber.get(number));
+    if (questions.some((question) => !question)) {
+      fail("ENGLISH_CATALOG_QUESTION_MISSING", numbers.join(","));
+    }
+    const isFree = hasExactQuestionIds(questions, ENGLISH_FREE_IDS);
+    return {
+      id: `english-${String(index + 1).padStart(2, "0")}`,
+      examKey: "2026_csat",
+      examLabel: "2026학년도 수능",
+      trackKey: "english",
+      trackLabel: "영어",
+      label: `${numbers[0]}~${numbers.at(-1)}번`,
+      note:
+        index === 4
+          ? "앞 묶음의 3문항을 복습합니다."
+          : index === 5
+            ? "공통 지문 문항을 함께 풉니다."
+            : "",
+      questionCount: 5,
+      scopeQuestionCount: 27,
+      access: isFree ? "free" : "locked",
+    };
+  });
+
+  const mathByScope = new Map();
+  for (const question of math) {
+    const parsed = parseMathSessionId(question.id);
+    if (!mathByScope.has(parsed.scopeKey)) mathByScope.set(parsed.scopeKey, []);
+    mathByScope.get(parsed.scopeKey).push({
+      ...question,
+      sessionQuestionNumber: parsed.questionNumber,
+    });
+  }
+
+  const trackLabels = {
+    common: "공통",
+    cal: "미적분",
+    sta: "확률과통계",
+    geo: "기하",
+  };
+  const mathPacks = [];
+  for (const examKey of MATH_SESSION_EXAMS) {
+    for (const trackKey of MATH_SESSION_TRACKS) {
+      const scopeKey = `${examKey}|${trackKey}`;
+      const scopedQuestions = mathByScope
+        .get(scopeKey)
+        .sort(
+          (left, right) =>
+            left.sessionQuestionNumber - right.sessionQuestionNumber,
+        );
+      const groups = buildFiveQuestionGroups(scopedQuestions, scopeKey);
+      const examLabel = scopedQuestions[0]?.label.split(" · ")[0] ?? examKey;
+
+      groups.forEach((questions, index) => {
+        const questionNumbers = questions.map(
+          (question) => question.sessionQuestionNumber,
+        );
+        const choiceCount = questions.filter(
+          (question) => question.responseType === "choice",
+        ).length;
+        const shortCount = questions.length - choiceCount;
+        const responseSummary = [
+          choiceCount ? `선다형 ${choiceCount}` : "",
+          shortCount ? `단답형 ${shortCount}` : "",
+        ]
+          .filter(Boolean)
+          .join(" · ");
+        const isFree = hasExactQuestionIds(questions, MATH_FREE_IDS);
+
+        mathPacks.push({
+          id: `math-${examKey}-${trackKey}-${String(index + 1).padStart(2, "0")}`,
+          examKey,
+          examLabel,
+          trackKey,
+          trackLabel: trackLabels[trackKey],
+          label: `${questionNumbers.join("·")}번`,
+          note:
+            index === groups.length - 1 && scopedQuestions.length % 5 !== 0
+              ? `마지막 ${scopedQuestions.length % 5}문항과 앞 문항을 함께 복습합니다.`
+              : "",
+          responseSummary,
+          questionCount: 5,
+          scopeQuestionCount: scopedQuestions.length,
+          access: isFree ? "free" : "locked",
+        });
+      });
+    }
+  }
+
+  const englishFreePacks = englishPacks.filter(
+    (pack) => pack.access === "free",
+  );
+  const mathFreePacks = mathPacks.filter((pack) => pack.access === "free");
+  if (englishPacks.length !== 6 || englishFreePacks.length !== 1) {
+    fail(
+      "ENGLISH_CATALOG_BOUNDARY",
+      `${englishPacks.length}:${englishFreePacks.length}`,
+    );
+  }
+  if (mathPacks.length !== 88 || mathFreePacks.length !== 1) {
+    fail(
+      "MATH_CATALOG_BOUNDARY",
+      `${mathPacks.length}:${mathFreePacks.length}`,
+    );
+  }
+
+  return {
+    version: 1,
+    subjects: {
+      english: {
+        totalQuestionCount: 27,
+        freeQuestionCount: 5,
+        lockedQuestionCount: 22,
+        packCount: 6,
+        freePackId: englishFreePacks[0].id,
+        packs: englishPacks,
+      },
+      math: {
+        totalQuestionCount: 361,
+        freeQuestionCount: 5,
+        lockedQuestionCount: 356,
+        packCount: 88,
+        freePackId: mathFreePacks[0].id,
+        packs: mathPacks,
+      },
+    },
+  };
 }
 
 function validateEnglishChoices(question) {
@@ -714,15 +893,16 @@ function projectEnglishFigure(question) {
       fail("ENGLISH_FIGURE_STACK_TOTAL", `${question.id}:${categoryId}`);
   }
 
-  const publicRoot = path.join(ROOT, "public");
-  const assetPath = path.resolve(
-    publicRoot,
-    figure.assetPath.replace(/^[/\\]+/, ""),
-  );
-  if (
-    !assetPath.startsWith(`${publicRoot}${path.sep}`) ||
-    !existsSync(assetPath)
-  ) {
+  const isProtectedEnglishFigure =
+    question.id === "2026_csat_25" &&
+    figure.assetPath === "/images/eng-math/english/2026-csat/q25-figure.png";
+  const assetPath = isProtectedEnglishFigure
+    ? ENGLISH_FIGURE_PROTECTED_PATH
+    : path.resolve(
+        path.join(ROOT, "public"),
+        figure.assetPath.replace(/^[/\\]+/, ""),
+      );
+  if (!existsSync(assetPath)) {
     fail("ENGLISH_FIGURE_ASSET", question.id);
   }
 
@@ -976,9 +1156,52 @@ function buildPublicData() {
   }
 
   validateSessionCatalog(english, math);
-  const data = { english: { questions: english }, math: { questions: math } };
-  assertNoForbiddenKeys(data);
-  return data;
+  const catalog = buildPublicCatalog(english, math);
+  const englishFreeQuestions = english.filter((question) =>
+    ENGLISH_FREE_IDS.includes(question.id),
+  );
+  const mathFreeQuestions = math.filter((question) =>
+    MATH_FREE_IDS.includes(question.id),
+  );
+  if (!hasExactQuestionIds(englishFreeQuestions, ENGLISH_FREE_IDS)) {
+    fail(
+      "ENGLISH_FREE_BOUNDARY",
+      englishFreeQuestions.map((question) => question.id).join(","),
+    );
+  }
+  if (!hasExactQuestionIds(mathFreeQuestions, MATH_FREE_IDS)) {
+    fail(
+      "MATH_FREE_BOUNDARY",
+      mathFreeQuestions.map((question) => question.id).join(","),
+    );
+  }
+  const freeEvidenceCount = englishFreeQuestions.reduce(
+    (count, question) => count + question.review.evidence.length,
+    0,
+  );
+  if (freeEvidenceCount !== 10) {
+    fail("ENGLISH_FREE_EVIDENCE_COUNT", String(freeEvidenceCount));
+  }
+
+  const englishFree = {
+    packId: catalog.subjects.english.freePackId,
+    questions: englishFreeQuestions,
+  };
+  const mathFree = {
+    packId: catalog.subjects.math.freePackId,
+    questions: mathFreeQuestions,
+  };
+  assertNoForbiddenKeys({ englishFree, mathFree });
+
+  const freeIds = new Set([...ENGLISH_FREE_IDS, ...MATH_FREE_IDS]);
+  const lockedIds = [...english, ...math]
+    .map((question) => question.id)
+    .filter((id) => !freeIds.has(id));
+  if (lockedIds.length !== 378) {
+    fail("LOCKED_QUESTION_COUNT", String(lockedIds.length));
+  }
+
+  return { englishFree, mathFree, catalog, lockedIds };
 }
 
 function verifyArtifact(filePath, expected) {
@@ -1001,20 +1224,115 @@ function verifyArtifact(filePath, expected) {
   }
 }
 
+function verifyArtifactMissing(filePath) {
+  if (existsSync(filePath)) {
+    fail("LOCKED_PUBLIC_ARTIFACT", path.relative(ROOT, filePath));
+  }
+}
+
+function verifyPublishedFileSet(directory) {
+  if (!existsSync(directory)) {
+    fail("PUBLIC_DIRECTORY_MISSING", path.relative(ROOT, directory));
+  }
+  const expectedNames = [
+    "catalog-public.json",
+    "english-free-public.json",
+    "math-free-public.json",
+  ];
+  const actualNames = readdirSync(directory, { withFileTypes: true })
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name)
+    .sort();
+  if (stableJson(actualNames) !== stableJson(expectedNames)) {
+    fail("PUBLIC_FILE_SET", `actual=${actualNames.join(",") || "none"}`);
+  }
+}
+
+function listFiles(directory) {
+  const files = [];
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) files.push(...listFiles(entryPath));
+    if (entry.isFile()) files.push(entryPath);
+  }
+  return files;
+}
+
+function verifyLockedIdsAbsent(directory, lockedIds) {
+  const textExtensions = new Set([
+    ".css",
+    ".html",
+    ".js",
+    ".json",
+    ".map",
+    ".svg",
+    ".txt",
+    ".xml",
+  ]);
+  const lockedIdPattern = new RegExp(lockedIds.join("|"));
+  for (const filePath of listFiles(directory)) {
+    if (!textExtensions.has(path.extname(filePath).toLowerCase())) continue;
+    const contents = readFileSync(filePath, "utf8");
+    const match = contents.match(lockedIdPattern);
+    if (match) {
+      fail(
+        "LOCKED_QUESTION_ID_LEAK",
+        `${path.relative(ROOT, filePath)}:${match[0]}`,
+      );
+    }
+  }
+}
+
+function verifyPublishedBoundary(baseDirectory, data) {
+  const dataDirectory = path.join(baseDirectory, "data", "eng-math");
+  verifyPublishedFileSet(dataDirectory);
+  verifyArtifact(
+    path.join(dataDirectory, "english-free-public.json"),
+    data.englishFree,
+  );
+  verifyArtifact(
+    path.join(dataDirectory, "math-free-public.json"),
+    data.mathFree,
+  );
+  verifyArtifact(path.join(dataDirectory, "catalog-public.json"), data.catalog);
+  verifyArtifactMissing(
+    path.join(dataDirectory, "english-2026-csat-public.json"),
+  );
+  verifyArtifactMissing(
+    path.join(dataDirectory, "math-full-no-figure-public.json"),
+  );
+  verifyArtifactMissing(
+    path.join(
+      baseDirectory,
+      "images",
+      "eng-math",
+      "english",
+      "2026-csat",
+      "q25-figure.png",
+    ),
+  );
+  verifyLockedIdsAbsent(baseDirectory, data.lockedIds);
+}
+
 const mode = process.argv[2] ?? "--check";
 const data = buildPublicData();
 
 if (mode === "--write") {
-  mkdirSync(path.dirname(ENGLISH_OUTPUT_PATH), { recursive: true });
-  writeFileSync(ENGLISH_OUTPUT_PATH, stableJson(data.english), "utf8");
-  writeFileSync(MATH_OUTPUT_PATH, stableJson(data.math), "utf8");
-  console.log("ENG_MATH_PUBLIC_DATA: wrote english=27 math=361");
+  mkdirSync(PUBLIC_DATA_DIRECTORY, { recursive: true });
+  writeFileSync(ENGLISH_FREE_OUTPUT_PATH, stableJson(data.englishFree), "utf8");
+  writeFileSync(MATH_FREE_OUTPUT_PATH, stableJson(data.mathFree), "utf8");
+  writeFileSync(CATALOG_OUTPUT_PATH, stableJson(data.catalog), "utf8");
+  LEGACY_PUBLIC_DATA_PATHS.forEach((filePath) => {
+    if (existsSync(filePath)) unlinkSync(filePath);
+  });
+  verifyPublishedBoundary(path.join(ROOT, "public"), data);
+  console.log("ENG_MATH_PUBLIC_DATA: wrote free=10 locked=378 catalogs=6/88");
 } else if (mode === "--check") {
-  verifyArtifact(ENGLISH_OUTPUT_PATH, data.english);
-  verifyArtifact(MATH_OUTPUT_PATH, data.math);
-  console.log(
-    "ENG_MATH_PUBLIC_DATA: pass english=27 evidence=61 math=361 sessions=6/88",
-  );
+  verifyPublishedBoundary(path.join(ROOT, "public"), data);
+  console.log("ENG_MATH_PUBLIC_DATA: pass free=10 locked=378 catalogs=6/88");
+} else if (mode === "--check-dist") {
+  verifyPublishedBoundary(path.join(ROOT, "dist"), data);
+  console.log("ENG_MATH_DIST_BOUNDARY: pass free=10 locked=378 catalogs=6/88");
 } else {
   fail("MODE_INVALID", mode);
 }

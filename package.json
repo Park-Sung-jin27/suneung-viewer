@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run check:business && npm run check:eng-math-public && vite build",
+    "build": "npm run check:business && npm run check:eng-math-public && vite build && npm run check:eng-math-dist",
     "check:business": "node scripts/check-business-profile.mjs",
     "check:eng-math-public": "node scripts/eng-math-public-data.mjs --check",
+    "check:eng-math-dist": "node scripts/eng-math-public-data.mjs --check-dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
