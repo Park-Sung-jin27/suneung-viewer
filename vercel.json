@@ -209,6 +209,10 @@
       "destination": "https://jippi-saju.netlify.app/assets/mega_chapters/$1"
     },
     {
+      "source": "/assets/og/(.*)",
+      "destination": "https://jippi-saju.netlify.app/assets/og/$1"
+    },
+    {
       "source": "/fonts/(.*)",
       "destination": "https://jippi-saju.netlify.app/fonts/$1"
     },

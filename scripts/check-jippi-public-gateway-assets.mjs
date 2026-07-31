@@ -21,6 +21,8 @@ const checks = [
   ["/assets/mega_chapters/part_04_relation_doors.webp", /^image\/webp\b/i, 100_000],
   ["/assets/mega_chapters/part_03_work_money_compass.webp", /^image\/webp\b/i, 100_000],
   ["/assets/signatures/sig_005_guiding_lantern.webp", /^image\/webp\b/i, 100_000],
+  ["/assets/og/room-og.png", /^image\/png\b/i, 10_000],
+  ["/assets/og/tarot-og.png", /^image\/png\b/i, 10_000],
   ["/fonts/PretendardVariable.woff2", /^font\/woff2\b/i, 1_000_000],
   ["/fonts/NotoSerifKR-Regular.woff2", /^font\/woff2\b/i, 1_000_000],
   ["/fonts/NotoSerifKR-Bold.woff2", /^font\/woff2\b/i, 1_000_000],
