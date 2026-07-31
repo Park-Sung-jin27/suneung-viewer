@@ -1574,7 +1574,7 @@ function PracticeQuestion({
         .eng-math-practice__evidence--text { display: grid; gap: 5px; font-family: "Noto Sans KR", system-ui, sans-serif; font-style: normal; white-space: normal; }
         .eng-math-practice__evidence-text-label { color: #3157a5; font-size: 0.76rem; font-weight: 900; }
         .eng-math-practice__evidence-text-role { color: #52637a; font-size: 0.82rem; font-weight: 800; }
-        .eng-math-practice__evidence-text-quote { color: #273b67; font-family: Georgia, "Times New Roman", serif; font-style: italic; line-height: 1.58; white-space: pre-wrap; }
+        .eng-math-practice__evidence-text-quote { color: #273b67; font-family: Georgia, "Times New Roman", serif; font-size: 1rem; font-style: normal; line-height: 1.82; white-space: pre-wrap; }
         .eng-math-practice__evidence-text-translation { color: #5b687d; font-size: 0.84rem; line-height: 1.55; }
         .eng-math-practice__evidence--figure {
           display: grid;
@@ -1599,7 +1599,9 @@ function PracticeQuestion({
           .eng-math-practice__subject-switcher button { padding: 6px 8px; }
           .eng-math-practice__content { padding: 23px 18px; }
           .eng-math-practice__heading { font-size: 1.26rem; }
-          .eng-math-practice__passage { padding-left: 13px; font-size: 0.97rem; }
+          .eng-math-practice__passage,
+          .eng-math-practice__evidence-text-quote { font-size: 0.97rem; }
+          .eng-math-practice__passage { padding-left: 13px; }
           .eng-math-practice__figure { padding: 10px; }
           .eng-math-practice__figure-open { font-size: 0.64rem; }
           .eng-math-practice__figure-table { font-size: 0.7rem; }
