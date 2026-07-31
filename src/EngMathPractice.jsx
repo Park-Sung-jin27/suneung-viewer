@@ -1571,6 +1571,11 @@ function PracticeQuestion({
         .eng-math-practice__explanation p { margin: 0 0 10px; line-height: 1.68; word-break: keep-all; }
         .eng-math-practice__explanation p:last-of-type { margin-bottom: 0; }
         .eng-math-practice__evidence { margin-top: 13px !important; border-left: 3px solid #8ba2db; padding: 9px 0 9px 12px; color: #405170; font-family: Georgia, "Times New Roman", serif; font-size: 0.92rem; font-style: italic; white-space: pre-wrap; }
+        .eng-math-practice__evidence--text { display: grid; gap: 5px; font-family: "Noto Sans KR", system-ui, sans-serif; font-style: normal; white-space: normal; }
+        .eng-math-practice__evidence-text-label { color: #3157a5; font-size: 0.76rem; font-weight: 900; }
+        .eng-math-practice__evidence-text-role { color: #52637a; font-size: 0.82rem; font-weight: 800; }
+        .eng-math-practice__evidence-text-quote { color: #273b67; font-family: Georgia, "Times New Roman", serif; font-style: italic; line-height: 1.58; white-space: pre-wrap; }
+        .eng-math-practice__evidence-text-translation { color: #5b687d; font-size: 0.84rem; line-height: 1.55; }
         .eng-math-practice__evidence--figure {
           display: grid;
           gap: 3px;
@@ -1814,12 +1819,23 @@ function PracticeQuestion({
                               </span>
                             </div>
                           ) : (
-                            <p
+                            <div
                               key={`${evidence.role}-${evidence.quote}`}
-                              className="eng-math-practice__evidence"
+                              className="eng-math-practice__evidence eng-math-practice__evidence--text"
                             >
-                              {evidence.quote}
-                            </p>
+                              <span className="eng-math-practice__evidence-text-label">
+                                정답 근거 문장
+                              </span>
+                              <span className="eng-math-practice__evidence-text-role">
+                                역할 · {evidence.role}
+                              </span>
+                              <span className="eng-math-practice__evidence-text-quote">
+                                원문 · {evidence.quote}
+                              </span>
+                              <span className="eng-math-practice__evidence-text-translation">
+                                한국어 뜻 · {evidence.translation}
+                              </span>
+                            </div>
                           ),
                         )}
                       </section>
