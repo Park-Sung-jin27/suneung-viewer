@@ -875,6 +875,14 @@ export default function Landing({ onStart }) {
               }}
               size="lg"
             />
+            <Btn
+              label="영어·수학 베타 · 무료 각 5문항"
+              onClick={() => {
+                window.location.href = "/eng-math-beta";
+              }}
+              variant="ghost"
+              size="md"
+            />
           </div>
           <p
             style={{
