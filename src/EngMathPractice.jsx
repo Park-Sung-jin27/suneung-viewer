@@ -1561,7 +1561,7 @@ function PracticeQuestion({
   };
 
   return (
-    <main className="eng-math-practice">
+    <main className="eng-math-practice" data-subject={subject}>
       <style>{`
         .eng-math-practice {
           min-height: 100svh;
@@ -1906,6 +1906,31 @@ function PracticeQuestion({
         .eng-math-practice__evidence-translation { color: #5b687d; font-size: 0.84rem; line-height: 1.55; }
         .eng-math-practice__restart { margin-top: 12px; border: 1px solid #cbd5e1; background: #fff; color: #3e4d61; }
         .eng-math-practice__next { margin-top: 12px; color: #fff; }
+        @media (min-width: 900px) {
+          .eng-math-practice[data-subject="math"] { padding: 18px 20px 32px; }
+          .eng-math-practice[data-subject="math"] .eng-math-practice__topline { margin-bottom: 12px; }
+          .eng-math-practice[data-subject="math"] .eng-math-practice__content { padding: 22px 26px; }
+          .eng-math-practice[data-subject="math"] .eng-math-practice__progress { margin-bottom: 12px; padding-bottom: 12px; }
+          .eng-math-practice[data-subject="math"] .eng-math-practice__heading {
+            margin: 10px 0 6px;
+            font-size: 1.08rem;
+            line-height: 1.45;
+          }
+          .eng-math-practice[data-subject="math"] .eng-math-practice__math-prompt {
+            margin: 14px 0;
+            padding: 14px 16px;
+            line-height: 1.6;
+          }
+          .eng-math-practice[data-subject="math"] .eng-math-practice__choices { gap: 7px; }
+          .eng-math-practice[data-subject="math"] .eng-math-practice__choice {
+            min-height: 48px;
+            padding: 10px 14px;
+          }
+          .eng-math-practice[data-subject="math"] .eng-math-practice__submit {
+            min-height: 48px;
+            margin-top: 14px;
+          }
+        }
         @media (max-width: 440px) {
           .eng-math-practice { padding: 16px 14px 32px; }
           .eng-math-practice__topline { align-items: flex-start; }
