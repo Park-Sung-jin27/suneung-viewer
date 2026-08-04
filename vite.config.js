@@ -4,11 +4,16 @@ import { rmSync } from "node:fs";
 import path from "node:path";
 import { copyConsultingDemo } from "./scripts/copy-consulting-demo.mjs";
 
-// Fortune is served from the canonical Netlify app through vercel.json.
-// Vercel gives a matching static file precedence over a rewrite, so legacy
-// copies from public/ must not be present in the deployed Vite output.
+// The fortune landing and policy pages are served from the canonical Netlify
+// app through vercel.json. Private delivery files are the exception: they are
+// tracked gateway assets and must survive the Vite build.
 const jippiProxyStaticConflicts = [
-  "fortune",
+  "fortune/fortune-preview.js",
+  "fortune/index.html",
+  "fortune/privacy.html",
+  "fortune/refund.html",
+  "fortune/success.html",
+  "fortune/terms.html",
   "assets/jippi-payments.js",
   "payment-success.html",
   "payment-fail.html",
@@ -24,7 +29,7 @@ function removeJippiProxyStaticConflicts() {
       for (const relativePath of jippiProxyStaticConflicts) {
         rmSync(path.resolve("dist", relativePath), {
           force: true,
-          recursive: relativePath === "fortune",
+          recursive: false,
         });
       }
     },

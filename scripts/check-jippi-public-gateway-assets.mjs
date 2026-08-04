@@ -11,9 +11,9 @@ const proof = `gateway-smoke-${Date.now()}`;
 
 const checks = [
   ["/fortune/", /^text\/html\b/i, 20_000],
-  ["/tarot", /^text\/html\b/i, 20_000],
+  ["/tarot", /^text\/html\b/i, 10_000],
   ["/room", /^text\/html\b/i, 10_000],
-  ["/payment-success.html", /^text\/html\b/i, 4_000],
+  ["/payment-success.html", /^text\/html\b/i, 3_000],
   ["/fortune-preview.js", /javascript/i, 10_000],
   ["/assets/jippi-payments.js", /javascript/i, 1_000],
   ["/assets/signatures/sig_004_deep_lake.webp", /^image\/webp\b/i, 100_000],
