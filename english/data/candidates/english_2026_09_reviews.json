@@ -1,0 +1,950 @@
+{
+  "metadata": {
+    "schemaVersion": "eng-explain-candidate-v1",
+    "examId": "2026_09",
+    "exam": "2026학년도 9월 모의평가 영어",
+    "status": "internal_candidate",
+    "publicConnected": false,
+    "itemCount": 28,
+    "readyCount": 28,
+    "note": "문제·정답·해설 PDF 원본 대조를 마친 내부 근거형 해설 후보"
+  },
+  "items": {
+    "2026_09_18": {
+      "id": "2026_09_18",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 18,
+      "group": "practical",
+      "type": "목적",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 신청자가 예상보다 많아져 여름 프로그램의 강의실을 다른 건물로 옮긴다는 안내입니다.",
+      "typeApproach": "목적 문제는 글을 쓰게 된 직접적인 상황과 마지막에 요구하거나 알리는 내용을 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Therefore, the original lecture room does not\nhave enough seating for all the participants.",
+          "role": "변경 이유",
+          "translation": "기존 강의실에는 모든 참가자가 앉을 자리가 충분하지 않습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The program was supposed to be held in classroom 502 in\nthe Ranark building, but it will be changed to classroom 103\nin the Whitewood building.",
+          "role": "핵심 안내",
+          "translation": "Ranark 건물 502호에서 열릴 예정이던 프로그램을 Whitewood 건물 103호로 변경합니다."
+        }
+      ],
+      "correctReason": "글의 중심은 프로그램 홍보나 취소가 아니라 구체적인 장소 변경 통지입니다. 따라서 ②가 가장 적절합니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "새로운 여름 프로그램을 홍보하려고",
+        "reason": "프로그램의 장점을 새로 소개하는 글이 아니라 이미 등록한 참가자에게 변경된 장소를 알리는 글입니다."
+      }
+    },
+    "2026_09_19": {
+      "id": "2026_09_19",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 19,
+      "group": "practical",
+      "type": "심경 변화",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. Sierra는 교수의 평가를 걱정하다가 작품 전시 제안을 받고 크게 기뻐합니다.",
+      "typeApproach": "심경 변화는 초반의 몸짓·생각과 후반의 표정·발화를 각각 잡아 두 감정을 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Sierra shook as she walked back and forth in front of her\nprofessor’s office.",
+          "role": "초반 감정",
+          "translation": "Sierra는 교수실 앞을 서성거리며 몸을 떨었습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "This is the best day ever!”",
+          "role": "후반 감정",
+          "translation": "오늘은 최고의 날이라고 외칠 만큼 기뻐합니다."
+        }
+      ],
+      "correctReason": "처음의 떨림과 부정적인 예상은 nervous에, 마지막의 밝은 미소와 감탄은 delighted에 대응하므로 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "relieved → surprised",
+        "reason": "처음 감정은 안도라기보다 평가를 두려워하는 긴장이고, 마지막은 단순한 놀람보다 강한 기쁨입니다."
+      }
+    },
+    "2026_09_20": {
+      "id": "2026_09_20",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 20,
+      "group": "topic",
+      "type": "주장",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 기업은 바람직한 행동 기준을 명확히 만들고 직원이 그 기준을 따르도록 직접 교육해야 합니다.",
+      "typeApproach": "주장 문제는 문제 상황보다 필자가 제시하는 해결책과 당위 표현에 초점을 둡니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "one common reason that employees give for breaking\nrules is that they were unaware their behavior was undesirable.",
+          "role": "문제 원인",
+          "translation": "직원이 규칙을 어기는 흔한 이유 중 하나는 자신의 행동이 바람직하지 않다는 사실을 몰랐기 때문입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "those businesses must create clear standards\nand educate their employees directly about how to follow\nthem.",
+          "role": "필자의 해결책",
+          "translation": "기업은 명확한 기준을 만들고 이를 따르는 방법을 직원에게 직접 교육해야 합니다."
+        }
+      ],
+      "correctReason": "필자가 강조한 두 행동은 명확한 기준 마련과 직원 교육이므로 이를 모두 담은 ②가 정답입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "직원의 비윤리적 행위 예방을 위해 기업은 상벌 규정을 정비해야 한다.",
+        "reason": "글은 처벌보다 직원이 기준을 몰랐다는 점과 사전 교육을 강조합니다."
+      }
+    },
+    "2026_09_21": {
+      "id": "2026_09_21",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 21,
+      "group": "blank",
+      "type": "밑줄 의미",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 주파수를 두 배로 하면 높이는 달라지지만 같은 이름으로 인식되는 음에 도달한다는 뜻입니다.",
+      "typeApproach": "밑줄 표현의 비유적 뜻은 앞에서 반복 설명된 핵심 원리로 바꾸어 읽습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "This\nrelationship, a frequency ratio of 2:1 or 1:2, is called the\noctave.",
+          "role": "옥타브 원리",
+          "translation": "주파수의 2대 1 또는 1대 2 관계를 옥타브라고 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "we’ve come back home again each time we double a\ntone’s frequency.",
+          "role": "밑줄의 문맥",
+          "translation": "음의 주파수를 두 배로 할 때마다 다시 익숙한 출발점으로 돌아온 듯 느낍니다."
+        }
+      ],
+      "correctReason": "옥타브에서는 주파수와 실제 음높이는 달라지지만 음 이름의 성격이 반복되므로 ③이 정확합니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "returned to the original note with an identical frequency",
+        "reason": "주파수를 두 배로 했으므로 동일한 주파수로 돌아오는 것이 아닙니다."
+      }
+    },
+    "2026_09_22": {
+      "id": "2026_09_22",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 22,
+      "group": "topic",
+      "type": "요지",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 소셜 미디어는 인간관계의 범위를 넓혀 직업 정보나 추천 같은 사회적 자본을 증가시킵니다.",
+      "typeApproach": "요지 문제는 반복되는 핵심 명사와 마지막 결론을 한 문장으로 묶습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "We increase our social capital when\nwe successfully engage in social media.",
+          "role": "핵심 주장",
+          "translation": "소셜 미디어에 성공적으로 참여하면 사회적 자본이 늘어납니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "With new media, our reach of connecting\nis all the greater, expanding our “who you know” to greater\nand greater lengths.",
+          "role": "결론",
+          "translation": "뉴 미디어는 연결 범위를 더욱 넓혀 우리가 아는 사람의 범위를 확장합니다."
+        }
+      ],
+      "correctReason": "소셜 미디어, 관계망 확장, 사회적 자본이라는 세 요소를 모두 담은 ①이 글의 요지입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "뉴 미디어의 등장은 사회적 자본 형성의 방식을 변화시킨다.",
+        "reason": "글은 형성 방식의 변화보다 관계망의 범위가 넓어져 사회적 자본이 커진다는 효과에 초점을 둡니다."
+      }
+    },
+    "2026_09_23": {
+      "id": "2026_09_23",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 23,
+      "group": "topic",
+      "type": "주제",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 전기 작가와 자기 삶을 서술하는 사람은 개인 기억을 증거로 사용하는 방식이 다릅니다.",
+      "typeApproach": "주제 문제는 글에서 대비되는 두 대상과 그 둘을 가르는 기준을 함께 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Relatively few biographers use their personal memories of\ntheir subject as reliable evidence",
+          "role": "전기 작가",
+          "translation": "전기 작가는 대상에 대한 개인적 기억을 신뢰할 만한 증거로 쓰는 경우가 드뭅니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "For life narrators, by contrast,\npersonal memories are the primary archival source.",
+          "role": "삶의 서술자",
+          "translation": "반대로 삶의 서술자에게 개인 기억은 주된 기록 자료입니다."
+        }
+      ],
+      "correctReason": "두 서술 유형에서 개인 기억이 맡는 서로 다른 역할을 직접 대비하므로 ①이 정답입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "similarity of data sources in describing a person’s life",
+        "reason": "글은 자료의 유사성이 아니라 개인 기억을 다르게 취급한다는 차이를 설명합니다."
+      }
+    },
+    "2026_09_24": {
+      "id": "2026_09_24",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 24,
+      "group": "topic",
+      "type": "제목",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 수도원은 세상과 떨어져 있었지만 그 고립과 기도가 더 넓은 사회를 이롭게 한다고 여겨졌습니다.",
+      "typeApproach": "제목 문제는 글 전체를 관통하는 역설이나 대비를 가장 넓게 포괄하는 선지를 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "They did all this while apparently\nobserving self-imposed isolation from the wider community.",
+          "role": "사회와의 분리",
+          "translation": "수도원은 더 넓은 공동체와 스스로 거리를 두면서도 여러 역할을 수행했습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "monastic lives were led for the benefit of wider society",
+          "role": "사회와의 연결",
+          "translation": "수도사의 삶은 더 넓은 사회를 이롭게 하기 위한 것으로 여겨졌습니다."
+        }
+      ],
+      "correctReason": "고립과 사회적 기여가 동시에 제시되는 역설을 제목으로 압축한 ③이 글 전체를 가장 잘 포괄합니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "How to Gain Religious and Social Benefits from Monastery Life",
+        "reason": "글은 수도원 생활의 이익을 얻는 방법을 안내하지 않고 수도원의 고립과 사회적 역할을 설명합니다."
+      }
+    },
+    "2026_09_25": {
+      "id": "2026_09_25",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 25,
+      "group": "info",
+      "type": "도표",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 의류 구매 전 구매평을 읽는 비율은 18~34세가 33%이므로 세 연령대가 모두 30% 미만이라는 설명은 틀립니다.",
+      "typeApproach": "도표 불일치 문제는 선지마다 범주·연령대·수치를 같은 축에서 하나씩 대조합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "의류는 33%, 25%, 21%.",
+          "role": "의류 수치",
+          "translation": "18~34세, 35~54세, 55세 이상 순서로 33%, 25%, 21%입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The percentage of people reading online\nreviews before buying clothes was less than 30% for each of\nthe three age groups.",
+          "role": "⑤의 주장",
+          "translation": "⑤는 세 연령대 모두 의류 구매 전 구매평 열람 비율이 30% 미만이라고 말합니다."
+        }
+      ],
+      "correctReason": "18~34세의 의류 비율 33%가 30%보다 높으므로 ‘세 연령대 모두 30% 미만’이라는 ⑤가 도표와 일치하지 않습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "For people who read online reviews before purchasing household appliances, the percentage of people aged 35—54 was higher than that of those aged 18—34 and lower than that of those aged 55+.",
+        "reason": "가전제품은 42%, 57%, 62% 순서이므로 35~54세 비율이 두 연령대 사이에 있다는 ④는 맞습니다."
+      }
+    },
+    "2026_09_26": {
+      "id": "2026_09_26",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 26,
+      "group": "info",
+      "type": "내용 일치",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. Shannon은 1958년에 MIT 정교수가 되어 20년 넘게 가르쳤으므로 그해 퇴임했다는 설명은 틀립니다.",
+      "typeApproach": "인물 일치 문제는 연도·나이·행동을 묶어서 선지와 원문을 그대로 대조합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "In 1958, he became a full\nprofessor at MIT and continued to teach there for more than\n20 years.",
+          "role": "재직 시점",
+          "translation": "그는 1958년에 MIT 정교수가 되었고 그곳에서 20년 넘게 계속 가르쳤습니다."
+        }
+      ],
+      "correctReason": "1958년은 퇴임 시점이 아니라 정교수가 된 시점입니다. 따라서 ⑤가 글과 일치하지 않습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "스스로 학습할 수 있는 기계를 1950년에 만들었다.",
+        "reason": "1950년에 아내의 도움을 받아 스스로 학습할 수 있는 기계를 만들었다고 원문에 명시되어 있습니다."
+      }
+    },
+    "2026_09_27": {
+      "id": "2026_09_27",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 27,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 방갈로 내부에는 개인 화장실이 없고 공용 화장실을 이용할 수 있습니다.",
+      "typeApproach": "안내문은 장소·활동·숙소·신청·교통처럼 항목을 나눈 뒤 선지의 세부 조건을 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "No private restroom inside bungalow, but common\nrestrooms easily accessible",
+          "role": "숙소 조건",
+          "translation": "방갈로 안에는 개인 화장실이 없지만 공용 화장실은 쉽게 이용할 수 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Transportation: It is offered from the airport to the yoga center.",
+          "role": "교통 조건",
+          "translation": "공항에서 요가 센터까지 교통편이 제공됩니다."
+        }
+      ],
+      "correctReason": "③은 방갈로 안에 개인 화장실이 있다고 하지만 안내문은 없다고 명시하므로 일치하지 않습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "교통편이 공항에서 요가 센터까지 제공된다.",
+        "reason": "안내문의 Transportation 항목과 정확히 일치하는 설명입니다."
+      }
+    },
+    "2026_09_28": {
+      "id": "2026_09_28",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 28,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 평가 기준은 창의성 50%, 주제 관련성 30%, 매력도 20%로 창의성의 비중이 가장 큽니다.",
+      "typeApproach": "표가 포함된 안내문은 일정·인원·금액·제출 조건·평가 비율을 각각 분리해 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Creativity \t50%\nRelevance to Theme \t30%\nAttractiveness \t20%",
+          "role": "평가 비율",
+          "translation": "창의성 50%, 주제 관련성 30%, 매력도 20%입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Each participant must submit one mascot design.",
+          "role": "제출 수량",
+          "translation": "참가자마다 마스코트 디자인 하나를 제출해야 합니다."
+        }
+      ],
+      "correctReason": "창의성 50%가 다른 두 기준보다 높으므로 ⑤가 안내문과 일치합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "각 참가자는 마스코트 디자인을 두 개 이상 제출해야 한다.",
+        "reason": "안내문은 참가자마다 디자인 하나만 제출해야 한다고 규정합니다."
+      }
+    },
+    "2026_09_29": {
+      "id": "2026_09_29",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 29,
+      "group": "grammar",
+      "type": "어법",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. blended honey 뒤에는 그 안에서 여러 출처의 꿀이 섞인다는 뜻의 in which가 필요합니다.",
+      "typeApproach": "어법 문제는 밑줄 단어만 보지 말고 뒤 절의 문장 성분이 완전한지와 선행사와의 관계를 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Natural\nhoney can also be called ‘blended honey’, ② which honeys\nfrom various sources are blended together",
+          "role": "오류 문맥",
+          "translation": "blended honey라는 선행사 뒤에 여러 출처의 꿀이 그 안에서 섞인다는 완전한 절이 이어집니다."
+        }
+      ],
+      "correctReason": "뒤 절에는 주어 honeys와 동사 are blended가 모두 있으므로 목적격 관계대명사 which가 들어갈 자리가 아닙니다. 장소·상황의 의미를 더하는 in which가 맞아 ②가 틀렸습니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "referred",
+        "reason": "주어 it이 natural honey를 가리키고 ‘undiluted라고 불리는’ 수동 관계이므로 과거분사 referred는 적절합니다."
+      }
+    },
+    "2026_09_30": {
+      "id": "2026_09_30",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 30,
+      "group": "vocab",
+      "type": "어휘",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. soft-path 공학은 강의 변동을 생태적으로 중요할 수 있다고 보므로 insignificant가 문맥과 반대입니다.",
+      "typeApproach": "문맥 어휘는 앞뒤의 대조 표현과 같은 대상을 다시 설명하는 문장을 함께 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "soft-path engineering accepts variability in the\nriver’s movement as ⑤ insignificant until proven otherwise.",
+          "role": "문제 표현",
+          "translation": "문제 문장은 강의 움직임 변화를 반증되기 전까지 중요하지 않다고 받아들인다고 적었습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "are presumed by\nsoft-path engineers to be ecologically important.",
+          "role": "뒤의 판단",
+          "translation": "soft-path 공학자들은 그런 지형을 생태적으로 중요하다고 추정합니다."
+        }
+      ],
+      "correctReason": "바로 뒤에서 생태적으로 중요하다고 설명하므로 insignificant는 significant로 바뀌어야 합니다. 따라서 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "modesty",
+        "reason": "강의 움직임과 환경 효과에 대해 아는 것이 제한적임을 인정한다는 문맥이므로 지적 겸손은 적절합니다."
+      }
+    },
+    "2026_09_31": {
+      "id": "2026_09_31",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 31,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 수컷 바우어새는 물체 크기 배치로 암컷의 원근 지각을 조작해 자신을 더 크게 보이게 합니다.",
+      "typeApproach": "빈칸 뒤의 구체적 사례가 앞의 빈칸 개념을 어떻게 실현하는지 역으로 이름 붙입니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "This creates a\nforced perspective",
+          "role": "지각 조작 방식",
+          "translation": "이 배치는 강제 원근법을 만들어 냅니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "the\nbower appears smaller than it actually is.",
+          "role": "지각 결과",
+          "translation": "바우어는 실제보다 더 작게 보입니다."
+        }
+      ],
+      "correctReason": "물체 배치로 원근감을 왜곡해 수컷이 더 크게 보이도록 하므로 활용한 것은 perceptual biases인 ②입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "decorating skills",
+        "reason": "물체를 장식한다는 표면 정보보다 크기 순서를 이용해 암컷의 지각을 편향시키는 원리가 핵심입니다."
+      }
+    },
+    "2026_09_32": {
+      "id": "2026_09_32",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 32,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 공감은 집단 갈등에서 편 가르기를 강화하고 오해를 낳아 오히려 역효과가 날 수 있습니다.",
+      "typeApproach": "빈칸 전후에 반복되는 긍정·부정 방향을 확인하고, 결론의 방향과 같은 선지를 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "In fact, they argue, empathy makes such\nconflicts worse.",
+          "role": "비판의 핵심",
+          "translation": "비판자들은 공감이 그런 갈등을 더 악화시킨다고 주장합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Empathy,\nthey argue, can further entrench conflict and force us into an\nus vs. them mentality.",
+          "role": "역효과 설명",
+          "translation": "공감은 갈등을 더 굳히고 우리 편과 상대 편의 사고를 강요할 수 있습니다."
+        }
+      ],
+      "correctReason": "갈등을 해결하기보다 악화하고 편 가르기를 굳힌다는 논리이므로 ‘갈등 상황에서 흔히 역효과가 난다’는 ③이 들어갑니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "functions as a facilitator in the resolution of social disharmony",
+        "reason": "공감이 사회적 불화를 해결한다는 내용은 글의 비판 방향과 정반대입니다."
+      }
+    },
+    "2026_09_33": {
+      "id": "2026_09_33",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 33,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 숲의 높은 다양성이 습지나 초지를 숲으로 바꾸는 정당화 근거가 되어서는 안 됩니다.",
+      "typeApproach": "빈칸 뒤 사례가 비판하는 행동과 빈칸 앞의 평가 대상을 인과 관계로 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Wetlands, meadows, and grasslands have a unique biota too,\neven if it is often not as rich as a forest biota.",
+          "role": "비산림의 가치",
+          "translation": "습지·목초지·초원도 숲만큼 풍부하지 않을 수 있지만 고유한 생물상을 가집니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "the \twildlife \tthreatened \tby \tthis \tactivity \tincludes \tmany\nuncommon species.",
+          "role": "전환의 피해",
+          "translation": "이 숲 조성 활동으로 위협받는 야생 생물에는 희귀종이 많이 포함됩니다."
+        }
+      ],
+      "correctReason": "비산림에도 고유한 생물상이 있고 숲 전환이 희귀종을 위협하므로 산림 다양성을 비산림 전환의 정당화로 삼지 말아야 한다는 ⑤가 맞습니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "taken as the reason for introducing exotic species to an ecosystem",
+        "reason": "외래종 도입은 이후의 부정적 사례 중 하나일 뿐, 빈칸이 직접 비판하는 더 큰 행동은 비산림을 숲으로 바꾸는 것입니다."
+      }
+    },
+    "2026_09_34": {
+      "id": "2026_09_34",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 34,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 선호가 동률인 경우 공정성을 지키려면 추첨 같은 무작위 방식이나 다른 동률 해소 수단이 필요합니다.",
+      "typeApproach": "빈칸 직후의 예시와 글 후반의 반복어를 연결해 일반화된 결론을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "there is no deterministic way\nof selecting a single alternative without violating one of two\nbasic fairness conditions",
+          "role": "결정 방식의 한계",
+          "translation": "두 기본 공정성 조건을 어기지 않고 하나를 확정적으로 고를 방법이 없습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Allowing lotteries as\nsocial outcomes hence seems like a necessity for impartial\ncollective choice.",
+          "role": "해결 방식",
+          "translation": "공정한 집단 선택을 위해 추첨을 허용하는 것이 필요해 보입니다."
+        }
+      ],
+      "correctReason": "결정론적 선택이 공정성을 깨는 동률 상황에서는 무작위화나 다른 동률 해소 방식이 필요하므로 ①입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "demonstrate how impartial selection could be invalidated",
+        "reason": "글은 공정한 선택이 무효화되는 현상을 설명하는 데서 멈추지 않고 추첨이라는 해결책이 필요하다고 결론냅니다."
+      }
+    },
+    "2026_09_35": {
+      "id": "2026_09_35",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 35,
+      "group": "irrelevant",
+      "type": "무관한 문장",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 글은 다양한 멘토가 근로자에게 주는 이점을 설명하지만 ④만 고용주의 개인적 성장으로 대상을 바꿉니다.",
+      "typeApproach": "무관한 문장은 공통 주제와 대상이 앞뒤 문장 사이에서 유지되는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Having a\ndiverse network of mentors is important for dominant and\nminority group members alike.",
+          "role": "공통 주제",
+          "translation": "다양한 멘토 관계망은 다수 집단과 소수 집단 구성원 모두에게 중요합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The ultimate goal of these mentoring opportunities\nis to have individuals be more informed, identified, and engaged\nin their work and in their organization.",
+          "role": "결론",
+          "translation": "이 멘토링의 목표는 개인이 일과 조직을 더 잘 알고 소속감을 느끼며 참여하게 하는 것입니다."
+        }
+      ],
+      "correctReason": "①~③과 ⑤는 근로자에게 다양한 멘토 관계가 주는 정보·이해·참여 효과를 이어 갑니다. ④만 employers의 개인적 발달을 말해 흐름에서 벗어납니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "The ultimate goal of these mentoring opportunities is to have individuals be more informed, identified, and engaged in their work and in their organization.",
+        "reason": "⑤는 앞에서 설명한 다양한 멘토링의 효과를 조직 참여라는 목표로 정리하므로 흐름에 맞습니다."
+      }
+    },
+    "2026_09_36": {
+      "id": "2026_09_36",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 36,
+      "group": "order",
+      "type": "순서",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 전통적 쓰기 수업의 결과물 중심 절차를 (C)가 마무리하고, (A)가 과정 중심 수업으로 전환한 뒤, (B)가 그 효과를 정리합니다.",
+      "typeApproach": "순서 문제는 지시어·대조 표현·결론 표현이 앞 문장의 무엇을 받는지 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Subsequently, teachers collect and evaluate what students\nhave written.",
+          "role": "(C)의 시간 연결",
+          "translation": "그 뒤 교사가 학생이 쓴 글을 거두어 평가하므로 주어진 전통적 절차를 이어 갑니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "In process writing, on the other hand, students may\ninitially brainstorm ideas about a topic and begin writing",
+          "role": "(A)의 대조 전환",
+          "translation": "반면 과정 중심 쓰기에서는 학생이 생각을 모으고 쓰기 시작하므로 앞의 결과물 중심 방식과 대조됩니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "In this way, students learn to view their writing as someone\nelse’s reading",
+          "role": "(B)의 결과",
+          "translation": "이러한 방식으로 학생이 독자의 시각에서 글을 보게 된다는 결과가 이어집니다."
+        }
+      ],
+      "correctReason": "주어진 글→(C)는 전통적 수업의 절차, (A)는 on the other hand로 과정 중심 쓰기 전환, (B)는 In this way로 그 효과를 받으므로 (C)-(A)-(B)인 ④입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "(A) - (C) - (B)",
+        "reason": "(A)의 on the other hand는 먼저 전통적 방식의 설명이 끝난 뒤에 와야 하므로 (C)보다 앞설 수 없습니다."
+      }
+    },
+    "2026_09_37": {
+      "id": "2026_09_37",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 37,
+      "group": "order",
+      "type": "순서",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 수학 글을 이해하지 못한 경험을 (B)가 받아 질문을 던지고, (A)가 눈에 띄는 기호를 답으로 제시한 뒤, (C)가 더 오래된 기록의 판별 문제로 넓힙니다.",
+      "typeApproach": "대명사와 질문-대답 관계를 먼저 연결하고, 마지막에 범위를 확장하는 문단을 배치합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "You would not be the first; rest assured, even professional\nmathematicians sometimes have to rely on discussions",
+          "role": "(B)의 앞문장 지칭",
+          "translation": "당신만 그런 것이 아니라는 말이 앞의 ‘이해하지 못한 경험’을 직접 받습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The complicated notations that might spring to mind",
+          "role": "(A)의 질문 응답",
+          "translation": "떠오를 법한 복잡한 표기들이 수학 글을 알아보는 단서라는 답을 시작합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "And if we are\ndealing \twith \twriting \tfrom \ta \tvery \tdistant \tpast",
+          "role": "(C)의 범위 확장",
+          "translation": "그리고 아주 먼 과거의 기록을 다룰 때의 어려움으로 논의를 넓힙니다."
+        }
+      ],
+      "correctReason": "주어진 글을 You would not be the first가 받는 (B)가 먼저이고, 그 질문에 표기로 답하는 (A), 오래된 기록으로 확장하는 (C)가 이어져 ②입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "(B) - (C) - (A)",
+        "reason": "(A)의 표기 설명이 있어야 (C)의 단순히 수학적인 무언가가 있어야 한다는 정리가 자연스럽게 이어집니다."
+      }
+    },
+    "2026_09_38": {
+      "id": "2026_09_38",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 38,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 겨울이 다가오며 낮과 기온이 변한다는 주어진 문장이 먼저 오고, 뒤의 It이 그 변화를 받아 낙엽 신호라고 설명합니다.",
+      "typeApproach": "삽입 문장의 지시어와 바로 뒤 문장의 대명사가 각각 무엇을 가리키는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "As winter approaches, the length of the day shortens, the\ntemperature drops, and plants, including trees, can detect\nthis change.",
+          "role": "주어진 문장",
+          "translation": "겨울이 다가오면 낮이 짧아지고 기온이 떨어지며 나무가 이 변화를 감지합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "It\nsignals to them that it is time to lose their leaves.",
+          "role": "뒤 문장의 지칭",
+          "translation": "그 변화는 나무에게 잎을 떨어뜨릴 때가 되었다는 신호를 줍니다."
+        }
+      ],
+      "correctReason": "② 뒤까지는 잎을 유지할 때 생기는 겨울 피해를 설명합니다. ③에 주어진 문장을 넣으면 바로 뒤 It이 낮 길이와 기온의 변화를 정확히 받아 흐름이 완성됩니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "④",
+        "reason": "④에 넣으면 앞의 It이 가리킬 변화가 먼저 제시되지 않아 대명사 연결이 끊깁니다."
+      }
+    },
+    "2026_09_39": {
+      "id": "2026_09_39",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 39,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 여러 자료 중 살아남은 것만으로 역사를 구성한다는 문장 뒤에 생존 자료의 편향 문제를 제기하고, 피라미드를 사례로 들어야 합니다.",
+      "typeApproach": "삽입 문장이 앞 내용을 요약하는지, 뒤 문장이 그 주장의 사례가 되는지를 함께 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Our picture of any period of history is\nderived from a multitude of sources, such as the paintings,\nliterature, deeds, buildings and other artefacts that have survived.",
+          "role": "앞의 생존 자료",
+          "translation": "역사상 어떤 시기의 모습도 살아남은 여러 자료에서 만들어집니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The problem of survival lies at the root of many of the\nhistorian’s \tproblems, \tfor \twhat \thas \tsurvived \tmay \tnot\nnecessarily be more significant than what has not survived.",
+          "role": "주어진 문제 제기",
+          "translation": "살아남은 것이 사라진 것보다 반드시 더 중요한 것은 아니므로 자료의 생존 자체가 역사가의 문제입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The Egyptian pyramids have survived thousands of\nyears, but historical significance is not just a question of\ndurability.",
+          "role": "뒤의 사례",
+          "translation": "피라미드는 오래 남았지만 역사적 중요성이 단순히 내구성으로 정해지는 것은 아닙니다."
+        }
+      ],
+      "correctReason": "살아남은 자료를 열거한 뒤 생존 편향을 지적하고, 이어 피라미드의 생존과 중요성을 구분하는 사례가 나와야 하므로 ②입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "③",
+        "reason": "③에 넣으면 피라미드 사례가 먼저 등장한 뒤 일반 문제를 제기하게 되어 앞의 survived 반복과 일반-사례 연결이 약해집니다."
+      }
+    },
+    "2026_09_40": {
+      "id": "2026_09_40",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 40,
+      "group": "summary",
+      "type": "요약문",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 장르 소설과 만화의 인물은 후속 작품에 계속 등장하며, 여러 작가가 오랫동안 다루면 특성이 변할 수 있습니다.",
+      "typeApproach": "요약문은 원문의 두 대비 축을 각각 빈칸에 대응시키고 두 단어의 방향을 함께 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "it is\nless common for characters in literary fiction to reappear\nin subsequent works than in genre fiction",
+          "role": "(A)의 근거",
+          "translation": "문학 소설 인물보다 장르 소설 인물이 후속 작품에 다시 등장하는 일이 더 흔합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "if characters are the work of\nseveral hands over decades, they may change considerably.",
+          "role": "(B)의 근거",
+          "translation": "여러 작가가 수십 년에 걸쳐 인물을 다루면 그 인물은 크게 변할 수 있습니다."
+        }
+      ],
+      "correctReason": "후속 작품에 등장한다는 feature와 성격이 바뀐다는 transformation이 두 빈칸에 각각 맞으므로 ④입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "resurface ··· simplification",
+        "reason": "resurface는 첫 빈칸과 가깝지만, 여러 작가가 다룰 때 성격이 단순화된다는 근거는 없고 변화한다는 내용입니다."
+      }
+    },
+    "2026_09_41": {
+      "id": "2026_09_41",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 41,
+      "group": "long",
+      "type": "장문 제목",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 성공적인 의사소통을 위해 메시지의 복잡성과 목적에 맞는 전달 매체를 선택해야 한다는 글입니다.",
+      "typeApproach": "장문 제목은 반복 예시를 묶는 마지막 일반화 문장을 중심으로 고릅니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "These different channels of communication were considered\nby researchers as a type of container that the message comes\nin.",
+          "role": "전달 수단의 비유",
+          "translation": "여러 의사소통 수단은 메시지가 담기는 그릇과 같습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "To be a good communicator, you need to choose the right\ncontainer.",
+          "role": "결론",
+          "translation": "좋은 의사소통자가 되려면 알맞은 전달 수단을 골라야 합니다."
+        }
+      ],
+      "correctReason": "매체의 풍부함 자체보다 상황에 맞는 채널 선택을 강조하므로 ①이 제목으로 가장 적절합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "The Richer, the Better! Top Priority in Container Choice",
+        "reason": "글은 언제나 풍부한 매체가 좋다고 하지 않고 단순한 메시지에는 덜 풍부한 매체를 선택하라고 합니다."
+      }
+    },
+    "2026_09_42": {
+      "id": "2026_09_42",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 42,
+      "group": "long",
+      "type": "장문 어휘",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 덜 풍부한 매체는 덜 일상적인 메시지가 아니라 더 일상적인 메시지에 적합하므로 less가 문맥상 틀립니다.",
+      "typeApproach": "장문 어휘는 일반 원칙과 바로 뒤의 구체적 예시가 같은 방향인지 대조합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "would choose rich media for confusing or ambiguous messages\nand lean or less rich media for messages that were (d) less\nroutine in nature.",
+          "role": "문제 표현",
+          "translation": "복잡하거나 모호한 메시지에는 풍부한 매체를, 덜 일상적인 메시지에는 덜 풍부한 매체를 쓴다고 되어 있습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "if you were going to\ninform your team about a change in meeting time from 3:00\nto 3:30, you might send out a generic email to everyone.",
+          "role": "뒤의 예시",
+          "translation": "회의 시간 변경처럼 일상적이고 단순한 내용은 일반 이메일로 알릴 수 있습니다."
+        }
+      ],
+      "correctReason": "덜 풍부한 이메일은 일상적인 메시지에 쓰인다는 예시와 맞추려면 (d)의 less를 more로 바꿔야 하므로 ④입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "(b)",
+        "reason": "전화는 음성 단서와 즉각적인 피드백을 제공하므로 문자 단서만 있는 이메일보다 richer하다는 표현이 적절합니다."
+      }
+    },
+    "2026_09_43": {
+      "id": "2026_09_43",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 43,
+      "group": "long",
+      "type": "장문 순서",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 경기장에 도착한 (C), Chavez의 공을 잡은 (D), 경기가 끝난 뒤 집에 돌아온 (B)의 순서입니다.",
+      "typeApproach": "이야기 순서는 장소 이동, 경기 진행, 시간 표현을 따라 사건의 앞뒤를 정합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "As soon as they\nsat back down, the pitcher threw the first pitch.",
+          "role": "(C)의 경기 시작",
+          "translation": "두 사람이 자리에 돌아오자 투수가 첫 공을 던집니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Before long, it was Chavez’s turn to hit.",
+          "role": "(D)의 경기 진행",
+          "translation": "얼마 지나지 않아 Chavez가 타석에 들어섭니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Several hours later, Mike’s favorite team hit a home run\nand won the game.",
+          "role": "(B)의 경기 종료",
+          "translation": "몇 시간 뒤 Mike가 좋아하는 팀이 홈런을 치고 경기에서 이깁니다."
+        }
+      ],
+      "correctReason": "첫 투구가 시작되는 (C) 뒤에 타격과 공을 잡는 (D), 몇 시간 뒤 승리하고 귀가하는 (B)가 이어져 (C)-(D)-(B)인 ③입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "(C) - (B) - (D)",
+        "reason": "(B)는 경기 승리와 귀가까지 끝난 뒤의 내용이므로 Chavez가 타격하는 (D)보다 먼저 올 수 없습니다."
+      }
+    },
+    "2026_09_44": {
+      "id": "2026_09_44",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 44,
+      "group": "long",
+      "type": "장문 지칭",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. (d)의 his는 Chavez를 가리키고, 나머지 표현은 모두 Mike를 가리킵니다.",
+      "typeApproach": "지칭 문제는 대명사 바로 앞의 인물과 그 뒤 행동을 함께 읽어 실제 행동 주체를 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "saying “Look, it’s Chavez, (c) your favorite\nplayer!” Mike saw him warming up on the field and waved\nhoping to get (d) his attention.",
+          "role": "(d)의 선행사",
+          "translation": "Mike는 좋아하는 선수 Chavez를 보고 그의 관심을 끌려고 손을 흔듭니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Everyone\nclapped and smiled at Mike. (e) He tightly held the ball",
+          "role": "(e)의 지칭",
+          "translation": "모두가 Mike에게 박수를 보냈고, 그가 공을 꽉 쥐었습니다."
+        }
+      ],
+      "correctReason": "(d)의 his attention은 Chavez의 관심을 뜻합니다. (a) you, (b) He, (c) your, (e) He는 모두 Mike를 가리키므로 ④가 다릅니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(e)",
+        "reason": "공을 잡고 자랑스러워한 사람은 Mike이므로 (e) He도 Mike를 가리킵니다."
+      }
+    },
+    "2026_09_45": {
+      "id": "2026_09_45",
+      "status": "ready",
+      "exam": "2026학년도 9월 모의평가 영어",
+      "qid": 45,
+      "group": "long",
+      "type": "장문 내용",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. Mike가 좋아하는 Arrows는 홈런을 쳤고 경기에서도 이겼습니다.",
+      "typeApproach": "장문 내용 일치는 인물·행동·시간을 선지별로 원문 장면과 직접 대조합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Mike’s favorite team hit a home run\nand won the game.",
+          "role": "홈런과 승리",
+          "translation": "Mike가 가장 좋아하는 팀이 홈런을 치고 경기에서 이겼습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "They\nhigh-fived each other every time the Arrows scored.",
+          "role": "득점 뒤 행동",
+          "translation": "Arrows가 득점할 때마다 Mike와 아빠는 서로 하이파이브했습니다."
+        }
+      ],
+      "correctReason": "②는 좋아하는 팀이 홈런을 치지 못했다고 하지만 원문은 홈런을 치고 이겼다고 명시하므로 적절하지 않습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "Arrows가 득점할 때마다 Mike와 아빠는 하이파이브를 했다.",
+        "reason": "Arrows가 득점할 때마다 두 사람이 하이파이브했다는 원문과 일치합니다."
+      }
+    }
+  }
+}

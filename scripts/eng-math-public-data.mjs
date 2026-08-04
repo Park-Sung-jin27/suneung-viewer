@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import {
   existsSync,
   mkdirSync,
@@ -16,6 +17,17 @@ const ENGLISH_DB_PATH = path.join(
   "english",
   "data",
   "english_exam_db_v2_1.json",
+);
+const ENGLISH_CANDIDATE_GATE_PATH = path.join(
+  ROOT,
+  "english",
+  "scripts",
+  "merge_candidate_overlay.mjs",
+);
+const ENGLISH_CANDIDATE_SOURCE_DIRECTORY = path.join(
+  ROOT,
+  "raw_sources",
+  "english_eval_pdfs",
 );
 const PUBLIC_DATA_DIRECTORY = path.join(ROOT, "public", "data", "eng-math");
 const ENGLISH_FREE_OUTPUT_PATH = path.join(
@@ -65,6 +77,15 @@ const MATH_FREE_IDS = [
   "2022_06_common_5",
   "2022_06_common_6",
 ];
+const MATH_VERIFIED_SOLUTION_FILENAME = "math_free_verified_solutions_v1.json";
+const MATH_VERIFIED_SOURCE_HASHES = {
+  archiveSha256:
+    "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+  problemSha256:
+    "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+  answerSha256:
+    "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75",
+};
 const ENGLISH_CHOICE_MARKS = ["①", "②", "③", "④", "⑤"];
 const ENGLISH_PUBLIC_CHOICE_FINGERPRINT =
   "bbcfd28510d68d5193210254f08f0df4ac457b0b4bcd5849eb9d2ee5196f4a63";
@@ -222,8 +243,194 @@ function stableJson(value) {
   return `${JSON.stringify(value, null, 2)}\n`;
 }
 
+function fileSha256(filePath) {
+  return createHash("sha256").update(readFileSync(filePath)).digest("hex");
+}
+
 function answerMark(answer) {
   return ["①", "②", "③", "④", "⑤"][Number(answer) - 1] ?? null;
+}
+
+function contentFingerprint(value) {
+  return createHash("sha256").update(JSON.stringify(value)).digest("hex");
+}
+
+function requireText(value, code, detail) {
+  if (typeof value !== "string" || !value.trim()) fail(code, detail);
+}
+
+function validateMathVerifiedSolutions(mathDbPath, mathDb, sourceDirectory) {
+  const solutionPath = path.join(
+    path.dirname(mathDbPath),
+    MATH_VERIFIED_SOLUTION_FILENAME,
+  );
+  const database = readJson(solutionPath, MATH_VERIFIED_SOLUTION_FILENAME);
+  const metadata = database.metadata;
+  if (metadata?.schemaVersion !== "math-verified-solution-v1") {
+    fail("MATH_SOLUTION_SCHEMA", String(metadata?.schemaVersion));
+  }
+  if (
+    metadata.status !== "internal_verified_candidate" ||
+    metadata.publicConnected !== false
+  ) {
+    fail("MATH_SOLUTION_BOUNDARY", metadata.status);
+  }
+  if (metadata.itemCount !== 5 || metadata.readyCount !== 5) {
+    fail(
+      "MATH_SOLUTION_METADATA_COUNT",
+      `${metadata.itemCount}/${metadata.readyCount}`,
+    );
+  }
+  if (metadata.verifiedAt !== "2026-08-04") {
+    fail("MATH_SOLUTION_VERIFIED_AT", String(metadata.verifiedAt));
+  }
+  for (const [key, expected] of Object.entries(MATH_VERIFIED_SOURCE_HASHES)) {
+    if (metadata.sourceArtifacts?.[key] !== expected) {
+      fail("MATH_SOLUTION_SOURCE_HASH", key);
+    }
+  }
+  requireText(
+    metadata.sourceArtifacts?.archiveUrl,
+    "MATH_SOLUTION_SOURCE_URL",
+    "archiveUrl",
+  );
+  requireText(metadata.note, "MATH_SOLUTION_NOTE", "metadata");
+  if (sourceDirectory) {
+    const problemPath = findFile(
+      sourceDirectory,
+      metadata.sourceArtifacts.problemFilename,
+    );
+    const answerPath = findFile(
+      sourceDirectory,
+      metadata.sourceArtifacts.answerFilename,
+    );
+    if (!problemPath || !answerPath) {
+      fail("MATH_SOLUTION_SOURCE_FILE", sourceDirectory);
+    }
+    if (fileSha256(problemPath) !== metadata.sourceArtifacts.problemSha256) {
+      fail("MATH_SOLUTION_PROBLEM_HASH", problemPath);
+    }
+    if (fileSha256(answerPath) !== metadata.sourceArtifacts.answerSha256) {
+      fail("MATH_SOLUTION_ANSWER_HASH", answerPath);
+    }
+  }
+
+  const questionsById = new Map(
+    mathDb.questions.map((question) => [question.id, question]),
+  );
+  const sourceQuestions = MATH_FREE_IDS.map((id) => {
+    const question = questionsById.get(id);
+    if (!question) fail("MATH_SOLUTION_SOURCE_QUESTION", id);
+    return {
+      id: question.id,
+      problem: question.problem_latex,
+      choices: question.choices,
+      answer: question.answer,
+      answerType: question.answerType,
+      answerCrossCheck: question.answerCrossCheck,
+    };
+  });
+  const questionFingerprint = contentFingerprint(sourceQuestions);
+  if (metadata.questionFingerprint !== questionFingerprint) {
+    fail(
+      "MATH_SOLUTION_QUESTION_FINGERPRINT",
+      `${questionFingerprint} != ${metadata.questionFingerprint}`,
+    );
+  }
+
+  const itemIds = Object.keys(database.items ?? {});
+  if (stableJson(itemIds) !== stableJson(MATH_FREE_IDS)) {
+    fail("MATH_SOLUTION_IDS", itemIds.join(","));
+  }
+  const expectedProblemPages = new Map([
+    ["2022_06_common_1", 1],
+    ["2022_06_common_2", 1],
+    ["2022_06_common_3", 1],
+    ["2022_06_common_5", 2],
+    ["2022_06_common_6", 2],
+  ]);
+
+  const items = MATH_FREE_IDS.map((id) => {
+    const item = database.items[id];
+    const question = questionsById.get(id);
+    if (item?.id !== id || item.status !== "verified_internal_candidate") {
+      fail("MATH_SOLUTION_ITEM_STATUS", id);
+    }
+    if (
+      Number(item.answer) !== Number(question.answer) ||
+      item.answerMark !== answerMark(question.answer)
+    ) {
+      fail("MATH_SOLUTION_ANSWER", id);
+    }
+    const expectedQuestionNumber = Number(id.split("_").at(-1));
+    if (item.questionNumber !== expectedQuestionNumber) {
+      fail("MATH_SOLUTION_QUESTION_NUMBER", id);
+    }
+    requireText(item.exam, "MATH_SOLUTION_EXAM", id);
+    requireText(item.summary, "MATH_SOLUTION_SUMMARY", id);
+    requireText(item.approach, "MATH_SOLUTION_APPROACH", id);
+    requireText(item.correctReason, "MATH_SOLUTION_REASON", id);
+    requireText(item.commonMistake, "MATH_SOLUTION_MISTAKE", id);
+    if (
+      !Array.isArray(item.concepts) ||
+      item.concepts.length < 2 ||
+      item.concepts.some((concept) => !String(concept).trim())
+    ) {
+      fail("MATH_SOLUTION_CONCEPTS", id);
+    }
+    if (!Array.isArray(item.steps) || item.steps.length < 2) {
+      fail("MATH_SOLUTION_STEPS", id);
+    }
+    item.steps.forEach((step, index) => {
+      requireText(step?.title, "MATH_SOLUTION_STEP_TITLE", `${id}:${index}`);
+      requireText(
+        step?.expression,
+        "MATH_SOLUTION_STEP_EXPRESSION",
+        `${id}:${index}`,
+      );
+      requireText(
+        step?.explanation,
+        "MATH_SOLUTION_STEP_EXPLANATION",
+        `${id}:${index}`,
+      );
+    });
+    const verification = item.verification;
+    if (
+      verification?.problemPage !== expectedProblemPages.get(id) ||
+      verification?.answerTablePage !== 1 ||
+      verification?.problemMatchedPdf !== true ||
+      verification?.choicesMatchedPdf !== true ||
+      verification?.answerMatchedPdf !== true ||
+      verification?.independentDerivation !== true
+    ) {
+      fail("MATH_SOLUTION_VERIFICATION", id);
+    }
+    return item;
+  });
+
+  const serialized = stableJson(database);
+  if (serialized.includes("ProbDex") || serialized.includes("AI생성-미검증")) {
+    fail("MATH_SOLUTION_UNVERIFIED_SOURCE_LEAK", solutionPath);
+  }
+  return items;
+}
+
+function validateEnglishCandidate() {
+  try {
+    execFileSync(
+      process.execPath,
+      [
+        ENGLISH_CANDIDATE_GATE_PATH,
+        "--check",
+        "--source-dir",
+        ENGLISH_CANDIDATE_SOURCE_DIRECTORY,
+      ],
+      { cwd: ROOT, encoding: "utf8", stdio: "pipe" },
+    );
+  } catch (error) {
+    const detail = String(error.stderr || error.stdout || error.message).trim();
+    fail("ENGLISH_CANDIDATE_GATE", detail);
+  }
 }
 
 function parseMathSessionId(id) {
@@ -918,11 +1125,17 @@ function projectEnglishFigure(question) {
   };
 }
 
-function buildPublicData() {
+function buildPublicData(mathSourceDirectory = null) {
+  validateEnglishCandidate();
   const mathDbPath = findFile(ROOT, "math_exam_db_v2_0.json");
   const explainPath = findFile(ROOT, "eng_explain_2026csat.json");
   const englishDb = readJson(ENGLISH_DB_PATH, "english_exam_db_v2_1.json");
   const mathDb = readJson(mathDbPath, "math_exam_db_v2_0.json");
+  const mathVerifiedSolutions = validateMathVerifiedSolutions(
+    mathDbPath,
+    mathDb,
+    mathSourceDirectory,
+  );
   const explanationDb = readJson(explainPath, "eng_explain_2026csat.json");
   const explanations = new Map(
     Object.values(explanationDb.items).map((item) => [item.id, item]),
@@ -1191,6 +1404,24 @@ function buildPublicData() {
     packId: catalog.subjects.math.freePackId,
     questions: mathFreeQuestions,
   };
+  if (
+    mathFree.questions.some(
+      (question) =>
+        Object.hasOwn(question, "review") || Object.hasOwn(question, "solution"),
+    )
+  ) {
+    fail("MATH_SOLUTION_PUBLIC_FIELD_LEAK", "math free data");
+  }
+  const mathFreeSerialized = stableJson(mathFree);
+  for (const item of mathVerifiedSolutions) {
+    if (
+      mathFreeSerialized.includes(item.summary) ||
+      mathFreeSerialized.includes(item.correctReason) ||
+      item.steps.some((step) => mathFreeSerialized.includes(step.explanation))
+    ) {
+      fail("MATH_SOLUTION_PUBLIC_TEXT_LEAK", item.id);
+    }
+  }
   assertNoForbiddenKeys({ englishFree, mathFree });
 
   const freeIds = new Set([...ENGLISH_FREE_IDS, ...MATH_FREE_IDS]);
@@ -1314,8 +1545,26 @@ function verifyPublishedBoundary(baseDirectory, data) {
   verifyLockedIdsAbsent(baseDirectory, data.lockedIds);
 }
 
-const mode = process.argv[2] ?? "--check";
-const data = buildPublicData();
+function parseArguments() {
+  const values = process.argv.slice(2);
+  const mode = values[0] ?? "--check";
+  let mathSourceDirectory = null;
+  for (let index = 1; index < values.length; index += 1) {
+    const value = values[index];
+    if (value !== "--math-source-dir") fail("ARGUMENT_INVALID", value);
+    const next = values[index + 1];
+    if (!next || next.startsWith("--")) {
+      fail("ARGUMENT_VALUE_MISSING", value);
+    }
+    mathSourceDirectory = path.resolve(next);
+    index += 1;
+  }
+  return { mode, mathSourceDirectory };
+}
+
+const options = parseArguments();
+const mode = options.mode;
+const data = buildPublicData(options.mathSourceDirectory);
 
 if (mode === "--write") {
   mkdirSync(PUBLIC_DATA_DIRECTORY, { recursive: true });
@@ -1326,13 +1575,19 @@ if (mode === "--write") {
     if (existsSync(filePath)) unlinkSync(filePath);
   });
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
-  console.log("ENG_MATH_PUBLIC_DATA: wrote free=10 locked=378 catalogs=6/88");
+  console.log(
+    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=378 catalogs=6/88 englishCandidate=28/58 mathSolutions=5 mathSource=${options.mathSourceDirectory ? "verified" : "recorded"}`,
+  );
 } else if (mode === "--check") {
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
-  console.log("ENG_MATH_PUBLIC_DATA: pass free=10 locked=378 catalogs=6/88");
+  console.log(
+    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=378 catalogs=6/88 englishCandidate=28/58 mathSolutions=5 mathSource=${options.mathSourceDirectory ? "verified" : "recorded"}`,
+  );
 } else if (mode === "--check-dist") {
   verifyPublishedBoundary(path.join(ROOT, "dist"), data);
-  console.log("ENG_MATH_DIST_BOUNDARY: pass free=10 locked=378 catalogs=6/88");
+  console.log(
+    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=378 catalogs=6/88 englishCandidate=28/58 mathSolutions=5 mathSource=${options.mathSourceDirectory ? "verified" : "recorded"}`,
+  );
 } else {
   fail("MODE_INVALID", mode);
 }
