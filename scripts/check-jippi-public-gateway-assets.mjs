@@ -32,13 +32,16 @@ for (const [path, expectedType, minimumBytes] of checks) {
   const separator = path.includes("?") ? "&" : "?";
   const url = `${base}${path}${separator}proof=${proof}`;
   try {
+    const fetchBody = expectedType.test("text/html");
     const response = await fetch(url, {
-      method: "HEAD",
+      method: fetchBody ? "GET" : "HEAD",
       redirect: "follow",
       headers: { "cache-control": "no-cache" },
     });
     const type = response.headers.get("content-type") || "";
-    const bytes = Number(response.headers.get("content-length") || 0);
+    const bytes = fetchBody
+      ? Buffer.byteLength(await response.arrayBuffer())
+      : Number(response.headers.get("content-length") || 0);
     const pass =
       response.status === 200 &&
       expectedType.test(type) &&
