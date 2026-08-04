@@ -26,7 +26,7 @@ const CHOICE_CONTAMINATION_PATTERNS = [
   /\[\d{2}\s*[~～－-]\s*\d{2}\]/,
 ];
 const EXPECTED_PUBLIC_BOUNDARY = {
-  english: { total: 27, free: 5, locked: 22, packs: 6 },
+  english: { total: 55, free: 5, locked: 50, packs: 12 },
   math: { total: 361, free: 5, locked: 356, packs: 88 },
 };
 
@@ -130,7 +130,7 @@ function validateChoiceList(questionId, choices, questionType) {
   });
 }
 
-function verifyPublicBoundary(candidateId) {
+function verifyPublicBoundary(candidateId, candidateQuestionIds) {
   const publicDataDirectory = path.join(ROOT, "public", "data", "eng-math");
   const englishFree = readJson(
     path.join(publicDataDirectory, "english-free-public.json"),
@@ -161,7 +161,14 @@ function verifyPublicBoundary(candidateId) {
   )) {
     const content = readFileSync(filePath, "utf8");
     ensure(!content.includes(candidateId), "PUBLIC_CANDIDATE_ID_LEAK", filePath);
-    ensure(!content.includes("2026_09_"), "PUBLIC_CANDIDATE_QUESTION_LEAK", filePath);
+    const leakedQuestionId = candidateQuestionIds.find((questionId) =>
+      content.includes(questionId),
+    );
+    ensure(
+      !leakedQuestionId,
+      "PUBLIC_CANDIDATE_QUESTION_LEAK",
+      `${filePath}:${leakedQuestionId ?? ""}`,
+    );
   }
 
   const publicImagePaths = listFiles(path.join(ROOT, "public", "images"));
@@ -441,7 +448,10 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
     0,
   );
   ensure(evidenceCount === 58, "MERGED_EVIDENCE_COUNT", String(evidenceCount));
-  verifyPublicBoundary(overlay.candidateId);
+  verifyPublicBoundary(
+    overlay.candidateId,
+    overlay.questions.map((question) => question.id),
+  );
 
   return {
     schemaVersion: "english-product-candidate-v2",

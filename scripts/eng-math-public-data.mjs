@@ -77,6 +77,10 @@ const ENGLISH_FREE_IDS = [
   "2026_csat_22",
   "2026_csat_23",
 ];
+const ENGLISH_CANDIDATE_IDS = Array.from(
+  { length: 28 },
+  (_, index) => `2026_09_${index + 18}`,
+);
 const MATH_FREE_IDS = [
   "2022_06_common_1",
   "2022_06_common_2",
@@ -433,6 +437,33 @@ function validateEnglishCandidate() {
     ENGLISH_CANDIDATE_OVERLAY_PATH,
     "english candidate overlay",
   );
+  const candidateQuestions = overlay.questions;
+  if (
+    overlay.status !== "internal_candidate" ||
+    overlay.publicConnected !== false ||
+    overlay.summary?.questionCount !== 28 ||
+    overlay.summary?.answerCrossCheckCount !== 28 ||
+    overlay.summary?.questionAnswerReadyCount !== 28 ||
+    overlay.summary?.reviewReadyCount !== 28 ||
+    overlay.summary?.figureAssetCount !== 3 ||
+    overlay.summary?.blockedCount !== 0 ||
+    !Array.isArray(candidateQuestions) ||
+    candidateQuestions.length !== 28
+  ) {
+    fail("ENGLISH_CANDIDATE_CATALOG_SCOPE", overlay.candidateId ?? "unknown");
+  }
+  if (
+    stableJson(candidateQuestions.map((question) => question.id)) !==
+      stableJson(ENGLISH_CANDIDATE_IDS) ||
+    candidateQuestions.some(
+      (question, index) =>
+        Number(question.qid) !== index + 18 ||
+        question.status !== "question_answer_ready" ||
+        question.reviewStatus !== "ready",
+    )
+  ) {
+    fail("ENGLISH_CANDIDATE_CATALOG_QUESTION", overlay.candidateId);
+  }
   const sourceArtifacts = Object.values(overlay.sourceArtifacts ?? {});
   if (sourceArtifacts.length !== 3) {
     fail("ENGLISH_CANDIDATE_SOURCE_ARTIFACTS", String(sourceArtifacts.length));
@@ -464,6 +495,11 @@ function validateEnglishCandidate() {
     const detail = String(error.stderr || error.stdout || error.message).trim();
     fail("ENGLISH_CANDIDATE_GATE", detail);
   }
+
+  return candidateQuestions.map((question) => ({
+    id: question.id,
+    qid: Number(question.qid),
+  }));
 }
 
 function parseMathSessionId(id) {
@@ -599,14 +635,14 @@ function hasExactQuestionIds(questions, expectedIds) {
   );
 }
 
-function buildPublicCatalog(english, math) {
+function buildPublicCatalog(english, math, englishCandidateQuestions) {
   const englishByNumber = new Map(
     english.map((question) => [
       Number(question.id.replace("2026_csat_", "")),
       question,
     ]),
   );
-  const englishPacks = ENGLISH_SESSION_NUMBER_GROUPS.map((numbers, index) => {
+  const englishCsatPacks = ENGLISH_SESSION_NUMBER_GROUPS.map((numbers, index) => {
     const questions = numbers.map((number) => englishByNumber.get(number));
     if (questions.some((question) => !question)) {
       fail("ENGLISH_CATALOG_QUESTION_MISSING", numbers.join(","));
@@ -630,6 +666,47 @@ function buildPublicCatalog(english, math) {
       access: isFree ? "free" : "locked",
     };
   });
+  const englishCandidateGroups = buildFiveQuestionGroups(
+    englishCandidateQuestions,
+    "english|2026_09",
+  );
+  const englishCandidateCoverage = new Set(
+    englishCandidateGroups.flatMap((group) =>
+      group.map((question) => question.id),
+    ),
+  );
+  if (
+    englishCandidateGroups.length !== 6 ||
+    englishCandidateCoverage.size !== 28 ||
+    englishCandidateQuestions.some(
+      (question) => !englishCandidateCoverage.has(question.id),
+    )
+  ) {
+    fail(
+      "ENGLISH_CANDIDATE_CATALOG_COVERAGE",
+      `${englishCandidateGroups.length}:${englishCandidateCoverage.size}`,
+    );
+  }
+  const englishCandidatePacks = englishCandidateGroups.map(
+    (questions, index) => {
+      validateFiveQuestionGroup(questions, "english|2026_09");
+      const numbers = questions.map((question) => question.qid);
+      return {
+        id: `english-2026-09-${String(index + 1).padStart(2, "0")}`,
+        examKey: "2026_09",
+        examLabel: "2026학년도 9월 모의평가",
+        trackKey: "english",
+        trackLabel: "영어",
+        label: `${numbers[0]}~${numbers.at(-1)}번`,
+        note:
+          numbers[0] === 41 ? "공통 지문 문항을 함께 풉니다." : "",
+        questionCount: 5,
+        scopeQuestionCount: 28,
+        access: "locked",
+      };
+    },
+  );
+  const englishPacks = [...englishCsatPacks, ...englishCandidatePacks];
 
   const mathByScope = new Map();
   for (const question of math) {
@@ -700,7 +777,7 @@ function buildPublicCatalog(english, math) {
     (pack) => pack.access === "free",
   );
   const mathFreePacks = mathPacks.filter((pack) => pack.access === "free");
-  if (englishPacks.length !== 6 || englishFreePacks.length !== 1) {
+  if (englishPacks.length !== 12 || englishFreePacks.length !== 1) {
     fail(
       "ENGLISH_CATALOG_BOUNDARY",
       `${englishPacks.length}:${englishFreePacks.length}`,
@@ -717,10 +794,10 @@ function buildPublicCatalog(english, math) {
     version: 1,
     subjects: {
       english: {
-        totalQuestionCount: 27,
+        totalQuestionCount: 55,
         freeQuestionCount: 5,
-        lockedQuestionCount: 22,
-        packCount: 6,
+        lockedQuestionCount: 50,
+        packCount: 12,
         freePackId: englishFreePacks[0].id,
         packs: englishPacks,
       },
@@ -1159,7 +1236,7 @@ function projectEnglishFigure(question) {
 }
 
 function buildPublicData(mathSourceDirectory = null) {
-  validateEnglishCandidate();
+  const englishCandidateQuestions = validateEnglishCandidate();
   const mathDbPath = findFile(ROOT, "math_exam_db_v2_0.json");
   const explainPath = findFile(ROOT, "eng_explain_2026csat.json");
   const englishDb = readJson(ENGLISH_DB_PATH, "english_exam_db_v2_1.json");
@@ -1427,7 +1504,7 @@ function buildPublicData(mathSourceDirectory = null) {
   }
 
   validateSessionCatalog(english, math);
-  const catalog = buildPublicCatalog(english, math);
+  const catalog = buildPublicCatalog(english, math, englishCandidateQuestions);
   const englishFreeQuestions = english.filter((question) =>
     ENGLISH_FREE_IDS.includes(question.id),
   );
@@ -1500,10 +1577,10 @@ function buildPublicData(mathSourceDirectory = null) {
   assertNoForbiddenKeys({ englishFree, mathFree });
 
   const freeIds = new Set([...ENGLISH_FREE_IDS, ...MATH_FREE_IDS]);
-  const lockedIds = [...english, ...math]
+  const lockedIds = [...english, ...math, ...englishCandidateQuestions]
     .map((question) => question.id)
     .filter((id) => !freeIds.has(id));
-  if (lockedIds.length !== 378) {
+  if (lockedIds.length !== 406 || new Set(lockedIds).size !== 406) {
     fail("LOCKED_QUESTION_COUNT", String(lockedIds.length));
   }
 
@@ -1651,17 +1728,17 @@ if (mode === "--write") {
   });
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
   console.log(
-    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=378 catalogs=6/88 englishCandidate=28/58 mathSolutions=5 mathSource=${options.mathSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=406 catalogs=12/88 englishCandidate=28/58 mathSolutions=5 mathSource=${options.mathSourceDirectory ? "verified" : "recorded"}`,
   );
 } else if (mode === "--check") {
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
   console.log(
-    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=378 catalogs=6/88 englishCandidate=28/58 mathSolutions=5 mathSource=${options.mathSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=406 catalogs=12/88 englishCandidate=28/58 mathSolutions=5 mathSource=${options.mathSourceDirectory ? "verified" : "recorded"}`,
   );
 } else if (mode === "--check-dist") {
   verifyPublishedBoundary(path.join(ROOT, "dist"), data);
   console.log(
-    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=378 catalogs=6/88 englishCandidate=28/58 mathSolutions=5 mathSource=${options.mathSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=406 catalogs=12/88 englishCandidate=28/58 mathSolutions=5 mathSource=${options.mathSourceDirectory ? "verified" : "recorded"}`,
   );
 } else {
   fail("MODE_INVALID", mode);

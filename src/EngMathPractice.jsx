@@ -10,10 +10,10 @@ const QUESTION_DATA_URLS = {
 const CATALOG_DATA_URL = "/data/eng-math/catalog-public.json";
 const EXPECTED_BOUNDARIES = {
   english: {
-    totalQuestionCount: 27,
+    totalQuestionCount: 55,
     freeQuestionCount: 5,
-    lockedQuestionCount: 22,
-    packCount: 6,
+    lockedQuestionCount: 50,
+    packCount: 12,
   },
   math: {
     totalQuestionCount: 361,
@@ -890,7 +890,7 @@ function QuestionCatalog({
           <h1>학습할 문항을 고르세요.</h1>
           <p className="eng-math-catalog__lead">
             {subject === "english"
-              ? "19~23번 5문항은 무료로 풀 수 있습니다. 나머지 22문항은 결제 없이 잠금 상태로만 표시합니다."
+              ? "2026학년도 수능 19~23번 5문항은 무료로 풀 수 있습니다. 수능 22문항과 9월 모의평가 28문항은 결제 없이 잠금 상태로만 표시합니다."
               : "2022학년도 6월 공통 첫 5문항은 검증 풀이와 함께 무료로 제공합니다. 나머지 356문항은 잠금 상태입니다."}
           </p>
         </header>

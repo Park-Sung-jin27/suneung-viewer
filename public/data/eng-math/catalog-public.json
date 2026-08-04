@@ -2,10 +2,10 @@
   "version": 1,
   "subjects": {
     "english": {
-      "totalQuestionCount": 27,
+      "totalQuestionCount": 55,
       "freeQuestionCount": 5,
-      "lockedQuestionCount": 22,
-      "packCount": 6,
+      "lockedQuestionCount": 50,
+      "packCount": 12,
       "freePackId": "english-01",
       "packs": [
         {
@@ -78,6 +78,78 @@
           "note": "공통 지문 문항을 함께 풉니다.",
           "questionCount": 5,
           "scopeQuestionCount": 27,
+          "access": "locked"
+        },
+        {
+          "id": "english-2026-09-01",
+          "examKey": "2026_09",
+          "examLabel": "2026학년도 9월 모의평가",
+          "trackKey": "english",
+          "trackLabel": "영어",
+          "label": "18~22번",
+          "note": "",
+          "questionCount": 5,
+          "scopeQuestionCount": 28,
+          "access": "locked"
+        },
+        {
+          "id": "english-2026-09-02",
+          "examKey": "2026_09",
+          "examLabel": "2026학년도 9월 모의평가",
+          "trackKey": "english",
+          "trackLabel": "영어",
+          "label": "23~27번",
+          "note": "",
+          "questionCount": 5,
+          "scopeQuestionCount": 28,
+          "access": "locked"
+        },
+        {
+          "id": "english-2026-09-03",
+          "examKey": "2026_09",
+          "examLabel": "2026학년도 9월 모의평가",
+          "trackKey": "english",
+          "trackLabel": "영어",
+          "label": "28~32번",
+          "note": "",
+          "questionCount": 5,
+          "scopeQuestionCount": 28,
+          "access": "locked"
+        },
+        {
+          "id": "english-2026-09-04",
+          "examKey": "2026_09",
+          "examLabel": "2026학년도 9월 모의평가",
+          "trackKey": "english",
+          "trackLabel": "영어",
+          "label": "33~37번",
+          "note": "",
+          "questionCount": 5,
+          "scopeQuestionCount": 28,
+          "access": "locked"
+        },
+        {
+          "id": "english-2026-09-05",
+          "examKey": "2026_09",
+          "examLabel": "2026학년도 9월 모의평가",
+          "trackKey": "english",
+          "trackLabel": "영어",
+          "label": "38~42번",
+          "note": "",
+          "questionCount": 5,
+          "scopeQuestionCount": 28,
+          "access": "locked"
+        },
+        {
+          "id": "english-2026-09-06",
+          "examKey": "2026_09",
+          "examLabel": "2026학년도 9월 모의평가",
+          "trackKey": "english",
+          "trackLabel": "영어",
+          "label": "41~45번",
+          "note": "공통 지문 문항을 함께 풉니다.",
+          "questionCount": 5,
+          "scopeQuestionCount": 28,
           "access": "locked"
         }
       ]
