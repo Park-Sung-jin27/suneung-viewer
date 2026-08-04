@@ -241,6 +241,10 @@
       "destination": "https://jippi-saju.netlify.app/tarot/$1"
     },
     {
+      "source": "/fortune/delivery/(.*)",
+      "destination": "/api/not-found"
+    },
+    {
       "source": "/fortune",
       "destination": "https://jippi-saju.netlify.app/fortune"
     },
