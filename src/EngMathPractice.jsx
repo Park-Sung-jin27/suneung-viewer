@@ -42,6 +42,8 @@ const SUBJECTS = {
     tint: "#eaf7f1",
   },
 };
+const SESSION_STORAGE_VERSION = 1;
+const SESSION_ANSWER_MARKS = ["", "①", "②", "③", "④", "⑤"];
 
 function sessionUrl(subject, packId) {
   return `/eng-math/practice?subject=${subject}&mode=session&pack=${encodeURIComponent(packId)}`;
@@ -60,6 +62,93 @@ function normalizeShortAnswer(value) {
   const trimmed = String(value ?? "").trim();
   if (!/^\d+$/.test(trimmed)) return trimmed;
   return trimmed.replace(/^0+(?=\d)/, "");
+}
+
+function sessionStorageKey(subject, packId) {
+  return `eng_math_session_v1:${subject}:${packId}`;
+}
+
+function removeSavedSession(subject, packId) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(sessionStorageKey(subject, packId));
+  } catch {
+    // 브라우저 저장소를 사용할 수 없어도 현재 학습은 계속 진행한다.
+  }
+}
+
+function readSavedSession(subject, packId, questions) {
+  if (typeof window === "undefined") return null;
+  const key = sessionStorageKey(subject, packId);
+  try {
+    const raw = window.localStorage.getItem(key);
+    if (!raw) return null;
+    const saved = JSON.parse(raw);
+    const questionIds = questions.map((question) => question.id);
+    const validResults =
+      Array.isArray(saved.results) &&
+      saved.results.length > 0 &&
+      saved.results.length <= questionIds.length &&
+      saved.results.every(
+        (result, index) =>
+          result?.questionId === questionIds[index] &&
+          typeof result.label === "string" &&
+          typeof result.isCorrect === "boolean" &&
+          ["choice", "short"].includes(result.answerType) &&
+          ["string", "number"].includes(typeof result.selectedAnswer) &&
+          ["string", "number"].includes(typeof result.correctAnswer),
+      );
+    const valid =
+      saved.version === SESSION_STORAGE_VERSION &&
+      saved.subject === subject &&
+      saved.packId === packId &&
+      JSON.stringify(saved.questionIds) === JSON.stringify(questionIds) &&
+      validResults &&
+      Number.isInteger(saved.currentIndex) &&
+      saved.currentIndex === saved.results.length &&
+      typeof saved.updatedAt === "string";
+
+    if (!valid) {
+      window.localStorage.removeItem(key);
+      return null;
+    }
+    return saved;
+  } catch {
+    try {
+      window.localStorage.removeItem(key);
+    } catch {
+      // 잘못된 저장값 제거도 불가능하면 새 학습으로 진행한다.
+    }
+    return null;
+  }
+}
+
+function saveSession(subject, packId, questions, results) {
+  if (typeof window === "undefined") return;
+  const payload = {
+    version: SESSION_STORAGE_VERSION,
+    subject,
+    packId,
+    questionIds: questions.map((question) => question.id),
+    currentIndex: results.length,
+    results,
+    updatedAt: new Date().toISOString(),
+  };
+  try {
+    window.localStorage.setItem(
+      sessionStorageKey(subject, packId),
+      JSON.stringify(payload),
+    );
+  } catch {
+    // 저장 실패는 현재 학습 흐름을 막지 않는다.
+  }
+}
+
+function formatSessionAnswer(result, answer) {
+  if (result.answerType === "choice") {
+    return SESSION_ANSWER_MARKS[Number(answer)] ?? String(answer);
+  }
+  return String(answer);
 }
 
 function MathText({ text, className = "" }) {
@@ -437,6 +526,7 @@ export default function EngMathPractice() {
         key={`${subject}-${selectedPack.id}`}
         questions={selectedPack.questions}
         subject={subject}
+        packId={selectedPack.id}
         navigate={navigate}
         onSubjectChange={chooseSubject}
         packLabel={`${selectedPack.examLabel} · ${selectedPack.trackLabel} · ${selectedPack.label}`}
@@ -876,41 +966,204 @@ function PracticeNotice({ message, onBack, backLabel = "베타로 돌아가기" 
   );
 }
 
+function SessionResumePrompt({
+  subject,
+  completedCount,
+  totalCount,
+  packLabel,
+  navigate,
+  onResume,
+  onRestart,
+  onCatalog,
+}) {
+  const profile = SUBJECTS[subject];
+
+  return (
+    <main className="eng-math-session-resume">
+      <style>{`
+        .eng-math-session-resume { min-height: 100svh; box-sizing: border-box; padding: 24px 20px 48px; background: #f8fafc; color: #172033; font-family: "Noto Sans KR", system-ui, sans-serif; }
+        .eng-math-session-resume * { box-sizing: border-box; }
+        .eng-math-session-resume__inner { width: min(100%, 580px); margin: 0 auto; }
+        .eng-math-session-resume__brand { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px; border: 0; background: transparent; padding: 4px 0; color: #3157a5; font: inherit; font-size: 0.84rem; font-weight: 800; cursor: pointer; }
+        .eng-math-session-resume__brand-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+        .eng-math-session-resume__card { overflow: hidden; border: 1px solid #e0e6ef; border-radius: 24px; background: #fff; box-shadow: 0 16px 42px rgba(24, 39, 75, 0.08); }
+        .eng-math-session-resume__band { height: 7px; }
+        .eng-math-session-resume__content { padding: 32px; }
+        .eng-math-session-resume__eyebrow { display: inline-flex; min-height: 28px; align-items: center; padding: 5px 9px; border-radius: 999px; font-size: 0.75rem; font-weight: 900; }
+        .eng-math-session-resume h1 { margin: 16px 0 10px; font-size: clamp(1.55rem, 6vw, 2.1rem); line-height: 1.32; letter-spacing: -0.05em; word-break: keep-all; }
+        .eng-math-session-resume__lead { margin: 0; color: #627087; line-height: 1.65; word-break: keep-all; }
+        .eng-math-session-resume__pack-label { margin: 9px 0 0; color: #46556d; font-size: 0.84rem; font-weight: 800; line-height: 1.55; word-break: keep-all; }
+        .eng-math-session-resume__actions { display: grid; gap: 9px; margin-top: 24px; }
+        .eng-math-session-resume__actions button { width: 100%; min-height: 52px; border-radius: 14px; font: inherit; font-size: 0.94rem; font-weight: 900; cursor: pointer; }
+        .eng-math-session-resume__primary { border: 0; color: #fff; }
+        .eng-math-session-resume__secondary { border: 1px solid #cbd5e1; background: #fff; color: #3e4d61; }
+        .eng-math-session-resume__home { border: 0; background: transparent; color: #667085; }
+        @media (max-width: 440px) {
+          .eng-math-session-resume { padding: 16px 14px 32px; }
+          .eng-math-session-resume__content { padding: 24px 18px; }
+        }
+      `}</style>
+      <div className="eng-math-session-resume__inner">
+        <button
+          className="eng-math-session-resume__brand"
+          type="button"
+          onClick={() => navigate("/eng-math-beta")}
+        >
+          <span className="eng-math-session-resume__brand-dot" aria-hidden="true" />
+          지니쌤과 공부하자
+        </button>
+        <article className="eng-math-session-resume__card" aria-live="polite">
+          <div
+            className="eng-math-session-resume__band"
+            style={{ background: profile.accent }}
+          />
+          <div className="eng-math-session-resume__content">
+            <span
+              className="eng-math-session-resume__eyebrow"
+              style={{ background: profile.tint, color: profile.accent }}
+            >
+              {profile.name} · {completedCount} / {totalCount} 저장됨
+            </span>
+            <h1>이전에 풀던 학습이 있습니다.</h1>
+            <p className="eng-math-session-resume__lead">
+              같은 브라우저에 저장된 다음 문제부터 이어서 풀 수 있습니다.
+            </p>
+            <p className="eng-math-session-resume__pack-label">{packLabel}</p>
+            <div className="eng-math-session-resume__actions">
+              <button
+                className="eng-math-session-resume__primary"
+                type="button"
+                style={{ background: profile.accent }}
+                onClick={onResume}
+              >
+                이어서 풀기
+              </button>
+              <button
+                className="eng-math-session-resume__secondary"
+                type="button"
+                onClick={onRestart}
+              >
+                처음부터 풀기
+              </button>
+              <button
+                className="eng-math-session-resume__home"
+                type="button"
+                onClick={onCatalog}
+              >
+                문항 목록으로
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+  );
+}
+
 function LearningSession({
   questions,
   subject,
+  packId,
   navigate,
   onSubjectChange,
   packLabel,
   onNextPack,
   onCatalog,
 }) {
+  const [resumeCandidate, setResumeCandidate] = useState(() =>
+    readSavedSession(subject, packId, questions),
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [results, setResults] = useState([]);
   const [finished, setFinished] = useState(false);
-  const question = questions[currentIndex];
+  const [retryQuestionIds, setRetryQuestionIds] = useState(null);
+  const isWrongRetry = Array.isArray(retryQuestionIds);
+  const activeQuestions = useMemo(
+    () =>
+      isWrongRetry
+        ? retryQuestionIds
+            .map((id) => questions.find((question) => question.id === id))
+            .filter(Boolean)
+        : questions,
+    [isWrongRetry, questions, retryQuestionIds],
+  );
+  const question = activeQuestions[currentIndex];
+
+  const resetSessionState = () => {
+    setCurrentIndex(0);
+    setResults([]);
+    setFinished(false);
+  };
 
   const recordAnswer = (result) => {
     setResults((current) => {
       const next = [...current];
       next[currentIndex] = result;
+      if (!isWrongRetry) saveSession(subject, packId, questions, next);
       return next;
     });
   };
 
   const moveForward = () => {
-    if (currentIndex === questions.length - 1) {
+    if (currentIndex === activeQuestions.length - 1) {
+      if (!isWrongRetry) removeSavedSession(subject, packId);
       setFinished(true);
       return;
     }
     setCurrentIndex((current) => current + 1);
   };
 
-  const restartSession = () => {
-    setCurrentIndex(0);
-    setResults([]);
-    setFinished(false);
+  const resumeSession = () => {
+    if (!resumeCandidate) return;
+    const completed = resumeCandidate.results.length === questions.length;
+    setResults(resumeCandidate.results);
+    setCurrentIndex(
+      completed
+        ? questions.length - 1
+        : Math.min(resumeCandidate.currentIndex, questions.length - 1),
+    );
+    setFinished(completed);
+    setResumeCandidate(null);
+    if (completed) removeSavedSession(subject, packId);
   };
+
+  const startFreshSession = () => {
+    removeSavedSession(subject, packId);
+    setResumeCandidate(null);
+    setRetryQuestionIds(null);
+    resetSessionState();
+  };
+
+  const restartSession = () => {
+    removeSavedSession(subject, packId);
+    setRetryQuestionIds(null);
+    resetSessionState();
+  };
+
+  const retryWrongQuestions = () => {
+    const wrongIds = results
+      .filter((result) => !result.isCorrect)
+      .map((result) => result.questionId);
+    if (wrongIds.length === 0) return;
+    removeSavedSession(subject, packId);
+    setRetryQuestionIds(wrongIds);
+    resetSessionState();
+  };
+
+  if (resumeCandidate) {
+    return (
+      <SessionResumePrompt
+        subject={subject}
+        completedCount={resumeCandidate.results.length}
+        totalCount={questions.length}
+        packLabel={packLabel}
+        navigate={navigate}
+        onResume={resumeSession}
+        onRestart={startFreshSession}
+        onCatalog={onCatalog}
+      />
+    );
+  }
 
   if (finished) {
     return (
@@ -918,10 +1171,12 @@ function LearningSession({
         subject={subject}
         results={results}
         navigate={navigate}
-        onRestart={restartSession}
+        onRestart={isWrongRetry ? null : restartSession}
+        onRetryWrong={isWrongRetry ? null : retryWrongQuestions}
         packLabel={packLabel}
-        onNextPack={onNextPack}
+        onNextPack={isWrongRetry ? null : onNextPack}
         onCatalog={onCatalog}
+        isWrongRetry={isWrongRetry}
       />
     );
   }
@@ -935,8 +1190,9 @@ function LearningSession({
       onSubjectChange={onSubjectChange}
       session={{
         current: currentIndex + 1,
-        total: questions.length,
-        isLast: currentIndex === questions.length - 1,
+        total: activeQuestions.length,
+        isLast: currentIndex === activeQuestions.length - 1,
+        isWrongRetry,
         onAnswer: recordAnswer,
         onNext: moveForward,
       }}
@@ -949,12 +1205,15 @@ function SessionSummary({
   results,
   navigate,
   onRestart,
+  onRetryWrong,
   packLabel,
   onNextPack,
   onCatalog,
+  isWrongRetry,
 }) {
   const profile = SUBJECTS[subject];
   const correctCount = results.filter((result) => result.isCorrect).length;
+  const wrongCount = results.length - correctCount;
 
   return (
     <main className="eng-math-session-summary">
@@ -1060,17 +1319,34 @@ function SessionSummary({
           align-items: center;
           justify-content: space-between;
           gap: 12px;
-          min-height: 50px;
+          min-height: 64px;
           border: 1px solid #e0e6ef;
           border-radius: 13px;
           padding: 11px 13px;
           color: #435168;
+        }
+        .eng-math-session-summary__item-copy {
+          display: grid;
+          min-width: 0;
+          gap: 4px;
+        }
+        .eng-math-session-summary__item-label {
           font-size: 0.86rem;
+          font-weight: 800;
+          line-height: 1.45;
+        }
+        .eng-math-session-summary__item-answers {
+          color: #667085;
+          font-size: 0.78rem;
           font-weight: 700;
         }
-        .eng-math-session-summary__item span:last-child { flex: 0 0 auto; font-weight: 900; }
-        .eng-math-session-summary__item--correct span:last-child { color: #16705b; }
-        .eng-math-session-summary__item--wrong span:last-child { color: #b23d4a; }
+        .eng-math-session-summary__item-status {
+          flex: 0 0 auto;
+          font-size: 0.82rem;
+          font-weight: 900;
+        }
+        .eng-math-session-summary__item--correct .eng-math-session-summary__item-status { color: #16705b; }
+        .eng-math-session-summary__item--wrong .eng-math-session-summary__item-status { color: #b23d4a; }
         .eng-math-session-summary__note {
           margin: 18px 0 0;
           border-left: 3px solid;
@@ -1101,6 +1377,7 @@ function SessionSummary({
           .eng-math-session-summary { padding: 16px 14px 32px; }
           .eng-math-session-summary__content { padding: 24px 18px; }
           .eng-math-session-summary h1 { font-size: 1.6rem; }
+          .eng-math-session-summary__item { align-items: flex-start; }
         }
       `}</style>
 
@@ -1110,10 +1387,7 @@ function SessionSummary({
           type="button"
           onClick={() => navigate("/eng-math-beta")}
         >
-          <span
-            className="eng-math-session-summary__brand-dot"
-            aria-hidden="true"
-          />
+          <span className="eng-math-session-summary__brand-dot" aria-hidden="true" />
           지니쌤과 공부하자
         </button>
 
@@ -1127,11 +1401,15 @@ function SessionSummary({
               className="eng-math-session-summary__eyebrow"
               style={{ background: profile.tint, color: profile.accent }}
             >
-              {profile.name} · 5 / 5 완료
+              {profile.name} · {results.length} / {results.length} 완료
             </span>
-            <h1>다섯 문제를 모두 풀었습니다.</h1>
+            <h1>
+              {isWrongRetry
+                ? "오답 재풀이를 마쳤습니다."
+                : "다섯 문제를 모두 풀었습니다."}
+            </h1>
             <p className="eng-math-session-summary__lead">
-              이번 학습에서 맞힌 문제와 다시 확인할 문제를 구분했습니다.
+              문항별로 내가 고른 답과 정답을 함께 확인할 수 있습니다.
             </p>
             <p className="eng-math-session-summary__pack-label">{packLabel}</p>
 
@@ -1142,19 +1420,24 @@ function SessionSummary({
               <span>정답</span>
             </div>
 
-            <ol
-              className="eng-math-session-summary__list"
-              aria-label="문항별 결과"
-            >
+            <ol className="eng-math-session-summary__list" aria-label="문항별 결과">
               {results.map((result, index) => (
                 <li
                   key={result.questionId}
                   className={`eng-math-session-summary__item ${result.isCorrect ? "eng-math-session-summary__item--correct" : "eng-math-session-summary__item--wrong"}`}
                 >
-                  <span>
-                    {index + 1}. {result.label}
+                  <span className="eng-math-session-summary__item-copy">
+                    <span className="eng-math-session-summary__item-label">
+                      {index + 1}. {result.label}
+                    </span>
+                    <span className="eng-math-session-summary__item-answers">
+                      선택 {formatSessionAnswer(result, result.selectedAnswer)} · 정답{" "}
+                      {formatSessionAnswer(result, result.correctAnswer)}
+                    </span>
                   </span>
-                  <span>{result.isCorrect ? "정답" : "다시 확인"}</span>
+                  <span className="eng-math-session-summary__item-status">
+                    {result.isCorrect ? "정답" : "다시 확인"}
+                  </span>
                 </li>
               ))}
             </ol>
@@ -1169,30 +1452,57 @@ function SessionSummary({
             </p>
 
             <div className="eng-math-session-summary__actions">
-              <button
-                className="eng-math-session-summary__primary"
-                type="button"
-                style={{ background: profile.accent }}
-                onClick={onNextPack ?? onCatalog}
-              >
-                {onNextPack ? "다음 5문항 풀기" : "문항 목록으로"}
-              </button>
-              <button
-                className="eng-math-session-summary__secondary"
-                type="button"
-                onClick={onRestart}
-              >
-                같은 5문항 전체 다시 풀기
-              </button>
-              {onNextPack ? (
+              {isWrongRetry ? (
                 <button
-                  className="eng-math-session-summary__home"
+                  className="eng-math-session-summary__primary"
                   type="button"
+                  style={{ background: profile.accent }}
                   onClick={onCatalog}
                 >
                   문항 목록으로
                 </button>
-              ) : null}
+              ) : (
+                <>
+                  {wrongCount > 0 ? (
+                    <button
+                      className="eng-math-session-summary__primary"
+                      type="button"
+                      style={{ background: profile.accent }}
+                      onClick={onRetryWrong}
+                    >
+                      틀린 {wrongCount}문항만 다시 풀기
+                    </button>
+                  ) : null}
+                  <button
+                    className={
+                      wrongCount > 0
+                        ? "eng-math-session-summary__secondary"
+                        : "eng-math-session-summary__primary"
+                    }
+                    type="button"
+                    style={wrongCount > 0 ? undefined : { background: profile.accent }}
+                    onClick={onNextPack ?? onCatalog}
+                  >
+                    {onNextPack ? "다음 5문항 풀기" : "문항 목록으로"}
+                  </button>
+                  <button
+                    className="eng-math-session-summary__secondary"
+                    type="button"
+                    onClick={onRestart}
+                  >
+                    같은 5문항 전체 다시 풀기
+                  </button>
+                  {onNextPack ? (
+                    <button
+                      className="eng-math-session-summary__home"
+                      type="button"
+                      onClick={onCatalog}
+                    >
+                      문항 목록으로
+                    </button>
+                  ) : null}
+                </>
+              )}
             </div>
           </div>
         </article>
@@ -1242,6 +1552,9 @@ function PracticeQuestion({
       session.onAnswer({
         questionId: question.id,
         label: question.label,
+        answerType: isShortAnswer ? "short" : "choice",
+        selectedAnswer: currentAnswer,
+        correctAnswer: question.answer,
         isCorrect,
       });
     }
@@ -1658,7 +1971,9 @@ function PracticeQuestion({
                 aria-label={`${session.total}문항 중 ${session.current}번째`}
               >
                 <div className="eng-math-practice__progress-copy">
-                  <span>5문항 연속 학습</span>
+                  <span>
+                    {session.isWrongRetry ? "오답만 다시 풀기" : "5문항 연속 학습"}
+                  </span>
                   <strong>
                     {session.current} / {session.total}
                   </strong>
@@ -1685,7 +2000,12 @@ function PracticeQuestion({
               className="eng-math-practice__eyebrow"
               style={{ background: profile.tint, color: profile.accent }}
             >
-              {profile.name} · {session ? "5문항 학습" : "1문항 체험"}
+              {profile.name} ·{" "}
+              {session
+                ? session.isWrongRetry
+                  ? "오답 재풀이"
+                  : "5문항 학습"
+                : "1문항 체험"}
             </span>
             <p className="eng-math-practice__label">{question.label}</p>
             <h1 className="eng-math-practice__heading">
@@ -1852,7 +2172,11 @@ function PracticeQuestion({
                     style={{ background: profile.accent }}
                     onClick={session.onNext}
                   >
-                    {session.isLast ? "5문항 결과 보기" : "다음 문제"}
+                    {session.isLast
+                      ? session.isWrongRetry
+                        ? "오답 결과 보기"
+                        : "5문항 결과 보기"
+                      : "다음 문제"}
                   </button>
                 ) : (
                   <button

@@ -1,0 +1,1931 @@
+{
+  "schemaVersion": "english-product-candidate-v1",
+  "candidateId": "english_2026_09_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "generatedFrom": {
+    "overlayPath": "english/data/candidates/english_2026_09_candidate.json",
+    "baseDataPath": "english/data/english_exam_db_v2_1.json",
+    "baseDataSha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2026학년도_9월_영어_문제.pdf",
+      "sha256": "4fdb1e11fc03a3dcb2f9798c0503652264548065583bd2e931438964334b8bf3"
+    },
+    "answer": {
+      "filename": "2026학년도_9월_영어_정답.png",
+      "sha256": "1123b506af6ef82fef435e39806bdb95d50d5060c3c8fb26d25d4365fed40239"
+    },
+    "explanation": {
+      "filename": "2026학년도_9월_영어_해설.pdf",
+      "sha256": "ad93da03dc9552769d1730c7e590d7a0f3e42473352e1af88bbe883e2faae198"
+    }
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 0,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "blockedCount": 0
+  },
+  "integrity": {
+    "questionIds": [
+      "2026_09_18",
+      "2026_09_19",
+      "2026_09_20",
+      "2026_09_21",
+      "2026_09_22",
+      "2026_09_23",
+      "2026_09_24",
+      "2026_09_25",
+      "2026_09_26",
+      "2026_09_27",
+      "2026_09_28",
+      "2026_09_29",
+      "2026_09_30",
+      "2026_09_31",
+      "2026_09_32",
+      "2026_09_33",
+      "2026_09_34",
+      "2026_09_35",
+      "2026_09_36",
+      "2026_09_37",
+      "2026_09_38",
+      "2026_09_39",
+      "2026_09_40",
+      "2026_09_41",
+      "2026_09_42",
+      "2026_09_43",
+      "2026_09_44",
+      "2026_09_45"
+    ],
+    "choiceOverrideIds": [
+      "2026_09_20",
+      "2026_09_24",
+      "2026_09_28",
+      "2026_09_29",
+      "2026_09_30",
+      "2026_09_32",
+      "2026_09_35",
+      "2026_09_36",
+      "2026_09_37",
+      "2026_09_38",
+      "2026_09_39",
+      "2026_09_40",
+      "2026_09_43",
+      "2026_09_45"
+    ],
+    "figureIds": [
+      "2026_09_25",
+      "2026_09_27",
+      "2026_09_28"
+    ],
+    "choiceFingerprint": "45704b56211f60010d3c04ed83107610ae8537e83dc94475cf35faef1f74a2d8",
+    "figureFingerprint": "683bcda6ab91b7f64a99d779b00ac59fbf2cf143133408c3e0bbbb9035907b14"
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2026_09_25",
+      "2026_09_27",
+      "2026_09_28"
+    ]
+  },
+  "questions": [
+    {
+      "id": "2026_09_18",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 18,
+      "type": "목적",
+      "group": "practical",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "18. 다음 글의 목적으로 가장 적절한 것은?",
+      "rawText": "18. \t다음 글의 목적으로 가장 적절한 것은?\nDear AI summer program participants,\nI am your instructor John Phillips. I am excited about your\nenthusiasm for expanding your familiarity with AI by\nregistering for our AI summer program. Thanks to your\ninterest, more participants enrolled in our program than we\nexpected. Therefore, the original lecture room does not\nhave enough seating for all the participants. So, we have\ndecided to move the location to make space for everyone.\nThe program was supposed to be held in classroom 502 in\nthe Ranark building, but it will be changed to classroom 103\nin the Whitewood building. Thank you for your understanding.\nI am looking forward to meeting you all.\nSincerely,\nJohn Phillips\n① 여름 프로그램 참여 동기를 조사하려고\n② 여름 프로그램 장소 변경을 알리려고\n③ 새로운 여름 프로그램을 홍보하려고\n④ 여름 프로그램 강사를 섭외하려고\n⑤ 여름 프로그램 취소를 통보하려고",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "여름 프로그램 참여 동기를 조사하려고"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "여름 프로그램 장소 변경을 알리려고"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "새로운 여름 프로그램을 홍보하려고"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "여름 프로그램 강사를 섭외하려고"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "여름 프로그램 취소를 통보하려고"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 811,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_19",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 19,
+      "type": "심경 변화",
+      "group": "practical",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "19. 다음 글에 드러난 Sierra의 심경 변화로 가장 적절한 것은?",
+      "rawText": "19. \t다음 글에 드러난 Sierra의 심경 변화로 가장 적절한 것은?\nSierra shook as she walked back and forth in front of her\nprofessor’s office. The week before, she had turned in her art\nassignment and today, Professor Fox had asked Sierra to come\nsee her. “Oh, no.” Sierra thought, “What if she thinks my\npaintings are horrible?” Sierra’s sweating hand turned the door\nhandle. Professor Fox smiled and said, “Sierra, your paintings\nwere amazing and so unique! Can I display them at the school\nexhibition?” Sierra smiled brightly as she exclaimed, “Oh, this\nis so wonderful! It’s always been a dream of mine to share my\nart with others! This is the best day ever!”\n① angry \t→ calm \t② frustrated → bored\n③ nervous → delighted \t④ relieved \t→ surprised\n⑤ thrilled → panicked",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "angry → calm"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "frustrated → bored"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "nervous → delighted"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "relieved → surprised"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "thrilled → panicked"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 746,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11,
+          12
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_20",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 20,
+      "type": "주장",
+      "group": "topic",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "rawText": "20. \t다음 글에서 필자가 주장하는 바로 가장 적절한 것은?\nShowing up late for work and using abusive language are\nthe kinds of problems that every business wants to eliminate.\nBusiness leaders looking to achieve this often focus on finding\n“bad apples” who break their rules and then punishing them.\nThis assumes that the bad apples are acting badly on purpose.\nIn fact, one common reason that employees give for breaking\nrules is that they were unaware their behavior was undesirable.\nThere are some actors who knowingly act against policy, but\nmany problems are unintentional failings. If businesses want\nbetter employees, those businesses must create clear standards\nand educate their employees directly about how to follow\nthem. Without these standards there would be no way to\ndistinguish bad apples from merely uninformed apples.\n① 생산성 향상을 위해 기업은 직원 윤리 교육을 주기적으로 시행해야 한다.\n② 기업은 행동 수칙에 대한 명확한 규정을 마련하여 직원을 교육해야 한다.\n③ 직원의 비윤리적 행위 예방을 위해 기업은 상벌 규정을 정비해야 한다.\n④ 근무 성과에 따른 보상을 통해 기업은 우수 직원의 이탈을 막아야 한다.\n⑤ 기업은 직원에 대한 공정한 평가를 위해 동료 평가를 실시해야 한다.\n이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에\n따라 답을 하시기 바랍니다.\n\n-- 2 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n3\n3 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "생산성 향상을 위해 기업은 직원 윤리 교육을 주기적으로 시행해야 한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "기업은 행동 수칙에 대한 명확한 규정을 마련하여 직원을 교육해야 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "직원의 비윤리적 행위 예방을 위해 기업은 상벌 규정을 정비해야 한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "근무 성과에 따른 보상을 통해 기업은 우수 직원의 이탈을 막아야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "기업은 직원에 대한 공정한 평가를 위해 동료 평가를 실시해야 한다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1121,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          12
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_21",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 21,
+      "type": "밑줄 의미",
+      "group": "blank",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "21. 밑줄 친 come back home again이 다음 글에서 의미하는 바로",
+      "rawText": "21. \t밑줄 친 come back home again이 다음 글에서 의미하는 바로\n가장 적절한 것은? [3점]\nHere is a fundamental quality of music. Note names repeat\nbecause of a perceptual phenomenon that corresponds to the\ndoubling and halving of frequencies. When we double or\nhalve \ta \tfrequency, \twe \tend \tup \twith \ta \tnote \tthat \tsounds\nremarkably similar to the one we started out with. This\nrelationship, a frequency ratio of 2:1 or 1:2, is called the\noctave. It is so important that, in spite of the large differences\nthat exist between musical cultures, every culture we know of\nhas the octave as the basis for its music, even if it has little else\nin common with other musical traditions. This phenomenon\nleads to the notion of circularity in pitch perception, and is\nsimilar to circularity in colors. Although red and violet fall at\nopposite ends of the continuum of visible frequencies of\nelectromagnetic energy, we see them as perceptually similar.\nThe same is true in music, and music is often described as\nhaving two dimensions, one that accounts for tones going up\nin frequency and another that accounts for the perceptual sense\nthat we’ve come back home again each time we double a\ntone’s frequency.\n① identified tonal differences within the same octave\n② returned to the original note with an identical frequency\n③ reached a note named the same but with a different pitch\n④ restored musical sensitivity by adapting to various octaves\n⑤ constructed frequency patterns from notes with the same name",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "identified tonal differences within the same octave"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "returned to the original note with an identical frequency"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "reached a note named the same but with a different pitch"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "restored musical sensitivity by adapting to various octaves"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "constructed frequency patterns from notes with the same name"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1470,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_22",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 22,
+      "type": "요지",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "rawText": "22. \t다음 글의 요지로 가장 적절한 것은?\nOne reason that people participate in social media is because\nit builds social relations. We increase our social capital when\nwe successfully engage in social media. Social capital describes\nthe networks of relationships we have that are built on mutuality\nand sharing of identity, understanding, norms and values. We\nbuild ties that may pay off with a job lead or a letter of\nrecommendation. We reinforce our identities through our online\npresentation in a personal blog or our profile. “The premise\nbehind \tthe \tnotion \tof \tsocial \tcapital \tis \trather \tsimple \tand\nstraightforward: investment in social relations with expected\nreturns,” noted sociologist Nan Lin. Lin’s work stresses that it\nis who you know as much as what you know that shapes our\nexperience in society. With new media, our reach of connecting\nis all the greater, expanding our “who you know” to greater\nand greater lengths.\n* premise: 전제\n① 소셜 미디어를 통한 관계망의 확장은 중요한 사회적 자본이 된다.\n② 사회적 규범과 가치를 공유하는 것이 인간관계 형성의 기반이다.\n③ 뉴 미디어의 등장은 사회적 자본 형성의 방식을 변화시킨다.\n④ 다양한 인적 자본 구축은 소셜 미디어 활동에 필수적이다.\n⑤ 사회적 경험은 인격 함양과 세계관 확장에 도움이 된다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "소셜 미디어를 통한 관계망의 확장은 중요한 사회적 자본이 된다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "사회적 규범과 가치를 공유하는 것이 인간관계 형성의 기반이다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "뉴 미디어의 등장은 사회적 자본 형성의 방식을 변화시킨다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "다양한 인적 자본 구축은 소셜 미디어 활동에 필수적이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "사회적 경험은 인격 함양과 세계관 확장에 도움이 된다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1111,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13,
+          14
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_23",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 23,
+      "type": "주제",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "rawText": "23. \t다음 글의 주제로 가장 적절한 것은?\nIn writing a life, the life narrator and the biographer engage\ndifferent kinds of evidence. Most biographers incorporate\nmultiple forms of evidence, including historical documents,\ninterviews, and family archives, which they evaluate for validity.\nRelatively few biographers use their personal memories of\ntheir subject as reliable evidence, unless they had a personal\nrelationship to the subject of the biography (as a relative,\nchild, friend, or colleague). For life narrators, by contrast,\npersonal memories are the primary archival source. They may\nhave recourse to other kinds of sources ― letters, journals,\nphotographs, conversations ― and to their knowledge of a\nhistorical moment. But the usefulness of such evidence for\ntheir stories lies in the ways in which they employ that\nevidence to support, supplement, or offer commentary on their\npersonalized acts of remembering. In autobiographical narratives,\nimaginative acts of remembering always overlap with such\nrhetorical acts as assertion, justification, judgment, conviction,\nand questioning.\n* archive: 기록 \t** recourse: 의지 \t*** rhetorical: 수사적인\n① role of personal memories in different types of life storytelling\n② advantages of documenting evidence-based family histories\n③ influence of the source types on the quality of life narratives\n④ similarity of data sources in describing a person’s life\n⑤ crucial conditions for the success of life narrators",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "role of personal memories in different types of life storytelling"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "advantages of documenting evidence-based family histories"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "influence of the source types on the quality of life narratives"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "similarity of data sources in describing a person’s life"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "crucial conditions for the success of life narrators"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1442,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          14,
+          15
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_24",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 24,
+      "type": "제목",
+      "group": "topic",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "24. 다음 글의 제목으로 가장 적절한 것은? [3점]",
+      "rawText": "24. \t다음 글의 제목으로 가장 적절한 것은? [3점]\nMonasteries were the engine rooms of the Middle Ages.\nAt the height of their activities and influence, monasteries\nprovided intellectual leadership for the institutions of Church\nand civil governments, innovation in religious thought and\npractice, \tmedical \tprovision, \teducation, \tvisual \tculture \tand\nagricultural development. They did all this while apparently\nobserving self-imposed isolation from the wider community.\nFor monasteries were intended to function as places set apart\nfrom the world, in which monks devoted their lives to a\npermanent rhythm of religious observance, prayer and study.\nReligious prayer and praise lay at the heart of monasticism.\nBoth those following this life and those outside believed that\nmonastic lives were led for the benefit of wider society, and\nthat the sacrifices made by monks in separating themselves\nfrom ‘normal’ human \tcontact functioned \tas penances \ton\nbehalf of the community as well as for their own deliverance.\nMonks were regarded as leading parallel lives that had the\npower to save themselves and others.\n* monastery: 수도원 \t** monk: 수도사 \t*** penance: 참회\n① How to Gain Religious and Social Benefits from Monastery Life\n② Why the Middle Ages Demanded Religious Figures Be Isolated\n③ The Grace of Solitude: Detached from but Attached to Society\n④ No Sacrificial Leaders, No Flowering of Civilization\n⑤ Mystery of Power: The Politics of Peace and Solitude\n\n-- 3 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n4\n4 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "How to Gain Religious and Social Benefits from Monastery Life"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Why the Middle Ages Demanded Religious Figures Be Isolated"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "The Grace of Solitude: Detached from but Attached to Society"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "No Sacrificial Leaders, No Flowering of Civilization"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Mystery of Power: The Politics of Peace and Solitude"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1491,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          15,
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_25",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 25,
+      "type": "도표",
+      "group": "info",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "25. 다음 도표의 내용과 일치하지 않는 것은?",
+      "rawText": "25. \t다음 도표의 내용과 일치하지 않는 것은?\nThe above graph shows the percentages of U.S. shoppers\nwho read online reviews before making purchases in 2015 by\nproduct category and age group. ① Of all the above categories,\npeople from each age group tended to read online reviews the\nmost, by percentage, before buying electronics. ② The age\ngroup least likely to read online reviews before buying a car\nwas the 18—34 age group. ③ The percentage of people in the\n35—54 age group using online reviews before making purchases\nof household appliances was more than twice that of people in\nthe same age group using online reviews before purchasing\nclothes. ④ For people who read online reviews before purchasing\nhousehold appliances, the percentage of people aged 35—54\nwas higher than that of those aged 18—34 and lower than that\nof those aged 55+. ⑤ The percentage of people reading online\nreviews before buying clothes was less than 30% for each of\nthe three age groups.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Of all the above categories, people from each age group tended to read online reviews the most, by percentage, before buying electronics."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "The age group least likely to read online reviews before buying a car was the 18—34 age group."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "The percentage of people in the 35—54 age group using online reviews before making purchases of household appliances was more than twice that of people in the same age group using online reviews before purchasing clothes."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "For people who read online reviews before purchasing household appliances, the percentage of people aged 35—54 was higher than that of those aged 18—34 and lower than that of those aged 55+."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "The percentage of people reading online reviews before buying clothes was less than 30% for each of the three age groups."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 951,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "grouped_bar_chart",
+        "assetPath": "english/assets/2026-09/q25-figure.png",
+        "sha256": "b5d60233754de098b744fa85956df8c33bdbaaf86b84cfb151dbcbc5b97022ba",
+        "sourcePage": 4,
+        "alt": "2015년 미국 구매 전 온라인 구매평 열람 비율. 전자제품은 18~34세 66%, 35~54세 71%, 55세 이상 68%. 자동차는 47%, 53%, 55%. 가전제품은 42%, 57%, 62%. 의류는 33%, 25%, 21%."
+      }
+    },
+    {
+      "id": "2026_09_26",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 26,
+      "type": "내용 일치",
+      "group": "info",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "26. Claude Shannon에 관한 다음 글의 내용과 일치하지 않는",
+      "rawText": "26. \tClaude Shannon에 관한 다음 글의 내용과 일치하지 않는\n것은?\nClaude \tShannon \twas \tan \tAmerican \tmathematician \tand\ninformation scientist, famous for being the “father of information\ntheory.” As a child, he was interested in electrical devices and\nbuilt a telegraph that connected to his friend’s home half a\nmile away. At age 21, he started his master’s program in\nelectrical engineering. His master’s thesis on digital computing\ntheory has been called the “most important master’s thesis of\nall time.” During World War II, he worked to help win the war\nby inventing a machine that helped destroy German rockets.\nIn 1950, with the help of his wife, he built a machine capable\nof learning by itself. This machine was viewed as part of the\nfoundation of Artificial Intelligence. In 1958, he became a full\nprofessor at MIT and continued to teach there for more than\n20 years. A biography written about his life called him, the\n“most important genius you’ve never heard of.”\n* telegraph: 전신기 \t** thesis: 논문\n① 어렸을 때 전기기기에 관심이 있었다.\n② 스물한 살에 전기공학 석사과정을 시작했다.\n③ 제2차 세계대전 때 독일 로켓의 파괴에 도움이 되는 기계를 발명했다.\n④ 스스로 학습할 수 있는 기계를 1950년에 만들었다.\n⑤ MIT에서 20년 이상 교수로 재직 후 1958년에 퇴임했다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "어렸을 때 전기기기에 관심이 있었다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "스물한 살에 전기공학 석사과정을 시작했다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "제2차 세계대전 때 독일 로켓의 파괴에 도움이 되는 기계를 발명했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "스스로 학습할 수 있는 기계를 1950년에 만들었다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "MIT에서 20년 이상 교수로 재직 후 1958년에 퇴임했다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1147,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16,
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_27",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 27,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "27. Wabut Jungle Yoga에 관한 다음 안내문의 내용과 일치하지",
+      "rawText": "27. \tWabut Jungle Yoga에 관한 다음 안내문의 내용과 일치하지\n않는 것은?\nWabut Jungle Yoga\nIn this program, you can rediscover forgotten rhythms of\nyour life while experiencing both yoga and the jungle.\nMany travelers join us again year after year.\nWhere: Wabut Jungle Yoga Center in Kroiwan\nWhat\n∙Doing yoga on the deck outside\n∙Bird watching in the jungle\n∙Hiking in the jungle with a guide\nLodging: Beautifully crafted bungalow\n(No private restroom inside bungalow, but common\nrestrooms easily accessible)\nApplication\n∙Visit our website at www.wabu*.com and fill out the\napplication form online.\n∙For more information, email us at wabu*@*mail.com.\nTransportation: It is offered from the airport to the yoga center.\n① 많은 여행자들이 매년 다시 참여한다.\n② 정글에서의 조류 관찰이 포함된다.\n③ 방갈로 안에 개인 화장실이 있다.\n④ 신청서를 온라인으로 작성해야 한다.\n⑤ 교통편이 공항에서 요가 센터까지 제공된다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "많은 여행자들이 매년 다시 참여한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "정글에서의 조류 관찰이 포함된다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "방갈로 안에 개인 화장실이 있다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "신청서를 온라인으로 작성해야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "교통편이 공항에서 요가 센터까지 제공된다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 808,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "notice",
+        "assetPath": "english/assets/2026-09/q27-notice.png",
+        "sha256": "736c89434511d6a998eb853c6fac74cbfe55c8107c61b3d5014eb5e72693be24",
+        "sourcePage": 4,
+        "alt": "Wabut Jungle Yoga의 장소, 활동, 숙소, 신청 방법과 교통편을 안내하는 원본 안내문."
+      }
+    },
+    {
+      "id": "2026_09_28",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 28,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "28. Under the Sea Mascot Contest에 관한 다음 안내문의 내용과",
+      "rawText": "28. \tUnder the Sea Mascot Contest에 관한 다음 안내문의 내용과\n일치하는 것은?\nUnder the Sea Mascot Contest\nDesign a unique marine animal mascot, reflecting the\ntheme of marine ecosystem conservation.\nSchedule\n∙Submission period: September 15—October 15\n∙Judging period: October 16—October 20\n∙Winner announcement: October 21\nPrizes\nNumber of Winners Prize Money (per winner)\n1st prize \t1 \t$1,000\n2nd prize \t1 \t$700\n3rd prize \t2 \t$500\nGuidelines\n∙There is no participation fee.\n∙The design must be in JPG format.\n(Maximum file size: 10MB)\n∙Each participant must submit one mascot design.\nAssessment Criteria\nPercentage\nCreativity \t50%\nRelevance to Theme \t30%\nAttractiveness \t20%\n※ You can find more information at www.eco*cea*.org.\n① 심사 기간은 9월 15일부터 10월 15일까지이다.\n② 2등은 두 명 선발된다.\n③ 참가비가 있다.\n④ 각 참가자는 마스코트 디자인을 두 개 이상 제출해야 한다.\n⑤ 평가 기준에서 창의성이 가장 높은 비중을 차지한다.\n\n-- 4 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n5\n5 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "심사 기간은 9월 15일부터 10월 15일까지이다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "2등은 두 명 선발된다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "참가비가 있다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "각 참가자는 마스코트 디자인을 두 개 이상 제출해야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "평가 기준에서 창의성이 가장 높은 비중을 차지한다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 888,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17,
+          18
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "figure": {
+        "kind": "notice_with_tables",
+        "assetPath": "english/assets/2026-09/q28-notice.png",
+        "sha256": "4b8928a5c4c04d0163999c331d81973f410ad4d438860e96f254ad9f5b5ae611",
+        "sourcePage": 4,
+        "alt": "Under the Sea Mascot Contest의 일정, 순위별 수상 인원과 상금, 제출 조건, 평가 기준을 표시한 원본 안내문."
+      }
+    },
+    {
+      "id": "2026_09_29",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 29,
+      "type": "어법",
+      "group": "grammar",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "29. 다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?",
+      "rawText": "29. \t다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?\nHoney can be eaten by itself or mixed with other ingredients.\nNatural or pure honey has had no additives, preservatives or\nsynthetic ingredients added. Also ① referred to as ‘undiluted’,\nit is usually more expensive than diluted honeys. Natural\nhoney can also be called ‘blended honey’, ② which honeys\nfrom various sources are blended together ― not by the bees,\nbut by human processors and distributors in stages after the\nhoney has been collected. Blending is frequently done for taste\nas well as marketing reasons, especially since some consumers\nfind the darker honeys too ③ strong. Mixing different types of\nhoney together can make it more palatable, and also gives a\nmore uniform flavour ― this is an important consideration for\nproducers and retailers, who ④ feel the need to guarantee\nreliable, unsurprising (typically mild) flavours to their customers.\nClover is one of the most popular honeys in the U.S., and ⑤ its\nmild flavour and taste have become familiar to many Americans.\n* dilute: 묽게 하다 \t** palatable: 입에 맞는",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "referred"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "which"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "strong"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "feel"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "its"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1058,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          18,
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_30",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 30,
+      "type": "어휘",
+      "group": "vocab",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "30. 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지",
+      "rawText": "30. \t다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지\n않은 것은? [3점]\nWhat is soft-path river engineering? One way to visualize its\nspirit is to liken it to a footpath in the forest. Suppose a tree\nfalls across a footpath. A soft-path response would be simply\nto redirect the trail around the fallen tree. A more interventionist\nresponse would be to ① remove the tree and restore the\noriginal route. A still more interventionist response might be to\nstraighten and pave the path to insert it more ② permanently in\nthe landscape. The true high-modernist step would, of course,\nbe to ③ create a superhighway that removes the landscape\nand bulldozes straight through all obstacles in the topography.\nSoft-path engineering has the unique advantage of intellectual\n④ modesty with respect to what we actually know about river\nmovement and its environmental effects. In contrast to hard-path\nengineering, soft-path engineering accepts variability in the\nriver’s movement as ⑤ insignificant until proven otherwise.\nBackwaters, short-lived wetlands, braids and channels, swamps\n― all undesirable to hard-path engineering ― are presumed by\nsoft-path engineers to be ecologically important.\n* pave: 포장하다 \t** topography: 지형\n[31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "remove"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "permanently"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "create"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "modesty"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "insignificant"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1230,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19,
+          20
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_31",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 31,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "31. We know that animals have evolved a variety of patterns to",
+      "rawText": "31. \tWe know that animals have evolved a variety of patterns to\nmanipulate \tthe \tperceptions \tof \ttheir \tpredators \tto \tafford\nthemselves a modicum of safety. Greater Bower birds utilize\nin the mating domain. Males construct a\nbower; its function is to provide an arena in which males\ndisplay to females standing in an avenue that leads up to the\nbower. The males decorate the avenue with a variety of\nobjects, such as stones and shells. But they do not do so in a\nchaotic manner. The larger objects are placed closer to the\nbower and the smaller objects farther away. This creates a\nforced perspective the opposite of the Cinderella Castle; the\nbower appears smaller than it actually is. Endler and his\ncolleagues suggested that the male courting in the bower now\nappears larger and thus more attractive to the female. Data on\nmale mating success collected in the wild supports their\nhypothesis.\n* predator: 약탈자 \t** modicum: 소량\n① genetic variations \t② perceptual biases\n③ vocal attractiveness \t④ decorating skills\n⑤ locational advantages",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "genetic variations"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "perceptual biases"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "vocal attractiveness"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "decorating skills"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "locational advantages"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1038,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          20
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_32",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 32,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "32. Although empathy is widely praised by scholars and public",
+      "rawText": "32. \tAlthough empathy is widely praised by scholars and public\nfigures, not everyone is an empathy booster. Critics of empathy\nargue that empathy will not save us from interpersonal and\nintergroup conflict. In fact, they argue, empathy makes such\nconflicts worse. These critics maintain that empathy can be\nexhausting and lead to burnout, insensitivity to suffering, or\nworse. They argue that we tend to empathize strongly with\nour in-group and resist empathizing with out-groups, and\neven enjoy the suffering of out-groups in competitive or\nthreatening contexts. Thus, the prescription for more empathy\n. Empathy,\nthey argue, can further entrench conflict and force us into an\nus vs. them mentality. Finally, even when we try to empathize\nwith others who are dissimilar from us or in unfamiliar\ncontexts, sometimes we are unable to accurately empathize\nwith their experiences, causing further misunderstandings and\nfrustration. Critics of empathy argue that we should give up on\nempathy and employ other tools in pursuit of social harmony,\ne.g., rational compassion or moral emotions like fear, anger,\nand shame. [3점]\n* entrench: 확립하다 \t** compassion: 동정(심)\n① underestimates the invisible conflicts possible within a group\n② is triggered by the need for solutions to emotional conflicts\n③ is often counterproductive in cases of conflict\n④ functions as a facilitator in the resolution of social disharmony\n⑤ raises questions about negative attitudes toward social disharmony\n\n-- 5 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n6\n6 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "underestimates the invisible conflicts possible within a group"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "is triggered by the need for solutions to emotional conflicts"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "is often counterproductive in cases of conflict"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "functions as a facilitator in the resolution of social disharmony"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "raises questions about negative attitudes toward social disharmony"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1526,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          21
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_33",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 33,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "33. Compared to other ecosystems, forests are relatively diverse,",
+      "rawText": "33. \tCompared to other ecosystems, forests are relatively diverse,\nbut this should not necessarily be \t.\nWetlands, meadows, and grasslands have a unique biota too,\neven if it is often not as rich as a forest biota. The ecological\nproblems of this process have been described from a number\nof places such as Iceland, South Africa, and Australia, but the\nclassic example of this comes from Scotland and northern\nEngland. Here the Forestry Commission has drained, fertilized,\nand fenced extensive areas of wetlands to facilitate turning\nthem into forests. Increasing the extent of forests in Britain is\ncertainly a desirable goal, and most of the Forestry Commission’s\nefforts are directed toward sites that were forested before\nsheep and their keepers came to the island. However, ecologists\nfrequently complain about the Commission’s work because it\nis not restricted to former forest sites, because the forests\nestablished are usually composed of exotic trees, and because\nthe \twildlife \tthreatened \tby \tthis \tactivity \tincludes \tmany\nuncommon species.\n* biota: 생물(종류)상(相) \t** fertilize: (땅을) 기름지게 하다\n① grounds for investigating the value of forest expansion\n② a basis for extending institutional aid to entire ecosystems\n③ taken as the reason for introducing exotic species to an ecosystem\n④ accepted as evidence for increasing ecological enrichment\n⑤ a justification for converting nonforests into forests",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "grounds for investigating the value of forest expansion"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "a basis for extending institutional aid to entire ecosystems"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "taken as the reason for introducing exotic species to an ecosystem"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "accepted as evidence for increasing ecological enrichment"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "a justification for converting nonforests into forests"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1407,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          21,
+          22
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_34",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 34,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "34. When gathering the preferences of multiple agents into",
+      "rawText": "34. \tWhen gathering the preferences of multiple agents into\none collective choice, it is easily seen that certain cases\n. For example,\nif there are two alternatives, a and b, and two agents such that\none prefers a and the other one b, there is no deterministic way\nof selecting a single alternative without violating one of two\nbasic fairness conditions known as anonymity and neutrality.\nAnonymity requires that the collective choice ought to be\nindependent of the agents’ identities whereas neutrality requires\nimpartiality towards the alternatives. Allowing lotteries as\nsocial outcomes hence seems like a necessity for impartial\ncollective choice. Indeed, most common “deterministic” social\nchoice functions such as plurality rule are only deterministic\nas long as there is no tie, which is usually resolved by drawing\na \tlot. \tThe \tuse \tof \tlotteries \tfor \tthe \tselection \tof \tofficials\ninterestingly goes back to the world’s first democracy in Athens,\nwhere it was widely regarded as a principal characteristic of\ndemocracy, and has recently gained increasing attention in\npolitical science. [3점]\n* plurality: 복수\n① call for randomization or other means of tiebreaking\n② demonstrate how impartial selection could be invalidated\n③ necessitate deterministic systems of selecting voters blindly\n④ rely upon neutral agents to establish clear selection guidelines\n⑤ require understanding of the unpredictability inherent in democracy",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "call for randomization or other means of tiebreaking"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "demonstrate how impartial selection could be invalidated"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "necessitate deterministic systems of selecting voters blindly"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "rely upon neutral agents to establish clear selection guidelines"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "require understanding of the unpredictability inherent in democracy"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1433,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          22,
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_35",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 35,
+      "type": "무관한 문장",
+      "group": "irrelevant",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "35. 다음 글에서 전체 흐름과 관계 없는 문장은?",
+      "rawText": "35. \t다음 글에서 전체 흐름과 관계 없는 문장은?\nAll workers need access to mentors that can provide them\nwith valuable information about their job, their workplace, and\nthe resources that are available within their organization. Mentors\nalso provide much needed psychosocial support. ① Having a\ndiverse network of mentors is important for dominant and\nminority group members alike. ② Minority group members\nneed diverse mentors so that they can gain insight into what it\nmeans to be employed by a particular organization or in a\nparticular field or profession. ③ Majority workers benefit by\nhaving a network of diverse mentors because it increases their\nunderstanding and sensitivity to the unique realities of diverse\nworkers and their own identity, and perhaps even their own\nforms of privilege. ④ Mentoring has been typically required and\npraised as an essential component in the personal development of\nemployers. ⑤ The ultimate goal of these mentoring opportunities\nis to have individuals be more informed, identified, and engaged\nin their work and in their organization.\n* privilege: 특권\n[36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한\n것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Having a diverse network of mentors is important for dominant and minority group members alike."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Minority group members need diverse mentors so that they can gain insight into what it means to be employed by a particular organization or in a particular field or profession."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Majority workers benefit by having a network of diverse mentors because it increases their understanding and sensitivity to the unique realities of diverse workers and their own identity, and perhaps even their own forms of privilege."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Mentoring has been typically required and praised as an essential component in the personal development of employers."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "The ultimate goal of these mentoring opportunities is to have individuals be more informed, identified, and engaged in their work and in their organization."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1119,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23,
+          24
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_36",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 36,
+      "type": "순서",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "36.",
+      "rawText": "36.\nTraditionally, when teachers teach writing, they assign\ntopics for students to write on; perhaps they do a bit of\nbrainstorming about the topic during a pre-writing phase,\nand then have students write about the topic without\ninterruption.\n(A) In process writing, on the other hand, students may\ninitially brainstorm ideas about a topic and begin writing,\nbut then they have repeated conferences with the teacher\nand the other students, during which they receive feedback\non their writing up to that point, make revisions, based on\nthe feedback they receive, and carry on writing.\n(B) In this way, students learn to view their writing as someone\nelse’s reading and to improve both the expression of\nmeaning and the form of their writing as they draft and\nredraft. Process writing shifts the emphasis in teaching\nwriting from evaluation to revision.\n(C) Subsequently, teachers collect and evaluate what students\nhave written. Such instruction is very ‘product-oriented;’\nthere is no involvement of the teacher in the act or\n‘process’ of writing.\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n\n-- 6 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n7\n7 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1190,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          24
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_37",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 37,
+      "type": "순서",
+      "group": "order",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "37.",
+      "rawText": "37.\nPerhaps at some point you have seen some mathematical\nwriting and not understood it.\n(A) The complicated notations that might spring to mind ― all\nthose strange dashes, squiggles and letters ― are obvious\nsigns, but a lot of those are really quite modern. Mathematics\nhad been going on for a long time before the dashes and\nsquiggles were invented.\n(B) You would not be the first; rest assured, even professional\nmathematicians sometimes have to rely on discussions\nwith colleagues to properly understand problems they are\nlooking at. But how do you recognise some writing is\nmathematical in the first place?\n(C) Put simply, there has to be something mathematical going\non for us to say that it is mathematics. And if we are\ndealing \twith \twriting \tfrom \ta \tvery \tdistant \tpast, \tin \ta\nlanguage that is not familiar to us, from a time even\nbefore recorded language, that can be sometimes difficult\nto recognise. [3점]\n* squiggle: 꼬부라져 읽기 어려운 글자\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n[38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장\n적절한 곳을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1087,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          24,
+          25
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_38",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 38,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "38.",
+      "rawText": "38.\nAs winter approaches, the length of the day shortens, the\ntemperature drops, and plants, including trees, can detect\nthis change.\nIt is worth pointing out that leaves don’t drop to the ground\nbecause they are dying ― rather, the tree initiates an active\nprocess of clever recycling called senescence. A tree, like an\noak for example, would struggle to survive through a harsh\nwinter if it retained its canopy of leaves. ( ① ) It would risk\ndamage from strong winter winds and would lose more water\nfrom its leaves than it could draw up from the frozen ground.\n( ② ) If it didn’t blow over, it would die of thirst. ( ③ ) It\nsignals to them that it is time to lose their leaves. ( ④ ) First,\nhowever, trees carefully suck all of the useful nutrients out of\nthe leaves and then, with surgical precision, block up that\npathway into the leaves. ( ⑤ ) That blocked pathway at the\nbase of the leaf stem creates a weakness and, in the wind, the\nleaves snap off and fall to the ground.\n* senescence: 노화",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 997,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          25,
+          26
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_39",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 39,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "39.",
+      "rawText": "39.\nThe problem of survival lies at the root of many of the\nhistorian’s \tproblems, \tfor \twhat \thas \tsurvived \tmay \tnot\nnecessarily be more significant than what has not survived.\nHistorians use evidence in order to understand what happened\nand why it happened. In architectural history this evidence\nmay \ttake \tthe \tform \tof \tthe \tbuildings \tthemselves \tor \ttheir\nremains, and documents such as plans, drawings, descriptions,\ndiaries or bills. ( ① ) Our picture of any period of history is\nderived from a multitude of sources, such as the paintings,\nliterature, deeds, buildings and other artefacts that have survived.\n( ② ) The Egyptian pyramids have survived thousands of\nyears, but historical significance is not just a question of\ndurability. ( ③ ) These buildings were part of a rich and\ndiverse culture, much of which has been lost. ( ④ ) They are\nhistorical facts, but facts by themselves, even such massive\nfacts as the pyramids, are just the first stage in any historical\nstudy, and until they have been evaluated, placed in context\nand interpreted, they tell us little. ( ⑤ ) Different historians\nmay place different values on the same facts, and the discovery\nof new evidence may modify or change existing theories and\ninterpretations. [3점]",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1251,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          26,
+          27
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_40",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 40,
+      "type": "요약문",
+      "group": "summary",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),",
+      "rawText": "40. \t다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),\n(B)에 들어갈 말로 가장 적절한 것은?\nIn most fiction, characters’ lives are limited to \tthe\nindividual work. Readers may disagree on the characteristics\nand traits of fictional figures, and in drama there is room\nfor different interpretations of characters. However, it is\nless common for characters in literary fiction to reappear\nin subsequent works than in genre fiction, where series\nfeaturing the same central characters are common. This is\neven more pronounced in comics, which are typically\nserialized \tin \tnewspaper \tstrips \tor \tcomic \tbooks. \tThus\ncharacters introduced in the 1930s, like Superman and\nBatman, may still enjoy new adventures decades later.\nDuring these characters’ long histories, they change in\nvarious ways for a variety of reasons. If a character is\ncreated by a single author, like Sherlock Holmes, the\ncharacter’s core traits may change little from story to story,\nbut readers learn more about him with each successive\nstory. On the other hand, if characters are the work of\nseveral hands over decades, they may change considerably.\n󰀻\nWhile \tcharacters \tin \tmost \tliterary \tfiction \thardly \tever\n(A) \tin successive works, those in genre fiction\nand comics often do so, and may undergo \t(B) \tin\ntheir traits especially when written about by different authors\nover time.\n(A) \t(B) \t(A) \t(B)\n① resurface …… simplification \t② endure …… degradation\n③ fade \t…… variation \t④ feature …… transformation\n⑤ disappear…… fossilization\n\n-- 7 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n8\n8 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "resurface ··· simplification"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "endure ··· degradation"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "fade ··· variation"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "feature ··· transformation"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "disappear ··· fossilization"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1530,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          27,
+          28
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_41",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 41,
+      "type": "장문 제목",
+      "group": "long",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "41. 윗글의 제목으로 가장 적절한 것은?",
+      "rawText": "41. \t윗글의 제목으로 가장 적절한 것은?\n① Which Channel Is What Matters in Successful Communication\n② Cutting-edge Containers for Effective Social Communication\n③ Immediate Feedback: A Royal Road to Successful Management\n④ How Has Social Presence Evolved with Social Channels?\n⑤ The Richer, the Better! Top Priority in Container Choice",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nWhile social presence has evolved through many iterations\nsince its first development within the context of the landline\ntelephone, the perception or feeling of being connected with\nthe other person within the context of the conversation has\npersisted. Some research has explored specific technologies\nand the extent to which their characteristics lead to a feeling\nof social presence. For example, some researchers have\nstudied the “richness” of the media, or the (a) number of\ncues available to convey social presence. A telephone call,\nwhich provides for audio cues and immediate feedback, is\npotentially (b) richer than an email, which provides only textual\ncues and no immediate feedback. Videoconferencing would\nbe considered richer than the phone because of the addition\nof (c) visual cues, making it closer to replicating a perceived\ngold standard of face-to-face, in-person social presence.\nResearchers \thave \tsuggested \tthat \tsuccessful \tmanagers\nwould choose rich media for confusing or ambiguous messages\nand lean or less rich media for messages that were (d) less\nroutine in nature. For example, if you wanted to discuss a\ncomplicated client agreement, it would be best to choose\na (e) face-to-face meeting. In contrast, if you were going to\ninform your team about a change in meeting time from 3:00\nto 3:30, you might send out a generic email to everyone.\nThese different channels of communication were considered\nby researchers as a type of container that the message comes\nin. To be a good communicator, you need to choose the right\ncontainer.\n* iteration: 반복 \t** generic: 일반적인",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Which Channel Is What Matters in Successful Communication"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Cutting-edge Containers for Effective Social Communication"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Immediate Feedback: A Royal Road to Successful Management"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "How Has Social Presence Evolved with Social Channels?"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "The Richer, the Better! Top Priority in Container Choice"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 320,
+        "sharedPassageChars": 1621,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          28
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_42",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 42,
+      "type": "장문 어휘",
+      "group": "long",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "42. 밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은",
+      "rawText": "42. \t밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nWhile social presence has evolved through many iterations\nsince its first development within the context of the landline\ntelephone, the perception or feeling of being connected with\nthe other person within the context of the conversation has\npersisted. Some research has explored specific technologies\nand the extent to which their characteristics lead to a feeling\nof social presence. For example, some researchers have\nstudied the “richness” of the media, or the (a) number of\ncues available to convey social presence. A telephone call,\nwhich provides for audio cues and immediate feedback, is\npotentially (b) richer than an email, which provides only textual\ncues and no immediate feedback. Videoconferencing would\nbe considered richer than the phone because of the addition\nof (c) visual cues, making it closer to replicating a perceived\ngold standard of face-to-face, in-person social presence.\nResearchers \thave \tsuggested \tthat \tsuccessful \tmanagers\nwould choose rich media for confusing or ambiguous messages\nand lean or less rich media for messages that were (d) less\nroutine in nature. For example, if you wanted to discuss a\ncomplicated client agreement, it would be best to choose\na (e) face-to-face meeting. In contrast, if you were going to\ninform your team about a change in meeting time from 3:00\nto 3:30, you might send out a generic email to everyone.\nThese different channels of communication were considered\nby researchers as a type of container that the message comes\nin. To be a good communicator, you need to choose the right\ncontainer.\n* iteration: 반복 \t** generic: 일반적인",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 79,
+        "sharedPassageChars": 1621,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          28,
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_43",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 43,
+      "type": "장문 순서",
+      "group": "long",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로",
+      "rawText": "43. \t주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로\n가장 적절한 것은?\n①\n③\n⑤\n(B)\n(C)\n(D)\n－\n－\n－\n(D)\n(D)\n(C)\n－\n－\n－\n(C)\n(B)\n(B)\n②\n④\n(C)\n(D)\n－\n－\n(B)\n(B)\n－\n－\n(D)\n(C)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nMike had always dreamed about going to a baseball game.\nHe watched his favorite team, the Arrows, on TV all the\ntime, but he had never seen a game in person. One afternoon,\nMike’s dad came home earlier than usual. “Hey, Mike,” he\nsaid, “I just got two tickets for tonight’s Arrows game. Do\n(a) you want to go?” Mike was so excited that he ran to grab\nhis Arrows hat. In the car, his dad handed him a new baseball\nglove and added, “Just in case a fly ball comes our way.”\n(B)\nSeveral hours later, Mike’s favorite team hit a home run\nand won the game. Fireworks filled the sky, and the team\nsong played throughout the stadium. When they got home,\nMike told his mom all about his favorite plays and showed\nher the ball he caught. (b) He knew this was a day he would\nnever forget. It wasn’t just the game ― it was the cheering,\nthe excitement, and best of all, spending time with his dad.\nHe couldn’t wait for the next time they would get to go to a\ngame.\n(C)\nThe stadium was full of people wearing Arrows shirts.\nMike couldn’t believe how big the stadium looked in person.\nAs the players ran onto the field, Mike and his dad cheered\nfor their team’s players. His dad pointed at the player running\nout to third base, saying “Look, it’s Chavez, (c) your favorite\nplayer!” Mike saw him warming up on the field and waved\nhoping to get (d) his attention. After the players warmed up,\nMike and his dad went to get some snacks. As soon as they\nsat back down, the pitcher threw the first pitch.\n(D)\nBefore long, it was Chavez’s turn to hit. He hit a high fly\nball into the stands. The whole crowd stood up, but Mike\nreached up with his glove and grabbed the ball. Everyone\nclapped and smiled at Mike. (e) He tightly held the ball and\nfelt a little surprised, but very proud. Both teams kept scoring\nand the game stayed close. Mike and his dad cheered for\nevery hit and held their breath during every big play. They\nhigh-fived each other every time the Arrows scored.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(B) - (D) - (C)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(C) - (B) - (D)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(C) - (D) - (B)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(D) - (B) - (C)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(D) - (C) - (B)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 139,
+        "sharedPassageChars": 1987,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29,
+          30
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    },
+    {
+      "id": "2026_09_44",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 44,
+      "type": "장문 지칭",
+      "group": "long",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "44. 밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른",
+      "rawText": "44. \t밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nMike had always dreamed about going to a baseball game.\nHe watched his favorite team, the Arrows, on TV all the\ntime, but he had never seen a game in person. One afternoon,\nMike’s dad came home earlier than usual. “Hey, Mike,” he\nsaid, “I just got two tickets for tonight’s Arrows game. Do\n(a) you want to go?” Mike was so excited that he ran to grab\nhis Arrows hat. In the car, his dad handed him a new baseball\nglove and added, “Just in case a fly ball comes our way.”\n(B)\nSeveral hours later, Mike’s favorite team hit a home run\nand won the game. Fireworks filled the sky, and the team\nsong played throughout the stadium. When they got home,\nMike told his mom all about his favorite plays and showed\nher the ball he caught. (b) He knew this was a day he would\nnever forget. It wasn’t just the game ― it was the cheering,\nthe excitement, and best of all, spending time with his dad.\nHe couldn’t wait for the next time they would get to go to a\ngame.\n(C)\nThe stadium was full of people wearing Arrows shirts.\nMike couldn’t believe how big the stadium looked in person.\nAs the players ran onto the field, Mike and his dad cheered\nfor their team’s players. His dad pointed at the player running\nout to third base, saying “Look, it’s Chavez, (c) your favorite\nplayer!” Mike saw him warming up on the field and waved\nhoping to get (d) his attention. After the players warmed up,\nMike and his dad went to get some snacks. As soon as they\nsat back down, the pitcher threw the first pitch.\n(D)\nBefore long, it was Chavez’s turn to hit. He hit a high fly\nball into the stands. The whole crowd stood up, but Mike\nreached up with his glove and grabbed the ball. Everyone\nclapped and smiled at Mike. (e) He tightly held the ball and\nfelt a little surprised, but very proud. Both teams kept scoring\nand the game stayed close. Mike and his dad cheered for\nevery hit and held their breath during every big play. They\nhigh-fived each other every time the Arrows scored.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 78,
+        "sharedPassageChars": 1987,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          30
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      }
+    },
+    {
+      "id": "2026_09_45",
+      "examId": "2026_09",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "9월",
+      "qid": 45,
+      "type": "장문 내용",
+      "group": "long",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "45. 윗글에 관한 내용으로 적절하지 않은 것은?",
+      "rawText": "45. \t윗글에 관한 내용으로 적절하지 않은 것은?\n① Mike의 아빠는 평소보다 일찍 집에 왔다.\n② Mike가 가장 좋아하는 팀은 홈런을 치지 못했다.\n③ 경기장이 Arrows 셔츠를 입은 사람들로 가득했다.\n④ Chavez가 친 공은 관중석으로 날아갔다.\n⑤ Arrows가 득점할 때마다 Mike와 아빠는 하이파이브를 했다.\n* 확인 사항\n◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인\n하시오.\n\n-- 8 of 8 --",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nMike had always dreamed about going to a baseball game.\nHe watched his favorite team, the Arrows, on TV all the\ntime, but he had never seen a game in person. One afternoon,\nMike’s dad came home earlier than usual. “Hey, Mike,” he\nsaid, “I just got two tickets for tonight’s Arrows game. Do\n(a) you want to go?” Mike was so excited that he ran to grab\nhis Arrows hat. In the car, his dad handed him a new baseball\nglove and added, “Just in case a fly ball comes our way.”\n(B)\nSeveral hours later, Mike’s favorite team hit a home run\nand won the game. Fireworks filled the sky, and the team\nsong played throughout the stadium. When they got home,\nMike told his mom all about his favorite plays and showed\nher the ball he caught. (b) He knew this was a day he would\nnever forget. It wasn’t just the game ― it was the cheering,\nthe excitement, and best of all, spending time with his dad.\nHe couldn’t wait for the next time they would get to go to a\ngame.\n(C)\nThe stadium was full of people wearing Arrows shirts.\nMike couldn’t believe how big the stadium looked in person.\nAs the players ran onto the field, Mike and his dad cheered\nfor their team’s players. His dad pointed at the player running\nout to third base, saying “Look, it’s Chavez, (c) your favorite\nplayer!” Mike saw him warming up on the field and waved\nhoping to get (d) his attention. After the players warmed up,\nMike and his dad went to get some snacks. As soon as they\nsat back down, the pitcher threw the first pitch.\n(D)\nBefore long, it was Chavez’s turn to hit. He hit a high fly\nball into the stands. The whole crowd stood up, but Mike\nreached up with his glove and grabbed the ball. Everyone\nclapped and smiled at Mike. (e) He tightly held the ball and\nfelt a little surprised, but very proud. Both teams kept scoring\nand the game stayed close. Mike and his dad cheered for\nevery hit and held their breath during every big play. They\nhigh-fived each other every time the Arrows scored.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Mike의 아빠는 평소보다 일찍 집에 왔다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Mike가 가장 좋아하는 팀은 홈런을 치지 못했다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "경기장이 Arrows 셔츠를 입은 사람들로 가득했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Chavez가 친 공은 관중석으로 날아갔다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Arrows가 득점할 때마다 Mike와 아빠는 하이파이브를 했다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "not_built",
+      "source": {
+        "problemFile": "2026학년도_9월_영어_문제.pdf",
+        "answerFile": "2026학년도_9월_영어_정답.png",
+        "explainFile": "2026학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 248,
+        "sharedPassageChars": 1987,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          30
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      }
+    }
+  ]
+}

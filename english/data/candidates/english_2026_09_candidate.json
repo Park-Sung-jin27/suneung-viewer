@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2026_09_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "examId": "2026_09"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2026학년도_9월_영어_문제.pdf",
+      "sha256": "4fdb1e11fc03a3dcb2f9798c0503652264548065583bd2e931438964334b8bf3"
+    },
+    "answer": {
+      "filename": "2026학년도_9월_영어_정답.png",
+      "sha256": "1123b506af6ef82fef435e39806bdb95d50d5060c3c8fb26d25d4365fed40239"
+    },
+    "explanation": {
+      "filename": "2026학년도_9월_영어_해설.pdf",
+      "sha256": "ad93da03dc9552769d1730c7e590d7a0f3e42473352e1af88bbe883e2faae198"
+    }
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 0,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2026_09_25",
+      "2026_09_27",
+      "2026_09_28"
+    ]
+  },
+  "projectionPolicies": {
+    "default": {
+      "sourceField": "rawText",
+      "stripStem": true,
+      "stripChoices": true,
+      "stripPdfTail": true
+    },
+    "sharedPassageIds": [
+      "2026_09_41",
+      "2026_09_42",
+      "2026_09_43",
+      "2026_09_44",
+      "2026_09_45"
+    ],
+    "inlineMarkerIds": [
+      "2026_09_29",
+      "2026_09_30",
+      "2026_09_35",
+      "2026_09_42",
+      "2026_09_44"
+    ],
+    "sequenceTableIds": [
+      "2026_09_36",
+      "2026_09_37",
+      "2026_09_43"
+    ],
+    "placementMarkerIds": [
+      "2026_09_38",
+      "2026_09_39"
+    ]
+  },
+  "questions": [
+    { "id": "2026_09_18", "qid": 18, "answer": 2, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_19", "qid": 19, "answer": 3, "problemPage": 2, "explanationPages": [11, 12], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_20", "qid": 20, "answer": 2, "problemPage": 2, "explanationPages": [12], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_21", "qid": 21, "answer": 3, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_22", "qid": 22, "answer": 1, "problemPage": 3, "explanationPages": [13, 14], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_23", "qid": 23, "answer": 1, "problemPage": 3, "explanationPages": [14, 15], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_24", "qid": 24, "answer": 3, "problemPage": 3, "explanationPages": [15, 16], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_25", "qid": 25, "answer": 5, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "not_built", "figureAsset": "english/assets/2026-09/q25-figure.png" },
+    { "id": "2026_09_26", "qid": 26, "answer": 5, "problemPage": 4, "explanationPages": [16, 17], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_27", "qid": 27, "answer": 3, "problemPage": 4, "explanationPages": [17], "status": "question_answer_ready", "reviewStatus": "not_built", "figureAsset": "english/assets/2026-09/q27-notice.png" },
+    { "id": "2026_09_28", "qid": 28, "answer": 5, "problemPage": 4, "explanationPages": [17, 18], "status": "question_answer_ready", "reviewStatus": "not_built", "figureAsset": "english/assets/2026-09/q28-notice.png" },
+    { "id": "2026_09_29", "qid": 29, "answer": 2, "problemPage": 5, "explanationPages": [18, 19], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_30", "qid": 30, "answer": 5, "problemPage": 5, "explanationPages": [19, 20], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_31", "qid": 31, "answer": 2, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_32", "qid": 32, "answer": 3, "problemPage": 5, "explanationPages": [21], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_33", "qid": 33, "answer": 5, "problemPage": 6, "explanationPages": [21, 22], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_34", "qid": 34, "answer": 1, "problemPage": 6, "explanationPages": [22, 23], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_35", "qid": 35, "answer": 4, "problemPage": 6, "explanationPages": [23, 24], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_36", "qid": 36, "answer": 4, "problemPage": 6, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_37", "qid": 37, "answer": 2, "problemPage": 7, "explanationPages": [24, 25], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_38", "qid": 38, "answer": 3, "problemPage": 7, "explanationPages": [25, 26], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_39", "qid": 39, "answer": 2, "problemPage": 7, "explanationPages": [26, 27], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_40", "qid": 40, "answer": 4, "problemPage": 7, "explanationPages": [27, 28], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_41", "qid": 41, "answer": 1, "problemPage": 8, "explanationPages": [28], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_42", "qid": 42, "answer": 4, "problemPage": 8, "explanationPages": [28, 29], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_43", "qid": 43, "answer": 3, "problemPage": 8, "explanationPages": [29, 30], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_44", "qid": 44, "answer": 4, "problemPage": 8, "explanationPages": [30], "status": "question_answer_ready", "reviewStatus": "not_built" },
+    { "id": "2026_09_45", "qid": 45, "answer": 2, "problemPage": 8, "explanationPages": [30], "status": "question_answer_ready", "reviewStatus": "not_built" }
+  ],
+  "choiceOverrides": {
+    "2026_09_20": [
+      { "num": 1, "mark": "①", "text": "생산성 향상을 위해 기업은 직원 윤리 교육을 주기적으로 시행해야 한다." },
+      { "num": 2, "mark": "②", "text": "기업은 행동 수칙에 대한 명확한 규정을 마련하여 직원을 교육해야 한다." },
+      { "num": 3, "mark": "③", "text": "직원의 비윤리적 행위 예방을 위해 기업은 상벌 규정을 정비해야 한다." },
+      { "num": 4, "mark": "④", "text": "근무 성과에 따른 보상을 통해 기업은 우수 직원의 이탈을 막아야 한다." },
+      { "num": 5, "mark": "⑤", "text": "기업은 직원에 대한 공정한 평가를 위해 동료 평가를 실시해야 한다." }
+    ],
+    "2026_09_24": [
+      { "num": 1, "mark": "①", "text": "How to Gain Religious and Social Benefits from Monastery Life" },
+      { "num": 2, "mark": "②", "text": "Why the Middle Ages Demanded Religious Figures Be Isolated" },
+      { "num": 3, "mark": "③", "text": "The Grace of Solitude: Detached from but Attached to Society" },
+      { "num": 4, "mark": "④", "text": "No Sacrificial Leaders, No Flowering of Civilization" },
+      { "num": 5, "mark": "⑤", "text": "Mystery of Power: The Politics of Peace and Solitude" }
+    ],
+    "2026_09_28": [
+      { "num": 1, "mark": "①", "text": "심사 기간은 9월 15일부터 10월 15일까지이다." },
+      { "num": 2, "mark": "②", "text": "2등은 두 명 선발된다." },
+      { "num": 3, "mark": "③", "text": "참가비가 있다." },
+      { "num": 4, "mark": "④", "text": "각 참가자는 마스코트 디자인을 두 개 이상 제출해야 한다." },
+      { "num": 5, "mark": "⑤", "text": "평가 기준에서 창의성이 가장 높은 비중을 차지한다." }
+    ],
+    "2026_09_29": [
+      { "num": 1, "mark": "①", "text": "referred" },
+      { "num": 2, "mark": "②", "text": "which" },
+      { "num": 3, "mark": "③", "text": "strong" },
+      { "num": 4, "mark": "④", "text": "feel" },
+      { "num": 5, "mark": "⑤", "text": "its" }
+    ],
+    "2026_09_30": [
+      { "num": 1, "mark": "①", "text": "remove" },
+      { "num": 2, "mark": "②", "text": "permanently" },
+      { "num": 3, "mark": "③", "text": "create" },
+      { "num": 4, "mark": "④", "text": "modesty" },
+      { "num": 5, "mark": "⑤", "text": "insignificant" }
+    ],
+    "2026_09_32": [
+      { "num": 1, "mark": "①", "text": "underestimates the invisible conflicts possible within a group" },
+      { "num": 2, "mark": "②", "text": "is triggered by the need for solutions to emotional conflicts" },
+      { "num": 3, "mark": "③", "text": "is often counterproductive in cases of conflict" },
+      { "num": 4, "mark": "④", "text": "functions as a facilitator in the resolution of social disharmony" },
+      { "num": 5, "mark": "⑤", "text": "raises questions about negative attitudes toward social disharmony" }
+    ],
+    "2026_09_35": [
+      { "num": 1, "mark": "①", "text": "Having a diverse network of mentors is important for dominant and minority group members alike." },
+      { "num": 2, "mark": "②", "text": "Minority group members need diverse mentors so that they can gain insight into what it means to be employed by a particular organization or in a particular field or profession." },
+      { "num": 3, "mark": "③", "text": "Majority workers benefit by having a network of diverse mentors because it increases their understanding and sensitivity to the unique realities of diverse workers and their own identity, and perhaps even their own forms of privilege." },
+      { "num": 4, "mark": "④", "text": "Mentoring has been typically required and praised as an essential component in the personal development of employers." },
+      { "num": 5, "mark": "⑤", "text": "The ultimate goal of these mentoring opportunities is to have individuals be more informed, identified, and engaged in their work and in their organization." }
+    ],
+    "2026_09_36": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2026_09_37": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2026_09_38": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2026_09_39": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2026_09_40": [
+      { "num": 1, "mark": "①", "text": "resurface ··· simplification" },
+      { "num": 2, "mark": "②", "text": "endure ··· degradation" },
+      { "num": 3, "mark": "③", "text": "fade ··· variation" },
+      { "num": 4, "mark": "④", "text": "feature ··· transformation" },
+      { "num": 5, "mark": "⑤", "text": "disappear ··· fossilization" }
+    ],
+    "2026_09_43": [
+      { "num": 1, "mark": "①", "text": "(B) - (D) - (C)" },
+      { "num": 2, "mark": "②", "text": "(C) - (B) - (D)" },
+      { "num": 3, "mark": "③", "text": "(C) - (D) - (B)" },
+      { "num": 4, "mark": "④", "text": "(D) - (B) - (C)" },
+      { "num": 5, "mark": "⑤", "text": "(D) - (C) - (B)" }
+    ],
+    "2026_09_45": [
+      { "num": 1, "mark": "①", "text": "Mike의 아빠는 평소보다 일찍 집에 왔다." },
+      { "num": 2, "mark": "②", "text": "Mike가 가장 좋아하는 팀은 홈런을 치지 못했다." },
+      { "num": 3, "mark": "③", "text": "경기장이 Arrows 셔츠를 입은 사람들로 가득했다." },
+      { "num": 4, "mark": "④", "text": "Chavez가 친 공은 관중석으로 날아갔다." },
+      { "num": 5, "mark": "⑤", "text": "Arrows가 득점할 때마다 Mike와 아빠는 하이파이브를 했다." }
+    ]
+  },
+  "figures": [
+    {
+      "questionId": "2026_09_25",
+      "kind": "grouped_bar_chart",
+      "assetPath": "english/assets/2026-09/q25-figure.png",
+      "sha256": "b5d60233754de098b744fa85956df8c33bdbaaf86b84cfb151dbcbc5b97022ba",
+      "sourcePage": 4,
+      "alt": "2015년 미국 구매 전 온라인 구매평 열람 비율. 전자제품은 18~34세 66%, 35~54세 71%, 55세 이상 68%. 자동차는 47%, 53%, 55%. 가전제품은 42%, 57%, 62%. 의류는 33%, 25%, 21%."
+    },
+    {
+      "questionId": "2026_09_27",
+      "kind": "notice",
+      "assetPath": "english/assets/2026-09/q27-notice.png",
+      "sha256": "736c89434511d6a998eb853c6fac74cbfe55c8107c61b3d5014eb5e72693be24",
+      "sourcePage": 4,
+      "alt": "Wabut Jungle Yoga의 장소, 활동, 숙소, 신청 방법과 교통편을 안내하는 원본 안내문."
+    },
+    {
+      "questionId": "2026_09_28",
+      "kind": "notice_with_tables",
+      "assetPath": "english/assets/2026-09/q28-notice.png",
+      "sha256": "4b8928a5c4c04d0163999c331d81973f410ad4d438860e96f254ad9f5b5ae611",
+      "sourcePage": 4,
+      "alt": "Under the Sea Mascot Contest의 일정, 순위별 수상 인원과 상금, 제출 조건, 평가 기준을 표시한 원본 안내문."
+    }
+  ]
+}
