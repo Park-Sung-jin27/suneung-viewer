@@ -6,7 +6,19 @@ const EVENT_PREFIX = "inyeon-growth/events";
 const EVENT_DAILY_PREFIX = "inyeon-growth/daily";
 const WAITLIST_PREFIX = "inyeon-growth/waitlist";
 const WAITLIST_DAILY_PREFIX = "inyeon-growth/waitlist-daily";
-const EVENT_NAMES = new Set(["room_create", "room_join", "room_share_click", "room_cta_click"]);
+const EVENT_NAMES = new Set([
+  "room_create",
+  "room_join",
+  "room_share_click",
+  "room_cta_click",
+  "library_block_view",
+  "library_claim_submit",
+  "library_claim_success",
+  "library_crosssell_click",
+  "library_open",
+  "magic_link_request",
+  "magic_link_open",
+]);
 
 function nowIso() {
   return new Date().toISOString();
@@ -87,6 +99,27 @@ function cleanText(value, limit = 120) {
     .slice(0, limit);
 }
 
+export function redactSensitiveUrl(value, limit = 240) {
+  const raw = cleanText(value, limit * 2);
+  if (!raw) return "";
+  try {
+    const url = new URL(raw, "https://redaction.invalid");
+    url.pathname = url.pathname
+      .replace(/\/fortune\/delivery\/[A-Za-z0-9_-]{24,96}(?=\/|$)/g, "/fortune/delivery/[redacted]")
+      .replace(/\/my\/?$/g, "/my");
+    for (const key of ["token", "paymentKey", "orderId", "deliveryToken"]) url.searchParams.delete(key);
+    const safe = url.origin === "https://redaction.invalid"
+      ? `${url.pathname}${url.search}${url.hash}`
+      : url.toString();
+    return cleanText(safe, limit);
+  } catch {
+    return cleanText(
+      raw.replace(/\/fortune\/delivery\/[A-Za-z0-9_-]{24,96}(?=\/|$)/g, "/fortune/delivery/[redacted]"),
+      limit,
+    );
+  }
+}
+
 function cleanRoomCode(value) {
   const code = cleanText(value, 12).toUpperCase();
   return /^[A-Z0-9]{6}$/.test(code) ? code : "";
@@ -100,7 +133,7 @@ function cleanParticipantId(value) {
 function clientMeta(req) {
   return {
     ua: cleanText(req.headers["user-agent"], 240),
-    referer: cleanText(req.headers.referer || req.headers.referrer, 240),
+    referer: redactSensitiveUrl(req.headers.referer || req.headers.referrer, 240),
     ipHash: hashValue(
       req.headers["x-forwarded-for"] ||
         req.headers["x-real-ip"] ||
@@ -183,7 +216,7 @@ export async function recordGrowthEvent(req, res) {
       participantId: cleanParticipantId(body.participantId),
       source: cleanText(body.source || "room", 40),
       target: cleanText(body.target, 80),
-      path: cleanText(body.path, 180),
+      path: redactSensitiveUrl(body.path, 180),
       meta: clientMeta(req),
     };
 
