@@ -292,6 +292,49 @@ function MathFigureDescription({ description }) {
   );
 }
 
+function MathVerifiedSolution({ solution }) {
+  return (
+    <>
+      <span className="eng-math-practice__math-solution-label">검증 풀이</span>
+      <h2>{solution.approach}</h2>
+      <p>{solution.summary}</p>
+
+      <div
+        className="eng-math-practice__math-concepts"
+        aria-label="핵심 개념"
+      >
+        {solution.concepts.map((concept) => (
+          <span key={concept}>{concept}</span>
+        ))}
+      </div>
+
+      <ol className="eng-math-practice__math-steps">
+        {solution.steps.map((step, index) => (
+          <li key={`${step.title}-${index}`}>
+            <h3>
+              {index + 1}. {step.title}
+            </h3>
+            <MathText
+              className="eng-math-practice__math-step-expression"
+              text={`$$${step.expression}$$`}
+            />
+            <p>{step.explanation}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div className="eng-math-practice__math-solution-note">
+        <h3>정답 이유</h3>
+        <p>{solution.correctReason}</p>
+      </div>
+      <div className="eng-math-practice__math-solution-note eng-math-practice__math-solution-note--mistake">
+        <h3>자주 하는 실수</h3>
+        <p>{solution.commonMistake}</p>
+      </div>
+    </>
+  );
+}
+
 function prepareLearningData(subject, questionData, catalogData) {
   const expected = EXPECTED_BOUNDARIES[subject];
   const boundary = catalogData?.subjects?.[subject];
@@ -848,7 +891,7 @@ function QuestionCatalog({
           <p className="eng-math-catalog__lead">
             {subject === "english"
               ? "19~23번 5문항은 무료로 풀 수 있습니다. 나머지 22문항은 결제 없이 잠금 상태로만 표시합니다."
-              : "2022학년도 6월 공통 첫 5문항은 무료입니다. 나머지 356문항은 잠금 상태이며 수학 풀이는 아직 제공하지 않습니다."}
+              : "2022학년도 6월 공통 첫 5문항은 검증 풀이와 함께 무료로 제공합니다. 나머지 356문항은 잠금 상태입니다."}
           </p>
         </header>
 
@@ -1448,7 +1491,7 @@ function SessionSummary({
             >
               {subject === "english"
                 ? "영어 풀이는 각 문항을 제출한 직후 확인할 수 있습니다."
-                : "수학은 검증된 정답만 제공하며, 풀이는 아직 제공하지 않습니다."}
+                : "수학 검증 풀이는 각 문항을 제출한 직후 확인할 수 있습니다."}
             </p>
 
             <div className="eng-math-session-summary__actions">
@@ -1879,10 +1922,34 @@ function PracticeQuestion({
         .eng-math-practice__result-title { margin: 0 0 7px; font-size: 1.05rem; font-weight: 900; }
         .eng-math-practice__result-copy { margin: 0; color: #3d4d5e; line-height: 1.6; }
         .eng-math-practice__review-toggle { margin-top: 12px; border: 1px solid #b8c6df; background: #fff; color: #3157a5; }
+        .eng-math-practice__review-toggle--math { border-color: #9bcfbd; color: #16705b; }
         .eng-math-practice__explanation { margin-top: 12px; border-radius: 16px; background: #f5f8ff; padding: 19px; color: #29374d; }
         .eng-math-practice__explanation h2 { margin: 0 0 12px; color: #263d7d; font-size: 1rem; letter-spacing: -0.02em; }
         .eng-math-practice__explanation p { margin: 0 0 10px; line-height: 1.68; word-break: keep-all; }
         .eng-math-practice__explanation p:last-of-type { margin-bottom: 0; }
+        .eng-math-practice__explanation--math { background: #f1faf5; color: #25483b; }
+        .eng-math-practice__explanation--math h2 { color: #155d4d; }
+        .eng-math-practice__math-solution-label {
+          display: inline-flex;
+          margin-bottom: 10px;
+          border-radius: 999px;
+          background: #dcefe7;
+          padding: 5px 9px;
+          color: #16705b;
+          font-size: 0.74rem;
+          font-weight: 900;
+        }
+        .eng-math-practice__math-concepts { display: flex; flex-wrap: wrap; gap: 7px; margin: 15px 0; }
+        .eng-math-practice__math-concepts span { border: 1px solid #b9d9cd; border-radius: 999px; background: #fff; padding: 5px 9px; color: #286654; font-size: 0.76rem; font-weight: 800; }
+        .eng-math-practice__math-steps { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+        .eng-math-practice__math-steps li { min-width: 0; border: 1px solid #c9e2d8; border-radius: 13px; background: #fff; padding: 14px; }
+        .eng-math-practice__math-steps h3,
+        .eng-math-practice__math-solution-note h3 { margin: 0 0 7px; color: #225c4d; font-size: 0.87rem; }
+        .eng-math-practice__math-step-expression { display: block; min-width: 0; }
+        .eng-math-practice__math-step-expression .eng-math-practice__math-block { margin: 2px 0 7px; text-align: left; }
+        .eng-math-practice__math-steps p { color: #405b52; font-size: 0.88rem; }
+        .eng-math-practice__math-solution-note { margin-top: 12px; border-left: 3px solid #4b9d80; background: #fff; padding: 11px 12px; }
+        .eng-math-practice__math-solution-note--mistake { border-left-color: #c38a36; background: #fffaf0; }
         .eng-math-practice__evidence { margin-top: 13px !important; border-left: 3px solid #8ba2db; padding: 9px 0 9px 12px; color: #405170; font-family: Georgia, "Times New Roman", serif; font-size: 0.92rem; font-style: italic; white-space: pre-wrap; }
         .eng-math-practice__evidence--text { display: grid; gap: 5px; font-family: "Noto Sans KR", system-ui, sans-serif; font-style: normal; white-space: normal; }
         .eng-math-practice__evidence-text-label { color: #3157a5; font-size: 0.76rem; font-weight: 900; }
@@ -2160,6 +2227,25 @@ function PracticeQuestion({
                             </div>
                           ),
                         )}
+                      </section>
+                    ) : null}
+                  </>
+                ) : question.solution ? (
+                  <>
+                    <button
+                      className="eng-math-practice__review-toggle eng-math-practice__review-toggle--math"
+                      type="button"
+                      onClick={() => setShowExplanation((current) => !current)}
+                    >
+                      {showExplanation ? "검증 풀이 접기" : "검증 풀이 보기"}
+                    </button>
+
+                    {showExplanation ? (
+                      <section
+                        className="eng-math-practice__explanation eng-math-practice__explanation--math"
+                        aria-label="수학 검증 풀이"
+                      >
+                        <MathVerifiedSolution solution={question.solution} />
                       </section>
                     ) : null}
                   </>

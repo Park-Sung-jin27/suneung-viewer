@@ -218,10 +218,16 @@ const FORBIDDEN_PUBLIC_KEYS = new Set([
   "metaSource",
   "notes",
   "pitfalls",
+  "publicConnected",
+  "questionFingerprint",
   "rawText",
   "source",
+  "sourceArtifacts",
   "sourceIssue",
   "sourcePage",
+  "status",
+  "verification",
+  "verifiedAt",
 ]);
 
 function findFile(directory, filename) {
@@ -1163,6 +1169,23 @@ function buildPublicData(mathSourceDirectory = null) {
     mathDb,
     mathSourceDirectory,
   );
+  const mathVerifiedSolutionsById = new Map(
+    mathVerifiedSolutions.map((item) => [
+      item.id,
+      {
+        summary: item.summary,
+        approach: item.approach,
+        concepts: [...item.concepts],
+        steps: item.steps.map((step) => ({
+          title: step.title,
+          expression: step.expression,
+          explanation: step.explanation,
+        })),
+        correctReason: item.correctReason,
+        commonMistake: item.commonMistake,
+      },
+    ]),
+  );
   const explanationDb = readJson(explainPath, "eng_explain_2026csat.json");
   const explanations = new Map(
     Object.values(explanationDb.items).map((item) => [item.id, item]),
@@ -1294,6 +1317,7 @@ function buildPublicData(mathSourceDirectory = null) {
     .map((question) => {
       const isChoice = question.answerType === "choice";
       const isShort = question.answerType === "short";
+      const solution = mathVerifiedSolutionsById.get(question.id);
       const figureDescription = mathFigurePolicy.descriptionIds.has(question.id)
         ? question.figureDesc
         : null;
@@ -1336,6 +1360,7 @@ function buildPublicData(mathSourceDirectory = null) {
           text: choice.latex,
         })),
         answer: isChoice ? Number(question.answer) : String(question.answer),
+        ...(solution ? { solution } : {}),
         ...(figureDescription !== null ? { figureDescription } : {}),
       };
     });
@@ -1353,6 +1378,12 @@ function buildPublicData(mathSourceDirectory = null) {
   }
   if (math.some((question) => mathFigurePolicy.blockedIds.has(question.id))) {
     fail("MATH_BLOCKED_FIGURE_LEAK", "public data");
+  }
+  const mathSolutionIds = math
+    .filter((question) => Object.hasOwn(question, "solution"))
+    .map((question) => question.id);
+  if (stableJson(mathSolutionIds) !== stableJson(MATH_FREE_IDS)) {
+    fail("MATH_SOLUTION_PUBLIC_IDS", mathSolutionIds.join(","));
   }
 
   const describedQuestions = math.filter((question) =>
@@ -1431,22 +1462,39 @@ function buildPublicData(mathSourceDirectory = null) {
     packId: catalog.subjects.math.freePackId,
     questions: mathFreeQuestions,
   };
-  if (
-    mathFree.questions.some(
-      (question) =>
-        Object.hasOwn(question, "review") || Object.hasOwn(question, "solution"),
-    )
-  ) {
-    fail("MATH_SOLUTION_PUBLIC_FIELD_LEAK", "math free data");
-  }
-  const mathFreeSerialized = stableJson(mathFree);
-  for (const item of mathVerifiedSolutions) {
+  const allowedSolutionKeys = [
+    "approach",
+    "commonMistake",
+    "concepts",
+    "correctReason",
+    "steps",
+    "summary",
+  ];
+  const allowedStepKeys = ["explanation", "expression", "title"];
+  for (const question of mathFree.questions) {
+    if (Object.hasOwn(question, "review")) {
+      fail("MATH_REVIEW_PUBLIC_FIELD_LEAK", question.id);
+    }
+    const expectedSolution = mathVerifiedSolutionsById.get(question.id);
+    if (!expectedSolution || !question.solution) {
+      fail("MATH_SOLUTION_PUBLIC_MISSING", question.id);
+    }
     if (
-      mathFreeSerialized.includes(item.summary) ||
-      mathFreeSerialized.includes(item.correctReason) ||
-      item.steps.some((step) => mathFreeSerialized.includes(step.explanation))
+      stableJson(Object.keys(question.solution).sort()) !==
+      stableJson(allowedSolutionKeys)
     ) {
-      fail("MATH_SOLUTION_PUBLIC_TEXT_LEAK", item.id);
+      fail("MATH_SOLUTION_PUBLIC_KEYS", question.id);
+    }
+    if (
+      question.solution.steps.some(
+        (step) =>
+          stableJson(Object.keys(step).sort()) !== stableJson(allowedStepKeys),
+      )
+    ) {
+      fail("MATH_SOLUTION_PUBLIC_STEP_KEYS", question.id);
+    }
+    if (stableJson(question.solution) !== stableJson(expectedSolution)) {
+      fail("MATH_SOLUTION_PUBLIC_DRIFT", question.id);
     }
   }
   assertNoForbiddenKeys({ englishFree, mathFree });
