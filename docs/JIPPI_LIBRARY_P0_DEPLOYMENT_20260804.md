@@ -46,3 +46,17 @@
 ## 운영 검증 결론
 
 P0 운영 검증을 완료했다. 모바일 브라우저에서 이메일 소유권 확인, 세션 유지, 기존 리포트 귀속과 열람 진입점 표시를 확인했다. 같은 1회용 링크는 다른 브라우저 세션에서 재사용되지 않았다. 이 검증 과정에서 새 주문·결제·리포트·추가 이메일은 생성하지 않았다.
+
+## 리텐션 측정 보강
+
+- 배포일: 2026-08-04 KST
+- 배포 소스 커밋: `3e3c7c8ca49637b749589eef262a9532477691a8`
+- Vercel deployment: `4vrUgwXEqkTyUYq518hTpQaYP7NZ`
+- 배포 URL: `https://suneung-viewer-awwdib2ql-downfall121-1190s-projects.vercel.app`
+- 운영 alias: `https://www.jippi.kr`
+- 발견 결함: `magic_link_request`, `magic_link_open`, 보관함 카드 `library_open`이 이벤트 화이트리스트에만 있고 실제 UI 경로에서 발생하지 않았음
+- 수정: `/my`에서 위 3개 이벤트를 `source=library_page`로 전송하고, 리포트 토큰은 analytics payload에 포함하지 않음
+- 로컬·원격 빌드: PASS, `check:jippi-library-p0` 29/29
+- 운영 정적 검사: 세 이벤트 배선 PASS, analytics delivery token 전달 0
+- 운영 회귀검사: `/my`, `/tarot`, `/room`, `/fortune`, 기존 delivery 모두 200; 기존 delivery footer 유지
+- 검증용 이벤트·주문·결제·이메일: 추가 생성하지 않음
