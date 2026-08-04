@@ -416,15 +416,14 @@ function validateMathVerifiedSolutions(mathDbPath, mathDb, sourceDirectory) {
 }
 
 function validateEnglishCandidate() {
+  const candidateArguments = [ENGLISH_CANDIDATE_GATE_PATH, "--check"];
+  if (existsSync(ENGLISH_CANDIDATE_SOURCE_DIRECTORY)) {
+    candidateArguments.push("--source-dir", ENGLISH_CANDIDATE_SOURCE_DIRECTORY);
+  }
   try {
     execFileSync(
       process.execPath,
-      [
-        ENGLISH_CANDIDATE_GATE_PATH,
-        "--check",
-        "--source-dir",
-        ENGLISH_CANDIDATE_SOURCE_DIRECTORY,
-      ],
+      candidateArguments,
       { cwd: ROOT, encoding: "utf8", stdio: "pipe" },
     );
   } catch (error) {
