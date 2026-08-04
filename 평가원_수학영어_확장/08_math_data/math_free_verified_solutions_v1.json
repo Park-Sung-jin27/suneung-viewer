@@ -1,0 +1,218 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 6월 모의평가 공통 1·2·3·5·6번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 5,
+    "readyCount": 5,
+    "questionFingerprint": "cd0dd309db866b7f3d9839e56f31d89aefb2b0b565c87fa0ab2d942cd304b275",
+    "verifiedAt": "2026-08-04",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
+      "archiveSha256": "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
+    },
+    "note": "원본 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 풀이 후보"
+  },
+  "items": {
+    "2022_06_common_1": {
+      "id": "2022_06_common_1",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 1,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "밑이 같은 거듭제곱의 곱이므로 지수를 더하면 루트 항이 소거되고 값은 4입니다.",
+      "approach": "같은 밑의 거듭제곱은 지수끼리 더한 뒤 값을 계산합니다.",
+      "concepts": [
+        "지수법칙",
+        "같은 밑의 거듭제곱"
+      ],
+      "steps": [
+        {
+          "title": "지수 합치기",
+          "expression": "2^{\\sqrt{3}} \\times 2^{2-\\sqrt{3}}=2^{\\sqrt{3}+2-\\sqrt{3}}",
+          "explanation": "밑이 모두 2이므로 곱셈에서 지수를 더합니다."
+        },
+        {
+          "title": "값 계산하기",
+          "expression": "2^{\\sqrt{3}+2-\\sqrt{3}}=2^2=4",
+          "explanation": "서로 반대인 두 루트 항이 없어져 지수가 2가 됩니다."
+        }
+      ],
+      "correctReason": "계산 결과 4가 선지 ④와 일치합니다.",
+      "commonMistake": "지수를 곱하거나 루트 항을 남기면 안 됩니다. 같은 밑의 곱에서는 지수를 더합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_2": {
+      "id": "2022_06_common_2",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 2,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "도함수를 적분해 원함수를 구하고 f(1)=1로 적분상수를 정하면 f(2)=5입니다.",
+      "approach": "도함수에서 원함수를 복원한 뒤 주어진 함수값으로 적분상수를 결정합니다.",
+      "concepts": [
+        "부정적분",
+        "적분상수"
+      ],
+      "steps": [
+        {
+          "title": "원함수 구하기",
+          "expression": "f'(x)=3x^2-2x \\Rightarrow f(x)=x^3-x^2+C",
+          "explanation": "각 항을 적분하고 적분상수 C를 붙입니다."
+        },
+        {
+          "title": "적분상수 결정하기",
+          "expression": "f(1)=1-1+C=1 \\Rightarrow C=1",
+          "explanation": "주어진 f(1)=1을 대입하면 C가 1입니다."
+        },
+        {
+          "title": "f(2) 계산하기",
+          "expression": "f(2)=2^3-2^2+1=8-4+1=5",
+          "explanation": "x=2를 완성된 함수에 대입합니다."
+        }
+      ],
+      "correctReason": "f(2)=5이므로 선지 ⑤가 정답입니다.",
+      "commonMistake": "도함수만 적분하고 적분상수 C를 빠뜨리면 주어진 f(1)=1 조건을 사용할 수 없습니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_3": {
+      "id": "2022_06_common_3",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 3,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "세타가 제3사분면에 있으므로 사인과 코사인이 모두 음수이고, 5-12-13 관계를 쓰면 합은 -17/13입니다.",
+      "approach": "탄젠트 비로 삼각형의 변 길이를 잡고 주어진 각의 범위로 사인과 코사인의 부호를 정합니다.",
+      "concepts": [
+        "삼각함수의 부호",
+        "탄젠트와 사인·코사인의 관계"
+      ],
+      "steps": [
+        {
+          "title": "사분면 확인하기",
+          "expression": "\\pi<\\theta<\\frac{3\\pi}{2}",
+          "explanation": "세타는 제3사분면에 있으므로 사인과 코사인은 모두 음수입니다."
+        },
+        {
+          "title": "사인과 코사인 구하기",
+          "expression": "\\tan\\theta=\\frac{12}{5} \\Rightarrow \\sin\\theta=-\\frac{12}{13},\\;\\cos\\theta=-\\frac{5}{13}",
+          "explanation": "5-12-13 직각삼각형 비율을 적용하고 제3사분면의 부호를 붙입니다."
+        },
+        {
+          "title": "합 계산하기",
+          "expression": "\\sin\\theta+\\cos\\theta=-\\frac{12}{13}-\\frac{5}{13}=-\\frac{17}{13}",
+          "explanation": "분모가 같은 두 값을 더합니다."
+        }
+      ],
+      "correctReason": "계산 결과 -17/13이 선지 ①과 일치합니다.",
+      "commonMistake": "탄젠트가 양수라는 이유만으로 사인과 코사인을 양수로 두면 안 됩니다. 제3사분면에서는 둘 다 음수입니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_5": {
+      "id": "2022_06_common_5",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 5,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "곱의 미분법을 적용한 뒤 f(1)=2와 f'(1)=1을 대입하면 g'(1)=8입니다.",
+      "approach": "두 함수의 곱을 먼저 미분하고, 필요한 함수값과 도함수값을 마지막에 대입합니다.",
+      "concepts": [
+        "곱의 미분법",
+        "함숫값 대입"
+      ],
+      "steps": [
+        {
+          "title": "곱 미분하기",
+          "expression": "g'(x)=2x f(x)+(x^2+3)f'(x)",
+          "explanation": "x²+3과 f(x)의 곱에 곱의 미분법을 적용합니다."
+        },
+        {
+          "title": "x=1 대입하기",
+          "expression": "g'(1)=2\\cdot1\\cdot2+(1^2+3)\\cdot1=4+4=8",
+          "explanation": "f(1)=2와 f'(1)=1을 각각 알맞은 자리에 넣습니다."
+        }
+      ],
+      "correctReason": "g'(1)=8이므로 선지 ③이 정답입니다.",
+      "commonMistake": "곱을 미분할 때 한쪽 항만 미분하면 안 됩니다. 두 항의 미분 결과를 더해야 합니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_6": {
+      "id": "2022_06_common_6",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 6,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "두 그래프의 교점은 x=0, 2이고, 그 구간에서 위쪽 직선에서 아래쪽 곡선을 뺀 값을 적분하면 넓이는 4입니다.",
+      "approach": "교점으로 적분 구간을 정하고, 위 함수와 아래 함수의 차를 정적분합니다.",
+      "concepts": [
+        "그래프의 교점",
+        "두 곡선 사이의 넓이"
+      ],
+      "steps": [
+        {
+          "title": "교점 구하기",
+          "expression": "3x^2-x=5x \\Rightarrow 3x(x-2)=0 \\Rightarrow x=0,2",
+          "explanation": "두 식을 같게 놓아 넓이를 구할 구간을 찾습니다."
+        },
+        {
+          "title": "위아래 함수 확인하기",
+          "expression": "5x-(3x^2-x)=6x-3x^2",
+          "explanation": "0과 2 사이에서는 직선 y=5x가 곡선 y=3x²-x보다 위에 있습니다."
+        },
+        {
+          "title": "넓이 적분하기",
+          "expression": "\\int_0^2(6x-3x^2)\\,dx=[3x^2-x^3]_0^2=12-8=4",
+          "explanation": "위 함수에서 아래 함수를 뺀 값을 교점 사이에서 적분합니다."
+        }
+      ],
+      "correctReason": "둘러싸인 부분의 넓이는 4이므로 선지 ④가 정답입니다.",
+      "commonMistake": "두 함수를 빼는 순서를 반대로 하면 적분값이 음수가 됩니다. 넓이는 위 함수에서 아래 함수를 빼야 합니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

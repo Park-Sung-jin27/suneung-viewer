@@ -184,6 +184,95 @@ function verifySourceArtifacts(overlay, sourceDirectory) {
   }
 }
 
+function validatedText(value, code, detail) {
+  ensure(typeof value === "string" && value.trim(), code, detail);
+  return value;
+}
+
+function buildValidatedReview(question, choices, figure, review) {
+  ensure(review && typeof review === "object", "REVIEW_MISSING", question.id);
+  ensure(review.id === question.id, "REVIEW_ID", question.id);
+  ensure(review.status === "ready", "REVIEW_STATUS", question.id);
+  ensure(review.qid === question.qid, "REVIEW_QID", question.id);
+  ensure(review.group === question.group, "REVIEW_GROUP", question.id);
+  ensure(review.type === question.type, "REVIEW_TYPE", question.id);
+  ensure(Number(review.answer) === Number(question.answer), "REVIEW_ANSWER", question.id);
+  ensure(
+    review.answerMark === ENGLISH_CHOICE_MARKS[Number(question.answer) - 1],
+    "REVIEW_ANSWER_MARK",
+    question.id,
+  );
+  validatedText(review.exam, "REVIEW_EXAM", question.id);
+  validatedText(review.summary, "REVIEW_SUMMARY", question.id);
+  validatedText(review.typeApproach, "REVIEW_APPROACH", question.id);
+  validatedText(review.correctReason, "REVIEW_REASON", question.id);
+  ensure(Array.isArray(review.evidence) && review.evidence.length > 0, "REVIEW_EVIDENCE", question.id);
+
+  const evidence = review.evidence.map((item, index) => {
+    const detail = `${question.id}:${index}`;
+    ensure(item && typeof item === "object", "REVIEW_EVIDENCE_ITEM", detail);
+    const quote = validatedText(item.quote, "REVIEW_EVIDENCE_QUOTE", detail);
+    const role = validatedText(item.role, "REVIEW_EVIDENCE_ROLE", detail);
+    const translation = validatedText(
+      item.translation,
+      "REVIEW_EVIDENCE_TRANSLATION",
+      detail,
+    );
+
+    if (item.in === "figure") {
+      ensure(figure, "REVIEW_FIGURE_MISSING", detail);
+      ensure(figure.alt.includes(quote), "REVIEW_FIGURE_QUOTE_MISMATCH", detail);
+      return { in: "figure", quote, role, translation };
+    }
+
+    ensure(
+      item.in === "rawText" || item.in === "sharedPassage",
+      "REVIEW_EVIDENCE_SOURCE",
+      detail,
+    );
+    const sourceText = question[item.in];
+    ensure(typeof sourceText === "string", "REVIEW_EVIDENCE_SOURCE_MISSING", detail);
+    const charStart = sourceText.indexOf(quote);
+    ensure(charStart >= 0, "REVIEW_EVIDENCE_QUOTE_MISMATCH", detail);
+    ensure(
+      sourceText.indexOf(quote, charStart + 1) === -1,
+      "REVIEW_EVIDENCE_QUOTE_AMBIGUOUS",
+      detail,
+    );
+    return { in: item.in, quote, charStart, role, translation };
+  });
+
+  const trap = review.trap;
+  ensure(trap && typeof trap === "object", "REVIEW_TRAP", question.id);
+  const trapChoice = choices.find((choice) => Number(choice.num) === Number(trap.choice));
+  ensure(trapChoice, "REVIEW_TRAP_CHOICE", question.id);
+  ensure(Number(trap.choice) !== Number(question.answer), "REVIEW_TRAP_IS_ANSWER", question.id);
+  ensure(trap.mark === trapChoice.mark, "REVIEW_TRAP_MARK", question.id);
+  ensure(trap.text === trapChoice.text, "REVIEW_TRAP_TEXT", question.id);
+  validatedText(trap.reason, "REVIEW_TRAP_REASON", question.id);
+
+  return {
+    id: review.id,
+    status: review.status,
+    exam: review.exam,
+    qid: review.qid,
+    group: review.group,
+    type: review.type,
+    answer: Number(review.answer),
+    answerMark: review.answerMark,
+    summary: review.summary,
+    typeApproach: review.typeApproach,
+    evidence,
+    correctReason: review.correctReason,
+    trap: {
+      mark: trap.mark,
+      choice: Number(trap.choice),
+      text: trap.text,
+      reason: trap.reason,
+    },
+  };
+}
+
 function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
   ensure(
     overlay.schemaVersion === "english-candidate-overlay-v1",
@@ -220,6 +309,29 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
   );
 
   const baseById = new Map(database.questions.map((question) => [question.id, question]));
+  const reviewPath = path.resolve(ROOT, overlay.reviewData?.path ?? "");
+  ensure(existsSync(reviewPath), "REVIEW_DATA_MISSING", reviewPath);
+  ensure(sha256(reviewPath) === overlay.reviewData.sha256, "REVIEW_DATA_HASH_MISMATCH");
+  const reviewDatabase = readJson(reviewPath, "english candidate reviews");
+  ensure(
+    reviewDatabase.metadata?.schemaVersion === "eng-explain-candidate-v1",
+    "REVIEW_SCHEMA_VERSION",
+  );
+  ensure(reviewDatabase.metadata?.examId === overlay.baseData.examId, "REVIEW_EXAM_ID");
+  ensure(reviewDatabase.metadata?.status === "internal_candidate", "REVIEW_DATABASE_STATUS");
+  ensure(reviewDatabase.metadata?.publicConnected === false, "REVIEW_PUBLIC_CONNECTED");
+  ensure(reviewDatabase.metadata?.itemCount === 28, "REVIEW_ITEM_COUNT");
+  ensure(reviewDatabase.metadata?.readyCount === 28, "REVIEW_READY_COUNT");
+  ensure(overlay.reviewData.expectedReadyCount === 28, "OVERLAY_REVIEW_READY_COUNT");
+  ensure(overlay.summary.reviewReadyCount === 28, "OVERLAY_REVIEW_SUMMARY_COUNT");
+  const reviewIds = Object.keys(reviewDatabase.items ?? {});
+  ensure(
+    JSON.stringify(reviewIds) === JSON.stringify(expectedIds),
+    "REVIEW_QUESTION_IDS",
+  );
+  const reviewsById = new Map(
+    Object.values(reviewDatabase.items).map((review) => [review.id, review]),
+  );
   const overrideIds = Object.keys(overlay.choiceOverrides ?? {});
   ensure(
     overrideIds.length === overlay.summary.choiceOverrideQuestionCount,
@@ -255,7 +367,7 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
     ensure(baseQuestion.qid === index + 18, "QUESTION_NUMBER_MISMATCH", auditQuestion.id);
     ensure(baseQuestion.answer === auditQuestion.answer, "ANSWER_MISMATCH", auditQuestion.id);
     ensure(auditQuestion.status === "question_answer_ready", "QUESTION_STATUS", auditQuestion.id);
-    ensure(auditQuestion.reviewStatus === "not_built", "REVIEW_STATUS", auditQuestion.id);
+    ensure(auditQuestion.reviewStatus === "ready", "REVIEW_STATUS", auditQuestion.id);
     const choices = overlay.choiceOverrides?.[auditQuestion.id] ?? baseQuestion.choices;
     validateChoiceList(auditQuestion.id, choices, baseQuestion.type);
     const answer = Number(auditQuestion.answer);
@@ -303,10 +415,11 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
         alt: figure.alt,
       };
     }
-    ensure(
-      !["review", "explanation", "evidence"].some((key) => key in mergedQuestion),
-      "UNVERIFIED_REVIEW_LEAK",
-      auditQuestion.id,
+    mergedQuestion.review = buildValidatedReview(
+      mergedQuestion,
+      choices,
+      figure,
+      reviewsById.get(auditQuestion.id),
     );
     return mergedQuestion;
   });
@@ -319,10 +432,19 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
     questions.filter((question) => question.figure).length === 3,
     "MERGED_FIGURE_COUNT",
   );
+  ensure(
+    questions.filter((question) => question.review?.status === "ready").length === 28,
+    "MERGED_REVIEW_COUNT",
+  );
+  const evidenceCount = questions.reduce(
+    (count, question) => count + question.review.evidence.length,
+    0,
+  );
+  ensure(evidenceCount === 58, "MERGED_EVIDENCE_COUNT", String(evidenceCount));
   verifyPublicBoundary(overlay.candidateId);
 
   return {
-    schemaVersion: "english-product-candidate-v1",
+    schemaVersion: "english-product-candidate-v2",
     candidateId: overlay.candidateId,
     status: "internal_candidate",
     publicConnected: false,
@@ -330,13 +452,16 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
       overlayPath: path.relative(ROOT, overlayPath).replaceAll(path.sep, "/"),
       baseDataPath: overlay.baseData.path,
       baseDataSha256: overlay.baseData.sha256,
+      reviewDataPath: overlay.reviewData.path,
+      reviewDataSha256: overlay.reviewData.sha256,
     },
     sourceArtifacts: overlay.sourceArtifacts,
     summary: {
       questionCount: questions.length,
       answerCrossCheckCount: 28,
       questionAnswerReadyCount: 28,
-      reviewReadyCount: 0,
+      reviewReadyCount: 28,
+      evidenceCount,
       figureAssetCount: 3,
       choiceOverrideQuestionCount: overrideIds.length,
       blockedCount: 0,
@@ -354,6 +479,9 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
           figure.assetPath,
           figure.sha256,
         ]),
+      ),
+      reviewFingerprint: fingerprint(
+        questions.map((question) => [question.id, question.review]),
       ),
     },
     releaseRules: overlay.releaseRules,
@@ -382,5 +510,5 @@ if (options.check) {
 }
 
 console.log(
-  `ENG_MATH_ENGLISH_CANDIDATE: pass mode=${options.check ? "check" : "merge"} questions=28 answers=28 overrides=14 figures=3 review=0 public=0 source=${options.sourceDirectory ? "verified" : "recorded"}`,
+  `ENG_MATH_ENGLISH_CANDIDATE: pass mode=${options.check ? "check" : "merge"} questions=28 answers=28 overrides=14 figures=3 review=28 evidence=58 public=0 source=${options.sourceDirectory ? "verified" : "recorded"}`,
 );
