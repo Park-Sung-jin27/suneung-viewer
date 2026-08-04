@@ -10,6 +10,15 @@
   const button = form.querySelector("button");
   const input = form.querySelector("input");
 
+  function trackEvent(name, target = "") {
+    fetch("/api/inyeon-event", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ event: name, source: "library_page", target }),
+      keepalive: true,
+    }).catch(() => {});
+  }
+
   function show(target) {
     [loading, login, library].forEach((element) => element.classList.toggle("hidden", element !== target));
   }
@@ -32,6 +41,7 @@
         const link = document.createElement("a");
         link.className = "report";
         link.href = text(item.href);
+        link.addEventListener("click", () => trackEvent("library_open", text(item.productId)));
         const copy = document.createElement("span");
         const title = document.createElement("b");
         title.textContent = text(item.title || item.productName || "지피 리포트");
@@ -73,6 +83,7 @@
     const result = await response.json().catch(() => ({}));
     if (!response.ok || !result.ok) throw new Error(result.error || "MAGIC_LINK_FAILED");
     render(result.library);
+    trackEvent("magic_link_open");
     return true;
   }
 
@@ -92,6 +103,7 @@
         body: JSON.stringify({ email: input.value }),
       });
       if (!response.ok) throw new Error("LINK_FAILED");
+      trackEvent("magic_link_request");
       status.textContent = "계정이 있다면 확인 메일을 보냈어요. 받은편지함을 확인해 주세요.";
       input.value = "";
     } catch {

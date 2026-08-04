@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { createLibraryService } from "../api/_libraryStore.js";
 import { redactSensitiveUrl } from "../api/_growthStore.js";
 
@@ -223,6 +224,12 @@ assert(!redacted.includes("order-1"));
 assert(redacted.includes("[redacted]"));
 assert(redacted.includes("safe=yes"));
 
+const libraryPageSource = await readFile(new URL("../public/my.js", import.meta.url), "utf8");
+for (const eventName of ["library_open", "magic_link_request", "magic_link_open"]) {
+  assert(libraryPageSource.includes(`trackEvent("${eventName}"`), `${eventName} must be emitted by /my`);
+}
+assert(!/trackEvent\([^\n]+deliveryToken/.test(libraryPageSource), "analytics must not receive a delivery token");
+
 await assert.rejects(
   () => service.requestClaim({ email, deliveryToken: "short" }),
   expectCode("INVALID_DELIVERY_TOKEN"),
@@ -231,7 +238,7 @@ await assert.rejects(() => service.exchangeSession("bad"), expectCode("INVALID_M
 
 console.log(JSON.stringify({
   ok: true,
-  tests: 25,
+  tests: 29,
   concurrentLibraryItems: libraryA.library.items.length,
   plaintextEmailInStorage: false,
   replayBlocked: true,
@@ -240,4 +247,5 @@ console.log(JSON.stringify({
   parallelRateLimitBlocked: true,
   simultaneousReplayBlocked: true,
   magicTokenUsesFragment: true,
+  retentionEventsWired: true,
 }, null, 2));
