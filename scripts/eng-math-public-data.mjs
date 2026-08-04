@@ -24,6 +24,13 @@ const ENGLISH_CANDIDATE_GATE_PATH = path.join(
   "scripts",
   "merge_candidate_overlay.mjs",
 );
+const ENGLISH_CANDIDATE_OVERLAY_PATH = path.join(
+  ROOT,
+  "english",
+  "data",
+  "candidates",
+  "english_2026_09_candidate.json",
+);
 const ENGLISH_CANDIDATE_SOURCE_DIRECTORY = path.join(
   ROOT,
   "raw_sources",
@@ -416,8 +423,29 @@ function validateMathVerifiedSolutions(mathDbPath, mathDb, sourceDirectory) {
 }
 
 function validateEnglishCandidate() {
+  const overlay = readJson(
+    ENGLISH_CANDIDATE_OVERLAY_PATH,
+    "english candidate overlay",
+  );
+  const sourceArtifacts = Object.values(overlay.sourceArtifacts ?? {});
+  if (sourceArtifacts.length !== 3) {
+    fail("ENGLISH_CANDIDATE_SOURCE_ARTIFACTS", String(sourceArtifacts.length));
+  }
+  const availableSourceCount = sourceArtifacts.filter(
+    (artifact) =>
+      typeof artifact.filename === "string" &&
+      existsSync(
+        path.join(ENGLISH_CANDIDATE_SOURCE_DIRECTORY, artifact.filename),
+      ),
+  ).length;
+  if (availableSourceCount > 0 && availableSourceCount < sourceArtifacts.length) {
+    fail(
+      "ENGLISH_CANDIDATE_SOURCE_PARTIAL",
+      `${availableSourceCount}/${sourceArtifacts.length}`,
+    );
+  }
   const candidateArguments = [ENGLISH_CANDIDATE_GATE_PATH, "--check"];
-  if (existsSync(ENGLISH_CANDIDATE_SOURCE_DIRECTORY)) {
+  if (availableSourceCount === sourceArtifacts.length) {
     candidateArguments.push("--source-dir", ENGLISH_CANDIDATE_SOURCE_DIRECTORY);
   }
   try {
