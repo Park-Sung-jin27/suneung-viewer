@@ -470,7 +470,7 @@
           "translation": "나방은 출구에 닿으려 하지만 희망 없이 빛 주위를 돕니다."
         }
       ],
-      "correctReason": "빛을 벗어나려 해도 계속 주위를 도는 상태이므로 trapped가 적절합니다.",
+      "correctReason": "빛을 벗어나려 해도 계속 주위를 도는 상태이므로 trapped가 적절합니다. 따라서 ②가 정답입니다.",
       "trap": {
         "mark": "③",
         "choice": 3,

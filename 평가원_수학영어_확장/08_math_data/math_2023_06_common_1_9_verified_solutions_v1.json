@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2023학년도 6월 모의평가 공통 1~9번 중 원문 일치 비그림 7문항",
+    "scope": "2023학년도 6월 모의평가 공통 1~9번 중 원문 일치 비그림 8문항",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 7,
-    "readyCount": 7,
-    "questionFingerprint": "3956fa769ad8e08928d50f8018d7f227aaccc7b30fa933f551ff56caa120ce7e",
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "bcb65910754d4796f5fd89558b9f81b4443ce00a8fb60074e3686cdc2ea7da33",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5043334/ect_f123552d-f3b9-441b-a9cb-26dd3fb0382a1655a9598b93086.zip",
@@ -16,7 +16,7 @@
       "answerFilename": "2교시_수학영역_정답표.pdf",
       "answerSha256": "5db0748417f984b6ac30c87bb351f2d8fca7dce276fc71f47b7ab944e9e64519"
     },
-    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 4번은 그림, 6번은 원천 등호 누락으로 제외."
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 4번은 그림 파일 연결 전 공개 차단 상태를 유지."
   },
   "items": {
     "2023_06_common_1": {
@@ -174,6 +174,52 @@
       ],
       "correctReason": "a₆+a₇=24이므로 선택지 ③이 정답입니다.",
       "commonMistake": "방정식의 다른 근 r=-3은 조건을 만족하지 않습니다. 첫째항이 양수일 때 음의 공비면 항의 부호가 번갈아 바뀝니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_6": {
+      "id": "2023_06_common_6",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 6,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "두 경계점에서 절댓값 함수가 이어지는 조건을 적용하면 a+b=11/3입니다.",
+      "approach": "x=-1과 x=3에서 왼쪽 값과 오른쪽 값이 같도록 연속 조건을 각각 세웁니다.",
+      "concepts": [
+        "구간별 함수의 연속",
+        "절댓값 방정식"
+      ],
+      "steps": [
+        {
+          "title": "x=-1에서 연속 조건 세우기",
+          "expression": "|a-1|=1",
+          "explanation": "왼쪽 구간의 값은 1이고 가운데 식의 극한은 |a-1|입니다."
+        },
+        {
+          "title": "a 결정하기",
+          "expression": "|a-1|=1,\\ a>0\\quad\\Rightarrow\\quad a=2",
+          "explanation": "절댓값 방정식의 두 후보 중 양수 조건을 만족하는 값을 선택합니다."
+        },
+        {
+          "title": "x=3에서 b 결정하기",
+          "expression": "|3b-2|=3,\\ b>0\\quad\\Rightarrow\\quad b=\\frac53",
+          "explanation": "가운데 구간과 오른쪽 구간의 값이 같아야 하므로 같은 방식으로 b를 구합니다."
+        },
+        {
+          "title": "합 계산하기",
+          "expression": "a+b=2+\\frac53=\\frac{11}{3}",
+          "explanation": "11/3에 해당하는 선택지는 ⑤입니다."
+        }
+      ],
+      "correctReason": "a=2, b=5/3이므로 a+b=11/3이고 선택지 ⑤가 정답입니다.",
+      "commonMistake": "경계점 한 곳만 확인하거나 a>0, b>0 조건을 적용하지 않으면 불필요한 해가 남습니다.",
       "verification": {
         "problemPage": 2,
         "answerTablePage": 1,

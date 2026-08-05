@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2025학년도 9월 모의평가 수학 공통 12~22번 중 원문 일치 10문항",
+    "scope": "2025학년도 9월 모의평가 수학 공통 12~22번",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 10,
-    "readyCount": 10,
-    "questionFingerprint": "2b0a2dc82439476656fbd7b719018e751fd302f6439b88543f51e1153e16fa3f",
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "1acea70873b35a714a60306b73c211ab1cb22f7d5b27613f8d5bb239c668240e",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5087696&lev=0&m=0403&page=3&s=suneung&searchType=S&statusYN=W",
@@ -31,7 +31,7 @@
         }
       ]
     },
-    "note": "평가원 공식 문제지·정답표를 동일 파일 복제본과 대조하고, EBS 풀이와 독립 계산으로 각 해법을 다시 확인했습니다. 19번은 수식 묶음 오류 때문에 별도 차단했습니다."
+    "note": "평가원 공식 문제지·정답표를 동일 파일 복제본과 대조하고, EBS 풀이와 독립 계산으로 각 해법을 다시 확인했습니다."
   },
   "items": {
     "2025_09_common_12": {
@@ -66,7 +66,7 @@
           "explanation": "정답은 ②입니다."
         }
       ],
-      "correctReason": "항을 하나씩 나열한 계산과 짝·홀 일반식 계산이 모두 -20으로 일치합니다.",
+      "correctReason": "항을 하나씩 나열한 계산과 짝·홀 일반식 계산이 모두 -20으로 일치합니다. 따라서 정답은 ②입니다.",
       "commonMistake": "bₙ은 aₙ 하나가 아니라 a₁부터 aₙ까지 부호가 번갈아 붙는 합입니다.",
       "verification": {
         "problemPage": 4,
@@ -104,7 +104,7 @@
           "explanation": "k>4이므로 가능한 해는 6입니다."
         }
       ],
-      "correctReason": "넓이는 양수로 해석하되, A=2B를 옮기면 부호 있는 정적분 조건으로 정확히 바뀝니다.",
+      "correctReason": "넓이는 양수로 해석하되, A=2B를 옮기면 부호 있는 정적분 조건으로 정확히 바뀝니다. 따라서 정답은 ④입니다.",
       "commonMistake": "Q 이후 f(x)<0인 구간의 넓이는 -∫f로 계산해야 합니다.",
       "verification": {
         "problemPage": 5,
@@ -147,7 +147,7 @@
           "explanation": "정답은 ⑤입니다."
         }
       ],
-      "correctReason": "AₙBₙ의 좌표 차와 역함수 대칭을 사용해 원의 방정식을 직접 구하지 않아도 됩니다.",
+      "correctReason": "AₙBₙ의 좌표 차와 역함수 대칭을 사용해 원의 방정식을 직접 구하지 않아도 됩니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "기울기 3만으로 x좌표 차를 3n으로 두지 마세요. 거리 조건까지 함께 써야 Δx=n입니다.",
       "verification": {
         "problemPage": 5,
@@ -190,7 +190,7 @@
           "explanation": "정답은 ①입니다."
         }
       ],
-      "correctReason": "구한 g를 원래 미분 관계에 다시 대입해 항별로 일치함을 확인했습니다.",
+      "correctReason": "구한 g를 원래 미분 관계에 다시 대입해 항별로 일치함을 확인했습니다. 따라서 정답은 ①입니다.",
       "commonMistake": "xg를 적분한 뒤 x로 나눌 때 C/x가 생기지만 g가 다항함수라는 조건으로 C=0입니다.",
       "verification": {
         "problemPage": 6,
@@ -228,7 +228,7 @@
           "explanation": "x=-5는 진수 조건을 만족하지 않습니다."
         }
       ],
-      "correctReason": "대수적 두 근 중 로그가 정의되는 범위에 속하는 값만 남겼습니다.",
+      "correctReason": "대수적 두 근 중 로그가 정의되는 범위에 속하는 값만 남겼습니다. 따라서 답은 7입니다.",
       "commonMistake": "밑이 1보다 작은 로그의 밑변환에서 음수 부호를 놓치지 마세요.",
       "verification": {
         "problemPage": 6,
@@ -266,7 +266,7 @@
           "explanation": "정답은 5입니다."
         }
       ],
-      "correctReason": "구한 f를 미분하면 주어진 f'과 정확히 일치합니다.",
+      "correctReason": "구한 f를 미분하면 주어진 f'과 정확히 일치합니다. 따라서 답은 5입니다.",
       "commonMistake": "부정적분의 적분상수 C를 빼먹지 마세요.",
       "verification": {
         "problemPage": 6,
@@ -304,8 +304,54 @@
           "explanation": "각 항의 계수 차가 모두 1입니다."
         }
       ],
-      "correctReason": "인덱스를 바꾼 식과 직접 전개한 식이 같은 소거 결과를 줍니다.",
+      "correctReason": "인덱스를 바꾼 식과 직접 전개한 식이 같은 소거 결과를 줍니다. 따라서 답은 29입니다.",
       "commonMistake": "둘째 합의 마지막 항은 9a₁₀이지 10a₁₀이 아닙니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_19": {
+      "id": "2025_09_common_19",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 19,
+      "answer": 4,
+      "answerMark": null,
+      "summary": "x=1에서의 극소 조건으로 a=3을 구하고, 다른 임계점의 극댓값으로 b=1을 얻어 a+b=4입니다.",
+      "approach": "도함수의 한 근 1로 a를 정한 뒤 도함수를 인수분해해 극대점 -3을 찾습니다.",
+      "concepts": [
+        "삼차함수의 극값",
+        "도함수의 인수분해"
+      ],
+      "steps": [
+        {
+          "title": "극소점 조건으로 a 구하기",
+          "expression": "f'(x)=3x^2+2ax-9,\\quad f'(1)=0\\quad\\Rightarrow\\quad a=3",
+          "explanation": "x=1에서 극소이므로 도함수가 0입니다."
+        },
+        {
+          "title": "다른 임계점 찾기",
+          "expression": "f'(x)=3(x-1)(x+3)",
+          "explanation": "도함수 부호가 x=-3에서 양수에서 음수로 바뀌므로 x=-3은 극대점입니다."
+        },
+        {
+          "title": "극댓값으로 b 구하기",
+          "expression": "f(-3)=-27+27+27+b=27+b=28\\quad\\Rightarrow\\quad b=1",
+          "explanation": "극대점 x=-3의 함수값이 28이라는 조건을 적용합니다."
+        },
+        {
+          "title": "합 계산하기",
+          "expression": "a+b=3+1=4",
+          "explanation": "따라서 요구한 값은 4입니다."
+        }
+      ],
+      "correctReason": "a=3, b=1이므로 a+b=4입니다.",
+      "commonMistake": "x=1만 임계점으로 사용하면 극댓값 조건을 적용할 위치를 찾을 수 없습니다.",
       "verification": {
         "problemPage": 7,
         "answerTablePage": 1,
@@ -347,7 +393,7 @@
           "explanation": "정답은 15입니다."
         }
       ],
-      "correctReason": "끝점 중복을 포함하지 않고 서로 다른 t 여섯 개를 직접 함수에 대입해 확인했습니다.",
+      "correctReason": "끝점 중복을 포함하지 않고 서로 다른 t 여섯 개를 직접 함수에 대입해 확인했습니다. 따라서 답은 15입니다.",
       "commonMistake": "f(t)의 값이 같은 t의 개수가 아니라, 그 높이에서 방정식 f(x)=f(t)의 x근 개수를 세어야 합니다.",
       "verification": {
         "problemPage": 7,
@@ -390,7 +436,7 @@
           "explanation": "f'(x)=3x²+5x-11입니다."
         }
       ],
-      "correctReason": "부등식 전체를 추정하지 않고 등호가 강제되는 두 정수에서 필요한 계수를 유일하게 정했습니다.",
+      "correctReason": "부등식 전체를 추정하지 않고 등호가 강제되는 두 정수에서 필요한 계수를 유일하게 정했습니다. 따라서 답은 31입니다.",
       "commonMistake": "평균값정리만으로 f'(3)을 바로 정할 수 없습니다. 하한과 상한이 같아지는 k를 먼저 찾으세요.",
       "verification": {
         "problemPage": 8,
@@ -433,7 +479,7 @@
           "explanation": "서로 다른 k의 제곱만 한 번씩 더합니다."
         }
       ],
-      "correctReason": "모든 두 갈래를 전개한 EBS 경우 분류와 독립 대입 검산에서 같은 네 값만 남았습니다.",
+      "correctReason": "모든 두 갈래를 전개한 EBS 경우 분류와 독립 대입 검산에서 같은 네 값만 남았습니다. 따라서 답은 8입니다.",
       "commonMistake": "a₅=0만 먼저 풀면 a₂a₃<0을 만족하지 않는 가지가 섞입니다. 부호 조건을 중간에 적용하세요.",
       "verification": {
         "problemPage": 8,

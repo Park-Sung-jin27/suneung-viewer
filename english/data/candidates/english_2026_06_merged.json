@@ -8,7 +8,7 @@
     "baseDataPath": "english/data/english_exam_db_v2_1.json",
     "baseDataSha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
     "reviewDataPath": "english/data/candidates/english_2026_06_reviews.json",
-    "reviewDataSha256": "fbb8475a5525a7fe93d05dae77d25c27ee4670d7709f5a25cdee9ce0b2494d72"
+    "reviewDataSha256": "1c3b415524a90f4fc6b9ac1da61bbb9cfed9789dd6c318b163911ab58a0e7665"
   },
   "sourceArtifacts": {
     "problem": {
@@ -88,7 +88,7 @@
     ],
     "choiceFingerprint": "a2bc055abc6dac386f0b8f62205e30e3648e70185dfb7e89bd6af5ddcdd0cce8",
     "figureFingerprint": "2721e2203f981e32344118cd27d40301eae9529f9587a902e6003e477db8f9dd",
-    "reviewFingerprint": "bda0c852bd754cebea9910460fbad453f169ed75d2bd7d1abbd8ace118fbfeaf"
+    "reviewFingerprint": "8f4ee16710aa444a72e5ecd5d7a983e3c122ea77e22e4e42f64a851964f444bd"
   },
   "releaseRules": {
     "allowPublicGeneration": false,
@@ -290,7 +290,7 @@
             "translation": "낚싯대가 크게 움직이자 Jessie는 신이 나서 붙잡습니다."
           }
         ],
-        "correctReason": "한숨과 포기 직전의 실망에서 빠른 심장박동과 미소로 드러나는 흥분으로 바뀌므로 disappointed → thrilled가 맞습니다.",
+        "correctReason": "한숨과 포기 직전의 실망에서 빠른 심장박동과 미소로 드러나는 흥분으로 바뀌므로 disappointed → thrilled가 맞습니다. 따라서 ①이 정답입니다.",
         "trap": {
           "mark": "⑤",
           "choice": 5,
@@ -1394,7 +1394,7 @@
             "translation": "독자에게 일시적 인상을 남긴다는 표현은 앞의 지속적 차별화와 맞지 않습니다."
           }
         ],
-        "correctReason": "글은 기억되고 구별되는 고유한 목소리를 강조하므로 일시적이라는 temporary는 문맥상 반대입니다.",
+        "correctReason": "글은 기억되고 구별되는 고유한 목소리를 강조하므로 일시적이라는 temporary는 문맥상 반대입니다. 따라서 ⑤가 정답입니다.",
         "trap": {
           "mark": "④",
           "choice": 4,
@@ -1493,7 +1493,7 @@
             "translation": "큰 에너지를 쓰는 행동에는 이유가 있어야 하며 그 이유가 가르침일 수 있습니다."
           }
         ],
-        "correctReason": "다른 개체의 학습을 돕기 위해 일부러 에너지를 쓰는 행동을 설명하므로 필요한 개념은 intentionality입니다.",
+        "correctReason": "다른 개체의 학습을 돕기 위해 일부러 에너지를 쓰는 행동을 설명하므로 필요한 개념은 intentionality입니다. 따라서 ⑤가 정답입니다.",
         "trap": {
           "mark": "④",
           "choice": 4,
@@ -1691,7 +1691,7 @@
             "translation": "좁은 집중에 너무 오래 갇히면 사고가 늘고 수행이 떨어집니다."
           }
         ],
-        "correctReason": "뒤 문장이 narrowed in for too long을 그대로 설명하므로 remain zoomed in for too long이 정답입니다.",
+        "correctReason": "뒤 문장이 narrowed in for too long을 그대로 설명하므로 remain zoomed in for too long이 정답입니다. 따라서 ④가 정답입니다.",
         "trap": {
           "mark": "①",
           "choice": 1,
@@ -1995,7 +1995,7 @@
             "translation": "활동 부족이 여러 건강 문제와 연결된 결과를 제시합니다."
           }
         ],
-        "correctReason": "도입의 진화적 과거를 (C)가 이어 받고, (A)가 현대 변화의 내용을 설명한 뒤, (B)가 그 변화가 낳은 건강 문제로 마무리합니다.",
+        "correctReason": "도입의 진화적 과거를 (C)가 이어 받고, (A)가 현대 변화의 내용을 설명한 뒤, (B)가 그 변화가 낳은 건강 문제로 마무리합니다. 이 순서에 해당하는 ④가 정답입니다.",
         "trap": {
           "mark": "①",
           "choice": 1,
@@ -2101,7 +2101,7 @@
             "translation": "혼돈은 반복으로 생기지만 모든 반복이 혼돈을 만들지는 않습니다."
           }
         ],
-        "correctReason": "도입의 장치를 실제로 작동시키는 (B) 다음에 두 시행의 차이를 말하는 (C)가 오고, 반복이 혼돈이 되기 위한 조건을 (A)가 설명합니다.",
+        "correctReason": "도입의 장치를 실제로 작동시키는 (B) 다음에 두 시행의 차이를 말하는 (C)가 오고, 반복이 혼돈이 되기 위한 조건을 (A)가 설명합니다. 이 순서에 해당하는 ③이 정답입니다.",
         "trap": {
           "mark": "④",
           "choice": 4,
@@ -2596,7 +2596,7 @@
             "translation": "인간형 로봇을 인간 신체와 구별 가능하게 만든다는 표현은 seamlessness의 방향과 반대입니다."
           }
         ],
-        "correctReason": "이음매 없는 설계의 목표라면 humanoid가 사람과 indistinguishable해야 하므로 distinguishable인 (e)가 부적절합니다.",
+        "correctReason": "이음매 없는 설계의 목표라면 humanoid가 사람과 indistinguishable해야 하므로 distinguishable인 (e)가 부적절합니다. 따라서 ⑤가 정답입니다.",
         "trap": {
           "mark": "④",
           "choice": 4,

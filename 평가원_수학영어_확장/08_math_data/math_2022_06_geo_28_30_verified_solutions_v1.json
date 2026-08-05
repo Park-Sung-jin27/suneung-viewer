@@ -107,7 +107,7 @@
           "explanation": "문제에서 요구한 k의 제곱을 계산합니다."
         }
       ],
-      "correctReason": "k=4√5이므로 k²=80입니다.",
+      "correctReason": "두 포물선의 교점에서 구한 세 길이를 대입하면 k=4√5이므로 k²=80입니다.",
       "commonMistake": "AC와 BD는 x=-2까지의 수평거리이고, AB만 피타고라스 정리로 구하는 비스듬한 거리입니다.",
       "verification": {
         "problemPage": 20,

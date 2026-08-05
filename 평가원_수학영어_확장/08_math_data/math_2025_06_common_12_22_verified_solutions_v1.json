@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2025학년도 6월 모의평가 수학 공통 12~22번 중 원천 일치 10문항",
+    "scope": "2025학년도 6월 모의평가 수학 공통 12~22번",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 10,
-    "readyCount": 10,
-    "questionFingerprint": "0ace671ed70ba59288eb0946700efa14af2ecd872985cc1c8e5fb956e1dc0a12",
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "578be1f1768249c1fe05ef8c1ee31b55c8a0e24d8809291d20fe013aaa6e89d8",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5086962&lev=0&m=0403&page=4&s=suneung&searchType=S&statusYN=W",
@@ -31,7 +31,7 @@
         }
       ]
     },
-    "note": "평가원 공식 문제지·정답표와 동일 파일 독립 보관본을 대조하고 독립 풀이 자료와 직접 계산으로 검증했습니다. 18번은 원본의 ak²가 DB에서 (ak)²로 묶여 있어 이 파일에서 제외하고 별도 차단합니다."
+    "note": "평가원 공식 문제지·정답표와 동일 파일 독립 보관본을 대조하고 독립 풀이 자료와 직접 계산으로 검증했습니다."
   },
   "items": {
     "2025_06_common_12": {
@@ -61,7 +61,7 @@
           "explanation": "AB=7/3, CD=7/6, 두 수직선 사이 거리는 2log₂3−1입니다."
         }
       ],
-      "correctReason": "사각형의 두 수직변이 평행하므로 좌표로 구한 길이와 거리만으로 넓이가 결정됩니다.",
+      "correctReason": "사각형의 두 수직변이 평행하므로 좌표로 구한 길이와 거리만으로 넓이가 결정됩니다. 따라서 정답은 ③입니다.",
       "commonMistake": "AB=2CD를 두 그래프의 y값 비로 바꾸지 말고 각 세로선에서의 차를 계산하세요.",
       "verification": {
         "problemPage": 4,
@@ -99,7 +99,7 @@
           "explanation": "m<−1 조건에도 맞으므로 정답은 ③입니다."
         }
       ],
-      "correctReason": "넓이 차에서는 공통 교점이 자연스럽게 소거되어 하나의 정적분으로 정확히 계산됩니다.",
+      "correctReason": "넓이 차에서는 공통 교점이 자연스럽게 소거되어 하나의 정적분으로 정확히 계산됩니다. 따라서 정답은 ③입니다.",
       "commonMistake": "A와 B를 각각 절댓값 적분으로 길게 구하다가 부호를 뒤집지 마세요.",
       "verification": {
         "problemPage": 5,
@@ -137,7 +137,7 @@
           "explanation": "자연수 해가 정확히 12개가 되는 두 k의 합은 9입니다."
         }
       ],
-      "correctReason": "로그값의 양수 조건뿐 아니라 두 진수의 양수 조건을 동시에 반영했습니다.",
+      "correctReason": "로그값의 양수 조건뿐 아니라 두 진수의 양수 조건을 동시에 반영했습니다. 따라서 정답은 ④입니다.",
       "commonMistake": "로그를 합친 뒤 75−kn>0 조건을 버리면 허용되지 않는 n이 포함됩니다.",
       "verification": {
         "problemPage": 5,
@@ -175,7 +175,7 @@
           "explanation": "이차식의 최소값 조건으로 A의 하한을 구하면 정답은 ②입니다."
         }
       ],
-      "correctReason": "적분 조건, 접합점의 미분가능성, 전체 증가 조건을 순서대로 모두 사용했습니다.",
+      "correctReason": "적분 조건, 접합점의 미분가능성, 전체 증가 조건을 순서대로 모두 사용했습니다. 따라서 정답은 ②입니다.",
       "commonMistake": "적분 안의 절댓값을 전 구간에서 같은 식으로 풀거나 k를 정하기 전에 삼차식부터 임의로 두지 마세요.",
       "verification": {
         "problemPage": 6,
@@ -213,7 +213,7 @@
           "explanation": "x>3인 해만 남깁니다."
         }
       ],
-      "correctReason": "대수적으로 얻은 두 해 중 로그 정의역을 만족하는 값만 선택했습니다.",
+      "correctReason": "대수적으로 얻은 두 해 중 로그 정의역을 만족하는 값만 선택했습니다. 따라서 답은 7입니다.",
       "commonMistake": "밑이 1/2일 때 로그 앞에 음수가 생긴다는 점을 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 6,
@@ -251,10 +251,52 @@
           "explanation": "최종 답은 23입니다."
         }
       ],
-      "correctReason": "도함수와 한 점의 함수값이 원함수를 유일하게 결정합니다.",
+      "correctReason": "도함수와 한 점의 함수값이 원함수를 유일하게 결정합니다. 따라서 답은 23입니다.",
       "commonMistake": "적분상수 C를 빼먹거나 6x²의 적분을 6x³으로 쓰지 마세요.",
       "verification": {
         "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_18": {
+      "id": "2025_06_common_18",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 18,
+      "answer": 2,
+      "answerMark": null,
+      "summary": "1부터 9까지의 합과 제곱합을 대입하면 285a-450=120이므로 a=2입니다.",
+      "approach": "시그마를 aΣk²-10Σk로 나누고 표준 합 공식을 사용합니다.",
+      "concepts": [
+        "시그마의 선형성",
+        "자연수의 합",
+        "자연수 제곱의 합"
+      ],
+      "steps": [
+        {
+          "title": "합을 두 부분으로 나누기",
+          "expression": "\\sum_{k=1}^{9}(ak^2-10k)=a\\sum_{k=1}^{9}k^2-10\\sum_{k=1}^{9}k",
+          "explanation": "상수배와 덧셈에 대한 시그마의 성질을 적용합니다."
+        },
+        {
+          "title": "두 표준 합 계산하기",
+          "expression": "\\sum_{k=1}^{9}k=45,\\qquad\\sum_{k=1}^{9}k^2=285",
+          "explanation": "자연수의 합과 제곱합 공식을 사용합니다."
+        },
+        {
+          "title": "a에 대한 방정식 풀기",
+          "expression": "285a-10\\cdot45=120\\quad\\Rightarrow\\quad285a=570\\quad\\Rightarrow\\quad a=2",
+          "explanation": "주어진 합의 값 120을 대입해 일차방정식을 풉니다."
+        }
+      ],
+      "correctReason": "주어진 시그마 식을 계산하면 a=2입니다.",
+      "commonMistake": "원문의 ak²를 (ak)²로 해석하면 a까지 제곱되어 전혀 다른 방정식이 됩니다.",
+      "verification": {
+        "problemPage": 7,
         "answerTablePage": 1,
         "problemMatchedPdf": true,
         "choicesMatchedPdf": true,
@@ -289,7 +331,7 @@
           "explanation": "k는 양수 조건에도 맞습니다."
         }
       ],
-      "correctReason": "방향 전환은 속도가 0인 것뿐 아니라 실제로 부호가 바뀌는 시각으로 확인했습니다.",
+      "correctReason": "방향 전환은 속도가 0인 것뿐 아니라 실제로 부호가 바뀌는 시각으로 확인했습니다. 따라서 답은 16입니다.",
       "commonMistake": "t=3에서 속도식이 바뀐다는 이유만으로 방향도 바뀐다고 판단하지 마세요.",
       "verification": {
         "problemPage": 7,
@@ -327,7 +369,7 @@
           "explanation": "가능한 쌍의 a+b 최솟값과 최댓값을 곱합니다."
         }
       ],
-      "correctReason": "각 b에 대해 수평선 두 개의 교점 수와 A와의 중복을 빠짐없이 구분했습니다.",
+      "correctReason": "각 b에 대해 수평선 두 개의 교점 수와 A와의 중복을 빠짐없이 구분했습니다. 따라서 답은 24입니다.",
       "commonMistake": "sin x=0은 (0,2π)에서 x=π 하나뿐이고, 그 점이 A와 겹칠 수 있음을 놓치지 마세요.",
       "verification": {
         "problemPage": 7,
@@ -365,7 +407,7 @@
           "explanation": "정해진 a, b를 대입하면 최종 답은 15입니다."
         }
       ],
-      "correctReason": "그래프 조건에서 얻은 x=2의 이중근 구조와 두 추가 조건이 계수를 유일하게 정합니다.",
+      "correctReason": "그래프 조건에서 얻은 x=2의 이중근 구조와 두 추가 조건이 계수를 유일하게 정합니다. 따라서 답은 15입니다.",
       "commonMistake": "‘원소가 3개 이상’인 높이 8/3을 단순한 함수값 하나로만 보고 접점의 중근 구조를 놓치지 마세요.",
       "verification": {
         "problemPage": 8,
@@ -403,7 +445,7 @@
           "explanation": "네 구간의 선형식을 풀고 해당 구간에 속하지 않는 α=−4는 제외합니다."
         }
       ],
-      "correctReason": "점화식이 달라질 수 있는 두 제곱수 시점의 부호 조건을 모두 확인한 뒤 후보를 걸렀습니다.",
+      "correctReason": "점화식이 달라질 수 있는 두 제곱수 시점의 부호 조건을 모두 확인한 뒤 후보를 걸렀습니다. 따라서 답은 231입니다.",
       "commonMistake": "n이 제곱수라는 조건만 보고 aₙ>0 조건을 생략하거나, 구한 α가 처음 가정한 구간에 속하는지 확인하지 않는 실수를 피하세요.",
       "verification": {
         "problemPage": 8,

@@ -49,7 +49,7 @@
           "explanation": "λ=3을 b의 계수식에 대입합니다."
         }
       ],
-      "correctReason": "k=6이므로 정답은 ③입니다.",
+      "correctReason": "평행하지 않은 두 벡터의 계수를 각각 비교하면 λ=3, k=6이므로 ③이 정답입니다.",
       "commonMistake": "벡터의 크기만 비교하지 마세요. 평행 조건에서는 a와 b의 계수가 같은 배수로 변해야 합니다.",
       "verification": {
         "problemPage": 17,

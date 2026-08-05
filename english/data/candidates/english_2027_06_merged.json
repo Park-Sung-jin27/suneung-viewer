@@ -8,7 +8,7 @@
     "baseDataPath": "english/data/english_exam_db_v2_1.json",
     "baseDataSha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
     "reviewDataPath": "english/data/candidates/english_2027_06_reviews.json",
-    "reviewDataSha256": "1d2bfc77f8635806a92c16ffabb065d23cab0bf358bfa81b0a4b1352200e7379"
+    "reviewDataSha256": "f45fbe93ca231d033b5d28dfcc0810a1836e41ebbd2fa953874b7067c9ecf6dd"
   },
   "sourceArtifacts": {
     "problem": {
@@ -88,7 +88,7 @@
     ],
     "choiceFingerprint": "34db6c7e73077517a9b9048bae75069364b44a045bae51754a1e6fd8b4f6653f",
     "figureFingerprint": "4c1c97c15b0e95272367ab284df1db1aa9fa5a9e73fb69ec90c45e9c5b604c81",
-    "reviewFingerprint": "34c37d60763bb56d2d8d88d45a5e658a470c57b44043e9a0911dd7d41c119021"
+    "reviewFingerprint": "7ca01eaf1e81c3f0ee3aea93ff3f5a0c98a44694fe47a0b874109917bd16c84d"
   },
   "releaseRules": {
     "allowPublicGeneration": false,
@@ -291,7 +291,7 @@
             "translation": "아름다운 경치를 보고 입을 벌릴 만큼 놀랍니다."
           }
         ],
-        "correctReason": "무심하고 졸린 상태에서 자연의 장관에 감탄하는 상태로 바뀌므로 bored → amazed가 맞습니다.",
+        "correctReason": "무심하고 졸린 상태에서 자연의 장관에 감탄하는 상태로 바뀌므로 bored → amazed가 맞습니다. 따라서 ①이 정답입니다.",
         "trap": {
           "mark": "⑤",
           "choice": 5,
@@ -1400,7 +1400,7 @@
             "translation": "대화 대본이 매우 두껍다는 표현이 문맥상 어긋납니다."
           }
         ],
-        "correctReason": "무대에서는 오래 걸리는 동작도 대본에는 짧게 적히므로 대본은 thick이 아니라 thin에 가까워야 합니다.",
+        "correctReason": "무대에서는 오래 걸리는 동작도 대본에는 짧게 적히므로 대본은 thick이 아니라 thin에 가까워야 합니다. 따라서 ④가 정답입니다.",
         "trap": {
           "mark": "⑤",
           "choice": 5,
@@ -1499,7 +1499,7 @@
             "translation": "보존주의자는 원래 대상이나 체계를 지키려 합니다."
           }
         ],
-        "correctReason": "변화를 관리하는 목적은 대상을 원하는 상태로 연장하는 것이므로 desired가 가장 자연스럽습니다.",
+        "correctReason": "변화를 관리하는 목적은 대상을 원하는 상태로 연장하는 것이므로 desired가 가장 자연스럽습니다. 따라서 ①이 정답입니다.",
         "trap": {
           "mark": "②",
           "choice": 2,
@@ -2602,7 +2602,7 @@
             "translation": "대부분의 분자 법칙을 따른다는 표현은 앞의 수수께끼와 반대입니다."
           }
         ],
-        "correctReason": "설명하기 어려운 이유는 유리가 분자 법칙을 따르는 것이 아니라 거스르는 듯 보이기 때문이므로 (e)가 틀렸습니다.",
+        "correctReason": "설명하기 어려운 이유는 유리가 분자 법칙을 따르는 것이 아니라 거스르는 듯 보이기 때문이므로 (e)가 틀렸습니다. 따라서 ⑤가 정답입니다.",
         "trap": {
           "mark": "④",
           "choice": 4,

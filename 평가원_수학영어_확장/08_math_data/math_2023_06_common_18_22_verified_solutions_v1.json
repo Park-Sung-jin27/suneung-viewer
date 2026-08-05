@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2023학년도 6월 모의평가 공통 18~22번 중 원문 일치 4문항",
+    "scope": "2023학년도 6월 모의평가 공통 18~22번",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 4,
-    "readyCount": 4,
-    "questionFingerprint": "cb78fe10ef09299d7c0964138db4969dcd1cd86b023e1f1fa253c12febb2fe5f",
+    "itemCount": 5,
+    "readyCount": 5,
+    "questionFingerprint": "98b7f6abcb2e38fe5fb49de23a505046d9005015f8f2025fbc5f238465e1f13a",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5043334/ect_f123552d-f3b9-441b-a9cb-26dd3fb0382a1655a9598b93086.zip",
@@ -16,7 +16,7 @@
       "answerFilename": "2교시_수학영역_정답표.pdf",
       "answerSha256": "5db0748417f984b6ac30c87bb351f2d8fca7dce276fc71f47b7ab944e9e64519"
     },
-    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 19번은 원천 수식 묶음 오류로 제외."
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보."
   },
   "items": {
     "2023_06_common_18": {
@@ -49,8 +49,54 @@
           "explanation": "양변에서 220을 빼고 10으로 나눕니다."
         }
       ],
-      "correctReason": "상수 a의 값은 3입니다.",
+      "correctReason": "자연수의 합을 적용한 식 220+10a=250을 풀면 a=3입니다.",
       "commonMistake": "상수 a를 한 번만 더하지 마세요. k가 1부터 10까지 변하므로 a도 10번 더해집니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_19": {
+      "id": "2023_06_common_19",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 19,
+      "answer": 2,
+      "answerMark": null,
+      "summary": "도함수 조건과 극댓값을 차례로 적용하면 a=-2, b=4이므로 a+b=2입니다.",
+      "approach": "f'(1)=0으로 a를 정하고, 도함수의 부호 변화로 극대점이 x=0임을 확인해 b를 구합니다.",
+      "concepts": [
+        "다항함수의 극값",
+        "도함수의 부호"
+      ],
+      "steps": [
+        {
+          "title": "도함수 구하기",
+          "expression": "f'(x)=4x^3+2ax=2x(2x^2+a)",
+          "explanation": "극값의 위치를 찾기 위해 주어진 사차함수를 미분합니다."
+        },
+        {
+          "title": "a 결정하기",
+          "expression": "f'(1)=0\\quad\\Rightarrow\\quad 2(2+a)=0\\quad\\Rightarrow\\quad a=-2",
+          "explanation": "x=1에서 극값을 가지므로 도함수가 0입니다."
+        },
+        {
+          "title": "극댓값으로 b 구하기",
+          "expression": "f'(x)=4x(x^2-1),\\quad f(0)=b=4",
+          "explanation": "도함수 부호가 x=0에서 양수에서 음수로 바뀌므로 f(0)가 극댓값 4입니다."
+        },
+        {
+          "title": "합 계산하기",
+          "expression": "a+b=-2+4=2",
+          "explanation": "따라서 요구한 값은 2입니다."
+        }
+      ],
+      "correctReason": "a=-2, b=4이므로 a+b=2입니다.",
+      "commonMistake": "f'(1)=0만 사용하고 x=1이 극대점이라고 단정하면 b를 구할 수 없습니다. 극댓값은 x=0에서 나옵니다.",
       "verification": {
         "problemPage": 7,
         "answerTablePage": 1,
@@ -106,7 +152,7 @@
           "explanation": "이차함수의 상수항이 바로 f(0)입니다."
         }
       ],
-      "correctReason": "f(0)의 값은 13입니다.",
+      "correctReason": "두 극소점의 대칭 중심으로 계수를 정하면 f(x)=2x²-12x+13이므로 f(0)=13입니다.",
       "commonMistake": "g'(x)=0만 쓰고 두 극소점이 어느 근인지 구분하지 않으면 계수가 결정되지 않습니다. 삼차식의 부호가 -,+,-,+로 바뀌므로 극소점은 바깥 두 근입니다.",
       "verification": {
         "problemPage": 7,

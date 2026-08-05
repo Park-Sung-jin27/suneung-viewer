@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2024학년도 6월 모의평가 수학 공통 12~21번 중 원천 일치 9문항",
+    "scope": "2024학년도 6월 모의평가 수학 공통 12~22번 11문항",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 9,
-    "readyCount": 9,
-    "questionFingerprint": "060788959319ad40dba96dcd5d48e5ba6f21ecc1411b3a973ca98f2b661ab938",
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "8f833fc5b05c85374d9455a83f90756a5a145a406a22bd388f21efedc0f0341b",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://testall.tistory.com/entry/2024%ED%95%99%EB%85%84%EB%8F%84-6%EC%9B%94-%EC%88%98%EB%8A%A5-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C",
@@ -25,7 +25,7 @@
       "answerFilename": "2024_06_math_answer_testall.pdf",
       "answerSha256": "98233f2ec85d25b33e78549a68d5baa836ff3979e21e58fedf83a8422856e495"
     },
-    "note": "공식 문제지와 정답표를 문항별로 대조하고 독립 계산까지 마친 문항만 포함했습니다. 공식식과 내부 DB의 묶음 표기가 다른 18번은 별도 차단 파일로 분리했습니다."
+    "note": "공식 문제지와 정답표를 문항별로 대조하고 독립 계산까지 마친 문항만 포함했습니다."
   },
   "items": {
     "2024_06_common_12": {
@@ -199,7 +199,7 @@
           "explanation": "자연수 조건을 적용합니다."
         }
       ],
-      "correctReason": "모든 자연수 해의 합은 3입니다.",
+      "correctReason": "밑 2의 지수부등식은 x≤2이므로 자연수 해 1, 2의 합은 3입니다.",
       "commonMistake": "자연수의 시작을 0으로 잡지 말고 이 문항에서는 1, 2만 더하세요.",
       "verification": {"problemPage": 6, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -230,9 +230,56 @@
           "explanation": "완성한 함수에 x=2를 대입합니다."
         }
       ],
-      "correctReason": "계산한 함수값은 33입니다.",
+      "correctReason": "도함수를 적분하고 f(0)=3을 적용하면 f(x)=2x⁴-x+3이므로 f(2)=33입니다.",
       "commonMistake": "부정적분 뒤 적분상수 C를 빠뜨리지 마세요.",
       "verification": {"problemPage": 6, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_common_18": {
+      "id": "2024_06_common_18",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 18,
+      "answer": 6,
+      "answerMark": null,
+      "summary": "x=1에서의 극소 조건으로 a=2, b=-6을 구하면 다른 극값인 극댓값은 6입니다.",
+      "approach": "f'(1)=0과 f(1)=-2를 함께 사용해 계수를 구한 뒤 다른 임계점 x=-1의 함수값을 계산합니다.",
+      "concepts": [
+        "삼차함수의 극값",
+        "도함수의 부호",
+        "연립방정식"
+      ],
+      "steps": [
+        {
+          "title": "극소점 조건 사용하기",
+          "expression": "f'(x)=3ax^2+b,\\quad f'(1)=0\\quad\\Rightarrow\\quad b=-3a",
+          "explanation": "x=1에서 극소이므로 도함수가 0이고, 극소가 되려면 a>0입니다."
+        },
+        {
+          "title": "극솟값으로 계수 구하기",
+          "expression": "f(1)=2a+b=-a=-2\\quad\\Rightarrow\\quad a=2,\\ b=-6",
+          "explanation": "b=-3a를 함수값 조건에 대입합니다."
+        },
+        {
+          "title": "다른 임계점 확인하기",
+          "expression": "f'(x)=6(x^2-1)=0\\quad\\Rightarrow\\quad x=-1,1",
+          "explanation": "도함수 부호가 x=-1에서 양수에서 음수로 바뀌므로 x=-1은 극대점입니다."
+        },
+        {
+          "title": "극댓값 계산하기",
+          "expression": "f(-1)=-2+6+2=6",
+          "explanation": "따라서 함수 f의 극댓값은 6입니다."
+        }
+      ],
+      "correctReason": "a=2, b=-6이고 극대점 x=-1에서 f(-1)=6입니다.",
+      "commonMistake": "x=1에서 극소라는 위치 조건만 쓰고 극솟값 -2를 사용하지 않으면 a와 b를 확정할 수 없습니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
     },
     "2024_06_common_19": {
       "id": "2024_06_common_19",
@@ -351,6 +398,58 @@
       "correctReason": "세 명제의 판정 결과로 계산한 값은 110입니다.",
       "commonMistake": "ㄷ은 몇 개의 t에서 성립하는지가 아니라 모든 양의 t에서 성립하는지를 묻습니다. 1<t<2의 반례면 충분합니다.",
       "verification": {"problemPage": 8, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_common_22": {
+      "id": "2024_06_common_22",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 22,
+      "answer": 380,
+      "answerMark": null,
+      "summary": "조건은 길이 3/2인 구간 안에 극값이 있음을 뜻하며, 정수 k의 곱 조건에서 a=-2를 얻어 f'(10)=380입니다.",
+      "approach": "도함수의 두 영점 0과 4a/3을 구하고, 각 영점을 포함하는 정수 시작점 k를 a의 나머지별로 분류합니다.",
+      "concepts": [
+        "평균변화율의 부호",
+        "삼차함수의 극값",
+        "정수 구간 분류"
+      ],
+      "steps": [
+        {
+          "title": "조건을 극값으로 해석하기",
+          "expression": "f'(x)=x(3x-4a)",
+          "explanation": "한 열린구간 안에서 두 평균변화율의 곱이 음수가 되려면 함수가 그 구간 안에서 증가와 감소를 모두 해야 하므로 임계점 0 또는 4a/3을 포함해야 합니다."
+        },
+        {
+          "title": "임계점 0이 만드는 k 구하기",
+          "expression": "k<0<k+\\frac32\\quad\\Rightarrow\\quad k=-1",
+          "explanation": "k가 정수이므로 임계점 0을 포함하는 시작점은 -1뿐입니다."
+        },
+        {
+          "title": "다른 임계점의 k 분류하기",
+          "expression": "a=3m:\\ K=\\{4m-1\\};\\quad a=3m+1:\\ K=\\{4m,4m+1\\};\\quad a=3m+2:\\ K=\\{4m+2\\}",
+          "explanation": "c=4a/3에 대하여 c-3/2<k<c를 만족하는 정수 k를 a의 나머지별로 빠짐없이 나눕니다."
+        },
+        {
+          "title": "a 결정하기",
+          "expression": "4m-1=12,\\quad4m(4m+1)=12,\\quad4m+2=12",
+          "explanation": "임계점 0이 만든 -1을 제외한 곱은 12여야 합니다. 세 식 중 정수해는 둘째 식의 m=-1뿐이므로 a=3m+1=-2이고, 추가 k는 -4와 -3입니다."
+        },
+        {
+          "title": "f'(10) 계산하기",
+          "expression": "f'(10)=3\\cdot10^2-4a\\cdot10=300+80=380",
+          "explanation": "a=-2를 도함수에 대입합니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 정수 k는 -4, -3, -1이고 그 곱이 -12이므로 a=-2, 따라서 f'(10)=380입니다.",
+      "commonMistake": "임계점이 구간의 끝점에 있으면 열린구간 안의 극값이 아니므로 등호를 포함하면 안 됩니다.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
     }
   }
 }

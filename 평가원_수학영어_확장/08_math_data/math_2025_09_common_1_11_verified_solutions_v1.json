@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2025학년도 9월 모의평가 수학 공통 1~11번 중 원문 일치 10문항",
+    "scope": "2025학년도 9월 모의평가 수학 공통 1~11번",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 10,
-    "readyCount": 10,
-    "questionFingerprint": "c1080265c5b38528bc5a7b0974a9f07a60787f38076e26866758851b1d11e038",
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "d929a6a420873a9c67dd48fca827b0706053a7a636bc95f131769f7ee5c63c71",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5087696&lev=0&m=0403&page=3&s=suneung&searchType=S&statusYN=W",
@@ -31,7 +31,7 @@
         }
       ]
     },
-    "note": "평가원 공식 문제지·정답표를 동일 파일 복제본과 대조하고, EBS 풀이와 독립 계산으로 각 해법을 다시 확인했습니다. 8번은 선지 오염 때문에 별도 차단했습니다."
+    "note": "평가원 공식 문제지·정답표를 동일 파일 복제본과 대조하고, EBS 풀이와 독립 계산으로 각 해법을 다시 확인했습니다."
   },
   "items": {
     "2025_09_common_1": {
@@ -56,7 +56,7 @@
           "explanation": "같은 밑의 나눗셈에서는 지수를 뺍니다."
         }
       ],
-      "correctReason": "두 근호를 같은 밑으로 바꾸면 계산이 하나의 지수 뺄셈으로 정리됩니다.",
+      "correctReason": "두 근호를 같은 밑으로 바꾸면 계산이 하나의 지수 뺄셈으로 정리됩니다. 따라서 정답은 ②입니다.",
       "commonMistake": "4의 8제곱근을 2의 1/8제곱으로 바꾸지 말고, 4=2²까지 반영해 2의 1/4제곱으로 바꾸세요.",
       "verification": {
         "problemPage": 1,
@@ -94,7 +94,7 @@
           "explanation": "정답은 ⑤입니다."
         }
       ],
-      "correctReason": "극한식을 직접 전개할 필요 없이 미분계수의 정의로 정확히 바꿀 수 있습니다.",
+      "correctReason": "극한식을 직접 전개할 필요 없이 미분계수의 정의로 정확히 바꿀 수 있습니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "f(1)의 값이나 f'(0)을 구하는 문제가 아닙니다.",
       "verification": {
         "problemPage": 1,
@@ -132,7 +132,7 @@
           "explanation": "정답은 ④입니다."
         }
       ],
-      "correctReason": "모든 항이 실수이므로 r³=8에서 공비는 2로 유일합니다.",
+      "correctReason": "모든 항이 실수이므로 r³=8에서 공비는 2로 유일합니다. 따라서 정답은 ④입니다.",
       "commonMistake": "a₆의 지수는 6이 아니라 n-1인 5입니다.",
       "verification": {
         "problemPage": 1,
@@ -171,7 +171,7 @@
           "explanation": "정답은 ②입니다."
         }
       ],
-      "correctReason": "두 방향의 그래프 높이를 공식 문제지 그림에서 직접 확인했습니다.",
+      "correctReason": "두 방향의 그래프 높이를 공식 문제지 그림에서 직접 확인했습니다. 따라서 정답은 ②입니다.",
       "commonMistake": "채워진 점은 함숫값을 나타냅니다. 극한은 다가가는 쪽의 그래프를 읽어야 합니다.",
       "verification": {
         "problemPage": 1,
@@ -204,7 +204,7 @@
           "explanation": "정답은 ②입니다."
         }
       ],
-      "correctReason": "곱을 전개해 미분해도 같은 16이 나와 교차 확인됩니다.",
+      "correctReason": "곱을 전개해 미분해도 같은 16이 나와 교차 확인됩니다. 따라서 정답은 ②입니다.",
       "commonMistake": "한쪽 인수만 미분하거나 두 도함수를 곱하지 마세요.",
       "verification": {
         "problemPage": 2,
@@ -242,7 +242,7 @@
           "explanation": "정답은 ②입니다."
         }
       ],
-      "correctReason": "크기뿐 아니라 주어진 각의 범위로 사인의 부호까지 확정했습니다.",
+      "correctReason": "크기뿐 아니라 주어진 각의 범위로 사인의 부호까지 확정했습니다. 따라서 정답은 ②입니다.",
       "commonMistake": "제2사분면에서 cosθ는 음수이고 sinθ는 양수입니다.",
       "verification": {
         "problemPage": 2,
@@ -280,10 +280,57 @@
           "explanation": "정답은 ③입니다."
         }
       ],
-      "correctReason": "불연속 가능 지점이 x=4 하나뿐이므로 이 조건으로 충분합니다.",
+      "correctReason": "불연속 가능 지점이 x=4 하나뿐이므로 이 조건으로 충분합니다. 따라서 정답은 ③입니다.",
       "commonMistake": "(4-a)²=4에서 양의 제곱근만 취하면 a=6을 놓칩니다.",
       "verification": {
         "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_8": {
+      "id": "2025_09_common_8",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 8,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "x=log₂a로 치환하면 x+3/x=4이고 a>2 조건에서 x=3이므로 a+k=11입니다.",
+      "approach": "밑변환 공식으로 두 로그를 x와 3/x로 나타낸 뒤 합 조건과 양수 조건을 적용합니다.",
+      "concepts": [
+        "로그의 밑변환",
+        "이차방정식",
+        "지수와 로그의 관계"
+      ],
+      "steps": [
+        {
+          "title": "하나의 문자로 치환하기",
+          "expression": "x=\\log_2a>1,\\qquad\\log_a8=\\frac{3}{x}",
+          "explanation": "a>2이므로 x>1이고, 밑변환 공식으로 log_a8을 나타냅니다."
+        },
+        {
+          "title": "합 조건 풀기",
+          "expression": "x+\\frac3x=4\\quad\\Rightarrow\\quad x^2-4x+3=0\\quad\\Rightarrow\\quad x=1\\ \\text{또는}\\ 3",
+          "explanation": "두 로그의 합이 4라는 조건을 이차방정식으로 바꿉니다."
+        },
+        {
+          "title": "a>2 조건 적용하기",
+          "expression": "x>1\\quad\\Rightarrow\\quad x=3,\\qquad a=2^3=8",
+          "explanation": "x=1은 a=2가 되어 주어진 부등식을 만족하지 않습니다."
+        },
+        {
+          "title": "곱과 최종값 구하기",
+          "expression": "k=x\\cdot\\frac3x=3,\\qquad a+k=8+3=11",
+          "explanation": "값 11에 해당하는 선택지는 ①입니다."
+        }
+      ],
+      "correctReason": "a=8, k=3이므로 a+k=11이고 선택지 ①이 정답입니다.",
+      "commonMistake": "방정식의 해 x=1은 a>2 조건을 만족하지 않으므로 반드시 제외해야 합니다.",
+      "verification": {
+        "problemPage": 3,
         "answerTablePage": 1,
         "problemMatchedPdf": true,
         "choicesMatchedPdf": true,
@@ -318,7 +365,7 @@
           "explanation": "정답은 ⑤입니다."
         }
       ],
-      "correctReason": "두 적분을 따로 계산해도 같은 5/6이 나옵니다.",
+      "correctReason": "두 적분을 따로 계산해도 같은 5/6이 나옵니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "둘째 적분 앞의 음수는 5x와 f(x) 모두에 적용됩니다.",
       "verification": {
         "problemPage": 3,
@@ -356,7 +403,7 @@
           "explanation": "직각삼각형 ABH에 피타고라스 정리를 적용합니다."
         }
       ],
-      "correctReason": "외접원의 조건과 변의 비가 사인법칙에서 한 식으로 결합됩니다.",
+      "correctReason": "외접원의 조건과 변의 비가 사인법칙에서 한 식으로 결합됩니다. 따라서 정답은 ①입니다.",
       "commonMistake": "외접원의 넓이 50π를 반지름 50으로 읽지 마세요. 반지름은 5√2입니다.",
       "verification": {
         "problemPage": 3,
@@ -394,7 +441,7 @@
           "explanation": "정답은 ①입니다."
         }
       ],
-      "correctReason": "같은 시각을 찾는 단계와 가속도를 계산하는 단계를 분리해 부호까지 확인했습니다.",
+      "correctReason": "같은 시각을 찾는 단계와 가속도를 계산하는 단계를 분리해 부호까지 확인했습니다. 따라서 정답은 ①입니다.",
       "commonMistake": "속도는 한 번 미분, 가속도는 두 번 미분한 값입니다.",
       "verification": {
         "problemPage": 4,

@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "schemaVersion": "math-source-hold-v1",
-    "status": "internal_source_hold",
+    "schemaVersion": "math-source-correction-v1",
+    "status": "internal_source_corrected",
     "publicConnected": false,
     "itemCount": 1,
-    "questionFingerprint": "01049793b948890e2795734c42a48bf2cef83382440cac2690fb1fd966fabebb",
+    "questionFingerprint": "8e2d2b60e1ffb37d13d362dc7714915e44882b0e28732397e4013889e9e2eae1",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
@@ -18,17 +18,18 @@
   "items": {
     "2022_06_cal_29": {
       "id": "2022_06_cal_29",
-      "status": "blocked_by_source_integrity",
+      "status": "source_integrity_corrected",
       "issueCode": "problem_text_missing_symbol",
-      "dbTextFragment": "$t>2$인 실수",
+      "previousDbTextFragment": "$t>2$인 실수",
       "officialTextFragment": "$t>2e$인 실수",
-      "correctionRequired": "problem_latex",
+      "correctionApplied": "problem_latex",
       "reason": "내부 문제 텍스트에서 공식 문제의 e가 빠져 정의역 조건이 달라짐",
       "verification": {
         "problemPage": 16,
-        "problemMatchedPdf": false,
+        "problemMatchedPdf": true,
         "sourceDifferenceConfirmed": true,
-        "releaseBlocked": true
+        "correctionAppliedToDatabase": true,
+        "releaseBlocked": false
       }
     }
   }

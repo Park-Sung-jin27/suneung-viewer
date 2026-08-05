@@ -186,6 +186,7 @@ const MATH_STA_ADVANCED_INTERNAL_VERIFIED_IDS = [
 ];
 const MATH_CAL_ADVANCED_INTERNAL_VERIFIED_IDS = [
   "2022_06_cal_28",
+  "2022_06_cal_29",
   "2022_06_cal_30",
 ];
 const MATH_GEO_ADVANCED_INTERNAL_VERIFIED_IDS = [
@@ -234,6 +235,7 @@ const MATH_2022_09_GEO_INTERNAL_VERIFIED_IDS = [
 ];
 const MATH_2022_09_REMAINING_INTERNAL_VERIFIED_IDS = [
   "2022_09_common_10",
+  "2022_09_common_11",
   "2022_09_common_12",
   "2022_09_common_20",
   "2022_09_common_21",
@@ -252,6 +254,7 @@ const MATH_2023_06_FIRST_INTERNAL_VERIFIED_IDS = [
   "2023_06_common_2",
   "2023_06_common_3",
   "2023_06_common_5",
+  "2023_06_common_6",
   "2023_06_common_7",
   "2023_06_common_8",
   "2023_06_common_9",
@@ -266,6 +269,7 @@ const MATH_2023_06_SECOND_INTERNAL_VERIFIED_IDS = [
 ];
 const MATH_2023_06_THIRD_INTERNAL_VERIFIED_IDS = [
   "2023_06_common_18",
+  "2023_06_common_19",
   "2023_06_common_20",
   "2023_06_common_21",
   "2023_06_common_22",
@@ -344,6 +348,7 @@ const MATH_2023_09_STA_INTERNAL_VERIFIED_IDS = [
 const MATH_2023_09_CAL_INTERNAL_VERIFIED_IDS = [
   "2023_09_cal_23",
   "2023_09_cal_24",
+  "2023_09_cal_25",
   "2023_09_cal_26",
   "2023_09_cal_27",
   "2023_09_cal_28",
@@ -354,6 +359,7 @@ const MATH_2023_09_GEO_INTERNAL_VERIFIED_IDS = [
   "2023_09_geo_23",
   "2023_09_geo_24",
   "2023_09_geo_25",
+  "2023_09_geo_26",
   "2023_09_geo_27",
   "2023_09_geo_28",
   "2023_09_geo_29",
@@ -379,9 +385,11 @@ const MATH_2024_06_SECOND_INTERNAL_VERIFIED_IDS = [
   "2024_06_common_15",
   "2024_06_common_16",
   "2024_06_common_17",
+  "2024_06_common_18",
   "2024_06_common_19",
   "2024_06_common_20",
   "2024_06_common_21",
+  "2024_06_common_22",
 ];
 const MATH_2024_06_STA_INTERNAL_VERIFIED_IDS = [
   "2024_06_sta_23",
@@ -419,6 +427,7 @@ const MATH_2024_09_FIRST_INTERNAL_VERIFIED_IDS = [
   "2024_09_common_3",
   "2024_09_common_4",
   "2024_09_common_5",
+  "2024_09_common_6",
   "2024_09_common_7",
   "2024_09_common_8",
   "2024_09_common_9",
@@ -488,6 +497,7 @@ const MATH_2025_06_SECOND_INTERNAL_VERIFIED_IDS = [
   "2025_06_common_15",
   "2025_06_common_16",
   "2025_06_common_17",
+  "2025_06_common_18",
   "2025_06_common_19",
   "2025_06_common_20",
   "2025_06_common_21",
@@ -531,6 +541,7 @@ const MATH_2025_09_FIRST_INTERNAL_VERIFIED_IDS = [
   "2025_09_common_5",
   "2025_09_common_6",
   "2025_09_common_7",
+  "2025_09_common_8",
   "2025_09_common_9",
   "2025_09_common_10",
   "2025_09_common_11",
@@ -543,6 +554,7 @@ const MATH_2025_09_SECOND_INTERNAL_VERIFIED_IDS = [
   "2025_09_common_16",
   "2025_09_common_17",
   "2025_09_common_18",
+  "2025_09_common_19",
   "2025_09_common_20",
   "2025_09_common_21",
   "2025_09_common_22",
@@ -561,6 +573,7 @@ const MATH_2025_09_CAL_INTERNAL_VERIFIED_IDS = [
   "2025_09_cal_23",
   "2025_09_cal_24",
   "2025_09_cal_25",
+  "2025_09_cal_26",
   "2025_09_cal_27",
   "2025_09_cal_28",
   "2025_09_cal_29",
@@ -576,14 +589,17 @@ const MATH_2025_09_GEO_INTERNAL_VERIFIED_IDS = [
   "2025_09_geo_29",
   "2025_09_geo_30",
 ];
-const MATH_SOURCE_HOLD_IDS = ["2022_06_cal_29"];
-const MATH_2022_09_SOURCE_HOLD_IDS = ["2022_09_common_11"];
-const MATH_2023_06_SOURCE_HOLD_IDS = ["2023_06_common_6", "2023_06_common_19"];
-const MATH_2023_09_SOURCE_HOLD_IDS = ["2023_09_cal_25", "2023_09_geo_26"];
-const MATH_2024_06_SOURCE_HOLD_IDS = ["2024_06_common_18", "2024_06_common_22"];
-const MATH_2024_09_SOURCE_HOLD_IDS = ["2024_09_common_6"];
-const MATH_2025_06_SOURCE_HOLD_IDS = ["2025_06_common_18"];
-const MATH_2025_09_SOURCE_HOLD_IDS = [
+const MATH_SOURCE_CORRECTION_IDS = ["2022_06_cal_29"];
+const MATH_2022_09_SOURCE_CORRECTION_IDS = ["2022_09_common_11"];
+const MATH_2023_06_SOURCE_CORRECTION_IDS = [
+  "2023_06_common_6",
+  "2023_06_common_19",
+];
+const MATH_2023_09_SOURCE_CORRECTION_IDS = ["2023_09_cal_25", "2023_09_geo_26"];
+const MATH_2024_06_SOURCE_CORRECTION_IDS = ["2024_06_common_18", "2024_06_common_22"];
+const MATH_2024_09_SOURCE_CORRECTION_IDS = ["2024_09_common_6"];
+const MATH_2025_06_SOURCE_CORRECTION_IDS = ["2025_06_common_18"];
+const MATH_2025_09_SOURCE_CORRECTION_IDS = [
   "2025_09_common_8",
   "2025_09_common_19",
   "2025_09_cal_26",
@@ -641,19 +657,23 @@ const MATH_INTERNAL_VERIFIED_ID_GROUPS = [
   MATH_2025_09_CAL_INTERNAL_VERIFIED_IDS,
   MATH_2025_09_GEO_INTERNAL_VERIFIED_IDS,
 ];
-const MATH_SOURCE_HOLD_ID_GROUPS = [
-  MATH_SOURCE_HOLD_IDS,
-  MATH_2022_09_SOURCE_HOLD_IDS,
-  MATH_2023_06_SOURCE_HOLD_IDS,
-  MATH_2023_09_SOURCE_HOLD_IDS,
-  MATH_2024_06_SOURCE_HOLD_IDS,
-  MATH_2024_09_SOURCE_HOLD_IDS,
-  MATH_2025_06_SOURCE_HOLD_IDS,
-  MATH_2025_09_SOURCE_HOLD_IDS,
+const MATH_SOURCE_CORRECTION_ID_GROUPS = [
+  MATH_SOURCE_CORRECTION_IDS,
+  MATH_2022_09_SOURCE_CORRECTION_IDS,
+  MATH_2023_06_SOURCE_CORRECTION_IDS,
+  MATH_2023_09_SOURCE_CORRECTION_IDS,
+  MATH_2024_06_SOURCE_CORRECTION_IDS,
+  MATH_2024_09_SOURCE_CORRECTION_IDS,
+  MATH_2025_06_SOURCE_CORRECTION_IDS,
+  MATH_2025_09_SOURCE_CORRECTION_IDS,
 ];
 const MATH_INTERNAL_VERIFIED_ID_COUNT =
   MATH_INTERNAL_VERIFIED_ID_GROUPS.flat().length;
-const MATH_SOURCE_HOLD_ID_COUNT = MATH_SOURCE_HOLD_ID_GROUPS.flat().length;
+const MATH_SOURCE_CORRECTION_ID_COUNT =
+  MATH_SOURCE_CORRECTION_ID_GROUPS.flat().length;
+const MATH_SOLUTION_MIN_NARRATIVE_LENGTH = 20;
+const MATH_SOLUTION_DRAFT_PATTERN =
+  /TODO|TBD|미검증|AI생성|ProbDex|준비\s*중|임시|�|\?\?/i;
 const MATH_VERIFIED_SOLUTION_FILENAME = "math_free_verified_solutions_v1.json";
 const MATH_FIGURE_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2022_06_common_4_verified_solution_v1.json";
@@ -694,7 +714,7 @@ const MATH_2022_09_CAL_INTERNAL_VERIFIED_SOLUTION_FILENAME =
 const MATH_2022_09_GEO_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2022_09_geo_23_30_verified_solutions_v1.json";
 const MATH_2022_09_REMAINING_INTERNAL_VERIFIED_SOLUTION_FILENAME =
-  "math_2022_09_remaining_13_verified_solutions_v1.json";
+  "math_2022_09_remaining_14_verified_solutions_v1.json";
 const MATH_2023_06_FIRST_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2023_06_common_1_9_verified_solutions_v1.json";
 const MATH_2023_06_SECOND_INTERNAL_VERIFIED_SOLUTION_FILENAME =
@@ -724,7 +744,7 @@ const MATH_2023_09_GEO_INTERNAL_VERIFIED_SOLUTION_FILENAME =
 const MATH_2024_06_FIRST_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2024_06_common_1_11_verified_solutions_v1.json";
 const MATH_2024_06_SECOND_INTERNAL_VERIFIED_SOLUTION_FILENAME =
-  "math_2024_06_common_12_21_verified_solutions_v1.json";
+  "math_2024_06_common_12_22_verified_solutions_v1.json";
 const MATH_2024_06_STA_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2024_06_sta_23_30_verified_solutions_v1.json";
 const MATH_2024_06_CAL_INTERNAL_VERIFIED_SOLUTION_FILENAME =
@@ -761,14 +781,21 @@ const MATH_2025_09_CAL_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2025_09_cal_23_30_verified_solutions_v1.json";
 const MATH_2025_09_GEO_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2025_09_geo_23_30_verified_solutions_v1.json";
-const MATH_SOURCE_HOLD_FILENAME = "math_2022_06_source_holds_v1.json";
-const MATH_2022_09_SOURCE_HOLD_FILENAME = "math_2022_09_source_holds_v1.json";
-const MATH_2023_06_SOURCE_HOLD_FILENAME = "math_2023_06_source_holds_v1.json";
-const MATH_2023_09_SOURCE_HOLD_FILENAME = "math_2023_09_source_holds_v1.json";
-const MATH_2024_06_SOURCE_HOLD_FILENAME = "math_2024_06_source_holds_v1.json";
-const MATH_2024_09_SOURCE_HOLD_FILENAME = "math_2024_09_source_holds_v1.json";
-const MATH_2025_06_SOURCE_HOLD_FILENAME = "math_2025_06_source_holds_v1.json";
-const MATH_2025_09_SOURCE_HOLD_FILENAME = "math_2025_09_source_holds_v1.json";
+const MATH_SOURCE_CORRECTION_FILENAME = "math_2022_06_source_corrections_v1.json";
+const MATH_2022_09_SOURCE_CORRECTION_FILENAME =
+  "math_2022_09_source_corrections_v1.json";
+const MATH_2023_06_SOURCE_CORRECTION_FILENAME =
+  "math_2023_06_source_corrections_v1.json";
+const MATH_2023_09_SOURCE_CORRECTION_FILENAME =
+  "math_2023_09_source_corrections_v1.json";
+const MATH_2024_06_SOURCE_CORRECTION_FILENAME =
+  "math_2024_06_source_corrections_v1.json";
+const MATH_2024_09_SOURCE_CORRECTION_FILENAME =
+  "math_2024_09_source_corrections_v1.json";
+const MATH_2025_06_SOURCE_CORRECTION_FILENAME =
+  "math_2025_06_source_corrections_v1.json";
+const MATH_2025_09_SOURCE_CORRECTION_FILENAME =
+  "math_2025_09_source_corrections_v1.json";
 const MATH_VERIFIED_SOURCE_HASHES = {
   archiveSha256:
     "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
@@ -1253,15 +1280,52 @@ function validateMathVerifiedSolutionSet({
     requireText(item.approach, "MATH_SOLUTION_APPROACH", id);
     requireText(item.correctReason, "MATH_SOLUTION_REASON", id);
     requireText(item.commonMistake, "MATH_SOLUTION_MISTAKE", id);
+    const narrativeFields = {
+      summary: item.summary,
+      approach: item.approach,
+      correctReason: item.correctReason,
+      commonMistake: item.commonMistake,
+    };
+    for (const [field, text] of Object.entries(narrativeFields)) {
+      if (text.trim().length < MATH_SOLUTION_MIN_NARRATIVE_LENGTH) {
+        fail("MATH_SOLUTION_NARRATIVE_DEPTH", `${id}:${field}`);
+      }
+      if (MATH_SOLUTION_DRAFT_PATTERN.test(text)) {
+        fail("MATH_SOLUTION_DRAFT_MARKER", `${id}:${field}`);
+      }
+    }
+    if (
+      new Set(Object.values(narrativeFields)).size !==
+      Object.keys(narrativeFields).length
+    ) {
+      fail("MATH_SOLUTION_NARRATIVE_DUPLICATE", id);
+    }
+    if (expectedAnswerMark !== null) {
+      const answerMarks = item.correctReason.match(/[①②③④⑤]/g) ?? [];
+      if (
+        !answerMarks.includes(expectedAnswerMark) ||
+        answerMarks.some((mark) => mark !== expectedAnswerMark)
+      ) {
+        fail("MATH_SOLUTION_REASON_ANSWER", id);
+      }
+    } else if (!item.correctReason.includes(String(question.answer))) {
+      fail("MATH_SOLUTION_REASON_ANSWER", id);
+    }
     if (
       !Array.isArray(item.concepts) ||
       item.concepts.length < 2 ||
-      item.concepts.some((concept) => !String(concept).trim())
+      item.concepts.some((concept) => !String(concept).trim()) ||
+      new Set(item.concepts).size !== item.concepts.length
     ) {
       fail("MATH_SOLUTION_CONCEPTS", id);
     }
     if (!Array.isArray(item.steps) || item.steps.length < 2) {
       fail("MATH_SOLUTION_STEPS", id);
+    }
+    if (
+      new Set(item.steps.map((step) => step?.title)).size !== item.steps.length
+    ) {
+      fail("MATH_SOLUTION_STEP_TITLES", id);
     }
     item.steps.forEach((step, index) => {
       requireText(step?.title, "MATH_SOLUTION_STEP_TITLE", `${id}:${index}`);
@@ -1284,6 +1348,13 @@ function validateMathVerifiedSolutionSet({
         "MATH_SOLUTION_STEP_EXPLANATION",
         `${id}:${index}`,
       );
+      if (
+        MATH_SOLUTION_DRAFT_PATTERN.test(
+          `${step.title} ${step.expression} ${step.explanation}`,
+        )
+      ) {
+        fail("MATH_SOLUTION_STEP_DRAFT_MARKER", `${id}:${index}`);
+      }
     });
     const verification = item.verification;
     if (
@@ -1306,7 +1377,7 @@ function validateMathVerifiedSolutionSet({
   return items;
 }
 
-function validateMathSourceHolds({
+function validateMathSourceCorrections({
   mathDbPath,
   mathDb,
   filename,
@@ -1315,21 +1386,21 @@ function validateMathSourceHolds({
   expectedIssueCodes,
   expectedSourceHashes,
 }) {
-  const holdPath = path.join(path.dirname(mathDbPath), filename);
-  const database = readJson(holdPath, filename);
+  const correctionPath = path.join(path.dirname(mathDbPath), filename);
+  const database = readJson(correctionPath, filename);
   const metadata = database.metadata;
   if (
-    metadata?.schemaVersion !== "math-source-hold-v1" ||
-    metadata.status !== "internal_source_hold" ||
+    metadata?.schemaVersion !== "math-source-correction-v1" ||
+    metadata.status !== "internal_source_corrected" ||
     metadata.publicConnected !== false ||
     metadata.itemCount !== expectedIds.length ||
     metadata.verifiedAt !== "2026-08-05"
   ) {
-    fail("MATH_SOURCE_HOLD_METADATA", holdPath);
+    fail("MATH_SOURCE_CORRECTION_METADATA", correctionPath);
   }
   for (const [key, expected] of Object.entries(expectedSourceHashes)) {
     if (metadata.sourceArtifacts?.[key] !== expected) {
-      fail("MATH_SOURCE_HOLD_SOURCE_HASH", key);
+      fail("MATH_SOURCE_CORRECTION_SOURCE_HASH", key);
     }
   }
 
@@ -1338,7 +1409,7 @@ function validateMathSourceHolds({
   );
   const sourceQuestions = expectedIds.map((id) => {
     const question = questionsById.get(id);
-    if (!question) fail("MATH_SOURCE_HOLD_QUESTION", id);
+    if (!question) fail("MATH_SOURCE_CORRECTION_QUESTION", id);
     return {
       id: question.id,
       problem: question.problem_latex,
@@ -1351,46 +1422,73 @@ function validateMathSourceHolds({
   const questionFingerprint = contentFingerprint(sourceQuestions);
   if (metadata.questionFingerprint !== questionFingerprint) {
     fail(
-      "MATH_SOURCE_HOLD_FINGERPRINT",
+      "MATH_SOURCE_CORRECTION_FINGERPRINT",
       `${questionFingerprint} != ${metadata.questionFingerprint}`,
     );
   }
   if (
     stableJson(Object.keys(database.items ?? {})) !== stableJson(expectedIds)
   ) {
-    fail("MATH_SOURCE_HOLD_IDS", Object.keys(database.items ?? {}).join(","));
+    fail(
+      "MATH_SOURCE_CORRECTION_IDS",
+      Object.keys(database.items ?? {}).join(","),
+    );
   }
 
   for (const id of expectedIds) {
     const item = database.items[id];
     const question = questionsById.get(id);
     let sourceStateMatches = false;
-    if (item?.correctionRequired === "problem_latex") {
+    if (item?.correctionApplied === "problem_latex") {
       sourceStateMatches =
-        question.problem_latex.includes(item.dbTextFragment) &&
-        !question.problem_latex.includes(item.officialTextFragment);
-    } else if (item?.correctionRequired === "choices") {
+        question.problem_latex.includes(item.officialTextFragment) &&
+        !question.problem_latex.includes(item.previousDbTextFragment);
+    } else if (item?.correctionApplied === "choices") {
       const choice = question.choices.find(
         (candidate) => candidate.num === item.choiceNumber,
       );
       sourceStateMatches =
-        choice?.latex === item.dbTextFragment &&
-        choice.latex !== item.officialTextFragment;
+        choice?.latex === item.officialTextFragment &&
+        choice.latex !== item.previousDbTextFragment;
+    }
+    if (item?.additionalCorrectedFields) {
+      const expectedFields = ["figureDesc", "notes"];
+      if (
+        stableJson(item.additionalCorrectedFields) !== stableJson(expectedFields) ||
+        !expectedFields.every(
+          (field) =>
+            typeof question[field] === "string" &&
+            question[field].includes("반원") &&
+            !question[field].includes("정사각형"),
+        )
+      ) {
+        sourceStateMatches = false;
+      }
     }
     if (
       item?.id !== id ||
-      item.status !== "blocked_by_source_integrity" ||
+      item.status !== "source_integrity_corrected" ||
       item.issueCode !== expectedIssueCodes.get(id) ||
       !sourceStateMatches ||
       item.verification?.problemPage !== expectedProblemPages.get(id) ||
-      item.verification?.problemMatchedPdf !== false ||
+      item.verification?.problemMatchedPdf !== true ||
       item.verification?.sourceDifferenceConfirmed !== true ||
-      item.verification?.releaseBlocked !== true
+      item.verification?.correctionAppliedToDatabase !== true ||
+      item.verification?.releaseBlocked !== false
     ) {
-      fail("MATH_SOURCE_HOLD_STATE", id);
+      fail("MATH_SOURCE_CORRECTION_STATE", id);
     }
-    requireText(item.officialTextFragment, "MATH_SOURCE_HOLD_OFFICIAL", id);
-    requireText(item.reason, "MATH_SOURCE_HOLD_REASON", id);
+    requireText(
+      item.previousDbTextFragment,
+      "MATH_SOURCE_CORRECTION_PREVIOUS",
+      id,
+    );
+    requireText(
+      item.officialTextFragment,
+      "MATH_SOURCE_CORRECTION_OFFICIAL",
+      id,
+    );
+    requireText(item.reason, "MATH_SOURCE_CORRECTION_REASON", id);
   }
 }
 
@@ -1400,8 +1498,8 @@ function validateMathVerifiedCoverage(mathDb) {
     .map((question) => question.id)
     .sort();
   const internalIds = MATH_INTERNAL_VERIFIED_ID_GROUPS.flat();
-  const sourceHoldIds = MATH_SOURCE_HOLD_ID_GROUPS.flat();
-  const classifiedIds = [...MATH_FREE_IDS, ...internalIds, ...sourceHoldIds];
+  const sourceCorrectionIds = MATH_SOURCE_CORRECTION_ID_GROUPS.flat();
+  const classifiedIds = [...MATH_FREE_IDS, ...internalIds];
   const duplicateIds = classifiedIds.filter(
     (id, index) => classifiedIds.indexOf(id) !== index,
   );
@@ -1411,18 +1509,29 @@ function validateMathVerifiedCoverage(mathDb) {
   }
   if (
     MATH_FREE_IDS.length !== 5 ||
-    internalIds.length !== 350 ||
-    sourceHoldIds.length !== 13
+    internalIds.length !== 363 ||
+    sourceCorrectionIds.length !== 13
   ) {
     fail(
       "MATH_VERIFIED_COVERAGE_CLASS_COUNTS",
-      `${MATH_FREE_IDS.length}/${internalIds.length}/${sourceHoldIds.length}`,
+      `${MATH_FREE_IDS.length}/${internalIds.length}/${sourceCorrectionIds.length}`,
     );
   }
   if (duplicateIds.length > 0) {
     fail(
       "MATH_VERIFIED_COVERAGE_DUPLICATE",
       [...new Set(duplicateIds)].join(","),
+    );
+  }
+  const internalSet = new Set(internalIds);
+  const invalidCorrectionIds = sourceCorrectionIds.filter(
+    (id, index) =>
+      sourceCorrectionIds.indexOf(id) !== index || !internalSet.has(id),
+  );
+  if (invalidCorrectionIds.length > 0) {
+    fail(
+      "MATH_VERIFIED_COVERAGE_CORRECTIONS",
+      [...new Set(invalidCorrectionIds)].join(","),
     );
   }
   if (stableJson(classifiedIds.sort()) !== stableJson(fullIds)) {
@@ -1595,6 +1704,7 @@ function validateMathVerifiedSolutions(mathDbPath, mathDb, sourceDirectory) {
     expectedIds: MATH_CAL_ADVANCED_INTERNAL_VERIFIED_IDS,
     expectedProblemPages: new Map([
       ["2022_06_cal_28", 15],
+      ["2022_06_cal_29", 16],
       ["2022_06_cal_30", 16],
     ]),
     verifiedAt: "2026-08-05",
@@ -1614,11 +1724,11 @@ function validateMathVerifiedSolutions(mathDbPath, mathDb, sourceDirectory) {
     verifiedAt: "2026-08-05",
   });
 
-  validateMathSourceHolds({
+  validateMathSourceCorrections({
     mathDbPath,
     mathDb,
-    filename: MATH_SOURCE_HOLD_FILENAME,
-    expectedIds: MATH_SOURCE_HOLD_IDS,
+    filename: MATH_SOURCE_CORRECTION_FILENAME,
+    expectedIds: MATH_SOURCE_CORRECTION_IDS,
     expectedProblemPages: new Map([["2022_06_cal_29", 16]]),
     expectedIssueCodes: new Map([
       ["2022_06_cal_29", "problem_text_missing_symbol"],
@@ -1746,6 +1856,7 @@ function validateMath2022SeptemberVerifiedSolutions(
     expectedIds: MATH_2022_09_REMAINING_INTERNAL_VERIFIED_IDS,
     expectedProblemPages: new Map([
       ["2022_09_common_10", 3],
+      ["2022_09_common_11", 4],
       ["2022_09_common_12", 4],
       ["2022_09_common_20", 7],
       ["2022_09_common_21", 8],
@@ -1763,11 +1874,11 @@ function validateMath2022SeptemberVerifiedSolutions(
     verifiedAt: "2026-08-05",
   });
 
-  validateMathSourceHolds({
+  validateMathSourceCorrections({
     mathDbPath,
     mathDb,
-    filename: MATH_2022_09_SOURCE_HOLD_FILENAME,
-    expectedIds: MATH_2022_09_SOURCE_HOLD_IDS,
+    filename: MATH_2022_09_SOURCE_CORRECTION_FILENAME,
+    expectedIds: MATH_2022_09_SOURCE_CORRECTION_IDS,
     expectedProblemPages: new Map([["2022_09_common_11", 4]]),
     expectedIssueCodes: new Map([
       ["2022_09_common_11", "problem_text_grouping_error"],
@@ -1794,6 +1905,7 @@ function validateMath2023JuneVerifiedSolutions(
       ["2023_06_common_2", 1],
       ["2023_06_common_3", 1],
       ["2023_06_common_5", 2],
+      ["2023_06_common_6", 2],
       ["2023_06_common_7", 2],
       ["2023_06_common_8", 3],
       ["2023_06_common_9", 3],
@@ -1828,6 +1940,7 @@ function validateMath2023JuneVerifiedSolutions(
     expectedIds: MATH_2023_06_THIRD_INTERNAL_VERIFIED_IDS,
     expectedProblemPages: new Map([
       ["2023_06_common_18", 7],
+      ["2023_06_common_19", 7],
       ["2023_06_common_20", 7],
       ["2023_06_common_21", 8],
       ["2023_06_common_22", 8],
@@ -1922,11 +2035,11 @@ function validateMath2023JuneVerifiedSolutions(
     verifiedAt: "2026-08-05",
   });
 
-  validateMathSourceHolds({
+  validateMathSourceCorrections({
     mathDbPath,
     mathDb,
-    filename: MATH_2023_06_SOURCE_HOLD_FILENAME,
-    expectedIds: MATH_2023_06_SOURCE_HOLD_IDS,
+    filename: MATH_2023_06_SOURCE_CORRECTION_FILENAME,
+    expectedIds: MATH_2023_06_SOURCE_CORRECTION_IDS,
     expectedProblemPages: new Map([
       ["2023_06_common_6", 2],
       ["2023_06_common_19", 7],
@@ -2019,6 +2132,7 @@ function validateMath2023SeptemberVerifiedSolutions(
     expectedProblemPages: new Map([
       ["2023_09_cal_23", 13],
       ["2023_09_cal_24", 13],
+      ["2023_09_cal_25", 14],
       ["2023_09_cal_26", 14],
       ["2023_09_cal_27", 15],
       ["2023_09_cal_28", 15],
@@ -2040,6 +2154,7 @@ function validateMath2023SeptemberVerifiedSolutions(
       ["2023_09_geo_23", 17],
       ["2023_09_geo_24", 17],
       ["2023_09_geo_25", 18],
+      ["2023_09_geo_26", 18],
       ["2023_09_geo_27", 19],
       ["2023_09_geo_28", 19],
       ["2023_09_geo_29", 20],
@@ -2049,11 +2164,11 @@ function validateMath2023SeptemberVerifiedSolutions(
     verifiedAt: "2026-08-05",
   });
 
-  validateMathSourceHolds({
+  validateMathSourceCorrections({
     mathDbPath,
     mathDb,
-    filename: MATH_2023_09_SOURCE_HOLD_FILENAME,
-    expectedIds: MATH_2023_09_SOURCE_HOLD_IDS,
+    filename: MATH_2023_09_SOURCE_CORRECTION_FILENAME,
+    expectedIds: MATH_2023_09_SOURCE_CORRECTION_IDS,
     expectedProblemPages: new Map([
       ["2023_09_cal_25", 14],
       ["2023_09_geo_26", 18],
@@ -2107,9 +2222,11 @@ function validateMath2024JuneVerifiedSolutions(
       ["2024_06_common_15", 6],
       ["2024_06_common_16", 6],
       ["2024_06_common_17", 6],
+      ["2024_06_common_18", 7],
       ["2024_06_common_19", 7],
       ["2024_06_common_20", 7],
       ["2024_06_common_21", 8],
+      ["2024_06_common_22", 8],
     ]),
     expectedSourceHashes: MATH_2024_06_VERIFIED_SOURCE_HASHES,
     verifiedAt: "2026-08-05",
@@ -2175,11 +2292,11 @@ function validateMath2024JuneVerifiedSolutions(
     verifiedAt: "2026-08-05",
   });
 
-  validateMathSourceHolds({
+  validateMathSourceCorrections({
     mathDbPath,
     mathDb,
-    filename: MATH_2024_06_SOURCE_HOLD_FILENAME,
-    expectedIds: MATH_2024_06_SOURCE_HOLD_IDS,
+    filename: MATH_2024_06_SOURCE_CORRECTION_FILENAME,
+    expectedIds: MATH_2024_06_SOURCE_CORRECTION_IDS,
     expectedProblemPages: new Map([
       ["2024_06_common_18", 7],
       ["2024_06_common_22", 8],
@@ -2209,6 +2326,7 @@ function validateMath2024SeptemberVerifiedSolutions(
       ["2024_09_common_3", 1],
       ["2024_09_common_4", 1],
       ["2024_09_common_5", 2],
+      ["2024_09_common_6", 2],
       ["2024_09_common_7", 2],
       ["2024_09_common_8", 3],
       ["2024_09_common_9", 3],
@@ -2304,11 +2422,11 @@ function validateMath2024SeptemberVerifiedSolutions(
     verifiedAt: "2026-08-05",
   });
 
-  validateMathSourceHolds({
+  validateMathSourceCorrections({
     mathDbPath,
     mathDb,
-    filename: MATH_2024_09_SOURCE_HOLD_FILENAME,
-    expectedIds: MATH_2024_09_SOURCE_HOLD_IDS,
+    filename: MATH_2024_09_SOURCE_CORRECTION_FILENAME,
+    expectedIds: MATH_2024_09_SOURCE_CORRECTION_IDS,
     expectedProblemPages: new Map([["2024_09_common_6", 2]]),
     expectedIssueCodes: new Map([
       ["2024_09_common_6", "problem_text_grouping_error"],
@@ -2359,6 +2477,7 @@ function validateMath2025JuneVerifiedSolutions(
       ["2025_06_common_15", 6],
       ["2025_06_common_16", 6],
       ["2025_06_common_17", 6],
+      ["2025_06_common_18", 7],
       ["2025_06_common_19", 7],
       ["2025_06_common_20", 7],
       ["2025_06_common_21", 8],
@@ -2428,11 +2547,11 @@ function validateMath2025JuneVerifiedSolutions(
     verifiedAt: "2026-08-05",
   });
 
-  validateMathSourceHolds({
+  validateMathSourceCorrections({
     mathDbPath,
     mathDb,
-    filename: MATH_2025_06_SOURCE_HOLD_FILENAME,
-    expectedIds: MATH_2025_06_SOURCE_HOLD_IDS,
+    filename: MATH_2025_06_SOURCE_CORRECTION_FILENAME,
+    expectedIds: MATH_2025_06_SOURCE_CORRECTION_IDS,
     expectedProblemPages: new Map([["2025_06_common_18", 7]]),
     expectedIssueCodes: new Map([
       ["2025_06_common_18", "problem_text_grouping_error"],
@@ -2460,6 +2579,7 @@ function validateMath2025SeptemberVerifiedSolutions(
       ["2025_09_common_5", 2],
       ["2025_09_common_6", 2],
       ["2025_09_common_7", 2],
+      ["2025_09_common_8", 3],
       ["2025_09_common_9", 3],
       ["2025_09_common_10", 3],
       ["2025_09_common_11", 4],
@@ -2483,6 +2603,7 @@ function validateMath2025SeptemberVerifiedSolutions(
       ["2025_09_common_16", 6],
       ["2025_09_common_17", 6],
       ["2025_09_common_18", 7],
+      ["2025_09_common_19", 7],
       ["2025_09_common_20", 7],
       ["2025_09_common_21", 8],
       ["2025_09_common_22", 8],
@@ -2521,6 +2642,7 @@ function validateMath2025SeptemberVerifiedSolutions(
       ["2025_09_cal_23", 13],
       ["2025_09_cal_24", 13],
       ["2025_09_cal_25", 14],
+      ["2025_09_cal_26", 14],
       ["2025_09_cal_27", 15],
       ["2025_09_cal_28", 15],
       ["2025_09_cal_29", 16],
@@ -2550,11 +2672,11 @@ function validateMath2025SeptemberVerifiedSolutions(
     verifiedAt: "2026-08-05",
   });
 
-  validateMathSourceHolds({
+  validateMathSourceCorrections({
     mathDbPath,
     mathDb,
-    filename: MATH_2025_09_SOURCE_HOLD_FILENAME,
-    expectedIds: MATH_2025_09_SOURCE_HOLD_IDS,
+    filename: MATH_2025_09_SOURCE_CORRECTION_FILENAME,
+    expectedIds: MATH_2025_09_SOURCE_CORRECTION_IDS,
     expectedProblemPages: new Map([
       ["2025_09_common_8", 3],
       ["2025_09_common_19", 7],
@@ -4001,17 +4123,17 @@ if (mode === "--write") {
   });
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
   console.log(
-    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathSourceHolds=${MATH_SOURCE_HOLD_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
   );
 } else if (mode === "--check") {
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
   console.log(
-    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathSourceHolds=${MATH_SOURCE_HOLD_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
   );
 } else if (mode === "--check-dist") {
   verifyPublishedBoundary(path.join(ROOT, "dist"), data);
   console.log(
-    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathSourceHolds=${MATH_SOURCE_HOLD_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
   );
 } else {
   fail("MODE_INVALID", mode);

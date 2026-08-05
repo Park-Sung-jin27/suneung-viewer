@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2025학년도 9월 모의평가 수학 미적분 23~30번 중 원문 일치 7문항",
+    "scope": "2025학년도 9월 모의평가 수학 미적분 23~30번",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 7,
-    "readyCount": 7,
-    "questionFingerprint": "a80721b0c35e242eb9744469b96907ddd61a88ac74f564b77d58d3ceb8b443df",
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "929b46dfdd204beb18b10b1081391336905d5af5b2484f4721ee0785cfcf2c87",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5087696&lev=0&m=0403&page=3&s=suneung&searchType=S&statusYN=W",
@@ -31,7 +31,7 @@
         }
       ]
     },
-    "note": "평가원 공식 문제지·정답표를 동일 파일 복제본과 대조하고, EBS 해설 및 독립 계산으로 풀이를 다시 확인했습니다. 26번은 문제 도형 조건이 원본과 달라 별도 차단했습니다."
+    "note": "평가원 공식 문제지·정답표를 동일 파일 복제본과 대조하고, EBS 해설 및 독립 계산으로 풀이를 다시 확인했습니다."
   },
   "items": {
     "2025_09_cal_23": {
@@ -56,7 +56,7 @@
           "explanation": "5x가 0으로 갈 때 sin(5x)/(5x)는 1로 갑니다."
         }
       ],
-      "correctReason": "sin t/t가 1로 수렴하고 바깥의 상수 5가 그대로 남습니다.",
+      "correctReason": "sin t/t가 1로 수렴하고 바깥의 상수 5가 그대로 남습니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "sin 5x를 5 sin x로 바꾸지 마세요. 극한에서만 5x를 한 덩어리로 다룹니다.",
       "verification": {
         "problemPage": 13,
@@ -94,7 +94,7 @@
           "explanation": "ln e=1까지 더하면 정답은 ④입니다."
         }
       ],
-      "correctReason": "적분상수 1과 ln e=1을 모두 반영한 값이 2e^(2e)+2입니다.",
+      "correctReason": "적분상수 1과 ln e=1을 모두 반영한 값이 2e^(2e)+2입니다. 따라서 정답은 ④입니다.",
       "commonMistake": "4e^(2t)를 적분할 때 지수의 미분값 2로 나누어 2e^(2t)가 됨을 놓치지 마세요.",
       "verification": {
         "problemPage": 13,
@@ -132,8 +132,60 @@
           "explanation": "정답은 ④입니다."
         }
       ],
-      "correctReason": "공비와 첫째항을 극한 조건에서 차례로 고정하면 합이 유일하게 9/2로 정해집니다.",
+      "correctReason": "공비와 첫째항을 극한 조건에서 차례로 고정하면 합이 유일하게 9/2로 정해집니다. 따라서 정답은 ④입니다.",
       "commonMistake": "-1은 n이 커질 때 주된 항이 아니지만, 공비를 정하기 전에 무조건 버리면 증가율 조건을 놓칠 수 있습니다.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_cal_26": {
+      "id": "2025_09_cal_26",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 26,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "세로 길이를 반원의 지름으로 두어 단면적을 적분하면 부피는 (√3π²+6π)/48입니다.",
+      "approach": "곡선의 y값을 반원의 지름으로 해석해 단면적을 만들고 u=x² 치환으로 정적분을 계산합니다.",
+      "concepts": [
+        "반원의 넓이",
+        "단면적을 이용한 부피",
+        "치환적분"
+      ],
+      "steps": [
+        {
+          "title": "단면의 지름 구하기",
+          "expression": "d(x)=2x\\sqrt{x\\sin x^2}",
+          "explanation": "x축부터 곡선까지의 세로 길이가 반원의 지름입니다."
+        },
+        {
+          "title": "단면적 나타내기",
+          "expression": "A(x)=\\frac{\\pi}{8}d(x)^2=\\frac{\\pi}{2}x^3\\sin x^2",
+          "explanation": "지름이 d인 반원의 넓이는 πd²/8입니다."
+        },
+        {
+          "title": "부피 적분 세우기",
+          "expression": "V=\\frac{\\pi}{2}\\int_{\\sqrt{\\pi/6}}^{\\sqrt{\\pi/2}}x^3\\sin x^2\\,dx=\\frac{\\pi}{4}\\int_{\\pi/6}^{\\pi/2}u\\sin u\\,du",
+          "explanation": "u=x²로 치환하면 x³dx=u du/2가 됩니다."
+        },
+        {
+          "title": "정적분 계산하기",
+          "expression": "\\int_{\\pi/6}^{\\pi/2}u\\sin u\\,du=\\frac12+\\frac{\\sqrt3\\pi}{12}",
+          "explanation": "부분적분으로 원시함수 -u cos u+sin u를 구해 양 끝값을 대입합니다."
+        },
+        {
+          "title": "부피 정리하기",
+          "expression": "V=\\frac{\\pi}{8}+\\frac{\\sqrt3\\pi^2}{48}=\\frac{\\sqrt3\\pi^2+6\\pi}{48}",
+          "explanation": "선택지 ③과 일치합니다."
+        }
+      ],
+      "correctReason": "단면이 반원이므로 계산한 부피는 (√3π²+6π)/48, 선택지 ③입니다.",
+      "commonMistake": "곡선의 y값은 반지름이 아니라 반원의 지름입니다. 또 단면을 정사각형으로 읽으면 전혀 다른 부피가 됩니다.",
       "verification": {
         "problemPage": 14,
         "answerTablePage": 1,
@@ -170,7 +222,7 @@
           "explanation": "sin π=0, cos π=-1을 사용하면 정답은 ②입니다."
         }
       ],
-      "correctReason": "x=π에서도 합성함수 안쪽이 0이므로 앞에서 구한 f'(0)을 재사용할 수 있습니다.",
+      "correctReason": "x=π에서도 합성함수 안쪽이 0이므로 앞에서 구한 f'(0)을 재사용할 수 있습니다. 따라서 정답은 ②입니다.",
       "commonMistake": "합성함수를 미분할 때 바깥 함수의 도함수만 쓰고 안쪽 미분값 (1/2)cos x를 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 15,
@@ -213,7 +265,7 @@
           "explanation": "치환 x=2t 뒤 부분적분하면 경계항은 0이 되고 정답은 ③입니다."
         }
       ],
-      "correctReason": "역함수 적분과 부분적분이 모두 동일한 I를 매개로 연결되어 값이 -1/(3π)로 결정됩니다.",
+      "correctReason": "역함수 적분과 부분적분이 모두 동일한 I를 매개로 연결되어 값이 -1/(3π)로 결정됩니다. 따라서 정답은 ③입니다.",
       "commonMistake": "x=2t로 치환할 때 dx=2dt와, f(2t)를 미분할 때 생기는 계수 2를 각각 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 15,
@@ -256,7 +308,7 @@
           "explanation": "35와 22는 서로소입니다."
         }
       ],
-      "correctReason": "부분합의 차로 일반항을 복원하면 10번째 항은 새로 추가된 1/11 하나입니다.",
+      "correctReason": "부분합의 차로 일반항을 복원하면 10번째 항은 새로 추가된 1/11 하나입니다. 따라서 답은 57입니다.",
       "commonMistake": "문제에서 q/p로 제시했으므로 분자 q=35, 분모 p=22의 순서를 뒤집지 마세요.",
       "verification": {
         "problemPage": 16,
@@ -299,7 +351,7 @@
           "explanation": "p=2, q=-7/4입니다."
         }
       ],
-      "correctReason": "모든 원시함수의 차이는 상수이므로, 조건을 만족시키는 최소 수직 이동량을 찾는 문제가 됩니다.",
+      "correctReason": "모든 원시함수의 차이는 상수이므로, 조건을 만족시키는 최소 수직 이동량을 찾는 문제가 됩니다. 따라서 답은 25입니다.",
       "commonMistake": "F(0)의 최솟값을 f(0)=k로 바로 두지 마세요. F≥f가 모든 실수에서 성립하도록 전체 구간의 최대 차이를 확인해야 합니다.",
       "verification": {
         "problemPage": 16,

@@ -56,7 +56,7 @@
           "explanation": "정답은 ③입니다."
         }
       ],
-      "correctReason": "두 번째 성분은 2×0+3=3입니다.",
+      "correctReason": "두 번째 성분은 2×0+3=3입니다. 따라서 정답은 ③입니다.",
       "commonMistake": "벡터 a에만 2를 곱해야 하며 벡터 b까지 두 배로 만들지 마세요.",
       "verification": {
         "problemPage": 17,
@@ -89,7 +89,7 @@
           "explanation": "정답은 ④입니다."
         }
       ],
-      "correctReason": "가로축이 장축이므로 장축 반지름 4의 제곱에서 초점 거리의 절반 제곱을 뺍니다.",
+      "correctReason": "가로축이 장축이므로 장축 반지름 4의 제곱에서 초점 거리의 절반 제곱을 뺍니다. 따라서 정답은 ④입니다.",
       "commonMistake": "두 초점 사이 거리 6을 c로 쓰지 말고 2c=6으로 두세요.",
       "verification": {
         "problemPage": 17,
@@ -132,7 +132,7 @@
           "explanation": "정답은 ⑤입니다."
         }
       ],
-      "correctReason": "두 평면·축 조건을 각각 필요한 좌표가 0이라는 식으로 정확히 옮겼습니다.",
+      "correctReason": "두 평면·축 조건을 각각 필요한 좌표가 0이라는 식으로 정확히 옮겼습니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "1:2 내분점의 가중치가 반대편 끝점에 붙는다는 점을 놓치지 마세요.",
       "verification": {
         "problemPage": 18,
@@ -179,7 +179,7 @@
           "explanation": "가능한 자연수는 5개이므로 정답은 ③입니다."
         }
       ],
-      "correctReason": "거리 조건에는 접하는 경우도 포함되며, n=6부터는 거리가 6보다 커집니다.",
+      "correctReason": "거리 조건에는 접하는 경우도 포함되며, n=6부터는 거리가 6보다 커집니다. 따라서 정답은 ③입니다.",
       "commonMistake": "원과 두 점에서 만나는 조건이 아니라 단순히 만나는 조건이므로 거리와 반지름의 등호도 포함하세요.",
       "verification": {
         "problemPage": 18,
@@ -222,7 +222,7 @@
           "explanation": "정답은 ④입니다."
         }
       ],
-      "correctReason": "평면도형의 정사영 넓이는 원래 넓이에 두 평면 사이 각의 코사인을 곱합니다.",
+      "correctReason": "평면도형의 정사영 넓이는 원래 넓이에 두 평면 사이 각의 코사인을 곱합니다. 따라서 정답은 ④입니다.",
       "commonMistake": "사각뿔대의 높이 √14를 옆면 사다리꼴의 높이로 바로 쓰지 마세요.",
       "verification": {
         "problemPage": 19,
@@ -265,7 +265,7 @@
           "explanation": "a>10√2이므로 양의 값을 택하며 정답은 ①입니다."
         }
       ],
-      "correctReason": "두 직각 조건이 교선의 고정 좌표를 주고, 각 조건이 남은 좌표를 결정합니다.",
+      "correctReason": "두 직각 조건이 교선의 고정 좌표를 주고, 각 조건이 남은 좌표를 결정합니다. 따라서 정답은 ①입니다.",
       "commonMistake": "N1과 N2의 내적에서 z좌표의 곱은 z²가 아니라 -z²입니다.",
       "verification": {
         "problemPage": 19,
@@ -313,7 +313,7 @@
           "explanation": "정답은 63입니다."
         }
       ],
-      "correctReason": "포물선의 거리 같음으로 P를 결정한 뒤 쌍곡선의 거리 차 조건을 적용했습니다.",
+      "correctReason": "포물선의 거리 같음으로 P를 결정한 뒤 쌍곡선의 거리 차 조건을 적용했습니다. 따라서 답은 63입니다.",
       "commonMistake": "쌍곡선에서는 PF+PF'가 아니라 두 거리의 차가 2a입니다.",
       "verification": {
         "problemPage": 20,
@@ -356,7 +356,7 @@
           "explanation": "가장 먼 꼭짓점 쌍을 비교하면 A'와 B에서 최댓값이 나옵니다."
         }
       ],
-      "correctReason": "벡터의 합을 평행이동으로 바꾸면 두 닫힌 삼각형 사이 거리의 제곱 문제로 단순해집니다.",
+      "correctReason": "벡터의 합을 평행이동으로 바꾸면 두 닫힌 삼각형 사이 거리의 제곱 문제로 단순해집니다. 따라서 답은 54입니다.",
       "commonMistake": "OE를 더했으므로 P를 E만큼이 아니라 -E만큼 옮겨야 합니다.",
       "verification": {
         "problemPage": 20,

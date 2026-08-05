@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2023학년도 9월 모의평가 수학 기하 23~30번 중 원문 일치 7문항",
+    "scope": "2023학년도 9월 모의평가 수학 기하 23~30번",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 7,
-    "readyCount": 7,
-    "questionFingerprint": "61a0c12798f40b54a6944e52eb80d88b320c5b5734a5eaa8e3f06b745f94d394",
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "4c02917e679f2ec567aab7e687197afd23bc3004a455688c3e84ca24082ad22c",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://jwmath.tistory.com/591",
@@ -22,7 +22,7 @@
       "primaryAnswerImageFilename": "2023_09_math_answer.png",
       "primaryAnswerImageSha256": "ca8dd66204c4df4af348dbc28183a17abf0ff19b415ab55d46fe92821d666ff9"
     },
-    "note": "공식 문제지 화면과 두 정답 자료를 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 원천 조건이 빠진 26번은 source hold로 분리."
+    "note": "공식 문제지 화면과 두 정답 자료를 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보."
   },
   "items": {
     "2023_09_geo_23": {
@@ -83,7 +83,7 @@
           "explanation": "서로 수직인 두 직선의 기울기 곱은 -1입니다."
         }
       ],
-      "correctReason": "a=2가 선지 ②와 일치합니다.",
+      "correctReason": "음함수 미분으로 구한 접선과 주어진 직선의 기울기 곱을 -1로 두면 a=2이므로 ②가 정답입니다.",
       "commonMistake": "쌍곡선의 식에서 y²의 계수가 -1이므로 미분할 때 -2yy'의 부호를 유지하세요.",
       "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -119,9 +119,56 @@
           "explanation": "삼각형 PF'F의 세 변을 모두 더합니다."
         }
       ],
-      "correctReason": "둘레 10이 선지 ⑤와 일치합니다.",
+      "correctReason": "직각삼각형에서 c=2, a=3을 얻고 타원 거리합 6에 초점거리 4를 더하면 둘레가 10이므로 ⑤가 정답입니다.",
       "commonMistake": "AF'는 타원 위 점의 초점거리 합이 아닙니다. P가 타원 위에 놓인 뒤에만 PF+PF'=2a를 사용하세요.",
       "verification": {"problemPage": 18, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_geo_26": {
+      "id": "2023_09_geo_26",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 기하",
+      "questionNumber": 26,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "점 P의 자취를 원으로 바꾸고 직선과 원의 접선 조건을 적용하면 양수 k는 1입니다.",
+      "approach": "벡터 조건으로 원의 중심과 반지름을 구한 뒤, 중심에서 직선까지의 거리를 반지름과 같게 둡니다.",
+      "concepts": [
+        "벡터로 나타낸 점의 자취",
+        "원과 직선의 접선 조건",
+        "점과 직선 사이의 거리"
+      ],
+      "steps": [
+        {
+          "title": "점 P의 자취 구하기",
+          "expression": "(x-3)^2+y^2=5",
+          "explanation": "주어진 벡터의 내적 조건을 좌표로 정리하면 중심이 (3,0), 반지름이 √5인 원입니다."
+        },
+        {
+          "title": "직선과 중심 사이 거리 세우기",
+          "expression": "\\frac{|3+2k|}{\\sqrt5}=\\sqrt5",
+          "explanation": "직선 x-2y+2k=0이 원에 접하므로 원의 중심에서 직선까지의 거리가 반지름과 같습니다."
+        },
+        {
+          "title": "k의 후보 구하기",
+          "expression": "|3+2k|=5\\quad\\Rightarrow\\quad k=1\\ \\text{또는}\\ k=-4",
+          "explanation": "절댓값 방정식을 풀면 두 값이 나옵니다."
+        },
+        {
+          "title": "양수 조건 적용하기",
+          "expression": "k>0\\quad\\Rightarrow\\quad k=1",
+          "explanation": "문제에서 k가 양수라고 했으므로 선택지 ③의 1만 남습니다."
+        }
+      ],
+      "correctReason": "접선 조건을 만족하는 양수 k는 1이므로 선택지 ③이 정답입니다.",
+      "commonMistake": "k가 양수라는 조건을 빠뜨리면 k=-4까지 답으로 남게 됩니다.",
+      "verification": {
+        "problemPage": 18,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
     },
     "2023_09_geo_27": {
       "id": "2023_09_geo_27",
@@ -150,7 +197,7 @@
           "explanation": "CD∥AB이므로 C와 D는 중심에서 같은 거리 y인 현의 양 끝점입니다."
         }
       ],
-      "correctReason": "CD=6이 선지 ③과 일치합니다.",
+      "correctReason": "삼각형 높이와 원기둥 높이를 분리하면 밑면 현의 반길이가 3이므로 CD=6, ③이 정답입니다.",
       "commonMistake": "삼각형 ABC의 높이는 원기둥 높이 3만이 아닙니다. C의 밑면 투영점과 AB 사이 거리까지 합성해야 합니다.",
       "verification": {"problemPage": 19, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },

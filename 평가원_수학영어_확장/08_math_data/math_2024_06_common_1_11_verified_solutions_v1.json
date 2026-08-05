@@ -241,7 +241,7 @@
           "explanation": "a>2이므로 해당 차는 양수입니다."
         }
       ],
-      "correctReason": "a=8이 선지 ③과 일치합니다.",
+      "correctReason": "점근선 x=a에서 두 교점의 높이 차가 4인 조건을 풀면 a=8이므로 ③이 정답입니다.",
       "commonMistake": "밑이 1/2인 로그는 log₂a의 음수라는 점을 빠뜨리지 마세요.",
       "verification": {"problemPage": 2, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -334,7 +334,7 @@
           "explanation": "다항식을 적분해 주어진 넓이 차 3과 같게 둡니다."
         }
       ],
-      "correctReason": "k=4/3이 선지 ②와 일치합니다.",
+      "correctReason": "두 넓이의 차를 하나의 정적분으로 합치면 (9/4)k=3이므로 k=4/3, ②가 정답입니다.",
       "commonMistake": "x=2부터 3까지 함수값이 음수라는 점 때문에 영역 B의 넓이는 적분값의 음수입니다.",
       "verification": {"problemPage": 3, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },

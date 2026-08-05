@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2023학년도 9월 모의평가 수학 미적분 23~30번 중 원문 일치 7문항",
+    "scope": "2023학년도 9월 모의평가 수학 미적분 23~30번",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 7,
-    "readyCount": 7,
-    "questionFingerprint": "7eddddf5e3356cc3c4e80cacf992dfba7fbaded8e6f963a6236928724c786b0b",
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "b4a95eb63220f1f318a69da2808e2e31043f6a998db969eb1be11444121e5220",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://jwmath.tistory.com/591",
@@ -22,7 +22,7 @@
       "primaryAnswerImageFilename": "2023_09_math_answer.png",
       "primaryAnswerImageSha256": "ca8dd66204c4df4af348dbc28183a17abf0ff19b415ab55d46fe92821d666ff9"
     },
-    "note": "공식 문제지 화면과 두 정답 자료를 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 원천 수식이 다른 25번은 source hold로 분리했으며, 27번은 그림 파일 연결 전 공개 차단 상태를 유지."
+    "note": "공식 문제지 화면과 두 정답 자료를 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 27번은 그림 파일 연결 전 공개 차단 상태를 유지."
   },
   "items": {
     "2023_09_cal_23": {
@@ -83,9 +83,50 @@
           "explanation": "x=0에서의 항은 0입니다."
         }
       ],
-      "correctReason": "적분값 π가 선지 ②와 일치합니다.",
+      "correctReason": "여각 공식으로 적분을 ∫₀^π x sin x dx로 바꾸고 부분적분하면 π이므로 ②가 정답입니다.",
       "commonMistake": "cos(π/2-x)를 cosx로 바꾸지 마세요. 정확히 sinx입니다.",
       "verification": {"problemPage": 13, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_cal_25": {
+      "id": "2023_09_cal_25",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 25,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "첫 극한에서 a_n→10을 얻고 이를 둘째 극한에 대입하면 극한값은 5입니다.",
+      "approach": "분모가 상수 2인 첫 극한으로 수열의 극한을 정한 뒤, 둘째 식의 분자와 분모를 n으로 나눕니다.",
+      "concepts": [
+        "수열의 극한",
+        "극한의 사칙연산"
+      ],
+      "steps": [
+        {
+          "title": "a_n의 극한 구하기",
+          "expression": "\\lim_{n\\to\\infty}\\frac{a_n+2}{2}=6\\quad\\Rightarrow\\quad\\lim_{n\\to\\infty}a_n=10",
+          "explanation": "첫 식의 분모는 2ⁿ이 아니라 상수 2이므로 a_n은 10으로 수렴합니다."
+        },
+        {
+          "title": "둘째 식을 n으로 나누기",
+          "expression": "\\frac{na_n+1}{a_n+2n}=\\frac{a_n+1/n}{a_n/n+2}",
+          "explanation": "분자와 분모의 가장 큰 차수인 n으로 나누어 극한을 계산하기 쉬운 꼴로 만듭니다."
+        },
+        {
+          "title": "극한값 계산하기",
+          "expression": "\\lim_{n\\to\\infty}\\frac{a_n+1/n}{a_n/n+2}=\\frac{10}{2}=5",
+          "explanation": "a_n은 10으로 수렴하므로 a_n/n과 1/n은 모두 0으로 갑니다."
+        }
+      ],
+      "correctReason": "둘째 극한값이 5이므로 선택지 ⑤가 정답입니다.",
+      "commonMistake": "첫 식의 분모 2를 2ⁿ으로 읽으면 a_n의 수렴값부터 달라집니다.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
     },
     "2023_09_cal_26": {
       "id": "2023_09_cal_26",
@@ -114,7 +155,7 @@
           "explanation": "ln(9/3)=ln3입니다."
         }
       ],
-      "correctReason": "k=8이 선지 ③과 일치합니다.",
+      "correctReason": "정사각형 단면 넓이 kx/(2x²+1)을 적분해 부피 조건에 맞추면 k=8이므로 ③이 정답입니다.",
       "commonMistake": "곡선 아래 넓이를 구하는 문제가 아니라 정사각형 단면의 넓이 y²을 적분하는 문제입니다.",
       "verification": {"problemPage": 14, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -228,7 +269,7 @@
           "explanation": "f(x)=eˣ+x는 증가하므로 f(s)=1의 해는 s=0 하나입니다."
         }
       ],
-      "correctReason": "h'(1)의 값은 3입니다.",
+      "correctReason": "거리 제곱의 최소 조건과 역함수 미분식을 결합하면 h'(1)=3입니다.",
       "commonMistake": "g'(t)의 역수를 바로 구하려 하지 말고 t를 s의 함수로 먼저 나타내면 계산이 단순해집니다.",
       "verification": {"problemPage": 16, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },

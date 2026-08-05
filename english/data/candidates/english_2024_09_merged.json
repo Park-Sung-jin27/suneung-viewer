@@ -8,7 +8,7 @@
     "baseDataPath": "english/data/english_exam_db_v2_1.json",
     "baseDataSha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
     "reviewDataPath": "english/data/candidates/english_2024_09_reviews.json",
-    "reviewDataSha256": "f71d9c5ae1cd275b181cdad6ae4be8e79a57f01caef5d5e87f349bc8014ba66c"
+    "reviewDataSha256": "8dea23a0970c31c75eabb4a30f0d2b6f8e8dacb5fab57d6e71ffa51debeeff88"
   },
   "sourceArtifacts": {
     "problem": {
@@ -87,7 +87,7 @@
     ],
     "choiceFingerprint": "e88bf2c77d4ec10a04a0d908303693da02188c8c4d463f7cf62349be2494945a",
     "figureFingerprint": "ac24102de78df0acc3b653f36ea4b778f6ec6c53e96f7ffea86a29dfd38211a7",
-    "reviewFingerprint": "b750c6df50f316146adbb3098b6cdc397a56f383cebdc34df68145d0294e737b"
+    "reviewFingerprint": "ba44927e9bfdb2d28ae8fabfe8226ee6c981565f4f01eece4e9cb2bc4dbe007c"
   },
   "releaseRules": {
     "allowPublicGeneration": false,
@@ -1301,7 +1301,7 @@
             "translation": "다음 문장도 If 절 뒤에 remind라는 명령형 주절을 사용합니다."
           }
         ],
-        "correctReason": "When 종속절만 있고 주절 서술어가 없으므로 realizing을 명령형 realize로 고쳐야 합니다.",
+        "correctReason": "When 종속절만 있고 주절 서술어가 없으므로 realizing을 명령형 realize로 고쳐야 합니다. 따라서 ③이 정답입니다.",
         "trap": {
           "mark": "⑤",
           "choice": 5,
@@ -1499,7 +1499,7 @@
             "translation": "비슷한 오락을 텔레비전으로 집에서 무료로 더 편리하게 즐길 수 있었습니다."
           }
         ],
-        "correctReason": "여가가 집과 개인 소유 수단 중심으로 이동했으므로 privatization이 적절합니다.",
+        "correctReason": "여가가 집과 개인 소유 수단 중심으로 이동했으므로 privatization이 적절합니다. 따라서 ④가 정답입니다.",
         "trap": {
           "mark": "⑤",
           "choice": 5,

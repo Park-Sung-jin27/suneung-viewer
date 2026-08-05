@@ -65,7 +65,7 @@
           "explanation": "합은 172이므로 정답은 ①입니다."
         }
       ],
-      "correctReason": "홀짝 변화가 a1의 4에 대한 나머지로 완전히 결정되어 가능한 첫째항을 빠짐없이 찾을 수 있습니다.",
+      "correctReason": "홀짝 변화가 a1의 4에 대한 나머지로 완전히 결정되어 가능한 첫째항을 빠짐없이 찾을 수 있습니다. 따라서 정답은 ①입니다.",
       "commonMistake": "a1이 홀수인지 짝수인지만 나누면 a3의 홀짝이 다시 갈리므로 경우를 놓칠 수 있습니다.",
       "verification": {
         "problemPage": 4,
@@ -103,7 +103,7 @@
           "explanation": "3a-1은 a에 대해 증가하므로 범위의 양 끝값을 대입합니다."
         }
       ],
-      "correctReason": "도함수의 부호 조건을 양쪽 식에 모두 적용해야 정확한 매개변수 범위를 얻습니다.",
+      "correctReason": "도함수의 부호 조건을 양쪽 식에 모두 적용해야 정확한 매개변수 범위를 얻습니다. 따라서 정답은 ③입니다.",
       "commonMistake": "x<0인 식만 조사하고 x≥0인 구간의 최솟값 조건을 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 5,
@@ -141,7 +141,7 @@
           "explanation": "a가 자연수이므로 유일한 값은 8이고 정답은 ②입니다."
         }
       ],
-      "correctReason": "두 조각의 치역에서 정수값이 추가되는 시점을 k=3과 4에 정확히 맞춘 결과입니다.",
+      "correctReason": "두 조각의 치역에서 정수값이 추가되는 시점을 k=3과 4에 정확히 맞춘 결과입니다. 따라서 정답은 ②입니다.",
       "commonMistake": "함수값 f(k)만 세지 말고 집합 {f(x)|x≤k} 전체에서 서로 다른 정수값을 세세요.",
       "verification": {
         "problemPage": 5,
@@ -179,7 +179,7 @@
           "explanation": "f(x)=(x-3)(x-4)(x-6)을 대입하면 정답은 ④입니다."
         }
       ],
-      "correctReason": "극한이 함수값보다 1 작다는 불연속 조건이 f의 세 근을 모두 결정합니다.",
+      "correctReason": "극한이 함수값보다 1 작다는 불연속 조건이 f의 세 근을 모두 결정합니다. 따라서 정답은 ④입니다.",
       "commonMistake": "f(3)≠0인 경우 g가 연속이라는 점을 확인하지 않고 바로 약분하지 마세요.",
       "verification": {
         "problemPage": 6,
@@ -255,7 +255,7 @@
           "explanation": "요구한 합은 24입니다."
         }
       ],
-      "correctReason": "개별 수열을 구하지 않아도 합의 선형성만으로 값이 결정됩니다.",
+      "correctReason": "개별 수열을 구하지 않아도 합의 선형성만으로 값이 결정됩니다. 따라서 답은 24입니다.",
       "commonMistake": "첫 번째 식에서 a_k를 한 번 더 빼야 원하는 a_k-b_k가 된다는 점을 놓치지 마세요.",
       "verification": {
         "problemPage": 6,
@@ -293,7 +293,7 @@
           "explanation": "상수 a는 5입니다."
         }
       ],
-      "correctReason": "곱의 미분에서 생기는 두 항을 모두 합하면 주어진 미분계수와 일치하는 a가 유일합니다.",
+      "correctReason": "곱의 미분에서 생기는 두 항을 모두 합하면 주어진 미분계수와 일치하는 a가 유일합니다. 따라서 답은 5입니다.",
       "commonMistake": "두 인수 중 하나만 미분하거나 두 항 사이의 덧셈을 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 7,
@@ -369,7 +369,7 @@
           "explanation": "요구한 값은 98입니다."
         }
       ],
-      "correctReason": "두 원의 공통 현 BD를 매개로 세 빈칸이 모두 한 번에 결정됩니다.",
+      "correctReason": "두 원의 공통 현 BD를 매개로 세 빈칸이 모두 한 번에 결정됩니다. 따라서 답은 98입니다.",
       "commonMistake": "코사인법칙의 빼는 항 전체가 빈칸 (나)이므로 부호 -2를 포함해야 합니다.",
       "verification": {
         "problemPage": 7,
@@ -407,7 +407,7 @@
           "explanation": "다음 가능한 m부터는 a가 양수가 아니므로 a2는 19로 유일합니다."
         }
       ],
-      "correctReason": "자연수 항 조건이 연립식의 여러 실수해 중 유일한 정수해를 남깁니다.",
+      "correctReason": "자연수 항 조건이 연립식의 여러 실수해 중 유일한 정수해를 남깁니다. 따라서 답은 19입니다.",
       "commonMistake": "a7=13m만 세우고 첫째항과 공차의 정수·양수 조건을 확인하지 않으면 가짜 해가 남습니다.",
       "verification": {
         "problemPage": 8,
@@ -445,7 +445,7 @@
           "explanation": "상수항은 차에서 소거되어 요구한 값은 10입니다."
         }
       ],
-      "correctReason": "적분상수를 모두 구하지 않아도 G의 이차항과 일차항만으로 구간 차가 결정됩니다.",
+      "correctReason": "적분상수를 모두 구하지 않아도 G의 이차항과 일차항만으로 구간 차가 결정됩니다. 따라서 답은 10입니다.",
       "commonMistake": "fG+Fg를 두 항으로 따로 적분하지 말고 곱 FG의 도함수로 인식하세요.",
       "verification": {
         "problemPage": 8,

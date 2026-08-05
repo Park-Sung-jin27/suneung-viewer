@@ -52,7 +52,7 @@
           "explanation": "거듭제곱의 거듭제곱은 지수를 곱합니다."
         }
       ],
-      "correctReason": "계산값 4가 선지 ④와 일치합니다.",
+      "correctReason": "같은 밑의 거듭제곱으로 합친 지수가 2가 되어 값이 4이므로 ④가 정답입니다.",
       "commonMistake": "분모의 2를 지수에서 빼지 않고 2의 계수처럼 처리하지 마세요.",
       "verification": {"problemPage": 1, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -83,7 +83,7 @@
           "explanation": "따라서 극한값은 8입니다."
         }
       ],
-      "correctReason": "극한값 8이 선지 ①과 일치합니다.",
+      "correctReason": "주어진 극한이 f'(2)이고 f'(x)=4x이므로 값은 8, ①이 정답입니다.",
       "commonMistake": "f(2)를 계산하는 문제가 아니라 f'(2)를 계산하는 문제입니다.",
       "verification": {"problemPage": 1, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -176,7 +176,7 @@
           "explanation": "A=24이므로 둘째항은 21입니다."
         }
       ],
-      "correctReason": "a₂=21이 선지 ③과 일치합니다.",
+      "correctReason": "등차수열 두 조건에서 공차 -3과 첫째항 24를 얻어 a₂=21이므로 ③이 정답입니다.",
       "commonMistake": "a₈의 공차 배수는 8d가 아니라 7d입니다.",
       "verification": {"problemPage": 2, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -207,7 +207,7 @@
           "explanation": "x=2에서는 부호가 -에서 +로 바뀝니다."
         }
       ],
-      "correctReason": "극솟값 5가 선지 ⑤와 일치합니다.",
+      "correctReason": "도함수 부호 변화로 x=2가 극소점이고 f(2)=5이므로 ⑤가 정답입니다.",
       "commonMistake": "두 임계점의 함수값을 계산하기 전에 어느 점이 극대이고 극소인지 부호를 확인하세요.",
       "verification": {"problemPage": 2, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -269,7 +269,7 @@
           "explanation": "x=-1에서 직선 y=-x+3의 값은 4입니다."
         }
       ],
-      "correctReason": "a=6이 선지 ①과 일치합니다.",
+      "correctReason": "첫 곡선의 접선과 둘째 곡선의 기울기·접점을 모두 맞추면 a=6이므로 ①이 정답입니다.",
       "commonMistake": "기울기만 같게 두면 부족합니다. 접점이 직선 위에도 놓이는지 함수값을 맞춰야 합니다.",
       "verification": {"problemPage": 3, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -331,7 +331,7 @@
           "explanation": "a>0이면 2+2a는 양수이므로 절댓값을 바로 풉니다."
         }
       ],
-      "correctReason": "a=4가 선지 ④와 일치합니다.",
+      "correctReason": "속도를 적분한 위치 8+2a와 점 6의 거리 조건을 풀면 a=4이므로 ④가 정답입니다.",
       "commonMistake": "속도를 t=2에 단순 대입하지 말고 시간에 대해 적분해야 위치가 됩니다.",
       "verification": {"problemPage": 3, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -362,7 +362,7 @@
           "explanation": "n=1,3 두 해가 생기는 k-8=1만 가능하므로 k=9입니다."
         }
       ],
-      "correctReason": "k=9가 선지 ②와 일치합니다.",
+      "correctReason": "실수 네제곱근의 곱에서 f(n)=8이고 자연수 해가 둘인 조건은 k=9이므로 ②가 정답입니다.",
       "commonMistake": "네제곱근 네 개를 모두 복소수까지 곱하는 문제가 아닙니다. ‘실수인 것’ 두 개만 곱합니다.",
       "verification": {"problemPage": 4, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     }
