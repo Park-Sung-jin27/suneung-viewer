@@ -1,0 +1,261 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 9월 모의평가 미적분 23~30번 중 비그림 5문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 5,
+    "readyCount": 5,
+    "questionFingerprint": "f867ebc12f2bf13e45f74a5acb3d13a6f412b7f9ab564aa4baee24f892441a86",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040410/ect_7f132255-11e7-4cae-8313-a8150cd445731649a9911b68586.zip",
+      "archiveSha256": "1d1f16a13a6c326bd3e952765fcfe80d8ba8cebd23810354ab412c2558d77878",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "ae723d4c3892cbeb12836301c69cabb6ed432845a3be259ab28b6916131b75bd",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "8c1541d69fb9fd8b26a1e5a4ee85f8def670196a7cd6b474fc3404a07a09848d"
+    },
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 풀이 후보"
+  },
+  "items": {
+    "2022_09_cal_23": {
+      "id": "2022_09_cal_23",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 23,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "분자와 분모를 3ⁿ으로 나누면 (6+5/3ⁿ)/(1+2(2/3)ⁿ)이 되고 극한은 6입니다.",
+      "approach": "분모와 분자에서 가장 빠르게 커지는 3ⁿ을 기준으로 나누어 나머지 항이 0으로 가는지 확인합니다.",
+      "concepts": [
+        "수열의 극한",
+        "지수수열의 크기 비교"
+      ],
+      "steps": [
+        {
+          "title": "3ⁿ으로 나누기",
+          "expression": "\\frac{2\\cdot3^{n+1}+5}{3^n+2^{n+1}}=\\frac{6+5\\cdot3^{-n}}{1+2\\left(\\frac23\\right)^n}",
+          "explanation": "3ⁿ을 공통 기준으로 삼으면 각 항의 장기적인 크기가 드러납니다."
+        },
+        {
+          "title": "사라지는 항 확인하기",
+          "expression": "3^{-n}\\to0,\\qquad\\left(\\frac23\\right)^n\\to0",
+          "explanation": "절댓값이 1보다 작은 수의 n제곱은 0으로 수렴합니다."
+        },
+        {
+          "title": "극한 계산하기",
+          "expression": "\\lim_{n\\to\\infty}\\frac{6+5\\cdot3^{-n}}{1+2(2/3)^n}=\\frac61=6",
+          "explanation": "0으로 가는 두 항을 제거한 뒤 남는 상수의 비를 구합니다."
+        }
+      ],
+      "correctReason": "극한값이 6이므로 선지 ③이 정답입니다.",
+      "commonMistake": "분모의 2ⁿ만 보고 분자와 같은 밑이 없다고 판단하지 마세요. 3ⁿ이 2ⁿ보다 빠르게 커지므로 3ⁿ이 기준입니다.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_cal_24": {
+      "id": "2022_09_cal_24",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 24,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "tanα=2/3을 탄젠트 덧셈정리에 대입해 방정식을 풀면 tanβ=1/5입니다.",
+      "approach": "첫 조건을 tanα로 바꾸고, tan(α+β)의 덧셈공식에서 tanβ만 미지수로 둡니다.",
+      "concepts": [
+        "탄젠트",
+        "탄젠트 덧셈정리"
+      ],
+      "steps": [
+        {
+          "title": "tanα 구하기",
+          "expression": "2\\cos\\alpha=3\\sin\\alpha\\Rightarrow\\tan\\alpha=\\frac23",
+          "explanation": "cosα는 0이 될 수 없으므로 양변을 3cosα로 나눕니다."
+        },
+        {
+          "title": "덧셈정리 대입하기",
+          "expression": "1=\\tan(\\alpha+\\beta)=\\frac{2/3+\\tan\\beta}{1-(2/3)\\tan\\beta}",
+          "explanation": "tanα=2/3을 덧셈공식에 넣습니다."
+        },
+        {
+          "title": "tanβ 계산하기",
+          "expression": "\\frac23+t=1-\\frac23t\\Rightarrow\\frac53t=\\frac13\\Rightarrow t=\\frac15",
+          "explanation": "t=tanβ로 두고 일차방정식을 풉니다."
+        }
+      ],
+      "correctReason": "tanβ=1/5이므로 선지 ②가 정답입니다.",
+      "commonMistake": "tan(α+β)를 tanα+tanβ로 계산하면 안 됩니다. 분모 1-tanαtanβ가 반드시 포함됩니다.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_cal_25": {
+      "id": "2022_09_cal_25",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 25,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "매개변수 미분으로 dy/dx=(dy/dt)/(dx/dt)이고, t=ln2에서 dx/dt=4이므로 값은 1/4입니다.",
+      "approach": "x와 y를 각각 t로 미분한 뒤 두 변화율의 비를 구합니다.",
+      "concepts": [
+        "매개변수로 나타낸 함수의 미분",
+        "지수함수의 미분"
+      ],
+      "steps": [
+        {
+          "title": "t에 대해 미분하기",
+          "expression": "\\frac{dx}{dt}=e^t+4e^{-t},\\qquad\\frac{dy}{dt}=1",
+          "explanation": "-4e⁻ᵗ을 미분하면 부호가 바뀌어 4e⁻ᵗ이 됩니다."
+        },
+        {
+          "title": "t=ln2 대입하기",
+          "expression": "e^t=2,\\quad e^{-t}=\\frac12\\Rightarrow\\frac{dx}{dt}=2+2=4",
+          "explanation": "로그와 지수의 역관계를 이용합니다."
+        },
+        {
+          "title": "dy/dx 구하기",
+          "expression": "\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac14",
+          "explanation": "매개변수 곡선의 미분 공식에 두 값을 대입합니다."
+        }
+      ],
+      "correctReason": "dy/dx=1/4이므로 선지 ④가 정답입니다.",
+      "commonMistake": "-4e⁻ᵗ의 미분을 -4e⁻ᵗ으로 두지 마세요. 지수 -t의 미분에서 -1이 한 번 더 곱해집니다.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_cal_29": {
+      "id": "2022_09_cal_29",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 29,
+      "answer": "24",
+      "answerMark": null,
+      "summary": "h(u)=(u+2)eᵘ는 u=-3에서 최소이고, f의 최댓값이 6이며 f=-3인 두 점의 간격이 6이므로 f(x)=6-(x-c)²입니다. 두 근의 간격 제곱은 24입니다.",
+      "approach": "g를 합성함수 h∘f로 보고 h의 증감과 최솟값을 먼저 분석해 이차함수 f의 꼭짓점과 폭을 결정합니다.",
+      "concepts": [
+        "합성함수의 극값",
+        "지수함수의 미분",
+        "이차함수의 근"
+      ],
+      "steps": [
+        {
+          "title": "바깥 함수 분석하기",
+          "expression": "h(u)=(u+2)e^u,\\qquad h'(u)=(u+3)e^u",
+          "explanation": "eᵘ는 항상 양수이므로 h는 u=-3에서 유일한 최솟값을 갖습니다."
+        },
+        {
+          "title": "f의 꼭짓값 정하기",
+          "expression": "f(x)=6-c(x-v)^2\\quad(c>0)",
+          "explanation": "f(a)=6인 점에서 g가 최댓값이므로 f는 아래로 열린 이차함수이고 꼭짓값은 6입니다."
+        },
+        {
+          "title": "최솟값 두 점의 간격 사용하기",
+          "expression": "f(x)=-3\\Rightarrow c(x-v)^2=9",
+          "explanation": "g의 두 최솟값은 h가 최소가 되는 f=-3인 두 점에서 생깁니다."
+        },
+        {
+          "title": "이차항 계수 구하기",
+          "expression": "2\\sqrt{\\frac9c}=6\\Rightarrow c=1",
+          "explanation": "f=-3인 두 점 b와 b+6의 간격이 6입니다."
+        },
+        {
+          "title": "두 근의 간격 구하기",
+          "expression": "f(x)=0\\Rightarrow(x-v)^2=6\\Rightarrow(\\alpha-\\beta)^2=(2\\sqrt6)^2=24",
+          "explanation": "두 근은 꼭짓점에서 좌우로 √6만큼 떨어져 있습니다."
+        }
+      ],
+      "correctReason": "두 근의 차의 제곱이 24이므로 답은 24입니다.",
+      "commonMistake": "g의 최솟값이 f의 최솟값에서 생긴다고 단정하면 안 됩니다. 먼저 h(u)=(u+2)eᵘ의 최솟값이 u=-3에서 생김을 확인해야 합니다.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_cal_30": {
+      "id": "2022_09_cal_30",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 30,
+      "answer": "115",
+      "answerMark": null,
+      "summary": "극한과 주기 연속성으로 f(x)=9x²(x-1)+3을 결정하고, 한 주기 적분을 다섯 구간에 합치면 적분값은 111/4이므로 p+q=115입니다.",
+      "approach": "극한에서 f(0)의 정수성·f'(0)=0을 얻고, 주기함수의 경계 연속 조건 f(0)=f(1)과 극값의 곱으로 f를 결정합니다.",
+      "concepts": [
+        "삼각함수의 극한",
+        "주기함수의 연속성",
+        "삼차함수의 극값",
+        "주기함수의 정적분"
+      ],
+      "steps": [
+        {
+          "title": "극한 조건 해석하기",
+          "expression": "f(0)=m\\in\\mathbb Z,\\qquad f'(0)=0",
+          "explanation": "분자가 0으로 가려면 sin(πf(0))=0이어야 하고, 그 뒤의 일차항까지 사라져야 극한이 0입니다."
+        },
+        {
+          "title": "주기 경계 조건 적용하기",
+          "expression": "g\\text{ 연속}\\Rightarrow f(0)=f(1)=m",
+          "explanation": "0≤x<1의 조각을 반복할 때 정수 경계의 좌우 값이 같아야 합니다."
+        },
+        {
+          "title": "삼차함수 결정하기",
+          "expression": "f(x)-m=x(x-1)(9x+A),\\quad f'(0)=0\\Rightarrow A=0",
+          "explanation": "f(0)=f(1)=m이고 최고차항 계수가 9이므로 이 형태로 인수분해됩니다."
+        },
+        {
+          "title": "극값의 곱 사용하기",
+          "expression": "f(x)=9x^2(x-1)+m,\\quad f(0)f\\left(\\frac23\\right)=m\\left(m-\\frac43\\right)=5",
+          "explanation": "두 극점은 x=0과 x=2/3입니다. 방정식의 해 m=3,-5/3 중 정수인 m=3만 가능합니다."
+        },
+        {
+          "title": "한 주기의 두 적분 구하기",
+          "expression": "\\int_0^1f(t)\\,dt=\\frac94,\\qquad\\int_0^1t f(t)\\,dt=\\frac{21}{20}",
+          "explanation": "f(t)=9t³-9t²+3을 직접 적분합니다."
+        },
+        {
+          "title": "다섯 주기 합치기",
+          "expression": "\\int_0^5xg(x)\\,dx=5\\int_0^1t f(t)\\,dt+(0+1+2+3+4)\\int_0^1f(t)\\,dt=\\frac{111}{4}",
+          "explanation": "각 구간 [k,k+1]에서 x=t+k로 바꾸고 k=0부터 4까지 더합니다."
+        },
+        {
+          "title": "p+q 구하기",
+          "expression": "\\frac qp=\\frac{111}{4}\\Rightarrow p+q=4+111=115",
+          "explanation": "111과 4는 서로소입니다."
+        }
+      ],
+      "correctReason": "p+q=115이므로 답은 115입니다.",
+      "commonMistake": "주기가 1이라는 이유로 ∫xg(x)를 다섯 배만 하면 안 됩니다. x=t+k의 k 항이 각 주기마다 추가됩니다.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

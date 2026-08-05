@@ -1,0 +1,490 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2023학년도 6월 모의평가 원천 재대조 완료 10문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 10,
+    "readyCount": 10,
+    "questionFingerprint": "655d36991a5cffb883dc166bc0a1828bd642791b28285b28fce3e657be4c5cc3",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5043334/ect_f123552d-f3b9-441b-a9cb-26dd3fb0382a1655a9598b93086.zip",
+      "archiveSha256": "52670128518e0c913ee086d8fdf4364718997feb40edb189510c7bd32e5943ac",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "aa82f35e8f31049dbc75279de253ae9c3aeceb09d0a85bf53ba1ce2f882ce452",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "5db0748417f984b6ac30c87bb351f2d8fca7dce276fc71f47b7ab944e9e64519",
+      "solutionSourceUrls": [
+        "https://sdfallyy.tistory.com/405",
+        "https://horaeng.com/223"
+      ],
+      "solutionArtifacts": [
+        {
+          "filename": "independent-sta-solution.pdf",
+          "sha256": "3f61757cb02b02aced703f35740e7e7b4eb8dc857b90e76f46bd052ca4e6d421"
+        },
+        {
+          "filename": "independent-cal-solution.pdf",
+          "sha256": "91e7e02768345900e45721e6c7aa97e0efacbe292f957ef6aff84f069aee70e3"
+        },
+        {
+          "filename": "independent-geo-solution.pdf",
+          "sha256": "53537a296ff6071bac85c510e16bbe257dd2d4695f32caa0973b15029890f1c3"
+        }
+      ]
+    },
+    "note": "공식 문제지·정답표를 화면으로 전수 대조하고 과목별 독립 해설의 계산을 다시 수행한 내부 비공개 풀이입니다."
+  },
+  "items": {
+    "2023_06_common_4": {
+      "id": "2023_06_common_4",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학",
+      "questionNumber": 4,
+      "answer": 2,
+      "answerMark": "②",
+      "publicBlockedByFigureAsset": true,
+      "summary": "그래프에서 x가 0의 왼쪽에서 갈 때 f(x)는 -2에, x가 1의 오른쪽에서 갈 때 f(x)는 1에 가까워지므로 합은 -1입니다.",
+      "approach": "함숫값을 묻는 것이 아니라 각 방향에서 그래프가 가까워지는 y값을 따로 읽습니다.",
+      "concepts": ["좌극한", "우극한", "함수 그래프 읽기"],
+      "steps": [
+        {
+          "title": "x=0의 좌극한 읽기",
+          "expression": "\\lim_{x\\to0-}f(x)=-2",
+          "explanation": "x<0 쪽 직선은 x=0에 가까워질수록 열린점 (0,-2)로 접근합니다."
+        },
+        {
+          "title": "x=1의 우극한 읽기",
+          "expression": "\\lim_{x\\to1+}f(x)=1",
+          "explanation": "x>1 쪽 직선은 x=1에 가까워질수록 열린점 (1,1)로 접근합니다."
+        },
+        {
+          "title": "두 극한 더하기",
+          "expression": "-2+1=-1",
+          "explanation": "x=0과 x=1에서 찍힌 실제 함숫값은 방향 극한 계산에 사용하지 않습니다."
+        }
+      ],
+      "correctReason": "두 방향 극한의 합이 -1이므로 ②가 정답입니다.",
+      "commonMistake": "닫힌점의 y좌표를 극한값으로 읽지 않습니다. 접근하는 선이나 곡선의 끝값을 봐야 합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_10": {
+      "id": "2023_06_common_10",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학",
+      "questionNumber": 10,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "코사인법칙으로 AC=4, 중점 조건으로 AM=CM=2를 구합니다. 다시 코사인법칙과 원의 두 현 정리를 쓰면 MD=4√10/5입니다.",
+      "approach": "먼저 삼각형 ABC의 미지 변 AC를 결정하고, 중선 BM의 길이와 원 안에서 만나는 두 현의 곱 관계를 차례로 사용합니다.",
+      "concepts": ["코사인법칙", "삼각형의 중선", "두 현의 교점 정리"],
+      "steps": [
+        {
+          "title": "AC 구하기",
+          "expression": "2^2=3^2+AC^2-2\\cdot3\\cdot AC\\cdot\\frac78\\Rightarrow AC=4",
+          "explanation": "이차방정식의 두 해 중 AC>3을 만족하는 값을 선택합니다."
+        },
+        {
+          "title": "BM 구하기",
+          "expression": "BM^2=3^2+2^2-2\\cdot3\\cdot2\\cdot\\frac78=\\frac52",
+          "explanation": "AM=CM=2이고 ∠BAM=∠BAC이므로 삼각형 ABM에 코사인법칙을 적용합니다."
+        },
+        {
+          "title": "두 현의 곱 사용하기",
+          "expression": "MA\\cdot MC=MB\\cdot MD\\Rightarrow4=\\frac{\\sqrt{10}}2\\,MD",
+          "explanation": "원 안의 점 M에서 두 현 AC와 BD가 만나므로 두 곱이 같습니다."
+        },
+        {
+          "title": "MD 계산하기",
+          "expression": "MD=\\frac8{\\sqrt{10}}=\\frac{4\\sqrt{10}}5",
+          "explanation": "분모를 유리화해 선택지 형식으로 정리합니다."
+        }
+      ],
+      "correctReason": "MD=4√10/5이므로 ③이 정답입니다.",
+      "commonMistake": "AC를 구하는 이차방정식에서 AC=5/4도 나오지만 문제의 AC>3 조건으로 제외해야 합니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_13": {
+      "id": "2023_06_common_13",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학",
+      "questionNumber": 13,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "반복 과정에서 x_{n+1}=x_n/4이고 x_1=16이므로 x_n=2^{6-2n}입니다. 최소 n이 6이 되는 자연수 k는 16≤k<64로 48개입니다.",
+      "approach": "수평 이동은 y좌표를, 수직 이동은 x좌표를 유지한다는 점으로 두 지수함수 사이의 점화식을 만듭니다.",
+      "concepts": ["지수함수", "등비수열", "부등식의 경계"],
+      "steps": [
+        {
+          "title": "첫 x좌표 구하기",
+          "expression": "2^{64}=16^{x_1}=2^{4x_1}\\Rightarrow x_1=16",
+          "explanation": "A와 P₁은 같은 y좌표를 갖습니다."
+        },
+        {
+          "title": "점화식 만들기",
+          "expression": "2^{x_n}=16^{x_{n+1}}\\Rightarrow x_{n+1}=\\frac{x_n}{4}",
+          "explanation": "Qₙ과 Pₙ₊₁이 같은 y좌표를 갖는 관계를 지수로 바꿉니다."
+        },
+        {
+          "title": "일반항 구하기",
+          "expression": "x_n=16\\left(\\frac14\\right)^{n-1}=2^{6-2n}",
+          "explanation": "첫째항 16, 공비 1/4인 등비수열입니다."
+        },
+        {
+          "title": "최소 n=6 조건 해석하기",
+          "expression": "x_5\\ge\\frac1k>x_6\\Rightarrow\\frac1{16}\\ge\\frac1k>\\frac1{64}",
+          "explanation": "n=5까지는 부등식이 성립하지 않고 n=6에서 처음 성립해야 합니다."
+        },
+        {
+          "title": "자연수 개수 세기",
+          "expression": "16\\le k<64\\Rightarrow64-16=48",
+          "explanation": "16부터 63까지의 자연수 개수입니다."
+        }
+      ],
+      "correctReason": "가능한 자연수 k가 48개이므로 ①이 정답입니다.",
+      "commonMistake": "x_6<1/k만 쓰면 최소가 6이라는 조건을 놓칩니다. 반드시 x_5≥1/k도 함께 써야 합니다.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_sta_24": {
+      "id": "2023_06_sta_24",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학",
+      "questionNumber": 24,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "두 카드의 순서쌍은 15개이고 차가 1인 순서쌍은 (1,2), (2,1), (2,3), (3,2), (3,4)의 5개이므로 확률은 1/3입니다.",
+      "approach": "두 주머니에서 하나씩 뽑으므로 결과를 순서쌍 (a,b)로 나타내고 조건을 만족하는 경우를 직접 셉니다.",
+      "concepts": ["경우의 수", "순서쌍", "확률"],
+      "steps": [
+        {
+          "title": "전체 경우의 수",
+          "expression": "3\\times5=15",
+          "explanation": "A의 카드 3가지와 B의 카드 5가지는 모두 같은 확률로 결합됩니다."
+        },
+        {
+          "title": "차가 1인 경우 세기",
+          "expression": "(1,2),(2,1),(2,3),(3,2),(3,4)",
+          "explanation": "카드에 적힌 두 수의 절댓값 차가 1인 순서쌍은 5개입니다."
+        },
+        {
+          "title": "확률 계산하기",
+          "expression": "\\frac5{15}=\\frac13",
+          "explanation": "유리한 경우의 수를 전체 경우의 수로 나눕니다."
+        }
+      ],
+      "correctReason": "확률이 1/3이므로 ①이 정답입니다.",
+      "commonMistake": "A에서 4나 5가 나오는 경우는 없습니다. 두 주머니의 숫자 범위가 서로 다름을 먼저 확인합니다.",
+      "verification": {
+        "problemPage": 9,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_cal_26": {
+      "id": "2023_06_cal_26",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학",
+      "questionNumber": 26,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "첫 색칠 넓이는 √3이고 다음 단계의 길이비가 1/2라 넓이비는 1/4입니다. 등비급수의 합은 4√3/3입니다.",
+      "approach": "원 안의 평행한 현으로 생기는 두 정삼각형의 크기를 찾고, 반복 도형의 닮음비를 넓이비로 바꿉니다.",
+      "concepts": ["원의 현", "정삼각형", "등비급수"],
+      "steps": [
+        {
+          "title": "첫 두 정삼각형 확인하기",
+          "expression": "A_1C_1B_1:\\quad 2,\\quad C_1A_2B_2:\\quad 1",
+          "explanation": "각이 60°이고 평행한 현의 관계를 이용하면 두 삼각형은 한 변의 길이가 각각 2와 1인 정삼각형입니다."
+        },
+        {
+          "title": "첫 색칠 넓이",
+          "expression": "S_1=2\\left(\\frac12\\cdot2\\cdot3\\sin\\frac\\pi3-\\frac12\\cdot2\\cdot2\\sin\\frac\\pi3\\right)=\\sqrt3",
+          "explanation": "대칭인 두 색칠 영역의 넓이를 한꺼번에 계산합니다."
+        },
+        {
+          "title": "넓이 공비 구하기",
+          "expression": "A_1B_1:A_2B_2=2:1\\Rightarrow r=\\left(\\frac12\\right)^2=\\frac14",
+          "explanation": "다음 단계의 모든 길이가 절반이므로 넓이는 1/4배입니다."
+        },
+        {
+          "title": "무한합 계산하기",
+          "expression": "\\lim_{n\\to\\infty}S_n=\\frac{\\sqrt3}{1-1/4}=\\frac{4\\sqrt3}{3}",
+          "explanation": "첫째항 S₁과 공비 1/4인 등비급수의 합입니다."
+        }
+      ],
+      "correctReason": "극한값이 4√3/3이므로 ②가 정답입니다.",
+      "commonMistake": "길이가 절반이면 넓이는 절반이 아니라 1/4입니다. 반복 넓이의 공비를 정확히 구해야 합니다.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_cal_29": {
+      "id": "2023_06_cal_29",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학",
+      "questionNumber": 29,
+      "answer": 50,
+      "answerMark": null,
+      "summary": "f(θ)는 θ⁴에 대해 계수 2로, g(θ)는 θ에 대해 계수 1로 가까워집니다. 따라서 θ³g(θ)/f(θ)의 극한은 1/2이고 100k=50입니다.",
+      "approach": "두 넓이를 정확한 삼각함수 식으로 만든 뒤 필요한 차수만 표준 극한으로 비교합니다.",
+      "concepts": ["삼각함수의 극한", "각의 이등분선", "삼각형의 넓이"],
+      "steps": [
+        {
+          "title": "AH와 HQ 표현하기",
+          "expression": "AH=1-\\cos2\\theta,\\quad HQ=(1-\\cos2\\theta)\\tan\\left(\\frac\\pi4-\\frac\\theta2\\right)",
+          "explanation": "이등변삼각형 OPA와 ∠OAP의 이등분선을 이용합니다."
+        },
+        {
+          "title": "f의 주된 차수 구하기",
+          "expression": "f(\\theta)=\\frac12(1-\\cos2\\theta)^2\\tan\\left(\\frac\\pi4-\\frac\\theta2\\right),\\quad\\lim_{\\theta\\to0+}\\frac{f(\\theta)}{\\theta^4}=2",
+          "explanation": "1-cos2θ=2sin²θ와 sinθ/θ→1을 사용합니다."
+        },
+        {
+          "title": "g의 식 만들기",
+          "expression": "OR=\\frac1{1+2\\sin\\theta},\\quad OS=\\tan\\left(\\frac\\pi4-\\frac\\theta2\\right)",
+          "explanation": "각의 이등분선 정리와 직각삼각형의 탄젠트로 두 길이를 구합니다."
+        },
+        {
+          "title": "g의 주된 차수 구하기",
+          "expression": "\\lim_{\\theta\\to0+}\\frac{g(\\theta)}{\\theta}=1",
+          "explanation": "삼각형 OSP와 OSR의 넓이 차를 정리한 뒤 표준 삼각함수 극한을 적용합니다."
+        },
+        {
+          "title": "최종 극한 계산하기",
+          "expression": "k=\\lim_{\\theta\\to0+}\\frac{g(\\theta)/\\theta}{f(\\theta)/\\theta^4}=\\frac12,\\quad100k=50",
+          "explanation": "분자와 분모의 가장 낮은 차수를 맞춰 비를 계산합니다."
+        }
+      ],
+      "correctReason": "k=1/2이므로 100k=50입니다.",
+      "commonMistake": "f와 g를 각각 0으로 보내고 끝내지 않습니다. f는 θ⁴, g는 θ와 같은 속도로 작아지는지를 비교해야 합니다.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_geo_26": {
+      "id": "2023_06_geo_26",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학",
+      "questionNumber": 26,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "대각선 AC의 길이는 3√2/2이고, AC와 평행한 타원의 두 지지 접선까지 거리를 더하면 2√2입니다. 두 삼각형 넓이의 합은 3입니다.",
+      "approach": "고정된 대각선 AC를 밑변으로 보고, B와 D가 AC의 양쪽에서 가질 수 있는 최대 높이를 타원의 평행 접선으로 구합니다.",
+      "concepts": ["타원의 접선", "점과 직선 사이의 거리", "사각형의 넓이"],
+      "steps": [
+        {
+          "title": "A와 C 및 대각선 길이",
+          "expression": "A\\left(\\frac32,\\frac12\\right),\\ C(0,-1),\\quad AC=\\frac{3\\sqrt2}{2}",
+          "explanation": "y=x-1을 타원에 대입해 두 교점을 구합니다."
+        },
+        {
+          "title": "평행한 두 접선 구하기",
+          "expression": "y=x+2,\\quad y=x-2",
+          "explanation": "타원 x²/3+y²=1에 기울기 1인 접선은 절편이 ±2입니다."
+        },
+        {
+          "title": "대각선에서 두 접선까지 거리",
+          "expression": "d_1=\\frac{3\\sqrt2}{2},\\quad d_2=\\frac{\\sqrt2}{2}",
+          "explanation": "대각선이 놓인 직선 y=x-1에서 위와 아래 접선까지의 수직거리입니다."
+        },
+        {
+          "title": "최대 넓이",
+          "expression": "\\frac12AC(d_1+d_2)=\\frac12\\cdot\\frac{3\\sqrt2}{2}\\cdot2\\sqrt2=3",
+          "explanation": "사각형 넓이는 대각선 AC를 밑변으로 하는 두 삼각형 넓이의 합입니다."
+        }
+      ],
+      "correctReason": "사각형 넓이의 최댓값이 3이므로 ⑤가 정답입니다.",
+      "commonMistake": "B와 D의 높이를 각각 최대화할 때 서로 같은 쪽 접선을 선택하면 사각형을 이루지 못합니다. AC의 양쪽 접선을 사용합니다.",
+      "verification": {
+        "problemPage": 18,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_geo_27": {
+      "id": "2023_06_geo_27",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학",
+      "questionNumber": 27,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "높이 AH=1이고 닮음으로 FH=1/3이어서 AF=2/3입니다. AF벡터는 EJ벡터와 같고 CE벡터와의 내적은 -|EJ|²=-4/9입니다.",
+      "approach": "사다리꼴의 수선을 내려 필요한 평행 이동 벡터를 만들고, 각 대신 수직 성분으로 내적을 계산합니다.",
+      "concepts": ["닮은 삼각형", "벡터의 평행이동", "벡터의 내적"],
+      "steps": [
+        {
+          "title": "AH와 FH 구하기",
+          "expression": "AH=BH=1,\\quad BID\\sim BHF\\Rightarrow FH=\\frac13",
+          "explanation": "AB=√2와 45°로 AH=BH=1이고, D에서 BC로 내린 수선으로 닮음을 만듭니다."
+        },
+        {
+          "title": "AF 길이 구하기",
+          "expression": "AF=AH-FH=1-\\frac13=\\frac23",
+          "explanation": "F는 선분 AH 위에 있습니다."
+        },
+        {
+          "title": "평행한 벡터 만들기",
+          "expression": "\\overrightarrow{AF}=\\overrightarrow{EJ},\\quad |EJ|=\\frac23",
+          "explanation": "E에서 BC로 내린 수선의 발을 J라 두면 사다리꼴의 닮음으로 같은 방향과 길이를 얻습니다."
+        },
+        {
+          "title": "내적 계산하기",
+          "expression": "\\overrightarrow{AF}\\cdot\\overrightarrow{CE}=\\overrightarrow{EJ}\\cdot\\overrightarrow{CE}=-|EJ|^2=-\\frac49",
+          "explanation": "CE의 EJ 방향 성분은 -|EJ|이므로 곱은 음의 제곱이 됩니다."
+        }
+      ],
+      "correctReason": "내적이 -4/9이므로 ④가 정답입니다.",
+      "commonMistake": "두 벡터의 길이만 곱하면 부호가 사라집니다. 방향이 반대인 성분 때문에 내적은 음수입니다.",
+      "verification": {
+        "problemPage": 19,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_geo_29": {
+      "id": "2023_06_geo_29",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학",
+      "questionNumber": 29,
+      "answer": 23,
+      "answerMark": null,
+      "summary": "P의 x좌표를 a라 두고 두 포물선의 초점·준선 거리로 둘레 조건을 정리하면 a=1입니다. 두 포물선의 다른 교점 Q를 구해 넓이를 계산하면 18√2/5이므로 p+q=23입니다.",
+      "approach": "각 포물선에서 초점까지 거리와 준선까지 거리가 같다는 성질로 둘레를 단순화하고, 마지막에 두 방정식을 연립합니다.",
+      "concepts": [
+        "포물선의 정의",
+        "포물선의 방정식",
+        "좌표로 구하는 삼각형 넓이"
+      ],
+      "steps": [
+        {
+          "title": "점 P와 F' 표현하기",
+          "expression": "P(a,2\\sqrt{2a}),\\quad F'(-2,2\\sqrt{2a}),\\quad PF=PF'=a+2",
+          "explanation": "원래 포물선의 초점은 F=(2,0), 준선은 x=-2입니다."
+        },
+        {
+          "title": "둘레 조건으로 a 구하기",
+          "expression": "2(a+2)+(2a+4)=12\\Rightarrow a=1",
+          "explanation": "Q에서 두 포물선의 준선까지 거리 합을 쓰면 QF+QF'=2a+4입니다."
+        },
+        {
+          "title": "두 포물선 연립하기",
+          "expression": "y^2=8x,\\quad(y-2\\sqrt2)^2=-12(x-1)\\Rightarrow y_Q=-\\frac{2\\sqrt2}{5}",
+          "explanation": "P가 아닌 두 번째 교점의 y좌표를 선택합니다."
+        },
+        {
+          "title": "삼각형 넓이 구하기",
+          "expression": "PF'=3,\\quad h=2\\sqrt2+\\frac{2\\sqrt2}{5}=\\frac{12\\sqrt2}{5}",
+          "explanation": "PF'는 수평선분이므로 Q에서 이 선분까지의 수직거리가 높이입니다."
+        },
+        {
+          "title": "p+q 계산하기",
+          "expression": "[PF'Q]=\\frac12\\cdot3\\cdot\\frac{12\\sqrt2}{5}=\\frac{18}{5}\\sqrt2\\Rightarrow p+q=23",
+          "explanation": "p=5, q=18은 서로소입니다."
+        }
+      ],
+      "correctReason": "넓이가 18√2/5이므로 p+q=5+18=23입니다.",
+      "commonMistake": "두 포물선의 교점 중 P 자체를 다시 선택하지 않습니다. 연립방정식의 다른 근이 Q입니다.",
+      "verification": {
+        "problemPage": 20,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_geo_30": {
+      "id": "2023_06_geo_30",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학",
+      "questionNumber": 30,
+      "answer": 8,
+      "answerMark": null,
+      "summary": "조건 (나)에서 X는 G=CA/4를 지나 CD와 평행한 직선 위에 있습니다. 가능한 X의 영역에서 |CX|는 G에서 최소, G에서 4만큼 떨어진 H에서 최대이므로 α=2, β=-2이고 합은 8입니다.",
+      "approach": "두 벡터 조건을 각각 X의 이동 영역과 직선 조건으로 해석한 뒤, 원점 C에서의 거리가 최소·최대인 교점을 찾습니다.",
+      "concepts": [
+        "벡터의 일차결합",
+        "도형의 닮음 이동",
+        "거리의 최댓값과 최솟값"
+      ],
+      "steps": [
+        {
+          "title": "조건 (나) 정리하기",
+          "expression": "\\overrightarrow{CX}=\\frac14\\overrightarrow{CA}+\\frac{2-k}{4}\\overrightarrow{CD}",
+          "explanation": "XA=CA-CX, XC=-CX, XD=CD-CX를 대입해 CX를 고립시킵니다."
+        },
+        {
+          "title": "X가 놓이는 직선 확인하기",
+          "expression": "\\overrightarrow{CG}=\\frac14\\overrightarrow{CA}",
+          "explanation": "k가 변하면 X는 G를 지나고 CD와 평행한 직선 위를 움직입니다."
+        },
+        {
+          "title": "최솟값을 주는 k",
+          "expression": "X=G\\Rightarrow\\frac{2-k}{4}=0\\Rightarrow\\alpha=2",
+          "explanation": "조건 (가)가 만드는 가능한 영역과 이 직선의 교점 중 C에 가장 가까운 점은 G입니다."
+        },
+        {
+          "title": "최댓값을 주는 k",
+          "expression": "GH=4,\\ |CD|=4\\Rightarrow\\left|\\frac{2-k}{4}\\right|=1",
+          "explanation": "가장 먼 교점 H는 G에서 CD 방향으로 한 변 길이만큼 떨어져 있습니다."
+        },
+        {
+          "title": "β와 최종값",
+          "expression": "\\beta=-2,\\quad\\alpha^2+\\beta^2=2^2+(-2)^2=8",
+          "explanation": "도형에서 H에 해당하는 방향을 적용하면 k=-2입니다."
+        }
+      ],
+      "correctReason": "α=2, β=-2이므로 α²+β²=8입니다.",
+      "commonMistake": "|2-k|=4만 보고 k=6도 남기지 않습니다. 실제 가능한 영역에서 최대점 H가 놓인 방향을 그림으로 확인해야 합니다.",
+      "verification": {
+        "problemPage": 20,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

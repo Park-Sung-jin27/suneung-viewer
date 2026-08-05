@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "schemaVersion": "math-source-hold-v1",
+    "status": "internal_source_hold",
+    "publicConnected": false,
+    "itemCount": 2,
+    "questionFingerprint": "16bd2b42c6e5ed630849b89a8decdb3e56f0beb497dab7ead1b35139e30bf29b",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5043334/ect_f123552d-f3b9-441b-a9cb-26dd3fb0382a1655a9598b93086.zip",
+      "archiveSha256": "52670128518e0c913ee086d8fdf4364718997feb40edb189510c7bd32e5943ac",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "aa82f35e8f31049dbc75279de253ae9c3aeceb09d0a85bf53ba1ce2f882ce452",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "5db0748417f984b6ac30c87bb351f2d8fca7dce276fc71f47b7ab944e9e64519"
+    }
+  },
+  "items": {
+    "2023_06_common_6": {
+      "id": "2023_06_common_6",
+      "status": "blocked_by_source_integrity",
+      "issueCode": "problem_text_missing_boundary_equality",
+      "dbTextFragment": "(-1<x<3)",
+      "officialTextFragment": "(-1≤x<3)",
+      "correctionRequired": "problem_latex",
+      "reason": "공식 문제의 가운데 구간은 -1≤x<3이지만 내부 문제 텍스트에는 x=-1을 포함하는 등호가 빠져 함수가 그 점에서 정의되지 않는 다른 조건이 됨",
+      "verification": {
+        "problemPage": 2,
+        "problemMatchedPdf": false,
+        "sourceDifferenceConfirmed": true,
+        "releaseBlocked": true
+      }
+    },
+    "2023_06_common_19": {
+      "id": "2023_06_common_19",
+      "status": "blocked_by_source_integrity",
+      "issueCode": "problem_text_grouping_error",
+      "dbTextFragment": "{ax}^{2}",
+      "officialTextFragment": "ax^{2}",
+      "correctionRequired": "problem_latex",
+      "reason": "공식 문제의 항은 계수 a에 x의 제곱을 곱한 ax²이지만 내부 문제 텍스트는 ax 전체를 제곱하는 (ax)²로 묶여 극값 조건의 의미가 달라짐",
+      "verification": {
+        "problemPage": 7,
+        "problemMatchedPdf": false,
+        "sourceDifferenceConfirmed": true,
+        "releaseBlocked": true
+      }
+    }
+  }
+}

@@ -1,0 +1,962 @@
+{
+  "metadata": {
+    "schemaVersion": "eng-explain-candidate-v1",
+    "examId": "2025_09",
+    "exam": "2025학년도 9월 모의평가 영어",
+    "status": "internal_candidate",
+    "publicConnected": false,
+    "itemCount": 28,
+    "readyCount": 28,
+    "note": "문제·정답·해설 PDF 원본 대조를 마친 내부 근거형 해설 후보"
+  },
+  "items": {
+    "2025_09_18": {
+      "id": "2025_09_18",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 18,
+      "group": "practical",
+      "type": "목적",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 충성 고객에게 크루즈 할인과 추가 혜택을 제시하는 여행 상품 판촉 안내입니다.",
+      "typeApproach": "목적 문제는 수신자에게 제시하는 핵심 혜택과 요구 행동을 먼저 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "To\nthank you for your loyalty, we are thrilled to offer you an\nexclusive promotion!",
+          "role": "판촉 선언",
+          "translation": "충성 고객에게 독점 판촉 행사를 제공한다고 밝힙니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Make a reservation for any cruise\ndeparting within the next six months and enjoy a 15%\ndiscount.",
+          "role": "구체적 혜택",
+          "translation": "6개월 안에 출항하는 크루즈를 예약하면 15% 할인을 제공합니다."
+        }
+      ],
+      "correctReason": "할인·무료 식사 패키지·쿠폰을 묶어 예약을 유도하므로 여행 상품 판촉 행사 안내인 ④가 맞습니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "여행 일정 변경 사항을 공지하려고",
+        "reason": "출항 일정이 바뀌었다는 공지가 아니라 일정 기간 안의 예약에 혜택을 주는 행사입니다."
+      }
+    },
+    "2025_09_19": {
+      "id": "2025_09_19",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 19,
+      "group": "practical",
+      "type": "심경 변화",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 탑승구에 늦을까 불안해하던 Sophie가 비행기 지연 소식을 듣고 안도합니다.",
+      "typeApproach": "심경 변화는 사건 전의 감정 표현과 전환 사건 뒤의 반응을 따로 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Worried that she could not get to the boarding\ngate in time, she rushed through the crowds of people.",
+          "role": "초기 불안",
+          "translation": "제시간에 탑승구에 못 갈까 걱정하며 사람들 사이를 급히 지나갑니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Letting out a deep sigh, she finally felt at\nease.",
+          "role": "이후 안도",
+          "translation": "깊은 한숨을 내쉬며 마침내 마음을 놓습니다."
+        }
+      ],
+      "correctReason": "지각 우려로 anxious한 상태에서 지연 방송 뒤 relieved한 상태로 바뀌므로 ③입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "calm → delighted",
+        "reason": "처음부터 차분하지 않았고 마지막 감정도 기쁨보다 안도에 가깝습니다."
+      }
+    },
+    "2025_09_20": {
+      "id": "2025_09_20",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 20,
+      "group": "topic",
+      "type": "주장",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 소셜 미디어의 생산자이자 소비자인 사용자가 사실 확인과 정보 신뢰성 보호에 더 큰 책임을 져야 한다는 주장입니다.",
+      "typeApproach": "주장 문제는 문제 상황보다 필자가 책임·의무를 직접 부여하는 문장을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "As creators and consumers, it is our responsibility to\ntake on a greater role in the enhancement of fact-checking",
+          "role": "사용자 책임",
+          "translation": "생산자이자 소비자인 우리가 사실 확인 강화에 더 큰 역할을 해야 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "participants safeguard the reliability of information",
+          "role": "핵심 행동",
+          "translation": "참여자들이 정보의 신뢰성을 지켜야 한다고 강조합니다."
+        }
+      ],
+      "correctReason": "플랫폼 회사가 아니라 정보를 만들고 소비하는 사용자의 정확성·신뢰성 확보 노력을 요구하므로 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "광범위한 지식을 축적하기 위해 다양한 정보의 유통을 촉진해야 한다.",
+        "reason": "정보량 확대가 아니라 잘못된 정보 확산을 막기 위한 사실 확인을 요구합니다."
+      }
+    },
+    "2025_09_21": {
+      "id": "2025_09_21",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 21,
+      "group": "blank",
+      "type": "밑줄 의미",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 초기 민족지학자들이 현지인을 오래 직접 만나지 않고 숙소 주변에서 제한적으로 관찰했다는 뜻입니다.",
+      "typeApproach": "밑줄 표현 앞의 구체적 행동을 먼저 읽고 비유가 가리키는 관찰 방식을 바꿔 말합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "they generally did not spend\nsignificant time with the local people.",
+          "role": "직접 접촉 부족",
+          "translation": "현지인들과 상당한 시간을 보내지 않았습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "their observations\nwere primarily conducted from their verandas.",
+          "role": "관찰 방식",
+          "translation": "관찰은 주로 베란다에서 이루어졌습니다."
+        }
+      ],
+      "correctReason": "현지 사람들과의 직접 접촉이 적은 관찰을 뜻하므로 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "cooperating actively with Western hosts in the local community",
+        "reason": "서구인 숙소 제공자를 이용했지만 밑줄의 핵심은 현지인과 직접 접촉하지 않은 관찰입니다."
+      }
+    },
+    "2025_09_22": {
+      "id": "2025_09_22",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 22,
+      "group": "topic",
+      "type": "요지",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 도덕성은 타고나는 보편 법칙이 아니라 인간 사회가 행동을 조절하려고 가르치는 문화적 도구입니다.",
+      "typeApproach": "요지 문제는 반복되는 정의, 습득 방식, 적용 범위를 한 문장으로 묶습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "morals\nare cultural tools developed to influence social behaviour",
+          "role": "도덕성의 정의",
+          "translation": "도덕은 사회적 행동에 영향을 주려고 발달한 문화적 도구입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "They are\nlearnt, not given at birth.",
+          "role": "습득 방식",
+          "translation": "도덕은 태어날 때 주어지는 것이 아니라 학습됩니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "only within human society do we come to understand this as\nmoral behaviour.",
+          "role": "적용 범위",
+          "translation": "오직 인간 사회 안에서 이를 도덕적 행동으로 이해하게 됩니다."
+        }
+      ],
+      "correctReason": "문화적 도구·학습·인간 사회라는 세 핵심을 모두 담은 ③이 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "동물과 인간은 공통적으로 다른 개체와 협력하는 경향이 있다.",
+        "reason": "협력 성향은 일부 근거일 뿐, 글의 중심은 그 성향을 인간 사회에서 도덕으로 학습한다는 점입니다."
+      }
+    },
+    "2025_09_23": {
+      "id": "2025_09_23",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 23,
+      "group": "topic",
+      "type": "주제",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 일식처럼 낯선 현상을 이해하려면 낙하처럼 익숙한 현상에도 질문해야 한다는 글입니다.",
+      "typeApproach": "주제 문제는 사례들을 연결하는 공통 원리와 마지막에 제시된 필요성을 결합합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "understanding the\nordinary, the habitual, and the frequent thus allows us to\naccount for the frightening and the singular.",
+          "role": "핵심 원리",
+          "translation": "평범하고 익숙하며 자주 일어나는 것을 이해하면 두렵고 특이한 현상을 설명할 수 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "it was\nthus necessary to ask “Why do things fall?”",
+          "role": "필요한 질문",
+          "translation": "그래서 물체가 왜 떨어지는지 물을 필요가 있었습니다."
+        }
+      ],
+      "correctReason": "익숙한 현상에 대한 질문으로 낯선 현상을 이해한다는 ④가 글 전체를 포괄합니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "influence of scientific interpretations on perceptions of reality",
+        "reason": "과학적 해석이 현실 인식에 미치는 일반적 영향보다 익숙한 것에 질문해야 한다는 방법론이 중심입니다."
+      }
+    },
+    "2025_09_24": {
+      "id": "2025_09_24",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 24,
+      "group": "topic",
+      "type": "제목",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 사무실 설계는 직선적으로 발전하는 것이 아니라 과거 방식으로 되돌아오는 주기를 보입니다.",
+      "typeApproach": "제목 문제는 반복되는 대비와 결론의 비유를 모두 포함하는 선택지를 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "the answers keep changing.",
+          "role": "변화의 반복",
+          "translation": "사무실 설계의 답은 계속 바뀝니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "one can see a cycle that\nrepeats.",
+          "role": "주기 명시",
+          "translation": "반복되는 순환을 볼 수 있습니다."
+        }
+      ],
+      "correctReason": "과거와 현재 사무실이 다시 비슷해지는 순환을 표현한 ④가 가장 적절합니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "How to Incorporate Retro Styles into Office Spaces",
+        "reason": "복고풍을 적용하는 방법을 안내하는 글이 아니라 설계 변화가 순환한다는 분석입니다."
+      }
+    },
+    "2025_09_25": {
+      "id": "2025_09_25",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 25,
+      "group": "info",
+      "type": "도표",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 스위스의 VR 친숙도는 일본보다 낮지만 AR 친숙도는 일본보다 높으므로 두 비율이 모두 낮다는 설명은 틀립니다.",
+      "typeApproach": "도표 문제는 비교 대상 두 수치를 각각 확인하고 ‘모두’, ‘각각’ 같은 표현을 분리해 판정합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Japan VR 67%, AR 43%",
+          "role": "일본 수치",
+          "translation": "일본은 VR 67%, AR 43%입니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Switzerland VR 57%, AR 46%",
+          "role": "스위스 수치",
+          "translation": "스위스는 VR 57%, AR 46%입니다."
+        }
+      ],
+      "correctReason": "스위스 VR 57%는 일본 67%보다 낮지만 스위스 AR 46%는 일본 43%보다 높아 ⑤가 불일치합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "In Japan, the percentage of respondents familiar with VR was greater than 60%.",
+        "reason": "일본의 VR 친숙도는 67%이므로 60%보다 크다는 설명은 맞습니다."
+      }
+    },
+    "2025_09_26": {
+      "id": "2025_09_26",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 26,
+      "group": "info",
+      "type": "내용 일치",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. Kepes는 1937년에 미국으로 갔고 약 10년 뒤 MIT에서 시각 디자인을 가르치기 시작했습니다.",
+      "typeApproach": "인물 일치 문제는 연도·장소·행동을 한 묶음으로 대조합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "He went to the United States in\n1937, and about a decade later, he started teaching visual\ndesign at the Massachusetts Institute of Technology (MIT).",
+          "role": "연도 대조",
+          "translation": "1937년 미국으로 갔고 약 10년 뒤 MIT에서 시각 디자인을 가르치기 시작했습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "He studied painting at the Royal Academy\nof Fine Arts in Budapest, Hungary.",
+          "role": "학업 장소",
+          "translation": "헝가리 부다페스트의 왕립 미술원에서 회화를 공부했습니다."
+        }
+      ],
+      "correctReason": "1937년은 미국으로 간 해이지 MIT 강의를 시작한 해가 아니므로 ②가 불일치합니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "헝가리에서 그림을 공부했다.",
+        "reason": "헝가리 부다페스트에서 회화를 공부했다는 내용이 원문에 있습니다."
+      }
+    },
+    "2025_09_27": {
+      "id": "2025_09_27",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 27,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 안내문에는 정오에 학생 식당에서 무료 점심을 제공한다고 적혀 있습니다.",
+      "typeApproach": "안내문 문제는 참가 조건·시간·비용·신청 방법을 표처럼 나누어 선지와 대조합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "12:00 p.m.: Free lunch provided at the students’ cafeteria",
+          "role": "점심 비용",
+          "translation": "정오에 학생 식당에서 무료 점심이 제공됩니다."
+        },
+        {
+          "in": "figure",
+          "quote": "3rd-year high school students only",
+          "role": "참가 대상",
+          "translation": "고등학교 3학년만 참가할 수 있습니다."
+        }
+      ],
+      "correctReason": "점심이 무료로 제공되므로 ‘무료로 제공되지 않는다’는 ③이 불일치합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "티셔츠가 선물로 주어질 것이다.",
+        "reason": "행사 뒤 대학 로고 티셔츠를 선물로 준다는 안내가 있습니다."
+      }
+    },
+    "2025_09_28": {
+      "id": "2025_09_28",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 28,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 수상자는 선정 위원회가 결정하고 12월 30일에 발표합니다.",
+      "typeApproach": "일치하는 선지를 고를 때 숫자·기간·인원·결정 주체를 원문과 하나씩 대조합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "The winners will be decided by the selection committee",
+          "role": "결정 주체",
+          "translation": "수상자는 선정 위원회가 결정합니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Each participant is allowed to submit only one webtoon",
+          "role": "제출 수",
+          "translation": "참가자 한 명당 웹툰 한 편만 제출할 수 있습니다."
+        }
+      ],
+      "correctReason": "선정 위원회가 수상자를 결정한다는 ⑤만 안내문과 일치합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "2등상은 세 명에게 주어진다.",
+        "reason": "2등 수상자는 두 명이고 세 명은 3등 수상자입니다."
+      }
+    },
+    "2025_09_29": {
+      "id": "2025_09_29",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 29,
+      "group": "grammar",
+      "type": "어법",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 선행사 없이 명사절의 주어 역할을 하면서 ‘~하는 것’을 나타내므로 whose가 아니라 what이 필요합니다.",
+      "typeApproach": "어법 문제는 밑줄 단어만 보지 말고 뒤 절에서 빠진 문장 성분과 선행사 존재 여부를 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "showing all the crime, evil, and misery\n⑤ whose result from overpopulation and unplanned growth.",
+          "role": "오류 위치",
+          "translation": "과잉 인구와 무계획 성장에서 비롯되는 범죄·악·비참함을 보여 준다는 부분입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The manufacturing\ntowns of the north of England provided some of the worst\nexamples and ④ inspired such socially conscious novels",
+          "role": "정상 병렬",
+          "translation": "북부 제조업 도시들이 사례를 제공했고 사회의식 있는 소설에 영감을 주었다는 정상 병렬입니다."
+        }
+      ],
+      "correctReason": "⑤의 whose는 선행사가 필요한 관계대명사이므로, ‘~하는 것’을 뜻하며 result의 주어가 되는 what으로 고쳐야 합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "inspired",
+        "reason": "provided와 inspired가 같은 주어 The manufacturing towns에 연결된 정상적인 병렬입니다."
+      }
+    },
+    "2025_09_30": {
+      "id": "2025_09_30",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 30,
+      "group": "vocab",
+      "type": "어휘",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 글은 인간 사고에 내장된 비합리성을 설명하므로 rationality는 irrationality로 바뀌어야 합니다.",
+      "typeApproach": "어휘 문제는 밑줄 단어의 긍정·부정 방향이 앞뒤의 반복 개념과 일치하는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "We\nare, in fact, “predictably irrational,”",
+          "role": "핵심 개념",
+          "translation": "우리는 사실 예측 가능하게 비합리적입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Learning to understand the built-in ⑤ rationality of our mental\nprocesses",
+          "role": "문맥 충돌",
+          "translation": "정신 과정에 내장된 합리성을 이해한다는 표현이 앞 내용과 충돌합니다."
+        }
+      ],
+      "correctReason": "편향과 자동적 사고가 만드는 내장된 비합리성을 이해해야 한다는 문맥이므로 ⑤가 부적절합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "less",
+        "reason": "마음의 작동을 이해하면 오류 추론의 영향을 덜 받게 된다는 흐름에 맞습니다."
+      }
+    },
+    "2025_09_31": {
+      "id": "2025_09_31",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 31,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 나방은 빛에 끌리는 것이 아니라 감각 과부하로 방향을 잃고 빛 주변에 갇힙니다.",
+      "typeApproach": "빈칸 앞뒤에서 같은 현상을 반복 설명하는 단어를 찾아 선택지와 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "The light becomes a sensory overload that disorients the\ninsects and sends them into a holding pattern.",
+          "role": "방향 상실",
+          "translation": "빛의 감각 과부하가 나방의 방향 감각을 흐리고 같은 궤도를 돌게 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "they\ncircle the light hopelessly trying to reach the portal.",
+          "role": "갇힌 행동",
+          "translation": "나방은 출구에 닿으려 하지만 희망 없이 빛 주위를 돕니다."
+        }
+      ],
+      "correctReason": "빛을 벗어나려 해도 계속 주위를 도는 상태이므로 trapped가 적절합니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "targeted",
+        "reason": "빛이 나방을 목표로 삼는다는 내용이 아니라 나방이 빛 때문에 방향을 잃는 내용입니다."
+      }
+    },
+    "2025_09_32": {
+      "id": "2025_09_32",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 32,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 통신 투자는 다수 공동체에 가장 적합한 방식이 아니라 수익을 낼 수 있는 이용자를 중심으로 이루어질 수 있습니다.",
+      "typeApproach": "빈칸 뒤의 because와 실제 사례가 반박하는 기대를 찾아 빈칸에 넣습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "operational structures will be oriented to those who can pay\nfor access.",
+          "role": "지불 능력 중심",
+          "translation": "운영 구조는 이용료를 낼 수 있는 사람들에게 맞춰집니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "development has been led by investment opportunity rather\nthan community demand.",
+          "role": "투자 기회 우선",
+          "translation": "개발은 공동체 수요보다 투자 기회가 이끌었습니다."
+        }
+      ],
+      "correctReason": "투자가 공동체 다수의 적합성보다 수익성을 따르므로 ‘다수 사람에게 가장 적절하다’는 보장이 없다는 ②가 맞습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "promote the commercial interests of companies",
+        "reason": "뒤 문장은 실제로 상업적 수익성이 투자를 좌우한다고 하므로, 상업적 이익을 촉진할 보장이 없다는 말은 논리와 반대입니다."
+      }
+    },
+    "2025_09_33": {
+      "id": "2025_09_33",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 33,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 로마에서 사람들이 걷기보다 머무는 것은 도시 공간이 매력적이어서 멈출 유혹이 많기 때문입니다.",
+      "typeApproach": "빈칸 앞의 관찰과 뒤의 결과를 인과로 연결하는 표현을 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "it is the large\nnumber of people standing or sitting in squares rather than\nwalking that is conspicuous.",
+          "role": "머무는 사람들",
+          "translation": "로마에서는 걷기보다 광장에 서거나 앉아 있는 많은 사람이 두드러집니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "It is\nhard to keep moving in city space with so many temptations to\nstay.",
+          "role": "머무름의 원인",
+          "translation": "머물고 싶은 유혹이 많아 계속 움직이기 어렵습니다."
+        }
+      ],
+      "correctReason": "머물고 싶은 유혹을 만드는 매력적인 도시 환경을 뜻하는 ①이 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "major tourist spots are within walking distance",
+        "reason": "관광지 간 거리가 짧다는 내용이 아니라 공간 자체가 머물도록 유도한다는 설명입니다."
+      }
+    },
+    "2025_09_34": {
+      "id": "2025_09_34",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 34,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. Rousseau의 글은 개인이 정서적 관계와 타인의 참여를 통해 형성된다는 점을 선명하게 보여 줍니다.",
+      "typeApproach": "빈칸 앞의 일반 주장과 뒤의 인용문이 공통으로 말하는 자아 형성 방식을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Self-development is a social process.\nSelf-sufficiency is an impossible fantasy.",
+          "role": "사회적 자아 형성",
+          "translation": "자기 발전은 사회적 과정이고 완전한 자급자족은 불가능한 환상입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Our sweetest existence is relative and collective, and our true\nself is not entirely within us.",
+          "role": "관계적 자아",
+          "translation": "가장 좋은 존재 방식은 관계적·집단적이며 참된 자아가 전적으로 내면에만 있지 않습니다."
+        }
+      ],
+      "correctReason": "개인은 타인과의 정서적 관계 속에서 형성된다는 ③이 앞뒤 내용을 연결합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "the making of the self-reliant man through his struggles",
+        "reason": "글은 자립적 인간 형성을 지지하지 않고 자기충족이 불가능하다고 말합니다."
+      }
+    },
+    "2025_09_35": {
+      "id": "2025_09_35",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 35,
+      "group": "irrelevant",
+      "type": "무관한 문장",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 글은 전문 딜러의 넓은 정보망과 희귀 물품 탐색 능력을 설명하는데, ④만 구매 시 맞춤 서비스라는 다른 장점을 말합니다.",
+      "typeApproach": "무관한 문장은 각 문장의 공통 주제어와 앞뒤 지시어가 이어지는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Once\nthey know the needs of a particular collector they can actively\nseek specific items to fill gaps in the collection.",
+          "role": "탐색 서비스",
+          "translation": "수집가의 필요를 알면 소장품의 빈틈을 채울 물건을 적극적으로 찾습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "④ The main advantage of buying from a dealer is\ngetting personalised service on your purchases.",
+          "role": "주제 이탈",
+          "translation": "④는 딜러에게 구매할 때의 맞춤 서비스를 별도 장점으로 제시합니다."
+        }
+      ],
+      "correctReason": "①~③과 ⑤는 딜러의 정보망을 통한 물품 탐색을 이어 가지만 ④는 일반적인 구매 서비스로 흐름을 끊습니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "Because it is their business, to which they devote themselves full-time, they will inevitably have a much wider network than any non-professional collector can ever develop.",
+        "reason": "전문 딜러가 일반 수집가보다 넓은 정보망을 갖는다는 글의 중심 근거입니다."
+      }
+    },
+    "2025_09_36": {
+      "id": "2025_09_36",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 36,
+      "group": "order",
+      "type": "순서",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 단순 사실 저장 가정을 반박하는 (C), 작은 조정을 설명하는 (B), 완전히 새 정보의 큰 조정으로 확장하는 (A) 순서입니다.",
+      "typeApproach": "순서 문제는 대조 접속어, 비교 기준, 앞 문장의 개념을 받는 표현을 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "According to\nconnectionist theory, however, our knowledge is organized\ninto patterns of activity",
+          "role": "첫 대조",
+          "translation": "(C)는 단순 저장 가정과 달리 연결주의에서는 지식이 활동 패턴으로 조직된다고 전환합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The \tadjustments \tare \tclearly \tsmallest \twhen \tthe \tnew\ninformation is only slightly new",
+          "role": "작은 조정",
+          "translation": "(B)는 새 정보가 조금만 새로울 때 조정이 가장 작다고 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "If we are trying to understand something totally new,\nhowever",
+          "role": "큰 조정으로 대비",
+          "translation": "(A)는 완전히 새로운 정보를 이해할 때는 더 큰 조정이 필요하다고 대비합니다."
+        }
+      ],
+      "correctReason": "가정 반박 (C) → 조금 새로운 정보 (B) → 완전히 새로운 정보 (A)로 이어져 ⑤입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "(B) - (C) - (A)",
+        "reason": "(B)의 adjustments는 먼저 지식 패턴 수정 원리를 제시한 (C) 뒤에 와야 합니다."
+      }
+    },
+    "2025_09_37": {
+      "id": "2025_09_37",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 37,
+      "group": "order",
+      "type": "순서",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 손상 뒤 회복을 설명하는 (B), 손상 전 예방으로 대조하는 (C), 선제 행동을 구체화하는 (A) 순서입니다.",
+      "typeApproach": "대조 표현의 기준과 대명사가 받는 바로 앞 개념을 따라 순서를 정합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Animals have evolved many different ways of maintaining\ntheir health and then regaining it again once it has been\ndamaged",
+          "role": "손상 뒤 회복",
+          "translation": "(B)는 건강을 유지하고 손상 뒤 다시 회복하는 방법을 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Animals are equally good, however, at dealing with injury\nand disease before they even happen.",
+          "role": "손상 전 예방",
+          "translation": "(C)는 however로 손상 뒤 회복에서 손상 전 예방으로 전환합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "They can take pre-emptive action so that the worst never\nhappens.",
+          "role": "예방의 구체화",
+          "translation": "(A)는 (C)의 위험 회피를 선제 행동으로 구체화합니다."
+        }
+      ],
+      "correctReason": "회복 (B) → 예방 대조 (C) → 선제 행동 (A) 순서이므로 ③입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(C) - (B) - (A)",
+        "reason": "(C)의 however는 손상 뒤 회복을 다룬 (B)를 먼저 받아야 자연스럽습니다."
+      }
+    },
+    "2025_09_38": {
+      "id": "2025_09_38",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 38,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 주어진 문장의 If not은 로봇이 블록과 자기 팔을 구별하는 장치가 없을 경우를 받고, 뒤 문장은 그 결과를 설명합니다.",
+      "typeApproach": "문장 삽입은 대명사·조건 표현이 받는 선행 내용과 뒤 문장의 결과를 함께 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "your machine will have to have some built-in system enabling\nit to discriminate between the detection of a block and the\ndetection of its own arm.",
+          "role": "조건의 선행 내용",
+          "translation": "로봇은 블록 감지와 자기 팔 감지를 구별하는 내장 장치가 필요합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Your robot would engage in\ncircular, self-centered acts",
+          "role": "구별 실패 결과",
+          "translation": "구별하지 못하면 로봇이 자기중심적인 순환 행동을 하게 됩니다."
+        }
+      ],
+      "correctReason": "구별 장치 설명 뒤에 If not을 두고 자기 자신을 쫓는 결과로 이어지는 ⑤가 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "④",
+        "reason": "④ 앞에서는 인공 눈과 팔을 장착했다는 사실만 나와 If not이 받을 구별 장치 조건이 아직 제시되지 않았습니다."
+      }
+    },
+    "2025_09_39": {
+      "id": "2025_09_39",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 39,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 미래 예측 능력이 필요하다는 문장 뒤에 미래가 예측 불가능하다는 주어진 문장이 오고, 기후 변화 사례가 이를 구체화합니다.",
+      "typeApproach": "문장 삽입은 주어진 문장의 핵심어가 앞 문장과 대조되고 뒤 예시가 이를 받는 지점을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "This traditional\nand inherently logical approach requires a high degree of\npredictive \tability",
+          "role": "예측 필요",
+          "translation": "전통적 관리 방식은 높은 예측 능력을 요구합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "To illustrate this, consider the uncertainties\ninvolved in predicting climatic changes",
+          "role": "불확실성 사례",
+          "translation": "이를 보여 주기 위해 기후 변화 예측의 불확실성을 사례로 듭니다."
+        }
+      ],
+      "correctReason": "예측 필요 → 그러나 미래는 예측 불가능 → 기후 예측의 불확실성 사례 흐름이 되는 ④가 맞습니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "③",
+        "reason": "③에서는 예측 능력이 필요하다는 핵심 문장이 아직 나오기 전이라 주어진 문장의 대조가 성립하지 않습니다."
+      }
+    },
+    "2025_09_40": {
+      "id": "2025_09_40",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 40,
+      "group": "summary",
+      "type": "요약문",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 동물의 울음은 소리 하나가 메시지 하나를 나타내지만 인간 언어는 유한한 소리를 결합해 무한한 메시지를 만듭니다.",
+      "typeApproach": "요약문은 두 대상의 대조 구조를 유지하며 각 빈칸의 문법과 의미를 함께 맞춥니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "all other\nanimals use one call for one message",
+          "role": "동물 신호 원리",
+          "translation": "다른 동물은 일반적으로 울음 하나를 메시지 하나에 사용합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Human speech builds on the principle of combining a\nrestricted number of sounds into an unlimited number of\nmessages.",
+          "role": "인간 언어 원리",
+          "translation": "인간 언어는 제한된 수의 소리를 결합해 무한한 메시지를 만듭니다."
+        }
+      ],
+      "correctReason": "동물 울음은 메시지를 represents하고 인간 언어의 소리 집합은 finite하므로 ①입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "records …… complex",
+        "reason": "동물 울음은 메시지를 기록하는 것이 아니며 인간 언어의 소리 수는 복잡하다고 한 것이 아니라 제한되어 있다고 했습니다."
+      }
+    },
+    "2025_09_41": {
+      "id": "2025_09_41",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 41,
+      "group": "long",
+      "type": "장문 제목",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 시인은 일상 언어의 같은 재료를 새롭게 조합해 우리가 언어를 다시 듣고 세상을 새롭게 보게 합니다.",
+      "typeApproach": "장문 제목은 반복되는 핵심 대상과 글이 설명하는 기능을 함께 담은 선택지를 고릅니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "the poet artfully manipulates the same raw materials\nof his language as are used in everyday speech",
+          "role": "일상 언어 재료",
+          "translation": "시인은 일상 언어와 같은 재료를 능숙하게 다룹니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "One function of poetry is to depict the world\nwith a (d) fresh perception",
+          "role": "시의 기능",
+          "translation": "시의 한 기능은 세상을 새로운 인식으로 묘사하는 것입니다."
+        }
+      ],
+      "correctReason": "일상 언어를 새롭게 만들어 다시 듣게 한다는 제목 ①이 글 전체를 포괄합니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "The Influence of Natural Sounds on Poetic Expression",
+        "reason": "파도 소리는 익숙함을 설명하는 비유일 뿐 자연의 소리가 시 표현에 미치는 영향이 주제가 아닙니다."
+      }
+    },
+    "2025_09_42": {
+      "id": "2025_09_42",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 42,
+      "group": "long",
+      "type": "장문 어휘",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 매일 쏟아지는 말에 익숙해져 더 이상 의식하지 못한다는 문맥이므로 sensitive는 insensitive가 되어야 합니다.",
+      "typeApproach": "어휘 문제는 비유의 앞뒤 상태가 같은 방향인지 확인하고 반대말이 필요한 지점을 찾습니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "become so accustomed to the sound of waves that\nthey no longer hear it",
+          "role": "익숙함의 비유",
+          "translation": "파도 소리에 너무 익숙해져 더 이상 듣지 못하게 됩니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "most of us have become (c) sensitive to\nthe flood tide of words",
+          "role": "문맥 충돌",
+          "translation": "대부분의 사람이 말의 홍수에 민감해졌다는 표현이 앞 비유와 어긋납니다."
+        }
+      ],
+      "correctReason": "말의 홍수에 무감각해졌다는 뜻이어야 하므로 (c) sensitive가 부적절한 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(d)",
+        "reason": "시는 세상을 fresh perception으로 보게 한다는 글의 핵심 기능과 일치합니다."
+      }
+    },
+    "2025_09_43": {
+      "id": "2025_09_43",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 43,
+      "group": "long",
+      "type": "장문 순서",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 판매 글을 본 Helen이 연락하는 (C), Julia를 만나 식물을 받는 (B), 추가 식물과 관리 조언을 받는 (D) 순서입니다.",
+      "typeApproach": "이야기 순서는 인물의 연락·이동·만남과 물건이 처음 등장하는 시점을 시간 순서로 연결합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Anna replied, “Hi,\nthere! I am at work right now, but my housemate, Julia, can\nmeet you in front of the building.”",
+          "role": "만남 약속",
+          "translation": "Anna가 직장에 있어 집 앞에서 Julia가 대신 만나기로 합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Arriving at the building, Helen could identify Julia by the\nlarge paper bag she was holding.",
+          "role": "현장 도착",
+          "translation": "건물에 도착한 Helen이 큰 종이 가방을 든 Julia를 알아봅니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Helen exclaimed, “Yes, I’d love to! Please thank Anna for\nme.",
+          "role": "추가 식물 수락",
+          "translation": "Helen이 추가 식물 제안을 기쁘게 받아들입니다."
+        }
+      ],
+      "correctReason": "연락 (C) → 건물 앞 만남 (B) → 추가 식물 수락과 관리 질문 (D)으로 이어져 ②입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(D) - (C) - (B)",
+        "reason": "(D)의 추가 식물 수락은 (B)에서 Julia가 추가 식물을 제안한 뒤에만 올 수 있습니다."
+      }
+    },
+    "2025_09_44": {
+      "id": "2025_09_44",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 44,
+      "group": "long",
+      "type": "장문 지칭",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. (b) She는 Helen을, 나머지 (a)·(c)·(d)·(e)는 모두 Anna를 가리킵니다.",
+      "typeApproach": "지칭 문제는 대명사가 포함된 발화의 화자와 바로 앞에 언급된 인물을 각각 표시합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "(b) She said, “You must be Julia!”",
+          "role": "Helen 지칭",
+          "translation": "Julia를 알아보고 말한 사람은 Helen입니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Why\ndon’t you message (e) her?",
+          "role": "Anna 지칭",
+          "translation": "관리법을 물어보라고 한 대상 (e) her는 Anna입니다."
+        }
+      ],
+      "correctReason": "(b)만 Helen이고 나머지 넷은 판매자이자 Julia의 집 동료인 Anna이므로 ②입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(e)",
+        "reason": "(e) her는 식물 관리법을 아는 Anna를 가리켜 (a)·(c)·(d)와 같습니다."
+      }
+    },
+    "2025_09_45": {
+      "id": "2025_09_45",
+      "status": "ready",
+      "exam": "2025학년도 9월 모의평가 영어",
+      "qid": 45,
+      "group": "long",
+      "type": "장문 내용",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. Julia는 자신이 식물 전문가가 아니라고 말했으므로 전문가라고 말했다는 선지는 틀립니다.",
+      "typeApproach": "장문 내용 문제는 인물·행동·부정 표현을 선지별로 원문과 대조합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Julia replied, “I’m not a plant expert",
+          "role": "전문가 여부",
+          "translation": "Julia는 자신이 식물 전문가가 아니라고 답합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Helen typed back in excitement, “Great! I can\nleave now. I’ll wear a black baseball cap.”",
+          "role": "모자 정보",
+          "translation": "Helen은 검은 야구 모자를 쓰겠다고 답합니다."
+        }
+      ],
+      "correctReason": "원문은 Julia가 식물 전문가가 아니라고 명시하므로 ⑤가 불일치합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "Helen은 야구 모자를 쓰겠다고 답했다.",
+        "reason": "Helen이 검은 야구 모자를 쓰겠다고 메시지를 보냈다는 내용이 있습니다."
+      }
+    }
+  }
+}

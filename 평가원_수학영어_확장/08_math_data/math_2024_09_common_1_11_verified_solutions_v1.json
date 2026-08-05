@@ -1,0 +1,423 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2024학년도 9월 모의평가 수학 공통 1~11번 중 원천 일치 10문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 10,
+    "readyCount": 10,
+    "questionFingerprint": "31e7ae06e9fb30c553329f188cfa4f473810d39f1149d00ba4dfe4431bfa816e",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://jwmath.tistory.com/617",
+      "independentSourceUrls": [
+        "https://horaeng.com/267",
+        "https://g10010.tistory.com/292"
+      ],
+      "problemFilename": "jw-problem.pdf",
+      "problemSha256": "5b2e01cfa31c7932b58afc19d5bebd388292c8382c5013e7c857caf24a6f006a",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "5b2e01cfa31c7932b58afc19d5bebd388292c8382c5013e7c857caf24a6f006a"
+        }
+      ],
+      "answerFilename": "jw-answer.png",
+      "answerSha256": "fe450875a7b50ddf5d9b950f0f22688855d4fe622a42604f972ee1ce18e1e188",
+      "solutionArtifacts": [
+        {
+          "filename": "jw-solution.pdf",
+          "sha256": "d44ccbb5a95a0832b126c21b33cbd2cafa9c1d1ed3c0077734f6f70074f9f396"
+        },
+        {
+          "filename": "horaeng-solution.pdf",
+          "sha256": "718459a111a3613e45d9b2ff751f563a22e1b09e5d3d4f2735be7b8b14771065"
+        }
+      ]
+    },
+    "note": "서로 다른 두 보관처의 동일 문제지, 공식 정답표 이미지, 두 해설 자료를 문항별로 대조하고 계산은 독립적으로 다시 확인했습니다. 6번은 원천 DB의 계수 묶음 오류로 이 파일에서 제외했습니다."
+  },
+  "items": {
+    "2024_09_common_1": {
+      "id": "2024_09_common_1",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 1,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "같은 밑의 거듭제곱을 곱할 때 지수를 더하면 값은 9입니다.",
+      "approach": "두 지수의 합에서 무리수 항이 소거되는지 먼저 확인합니다.",
+      "concepts": ["거듭제곱의 곱", "지수법칙"],
+      "steps": [
+        {
+          "title": "지수 합치기",
+          "expression": "3^{1-\\sqrt5}\\times3^{1+\\sqrt5}=3^{(1-\\sqrt5)+(1+\\sqrt5)}",
+          "explanation": "밑이 모두 3이므로 지수를 더합니다."
+        },
+        {
+          "title": "무리수 항 소거",
+          "expression": "(1-\\sqrt5)+(1+\\sqrt5)=2",
+          "explanation": "-√5와 +√5가 서로 없어집니다."
+        },
+        {
+          "title": "최종 계산",
+          "expression": "3^2=9",
+          "explanation": "계산값 9는 ⑤와 일치합니다."
+        }
+      ],
+      "correctReason": "지수법칙을 적용하면 밑이 3이고 지수가 2인 수가 남습니다.",
+      "commonMistake": "각 거듭제곱을 따로 근삿값으로 계산하지 말고 지수부터 합치세요.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_common_2": {
+      "id": "2024_09_common_2",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 2,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "분자를 인수분해해 x-1을 약분하면 극한값은 3입니다.",
+      "approach": "f(1)=1임을 확인한 뒤 미분계수 또는 인수분해로 계산합니다.",
+      "concepts": ["함수의 극한", "미분계수"],
+      "steps": [
+        {
+          "title": "분자 정리",
+          "expression": "f(x)-1=2x^2-x-1=(2x+1)(x-1)",
+          "explanation": "x=1에서 0이 되는 인수 x-1을 분리합니다."
+        },
+        {
+          "title": "공통인수 약분",
+          "expression": "\\frac{f(x)-1}{x-1}=2x+1\\quad(x\\ne1)",
+          "explanation": "극한 과정에서는 x가 1과 같지 않으므로 약분할 수 있습니다."
+        },
+        {
+          "title": "극한값 계산",
+          "expression": "\\lim_{x\\to1}(2x+1)=3",
+          "explanation": "x=1을 대입하면 3이므로 정답은 ③입니다."
+        }
+      ],
+      "correctReason": "주어진 극한은 f'(1)과 같고 f'(x)=4x-1이므로 f'(1)=3입니다.",
+      "commonMistake": "분모가 0이라고 바로 결론내리지 말고 분자의 x-1 인수를 먼저 약분하세요.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_common_3": {
+      "id": "2024_09_common_3",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 3,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "제4사분면의 부호를 반영하면 tan θ는 -√2/2입니다.",
+      "approach": "cos 값으로 sin의 크기를 구하고 θ의 범위로 부호를 결정합니다.",
+      "concepts": ["삼각함수의 기본관계", "사분면의 부호"],
+      "steps": [
+        {
+          "title": "sin의 크기 계산",
+          "expression": "\\sin^2\\theta=1-\\cos^2\\theta=1-\\frac{6}{9}=\\frac13",
+          "explanation": "sin²θ+cos²θ=1을 사용합니다."
+        },
+        {
+          "title": "부호 결정",
+          "expression": "\\frac{3\\pi}{2}<\\theta<2\\pi\\Rightarrow\\sin\\theta=-\\frac{\\sqrt3}{3}",
+          "explanation": "θ는 제4사분면에 있으므로 sin은 음수입니다."
+        },
+        {
+          "title": "tan 계산",
+          "expression": "\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}=-\\frac{\\sqrt2}{2}",
+          "explanation": "계산값은 ②와 일치합니다."
+        }
+      ],
+      "correctReason": "제4사분면에서 cos은 양수이고 sin과 tan은 음수입니다.",
+      "commonMistake": "sin의 제곱근을 구한 뒤 θ의 범위를 무시해 양수로 두지 마세요.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_common_4": {
+      "id": "2024_09_common_4",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 4,
+      "answer": "1",
+      "answerMark": "①",
+      "publicBlockedByFigureAsset": true,
+      "summary": "그래프에서 오른쪽 극한 -2와 왼쪽 극한 0을 읽어 합하면 -2입니다.",
+      "approach": "점의 함수값이 아니라 화살표 방향으로 가까워질 때의 높이를 각각 읽습니다.",
+      "concepts": ["좌극한과 우극한", "그래프 해석"],
+      "steps": [
+        {
+          "title": "첫 번째 우극한",
+          "expression": "\\lim_{x\\to-2+}f(x)=-2",
+          "explanation": "-2보다 큰 쪽에서 접근하는 선분은 (-2,-2)로 향합니다."
+        },
+        {
+          "title": "두 번째 좌극한",
+          "expression": "\\lim_{x\\to1-}f(x)=0",
+          "explanation": "1보다 작은 쪽에서 접근하는 선분은 (1,0)의 열린점으로 향합니다."
+        },
+        {
+          "title": "두 극한 더하기",
+          "expression": "-2+0=-2",
+          "explanation": "합은 -2이므로 정답은 ①입니다."
+        }
+      ],
+      "correctReason": "각 극한은 해당 방향의 그래프가 다가가는 y값으로 결정됩니다.",
+      "commonMistake": "f(-2)나 f(1)의 닫힌점 높이를 극한값으로 읽지 마세요.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_common_5": {
+      "id": "2024_09_common_5",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 5,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "양의 공비를 구해 a11을 계산하면 96입니다.",
+      "approach": "등비수열의 대칭항 관계로 a5와 a7을 먼저 결정합니다.",
+      "concepts": ["등비수열", "공비"],
+      "steps": [
+        {
+          "title": "첫 조건 단순화",
+          "expression": "\\frac{a_3a_8}{a_6}=a_5=12",
+          "explanation": "a_n=a_1r^{n-1}을 대입하면 지수가 정리되어 a5가 남습니다."
+        },
+        {
+          "title": "공비 제곱 구하기",
+          "expression": "a_7=36-a_5=24,\\qquad r^2=\\frac{a_7}{a_5}=2",
+          "explanation": "모든 항이 양수이므로 공비의 부호 문제도 없습니다."
+        },
+        {
+          "title": "a11 계산",
+          "expression": "a_{11}=a_5r^6=12(r^2)^3=12\\times8=96",
+          "explanation": "96은 ⑤와 일치합니다."
+        }
+      ],
+      "correctReason": "a5=12와 r²=2가 두 조건을 동시에 만족시킵니다.",
+      "commonMistake": "a3a8/a6의 지수를 계산할 때 a4나 a6으로 잘못 줄이지 마세요.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_common_7": {
+      "id": "2024_09_common_7",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 7,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "분수의 합을 한 분수로 묶고 로그값을 정리하면 5/3입니다.",
+      "approach": "a와 b를 각각 구하지 않고 주어진 합과 곱을 그대로 이용합니다.",
+      "concepts": ["로그의 성질", "분수식의 통분"],
+      "steps": [
+        {
+          "title": "통분하기",
+          "expression": "\\frac1{3a}+\\frac1{2b}=\\frac{3a+2b}{6ab}",
+          "explanation": "분자의 조합이 첫 번째 조건과 같아집니다."
+        },
+        {
+          "title": "로그 밑 통일",
+          "expression": "3a+2b=\\log_3 32=5\\log_3 2,\\quad ab=\\log_9 2=\\frac12\\log_3 2",
+          "explanation": "log₉2는 밑변환으로 log₃2의 절반입니다."
+        },
+        {
+          "title": "비 계산",
+          "expression": "\\frac{5\\log_3 2}{6\\times\\frac12\\log_3 2}=\\frac53",
+          "explanation": "공통인 log₃2가 약분되어 정답은 ④입니다."
+        }
+      ],
+      "correctReason": "주어진 두 식이 통분한 분자의 값과 분모의 곱을 직접 제공합니다.",
+      "commonMistake": "log₉2를 2log₃2로 바꾸지 말고 밑변환 공식을 정확히 적용하세요.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_common_8": {
+      "id": "2024_09_common_8",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 8,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "f'(x)를 적분하고 f(1)을 자기 일치 조건으로 구하면 f(2)=8입니다.",
+      "approach": "f(1)을 상수로 보고 적분한 뒤 x=1을 대입해 그 상수를 결정합니다.",
+      "concepts": ["도함수의 적분", "초기조건"],
+      "steps": [
+        {
+          "title": "도함수 적분",
+          "expression": "f(x)=2x^3-f(1)x^2+4",
+          "explanation": "f(0)=4이므로 적분상수는 4입니다."
+        },
+        {
+          "title": "f(1) 결정",
+          "expression": "f(1)=2-f(1)+4\\Rightarrow f(1)=3",
+          "explanation": "적분해 얻은 식에 x=1을 대입합니다."
+        },
+        {
+          "title": "f(2) 계산",
+          "expression": "f(2)=2\\times2^3-3\\times2^2+4=8",
+          "explanation": "계산값 8은 ④와 일치합니다."
+        }
+      ],
+      "correctReason": "초기조건과 f(1)의 자기 일치 식이 다항함수를 하나로 결정합니다.",
+      "commonMistake": "f(1)을 x에 관한 함수처럼 적분하지 말고 하나의 상수로 다루세요.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_common_9": {
+      "id": "2024_09_common_9",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 9,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "기준값을 cos(5π/14)로 바꾸면 해의 길이는 9π/7입니다.",
+      "approach": "사인값을 같은 각 범위의 코사인값으로 바꾸고 코사인 그래프의 대칭을 사용합니다.",
+      "concepts": ["삼각함수의 변환", "삼각부등식"],
+      "steps": [
+        {
+          "title": "기준각 변환",
+          "expression": "\\sin\\frac{\\pi}{7}=\\cos\\left(\\frac{\\pi}{2}-\\frac{\\pi}{7}\\right)=\\cos\\frac{5\\pi}{14}",
+          "explanation": "부등식을 cos끼리 비교할 수 있게 바꿉니다."
+        },
+        {
+          "title": "해 구간 결정",
+          "expression": "\\frac{5\\pi}{14}\\le x\\le2\\pi-\\frac{5\\pi}{14}=\\frac{23\\pi}{14}",
+          "explanation": "0부터 2π에서 cos가 기준값 이하인 가운데 구간입니다."
+        },
+        {
+          "title": "구간 길이",
+          "expression": "\\beta-\\alpha=\\frac{23\\pi}{14}-\\frac{5\\pi}{14}=\\frac{9\\pi}{7}",
+          "explanation": "구간 길이는 ③과 일치합니다."
+        }
+      ],
+      "correctReason": "코사인은 0에서 π까지 감소하고 π에서 2π까지 증가하므로 해가 한 구간으로 이어집니다.",
+      "commonMistake": "오른쪽 경계를 2π-5π/14로 잡는 대칭점을 빠뜨리지 마세요.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_common_10": {
+      "id": "2024_09_common_10",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 10,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "두 접선 조건으로 f(x)=(x+8)(x-2)²+3을 얻어 f(0)=35입니다.",
+      "approach": "(2,3)에서의 접선이 수평임을 먼저 이용하고, -2에서의 접선 조건으로 남은 근을 정합니다.",
+      "concepts": ["접선의 방정식", "삼차함수의 중근"],
+      "steps": [
+        {
+          "title": "x=2 조건",
+          "expression": "f(2)=3,\\quad f'(2)=0\\Rightarrow f(x)=(x-2)^2(x-k)+3",
+          "explanation": "(2,3)의 접선이 (1,3)을 지나므로 기울기는 0이고 x=2는 f(x)-3의 중근입니다."
+        },
+        {
+          "title": "x=-2 접선 조건",
+          "expression": "f(-2)+3f'(-2)=3\\Rightarrow k=-8",
+          "explanation": "-2에서 그은 접선이 x=1에서 y=3을 지난다는 식을 대입합니다."
+        },
+        {
+          "title": "함수값 계산",
+          "expression": "f(0)=(0+8)(0-2)^2+3=35",
+          "explanation": "계산값 35는 ③과 일치합니다."
+        }
+      ],
+      "correctReason": "두 접선이 만나는 점의 좌표가 함수의 중근 구조와 나머지 인수를 모두 결정합니다.",
+      "commonMistake": "(2,3)에서 접선의 기울기가 0이라는 사실을 놓치고 일반 삼차식부터 전개하지 마세요.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_common_11": {
+      "id": "2024_09_common_11",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 11,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "두 점 사이 거리가 처음 4가 되는 시각은 3이고, P의 방향 전환을 나눠 적분하면 이동거리는 32입니다.",
+      "approach": "위치함수로 만나는 시각을 찾고 속도 부호가 바뀌는 시각 1을 기준으로 이동거리를 계산합니다.",
+      "concepts": ["속도와 위치", "이동거리"],
+      "steps": [
+        {
+          "title": "두 점의 위치",
+          "expression": "s_P(t)=t^3+2t^2-7t+1,\\quad s_Q(t)=t^2+4t+8",
+          "explanation": "각 속도를 적분하고 출발 위치를 반영합니다."
+        },
+        {
+          "title": "처음 거리 4인 시각",
+          "expression": "|s_P(t)-s_Q(t)|=4\\Rightarrow t=3\\text{가 첫 해}",
+          "explanation": "t≥0의 해를 시간순으로 확인하면 처음 조건을 만족하는 시각은 3입니다."
+        },
+        {
+          "title": "P의 이동거리",
+          "expression": "\\int_0^1|v_1(t)|dt+\\int_1^3|v_1(t)|dt=32",
+          "explanation": "v1은 t=1에서 부호가 바뀌므로 두 구간의 거리 합을 구하면 ⑤입니다."
+        }
+      ],
+      "correctReason": "이동거리는 위치 변화량이 아니라 속도의 절댓값 적분이며 방향 전환을 반영해야 합니다.",
+      "commonMistake": "sP(3)-sP(0)만 계산하면 되돌아간 거리를 잃으므로 반드시 속도 부호를 나누세요.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

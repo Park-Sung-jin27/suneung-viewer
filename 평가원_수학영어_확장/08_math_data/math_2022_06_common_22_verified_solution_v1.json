@@ -1,0 +1,91 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 6월 모의평가 공통 22번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 1,
+    "readyCount": 1,
+    "questionFingerprint": "9fa49633c042c2679f96ebb5f1c04aa1266cc6a74a4ff2d94e8db29587b71548",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
+      "archiveSha256": "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
+    },
+    "note": "원본 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 풀이 후보"
+  },
+  "items": {
+    "2022_06_common_22": {
+      "id": "2022_06_common_22",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 22,
+      "answer": "61",
+      "answerMark": null,
+      "summary": "합성방정식의 실근 개수를 인수분해로 세면 가능한 삼차함수 두 개가 나오고, f′(0)>1을 만족하는 함수에서 f(0)=45/16이므로 답은 61입니다.",
+      "approach": "f의 중근과 단순근을 문자로 둔 뒤 x-f(x)가 두 근과 같아지는 방정식을 각각 인수분해해 실근 개수 조건을 정확히 반영합니다.",
+      "concepts": [
+        "삼차함수의 중근",
+        "합성함수 방정식",
+        "이차방정식의 판별식",
+        "미분계수 조건"
+      ],
+      "steps": [
+        {
+          "title": "f의 두 근으로 식 세우기",
+          "expression": "f(x)=A(x-r)^2(x-s)\\quad(r\\ne s)",
+          "explanation": "삼차방정식 f(x)=0의 서로 다른 실근이 두 개이므로 한 근 r은 중근이고 다른 근 s는 단순근입니다."
+        },
+        {
+          "title": "합성방정식 두 갈래 인수분해하기",
+          "expression": "x-f(x)=s \\Rightarrow (x-s)\\{1-A(x-r)^2\\}=0",
+          "explanation": "x-f(x)가 f의 단순근 s와 같은 경우를 인수분해합니다."
+        },
+        {
+          "title": "나머지 갈래 인수분해하기",
+          "expression": "x-f(x)=r \\Rightarrow (x-r)\\{1-A(x-r)(x-s)\\}=0",
+          "explanation": "x-f(x)가 중근 r과 같은 경우도 같은 방식으로 인수분해합니다."
+        },
+        {
+          "title": "서로 다른 실근 3개 조건 만들기",
+          "expression": "A<0,\\quad (r-s)^2+\\frac4A=0 \\Rightarrow A=-\\frac4{(r-s)^2}",
+          "explanation": "A가 양수이면 두 갈래에서 실근이 너무 많이 생깁니다. A가 음수이면 첫 갈래는 x=s 하나이고, 둘째 갈래가 x=r과 판별식 0인 이차식의 중근 하나를 가져야 전체가 정확히 세 개입니다."
+        },
+        {
+          "title": "f(1)과 f′(1) 조건 정리하기",
+          "expression": "u=1-r,\\;v=1-s,\\quad \\frac2u+\\frac1v=\\frac14,\\quad u^2v=-(v-u)^2",
+          "explanation": "f′(1)/f(1)=1/4와 f(1)=4, 앞에서 구한 A를 함께 사용합니다."
+        },
+        {
+          "title": "두 후보 구하기",
+          "expression": "v=\\frac{4u}{u-8},\\quad 5u^2-56u+144=0 \\Rightarrow u=4\\text{ 또는 }\\frac{36}{5}",
+          "explanation": "두 식에서 v를 없애면 u의 이차방정식이 됩니다."
+        },
+        {
+          "title": "f′(0)>1로 한 후보 선택하기",
+          "expression": "(r,s,A)=\\left(-3,5,-\\frac1{16}\\right)\\Rightarrow f'(0)=\\frac{21}{16}>1",
+          "explanation": "다른 후보 (r,s,A)=(-31/5,37,-25/11664)는 f′(0)=10509/11664로 1보다 작아 제외됩니다."
+        },
+        {
+          "title": "f(0)과 최종값 계산하기",
+          "expression": "f(0)=-\\frac1{16}(0+3)^2(0-5)=\\frac{45}{16} \\Rightarrow p+q=16+45=61",
+          "explanation": "45와 16은 서로소이므로 p=16, q=45입니다."
+        }
+      ],
+      "correctReason": "p+q=61이므로 단답란에 61을 씁니다.",
+      "commonMistake": "점 (1,4)의 접선만 보고 곧바로 한 근이 -3이라고 단정하면 다른 가능성을 놓칠 수 있습니다. 두 합성방정식을 인수분해해 실근 개수부터 확정해야 합니다.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

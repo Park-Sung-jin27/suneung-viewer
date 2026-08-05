@@ -1,0 +1,164 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 6월 모의평가 확률과 통계 28~30번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 3,
+    "readyCount": 3,
+    "questionFingerprint": "66768d6236bf47f277bc03f6fbea8906eafad991c9087132c2e4fd8a2e888261",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
+      "archiveSha256": "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
+    },
+    "note": "원본 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 공개 후보"
+  },
+  "items": {
+    "2022_06_sta_28": {
+      "id": "2022_06_sta_28",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 28,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "점수 0은 주사위 눈 4·5·6의 세 경우임을 반영해 합이 4인 점수 배열을 세면 199개입니다.",
+      "approach": "0점이 나온 횟수를 기준으로 나누고, 각 0점 자리마다 실제 주사위 눈이 세 가지라는 가중치를 곱합니다.",
+      "concepts": [
+        "경우의 수",
+        "정수의 분할",
+        "가중 계산"
+      ],
+      "steps": [
+        {
+          "title": "0점이 없는 경우",
+          "expression": "1+1+1+1=4\\quad\u2192\\quad1",
+          "explanation": "네 점수가 모두 양수이면 합이 4가 되는 배열은 (1,1,1,1) 하나뿐입니다."
+        },
+        {
+          "title": "0점이 한 번인 경우",
+          "expression": "\\binom41\\cdot3\\cdot3=36",
+          "explanation": "0점 자리 4가지, 그 자리의 실제 눈 4·5·6 세 가지, 나머지 점수 배열 (2,1,1)의 순서 세 가지를 곱합니다."
+        },
+        {
+          "title": "0점이 두 번인 경우",
+          "expression": "\\binom42\\cdot3^2\\cdot3=162",
+          "explanation": "두 양의 점수는 (1,3), (2,2), (3,1)의 세 순서이고, 두 0점 자리에는 각각 세 눈이 가능합니다."
+        },
+        {
+          "title": "전체 경우 더하기",
+          "expression": "1+36+162=199",
+          "explanation": "0점이 세 번이면 남은 한 점수가 4여야 하므로 불가능합니다."
+        }
+      ],
+      "correctReason": "모든 순서쌍이 199개이므로 선택지 ⑤가 정답입니다.",
+      "commonMistake": "0점을 점수 한 종류로만 세면 안 됩니다. 0점은 실제 주사위 눈 4, 5, 6의 세 경우입니다.",
+      "verification": {
+        "problemPage": 11,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_sta_29": {
+      "id": "2022_06_sta_29",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 29,
+      "answer": 48,
+      "answerMark": null,
+      "summary": "곱이 12인 이웃쌍 (2,6)과 (3,4)를 각각 금지하고 포함배제로 세면 48가지입니다.",
+      "approach": "전체 원순열에서 두 금지쌍이 붙는 경우를 빼고, 두 쌍이 모두 붙어 중복해서 빠진 경우를 더합니다.",
+      "concepts": [
+        "원순열",
+        "포함배제",
+        "블록 배열"
+      ],
+      "steps": [
+        {
+          "title": "전체 원순열 세기",
+          "expression": "(6-1)!=120",
+          "explanation": "회전하여 같은 배열을 하나로 보므로 6개 의자의 원순열은 120가지입니다."
+        },
+        {
+          "title": "한 금지쌍이 붙는 경우",
+          "expression": "2\\cdot(5-1)!=48",
+          "explanation": "(2,6) 또는 (3,4)를 한 블록으로 보면 블록 안 순서 두 가지와 다섯 대상의 원순열을 곱합니다."
+        },
+        {
+          "title": "두 금지쌍이 모두 붙는 경우",
+          "expression": "2^2\\cdot(4-1)!=24",
+          "explanation": "두 블록의 내부 순서 네 가지와 네 대상의 원순열을 곱합니다."
+        },
+        {
+          "title": "포함배제 적용하기",
+          "expression": "120-48-48+24=48",
+          "explanation": "두 금지쌍이 모두 이웃하지 않는 배열만 남깁니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 원형 배열은 48가지입니다.",
+      "commonMistake": "곱이 12인 쌍은 (2,6)뿐 아니라 (3,4)도 있으며, 두 조건이 동시에 생기는 24가지를 다시 더해야 합니다.",
+      "verification": {
+        "problemPage": 12,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_sta_30": {
+      "id": "2022_06_sta_30",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 30,
+      "answer": 47,
+      "answerMark": null,
+      "summary": "곱이 6의 배수이려면 2와 3이 각각 한 번 이상 나와야 하며, 그 확률은 20/27이므로 p+q=47입니다.",
+      "approach": "전체 결과에서 2가 한 번도 없는 경우와 3이 한 번도 없는 경우를 포함배제로 제외합니다.",
+      "concepts": [
+        "여사건",
+        "포함배제",
+        "독립시행"
+      ],
+      "steps": [
+        {
+          "title": "전체 결과 세기",
+          "expression": "3^5=243",
+          "explanation": "복원추출을 다섯 번 하므로 각 시행의 세 결과를 순서 있게 셉니다."
+        },
+        {
+          "title": "조건의 여사건 세기",
+          "expression": "243-2^5-2^5+1=180",
+          "explanation": "2가 없는 32가지와 3이 없는 32가지를 빼고, 모두 1인 결과를 한 번 다시 더합니다."
+        },
+        {
+          "title": "확률을 기약분수로 만들기",
+          "expression": "\\frac{180}{243}=\\frac{20}{27}",
+          "explanation": "p=27, q=20이므로 두 수는 서로소입니다."
+        },
+        {
+          "title": "요구한 값 구하기",
+          "expression": "p+q=27+20=47",
+          "explanation": "문제에서 요구한 두 자연수의 합을 계산합니다."
+        }
+      ],
+      "correctReason": "기약분수가 20/27이므로 p+q=47입니다.",
+      "commonMistake": "6의 배수가 되려면 숫자 2와 3이 모두 적어도 한 번 나와야 합니다. 둘 중 하나만 나온 경우는 포함되지 않습니다.",
+      "verification": {
+        "problemPage": 12,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

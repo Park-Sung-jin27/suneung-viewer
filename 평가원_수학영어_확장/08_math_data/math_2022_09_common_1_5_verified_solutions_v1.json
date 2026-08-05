@@ -1,0 +1,229 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 9월 모의평가 공통 1~5번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 5,
+    "readyCount": 5,
+    "questionFingerprint": "46ba25c76ecbcf085503049dbd29668d3ca4b2c2e13126f66b09d58004fb19bb",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040410/ect_7f132255-11e7-4cae-8313-a8150cd445731649a9911b68586.zip",
+      "archiveSha256": "1d1f16a13a6c326bd3e952765fcfe80d8ba8cebd23810354ab412c2558d77878",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "ae723d4c3892cbeb12836301c69cabb6ed432845a3be259ab28b6916131b75bd",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "8c1541d69fb9fd8b26a1e5a4ee85f8def670196a7cd6b474fc3404a07a09848d"
+    },
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 풀이 후보"
+  },
+  "items": {
+    "2022_09_common_1": {
+      "id": "2022_09_common_1",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 1,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "네제곱근을 지수로 바꾼 뒤 같은 밑 3의 지수를 더하면 값은 1/9입니다.",
+      "approach": "근호를 분수 지수로 바꾸고, 같은 밑을 곱할 때 지수를 더하는 법칙을 적용합니다.",
+      "concepts": [
+        "근호와 분수 지수",
+        "지수법칙"
+      ],
+      "steps": [
+        {
+          "title": "근호를 지수로 바꾸기",
+          "expression": "\\frac{1}{\\sqrt[4]{3}}=3^{-\\frac14}",
+          "explanation": "3의 네제곱근은 3의 1/4제곱이므로, 그 역수의 지수는 -1/4입니다."
+        },
+        {
+          "title": "지수 더하기",
+          "expression": "3^{-\\frac14}\\times3^{-\\frac74}=3^{-2}",
+          "explanation": "밑이 같은 거듭제곱의 곱에서는 두 지수 -1/4과 -7/4를 더합니다."
+        },
+        {
+          "title": "양의 지수로 나타내기",
+          "expression": "3^{-2}=\\frac{1}{3^2}=\\frac19",
+          "explanation": "음의 지수는 같은 거듭제곱의 역수입니다."
+        }
+      ],
+      "correctReason": "계산값이 1/9이므로 선지 ①이 정답입니다.",
+      "commonMistake": "네제곱근의 역수를 3의 -4제곱으로 바꾸지 마세요. 근호의 차수 4는 지수의 분모가 됩니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_2": {
+      "id": "2022_09_common_2",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 2,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "다항함수를 미분한 뒤 x=1을 대입하면 f'(1)=10입니다.",
+      "approach": "각 항을 미분해 도함수를 먼저 구하고, 마지막에 x=1을 대입합니다.",
+      "concepts": [
+        "다항함수의 미분",
+        "도함숫값"
+      ],
+      "steps": [
+        {
+          "title": "함수 미분하기",
+          "expression": "f'(x)=6x^2+4",
+          "explanation": "2x³을 미분하면 6x², 4x를 미분하면 4, 상수 5를 미분하면 0입니다."
+        },
+        {
+          "title": "x=1 대입하기",
+          "expression": "f'(1)=6\\cdot1^2+4=10",
+          "explanation": "구한 도함수에 1을 넣어 해당 점의 미분계수를 계산합니다."
+        }
+      ],
+      "correctReason": "f'(1)=10이므로 선지 ⑤가 정답입니다.",
+      "commonMistake": "f(1)을 구하는 문제가 아닙니다. 먼저 f를 미분한 뒤 1을 대입해야 합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_3": {
+      "id": "2022_09_common_3",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 3,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "공비를 r이라 두면 주어진 곱에서 r⁴=9가 나오고, 구하려는 비도 r⁴이므로 값은 9입니다.",
+      "approach": "각 항을 첫째항과 공비로 나타낸 뒤, 조건과 목표식에 공통으로 등장하는 r⁴을 찾습니다.",
+      "concepts": [
+        "등비수열의 일반항",
+        "등비수열의 항의 비"
+      ],
+      "steps": [
+        {
+          "title": "주어진 곱 정리하기",
+          "expression": "a_2a_4=(2r)(2r^3)=4r^4=36",
+          "explanation": "a₁=2이므로 a₂=2r, a₄=2r³입니다."
+        },
+        {
+          "title": "공비의 네제곱 구하기",
+          "expression": "4r^4=36\\Rightarrow r^4=9",
+          "explanation": "양변을 4로 나누면 필요한 r⁴의 값을 바로 얻습니다."
+        },
+        {
+          "title": "항의 비 계산하기",
+          "expression": "\\frac{a_7}{a_3}=\\frac{2r^6}{2r^2}=r^4=9",
+          "explanation": "두 항의 지수 차가 4이므로 항의 비는 r⁴입니다."
+        }
+      ],
+      "correctReason": "a₇/a₃=9이므로 선지 ⑤가 정답입니다.",
+      "commonMistake": "r 자체를 구하려고 양의 공비라고 가정할 필요가 없습니다. 이 문제는 r⁴만 알면 끝납니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_4": {
+      "id": "2022_09_common_4",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 4,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "경계 x=-1에서 왼쪽 식의 함숫값과 오른쪽 식의 극한을 같게 두면 a=4입니다.",
+      "approach": "각 조각은 다항함수이므로 경계점 x=-1에서 두 식의 값이 이어지는지만 확인합니다.",
+      "concepts": [
+        "구간별로 정의된 함수",
+        "함수의 연속"
+      ],
+      "steps": [
+        {
+          "title": "왼쪽 함숫값 구하기",
+          "expression": "f(-1)=2(-1)+a=a-2",
+          "explanation": "x=-1은 x≤-1인 첫 번째 식에 포함됩니다."
+        },
+        {
+          "title": "오른쪽 극한 구하기",
+          "expression": "\\lim_{x\\to-1+}f(x)=(-1)^2-5(-1)-a=6-a",
+          "explanation": "x>-1인 두 번째 식에 -1을 가까이 대입한 값을 계산합니다."
+        },
+        {
+          "title": "연속 조건 풀기",
+          "expression": "a-2=6-a\\Rightarrow2a=8\\Rightarrow a=4",
+          "explanation": "경계에서 연속이려면 왼쪽 함숫값과 오른쪽 극한이 같아야 합니다."
+        }
+      ],
+      "correctReason": "연속 조건을 만족하는 a가 4이므로 선지 ④가 정답입니다.",
+      "commonMistake": "두 번째 식에 x=-1이 포함되지 않아도 오른쪽 극한을 구할 때는 -1을 대입해 경계값을 비교합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_5": {
+      "id": "2022_09_common_5",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 5,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "도함수의 부호가 바뀌는 x=-2와 x=1에서 극댓값 21, 극솟값 -6을 얻으므로 합은 15입니다.",
+      "approach": "도함수를 인수분해해 임계점을 찾고, 부호 변화로 극대·극소를 구분한 뒤 함숫값을 계산합니다.",
+      "concepts": [
+        "도함수의 인수분해",
+        "함수의 증가와 감소",
+        "극댓값과 극솟값"
+      ],
+      "steps": [
+        {
+          "title": "도함수와 임계점 구하기",
+          "expression": "f'(x)=6x^2+6x-12=6(x+2)(x-1)",
+          "explanation": "f'(x)=0이 되는 점은 x=-2와 x=1입니다."
+        },
+        {
+          "title": "극대와 극소 구분하기",
+          "expression": "f':+\\to-\\text{ at }x=-2,\\qquad f':-\\to+\\text{ at }x=1",
+          "explanation": "x=-2에서는 증가에서 감소로 바뀌므로 극대, x=1에서는 감소에서 증가로 바뀌므로 극소입니다."
+        },
+        {
+          "title": "두 함숫값 계산하기",
+          "expression": "M=f(-2)=21,\\qquad m=f(1)=-6",
+          "explanation": "두 임계점을 원래 함수에 대입해 극댓값과 극솟값을 구합니다."
+        },
+        {
+          "title": "극값의 합 구하기",
+          "expression": "M+m=21+(-6)=15",
+          "explanation": "극댓값과 극솟값을 더합니다."
+        }
+      ],
+      "correctReason": "M+m=15이므로 선지 ③이 정답입니다.",
+      "commonMistake": "극대가 되는 x=-2와 극댓값 21을 혼동하지 마세요. 문제는 x좌표가 아니라 함숫값의 합을 묻습니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

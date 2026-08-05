@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2024_06_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "examId": "2024_06"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2024학년도_6월_영어_문제.pdf",
+      "sha256": "4ac402cc9b4dd5a6d35ef8f92fea1b4e47b639109c56069c54b9047499f4b180"
+    },
+    "answer": {
+      "filename": "2024학년도_6월_영어_정답.png",
+      "sha256": "7aec4842c344cf0ac9aa1c9190b9205db8fe60c5f343cbf07ce03ccf825cd200"
+    },
+    "explanation": {
+      "filename": "2024학년도_6월_영어_해설.pdf",
+      "sha256": "0c9de71ef1b6483285b95202fe450e536c7ed13fe19a5c1641ed9f5964c27b36"
+    }
+  },
+  "reviewData": {
+    "path": "english/data/candidates/english_2024_06_reviews.json",
+    "sha256": "3ca3d55e654d56e373eb706a24ad9197167726eab3f4fbd7bfae2ab4a4b6c604",
+    "expectedReadyCount": 28
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 60,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 13,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2024_06_25",
+      "2024_06_27",
+      "2024_06_28"
+    ]
+  },
+  "projectionPolicies": {
+    "default": {
+      "sourceField": "rawText",
+      "stripStem": true,
+      "stripChoices": true,
+      "stripPdfTail": true
+    },
+    "figureOnlyIds": [
+      "2024_06_25",
+      "2024_06_27",
+      "2024_06_28"
+    ],
+    "sharedPassageIds": [
+      "2024_06_41",
+      "2024_06_42",
+      "2024_06_43",
+      "2024_06_44",
+      "2024_06_45"
+    ],
+    "inlineMarkerIds": [
+      "2024_06_29",
+      "2024_06_30",
+      "2024_06_35",
+      "2024_06_42",
+      "2024_06_44"
+    ],
+    "sequenceTableIds": [
+      "2024_06_36",
+      "2024_06_37",
+      "2024_06_43"
+    ],
+    "placementMarkerIds": [
+      "2024_06_38",
+      "2024_06_39"
+    ]
+  },
+  "questions": [
+    { "id": "2024_06_18", "qid": 18, "answer": 1, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_19", "qid": 19, "answer": 1, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_20", "qid": 20, "answer": 4, "problemPage": 2, "explanationPages": [12], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_21", "qid": 21, "answer": 3, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_22", "qid": 22, "answer": 5, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_23", "qid": 23, "answer": 4, "problemPage": 3, "explanationPages": [14], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_24", "qid": 24, "answer": 1, "problemPage": 3, "explanationPages": [15], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_25", "qid": 25, "answer": 4, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2024-06/q25-figure.png" },
+    { "id": "2024_06_26", "qid": 26, "answer": 4, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_27", "qid": 27, "answer": 3, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2024-06/q27-notice.png" },
+    { "id": "2024_06_28", "qid": 28, "answer": 4, "problemPage": 4, "explanationPages": [17], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2024-06/q28-notice.png" },
+    { "id": "2024_06_29", "qid": 29, "answer": 3, "problemPage": 5, "explanationPages": [18], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_30", "qid": 30, "answer": 4, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_31", "qid": 31, "answer": 2, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_32", "qid": 32, "answer": 3, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_33", "qid": 33, "answer": 1, "problemPage": 6, "explanationPages": [21], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_34", "qid": 34, "answer": 5, "problemPage": 6, "explanationPages": [22], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_35", "qid": 35, "answer": 3, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_36", "qid": 36, "answer": 4, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_37", "qid": 37, "answer": 3, "problemPage": 7, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_38", "qid": 38, "answer": 5, "problemPage": 7, "explanationPages": [25], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_39", "qid": 39, "answer": 2, "problemPage": 7, "explanationPages": [25], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_40", "qid": 40, "answer": 2, "problemPage": 7, "explanationPages": [26], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_41", "qid": 41, "answer": 3, "problemPage": 8, "explanationPages": [28], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_42", "qid": 42, "answer": 2, "problemPage": 8, "explanationPages": [28], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_43", "qid": 43, "answer": 2, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_44", "qid": 44, "answer": 5, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_06_45", "qid": 45, "answer": 2, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" }
+  ],
+  "choiceOverrides": {
+    "2024_06_20": [
+      { "num": 1, "mark": "①", "text": "창의성을 개발하기 위해서는 도전과 실패를 두려워하지 말아야 한다." },
+      { "num": 2, "mark": "②", "text": "전문 지식과 기술을 전수하려면 집중적인 투자가 선행되어야 한다." },
+      { "num": 3, "mark": "③", "text": "창의적인 인재를 육성하기 위해 다양한 교육과정을 준비해야 한다." },
+      { "num": 4, "mark": "④", "text": "특정 영역에서 개발된 창의성이 영역 간 활용되도록 장려해야 한다." },
+      { "num": 5, "mark": "⑤", "text": "조기 교육을 통해 특정 분야의 전문가를 지속적으로 양성해야 한다." }
+    ],
+    "2024_06_24": [
+      { "num": 1, "mark": "①", "text": "Is Hyper-mobility Always Good for Cities?" },
+      { "num": 2, "mark": "②", "text": "Accessibility: A Guide to a Web of Urban Areas" },
+      { "num": 3, "mark": "③", "text": "A Long and Winding Road to Economic Success" },
+      { "num": 4, "mark": "④", "text": "Inevitable Regional Conflicts from Hyper-mobility" },
+      { "num": 5, "mark": "⑤", "text": "Infrastructure: An Essential Element of Hyper-mobility" }
+    ],
+    "2024_06_28": [
+      { "num": 1, "mark": "①", "text": "6월부터 9월까지 진행된다." },
+      { "num": 2, "mark": "②", "text": "만화 그리기 강좌가 월요일마다 있다." },
+      { "num": 3, "mark": "③", "text": "모든 강좌는 오전에 열린다." },
+      { "num": 4, "mark": "④", "text": "월 수강료에 간식이 포함되어 있다." },
+      { "num": 5, "mark": "⑤", "text": "강좌당 수강 아동 수에 제한이 없다." }
+    ],
+    "2024_06_29": [
+      { "num": 1, "mark": "①", "text": "them" },
+      { "num": 2, "mark": "②", "text": "to fulfill" },
+      { "num": 3, "mark": "③", "text": "being" },
+      { "num": 4, "mark": "④", "text": "in which" },
+      { "num": 5, "mark": "⑤", "text": "motivated" }
+    ],
+    "2024_06_30": [
+      { "num": 1, "mark": "①", "text": "compensate …… randomly …… protective" },
+      { "num": 2, "mark": "②", "text": "compensate …… purposefully …… protective" },
+      { "num": 3, "mark": "③", "text": "prepare …… randomly …… protective" },
+      { "num": 4, "mark": "④", "text": "compensate …… randomly …… independent" },
+      { "num": 5, "mark": "⑤", "text": "prepare …… purposefully …… independent" }
+    ],
+    "2024_06_32": [
+      { "num": 1, "mark": "①", "text": "legally established" },
+      { "num": 2, "mark": "②", "text": "regularly reported" },
+      { "num": 3, "mark": "③", "text": "socially regulated" },
+      { "num": 4, "mark": "④", "text": "manually calculated" },
+      { "num": 5, "mark": "⑤", "text": "carefully documented" }
+    ],
+    "2024_06_35": [
+      { "num": 1, "mark": "①", "text": "Each of these highly practiced skills then demands relatively few cognitive resources, effectively lowering the total cognitive load that experts experience." },
+      { "num": 2, "mark": "②", "text": "Thus, experts can perform complex tasks and combine multiple tasks relatively easily." },
+      { "num": 3, "mark": "③", "text": "Furthermore, beginners are excellent at processing the tasks when the tasks are divided and isolated." },
+      { "num": 4, "mark": "④", "text": "This is not because they necessarily have more cognitive resources than beginners; rather, because of the high level of fluency they have achieved in performing key skills, they can do more with what they have." },
+      { "num": 5, "mark": "⑤", "text": "Beginners, on the other hand, have not achieved the same degree of fluency and automaticity in each of the component skills, and thus they struggle to combine skills that experts combine with relative ease and efficiency." }
+    ],
+    "2024_06_36": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2024_06_37": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2024_06_38": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2024_06_39": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2024_06_40": [
+      { "num": 1, "mark": "①", "text": "improvement …… diet" },
+      { "num": 2, "mark": "②", "text": "obstacle …… surroundings" },
+      { "num": 3, "mark": "③", "text": "advantage …… genes" },
+      { "num": 4, "mark": "④", "text": "regulator …… mechanisms" },
+      { "num": 5, "mark": "⑤", "text": "guide …… traits" }
+    ],
+    "2024_06_45": [
+      { "num": 1, "mark": "①", "text": "Ellen은 끝내야 할 영어 과제가 있었다." },
+      { "num": 2, "mark": "②", "text": "카페에서는 요거트 스무디를 팔지 않았다." },
+      { "num": 3, "mark": "③", "text": "한 무리의 학생들이 카페에 들어왔다." },
+      { "num": 4, "mark": "④", "text": "Ellen의 아버지는 최근에 아침 축구 클럽에 가입했다." },
+      { "num": 5, "mark": "⑤", "text": "Ellen은 카페에 전화를 걸었다." }
+    ]
+  },
+  "figures": [
+    {
+      "questionId": "2024_06_25",
+      "kind": "data_chart",
+      "assetPath": "english/assets/2024-06/q25-figure.png",
+      "sha256": "0998a0b5d26a36414ee0b40c11fc556d490d50a1335479ccbdc6bf3d8de0f708",
+      "sourcePage": 4,
+      "alt": "EU-28 관광 참여 비율 원본 그래프. Domestic Trips Only: 25–34 30.2%, 35–44 34.2%, 45–54 28.8%, 55–64 29.4%, 65+ 26.3%. Domestic & Outbound Trips: 23.4%, 22.9%, 23.3%, 22.5%, 14.0%. Outbound Trips Only: 15.2%, 11.8%, 12.3%, 10.7%, 7.0%. No Trips: 31.1%, 31.1%, 35.5%, 37.3%, 52.6%."
+    },
+    {
+      "questionId": "2024_06_27",
+      "kind": "notice_with_schedule",
+      "assetPath": "english/assets/2024-06/q27-notice.png",
+      "sha256": "c6d59700a03058ad935b4a373460234fa0a56057025a90a0ac7410607090a10c",
+      "sourcePage": 4,
+      "alt": "2023 Cierra Basketball Day Camp 원본 안내문. 13–18세 초급자 대상. Skill Drills 1:00–2:00 p.m., Team Games 2:30–3:30 p.m., Free Throw Shooting Contests 4:00–5:00 p.m. 온라인 등록, 비용 40달러, 수건 무료 제공."
+    },
+    {
+      "questionId": "2024_06_28",
+      "kind": "notice_with_schedule",
+      "assetPath": "english/assets/2024-06/q28-notice.png",
+      "sha256": "621d64aee0b4253fc9e91b5f09a15ddd8d3fe9709f6d807d5d5f718b7e297b7a",
+      "sourcePage": 4,
+      "alt": "Creative Art Class for Kids 원본 안내문. 6월 1일–8월 31일. Clay Arts 월요일, Cartoon Drawing 목요일, Watercolors 금요일. 수업 4–6 p.m. 월 30달러에 간식 포함, 반당 10명 제한."
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2024학년도 6월 모의평가 수학 기하 23~30번 8문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "416fba227b1b61be1ba875211e9e136a848482a794865058d4188c333986d6db",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://testall.tistory.com/entry/2024%ED%95%99%EB%85%84%EB%8F%84-6%EC%9B%94-%EC%88%98%EB%8A%A5-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C",
+      "independentSourceUrls": ["https://sdfallyy.tistory.com/407", "https://horaeng.com/263"],
+      "problemFilename": "2024_06_math_problem_testall.pdf",
+      "problemSha256": "b66547e1edfb4e53380e8e30ffa087eb1c72ef9a5d03dfa491d33bd6b9c56a98",
+      "problemReplicaArtifacts": [{"filename": "2024_06_math_problem_sdfallyy.pdf", "sha256": "026d29c312ac5c4d1e533aabe29a6948bcbef634471dfd5a297d405c186333c5"}],
+      "answerFilename": "2024_06_math_answer_testall.pdf",
+      "answerSha256": "98233f2ec85d25b33e78549a68d5baa836ff3979e21e58fedf83a8422856e495"
+    },
+    "note": "공식 문제지와 정답표의 기하 8문항을 대조하고 좌표·벡터·이차곡선 계산을 독립적으로 검산한 내부 후보."
+  },
+  "items": {
+    "2024_06_geo_23": {
+      "id": "2024_06_geo_23", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 기하", "questionNumber": 23, "answer": "1", "answerMark": "①",
+      "summary": "표준형 (y-0)²=-12(x-1)에서 p=-3이므로 준선은 x=4입니다.",
+      "approach": "포물선 표준형 (y-k)²=4p(x-h)의 준선 x=h-p를 사용합니다.",
+      "concepts": ["포물선의 표준형", "초점과 준선"],
+      "steps": [
+        {"title": "표준형과 비교하기", "expression": "(y-0)^2=4(-3)(x-1)", "explanation": "꼭짓점은 (1,0), p=-3입니다."},
+        {"title": "준선 구하기", "expression": "x=h-p=1-(-3)=4", "explanation": "가로축 포물선의 준선은 x=h-p입니다."}
+      ],
+      "correctReason": "k=4가 선지 ①과 일치합니다.", "commonMistake": "포물선이 왼쪽으로 열리므로 초점과 준선의 방향을 반대로 잡지 마세요.",
+      "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_geo_24": {
+      "id": "2024_06_geo_24", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 기하", "questionNumber": 24, "answer": "4", "answerMark": "④",
+      "summary": "AB와 AC가 평행하지 않으므로 각 벡터의 계수가 0이어야 해 p=2, q=-2, 따라서 p-q=4입니다.",
+      "approach": "BC와 CA를 AB, AC로 바꾸고 독립인 두 벡터의 계수를 비교합니다.",
+      "concepts": ["벡터의 연산", "벡터의 일차독립"],
+      "steps": [
+        {"title": "벡터 바꾸기", "expression": "\\overrightarrow{BC}=\\overrightarrow{AC}-\\overrightarrow{AB},\\qquad\\overrightarrow{CA}=-\\overrightarrow{AC}", "explanation": "모든 벡터를 시작점 A 기준으로 정리합니다."},
+        {"title": "계수 정리하기", "expression": "(2-p)\\overrightarrow{AB}+(p+q)\\overrightarrow{AC}=\\vec0", "explanation": "원래 식을 한쪽으로 모읍니다."},
+        {"title": "두 계수를 0으로 두기", "expression": "2-p=0,\\quad p+q=0\\Rightarrow p=2,\\ q=-2", "explanation": "세 점이 한 직선 위에 있지 않아 AB와 AC는 평행하지 않습니다."},
+        {"title": "차 계산하기", "expression": "p-q=2-(-2)=4", "explanation": "구한 두 값을 대입합니다."}
+      ],
+      "correctReason": "p-q=4가 선지 ④와 일치합니다.", "commonMistake": "CA는 AC의 반대 벡터이므로 부호를 빠뜨리지 마세요.",
+      "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_geo_25": {
+      "id": "2024_06_geo_25", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 기하", "questionNumber": 25, "answer": "2", "answerMark": "②",
+      "summary": "정사각형의 수직 단위벡터로 내적을 전개하면 1-2k=0이어서 k=1/2입니다.",
+      "approach": "AC와 CD를 AB, BC로 바꾸고 수직·단위 조건으로 내적을 단순화합니다.",
+      "concepts": ["벡터의 내적", "정사각형의 벡터"],
+      "steps": [
+        {"title": "두 번째 벡터 정리하기", "expression": "\\overrightarrow{AC}+3k\\overrightarrow{CD}=(1-3k)\\overrightarrow{AB}+\\overrightarrow{BC}", "explanation": "AC=AB+BC, CD=-AB를 사용합니다."},
+        {"title": "내적 계산하기", "expression": "(\\overrightarrow{AB}+k\\overrightarrow{BC})\\cdot((1-3k)\\overrightarrow{AB}+\\overrightarrow{BC})=1-2k", "explanation": "AB와 BC는 수직인 단위벡터라 교차 내적은 0입니다."},
+        {"title": "k 구하기", "expression": "1-2k=0\\Rightarrow k=\\frac12", "explanation": "주어진 내적이 0이라는 조건을 적용합니다."}
+      ],
+      "correctReason": "k=1/2가 선지 ②와 일치합니다.", "commonMistake": "CD의 방향은 AB와 반대이므로 CD=-AB입니다.",
+      "verification": {"problemPage": 18, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_geo_26": {
+      "id": "2024_06_geo_26", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 기하", "questionNumber": 26, "answer": "4", "answerMark": "④",
+      "summary": "첫 타원에서 PF=8, 닮음으로 새 타원의 장축 길이는 12이므로 a²=36, b²=20, 합은 64입니다.",
+      "approach": "타원의 거리합과 중점이 만드는 닮음을 이용해 두 번째 타원의 두 초점까지의 거리합을 구합니다.",
+      "concepts": ["타원의 정의", "삼각형의 닮음", "타원의 표준형"],
+      "steps": [
+        {"title": "PF 구하기", "expression": "PF+PF'=24,\\quad PF'=FF'=16\\Rightarrow PF=8", "explanation": "첫 타원의 두 초점까지 거리합은 장축 길이 24입니다."},
+        {"title": "새 타원의 다른 초점 찾기", "expression": "F'=(-4,0)\\Rightarrow A=(4,0)", "explanation": "새 타원의 중심이 원점이므로 초점은 원점 대칭입니다."},
+        {"title": "QA 구하기", "expression": "\\triangle QF'A\\sim\\triangle PF'F\\ (1:2)\\Rightarrow QA=4", "explanation": "Q가 F'P의 중점이고 A가 F'F를 1:2로 나누는 점입니다."},
+        {"title": "새 타원 상수 구하기", "expression": "QF'+QA=8+4=12=2a\\Rightarrow a^2=36,\\quad b^2=a^2-4^2=20", "explanation": "새 타원의 장축 길이와 초점거리 관계를 사용합니다."},
+        {"title": "최종값 계산하기", "expression": "PF+a^2+b^2=8+36+20=64", "explanation": "요구한 세 값을 더합니다."}
+      ],
+      "correctReason": "64가 선지 ④와 일치합니다.", "commonMistake": "두 타원의 장축 길이를 같은 것으로 두지 말고, 두 번째 타원은 Q의 거리합으로 다시 구하세요.",
+      "verification": {"problemPage": 18, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_geo_27": {
+      "id": "2024_06_geo_27", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 기하", "questionNumber": 27, "answer": "3", "answerMark": "③",
+      "summary": "포물선의 정의로 최소 거리합은 4이고, 두 초점 O와 A까지 거리합이 4인 타원의 y범위는 -1부터 3이므로 답은 10입니다.",
+      "approach": "포물선의 초점-준선 성질로 첫 최소값을 구한 뒤 Q의 자취를 타원으로 해석합니다.",
+      "concepts": ["포물선의 정의", "타원의 정의", "삼각부등식"],
+      "steps": [
+        {"title": "포물선의 초점과 준선 찾기", "expression": "A=(0,2),\\qquad\\text{준선 }x=-4", "explanation": "주어진 포물선의 초점이 바로 A입니다."},
+        {"title": "최소 거리합 구하기", "expression": "OP+PA=OP+PH\\ge OB=4", "explanation": "P에서 준선에 내린 발을 H라 하면 PA=PH이고, 최솟값은 x축 위에서 4가 됩니다."},
+        {"title": "Q의 자취 해석하기", "expression": "OQ+QA=4", "explanation": "Q는 O와 A를 두 초점으로 하고 거리합이 4인 타원 위에 있습니다."},
+        {"title": "y의 최댓값과 최솟값 구하기", "expression": "M=3,\\qquad m=-1", "explanation": "y축 위 위쪽·아래쪽 꼭짓점에서 각 거리합을 4로 둡니다."},
+        {"title": "제곱합 계산하기", "expression": "M^2+m^2=3^2+(-1)^2=10", "explanation": "구한 두 값을 제곱해 더합니다."}
+      ],
+      "correctReason": "M²+m²=10이 선지 ③과 일치합니다.", "commonMistake": "포물선의 초점 A와 Q의 타원 초점 A를 같은 점으로 연결해 해석해야 합니다.",
+      "verification": {"problemPage": 19, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_geo_28": {
+      "id": "2024_06_geo_28", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 기하", "questionNumber": 28, "answer": "5", "answerMark": "⑤",
+      "summary": "조건 (가)는 직선과 원의 합집합, 조건 (나)는 선분 AB를 (4,4) 방향으로 옮긴 띠이며, 최대·최소점은 Q=(5,9), R=(4,1)이라 내적은 29입니다.",
+      "approach": "곱이 0인 두 조건을 각각 직선과 원으로 바꾸고, 평행 조건이 허용하는 부분만 남깁니다.",
+      "concepts": ["벡터의 내적", "원의 방정식", "평행이동"],
+      "steps": [
+        {"title": "조건 (가) 해석하기", "expression": "y=-x+14\\quad\\text{또는}\\quad(x-4)^2+(y-4)^2=9", "explanation": "첫 인수는 D를 지나 OC에 수직인 직선, 둘째 인수는 중심 C와 반지름 3인 원입니다."},
+        {"title": "평행 조건 적용하기", "expression": "\\overrightarrow{PX}\\parallel(4,4),\\quad P\\in\\overline{AB}", "explanation": "X를 기울기 1인 방향으로 되돌렸을 때 선분 AB에 닿는 부분만 남습니다."},
+        {"title": "각 부분의 y범위 찾기", "expression": "E=(5,9),\\ F=(9,5),\\ K=(4,7),\\ L=(4,1)", "explanation": "직선 부분의 끝점과 원 부분의 위·아래 끝점을 구합니다."},
+        {"title": "전체 최대·최소점 선택하기", "expression": "Q=(5,9),\\qquad R=(4,1)", "explanation": "네 후보 중 y가 가장 큰 점과 가장 작은 점입니다."},
+        {"title": "내적 계산하기", "expression": "\\overrightarrow{OQ}\\cdot\\overrightarrow{OR}=5\\cdot4+9\\cdot1=29", "explanation": "좌표 성분끼리 곱해 더합니다."}
+      ],
+      "correctReason": "벡터의 내적 29가 선지 ⑤와 일치합니다.", "commonMistake": "조건 (가)의 직선과 원 전체가 아니라 조건 (나)까지 동시에 만족하는 부분만 비교하세요.",
+      "verification": {"problemPage": 19, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_geo_29": {
+      "id": "2024_06_geo_29", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 기하", "questionNumber": 29, "answer": "80", "answerMark": null,
+      "summary": "등차중항 조건과 두 쌍곡선의 거리차를 결합하면 PF'=6, PF=8이고 6-8-10 직각삼각형에서 기울기는 4/3, 답은 80입니다.",
+      "approach": "공통 초점까지의 거리차를 각 쌍곡선의 주축 길이로 바꾸고 등차수열 조건을 거리식으로 풉니다.",
+      "concepts": ["쌍곡선의 정의", "등차중항", "직각삼각형"],
+      "steps": [
+        {"title": "초점과 거리차 구하기", "expression": "F=(5,0),\\ F'=(-5,0),\\quad PF-PF'=2,\\quad QF-QF'=4", "explanation": "두 쌍곡선의 c는 5이고 주축 길이는 각각 2와 4입니다."},
+        {"title": "등차중항 식 세우기", "expression": "4PF'=(PQ+QF)+(PF+PF')", "explanation": "세 수의 가운데 항이 2PF'이므로 두 배 관계를 사용합니다."},
+        {"title": "PF' 구하기", "expression": "PQ+QF=PF'+4,\\quad PF=PF'+2\\Rightarrow PF'=6", "explanation": "P,Q,F'이 한 직선 위이고 두 거리차 식을 대입합니다."},
+        {"title": "기울기 구하기", "expression": "PF'=6,\\ PF=8,\\ FF'=10\\Rightarrow m=\\frac43", "explanation": "삼각형 PF'F는 6-8-10 직각삼각형이고 P가 제2사분면이어서 기울기는 양수입니다."},
+        {"title": "요구값 계산하기", "expression": "60m=60\\cdot\\frac43=80", "explanation": "기울기에 60을 곱합니다."}
+      ],
+      "correctReason": "60m=80입니다.", "commonMistake": "제2사분면의 점 P와 F'을 잇는 직선의 기울기는 양수입니다.",
+      "verification": {"problemPage": 20, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_geo_30": {
+      "id": "2024_06_geo_30", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 기하", "questionNumber": 30, "answer": "13", "answerMark": null,
+      "summary": "타원을 직선 방향으로 모두 평행이동한 띠의 제1사분면 부분은 밑변 3/2, 높이 3인 삼각형이므로 넓이는 9/4, 답은 13입니다.",
+      "approach": "벡터합의 자취를 타원의 모든 직선방향 평행이동으로 보고, 그 방향과 평행한 두 접선으로 경계를 구합니다.",
+      "concepts": ["벡터의 합", "타원의 접선", "영역의 넓이"],
+      "steps": [
+        {"title": "벡터합 자취 해석하기", "expression": "\\overrightarrow{OX}=\\overrightarrow{OP}+\\overrightarrow{OQ}", "explanation": "Q가 그리는 타원을 P만큼 평행이동한 모든 점의 합집합입니다."},
+        {"title": "띠의 경계 구하기", "expression": "y=-2x+3,\\qquad y=-2x-3", "explanation": "직선 2x+y=0과 평행하고 타원 2x²+y²=3에 접하는 두 직선입니다."},
+        {"title": "제1사분면 영역 찾기", "expression": "0\\le y\\le-2x+3,\\qquad0\\le x\\le\\frac32", "explanation": "아래쪽 경계는 제1사분면에서 자동으로 만족되어 위쪽 접선과 두 좌표축이 삼각형을 만듭니다."},
+        {"title": "넓이와 답 구하기", "expression": "\\frac12\\cdot\\frac32\\cdot3=\\frac94\\Rightarrow p+q=4+9=13", "explanation": "9/4는 기약분수입니다."}
+      ],
+      "correctReason": "p+q=13입니다.", "commonMistake": "점 X의 자취는 타원 하나가 아니라 타원을 직선 전체를 따라 옮겨 만든 띠입니다.",
+      "verification": {"problemPage": 20, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

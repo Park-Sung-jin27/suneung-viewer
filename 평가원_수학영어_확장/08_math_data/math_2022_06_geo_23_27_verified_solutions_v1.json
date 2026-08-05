@@ -1,0 +1,228 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 6월 모의평가 기하 23~27번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 5,
+    "readyCount": 5,
+    "questionFingerprint": "29606b00800e54bebdc6b2eea73a1670d72d824db2ceb7ea5a99d57c21c2f4fe",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
+      "archiveSha256": "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
+    },
+    "note": "원본 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 공개 후보"
+  },
+  "items": {
+    "2022_06_geo_23": {
+      "id": "2022_06_geo_23",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 기하",
+      "questionNumber": 23,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "두 벡터가 평행하므로 각 성분의 비가 같고, 이를 풀면 k=2입니다.",
+      "approach": "두 벡터 (k+3, 3k-1)과 (1, 1)의 성분 관계를 식 하나로 나타냅니다.",
+      "concepts": [
+        "평면벡터",
+        "평행 조건",
+        "성분 비교"
+      ],
+      "steps": [
+        {
+          "title": "평행 조건 세우기",
+          "expression": "k+3=3k-1",
+          "explanation": "(1,1)과 평행하고 두 성분이 모두 1이므로 주어진 벡터의 두 성분이 같습니다."
+        },
+        {
+          "title": "k 구하기",
+          "expression": "2k=4\\quad\u2192\\quad k=2",
+          "explanation": "일차방정식을 정리하면 k=2입니다."
+        }
+      ],
+      "correctReason": "k=2이므로 선택지 ②가 정답입니다.",
+      "commonMistake": "평행을 두 성분이 각각 1과 같다는 뜻으로 해석하지 말고, 같은 비율이라는 뜻으로 사용해야 합니다.",
+      "verification": {
+        "problemPage": 17,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_geo_24": {
+      "id": "2022_06_geo_24",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 기하",
+      "questionNumber": 24,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "타원 위의 점 (2,√2)에서 그은 접선의 x절편은 4입니다.",
+      "approach": "타원 x²/8+y²/4=1의 접선 공식을 적용한 뒤 y=0을 대입합니다.",
+      "concepts": [
+        "타원",
+        "접선의 방정식",
+        "x절편"
+      ],
+      "steps": [
+        {
+          "title": "접선의 방정식 세우기",
+          "expression": "\\frac{2x}{8}+\\frac{\\sqrt2y}{4}=1",
+          "explanation": "타원 위의 점 (x₁,y₁)에서 접선은 xx₁/8+yy₁/4=1입니다."
+        },
+        {
+          "title": "x절편 구하기",
+          "expression": "y=0\\quad\u2192\\quad\\frac{x}{4}=1\\quad\u2192\\quad x=4",
+          "explanation": "x축과 만나는 점에서는 y=0이므로 x절편은 4입니다."
+        }
+      ],
+      "correctReason": "x절편이 4이므로 선택지 ⑤가 정답입니다.",
+      "commonMistake": "접선 공식에서 타원 분모 8과 4를 서로 바꾸지 않도록 주의해야 합니다.",
+      "verification": {
+        "problemPage": 17,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_geo_25": {
+      "id": "2022_06_geo_25",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 기하",
+      "questionNumber": 25,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "조건은 AP=AB를 뜻하므로 점 P의 자취는 중심 A, 반지름 5인 원이고 길이는 10π입니다.",
+      "approach": "두 위치벡터의 차가 나타내는 선분 AP의 길이와 좌표로 구한 AB의 길이를 연결합니다.",
+      "concepts": [
+        "위치벡터",
+        "두 점 사이의 거리",
+        "원의 자취"
+      ],
+      "steps": [
+        {
+          "title": "벡터 조건 해석하기",
+          "expression": "|\\overrightarrow{OP}-\\overrightarrow{OA}|=|\\overrightarrow{AP}|",
+          "explanation": "두 위치벡터의 차는 A에서 P로 향하는 벡터입니다."
+        },
+        {
+          "title": "반지름 구하기",
+          "expression": "|\\overrightarrow{AB}|=\\sqrt{(-4)^2+3^2}=5",
+          "explanation": "주어진 좌표에서 벡터 AB의 길이는 5이므로 AP도 5입니다."
+        },
+        {
+          "title": "자취의 길이 구하기",
+          "expression": "2\\pi\\cdot5=10\\pi",
+          "explanation": "점 P는 중심 A, 반지름 5인 원 위를 움직입니다."
+        }
+      ],
+      "correctReason": "자취의 길이가 10π이므로 선택지 ①이 정답입니다.",
+      "commonMistake": "위치벡터의 차를 OP의 길이와 OA의 길이 차로 계산하면 안 됩니다.",
+      "verification": {
+        "problemPage": 18,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_geo_26": {
+      "id": "2022_06_geo_26",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 기하",
+      "questionNumber": 26,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정육각형을 좌표로 놓으면 벡터 AE와 BC의 합은 (2,-√3)이고 크기는 √7입니다.",
+      "approach": "한 변의 길이가 1인 정육각형의 꼭짓점에 표준 좌표를 지정해 두 벡터를 성분으로 계산합니다.",
+      "concepts": [
+        "정육각형",
+        "벡터의 성분",
+        "벡터의 크기"
+      ],
+      "steps": [
+        {
+          "title": "꼭짓점 좌표 정하기",
+          "expression": "A=(-\\tfrac12,\\tfrac{\\sqrt3}{2}),\\ B=(-1,0),\\ C=(-\\tfrac12,-\\tfrac{\\sqrt3}{2}),\\ E=(1,0)",
+          "explanation": "중심을 원점에 두고 한 변의 길이가 1인 정육각형을 좌표평면에 놓습니다."
+        },
+        {
+          "title": "두 벡터 더하기",
+          "expression": "\\overrightarrow{AE}=(\\tfrac32,-\\tfrac{\\sqrt3}{2}),\\quad\\overrightarrow{BC}=(\\tfrac12,-\\tfrac{\\sqrt3}{2})",
+          "explanation": "끝점 좌표에서 시작점 좌표를 빼면 합은 (2,-√3)입니다."
+        },
+        {
+          "title": "합벡터의 크기 구하기",
+          "expression": "|(2,-\\sqrt3)|=\\sqrt{2^2+(\\sqrt3)^2}=\\sqrt7",
+          "explanation": "벡터의 크기 공식을 적용합니다."
+        }
+      ],
+      "correctReason": "벡터 합의 크기가 √7이므로 선택지 ②가 정답입니다.",
+      "commonMistake": "벡터 BC의 방향을 CB로 바꾸거나, 정육각형의 높이 √3/2를 빠뜨리기 쉽습니다.",
+      "verification": {
+        "problemPage": 18,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_geo_27": {
+      "id": "2022_06_geo_27",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 기하",
+      "questionNumber": 27,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "접선의 두 절편으로 넓이비를 식으로 만들면 k=ab/6이고, 쌍곡선 조건을 함께 풀어 a²=12를 얻습니다.",
+      "approach": "점 P에서의 접선 방정식으로 Q와 R의 좌표를 구하고, 두 삼각형 넓이비와 P의 쌍곡선 조건을 연립합니다.",
+      "concepts": [
+        "쌍곡선",
+        "접선의 방정식",
+        "삼각형 넓이비"
+      ],
+      "steps": [
+        {
+          "title": "접선과 절편 구하기",
+          "expression": "\\frac{4x}{a^2}-\\frac{ky}{b^2}=1,\\quad Q=(\\tfrac{a^2}{4},0),\\quad R=(0,-\\tfrac{b^2}{k})",
+          "explanation": "쌍곡선 위의 점 P=(4,k)에서의 접선 공식을 사용합니다."
+        },
+        {
+          "title": "넓이비 적용하기",
+          "expression": "[OPQ]=\\frac{a^2b^2}{8k},\\quad[OPS]=2k,\\quad\\frac{[OPQ]}{[OPS]}=\\frac94",
+          "explanation": "각 삼각형의 밑변과 높이를 좌표로 계산하면 a²b²/k²=36, 즉 k=ab/6입니다."
+        },
+        {
+          "title": "쌍곡선 위의 점 조건 적용하기",
+          "expression": "\\frac{16}{a^2}-\\frac{k^2}{b^2}=1\\quad\u2192\\quad\\frac{16}{a^2}-\\frac{a^2}{36}=1",
+          "explanation": "k=ab/6을 점 P의 쌍곡선 방정식에 대입합니다."
+        },
+        {
+          "title": "주축의 길이 구하기",
+          "expression": "a^4+36a^2-576=0\\quad\u2192\\quad a^2=12\\quad\u2192\\quad2a=4\\sqrt3",
+          "explanation": "a>0이므로 a=2√3이고 주축의 길이는 2a입니다."
+        }
+      ],
+      "correctReason": "주축의 길이가 4√3이므로 선택지 ③이 정답입니다.",
+      "commonMistake": "삼각형 OPS의 밑변 OS=4와 높이 k를 사용하면 넓이는 2k이며, 4k가 아닙니다.",
+      "verification": {
+        "problemPage": 19,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

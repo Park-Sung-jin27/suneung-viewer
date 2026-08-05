@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "schemaVersion": "math-source-hold-v1",
+    "status": "internal_source_hold",
+    "publicConnected": false,
+    "itemCount": 1,
+    "questionFingerprint": "7fc149051eb5126719468e1a308e16c80f855d45898bc9b596a5075c3b85d8cb",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://jwmath.tistory.com/617",
+      "independentSourceUrls": [
+        "https://horaeng.com/267",
+        "https://g10010.tistory.com/292"
+      ],
+      "problemFilename": "jw-problem.pdf",
+      "problemSha256": "5b2e01cfa31c7932b58afc19d5bebd388292c8382c5013e7c857caf24a6f006a",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "5b2e01cfa31c7932b58afc19d5bebd388292c8382c5013e7c857caf24a6f006a"
+        }
+      ],
+      "answerFilename": "jw-answer.png",
+      "answerSha256": "fe450875a7b50ddf5d9b950f0f22688855d4fe622a42604f972ee1ce18e1e188"
+    }
+  },
+  "items": {
+    "2024_09_common_6": {
+      "id": "2024_09_common_6",
+      "status": "blocked_by_source_integrity",
+      "issueCode": "problem_text_grouping_error",
+      "dbTextFragment": "{ax}^{2}",
+      "officialTextFragment": "ax^{2}",
+      "correctionRequired": "problem_latex",
+      "reason": "공식 문제지의 이차항은 계수 a와 x의 제곱을 곱한 ax²이지만 내부 DB에는 ax 전체를 제곱한 (ax)²로 기록돼 있습니다. a와 a²는 다른 계수이므로 원천 문항을 정정하기 전까지 풀이 생성과 공개를 차단합니다.",
+      "verification": {
+        "problemPage": 2,
+        "problemMatchedPdf": false,
+        "sourceDifferenceConfirmed": true,
+        "releaseBlocked": true
+      }
+    }
+  }
+}

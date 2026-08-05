@@ -1,0 +1,346 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2024학년도 9월 모의평가 수학 미적분 23~30번 8문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "191bb686b6465cc6182046618ae20e4e811b861ca768afb0a2f649e9c648e7bf",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://jwmath.tistory.com/617",
+      "independentSourceUrls": [
+        "https://horaeng.com/267",
+        "https://g10010.tistory.com/292"
+      ],
+      "problemFilename": "jw-problem.pdf",
+      "problemSha256": "5b2e01cfa31c7932b58afc19d5bebd388292c8382c5013e7c857caf24a6f006a",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "5b2e01cfa31c7932b58afc19d5bebd388292c8382c5013e7c857caf24a6f006a"
+        }
+      ],
+      "answerFilename": "jw-answer.png",
+      "answerSha256": "fe450875a7b50ddf5d9b950f0f22688855d4fe622a42604f972ee1ce18e1e188",
+      "solutionArtifacts": [
+        {
+          "filename": "jw-solution.pdf",
+          "sha256": "d44ccbb5a95a0832b126c21b33cbd2cafa9c1d1ed3c0077734f6f70074f9f396"
+        },
+        {
+          "filename": "horaeng-solution.pdf",
+          "sha256": "718459a111a3613e45d9b2ff751f563a22e1b09e5d3d4f2735be7b8b14771065"
+        }
+      ]
+    },
+    "note": "공식 문제지·정답표와 두 해설 자료를 대조한 뒤 극한·미분·적분 계산을 독립적으로 다시 확인한 내부 검증 후보입니다. 공개 데이터에는 연결하지 않았습니다."
+  },
+  "items": {
+    "2024_09_cal_23": {
+      "id": "2024_09_cal_23",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 23,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "지수함수의 기본 극한을 적용하면 계수의 비 7/2입니다.",
+      "approach": "분자와 분모를 각각 x로 나누어 (e^u-1)/u 꼴을 만듭니다.",
+      "concepts": ["지수함수의 극한", "극한의 곱셈"],
+      "steps": [
+        {
+          "title": "기본 극한 분리",
+          "expression": "\\frac{e^{7x}-1}{e^{2x}-1}=\\frac{e^{7x}-1}{7x}\\cdot\\frac{2x}{e^{2x}-1}\\cdot\\frac72",
+          "explanation": "각 지수의 계수가 기본 극한 밖에 남도록 정리합니다."
+        },
+        {
+          "title": "두 기본 극한",
+          "expression": "\\lim_{x\\to0}\\frac{e^{7x}-1}{7x}=1,\\quad\\lim_{x\\to0}\\frac{2x}{e^{2x}-1}=1",
+          "explanation": "lim(e^u-1)/u=1을 각각 적용합니다."
+        },
+        {
+          "title": "최종값",
+          "expression": "1\\cdot1\\cdot\\frac72=\\frac72",
+          "explanation": "정답은 ④입니다."
+        }
+      ],
+      "correctReason": "x가 0으로 갈 때 두 지수식의 일차 변화율이 각각 7과 2입니다.",
+      "commonMistake": "e의 지수 7x와 2x에서 계수 7, 2를 빠뜨리지 마세요.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_cal_24": {
+      "id": "2024_09_cal_24",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 24,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "dx/dt와 dy/dt를 구해 나누면 t=π/4에서 기울기는 -1입니다.",
+      "approach": "매개변수 곡선의 기울기 dy/dx=(dy/dt)/(dx/dt)를 사용합니다.",
+      "concepts": ["매개변수 미분", "삼각함수의 미분"],
+      "steps": [
+        {
+          "title": "각 좌표 미분",
+          "expression": "\\frac{dx}{dt}=1-2\\sin2t,\\quad\\frac{dy}{dt}=2\\sin t\\cos t",
+          "explanation": "cos2t와 sin²t를 t에 대해 미분합니다."
+        },
+        {
+          "title": "기울기 식",
+          "expression": "\\frac{dy}{dx}=\\frac{2\\sin t\\cos t}{1-2\\sin2t}",
+          "explanation": "dy/dt를 dx/dt로 나눕니다."
+        },
+        {
+          "title": "t=π/4 대입",
+          "expression": "\\left.\\frac{dy}{dx}\\right|_{t=\\pi/4}=\\frac1{1-2}=-1",
+          "explanation": "기울기는 -1이므로 정답은 ②입니다."
+        }
+      ],
+      "correctReason": "t=π/4에서 dx/dt=-1로 0이 아니므로 비율 공식이 유효합니다.",
+      "commonMistake": "cos2t를 미분할 때 안쪽 함수 2t의 미분계수 2를 빠뜨리지 마세요.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_cal_25": {
+      "id": "2024_09_cal_25",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 25,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "적분함수가 f'(x)f(x)이므로 f(x)²/2의 양 끝값을 계산해 e²/2+e를 얻습니다.",
+      "approach": "1+1/x가 f'(x)임을 먼저 알아봅니다.",
+      "concepts": ["치환적분", "합성함수의 미분"],
+      "steps": [
+        {
+          "title": "미분형 확인",
+          "expression": "f(x)=x+\\ln x\\Rightarrow f'(x)=1+\\frac1x",
+          "explanation": "적분함수는 f'(x)f(x) 꼴입니다."
+        },
+        {
+          "title": "원시함수",
+          "expression": "\\int f'(x)f(x)dx=\\frac12f(x)^2",
+          "explanation": "u=f(x)로 치환하면 udu의 적분입니다."
+        },
+        {
+          "title": "경계값 계산",
+          "expression": "\\frac12[(e+1)^2-1^2]=\\frac{e^2}{2}+e",
+          "explanation": "f(e)=e+1, f(1)=1이므로 정답은 ②입니다."
+        }
+      ],
+      "correctReason": "주어진 계수가 정확히 f의 도함수라서 한 번의 치환으로 적분됩니다.",
+      "commonMistake": "ln e=1과 ln1=0을 바꾸어 대입하지 마세요.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_cal_26": {
+      "id": "2024_09_cal_26",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 26,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "등차수열 부분은 망원급수로 1/d, 등비급수는 (1+d)/d가 되어 d=2와 합 3/2를 얻습니다.",
+      "approach": "등차수열의 공차 d로 두 급수의 합을 각각 표현합니다.",
+      "concepts": ["망원급수", "등비급수"],
+      "steps": [
+        {
+          "title": "등차수열 급수",
+          "expression": "\\sum_{n=1}^{\\infty}\\frac1{a_na_{n+1}}=\\frac1d",
+          "explanation": "1/(a_na_{n+1})=(1/d)(1/a_n-1/a_{n+1})로 분해하면 중간항이 소거됩니다."
+        },
+        {
+          "title": "등비급수 표현",
+          "expression": "a_2b_2=1\\Rightarrow r=\\frac1{1+d},\\quad\\sum b_n=\\frac{1+d}{d}",
+          "explanation": "a2=1+d이고 b1=1이므로 공비와 무한합이 결정됩니다."
+        },
+        {
+          "title": "d와 합 결정",
+          "expression": "\\frac1d+\\frac{1+d}{d}=2\\Rightarrow d=2,\\quad\\sum b_n=\\frac32",
+          "explanation": "요구한 급수의 합은 3/2이므로 정답은 ⑤입니다."
+        }
+      ],
+      "correctReason": "두 급수 모두 같은 공차 d로 표현되어 주어진 전체 합이 d를 유일하게 정합니다.",
+      "commonMistake": "망원급수의 합을 1이 아니라 1/d로 계산해야 합니다.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_cal_27": {
+      "id": "2024_09_cal_27",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 27,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "절댓값을 x=0에서 나누어 곡선 길이를 적분하면 23/8입니다.",
+      "approach": "먼저 y를 구간별로 단순화한 뒤 각 구간의 √(1+y'²)을 계산합니다.",
+      "concepts": ["곡선의 길이", "절댓값 함수"],
+      "steps": [
+        {
+          "title": "함수의 구간 분리",
+          "expression": "y=\\begin{cases}-\\frac12(e^x+e^{-x})+1&(x<0)\\\\0&(x\\ge0)\\end{cases}",
+          "explanation": "|e^x-1|과 e^{|x|}의 부호를 x=0을 기준으로 정리합니다."
+        },
+        {
+          "title": "길이 요소",
+          "expression": "\\sqrt{1+(y')^2}=\\begin{cases}\\frac12(e^x+e^{-x})&(x<0)\\\\1&(x\\ge0)\\end{cases}",
+          "explanation": "x<0에서는 완전제곱이 되어 양수인 식으로 정리됩니다."
+        },
+        {
+          "title": "구간 적분",
+          "expression": "\\int_{-\\ln4}^{0}\\frac{e^x+e^{-x}}2dx+\\int_0^1dx=\\frac{23}{8}",
+          "explanation": "전체 곡선 길이는 23/8이므로 정답은 ①입니다."
+        }
+      ],
+      "correctReason": "절댓값이 바뀌는 지점과 도함수가 바뀌는 지점이 모두 x=0이어서 두 구간 적분으로 정확히 계산됩니다.",
+      "commonMistake": "√((e^x+e^{-x})²/4)를 다시 절댓값으로 보되 이 식은 항상 양수임을 확인하세요.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_cal_28": {
+      "id": "2024_09_cal_28",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 28,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "절댓값 적분함수의 영점에서 미분가능할 조건을 적용하면 a=n/4이고 최소 자연수 n=3이어서 a=3/4입니다.",
+      "approach": "F(x)=∫f로 두고 |F|가 미분가능하려면 F=0인 곳에서 f=0이어야 한다는 조건을 사용합니다.",
+      "concepts": ["적분으로 정의된 함수", "절댓값 함수의 미분가능성"],
+      "steps": [
+        {
+          "title": "음의 구간 조건",
+          "expression": "f(-a\\pi)=2|\\sin(-4a\\pi)|=0\\Rightarrow a=\\frac n4",
+          "explanation": "적분의 시작점은 F=0이므로 그곳에서 F'=f도 0이어야 합니다."
+        },
+        {
+          "title": "양의 구간의 F",
+          "expression": "F(x)=n+\\frac4n\\cos\\frac{nx}{4}-\\frac4n\\quad(x>0)",
+          "explanation": "음의 구간 한 주기 적분값을 합치고 a=n/4를 대입합니다."
+        },
+        {
+          "title": "영점 방지와 최솟값",
+          "expression": "F(x)>0\\text{ for all }x>0\\Rightarrow n^2>8\\Rightarrow n_{\\min}=3,\\quad a_{\\min}=\\frac34",
+          "explanation": "자연수 n의 최솟값이 3이므로 정답은 ②입니다."
+        }
+      ],
+      "correctReason": "|F|의 뾰족점이 생기지 않는 조건을 음수 구간의 시작점과 양수 구간 전체에 모두 적용했습니다.",
+      "commonMistake": "F가 0인 점만 찾지 말고 그 점에서 F'=f도 0인지 함께 확인하세요.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_cal_29": {
+      "id": "2024_09_cal_29",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 29,
+      "answer": "18",
+      "answerMark": null,
+      "summary": "지수열의 지배항을 비교하면 첫 극한에서 a>3이고, 둘째 극한은 a=b=9일 때만 성립해 합은 18입니다.",
+      "approach": "각 극한에서 밑이 큰 지수항이 분자와 분모를 어떻게 지배하는지 경우를 나눕니다.",
+      "concepts": ["등비수열의 극한", "지배항 비교"],
+      "steps": [
+        {
+          "title": "첫 극한의 조건",
+          "expression": "\\lim_{n\\to\\infty}\\frac{3^n+a^{n+1}}{3^{n+1}+a^n}=a\\Rightarrow a>3",
+          "explanation": "a<3 또는 a=3이면 극한이 각각 1/3 또는 1이 되어 a와 같을 수 없습니다."
+        },
+        {
+          "title": "둘째 극한의 경우",
+          "expression": "b>a\\Rightarrow L=b,\\quad b<a\\Rightarrow L=\\frac1a,\\quad b=a\\Rightarrow L=1",
+          "explanation": "a^n과 b^n 중 큰 밑의 항으로 나누어 세 경우의 극한을 구합니다."
+        },
+        {
+          "title": "조건 일치",
+          "expression": "L=\\frac9a\\Rightarrow b=a=9,\\qquad a+b=18",
+          "explanation": "앞의 두 경우는 모순이고 b=a인 경우 1=9/a이므로 답은 18입니다."
+        }
+      ],
+      "correctReason": "a>3이라는 첫 조건과 둘째 극한의 세 대소관계를 함께 적용하면 유일한 쌍 (9,9)이 남습니다.",
+      "commonMistake": "분자와 분모의 가장 큰 밑이 서로 다를 수 있으므로 a와 b의 대소관계를 나누지 않고 계산하지 마세요.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_cal_30": {
+      "id": "2024_09_cal_30",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 30,
+      "answer": "32",
+      "answerMark": null,
+      "summary": "CP의 길이를 θ의 함수로 음함수 미분하고 삼각형 넓이를 미분하면 -7S'(π/4)=32입니다.",
+      "approach": "원의 중심을 이용해 CP=x와 θ의 관계를 만든 뒤 넓이를 x²sinθcosθ로 표현합니다.",
+      "concepts": ["음함수 미분", "삼각함수의 미분"],
+      "steps": [
+        {
+          "title": "CP와 θ의 관계",
+          "expression": "x^2-2x\\cos\\theta-24=0",
+          "explanation": "원의 중심 O에 대해 OP=5, OC=1인 삼각형 PCO에 코사인법칙을 적용합니다."
+        },
+        {
+          "title": "특정 각의 길이와 변화율",
+          "expression": "\\theta=\\frac\\pi4\\Rightarrow x=4\\sqrt2,\\quad\\frac{dx}{d\\theta}=-\\frac{4\\sqrt2}{7}",
+          "explanation": "관계식을 θ에 대해 음함수 미분합니다."
+        },
+        {
+          "title": "넓이 미분",
+          "expression": "S=x^2\\sin\\theta\\cos\\theta\\Rightarrow S'\\left(\\frac\\pi4\\right)=-\\frac{32}{7}",
+          "explanation": "따라서 -7S'(π/4)=32입니다."
+        }
+      ],
+      "correctReason": "현 PQ와 C에서 현까지의 거리를 x와 θ로 표현하면 넓이와 그 변화율이 모두 결정됩니다.",
+      "commonMistake": "S를 미분할 때 x도 θ의 함수이므로 x²의 미분항 2xx'을 빠뜨리지 마세요.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

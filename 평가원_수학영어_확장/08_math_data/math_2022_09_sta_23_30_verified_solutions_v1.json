@@ -1,0 +1,340 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 9월 모의평가 확률과 통계 23~30번 중 비그림 7문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 7,
+    "readyCount": 7,
+    "questionFingerprint": "608d03e8db9447368513ef66f64d23ee64491cb2af92f2c95f9d143452f985c8",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040410/ect_7f132255-11e7-4cae-8313-a8150cd445731649a9911b68586.zip",
+      "archiveSha256": "1d1f16a13a6c326bd3e952765fcfe80d8ba8cebd23810354ab412c2558d77878",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "ae723d4c3892cbeb12836301c69cabb6ed432845a3be259ab28b6916131b75bd",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "8c1541d69fb9fd8b26a1e5a4ee85f8def670196a7cd6b474fc3404a07a09848d"
+    },
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 풀이 후보"
+  },
+  "items": {
+    "2022_09_sta_23": {
+      "id": "2022_09_sta_23",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 23,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "이항분포의 평균은 시행 횟수와 성공 확률의 곱이므로 E(X)=60×1/4=15입니다.",
+      "approach": "분포의 두 매개변수 n과 p를 확인하고 이항분포의 평균 공식 np를 바로 적용합니다.",
+      "concepts": [
+        "이항분포",
+        "이항분포의 평균"
+      ],
+      "steps": [
+        {
+          "title": "매개변수 확인하기",
+          "expression": "X\\sim B\\left(60,\\frac14\\right)",
+          "explanation": "시행 횟수 n=60, 한 번의 성공 확률 p=1/4입니다."
+        },
+        {
+          "title": "평균 계산하기",
+          "expression": "E(X)=np=60\\cdot\\frac14=15",
+          "explanation": "이항분포의 평균 공식에 두 값을 대입합니다."
+        }
+      ],
+      "correctReason": "E(X)=15이므로 선지 ③이 정답입니다.",
+      "commonMistake": "분산 np(1-p)를 구하는 문제가 아닙니다. 평균은 np까지만 계산합니다.",
+      "verification": {
+        "problemPage": 9,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_sta_24": {
+      "id": "2022_09_sta_24",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 24,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "16개의 순서쌍 중 곱이 31보다 큰 경우는 (5,8), (7,6), (7,8)의 세 가지이므로 확률은 3/16입니다.",
+      "approach": "두 선택은 서로 독립이고 모두 같은 가능성이므로 전체 순서쌍과 조건을 만족하는 순서쌍을 직접 셉니다.",
+      "concepts": [
+        "곱의 법칙",
+        "같은 가능성을 가진 경우의 확률"
+      ],
+      "steps": [
+        {
+          "title": "전체 경우의 수 구하기",
+          "expression": "4\\times4=16",
+          "explanation": "a와 b는 각각 네 값 중 하나를 독립적으로 고릅니다."
+        },
+        {
+          "title": "조건을 만족하는 경우 세기",
+          "expression": "ab>31\\Rightarrow(a,b)=(5,8),(7,6),(7,8)",
+          "explanation": "a=1,3일 때는 가능한 b가 없고 a=5일 때 한 개, a=7일 때 두 개입니다."
+        },
+        {
+          "title": "확률 계산하기",
+          "expression": "P(ab>31)=\\frac3{16}",
+          "explanation": "조건을 만족하는 세 경우를 전체 열여섯 경우로 나눕니다."
+        }
+      ],
+      "correctReason": "확률이 3/16이므로 선지 ③이 정답입니다.",
+      "commonMistake": "조건은 ab≥31이 아니라 ab>31입니다. 경계값이 있으면 포함 여부를 먼저 확인해야 합니다.",
+      "verification": {
+        "problemPage": 9,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_sta_25": {
+      "id": "2022_09_sta_25",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 25,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "일반항의 x 지수는 10-3k이고, x⁻²와 x의 계수를 비교하면 5a⁴=10a³이므로 양수 a=2입니다.",
+      "approach": "a/x를 선택한 횟수를 k로 두어 이항전개의 일반항을 만들고 필요한 두 지수에 대응하는 k를 찾습니다.",
+      "concepts": [
+        "이항정리",
+        "전개식의 일반항",
+        "계수 비교"
+      ],
+      "steps": [
+        {
+          "title": "일반항 세우기",
+          "expression": "\\binom5k(x^2)^{5-k}\\left(\\frac ax\\right)^k=\\binom5k a^k x^{10-3k}",
+          "explanation": "두 번째 항 a/x를 k번 고르면 x의 지수가 2(5-k)-k=10-3k입니다."
+        },
+        {
+          "title": "x⁻²의 계수 구하기",
+          "expression": "10-3k=-2\\Rightarrow k=4,\\qquad [x^{-2}]=\\binom54a^4=5a^4",
+          "explanation": "x의 지수가 -2가 되는 항을 찾습니다."
+        },
+        {
+          "title": "x의 계수 구하기",
+          "expression": "10-3k=1\\Rightarrow k=3,\\qquad [x]=\\binom53a^3=10a^3",
+          "explanation": "x의 지수가 1이 되는 항을 찾습니다."
+        },
+        {
+          "title": "두 계수 비교하기",
+          "expression": "5a^4=10a^3,\\quad a>0\\Rightarrow a=2",
+          "explanation": "a가 양수이므로 a³으로 나누어 해를 구할 수 있습니다."
+        }
+      ],
+      "correctReason": "양수 a=2이므로 선지 ②가 정답입니다.",
+      "commonMistake": "x²의 지수를 5-k와 곱하지 않거나 a/x의 x⁻¹을 빠뜨리면 일반항의 지수 10-3k가 나오지 않습니다.",
+      "verification": {
+        "problemPage": 10,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_sta_27": {
+      "id": "2022_09_sta_27",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 27,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "X̄의 조건에서 표준오차가 5임을 얻고, Ȳ의 표준오차는 2.5이므로 P(Ȳ≥235)=P(Z≥-2)=0.9772입니다.",
+      "approach": "첫 확률을 표준화해 X의 표준오차를 역으로 구한 뒤, 표본 크기와 표준편차의 비를 이용해 Y의 표준오차를 계산합니다.",
+      "concepts": [
+        "표본평균의 분포",
+        "표준화",
+        "표준정규분포표"
+      ],
+      "steps": [
+        {
+          "title": "X̄의 표준오차 구하기",
+          "expression": "P(\\overline X\\leq215)=0.1587=P(Z\\leq-1)\\Rightarrow\\frac{220-215}{\\sigma_X/\\sqrt n}=1",
+          "explanation": "표에서 P(0≤Z≤1)=0.3413이므로 왼쪽 꼬리 확률 0.1587은 z=-1에 해당합니다."
+        },
+        {
+          "title": "두 표준오차 연결하기",
+          "expression": "\\frac{\\sigma_X}{\\sqrt n}=5,\\qquad\\frac{\\sigma_Y}{\\sqrt{9n}}=\\frac{1.5\\sigma_X}{3\\sqrt n}=2.5",
+          "explanation": "Y의 표준편차는 1.5배이고 표본 크기는 9배이므로 표본평균의 표준편차는 절반이 됩니다."
+        },
+        {
+          "title": "Ȳ의 확률 표준화하기",
+          "expression": "P(\\overline Y\\geq235)=P\\left(Z\\geq\\frac{235-240}{2.5}\\right)=P(Z\\geq-2)",
+          "explanation": "평균 240과 표준오차 2.5를 사용합니다."
+        },
+        {
+          "title": "표에서 확률 읽기",
+          "expression": "P(Z\\geq-2)=0.5+0.4772=0.9772",
+          "explanation": "정규분포의 대칭성을 이용해 -2 오른쪽의 넓이를 구합니다."
+        }
+      ],
+      "correctReason": "확률이 0.9772이므로 선지 ⑤가 정답입니다.",
+      "commonMistake": "표본 크기가 9배이면 표준오차는 1/9배가 아니라 제곱근에 따라 1/3배가 됩니다.",
+      "verification": {
+        "problemPage": 11,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_sta_28": {
+      "id": "2022_09_sta_28",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 28,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "f(3)=r, f(4)=s로 두면 경우의 수는 (r-1)²(6-s)²이고, r+s=5 또는 10인 순서쌍을 합하면 414입니다.",
+      "approach": "가운데 두 함숫값을 먼저 고정하면 나머지 네 함숫값의 선택 수가 곱으로 분리되는 구조를 이용합니다.",
+      "concepts": [
+        "함수의 개수",
+        "곱의 법칙",
+        "경우의 수 분할"
+      ],
+      "steps": [
+        {
+          "title": "두 기준값 정하기",
+          "expression": "r=f(3),\\quad s=f(4),\\quad r+s=5\\text{ 또는 }10",
+          "explanation": "r과 s는 1부터 6 사이이므로 합이 될 수 있는 5의 배수는 5와 10입니다."
+        },
+        {
+          "title": "고정된 r,s의 함수 수 구하기",
+          "expression": "(r-1)^2(6-s)^2",
+          "explanation": "f(1),f(2)는 각각 r보다 작은 r-1개 중 고르고, f(5),f(6)는 각각 s보다 큰 6-s개 중 고릅니다."
+        },
+        {
+          "title": "합이 5인 경우 더하기",
+          "expression": "0+1^2\\cdot3^2+2^2\\cdot4^2+3^2\\cdot5^2=298",
+          "explanation": "(r,s)=(1,4),(2,3),(3,2),(4,1)을 차례로 대입합니다."
+        },
+        {
+          "title": "합이 10인 경우 더하기",
+          "expression": "3^2\\cdot0^2+4^2\\cdot1^2+5^2\\cdot2^2=116",
+          "explanation": "(r,s)=(4,6),(5,5),(6,4)를 차례로 대입합니다."
+        },
+        {
+          "title": "전체 함수 수 구하기",
+          "expression": "298+116=414",
+          "explanation": "서로 겹치지 않는 두 경우를 더합니다."
+        }
+      ],
+      "correctReason": "함수의 개수가 414이므로 선지 ④가 정답입니다.",
+      "commonMistake": "f는 일대일함수라는 조건이 없습니다. f(1)과 f(2), 또는 f(5)와 f(6)이 같은 값을 가져도 됩니다.",
+      "verification": {
+        "problemPage": 11,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_sta_29": {
+      "id": "2022_09_sta_29",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 29,
+      "answer": "78",
+      "answerMark": null,
+      "summary": "두 분포는 평균이 5로 같고, Y는 중앙의 확률 1/10을 양 끝에 1/20씩 옮겼으므로 분산이 8/5 증가해 10V(Y)=78입니다.",
+      "approach": "a,b,c를 모두 구하지 않고 대칭성으로 평균을 확인한 뒤 확률 질량의 이동이 분산에 주는 변화만 계산합니다.",
+      "concepts": [
+        "이산확률변수의 분산",
+        "대칭분포",
+        "확률 질량의 이동"
+      ],
+      "steps": [
+        {
+          "title": "두 평균 확인하기",
+          "expression": "E(X)=E(Y)=5",
+          "explanation": "두 분포 모두 5를 중심으로 대칭이며 확률의 합은 1입니다."
+        },
+        {
+          "title": "확률의 이동 파악하기",
+          "expression": "P_Y(1)-P_X(1)=P_Y(9)-P_X(9)=\\frac1{20},\\quad P_Y(5)-P_X(5)=-\\frac1{10}",
+          "explanation": "Y는 평균점 5의 확률 1/10을 양 끝점 1과 9에 절반씩 옮긴 분포입니다."
+        },
+        {
+          "title": "분산 증가량 계산하기",
+          "expression": "V(Y)-V(X)=2\\cdot\\frac1{20}(4^2)=\\frac85",
+          "explanation": "끝점은 평균 5에서 각각 거리 4이고, 중앙점의 편차 제곱은 0입니다."
+        },
+        {
+          "title": "최종값 구하기",
+          "expression": "10V(Y)=10\\left(\\frac{31}{5}+\\frac85\\right)=78",
+          "explanation": "주어진 V(X)=31/5에 증가량을 더합니다."
+        }
+      ],
+      "correctReason": "10V(Y)=78이므로 답은 78입니다.",
+      "commonMistake": "확률의 합이 그대로라는 사실만 보고 분산도 같다고 생각하면 안 됩니다. 평균에서 먼 곳으로 확률이 이동하면 분산이 커집니다.",
+      "verification": {
+        "problemPage": 12,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_sta_30": {
+      "id": "2022_09_sta_30",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 30,
+      "answer": "218",
+      "answerMark": null,
+      "summary": "양의 정수 분배 286가지에서 10개 이상 받는 16가지와 모두 홀수인 52가지를 차례로 제외하면 218가지입니다.",
+      "approach": "먼저 각 학생이 한 개 이상 받는 모든 분배를 세고, 상한 9와 ‘적어도 한 명은 짝수’ 조건을 여사건으로 처리합니다.",
+      "concepts": [
+        "중복조합",
+        "포함배제",
+        "여사건"
+      ],
+      "steps": [
+        {
+          "title": "양의 정수 분배 세기",
+          "expression": "x_A+x_B+x_C+x_D=14,\\quad x_i\\geq1\\Rightarrow\\binom{13}{3}=286",
+          "explanation": "14개를 네 학생에게 한 개 이상 나누는 모든 경우입니다."
+        },
+        {
+          "title": "9개 상한 적용하기",
+          "expression": "286-4\\binom{4}{3}=286-16=270",
+          "explanation": "특정 학생이 10개 이상 받는 경우는 네 가지이며 동시에 두 학생이 10개 이상 받을 수는 없습니다."
+        },
+        {
+          "title": "모두 홀수인 경우 세기",
+          "expression": "x_i=2y_i+1,\\quad\\sum y_i=5\\Rightarrow\\binom83-4=52",
+          "explanation": "비음이 아닌 해 56개 중 xᵢ≥11, 즉 yᵢ≥5인 네 경우를 빼면 각 xᵢ≤9인 모두 홀수 분배가 52개입니다."
+        },
+        {
+          "title": "적어도 한 명이 짝수인 경우 구하기",
+          "expression": "270-52=218",
+          "explanation": "상한을 만족하는 전체에서 네 명 모두 홀수인 여사건을 제외합니다."
+        }
+      ],
+      "correctReason": "조건을 모두 만족하는 경우가 218가지이므로 답은 218입니다.",
+      "commonMistake": "짝수를 받는 학생을 먼저 지정하면 여러 명이 짝수인 경우가 중복됩니다. 모두 홀수인 여사건을 빼는 편이 안전합니다.",
+      "verification": {
+        "problemPage": 12,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

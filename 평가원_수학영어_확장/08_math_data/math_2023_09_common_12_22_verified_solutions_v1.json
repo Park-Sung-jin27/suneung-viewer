@@ -1,0 +1,420 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2023학년도 9월 모의평가 수학 공통 12~22번 11문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "3bf17643ea55b8ace14b7e4eca66064f48b0794e935c4b7060993fc4fd110e7b",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://jwmath.tistory.com/591",
+      "independentSourceUrls": [
+        "https://kimexp.tistory.com/1254",
+        "https://everywhereeverything.tistory.com/entry/2023%EB%85%84-9%EC%9B%94-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5%EA%B5%AD%EC%96%B4-%EC%88%98%ED%95%99-%EC%98%81%EC%96%B4-%ED%95%9C%EA%B5%AD%EC%82%AC-%ED%83%90%EA%B5%AC"
+      ],
+      "problemFilename": "2023_09_math_problem.pdf",
+      "problemSha256": "2053cc454daa5fbcef7f3a5de1bbb07b55f814894f4ea0b78026c27d27f025fe",
+      "problemReplicaFilenames": ["2023_09_math_problem_kimexp.pdf", "2023_09_math_problem_everywhere.pdf"],
+      "answerFilename": "2023_09_math_answer_everywhere.pdf",
+      "answerSha256": "f3c729d6c9165ecc0196d6ede078e03cd8a5457cda5066d7d0fca6645ebafd92",
+      "primaryAnswerImageFilename": "2023_09_math_answer.png",
+      "primaryAnswerImageSha256": "ca8dd66204c4df4af348dbc28183a17abf0ff19b415ab55d46fe92821d666ff9"
+    },
+    "note": "서로 다른 세 보관 페이지의 문제지 해시가 일치함을 확인하고, 별도 정답표 PDF와 평가원 정답 이미지까지 대조한 뒤 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보."
+  },
+  "items": {
+    "2023_09_common_12": {
+      "id": "2023_09_common_12",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 12,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "교점의 x좌표 차는 √(1+4t)이고, 두 선분의 차는 √(1+4t)-1이므로 극한은 2입니다.",
+      "approach": "두 교점의 x좌표를 근으로 보고 합과 차를 구해 길이를 표현합니다.",
+      "concepts": ["이차방정식의 근", "유리화 극한"],
+      "steps": [
+        {
+          "title": "교점의 x좌표 구하기",
+          "expression": "x^2=x+t\\Rightarrow x=\\frac{1\\pm\\sqrt{1+4t}}2",
+          "explanation": "양의 근을 A, 음의 근을 B의 x좌표로 둡니다."
+        },
+        {
+          "title": "길이의 차 표현하기",
+          "expression": "\\overline{AH}-\\overline{CH}=\\sqrt{1+4t}-1",
+          "explanation": "AC는 수평이고 H는 B의 수직 투영이므로 x좌표 차로 길이를 계산합니다."
+        },
+        {
+          "title": "극한 계산하기",
+          "expression": "\\lim_{t\\to0+}\\frac{\\sqrt{1+4t}-1}{t}=\\lim_{t\\to0+}\\frac4{\\sqrt{1+4t}+1}=2",
+          "explanation": "분자를 유리화하면 바로 계산할 수 있습니다."
+        }
+      ],
+      "correctReason": "극한값 2가 선지 ②와 일치합니다.",
+      "commonMistake": "두 교점의 거리를 그대로 쓰지 말고 AH와 CH의 방향과 길이를 각각 확인하세요.",
+      "verification": {"problemPage": 4, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_13": {
+      "id": "2023_09_common_13",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 13,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "교점 E를 원점으로 좌표화하면 반원의 반지름은 5, EA=4√2이고 AC=4√5, CD=√10이어서 곱은 20√2입니다.",
+      "approach": "주어진 각도와 길이로 C와 D를 놓고, 같은 원 위의 점이라는 조건으로 중심과 반지름을 결정합니다.",
+      "concepts": ["원의 좌표", "두 점 사이의 거리"],
+      "steps": [
+        {
+          "title": "C와 D 좌표 놓기",
+          "expression": "E=(0,0),\\quad D=(3\\sqrt2,0),\\quad C=(2\\sqrt2,2\\sqrt2)",
+          "explanation": "ED를 x축으로 두면 CE=4와 ∠CEA=135°에서 C의 좌표가 정해집니다."
+        },
+        {
+          "title": "원 중심과 반지름 구하기",
+          "expression": "O=\\left(-\\frac1{\\sqrt2},-\\frac1{\\sqrt2}\\right),\\quad R=5",
+          "explanation": "O는 직선 CE 위에 있고 OC=OD이므로 EO=1, 반지름은 OC=5입니다."
+        },
+        {
+          "title": "A와 필요한 길이 구하기",
+          "expression": "A=(-4\\sqrt2,0),\\quad AC=4\\sqrt5,\\quad CD=\\sqrt{10}",
+          "explanation": "A도 원 위이면서 x축 위에 있으므로 좌표가 정해지고 거리 공식으로 두 길이를 계산합니다."
+        },
+        {
+          "title": "곱 계산하기",
+          "expression": "AC\\cdot CD=4\\sqrt5\\cdot\\sqrt{10}=20\\sqrt2",
+          "explanation": "√50=5√2로 정리합니다."
+        }
+      ],
+      "correctReason": "AC×CD=20√2가 선지 ⑤와 일치합니다.",
+      "commonMistake": "∠CEA는 C-E-A가 만드는 각입니다. ED와 EA가 반대 방향이라는 점을 좌표에 반영하세요.",
+      "verification": {"problemPage": 4, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_14": {
+      "id": "2023_09_common_14",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 14,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "세 번째 근을 r이라 두고 구간 적분을 계산하면 ㄱ·ㄴ·ㄷ이 모두 참입니다.",
+      "approach": "f(x)=x(x-1)(x-r)로 놓고 r의 위치에 따라 절댓값 적분의 부호를 판정합니다.",
+      "concepts": ["삼차함수의 근", "절댓값 정적분"],
+      "steps": [
+        {
+          "title": "두 기본 적분 계산하기",
+          "expression": "\\int_0^1f(x)dx=\\frac{2r-1}{12},\\qquad\\int_{-1}^0f(x)dx=-\\frac{7+10r}{12}",
+          "explanation": "f(x)=x(x-1)(x-r)를 전개해 적분합니다."
+        },
+        {
+          "title": "ㄱ 판정하기",
+          "expression": "g(0)=0\\Rightarrow f(x)\\ge0\\ (0\\le x\\le1)\\Rightarrow r\\ge1\\Rightarrow g(-1)<0",
+          "explanation": "적분값과 절댓값 적분이 같으려면 [0,1]에서 f가 음이 아니어야 합니다."
+        },
+        {
+          "title": "ㄴ 판정하기",
+          "expression": "g(-1)>0\\Rightarrow r<-1",
+          "explanation": "r≥-1이면 [-1,0]과 [0,1]의 부호별 적분을 비교했을 때 g(-1)은 양수가 될 수 없습니다. 따라서 k=r<-1인 영점이 존재합니다."
+        },
+        {
+          "title": "ㄷ 판정하기",
+          "expression": "r<-1:\\quad g(-1)=-\\frac{2(r+1)}3,\\quad g(0)=\\frac{2r-1}{6}",
+          "explanation": "g(-1)>1이면 r<-5/2이고, 따라서 g(0)<-1입니다."
+        }
+      ],
+      "correctReason": "ㄱ, ㄴ, ㄷ이 모두 옳으므로 정답은 ⑤입니다.",
+      "commonMistake": "∫|f|를 |∫f|로 바꾸면 안 됩니다. 세 번째 근 r의 위치에 따라 구간별 부호를 먼저 확인하세요.",
+      "verification": {"problemPage": 5, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_15": {
+      "id": "2023_09_common_15",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 15,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "네 항마다 값이 -1/2배가 되어 r=-1/2이고, a₁=-14입니다. 절댓값이 5 이상인 항은 26개이므로 p+a₁=12입니다.",
+      "approach": "a₄ₖ에서 시작하는 네 단계의 변화를 추적해 반복 구조를 찾습니다.",
+      "concepts": ["점화식", "주기적 상태 추적"],
+      "steps": [
+        {
+          "title": "네 단계 변화 계산하기",
+          "expression": "r^k\\to r^k+3\\to r^k+6\\to-3-\\frac{r^k}{2}\\to-\\frac{r^k}{2}",
+          "explanation": "0<|r|<1이므로 각 단계에서 어느 분기를 사용하는지 결정할 수 있습니다."
+        },
+        {
+          "title": "r 결정하기",
+          "expression": "r^{k+1}=-\\frac{r^k}{2}\\Rightarrow r=-\\frac12",
+          "explanation": "마지막 값이 다음 네 번째 항 a₄₍ₖ₊₁₎과 같아야 합니다."
+        },
+        {
+          "title": "초기항 역추적하기",
+          "expression": "a_4=-\\frac12\\Rightarrow a_3=-\\frac72,\\ a_2=7,\\ a_1=-14",
+          "explanation": "각 단계의 절댓값 조건과 a₁<0을 함께 사용합니다."
+        },
+        {
+          "title": "조건을 만족하는 m 세기",
+          "expression": "m=1,2,6,10,\\ldots,98\\Rightarrow p=26",
+          "explanation": "첫 두 항 뒤에는 각 네 항 묶음에서 두 번째 항 하나만 절댓값이 5 이상이며, 6부터 98까지 24개입니다."
+        },
+        {
+          "title": "최종값 구하기",
+          "expression": "p+a_1=26-14=12",
+          "explanation": "구한 개수와 첫째항을 더합니다."
+        }
+      ],
+      "correctReason": "p+a₁=12가 선지 ③과 일치합니다.",
+      "commonMistake": "점화식의 분기는 항 번호가 아니라 현재 항의 절댓값으로 결정됩니다.",
+      "verification": {"problemPage": 6, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_16": {
+      "id": "2023_09_common_16",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 16,
+      "answer": "7",
+      "answerMark": null,
+      "summary": "밑을 3으로 통일해 제곱하면 후보는 2와 7이고, 로그의 진수 조건 x>4를 만족하는 해는 7입니다.",
+      "approach": "로그의 밑을 통일하고 진수 조건으로 불필요한 해를 제거합니다.",
+      "concepts": ["로그의 밑 변환", "로그의 진수 조건"],
+      "steps": [
+        {
+          "title": "밑 통일하기",
+          "expression": "\\log_3(x-4)=\\frac12\\log_3(x+2)",
+          "explanation": "log₉ M은 log₃ M의 절반입니다."
+        },
+        {
+          "title": "방정식 풀기",
+          "expression": "(x-4)^2=x+2\\Rightarrow(x-2)(x-7)=0",
+          "explanation": "로그의 일대일 대응을 이용해 진수를 비교합니다."
+        },
+        {
+          "title": "진수 조건 확인하기",
+          "expression": "x>4\\Rightarrow x=7",
+          "explanation": "x=2에서는 x-4가 음수여서 로그가 정의되지 않습니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 실수 해는 7 하나입니다.",
+      "commonMistake": "제곱해 얻은 x=2를 답에 포함하지 말고 반드시 진수 조건을 확인하세요.",
+      "verification": {"problemPage": 6, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_17": {
+      "id": "2023_09_common_17",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 17,
+      "answer": "16",
+      "answerMark": null,
+      "summary": "f(2)-f(1)은 f'의 1부터 2까지 적분값 11이므로 f(2)=16입니다.",
+      "approach": "도함수의 정적분이 함수값의 변화량이라는 사실을 사용합니다.",
+      "concepts": ["미적분의 기본정리", "함수값의 변화량"],
+      "steps": [
+        {
+          "title": "변화량 식 세우기",
+          "expression": "f(2)-f(1)=\\int_1^2f'(x)dx",
+          "explanation": "도함수를 적분하면 원래 함수의 변화량을 얻습니다."
+        },
+        {
+          "title": "정적분 계산하기",
+          "expression": "\\int_1^2(6x^2-4x+3)dx=11",
+          "explanation": "원시함수 2x³-2x²+3x에 2와 1을 대입합니다."
+        },
+        {
+          "title": "f(2) 구하기",
+          "expression": "f(2)=5+11=16",
+          "explanation": "주어진 f(1)=5에 변화량을 더합니다."
+        }
+      ],
+      "correctReason": "f(2)의 값은 16입니다.",
+      "commonMistake": "f'에 x=2만 대입한 값은 f(2)가 아닙니다.",
+      "verification": {"problemPage": 6, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_18": {
+      "id": "2023_09_common_18",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 18,
+      "answer": "13",
+      "answerMark": null,
+      "summary": "왼쪽 합은 10c, 오른쪽의 상수 c 다섯 개 합은 5c이므로 c=13입니다.",
+      "approach": "합의 선형성을 이용해 상수 c를 합 밖으로 꺼냅니다.",
+      "concepts": ["시그마의 선형성", "일차방정식"],
+      "steps": [
+        {
+          "title": "왼쪽 합 정리하기",
+          "expression": "\\sum_{k=1}^5ca_k=c\\sum_{k=1}^5a_k=10c",
+          "explanation": "c는 k와 무관한 상수입니다."
+        },
+        {
+          "title": "오른쪽 합 정리하기",
+          "expression": "65+\\sum_{k=1}^5c=65+5c",
+          "explanation": "상수 c를 다섯 번 더합니다."
+        },
+        {
+          "title": "c 구하기",
+          "expression": "10c=65+5c\\Rightarrow c=13",
+          "explanation": "양변에서 5c를 뺍니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 상수는 c=13입니다.",
+      "commonMistake": "Σc를 c로 두지 말고 합의 항 개수 5를 곱하세요.",
+      "verification": {"problemPage": 7, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_19": {
+      "id": "2023_09_common_19",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 19,
+      "answer": "4",
+      "answerMark": null,
+      "summary": "사차함수의 극값은 -5, 0, -32이고, 수평선 y=-k가 네 번 만나려면 0<k<5이므로 자연수 k는 4개입니다.",
+      "approach": "상수항 k를 수평선의 높이로 옮겨 그래프의 교점 수를 셉니다.",
+      "concepts": ["사차함수의 극값", "방정식의 실근 개수"],
+      "steps": [
+        {
+          "title": "기준 함수와 수평선 분리하기",
+          "expression": "F(x)=3x^4-4x^3-12x^2,\\qquad F(x)=-k",
+          "explanation": "원래 방정식을 함수와 수평선의 교점 문제로 봅니다."
+        },
+        {
+          "title": "극값 구하기",
+          "expression": "F'(x)=12x(x+1)(x-2)",
+          "explanation": "임계점 -1,0,2에서 함수값은 각각 -5,0,-32입니다."
+        },
+        {
+          "title": "네 교점 조건 찾기",
+          "expression": "-5<-k<0\\Rightarrow0<k<5",
+          "explanation": "이 높이에서 네 단조 구간을 각각 한 번씩 지납니다."
+        },
+        {
+          "title": "자연수 개수 세기",
+          "expression": "k=1,2,3,4",
+          "explanation": "조건을 만족하는 자연수는 4개입니다."
+        }
+      ],
+      "correctReason": "가능한 자연수 k의 개수는 4입니다.",
+      "commonMistake": "수평선이 극값과 같으면 중근이 생겨 서로 다른 네 실근이 되지 않습니다. 부등호는 엄격해야 합니다.",
+      "verification": {"problemPage": 7, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_20": {
+      "id": "2023_09_common_20",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 20,
+      "answer": "80",
+      "answerMark": null,
+      "summary": "교점이 정확히 두 개가 되려면 양의 쪽에서 접하는 k=-3이고, 두 구간의 넓이 합은 8/3이므로 30S=80입니다.",
+      "approach": "절댓값을 x<0과 x≥0으로 나누고, 한쪽은 접점 조건으로 교점 수를 맞춥니다.",
+      "concepts": ["절댓값 함수", "접선과 중근", "정적분 넓이"],
+      "steps": [
+        {
+          "title": "k 결정하기",
+          "expression": "k=-3:\\quad f(x)-g(x)=\\begin{cases}(x+1)(x^2+3)&x<0\\\\(x-1)^2(x+3)&x\\ge0\\end{cases}",
+          "explanation": "x=-1에서 한 번 만나고 x=1에서 접하여 서로 다른 교점이 정확히 두 개입니다."
+        },
+        {
+          "title": "음의 구간 넓이 구하기",
+          "expression": "\\int_{-1}^0(x^3+x^2+3x+3)dx=\\frac{19}{12}",
+          "explanation": "[-1,0]에서는 f가 g보다 위에 있습니다."
+        },
+        {
+          "title": "양의 구간 넓이 구하기",
+          "expression": "\\int_0^1(x^3+x^2-5x+3)dx=\\frac{13}{12}",
+          "explanation": "[0,1]에서도 차가 음이 아니므로 그대로 적분합니다."
+        },
+        {
+          "title": "최종값 계산하기",
+          "expression": "S=\\frac{32}{12}=\\frac83\\Rightarrow30S=80",
+          "explanation": "두 부분의 넓이를 더합니다."
+        }
+      ],
+      "correctReason": "30S의 값은 80입니다.",
+      "commonMistake": "|x|를 한 식으로 처리하지 말고 x=0을 기준으로 반드시 나누세요.",
+      "verification": {"problemPage": 7, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_21": {
+      "id": "2023_09_common_21",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 21,
+      "answer": "220",
+      "answerMark": null,
+      "summary": "길이 조건에서 2ᵃ/m=3a, 2ᵇ/m=12a를 얻어 b-a=2이고, 할선 기울기와 결합하면 a=2/9, b=20/9입니다.",
+      "approach": "기울기가 -m인 평행선 위 길이를 수평거리와 공통 배율 √(1+m²)로 표현합니다.",
+      "concepts": ["직선 위 거리", "지수함수의 할선 기울기"],
+      "steps": [
+        {
+          "title": "첫 길이 조건 정리하기",
+          "expression": "AB=4PB\\Rightarrow a+\\frac{2^a}{m}=4a\\Rightarrow\\frac{2^a}{m}=3a",
+          "explanation": "같은 직선 위 길이에는 공통으로 √(1+m²)가 곱해져 소거됩니다."
+        },
+        {
+          "title": "둘째 길이 조건 정리하기",
+          "expression": "CQ=3AB\\Rightarrow\\frac{2^b}{m}=12a",
+          "explanation": "Q에서 x축까지의 수평거리는 2ᵇ/m입니다."
+        },
+        {
+          "title": "a와 b의 차 구하기",
+          "expression": "2^{b-a}=4\\Rightarrow b-a=2",
+          "explanation": "두 식을 나누면 m과 a가 소거됩니다."
+        },
+        {
+          "title": "할선 기울기 적용하기",
+          "expression": "m=\\frac{2^b-2^a}{b-a}=\\frac{3\\cdot2^a}{2}",
+          "explanation": "b=a+2를 이용합니다."
+        },
+        {
+          "title": "최종값 구하기",
+          "expression": "\\frac{2^a}{m}=3a\\Rightarrow a=\\frac29,\\ b=\\frac{20}{9}\\Rightarrow90(a+b)=220",
+          "explanation": "첫 길이 식에 구한 m을 대입합니다."
+        }
+      ],
+      "correctReason": "90(a+b)의 값은 220입니다.",
+      "commonMistake": "AB와 PB를 단순한 가로·세로 길이로 보지 말고 같은 기울기의 직선 위 거리임을 이용하세요.",
+      "verification": {"problemPage": 8, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_22": {
+      "id": "2023_09_common_22",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 22,
+      "answer": "58",
+      "answerMark": null,
+      "summary": "다른 극소점 r에서의 함수값을 교점 수 변화와 비교하면 f(r)=4이고 r=5입니다. 이를 이용해 f를 복원하면 f(8)=58입니다.",
+      "approach": "g(x)=0을 두 영역의 f(x)=0, f(x)=2f(t)로 나누고 삼차함수와 수평선의 교점 수가 바뀌는 높이를 추적합니다.",
+      "concepts": ["삼차함수의 극값", "구간별 함수", "실근 개수"],
+      "steps": [
+        {
+          "title": "다른 극점 표시하기",
+          "expression": "f'(x)=3(x-3)(x-r),\\qquad r>3",
+          "explanation": "x=3이 극대점이므로 다른 임계점 r은 오른쪽의 극소점입니다."
+        },
+        {
+          "title": "극소값 표현하기",
+          "expression": "f(r)-f(3)=\\int_3^r3(x-3)(x-r)dx=-\\frac{(r-3)^3}{2}",
+          "explanation": "따라서 f(r)=8-(r-3)³/2입니다."
+        },
+        {
+          "title": "불연속점 개수 조건 적용하기",
+          "expression": "g(x)=0\\Longleftrightarrow\\begin{cases}f(x)=0&x\\ge t\\\\f(x)=2f(t)&x<t\\end{cases}",
+          "explanation": "수평선의 교점 수를 극대 높이 8과 극소 높이 f(r)에 따라 구간별로 세면 불연속점이 정확히 두 개인 경우는 f(r)=4입니다."
+        },
+        {
+          "title": "r 구하기",
+          "expression": "8-\\frac{(r-3)^3}{2}=4\\Rightarrow r=5",
+          "explanation": "r>3 조건을 만족하는 세제곱근을 선택합니다."
+        },
+        {
+          "title": "f 복원하고 값 계산하기",
+          "expression": "f'(x)=3(x-3)(x-5)\\Rightarrow f(x)=x^3-12x^2+45x-46",
+          "explanation": "f(3)=8로 적분상수를 정하면 f(8)=58입니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 삼차함수에서 f(8)=58입니다.",
+      "commonMistake": "g의 두 식 모두를 f(x)=0으로 보지 마세요. x<t에서는 f(x)=2f(t)와의 교점 수를 세어야 합니다.",
+      "verification": {"problemPage": 8, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

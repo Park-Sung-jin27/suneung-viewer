@@ -1,0 +1,2919 @@
+{
+  "schemaVersion": "english-product-candidate-v2",
+  "candidateId": "english_2024_09_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "generatedFrom": {
+    "overlayPath": "english/data/candidates/english_2024_09_candidate.json",
+    "baseDataPath": "english/data/english_exam_db_v2_1.json",
+    "baseDataSha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "reviewDataPath": "english/data/candidates/english_2024_09_reviews.json",
+    "reviewDataSha256": "f71d9c5ae1cd275b181cdad6ae4be8e79a57f01caef5d5e87f349bc8014ba66c"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2024학년도_9월_영어_문제.pdf",
+      "sha256": "33e3d9ae10a018add9ae2e4f746c2d13e6f442db14ab11d8aebc738643e7534c"
+    },
+    "answer": {
+      "filename": "2024학년도_9월_영어_정답.png",
+      "sha256": "17ff6d9507b7c86e4f38e8f338ee554631e14d4a0371f8185b3a71c3b8d12a92"
+    },
+    "explanation": {
+      "filename": "2024학년도_9월_영어_해설.pdf",
+      "sha256": "b6fae8fac037684fdb86cddb070e771d13e46b075e4fac8e3cda32ebd8b2b0ef"
+    }
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 60,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 13,
+    "blockedCount": 0
+  },
+  "integrity": {
+    "questionIds": [
+      "2024_09_18",
+      "2024_09_19",
+      "2024_09_20",
+      "2024_09_21",
+      "2024_09_22",
+      "2024_09_23",
+      "2024_09_24",
+      "2024_09_25",
+      "2024_09_26",
+      "2024_09_27",
+      "2024_09_28",
+      "2024_09_29",
+      "2024_09_30",
+      "2024_09_31",
+      "2024_09_32",
+      "2024_09_33",
+      "2024_09_34",
+      "2024_09_35",
+      "2024_09_36",
+      "2024_09_37",
+      "2024_09_38",
+      "2024_09_39",
+      "2024_09_40",
+      "2024_09_41",
+      "2024_09_42",
+      "2024_09_43",
+      "2024_09_44",
+      "2024_09_45"
+    ],
+    "choiceOverrideIds": [
+      "2024_09_20",
+      "2024_09_24",
+      "2024_09_28",
+      "2024_09_29",
+      "2024_09_30",
+      "2024_09_32",
+      "2024_09_35",
+      "2024_09_36",
+      "2024_09_37",
+      "2024_09_38",
+      "2024_09_39",
+      "2024_09_40",
+      "2024_09_45"
+    ],
+    "figureIds": [
+      "2024_09_25",
+      "2024_09_27",
+      "2024_09_28"
+    ],
+    "choiceFingerprint": "e88bf2c77d4ec10a04a0d908303693da02188c8c4d463f7cf62349be2494945a",
+    "figureFingerprint": "ac24102de78df0acc3b653f36ea4b778f6ec6c53e96f7ffea86a29dfd38211a7",
+    "reviewFingerprint": "b750c6df50f316146adbb3098b6cdc397a56f383cebdc34df68145d0294e737b"
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2024_09_25",
+      "2024_09_27",
+      "2024_09_28"
+    ]
+  },
+  "questions": [
+    {
+      "id": "2024_09_18",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 18,
+      "type": "목적",
+      "group": "practical",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "18. 다음 글의 목적으로 가장 적절한 것은?",
+      "rawText": "18. \t다음 글의 목적으로 가장 적절한 것은?\nDear Parents,\nMy name is Danielle Hamilton, and I am the principal of\nTechville High School. As you may know, there is major\nroad construction scheduled to take place in front of our\nschool next month. This raises safety concerns. Therefore,\nwe are asking for parent volunteers to help with directing\ntraffic. The volunteer hours are from 8:00 to 8:30 a.m. and\nfrom 4:30 to 5:00 p.m. on school days. If you are willing to\ntake part in the traffic safety volunteer group, please email\nus with your preferred schedule at info@techville.edu.\nYour participation will be helpful in building a safer school\nenvironment for our students. Thank you in advance for\nyour contributions.\nSincerely,\nDanielle Hamilton\n① 교통안전 봉사 참여를 요청하려고\n② 자원봉사 교육 일정을 공지하려고\n③ 학교 시설 공사에 대한 양해를 구하려고\n④ 학교 앞 도로 공사의 필요성을 설명하려고\n⑤ 등·하교 차량 안전 수칙 준수를 당부하려고",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "교통안전 봉사 참여를 요청하려고"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "자원봉사 교육 일정을 공지하려고"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "학교 시설 공사에 대한 양해를 구하려고"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "학교 앞 도로 공사의 필요성을 설명하려고"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "등·하교 차량 안전 수칙 준수를 당부하려고"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 846,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_18",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 18,
+        "group": "practical",
+        "type": "목적",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 학교 앞 도로 공사 기간의 안전을 위해 학부모에게 교통정리 봉사 참여를 요청하는 글입니다.",
+        "typeApproach": "목적 문제는 문제 상황보다 수신자에게 직접 요구하는 행동을 먼저 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "we are asking for parent volunteers to help with directing\ntraffic.",
+            "charStart": 269,
+            "role": "직접 요청",
+            "translation": "학부모 자원봉사자가 교통정리를 도와 달라고 요청합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "If you are willing to\ntake part in the traffic safety volunteer group",
+            "charStart": 427,
+            "role": "참여 안내",
+            "translation": "교통안전 봉사단에 참여할 의사가 있다면 신청하라고 안내합니다."
+          }
+        ],
+        "correctReason": "도로 공사는 배경이고 핵심 요구는 학부모의 교통안전 봉사 참여이므로 ①입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "학교 앞 도로 공사의 필요성을 설명하려고",
+          "reason": "공사의 필요성을 논증하지 않고 공사로 생긴 안전 문제에 대응할 봉사자를 모집합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_19",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 19,
+      "type": "심경 변화",
+      "group": "practical",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "19. 다음 글에 드러난 Nancy의 심경 변화로 가장 적절한 것은?",
+      "rawText": "19. \t다음 글에 드러난 Nancy의 심경 변화로 가장 적절한 것은?\nThe day trip to Midtown scheduled for today was canceled\nbecause the road leading there was blocked by heavy snow.\n“Luck just didn’t run my way. Sightseeing in Midtown was\nwhy I signed up for this trip ...” Nancy said to herself, with a\nlong sigh. She was thinking of all the interesting sights she\nwouldn’t be able to enjoy. All of a sudden, there was a knock\nat the door. “News! We are going to the Pland Zoo near the\nhotel. We will meet in the lobby soon.” It was the voice of her\ntour guide. She sprung off the couch and started putting on her\ncoat in a hurry. “The Pland Zoo! That’s on my bucket list!\nWhat a turn of fortune!” shouted Nancy.\n① disappointed → excited \t② relieved → anxious\n③ surprised \t→ annoyed \t④ ashamed → grateful\n⑤ indifferent \t→ amazed",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "disappointed → excited"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "relieved → anxious"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "surprised → annoyed"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "ashamed → grateful"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "indifferent → amazed"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 802,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_19",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 19,
+        "group": "practical",
+        "type": "심경 변화",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. Midtown 여행 취소로 실망했던 Nancy가 가고 싶던 동물원 방문 소식에 신이 납니다.",
+        "typeApproach": "심경 변화는 전환 사건 앞뒤의 말과 행동을 각각 감정어로 바꿉니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "She was thinking of all the interesting sights she\nwouldn’t be able to enjoy.",
+            "charStart": 288,
+            "role": "초기 실망",
+            "translation": "보지 못하게 된 흥미로운 명소들을 생각하며 실망합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "The Pland Zoo! That’s on my bucket list!\nWhat a turn of fortune!",
+            "charStart": 606,
+            "role": "이후 흥분",
+            "translation": "버킷리스트의 동물원에 가게 되어 운이 바뀌었다고 외칩니다."
+          }
+        ],
+        "correctReason": "여행 취소로 disappointed했다가 동물원 소식에 excited해지므로 ①입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "indifferent → amazed",
+          "reason": "처음부터 무관심하지 않고 여행 취소를 크게 아쉬워했습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_20",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 20,
+      "type": "주장",
+      "group": "topic",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "rawText": "20. \t다음 글에서 필자가 주장하는 바로 가장 적절한 것은?\nConfident is not the same as comfortable. One of the biggest\nmisconceptions about becoming self-confident is that it means\nliving fearlessly. The key to building confidence is quite the\nopposite. It means we are willing to let fear be present as we do\nthe \tthings \tthat \tmatter \tto \tus. \tWhen \twe \testablish \tsome\nself-confidence in something, it feels good. We want to stay\nthere and hold on to it. But if we only go where we feel\nconfident, then confidence never expands beyond that. If we\nonly do the things we know we can do well, fear of the new and\nunknown tends to grow. Building confidence inevitably demands\nthat we make friends with vulnerability because it is the only\nway to be without confidence for a while. But the only way\nconfidence can grow is when we are willing to be without it.\nWhen we can step into fear and sit with the unknown, it is the\ncourage of doing so that builds confidence from the ground up.\n* vulnerability: 취약성\n① 적성을 파악하기 위해서는 자신 있는 일을 다양하게 시도해야 한다.\n② 자신감을 키우기 위해 낯설고 두려운 일에 도전하는 용기를 가져야 한다.\n③ 어려운 일을 자신 있게 수행하기 위해 사전에 계획을 철저히 세워야 한다.\n④ 과도한 자신감을 갖기보다는 자신의 약점을 객관적으로 분석해야 한다.\n⑤ 자신의 경험과 지식을 바탕으로 당면한 문제에 자신 있게 대처해야 한다.\n이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에\n따라 답을 하시기 바랍니다.\n\n-- 2 of 8 --\n\n3\n3 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "적성을 파악하기 위해서는 자신 있는 일을 다양하게 시도해야 한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "자신감을 키우기 위해 낯설고 두려운 일에 도전하는 용기를 가져야 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "어려운 일을 자신 있게 수행하기 위해 사전에 계획을 철저히 세워야 한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "과도한 자신감을 갖기보다는 자신의 약점을 객관적으로 분석해야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "자신의 경험과 지식을 바탕으로 당면한 문제에 자신 있게 대처해야 한다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1257,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          12
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_20",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 20,
+        "group": "topic",
+        "type": "주장",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 자신감은 두려움이 없는 상태가 아니라 낯선 두려움 속으로 들어가는 용기에서 자란다는 주장입니다.",
+        "typeApproach": "주장 문제는 반복되는 조건 표현과 마지막 결론 문장을 결합합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "the only way\nconfidence can grow is when we are willing to be without it.",
+            "charStart": 761,
+            "role": "성장 조건",
+            "translation": "자신감이 자라는 유일한 방법은 잠시 자신감 없는 상태를 받아들이는 것입니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "When we can step into fear and sit with the unknown, it is the\ncourage of doing so that builds confidence from the ground up.",
+            "charStart": 835,
+            "role": "핵심 주장",
+            "translation": "두려움과 미지 속으로 들어가는 용기가 자신감을 밑바닥부터 만듭니다."
+          }
+        ],
+        "correctReason": "낯설고 두려운 일을 피하지 않는 용기가 자신감을 키운다는 ②가 맞습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "과도한 자신감을 갖기보다는 자신의 약점을 객관적으로 분석해야 한다.",
+          "reason": "약점 분석이 아니라 두려움과 취약성을 감수하고 행동하는 용기를 강조합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_21",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 21,
+      "type": "밑줄 의미",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "21. 밑줄 친 “The best is the enemy of the good.”이 다음 글에서",
+      "rawText": "21. \t밑줄 친 “The best is the enemy of the good.”이 다음 글에서\n의미하는 바로 가장 적절한 것은? [3점]\nGold plating in the project means needlessly enhancing the\nexpected results, namely, adding characteristics that are costly,\nnot required, and that have low added value with respect to the\ntargets ― in other words, giving more with no real justification\nother than to demonstrate one’s own talent. Gold plating is\nespecially interesting for project team members, as it is typical\nof projects with a marked professional component ― in other\nwords, projects that involve specialists with proven experience\nand extensive professional autonomy. In these environments\nspecialists often see the project as an opportunity to test and enrich\ntheir skill sets. There is therefore a strong temptation, in all\ngood faith, to engage in gold plating, namely, to achieve more\nor higher-quality work that gratifies the professional but does\nnot add value to the client’s requests, and at the same time\nremoves valuable resources from the project. As the saying\ngoes, “The best is the enemy of the good.”\n* autonomy: 자율성 \t** gratify: 만족시키다\n① Pursuing perfection at work causes conflicts among team members.\n② Raising work quality only to prove oneself is not desirable.\n③ Inviting overqualified specialists to a project leads to bad ends.\n④ Responding to the changing needs of clients is unnecessary.\n⑤ Acquiring a range of skills for a project does not ensure success.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Pursuing perfection at work causes conflicts among team members."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Raising work quality only to prove oneself is not desirable."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Inviting overqualified specialists to a project leads to bad ends."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Responding to the changing needs of clients is unnecessary."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Acquiring a range of skills for a project does not ensure success."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1432,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_21",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 21,
+        "group": "blank",
+        "type": "밑줄 의미",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 고객 가치 없이 자기 능력을 과시하려고 과도하게 품질을 높이는 것은 오히려 프로젝트를 해친다는 뜻입니다.",
+        "typeApproach": "속담형 밑줄은 앞 문단에서 반복해 정의한 행동과 그 비용을 평범한 문장으로 바꿉니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "giving more with no real justification\nother than to demonstrate one’s own talent.",
+            "charStart": 294,
+            "role": "과잉 작업의 동기",
+            "translation": "자기 능력을 보여 주려는 것 외에 실제 근거 없이 더 많이 제공합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "does\nnot add value to the client’s requests",
+            "charStart": 900,
+            "role": "고객 가치 부재",
+            "translation": "그 작업은 고객 요청에 가치를 더하지 않습니다."
+          }
+        ],
+        "correctReason": "자기 증명을 위한 불필요한 품질 향상은 바람직하지 않다는 ②가 속담의 의미입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "Pursuing perfection at work causes conflicts among team members.",
+          "reason": "팀원 갈등이 아니라 고객 가치 없이 자원을 쓰는 과잉 작업이 문제입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_22",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 22,
+      "type": "요지",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "rawText": "22. \t다음 글의 요지로 가장 적절한 것은?\nThe need to assimilate values and lifestyle of the host culture\nhas become a growing conflict. Multiculturalists suggest that\nthere \tshould \tbe \ta \tmodel \tof \tpartial \tassimilation \tin \twhich\nimmigrants retain some of their customs, beliefs, and language.\nThere is pressure to conform rather than to maintain their cultural\nidentities, however, and these conflicts are greatly determined by\nthe community to which one migrates. These experiences are not\nnew; many Europeans experienced exclusion and poverty during\nthe first two waves of immigration in the 19th and 20th centuries.\nEventually, \tthese \timmigrants \ttransformed \tthis \tcountry \twith\nsignificant changes that included enlightenment and acceptance of\ndiversity. People of color, however, continue to struggle for\nacceptance. Once again, the challenge is to recognize that other\ncultures think and act differently and that they have the right to do\nso. Perhaps, in the not too distant future, immigrants will no\nlonger be strangers among us.\n① 이민자 고유의 정체성을 유지할 권리에 대한 공동체의 인식이 필요하다.\n② 이민자의 적응을 돕기 위해 그들의 요구를 반영한 정책 수립이 중요하다.\n③ 이민자는 미래 사회의 긍정적 변화에 핵심적 역할을 수행할 수 있다.\n④ 다문화 사회의 안정을 위해서는 국제적 차원의 지속적인 협력이 요구된다.\n⑤ 문화적 동화는 장기적이고 체계적인 과정을 통해 점진적으로 이루어진다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "이민자 고유의 정체성을 유지할 권리에 대한 공동체의 인식이 필요하다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "이민자의 적응을 돕기 위해 그들의 요구를 반영한 정책 수립이 중요하다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "이민자는 미래 사회의 긍정적 변화에 핵심적 역할을 수행할 수 있다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "다문화 사회의 안정을 위해서는 국제적 차원의 지속적인 협력이 요구된다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "문화적 동화는 장기적이고 체계적인 과정을 통해 점진적으로 이루어진다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1234,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_22",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 22,
+        "group": "topic",
+        "type": "요지",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 공동체는 이민자가 다르게 생각하고 행동하며 고유한 문화 정체성을 유지할 권리를 인정해야 합니다.",
+        "typeApproach": "요지는 역사 사례보다 글쓴이가 마지막에 제시하는 현재의 과제와 권리를 중심으로 잡습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "immigrants retain some of their customs, beliefs, and language.",
+            "charStart": 218,
+            "role": "정체성 유지",
+            "translation": "이민자가 관습·신념·언어 일부를 유지하는 부분 동화가 제안됩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "other\ncultures think and act differently and that they have the right to do\nso.",
+            "charStart": 860,
+            "role": "인정할 권리",
+            "translation": "다른 문화가 다르게 생각하고 행동할 권리를 인정해야 합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "There is pressure to conform rather than to maintain their cultural\nidentities",
+            "charStart": 282,
+            "role": "현재 갈등",
+            "translation": "문화 정체성을 유지하기보다 주류에 맞추라는 압력이 있습니다."
+          }
+        ],
+        "correctReason": "이민자의 문화 정체성 유지 권리를 공동체가 인식해야 한다는 ①이 핵심입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "이민자는 미래 사회의 긍정적 변화에 핵심적 역할을 수행할 수 있다.",
+          "reason": "과거 이민자의 변화 기여는 사례이고 중심 과제는 문화적 차이와 권리의 인정입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_23",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 23,
+      "type": "주제",
+      "group": "topic",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "rawText": "23. \t다음 글의 주제로 가장 적절한 것은?\nThe primary purpose of commercial music radio broadcasting\nis to deliver an audience to a group of advertisers and sponsors.\nTo achieve commercial success, that audience must be as large\nas \tpossible. \tMore \tthan \tany \tother \tcharacteristics \t(such \tas\ndemographic or psychographic profile, purchasing power, level\nof \tinterest, \tdegree \tof \tsatisfaction, \tquality \tof \tattention \tor\nemotional state), the quantity of an audience aggregated as a\nmass is the most significant metric for broadcasters seeking to\nmake music radio for profitable ends. As a result, broadcasters\nattempt to maximise their audience size by playing music that is\npopular, or ― at the very least ― music that can be relied upon\nnot to cause audiences to switch off their radio or change the\nstation. Audience retention is a key value (if not the key value)\nfor many music programmers and for radio station management.\nIn consequence, a high degree of risk aversion frequently marks\nout \tthe ‘successful’ radio music programmer. \tPlaylists \tare\nrestricted, and often very small.\n* aggregate: 모으다 \t** aversion: 싫어함\n① features of music playlists appealing to international audiences\n② influence of advertisers on radio audiences’ musical preferences\n③ difficulties of increasing audience size in radio music programmes\n④ necessity of satisfying listeners’ diverse needs in the radio business\n⑤ outcome of music radio businesses’ attempts to attract large audiences",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "features of music playlists appealing to international audiences"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "influence of advertisers on radio audiences’ musical preferences"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "difficulties of increasing audience size in radio music programmes"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "necessity of satisfying listeners’ diverse needs in the radio business"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "outcome of music radio businesses’ attempts to attract large audiences"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1462,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          14
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_23",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 23,
+        "group": "topic",
+        "type": "주제",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 상업 라디오는 큰 청취자 집단을 유지하려고 위험을 피하고 인기 있고 제한된 곡목을 반복합니다.",
+        "typeApproach": "주제 문제는 사업 목표, 선택한 전략, 그 결과를 한 문장으로 묶습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "broadcasters\nattempt to maximise their audience size by playing music that is\npopular",
+            "charStart": 587,
+            "role": "청취자 확대 전략",
+            "translation": "방송사는 인기 음악으로 청취자 규모를 최대화하려 합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Playlists \tare\nrestricted, and often very small.",
+            "charStart": 1030,
+            "role": "전략의 결과",
+            "translation": "그 결과 곡목 목록은 제한되고 매우 작아집니다."
+          }
+        ],
+        "correctReason": "큰 청취자 집단을 끌어들이려는 시도가 제한된 안전한 곡목으로 이어진다는 ⑤가 맞습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "necessity of satisfying listeners’ diverse needs in the radio business",
+          "reason": "다양한 요구 충족보다 최대 규모의 청취자를 잃지 않는 안전한 선택을 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_24",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 24,
+      "type": "제목",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "24. 다음 글의 제목으로 가장 적절한 것은? [3점]",
+      "rawText": "24. \t다음 글의 제목으로 가장 적절한 것은? [3점]\nBefore the web, newspaper archives were largely the musty\ndomain of professional researchers and journalism students.\nJournalism was, by definition, current. The general accessibility\nof archives has greatly extended the shelf life of journalism,\nwith older stories now regularly cited to provide context for\nmore current ones. With regard to how meaning is made of\ncomplex issues encountered in the news, this departure can be\nunderstood as a readiness by online news consumers to engage\nwith the underlying issues and contexts of the news that was not\napparent in, or even possible for, print consumers. One of the\nemergent qualities of online news, determined in part by the\ndepth of readily accessible online archives, seems to be the\npossibility of understanding news stories as the manifest\noutcomes of larger economic, social and cultural issues rather\nthan short-lived and unconnected media spectacles.\n* archive: 기록 보관소 \t** musty: 곰팡내 나는 \t*** manifest: 분명한\n① Web-based Journalism: Lasting Longer and Contextually Wider\n② With the Latest Content, Online News Beats Daily Newspapers!\n③ How Online Media Journalists Reveal Hidden Stories Behind News\n④ Let’s Begin a Journey to the Past with Printed Newspapers!\n⑤ Present and Future of Journalism in the Web World\n\n-- 3 of 8 --\n\n4\n4 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Web-based Journalism: Lasting Longer and Contextually Wider"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "With the Latest Content, Online News Beats Daily Newspapers!"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "How Online Media Journalists Reveal Hidden Stories Behind News"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Let’s Begin a Journey to the Past with Printed Newspapers!"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Present and Future of Journalism in the Web World"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1321,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          15
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_24",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 24,
+        "group": "topic",
+        "type": "제목",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 웹 기록 보관소는 오래된 기사의 수명을 늘리고 현재 뉴스를 더 넓은 맥락에서 이해하게 합니다.",
+        "typeApproach": "제목은 글에서 제시한 두 변화인 지속 기간과 맥락 확장을 모두 담아야 합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "general accessibility\nof archives has greatly extended the shelf life of journalism",
+            "charStart": 194,
+            "role": "기사 수명 연장",
+            "translation": "기록 보관소 접근성이 보도의 유효 기간을 크게 늘렸습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "possibility of understanding news stories as the manifest\noutcomes of larger economic, social and cultural issues",
+            "charStart": 771,
+            "role": "맥락 확장",
+            "translation": "뉴스를 더 큰 경제·사회·문화 문제의 결과로 이해할 수 있습니다."
+          }
+        ],
+        "correctReason": "온라인 보도의 지속성과 맥락 폭을 함께 표현한 ①이 가장 적절합니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "With the Latest Content, Online News Beats Daily Newspapers!",
+          "reason": "최신성 경쟁이 아니라 오래된 기사 접근과 맥락 이해가 중심입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_25",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 25,
+      "type": "도표",
+      "group": "info",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "25. 다음 표의 내용과 일치하지 않는 것은?",
+      "rawText": "25. \t다음 표의 내용과 일치하지 않는 것은?\nThe table above shows the college enrollment rates of 18- to\n24-year-olds from five racial/ethnic groups in the U.S. in\n2011, 2016, and 2021. ① Among the five groups, Asians\nexhibited the highest college enrollment rate with more than\n50% in each year listed in the table. ② Whites were the\nsecond highest in terms of the college enrollment rate among\nall the groups in all three years, while the rate dropped below\n40% in 2021. ③ The college enrollment rates of both Blacks\nand Hispanics were higher than 35% but lower than 40% in\n2011 and in 2021. ④ Among the years displayed in the table,\n2016 was the only year when the college enrollment rate of\nHispanics was higher than that of Blacks. ⑤ In each year,\nAmerican Indians/Alaska Natives showed the lowest college\nenrollment rate.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Among the five groups, Asians exhibited the highest college enrollment rate with more than 50% in each year listed in the table."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Whites were the second highest in terms of the college enrollment rate among all the groups in all three years, while the rate dropped below 40% in 2021."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "The college enrollment rates of both Blacks and Hispanics were higher than 35% but lower than 40% in 2011 and in 2021."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Among the years displayed in the table, 2016 was the only year when the college enrollment rate of Hispanics was higher than that of Blacks."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "In each year, American Indians/Alaska Natives showed the lowest college enrollment rate."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 810,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "data_table",
+        "assetPath": "english/assets/2024-09/q25-figure.png",
+        "sha256": "80bfa1b30d7fd440f95ea82aece0ed51f584d064f5ee869525d33e38720dddba",
+        "sourcePage": 4,
+        "alt": "College enrollment rates 원본 표. White: 2011 45%, 2016 42%, 2021 38%. Black: 2011 37%, 2016 36%, 2021 37%. Hispanic: 2011 35%, 2016 39%, 2021 33%. Asian: 2011 60%, 2016 58%, 2021 61%. American Indian/Alaska Native: 2011 24%, 2016 19%, 2021 28%."
+      },
+      "review": {
+        "id": "2024_09_25",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 25,
+        "group": "info",
+        "type": "도표",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 2021년 Hispanic 진학률은 33%로 35%보다 높지 않으므로 2011년과 2021년 모두 35% 초과라는 설명은 틀립니다.",
+        "typeApproach": "도표 문제는 연도별 조건을 각각 검사하고 ‘모두’라는 표현이 한 수치라도 어긋나는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Black: 2011 37%, 2016 36%, 2021 37%",
+            "role": "Black 수치",
+            "translation": "Black 진학률은 2011년 37%, 2016년 36%, 2021년 37%입니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Hispanic: 2011 35%, 2016 39%, 2021 33%",
+            "role": "Hispanic 수치",
+            "translation": "Hispanic 진학률은 2011년 35%, 2016년 39%, 2021년 33%입니다."
+          }
+        ],
+        "correctReason": "Hispanic은 2011년에도 35%를 초과하지 않고 2021년에는 33%이므로 ③이 불일치합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "Among the years displayed in the table, 2016 was the only year when the college enrollment rate of Hispanics was higher than that of Blacks.",
+          "reason": "2016년에만 Hispanic 39%가 Black 36%보다 높습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_26",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 26,
+      "type": "내용 일치",
+      "group": "info",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "26. Charles Rosen에 관한 다음 글의 내용과 일치하지 않는 것은?",
+      "rawText": "26. \tCharles Rosen에 관한 다음 글의 내용과 일치하지 않는 것은?\nCharles Rosen, a virtuoso pianist and distinguished writer,\nwas born in New York in 1927. Rosen displayed a remarkable\ntalent for the piano from his early childhood. In 1951, the year\nhe earned his doctoral degree in French literature at Princeton\nUniversity, Rosen made both his New York piano debut and\nhis first recordings. To glowing praise, he appeared in numerous\nrecitals and orchestral concerts around the world. Rosen’s\nperformances impressed some of the 20th century’s most\nwell-known composers, who invited him to play their music.\nRosen was also the author of many widely admired books\nabout music. His most famous book, The Classical Style, was\nfirst published in 1971 and won the U.S. National Book Award\nthe next year. This work, which was reprinted in an expanded\nedition in 1997, remains a landmark in the field. While writing\nextensively, Rosen continued to perform as a pianist for the\nrest of his life until he died in 2012.\n① 어려서부터 피아노에 재능을 보였다.\n② 프랑스 문학으로 박사 학위를 받았다.\n③ 유명 작곡가들로부터 그들의 작품 연주를 요청받았다.\n④ The Classical Style이 처음으로 출판되고 다음 해에 상을 받았다.\n⑤ 피아니스트 활동을 중단하고 글쓰기에 매진하였다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "어려서부터 피아노에 재능을 보였다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "프랑스 문학으로 박사 학위를 받았다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "유명 작곡가들로부터 그들의 작품 연주를 요청받았다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "The Classical Style이 처음으로 출판되고 다음 해에 상을 받았다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "피아니스트 활동을 중단하고 글쓰기에 매진하였다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1141,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_26",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 26,
+        "group": "info",
+        "type": "내용 일치",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. Rosen은 많은 글을 쓰는 동안에도 죽을 때까지 피아니스트 공연을 계속했습니다.",
+        "typeApproach": "인물 일치 문제는 활동의 시작·중단·지속 시점을 구분해 대조합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "While writing\nextensively, Rosen continued to perform as a pianist for the\nrest of his life until he died in 2012.",
+            "charStart": 875,
+            "role": "활동 지속",
+            "translation": "많은 글을 쓰면서도 2012년 죽을 때까지 피아니스트 공연을 계속했습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "The Classical Style, was\nfirst published in 1971 and won the U.S. National Book Award\nthe next year.",
+            "charStart": 678,
+            "role": "출판과 수상",
+            "translation": "책은 1971년 출판되고 다음 해 미국 도서상을 받았습니다."
+          }
+        ],
+        "correctReason": "피아노 활동을 중단하지 않았으므로 ⑤가 불일치합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "The Classical Style이 처음으로 출판되고 다음 해에 상을 받았다.",
+          "reason": "1971년 출판되고 이듬해 상을 받았다는 원문과 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_27",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 27,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "27. Brushwood National Park Tour Program에 관한 다음 안내문의",
+      "rawText": "27. \tBrushwood National Park Tour Program에 관한 다음 안내문의\n내용과 일치하지 않는 것은?\n① 자원봉사 안내자가 동행한다.\n② 주말에 진행된다.\n③ QR 코드를 스캔하여 신청한다.\n④ 각 참가자에게 물이 한 병씩 제공될 것이다.\n⑤ 날씨에 따라 취소될 수 있다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "자원봉사 안내자가 동행한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "주말에 진행된다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "QR 코드를 스캔하여 신청한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "각 참가자에게 물이 한 병씩 제공될 것이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "날씨에 따라 취소될 수 있다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 165,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "notice",
+        "assetPath": "english/assets/2024-09/q27-notice.png",
+        "sha256": "1359410881fe90f2a8d6b3e737fc1a461f35b3238799e158d11d3311a18f2f14",
+        "sourcePage": 4,
+        "alt": "Brushwood National Park Tour Program 원본 안내문. Enjoy free park walks with our volunteer guides. Open on weekdays from March to November. Scan the QR code to sign up. A bottle of water will be provided to each participant. Tours may be canceled due to weather conditions."
+      },
+      "review": {
+        "id": "2024_09_27",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 27,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 국립공원 투어는 3월부터 11월까지 평일에만 운영되므로 주말에 진행된다는 설명은 틀립니다.",
+        "typeApproach": "안내문은 운영 요일·신청 방법·제공 물품·취소 조건을 각각 표처럼 대조합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Open on weekdays from March to November",
+            "role": "운영 요일",
+            "translation": "3월부터 11월까지 평일에 운영합니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Enjoy free park walks with our volunteer guides",
+            "role": "안내자 동행",
+            "translation": "자원봉사 안내자와 무료 공원 산책을 합니다."
+          }
+        ],
+        "correctReason": "평일 운영이므로 주말에 진행된다는 ②가 불일치합니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "날씨에 따라 취소될 수 있다.",
+          "reason": "날씨 상황에 따라 투어가 취소될 수 있다고 명시되어 있습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_28",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 28,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "28. WGHS Geography Photo Contest에 관한 다음 안내문의 내용과",
+      "rawText": "28. \tWGHS Geography Photo Contest에 관한 다음 안내문의 내용과\n일치하는 것은?\n① 처음으로 개최되는 대회이다.\n② 출품 사진 주제에 제한이 없다.\n③ 100 MB 크기의 파일을 제출할 수 있다.\n④ 투표는 일주일간 실시된다.\n⑤ 학생들이 선정한 사진들이 전시될 것이다.\nWGHS Geography Photo Contest\nThe event you’ve been waiting for all this year is finally\nhere! Please join Wood Gate High School’s 10th annual\nGeography Photo Contest.\nGuidelines\n󰠂 Participants should use the theme of the “Beauty of\nRivers Crossing Our City.”\n󰠂 Submissions are limited to one photo per person.\n󰠂 Files should not be larger than 50 MB.\nSchedule\nWhen \tWhere\nSubmission \tOctober 2－October 8 Email:\ngeography@woodgate.edu\nVoting \tOctober 11－October 13 School Website:\nhttps://www.woodgate.edu\nExhibition October 16－October 20 \tMain Lobby\nNote\n󰠂 The top 10 photos selected by students will be exhibited.\n※ For more information, visit the geography teacher’s room.\nBrushwood National Park Tour Program\nWalking in nature is a great way to stay fit and healthy.\nEnjoy free park walks with our volunteer guides, while\nappreciating the beautiful sights and sounds of the forest.\nDetails\n∙Open on weekdays from March to November\n∙Easy walk along the path for one hour (3 km)\n∙Groups of 15 to 20 per guide\nRegistration\n∙Scan the QR code to sign up for the tour.\nNote\n∙A bottle of water will be provided to each participant.\n∙Children under 12 must be accompanied by an adult.\n∙Tours may be canceled due to weather conditions.\n※ If you have any questions, please email us at\nbrushwoodtour@parks.org.\n\n-- 4 of 8 --\n\n5\n5 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "처음으로 개최되는 대회이다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "출품 사진 주제에 제한이 없다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "100 MB 크기의 파일을 제출할 수 있다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "투표는 일주일간 실시된다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "학생들이 선정한 사진들이 전시될 것이다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1493,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "figure": {
+        "kind": "notice_with_schedule",
+        "assetPath": "english/assets/2024-09/q28-notice.png",
+        "sha256": "ece388fcd3efba14bb72a0ab93da382cfd1e9bd0b68357a1f6d2ad4a7d8433b2",
+        "sourcePage": 4,
+        "alt": "WGHS Geography Photo Contest 원본 안내문. 10th annual Geography Photo Contest. Theme: Beauty of Rivers Crossing Our City. One photo per person, maximum 50 MB. Submission October 2–8, voting October 11–13, exhibition October 16–20. The top 10 photos selected by students will be exhibited."
+      },
+      "review": {
+        "id": "2024_09_28",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 28,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 학생들이 뽑은 상위 10장의 사진이 학교 본관 로비에 전시됩니다.",
+        "typeApproach": "일치하는 선지를 찾을 때 행사 횟수·주제·파일 크기·기간·선정 주체를 원문과 대조합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "The top 10 photos selected by students will be exhibited",
+            "role": "전시 사진 선정",
+            "translation": "학생들이 선정한 상위 10장의 사진이 전시됩니다."
+          },
+          {
+            "in": "figure",
+            "quote": "10th annual Geography Photo Contest",
+            "role": "개최 횟수",
+            "translation": "올해가 열 번째 연례 지리 사진 대회입니다."
+          }
+        ],
+        "correctReason": "학생들이 선정한 사진이 전시된다는 ⑤만 안내문과 일치합니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "100 MB 크기의 파일을 제출할 수 있다.",
+          "reason": "파일은 50MB보다 크면 안 되므로 100MB 파일은 제출할 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_29",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 29,
+      "type": "어법",
+      "group": "grammar",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "29. 다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?",
+      "rawText": "29. \t다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?\nViewing the stress response as a resource can transform the\nphysiology of fear into the biology of courage. It can turn a\nthreat into a challenge and can help you ① do your best under\npressure. Even when the stress doesn’t feel helpful ― as in the\ncase \tof \tanxiety ― welcoming \tit \tcan \ttransform ② it \tinto\nsomething that is helpful: more energy, more confidence, and\na greater willingness to take action. You can apply this\nstrategy in your own life anytime you notice signs of stress.\nWhen you feel your heart beating or your breath quickening,\n③ realizing that it is your body’s way of trying to give you\nmore energy. If you notice tension in your body, remind\nyourself ④ that the stress response gives you access to your\nstrength. Sweaty palms? Remember what it felt like ⑤ to go\non \tyour \tfirst \tdate ― palms \tsweat \twhen \tyou’re \tclose \tto\nsomething you want.\n* physiology: 생리 기능",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "do your best"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "it"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "realizing"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "that"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "to go"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 920,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          18
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_29",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 29,
+        "group": "grammar",
+        "type": "어법",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. When 절 뒤에는 독자에게 행동을 지시하는 주절이 필요하므로 realizing이 아니라 realize가 와야 합니다.",
+        "typeApproach": "어법 문제는 문장마다 서술어가 있는지 먼저 확인하고 분사와 명령문의 형태를 구분합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "When you feel your heart beating or your breath quickening,\n③ realizing that it is your body’s way of trying to give you\nmore energy.",
+            "charStart": 522,
+            "role": "주절 오류",
+            "translation": "심장이나 호흡이 빨라질 때 그것이 에너지를 주는 몸의 방식임을 알아차리라는 문장입니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "If you notice tension in your body, remind\nyourself",
+            "charStart": 656,
+            "role": "명령문 구조",
+            "translation": "다음 문장도 If 절 뒤에 remind라는 명령형 주절을 사용합니다."
+          }
+        ],
+        "correctReason": "When 종속절만 있고 주절 서술어가 없으므로 realizing을 명령형 realize로 고쳐야 합니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "to go",
+          "reason": "what it felt like 뒤에서 첫 데이트를 하러 갔던 경험을 나타내는 to go는 적절합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_30",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 30,
+      "type": "어휘",
+      "group": "vocab",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "30. 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지",
+      "rawText": "30. \t다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지\n않은 것은? [3점]\nWhy is the value of place so important? From a historical\nperspective, until the 1700s textile production was a hand\nprocess \tusing \tthe \tfibers \tavailable \twithin \ta ① particular\ngeographic region, for example, cotton, wool, silk, and flax.\nTrade among regions ② increased the availability of these\nfibers and associated textiles made from the fibers. The First\nIndustrial Revolution and subsequent technological advancements\nin manufactured fibers ③ added to the fact that fibers and\ntextiles were no longer “place-bound.” Fashion companies\ncreated and consumers could acquire textiles and products\nmade from textiles with little or no connection to where, how,\nor by whom the products were made. This ④ countered a\ndisconnect between consumers and the products they use on a\ndaily basis, a loss of understanding and appreciation in the\nskills and resources necessary to create these products, and an\nassociated \tdisregard \tfor \tthe \thuman \tand \tnatural resources\nnecessary for the products’ creation. Therefore, renewing a\nvalue on place ⑤ reconnects the company and the consumer\nwith \tthe \tpeople, \tgeography, \tand \tculture \tof \ta \tparticular\nlocation.\n* textile: 직물\n[31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "particular"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "increased"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "added"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "countered"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "reconnects"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1259,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_30",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 30,
+        "group": "vocab",
+        "type": "어휘",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 생산 장소와 소비자의 연결 상실은 단절을 막은 것이 아니라 만들어 냈으므로 countered는 caused로 바뀌어야 합니다.",
+        "typeApproach": "어휘 문제는 결과 명사의 긍정·부정 방향이 원인 동사와 맞는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "made from textiles with little or no connection to where, how,\nor by whom the products were made.",
+            "charStart": 652,
+            "role": "연결 상실",
+            "translation": "제품이 어디서 어떻게 누구에 의해 만들어졌는지 거의 연결되지 않게 되었습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "This ④ countered a\ndisconnect between consumers and the products they use",
+            "charStart": 750,
+            "role": "방향 충돌",
+            "translation": "이 변화가 소비자와 제품의 단절을 막았다는 표현이 문맥과 반대입니다."
+          }
+        ],
+        "correctReason": "장소와의 연결 상실이 소비자와 제품의 단절을 초래했으므로 ④가 부적절합니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "reconnects",
+          "reason": "장소의 가치를 회복하면 회사와 소비자를 지역의 사람·지리·문화에 다시 연결하므로 적절합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_31",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 31,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "31. In the post-World War II years after 1945, unparalleled",
+      "rawText": "31. \tIn the post-World War II years after 1945, unparalleled\neconomic growth fueled a building boom and a massive\nmigration from the central cities to the new suburban areas.\nThe suburbs were far more dependent on the automobile,\nsignaling \tthe \tshift \tfrom \tprimary \tdependence \ton \tpublic\ntransportation to private cars. Soon this led to the construction\nof better highways and freeways and the decline and even loss\nof public transportation. With all of these changes came a\nof leisure. As more people owned their\nown homes, with more space inside and lovely yards outside,\ntheir recreation and leisure time was increasingly centered\naround the home or, at most, the neighborhood. One major\nactivity of this home-based leisure was watching television.\nNo longer did one have to ride the trolly to the theater to\nwatch a movie; similar entertainment was available for free\nand more conveniently from television.\n* unparalleled: 유례없는\n① downfall\n② uniformity\n③ restoration\n④ privatization\n⑤ customization",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "downfall"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "uniformity"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "restoration"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "privatization"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "customization"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1004,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_31",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 31,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 교외 주택·자가용·텔레비전의 확산으로 여가가 공공장소에서 가정 중심의 사적 활동으로 바뀌었습니다.",
+        "typeApproach": "빈칸 뒤 사례들이 공통으로 보이는 변화의 방향을 한 추상명사로 묶습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "their recreation and leisure time was increasingly centered\naround the home",
+            "charStart": 577,
+            "role": "가정 중심 여가",
+            "translation": "여가 시간이 점점 가정을 중심으로 이루어졌습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "similar entertainment was available for free\nand more conveniently from television.",
+            "charStart": 830,
+            "role": "사적 소비",
+            "translation": "비슷한 오락을 텔레비전으로 집에서 무료로 더 편리하게 즐길 수 있었습니다."
+          }
+        ],
+        "correctReason": "여가가 집과 개인 소유 수단 중심으로 이동했으므로 privatization이 적절합니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "customization",
+          "reason": "여가가 개인별 맞춤화되었다는 내용이 아니라 공공 영역에서 가정으로 사유화되었다는 내용입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_32",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 32,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "32. Many people create and share pictures and videos on the",
+      "rawText": "32. \tMany people create and share pictures and videos on the\nInternet. The difficulty is finding what you want. Typically,\npeople want to search using words (rather than, say, example\nsketches). Because most pictures don’t come with words\nattached, it is natural to try and build tagging systems that tag\nimages with relevant words. The underlying machinery is\nstraightforward ― we apply image classification and object\ndetection methods and tag the image with the output words.\nBut tags aren’t \t.\nIt matters who is doing what, and tags don’t capture this. For\nexample, tagging a picture of a cat in the street with the object\ncategories “cat”, “street”, “trash can” and “fish bones” leaves\nout the information that the cat is pulling the fish bones out of\nan open trash can on the street.\n① a set of words that allow users to identify an individual object\n② a comprehensive description of what is happening in an image\n③ a reliable resource for categorizing information by pictures\n④ a primary means of organizing a sequential order of words\n⑤ a useful filter for sorting similar but not identical images\n\n-- 5 of 8 --\n\n6\n6 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "a set of words that allow users to identify an individual object"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "a comprehensive description of what is happening in an image"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "a reliable resource for categorizing information by pictures"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "a primary means of organizing a sequential order of words"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "a useful filter for sorting similar but not identical images"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1126,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          20
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_32",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 32,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 이미지 태그는 물체 이름은 담지만 누가 무엇을 하는지까지 설명하는 종합적 문장은 아닙니다.",
+        "typeApproach": "빈칸 뒤의 결함 사례가 무엇을 빠뜨렸는지 찾아 선택지를 부정문에 넣습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "It matters who is doing what, and tags don’t capture this.",
+            "charStart": 498,
+            "role": "태그의 한계",
+            "translation": "누가 무엇을 하는지가 중요하지만 태그는 이를 담지 못합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "leaves\nout the information that the cat is pulling the fish bones out of\nan open trash can on the street.",
+            "charStart": 684,
+            "role": "누락 사례",
+            "translation": "고양이가 쓰레기통에서 생선 뼈를 꺼낸다는 행동 정보가 빠집니다."
+          }
+        ],
+        "correctReason": "태그는 이미지에서 벌어지는 일을 포괄적으로 설명하지 못하므로 ②가 맞습니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "a set of words that allow users to identify an individual object",
+          "reason": "태그는 실제로 cat, street처럼 개별 물체를 식별하는 단어 집합 역할은 합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_33",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 33,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "33. An invention or discovery that is too far ahead of its time is",
+      "rawText": "33. \tAn invention or discovery that is too far ahead of its time is\nworthless; no one can follow. Ideally, an innovation opens up\nonly the next step from what is known and invites the culture to\nmove forward one hop. An overly futuristic, unconventional, or\nvisionary invention can fail initially (it may lack essential\nnot-yet-invented \tmaterials \tor \ta \tcritical \tmarket \tor \tproper\nunderstanding) \tyet \tsucceed \tlater, \twhen \tthe \tecology \tof\nsupporting ideas catches up. Gregor Mendel’s 1865 theories of\ngenetic heredity were correct but ignored for 35 years. His sharp\ninsights were not accepted because they did not explain the\nproblems biologists had at the time, nor did his explanation\noperate by known mechanisms, so his discoveries were out of\nreach even for the early adopters. Decades later science faced\nthe urgent questions that Mendel’s discoveries could answer.\nNow his insights \t. Within\na few years of one another, three different scientists each\nindependently rediscovered Mendel’s forgotten work, which of\ncourse had been there all along. [3점]\n* ecology: 생태 환경 \t** heredity: 유전\n① caught up to modern problems\n② raised even more questions\n③ addressed past and current topics alike\n④ were only one step away\n⑤ regained acceptance of the public",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "caught up to modern problems"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "raised even more questions"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "addressed past and current topics alike"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "were only one step away"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "regained acceptance of the public"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1262,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          21
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_33",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 33,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 과학이 Mendel의 발견이 답할 수 있는 문제에 도달하자 그의 통찰은 문화가 받아들일 다음 한 걸음이 되었습니다.",
+        "typeApproach": "빈칸은 첫 문단의 일반 원리와 마지막 재발견 사례를 같은 표현으로 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "an innovation opens up\nonly the next step from what is known",
+            "charStart": 107,
+            "role": "수용 가능한 거리",
+            "translation": "혁신은 이미 알려진 것에서 다음 한 걸음만 열 때 받아들여집니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Decades later science faced\nthe urgent questions that Mendel’s discoveries could answer.",
+            "charStart": 790,
+            "role": "시대의 추격",
+            "translation": "수십 년 뒤 과학이 Mendel의 발견으로 답할 긴급한 문제에 직면했습니다."
+          }
+        ],
+        "correctReason": "지지 생태계가 따라잡자 통찰이 단 한 걸음 앞선 상태가 되었다는 ④가 맞습니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "regained acceptance of the public",
+          "reason": "대중의 재수용보다 과학적 문제와 주변 지식이 발견을 이해할 수준에 도달했다는 점이 핵심입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_34",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 34,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "34. Prior to photography, .",
+      "rawText": "34. \tPrior to photography, \t.\nWhile painters have always lifted particular places out of their\n‘dwelling’ and transported them elsewhere, paintings were\ntime-consuming to produce, relatively difficult to transport and\none-of-a-kind. The multiplication of photographs especially\ntook place with the introduction of the half-tone plate in\nthe 1880s that made possible the mechanical reproduction\nof \tphotographs \tin \tnewspapers, \tperiodicals, \tbooks \tand\nadvertisements. Photography became coupled to consumer\ncapitalism \tand \tthe \tglobe \twas \tnow \toffered \t‘in \tlimitless\nquantities, figures, landscapes, events which had not previously\nbeen utilised either at all, or only as pictures for one customer’.\nWith capitalism’s arrangement of the world as a ‘department\nstore’, ‘the proliferation and circulation of representations ...\nachieved \ta \tspectacular \tand \tvirtually \tinescapable \tglobal\nmagnitude’. \tGradually \tphotographs \tbecame \tcheap \tmass-\nproduced objects that made the world visible, aesthetic and\ndesirable. Experiences were ‘democratised’ by translating them\ninto \tcheap \timages. \tLight, \tsmall \tand \tmass-produced\nphotographs became dynamic vehicles for the spatiotemporal\ncirculation of places. [3점]\n* proliferation: 확산 \t** magnitude: (큰) 규모 \t*** aesthetic: 미적인\n① paintings alone connected with nature\n② painting was the major form of art\n③ art held up a mirror to the world\n④ desire for travel was not strong\n⑤ places did not travel well",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "paintings alone connected with nature"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "painting was the major form of art"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "art held up a mirror to the world"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "desire for travel was not strong"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "places did not travel well"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1454,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          22
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_34",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 34,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 사진 이전에는 장소를 재현하고 복제해 널리 이동시키기 어려웠지만 사진은 장소의 대량 유통을 가능하게 했습니다.",
+        "typeApproach": "빈칸 뒤의 과거 제약과 이후 기술 변화가 해소한 문제를 한 문장으로 요약합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "paintings were\ntime-consuming to produce, relatively difficult to transport and\none-of-a-kind.",
+            "charStart": 138,
+            "role": "회화의 이동 제약",
+            "translation": "회화는 제작에 오래 걸리고 운반이 어렵고 단 하나뿐이었습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Light, \tsmall \tand \tmass-produced\nphotographs became dynamic vehicles for the spatiotemporal\ncirculation of places.",
+            "charStart": 1095,
+            "role": "사진의 장소 유통",
+            "translation": "가볍고 작고 대량생산된 사진은 장소를 시공간적으로 유통하는 수단이 되었습니다."
+          }
+        ],
+        "correctReason": "사진 이전에는 장소의 재현물이 널리 이동하기 어려웠다는 ⑤가 이후 설명과 정확히 대비됩니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "painting was the major form of art",
+          "reason": "회화가 주요 예술 형식이었다는 점이 아니라 장소 이미지의 복제·운반 제약이 중심입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_35",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 35,
+      "type": "무관한 문장",
+      "group": "irrelevant",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "35. 다음 글에서 전체 흐름과 관계 없는 문장은?",
+      "rawText": "35. \t다음 글에서 전체 흐름과 관계 없는 문장은?\nAlthough organizations are offering telecommuting programs\nin greater numbers than ever before, acceptance and use of these\nprograms are still limited by a number of factors. ① These\nfactors include manager reliance on face-to-face management\npractices, lack of telecommuting training within an organization,\nmisperceptions of and discomfort with flexible workplace\nprograms, and a lack of information about the effects of\ntelecommuting on an organization’s bottom line. ② Despite\nthese limitations, at the beginning of the 21st century, a new\n“anytime, anywhere” work culture is emerging. ③ Care must\nbe taken to select employees whose personal and working\ncharacteristics are best suited for telecommuting. ④ Continuing\nadvances in information technology, the expansion of a global\nworkforce, and increased desire to balance work and family are\nonly three of the many factors that will gradually reduce the\ncurrent barriers to telecommuting as a dominant workforce\ndevelopment. ⑤ With \timplications \tfor \torganizational \tcost\nsavings, especially with regard to lower facility costs, increased\nemployee \tflexibility, \tand \tproductivity, \ttelecommuting \tis\nincreasingly of interest to many organizations.\n* telecommute: (컴퓨터로) 집에서 근무하다\n[36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한\n것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "These factors include manager reliance on face-to-face management practices, lack of telecommuting training within an organization, misperceptions of and discomfort with flexible workplace programs, and a lack of information about the effects of telecommuting on an organization’s bottom line."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Despite these limitations, at the beginning of the 21st century, a new “anytime, anywhere” work culture is emerging."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Care must be taken to select employees whose personal and working characteristics are best suited for telecommuting."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Continuing advances in information technology, the expansion of a global workforce, and increased desire to balance work and family are only three of the many factors that will gradually reduce the current barriers to telecommuting as a dominant workforce development."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "With implications for organizational cost savings, especially with regard to lower facility costs, increased employee flexibility, and productivity, telecommuting is increasingly of interest to many organizations."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1310,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_35",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 35,
+        "group": "irrelevant",
+        "type": "무관한 문장",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 글은 원격근무의 현재 장벽과 확산 요인을 설명하지만 ③만 원격근무에 맞는 직원 선발 기준을 말합니다.",
+        "typeApproach": "무관한 문장은 앞뒤 문장이 공유하는 문제-변화 흐름에서 벗어난 별도 실행 조언을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "acceptance and use of these\nprograms are still limited by a number of factors.",
+            "charStart": 126,
+            "role": "현재 장벽",
+            "translation": "원격근무 프로그램의 수용과 이용은 여러 요인으로 제한됩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "③ Care must\nbe taken to select employees whose personal and working\ncharacteristics are best suited for telecommuting.",
+            "charStart": 620,
+            "role": "직원 선발 조언",
+            "translation": "③은 원격근무에 적합한 특성을 가진 직원을 골라야 한다는 별도 조언입니다."
+          }
+        ],
+        "correctReason": "①·②·④·⑤는 장벽과 원격근무 확산 전망을 이어 가지만 ③은 직원 선발이라는 다른 주제로 흐름을 끊습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "Continuing advances in information technology, the expansion of a global workforce, and increased desire to balance work and family are only three of the many factors that will gradually reduce the current barriers to telecommuting as a dominant workforce development.",
+          "reason": "④는 앞의 장벽이 기술·세계화·일과 가정 균형 요구로 줄어들 것이라는 중심 흐름입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_36",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 36,
+      "type": "순서",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "36.",
+      "rawText": "36.\nThe \tintuitive \tability \tto \tclassify \tand \tgeneralize \tis\nundoubtedly a useful feature of life and research, but it\ncarries a high cost, such as in our tendency to stereotype\ngeneralizations about people and situations.\n(A) Intuitively and quickly, we mentally sort things into groups\nbased on what we perceive the differences between them\nto be, and that is the basis for stereotyping. Only afterwards\ndo we examine (or not examine) more evidence of how\nthings are differentiated, and the degree and significance\nof the variations.\n(B) Our brain performs these tasks efficiently and automatically,\nusually \twithout \tour \tawareness. \tThe \treal \tdanger \tof\nstereotypes is not their inaccuracy, but their lack of\nflexibility and their tendency to be preserved, even when\nwe have enough time to stop and consider.\n(C) For most people, the word stereotype arouses negative\nconnotations: it implies a negative bias. But, in fact,\nstereotypes \tdo \tnot \tdiffer \tin \tprinciple \tfrom \tall \tother\ngeneralizations; generalizations about groups of people\nare not necessarily always negative.\n* intuitive: 직관적인 \t** connotation: 함축\n① (A) － (C) － (B) \t② (B) － (A) － (C)\n③ (B) － (C) － (A) \t④ (C) － (A) － (B)\n⑤ (C) － (B) － (A)\n\n-- 6 of 8 --\n\n7\n7 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1235,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_36",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 36,
+        "group": "order",
+        "type": "순서",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 고정관념이 일반화와 원리가 같다고 전환하는 (C), 분류 과정을 설명하는 (A), 그 자동성과 위험을 정리하는 (B) 순서입니다.",
+        "typeApproach": "순서 문제는 역접, 지시 표현, 일반 원리에서 작동 방식과 위험으로 이어지는 범위를 봅니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "stereotypes \tdo \tnot \tdiffer \tin \tprinciple \tfrom \tall \tother\ngeneralizations",
+            "charStart": 930,
+            "role": "첫 전환",
+            "translation": "(C)는 고정관념도 다른 일반화와 원리가 다르지 않다고 설명합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "we mentally sort things into groups\nbased on what we perceive the differences between them\nto be",
+            "charStart": 254,
+            "role": "분류 과정",
+            "translation": "(A)는 차이라고 인식한 기준으로 대상을 집단에 빠르게 분류한다고 설명합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Our brain performs these tasks efficiently and automatically",
+            "charStart": 542,
+            "role": "지시어 연결",
+            "translation": "(B)의 these tasks는 (A)의 분류와 증거 검토를 받습니다."
+          }
+        ],
+        "correctReason": "고정관념 재정의 (C) → 분류 작동 (A) → 자동성과 경직 위험 (B)으로 이어져 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(C) - (B) - (A)",
+          "reason": "(B)의 these tasks가 받을 구체적 분류 과정은 (A)에서 먼저 제시되어야 합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_37",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 37,
+      "type": "순서",
+      "group": "order",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "37.",
+      "rawText": "37.\nPlants \tshow \tfinely \ttuned \tadaptive \tresponses \twhen\nnutrients are limiting. Gardeners may recognize yellow\nleaves as a sign of poor nutrition and the need for fertilizer.\n(A) In contrast, plants with a history of nutrient abundance are\nrisk averse and save energy. At all developmental stages,\nplants respond to environmental changes or unevenness so\nas to be able to use their energy for growth, survival, and\nreproduction, while limiting damage and nonproductive\nuses of their valuable energy.\n(B) Research in this area has shown that plants are constantly\naware of their position in the environment, in terms of\nboth space and time. Plants that have experienced variable\nnutrient availability in the past tend to exhibit risk-taking\nbehaviors, such as spending energy on root lengthening\ninstead of leaf production.\n(C) But if a plant does not have a caretaker to provide\nsupplemental minerals, it can proliferate or lengthen its\nroots and develop root hairs to allow foraging in more\ndistant soil patches. Plants can also use their memory to\nrespond to histories of temporal or spatial variation in\nnutrient or resource availability. [3점]\n* nutrient: 영양소 \t** fertilizer: 비료 \t*** forage: 구하러 다니다\n① (A) － (C) － (B) \t② (B) － (A) － (C)\n③ (B) － (C) － (A) \t④ (C) － (A) － (B)\n⑤ (C) － (B) － (A)\n[38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장\n적절한 곳을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1347,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          24
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_37",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 37,
+        "group": "order",
+        "type": "순서",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 관리자가 없을 때 뿌리를 늘리는 (C), 과거 영양 상태를 기억해 위험을 택하는 (B), 풍부한 영양 이력과 대비하는 (A) 순서입니다.",
+        "typeApproach": "순서는 앞 문장의 조건을 받는 접속사, 반복어, 두 집단의 대조를 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "But if a plant does not have a caretaker to provide\nsupplemental minerals",
+            "charStart": 830,
+            "role": "주어진 글 연결",
+            "translation": "(C)는 정원사가 비료를 준다는 주어진 글과 반대로 관리자가 없는 경우를 시작합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Plants that have experienced variable\nnutrient availability in the past tend to exhibit risk-taking\nbehaviors",
+            "charStart": 643,
+            "role": "변동 이력",
+            "translation": "(B)는 과거 영양 공급이 변동적이었던 식물의 위험 감수 행동을 설명합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "In contrast, plants with a history of nutrient abundance are\nrisk averse and save energy.",
+            "charStart": 182,
+            "role": "대조 마무리",
+            "translation": "(A)는 영양이 풍부했던 식물은 반대로 위험을 피하고 에너지를 아낀다고 말합니다."
+          }
+        ],
+        "correctReason": "관리자 없는 적응과 기억 (C) → 변동 이력의 위험 감수 (B) → 풍부한 이력의 위험 회피 (A)로 이어져 ⑤입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(C) - (A) - (B)",
+          "reason": "(A)의 In contrast는 먼저 위험 감수 식물을 설명한 (B)를 받아야 합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_38",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 38,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "38.",
+      "rawText": "38.\nBecause the manipulation of digitally converted sounds\nmeant the reprogramming of binary information, editing\noperations could be performed with millisecond precision.\nThe shift from analog to digital technology significantly\ninfluenced how music was produced. First and foremost, the\ndigitization of sounds ― that is, their conversion into numbers ―\nenabled music makers to undo what was done. ( ① ) One\ncould, \tin \tother \twords, \ttwist \tand \tbend \tsounds \ttoward\nsomething new without sacrificing the original version. ( ② )\nThis “undo” ability made mistakes considerably less momentous,\nsparking the creative process and encouraging a generally\nmore experimental mindset. ( ③ ) In addition, digitally converted\nsounds could be manipulated simply by programming digital\nmessages rather than using physical tools, simplifying the\nediting process significantly. ( ④ ) For example, while editing\nonce \tinvolved \trazor \tblades \tto \tphysically \tcut \tand \tsplice\naudiotapes, it now involved the cursor and mouse-click of the\ncomputer-based sequencer program, which was obviously less\ntime consuming. ( ⑤ ) This microlevel access at once made\nit easier to conceal any traces of manipulations (such as\njoining tracks in silent spots) and introduced new possibilities\nfor manipulating sounds in audible and experimental ways.\n* binary: 2진법의 \t** splice: 합쳐 잇다",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1355,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          25
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_38",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 38,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 물리적 테이프 편집과 디지털 편집을 비교한 뒤 밀리초 정밀도를 제시해야 하고, 다음의 This microlevel access가 이를 받습니다.",
+        "typeApproach": "문장 삽입은 주어진 문장의 원인 표현과 뒤 문장의 지시어가 동시에 맞는 지점을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "while editing\nonce \tinvolved \trazor \tblades \tto \tphysically \tcut \tand \tsplice\naudiotapes, it now involved the cursor and mouse-click",
+            "charStart": 885,
+            "role": "디지털 편집 전환",
+            "translation": "과거 테이프를 칼로 자르던 편집이 커서와 마우스 클릭으로 바뀌었습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "This microlevel access at once made\nit easier to conceal any traces of manipulations",
+            "charStart": 1106,
+            "role": "뒤 지시어",
+            "translation": "다음 문장의 미세 수준 접근은 밀리초 정밀 편집을 가리킵니다."
+          }
+        ],
+        "correctReason": "디지털 편집 방식 → 밀리초 정밀도 → This microlevel access 순서가 되는 ⑤가 맞습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "④",
+          "reason": "④에서는 디지털 메시지 조작만 나왔고 밀리초 정밀도를 설명할 구체적인 편집 비교가 아직 이어져야 합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_39",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 39,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "39.",
+      "rawText": "39.\nIn the case of specialists such as art critics, a deeper\nfamiliarity with materials and techniques is often useful in\nreaching an informed judgement about a work.\nAcknowledging the making of artworks does not require a\ndetailed, \ttechnical \tknowledge \tof, \tsay, \thow \tpainters \tmix\ndifferent kinds of paint, or how an image editing tool works.\n( ① ) All that is required is a general sense of a significant\ndifference between working with paints and working with an\nimaging application. ( ② ) This sense might involve a basic\nfamiliarity with paints and paintbrushes as well as a basic\nfamiliarity with how we use computers, perhaps including how\nwe use consumer imaging apps. ( ③ ) This is because every\nkind of artistic material or tool comes with its own challenges\nand affordances for artistic creation. ( ④ ) Critics are often\ninterested in the ways artists exploit different kinds of materials\nand tools for particular artistic effect. ( ⑤ ) They are also\ninterested in the success of an artist’s attempt ― embodied in\nthe artwork itself ― to push the limits of what can be achieved\nwith certain materials and tools. [3점]\n* affordance: 행위유발성 \t** exploit: 활용하다",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1169,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          26
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_39",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 39,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 일반 감상자는 재료에 대한 기본 감각이면 충분하지만 전문가인 비평가는 더 깊은 친숙성이 유용하다는 문장이 그 사이에 와야 합니다.",
+        "typeApproach": "삽입 문장의 주어 범위가 일반인에서 전문가로 바뀌는 지점과 뒤의 구체화를 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "This sense might involve a basic\nfamiliarity with paints and paintbrushes",
+            "charStart": 497,
+            "role": "일반적 기본 지식",
+            "translation": "일반 감상에는 물감과 붓에 대한 기본 친숙성이면 됩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Critics are often\ninterested in the ways artists exploit different kinds of materials\nand tools",
+            "charStart": 818,
+            "role": "전문가 관심",
+            "translation": "뒤 문장은 비평가가 재료와 도구의 활용 방식에 관심을 둔다고 구체화합니다."
+          }
+        ],
+        "correctReason": "기본 친숙성 설명 뒤 전문가의 더 깊은 친숙성을 넣고 비평가 사례로 이어지는 ③이 맞습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "④",
+          "reason": "④ 앞의 문장은 이미 재료의 고유한 특성을 설명하므로 전문가로 범위를 전환하는 문장은 그보다 앞에 와야 합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_40",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 40,
+      "type": "요약문",
+      "group": "summary",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),",
+      "rawText": "40. \t다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),\n(B)에 들어갈 말로 가장 적절한 것은?\nResearch \tfor \thistorical \tfiction \tmay \tfocus \ton\nunder-documented ordinary people, events, or sites. Fiction\nhelps portray everyday situations, feelings, and atmosphere\nthat recreate the historical context. Historical fiction adds\n“flesh to the bare bones that historians are able to uncover\nand \tby \tdoing \tso \tprovides \tan \taccount \tthat \twhile \tnot\nnecessarily true provides a clearer indication of past events,\ncircumstances and cultures.” Fiction adds color, sound,\ndrama to the past, as much as it invents parts of the past.\nAnd Robert Rosenstone argues that invention is not the\nweakness of films, it is their strength. Fiction can allow\nusers to see parts of the past that have never ― for lack of\narchives ― been \trepresented. \tIn \tfact, \tGilden \tSeavey\nexplains that if producers of historical fiction had strongly\nheld the strict academic standards, many historical subjects\nwould remain unexplored for lack of appropriate evidence.\nHistorical fiction should, therefore, not be seen as the\nopposite of professional history, but rather as a challenging\nrepresentation of the past from which both public historians\nand popular audiences may learn.\n󰀻\nWhile \thistorical \tfiction \treconstructs \tthe \tpast \tusing\n(A) \tevidence, it provides an inviting description,\nwhich may \t(B) \tpeople’s understanding of historical\nevents.\n(A) \t(B) \t(A) \t(B)\n① insignificant …… delay \t② insufficient …… enrich\n③ concrete \t…… enhance \t④ outdated \t…… improve\n⑤ limited \t…… disturb\n\n-- 7 of 8 --\n\n8\n8 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "insignificant …… delay"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "insufficient …… enrich"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "concrete …… enhance"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "outdated …… improve"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "limited …… disturb"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1556,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          26
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_40",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 40,
+        "group": "summary",
+        "type": "요약문",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 역사소설은 불충분한 자료를 상상력으로 보완해 과거를 생생하게 보여 주고 역사 이해를 풍부하게 합니다.",
+        "typeApproach": "요약문은 자료의 한계와 소설이 제공하는 긍정적 효과를 각각 빈칸에 대응시킵니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "parts of the past that have never ― for lack of\narchives ― been \trepresented.",
+            "charStart": 723,
+            "role": "자료 부족",
+            "translation": "기록 자료 부족으로 표현되지 못한 과거의 부분이 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "provides \tan \taccount \tthat \twhile \tnot\nnecessarily true provides a clearer indication of past events",
+            "charStart": 377,
+            "role": "이해 보완",
+            "translation": "반드시 사실은 아니어도 과거 사건을 더 분명히 이해하게 하는 설명을 제공합니다."
+          }
+        ],
+        "correctReason": "자료는 insufficient하지만 설명은 이해를 enrich할 수 있으므로 ②입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "concrete …… enhance",
+          "reason": "역사소설이 사용하는 자료가 충분하고 구체적이라는 글이 아니라 자료 부족을 보완한다는 글입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_41",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 41,
+      "type": "장문 제목",
+      "group": "long",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "41. 윗글의 제목으로 가장 적절한 것은?",
+      "rawText": "41. \t윗글의 제목으로 가장 적절한 것은?\n① Learned Nothing in School?: How Memory Tricks You\n② Why We Forget Selectively: Credibility of Content\n③ The Constant Battle Between Content and Context\n④ How Students Can Learn More and Better in School\n⑤ Shift Your Focus from Who to What for Memory Building",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nOne reason we think we forget most of what we learned in\nschool is that we underestimate what we actually remember.\nOther times, we know we remember something, but we don’t\nrecognize that we learned it in school. Knowing where and\nwhen \tyou \tlearned \tsomething \tis \tusually \tcalled \tcontext\ninformation, and context is handled by (a) different memory\nprocesses than memory for the content. Thus, it’s quite\npossible to retain content without remembering the context.\nFor example, if someone mentions a movie and you think\nto yourself that you heard it was terrible but can’t remember\n(b) where you heard that, you’re recalling the content, but\nyou’ve lost the context. Context information is frequently\n(c) easier to forget than content, and it’s the source of a variety\nof memory illusions. For instance, people are (d) unconvinced\nby a persuasive argument if it’s written by someone who is not\nvery credible (e.g., someone with a clear financial interest in\nthe topic). But in time, readers’ attitudes, on average, change\nin the direction of the persuasive argument. Why? Because\nreaders are likely to remember the content of the argument but\nforget the source ― someone who is not credible. If remembering\nthe source of knowledge is difficult, you can see how it would\nbe (e) challenging to conclude you don’t remember much\nfrom school.\n* illusion: 착각",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Learned Nothing in School?: How Memory Tricks You"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Why We Forget Selectively: Credibility of Content"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "The Constant Battle Between Content and Context"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "How Students Can Learn More and Better in School"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Shift Your Focus from Who to What for Memory Building"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 285,
+        "sharedPassageChars": 1382,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          28
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_41",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 41,
+        "group": "long",
+        "type": "장문 제목",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 배운 내용은 기억하면서 어디서 배웠는지는 잊기 때문에 학교에서 배운 것을 모두 잊었다고 착각할 수 있습니다.",
+        "typeApproach": "장문 제목은 반복되는 기억 구분과 그 구분이 만드는 착각을 모두 담습니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "it’s quite\npossible to retain content without remembering the context.",
+            "charStart": 424,
+            "role": "내용 기억",
+            "translation": "맥락은 잊어도 내용은 기억할 수 있습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "we think we forget most of what we learned in\nschool is that we underestimate what we actually remember.",
+            "charStart": 39,
+            "role": "기억 착각",
+            "translation": "실제로 기억하는 것을 과소평가해 학교에서 배운 대부분을 잊었다고 생각합니다."
+          }
+        ],
+        "correctReason": "기억이 내용을 보존하고 출처를 지워 생기는 착각을 표현한 ①이 가장 적절합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "How Students Can Learn More and Better in School",
+          "reason": "학습법을 제안하는 글이 아니라 기억 내용과 출처 기억의 차이를 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_42",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 42,
+      "type": "장문 어휘",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "42. 밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은",
+      "rawText": "42. \t밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nOne reason we think we forget most of what we learned in\nschool is that we underestimate what we actually remember.\nOther times, we know we remember something, but we don’t\nrecognize that we learned it in school. Knowing where and\nwhen \tyou \tlearned \tsomething \tis \tusually \tcalled \tcontext\ninformation, and context is handled by (a) different memory\nprocesses than memory for the content. Thus, it’s quite\npossible to retain content without remembering the context.\nFor example, if someone mentions a movie and you think\nto yourself that you heard it was terrible but can’t remember\n(b) where you heard that, you’re recalling the content, but\nyou’ve lost the context. Context information is frequently\n(c) easier to forget than content, and it’s the source of a variety\nof memory illusions. For instance, people are (d) unconvinced\nby a persuasive argument if it’s written by someone who is not\nvery credible (e.g., someone with a clear financial interest in\nthe topic). But in time, readers’ attitudes, on average, change\nin the direction of the persuasive argument. Why? Because\nreaders are likely to remember the content of the argument but\nforget the source ― someone who is not credible. If remembering\nthe source of knowledge is difficult, you can see how it would\nbe (e) challenging to conclude you don’t remember much\nfrom school.\n* illusion: 착각",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 79,
+        "sharedPassageChars": 1382,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          28
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_42",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 42,
+        "group": "long",
+        "type": "장문 어휘",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 지식의 출처를 잊기 쉽기 때문에 학교에서 기억하는 것이 적다고 잘못 결론 내리기는 쉬우므로 challenging은 easy가 되어야 합니다.",
+        "typeApproach": "어휘 문제는 조건절이 뒤 결과를 어렵게 만드는지 쉽게 만드는지 논리 방향을 확인합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Context information is frequently\n(c) easier to forget than content",
+            "charStart": 697,
+            "role": "출처 기억 소실",
+            "translation": "맥락 정보는 내용보다 더 쉽게 잊힙니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "If remembering\nthe source of knowledge is difficult, you can see how it would\nbe (e) challenging to conclude you don’t remember much\nfrom school.",
+            "charStart": 1222,
+            "role": "논리 방향 충돌",
+            "translation": "출처 기억이 어렵다면 학교에서 별로 기억하지 못한다고 결론 내리기 쉽다는 뜻이어야 합니다."
+          }
+        ],
+        "correctReason": "출처를 잊으면 학교 학습을 기억하지 못한다고 착각하기 쉬우므로 (e)가 부적절한 ⑤입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "(c)",
+          "reason": "맥락 정보가 내용보다 더 쉽게 잊힌다는 설명은 뒤 사례와 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_43",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 43,
+      "type": "장문 순서",
+      "group": "long",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로",
+      "rawText": "43. \t주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로\n가장 적절한 것은?\n① (B) － (D) － (C) \t② (C) － (B) － (D)\n③ (C) － (D) － (B) \t④ (D) － (B) － (C)\n⑤ (D) － (C) － (B)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nIn July, people in the city often escaped to relax in the\nmountains. Sean didn’t yet know it, but he was about to have\nthe experience of a lifetime. “When I look around, all I see is\nthe work I haven’t finished and the bills I haven’t paid,” he\ncomplained over the phone to his friend and doctor, Alex.\nConcerned about Sean, he said, “(a) You’ve been stressed for\nweeks. Come see me for medical treatment if things don’t\nimprove.”\n(B)\nHaving hiked for several hours, Sean was thrilled to reach\nthe top of Vincent Mountain. As Toby started to bark, Sean\nturned around and found him running toward a large pond.\n“What a nice, quiet place,” Sean whispered to himself.\nAmong the trees, he could ease the stress of recent weeks. As\nnight approached, however, the wind blew fiercely. Sean\nbecame \tnervous. \tUnable \tto \tsleep, (b) he \tcalled \tto \this\ncompanion, “Come here, Boy!” He held the dog close in an\neffort to ignore the fear rushing in.\n(C)\nAfter what felt like the longest night of Sean’s life, the sky\nfinally turned a beautiful shade of pink, and the warm sun\nshone around him. He packed up his equipment, enjoying his\nlast moments in the mountain air. Finding Toby energetically\nrunning next to the campsite, Sean said, “(c) You must be as\nexcited as I am after surviving a night like that!” Sean went\ndown the mountain with a renewed sense of joy, and he\nexclaimed, “My treatment worked like a charm!”\n(D)\nUpon hearing this offer, Sean replied, “Thanks, but (d) I\nknow just the treatment I need.” He told his friend about the\nVincent Mountain hike he had read about. Alex anxiously\nwarned, “Even in the summer, hiking can be dangerous.\nDon’t forget your safety checklist.” Following his friend’s\nwords, (e) he \tadded \tprotective \tgear \tto \this \tcamping\nequipment. Sean put on his hiking clothes and tied up his\nboots. He almost forgot his new hiking sticks as he walked\nout the door with his dog, Toby.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(B) － (D) － (C)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(C) － (B) － (D)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(C) － (D) － (B)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(D) － (B) － (C)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(D) － (C) － (B)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 141,
+        "sharedPassageChars": 1941,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_43",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 43,
+        "group": "long",
+        "type": "장문 순서",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 의사의 치료 제안을 듣고 산행을 준비하는 (D), 산 정상에서 밤을 보내는 (B), 다음 날 내려오는 (C) 순서입니다.",
+        "typeApproach": "이야기 순서는 제안·준비·이동·밤과 아침의 시간 표시를 연결합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Upon hearing this offer, Sean replied, “Thanks, but (d) I\nknow just the treatment I need.”",
+            "charStart": 1445,
+            "role": "의사 제안 직후",
+            "translation": "(D)는 의사의 치료 제안을 들은 직후 자신에게 필요한 치료가 산행이라고 답합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Having hiked for several hours, Sean was thrilled to reach\nthe top of Vincent Mountain.",
+            "charStart": 467,
+            "role": "산 정상 도착",
+            "translation": "(B)에서 몇 시간 걸은 뒤 산 정상에 도착합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "After what felt like the longest night of Sean’s life, the sky\nfinally turned a beautiful shade of pink",
+            "charStart": 975,
+            "role": "다음 날 아침",
+            "translation": "(C)는 긴 밤이 지난 뒤 아침이 밝는 장면으로 시작합니다."
+          }
+        ],
+        "correctReason": "준비 (D) → 정상과 밤 (B) → 아침과 하산 (C)으로 이어져 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(D) － (C) － (B)",
+          "reason": "(C)의 ‘가장 긴 밤 뒤’라는 표현은 밤의 강풍과 공포를 다룬 (B) 다음에 와야 합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_44",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 44,
+      "type": "장문 지칭",
+      "group": "long",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "44. 밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른",
+      "rawText": "44. \t밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nIn July, people in the city often escaped to relax in the\nmountains. Sean didn’t yet know it, but he was about to have\nthe experience of a lifetime. “When I look around, all I see is\nthe work I haven’t finished and the bills I haven’t paid,” he\ncomplained over the phone to his friend and doctor, Alex.\nConcerned about Sean, he said, “(a) You’ve been stressed for\nweeks. Come see me for medical treatment if things don’t\nimprove.”\n(B)\nHaving hiked for several hours, Sean was thrilled to reach\nthe top of Vincent Mountain. As Toby started to bark, Sean\nturned around and found him running toward a large pond.\n“What a nice, quiet place,” Sean whispered to himself.\nAmong the trees, he could ease the stress of recent weeks. As\nnight approached, however, the wind blew fiercely. Sean\nbecame \tnervous. \tUnable \tto \tsleep, (b) he \tcalled \tto \this\ncompanion, “Come here, Boy!” He held the dog close in an\neffort to ignore the fear rushing in.\n(C)\nAfter what felt like the longest night of Sean’s life, the sky\nfinally turned a beautiful shade of pink, and the warm sun\nshone around him. He packed up his equipment, enjoying his\nlast moments in the mountain air. Finding Toby energetically\nrunning next to the campsite, Sean said, “(c) You must be as\nexcited as I am after surviving a night like that!” Sean went\ndown the mountain with a renewed sense of joy, and he\nexclaimed, “My treatment worked like a charm!”\n(D)\nUpon hearing this offer, Sean replied, “Thanks, but (d) I\nknow just the treatment I need.” He told his friend about the\nVincent Mountain hike he had read about. Alex anxiously\nwarned, “Even in the summer, hiking can be dangerous.\nDon’t forget your safety checklist.” Following his friend’s\nwords, (e) he \tadded \tprotective \tgear \tto \this \tcamping\nequipment. Sean put on his hiking clothes and tied up his\nboots. He almost forgot his new hiking sticks as he walked\nout the door with his dog, Toby.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 78,
+        "sharedPassageChars": 1941,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_09_44",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 44,
+        "group": "long",
+        "type": "장문 지칭",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. (c) You는 개 Toby를 가리키고, (a)·(b)·(d)·(e)는 모두 Sean을 가리킵니다.",
+        "typeApproach": "지칭 문제는 각 대명사의 화자와 청자를 표시하고 인물인지 동물인지 구분합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Finding Toby energetically\nrunning next to the campsite, Sean said, “(c) You must be as\nexcited as I am",
+            "charStart": 1190,
+            "role": "Toby 지칭",
+            "translation": "Sean이 Toby를 보고 (c) You라고 말합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Concerned about Sean, he said, “(a) You’ve been stressed for\nweeks.",
+            "charStart": 335,
+            "role": "Sean 지칭",
+            "translation": "Alex가 Sean에게 (a) You라고 말합니다."
+          }
+        ],
+        "correctReason": "(c)만 Toby이고 나머지 네 표현은 Sean이므로 ③입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(e)",
+          "reason": "(e) he는 Alex의 조언을 따라 장비를 챙긴 Sean을 가리킵니다."
+        }
+      }
+    },
+    {
+      "id": "2024_09_45",
+      "examId": "2024_09",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "9월",
+      "qid": 45,
+      "type": "장문 내용",
+      "group": "long",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "45. 윗글에 관한 내용으로 적절하지 않은 것은?",
+      "rawText": "45. \t윗글에 관한 내용으로 적절하지 않은 것은?\n① Sean은 친구 Alex에게 어려움을 토로했다.\n② Toby가 큰 연못으로 달려갔다.\n③ 밤이 되자 바람이 잦아들었다.\n④ Sean은 산을 내려오며 기쁨을 느꼈다.\n⑤ Sean은 Vincent Mountain 하이킹에 대해 읽은 적이 있다.\n* 확인 사항\n◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인\n하시오.\n\n-- 8 of 8 --",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nIn July, people in the city often escaped to relax in the\nmountains. Sean didn’t yet know it, but he was about to have\nthe experience of a lifetime. “When I look around, all I see is\nthe work I haven’t finished and the bills I haven’t paid,” he\ncomplained over the phone to his friend and doctor, Alex.\nConcerned about Sean, he said, “(a) You’ve been stressed for\nweeks. Come see me for medical treatment if things don’t\nimprove.”\n(B)\nHaving hiked for several hours, Sean was thrilled to reach\nthe top of Vincent Mountain. As Toby started to bark, Sean\nturned around and found him running toward a large pond.\n“What a nice, quiet place,” Sean whispered to himself.\nAmong the trees, he could ease the stress of recent weeks. As\nnight approached, however, the wind blew fiercely. Sean\nbecame \tnervous. \tUnable \tto \tsleep, (b) he \tcalled \tto \this\ncompanion, “Come here, Boy!” He held the dog close in an\neffort to ignore the fear rushing in.\n(C)\nAfter what felt like the longest night of Sean’s life, the sky\nfinally turned a beautiful shade of pink, and the warm sun\nshone around him. He packed up his equipment, enjoying his\nlast moments in the mountain air. Finding Toby energetically\nrunning next to the campsite, Sean said, “(c) You must be as\nexcited as I am after surviving a night like that!” Sean went\ndown the mountain with a renewed sense of joy, and he\nexclaimed, “My treatment worked like a charm!”\n(D)\nUpon hearing this offer, Sean replied, “Thanks, but (d) I\nknow just the treatment I need.” He told his friend about the\nVincent Mountain hike he had read about. Alex anxiously\nwarned, “Even in the summer, hiking can be dangerous.\nDon’t forget your safety checklist.” Following his friend’s\nwords, (e) he \tadded \tprotective \tgear \tto \this \tcamping\nequipment. Sean put on his hiking clothes and tied up his\nboots. He almost forgot his new hiking sticks as he walked\nout the door with his dog, Toby.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Sean은 친구 Alex에게 어려움을 토로했다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Toby가 큰 연못으로 달려갔다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "밤이 되자 바람이 잦아들었다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Sean은 산을 내려오며 기쁨을 느꼈다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Sean은 Vincent Mountain 하이킹에 대해 읽은 적이 있다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_9월_영어_문제.pdf",
+        "answerFile": "2024학년도_9월_영어_정답.png",
+        "explainFile": "2024학년도_9월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 229,
+        "sharedPassageChars": 1941,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          30
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_09_45",
+        "status": "ready",
+        "exam": "2024학년도 9월 모의평가 영어",
+        "qid": 45,
+        "group": "long",
+        "type": "장문 내용",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 밤이 다가오자 바람은 잦아든 것이 아니라 세차게 불었습니다.",
+        "typeApproach": "내용 불일치는 시간 표현과 상태 변화의 방향을 원문과 직접 대조합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "As\nnight approached, however, the wind blew fiercely.",
+            "charStart": 756,
+            "role": "밤의 바람",
+            "translation": "밤이 다가오자 바람이 세차게 불었습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Sean went\ndown the mountain with a renewed sense of joy",
+            "charStart": 1330,
+            "role": "하산 심경",
+            "translation": "Sean은 새로워진 기쁨을 느끼며 산을 내려왔습니다."
+          }
+        ],
+        "correctReason": "바람이 잦아든 것이 아니라 세차게 불었다고 했으므로 ③이 불일치합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "Sean은 산을 내려오며 기쁨을 느꼈다.",
+          "reason": "새로운 기쁨을 느끼며 산을 내려왔다는 원문과 일치합니다."
+        }
+      }
+    }
+  ]
+}

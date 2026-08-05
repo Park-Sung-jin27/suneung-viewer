@@ -1,0 +1,139 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2024학년도 6월 모의평가 수학 미적분 23~30번 8문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "3920c2109d6a45bbf4a30099733674059f5ffb401c530229f3cae16b87ad1bcf",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://testall.tistory.com/entry/2024%ED%95%99%EB%85%84%EB%8F%84-6%EC%9B%94-%EC%88%98%EB%8A%A5-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C",
+      "independentSourceUrls": ["https://sdfallyy.tistory.com/407", "https://horaeng.com/263"],
+      "problemFilename": "2024_06_math_problem_testall.pdf",
+      "problemSha256": "b66547e1edfb4e53380e8e30ffa087eb1c72ef9a5d03dfa491d33bd6b9c56a98",
+      "problemReplicaArtifacts": [{"filename": "2024_06_math_problem_sdfallyy.pdf", "sha256": "026d29c312ac5c4d1e533aabe29a6948bcbef634471dfd5a297d405c186333c5"}],
+      "answerFilename": "2024_06_math_answer_testall.pdf",
+      "answerSha256": "98233f2ec85d25b33e78549a68d5baa836ff3979e21e58fedf83a8422856e495"
+    },
+    "note": "공식 문제지와 정답표의 미적분 8문항을 대조하고 극한·미분·급수 계산을 독립적으로 검산한 내부 후보."
+  },
+  "items": {
+    "2024_06_cal_23": {
+      "id": "2024_06_cal_23", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 미적분", "questionNumber": 23, "answer": "5", "answerMark": "⑤",
+      "summary": "두 근호의 차를 유리화하면 극한값은 (9-4)/2=5/2입니다.",
+      "approach": "켤레식을 곱해 분자를 일차식으로 단순화합니다.",
+      "concepts": ["무한대 극한", "유리화"],
+      "steps": [
+        {"title": "켤레식 곱하기", "expression": "\\sqrt{n^2+9n}-\\sqrt{n^2+4n}=\\frac{5n}{\\sqrt{n^2+9n}+\\sqrt{n^2+4n}}", "explanation": "두 제곱식의 차가 5n입니다."},
+        {"title": "n으로 나누기", "expression": "\\frac5{\\sqrt{1+9/n}+\\sqrt{1+4/n}}", "explanation": "분모의 각 근호에서 n을 묶습니다."},
+        {"title": "극한 계산하기", "expression": "\\lim_{n\\to\\infty}\\frac5{\\sqrt{1+9/n}+\\sqrt{1+4/n}}=\\frac52", "explanation": "9/n과 4/n은 0으로 갑니다."}
+      ],
+      "correctReason": "극한값 5/2가 선지 ⑤와 일치합니다.", "commonMistake": "두 근호의 극한을 각각 무한대로 보고 빼지 말고 먼저 유리화하세요.",
+      "verification": {"problemPage": 13, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_cal_24": {
+      "id": "2024_06_cal_24", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 미적분", "questionNumber": 24, "answer": "4", "answerMark": "④",
+      "summary": "dx/dt와 dy/dt를 구해 나누고 t=2를 대입하면 dy/dx=-4입니다.",
+      "approach": "매개변수 미분 공식 dy/dx=(dy/dt)/(dx/dt)를 적용합니다.",
+      "concepts": ["매개변수 미분", "몫의 미분"],
+      "steps": [
+        {"title": "x를 t로 미분하기", "expression": "\\frac{dx}{dt}=\\frac{5(1-t^2)}{(t^2+1)^2}", "explanation": "몫의 미분법을 사용합니다."},
+        {"title": "y를 t로 미분하기", "expression": "\\frac{dy}{dt}=\\frac{6t}{t^2+1}", "explanation": "합성함수 ln(t²+1)을 미분합니다."},
+        {"title": "두 미분값 나누기", "expression": "\\frac{dy}{dx}=\\frac{6t(t^2+1)}{5(1-t^2)}", "explanation": "dy/dt를 dx/dt로 나눕니다."},
+        {"title": "t=2 대입하기", "expression": "\\left.\\frac{dy}{dx}\\right|_{t=2}=\\frac{12\\cdot5}{5(1-4)}=-4", "explanation": "분모가 0이 아니므로 그대로 계산합니다."}
+      ],
+      "correctReason": "미분계수 -4가 선지 ④와 일치합니다.", "commonMistake": "dx/dt와 dy/dt의 나누는 순서를 바꾸지 마세요.",
+      "verification": {"problemPage": 13, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_cal_25": {
+      "id": "2024_06_cal_25", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 미적분", "questionNumber": 25, "answer": "1", "answerMark": "①",
+      "summary": "유한한 극한을 위해 b=3이고, 지수함수의 미분계수 비에서 8a/b=16이므로 a=6, 합은 9입니다.",
+      "approach": "x=0에서 분모가 0이므로 분자도 0이어야 한다는 조건을 먼저 적용한 뒤 표준 극한을 씁니다.",
+      "concepts": ["0/0형 극한", "지수함수의 미분"],
+      "steps": [
+        {"title": "분자가 0이 되게 하기", "expression": "2^b-8=0\\Rightarrow b=3", "explanation": "분모 2^{bx}-1은 x=0에서 0이므로 극한이 유한하려면 분자도 0이어야 합니다."},
+        {"title": "극한 비 계산하기", "expression": "\\lim_{x\\to0}\\frac{8(2^{ax}-1)}{2^{bx}-1}=8\\frac ab", "explanation": "2^{cx}-1은 x가 0에 가까울 때 c ln2·x와 같은 비율입니다."},
+        {"title": "a 구하기", "expression": "8\\frac a3=16\\Rightarrow a=6", "explanation": "주어진 극한값 16을 대입합니다."},
+        {"title": "합 계산하기", "expression": "a+b=6+3=9", "explanation": "두 상수의 합을 구합니다."}
+      ],
+      "correctReason": "a+b=9가 선지 ①과 일치합니다.", "commonMistake": "b=3을 정하기 전에 로피탈 법칙을 바로 적용하면 x=0에서 분자가 0인지 놓칠 수 있습니다.",
+      "verification": {"problemPage": 14, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_cal_26": {
+      "id": "2024_06_cal_26", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 미적분", "questionNumber": 26, "answer": "2", "answerMark": "②",
+      "summary": "함수의 극댓값과 극솟값일 때 수평선이 두 점에서 만나며, 두 값의 합은 -33/4입니다.",
+      "approach": "왼쪽 식을 함수로 두고 도함수의 부호표로 실근 개수가 2가 되는 높이를 찾습니다.",
+      "concepts": ["미분과 그래프", "방정식의 실근 개수", "로그함수"],
+      "steps": [
+        {"title": "함수와 도함수 두기", "expression": "h(x)=x^2-5x+2\\ln x,\\quad h'(x)=\\frac{(2x-1)(x-2)}x", "explanation": "정의역은 x>0입니다."},
+        {"title": "극값 위치 찾기", "expression": "x=\\frac12\\text{에서 극대},\\qquad x=2\\text{에서 극소}", "explanation": "도함수 부호가 +,-,+로 바뀝니다."},
+        {"title": "두 높이 계산하기", "expression": "h\\left(\\frac12\\right)=-\\frac94-2\\ln2,\\qquad h(2)=-6+2\\ln2", "explanation": "각 극값 높이에서 수평선과 그래프의 교점이 두 개입니다."},
+        {"title": "모든 t 더하기", "expression": "-\\frac94-2\\ln2-6+2\\ln2=-\\frac{33}{4}", "explanation": "로그항이 소거됩니다."}
+      ],
+      "correctReason": "모든 t의 합 -33/4가 선지 ②와 일치합니다.", "commonMistake": "정의역 x>0을 빠뜨리거나 극값 하나만 답으로 고르지 마세요.",
+      "verification": {"problemPage": 14, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_cal_27": {
+      "id": "2024_06_cal_27", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 미적분", "questionNumber": 27, "answer": "3", "answerMark": "③",
+      "summary": "두 직선의 기울기로 tanθ=(1+cos t)/(1-cos t)를 만들고 t→π에서 표준 극한을 쓰면 1/4입니다.",
+      "approach": "직선 사이 각의 탄젠트 공식과 1-cos x의 반각 관계를 사용합니다.",
+      "concepts": ["두 직선이 이루는 각", "삼각함수의 극한"],
+      "steps": [
+        {"title": "두 기울기 구하기", "expression": "m_1=\\cos t,\\qquad m_2=-1", "explanation": "sin x의 도함수는 cos x입니다."},
+        {"title": "tanθ 정리하기", "expression": "\\tan\\theta=\\left|\\frac{m_1-m_2}{1+m_1m_2}\\right|=\\frac{1+\\cos t}{1-\\cos t}", "explanation": "0<t<π에서 분자와 분모가 음수가 아닙니다."},
+        {"title": "변수 바꾸기", "expression": "x=\\pi-t\\Rightarrow\\frac{1+\\cos t}{1-\\cos t}=\\frac{1-\\cos x}{1+\\cos x}", "explanation": "cos(π-x)=-cos x입니다."},
+        {"title": "표준 극한 적용하기", "expression": "\\lim_{x\\to0+}\\frac{1-\\cos x}{x^2(1+\\cos x)}=\\frac14", "explanation": "1-cos x는 x²/2와 같은 비율이고 1+cos x는 2로 갑니다."}
+      ],
+      "correctReason": "극한값 1/4가 선지 ③과 일치합니다.", "commonMistake": "t가 π로 갈 때 1+cos t가 0이 된다는 점을 놓치고 단순 대입하지 마세요.",
+      "verification": {"problemPage": 15, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_cal_28": {
+      "id": "2024_06_cal_28", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 미적분", "questionNumber": 28, "answer": "2", "answerMark": "②",
+      "summary": "완전제곱 형태와 연속성을 이용하면 a=1/8, b=-7/8이므로 곱은 -7/64입니다.",
+      "approach": "식에 1을 더해 (f+1)²=g를 만들고, f가 -1을 통과할 때 g의 유일한 내부 최솟점이 x=1임을 사용합니다.",
+      "concepts": ["연속함수", "완전제곱", "합성함수의 미분"],
+      "steps": [
+        {"title": "끝점 함수값 구하기", "expression": "f(0)=f(2)+1,\\quad (f(0)+1)^2=(f(2)+1)^2\\Rightarrow f(0)=-\\frac12,\\ f(2)=-\\frac32", "explanation": "두 점에서 우변이 같고 함수값 차가 1입니다."},
+        {"title": "a+b 관계 구하기", "expression": "f(0)^2+2f(0)=a+b=-\\frac34", "explanation": "x=0을 원식에 대입합니다."},
+        {"title": "완전제곱 함수 만들기", "expression": "(f(x)+1)^2=g(x)=a\\cos^3(\\pi x)e^{\\sin^2(\\pi x)}+b+1\\ge0", "explanation": "연속인 f가 -1/2에서 -3/2로 변하므로 중간에 f=-1인 점이 있고 그곳에서 g=0입니다."},
+        {"title": "g의 영점 위치 찾기", "expression": "g'(x)=0\\text{인 }(0,2)\\text{의 내부 최솟점은 }x=1", "explanation": "a>0에서 미분 부호를 보면 g는 x=1에서만 내부 극소이므로 g(1)=0입니다."},
+        {"title": "상수와 곱 구하기", "expression": "-a+b=-1,\\quad a+b=-\\frac34\\Rightarrow a=\\frac18,\\ b=-\\frac78,\\ ab=-\\frac7{64}", "explanation": "x=1에서 cosπ=-1, sinπ=0을 사용합니다."}
+      ],
+      "correctReason": "a×b=-7/64가 선지 ②와 일치합니다.", "commonMistake": "제곱근을 취할 때 f+1의 부호가 구간 전체에서 같다고 가정하지 마세요. 연속성 때문에 부호가 바뀌는 지점이 핵심입니다.",
+      "verification": {"problemPage": 15, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_cal_29": {
+      "id": "2024_06_cal_29", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 미적분", "questionNumber": 29, "answer": "5", "answerMark": null,
+      "summary": "두 점 조건과 접선 수직 조건을 연립하면 ab=-5이고 k²=-ab=5입니다.",
+      "approach": "음함수 미분으로 각 접선의 기울기를 구하고, 두 점이 같은 곡선 위에 있다는 식과 결합합니다.",
+      "concepts": ["음함수 미분", "수직인 직선", "연립방정식"],
+      "steps": [
+        {"title": "접선 기울기 구하기", "expression": "\\frac{dy}{dx}=\\frac{x-y}{x-2y}", "explanation": "곡선 식을 x에 대해 음함수 미분합니다."},
+        {"title": "수직 조건 세우기", "expression": "\\frac{k}{a+2k}\\cdot\\frac{k}{b+2k}=-1", "explanation": "A와 B에서의 기울기는 각각 k/(a+2k), k/(b+2k)입니다."},
+        {"title": "두 점의 곡선 조건 비교하기", "expression": "k^2+(a+k)^2=15,\\quad k^2+(b+k)^2=15\\Rightarrow a+b=-2k", "explanation": "a≠b이므로 두 제곱값이 반대 부호 관계를 만듭니다."},
+        {"title": "k²과 ab 관계 구하기", "expression": "ab+2(a+b)k+5k^2=0\\Rightarrow k^2=-ab", "explanation": "수직 조건에 a+b=-2k를 대입합니다."},
+        {"title": "값 결정하기", "expression": "ab=-5\\Rightarrow k^2=5", "explanation": "곡선 조건에 앞 관계를 대입하면 ab=-5가 나옵니다."}
+      ],
+      "correctReason": "k²=5입니다.", "commonMistake": "두 점의 y좌표는 a+k, b+k이며 접선 기울기의 분모 부호를 바꾸더라도 두 기울기에서 일관되게 처리하세요.",
+      "verification": {"problemPage": 16, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_cal_30": {
+      "id": "2024_06_cal_30", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 미적분", "questionNumber": 30, "answer": "24", "answerMark": null,
+      "summary": "공비는 -1/2, 첫째항은 -12로 정해지며 절댓값 급수의 합은 24입니다.",
+      "approach": "두 부분급수의 수렴과 b₃=-1로 공비의 범위와 잘리는 항을 확정한 뒤 홀수·짝수항 합을 연립합니다.",
+      "concepts": ["등비수열", "무한등비급수", "구간별 정의"],
+      "steps": [
+        {"title": "공비 범위 정하기", "expression": "a_n=a_1r^{n-1},\\quad -1<r<0,\\quad a_1\\le-1", "explanation": "두 급수가 수렴하려면 |r|<1이고, b₃=-1과 부호 조건을 함께 쓰면 공비는 음수입니다."},
+        {"title": "잘리는 항 확인하기", "expression": "b_1=b_3=-1,\\qquad b_2=a_2,\\quad b_n=a_n\\ (n\\ge4)", "explanation": "주어진 두 급수의 합 조건과 교대 부호를 이용하면 첫째·셋째항만 -1로 바뀝니다."},
+        {"title": "홀수항 급수 세우기", "expression": "-2+\\frac{a_1r^4}{1-r^2}=-3\\Rightarrow a_1r^4=r^2-1", "explanation": "5번째 항부터 공비 r²인 등비급수입니다."},
+        {"title": "짝수항 급수 세우기", "expression": "\\frac{a_1r}{1-r^2}=8\\Rightarrow a_1r=8(1-r^2)", "explanation": "모든 짝수항은 원래 수열의 항과 같습니다."},
+        {"title": "r과 a₁ 구하기", "expression": "r^3=-\\frac18\\Rightarrow r=-\\frac12,\\qquad a_1=-12", "explanation": "두 관계식을 나누어 공비를 구한 뒤 첫째항을 계산합니다."},
+        {"title": "절댓값 급수 합하기", "expression": "\\sum_{n=1}^{\\infty}|a_n|=\\frac{12}{1-1/2}=24", "explanation": "절댓값 수열은 첫째항 12, 공비 1/2인 등비수열입니다."}
+      ],
+      "correctReason": "절댓값 급수의 합은 24입니다.", "commonMistake": "bₙ은 aₙ이 -1 이하일 때만 -1로 바뀝니다. 모든 음수항을 -1로 바꾸지 마세요.",
+      "verification": {"problemPage": 16, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

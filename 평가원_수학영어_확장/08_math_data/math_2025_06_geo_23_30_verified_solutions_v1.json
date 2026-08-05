@@ -1,0 +1,342 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 6월 모의평가 수학 기하 23~30번 8문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "6f29b8a96b1ac62c499f45273b0358d81ad8485757fa7ecfd96b76cc0d64a972",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5086962&lev=0&m=0403&page=4&s=suneung&searchType=S&statusYN=W",
+      "independentSourceUrls": [
+        "https://horaeng.com/279",
+        "https://orbi.kr/00068355597"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4"
+        }
+      ],
+      "answerFilename": "kice-answer.pdf",
+      "answerSha256": "655f41600d4825dceca6d0248ce0e02916ee73a2e3ad0cd2d596fba8e843db8b",
+      "solutionArtifacts": [
+        {
+          "filename": "orbi-solution.pdf",
+          "sha256": "2fc1d295bfdadeda8695f20739a53c629e27f8370cc27f173eff05b5707c8e89"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지·정답표와 동일 파일 독립 보관본을 대조하고 독립 풀이 자료 및 벡터·이차곡선의 직접 계산으로 8문항을 재검증했습니다."
+  },
+  "items": {
+    "2025_06_geo_23": {
+      "id": "2025_06_geo_23",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 기하",
+      "questionNumber": 23,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "왼쪽 벡터식을 전개하면 4a−3b이므로 k=4입니다.",
+      "approach": "괄호를 분배하고 같은 벡터의 계수를 비교합니다.",
+      "concepts": ["벡터의 연산", "벡터의 계수 비교"],
+      "steps": [
+        {
+          "title": "괄호 전개",
+          "expression": "\\vec a+3(\\vec a-\\vec b)=\\vec a+3\\vec a-3\\vec b",
+          "explanation": "스칼라 3을 괄호 안 두 벡터에 분배합니다."
+        },
+        {
+          "title": "동류항 정리",
+          "expression": "\\vec a+3\\vec a-3\\vec b=4\\vec a-3\\vec b",
+          "explanation": "같은 벡터 a의 계수를 더합니다."
+        },
+        {
+          "title": "계수 비교",
+          "expression": "k\\vec a-3\\vec b=4\\vec a-3\\vec b\\Rightarrow k=4",
+          "explanation": "정답은 ④입니다."
+        }
+      ],
+      "correctReason": "a가 영벡터가 아니므로 양변에서 a의 계수를 비교할 수 있습니다.",
+      "commonMistake": "3(a−b)를 3a−b로 전개하지 마세요.",
+      "verification": {
+        "problemPage": 17,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_geo_24": {
+      "id": "2025_06_geo_24",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 기하",
+      "questionNumber": 24,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "점이 타원 위라는 조건으로 b²=10을 구하고 접선식에 x=0을 넣으면 y절편은 2√5입니다.",
+      "approach": "먼저 미지의 반축을 정한 뒤 타원의 접선 공식을 적용합니다.",
+      "concepts": ["타원의 방정식", "타원의 접선"],
+      "steps": [
+        {
+          "title": "b 결정",
+          "expression": "\\frac9{18}+\\frac5{b^2}=1\\Rightarrow b^2=10",
+          "explanation": "주어진 점 (3,√5)을 타원 방정식에 대입합니다."
+        },
+        {
+          "title": "접선식",
+          "expression": "\\frac{3x}{18}+\\frac{\\sqrt5\\,y}{10}=1",
+          "explanation": "x₀x/a²+y₀y/b²=1 공식을 사용합니다."
+        },
+        {
+          "title": "y절편",
+          "expression": "x=0\\Rightarrow y=\\frac{10}{\\sqrt5}=2\\sqrt5",
+          "explanation": "정답은 ②입니다."
+        }
+      ],
+      "correctReason": "접점이 실제 타원 위에 있으므로 접선 공식의 두 반축 값이 모두 확정됩니다.",
+      "commonMistake": "b 대신 b²=10을 접선식 분모에 사용해야 합니다.",
+      "verification": {
+        "problemPage": 17,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_geo_25": {
+      "id": "2025_06_geo_25",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 기하",
+      "questionNumber": 25,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "p의 끝점은 중심 a, 반지름 √2인 원 위에 있고 b까지의 최소거리는 4√2−√2=3√2입니다.",
+      "approach": "벡터의 끝점을 좌표평면의 점으로 보고 원과 한 점 사이의 최소거리로 바꿉니다.",
+      "concepts": ["위치벡터", "원과 점의 거리"],
+      "steps": [
+        {
+          "title": "자취",
+          "expression": "|\\vec p-\\vec a|=|\\vec b|=\\sqrt2",
+          "explanation": "p의 끝점은 a=(−3,3)을 중심으로 하는 반지름 √2의 원 위에 있습니다."
+        },
+        {
+          "title": "두 중심 거리",
+          "expression": "|\\vec a-\\vec b|=|(-4,4)|=4\\sqrt2",
+          "explanation": "고정점 b=(1,−1)과 원의 중심 사이 거리를 구합니다."
+        },
+        {
+          "title": "최소거리",
+          "expression": "|\\vec p-\\vec b|_{\\min}=4\\sqrt2-\\sqrt2=3\\sqrt2",
+          "explanation": "b는 원 밖에 있으므로 중심거리에서 반지름을 뺍니다."
+        }
+      ],
+      "correctReason": "원의 중심과 b를 잇는 선분 위에서 p를 잡을 때 삼각부등식의 하한이 실제로 달성됩니다.",
+      "commonMistake": "|p−b|를 |p|−|b|로 분리하지 마세요. 두 벡터의 방향이 고정되지 않았습니다.",
+      "verification": {
+        "problemPage": 18,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_geo_26": {
+      "id": "2025_06_geo_26",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 기하",
+      "questionNumber": 26,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "점근선 y=x에서 a=b이고, x=c에서 교점 높이가 ±b이므로 b=4, c²=32가 되어 합은 64입니다.",
+      "approach": "점근선의 기울기와 초점을 지나는 수직현의 길이를 쌍곡선 식에 연결합니다.",
+      "concepts": ["쌍곡선의 점근선", "쌍곡선의 초점"],
+      "steps": [
+        {
+          "title": "점근선 조건",
+          "expression": "y=\\pm\\frac ba x,\\quad y=x\\Rightarrow a=b",
+          "explanation": "양수 a,b이므로 b/a=1입니다."
+        },
+        {
+          "title": "수직현 길이",
+          "expression": "c^2=a^2+b^2=2a^2,\\quad x=c\\Rightarrow y^2=b^2",
+          "explanation": "초점의 x좌표를 쌍곡선 방정식에 대입하면 P,Q의 y좌표는 ±b입니다."
+        },
+        {
+          "title": "값 계산",
+          "expression": "PQ=2b=8\\Rightarrow a=b=4,\\ c^2=32\\Rightarrow a^2+b^2+c^2=64",
+          "explanation": "정답은 ③입니다."
+        }
+      ],
+      "correctReason": "쌍곡선의 초점 관계 c²=a²+b²와 점근선·현 조건을 모두 사용했습니다.",
+      "commonMistake": "PQ=8을 b=8로 두지 말고 위아래 두 점 사이 길이 2b로 읽으세요.",
+      "verification": {
+        "problemPage": 18,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_geo_27": {
+      "id": "2025_06_geo_27",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 기하",
+      "questionNumber": 27,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "타원의 긴반지름을 u라 하면 포물선 조건으로 u=3c이고, 직사각형 넓이로 u=2√3을 얻어 FF'=4√3/3입니다.",
+      "approach": "타원의 반축과 초점거리로 직사각형을 표현하고, F'이 포물선 위라는 초점-준선 거리 조건을 사용합니다.",
+      "concepts": ["타원의 초점", "포물선의 정의"],
+      "steps": [
+        {
+          "title": "포물선 조건",
+          "expression": "F'(-c,0),\\ F(c,0),\\ \\text{준선 }x=-u\\Rightarrow 2c=u-c\\Rightarrow u=3c",
+          "explanation": "F'에서 초점 F까지 거리와 준선까지 거리가 같습니다."
+        },
+        {
+          "title": "반축과 넓이",
+          "expression": "v^2=u^2-c^2=\\frac89u^2,\\qquad4uv=32\\sqrt2",
+          "explanation": "직사각형의 가로와 세로는 각각 2u, 2v입니다."
+        },
+        {
+          "title": "초점 사이 거리",
+          "expression": "u=2\\sqrt3,\\quad c=\\frac{2\\sqrt3}{3}\\Rightarrow FF'=2c=\\frac{4\\sqrt3}{3}",
+          "explanation": "정답은 ②입니다."
+        }
+      ],
+      "correctReason": "포물선 위 F'의 거리 조건이 타원의 긴반지름과 초점거리를 직접 연결합니다.",
+      "commonMistake": "직사각형 넓이를 uv로 두지 말고 전체 가로·세로 2u, 2v를 곱하세요.",
+      "verification": {
+        "problemPage": 19,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_geo_28": {
+      "id": "2025_06_geo_28",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 기하",
+      "questionNumber": 28,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "조건은 Q가 AP의 수직이등분선 위라는 뜻이고, 최소점 Q=(1,−2)에서 다른 교점 P=(−3/5,−4/5)를 구하면 내적은 12/5입니다.",
+      "approach": "벡터합을 중점 벡터로 바꿔 거리 조건을 얻고, 두 원의 가장 가까운 배치를 좌표로 계산합니다.",
+      "concepts": ["벡터의 내적", "두 원의 교점"],
+      "steps": [
+        {
+          "title": "수직이등분선",
+          "expression": "\\overrightarrow{QA}+\\overrightarrow{QP}=2\\overrightarrow{QM},\\quad \\overrightarrow{AP}\\perp\\overrightarrow{QM}\\Rightarrow QA=QP",
+          "explanation": "M은 AP의 중점이므로 주어진 내적 0은 Q가 AP의 수직이등분선 위라는 뜻입니다."
+        },
+        {
+          "title": "최소 배치",
+          "expression": "|BQ|=3,\\ |AB|=1\\Rightarrow QA_{\\min}=2,\\quad Q=(1,-2)",
+          "explanation": "A는 중심 B인 반지름 3의 원 안에 있으므로 가장 가까운 원 위 점은 아래쪽 Q입니다."
+        },
+        {
+          "title": "P와 내적",
+          "expression": "P=\\left(-\\frac35,-\\frac45\\right),\\quad \\overrightarrow{AP}\\cdot\\overrightarrow{BQ}=\\left(-\\frac85,-\\frac45\\right)\\cdot(0,-3)=\\frac{12}{5}",
+          "explanation": "단위원과 중심 Q, 반지름 2인 원의 A가 아닌 교점을 사용하면 정답은 ③입니다."
+        }
+      ],
+      "correctReason": "AP>0 조건 때문에 두 원의 공통점 A가 아닌 다른 교점 P를 선택했습니다.",
+      "commonMistake": "최소거리만 구하고 P=A를 사용하지 마세요. 문제에서 |AP|>0으로 제외합니다.",
+      "verification": {
+        "problemPage": 19,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_geo_29": {
+      "id": "2025_06_geo_29",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 기하",
+      "questionNumber": 29,
+      "answer": "25",
+      "answerMark": null,
+      "summary": "안쪽 타원에서 a=√5/2, c=1/2를 얻고, 바깥 쌍곡선의 초점이 A,B이므로 BQ−AQ=2가 되어 둘레는 25입니다.",
+      "approach": "절댓값을 |y|≤1과 |y|>1로 나눠 같은 곡선의 타원·쌍곡선 성질을 차례로 사용합니다.",
+      "concepts": ["타원의 초점 성질", "쌍곡선의 초점 성질"],
+      "steps": [
+        {
+          "title": "안쪽 타원",
+          "expression": "\\frac{x^2}{a^2}+y^2=1,\\quad PC+PD=2a=\\sqrt5\\Rightarrow a=\\frac{\\sqrt5}{2},\\ c^2=a^2-1=\\frac14",
+          "explanation": "|y|≤1 구간은 초점 C,D인 타원이고 c=1/2입니다."
+        },
+        {
+          "title": "바깥 쌍곡선",
+          "expression": "y^2-\\frac{x^2}{a^2}=1",
+          "explanation": "|y|>1 부분은 세로축 쌍곡선이며 초점은 A=(0,3/2), B=(0,−3/2)입니다."
+        },
+        {
+          "title": "둘레",
+          "expression": "BQ-AQ=2,\\quad AQ=10,\\quad AB=3\\Rightarrow AB+AQ+BQ=3+10+12=25",
+          "explanation": "제1사분면의 Q는 A에 더 가까우므로 최종 답은 25입니다."
+        }
+      ],
+      "correctReason": "하나의 절댓값 곡선을 두 이차곡선으로 정확히 나누고 각각의 초점 거리 성질을 적용했습니다.",
+      "commonMistake": "PC+PD=√5에서 c=√5/2로 두지 마세요. 합은 긴축 길이 2a입니다.",
+      "verification": {
+        "problemPage": 20,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_geo_30": {
+      "id": "2025_06_geo_30",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 기하",
+      "questionNumber": 30,
+      "answer": "10",
+      "answerMark": null,
+      "summary": "벡터 조건은 Q가 중심 F', 반지름 5인 원 위를 움직인다는 뜻이고 A에서 그 원까지 최대거리는 10입니다.",
+      "approach": "쌍곡선의 초점 거리 차와 벡터식의 내분 관계를 결합해 Q의 자취를 원으로 바꿉니다.",
+      "concepts": ["쌍곡선의 초점 성질", "벡터의 내분"],
+      "steps": [
+        {
+          "title": "초점 거리",
+          "expression": "PF'-PF=6",
+          "explanation": "PF<PF'인 가지에서 두 초점 거리의 차는 주축 길이 6입니다."
+        },
+        {
+          "title": "Q의 자취",
+          "expression": "d=PF\\Rightarrow F'P=d+6,\\quad(d+1)\\overrightarrow{F'Q}=5\\overrightarrow{QP}\\Rightarrow F'Q=5",
+          "explanation": "Q는 선분 F'P 위에 있고 거리식을 풀면 F'에서 항상 5만큼 떨어집니다."
+        },
+        {
+          "title": "최대거리",
+          "expression": "AF'=\\sqrt{4^2+3^2}=5\\Rightarrow AQ_{\\max}=AF'+5=10",
+          "explanation": "A, F', Q가 일직선이 되는 원의 가장 먼 점이 허용되어 최종 답은 10입니다."
+        }
+      ],
+      "correctReason": "쌍곡선의 해당 가지에서 생기는 Q의 원호가 A 반대 방향의 최장점까지 포함함을 점근선 방향으로 확인했습니다.",
+      "commonMistake": "벡터식의 계수만 보고 Q가 F'P를 5:(d+1)로 외분한다고 판단하지 마세요. 두 벡터는 같은 방향입니다.",
+      "verification": {
+        "problemPage": 20,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

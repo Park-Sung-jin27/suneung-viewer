@@ -1,0 +1,346 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2024학년도 9월 모의평가 수학 기하 23~30번 8문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "c36e9911a987695dd4112d38265f8ccb879efec0df4b876575917ccd174d0447",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://jwmath.tistory.com/617",
+      "independentSourceUrls": [
+        "https://horaeng.com/267",
+        "https://g10010.tistory.com/292"
+      ],
+      "problemFilename": "jw-problem.pdf",
+      "problemSha256": "5b2e01cfa31c7932b58afc19d5bebd388292c8382c5013e7c857caf24a6f006a",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "5b2e01cfa31c7932b58afc19d5bebd388292c8382c5013e7c857caf24a6f006a"
+        }
+      ],
+      "answerFilename": "jw-answer.png",
+      "answerSha256": "fe450875a7b50ddf5d9b950f0f22688855d4fe622a42604f972ee1ce18e1e188",
+      "solutionArtifacts": [
+        {
+          "filename": "jw-solution.pdf",
+          "sha256": "d44ccbb5a95a0832b126c21b33cbd2cafa9c1d1ed3c0077734f6f70074f9f396"
+        },
+        {
+          "filename": "horaeng-solution.pdf",
+          "sha256": "718459a111a3613e45d9b2ff751f563a22e1b09e5d3d4f2735be7b8b14771065"
+        }
+      ]
+    },
+    "note": "공식 문제지·정답표와 두 해설 자료를 대조하고 좌표·벡터·정사영 계산을 독립적으로 다시 확인한 내부 검증 후보입니다. 공개 데이터에는 연결하지 않았습니다."
+  },
+  "items": {
+    "2024_09_geo_23": {
+      "id": "2024_09_geo_23",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 기하",
+      "questionNumber": 23,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "xy평면 대칭으로 z좌표만 2에서 -2로 바뀌므로 거리는 4입니다.",
+      "approach": "xy평면 대칭이 x,y는 유지하고 z의 부호만 바꾼다는 점을 사용합니다.",
+      "concepts": ["공간좌표", "평면 대칭"],
+      "steps": [
+        {
+          "title": "대칭점 좌표",
+          "expression": "A(8,6,2)\\Rightarrow B(8,6,-2)",
+          "explanation": "xy평면에 대한 대칭에서는 z좌표만 부호가 바뀝니다."
+        },
+        {
+          "title": "거리 공식",
+          "expression": "AB=\\sqrt{(8-8)^2+(6-6)^2+(-2-2)^2}",
+          "explanation": "두 점 사이의 공간 거리 공식을 적용합니다."
+        },
+        {
+          "title": "계산",
+          "expression": "AB=\\sqrt{16}=4",
+          "explanation": "길이는 4이므로 정답은 ④입니다."
+        }
+      ],
+      "correctReason": "두 점은 xy평면에 수직인 같은 직선 위에 있고 z좌표 차가 4입니다.",
+      "commonMistake": "xy평면 대칭을 원점 대칭으로 생각해 x와 y의 부호까지 바꾸지 마세요.",
+      "verification": {
+        "problemPage": 17,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_geo_24": {
+      "id": "2024_09_geo_24",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 기하",
+      "questionNumber": 24,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "쌍곡선의 접선은 x-y=1이고 y=0을 대입하면 x절편은 1입니다.",
+      "approach": "표준형 쌍곡선의 점 (x1,y1)에서 접선 공식을 사용합니다.",
+      "concepts": ["쌍곡선", "접선의 방정식"],
+      "steps": [
+        {
+          "title": "접선 공식 적용",
+          "expression": "\\frac{7x}{7}-\\frac{6y}{6}=1",
+          "explanation": "x²/7-y²/6=1 위의 점 (7,6)을 접선 공식에 대입합니다."
+        },
+        {
+          "title": "직선 정리",
+          "expression": "x-y=1",
+          "explanation": "분수를 약분하면 접선의 방정식이 단순해집니다."
+        },
+        {
+          "title": "x절편",
+          "expression": "y=0\\Rightarrow x=1",
+          "explanation": "x축과 만나는 점의 x좌표는 1이므로 정답은 ①입니다."
+        }
+      ],
+      "correctReason": "주어진 점이 쌍곡선 위에 있어 표준 접선 공식이 직접 적용됩니다.",
+      "commonMistake": "쌍곡선의 두 항 사이 부호가 빼기임을 유지하세요.",
+      "verification": {
+        "problemPage": 17,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_geo_25": {
+      "id": "2024_09_geo_25",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 기하",
+      "questionNumber": 25,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "OA=5이므로 P의 자취는 반지름 5인 원이고 둘레는 10π입니다.",
+      "approach": "벡터의 크기 조건을 원점에서의 거리 조건으로 해석합니다.",
+      "concepts": ["벡터의 크기", "원의 자취"],
+      "steps": [
+        {
+          "title": "OA의 길이",
+          "expression": "|\\overrightarrow{OA}|=\\sqrt{4^2+3^2}=5",
+          "explanation": "점 A의 좌표로 원점에서의 거리를 구합니다."
+        },
+        {
+          "title": "P의 자취",
+          "expression": "|\\overrightarrow{OP}|=5",
+          "explanation": "P는 원점에서 거리가 항상 5인 모든 점을 움직입니다."
+        },
+        {
+          "title": "원의 길이",
+          "expression": "2\\pi\\times5=10\\pi",
+          "explanation": "자취의 길이는 원의 둘레이므로 정답은 ⑤입니다."
+        }
+      ],
+      "correctReason": "원점으로부터 일정한 거리에 있는 평면 위 점의 자취는 원입니다.",
+      "commonMistake": "도형의 넓이 25π가 아니라 도형의 길이인 둘레를 구하세요.",
+      "verification": {
+        "problemPage": 18,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_geo_26": {
+      "id": "2024_09_geo_26",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 기하",
+      "questionNumber": 26,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "직육면체에 좌표를 두고 무게중심을 구하면 DP=2√6입니다.",
+      "approach": "한 꼭짓점을 원점으로 잡아 B, E, G의 좌표 평균을 계산합니다.",
+      "concepts": ["공간좌표", "삼각형의 무게중심"],
+      "steps": [
+        {
+          "title": "꼭짓점 좌표 설정",
+          "expression": "B(3,3,6),\\quad E(3,0,0),\\quad G(0,3,0),\\quad D(0,0,6)",
+          "explanation": "H를 원점으로 하고 세 모서리를 좌표축으로 둡니다."
+        },
+        {
+          "title": "무게중심 좌표",
+          "expression": "P=\\left(\\frac{3+3+0}{3},\\frac{3+0+3}{3},\\frac{6+0+0}{3}\\right)=(2,2,2)",
+          "explanation": "삼각형 세 꼭짓점 좌표의 평균을 구합니다."
+        },
+        {
+          "title": "DP의 길이",
+          "expression": "DP=\\sqrt{2^2+2^2+(2-6)^2}=2\\sqrt6",
+          "explanation": "거리 공식으로 계산하면 정답은 ②입니다."
+        }
+      ],
+      "correctReason": "좌표축을 직육면체 모서리에 맞추면 무게중심과 거리를 성분별로 바로 계산할 수 있습니다.",
+      "commonMistake": "직육면체의 윗면·아랫면 표시에 따라 z좌표 0과 6을 뒤바꾸지 마세요.",
+      "verification": {
+        "problemPage": 18,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_geo_27": {
+      "id": "2024_09_geo_27",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 기하",
+      "questionNumber": 27,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "포물선의 초점거리 성질로 세 거리는 2p, 3p, 4p이고 합이 27이므로 p=3입니다.",
+      "approach": "포물선 위 점의 초점까지 거리와 준선까지 거리가 같다는 성질을 사용합니다.",
+      "concepts": ["포물선의 정의", "초점과 준선"],
+      "steps": [
+        {
+          "title": "초점과 준선",
+          "expression": "F(p,0),\\qquad\\text{준선 }x=-p",
+          "explanation": "y²=4px의 표준형에서 초점과 준선을 읽습니다."
+        },
+        {
+          "title": "세 초점거리",
+          "expression": "FP_1=2p,\\quad FP_2=3p,\\quad FP_3=4p",
+          "explanation": "x좌표가 p, 2p, 3p인 점에서 준선까지 수평거리는 각각 x+p입니다."
+        },
+        {
+          "title": "p 계산",
+          "expression": "2p+3p+4p=27\\Rightarrow p=3",
+          "explanation": "합은 9p이므로 정답은 ③입니다."
+        }
+      ],
+      "correctReason": "포물선 위 점에서는 초점거리와 준선거리가 같아 좌표만으로 세 길이가 정해집니다.",
+      "commonMistake": "준선 x=-p까지 거리는 x-p가 아니라 x+p입니다.",
+      "verification": {
+        "problemPage": 19,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_geo_28": {
+      "id": "2024_09_geo_28",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 기하",
+      "questionNumber": 28,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "현 PQ의 길이와 두 구의 교선 평면 각도를 구하면 정사영 넓이의 최댓값은 6입니다.",
+      "approach": "원 C의 현 PQ를 먼저 계산하고, 삼각형 BPQ의 최대 넓이에 평면 사이 각의 코사인을 곱합니다.",
+      "concepts": ["구의 교선", "정사영의 넓이"],
+      "steps": [
+        {
+          "title": "현 PQ의 길이",
+          "expression": "OP=\\sqrt{4^2-1^2}=\\sqrt{15},\\quad OM=\\sqrt{2^2-1^2}=\\sqrt3,\\quad PQ=4\\sqrt3",
+          "explanation": "M을 현의 중점으로 두고 두 직각삼각형에서 반현의 길이를 구합니다."
+        },
+        {
+          "title": "삼각형 넓이의 최대",
+          "expression": "[BPQ]\\le\\frac12\\cdot4\\sqrt3\\cdot2\\sqrt3=12",
+          "explanation": "교선 원 위에서 B에서 PQ까지의 최대 거리는 구 T의 반지름 2√3입니다."
+        },
+        {
+          "title": "정사영 넓이",
+          "expression": "[BPQ]_{xy}\\le12\\cos\\frac\\pi3=6",
+          "explanation": "교선 평면과 xy평면의 예각이 π/3이므로 최댓값은 6입니다."
+        }
+      ],
+      "correctReason": "삼각형 자체의 최대 넓이와 정사영 비율이 각각 독립적으로 고정되어 상한 6이 실제로 달성됩니다.",
+      "commonMistake": "정사영 넓이는 원래 넓이에 두 평면이 이루는 예각의 cos를 곱해야 합니다.",
+      "verification": {
+        "problemPage": 19,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_geo_29": {
+      "id": "2024_09_geo_29",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 기하",
+      "questionNumber": 29,
+      "answer": "17",
+      "answerMark": null,
+      "summary": "타원의 두 초점 거리합을 이용해 PQ+PF'의 최솟값을 12로 바꾸면 원의 반지름은 5+12=17입니다.",
+      "approach": "주어진 차 PQ-PF를 다른 초점 F'까지의 거리합으로 변환합니다.",
+      "concepts": ["타원의 초점 성질", "삼각부등식"],
+      "steps": [
+        {
+          "title": "다른 초점과 거리합",
+          "expression": "F'(-2,0),\\qquad PF+PF'=6",
+          "explanation": "타원의 장축 길이는 6이고 두 초점은 (±2,0)입니다."
+        },
+        {
+          "title": "최솟값 조건 변환",
+          "expression": "PQ-PF=PQ+PF'-6",
+          "explanation": "주어진 최솟값이 6이므로 PQ+PF'의 최솟값은 12입니다."
+        },
+        {
+          "title": "원의 반지름",
+          "expression": "CF'=\\sqrt{(2+2)^2+3^2}=5,\\qquad r=CF'+12=17",
+          "explanation": "C, F', P, Q가 최단 방향으로 일직선일 때 거리합의 최솟값이 달성됩니다."
+        }
+      ],
+      "correctReason": "타원의 초점 거리합으로 빼기 식을 거리합으로 바꾸면 원 중심과 다른 초점 사이 거리만 남습니다.",
+      "commonMistake": "타원의 다른 초점 F'를 사용해야 하며, 주어진 초점 F만으로 삼각부등식을 적용하지 마세요.",
+      "verification": {
+        "problemPage": 20,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_geo_30": {
+      "id": "2024_09_geo_30",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 기하",
+      "questionNumber": 30,
+      "answer": "27",
+      "answerMark": null,
+      "summary": "벡터 조건으로 AB=6과 AQ=4를 구하고 중점에서 선분 AQ까지 거리를 사용하면 m²=27입니다.",
+      "approach": "첫 벡터식에서 방향과 길이비를 분리하고, 내적으로 삼각형의 크기를 정한 뒤 최솟값을 거리 문제로 바꿉니다.",
+      "concepts": ["벡터의 내적", "점과 직선 사이의 거리"],
+      "steps": [
+        {
+          "title": "방향과 길이비",
+          "expression": "\\overrightarrow{PQ}\\parallel\\overrightarrow{AB},\\qquad|PQ|=\\frac23|AB|",
+          "explanation": "9|PQ|PQ=4|AB|AB에서 두 벡터의 방향이 같고 크기 제곱의 비가 정해집니다."
+        },
+        {
+          "title": "삼각형 크기 결정",
+          "expression": "\\overrightarrow{PQ}\\cdot\\overrightarrow{CB}=24\\Rightarrow|AB|=6,\\quad|PQ|=|AQ|=4",
+          "explanation": "직각이등변삼각형에서 |CB|=√2|AB|, 끼인각은 π/4입니다."
+        },
+        {
+          "title": "최솟값",
+          "expression": "|\\overrightarrow{XA}+\\overrightarrow{XB}|=2|\\overrightarrow{XM}|\\ge2\\cdot3\\sin\\frac\\pi3=3\\sqrt3",
+          "explanation": "M을 AB의 중점으로 두면 AQ와의 수선거리에서 최솟값이 나오므로 m²=27입니다."
+        }
+      ],
+      "correctReason": "두 벡터의 합이 중점 M을 향하는 벡터의 두 배가 되어 선분 위 거리 최소 문제로 정확히 환원됩니다.",
+      "commonMistake": "벡터식의 양변에서 벡터 크기만 비교하지 말고 방향이 같다는 정보도 함께 사용하세요.",
+      "verification": {
+        "problemPage": 20,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

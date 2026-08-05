@@ -130,7 +130,9 @@ function validateChoiceList(questionId, choices, questionType) {
   });
 }
 
-function verifyPublicBoundary(candidateId, candidateQuestionIds) {
+function verifyPublicBoundary(overlay) {
+  const candidateId = overlay.candidateId;
+  const candidateQuestionIds = overlay.questions.map((question) => question.id);
   const publicDataDirectory = path.join(ROOT, "public", "data", "eng-math");
   const englishFree = readJson(
     path.join(publicDataDirectory, "english-free-public.json"),
@@ -171,10 +173,18 @@ function verifyPublicBoundary(candidateId, candidateQuestionIds) {
     );
   }
 
+  const protectedAssetScopes = new Set(
+    (overlay.figures ?? []).map((figure) =>
+      path.basename(path.dirname(figure.assetPath)),
+    ),
+  );
   const publicImagePaths = listFiles(path.join(ROOT, "public", "images"));
   ensure(
     publicImagePaths.every(
-      (filePath) => !filePath.includes(`${path.sep}2026-09${path.sep}`),
+      (filePath) =>
+        [...protectedAssetScopes].every(
+          (scope) => !filePath.includes(`${path.sep}${scope}${path.sep}`),
+        ),
     ),
     "PUBLIC_CANDIDATE_ASSET_LEAK",
   );
@@ -436,7 +446,8 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
     "ANSWER_CROSS_CHECK_COUNT",
   );
   ensure(
-    questions.filter((question) => question.figure).length === 3,
+    questions.filter((question) => question.figure).length ===
+      overlay.summary.figureAssetCount,
     "MERGED_FIGURE_COUNT",
   );
   ensure(
@@ -447,11 +458,13 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
     (count, question) => count + question.review.evidence.length,
     0,
   );
-  ensure(evidenceCount === 58, "MERGED_EVIDENCE_COUNT", String(evidenceCount));
-  verifyPublicBoundary(
-    overlay.candidateId,
-    overlay.questions.map((question) => question.id),
+  const expectedEvidenceCount = overlay.summary.evidenceCount ?? 58;
+  ensure(
+    evidenceCount === expectedEvidenceCount,
+    "MERGED_EVIDENCE_COUNT",
+    String(evidenceCount),
   );
+  verifyPublicBoundary(overlay);
 
   return {
     schemaVersion: "english-product-candidate-v2",
@@ -472,7 +485,7 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
       questionAnswerReadyCount: 28,
       reviewReadyCount: 28,
       evidenceCount,
-      figureAssetCount: 3,
+      figureAssetCount: overlay.summary.figureAssetCount,
       choiceOverrideQuestionCount: overrideIds.length,
       blockedCount: 0,
     },
@@ -520,5 +533,5 @@ if (options.check) {
 }
 
 console.log(
-  `ENG_MATH_ENGLISH_CANDIDATE: pass mode=${options.check ? "check" : "merge"} questions=28 answers=28 overrides=14 figures=3 review=28 evidence=58 public=0 source=${options.sourceDirectory ? "verified" : "recorded"}`,
+  `ENG_MATH_ENGLISH_CANDIDATE: pass candidate=${overlay.candidateId} mode=${options.check ? "check" : "merge"} questions=${merged.summary.questionCount} answers=${merged.summary.answerCrossCheckCount} overrides=${merged.summary.choiceOverrideQuestionCount} figures=${merged.summary.figureAssetCount} review=${merged.summary.reviewReadyCount} evidence=${merged.summary.evidenceCount} public=0 source=${options.sourceDirectory ? "verified" : "recorded"}`,
 );

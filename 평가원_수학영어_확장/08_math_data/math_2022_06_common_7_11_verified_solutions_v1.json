@@ -1,0 +1,243 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 6월 모의평가 공통 7~11번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 5,
+    "readyCount": 5,
+    "questionFingerprint": "a71353b4aaa3518a58f53369b011c6f3cbaabd373f9e6d22c040b9bd45834360",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
+      "archiveSha256": "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
+    },
+    "note": "원본 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 풀이 후보"
+  },
+  "items": {
+    "2022_06_common_7": {
+      "id": "2022_06_common_7",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 7,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "부분합의 차 S₃-S₂를 a₃로 바꾸고 등차수열의 공차를 구하면 S₁₀은 110입니다.",
+      "approach": "부분합과 일반항의 관계로 조건을 단순화한 뒤 등차수열의 일반항과 합 공식을 차례로 사용합니다.",
+      "concepts": [
+        "등차수열의 일반항",
+        "부분합과 일반항",
+        "등차수열의 합"
+      ],
+      "steps": [
+        {
+          "title": "부분합의 차 바꾸기",
+          "expression": "S_3-S_2=a_3",
+          "explanation": "첫째항부터 셋째항까지의 합에서 둘째항까지의 합을 빼면 셋째항만 남습니다."
+        },
+        {
+          "title": "공차 구하기",
+          "expression": "a_6=2a_3 \\Rightarrow 2+5d=2(2+2d) \\Rightarrow d=2",
+          "explanation": "첫째항이 2인 등차수열의 일반항 aₙ=2+(n-1)d를 조건에 대입합니다."
+        },
+        {
+          "title": "열째 부분합 계산하기",
+          "expression": "S_{10}=\\frac{10}{2}\\{2\\cdot2+9\\cdot2\\}=5\\cdot22=110",
+          "explanation": "첫째항 2와 공차 2를 등차수열의 합 공식에 넣습니다."
+        }
+      ],
+      "correctReason": "S₁₀=110이므로 선지 ②가 정답입니다.",
+      "commonMistake": "S₃-S₂를 a₂로 착각하면 안 됩니다. Sₙ-Sₙ₋₁=aₙ이므로 여기서는 a₃입니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_8": {
+      "id": "2022_06_common_8",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 8,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "x=a에서 제곱한 두 식의 값이 같아야 하므로 a=2 또는 6이고, 그 합은 8입니다.",
+      "approach": "각 조각은 이미 연속이므로 경계 x=a에서 f(x)²의 좌극한과 함숫값만 비교합니다.",
+      "concepts": [
+        "구간별로 정의된 함수",
+        "함수의 연속",
+        "제곱식 방정식"
+      ],
+      "steps": [
+        {
+          "title": "경계의 두 값 쓰기",
+          "expression": "\\lim_{x\\to a-}\\{f(x)\\}^2=(-2a+6)^2,\\quad \\{f(a)\\}^2=a^2",
+          "explanation": "x<a에서는 -2x+6을, x≥a에서는 2x-a를 사용하며 f(a)=a입니다."
+        },
+        {
+          "title": "연속 조건 풀기",
+          "expression": "(-2a+6)^2=a^2 \\Rightarrow -2a+6=a\\;\\text{또는}\\;-2a+6=-a",
+          "explanation": "제곱이 같은 두 수는 서로 같거나 서로 반대입니다."
+        },
+        {
+          "title": "모든 값 더하기",
+          "expression": "a=2\\;\\text{또는}\\;a=6 \\Rightarrow 2+6=8",
+          "explanation": "두 경우 모두 f(x)²가 x=a에서 이어집니다."
+        }
+      ],
+      "correctReason": "모든 상수 a의 합이 8이므로 선지 ④가 정답입니다.",
+      "commonMistake": "f 자체가 연속이어야 한다고 두 식을 바로 같게 놓으면 a=2만 얻습니다. 문제의 함수는 f(x)²입니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_9": {
+      "id": "2022_06_common_9",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 9,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "점화식을 네 번 적용하면 항이 되돌아오는 구조를 이용해 a₄=a₁₂=1/2, a₁=4를 얻으므로 합은 9/2입니다.",
+      "approach": "홀수 번째와 짝수 번째 규칙을 묶어 네 항마다 같은 값이 반복되는지 먼저 확인합니다.",
+      "concepts": [
+        "수열의 귀납적 정의",
+        "점화식의 주기",
+        "항의 역추적"
+      ],
+      "steps": [
+        {
+          "title": "네 항의 변화 확인하기",
+          "expression": "a_2=\\frac{1}{a_1},\\quad a_3=\\frac{8}{a_1},\\quad a_4=\\frac{a_1}{8},\\quad a_5=a_1",
+          "explanation": "홀수 n에서는 역수를, 짝수 n에서는 8배를 차례로 적용하면 네 단계 뒤 같은 값으로 돌아옵니다."
+        },
+        {
+          "title": "주어진 항 연결하기",
+          "expression": "a_{12}=a_4=\\frac12",
+          "explanation": "네 항마다 같은 값이 반복되므로 12번째 항과 4번째 항이 같습니다."
+        },
+        {
+          "title": "첫째항과 합 구하기",
+          "expression": "a_4=\\frac{a_1}{8}=\\frac12 \\Rightarrow a_1=4,\\quad a_1+a_4=4+\\frac12=\\frac92",
+          "explanation": "a₄와 a₁의 관계에 주어진 값을 대입합니다."
+        }
+      ],
+      "correctReason": "a₁+a₄=9/2이므로 선지 ⑤가 정답입니다.",
+      "commonMistake": "n의 홀짝은 새로 구하는 항의 번호가 아니라 점화식에 적힌 n을 기준으로 판단해야 합니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_10": {
+      "id": "2022_06_common_10",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 10,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "교점 조건을 x(x+3)=n으로 바꾸면 1<x<2에서 4<n<10이므로 가능한 자연수의 합은 35입니다.",
+      "approach": "로그식을 하나로 합친 뒤 x가 1과 2 사이일 때 증가하는 식 x(x+3)의 값 범위를 구합니다.",
+      "concepts": [
+        "로그의 성질",
+        "로그방정식",
+        "증가함수의 값 범위"
+      ],
+      "steps": [
+        {
+          "title": "교점 방정식 정리하기",
+          "expression": "\\log_n x=-\\log_n(x+3)+1 \\Rightarrow \\log_n\\{x(x+3)\\}=1",
+          "explanation": "두 로그를 왼쪽에 모아 곱의 로그로 합칩니다."
+        },
+        {
+          "title": "n과 x의 관계 구하기",
+          "expression": "\\log_n\\{x(x+3)\\}=1 \\Rightarrow x(x+3)=n",
+          "explanation": "밑 n의 로그값이 1이므로 진수는 n입니다."
+        },
+        {
+          "title": "가능한 자연수 찾기",
+          "expression": "1<x<2 \\Rightarrow 4<x(x+3)<10 \\Rightarrow n=5,6,7,8,9",
+          "explanation": "x>0에서 x(x+3)은 증가하므로 양 끝값 4와 10 사이의 자연수만 가능합니다."
+        },
+        {
+          "title": "합 계산하기",
+          "expression": "5+6+7+8+9=35",
+          "explanation": "조건을 만족하는 모든 자연수 n을 더합니다."
+        }
+      ],
+      "correctReason": "가능한 n의 합이 35이므로 선지 ②가 정답입니다.",
+      "commonMistake": "끝점 x=1과 x=2는 포함되지 않으므로 n=4와 n=10을 포함하면 안 됩니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_11": {
+      "id": "2022_06_common_11",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 11,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "한 주기 [-1,1]의 적분은 1이고 남는 길이 1의 적분은 5/6이므로 전체는 17/6입니다.",
+      "approach": "먼저 주기 하나의 적분을 구한 다음 길이 5인 구간을 두 주기와 남는 한 구간으로 나눕니다.",
+      "concepts": [
+        "주기함수의 정적분",
+        "치환적분",
+        "정적분의 구간 분할"
+      ],
+      "steps": [
+        {
+          "title": "왼쪽 반주기 적분하기",
+          "expression": "\\int_{-1}^{0}g(x)\\,dx=\\int_{-1}^{0}\\{-f(x+1)+1\\}\\,dx=1-\\frac16=\\frac56",
+          "explanation": "t=x+1로 바꾸면 f의 적분 구간이 0부터 1이 됩니다."
+        },
+        {
+          "title": "한 주기의 적분 구하기",
+          "expression": "\\int_{-1}^{1}g(x)\\,dx=\\frac56+\\int_0^1 f(x)\\,dx=\\frac56+\\frac16=1",
+          "explanation": "[-1,0]과 [0,1]의 적분을 더합니다."
+        },
+        {
+          "title": "전체 구간 나누기",
+          "expression": "\\int_{-3}^{2}g(x)\\,dx=2\\int_{-1}^{1}g(x)\\,dx+\\int_{1}^{2}g(x)\\,dx",
+          "explanation": "[-3,1]은 길이 2인 주기 두 개이고 [1,2]가 남습니다."
+        },
+        {
+          "title": "남는 구간과 최종값 계산하기",
+          "expression": "\\int_1^2 g(x)\\,dx=\\int_{-1}^0 g(x)\\,dx=\\frac56,\\quad 2+\\frac56=\\frac{17}{6}",
+          "explanation": "주기가 2이므로 [1,2]의 적분은 [-1,0]의 적분과 같습니다."
+        }
+      ],
+      "correctReason": "전체 정적분이 17/6이므로 선지 ②가 정답입니다.",
+      "commonMistake": "구간 길이 5를 두 주기로만 처리하면 길이 1의 나머지 구간을 빠뜨립니다.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

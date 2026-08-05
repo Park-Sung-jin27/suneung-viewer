@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 9월 모의평가 수학 공통 1~11번 중 원문 일치 10문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 10,
+    "readyCount": 10,
+    "questionFingerprint": "c1080265c5b38528bc5a7b0974a9f07a60787f38076e26866758851b1d11e038",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5087696&lev=0&m=0403&page=3&s=suneung&searchType=S&statusYN=W",
+      "independentSourceUrls": [
+        "https://horaeng.com/353",
+        "https://wdown.ebsi.co.kr/W61001/01exam/20240904/go3/mathA_1_hsj_9DOE5Q44.pdf"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "10872f1ff40923c9e92705b49d60043ac9e4ddc58db744865b4188d075eef28c",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "10872f1ff40923c9e92705b49d60043ac9e4ddc58db744865b4188d075eef28c"
+        }
+      ],
+      "answerFilename": "kice-answer.pdf",
+      "answerSha256": "e06118d5649d9a7fd04606ae1400db967a9435b54ad7eb1d75e96fe7bd9a62c2",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "ff290de3a4c7bc618a8f151336ae9b484673118622eb0ecbc905f24f9f44089c"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지·정답표를 동일 파일 복제본과 대조하고, EBS 풀이와 독립 계산으로 각 해법을 다시 확인했습니다. 8번은 선지 오염 때문에 별도 차단했습니다."
+  },
+  "items": {
+    "2025_09_common_1": {
+      "id": "2025_09_common_1",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 1,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "밑을 2로 통일하면 지수의 차가 1이므로 값은 2입니다.",
+      "approach": "근호를 유리수 지수로 바꾼 뒤 나눗셈의 지수법칙을 적용합니다.",
+      "concepts": ["유리수 지수", "지수법칙"],
+      "steps": [
+        {
+          "title": "밑 통일",
+          "expression": "\\sqrt[4]{32}=2^{5/4},\\qquad \\sqrt[8]{4}=2^{1/4}",
+          "explanation": "32와 4를 각각 2의 거듭제곱으로 나타냅니다."
+        },
+        {
+          "title": "지수 빼기",
+          "expression": "\\frac{2^{5/4}}{2^{1/4}}=2^{5/4-1/4}=2",
+          "explanation": "같은 밑의 나눗셈에서는 지수를 뺍니다."
+        }
+      ],
+      "correctReason": "두 근호를 같은 밑으로 바꾸면 계산이 하나의 지수 뺄셈으로 정리됩니다.",
+      "commonMistake": "4의 8제곱근을 2의 1/8제곱으로 바꾸지 말고, 4=2²까지 반영해 2의 1/4제곱으로 바꾸세요.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_2": {
+      "id": "2025_09_common_2",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 2,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "주어진 극한은 f'(1)의 정의이고 계산값은 9입니다.",
+      "approach": "극한식을 미분계수로 읽은 뒤 도함수에 x=1을 대입합니다.",
+      "concepts": ["미분계수의 정의", "다항함수의 미분"],
+      "steps": [
+        {
+          "title": "미분계수 확인",
+          "expression": "\\lim_{h\\to0}\\frac{f(1+h)-f(1)}h=f'(1)",
+          "explanation": "증분 h를 사용한 x=1에서의 미분계수입니다."
+        },
+        {
+          "title": "도함수 계산",
+          "expression": "f'(x)=3x^2+6x",
+          "explanation": "상수항은 미분하면 0이 됩니다."
+        },
+        {
+          "title": "값 대입",
+          "expression": "f'(1)=3+6=9",
+          "explanation": "정답은 ⑤입니다."
+        }
+      ],
+      "correctReason": "극한식을 직접 전개할 필요 없이 미분계수의 정의로 정확히 바꿀 수 있습니다.",
+      "commonMistake": "f(1)의 값이나 f'(0)을 구하는 문제가 아닙니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_3": {
+      "id": "2025_09_common_3",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 3,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "첫째항은 1/2, 공비는 2이므로 a₆=16입니다.",
+      "approach": "첫째항과 공비로 두 조건을 표현한 뒤 한 식을 다른 식으로 나눕니다.",
+      "concepts": ["등비수열의 일반항", "연립조건"],
+      "steps": [
+        {
+          "title": "조건 식 세우기",
+          "expression": "a_2a_3=a_1^2r^3=2,\\qquad a_4=a_1r^3=4",
+          "explanation": "등비수열의 각 항을 첫째항 a₁과 공비 r로 표시합니다."
+        },
+        {
+          "title": "첫째항과 공비",
+          "expression": "a_1=\\frac{2}{4}=\\frac12,\\qquad r^3=8\\Rightarrow r=2",
+          "explanation": "두 식을 나누면 a₁이 바로 결정됩니다."
+        },
+        {
+          "title": "여섯째항",
+          "expression": "a_6=a_1r^5=\\frac12\\cdot2^5=16",
+          "explanation": "정답은 ④입니다."
+        }
+      ],
+      "correctReason": "모든 항이 실수이므로 r³=8에서 공비는 2로 유일합니다.",
+      "commonMistake": "a₆의 지수는 6이 아니라 n-1인 5입니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_4": {
+      "id": "2025_09_common_4",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 4,
+      "answer": "2",
+      "answerMark": "②",
+      "publicBlockedByFigureAsset": true,
+      "summary": "그래프에서 0의 좌극한은 -2, 1의 우극한은 1이므로 합은 -1입니다.",
+      "approach": "끝점의 점 표시가 아니라 지정된 방향에서 그래프가 가까워지는 높이를 읽습니다.",
+      "concepts": ["좌극한", "우극한"],
+      "steps": [
+        {
+          "title": "0의 좌극한",
+          "expression": "\\lim_{x\\to0-}f(x)=-2",
+          "explanation": "x<0 쪽 곡선이 열린 점 (0,-2)에 가까워집니다."
+        },
+        {
+          "title": "1의 우극한",
+          "expression": "\\lim_{x\\to1+}f(x)=1",
+          "explanation": "x>1 쪽 선분이 열린 점 (1,1)에 가까워집니다."
+        },
+        {
+          "title": "합",
+          "expression": "-2+1=-1",
+          "explanation": "정답은 ②입니다."
+        }
+      ],
+      "correctReason": "두 방향의 그래프 높이를 공식 문제지 그림에서 직접 확인했습니다.",
+      "commonMistake": "채워진 점은 함숫값을 나타냅니다. 극한은 다가가는 쪽의 그래프를 읽어야 합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_5": {
+      "id": "2025_09_common_5",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 5,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "곱의 미분법을 적용하면 f'(2)=16입니다.",
+      "approach": "두 인수를 각각 한 번씩 미분해 더하고 x=2를 대입합니다.",
+      "concepts": ["곱의 미분법", "다항함수의 미분"],
+      "steps": [
+        {
+          "title": "곱 미분",
+          "expression": "f'(x)=(x^2+x-5)+(x+1)(2x+1)",
+          "explanation": "첫 인수와 둘째 인수를 번갈아 미분합니다."
+        },
+        {
+          "title": "대입",
+          "expression": "f'(2)=(4+2-5)+3\\cdot5=1+15=16",
+          "explanation": "정답은 ②입니다."
+        }
+      ],
+      "correctReason": "곱을 전개해 미분해도 같은 16이 나와 교차 확인됩니다.",
+      "commonMistake": "한쪽 인수만 미분하거나 두 도함수를 곱하지 마세요.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_6": {
+      "id": "2025_09_common_6",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 6,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "제2사분면의 부호를 반영하면 sinθ+cosθ=-√5/5입니다.",
+      "approach": "cos(π+θ)의 성질로 cosθ를 구하고 피타고라스 항등식과 사분면으로 sinθ의 부호를 정합니다.",
+      "concepts": ["삼각함수의 주기성", "사분면의 부호"],
+      "steps": [
+        {
+          "title": "코사인 변환",
+          "expression": "-\\cos\\theta=\\frac{2\\sqrt5}{5}\\Rightarrow \\cos\\theta=-\\frac{2\\sqrt5}{5}",
+          "explanation": "cos(π+θ)=-cosθ를 사용합니다."
+        },
+        {
+          "title": "사인 결정",
+          "expression": "\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\frac{\\sqrt5}{5}",
+          "explanation": "θ는 제2사분면이므로 sinθ는 양수입니다."
+        },
+        {
+          "title": "합",
+          "expression": "\\sin\\theta+\\cos\\theta=-\\frac{\\sqrt5}{5}",
+          "explanation": "정답은 ②입니다."
+        }
+      ],
+      "correctReason": "크기뿐 아니라 주어진 각의 범위로 사인의 부호까지 확정했습니다.",
+      "commonMistake": "제2사분면에서 cosθ는 음수이고 sinθ는 양수입니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_7": {
+      "id": "2025_09_common_7",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 7,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "x=4에서 양쪽 식의 값이 같아야 하므로 a=2 또는 6이고 곱은 12입니다.",
+      "approach": "각 조각은 자체적으로 연속이므로 경계 x=4만 확인합니다.",
+      "concepts": ["구간별 함수의 연속", "좌극한과 함숫값"],
+      "steps": [
+        {
+          "title": "연속 조건",
+          "expression": "(4-a)^2=2\\cdot4-4=4",
+          "explanation": "x=4의 좌극한과 우극한·함숫값을 같게 둡니다."
+        },
+        {
+          "title": "상수 구하기",
+          "expression": "4-a=\\pm2\\Rightarrow a=2,6",
+          "explanation": "제곱방정식의 두 해를 모두 구합니다."
+        },
+        {
+          "title": "곱",
+          "expression": "2\\cdot6=12",
+          "explanation": "정답은 ③입니다."
+        }
+      ],
+      "correctReason": "불연속 가능 지점이 x=4 하나뿐이므로 이 조건으로 충분합니다.",
+      "commonMistake": "(4-a)²=4에서 양의 제곱근만 취하면 a=6을 놓칩니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_9": {
+      "id": "2025_09_common_9",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 9,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "정적분의 선형성으로 한 번에 합치면 값은 5/6입니다.",
+      "approach": "같은 구간의 적분을 합쳐 피적분함수를 단순화합니다.",
+      "concepts": ["정적분의 선형성", "다항함수의 적분"],
+      "steps": [
+        {
+          "title": "적분 합치기",
+          "expression": "5\\int_0^1f-\\int_0^1(5x+f)=\\int_0^1(4f(x)-5x)\\,dx",
+          "explanation": "동일한 구간이므로 적분 안의 식을 합칠 수 있습니다."
+        },
+        {
+          "title": "함수 대입",
+          "expression": "4f(x)-5x=4x^2-x",
+          "explanation": "f(x)=x²+x를 대입해 정리합니다."
+        },
+        {
+          "title": "계산",
+          "expression": "\\int_0^1(4x^2-x)\\,dx=\\frac43-\\frac12=\\frac56",
+          "explanation": "정답은 ⑤입니다."
+        }
+      ],
+      "correctReason": "두 적분을 따로 계산해도 같은 5/6이 나옵니다.",
+      "commonMistake": "둘째 적분 앞의 음수는 5x와 f(x) 모두에 적용됩니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_10": {
+      "id": "2025_09_common_10",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 10,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "외접반지름과 사인법칙으로 AB=2√10을 구하면 BH=6입니다.",
+      "approach": "AC=x로 놓고 직각삼각형 AHC와 사인법칙을 연결합니다.",
+      "concepts": ["사인법칙", "피타고라스 정리"],
+      "steps": [
+        {
+          "title": "외접반지름",
+          "expression": "\\pi R^2=50\\pi\\Rightarrow R=5\\sqrt2",
+          "explanation": "외접원의 넓이에서 반지름을 구합니다."
+        },
+        {
+          "title": "변의 길이",
+          "expression": "AC=x,\\ AB=\\sqrt2x,\\ \\sin C=\\frac2x,\\ \\sqrt2x=2R\\sin C",
+          "explanation": "AH=2이므로 직각삼각형에서 sin C=2/x입니다."
+        },
+        {
+          "title": "수선의 발까지",
+          "expression": "x^2=20,\\quad AB=2\\sqrt{10},\\quad BH=\\sqrt{AB^2-AH^2}=6",
+          "explanation": "직각삼각형 ABH에 피타고라스 정리를 적용합니다."
+        }
+      ],
+      "correctReason": "외접원의 조건과 변의 비가 사인법칙에서 한 식으로 결합됩니다.",
+      "commonMistake": "외접원의 넓이 50π를 반지름 50으로 읽지 마세요. 반지름은 5√2입니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_11": {
+      "id": "2025_09_common_11",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 11,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "두 점은 t=6에 만나고 그때 가속도 차는 24입니다.",
+      "approach": "위치가 같은 시각을 먼저 구한 뒤 각 위치 함수를 두 번 미분합니다.",
+      "concepts": ["위치·속도·가속도", "다항방정식의 인수분해"],
+      "steps": [
+        {
+          "title": "만나는 시각",
+          "expression": "x_1=x_2\\Rightarrow(t-6)(t^2+1)=0\\Rightarrow t=6",
+          "explanation": "t≥0인 실수 해는 6뿐입니다."
+        },
+        {
+          "title": "가속도",
+          "expression": "x_1''(t)=2,\\qquad x_2''(t)=-6t+14",
+          "explanation": "위치 함수를 두 번 미분합니다."
+        },
+        {
+          "title": "차 계산",
+          "expression": "p-q=2-(-6\\cdot6+14)=2-(-22)=24",
+          "explanation": "정답은 ①입니다."
+        }
+      ],
+      "correctReason": "같은 시각을 찾는 단계와 가속도를 계산하는 단계를 분리해 부호까지 확인했습니다.",
+      "commonMistake": "속도는 한 번 미분, 가속도는 두 번 미분한 값입니다.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

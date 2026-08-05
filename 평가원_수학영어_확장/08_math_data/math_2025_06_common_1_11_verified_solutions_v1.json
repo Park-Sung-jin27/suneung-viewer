@@ -1,0 +1,457 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 6월 모의평가 수학 공통 1~11번 11문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "94ae141939f2095419fcb51aa8f81859b7de4c258e2f2f6c3752efded87315f5",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5086962&lev=0&m=0403&page=4&s=suneung&searchType=S&statusYN=W",
+      "independentSourceUrls": [
+        "https://horaeng.com/279",
+        "https://orbi.kr/00068355597"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4"
+        }
+      ],
+      "answerFilename": "kice-answer.pdf",
+      "answerSha256": "655f41600d4825dceca6d0248ce0e02916ee73a2e3ad0cd2d596fba8e843db8b",
+      "solutionArtifacts": [
+        {
+          "filename": "orbi-solution.pdf",
+          "sha256": "2fc1d295bfdadeda8695f20739a53c629e27f8370cc27f173eff05b5707c8e89"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지·정답표와 동일 파일 독립 보관본을 대조하고, 독립 풀이 자료와 직접 계산으로 각 해법을 다시 확인했습니다. 4번은 그래프 원본 파일 연결 전까지 공개 차단 상태입니다."
+  },
+  "items": {
+    "2025_06_common_1": {
+      "id": "2025_06_common_1",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 1,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "밑을 5로 통일하면 전체 지수가 1/2이 되어 값은 √5입니다.",
+      "approach": "세제곱근을 유리수 지수로 바꾼 뒤 거듭제곱 법칙을 적용합니다.",
+      "concepts": ["유리수 지수", "거듭제곱 법칙"],
+      "steps": [
+        {
+          "title": "밑 통일",
+          "expression": "\\frac{5}{\\sqrt[3]{25}}=\\frac{5^1}{5^{2/3}}=5^{1/3}",
+          "explanation": "세제곱근 25를 5의 2/3제곱으로 바꿉니다."
+        },
+        {
+          "title": "지수 곱하기",
+          "expression": "\\left(5^{1/3}\\right)^{3/2}=5^{1/2}",
+          "explanation": "거듭제곱의 거듭제곱에서는 지수를 곱합니다."
+        },
+        {
+          "title": "값 확인",
+          "expression": "5^{1/2}=\\sqrt5",
+          "explanation": "정답은 ④입니다."
+        }
+      ],
+      "correctReason": "양수 5의 유리수 지수 법칙을 그대로 적용하면 하나의 값으로 결정됩니다.",
+      "commonMistake": "세제곱근 25를 5의 1/3제곱으로 바꾸지 마세요.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_2": {
+      "id": "2025_06_common_2",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 2,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "주어진 극한은 f'(2)이므로 값은 5입니다.",
+      "approach": "미분계수의 정의를 알아보고 도함수를 구합니다.",
+      "concepts": ["미분계수", "다항함수의 미분"],
+      "steps": [
+        {
+          "title": "정의 확인",
+          "expression": "\\lim_{h\\to0}\\frac{f(2+h)-f(2)}h=f'(2)",
+          "explanation": "식은 x=2에서의 미분계수 정의입니다."
+        },
+        {
+          "title": "도함수",
+          "expression": "f'(x)=2x+1",
+          "explanation": "x²+x+2를 항별로 미분합니다."
+        },
+        {
+          "title": "대입",
+          "expression": "f'(2)=2\\cdot2+1=5",
+          "explanation": "정답은 ⑤입니다."
+        }
+      ],
+      "correctReason": "극한식이 미분계수 정의와 정확히 일치합니다.",
+      "commonMistake": "f(2)의 함수값을 묻는 문제로 읽지 마세요.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_3": {
+      "id": "2025_06_common_3",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 3,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "첫 다섯 항의 합은 4이고 a₆=4이므로 전체 합은 8입니다.",
+      "approach": "상수 1이 다섯 번 더해졌음을 분리합니다.",
+      "concepts": ["수열의 합", "시그마의 선형성"],
+      "steps": [
+        {
+          "title": "상수항 분리",
+          "expression": "\\sum_{k=1}^{5}(a_k+1)=\\sum_{k=1}^{5}a_k+5",
+          "explanation": "1은 k=1부터 5까지 다섯 번 더해집니다."
+        },
+        {
+          "title": "첫 다섯 항",
+          "expression": "\\sum_{k=1}^{5}a_k=9-5=4",
+          "explanation": "주어진 합에서 상수항의 합을 뺍니다."
+        },
+        {
+          "title": "여섯째 항 추가",
+          "expression": "\\sum_{k=1}^{6}a_k=4+a_6=4+4=8",
+          "explanation": "정답은 ③입니다."
+        }
+      ],
+      "correctReason": "요구한 합은 앞의 다섯 항 합에 여섯째 항을 더한 값입니다.",
+      "commonMistake": "상수 1을 한 번만 빼지 말고 다섯 번 더해진 5를 빼세요.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_4": {
+      "id": "2025_06_common_4",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 4,
+      "answer": "3",
+      "answerMark": "③",
+      "publicBlockedByFigureAsset": true,
+      "summary": "그래프에서 0의 오른쪽 극한은 2, 1의 왼쪽 극한은 1이므로 합은 3입니다.",
+      "approach": "함숫값의 점 표시가 아니라 각 방향에서 그래프가 가까워지는 높이를 읽습니다.",
+      "concepts": ["좌극한", "우극한"],
+      "steps": [
+        {
+          "title": "첫 극한",
+          "expression": "\\lim_{x\\to0+}f(x)=2",
+          "explanation": "0보다 큰 쪽에서 x=0으로 갈 때 그래프의 높이는 2에 가까워집니다."
+        },
+        {
+          "title": "둘째 극한",
+          "expression": "\\lim_{x\\to1-}f(x)=1",
+          "explanation": "1보다 작은 쪽에서 x=1로 갈 때 그래프의 높이는 1에 가까워집니다."
+        },
+        {
+          "title": "합 계산",
+          "expression": "2+1=3",
+          "explanation": "정답은 ③입니다."
+        }
+      ],
+      "correctReason": "각 방향의 그래프 가지가 접근하는 y값을 원본 그림에서 직접 확인했습니다.",
+      "commonMistake": "열린점과 닫힌점만 보고 f(0), f(1)의 함숫값을 대신 읽지 마세요.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_5": {
+      "id": "2025_06_common_5",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 5,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "곱의 미분법에서 x²−1이 0이 되는 항을 지우면 f'(1)=10입니다.",
+      "approach": "곱의 미분법을 적용한 뒤 x=1을 대입해 계산을 줄입니다.",
+      "concepts": ["곱의 미분법", "다항함수의 미분"],
+      "steps": [
+        {
+          "title": "곱 미분",
+          "expression": "f'(x)=2x(x^2+2x+2)+(x^2-1)(2x+2)",
+          "explanation": "두 인수를 각각 한 번씩 미분합니다."
+        },
+        {
+          "title": "x=1 대입",
+          "expression": "f'(1)=2(1)(1+2+2)+(1-1)\\cdot4",
+          "explanation": "두 번째 항은 x²−1=0이어서 사라집니다."
+        },
+        {
+          "title": "계산",
+          "expression": "f'(1)=2\\cdot5=10",
+          "explanation": "정답은 ⑤입니다."
+        }
+      ],
+      "correctReason": "곱의 미분법과 x=1에서의 영인수를 함께 사용했습니다.",
+      "commonMistake": "두 인수를 모두 미분해 곱하지 말고 원함수 한 인수를 각각 남겨 두세요.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_6": {
+      "id": "2025_06_common_6",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 6,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "sin(θ−π/2)=−cosθ=3/5이고 θ가 제3사분면이므로 sinθ=−4/5입니다.",
+      "approach": "각의 이동 공식으로 cosθ를 구하고 사분면으로 sinθ의 부호를 결정합니다.",
+      "concepts": ["삼각함수의 각 변환", "사분면의 부호"],
+      "steps": [
+        {
+          "title": "각 변환",
+          "expression": "\\sin\\left(\\theta-\\frac\\pi2\\right)=-\\cos\\theta=\\frac35",
+          "explanation": "sin(θ−π/2)=−cosθ를 사용합니다."
+        },
+        {
+          "title": "코사인 확인",
+          "expression": "\\cos\\theta=-\\frac35",
+          "explanation": "θ는 제3사분면이어서 코사인이 음수인 것과도 일치합니다."
+        },
+        {
+          "title": "사인 계산",
+          "expression": "\\sin\\theta=-\\sqrt{1-\\frac9{25}}=-\\frac45",
+          "explanation": "제3사분면에서 사인은 음수이므로 정답은 ①입니다."
+        }
+      ],
+      "correctReason": "피타고라스 관계와 사분면 부호를 함께 적용해 부호까지 결정했습니다.",
+      "commonMistake": "제곱근 계산 뒤 ± 중 양수를 고르지 말고 θ의 범위로 음수를 선택하세요.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_7": {
+      "id": "2025_06_common_7",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 7,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "삼차함수가 극값에서 x축과 접할 때만 서로 다른 실근이 2개가 되어 k=−5, 27의 합은 22입니다.",
+      "approach": "상수 k를 제외한 삼차함수의 극댓값·극솟값이 0이 되는 두 경우를 찾습니다.",
+      "concepts": ["삼차방정식의 실근", "극값과 접선"],
+      "steps": [
+        {
+          "title": "극점 찾기",
+          "expression": "F'(x)=3x^2-6x-9=3(x+1)(x-3)",
+          "explanation": "F(x)=x³−3x²−9x+k의 극점은 x=−1, 3입니다."
+        },
+        {
+          "title": "중근 조건",
+          "expression": "F(-1)=5+k=0\\quad\\text{또는}\\quad F(3)=k-27=0",
+          "explanation": "서로 다른 두 실근을 가지려면 한 극점에서 x축에 접해야 합니다."
+        },
+        {
+          "title": "두 k의 합",
+          "expression": "k=-5,\\ 27\\Rightarrow -5+27=22",
+          "explanation": "정답은 ④입니다."
+        }
+      ],
+      "correctReason": "삼차함수의 극댓값 또는 극솟값이 0일 때 중근 하나와 다른 실근 하나가 생깁니다.",
+      "commonMistake": "극점의 x좌표를 k값으로 착각하지 말고 원래 식에 대입하세요.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_8": {
+      "id": "2025_06_common_8",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 8,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "공비는 음수이고 조건식으로 r=−1/2를 얻어 a₉+a₁₁=−5/2입니다.",
+      "approach": "a₇, a₈을 a₆과 공비 r로 나타내고 부호 조건으로 해를 고릅니다.",
+      "concepts": ["등비수열", "공비의 부호"],
+      "steps": [
+        {
+          "title": "공비 부호",
+          "expression": "a_1a_2=a_1^2r<0\\Rightarrow r<0",
+          "explanation": "첫 두 항의 곱이 음수이므로 공비가 음수입니다."
+        },
+        {
+          "title": "공비 결정",
+          "expression": "2a_8-3a_7=16r(2r-3)=32",
+          "explanation": "a₆=16에서 a₇=16r, a₈=16r²로 바꿉니다."
+        },
+        {
+          "title": "요구값",
+          "expression": "r=-\\frac12,\\quad a_9+a_{11}=16(r^3+r^5)=-\\frac52",
+          "explanation": "음수인 해를 택하면 정답은 ①입니다."
+        }
+      ],
+      "correctReason": "이차방정식의 두 해 중 a₁a₂<0 조건에 맞는 음수 공비만 사용했습니다.",
+      "commonMistake": "조건식만 풀고 양수 공비 r=2를 함께 남기지 마세요.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_9": {
+      "id": "2025_06_common_9",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 9,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "x=0의 좌우 극한을 제곱한 값이 같아야 하므로 a=−5/4입니다.",
+      "approach": "불연속 후보 x=0에서 (f(x)+a)²의 좌우 극한을 맞춥니다.",
+      "concepts": ["연속 조건", "좌우 극한"],
+      "steps": [
+        {
+          "title": "좌우 값",
+          "expression": "\\lim_{x\\to0-}f(x)=-\\frac12,\\qquad f(0)=3",
+          "explanation": "조각함수의 두 식에 x=0을 각각 접근·대입합니다."
+        },
+        {
+          "title": "제곱의 연속",
+          "expression": "\\left(a-\\frac12\\right)^2=(a+3)^2",
+          "explanation": "변환된 함수의 좌우 극한과 함숫값이 같아야 합니다."
+        },
+        {
+          "title": "상수 결정",
+          "expression": "a-\\frac12=-(a+3)\\Rightarrow a=-\\frac54",
+          "explanation": "같은 부호 식은 모순이므로 반대 부호 식을 풀어 정답 ③을 얻습니다."
+        }
+      ],
+      "correctReason": "각 조각은 자체적으로 연속이므로 접합점 x=0만 확인하면 충분합니다.",
+      "commonMistake": "f 자체가 연속이어야 한다고 두 값을 직접 같게 놓지 마세요. 제곱 뒤의 값을 맞춰야 합니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_10": {
+      "id": "2025_06_common_10",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 10,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "B=C, b:c=3:2와 외접반지름 3을 이용하면 넓이는 64√2/9입니다.",
+      "approach": "코사인의 일대일성과 사인법칙으로 변과 각을 정한 뒤 넓이 공식을 씁니다.",
+      "concepts": ["사인법칙", "삼각형의 넓이"],
+      "steps": [
+        {
+          "title": "각과 변의 관계",
+          "expression": "\\cos B=\\cos C\\Rightarrow B=C,\\qquad 3\\sin A=2\\sin B\\Rightarrow a:b=2:3",
+          "explanation": "삼각형의 각 범위에서 코사인은 일대일이고, 사인법칙으로 사인비를 변의 비로 바꿉니다."
+        },
+        {
+          "title": "변과 각 결정",
+          "expression": "R=3,\\quad b=c=6\\sin B,\\quad \\cos B=\\frac{a}{2b}=\\frac13",
+          "explanation": "b=c와 a:b=2:3을 코사인법칙에 대입하면 cosB=1/3, sinB=2√2/3입니다."
+        },
+        {
+          "title": "넓이",
+          "expression": "K=\\frac12ab\\sin C=\\frac{64\\sqrt2}{9}",
+          "explanation": "a=8√2/3, b=c=4√2를 넓이 공식에 대입하면 정답은 ⑤입니다."
+        }
+      ],
+      "correctReason": "외접원의 넓이 9π에서 R=3을 얻고 사인법칙·코사인법칙을 일관되게 적용했습니다.",
+      "commonMistake": "외접원의 넓이를 삼각형 넓이로 착각하거나 반지름을 9로 두지 마세요.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_11": {
+      "id": "2025_06_common_11",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 11,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "극한에서 f(a)=1, f'(a)=3을 얻고 접선 절편으로 a=−1을 정하면 f(1)=−5입니다.",
+      "approach": "유한한 미분형 극한의 조건을 먼저 확정하고 monic 삼차식의 계수를 구합니다.",
+      "concepts": ["미분계수의 정의", "삼차함수의 계수 결정"],
+      "steps": [
+        {
+          "title": "극한 조건",
+          "expression": "f(a)=1,\\qquad f'(a)=3",
+          "explanation": "분모가 0으로 갈 때 유한한 극한을 가지려면 분자도 0이고, 극한값은 미분계수입니다."
+        },
+        {
+          "title": "접선 절편",
+          "expression": "y=3(x-a)+1\\Rightarrow 1-3a=4\\Rightarrow a=-1",
+          "explanation": "접선의 y절편이 4라는 조건을 사용합니다."
+        },
+        {
+          "title": "함수 결정",
+          "expression": "f(x)=x^3-2x^2-4x,\\qquad f(1)=-5",
+          "explanation": "f(0)=0, f(-1)=1, f'(-1)=3을 monic 삼차식에 대입하면 정답은 ⑤입니다."
+        }
+      ],
+      "correctReason": "함수값·도함숫값·최고차항·원점 조건 네 개가 삼차함수를 유일하게 정합니다.",
+      "commonMistake": "분자가 0이 되는 f(a)=1 조건을 빠뜨린 채 극한을 바로 f'(a)로 두지 마세요.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

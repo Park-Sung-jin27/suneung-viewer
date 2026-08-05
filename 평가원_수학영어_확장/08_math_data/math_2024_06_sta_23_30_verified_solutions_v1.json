@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2024학년도 6월 모의평가 수학 확률과 통계 23~30번 8문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "f8864bdefd7aac91d236e8c8e42ae798c2a1f88389368bc6932a66d0880f7b1c",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://testall.tistory.com/entry/2024%ED%95%99%EB%85%84%EB%8F%84-6%EC%9B%94-%EC%88%98%EB%8A%A5-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C",
+      "independentSourceUrls": ["https://sdfallyy.tistory.com/407", "https://horaeng.com/263"],
+      "problemFilename": "2024_06_math_problem_testall.pdf",
+      "problemSha256": "b66547e1edfb4e53380e8e30ffa087eb1c72ef9a5d03dfa491d33bd6b9c56a98",
+      "problemReplicaArtifacts": [{"filename": "2024_06_math_problem_sdfallyy.pdf", "sha256": "026d29c312ac5c4d1e533aabe29a6948bcbef634471dfd5a297d405c186333c5"}],
+      "answerFilename": "2024_06_math_answer_testall.pdf",
+      "answerSha256": "98233f2ec85d25b33e78549a68d5baa836ff3979e21e58fedf83a8422856e495"
+    },
+    "note": "공식 문제지와 정답표의 확률과 통계 8문항을 대조하고, 표본공간과 경우의 수를 문항별로 다시 계산한 내부 후보."
+  },
+  "items": {
+    "2024_06_sta_23": {
+      "id": "2024_06_sta_23", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 확률과 통계", "questionNumber": 23, "answer": "3", "answerMark": "③",
+      "summary": "5개 문자 중 a가 두 번 같으므로 5!/2!=60가지입니다.",
+      "approach": "전체 순열에서 같은 문자 a의 자리 바꿈 중복을 나눕니다.",
+      "concepts": ["같은 것이 있는 순열", "팩토리얼"],
+      "steps": [
+        {"title": "모두 다르다고 세기", "expression": "5!", "explanation": "다섯 자리에 다섯 문자를 놓는 순열입니다."},
+        {"title": "a의 중복 제거하기", "expression": "\\frac{5!}{2!}=60", "explanation": "두 a를 서로 바꾸어도 같은 배열이므로 2!로 나눕니다."}
+      ],
+      "correctReason": "경우의 수 60이 선지 ③과 일치합니다.", "commonMistake": "같은 a 두 개를 서로 다른 문자처럼 세어 5!로 끝내지 마세요.",
+      "verification": {"problemPage": 9, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_sta_24": {
+      "id": "2024_06_sta_24", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 확률과 통계", "questionNumber": 24, "answer": "4", "answerMark": "④",
+      "summary": "A∪B는 서로소인 B와 A∩Bᶜ의 합으로 나뉘므로 확률은 13/18입니다.",
+      "approach": "합사건을 겹치지 않는 두 사건으로 분해합니다.",
+      "concepts": ["확률의 덧셈정리", "여사건"],
+      "steps": [
+        {"title": "B의 확률 구하기", "expression": "P(B)=1-P(B^C)=1-\\frac7{18}=\\frac{11}{18}", "explanation": "B와 B의 여사건의 확률 합은 1입니다."},
+        {"title": "합사건 분해하기", "expression": "A\\cup B=(A\\cap B^C)\\cup B", "explanation": "오른쪽 두 사건은 서로 겹치지 않습니다."},
+        {"title": "확률 더하기", "expression": "P(A\\cup B)=\\frac19+\\frac{11}{18}=\\frac{13}{18}", "explanation": "서로소이므로 두 확률을 더합니다."}
+      ],
+      "correctReason": "확률 13/18이 선지 ④와 일치합니다.", "commonMistake": "P(A)를 따로 구하려 하지 말고 A∪B를 A∩Bᶜ와 B로 바로 나누세요.",
+      "verification": {"problemPage": 9, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_sta_25": {
+      "id": "2024_06_sta_25", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 확률과 통계", "questionNumber": 25, "answer": "3", "answerMark": "③",
+      "summary": "흰 손수건이 0장 또는 1장인 여사건을 빼면 확률은 9/14입니다.",
+      "approach": "직접 세 경우를 더하기보다 반대 사건 두 경우를 계산합니다.",
+      "concepts": ["조합", "여사건의 확률"],
+      "steps": [
+        {"title": "전체 경우 세기", "expression": "\\binom94=126", "explanation": "아홉 장 중 네 장을 동시에 고릅니다."},
+        {"title": "여사건 세기", "expression": "\\binom40\\binom54+\\binom41\\binom53=5+40=45", "explanation": "흰색이 0장 또는 1장인 경우입니다."},
+        {"title": "원하는 확률 구하기", "expression": "1-\\frac{45}{126}=\\frac9{14}", "explanation": "전체에서 여사건을 뺍니다."}
+      ],
+      "correctReason": "확률 9/14가 선지 ③과 일치합니다.", "commonMistake": "동시에 꺼내므로 순서를 고려하지 않는 조합을 사용하세요.",
+      "verification": {"problemPage": 10, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_sta_26": {
+      "id": "2024_06_sta_26", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 확률과 통계", "questionNumber": 26, "answer": "1", "answerMark": "①",
+      "summary": "두 다항식에서 차수 합이 2가 되는 세 조합의 계수를 더하면 15입니다.",
+      "approach": "x²×상수, x×x, 상수×x²의 세 경우만 골라 계산합니다.",
+      "concepts": ["이항정리", "다항식의 계수"],
+      "steps": [
+        {"title": "x²×상수 계산하기", "expression": "\\binom62(-1)^4\\cdot1=15", "explanation": "첫 다항식에서 x², 둘째에서 상수항을 고릅니다."},
+        {"title": "x×x 계산하기", "expression": "\\binom61(-1)^5\\cdot\\binom71 2=-6\\cdot14=-84", "explanation": "각 다항식에서 x항을 하나씩 고릅니다."},
+        {"title": "상수×x² 계산하기", "expression": "1\\cdot\\binom72 2^2=84", "explanation": "첫 다항식의 상수항과 둘째의 x²항을 곱합니다."},
+        {"title": "세 계수 더하기", "expression": "15-84+84=15", "explanation": "차수 합이 2인 모든 경우를 합합니다."}
+      ],
+      "correctReason": "x²의 계수 15가 선지 ①과 일치합니다.", "commonMistake": "x항끼리 곱하는 경우의 음수 부호와 2x의 계수 2를 빠뜨리지 마세요.",
+      "verification": {"problemPage": 10, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_sta_27": {
+      "id": "2024_06_sta_27", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 확률과 통계", "questionNumber": 27, "answer": "2", "answerMark": "②",
+      "summary": "곱이 4의 배수인 15개 순서쌍 중 합이 7 이하인 것은 7개이므로 조건부확률은 7/15입니다.",
+      "approach": "조건 사건과 그중 목표 조건까지 만족하는 순서쌍을 각각 셉니다.",
+      "concepts": ["조건부확률", "순서쌍의 경우의 수"],
+      "steps": [
+        {"title": "조건 사건 세기", "expression": "N(4\\mid ab)=9+6=15", "explanation": "둘 다 짝수인 9개와, 하나가 4이고 다른 하나가 홀수인 6개입니다."},
+        {"title": "합 조건까지 세기", "expression": "N(4\\mid ab,\\ a+b\\le7)=3+4=7", "explanation": "둘 다 짝수인 (2,2),(2,4),(4,2)와 4·홀수 조합 네 개입니다."},
+        {"title": "조건부확률 계산하기", "expression": "P(a+b\\le7\\mid4\\mid ab)=\\frac7{15}", "explanation": "조건 사건 안에서 목표 사건의 비율을 구합니다."}
+      ],
+      "correctReason": "조건부확률 7/15가 선지 ②와 일치합니다.", "commonMistake": "(a,b)는 던진 순서가 있으므로 (2,4)와 (4,2)를 따로 세세요.",
+      "verification": {"problemPage": 11, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_sta_28": {
+      "id": "2024_06_sta_28", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 확률과 통계", "questionNumber": 28, "answer": "5", "answerMark": "⑤",
+      "summary": "치역에 포함된 홀수의 개수를 1, 2, 3개로 나누어 세면 3+84+57=144개입니다.",
+      "approach": "홀수 위치의 함수값이 모두 홀수라는 조건을 먼저 고정하고, 치역의 홀수 개수별로 전사 조건을 셉니다.",
+      "concepts": ["함수의 개수", "치역", "중복순열"],
+      "steps": [
+        {"title": "홀수 출력 조건 정리하기", "expression": "f(1),f(3),f(5)\\in\\{1,3,5\\}", "explanation": "세 값의 곱이 홀수이려면 세 값이 모두 홀수입니다."},
+        {"title": "치역에 홀수 1개인 경우", "expression": "3", "explanation": "홀수 하나를 고르고 f(2)=2, f(4)=4로 정해야 치역이 세 원소이고 f(2)<f(4)입니다."},
+        {"title": "치역에 홀수 2개인 경우", "expression": "3\\{2\\cdot2+(2^3-2)\\cdot4\\}=84", "explanation": "두 홀수를 고른 뒤 홀수 위치가 하나만 쓰는 경우와 둘 다 쓰는 경우를 나눕니다."},
+        {"title": "치역에 홀수 3개인 경우", "expression": "3+18\\cdot2+6\\cdot3=57", "explanation": "홀수 위치가 서로 다른 홀수를 1개, 2개, 3개 쓰는 경우를 차례로 셉니다."},
+        {"title": "모든 경우 합하기", "expression": "3+84+57=144", "explanation": "세 분류는 서로 겹치지 않습니다."}
+      ],
+      "correctReason": "함수의 개수 144가 선지 ⑤와 일치합니다.", "commonMistake": "치역 원소가 정확히 3개여야 하므로 선택한 출력값이 실제로 모두 한 번 이상 쓰였는지 확인하세요.",
+      "verification": {"problemPage": 11, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_sta_29": {
+      "id": "2024_06_sta_29", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 확률과 통계", "questionNumber": 29, "answer": "25", "answerMark": null,
+      "summary": "검은 카드 사이 흰 카드 수가 2장 이상인 배치 28개에서 3의 배수가 없는 연속 구간 3개를 빼면 25개입니다.",
+      "approach": "흰 카드는 순서가 고정되므로 두 검은 카드가 만드는 세 구간의 흰 카드 수를 셉니다.",
+      "concepts": ["중복조합", "여사건", "배치"],
+      "steps": [
+        {"title": "세 구간의 장수 두기", "expression": "a+b+c=8,\\qquad b\\ge2", "explanation": "a,b,c는 각각 두 검은 카드의 왼쪽, 사이, 오른쪽 흰 카드 수입니다."},
+        {"title": "간격 조건 세기", "expression": "a+(b-2)+c=6\\Rightarrow\\binom82=28", "explanation": "b-2를 음이 아닌 정수로 두어 중복조합을 계산합니다."},
+        {"title": "3의 배수가 없는 경우 빼기", "expression": "28-3=25", "explanation": "사이 구간이 1·2, 4·5, 7·8인 세 경우에는 3 또는 6이 없습니다."
+        }
+      ],
+      "correctReason": "조건을 모두 만족하는 배열은 25개입니다.", "commonMistake": "검은 카드는 서로 구별하지 않으므로 왼쪽·오른쪽 검은 카드를 바꾸는 경우를 두 번 세지 마세요.",
+      "verification": {"problemPage": 12, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_sta_30": {
+      "id": "2024_06_sta_30", "status": "verified_internal_candidate", "exam": "2024학년도 6월 모의평가 수학 확률과 통계", "questionNumber": 30, "answer": "51", "answerMark": null,
+      "summary": "전체 28쌍 중 서로 다른 색 16쌍과 같은 색에서 조건을 만족하는 7쌍, 총 23쌍이므로 23/28이고 답은 51입니다.",
+      "approach": "서로 다른 색과 같은 색을 나누어 유리한 공 쌍을 셉니다.",
+      "concepts": ["조합", "수학적 확률", "경우 분류"],
+      "steps": [
+        {"title": "전체 공 쌍 세기", "expression": "\\binom82=28", "explanation": "여덟 공 중 두 공을 동시에 꺼냅니다."},
+        {"title": "서로 다른 색 세기", "expression": "4\\times4=16", "explanation": "이 경우 점수는 항상 12라 조건을 만족합니다."},
+        {"title": "같은 색 세기", "expression": "5+2=7", "explanation": "흰 공은 곱이 짝수인 5쌍, 검은 공은 {4,5}, {4,6} 두 쌍만 24 이하의 짝수입니다."},
+        {"title": "기약분수와 답 구하기", "expression": "\\frac{16+7}{28}=\\frac{23}{28},\\qquad p+q=28+23=51", "explanation": "23과 28은 서로소입니다."}
+      ],
+      "correctReason": "p+q=51입니다.", "commonMistake": "서로 다른 색이면 공의 숫자와 무관하게 점수가 12로 고정된다는 규칙을 먼저 적용하세요.",
+      "verification": {"problemPage": 12, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

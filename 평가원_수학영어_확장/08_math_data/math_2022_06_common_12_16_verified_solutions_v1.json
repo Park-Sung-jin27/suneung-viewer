@@ -1,0 +1,247 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 6월 모의평가 공통 12~16번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 5,
+    "readyCount": 5,
+    "questionFingerprint": "71d4f9ae0a556d636cb04bc7fc855b0899e11c7c98f29c6913f35523c06843f5",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
+      "archiveSha256": "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
+    },
+    "note": "원본 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 풀이 후보"
+  },
+  "items": {
+    "2022_06_common_12": {
+      "id": "2022_06_common_12",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 12,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "먼저 BC=6, BD=4, AD=1을 구하면 BD=DC가 되고, 두 삼각형의 닮음으로 DE=8/3을 얻습니다.",
+      "approach": "코사인 법칙으로 큰 삼각형의 변을 구한 뒤 같은 각에서 생기는 이등변삼각형과 닮음을 차례로 찾습니다.",
+      "concepts": [
+        "코사인 법칙",
+        "이등변삼각형",
+        "삼각형의 닮음"
+      ],
+      "steps": [
+        {
+          "title": "BC의 길이 구하기",
+          "expression": "BC^2=4^2+5^2-2\\cdot4\\cdot5\\cdot\\frac18=36 \\Rightarrow BC=6",
+          "explanation": "삼각형 ABC에 코사인 법칙을 적용합니다."
+        },
+        {
+          "title": "BD와 AD 구하기",
+          "expression": "\\angle BAD=\\angle BDA \\Rightarrow BD=AB=4,\\quad 4^2=4^2+AD^2-2\\cdot4\\cdot AD\\cdot\\frac18 \\Rightarrow AD=1",
+          "explanation": "D가 AC 위에 있으므로 각 BAD는 각 BAC와 같습니다. 두 각이 같은 삼각형 ABD는 이등변이고, 다시 코사인 법칙을 쓰면 AD를 얻습니다."
+        },
+        {
+          "title": "작은 삼각형의 각 연결하기",
+          "expression": "DC=AC-AD=4=BD \\Rightarrow \\angle DBE=\\angle DBC=\\angle BCD=\\angle BCA",
+          "explanation": "삼각형 BDC가 이등변이고 E가 BC 위에 있으므로 B에서의 각이 삼각형 ABC의 C각과 같습니다."
+        },
+        {
+          "title": "닮음비로 DE 구하기",
+          "expression": "\\triangle BDE\\sim\\triangle CBA,\\quad \\frac{BD}{CB}=\\frac{DE}{BA} \\Rightarrow \\frac46=\\frac{DE}{4} \\Rightarrow DE=\\frac83",
+          "explanation": "각 DBE와 BCA가 같고, 조건에서 각 BED와 BAC가 같으므로 두 삼각형은 AA 닮음입니다."
+        }
+      ],
+      "correctReason": "DE=8/3이므로 선지 ③이 정답입니다.",
+      "commonMistake": "닮은 삼각형의 대응 순서를 뒤섞으면 비가 틀립니다. BDE의 B·D·E는 각각 CBA의 C·B·A에 대응합니다.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_13": {
+      "id": "2022_06_common_13",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 13,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "1부터 20까지 제곱수인 1, 4, 9, 16에서만 함수값이 1이고, 나머지는 3이므로 합은 190입니다.",
+      "approach": "주기 1인 함수의 값을 √k가 정수인지 아닌지에 따라 나누고, 전체 합에서 제곱수 항의 차이만 보정합니다.",
+      "concepts": [
+        "주기함수",
+        "제곱수 판별",
+        "자연수의 합"
+      ],
+      "steps": [
+        {
+          "title": "함수값 분류하기",
+          "expression": "f(\\sqrt{k})=1\\;(k=1,4,9,16),\\quad f(\\sqrt{k})=3\\;(\\text{그 밖})",
+          "explanation": "√k가 정수이면 주기성에 의해 f(√k)=f(1)=1이고, 정수가 아니면 소수 부분이 (0,1)에 있어 함수값이 3입니다."
+        },
+        {
+          "title": "모든 항을 3으로 본 합 구하기",
+          "expression": "\\sum_{k=1}^{20}\\frac{k\\cdot3}{3}=\\sum_{k=1}^{20}k=210",
+          "explanation": "먼저 모든 k에서 함수값이 3이라고 생각한 기준 합을 구합니다."
+        },
+        {
+          "title": "제곱수 항 보정하기",
+          "expression": "210-\\frac23(1+4+9+16)=210-20=190",
+          "explanation": "제곱수에서는 k 대신 k/3이므로 각 항에서 2k/3만큼 빼야 합니다."
+        }
+      ],
+      "correctReason": "주어진 합이 190이므로 선지 ⑤가 정답입니다.",
+      "commonMistake": "정수 n은 주기성 때문에 f(n)=f(1)=1입니다. 정수의 소수 부분을 0으로만 보고 정의 구간 밖이라고 판단하면 안 됩니다.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_14": {
+      "id": "2022_06_common_14",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 14,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "연속 조건으로 f(-p)+q=0을 얻고 절댓값의 꺾임이 한 번만 생기는 경우를 가리면 p=1, q=7이므로 p+q=8입니다.",
+      "approach": "g를 x의 부호에 따라 나타낸 뒤, 삼차함수의 극값과 f(x)+q의 근의 중복도를 이용해 미분 불가능점 수를 셉니다.",
+      "concepts": [
+        "함수의 연속",
+        "절댓값 함수의 미분가능성",
+        "삼차함수의 극값과 중근"
+      ],
+      "steps": [
+        {
+          "title": "x=0의 연속 조건 구하기",
+          "expression": "h(x)=f(x-p)+q,\\quad g(x)=\\operatorname{sgn}(x)|h(x)|\\;(x\\ne0) \\Rightarrow h(0)=f(-p)+q=0",
+          "explanation": "0의 오른쪽 극한은 |h(0)|, 왼쪽 극한은 -|h(0)|이므로 연속이려면 둘 다 0이어야 합니다."
+        },
+        {
+          "title": "가능한 수평선 분류하기",
+          "expression": "f'(x)=3(x+1)(x-3),\\quad f(-1)=-7,\\quad f(3)=-39",
+          "explanation": "q가 7과 39 사이이면 f(x)+q=0은 서로 다른 세 근을 가져 0이 아닌 단순근이 두 개 생깁니다. q가 39 이상인 경우에는 필요한 꺾임이 생기지 않습니다."
+        },
+        {
+          "title": "q=7인 경우 확인하기",
+          "expression": "f(y)+7=(y+1)^2(y-5),\\quad y=-p=-1 \\Rightarrow p=1",
+          "explanation": "x=0에 해당하는 y=-1은 중근이고, 다른 근 y=5는 x=6의 단순근이어서 |h(x)|에 정확히 한 번의 꺾임을 만듭니다."
+        },
+        {
+          "title": "다른 경계 경우 제외하기",
+          "expression": "f(y)+39=(y-3)^2(y+3),\\quad p=3",
+          "explanation": "q=39이면 x=0의 단순근은 g의 부호와 결합되어 미분 가능하고, x=6은 중근이라 꺾이지 않습니다. 따라서 미분 불가능점이 한 개가 아닙니다."
+        },
+        {
+          "title": "최종값 계산하기",
+          "expression": "p+q=1+7=8",
+          "explanation": "조건을 만족하는 양수 p, q는 p=1, q=7입니다."
+        }
+      ],
+      "correctReason": "p+q=8이므로 선지 ③이 정답입니다.",
+      "commonMistake": "x=0에서 h가 단순근이면 무조건 미분 불가능하다고 보면 안 됩니다. g의 앞에 붙은 x의 부호가 |x|와 결합해 x처럼 이어집니다.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_15": {
+      "id": "2022_06_common_15",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 15,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "근의 최솟값과 최댓값을 t의 부호에 따라 정리하면 ㄱ과 ㄴ만 참이고 ㄷ은 거짓입니다.",
+      "approach": "sin과 cos 그래프를 한 주기에서 함께 보고, arcsin으로 근의 위치를 매개화해 세 명제를 판정합니다.",
+      "concepts": [
+        "삼각방정식",
+        "삼각함수의 그래프",
+        "최대·최소 근의 변화"
+      ],
+      "steps": [
+        {
+          "title": "음수 t에서 ㄱ 확인하기",
+          "expression": "u=\\frac2\\pi\\arcsin(-t)\\;(0<u\\le1) \\Rightarrow \\alpha(t)=1+u,\\quad \\beta(t)=4-u",
+          "explanation": "-1≤t<0에서 sin과 cos의 네 근을 0≤x<4에 놓으면 가장 작은 근과 큰 근의 합은 항상 5입니다. 따라서 ㄱ은 참입니다."
+        },
+        {
+          "title": "0 이상 t에서 근의 폭 구하기",
+          "expression": "u=\\frac2\\pi\\arcsin t,\\quad \\alpha(t)=\\min(u,1-u),\\quad \\beta(t)=3+u\\;(0\\le t<1)",
+          "explanation": "t=0에서 β-α=3입니다. u≤1/2이면 차가 3이고, u>1/2이면 차가 2+2u로 3보다 큽니다."
+        },
+        {
+          "title": "ㄴ의 범위 확정하기",
+          "expression": "0\\le u\\le\\frac12 \\Longleftrightarrow 0\\le t\\le\\sin\\frac\\pi4=\\frac{\\sqrt2}{2}",
+          "explanation": "t=1에서는 근이 x=0,1뿐이라 차가 1이므로 포함되지 않습니다. 따라서 ㄴ은 참입니다."
+        },
+        {
+          "title": "ㄷ 반례 구조 확인하기",
+          "expression": "t_1=\\sin v,\\quad t_2=\\cos v,\\quad t_2-t_1=\\frac12 \\Rightarrow t_1t_2=\\frac38\\ne\\frac13",
+          "explanation": "서로 다른 양수 t가 같은 α를 가지면 대응하는 두 각의 합이 π/2입니다. 차의 제곱을 이용하면 곱은 3/8이므로 ㄷ은 거짓입니다."
+        }
+      ],
+      "correctReason": "옳은 것은 ㄱ과 ㄴ이므로 선지 ②가 정답입니다.",
+      "commonMistake": "t=1에서는 일반식 β=3+u가 적용되지 않습니다. 구간 끝 4가 제외되어 cos의 두 번째 근도 제외되는 끝점 예외를 따로 확인해야 합니다.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_common_16": {
+      "id": "2022_06_common_16",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학",
+      "questionNumber": 16,
+      "answer": "2",
+      "answerMark": null,
+      "summary": "밑이 같은 두 로그를 곱의 로그로 합치면 진수가 16이 되어 답은 2입니다.",
+      "approach": "로그의 덧셈 법칙을 적용한 뒤 진수를 계산합니다.",
+      "concepts": [
+        "로그의 성질",
+        "로그의 값"
+      ],
+      "steps": [
+        {
+          "title": "로그 합치기",
+          "expression": "\\log_4\\frac23+\\log_4 24=\\log_4\\left(\\frac23\\cdot24\\right)",
+          "explanation": "밑이 같은 로그의 합은 진수의 곱을 로그로 취한 것과 같습니다."
+        },
+        {
+          "title": "진수와 로그값 계산하기",
+          "expression": "\\frac23\\cdot24=16=4^2 \\Rightarrow \\log_4 16=2",
+          "explanation": "16은 4의 제곱이므로 로그값은 2입니다."
+        }
+      ],
+      "correctReason": "계산 결과가 2이므로 단답란에 2를 씁니다.",
+      "commonMistake": "로그의 합에서 진수를 더하는 것이 아니라 곱해야 합니다.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

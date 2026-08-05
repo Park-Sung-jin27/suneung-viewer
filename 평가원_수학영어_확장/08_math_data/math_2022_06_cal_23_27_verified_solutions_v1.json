@@ -1,0 +1,233 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 6월 모의평가 미적분 23~27번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 5,
+    "readyCount": 5,
+    "questionFingerprint": "c3e34f3cb85741b4203093dd979dedcfa99542ae335be530b30d73b343b595fc",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
+      "archiveSha256": "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
+    },
+    "note": "원본 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 풀이 후보"
+  },
+  "items": {
+    "2022_06_cal_23": {
+      "id": "2022_06_cal_23",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 23,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "분모를 유리화하면 (√(n²+n+1)+n)/(n+1)이 되고, n으로 나눈 극한은 2입니다.",
+      "approach": "무한대에서 두 큰 항이 빼져 생기는 부정형을 켤레식으로 유리화합니다.",
+      "concepts": [
+        "수열의 극한",
+        "분모의 유리화",
+        "최고차항 비교"
+      ],
+      "steps": [
+        {
+          "title": "분모 유리화하기",
+          "expression": "\\frac1{\\sqrt{n^2+n+1}-n}=\\frac{\\sqrt{n^2+n+1}+n}{n+1}",
+          "explanation": "켤레식을 곱하면 분모는 n²+n+1-n²=n+1이 됩니다."
+        },
+        {
+          "title": "n으로 나누어 극한 구하기",
+          "expression": "\\frac{\\sqrt{1+1/n+1/n^2}+1}{1+1/n}\\to\\frac{1+1}{1}=2",
+          "explanation": "분자와 분모를 n으로 나누면 각 항의 극한을 바로 계산할 수 있습니다."
+        }
+      ],
+      "correctReason": "극한값이 2이므로 선지 ②가 정답입니다.",
+      "commonMistake": "분모의 두 항을 각각 극한으로 보내면 ∞-∞가 되어 정보를 잃습니다. 먼저 유리화해야 합니다.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_cal_24": {
+      "id": "2022_06_cal_24",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 24,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "t=0에서 dx/dt=1, dy/dt=1이므로 dy/dx=1입니다.",
+      "approach": "매개변수 곡선의 미분 공식 (dy/dt)/(dx/dt)를 사용합니다.",
+      "concepts": [
+        "매개변수 미분",
+        "지수함수의 미분",
+        "삼각함수의 미분"
+      ],
+      "steps": [
+        {
+          "title": "각 좌표를 t로 미분하기",
+          "expression": "\\frac{dx}{dt}=e^t-\\sin t,\\quad\\frac{dy}{dt}=\\cos t",
+          "explanation": "x와 y를 각각 매개변수 t에 대해 미분합니다."
+        },
+        {
+          "title": "t=0에서 기울기 계산하기",
+          "expression": "\\left.\\frac{dy}{dx}\\right|_{t=0}=\\frac{\\cos0}{e^0-\\sin0}=\\frac11=1",
+          "explanation": "dx/dt가 0이 아니므로 두 미분값의 비가 곡선의 기울기입니다."
+        }
+      ],
+      "correctReason": "dy/dx=1이므로 선지 ②가 정답입니다.",
+      "commonMistake": "dy/dx를 dy/dt만으로 계산하지 말고 반드시 dx/dt로 나눠야 합니다.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_cal_25": {
+      "id": "2022_06_cal_25",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 25,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "원점을 지나는 두 접선의 기울기는 e와 -e이고, 두 직선 사이 예각의 탄젠트는 2e/(e²-1)입니다.",
+      "approach": "오른쪽 곡선 y=eˣ의 접점을 구한 뒤 y축 대칭으로 다른 접선의 기울기를 얻습니다.",
+      "concepts": [
+        "접선의 방정식",
+        "절댓값 함수의 대칭",
+        "두 직선이 이루는 각"
+      ],
+      "steps": [
+        {
+          "title": "오른쪽 접점 찾기",
+          "expression": "y=e^a+e^a(x-a)=e^a(x-a+1),\\quad (0,0)\\text{ 대입}\\Rightarrow a=1",
+          "explanation": "x≥0에서 곡선은 y=eˣ이고, x=a에서의 접선이 원점을 지나야 합니다."
+        },
+        {
+          "title": "두 접선의 기울기 구하기",
+          "expression": "m_1=e,\\quad m_2=-e",
+          "explanation": "오른쪽 접선의 기울기는 e이고 곡선이 y축 대칭이므로 왼쪽 접선의 기울기는 -e입니다."
+        },
+        {
+          "title": "예각의 탄젠트 계산하기",
+          "expression": "\\tan\\theta=\\left|\\frac{m_1-m_2}{1+m_1m_2}\\right|=\\left|\\frac{2e}{1-e^2}\\right|=\\frac{2e}{e^2-1}",
+          "explanation": "두 직선의 기울기로 사이각 공식을 적용하고 예각이므로 양수 값을 취합니다."
+        }
+      ],
+      "correctReason": "tanθ=2e/(e²-1)이므로 선지 ④가 정답입니다.",
+      "commonMistake": "분모의 절댓값을 처리하지 않으면 음수가 나옵니다. 문제에서 요구한 θ는 예각입니다.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_cal_26": {
+      "id": "2022_06_cal_26",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 26,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "다음 부채꼴의 반지름은 매번 √2/2배가 되고, 색칠한 넓이의 무한등비급수 합은 π/4입니다.",
+      "approach": "첫 두 중심의 좌표로 반지름비를 구한 뒤, 각 색칠 영역의 넓이가 반지름 제곱에 비례함을 이용합니다.",
+      "concepts": [
+        "삼각함수",
+        "부채꼴의 넓이",
+        "무한등비급수"
+      ],
+      "steps": [
+        {
+          "title": "두 번째 반지름 구하기",
+          "expression": "O_2=(\\cos75^\\circ,\\sin75^\\circ),\\quad A_2=(\\sin75^\\circ,\\sin75^\\circ)",
+          "explanation": "O₁A₁을 x축으로 두면 O₁B₁은 45도 직선 y=x이고, A₂는 O₂를 지나는 수평선과의 교점입니다."
+        },
+        {
+          "title": "반지름비 계산하기",
+          "expression": "\\frac{r_2}{r_1}=\\sin75^\\circ-\\cos75^\\circ=\\frac{\\sqrt2}{2}",
+          "explanation": "같은 모양이 반복되므로 이후 반지름도 매번 √2/2배가 됩니다."
+        },
+        {
+          "title": "한 색칠 영역의 넓이 쓰기",
+          "expression": "A_n=\\frac12r_n^2\\cdot\\frac\\pi4=\\frac\\pi8\\left(\\frac12\\right)^{n-1}",
+          "explanation": "색칠된 부채꼴의 중심각은 항상 π/4이고 반지름 제곱비는 1/2입니다."
+        },
+        {
+          "title": "누적 넓이의 극한 구하기",
+          "expression": "\\lim_{n\\to\\infty}S_n=\\frac\\pi8\\sum_{j=0}^{\\infty}\\left(\\frac12\\right)^j=\\frac\\pi8\\cdot2=\\frac\\pi4",
+          "explanation": "겹치지 않는 색칠 영역들의 넓이를 무한등비급수로 더합니다."
+        }
+      ],
+      "correctReason": "넓이의 극한이 π/4이므로 선지 ③이 정답입니다.",
+      "commonMistake": "반지름비 √2/2를 그대로 넓이의 공비로 쓰면 안 됩니다. 넓이는 반지름의 제곱에 비례하므로 공비는 1/2입니다.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_cal_27": {
+      "id": "2022_06_cal_27",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 27,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "eˣ/(sin x)의 두 번째 양의 구간 최솟값에서 접점 하나가 생겨 전체 양의 근이 3개가 되므로 k=√2e^(9π/4)입니다.",
+      "approach": "sin x가 양수인 각 구간에서 eˣ/(sin x)의 최소를 구하고, 수평선 y=k와 만나는 횟수를 구간별로 셉니다.",
+      "concepts": [
+        "초월방정식의 실근",
+        "함수의 최솟값",
+        "미분을 이용한 교점 개수"
+      ],
+      "steps": [
+        {
+          "title": "근이 가능한 구간 찾기",
+          "expression": "e^x=k\\sin x \\Rightarrow h(x)=\\frac{e^x}{\\sin x}=k,\\quad 2m\\pi<x<(2m+1)\\pi",
+          "explanation": "eˣ과 k가 양수이므로 sin x가 양수인 구간에서만 근이 생깁니다."
+        },
+        {
+          "title": "각 구간의 최솟값 구하기",
+          "expression": "\\frac{h'(x)}{h(x)}=1-\\cot x=0 \\Rightarrow x=2m\\pi+\\frac\\pi4",
+          "explanation": "각 양의 구간에서 h는 양 끝에서 무한대로 가고 이 점에서 유일한 최솟값을 가집니다."
+        },
+        {
+          "title": "구간별 최소 높이 계산하기",
+          "expression": "h_{\\min,m}=\\sqrt2e^{2m\\pi+\\pi/4}",
+          "explanation": "sin(π/4)=√2/2를 대입합니다."
+        },
+        {
+          "title": "양의 근 세 개 만들기",
+          "expression": "k=h_{\\min,1}=\\sqrt2e^{2\\pi+\\pi/4}=\\sqrt2e^{9\\pi/4}",
+          "explanation": "첫 번째 양의 구간에서는 두 교점, 두 번째 구간에서는 접하는 한 교점, 이후 구간에서는 교점이 없어 총 세 개가 됩니다."
+        }
+      ],
+      "correctReason": "k=√2e^(9π/4)이므로 선지 ④가 정답입니다.",
+      "commonMistake": "두 번째 구간의 중앙 5π/2가 아니라 h의 미분값이 0인 9π/4에서 접합니다.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

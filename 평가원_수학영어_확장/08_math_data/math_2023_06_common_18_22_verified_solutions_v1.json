@@ -1,0 +1,230 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2023학년도 6월 모의평가 공통 18~22번 중 원문 일치 4문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 4,
+    "readyCount": 4,
+    "questionFingerprint": "cb78fe10ef09299d7c0964138db4969dcd1cd86b023e1f1fa253c12febb2fe5f",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5043334/ect_f123552d-f3b9-441b-a9cb-26dd3fb0382a1655a9598b93086.zip",
+      "archiveSha256": "52670128518e0c913ee086d8fdf4364718997feb40edb189510c7bd32e5943ac",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "aa82f35e8f31049dbc75279de253ae9c3aeceb09d0a85bf53ba1ce2f882ce452",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "5db0748417f984b6ac30c87bb351f2d8fca7dce276fc71f47b7ab944e9e64519"
+    },
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 19번은 원천 수식 묶음 오류로 제외."
+  },
+  "items": {
+    "2023_06_common_18": {
+      "id": "2023_06_common_18",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 18,
+      "answer": "3",
+      "answerMark": null,
+      "summary": "1부터 10까지의 합을 사용하면 220+10a=250이므로 a=3입니다.",
+      "approach": "시그마 안의 4k와 상수 a를 각각 합산합니다.",
+      "concepts": [
+        "시그마의 선형성",
+        "자연수의 합"
+      ],
+      "steps": [
+        {
+          "title": "합을 두 부분으로 나누기",
+          "expression": "\\sum_{k=1}^{10}(4k+a)=4\\sum_{k=1}^{10}k+10a",
+          "explanation": "상수 a는 모두 10번 더해집니다."
+        },
+        {
+          "title": "자연수의 합 계산하기",
+          "expression": "4\\cdot\\frac{10\\cdot11}{2}+10a=220+10a",
+          "explanation": "1부터 10까지의 합은 55입니다."
+        },
+        {
+          "title": "a 구하기",
+          "expression": "220+10a=250\\Rightarrow a=3",
+          "explanation": "양변에서 220을 빼고 10으로 나눕니다."
+        }
+      ],
+      "correctReason": "상수 a의 값은 3입니다.",
+      "commonMistake": "상수 a를 한 번만 더하지 마세요. k가 1부터 10까지 변하므로 a도 10번 더해집니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_20": {
+      "id": "2023_06_common_20",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 20,
+      "answer": "13",
+      "answerMark": null,
+      "summary": "g'의 부호는 f(x+1)²-f(x)²와 같고, 두 극소점 1과 4는 이 삼차식의 바깥 두 근입니다. 계수 비교로 f(x)=2x²-12x+13이므로 f(0)=13입니다.",
+      "approach": "이동 구간 적분의 미분과 절댓값 차의 부호를 이용해 극소점 정보를 이차함수의 계수 조건으로 바꿉니다.",
+      "concepts": [
+        "이동 구간 정적분의 미분",
+        "절댓값의 대소 비교",
+        "극소점과 도함수 부호"
+      ],
+      "steps": [
+        {
+          "title": "g' 구하기",
+          "expression": "g'(x)=|f(x+1)|-|f(x)|",
+          "explanation": "적분의 위끝과 아래끝을 각각 미분합니다."
+        },
+        {
+          "title": "부호를 다항식으로 바꾸기",
+          "expression": "\\operatorname{sgn}g'(x)=\\operatorname{sgn}((f(x+1)-f(x))(f(x+1)+f(x)))",
+          "explanation": "두 절댓값의 차와 두 제곱의 차는 같은 부호를 가집니다."
+        },
+        {
+          "title": "세 근의 위치 해석하기",
+          "expression": "f(x)=2x^2+px+q",
+          "explanation": "f(x+1)-f(x)는 일차식이고 f(x+1)+f(x)는 이차식이며, 두 식의 근 중심은 모두 -(p+2)/4입니다. 삼차식의 바깥 두 근이 극소점 1과 4이므로 가운데 근은 5/2입니다."
+        },
+        {
+          "title": "p 결정하기",
+          "expression": "-\\frac{p+2}{4}=\\frac52\\Rightarrow p=-12",
+          "explanation": "따라서 f(x+1)+f(x)의 두 근은 1과 4입니다."
+        },
+        {
+          "title": "q 결정하기",
+          "expression": "f(x+1)+f(x)=4(x-1)(x-4)",
+          "explanation": "상수항을 비교하면 2+p+2q=16이고 p=-12이므로 q=13입니다."
+        },
+        {
+          "title": "f(0) 구하기",
+          "expression": "f(0)=q=13",
+          "explanation": "이차함수의 상수항이 바로 f(0)입니다."
+        }
+      ],
+      "correctReason": "f(0)의 값은 13입니다.",
+      "commonMistake": "g'(x)=0만 쓰고 두 극소점이 어느 근인지 구분하지 않으면 계수가 결정되지 않습니다. 삼차식의 부호가 -,+,-,+로 바뀌므로 극소점은 바깥 두 근입니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_21": {
+      "id": "2023_06_common_21",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 21,
+      "answer": "426",
+      "answerMark": null,
+      "summary": "정숫값을 2m으로 놓으면 n=3·2^(3r-2)-4 꼴이고, 1000 이하에서는 n=2,44,380만 가능하여 합은 426입니다.",
+      "approach": "로그값이 정수라는 조건을 지수식으로 바꾸고 유리수가 되기 위한 지수의 짝홀성을 먼저 제한합니다.",
+      "concepts": [
+        "로그와 지수의 관계",
+        "정수 조건",
+        "범위 안의 자연수 열거"
+      ],
+      "steps": [
+        {
+          "title": "정숫값을 문자로 두기",
+          "expression": "4\\log_{64}\\left(\\frac3{4n+16}\\right)=m\\in\\mathbb Z",
+          "explanation": "진수는 1보다 작으므로 m은 음수입니다."
+        },
+        {
+          "title": "지수식으로 바꾸기",
+          "expression": "\\frac3{4n+16}=64^{m/4}=2^{3m/2}",
+          "explanation": "왼쪽은 유리수이므로 m이 홀수이면 생기는 √2 인자를 허용할 수 없습니다. 따라서 m은 짝수입니다."
+        },
+        {
+          "title": "음의 짝수로 나타내기",
+          "expression": "m=-2r\\ (r\\in\\mathbb N)\\Rightarrow\\frac3{4n+16}=2^{-3r}",
+          "explanation": "정리하면 n=3·2^(3r-2)-4입니다."
+        },
+        {
+          "title": "1000 이하 값 찾기",
+          "expression": "r=1,2,3\\Rightarrow n=2,44,380",
+          "explanation": "r=4이면 n=3068이므로 이후 값도 모두 1000을 넘습니다."
+        },
+        {
+          "title": "모든 n 더하기",
+          "expression": "2+44+380=426",
+          "explanation": "조건을 만족하는 1000 이하 자연수의 합은 426입니다."
+        }
+      ],
+      "correctReason": "가능한 모든 n의 합은 426입니다.",
+      "commonMistake": "로그값을 바로 정수 k로 두고 홀수 지수도 포함하지 마세요. 진수가 유리수라는 조건 때문에 정숫값은 짝수여야 합니다.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_22": {
+      "id": "2023_06_common_22",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 22,
+      "answer": "19",
+      "answerMark": null,
+      "summary": "극한이 실패하는 t는 정확히 g(t)=0인 지점이므로 g의 영점은 -3과 6뿐입니다. 이 조건으로 f(x)=(x+3)², b=9, a=3/4가 정해져 g(4)=19입니다.",
+      "approach": "극한식을 유리화해 x=-3 근처 g의 영점 차수와 g(t)=0 여부를 분리한 뒤, 조각함수의 영점 집합과 0에서의 연속성을 차례로 사용합니다.",
+      "concepts": [
+        "유리화를 이용한 극한",
+        "다항함수의 영점과 중근",
+        "조각함수의 연속성"
+      ],
+      "steps": [
+        {
+          "title": "극한의 분자 유리화하기",
+          "expression": "\\frac{\\sqrt{|g(x)|+g(t)^2}-|g(t)|}{(x+3)^2}=\\frac{|g(x)|}{(x+3)^2(\\sqrt{|g(x)|+g(t)^2}+|g(t)|)}",
+          "explanation": "t에 따른 차이는 g(t)가 0인지 아닌지에서 생깁니다."
+        },
+        {
+          "title": "f(-3)=0 확인하기",
+          "expression": "g(x)=(x+3)f(x)\\quad(x<0)",
+          "explanation": "f(-3)≠0이면 |g(x)|이 |x+3|에 비례하여 g(t)≠0인 거의 모든 t에서도 극한이 실패합니다. 실패하는 t가 둘뿐이므로 f(-3)=0이어야 합니다."
+        },
+        {
+          "title": "실패하는 t의 의미 정리하기",
+          "expression": "f(-3)=0\\Rightarrow g(x)=O((x+3)^2)",
+          "explanation": "이때 g(t)≠0이면 유리화한 극한은 유한하게 존재하고, g(t)=0이면 분모의 |g(t)|가 사라져 극한이 발산합니다. 따라서 g의 영점은 -3과 6뿐입니다."
+        },
+        {
+          "title": "f와 b 결정하기",
+          "expression": "f(x)=(x+3)^2,\\qquad b-3=6\\Rightarrow b=9",
+          "explanation": "f의 다른 근이 -3과 다르면 음수 구간이나 x≥0 구간에 추가 영점이 생깁니다. 따라서 -3이 중근이고, f(x-b)의 유일한 영점은 x=6입니다."
+        },
+        {
+          "title": "연속성으로 a 구하기",
+          "expression": "g(0^-)=3f(0)=27,\\quad g(0)=a f(-9)=36a",
+          "explanation": "0에서 연속이므로 36a=27, 즉 a=3/4입니다."
+        },
+        {
+          "title": "g(4) 계산하기",
+          "expression": "g(4)=\\left(4+\\frac34\\right)f(-5)=\\frac{19}{4}\\cdot4=19",
+          "explanation": "4≥0이므로 두 번째 식을 사용합니다."
+        }
+      ],
+      "correctReason": "조건으로 결정된 함수에서 g(4)=19입니다.",
+      "commonMistake": "극한이 실패하는 t를 x=-3 근처의 값으로만 보지 마세요. t는 g(t)=0이 되는 전체 영점과 연결되며, 그 영점 집합이 f의 중근과 b를 결정합니다.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

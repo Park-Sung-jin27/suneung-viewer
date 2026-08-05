@@ -1,0 +1,310 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2023학년도 6월 모의평가 공통 1~9번 중 원문 일치 비그림 7문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 7,
+    "readyCount": 7,
+    "questionFingerprint": "3956fa769ad8e08928d50f8018d7f227aaccc7b30fa933f551ff56caa120ce7e",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5043334/ect_f123552d-f3b9-441b-a9cb-26dd3fb0382a1655a9598b93086.zip",
+      "archiveSha256": "52670128518e0c913ee086d8fdf4364718997feb40edb189510c7bd32e5943ac",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "aa82f35e8f31049dbc75279de253ae9c3aeceb09d0a85bf53ba1ce2f882ce452",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "5db0748417f984b6ac30c87bb351f2d8fca7dce276fc71f47b7ab944e9e64519"
+    },
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 4번은 그림, 6번은 원천 등호 누락으로 제외."
+  },
+  "items": {
+    "2023_06_common_1": {
+      "id": "2023_06_common_1",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 1,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "두 인수를 각각 2의 거듭제곱으로 바꾸면 4와 1/4의 곱이므로 값은 1입니다.",
+      "approach": "밑을 2로 통일하여 지수법칙을 적용합니다.",
+      "concepts": [
+        "거듭제곱의 계산",
+        "분수 지수와 음의 지수"
+      ],
+      "steps": [
+        {
+          "title": "첫 번째 인수 계산하기",
+          "expression": "(-\\sqrt2)^4=((\\sqrt2)^2)^2=2^2=4",
+          "explanation": "짝수 거듭제곱이므로 음의 부호는 사라집니다."
+        },
+        {
+          "title": "두 번째 인수 계산하기",
+          "expression": "8^{-2/3}=(2^3)^{-2/3}=2^{-2}=\\frac14",
+          "explanation": "거듭제곱의 거듭제곱에서는 지수를 곱합니다."
+        },
+        {
+          "title": "두 값 곱하기",
+          "expression": "4\\times\\frac14=1",
+          "explanation": "전체 식의 값은 1입니다."
+        }
+      ],
+      "correctReason": "계산값이 1이므로 선택지 ①이 정답입니다.",
+      "commonMistake": "음의 지수는 값 전체에 음수를 붙이는 뜻이 아닙니다. 역수를 취한 뒤 양의 지수로 계산합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_2": {
+      "id": "2023_06_common_2",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 2,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "주어진 극한은 f의 x=2에서의 미분계수이므로 f'(2)=12입니다.",
+      "approach": "극한식을 미분계수의 정의로 바로 읽습니다.",
+      "concepts": [
+        "미분계수의 정의",
+        "다항함수의 미분"
+      ],
+      "steps": [
+        {
+          "title": "미분계수 형태 확인하기",
+          "expression": "\\lim_{h\\to0}\\frac{f(2+h)-f(2)}h=f'(2)",
+          "explanation": "x=2에서 증가량 h를 사용한 미분계수의 정의와 같습니다."
+        },
+        {
+          "title": "도함수 구하기",
+          "expression": "f(x)=x^3+9\\Rightarrow f'(x)=3x^2",
+          "explanation": "상수항 9의 도함수는 0입니다."
+        },
+        {
+          "title": "x=2 대입하기",
+          "expression": "f'(2)=3\\cdot2^2=12",
+          "explanation": "극한값은 12입니다."
+        }
+      ],
+      "correctReason": "f'(2)=12이므로 선택지 ②가 정답입니다.",
+      "commonMistake": "f(2)를 구하는 문제가 아닙니다. 분모 h와 f(2+h)-f(2)의 구조를 보고 미분계수임을 먼저 확인하세요.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_3": {
+      "id": "2023_06_common_3",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 3,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "제2사분면이므로 cosθ=-2/3이고, sin²θ=5/9이어서 합은 -1/9입니다.",
+      "approach": "제곱값에서 크기를 구한 뒤 사분면 조건으로 cosθ의 부호를 결정합니다.",
+      "concepts": [
+        "삼각함수의 부호",
+        "삼각함수의 기본 관계"
+      ],
+      "steps": [
+        {
+          "title": "cosθ의 부호 정하기",
+          "expression": "\\frac\\pi2<\\theta<\\pi,\\quad\\cos^2\\theta=\\frac49\\Rightarrow\\cos\\theta=-\\frac23",
+          "explanation": "제2사분면에서는 코사인이 음수입니다."
+        },
+        {
+          "title": "sin²θ 구하기",
+          "expression": "\\sin^2\\theta=1-\\cos^2\\theta=1-\\frac49=\\frac59",
+          "explanation": "sin²θ+cos²θ=1을 사용합니다."
+        },
+        {
+          "title": "요구한 값 계산하기",
+          "expression": "\\sin^2\\theta+\\cos\\theta=\\frac59-\\frac23=-\\frac19",
+          "explanation": "공통분모 9로 계산합니다."
+        }
+      ],
+      "correctReason": "값이 -1/9이므로 선택지 ④가 정답입니다.",
+      "commonMistake": "cos²θ=4/9에서 cosθ를 항상 2/3으로 두지 마세요. 사분면에 따라 부호가 달라집니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_5": {
+      "id": "2023_06_common_5",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 5,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "양의 공비 r에 대해 r(1+r)=6이므로 r=2이고, a₆+a₇=24입니다.",
+      "approach": "첫째항과 공비로 두 조건을 표현해 공비를 먼저 결정합니다.",
+      "concepts": [
+        "등비수열의 일반항",
+        "공비 결정"
+      ],
+      "steps": [
+        {
+          "title": "공비 방정식 세우기",
+          "expression": "a_2+a_3=\\frac14r+\\frac14r^2=\\frac32\\Rightarrow r(r+1)=6",
+          "explanation": "aₙ=a₁rⁿ⁻¹을 사용합니다."
+        },
+        {
+          "title": "양의 공비 선택하기",
+          "expression": "r^2+r-6=0\\Rightarrow(r-2)(r+3)=0",
+          "explanation": "모든 항이 양수이므로 공비는 r=2입니다."
+        },
+        {
+          "title": "a₆+a₇ 계산하기",
+          "expression": "a_6+a_7=\\frac14\\cdot2^5+\\frac14\\cdot2^6=8+16=24",
+          "explanation": "각 항을 직접 계산하여 더합니다."
+        }
+      ],
+      "correctReason": "a₆+a₇=24이므로 선택지 ③이 정답입니다.",
+      "commonMistake": "방정식의 다른 근 r=-3은 조건을 만족하지 않습니다. 첫째항이 양수일 때 음의 공비면 항의 부호가 번갈아 바뀝니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_7": {
+      "id": "2023_06_common_7",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 7,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "최댓값은 x=3π/4에서 1, 최솟값은 x=π/4에서 -1이므로 두 점을 잇는 직선의 기울기는 4/π입니다.",
+      "approach": "-sin2x가 ±1이 되는 위치를 닫힌구간 안에서 찾고 두 점의 변화량을 계산합니다.",
+      "concepts": [
+        "사인함수의 최댓값과 최솟값",
+        "두 점을 지나는 직선의 기울기"
+      ],
+      "steps": [
+        {
+          "title": "최댓값을 갖는 점 찾기",
+          "expression": "-\\sin2a=1\\Rightarrow\\sin2a=-1\\Rightarrow a=\\frac{3\\pi}4",
+          "explanation": "0≤a≤π에서 2a는 0부터 2π까지 움직입니다."
+        },
+        {
+          "title": "최솟값을 갖는 점 찾기",
+          "expression": "-\\sin2b=-1\\Rightarrow\\sin2b=1\\Rightarrow b=\\frac\\pi4",
+          "explanation": "따라서 두 점은 (3π/4,1), (π/4,-1)입니다."
+        },
+        {
+          "title": "기울기 계산하기",
+          "expression": "\\frac{1-(-1)}{3\\pi/4-\\pi/4}=\\frac2{\\pi/2}=\\frac4\\pi",
+          "explanation": "y의 변화량을 x의 변화량으로 나눕니다."
+        }
+      ],
+      "correctReason": "직선의 기울기가 4/π이므로 선택지 ④가 정답입니다.",
+      "commonMistake": "a와 b의 순서를 바꾸더라도 분자와 분모를 같은 순서로 빼야 합니다. 한쪽 순서만 바꾸면 부호가 틀립니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_8": {
+      "id": "2023_06_common_8",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 8,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "평균값 정리에 의해 f(5)-f(1)≥20이므로 f(5)≥23이고, 기울기 5인 일차함수에서 등호가 성립합니다.",
+      "approach": "도함수의 하한을 구간 전체의 함수값 증가량 하한으로 바꿉니다.",
+      "concepts": [
+        "평균값 정리",
+        "도함수와 함수값의 증가량"
+      ],
+      "steps": [
+        {
+          "title": "평균값 정리 적용하기",
+          "expression": "f(5)-f(1)=f'(c)(5-1)\\quad(1<c<5)",
+          "explanation": "f는 실수 전체에서 미분가능하므로 [1,5]에서 평균값 정리를 사용할 수 있습니다."
+        },
+        {
+          "title": "증가량의 하한 구하기",
+          "expression": "f'(c)\\ge5\\Rightarrow f(5)-3\\ge5\\cdot4=20",
+          "explanation": "따라서 f(5)는 적어도 23입니다."
+        },
+        {
+          "title": "최솟값이 실제로 가능한지 확인하기",
+          "expression": "f(x)=5x-2\\Rightarrow f(1)=3,\\quad f(5)=23",
+          "explanation": "조건을 모두 만족하면서 23을 만드는 함수가 있으므로 하한 23은 실제 최솟값입니다."
+        }
+      ],
+      "correctReason": "f(5)의 최솟값은 23이므로 선택지 ③이 정답입니다.",
+      "commonMistake": "f'(x)≥5에서 f(5)>23이라고 단정하지 마세요. f'(x)=5인 함수도 허용되므로 등호가 성립할 수 있습니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_common_9": {
+      "id": "2023_06_common_9",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 공통",
+      "questionNumber": 9,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "모든 x≥0에서 a≤x³-x²-x+6이어야 하고, 오른쪽 식의 최솟값이 x=1에서 5이므로 a의 최댓값은 5입니다.",
+      "approach": "부등식을 a에 대해 정리한 뒤 삼차함수의 구간 최솟값을 구합니다.",
+      "concepts": [
+        "모든 실수에 대한 부등식",
+        "도함수를 이용한 최솟값"
+      ],
+      "steps": [
+        {
+          "title": "a의 조건으로 정리하기",
+          "expression": "x^3-x+6\\ge x^2+a\\Rightarrow a\\le h(x)=x^3-x^2-x+6",
+          "explanation": "모든 x≥0에서 성립해야 하므로 a는 h(x)의 최솟값 이하여야 합니다."
+        },
+        {
+          "title": "증감 구간 찾기",
+          "expression": "h'(x)=3x^2-2x-1=(3x+1)(x-1)",
+          "explanation": "x≥0에서 h는 0≤x≤1에서 감소하고 x≥1에서 증가합니다."
+        },
+        {
+          "title": "최솟값 계산하기",
+          "expression": "\\min_{x\\ge0}h(x)=h(1)=1-1-1+6=5",
+          "explanation": "따라서 가능한 a의 최댓값은 5입니다."
+        }
+      ],
+      "correctReason": "a의 최댓값이 5이므로 선택지 ⑤가 정답입니다.",
+      "commonMistake": "특정 x 하나만 대입해 조건을 확인하지 마세요. 부등식이 모든 x≥0에서 성립해야 하므로 h(x)의 최솟값을 찾아야 합니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

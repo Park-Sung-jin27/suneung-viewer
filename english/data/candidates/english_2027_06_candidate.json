@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2027_06_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "examId": "2027_06"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2027학년도_6월_영어_문제.pdf",
+      "sha256": "4fbaac352897a3af13cb71305c9909038490b4eb85c578f0e349cd7e4ee42a41"
+    },
+    "answer": {
+      "filename": "2027학년도_6월_영어_정답.png",
+      "sha256": "6039db41859ae528c0af40fa0e0b36c535c9a4465ad369203757dfa099af9de0"
+    },
+    "explanation": {
+      "filename": "2027학년도_6월_영어_해설.pdf",
+      "sha256": "5412a7741405fdfef66ee30b9e4a79415b5e17010a9897bcedd516fffcc1478c"
+    }
+  },
+  "reviewData": {
+    "path": "english/data/candidates/english_2027_06_reviews.json",
+    "sha256": "1d2bfc77f8635806a92c16ffabb065d23cab0bf358bfa81b0a4b1352200e7379",
+    "expectedReadyCount": 28
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 60,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2027_06_25",
+      "2027_06_27",
+      "2027_06_28"
+    ]
+  },
+  "projectionPolicies": {
+    "default": {
+      "sourceField": "rawText",
+      "stripStem": true,
+      "stripChoices": true,
+      "stripPdfTail": true
+    },
+    "sharedPassageIds": [
+      "2027_06_41",
+      "2027_06_42",
+      "2027_06_43",
+      "2027_06_44",
+      "2027_06_45"
+    ],
+    "inlineMarkerIds": [
+      "2027_06_29",
+      "2027_06_30",
+      "2027_06_35",
+      "2027_06_42",
+      "2027_06_44"
+    ],
+    "sequenceTableIds": [
+      "2027_06_36",
+      "2027_06_37",
+      "2027_06_43"
+    ],
+    "placementMarkerIds": [
+      "2027_06_38",
+      "2027_06_39"
+    ]
+  },
+  "questions": [
+    { "id": "2027_06_18", "qid": 18, "answer": 3, "problemPage": 2, "explanationPages": [11, 12], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_19", "qid": 19, "answer": 1, "problemPage": 2, "explanationPages": [12], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_20", "qid": 20, "answer": 3, "problemPage": 2, "explanationPages": [12, 13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_21", "qid": 21, "answer": 2, "problemPage": 3, "explanationPages": [13, 14], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_22", "qid": 22, "answer": 1, "problemPage": 3, "explanationPages": [14], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_23", "qid": 23, "answer": 2, "problemPage": 3, "explanationPages": [15], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_24", "qid": 24, "answer": 2, "problemPage": 3, "explanationPages": [15, 16], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_25", "qid": 25, "answer": 3, "problemPage": 4, "explanationPages": [16, 17], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2027-06/q25-figure.png" },
+    { "id": "2027_06_26", "qid": 26, "answer": 3, "problemPage": 4, "explanationPages": [17], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_27", "qid": 27, "answer": 4, "problemPage": 4, "explanationPages": [17, 18], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2027-06/q27-notice.png" },
+    { "id": "2027_06_28", "qid": 28, "answer": 4, "problemPage": 4, "explanationPages": [18], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2027-06/q28-notice.png" },
+    { "id": "2027_06_29", "qid": 29, "answer": 2, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_30", "qid": 30, "answer": 4, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_31", "qid": 31, "answer": 1, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_32", "qid": 32, "answer": 2, "problemPage": 5, "explanationPages": [21], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_33", "qid": 33, "answer": 2, "problemPage": 6, "explanationPages": [22], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_34", "qid": 34, "answer": 1, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_35", "qid": 35, "answer": 4, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_36", "qid": 36, "answer": 5, "problemPage": 6, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_37", "qid": 37, "answer": 4, "problemPage": 7, "explanationPages": [25], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_38", "qid": 38, "answer": 3, "problemPage": 7, "explanationPages": [26], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_39", "qid": 39, "answer": 3, "problemPage": 7, "explanationPages": [27], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_40", "qid": 40, "answer": 5, "problemPage": 7, "explanationPages": [27], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_41", "qid": 41, "answer": 1, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_42", "qid": 42, "answer": 5, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_43", "qid": 43, "answer": 5, "problemPage": 8, "explanationPages": [30], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_44", "qid": 44, "answer": 5, "problemPage": 8, "explanationPages": [31], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2027_06_45", "qid": 45, "answer": 4, "problemPage": 8, "explanationPages": [31], "status": "question_answer_ready", "reviewStatus": "ready" }
+  ],
+  "choiceOverrides": {
+    "2027_06_20": [
+      { "num": 1, "mark": "①", "text": "체육 교육은 학습자의 역량 향상을 위해 이론보다 실습을 강조해야 한다." },
+      { "num": 2, "mark": "②", "text": "체육 활동은 참여자의 적성을 발굴하고 개발하는 데 집중해야 한다." },
+      { "num": 3, "mark": "③", "text": "체육 지도자는 참여자가 체육 활동의 원리를 알고 훈련하도록 도와야 한다." },
+      { "num": 4, "mark": "④", "text": "체육 프로그램은 참여자의 편의를 위해 단계적으로 계획되어야 한다." },
+      { "num": 5, "mark": "⑤", "text": "체육 수업은 각 개인의 신체 능력에 맞는 다양한 활동을 제공해야 한다." }
+    ],
+    "2027_06_24": [
+      { "num": 1, "mark": "①", "text": "The Bright and Dark Sides of Collapsing Tour Resources" },
+      { "num": 2, "mark": "②", "text": "Separate to Combined: Changes in the Tourism Business" },
+      { "num": 3, "mark": "③", "text": "Reduced Roles of Tour Operators in the Tourism Industry" },
+      { "num": 4, "mark": "④", "text": "Integration’s Failure: Not Meeting Customers’ Various Needs" },
+      { "num": 5, "mark": "⑤", "text": "New Challenges Facing Service Providers in Modern Tourism" }
+    ],
+    "2027_06_28": [
+      { "num": 1, "mark": "①", "text": "3일 동안 진행된다." },
+      { "num": 2, "mark": "②", "text": "주차가 가능하다." },
+      { "num": 3, "mark": "③", "text": "영화는 오후 6시에 시작한다." },
+      { "num": 4, "mark": "④", "text": "음식과 음료가 판매될 것이다." },
+      { "num": 5, "mark": "⑤", "text": "폭우 시 연기될 것이다." }
+    ],
+    "2027_06_29": [
+      { "num": 1, "mark": "①", "text": "frequently" },
+      { "num": 2, "mark": "②", "text": "what" },
+      { "num": 3, "mark": "③", "text": "to limit" },
+      { "num": 4, "mark": "④", "text": "Allowed" },
+      { "num": 5, "mark": "⑤", "text": "their" }
+    ],
+    "2027_06_30": [
+      { "num": 1, "mark": "①", "text": "revealing" },
+      { "num": 2, "mark": "②", "text": "clear" },
+      { "num": 3, "mark": "③", "text": "significant" },
+      { "num": 4, "mark": "④", "text": "thick" },
+      { "num": 5, "mark": "⑤", "text": "time-consuming" }
+    ],
+    "2027_06_32": [
+      { "num": 1, "mark": "①", "text": "pretend to pay attention to others" },
+      { "num": 2, "mark": "②", "text": "conceal what they mean and feel" },
+      { "num": 3, "mark": "③", "text": "interpret one’s nonverbal behavior" },
+      { "num": 4, "mark": "④", "text": "maintain the nonverbal communication" },
+      { "num": 5, "mark": "⑤", "text": "encounter a chance to understand others" }
+    ],
+    "2027_06_35": [
+      { "num": 1, "mark": "①", "text": "Their relatively thick bones in comparison to their mass mean they rarely build up enough energy, even at top speed, to do themselves much damage." },
+      { "num": 2, "mark": "②", "text": "Because of their increased mass (compounded by the fact that they are falling from a greater height and that their reactions may be slower), adults falling over will impact the ground with a much larger force." },
+      { "num": 3, "mark": "③", "text": "The nonlinear relationship between mass and bone strength means that although their bones are thicker than a toddler’s in absolute terms, they may not be relatively thick enough to compensate for the larger impact caused by their increased mass." },
+      { "num": 4, "mark": "④", "text": "The body mass index (BMI) can serve as a convenient way for non-experts to examine their health conditions in daily lives." },
+      { "num": 5, "mark": "⑤", "text": "For the same reasons, taller people have been found to suffer more fall-related injuries ― like hip breaks ― than shorter people." }
+    ],
+    "2027_06_36": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2027_06_37": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2027_06_38": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2027_06_39": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2027_06_40": [
+      { "num": 1, "mark": "①", "text": "prevention ··· marginalized" },
+      { "num": 2, "mark": "②", "text": "spread ··· general" },
+      { "num": 3, "mark": "③", "text": "overlook ··· native" },
+      { "num": 4, "mark": "④", "text": "ignorance ··· wealthy" },
+      { "num": 5, "mark": "⑤", "text": "disregard ··· underserved" }
+    ],
+    "2027_06_43": [
+      { "num": 1, "mark": "①", "text": "(B) - (D) - (C)" },
+      { "num": 2, "mark": "②", "text": "(C) - (B) - (D)" },
+      { "num": 3, "mark": "③", "text": "(C) - (D) - (B)" },
+      { "num": 4, "mark": "④", "text": "(D) - (B) - (C)" },
+      { "num": 5, "mark": "⑤", "text": "(D) - (C) - (B)" }
+    ],
+    "2027_06_45": [
+      { "num": 1, "mark": "①", "text": "Sally는 헤드폰으로 음악을 듣는 것을 좋아했다." },
+      { "num": 2, "mark": "②", "text": "노부인의 연주를 다시 듣게 되어 Sally는 행복했다." },
+      { "num": 3, "mark": "③", "text": "Sally는 노부인을 매일 만나기로 약속했다." },
+      { "num": 4, "mark": "④", "text": "Beatrice는 Sally의 음악적 재능을 칭찬했다." },
+      { "num": 5, "mark": "⑤", "text": "노부인은 항상 바이올린을 배우고 싶어 했다." }
+    ]
+  },
+  "figures": [
+    {
+      "questionId": "2027_06_25",
+      "kind": "stacked_bar_chart",
+      "assetPath": "english/assets/2027-06/q25-figure.png",
+      "sha256": "37bc5632f9f7870edae6e0313520dc099d8eda70b6c4e792443b82e80711b267",
+      "sourcePage": 4,
+      "alt": "평일 이동 교통수단 비율 원본 도표. North and South America: walking or cycling 12%, public transport 15%, cars 74%; Europe: 29%, 27%, 45%; Asia: walking or cycling 34%, public transport 43%, cars 23%; Africa: 41%, 37%, 22%; Australia and New Zealand: 6%, 18%, 76%. All regions: public transport below 50%."
+    },
+    {
+      "questionId": "2027_06_27",
+      "kind": "notice_with_table",
+      "assetPath": "english/assets/2027-06/q27-notice.png",
+      "sha256": "ac44c3bf83c4c034e5f18550b738e5867171ab1bca0eb0e88a8f8ffa7c7a663c",
+      "sourcePage": 4,
+      "alt": "Green Dewywood Drawing Competition 원본 안내문. Ages 6–9: A3, crayons. Ages 10–13 and 14–17: A2. Drawing materials are colored pencils and colored markers for the older groups."
+    },
+    {
+      "questionId": "2027_06_28",
+      "kind": "notice_with_table",
+      "assetPath": "english/assets/2027-06/q28-notice.png",
+      "sha256": "5cca1278660d0f6da9814bcae1c31de870f7c195e0ffebf62ab2ac0178cb898c",
+      "sourcePage": 4,
+      "alt": "Summer Night Drone Event 원본 안내문. Food and beverages will be sold during the event. In case of heavy rain, the event will be cancelled."
+    }
+  ]
+}
