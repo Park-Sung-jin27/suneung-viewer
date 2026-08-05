@@ -29,7 +29,7 @@
         {"title": "표준형과 비교하기", "expression": "(y-0)^2=4(-3)(x-1)", "explanation": "꼭짓점은 (1,0), p=-3입니다."},
         {"title": "준선 구하기", "expression": "x=h-p=1-(-3)=4", "explanation": "가로축 포물선의 준선은 x=h-p입니다."}
       ],
-      "correctReason": "k=4가 선지 ①과 일치합니다.", "commonMistake": "포물선이 왼쪽으로 열리므로 초점과 준선의 방향을 반대로 잡지 마세요.",
+      "correctReason": "포물선 표준형에서 p=-3이므로 준선이 x=4, k=4이므로 ①이 정답입니다.", "commonMistake": "포물선이 왼쪽으로 열리므로 초점과 준선의 방향을 반대로 잡지 마세요.",
       "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
     "2024_06_geo_24": {
@@ -43,7 +43,7 @@
         {"title": "두 계수를 0으로 두기", "expression": "2-p=0,\\quad p+q=0\\Rightarrow p=2,\\ q=-2", "explanation": "세 점이 한 직선 위에 있지 않아 AB와 AC는 평행하지 않습니다."},
         {"title": "차 계산하기", "expression": "p-q=2-(-2)=4", "explanation": "구한 두 값을 대입합니다."}
       ],
-      "correctReason": "p-q=4가 선지 ④와 일치합니다.", "commonMistake": "CA는 AC의 반대 벡터이므로 부호를 빠뜨리지 마세요.",
+      "correctReason": "독립인 AB, AC 벡터의 계수를 0으로 두면 p=2, q=-2이므로 p-q=4, ④가 정답입니다.", "commonMistake": "CA는 AC의 반대 벡터이므로 부호를 빠뜨리지 마세요.",
       "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
     "2024_06_geo_25": {
@@ -56,7 +56,7 @@
         {"title": "내적 계산하기", "expression": "(\\overrightarrow{AB}+k\\overrightarrow{BC})\\cdot((1-3k)\\overrightarrow{AB}+\\overrightarrow{BC})=1-2k", "explanation": "AB와 BC는 수직인 단위벡터라 교차 내적은 0입니다."},
         {"title": "k 구하기", "expression": "1-2k=0\\Rightarrow k=\\frac12", "explanation": "주어진 내적이 0이라는 조건을 적용합니다."}
       ],
-      "correctReason": "k=1/2가 선지 ②와 일치합니다.", "commonMistake": "CD의 방향은 AB와 반대이므로 CD=-AB입니다.",
+      "correctReason": "정사각형의 수직 단위벡터 내적이 1-2k이므로 k=1/2, ②가 정답입니다.", "commonMistake": "CD의 방향은 AB와 반대이므로 CD=-AB입니다.",
       "verification": {"problemPage": 18, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
     "2024_06_geo_26": {
@@ -71,7 +71,7 @@
         {"title": "새 타원 상수 구하기", "expression": "QF'+QA=8+4=12=2a\\Rightarrow a^2=36,\\quad b^2=a^2-4^2=20", "explanation": "새 타원의 장축 길이와 초점거리 관계를 사용합니다."},
         {"title": "최종값 계산하기", "expression": "PF+a^2+b^2=8+36+20=64", "explanation": "요구한 세 값을 더합니다."}
       ],
-      "correctReason": "64가 선지 ④와 일치합니다.", "commonMistake": "두 타원의 장축 길이를 같은 것으로 두지 말고, 두 번째 타원은 Q의 거리합으로 다시 구하세요.",
+      "correctReason": "타원의 거리합과 초점 관계로 PF=8, a²=36, b²=20을 얻어 합이 64이므로 ④가 정답입니다.", "commonMistake": "두 타원의 장축 길이를 같은 것으로 두지 말고, 두 번째 타원은 Q의 거리합으로 다시 구하세요.",
       "verification": {"problemPage": 18, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
     "2024_06_geo_27": {
@@ -116,7 +116,7 @@
         {"title": "기울기 구하기", "expression": "PF'=6,\\ PF=8,\\ FF'=10\\Rightarrow m=\\frac43", "explanation": "삼각형 PF'F는 6-8-10 직각삼각형이고 P가 제2사분면이어서 기울기는 양수입니다."},
         {"title": "요구값 계산하기", "expression": "60m=60\\cdot\\frac43=80", "explanation": "기울기에 60을 곱합니다."}
       ],
-      "correctReason": "60m=80입니다.", "commonMistake": "제2사분면의 점 P와 F'을 잇는 직선의 기울기는 양수입니다.",
+      "correctReason": "두 쌍곡선의 거리차와 등차중항 조건으로 기울기 m=4/3을 얻으므로 60m=80입니다.", "commonMistake": "제2사분면의 점 P와 F'을 잇는 직선의 기울기는 양수입니다.",
       "verification": {"problemPage": 20, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
     "2024_06_geo_30": {
@@ -130,7 +130,7 @@
         {"title": "제1사분면 영역 찾기", "expression": "0\\le y\\le-2x+3,\\qquad0\\le x\\le\\frac32", "explanation": "아래쪽 경계는 제1사분면에서 자동으로 만족되어 위쪽 접선과 두 좌표축이 삼각형을 만듭니다."},
         {"title": "넓이와 답 구하기", "expression": "\\frac12\\cdot\\frac32\\cdot3=\\frac94\\Rightarrow p+q=4+9=13", "explanation": "9/4는 기약분수입니다."}
       ],
-      "correctReason": "p+q=13입니다.", "commonMistake": "점 X의 자취는 타원 하나가 아니라 타원을 직선 전체를 따라 옮겨 만든 띠입니다.",
+      "correctReason": "평행이동 띠의 제1사분면 넓이가 9/4라서 p=9, q=4이므로 p+q=13입니다.", "commonMistake": "점 X의 자취는 타원 하나가 아니라 타원을 직선 전체를 따라 옮겨 만든 띠입니다.",
       "verification": {"problemPage": 20, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     }
   }

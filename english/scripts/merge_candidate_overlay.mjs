@@ -18,6 +18,9 @@ const DEFAULT_OVERLAY_PATH = path.join(
   "english_2026_09_candidate.json",
 );
 const ENGLISH_CHOICE_MARKS = ["①", "②", "③", "④", "⑤"];
+const REVIEW_MIN_NARRATIVE_LENGTH = 20;
+const REVIEW_DRAFT_PATTERN =
+  /TODO|TBD|미검증|AI생성|ProbDex|준비\s*중|임시|�|\?\?/i;
 const CHOICE_CONTAMINATION_PATTERNS = [
   /--\s*\d+\s+of\s+\d+\s*--/i,
   /이 문제지에 관한 저작권/,
@@ -220,9 +223,22 @@ function buildValidatedReview(question, choices, figure, review) {
     question.id,
   );
   validatedText(review.exam, "REVIEW_EXAM", question.id);
-  validatedText(review.summary, "REVIEW_SUMMARY", question.id);
-  validatedText(review.typeApproach, "REVIEW_APPROACH", question.id);
-  validatedText(review.correctReason, "REVIEW_REASON", question.id);
+  const summary = validatedText(review.summary, "REVIEW_SUMMARY", question.id);
+  const typeApproach = validatedText(
+    review.typeApproach,
+    "REVIEW_APPROACH",
+    question.id,
+  );
+  const correctReason = validatedText(
+    review.correctReason,
+    "REVIEW_REASON",
+    question.id,
+  );
+  ensure(
+    correctReason.includes(review.answerMark),
+    "REVIEW_REASON_ANSWER_MARK",
+    question.id,
+  );
   ensure(Array.isArray(review.evidence) && review.evidence.length > 0, "REVIEW_EVIDENCE", question.id);
 
   const evidence = review.evidence.map((item, index) => {
@@ -233,6 +249,11 @@ function buildValidatedReview(question, choices, figure, review) {
     const translation = validatedText(
       item.translation,
       "REVIEW_EVIDENCE_TRANSLATION",
+      detail,
+    );
+    ensure(
+      !REVIEW_DRAFT_PATTERN.test(`${role} ${translation}`),
+      "REVIEW_EVIDENCE_DRAFT_MARKER",
       detail,
     );
 
@@ -258,6 +279,11 @@ function buildValidatedReview(question, choices, figure, review) {
     );
     return { in: item.in, quote, charStart, role, translation };
   });
+  ensure(
+    new Set(evidence.map((item) => item.quote)).size === evidence.length,
+    "REVIEW_EVIDENCE_DUPLICATE_QUOTE",
+    question.id,
+  );
 
   const trap = review.trap;
   ensure(trap && typeof trap === "object", "REVIEW_TRAP", question.id);
@@ -266,7 +292,30 @@ function buildValidatedReview(question, choices, figure, review) {
   ensure(Number(trap.choice) !== Number(question.answer), "REVIEW_TRAP_IS_ANSWER", question.id);
   ensure(trap.mark === trapChoice.mark, "REVIEW_TRAP_MARK", question.id);
   ensure(trap.text === trapChoice.text, "REVIEW_TRAP_TEXT", question.id);
-  validatedText(trap.reason, "REVIEW_TRAP_REASON", question.id);
+  const trapReason = validatedText(
+    trap.reason,
+    "REVIEW_TRAP_REASON",
+    question.id,
+  );
+  const narrativeFields = { summary, typeApproach, correctReason, trapReason };
+  for (const [field, text] of Object.entries(narrativeFields)) {
+    ensure(
+      text.trim().length >= REVIEW_MIN_NARRATIVE_LENGTH,
+      "REVIEW_NARRATIVE_DEPTH",
+      `${question.id}:${field}`,
+    );
+    ensure(
+      !REVIEW_DRAFT_PATTERN.test(text),
+      "REVIEW_DRAFT_MARKER",
+      `${question.id}:${field}`,
+    );
+  }
+  ensure(
+    new Set(Object.values(narrativeFields)).size ===
+      Object.keys(narrativeFields).length,
+    "REVIEW_NARRATIVE_DUPLICATE",
+    question.id,
+  );
 
   return {
     id: review.id,
@@ -277,15 +326,15 @@ function buildValidatedReview(question, choices, figure, review) {
     type: review.type,
     answer: Number(review.answer),
     answerMark: review.answerMark,
-    summary: review.summary,
-    typeApproach: review.typeApproach,
+    summary,
+    typeApproach,
     evidence,
-    correctReason: review.correctReason,
+    correctReason,
     trap: {
       mark: trap.mark,
       choice: Number(trap.choice),
       text: trap.text,
-      reason: trap.reason,
+      reason: trapReason,
     },
   };
 }

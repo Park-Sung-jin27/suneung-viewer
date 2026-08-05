@@ -61,7 +61,7 @@
           "explanation": "정답은 ②입니다."
         }
       ],
-      "correctReason": "분자와 분모의 주도항이 각각 (1/2)ⁿ과 (1/2)ⁿ⁺¹임을 정확히 비교했습니다.",
+      "correctReason": "분자와 분모의 주도항이 각각 (1/2)ⁿ과 (1/2)ⁿ⁺¹임을 정확히 비교했습니다. 따라서 정답은 ②입니다.",
       "commonMistake": "분자와 분모가 모두 0으로 간다는 이유만으로 극한도 0이라고 하지 마세요.",
       "verification": {
         "problemPage": 13,
@@ -99,7 +99,7 @@
           "explanation": "정답은 ③입니다."
         }
       ],
-      "correctReason": "음함수 위 점의 접선 기울기는 그 점에서 구한 dy/dx입니다.",
+      "correctReason": "음함수 위 점의 접선 기울기는 그 점에서 구한 dy/dx입니다. 따라서 정답은 ③입니다.",
       "commonMistake": "sin2y를 미분할 때 2y'을 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 13,
@@ -137,7 +137,7 @@
           "explanation": "정답은 ③입니다."
         }
       ],
-      "correctReason": "다항식은 연속이므로 aₙ의 극한을 대입해 최종 극한을 계산할 수 있습니다.",
+      "correctReason": "다항식은 연속이므로 aₙ의 극한을 대입해 최종 극한을 계산할 수 있습니다. 따라서 정답은 ③입니다.",
       "commonMistake": "급수의 합 2를 aₙ의 극한으로 오해하지 마세요.",
       "verification": {
         "problemPage": 14,
@@ -175,7 +175,7 @@
           "explanation": "ln(1+ct)/t→c를 각 제곱근에 적용하면 정답은 ②입니다."
         }
       ],
-      "correctReason": "교점의 x좌표와 삼각형 높이를 정확히 구한 뒤 표준 극한을 적용했습니다.",
+      "correctReason": "교점의 x좌표와 삼각형 높이를 정확히 구한 뒤 표준 극한을 적용했습니다. 따라서 정답은 ②입니다.",
       "commonMistake": "곡선의 y값 차를 삼각형의 밑변으로 두지 말고, BC가 수직선분임을 확인하세요.",
       "verification": {
         "problemPage": 14,
@@ -213,7 +213,7 @@
           "explanation": "정답은 ②입니다."
         }
       ],
-      "correctReason": "양의 상수 1/ln a는 최대 위치를 바꾸지 않으므로 t에 의존하는 부분만 미분했습니다.",
+      "correctReason": "양의 상수 1/ln a는 최대 위치를 바꾸지 않으므로 t에 의존하는 부분만 미분했습니다. 따라서 정답은 ②입니다.",
       "commonMistake": "접선 기울기의 음의 역수를 구할 때 a^t ln a 전체를 분모에 두세요.",
       "verification": {
         "problemPage": 15,
@@ -251,7 +251,7 @@
           "explanation": "e^a=3을 대입하면 정답은 ④입니다."
         }
       ],
-      "correctReason": "g가 ‘최솟값’인 해를 고른다는 조건에 맞춰 서로 다른 두 역함수 가지를 선택했습니다.",
+      "correctReason": "g가 ‘최솟값’인 해를 고른다는 조건에 맞춰 서로 다른 두 역함수 가지를 선택했습니다. 따라서 정답은 ④입니다.",
       "commonMistake": "f(x)=t의 모든 해를 하나의 역함수로 취급하거나 f(a+2)=0의 오른쪽 해를 사용하지 마세요.",
       "verification": {
         "problemPage": 15,
@@ -289,7 +289,7 @@
           "explanation": "a+b+c=7/3−(1/2)ln2이므로 p+q=11/6입니다."
         }
       ],
-      "correctReason": "좌우 도함수의 부호가 반대여야 하므로 둘 다 0이어야 한다는 점이 b, c를 유일하게 정합니다.",
+      "correctReason": "좌우 도함수의 부호가 반대여야 하므로 둘 다 0이어야 한다는 점이 b, c를 유일하게 정합니다. 따라서 답은 55입니다.",
       "commonMistake": "미분가능성에서 함수값의 연속 조건만 확인하고 좌우 도함숫값 조건을 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 16,
@@ -327,7 +327,7 @@
           "explanation": "두 분모 인수의 제곱은 점근적으로 4aₙ과 aₙ²이 됩니다."
         }
       ],
-      "correctReason": "탄젠트의 주기적 가지 구조와 교점식의 성장률을 모두 반영해 극한의 상수를 남겼습니다.",
+      "correctReason": "탄젠트의 주기적 가지 구조와 교점식의 성장률을 모두 반영해 극한의 상수를 남겼습니다. 따라서 답은 25입니다.",
       "commonMistake": "aₙ₊₁−aₙ이 π로 간다고 tan값도 곧바로 0이라고 끝내지 말고 0으로 가는 속도까지 계산하세요.",
       "verification": {
         "problemPage": 16,

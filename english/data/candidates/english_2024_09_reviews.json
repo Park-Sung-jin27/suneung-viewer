@@ -404,7 +404,7 @@
           "translation": "다음 문장도 If 절 뒤에 remind라는 명령형 주절을 사용합니다."
         }
       ],
-      "correctReason": "When 종속절만 있고 주절 서술어가 없으므로 realizing을 명령형 realize로 고쳐야 합니다.",
+      "correctReason": "When 종속절만 있고 주절 서술어가 없으므로 realizing을 명령형 realize로 고쳐야 합니다. 따라서 ③이 정답입니다.",
       "trap": {
         "mark": "⑤",
         "choice": 5,
@@ -470,7 +470,7 @@
           "translation": "비슷한 오락을 텔레비전으로 집에서 무료로 더 편리하게 즐길 수 있었습니다."
         }
       ],
-      "correctReason": "여가가 집과 개인 소유 수단 중심으로 이동했으므로 privatization이 적절합니다.",
+      "correctReason": "여가가 집과 개인 소유 수단 중심으로 이동했으므로 privatization이 적절합니다. 따라서 ④가 정답입니다.",
       "trap": {
         "mark": "⑤",
         "choice": 5,

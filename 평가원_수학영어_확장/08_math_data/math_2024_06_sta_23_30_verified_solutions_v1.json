@@ -125,7 +125,7 @@
         {"title": "같은 색 세기", "expression": "5+2=7", "explanation": "흰 공은 곱이 짝수인 5쌍, 검은 공은 {4,5}, {4,6} 두 쌍만 24 이하의 짝수입니다."},
         {"title": "기약분수와 답 구하기", "expression": "\\frac{16+7}{28}=\\frac{23}{28},\\qquad p+q=28+23=51", "explanation": "23과 28은 서로소입니다."}
       ],
-      "correctReason": "p+q=51입니다.", "commonMistake": "서로 다른 색이면 공의 숫자와 무관하게 점수가 12로 고정된다는 규칙을 먼저 적용하세요.",
+      "correctReason": "유리한 공 쌍이 23, 전체 공 쌍이 28이므로 확률 23/28에서 p+q=51입니다.", "commonMistake": "서로 다른 색이면 공의 숫자와 무관하게 점수가 12로 고정된다는 규칙을 먼저 적용하세요.",
       "verification": {"problemPage": 12, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     }
   }

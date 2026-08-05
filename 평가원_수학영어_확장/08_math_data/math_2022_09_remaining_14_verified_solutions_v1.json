@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2022학년도 9월 모의평가 원천 재대조 완료 13문항",
+    "scope": "2022학년도 9월 모의평가 원문·정답 재대조 완료 14문항",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 13,
-    "readyCount": 13,
-    "questionFingerprint": "a54b446ebad28474a13986e74eb74820ed2802ad6aa8024591a69ff51443fe4a",
+    "itemCount": 14,
+    "readyCount": 14,
+    "questionFingerprint": "23a37a084c3c9d6a9b9bbdb1d251bd1e48f2fc96c97b3c0c9a9daadbfa9bae59",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040410/ect_7f132255-11e7-4cae-8313-a8150cd445731649a9911b68586.zip",
@@ -64,10 +64,62 @@
           "explanation": "a와 b가 양수라는 조건을 사용하면 양의 해만 남습니다."
         }
       ],
-      "correctReason": "a+b=3이므로 ③이 정답입니다.",
+      "correctReason": "넓이 조건 a=5b와 기울기 조건 ab=5/4를 함께 만족하는 a+b=3이므로 ③이 정답입니다.",
       "commonMistake": "sin(bπx)=1의 첫 교점만 찾거나, 삼각형 높이를 a가 아닌 두 점의 x좌표 차로 착각하지 않도록 합니다.",
       "verification": {
         "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_11": {
+      "id": "2022_09_common_11",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 공통",
+      "questionNumber": 11,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "적분으로 정의된 항등식을 미분해 f를 구하면 a+f(3)=8입니다.",
+      "approach": "양변을 미분해 f'를 정하고, 원래 식에 x=0과 x=1을 차례로 대입해 a와 적분상수를 결정합니다.",
+      "concepts": [
+        "적분으로 정의된 함수",
+        "다항함수의 미분",
+        "정적분 계산"
+      ],
+      "steps": [
+        {
+          "title": "항등식 미분하기",
+          "expression": "f'(x)=6x+2a\\quad\\Rightarrow\\quad f(x)=3x^2+2ax+C",
+          "explanation": "주어진 식이 모든 실수 x에서 성립하므로 양변을 미분합니다."
+        },
+        {
+          "title": "x=0 조건 사용하기",
+          "expression": "0=3a-\\int_0^1f(t)\\,dt\\quad\\Rightarrow\\quad f(1)=3a",
+          "explanation": "주어진 정적분 조건까지 함께 사용하면 f(1)=3a입니다."
+        },
+        {
+          "title": "x=1에서 a 구하기",
+          "expression": "f(1)=2+4a=3a\\quad\\Rightarrow\\quad a=-2",
+          "explanation": "원래 항등식에 x=1을 넣으면 적분항은 0입니다."
+        },
+        {
+          "title": "f 완성하기",
+          "expression": "f(x)=3x^2-4x+C,\\quad f(1)=-6\\quad\\Rightarrow\\quad C=-5",
+          "explanation": "미분해 얻은 함수에 a=-2와 f(1)=3a를 적용합니다."
+        },
+        {
+          "title": "요구한 값 계산하기",
+          "expression": "a+f(3)=-2+(27-12-5)=8",
+          "explanation": "값 8에 해당하는 선택지는 ④입니다."
+        }
+      ],
+      "correctReason": "a=-2이고 f(3)=10이므로 a+f(3)=8, 선택지 ④가 정답입니다.",
+      "commonMistake": "항등식을 미분한 뒤 생기는 적분상수 C를 빠뜨리면 a를 올바르게 정할 수 없습니다.",
+      "verification": {
+        "problemPage": 4,
         "answerTablePage": 1,
         "problemMatchedPdf": true,
         "choicesMatchedPdf": true,
@@ -206,7 +258,7 @@
           "explanation": "밑변의 길이와 높이를 곱해 삼각형 넓이를 구합니다."
         }
       ],
-      "correctReason": "계산한 50S의 값이 192입니다.",
+      "correctReason": "대칭과 길이 조건으로 구한 삼각형 넓이가 S=96/25이므로 50S=192입니다.",
       "commonMistake": "두 곡선의 대칭축을 y=x로 두지 않습니다. x방향 평행이동 때문에 대칭축은 y=x-1입니다.",
       "verification": {
         "problemPage": 8,
@@ -464,7 +516,7 @@
           "explanation": "모든 길이를 p 하나로 표현한 뒤 일차방정식을 풉니다."
         }
       ],
-      "correctReason": "p=9/10이므로 ③이 정답입니다.",
+      "correctReason": "포물선의 초점-준선 거리와 길이 조건을 함께 풀면 p=9/10이므로 ③이 정답입니다.",
       "commonMistake": "포물선의 정의는 초점까지의 거리와 준선까지의 수직거리가 같다는 뜻입니다. x좌표 자체와 바로 같다고 두지 않습니다.",
       "verification": {
         "problemPage": 18,

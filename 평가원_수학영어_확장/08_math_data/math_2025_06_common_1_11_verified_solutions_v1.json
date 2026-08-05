@@ -61,7 +61,7 @@
           "explanation": "정답은 ④입니다."
         }
       ],
-      "correctReason": "양수 5의 유리수 지수 법칙을 그대로 적용하면 하나의 값으로 결정됩니다.",
+      "correctReason": "양수 5의 유리수 지수 법칙을 그대로 적용하면 하나의 값으로 결정됩니다. 따라서 정답은 ④입니다.",
       "commonMistake": "세제곱근 25를 5의 1/3제곱으로 바꾸지 마세요.",
       "verification": {
         "problemPage": 1,
@@ -99,7 +99,7 @@
           "explanation": "정답은 ⑤입니다."
         }
       ],
-      "correctReason": "극한식이 미분계수 정의와 정확히 일치합니다.",
+      "correctReason": "극한식이 미분계수 정의와 정확히 일치합니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "f(2)의 함수값을 묻는 문제로 읽지 마세요.",
       "verification": {
         "problemPage": 1,
@@ -137,7 +137,7 @@
           "explanation": "정답은 ③입니다."
         }
       ],
-      "correctReason": "요구한 합은 앞의 다섯 항 합에 여섯째 항을 더한 값입니다.",
+      "correctReason": "요구한 합은 앞의 다섯 항 합에 여섯째 항을 더한 값입니다. 따라서 정답은 ③입니다.",
       "commonMistake": "상수 1을 한 번만 빼지 말고 다섯 번 더해진 5를 빼세요.",
       "verification": {
         "problemPage": 1,
@@ -176,7 +176,7 @@
           "explanation": "정답은 ③입니다."
         }
       ],
-      "correctReason": "각 방향의 그래프 가지가 접근하는 y값을 원본 그림에서 직접 확인했습니다.",
+      "correctReason": "각 방향의 그래프 가지가 접근하는 y값을 원본 그림에서 직접 확인했습니다. 따라서 정답은 ③입니다.",
       "commonMistake": "열린점과 닫힌점만 보고 f(0), f(1)의 함숫값을 대신 읽지 마세요.",
       "verification": {
         "problemPage": 1,
@@ -214,7 +214,7 @@
           "explanation": "정답은 ⑤입니다."
         }
       ],
-      "correctReason": "곱의 미분법과 x=1에서의 영인수를 함께 사용했습니다.",
+      "correctReason": "곱의 미분법과 x=1에서의 영인수를 함께 사용했습니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "두 인수를 모두 미분해 곱하지 말고 원함수 한 인수를 각각 남겨 두세요.",
       "verification": {
         "problemPage": 2,
@@ -252,7 +252,7 @@
           "explanation": "제3사분면에서 사인은 음수이므로 정답은 ①입니다."
         }
       ],
-      "correctReason": "피타고라스 관계와 사분면 부호를 함께 적용해 부호까지 결정했습니다.",
+      "correctReason": "피타고라스 관계와 사분면 부호를 함께 적용해 부호까지 결정했습니다. 따라서 정답은 ①입니다.",
       "commonMistake": "제곱근 계산 뒤 ± 중 양수를 고르지 말고 θ의 범위로 음수를 선택하세요.",
       "verification": {
         "problemPage": 2,
@@ -290,7 +290,7 @@
           "explanation": "정답은 ④입니다."
         }
       ],
-      "correctReason": "삼차함수의 극댓값 또는 극솟값이 0일 때 중근 하나와 다른 실근 하나가 생깁니다.",
+      "correctReason": "삼차함수의 극댓값 또는 극솟값이 0일 때 중근 하나와 다른 실근 하나가 생깁니다. 따라서 정답은 ④입니다.",
       "commonMistake": "극점의 x좌표를 k값으로 착각하지 말고 원래 식에 대입하세요.",
       "verification": {
         "problemPage": 2,
@@ -328,7 +328,7 @@
           "explanation": "음수인 해를 택하면 정답은 ①입니다."
         }
       ],
-      "correctReason": "이차방정식의 두 해 중 a₁a₂<0 조건에 맞는 음수 공비만 사용했습니다.",
+      "correctReason": "이차방정식의 두 해 중 a₁a₂<0 조건에 맞는 음수 공비만 사용했습니다. 따라서 정답은 ①입니다.",
       "commonMistake": "조건식만 풀고 양수 공비 r=2를 함께 남기지 마세요.",
       "verification": {
         "problemPage": 3,
@@ -366,7 +366,7 @@
           "explanation": "같은 부호 식은 모순이므로 반대 부호 식을 풀어 정답 ③을 얻습니다."
         }
       ],
-      "correctReason": "각 조각은 자체적으로 연속이므로 접합점 x=0만 확인하면 충분합니다.",
+      "correctReason": "각 조각은 자체적으로 연속이므로 접합점 x=0만 확인하면 충분합니다. 따라서 정답은 ③입니다.",
       "commonMistake": "f 자체가 연속이어야 한다고 두 값을 직접 같게 놓지 마세요. 제곱 뒤의 값을 맞춰야 합니다.",
       "verification": {
         "problemPage": 3,
@@ -404,7 +404,7 @@
           "explanation": "a=8√2/3, b=c=4√2를 넓이 공식에 대입하면 정답은 ⑤입니다."
         }
       ],
-      "correctReason": "외접원의 넓이 9π에서 R=3을 얻고 사인법칙·코사인법칙을 일관되게 적용했습니다.",
+      "correctReason": "외접원의 넓이 9π에서 R=3을 얻고 사인법칙·코사인법칙을 일관되게 적용했습니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "외접원의 넓이를 삼각형 넓이로 착각하거나 반지름을 9로 두지 마세요.",
       "verification": {
         "problemPage": 3,
@@ -442,7 +442,7 @@
           "explanation": "f(0)=0, f(-1)=1, f'(-1)=3을 monic 삼차식에 대입하면 정답은 ⑤입니다."
         }
       ],
-      "correctReason": "함수값·도함숫값·최고차항·원점 조건 네 개가 삼차함수를 유일하게 정합니다.",
+      "correctReason": "함수값·도함숫값·최고차항·원점 조건 네 개가 삼차함수를 유일하게 정합니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "분자가 0이 되는 f(a)=1 조건을 빠뜨린 채 극한을 바로 f'(a)로 두지 마세요.",
       "verification": {
         "problemPage": 4,

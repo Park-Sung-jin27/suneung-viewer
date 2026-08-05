@@ -19234,7 +19234,7 @@
       "qid": 29,
       "points": 4,
       "answerType": "short",
-      "problem_latex": "$t>2$인 실수 $t$에 대하여 함수 $f(x)=t(\\ln x)^2-x^2$이 $x=k$에서 극대일 때, 실수 $k$의 값을 $g(t)$라 하면 $g(t)$는 미분가능한 함수이다. $g(\\alpha)=e^2$인 실수 $\\alpha$에 대하여 $\\alpha\\times\\{g'(\\alpha)\\}^2=\\frac{q}{p}$일 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.) [4점]",
+      "problem_latex": "$t>2e$인 실수 $t$에 대하여 함수 $f(x)=t(\\ln x)^2-x^2$이 $x=k$에서 극대일 때, 실수 $k$의 값을 $g(t)$라 하면 $g(t)$는 미분가능한 함수이다. $g(\\alpha)=e^2$인 실수 $\\alpha$에 대하여 $\\alpha\\times\\{g'(\\alpha)\\}^2=\\frac{q}{p}$일 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.) [4점]",
       "choices": [],
       "hasFigure": false,
       "figureDesc": "",
@@ -20358,7 +20358,7 @@
       "qid": 11,
       "points": 4,
       "answerType": "choice",
-      "problem_latex": "다항함수 $f(x)$ 가 모든 실수 $x$ 에 대하여 $x\\, f(x)\\displaystyle = 2x^{3} + {ax}^{2} + 3a + \\int_{1}^{x}\\ f(t) dt$ 를 만족시킨다. $f(1)\\displaystyle = \\int_{0}^{1}\\ f(t) dt$ 일 때, $a + f(3)$ 의 값은? (단, $a$ 는 상수이다.) [4점]",
+      "problem_latex": "다항함수 $f(x)$ 가 모든 실수 $x$ 에 대하여 $x\\, f(x)\\displaystyle = 2x^{3} + ax^{2} + 3a + \\int_{1}^{x}\\ f(t) dt$ 를 만족시킨다. $f(1)\\displaystyle = \\int_{0}^{1}\\ f(t) dt$ 일 때, $a + f(3)$ 의 값은? (단, $a$ 는 상수이다.) [4점]",
       "choices": [
         {
           "num": 1,
@@ -22483,7 +22483,7 @@
       "qid": 6,
       "points": 3,
       "answerType": "choice",
-      "problem_latex": "두 양수 $a,\\ b$ 에 대하여 함수 $f(x)$ 가 $f(x)= \\begin{cases} x+a & (x<-1) \\\\ x & (-1<x<3) \\\\ bx-2 & (x\\ge 3) \\end{cases}$ 이다. 함수 $| f(x) |$ 가 실수 전체의 집합에서 연속일 때, $a + b$ 의 값은? [3점]",
+      "problem_latex": "두 양수 $a,\\ b$ 에 대하여 함수 $f(x)$ 가 $f(x)= \\begin{cases} x+a & (x<-1) \\\\ x & (-1\\leq x<3) \\\\ bx-2 & (x\\ge 3) \\end{cases}$ 이다. 함수 $| f(x) |$ 가 실수 전체의 집합에서 연속일 때, $a + b$ 의 값은? [3점]",
       "choices": [
         {
           "num": 1,
@@ -23178,7 +23178,7 @@
       "qid": 19,
       "points": 3,
       "answerType": "short",
-      "problem_latex": "함수 $f(x) = x^{4} + {ax}^{2} + b$ 는 $x = 1$ 에서 극소이다. 함수 $f(x)$ 의 극댓값이 $4$ 일 때, $a + b$ 의 값을 구하시오. (단, $a$ 와 $b$ 는 상수이다.) [3점]",
+      "problem_latex": "함수 $f(x) = x^{4} + ax^{2} + b$ 는 $x = 1$ 에서 극소이다. 함수 $f(x)$ 의 극댓값이 $4$ 일 때, $a + b$ 의 값을 구하시오. (단, $a$ 와 $b$ 는 상수이다.) [3점]",
       "choices": [],
       "hasFigure": false,
       "figureDesc": "",
@@ -26321,7 +26321,7 @@
       "qid": 25,
       "points": 3,
       "answerType": "choice",
-      "problem_latex": "수열 $\\{a_n\\}$에 대하여 $\\displaystyle \\lim_{n\\to\\infty}\\frac{a_n+2}{2^n}=6$일 때, $\\displaystyle \\lim_{n\\to\\infty}\\frac{na_n+1}{a_n+2n}$의 값은? [3점]",
+      "problem_latex": "수열 $\\{a_n\\}$에 대하여 $\\displaystyle \\lim_{n\\to\\infty}\\frac{a_n+2}{2}=6$일 때, $\\displaystyle \\lim_{n\\to\\infty}\\frac{na_n+1}{a_n+2n}$의 값은? [3점]",
       "choices": [
         {
           "num": 1,
@@ -26825,7 +26825,7 @@
       "qid": 26,
       "points": 3,
       "answerType": "choice",
-      "problem_latex": "좌표평면 위의 점 $A(3,0)$에 대하여 $(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot(\\overrightarrow{OP}-\\overrightarrow{OA})=5$를 만족시키는 점 $P$가 나타내는 도형과 직선 $y=\\frac{1}{2}x+k$가 오직 한 점에서 만날 때, 상수 $k$의 값은? (단, $O$는 원점이다.) [3점]",
+      "problem_latex": "좌표평면 위의 점 $A(3,0)$에 대하여 $(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot(\\overrightarrow{OP}-\\overrightarrow{OA})=5$를 만족시키는 점 $P$가 나타내는 도형과 직선 $y=\\frac{1}{2}x+k$가 오직 한 점에서 만날 때, 양수 $k$의 값은? (단, $O$는 원점이다.) [3점]",
       "choices": [
         {
           "num": 1,
@@ -28063,7 +28063,7 @@
       "qid": 18,
       "points": 3,
       "answerType": "short",
-      "problem_latex": "두 상수 $a$ , $b$ 에 대하여 삼차함수 $f(x) = {ax}^{3} + bx + a$ 는 $x = 1$ 에서 극소이다. 함수 $f(x)$ 의 극솟값이 $- 2$ 일 때, 함수 $f(x)$ 의 극댓값을 구하시오. [3점]",
+      "problem_latex": "두 상수 $a$ , $b$ 에 대하여 삼차함수 $f(x) = ax^{3} + bx + a$ 는 $x = 1$ 에서 극소이다. 함수 $f(x)$ 의 극솟값이 $- 2$ 일 때, 함수 $f(x)$ 의 극댓값을 구하시오. [3점]",
       "choices": [],
       "hasFigure": false,
       "figureDesc": "",
@@ -28209,7 +28209,7 @@
       "qid": 22,
       "points": 4,
       "answerType": "short",
-      "problem_latex": "정수 $a (a \\neq 0)$ 에 대하여 함수 $f(x)$ 를 $f(x) = x^{3} - 2{ax}^{2}$ 이라 하자. 다음 조건을 만족시키는 모든 정수 $k$ 의 값의 곱이 $- 12$ 가 되도록 하는 $a$ 에 대하여 $f '(10)$ 의 값을 구하시오. [4점] 조건 함수 $f(x)$ 에 대하여 $\\dfrac{f(x_{1}) - f(x_{2})}{x_{1} - x_{2}} \\times \\dfrac{f(x_{2}) - f(x_{3})}{x_{2} - x_{3}} < 0$ 을 만족시키는 세 실수 $x_{1}, x_{2}, x_{3}$ 이 열린구간 $(k, k + \\dfrac{3}{2})$ 에 존재한다.",
+      "problem_latex": "정수 $a (a \\neq 0)$ 에 대하여 함수 $f(x)$ 를 $f(x) = x^{3} - 2ax^{2}$ 이라 하자. 다음 조건을 만족시키는 모든 정수 $k$ 의 값의 곱이 $- 12$ 가 되도록 하는 $a$ 에 대하여 $f '(10)$ 의 값을 구하시오. [4점] 조건 함수 $f(x)$ 에 대하여 $\\dfrac{f(x_{1}) - f(x_{2})}{x_{1} - x_{2}} \\times \\dfrac{f(x_{2}) - f(x_{3})}{x_{2} - x_{3}} < 0$ 을 만족시키는 세 실수 $x_{1}, x_{2}, x_{3}$ 이 열린구간 $(k, k + \\dfrac{3}{2})$ 에 존재한다.",
       "choices": [],
       "hasFigure": false,
       "figureDesc": "",
@@ -29827,7 +29827,7 @@
       "qid": 6,
       "points": 3,
       "answerType": "choice",
-      "problem_latex": "함수 $f(x) = x^{3} + {ax}^{2} + bx + 1$ 은 $x = - 1$ 에서 극대이고, $x = 3$ 에서 극소이다. 함수 $f(x)$ 의 극댓값은? (단, $a$ , $b$ 는 상수이다.) [3점]",
+      "problem_latex": "함수 $f(x) = x^{3} + ax^{2} + bx + 1$ 은 $x = - 1$ 에서 극대이고, $x = 3$ 에서 극소이다. 함수 $f(x)$ 의 극댓값은? (단, $a$ , $b$ 는 상수이다.) [3점]",
       "choices": [
         {
           "num": 1,
@@ -32935,7 +32935,7 @@
       "qid": 18,
       "points": 3,
       "answerType": "short",
-      "problem_latex": "$\\displaystyle \\sum_{k = 1}^{9}({ak}^{2} - 10k) = 120$ 일 때, 상수 $a$ 의 값을 구하시오. [3점]",
+      "problem_latex": "$\\displaystyle \\sum_{k = 1}^{9}(ak^{2} - 10k) = 120$ 일 때, 상수 $a$ 의 값을 구하시오. [3점]",
       "choices": [],
       "hasFigure": false,
       "figureDesc": "",
@@ -34811,7 +34811,7 @@
         {
           "num": 3,
           "mark": "③",
-          "latex": ". $13$"
+          "latex": "$13$"
         },
         {
           "num": 4,
@@ -35396,7 +35396,7 @@
       "qid": 19,
       "points": 3,
       "answerType": "short",
-      "problem_latex": "함수 $f(x) = x^{3} + {ax}^{2} - 9x + b$ 는 $x = 1$ 에서 극소이다. 함수 $f(x)$ 의 극댓값이 $28$ 일 때, $a + b$ 의 값을 구하시오. (단, $a$ 와 $b$ 는 상수이다.) [3점]",
+      "problem_latex": "함수 $f(x) = x^{3} + ax^{2} - 9x + b$ 는 $x = 1$ 에서 극소이다. 함수 $f(x)$ 의 극댓값이 $28$ 일 때, $a + b$ 의 값을 구하시오. (단, $a$ 와 $b$ 는 상수이다.) [3점]",
       "choices": [],
       "hasFigure": false,
       "figureDesc": "",
@@ -36149,7 +36149,7 @@
       "qid": 26,
       "points": 3,
       "answerType": "choice",
-      "problem_latex": "그림과 같이 곡선 $y=2x\\sqrt{x\\sin x^2}$ $(0\\leq x\\leq\\sqrt{\\pi})$와 $x$축 및 두 직선 $x=\\sqrt{\\dfrac{\\pi}{6}}$, $x=\\sqrt{\\dfrac{\\pi}{2}}$로 둘러싸인 부분을 밑면으로 하는 입체도형이 있다. 이 입체도형을 $x$축에 수직인 평면으로 자른 단면이 모두 정사각형일 때, 이 입체도형의 부피는? [3점]",
+      "problem_latex": "그림과 같이 곡선 $y=2x\\sqrt{x\\sin x^2}$ $(0\\leq x\\leq\\sqrt{\\pi})$와 $x$축 및 두 직선 $x=\\sqrt{\\dfrac{\\pi}{6}}$, $x=\\sqrt{\\dfrac{\\pi}{2}}$로 둘러싸인 부분을 밑면으로 하는 입체도형이 있다. 이 입체도형을 $x$축에 수직인 평면으로 자른 단면이 모두 반원일 때, 이 입체도형의 부피는? [3점]",
       "choices": [
         {
           "num": 1,
@@ -36178,9 +36178,9 @@
         }
       ],
       "hasFigure": true,
-      "figureDesc": "좌표평면에서 곡선 y=2x√(x sin x²)가 원점에서 시작해 x축 위로 굽이치며 진행한다. x=√(π/6)과 x=√(π/2) 사이에서 곡선과 x축으로 둘러싸인 영역이 밑면이며, x축에 수직인 각 평면에서 이 영역의 세로 길이를 한 변으로 하는 정사각형 단면이 세워져 있다.",
+      "figureDesc": "좌표평면에서 곡선 y=2x√(x sin x²)가 원점에서 시작해 x축 위로 굽이치며 진행한다. x=√(π/6)과 x=√(π/2) 사이에서 곡선과 x축으로 둘러싸인 영역이 밑면이며, x축에 수직인 각 평면에서 이 영역의 세로 길이를 지름으로 하는 반원 단면이 세워져 있다.",
       "confidence": "high",
-      "notes": "입체도형의 밑면과 정사각형 단면 관계를 figureDesc에 전사함.",
+      "notes": "입체도형의 밑면과 반원 단면 관계를 figureDesc에 전사함.",
       "answer": 3,
       "meta": {
         "subject": "미적분",

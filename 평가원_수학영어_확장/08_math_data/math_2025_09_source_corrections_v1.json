@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "schemaVersion": "math-source-correction-v1",
+    "status": "internal_source_corrected",
+    "publicConnected": false,
+    "itemCount": 3,
+    "questionFingerprint": "9ec3c173ba18cb903de98943d9a5b807415338136f09539f7315702bd9499085",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5087696&lev=0&m=0403&page=3&s=suneung&searchType=S&statusYN=W",
+      "independentSourceUrls": [
+        "https://horaeng.com/353",
+        "https://wdown.ebsi.co.kr/W61001/01exam/20240904/go3/mathA_1_hsj_9DOE5Q44.pdf"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "10872f1ff40923c9e92705b49d60043ac9e4ddc58db744865b4188d075eef28c",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "10872f1ff40923c9e92705b49d60043ac9e4ddc58db744865b4188d075eef28c"
+        }
+      ],
+      "answerFilename": "kice-answer.pdf",
+      "answerSha256": "e06118d5649d9a7fd04606ae1400db967a9435b54ad7eb1d75e96fe7bd9a62c2"
+    }
+  },
+  "items": {
+    "2025_09_common_8": {
+      "id": "2025_09_common_8",
+      "status": "source_integrity_corrected",
+      "issueCode": "choice_text_contamination",
+      "choiceNumber": 3,
+      "previousDbTextFragment": ". $13$",
+      "officialTextFragment": "$13$",
+      "correctionApplied": "choices",
+      "reason": "공식 문제지의 ③번 선지는 13만 표시하지만 내부 DB에는 선지 앞에 불필요한 마침표가 들어 있었습니다. 내부 DB를 공식 원문대로 정정했고, 이 기록과 검증 풀이가 일치하는지 영구 검사합니다.",
+      "verification": {
+        "problemPage": 3,
+        "problemMatchedPdf": true,
+        "sourceDifferenceConfirmed": true,
+        "correctionAppliedToDatabase": true,
+        "releaseBlocked": false
+      }
+    },
+    "2025_09_common_19": {
+      "id": "2025_09_common_19",
+      "status": "source_integrity_corrected",
+      "issueCode": "problem_text_grouping_error",
+      "previousDbTextFragment": "{ax}^{2}",
+      "officialTextFragment": "ax^{2}",
+      "correctionApplied": "problem_latex",
+      "reason": "공식 문제지의 이차항은 계수 a와 x의 제곱을 곱한 ax²이지만 내부 DB에는 ax 전체를 제곱한 (ax)²로 기록돼 있었습니다. 내부 DB를 공식 원문대로 정정했고, 이 기록과 검증 풀이가 일치하는지 영구 검사합니다.",
+      "verification": {
+        "problemPage": 7,
+        "problemMatchedPdf": true,
+        "sourceDifferenceConfirmed": true,
+        "correctionAppliedToDatabase": true,
+        "releaseBlocked": false
+      }
+    },
+    "2025_09_cal_26": {
+      "id": "2025_09_cal_26",
+      "status": "source_integrity_corrected",
+      "issueCode": "problem_text_shape_error",
+      "previousDbTextFragment": "모두 정사각형",
+      "officialTextFragment": "모두 반원",
+      "correctionApplied": "problem_latex",
+      "additionalCorrectedFields": ["figureDesc", "notes"],
+      "reason": "공식 문제지는 x축에 수직인 단면이 모두 반원이라고 제시하지만 내부 DB에는 모두 정사각형이라고 기록돼 있었습니다. 내부 DB의 문제·그림 설명·주석을 공식 원문대로 정정했고, 이 기록과 검증 풀이가 일치하는지 영구 검사합니다.",
+      "verification": {
+        "problemPage": 14,
+        "problemMatchedPdf": true,
+        "sourceDifferenceConfirmed": true,
+        "correctionAppliedToDatabase": true,
+        "releaseBlocked": false
+      }
+    }
+  }
+}

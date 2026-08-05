@@ -61,7 +61,7 @@
           "explanation": "정답은 ④입니다."
         }
       ],
-      "correctReason": "a가 영벡터가 아니므로 양변에서 a의 계수를 비교할 수 있습니다.",
+      "correctReason": "a가 영벡터가 아니므로 양변에서 a의 계수를 비교할 수 있습니다. 따라서 정답은 ④입니다.",
       "commonMistake": "3(a−b)를 3a−b로 전개하지 마세요.",
       "verification": {
         "problemPage": 17,
@@ -99,7 +99,7 @@
           "explanation": "정답은 ②입니다."
         }
       ],
-      "correctReason": "접점이 실제 타원 위에 있으므로 접선 공식의 두 반축 값이 모두 확정됩니다.",
+      "correctReason": "접점이 실제 타원 위에 있으므로 접선 공식의 두 반축 값이 모두 확정됩니다. 따라서 정답은 ②입니다.",
       "commonMistake": "b 대신 b²=10을 접선식 분모에 사용해야 합니다.",
       "verification": {
         "problemPage": 17,
@@ -137,7 +137,7 @@
           "explanation": "b는 원 밖에 있으므로 중심거리에서 반지름을 뺍니다."
         }
       ],
-      "correctReason": "원의 중심과 b를 잇는 선분 위에서 p를 잡을 때 삼각부등식의 하한이 실제로 달성됩니다.",
+      "correctReason": "원의 중심과 b를 잇는 선분 위에서 p를 잡을 때 삼각부등식의 하한이 실제로 달성됩니다. 따라서 정답은 ④입니다.",
       "commonMistake": "|p−b|를 |p|−|b|로 분리하지 마세요. 두 벡터의 방향이 고정되지 않았습니다.",
       "verification": {
         "problemPage": 18,
@@ -175,7 +175,7 @@
           "explanation": "정답은 ③입니다."
         }
       ],
-      "correctReason": "쌍곡선의 초점 관계 c²=a²+b²와 점근선·현 조건을 모두 사용했습니다.",
+      "correctReason": "쌍곡선의 초점 관계 c²=a²+b²와 점근선·현 조건을 모두 사용했습니다. 따라서 정답은 ③입니다.",
       "commonMistake": "PQ=8을 b=8로 두지 말고 위아래 두 점 사이 길이 2b로 읽으세요.",
       "verification": {
         "problemPage": 18,
@@ -213,7 +213,7 @@
           "explanation": "정답은 ②입니다."
         }
       ],
-      "correctReason": "포물선 위 F'의 거리 조건이 타원의 긴반지름과 초점거리를 직접 연결합니다.",
+      "correctReason": "포물선 위 F'의 거리 조건이 타원의 긴반지름과 초점거리를 직접 연결합니다. 따라서 정답은 ②입니다.",
       "commonMistake": "직사각형 넓이를 uv로 두지 말고 전체 가로·세로 2u, 2v를 곱하세요.",
       "verification": {
         "problemPage": 19,
@@ -251,7 +251,7 @@
           "explanation": "단위원과 중심 Q, 반지름 2인 원의 A가 아닌 교점을 사용하면 정답은 ③입니다."
         }
       ],
-      "correctReason": "AP>0 조건 때문에 두 원의 공통점 A가 아닌 다른 교점 P를 선택했습니다.",
+      "correctReason": "AP>0 조건 때문에 두 원의 공통점 A가 아닌 다른 교점 P를 선택했습니다. 따라서 정답은 ③입니다.",
       "commonMistake": "최소거리만 구하고 P=A를 사용하지 마세요. 문제에서 |AP|>0으로 제외합니다.",
       "verification": {
         "problemPage": 19,
@@ -289,7 +289,7 @@
           "explanation": "제1사분면의 Q는 A에 더 가까우므로 최종 답은 25입니다."
         }
       ],
-      "correctReason": "하나의 절댓값 곡선을 두 이차곡선으로 정확히 나누고 각각의 초점 거리 성질을 적용했습니다.",
+      "correctReason": "하나의 절댓값 곡선을 두 이차곡선으로 정확히 나누고 각각의 초점 거리 성질을 적용했습니다. 따라서 답은 25입니다.",
       "commonMistake": "PC+PD=√5에서 c=√5/2로 두지 마세요. 합은 긴축 길이 2a입니다.",
       "verification": {
         "problemPage": 20,
@@ -327,7 +327,7 @@
           "explanation": "A, F', Q가 일직선이 되는 원의 가장 먼 점이 허용되어 최종 답은 10입니다."
         }
       ],
-      "correctReason": "쌍곡선의 해당 가지에서 생기는 Q의 원호가 A 반대 방향의 최장점까지 포함함을 점근선 방향으로 확인했습니다.",
+      "correctReason": "쌍곡선의 해당 가지에서 생기는 Q의 원호가 A 반대 방향의 최장점까지 포함함을 점근선 방향으로 확인했습니다. 따라서 답은 10입니다.",
       "commonMistake": "벡터식의 계수만 보고 Q가 F'P를 5:(d+1)로 외분한다고 판단하지 마세요. 두 벡터는 같은 방향입니다.",
       "verification": {
         "problemPage": 20,

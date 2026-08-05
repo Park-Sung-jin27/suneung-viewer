@@ -49,7 +49,7 @@
           "explanation": "3/n과 1/n이 모두 0으로 수렴합니다."
         }
       ],
-      "correctReason": "극한값은 1이므로 정답은 ①입니다.",
+      "correctReason": "분모를 유리화한 뒤 n으로 나누면 극한이 1로 수렴하므로 ①이 정답입니다.",
       "commonMistake": "제곱근의 차를 각각 따로 극한 처리해 0으로 보지 마세요. 두 항의 최고차항이 같아 차이가 작아지므로 먼저 유리화해야 합니다.",
       "verification": {
         "problemPage": 13,

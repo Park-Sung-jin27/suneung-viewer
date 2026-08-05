@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "schemaVersion": "math-source-correction-v1",
+    "status": "internal_source_corrected",
+    "publicConnected": false,
+    "itemCount": 2,
+    "questionFingerprint": "b9630405b5ecc021c88329dbf43848cb442eaabca79393105e0abbb9d5ef31d3",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://testall.tistory.com/entry/2024%ED%95%99%EB%85%84%EB%8F%84-6%EC%9B%94-%EC%88%98%EB%8A%A5-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C",
+      "independentSourceUrls": ["https://sdfallyy.tistory.com/407", "https://horaeng.com/263"],
+      "problemFilename": "2024_06_math_problem_testall.pdf",
+      "problemSha256": "b66547e1edfb4e53380e8e30ffa087eb1c72ef9a5d03dfa491d33bd6b9c56a98",
+      "problemReplicaArtifacts": [{"filename": "2024_06_math_problem_sdfallyy.pdf", "sha256": "026d29c312ac5c4d1e533aabe29a6948bcbef634471dfd5a297d405c186333c5"}],
+      "answerFilename": "2024_06_math_answer_testall.pdf",
+      "answerSha256": "98233f2ec85d25b33e78549a68d5baa836ff3979e21e58fedf83a8422856e495"
+    }
+  },
+  "items": {
+    "2024_06_common_18": {
+      "id": "2024_06_common_18",
+      "status": "source_integrity_corrected",
+      "issueCode": "problem_text_grouping_error",
+      "previousDbTextFragment": "f(x) = {ax}^{3} + bx + a",
+      "officialTextFragment": "f(x) = ax^{3} + bx + a",
+      "correctionApplied": "problem_latex",
+      "reason": "공식 문제지의 삼차항은 a에 x의 세제곱을 곱한 ax³이지만 내부 DB에는 ax 전체를 세제곱한 (ax)³으로 기록돼 있었습니다. 내부 DB를 공식 원문대로 정정했고, 이 기록과 검증 풀이가 일치하는지 영구 검사합니다.",
+      "verification": {"problemPage": 7, "problemMatchedPdf": true, "sourceDifferenceConfirmed": true, "correctionAppliedToDatabase": true, "releaseBlocked": false}
+    },
+    "2024_06_common_22": {
+      "id": "2024_06_common_22",
+      "status": "source_integrity_corrected",
+      "issueCode": "problem_text_grouping_error",
+      "previousDbTextFragment": "f(x) = x^{3} - 2{ax}^{2}",
+      "officialTextFragment": "f(x) = x^{3} - 2ax^{2}",
+      "correctionApplied": "problem_latex",
+      "reason": "공식 문제지의 이차항은 2a에 x의 제곱을 곱한 2ax²이지만 내부 DB에는 ax 전체를 제곱한 2(ax)²으로 기록돼 있었습니다. 내부 DB를 공식 원문대로 정정했고, 이 기록과 검증 풀이가 일치하는지 영구 검사합니다.",
+      "verification": {"problemPage": 8, "problemMatchedPdf": true, "sourceDifferenceConfirmed": true, "correctionAppliedToDatabase": true, "releaseBlocked": false}
+    }
+  }
+}

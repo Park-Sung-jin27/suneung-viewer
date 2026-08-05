@@ -65,7 +65,7 @@
           "explanation": "정답은 ④입니다."
         }
       ],
-      "correctReason": "x가 0으로 갈 때 두 지수식의 일차 변화율이 각각 7과 2입니다.",
+      "correctReason": "x가 0으로 갈 때 두 지수식의 일차 변화율이 각각 7과 2입니다. 따라서 정답은 ④입니다.",
       "commonMistake": "e의 지수 7x와 2x에서 계수 7, 2를 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 13,
@@ -103,7 +103,7 @@
           "explanation": "기울기는 -1이므로 정답은 ②입니다."
         }
       ],
-      "correctReason": "t=π/4에서 dx/dt=-1로 0이 아니므로 비율 공식이 유효합니다.",
+      "correctReason": "t=π/4에서 dx/dt=-1로 0이 아니므로 비율 공식이 유효합니다. 따라서 정답은 ②입니다.",
       "commonMistake": "cos2t를 미분할 때 안쪽 함수 2t의 미분계수 2를 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 13,
@@ -141,7 +141,7 @@
           "explanation": "f(e)=e+1, f(1)=1이므로 정답은 ②입니다."
         }
       ],
-      "correctReason": "주어진 계수가 정확히 f의 도함수라서 한 번의 치환으로 적분됩니다.",
+      "correctReason": "주어진 계수가 정확히 f의 도함수라서 한 번의 치환으로 적분됩니다. 따라서 정답은 ②입니다.",
       "commonMistake": "ln e=1과 ln1=0을 바꾸어 대입하지 마세요.",
       "verification": {
         "problemPage": 14,
@@ -179,7 +179,7 @@
           "explanation": "요구한 급수의 합은 3/2이므로 정답은 ⑤입니다."
         }
       ],
-      "correctReason": "두 급수 모두 같은 공차 d로 표현되어 주어진 전체 합이 d를 유일하게 정합니다.",
+      "correctReason": "두 급수 모두 같은 공차 d로 표현되어 주어진 전체 합이 d를 유일하게 정합니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "망원급수의 합을 1이 아니라 1/d로 계산해야 합니다.",
       "verification": {
         "problemPage": 14,
@@ -217,7 +217,7 @@
           "explanation": "전체 곡선 길이는 23/8이므로 정답은 ①입니다."
         }
       ],
-      "correctReason": "절댓값이 바뀌는 지점과 도함수가 바뀌는 지점이 모두 x=0이어서 두 구간 적분으로 정확히 계산됩니다.",
+      "correctReason": "절댓값이 바뀌는 지점과 도함수가 바뀌는 지점이 모두 x=0이어서 두 구간 적분으로 정확히 계산됩니다. 따라서 정답은 ①입니다.",
       "commonMistake": "√((e^x+e^{-x})²/4)를 다시 절댓값으로 보되 이 식은 항상 양수임을 확인하세요.",
       "verification": {
         "problemPage": 15,
@@ -255,7 +255,7 @@
           "explanation": "자연수 n의 최솟값이 3이므로 정답은 ②입니다."
         }
       ],
-      "correctReason": "|F|의 뾰족점이 생기지 않는 조건을 음수 구간의 시작점과 양수 구간 전체에 모두 적용했습니다.",
+      "correctReason": "|F|의 뾰족점이 생기지 않는 조건을 음수 구간의 시작점과 양수 구간 전체에 모두 적용했습니다. 따라서 정답은 ②입니다.",
       "commonMistake": "F가 0인 점만 찾지 말고 그 점에서 F'=f도 0인지 함께 확인하세요.",
       "verification": {
         "problemPage": 15,
@@ -293,7 +293,7 @@
           "explanation": "앞의 두 경우는 모순이고 b=a인 경우 1=9/a이므로 답은 18입니다."
         }
       ],
-      "correctReason": "a>3이라는 첫 조건과 둘째 극한의 세 대소관계를 함께 적용하면 유일한 쌍 (9,9)이 남습니다.",
+      "correctReason": "a>3이라는 첫 조건과 둘째 극한의 세 대소관계를 함께 적용하면 유일한 쌍 (9,9)이 남습니다. 따라서 답은 18입니다.",
       "commonMistake": "분자와 분모의 가장 큰 밑이 서로 다를 수 있으므로 a와 b의 대소관계를 나누지 않고 계산하지 마세요.",
       "verification": {
         "problemPage": 16,
@@ -331,7 +331,7 @@
           "explanation": "따라서 -7S'(π/4)=32입니다."
         }
       ],
-      "correctReason": "현 PQ와 C에서 현까지의 거리를 x와 θ로 표현하면 넓이와 그 변화율이 모두 결정됩니다.",
+      "correctReason": "현 PQ와 C에서 현까지의 거리를 x와 θ로 표현하면 넓이와 그 변화율이 모두 결정됩니다. 따라서 답은 32입니다.",
       "commonMistake": "S를 미분할 때 x도 θ의 함수이므로 x²의 미분항 2xx'을 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 16,

@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2022학년도 6월 모의평가 미적분 28·30번",
+    "scope": "2022학년도 6월 모의평가 미적분 28~30번",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 2,
-    "readyCount": 2,
-    "questionFingerprint": "0ad9c015f619bee310a9e44351027fefb5a8f5960e339fd29f8ba64d2c3d8323",
+    "itemCount": 3,
+    "readyCount": 3,
+    "questionFingerprint": "db254e4b4ee0e30961602c5f0a0ce7ad8d6afd628b80dca7132a66a3f4bd5f6e",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
@@ -16,7 +16,7 @@
       "answerFilename": "2교시_수학영역_정답표.pdf",
       "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
     },
-    "note": "원본 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 공개 후보. 29번은 원천 문제 텍스트 결함으로 별도 차단"
+    "note": "원본 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 공개 후보"
   },
   "items": {
     "2022_06_cal_28": {
@@ -66,6 +66,53 @@
         "independentDerivation": true
       }
     },
+    "2022_06_cal_29": {
+      "id": "2022_06_cal_29",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 29,
+      "answer": 17,
+      "answerMark": null,
+      "summary": "극댓값 조건으로 t와 극대점 k의 관계를 구한 뒤 역함수 미분을 적용하면 p+q=17입니다.",
+      "approach": "f_t(x)의 극대점을 k로 두고 t=k²/ln k를 얻은 다음, 이 함수의 역함수 g의 미분값을 계산합니다.",
+      "concepts": [
+        "함수의 극대",
+        "로그함수 미분",
+        "역함수의 미분"
+      ],
+      "steps": [
+        {
+          "title": "극대점 조건 정리하기",
+          "expression": "f_t'(k)=0\\quad\\Rightarrow\\quad t\\ln k=k^2\\quad\\Rightarrow\\quad t=\\frac{k^2}{\\ln k}",
+          "explanation": "k에서 극값을 가지므로 도함수가 0입니다. 극댓값이 되는 가지에서는 ln k>1/2이고, 문제의 t>2e 조건과도 일치합니다."
+        },
+        {
+          "title": "g(α)=e² 조건 사용하기",
+          "expression": "g(\\alpha)=e^2\\quad\\Rightarrow\\quad\\alpha=\\frac{e^4}{2}",
+          "explanation": "g는 t=k²/ln k의 극대점 가지를 나타내는 역함수이므로 k=e²를 대입합니다."
+        },
+        {
+          "title": "역함수 미분하기",
+          "expression": "T(k)=\\frac{k^2}{\\ln k},\\quad T'(e^2)=\\frac{3e^2}{4},\\quad g'(\\alpha)=\\frac{4}{3e^2}",
+          "explanation": "역함수의 미분법에 따라 g'(α)는 T'(e²)의 역수입니다."
+        },
+        {
+          "title": "p와 q 구하기",
+          "expression": "\\alpha\\{g'(\\alpha)\\}^2=\\frac{e^4}{2}\\left(\\frac{4}{3e^2}\\right)^2=\\frac89\\quad\\Rightarrow\\quad p+q=17",
+          "explanation": "문제의 q/p=8/9이므로 p=9, q=8입니다."
+        }
+      ],
+      "correctReason": "α{g'(α)}²=8/9이므로 p+q=17입니다.",
+      "commonMistake": "t>2e 조건을 빠뜨리면 극소점에 해당하는 다른 가지를 선택할 수 있습니다.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
     "2022_06_cal_30": {
       "id": "2022_06_cal_30",
       "status": "verified_internal_candidate",
@@ -83,7 +130,7 @@
       "steps": [
         {
           "title": "교점 방정식 바꾸기",
-          "expression": "u=e^x,\\ T=e^t\\quad\u2192\\quad u^2-Tu+(1-T^{-2})=0",
+          "expression": "u=e^x,\\ T=e^t\\quad\\u2192\\quad u^2-Tu+(1-T^{-2})=0",
           "explanation": "로그 식의 양변에 지수를 취하고 u와 T로 정리합니다."
         },
         {
@@ -98,7 +145,7 @@
         },
         {
           "title": "미분값과 p+q 구하기",
-          "expression": "f'(\\ln2)=\\sqrt2\\frac{2\\cdot4}{4-1}=\\frac83\\sqrt2\\quad\u2192\\quad p+q=3+8=11",
+          "expression": "f'(\\ln2)=\\sqrt2\\frac{2\\cdot4}{4-1}=\\frac83\\sqrt2\\quad\\u2192\\quad p+q=3+8=11",
           "explanation": "e^(2ln2)=4를 대입하고 기약분수의 분모와 분자를 더합니다."
         }
       ],

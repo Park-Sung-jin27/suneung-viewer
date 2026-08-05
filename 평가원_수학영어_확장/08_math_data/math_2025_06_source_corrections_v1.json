@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "schemaVersion": "math-source-hold-v1",
-    "status": "internal_source_hold",
+    "schemaVersion": "math-source-correction-v1",
+    "status": "internal_source_corrected",
     "publicConnected": false,
     "itemCount": 1,
-    "questionFingerprint": "ce7e8340ac3640c38d803e9e05ff14b983a5ef9cab134a2202ee4e9418b371e7",
+    "questionFingerprint": "90bbc262e220c33e96521d42e3b2bc0526fc8ab7a3633b5e2fcbc8df85e7b86d",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5086962&lev=0&m=0403&page=4&s=suneung&searchType=S&statusYN=W",
@@ -27,17 +27,18 @@
   "items": {
     "2025_06_common_18": {
       "id": "2025_06_common_18",
-      "status": "blocked_by_source_integrity",
+      "status": "source_integrity_corrected",
       "issueCode": "problem_text_grouping_error",
-      "dbTextFragment": "{ak}^{2}",
+      "previousDbTextFragment": "{ak}^{2}",
       "officialTextFragment": "ak^{2}",
-      "correctionRequired": "problem_latex",
-      "reason": "공식 문제지의 합 안 첫 항은 계수 a와 k의 제곱을 곱한 ak²이지만 내부 DB에는 ak 전체를 제곱한 (ak)²로 기록돼 있습니다. a와 a²는 다른 계수이므로 원천 문항을 정정하기 전까지 풀이 생성과 공개를 차단합니다.",
+      "correctionApplied": "problem_latex",
+      "reason": "공식 문제지의 합 안 첫 항은 계수 a와 k의 제곱을 곱한 ak²이지만 내부 DB에는 ak 전체를 제곱한 (ak)²로 기록돼 있었습니다. 내부 DB를 공식 원문대로 정정했고, 이 기록과 검증 풀이가 일치하는지 영구 검사합니다.",
       "verification": {
         "problemPage": 7,
-        "problemMatchedPdf": false,
+        "problemMatchedPdf": true,
         "sourceDifferenceConfirmed": true,
-        "releaseBlocked": true
+        "correctionAppliedToDatabase": true,
+        "releaseBlocked": false
       }
     }
   }

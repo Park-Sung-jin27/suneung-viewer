@@ -52,7 +52,7 @@
           "explanation": "분자를 유리화하면 바로 계산할 수 있습니다."
         }
       ],
-      "correctReason": "극한값 2가 선지 ②와 일치합니다.",
+      "correctReason": "두 교점의 x좌표 차를 유리화하면 극한이 2이므로 ②가 정답입니다.",
       "commonMistake": "두 교점의 거리를 그대로 쓰지 말고 AH와 CH의 방향과 길이를 각각 확인하세요.",
       "verification": {"problemPage": 4, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -227,7 +227,7 @@
           "explanation": "주어진 f(1)=5에 변화량을 더합니다."
         }
       ],
-      "correctReason": "f(2)의 값은 16입니다.",
+      "correctReason": "도함수의 정적분이 f(2)-f(1)=11이므로 f(2)=16입니다.",
       "commonMistake": "f'에 x=2만 대입한 값은 f(2)가 아닙니다.",
       "verification": {"problemPage": 6, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -330,7 +330,7 @@
           "explanation": "두 부분의 넓이를 더합니다."
         }
       ],
-      "correctReason": "30S의 값은 80입니다.",
+      "correctReason": "두 구간에서 곡선 사이 넓이를 각각 적분하면 S=8/3이므로 30S=80입니다.",
       "commonMistake": "|x|를 한 식으로 처리하지 말고 x=0을 기준으로 반드시 나누세요.",
       "verification": {"problemPage": 7, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
@@ -371,7 +371,7 @@
           "explanation": "첫 길이 식에 구한 m을 대입합니다."
         }
       ],
-      "correctReason": "90(a+b)의 값은 220입니다.",
+      "correctReason": "길이비와 할선 기울기 조건으로 a=2/9, b=20/9를 얻으므로 90(a+b)=220입니다.",
       "commonMistake": "AB와 PB를 단순한 가로·세로 길이로 보지 말고 같은 기울기의 직선 위 거리임을 이용하세요.",
       "verification": {"problemPage": 8, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },

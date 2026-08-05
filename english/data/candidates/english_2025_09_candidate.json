@@ -24,7 +24,7 @@
   },
   "reviewData": {
     "path": "english/data/candidates/english_2025_09_reviews.json",
-    "sha256": "8688cbfcb5ca2188e32f52b3aa858871880855f11c97faa1d77f1ec8af547275",
+    "sha256": "eef6d45b84a045658dbc4d6d202c616822baf9989581d7fa49c53fb4dd1570af",
     "expectedReadyCount": 28
   },
   "summary": {

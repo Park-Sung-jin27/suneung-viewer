@@ -195,7 +195,7 @@
           "explanation": "두 로그의 차는 진수의 몫에 대한 로그이고 4=2²입니다."
         }
       ],
-      "correctReason": "계산값이 2이므로 답은 2입니다.",
+      "correctReason": "로그의 차를 진수의 몫으로 합치면 log₂4=2이므로 답은 2입니다.",
       "commonMistake": "2log₂5를 log₂10으로 바꾸면 안 됩니다. 로그 앞의 수는 진수에 곱하는 것이 아니라 지수가 됩니다.",
       "verification": {
         "problemPage": 6,
@@ -236,7 +236,7 @@
           "explanation": "주어진 f(0)=3을 더합니다."
         }
       ],
-      "correctReason": "f(1)=8이므로 답은 8입니다.",
+      "correctReason": "도함수의 정적분으로 f(1)-f(0)=5를 얻으므로 f(1)=8입니다.",
       "commonMistake": "f'을 적분한 값 5는 f(1) 자체가 아니라 f(1)-f(0)입니다. 마지막에 f(0)=3을 더해야 합니다.",
       "verification": {
         "problemPage": 6,

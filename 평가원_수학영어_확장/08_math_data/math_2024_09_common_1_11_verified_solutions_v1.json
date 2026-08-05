@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schemaVersion": "math-verified-solution-v1",
-    "scope": "2024학년도 9월 모의평가 수학 공통 1~11번 중 원천 일치 10문항",
+    "scope": "2024학년도 9월 모의평가 수학 공통 1~11번",
     "status": "internal_verified_candidate",
     "publicConnected": false,
-    "itemCount": 10,
-    "readyCount": 10,
-    "questionFingerprint": "31e7ae06e9fb30c553329f188cfa4f473810d39f1149d00ba4dfe4431bfa816e",
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "ca973d673ce964e21751a18bcfd563bc1148d5b69d35023b31d262c843a4fe9b",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://jwmath.tistory.com/617",
@@ -35,7 +35,7 @@
         }
       ]
     },
-    "note": "서로 다른 두 보관처의 동일 문제지, 공식 정답표 이미지, 두 해설 자료를 문항별로 대조하고 계산은 독립적으로 다시 확인했습니다. 6번은 원천 DB의 계수 묶음 오류로 이 파일에서 제외했습니다."
+    "note": "서로 다른 두 보관처의 동일 문제지, 공식 정답표 이미지, 두 해설 자료를 문항별로 대조하고 계산은 독립적으로 다시 확인했습니다."
   },
   "items": {
     "2024_09_common_1": {
@@ -65,7 +65,7 @@
           "explanation": "계산값 9는 ⑤와 일치합니다."
         }
       ],
-      "correctReason": "지수법칙을 적용하면 밑이 3이고 지수가 2인 수가 남습니다.",
+      "correctReason": "지수법칙을 적용하면 밑이 3이고 지수가 2인 수가 남습니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "각 거듭제곱을 따로 근삿값으로 계산하지 말고 지수부터 합치세요.",
       "verification": {
         "problemPage": 1,
@@ -103,7 +103,7 @@
           "explanation": "x=1을 대입하면 3이므로 정답은 ③입니다."
         }
       ],
-      "correctReason": "주어진 극한은 f'(1)과 같고 f'(x)=4x-1이므로 f'(1)=3입니다.",
+      "correctReason": "주어진 극한은 f'(1)과 같고 f'(x)=4x-1이므로 f'(1)=3입니다. 따라서 정답은 ③입니다.",
       "commonMistake": "분모가 0이라고 바로 결론내리지 말고 분자의 x-1 인수를 먼저 약분하세요.",
       "verification": {
         "problemPage": 1,
@@ -141,7 +141,7 @@
           "explanation": "계산값은 ②와 일치합니다."
         }
       ],
-      "correctReason": "제4사분면에서 cos은 양수이고 sin과 tan은 음수입니다.",
+      "correctReason": "제4사분면에서 cos은 양수이고 sin과 tan은 음수입니다. 따라서 정답은 ②입니다.",
       "commonMistake": "sin의 제곱근을 구한 뒤 θ의 범위를 무시해 양수로 두지 마세요.",
       "verification": {
         "problemPage": 1,
@@ -180,7 +180,7 @@
           "explanation": "합은 -2이므로 정답은 ①입니다."
         }
       ],
-      "correctReason": "각 극한은 해당 방향의 그래프가 다가가는 y값으로 결정됩니다.",
+      "correctReason": "각 극한은 해당 방향의 그래프가 다가가는 y값으로 결정됩니다. 따라서 정답은 ①입니다.",
       "commonMistake": "f(-2)나 f(1)의 닫힌점 높이를 극한값으로 읽지 마세요.",
       "verification": {
         "problemPage": 1,
@@ -218,8 +218,49 @@
           "explanation": "96은 ⑤와 일치합니다."
         }
       ],
-      "correctReason": "a5=12와 r²=2가 두 조건을 동시에 만족시킵니다.",
+      "correctReason": "a5=12와 r²=2가 두 조건을 동시에 만족시킵니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "a3a8/a6의 지수를 계산할 때 a4나 a6으로 잘못 줄이지 마세요.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2024_09_common_6": {
+      "id": "2024_09_common_6",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 9월 모의평가 수학 공통",
+      "questionNumber": 6,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "두 극값의 위치로 도함수를 인수분해하면 a=-3, b=-9이고 f(-1)=6입니다.",
+      "approach": "최고차항 계수와 두 임계점 -1, 3을 이용해 도함수를 바로 만든 뒤 계수와 함수값을 구합니다.",
+      "concepts": [
+        "삼차함수의 극값",
+        "도함수의 인수분해"
+      ],
+      "steps": [
+        {
+          "title": "도함수의 두 근 사용하기",
+          "expression": "f'(x)=3(x+1)(x-3)=3x^2-6x-9",
+          "explanation": "x=-1과 x=3에서 극값을 가지며 f의 최고차항 계수가 1이므로 도함수의 최고차항 계수는 3입니다."
+        },
+        {
+          "title": "a와 b 비교하기",
+          "expression": "f'(x)=3x^2+2ax+b\\quad\\Rightarrow\\quad a=-3,\\ b=-9",
+          "explanation": "동일한 다항식의 각 항의 계수를 비교합니다."
+        },
+        {
+          "title": "f(-1) 계산하기",
+          "expression": "f(-1)=-1+a-b+1=a-b=-3-(-9)=6",
+          "explanation": "주어진 함수에 x=-1을 대입합니다."
+        }
+      ],
+      "correctReason": "x=-1에서의 극댓값이 6이므로 선택지 ③이 정답입니다.",
+      "commonMistake": "도함수의 최고차항 계수를 1로 두면 원래 함수의 최고차항 계수와 맞지 않습니다.",
       "verification": {
         "problemPage": 2,
         "answerTablePage": 1,
@@ -256,7 +297,7 @@
           "explanation": "공통인 log₃2가 약분되어 정답은 ④입니다."
         }
       ],
-      "correctReason": "주어진 두 식이 통분한 분자의 값과 분모의 곱을 직접 제공합니다.",
+      "correctReason": "주어진 두 식이 통분한 분자의 값과 분모의 곱을 직접 제공합니다. 따라서 정답은 ④입니다.",
       "commonMistake": "log₉2를 2log₃2로 바꾸지 말고 밑변환 공식을 정확히 적용하세요.",
       "verification": {
         "problemPage": 2,
@@ -294,7 +335,7 @@
           "explanation": "계산값 8은 ④와 일치합니다."
         }
       ],
-      "correctReason": "초기조건과 f(1)의 자기 일치 식이 다항함수를 하나로 결정합니다.",
+      "correctReason": "초기조건과 f(1)의 자기 일치 식이 다항함수를 하나로 결정합니다. 따라서 정답은 ④입니다.",
       "commonMistake": "f(1)을 x에 관한 함수처럼 적분하지 말고 하나의 상수로 다루세요.",
       "verification": {
         "problemPage": 3,
@@ -332,7 +373,7 @@
           "explanation": "구간 길이는 ③과 일치합니다."
         }
       ],
-      "correctReason": "코사인은 0에서 π까지 감소하고 π에서 2π까지 증가하므로 해가 한 구간으로 이어집니다.",
+      "correctReason": "코사인은 0에서 π까지 감소하고 π에서 2π까지 증가하므로 해가 한 구간으로 이어집니다. 따라서 정답은 ③입니다.",
       "commonMistake": "오른쪽 경계를 2π-5π/14로 잡는 대칭점을 빠뜨리지 마세요.",
       "verification": {
         "problemPage": 3,
@@ -370,7 +411,7 @@
           "explanation": "계산값 35는 ③과 일치합니다."
         }
       ],
-      "correctReason": "두 접선이 만나는 점의 좌표가 함수의 중근 구조와 나머지 인수를 모두 결정합니다.",
+      "correctReason": "두 접선이 만나는 점의 좌표가 함수의 중근 구조와 나머지 인수를 모두 결정합니다. 따라서 정답은 ③입니다.",
       "commonMistake": "(2,3)에서 접선의 기울기가 0이라는 사실을 놓치고 일반 삼차식부터 전개하지 마세요.",
       "verification": {
         "problemPage": 3,
@@ -408,7 +449,7 @@
           "explanation": "v1은 t=1에서 부호가 바뀌므로 두 구간의 거리 합을 구하면 ⑤입니다."
         }
       ],
-      "correctReason": "이동거리는 위치 변화량이 아니라 속도의 절댓값 적분이며 방향 전환을 반영해야 합니다.",
+      "correctReason": "이동거리는 위치 변화량이 아니라 속도의 절댓값 적분이며 방향 전환을 반영해야 합니다. 따라서 정답은 ⑤입니다.",
       "commonMistake": "sP(3)-sP(0)만 계산하면 되돌아간 거리를 잃으므로 반드시 속도 부호를 나누세요.",
       "verification": {
         "problemPage": 4,

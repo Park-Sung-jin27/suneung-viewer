@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "schemaVersion": "math-source-hold-v1",
-    "status": "internal_source_hold",
+    "schemaVersion": "math-source-correction-v1",
+    "status": "internal_source_corrected",
     "publicConnected": false,
     "itemCount": 2,
-    "questionFingerprint": "16bd2b42c6e5ed630849b89a8decdb3e56f0beb497dab7ead1b35139e30bf29b",
+    "questionFingerprint": "e8e0f1e9d43c6e8a4857558c532161c018c2ceebb477583737189c7c652bcab7",
     "verifiedAt": "2026-08-05",
     "sourceArtifacts": {
       "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5043334/ect_f123552d-f3b9-441b-a9cb-26dd3fb0382a1655a9598b93086.zip",
@@ -18,32 +18,34 @@
   "items": {
     "2023_06_common_6": {
       "id": "2023_06_common_6",
-      "status": "blocked_by_source_integrity",
+      "status": "source_integrity_corrected",
       "issueCode": "problem_text_missing_boundary_equality",
-      "dbTextFragment": "(-1<x<3)",
-      "officialTextFragment": "(-1≤x<3)",
-      "correctionRequired": "problem_latex",
+      "previousDbTextFragment": "(-1<x<3)",
+      "officialTextFragment": "(-1\\leq x<3)",
+      "correctionApplied": "problem_latex",
       "reason": "공식 문제의 가운데 구간은 -1≤x<3이지만 내부 문제 텍스트에는 x=-1을 포함하는 등호가 빠져 함수가 그 점에서 정의되지 않는 다른 조건이 됨",
       "verification": {
         "problemPage": 2,
-        "problemMatchedPdf": false,
+        "problemMatchedPdf": true,
         "sourceDifferenceConfirmed": true,
-        "releaseBlocked": true
+        "correctionAppliedToDatabase": true,
+        "releaseBlocked": false
       }
     },
     "2023_06_common_19": {
       "id": "2023_06_common_19",
-      "status": "blocked_by_source_integrity",
+      "status": "source_integrity_corrected",
       "issueCode": "problem_text_grouping_error",
-      "dbTextFragment": "{ax}^{2}",
+      "previousDbTextFragment": "{ax}^{2}",
       "officialTextFragment": "ax^{2}",
-      "correctionRequired": "problem_latex",
+      "correctionApplied": "problem_latex",
       "reason": "공식 문제의 항은 계수 a에 x의 제곱을 곱한 ax²이지만 내부 문제 텍스트는 ax 전체를 제곱하는 (ax)²로 묶여 극값 조건의 의미가 달라짐",
       "verification": {
         "problemPage": 7,
-        "problemMatchedPdf": false,
+        "problemMatchedPdf": true,
         "sourceDifferenceConfirmed": true,
-        "releaseBlocked": true
+        "correctionAppliedToDatabase": true,
+        "releaseBlocked": false
       }
     }
   }

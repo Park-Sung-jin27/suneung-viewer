@@ -58,7 +58,7 @@
         {"title": "a 구하기", "expression": "8\\frac a3=16\\Rightarrow a=6", "explanation": "주어진 극한값 16을 대입합니다."},
         {"title": "합 계산하기", "expression": "a+b=6+3=9", "explanation": "두 상수의 합을 구합니다."}
       ],
-      "correctReason": "a+b=9가 선지 ①과 일치합니다.", "commonMistake": "b=3을 정하기 전에 로피탈 법칙을 바로 적용하면 x=0에서 분자가 0인지 놓칠 수 있습니다.",
+      "correctReason": "유한한 극한 조건에서 b=3이고 표준 지수 극한으로 a=6이므로 a+b=9, ①이 정답입니다.", "commonMistake": "b=3을 정하기 전에 로피탈 법칙을 바로 적용하면 x=0에서 분자가 0인지 놓칠 수 있습니다.",
       "verification": {"problemPage": 14, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
     "2024_06_cal_26": {
@@ -116,7 +116,7 @@
         {"title": "k²과 ab 관계 구하기", "expression": "ab+2(a+b)k+5k^2=0\\Rightarrow k^2=-ab", "explanation": "수직 조건에 a+b=-2k를 대입합니다."},
         {"title": "값 결정하기", "expression": "ab=-5\\Rightarrow k^2=5", "explanation": "곡선 조건에 앞 관계를 대입하면 ab=-5가 나옵니다."}
       ],
-      "correctReason": "k²=5입니다.", "commonMistake": "두 점의 y좌표는 a+k, b+k이며 접선 기울기의 분모 부호를 바꾸더라도 두 기울기에서 일관되게 처리하세요.",
+      "correctReason": "두 곡선점 조건과 접선 수직 조건을 결합하면 k²=-ab=5입니다.", "commonMistake": "두 점의 y좌표는 a+k, b+k이며 접선 기울기의 분모 부호를 바꾸더라도 두 기울기에서 일관되게 처리하세요.",
       "verification": {"problemPage": 16, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     },
     "2024_06_cal_30": {
@@ -132,7 +132,7 @@
         {"title": "r과 a₁ 구하기", "expression": "r^3=-\\frac18\\Rightarrow r=-\\frac12,\\qquad a_1=-12", "explanation": "두 관계식을 나누어 공비를 구한 뒤 첫째항을 계산합니다."},
         {"title": "절댓값 급수 합하기", "expression": "\\sum_{n=1}^{\\infty}|a_n|=\\frac{12}{1-1/2}=24", "explanation": "절댓값 수열은 첫째항 12, 공비 1/2인 등비수열입니다."}
       ],
-      "correctReason": "절댓값 급수의 합은 24입니다.", "commonMistake": "bₙ은 aₙ이 -1 이하일 때만 -1로 바뀝니다. 모든 음수항을 -1로 바꾸지 마세요.",
+      "correctReason": "두 부분급수에서 공비 -1/2와 첫째항 -12를 얻어 절댓값 급수의 합은 24입니다.", "commonMistake": "bₙ은 aₙ이 -1 이하일 때만 -1로 바뀝니다. 모든 음수항을 -1로 바꾸지 마세요.",
       "verification": {"problemPage": 16, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
     }
   }
