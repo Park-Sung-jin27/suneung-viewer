@@ -1,0 +1,2920 @@
+{
+  "schemaVersion": "english-product-candidate-v2",
+  "candidateId": "english_2026_06_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "generatedFrom": {
+    "overlayPath": "english/data/candidates/english_2026_06_candidate.json",
+    "baseDataPath": "english/data/english_exam_db_v2_1.json",
+    "baseDataSha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "reviewDataPath": "english/data/candidates/english_2026_06_reviews.json",
+    "reviewDataSha256": "fbb8475a5525a7fe93d05dae77d25c27ee4670d7709f5a25cdee9ce0b2494d72"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2026학년도_6월_영어_문제.pdf",
+      "sha256": "55ba46646ada079ea781b00986a45877b0dc46f4a423d8c3f26a64e0213921fb"
+    },
+    "answer": {
+      "filename": "2026학년도_6월_영어_정답.png",
+      "sha256": "3e8185948286130ce7177af5ee7578aa0a27b951ef6cb93e8feaec1af5f8d598"
+    },
+    "explanation": {
+      "filename": "2026학년도_6월_영어_해설.pdf",
+      "sha256": "b3fd2ce0b92f3abbb6a225389b66a6669f96bbcfc344fc8264bbbb24ba5881fb"
+    }
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 60,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "blockedCount": 0
+  },
+  "integrity": {
+    "questionIds": [
+      "2026_06_18",
+      "2026_06_19",
+      "2026_06_20",
+      "2026_06_21",
+      "2026_06_22",
+      "2026_06_23",
+      "2026_06_24",
+      "2026_06_25",
+      "2026_06_26",
+      "2026_06_27",
+      "2026_06_28",
+      "2026_06_29",
+      "2026_06_30",
+      "2026_06_31",
+      "2026_06_32",
+      "2026_06_33",
+      "2026_06_34",
+      "2026_06_35",
+      "2026_06_36",
+      "2026_06_37",
+      "2026_06_38",
+      "2026_06_39",
+      "2026_06_40",
+      "2026_06_41",
+      "2026_06_42",
+      "2026_06_43",
+      "2026_06_44",
+      "2026_06_45"
+    ],
+    "choiceOverrideIds": [
+      "2026_06_20",
+      "2026_06_24",
+      "2026_06_28",
+      "2026_06_29",
+      "2026_06_30",
+      "2026_06_32",
+      "2026_06_35",
+      "2026_06_36",
+      "2026_06_37",
+      "2026_06_38",
+      "2026_06_39",
+      "2026_06_40",
+      "2026_06_43",
+      "2026_06_45"
+    ],
+    "figureIds": [
+      "2026_06_25",
+      "2026_06_27",
+      "2026_06_28"
+    ],
+    "choiceFingerprint": "a2bc055abc6dac386f0b8f62205e30e3648e70185dfb7e89bd6af5ddcdd0cce8",
+    "figureFingerprint": "2721e2203f981e32344118cd27d40301eae9529f9587a902e6003e477db8f9dd",
+    "reviewFingerprint": "bda0c852bd754cebea9910460fbad453f169ed75d2bd7d1abbd8ace118fbfeaf"
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2026_06_25",
+      "2026_06_27",
+      "2026_06_28"
+    ]
+  },
+  "questions": [
+    {
+      "id": "2026_06_18",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 18,
+      "type": "목적",
+      "group": "practical",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "18. 다음 글의 목적으로 가장 적절한 것은?",
+      "rawText": "18. \t다음 글의 목적으로 가장 적절한 것은?\nTo Whom It May Concern,\nI recently visited the Lambsford History Foundation’s\nexhibition about the Qukkon Gold Rush. The collection of\npictures, tools, and historical documents made the gold\nminers arriving to Qukkon come to life. This reminded me\nof when I lived in Qukkon and worked in the mining\nindustry. Because of this, I’m wondering if there are\nvolunteer guide positions available for this exhibition. I\ncan share my experiences working in the extreme cold of\nQukkon. Again, I would be thankful if you could tell me\nabout the availability of volunteer positions as a guide.\nSincerely,\nJonathan Hamilton\n① 안내자로 자원봉사를 할 자리가 있는지 문의하려고\n② 역사 박물관 근무 경력자 모집에 지원하려고\n③ 전시회를 위한 예술품 기부를 부탁하려고\n④ 채굴 도구 사용 설명서를 요청하려고\n⑤ 전시회의 주제를 소개하려고",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "안내자로 자원봉사를 할 자리가 있는지 문의하려고"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "역사 박물관 근무 경력자 모집에 지원하려고"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "전시회를 위한 예술품 기부를 부탁하려고"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "채굴 도구 사용 설명서를 요청하려고"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "전시회의 주제를 소개하려고"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 755,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_18",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 18,
+        "group": "practical",
+        "type": "목적",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 과거 광산업 경험을 살려 전시 안내 자원봉사를 할 수 있는지 묻는 편지입니다.",
+        "typeApproach": "목적 문제는 글쓴이가 반복해서 요청하거나 확인하는 마지막 행동을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "volunteer guide positions available for this exhibition.",
+            "charStart": 380,
+            "role": "문의 대상",
+            "translation": "이 전시의 자원봉사 안내자 자리가 있는지 묻고 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "about the availability of volunteer positions as a guide.",
+            "charStart": 551,
+            "role": "반복 요청",
+            "translation": "안내자 자원봉사 자리의 가능 여부를 알려 달라고 다시 요청합니다."
+          }
+        ],
+        "correctReason": "전시를 소개하거나 취업 지원을 하는 것이 아니라 안내 자원봉사 자리가 있는지 확인하는 글이므로 ①입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "역사 박물관 근무 경력자 모집에 지원하려고",
+          "reason": "자신의 광산업 경험은 안내에 도움이 된다는 근거일 뿐, 박물관 유급 채용에 지원하는 내용은 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_19",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 19,
+      "type": "심경 변화",
+      "group": "practical",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "19. 다음 글에 드러난 Jessie의 심경 변화로 가장 적절한 것은?",
+      "rawText": "19. \t다음 글에 드러난 Jessie의 심경 변화로 가장 적절한 것은?\nThe shoreline was known for having the best fishing spots\non the lake. Jessie was sitting at one of those spots, but her\nfishing line still hadn’t moved an inch. With a deep sigh,\nJessie pulled out the line and cast it back into the water. Her\ndream of catching a big fish was fading. “I can’t believe I\nhaven’t caught a fish yet. Not a single one,” she thought. Just\nas she was about to give up and leave, the fishing line suddenly\nbecame tense. Jessie excitedly held onto the fishing pole as it\nbegan to move around wildly. Her eyes widened and her heart\nbegan to beat faster with excitement. With a big smile, she\ncould feel that this was the biggest fish she had ever caught!\n① disappointed → thrilled \t② indifferent → discouraged\n③ jealous \t→ anxious \t④ delighted \t→ bored\n⑤ relieved \t→ pleased",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "disappointed → thrilled"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "indifferent → discouraged"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "jealous → anxious"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "delighted → bored"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "relieved → pleased"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 840,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_19",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 19,
+        "group": "practical",
+        "type": "심경 변화",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 한 마리도 잡지 못해 실망하다가 큰 물고기가 걸린 듯하자 매우 들뜹니다.",
+        "typeApproach": "심경 변화는 사건 전후의 감정 표지와 행동 변화를 각각 한 단어로 묶습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "With a deep sigh,\nJessie pulled out the line and cast it back into the water.",
+            "charStart": 203,
+            "role": "초기 심경",
+            "translation": "Jessie는 깊은 한숨을 쉬며 낚싯줄을 다시 던집니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Jessie excitedly held onto the fishing pole as it\nbegan to move around wildly.",
+            "charStart": 488,
+            "role": "후기 심경",
+            "translation": "낚싯대가 크게 움직이자 Jessie는 신이 나서 붙잡습니다."
+          }
+        ],
+        "correctReason": "한숨과 포기 직전의 실망에서 빠른 심장박동과 미소로 드러나는 흥분으로 바뀌므로 disappointed → thrilled가 맞습니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "relieved → pleased",
+          "reason": "처음 감정은 안도감이 아니라 물고기를 잡지 못한 실망이고, 마지막 감정은 단순 만족보다 강한 흥분입니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_20",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 20,
+      "type": "주장",
+      "group": "topic",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "rawText": "20. \t다음 글에서 필자가 주장하는 바로 가장 적절한 것은?\nOur ability to respond to danger has been important for\nsurvival, so feeling worried in uncertain situations is normal.\nFeelings of worry, which are activated in anticipation of future\nevents, are often experienced in everyday situations. For\nexample, we may feel nervous imagining unlikely events, such\nas a computer crashing during an important presentation. To\nsome \textent, thinking through potential scenarios can be\nhelpful. When our worries exceed our control, however, they\ncause us unnecessary suffering. Consider how many times you\nhave lost sleep thinking about a terrible situation, which, in the\nend, did not actually take place. If that situation actually\noccurred, it only goes to show that worrying about it did\nnothing to prevent it from happening. It is worth making a\nconscious effort, then, to stop worrying endlessly about events\nyou may not experience.\n① 긴장감으로 인한 실수를 줄이기 위해 연습을 많이 해야 한다.\n② 일어날 것 같지 않은 일에 대해 지나치게 걱정하지 말아야 한다.\n③ 목표를 수월하게 달성하려면 계획을 구체적으로 세워야 한다.\n④ 일의 과정을 즐기려면 결과에 대한 과도한 집착을 버려야 한다.\n⑤ 자신의 걱정이 무엇에서 비롯되었는지 면밀히 살펴봐야 한다.\n이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에\n따라 답을 하시기 바랍니다.\n\n-- 2 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n3\n3 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "긴장감으로 인한 실수를 줄이기 위해 연습을 많이 해야 한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "일어날 것 같지 않은 일에 대해 지나치게 걱정하지 말아야 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "목표를 수월하게 달성하려면 계획을 구체적으로 세워야 한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "일의 과정을 즐기려면 결과에 대한 과도한 집착을 버려야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "자신의 걱정이 무엇에서 비롯되었는지 면밀히 살펴봐야 한다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1192,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          12
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_20",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 20,
+        "group": "topic",
+        "type": "주장",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 일어날 가능성이 낮은 일을 끝없이 걱정해 스스로 고통받지 말라고 주장합니다.",
+        "typeApproach": "주장 문제는 양보 뒤의 핵심 판단과 글 끝의 권고 문장을 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "When our worries exceed our control, however, they\ncause us unnecessary suffering.",
+            "charStart": 466,
+            "role": "문제 진단",
+            "translation": "걱정을 통제하지 못하면 불필요한 고통을 겪게 됩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "It is worth making a\nconscious effort, then, to stop worrying endlessly about events\nyou may not experience.",
+            "charStart": 801,
+            "role": "최종 권고",
+            "translation": "겪지 않을 수도 있는 일을 끝없이 걱정하지 않도록 의식적으로 노력해야 합니다."
+          }
+        ],
+        "correctReason": "통제 밖의 과도한 걱정이 불필요한 고통을 만들므로 가능성이 낮은 일을 지나치게 걱정하지 말라는 ②가 핵심입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "자신의 걱정이 무엇에서 비롯되었는지 면밀히 살펴봐야 한다.",
+          "reason": "글은 걱정의 원인을 분석하라고 하지 않고, 일어나지 않을 가능성이 큰 일을 끝없이 걱정하는 행동을 멈추라고 합니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_21",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 21,
+      "type": "밑줄 의미",
+      "group": "blank",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "21. 밑줄 친 the boost is grounded in fiction이 다음 글에서 의미",
+      "rawText": "21. \t밑줄 친 the boost is grounded in fiction이 다음 글에서 의미\n하는 바로 가장 적절한 것은? [3점]\nBasing your self-worth on climbing performance puts you at\nthe whim of external factors. These factors may be random\nand misleading. Comparison is one source of illusion. Perhaps\nyou felt that you performed well on a certain climb because\nyour partner was having an off day and found the climbing\nvery difficult. You found it only slightly difficult and conclude\nthat you were climbing quite well, when in fact you were\nclimbing no better than usual. Or, your partner was at the top\nof his game. You felt weak in comparison, when in fact,\nobjectively, you put in a very strong performance. Environmental\nfactors may be involved. Perhaps you mastered your day’s\nobjective due to especially favorable conditions, such as low\nhumidity, when in fact, you really didn’t climb particularly well.\nIn all these cases, the good or bad feelings you have are not\nbased on something you can take credit for. If the performances\nboost your self-worth, the boost is grounded in fiction.\n* whim: 변덕 \t** illusion: 착각 \t*** humidity: 습도\n① perceptions of self-growth vary from person to person\n② your self-confidence is an outcome of constant effort\n③ the pride you take in your achievement is unreliable\n④ performance comparison to partners is demotivating\n⑤ ambitious goals help you improve performance",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "perceptions of self-growth vary from person to person"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "your self-confidence is an outcome of constant effort"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "the pride you take in your achievement is unreliable"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "performance comparison to partners is demotivating"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "ambitious goals help you improve performance"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1361,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_21",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 21,
+        "group": "blank",
+        "type": "밑줄 의미",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 외부 조건으로 생긴 성취감은 자신의 실제 실력을 정확히 반영하지 않아 믿기 어렵다는 뜻입니다.",
+        "typeApproach": "밑줄 의미는 앞의 사례들을 공통으로 묶는 원인과 결론을 바꿔 말한 선지를 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "These factors may be random\nand misleading.",
+            "charStart": 165,
+            "role": "외부 요인의 성격",
+            "translation": "외부 요인은 우연적이고 오해를 일으킬 수 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "In all these cases, the good or bad feelings you have are not\nbased on something you can take credit for.",
+            "charStart": 866,
+            "role": "결론 근거",
+            "translation": "그 감정들은 자신의 공으로 돌릴 수 있는 것에 근거하지 않습니다."
+          }
+        ],
+        "correctReason": "비교 상대의 상태나 습도 같은 외부 조건으로 얻은 자부심은 실제 성취에 근거하지 않으므로 신뢰할 수 없다는 ③입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "performance comparison to partners is demotivating",
+          "reason": "비교가 동기를 떨어뜨린다는 일반 주장이 아니라, 비교를 포함한 외부 조건이 자기 평가를 왜곡한다는 내용입니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_22",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 22,
+      "type": "요지",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "rawText": "22. \t다음 글의 요지로 가장 적절한 것은?\nInformation and meaning are, clearly, not the same thing.\nThe former refers to uninterpreted data or sensory states whose\nprobability in a certain situation can be easily measured; the\nlatter refers to the interpretation of the data or sensory states,\nincluding the special kinds of nuances and values that the\ninformation entails, or is intended to have, in the given situation.\nThis applies to any type of information, from alarm signals to\nsophisticated statements. Take, for instance, a coin-tossing\ngame in which it is decided that throwing three heads in a row\nconstitutes a win. If a certain player ends up consistently with\nthe desired outcome, defeating all who challenge that player,\nthen we tend to interpret the outcome either as the work of\nFortune, or else as clever and undetectable cheating on the part\nof the winning player. Interpretation is at the core of everything\nwe do, think about, and feel.\n* sophisticated: 정교한\n① 우리는 정보를 해석함으로써 의미를 만들어 낸다.\n② 우리는 경험적 확률에 근거하여 미래를 예측한다.\n③ 정보의 양이 너무 많으면 정확한 분석이 어려워진다.\n④ 정보의 진위 여부를 판단할 때 출처 확인이 필수이다.\n⑤ 정보 해석에 개인의 감정이 개입되면 의미가 왜곡된다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "우리는 정보를 해석함으로써 의미를 만들어 낸다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "우리는 경험적 확률에 근거하여 미래를 예측한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "정보의 양이 너무 많으면 정확한 분석이 어려워진다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "정보의 진위 여부를 판단할 때 출처 확인이 필수이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "정보 해석에 개인의 감정이 개입되면 의미가 왜곡된다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1115,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_22",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 22,
+        "group": "topic",
+        "type": "요지",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 측정 가능한 정보는 해석될 때 비로소 상황 속 의미가 됩니다.",
+        "typeApproach": "요지 문제는 첫 문장의 대조와 마지막 일반화를 함께 만족하는 선지를 고릅니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Information and meaning are, clearly, not the same thing.",
+            "charStart": 26,
+            "role": "핵심 대조",
+            "translation": "정보와 의미는 같은 것이 아닙니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Interpretation is at the core of everything\nwe do, think about, and feel.",
+            "charStart": 868,
+            "role": "핵심 결론",
+            "translation": "해석은 우리가 행동하고 생각하고 느끼는 모든 것의 중심입니다."
+          }
+        ],
+        "correctReason": "정보 자체와 의미를 구분한 뒤 해석이 의미 형성의 핵심이라고 결론 내리므로 ①이 맞습니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "정보 해석에 개인의 감정이 개입되면 의미가 왜곡된다.",
+          "reason": "글은 해석이 의미를 만든다고 설명할 뿐, 개인 감정 때문에 의미가 왜곡된다고 비판하지 않습니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_23",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 23,
+      "type": "주제",
+      "group": "topic",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "rawText": "23. \t다음 글의 주제로 가장 적절한 것은?\nThe purpose of class discussions is to encourage you to be\nan active participant, not a passive recorder. Much of the\nemphasis in a discussion is on getting students involved in\nthinking, \treacting, \tand \tresponding. \tThese \tare \timportant\nintellectual activities in the learning process, for through them\nyou are supposed to discover and express your opinions.\nWriting is an invaluable tool for accomplishing these tasks.\nUnfortunately, too many times, when class discussion begins,\npens and pencils go down. Admittedly, it is considerably more\ndifficult to take notes from discussions than from lectures, for,\nunlike lectures, discussions tend to be disorganized and difficult\nto follow. Also, students usually don’t know how much of\nwhat other students are saying is important. And if you are an\nactive participant, it is not easy to take notes and formulate\nwhat you want to say. But note taking in discussions is not\nonly manageable, it is also important. Note taking helps to keep\nyou active and alert; it allows you to impose some organization\non the discussion; and it can prepare you to speak.\n* impose: 부과하다\n① reasons to standardize procedures for class discussions\n② strategies to improve note-taking skills for public speaking\n③ significance of note taking for active engagement in discussion\n④ effectiveness of summarizing and reviewing notes after class\n⑤ benefits of brainstorming to generate ideas for writing tasks",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "reasons to standardize procedures for class discussions"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "strategies to improve note-taking skills for public speaking"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "significance of note taking for active engagement in discussion"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "effectiveness of summarizing and reviewing notes after class"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "benefits of brainstorming to generate ideas for writing tasks"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1457,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          14
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_23",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 23,
+        "group": "topic",
+        "type": "주제",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 토론 중 필기는 학습자가 생각하고 말하는 능동적 참여를 돕는 중요한 도구입니다.",
+        "typeApproach": "주제 문제는 글 전체에서 반복되는 대상과 그 대상의 핵심 기능을 함께 잡습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "The purpose of class discussions is to encourage you to be\nan active participant, not a passive recorder.",
+            "charStart": 26,
+            "role": "토론의 목적",
+            "translation": "수업 토론은 수동적 기록자가 아니라 능동적 참여자가 되도록 합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Note taking helps to keep\nyou active and alert; it allows you to impose some organization\non the discussion; and it can prepare you to speak.",
+            "charStart": 987,
+            "role": "필기의 기능",
+            "translation": "필기는 능동성과 집중을 유지하고 토론을 정리하며 발언을 준비하게 합니다."
+          }
+        ],
+        "correctReason": "글의 중심은 토론에서 필기가 능동적 참여를 유지하게 한다는 점이므로 ③입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "strategies to improve note-taking skills for public speaking",
+          "reason": "대중 연설용 필기 기술을 훈련하는 방법이 아니라 수업 토론 참여에서 필기의 중요성을 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_24",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 24,
+      "type": "제목",
+      "group": "topic",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "24. 다음 글의 제목으로 가장 적절한 것은?",
+      "rawText": "24. \t다음 글의 제목으로 가장 적절한 것은?\nFood, as we all know, is essential for human life. It also is\nthe basis for several major industries found in many countries\naround the world such as in agriculture, food processing, food\nretailing and food service. For millennia, the focus of those\ninvolved with food as a human and economic phenomenon\nwas on its production, preservation, distribution, pricing and\nother practical concerns. But in the late 18th century this\nbegan to change. Food became more than just a life necessity.\nRestaurants began to be developed, initially in France but\neventually in other nations, as a distinct institution offering\npeople dining choices and table service, the opportunity for\nsocialization and, over time, a finer and finer atmosphere. The\nrise of restaurants eventually led to a class of diners who\nprided themselves on being critics of taste, food and cooking.\nBrillat-Savarin is probably the best known of the ‘culinary\nphilosophers’ or, \tin \ttoday’s \tparlance, \ta \t‘foodie’. \tOne \tof\nBrillat-Savarin’s better known sayings was, ‘[t]ell me what\nyou eat, and I’ll tell you who you are.’\n* culinary: 요리의 \t** parlance: 용어\n① Changing Appetites: The Return of Fine Dining\n② Beyond Mere Necessity: The Rise of Food Culture\n③ Tips for Choosing Restaurants for Social Occasions\n④ Why Table Manners Matter: Food and Class Identity\n⑤ How Industrialization Is Taking Over Food Production\n\n-- 3 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n4\n4 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Changing Appetites: The Return of Fine Dining"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Beyond Mere Necessity: The Rise of Food Culture"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Tips for Choosing Restaurants for Social Occasions"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Why Table Manners Matter: Food and Class Identity"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "How Industrialization Is Taking Over Food Production"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1456,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          15
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_24",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 24,
+        "group": "topic",
+        "type": "제목",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 음식이 생존 필수품을 넘어 식당·미식가·정체성을 포함한 문화 현상으로 발전한 과정을 다룹니다.",
+        "typeApproach": "제목 문제는 글의 출발점과 변화 후의 결론을 모두 포괄하는 표현을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Food became more than just a life necessity.",
+            "charStart": 471,
+            "role": "전환점",
+            "translation": "음식은 단순한 생존 필수품 이상의 것이 되었습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "The\nrise of restaurants eventually led to a class of diners who\nprided themselves on being critics of taste, food and cooking.",
+            "charStart": 760,
+            "role": "문화의 확장",
+            "translation": "식당의 등장은 맛과 음식, 요리를 평가하는 식도락 계층으로 이어졌습니다."
+          }
+        ],
+        "correctReason": "필수품이던 음식이 외식과 미식 문화로 확장된 흐름을 모두 담은 제목은 ②입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "Why Table Manners Matter: Food and Class Identity",
+          "reason": "계층과 식사 예절은 글의 중심이 아니며, 핵심은 음식 문화가 생존 필요를 넘어 발전한 과정입니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_25",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 25,
+      "type": "도표",
+      "group": "info",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "25. 다음 도표의 내용과 일치하지 않는 것은?",
+      "rawText": "25. \t다음 도표의 내용과 일치하지 않는 것은?\nThe graph above shows trends in adult participation in\neducation and training in five OECD countries in 2016 and\n2022. ① Among these countries, the percentage of adults in the\nNetherlands who participated in education and training was\nthe highest in each year listed in the graph. ② In Germany, the\npercentage of adults who participated in education and training\nin 2022 was higher than that in 2016. ③ In 2022, the percentage\nof adults who participated in education and training was lower\nin Spain than in Germany. ④ In Italy, the percentage of adults\nwho participated in education and training in 2016 was lower\nthan that in 2022. ⑤ In each year listed, the percentage of\nadults in Greece who participated in education and training\nwas less than 20%.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Among these countries, the percentage of adults in the Netherlands who participated in education and training was the highest in each year listed in the graph."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "In Germany, the percentage of adults who participated in education and training in 2022 was higher than that in 2016."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "In 2022, the percentage of adults who participated in education and training was lower in Spain than in Germany."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "In Italy, the percentage of adults who participated in education and training in 2016 was lower than that in 2022."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "In each year listed, the percentage of adults in Greece who participated in education and training was less than 20%."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 780,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "grouped_bar_chart",
+        "assetPath": "english/assets/2026-06/q25-figure.png",
+        "sha256": "e8377625372b80a88000ed79001abe9e9468370a294f5cf48935287bbe3bb5d9",
+        "sourcePage": 4,
+        "alt": "성인 교육·훈련 참여율 원본 도표. Netherlands: 2016 64%, 2022 65%; Germany: 2016 52%, 2022 60%; Spain: 2016 43%, 2022 49%; Italy: 2016 42%, 2022 36%; Greece: 2016 17%, 2022 17%."
+      },
+      "review": {
+        "id": "2026_06_25",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 25,
+        "group": "info",
+        "type": "도표",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 이탈리아의 참여율은 2016년 42%에서 2022년 36%로 낮아졌으므로 선지의 비교 방향이 반대입니다.",
+        "typeApproach": "도표 문제는 국가별 두 시점 수치를 직접 짝지어 선지의 높고 낮음 방향을 확인합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Italy: 2016 42%, 2022 36%",
+            "role": "정답 수치",
+            "translation": "이탈리아는 2016년 42%, 2022년 36%입니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Netherlands: 2016 64%, 2022 65%",
+            "role": "최고값 대조",
+            "translation": "네덜란드는 두 해 모두 다섯 나라 중 가장 높습니다."
+          }
+        ],
+        "correctReason": "④는 2016년 수치가 2022년보다 낮다고 했지만 실제로는 42%가 36%보다 높으므로 일치하지 않습니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "In 2022, the percentage of adults who participated in education and training was lower in Spain than in Germany.",
+          "reason": "2022년 스페인은 49%, 독일은 60%이므로 이 선지는 도표와 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_26",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 26,
+      "type": "내용 일치",
+      "group": "info",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "26. Mary Budd Rowe에 관한 다음 글의 내용과 일치하지 않는",
+      "rawText": "26. \tMary Budd Rowe에 관한 다음 글의 내용과 일치하지 않는\n것은?\nMary Budd Rowe was best known for her achievements in\nscience education. When she was a middle school student, she\nmet Albert Einstein and was inspired by him to study science.\nIn 1954, she graduated from the University of California at\nBerkeley with a master’s degree in zoology. Then she earned\nher \tdoctorate \tdegree \tin \tscience \teducation \tfrom \tStanford\nUniversity in 1964. Through her research, Rowe discovered\nthat \tlearning \tcould \tbe \timproved \tby \tincreasing \tteachers’\naverage “wait time” for students’ responses. During her career,\nshe directed a science education program in Harlem. She also\nserved \tas \tPresident \tof \tthe \tNational \tScience \tTeachers\nAssociation. In 1990, she published her book, The Process of\nKnowing. Throughout her career, she practiced Einstein’s\nadvice, “Science is exploring, and exploring is fun.” When she\ndied in 1996, she was remembered as one of the leading\nfigures in the field of science education.\n① Albert Einstein을 만났을 때 중학생이었다.\n② 1964년에 동물학으로 박사 학위를 받았다.\n③ Harlem에서 과학 교육 프로그램을 감독했다.\n④ 1990년에 The Process of Knowing을 출판했다.\n⑤ 과학 교육 분야의 선도적인 인물로 기억되었다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Albert Einstein을 만났을 때 중학생이었다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "1964년에 동물학으로 박사 학위를 받았다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Harlem에서 과학 교육 프로그램을 감독했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "1990년에 The Process of Knowing을 출판했다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "과학 교육 분야의 선도적인 인물로 기억되었다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1146,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_26",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 26,
+        "group": "info",
+        "type": "내용 일치",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 1964년에 받은 박사 학위 전공은 동물학이 아니라 과학 교육입니다.",
+        "typeApproach": "내용 불일치 문제는 인물·연도·학위·전공처럼 결합된 정보를 원문과 한 항목씩 대조합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "In 1954, she graduated from the University of California at\nBerkeley with a master’s degree in zoology.",
+            "charStart": 223,
+            "role": "동물학 학위",
+            "translation": "1954년 동물학 석사 학위를 받았습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Then she earned\nher \tdoctorate \tdegree \tin \tscience \teducation \tfrom \tStanford\nUniversity in 1964.",
+            "charStart": 327,
+            "role": "박사 학위 전공",
+            "translation": "1964년 스탠퍼드대학교에서 과학 교육 박사 학위를 받았습니다."
+          }
+        ],
+        "correctReason": "동물학은 1954년 석사 전공이고 1964년 박사 전공은 과학 교육이므로 ②가 불일치합니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "Albert Einstein을 만났을 때 중학생이었다.",
+          "reason": "원문에 중학생 때 Einstein을 만났다고 명시되어 있어 이 선지는 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_27",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 27,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "27. Hanok-inspired Cultural Product Contest에 관한 다음 안내문의",
+      "rawText": "27. \tHanok-inspired Cultural Product Contest에 관한 다음 안내문의\n내용과 일치하지 않는 것은?\nHanok-inspired Cultural Product Contest\nExplore your creativity by designing practical products!\nTheme: The beauty of Hanok\nApplicants: Artists and social enterprises\nBenefit: Selected products will be sold in Hanok village\nsouvenir shops.\nSchedule\nWhen \tWhat to Do\nApplication June\n10—15\nDownload the application form\nfrom our website and upload a\ncompleted one.\nProduct\nSubmission\nJuly\n14—18\nBring the product in person to our\noffice and do not send it by post.\nSelection\nAnnouncement July 28 \tCheck the results on our website.\n※ For more information, including selection methods, please\nvisit our website, www.pre*serve*H.kr.\n① 주제는 한옥의 아름다움이다.\n② 예술가와 사회적 기업이 응모할 수 있다.\n③ 선정된 작품은 한옥 마을 기념품점에서 판매될 것이다.\n④ 응모 신청서 양식은 웹사이트에서 다운로드해야 한다.\n⑤ 응모자는 작품을 우편으로 제출해야 한다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "주제는 한옥의 아름다움이다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "예술가와 사회적 기업이 응모할 수 있다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "선정된 작품은 한옥 마을 기념품점에서 판매될 것이다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "응모 신청서 양식은 웹사이트에서 다운로드해야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "응모자는 작품을 우편으로 제출해야 한다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 832,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "notice_with_table",
+        "assetPath": "english/assets/2026-06/q27-notice.png",
+        "sha256": "4c1057f383fbd8f2c311d85ffc298abaaf310ee7b5ef6577953df8e21b945f00",
+        "sourcePage": 4,
+        "alt": "Hanok-inspired Cultural Product Contest 원본 안내문. Applicants: Artists and social enterprises. Product Submission: Bring the product in person to our office and do not send it by post."
+      },
+      "review": {
+        "id": "2026_06_27",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 27,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 작품은 사무실에 직접 가져와야 하며 우편으로 보내면 안 됩니다.",
+        "typeApproach": "안내문 문제는 신청과 실제 작품 제출처럼 단계가 다른 절차를 구분해 확인합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Applicants: Artists and social enterprises",
+            "role": "지원 대상",
+            "translation": "예술가와 사회적 기업이 지원할 수 있습니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Product Submission: Bring the product in person to our office and do not send it by post.",
+            "role": "제출 방식",
+            "translation": "작품은 사무실에 직접 가져오고 우편으로 보내지 말아야 합니다."
+          }
+        ],
+        "correctReason": "⑤는 우편 제출이라고 했지만 안내문은 직접 방문 제출과 우편 금지를 명시하므로 일치하지 않습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "응모 신청서 양식은 웹사이트에서 다운로드해야 한다.",
+          "reason": "신청 단계에서 웹사이트의 양식을 내려받으라고 되어 있어 이 선지는 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_28",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 28,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "28. 2025 Science Gamification Challenge에 관한 다음 안내문의",
+      "rawText": "28. \t2025 Science Gamification Challenge에 관한 다음 안내문의\n내용과 일치하는 것은?\n2025 Science Gamification Challenge\nLearn science through games at Evernville Science Park!\nParticipants: Ages 8—13\nDate and Time: June 7, 9:00 a.m.—11:30 a.m.\nGuidelines\n∙Download the game map from the website.\n∙Start the first mission at the main gate.\n∙Complete each mission using your knowledge of science.\n∙Go back to the main gate after you complete all five\nmissions.\nReservation: Online reservation is required.\nParticipation Fee: $20 (lunch not included)\nNote: Only the first participant who completes all five missions\nwill receive a medal.\n※ For more information, please visit www.*s* gc*.com.\n① 3시간 동안 진행된다.\n② 첫 번째 미션을 정문에서 시작한다.\n③ 온라인으로 예약하지 않아도 된다.\n④ 참가비에 점심이 포함되어 있다.\n⑤ 모든 참가자는 메달을 받을 것이다.\n\n-- 4 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n5\n5 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "3시간 동안 진행된다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "첫 번째 미션을 정문에서 시작한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "온라인으로 예약하지 않아도 된다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "참가비에 점심이 포함되어 있다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "모든 참가자는 메달을 받을 것이다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 823,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "figure": {
+        "kind": "notice",
+        "assetPath": "english/assets/2026-06/q28-notice.png",
+        "sha256": "fa2883fe253addf12fe31f55245d3cefc8dd688a731fa39f1774c8d873cfd0a3",
+        "sourcePage": 4,
+        "alt": "2025 Science Gamification Challenge 원본 안내문. Date and Time: June 7, 9:00 a.m.–11:30 a.m. Start the first mission at the main gate."
+      },
+      "review": {
+        "id": "2026_06_28",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 28,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 안내문의 첫 미션은 정문에서 시작합니다.",
+        "typeApproach": "안내문 일치 문제는 시간·장소·예약·비용·수상 조건을 각각 독립적으로 확인합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Date and Time: June 7, 9:00 a.m.–11:30 a.m.",
+            "role": "진행 시간",
+            "translation": "행사는 오전 9시부터 11시 30분까지 2시간 30분 동안 진행됩니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Start the first mission at the main gate.",
+            "role": "시작 장소",
+            "translation": "첫 미션은 정문에서 시작합니다."
+          }
+        ],
+        "correctReason": "첫 미션을 정문에서 시작하라는 지침과 정확히 일치하므로 ②입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "3시간 동안 진행된다.",
+          "reason": "9시부터 11시 30분까지이므로 실제 진행 시간은 2시간 30분입니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_29",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 29,
+      "type": "어법",
+      "group": "grammar",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "29. 다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?",
+      "rawText": "29. \t다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?\nChanges in the degree of closeness ① are quite important in\nmanaging emotional intensity. Take, for example, emotions\ninduced by television. Closeness and familiarity are important\nin making the fictional environment more ② real. Accordingly,\nmost TV shows are set in the present or in a time within the\nmemory of the viewers. Most characters are supposed to be\ntypes with whom we are familiar. Such closeness and familiarity\nmake it easier for us ③ perceive the imaginary story to be a\nreal one. In other circumstances, such as when violence is\nshown on TV, the closeness variable is used to reduce emotional\nintensity. Television entertainment tends to place social problems\ninvolving violence in another time and place, letting us watch\nthose \tfictionalized \tcharacters \tsearch \tfor \tsolutions \tto \tour\nproblems in settings ④ safely distanced from our own. When\nviolence occurs in a contemporary setting, it is generally the\nproduct of the interaction of police and criminals ― again, it\nis ⑤ removed from the lives of good citizenry.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "are"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "real"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "perceive"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "safely"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "removed"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1070,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          18
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_29",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 29,
+        "group": "grammar",
+        "type": "어법",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. make it easier for us 뒤에는 목적격 보어를 설명하는 to부정사 to perceive가 필요합니다.",
+        "typeApproach": "어법 문제는 표시된 단어만 보지 말고 앞뒤 동사 구조가 요구하는 형태를 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "make it easier for us",
+            "charStart": 459,
+            "role": "문장 구조",
+            "translation": "우리에게 더 쉽게 만들어 준다는 구조입니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "perceive the imaginary story to be a\nreal one.",
+            "charStart": 483,
+            "role": "오류 지점",
+            "translation": "가상의 이야기를 실제라고 인식한다는 의미이며 perceive 앞에 to가 필요합니다."
+          }
+        ],
+        "correctReason": "가목적어 it과 형용사 보어 easier 뒤에서 진목적어 역할을 하는 to perceive가 와야 하므로 perceive만 쓴 ③이 틀렸습니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "real",
+          "reason": "환경을 실제처럼 만든다는 make the fictional environment more real 구조에서 형용사 real은 적절합니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_30",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 30,
+      "type": "어휘",
+      "group": "vocab",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "30. 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지",
+      "rawText": "30. \t다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지\n않은 것은? [3점]\nGaining an audience for your writing involves not just\nfinding a voice but ensuring that voice resonates with your\nintended readers. Entrepreneurs understand the importance of\nbuilding a brand that makes them memorable and distinct from\ntheir competitors, drawing customers to their products or\nservices. \tThey \tachieve \tthis \tby ① pinpointing \ttheir \ttarget\naudience, crafting a unique value proposition, and shaping a\nrecognizable identity. While scholars might initially find these\nentrepreneurial \tconcepts ② alien, \tthey \tactually \tengage \tin\nsimilar practices when they set themselves apart in their\nacademic writing. Consider the typical literature review and\nmotivation \tsection \tof \ta scholarly \tarticle ― the aim \tis \tto\nhighlight ③ gaps in existing research and position oneself as\nthe \tone \twho \twill \taddress \tthese \toverlooked \tareas. \tThe\nchallenge, as Labaree suggests, is not just in developing\ninnovative ideas but in ④ cultivating a distinctive voice that\nmakes readers think, “Ah, this sounds like [the author].” It’s about\nbalancing the expression of your ideas with the development\nof a unique voice that leaves a ⑤ temporary impression on\nyour audience.\n* resonate: 공명하다 \t** entrepreneur: 기업가\n[31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "pinpointing"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "alien"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "gaps"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "cultivating"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "temporary"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1304,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_30",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 30,
+        "group": "vocab",
+        "type": "어휘",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 독자에게 기억되고 구별되는 목소리를 만든다는 문맥이므로 temporary가 아니라 lasting에 가까운 말이 필요합니다.",
+        "typeApproach": "어휘 문제는 표시어의 사전 뜻보다 앞뒤 문장이 만드는 방향이 같은지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "building a brand that makes them memorable and distinct from\ntheir competitors",
+            "charStart": 227,
+            "role": "브랜드 목표",
+            "translation": "브랜드는 기억에 남고 경쟁자와 구별되게 해야 합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "temporary impression on\nyour audience.",
+            "charStart": 1189,
+            "role": "문맥 충돌",
+            "translation": "독자에게 일시적 인상을 남긴다는 표현은 앞의 지속적 차별화와 맞지 않습니다."
+          }
+        ],
+        "correctReason": "글은 기억되고 구별되는 고유한 목소리를 강조하므로 일시적이라는 temporary는 문맥상 반대입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "cultivating",
+          "reason": "고유한 목소리를 길러 낸다는 뜻으로, 독자에게 인식되는 정체성을 만든다는 문맥에 맞습니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_31",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 31,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "31. The human psychology and education communities (as",
+      "rawText": "31. \tThe human psychology and education communities (as\nwell as some animal researchers!) have been against referring\nto “teaching” when describing social learning in animals,\nmainly because teaching implies a level of \ton\nthe part of the model that is difficult to measure in animals.\nNonetheless, there has been a movement within the animal\ncognition community to say that animals can, in fact, teach\none another. For example, skilled ants engage in a behavior\ncalled tandem running, in which they touch their bodies to the\nbody of a novice ant as they lay down chemical trails,\npresumably to assist the newcomer with route learning. Killer\nwhales also repeat the same seal hunting technique in front of\ntheir \toffspring, \tsometimes \twithout \teven \tkilling \tthe \tseal,\nleading researchers to ask why they would repeatedly catch\nand \trelease \ta \tseal \tif \tthey \twere \tnot \tplanning \tto \teat \tit.\nConsidering the amount of energy they’d have to expend,\nthere would need to be a good reason, and that reason might\nbe teaching.\n* presumably: 추측상 \t** offspring: 자손\n① comfort \t② courage\n③ frustration \t④ inventiveness\n⑤ intentionality",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "comfort"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "courage"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "frustration"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "inventiveness"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "intentionality"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1130,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          20
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_31",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 31,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 동물의 행동을 teaching이라 부르려면 다른 개체를 가르치려는 의도성이 전제되어야 합니다.",
+        "typeApproach": "빈칸 문제는 빈칸을 직접 정의하는 문장과 뒤의 구체 사례가 공통으로 요구하는 개념을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "teaching implies a level of \ton\nthe part of the model that is difficult to measure in animals.",
+            "charStart": 191,
+            "role": "빈칸 정의",
+            "translation": "가르침은 동물에게 측정하기 어려운 어떤 수준의 의도를 가르치는 개체에게 요구합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Considering the amount of energy they’d have to expend,\nthere would need to be a good reason, and that reason might\nbe teaching.",
+            "charStart": 897,
+            "role": "사례의 추론",
+            "translation": "큰 에너지를 쓰는 행동에는 이유가 있어야 하며 그 이유가 가르침일 수 있습니다."
+          }
+        ],
+        "correctReason": "다른 개체의 학습을 돕기 위해 일부러 에너지를 쓰는 행동을 설명하므로 필요한 개념은 intentionality입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "inventiveness",
+          "reason": "새로운 방법을 발명하는 능력이 아니라 다른 개체를 가르치려는 의도 여부가 쟁점입니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_32",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 32,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "32. Writers often give us the impression that they have",
+      "rawText": "32. \tWriters \toften \tgive \tus \tthe \timpression \tthat \tthey \thave\ndescribed the faces of their characters, when in fact they have\nsimply given you an outline to fill in. Of Esch, the most\nimportant character in Hermann Broch’s masterpiece The\nSleepwalkers, we learn only that he has big teeth. Even so, we\ndon’t feel as if his face is a dentate blankness. Most often, we\nmistake being told what effect someone’s appearance has\nfor an account of that appearance. The poet Mallarmé’s advice\n― Peindre non la chose, mais l’effet qu’elle produit (‘Paint\nnot the thing itself but the effect it produces’) sounds like\na self-denying ordinance. Actually it is a rather clever way\nout of an intractable problem. When, in one of his novels,\nEvelyn Waugh says of a new character, that ‘he had just the\nkind of appearance one would expect a young man of his\ntype to have’ and nothing else, you still feel as if you\n. [3점]\n* dentate: 이가 있는 \t** ordinance: 법령\n*** intractable: 다루기 힘든\n① have been told exactly what he looks like\n② have become a member of his social group\n③ already know what will happen to him in the story\n④ have been given precise details about his behavior\n⑤ recognize the core characteristics of his personality\n\n-- 5 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n6\n6 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "have been told exactly what he looks like"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "have become a member of his social group"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "already know what will happen to him in the story"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "have been given precise details about his behavior"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "recognize the core characteristics of his personality"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1269,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          20
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_32",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 32,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 작가는 외모를 자세히 쓰지 않아도 윤곽이나 인상만으로 독자가 완전한 얼굴을 본 듯 느끼게 합니다.",
+        "typeApproach": "빈칸 문제는 첫 문장의 주장과 마지막 사례가 만드는 같은 효과를 찾아 문장을 완성합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "described the faces of their characters, when in fact they have\nsimply given you an outline to fill in.",
+            "charStart": 65,
+            "role": "핵심 주장",
+            "translation": "작가는 얼굴을 묘사한 듯하지만 실제로는 독자가 채울 윤곽만 줍니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Most often, we\nmistake being told what effect someone’s appearance has\nfor an account of that appearance.",
+            "charStart": 355,
+            "role": "독자의 착각",
+            "translation": "우리는 외모가 주는 효과를 들은 것을 외모 자체의 설명으로 착각합니다."
+          }
+        ],
+        "correctReason": "Waugh가 세부 외모를 말하지 않았는데도 독자는 그 인물을 정확히 본 듯 느낀다는 ①이 글의 주장과 일치합니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "recognize the core characteristics of his personality",
+          "reason": "글은 성격의 핵심 특성을 알아보는 효과가 아니라 외모를 구체적으로 들은 듯한 착각을 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_33",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 33,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "33. When we narrow, we’re redirecting all of our computing",
+      "rawText": "33. \tWhen we narrow, we’re redirecting all of our computing\npower to the handful of processes that matter. It’s as if to help\nwith our slow Wi-Fi, we disconnect our phone and tablet, just\nso that our video conference call won’t lag. Narrowing also\nhelps \twith \tgoal \tattainment. \tIt \tcuts \tout \tall \tof \tthe \tother\ndistractions and places the most important goal front and\ncenter. When we home in, we increase motivational intensity,\nreinforcing that what’s in front of us is what we should be\nafter. For a brief moment, the trade-off can be worthwhile, but\nwhen we \t, we start to miss\ncues and signals. We get locked in on one path without being\nable to step back and see a better route. When we’re stuck\nnarrowed in for too long, accidents go up and performance\ndrops. We miss hearing alarms that signal there’s a problem\nelsewhere.\n* lag: 지체되다\n① get distracted by too many sources\n② rely too heavily on digital devices\n③ randomly switch between tasks\n④ remain zoomed in for too long\n⑤ fail to control our feelings",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "get distracted by too many sources"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "rely too heavily on digital devices"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "randomly switch between tasks"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "remain zoomed in for too long"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "fail to control our feelings"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1016,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          21
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_33",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 33,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 좁은 집중은 잠시 유용하지만 너무 오래 유지하면 다른 신호와 더 나은 경로를 놓칩니다.",
+        "typeApproach": "빈칸 앞의 양보와 뒤의 부정적 결과가 시작되는 시간 조건을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "For a brief moment, the trade-off can be worthwhile, but\nwhen we \t, we start to miss\ncues and signals.",
+            "charStart": 501,
+            "role": "전환 구조",
+            "translation": "잠깐은 유용하지만 어떤 상태가 지속되면 단서와 신호를 놓치기 시작합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "When we’re stuck\nnarrowed in for too long, accidents go up and performance\ndrops.",
+            "charStart": 689,
+            "role": "빈칸 재진술",
+            "translation": "좁은 집중에 너무 오래 갇히면 사고가 늘고 수행이 떨어집니다."
+          }
+        ],
+        "correctReason": "뒤 문장이 narrowed in for too long을 그대로 설명하므로 remain zoomed in for too long이 정답입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "get distracted by too many sources",
+          "reason": "문제는 산만함이 아니라 한 대상에 지나치게 오래 집중해 다른 신호를 놓치는 상태입니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_34",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 34,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "34. One word is inextricably associated with geography: where.",
+      "rawText": "34. \tOne word is inextricably associated with geography: where.\nThat is because geography starts from the premise that it\nmatters where something takes place on Earth’s surface. The\nkey questions are not simply “where” questions, though; they\nare “why there” and “so what” questions. Getting to such\nquestions means taking spatial arrangements, variations, and\ninterconnections seriously. Engaging in even the simplest\nday-to-day \tactivity \trequires \tsome \tappreciation \tof \tspatial\ncircumstances ― where to find food and services, how to get\nto work places, and the like. Moving up in scale, without some\nawareness of \t,\nit is difficult to make reasoned business or policy judgments,\nmake sense of events, or grasp some of the basic forces\nshaping life on the planet. Locating a new store or public\nservice requires taking into consideration population distributions,\nthe location of roads and utilities, socio-economic patterns,\nand more. Understanding why and where migration happens\nrequires consideration of the political organization of territory,\nthe spatial consequences of discrimination, socio-economic\npatterns, and the layout of the physical environment. [3점]\n* inextricably: 풀 수 없게 \t** premise: 전제\n① why cross-cultural conflicts will increase\n② how phenomena are arranged on Earth’s surface\n③ when the Earth’s natural resources will be exhausted\n④ which places on Earth are damaged by climate change\n⑤ who has the authority to make decisions about territories",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "why cross-cultural conflicts will increase"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "how phenomena are arranged on Earth’s surface"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "when the Earth’s natural resources will be exhausted"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "which places on Earth are damaged by climate change"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "who has the authority to make decisions about territories"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1472,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          22
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_34",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 34,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 지리적 판단에는 지표 위 현상들의 공간적 배열과 연결에 대한 인식이 필요합니다.",
+        "typeApproach": "빈칸 문제는 반복되는 핵심어와 뒤의 예시들이 공유하는 상위 개념을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Getting to such\nquestions means taking spatial arrangements, variations, and\ninterconnections seriously.",
+            "charStart": 284,
+            "role": "핵심 개념",
+            "translation": "공간적 배열, 변화, 상호 연결을 중요하게 다뤄야 합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Locating a new store or public\nservice requires taking into consideration population distributions,\nthe location of roads and utilities, socio-economic patterns,\nand more.",
+            "charStart": 769,
+            "role": "적용 사례",
+            "translation": "새 시설의 위치를 정하려면 인구 분포와 도로·기반 시설의 위치 등을 고려해야 합니다."
+          }
+        ],
+        "correctReason": "글 전체가 지표 위 현상의 위치·배열·연결을 이해해야 판단할 수 있다고 설명하므로 ②입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "which places on Earth are damaged by climate change",
+          "reason": "기후 변화 피해 지역은 가능한 한 사례일 뿐, 사업·정책·이주까지 포괄하는 핵심 개념이 아닙니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_35",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 35,
+      "type": "무관한 문장",
+      "group": "irrelevant",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "35. 다음 글에서 전체 흐름과 관계 없는 문장은?",
+      "rawText": "35. \t다음 글에서 전체 흐름과 관계 없는 문장은?\nA \tgenuine \tglacier \tmust \tbe \tpermanent. \tGenerally, \tthis\nimplies that sufficient fresh snow must accumulate during the\ncold months to offset melting during the summer, although on\na \tyear-to-year \tbasis, \tglaciers \tmay \texpand \tor \tcontract,\ndepending on local and global climatic conditions. ① Today,\nmost glaciers around the world are melting because of the\nwarming climate, and it appears that the rate of melting is\naccelerating. ② This has been documented spectacularly in\nplaces such as the Alps, where historical records have been\nkept and dated sketches and photographs are available to\ncompare with the present extent of ice. ③ Even over periods\nas short as a few decades, satellite images show that dramatic\nreduction of mountain glaciers has occurred in the Andes,\nthe \tHimalayas, \tand \telsewhere. ④ The \tvarious \trocks \tand\nminerals contained in glaciers have become a popular subject\nof science projects in schools. ⑤ It is estimated that many\nsmall mountain glaciers will disappear completely within ten\nto twenty years unless there is a sudden and unexpected\nchange in the present warming trend.\n* offset: 상쇄하다\n[36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한\n것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Today, most glaciers around the world are melting because of the warming climate, and it appears that the rate of melting is accelerating."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "This has been documented spectacularly in places such as the Alps, where historical records have been kept and dated sketches and photographs are available to compare with the present extent of ice."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Even over periods as short as a few decades, satellite images show that dramatic reduction of mountain glaciers has occurred in the Andes, the Himalayas, and elsewhere."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "The various rocks and minerals contained in glaciers have become a popular subject of science projects in schools."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "It is estimated that many small mountain glaciers will disappear completely within ten to twenty years unless there is a sudden and unexpected change in the present warming trend."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1203,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_35",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 35,
+        "group": "irrelevant",
+        "type": "무관한 문장",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 글은 기후 온난화로 빙하가 줄어드는 증거와 전망을 다루는데, 학교 과학 프로젝트 소재는 흐름에서 벗어납니다.",
+        "typeApproach": "무관한 문장 문제는 앞뒤 문장이 공유하는 중심 대상과 인과 흐름을 먼저 고정합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "most glaciers around the world are melting because of the\nwarming climate",
+            "charStart": 335,
+            "role": "중심 흐름",
+            "translation": "대부분의 빙하는 기후 온난화 때문에 녹고 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "The \tvarious \trocks \tand\nminerals contained in glaciers have become a popular subject\nof science projects in schools.",
+            "charStart": 844,
+            "role": "이탈 문장",
+            "translation": "빙하 속 암석과 광물이 학교 과학 프로젝트의 인기 소재가 되었다는 내용입니다."
+          }
+        ],
+        "correctReason": "①~③과 ⑤는 모두 빙하 감소의 현재 증거와 미래 소멸 전망을 이어 가지만 ④만 학교 프로젝트를 말합니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "It is estimated that many small mountain glaciers will disappear completely within ten to twenty years unless there is a sudden and unexpected change in the present warming trend.",
+          "reason": "빙하가 녹는 속도가 빨라진다는 앞의 흐름을 미래 소멸 전망으로 이어 주는 관련 문장입니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_36",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 36,
+      "type": "순서",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "36.",
+      "rawText": "36.\nIf we take an evolutionary look at our beginnings, we see\na life in which high levels of physical activity were required\nfor survival.\n(A) There are fewer manual jobs, we do not need to travel on\nfoot, we do not need to hunt and harvest for our food, and\nmany domestic chores have been mechanized. While these\nchanges have created many benefits for our longevity and\nquality of life, they have also created many problems.\n(B) Lack of sufficient physical activity has now been linked to\nat least 17 unhealthy conditions, almost all of which are\nchronic diseases or considered risk factors for chronic\ndiseases. Adrianne Hardman has summarized this serious\nsituation for public health: “Physical inactivity is a waste\nof human potential for health and well-being.”\n(C) Even one century ago, most people needed to be physically\nactive to work, to travel, and to take care of homes and\nfamilies. Our modern world has engineered such activity\nout of our lives.\n* chore: 일 \t** chronic: 만성의\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n\n-- 6 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n7\n7 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1130,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_36",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 36,
+        "group": "order",
+        "type": "순서",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 과거에는 활동이 필수였다는 (C), 현대에 활동이 사라진 구체 이유인 (A), 그 결과인 질병 문제 (B)의 순서입니다.",
+        "typeApproach": "순서 문제는 시간 대비, 지시어, 원인과 결과가 이어지는 연결 고리를 문단마다 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "(C) Even one century ago, most people needed to be physically\nactive to work, to travel, and to take care of homes and\nfamilies. Our modern world has engineered such activity\nout of our lives.",
+            "charStart": 767,
+            "role": "첫 연결",
+            "translation": "한 세기 전의 높은 활동량과 활동을 없앤 현대 사회를 대비합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "(A) There are fewer manual jobs, we do not need to travel on\nfoot, we do not need to hunt and harvest for our food, and\nmany domestic chores have been mechanized.",
+            "charStart": 139,
+            "role": "현대 변화의 구체화",
+            "translation": "현대 사회가 신체 활동을 줄인 구체적인 이유를 나열합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "(B) Lack of sufficient physical activity has now been linked to\nat least 17 unhealthy conditions",
+            "charStart": 426,
+            "role": "결과",
+            "translation": "활동 부족이 여러 건강 문제와 연결된 결과를 제시합니다."
+          }
+        ],
+        "correctReason": "도입의 진화적 과거를 (C)가 이어 받고, (A)가 현대 변화의 내용을 설명한 뒤, (B)가 그 변화가 낳은 건강 문제로 마무리합니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "(A) - (C) - (B)",
+          "reason": "(A)의 ‘these changes’가 가리키는 현대적 변화의 배경이 먼저 제시되어야 하므로 (A)가 첫 문단이 될 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_37",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 37,
+      "type": "순서",
+      "group": "order",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "37.",
+      "rawText": "37.\nA good example of chaos is the magnetic pendulum sold\nas an executive toy. It has four magnets arranged in a\nsquare at the base and a pendulum that swings back and\nforth between them.\n(A) In order to produce chaos, the iteration has to be within\nwhat is called a nonlinear system. Nor are all nonlinear\nsystems chaotic: to become so they need to be pushed\nbeyond a certain point, called a bifurcation. Before that\npoint is reached they may behave in a quite orderly fashion.\n(B) Release the pendulum and note the magnets that it visits,\nand in what order. If the pendulum is released from the same\nposition a second time, the pattern of movement may at\nfirst be the same but soon it will become completely\ndifferent. In fact, the pattern of its movement is chaotic.\n(C) No matter how much care is taken to start the pendulum\nin the same position, it will visit an entirely different set of\npoints on the two occasions. Chaotic systems are generated\nby iteration, though not all iteration leads to chaos. [3점]\n* pendulum: 추(錘) \t** iteration: 반복\n*** bifurcation: 분기(分岐)\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n[38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장\n적절한 곳을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1211,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          24
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_37",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 37,
+        "group": "order",
+        "type": "순서",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 추를 놓아 두 번의 움직임을 관찰하는 (B), 결과 차이를 일반화하는 (C), 비선형성과 분기 조건을 설명하는 (A)의 순서입니다.",
+        "typeApproach": "순서 문제는 실험 행동, 관찰 결과, 일반 원리의 단계가 자연스럽게 이어지는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "(B) Release the pendulum and note the magnets that it visits,\nand in what order.",
+            "charStart": 479,
+            "role": "실험 시작",
+            "translation": "먼저 추를 놓아 방문하는 자석과 순서를 관찰합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "(C) No matter how much care is taken to start the pendulum\nin the same position, it will visit an entirely different set of\npoints on the two occasions.",
+            "charStart": 770,
+            "role": "관찰 결과",
+            "translation": "같은 위치에서 시작해도 두 번의 경로가 완전히 달라집니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Chaotic systems are generated\nby iteration, though not all iteration leads to chaos.",
+            "charStart": 923,
+            "role": "원리 연결",
+            "translation": "혼돈은 반복으로 생기지만 모든 반복이 혼돈을 만들지는 않습니다."
+          }
+        ],
+        "correctReason": "도입의 장치를 실제로 작동시키는 (B) 다음에 두 시행의 차이를 말하는 (C)가 오고, 반복이 혼돈이 되기 위한 조건을 (A)가 설명합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(C) - (A) - (B)",
+          "reason": "(C)의 ‘two occasions’는 (B)에서 두 번 추를 놓은 뒤에야 의미가 생기므로 (C)가 먼저 올 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_38",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 38,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "38.",
+      "rawText": "38.\nBut cute and beautiful designs also have downsides.\nResearch finds that people show a strong visceral interest in\nand desire to approach and own cute-looking and beautiful\n(elegant) designs. ( ① ) However, cute and beautiful designs\nelicit two very different motivations. ( ② ) A cute product or\npackage design elicits a nurturing motivation ― a desire to\ntake care of and keep the product, to hold it dear to our hearts\nand never let it go. ( ③ ) The beautiful product or package\ndesign elicits a self-expressive, or signaling, motivation ― a\ndesire to express oneself to others through product ownership.\n( ④ ) Certain types of cute products can be associated with a\nlack \tof \tsophistication \tor \tseriousness, \twhich \tcan \treduce\nperformance \texpectations \t(lowering \tperceived \tenablement\nbenefits). ( ⑤ ) Beautiful-looking designs may not attract\nattention over time because people become desensitized to\nthem.\n* visceral: 본능적인 \t** elicit: 이끌어 내다",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 954,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          25
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_38",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 38,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 주어진 문장은 장점과 동기를 설명한 부분에서 귀여운 디자인의 단점을 제시하는 부분으로 전환합니다.",
+        "typeApproach": "문장 삽입은 주어진 문장의 연결어와 핵심어가 앞 문장을 받아 뒤 문장을 예고하는 위치를 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "The beautiful product or package\ndesign elicits a self-expressive, or signaling, motivation ― a\ndesire to express oneself to others through product ownership.",
+            "charStart": 452,
+            "role": "삽입 전",
+            "translation": "아름다운 디자인이 자기표현 욕구를 불러일으킨다는 긍정적 동기를 설명합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Certain types of cute products can be associated with a\nlack \tof \tsophistication \tor \tseriousness",
+            "charStart": 617,
+            "role": "삽입 후",
+            "translation": "일부 귀여운 제품은 세련됨이나 진지함의 부족과 연관될 수 있다는 단점이 시작됩니다."
+          }
+        ],
+        "correctReason": "긍정적 동기 설명이 끝난 뒤 단점 두 가지가 시작되므로 ‘also have downsides’는 ④에 들어가야 합니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "③",
+          "reason": "③ 뒤에는 아직 아름다운 디자인의 자기표현 동기라는 긍정적 설명이 남아 있어 단점 전환이 너무 이릅니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_39",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 39,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "39.",
+      "rawText": "39.\nThey might be sitting still as they imagine all of this walking\nback and forth along their path; but they are reliving, at\nleast in their imagination, the movement of their feet.\nResearchers \tare \tstudying \thow \tour \teveryday \tphysical\nexperiences in the world contribute to our understanding of\nmathematical \tconcepts. ( ① ) The \texperience \tof \twalking\nalong a path, for example, can be a metaphor for thinking about\narithmetic. ( ② ) The path starts at some point 0 and as\nchildren walk along, every step takes them 1 unit further from\nthe starting point; they can even take half steps or skip along\ntwo steps at a time. ( ③ ) If they want to imagine what it might\nmean to add 5 and 9, they could think of first walking 9 steps\nand then walking 5 more. ( ④ ) But that also helps them\nthink about what 14－3 might mean because they can imagine\nwalking backwards. ( ⑤ ) If they close their eyes, they might\neven imagine the shape of the path, the smell of the trees, and\nthe sound that is made when they step on the dried leaves. [3점]\n* arithmetic: 산수",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1055,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          25
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_39",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 39,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 덧셈과 뺄셈을 길 위의 앞뒤 움직임으로 상상한 뒤, 실제로 앉아 있어도 그 움직임을 재현한다는 문장이 이어집니다.",
+        "typeApproach": "문장 삽입은 대명사와 요약 표현이 앞에서 무엇을 가리키는지, 뒤 문장과 주제가 어떻게 확장되는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "But that also helps them\nthink about what 14－3 might mean because they can imagine\nwalking backwards.",
+            "charStart": 766,
+            "role": "삽입 전",
+            "translation": "아이들은 뒤로 걷는 모습을 상상해 14에서 3을 빼는 의미를 생각합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "If they close their eyes, they might\neven imagine the shape of the path, the smell of the trees, and\nthe sound that is made when they step on the dried leaves.",
+            "charStart": 874,
+            "role": "삽입 후",
+            "translation": "이어 눈을 감고 길의 모양과 냄새, 발걸음 소리까지 상상합니다."
+          }
+        ],
+        "correctReason": "주어진 문장의 ‘all of this walking back and forth’가 앞의 덧셈과 뺄셈 걷기 전체를 받아야 하므로 ⑤가 적절합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "④",
+          "reason": "④에 넣으면 주어진 문장이 앞뒤 걷기 전체가 아니라 덧셈 예시만 받은 뒤 뺄셈 예시를 끊게 됩니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_40",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 40,
+      "type": "요약문",
+      "group": "summary",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),",
+      "rawText": "40. \t다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),\n(B)에 들어갈 말로 가장 적절한 것은?\nA serious deterioration in people’s working lives would\nbe deeply disturbing to \tthe social order. Indeed, few\nconsequences \tof \ttechnological \tchange \twould \tbe \tas\ndangerous. Today, the world of work is the main way that\nwe share out the fruits of growth: for most people, their\njob is their main, if not their only, source of income.\nTechnological unemployment would weaken that longstanding\narrangement, encouraging an even more extreme version\nof inequality in which some people receive more income\nthan others and many receive nothing at all. Nor would the\ndisturbance be only economic. For many people, their\nwork is both a source of income and of meaning. And with\nthat in mind, the threat is even broader: not only that the\nlabor market might be hollowed out, leaving some unable\nto find a good job and a reliable income, but that this sense\nof fulfilment that some people are fortunate to feel in their\njobs might be hollowed out as well, leaving them unable to\nfind purpose and live a satisfying life.\n* deterioration: 악화 \t** hollow: 속이 비게 하다\n󰀻\nBy creating unemployment, technology would upset the\nsocial \torder, \taffecting \tthe \t(A) \tof wealth \tand\npossibly eliminating the emotional \t(B) \tthat some\ndiscover in work.\n(A) \t(B) \t(A) \t(B)\n① distribution \t…… emptiness \t② distribution…… rewards\n③ concentration…… conflicts \t④ investment …… challenges\n⑤ investment \t…… growth\n\n-- 7 of 8 --\n\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n8\n8 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "distribution ··· emptiness"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "distribution ··· rewards"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "concentration ··· conflicts"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "investment ··· challenges"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "investment ··· growth"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1500,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          26
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_40",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 40,
+        "group": "summary",
+        "type": "요약문",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 기술 실업은 부의 분배를 무너뜨리고 일이 주던 정서적 보상과 의미까지 없앨 수 있습니다.",
+        "typeApproach": "요약문은 각 빈칸이 원문의 경제적 영향과 정서적 영향을 각각 정확히 바꾸어 말하는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Technological unemployment would weaken that longstanding\narrangement, encouraging an even more extreme version\nof inequality",
+            "charStart": 400,
+            "role": "경제적 영향",
+            "translation": "기술 실업은 기존 분배 구조를 약화하고 불평등을 심화합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "their\nwork is both a source of income and of meaning.",
+            "charStart": 673,
+            "role": "정서적 영향",
+            "translation": "일은 소득뿐 아니라 의미의 원천이기도 합니다."
+          }
+        ],
+        "correctReason": "부를 나누는 방식은 distribution, 일에서 얻는 의미와 충족감은 emotional rewards로 요약되므로 ②입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "distribution ··· emptiness",
+          "reason": "일자리가 사라질 때 없어지는 것은 공허함이 아니라 일에서 얻던 의미와 보상입니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_41",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 41,
+      "type": "장문 제목",
+      "group": "long",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "41. 윗글의 제목으로 가장 적절한 것은?",
+      "rawText": "41. \t윗글의 제목으로 가장 적절한 것은?\n① Blending In: When Tech Stops Feeling Like Tech\n② Digital Interfaces Are Becoming Too Complicated!\n③ Out-of-body Experience: A History of Virtual Reality\n④ How Software Designs Affect Work Productivity\n⑤ Wearable Technology in Contemporary Fashion",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nIn technological design, an aspiration towards seamlessness\naims to make the technological experience for humans blend\nseamlessly into our everyday lives. Essentially, this aspiration\naims towards experiences where people are no longer (a) aware\nof the technology, the interface or the differences between\nhuman-technology and human-human interaction. Considering\nthe metaphor of seams in clothing, we can say that we aspire\nto seamless aesthetics by stitching the seams closely, pressing\nthem flat and making sure they are (b) hidden on the inside\nso that we wear clothing rather than pieces of fabric. When\ndesigners and engineers talk about technological seamlessness,\nthey are often referring to ease of use and convenience. For\nexample, in interface design, an aspiration towards seamlessness\n(c) ensures the experience for the user flows and is not\nstressful or irritating. Most of us would have had experiences\nof (d) poor interface designs or apps in workplaces that make\nthings more complicated and irritating, and have longed for\nmore seamless interfaces. Technological seamlessness can\nalso include less visible screens in new technologies, or\nvirtual reality technologies with a seamless technological\ndesign. The aim is to immerse the user experience such that\nthe visual interaction might be described as inside the screen\nrather than a body interacting with a digital console or object\nas separate entities. Similarly, seamlessness in humanoid\nrobotic design aims to make humanoids (e) distinguishable\nfrom a human body.\n* seamlessness: 이음매 없음 \t** aesthetics: 미학\n*** immerse: 담그다",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Blending In: When Tech Stops Feeling Like Tech"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Digital Interfaces Are Becoming Too Complicated!"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Out-of-body Experience: A History of Virtual Reality"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "How Software Designs Affect Work Productivity"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Wearable Technology in Contemporary Fashion"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 273,
+        "sharedPassageChars": 1622,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          28
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_41",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 41,
+        "group": "long",
+        "type": "장문 제목",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 기술적 이음매를 숨겨 사용자가 기술을 의식하지 않게 하는 seamlessness가 글 전체의 주제입니다.",
+        "typeApproach": "장문 제목은 여러 예시를 하나로 묶는 반복 개념과 그 개념이 만드는 사용자 경험을 함께 담아야 합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "an aspiration towards seamlessness\naims to make the technological experience for humans blend\nseamlessly into our everyday lives.",
+            "charStart": 53,
+            "role": "중심 개념",
+            "translation": "기술 경험이 일상에 자연스럽게 섞이도록 하는 것이 목표입니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "people are no longer (a) aware\nof the technology, the interface or the differences between\nhuman-technology and human-human interaction.",
+            "charStart": 243,
+            "role": "목표 상태",
+            "translation": "사람이 기술과 인터페이스의 존재를 더 이상 의식하지 않는 경험을 지향합니다."
+          }
+        ],
+        "correctReason": "기술이 일상에 섞여 기술처럼 느껴지지 않게 한다는 내용을 가장 넓게 담은 제목은 ①입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "Digital Interfaces Are Becoming Too Complicated!",
+          "reason": "복잡한 인터페이스는 seamlessness의 필요성을 보여 주는 한 사례일 뿐 글 전체의 주제가 아닙니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_42",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 42,
+      "type": "장문 어휘",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "42. 밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은",
+      "rawText": "42. \t밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은\n것은? [3점]\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nIn technological design, an aspiration towards seamlessness\naims to make the technological experience for humans blend\nseamlessly into our everyday lives. Essentially, this aspiration\naims towards experiences where people are no longer (a) aware\nof the technology, the interface or the differences between\nhuman-technology and human-human interaction. Considering\nthe metaphor of seams in clothing, we can say that we aspire\nto seamless aesthetics by stitching the seams closely, pressing\nthem flat and making sure they are (b) hidden on the inside\nso that we wear clothing rather than pieces of fabric. When\ndesigners and engineers talk about technological seamlessness,\nthey are often referring to ease of use and convenience. For\nexample, in interface design, an aspiration towards seamlessness\n(c) ensures the experience for the user flows and is not\nstressful or irritating. Most of us would have had experiences\nof (d) poor interface designs or apps in workplaces that make\nthings more complicated and irritating, and have longed for\nmore seamless interfaces. Technological seamlessness can\nalso include less visible screens in new technologies, or\nvirtual reality technologies with a seamless technological\ndesign. The aim is to immerse the user experience such that\nthe visual interaction might be described as inside the screen\nrather than a body interacting with a digital console or object\nas separate entities. Similarly, seamlessness in humanoid\nrobotic design aims to make humanoids (e) distinguishable\nfrom a human body.\n* seamlessness: 이음매 없음 \t** aesthetics: 미학\n*** immerse: 담그다",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 84,
+        "sharedPassageChars": 1622,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          28
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_42",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 42,
+        "group": "long",
+        "type": "장문 어휘",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 인간형 로봇의 seamlessness는 사람과 구별되기 어렵게 만드는 것이므로 distinguishable은 문맥상 반대입니다.",
+        "typeApproach": "장문 어휘는 반복되는 중심 개념의 방향과 표시어가 같은 방향인지 확인합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "make the technological experience for humans blend\nseamlessly into our everyday lives.",
+            "charStart": 96,
+            "role": "개념 방향",
+            "translation": "기술 경험이 일상에 눈에 띄지 않게 섞여야 합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "seamlessness in humanoid\nrobotic design aims to make humanoids (e) distinguishable\nfrom a human body.",
+            "charStart": 1462,
+            "role": "문맥 충돌",
+            "translation": "인간형 로봇을 인간 신체와 구별 가능하게 만든다는 표현은 seamlessness의 방향과 반대입니다."
+          }
+        ],
+        "correctReason": "이음매 없는 설계의 목표라면 humanoid가 사람과 indistinguishable해야 하므로 distinguishable인 (e)가 부적절합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(d)",
+          "reason": "poor interface designs는 사용을 복잡하고 불편하게 만든다는 뒤 설명과 정확히 맞습니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_43",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 43,
+      "type": "장문 순서",
+      "group": "long",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로",
+      "rawText": "43. \t주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로\n가장 적절한 것은?\n①\n③\n⑤\n(B)\n(C)\n(D)\n－\n－\n－\n(D)\n(D)\n(C)\n－\n－\n－\n(C)\n(B)\n(B)\n②\n④\n(C)\n(D)\n－\n－\n(B)\n(B)\n－\n－\n(D)\n(C)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\n“Hi! I’m over here!” shouted Laura, waving brightly at\nCathy at the entrance of Darlingdale Farmer’s Market. Seeing\nher friend, Cathy rushed over in delight. Cathy had recently\nmoved into Laura’s town, and this was going to be (a) her\nfirst experience at a real farmer’s market. Born and raised in\na big city, where large supermarkets were more common,\nCathy had never had a chance to buy freshly-picked fruits or\nvegetables.\n(B)\nCarrying \tthe \tbags \tof peaches, \tCathy \tcame \tback \tand\nnoticed Laura holding a box of blueberries and jars of jam.\n“Cathy, those peaches look delicious! I bought some blueberries.\nWould you like to go to my place and make blueberry\npancakes together?” Laura asked. “Yes, that’s an excellent\nidea!” replied Cathy happily. As they walked out of the\nmarket, Cathy thanked her friend for the special experience,\nsaying “(b) I \treally \tlove \tthis \tplace! \tThank \tyou \tfor \tthe\nwonderful day.”\n(C)\nEntering the market, Laura said, “Let me show you around.\nAre you ready?” Cathy answered excitedly, “Absolutely! I’m\ngoing to buy some fresh peaches!” The market was already\ncrowded with people of all ages. “Cathy, you can taste the\nbest of the season here,” said Laura. Cathy smiled and began\nto look around. Meanwhile, Laura found some strawberry\njam for sale. She walked over to buy some. Curious to explore\nmore, Cathy said, “While (c) you’re buying jam, I’ll look\naround the market and get some peaches.”\n(D)\nWandering away from Laura, Cathy began to search for\npeaches. Cathy walked past booths of fresh flowers and\nhand-made soaps, which smelled heavenly. From a fruit stand,\n(d) she picked out some beautiful, ripe peaches. The fruit seller\ntold her, “Those peaches are a great choice because they’re\nonly here until this week. If you miss them now, (e) you’ll\nhave to wait another year for the season.” Hearing that, Cathy\nsaid, “Oh, I’ll get some more then! They’re really cheap!” She\nbought two bags of peaches.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(B) - (D) - (C)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(C) - (B) - (D)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(C) - (D) - (B)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(D) - (B) - (C)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(D) - (C) - (B)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 139,
+        "sharedPassageChars": 1978,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_43",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 43,
+        "group": "long",
+        "type": "장문 순서",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 시장에 들어가는 (C), 복숭아를 사는 (D), 복숭아를 들고 돌아와 함께 떠나는 (B)의 순서입니다.",
+        "typeApproach": "장문 순서는 장소 이동과 소지품 변화가 앞뒤 문단에서 끊기지 않는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "this was going to be (a) her\nfirst experience at a real farmer’s market.",
+            "charStart": 238,
+            "role": "출발 상황",
+            "translation": "Cathy에게 실제 농산물 시장 방문은 처음입니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Entering the market, Laura said, “Let me show you around.",
+            "charStart": 956,
+            "role": "첫 행동",
+            "translation": "두 사람은 먼저 시장 안으로 들어갑니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Wandering away from Laura, Cathy began to search for\npeaches.",
+            "charStart": 1470,
+            "role": "다음 행동",
+            "translation": "그다음 Cathy는 Laura와 떨어져 복숭아를 찾습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Carrying \tthe \tbags \tof peaches, \tCathy \tcame \tback \tand\nnoticed Laura holding a box of blueberries and jars of jam.",
+            "charStart": 462,
+            "role": "마무리 행동",
+            "translation": "복숭아를 산 뒤 Cathy가 Laura에게 돌아옵니다."
+          }
+        ],
+        "correctReason": "(C)에서 시장을 둘러보다 복숭아를 사러 가고, (D)에서 구매한 뒤, (B)에서 복숭아를 들고 돌아오므로 ③입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "(C) - (B) - (D)",
+          "reason": "(B)의 Cathy는 이미 복숭아 봉지를 들고 있으므로 복숭아를 사는 (D)보다 먼저 올 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_44",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 44,
+      "type": "장문 지칭",
+      "group": "long",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "44. 밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른",
+      "rawText": "44. \t밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\n“Hi! I’m over here!” shouted Laura, waving brightly at\nCathy at the entrance of Darlingdale Farmer’s Market. Seeing\nher friend, Cathy rushed over in delight. Cathy had recently\nmoved into Laura’s town, and this was going to be (a) her\nfirst experience at a real farmer’s market. Born and raised in\na big city, where large supermarkets were more common,\nCathy had never had a chance to buy freshly-picked fruits or\nvegetables.\n(B)\nCarrying \tthe \tbags \tof peaches, \tCathy \tcame \tback \tand\nnoticed Laura holding a box of blueberries and jars of jam.\n“Cathy, those peaches look delicious! I bought some blueberries.\nWould you like to go to my place and make blueberry\npancakes together?” Laura asked. “Yes, that’s an excellent\nidea!” replied Cathy happily. As they walked out of the\nmarket, Cathy thanked her friend for the special experience,\nsaying “(b) I \treally \tlove \tthis \tplace! \tThank \tyou \tfor \tthe\nwonderful day.”\n(C)\nEntering the market, Laura said, “Let me show you around.\nAre you ready?” Cathy answered excitedly, “Absolutely! I’m\ngoing to buy some fresh peaches!” The market was already\ncrowded with people of all ages. “Cathy, you can taste the\nbest of the season here,” said Laura. Cathy smiled and began\nto look around. Meanwhile, Laura found some strawberry\njam for sale. She walked over to buy some. Curious to explore\nmore, Cathy said, “While (c) you’re buying jam, I’ll look\naround the market and get some peaches.”\n(D)\nWandering away from Laura, Cathy began to search for\npeaches. Cathy walked past booths of fresh flowers and\nhand-made soaps, which smelled heavenly. From a fruit stand,\n(d) she picked out some beautiful, ripe peaches. The fruit seller\ntold her, “Those peaches are a great choice because they’re\nonly here until this week. If you miss them now, (e) you’ll\nhave to wait another year for the season.” Hearing that, Cathy\nsaid, “Oh, I’ll get some more then! They’re really cheap!” She\nbought two bags of peaches.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 78,
+        "sharedPassageChars": 1978,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2026_06_44",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 44,
+        "group": "long",
+        "type": "장문 지칭",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. (c) you는 딸기 잼을 사는 Laura를 가리키고, 나머지 네 표현은 모두 Cathy를 가리킵니다.",
+        "typeApproach": "지칭 문제는 대명사 바로 앞의 화자와 행동 주체를 실제 인물 이름으로 바꾸어 읽습니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Meanwhile, Laura found some strawberry\njam for sale. She walked over to buy some.",
+            "charStart": 1266,
+            "role": "Laura의 행동",
+            "translation": "Laura가 딸기 잼을 발견하고 사러 갑니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Curious to explore\nmore, Cathy said, “While (c) you’re buying jam, I’ll look\naround the market and get some peaches.”",
+            "charStart": 1348,
+            "role": "지칭 확인",
+            "translation": "Cathy가 Laura에게 ‘네가 잼을 사는 동안’이라고 말하므로 (c)는 Laura입니다."
+          }
+        ],
+        "correctReason": "(a), (b), (d), (e)는 Cathy를 가리키지만 (c)는 Cathy가 말을 건 상대인 Laura를 가리키므로 ③입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(e)",
+          "reason": "(e) you는 과일 판매자가 Cathy에게 말한 표현이므로 Cathy를 가리킵니다."
+        }
+      }
+    },
+    {
+      "id": "2026_06_45",
+      "examId": "2026_06",
+      "schoolYear": 2026,
+      "actualYear": 2025,
+      "session": "6월",
+      "qid": 45,
+      "type": "장문 내용",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "45. 윗글에 관한 내용으로 적절하지 않은 것은?",
+      "rawText": "45. \t윗글에 관한 내용으로 적절하지 않은 것은?\n① Cathy는 대도시에서 태어나고 성장했다.\n② Laura와 Cathy는 블루베리 팬케이크를 만들기로 했다.\n③ 시장은 다양한 나이의 사람들로 붐볐다.\n④ Laura는 판매 중인 딸기 잼을 발견했다.\n⑤ Cathy는 복숭아 가격이 비싸다고 생각했다.\n* 확인 사항\n◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인\n하시오.\n\n-- 8 of 8 --",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\n“Hi! I’m over here!” shouted Laura, waving brightly at\nCathy at the entrance of Darlingdale Farmer’s Market. Seeing\nher friend, Cathy rushed over in delight. Cathy had recently\nmoved into Laura’s town, and this was going to be (a) her\nfirst experience at a real farmer’s market. Born and raised in\na big city, where large supermarkets were more common,\nCathy had never had a chance to buy freshly-picked fruits or\nvegetables.\n(B)\nCarrying \tthe \tbags \tof peaches, \tCathy \tcame \tback \tand\nnoticed Laura holding a box of blueberries and jars of jam.\n“Cathy, those peaches look delicious! I bought some blueberries.\nWould you like to go to my place and make blueberry\npancakes together?” Laura asked. “Yes, that’s an excellent\nidea!” replied Cathy happily. As they walked out of the\nmarket, Cathy thanked her friend for the special experience,\nsaying “(b) I \treally \tlove \tthis \tplace! \tThank \tyou \tfor \tthe\nwonderful day.”\n(C)\nEntering the market, Laura said, “Let me show you around.\nAre you ready?” Cathy answered excitedly, “Absolutely! I’m\ngoing to buy some fresh peaches!” The market was already\ncrowded with people of all ages. “Cathy, you can taste the\nbest of the season here,” said Laura. Cathy smiled and began\nto look around. Meanwhile, Laura found some strawberry\njam for sale. She walked over to buy some. Curious to explore\nmore, Cathy said, “While (c) you’re buying jam, I’ll look\naround the market and get some peaches.”\n(D)\nWandering away from Laura, Cathy began to search for\npeaches. Cathy walked past booths of fresh flowers and\nhand-made soaps, which smelled heavenly. From a fruit stand,\n(d) she picked out some beautiful, ripe peaches. The fruit seller\ntold her, “Those peaches are a great choice because they’re\nonly here until this week. If you miss them now, (e) you’ll\nhave to wait another year for the season.” Hearing that, Cathy\nsaid, “Oh, I’ll get some more then! They’re really cheap!” She\nbought two bags of peaches.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Cathy는 대도시에서 태어나고 성장했다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Laura와 Cathy는 블루베리 팬케이크를 만들기로 했다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "시장은 다양한 나이의 사람들로 붐볐다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Laura는 판매 중인 딸기 잼을 발견했다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Cathy는 복숭아 가격이 비싸다고 생각했다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2026학년도_6월_영어_문제.pdf",
+        "answerFile": "2026학년도_6월_영어_정답.png",
+        "explainFile": "2026학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 233,
+        "sharedPassageChars": 1978,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2026_06_45",
+        "status": "ready",
+        "exam": "2026학년도 6월 모의평가 영어",
+        "qid": 45,
+        "group": "long",
+        "type": "장문 내용",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. Cathy는 복숭아가 비싸다고 한 것이 아니라 정말 싸다고 말하며 두 봉지를 샀습니다.",
+        "typeApproach": "장문 내용 문제는 선지의 인물·행동·평가를 해당 장면의 직접 발언과 대조합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Born and raised in\na big city, where large supermarkets were more common,\nCathy had never had a chance to buy freshly-picked fruits or\nvegetables.",
+            "charStart": 311,
+            "role": "성장 배경",
+            "translation": "Cathy는 대도시에서 태어나 자랐습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Hearing that, Cathy\nsaid, “Oh, I’ll get some more then! They’re really cheap!” She\nbought two bags of peaches.",
+            "charStart": 1868,
+            "role": "정답 근거",
+            "translation": "Cathy는 복숭아가 정말 싸다고 말하며 두 봉지를 샀습니다."
+          }
+        ],
+        "correctReason": "Cathy의 직접 발언은 ‘They’re really cheap!’이므로 비싸다고 생각했다는 ⑤가 적절하지 않습니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "Cathy는 대도시에서 태어나고 성장했다.",
+          "reason": "원문에 Cathy가 대도시에서 태어나 자랐다고 명시되어 있어 이 선지는 일치합니다."
+        }
+      }
+    }
+  ]
+}

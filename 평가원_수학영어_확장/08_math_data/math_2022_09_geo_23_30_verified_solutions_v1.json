@@ -1,0 +1,209 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 9월 모의평가 기하 23~30번 중 비그림 4문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 4,
+    "readyCount": 4,
+    "questionFingerprint": "23276c3e738dd82ef322b0b6af0cdce13c5f899713df48c4682299e4ff87896a",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040410/ect_7f132255-11e7-4cae-8313-a8150cd445731649a9911b68586.zip",
+      "archiveSha256": "1d1f16a13a6c326bd3e952765fcfe80d8ba8cebd23810354ab412c2558d77878",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "ae723d4c3892cbeb12836301c69cabb6ed432845a3be259ab28b6916131b75bd",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "8c1541d69fb9fd8b26a1e5a4ee85f8def670196a7cd6b474fc3404a07a09848d"
+    },
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보"
+  },
+  "items": {
+    "2022_09_geo_23": {
+      "id": "2022_09_geo_23",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 기하",
+      "questionNumber": 23,
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "xy평면 대칭에서는 z좌표의 부호만 바뀌므로 B=(3,0,2)이고, C와의 거리는 5입니다.",
+      "approach": "대칭이동으로 B의 좌표를 먼저 확정한 뒤 공간의 두 점 사이 거리 공식을 적용합니다.",
+      "concepts": [
+        "좌표공간의 대칭이동",
+        "공간의 두 점 사이 거리"
+      ],
+      "steps": [
+        {
+          "title": "대칭이동한 점 구하기",
+          "expression": "A(3,0,-2)\\xrightarrow{xy\\text{평면 대칭}}B(3,0,2)",
+          "explanation": "xy평면은 z=0인 평면이므로 x, y좌표는 그대로이고 z좌표의 부호만 바뀝니다."
+        },
+        {
+          "title": "거리 공식 적용하기",
+          "expression": "BC=\\sqrt{(3-0)^2+(0-4)^2+(2-2)^2}",
+          "explanation": "B와 C의 각 좌표 차를 제곱하여 더합니다."
+        },
+        {
+          "title": "길이 계산하기",
+          "expression": "BC=\\sqrt{9+16}=5",
+          "explanation": "따라서 선분 BC의 길이는 5입니다."
+        }
+      ],
+      "correctReason": "선분 BC의 길이가 5이므로 선택지 ⑤가 정답입니다.",
+      "commonMistake": "xy평면 대칭에서 y좌표까지 바꾸지 마세요. 평면에 수직인 z좌표만 부호가 바뀝니다.",
+      "verification": {
+        "problemPage": 17,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_geo_24": {
+      "id": "2022_09_geo_24",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 기하",
+      "questionNumber": 24,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "쌍곡선의 점근선 기울기는 ±b/a이고 b=4이므로 4/a=3에서 a=4/3입니다.",
+      "approach": "표준형에서 분모의 제곱근을 읽고 점근선 공식에 바로 대입합니다.",
+      "concepts": [
+        "쌍곡선의 표준형",
+        "쌍곡선의 점근선"
+      ],
+      "steps": [
+        {
+          "title": "점근선 공식 확인하기",
+          "expression": "\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1\\Rightarrow y=\\pm\\frac ba x",
+          "explanation": "x축 방향으로 열린 쌍곡선의 점근선 기울기는 ±b/a입니다."
+        },
+        {
+          "title": "b의 값 대입하기",
+          "expression": "b^2=16\\Rightarrow b=4,\\qquad\\frac4a=3",
+          "explanation": "a가 양수이고 양의 기울기 하나가 3이므로 4/a=3을 사용합니다."
+        },
+        {
+          "title": "a 구하기",
+          "expression": "a=\\frac43",
+          "explanation": "방정식을 정리하면 a는 4/3입니다."
+        }
+      ],
+      "correctReason": "a=4/3이므로 선택지 ④가 정답입니다.",
+      "commonMistake": "점근선 기울기를 a/b로 뒤집거나, 분모 16을 b=16으로 읽지 마세요. b는 4입니다.",
+      "verification": {
+        "problemPage": 17,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_geo_25": {
+      "id": "2022_09_geo_25",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 기하",
+      "questionNumber": 25,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "p의 끝점은 직선 x=1 위, q의 끝점은 중심 (4,2), 반지름 1인 원 위이므로 두 자취 사이의 최단 거리는 3-1=2입니다.",
+      "approach": "벡터 조건을 좌표평면의 두 자취로 바꾸어 직선과 원 사이의 최단 거리를 구합니다.",
+      "concepts": [
+        "벡터의 내적",
+        "벡터의 자취",
+        "직선과 원 사이의 거리"
+      ],
+      "steps": [
+        {
+          "title": "p의 자취 구하기",
+          "expression": "\\vec p=(x,y),\\quad\\vec p\\cdot\\vec a=3x=\\vec a\\cdot\\vec b=3\\Rightarrow x=1",
+          "explanation": "벡터 p의 끝점은 직선 x=1 위를 움직입니다."
+        },
+        {
+          "title": "q의 자취 구하기",
+          "expression": "|\\vec q-\\vec c|=1",
+          "explanation": "벡터 q의 끝점은 중심 (4,2), 반지름 1인 원 위를 움직입니다."
+        },
+        {
+          "title": "두 자취 사이 최단 거리 구하기",
+          "expression": "d((4,2),x=1)-1=|4-1|-1=2",
+          "explanation": "원의 중심에서 직선까지 거리는 3이고, 원의 반지름 1만큼 가까워질 수 있습니다."
+        }
+      ],
+      "correctReason": "|p-q|의 최솟값은 2이므로 선택지 ②가 정답입니다.",
+      "commonMistake": "중심에서 직선까지의 거리 3을 그대로 답하지 마세요. q는 원 위를 움직이므로 반지름 1을 빼야 합니다.",
+      "verification": {
+        "problemPage": 18,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_geo_30": {
+      "id": "2022_09_geo_30",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학 기하",
+      "questionNumber": 30,
+      "answer": "45",
+      "answerMark": null,
+      "summary": "AP와 BQ를 단위벡터로 정리하면 P₀와 Q₀의 방향이 결정되고, 선분 AP₀의 조건 범위 끝점에서 |Q₀X|²의 최댓값 41/4를 얻어 p+q=45입니다.",
+      "approach": "먼저 AP·AQ를 최소화하는 두 방향을 내적의 최솟값으로 정한 뒤, X를 선분의 매개변수로 나타내어 남은 부등식과 거리의 단조성을 처리합니다.",
+      "concepts": [
+        "단위벡터와 내적의 최솟값",
+        "벡터의 매개변수 표현",
+        "선분 위 거리의 최댓값"
+      ],
+      "steps": [
+        {
+          "title": "두 이동벡터 정하기",
+          "expression": "\\vec u=\\overrightarrow{AP},\\quad|\\vec u|=1,\\quad\\vec v=\\overrightarrow{BQ},\\quad|\\vec v|=2",
+          "explanation": "조건 AP·OC≥√2/2는 OC=(1,0)이므로 u의 x성분이 √2/2 이상이라는 뜻입니다."
+        },
+        {
+          "title": "Q의 최적 방향 구하기",
+          "expression": "\\vec u\\cdot\\overrightarrow{AQ}=\\vec u\\cdot((3,1)+\\vec v)\\ge\\vec u\\cdot(3,1)-2",
+          "explanation": "고정된 u에 대해 u·v는 v=-2u일 때 최소 -2가 됩니다. 따라서 최적 조건에서는 v=-2u입니다."
+        },
+        {
+          "title": "P의 최적 방향 구하기",
+          "expression": "\\vec u=(\\cos\\theta,\\sin\\theta),\\quad-\\frac\\pi4\\le\\theta\\le\\frac\\pi4",
+          "explanation": "3cosθ+sinθ를 이 구간에서 비교하면 최솟값은 θ=-π/4에서 생깁니다."
+        },
+        {
+          "title": "P₀와 Q₀의 벡터 확정하기",
+          "expression": "\\vec u=\\left(\\frac1{\\sqrt2},-\\frac1{\\sqrt2}\\right),\\qquad\\overrightarrow{BQ_0}=-2\\vec u=(-\\sqrt2,\\sqrt2)",
+          "explanation": "이 두 벡터가 AP·AQ를 최소로 만드는 방향입니다."
+        },
+        {
+          "title": "X의 허용 범위 구하기",
+          "expression": "X=A+t\\vec u\\ (0\\le t\\le1),\\quad\\overrightarrow{BX}\\cdot\\overrightarrow{BQ_0}=2\\sqrt2-2t\\ge1",
+          "explanation": "따라서 0≤t≤√2-1/2입니다."
+        },
+        {
+          "title": "거리의 최댓값 구하기",
+          "expression": "|\\overrightarrow{Q_0X}|^2=10+(t+2)^2-2\\sqrt2(t+2)",
+          "explanation": "허용 구간에서는 t가 커질수록 이 값이 커지므로 t=√2-1/2를 대입합니다."
+        },
+        {
+          "title": "p+q 계산하기",
+          "expression": "|\\overrightarrow{Q_0X}|_{\\max}^2=\\frac{41}{4}=\\frac qp\\Rightarrow p+q=4+41=45",
+          "explanation": "41과 4는 서로소이므로 최종 답은 45입니다."
+        }
+      ],
+      "correctReason": "거리 제곱의 최댓값이 41/4이므로 p=4, q=41이고 p+q=45입니다.",
+      "commonMistake": "AP·AQ를 최소화할 때 P와 Q를 따로 임의 선택하지 마세요. 고정된 AP 방향에서 BQ=-2AP가 먼저 결정되고, 그다음 허용된 AP 방향을 비교해야 합니다.",
+      "verification": {
+        "problemPage": 20,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

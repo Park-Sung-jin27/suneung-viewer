@@ -1,0 +1,962 @@
+{
+  "metadata": {
+    "schemaVersion": "eng-explain-candidate-v1",
+    "examId": "2024_06",
+    "exam": "2024학년도 6월 모의평가 영어",
+    "status": "internal_candidate",
+    "publicConnected": false,
+    "itemCount": 28,
+    "readyCount": 28,
+    "note": "문제·정답·해설 PDF 원본 대조를 마친 내부 근거형 해설 후보"
+  },
+  "items": {
+    "2024_06_18": {
+      "id": "2024_06_18",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 18,
+      "group": "practical",
+      "type": "목적",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 무료입장과 새 시설을 알리며 회원들을 공원 재개장 행사에 초대하는 글입니다.",
+      "typeApproach": "목적 문제는 행사 정보보다 수신자에게 직접 요청하는 행동을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Custard Valley Park’s grand reopening event will be held on\nJune 1st.",
+          "role": "행사 공지",
+          "translation": "공원 재개장 행사가 6월 1일에 열립니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "We would like to\ninvite you, our valued members, to celebrate this event.",
+          "role": "직접 목적",
+          "translation": "회원들을 이 행사를 함께 기념하도록 초대합니다."
+        }
+      ],
+      "correctReason": "재개장 행사에 회원을 초대한다는 직접 표현과 일치하는 ①이 정답입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "공원 운영 시간 변경을 공지하려고",
+        "reason": "행사 날짜는 나오지만 공원의 운영 시간 변경은 언급되지 않습니다."
+      }
+    },
+    "2024_06_19": {
+      "id": "2024_06_19",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 19,
+      "group": "practical",
+      "type": "심경 변화",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 비싼 엔진 수리를 걱정하던 Jennifer는 10달러 미만의 간단한 수리임을 알고 안도합니다.",
+      "typeApproach": "심경 변화는 앞부분의 걱정 원인과 마지막의 감정 표현을 각각 표시합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "She was deeply concerned\nabout how much it was going to cost to get her car fixed.",
+          "role": "초기 걱정",
+          "translation": "자동차 수리 비용이 얼마나 들지 크게 걱정했습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "she felt at ease,\nknowing she could easily afford it.",
+          "role": "최종 안도",
+          "translation": "수리비를 쉽게 감당할 수 있음을 알고 안도했습니다."
+        }
+      ],
+      "correctReason": "걱정에서 안도로 바뀌므로 worried → relieved인 ①이 맞습니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "calm → terrified",
+        "reason": "처음에는 침착하지 않았고 마지막에는 두려움이 아니라 안도감을 느낍니다."
+      }
+    },
+    "2024_06_20": {
+      "id": "2024_06_20",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 20,
+      "group": "topic",
+      "type": "주장",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 한 영역에서 기른 창의적 지식과 기술을 다른 영역에도 적용하도록 장려해야 합니다.",
+      "typeApproach": "주장 문제는 문제점 뒤에 나오는 should·optimal 같은 처방 문장을 우선 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "development of creative ability in one domain",
+          "role": "영역 내 창의성",
+          "translation": "한 영역에서 창의적 능력을 개발합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Both tendencies pose a\nthreat to the transfer of knowledge and skills between domains.",
+          "role": "극단의 위험",
+          "translation": "과도한 전문화와 일반화 모두 영역 간 지식·기술 전이를 막습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "encouragement to apply knowledge and skills in, as well\nas from, other domains, disciplines, and tasks.",
+          "role": "핵심 처방",
+          "translation": "다른 영역에서 얻은 지식과 기술을 서로 적용하도록 장려해야 합니다."
+        }
+      ],
+      "correctReason": "특정 영역의 창의성을 다른 영역과 연결하라는 결론을 담은 ④가 맞습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "조기 교육을 통해 특정 분야의 전문가를 지속적으로 양성해야 한다.",
+        "reason": "글은 너무 이른 전문화를 창의성을 막는 요인으로 지적합니다."
+      }
+    },
+    "2024_06_21": {
+      "id": "2024_06_21",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 21,
+      "group": "blank",
+      "type": "밑줄 의미",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 소유권이라는 권리 묶음에서 각 당사자가 가진 하나의 막대는 재산의 한 측면을 이용할 권리입니다.",
+      "typeApproach": "함축 의미는 비유를 실제 사례 목록에 대입해 공통 기능을 바꿔 말합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "ownership as a bundle of sticks.",
+          "role": "비유의 대상",
+          "translation": "소유권을 여러 막대가 모인 다발로 비유합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Each of these parties owns a stick in the\nbundle.",
+          "role": "분리된 권리",
+          "translation": "토지 소유자·은행·임차인 등이 권리 묶음의 일부를 각각 가집니다."
+        }
+      ],
+      "correctReason": "막대 하나는 재산 전체가 아니라 매각·임대·출입 같은 한 측면의 권리를 뜻하므로 ③이 맞습니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "a priority to legally claim the real estate",
+        "reason": "우선적으로 부동산을 청구할 지위가 아니라 분리 가능한 개별 권리를 뜻합니다."
+      }
+    },
+    "2024_06_22": {
+      "id": "2024_06_22",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 22,
+      "group": "topic",
+      "type": "요지",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 현실보다 방어 기제가 약하게 작동하는 가상 세계에서는 정보의 진위를 신중히 확인해야 합니다.",
+      "typeApproach": "요지 문제는 현실과 가상의 대조가 마지막에 어떤 행동 원칙으로 이어지는지 봅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "it’s sensible to question the validity\nof any data that you may receive.",
+          "role": "정보 검증",
+          "translation": "받은 정보가 타당한지 의심하고 확인하는 것이 합리적입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "in the\nvirtual world, we have a tendency to be less defensive",
+          "role": "가상 세계의 약점",
+          "translation": "가상 세계에서는 방어적으로 행동하는 경향이 약합니다."
+        }
+      ],
+      "correctReason": "가상 공간의 약한 경계심과 정보 검증의 필요를 함께 담은 ⑤가 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "안전한 인터넷 환경 구축을 위해 보안 프로그램을 설치하는 것이 좋다.",
+        "reason": "글은 프로그램 설치가 아니라 이용자가 정보의 신뢰성을 인지적으로 검증해야 한다고 말합니다."
+      }
+    },
+    "2024_06_23": {
+      "id": "2024_06_23",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 23,
+      "group": "topic",
+      "type": "주제",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 수익 중심의 박물관 운영은 관람객에게 보이는 공간에 자원을 집중시켜 수장 공간과 보존 기능을 약화시킵니다.",
+      "typeApproach": "주제 문제는 반복되는 원인과 결과를 한 쌍으로 묶어 선택지와 대조합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "as museums struggle to survive in a\ncompetitive economy, their budgets often prioritise those parts\nof themselves that are consumable",
+          "role": "수익 중심 예산",
+          "translation": "경쟁 경제에서 박물관은 소비 가능한 공개 영역에 예산을 우선 배정합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "the spaces of storage may\neven suffer",
+          "role": "수장 공간의 피해",
+          "translation": "그 결과 보이지 않는 수장 공간이 피해를 볼 수 있습니다."
+        }
+      ],
+      "correctReason": "수익 지향적 운영이 박물관 내부 기능에 끼치는 결과를 묻는 ④가 맞습니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "importance of prioritising museums’ exhibition spaces",
+        "reason": "전시 공간 우선의 중요성을 옹호하는 것이 아니라 그로 인한 수장·보존 영역의 손실을 비판합니다."
+      }
+    },
+    "2024_06_24": {
+      "id": "2024_06_24",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 24,
+      "group": "topic",
+      "type": "제목",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 도시의 이동량은 크게 늘었지만 접근성은 오히려 악화되어 초고이동성이 항상 좋은지 의문을 제기합니다.",
+      "typeApproach": "제목 문제는 앞부분의 통념과 Yet 이후의 반전을 모두 포함하는 선택지를 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Yet, despite the\nincreasing level of urban mobility worldwide, access to places,\nactivities and services has become increasingly difficult.",
+          "role": "이동성과 접근성의 역설",
+          "translation": "도시 이동성이 늘었지만 장소와 서비스 접근은 더 어려워졌습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "many of the world’s cities face an unprecedented\naccessibility crisis",
+          "role": "핵심 결과",
+          "translation": "많은 도시가 전례 없는 접근성 위기에 놓였습니다."
+        }
+      ],
+      "correctReason": "초고이동성의 경제적 기대와 도시 접근성 위기를 함께 묻는 ①이 가장 적절합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "Infrastructure: An Essential Element of Hyper-mobility",
+        "reason": "기반 시설은 배경 요소일 뿐, 글의 중심은 초고이동성이 낳는 접근성 위기입니다."
+      }
+    },
+    "2024_06_25": {
+      "id": "2024_06_25",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 25,
+      "group": "info",
+      "type": "도표",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 국내·해외 여행 병행 비율은 45~54세가 23.3%, 55~64세가 22.5%이므로 45~54세가 더 낮지 않습니다.",
+      "typeApproach": "도표 문제는 비교 대상·범주·부등호 방향을 수치 옆에 적어 한 항목씩 대조합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Domestic & Outbound Trips: 23.4%, 22.9%, 23.3%, 22.5%, 14.0%.",
+          "role": "정답 비교 수치",
+          "translation": "국내·해외 여행 병행 비율은 45~54세가 55~64세보다 높습니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Domestic Trips Only: 25–34 30.2%, 35–44 34.2%",
+          "role": "검증 수치",
+          "translation": "35~44세의 국내 여행만 비율은 34.2%입니다."
+        }
+      ],
+      "correctReason": "23.3%는 22.5%보다 낮지 않으므로 비교 방향을 거꾸로 말한 ④가 불일치합니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "In the 35—44 age group, the percentage of people in the Domestic Trips Only category was 34.2%.",
+        "reason": "도표에 35~44세의 국내 여행만 비율이 34.2%로 표시되어 있어 일치합니다."
+      }
+    },
+    "2024_06_26": {
+      "id": "2024_06_26",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 26,
+      "group": "info",
+      "type": "내용 일치",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. Jean Renoir는 제2차 세계대전 중 프랑스를 떠나 미국 Hollywood에서 활동했습니다.",
+      "typeApproach": "내용 일치 문제는 선택지의 인물·시점·장소를 원문 한 문장과 직접 대조합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "During World War II, when the Nazis invaded France in 1940,\nhe went to Hollywood in the United States and continued his\ncareer there.",
+          "role": "전쟁 중 이동",
+          "translation": "1940년 프랑스 침공 때 미국 Hollywood로 가서 경력을 이어 갔습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "including the Academy Honorary Award\nin 1975",
+          "role": "수상 사실",
+          "translation": "1975년 Academy Honorary Award를 포함한 여러 상을 받았습니다."
+        }
+      ],
+      "correctReason": "전쟁 내내 프랑스에 머문 것이 아니라 미국으로 갔으므로 ④가 불일치합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "Academy Honorary Award를 수상하였다.",
+        "reason": "1975년에 해당 상을 받았다는 원문과 일치합니다."
+      }
+    },
+    "2024_06_27": {
+      "id": "2024_06_27",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 27,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 팀 경기는 오후 1시가 아니라 오후 2시 30분에 시작합니다.",
+      "typeApproach": "안내문 문제는 활동명과 시간·대상·비용을 서로 다른 줄로 분리해 대조합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Skill Drills 1:00–2:00 p.m., Team Games 2:30–3:30 p.m.",
+          "role": "활동별 시간",
+          "translation": "오후 1시는 기술 훈련이고 팀 경기는 오후 2시 30분에 시작합니다."
+        },
+        {
+          "in": "figure",
+          "quote": "수건 무료 제공.",
+          "role": "무료 제공품",
+          "translation": "수건 한 장이 무료로 제공됩니다."
+        }
+      ],
+      "correctReason": "팀 경기 시작 시각을 기술 훈련 시작 시각과 바꿔 말한 ③이 불일치합니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "전문가들로부터 다양한 기술을 배울 수 있다.",
+        "reason": "전문가에게 다양한 기술을 배우라는 안내문과 일치합니다."
+      }
+    },
+    "2024_06_28": {
+      "id": "2024_06_28",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 28,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 월 수강료 30달러에 간식이 포함되어 있습니다.",
+      "typeApproach": "안내문 일치 문제는 기간·요일·시간·비용·인원 제한을 표처럼 나눠 확인합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "6월 1일–8월 31일.",
+          "role": "운영 기간",
+          "translation": "수업은 6월 1일부터 8월 31일까지 열립니다."
+        },
+        {
+          "in": "figure",
+          "quote": "월 30달러에 간식 포함",
+          "role": "수강료 구성",
+          "translation": "아동 한 명당 월 30달러이며 간식이 포함됩니다."
+        }
+      ],
+      "correctReason": "간식 포함이 명시되어 있으므로 ④가 안내문과 일치합니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "만화 그리기 강좌가 월요일마다 있다.",
+        "reason": "월요일은 점토 미술이고 만화 그리기는 목요일입니다."
+      }
+    },
+    "2024_06_29": {
+      "id": "2024_06_29",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 29,
+      "group": "grammar",
+      "type": "어법",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 세 개의 주어구 뒤에는 복수 동사 are가 와야 하므로 being은 are로 고쳐야 합니다.",
+      "typeApproach": "어법 문제는 긴 수식어를 걷어 내고 문장의 주어와 서술어가 완성되는지 먼저 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "The courage the Lion wants,\nthe intelligence the Scarecrow longs for, and the emotions the\nTin Man dreams of ③ being attributes they already possess.",
+          "role": "주어·동사 구조",
+          "translation": "용기·지능·감정이라는 복수 주어에 완전한 서술 동사가 필요합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "positive ways ④ in which they are already\nrelating to others.",
+          "role": "올바른 관계사 구조",
+          "translation": "ways 뒤의 in which는 관계절을 자연스럽게 이끕니다."
+        }
+      ],
+      "correctReason": "문장 서술어 자리에 분사 being이 아니라 복수 동사 are가 필요하므로 ③이 틀렸습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "in which",
+        "reason": "ways와 전치사 in이 결합된 관계절 구조로 올바릅니다."
+      }
+    },
+    "2024_06_30": {
+      "id": "2024_06_30",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 30,
+      "group": "vocab",
+      "type": "어휘",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 학습은 불완전한 사전 지식을 보완하고, 경험이 없을 때의 무작위 행동을 줄여 결국 사전 지식에서 독립하게 합니다.",
+      "typeApproach": "낱말 선택은 각 빈칸 앞뒤의 원인·대조를 확인하고 세 선택을 하나의 논리 흐름으로 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "A rational agent should be autonomous",
+          "role": "자율성 목표",
+          "translation": "합리적 에이전트는 스스로 학습하는 자율성을 가져야 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "After sufficient experience of its\nenvironment, the behavior of a rational agent can become\neffectively (C) independent / protective \tof its prior knowledge.",
+          "role": "경험 뒤 독립",
+          "translation": "충분히 경험하면 행동은 사전 지식에서 사실상 독립할 수 있습니다."
+        }
+      ],
+      "correctReason": "불완전한 지식은 compensate, 경험이 없으면 randomly, 충분히 배우면 independent가 자연스러워 ④가 맞습니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "compensate …… purposefully …… protective",
+        "reason": "경험도 설계자의 도움도 없다면 목적 있게가 아니라 무작위로 행동하게 되며, 최종 목표도 사전 지식 보호가 아닌 독립입니다."
+      }
+    },
+    "2024_06_31": {
+      "id": "2024_06_31",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 31,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 현대 소비에서 음식의 가치는 영양보다 경험·생활양식·윤리 같은 비물질적 측면이 점점 더 결정합니다.",
+      "typeApproach": "빈칸 앞의 변화와 뒤의 구체적 예시를 공통으로 설명하는 상위 개념을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "exotic cuisines that provide an interesting experience or that\nsymbolize a distinctive life-style.",
+          "role": "경험·생활양식 가치",
+          "translation": "이국적 음식은 흥미로운 경험이나 독특한 생활양식을 상징합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Consumption is less and less a matter of\nsustenance and more and more a question of life-style",
+          "role": "핵심 대조",
+          "translation": "소비는 생존보다 생활양식의 문제가 되어 갑니다."
+        }
+      ],
+      "correctReason": "경험·상징·윤리 기준은 물질적 영양 가치가 아니라 비물질적 가치이므로 ②가 맞습니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "nutritional",
+        "reason": "글은 생존과 영양의 비중이 줄고 경험과 생활양식의 비중이 커진다고 말합니다."
+      }
+    },
+    "2024_06_32": {
+      "id": "2024_06_32",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 32,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 노동 공유 공동체는 공식 장부가 아니라 오랜 신뢰와 상호부조라는 사회 규범으로 기여를 조절합니다.",
+      "typeApproach": "빈칸 앞의 부정된 방식과 뒤의 대체 원리를 대조해 정답을 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "no one keeps formal records on how much any family puts in\nor takes out.",
+          "role": "공식 기록 부재",
+          "translation": "어느 가족이 얼마나 주고받았는지 공식 기록을 남기지 않습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The group has a sense of moral community based on years of\ntrust and sharing.",
+          "role": "사회 규범",
+          "translation": "오랜 신뢰와 나눔에 기반한 도덕 공동체가 조절 원리입니다."
+        }
+      ],
+      "correctReason": "법·보고·문서가 아니라 공동체의 신뢰와 호혜가 회계를 조절하므로 socially regulated인 ③이 맞습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "carefully documented",
+        "reason": "공식 기록을 남기지 않는다고 명시되어 있어 반대입니다."
+      }
+    },
+    "2024_06_33": {
+      "id": "2024_06_33",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 33,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 예술이 만드는 현실은 관찰자의 주관적 참여가 있어야 존재합니다.",
+      "typeApproach": "과학자와 예술가의 대조를 표로 만들고 마지막 문장의 빈칸이 어느 쪽 특성인지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "The artist, on the other\nhand, relies on the strength of her artistry to effect a marriage\nbetween her own subjectivity and that of her readers.",
+          "role": "주관성의 결합",
+          "translation": "예술가는 자신의 주관성과 독자의 주관성을 결합합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "She creates a reality dependent upon observers",
+          "role": "관찰자 의존 현실",
+          "translation": "예술가는 관찰자에게 의존하는 현실을 만듭니다."
+        }
+      ],
+      "correctReason": "관찰자 의존 현실은 인간의 참여가 있어야 성립하므로 ①이 맞습니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "science and art need to harmonize",
+        "reason": "글은 과학과 예술의 현실 구성 방식 차이를 설명할 뿐 두 분야의 조화를 주장하지 않습니다."
+      }
+    },
+    "2024_06_34": {
+      "id": "2024_06_34",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 34,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 감각은 먼 물체를 작게 보이게 하지만 이성은 원근법을 적용해 참된 크기를 판단합니다.",
+      "typeApproach": "사례에서 감각이 주는 모습과 이성이 내리는 판단을 분리해 빈칸의 대조 구조를 완성합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "perceptions are inherently unreliable and\nmisleading because the senses are subject to errors and illusions.",
+          "role": "감각의 한계",
+          "translation": "감각 지각은 오류와 착각 때문에 신뢰하기 어렵습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Only the rational discourse has the tools to overcome illusions\nand to point towards true knowledge.",
+          "role": "이성의 역할",
+          "translation": "이성적 판단만이 착각을 넘어 참된 지식을 가리킬 수 있습니다."
+        }
+      ],
+      "correctReason": "참은 감각에 보이는 작은 모습이 아니라 이성적으로 교정한 표상에서 드러나므로 ⑤가 맞습니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "beyond the limit of where rational knowledge can approach",
+        "reason": "글은 이성이 진리에 접근하지 못한다고 하지 않고 오히려 감각의 착각을 교정한다고 말합니다."
+      }
+    },
+    "2024_06_35": {
+      "id": "2024_06_35",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 35,
+      "group": "irrelevant",
+      "type": "무관한 문장",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 글은 자동화된 기능 덕분에 복합 과제를 잘하는 전문가와 그렇지 못한 초보자를 대조하는데, 초보자가 분리 과제를 매우 잘한다는 문장은 흐름에서 벗어납니다.",
+      "typeApproach": "무관한 문장은 문장별 주어와 비교 기준을 적고 앞뒤 논리의 공통 축을 끊는 문장을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "experts can perform complex tasks and\ncombine \tmultiple \ttasks \trelatively \teasily.",
+          "role": "전문가의 강점",
+          "translation": "전문가는 복잡한 과제와 여러 과제를 비교적 쉽게 결합합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "beginners are excellent at processing the tasks when the\ntasks are divided and isolated.",
+          "role": "흐름 이탈 문장",
+          "translation": "초보자가 분리된 과제를 매우 잘한다는 별도 주장이 갑자기 들어옵니다."
+        }
+      ],
+      "correctReason": "앞뒤는 전문가의 자동화와 초보자의 결합 어려움을 설명하므로 별도의 초보자 장점을 말한 ③이 무관합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "This is not because they necessarily have more cognitive resources than beginners; rather, because of the high level of fluency they have achieved in performing key skills, they can do more with what they have.",
+        "reason": "전문가의 강점이 자원 총량이 아니라 숙련과 유창성에서 온다는 앞 문장의 이유를 보완합니다."
+      }
+    },
+    "2024_06_36": {
+      "id": "2024_06_36",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 36,
+      "group": "order",
+      "type": "순서",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 물리적 사물이 코드가 된다는 구체화(C) 뒤 코드 증가와 버그(A), 그 버그를 이용한 악성 공격(B)이 이어집니다.",
+      "typeApproach": "순서 문제는 각 단락 첫 문장의 지시어와 앞 단락에서 반드시 제공되어야 할 명사를 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Physical things are increasingly becoming information\ntechnologies.",
+          "role": "도입 구체화",
+          "translation": "물리적 사물이 점점 정보 기술로 바뀐다는 C가 도입을 구체화합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "As all this code grows in size and complexity, so too do\nthe number of errors and software bugs.",
+          "role": "코드에서 버그로",
+          "translation": "C에서 늘어난 코드를 A가 받아 버그 증가로 연결합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "This is the basis for all malware attacks",
+          "role": "버그에서 공격으로",
+          "translation": "B의 This는 A에서 제시한 소프트웨어 버그를 가리킵니다."
+        }
+      ],
+      "correctReason": "구체화 C → 코드·버그 A → 버그 악용 B의 인과가 완성되므로 ④가 맞습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(C) - (B) - (A)",
+        "reason": "B의 This와 these computer bugs가 가리킬 버그가 A에서 먼저 제시되어야 합니다."
+      }
+    },
+    "2024_06_37": {
+      "id": "2024_06_37",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 37,
+      "group": "order",
+      "type": "순서",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 타인의 시선을 의식해 얼굴이 붉어진다는 설명(B), 긍정적 사회 기능(C), 집단 결속이라는 결과(A) 순서입니다.",
+      "typeApproach": "순서 문제는 현상 원인 → 반전된 기능 → 기능의 결과처럼 논리 단계가 확대되는 방향을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "If we feel awkward, embarrassed or ashamed when we are\nalone, we don’t blush",
+          "role": "사회적 원인",
+          "translation": "혼자일 때는 얼굴이 붉어지지 않아 타인의 시선이 원인임을 보여 줍니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "blushing actually serves a positive social purpose.",
+          "role": "기능 반전",
+          "translation": "얼굴 붉힘이 당혹감뿐 아니라 긍정적 사회 기능을 한다고 전환합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "our brief loss of face benefits the long-term\ncohesion of the group.",
+          "role": "집단 결과",
+          "translation": "일시적 체면 손상이 장기적으로 집단 결속에 도움을 줍니다."
+        }
+      ],
+      "correctReason": "사회적 조건 B → 긍정 기능 C → 집단 결속 A가 자연스러워 ③이 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(C) - (A) - (B)",
+        "reason": "B는 얼굴 붉힘이 타인의 평가와 관련된다는 원인을 먼저 설명하고 C의 However 반전을 준비해야 합니다."
+      }
+    },
+    "2024_06_38": {
+      "id": "2024_06_38",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 38,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 과학자는 좋은 과학자가 되는 법을 공식적으로 배우지 않는다는 문장 뒤에, 대신 동료에게 사회화로 배운다는 주어진 문장이 와야 합니다.",
+      "typeApproach": "문장 삽입은 주어진 문장의 전환어와 대명사가 요구하는 바로 앞 문장을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Other\nsocial institutions, perhaps the majority, are not like this;\nscience is an example.",
+          "role": "비공식 제도 예시",
+          "translation": "과학은 규칙이 공식화되지 않은 제도의 예입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Although scientists are trained\nin the substantive content of their discipline, they are not\nformally instructed in ‘how to be a good scientist’.",
+          "role": "공식 교육 부재",
+          "translation": "과학자는 전공 내용은 배우지만 좋은 과학자가 되는 법은 공식적으로 배우지 않습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "the apprentice scientist gains his or her understanding\nof the moral values inherent in the role by absorption from\ntheir colleagues ― socialization.",
+          "role": "대안 방식",
+          "translation": "대신 도제 과학자는 동료를 통한 사회화로 역할의 도덕 가치를 배웁니다."
+        }
+      ],
+      "correctReason": "공식 지도가 없다는 문장과 Instead로 시작하는 사회화 대안이 직접 이어져 ⑤가 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "④",
+        "reason": "④ 앞에서는 과학이 비공식 제도라는 점만 제시됐고, Instead가 대조할 공식 교육 부재가 아직 나오지 않았습니다."
+      }
+    },
+    "2024_06_39": {
+      "id": "2024_06_39",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 39,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 경쟁자가 사라진 뒤 일부 나무가 지나치게 광합성한다는 문장 다음에 그 결과 잘 자라지만 오래 살지 못한다는 문장이 이어집니다.",
+      "typeApproach": "As a result가 가리키는 원인을 앞에서 찾고, 뒤 문장이 그 결과를 설명하는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Some \tindividuals \tphotosynthesize\nlike mad until sugar positively bubbles along their trunk.",
+          "role": "직전 원인",
+          "translation": "일부 나무는 지나칠 정도로 광합성해 당이 줄기를 타고 넘칩니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "As a result, they are fit and grow better, but they aren’t\nparticularly long-lived.",
+          "role": "직접 결과",
+          "translation": "그 결과 잘 자라지만 특별히 오래 살지는 못합니다."
+        }
+      ],
+      "correctReason": "과도한 광합성의 결과를 즉시 받는 위치가 ②이므로 정답입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "③",
+        "reason": "③에 넣으면 This is because가 설명해야 할 결과와 원인 사이가 끊기고 As a result의 직접 원인도 멀어집니다."
+      }
+    },
+    "2024_06_40": {
+      "id": "2024_06_40",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 40,
+      "group": "summary",
+      "type": "요약문",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 현재의 생존 특성은 환경이 바뀌면 적응을 막는 장애물이 될 수 있습니다.",
+      "typeApproach": "요약문은 진화적 유산의 기능과 변화가 발생하는 대상을 각각 빈칸에 대응시킵니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "evolutionary ‘baggage’ ― that\nsubsequently constrain future evolution.",
+          "role": "적응 제약",
+          "translation": "진화적 유산은 이후의 진화를 제한할 수 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "koala\nbears cannot live without Eucalyptus foliage.",
+          "role": "환경 의존 사례",
+          "translation": "코알라는 유칼립투스 잎이 없으면 살 수 없어 현재 적응이 다른 환경에서는 제약이 됩니다."
+        }
+      ],
+      "correctReason": "기존 특성은 환경 변화에 대응할 때 장애물(obstacle)이 되므로 surroundings와 짝지은 ②가 맞습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "guide …… traits",
+        "reason": "변화가 일어나는 것은 생물의 형질이 아니라 주변 환경이며 기존 형질은 안내가 아니라 제약이 될 수 있습니다."
+      }
+    },
+    "2024_06_41": {
+      "id": "2024_06_41",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 41,
+      "group": "long",
+      "type": "장문 제목",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 협상을 고정된 파이로 보는 믿음은 상호 이익의 교환 가능성을 가려 통합적 합의를 방해합니다.",
+      "typeApproach": "장문 제목은 반복되는 핵심 개념과 글이 그 개념을 지지하는지 경고하는지를 함께 판단합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Many negotiators assume that all negotiations involve a\nfixed pie.",
+          "role": "핵심 오해",
+          "translation": "많은 협상가가 협상의 이익이 고정되어 있다고 가정합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "with no possibility for\nintegrative settlements and mutually beneficial trade-offs",
+          "role": "오해의 결과",
+          "translation": "그 믿음은 통합적 합의와 상호 이익 교환의 가능성을 보지 못하게 합니다."
+        }
+      ],
+      "correctReason": "고정된 파이 신화에서 벗어나라고 경고하는 ③이 전체 글의 태도를 가장 잘 담습니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "Fixed Pie: A Key to Success in a Zero-sum Game",
+        "reason": "글은 고정된 파이 믿음을 성공의 열쇠로 칭찬하지 않고 협력을 막는 오해로 비판합니다."
+      }
+    },
+    "2024_06_42": {
+      "id": "2024_06_42",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 42,
+      "group": "long",
+      "type": "장문 어휘",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 이사 비용과 출근일이라는 추가 협상 항목은 급여 문제 해결을 막는 것이 아니라 돕습니다.",
+      "typeApproach": "장문 어휘는 표시된 낱말이 앞뒤 인과 방향과 맞는지 하나씩 바꿔 읽습니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "moving expenses\nand starting date can also be negotiated",
+          "role": "추가 교환 항목",
+          "translation": "이사 비용과 시작 날짜도 협상할 수 있음을 발견합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "which may (b) block\nresolution of the salary issue.",
+          "role": "문맥 반대 낱말",
+          "translation": "추가 항목은 급여 문제 해결을 막는 것이 아니라 가능하게 합니다."
+        }
+      ],
+      "correctReason": "block은 문맥상 facilitate나 help처럼 해결을 돕는 뜻으로 바뀌어야 하므로 ②가 맞습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(e)",
+        "reason": "시간 압박과 고정 파이 오해는 통합적 합의를 더 적게 만들므로 less는 문맥에 맞습니다."
+      }
+    },
+    "2024_06_43": {
+      "id": "2024_06_43",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 43,
+      "group": "long",
+      "type": "장문 순서",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 쇼핑을 결정한 뒤(C) 축구화를 사고, 카페에서 과제하다 가방을 두고 나오며(B), 집에서 분실을 알아차리고 찾습니다(D).",
+      "typeApproach": "장문 순서는 장소 이동과 물건의 상태 변화를 시간표처럼 이어 붙입니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "After buying the present, she told her\nmother, “Mom, now, I’m going to do my assignment in the\ncafe while you are shopping.”",
+          "role": "C에서 B로",
+          "translation": "선물을 산 뒤 카페에서 과제하겠다고 말해 B의 카페 장면으로 이어집니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "She hurriedly gathered her assignment leaving the\nshoe bag behind under the table.",
+          "role": "B에서 D로",
+          "translation": "카페에 신발 가방을 두고 나와 D의 분실 상황이 발생합니다."
+        }
+      ],
+      "correctReason": "구매 C → 카페에서 가방을 두고 나옴 B → 귀가 후 분실 확인 D이므로 ②가 맞습니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "(C) － (D) － (B)",
+        "reason": "D의 분실은 B에서 신발 가방을 카페에 두고 나온 뒤에만 일어날 수 있습니다."
+      }
+    },
+    "2024_06_44": {
+      "id": "2024_06_44",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 44,
+      "group": "long",
+      "type": "장문 지칭",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. (a)~(d)는 Ellen을 가리키지만 (e)는 신발 가방을 발견한 카페 관리자를 가리킵니다.",
+      "typeApproach": "지칭 문제는 각 대명사 바로 앞의 행동 주체를 이름으로 바꿔 읽습니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "When she phoned the cafe and asked\nabout the shoe bag, the manager said that she would check",
+          "role": "주체 전환",
+          "translation": "Ellen이 전화한 뒤 확인하겠다고 말한 주체는 카페 관리자입니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "she called back and\ntold Ellen that (e) she had just discovered it.",
+          "role": "e의 지칭",
+          "translation": "다시 전화해 가방을 발견했다고 말한 (e)는 관리자입니다."
+        }
+      ],
+      "correctReason": "(e)만 카페 관리자를 가리키고 나머지는 Ellen이므로 ⑤가 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(d)",
+        "reason": "집에 돌아와 선물 분실을 알아차린 (d)는 Ellen을 가리켜 (a)~(c)와 같습니다."
+      }
+    },
+    "2024_06_45": {
+      "id": "2024_06_45",
+      "status": "ready",
+      "exam": "2024학년도 6월 모의평가 영어",
+      "qid": 45,
+      "group": "long",
+      "type": "장문 내용",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 카페에서 팔지 않은 것은 딸기 스무디이고 Ellen은 대신 요거트 스무디를 샀습니다.",
+      "typeApproach": "장문 내용 문제는 선택지의 부정 표현과 대체 행동을 원문에서 함께 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Ellen wanted to get a strawberry smoothie in the cafe, but\nit was sold out.",
+          "role": "매진 상품",
+          "translation": "매진된 것은 딸기 스무디입니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "So she bought a yogurt smoothie instead.",
+          "role": "대체 구매",
+          "translation": "Ellen은 대신 요거트 스무디를 샀습니다."
+        }
+      ],
+      "correctReason": "요거트 스무디는 판매 중이어서 Ellen이 구매했으므로 ②가 적절하지 않습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "Ellen의 아버지는 최근에 아침 축구 클럽에 가입했다.",
+        "reason": "아버지가 최근 아침 축구 클럽에 가입했다는 원문과 일치합니다."
+      }
+    }
+  }
+}

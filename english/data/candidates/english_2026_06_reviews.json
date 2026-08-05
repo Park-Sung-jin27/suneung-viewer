@@ -1,0 +1,962 @@
+{
+  "metadata": {
+    "schemaVersion": "eng-explain-candidate-v1",
+    "examId": "2026_06",
+    "exam": "2026학년도 6월 모의평가 영어",
+    "status": "internal_candidate",
+    "publicConnected": false,
+    "itemCount": 28,
+    "readyCount": 28,
+    "note": "문제·정답·해설 PDF 원본 대조를 마친 내부 근거형 해설 후보"
+  },
+  "items": {
+    "2026_06_18": {
+      "id": "2026_06_18",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 18,
+      "group": "practical",
+      "type": "목적",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 과거 광산업 경험을 살려 전시 안내 자원봉사를 할 수 있는지 묻는 편지입니다.",
+      "typeApproach": "목적 문제는 글쓴이가 반복해서 요청하거나 확인하는 마지막 행동을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "volunteer guide positions available for this exhibition.",
+          "role": "문의 대상",
+          "translation": "이 전시의 자원봉사 안내자 자리가 있는지 묻고 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "about the availability of volunteer positions as a guide.",
+          "role": "반복 요청",
+          "translation": "안내자 자원봉사 자리의 가능 여부를 알려 달라고 다시 요청합니다."
+        }
+      ],
+      "correctReason": "전시를 소개하거나 취업 지원을 하는 것이 아니라 안내 자원봉사 자리가 있는지 확인하는 글이므로 ①입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "역사 박물관 근무 경력자 모집에 지원하려고",
+        "reason": "자신의 광산업 경험은 안내에 도움이 된다는 근거일 뿐, 박물관 유급 채용에 지원하는 내용은 없습니다."
+      }
+    },
+    "2026_06_19": {
+      "id": "2026_06_19",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 19,
+      "group": "practical",
+      "type": "심경 변화",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 한 마리도 잡지 못해 실망하다가 큰 물고기가 걸린 듯하자 매우 들뜹니다.",
+      "typeApproach": "심경 변화는 사건 전후의 감정 표지와 행동 변화를 각각 한 단어로 묶습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "With a deep sigh,\nJessie pulled out the line and cast it back into the water.",
+          "role": "초기 심경",
+          "translation": "Jessie는 깊은 한숨을 쉬며 낚싯줄을 다시 던집니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Jessie excitedly held onto the fishing pole as it\nbegan to move around wildly.",
+          "role": "후기 심경",
+          "translation": "낚싯대가 크게 움직이자 Jessie는 신이 나서 붙잡습니다."
+        }
+      ],
+      "correctReason": "한숨과 포기 직전의 실망에서 빠른 심장박동과 미소로 드러나는 흥분으로 바뀌므로 disappointed → thrilled가 맞습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "relieved → pleased",
+        "reason": "처음 감정은 안도감이 아니라 물고기를 잡지 못한 실망이고, 마지막 감정은 단순 만족보다 강한 흥분입니다."
+      }
+    },
+    "2026_06_20": {
+      "id": "2026_06_20",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 20,
+      "group": "topic",
+      "type": "주장",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 일어날 가능성이 낮은 일을 끝없이 걱정해 스스로 고통받지 말라고 주장합니다.",
+      "typeApproach": "주장 문제는 양보 뒤의 핵심 판단과 글 끝의 권고 문장을 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "When our worries exceed our control, however, they\ncause us unnecessary suffering.",
+          "role": "문제 진단",
+          "translation": "걱정을 통제하지 못하면 불필요한 고통을 겪게 됩니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "It is worth making a\nconscious effort, then, to stop worrying endlessly about events\nyou may not experience.",
+          "role": "최종 권고",
+          "translation": "겪지 않을 수도 있는 일을 끝없이 걱정하지 않도록 의식적으로 노력해야 합니다."
+        }
+      ],
+      "correctReason": "통제 밖의 과도한 걱정이 불필요한 고통을 만들므로 가능성이 낮은 일을 지나치게 걱정하지 말라는 ②가 핵심입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "자신의 걱정이 무엇에서 비롯되었는지 면밀히 살펴봐야 한다.",
+        "reason": "글은 걱정의 원인을 분석하라고 하지 않고, 일어나지 않을 가능성이 큰 일을 끝없이 걱정하는 행동을 멈추라고 합니다."
+      }
+    },
+    "2026_06_21": {
+      "id": "2026_06_21",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 21,
+      "group": "blank",
+      "type": "밑줄 의미",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 외부 조건으로 생긴 성취감은 자신의 실제 실력을 정확히 반영하지 않아 믿기 어렵다는 뜻입니다.",
+      "typeApproach": "밑줄 의미는 앞의 사례들을 공통으로 묶는 원인과 결론을 바꿔 말한 선지를 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "These factors may be random\nand misleading.",
+          "role": "외부 요인의 성격",
+          "translation": "외부 요인은 우연적이고 오해를 일으킬 수 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "In all these cases, the good or bad feelings you have are not\nbased on something you can take credit for.",
+          "role": "결론 근거",
+          "translation": "그 감정들은 자신의 공으로 돌릴 수 있는 것에 근거하지 않습니다."
+        }
+      ],
+      "correctReason": "비교 상대의 상태나 습도 같은 외부 조건으로 얻은 자부심은 실제 성취에 근거하지 않으므로 신뢰할 수 없다는 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "performance comparison to partners is demotivating",
+        "reason": "비교가 동기를 떨어뜨린다는 일반 주장이 아니라, 비교를 포함한 외부 조건이 자기 평가를 왜곡한다는 내용입니다."
+      }
+    },
+    "2026_06_22": {
+      "id": "2026_06_22",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 22,
+      "group": "topic",
+      "type": "요지",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 측정 가능한 정보는 해석될 때 비로소 상황 속 의미가 됩니다.",
+      "typeApproach": "요지 문제는 첫 문장의 대조와 마지막 일반화를 함께 만족하는 선지를 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Information and meaning are, clearly, not the same thing.",
+          "role": "핵심 대조",
+          "translation": "정보와 의미는 같은 것이 아닙니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Interpretation is at the core of everything\nwe do, think about, and feel.",
+          "role": "핵심 결론",
+          "translation": "해석은 우리가 행동하고 생각하고 느끼는 모든 것의 중심입니다."
+        }
+      ],
+      "correctReason": "정보 자체와 의미를 구분한 뒤 해석이 의미 형성의 핵심이라고 결론 내리므로 ①이 맞습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "정보 해석에 개인의 감정이 개입되면 의미가 왜곡된다.",
+        "reason": "글은 해석이 의미를 만든다고 설명할 뿐, 개인 감정 때문에 의미가 왜곡된다고 비판하지 않습니다."
+      }
+    },
+    "2026_06_23": {
+      "id": "2026_06_23",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 23,
+      "group": "topic",
+      "type": "주제",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 토론 중 필기는 학습자가 생각하고 말하는 능동적 참여를 돕는 중요한 도구입니다.",
+      "typeApproach": "주제 문제는 글 전체에서 반복되는 대상과 그 대상의 핵심 기능을 함께 잡습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "The purpose of class discussions is to encourage you to be\nan active participant, not a passive recorder.",
+          "role": "토론의 목적",
+          "translation": "수업 토론은 수동적 기록자가 아니라 능동적 참여자가 되도록 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Note taking helps to keep\nyou active and alert; it allows you to impose some organization\non the discussion; and it can prepare you to speak.",
+          "role": "필기의 기능",
+          "translation": "필기는 능동성과 집중을 유지하고 토론을 정리하며 발언을 준비하게 합니다."
+        }
+      ],
+      "correctReason": "글의 중심은 토론에서 필기가 능동적 참여를 유지하게 한다는 점이므로 ③입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "strategies to improve note-taking skills for public speaking",
+        "reason": "대중 연설용 필기 기술을 훈련하는 방법이 아니라 수업 토론 참여에서 필기의 중요성을 설명합니다."
+      }
+    },
+    "2026_06_24": {
+      "id": "2026_06_24",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 24,
+      "group": "topic",
+      "type": "제목",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 음식이 생존 필수품을 넘어 식당·미식가·정체성을 포함한 문화 현상으로 발전한 과정을 다룹니다.",
+      "typeApproach": "제목 문제는 글의 출발점과 변화 후의 결론을 모두 포괄하는 표현을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Food became more than just a life necessity.",
+          "role": "전환점",
+          "translation": "음식은 단순한 생존 필수품 이상의 것이 되었습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The\nrise of restaurants eventually led to a class of diners who\nprided themselves on being critics of taste, food and cooking.",
+          "role": "문화의 확장",
+          "translation": "식당의 등장은 맛과 음식, 요리를 평가하는 식도락 계층으로 이어졌습니다."
+        }
+      ],
+      "correctReason": "필수품이던 음식이 외식과 미식 문화로 확장된 흐름을 모두 담은 제목은 ②입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "Why Table Manners Matter: Food and Class Identity",
+        "reason": "계층과 식사 예절은 글의 중심이 아니며, 핵심은 음식 문화가 생존 필요를 넘어 발전한 과정입니다."
+      }
+    },
+    "2026_06_25": {
+      "id": "2026_06_25",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 25,
+      "group": "info",
+      "type": "도표",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 이탈리아의 참여율은 2016년 42%에서 2022년 36%로 낮아졌으므로 선지의 비교 방향이 반대입니다.",
+      "typeApproach": "도표 문제는 국가별 두 시점 수치를 직접 짝지어 선지의 높고 낮음 방향을 확인합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Italy: 2016 42%, 2022 36%",
+          "role": "정답 수치",
+          "translation": "이탈리아는 2016년 42%, 2022년 36%입니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Netherlands: 2016 64%, 2022 65%",
+          "role": "최고값 대조",
+          "translation": "네덜란드는 두 해 모두 다섯 나라 중 가장 높습니다."
+        }
+      ],
+      "correctReason": "④는 2016년 수치가 2022년보다 낮다고 했지만 실제로는 42%가 36%보다 높으므로 일치하지 않습니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "In 2022, the percentage of adults who participated in education and training was lower in Spain than in Germany.",
+        "reason": "2022년 스페인은 49%, 독일은 60%이므로 이 선지는 도표와 일치합니다."
+      }
+    },
+    "2026_06_26": {
+      "id": "2026_06_26",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 26,
+      "group": "info",
+      "type": "내용 일치",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 1964년에 받은 박사 학위 전공은 동물학이 아니라 과학 교육입니다.",
+      "typeApproach": "내용 불일치 문제는 인물·연도·학위·전공처럼 결합된 정보를 원문과 한 항목씩 대조합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "In 1954, she graduated from the University of California at\nBerkeley with a master’s degree in zoology.",
+          "role": "동물학 학위",
+          "translation": "1954년 동물학 석사 학위를 받았습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Then she earned\nher \tdoctorate \tdegree \tin \tscience \teducation \tfrom \tStanford\nUniversity in 1964.",
+          "role": "박사 학위 전공",
+          "translation": "1964년 스탠퍼드대학교에서 과학 교육 박사 학위를 받았습니다."
+        }
+      ],
+      "correctReason": "동물학은 1954년 석사 전공이고 1964년 박사 전공은 과학 교육이므로 ②가 불일치합니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "Albert Einstein을 만났을 때 중학생이었다.",
+        "reason": "원문에 중학생 때 Einstein을 만났다고 명시되어 있어 이 선지는 일치합니다."
+      }
+    },
+    "2026_06_27": {
+      "id": "2026_06_27",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 27,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 작품은 사무실에 직접 가져와야 하며 우편으로 보내면 안 됩니다.",
+      "typeApproach": "안내문 문제는 신청과 실제 작품 제출처럼 단계가 다른 절차를 구분해 확인합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Applicants: Artists and social enterprises",
+          "role": "지원 대상",
+          "translation": "예술가와 사회적 기업이 지원할 수 있습니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Product Submission: Bring the product in person to our office and do not send it by post.",
+          "role": "제출 방식",
+          "translation": "작품은 사무실에 직접 가져오고 우편으로 보내지 말아야 합니다."
+        }
+      ],
+      "correctReason": "⑤는 우편 제출이라고 했지만 안내문은 직접 방문 제출과 우편 금지를 명시하므로 일치하지 않습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "응모 신청서 양식은 웹사이트에서 다운로드해야 한다.",
+        "reason": "신청 단계에서 웹사이트의 양식을 내려받으라고 되어 있어 이 선지는 일치합니다."
+      }
+    },
+    "2026_06_28": {
+      "id": "2026_06_28",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 28,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 안내문의 첫 미션은 정문에서 시작합니다.",
+      "typeApproach": "안내문 일치 문제는 시간·장소·예약·비용·수상 조건을 각각 독립적으로 확인합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Date and Time: June 7, 9:00 a.m.–11:30 a.m.",
+          "role": "진행 시간",
+          "translation": "행사는 오전 9시부터 11시 30분까지 2시간 30분 동안 진행됩니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Start the first mission at the main gate.",
+          "role": "시작 장소",
+          "translation": "첫 미션은 정문에서 시작합니다."
+        }
+      ],
+      "correctReason": "첫 미션을 정문에서 시작하라는 지침과 정확히 일치하므로 ②입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "3시간 동안 진행된다.",
+        "reason": "9시부터 11시 30분까지이므로 실제 진행 시간은 2시간 30분입니다."
+      }
+    },
+    "2026_06_29": {
+      "id": "2026_06_29",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 29,
+      "group": "grammar",
+      "type": "어법",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. make it easier for us 뒤에는 목적격 보어를 설명하는 to부정사 to perceive가 필요합니다.",
+      "typeApproach": "어법 문제는 표시된 단어만 보지 말고 앞뒤 동사 구조가 요구하는 형태를 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "make it easier for us",
+          "role": "문장 구조",
+          "translation": "우리에게 더 쉽게 만들어 준다는 구조입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "perceive the imaginary story to be a\nreal one.",
+          "role": "오류 지점",
+          "translation": "가상의 이야기를 실제라고 인식한다는 의미이며 perceive 앞에 to가 필요합니다."
+        }
+      ],
+      "correctReason": "가목적어 it과 형용사 보어 easier 뒤에서 진목적어 역할을 하는 to perceive가 와야 하므로 perceive만 쓴 ③이 틀렸습니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "real",
+        "reason": "환경을 실제처럼 만든다는 make the fictional environment more real 구조에서 형용사 real은 적절합니다."
+      }
+    },
+    "2026_06_30": {
+      "id": "2026_06_30",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 30,
+      "group": "vocab",
+      "type": "어휘",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 독자에게 기억되고 구별되는 목소리를 만든다는 문맥이므로 temporary가 아니라 lasting에 가까운 말이 필요합니다.",
+      "typeApproach": "어휘 문제는 표시어의 사전 뜻보다 앞뒤 문장이 만드는 방향이 같은지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "building a brand that makes them memorable and distinct from\ntheir competitors",
+          "role": "브랜드 목표",
+          "translation": "브랜드는 기억에 남고 경쟁자와 구별되게 해야 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "temporary impression on\nyour audience.",
+          "role": "문맥 충돌",
+          "translation": "독자에게 일시적 인상을 남긴다는 표현은 앞의 지속적 차별화와 맞지 않습니다."
+        }
+      ],
+      "correctReason": "글은 기억되고 구별되는 고유한 목소리를 강조하므로 일시적이라는 temporary는 문맥상 반대입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "cultivating",
+        "reason": "고유한 목소리를 길러 낸다는 뜻으로, 독자에게 인식되는 정체성을 만든다는 문맥에 맞습니다."
+      }
+    },
+    "2026_06_31": {
+      "id": "2026_06_31",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 31,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 동물의 행동을 teaching이라 부르려면 다른 개체를 가르치려는 의도성이 전제되어야 합니다.",
+      "typeApproach": "빈칸 문제는 빈칸을 직접 정의하는 문장과 뒤의 구체 사례가 공통으로 요구하는 개념을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "teaching implies a level of \ton\nthe part of the model that is difficult to measure in animals.",
+          "role": "빈칸 정의",
+          "translation": "가르침은 동물에게 측정하기 어려운 어떤 수준의 의도를 가르치는 개체에게 요구합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Considering the amount of energy they’d have to expend,\nthere would need to be a good reason, and that reason might\nbe teaching.",
+          "role": "사례의 추론",
+          "translation": "큰 에너지를 쓰는 행동에는 이유가 있어야 하며 그 이유가 가르침일 수 있습니다."
+        }
+      ],
+      "correctReason": "다른 개체의 학습을 돕기 위해 일부러 에너지를 쓰는 행동을 설명하므로 필요한 개념은 intentionality입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "inventiveness",
+        "reason": "새로운 방법을 발명하는 능력이 아니라 다른 개체를 가르치려는 의도 여부가 쟁점입니다."
+      }
+    },
+    "2026_06_32": {
+      "id": "2026_06_32",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 32,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 작가는 외모를 자세히 쓰지 않아도 윤곽이나 인상만으로 독자가 완전한 얼굴을 본 듯 느끼게 합니다.",
+      "typeApproach": "빈칸 문제는 첫 문장의 주장과 마지막 사례가 만드는 같은 효과를 찾아 문장을 완성합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "described the faces of their characters, when in fact they have\nsimply given you an outline to fill in.",
+          "role": "핵심 주장",
+          "translation": "작가는 얼굴을 묘사한 듯하지만 실제로는 독자가 채울 윤곽만 줍니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Most often, we\nmistake being told what effect someone’s appearance has\nfor an account of that appearance.",
+          "role": "독자의 착각",
+          "translation": "우리는 외모가 주는 효과를 들은 것을 외모 자체의 설명으로 착각합니다."
+        }
+      ],
+      "correctReason": "Waugh가 세부 외모를 말하지 않았는데도 독자는 그 인물을 정확히 본 듯 느낀다는 ①이 글의 주장과 일치합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "recognize the core characteristics of his personality",
+        "reason": "글은 성격의 핵심 특성을 알아보는 효과가 아니라 외모를 구체적으로 들은 듯한 착각을 설명합니다."
+      }
+    },
+    "2026_06_33": {
+      "id": "2026_06_33",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 33,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 좁은 집중은 잠시 유용하지만 너무 오래 유지하면 다른 신호와 더 나은 경로를 놓칩니다.",
+      "typeApproach": "빈칸 앞의 양보와 뒤의 부정적 결과가 시작되는 시간 조건을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "For a brief moment, the trade-off can be worthwhile, but\nwhen we \t, we start to miss\ncues and signals.",
+          "role": "전환 구조",
+          "translation": "잠깐은 유용하지만 어떤 상태가 지속되면 단서와 신호를 놓치기 시작합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "When we’re stuck\nnarrowed in for too long, accidents go up and performance\ndrops.",
+          "role": "빈칸 재진술",
+          "translation": "좁은 집중에 너무 오래 갇히면 사고가 늘고 수행이 떨어집니다."
+        }
+      ],
+      "correctReason": "뒤 문장이 narrowed in for too long을 그대로 설명하므로 remain zoomed in for too long이 정답입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "get distracted by too many sources",
+        "reason": "문제는 산만함이 아니라 한 대상에 지나치게 오래 집중해 다른 신호를 놓치는 상태입니다."
+      }
+    },
+    "2026_06_34": {
+      "id": "2026_06_34",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 34,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 지리적 판단에는 지표 위 현상들의 공간적 배열과 연결에 대한 인식이 필요합니다.",
+      "typeApproach": "빈칸 문제는 반복되는 핵심어와 뒤의 예시들이 공유하는 상위 개념을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Getting to such\nquestions means taking spatial arrangements, variations, and\ninterconnections seriously.",
+          "role": "핵심 개념",
+          "translation": "공간적 배열, 변화, 상호 연결을 중요하게 다뤄야 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Locating a new store or public\nservice requires taking into consideration population distributions,\nthe location of roads and utilities, socio-economic patterns,\nand more.",
+          "role": "적용 사례",
+          "translation": "새 시설의 위치를 정하려면 인구 분포와 도로·기반 시설의 위치 등을 고려해야 합니다."
+        }
+      ],
+      "correctReason": "글 전체가 지표 위 현상의 위치·배열·연결을 이해해야 판단할 수 있다고 설명하므로 ②입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "which places on Earth are damaged by climate change",
+        "reason": "기후 변화 피해 지역은 가능한 한 사례일 뿐, 사업·정책·이주까지 포괄하는 핵심 개념이 아닙니다."
+      }
+    },
+    "2026_06_35": {
+      "id": "2026_06_35",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 35,
+      "group": "irrelevant",
+      "type": "무관한 문장",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 글은 기후 온난화로 빙하가 줄어드는 증거와 전망을 다루는데, 학교 과학 프로젝트 소재는 흐름에서 벗어납니다.",
+      "typeApproach": "무관한 문장 문제는 앞뒤 문장이 공유하는 중심 대상과 인과 흐름을 먼저 고정합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "most glaciers around the world are melting because of the\nwarming climate",
+          "role": "중심 흐름",
+          "translation": "대부분의 빙하는 기후 온난화 때문에 녹고 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The \tvarious \trocks \tand\nminerals contained in glaciers have become a popular subject\nof science projects in schools.",
+          "role": "이탈 문장",
+          "translation": "빙하 속 암석과 광물이 학교 과학 프로젝트의 인기 소재가 되었다는 내용입니다."
+        }
+      ],
+      "correctReason": "①~③과 ⑤는 모두 빙하 감소의 현재 증거와 미래 소멸 전망을 이어 가지만 ④만 학교 프로젝트를 말합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "It is estimated that many small mountain glaciers will disappear completely within ten to twenty years unless there is a sudden and unexpected change in the present warming trend.",
+        "reason": "빙하가 녹는 속도가 빨라진다는 앞의 흐름을 미래 소멸 전망으로 이어 주는 관련 문장입니다."
+      }
+    },
+    "2026_06_36": {
+      "id": "2026_06_36",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 36,
+      "group": "order",
+      "type": "순서",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 과거에는 활동이 필수였다는 (C), 현대에 활동이 사라진 구체 이유인 (A), 그 결과인 질병 문제 (B)의 순서입니다.",
+      "typeApproach": "순서 문제는 시간 대비, 지시어, 원인과 결과가 이어지는 연결 고리를 문단마다 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "(C) Even one century ago, most people needed to be physically\nactive to work, to travel, and to take care of homes and\nfamilies. Our modern world has engineered such activity\nout of our lives.",
+          "role": "첫 연결",
+          "translation": "한 세기 전의 높은 활동량과 활동을 없앤 현대 사회를 대비합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "(A) There are fewer manual jobs, we do not need to travel on\nfoot, we do not need to hunt and harvest for our food, and\nmany domestic chores have been mechanized.",
+          "role": "현대 변화의 구체화",
+          "translation": "현대 사회가 신체 활동을 줄인 구체적인 이유를 나열합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "(B) Lack of sufficient physical activity has now been linked to\nat least 17 unhealthy conditions",
+          "role": "결과",
+          "translation": "활동 부족이 여러 건강 문제와 연결된 결과를 제시합니다."
+        }
+      ],
+      "correctReason": "도입의 진화적 과거를 (C)가 이어 받고, (A)가 현대 변화의 내용을 설명한 뒤, (B)가 그 변화가 낳은 건강 문제로 마무리합니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "(A) - (C) - (B)",
+        "reason": "(A)의 ‘these changes’가 가리키는 현대적 변화의 배경이 먼저 제시되어야 하므로 (A)가 첫 문단이 될 수 없습니다."
+      }
+    },
+    "2026_06_37": {
+      "id": "2026_06_37",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 37,
+      "group": "order",
+      "type": "순서",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 추를 놓아 두 번의 움직임을 관찰하는 (B), 결과 차이를 일반화하는 (C), 비선형성과 분기 조건을 설명하는 (A)의 순서입니다.",
+      "typeApproach": "순서 문제는 실험 행동, 관찰 결과, 일반 원리의 단계가 자연스럽게 이어지는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "(B) Release the pendulum and note the magnets that it visits,\nand in what order.",
+          "role": "실험 시작",
+          "translation": "먼저 추를 놓아 방문하는 자석과 순서를 관찰합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "(C) No matter how much care is taken to start the pendulum\nin the same position, it will visit an entirely different set of\npoints on the two occasions.",
+          "role": "관찰 결과",
+          "translation": "같은 위치에서 시작해도 두 번의 경로가 완전히 달라집니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Chaotic systems are generated\nby iteration, though not all iteration leads to chaos.",
+          "role": "원리 연결",
+          "translation": "혼돈은 반복으로 생기지만 모든 반복이 혼돈을 만들지는 않습니다."
+        }
+      ],
+      "correctReason": "도입의 장치를 실제로 작동시키는 (B) 다음에 두 시행의 차이를 말하는 (C)가 오고, 반복이 혼돈이 되기 위한 조건을 (A)가 설명합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(C) - (A) - (B)",
+        "reason": "(C)의 ‘two occasions’는 (B)에서 두 번 추를 놓은 뒤에야 의미가 생기므로 (C)가 먼저 올 수 없습니다."
+      }
+    },
+    "2026_06_38": {
+      "id": "2026_06_38",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 38,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 주어진 문장은 장점과 동기를 설명한 부분에서 귀여운 디자인의 단점을 제시하는 부분으로 전환합니다.",
+      "typeApproach": "문장 삽입은 주어진 문장의 연결어와 핵심어가 앞 문장을 받아 뒤 문장을 예고하는 위치를 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "The beautiful product or package\ndesign elicits a self-expressive, or signaling, motivation ― a\ndesire to express oneself to others through product ownership.",
+          "role": "삽입 전",
+          "translation": "아름다운 디자인이 자기표현 욕구를 불러일으킨다는 긍정적 동기를 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Certain types of cute products can be associated with a\nlack \tof \tsophistication \tor \tseriousness",
+          "role": "삽입 후",
+          "translation": "일부 귀여운 제품은 세련됨이나 진지함의 부족과 연관될 수 있다는 단점이 시작됩니다."
+        }
+      ],
+      "correctReason": "긍정적 동기 설명이 끝난 뒤 단점 두 가지가 시작되므로 ‘also have downsides’는 ④에 들어가야 합니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "③",
+        "reason": "③ 뒤에는 아직 아름다운 디자인의 자기표현 동기라는 긍정적 설명이 남아 있어 단점 전환이 너무 이릅니다."
+      }
+    },
+    "2026_06_39": {
+      "id": "2026_06_39",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 39,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 덧셈과 뺄셈을 길 위의 앞뒤 움직임으로 상상한 뒤, 실제로 앉아 있어도 그 움직임을 재현한다는 문장이 이어집니다.",
+      "typeApproach": "문장 삽입은 대명사와 요약 표현이 앞에서 무엇을 가리키는지, 뒤 문장과 주제가 어떻게 확장되는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "But that also helps them\nthink about what 14－3 might mean because they can imagine\nwalking backwards.",
+          "role": "삽입 전",
+          "translation": "아이들은 뒤로 걷는 모습을 상상해 14에서 3을 빼는 의미를 생각합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "If they close their eyes, they might\neven imagine the shape of the path, the smell of the trees, and\nthe sound that is made when they step on the dried leaves.",
+          "role": "삽입 후",
+          "translation": "이어 눈을 감고 길의 모양과 냄새, 발걸음 소리까지 상상합니다."
+        }
+      ],
+      "correctReason": "주어진 문장의 ‘all of this walking back and forth’가 앞의 덧셈과 뺄셈 걷기 전체를 받아야 하므로 ⑤가 적절합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "④",
+        "reason": "④에 넣으면 주어진 문장이 앞뒤 걷기 전체가 아니라 덧셈 예시만 받은 뒤 뺄셈 예시를 끊게 됩니다."
+      }
+    },
+    "2026_06_40": {
+      "id": "2026_06_40",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 40,
+      "group": "summary",
+      "type": "요약문",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 기술 실업은 부의 분배를 무너뜨리고 일이 주던 정서적 보상과 의미까지 없앨 수 있습니다.",
+      "typeApproach": "요약문은 각 빈칸이 원문의 경제적 영향과 정서적 영향을 각각 정확히 바꾸어 말하는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Technological unemployment would weaken that longstanding\narrangement, encouraging an even more extreme version\nof inequality",
+          "role": "경제적 영향",
+          "translation": "기술 실업은 기존 분배 구조를 약화하고 불평등을 심화합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "their\nwork is both a source of income and of meaning.",
+          "role": "정서적 영향",
+          "translation": "일은 소득뿐 아니라 의미의 원천이기도 합니다."
+        }
+      ],
+      "correctReason": "부를 나누는 방식은 distribution, 일에서 얻는 의미와 충족감은 emotional rewards로 요약되므로 ②입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "distribution ··· emptiness",
+        "reason": "일자리가 사라질 때 없어지는 것은 공허함이 아니라 일에서 얻던 의미와 보상입니다."
+      }
+    },
+    "2026_06_41": {
+      "id": "2026_06_41",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 41,
+      "group": "long",
+      "type": "장문 제목",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 기술적 이음매를 숨겨 사용자가 기술을 의식하지 않게 하는 seamlessness가 글 전체의 주제입니다.",
+      "typeApproach": "장문 제목은 여러 예시를 하나로 묶는 반복 개념과 그 개념이 만드는 사용자 경험을 함께 담아야 합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "an aspiration towards seamlessness\naims to make the technological experience for humans blend\nseamlessly into our everyday lives.",
+          "role": "중심 개념",
+          "translation": "기술 경험이 일상에 자연스럽게 섞이도록 하는 것이 목표입니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "people are no longer (a) aware\nof the technology, the interface or the differences between\nhuman-technology and human-human interaction.",
+          "role": "목표 상태",
+          "translation": "사람이 기술과 인터페이스의 존재를 더 이상 의식하지 않는 경험을 지향합니다."
+        }
+      ],
+      "correctReason": "기술이 일상에 섞여 기술처럼 느껴지지 않게 한다는 내용을 가장 넓게 담은 제목은 ①입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "Digital Interfaces Are Becoming Too Complicated!",
+        "reason": "복잡한 인터페이스는 seamlessness의 필요성을 보여 주는 한 사례일 뿐 글 전체의 주제가 아닙니다."
+      }
+    },
+    "2026_06_42": {
+      "id": "2026_06_42",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 42,
+      "group": "long",
+      "type": "장문 어휘",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 인간형 로봇의 seamlessness는 사람과 구별되기 어렵게 만드는 것이므로 distinguishable은 문맥상 반대입니다.",
+      "typeApproach": "장문 어휘는 반복되는 중심 개념의 방향과 표시어가 같은 방향인지 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "make the technological experience for humans blend\nseamlessly into our everyday lives.",
+          "role": "개념 방향",
+          "translation": "기술 경험이 일상에 눈에 띄지 않게 섞여야 합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "seamlessness in humanoid\nrobotic design aims to make humanoids (e) distinguishable\nfrom a human body.",
+          "role": "문맥 충돌",
+          "translation": "인간형 로봇을 인간 신체와 구별 가능하게 만든다는 표현은 seamlessness의 방향과 반대입니다."
+        }
+      ],
+      "correctReason": "이음매 없는 설계의 목표라면 humanoid가 사람과 indistinguishable해야 하므로 distinguishable인 (e)가 부적절합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(d)",
+        "reason": "poor interface designs는 사용을 복잡하고 불편하게 만든다는 뒤 설명과 정확히 맞습니다."
+      }
+    },
+    "2026_06_43": {
+      "id": "2026_06_43",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 43,
+      "group": "long",
+      "type": "장문 순서",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 시장에 들어가는 (C), 복숭아를 사는 (D), 복숭아를 들고 돌아와 함께 떠나는 (B)의 순서입니다.",
+      "typeApproach": "장문 순서는 장소 이동과 소지품 변화가 앞뒤 문단에서 끊기지 않는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "this was going to be (a) her\nfirst experience at a real farmer’s market.",
+          "role": "출발 상황",
+          "translation": "Cathy에게 실제 농산물 시장 방문은 처음입니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Entering the market, Laura said, “Let me show you around.",
+          "role": "첫 행동",
+          "translation": "두 사람은 먼저 시장 안으로 들어갑니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Wandering away from Laura, Cathy began to search for\npeaches.",
+          "role": "다음 행동",
+          "translation": "그다음 Cathy는 Laura와 떨어져 복숭아를 찾습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Carrying \tthe \tbags \tof peaches, \tCathy \tcame \tback \tand\nnoticed Laura holding a box of blueberries and jars of jam.",
+          "role": "마무리 행동",
+          "translation": "복숭아를 산 뒤 Cathy가 Laura에게 돌아옵니다."
+        }
+      ],
+      "correctReason": "(C)에서 시장을 둘러보다 복숭아를 사러 가고, (D)에서 구매한 뒤, (B)에서 복숭아를 들고 돌아오므로 ③입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "(C) - (B) - (D)",
+        "reason": "(B)의 Cathy는 이미 복숭아 봉지를 들고 있으므로 복숭아를 사는 (D)보다 먼저 올 수 없습니다."
+      }
+    },
+    "2026_06_44": {
+      "id": "2026_06_44",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 44,
+      "group": "long",
+      "type": "장문 지칭",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. (c) you는 딸기 잼을 사는 Laura를 가리키고, 나머지 네 표현은 모두 Cathy를 가리킵니다.",
+      "typeApproach": "지칭 문제는 대명사 바로 앞의 화자와 행동 주체를 실제 인물 이름으로 바꾸어 읽습니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Meanwhile, Laura found some strawberry\njam for sale. She walked over to buy some.",
+          "role": "Laura의 행동",
+          "translation": "Laura가 딸기 잼을 발견하고 사러 갑니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Curious to explore\nmore, Cathy said, “While (c) you’re buying jam, I’ll look\naround the market and get some peaches.”",
+          "role": "지칭 확인",
+          "translation": "Cathy가 Laura에게 ‘네가 잼을 사는 동안’이라고 말하므로 (c)는 Laura입니다."
+        }
+      ],
+      "correctReason": "(a), (b), (d), (e)는 Cathy를 가리키지만 (c)는 Cathy가 말을 건 상대인 Laura를 가리키므로 ③입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(e)",
+        "reason": "(e) you는 과일 판매자가 Cathy에게 말한 표현이므로 Cathy를 가리킵니다."
+      }
+    },
+    "2026_06_45": {
+      "id": "2026_06_45",
+      "status": "ready",
+      "exam": "2026학년도 6월 모의평가 영어",
+      "qid": 45,
+      "group": "long",
+      "type": "장문 내용",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. Cathy는 복숭아가 비싸다고 한 것이 아니라 정말 싸다고 말하며 두 봉지를 샀습니다.",
+      "typeApproach": "장문 내용 문제는 선지의 인물·행동·평가를 해당 장면의 직접 발언과 대조합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Born and raised in\na big city, where large supermarkets were more common,\nCathy had never had a chance to buy freshly-picked fruits or\nvegetables.",
+          "role": "성장 배경",
+          "translation": "Cathy는 대도시에서 태어나 자랐습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Hearing that, Cathy\nsaid, “Oh, I’ll get some more then! They’re really cheap!” She\nbought two bags of peaches.",
+          "role": "정답 근거",
+          "translation": "Cathy는 복숭아가 정말 싸다고 말하며 두 봉지를 샀습니다."
+        }
+      ],
+      "correctReason": "Cathy의 직접 발언은 ‘They’re really cheap!’이므로 비싸다고 생각했다는 ⑤가 적절하지 않습니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "Cathy는 대도시에서 태어나고 성장했다.",
+        "reason": "원문에 Cathy가 대도시에서 태어나 자랐다고 명시되어 있어 이 선지는 일치합니다."
+      }
+    }
+  }
+}

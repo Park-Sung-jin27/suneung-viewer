@@ -1,0 +1,244 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2023학년도 6월 모의평가 미적분 23~28번 중 비그림 5문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 5,
+    "readyCount": 5,
+    "questionFingerprint": "45556c1ce9ecff9dcba5421c7369f190b8a9b38876e8573cb7ddbe991fff4fb7",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5043334/ect_f123552d-f3b9-441b-a9cb-26dd3fb0382a1655a9598b93086.zip",
+      "archiveSha256": "52670128518e0c913ee086d8fdf4364718997feb40edb189510c7bd32e5943ac",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "aa82f35e8f31049dbc75279de253ae9c3aeceb09d0a85bf53ba1ce2f882ce452",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "5db0748417f984b6ac30c87bb351f2d8fca7dce276fc71f47b7ab944e9e64519"
+    },
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 그림에 조건이 의존하는 26·29번은 제외하고, 30번은 별도 고난도 검증 파일로 분리."
+  },
+  "items": {
+    "2023_06_cal_23": {
+      "id": "2023_06_cal_23",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 23,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "분모를 유리화하면 두 제곱근의 합을 2n으로 나눈 꼴이 되고, n²을 묶어 극한을 계산하면 1입니다.",
+      "approach": "두 제곱근의 차가 있는 분모에 켤레식을 곱해 0/0형을 제거합니다.",
+      "concepts": [
+        "무리식의 유리화",
+        "수열의 극한"
+      ],
+      "steps": [
+        {
+          "title": "분모 유리화하기",
+          "expression": "\\frac{1}{\\sqrt{n^2+3n}-\\sqrt{n^2+n}}=\\frac{\\sqrt{n^2+3n}+\\sqrt{n^2+n}}{2n}",
+          "explanation": "제곱의 차를 이용하면 분모는 (n²+3n)-(n²+n)=2n이 됩니다."
+        },
+        {
+          "title": "n²을 제곱근 밖으로 꺼내기",
+          "expression": "\\frac{\\sqrt{1+\\frac3n}+\\sqrt{1+\\frac1n}}{2}",
+          "explanation": "n은 양의 정수이므로 각 제곱근에서 n을 꺼내고 약분합니다."
+        },
+        {
+          "title": "극한 계산하기",
+          "expression": "\\lim_{n\\to\\infty}\\frac{\\sqrt{1+\\frac3n}+\\sqrt{1+\\frac1n}}{2}=1",
+          "explanation": "3/n과 1/n이 모두 0으로 수렴합니다."
+        }
+      ],
+      "correctReason": "극한값은 1이므로 정답은 ①입니다.",
+      "commonMistake": "제곱근의 차를 각각 따로 극한 처리해 0으로 보지 마세요. 두 항의 최고차항이 같아 차이가 작아지므로 먼저 유리화해야 합니다.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_cal_24": {
+      "id": "2023_06_cal_24",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 24,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "음함수 미분으로 y'를 구한 뒤 (e,e²)를 대입하면 접선의 기울기는 e+1입니다.",
+      "approach": "y를 x의 함수로 보고 곡선의 양변을 x에 대하여 미분합니다.",
+      "concepts": [
+        "음함수 미분",
+        "곱의 미분법"
+      ],
+      "steps": [
+        {
+          "title": "곡선의 식 미분하기",
+          "expression": "2x-\\left(y'\\ln x+\\frac{y}{x}\\right)+1=0",
+          "explanation": "y ln x를 미분할 때 y' ln x와 y/x가 함께 생깁니다."
+        },
+        {
+          "title": "y'에 관해 정리하기",
+          "expression": "y'=\\frac{2x+1-\\frac{y}{x}}{\\ln x}",
+          "explanation": "y'가 포함된 항을 한쪽으로 모읍니다."
+        },
+        {
+          "title": "주어진 점 대입하기",
+          "expression": "y'(e)=\\frac{2e+1-e}{1}=e+1",
+          "explanation": "y/x=e²/e=e이고 ln e=1입니다."
+        }
+      ],
+      "correctReason": "접선의 기울기는 e+1이므로 정답은 ①입니다.",
+      "commonMistake": "y ln x를 y/x만으로 미분하지 마세요. y도 x에 따라 변하므로 y' ln x 항이 필요합니다.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_cal_25": {
+      "id": "2023_06_cal_25",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 25,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "f(0)=3이므로 g(3)=0이고, 역함수의 미분법으로 g'(3)=1/f'(0)=1/2입니다.",
+      "approach": "먼저 역함수에서 대응하는 원래 함수의 입력값을 찾고 미분계수의 역수를 취합니다.",
+      "concepts": [
+        "역함수",
+        "역함수의 미분법"
+      ],
+      "steps": [
+        {
+          "title": "역함수의 대응점 찾기",
+          "expression": "f(0)=3\\Rightarrow g(3)=0",
+          "explanation": "역함수는 입력과 출력을 서로 바꿉니다."
+        },
+        {
+          "title": "f' 계산하기",
+          "expression": "f'(x)=3x^2+2\\Rightarrow f'(0)=2",
+          "explanation": "원래 함수의 대응점 x=0에서 미분계수를 구합니다."
+        },
+        {
+          "title": "역함수 미분 공식 적용하기",
+          "expression": "g'(3)=\\frac{1}{f'(g(3))}=\\frac{1}{f'(0)}=\\frac12",
+          "explanation": "역함수의 미분계수는 대응하는 원래 함수 미분계수의 역수입니다."
+        }
+      ],
+      "correctReason": "g'(3)=1/2이므로 정답은 ②입니다.",
+      "commonMistake": "f'(3)의 역수를 사용하지 마세요. 먼저 g(3)=0을 찾아 f'(0)의 역수를 사용해야 합니다.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_cal_27": {
+      "id": "2023_06_cal_27",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 27,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "급수의 일반항이 0으로 수렴해야 하므로 공차는 3입니다. 일반항은 1/n-1/(n+2)가 되어 합은 3/2입니다.",
+      "approach": "등차수열을 공차 d로 나타내고, 급수 수렴의 필요조건으로 d를 먼저 결정한 뒤 망원급수를 계산합니다.",
+      "concepts": [
+        "급수 수렴의 필요조건",
+        "망원급수"
+      ],
+      "steps": [
+        {
+          "title": "등차수열 나타내기",
+          "expression": "a_n=4+(n-1)d=dn+4-d",
+          "explanation": "첫째항 4와 공차 d를 사용합니다."
+        },
+        {
+          "title": "일반항의 극한으로 공차 구하기",
+          "expression": "\\frac{a_n}{n}-\\frac{3n+7}{n+2}=d+\\frac{4-d}{n}-3-\\frac{1}{n+2}",
+          "explanation": "급수가 수렴하려면 이 일반항의 극한이 0이어야 하므로 d-3=0, 즉 d=3입니다."
+        },
+        {
+          "title": "망원급수로 바꾸기",
+          "expression": "d=3\\Rightarrow\\frac{a_n}{n}-\\frac{3n+7}{n+2}=\\frac1n-\\frac{1}{n+2}",
+          "explanation": "a_n=3n+1을 대입하면 앞뒤 항이 차례로 소거되는 꼴입니다."
+        },
+        {
+          "title": "무한합 계산하기",
+          "expression": "S=1+\\frac12=\\frac32",
+          "explanation": "부분합에서 1과 1/2만 남고 뒤의 두 항은 0으로 수렴합니다."
+        }
+      ],
+      "correctReason": "급수의 합은 3/2이므로 정답은 ③입니다.",
+      "commonMistake": "급수의 일반항이 0으로 수렴한다는 조건만 확인하고 끝내지 마세요. 그 조건으로 공차를 정한 뒤 실제 급수의 합까지 계산해야 합니다.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_cal_28": {
+      "id": "2023_06_cal_28",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 28,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "연속 조건으로 f의 유일한 실근이 1임을 알 수 있습니다. x=2의 두 극값 조건과 g(x)=0의 근 개수를 함께 적용하면 f(x)=1/2(x-1)(x²-6x+10)이고, g의 극솟값은 ln(25/27)입니다.",
+      "approach": "g의 불연속점, 극값, 영점 조건을 각각 f의 영점, f의 극값, |f|=1 조건으로 바꾸어 삼차함수를 결정합니다.",
+      "concepts": [
+        "로그함수의 연속성",
+        "삼차함수의 극값",
+        "방정식의 실근 개수"
+      ],
+      "steps": [
+        {
+          "title": "f의 실근 정하기",
+          "expression": "f(1)=0",
+          "explanation": "f(r)=0이면 r에서 g(r)=1이지만 주변에서는 ln|f(x)|가 음의 무한대로 가므로 g가 불연속입니다. g는 x=1에서만 불연속일 수 있으므로 f의 유일한 실근은 1입니다."
+        },
+        {
+          "title": "x=2에서 f의 조건 바꾸기",
+          "expression": "f'(2)=0,\\quad f(2)=1",
+          "explanation": "x>1에서 f는 양수이므로 g의 극대는 f의 극대와 같습니다. |g|도 같은 점에서 극소이고 g(x)=0의 서로 다른 근이 세 개가 되려면 g(2)=0, 즉 f(2)=1이어야 합니다."
+        },
+        {
+          "title": "삼차함수의 계수 결정하기",
+          "expression": "f(x)=\\frac12(x-1)(x^2+px+q)",
+          "explanation": "f'(2)=0에서 q=-8-3p, f(2)=1에서 p=-6을 얻으므로 q=10입니다."
+        },
+        {
+          "title": "다른 극값의 위치 찾기",
+          "expression": "f'(x)=\\frac12(3x^2-14x+16)=\\frac12(3x-6)\\left(x-\\frac83\\right)",
+          "explanation": "x=2는 극대점이고 x=8/3은 f와 g의 극소점입니다."
+        },
+        {
+          "title": "극솟값 계산하기",
+          "expression": "g\\left(\\frac83\\right)=\\ln f\\left(\\frac83\\right)=\\ln\\frac{25}{27}",
+          "explanation": "f(8/3)=1/2×5/3×10/9=25/27이고 이 값은 양수입니다."
+        }
+      ],
+      "correctReason": "g의 극솟값은 ln(25/27)이므로 정답은 ⑤입니다.",
+      "commonMistake": "x=2에서 g가 극대라는 조건만 사용하지 마세요. |g|의 극소와 g(x)=0의 실근 개수까지 함께 사용해야 f(2)=1이 결정됩니다.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

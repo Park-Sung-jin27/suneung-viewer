@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 9월 모의평가 수학 미적분 23~30번 중 원문 일치 7문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 7,
+    "readyCount": 7,
+    "questionFingerprint": "a80721b0c35e242eb9744469b96907ddd61a88ac74f564b77d58d3ceb8b443df",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5087696&lev=0&m=0403&page=3&s=suneung&searchType=S&statusYN=W",
+      "independentSourceUrls": [
+        "https://horaeng.com/353",
+        "https://wdown.ebsi.co.kr/W61001/01exam/20240904/go3/mathA_1_hsj_9DOE5Q44.pdf"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "10872f1ff40923c9e92705b49d60043ac9e4ddc58db744865b4188d075eef28c",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "10872f1ff40923c9e92705b49d60043ac9e4ddc58db744865b4188d075eef28c"
+        }
+      ],
+      "answerFilename": "kice-answer.pdf",
+      "answerSha256": "e06118d5649d9a7fd04606ae1400db967a9435b54ad7eb1d75e96fe7bd9a62c2",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "ff290de3a4c7bc618a8f151336ae9b484673118622eb0ecbc905f24f9f44089c"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지·정답표를 동일 파일 복제본과 대조하고, EBS 해설 및 독립 계산으로 풀이를 다시 확인했습니다. 26번은 문제 도형 조건이 원본과 달라 별도 차단했습니다."
+  },
+  "items": {
+    "2025_09_cal_23": {
+      "id": "2025_09_cal_23",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 23,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "삼각함수의 기본 극한을 적용하면 극한값은 5입니다.",
+      "approach": "분자에 5x를 만들어 sin t/t의 극한으로 바꿉니다.",
+      "concepts": ["삼각함수의 극한", "상수배"],
+      "steps": [
+        {
+          "title": "기본형 만들기",
+          "expression": "\\frac{\\sin 5x}{x}=5\\cdot\\frac{\\sin 5x}{5x}",
+          "explanation": "분모와 분자에 5를 맞추어 기본 극한의 꼴로 정리합니다."
+        },
+        {
+          "title": "극한 적용",
+          "expression": "5\\lim_{x\\to0}\\frac{\\sin 5x}{5x}=5",
+          "explanation": "5x가 0으로 갈 때 sin(5x)/(5x)는 1로 갑니다."
+        }
+      ],
+      "correctReason": "sin t/t가 1로 수렴하고 바깥의 상수 5가 그대로 남습니다.",
+      "commonMistake": "sin 5x를 5 sin x로 바꾸지 마세요. 극한에서만 5x를 한 덩어리로 다룹니다.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_cal_24": {
+      "id": "2025_09_cal_24",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 24,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "주어진 접선 기울기를 적분하고 초기값을 적용하면 f(e)=2e^(2e)+2입니다.",
+      "approach": "접선의 기울기를 f'(t)로 읽고 부정적분한 뒤 f(1)로 적분상수를 정합니다.",
+      "concepts": ["도함수와 접선", "부정적분", "초기조건"],
+      "steps": [
+        {
+          "title": "도함수 확인",
+          "expression": "f'(t)=\\frac1t+4e^{2t}",
+          "explanation": "곡선 위 점에서의 접선 기울기는 그 점의 도함수 값입니다."
+        },
+        {
+          "title": "적분",
+          "expression": "f(t)=\\ln t+2e^{2t}+C",
+          "explanation": "양수 t에서 1/t의 원시함수는 ln t입니다."
+        },
+        {
+          "title": "초기값과 대입",
+          "expression": "f(1)=2e^2+C=2e^2+1\\Rightarrow C=1,\\quad f(e)=2e^{2e}+2",
+          "explanation": "ln e=1까지 더하면 정답은 ④입니다."
+        }
+      ],
+      "correctReason": "적분상수 1과 ln e=1을 모두 반영한 값이 2e^(2e)+2입니다.",
+      "commonMistake": "4e^(2t)를 적분할 때 지수의 미분값 2로 나누어 2e^(2t)가 됨을 놓치지 마세요.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_cal_25": {
+      "id": "2025_09_cal_25",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 25,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "유한한 양의 극한이 되려면 공비가 1/2이고 첫째항이 3이므로 a1+a2=9/2입니다.",
+      "approach": "등비수열의 일반항을 대입한 뒤 분모의 주된 증가율 2^n과 분자의 지수항을 맞춥니다.",
+      "concepts": ["등비수열", "지수수열의 극한", "증가율 비교"],
+      "steps": [
+        {
+          "title": "일반항 대입",
+          "expression": "a_n=a_1r^{n-1}\\Rightarrow 4^na_n=\\frac{a_1}{r}(4r)^n",
+          "explanation": "첫째항과 공비로 분자의 지수항을 나타냅니다."
+        },
+        {
+          "title": "공비 결정",
+          "expression": "4r=2\\Rightarrow r=\\frac12",
+          "explanation": "분모가 2^n에 비례하므로 극한이 0도 무한대도 아니려면 분자의 밑도 2여야 합니다."
+        },
+        {
+          "title": "첫째항과 합",
+          "expression": "\\lim\\frac{2a_1\\,2^n-1}{6\\,2^n}=\\frac{a_1}{3}=1\\Rightarrow a_1=3,\\quad a_1+a_2=3+\\frac32=\\frac92",
+          "explanation": "정답은 ④입니다."
+        }
+      ],
+      "correctReason": "공비와 첫째항을 극한 조건에서 차례로 고정하면 합이 유일하게 9/2로 정해집니다.",
+      "commonMistake": "-1은 n이 커질 때 주된 항이 아니지만, 공비를 정하기 전에 무조건 버리면 증가율 조건을 놓칠 수 있습니다.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_cal_27": {
+      "id": "2025_09_cal_27",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 27,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "함수 방정식을 미분하고 x=0과 x=π를 차례로 대입하면 f'(π)=-2/3입니다.",
+      "approach": "합성함수를 미분한 식에서 먼저 f'(0)을 구한 뒤 같은 식에 x=π를 넣습니다.",
+      "concepts": ["함수방정식", "합성함수의 미분", "특수각"],
+      "steps": [
+        {
+          "title": "양변 미분",
+          "expression": "f'(x)+\\frac12\\cos x\\,f'\\left(\\frac12\\sin x\\right)=\\cos x",
+          "explanation": "두 번째 항에는 합성함수의 미분법을 적용합니다."
+        },
+        {
+          "title": "f'(0) 계산",
+          "expression": "f'(0)+\\frac12f'(0)=1\\Rightarrow f'(0)=\\frac23",
+          "explanation": "sin 0=0, cos 0=1을 사용합니다."
+        },
+        {
+          "title": "f'(π) 계산",
+          "expression": "f'(\\pi)-\\frac12f'(0)=-1\\Rightarrow f'(\\pi)=-\\frac23",
+          "explanation": "sin π=0, cos π=-1을 사용하면 정답은 ②입니다."
+        }
+      ],
+      "correctReason": "x=π에서도 합성함수 안쪽이 0이므로 앞에서 구한 f'(0)을 재사용할 수 있습니다.",
+      "commonMistake": "합성함수를 미분할 때 바깥 함수의 도함수만 쓰고 안쪽 미분값 (1/2)cos x를 빠뜨리지 마세요.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_cal_28": {
+      "id": "2025_09_cal_28",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 28,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "역함수 적분 관계로 보조 적분값을 1/12로 구하고 부분적분하면 최종값은 -1/(3π)입니다.",
+      "approach": "g와 역함수 그래프가 만드는 넓이의 합을 사용한 뒤, 구하려는 적분을 부분적분으로 같은 보조 적분에 연결합니다.",
+      "concepts": ["역함수의 정적분", "부분적분", "치환적분"],
+      "steps": [
+        {
+          "title": "보조 적분 설정",
+          "expression": "I=\\int_0^1 f'(2x)\\sin\\pi x\\,dx,\\quad \\int_0^1g(x)dx=I+\\frac12",
+          "explanation": "g(0)=0, g(1)=1이며 g의 정의를 그대로 적분합니다."
+        },
+        {
+          "title": "역함수 넓이 공식",
+          "expression": "\\int_0^1g(x)dx+\\int_0^1g^{-1}(x)dx=1",
+          "explanation": "주어진 식을 넣으면 I+1/2+2I+1/4=1입니다."
+        },
+        {
+          "title": "I 계산",
+          "expression": "3I+\\frac34=1\\Rightarrow I=\\frac1{12}",
+          "explanation": "구하려는 적분과 연결할 기준값입니다."
+        },
+        {
+          "title": "부분적분",
+          "expression": "\\int_0^2 f(x)\\cos\\frac{\\pi x}{2}dx=2\\int_0^1f(2t)\\cos\\pi t\\,dt=-\\frac4\\pi I=-\\frac1{3\\pi}",
+          "explanation": "치환 x=2t 뒤 부분적분하면 경계항은 0이 되고 정답은 ③입니다."
+        }
+      ],
+      "correctReason": "역함수 적분과 부분적분이 모두 동일한 I를 매개로 연결되어 값이 -1/(3π)로 결정됩니다.",
+      "commonMistake": "x=2t로 치환할 때 dx=2dt와, f(2t)를 미분할 때 생기는 계수 2를 각각 빠뜨리지 마세요.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_cal_29": {
+      "id": "2025_09_cal_29",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 29,
+      "answer": "57",
+      "answerMark": null,
+      "summary": "무한급수를 망원급수로 정리하면 a1=3/2, a10=1/11이므로 p+q=57입니다.",
+      "approach": "일반항을 부분분수로 분해해 S_m을 구하고, a_n=S_n-S_(n-1)을 사용합니다.",
+      "concepts": ["부분분수", "망원급수", "수열과 부분합"],
+      "steps": [
+        {
+          "title": "부분분수 분해",
+          "expression": "\\frac{m+1}{n(n+m+1)}=\\frac1n-\\frac1{n+m+1}",
+          "explanation": "무한히 더하면 중간 항들이 서로 지워집니다."
+        },
+        {
+          "title": "부분합 표현",
+          "expression": "S_m=1+\\frac12+\\cdots+\\frac1{m+1}",
+          "explanation": "앞쪽 m+1개 항만 남습니다."
+        },
+        {
+          "title": "필요한 두 항",
+          "expression": "a_1=S_1=\\frac32,\\qquad a_{10}=S_{10}-S_9=\\frac1{11}",
+          "explanation": "두 값을 더하면 35/22입니다."
+        },
+        {
+          "title": "정답 계산",
+          "expression": "a_1+a_{10}=\\frac{35}{22}=\\frac qp\\Rightarrow p+q=22+35=57",
+          "explanation": "35와 22는 서로소입니다."
+        }
+      ],
+      "correctReason": "부분합의 차로 일반항을 복원하면 10번째 항은 새로 추가된 1/11 하나입니다.",
+      "commonMistake": "문제에서 q/p로 제시했으므로 분자 q=35, 분모 p=22의 순서를 뒤집지 마세요.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_cal_30": {
+      "id": "2025_09_cal_30",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 미적분",
+      "questionNumber": 30,
+      "answer": "25",
+      "answerMark": null,
+      "summary": "원시함수의 수직 이동 조건을 최적화하면 g(1/4)=3/4, g(3/2)=2e-5/2이므로 답은 25입니다.",
+      "approach": "F는 f의 한 원시함수에 상수를 더한 꼴입니다. F가 f보다 항상 위에 있도록 필요한 최소 상수를 k의 범위에 따라 구합니다.",
+      "concepts": ["원시함수", "함수의 최댓값", "절댓값 함수", "구간별 정의"],
+      "steps": [
+        {
+          "title": "최소 수직 이동",
+          "expression": "F(x)=A(x)+C,\\quad C\\geq\\sup_x\\{f(x)-A(x)\\}",
+          "explanation": "A'=f인 하나의 원시함수를 잡으면 조건 F≥f를 만족시키는 가장 작은 C가 g(k)를 정합니다."
+        },
+        {
+          "title": "k의 범위별 결과",
+          "expression": "g(k)=\\begin{cases}1-k&(0<k\\leq\\frac12)\\\\-k+2e^{(2k-1)/2}-1&(k>\\frac12)\\end{cases}",
+          "explanation": "x<0과 x≥0에서 절댓값을 나누어 f-A의 최댓값을 비교한 결과입니다."
+        },
+        {
+          "title": "두 값 대입",
+          "expression": "g\\left(\\frac14\\right)=\\frac34,\\qquad g\\left(\\frac32\\right)=2e-\\frac52",
+          "explanation": "두 범위에 각각 해당하는 식을 사용합니다."
+        },
+        {
+          "title": "최종 계산",
+          "expression": "g\\left(\\frac14\\right)+g\\left(\\frac32\\right)=2e-\\frac74\\Rightarrow100(p+q)=100\\left(2-\\frac74\\right)=25",
+          "explanation": "p=2, q=-7/4입니다."
+        }
+      ],
+      "correctReason": "모든 원시함수의 차이는 상수이므로, 조건을 만족시키는 최소 수직 이동량을 찾는 문제가 됩니다.",
+      "commonMistake": "F(0)의 최솟값을 f(0)=k로 바로 두지 마세요. F≥f가 모든 실수에서 성립하도록 전체 구간의 최대 차이를 확인해야 합니다.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2025_09_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "examId": "2025_09"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2025학년도_9월_영어_문제.pdf",
+      "sha256": "73a48f9bba4265fee9875d86f8277aa7946fcb630c69c11ad03986568bead7e5"
+    },
+    "answer": {
+      "filename": "2025학년도_9월_영어_정답.png",
+      "sha256": "8459d209551c5ffafa8ff1e805a3ede77b9746854718bc00abd93c023bbfb9a9"
+    },
+    "explanation": {
+      "filename": "2025학년도_9월_영어_해설.pdf",
+      "sha256": "8c1ab86dbb7a1f48f16f4b91212232801a601e4dd62513e5b8a1f71363fb436e"
+    }
+  },
+  "reviewData": {
+    "path": "english/data/candidates/english_2025_09_reviews.json",
+    "sha256": "8688cbfcb5ca2188e32f52b3aa858871880855f11c97faa1d77f1ec8af547275",
+    "expectedReadyCount": 28
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 60,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 15,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2025_09_25",
+      "2025_09_27",
+      "2025_09_28"
+    ]
+  },
+  "projectionPolicies": {
+    "default": {
+      "sourceField": "rawText",
+      "stripStem": true,
+      "stripChoices": true,
+      "stripPdfTail": true
+    },
+    "sharedPassageIds": [
+      "2025_09_41",
+      "2025_09_42",
+      "2025_09_43",
+      "2025_09_44",
+      "2025_09_45"
+    ],
+    "inlineMarkerIds": [
+      "2025_09_29",
+      "2025_09_30",
+      "2025_09_35",
+      "2025_09_42",
+      "2025_09_44"
+    ],
+    "sequenceTableIds": [
+      "2025_09_36",
+      "2025_09_37",
+      "2025_09_43"
+    ],
+    "placementMarkerIds": [
+      "2025_09_38",
+      "2025_09_39"
+    ]
+  },
+  "questions": [
+    { "id": "2025_09_18", "qid": 18, "answer": 4, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_19", "qid": 19, "answer": 3, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_20", "qid": 20, "answer": 3, "problemPage": 2, "explanationPages": [12], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_21", "qid": 21, "answer": 3, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_22", "qid": 22, "answer": 3, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_23", "qid": 23, "answer": 4, "problemPage": 3, "explanationPages": [14], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_24", "qid": 24, "answer": 4, "problemPage": 3, "explanationPages": [15], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_25", "qid": 25, "answer": 5, "problemPage": 4, "explanationPages": [15], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2025-09/q25-figure.png" },
+    { "id": "2025_09_26", "qid": 26, "answer": 2, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_27", "qid": 27, "answer": 3, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2025-09/q27-notice.png" },
+    { "id": "2025_09_28", "qid": 28, "answer": 5, "problemPage": 4, "explanationPages": [17], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2025-09/q28-notice.png" },
+    { "id": "2025_09_29", "qid": 29, "answer": 5, "problemPage": 5, "explanationPages": [18], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_30", "qid": 30, "answer": 5, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_31", "qid": 31, "answer": 2, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_32", "qid": 32, "answer": 2, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_33", "qid": 33, "answer": 1, "problemPage": 6, "explanationPages": [21], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_34", "qid": 34, "answer": 3, "problemPage": 6, "explanationPages": [22], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_35", "qid": 35, "answer": 4, "problemPage": 6, "explanationPages": [22], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_36", "qid": 36, "answer": 5, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_37", "qid": 37, "answer": 3, "problemPage": 7, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_38", "qid": 38, "answer": 5, "problemPage": 7, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_39", "qid": 39, "answer": 4, "problemPage": 7, "explanationPages": [25], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_40", "qid": 40, "answer": 1, "problemPage": 7, "explanationPages": [26], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_41", "qid": 41, "answer": 1, "problemPage": 8, "explanationPages": [27], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_42", "qid": 42, "answer": 3, "problemPage": 8, "explanationPages": [28], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_43", "qid": 43, "answer": 2, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_44", "qid": 44, "answer": 2, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_09_45", "qid": 45, "answer": 5, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" }
+  ],
+  "choiceOverrides": {
+    "2025_09_20": [
+      { "num": 1, "mark": "①", "text": "소셜 미디어 플랫폼을 운영할 때 사용자의 의견을 반영해야 한다." },
+      { "num": 2, "mark": "②", "text": "디지털 창작물의 저작권 보호에 관한 사회적 합의를 도출해야 한다." },
+      { "num": 3, "mark": "③", "text": "소셜 미디어 사용자는 정보의 정확성과 신뢰성 확보를 위해 힘써야 한다." },
+      { "num": 4, "mark": "④", "text": "광범위한 지식을 축적하기 위해 다양한 정보의 유통을 촉진해야 한다." },
+      { "num": 5, "mark": "⑤", "text": "소셜 미디어 기업은 개인 정보 보호를 위한 대책을 세워야 한다." }
+    ],
+    "2025_09_24": [
+      { "num": 1, "mark": "①", "text": "Why Are Open-office Plans So Cost-efficient?" },
+      { "num": 2, "mark": "②", "text": "How to Incorporate Retro Styles into Office Spaces" },
+      { "num": 3, "mark": "③", "text": "An Office Divided: Why Partitions Limit Productivity" },
+      { "num": 4, "mark": "④", "text": "Office Designs: What Goes Around Comes Around" },
+      { "num": 5, "mark": "⑤", "text": "Tips for Managing Contemporary Office Spaces" }
+    ],
+    "2025_09_25": [
+      { "num": 1, "mark": "①", "text": "For each country, the percentage of respondents familiar with VR was greater than the percentage of respondents familiar with AR." },
+      { "num": 2, "mark": "②", "text": "The country with the highest percentage of respondents familiar with AR was South Korea." },
+      { "num": 3, "mark": "③", "text": "The country with the largest gap between the percentage of respondents familiar with VR and that of respondents familiar with AR was Canada." },
+      { "num": 4, "mark": "④", "text": "In Japan, the percentage of respondents familiar with VR was greater than 60%." },
+      { "num": 5, "mark": "⑤", "text": "The percentage of respondents familiar with VR and that of respondents familiar with AR were lower in Switzerland than in Japan, respectively." }
+    ],
+    "2025_09_28": [
+      { "num": 1, "mark": "①", "text": "주제는 농업 기술의 미래이다." },
+      { "num": 2, "mark": "②", "text": "출품은 11월 30일부터이다." },
+      { "num": 3, "mark": "③", "text": "각 참가자는 두 개의 웹툰을 제출할 수 있다." },
+      { "num": 4, "mark": "④", "text": "2등상은 세 명에게 주어진다." },
+      { "num": 5, "mark": "⑤", "text": "수상자는 선정 위원회에서 결정될 것이다." }
+    ],
+    "2025_09_29": [
+      { "num": 1, "mark": "①", "text": "employed" },
+      { "num": 2, "mark": "②", "text": "evenly" },
+      { "num": 3, "mark": "③", "text": "were forced" },
+      { "num": 4, "mark": "④", "text": "inspired" },
+      { "num": 5, "mark": "⑤", "text": "whose" }
+    ],
+    "2025_09_30": [
+      { "num": 1, "mark": "①", "text": "informed" },
+      { "num": 2, "mark": "②", "text": "easier" },
+      { "num": 3, "mark": "③", "text": "acceptance" },
+      { "num": 4, "mark": "④", "text": "less" },
+      { "num": 5, "mark": "⑤", "text": "rationality" }
+    ],
+    "2025_09_32": [
+      { "num": 1, "mark": "①", "text": "require minimal cost and effort to maintain" },
+      { "num": 2, "mark": "②", "text": "are most appropriate for the majority of people" },
+      { "num": 3, "mark": "③", "text": "are in line with current standards and global norms" },
+      { "num": 4, "mark": "④", "text": "employ some of the most advanced technologies" },
+      { "num": 5, "mark": "⑤", "text": "promote the commercial interests of companies" }
+    ],
+    "2025_09_35": [
+      { "num": 1, "mark": "①", "text": "Because it is their business, to which they devote themselves full-time, they will inevitably have a much wider network than any non-professional collector can ever develop." },
+      { "num": 2, "mark": "②", "text": "As a matter of course they can enquire about the availability of pieces from dealers in other cities and, most crucially in some categories, from overseas." },
+      { "num": 3, "mark": "③", "text": "They will be routinely informed of news of all auctions and important private sales, and should be well-enough connected to hear occasionally of items which are not yet quite on sale but might be available for a certain price." },
+      { "num": 4, "mark": "④", "text": "The main advantage of buying from a dealer is getting personalised service on your purchases." },
+      { "num": 5, "mark": "⑤", "text": "In turn, they can circulate their own contacts with ‘want-lists’ of desired items or subjects, multiplying their client collectors’ chances of expanding their collections." }
+    ],
+    "2025_09_36": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2025_09_37": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2025_09_38": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2025_09_39": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2025_09_40": [
+      { "num": 1, "mark": "①", "text": "represents …… finite" },
+      { "num": 2, "mark": "②", "text": "symbolizes …… universal" },
+      { "num": 3, "mark": "③", "text": "distorts …… fixed" },
+      { "num": 4, "mark": "④", "text": "expresses …… novel" },
+      { "num": 5, "mark": "⑤", "text": "records …… complex" }
+    ],
+    "2025_09_43": [
+      { "num": 1, "mark": "①", "text": "(B) - (D) - (C)" },
+      { "num": 2, "mark": "②", "text": "(C) - (B) - (D)" },
+      { "num": 3, "mark": "③", "text": "(C) - (D) - (B)" },
+      { "num": 4, "mark": "④", "text": "(D) - (B) - (C)" },
+      { "num": 5, "mark": "⑤", "text": "(D) - (C) - (B)" }
+    ],
+    "2025_09_45": [
+      { "num": 1, "mark": "①", "text": "Helen은 중고 거래 앱에서 알림을 받았다." },
+      { "num": 2, "mark": "②", "text": "Julia는 큰 종이 가방을 들고 있었다." },
+      { "num": 3, "mark": "③", "text": "Helen은 판매자와 메시지를 주고받았다." },
+      { "num": 4, "mark": "④", "text": "Helen은 야구 모자를 쓰겠다고 답했다." },
+      { "num": 5, "mark": "⑤", "text": "Julia는 자신이 식물 전문가라고 말했다." }
+    ]
+  },
+  "figures": [
+    {
+      "questionId": "2025_09_25",
+      "kind": "grouped_bar_chart",
+      "assetPath": "english/assets/2025-09/q25-figure.png",
+      "sha256": "b85ce8a0aab120e1c0a35974b8526aecf7a66f1e4c135ed634d17c4457ea9d0f",
+      "sourcePage": 4,
+      "alt": "2022년 친숙도 원본 도표. South Korea VR 77%, AR 70%; Canada VR 74%, AR 43%; Japan VR 67%, AR 43%; Switzerland VR 57%, AR 46%."
+    },
+    {
+      "questionId": "2025_09_27",
+      "kind": "notice_with_schedule",
+      "assetPath": "english/assets/2025-09/q27-notice.png",
+      "sha256": "02cc358f8ec54fbf7a8fb2e4231e06dc64dd31b2816fa8e0a957d32e18a50318",
+      "sourcePage": 4,
+      "alt": "University of Teverley Campus Visit Day 원본 안내문. 3rd-year high school students only. 10:00 a.m.: Presentation on the admissions process. 10:30 a.m.: Campus tour. 12:00 p.m.: Free lunch provided at the students’ cafeteria. 1:00 p.m.: Q&A. T-shirt gift. Register on the website by 6 p.m. September 17th."
+    },
+    {
+      "questionId": "2025_09_28",
+      "kind": "notice_with_prize_table",
+      "assetPath": "english/assets/2025-09/q28-notice.png",
+      "sha256": "6f3cb6e8273b98eeefe357db8130ed0b27a08a9c7ec37e29518e94e347f5d8e6",
+      "sourcePage": 4,
+      "alt": "2024 Green Future Webtoon Contest 원본 안내문. Theme: Renewable energy for a green future. Submissions October 1st to November 30th. Each participant is allowed to submit only one webtoon. 1st prize 1 winner $3,000; 2nd prize 2 winners $2,000 each; 3rd prize 3 winners $1,000 each. The winners will be decided by the selection committee and announced December 30th."
+    }
+  ]
+}

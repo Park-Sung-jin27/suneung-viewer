@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 6월 모의평가 공통 4번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 1,
+    "readyCount": 1,
+    "questionFingerprint": "98c0d2fe0771d95abd1269112f7b2cdc3b14c7c64a7652897ea40931ead7ae5c",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
+      "archiveSha256": "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
+    },
+    "note": "원본 문제지·정답표와 그래프를 화면 대조하고 좌표를 재현한 내부 SVG 도식으로 다시 검산한 내부 공개 후보"
+  },
+  "items": {
+    "2022_06_common_4": {
+      "id": "2022_06_common_4",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 공통",
+      "questionNumber": 4,
+      "answer": 1,
+      "answerMark": "①",
+      "figureAsset": "평가원_수학영어_확장/08_math_data/assets/2022_06_common_4-graph.svg",
+      "figureAssetSha256": "cc5d3d986fc82cceee1cda853a188c5aeec74e86c31e61ae0e6622be21b05813",
+      "figureAlt": "x가 0의 왼쪽에서 가까워질 때 y가 -2로 가고, x가 2의 오른쪽에서 가까워질 때 y가 0으로 가는 조각함수 그래프",
+      "summary": "그래프에서 x→0−일 때의 값은 -2, x→2+일 때의 값은 0이므로 합은 -2입니다.",
+      "approach": "함숫값을 나타내는 닫힌점과 극한을 나타내는 그래프의 접근 방향을 구분해 두 일방향 극한을 각각 읽습니다.",
+      "concepts": [
+        "좌극한",
+        "우극한",
+        "그래프에서 극한 읽기"
+      ],
+      "steps": [
+        {
+          "title": "0의 왼쪽에서 접근하기",
+          "expression": "\\lim_{x\\to0-}f(x)=-2",
+          "explanation": "x<0인 직선 조각이 x=0에 가까워질수록 y=-2에 접근합니다."
+        },
+        {
+          "title": "2의 오른쪽에서 접근하기",
+          "expression": "\\lim_{x\\to2+}f(x)=0",
+          "explanation": "x>2인 증가 직선은 (2,0)의 열린점에서 시작하므로 오른쪽 극한은 0입니다."
+        },
+        {
+          "title": "두 극한 더하기",
+          "expression": "-2+0=-2",
+          "explanation": "문제에서 요구한 두 일방향 극한의 합을 계산합니다."
+        }
+      ],
+      "correctReason": "두 극한의 합이 -2이므로 선택지 ①이 정답입니다.",
+      "commonMistake": "x=2에서 표시된 닫힌점 (2,-1)은 함숫값입니다. 오른쪽 극한은 x>2인 그래프가 접근하는 열린점 (2,0)에서 읽어야 합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

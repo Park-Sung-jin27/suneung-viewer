@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "schemaVersion": "math-source-hold-v1",
+    "status": "internal_source_hold",
+    "publicConnected": false,
+    "itemCount": 2,
+    "questionFingerprint": "11a5ef14a79491fa06f3547ca7763bcc54af1e8d32487cf99f0910d5543d502e",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://jwmath.tistory.com/591",
+      "independentSourceUrls": [
+        "https://kimexp.tistory.com/1254",
+        "https://everywhereeverything.tistory.com/entry/2023%EB%85%84-9%EC%9B%94-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5%EA%B5%AD%EC%96%B4-%EC%88%98%ED%95%99-%EC%98%81%EC%96%B4-%ED%95%9C%EA%B5%AD%EC%82%AC-%ED%83%90%EA%B5%AC"
+      ],
+      "problemFilename": "2023_09_math_problem.pdf",
+      "problemSha256": "2053cc454daa5fbcef7f3a5de1bbb07b55f814894f4ea0b78026c27d27f025fe",
+      "problemReplicaFilenames": ["2023_09_math_problem_kimexp.pdf", "2023_09_math_problem_everywhere.pdf"],
+      "answerFilename": "2023_09_math_answer_everywhere.pdf",
+      "answerSha256": "f3c729d6c9165ecc0196d6ede078e03cd8a5457cda5066d7d0fca6645ebafd92",
+      "primaryAnswerImageFilename": "2023_09_math_answer.png",
+      "primaryAnswerImageSha256": "ca8dd66204c4df4af348dbc28183a17abf0ff19b415ab55d46fe92821d666ff9"
+    }
+  },
+  "items": {
+    "2023_09_cal_25": {
+      "id": "2023_09_cal_25",
+      "status": "blocked_by_source_integrity",
+      "issueCode": "problem_text_denominator_error",
+      "dbTextFragment": "\\frac{a_n+2}{2^n}=6",
+      "officialTextFragment": "\\lim_{n\\to\\infty}\\frac{a_n+2}{2}=6",
+      "correctionRequired": "problem_latex",
+      "reason": "공식 문제지의 첫 극한 분모는 상수 2이지만 내부 DB에는 2의 n제곱으로 기록돼 있습니다. 현재 문구대로는 주어진 정답 ⑤가 성립하지 않으므로 원천 문항을 정정하기 전까지 풀이 생성과 공개를 차단합니다.",
+      "verification": {
+        "problemPage": 14,
+        "problemMatchedPdf": false,
+        "sourceDifferenceConfirmed": true,
+        "releaseBlocked": true
+      }
+    },
+    "2023_09_geo_26": {
+      "id": "2023_09_geo_26",
+      "status": "blocked_by_source_integrity",
+      "issueCode": "problem_text_missing_positive_condition",
+      "dbTextFragment": "만날 때, 상수 $k$의 값은?",
+      "officialTextFragment": "만날 때, 양수 $k$의 값은?",
+      "correctionRequired": "problem_latex",
+      "reason": "공식 문제지는 k가 양수라고 제한하지만 내부 DB에는 양수 조건이 빠져 있습니다. 이 조건이 없으면 접선의 절편 조건에서 k=1과 k=-4가 모두 나와 답이 하나로 정해지지 않으므로 원천 정정 전까지 풀이 생성과 공개를 차단합니다.",
+      "verification": {
+        "problemPage": 18,
+        "problemMatchedPdf": false,
+        "sourceDifferenceConfirmed": true,
+        "releaseBlocked": true
+      }
+    }
+  }
+}

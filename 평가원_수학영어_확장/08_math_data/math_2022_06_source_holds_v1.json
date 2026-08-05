@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "schemaVersion": "math-source-hold-v1",
+    "status": "internal_source_hold",
+    "publicConnected": false,
+    "itemCount": 1,
+    "questionFingerprint": "01049793b948890e2795734c42a48bf2cef83382440cac2690fb1fd966fabebb",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
+      "archiveSha256": "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
+    }
+  },
+  "items": {
+    "2022_06_cal_29": {
+      "id": "2022_06_cal_29",
+      "status": "blocked_by_source_integrity",
+      "issueCode": "problem_text_missing_symbol",
+      "dbTextFragment": "$t>2$인 실수",
+      "officialTextFragment": "$t>2e$인 실수",
+      "correctionRequired": "problem_latex",
+      "reason": "내부 문제 텍스트에서 공식 문제의 e가 빠져 정의역 조건이 달라짐",
+      "verification": {
+        "problemPage": 16,
+        "problemMatchedPdf": false,
+        "sourceDifferenceConfirmed": true,
+        "releaseBlocked": true
+      }
+    }
+  }
+}

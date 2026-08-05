@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2026_06_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "examId": "2026_06"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2026학년도_6월_영어_문제.pdf",
+      "sha256": "55ba46646ada079ea781b00986a45877b0dc46f4a423d8c3f26a64e0213921fb"
+    },
+    "answer": {
+      "filename": "2026학년도_6월_영어_정답.png",
+      "sha256": "3e8185948286130ce7177af5ee7578aa0a27b951ef6cb93e8feaec1af5f8d598"
+    },
+    "explanation": {
+      "filename": "2026학년도_6월_영어_해설.pdf",
+      "sha256": "b3fd2ce0b92f3abbb6a225389b66a6669f96bbcfc344fc8264bbbb24ba5881fb"
+    }
+  },
+  "reviewData": {
+    "path": "english/data/candidates/english_2026_06_reviews.json",
+    "sha256": "fbb8475a5525a7fe93d05dae77d25c27ee4670d7709f5a25cdee9ce0b2494d72",
+    "expectedReadyCount": 28
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 60,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2026_06_25",
+      "2026_06_27",
+      "2026_06_28"
+    ]
+  },
+  "projectionPolicies": {
+    "default": {
+      "sourceField": "rawText",
+      "stripStem": true,
+      "stripChoices": true,
+      "stripPdfTail": true
+    },
+    "sharedPassageIds": [
+      "2026_06_41",
+      "2026_06_42",
+      "2026_06_43",
+      "2026_06_44",
+      "2026_06_45"
+    ],
+    "inlineMarkerIds": [
+      "2026_06_29",
+      "2026_06_30",
+      "2026_06_35",
+      "2026_06_42",
+      "2026_06_44"
+    ],
+    "sequenceTableIds": [
+      "2026_06_36",
+      "2026_06_37",
+      "2026_06_43"
+    ],
+    "placementMarkerIds": [
+      "2026_06_38",
+      "2026_06_39"
+    ]
+  },
+  "questions": [
+    { "id": "2026_06_18", "qid": 18, "answer": 1, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_19", "qid": 19, "answer": 1, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_20", "qid": 20, "answer": 2, "problemPage": 2, "explanationPages": [12], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_21", "qid": 21, "answer": 3, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_22", "qid": 22, "answer": 1, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_23", "qid": 23, "answer": 3, "problemPage": 3, "explanationPages": [14], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_24", "qid": 24, "answer": 2, "problemPage": 3, "explanationPages": [15], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_25", "qid": 25, "answer": 4, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2026-06/q25-figure.png" },
+    { "id": "2026_06_26", "qid": 26, "answer": 2, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_27", "qid": 27, "answer": 5, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2026-06/q27-notice.png" },
+    { "id": "2026_06_28", "qid": 28, "answer": 2, "problemPage": 4, "explanationPages": [17], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2026-06/q28-notice.png" },
+    { "id": "2026_06_29", "qid": 29, "answer": 3, "problemPage": 5, "explanationPages": [18], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_30", "qid": 30, "answer": 5, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_31", "qid": 31, "answer": 5, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_32", "qid": 32, "answer": 1, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_33", "qid": 33, "answer": 4, "problemPage": 6, "explanationPages": [21], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_34", "qid": 34, "answer": 2, "problemPage": 6, "explanationPages": [22], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_35", "qid": 35, "answer": 4, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_36", "qid": 36, "answer": 4, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_37", "qid": 37, "answer": 3, "problemPage": 7, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_38", "qid": 38, "answer": 4, "problemPage": 7, "explanationPages": [25], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_39", "qid": 39, "answer": 5, "problemPage": 7, "explanationPages": [25], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_40", "qid": 40, "answer": 2, "problemPage": 7, "explanationPages": [26], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_41", "qid": 41, "answer": 1, "problemPage": 8, "explanationPages": [28], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_42", "qid": 42, "answer": 5, "problemPage": 8, "explanationPages": [28], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_43", "qid": 43, "answer": 3, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_44", "qid": 44, "answer": 3, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2026_06_45", "qid": 45, "answer": 5, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" }
+  ],
+  "choiceOverrides": {
+    "2026_06_20": [
+      { "num": 1, "mark": "①", "text": "긴장감으로 인한 실수를 줄이기 위해 연습을 많이 해야 한다." },
+      { "num": 2, "mark": "②", "text": "일어날 것 같지 않은 일에 대해 지나치게 걱정하지 말아야 한다." },
+      { "num": 3, "mark": "③", "text": "목표를 수월하게 달성하려면 계획을 구체적으로 세워야 한다." },
+      { "num": 4, "mark": "④", "text": "일의 과정을 즐기려면 결과에 대한 과도한 집착을 버려야 한다." },
+      { "num": 5, "mark": "⑤", "text": "자신의 걱정이 무엇에서 비롯되었는지 면밀히 살펴봐야 한다." }
+    ],
+    "2026_06_24": [
+      { "num": 1, "mark": "①", "text": "Changing Appetites: The Return of Fine Dining" },
+      { "num": 2, "mark": "②", "text": "Beyond Mere Necessity: The Rise of Food Culture" },
+      { "num": 3, "mark": "③", "text": "Tips for Choosing Restaurants for Social Occasions" },
+      { "num": 4, "mark": "④", "text": "Why Table Manners Matter: Food and Class Identity" },
+      { "num": 5, "mark": "⑤", "text": "How Industrialization Is Taking Over Food Production" }
+    ],
+    "2026_06_28": [
+      { "num": 1, "mark": "①", "text": "3시간 동안 진행된다." },
+      { "num": 2, "mark": "②", "text": "첫 번째 미션을 정문에서 시작한다." },
+      { "num": 3, "mark": "③", "text": "온라인으로 예약하지 않아도 된다." },
+      { "num": 4, "mark": "④", "text": "참가비에 점심이 포함되어 있다." },
+      { "num": 5, "mark": "⑤", "text": "모든 참가자는 메달을 받을 것이다." }
+    ],
+    "2026_06_29": [
+      { "num": 1, "mark": "①", "text": "are" },
+      { "num": 2, "mark": "②", "text": "real" },
+      { "num": 3, "mark": "③", "text": "perceive" },
+      { "num": 4, "mark": "④", "text": "safely" },
+      { "num": 5, "mark": "⑤", "text": "removed" }
+    ],
+    "2026_06_30": [
+      { "num": 1, "mark": "①", "text": "pinpointing" },
+      { "num": 2, "mark": "②", "text": "alien" },
+      { "num": 3, "mark": "③", "text": "gaps" },
+      { "num": 4, "mark": "④", "text": "cultivating" },
+      { "num": 5, "mark": "⑤", "text": "temporary" }
+    ],
+    "2026_06_32": [
+      { "num": 1, "mark": "①", "text": "have been told exactly what he looks like" },
+      { "num": 2, "mark": "②", "text": "have become a member of his social group" },
+      { "num": 3, "mark": "③", "text": "already know what will happen to him in the story" },
+      { "num": 4, "mark": "④", "text": "have been given precise details about his behavior" },
+      { "num": 5, "mark": "⑤", "text": "recognize the core characteristics of his personality" }
+    ],
+    "2026_06_35": [
+      { "num": 1, "mark": "①", "text": "Today, most glaciers around the world are melting because of the warming climate, and it appears that the rate of melting is accelerating." },
+      { "num": 2, "mark": "②", "text": "This has been documented spectacularly in places such as the Alps, where historical records have been kept and dated sketches and photographs are available to compare with the present extent of ice." },
+      { "num": 3, "mark": "③", "text": "Even over periods as short as a few decades, satellite images show that dramatic reduction of mountain glaciers has occurred in the Andes, the Himalayas, and elsewhere." },
+      { "num": 4, "mark": "④", "text": "The various rocks and minerals contained in glaciers have become a popular subject of science projects in schools." },
+      { "num": 5, "mark": "⑤", "text": "It is estimated that many small mountain glaciers will disappear completely within ten to twenty years unless there is a sudden and unexpected change in the present warming trend." }
+    ],
+    "2026_06_36": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2026_06_37": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2026_06_38": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2026_06_39": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2026_06_40": [
+      { "num": 1, "mark": "①", "text": "distribution ··· emptiness" },
+      { "num": 2, "mark": "②", "text": "distribution ··· rewards" },
+      { "num": 3, "mark": "③", "text": "concentration ··· conflicts" },
+      { "num": 4, "mark": "④", "text": "investment ··· challenges" },
+      { "num": 5, "mark": "⑤", "text": "investment ··· growth" }
+    ],
+    "2026_06_43": [
+      { "num": 1, "mark": "①", "text": "(B) - (D) - (C)" },
+      { "num": 2, "mark": "②", "text": "(C) - (B) - (D)" },
+      { "num": 3, "mark": "③", "text": "(C) - (D) - (B)" },
+      { "num": 4, "mark": "④", "text": "(D) - (B) - (C)" },
+      { "num": 5, "mark": "⑤", "text": "(D) - (C) - (B)" }
+    ],
+    "2026_06_45": [
+      { "num": 1, "mark": "①", "text": "Cathy는 대도시에서 태어나고 성장했다." },
+      { "num": 2, "mark": "②", "text": "Laura와 Cathy는 블루베리 팬케이크를 만들기로 했다." },
+      { "num": 3, "mark": "③", "text": "시장은 다양한 나이의 사람들로 붐볐다." },
+      { "num": 4, "mark": "④", "text": "Laura는 판매 중인 딸기 잼을 발견했다." },
+      { "num": 5, "mark": "⑤", "text": "Cathy는 복숭아 가격이 비싸다고 생각했다." }
+    ]
+  },
+  "figures": [
+    {
+      "questionId": "2026_06_25",
+      "kind": "grouped_bar_chart",
+      "assetPath": "english/assets/2026-06/q25-figure.png",
+      "sha256": "e8377625372b80a88000ed79001abe9e9468370a294f5cf48935287bbe3bb5d9",
+      "sourcePage": 4,
+      "alt": "성인 교육·훈련 참여율 원본 도표. Netherlands: 2016 64%, 2022 65%; Germany: 2016 52%, 2022 60%; Spain: 2016 43%, 2022 49%; Italy: 2016 42%, 2022 36%; Greece: 2016 17%, 2022 17%."
+    },
+    {
+      "questionId": "2026_06_27",
+      "kind": "notice_with_table",
+      "assetPath": "english/assets/2026-06/q27-notice.png",
+      "sha256": "4c1057f383fbd8f2c311d85ffc298abaaf310ee7b5ef6577953df8e21b945f00",
+      "sourcePage": 4,
+      "alt": "Hanok-inspired Cultural Product Contest 원본 안내문. Applicants: Artists and social enterprises. Product Submission: Bring the product in person to our office and do not send it by post."
+    },
+    {
+      "questionId": "2026_06_28",
+      "kind": "notice",
+      "assetPath": "english/assets/2026-06/q28-notice.png",
+      "sha256": "fa2883fe253addf12fe31f55245d3cefc8dd688a731fa39f1774c8d873cfd0a3",
+      "sourcePage": 4,
+      "alt": "2025 Science Gamification Challenge 원본 안내문. Date and Time: June 7, 9:00 a.m.–11:30 a.m. Start the first mission at the main gate."
+    }
+  ]
+}

@@ -1,0 +1,342 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 6월 모의평가 수학 미적분 23~30번 8문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "ad2088e7d399bc464c912967982f6cfe6f8264ecc08339d70ee5d3389d7f6649",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5086962&lev=0&m=0403&page=4&s=suneung&searchType=S&statusYN=W",
+      "independentSourceUrls": [
+        "https://horaeng.com/279",
+        "https://orbi.kr/00068355597"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4"
+        }
+      ],
+      "answerFilename": "kice-answer.pdf",
+      "answerSha256": "655f41600d4825dceca6d0248ce0e02916ee73a2e3ad0cd2d596fba8e843db8b",
+      "solutionArtifacts": [
+        {
+          "filename": "orbi-solution.pdf",
+          "sha256": "2fc1d295bfdadeda8695f20739a53c629e27f8370cc27f173eff05b5707c8e89"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지·정답표와 동일 파일 독립 보관본을 대조하고 독립 풀이 자료 및 극한·미분의 직접 계산으로 8문항을 재검증했습니다."
+  },
+  "items": {
+    "2025_06_cal_23": {
+      "id": "2025_06_cal_23",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 23,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "분자와 분모를 (1/2)ⁿ으로 나누면 극한은 2입니다.",
+      "approach": "더 천천히 감소하는 (1/2)ⁿ을 공통인수로 묶어 나머지 비가 0으로 가게 합니다.",
+      "concepts": ["수열의 극한", "지수수열의 대소"],
+      "steps": [
+        {
+          "title": "공통인수로 나누기",
+          "expression": "\\frac{1+\\frac13\\left(\\frac23\\right)^n}{\\frac12+\\left(\\frac23\\right)^n}",
+          "explanation": "원래 분자와 분모를 모두 (1/2)ⁿ으로 나눕니다."
+        },
+        {
+          "title": "지수항 극한",
+          "expression": "\\left(\\frac23\\right)^n\\to0",
+          "explanation": "절댓값이 1보다 작은 공비의 거듭제곱은 0으로 갑니다."
+        },
+        {
+          "title": "극한값",
+          "expression": "\\frac{1+0}{\\frac12+0}=2",
+          "explanation": "정답은 ②입니다."
+        }
+      ],
+      "correctReason": "분자와 분모의 주도항이 각각 (1/2)ⁿ과 (1/2)ⁿ⁺¹임을 정확히 비교했습니다.",
+      "commonMistake": "분자와 분모가 모두 0으로 간다는 이유만으로 극한도 0이라고 하지 마세요.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_cal_24": {
+      "id": "2025_06_cal_24",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 24,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "음함수 미분 후 점 (1,π/2)을 대입하면 접선 기울기는 3/2입니다.",
+      "approach": "x sin2y를 곱의 법칙과 연쇄법칙으로 미분해 y'을 구합니다.",
+      "concepts": ["음함수 미분", "연쇄법칙"],
+      "steps": [
+        {
+          "title": "양변 미분",
+          "expression": "\\sin2y+2x\\cos2y\\,y'+3=0",
+          "explanation": "x sin2y는 곱의 법칙으로, sin2y는 연쇄법칙으로 미분합니다."
+        },
+        {
+          "title": "점 대입",
+          "expression": "\\sin\\pi+2\\cos\\pi\\,y'+3=0",
+          "explanation": "x=1, y=π/2를 대입합니다."
+        },
+        {
+          "title": "기울기",
+          "expression": "-2y'+3=0\\Rightarrow y'=\\frac32",
+          "explanation": "정답은 ③입니다."
+        }
+      ],
+      "correctReason": "음함수 위 점의 접선 기울기는 그 점에서 구한 dy/dx입니다.",
+      "commonMistake": "sin2y를 미분할 때 2y'을 빠뜨리지 마세요.",
+      "verification": {
+        "problemPage": 13,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_cal_25": {
+      "id": "2025_06_cal_25",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 25,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "급수가 수렴하므로 일반항의 차가 0으로 가고 aₙ→3/2이어서 극한은 21/4입니다.",
+      "approach": "급수의 합 2를 직접 쓰기보다 급수 수렴의 필요조건으로 aₙ의 극한을 구합니다.",
+      "concepts": ["급수 수렴의 필요조건", "수열의 극한"],
+      "steps": [
+        {
+          "title": "일반항 조건",
+          "expression": "\\sum\\left(a_n-\\frac{3n^2-n}{2n^2+1}\\right)\\text{ 수렴}\\Rightarrow a_n-\\frac{3n^2-n}{2n^2+1}\\to0",
+          "explanation": "수렴하는 급수의 일반항은 반드시 0으로 갑니다."
+        },
+        {
+          "title": "aₙ의 극한",
+          "expression": "a_n\\to\\lim_{n\\to\\infty}\\frac{3n^2-n}{2n^2+1}=\\frac32",
+          "explanation": "분자와 분모를 n²으로 나눕니다."
+        },
+        {
+          "title": "요구 극한",
+          "expression": "a_n^2+2a_n\\to\\frac94+3=\\frac{21}{4}",
+          "explanation": "정답은 ③입니다."
+        }
+      ],
+      "correctReason": "다항식은 연속이므로 aₙ의 극한을 대입해 최종 극한을 계산할 수 있습니다.",
+      "commonMistake": "급수의 합 2를 aₙ의 극한으로 오해하지 마세요.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_cal_26": {
+      "id": "2025_06_cal_26",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 26,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "A와 B의 x좌표를 로그로 나타내고 ln(1+ct)/t→c를 쓰면 극한은 5/2(√5−1)입니다.",
+      "approach": "삼각형의 밑변과 높이를 t로 표현한 뒤 표준 로그 극한으로 정리합니다.",
+      "concepts": ["로그함수의 극한", "삼각형의 넓이"],
+      "steps": [
+        {
+          "title": "교점 좌표",
+          "expression": "x_A=\\sqrt{\\ln(1+t)},\\qquad x_B=\\sqrt{\\ln(1+5t)}",
+          "explanation": "e^{x²}−1=t와 5t를 각각 풉니다."
+        },
+        {
+          "title": "넓이 식",
+          "expression": "S(t)=\\frac{5t}{2}\\left(\\sqrt{\\ln(1+5t)}-\\sqrt{\\ln(1+t)}\\right)",
+          "explanation": "BC=5t이고 A와 BC 사이의 수평거리가 두 x좌표의 차입니다."
+        },
+        {
+          "title": "극한",
+          "expression": "\\frac{S(t)}{t\\sqrt t}\\to\\frac52(\\sqrt5-1)",
+          "explanation": "ln(1+ct)/t→c를 각 제곱근에 적용하면 정답은 ②입니다."
+        }
+      ],
+      "correctReason": "교점의 x좌표와 삼각형 높이를 정확히 구한 뒤 표준 극한을 적용했습니다.",
+      "commonMistake": "곡선의 y값 차를 삼각형의 밑변으로 두지 말고, BC가 수직선분임을 확인하세요.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_cal_27": {
+      "id": "2025_06_cal_27",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 27,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "길이비는 t/(a^{2t}ln a)에 비례하고 t=1에서 최대이려면 ln a=1/2이므로 a=√e입니다.",
+      "approach": "접선에 수직인 직선의 절편을 구해 길이비를 t의 함수로 만든 뒤 최대 조건을 미분합니다.",
+      "concepts": ["접선과 법선", "지수함수의 최댓값"],
+      "steps": [
+        {
+          "title": "법선과 절편",
+          "expression": "m_l=a^t\\ln a,\\qquad m_{\\perp}=-\\frac1{a^t\\ln a}",
+          "explanation": "점 A에서 지수함수의 접선 기울기와 수직선의 기울기를 구합니다."
+        },
+        {
+          "title": "길이비",
+          "expression": "\\frac{AC}{AB}=\\frac1{\\ln a}\\cdot\\frac{t}{a^{2t}}",
+          "explanation": "같은 직선 위의 두 길이 비는 대응하는 x방향 거리 비와 같습니다."
+        },
+        {
+          "title": "최대 조건",
+          "expression": "\\frac{d}{dt}\\left(te^{-2t\\ln a}\\right)=0\\text{ at }t=1\\Rightarrow1-2\\ln a=0\\Rightarrow a=\\sqrt e",
+          "explanation": "정답은 ②입니다."
+        }
+      ],
+      "correctReason": "양의 상수 1/ln a는 최대 위치를 바꾸지 않으므로 t에 의존하는 부분만 미분했습니다.",
+      "commonMistake": "접선 기울기의 음의 역수를 구할 때 a^t ln a 전체를 분모에 두세요.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_cal_28": {
+      "id": "2025_06_cal_28",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 28,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "최솟값 역함수의 유일한 점프 높이는 4e^a=12이므로 e^a=3이고, 역함수 미분으로 비는 8e^6입니다.",
+      "approach": "f의 두 조각과 극값을 분석해 g의 불연속 높이를 찾고 각 역함수 가지의 도함수를 비교합니다.",
+      "concepts": ["역함수의 미분", "조각함수의 극값"],
+      "steps": [
+        {
+          "title": "불연속 높이",
+          "expression": "f(a)=4e^a,\\quad g\\text{의 점프 높이}=4e^a=12\\Rightarrow e^a=3",
+          "explanation": "왼쪽 증가 직선 가지의 끝값을 넘으면 최소해가 오른쪽 가지로 이동합니다."
+        },
+        {
+          "title": "두 역함수 도함수",
+          "expression": "g'(f(a+2))=\\frac1{e^{2a}},\\qquad g'(f(a+6))=\\frac1{f'(a+6)}",
+          "explanation": "f(a+2)=0의 최소해는 왼쪽 선형 가지에 있고, 큰 함수값의 최소해는 오른쪽 가지에 있습니다."
+        },
+        {
+          "title": "비 계산",
+          "expression": "f'(a+6)=24e^{a+6}\\Rightarrow\\frac{g'(f(a+2))}{g'(f(a+6))}=24e^{6-a}=8e^6",
+          "explanation": "e^a=3을 대입하면 정답은 ④입니다."
+        }
+      ],
+      "correctReason": "g가 ‘최솟값’인 해를 고른다는 조건에 맞춰 서로 다른 두 역함수 가지를 선택했습니다.",
+      "commonMistake": "f(x)=t의 모든 해를 하나의 역함수로 취급하거나 f(a+2)=0의 오른쪽 해를 사용하지 마세요.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_cal_29": {
+      "id": "2025_06_cal_29",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 29,
+      "answer": "55",
+      "answerMark": null,
+      "summary": "f'은 항상 0 이상이고 영점이 0,1뿐이므로 b=c=1, a=1/3−(1/2)ln2가 되어 답은 55입니다.",
+      "approach": "접합점에서 좌우 함수값과 도함숫값을 맞추고 f'의 부호 구조로 b, c를 먼저 결정합니다.",
+      "concepts": ["조각함수의 미분가능성", "로그함수의 미분"],
+      "steps": [
+        {
+          "title": "도함수 구조",
+          "expression": "f'(x)=\\frac{x^2(x-1)^2}{1+x^2}\\ge0",
+          "explanation": "다항식과 로그항을 미분해 통분하면 영점은 x=0,1뿐입니다."
+        },
+        {
+          "title": "접합점 조건",
+          "expression": "f'(b)=-f'(b-c)\\Rightarrow f'(b)=f'(b-c)=0\\Rightarrow b=1,\\ c=1",
+          "explanation": "양수 b,c 조건까지 적용하면 가능한 영점 조합은 b=1, b−c=0입니다."
+        },
+        {
+          "title": "연속과 요구값",
+          "expression": "f(1)=-f(0)\\Rightarrow a=\\frac13-\\frac12\\ln2,\\quad30\\left(\\frac73-\\frac12\\right)=55",
+          "explanation": "a+b+c=7/3−(1/2)ln2이므로 p+q=11/6입니다."
+        }
+      ],
+      "correctReason": "좌우 도함수의 부호가 반대여야 하므로 둘 다 0이어야 한다는 점이 b, c를 유일하게 정합니다.",
+      "commonMistake": "미분가능성에서 함수값의 연속 조건만 확인하고 좌우 도함숫값 조건을 빠뜨리지 마세요.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_cal_30": {
+      "id": "2025_06_cal_30",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 30,
+      "answer": "25",
+      "answerMark": null,
+      "summary": "교점 간격은 π로, 연속한 교점의 비는 1로 가며 탄젠트 차 공식을 정리하면 극한은 25입니다.",
+      "approach": "교점식 tan aₙ=√aₙ/10을 탄젠트 차 공식에 대입하고 성장 차수를 비교합니다.",
+      "concepts": ["탄젠트 덧셈정리", "수열의 점근적 비교"],
+      "steps": [
+        {
+          "title": "교점의 점근성",
+          "expression": "a_{n+1}-a_n\\to\\pi,\\qquad\\frac{a_{n+1}}{a_n}\\to1",
+          "explanation": "각 양의 탄젠트 가지마다 교점이 하나이고 가지 사이 간격이 π이므로 큰 n에서 이 두 관계가 성립합니다."
+        },
+        {
+          "title": "탄젠트 차",
+          "expression": "\\tan(a_{n+1}-a_n)=\\frac{10(a_{n+1}-a_n)}{(\\sqrt{a_{n+1}}+\\sqrt{a_n})(100+\\sqrt{a_na_{n+1}})}",
+          "explanation": "tan aₙ=√aₙ/10을 차 공식에 넣고 제곱근 차를 유리화합니다."
+        },
+        {
+          "title": "극한 정리",
+          "expression": "\\frac{a_n^3}{\\pi^2}\\tan^2(a_{n+1}-a_n)\\to\\frac{100}{\\pi^2}\\cdot\\frac{\\pi^2}{4}=25",
+          "explanation": "두 분모 인수의 제곱은 점근적으로 4aₙ과 aₙ²이 됩니다."
+        }
+      ],
+      "correctReason": "탄젠트의 주기적 가지 구조와 교점식의 성장률을 모두 반영해 극한의 상수를 남겼습니다.",
+      "commonMistake": "aₙ₊₁−aₙ이 π로 간다고 tan값도 곧바로 0이라고 끝내지 말고 0으로 가는 속도까지 계산하세요.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

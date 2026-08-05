@@ -1,0 +1,448 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 9월 모의평가 수학 공통 12~22번 중 원문 일치 10문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 10,
+    "readyCount": 10,
+    "questionFingerprint": "2b0a2dc82439476656fbd7b719018e751fd302f6439b88543f51e1153e16fa3f",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5087696&lev=0&m=0403&page=3&s=suneung&searchType=S&statusYN=W",
+      "independentSourceUrls": [
+        "https://horaeng.com/353",
+        "https://wdown.ebsi.co.kr/W61001/01exam/20240904/go3/mathA_1_hsj_9DOE5Q44.pdf"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "10872f1ff40923c9e92705b49d60043ac9e4ddc58db744865b4188d075eef28c",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "10872f1ff40923c9e92705b49d60043ac9e4ddc58db744865b4188d075eef28c"
+        }
+      ],
+      "answerFilename": "kice-answer.pdf",
+      "answerSha256": "e06118d5649d9a7fd04606ae1400db967a9435b54ad7eb1d75e96fe7bd9a62c2",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "ff290de3a4c7bc618a8f151336ae9b484673118622eb0ecbc905f24f9f44089c"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지·정답표를 동일 파일 복제본과 대조하고, EBS 풀이와 독립 계산으로 각 해법을 다시 확인했습니다. 19번은 수식 묶음 오류 때문에 별도 차단했습니다."
+  },
+  "items": {
+    "2025_09_common_12": {
+      "id": "2025_09_common_12",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 12,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "공차는 2, 첫째항은 -4이며 b₁부터 b₉까지의 합은 -20입니다.",
+      "approach": "교대합 bₙ을 짝수 번째와 홀수 번째로 나누어 일반식으로 정리합니다.",
+      "concepts": ["등차수열", "교대합"],
+      "steps": [
+        {
+          "title": "공차 구하기",
+          "expression": "b_2=a_1-a_2=-d=-2\\Rightarrow d=2",
+          "explanation": "등차수열의 연속 두 항의 차를 이용합니다."
+        },
+        {
+          "title": "첫째항 구하기",
+          "expression": "b_3=a_3-2,\\ b_7=a_7-6,\\ b_3+b_7=2a_1+8=0\\Rightarrow a_1=-4",
+          "explanation": "공차 2를 넣어 b₃+b₇ 조건을 정리합니다."
+        },
+        {
+          "title": "교대합 일반식",
+          "expression": "b_{2n}=-2n,\\qquad b_{2n-1}=2n-6",
+          "explanation": "짝수 번째는 n개의 차 -d를, 홀수 번째는 마지막 홀수항을 남겨 묶습니다."
+        },
+        {
+          "title": "첫 9항의 합",
+          "expression": "\\sum_{n=1}^{9}b_n=\\sum_{n=1}^{5}(2n-6)+\\sum_{n=1}^{4}(-2n)=-20",
+          "explanation": "정답은 ②입니다."
+        }
+      ],
+      "correctReason": "항을 하나씩 나열한 계산과 짝·홀 일반식 계산이 모두 -20으로 일치합니다.",
+      "commonMistake": "bₙ은 aₙ 하나가 아니라 a₁부터 aₙ까지 부호가 번갈아 붙는 합입니다.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_13": {
+      "id": "2025_09_common_13",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 13,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "함수의 대칭성과 A=2B를 합치면 0부터 k까지의 정적분이 0이고 k=6입니다.",
+      "approach": "양쪽 넓이를 모두 계산하지 않고 우함수의 대칭으로 하나의 정적분 조건을 만듭니다.",
+      "concepts": ["정적분과 넓이", "우함수의 대칭"],
+      "steps": [
+        {
+          "title": "대칭 이용",
+          "expression": "f(-x)=f(x),\\qquad A=2\\int_0^Q f(x)\\,dx",
+          "explanation": "P와 Q는 y축에 대칭이고 A는 양쪽 넓이의 합입니다."
+        },
+        {
+          "title": "넓이 조건",
+          "expression": "A=2B\\Rightarrow \\int_0^k(-x^2+2x+6)\\,dx=0",
+          "explanation": "Q 이후의 음의 부분 넓이를 합치면 전체 부호 있는 넓이가 0이 됩니다."
+        },
+        {
+          "title": "방정식 풀기",
+          "expression": "-\\frac{k^3}{3}+k^2+6k=-\\frac{k(k+3)(k-6)}3=0",
+          "explanation": "k>4이므로 가능한 해는 6입니다."
+        }
+      ],
+      "correctReason": "넓이는 양수로 해석하되, A=2B를 옮기면 부호 있는 정적분 조건으로 정확히 바뀝니다.",
+      "commonMistake": "Q 이후 f(x)<0인 구간의 넓이는 -∫f로 계산해야 합니다.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_14": {
+      "id": "2025_09_common_14",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 14,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "기울기와 거리 조건으로 Bₙ의 y좌표를 구하면 x₁+x₂+x₃=170/7입니다.",
+      "approach": "두 점의 좌표 차를 먼저 결정하고, 지수함수와 로그함수의 y=x 대칭을 사용합니다.",
+      "concepts": ["지수·로그함수의 대칭", "두 점 사이의 거리"],
+      "steps": [
+        {
+          "title": "좌표 차",
+          "expression": "\\Delta y=3\\Delta x,\\quad (\\Delta x)^2+(\\Delta y)^2=10n^2\\Rightarrow \\Delta x=n,\\ \\Delta y=3n",
+          "explanation": "기울기가 양수이고 Aₙ의 x좌표가 더 작으므로 두 차는 양수입니다."
+        },
+        {
+          "title": "B의 높이",
+          "expression": "2^{b_n}-2^{b_n-n}=3n\\Rightarrow 2^{b_n}=\\frac{3n\\,2^n}{2^n-1}",
+          "explanation": "aₙ=bₙ-n을 지수함수의 두 y좌표 차에 대입합니다."
+        },
+        {
+          "title": "대칭으로 xₙ 결정",
+          "expression": "x_n=2^{b_n}=\\frac{3n\\,2^n}{2^n-1}",
+          "explanation": "원의 중심이 y=x 위에 있으므로 원도 y=x 대칭이고, 로그 곡선의 큰 x좌표는 Bₙ의 y좌표와 같습니다."
+        },
+        {
+          "title": "합",
+          "expression": "x_1+x_2+x_3=6+8+\\frac{72}{7}=\\frac{170}{7}",
+          "explanation": "정답은 ⑤입니다."
+        }
+      ],
+      "correctReason": "AₙBₙ의 좌표 차와 역함수 대칭을 사용해 원의 방정식을 직접 구하지 않아도 됩니다.",
+      "commonMistake": "기울기 3만으로 x좌표 차를 3n으로 두지 마세요. 거리 조건까지 함께 써야 Δx=n입니다.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_15": {
+      "id": "2025_09_common_15",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 15,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "적분식을 미분하면 (xg(x))'을 얻고 g(x)=4x²+12x-6이므로 적분값은 72입니다.",
+      "approach": "변수 상한 적분을 미분하고 f=xg'을 대입해 곱의 미분 형태로 묶습니다.",
+      "concepts": ["미적분의 기본정리", "곱의 미분법"],
+      "steps": [
+        {
+          "title": "양변 미분",
+          "expression": "xf(x)+xg(x)=12x^3+24x^2-6x",
+          "explanation": "각 적분을 x로 미분하면 상한에서의 피적분함수가 나옵니다."
+        },
+        {
+          "title": "g 구하기",
+          "expression": "xg'(x)+g(x)=12x^2+24x-6=(xg(x))'",
+          "explanation": "f=xg'을 대입하고 xg를 적분하면 다항함수 조건 때문에 적분상수는 0입니다."
+        },
+        {
+          "title": "함수 확정",
+          "expression": "g(x)=4x^2+12x-6",
+          "explanation": "xg(x)=4x³+12x²-6x입니다."
+        },
+        {
+          "title": "정적분",
+          "expression": "\\int_0^3g(x)\\,dx=\\left[\\frac43x^3+6x^2-6x\\right]_0^3=72",
+          "explanation": "정답은 ①입니다."
+        }
+      ],
+      "correctReason": "구한 g를 원래 미분 관계에 다시 대입해 항별로 일치함을 확인했습니다.",
+      "commonMistake": "xg를 적분한 뒤 x로 나눌 때 C/x가 생기지만 g가 다항함수라는 조건으로 C=0입니다.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_16": {
+      "id": "2025_09_common_16",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 16,
+      "answer": "7",
+      "answerMark": null,
+      "summary": "밑 1/3인 로그의 부호를 바꾸어 합치면 진수 조건을 만족하는 해는 x=7입니다.",
+      "approach": "모든 로그의 밑을 3으로 통일하고 마지막에 진수 조건을 검사합니다.",
+      "concepts": ["로그의 밑변환", "로그방정식의 진수 조건"],
+      "steps": [
+        {
+          "title": "밑 통일",
+          "expression": "\\log_{1/3}(x-4)=-\\log_3(x-4)",
+          "explanation": "밑 1/3은 3의 -1제곱입니다."
+        },
+        {
+          "title": "로그 합치기",
+          "expression": "\\log_3((x+2)(x-4))=3\\Rightarrow(x+2)(x-4)=27",
+          "explanation": "원래 식의 두 번째 음수까지 반영하면 로그의 합이 됩니다."
+        },
+        {
+          "title": "해와 조건",
+          "expression": "(x-7)(x+5)=0,\\quad x>4\\Rightarrow x=7",
+          "explanation": "x=-5는 진수 조건을 만족하지 않습니다."
+        }
+      ],
+      "correctReason": "대수적 두 근 중 로그가 정의되는 범위에 속하는 값만 남겼습니다.",
+      "commonMistake": "밑이 1보다 작은 로그의 밑변환에서 음수 부호를 놓치지 마세요.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_17": {
+      "id": "2025_09_common_17",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 17,
+      "answer": "5",
+      "answerMark": null,
+      "summary": "도함수를 적분하고 f(0)=1을 적용하면 f(1)=5입니다.",
+      "approach": "부정적분 뒤 적분상수를 초기조건으로 결정합니다.",
+      "concepts": ["부정적분", "초기조건"],
+      "steps": [
+        {
+          "title": "부정적분",
+          "expression": "f(x)=2x^3+x^2+x+C",
+          "explanation": "f'(x)의 각 항을 적분합니다."
+        },
+        {
+          "title": "적분상수",
+          "expression": "f(0)=C=1",
+          "explanation": "초기조건으로 C를 정합니다."
+        },
+        {
+          "title": "값 계산",
+          "expression": "f(1)=2+1+1+1=5",
+          "explanation": "정답은 5입니다."
+        }
+      ],
+      "correctReason": "구한 f를 미분하면 주어진 f'과 정확히 일치합니다.",
+      "commonMistake": "부정적분의 적분상수 C를 빼먹지 마세요.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_18": {
+      "id": "2025_09_common_18",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 18,
+      "answer": "29",
+      "answerMark": null,
+      "summary": "두 가중합을 항별로 빼면 가중치가 사라져 전체 합은 36-7=29입니다.",
+      "approach": "시그마를 전개해 같은 a₂부터 a₁₀까지의 계수를 비교합니다.",
+      "concepts": ["시그마의 전개", "가중합의 소거"],
+      "steps": [
+        {
+          "title": "첫째 식 전개",
+          "expression": "a_1+2a_2+3a_3+\\cdots+10a_{10}=36",
+          "explanation": "k가 각 항의 계수입니다."
+        },
+        {
+          "title": "둘째 식 전개",
+          "expression": "a_2+2a_3+\\cdots+9a_{10}=7",
+          "explanation": "a_{k+1} 때문에 시작 항이 a₂가 됩니다."
+        },
+        {
+          "title": "두 식 빼기",
+          "expression": "a_1+a_2+\\cdots+a_{10}=36-7=29",
+          "explanation": "각 항의 계수 차가 모두 1입니다."
+        }
+      ],
+      "correctReason": "인덱스를 바꾼 식과 직접 전개한 식이 같은 소거 결과를 줍니다.",
+      "commonMistake": "둘째 합의 마지막 항은 9a₁₀이지 10a₁₀이 아닙니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_20": {
+      "id": "2025_09_common_20",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 20,
+      "answer": "15",
+      "answerMark": null,
+      "summary": "수평선이 그래프와 세 번 만나는 높이는 -1과 0이고 해당 t의 합은 13π/2입니다.",
+      "approach": "방정식의 근 개수를 수평선과 그래프의 교점 개수로 바꾸어 해석합니다.",
+      "concepts": ["삼각함수 그래프", "방정식의 실근 개수"],
+      "steps": [
+        {
+          "title": "교점 세 개 높이",
+          "expression": "f(t)=-1\\quad\\text{또는}\\quad f(t)=0",
+          "explanation": "두 구간의 그래프를 함께 그리면 이 두 높이에서만 서로 다른 교점이 3개입니다."
+        },
+        {
+          "title": "f(t)=-1",
+          "expression": "t=0,\\pi,2\\pi",
+          "explanation": "각 조각에서 sin t=0인 끝점까지 포함합니다."
+        },
+        {
+          "title": "f(t)=0",
+          "expression": "t=\\frac\\pi2,\\frac{5\\pi}{4},\\frac{7\\pi}{4}",
+          "explanation": "둘째 구간에서는 sin t=-√2/2입니다."
+        },
+        {
+          "title": "합과 답",
+          "expression": "\\sum t=\\frac{13}{2}\\pi,\\quad p+q=2+13=15",
+          "explanation": "정답은 15입니다."
+        }
+      ],
+      "correctReason": "끝점 중복을 포함하지 않고 서로 다른 t 여섯 개를 직접 함수에 대입해 확인했습니다.",
+      "commonMistake": "f(t)의 값이 같은 t의 개수가 아니라, 그 높이에서 방정식 f(x)=f(t)의 x근 개수를 세어야 합니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_21": {
+      "id": "2025_09_common_21",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 21,
+      "answer": "31",
+      "answerMark": null,
+      "summary": "양쪽 경계가 같아지는 k=-1,-2를 대입해 삼차함수의 두 계수를 정하면 f'(3)=31입니다.",
+      "approach": "모든 정수 k에 대한 부등식에서 하한과 상한이 같은 두 정수를 찾아 평균변화율을 정확히 결정합니다.",
+      "concepts": ["평균변화율", "삼차함수의 계수 결정"],
+      "steps": [
+        {
+          "title": "경계가 같은 정수",
+          "expression": "2k-8=4k^2+14k\\Rightarrow(k+1)(k+2)=0",
+          "explanation": "k=-1,-2에서는 가운데 값도 양쪽과 같아야 합니다."
+        },
+        {
+          "title": "함숫값 차",
+          "expression": "f(1)-f(-1)=-20,\\qquad f(0)-f(-2)=-24",
+          "explanation": "각 k를 원래 부등식에 대입합니다."
+        },
+        {
+          "title": "계수 결정",
+          "expression": "f(x)=x^3+ax^2+bx+c\\Rightarrow b=-11,\\ a=\\frac52",
+          "explanation": "첫 차이는 2+2b=-20, 둘째 차이는 8-4a+2b=-24입니다."
+        },
+        {
+          "title": "도함수",
+          "expression": "f'(3)=3\\cdot3^2+5\\cdot3-11=31",
+          "explanation": "f'(x)=3x²+5x-11입니다."
+        }
+      ],
+      "correctReason": "부등식 전체를 추정하지 않고 등호가 강제되는 두 정수에서 필요한 계수를 유일하게 정했습니다.",
+      "commonMistake": "평균값정리만으로 f'(3)을 바로 정할 수 없습니다. 하한과 상한이 같아지는 k를 먼저 찾으세요.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_09_common_22": {
+      "id": "2025_09_common_22",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 9월 모의평가 수학 공통",
+      "questionNumber": 22,
+      "answer": "8",
+      "answerMark": null,
+      "summary": "부호 조건을 통과한 점화 선택만 추적하면 k는 2, √2, 2/√3, √(2/3)이고 제곱합은 8입니다.",
+      "approach": "매 단계의 두 점화식 중 가능한 가지를 나누되 a₂a₃<0인 가지부터 남깁니다.",
+      "concepts": ["점화식의 경우 분류", "부호 조건"],
+      "steps": [
+        {
+          "title": "두 가지 점화",
+          "expression": "a_{n+1}=a_n-\\frac23k\\quad\\text{또는}\\quad a_{n+1}=-ka_n",
+          "explanation": "두 인수의 곱이 0이므로 매 단계에서 둘 중 하나가 성립합니다."
+        },
+        {
+          "title": "부호 조건 적용",
+          "expression": "a_2a_3<0",
+          "explanation": "a₁=k에서 시작해 a₂와 a₃의 가능한 식을 구한 뒤 곱이 음수인 가지들만 남깁니다."
+        },
+        {
+          "title": "a₅=0이 되는 값",
+          "expression": "k\\in\\left\\{2,\\sqrt2,\\frac2{\\sqrt3},\\sqrt{\\frac23}\\right\\}",
+          "explanation": "남은 각 가지에서 a₄를 두 방식으로 갱신하고 a₅=0을 풀면 네 양수가 나옵니다."
+        },
+        {
+          "title": "제곱합",
+          "expression": "4+2+\\frac43+\\frac23=8",
+          "explanation": "서로 다른 k의 제곱만 한 번씩 더합니다."
+        }
+      ],
+      "correctReason": "모든 두 갈래를 전개한 EBS 경우 분류와 독립 대입 검산에서 같은 네 값만 남았습니다.",
+      "commonMistake": "a₅=0만 먼저 풀면 a₂a₃<0을 만족하지 않는 가지가 섞입니다. 부호 조건을 중간에 적용하세요.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

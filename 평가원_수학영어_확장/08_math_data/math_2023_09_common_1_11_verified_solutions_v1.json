@@ -1,0 +1,370 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2023학년도 9월 모의평가 수학 공통 1~11번 11문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "588de0b03e371e8b9086a300d7927ad9f5ea4c83692aaf3874f5fde6f34f64f1",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://jwmath.tistory.com/591",
+      "independentSourceUrls": [
+        "https://kimexp.tistory.com/1254",
+        "https://everywhereeverything.tistory.com/entry/2023%EB%85%84-9%EC%9B%94-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5%EA%B5%AD%EC%96%B4-%EC%88%98%ED%95%99-%EC%98%81%EC%96%B4-%ED%95%9C%EA%B5%AD%EC%82%AC-%ED%83%90%EA%B5%AC"
+      ],
+      "problemFilename": "2023_09_math_problem.pdf",
+      "problemSha256": "2053cc454daa5fbcef7f3a5de1bbb07b55f814894f4ea0b78026c27d27f025fe",
+      "problemReplicaFilenames": ["2023_09_math_problem_kimexp.pdf", "2023_09_math_problem_everywhere.pdf"],
+      "answerFilename": "2023_09_math_answer_everywhere.pdf",
+      "answerSha256": "f3c729d6c9165ecc0196d6ede078e03cd8a5457cda5066d7d0fca6645ebafd92",
+      "primaryAnswerImageFilename": "2023_09_math_answer.png",
+      "primaryAnswerImageSha256": "ca8dd66204c4df4af348dbc28183a17abf0ff19b415ab55d46fe92821d666ff9"
+    },
+    "note": "서로 다른 세 보관 페이지의 문제지 해시가 일치함을 확인하고, 별도 정답표 PDF와 평가원 정답 이미지까지 대조한 뒤 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보."
+  },
+  "items": {
+    "2023_09_common_1": {
+      "id": "2023_09_common_1",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 1,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "밑이 같은 거듭제곱으로 정리하면 지수는 (√3-1)(√3+1)=2가 되어 값은 4입니다.",
+      "approach": "분수를 먼저 2의 거듭제곱 하나로 합친 뒤 지수법칙을 적용합니다.",
+      "concepts": ["지수법칙", "합차 공식"],
+      "steps": [
+        {
+          "title": "밑 통일하기",
+          "expression": "\\frac{2^{\\sqrt3}}2=2^{\\sqrt3-1}",
+          "explanation": "나눗셈은 같은 밑의 지수끼리 빼서 정리합니다."
+        },
+        {
+          "title": "지수 곱 계산하기",
+          "expression": "(\\sqrt3-1)(\\sqrt3+1)=3-1=2",
+          "explanation": "합차 공식으로 무리수가 사라집니다."
+        },
+        {
+          "title": "값 구하기",
+          "expression": "(2^{\\sqrt3-1})^{\\sqrt3+1}=2^2=4",
+          "explanation": "거듭제곱의 거듭제곱은 지수를 곱합니다."
+        }
+      ],
+      "correctReason": "계산값 4가 선지 ④와 일치합니다.",
+      "commonMistake": "분모의 2를 지수에서 빼지 않고 2의 계수처럼 처리하지 마세요.",
+      "verification": {"problemPage": 1, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_2": {
+      "id": "2023_09_common_2",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 2,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "주어진 극한은 x=2에서의 미분계수이므로 f'(2)=8입니다.",
+      "approach": "미분계수의 정의를 바로 알아보고 도함수를 이용합니다.",
+      "concepts": ["미분계수의 정의", "다항함수의 미분"],
+      "steps": [
+        {
+          "title": "극한의 의미 찾기",
+          "expression": "\\lim_{x\\to2}\\frac{f(x)-f(2)}{x-2}=f'(2)",
+          "explanation": "분자와 분모가 미분계수의 정의와 정확히 같습니다."
+        },
+        {
+          "title": "도함수 구하기",
+          "expression": "f'(x)=4x",
+          "explanation": "상수 5의 미분값은 0입니다."
+        },
+        {
+          "title": "x=2 대입하기",
+          "expression": "f'(2)=8",
+          "explanation": "따라서 극한값은 8입니다."
+        }
+      ],
+      "correctReason": "극한값 8이 선지 ①과 일치합니다.",
+      "commonMistake": "f(2)를 계산하는 문제가 아니라 f'(2)를 계산하는 문제입니다.",
+      "verification": {"problemPage": 1, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_3": {
+      "id": "2023_09_common_3",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 3,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "sinθ=5/13이고 cosθ<0이므로 cosθ=-12/13, 따라서 tanθ=-5/12입니다.",
+      "approach": "보각의 사인값을 원래 각의 사인값으로 바꾸고 부호 조건을 적용합니다.",
+      "concepts": ["삼각함수의 보각", "삼각함수의 부호"],
+      "steps": [
+        {
+          "title": "사인값 바꾸기",
+          "expression": "\\sin(\\pi-\\theta)=\\sin\\theta=\\frac5{13}",
+          "explanation": "보각의 사인값은 같습니다."
+        },
+        {
+          "title": "코사인값 구하기",
+          "expression": "\\cos\\theta=-\\sqrt{1-\\frac{25}{169}}=-\\frac{12}{13}",
+          "explanation": "문제의 cosθ<0 조건 때문에 음의 값을 선택합니다."
+        },
+        {
+          "title": "탄젠트 계산하기",
+          "expression": "\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}=-\\frac5{12}",
+          "explanation": "사인값을 코사인값으로 나눕니다."
+        }
+      ],
+      "correctReason": "tanθ=-5/12가 선지 ②와 일치합니다.",
+      "commonMistake": "제곱 관계로 cosθ의 크기만 구한 뒤, cosθ<0 조건을 빠뜨리지 마세요.",
+      "verification": {"problemPage": 1, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_4": {
+      "id": "2023_09_common_4",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 4,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "경계 x=a에서 두 식의 값이 같아야 하므로 a²+a-6=0이고, 두 해의 합은 -1입니다.",
+      "approach": "조각함수의 식이 바뀌는 한 점에서 좌우 값을 같게 둡니다.",
+      "concepts": ["함수의 연속", "이차방정식의 근과 계수"],
+      "steps": [
+        {
+          "title": "경계의 왼쪽 값 구하기",
+          "expression": "f(a)=-2a+a=-a",
+          "explanation": "x=a는 첫 번째 식에 포함됩니다."
+        },
+        {
+          "title": "오른쪽 극한과 같게 두기",
+          "expression": "-a=a^2-6\\Rightarrow a^2+a-6=0",
+          "explanation": "연속이려면 경계에서 두 식의 값이 같아야 합니다."
+        },
+        {
+          "title": "모든 a의 합 구하기",
+          "expression": "a=2,-3\\Rightarrow2+(-3)=-1",
+          "explanation": "두 해가 모두 연속 조건을 만족합니다."
+        }
+      ],
+      "correctReason": "가능한 모든 a의 합 -1이 선지 ①과 일치합니다.",
+      "commonMistake": "경계값에 x가 아니라 a를 대입해야 하며, 가능한 두 해를 모두 더해야 합니다.",
+      "verification": {"problemPage": 2, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_5": {
+      "id": "2023_09_common_5",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 5,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "첫째항을 A, 공차를 d라 두면 A=-8d이고 2A+18d=-6이므로 d=-3, a₂=21입니다.",
+      "approach": "등차수열의 일반항으로 두 조건을 연립합니다.",
+      "concepts": ["등차수열의 일반항", "연립방정식"],
+      "steps": [
+        {
+          "title": "첫 번째 조건 정리하기",
+          "expression": "A=2(A+4d)\\Rightarrow A=-8d",
+          "explanation": "a₅=A+4d를 대입합니다."
+        },
+        {
+          "title": "두 번째 조건 적용하기",
+          "expression": "(A+7d)+(A+11d)=-6",
+          "explanation": "a₈과 a₁₂를 일반항으로 바꿉니다."
+        },
+        {
+          "title": "a₂ 계산하기",
+          "expression": "2(-8d)+18d=-6\\Rightarrow d=-3,\\quad a_2=A+d=21",
+          "explanation": "A=24이므로 둘째항은 21입니다."
+        }
+      ],
+      "correctReason": "a₂=21이 선지 ③과 일치합니다.",
+      "commonMistake": "a₈의 공차 배수는 8d가 아니라 7d입니다.",
+      "verification": {"problemPage": 2, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_6": {
+      "id": "2023_09_common_6",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 6,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "극대점 x=0에서 f(0)=k=9이고, 극소점 x=2에서 f(2)=5입니다.",
+      "approach": "도함수의 부호 변화를 이용해 극대·극소가 생기는 x좌표를 찾습니다.",
+      "concepts": ["삼차함수의 극값", "도함수의 부호"],
+      "steps": [
+        {
+          "title": "도함수 인수분해하기",
+          "expression": "f'(x)=3x^2-6x=3x(x-2)",
+          "explanation": "임계점은 x=0과 x=2입니다."
+        },
+        {
+          "title": "극대값으로 k 구하기",
+          "expression": "f(0)=k=9",
+          "explanation": "도함수의 부호가 +에서 -로 바뀌는 x=0이 극대점입니다."
+        },
+        {
+          "title": "극소값 계산하기",
+          "expression": "f(2)=8-12+9=5",
+          "explanation": "x=2에서는 부호가 -에서 +로 바뀝니다."
+        }
+      ],
+      "correctReason": "극솟값 5가 선지 ⑤와 일치합니다.",
+      "commonMistake": "두 임계점의 함수값을 계산하기 전에 어느 점이 극대이고 극소인지 부호를 확인하세요.",
+      "verification": {"problemPage": 2, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_7": {
+      "id": "2023_09_common_7",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 7,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "Sₖ-aₖ=Sₖ₋₁이므로 합은 S₁부터 S₉까지의 망원합 9/10입니다.",
+      "approach": "aₖ=Sₖ-Sₖ₋₁ 관계로 식을 바꾼 뒤 부분분수로 합을 계산합니다.",
+      "concepts": ["수열의 합과 일반항", "망원합"],
+      "steps": [
+        {
+          "title": "Sₖ-aₖ 정리하기",
+          "expression": "S_1-a_1=0,\\qquad S_k-a_k=S_{k-1}\\ (k\\ge2)",
+          "explanation": "aₖ=Sₖ-Sₖ₋₁을 이용합니다."
+        },
+        {
+          "title": "합의 범위 바꾸기",
+          "expression": "\\sum_{k=1}^{10}(S_k-a_k)=\\sum_{j=1}^{9}S_j",
+          "explanation": "첫 항은 0이고 나머지는 S₁부터 S₉까지 한 칸씩 이동합니다."
+        },
+        {
+          "title": "망원합 계산하기",
+          "expression": "\\sum_{j=1}^{9}\\frac1{j(j+1)}=\\sum_{j=1}^{9}\\left(\\frac1j-\\frac1{j+1}\\right)=\\frac9{10}",
+          "explanation": "중간 항들이 서로 소거됩니다."
+        }
+      ],
+      "correctReason": "합 9/10이 선지 ⑤와 일치합니다.",
+      "commonMistake": "k=1에서는 S₀를 임의로 넣지 말고 S₁-a₁=0을 따로 확인하세요.",
+      "verification": {"problemPage": 2, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_8": {
+      "id": "2023_09_common_8",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 8,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "첫 곡선의 접선은 y=-x+3이고, 둘째 곡선과 기울기가 같은 점 x=-1에서 접하도록 하면 a=6입니다.",
+      "approach": "공통 접선의 기울기와 접점을 차례로 맞춥니다.",
+      "concepts": ["접선의 방정식", "미분계수"],
+      "steps": [
+        {
+          "title": "첫 접선 구하기",
+          "expression": "y' =3x^2-4,\\quad y'(1)=-1\\Rightarrow y=-x+3",
+          "explanation": "점 (1,2)를 지나고 기울기가 -1인 직선입니다."
+        },
+        {
+          "title": "둘째 곡선의 접점 찾기",
+          "expression": "4x^3+3=-1\\Rightarrow x=-1",
+          "explanation": "두 곡선에 같은 직선이 접하므로 기울기가 같아야 합니다."
+        },
+        {
+          "title": "접점의 높이 맞추기",
+          "expression": "1-3+a=4\\Rightarrow a=6",
+          "explanation": "x=-1에서 직선 y=-x+3의 값은 4입니다."
+        }
+      ],
+      "correctReason": "a=6이 선지 ①과 일치합니다.",
+      "commonMistake": "기울기만 같게 두면 부족합니다. 접점이 직선 위에도 놓이는지 함수값을 맞춰야 합니다.",
+      "verification": {"problemPage": 3, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_9": {
+      "id": "2023_09_common_9",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 9,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "코사인 그래프의 대칭을 이용하면 첫 교점은 x=2,10이어서 k=1/2이고, g(x)=k의 교점은 x=4,8이므로 간격은 4입니다.",
+      "approach": "[0,12]에서 한 주기를 그려 교점 간격을 각도 차이로 바꿉니다.",
+      "concepts": ["코사인 그래프", "삼각방정식"],
+      "steps": [
+        {
+          "title": "첫 교점 좌표 찾기",
+          "expression": "|\\alpha_1-\\alpha_2|=8\\Rightarrow\\{\\alpha_1,\\alpha_2\\}=\\{2,10\\}",
+          "explanation": "코사인 그래프는 x=6을 중심으로 대칭입니다."
+        },
+        {
+          "title": "k 결정하기",
+          "expression": "k=\\cos\\frac{2\\pi}{6}=\\frac12",
+          "explanation": "x=2를 f에 대입합니다."
+        },
+        {
+          "title": "g의 교점 간격 구하기",
+          "expression": "-3\\cos\\frac{\\pi x}{6}-1=\\frac12\\Rightarrow\\cos\\frac{\\pi x}{6}=-\\frac12",
+          "explanation": "[0,12]의 해는 x=4,8이므로 간격은 4입니다."
+        }
+      ],
+      "correctReason": "교점 간격 4가 선지 ③과 일치합니다.",
+      "commonMistake": "α의 차 8을 곧바로 β의 차로 옮기지 말고 먼저 k를 결정하세요.",
+      "verification": {"problemPage": 3, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_10": {
+      "id": "2023_09_common_10",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 10,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "속도를 0부터 2까지 적분한 위치는 8+2a이고, 점 6과의 거리가 10이므로 a=4입니다.",
+      "approach": "속도를 적분해 위치를 구한 뒤 수직선 거리의 절댓값 조건을 적용합니다.",
+      "concepts": ["속도와 위치", "정적분"],
+      "steps": [
+        {
+          "title": "위치 구하기",
+          "expression": "x(2)=\\int_0^2(3t^2+at)dt=8+2a",
+          "explanation": "점 P는 원점에서 출발하므로 적분값이 위치입니다."
+        },
+        {
+          "title": "거리식 세우기",
+          "expression": "|(8+2a)-6|=10",
+          "explanation": "점 A의 좌표는 6입니다."
+        },
+        {
+          "title": "양수 조건 적용하기",
+          "expression": "a>0\\Rightarrow2+2a=10\\Rightarrow a=4",
+          "explanation": "a>0이면 2+2a는 양수이므로 절댓값을 바로 풉니다."
+        }
+      ],
+      "correctReason": "a=4가 선지 ④와 일치합니다.",
+      "commonMistake": "속도를 t=2에 단순 대입하지 말고 시간에 대해 적분해야 위치가 됩니다.",
+      "verification": {"problemPage": 3, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_common_11": {
+      "id": "2023_09_common_11",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 공통",
+      "questionNumber": 11,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "두 실수 네제곱근의 곱 조건은 f(n)=8을 뜻하고, 이 방정식이 자연수 해 두 개를 가지려면 k=9입니다.",
+      "approach": "양수의 실수 네제곱근 두 개의 곱을 간단히 만든 뒤 자연수 해의 개수를 셉니다.",
+      "concepts": ["네제곱근", "자연수 해의 개수"],
+      "steps": [
+        {
+          "title": "실수 네제곱근의 곱 구하기",
+          "expression": "-((\\sqrt3)^{f(n)})^{1/2}=-3^{f(n)/4}",
+          "explanation": "양수 M의 실수 네제곱근은 ±M^(1/4)이므로 곱은 -M^(1/2)입니다."
+        },
+        {
+          "title": "f(n) 결정하기",
+          "expression": "-3^{f(n)/4}=-9\\Rightarrow f(n)=8",
+          "explanation": "9=3²이므로 지수는 2입니다."
+        },
+        {
+          "title": "자연수 해 두 개 만들기",
+          "expression": "-(n-2)^2+k=8\\Rightarrow(n-2)^2=k-8",
+          "explanation": "n=1,3 두 해가 생기는 k-8=1만 가능하므로 k=9입니다."
+        }
+      ],
+      "correctReason": "k=9가 선지 ②와 일치합니다.",
+      "commonMistake": "네제곱근 네 개를 모두 복소수까지 곱하는 문제가 아닙니다. ‘실수인 것’ 두 개만 곱합니다.",
+      "verification": {"problemPage": 4, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

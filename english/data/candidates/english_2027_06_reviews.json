@@ -1,0 +1,962 @@
+{
+  "metadata": {
+    "schemaVersion": "eng-explain-candidate-v1",
+    "examId": "2027_06",
+    "exam": "2027학년도 6월 모의평가 영어",
+    "status": "internal_candidate",
+    "publicConnected": false,
+    "itemCount": 28,
+    "readyCount": 28,
+    "note": "문제·정답·해설 PDF 원본 대조를 마친 내부 근거형 해설 후보"
+  },
+  "items": {
+    "2027_06_18": {
+      "id": "2027_06_18",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 18,
+      "group": "practical",
+      "type": "목적",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 홈런 영상에서 인상적인 타격을 본 뒤 올해 홈런 대회에 참가해 달라고 요청하는 편지입니다.",
+      "typeApproach": "목적 문제는 글쓴이가 수신자에게 직접 요구하는 행동과 마지막 기대 문장을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "you to join the competition this year.",
+          "role": "직접 요청",
+          "translation": "올해 대회에 참가해 달라고 요청합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "We\nare looking forward to your positive response.",
+          "role": "응답 기대",
+          "translation": "긍정적인 답변을 기다린다고 마무리합니다."
+        }
+      ],
+      "correctReason": "선수를 발표하거나 일정을 바꾸는 글이 아니라 Ben에게 홈런 대회 참가를 요청하므로 ③입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "홈런 대회 참가 선수를 발표하려고",
+        "reason": "Ben을 이미 참가 선수로 발표한 것이 아니라 참가 의사를 묻고 있습니다."
+      }
+    },
+    "2027_06_19": {
+      "id": "2027_06_19",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 19,
+      "group": "practical",
+      "type": "심경 변화",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 별 기대 없이 지루해하던 Mark가 구름 위 장관을 보고 크게 놀랍니다.",
+      "typeApproach": "심경 변화는 사건 전후의 행동과 감정 표현을 각각 묶어 두 단어의 방향을 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "then blankly looked out the window.",
+          "role": "초기 심경",
+          "translation": "Mark는 멍하니 창밖을 바라봅니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "He opened his mouth as he saw the most beautiful",
+          "role": "후기 반응",
+          "translation": "아름다운 경치를 보고 입을 벌릴 만큼 놀랍니다."
+        }
+      ],
+      "correctReason": "무심하고 졸린 상태에서 자연의 장관에 감탄하는 상태로 바뀌므로 bored → amazed가 맞습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "nervous → pleased",
+        "reason": "처음에는 긴장한 것이 아니라 지루해했고, 마지막은 단순한 만족보다 강한 놀라움입니다."
+      }
+    },
+    "2027_06_20": {
+      "id": "2027_06_20",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 20,
+      "group": "topic",
+      "type": "주장",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 체육 지도자는 지시만 하지 말고 활동의 원리가 수행 향상에 어떻게 연결되는지 이해시켜야 합니다.",
+      "typeApproach": "주장 문제는 단순 지시의 한계를 제시한 뒤 필자가 요구하는 지도 방식에 주목합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "it is not sufficient for instructors to expect",
+          "role": "기존 방식의 한계",
+          "translation": "지도자가 단순히 따르기만 기대하는 것은 충분하지 않습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Instructors must raise participants’ awareness of how these",
+          "role": "핵심 주장",
+          "translation": "지도자는 활동의 효과에 대한 참여자의 이해를 높여야 합니다."
+        }
+      ],
+      "correctReason": "활동 원리를 명시적으로 설명해 참여자가 자기 발전을 주도하게 해야 한다는 내용이므로 ③입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "체육 교육은 학습자의 역량 향상을 위해 이론보다 실습을 강조해야 한다.",
+        "reason": "글은 실습 우위를 주장하지 않고 실습의 원리를 이해시키는 지도를 강조합니다."
+      }
+    },
+    "2027_06_21": {
+      "id": "2027_06_21",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 21,
+      "group": "blank",
+      "type": "밑줄 의미",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 동물의 지능과 의식을 보여 주는 증거 앞에서 의식은 인간에게만 있다는 오래된 믿음을 버리자는 뜻입니다.",
+      "typeApproach": "밑줄 의미는 글 전체가 반박하는 기존 믿음과 마지막 질문의 ‘버리다’가 가리키는 대상을 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Animal thought and\nreason ought to be seriously studied",
+          "role": "새로운 관점",
+          "translation": "동물의 사고와 추론도 진지하게 연구해야 한다고 주장합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "of the brain unique to humans that might be responsible for this",
+          "role": "기존 믿음의 반박",
+          "translation": "의식을 담당하는 인간만의 뇌 부위는 발견되지 않았습니다."
+        }
+      ],
+      "correctReason": "동물도 유연한 행동과 문제 해결 능력을 보이므로 의식은 인간만의 특성이라는 믿음을 포기하자는 ②입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "the claim that animal consciousness should be studied",
+        "reason": "동물 의식을 연구하자는 주장은 버릴 대상이 아니라 글쓴이가 지지하는 결론입니다."
+      }
+    },
+    "2027_06_22": {
+      "id": "2027_06_22",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 22,
+      "group": "topic",
+      "type": "요지",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 소비자의 감정과 안전 욕구를 반영한 화난 표정의 자동차 디자인이 인기를 얻고 있습니다.",
+      "typeApproach": "요지 문제는 반복되는 디자인 특징과 그 특징이 소비자에게 주는 감정적 효과를 함께 묶습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "angrier, scarier vehicles’ faces.",
+          "role": "디자인 추세",
+          "translation": "자동차의 얼굴이 더 화나고 위협적인 모습으로 바뀌었습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "the ‘scary look’ shows no sign of slowing in",
+          "role": "인기 지속",
+          "translation": "무서운 외관의 유행은 계속되고 있습니다."
+        }
+      ],
+      "correctReason": "거친 전면 디자인이 안전감과 힘을 전달하고 판매로 이어진다는 내용이므로 ①입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "자동차 판매 증가를 위해 다양한 학문적 접근이 시도되고 있다.",
+        "reason": "심리학자 활용은 디자인 연구의 한 방법이며, 글의 중심은 성난 외관의 인기입니다."
+      }
+    },
+    "2027_06_23": {
+      "id": "2027_06_23",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 23,
+      "group": "topic",
+      "type": "주제",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 몸집이 작은 동물과 큰 동물은 수명·반사 속도·학습 방식이 달라 생존 전략도 달라집니다.",
+      "typeApproach": "주제 문제는 작은 동물과 큰 동물의 대조 항목을 모두 포괄하는 상위 개념을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "being\nshort-lived puts a premium on the effectiveness of preprogrammed",
+          "role": "작은 동물의 전략",
+          "translation": "수명이 짧으면 미리 프로그램된 행동의 효율성이 중요합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Being longer-lived puts a greater premium\non learning and memory",
+          "role": "큰 동물의 전략",
+          "translation": "수명이 길면 학습과 기억이 더 중요합니다."
+        }
+      ],
+      "correctReason": "몸집과 수명이 반사·행동·학습 중심의 생존 기술을 바꾸는 내용을 모두 담은 ②가 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "limits of animals’ decision making according to body size",
+        "reason": "의사결정의 한계만 다루지 않고 수명, 반사, 학습, 기억과 환경 적응을 폭넓게 비교합니다."
+      }
+    },
+    "2027_06_24": {
+      "id": "2027_06_24",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 24,
+      "group": "topic",
+      "type": "제목",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 따로 운영되던 관광 업체들이 고객의 복합 수요에 맞춰 통합 서비스를 제공하게 된 변화를 설명합니다.",
+      "typeApproach": "제목 문제는 과거와 현재의 대비 방향을 모두 담고 세부 사례보다 넓은 표현을 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "was fragmented; hotels, transport operators, travel agents, and",
+          "role": "과거 구조",
+          "translation": "과거 관광 산업은 여러 업체가 분절되어 있었습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "from\nessentially individual business activities to more integrated\nactivities.",
+          "role": "변화 방향",
+          "translation": "개별 사업 활동에서 더 통합된 활동으로 바뀌었습니다."
+        }
+      ],
+      "correctReason": "분리된 관광 서비스가 결합된 서비스로 전환된 흐름을 정확히 담은 ②입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "Reduced Roles of Tour Operators in the Tourism Industry",
+        "reason": "여행 상품 운영업체의 역할이 줄었다는 내용이 아니라 이들의 성장으로 산업 통합이 촉진됐습니다."
+      }
+    },
+    "2027_06_25": {
+      "id": "2027_06_25",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 25,
+      "group": "info",
+      "type": "도표",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 아시아의 대중교통 비율은 43%로 세 교통수단 중 가장 높고, 가장 낮은 값은 자동차 23%입니다.",
+      "typeApproach": "도표 문제는 지역별 세 수치를 직접 비교하고 ‘최고·최저’ 표현의 방향을 확인합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Asia: walking or cycling 34%, public transport 43%, cars 23%",
+          "role": "정답 수치",
+          "translation": "아시아에서는 대중교통 43%가 가장 높고 자동차 23%가 가장 낮습니다."
+        },
+        {
+          "in": "figure",
+          "quote": "All regions: public transport below 50%",
+          "role": "전체 대조",
+          "translation": "다섯 지역의 대중교통 비율은 모두 50%보다 낮습니다."
+        }
+      ],
+      "correctReason": "③은 아시아의 대중교통 비율이 가장 낮다고 했지만 실제로는 43%로 가장 높으므로 일치하지 않습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "Of the three types of transportation for weekday trips, walking or cycling was the most common in Africa, while it was the least common in Australia and New Zealand.",
+        "reason": "아프리카의 걷기·자전거는 41%로 가장 높고, 호주·뉴질랜드에서는 6%로 가장 낮아 도표와 일치합니다."
+      }
+    },
+    "2027_06_26": {
+      "id": "2027_06_26",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 26,
+      "group": "info",
+      "type": "내용 일치",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. ‘Meaning’은 1948년에 집필됐지만 실제 출판은 1957년입니다.",
+      "typeApproach": "인물 일치 문제는 연도와 행동을 한 쌍으로 묶어 선지의 동사를 원문과 대조합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "His article “Meaning” was written in 1948, but he did not have\nit published until 1957.",
+          "role": "집필·출판 구분",
+          "translation": "1948년에 썼지만 1957년에야 출판했습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "retired from there in 1979.",
+          "role": "다른 연도 확인",
+          "translation": "UC Berkeley에서 1979년에 은퇴했습니다."
+        }
+      ],
+      "correctReason": "③은 1948년에 출판했다고 했으나 원문은 그해 집필하고 1957년에 출판했다고 하므로 틀립니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "UC Berkeley에서 1979년에 퇴직했다.",
+        "reason": "1967년에 UC Berkeley로 옮겨 1979년에 그곳에서 은퇴했다는 원문과 일치합니다."
+      }
+    },
+    "2027_06_27": {
+      "id": "2027_06_27",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 27,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 6~9세는 A3, 10~17세는 A2를 사용하므로 모든 참가자의 종이 크기가 같지 않습니다.",
+      "typeApproach": "안내문 문제는 연령별 표의 행을 나누어 공통점과 차이를 확인합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Ages 6–9: A3, crayons",
+          "role": "첫 연령대",
+          "translation": "6~9세는 A3 종이와 크레용을 사용합니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Ages 10–13 and 14–17: A2",
+          "role": "나머지 연령대",
+          "translation": "10~17세의 두 연령대는 A2 종이를 사용합니다."
+        }
+      ],
+      "correctReason": "연령대에 따라 A3와 A2로 종이 크기가 다르므로 모든 참가자가 같은 종이를 쓴다는 ④가 일치하지 않습니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "온라인 등록이 요구된다.",
+        "reason": "안내문에 온라인 등록이 필수라고 명시되어 있어 일치합니다."
+      }
+    },
+    "2027_06_28": {
+      "id": "2027_06_28",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 28,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 행사 중 음식과 음료가 판매된다고 안내되어 있습니다.",
+      "typeApproach": "안내문 일치 문제는 날짜·주차·시간·판매·우천 조건을 각각 원문과 대조합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Food and beverages will be sold during the event.",
+          "role": "판매 정보",
+          "translation": "행사 중 음식과 음료가 판매됩니다."
+        },
+        {
+          "in": "figure",
+          "quote": "In case of heavy rain, the event will be cancelled.",
+          "role": "우천 조건",
+          "translation": "폭우가 오면 행사는 연기가 아니라 취소됩니다."
+        }
+      ],
+      "correctReason": "음식과 음료를 판매한다는 안내와 정확히 일치하므로 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "폭우 시 연기될 것이다.",
+        "reason": "폭우 시 행사가 취소된다고 했으며 연기된다는 내용은 없습니다."
+      }
+    },
+    "2027_06_29": {
+      "id": "2027_06_29",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 29,
+      "group": "grammar",
+      "type": "어법",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 선행사 styles를 수식하면서 뒤 절에서 주어 역할을 해야 하므로 what이 아니라 that 또는 which가 와야 합니다.",
+      "typeApproach": "어법 문제는 밑줄 표현의 역할을 먼저 정하고 선행사 유무와 뒤 절의 빈자리를 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "fashion began\nmoving \ttoward \tstyles ② what \twere \tmore \telaborate \tand",
+          "role": "오류 위치",
+          "translation": "styles 뒤의 what이 관계절을 이끌고 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "styles and decorations such as feathers, silk, or velvet were",
+          "role": "문장 구조 대조",
+          "translation": "본문의 중심 명사 styles는 뒤에서 여러 방식으로 수식됩니다."
+        }
+      ],
+      "correctReason": "what은 자체에 선행사 의미를 포함하므로 앞에 styles가 있는 구조와 맞지 않습니다. that 또는 which가 필요해 ②가 틀렸습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "Allowed",
+        "reason": "사치스러운 양식이 상류층에게만 허용되었다는 수동 관계이므로 과거분사 Allowed가 알맞습니다."
+      }
+    },
+    "2027_06_30": {
+      "id": "2027_06_30",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 30,
+      "group": "vocab",
+      "type": "어휘",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 음악과 노래를 뺀 대화 대본은 실제 공연 정보에 비해 얇으므로 thick은 문맥과 반대입니다.",
+      "typeApproach": "어휘 문제는 해당 단어가 앞의 원인과 뒤의 대조를 자연스럽게 이어 주는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "what is left is the dialogue, known as the book or",
+          "role": "남는 내용",
+          "translation": "음악과 노래를 빼면 대화 대본만 남습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "and it can be very ④ thick.",
+          "role": "반대 어휘",
+          "translation": "대화 대본이 매우 두껍다는 표현이 문맥상 어긋납니다."
+        }
+      ],
+      "correctReason": "무대에서는 오래 걸리는 동작도 대본에는 짧게 적히므로 대본은 thick이 아니라 thin에 가까워야 합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "time-consuming",
+        "reason": "춤과 동작은 무대에서 실제로 수행하면 시간이 오래 걸릴 수 있으므로 문맥에 맞습니다."
+      }
+    },
+    "2027_06_31": {
+      "id": "2027_06_31",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 31,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 보존 처리는 변화를 인정하되 관리하여 대상이 바람직한 상태로 오래 유지되게 합니다.",
+      "typeApproach": "빈칸 앞의 동사 prolong과 뒤의 보존·복원의 차이를 함께 만족하는 형용사를 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "acknowledge change but try to manage it in order to prolong",
+          "role": "보존 처리의 목표",
+          "translation": "변화를 관리해 어떤 상태를 오래 지속하려 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "preserve\nthe original object or system",
+          "role": "원형 보존 대조",
+          "translation": "보존주의자는 원래 대상이나 체계를 지키려 합니다."
+        }
+      ],
+      "correctReason": "변화를 관리하는 목적은 대상을 원하는 상태로 연장하는 것이므로 desired가 가장 자연스럽습니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "unstable",
+        "reason": "불안정한 상태를 오래 유지하려는 것이 아니라 복원과 관리를 통해 바람직한 상태를 지속하려는 것입니다."
+      }
+    },
+    "2027_06_32": {
+      "id": "2027_06_32",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 32,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 말하지 않은 의미와 감정도 표정·목소리·몸짓으로 드러나므로 숨기기 어렵습니다.",
+      "typeApproach": "빈칸은 앞의 인용이 보여 주는 결론을 주어 most people과 자연스럽게 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "no mortal can keep a secret.",
+          "role": "핵심 인용",
+          "translation": "어떤 사람도 비밀을 완전히 감출 수 없다고 말합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "betrayal oozes out of him at\nevery pore.",
+          "role": "비언어적 노출",
+          "translation": "감추려는 내용도 몸 전체에서 새어 나온다는 뜻입니다."
+        }
+      ],
+      "correctReason": "비언어 행동이 속뜻을 드러내기 때문에 사람들은 자신이 의미하고 느끼는 것을 감추기 어렵다는 ②입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "interpret one’s nonverbal behavior",
+        "reason": "글은 비언어 행동을 해석하는 방법도 말하지만 빈칸의 주체는 자신의 속뜻을 감추려는 사람입니다."
+      }
+    },
+    "2027_06_33": {
+      "id": "2027_06_33",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 33,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 감정의 영향이 클수록 실제 대상과 기대 대상의 유사성이 작아도 기대한 것으로 잘못 보게 됩니다.",
+      "typeApproach": "빈칸 앞의 small similarity 사례와 뒤의 감정 투자·편향 관계를 같은 방향으로 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "a small similarity between a\nperceived object and the thing one expects to see can lead",
+          "role": "오인 조건",
+          "translation": "작은 유사성만 있어도 기대한 대상으로 잘못 볼 수 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The greater the emotional investment, the\nmore biased one’s perception.",
+          "role": "비례 관계",
+          "translation": "감정의 개입이 클수록 지각의 편향도 커집니다."
+        }
+      ],
+      "correctReason": "감정이 강할수록 더 작은 유사성만으로도 기대한 대상을 보게 되므로 ②가 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "the more easily one can sense the world the way it is",
+        "reason": "감정은 현실을 정확히 보게 하는 것이 아니라 지각을 더 편향시킵니다."
+      }
+    },
+    "2027_06_34": {
+      "id": "2027_06_34",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 34,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 미술 가치가 계속 바뀌는데도 작품을 사는 행위는 그 작품이 미래 미술사에서 중요할 것이라는 예측입니다.",
+      "typeApproach": "빈칸은 현재의 불확실한 합의와 수집가가 감수하는 미래 판단을 함께 설명해야 합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "the collector asserts his belief in the future\npresence of the work as a significant point attained by art as a\nwhole.",
+          "role": "미래에 대한 판단",
+          "translation": "수집가는 그 작품이 미래 미술사의 중요한 지점이 될 것이라 믿습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "This consensus is all but certain to be\ndisplaced",
+          "role": "판단의 불확실성",
+          "translation": "현재의 합의는 앞으로 바뀔 가능성이 큽니다."
+        }
+      ],
+      "correctReason": "불확실한 현재 합의 속에서 구매를 결정하는 것은 미술이 어디로 갈지 예측하는 행위이므로 ①입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "the art work tells the story of his time",
+        "reason": "현재 시대를 기록한다는 일반론이 아니라 작품의 미래 미술사적 위치를 판단하는 내용입니다."
+      }
+    },
+    "2027_06_35": {
+      "id": "2027_06_35",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 35,
+      "group": "irrelevant",
+      "type": "무관한 문장",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 글은 몸집이 클수록 낙상 충격과 부상이 커지는 이유를 설명하는데 BMI 건강 점검은 이 흐름과 무관합니다.",
+      "typeApproach": "무관한 문장은 앞뒤 문장이 공유하는 반복 주제와 인과 사슬에서 벗어난 문장을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "The bigger someone is, the more damage they can do to\nthemselves",
+          "role": "전체 주제",
+          "translation": "몸집이 클수록 사고 때 더 크게 다칠 수 있다는 글입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The body mass\nindex (BMI) can serve as a convenient way for non-experts to\nexamine their health conditions in daily lives.",
+          "role": "흐름 이탈",
+          "translation": "BMI로 일상 건강을 확인한다는 별개의 내용입니다."
+        }
+      ],
+      "correctReason": "낙상 충격과 뼈의 상대적 강도 설명 사이에 BMI 활용 문장이 끼어 있어 ④가 무관합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "For the same reasons, taller people have been found to suffer more fall-related injuries ― like hip breaks ― than shorter people.",
+        "reason": "키가 큰 사람의 낙상 부상 사례는 앞의 몸집·충격 관계를 구체화하므로 흐름에 맞습니다."
+      }
+    },
+    "2027_06_36": {
+      "id": "2027_06_36",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 36,
+      "group": "order",
+      "type": "순서",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 식물의 구조 방어를 덧붙인 (C), 서로 돕는 화학 신호를 설명한 (B), 식물과 곤충의 진화적 공방으로 넓힌 (A)의 순서입니다.",
+      "typeApproach": "순서 문제는 추가 표현, 지시 표현, 범위 확대가 이어지는 연결 고리를 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "(C) Structural defenses like thick coats of wax on leaves may",
+          "role": "첫 확장",
+          "translation": "도입의 화학 방어 다음에 구조적 방어를 추가합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Nor are individual plants entirely on\ntheir own while under attack.",
+          "role": "다음 문단 예고",
+          "translation": "개별 식물이 혼자 방어하지 않는다는 말이 이웃 식물과 포식자의 도움으로 이어집니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "(A) The back-and-forth is not a matter of natural balance, but",
+          "role": "최종 일반화",
+          "translation": "앞의 방어와 대응을 식물·곤충 사이의 진화적 공방으로 정리합니다."
+        }
+      ],
+      "correctReason": "화학 방어 뒤 구조 방어 (C), 협력 방어 (B), 그 결과인 진화적 공방 (A)로 이어져 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(C) - (A) - (B)",
+        "reason": "(A)의 back-and-forth는 곤충과 식물의 여러 대응이 제시된 뒤 나와야 하므로 (B)보다 앞설 수 없습니다."
+      }
+    },
+    "2027_06_37": {
+      "id": "2027_06_37",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 37,
+      "group": "order",
+      "type": "순서",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 문화적 틀이라는 도입을 받는 (C), 문화의 관습을 활용하는 (A), 모방을 넘어 관객을 놀라게 해야 한다는 (B)의 순서입니다.",
+      "typeApproach": "순서 문제는 ‘그렇게 말할 때’, ‘그 연장선에서’, ‘또한’ 같은 연결 표현의 선행 내용을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "(C) In saying that, we stress that creation of spectacle is neither",
+          "role": "도입 수용",
+          "translation": "도입에서 말한 문화적 틀을 바로 받아 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "(A) By extension, spectacle is produced by working with the",
+          "role": "문화 전략 확장",
+          "translation": "문화의 관습과 혁신을 섞어 장관을 만든다는 설명으로 확장합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "(B) Spectacle must also be spectacular.",
+          "role": "추가 조건",
+          "translation": "관습을 활용하는 것뿐 아니라 관객을 놀라게 해야 한다는 조건을 더합니다."
+        }
+      ],
+      "correctReason": "도입을 받는 (C) 뒤에 문화의 결을 활용하는 (A), 모방만으로 부족하다는 말 뒤에 놀라움의 조건 (B)가 이어져 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(C) - (B) - (A)",
+        "reason": "(B)의 also는 (A) 끝의 ‘모방만으로 충분하지 않다’는 내용을 받아야 자연스럽습니다."
+      }
+    },
+    "2027_06_38": {
+      "id": "2027_06_38",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 38,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 주어진 문장은 와류가 건물을 위험하게 흔드는 원리 설명을 마치고 구체적인 설계 해결책을 시작합니다.",
+      "typeApproach": "문장 삽입은 주어진 문장의 목적 표현이 앞의 문제 진단과 뒤의 해결 사례 사이를 잇는지 봅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "frequencies\nthat can become dangerously self-sustaining.",
+          "role": "삽입 전 문제",
+          "translation": "와류가 위험하게 지속되는 진동을 만들 수 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Orienting\nthe building so that the longer face of the structure is parallel",
+          "role": "삽입 후 해결책",
+          "translation": "건물 방향을 조절하는 첫 번째 해결책이 시작됩니다."
+        }
+      ],
+      "correctReason": "위험한 와류 설명 뒤 ‘이를 최소화하려 한다’는 문장이 나오고 설계 방법들이 이어져야 하므로 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "④",
+        "reason": "④에 넣으면 이미 첫 번째 해결책인 건물 방향 조절이 나온 뒤 목적 문장이 뒤늦게 등장합니다."
+      }
+    },
+    "2027_06_39": {
+      "id": "2027_06_39",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 39,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 붉은색으로 최초의 색 실험을 했다는 내용 뒤에 다양한 붉은 색조를 만들었다는 문장이 오고, 이어 색채 어휘 사례가 나옵니다.",
+      "typeApproach": "문장 삽입은 also가 더하는 앞 내용과 마지막 명사 color terms가 예고하는 뒤 내용을 동시에 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "achieved their first successes, and then constructed a chromatic\nuniverse.",
+          "role": "삽입 전 색 실험",
+          "translation": "인류는 붉은색으로 첫 색채 실험과 성공을 이루었습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Here the lexicon seems in keeping with pictorial\npractices and coloring techniques.",
+          "role": "삽입 후 어휘",
+          "translation": "이어 색채 관행과 어휘의 관계를 설명합니다."
+        }
+      ],
+      "correctReason": "주어진 문장의 also는 붉은색 실험을 이어 받고, color terms는 바로 뒤의 어휘 사례를 예고하므로 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "④",
+        "reason": "④는 이미 lexicon을 소개한 뒤라 주어진 문장의 color terms가 뒤 사례를 처음 여는 기능을 잃습니다."
+      }
+    },
+    "2027_06_40": {
+      "id": "2027_06_40",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 40,
+      "group": "summary",
+      "type": "요약문",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. AI는 연구 비용을 낮춰 수익성이 낮은 질병의 외면을 줄이고 의료 연구가 소외된 인구까지 다루게 합니다.",
+      "typeApproach": "요약문은 본문의 문제와 해결 결과를 각각 빈칸에 같은 방향의 말로 바꿔 넣습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "the disease has been\nneglected compared to First World illnesses.",
+          "role": "기존 문제",
+          "translation": "가난한 인구의 질병은 부유한 국가의 질병보다 외면받았습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "traditionally neglected populations.",
+          "role": "확대 대상",
+          "translation": "AI는 전통적으로 소외된 인구까지 연구 대상으로 넓힙니다."
+        }
+      ],
+      "correctReason": "수익성이 낮은 질병에 대한 disregard를 줄이고 underserved populations를 포함한다는 ⑤가 본문을 정확히 요약합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "ignorance ··· wealthy",
+        "reason": "본문의 확대 대상은 부유한 인구가 아니라 기존 연구에서 소외된 인구입니다."
+      }
+    },
+    "2027_06_41": {
+      "id": "2027_06_41",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 41,
+      "group": "long",
+      "type": "장문 제목",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 유리는 고체처럼 행동하지만 분자 구조와 상태를 완전히 설명하기 어려운 오래된 미해결 대상입니다.",
+      "typeApproach": "장문 제목은 도입의 핵심 대상과 결말의 미해결 질문을 함께 포괄해야 합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "scientists still struggle\nto comprehend why glass behaves the way it does.",
+          "role": "미해결 문제",
+          "translation": "과학자들은 유리가 왜 그렇게 행동하는지 여전히 이해하기 어렵습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "glass is not a material; it’s a state.",
+          "role": "상태의 수수께끼",
+          "translation": "유리는 단순한 물질보다 하나의 상태로 보아야 한다는 결론입니다."
+        }
+      ],
+      "correctReason": "유리의 구조·상태·행동을 둘러싼 과학적 수수께끼를 가장 넓게 담은 제목은 ①입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "Solid and Liquid Glass: Their Respective Uses",
+        "reason": "고체 유리와 액체 유리의 용도를 비교하는 글이 아니라 유리의 상태 자체가 왜 어려운지를 다룹니다."
+      }
+    },
+    "2027_06_42": {
+      "id": "2027_06_42",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 42,
+      "group": "long",
+      "type": "장문 어휘",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 유리의 행동을 설명하기 어렵다는 역설 뒤에는 분자 법칙을 ‘따른다’가 아니라 ‘거스른다’가 와야 합니다.",
+      "typeApproach": "장문 어휘는 해당 단어가 바로 앞의 역설과 뒤 결론의 논리 방향을 유지하는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "scientists still struggle\nto comprehend why glass behaves the way it does.",
+          "role": "앞 문맥",
+          "translation": "과학자들은 유리의 행동을 아직 충분히 설명하지 못합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Glass seems\nto (e) obey most molecular laws.",
+          "role": "반대 어휘",
+          "translation": "대부분의 분자 법칙을 따른다는 표현은 앞의 수수께끼와 반대입니다."
+        }
+      ],
+      "correctReason": "설명하기 어려운 이유는 유리가 분자 법칙을 따르는 것이 아니라 거스르는 듯 보이기 때문이므로 (e)가 틀렸습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(d)",
+        "reason": "아주 오래된 물질인데도 이해하지 못한다는 것은 paradox와 자연스럽게 이어집니다."
+      }
+    },
+    "2027_06_43": {
+      "id": "2027_06_43",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 43,
+      "group": "long",
+      "type": "장문 순서",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. Sally가 노부인에게 다가간 뒤 연주를 듣는 (D), 자신의 상처를 말하고 바이올린을 잡는 (C), 다음 날 첫 수업을 받는 (B)의 순서입니다.",
+      "typeApproach": "장문 순서는 대화의 질문·답변과 ‘다음 날’ 같은 시간 표현이 끊기지 않는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "So, Sally walked closer.",
+          "role": "도입의 마지막 행동",
+          "translation": "Sally가 노부인에게 가까이 다가갑니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "decided to stop for a bit and listen.",
+          "role": "첫 사건",
+          "translation": "Sally가 멈춰서 노부인의 연주를 듣습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "(d) I hope to see you again tomorrow.",
+          "role": "다음 날 예고",
+          "translation": "노부인이 내일 다시 만나자고 말합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "The following day, they met at the same bench.",
+          "role": "마무리 연결",
+          "translation": "다음 날 같은 벤치에서 만나 수업을 시작합니다."
+        }
+      ],
+      "correctReason": "다가감 (A) → 연주를 듣고 대화 (D) → 연주를 시도하고 내일을 약속 (C) → 다음 날 수업 (B)이므로 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(D) - (B) - (C)",
+        "reason": "(B)의 첫 정식 수업은 (C) 끝에서 다음 날 다시 만나기로 한 뒤에만 올 수 있습니다."
+      }
+    },
+    "2027_06_44": {
+      "id": "2027_06_44",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 44,
+      "group": "long",
+      "type": "장문 지칭",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. (a)~(d)는 노부인을 가리키지만 (e) She는 집으로 계속 가려던 Sally를 가리킵니다.",
+      "typeApproach": "지칭 문제는 대명사 바로 앞의 행동 주체와 대화의 화자를 문장별로 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "While (a) her music wasn’t\nperfect",
+          "role": "노부인 지칭",
+          "translation": "(a)는 바이올린을 연주하는 노부인의 음악입니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "(e) She turned to continue\nwalking home",
+          "role": "Sally 지칭",
+          "translation": "(e)는 집으로 계속 걸어가려는 Sally입니다."
+        }
+      ],
+      "correctReason": "(e)만 Sally이고 나머지는 노부인의 음악·행동·말을 가리키므로 ⑤입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "(b)",
+        "reason": "바이올린의 손가락 위치를 가르치는 주체는 노부인이므로 (b)는 노부인을 가리킵니다."
+      }
+    },
+    "2027_06_45": {
+      "id": "2027_06_45",
+      "status": "ready",
+      "exam": "2027학년도 6월 모의평가 영어",
+      "qid": 45,
+      "group": "long",
+      "type": "장문 내용",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. Beatrice는 Sally의 음악적 재능을 칭찬한 것이 아니라 재능이 없다고 말했습니다.",
+      "typeApproach": "장문 내용 문제는 인물별 발언과 행동을 시간 순서로 분리해 선지의 긍정·부정 방향을 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Beatrice had said,\n“You just have no musical talent.”",
+          "role": "정답 발언",
+          "translation": "Beatrice는 Sally에게 음악적 재능이 없다고 말했습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Sally\npromised to meet her every day",
+          "role": "다른 내용 확인",
+          "translation": "Sally는 노부인을 매일 만나기로 약속했습니다."
+        }
+      ],
+      "correctReason": "Beatrice의 말은 칭찬이 아니라 재능이 없다는 부정적 평가였으므로 ④가 적절하지 않습니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "Sally는 노부인을 매일 만나기로 약속했다.",
+        "reason": "첫 수업 뒤 Sally가 매일 만나겠다고 약속하므로 글과 일치합니다."
+      }
+    }
+  }
+}

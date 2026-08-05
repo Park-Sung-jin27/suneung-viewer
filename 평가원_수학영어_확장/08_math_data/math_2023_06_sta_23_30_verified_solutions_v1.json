@@ -1,0 +1,335 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2023학년도 6월 모의평가 확률과 통계 23~30번 중 비그림 7문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 7,
+    "readyCount": 7,
+    "questionFingerprint": "ce599f09104f301b49f9196e881767891bf2cbccaf145b620efeb792dffcd8af",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5043334/ect_f123552d-f3b9-441b-a9cb-26dd3fb0382a1655a9598b93086.zip",
+      "archiveSha256": "52670128518e0c913ee086d8fdf4364718997feb40edb189510c7bd32e5943ac",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "aa82f35e8f31049dbc75279de253ae9c3aeceb09d0a85bf53ba1ce2f882ce452",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "5db0748417f984b6ac30c87bb351f2d8fca7dce276fc71f47b7ab944e9e64519"
+    },
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 그림에 조건이 의존하는 24번은 제외."
+  },
+  "items": {
+    "2023_06_sta_23": {
+      "id": "2023_06_sta_23",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 23,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "같은 문자 a 세 개의 자리를 구분하지 않으므로 5!을 3!으로 나누어 20을 얻습니다.",
+      "approach": "서로 다른 다섯 자리 배열에서 같은 문자끼리 바뀌어도 동일한 배열이 되는 중복을 제거합니다.",
+      "concepts": [
+        "같은 것이 있는 순열",
+        "중복 배열 제거"
+      ],
+      "steps": [
+        {
+          "title": "모든 문자를 서로 다르다고 보기",
+          "expression": "5!",
+          "explanation": "다섯 자리에 문자를 놓는 순서는 5!가지입니다."
+        },
+        {
+          "title": "같은 a의 중복 제거하기",
+          "expression": "\\frac{5!}{3!}=\\frac{120}{6}=20",
+          "explanation": "a 세 개의 위치만 서로 바꾸는 3!가지 배열은 실제로 같은 배열입니다."
+        }
+      ],
+      "correctReason": "나열하는 경우의 수는 20이므로 정답은 ②입니다.",
+      "commonMistake": "a 세 개를 서로 다른 문자처럼 세어 5!=120으로 답하지 마세요. 같은 문자끼리의 순서 3!을 반드시 나눠야 합니다.",
+      "verification": {
+        "problemPage": 9,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_sta_25": {
+      "id": "2023_06_sta_25",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 25,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "주사위 눈이 6의 약수일 확률은 2/3입니다. 네 번 중 두 번 이상 이동할 확률을 여사건으로 구하면 8/9입니다.",
+      "approach": "점의 좌표를 성공 횟수로 해석하고, 0번 또는 1번만 이동하는 여사건을 뺍니다.",
+      "concepts": [
+        "독립시행",
+        "이항분포의 여사건"
+      ],
+      "steps": [
+        {
+          "title": "한 번 이동할 확률 구하기",
+          "expression": "P(\\text{이동})=\\frac{4}{6}=\\frac23",
+          "explanation": "1부터 6까지의 눈 중 6의 약수는 1, 2, 3, 6의 네 개입니다."
+        },
+        {
+          "title": "목표 사건 바꾸기",
+          "expression": "P(X\\ge2)=1-P(X=0)-P(X=1)",
+          "explanation": "네 번 시행 후 좌표가 2 이상이라는 것은 두 번 이상 이동했다는 뜻입니다."
+        },
+        {
+          "title": "여사건 계산하기",
+          "expression": "1-\\left(\\frac13\\right)^4-\\binom41\\frac23\\left(\\frac13\\right)^3=\\frac89",
+          "explanation": "한 번도 이동하지 않거나 정확히 한 번만 이동할 확률을 전체에서 뺍니다."
+        }
+      ],
+      "correctReason": "구한 확률은 8/9이므로 정답은 ④입니다.",
+      "commonMistake": "6의 약수를 1과 6만으로 세지 마세요. 주사위 눈에서 6의 약수는 1, 2, 3, 6입니다.",
+      "verification": {
+        "problemPage": 10,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_sta_26": {
+      "id": "2023_06_sta_26",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 26,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "x⁵항은 x²과 x³의 곱에서만 생겨 계수가 4n입니다. n=3을 구한 뒤 x⁶항의 두 생성 방법을 더하면 7입니다.",
+      "approach": "각 인수에서 선택한 항의 차수가 목표 차수의 합이 되는 경우만 나누어 셉니다.",
+      "concepts": [
+        "이항정리",
+        "다항식의 계수"
+      ],
+      "steps": [
+        {
+          "title": "x⁵항이 생기는 방법 찾기",
+          "expression": "[x^5](x^2+1)^4(x^3+1)^n=\\binom41\\binom n1=4n",
+          "explanation": "2a+3b=5를 만족하는 자연수 쌍은 a=1, b=1뿐입니다."
+        },
+        {
+          "title": "n 결정하기",
+          "expression": "4n=12\\Rightarrow n=3",
+          "explanation": "문제에서 주어진 x⁵의 계수를 사용합니다."
+        },
+        {
+          "title": "x⁶항의 계수 구하기",
+          "expression": "\\binom43+\\binom32=4+3=7",
+          "explanation": "2a+3b=6은 (a,b)=(3,0) 또는 (0,2)입니다."
+        }
+      ],
+      "correctReason": "x⁶의 계수는 7이므로 정답은 ②입니다.",
+      "commonMistake": "x⁶항을 만드는 경우를 하나만 세지 마세요. x²을 세 번 택하는 경우와 x³을 두 번 택하는 경우가 모두 있습니다.",
+      "verification": {
+        "problemPage": 10,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_sta_27": {
+      "id": "2023_06_sta_27",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 27,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "양 끝은 X, Y 중에서 각각 고르고, 가운데 네 자리 중 a의 한 자리를 정한 뒤 나머지 세 자리를 b, X, Y로 채우면 432가지입니다.",
+      "approach": "조건 때문에 역할이 다른 양 끝, a의 위치, 남은 가운데 자리를 순서대로 분리해 곱합니다.",
+      "concepts": [
+        "곱의 법칙",
+        "중복을 허용한 배열"
+      ],
+      "steps": [
+        {
+          "title": "양 끝의 대문자 정하기",
+          "expression": "2\\times2=4",
+          "explanation": "각 끝에는 X 또는 Y가 올 수 있고 중복이 허용됩니다."
+        },
+        {
+          "title": "a의 위치 정하기",
+          "expression": "\\binom41=4",
+          "explanation": "양 끝은 이미 대문자이므로 a는 가운데 네 자리 중 정확히 한 곳에 옵니다."
+        },
+        {
+          "title": "남은 세 자리 채우기",
+          "expression": "3^3=27",
+          "explanation": "각 자리에는 a를 제외한 b, X, Y 중 하나가 올 수 있습니다."
+        },
+        {
+          "title": "모든 선택 곱하기",
+          "expression": "4\\times4\\times27=432",
+          "explanation": "세 단계는 독립적으로 차례로 선택할 수 있습니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 배열은 432가지이므로 정답은 ③입니다.",
+      "commonMistake": "a를 양 끝에도 놓을 수 있다고 세지 마세요. 양 끝은 대문자여야 하므로 a의 위치는 가운데 네 자리뿐입니다.",
+      "verification": {
+        "problemPage": 11,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_sta_28": {
+      "id": "2023_06_sta_28",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 28,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "전체 120개 중 5의 배수 24개와 3500 이상 54개를 세고, 두 조건을 모두 만족하는 6개를 한 번 빼면 72개이므로 확률은 3/5입니다.",
+      "approach": "합집합의 원소 수를 포함배제 원리로 계산합니다.",
+      "concepts": [
+        "순열",
+        "포함배제 원리"
+      ],
+      "steps": [
+        {
+          "title": "전체 네 자리 수 세기",
+          "expression": "{}_5P_4=5\\times4\\times3\\times2=120",
+          "explanation": "다섯 숫자 중 서로 다른 네 개를 순서 있게 택합니다."
+        },
+        {
+          "title": "5의 배수 세기",
+          "expression": "|A|={}_4P_3=24",
+          "explanation": "일의 자리가 5로 고정되고 나머지 세 자리를 배열합니다."
+        },
+        {
+          "title": "3500 이상인 수 세기",
+          "expression": "|B|=2\\cdot{}_4P_3+{}_3P_2=48+6=54",
+          "explanation": "천의 자리가 4 또는 5인 경우와, 천의 자리가 3이고 백의 자리가 5인 경우를 더합니다."
+        },
+        {
+          "title": "겹치는 수 세기",
+          "expression": "|A\\cap B|={}_3P_2=6",
+          "explanation": "일의 자리가 5인 동시에 3500 이상이려면 천의 자리는 4여야 합니다."
+        },
+        {
+          "title": "합집합 확률 구하기",
+          "expression": "\\frac{24+54-6}{120}=\\frac{72}{120}=\\frac35",
+          "explanation": "두 조건을 모두 만족하는 수는 앞에서 두 번 셌으므로 한 번 뺍니다."
+        }
+      ],
+      "correctReason": "조건을 만족할 확률은 3/5이므로 정답은 ④입니다.",
+      "commonMistake": "일의 자리가 5인 경우 천의 자리를 5로 다시 쓸 수 없습니다. 서로 다른 숫자 네 개라는 조건을 끝까지 유지하세요.",
+      "verification": {
+        "problemPage": 11,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_sta_29": {
+      "id": "2023_06_sta_29",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 29,
+      "answer": "115",
+      "answerMark": null,
+      "summary": "f(1)의 값이 2, 3, 4인 세 경우만 가능하며 각각 50개, 50개, 15개입니다. 합은 115개입니다.",
+      "approach": "f(1)=u로 놓고 f(u)=4와 f(1)≤f(3)≤f(5)를 동시에 만족하는 경우를 u별로 나눕니다.",
+      "concepts": [
+        "함수의 합성",
+        "경우 나누기"
+      ],
+      "steps": [
+        {
+          "title": "f(1)의 가능성 줄이기",
+          "expression": "f(1)=u,\\quad f(u)=4",
+          "explanation": "u=1이면 f(f(1))=f(1)=1이고, u=5이면 f(5)=4가 부등식 f(1)≤f(5)와 모순입니다. 따라서 u는 2, 3, 4만 가능합니다."
+        },
+        {
+          "title": "u=2인 경우",
+          "expression": "f(2)=4,\\quad 2\\le f(3)\\le f(5)\\le5",
+          "explanation": "f(3), f(5)의 순서쌍은 중복조합으로 10개이고 f(4)는 5가지이므로 50개입니다."
+        },
+        {
+          "title": "u=3인 경우",
+          "expression": "f(3)=4,\\quad f(5)\\in\\{4,5\\}",
+          "explanation": "f(2), f(4)는 각각 5가지이므로 2×5²=50개입니다."
+        },
+        {
+          "title": "u=4인 경우",
+          "expression": "f(4)=4,\\quad (f(3),f(5))\\in\\{(4,4),(4,5),(5,5)\\}",
+          "explanation": "f(2)는 5가지이므로 3×5=15개입니다."
+        },
+        {
+          "title": "모든 경우 더하기",
+          "expression": "50+50+15=115",
+          "explanation": "서로 겹치지 않는 f(1)의 세 경우를 합합니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 함수의 개수는 115개입니다.",
+      "commonMistake": "f(f(1))=4를 f(1)=4로 바꾸지 마세요. 먼저 f(1)=u로 둔 다음 f(u)=4를 적용해야 합니다.",
+      "verification": {
+        "problemPage": 12,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2023_06_sta_30": {
+      "id": "2023_06_sta_30",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 30,
+      "answer": "9",
+      "answerMark": null,
+      "summary": "b-a≥5인 경우는 56개이고, 그중 c-a≥10까지 만족하는 경우는 16개입니다. 조건부확률은 2/7이므로 p+q=9입니다.",
+      "approach": "정렬된 세 수 (a,b,c)를 직접 세어 조건부확률의 분모와 분자를 구합니다.",
+      "concepts": [
+        "조건부확률",
+        "조합의 경우의 수"
+      ],
+      "steps": [
+        {
+          "title": "조건부확률의 분모 세기",
+          "expression": "|B|=21+15+10+6+3+1=56",
+          "explanation": "b-a≥5일 때 a=1,2,3,4,5,6마다 가능한 (b,c)의 수는 각각 21, 15, 10, 6, 3, 1입니다."
+        },
+        {
+          "title": "두 조건을 모두 만족하는 경우 세기",
+          "expression": "|A\\cap B|=(5+6)+5=16",
+          "explanation": "c-a≥10이면 a=1일 때 c=11,12에서 5개와 6개, a=2일 때 c=12에서 5개만 가능합니다."
+        },
+        {
+          "title": "조건부확률 계산하기",
+          "expression": "P(A\\mid B)=\\frac{16}{56}=\\frac27",
+          "explanation": "이미 b-a≥5라고 주어졌으므로 전체 C(12,3)이 아니라 56을 분모로 사용합니다."
+        },
+        {
+          "title": "p+q 구하기",
+          "expression": "p=7,\\quad q=2\\Rightarrow p+q=9",
+          "explanation": "2와 7은 서로소이므로 기약분수입니다."
+        }
+      ],
+      "correctReason": "조건부확률은 2/7이므로 p+q=9입니다.",
+      "commonMistake": "세 공 전체 조합 220을 분모로 사용하지 마세요. 문제는 b-a≥5라는 조건 아래의 확률을 묻습니다.",
+      "verification": {
+        "problemPage": 12,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

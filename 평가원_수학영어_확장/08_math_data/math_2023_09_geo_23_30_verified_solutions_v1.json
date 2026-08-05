@@ -1,0 +1,286 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2023학년도 9월 모의평가 수학 기하 23~30번 중 원문 일치 7문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 7,
+    "readyCount": 7,
+    "questionFingerprint": "61a0c12798f40b54a6944e52eb80d88b320c5b5734a5eaa8e3f06b745f94d394",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://jwmath.tistory.com/591",
+      "independentSourceUrls": [
+        "https://kimexp.tistory.com/1254",
+        "https://everywhereeverything.tistory.com/entry/2023%EB%85%84-9%EC%9B%94-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5%EA%B5%AD%EC%96%B4-%EC%88%98%ED%95%99-%EC%98%81%EC%96%B4-%ED%95%9C%EA%B5%AD%EC%82%AC-%ED%83%90%EA%B5%AC"
+      ],
+      "problemFilename": "2023_09_math_problem.pdf",
+      "problemSha256": "2053cc454daa5fbcef7f3a5de1bbb07b55f814894f4ea0b78026c27d27f025fe",
+      "problemReplicaFilenames": ["2023_09_math_problem_kimexp.pdf", "2023_09_math_problem_everywhere.pdf"],
+      "answerFilename": "2023_09_math_answer_everywhere.pdf",
+      "answerSha256": "f3c729d6c9165ecc0196d6ede078e03cd8a5457cda5066d7d0fca6645ebafd92",
+      "primaryAnswerImageFilename": "2023_09_math_answer.png",
+      "primaryAnswerImageSha256": "ca8dd66204c4df4af348dbc28183a17abf0ff19b415ab55d46fe92821d666ff9"
+    },
+    "note": "공식 문제지 화면과 두 정답 자료를 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 후보. 원천 조건이 빠진 26번은 source hold로 분리."
+  },
+  "items": {
+    "2023_09_geo_23": {
+      "id": "2023_09_geo_23",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 기하",
+      "questionNumber": 23,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "중점 좌표를 성분별로 비교하면 a=21, b=5이므로 a+b=26입니다.",
+      "approach": "두 점의 각 좌표 평균이 중점 좌표와 같다는 사실을 사용합니다.",
+      "concepts": ["공간좌표", "선분의 중점"],
+      "steps": [
+        {
+          "title": "x좌표 비교하기",
+          "expression": "\\frac{a-5}{2}=8\\Rightarrow a=21",
+          "explanation": "A와 B의 x좌표 평균이 8입니다."
+        },
+        {
+          "title": "y좌표 비교하기",
+          "expression": "\\frac{1+b}{2}=3\\Rightarrow b=5",
+          "explanation": "z좌표 평균은 이미 (-1+3)/2=1로 조건과 같습니다."
+        },
+        {
+          "title": "합 구하기",
+          "expression": "a+b=21+5=26",
+          "explanation": "구한 두 값을 더합니다."
+        }
+      ],
+      "correctReason": "a+b=26이 선지 ④와 일치합니다.",
+      "commonMistake": "중점 공식에서 좌표를 서로 다른 성분끼리 섞지 말고 x, y, z를 각각 비교하세요.",
+      "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_geo_24": {
+      "id": "2023_09_geo_24",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 기하",
+      "questionNumber": 24,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "쌍곡선을 음함수 미분하면 접선 기울기는 2/(a√3)이고, 기울기 -√3인 직선과 수직이므로 a=2입니다.",
+      "approach": "접선 기울기를 구해 두 수직선의 기울기 곱이 -1임을 적용합니다.",
+      "concepts": ["쌍곡선의 접선", "음함수 미분"],
+      "steps": [
+        {
+          "title": "음함수 미분하기",
+          "expression": "\\frac{2x}{a^2}-2yy'=0\\Rightarrow y'=\\frac{x}{a^2y}",
+          "explanation": "a는 상수로 둡니다."
+        },
+        {
+          "title": "주어진 점의 기울기 구하기",
+          "expression": "y'=\\frac{2a}{a^2\\sqrt3}=\\frac{2}{a\\sqrt3}",
+          "explanation": "x=2a, y=√3을 대입합니다."
+        },
+        {
+          "title": "수직 조건 적용하기",
+          "expression": "\\frac{2}{a\\sqrt3}\\cdot(-\\sqrt3)=-1\\Rightarrow a=2",
+          "explanation": "서로 수직인 두 직선의 기울기 곱은 -1입니다."
+        }
+      ],
+      "correctReason": "a=2가 선지 ②와 일치합니다.",
+      "commonMistake": "쌍곡선의 식에서 y²의 계수가 -1이므로 미분할 때 -2yy'의 부호를 유지하세요.",
+      "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_geo_25": {
+      "id": "2023_09_geo_25",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 기하",
+      "questionNumber": 25,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "초점거리를 c라 두면 AF'=5, AF=3에서 c=2이고 a=3입니다. 타원의 거리합 2a=6과 FF'=4를 더한 둘레는 10입니다.",
+      "approach": "A와 두 초점이 만드는 직각삼각형으로 초점거리를 구한 뒤 타원의 정의를 적용합니다.",
+      "concepts": ["타원의 초점", "타원의 거리합"],
+      "steps": [
+        {
+          "title": "초점거리 구하기",
+          "expression": "AF'^2=(2c)^2+3^2=25\\Rightarrow c=2",
+          "explanation": "A는 F를 지나는 수직선 위에 있고 AF=3입니다."
+        },
+        {
+          "title": "장축 반지름 구하기",
+          "expression": "c^2=a^2-5\\Rightarrow a=3",
+          "explanation": "타원 x²/a²+y²/5=1에서 c²=a²-5입니다."
+        },
+        {
+          "title": "삼각형 둘레 계산하기",
+          "expression": "PF+PF'=2a=6,\\quad FF'=2c=4",
+          "explanation": "P는 타원 위의 점이므로 두 초점까지 거리의 합이 2a입니다."
+        },
+        {
+          "title": "최종 둘레 구하기",
+          "expression": "6+4=10",
+          "explanation": "삼각형 PF'F의 세 변을 모두 더합니다."
+        }
+      ],
+      "correctReason": "둘레 10이 선지 ⑤와 일치합니다.",
+      "commonMistake": "AF'는 타원 위 점의 초점거리 합이 아닙니다. P가 타원 위에 놓인 뒤에만 PF+PF'=2a를 사용하세요.",
+      "verification": {"problemPage": 18, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_geo_27": {
+      "id": "2023_09_geo_27",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 기하",
+      "questionNumber": 27,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "삼각형 ABC의 높이가 4이므로 C의 밑면 투영점은 지름 AB에서 √7만큼 떨어져 있습니다. 같은 높이의 평행한 현 CD의 길이는 6입니다.",
+      "approach": "원기둥을 밑면 좌표와 높이 좌표로 분리해 삼각형 넓이와 현의 길이를 연결합니다.",
+      "concepts": ["공간에서 점과 직선의 거리", "원의 현"],
+      "steps": [
+        {
+          "title": "삼각형의 높이 구하기",
+          "expression": "16=\\frac12\\cdot8\\cdot h\\Rightarrow h=4",
+          "explanation": "AB는 반지름 4인 밑면의 지름이므로 길이는 8입니다."
+        },
+        {
+          "title": "밑면에서의 거리 구하기",
+          "expression": "h^2=y^2+3^2\\Rightarrow y^2=7",
+          "explanation": "C는 다른 밑면에 있어 수직 높이 3과 밑면 안 거리 y가 직교합니다."
+        },
+        {
+          "title": "평행한 현 길이 구하기",
+          "expression": "CD=2\\sqrt{4^2-y^2}=2\\sqrt9=6",
+          "explanation": "CD∥AB이므로 C와 D는 중심에서 같은 거리 y인 현의 양 끝점입니다."
+        }
+      ],
+      "correctReason": "CD=6이 선지 ③과 일치합니다.",
+      "commonMistake": "삼각형 ABC의 높이는 원기둥 높이 3만이 아닙니다. C의 밑면 투영점과 AB 사이 거리까지 합성해야 합니다.",
+      "verification": {"problemPage": 19, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_geo_28": {
+      "id": "2023_09_geo_28",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 기하",
+      "questionNumber": 28,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "포물선의 초점-준선 성질로 AF₁=AF₂를 바꾸면 (p+a)²=p-1입니다. p≥1에서 해가 하나이려면 접해야 하므로 a=-3/4입니다.",
+      "approach": "두 초점거리 대신 각 포물선의 준선까지 거리를 비교합니다.",
+      "concepts": ["포물선의 초점과 준선", "이차방정식의 중근"],
+      "steps": [
+        {
+          "title": "두 초점거리 표현하기",
+          "expression": "AF_1=x+1,\\qquad AF_2=x-f(p)+p",
+          "explanation": "각 포물선 위 점에서 초점까지 거리는 해당 준선까지 거리와 같습니다."
+        },
+        {
+          "title": "p의 방정식 만들기",
+          "expression": "AF_1=AF_2\\Rightarrow f(p)=p-1\\Rightarrow(p+a)^2=p-1",
+          "explanation": "공통인 x를 소거합니다."
+        },
+        {
+          "title": "p≥1 조건 치환하기",
+          "expression": "u=\\sqrt{p-1}\\ge0\\Rightarrow u^2-u+1+a=0",
+          "explanation": "보기의 범위에서는 p+a가 음이 아닌 해만 가능하므로 p+a=u입니다."
+        },
+        {
+          "title": "해가 하나인 조건 적용하기",
+          "expression": "1-4(1+a)=0\\Rightarrow a=-\\frac34",
+          "explanation": "중근 u=1/2가 유일한 p를 만듭니다."
+        }
+      ],
+      "correctReason": "a=-3/4가 선지 ①과 일치합니다.",
+      "commonMistake": "p 자체를 바로 근으로 보지 말고 p-1이 음이 아닌 조건을 √(p-1)로 처리하세요.",
+      "verification": {"problemPage": 19, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_geo_29": {
+      "id": "2023_09_geo_29",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 기하",
+      "questionNumber": 29,
+      "answer": "127",
+      "answerMark": null,
+      "summary": "평면 α의 단위법선과 구 S₂ 중심 사이 거리는 3이어서 단면 원의 넓이는 40π입니다. α와 접평면 β의 법선 내적은 3/7이므로 정사영 넓이는 120π/7입니다.",
+      "approach": "접평면의 단위법선, 구의 평면 단면 반지름, 평면 사이 정사영 비율을 순서대로 계산합니다.",
+      "concepts": ["구와 평면", "평면의 단위법선", "정사영 넓이"],
+      "steps": [
+        {
+          "title": "평면 α 구하기",
+          "expression": "\\alpha:4\\sqrt5x+z=20,\\qquad n=\\left(\\frac{4\\sqrt5}{9},0,\\frac19\\right)",
+          "explanation": "A를 지나고 y항이 없으며 S₁에 양의 z좌표에서 접하는 조건으로 정합니다. n은 α의 단위법선입니다."
+        },
+        {
+          "title": "단면 원 C의 반지름 구하기",
+          "expression": "d(O_2,\\alpha)=3,\\qquad r_C=\\sqrt{7^2-3^2}=2\\sqrt{10}",
+          "explanation": "S₂의 중심 O₂=(0,0,-7)에서 α까지 거리를 사용합니다."
+        },
+        {
+          "title": "접평면 β의 법선 방향 찾기",
+          "expression": "u=\\frac{3n+2\\sqrt{10}w}{7},\\qquad w\\perp n",
+          "explanation": "단면 원의 최저점 B로 향하는 S₂의 반지름은 α의 법선 성분 3n과 α 안의 성분 2√10w로 분해됩니다."
+        },
+        {
+          "title": "두 평면의 각도 구하기",
+          "expression": "|n\\cdot u|=\\frac37",
+          "explanation": "n과 w가 수직이므로 내적에는 3n 성분만 남습니다."
+        },
+        {
+          "title": "정사영 넓이 계산하기",
+          "expression": "\\pi(2\\sqrt{10})^2\\cdot\\frac37=\\frac{120}{7}\\pi",
+          "explanation": "평면 도형의 정사영 넓이는 원래 넓이에 단위법선 내적의 절댓값을 곱합니다."
+        },
+        {
+          "title": "p+q 구하기",
+          "expression": "p=7,\\ q=120\\Rightarrow p+q=127",
+          "explanation": "7과 120은 서로소입니다."
+        }
+      ],
+      "correctReason": "정사영 넓이는 120π/7이므로 p+q=127입니다.",
+      "commonMistake": "원 C의 넓이를 바로 답으로 쓰지 말고, α에서 β로 기울어지는 정사영 비율 3/7을 곱하세요.",
+      "verification": {"problemPage": 20, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_geo_30": {
+      "id": "2023_09_geo_30",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 기하",
+      "questionNumber": 30,
+      "answer": "17",
+      "answerMark": null,
+      "summary": "P와 Q는 같은 원의 허용된 270° 호 위에 있고 중심각 차는 π/3입니다. 합벡터 Y는 반지름 2√3, 중심각 범위 7π/6인 두 호를 그려 전체 길이는 14√3π/3입니다.",
+      "approach": "X의 자취를 두 원의 큰 호로 분리하고, 같은 원 위 두 점의 위치벡터 합을 중간각의 원호로 바꿉니다.",
+      "concepts": ["원의 자취", "현과 중심각", "위치벡터의 합"],
+      "steps": [
+        {
+          "title": "X의 허용 호 찾기",
+          "expression": "|AX|=2\\text{ 또는 }|BX|=2,\\quad |OX|\\ge2",
+          "explanation": "각 원에서 원점에 가까운 90° 호가 제외되어 반지름 2인 270° 호가 남습니다."
+        },
+        {
+          "title": "P와 Q가 같은 원임을 확인하기",
+          "expression": "(P_x)(Q_x)\\ge0",
+          "explanation": "A 중심 원은 x≤0, B 중심 원은 x≥0에 있으므로 두 점은 같은 쪽 원의 호에 놓입니다."
+        },
+        {
+          "title": "두 점의 중심각 차 구하기",
+          "expression": "2=2\\cdot2\\sin\\frac{\\Delta}{2}\\Rightarrow\\Delta=\\frac\\pi3",
+          "explanation": "반지름 2인 원에서 길이 2인 현이 만드는 작은 중심각입니다."
+        },
+        {
+          "title": "Y의 자취 반지름 구하기",
+          "expression": "P+Q=2C+4\\cos\\frac\\Delta2\\,e=2C+2\\sqrt3\\,e",
+          "explanation": "같은 원 중심 C를 기준으로 두 반지름벡터를 더하면 중간 방향 e의 원호가 됩니다."
+        },
+        {
+          "title": "한쪽 호의 각도 범위 구하기",
+          "expression": "\\frac{3\\pi}{2}-\\frac\\pi3=\\frac{7\\pi}{6}",
+          "explanation": "P와 Q가 모두 허용된 270° 호 안에 있으려면 중간각은 양 끝에서 π/6씩 줄어듭니다."
+        },
+        {
+          "title": "전체 길이와 p+q 구하기",
+          "expression": "2\\cdot2\\sqrt3\\cdot\\frac{7\\pi}{6}=\\frac{14}{3}\\sqrt3\\pi\\Rightarrow p+q=3+14=17",
+          "explanation": "왼쪽과 오른쪽 원에서 같은 길이의 두 호가 생깁니다."
+        }
+      ],
+      "correctReason": "Y의 자취 길이는 14√3π/3이므로 p+q=17입니다.",
+      "commonMistake": "두 점이 움직이는 원호의 270°를 그대로 Y의 중심각으로 쓰지 마세요. 두 점 사이 중심각 π/3만큼 가능한 중간각 범위가 줄어듭니다.",
+      "verification": {"problemPage": 20, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

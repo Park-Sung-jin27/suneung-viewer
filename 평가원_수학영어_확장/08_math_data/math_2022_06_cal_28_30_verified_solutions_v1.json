@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 6월 모의평가 미적분 28·30번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 2,
+    "readyCount": 2,
+    "questionFingerprint": "0ad9c015f619bee310a9e44351027fefb5a8f5960e339fd29f8ba64d2c3d8323",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040408/ect_ad8a990b-608d-4c78-bad6-622bea9d84bf1649a9910b52371.zip",
+      "archiveSha256": "f8cd746470d14dfa8a75a1bac3da85cd57f630f57a6f1427e87c366113b610ce",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "d6489fd49be06b0fd212ad5b4f855ea8b02952f12839211f6b64b93ae8844b75"
+    },
+    "note": "원본 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 공개 후보. 29번은 원천 문제 텍스트 결함으로 별도 차단"
+  },
+  "items": {
+    "2022_06_cal_28": {
+      "id": "2022_06_cal_28",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 28,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "좌표로 P·Q·R을 나타내면 넓이비의 주된 항이 2θ⁴이므로 극한은 2입니다.",
+      "approach": "반원의 중심을 원점으로 두고 각 점을 θ로 나타낸 뒤, 각의 이등분선 위 점의 두 직선까지 거리가 같다는 성질을 사용합니다.",
+      "concepts": [
+        "삼각함수와 좌표",
+        "각의 이등분선",
+        "삼각함수의 극한"
+      ],
+      "steps": [
+        {
+          "title": "P와 Q의 좌표 구하기",
+          "expression": "A=(-1,0),\\ P=(\\cos2\\theta,\\sin2\\theta),\\ Q=(1,\\tan2\\theta)",
+          "explanation": "AP가 x축과 이루는 각이 θ이고 P가 단위원 위에 있으므로 P의 중심각은 2θ입니다."
+        },
+        {
+          "title": "R의 위치와 높이 구하기",
+          "expression": "R=A+\\lambda(\\cos\\theta,\\sin\\theta),\\quad\\lambda=\\frac{2+\\sin2\\theta}{\\sin\\theta+\\cos\\theta}",
+          "explanation": "R에서 직선 QO와 QB까지의 거리가 같다는 이등분선 성질을 적용합니다. 이때 R에서 QO까지의 거리는 2sin³θ/(sinθ+cosθ)입니다."
+        },
+        {
+          "title": "두 넓이 나타내기",
+          "expression": "f(\\theta)=\\sin\\theta\\cos\\theta,\\quad g(\\theta)=(\\sec2\\theta-1)\\frac{\\sin^3\\theta}{\\sin\\theta+\\cos\\theta}",
+          "explanation": "PQ=sec(2θ)-1이고, R에서 PQ가 놓인 직선까지의 거리를 곱해 삼각형 PQR의 넓이를 구합니다."
+        },
+        {
+          "title": "극한 계산하기",
+          "expression": "\\lim_{\\theta\\to0+}\\frac{(\\sec2\\theta-1)\\sin^2\\theta}{\\theta^4\\cos\\theta(\\sin\\theta+\\cos\\theta)}=2",
+          "explanation": "sec(2θ)-1은 2θ²과 같아지고 sinθ/θ는 1로 갑니다."
+        }
+      ],
+      "correctReason": "극한값이 2이므로 선택지 ①이 정답입니다.",
+      "commonMistake": "PQ를 Q의 y좌표로 계산하면 안 됩니다. P와 Q는 같은 반직선 위에 있으므로 PQ=OQ-OP=sec(2θ)-1입니다.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_06_cal_30": {
+      "id": "2022_06_cal_30",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 6월 모의평가 수학 미적분",
+      "questionNumber": 30,
+      "answer": 11,
+      "answerMark": null,
+      "summary": "교점의 x좌표를 지수값으로 바꾸면 두 근의 비가 e^(2t)-1이고, 거리를 미분하면 p+q=11입니다.",
+      "approach": "교점 방정식에 u=eˣ을 대입해 이차방정식으로 바꾸고, 두 교점이 기울기 1인 직선 위에 있다는 점으로 거리를 구합니다.",
+      "concepts": [
+        "지수 치환",
+        "이차방정식의 근",
+        "두 점 사이의 거리"
+      ],
+      "steps": [
+        {
+          "title": "교점 방정식 바꾸기",
+          "expression": "u=e^x,\\ T=e^t\\quad\u2192\\quad u^2-Tu+(1-T^{-2})=0",
+          "explanation": "로그 식의 양변에 지수를 취하고 u와 T로 정리합니다."
+        },
+        {
+          "title": "두 양의 근 구하기",
+          "expression": "u_1=T^{-1},\\quad u_2=T-T^{-1}",
+          "explanation": "T>√2이므로 판별식의 제곱근은 T-2/T이고 두 근은 모두 양수입니다."
+        },
+        {
+          "title": "교점 사이 거리 나타내기",
+          "expression": "f(t)=\\sqrt2\\ln\\frac{u_2}{u_1}=\\sqrt2\\ln(e^{2t}-1)",
+          "explanation": "두 교점은 y=x+t 위에 있어 y좌표 차와 x좌표 차가 같으므로 거리는 √2배입니다."
+        },
+        {
+          "title": "미분값과 p+q 구하기",
+          "expression": "f'(\\ln2)=\\sqrt2\\frac{2\\cdot4}{4-1}=\\frac83\\sqrt2\\quad\u2192\\quad p+q=3+8=11",
+          "explanation": "e^(2ln2)=4를 대입하고 기약분수의 분모와 분자를 더합니다."
+        }
+      ],
+      "correctReason": "f'(ln2)=8√2/3이므로 p=3, q=8이고 p+q=11입니다.",
+      "commonMistake": "교점의 x좌표 차만 거리로 쓰면 안 됩니다. 직선의 기울기가 1이므로 실제 거리는 x좌표 차의 √2배입니다.",
+      "verification": {
+        "problemPage": 16,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

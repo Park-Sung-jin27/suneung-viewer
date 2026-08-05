@@ -1,0 +1,2926 @@
+{
+  "schemaVersion": "english-product-candidate-v2",
+  "candidateId": "english_2027_06_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "generatedFrom": {
+    "overlayPath": "english/data/candidates/english_2027_06_candidate.json",
+    "baseDataPath": "english/data/english_exam_db_v2_1.json",
+    "baseDataSha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "reviewDataPath": "english/data/candidates/english_2027_06_reviews.json",
+    "reviewDataSha256": "1d2bfc77f8635806a92c16ffabb065d23cab0bf358bfa81b0a4b1352200e7379"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2027학년도_6월_영어_문제.pdf",
+      "sha256": "4fbaac352897a3af13cb71305c9909038490b4eb85c578f0e349cd7e4ee42a41"
+    },
+    "answer": {
+      "filename": "2027학년도_6월_영어_정답.png",
+      "sha256": "6039db41859ae528c0af40fa0e0b36c535c9a4465ad369203757dfa099af9de0"
+    },
+    "explanation": {
+      "filename": "2027학년도_6월_영어_해설.pdf",
+      "sha256": "5412a7741405fdfef66ee30b9e4a79415b5e17010a9897bcedd516fffcc1478c"
+    }
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 60,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "blockedCount": 0
+  },
+  "integrity": {
+    "questionIds": [
+      "2027_06_18",
+      "2027_06_19",
+      "2027_06_20",
+      "2027_06_21",
+      "2027_06_22",
+      "2027_06_23",
+      "2027_06_24",
+      "2027_06_25",
+      "2027_06_26",
+      "2027_06_27",
+      "2027_06_28",
+      "2027_06_29",
+      "2027_06_30",
+      "2027_06_31",
+      "2027_06_32",
+      "2027_06_33",
+      "2027_06_34",
+      "2027_06_35",
+      "2027_06_36",
+      "2027_06_37",
+      "2027_06_38",
+      "2027_06_39",
+      "2027_06_40",
+      "2027_06_41",
+      "2027_06_42",
+      "2027_06_43",
+      "2027_06_44",
+      "2027_06_45"
+    ],
+    "choiceOverrideIds": [
+      "2027_06_20",
+      "2027_06_24",
+      "2027_06_28",
+      "2027_06_29",
+      "2027_06_30",
+      "2027_06_32",
+      "2027_06_35",
+      "2027_06_36",
+      "2027_06_37",
+      "2027_06_38",
+      "2027_06_39",
+      "2027_06_40",
+      "2027_06_43",
+      "2027_06_45"
+    ],
+    "figureIds": [
+      "2027_06_25",
+      "2027_06_27",
+      "2027_06_28"
+    ],
+    "choiceFingerprint": "34db6c7e73077517a9b9048bae75069364b44a045bae51754a1e6fd8b4f6653f",
+    "figureFingerprint": "4c1c97c15b0e95272367ab284df1db1aa9fa5a9e73fb69ec90c45e9c5b604c81",
+    "reviewFingerprint": "34c37d60763bb56d2d8d88d45a5e658a470c57b44043e9a0911dd7d41c119021"
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2027_06_25",
+      "2027_06_27",
+      "2027_06_28"
+    ]
+  },
+  "questions": [
+    {
+      "id": "2027_06_18",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 18,
+      "type": "목적",
+      "group": "practical",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "18. 다음 글의 목적으로 가장 적절한 것은?",
+      "rawText": "18. \t다음 글의 목적으로 가장 적절한 것은?\nDear Ben Harper,\nMy name is Reese Johnson, and I work for the Tuscanyville\nHomerun Derby. We recently saw a video of your baseball\nteam and were especially impressed by your power hitting.\nEvery year, we gather together all of the best baseball hitters\nfrom Tuscanyville for a homerun competition. It is a very\npopular event in our community, and we would like to ask\nyou to join the competition this year. You would be an\nexcellent participant, and we know you would enjoy the\nexperience. Based on the popularity you gained from the\nvideo, we have no doubt the crowds here will love you. We\nare looking forward to your positive response.\nSincerely,\nReese Johnson\n① 홈런 대회 참가 선수를 발표하려고\n② 야구 경기 일정 변경을 공지하려고\n③ 홈런 대회 참가를 요청하려고\n④ 경기 녹화에 대한 허가를 구하려고\n⑤ 야구 경기 관람권 환불 절차를 안내하려고",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "홈런 대회 참가 선수를 발표하려고"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "야구 경기 일정 변경을 공지하려고"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "홈런 대회 참가를 요청하려고"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "경기 녹화에 대한 허가를 구하려고"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "야구 경기 관람권 환불 절차를 안내하려고"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 796,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11,
+          12
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_18",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 18,
+        "group": "practical",
+        "type": "목적",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 홈런 영상에서 인상적인 타격을 본 뒤 올해 홈런 대회에 참가해 달라고 요청하는 편지입니다.",
+        "typeApproach": "목적 문제는 글쓴이가 수신자에게 직접 요구하는 행동과 마지막 기대 문장을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "you to join the competition this year.",
+            "charStart": 395,
+            "role": "직접 요청",
+            "translation": "올해 대회에 참가해 달라고 요청합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "We\nare looking forward to your positive response.",
+            "charStart": 616,
+            "role": "응답 기대",
+            "translation": "긍정적인 답변을 기다린다고 마무리합니다."
+          }
+        ],
+        "correctReason": "선수를 발표하거나 일정을 바꾸는 글이 아니라 Ben에게 홈런 대회 참가를 요청하므로 ③입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "홈런 대회 참가 선수를 발표하려고",
+          "reason": "Ben을 이미 참가 선수로 발표한 것이 아니라 참가 의사를 묻고 있습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_19",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 19,
+      "type": "심경 변화",
+      "group": "practical",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "19. 다음 글에 드러난 Mark의 심경 변화로 가장 적절한 것은?",
+      "rawText": "19. \t다음 글에 드러난 Mark의 심경 변화로 가장 적절한 것은?\nMark’s friends had invited him to Sky National Park to ride\nthe Cloud Monorail, which went to the top of the mountain.\nMark didn’t feel like going, but he went because he had nothing\nbetter to do. He checked his watch as the monorail departed\nand then blankly looked out the window. Clouds surrounded\nthe monorail, so all he saw was grey for what felt like forever.\nJust as he started feeling sleepy, the monorail rose above the\nclouds. He opened his mouth as he saw the most beautiful\nmountains spreading out before him all the way to the ocean.\nHe couldn’t believe how marvelous nature could be and\nwondered what he would have missed if he hadn’t come.\n① bored \t→ amazed \t② angry \t→ discouraged\n③ jealous → anxious \t④ delighted → scared\n⑤ nervous → pleased",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "bored → amazed"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "angry → discouraged"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "jealous → anxious"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "delighted → scared"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "nervous → pleased"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 797,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          12
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_19",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 19,
+        "group": "practical",
+        "type": "심경 변화",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 별 기대 없이 지루해하던 Mark가 구름 위 장관을 보고 크게 놀랍니다.",
+        "typeApproach": "심경 변화는 사건 전후의 행동과 감정 표현을 각각 묶어 두 단어의 방향을 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "then blankly looked out the window.",
+            "charStart": 286,
+            "role": "초기 심경",
+            "translation": "Mark는 멍하니 창밖을 바라봅니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "He opened his mouth as he saw the most beautiful",
+            "charStart": 476,
+            "role": "후기 반응",
+            "translation": "아름다운 경치를 보고 입을 벌릴 만큼 놀랍니다."
+          }
+        ],
+        "correctReason": "무심하고 졸린 상태에서 자연의 장관에 감탄하는 상태로 바뀌므로 bored → amazed가 맞습니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "nervous → pleased",
+          "reason": "처음에는 긴장한 것이 아니라 지루해했고, 마지막은 단순한 만족보다 강한 놀라움입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_20",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 20,
+      "type": "주장",
+      "group": "topic",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "rawText": "20. \t다음 글에서 필자가 주장하는 바로 가장 적절한 것은?\nInstructors of physical activities often focus more on the\nactivities themselves than on the participants who perform\nthem. People may believe that training our bodies is unrelated\nto training our minds. However, participants’ minds determine\ntheir attitudes and level of effort toward physical development.\nIn usual practice, instructors may just tell their participants to\nexercise regularly, warm up before exercising, or use a particular\nstrategy. However, it is not sufficient for instructors to expect\nparticipants to blindly follow their directions in physical activities.\nInstructors must raise participants’ awareness of how these\nactivities enhance their physical performance. For example, an\ninstructor could explicitly explain how warming up before\nexercising improves their performances. If participants understand\nthe principles of these activities, it enables them to gradually\ntake fuller ownership of their own development.\n① 체육 교육은 학습자의 역량 향상을 위해 이론보다 실습을 강조해야 한다.\n② 체육 활동은 참여자의 적성을 발굴하고 개발하는 데 집중해야 한다.\n③ 체육 지도자는 참여자가 체육 활동의 원리를 알고 훈련하도록 도와야 한다.\n④ 체육 프로그램은 참여자의 편의를 위해 단계적으로 계획되어야 한다.\n⑤ 체육 수업은 각 개인의 신체 능력에 맞는 다양한 활동을 제공해야 한다.\n이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에\n따라 답을 하시기 바랍니다.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 2 of 8 --\n\n3\n3 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "체육 교육은 학습자의 역량 향상을 위해 이론보다 실습을 강조해야 한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "체육 활동은 참여자의 적성을 발굴하고 개발하는 데 집중해야 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "체육 지도자는 참여자가 체육 활동의 원리를 알고 훈련하도록 도와야 한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "체육 프로그램은 참여자의 편의를 위해 단계적으로 계획되어야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "체육 수업은 각 개인의 신체 능력에 맞는 다양한 활동을 제공해야 한다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1282,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          12,
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_20",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 20,
+        "group": "topic",
+        "type": "주장",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 체육 지도자는 지시만 하지 말고 활동의 원리가 수행 향상에 어떻게 연결되는지 이해시켜야 합니다.",
+        "typeApproach": "주장 문제는 단순 지시의 한계를 제시한 뒤 필자가 요구하는 지도 방식에 주목합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "it is not sufficient for instructors to expect",
+            "charStart": 496,
+            "role": "기존 방식의 한계",
+            "translation": "지도자가 단순히 따르기만 기대하는 것은 충분하지 않습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Instructors must raise participants’ awareness of how these",
+            "charStart": 615,
+            "role": "핵심 주장",
+            "translation": "지도자는 활동의 효과에 대한 참여자의 이해를 높여야 합니다."
+          }
+        ],
+        "correctReason": "활동 원리를 명시적으로 설명해 참여자가 자기 발전을 주도하게 해야 한다는 내용이므로 ③입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "체육 교육은 학습자의 역량 향상을 위해 이론보다 실습을 강조해야 한다.",
+          "reason": "글은 실습 우위를 주장하지 않고 실습의 원리를 이해시키는 지도를 강조합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_21",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 21,
+      "type": "밑줄 의미",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "21. 밑줄 친 the ghost가 다음 글에서 의미하는 바로 가장 적절한",
+      "rawText": "21. \t밑줄 친 the ghost가 다음 글에서 의미하는 바로 가장 적절한\n것은? [3점]\nIn fact, scientists attributing consciousness to any animal is\nso recent that the internet is older. In 1976 a zoologist named\nDonald Griffin published The Question of Animal Awareness,\na book arguing that animal cognition ought to be taken\nseriously. He and a colleague had been responsible in 1944 for\ndiscovering that bats navigate by echolocation. Now, after a\nlifetime spent watching those creatures, he became convinced\nthey had inner worlds. They had flexible behavior, he said, or\nthe ability to change their behavior as external circumstances\nchanged, a hallmark of true intelligence. He’d watched bats\ndevelop clever techniques for finding food; they could clearly\nmake decisions on the fly, and exhibited many of the same\nproblem-solving abilities as humans did. Animal thought and\nreason ought to be seriously studied, he argued. After all, despite\nthe flourishing of neuroscience, no one had yet found any part\nof the brain unique to humans that might be responsible for this\nhallowed “consciousness.” Wasn’t it time to give up the ghost?\n* hallow: 신성하게 하다\n① the claim that animal consciousness should be studied\n② the belief that consciousness is a quality exclusive to humans\n③ the illusion that animals possess truly conscious inner worlds\n④ the idea that human cognition is superior to that of animals\n⑤ the concept that humans and animals are essentially alike",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "the claim that animal consciousness should be studied"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "the belief that consciousness is a quality exclusive to humans"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "the illusion that animals possess truly conscious inner worlds"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "the idea that human cognition is superior to that of animals"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "the concept that humans and animals are essentially alike"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1430,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13,
+          14
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_21",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 21,
+        "group": "blank",
+        "type": "밑줄 의미",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 동물의 지능과 의식을 보여 주는 증거 앞에서 의식은 인간에게만 있다는 오래된 믿음을 버리자는 뜻입니다.",
+        "typeApproach": "밑줄 의미는 글 전체가 반박하는 기존 믿음과 마지막 질문의 ‘버리다’가 가리키는 대상을 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Animal thought and\nreason ought to be seriously studied",
+            "charStart": 826,
+            "role": "새로운 관점",
+            "translation": "동물의 사고와 추론도 진지하게 연구해야 한다고 주장합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "of the brain unique to humans that might be responsible for this",
+            "charStart": 976,
+            "role": "기존 믿음의 반박",
+            "translation": "의식을 담당하는 인간만의 뇌 부위는 발견되지 않았습니다."
+          }
+        ],
+        "correctReason": "동물도 유연한 행동과 문제 해결 능력을 보이므로 의식은 인간만의 특성이라는 믿음을 포기하자는 ②입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "the claim that animal consciousness should be studied",
+          "reason": "동물 의식을 연구하자는 주장은 버릴 대상이 아니라 글쓴이가 지지하는 결론입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_22",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 22,
+      "type": "요지",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "rawText": "22. \t다음 글의 요지로 가장 적절한 것은?\nCar manufacturers know people form emotional attachments\nto automobile ‘faces’ and use the fact to guide their design and\nmarketing efforts. “In today’s hyper-competitive car market,\ndesigners are focusing on faces as part of a broader effort to\ndesign cars that appeal to buyers ― tapping psychologists,\nanthropologists and other experts in human behavior, and even\nmonitoring the brain waves of focus-group participants,” the\nWall Street Journal reported in a 2006 article entitled ‘Why\nCars Got Angry.’ Automotive research shows “70% of drivers\nidentify and judge vehicles by the headlights and grille,” the\narticle reported. In the first years of the twenty-first century,\nthe trend was toward angrier, scarier vehicles’ faces. The\narticle hypothesized that these faces help drivers feel safer in\nheavier traffic amidst more oversize SUVs. Reflecting our\ntumultuous times, the ‘scary look’ shows no sign of slowing in\nthe new millennium. “Buoyant sales of cars with styling which\nsuggests power or bad temper seem to confirm that customers\nare happy with this look,” an international automotive site\nreported in 2017.\n* tumultuous: 떠들썩한 \t** buoyant: 부력이 있는\n① 소비자 심리를 반영한 성난 외관의 자동차가 인기를 끌고 있다.\n② 자동차 판매 증가를 위해 다양한 학문적 접근이 시도되고 있다.\n③ 구매자들은 이성보다는 감정적 판단에 근거하여 차를 선택한다.\n④ 자동차의 전면 디자인을 개조하기 위한 다양한 서비스가 있다.\n⑤ 안전감을 원하는 운전자들은 거친 모습의 SUV 차량을 선호하지 않는다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "소비자 심리를 반영한 성난 외관의 자동차가 인기를 끌고 있다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "자동차 판매 증가를 위해 다양한 학문적 접근이 시도되고 있다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "구매자들은 이성보다는 감정적 판단에 근거하여 차를 선택한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "자동차의 전면 디자인을 개조하기 위한 다양한 서비스가 있다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "안전감을 원하는 운전자들은 거친 모습의 SUV 차량을 선호하지 않는다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1374,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          14
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_22",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 22,
+        "group": "topic",
+        "type": "요지",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 소비자의 감정과 안전 욕구를 반영한 화난 표정의 자동차 디자인이 인기를 얻고 있습니다.",
+        "typeApproach": "요지 문제는 반복되는 디자인 특징과 그 특징이 소비자에게 주는 감정적 효과를 함께 묶습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "angrier, scarier vehicles’ faces.",
+            "charStart": 724,
+            "role": "디자인 추세",
+            "translation": "자동차의 얼굴이 더 화나고 위협적인 모습으로 바뀌었습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "the ‘scary look’ shows no sign of slowing in",
+            "charStart": 903,
+            "role": "인기 지속",
+            "translation": "무서운 외관의 유행은 계속되고 있습니다."
+          }
+        ],
+        "correctReason": "거친 전면 디자인이 안전감과 힘을 전달하고 판매로 이어진다는 내용이므로 ①입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "자동차 판매 증가를 위해 다양한 학문적 접근이 시도되고 있다.",
+          "reason": "심리학자 활용은 디자인 연구의 한 방법이며, 글의 중심은 성난 외관의 인기입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_23",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 23,
+      "type": "주제",
+      "group": "topic",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "rawText": "23. \t다음 글의 주제로 가장 적절한 것은?\nA telescoping of time correlates with size. Small animals’\nreflexes must be quicker in order to control much smaller limbs\nand respond to rapid locomotor feedback. Further, decision\nmaking must be streamlined in small species because their high\nmetabolic rates and minimal energy reserves offer few choices\nin food-searching activities, defending against predators, or\nmating behaviors. And, perhaps most important, a short lifetime\noffers little time for learning from experience. As a result, being\nshort-lived puts a premium on the effectiveness of preprogrammed\nbehavior patterns that require little in the way of environmental\nfine-tuning. Large animals, in comparison, can get by with rather\nslower reflexes, can afford to vary their mating and food-searching\nbehaviors in an effort to better optimize their behaviors, and\nmay have a considerable opportunity to learn by observation\nand trial and error. Being longer-lived puts a greater premium\non learning and memory, and less on automatic preprogrammed\nbehaviors. In addition, living a long time or having the capacity\nto travel for long distances is more likely to expose an animal to\nsignificant changes in the environment.\n* limb: (사람･동물의) 수족 \t** locomotor: 운동 기관의\n*** metabolic: 신진대사의\n① chances of survival for animals with different time perceptions\n② significance of animal size in life spans and survival skills\n③ benefits of energy reserves in animals’ environmental adaptation\n④ limits of animals’ decision making according to body size\n⑤ influences of predetermined behavior patterns on animal survival",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "chances of survival for animals with different time perceptions"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "significance of animal size in life spans and survival skills"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "benefits of energy reserves in animals’ environmental adaptation"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "limits of animals’ decision making according to body size"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "influences of predetermined behavior patterns on animal survival"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1597,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          15
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_23",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 23,
+        "group": "topic",
+        "type": "주제",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 몸집이 작은 동물과 큰 동물은 수명·반사 속도·학습 방식이 달라 생존 전략도 달라집니다.",
+        "typeApproach": "주제 문제는 작은 동물과 큰 동물의 대조 항목을 모두 포괄하는 상위 개념을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "being\nshort-lived puts a premium on the effectiveness of preprogrammed",
+            "charStart": 521,
+            "role": "작은 동물의 전략",
+            "translation": "수명이 짧으면 미리 프로그램된 행동의 효율성이 중요합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Being longer-lived puts a greater premium\non learning and memory",
+            "charStart": 936,
+            "role": "큰 동물의 전략",
+            "translation": "수명이 길면 학습과 기억이 더 중요합니다."
+          }
+        ],
+        "correctReason": "몸집과 수명이 반사·행동·학습 중심의 생존 기술을 바꾸는 내용을 모두 담은 ②가 맞습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "limits of animals’ decision making according to body size",
+          "reason": "의사결정의 한계만 다루지 않고 수명, 반사, 학습, 기억과 환경 적응을 폭넓게 비교합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_24",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 24,
+      "type": "제목",
+      "group": "topic",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "24. 다음 글의 제목으로 가장 적절한 것은?",
+      "rawText": "24. \t다음 글의 제목으로 가장 적절한 것은?\nBefore the 1950s, tourism was very much an industry which\nwas fragmented; hotels, transport operators, travel agents, and\ntour operators all tended to work independently of each other.\nHotels were largely in the business of selling bed nights. Airlines\nand railways were in the business of selling seats. Travel agents,\nof course, were selling travel and holidays, but in each case they\ntended to operate very much as individual businesses. From the\nmid-1950s onwards, particularly in the UK, the growth of tour\noperators began to change the nature of the industry from\nessentially individual business activities to more integrated\nactivities. Hotels, for example, were beginning to see customers\nas wanting a range of services rather than simply buying\naccommodation. So hotels began to develop shopping arcades\nand later to offer secretarial centres to try to increase the spend\nof \tguests \twithin \tthe \thotel \tcomplex. \tTransport \toperators,\nparticularly in the airline business, saw the sale of transport\nservices as being integral to a much wider need. Airlines offered\ninsurance and accommodation booking for travellers.\n* fragment: 파편이 되게 하다\n① The Bright and Dark Sides of Collapsing Tour Resources\n② Separate to Combined: Changes in the Tourism Business\n③ Reduced Roles of Tour Operators in the Tourism Industry\n④ Integration’s Failure: Not Meeting Customers’ Various Needs\n⑤ New Challenges Facing Service Providers in Modern Tourism\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 3 of 8 --\n\n4\n4 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "The Bright and Dark Sides of Collapsing Tour Resources"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Separate to Combined: Changes in the Tourism Business"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Reduced Roles of Tour Operators in the Tourism Industry"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Integration’s Failure: Not Meeting Customers’ Various Needs"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "New Challenges Facing Service Providers in Modern Tourism"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1521,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          15,
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_24",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 24,
+        "group": "topic",
+        "type": "제목",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 따로 운영되던 관광 업체들이 고객의 복합 수요에 맞춰 통합 서비스를 제공하게 된 변화를 설명합니다.",
+        "typeApproach": "제목 문제는 과거와 현재의 대비 방향을 모두 담고 세부 사례보다 넓은 표현을 고릅니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "was fragmented; hotels, transport operators, travel agents, and",
+            "charStart": 85,
+            "role": "과거 구조",
+            "translation": "과거 관광 산업은 여러 업체가 분절되어 있었습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "from\nessentially individual business activities to more integrated\nactivities.",
+            "charStart": 592,
+            "role": "변화 방향",
+            "translation": "개별 사업 활동에서 더 통합된 활동으로 바뀌었습니다."
+          }
+        ],
+        "correctReason": "분리된 관광 서비스가 결합된 서비스로 전환된 흐름을 정확히 담은 ②입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "Reduced Roles of Tour Operators in the Tourism Industry",
+          "reason": "여행 상품 운영업체의 역할이 줄었다는 내용이 아니라 이들의 성장으로 산업 통합이 촉진됐습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_25",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 25,
+      "type": "도표",
+      "group": "info",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "25. 다음 도표의 내용과 일치하지 않는 것은?",
+      "rawText": "25. \t다음 도표의 내용과 일치하지 않는 것은?\nThe graph above shows the percentages of weekday trips\nmade by three different types of transportation (walking or\ncycling, public transport, or cars) in five regions, as reported in\na 2024 research article. ① Over 70% of weekday trips were\nmade by cars in North and South America. ② In Europe, walking\nor cycling was less commonly used for weekday trips than cars.\n③ In Asia, the percentage of weekday trips made by public\ntransport was the lowest among the three types of transportation.\n④ Of the three types of transportation for weekday trips,\nwalking or cycling was the most common in Africa, while it was\nthe least common in Australia and New Zealand. ⑤ In each of\nthe above regions, the percentage of weekday trips made by\npublic transport was less than 50%.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Over 70% of weekday trips were made by cars in North and South America."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "In Europe, walking or cycling was less commonly used for weekday trips than cars."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "In Asia, the percentage of weekday trips made by public transport was the lowest among the three types of transportation."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Of the three types of transportation for weekday trips, walking or cycling was the most common in Africa, while it was the least common in Australia and New Zealand."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "In each of the above regions, the percentage of weekday trips made by public transport was less than 50%."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 793,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16,
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "stacked_bar_chart",
+        "assetPath": "english/assets/2027-06/q25-figure.png",
+        "sha256": "37bc5632f9f7870edae6e0313520dc099d8eda70b6c4e792443b82e80711b267",
+        "sourcePage": 4,
+        "alt": "평일 이동 교통수단 비율 원본 도표. North and South America: walking or cycling 12%, public transport 15%, cars 74%; Europe: 29%, 27%, 45%; Asia: walking or cycling 34%, public transport 43%, cars 23%; Africa: 41%, 37%, 22%; Australia and New Zealand: 6%, 18%, 76%. All regions: public transport below 50%."
+      },
+      "review": {
+        "id": "2027_06_25",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 25,
+        "group": "info",
+        "type": "도표",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 아시아의 대중교통 비율은 43%로 세 교통수단 중 가장 높고, 가장 낮은 값은 자동차 23%입니다.",
+        "typeApproach": "도표 문제는 지역별 세 수치를 직접 비교하고 ‘최고·최저’ 표현의 방향을 확인합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Asia: walking or cycling 34%, public transport 43%, cars 23%",
+            "role": "정답 수치",
+            "translation": "아시아에서는 대중교통 43%가 가장 높고 자동차 23%가 가장 낮습니다."
+          },
+          {
+            "in": "figure",
+            "quote": "All regions: public transport below 50%",
+            "role": "전체 대조",
+            "translation": "다섯 지역의 대중교통 비율은 모두 50%보다 낮습니다."
+          }
+        ],
+        "correctReason": "③은 아시아의 대중교통 비율이 가장 낮다고 했지만 실제로는 43%로 가장 높으므로 일치하지 않습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "Of the three types of transportation for weekday trips, walking or cycling was the most common in Africa, while it was the least common in Australia and New Zealand.",
+          "reason": "아프리카의 걷기·자전거는 41%로 가장 높고, 호주·뉴질랜드에서는 6%로 가장 낮아 도표와 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_26",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 26,
+      "type": "내용 일치",
+      "group": "info",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "26. Paul Grice에 관한 다음 글의 내용과 일치하지 않는 것은?",
+      "rawText": "26. \tPaul Grice에 관한 다음 글의 내용과 일치하지 않는 것은?\nPaul Grice was a famous philosopher of language whose\nwork was very influential in many areas of linguistics. Born in\n1913 in Birmingham, England, he was the son of Herbert Grice,\na businessman and musician. As an undergraduate, he earned\nhigh honors from Corpus Christi College. After finishing graduate\nschool, he was appointed as a lecturer at Oxford in the field of\nphilosophy. During World War II, however, he served in the\nBritish military for about five years. One of his greatest\ncontributions was to the study of language and communication.\nHis article “Meaning” was written in 1948, but he did not have\nit published until 1957. This article was foundational in the\nstudy of language and communication. In 1967, he left Oxford\nto take a job at UC Berkeley and retired from there in 1979.\nIn addition to being a great scholar, he was excellent at cricket\nand chess.\n① 사업가이자 음악가인 Herbert Grice의 아들로 태어났다.\n② 제2차 세계 대전 동안 영국 군대에서 약 5년간 복무하였다.\n③ 1948년에 “Meaning”이라는 논문을 출판했다.\n④ UC Berkeley에서 1979년에 퇴직했다.\n⑤ 크리켓과 체스에 뛰어난 능력을 보였다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "사업가이자 음악가인 Herbert Grice의 아들로 태어났다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "제2차 세계 대전 동안 영국 군대에서 약 5년간 복무하였다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "1948년에 “Meaning”이라는 논문을 출판했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "UC Berkeley에서 1979년에 퇴직했다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "크리켓과 체스에 뛰어난 능력을 보였다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1074,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_26",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 26,
+        "group": "info",
+        "type": "내용 일치",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. ‘Meaning’은 1948년에 집필됐지만 실제 출판은 1957년입니다.",
+        "typeApproach": "인물 일치 문제는 연도와 행동을 한 쌍으로 묶어 선지의 동사를 원문과 대조합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "His article “Meaning” was written in 1948, but he did not have\nit published until 1957.",
+            "charStart": 592,
+            "role": "집필·출판 구분",
+            "translation": "1948년에 썼지만 1957년에야 출판했습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "retired from there in 1979.",
+            "charStart": 811,
+            "role": "다른 연도 확인",
+            "translation": "UC Berkeley에서 1979년에 은퇴했습니다."
+          }
+        ],
+        "correctReason": "③은 1948년에 출판했다고 했으나 원문은 그해 집필하고 1957년에 출판했다고 하므로 틀립니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "UC Berkeley에서 1979년에 퇴직했다.",
+          "reason": "1967년에 UC Berkeley로 옮겨 1979년에 그곳에서 은퇴했다는 원문과 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_27",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 27,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "27. Green Dewywood Drawing Competition에 관한 다음 안내문의",
+      "rawText": "27. \tGreen Dewywood Drawing Competition에 관한 다음 안내문의\n내용과 일치하지 않는 것은?\nGreen Dewywood Drawing Competition\nWe are holding a drawing competition to encourage\nenvironmental preservation. Use your creativity and artistic\nskills to show Dewywood’s green side on paper!\nTheme: Green Dewywood Through Our Eyes\nWhen & Where\n∙Sunday, June 21, 1:00 p.m.—4:30 p.m.\n∙Dewywood Park\nRegistration\n∙Online registration is required from June 10 to June 15\n(www.greendewy*#wood△△.org).\n∙There is no registration fee.\nCompetition Categories\nAges \tPaper Size \tDrawing Material\n6—9 \tA3 \tCrayons\n10—13 \tA2 \tColored pencils\n14—17 \tA2 \tColored markers\nPrize\n∙One winner in each age group will be selected.\n∙Winners will each receive a canvas bag.\n① 환경 보존을 장려하기 위한 그림 그리기 대회이다.\n② 일요일에 열린다.\n③ 온라인 등록이 요구된다.\n④ 모든 참가자는 동일한 크기의 종이를 사용한다.\n⑤ 우승자는 캔버스 가방을 받을 것이다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "환경 보존을 장려하기 위한 그림 그리기 대회이다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "일요일에 열린다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "온라인 등록이 요구된다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "모든 참가자는 동일한 크기의 종이를 사용한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "우승자는 캔버스 가방을 받을 것이다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 828,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17,
+          18
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "notice_with_table",
+        "assetPath": "english/assets/2027-06/q27-notice.png",
+        "sha256": "ac44c3bf83c4c034e5f18550b738e5867171ab1bca0eb0e88a8f8ffa7c7a663c",
+        "sourcePage": 4,
+        "alt": "Green Dewywood Drawing Competition 원본 안내문. Ages 6–9: A3, crayons. Ages 10–13 and 14–17: A2. Drawing materials are colored pencils and colored markers for the older groups."
+      },
+      "review": {
+        "id": "2027_06_27",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 27,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 6~9세는 A3, 10~17세는 A2를 사용하므로 모든 참가자의 종이 크기가 같지 않습니다.",
+        "typeApproach": "안내문 문제는 연령별 표의 행을 나누어 공통점과 차이를 확인합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Ages 6–9: A3, crayons",
+            "role": "첫 연령대",
+            "translation": "6~9세는 A3 종이와 크레용을 사용합니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Ages 10–13 and 14–17: A2",
+            "role": "나머지 연령대",
+            "translation": "10~17세의 두 연령대는 A2 종이를 사용합니다."
+          }
+        ],
+        "correctReason": "연령대에 따라 A3와 A2로 종이 크기가 다르므로 모든 참가자가 같은 종이를 쓴다는 ④가 일치하지 않습니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "온라인 등록이 요구된다.",
+          "reason": "안내문에 온라인 등록이 필수라고 명시되어 있어 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_28",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 28,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "28. Summer Night Drone Event에 관한 다음 안내문의 내용과",
+      "rawText": "28. \tSummer Night Drone Event에 관한 다음 안내문의 내용과\n일치하는 것은?\nSummer Night Drone Event\nCome and enjoy a magical summer night filled with fun\nfamily activities, great food, and a breathtaking drone show.\nDate: Friday, July 3, 2026\nTime: 6 p.m. to 11 p.m.\nPlace: Aurora River Park (Parking is not available.)\nAttractions\nActivities \tLaser tag, face painting, and rocket making\nMovie \tDeep into the Universe at 7 p.m.\nDrone Show \tSpace-themed show at 9 p.m.\nAdditional Information\n∙Food and beverages will be sold during the event.\n∙You may bring a lawn chair or blanket to sit on the grass.\nNote: In case of heavy rain, the event will be cancelled.\n① 3일 동안 진행된다.\n② 주차가 가능하다.\n③ 영화는 오후 6시에 시작한다.\n④ 음식과 음료가 판매될 것이다.\n⑤ 폭우 시 연기될 것이다.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 4 of 8 --\n\n5\n5 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "3일 동안 진행된다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "주차가 가능하다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "영화는 오후 6시에 시작한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "음식과 음료가 판매될 것이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "폭우 시 연기될 것이다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 772,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          18
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "figure": {
+        "kind": "notice_with_table",
+        "assetPath": "english/assets/2027-06/q28-notice.png",
+        "sha256": "5cca1278660d0f6da9814bcae1c31de870f7c195e0ffebf62ab2ac0178cb898c",
+        "sourcePage": 4,
+        "alt": "Summer Night Drone Event 원본 안내문. Food and beverages will be sold during the event. In case of heavy rain, the event will be cancelled."
+      },
+      "review": {
+        "id": "2027_06_28",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 28,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 행사 중 음식과 음료가 판매된다고 안내되어 있습니다.",
+        "typeApproach": "안내문 일치 문제는 날짜·주차·시간·판매·우천 조건을 각각 원문과 대조합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Food and beverages will be sold during the event.",
+            "role": "판매 정보",
+            "translation": "행사 중 음식과 음료가 판매됩니다."
+          },
+          {
+            "in": "figure",
+            "quote": "In case of heavy rain, the event will be cancelled.",
+            "role": "우천 조건",
+            "translation": "폭우가 오면 행사는 연기가 아니라 취소됩니다."
+          }
+        ],
+        "correctReason": "음식과 음료를 판매한다는 안내와 정확히 일치하므로 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "폭우 시 연기될 것이다.",
+          "reason": "폭우 시 행사가 취소된다고 했으며 연기된다는 내용은 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_29",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 29,
+      "type": "어법",
+      "group": "grammar",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "29. 다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?",
+      "rawText": "29. \t다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?\nFashion is always deeply cultural, and an excellent example\nof this can be seen in the evolution of European clothing.\nAt the beginning of the Middle Ages, clothing tended to be\nsimple and was ① frequently made of rough wool or animal\nfurs. With advances in cloth making, however, fashion began\nmoving \ttoward \tstyles ② what \twere \tmore \telaborate \tand\nform-fitting. In the Renaissance and Elizabethan eras, styles\nbecame even more refined. The clothes that wealthy people\nwere wearing became increasingly fancier, with a particular\nemphasis being placed on smaller waists. The connection\nbetween clothing and social status was so pronounced that\nlaws were enacted ③ to limit the wearing of certain luxury\nitems. ④ Allowed only for higher social classes, luxurious\nstyles and decorations such as feathers, silk, or velvet were\nused as a means of demonstrating one’s standing in society.\nThis was further reinforced as upperclass styles came to be\nexplicitly incorporated into cultural ceremonies so that ⑤ their\nwearers’ roles could be identified clearly.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "frequently"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "what"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "to limit"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Allowed"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "their"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1088,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_29",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 29,
+        "group": "grammar",
+        "type": "어법",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 선행사 styles를 수식하면서 뒤 절에서 주어 역할을 해야 하므로 what이 아니라 that 또는 which가 와야 합니다.",
+        "typeApproach": "어법 문제는 밑줄 표현의 역할을 먼저 정하고 선행사 유무와 뒤 절의 빈자리를 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "fashion began\nmoving \ttoward \tstyles ② what \twere \tmore \telaborate \tand",
+            "charStart": 314,
+            "role": "오류 위치",
+            "translation": "styles 뒤의 what이 관계절을 이끌고 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "styles and decorations such as feathers, silk, or velvet were",
+            "charStart": 798,
+            "role": "문장 구조 대조",
+            "translation": "본문의 중심 명사 styles는 뒤에서 여러 방식으로 수식됩니다."
+          }
+        ],
+        "correctReason": "what은 자체에 선행사 의미를 포함하므로 앞에 styles가 있는 구조와 맞지 않습니다. that 또는 which가 필요해 ②가 틀렸습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "Allowed",
+          "reason": "사치스러운 양식이 상류층에게만 허용되었다는 수동 관계이므로 과거분사 Allowed가 알맞습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_30",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 30,
+      "type": "어휘",
+      "group": "vocab",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "30. 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지",
+      "rawText": "30. \t다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지\n않은 것은? [3점]\nClassical works by playwrights such as Shakespeare or\nEuripides \tor \teven \tAmerican \tmusical \tsong \tlyrics \tcontain\nunconventional and unrealistic methods of communicating\ncharacters’ thoughts and feelings, and take a bit more skill and\npatience to understand. The reader must be mindful not to let\nthe poetic form or archaic word usage get in the way of getting\nmeaningful information about the story, but instead see the\nform itself as a ① revealing stylistic technique. Scripts with\ncomplex language or unfamiliar styles may require several\nadditional readings in order for the nuance to become ② clear.\nMusical theater pieces are particularly difficult to visualize\nwhen reading because of the diminished emphasis on dialogue\nand a ③ significant emphasis on song and dance. For example,\nwhen the music and lyrics are removed from a musical theater\nscript, what is left is the dialogue, known as the book or\nlibretto, and it can be very ④ thick. There is an emphasis\non dance, movement, or action in musical theater that can be\n⑤ time-consuming when actually performed on stage, but can\ntake very little space when typed into a play script.\n* archaic: 고어(古語)체의\n[31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "revealing"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "clear"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "significant"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "thick"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "time-consuming"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1252,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          20
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_30",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 30,
+        "group": "vocab",
+        "type": "어휘",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 음악과 노래를 뺀 대화 대본은 실제 공연 정보에 비해 얇으므로 thick은 문맥과 반대입니다.",
+        "typeApproach": "어휘 문제는 해당 단어가 앞의 원인과 뒤의 대조를 자연스럽게 이어 주는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "what is left is the dialogue, known as the book or",
+            "charStart": 911,
+            "role": "남는 내용",
+            "translation": "음악과 노래를 빼면 대화 대본만 남습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "and it can be very ④ thick.",
+            "charStart": 972,
+            "role": "반대 어휘",
+            "translation": "대화 대본이 매우 두껍다는 표현이 문맥상 어긋납니다."
+          }
+        ],
+        "correctReason": "무대에서는 오래 걸리는 동작도 대본에는 짧게 적히므로 대본은 thick이 아니라 thin에 가까워야 합니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "time-consuming",
+          "reason": "춤과 동작은 무대에서 실제로 수행하면 시간이 오래 걸릴 수 있으므로 문맥에 맞습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_31",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 31,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "31. Ever since the early Enlightenment, preservation and",
+      "rawText": "31. \tEver \tsince \tthe \tearly \tEnlightenment, \tpreservation \tand\nconservation \thave \tbeen \tclosely \trelated. \tTaken \tas \tnear\nsynonyms, their meaning is to maintain an object or system\ninsofar as possible in its present state, to protect it from\nchange, \tusually \tfor \tcontemplation, \tresearch, \tdisplay, \tand\nperhaps \tfor \tuse. \tConservationists \twho \tdistinguish \ttheir\nactivities from preservation emphasize conservation’s restorative\naspects ― restoring a historical musical instrument, for example,\nor a painting, or a dinosaur, or an ecosystem. Conservationists\nacknowledge change but try to manage it in order to prolong\na(n) \tstate. Preservationists (who may nonetheless\ncall themselves conservationists) think of themselves more as\nprotectors. \tThey \tsometimes \tcriticize \tconservationists \tfor\nsetting an additional priority on yield or harvest or use, rather\nthan interfering as minimally as possible in order to preserve\nthe original object or system, as they would do. Preservationists\nwould, \tfor \texample, \tprefer \tto \tkeep \ta \thistorical \tmusical\ninstrument “as found” in a deteriorated state, for study, rather\nthan to restore or repair it for display or use.\n* contemplation: 주시(注視) \t** deteriorate: 나쁘게 하다\n① desired \t② unstable\n③ isolated \t④ natural\n⑤ delicate",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "desired"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "unstable"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "isolated"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "natural"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "delicate"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1278,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          20
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_31",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 31,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 보존 처리는 변화를 인정하되 관리하여 대상이 바람직한 상태로 오래 유지되게 합니다.",
+        "typeApproach": "빈칸 앞의 동사 prolong과 뒤의 보존·복원의 차이를 함께 만족하는 형용사를 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "acknowledge change but try to manage it in order to prolong",
+            "charStart": 567,
+            "role": "보존 처리의 목표",
+            "translation": "변화를 관리해 어떤 상태를 오래 지속하려 합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "preserve\nthe original object or system",
+            "charStart": 923,
+            "role": "원형 보존 대조",
+            "translation": "보존주의자는 원래 대상이나 체계를 지키려 합니다."
+          }
+        ],
+        "correctReason": "변화를 관리하는 목적은 대상을 원하는 상태로 연장하는 것이므로 desired가 가장 자연스럽습니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "unstable",
+          "reason": "불안정한 상태를 오래 유지하려는 것이 아니라 복원과 관리를 통해 바람직한 상태를 지속하려는 것입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_32",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 32,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "32. Speakers don’t always put everything that’s important to",
+      "rawText": "32. \tSpeakers don’t always put everything that’s important to\nthem into words. Very often you can understand a speaker’s\nmeaning by observing their nonverbal behaviors such as a\nchange in a vocal tone or volume, eye contact, facial expressions\nand gestures. As it is easy to misinterpret nonverbal behavior,\neffective listeners verbally confirm their interpretations of\nsomeone’s nonverbal communication. A question as simple as\n“Do your nods indicate a yes vote?” can make sure that\neveryone is on the same wavelength. If, as nonverbal research\nindicates, more than half of a speaker’s meaning is conveyed\nnonverbally, we are missing a lot of important information if\nwe fail to “listen” to nonverbal behavior. Even Freud suggested\nthat “he that has eyes to see and ears to hear may convince\nhimself that no mortal can keep a secret. If his lips are silent,\nhe chatters with his fingertips; betrayal oozes out of him at\nevery pore.” No wonder it is difficult for most people to\nin a face-to-face group\ndiscussion.\n* mortal: 인간 \t** ooze: 스며 나오다 \t*** pore: 모공\n① pretend to pay attention to others\n② conceal what they mean and feel\n③ interpret one’s nonverbal behavior\n④ maintain the nonverbal communication\n⑤ encounter a chance to understand others\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 5 of 8 --\n\n6\n6 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "pretend to pay attention to others"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "conceal what they mean and feel"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "interpret one’s nonverbal behavior"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "maintain the nonverbal communication"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "encounter a chance to understand others"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1300,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          21
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_32",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 32,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 말하지 않은 의미와 감정도 표정·목소리·몸짓으로 드러나므로 숨기기 어렵습니다.",
+        "typeApproach": "빈칸은 앞의 인용이 보여 주는 결론을 주어 most people과 자연스럽게 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "no mortal can keep a secret.",
+            "charStart": 806,
+            "role": "핵심 인용",
+            "translation": "어떤 사람도 비밀을 완전히 감출 수 없다고 말합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "betrayal oozes out of him at\nevery pore.",
+            "charStart": 892,
+            "role": "비언어적 노출",
+            "translation": "감추려는 내용도 몸 전체에서 새어 나온다는 뜻입니다."
+          }
+        ],
+        "correctReason": "비언어 행동이 속뜻을 드러내기 때문에 사람들은 자신이 의미하고 느끼는 것을 감추기 어렵다는 ②입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "interpret one’s nonverbal behavior",
+          "reason": "글은 비언어 행동을 해석하는 방법도 말하지만 빈칸의 주체는 자신의 속뜻을 감추려는 사람입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_33",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 33,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "33. Imagination continues to function when perception is not",
+      "rawText": "33. \tImagination continues to function when perception is not\nactively discerning objects, in cases of emotion, disease, and\nsleep. Emotions dispose one to see the world in a distorted\nway. A coward’s perceptual disposition is affected by his\ndisposition to experience fear. A lover’s expectations are\naffected by desire. In such cases, a small similarity between a\nperceived object and the thing one expects to see can lead\nto the misidentification of the perceived object as that\nthing. The coward sees the enemy, while the lover sees the\nobject \tof \tdesire \teverywhere. \tThe \tmore \taffected \tone \tis,\n. While\nthe central organ of sense normally functions by comparing\nsimilarities and differences, emotions dispose one to discern\nobjects inaccurately. The greater the emotional investment, the\nmore biased one’s perception. [3점]\n* discern: 분별하다\n① the more chances one gets to find differences\n② the less similarity is required for the thing to appear\n③ the sooner the perceived similarity fades away\n④ the more easily one can sense the world the way it is\n⑤ the less slowly different emotions are released",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "the more chances one gets to find differences"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "the less similarity is required for the thing to appear"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "the sooner the perceived similarity fades away"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "the more easily one can sense the world the way it is"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "the less slowly different emotions are released"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1108,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          22
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_33",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 33,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 감정의 영향이 클수록 실제 대상과 기대 대상의 유사성이 작아도 기대한 것으로 잘못 보게 됩니다.",
+        "typeApproach": "빈칸 앞의 small similarity 사례와 뒤의 감정 투자·편향 관계를 같은 방향으로 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "a small similarity between a\nperceived object and the thing one expects to see can lead",
+            "charStart": 337,
+            "role": "오인 조건",
+            "translation": "작은 유사성만 있어도 기대한 대상으로 잘못 볼 수 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "The greater the emotional investment, the\nmore biased one’s perception.",
+            "charStart": 755,
+            "role": "비례 관계",
+            "translation": "감정의 개입이 클수록 지각의 편향도 커집니다."
+          }
+        ],
+        "correctReason": "감정이 강할수록 더 작은 유사성만으로도 기대한 대상을 보게 되므로 ②가 맞습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "the more easily one can sense the world the way it is",
+          "reason": "감정은 현실을 정확히 보게 하는 것이 아니라 지각을 더 편향시킵니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_34",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 34,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "34. The dependent and shifting nature of art values, not only on",
+      "rawText": "34. \tThe dependent and shifting nature of art values, not only on\nthe market but inherently, is uppermost in the mind of today’s art\ncollector, whether he buys for himself or as the representative\nof an institution. Acquiring a work is acquiring a piece of art\nhistory, or it is acquiring nothing (beyond, that is, an object of\npersonal enjoyment in the same class as a cat or a souvenir). In\nsigning his check the collector asserts his belief in the future\npresence of the work as a significant point attained by art as a\nwhole. History, however, is open to anything and the merit of the\nchosen painting or sculpture has ― at best ― only the validation of\na present-day consensus. This consensus is all but certain to be\ndisplaced, as others have been in the past. In the last analysis,\ncommitting himself to a painting is the collector’s own act.\nThrough it he courageously affirms not only his aesthetic\njudgment, from whatever source it be derived, but the conviction\nthat \t. [3점]\n* consensus: 합의 \t** aesthetic: 미학의\n① he can predict where art is going\n② the artist behind the work is reliable\n③ the art work tells the story of his time\n④ his choice will lead to immediate profits\n⑤ the originality of the work is unshakable",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "he can predict where art is going"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "the artist behind the work is reliable"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "the art work tells the story of his time"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "his choice will lead to immediate profits"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "the originality of the work is unshakable"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1227,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_34",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 34,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 미술 가치가 계속 바뀌는데도 작품을 사는 행위는 그 작품이 미래 미술사에서 중요할 것이라는 예측입니다.",
+        "typeApproach": "빈칸은 현재의 불확실한 합의와 수집가가 감수하는 미래 판단을 함께 설명해야 합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "the collector asserts his belief in the future\npresence of the work as a significant point attained by art as a\nwhole.",
+            "charStart": 411,
+            "role": "미래에 대한 판단",
+            "translation": "수집가는 그 작품이 미래 미술사의 중요한 지점이 될 것이라 믿습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "This consensus is all but certain to be\ndisplaced",
+            "charStart": 682,
+            "role": "판단의 불확실성",
+            "translation": "현재의 합의는 앞으로 바뀔 가능성이 큽니다."
+          }
+        ],
+        "correctReason": "불확실한 현재 합의 속에서 구매를 결정하는 것은 미술이 어디로 갈지 예측하는 행위이므로 ①입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "the art work tells the story of his time",
+          "reason": "현재 시대를 기록한다는 일반론이 아니라 작품의 미래 미술사적 위치를 판단하는 내용입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_35",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 35,
+      "type": "무관한 문장",
+      "group": "irrelevant",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "35. 다음 글에서 전체 흐름과 관계 없는 문장은?",
+      "rawText": "35. \t다음 글에서 전체 흐름과 관계 없는 문장은?\nThe bigger someone is, the more damage they can do to\nthemselves \tthrough \teven \ta \trelatively \tinnocuous \taccident.\nDespite toddlers falling over and bumping themselves regularly,\nthe injuries they sustain are rarely serious. ① Their relatively\nthick bones in comparison to their mass mean they rarely build\nup enough energy, even at top speed, to do themselves much\ndamage. ② Because of their increased mass (compounded by\nthe fact that they are falling from a greater height and that their\nreactions may be slower), adults falling over will impact the\nground with a much larger force. ③ The nonlinear relationship\nbetween mass and bone strength means that although their\nbones are thicker than a toddler’s in absolute terms, they may\nnot be relatively thick enough to compensate for the larger\nimpact caused by their increased mass. ④ The body mass\nindex (BMI) can serve as a convenient way for non-experts to\nexamine their health conditions in daily lives. ⑤ For the same\nreasons, taller people have been found to suffer more fall-related\ninjuries ― like hip breaks ― than shorter people.\n* innocuous: 무해한 \t** toddler: 아장아장 걷는 아기\n[36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한\n것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Their relatively thick bones in comparison to their mass mean they rarely build up enough energy, even at top speed, to do themselves much damage."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Because of their increased mass (compounded by the fact that they are falling from a greater height and that their reactions may be slower), adults falling over will impact the ground with a much larger force."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "The nonlinear relationship between mass and bone strength means that although their bones are thicker than a toddler’s in absolute terms, they may not be relatively thick enough to compensate for the larger impact caused by their increased mass."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "The body mass index (BMI) can serve as a convenient way for non-experts to examine their health conditions in daily lives."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "For the same reasons, taller people have been found to suffer more fall-related injuries ― like hip breaks ― than shorter people."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1208,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_35",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 35,
+        "group": "irrelevant",
+        "type": "무관한 문장",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 글은 몸집이 클수록 낙상 충격과 부상이 커지는 이유를 설명하는데 BMI 건강 점검은 이 흐름과 무관합니다.",
+        "typeApproach": "무관한 문장은 앞뒤 문장이 공유하는 반복 주제와 인과 사슬에서 벗어난 문장을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "The bigger someone is, the more damage they can do to\nthemselves",
+            "charStart": 30,
+            "role": "전체 주제",
+            "translation": "몸집이 클수록 사고 때 더 크게 다칠 수 있다는 글입니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "The body mass\nindex (BMI) can serve as a convenient way for non-experts to\nexamine their health conditions in daily lives.",
+            "charStart": 868,
+            "role": "흐름 이탈",
+            "translation": "BMI로 일상 건강을 확인한다는 별개의 내용입니다."
+          }
+        ],
+        "correctReason": "낙상 충격과 뼈의 상대적 강도 설명 사이에 BMI 활용 문장이 끼어 있어 ④가 무관합니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "For the same reasons, taller people have been found to suffer more fall-related injuries ― like hip breaks ― than shorter people.",
+          "reason": "키가 큰 사람의 낙상 부상 사례는 앞의 몸집·충격 관계를 구체화하므로 흐름에 맞습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_36",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 36,
+      "type": "순서",
+      "group": "order",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "36.",
+      "rawText": "36.\nPlants have evolved defenses almost as diverse as the\nnumber of genera. Some load their tissues with harsh\ncompounds that either are unpleasant to insects or intoxicate\nthem, encouraging the insects to go bother another plant or\nat least slowing down their eating.\n(A) The back-and-forth is not a matter of natural balance, but\nmore like a drawn-out evolutionary conversation. New\nplant defenses unintentionally select for insects with ways\nto get around them, which in turn help bring about more\nresilient \tand \tresistant \tplant \tspecies. \tNew \tvariations,\nshading into entire new forms and adaptations, maintain\nthe stalemate.\n(B) Plants can release chemical compounds that let their\nsame-species neighbors know that an attack is likely\ncoming, pushing those nearby plants to start building up\ndefensive compounds in their tissues. Some of these cues\neven attract insect predators, a call for an assist that\nbenefits both the plant and its bug-eating collaborators.\n(C) Structural defenses like thick coats of wax on leaves may\nprevent some insect species from damaging the plant\ntissues altogether. Nor are individual plants entirely on\ntheir own while under attack.\n* genera: genus의 복수, (생물 분류상의) 속(屬)\n** resilient: 회복 탄력성이 있는 \t*** stalemate: 교착 상태\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 6 of 8 --\n\n7\n7 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1399,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          24
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_36",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 36,
+        "group": "order",
+        "type": "순서",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 식물의 구조 방어를 덧붙인 (C), 서로 돕는 화학 신호를 설명한 (B), 식물과 곤충의 진화적 공방으로 넓힌 (A)의 순서입니다.",
+        "typeApproach": "순서 문제는 추가 표현, 지시 표현, 범위 확대가 이어지는 연결 고리를 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "(C) Structural defenses like thick coats of wax on leaves may",
+            "charStart": 972,
+            "role": "첫 확장",
+            "translation": "도입의 화학 방어 다음에 구조적 방어를 추가합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Nor are individual plants entirely on\ntheir own while under attack.",
+            "charStart": 1106,
+            "role": "다음 문단 예고",
+            "translation": "개별 식물이 혼자 방어하지 않는다는 말이 이웃 식물과 포식자의 도움으로 이어집니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "(A) The back-and-forth is not a matter of natural balance, but",
+            "charStart": 269,
+            "role": "최종 일반화",
+            "translation": "앞의 방어와 대응을 식물·곤충 사이의 진화적 공방으로 정리합니다."
+          }
+        ],
+        "correctReason": "화학 방어 뒤 구조 방어 (C), 협력 방어 (B), 그 결과인 진화적 공방 (A)로 이어져 ⑤입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(C) - (A) - (B)",
+          "reason": "(A)의 back-and-forth는 곤충과 식물의 여러 대응이 제시된 뒤 나와야 하므로 (B)보다 앞설 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_37",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 37,
+      "type": "순서",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "37.",
+      "rawText": "37.\nAlthough there may be elements that trigger instinctive\nresponse, spectacle works primarily within a cultural frame\nand is subject to prevailing modes of perception that observers\nbring to bear.\n(A) By extension, spectacle is produced by working with the\ngrain of a particular culture, blending the innovative with\nthe established. Thus anyone deploying spectacle may draw\non a repertoire of techniques and conventions developed\nfrom previous festivals or related activities, but imitation\nis not enough.\n(B) Spectacle must also be spectacular. A spectacle has to amaze\nspectators, outdoing previous efforts if it is to become part\nof the collective memory of those who witnessed and\nparticipated in it.\n(C) In saying that, we stress that creation of spectacle is neither\na universal nor even an inevitable expression of culture,\nbut is a strategy commonly used by people from many\ndifferent cultures to address specific needs. The task of\ncreating spectacle has been likened to creating new works\nof literature, where writers normally feel bound by the\nrules and traditions of their genre yet need to show sufficient\noriginality to impress their audiences. [3점]\n* prevailing: 주요한 \t** deploy: 전개하다\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n[38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장\n적절한 곳을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1341,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          25
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_37",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 37,
+        "group": "order",
+        "type": "순서",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 문화적 틀이라는 도입을 받는 (C), 문화의 관습을 활용하는 (A), 모방을 넘어 관객을 놀라게 해야 한다는 (B)의 순서입니다.",
+        "typeApproach": "순서 문제는 ‘그렇게 말할 때’, ‘그 연장선에서’, ‘또한’ 같은 연결 표현의 선행 내용을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "(C) In saying that, we stress that creation of spectacle is neither",
+            "charStart": 708,
+            "role": "도입 수용",
+            "translation": "도입에서 말한 문화적 틀을 바로 받아 설명합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "(A) By extension, spectacle is produced by working with the",
+            "charStart": 199,
+            "role": "문화 전략 확장",
+            "translation": "문화의 관습과 혁신을 섞어 장관을 만든다는 설명으로 확장합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "(B) Spectacle must also be spectacular.",
+            "charStart": 509,
+            "role": "추가 조건",
+            "translation": "관습을 활용하는 것뿐 아니라 관객을 놀라게 해야 한다는 조건을 더합니다."
+          }
+        ],
+        "correctReason": "도입을 받는 (C) 뒤에 문화의 결을 활용하는 (A), 모방만으로 부족하다는 말 뒤에 놀라움의 조건 (B)가 이어져 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(C) - (B) - (A)",
+          "reason": "(B)의 also는 (A) 끝의 ‘모방만으로 충분하지 않다’는 내용을 받아야 자연스럽습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_38",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 38,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "38.",
+      "rawText": "38.\nTo minimize vortex shedding, skyscraper designers do\neverything in their powers to confuse the wind.\nTo minimize building costs and maximize revenues, skyscrapers\ngenerally take the shape of squares or rectangles. These are not\nparticularly aerodynamic shapes, and this results in a wind\nphenomenon \tcalled \t“vortex shedding.” As wind meets \ta\nrectangular skyscraper it pushes on the flat face of the building\nbefore flowing around its sides, where eventually it separates\nfrom \tthe \tface \tof \tthe \tstructure. ( ① ) The \tdifference \tin\npressures on the front and back faces of the building gives rise\nto vortices, or spinning currents of wind, that flow downstream\nfrom the building. ( ② ) The vortices pull and push the\nbuilding in a direction perpendicular to the wind at frequencies\nthat can become dangerously self-sustaining. ( ③ ) Orienting\nthe building so that the longer face of the structure is parallel\nwith prevailing winds can help. ( ④ ) Chopping or rounding off\ncorners of a building can likewise make it more aerodynamic.\n( ⑤ ) Roughing up the corners of the building through the\ncareful placement of balconies or stepped corners can help by\ndisturbing or delaying the formation of strong vortices.\n* vortex: 회오리바람 \t** perpendicular: 직각을 이루는",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1260,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          26
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_38",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 38,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 주어진 문장은 와류가 건물을 위험하게 흔드는 원리 설명을 마치고 구체적인 설계 해결책을 시작합니다.",
+        "typeApproach": "문장 삽입은 주어진 문장의 목적 표현이 앞의 문제 진단과 뒤의 해결 사례 사이를 잇는지 봅니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "frequencies\nthat can become dangerously self-sustaining.",
+            "charStart": 778,
+            "role": "삽입 전 문제",
+            "translation": "와류가 위험하게 지속되는 진동을 만들 수 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Orienting\nthe building so that the longer face of the structure is parallel",
+            "charStart": 841,
+            "role": "삽입 후 해결책",
+            "translation": "건물 방향을 조절하는 첫 번째 해결책이 시작됩니다."
+          }
+        ],
+        "correctReason": "위험한 와류 설명 뒤 ‘이를 최소화하려 한다’는 문장이 나오고 설계 방법들이 이어져야 하므로 ③입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "④",
+          "reason": "④에 넣으면 이미 첫 번째 해결책인 건물 방향 조절이 나온 뒤 목적 문장이 뒤늦게 등장합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_39",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 39,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "39.",
+      "rawText": "39.\nIt was also within the range of reds that they learned early\non to diversify the palette and to produce varied tones and\nshades, as the oldest known color terms demonstrate.\nFor thousands of years in the West, red was the only color\nworthy of that name, the only true color. As much on the historical\nas hierarchical level, it exceeded all others. ( ① ) Not that\nthey did not exist, but they had to wait a long time before they\nwere considered colors and then played a comparable role in\nmaterial culture, social codes, and systems of thought. ( ② ) It\nwas with red that humans did their first color experiments,\nachieved their first successes, and then constructed a chromatic\nuniverse. ( ③ ) Here the lexicon seems in keeping with pictorial\npractices and coloring techniques. ( ④ ) In certain languages,\nthe same word can mean “red” or simply “colored,” depending\non the context, such as coloratus in classical Latin or colorado\nin modern Castilian. ( ⑤ ) In other languages, the words\nmeaning “red” and “beautiful” share a common root; for example,\nthat is the case in Russian, in which the terms krasnyy (red)\nand krasivy (beautiful) belong to the same lexical family. [3점]\n* hierarchical: 위계의 \t** chromatic: 색채의 \t*** lexicon: 어휘 목록",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1240,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          27
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_39",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 39,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 붉은색으로 최초의 색 실험을 했다는 내용 뒤에 다양한 붉은 색조를 만들었다는 문장이 오고, 이어 색채 어휘 사례가 나옵니다.",
+        "typeApproach": "문장 삽입은 also가 더하는 앞 내용과 마지막 명사 color terms가 예고하는 뒤 내용을 동시에 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "achieved their first successes, and then constructed a chromatic\nuniverse.",
+            "charStart": 617,
+            "role": "삽입 전 색 실험",
+            "translation": "인류는 붉은색으로 첫 색채 실험과 성공을 이루었습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Here the lexicon seems in keeping with pictorial\npractices and coloring techniques.",
+            "charStart": 698,
+            "role": "삽입 후 어휘",
+            "translation": "이어 색채 관행과 어휘의 관계를 설명합니다."
+          }
+        ],
+        "correctReason": "주어진 문장의 also는 붉은색 실험을 이어 받고, color terms는 바로 뒤의 어휘 사례를 예고하므로 ③입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "④",
+          "reason": "④는 이미 lexicon을 소개한 뒤라 주어진 문장의 color terms가 뒤 사례를 처음 여는 기능을 잃습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_40",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 40,
+      "type": "요약문",
+      "group": "summary",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),",
+      "rawText": "40. \t다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),\n(B)에 들어갈 말로 가장 적절한 것은?\nIn the pharmaceutical industry, algorithms are being\nemployed to find treatments and drugs for rare diseases\nthat to date haven’t received much attention. The hard truth\nhas always been that pharma devotes more research and\ndevelopment resources to diseases that affect the rich.\nThe definition of rare has too often been associated with\npoor ― that is, even if a disease is quite prevalent in a\npopulation that cannot afford to pay for it (for example,\npeople living in the developing world), the disease has been\nneglected compared to First World illnesses. By lowering\nthe cost of data collection, mining, and analysis in drug\ndevelopment and clinical trials, AI can help offset imbalances\nin the pharmaceutical industry that direct attention to diseases\nthat “pay,” whether because the disease is more common\nor because it is prevalent among demographics that can\npay more. We see the democratizing power of AI to broaden\nthe attention of the medical and research communities to\nfind cures to traditionally neglected health issues and among\ntraditionally neglected populations.\n* offset: 상쇄하다 \t** demographic: 인구 집단\n󰀻\nBy \tlowering \tthe \tcost \tof \tpharmaceutical \tresearch \tand\ndevelopment, AI can help reduce the imbalance in investment\nthat has led to the \t(A) \tof less profitable diseases,\nthereby broadening the focus of medical research to include\n(B) \tpopulations.\n(A) \t(B) \t(A) \t(B)\n① prevention …… marginalized \t② spread \t…… general\n③ overlook \t…… native \t④ ignorance …… wealthy\n⑤ disregard \t…… underserved\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 7 of 8 --\n\n8\n8 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "prevention ··· marginalized"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "spread ··· general"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "overlook ··· native"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "ignorance ··· wealthy"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "disregard ··· underserved"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1634,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          27
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_40",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 40,
+        "group": "summary",
+        "type": "요약문",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. AI는 연구 비용을 낮춰 수익성이 낮은 질병의 외면을 줄이고 의료 연구가 소외된 인구까지 다루게 합니다.",
+        "typeApproach": "요약문은 본문의 문제와 해결 결과를 각각 빈칸에 같은 방향의 말로 바꿔 넣습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "the disease has been\nneglected compared to First World illnesses.",
+            "charStart": 557,
+            "role": "기존 문제",
+            "translation": "가난한 인구의 질병은 부유한 국가의 질병보다 외면받았습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "traditionally neglected populations.",
+            "charStart": 1108,
+            "role": "확대 대상",
+            "translation": "AI는 전통적으로 소외된 인구까지 연구 대상으로 넓힙니다."
+          }
+        ],
+        "correctReason": "수익성이 낮은 질병에 대한 disregard를 줄이고 underserved populations를 포함한다는 ⑤가 본문을 정확히 요약합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "ignorance ··· wealthy",
+          "reason": "본문의 확대 대상은 부유한 인구가 아니라 기존 연구에서 소외된 인구입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_41",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 41,
+      "type": "장문 제목",
+      "group": "long",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "41. 윗글의 제목으로 가장 적절한 것은?",
+      "rawText": "41. \t윗글의 제목으로 가장 적절한 것은?\n① Unsolved Mystery Behind the Nature of Glass\n② Solid and Liquid Glass: Their Respective Uses\n③ A Scientific Perspective on Problems with Stained Glass\n④ Puzzling Glass: Why Solid but Easily Breakable?\n⑤ Techniques for Producing Truly Flat Glass",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nThe structure of glass is, frankly, a bit of a mess. Clear and\nperfect as it might appear to our eyes, down at the molecular\nlevel, glass looks more like a random ball-pit of atoms. The\ntechnical term for this mess depends on who you’re asking:\nfor some scientists it is an “amorphous solid,” for others a\n“supercooled liquid.” In theory it’s both liquid and solid,\nthough, given the way it behaves, in practice it’s really the\nlatter. In fact, at room temperature glass never behaves as\na (a) liquid, even an imperceptibly viscous one, even over\nlong periods of time (though it can “sweat” if you don’t add\nenough lime to the mix). Those (b) misshapen sheets of glass\nyou sometimes see in old stained-glass windows, thicker at\nthe bottom than the top, are generally not that way because\nthe glass is slowly sinking over time. Unless the church has\nendured temperatures of more than 400˚C, the chances are\nthey are uneven because that’s the way they were blown\nand (c) solidified in the first place. Flat glass was only\ndeveloped in the nineteenth century and we had to wait until\nthe middle of the twentieth century for truly flat, thin sheets\nof glass. The (d) paradox is that, despite it being one of the\nvery oldest human-made substances, scientists still struggle\nto comprehend why glass behaves the way it does. Glass seems\nto (e) obey most molecular laws. As one glassmaker put it,\nglass is not a material; it’s a state.\n* molecular: 분자의 \t** amorphous: 무정형(無定形)의\n*** viscous: 들러붙는",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Unsolved Mystery Behind the Nature of Glass"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Solid and Liquid Glass: Their Respective Uses"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "A Scientific Perspective on Problems with Stained Glass"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Puzzling Glass: Why Solid but Easily Breakable?"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Techniques for Producing Truly Flat Glass"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 270,
+        "sharedPassageChars": 1515,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_41",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 41,
+        "group": "long",
+        "type": "장문 제목",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 유리는 고체처럼 행동하지만 분자 구조와 상태를 완전히 설명하기 어려운 오래된 미해결 대상입니다.",
+        "typeApproach": "장문 제목은 도입의 핵심 대상과 결말의 미해결 질문을 함께 포괄해야 합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "scientists still struggle\nto comprehend why glass behaves the way it does.",
+            "charStart": 1271,
+            "role": "미해결 문제",
+            "translation": "과학자들은 유리가 왜 그렇게 행동하는지 여전히 이해하기 어렵습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "glass is not a material; it’s a state.",
+            "charStart": 1417,
+            "role": "상태의 수수께끼",
+            "translation": "유리는 단순한 물질보다 하나의 상태로 보아야 한다는 결론입니다."
+          }
+        ],
+        "correctReason": "유리의 구조·상태·행동을 둘러싼 과학적 수수께끼를 가장 넓게 담은 제목은 ①입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "Solid and Liquid Glass: Their Respective Uses",
+          "reason": "고체 유리와 액체 유리의 용도를 비교하는 글이 아니라 유리의 상태 자체가 왜 어려운지를 다룹니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_42",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 42,
+      "type": "장문 어휘",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "42. 밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은",
+      "rawText": "42. \t밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은\n것은? [3점]\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nThe structure of glass is, frankly, a bit of a mess. Clear and\nperfect as it might appear to our eyes, down at the molecular\nlevel, glass looks more like a random ball-pit of atoms. The\ntechnical term for this mess depends on who you’re asking:\nfor some scientists it is an “amorphous solid,” for others a\n“supercooled liquid.” In theory it’s both liquid and solid,\nthough, given the way it behaves, in practice it’s really the\nlatter. In fact, at room temperature glass never behaves as\na (a) liquid, even an imperceptibly viscous one, even over\nlong periods of time (though it can “sweat” if you don’t add\nenough lime to the mix). Those (b) misshapen sheets of glass\nyou sometimes see in old stained-glass windows, thicker at\nthe bottom than the top, are generally not that way because\nthe glass is slowly sinking over time. Unless the church has\nendured temperatures of more than 400˚C, the chances are\nthey are uneven because that’s the way they were blown\nand (c) solidified in the first place. Flat glass was only\ndeveloped in the nineteenth century and we had to wait until\nthe middle of the twentieth century for truly flat, thin sheets\nof glass. The (d) paradox is that, despite it being one of the\nvery oldest human-made substances, scientists still struggle\nto comprehend why glass behaves the way it does. Glass seems\nto (e) obey most molecular laws. As one glassmaker put it,\nglass is not a material; it’s a state.\n* molecular: 분자의 \t** amorphous: 무정형(無定形)의\n*** viscous: 들러붙는",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 84,
+        "sharedPassageChars": 1515,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_42",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 42,
+        "group": "long",
+        "type": "장문 어휘",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 유리의 행동을 설명하기 어렵다는 역설 뒤에는 분자 법칙을 ‘따른다’가 아니라 ‘거스른다’가 와야 합니다.",
+        "typeApproach": "장문 어휘는 해당 단어가 바로 앞의 역설과 뒤 결론의 논리 방향을 유지하는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "scientists still struggle\nto comprehend why glass behaves the way it does.",
+            "charStart": 1271,
+            "role": "앞 문맥",
+            "translation": "과학자들은 유리의 행동을 아직 충분히 설명하지 못합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Glass seems\nto (e) obey most molecular laws.",
+            "charStart": 1346,
+            "role": "반대 어휘",
+            "translation": "대부분의 분자 법칙을 따른다는 표현은 앞의 수수께끼와 반대입니다."
+          }
+        ],
+        "correctReason": "설명하기 어려운 이유는 유리가 분자 법칙을 따르는 것이 아니라 거스르는 듯 보이기 때문이므로 (e)가 틀렸습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(d)",
+          "reason": "아주 오래된 물질인데도 이해하지 못한다는 것은 paradox와 자연스럽게 이어집니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_43",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 43,
+      "type": "장문 순서",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로",
+      "rawText": "43. \t주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로\n가장 적절한 것은?\n①\n③\n⑤\n(B)\n(C)\n(D)\n－\n－\n－\n(D)\n(D)\n(C)\n－\n－\n－\n(C)\n(B)\n(B)\n②\n④\n(C)\n(D)\n－\n－\n(B)\n(B)\n－\n－\n(D)\n(C)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nEvery day after school, Sally walked home through the\npark. She liked listening to music in her headphones and\nlooking at the trees on her way home. One day, while she was\nchanging songs, she heard strange, unpolished music. She\ntook off her headphones and followed the music through the\npark. She saw a kind-looking old woman sitting on a small\nbench and playing the violin. While (a) her music wasn’t\nperfect, there was something warm and welcoming about it.\nSo, Sally walked closer.\n(B)\nThe following day, they met at the same bench. Sally was\nhappy to hear the old woman’s music again, but when she\nsat, the woman stopped playing. “Today is your first full\nlesson,” she said as she handed the violin to Sally. (b) She\nshowed the young woman how to place her fingers on the\nstrings. After an hour, she had learned some basics. Then, the\nold woman played the same music from the day before. Sally\npromised to meet her every day and started walking home.\nAs she walked, simple, unpolished music was playing in her\nmind.\n(C)\nThe old woman asked Sally if she played any instruments.\nSuddenly, Sally remembered learning the recorder from her\nolder sister Beatrice when she was a girl. Beatrice had said,\n“You just have no musical talent.” Sally looked back to the old\nwoman sadly and told (c) her the story. The old woman winked,\nhanded the violin to Sally, and said, “You don’t need talent to\nenjoy playing.” Feeling brave, Sally accepted the instrument and\ntried playing. The sound was rough, and she felt embarrassed.\nBut the old woman just smiled and said, “That’s how it begins.\n(d) I hope to see you again tomorrow.”\n(D)\n“Hello! Are you going to listen to my performance?” the old\nwoman looked up and asked. Sally laughed and replied, “Oh\nsorry, I was just passing by.” (e) She turned to continue\nwalking home, but decided to stop for a bit and listen. After\nthe woman’s music finished, Sally asked her when she had\nstarted playing the violin. “I just started last year, but I always\nwanted to learn,” the woman answered. Sally was impressed\nby her response. Even though she loved listening to music, she\ncould not play any instruments well.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(B) - (D) - (C)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(C) - (B) - (D)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(C) - (D) - (B)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(D) - (B) - (C)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(D) - (C) - (B)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 139,
+        "sharedPassageChars": 2177,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          30
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_43",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 43,
+        "group": "long",
+        "type": "장문 순서",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. Sally가 노부인에게 다가간 뒤 연주를 듣는 (D), 자신의 상처를 말하고 바이올린을 잡는 (C), 다음 날 첫 수업을 받는 (B)의 순서입니다.",
+        "typeApproach": "장문 순서는 대화의 질문·답변과 ‘다음 날’ 같은 시간 표현이 끊기지 않는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "So, Sally walked closer.",
+            "charStart": 493,
+            "role": "도입의 마지막 행동",
+            "translation": "Sally가 노부인에게 가까이 다가갑니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "decided to stop for a bit and listen.",
+            "charStart": 1851,
+            "role": "첫 사건",
+            "translation": "Sally가 멈춰서 노부인의 연주를 듣습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "(d) I hope to see you again tomorrow.",
+            "charStart": 1614,
+            "role": "다음 날 예고",
+            "translation": "노부인이 내일 다시 만나자고 말합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "The following day, they met at the same bench.",
+            "charStart": 522,
+            "role": "마무리 연결",
+            "translation": "다음 날 같은 벤치에서 만나 수업을 시작합니다."
+          }
+        ],
+        "correctReason": "다가감 (A) → 연주를 듣고 대화 (D) → 연주를 시도하고 내일을 약속 (C) → 다음 날 수업 (B)이므로 ⑤입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(D) - (B) - (C)",
+          "reason": "(B)의 첫 정식 수업은 (C) 끝에서 다음 날 다시 만나기로 한 뒤에만 올 수 있습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_44",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 44,
+      "type": "장문 지칭",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "44. 밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른",
+      "rawText": "44. \t밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nEvery day after school, Sally walked home through the\npark. She liked listening to music in her headphones and\nlooking at the trees on her way home. One day, while she was\nchanging songs, she heard strange, unpolished music. She\ntook off her headphones and followed the music through the\npark. She saw a kind-looking old woman sitting on a small\nbench and playing the violin. While (a) her music wasn’t\nperfect, there was something warm and welcoming about it.\nSo, Sally walked closer.\n(B)\nThe following day, they met at the same bench. Sally was\nhappy to hear the old woman’s music again, but when she\nsat, the woman stopped playing. “Today is your first full\nlesson,” she said as she handed the violin to Sally. (b) She\nshowed the young woman how to place her fingers on the\nstrings. After an hour, she had learned some basics. Then, the\nold woman played the same music from the day before. Sally\npromised to meet her every day and started walking home.\nAs she walked, simple, unpolished music was playing in her\nmind.\n(C)\nThe old woman asked Sally if she played any instruments.\nSuddenly, Sally remembered learning the recorder from her\nolder sister Beatrice when she was a girl. Beatrice had said,\n“You just have no musical talent.” Sally looked back to the old\nwoman sadly and told (c) her the story. The old woman winked,\nhanded the violin to Sally, and said, “You don’t need talent to\nenjoy playing.” Feeling brave, Sally accepted the instrument and\ntried playing. The sound was rough, and she felt embarrassed.\nBut the old woman just smiled and said, “That’s how it begins.\n(d) I hope to see you again tomorrow.”\n(D)\n“Hello! Are you going to listen to my performance?” the old\nwoman looked up and asked. Sally laughed and replied, “Oh\nsorry, I was just passing by.” (e) She turned to continue\nwalking home, but decided to stop for a bit and listen. After\nthe woman’s music finished, Sally asked her when she had\nstarted playing the violin. “I just started last year, but I always\nwanted to learn,” the woman answered. Sally was impressed\nby her response. Even though she loved listening to music, she\ncould not play any instruments well.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 78,
+        "sharedPassageChars": 2177,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          31
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2027_06_44",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 44,
+        "group": "long",
+        "type": "장문 지칭",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. (a)~(d)는 노부인을 가리키지만 (e) She는 집으로 계속 가려던 Sally를 가리킵니다.",
+        "typeApproach": "지칭 문제는 대명사 바로 앞의 행동 주체와 대화의 화자를 문장별로 확인합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "While (a) her music wasn’t\nperfect",
+            "charStart": 408,
+            "role": "노부인 지칭",
+            "translation": "(a)는 바이올린을 연주하는 노부인의 음악입니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "(e) She turned to continue\nwalking home",
+            "charStart": 1806,
+            "role": "Sally 지칭",
+            "translation": "(e)는 집으로 계속 걸어가려는 Sally입니다."
+          }
+        ],
+        "correctReason": "(e)만 Sally이고 나머지는 노부인의 음악·행동·말을 가리키므로 ⑤입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "(b)",
+          "reason": "바이올린의 손가락 위치를 가르치는 주체는 노부인이므로 (b)는 노부인을 가리킵니다."
+        }
+      }
+    },
+    {
+      "id": "2027_06_45",
+      "examId": "2027_06",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "6월",
+      "qid": 45,
+      "type": "장문 내용",
+      "group": "long",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "45. 윗글에 관한 내용으로 적절하지 않은 것은?",
+      "rawText": "45. \t윗글에 관한 내용으로 적절하지 않은 것은?\n① Sally는 헤드폰으로 음악을 듣는 것을 좋아했다.\n② 노부인의 연주를 다시 듣게 되어 Sally는 행복했다.\n③ Sally는 노부인을 매일 만나기로 약속했다.\n④ Beatrice는 Sally의 음악적 재능을 칭찬했다.\n⑤ 노부인은 항상 바이올린을 배우고 싶어 했다.\n* 확인 사항\n◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인\n하시오.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 8 of 8 --",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nEvery day after school, Sally walked home through the\npark. She liked listening to music in her headphones and\nlooking at the trees on her way home. One day, while she was\nchanging songs, she heard strange, unpolished music. She\ntook off her headphones and followed the music through the\npark. She saw a kind-looking old woman sitting on a small\nbench and playing the violin. While (a) her music wasn’t\nperfect, there was something warm and welcoming about it.\nSo, Sally walked closer.\n(B)\nThe following day, they met at the same bench. Sally was\nhappy to hear the old woman’s music again, but when she\nsat, the woman stopped playing. “Today is your first full\nlesson,” she said as she handed the violin to Sally. (b) She\nshowed the young woman how to place her fingers on the\nstrings. After an hour, she had learned some basics. Then, the\nold woman played the same music from the day before. Sally\npromised to meet her every day and started walking home.\nAs she walked, simple, unpolished music was playing in her\nmind.\n(C)\nThe old woman asked Sally if she played any instruments.\nSuddenly, Sally remembered learning the recorder from her\nolder sister Beatrice when she was a girl. Beatrice had said,\n“You just have no musical talent.” Sally looked back to the old\nwoman sadly and told (c) her the story. The old woman winked,\nhanded the violin to Sally, and said, “You don’t need talent to\nenjoy playing.” Feeling brave, Sally accepted the instrument and\ntried playing. The sound was rough, and she felt embarrassed.\nBut the old woman just smiled and said, “That’s how it begins.\n(d) I hope to see you again tomorrow.”\n(D)\n“Hello! Are you going to listen to my performance?” the old\nwoman looked up and asked. Sally laughed and replied, “Oh\nsorry, I was just passing by.” (e) She turned to continue\nwalking home, but decided to stop for a bit and listen. After\nthe woman’s music finished, Sally asked her when she had\nstarted playing the violin. “I just started last year, but I always\nwanted to learn,” the woman answered. Sally was impressed\nby her response. Even though she loved listening to music, she\ncould not play any instruments well.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Sally는 헤드폰으로 음악을 듣는 것을 좋아했다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "노부인의 연주를 다시 듣게 되어 Sally는 행복했다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Sally는 노부인을 매일 만나기로 약속했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Beatrice는 Sally의 음악적 재능을 칭찬했다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "노부인은 항상 바이올린을 배우고 싶어 했다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2027학년도_6월_영어_문제.pdf",
+        "answerFile": "2027학년도_6월_영어_정답.png",
+        "explainFile": "2027학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 276,
+        "sharedPassageChars": 2177,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          31
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2027_06_45",
+        "status": "ready",
+        "exam": "2027학년도 6월 모의평가 영어",
+        "qid": 45,
+        "group": "long",
+        "type": "장문 내용",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. Beatrice는 Sally의 음악적 재능을 칭찬한 것이 아니라 재능이 없다고 말했습니다.",
+        "typeApproach": "장문 내용 문제는 인물별 발언과 행동을 시간 순서로 분리해 선지의 긍정·부정 방향을 확인합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Beatrice had said,\n“You just have no musical talent.”",
+            "charStart": 1215,
+            "role": "정답 발언",
+            "translation": "Beatrice는 Sally에게 음악적 재능이 없다고 말했습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Sally\npromised to meet her every day",
+            "charStart": 925,
+            "role": "다른 내용 확인",
+            "translation": "Sally는 노부인을 매일 만나기로 약속했습니다."
+          }
+        ],
+        "correctReason": "Beatrice의 말은 칭찬이 아니라 재능이 없다는 부정적 평가였으므로 ④가 적절하지 않습니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "Sally는 노부인을 매일 만나기로 약속했다.",
+          "reason": "첫 수업 뒤 Sally가 매일 만나겠다고 약속하므로 글과 일치합니다."
+        }
+      }
+    }
+  ]
+}

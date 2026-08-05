@@ -1,0 +1,612 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 9월 모의평가 원천 재대조 완료 13문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 13,
+    "readyCount": 13,
+    "questionFingerprint": "a54b446ebad28474a13986e74eb74820ed2802ad6aa8024591a69ff51443fe4a",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040410/ect_7f132255-11e7-4cae-8313-a8150cd445731649a9911b68586.zip",
+      "archiveSha256": "1d1f16a13a6c326bd3e952765fcfe80d8ba8cebd23810354ab412c2558d77878",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "ae723d4c3892cbeb12836301c69cabb6ed432845a3be259ab28b6916131b75bd",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "8c1541d69fb9fd8b26a1e5a4ee85f8def670196a7cd6b474fc3404a07a09848d",
+      "solutionSourceUrls": [
+        "https://chanyi.tistory.com/entry/2022%ED%95%99%EB%85%84%EB%8F%84-%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98-%EA%B3%A03-9%EC%9B%94-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EC%A0%95%EB%8B%B5-%EB%B0%8F-%ED%95%B4%EC%84%A4"
+      ],
+      "solutionArtifacts": [
+        {
+          "filename": "independent-solution.pdf",
+          "sha256": "de2b5df122b4507fe7b2af3841a1e4f186f46d58d08b6336651013d37e06348c"
+        }
+      ]
+    },
+    "note": "공식 문제지·정답표를 화면으로 전수 대조하고 독립 해설의 계산을 다시 수행한 내부 비공개 풀이입니다."
+  },
+  "items": {
+    "2022_09_common_10": {
+      "id": "2022_09_common_10",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 10,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "두 교점의 좌표로 삼각형 넓이와 두 직선의 기울기를 식으로 만들면 a=5b, ab=5/4를 얻어 a+b=3입니다.",
+      "approach": "sin 값이 1이 되는 두 x좌표를 먼저 찾고, 넓이 조건과 기울기 곱 조건을 각각 a와 b의 관계식으로 바꿉니다.",
+      "concepts": [
+        "삼각함수 그래프의 교점",
+        "좌표평면에서 삼각형의 넓이",
+        "직선의 기울기"
+      ],
+      "steps": [
+        {
+          "title": "두 교점의 좌표 찾기",
+          "expression": "A\\left(\\frac{1}{2b},a\\right),\\quad B\\left(\\frac{5}{2b},a\\right)",
+          "explanation": "0≤x≤3/b에서 sin(bπx)=1이 되는 두 값은 x=1/(2b), 5/(2b)입니다."
+        },
+        {
+          "title": "넓이 조건 적용하기",
+          "expression": "\\frac12\\cdot a\\cdot\\left(\\frac{5}{2b}-\\frac{1}{2b}\\right)=5\\Rightarrow a=5b",
+          "explanation": "AB는 수평선 위에 있으므로 밑변 길이는 2/b, 원점에서 AB까지의 높이는 a입니다."
+        },
+        {
+          "title": "기울기 곱 조건 적용하기",
+          "expression": "\\left(2ab\\right)\\left(\\frac{2ab}{5}\\right)=\\frac54\\Rightarrow ab=\\frac54",
+          "explanation": "OA와 OB의 기울기를 좌표로 계산한 뒤 곱을 문제의 값과 같게 둡니다."
+        },
+        {
+          "title": "a와 b 결정하기",
+          "expression": "a=5b,\\ ab=\\frac54\\Rightarrow a=\\frac52,\\ b=\\frac12,\\ a+b=3",
+          "explanation": "a와 b가 양수라는 조건을 사용하면 양의 해만 남습니다."
+        }
+      ],
+      "correctReason": "a+b=3이므로 ③이 정답입니다.",
+      "commonMistake": "sin(bπx)=1의 첫 교점만 찾거나, 삼각형 높이를 a가 아닌 두 점의 x좌표 차로 착각하지 않도록 합니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_12": {
+      "id": "2022_09_common_12",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 12,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "확장 사인법칙으로 BC=2√21, BD=8을 구하고, 원주각 관계와 코사인법칙으로 CD=2를 얻어 합은 10입니다.",
+      "approach": "같은 원에 내접한 두 삼각형에 확장 사인법칙을 적용한 뒤 삼각형 BCD에서 코사인법칙을 사용합니다.",
+      "concepts": ["확장 사인법칙", "원주각", "코사인법칙"],
+      "steps": [
+        {
+          "title": "현 BC의 길이 구하기",
+          "expression": "BC=2R\\sin A=4\\sqrt7\\cdot\\frac{\\sqrt3}{2}=2\\sqrt{21}",
+          "explanation": "원의 반지름 R=2√7이고 ∠A=π/3입니다."
+        },
+        {
+          "title": "현 BD의 길이 구하기",
+          "expression": "BD=2R\\sin\\angle BCD=4\\sqrt7\\cdot\\frac{2\\sqrt7}{7}=8",
+          "explanation": "삼각형 BCD도 같은 원에 내접하므로 같은 반지름을 사용합니다."
+        },
+        {
+          "title": "각 BDC 확인하기",
+          "expression": "\\angle BDC=\\pi-\\angle BAC=\\frac{2\\pi}{3}",
+          "explanation": "A와 D는 현 BC의 서로 반대쪽 호에 있으므로 두 원주각은 서로 보각입니다."
+        },
+        {
+          "title": "CD와 최종값 구하기",
+          "expression": "84=64+CD^2+8CD\\Rightarrow CD=2,\\quad BD+CD=10",
+          "explanation": "∠BDC=120°를 끼인각으로 코사인법칙을 적용하고 양의 길이만 취합니다."
+        }
+      ],
+      "correctReason": "BD+CD=8+2=10이므로 ②가 정답입니다.",
+      "commonMistake": "∠BDC를 ∠A와 같다고 두면 안 됩니다. A와 D가 현 BC의 반대쪽에 있어 두 각의 합이 π입니다.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_20": {
+      "id": "2022_09_common_20",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 20,
+      "answer": 21,
+      "answerMark": null,
+      "summary": "절댓값 안의 부호가 x=0에서만 바뀌므로 식을 두 구간의 함수로 나누면, 수평선과 네 번 만나는 정수 k는 1부터 6까지이고 합은 21입니다.",
+      "approach": "f(x)+x의 부호를 먼저 결정하고, 방정식을 y=g(x)와 y=k의 교점 개수 문제로 바꿉니다.",
+      "concepts": [
+        "절댓값 함수의 구간 분리",
+        "도함수와 극값",
+        "방정식의 실근 개수"
+      ],
+      "steps": [
+        {
+          "title": "절댓값 경계 찾기",
+          "expression": "f(x)+x=\\frac{x}{2}(x^2-9x+22)",
+          "explanation": "이차식의 판별식이 -7이므로 항상 양수이고, 부호는 x의 부호와 같습니다."
+        },
+        {
+          "title": "구간별 함수 만들기",
+          "expression": "g(x)=f(x)+|f(x)+x|-6x=\\begin{cases}-7x&x<0\\\\x^3-9x^2+15x&x\\ge0\\end{cases}",
+          "explanation": "원래 방정식은 g(x)=k와 같습니다."
+        },
+        {
+          "title": "오른쪽 구간의 극값 구하기",
+          "expression": "g'(x)=3(x-1)(x-5),\\quad g(1)=7,\\quad g(5)=-25",
+          "explanation": "x≥0 구간에서 x=1은 극대, x=5는 극소입니다."
+        },
+        {
+          "title": "교점 네 개가 되는 k 찾기",
+          "expression": "0<k<7\\Rightarrow k=1,2,3,4,5,6",
+          "explanation": "왼쪽 직선에서 한 번, 오른쪽 삼차함수에서 세 번 만나려면 수평선이 0과 극댓값 7 사이에 있어야 합니다."
+        },
+        {
+          "title": "정수 합 계산하기",
+          "expression": "1+2+3+4+5+6=21",
+          "explanation": "끝값 0과 7에서는 중복 접점 때문에 서로 다른 실근 수가 네 개가 아닙니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 모든 정수 k의 합은 21입니다.",
+      "commonMistake": "k=0 또는 k=7을 포함하면 접하는 점이나 구간 경계의 근을 중복해서 세게 됩니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_21": {
+      "id": "2022_09_common_21",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 21,
+      "answer": 192,
+      "answerMark": null,
+      "summary": "두 곡선은 y=x-1에 대칭이고 A, B의 중점은 (5/2,3/2)입니다. AB=2√2로 A를 정하면 a=25/4이고 삼각형 넓이에서 50S=192가 나옵니다.",
+      "approach": "지수함수와 로그함수의 대칭축을 이용해 A와 B를 직접 찾고, 밑변 AB와 점 C에서 직선까지의 거리로 넓이를 구합니다.",
+      "concepts": [
+        "지수함수와 로그함수의 대칭",
+        "점과 직선 사이의 거리",
+        "삼각형의 넓이"
+      ],
+      "steps": [
+        {
+          "title": "선분 AB의 중점 찾기",
+          "expression": "M:\\quad y=x-1,\\quad y=-x+4\\Rightarrow M\\left(\\frac52,\\frac32\\right)",
+          "explanation": "두 곡선은 y=x-1에 대칭이고 직선 AB는 이 대칭축에 수직입니다."
+        },
+        {
+          "title": "점 A와 a 구하기",
+          "expression": "AB=2\\sqrt2\\Rightarrow A\\left(\\frac32,\\frac52\\right),\\quad a^{1/2}=\\frac52\\Rightarrow a=\\frac{25}{4}",
+          "explanation": "M에서 기울기 -1 방향으로 좌표가 각각 1만큼 달라지는 점이 A입니다."
+        },
+        {
+          "title": "점 C와 높이 구하기",
+          "expression": "C\\left(0,\\frac4{25}\\right),\\quad d(C,x+y-4=0)=\\frac{48\\sqrt2}{25}",
+          "explanation": "C는 지수곡선의 y절편이고, 이 거리가 밑변 AB에 대한 높이입니다."
+        },
+        {
+          "title": "넓이 계산하기",
+          "expression": "S=\\frac12\\cdot2\\sqrt2\\cdot\\frac{48\\sqrt2}{25}=\\frac{96}{25},\\quad50S=192",
+          "explanation": "밑변의 길이와 높이를 곱해 삼각형 넓이를 구합니다."
+        }
+      ],
+      "correctReason": "계산한 50S의 값이 192입니다.",
+      "commonMistake": "두 곡선의 대칭축을 y=x로 두지 않습니다. x방향 평행이동 때문에 대칭축은 y=x-1입니다.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_22": {
+      "id": "2022_09_common_22",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 22,
+      "answer": 108,
+      "answerMark": null,
+      "summary": "연속성과 네 근 조건을 함께 만족하려면 f는 이중근 α와 단순근 k를 갖고 k=α+3이어야 합니다. 근의 합 조건을 풀면 f(x)=(x+1)^2(x-2)이고 f(5)=108입니다.",
+      "approach": "|f|의 좌우 변화율이 단순근에서 부호가 바뀐다는 점으로 g의 연속 조건을 해석하고, f와 f'의 근을 이용해 g의 네 근을 정리합니다.",
+      "concepts": ["절댓값 함수의 미분", "함수의 연속", "삼차함수의 중근"],
+      "steps": [
+        {
+          "title": "가능한 삼차함수 모양 정하기",
+          "expression": "f(x)=(x-\\alpha)^2(x-k)",
+          "explanation": "네 근과 연속 조건을 동시에 만족하는 경우는 f가 이중근 α와 단순근 k를 갖는 경우입니다."
+        },
+        {
+          "title": "단순근에서 연속 조건 적용하기",
+          "expression": "f(k-3)=0\\Rightarrow k-3=\\alpha\\Rightarrow k=\\alpha+3",
+          "explanation": "|f|의 기울기 부호가 k에서 바뀌므로 앞의 인수 f(x-3)가 0이어야 좌우 극한이 이어집니다."
+        },
+        {
+          "title": "다른 임계점 구하기",
+          "expression": "f'(x)=(x-\\alpha)(3x-2k-\\alpha),\\quad\\beta=\\frac{\\alpha+2k}{3}",
+          "explanation": "g=0의 근에는 f'의 두 근 α, β와 f(x-3)의 근이 포함됩니다."
+        },
+        {
+          "title": "네 근의 합 사용하기",
+          "expression": "\\alpha+\\beta+k+(k+3)=7\\Rightarrow\\alpha+2k=3",
+          "explanation": "문제의 네 서로 다른 근은 α, β, k, k+3입니다."
+        },
+        {
+          "title": "함수와 함숫값 결정하기",
+          "expression": "k=\\alpha+3,\\ \\alpha+2k=3\\Rightarrow\\alpha=-1,\\ k=2,\\quad f(5)=6^2\\cdot3=108",
+          "explanation": "최고차항 계수가 1이므로 별도의 상수배는 없습니다."
+        }
+      ],
+      "correctReason": "f(x)=(x+1)^2(x-2)이므로 f(5)=108입니다.",
+      "commonMistake": "주어진 극한을 단순히 2f'(x)로 처리하면 f가 0인 점에서 |f|의 좌우 기울기 변화가 사라집니다.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_sta_26": {
+      "id": "2022_09_sta_26",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 26,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "두 공이 모두 흰색인 사건을 E, 주사위가 5 이상인 사건을 F로 두면 P(E∩F)=1/45, P(E)=7/45이므로 조건부확률은 1/7입니다.",
+      "approach": "주사위 결과에 따라 선택되는 주머니별 흰 공 두 개 확률을 구하고 조건부확률 공식을 적용합니다.",
+      "concepts": ["조건부확률", "조합", "전확률"],
+      "steps": [
+        {
+          "title": "주사위 사건의 확률",
+          "expression": "P(F)=\\frac13,\\quad P(F^c)=\\frac23",
+          "explanation": "5 또는 6이 나오면 A, 1부터 4가 나오면 B를 선택합니다."
+        },
+        {
+          "title": "주머니별 흰 공 확률",
+          "expression": "P(E|F)=\\frac{\\binom22}{\\binom62}=\\frac1{15},\\quad P(E|F^c)=\\frac{\\binom32}{\\binom62}=\\frac15",
+          "explanation": "각 주머니에서 두 공을 동시에 뽑는 조합의 비를 계산합니다."
+        },
+        {
+          "title": "E의 전체 확률",
+          "expression": "P(E)=\\frac13\\cdot\\frac1{15}+\\frac23\\cdot\\frac15=\\frac7{45}",
+          "explanation": "A를 고른 경우와 B를 고른 경우를 더합니다."
+        },
+        {
+          "title": "조건부확률 계산",
+          "expression": "P(F|E)=\\frac{P(E\\cap F)}{P(E)}=\\frac{1/45}{7/45}=\\frac17",
+          "explanation": "E∩F는 A를 선택하고 흰 공 두 개를 뽑는 경우입니다."
+        }
+      ],
+      "correctReason": "조건부확률이 1/7이므로 ①이 정답입니다.",
+      "commonMistake": "흰 공이 더 적은 A와 더 많은 B가 같은 확률로 선택된다고 두지 않습니다. 주사위 때문에 선택 확률은 1/3과 2/3입니다.",
+      "verification": {
+        "problemPage": 10,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_cal_26": {
+      "id": "2022_09_cal_26",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 26,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "x에서 정사각형 단면의 한 변은 곡선의 y값이므로 넓이는 (3x+1)/x²입니다. 이를 1부터 2까지 적분하면 1/2+3ln2입니다.",
+      "approach": "단면의 한 변 길이를 먼저 정하고 그 제곱을 단면적 함수로 만든 뒤 부피 적분을 계산합니다.",
+      "concepts": ["단면의 넓이", "정적분으로 구하는 부피", "로그 적분"],
+      "steps": [
+        {
+          "title": "단면적 구하기",
+          "expression": "S(x)=\\left(\\sqrt{\\frac{3x+1}{x^2}}\\right)^2=\\frac3x+\\frac1{x^2}",
+          "explanation": "단면이 정사각형이므로 곡선의 높이를 한 변으로 하여 제곱합니다."
+        },
+        {
+          "title": "부피 적분 세우기",
+          "expression": "V=\\int_1^2\\left(\\frac3x+\\frac1{x^2}\\right)dx",
+          "explanation": "x=1부터 x=2까지 단면적을 누적합니다."
+        },
+        {
+          "title": "적분값 계산하기",
+          "expression": "V=\\left[3\\ln x-\\frac1x\\right]_1^2=\\frac12+3\\ln2",
+          "explanation": "ln1=0을 사용해 끝값을 정리합니다."
+        }
+      ],
+      "correctReason": "부피가 1/2+3ln2이므로 ②가 정답입니다.",
+      "commonMistake": "곡선의 y값을 그대로 적분하면 넓이가 아니라 길이를 누적하게 됩니다. 정사각형 단면이므로 반드시 제곱합니다.",
+      "verification": {
+        "problemPage": 14,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_cal_27": {
+      "id": "2022_09_cal_27",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 27,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "첫 색칠 넓이는 (6-√3)/9이고, 다음 도형의 길이비는 (3-√3)/3이라 넓이비는 (4-2√3)/3입니다. 등비급수의 합은 √3/3입니다.",
+      "approach": "첫 단계의 필요한 선분 길이와 색칠 넓이를 구한 뒤, 반복되는 직사각형의 닮음비를 찾아 등비급수로 합합니다.",
+      "concepts": ["삼각비", "도형의 닮음", "등비급수"],
+      "steps": [
+        {
+          "title": "첫 도형의 선분 길이",
+          "expression": "C_1F_1=\\frac{\\sqrt3}{3},\\quad E_1F_1=\\frac{2\\sqrt3}{3},\\quad F_1H_1=\\frac23",
+          "explanation": "30°와 60°가 있는 직각삼각형에 탄젠트를 적용합니다."
+        },
+        {
+          "title": "첫 색칠 넓이",
+          "expression": "S_1=\\frac{6-\\sqrt3}{9}",
+          "explanation": "두 큰 삼각형의 넓이에서 겹치는 두 작은 삼각형의 넓이를 빼서 정리합니다."
+        },
+        {
+          "title": "반복 도형의 넓이비",
+          "expression": "r=\\left(\\frac{3-\\sqrt3}{3}\\right)^2=\\frac{4-2\\sqrt3}{3}",
+          "explanation": "다음 직사각형의 길이비를 제곱해야 넓이비가 됩니다."
+        },
+        {
+          "title": "무한합 계산하기",
+          "expression": "\\lim_{n\\to\\infty}S_n=\\frac{S_1}{1-r}=\\frac{\\sqrt3}{3}",
+          "explanation": "0<r<1이므로 등비급수가 수렴합니다."
+        }
+      ],
+      "correctReason": "극한값이 √3/3이므로 ③이 정답입니다.",
+      "commonMistake": "닮음비를 그대로 공비로 쓰지 않습니다. 문제에서 더하는 것은 넓이이므로 길이비를 제곱해야 합니다.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_cal_28": {
+      "id": "2022_09_cal_28",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 28,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "사인법칙으로 BP=4sinθ, 직각삼각형에서 BR=2(1+cosθ)sinθ를 얻어 f(θ)를 만든 뒤 적분하면 (2√3-3)/2입니다.",
+      "approach": "PR을 직접 좌표로 구하지 않고 같은 직선 위의 BP와 BR 차로 표현해 삼각함수 적분으로 바꿉니다.",
+      "concepts": ["사인법칙", "직각삼각형의 삼각비", "삼각함수의 적분"],
+      "steps": [
+        {
+          "title": "QB와 BR 구하기",
+          "expression": "QB=2(1+\\cos\\theta),\\quad BR=2(1+\\cos\\theta)\\sin\\theta",
+          "explanation": "∠QBR=π/2-θ이므로 BR=QB cos(π/2-θ)입니다."
+        },
+        {
+          "title": "BP 구하기",
+          "expression": "\\frac{BP}{\\sin\\theta}=4\\Rightarrow BP=4\\sin\\theta",
+          "explanation": "삼각형 APB의 외접원 반지름이 2이므로 확장 사인법칙을 씁니다."
+        },
+        {
+          "title": "거리 함수 만들기",
+          "expression": "f(\\theta)=BP-BR=2\\sin\\theta-2\\sin\\theta\\cos\\theta",
+          "explanation": "R이 선분 BP 위에 있으므로 PR=BP-BR입니다."
+        },
+        {
+          "title": "정적분 계산하기",
+          "expression": "\\int_{\\pi/6}^{\\pi/3}f(\\theta)d\\theta=\\left[-2\\cos\\theta-\\sin^2\\theta\\right]_{\\pi/6}^{\\pi/3}=\\frac{2\\sqrt3-3}{2}",
+          "explanation": "두 항을 각각 적분한 뒤 경계값을 대입합니다."
+        }
+      ],
+      "correctReason": "적분값이 (2√3-3)/2이므로 ①이 정답입니다.",
+      "commonMistake": "직각삼각형 QRB에서 구한 것은 QR이 아니라 BR입니다. 또한 f는 PR이므로 BP에서 BR을 빼야 합니다.",
+      "verification": {
+        "problemPage": 15,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_geo_26": {
+      "id": "2022_09_geo_26",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 26,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "포물선의 정의로 AB=AF이고 AB=BF이므로 삼각형 ABF는 정삼각형입니다. A, C의 x좌표를 p로 나타내 길이 조건에 대입하면 p=9/10입니다.",
+      "approach": "포물선 위 점에서 초점과 준선까지 거리가 같다는 성질을 두 점 A, C에 적용합니다.",
+      "concepts": ["포물선의 정의", "정삼각형", "선분의 정사영"],
+      "steps": [
+        {
+          "title": "정삼각형 확인하기",
+          "expression": "AB=AF,\\ AB=BF\\Rightarrow ABF\\text{는 정삼각형}",
+          "explanation": "A가 포물선 위에 있으므로 초점 거리 AF와 준선 거리 AB가 같습니다."
+        },
+        {
+          "title": "A와 C의 x좌표 구하기",
+          "expression": "x_A=3p,\\quad x_C=\\frac p3",
+          "explanation": "∠OFB=60°에서 BF cos60°=2p, CF cos60°=p-x_C를 각각 사용합니다."
+        },
+        {
+          "title": "주어진 길이 조건 정리하기",
+          "expression": "BC+3CF=BF+2CF=x_A+2x_C+3p=6",
+          "explanation": "B, C, F가 한 선분 위에 있는 순서를 이용해 BC를 BF-CF로 바꿉니다."
+        },
+        {
+          "title": "p 결정하기",
+          "expression": "3p+\\frac{2p}{3}+3p=6\\Rightarrow p=\\frac9{10}",
+          "explanation": "모든 길이를 p 하나로 표현한 뒤 일차방정식을 풉니다."
+        }
+      ],
+      "correctReason": "p=9/10이므로 ③이 정답입니다.",
+      "commonMistake": "포물선의 정의는 초점까지의 거리와 준선까지의 수직거리가 같다는 뜻입니다. x좌표 자체와 바로 같다고 두지 않습니다.",
+      "verification": {
+        "problemPage": 18,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_geo_27": {
+      "id": "2022_09_geo_27",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 27,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "A에서 BC로 내린 수선의 발 P'에서 AP+DP가 최소입니다. 밑면의 높이 DP'=√3, 공간의 길이 AP'=2√3이므로 최솟값은 3√3입니다.",
+      "approach": "삼수선의 정리로 A와 D에서 BC에 내린 수선의 발이 같음을 보이고, 두 거리의 합을 동시에 최소화합니다.",
+      "concepts": [
+        "삼수선의 정리",
+        "공간에서의 피타고라스 정리",
+        "거리 합의 최솟값"
+      ],
+      "steps": [
+        {
+          "title": "공통 수선의 발 정하기",
+          "expression": "AP'\\perp BC,\\quad DP'\\perp BC",
+          "explanation": "AD가 평면 BCD에 수직이므로 삼수선의 정리에 따라 같은 점 P'에서 두 수선이 만납니다."
+        },
+        {
+          "title": "밑면의 높이 구하기",
+          "expression": "BC=4,\\quad DP'=\\frac{DB\\cdot DC}{BC}=\\sqrt3",
+          "explanation": "직각삼각형 BCD의 넓이를 두 방식으로 계산합니다."
+        },
+        {
+          "title": "AP' 구하기",
+          "expression": "AP'=\\sqrt{AD^2+DP'^2}=\\sqrt{9+3}=2\\sqrt3",
+          "explanation": "삼각형 ADP'는 D에서 직각입니다."
+        },
+        {
+          "title": "최솟값 계산하기",
+          "expression": "AP+DP\\ge AP'+DP'=3\\sqrt3",
+          "explanation": "P=P'일 때 두 거리의 합이 동시에 최소가 됩니다."
+        }
+      ],
+      "correctReason": "최솟값은 3√3이므로 ①이 정답입니다.",
+      "commonMistake": "AP와 DP를 서로 다른 점에서 각각 최소화하면 안 됩니다. 같은 움직이는 점 P에서의 합을 최소화해야 합니다.",
+      "verification": {
+        "problemPage": 19,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_geo_28": {
+      "id": "2022_09_geo_28",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 28,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "접선의 x절편은 S=(8,0), 초점은 F=(2,0), F'=(-2,0)입니다. 닮은 두 삼각형의 둘레비가 2:5이고 작은 삼각형의 둘레가 12라서 답은 30입니다.",
+      "approach": "타원의 접선과 초점을 먼저 구한 뒤 평행선으로 생기는 닮은 삼각형에 타원의 거리합 성질을 결합합니다.",
+      "concepts": ["타원의 접선", "타원의 초점 거리합", "삼각형의 닮음"],
+      "steps": [
+        {
+          "title": "접선과 초점 구하기",
+          "expression": "l:\\quad \\frac{x}{8}+\\frac{y}{4}=1,\\quad S=(8,0),\\quad F=(2,0),\\quad F'=(-2,0)",
+          "explanation": "점 P=(2,3)을 타원의 접선 공식에 대입하고 c²=16-12를 사용합니다."
+        },
+        {
+          "title": "닮음비 찾기",
+          "expression": "\\triangle F'FQ\\sim\\triangle F'SR,\\quad F'F:F'S=4:10=2:5",
+          "explanation": "FQ와 SR이 평행하고 F'의 공통 각을 가지므로 두 삼각형은 닮았습니다."
+        },
+        {
+          "title": "작은 삼각형의 둘레",
+          "expression": "F'F+FQ+QF'=4+8=12",
+          "explanation": "타원 위의 Q에서 두 초점까지 거리의 합은 장축 길이 8입니다."
+        },
+        {
+          "title": "큰 삼각형의 둘레",
+          "expression": "12:L=2:5\\Rightarrow L=30",
+          "explanation": "닮은 도형의 둘레비는 닮음비와 같습니다."
+        }
+      ],
+      "correctReason": "삼각형 SRF'의 둘레가 30이므로 ①이 정답입니다.",
+      "commonMistake": "타원의 장축 길이 8은 FQ+QF'의 합입니다. 초점 사이 거리 F'F=4와 혼동하지 않습니다.",
+      "verification": {
+        "problemPage": 19,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_geo_29": {
+      "id": "2022_09_geo_29",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 29,
+      "answer": 40,
+      "answerMark": null,
+      "summary": "두 접힌 반원의 중간 높이 평면을 이용해 두 평면의 각을 선분의 각으로 바꾸면 cosθ=2/√7이고, 70cos²θ=40입니다.",
+      "approach": "공간도형을 그대로 계산하지 않고 P를 지나는 평행한 보조 평면과 정사영을 사용해 두 직각삼각형의 길이로 환원합니다.",
+      "concepts": ["두 평면이 이루는 각", "정사영", "삼수선의 정리"],
+      "steps": [
+        {
+          "title": "중간 높이의 점 만들기",
+          "expression": "PM_2=\\sqrt{13},\\quad M_1M_2=\\sqrt5,\\quad PM_1=4",
+          "explanation": "P를 지나 밑면과 평행한 평면이 QC, QH와 만나는 두 점을 잡아 길이를 밑면의 정사영으로 계산합니다."
+        },
+        {
+          "title": "기울어진 평면의 보조 길이",
+          "expression": "PQ=4,\\quad QM_1=2\\sqrt2,\\quad\\cos\\alpha=\\frac{\\sqrt2}{4}",
+          "explanation": "삼각형 PM₁Q에서 M₁ 방향 성분을 구합니다."
+        },
+        {
+          "title": "공통 수선 길이 구하기",
+          "expression": "M_1Q'=1,\\quad QQ'=\\sqrt7,\\quad M_2Q'=2",
+          "explanation": "Q에서 PM₁에 내린 수선의 발 Q'와 삼수선의 정리를 사용합니다."
+        },
+        {
+          "title": "평면각과 답 계산하기",
+          "expression": "\\cos\\theta=\\frac{M_2Q'}{QQ'}=\\frac2{\\sqrt7},\\quad70\\cos^2\\theta=40",
+          "explanation": "두 평면에 각각 놓인 공통 수직선이 이루는 각이 θ입니다."
+        }
+      ],
+      "correctReason": "cos²θ=4/7이므로 70cos²θ=40입니다.",
+      "commonMistake": "그림에 보이는 선분 사이의 각을 곧바로 평면각으로 쓰면 안 됩니다. 교선에 각각 수직인 두 직선의 각을 찾아야 합니다.",
+      "verification": {
+        "problemPage": 20,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

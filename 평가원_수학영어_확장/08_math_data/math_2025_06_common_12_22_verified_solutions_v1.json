@@ -1,0 +1,418 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 6월 모의평가 수학 공통 12~22번 중 원천 일치 10문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 10,
+    "readyCount": 10,
+    "questionFingerprint": "0ace671ed70ba59288eb0946700efa14af2ecd872985cc1c8e5fb956e1dc0a12",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5086962&lev=0&m=0403&page=4&s=suneung&searchType=S&statusYN=W",
+      "independentSourceUrls": [
+        "https://horaeng.com/279",
+        "https://orbi.kr/00068355597"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4"
+        }
+      ],
+      "answerFilename": "kice-answer.pdf",
+      "answerSha256": "655f41600d4825dceca6d0248ce0e02916ee73a2e3ad0cd2d596fba8e843db8b",
+      "solutionArtifacts": [
+        {
+          "filename": "orbi-solution.pdf",
+          "sha256": "2fc1d295bfdadeda8695f20739a53c629e27f8370cc27f173eff05b5707c8e89"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지·정답표와 동일 파일 독립 보관본을 대조하고 독립 풀이 자료와 직접 계산으로 검증했습니다. 18번은 원본의 ak²가 DB에서 (ak)²로 묶여 있어 이 파일에서 제외하고 별도 차단합니다."
+  },
+  "items": {
+    "2025_06_common_12": {
+      "id": "2025_06_common_12",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 12,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "2^t=T로 두고 AB/CD=T−1=2를 풀면 T=3이며, 사다리꼴 넓이는 7/2 log₂3−7/4입니다.",
+      "approach": "두 지수함수 위 점의 좌표를 T 하나로 표현해 평행한 두 변과 그 사이 거리를 구합니다.",
+      "concepts": ["지수함수와 로그함수", "사다리꼴의 넓이"],
+      "steps": [
+        {
+          "title": "좌표 매개화",
+          "expression": "T=2^t>1,\\quad A=\\left(\\log_2T,1-\\frac1T\\right),\\quad C=\\left(\\log_2\\left(1-\\frac1T\\right),1-\\frac1T\\right)",
+          "explanation": "A의 x좌표를 t로 두고 같은 높이의 C 좌표를 로그로 나타냅니다."
+        },
+        {
+          "title": "길이 조건",
+          "expression": "\\frac{AB}{CD}=T-1=2\\Rightarrow T=3",
+          "explanation": "AB=(T²−T+1)/T, CD=(T²−T+1)/(T(T−1))이므로 비는 T−1입니다."
+        },
+        {
+          "title": "넓이",
+          "expression": "\\frac{AB+CD}{2}\\cdot\\Delta x=\\frac74\\left(2\\log_23-1\\right)=\\frac72\\log_23-\\frac74",
+          "explanation": "AB=7/3, CD=7/6, 두 수직선 사이 거리는 2log₂3−1입니다."
+        }
+      ],
+      "correctReason": "사각형의 두 수직변이 평행하므로 좌표로 구한 길이와 거리만으로 넓이가 결정됩니다.",
+      "commonMistake": "AB=2CD를 두 그래프의 y값 비로 바꾸지 말고 각 세로선에서의 차를 계산하세요.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_13": {
+      "id": "2025_06_common_13",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 13,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "두 넓이의 차는 0부터 2까지 곡선−직선의 정적분이므로 m=−4/3입니다.",
+      "approach": "교점 위치를 따로 풀지 않고 부호가 반대인 두 영역의 넓이 차를 하나의 정적분으로 합칩니다.",
+      "concepts": ["정적분과 넓이", "넓이의 차"],
+      "steps": [
+        {
+          "title": "차를 정적분으로",
+          "expression": "B-A=\\int_0^2\\left(\\frac14x^3+\\frac12x-(mx+2)\\right)dx",
+          "explanation": "왼쪽에서는 직선이 위, 오른쪽에서는 곡선이 위이므로 B−A가 곡선−직선의 전체 적분과 같습니다."
+        },
+        {
+          "title": "적분 계산",
+          "expression": "\\int_0^2\\left(\\frac14x^3+\\left(\\frac12-m\\right)x-2\\right)dx=-2-2m",
+          "explanation": "각 항을 0부터 2까지 적분합니다."
+        },
+        {
+          "title": "m 결정",
+          "expression": "-2-2m=\\frac23\\Rightarrow m=-\\frac43",
+          "explanation": "m<−1 조건에도 맞으므로 정답은 ③입니다."
+        }
+      ],
+      "correctReason": "넓이 차에서는 공통 교점이 자연스럽게 소거되어 하나의 정적분으로 정확히 계산됩니다.",
+      "commonMistake": "A와 B를 각각 절댓값 적분으로 길게 구하다가 부호를 뒤집지 마세요.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_14": {
+      "id": "2025_06_common_14",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 14,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "정의역과 로그 부등식을 함께 세면 해가 12개인 k는 3과 6이고 합은 9입니다.",
+      "approach": "로그의 진수 조건을 먼저 정리한 뒤 자연수 n의 상한 두 개를 비교합니다.",
+      "concepts": ["로그 부등식", "진수 조건"],
+      "steps": [
+        {
+          "title": "정의역",
+          "expression": "1\\le n\\le14,\\qquad 75-kn>0",
+          "explanation": "−n²+10n+75>0은 자연수 n을 1부터 14로 제한합니다."
+        },
+        {
+          "title": "부등식 변형",
+          "expression": "\\log_4\\frac{-n^2+10n+75}{75-kn}>0\\Rightarrow n<k+10",
+          "explanation": "밑 4가 1보다 크고 진수가 양수이므로 분자가 분모보다 커야 합니다."
+        },
+        {
+          "title": "개수 확인",
+          "expression": "n<\\min\\left(k+10,\\frac{75}{k},15\\right)\\Rightarrow k=3,6",
+          "explanation": "자연수 해가 정확히 12개가 되는 두 k의 합은 9입니다."
+        }
+      ],
+      "correctReason": "로그값의 양수 조건뿐 아니라 두 진수의 양수 조건을 동시에 반영했습니다.",
+      "commonMistake": "로그를 합친 뒤 75−kn>0 조건을 버리면 허용되지 않는 n이 포함됩니다.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_15": {
+      "id": "2025_06_common_15",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 15,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "두 적분 부등식이 g의 영점을 1로 고정해 k=2가 되고, 증가 조건 아래 g(3)의 최솟값은 5−√6입니다.",
+      "approach": "절댓값 가중치가 양수인 구간에서 적분 부호가 강제하는 g의 영점을 찾고, 미분가능성과 증가 조건을 계수 제한으로 바꿉니다.",
+      "concepts": ["정적분 부등식", "삼차함수의 증가 조건"],
+      "steps": [
+        {
+          "title": "영점과 k",
+          "expression": "0\\le\\frac{k}{2}\\le1,\\quad \\frac{k}{2}\\ge1\\Rightarrow k=2",
+          "explanation": "두 가중치는 각각 필요한 구간에서만 양수이고 g가 증가하므로 적분이 항상 음수가 되지 않으려면 선형부분의 영점 k/2가 1이어야 합니다."
+        },
+        {
+          "title": "삼차식 표현",
+          "expression": "f(x)=(x-2)^3+A(x-2)^2+2(x-2)+2",
+          "explanation": "k=2에서 미분가능하려면 f(2)=2, f'(2)=2이고 최고차항 계수는 1입니다."
+        },
+        {
+          "title": "증가 조건과 최솟값",
+          "expression": "f'(x)=3u^2+2Au+2\\ge0\\ (u>0)\\Rightarrow A\\ge-\\sqrt6,\\quad g(3)=A+5\\ge5-\\sqrt6",
+          "explanation": "이차식의 최소값 조건으로 A의 하한을 구하면 정답은 ②입니다."
+        }
+      ],
+      "correctReason": "적분 조건, 접합점의 미분가능성, 전체 증가 조건을 순서대로 모두 사용했습니다.",
+      "commonMistake": "적분 안의 절댓값을 전 구간에서 같은 식으로 풀거나 k를 정하기 전에 삼차식부터 임의로 두지 마세요.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_16": {
+      "id": "2025_06_common_16",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 16,
+      "answer": "7",
+      "answerMark": null,
+      "summary": "밑 1/2의 로그를 음의 밑 2 로그로 바꾸면 (x+1)(x−3)=32이고, 정의역에 맞는 해는 7입니다.",
+      "approach": "로그의 밑을 2로 통일하고 진수 조건으로 이차방정식의 해를 거릅니다.",
+      "concepts": ["로그의 밑 변환", "로그의 진수 조건"],
+      "steps": [
+        {
+          "title": "정의역과 밑 통일",
+          "expression": "x>3,\\qquad \\log_{1/2}(x-3)=-\\log_2(x-3)",
+          "explanation": "두 진수가 양수여야 하고 log base 1/2는 밑 2 로그의 음수입니다."
+        },
+        {
+          "title": "로그 합치기",
+          "expression": "\\log_2(x+1)+\\log_2(x-3)=5\\Rightarrow(x+1)(x-3)=32",
+          "explanation": "우변 로그를 왼쪽으로 옮긴 뒤 합의 법칙을 씁니다."
+        },
+        {
+          "title": "해 선택",
+          "expression": "x^2-2x-35=0\\Rightarrow x=7,-5\\Rightarrow x=7",
+          "explanation": "x>3인 해만 남깁니다."
+        }
+      ],
+      "correctReason": "대수적으로 얻은 두 해 중 로그 정의역을 만족하는 값만 선택했습니다.",
+      "commonMistake": "밑이 1/2일 때 로그 앞에 음수가 생긴다는 점을 빠뜨리지 마세요.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_17": {
+      "id": "2025_06_common_17",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 17,
+      "answer": "23",
+      "answerMark": null,
+      "summary": "도함수를 적분하고 f(0)=3을 적용하면 f(x)=2x³+2x+3이므로 f(2)=23입니다.",
+      "approach": "부정적분으로 원함수를 구한 뒤 초기조건으로 적분상수를 정합니다.",
+      "concepts": ["부정적분", "초기조건"],
+      "steps": [
+        {
+          "title": "원함수",
+          "expression": "f(x)=\\int(6x^2+2)dx=2x^3+2x+C",
+          "explanation": "도함수를 항별로 적분합니다."
+        },
+        {
+          "title": "상수 결정",
+          "expression": "f(0)=C=3",
+          "explanation": "주어진 함수값으로 적분상수를 정합니다."
+        },
+        {
+          "title": "값 계산",
+          "expression": "f(2)=2\\cdot8+4+3=23",
+          "explanation": "최종 답은 23입니다."
+        }
+      ],
+      "correctReason": "도함수와 한 점의 함수값이 원함수를 유일하게 결정합니다.",
+      "commonMistake": "적분상수 C를 빼먹거나 6x²의 적분을 6x³으로 쓰지 마세요.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_19": {
+      "id": "2025_06_common_19",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 19,
+      "answer": "16",
+      "answerMark": null,
+      "summary": "두 번째 방향 전환 시각은 3+4/k이고 그때 위치가 3/2−8/k이므로 k=16입니다.",
+      "approach": "속도의 부호가 바뀌는 두 시각을 찾고, 두 번째 시각까지 속도를 구간별 적분합니다.",
+      "concepts": ["속도와 위치", "구간별 정적분"],
+      "steps": [
+        {
+          "title": "방향 전환",
+          "expression": "v(t)=0\\Rightarrow t=2,\\quad t=3+\\frac4k",
+          "explanation": "첫 구간에서는 t=2, 둘째 구간에서는 k(t−3)−4=0일 때 부호가 바뀝니다."
+        },
+        {
+          "title": "두 번째 시각의 위치",
+          "expression": "x=\\int_0^3(-t^2+t+2)dt+\\int_3^{3+4/k}(k(t-3)-4)dt=\\frac32-\\frac8k",
+          "explanation": "출발점이 원점이므로 속도의 누적 적분이 위치입니다."
+        },
+        {
+          "title": "k 결정",
+          "expression": "\\frac32-\\frac8k=1\\Rightarrow k=16",
+          "explanation": "k는 양수 조건에도 맞습니다."
+        }
+      ],
+      "correctReason": "방향 전환은 속도가 0인 것뿐 아니라 실제로 부호가 바뀌는 시각으로 확인했습니다.",
+      "commonMistake": "t=3에서 속도식이 바뀐다는 이유만으로 방향도 바뀐다고 판단하지 마세요.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_20": {
+      "id": "2025_06_common_20",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 20,
+      "answer": "24",
+      "answerMark": null,
+      "summary": "교점 수를 b=1,2,3,4,5로 나누어 세면 a+b의 최솟값은 3, 최댓값은 8이어서 곱은 24입니다.",
+      "approach": "sin x=r의 해 개수가 r=0, ±1, |r|<1에서 달라지는 점과 x=π 교점의 중복을 함께 셉니다.",
+      "concepts": ["삼각함수 방정식", "집합의 원소 개수"],
+      "steps": [
+        {
+          "title": "수평선 교점",
+          "expression": "a\\sin x+b=c\\Rightarrow\\sin x=\\frac{c-b}{a}\\quad(c=1,3)",
+          "explanation": "비가 0이면 열린구간에서 해가 x=π 하나, ±1이면 하나, 절댓값이 1보다 작고 0이 아니면 둘입니다."
+        },
+        {
+          "title": "가능한 순서쌍",
+          "expression": "(a,b)\\in\\{(3,1),(4,1),(5,1),(1,2),(3,3),(4,3),(5,3),(2,4),(3,5)\\}",
+          "explanation": "x=π에서 y=b인 점과 y=1 또는 3의 교점이 겹치는 경우까지 포함해 합집합 원소가 3개인 쌍만 남깁니다."
+        },
+        {
+          "title": "최대·최소",
+          "expression": "m=1+2=3,\\quad M=5+3=3+5=8,\\quad M m=24",
+          "explanation": "가능한 쌍의 a+b 최솟값과 최댓값을 곱합니다."
+        }
+      ],
+      "correctReason": "각 b에 대해 수평선 두 개의 교점 수와 A와의 중복을 빠짐없이 구분했습니다.",
+      "commonMistake": "sin x=0은 (0,2π)에서 x=π 하나뿐이고, 그 점이 A와 겹칠 수 있음을 놓치지 마세요.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_21": {
+      "id": "2025_06_common_21",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 21,
+      "answer": "15",
+      "answerMark": null,
+      "summary": "y=8/3이 x=2에서 사차함수와 접하므로 f(x)−8/3에 (x−2)²을 묶고 조건을 적용하면 f(3)=15입니다.",
+      "approach": "도함수의 마지막 비양수 지점과 세 교점이 처음 생기는 높이를 사차함수의 접점 구조로 번역합니다.",
+      "concepts": ["사차함수의 극값", "중근과 접선"],
+      "steps": [
+        {
+          "title": "접점 구조",
+          "expression": "f(x)=(x-2)^2(x^2+ax+b)+\\frac83",
+          "explanation": "조건 (가), (나)에 따라 x=2가 높이 8/3인 극솟값 접점이고 최고차항 계수는 1입니다."
+        },
+        {
+          "title": "계수 결정",
+          "expression": "f(0)=4b+\\frac83=0\\Rightarrow b=-\\frac23,\\quad f'(1)=0\\Rightarrow a=\\frac43",
+          "explanation": "원점 조건과 x=1에서의 정지 조건을 차례로 적용합니다."
+        },
+        {
+          "title": "요구값",
+          "expression": "f(3)=\\left(9+4-\\frac23\\right)+\\frac83=15",
+          "explanation": "정해진 a, b를 대입하면 최종 답은 15입니다."
+        }
+      ],
+      "correctReason": "그래프 조건에서 얻은 x=2의 이중근 구조와 두 추가 조건이 계수를 유일하게 정합니다.",
+      "commonMistake": "‘원소가 3개 이상’인 높이 8/3을 단순한 함수값 하나로만 보고 접점의 중근 구조를 놓치지 마세요.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_common_22": {
+      "id": "2025_06_common_22",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 공통",
+      "questionNumber": 22,
+      "answer": "231",
+      "answerMark": null,
+      "summary": "a₁=α로 두고 n=4, 9의 특별 갱신 여부를 구간별로 나누면 α=−7/4, −11, 12이고 곱은 231입니다.",
+      "approach": "제곱수 n=4, 9에서만 점화식의 첫째 줄이 가능하므로 그 직전 항의 부호에 따라 네 구간으로 나눕니다.",
+      "concepts": ["점화식", "구간별 경우 분류"],
+      "steps": [
+        {
+          "title": "초기 항",
+          "expression": "a_1=\\alpha,\\quad a_2=-\\alpha,\\quad a_3=-\\alpha+1,\\quad a_4=-\\alpha+2",
+          "explanation": "n=2,3은 제곱수가 아니므로 매번 1을 더합니다."
+        },
+        {
+          "title": "n=4와 9 분류",
+          "expression": "\\alpha<2\\Rightarrow a_5=\\alpha+2,\\ a_9=\\alpha+6;\\qquad \\alpha\\ge2\\Rightarrow a_5=-\\alpha+3,\\ a_9=-\\alpha+7",
+          "explanation": "a₄의 부호가 n=4의 특별 갱신 여부를 정하고, 이어서 a₉의 부호가 두 번째 특별 갱신 여부를 정합니다."
+        },
+        {
+          "title": "a₁ 후보와 곱",
+          "expression": "a_{15}=1\\Rightarrow\\alpha\\in\\left\\{-\\frac74,-11,12\\right\\},\\quad\\left(-\\frac74\\right)(-11)(12)=231",
+          "explanation": "네 구간의 선형식을 풀고 해당 구간에 속하지 않는 α=−4는 제외합니다."
+        }
+      ],
+      "correctReason": "점화식이 달라질 수 있는 두 제곱수 시점의 부호 조건을 모두 확인한 뒤 후보를 걸렀습니다.",
+      "commonMistake": "n이 제곱수라는 조건만 보고 aₙ>0 조건을 생략하거나, 구한 α가 처음 가정한 구간에 속하는지 확인하지 않는 실수를 피하세요.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

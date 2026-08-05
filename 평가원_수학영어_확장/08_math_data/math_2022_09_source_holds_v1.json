@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "schemaVersion": "math-source-hold-v1",
+    "status": "internal_source_hold",
+    "publicConnected": false,
+    "itemCount": 1,
+    "questionFingerprint": "a25083d234cdf4dbd42afb1d5492aeb7ea16903884da44121c517bdd2ed534b6",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040410/ect_7f132255-11e7-4cae-8313-a8150cd445731649a9911b68586.zip",
+      "archiveSha256": "1d1f16a13a6c326bd3e952765fcfe80d8ba8cebd23810354ab412c2558d77878",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "ae723d4c3892cbeb12836301c69cabb6ed432845a3be259ab28b6916131b75bd",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "8c1541d69fb9fd8b26a1e5a4ee85f8def670196a7cd6b474fc3404a07a09848d"
+    }
+  },
+  "items": {
+    "2022_09_common_11": {
+      "id": "2022_09_common_11",
+      "status": "blocked_by_source_integrity",
+      "issueCode": "problem_text_grouping_error",
+      "dbTextFragment": "{ax}^{2}",
+      "officialTextFragment": "ax^{2}",
+      "correctionRequired": "problem_latex",
+      "reason": "공식 문제의 항은 a 곱하기 x의 제곱인 ax²이지만 내부 문제 텍스트는 ax 전체를 제곱하는 (ax)²로 묶여 계수의 의미가 달라짐",
+      "verification": {
+        "problemPage": 4,
+        "problemMatchedPdf": false,
+        "sourceDifferenceConfirmed": true,
+        "releaseBlocked": true
+      }
+    }
+  }
+}

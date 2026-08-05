@@ -1,0 +1,211 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2022학년도 9월 모의평가 공통 6~9번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 4,
+    "readyCount": 4,
+    "questionFingerprint": "b763cd01a800db77681142dc75d5d82d07644c036b71b78bdd2d5bec92bf08da",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.jne.go.kr/upload/jinro/na/bbs_395/ntt_5040410/ect_7f132255-11e7-4cae-8313-a8150cd445731649a9911b68586.zip",
+      "archiveSha256": "1d1f16a13a6c326bd3e952765fcfe80d8ba8cebd23810354ab412c2558d77878",
+      "problemFilename": "2교시_수학영역_문제지.pdf",
+      "problemSha256": "ae723d4c3892cbeb12836301c69cabb6ed432845a3be259ab28b6916131b75bd",
+      "answerFilename": "2교시_수학영역_정답표.pdf",
+      "answerSha256": "8c1541d69fb9fd8b26a1e5a4ee85f8def670196a7cd6b474fc3404a07a09848d"
+    },
+    "note": "공식 문제지·정답표를 화면 대조하고 기존 미검증 logicFlow와 독립적으로 다시 계산한 내부 풀이 후보"
+  },
+  "items": {
+    "2022_09_common_6": {
+      "id": "2022_09_common_6",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 6,
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "두 분수를 통분하면 2tan²θ=4이고, θ가 제2사분면에 있으므로 cosθ=-√3/3입니다.",
+      "approach": "식을 sin²θ와 cos²θ의 비로 정리한 뒤, 사분면 조건으로 코사인의 부호를 결정합니다.",
+      "concepts": [
+        "삼각함수의 기본 관계",
+        "탄젠트와 코사인의 관계",
+        "사분면별 부호"
+      ],
+      "steps": [
+        {
+          "title": "분수식 통분하기",
+          "expression": "\\frac{\\sin\\theta}{1-\\sin\\theta}-\\frac{\\sin\\theta}{1+\\sin\\theta}=\\frac{2\\sin^2\\theta}{1-\\sin^2\\theta}",
+          "explanation": "두 분수의 공통분모를 만들고 분자를 정리합니다."
+        },
+        {
+          "title": "탄젠트로 바꾸기",
+          "expression": "\\frac{2\\sin^2\\theta}{\\cos^2\\theta}=2\\tan^2\\theta=4\\Rightarrow\\tan^2\\theta=2",
+          "explanation": "1-sin²θ=cos²θ를 사용하면 탄젠트의 제곱이 나타납니다."
+        },
+        {
+          "title": "코사인의 크기 구하기",
+          "expression": "\\cos^2\\theta=\\frac{1}{1+\\tan^2\\theta}=\\frac13",
+          "explanation": "1+tan²θ=1/cos²θ 관계를 적용합니다."
+        },
+        {
+          "title": "부호 결정하기",
+          "expression": "\\frac{\\pi}{2}<\\theta<\\pi\\Rightarrow\\cos\\theta=-\\frac{\\sqrt3}{3}",
+          "explanation": "제2사분면에서는 코사인이 음수이므로 음의 값을 선택합니다."
+        }
+      ],
+      "correctReason": "cosθ=-√3/3이므로 선지 ①이 정답입니다.",
+      "commonMistake": "cos²θ=1/3에서 곧바로 양의 제곱근만 택하지 마세요. 제2사분면 조건이 음의 부호를 결정합니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_7": {
+      "id": "2022_09_common_7",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 7,
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "각 항을 두 역수의 차로 바꾸면 합이 소거되고, n=12를 대입해 a₁₃=-3을 얻습니다.",
+      "approach": "분모의 곱을 보고 일반항을 1/aₖ-1/aₖ₊₁로 분해한 뒤 망원합을 사용합니다.",
+      "concepts": [
+        "부분분수 분해",
+        "망원합",
+        "수열의 일반항"
+      ],
+      "steps": [
+        {
+          "title": "일반항 분해하기",
+          "expression": "\\frac{a_{k+1}-a_k}{a_ka_{k+1}}=\\frac1{a_k}-\\frac1{a_{k+1}}",
+          "explanation": "두 역수의 차를 통분하면 주어진 합의 일반항과 같습니다."
+        },
+        {
+          "title": "합 소거하기",
+          "expression": "\\sum_{k=1}^{n}\\left(\\frac1{a_k}-\\frac1{a_{k+1}}\\right)=\\frac1{a_1}-\\frac1{a_{n+1}}=\\frac1n",
+          "explanation": "가운데 항들이 앞뒤에서 한 번씩 나타나 모두 지워집니다."
+        },
+        {
+          "title": "n=12 대입하기",
+          "expression": "-\\frac14-\\frac1{a_{13}}=\\frac1{12}",
+          "explanation": "a₁=-4이고 구하려는 항이 a₁₃이므로 n=12를 사용합니다."
+        },
+        {
+          "title": "a₁₃ 구하기",
+          "expression": "-\\frac1{a_{13}}=\\frac13\\Rightarrow a_{13}=-3",
+          "explanation": "양변을 정리한 뒤 역수를 취합니다."
+        }
+      ],
+      "correctReason": "a₁₃=-3이므로 선지 ④가 정답입니다.",
+      "commonMistake": "a₁₃을 구할 때 n=13을 넣으면 합의 끝항이 a₁₄가 됩니다. 합의 끝이 aₙ₊₁이므로 n=12입니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_8": {
+      "id": "2022_09_common_8",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 8,
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "두 극한은 f(0)=f(1)=0과 f'(0)=f'(1)=1을 뜻하며, 이를 만족하는 삼차함수에서 f(2)=6입니다.",
+      "approach": "분모가 0이 되는 두 점을 함수의 근으로 잡고, 도함숫값 조건으로 남은 일차식의 계수를 정합니다.",
+      "concepts": [
+        "미분계수의 정의",
+        "인수정리",
+        "삼차함수의 결정"
+      ],
+      "steps": [
+        {
+          "title": "극한 조건 해석하기",
+          "expression": "f(0)=f(1)=0,\\qquad f'(0)=f'(1)=1",
+          "explanation": "각 극한이 유한하려면 분자도 0이어야 하고, 그때 두 극한은 각각 미분계수가 됩니다."
+        },
+        {
+          "title": "삼차함수 세우기",
+          "expression": "f(x)=x(x-1)(Ax+B)",
+          "explanation": "0과 1이 모두 근이고 f가 삼차함수이므로 남는 인수는 일차식입니다."
+        },
+        {
+          "title": "두 계수 정하기",
+          "expression": "f'(0)=-B=1,\\qquad f'(1)=A+B=1\\Rightarrow A=2,\\ B=-1",
+          "explanation": "각 단순근에서 다른 인수들의 곱을 이용하면 도함숫값을 빠르게 구할 수 있습니다."
+        },
+        {
+          "title": "f(2) 계산하기",
+          "expression": "f(2)=2(2-1)(2\\cdot2-1)=6",
+          "explanation": "구한 함수 f(x)=x(x-1)(2x-1)에 x=2를 대입합니다."
+        }
+      ],
+      "correctReason": "f(2)=6이므로 선지 ②가 정답입니다.",
+      "commonMistake": "극한값이 1이라는 사실만 보고 f(0)과 f(1)이 1이라고 두면 안 됩니다. 분모가 0이므로 먼저 f(0)=f(1)=0이어야 합니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2022_09_common_9": {
+      "id": "2022_09_common_9",
+      "status": "verified_internal_candidate",
+      "exam": "2022학년도 9월 모의평가 수학",
+      "questionNumber": 9,
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "가속도 조건에서 k=1을 구하고, 3≤t≤4에서 속도가 음수이므로 이동거리는 -∫₃⁴v(t)dt=27입니다.",
+      "approach": "속도를 미분해 k를 결정한 뒤, 해당 구간의 속도 부호를 확인하고 절댓값을 적용해 거리를 계산합니다.",
+      "concepts": [
+        "속도와 가속도",
+        "정적분과 이동거리",
+        "속도의 부호"
+      ],
+      "steps": [
+        {
+          "title": "가속도 구하기",
+          "expression": "a(t)=v'(t)=-12t^2+24t=-12(t-1)^2+12",
+          "explanation": "속도함수를 시간에 대해 미분하고 완전제곱식으로 정리합니다."
+        },
+        {
+          "title": "k 결정하기",
+          "expression": "a(k)=12\\Rightarrow-12(k-1)^2=0\\Rightarrow k=1",
+          "explanation": "가속도가 12인 시각은 t=1 하나뿐입니다."
+        },
+        {
+          "title": "속도의 부호 확인하기",
+          "expression": "v(t)=4t^2(3-t)\\leq0\\quad(3\\leq t\\leq4)",
+          "explanation": "t=3에서 0이고 그 뒤에는 3-t가 음수이므로 점은 음의 방향으로 움직입니다."
+        },
+        {
+          "title": "이동거리 계산하기",
+          "expression": "-\\int_3^4v(t)\\,dt=-\\left[-t^4+4t^3\\right]_3^4=27",
+          "explanation": "속도가 음수인 구간이므로 변위의 부호를 바꿔 이동거리를 구합니다."
+        }
+      ],
+      "correctReason": "시각 3부터 4까지의 이동거리가 27이므로 선지 ③이 정답입니다.",
+      "commonMistake": "속도를 그대로 적분한 -27은 변위입니다. 이동거리는 속도의 절댓값을 적분하므로 27입니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2023학년도 9월 모의평가 수학 확률과 통계 23~30번 8문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "9b97dc87d64cf395b9dade06e4ece80beadb639d89baa632f7286cab13f36cde",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://jwmath.tistory.com/591",
+      "independentSourceUrls": [
+        "https://kimexp.tistory.com/1254",
+        "https://everywhereeverything.tistory.com/entry/2023%EB%85%84-9%EC%9B%94-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5%EA%B5%AD%EC%96%B4-%EC%88%98%ED%95%99-%EC%98%81%EC%96%B4-%ED%95%9C%EA%B5%AD%EC%82%AC-%ED%83%90%EA%B5%AC"
+      ],
+      "problemFilename": "2023_09_math_problem.pdf",
+      "problemSha256": "2053cc454daa5fbcef7f3a5de1bbb07b55f814894f4ea0b78026c27d27f025fe",
+      "problemReplicaFilenames": ["2023_09_math_problem_kimexp.pdf", "2023_09_math_problem_everywhere.pdf"],
+      "answerFilename": "2023_09_math_answer_everywhere.pdf",
+      "answerSha256": "f3c729d6c9165ecc0196d6ede078e03cd8a5457cda5066d7d0fca6645ebafd92",
+      "primaryAnswerImageFilename": "2023_09_math_answer.png",
+      "primaryAnswerImageSha256": "ca8dd66204c4df4af348dbc28183a17abf0ff19b415ab55d46fe92821d666ff9"
+    },
+    "note": "공식 문제지 화면과 두 정답 자료를 대조하고, 경우의 수·확률·통계 계산을 기존 미검증 logicFlow와 독립적으로 다시 수행한 내부 후보. 26·29번 그림은 조건을 추가하지 않는 장식 자료임을 확인."
+  },
+  "items": {
+    "2023_09_sta_23": {
+      "id": "2023_09_sta_23",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 23,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "x⁴는 여섯 인수 중 두 곳에서 x²을 선택할 때 생기므로 계수는 C(6,2)·2⁴=240입니다.",
+      "approach": "이항전개에서 x의 차수가 4가 되는 선택 횟수를 찾습니다.",
+      "concepts": ["이항정리", "조합"],
+      "steps": [
+        {
+          "title": "x² 선택 횟수 찾기",
+          "expression": "(x^2)^r=x^4\\Rightarrow r=2",
+          "explanation": "여섯 인수 중 두 인수에서 x²을 선택해야 합니다."
+        },
+        {
+          "title": "계수 계산하기",
+          "expression": "\\binom62 2^{6-2}=15\\cdot16=240",
+          "explanation": "나머지 네 인수에서는 상수 2를 선택합니다."
+        }
+      ],
+      "correctReason": "x⁴의 계수 240이 선지 ①과 일치합니다.",
+      "commonMistake": "x를 네 번 고르는 것이 아니라 x²을 두 번 고르는 문제입니다.",
+      "verification": {"problemPage": 9, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_sta_24": {
+      "id": "2023_09_sta_24",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 24,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "조건부확률이 같으므로 P(A)=P(B)이고, 합사건 공식에 대입하면 P(A)=5/8입니다.",
+      "approach": "교집합 확률이 양수인 점을 이용해 조건부확률의 분모를 비교합니다.",
+      "concepts": ["조건부확률", "합사건의 확률"],
+      "steps": [
+        {
+          "title": "두 사건의 확률 비교하기",
+          "expression": "\\frac{P(A\\cap B)}{P(B)}=\\frac{P(A\\cap B)}{P(A)}\\Rightarrow P(A)=P(B)=p",
+          "explanation": "교집합 확률 1/4은 0이 아니므로 약분할 수 있습니다."
+        },
+        {
+          "title": "합사건 공식 적용하기",
+          "expression": "1=2p-\\frac14",
+          "explanation": "P(A∪B)=P(A)+P(B)-P(A∩B)입니다."
+        },
+        {
+          "title": "p 구하기",
+          "expression": "p=\\frac58",
+          "explanation": "따라서 P(A)=5/8입니다."
+        }
+      ],
+      "correctReason": "P(A)=5/8이 선지 ③과 일치합니다.",
+      "commonMistake": "P(A|B)=P(B|A)를 독립으로 해석하지 마세요. 두 주변확률이 같다는 뜻입니다.",
+      "verification": {"problemPage": 9, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_sta_25": {
+      "id": "2023_09_sta_25",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 25,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "표준화하면 A의 구간은 [-0.25,1], B의 구간은 [-1,k-20]입니다. 정규분포의 대칭성으로 k-20=0.25, 즉 k=20.25입니다.",
+      "approach": "각 제품의 중량을 표준정규변수로 바꾸고 대칭 구간을 비교합니다.",
+      "concepts": ["정규분포의 표준화", "표준정규분포의 대칭성"],
+      "steps": [
+        {
+          "title": "A 제품 표준화하기",
+          "expression": "8.9\\le X_A\\le9.4\\Rightarrow-0.25\\le Z\\le1",
+          "explanation": "평균 9를 빼고 표준편차 0.4로 나눕니다."
+        },
+        {
+          "title": "B 제품 표준화하기",
+          "expression": "19\\le X_B\\le k\\Rightarrow-1\\le Z\\le k-20",
+          "explanation": "B 제품의 표준편차는 1입니다."
+        },
+        {
+          "title": "확률이 같게 만들기",
+          "expression": "P(-0.25\\le Z\\le1)=P(-1\\le Z\\le0.25)",
+          "explanation": "표준정규분포는 0을 중심으로 대칭입니다."
+        },
+        {
+          "title": "k 계산하기",
+          "expression": "k-20=0.25\\Rightarrow k=20.25=\\frac{81}{4}",
+          "explanation": "B 구간의 오른쪽 끝을 0.25로 맞춥니다."
+        }
+      ],
+      "correctReason": "k=81/4가 선지 ④와 일치합니다.",
+      "commonMistake": "표준화할 때 A와 B의 서로 다른 표준편차를 각각 적용하세요.",
+      "verification": {"problemPage": 10, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_sta_26": {
+      "id": "2023_09_sta_26",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 26,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "A의 자리를 고정하면 B와 C가 둘 다 이웃하지 않을 확률은 C(4,2)/C(6,2)=2/5이므로 구하는 확률은 3/5입니다.",
+      "approach": "원순열의 회전을 없애기 위해 A를 고정하고 여사건을 셉니다.",
+      "concepts": ["원순열", "여사건"],
+      "steps": [
+        {
+          "title": "A의 자리 고정하기",
+          "expression": "\\text{남은 자리 수}=6",
+          "explanation": "원탁에서는 전체를 회전한 배치가 같으므로 A를 한 자리에 고정할 수 있습니다."
+        },
+        {
+          "title": "여사건 계산하기",
+          "expression": "P(B,C\\text{ 모두 비이웃})=\\frac{\\binom42}{\\binom62}=\\frac25",
+          "explanation": "A의 양옆 두 자리를 제외한 네 자리에서 B와 C의 자리를 고릅니다."
+        },
+        {
+          "title": "구하는 확률 구하기",
+          "expression": "1-\\frac25=\\frac35",
+          "explanation": "B 또는 C 중 적어도 한 명이 이웃하는 사건은 여사건입니다."
+        }
+      ],
+      "correctReason": "확률 3/5가 선지 ②와 일치합니다.",
+      "commonMistake": "‘B 또는 C’는 둘 다 이웃하는 경우도 포함합니다. 각각의 확률을 단순히 더하지 마세요.",
+      "verification": {"problemPage": 10, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_sta_27": {
+      "id": "2023_09_sta_27",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 27,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "σ(X)=E(X)에서 E(X²)=2E(X)²을 얻고 a>1을 적용하면 a=10입니다. 따라서 E(X²)+E(X)=45입니다.",
+      "approach": "평균과 이차평균을 a로 나타낸 뒤 분산 공식에 대입합니다.",
+      "concepts": ["이산확률변수의 기댓값", "분산과 표준편차"],
+      "steps": [
+        {
+          "title": "두 기댓값 구하기",
+          "expression": "E(X)=\\frac{5+4a}{10},\\qquad E(X^2)=\\frac{5+4a^2}{10}",
+          "explanation": "각 값에 해당 확률을 곱해 더합니다."
+        },
+        {
+          "title": "표준편차 조건 바꾸기",
+          "expression": "\\sigma(X)=E(X)\\Rightarrow E(X^2)=2E(X)^2",
+          "explanation": "σ²=E(X²)-E(X)²이고 E(X)>0입니다."
+        },
+        {
+          "title": "a 결정하기",
+          "expression": "5(5+4a^2)=(5+4a)^2\\Rightarrow4a(a-10)=0",
+          "explanation": "a>1이므로 a=10입니다."
+        },
+        {
+          "title": "최종값 계산하기",
+          "expression": "E(X)=\\frac92,\\quad E(X^2)=\\frac{81}{2}\\Rightarrow E(X^2)+E(X)=45",
+          "explanation": "구한 a를 두 기댓값에 대입합니다."
+        }
+      ],
+      "correctReason": "E(X²)+E(X)=45가 선지 ⑤와 일치합니다.",
+      "commonMistake": "σ(X)=E(X)를 바로 분산과 같다고 두지 마세요. 양변을 제곱한 뒤 분산 공식을 써야 합니다.",
+      "verification": {"problemPage": 11, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_sta_28": {
+      "id": "2023_09_sta_28",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 28,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "5와 10의 포함 여부를 나눠 세면 조건을 만족하는 세 수의 집합은 22개이고, 전체 120개 중 확률은 11/60입니다.",
+      "approach": "곱이 5의 배수라는 조건을 5 또는 10의 포함으로 바꾸고, 합의 나머지를 셉니다.",
+      "concepts": ["조합", "나머지 분류"],
+      "steps": [
+        {
+          "title": "5와 10을 모두 포함하는 경우",
+          "expression": "5+10+x\\equiv0\\pmod3\\Rightarrow x=3,6,9",
+          "explanation": "가능한 경우는 3개입니다."
+        },
+        {
+          "title": "5만 포함하는 경우",
+          "expression": "\\binom31\\binom31+\\binom22=10",
+          "explanation": "나머지 두 수의 합이 1(mod 3)이 되도록 0·1 또는 2·2를 고릅니다."
+        },
+        {
+          "title": "10만 포함하는 경우",
+          "expression": "3\\cdot2+\\binom32=9",
+          "explanation": "나머지 두 수의 합이 2(mod 3)이 되도록 0·2 또는 1·1을 고릅니다."
+        },
+        {
+          "title": "확률 계산하기",
+          "expression": "\\frac{3+10+9}{\\binom{10}{3}}=\\frac{22}{120}=\\frac{11}{60}",
+          "explanation": "세 경우는 서로 겹치지 않습니다."
+        }
+      ],
+      "correctReason": "확률 11/60이 선지 ③과 일치합니다.",
+      "commonMistake": "5와 10을 모두 포함하는 경우를 ‘5 포함’과 ‘10 포함’에 중복해서 세지 않도록 세 경우를 분리하세요.",
+      "verification": {"problemPage": 11, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_sta_29": {
+      "id": "2023_09_sta_29",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 29,
+      "answer": "175",
+      "answerMark": null,
+      "summary": "네 수의 합이 11인 순서 있는 경우는 104개이고, 전체 6⁴개 중 확률은 13/162이므로 p+q=175입니다.",
+      "approach": "각 눈에서 1을 빼 음이 아닌 정수해로 바꾼 뒤 6을 넘는 경우를 제외합니다.",
+      "concepts": ["중복조합", "포함배제"],
+      "steps": [
+        {
+          "title": "합 조건 바꾸기",
+          "expression": "x_1+x_2+x_3+x_4=11,\\quad1\\le x_i\\le6",
+          "explanation": "평균이 11/4이므로 네 수의 합은 11입니다."
+        },
+        {
+          "title": "하한 없애기",
+          "expression": "y_i=x_i-1\\Rightarrow y_1+y_2+y_3+y_4=7",
+          "explanation": "상한을 무시한 음이 아닌 정수해는 C(10,3)=120개입니다."
+        },
+        {
+          "title": "상한 위반 제외하기",
+          "expression": "120-4\\binom43=120-16=104",
+          "explanation": "어느 하나의 yᵢ가 6 이상인 경우를 네 위치에서 제외합니다. 두 항이 동시에 6 이상일 수는 없습니다."
+        },
+        {
+          "title": "확률과 p+q 계산하기",
+          "expression": "\\frac{104}{6^4}=\\frac{13}{162}\\Rightarrow p+q=175",
+          "explanation": "복원추출 네 번의 모든 순서 있는 결과는 6⁴개입니다."
+        }
+      ],
+      "correctReason": "기약분수의 p와 q를 더하면 175입니다.",
+      "commonMistake": "카드를 다시 넣으므로 순서 있는 4회 시행입니다. C(6,4)처럼 서로 다른 카드를 고르는 문제로 바꾸지 마세요.",
+      "verification": {"problemPage": 12, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2023_09_sta_30": {
+      "id": "2023_09_sta_30",
+      "status": "verified_internal_candidate",
+      "exam": "2023학년도 9월 모의평가 수학 확률과 통계",
+      "questionNumber": 30,
+      "answer": "260",
+      "answerMark": null,
+      "summary": "B=f(A)⊆A이고 크기가 같으므로 f는 A에서 고정점 없는 순열입니다. |A|=2인 함수 80개와 |A|=3인 함수 180개를 더해 260개입니다.",
+      "approach": "치역 A 위에서 f가 전단사라는 구조를 먼저 밝힌 뒤 A의 크기별로 셉니다.",
+      "concepts": ["함수의 치역", "완전순열"],
+      "steps": [
+        {
+          "title": "A 위의 함수 구조 찾기",
+          "expression": "B=f(A)\\subseteq A,\\quad |B|=|A|\\Rightarrow f|_A:A\\to A\\text{ 는 전단사}",
+          "explanation": "따라서 A의 원소들은 A 안에서 순열을 이루며 고정점은 없어야 합니다."
+        },
+        {
+          "title": "|A|=2인 경우 세기",
+          "expression": "\\binom52\\cdot1\\cdot2^3=80",
+          "explanation": "A를 고르고 두 원소는 서로 바꾸며, 나머지 세 원소는 A의 어느 값으로든 갑니다."
+        },
+        {
+          "title": "|A|=3인 경우 세기",
+          "expression": "\\binom53\\cdot2\\cdot3^2=180",
+          "explanation": "세 원소의 고정점 없는 순열은 2개이고, 나머지 두 원소는 각각 세 값을 선택합니다."
+        },
+        {
+          "title": "전체 개수 구하기",
+          "expression": "80+180=260",
+          "explanation": "|A|=1은 유일한 치역 원소가 고정점이 되어 불가능합니다."
+        }
+      ],
+      "correctReason": "모든 조건을 만족하는 함수는 260개입니다.",
+      "commonMistake": "n(A)=n(B)만 보고 A 밖의 원소까지 순열로 셀 필요는 없습니다. 전단사 조건은 A 위의 제한함수에만 적용됩니다.",
+      "verification": {"problemPage": 12, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

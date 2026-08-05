@@ -1,0 +1,356 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2024학년도 6월 모의평가 수학 공통 12~21번 중 원천 일치 9문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 9,
+    "readyCount": 9,
+    "questionFingerprint": "060788959319ad40dba96dcd5d48e5ba6f21ecc1411b3a973ca98f2b661ab938",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://testall.tistory.com/entry/2024%ED%95%99%EB%85%84%EB%8F%84-6%EC%9B%94-%EC%88%98%EB%8A%A5-%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EC%A0%95%EB%8B%B5-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C",
+      "independentSourceUrls": [
+        "https://sdfallyy.tistory.com/407",
+        "https://horaeng.com/263"
+      ],
+      "problemFilename": "2024_06_math_problem_testall.pdf",
+      "problemSha256": "b66547e1edfb4e53380e8e30ffa087eb1c72ef9a5d03dfa491d33bd6b9c56a98",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "2024_06_math_problem_sdfallyy.pdf",
+          "sha256": "026d29c312ac5c4d1e533aabe29a6948bcbef634471dfd5a297d405c186333c5"
+        }
+      ],
+      "answerFilename": "2024_06_math_answer_testall.pdf",
+      "answerSha256": "98233f2ec85d25b33e78549a68d5baa836ff3979e21e58fedf83a8422856e495"
+    },
+    "note": "공식 문제지와 정답표를 문항별로 대조하고 독립 계산까지 마친 문항만 포함했습니다. 공식식과 내부 DB의 묶음 표기가 다른 18번은 별도 차단 파일로 분리했습니다."
+  },
+  "items": {
+    "2024_06_common_12": {
+      "id": "2024_06_common_12",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 12,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "교집합의 원소가 3개가 되는 공차는 1과 2이고, 이에 따른 a₂₀은 14와 32이므로 합은 46입니다.",
+      "approach": "두 등차수열 A와 B의 항을 공차 d로 표현하고, 세 원소가 연속해서 겹치는 위치를 나눠 확인합니다.",
+      "concepts": ["등차수열", "집합의 교집합", "경우 분류"],
+      "steps": [
+        {
+          "title": "두 수열의 항 표현하기",
+          "expression": "a_n=-4+(n-2)d,\\qquad b_n=a_n+a_{n+1}=-8+(2n-3)d",
+          "explanation": "a₂=-4를 기준으로 일반항을 만들면 bₙ도 공차 2d인 등차수열입니다."
+        },
+        {
+          "title": "세 원소가 겹치는 조건 찾기",
+          "expression": "b_2=a_1\\Rightarrow d=2,\\qquad b_3=a_1\\Rightarrow d=1",
+          "explanation": "교집합이 세 원소가 되려면 A의 a₁,a₃,a₅가 B의 연속한 세 항과 맞아야 합니다. d<0에서는 세 항이 겹치지 않습니다."
+        },
+        {
+          "title": "각 a₂₀ 계산하기",
+          "expression": "a_{20}=-4+18d=32\\text{ 또는 }14",
+          "explanation": "가능한 두 공차를 일반항에 대입합니다."
+        },
+        {
+          "title": "모든 값 더하기",
+          "expression": "32+14=46",
+          "explanation": "문제는 가능한 모든 수열에서의 a₂₀을 합하라고 했습니다."
+        }
+      ],
+      "correctReason": "가능한 a₂₀의 합 46이 선지 ⑤와 일치합니다.",
+      "commonMistake": "공차 하나만 찾고 끝내거나 d<0인 경우를 확인하지 않는 실수를 피하세요.",
+      "verification": {"problemPage": 4, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_common_13": {
+      "id": "2024_06_common_13",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 13,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "사인법칙으로 sin∠DAB=4/5를 구하고 넓이·코사인법칙을 결합하면 (AB+AD)²=21입니다.",
+      "approach": "두 원의 반지름 비와 현의 길이 비로 각의 사인값을 구한 뒤 삼각형 ABD에 넓이와 코사인법칙을 적용합니다.",
+      "concepts": ["사인법칙", "코사인법칙", "삼각형의 넓이"],
+      "steps": [
+        {
+          "title": "BD의 길이 구하기",
+          "expression": "BD^2=3^2+2^2-2\\cdot3\\cdot2\\left(-\\frac13\\right)=17",
+          "explanation": "삼각형 BCD에 코사인법칙을 적용합니다."
+        },
+        {
+          "title": "∠DAB의 삼각함수 구하기",
+          "expression": "\\sin\\angle DAB=\\frac45,\\qquad\\cos\\angle DAB=-\\frac35",
+          "explanation": "E의 내분비로 두 외접원의 반지름 비가 1:2이고, 주어진 두 현의 비를 사인법칙에 대입합니다. 각이 둔각이므로 코사인은 음수입니다."
+        },
+        {
+          "title": "두 변의 곱 구하기",
+          "expression": "2=\\frac12\\,AB\\cdot AD\\cdot\\frac45\\Rightarrow AB\\cdot AD=5",
+          "explanation": "삼각형 ABD의 넓이 조건을 사용합니다."
+        },
+        {
+          "title": "두 변의 합 구하기",
+          "expression": "17=AB^2+AD^2-2\\cdot5\\left(-\\frac35\\right)\\Rightarrow AB^2+AD^2=11",
+          "explanation": "삼각형 ABD에 코사인법칙을 적용합니다."
+        },
+        {
+          "title": "제곱 완성하기",
+          "expression": "(AB+AD)^2=11+2\\cdot5=21\\Rightarrow AB+AD=\\sqrt{21}",
+          "explanation": "변의 길이는 양수이므로 양의 제곱근을 택합니다."
+        }
+      ],
+      "correctReason": "AB+AD=√21이 선지 ①과 일치합니다.",
+      "commonMistake": "∠DAB가 둔각이라는 조건을 놓치면 cos값의 부호가 바뀌어 결과가 달라집니다.",
+      "verification": {"problemPage": 4, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_common_14": {
+      "id": "2024_06_common_14",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 14,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "방향을 한 번만 바꾸는 a는 0, 1/2, 1이고, 세 위치 변화량 중 최댓값은 4/15입니다.",
+      "approach": "속도의 서로 다른 홀수중복 근 개수로 방향 전환 횟수를 판정하고 각 경우의 속도를 적분합니다.",
+      "concepts": ["속도와 위치 변화량", "함수의 부호 변화", "정적분"],
+      "steps": [
+        {
+          "title": "가능한 a 찾기",
+          "expression": "a\\in\\left\\{0,\\frac12,1\\right\\}",
+          "explanation": "일반적인 a에서는 양의 네 근 가운데 세 번 부호가 바뀝니다. 근이 겹치는 세 경우에만 출발 후 한 번 바뀝니다."
+        },
+        {
+          "title": "각 위치 변화량 계산하기",
+          "expression": "\\int_0^2v(t)\\,dt=-\\frac{12}{5},\\ -\\frac{11}{15},\\ \\frac4{15}",
+          "explanation": "a=0, 1/2, 1을 차례로 속도식에 대입해 적분합니다."
+        },
+        {
+          "title": "최댓값 고르기",
+          "expression": "\\max\\left\\{-\\frac{12}{5},-\\frac{11}{15},\\frac4{15}\\right\\}=\\frac4{15}",
+          "explanation": "위치의 변화량은 이동거리와 달리 음수일 수 있습니다."
+        }
+      ],
+      "correctReason": "위치 변화량의 최댓값 4/15가 선지 ③과 일치합니다.",
+      "commonMistake": "위치의 변화량을 이동거리로 바꾸어 속도의 절댓값을 적분하지 마세요.",
+      "verification": {"problemPage": 5, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_common_15": {
+      "id": "2024_06_common_15",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 15,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "재귀식을 부호에 따라 전개하면 곱이 음수가 되는 자연수 k는 3, 5, 6이고 합은 14입니다.",
+      "approach": "a₃부터 부호가 바뀌는 경계값을 순서대로 나눠 a₆까지 계산합니다.",
+      "concepts": ["귀납적 수열", "부호에 따른 경우 분류", "부등식"],
+      "steps": [
+        {
+          "title": "초기 항 계산하기",
+          "expression": "a_2=-2,\\qquad a_3=2-k",
+          "explanation": "a₁=k>0이므로 첫 재귀식은 위쪽 경우를, a₂<0이므로 다음은 아래쪽 경우를 사용합니다."
+        },
+        {
+          "title": "k=1과 k=2 제외하기",
+          "expression": "k=1\\Rightarrow a_3a_4a_5a_6>0,\\qquad k=2\\Rightarrow a_3=0",
+          "explanation": "둘 다 곱이 음수라는 조건을 만족하지 않습니다."
+        },
+        {
+          "title": "k>2 범위 나누기",
+          "expression": "a_4=8-2k,\\quad a_5=16-3k\\ (k>4),\\quad a_6=26-4k\\ (k\\ge6)",
+          "explanation": "각 항의 부호가 바뀌는 4와 16/3을 기준으로 재귀식을 이어갑니다."
+        },
+        {
+          "title": "조건을 만족하는 k 모으기",
+          "expression": "k=3,5,6\\Rightarrow3+5+6=14",
+          "explanation": "각 구간의 자연수를 직접 대입하면 이 세 값에서만 네 항의 곱이 음수입니다."
+        }
+      ],
+      "correctReason": "모든 k의 합 14가 선지 ②와 일치합니다.",
+      "commonMistake": "어떤 항이 0이면 곱은 음수가 아니므로 경계값을 반드시 별도로 확인하세요.",
+      "verification": {"problemPage": 6, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_common_16": {
+      "id": "2024_06_common_16",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 16,
+      "answer": "3",
+      "answerMark": null,
+      "summary": "양변을 밑 2의 거듭제곱으로 바꾸면 x≤2이고 자연수 해 1, 2의 합은 3입니다.",
+      "approach": "같은 밑의 지수부등식으로 바꿔 지수끼리 비교합니다.",
+      "concepts": ["지수부등식", "자연수 해"],
+      "steps": [
+        {
+          "title": "밑 통일하기",
+          "expression": "\\left(\\frac14\\right)^x=2^{-2x}",
+          "explanation": "1/4은 2의 -2제곱입니다."
+        },
+        {
+          "title": "지수 비교하기",
+          "expression": "2^{x-6}\\le2^{-2x}\\Rightarrow x-6\\le-2x\\Rightarrow x\\le2",
+          "explanation": "밑 2는 1보다 크므로 부등호 방향이 유지됩니다."
+        },
+        {
+          "title": "자연수 해 더하기",
+          "expression": "x=1,2\\Rightarrow1+2=3",
+          "explanation": "자연수 조건을 적용합니다."
+        }
+      ],
+      "correctReason": "모든 자연수 해의 합은 3입니다.",
+      "commonMistake": "자연수의 시작을 0으로 잡지 말고 이 문항에서는 1, 2만 더하세요.",
+      "verification": {"problemPage": 6, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_common_17": {
+      "id": "2024_06_common_17",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 17,
+      "answer": "33",
+      "answerMark": null,
+      "summary": "도함수를 적분하고 f(0)=3을 적용하면 f(x)=2x⁴-x+3, 따라서 f(2)=33입니다.",
+      "approach": "부정적분으로 원함수를 구한 뒤 초기값으로 적분상수를 정합니다.",
+      "concepts": ["부정적분", "적분상수"],
+      "steps": [
+        {
+          "title": "도함수 적분하기",
+          "expression": "f(x)=\\int(8x^3-1)\\,dx=2x^4-x+C",
+          "explanation": "항별로 부정적분합니다."
+        },
+        {
+          "title": "적분상수 구하기",
+          "expression": "f(0)=C=3",
+          "explanation": "주어진 초기값을 대입합니다."
+        },
+        {
+          "title": "f(2) 계산하기",
+          "expression": "f(2)=2\\cdot2^4-2+3=33",
+          "explanation": "완성한 함수에 x=2를 대입합니다."
+        }
+      ],
+      "correctReason": "계산한 함수값은 33입니다.",
+      "commonMistake": "부정적분 뒤 적분상수 C를 빠뜨리지 마세요.",
+      "verification": {"problemPage": 6, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_common_19": {
+      "id": "2024_06_common_19",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 19,
+      "answer": "8",
+      "answerMark": null,
+      "summary": "함수가 0이 되려면 최솟값이 0이어야 하므로 a=4이고, 근이 네 개가 되려면 b=4여서 합은 8입니다.",
+      "approach": "사인함수의 최솟값으로 a를 정하고 주기별 영점 개수로 b를 정합니다.",
+      "concepts": ["사인함수의 최솟값", "삼각함수의 주기", "영점 개수"],
+      "steps": [
+        {
+          "title": "최솟값 조건 적용하기",
+          "expression": "\\min f=8-2a\\ge0\\Rightarrow a\\le4",
+          "explanation": "sin bx의 최솟값은 -1입니다."
+        },
+        {
+          "title": "영점이 존재하도록 a 정하기",
+          "expression": "f(x)=0\\text{이 가능하려면 }8-2a=0\\Rightarrow a=4",
+          "explanation": "a가 1, 2, 3이면 함수의 최솟값이 양수라 근이 없습니다."
+        },
+        {
+          "title": "근 개수로 b 정하기",
+          "expression": "4\\sin bx+4=0\\Rightarrow\\sin bx=-1",
+          "explanation": "0≤x<2π에서 sin bx=-1의 해 개수는 자연수 b와 같습니다."
+        },
+        {
+          "title": "합 계산하기",
+          "expression": "b=4\\Rightarrow a+b=4+4=8",
+          "explanation": "해가 네 개라는 조건을 적용합니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 자연수는 a=b=4이므로 답은 8입니다.",
+      "commonMistake": "f(x)≥0만 보고 a≤4에서 멈추지 말고, 실제로 영점 네 개가 존재해야 함을 사용하세요.",
+      "verification": {"problemPage": 7, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_common_20": {
+      "id": "2024_06_common_20",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 20,
+      "answer": "39",
+      "answerMark": null,
+      "summary": "g가 x=4에서 최소이므로 f(4)=0이고, 절댓값 조건으로 g(3)=0을 얻어 f(x)=(x-4)(x-6/5), 따라서 f(9)=39입니다.",
+      "approach": "적분함수의 도함수가 f라는 점과 최소·절댓값 조건을 차례로 사용합니다.",
+      "concepts": ["적분으로 정의된 함수", "극솟값", "절댓값 부등식"],
+      "steps": [
+        {
+          "title": "f의 한 근 찾기",
+          "expression": "g'(x)=f(x),\\quad g'(4)=0\\Rightarrow f(4)=0",
+          "explanation": "g는 x≥1에서 x=4일 때 최소이므로 그 점에서 미분값이 0입니다."
+        },
+        {
+          "title": "f를 인수형으로 두기",
+          "expression": "f(x)=(x-4)(x-c)",
+          "explanation": "f는 최고차항 계수가 1인 이차함수입니다."
+        },
+        {
+          "title": "절댓값 조건 사용하기",
+          "expression": "|g(x)|\\ge|g(3)|\\ (x\\ge1)\\Rightarrow g(3)=0",
+          "explanation": "g(4)<g(3)이고 x=4가 최소인 구조에서 모든 절댓값이 |g(3)| 이상이려면 기준값 g(3)이 0이어야 합니다."
+        },
+        {
+          "title": "두 번째 근 구하기",
+          "expression": "g(3)=\\int_0^3(t-4)(t-c)\\,dt=0\\Rightarrow c=\\frac65",
+          "explanation": "정적분을 계산해 c를 구합니다."
+        },
+        {
+          "title": "f(9) 계산하기",
+          "expression": "f(9)=(9-4)\\left(9-\\frac65\\right)=39",
+          "explanation": "완성한 이차함수에 9를 대입합니다."
+        }
+      ],
+      "correctReason": "조건을 모두 만족하는 함수에서 f(9)=39입니다.",
+      "commonMistake": "g의 최소점이 4라는 사실만으로 f의 두 근을 모두 정할 수는 없으므로 절댓값 조건까지 사용하세요.",
+      "verification": {"problemPage": 7, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2024_06_common_21": {
+      "id": "2024_06_common_21",
+      "status": "verified_internal_candidate",
+      "exam": "2024학년도 6월 모의평가 수학 공통",
+      "questionNumber": 21,
+      "answer": "110",
+      "answerMark": null,
+      "summary": "ㄱ과 ㄴ은 참이고, 1<t<2에서 반례가 생겨 ㄷ은 거짓이므로 A+B+C=110입니다.",
+      "approach": "두 그래프의 증가·감소와 평행이동으로 교점의 움직임을 판단하고, ㄷ은 t 자체를 교점 후보로 비교합니다.",
+      "concepts": ["지수·로그함수의 그래프", "함수의 단조성", "명제 판정"],
+      "steps": [
+        {
+          "title": "ㄱ 판정하기",
+          "expression": "t=1\\Rightarrow f(1)=1,\\qquad t=2\\Rightarrow f(2)=2",
+          "explanation": "각 t에서 x=t를 두 식에 대입하면 y=1로 같고, 감소함수와 증가함수는 한 점에서만 만납니다."
+        },
+        {
+          "title": "ㄴ 판정하기",
+          "expression": "t\\uparrow\\Rightarrow y=t-\\log_2x\\text{는 위로, }y=2^{x-t}\\text{는 오른쪽으로 이동}",
+          "explanation": "두 이동 모두 유일한 교점의 x좌표를 증가시키므로 ㄴ은 참입니다."
+        },
+        {
+          "title": "ㄷ의 필요조건 세우기",
+          "expression": "f(t)\\ge t\\Rightarrow t-\\log_2t\\ge1\\Rightarrow t-1\\ge\\log_2t",
+          "explanation": "감소 그래프와 증가 그래프를 x=t에서 비교합니다."
+        },
+        {
+          "title": "반례 구간 확인하기",
+          "expression": "1<t<2\\Rightarrow\\log_2t>t-1",
+          "explanation": "이 구간에서는 필요조건이 깨지므로 모든 양수 t에 대한 ㄷ은 거짓입니다."
+        },
+        {
+          "title": "점수 합하기",
+          "expression": "A=100,\\ B=10,\\ C=0\\Rightarrow A+B+C=110",
+          "explanation": "참·참·거짓 판정을 규칙에 대입합니다."
+        }
+      ],
+      "correctReason": "세 명제의 판정 결과로 계산한 값은 110입니다.",
+      "commonMistake": "ㄷ은 몇 개의 t에서 성립하는지가 아니라 모든 양의 t에서 성립하는지를 묻습니다. 1<t<2의 반례면 충분합니다.",
+      "verification": {"problemPage": 8, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

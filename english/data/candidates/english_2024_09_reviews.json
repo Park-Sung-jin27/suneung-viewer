@@ -1,0 +1,962 @@
+{
+  "metadata": {
+    "schemaVersion": "eng-explain-candidate-v1",
+    "examId": "2024_09",
+    "exam": "2024학년도 9월 모의평가 영어",
+    "status": "internal_candidate",
+    "publicConnected": false,
+    "itemCount": 28,
+    "readyCount": 28,
+    "note": "문제·정답·해설 PDF 원본 대조를 마친 내부 근거형 해설 후보"
+  },
+  "items": {
+    "2024_09_18": {
+      "id": "2024_09_18",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 18,
+      "group": "practical",
+      "type": "목적",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 학교 앞 도로 공사 기간의 안전을 위해 학부모에게 교통정리 봉사 참여를 요청하는 글입니다.",
+      "typeApproach": "목적 문제는 문제 상황보다 수신자에게 직접 요구하는 행동을 먼저 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "we are asking for parent volunteers to help with directing\ntraffic.",
+          "role": "직접 요청",
+          "translation": "학부모 자원봉사자가 교통정리를 도와 달라고 요청합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "If you are willing to\ntake part in the traffic safety volunteer group",
+          "role": "참여 안내",
+          "translation": "교통안전 봉사단에 참여할 의사가 있다면 신청하라고 안내합니다."
+        }
+      ],
+      "correctReason": "도로 공사는 배경이고 핵심 요구는 학부모의 교통안전 봉사 참여이므로 ①입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "학교 앞 도로 공사의 필요성을 설명하려고",
+        "reason": "공사의 필요성을 논증하지 않고 공사로 생긴 안전 문제에 대응할 봉사자를 모집합니다."
+      }
+    },
+    "2024_09_19": {
+      "id": "2024_09_19",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 19,
+      "group": "practical",
+      "type": "심경 변화",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. Midtown 여행 취소로 실망했던 Nancy가 가고 싶던 동물원 방문 소식에 신이 납니다.",
+      "typeApproach": "심경 변화는 전환 사건 앞뒤의 말과 행동을 각각 감정어로 바꿉니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "She was thinking of all the interesting sights she\nwouldn’t be able to enjoy.",
+          "role": "초기 실망",
+          "translation": "보지 못하게 된 흥미로운 명소들을 생각하며 실망합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The Pland Zoo! That’s on my bucket list!\nWhat a turn of fortune!",
+          "role": "이후 흥분",
+          "translation": "버킷리스트의 동물원에 가게 되어 운이 바뀌었다고 외칩니다."
+        }
+      ],
+      "correctReason": "여행 취소로 disappointed했다가 동물원 소식에 excited해지므로 ①입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "indifferent → amazed",
+        "reason": "처음부터 무관심하지 않고 여행 취소를 크게 아쉬워했습니다."
+      }
+    },
+    "2024_09_20": {
+      "id": "2024_09_20",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 20,
+      "group": "topic",
+      "type": "주장",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 자신감은 두려움이 없는 상태가 아니라 낯선 두려움 속으로 들어가는 용기에서 자란다는 주장입니다.",
+      "typeApproach": "주장 문제는 반복되는 조건 표현과 마지막 결론 문장을 결합합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "the only way\nconfidence can grow is when we are willing to be without it.",
+          "role": "성장 조건",
+          "translation": "자신감이 자라는 유일한 방법은 잠시 자신감 없는 상태를 받아들이는 것입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "When we can step into fear and sit with the unknown, it is the\ncourage of doing so that builds confidence from the ground up.",
+          "role": "핵심 주장",
+          "translation": "두려움과 미지 속으로 들어가는 용기가 자신감을 밑바닥부터 만듭니다."
+        }
+      ],
+      "correctReason": "낯설고 두려운 일을 피하지 않는 용기가 자신감을 키운다는 ②가 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "과도한 자신감을 갖기보다는 자신의 약점을 객관적으로 분석해야 한다.",
+        "reason": "약점 분석이 아니라 두려움과 취약성을 감수하고 행동하는 용기를 강조합니다."
+      }
+    },
+    "2024_09_21": {
+      "id": "2024_09_21",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 21,
+      "group": "blank",
+      "type": "밑줄 의미",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 고객 가치 없이 자기 능력을 과시하려고 과도하게 품질을 높이는 것은 오히려 프로젝트를 해친다는 뜻입니다.",
+      "typeApproach": "속담형 밑줄은 앞 문단에서 반복해 정의한 행동과 그 비용을 평범한 문장으로 바꿉니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "giving more with no real justification\nother than to demonstrate one’s own talent.",
+          "role": "과잉 작업의 동기",
+          "translation": "자기 능력을 보여 주려는 것 외에 실제 근거 없이 더 많이 제공합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "does\nnot add value to the client’s requests",
+          "role": "고객 가치 부재",
+          "translation": "그 작업은 고객 요청에 가치를 더하지 않습니다."
+        }
+      ],
+      "correctReason": "자기 증명을 위한 불필요한 품질 향상은 바람직하지 않다는 ②가 속담의 의미입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "Pursuing perfection at work causes conflicts among team members.",
+        "reason": "팀원 갈등이 아니라 고객 가치 없이 자원을 쓰는 과잉 작업이 문제입니다."
+      }
+    },
+    "2024_09_22": {
+      "id": "2024_09_22",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 22,
+      "group": "topic",
+      "type": "요지",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 공동체는 이민자가 다르게 생각하고 행동하며 고유한 문화 정체성을 유지할 권리를 인정해야 합니다.",
+      "typeApproach": "요지는 역사 사례보다 글쓴이가 마지막에 제시하는 현재의 과제와 권리를 중심으로 잡습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "immigrants retain some of their customs, beliefs, and language.",
+          "role": "정체성 유지",
+          "translation": "이민자가 관습·신념·언어 일부를 유지하는 부분 동화가 제안됩니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "other\ncultures think and act differently and that they have the right to do\nso.",
+          "role": "인정할 권리",
+          "translation": "다른 문화가 다르게 생각하고 행동할 권리를 인정해야 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "There is pressure to conform rather than to maintain their cultural\nidentities",
+          "role": "현재 갈등",
+          "translation": "문화 정체성을 유지하기보다 주류에 맞추라는 압력이 있습니다."
+        }
+      ],
+      "correctReason": "이민자의 문화 정체성 유지 권리를 공동체가 인식해야 한다는 ①이 핵심입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "이민자는 미래 사회의 긍정적 변화에 핵심적 역할을 수행할 수 있다.",
+        "reason": "과거 이민자의 변화 기여는 사례이고 중심 과제는 문화적 차이와 권리의 인정입니다."
+      }
+    },
+    "2024_09_23": {
+      "id": "2024_09_23",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 23,
+      "group": "topic",
+      "type": "주제",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 상업 라디오는 큰 청취자 집단을 유지하려고 위험을 피하고 인기 있고 제한된 곡목을 반복합니다.",
+      "typeApproach": "주제 문제는 사업 목표, 선택한 전략, 그 결과를 한 문장으로 묶습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "broadcasters\nattempt to maximise their audience size by playing music that is\npopular",
+          "role": "청취자 확대 전략",
+          "translation": "방송사는 인기 음악으로 청취자 규모를 최대화하려 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Playlists \tare\nrestricted, and often very small.",
+          "role": "전략의 결과",
+          "translation": "그 결과 곡목 목록은 제한되고 매우 작아집니다."
+        }
+      ],
+      "correctReason": "큰 청취자 집단을 끌어들이려는 시도가 제한된 안전한 곡목으로 이어진다는 ⑤가 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "necessity of satisfying listeners’ diverse needs in the radio business",
+        "reason": "다양한 요구 충족보다 최대 규모의 청취자를 잃지 않는 안전한 선택을 설명합니다."
+      }
+    },
+    "2024_09_24": {
+      "id": "2024_09_24",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 24,
+      "group": "topic",
+      "type": "제목",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 웹 기록 보관소는 오래된 기사의 수명을 늘리고 현재 뉴스를 더 넓은 맥락에서 이해하게 합니다.",
+      "typeApproach": "제목은 글에서 제시한 두 변화인 지속 기간과 맥락 확장을 모두 담아야 합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "general accessibility\nof archives has greatly extended the shelf life of journalism",
+          "role": "기사 수명 연장",
+          "translation": "기록 보관소 접근성이 보도의 유효 기간을 크게 늘렸습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "possibility of understanding news stories as the manifest\noutcomes of larger economic, social and cultural issues",
+          "role": "맥락 확장",
+          "translation": "뉴스를 더 큰 경제·사회·문화 문제의 결과로 이해할 수 있습니다."
+        }
+      ],
+      "correctReason": "온라인 보도의 지속성과 맥락 폭을 함께 표현한 ①이 가장 적절합니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "With the Latest Content, Online News Beats Daily Newspapers!",
+        "reason": "최신성 경쟁이 아니라 오래된 기사 접근과 맥락 이해가 중심입니다."
+      }
+    },
+    "2024_09_25": {
+      "id": "2024_09_25",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 25,
+      "group": "info",
+      "type": "도표",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 2021년 Hispanic 진학률은 33%로 35%보다 높지 않으므로 2011년과 2021년 모두 35% 초과라는 설명은 틀립니다.",
+      "typeApproach": "도표 문제는 연도별 조건을 각각 검사하고 ‘모두’라는 표현이 한 수치라도 어긋나는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Black: 2011 37%, 2016 36%, 2021 37%",
+          "role": "Black 수치",
+          "translation": "Black 진학률은 2011년 37%, 2016년 36%, 2021년 37%입니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Hispanic: 2011 35%, 2016 39%, 2021 33%",
+          "role": "Hispanic 수치",
+          "translation": "Hispanic 진학률은 2011년 35%, 2016년 39%, 2021년 33%입니다."
+        }
+      ],
+      "correctReason": "Hispanic은 2011년에도 35%를 초과하지 않고 2021년에는 33%이므로 ③이 불일치합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "Among the years displayed in the table, 2016 was the only year when the college enrollment rate of Hispanics was higher than that of Blacks.",
+        "reason": "2016년에만 Hispanic 39%가 Black 36%보다 높습니다."
+      }
+    },
+    "2024_09_26": {
+      "id": "2024_09_26",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 26,
+      "group": "info",
+      "type": "내용 일치",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. Rosen은 많은 글을 쓰는 동안에도 죽을 때까지 피아니스트 공연을 계속했습니다.",
+      "typeApproach": "인물 일치 문제는 활동의 시작·중단·지속 시점을 구분해 대조합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "While writing\nextensively, Rosen continued to perform as a pianist for the\nrest of his life until he died in 2012.",
+          "role": "활동 지속",
+          "translation": "많은 글을 쓰면서도 2012년 죽을 때까지 피아니스트 공연을 계속했습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "The Classical Style, was\nfirst published in 1971 and won the U.S. National Book Award\nthe next year.",
+          "role": "출판과 수상",
+          "translation": "책은 1971년 출판되고 다음 해 미국 도서상을 받았습니다."
+        }
+      ],
+      "correctReason": "피아노 활동을 중단하지 않았으므로 ⑤가 불일치합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "The Classical Style이 처음으로 출판되고 다음 해에 상을 받았다.",
+        "reason": "1971년 출판되고 이듬해 상을 받았다는 원문과 일치합니다."
+      }
+    },
+    "2024_09_27": {
+      "id": "2024_09_27",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 27,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 국립공원 투어는 3월부터 11월까지 평일에만 운영되므로 주말에 진행된다는 설명은 틀립니다.",
+      "typeApproach": "안내문은 운영 요일·신청 방법·제공 물품·취소 조건을 각각 표처럼 대조합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Open on weekdays from March to November",
+          "role": "운영 요일",
+          "translation": "3월부터 11월까지 평일에 운영합니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Enjoy free park walks with our volunteer guides",
+          "role": "안내자 동행",
+          "translation": "자원봉사 안내자와 무료 공원 산책을 합니다."
+        }
+      ],
+      "correctReason": "평일 운영이므로 주말에 진행된다는 ②가 불일치합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "날씨에 따라 취소될 수 있다.",
+        "reason": "날씨 상황에 따라 투어가 취소될 수 있다고 명시되어 있습니다."
+      }
+    },
+    "2024_09_28": {
+      "id": "2024_09_28",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 28,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 학생들이 뽑은 상위 10장의 사진이 학교 본관 로비에 전시됩니다.",
+      "typeApproach": "일치하는 선지를 찾을 때 행사 횟수·주제·파일 크기·기간·선정 주체를 원문과 대조합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "The top 10 photos selected by students will be exhibited",
+          "role": "전시 사진 선정",
+          "translation": "학생들이 선정한 상위 10장의 사진이 전시됩니다."
+        },
+        {
+          "in": "figure",
+          "quote": "10th annual Geography Photo Contest",
+          "role": "개최 횟수",
+          "translation": "올해가 열 번째 연례 지리 사진 대회입니다."
+        }
+      ],
+      "correctReason": "학생들이 선정한 사진이 전시된다는 ⑤만 안내문과 일치합니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "100 MB 크기의 파일을 제출할 수 있다.",
+        "reason": "파일은 50MB보다 크면 안 되므로 100MB 파일은 제출할 수 없습니다."
+      }
+    },
+    "2024_09_29": {
+      "id": "2024_09_29",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 29,
+      "group": "grammar",
+      "type": "어법",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. When 절 뒤에는 독자에게 행동을 지시하는 주절이 필요하므로 realizing이 아니라 realize가 와야 합니다.",
+      "typeApproach": "어법 문제는 문장마다 서술어가 있는지 먼저 확인하고 분사와 명령문의 형태를 구분합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "When you feel your heart beating or your breath quickening,\n③ realizing that it is your body’s way of trying to give you\nmore energy.",
+          "role": "주절 오류",
+          "translation": "심장이나 호흡이 빨라질 때 그것이 에너지를 주는 몸의 방식임을 알아차리라는 문장입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "If you notice tension in your body, remind\nyourself",
+          "role": "명령문 구조",
+          "translation": "다음 문장도 If 절 뒤에 remind라는 명령형 주절을 사용합니다."
+        }
+      ],
+      "correctReason": "When 종속절만 있고 주절 서술어가 없으므로 realizing을 명령형 realize로 고쳐야 합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "to go",
+        "reason": "what it felt like 뒤에서 첫 데이트를 하러 갔던 경험을 나타내는 to go는 적절합니다."
+      }
+    },
+    "2024_09_30": {
+      "id": "2024_09_30",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 30,
+      "group": "vocab",
+      "type": "어휘",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 생산 장소와 소비자의 연결 상실은 단절을 막은 것이 아니라 만들어 냈으므로 countered는 caused로 바뀌어야 합니다.",
+      "typeApproach": "어휘 문제는 결과 명사의 긍정·부정 방향이 원인 동사와 맞는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "made from textiles with little or no connection to where, how,\nor by whom the products were made.",
+          "role": "연결 상실",
+          "translation": "제품이 어디서 어떻게 누구에 의해 만들어졌는지 거의 연결되지 않게 되었습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "This ④ countered a\ndisconnect between consumers and the products they use",
+          "role": "방향 충돌",
+          "translation": "이 변화가 소비자와 제품의 단절을 막았다는 표현이 문맥과 반대입니다."
+        }
+      ],
+      "correctReason": "장소와의 연결 상실이 소비자와 제품의 단절을 초래했으므로 ④가 부적절합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "reconnects",
+        "reason": "장소의 가치를 회복하면 회사와 소비자를 지역의 사람·지리·문화에 다시 연결하므로 적절합니다."
+      }
+    },
+    "2024_09_31": {
+      "id": "2024_09_31",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 31,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 교외 주택·자가용·텔레비전의 확산으로 여가가 공공장소에서 가정 중심의 사적 활동으로 바뀌었습니다.",
+      "typeApproach": "빈칸 뒤 사례들이 공통으로 보이는 변화의 방향을 한 추상명사로 묶습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "their recreation and leisure time was increasingly centered\naround the home",
+          "role": "가정 중심 여가",
+          "translation": "여가 시간이 점점 가정을 중심으로 이루어졌습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "similar entertainment was available for free\nand more conveniently from television.",
+          "role": "사적 소비",
+          "translation": "비슷한 오락을 텔레비전으로 집에서 무료로 더 편리하게 즐길 수 있었습니다."
+        }
+      ],
+      "correctReason": "여가가 집과 개인 소유 수단 중심으로 이동했으므로 privatization이 적절합니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "customization",
+        "reason": "여가가 개인별 맞춤화되었다는 내용이 아니라 공공 영역에서 가정으로 사유화되었다는 내용입니다."
+      }
+    },
+    "2024_09_32": {
+      "id": "2024_09_32",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 32,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 이미지 태그는 물체 이름은 담지만 누가 무엇을 하는지까지 설명하는 종합적 문장은 아닙니다.",
+      "typeApproach": "빈칸 뒤의 결함 사례가 무엇을 빠뜨렸는지 찾아 선택지를 부정문에 넣습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "It matters who is doing what, and tags don’t capture this.",
+          "role": "태그의 한계",
+          "translation": "누가 무엇을 하는지가 중요하지만 태그는 이를 담지 못합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "leaves\nout the information that the cat is pulling the fish bones out of\nan open trash can on the street.",
+          "role": "누락 사례",
+          "translation": "고양이가 쓰레기통에서 생선 뼈를 꺼낸다는 행동 정보가 빠집니다."
+        }
+      ],
+      "correctReason": "태그는 이미지에서 벌어지는 일을 포괄적으로 설명하지 못하므로 ②가 맞습니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "a set of words that allow users to identify an individual object",
+        "reason": "태그는 실제로 cat, street처럼 개별 물체를 식별하는 단어 집합 역할은 합니다."
+      }
+    },
+    "2024_09_33": {
+      "id": "2024_09_33",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 33,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 과학이 Mendel의 발견이 답할 수 있는 문제에 도달하자 그의 통찰은 문화가 받아들일 다음 한 걸음이 되었습니다.",
+      "typeApproach": "빈칸은 첫 문단의 일반 원리와 마지막 재발견 사례를 같은 표현으로 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "an innovation opens up\nonly the next step from what is known",
+          "role": "수용 가능한 거리",
+          "translation": "혁신은 이미 알려진 것에서 다음 한 걸음만 열 때 받아들여집니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Decades later science faced\nthe urgent questions that Mendel’s discoveries could answer.",
+          "role": "시대의 추격",
+          "translation": "수십 년 뒤 과학이 Mendel의 발견으로 답할 긴급한 문제에 직면했습니다."
+        }
+      ],
+      "correctReason": "지지 생태계가 따라잡자 통찰이 단 한 걸음 앞선 상태가 되었다는 ④가 맞습니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "regained acceptance of the public",
+        "reason": "대중의 재수용보다 과학적 문제와 주변 지식이 발견을 이해할 수준에 도달했다는 점이 핵심입니다."
+      }
+    },
+    "2024_09_34": {
+      "id": "2024_09_34",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 34,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 사진 이전에는 장소를 재현하고 복제해 널리 이동시키기 어려웠지만 사진은 장소의 대량 유통을 가능하게 했습니다.",
+      "typeApproach": "빈칸 뒤의 과거 제약과 이후 기술 변화가 해소한 문제를 한 문장으로 요약합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "paintings were\ntime-consuming to produce, relatively difficult to transport and\none-of-a-kind.",
+          "role": "회화의 이동 제약",
+          "translation": "회화는 제작에 오래 걸리고 운반이 어렵고 단 하나뿐이었습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Light, \tsmall \tand \tmass-produced\nphotographs became dynamic vehicles for the spatiotemporal\ncirculation of places.",
+          "role": "사진의 장소 유통",
+          "translation": "가볍고 작고 대량생산된 사진은 장소를 시공간적으로 유통하는 수단이 되었습니다."
+        }
+      ],
+      "correctReason": "사진 이전에는 장소의 재현물이 널리 이동하기 어려웠다는 ⑤가 이후 설명과 정확히 대비됩니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "painting was the major form of art",
+        "reason": "회화가 주요 예술 형식이었다는 점이 아니라 장소 이미지의 복제·운반 제약이 중심입니다."
+      }
+    },
+    "2024_09_35": {
+      "id": "2024_09_35",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 35,
+      "group": "irrelevant",
+      "type": "무관한 문장",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 글은 원격근무의 현재 장벽과 확산 요인을 설명하지만 ③만 원격근무에 맞는 직원 선발 기준을 말합니다.",
+      "typeApproach": "무관한 문장은 앞뒤 문장이 공유하는 문제-변화 흐름에서 벗어난 별도 실행 조언을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "acceptance and use of these\nprograms are still limited by a number of factors.",
+          "role": "현재 장벽",
+          "translation": "원격근무 프로그램의 수용과 이용은 여러 요인으로 제한됩니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "③ Care must\nbe taken to select employees whose personal and working\ncharacteristics are best suited for telecommuting.",
+          "role": "직원 선발 조언",
+          "translation": "③은 원격근무에 적합한 특성을 가진 직원을 골라야 한다는 별도 조언입니다."
+        }
+      ],
+      "correctReason": "①·②·④·⑤는 장벽과 원격근무 확산 전망을 이어 가지만 ③은 직원 선발이라는 다른 주제로 흐름을 끊습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "Continuing advances in information technology, the expansion of a global workforce, and increased desire to balance work and family are only three of the many factors that will gradually reduce the current barriers to telecommuting as a dominant workforce development.",
+        "reason": "④는 앞의 장벽이 기술·세계화·일과 가정 균형 요구로 줄어들 것이라는 중심 흐름입니다."
+      }
+    },
+    "2024_09_36": {
+      "id": "2024_09_36",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 36,
+      "group": "order",
+      "type": "순서",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 고정관념이 일반화와 원리가 같다고 전환하는 (C), 분류 과정을 설명하는 (A), 그 자동성과 위험을 정리하는 (B) 순서입니다.",
+      "typeApproach": "순서 문제는 역접, 지시 표현, 일반 원리에서 작동 방식과 위험으로 이어지는 범위를 봅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "stereotypes \tdo \tnot \tdiffer \tin \tprinciple \tfrom \tall \tother\ngeneralizations",
+          "role": "첫 전환",
+          "translation": "(C)는 고정관념도 다른 일반화와 원리가 다르지 않다고 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "we mentally sort things into groups\nbased on what we perceive the differences between them\nto be",
+          "role": "분류 과정",
+          "translation": "(A)는 차이라고 인식한 기준으로 대상을 집단에 빠르게 분류한다고 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Our brain performs these tasks efficiently and automatically",
+          "role": "지시어 연결",
+          "translation": "(B)의 these tasks는 (A)의 분류와 증거 검토를 받습니다."
+        }
+      ],
+      "correctReason": "고정관념 재정의 (C) → 분류 작동 (A) → 자동성과 경직 위험 (B)으로 이어져 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(C) - (B) - (A)",
+        "reason": "(B)의 these tasks가 받을 구체적 분류 과정은 (A)에서 먼저 제시되어야 합니다."
+      }
+    },
+    "2024_09_37": {
+      "id": "2024_09_37",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 37,
+      "group": "order",
+      "type": "순서",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 관리자가 없을 때 뿌리를 늘리는 (C), 과거 영양 상태를 기억해 위험을 택하는 (B), 풍부한 영양 이력과 대비하는 (A) 순서입니다.",
+      "typeApproach": "순서는 앞 문장의 조건을 받는 접속사, 반복어, 두 집단의 대조를 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "But if a plant does not have a caretaker to provide\nsupplemental minerals",
+          "role": "주어진 글 연결",
+          "translation": "(C)는 정원사가 비료를 준다는 주어진 글과 반대로 관리자가 없는 경우를 시작합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Plants that have experienced variable\nnutrient availability in the past tend to exhibit risk-taking\nbehaviors",
+          "role": "변동 이력",
+          "translation": "(B)는 과거 영양 공급이 변동적이었던 식물의 위험 감수 행동을 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "In contrast, plants with a history of nutrient abundance are\nrisk averse and save energy.",
+          "role": "대조 마무리",
+          "translation": "(A)는 영양이 풍부했던 식물은 반대로 위험을 피하고 에너지를 아낀다고 말합니다."
+        }
+      ],
+      "correctReason": "관리자 없는 적응과 기억 (C) → 변동 이력의 위험 감수 (B) → 풍부한 이력의 위험 회피 (A)로 이어져 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(C) - (A) - (B)",
+        "reason": "(A)의 In contrast는 먼저 위험 감수 식물을 설명한 (B)를 받아야 합니다."
+      }
+    },
+    "2024_09_38": {
+      "id": "2024_09_38",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 38,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 물리적 테이프 편집과 디지털 편집을 비교한 뒤 밀리초 정밀도를 제시해야 하고, 다음의 This microlevel access가 이를 받습니다.",
+      "typeApproach": "문장 삽입은 주어진 문장의 원인 표현과 뒤 문장의 지시어가 동시에 맞는 지점을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "while editing\nonce \tinvolved \trazor \tblades \tto \tphysically \tcut \tand \tsplice\naudiotapes, it now involved the cursor and mouse-click",
+          "role": "디지털 편집 전환",
+          "translation": "과거 테이프를 칼로 자르던 편집이 커서와 마우스 클릭으로 바뀌었습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "This microlevel access at once made\nit easier to conceal any traces of manipulations",
+          "role": "뒤 지시어",
+          "translation": "다음 문장의 미세 수준 접근은 밀리초 정밀 편집을 가리킵니다."
+        }
+      ],
+      "correctReason": "디지털 편집 방식 → 밀리초 정밀도 → This microlevel access 순서가 되는 ⑤가 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "④",
+        "reason": "④에서는 디지털 메시지 조작만 나왔고 밀리초 정밀도를 설명할 구체적인 편집 비교가 아직 이어져야 합니다."
+      }
+    },
+    "2024_09_39": {
+      "id": "2024_09_39",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 39,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 일반 감상자는 재료에 대한 기본 감각이면 충분하지만 전문가인 비평가는 더 깊은 친숙성이 유용하다는 문장이 그 사이에 와야 합니다.",
+      "typeApproach": "삽입 문장의 주어 범위가 일반인에서 전문가로 바뀌는 지점과 뒤의 구체화를 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "This sense might involve a basic\nfamiliarity with paints and paintbrushes",
+          "role": "일반적 기본 지식",
+          "translation": "일반 감상에는 물감과 붓에 대한 기본 친숙성이면 됩니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Critics are often\ninterested in the ways artists exploit different kinds of materials\nand tools",
+          "role": "전문가 관심",
+          "translation": "뒤 문장은 비평가가 재료와 도구의 활용 방식에 관심을 둔다고 구체화합니다."
+        }
+      ],
+      "correctReason": "기본 친숙성 설명 뒤 전문가의 더 깊은 친숙성을 넣고 비평가 사례로 이어지는 ③이 맞습니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "④",
+        "reason": "④ 앞의 문장은 이미 재료의 고유한 특성을 설명하므로 전문가로 범위를 전환하는 문장은 그보다 앞에 와야 합니다."
+      }
+    },
+    "2024_09_40": {
+      "id": "2024_09_40",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 40,
+      "group": "summary",
+      "type": "요약문",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 역사소설은 불충분한 자료를 상상력으로 보완해 과거를 생생하게 보여 주고 역사 이해를 풍부하게 합니다.",
+      "typeApproach": "요약문은 자료의 한계와 소설이 제공하는 긍정적 효과를 각각 빈칸에 대응시킵니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "parts of the past that have never ― for lack of\narchives ― been \trepresented.",
+          "role": "자료 부족",
+          "translation": "기록 자료 부족으로 표현되지 못한 과거의 부분이 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "provides \tan \taccount \tthat \twhile \tnot\nnecessarily true provides a clearer indication of past events",
+          "role": "이해 보완",
+          "translation": "반드시 사실은 아니어도 과거 사건을 더 분명히 이해하게 하는 설명을 제공합니다."
+        }
+      ],
+      "correctReason": "자료는 insufficient하지만 설명은 이해를 enrich할 수 있으므로 ②입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "concrete …… enhance",
+        "reason": "역사소설이 사용하는 자료가 충분하고 구체적이라는 글이 아니라 자료 부족을 보완한다는 글입니다."
+      }
+    },
+    "2024_09_41": {
+      "id": "2024_09_41",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 41,
+      "group": "long",
+      "type": "장문 제목",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "정답 ①. 배운 내용은 기억하면서 어디서 배웠는지는 잊기 때문에 학교에서 배운 것을 모두 잊었다고 착각할 수 있습니다.",
+      "typeApproach": "장문 제목은 반복되는 기억 구분과 그 구분이 만드는 착각을 모두 담습니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "it’s quite\npossible to retain content without remembering the context.",
+          "role": "내용 기억",
+          "translation": "맥락은 잊어도 내용은 기억할 수 있습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "we think we forget most of what we learned in\nschool is that we underestimate what we actually remember.",
+          "role": "기억 착각",
+          "translation": "실제로 기억하는 것을 과소평가해 학교에서 배운 대부분을 잊었다고 생각합니다."
+        }
+      ],
+      "correctReason": "기억이 내용을 보존하고 출처를 지워 생기는 착각을 표현한 ①이 가장 적절합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "How Students Can Learn More and Better in School",
+        "reason": "학습법을 제안하는 글이 아니라 기억 내용과 출처 기억의 차이를 설명합니다."
+      }
+    },
+    "2024_09_42": {
+      "id": "2024_09_42",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 42,
+      "group": "long",
+      "type": "장문 어휘",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "정답 ⑤. 지식의 출처를 잊기 쉽기 때문에 학교에서 기억하는 것이 적다고 잘못 결론 내리기는 쉬우므로 challenging은 easy가 되어야 합니다.",
+      "typeApproach": "어휘 문제는 조건절이 뒤 결과를 어렵게 만드는지 쉽게 만드는지 논리 방향을 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Context information is frequently\n(c) easier to forget than content",
+          "role": "출처 기억 소실",
+          "translation": "맥락 정보는 내용보다 더 쉽게 잊힙니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "If remembering\nthe source of knowledge is difficult, you can see how it would\nbe (e) challenging to conclude you don’t remember much\nfrom school.",
+          "role": "논리 방향 충돌",
+          "translation": "출처 기억이 어렵다면 학교에서 별로 기억하지 못한다고 결론 내리기 쉽다는 뜻이어야 합니다."
+        }
+      ],
+      "correctReason": "출처를 잊으면 학교 학습을 기억하지 못한다고 착각하기 쉬우므로 (e)가 부적절한 ⑤입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "(c)",
+        "reason": "맥락 정보가 내용보다 더 쉽게 잊힌다는 설명은 뒤 사례와 일치합니다."
+      }
+    },
+    "2024_09_43": {
+      "id": "2024_09_43",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 43,
+      "group": "long",
+      "type": "장문 순서",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "정답 ④. 의사의 치료 제안을 듣고 산행을 준비하는 (D), 산 정상에서 밤을 보내는 (B), 다음 날 내려오는 (C) 순서입니다.",
+      "typeApproach": "이야기 순서는 제안·준비·이동·밤과 아침의 시간 표시를 연결합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Upon hearing this offer, Sean replied, “Thanks, but (d) I\nknow just the treatment I need.”",
+          "role": "의사 제안 직후",
+          "translation": "(D)는 의사의 치료 제안을 들은 직후 자신에게 필요한 치료가 산행이라고 답합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Having hiked for several hours, Sean was thrilled to reach\nthe top of Vincent Mountain.",
+          "role": "산 정상 도착",
+          "translation": "(B)에서 몇 시간 걸은 뒤 산 정상에 도착합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "After what felt like the longest night of Sean’s life, the sky\nfinally turned a beautiful shade of pink",
+          "role": "다음 날 아침",
+          "translation": "(C)는 긴 밤이 지난 뒤 아침이 밝는 장면으로 시작합니다."
+        }
+      ],
+      "correctReason": "준비 (D) → 정상과 밤 (B) → 아침과 하산 (C)으로 이어져 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(D) － (C) － (B)",
+        "reason": "(C)의 ‘가장 긴 밤 뒤’라는 표현은 밤의 강풍과 공포를 다룬 (B) 다음에 와야 합니다."
+      }
+    },
+    "2024_09_44": {
+      "id": "2024_09_44",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 44,
+      "group": "long",
+      "type": "장문 지칭",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. (c) You는 개 Toby를 가리키고, (a)·(b)·(d)·(e)는 모두 Sean을 가리킵니다.",
+      "typeApproach": "지칭 문제는 각 대명사의 화자와 청자를 표시하고 인물인지 동물인지 구분합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "Finding Toby energetically\nrunning next to the campsite, Sean said, “(c) You must be as\nexcited as I am",
+          "role": "Toby 지칭",
+          "translation": "Sean이 Toby를 보고 (c) You라고 말합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Concerned about Sean, he said, “(a) You’ve been stressed for\nweeks.",
+          "role": "Sean 지칭",
+          "translation": "Alex가 Sean에게 (a) You라고 말합니다."
+        }
+      ],
+      "correctReason": "(c)만 Toby이고 나머지 네 표현은 Sean이므로 ③입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(e)",
+        "reason": "(e) he는 Alex의 조언을 따라 장비를 챙긴 Sean을 가리킵니다."
+      }
+    },
+    "2024_09_45": {
+      "id": "2024_09_45",
+      "status": "ready",
+      "exam": "2024학년도 9월 모의평가 영어",
+      "qid": 45,
+      "group": "long",
+      "type": "장문 내용",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "정답 ③. 밤이 다가오자 바람은 잦아든 것이 아니라 세차게 불었습니다.",
+      "typeApproach": "내용 불일치는 시간 표현과 상태 변화의 방향을 원문과 직접 대조합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "As\nnight approached, however, the wind blew fiercely.",
+          "role": "밤의 바람",
+          "translation": "밤이 다가오자 바람이 세차게 불었습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "Sean went\ndown the mountain with a renewed sense of joy",
+          "role": "하산 심경",
+          "translation": "Sean은 새로워진 기쁨을 느끼며 산을 내려왔습니다."
+        }
+      ],
+      "correctReason": "바람이 잦아든 것이 아니라 세차게 불었다고 했으므로 ③이 불일치합니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "Sean은 산을 내려오며 기쁨을 느꼈다.",
+        "reason": "새로운 기쁨을 느끼며 산을 내려왔다는 원문과 일치합니다."
+      }
+    }
+  }
+}

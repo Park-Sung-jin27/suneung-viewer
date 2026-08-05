@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2024_09_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "examId": "2024_09"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2024학년도_9월_영어_문제.pdf",
+      "sha256": "33e3d9ae10a018add9ae2e4f746c2d13e6f442db14ab11d8aebc738643e7534c"
+    },
+    "answer": {
+      "filename": "2024학년도_9월_영어_정답.png",
+      "sha256": "17ff6d9507b7c86e4f38e8f338ee554631e14d4a0371f8185b3a71c3b8d12a92"
+    },
+    "explanation": {
+      "filename": "2024학년도_9월_영어_해설.pdf",
+      "sha256": "b6fae8fac037684fdb86cddb070e771d13e46b075e4fac8e3cda32ebd8b2b0ef"
+    }
+  },
+  "reviewData": {
+    "path": "english/data/candidates/english_2024_09_reviews.json",
+    "sha256": "f71d9c5ae1cd275b181cdad6ae4be8e79a57f01caef5d5e87f349bc8014ba66c",
+    "expectedReadyCount": 28
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 60,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 13,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2024_09_25",
+      "2024_09_27",
+      "2024_09_28"
+    ]
+  },
+  "projectionPolicies": {
+    "default": {
+      "sourceField": "rawText",
+      "stripStem": true,
+      "stripChoices": true,
+      "stripPdfTail": true
+    },
+    "figureOnlyIds": [
+      "2024_09_25",
+      "2024_09_27",
+      "2024_09_28"
+    ],
+    "sharedPassageIds": [
+      "2024_09_41",
+      "2024_09_42",
+      "2024_09_43",
+      "2024_09_44",
+      "2024_09_45"
+    ],
+    "inlineMarkerIds": [
+      "2024_09_29",
+      "2024_09_30",
+      "2024_09_35",
+      "2024_09_42",
+      "2024_09_44"
+    ],
+    "sequenceTableIds": [
+      "2024_09_36",
+      "2024_09_37",
+      "2024_09_43"
+    ],
+    "placementMarkerIds": [
+      "2024_09_38",
+      "2024_09_39"
+    ]
+  },
+  "questions": [
+    { "id": "2024_09_18", "qid": 18, "answer": 1, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_19", "qid": 19, "answer": 1, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_20", "qid": 20, "answer": 2, "problemPage": 2, "explanationPages": [12], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_21", "qid": 21, "answer": 2, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_22", "qid": 22, "answer": 1, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_23", "qid": 23, "answer": 5, "problemPage": 3, "explanationPages": [14], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_24", "qid": 24, "answer": 1, "problemPage": 3, "explanationPages": [15], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_25", "qid": 25, "answer": 3, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2024-09/q25-figure.png" },
+    { "id": "2024_09_26", "qid": 26, "answer": 5, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_27", "qid": 27, "answer": 2, "problemPage": 4, "explanationPages": [17], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2024-09/q27-notice.png" },
+    { "id": "2024_09_28", "qid": 28, "answer": 5, "problemPage": 4, "explanationPages": [17], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2024-09/q28-notice.png" },
+    { "id": "2024_09_29", "qid": 29, "answer": 3, "problemPage": 5, "explanationPages": [18], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_30", "qid": 30, "answer": 4, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_31", "qid": 31, "answer": 4, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_32", "qid": 32, "answer": 2, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_33", "qid": 33, "answer": 4, "problemPage": 6, "explanationPages": [21], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_34", "qid": 34, "answer": 5, "problemPage": 6, "explanationPages": [22], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_35", "qid": 35, "answer": 3, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_36", "qid": 36, "answer": 4, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_37", "qid": 37, "answer": 5, "problemPage": 7, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_38", "qid": 38, "answer": 5, "problemPage": 7, "explanationPages": [25], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_39", "qid": 39, "answer": 3, "problemPage": 7, "explanationPages": [26], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_40", "qid": 40, "answer": 2, "problemPage": 7, "explanationPages": [26], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_41", "qid": 41, "answer": 1, "problemPage": 8, "explanationPages": [28], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_42", "qid": 42, "answer": 5, "problemPage": 8, "explanationPages": [28], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_43", "qid": 43, "answer": 4, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_44", "qid": 44, "answer": 3, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2024_09_45", "qid": 45, "answer": 3, "problemPage": 8, "explanationPages": [30], "status": "question_answer_ready", "reviewStatus": "ready" }
+  ],
+  "choiceOverrides": {
+    "2024_09_20": [
+      { "num": 1, "mark": "①", "text": "적성을 파악하기 위해서는 자신 있는 일을 다양하게 시도해야 한다." },
+      { "num": 2, "mark": "②", "text": "자신감을 키우기 위해 낯설고 두려운 일에 도전하는 용기를 가져야 한다." },
+      { "num": 3, "mark": "③", "text": "어려운 일을 자신 있게 수행하기 위해 사전에 계획을 철저히 세워야 한다." },
+      { "num": 4, "mark": "④", "text": "과도한 자신감을 갖기보다는 자신의 약점을 객관적으로 분석해야 한다." },
+      { "num": 5, "mark": "⑤", "text": "자신의 경험과 지식을 바탕으로 당면한 문제에 자신 있게 대처해야 한다." }
+    ],
+    "2024_09_24": [
+      { "num": 1, "mark": "①", "text": "Web-based Journalism: Lasting Longer and Contextually Wider" },
+      { "num": 2, "mark": "②", "text": "With the Latest Content, Online News Beats Daily Newspapers!" },
+      { "num": 3, "mark": "③", "text": "How Online Media Journalists Reveal Hidden Stories Behind News" },
+      { "num": 4, "mark": "④", "text": "Let’s Begin a Journey to the Past with Printed Newspapers!" },
+      { "num": 5, "mark": "⑤", "text": "Present and Future of Journalism in the Web World" }
+    ],
+    "2024_09_28": [
+      { "num": 1, "mark": "①", "text": "처음으로 개최되는 대회이다." },
+      { "num": 2, "mark": "②", "text": "출품 사진 주제에 제한이 없다." },
+      { "num": 3, "mark": "③", "text": "100 MB 크기의 파일을 제출할 수 있다." },
+      { "num": 4, "mark": "④", "text": "투표는 일주일간 실시된다." },
+      { "num": 5, "mark": "⑤", "text": "학생들이 선정한 사진들이 전시될 것이다." }
+    ],
+    "2024_09_29": [
+      { "num": 1, "mark": "①", "text": "do your best" },
+      { "num": 2, "mark": "②", "text": "it" },
+      { "num": 3, "mark": "③", "text": "realizing" },
+      { "num": 4, "mark": "④", "text": "that" },
+      { "num": 5, "mark": "⑤", "text": "to go" }
+    ],
+    "2024_09_30": [
+      { "num": 1, "mark": "①", "text": "particular" },
+      { "num": 2, "mark": "②", "text": "increased" },
+      { "num": 3, "mark": "③", "text": "added" },
+      { "num": 4, "mark": "④", "text": "countered" },
+      { "num": 5, "mark": "⑤", "text": "reconnects" }
+    ],
+    "2024_09_32": [
+      { "num": 1, "mark": "①", "text": "a set of words that allow users to identify an individual object" },
+      { "num": 2, "mark": "②", "text": "a comprehensive description of what is happening in an image" },
+      { "num": 3, "mark": "③", "text": "a reliable resource for categorizing information by pictures" },
+      { "num": 4, "mark": "④", "text": "a primary means of organizing a sequential order of words" },
+      { "num": 5, "mark": "⑤", "text": "a useful filter for sorting similar but not identical images" }
+    ],
+    "2024_09_35": [
+      { "num": 1, "mark": "①", "text": "These factors include manager reliance on face-to-face management practices, lack of telecommuting training within an organization, misperceptions of and discomfort with flexible workplace programs, and a lack of information about the effects of telecommuting on an organization’s bottom line." },
+      { "num": 2, "mark": "②", "text": "Despite these limitations, at the beginning of the 21st century, a new “anytime, anywhere” work culture is emerging." },
+      { "num": 3, "mark": "③", "text": "Care must be taken to select employees whose personal and working characteristics are best suited for telecommuting." },
+      { "num": 4, "mark": "④", "text": "Continuing advances in information technology, the expansion of a global workforce, and increased desire to balance work and family are only three of the many factors that will gradually reduce the current barriers to telecommuting as a dominant workforce development." },
+      { "num": 5, "mark": "⑤", "text": "With implications for organizational cost savings, especially with regard to lower facility costs, increased employee flexibility, and productivity, telecommuting is increasingly of interest to many organizations." }
+    ],
+    "2024_09_36": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2024_09_37": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2024_09_38": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2024_09_39": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2024_09_40": [
+      { "num": 1, "mark": "①", "text": "insignificant …… delay" },
+      { "num": 2, "mark": "②", "text": "insufficient …… enrich" },
+      { "num": 3, "mark": "③", "text": "concrete …… enhance" },
+      { "num": 4, "mark": "④", "text": "outdated …… improve" },
+      { "num": 5, "mark": "⑤", "text": "limited …… disturb" }
+    ],
+    "2024_09_45": [
+      { "num": 1, "mark": "①", "text": "Sean은 친구 Alex에게 어려움을 토로했다." },
+      { "num": 2, "mark": "②", "text": "Toby가 큰 연못으로 달려갔다." },
+      { "num": 3, "mark": "③", "text": "밤이 되자 바람이 잦아들었다." },
+      { "num": 4, "mark": "④", "text": "Sean은 산을 내려오며 기쁨을 느꼈다." },
+      { "num": 5, "mark": "⑤", "text": "Sean은 Vincent Mountain 하이킹에 대해 읽은 적이 있다." }
+    ]
+  },
+  "figures": [
+    {
+      "questionId": "2024_09_25",
+      "kind": "data_table",
+      "assetPath": "english/assets/2024-09/q25-figure.png",
+      "sha256": "80bfa1b30d7fd440f95ea82aece0ed51f584d064f5ee869525d33e38720dddba",
+      "sourcePage": 4,
+      "alt": "College enrollment rates 원본 표. White: 2011 45%, 2016 42%, 2021 38%. Black: 2011 37%, 2016 36%, 2021 37%. Hispanic: 2011 35%, 2016 39%, 2021 33%. Asian: 2011 60%, 2016 58%, 2021 61%. American Indian/Alaska Native: 2011 24%, 2016 19%, 2021 28%."
+    },
+    {
+      "questionId": "2024_09_27",
+      "kind": "notice",
+      "assetPath": "english/assets/2024-09/q27-notice.png",
+      "sha256": "1359410881fe90f2a8d6b3e737fc1a461f35b3238799e158d11d3311a18f2f14",
+      "sourcePage": 4,
+      "alt": "Brushwood National Park Tour Program 원본 안내문. Enjoy free park walks with our volunteer guides. Open on weekdays from March to November. Scan the QR code to sign up. A bottle of water will be provided to each participant. Tours may be canceled due to weather conditions."
+    },
+    {
+      "questionId": "2024_09_28",
+      "kind": "notice_with_schedule",
+      "assetPath": "english/assets/2024-09/q28-notice.png",
+      "sha256": "ece388fcd3efba14bb72a0ab93da382cfd1e9bd0b68357a1f6d2ad4a7d8433b2",
+      "sourcePage": 4,
+      "alt": "WGHS Geography Photo Contest 원본 안내문. 10th annual Geography Photo Contest. Theme: Beauty of Rivers Crossing Our City. One photo per person, maximum 50 MB. Submission October 2–8, voting October 11–13, exhibition October 16–20. The top 10 photos selected by students will be exhibited."
+    }
+  ]
+}

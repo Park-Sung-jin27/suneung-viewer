@@ -1,0 +1,342 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 6월 모의평가 수학 확률과 통계 23~30번 8문항",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "6e81c8fcec76bbfe179cea180e12f3cbd8e717f1c73c8480cbb420fcc4f9e185",
+    "verifiedAt": "2026-08-05",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/view.do?boardID=1500236&boardSeq=5086962&lev=0&m=0403&page=4&s=suneung&searchType=S&statusYN=W",
+      "independentSourceUrls": [
+        "https://horaeng.com/279",
+        "https://orbi.kr/00068355597"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "horaeng-problem.pdf",
+          "sha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4"
+        }
+      ],
+      "answerFilename": "kice-answer.pdf",
+      "answerSha256": "655f41600d4825dceca6d0248ce0e02916ee73a2e3ad0cd2d596fba8e843db8b",
+      "solutionArtifacts": [
+        {
+          "filename": "orbi-solution.pdf",
+          "sha256": "2fc1d295bfdadeda8695f20739a53c629e27f8370cc27f173eff05b5707c8e89"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지·정답표와 동일 파일 독립 보관본을 대조하고 독립 풀이 자료 및 직접 경우의 수 계산으로 8문항을 재검증했습니다."
+  },
+  "items": {
+    "2025_06_sta_23": {
+      "id": "2025_06_sta_23",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 23,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "4개 자리 중 같은 숫자 1의 중복을 나누면 12가지입니다.",
+      "approach": "서로 다른 네 대상으로 센 뒤 같은 1 두 개의 순서 중복을 제거합니다.",
+      "concepts": ["중복순열", "같은 것이 있는 순열"],
+      "steps": [
+        {
+          "title": "전체 배열",
+          "expression": "4!",
+          "explanation": "네 숫자를 모두 다르다고 보면 24가지입니다."
+        },
+        {
+          "title": "중복 제거",
+          "expression": "\\frac{4!}{2!}",
+          "explanation": "두 개의 1을 서로 바꾼 배열은 같은 배열이므로 2!로 나눕니다."
+        },
+        {
+          "title": "계산",
+          "expression": "\\frac{24}{2}=12",
+          "explanation": "정답은 ③입니다."
+        }
+      ],
+      "correctReason": "중복되는 대상은 숫자 1 두 개뿐이어서 정확히 2!만큼 중복 계산됩니다.",
+      "commonMistake": "1 두 개를 구별해 4!=24로 답하지 마세요.",
+      "verification": {
+        "problemPage": 9,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_sta_24": {
+      "id": "2025_06_sta_24",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 24,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "P(A)=1/6이고 배반 조건으로 P(B)=7/12이므로 P(Bᶜ)=5/12입니다.",
+      "approach": "여사건 확률과 배반사건의 합집합 공식을 차례로 사용합니다.",
+      "concepts": ["여사건", "배반사건"],
+      "steps": [
+        {
+          "title": "A의 확률",
+          "expression": "P(A)=1-P(A^C)=1-\\frac56=\\frac16",
+          "explanation": "여사건 확률을 1에서 뺍니다."
+        },
+        {
+          "title": "B의 확률",
+          "expression": "P(A\\cup B)=P(A)+P(B)\\Rightarrow P(B)=\\frac34-\\frac16=\\frac7{12}",
+          "explanation": "A와 B가 배반이므로 교집합 항이 없습니다."
+        },
+        {
+          "title": "B의 여사건",
+          "expression": "P(B^C)=1-\\frac7{12}=\\frac5{12}",
+          "explanation": "정답은 ②입니다."
+        }
+      ],
+      "correctReason": "서로 배반인 두 사건의 합집합 확률은 두 확률의 합입니다.",
+      "commonMistake": "P(Aᶜ)=5/6을 P(A)로 그대로 사용하지 마세요.",
+      "verification": {
+        "problemPage": 9,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_sta_25": {
+      "id": "2025_06_sta_25",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 25,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "x²을 세 번, −2를 두 번 고르는 항의 계수는 40입니다.",
+      "approach": "이항전개에서 x의 지수가 6이 되는 선택 횟수를 먼저 정합니다.",
+      "concepts": ["이항정리", "특정 항의 계수"],
+      "steps": [
+        {
+          "title": "지수 조건",
+          "expression": "(x^2)^r=x^6\\Rightarrow r=3",
+          "explanation": "다섯 인수 중 x²을 세 번 골라야 합니다."
+        },
+        {
+          "title": "해당 항",
+          "expression": "\\binom53(x^2)^3(-2)^2",
+          "explanation": "나머지 두 인수에서는 −2를 선택합니다."
+        },
+        {
+          "title": "계수",
+          "expression": "\\binom53\\cdot4=10\\cdot4=40",
+          "explanation": "정답은 ④입니다."
+        }
+      ],
+      "correctReason": "x의 지수는 x² 선택 횟수로만 결정되어 해당 항이 하나뿐입니다.",
+      "commonMistake": "−2를 세 번 선택하거나 부호가 음수라고 판단하지 마세요. 두 번 곱해 양수입니다.",
+      "verification": {
+        "problemPage": 10,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_sta_26": {
+      "id": "2025_06_sta_26",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 26,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "a가 정확히 하나인 108개와 b가 정확히 하나인 108개에서 중복 48개를 빼면 확률은 21/32입니다.",
+      "approach": "두 사건의 합집합을 포함배제로 세고 전체 문자열 4⁴로 나눕니다.",
+      "concepts": ["포함배제", "중복을 허용한 배열"],
+      "steps": [
+        {
+          "title": "각 사건",
+          "expression": "N(a\\text{ 한 개})=N(b\\text{ 한 개})=4\\cdot3^3=108",
+          "explanation": "해당 문자의 위치를 고르고 나머지 세 자리에는 다른 세 문자를 넣습니다."
+        },
+        {
+          "title": "교집합",
+          "expression": "N(a,b\\text{ 각각 한 개})=4\\cdot3\\cdot2^2=48",
+          "explanation": "a와 b의 서로 다른 위치를 정하고 나머지는 c,d 중에서 고릅니다."
+        },
+        {
+          "title": "확률",
+          "expression": "\\frac{108+108-48}{4^4}=\\frac{168}{256}=\\frac{21}{32}",
+          "explanation": "정답은 ③입니다."
+        }
+      ],
+      "correctReason": "‘a 한 개 또는 b 한 개’의 겹치는 문자열을 한 번만 세도록 포함배제를 적용했습니다.",
+      "commonMistake": "두 사건을 단순히 더해 a와 b가 각각 한 개인 문자열을 두 번 세지 마세요.",
+      "verification": {
+        "problemPage": 10,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_sta_27": {
+      "id": "2025_06_sta_27",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 27,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "전체 원순열 120개에서 5와 6이 이웃한 48개를 빼면 72개입니다.",
+      "approach": "합이 11이 되는 유일한 쌍 5, 6을 한 묶음으로 세어 여사건을 구합니다.",
+      "concepts": ["원순열", "여사건의 경우의 수"],
+      "steps": [
+        {
+          "title": "전체 원순열",
+          "expression": "(6-1)!=120",
+          "explanation": "회전하여 같은 배열을 하나로 봅니다."
+        },
+        {
+          "title": "금지 배열",
+          "expression": "2\\cdot(5-1)!=48",
+          "explanation": "5와 6을 한 묶음으로 보면 다섯 대상의 원순열이고 묶음 내부 순서는 두 가지입니다."
+        },
+        {
+          "title": "여사건",
+          "expression": "120-48=72",
+          "explanation": "정답은 ①입니다."
+        }
+      ],
+      "correctReason": "서로 다른 두 수의 합이 11인 경우는 5+6뿐이므로 금지 조건이 하나의 인접쌍으로 환원됩니다.",
+      "commonMistake": "원형 배열에서 5와 6이 양 끝에 놓인 경우도 이웃임을 잊지 마세요.",
+      "verification": {
+        "problemPage": 11,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_sta_28": {
+      "id": "2025_06_sta_28",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 28,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "5번 뒤집는 순서 중 모두 앞면 136개, 모두 뒷면 120개이므로 조건부확률은 17/32입니다.",
+      "approach": "각 동전이 뒤집힌 횟수의 홀짝 조건으로 끝상태를 분류하고 모든 길이 5의 선택 순서를 셉니다.",
+      "concepts": ["조건부확률", "다항계수를 이용한 경우의 수"],
+      "steps": [
+        {
+          "title": "모두 앞면",
+          "expression": "N_H=1+3\\frac{5!}{3!2!}+3\\frac{5!}{4!1!}+\\binom32\\frac{5!}{2!2!1!}=136",
+          "explanation": "처음 뒷면인 동전은 홀수 번, 나머지 세 동전은 짝수 번 뒤집히는 5회 분배를 셉니다."
+        },
+        {
+          "title": "모두 뒷면",
+          "expression": "N_T=3\\frac{5!}{3!1!1!}+\\frac{5!}{2!1!1!1!}=120",
+          "explanation": "처음 앞면인 세 동전은 홀수 번, 처음 뒷면인 동전은 짝수 번 뒤집혀야 합니다."
+        },
+        {
+          "title": "조건부확률",
+          "expression": "\\frac{N_H}{N_H+N_T}=\\frac{136}{256}=\\frac{17}{32}",
+          "explanation": "모두 같은 면이라는 조건 아래 모두 앞면인 비율은 ①입니다."
+        }
+      ],
+      "correctReason": "각 5회 동전 선택 순서는 확률이 같고, 끝상태를 결정하는 모든 홀짝 분배를 빠짐없이 셌습니다.",
+      "commonMistake": "모두 앞면 확률만 구한 뒤 조건부확률의 분모에서 모두 뒷면인 경우를 빼먹지 마세요.",
+      "verification": {
+        "problemPage": 11,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_sta_29": {
+      "id": "2025_06_sta_29",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 29,
+      "answer": "6",
+      "answerMark": null,
+      "summary": "흰 공이 27개, 검은 공이 13개가 되어 r=1/10이므로 60r=6입니다.",
+      "approach": "흰 공 수를 w로 두고 p=q를 조합식으로 풀어 공의 구성을 정합니다.",
+      "concepts": ["조합을 이용한 확률", "확률방정식"],
+      "steps": [
+        {
+          "title": "두 확률",
+          "expression": "p=\\frac{\\binom w2}{\\binom{40}2},\\qquad q=\\frac{w(40-w)}{\\binom{40}2}",
+          "explanation": "흰 공 w개, 검은 공 40−w개로 둡니다."
+        },
+        {
+          "title": "공의 수 결정",
+          "expression": "\\binom w2=w(40-w),\\ p>0\\Rightarrow w=27",
+          "explanation": "w>1이므로 w로 나누어 풀면 검은 공은 13개입니다."
+        },
+        {
+          "title": "요구값",
+          "expression": "r=\\frac{\\binom{13}2}{\\binom{40}2}=\\frac1{10}\\Rightarrow60r=6",
+          "explanation": "최종 답은 6입니다."
+        }
+      ],
+      "correctReason": "동시에 두 공을 꺼내므로 순서를 구별하지 않는 조합을 모든 확률에 일관되게 사용했습니다.",
+      "commonMistake": "흰 공 1개·검은 공 1개의 경우에 2를 추가로 곱하지 마세요. w(40−w)가 이미 쌍을 정확히 셉니다.",
+      "verification": {
+        "problemPage": 12,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_06_sta_30": {
+      "id": "2025_06_sta_30",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 6월 모의평가 수학 확률과 통계",
+      "questionNumber": 30,
+      "answer": "108",
+      "answerMark": null,
+      "summary": "비증가 함수 126개에서 x+f(x)의 범위를 벗어나는 양끝 위반 18개를 빼면 108개입니다.",
+      "approach": "함숫값 다섯 개를 비증가 수열로 보고 중복조합으로 센 뒤 각 x의 허용 범위를 적용합니다.",
+      "concepts": ["함수의 개수", "중복조합"],
+      "steps": [
+        {
+          "title": "비증가 함수 전체",
+          "expression": "f(-2)\\ge f(-1)\\ge f(0)\\ge f(1)\\ge f(2),\\qquad \\binom{5+5-1}{5}=126",
+          "explanation": "X의 다섯 값을 중복 허용해 비증가 순서로 고릅니다."
+        },
+        {
+          "title": "허용 범위 위반",
+          "expression": "N_{\\text{왼쪽 위반}}=6+3=9,\\qquad N_{\\text{오른쪽 위반}}=9",
+          "explanation": "f(−2)<0이거나 f(−1)=−2인 경우가 9개이고, 대칭적으로 f(2)>0이거나 f(1)=2인 경우도 9개입니다."
+        },
+        {
+          "title": "유효 함수",
+          "expression": "126-9-9=108",
+          "explanation": "두 위반 집합은 서로 겹칠 수 없으므로 최종 답은 108입니다."
+        }
+      ],
+      "correctReason": "단조 조건을 먼저 반영한 전체에서 x+f(x)∈X의 양끝 제한만 정확히 제외했습니다.",
+      "commonMistake": "각 x의 함숫값을 독립적으로 곱해 세면 비증가 조건에 따른 의존성을 놓칩니다.",
+      "verification": {
+        "problemPage": 12,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}
