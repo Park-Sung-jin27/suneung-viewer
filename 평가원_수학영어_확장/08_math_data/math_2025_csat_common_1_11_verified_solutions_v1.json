@@ -1,0 +1,443 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 대학수학능력시험 수학 공통 1~11번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "d70f992eda40bd36a2ef9c172791da5f3e90cc53adffe8108d590419d3e1e39d",
+    "verifiedAt": "2026-08-07",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung",
+      "independentSourceUrls": [
+        "https://normalrap.tistory.com/entry/2025%EB%85%84-%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98-%EA%B8%B0%EC%B6%9C-%EB%AC%B8%EC%A0%9C-%EB%8B%B5",
+        "https://mathpowergen.com/2025-%EC%88%98%EB%8A%A5-%EC%88%98%ED%95%99-%EA%B8%B0%EC%B6%9C%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%ED%95%B4%EC%84%A4/"
+      ],
+      "solutionSourceUrls": [
+        "https://mathpowergen.com/wp-content/uploads/2025/06/2025%ED%95%99%EB%85%84%EB%8F%84-%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98-%EC%88%98%ED%95%99-%ED%99%80%EC%88%98%ED%98%95-EBS-%ED%95%B4%EC%84%A4.pdf"
+      ],
+      "problemFilename": "problem.pdf",
+      "problemSha256": "4999b0069255aaf361358777163b6ea4e8656130382a37ef355a5ff66ac9ff07",
+      "problemReplicaFilenames": [
+        "problem-kice.pdf",
+        "problem-mirror.pdf"
+      ],
+      "problemReplicaArtifacts": [],
+      "answerFilename": "official-answer.pdf",
+      "answerSha256": "987fa768dc669042df4e018a157535407583e5564cd540cac7ddd2fd414b5e9e",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "9ad45a6f218763f980197e4d03f33cd4df32c1568455ffebd60e0127c6420c43"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지와 정답표를 대조하고, EBS 해설 자료와 독립 계산으로 각 풀이를 다시 확인했습니다."
+  },
+  "items": {
+    "2025_csat_common_1": {
+      "id": "2025_csat_common_1",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 1,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "두 항을 모두 밑이 5인 거듭제곱으로 바꾸면 지수의 합이 1이 되어 값은 5입니다.",
+      "approach": "세제곱근과 분수 지수의 관계를 이용해 밑을 통일한 뒤 지수법칙을 적용합니다.",
+      "concepts": ["분수 지수", "지수법칙"],
+      "steps": [
+        {
+          "title": "분수 지수로 바꾸기",
+          "expression": "\\sqrt[3]{5}\\times25^{1/3}=5^{1/3}\\times(5^2)^{1/3}",
+          "explanation": "세제곱근을 3분의 1제곱으로 쓰고 25를 5의 제곱으로 바꿉니다."
+        },
+        {
+          "title": "지수 합 계산",
+          "expression": "5^{1/3}\\times5^{2/3}=5^{1}=5",
+          "explanation": "같은 밑의 곱셈에서는 지수를 더하므로 결과가 5입니다."
+        }
+      ],
+      "correctReason": "두 항의 밑을 5로 통일하면 전체 지수가 1이 되므로 정답은 ⑤입니다.",
+      "commonMistake": "세제곱근을 제곱근처럼 처리하거나 25의 지수를 곱하지 않는 오류를 주의해야 합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_2": {
+      "id": "2025_csat_common_2",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 2,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "주어진 극한을 x=2에서의 미분계수로 읽고 도함수 값을 계산하면 4입니다.",
+      "approach": "극한식이 나타내는 미분계수를 먼저 확인한 뒤 다항함수를 직접 미분합니다.",
+      "concepts": ["미분계수의 정의", "다항함수의 미분"],
+      "steps": [
+        {
+          "title": "미분계수 확인",
+          "expression": "\\lim_{h\\to0}\\frac{f(2+h)-f(2)}{h}=f'(2)",
+          "explanation": "주어진 극한은 x=2에서의 미분계수 정의와 정확히 같습니다."
+        },
+        {
+          "title": "도함수 계산",
+          "expression": "f'(x)=3x^2-8,\\quad f'(2)=12-8=4",
+          "explanation": "함수를 미분한 뒤 x=2를 대입하여 극한값 4를 얻습니다."
+        }
+      ],
+      "correctReason": "극한은 f'(2)이고 그 값이 4로 계산되므로 정답은 ④입니다.",
+      "commonMistake": "h에 바로 0을 대입해 분모를 0으로 만들지 말고 미분계수의 정의를 읽어야 합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_3": {
+      "id": "2025_csat_common_3",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 3,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "첫째항과 공비가 모두 k이므로 일반항을 k의 거듭제곱으로 나타내어 k=5를 구합니다.",
+      "approach": "등비수열의 일반항을 세운 뒤 주어진 항의 비와 합 조건을 k에 관한 방정식으로 바꿉니다.",
+      "concepts": ["등비수열의 일반항", "이차방정식"],
+      "steps": [
+        {
+          "title": "일반항 세우기",
+          "expression": "a_n=k\\cdot k^{n-1}=k^n",
+          "explanation": "첫째항과 공비가 모두 k이므로 n번째 항은 k의 n제곱입니다."
+        },
+        {
+          "title": "조건을 방정식으로 바꾸기",
+          "expression": "\\frac{a_4}{a_2}+\\frac{a_2}{a_1}=k^2+k=30",
+          "explanation": "각 항을 k의 거듭제곱으로 바꾸어 주어진 식을 간단히 합니다."
+        },
+        {
+          "title": "양수 조건 적용",
+          "expression": "(k+6)(k-5)=0,\\quad k>0\\Rightarrow k=5",
+          "explanation": "이차방정식의 두 근 가운데 양수인 값만 선택합니다."
+        }
+      ],
+      "correctReason": "방정식의 양의 해가 k=5이므로 정답은 ⑤입니다.",
+      "commonMistake": "등비수열의 일반항을 k의 n-1제곱으로만 두어 첫째항 k를 빠뜨리지 않아야 합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_4": {
+      "id": "2025_csat_common_4",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 4,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "x=-2에서 왼쪽 식과 오른쪽 식의 값이 같아야 하므로 a=7입니다.",
+      "approach": "조각함수의 경계점에서 연속이 되기 위한 좌극한과 함수값의 일치 조건을 세웁니다.",
+      "concepts": ["함수의 연속", "조각함수"],
+      "steps": [
+        {
+          "title": "왼쪽 극한 계산",
+          "expression": "\\lim_{x\\to-2-}f(x)=-10+a",
+          "explanation": "x=-2보다 작은 구간의 식에 -2를 대입한 값을 구합니다."
+        },
+        {
+          "title": "오른쪽 값 계산",
+          "expression": "f(-2)=\\lim_{x\\to-2+}f(x)=4-a",
+          "explanation": "x=-2를 포함하는 구간의 식에서 함수값과 오른쪽 극한을 구합니다."
+        },
+        {
+          "title": "연속 조건 풀기",
+          "expression": "-10+a=4-a\\Rightarrow a=7",
+          "explanation": "두 값을 같게 놓고 일차방정식을 풀어 a를 결정합니다."
+        }
+      ],
+      "correctReason": "경계점의 양쪽 값이 같아지는 a가 7이므로 정답은 ②입니다.",
+      "commonMistake": "경계점이 어느 조각에 포함되는지 확인하지 않거나 좌우 식의 부호를 바꾸는 오류를 주의해야 합니다.",
+      "verification": {
+        "problemPage": 1,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_5": {
+      "id": "2025_csat_common_5",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 5,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "두 다항식의 곱을 곱의 미분법으로 미분하고 x=1을 대입하면 14입니다.",
+      "approach": "함수를 전개하지 않고 곱의 미분법을 적용하여 각 인수의 값과 도함수 값을 함께 계산합니다.",
+      "concepts": ["곱의 미분법", "도함수의 값"],
+      "steps": [
+        {
+          "title": "곱의 미분법 적용",
+          "expression": "f'(x)=2x(3x^2-x)+(x^2+1)(6x-1)",
+          "explanation": "첫 번째 인수의 미분과 두 번째 인수의 미분을 번갈아 곱해 더합니다."
+        },
+        {
+          "title": "x=1 대입",
+          "expression": "f'(1)=2(1)(2)+2(5)=14",
+          "explanation": "각 인수와 도함수에 1을 대입하여 최종 값을 계산합니다."
+        }
+      ],
+      "correctReason": "곱의 미분법으로 구한 f'(1)이 14이므로 정답은 ④입니다.",
+      "commonMistake": "두 인수를 각각 미분한 값끼리만 곱하지 말고 곱의 미분법의 두 항을 모두 써야 합니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_6": {
+      "id": "2025_csat_common_6",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 6,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "각의 이동 공식으로 sinθ를 구하고 피타고라스 항등식으로 분모를 바꾸면 값은 5입니다.",
+      "approach": "주어진 코사인 값을 사인 값으로 변환한 뒤 1-cos²θ를 sin²θ로 치환합니다.",
+      "concepts": ["삼각함수의 각 변환", "피타고라스 항등식"],
+      "steps": [
+        {
+          "title": "사인 값 구하기",
+          "expression": "\\cos(\\pi/2+\\theta)=-\\sin\\theta=-1/5",
+          "explanation": "각의 이동 공식을 사용하면 sinθ가 1/5임을 알 수 있습니다."
+        },
+        {
+          "title": "분모 치환",
+          "expression": "1-\\cos^2\\theta=\\sin^2\\theta",
+          "explanation": "피타고라스 항등식으로 분모를 사인의 제곱으로 바꿉니다."
+        },
+        {
+          "title": "비 계산",
+          "expression": "\\frac{\\sin\\theta}{1-\\cos^2\\theta}=\\frac{1/5}{(1/5)^2}=5",
+          "explanation": "sinθ=1/5를 대입해 분자와 분모를 계산합니다."
+        }
+      ],
+      "correctReason": "주어진 비는 sinθ의 역수인 5가 되므로 정답은 ⑤입니다.",
+      "commonMistake": "cos(π/2+θ)의 부호를 빠뜨리거나 분모를 1-cosθ로 잘못 읽지 않아야 합니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_7": {
+      "id": "2025_csat_common_7",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 7,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "양변을 x로 미분하면 적분함수 f(x)가 바로 드러나며 f(1)=11입니다.",
+      "approach": "미적분의 기본정리를 이용해 정적분으로 정의된 식의 양변을 미분합니다.",
+      "concepts": ["미적분의 기본정리", "정적분으로 정의된 함수"],
+      "steps": [
+        {
+          "title": "적분식 미분",
+          "expression": "\\frac{d}{dx}\\int_0^x f(t)\\,dt=f(x)",
+          "explanation": "위끝이 x인 적분을 미분하면 피적분함수 f(x)가 됩니다."
+        },
+        {
+          "title": "함숫값 계산",
+          "expression": "f(x)=9x^2+2,\\quad f(1)=11",
+          "explanation": "오른쪽 다항식을 미분하고 x=1을 대입합니다."
+        }
+      ],
+      "correctReason": "양변을 미분해 얻은 f(1)이 11이므로 정답은 ③입니다.",
+      "commonMistake": "적분변수 t와 위끝 x를 혼동하거나 오른쪽 식의 각 항을 빠뜨리고 미분하지 않아야 합니다.",
+      "verification": {
+        "problemPage": 2,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_8": {
+      "id": "2025_csat_common_8",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 8,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "상용로그와 밑이 2인 로그를 정리한 뒤 밑변환 관계를 사용하면 ab=1입니다.",
+      "approach": "각 로그식을 기본 성질로 간단히 만들고 서로 역수 관계인 두 로그의 곱을 계산합니다.",
+      "concepts": ["로그의 성질", "밑변환 공식"],
+      "steps": [
+        {
+          "title": "첫 항 정리",
+          "expression": "2\\log\\frac{1}{\\sqrt{10}}=-\\log10=-1",
+          "explanation": "제곱근과 역수의 로그 성질을 적용하여 첫 항을 -1로 바꿉니다."
+        },
+        {
+          "title": "a 계산",
+          "expression": "\\log_2 20=1+\\log_2 10,\\quad a=\\log_2 10",
+          "explanation": "20을 2와 10의 곱으로 나누면 -1과 1이 상쇄됩니다."
+        },
+        {
+          "title": "곱 계산",
+          "expression": "ab=\\log_2 10\\cdot\\log_{10}2=1",
+          "explanation": "서로 밑과 진수가 바뀐 두 로그의 곱은 1입니다."
+        }
+      ],
+      "correctReason": "a와 b가 서로 역수인 로그값이므로 곱은 1이고 정답은 ①입니다.",
+      "commonMistake": "문제의 log는 상용로그라는 점을 놓치거나 log₂20을 곱의 로그로 잘못 처리하지 않아야 합니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_9": {
+      "id": "2025_csat_common_9",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 9,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "두 정적분의 공통 구간을 없애면 0부터 a까지의 적분이 0이고 양의 해는 10입니다.",
+      "approach": "정적분의 구간 가법성을 사용해 등식을 단순화한 뒤 원시함수로 방정식을 만듭니다.",
+      "concepts": ["정적분의 구간 가법성", "다항함수의 적분"],
+      "steps": [
+        {
+          "title": "공통 구간 제거",
+          "expression": "\\int_{-2}^{a}f=\\int_{-2}^{0}f\\Rightarrow\\int_0^a f(x)\\,dx=0",
+          "explanation": "양쪽에 공통으로 들어 있는 -2부터 0까지의 적분을 제거합니다."
+        },
+        {
+          "title": "정적분 계산",
+          "expression": "\\int_0^a(3x^2-16x-20)\\,dx=a^3-8a^2-20a",
+          "explanation": "다항함수를 항별로 적분하고 위끝 a를 대입합니다."
+        },
+        {
+          "title": "양의 해 선택",
+          "expression": "a(a+2)(a-10)=0,\\quad a>0\\Rightarrow a=10",
+          "explanation": "인수분해한 세 해 중 문제의 양수 조건을 만족하는 값을 고릅니다."
+        }
+      ],
+      "correctReason": "정적분 조건에서 얻는 유일한 양의 해가 10이므로 정답은 ④입니다.",
+      "commonMistake": "두 적분을 각각 계산하다 공통 구간의 부호를 틀리지 말고 먼저 구간을 정리하는 것이 안전합니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_10": {
+      "id": "2025_csat_common_10",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 10,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "최댓값으로 a=10을 구하고 x=π/3에서 코사인이 1이 되는 최소 자연수 b=6을 얻습니다.",
+      "approach": "코사인함수의 값의 범위와 최대가 되는 각의 조건을 차례로 적용하여 두 상수를 결정합니다.",
+      "concepts": ["코사인함수의 최댓값", "삼각함수의 주기"],
+      "steps": [
+        {
+          "title": "a 결정",
+          "expression": "\\max f=a+3=13\\Rightarrow a=10",
+          "explanation": "코사인의 최댓값이 1이므로 함수 전체의 최댓값 조건에서 a를 구합니다."
+        },
+        {
+          "title": "최대가 되는 각",
+          "expression": "\\cos(b\\pi/3)=1\\Rightarrow b\\pi/3=2m\\pi",
+          "explanation": "x=π/3에서 최대가 되려면 코사인의 각이 2π의 정수배여야 합니다."
+        },
+        {
+          "title": "최소 자연수 선택",
+          "expression": "b=6m,\\quad b\\in\\mathbb{N}\\Rightarrow b_{\\min}=6",
+          "explanation": "자연수 b 가운데 조건을 만족하는 가장 작은 값은 6입니다."
+        },
+        {
+          "title": "합 계산",
+          "expression": "a+b=10+6=16",
+          "explanation": "구한 두 상수의 합을 계산하여 최종 값을 얻습니다."
+        }
+      ],
+      "correctReason": "a=10이고 가능한 최소 b=6이므로 합은 16이며 정답은 ③입니다.",
+      "commonMistake": "최댓값 조건만으로 a를 구한 뒤 x=π/3에서 실제로 최대가 되는 위상 조건을 빠뜨리지 않아야 합니다.",
+      "verification": {
+        "problemPage": 3,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_11": {
+      "id": "2025_csat_common_11",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 11,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "속도의 부호가 바뀌는 t=2에서 운동 방향이 바뀌며 그때 가속도는 9입니다.",
+      "approach": "위치함수를 미분해 속도를 구하고, 속도의 영점과 부호 변화를 확인한 뒤 다시 미분합니다.",
+      "concepts": ["속도와 운동 방향", "가속도"],
+      "steps": [
+        {
+          "title": "속도 구하기",
+          "expression": "v(t)=x'(t)=3t^2-3t-6=3(t-2)(t+1)",
+          "explanation": "위치함수를 미분하고 인수분해하여 속도의 영점을 찾기 쉽게 만듭니다."
+        },
+        {
+          "title": "방향 전환 시각",
+          "expression": "t\\ge0,\\quad v(t)=0\\Rightarrow t=2",
+          "explanation": "t=2의 양쪽에서 속도의 부호가 바뀌므로 이 시각에 운동 방향이 바뀝니다."
+        },
+        {
+          "title": "가속도 계산",
+          "expression": "a(t)=v'(t)=6t-3,\\quad a(2)=9",
+          "explanation": "속도를 한 번 더 미분하고 방향 전환 시각을 대입합니다."
+        }
+      ],
+      "correctReason": "운동 방향이 바뀌는 t=2에서 가속도가 9이므로 정답은 ②입니다.",
+      "commonMistake": "속도가 0인 시각만 찾고 끝내지 말고 그 시각의 양쪽에서 부호가 실제로 바뀌는지 확인해야 합니다.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}

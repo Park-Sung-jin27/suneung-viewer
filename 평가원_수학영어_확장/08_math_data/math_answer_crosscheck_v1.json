@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "status": "verified_internal",
-  "verifiedAt": "2026-08-06",
+  "verifiedAt": "2026-08-07",
   "scope": {
     "examCount": 7,
     "questionCount": 322,
     "answerCrossCheck": "full",
     "answerFingerprint": "cf17c00a8c5884a61018362801cd5df6d3f3794c1da6c184895e74e7da1701ec",
     "publicConnected": false,
-    "verifiedSolutionCount": 46
+    "verifiedSolutionCount": 57
   },
   "method": {
     "primary": "KICE official answer table PDF",
