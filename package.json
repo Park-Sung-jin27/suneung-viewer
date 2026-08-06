@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run check:business && npm run check:eng-math-public && npm run check:jippi-library-p0 && vite build && npm run check:eng-math-dist && npm run check:jippi-delivery-dist",
+    "build": "npm run check:business && npm run check:eng-math-public && npm run check:eng-math-learning-history && npm run check:jippi-library-p0 && vite build && npm run check:eng-math-dist && npm run check:jippi-delivery-dist",
     "check:business": "node scripts/check-business-profile.mjs",
     "check:eng-math-public": "node scripts/eng-math-public-data.mjs --check",
+    "check:eng-math-learning-history": "node scripts/test-eng-math-learning-history.mjs",
     "check:eng-math-dist": "node scripts/eng-math-public-data.mjs --check-dist",
     "check:jippi-delivery-dist": "node scripts/check-jippi-delivery-dist.mjs",
     "check:jippi-library-p0": "node scripts/test-jippi-library-p0.mjs",

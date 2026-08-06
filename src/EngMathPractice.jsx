@@ -2,6 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import katex from "katex";
 import "katex/dist/katex.min.css";
+import {
+  createLearningSessionId,
+  readWeeklyLearningSummary,
+  recordLearningSession,
+} from "./engMathLearningHistory.js";
 
 const QUESTION_DATA_URLS = {
   english: "/data/eng-math/english-free-public.json",
@@ -102,6 +107,7 @@ function readSavedSession(subject, packId, questions) {
       saved.version === SESSION_STORAGE_VERSION &&
       saved.subject === subject &&
       saved.packId === packId &&
+      (saved.sessionId === undefined || typeof saved.sessionId === "string") &&
       JSON.stringify(saved.questionIds) === JSON.stringify(questionIds) &&
       validResults &&
       Number.isInteger(saved.currentIndex) &&
@@ -123,12 +129,13 @@ function readSavedSession(subject, packId, questions) {
   }
 }
 
-function saveSession(subject, packId, questions, results) {
+function saveSession(subject, packId, sessionId, questions, results) {
   if (typeof window === "undefined") return;
   const payload = {
     version: SESSION_STORAGE_VERSION,
     subject,
     packId,
+    sessionId,
     questionIds: questions.map((question) => question.id),
     currentIndex: results.length,
     results,
@@ -149,6 +156,84 @@ function formatSessionAnswer(result, answer) {
     return SESSION_ANSWER_MARKS[Number(answer)] ?? String(answer);
   }
   return String(answer);
+}
+
+function WeeklyLearningSummary({ summary, profile }) {
+  const hasHistory = summary.answerCount > 0;
+
+  return (
+    <section
+      className="eng-math-weekly"
+      aria-label="최근 7일 학습 결과"
+      style={{ "--eng-math-weekly-accent": profile.accent }}
+    >
+      <style>{`
+        .eng-math-weekly { margin: 0 0 22px; border: 1px solid #dfe6ef; border-radius: 18px; background: #fff; padding: 18px; }
+        .eng-math-weekly__topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .eng-math-weekly__topline h2 { margin: 0; color: #25324a; font-size: 1rem; letter-spacing: -0.025em; }
+        .eng-math-weekly__topline span { color: #7a8699; font-size: 0.75rem; font-weight: 800; }
+        .eng-math-weekly__empty { margin: 12px 0 0; color: #667085; font-size: 0.84rem; line-height: 1.6; word-break: keep-all; }
+        .eng-math-weekly__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 14px 0 0; }
+        .eng-math-weekly__stat { min-width: 0; border-radius: 12px; background: #f6f8fb; padding: 12px; }
+        .eng-math-weekly__stat dt { color: #738097; font-size: 0.72rem; font-weight: 800; }
+        .eng-math-weekly__stat dd { margin: 5px 0 0; color: #25324a; font-size: 1.05rem; font-weight: 900; }
+        .eng-math-weekly__weak { margin-top: 15px; border-top: 1px solid #edf0f5; padding-top: 13px; }
+        .eng-math-weekly__weak h3 { margin: 0 0 8px; color: #4a586e; font-size: 0.8rem; }
+        .eng-math-weekly__weak ul { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+        .eng-math-weekly__weak li { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; color: #526078; font-size: 0.78rem; line-height: 1.5; }
+        .eng-math-weekly__weak li span { min-width: 0; word-break: keep-all; }
+        .eng-math-weekly__weak li strong { flex: 0 0 auto; color: var(--eng-math-weekly-accent); font-size: 0.74rem; }
+        @media (max-width: 440px) {
+          .eng-math-weekly { padding: 15px; }
+          .eng-math-weekly__stat { padding: 10px 8px; }
+          .eng-math-weekly__weak li { display: grid; gap: 2px; }
+        }
+      `}</style>
+      <div className="eng-math-weekly__topline">
+        <h2>이번 주 학습</h2>
+        <span>최근 7일 · 이 브라우저</span>
+      </div>
+      {hasHistory ? (
+        <>
+          <dl className="eng-math-weekly__stats">
+            <div className="eng-math-weekly__stat">
+              <dt>완료 학습</dt>
+              <dd>{summary.sessionCount}회</dd>
+            </div>
+            <div className="eng-math-weekly__stat">
+              <dt>푼 문항</dt>
+              <dd>{summary.answerCount}개</dd>
+            </div>
+            <div className="eng-math-weekly__stat">
+              <dt>정답률</dt>
+              <dd>{summary.accuracy}%</dd>
+            </div>
+          </dl>
+          {summary.weakQuestions.length > 0 ? (
+            <div className="eng-math-weekly__weak">
+              <h3>다시 볼 문항</h3>
+              <ul>
+                {summary.weakQuestions.map((question) => (
+                  <li key={question.questionId}>
+                    <span>{question.label}</span>
+                    <strong>
+                      {question.wrongCount}회 오답 ·{" "}
+                      {question.latestIsCorrect ? "최근 재풀이 정답" : "복습 필요"}
+                    </strong>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </>
+      ) : (
+        <p className="eng-math-weekly__empty">
+          아직 이번 주 기록이 없습니다. 무료 5문항을 끝내면 정답률과 다시 볼
+          문항이 여기에 남습니다.
+        </p>
+      )}
+    </section>
+  );
 }
 
 function MathText({ text, className = "" }) {
@@ -612,6 +697,7 @@ function QuestionCatalog({
   boundary,
 }) {
   const profile = SUBJECTS[subject];
+  const weeklySummary = readWeeklyLearningSummary(subject);
   const examOptions = useMemo(() => {
     const options = new Map();
     catalog.forEach((pack) => options.set(pack.examKey, pack.examLabel));
@@ -895,6 +981,8 @@ function QuestionCatalog({
           </p>
         </header>
 
+        <WeeklyLearningSummary summary={weeklySummary} profile={profile} />
+
         {subject === "math" ? (
           <section
             className="eng-math-catalog__filters"
@@ -1124,10 +1212,16 @@ function LearningSession({
   const [resumeCandidate, setResumeCandidate] = useState(() =>
     readSavedSession(subject, packId, questions),
   );
+  const [sessionId, setSessionId] = useState(
+    () => resumeCandidate?.sessionId ?? createLearningSessionId(),
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [results, setResults] = useState([]);
   const [finished, setFinished] = useState(false);
   const [retryQuestionIds, setRetryQuestionIds] = useState(null);
+  const [weeklySummary, setWeeklySummary] = useState(() =>
+    readWeeklyLearningSummary(subject),
+  );
   const isWrongRetry = Array.isArray(retryQuestionIds);
   const activeQuestions = useMemo(
     () =>
@@ -1147,12 +1241,22 @@ function LearningSession({
   };
 
   const recordAnswer = (result) => {
-    setResults((current) => {
-      const next = [...current];
-      next[currentIndex] = result;
-      if (!isWrongRetry) saveSession(subject, packId, questions, next);
-      return next;
-    });
+    const next = [...results];
+    next[currentIndex] = result;
+    setResults(next);
+    if (!isWrongRetry) saveSession(subject, packId, sessionId, questions, next);
+    if (next.length === activeQuestions.length) {
+      setWeeklySummary(
+        recordLearningSession({
+          sessionId,
+          subject,
+          packId,
+          packLabel,
+          isWrongRetry,
+          results: next,
+        }),
+      );
+    }
   };
 
   const moveForward = () => {
@@ -1175,19 +1279,34 @@ function LearningSession({
     );
     setFinished(completed);
     setResumeCandidate(null);
-    if (completed) removeSavedSession(subject, packId);
+    if (completed) {
+      setWeeklySummary(
+        recordLearningSession({
+          sessionId,
+          subject,
+          packId,
+          packLabel,
+          isWrongRetry: false,
+          results: resumeCandidate.results,
+          completedAt: resumeCandidate.updatedAt,
+        }),
+      );
+      removeSavedSession(subject, packId);
+    }
   };
 
   const startFreshSession = () => {
     removeSavedSession(subject, packId);
     setResumeCandidate(null);
     setRetryQuestionIds(null);
+    setSessionId(createLearningSessionId());
     resetSessionState();
   };
 
   const restartSession = () => {
     removeSavedSession(subject, packId);
     setRetryQuestionIds(null);
+    setSessionId(createLearningSessionId());
     resetSessionState();
   };
 
@@ -1198,6 +1317,7 @@ function LearningSession({
     if (wrongIds.length === 0) return;
     removeSavedSession(subject, packId);
     setRetryQuestionIds(wrongIds);
+    setSessionId(createLearningSessionId());
     resetSessionState();
   };
 
@@ -1228,6 +1348,7 @@ function LearningSession({
         onNextPack={isWrongRetry ? null : onNextPack}
         onCatalog={onCatalog}
         isWrongRetry={isWrongRetry}
+        weeklySummary={weeklySummary}
       />
     );
   }
@@ -1261,6 +1382,7 @@ function SessionSummary({
   onNextPack,
   onCatalog,
   isWrongRetry,
+  weeklySummary,
 }) {
   const profile = SUBJECTS[subject];
   const correctCount = results.filter((result) => result.isCorrect).length;
@@ -1470,6 +1592,11 @@ function SessionSummary({
               </strong>
               <span>정답</span>
             </div>
+
+            <WeeklyLearningSummary
+              summary={weeklySummary}
+              profile={profile}
+            />
 
             <ol className="eng-math-session-summary__list" aria-label="문항별 결과">
               {results.map((result, index) => (
