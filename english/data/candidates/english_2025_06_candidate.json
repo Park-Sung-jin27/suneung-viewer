@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2025_06_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "examId": "2025_06"
+  },
+  "sourceArtifacts": {
+    "problem": { "filename": "2025학년도_6월_영어_문제.pdf", "sha256": "5b416f213d5a5e6eb9e845cd63d51af5b1e1eba224a86df0b74ccb6660de84ca" },
+    "answer": { "filename": "2025학년도_6월_영어_정답.png", "sha256": "e381c2e37610412b3146c777ccf6ac8a6d5587d67add94d75f9542ea9fe0f6ef" },
+    "explanation": { "filename": "2025학년도_6월_영어_해설.pdf", "sha256": "bf04a9782f80c210fb1ae1767cfb0c2b22f8f8cc9c3cf932a0f05112f21074f7" }
+  },
+  "reviewData": {
+    "path": "english/data/candidates/english_2025_06_reviews.json",
+    "sha256": "cc0a0d62e830a516841c8ab82aa67f5a6abfe7e8b5f44bb719e8f1e9dd03d28f",
+    "expectedReadyCount": 28
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 58,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "sourceTextOverrideQuestionCount": 1,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": ["2025_06_25", "2025_06_27", "2025_06_28"],
+    "requireSourceTextOverrideForIds": ["2025_06_18"]
+  },
+  "projectionPolicies": {
+    "default": { "sourceField": "rawText", "stripStem": true, "stripChoices": true, "stripPdfTail": true },
+    "figureOnlyIds": ["2025_06_25", "2025_06_27", "2025_06_28"],
+    "sharedPassageIds": ["2025_06_41", "2025_06_42", "2025_06_43", "2025_06_44", "2025_06_45"],
+    "inlineMarkerIds": ["2025_06_29", "2025_06_30", "2025_06_35", "2025_06_42", "2025_06_44"],
+    "sequenceTableIds": ["2025_06_36", "2025_06_37", "2025_06_43"],
+    "placementMarkerIds": ["2025_06_38", "2025_06_39"]
+  },
+  "questions": [
+    { "id": "2025_06_18", "qid": 18, "answer": 3, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_19", "qid": 19, "answer": 1, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_20", "qid": 20, "answer": 5, "problemPage": 2, "explanationPages": [12], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_21", "qid": 21, "answer": 2, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_22", "qid": 22, "answer": 4, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_23", "qid": 23, "answer": 2, "problemPage": 3, "explanationPages": [14], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_24", "qid": 24, "answer": 1, "problemPage": 3, "explanationPages": [15], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_25", "qid": 25, "answer": 3, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2025-06/q25-figure.png" },
+    { "id": "2025_06_26", "qid": 26, "answer": 5, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_27", "qid": 27, "answer": 5, "problemPage": 4, "explanationPages": [17], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2025-06/q27-notice.png" },
+    { "id": "2025_06_28", "qid": 28, "answer": 4, "problemPage": 4, "explanationPages": [17], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2025-06/q28-notice.png" },
+    { "id": "2025_06_29", "qid": 29, "answer": 2, "problemPage": 5, "explanationPages": [18], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_30", "qid": 30, "answer": 4, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_31", "qid": 31, "answer": 3, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_32", "qid": 32, "answer": 1, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_33", "qid": 33, "answer": 1, "problemPage": 6, "explanationPages": [21], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_34", "qid": 34, "answer": 4, "problemPage": 6, "explanationPages": [22], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_35", "qid": 35, "answer": 4, "problemPage": 6, "explanationPages": [22], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_36", "qid": 36, "answer": 1, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_37", "qid": 37, "answer": 3, "problemPage": 7, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_38", "qid": 38, "answer": 4, "problemPage": 7, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_39", "qid": 39, "answer": 5, "problemPage": 7, "explanationPages": [25], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_40", "qid": 40, "answer": 2, "problemPage": 7, "explanationPages": [26], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_41", "qid": 41, "answer": 3, "problemPage": 8, "explanationPages": [27], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_42", "qid": 42, "answer": 5, "problemPage": 8, "explanationPages": [28], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_43", "qid": 43, "answer": 5, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_44", "qid": 44, "answer": 2, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_06_45", "qid": 45, "answer": 5, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" }
+  ],
+  "choiceOverrides": {
+    "2025_06_20": [
+      { "num": 1, "mark": "①", "text": "인간은 AI의 발전 가능성과 불안정성을 동시에 고려해야 한다." },
+      { "num": 2, "mark": "②", "text": "인간은 창의력을 향상시키기 위해 AI에 의존하지 말아야 한다." },
+      { "num": 3, "mark": "③", "text": "실수를 보완하기 위해 인간은 AI의 활용 방안을 모색해야 한다." },
+      { "num": 4, "mark": "④", "text": "AI에 대한 학습을 통해 인간은 미래 사회 변화에 대비해야 한다." },
+      { "num": 5, "mark": "⑤", "text": "AI의 영향력 확산에 대비하여 인간은 오류 극복 능력을 활용해야 한다." }
+    ],
+    "2025_06_24": [
+      { "num": 1, "mark": "①", "text": "The Journey of Shadows in Art from Prehistoric Caves Onward" },
+      { "num": 2, "mark": "②", "text": "Portrayals of Human Shadows from the Artistic Perspective" },
+      { "num": 3, "mark": "③", "text": "Representing Shadows as a Key Part of Contemporary Art" },
+      { "num": 4, "mark": "④", "text": "What Are the Primary Challenges for Shadow Painters?" },
+      { "num": 5, "mark": "⑤", "text": "Unique Views on Shadows: From Cave Artists to Romans" }
+    ],
+    "2025_06_28": [
+      { "num": 1, "mark": "①", "text": "2일 동안 진행된다." },
+      { "num": 2, "mark": "②", "text": "모든 전공의 학생들이 참여할 수 있다." },
+      { "num": 3, "mark": "③", "text": "A코스에서는 Lionsford Beach 해안의 특징을 조사한다." },
+      { "num": 4, "mark": "④", "text": "참가비에 점심이 포함되어 있다." },
+      { "num": 5, "mark": "⑤", "text": "지원서는 이메일로만 제출이 가능하다." }
+    ],
+    "2025_06_29": [
+      { "num": 1, "mark": "①", "text": "leads" }, { "num": 2, "mark": "②", "text": "give" }, { "num": 3, "mark": "③", "text": "where" }, { "num": 4, "mark": "④", "text": "them" }, { "num": 5, "mark": "⑤", "text": "making" }
+    ],
+    "2025_06_30": [
+      { "num": 1, "mark": "①", "text": "least" }, { "num": 2, "mark": "②", "text": "work" }, { "num": 3, "mark": "③", "text": "develop" }, { "num": 4, "mark": "④", "text": "drives" }, { "num": 5, "mark": "⑤", "text": "minimum" }
+    ],
+    "2025_06_32": [
+      { "num": 1, "mark": "①", "text": "does not stop with idea generation" },
+      { "num": 2, "mark": "②", "text": "rarely originates from practical ideas" },
+      { "num": 3, "mark": "③", "text": "is often regarded as a shortcut to innovation" },
+      { "num": 4, "mark": "④", "text": "frequently gives way to unanticipated success" },
+      { "num": 5, "mark": "⑤", "text": "brings out tension between novelty and relevancy" }
+    ],
+    "2025_06_35": [
+      { "num": 1, "mark": "①", "text": "The young bird’s initial efforts to reproduce the memorized song are usually not successful." },
+      { "num": 2, "mark": "②", "text": "These early songs may have uneven pitch, irregular tempo, and notes that are out of order or poorly reproduced." },
+      { "num": 3, "mark": "③", "text": "However, sound graphs of songs recorded over several weeks or months reveal that during this practice period the bird fine-tunes his efforts until he produces an accurate copy of the memorized template." },
+      { "num": 4, "mark": "④", "text": "An important idea to emerge from the study of birdsong is that song learning is shaped by preferences and limitations." },
+      { "num": 5, "mark": "⑤", "text": "This process requires hearing oneself sing; birds are unable to reproduce memorized songs if they are deafened after memorization but before the practice period." }
+    ],
+    "2025_06_36": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" }, { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" }, { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" }, { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" }, { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2025_06_37": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" }, { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" }, { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" }, { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" }, { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2025_06_38": [
+      { "num": 1, "mark": "①", "text": "①" }, { "num": 2, "mark": "②", "text": "②" }, { "num": 3, "mark": "③", "text": "③" }, { "num": 4, "mark": "④", "text": "④" }, { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2025_06_39": [
+      { "num": 1, "mark": "①", "text": "①" }, { "num": 2, "mark": "②", "text": "②" }, { "num": 3, "mark": "③", "text": "③" }, { "num": 4, "mark": "④", "text": "④" }, { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2025_06_40": [
+      { "num": 1, "mark": "①", "text": "productive …… complicated" }, { "num": 2, "mark": "②", "text": "fruitful …… critical" }, { "num": 3, "mark": "③", "text": "dominant …… comprehensive" }, { "num": 4, "mark": "④", "text": "restrictive …… appropriate" }, { "num": 5, "mark": "⑤", "text": "desirable …… cost-effective" }
+    ],
+    "2025_06_43": [
+      { "num": 1, "mark": "①", "text": "(B) - (D) - (C)" }, { "num": 2, "mark": "②", "text": "(C) - (B) - (D)" }, { "num": 3, "mark": "③", "text": "(C) - (D) - (B)" }, { "num": 4, "mark": "④", "text": "(D) - (B) - (C)" }, { "num": 5, "mark": "⑤", "text": "(D) - (C) - (B)" }
+    ],
+    "2025_06_45": [
+      { "num": 1, "mark": "①", "text": "Jeff는 교통 체증 때문에 늦었다." },
+      { "num": 2, "mark": "②", "text": "Garcia는 환영식 공연 무대의 중앙에 섰다." },
+      { "num": 3, "mark": "③", "text": "밴드가 환영식 공연에서 연주를 마치자 관객은 환호했다." },
+      { "num": 4, "mark": "④", "text": "Garcia는 리허설을 앞두고 긴장감을 느꼈다." },
+      { "num": 5, "mark": "⑤", "text": "Garcia는 본인이 가리킨 색상의 옷을 구매했다." }
+    ]
+  },
+  "sourceTextOverrides": {
+    "2025_06_18": {
+      "rawText": "18. 다음 글의 목적으로 가장 적절한 것은?\nHello, everyone! Welcome back to your favorite online channel, With Ethan. As always, I’m trying to make this channel a place that my followers of all ages can enjoy. Recently, in the comments section, there have been some examples of language that is inappropriate for younger viewers. Also, there have been some comments that are not relevant to this channel. These kinds of comments are unacceptable for a channel like this. I would really like to ask that all of my followers keep these things in mind so that we can all enjoy this channel. I always appreciate your time and support. Please keep watching.\n① 새로 개설한 온라인 채널을 홍보하려고\n② 온라인 생방송 날짜 변경을 공지하려고\n③ 부적절한 댓글을 쓰지 않도록 요청하려고\n④ 온라인 채널 구독 연령 제한을 고지하려고\n⑤ 온라인 구독자들의 요청 사항을 공유하려고"
+    }
+  },
+  "figures": [
+    {
+      "questionId": "2025_06_25", "kind": "grouped_bar_chart", "assetPath": "english/assets/2025-06/q25-figure.png", "sha256": "f7a3865d73c9ae33adf00acf2c2a0f8e5aea8ee46239f68fdf19b407302a8519", "sourcePage": 4,
+      "alt": "Share of respondents who say reading is one of their personal hobbies in 2023. Spain: female 58%, male 39%. Germany: female 51%, male 31%. Mexico: female 51%, male 41%. United States: female 44%, male 30%. South Korea: female 31%, male 25%."
+    },
+    {
+      "questionId": "2025_06_27", "kind": "notice_with_schedule", "assetPath": "english/assets/2025-06/q27-notice.png", "sha256": "99f5773013ec4b189c3fd1390fc2dc6a9faf8a6b69f83828c5e97f6dedbac2eb", "sourcePage": 4,
+      "alt": "Summer Job at Wildlife Rescue Center notice. Dates: August 1st to 31st. Hours: 10 a.m.–4 p.m.; rainy-day hours may change. Applicants must be at least 18 and have previous animal experience. Tasks include preparing food, feeding animals, and Writing reports about animals. Free shuttle bus service will be provided twice a day."
+    },
+    {
+      "questionId": "2025_06_28", "kind": "field_trip_notice", "assetPath": "english/assets/2025-06/q28-notice.png", "sha256": "4c2eb93b97c441d1871ff431b7a8fd9930dd183cbcce9276b4f410f3b25074ce", "sourcePage": 4,
+      "alt": "LCU Geography Field Trip notice. One-day trip on June 17th for first-year geography majors. Course A explores Mount Belena; Course B examines Lionsford Beach. Participation Fee: $70 per person (lunch included). Email the application to geography@lcu.edu or drop it off at the department office. Deadline: June 4th."
+    }
+  ]
+}

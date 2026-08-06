@@ -1,0 +1,2915 @@
+{
+  "schemaVersion": "english-product-candidate-v2",
+  "candidateId": "english_2025_06_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "generatedFrom": {
+    "overlayPath": "english/data/candidates/english_2025_06_candidate.json",
+    "baseDataPath": "english/data/english_exam_db_v2_1.json",
+    "baseDataSha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "reviewDataPath": "english/data/candidates/english_2025_06_reviews.json",
+    "reviewDataSha256": "cc0a0d62e830a516841c8ab82aa67f5a6abfe7e8b5f44bb719e8f1e9dd03d28f"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2025학년도_6월_영어_문제.pdf",
+      "sha256": "5b416f213d5a5e6eb9e845cd63d51af5b1e1eba224a86df0b74ccb6660de84ca"
+    },
+    "answer": {
+      "filename": "2025학년도_6월_영어_정답.png",
+      "sha256": "e381c2e37610412b3146c777ccf6ac8a6d5587d67add94d75f9542ea9fe0f6ef"
+    },
+    "explanation": {
+      "filename": "2025학년도_6월_영어_해설.pdf",
+      "sha256": "bf04a9782f80c210fb1ae1767cfb0c2b22f8f8cc9c3cf932a0f05112f21074f7"
+    }
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 58,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "sourceTextOverrideQuestionCount": 1,
+    "blockedCount": 0
+  },
+  "integrity": {
+    "questionIds": [
+      "2025_06_18",
+      "2025_06_19",
+      "2025_06_20",
+      "2025_06_21",
+      "2025_06_22",
+      "2025_06_23",
+      "2025_06_24",
+      "2025_06_25",
+      "2025_06_26",
+      "2025_06_27",
+      "2025_06_28",
+      "2025_06_29",
+      "2025_06_30",
+      "2025_06_31",
+      "2025_06_32",
+      "2025_06_33",
+      "2025_06_34",
+      "2025_06_35",
+      "2025_06_36",
+      "2025_06_37",
+      "2025_06_38",
+      "2025_06_39",
+      "2025_06_40",
+      "2025_06_41",
+      "2025_06_42",
+      "2025_06_43",
+      "2025_06_44",
+      "2025_06_45"
+    ],
+    "choiceOverrideIds": [
+      "2025_06_20",
+      "2025_06_24",
+      "2025_06_28",
+      "2025_06_29",
+      "2025_06_30",
+      "2025_06_32",
+      "2025_06_35",
+      "2025_06_36",
+      "2025_06_37",
+      "2025_06_38",
+      "2025_06_39",
+      "2025_06_40",
+      "2025_06_43",
+      "2025_06_45"
+    ],
+    "sourceTextOverrideIds": [
+      "2025_06_18"
+    ],
+    "figureIds": [
+      "2025_06_25",
+      "2025_06_27",
+      "2025_06_28"
+    ],
+    "choiceFingerprint": "c165df7006d4f5958294aec46824ab42e97edbcf2c1dc78a64677cc29dfb4ea0",
+    "sourceTextFingerprint": "9ac71135c0d19dc56bac3209f38cb24247228614f23d43aa849d653b9a95a76e",
+    "figureFingerprint": "01d626c6843d93478bb8284e725dc42baf052df4cc3dba1a4ca01c94d64cb9f5",
+    "reviewFingerprint": "776a82c4af66b2b75a557e8cf25796d01a30460c341d5847ee47d0cb64934cae"
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2025_06_25",
+      "2025_06_27",
+      "2025_06_28"
+    ],
+    "requireSourceTextOverrideForIds": [
+      "2025_06_18"
+    ]
+  },
+  "questions": [
+    {
+      "id": "2025_06_18",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 18,
+      "type": "목적",
+      "group": "practical",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "18. 다음 글의 목적으로 가장 적절한 것은?",
+      "rawText": "18. 다음 글의 목적으로 가장 적절한 것은?\nHello, everyone! Welcome back to your favorite online channel, With Ethan. As always, I’m trying to make this channel a place that my followers of all ages can enjoy. Recently, in the comments section, there have been some examples of language that is inappropriate for younger viewers. Also, there have been some comments that are not relevant to this channel. These kinds of comments are unacceptable for a channel like this. I would really like to ask that all of my followers keep these things in mind so that we can all enjoy this channel. I always appreciate your time and support. Please keep watching.\n① 새로 개설한 온라인 채널을 홍보하려고\n② 온라인 생방송 날짜 변경을 공지하려고\n③ 부적절한 댓글을 쓰지 않도록 요청하려고\n④ 온라인 채널 구독 연령 제한을 고지하려고\n⑤ 온라인 구독자들의 요청 사항을 공유하려고",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "새로 개설한 온라인 채널을 홍보하려고"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "온라인 생방송 날짜 변경을 공지하려고"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "부적절한 댓글을 쓰지 않도록 요청하려고"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "온라인 채널 구독 연령 제한을 고지하려고"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "온라인 구독자들의 요청 사항을 공유하려고"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 755,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base",
+        "textSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_18",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 18,
+        "group": "practical",
+        "type": "목적",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 운영자는 어린 시청자에게 부적절하거나 채널과 무관한 댓글을 삼가 달라고 구독자들에게 요청합니다.",
+        "typeApproach": "목적 문제는 인사말보다 글쓴이가 독자에게 직접 요구하는 행동과 그 이유를 함께 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "there have been some examples of language that is inappropriate for younger viewers.",
+            "charStart": 228,
+            "role": "문제 상황",
+            "translation": "어린 시청자에게 부적절한 언어가 댓글에 나타났습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "I would really like to ask that all of my followers keep these things in mind",
+            "charStart": 454,
+            "role": "직접 요청",
+            "translation": "모든 구독자에게 앞의 문제를 유념해 달라고 직접 요청합니다."
+          }
+        ],
+        "correctReason": "부적절하고 무관한 댓글을 지적한 뒤 모든 구독자에게 주의를 요청하므로 ③이 정확합니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "새로 개설한 온라인 채널을 홍보하려고",
+          "reason": "채널을 소개하지만 새 채널 홍보가 아니라 이미 발생한 댓글 문제를 바로잡는 것이 목적입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_19",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 19,
+      "type": "심경 변화",
+      "group": "practical",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "19. 다음 글에 드러난 Timothy의 심경 변화로 가장 적절한 것은?",
+      "rawText": "19. \t다음 글에 드러난 Timothy의 심경 변화로 가장 적절한 것은?\nTimothy sat at his desk, desperately turning the pages of his\nscience book. His science project was due in a few days and\nhe had no idea where to start. Finally, he closed his book, hit\nthe \ttable, \tand \tshouted, \t“This \tis \timpossible!” \tHis \tsister,\nAmelia, drawn by the noise, came into his room. “Hey, little\nbrother, can I help?” Timothy explained his situation and\nAmelia immediately had a solution. She knew that Timothy\nenjoyed learning about environmental issues and suggested he\ndo a project about climate change. Timothy thought about the\nidea and agreed that his sister was right. “Oh, Amelia, your\nidea is fantastic! Thank you. You are the best sister ever!”\n① frustrated → grateful \t② disappointed → envious\n③ hopeful \t→ thrilled \t④ encouraged \t→ ashamed\n⑤ fearful \t→ indifferent",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "frustrated → grateful"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "disappointed → envious"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "hopeful → thrilled"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "encouraged → ashamed"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "fearful → indifferent"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 835,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_19",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 19,
+        "group": "practical",
+        "type": "심경 변화",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 과제를 시작하지 못해 좌절하던 Timothy가 누나의 해결책을 듣고 감사하는 흐름입니다.",
+        "typeApproach": "심경 변화는 첫 감정 표현과 마지막 직접 발화를 각각 확인한 뒤 두 상태를 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "impossible!",
+            "charStart": 267,
+            "role": "초기 좌절",
+            "translation": "과제를 해낼 수 없다고 외치며 좌절감을 드러냅니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Thank you.",
+            "charStart": 672,
+            "role": "마지막 감사",
+            "translation": "누나의 아이디어를 칭찬하고 고마움을 직접 표현합니다."
+          }
+        ],
+        "correctReason": "처음의 frustrated와 마지막의 grateful이 원문 감정 표현에 모두 맞으므로 ①이 정답입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "hopeful → thrilled",
+          "reason": "처음에는 희망적이지 않고 어디서 시작할지 몰라 책상을 치며 좌절한 상태였습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_20",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 20,
+      "type": "주장",
+      "group": "topic",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "rawText": "20. \t다음 글에서 필자가 주장하는 바로 가장 적절한 것은?\nAs the world seems to be increasingly affected by the\never-expanding influence of machines in general and artificial\nintelligence (AI) specifically, many begin to imagine, with\neither fear or anticipation, a future with a diminished role for\nhuman decision making. Whether it be due to the growing\npresence of AI assistants or the emergence of self-driving cars,\nthe necessity of the role of humans as the decision makers\nwould appear to be in decline. After all, our capacity for\nmaking mistakes is well documented. However, perhaps the\nsaving grace of human determination is to be found here as\nwell. \tLittle \tevidence \texists \tthat \tsuggests \tmodern \tAI’s\ninfallibility or predicts it in the future. It is crucial that, in light\nof humanity’s acceptance of our own fallibility, we utilize our\ncapacity to overcome such failures to position ourselves as the\noverseers \tof \tAI’s \town \tgrowth \tand \tapplications \tfor \tthe\nforeseeable future.\n① 인간은 AI의 발전 가능성과 불안정성을 동시에 고려해야 한다.\n② 인간은 창의력을 향상시키기 위해 AI에 의존하지 말아야 한다.\n③ 실수를 보완하기 위해 인간은 AI의 활용 방안을 모색해야 한다.\n④ AI에 대한 학습을 통해 인간은 미래 사회 변화에 대비해야 한다.\n⑤ AI의 영향력 확산에 대비하여 인간은 오류 극복 능력을 활용해야 한다.\nHello, \teveryone! \tWelcome \tback \tto \tyour \tfavorite\nonline channel, With Ethan. As always, I’m trying to\nmake this channel a place that my followers of all ages\ncan enjoy. Recently, in the comments section, there have\nbeen some examples of language that is inappropriate\nfor \tyounger \tviewers. \tAlso, \tthere \thave \tbeen \tsome\ncomments that are not relevant to this channel. These\nkinds of comments are unacceptable for a channel like\nthis. I would really like to ask that all of my followers\nkeep these things in mind so that we can all enjoy this\nchannel. I always appreciate your time and support.\nPlease keep watching.\n이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에\n따라 답을 하시기 바랍니다.\n\n-- 2 of 8 --\n\n3\n3 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "인간은 AI의 발전 가능성과 불안정성을 동시에 고려해야 한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "인간은 창의력을 향상시키기 위해 AI에 의존하지 말아야 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "실수를 보완하기 위해 인간은 AI의 활용 방안을 모색해야 한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "AI에 대한 학습을 통해 인간은 미래 사회 변화에 대비해야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "AI의 영향력 확산에 대비하여 인간은 오류 극복 능력을 활용해야 한다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1862,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          12
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_20",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 20,
+        "group": "topic",
+        "type": "주장",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. AI도 완전무결하지 않으므로 인간은 자신의 오류 극복 능력을 활용해 AI를 감독해야 합니다.",
+        "typeApproach": "주장 문제는 역접 뒤의 판단과 must·crucial 같은 당위 표현을 중심으로 결론을 잡습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "infallibility or predicts it in the future.",
+            "charStart": 694,
+            "role": "AI의 한계",
+            "translation": "현대 AI가 현재나 미래에 오류가 없다는 증거는 거의 없습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "we utilize our",
+            "charStart": 816,
+            "role": "핵심 주장",
+            "translation": "인간은 실패를 극복하는 능력으로 감독자의 위치를 맡아야 합니다."
+          }
+        ],
+        "correctReason": "AI의 오류 가능성과 인간의 극복 능력을 연결해 감독 역할을 요구하므로 ⑤가 정답입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "인간은 AI의 발전 가능성과 불안정성을 동시에 고려해야 한다.",
+          "reason": "두 가능성을 고려하라는 일반론이 아니라 인간이 AI의 성장과 활용을 감독해야 한다는 행동 요구가 핵심입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_21",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 21,
+      "type": "밑줄 의미",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "21. 밑줄 친 Burnout hasn’t had the last word.가 다음 글에서",
+      "rawText": "21. \t밑줄 친 Burnout hasn’t had the last word.가 다음 글에서\n의미하는 바로 가장 적절한 것은?\nTo balance the need for breadth (everyone feels a bit burned\nout) and depth (some are so burned out, they can no longer do\ntheir jobs), we ought to think of burnout not as a state but as a\nspectrum. In most public discussion of burnout, we talk about\nworkers who “are burned out,” as if that status were black and\nwhite. A black-and-white view cannot account for the variety\nof burnout experience, though. If there is a clear line between\nburned out and not, as there is with a lightbulb, then we have\nno good way to categorize people who say they are burned out\nbut still manage to do their work competently. Thinking about\nburnout as a spectrum solves this problem; those who claim\nburnout but are not debilitated by it are simply dealing with a\npartial or less-severe form of it. They are experiencing burnout\nwithout being burned out. Burnout hasn’t had the last word.\n* debilitate: 쇠약하게 하다\n① Public discussion of burnout has not reached an end.\n② There still exists room for a greater degree of exhaustion.\n③ All-or-nothing criteria are applicable to burnout symptoms.\n④ Exhaustion is overcome in different ways based on its severity.\n⑤ Degrees of exhaustion are shaped by individuals’ perceptions.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Public discussion of burnout has not reached an end."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "There still exists room for a greater degree of exhaustion."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "All-or-nothing criteria are applicable to burnout symptoms."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Exhaustion is overcome in different ways based on its severity."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Degrees of exhaustion are shaped by individuals’ perceptions."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1274,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_21",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 21,
+        "group": "blank",
+        "type": "밑줄 의미",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 번아웃은 이분법적 상태가 아니라 연속선이므로 현재보다 더 심한 소진 단계가 남아 있다는 뜻입니다.",
+        "typeApproach": "밑줄 의미는 비유를 직역하지 말고 앞 문단에서 반복된 대비와 정의로 바꾸어 읽습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "burnout not as a state but as a",
+            "charStart": 228,
+            "role": "핵심 정의",
+            "translation": "번아웃을 하나의 상태가 아니라 연속선으로 보아야 합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "without being burned out.",
+            "charStart": 884,
+            "role": "부분 단계",
+            "translation": "완전히 소진되지 않고도 번아웃의 일부를 경험할 수 있습니다."
+          }
+        ],
+        "correctReason": "소진 정도가 연속적이고 부분 단계도 존재하므로 더 큰 소진의 여지가 있다는 ②가 맞습니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "Public discussion of burnout has not reached an end.",
+          "reason": "last word를 토론의 종료로 해석하면 앞에서 설명한 소진 정도의 연속성이라는 문맥을 놓칩니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_22",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 22,
+      "type": "요지",
+      "group": "topic",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "rawText": "22. \t다음 글의 요지로 가장 적절한 것은?\nIn both the ancient hunter-gatherer band and our intimate\nspeech communities today, the diffusion of speech shaped\nvalues. The fact that everyone was going to be able to speak\nand listen had to be accommodated ethically, and it was via a\nrough egalitarianism. In terms of communications, people\nwere equal and therefore it was believed they should be equal,\nor at least relatively so. By this code, ancient Big Men were\nnot allowed to act controllingly and modern office managers\nare not allowed to silence anyone at will. Moreover, equal\naccess \tto \tspeech \tand \thearing \tpromoted \tthe \tnotion \tthat\nproperty should be held in common, that goods and food in\nparticular should be shared, and that everyone had a duty to\ntake care of everyone else. This was probably more true\namong hunter-gatherers than it is in the modern family, circle\nof friends, or workplace. But even in these cases we believe\nthat sharing and mutual aid are right and proper. Remember, if\nyou bring something, you should bring enough for everyone.\n* diffusion: 확산 \t** egalitarianism: 인류 평등주의\n① 수렵인과 현대인은 언어에 대한 유사한 가치를 가지고 있다.\n② 인간은 언어를 사용하여 자원을 보다 효율적으로 배분해 왔다.\n③ 현대 사회는 고대 수렵 사회보다 평등한 체계에 의해 운영된다.\n④ 인간 의사소통의 평등성은 공유와 공조 가치 기반을 형성했다.\n⑤ 인간은 의사소통을 통해 자원을 공유하는 평등한 사회를 건설했다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "수렵인과 현대인은 언어에 대한 유사한 가치를 가지고 있다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "인간은 언어를 사용하여 자원을 보다 효율적으로 배분해 왔다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "현대 사회는 고대 수렵 사회보다 평등한 체계에 의해 운영된다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "인간 의사소통의 평등성은 공유와 공조 가치 기반을 형성했다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "인간은 의사소통을 통해 자원을 공유하는 평등한 사회를 건설했다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1273,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_22",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 22,
+        "group": "topic",
+        "type": "요지",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 말하고 들을 기회의 평등이 공동 소유·나눔·상호부조를 옳은 가치로 자리 잡게 했습니다.",
+        "typeApproach": "요지 문제는 여러 사례를 하나로 묶는 원인과 그로부터 형성된 가치의 관계를 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "property should be held in common",
+            "charStart": 627,
+            "role": "의사소통과 공유",
+            "translation": "말하고 들을 평등한 기회가 재산을 공동으로 가져야 한다는 생각을 촉진했습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "sharing and mutual aid are right and proper.",
+            "charStart": 931,
+            "role": "가치 결론",
+            "translation": "나눔과 상호부조가 옳고 적절한 가치라고 여깁니다."
+          }
+        ],
+        "correctReason": "의사소통의 평등성이 공유와 공조의 가치 기반을 만들었다는 ④가 글 전체를 가장 정확히 압축합니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "인간은 의사소통을 통해 자원을 공유하는 평등한 사회를 건설했다.",
+          "reason": "글은 완성된 평등 사회 건설이 아니라 의사소통 평등이 공유와 상호부조 가치에 미친 영향을 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_23",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 23,
+      "type": "주제",
+      "group": "topic",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "rawText": "23. \t다음 글의 주제로 가장 적절한 것은?\nWhile many city shoppers were clearly drawn to the notion\nof buying and eating foods associated with nature, the nature\nclaimed by the ads was no longer the nature that created the\nfoods. Indeed, the nature claimed by many ads was associated\nwith food products only by the ads’ attachment. This is clearly\na case of what French sociologist Henri Lefebvre has called\n“the decline of the referentials,” or the tendency of words\nunder the influence of capitalism to become separated from\nmeaningful \tassociations. \tIncreasingly, \tfood \tads \thelped\nshoppers become accustomed to new definitions of words\nsuch as “fresh” and “natural,” definitions that could well be\nconsidered opposite of their traditional meanings. The new\ndefinitions better served the needs of the emerging industrial\nfood system, which could not supply foods that matched\ncustomary meanings and expectations. And they better met\nshoppers’ desires, although with pretense.\n① decline of reliability in the ads of natural foods\n② changes in the senses of words linked to food ads\n③ influence of capitalism on the industrial food system\n④ various ways to attract customers in the food industry\n⑤ necessity of meaningful word associations in commercials",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "decline of reliability in the ads of natural foods"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "changes in the senses of words linked to food ads"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "influence of capitalism on the industrial food system"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "various ways to attract customers in the food industry"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "necessity of meaningful word associations in commercials"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1241,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          14
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_23",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 23,
+        "group": "topic",
+        "type": "주제",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 식품 광고가 fresh·natural 같은 단어를 전통적 의미에서 떼어 산업 식품에 맞게 바꾼 현상을 다룹니다.",
+        "typeApproach": "주제 문제는 반복되는 핵심 명사와 그 명사가 어떤 변화를 겪는지를 한 문장으로 묶습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "become separated from",
+            "charStart": 489,
+            "role": "의미 분리",
+            "translation": "자본주의의 영향 아래 단어가 의미 있는 연관에서 분리되는 경향입니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "opposite of their traditional meanings.",
+            "charStart": 699,
+            "role": "의미 변화",
+            "translation": "새 정의가 전통적 의미와 반대라고 볼 정도로 달라졌습니다."
+          }
+        ],
+        "correctReason": "광고와 연결된 단어 의미의 변화가 중심이므로 changes in the senses를 말한 ②가 정답입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "influence of capitalism on the industrial food system",
+          "reason": "자본주의는 배경 원인이지만 중심 대상은 산업 체계 전반이 아니라 광고 속 단어 의미의 변화입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_24",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 24,
+      "type": "제목",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "24. 다음 글의 제목으로 가장 적절한 것은? [3점]",
+      "rawText": "24. \t다음 글의 제목으로 가장 적절한 것은? [3점]\nAs far back as 32,000 years ago, prehistoric cave artists\nskillfully used modeling shadows to give their horses and\nbison volume. A few thousand years ago ancient Egyptian and\nthen ancient Greek art presented human forms in shadow-style\nsilhouette. But cast shadows do not appear in Western art until\nabout 400 BCE in Athens. It was only after shadows had\nbecome an established, if controversial, part of representation\nthat classical writers claimed that art itself had begun with the\ntracing of a human shadow. Greeks and Romans were the first\nto \tmake \tthe \ttransition \tfrom \tmodeling \tshadows \tto \tcast\nshadows, a practice that implied a consistent light source, a\nfixed \tpoint \tof \tview, \tand \tan \tunderstanding \tof \tgeometric\nprojection. In fact, what we might now call “shadow studies”\n― the \texploration \tof \tshadows \tin \ttheir \tvarious \tartistic\nrepresentations ― has its roots in ancient Athens. Ever since,\nthe practice of portraying shadows has evolved along with\ncritical analysis of them, as artists and theoreticians have\nengaged \tin \tan \tongoing \tdebate \tabout \tthe \tsignificance \tof\nshadow representation.\n* geometric: 기하학의\n① The Journey of Shadows in Art from Prehistoric Caves Onward\n② Portrayals of Human Shadows from the Artistic Perspective\n③ Representing Shadows as a Key Part of Contemporary Art\n④ What Are the Primary Challenges for Shadow Painters?\n⑤ Unique Views on Shadows: From Cave Artists to Romans\n\n-- 3 of 8 --\n\n4\n4 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "The Journey of Shadows in Art from Prehistoric Caves Onward"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Portrayals of Human Shadows from the Artistic Perspective"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Representing Shadows as a Key Part of Contemporary Art"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "What Are the Primary Challenges for Shadow Painters?"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Unique Views on Shadows: From Cave Artists to Romans"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1482,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          15
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_24",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 24,
+        "group": "topic",
+        "type": "제목",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 선사 시대 동굴 벽화부터 현대까지 예술에서 그림자 표현이 발전한 긴 흐름을 설명합니다.",
+        "typeApproach": "제목 문제는 글의 시간 범위와 반복 소재를 모두 포함하는 선택지를 우선 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "prehistoric cave artists\nskillfully used modeling shadows",
+            "charStart": 65,
+            "role": "출발 시점",
+            "translation": "선사 시대 동굴 화가들이 이미 그림자를 활용했습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "the practice of portraying shadows has evolved",
+            "charStart": 950,
+            "role": "발전 흐름",
+            "translation": "그림자를 묘사하는 관행은 계속 발전해 왔습니다."
+          }
+        ],
+        "correctReason": "선사 시대에서 이후 시대까지 그림자 표현의 여정을 포괄하는 ①이 제목으로 가장 적절합니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "Portrayals of Human Shadows from the Artistic Perspective",
+          "reason": "글에는 사람 그림자뿐 아니라 말과 들소의 입체 표현, 투영 방식과 이론적 논쟁까지 포함됩니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_25",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 25,
+      "type": "도표",
+      "group": "info",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "25. 다음 도표의 내용과 일치하지 않는 것은?",
+      "rawText": "25. \t다음 도표의 내용과 일치하지 않는 것은?\nThe above graph, based on a survey conducted in 2023,\nshows the share of respondents who say reading is one of their\npersonal hobbies according to their gender group in five\ncountries. ① Among the countries shown in the graph, Spain\nhad the largest share of females who said reading was one\nof their hobbies, which was 58%. ② The gap between the\nshare of females and that of males who selected reading as\none of their hobbies was larger in Germany than in Mexico.\n③ The share of males who selected reading as one of their\nhobbies in Mexico was 41%, which was smaller than that in\nthe \tUnited \tStates. ④ The \tshare \tof \tfemales \twho \tselected\nreading as one of their hobbies in the United States was larger\nthan that in South Korea. ⑤ As for South Korea, the share of\nrespondents who selected reading as one of their hobbies was\nthe smallest among the countries shown in the graph for each\ngender, respectively.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Among the countries shown in the graph, Spain had the largest share of females who said reading was one of their hobbies, which was 58%."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "The gap between the share of females and that of males who selected reading as one of their hobbies was larger in Germany than in Mexico."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "The share of males who selected reading as one of their hobbies in Mexico was 41%, which was smaller than that in the United States."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "The share of females who selected reading as one of their hobbies in the United States was larger than that in South Korea."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "As for South Korea, the share of respondents who selected reading as one of their hobbies was the smallest among the countries shown in the graph for each gender, respectively."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 938,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "grouped_bar_chart",
+        "assetPath": "english/assets/2025-06/q25-figure.png",
+        "sha256": "f7a3865d73c9ae33adf00acf2c2a0f8e5aea8ee46239f68fdf19b407302a8519",
+        "sourcePage": 4,
+        "alt": "Share of respondents who say reading is one of their personal hobbies in 2023. Spain: female 58%, male 39%. Germany: female 51%, male 31%. Mexico: female 51%, male 41%. United States: female 44%, male 30%. South Korea: female 31%, male 25%."
+      },
+      "review": {
+        "id": "2025_06_25",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 25,
+        "group": "info",
+        "type": "도표",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 멕시코 남성 41%는 미국 남성 30%보다 작지 않고 11%포인트 더 큽니다.",
+        "typeApproach": "도표 문제는 선지마다 국가·성별·수치를 같은 순서로 고정해 직접 대조합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Mexico: female 51%, male 41%",
+            "role": "멕시코 수치",
+            "translation": "멕시코에서 여성은 51%, 남성은 41%입니다."
+          },
+          {
+            "in": "figure",
+            "quote": "United States: female 44%, male 30%",
+            "role": "미국 수치",
+            "translation": "미국에서 여성은 44%, 남성은 30%입니다."
+          }
+        ],
+        "correctReason": "멕시코 남성 41%가 미국 남성 30%보다 작다고 한 ③만 수치 관계가 반대입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "The gap between the share of females and that of males who selected reading as one of their hobbies was larger in Germany than in Mexico.",
+          "reason": "독일의 성별 격차는 20%포인트이고 멕시코는 10%포인트이므로 이 설명은 도표와 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_26",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 26,
+      "type": "내용 일치",
+      "group": "info",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "26. Will Rogers에 관한 다음 글의 내용과 일치하지 않는 것은?",
+      "rawText": "26. \tWill Rogers에 관한 다음 글의 내용과 일치하지 않는 것은?\nWill Rogers (1879—1935) was a famous American public\nfigure. He was born as the eighth child. When he was young,\nhe was clever and mature but he dropped out of school after\nthe 10th grade. He was very interested in cowboys and horses,\nand he even learned how to do rope tricks. He left the U.S. in\n1902 and worked as a cowboy and roping artist in South\nAfrica and Australia. After returning to the U.S., he appeared\nin more than 50 movies and was often heard on the radio as an\nentertainer. He was also an outstanding newspaper columnist\nwith his wit and humor, writing more than 4,000 columns. He\nunfortunately died at the height of his career in 1935. Rogers\nwas so popular that after his death his statue was installed in\nthe U.S. Capitol. He will be remembered as a great American\nof many talents.\n① 여덟 번째 아이로 태어났다.\n② 카우보이와 말에 매우 관심이 있었다.\n③ 미국에 돌아온 후 50편이 넘는 영화에 출연했다.\n④ 뛰어난 신문 칼럼니스트였다.\n⑤ 생전에 그의 동상이 U.S. Capitol에 설치되었다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "여덟 번째 아이로 태어났다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "카우보이와 말에 매우 관심이 있었다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "미국에 돌아온 후 50편이 넘는 영화에 출연했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "뛰어난 신문 칼럼니스트였다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "생전에 그의 동상이 U.S. Capitol에 설치되었다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 967,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_26",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 26,
+        "group": "info",
+        "type": "내용 일치",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. Rogers의 동상은 생전이 아니라 1935년 사망 후 U.S. Capitol에 설치됐습니다.",
+        "typeApproach": "인물 일치 문제는 선지의 시점·수량·행동을 본문 문장과 각각 일대일로 대조합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "he appeared\nin more than 50 movies",
+            "charStart": 447,
+            "role": "영화 경력",
+            "translation": "미국에 돌아온 뒤 50편이 넘는 영화에 출연했습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "after his death his statue was installed in\nthe U.S. Capitol.",
+            "charStart": 724,
+            "role": "동상 설치 시점",
+            "translation": "동상은 그의 사망 후 미국 국회의사당에 설치됐습니다."
+          }
+        ],
+        "correctReason": "사후 설치를 생전 설치로 바꾼 ⑤가 본문과 일치하지 않는 선택지입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "미국에 돌아온 후 50편이 넘는 영화에 출연했다.",
+          "reason": "본문에 미국 귀환 후 50편이 넘는 영화에 출연했다고 명시되어 있어 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_27",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 27,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "27. Summer Job at Wildlife Rescue Center에 관한 다음 안내문의",
+      "rawText": "27. \tSummer Job at Wildlife Rescue Center에 관한 다음 안내문의\n내용과 일치하지 않는 것은?\nSummer Job at Wildlife Rescue Center\nWe are looking for summer workers who will take care of\nthe animals rescued from Mount Donovahn.\nSchedule\n∙Dates: August 1st to 31st\n∙Hours: 10 a.m.—4 p.m.\n※ On rainy days, working hours may change.\nRequirements\n∙Only those aged 18 and over can apply.\n∙Previous experience with animals\nTasks\n∙Preparing food for animals and feeding them\n∙Writing reports about animals\n- Summer workers will get training from our caretakers.\n- Free shuttle bus service will be provided twice a day.\nTo learn more about the summer job, please visit our website,\nwww.dwildliferescue.org.\n① Mount Donovahn으로부터 구조된 동물을 돌본다.\n② 우천 시 업무 시간이 변경될 수 있다.\n③ 18세 이상만 지원할 수 있다.\n④ 동물에 관한 보고서를 작성한다.\n⑤ 무료 셔틀 버스 서비스가 하루에 세 번 제공된다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Mount Donovahn으로부터 구조된 동물을 돌본다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "우천 시 업무 시간이 변경될 수 있다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "18세 이상만 지원할 수 있다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "동물에 관한 보고서를 작성한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "무료 셔틀 버스 서비스가 하루에 세 번 제공된다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 802,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "notice_with_schedule",
+        "assetPath": "english/assets/2025-06/q27-notice.png",
+        "sha256": "99f5773013ec4b189c3fd1390fc2dc6a9faf8a6b69f83828c5e97f6dedbac2eb",
+        "sourcePage": 4,
+        "alt": "Summer Job at Wildlife Rescue Center notice. Dates: August 1st to 31st. Hours: 10 a.m.–4 p.m.; rainy-day hours may change. Applicants must be at least 18 and have previous animal experience. Tasks include preparing food, feeding animals, and Writing reports about animals. Free shuttle bus service will be provided twice a day."
+      },
+      "review": {
+        "id": "2025_06_27",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 27,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 무료 셔틀은 하루 세 번이 아니라 하루 두 번 제공됩니다.",
+        "typeApproach": "안내문은 날짜·대상·업무·횟수 같은 조건어를 표에서 그대로 찾아 비교합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Writing reports about animals",
+            "role": "업무 내용",
+            "translation": "동물에 관한 보고서를 작성하는 일이 포함됩니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Free shuttle bus service will be provided twice a day.",
+            "role": "셔틀 횟수",
+            "translation": "무료 셔틀버스는 하루 두 번 제공됩니다."
+          }
+        ],
+        "correctReason": "twice a day를 세 번으로 바꾼 ⑤가 안내문과 일치하지 않습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "동물에 관한 보고서를 작성한다.",
+          "reason": "Tasks 항목에 동물에 관한 보고서 작성이 그대로 포함되어 있어 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_28",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 28,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "28. LCU Geography Field Trip에 관한 다음 안내문의 내용과",
+      "rawText": "28. \tLCU Geography Field Trip에 관한 다음 안내문의 내용과\n일치하는 것은?\n① 2일 동안 진행된다.\n② 모든 전공의 학생들이 참여할 수 있다.\n③ A코스에서는 Lionsford Beach 해안의 특징을 조사한다.\n④ 참가비에 점심이 포함되어 있다.\n⑤ 지원서는 이메일로만 제출이 가능하다.\nLCU Geography Field Trip\nLionsford City University is offering a one-day geography\nfield trip on June 17th. We believe it is one of the finest\nfield trips in the country.\nParticipants: First-year students majoring in geography\nCourse Options\nA \tB\nExploring the landscape\nwhile hiking Mount Belena\nExamining coastal features\nalong Lionsford Beach\nParticipation Fee: $70 per person (lunch included)\nHow to Apply\n∙Email the application to geography@lcu.edu or drop it\noff at the department office.\n∙Deadline: June 4th\n※ For further information, please contact us at 607-223-2127.\n\n-- 4 of 8 --\n\n5\n5 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "2일 동안 진행된다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "모든 전공의 학생들이 참여할 수 있다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "A코스에서는 Lionsford Beach 해안의 특징을 조사한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "참가비에 점심이 포함되어 있다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "지원서는 이메일로만 제출이 가능하다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 772,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "figure": {
+        "kind": "field_trip_notice",
+        "assetPath": "english/assets/2025-06/q28-notice.png",
+        "sha256": "4c2eb93b97c441d1871ff431b7a8fd9930dd183cbcce9276b4f410f3b25074ce",
+        "sourcePage": 4,
+        "alt": "LCU Geography Field Trip notice. One-day trip on June 17th for first-year geography majors. Course A explores Mount Belena; Course B examines Lionsford Beach. Participation Fee: $70 per person (lunch included). Email the application to geography@lcu.edu or drop it off at the department office. Deadline: June 4th."
+      },
+      "review": {
+        "id": "2025_06_28",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 28,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 참가비는 1인당 70달러이며 점심이 포함되어 있습니다.",
+        "typeApproach": "일치하는 선지를 찾을 때는 기간·참가 대상·코스·비용·신청 방식을 모두 확인합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Participation Fee: $70 per person (lunch included)",
+            "role": "참가비 조건",
+            "translation": "1인당 70달러의 참가비에 점심이 포함됩니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Email the application to geography@lcu.edu or drop it off at the department office.",
+            "role": "신청 방식",
+            "translation": "이메일 또는 학과 사무실 방문 제출이 모두 가능합니다."
+          }
+        ],
+        "correctReason": "점심 포함 조건을 그대로 옮긴 ④만 안내문과 일치합니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "지원서는 이메일로만 제출이 가능하다.",
+          "reason": "지원서는 이메일 외에도 학과 사무실에 직접 제출할 수 있으므로 only가 틀렸습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_29",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 29,
+      "type": "어법",
+      "group": "grammar",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "29. 다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?",
+      "rawText": "29. \t다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?\nWhat makes practicing retrieval so much better than review?\nOne answer comes from the psychologist R. A. Bjork’s concept\nof desirable difficulty. More difficult retrieval ① leads to\nbetter learning, provided the act of retrieval is itself successful.\nFree recall tests, in which students need to recall as much as\nthey can remember without prompting, tend to result in better\nretention than cued recall tests, in which students ② give hints\nabout what they need to remember. Cued recall tests, in turn,\nare \tbetter \tthan \trecognition \ttests, \tsuch \tas \tmultiple-choice\nanswers, ③ where the correct answer needs to be recognized\nbut not generated. Giving someone a test immediately after\nthey learn something improves retention less than giving them\na slight delay, long enough so that answers aren’t in mind\nwhen they need ④ them. Difficulty, far from being a barrier to\n⑤ making retrieval work, may be part of the reason it does so.\n* retrieval: 불러오기 \t** retention: 보유력",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "leads"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "give"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "where"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "them"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "making"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1003,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          18
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_29",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 29,
+        "group": "grammar",
+        "type": "어법",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 단서 회상 검사는 학생이 힌트를 주는 것이 아니라 학생에게 힌트가 주어지므로 수동형이 필요합니다.",
+        "typeApproach": "어법 문제는 밑줄 표현의 주어와 실제 행동 주체를 먼저 확인해 능동·수동 관계를 판정합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "students ② give hints\nabout what they need to remember.",
+            "charStart": 452,
+            "role": "능동형 오류",
+            "translation": "현재 문장은 학생들이 기억할 내용의 힌트를 준다고 되어 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "where the correct answer needs to be recognized\nbut not generated.",
+            "charStart": 613,
+            "role": "정상 관계절",
+            "translation": "정답은 생성되지 않고 인식되어야 한다는 관계가 자연스럽습니다."
+          }
+        ],
+        "correctReason": "힌트를 받는 주체가 students이므로 are given으로 고쳐야 하는 ②가 어법상 틀립니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "where",
+          "reason": "where는 recognition tests의 상황을 이어 주며 뒤에 완전한 절이 오므로 어법상 적절합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_30",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 30,
+      "type": "어휘",
+      "group": "vocab",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "30. 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지",
+      "rawText": "30. \t다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지\n않은 것은? [3점]\nInternalization depends on supports for autonomy. Contexts\nthat use controlling strategies such as salient rewards and\npunishments or evaluative, selfesteem-hooking pressures are\n① least likely to lead people to value activities as their own.\nThis is not to say that controls don’t ② work to produce\nbehavior ― decades of operant psychology prove that they\ncan. It is rather that the more salient the external control over a\nperson’s behavior, the more the person is likely to be merely\nexternally \tregulated \tor \tintrojected \tin \this \tor \ther \tactions.\nConsequently, the person does not ③ develop a value or\ninvestment in the behaviors, but instead remains dependent on\nexternal controls. Thus, parents who reward, force, or cajole\ntheir child to do homework are more likely to have a child\nwho does so only when rewarded, cajoled, or forced. The\nsalience \tof \texternal \tcontrols ④ drives \tthe \tacquisition \tof\nself-responsibility. Alternatively, parents who supply reasons,\nshow an emotional understanding of difficulties overcoming\nproblems, and use a ⑤ minimum of external incentives are\nmore likely to cultivate a sense of willingness and value for\nwork in their child.\n* autonomy: 자율성 \t** salient: 두드러진\n*** introject: 투입하다\n[31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "least"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "work"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "develop"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "drives"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "minimum"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1317,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_30",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 30,
+        "group": "vocab",
+        "type": "어휘",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 외적 통제가 두드러질수록 자기 책임감의 획득을 촉진하는 것이 아니라 방해합니다.",
+        "typeApproach": "어휘 문제는 해당 단어 전후의 인과 방향이 글 전체 주장과 같은지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "remains dependent on\nexternal controls.",
+            "charStart": 701,
+            "role": "외적 통제의 결과",
+            "translation": "사람은 외적 통제에 계속 의존하게 됩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "more likely to cultivate a sense of willingness and value for\nwork in their child.",
+            "charStart": 1143,
+            "role": "자율성 지원 효과",
+            "translation": "이유 설명과 최소한의 보상은 자발성과 일의 가치를 기릅니다."
+          }
+        ],
+        "correctReason": "외적 통제는 자기 책임감 형성을 막는 방향이므로 drives를 impedes로 바꿔야 하는 ④가 정답입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "develop",
+          "reason": "외적 통제에 의존하는 사람은 행동의 가치나 투자를 발달시키지 못한다는 문맥에 적절합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_31",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 31,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "31. When trying to establish what is meant by digital",
+      "rawText": "31. \tWhen \ttrying \tto \testablish \twhat \tis \tmeant \tby \tdigital\npreservation, the first question that must be addressed is:\nwhat are you actually trying to preserve? This is clear in\nthe analog environment where the information content is\ninextricably fixed to the physical medium. In the digital\nenvironment, the medium is not part of the \t. A bit\nstream looks the same to a computer regardless of the media\nit is read from. A physical carrier is necessary, but as long as\nthe source media can be read, bit-perfect copies can be made\ncheaply and easily on other devices, making the preservation\nof the original carrier of diminishing importance. As the\nphysical media that carry digital information are quite delicate\nrelative to most analog media, it is expected that digital\ninformation will necessarily need to be migrated from one\nphysical carrier to another as part of the ongoing preservation\nprocess. It is not the media itself but the information on the\nmedia that needs to be preserved.\n* inextricably: 풀 수 없게\n① platform \t② storage\n③ message \t④ challenge\n⑤ transformation",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "platform"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "storage"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "message"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "challenge"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "transformation"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1080,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_31",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 31,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 디지털 보존의 대상은 물리 매체가 아니라 그 매체에 담긴 정보, 즉 message입니다.",
+        "typeApproach": "빈칸 앞뒤에서 반복되는 대비 대상을 찾아 같은 의미의 단어로 치환합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "bit-perfect copies can be made\ncheaply and easily on other devices",
+            "charStart": 503,
+            "role": "매체 교체 가능성",
+            "translation": "다른 장치에도 완전히 같은 복사본을 쉽게 만들 수 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "It is not the media itself but the information on the\nmedia that needs to be preserved.",
+            "charStart": 908,
+            "role": "결론 대비",
+            "translation": "보존 대상은 매체 자체가 아니라 그 위의 정보입니다."
+          }
+        ],
+        "correctReason": "매체와 대비되는 정보 내용을 뜻하는 message가 빈칸에 들어가므로 ③이 정답입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "storage",
+          "reason": "저장 장치는 다른 물리 매체로 옮길 수 있으므로 보존해야 할 핵심 내용이 아닙니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_32",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 32,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "32. Creativity is commonly defined as the production of",
+      "rawText": "32. \tCreativity is commonly defined as the production of\nideas \tthat \tare \tboth \tnovel \t(original, \tnew) \tand \tuseful\n(appropriate, feasible). Ideas that are original but not useful\nare irrelevant, and ideas that are useful but not original are\nunremarkable. While this definition is widely used in research,\nan important aspect of creativity is often ignored: Generating\ncreative ideas rarely is the final goal. Rather, to successfully\nsolve problems or innovate requires one or a few good\nideas \tthat \treally \twork, \tand \twork \tbetter \tthan \tprevious\napproaches. This requires that people evaluate the products\nof their own or each other’s imagination, and choose those\nideas that seem promising enough to develop further, and\nabandon those that are unlikely to be successful. Thus, being\ncreative \t. In fact,\nthe ability to generate creative ideas is essentially useless if\nthese ideas subsequently die a silent death.\n① does not stop with idea generation\n② rarely originates from practical ideas\n③ is often regarded as a shortcut to innovation\n④ frequently gives way to unanticipated success\n⑤ brings out tension between novelty and relevancy\n\n-- 5 of 8 --\n\n6\n6 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "does not stop with idea generation"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "rarely originates from practical ideas"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "is often regarded as a shortcut to innovation"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "frequently gives way to unanticipated success"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "brings out tension between novelty and relevancy"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1167,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          20
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_32",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 32,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 창의성은 아이디어를 만드는 데서 끝나지 않고 유망한 생각을 평가·선택·발전시키는 과정까지 포함합니다.",
+        "typeApproach": "빈칸 직전의 thus와 앞에서 제시한 필요한 후속 행동을 연결해 결론을 완성합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Generating\ncreative ideas rarely is the final goal.",
+            "charStart": 361,
+            "role": "문제 제기",
+            "translation": "창의적 아이디어 생성 자체가 최종 목표인 경우는 드뭅니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "the ability to generate creative ideas is essentially useless",
+            "charStart": 812,
+            "role": "후속 과정 필요",
+            "translation": "아이디어가 발전되지 않으면 생성 능력만으로는 사실상 쓸모가 없습니다."
+          }
+        ],
+        "correctReason": "아이디어 생성 뒤 평가와 발전이 필요하므로 창의성이 생성에서 멈추지 않는다는 ①이 정답입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "is often regarded as a shortcut to innovation",
+          "reason": "글은 창의성을 혁신의 지름길로 보는 인식을 설명하지 않고 생성 이후의 평가를 강조합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_33",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 33,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "33. Because the environment plays a significant role in",
+      "rawText": "33. \tBecause \tthe \tenvironment \tplays \ta \tsignificant \trole \tin\naiding meaningful internal processes, subjective experience\nand the environment act as a ‘coupled system.’ This coupled\nsystem can be seen as a complete cognitive system of its\nown. In this manner, subjective experience is extended into the\nexternal \tenvironment \tand \tvice \tversa; \tthe \texternal\nenvironment \twith \tits \tdisciplinary \tobjects \tsuch \tas\ninstitutional laws and equipment becomes mental institutions\nthat \t. A subjectively\nheld belief attains the status of objectivity when the belief is\nsocially shared. That is, even if we are trained as hard-nosed\nhealth \tcare \trationalists, \tor \tno-nonsense \tbureaucrats, \tor\ndata-driven scientists, research has shown that our decisions\nare influenced by various institutional practices. They include\nbureaucratic \tstructures \tand \tprocedures, \tthe \tarchitectural\ndesign of health care institutions, the rules of evidence and the\nstructure of allowable questions in a courtroom trial, the\nspatial arrangement of kindergartens and supermarkets, and a\nvariety of conventions and practices designed to manipulate\nour emotions. [3점]\n* vice versa: 역으로 \t** bureaucrat: 관료\n① affect our subjective experience and solutions\n② serve as advocates for independent decision-making\n③ position social experience within the cognitive system\n④ comprise subjective interpretations of the environment\n⑤ facilitate the construction of our concept of subjectivity",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "affect our subjective experience and solutions"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "serve as advocates for independent decision-making"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "position social experience within the cognitive system"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "comprise subjective interpretations of the environment"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "facilitate the construction of our concept of subjectivity"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1459,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          21
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_33",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 33,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 법·장비·공간·관행 같은 외부 환경은 개인의 주관적 경험과 해결 방식에 영향을 줍니다.",
+        "typeApproach": "빈칸 뒤의 구체적 사례들이 공통으로 무엇을 바꾸는지 상위 개념으로 묶습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "subjective experience\nand the environment act as a ‘coupled system.’",
+            "charStart": 102,
+            "role": "결합 체계",
+            "translation": "주관적 경험과 환경은 서로 결합된 체계로 작동합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "our decisions\nare influenced by various institutional practices.",
+            "charStart": 740,
+            "role": "사례 결론",
+            "translation": "우리의 결정은 여러 제도적 관행의 영향을 받습니다."
+          }
+        ],
+        "correctReason": "외부 제도가 주관적 경험과 해결에 영향을 준다는 ①이 결합 체계와 뒤의 사례를 모두 설명합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "comprise subjective interpretations of the environment",
+          "reason": "외부 제도가 주관적 해석으로 구성된다는 뜻이 아니라 외부 환경이 주관적 판단에 영향을 준다는 방향입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_34",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 34,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "34. Any attempt to model musical behavior or perception in a",
+      "rawText": "34. \tAny attempt to model musical behavior or perception in a\ngeneral way is filled with difficulties. With regard to models\nof perception, the question arises of whose perception we are\ntrying \tto \tmodel ― even \tif \twe \tconfine \tourselves \tto \ta\nparticular \tculture \tand \thistorical \tenvironment. \tSurely \tthe\nperception \tof \tmusic \tvaries \tgreatly \tbetween \tlisteners \tof\ndifferent levels of training; indeed, a large part of music\neducation \tis \tdevoted \tto \tdeveloping \tand \tenriching \t(and\ntherefore likely changing) these listening processes. While\nthis may be true, I am concerned here with fairly basic aspects\nof perception ― particularly meter and key ― which I believe\nare relatively consistent across listeners. Anecdotal evidence\nsuggests, for example, that most people are able to ‘‘find\nthe beat’’ in a typical folk song or classical piece. This is\nnot to say that there is complete uniformity in this regard ―\nthere may be occasional disagreements, even among experts,\nas to how we hear the tonality or meter of a piece. But I\nbelieve \t. [3점]\n* anecdotal: 일화의\n① our devotion to narrowing these differences will emerge\n② fundamental musical behaviors evolve within communities\n③ these varied perceptions enrich shared musical experiences\n④ the commonalities between us far outweigh the differences\n⑤ diversity rather than uniformity in musical processes counts",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "our devotion to narrowing these differences will emerge"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "fundamental musical behaviors evolve within communities"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "these varied perceptions enrich shared musical experiences"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "the commonalities between us far outweigh the differences"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "diversity rather than uniformity in musical processes counts"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1375,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          22
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_34",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 34,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 음악 지각에는 차이가 있지만 박자와 조성 같은 기본 측면에서는 공통점이 차이보다 훨씬 큽니다.",
+        "typeApproach": "but 뒤의 결론은 앞에서 인정한 예외를 넘어 필자가 최종적으로 더 크게 보는 쪽을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "most people are able to ‘‘find\nthe beat’’",
+            "charStart": 771,
+            "role": "공통 능력",
+            "translation": "대부분의 사람은 음악에서 박자를 찾을 수 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "there may be occasional disagreements, even among experts",
+            "charStart": 926,
+            "role": "제한적 차이",
+            "translation": "전문가 사이에도 가끔 차이가 있을 수는 있습니다."
+          }
+        ],
+        "correctReason": "일부 차이를 인정하면서도 기본 지각의 공통성을 강조하므로 ④가 정답입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "diversity rather than uniformity in musical processes counts",
+          "reason": "글은 다양성이 더 중요하다고 결론 내리지 않고 기본 측면의 상대적 일관성을 주장합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_35",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 35,
+      "type": "무관한 문장",
+      "group": "irrelevant",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "35. 다음 글에서 전체 흐름과 관계 없는 문장은?",
+      "rawText": "35. \t다음 글에서 전체 흐름과 관계 없는 문장은?\nAvian song learning occurs in two stages: first, songs must\nbe memorized and, second, they must be practiced. In some\nspecies these two events overlap, but in others memorization\ncan occur before practice by several months, providing an\nimpressive example of long-term memory storage. ① The young\nbird’s initial efforts to reproduce the memorized song are\nusually not successful. ② These early songs may have uneven\npitch, irregular tempo, and notes that are out of order or poorly\nreproduced. ③ However, sound graphs of songs recorded over\nseveral weeks or months reveal that during this practice period\nthe bird fine-tunes his efforts until he produces an accurate\ncopy of the memorized template. ④ An important idea to\nemerge from the study of birdsong is that song learning is\nshaped by preferences and limitations. ⑤ This process requires\nhearing oneself sing; birds are unable to reproduce memorized\nsongs if they are deafened after memorization but before the\npractice period.\n* avian: 조류의\n[36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한\n것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "The young bird’s initial efforts to reproduce the memorized song are usually not successful."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "These early songs may have uneven pitch, irregular tempo, and notes that are out of order or poorly reproduced."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "However, sound graphs of songs recorded over several weeks or months reveal that during this practice period the bird fine-tunes his efforts until he produces an accurate copy of the memorized template."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "An important idea to emerge from the study of birdsong is that song learning is shaped by preferences and limitations."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "This process requires hearing oneself sing; birds are unable to reproduce memorized songs if they are deafened after memorization but before the practice period."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1071,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          22
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_35",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 35,
+        "group": "irrelevant",
+        "type": "무관한 문장",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 글은 새가 외운 노래를 연습하며 정확히 재현하는 과정을 설명하지만 ④는 학습을 좌우하는 선호와 한계로 주제를 바꿉니다.",
+        "typeApproach": "무관한 문장은 앞뒤 문장이 공유하는 대상·시간 흐름·인과를 끊는 문장을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "the bird fine-tunes his efforts until he produces an accurate\ncopy of the memorized template.",
+            "charStart": 635,
+            "role": "연습 과정",
+            "translation": "새는 외운 본보기를 정확히 복제할 때까지 노래를 미세 조정합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "This process requires\nhearing oneself sing",
+            "charStart": 852,
+            "role": "연습 조건",
+            "translation": "이 연습 과정에는 자신의 노래를 듣는 일이 필요합니다."
+          }
+        ],
+        "correctReason": "암기한 노래의 연습·교정 흐름과 직접 이어지지 않는 선호와 한계 문장 ④가 정답입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "This process requires hearing oneself sing; birds are unable to reproduce memorized songs if they are deafened after memorization but before the practice period.",
+          "reason": "⑤는 정확한 재현을 위한 연습에 청각 피드백이 필요하다는 조건을 보태므로 앞 문장과 이어집니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_36",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 36,
+      "type": "순서",
+      "group": "order",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "36.",
+      "rawText": "36.\nWildfire is a natural phenomenon in many Australian\nenvironments. The intentional setting of fire to manage the\nlandscape was practised by Aboriginal people for millennia.\n(A) However, the pattern of burning that stockmen introduced\nwas unlike previous regimes. When conditions allowed,\nthey would set fire to the landscape as they moved their\nanimals out for the winter. This functioned to clear woody\nvegetation and also stimulated new plant growth in the\nfollowing spring.\n(B) Although \tgrasses \twere \tthe \tfirst \tkinds \tof \tplants \tto\nrecolonize the burnt areas they were soon succeeded by\nfurther woody plants and shrubs. About the only strategy\nto prevent such regrowth was further burning ― essentially\nusing fire to control the consequences of using fire.\n(C) The young shoots were a ready food source for their\nanimals when they returned. However, the practice also\ntended to reinforce the scrubby growth it was intended to\ncontrol.\n* regime: 양식 \t** scrubby: 관목이 우거진\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n\n-- 6 of 8 --\n\n7\n7 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1090,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_36",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 36,
+        "group": "order",
+        "type": "순서",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "정답 ①. 목축업자의 새로운 불 사용 A 뒤에 어린 싹의 이점과 관목 재성장 C, 그 결과 반복 소각이 필요한 B가 이어집니다.",
+        "typeApproach": "순서 문제는 역접·대명사·결과 표현이 가리키는 앞 내용을 고정해 연결 고리를 만듭니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "The young shoots were a ready food source for their\nanimals when they returned.",
+            "charStart": 772,
+            "role": "A의 결과",
+            "translation": "A에서 불로 생긴 어린 싹이 돌아온 가축의 먹이가 됩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "About the only strategy\nto prevent such regrowth was further burning",
+            "charStart": 631,
+            "role": "재성장의 후속 결과",
+            "translation": "C의 목본 식물 재성장을 막으려면 다시 불을 놓아야 했습니다."
+          }
+        ],
+        "correctReason": "A의 불 사용을 C의 결과가 받고, C의 regrowth를 B의 such regrowth가 받으므로 ① A-C-B가 정답입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(C) - (A) - (B)",
+          "reason": "C의 The young shoots는 A에서 불로 새 식물 성장을 촉진했다는 내용이 먼저 나와야 해 C로 시작할 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_37",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 37,
+      "type": "순서",
+      "group": "order",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "37.",
+      "rawText": "37.\nThere are a number of human resource management\npractices \tthat \tare \tnecessary \tto \tsupport \torganizational\nlearning.\n(A) Their role should be to assist, consult, and advise teams\non how best to approach learning. They must be able to\ndevelop new mechanisms for cross-training peers ― team\nmembers ― and new systems for capturing and sharing\ninformation. To do this, human resource development\nprofessionals must be able to think systematically and\nunderstand how to promote learning within groups and\nacross the organization.\n(B) For example, performance evaluation and reward systems\nthat reinforce long-term performance and the development\nand sharing of new skills and knowledge are particularly\nimportant. In addition, the human resource development\nfunction may be dramatically changed to keep the emphasis\non continuous learning.\n(C) In a learning organization, every employee must take the\nresponsibility for acquiring and transferring knowledge.\nFormal training programs, developed in advance and\ndelivered according to a preset schedule, are insufficient to\naddress shifting training needs and encourage timely\ninformation sharing. Rather, human resource development\nprofessionals must become learning facilitators. [3점]\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n[38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장\n적절한 곳을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1375,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          24
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_37",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 37,
+        "group": "order",
+        "type": "순서",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 인적 자원 관리 사례 B, 지속 학습에 맞춘 전문가 역할 전환 C, 그 역할의 구체적 내용 A 순서입니다.",
+        "typeApproach": "예시를 여는 표현과 대명사가 가리키는 직전 명사를 이용해 문단의 자리를 결정합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "For example, performance evaluation and reward systems",
+            "charStart": 536,
+            "role": "도입의 사례",
+            "translation": "첫 문장의 인적 자원 관리 관행을 평가·보상 제도가 예시로 받습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "human resource development\nprofessionals must become learning facilitators.",
+            "charStart": 1155,
+            "role": "역할 전환",
+            "translation": "인적 자원 개발 전문가는 학습 촉진자가 되어야 합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Their role should be to assist, consult, and advise teams",
+            "charStart": 127,
+            "role": "대명사 연결",
+            "translation": "Their role이 C의 전문가 역할을 이어 구체화합니다."
+          }
+        ],
+        "correctReason": "B가 관행을 예시하고 C가 기능 변화를 설명한 뒤 A가 그 역할을 받으므로 ③ B-C-A가 정답입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "(B) - (A) - (C)",
+          "reason": "A의 Their role이 가리킬 인적 자원 개발 전문가와 학습 촉진자라는 선행 내용은 C에 있습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_38",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 38,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "38.",
+      "rawText": "38.\nContinuous \temissions \tmeasurement \tcan \tbe \tcostly,\nparticularly where there are many separate sources of\nemissions, and for many pollution problems this may be a\nmajor disincentive to direct taxation of emissions.\nEnvironmental taxes based directly on measured emissions\ncan, in principle, be very precisely targeted to the policy’s\nenvironmental objectives. ( ① ) If a firm pollutes more, it\npays \tadditional \ttax \tdirectly \tin \tproportion \tto \tthe \trise \tin\nemissions. ( ② ) The polluter thus has an incentive to reduce\nemissions in any manner that is less costly per unit of abatement\nthan the tax on each unit of residual emissions. ( ③ ) The great\nattraction of basing the tax directly on measured emissions is\nthat the actions the polluter can take to reduce tax liability are\nactions that also reduce emissions. ( ④ ) Nevertheless, the\ntechnologies available for monitoring the concentrations and\nflows of particular substances in waste discharges have been\ndeveloping rapidly. ( ⑤ ) In the future, it may be possible to\nthink of taxing measured emissions in a wider range of\napplications.\n* abatement: 감소 \t** liability: 부담액",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1137,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          24
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_38",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 38,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "정답 ④. 배출 측정의 장점 설명이 끝난 뒤 높은 측정 비용을 제시하고, Nevertheless로 측정 기술 발전을 이어야 합니다.",
+        "typeApproach": "삽입 문장은 앞 문장과의 주제 연결, 뒤 문장의 역접 접속어가 모두 자연스러운 자리를 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Continuous \temissions \tmeasurement \tcan \tbe \tcostly",
+            "charStart": 4,
+            "role": "주어진 한계",
+            "translation": "지속적인 배출 측정은 비용이 많이 들 수 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Nevertheless, the\ntechnologies available for monitoring",
+            "charStart": 831,
+            "role": "뒤의 역접",
+            "translation": "그럼에도 측정 기술은 빠르게 발전하고 있다고 전환합니다."
+          }
+        ],
+        "correctReason": "세금의 장점 뒤 비용 한계를 놓고 기술 발전으로 반전하는 ④가 가장 자연스럽습니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "⑤",
+          "reason": "⑤ 뒤는 미래 적용 가능성의 결론이므로 비용 한계를 넣으면 Nevertheless가 비용보다 먼저 나와 논리 순서가 깨집니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_39",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 39,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "39.",
+      "rawText": "39.\nThis active involvement provides a basis for depth of\naesthetic processing and reflection on the meaning of the\nwork.\nThere are interesting trade-offs in the relative importance\nof subject matter (i.e., figure) and style (i.e., background).\n( ① ) In highly representational paintings, plays, or stories,\nthe focus is on subject matter that resembles everyday life and\nthe role of background style is to facilitate the construction of\nmental models. ( ② ) Feelings of pleasure and uncertainty\ncarry the viewer along to the conclusion of the piece. ( ③ ) In\nhighly expressionist works, novel stylistic devices work in an\ninharmonious \tmanner \tagainst \tthe \tsubject \tmatter \tthereby\ncreating \ta \tdisquieting \tatmosphere. ( ④ ) Thus, \twhen \tthe\nwork is less “readable” (or easily interpreted), its departure\nfrom conventional forms reminds the viewer or reader that an\n“aesthetic attitude” is needed to appreciate the whole episode.\n( ⑤ ) An ability to switch between the “pragmatic attitude” of\neveryday life and an “aesthetic attitude” is fundamental to a\nbalanced life. [3점]\n* aesthetic: 미학의 \t** pragmatic: 실용주의의",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1115,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          25
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_39",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 39,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 난해한 작품에 미학적 태도가 필요하다는 설명 뒤에 적극적 관여의 효과를 놓고, 두 태도 전환의 중요성으로 결론 냅니다.",
+        "typeApproach": "주어진 문장의 지시어가 앞 내용을 받는지와 다음 문장의 일반화가 자연스럽게 이어지는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "This active involvement provides a basis for depth of",
+            "charStart": 4,
+            "role": "주어진 문장",
+            "translation": "이러한 적극적 관여가 깊은 미학적 처리와 성찰의 토대가 됩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "An ability to switch between the “pragmatic attitude”",
+            "charStart": 939,
+            "role": "최종 일반화",
+            "translation": "실용적 태도와 미학적 태도를 전환하는 능력이 균형 잡힌 삶에 중요합니다."
+          }
+        ],
+        "correctReason": "미학적 태도를 요구하는 문장 뒤에서 This active involvement가 이를 받고 결론으로 이어지므로 ⑤가 정답입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "④",
+          "reason": "④ 앞에서는 표현주의 작품의 불편한 분위기만 제시되어 This active involvement가 받을 적극적 감상 행동이 아직 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_40",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 40,
+      "type": "요약문",
+      "group": "summary",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),",
+      "rawText": "40. \t다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),\n(B)에 들어갈 말로 가장 적절한 것은?\nThere is a tendency, once the dust of an emergency has\nsettled down, to seek the reduction of famine vulnerability\nprimarily in enhanced economic growth, or the revival of\nthe rural economy, or the diversification of economic\nactivities. The potential contribution of greater economic\nsuccess, if it involves vulnerable groups, cannot be denied.\nAt the same time, it is important to recognize that, no\nmatter how fast they grow, countries where a large part of\nthe \tpopulation \tderive \ttheir \tlivelihood \tfrom \tuncertain\nsources cannot hope to prevent famines without specialized\nentitlement protection mechanisms involving direct public\nintervention. Rapid growth of the economy in Botswana,\nor \tof \tthe \tagricultural \tsector \tin \tKenya, \tor \tof \tfood\nproduction in Zimbabwe, explains at best only a small part\nof their success in preventing recurrent threats of famine.\nThe real achievements of these countries lie in having\nprovided direct public support to their populations in times\nof crisis.\n* famine: 기아 \t** vulnerability: 취약\n󰀻\nAlthough economic growth can be somewhat \t(A) \tin\ndiminishing a country’s risk of famine, direct approaches\nto helping the affected people play a(n) \t(B) \trole in\nthis process.\n(A) \t(B) \t(A) \t(B)\n① productive…… complicated \t② fruitful \t…… critical\n③ dominant …… comprehensive \t④ restrictive…… appropriate\n⑤ desirable …… cost-effective\n\n-- 7 of 8 --\n\n8\n8 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "productive …… complicated"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "fruitful …… critical"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "dominant …… comprehensive"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "restrictive …… appropriate"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "desirable …… cost-effective"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1455,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          26
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_40",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 40,
+        "group": "summary",
+        "type": "요약문",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. 경제 성장은 기근 위험 감소에 어느 정도 유익하지만 위기 주민에 대한 직접 지원이 결정적입니다.",
+        "typeApproach": "요약문은 양보되는 보조 요인과 필자가 더 중요하다고 강조한 핵심 요인을 나누어 채웁니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "The potential contribution of greater economic\nsuccess",
+            "charStart": 301,
+            "role": "경제 성장의 기여",
+            "translation": "더 큰 경제적 성공이 기여할 가능성은 인정됩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "direct public support to their populations in times\nof crisis.",
+            "charStart": 999,
+            "role": "결정적 수단",
+            "translation": "실제 성과는 위기 때 주민에게 직접 공공 지원을 제공한 데 있습니다."
+          }
+        ],
+        "correctReason": "성장은 fruitful하고 직접 지원은 critical하다는 대비를 완성하는 ②가 정답입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "productive …… complicated",
+          "reason": "직접 지원은 복잡한 역할로 평가되지 않고 기근 예방 성공의 핵심 수단으로 강조됩니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_41",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 41,
+      "type": "장문 제목",
+      "group": "long",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "41. 윗글의 제목으로 가장 적절한 것은?",
+      "rawText": "41. \t윗글의 제목으로 가장 적절한 것은?\n① Critical Reasoning: A Road to Ethical Decision-making\n② Far-reaching Impacts of Ethics on Behavioural Codes\n③ Ethical Thinking: A Walk Through Individual Minds\n④ Exploring Ethical Theory in the Eyes of the Others\n⑤ Do Ethical Choices Always Take Priority?",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nIf we understand critical thinking as: ‘the identification and\nevaluation \tof \tevidence \tto \tguide \tdecision-making’, \tthen\nethical \tthinking \tis \tabout \tidentifying \tethical \tissues \tand\nevaluating these issues from different perspectives to guide\nhow to respond. This form of ethics is distinct from higher\nlevels of conceptual ethics or theory. The nature of an ethical\nissue or problem from this perspective is that there is no clear\nright or wrong response. It is therefore (a) essential that\nstudents learn to think through ethical issues rather than\nfollow a prescribed set of ethical codes or rules. There is a\nneed \tto (b) encourage \trecognition \tthat, \talthough \tbeing\nethical is defined as acting ‘in accordance with the principles\nof conduct that are considered correct’, these principles vary\nboth between and within individuals. What a person (c) values\nrelates to their social, religious, or civic beliefs influenced by\ntheir formal and informal learning experiences. Individual\nperspectives may also be context (d) dependent, meaning\nthat under different circumstances, at a different time, when\nthey are feeling a different way, the same individual may\nmake different choices. Therefore, in order to analyse ethical\nissues and think ethically it is necessary to understand the\npersonal factors that influence your own ‘code of behaviour’\nand how these may (e) coincide, alongside recognizing and\naccepting that the factors that drive other people’s codes and\ndecision making may be different.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Critical Reasoning: A Road to Ethical Decision-making"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Far-reaching Impacts of Ethics on Behavioural Codes"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Ethical Thinking: A Walk Through Individual Minds"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Exploring Ethical Theory in the Eyes of the Others"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Do Ethical Choices Always Take Priority?"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 282,
+        "sharedPassageChars": 1537,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          27
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_41",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 41,
+        "group": "long",
+        "type": "장문 제목",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "정답 ③. 윤리적 사고는 개인마다 다른 가치와 상황 요인을 이해하며 여러 관점에서 문제를 검토하는 과정입니다.",
+        "typeApproach": "장문 제목은 반복 개념과 글의 범위를 함께 담되 일부 행동이나 이론에만 좁혀진 선택지를 피합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "evaluating these issues from different perspectives",
+            "charStart": 216,
+            "role": "다양한 관점",
+            "translation": "윤리 문제를 여러 관점에서 평가합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "these principles vary\nboth between and within individuals.",
+            "charStart": 812,
+            "role": "개인별 차이",
+            "translation": "윤리 원칙은 사람 사이뿐 아니라 한 개인 안에서도 달라집니다."
+          }
+        ],
+        "correctReason": "개인의 가치와 상황에 따라 달라지는 윤리적 사고를 다룬 Ethical Thinking과 Individual Minds의 ③이 적절합니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "Critical Reasoning: A Road to Ethical Decision-making",
+          "reason": "비판적 사고는 도입의 비교 대상이며 글의 중심은 개인차를 포함한 윤리적 사고 자체입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_42",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 42,
+      "type": "장문 어휘",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "42. 밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은",
+      "rawText": "42. \t밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은\n것은? [3점]\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nIf we understand critical thinking as: ‘the identification and\nevaluation \tof \tevidence \tto \tguide \tdecision-making’, \tthen\nethical \tthinking \tis \tabout \tidentifying \tethical \tissues \tand\nevaluating these issues from different perspectives to guide\nhow to respond. This form of ethics is distinct from higher\nlevels of conceptual ethics or theory. The nature of an ethical\nissue or problem from this perspective is that there is no clear\nright or wrong response. It is therefore (a) essential that\nstudents learn to think through ethical issues rather than\nfollow a prescribed set of ethical codes or rules. There is a\nneed \tto (b) encourage \trecognition \tthat, \talthough \tbeing\nethical is defined as acting ‘in accordance with the principles\nof conduct that are considered correct’, these principles vary\nboth between and within individuals. What a person (c) values\nrelates to their social, religious, or civic beliefs influenced by\ntheir formal and informal learning experiences. Individual\nperspectives may also be context (d) dependent, meaning\nthat under different circumstances, at a different time, when\nthey are feeling a different way, the same individual may\nmake different choices. Therefore, in order to analyse ethical\nissues and think ethically it is necessary to understand the\npersonal factors that influence your own ‘code of behaviour’\nand how these may (e) coincide, alongside recognizing and\naccepting that the factors that drive other people’s codes and\ndecision making may be different.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 84,
+        "sharedPassageChars": 1537,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          28
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_42",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 42,
+        "group": "long",
+        "type": "장문 어휘",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 다른 사람의 행동 규범을 만드는 요인이 다를 수 있으므로 coincide가 아니라 differ 같은 반대 방향 표현이 필요합니다.",
+        "typeApproach": "문맥 어휘는 병렬 구조와 뒤의 명시적 대비를 확인해 단어의 방향이 같은지 판정합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "these principles vary\nboth between and within individuals.",
+            "charStart": 812,
+            "role": "차이의 전제",
+            "translation": "윤리 원칙은 개인 사이와 개인 내부에서 모두 달라집니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "the factors that drive other people’s codes and\ndecision making may be different.",
+            "charStart": 1456,
+            "role": "다른 사람과의 차이",
+            "translation": "다른 사람의 규범과 결정을 이끄는 요인은 서로 다를 수 있습니다."
+          }
+        ],
+        "correctReason": "서로 다를 수 있다는 결론과 반대인 coincide가 쓰인 ⑤가 문맥상 부적절합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(d)",
+          "reason": "상황에 따라 같은 사람도 다른 선택을 할 수 있다는 설명이므로 context dependent는 적절합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_43",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 43,
+      "type": "장문 순서",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로",
+      "rawText": "43. \t주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로\n가장 적절한 것은?\n①\n③\n⑤\n(B)\n(C)\n(D)\n－\n－\n－\n(D)\n(D)\n(C)\n－\n－\n－\n(C)\n(B)\n(B)\n②\n④\n(C)\n(D)\n－\n－\n(B)\n(B)\n－\n－\n(D)\n(C)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nGarcia stood outside Frontcountry Mall, waiting for his\nbrother, Jeff. Garcia’s band had been chosen to perform at the\nwelcoming ceremony for a large group of students from their\nsister university in Singapore. Garcia was hoping to find the\nperfect clothing for the performance. That was why (a) he\nhad asked Jeff to help him pick out new clothes. “I’m sorry.\nI’m late because traffic was terrible,” Jeff apologized as he\narrived. “Don’t worry. I haven’t waited long,” Garcia replied\nas they entered the lively shopping center.\n(B)\nThe band performance was the first event of the ceremony.\nThe host introduced the band, and each member took their\nplace on stage. Garcia stood at the center of the stage. As he\nstarted playing, everyone fell silent, fascinated by the music.\nGarcia’s trumpet playing was flawless. When the band was\nfinished, the audience loudly cheered. After the show, Jeff\napproached Garcia. “It was fantastic. I think that was the best\nperformance I’ve ever seen,” (b) he said. Garcia beamed\nwith joy at his brother’s praise.\n(C)\nGarcia felt good as he arrived at the concert hall for the\nrehearsal wearing his new clothes. His confidence was,\nhowever, quickly changed to nervousness when he thought\nof how many \tpeople \twould \tbe there. \tAs \tthe \trehearsal\nbegan, (c) he struggled with the rhythm, making several\nmistakes. Tom, Garcia’s band mate, came over and put a\nhand on Garcia’s back, saying, “Don’t worry, I’ll be right\nbehind (d) you.” He looked at his friend, took a deep breath\nand started to feel much better.\n(D)\n“Aren’t these cool?” Garcia asked, pointing at a patterned\nred shirt and yellow pants he had found in the store. “Um,\nI think they’re a bit too colorful,” Jeff objected. Instead,\nJeff picked out a white shirt and black jeans. He asked the\nstore clerk, “Don’t you think these would look great on\n(e) my brother?” The clerk stopped her work and looked\nat the clothes, quickly agreeing with Jeff’s choice. Garcia\nbought the recommended clothes, saying, “Maybe I’ll wear\nthese for tonight’s rehearsal, too.”",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(B) - (D) - (C)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(C) - (B) - (D)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(C) - (D) - (B)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(D) - (B) - (C)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(D) - (C) - (B)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 139,
+        "sharedPassageChars": 2080,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_43",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 43,
+        "group": "long",
+        "type": "장문 순서",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. 쇼핑 D에서 새 옷을 산 뒤 리허설 C을 하고, 마지막으로 환영식 본 공연 B가 열립니다.",
+        "typeApproach": "장문 순서는 시간 표현과 앞 문단에서 준비한 물건·행동이 다음 문단에서 실제로 쓰이는 흐름을 찾습니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Maybe I’ll wear\nthese for tonight’s rehearsal, too.",
+            "charStart": 2028,
+            "role": "D에서 C로",
+            "translation": "구매한 옷을 오늘 밤 리허설에 입겠다고 말합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Garcia felt good as he arrived at the concert hall for the\nrehearsal wearing his new clothes.",
+            "charStart": 1081,
+            "role": "리허설 실행",
+            "translation": "새 옷을 입고 리허설 장소에 도착합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "The band performance was the first event of the ceremony.",
+            "charStart": 564,
+            "role": "마지막 본 공연",
+            "translation": "리허설 뒤 환영식의 첫 행사로 밴드 공연이 시작됩니다."
+          }
+        ],
+        "correctReason": "새 옷 구매 D, 리허설 C, 본 공연 B의 시간 순서이므로 ⑤ D-C-B가 정답입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(D) - (B) - (C)",
+          "reason": "C는 리허설이고 B는 실제 환영식 공연이므로 본 공연 뒤에 리허설이 올 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_44",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 44,
+      "type": "장문 지칭",
+      "group": "long",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "44. 밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른",
+      "rawText": "44. \t밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nGarcia stood outside Frontcountry Mall, waiting for his\nbrother, Jeff. Garcia’s band had been chosen to perform at the\nwelcoming ceremony for a large group of students from their\nsister university in Singapore. Garcia was hoping to find the\nperfect clothing for the performance. That was why (a) he\nhad asked Jeff to help him pick out new clothes. “I’m sorry.\nI’m late because traffic was terrible,” Jeff apologized as he\narrived. “Don’t worry. I haven’t waited long,” Garcia replied\nas they entered the lively shopping center.\n(B)\nThe band performance was the first event of the ceremony.\nThe host introduced the band, and each member took their\nplace on stage. Garcia stood at the center of the stage. As he\nstarted playing, everyone fell silent, fascinated by the music.\nGarcia’s trumpet playing was flawless. When the band was\nfinished, the audience loudly cheered. After the show, Jeff\napproached Garcia. “It was fantastic. I think that was the best\nperformance I’ve ever seen,” (b) he said. Garcia beamed\nwith joy at his brother’s praise.\n(C)\nGarcia felt good as he arrived at the concert hall for the\nrehearsal wearing his new clothes. His confidence was,\nhowever, quickly changed to nervousness when he thought\nof how many \tpeople \twould \tbe there. \tAs \tthe \trehearsal\nbegan, (c) he struggled with the rhythm, making several\nmistakes. Tom, Garcia’s band mate, came over and put a\nhand on Garcia’s back, saying, “Don’t worry, I’ll be right\nbehind (d) you.” He looked at his friend, took a deep breath\nand started to feel much better.\n(D)\n“Aren’t these cool?” Garcia asked, pointing at a patterned\nred shirt and yellow pants he had found in the store. “Um,\nI think they’re a bit too colorful,” Jeff objected. Instead,\nJeff picked out a white shirt and black jeans. He asked the\nstore clerk, “Don’t you think these would look great on\n(e) my brother?” The clerk stopped her work and looked\nat the clothes, quickly agreeing with Jeff’s choice. Garcia\nbought the recommended clothes, saying, “Maybe I’ll wear\nthese for tonight’s rehearsal, too.”",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 78,
+        "sharedPassageChars": 2080,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_06_44",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 44,
+        "group": "long",
+        "type": "장문 지칭",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "정답 ②. (b) he는 공연을 칭찬하는 Jeff이고, 나머지 지칭 표현은 모두 Garcia를 가리킵니다.",
+        "typeApproach": "지칭 문제는 각 대명사 바로 앞 행동의 주체와 대화의 발화자를 이름으로 치환합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Jeff\napproached Garcia.",
+            "charStart": 918,
+            "role": "발화자 전환",
+            "translation": "공연 뒤 Jeff가 Garcia에게 다가갑니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "(b) he said. Garcia beamed",
+            "charStart": 1016,
+            "role": "다른 지칭 대상",
+            "translation": "칭찬을 말한 he는 Jeff이고 그 말을 들은 Garcia가 기뻐합니다."
+          }
+        ],
+        "correctReason": "(b)의 he만 Jeff를 가리키므로 나머지 Garcia 지칭과 다른 ②가 정답입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(d)",
+          "reason": "Tom이 I’ll be right behind you라고 말하는 대상은 연주 실수로 긴장한 Garcia입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_06_45",
+      "examId": "2025_06",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "6월",
+      "qid": 45,
+      "type": "장문 내용",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "45. 윗글에 관한 내용으로 적절하지 않은 것은?",
+      "rawText": "45. \t윗글에 관한 내용으로 적절하지 않은 것은?\n① Jeff는 교통 체증 때문에 늦었다.\n② Garcia는 환영식 공연 무대의 중앙에 섰다.\n③ 밴드가 환영식 공연에서 연주를 마치자 관객은 환호했다.\n④ Garcia는 리허설을 앞두고 긴장감을 느꼈다.\n⑤ Garcia는 본인이 가리킨 색상의 옷을 구매했다.\n* 확인 사항\n◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인\n하시오.\n\n-- 8 of 8 --",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nGarcia stood outside Frontcountry Mall, waiting for his\nbrother, Jeff. Garcia’s band had been chosen to perform at the\nwelcoming ceremony for a large group of students from their\nsister university in Singapore. Garcia was hoping to find the\nperfect clothing for the performance. That was why (a) he\nhad asked Jeff to help him pick out new clothes. “I’m sorry.\nI’m late because traffic was terrible,” Jeff apologized as he\narrived. “Don’t worry. I haven’t waited long,” Garcia replied\nas they entered the lively shopping center.\n(B)\nThe band performance was the first event of the ceremony.\nThe host introduced the band, and each member took their\nplace on stage. Garcia stood at the center of the stage. As he\nstarted playing, everyone fell silent, fascinated by the music.\nGarcia’s trumpet playing was flawless. When the band was\nfinished, the audience loudly cheered. After the show, Jeff\napproached Garcia. “It was fantastic. I think that was the best\nperformance I’ve ever seen,” (b) he said. Garcia beamed\nwith joy at his brother’s praise.\n(C)\nGarcia felt good as he arrived at the concert hall for the\nrehearsal wearing his new clothes. His confidence was,\nhowever, quickly changed to nervousness when he thought\nof how many \tpeople \twould \tbe there. \tAs \tthe \trehearsal\nbegan, (c) he struggled with the rhythm, making several\nmistakes. Tom, Garcia’s band mate, came over and put a\nhand on Garcia’s back, saying, “Don’t worry, I’ll be right\nbehind (d) you.” He looked at his friend, took a deep breath\nand started to feel much better.\n(D)\n“Aren’t these cool?” Garcia asked, pointing at a patterned\nred shirt and yellow pants he had found in the store. “Um,\nI think they’re a bit too colorful,” Jeff objected. Instead,\nJeff picked out a white shirt and black jeans. He asked the\nstore clerk, “Don’t you think these would look great on\n(e) my brother?” The clerk stopped her work and looked\nat the clothes, quickly agreeing with Jeff’s choice. Garcia\nbought the recommended clothes, saying, “Maybe I’ll wear\nthese for tonight’s rehearsal, too.”",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Jeff는 교통 체증 때문에 늦었다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Garcia는 환영식 공연 무대의 중앙에 섰다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "밴드가 환영식 공연에서 연주를 마치자 관객은 환호했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Garcia는 리허설을 앞두고 긴장감을 느꼈다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Garcia는 본인이 가리킨 색상의 옷을 구매했다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_6월_영어_문제.pdf",
+        "answerFile": "2025학년도_6월_영어_정답.png",
+        "explainFile": "2025학년도_6월_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 237,
+        "sharedPassageChars": 2080,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_06_45",
+        "status": "ready",
+        "exam": "2025학년도 6월 모의평가 영어",
+        "qid": 45,
+        "group": "long",
+        "type": "장문 내용",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "정답 ⑤. Garcia는 자신이 가리킨 빨간 셔츠와 노란 바지가 아니라 Jeff가 추천한 흰 셔츠와 검은 청바지를 샀습니다.",
+        "typeApproach": "장문 일치 문제는 인물·행동·시간을 고정하고 비슷한 물건이나 사건을 서로 바꾸지 않았는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Instead,\nJeff picked out a white shirt and black jeans.",
+            "charStart": 1747,
+            "role": "실제 추천 옷",
+            "translation": "Jeff는 대신 흰 셔츠와 검은 청바지를 골랐습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Garcia\nbought the recommended clothes",
+            "charStart": 1980,
+            "role": "실제 구매",
+            "translation": "Garcia는 Jeff가 추천한 옷을 구매했습니다."
+          }
+        ],
+        "correctReason": "자신이 가리킨 화려한 옷을 샀다고 바꾼 ⑤가 글의 내용과 일치하지 않습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "Garcia는 리허설을 앞두고 긴장감을 느꼈다.",
+          "reason": "리허설 장소에서 많은 사람을 생각하자 자신감이 긴장으로 바뀌었다고 본문에 명시되어 있습니다."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "metadata": {
+    "schemaVersion": "eng-explain-candidate-v1",
+    "examId": "2025_06",
+    "exam": "2025학년도 6월 모의평가 영어",
+    "status": "internal_candidate",
+    "publicConnected": false,
+    "itemCount": 28,
+    "readyCount": 28,
+    "note": "문제·정답·해설 PDF 원본 대조를 마친 내부 근거형 해설 후보"
+  },
+  "items": {
+    "2025_06_18": {
+      "id": "2025_06_18", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 18, "group": "practical", "type": "목적", "answer": 3, "answerMark": "③",
+      "summary": "정답 ③. 운영자는 어린 시청자에게 부적절하거나 채널과 무관한 댓글을 삼가 달라고 구독자들에게 요청합니다.",
+      "typeApproach": "목적 문제는 인사말보다 글쓴이가 독자에게 직접 요구하는 행동과 그 이유를 함께 찾습니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "there have been some examples of language that is inappropriate for younger viewers.", "role": "문제 상황", "translation": "어린 시청자에게 부적절한 언어가 댓글에 나타났습니다." },
+        { "in": "rawText", "quote": "I would really like to ask that all of my followers keep these things in mind", "role": "직접 요청", "translation": "모든 구독자에게 앞의 문제를 유념해 달라고 직접 요청합니다." }
+      ],
+      "correctReason": "부적절하고 무관한 댓글을 지적한 뒤 모든 구독자에게 주의를 요청하므로 ③이 정확합니다.",
+      "trap": { "mark": "①", "choice": 1, "text": "새로 개설한 온라인 채널을 홍보하려고", "reason": "채널을 소개하지만 새 채널 홍보가 아니라 이미 발생한 댓글 문제를 바로잡는 것이 목적입니다." }
+    },
+    "2025_06_19": {
+      "id": "2025_06_19", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 19, "group": "practical", "type": "심경 변화", "answer": 1, "answerMark": "①",
+      "summary": "정답 ①. 과제를 시작하지 못해 좌절하던 Timothy가 누나의 해결책을 듣고 감사하는 흐름입니다.",
+      "typeApproach": "심경 변화는 첫 감정 표현과 마지막 직접 발화를 각각 확인한 뒤 두 상태를 연결합니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "impossible!", "role": "초기 좌절", "translation": "과제를 해낼 수 없다고 외치며 좌절감을 드러냅니다." },
+        { "in": "rawText", "quote": "Thank you.", "role": "마지막 감사", "translation": "누나의 아이디어를 칭찬하고 고마움을 직접 표현합니다." }
+      ],
+      "correctReason": "처음의 frustrated와 마지막의 grateful이 원문 감정 표현에 모두 맞으므로 ①이 정답입니다.",
+      "trap": { "mark": "③", "choice": 3, "text": "hopeful → thrilled", "reason": "처음에는 희망적이지 않고 어디서 시작할지 몰라 책상을 치며 좌절한 상태였습니다." }
+    },
+    "2025_06_20": {
+      "id": "2025_06_20", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 20, "group": "topic", "type": "주장", "answer": 5, "answerMark": "⑤",
+      "summary": "정답 ⑤. AI도 완전무결하지 않으므로 인간은 자신의 오류 극복 능력을 활용해 AI를 감독해야 합니다.",
+      "typeApproach": "주장 문제는 역접 뒤의 판단과 must·crucial 같은 당위 표현을 중심으로 결론을 잡습니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "infallibility or predicts it in the future.", "role": "AI의 한계", "translation": "현대 AI가 현재나 미래에 오류가 없다는 증거는 거의 없습니다." },
+        { "in": "rawText", "quote": "we utilize our", "role": "핵심 주장", "translation": "인간은 실패를 극복하는 능력으로 감독자의 위치를 맡아야 합니다." }
+      ],
+      "correctReason": "AI의 오류 가능성과 인간의 극복 능력을 연결해 감독 역할을 요구하므로 ⑤가 정답입니다.",
+      "trap": { "mark": "①", "choice": 1, "text": "인간은 AI의 발전 가능성과 불안정성을 동시에 고려해야 한다.", "reason": "두 가능성을 고려하라는 일반론이 아니라 인간이 AI의 성장과 활용을 감독해야 한다는 행동 요구가 핵심입니다." }
+    },
+    "2025_06_21": {
+      "id": "2025_06_21", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 21, "group": "blank", "type": "밑줄 의미", "answer": 2, "answerMark": "②",
+      "summary": "정답 ②. 번아웃은 이분법적 상태가 아니라 연속선이므로 현재보다 더 심한 소진 단계가 남아 있다는 뜻입니다.",
+      "typeApproach": "밑줄 의미는 비유를 직역하지 말고 앞 문단에서 반복된 대비와 정의로 바꾸어 읽습니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "burnout not as a state but as a", "role": "핵심 정의", "translation": "번아웃을 하나의 상태가 아니라 연속선으로 보아야 합니다." },
+        { "in": "rawText", "quote": "without being burned out.", "role": "부분 단계", "translation": "완전히 소진되지 않고도 번아웃의 일부를 경험할 수 있습니다." }
+      ],
+      "correctReason": "소진 정도가 연속적이고 부분 단계도 존재하므로 더 큰 소진의 여지가 있다는 ②가 맞습니다.",
+      "trap": { "mark": "①", "choice": 1, "text": "Public discussion of burnout has not reached an end.", "reason": "last word를 토론의 종료로 해석하면 앞에서 설명한 소진 정도의 연속성이라는 문맥을 놓칩니다." }
+    },
+    "2025_06_22": {
+      "id": "2025_06_22", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 22, "group": "topic", "type": "요지", "answer": 4, "answerMark": "④",
+      "summary": "정답 ④. 말하고 들을 기회의 평등이 공동 소유·나눔·상호부조를 옳은 가치로 자리 잡게 했습니다.",
+      "typeApproach": "요지 문제는 여러 사례를 하나로 묶는 원인과 그로부터 형성된 가치의 관계를 찾습니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "property should be held in common", "role": "의사소통과 공유", "translation": "말하고 들을 평등한 기회가 재산을 공동으로 가져야 한다는 생각을 촉진했습니다." },
+        { "in": "rawText", "quote": "sharing and mutual aid are right and proper.", "role": "가치 결론", "translation": "나눔과 상호부조가 옳고 적절한 가치라고 여깁니다." }
+      ],
+      "correctReason": "의사소통의 평등성이 공유와 공조의 가치 기반을 만들었다는 ④가 글 전체를 가장 정확히 압축합니다.",
+      "trap": { "mark": "⑤", "choice": 5, "text": "인간은 의사소통을 통해 자원을 공유하는 평등한 사회를 건설했다.", "reason": "글은 완성된 평등 사회 건설이 아니라 의사소통 평등이 공유와 상호부조 가치에 미친 영향을 설명합니다." }
+    },
+    "2025_06_23": {
+      "id": "2025_06_23", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 23, "group": "topic", "type": "주제", "answer": 2, "answerMark": "②",
+      "summary": "정답 ②. 식품 광고가 fresh·natural 같은 단어를 전통적 의미에서 떼어 산업 식품에 맞게 바꾼 현상을 다룹니다.",
+      "typeApproach": "주제 문제는 반복되는 핵심 명사와 그 명사가 어떤 변화를 겪는지를 한 문장으로 묶습니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "become separated from", "role": "의미 분리", "translation": "자본주의의 영향 아래 단어가 의미 있는 연관에서 분리되는 경향입니다." },
+        { "in": "rawText", "quote": "opposite of their traditional meanings.", "role": "의미 변화", "translation": "새 정의가 전통적 의미와 반대라고 볼 정도로 달라졌습니다." }
+      ],
+      "correctReason": "광고와 연결된 단어 의미의 변화가 중심이므로 changes in the senses를 말한 ②가 정답입니다.",
+      "trap": { "mark": "③", "choice": 3, "text": "influence of capitalism on the industrial food system", "reason": "자본주의는 배경 원인이지만 중심 대상은 산업 체계 전반이 아니라 광고 속 단어 의미의 변화입니다." }
+    },
+    "2025_06_24": {
+      "id": "2025_06_24", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 24, "group": "topic", "type": "제목", "answer": 1, "answerMark": "①",
+      "summary": "정답 ①. 선사 시대 동굴 벽화부터 현대까지 예술에서 그림자 표현이 발전한 긴 흐름을 설명합니다.",
+      "typeApproach": "제목 문제는 글의 시간 범위와 반복 소재를 모두 포함하는 선택지를 우선 확인합니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "prehistoric cave artists\nskillfully used modeling shadows", "role": "출발 시점", "translation": "선사 시대 동굴 화가들이 이미 그림자를 활용했습니다." },
+        { "in": "rawText", "quote": "the practice of portraying shadows has evolved", "role": "발전 흐름", "translation": "그림자를 묘사하는 관행은 계속 발전해 왔습니다." }
+      ],
+      "correctReason": "선사 시대에서 이후 시대까지 그림자 표현의 여정을 포괄하는 ①이 제목으로 가장 적절합니다.",
+      "trap": { "mark": "②", "choice": 2, "text": "Portrayals of Human Shadows from the Artistic Perspective", "reason": "글에는 사람 그림자뿐 아니라 말과 들소의 입체 표현, 투영 방식과 이론적 논쟁까지 포함됩니다." }
+    },
+    "2025_06_25": {
+      "id": "2025_06_25", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 25, "group": "info", "type": "도표", "answer": 3, "answerMark": "③",
+      "summary": "정답 ③. 멕시코 남성 41%는 미국 남성 30%보다 작지 않고 11%포인트 더 큽니다.",
+      "typeApproach": "도표 문제는 선지마다 국가·성별·수치를 같은 순서로 고정해 직접 대조합니다.",
+      "evidence": [
+        { "in": "figure", "quote": "Mexico: female 51%, male 41%", "role": "멕시코 수치", "translation": "멕시코에서 여성은 51%, 남성은 41%입니다." },
+        { "in": "figure", "quote": "United States: female 44%, male 30%", "role": "미국 수치", "translation": "미국에서 여성은 44%, 남성은 30%입니다." }
+      ],
+      "correctReason": "멕시코 남성 41%가 미국 남성 30%보다 작다고 한 ③만 수치 관계가 반대입니다.",
+      "trap": { "mark": "②", "choice": 2, "text": "The gap between the share of females and that of males who selected reading as one of their hobbies was larger in Germany than in Mexico.", "reason": "독일의 성별 격차는 20%포인트이고 멕시코는 10%포인트이므로 이 설명은 도표와 일치합니다." }
+    },
+    "2025_06_26": {
+      "id": "2025_06_26", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 26, "group": "info", "type": "내용 일치", "answer": 5, "answerMark": "⑤",
+      "summary": "정답 ⑤. Rogers의 동상은 생전이 아니라 1935년 사망 후 U.S. Capitol에 설치됐습니다.",
+      "typeApproach": "인물 일치 문제는 선지의 시점·수량·행동을 본문 문장과 각각 일대일로 대조합니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "he appeared\nin more than 50 movies", "role": "영화 경력", "translation": "미국에 돌아온 뒤 50편이 넘는 영화에 출연했습니다." },
+        { "in": "rawText", "quote": "after his death his statue was installed in\nthe U.S. Capitol.", "role": "동상 설치 시점", "translation": "동상은 그의 사망 후 미국 국회의사당에 설치됐습니다." }
+      ],
+      "correctReason": "사후 설치를 생전 설치로 바꾼 ⑤가 본문과 일치하지 않는 선택지입니다.",
+      "trap": { "mark": "③", "choice": 3, "text": "미국에 돌아온 후 50편이 넘는 영화에 출연했다.", "reason": "본문에 미국 귀환 후 50편이 넘는 영화에 출연했다고 명시되어 있어 일치합니다." }
+    },
+    "2025_06_27": {
+      "id": "2025_06_27", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 27, "group": "info", "type": "안내문 일치", "answer": 5, "answerMark": "⑤",
+      "summary": "정답 ⑤. 무료 셔틀은 하루 세 번이 아니라 하루 두 번 제공됩니다.",
+      "typeApproach": "안내문은 날짜·대상·업무·횟수 같은 조건어를 표에서 그대로 찾아 비교합니다.",
+      "evidence": [
+        { "in": "figure", "quote": "Writing reports about animals", "role": "업무 내용", "translation": "동물에 관한 보고서를 작성하는 일이 포함됩니다." },
+        { "in": "figure", "quote": "Free shuttle bus service will be provided twice a day.", "role": "셔틀 횟수", "translation": "무료 셔틀버스는 하루 두 번 제공됩니다." }
+      ],
+      "correctReason": "twice a day를 세 번으로 바꾼 ⑤가 안내문과 일치하지 않습니다.",
+      "trap": { "mark": "④", "choice": 4, "text": "동물에 관한 보고서를 작성한다.", "reason": "Tasks 항목에 동물에 관한 보고서 작성이 그대로 포함되어 있어 일치합니다." }
+    },
+    "2025_06_28": {
+      "id": "2025_06_28", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 28, "group": "info", "type": "안내문 일치", "answer": 4, "answerMark": "④",
+      "summary": "정답 ④. 참가비는 1인당 70달러이며 점심이 포함되어 있습니다.",
+      "typeApproach": "일치하는 선지를 찾을 때는 기간·참가 대상·코스·비용·신청 방식을 모두 확인합니다.",
+      "evidence": [
+        { "in": "figure", "quote": "Participation Fee: $70 per person (lunch included)", "role": "참가비 조건", "translation": "1인당 70달러의 참가비에 점심이 포함됩니다." },
+        { "in": "figure", "quote": "Email the application to geography@lcu.edu or drop it off at the department office.", "role": "신청 방식", "translation": "이메일 또는 학과 사무실 방문 제출이 모두 가능합니다." }
+      ],
+      "correctReason": "점심 포함 조건을 그대로 옮긴 ④만 안내문과 일치합니다.",
+      "trap": { "mark": "⑤", "choice": 5, "text": "지원서는 이메일로만 제출이 가능하다.", "reason": "지원서는 이메일 외에도 학과 사무실에 직접 제출할 수 있으므로 only가 틀렸습니다." }
+    },
+    "2025_06_29": {
+      "id": "2025_06_29", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 29, "group": "grammar", "type": "어법", "answer": 2, "answerMark": "②",
+      "summary": "정답 ②. 단서 회상 검사는 학생이 힌트를 주는 것이 아니라 학생에게 힌트가 주어지므로 수동형이 필요합니다.",
+      "typeApproach": "어법 문제는 밑줄 표현의 주어와 실제 행동 주체를 먼저 확인해 능동·수동 관계를 판정합니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "students ② give hints\nabout what they need to remember.", "role": "능동형 오류", "translation": "현재 문장은 학생들이 기억할 내용의 힌트를 준다고 되어 있습니다." },
+        { "in": "rawText", "quote": "where the correct answer needs to be recognized\nbut not generated.", "role": "정상 관계절", "translation": "정답은 생성되지 않고 인식되어야 한다는 관계가 자연스럽습니다." }
+      ],
+      "correctReason": "힌트를 받는 주체가 students이므로 are given으로 고쳐야 하는 ②가 어법상 틀립니다.",
+      "trap": { "mark": "③", "choice": 3, "text": "where", "reason": "where는 recognition tests의 상황을 이어 주며 뒤에 완전한 절이 오므로 어법상 적절합니다." }
+    },
+    "2025_06_30": {
+      "id": "2025_06_30", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 30, "group": "vocab", "type": "어휘", "answer": 4, "answerMark": "④",
+      "summary": "정답 ④. 외적 통제가 두드러질수록 자기 책임감의 획득을 촉진하는 것이 아니라 방해합니다.",
+      "typeApproach": "어휘 문제는 해당 단어 전후의 인과 방향이 글 전체 주장과 같은지 확인합니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "remains dependent on\nexternal controls.", "role": "외적 통제의 결과", "translation": "사람은 외적 통제에 계속 의존하게 됩니다." },
+        { "in": "rawText", "quote": "more likely to cultivate a sense of willingness and value for\nwork in their child.", "role": "자율성 지원 효과", "translation": "이유 설명과 최소한의 보상은 자발성과 일의 가치를 기릅니다." }
+      ],
+      "correctReason": "외적 통제는 자기 책임감 형성을 막는 방향이므로 drives를 impedes로 바꿔야 하는 ④가 정답입니다.",
+      "trap": { "mark": "③", "choice": 3, "text": "develop", "reason": "외적 통제에 의존하는 사람은 행동의 가치나 투자를 발달시키지 못한다는 문맥에 적절합니다." }
+    },
+    "2025_06_31": {
+      "id": "2025_06_31", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 31, "group": "blank", "type": "빈칸", "answer": 3, "answerMark": "③",
+      "summary": "정답 ③. 디지털 보존의 대상은 물리 매체가 아니라 그 매체에 담긴 정보, 즉 message입니다.",
+      "typeApproach": "빈칸 앞뒤에서 반복되는 대비 대상을 찾아 같은 의미의 단어로 치환합니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "bit-perfect copies can be made\ncheaply and easily on other devices", "role": "매체 교체 가능성", "translation": "다른 장치에도 완전히 같은 복사본을 쉽게 만들 수 있습니다." },
+        { "in": "rawText", "quote": "It is not the media itself but the information on the\nmedia that needs to be preserved.", "role": "결론 대비", "translation": "보존 대상은 매체 자체가 아니라 그 위의 정보입니다." }
+      ],
+      "correctReason": "매체와 대비되는 정보 내용을 뜻하는 message가 빈칸에 들어가므로 ③이 정답입니다.",
+      "trap": { "mark": "②", "choice": 2, "text": "storage", "reason": "저장 장치는 다른 물리 매체로 옮길 수 있으므로 보존해야 할 핵심 내용이 아닙니다." }
+    },
+    "2025_06_32": {
+      "id": "2025_06_32", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 32, "group": "blank", "type": "빈칸", "answer": 1, "answerMark": "①",
+      "summary": "정답 ①. 창의성은 아이디어를 만드는 데서 끝나지 않고 유망한 생각을 평가·선택·발전시키는 과정까지 포함합니다.",
+      "typeApproach": "빈칸 직전의 thus와 앞에서 제시한 필요한 후속 행동을 연결해 결론을 완성합니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "Generating\ncreative ideas rarely is the final goal.", "role": "문제 제기", "translation": "창의적 아이디어 생성 자체가 최종 목표인 경우는 드뭅니다." },
+        { "in": "rawText", "quote": "the ability to generate creative ideas is essentially useless", "role": "후속 과정 필요", "translation": "아이디어가 발전되지 않으면 생성 능력만으로는 사실상 쓸모가 없습니다." }
+      ],
+      "correctReason": "아이디어 생성 뒤 평가와 발전이 필요하므로 창의성이 생성에서 멈추지 않는다는 ①이 정답입니다.",
+      "trap": { "mark": "③", "choice": 3, "text": "is often regarded as a shortcut to innovation", "reason": "글은 창의성을 혁신의 지름길로 보는 인식을 설명하지 않고 생성 이후의 평가를 강조합니다." }
+    },
+    "2025_06_33": {
+      "id": "2025_06_33", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 33, "group": "blank", "type": "빈칸", "answer": 1, "answerMark": "①",
+      "summary": "정답 ①. 법·장비·공간·관행 같은 외부 환경은 개인의 주관적 경험과 해결 방식에 영향을 줍니다.",
+      "typeApproach": "빈칸 뒤의 구체적 사례들이 공통으로 무엇을 바꾸는지 상위 개념으로 묶습니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "subjective experience\nand the environment act as a ‘coupled system.’", "role": "결합 체계", "translation": "주관적 경험과 환경은 서로 결합된 체계로 작동합니다." },
+        { "in": "rawText", "quote": "our decisions\nare influenced by various institutional practices.", "role": "사례 결론", "translation": "우리의 결정은 여러 제도적 관행의 영향을 받습니다." }
+      ],
+      "correctReason": "외부 제도가 주관적 경험과 해결에 영향을 준다는 ①이 결합 체계와 뒤의 사례를 모두 설명합니다.",
+      "trap": { "mark": "④", "choice": 4, "text": "comprise subjective interpretations of the environment", "reason": "외부 제도가 주관적 해석으로 구성된다는 뜻이 아니라 외부 환경이 주관적 판단에 영향을 준다는 방향입니다." }
+    },
+    "2025_06_34": {
+      "id": "2025_06_34", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 34, "group": "blank", "type": "빈칸", "answer": 4, "answerMark": "④",
+      "summary": "정답 ④. 음악 지각에는 차이가 있지만 박자와 조성 같은 기본 측면에서는 공통점이 차이보다 훨씬 큽니다.",
+      "typeApproach": "but 뒤의 결론은 앞에서 인정한 예외를 넘어 필자가 최종적으로 더 크게 보는 쪽을 찾습니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "most people are able to ‘‘find\nthe beat’’", "role": "공통 능력", "translation": "대부분의 사람은 음악에서 박자를 찾을 수 있습니다." },
+        { "in": "rawText", "quote": "there may be occasional disagreements, even among experts", "role": "제한적 차이", "translation": "전문가 사이에도 가끔 차이가 있을 수는 있습니다." }
+      ],
+      "correctReason": "일부 차이를 인정하면서도 기본 지각의 공통성을 강조하므로 ④가 정답입니다.",
+      "trap": { "mark": "⑤", "choice": 5, "text": "diversity rather than uniformity in musical processes counts", "reason": "글은 다양성이 더 중요하다고 결론 내리지 않고 기본 측면의 상대적 일관성을 주장합니다." }
+    },
+    "2025_06_35": {
+      "id": "2025_06_35", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 35, "group": "irrelevant", "type": "무관한 문장", "answer": 4, "answerMark": "④",
+      "summary": "정답 ④. 글은 새가 외운 노래를 연습하며 정확히 재현하는 과정을 설명하지만 ④는 학습을 좌우하는 선호와 한계로 주제를 바꿉니다.",
+      "typeApproach": "무관한 문장은 앞뒤 문장이 공유하는 대상·시간 흐름·인과를 끊는 문장을 찾습니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "the bird fine-tunes his efforts until he produces an accurate\ncopy of the memorized template.", "role": "연습 과정", "translation": "새는 외운 본보기를 정확히 복제할 때까지 노래를 미세 조정합니다." },
+        { "in": "rawText", "quote": "This process requires\nhearing oneself sing", "role": "연습 조건", "translation": "이 연습 과정에는 자신의 노래를 듣는 일이 필요합니다." }
+      ],
+      "correctReason": "암기한 노래의 연습·교정 흐름과 직접 이어지지 않는 선호와 한계 문장 ④가 정답입니다.",
+      "trap": { "mark": "⑤", "choice": 5, "text": "This process requires hearing oneself sing; birds are unable to reproduce memorized songs if they are deafened after memorization but before the practice period.", "reason": "⑤는 정확한 재현을 위한 연습에 청각 피드백이 필요하다는 조건을 보태므로 앞 문장과 이어집니다." }
+    },
+    "2025_06_36": {
+      "id": "2025_06_36", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 36, "group": "order", "type": "순서", "answer": 1, "answerMark": "①",
+      "summary": "정답 ①. 목축업자의 새로운 불 사용 A 뒤에 어린 싹의 이점과 관목 재성장 C, 그 결과 반복 소각이 필요한 B가 이어집니다.",
+      "typeApproach": "순서 문제는 역접·대명사·결과 표현이 가리키는 앞 내용을 고정해 연결 고리를 만듭니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "The young shoots were a ready food source for their\nanimals when they returned.", "role": "A의 결과", "translation": "A에서 불로 생긴 어린 싹이 돌아온 가축의 먹이가 됩니다." },
+        { "in": "rawText", "quote": "About the only strategy\nto prevent such regrowth was further burning", "role": "재성장의 후속 결과", "translation": "C의 목본 식물 재성장을 막으려면 다시 불을 놓아야 했습니다." }
+      ],
+      "correctReason": "A의 불 사용을 C의 결과가 받고, C의 regrowth를 B의 such regrowth가 받으므로 ① A-C-B가 정답입니다.",
+      "trap": { "mark": "④", "choice": 4, "text": "(C) - (A) - (B)", "reason": "C의 The young shoots는 A에서 불로 새 식물 성장을 촉진했다는 내용이 먼저 나와야 해 C로 시작할 수 없습니다." }
+    },
+    "2025_06_37": {
+      "id": "2025_06_37", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 37, "group": "order", "type": "순서", "answer": 3, "answerMark": "③",
+      "summary": "정답 ③. 인적 자원 관리 사례 B, 지속 학습에 맞춘 전문가 역할 전환 C, 그 역할의 구체적 내용 A 순서입니다.",
+      "typeApproach": "예시를 여는 표현과 대명사가 가리키는 직전 명사를 이용해 문단의 자리를 결정합니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "For example, performance evaluation and reward systems", "role": "도입의 사례", "translation": "첫 문장의 인적 자원 관리 관행을 평가·보상 제도가 예시로 받습니다." },
+        { "in": "rawText", "quote": "human resource development\nprofessionals must become learning facilitators.", "role": "역할 전환", "translation": "인적 자원 개발 전문가는 학습 촉진자가 되어야 합니다." },
+        { "in": "rawText", "quote": "Their role should be to assist, consult, and advise teams", "role": "대명사 연결", "translation": "Their role이 C의 전문가 역할을 이어 구체화합니다." }
+      ],
+      "correctReason": "B가 관행을 예시하고 C가 기능 변화를 설명한 뒤 A가 그 역할을 받으므로 ③ B-C-A가 정답입니다.",
+      "trap": { "mark": "②", "choice": 2, "text": "(B) - (A) - (C)", "reason": "A의 Their role이 가리킬 인적 자원 개발 전문가와 학습 촉진자라는 선행 내용은 C에 있습니다." }
+    },
+    "2025_06_38": {
+      "id": "2025_06_38", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 38, "group": "order", "type": "문장 삽입", "answer": 4, "answerMark": "④",
+      "summary": "정답 ④. 배출 측정의 장점 설명이 끝난 뒤 높은 측정 비용을 제시하고, Nevertheless로 측정 기술 발전을 이어야 합니다.",
+      "typeApproach": "삽입 문장은 앞 문장과의 주제 연결, 뒤 문장의 역접 접속어가 모두 자연스러운 자리를 찾습니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "Continuous \temissions \tmeasurement \tcan \tbe \tcostly", "role": "주어진 한계", "translation": "지속적인 배출 측정은 비용이 많이 들 수 있습니다." },
+        { "in": "rawText", "quote": "Nevertheless, the\ntechnologies available for monitoring", "role": "뒤의 역접", "translation": "그럼에도 측정 기술은 빠르게 발전하고 있다고 전환합니다." }
+      ],
+      "correctReason": "세금의 장점 뒤 비용 한계를 놓고 기술 발전으로 반전하는 ④가 가장 자연스럽습니다.",
+      "trap": { "mark": "⑤", "choice": 5, "text": "⑤", "reason": "⑤ 뒤는 미래 적용 가능성의 결론이므로 비용 한계를 넣으면 Nevertheless가 비용보다 먼저 나와 논리 순서가 깨집니다." }
+    },
+    "2025_06_39": {
+      "id": "2025_06_39", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 39, "group": "order", "type": "문장 삽입", "answer": 5, "answerMark": "⑤",
+      "summary": "정답 ⑤. 난해한 작품에 미학적 태도가 필요하다는 설명 뒤에 적극적 관여의 효과를 놓고, 두 태도 전환의 중요성으로 결론 냅니다.",
+      "typeApproach": "주어진 문장의 지시어가 앞 내용을 받는지와 다음 문장의 일반화가 자연스럽게 이어지는지 확인합니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "This active involvement provides a basis for depth of", "role": "주어진 문장", "translation": "이러한 적극적 관여가 깊은 미학적 처리와 성찰의 토대가 됩니다." },
+        { "in": "rawText", "quote": "An ability to switch between the “pragmatic attitude”", "role": "최종 일반화", "translation": "실용적 태도와 미학적 태도를 전환하는 능력이 균형 잡힌 삶에 중요합니다." }
+      ],
+      "correctReason": "미학적 태도를 요구하는 문장 뒤에서 This active involvement가 이를 받고 결론으로 이어지므로 ⑤가 정답입니다.",
+      "trap": { "mark": "④", "choice": 4, "text": "④", "reason": "④ 앞에서는 표현주의 작품의 불편한 분위기만 제시되어 This active involvement가 받을 적극적 감상 행동이 아직 없습니다." }
+    },
+    "2025_06_40": {
+      "id": "2025_06_40", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 40, "group": "summary", "type": "요약문", "answer": 2, "answerMark": "②",
+      "summary": "정답 ②. 경제 성장은 기근 위험 감소에 어느 정도 유익하지만 위기 주민에 대한 직접 지원이 결정적입니다.",
+      "typeApproach": "요약문은 양보되는 보조 요인과 필자가 더 중요하다고 강조한 핵심 요인을 나누어 채웁니다.",
+      "evidence": [
+        { "in": "rawText", "quote": "The potential contribution of greater economic\nsuccess", "role": "경제 성장의 기여", "translation": "더 큰 경제적 성공이 기여할 가능성은 인정됩니다." },
+        { "in": "rawText", "quote": "direct public support to their populations in times\nof crisis.", "role": "결정적 수단", "translation": "실제 성과는 위기 때 주민에게 직접 공공 지원을 제공한 데 있습니다." }
+      ],
+      "correctReason": "성장은 fruitful하고 직접 지원은 critical하다는 대비를 완성하는 ②가 정답입니다.",
+      "trap": { "mark": "①", "choice": 1, "text": "productive …… complicated", "reason": "직접 지원은 복잡한 역할로 평가되지 않고 기근 예방 성공의 핵심 수단으로 강조됩니다." }
+    },
+    "2025_06_41": {
+      "id": "2025_06_41", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 41, "group": "long", "type": "장문 제목", "answer": 3, "answerMark": "③",
+      "summary": "정답 ③. 윤리적 사고는 개인마다 다른 가치와 상황 요인을 이해하며 여러 관점에서 문제를 검토하는 과정입니다.",
+      "typeApproach": "장문 제목은 반복 개념과 글의 범위를 함께 담되 일부 행동이나 이론에만 좁혀진 선택지를 피합니다.",
+      "evidence": [
+        { "in": "sharedPassage", "quote": "evaluating these issues from different perspectives", "role": "다양한 관점", "translation": "윤리 문제를 여러 관점에서 평가합니다." },
+        { "in": "sharedPassage", "quote": "these principles vary\nboth between and within individuals.", "role": "개인별 차이", "translation": "윤리 원칙은 사람 사이뿐 아니라 한 개인 안에서도 달라집니다." }
+      ],
+      "correctReason": "개인의 가치와 상황에 따라 달라지는 윤리적 사고를 다룬 Ethical Thinking과 Individual Minds의 ③이 적절합니다.",
+      "trap": { "mark": "①", "choice": 1, "text": "Critical Reasoning: A Road to Ethical Decision-making", "reason": "비판적 사고는 도입의 비교 대상이며 글의 중심은 개인차를 포함한 윤리적 사고 자체입니다." }
+    },
+    "2025_06_42": {
+      "id": "2025_06_42", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 42, "group": "long", "type": "장문 어휘", "answer": 5, "answerMark": "⑤",
+      "summary": "정답 ⑤. 다른 사람의 행동 규범을 만드는 요인이 다를 수 있으므로 coincide가 아니라 differ 같은 반대 방향 표현이 필요합니다.",
+      "typeApproach": "문맥 어휘는 병렬 구조와 뒤의 명시적 대비를 확인해 단어의 방향이 같은지 판정합니다.",
+      "evidence": [
+        { "in": "sharedPassage", "quote": "these principles vary\nboth between and within individuals.", "role": "차이의 전제", "translation": "윤리 원칙은 개인 사이와 개인 내부에서 모두 달라집니다." },
+        { "in": "sharedPassage", "quote": "the factors that drive other people’s codes and\ndecision making may be different.", "role": "다른 사람과의 차이", "translation": "다른 사람의 규범과 결정을 이끄는 요인은 서로 다를 수 있습니다." }
+      ],
+      "correctReason": "서로 다를 수 있다는 결론과 반대인 coincide가 쓰인 ⑤가 문맥상 부적절합니다.",
+      "trap": { "mark": "④", "choice": 4, "text": "(d)", "reason": "상황에 따라 같은 사람도 다른 선택을 할 수 있다는 설명이므로 context dependent는 적절합니다." }
+    },
+    "2025_06_43": {
+      "id": "2025_06_43", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 43, "group": "long", "type": "장문 순서", "answer": 5, "answerMark": "⑤",
+      "summary": "정답 ⑤. 쇼핑 D에서 새 옷을 산 뒤 리허설 C을 하고, 마지막으로 환영식 본 공연 B가 열립니다.",
+      "typeApproach": "장문 순서는 시간 표현과 앞 문단에서 준비한 물건·행동이 다음 문단에서 실제로 쓰이는 흐름을 찾습니다.",
+      "evidence": [
+        { "in": "sharedPassage", "quote": "Maybe I’ll wear\nthese for tonight’s rehearsal, too.", "role": "D에서 C로", "translation": "구매한 옷을 오늘 밤 리허설에 입겠다고 말합니다." },
+        { "in": "sharedPassage", "quote": "Garcia felt good as he arrived at the concert hall for the\nrehearsal wearing his new clothes.", "role": "리허설 실행", "translation": "새 옷을 입고 리허설 장소에 도착합니다." },
+        { "in": "sharedPassage", "quote": "The band performance was the first event of the ceremony.", "role": "마지막 본 공연", "translation": "리허설 뒤 환영식의 첫 행사로 밴드 공연이 시작됩니다." }
+      ],
+      "correctReason": "새 옷 구매 D, 리허설 C, 본 공연 B의 시간 순서이므로 ⑤ D-C-B가 정답입니다.",
+      "trap": { "mark": "④", "choice": 4, "text": "(D) - (B) - (C)", "reason": "C는 리허설이고 B는 실제 환영식 공연이므로 본 공연 뒤에 리허설이 올 수 없습니다." }
+    },
+    "2025_06_44": {
+      "id": "2025_06_44", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 44, "group": "long", "type": "장문 지칭", "answer": 2, "answerMark": "②",
+      "summary": "정답 ②. (b) he는 공연을 칭찬하는 Jeff이고, 나머지 지칭 표현은 모두 Garcia를 가리킵니다.",
+      "typeApproach": "지칭 문제는 각 대명사 바로 앞 행동의 주체와 대화의 발화자를 이름으로 치환합니다.",
+      "evidence": [
+        { "in": "sharedPassage", "quote": "Jeff\napproached Garcia.", "role": "발화자 전환", "translation": "공연 뒤 Jeff가 Garcia에게 다가갑니다." },
+        { "in": "sharedPassage", "quote": "(b) he said. Garcia beamed", "role": "다른 지칭 대상", "translation": "칭찬을 말한 he는 Jeff이고 그 말을 들은 Garcia가 기뻐합니다." }
+      ],
+      "correctReason": "(b)의 he만 Jeff를 가리키므로 나머지 Garcia 지칭과 다른 ②가 정답입니다.",
+      "trap": { "mark": "④", "choice": 4, "text": "(d)", "reason": "Tom이 I’ll be right behind you라고 말하는 대상은 연주 실수로 긴장한 Garcia입니다." }
+    },
+    "2025_06_45": {
+      "id": "2025_06_45", "status": "ready", "exam": "2025학년도 6월 모의평가 영어", "qid": 45, "group": "long", "type": "장문 내용", "answer": 5, "answerMark": "⑤",
+      "summary": "정답 ⑤. Garcia는 자신이 가리킨 빨간 셔츠와 노란 바지가 아니라 Jeff가 추천한 흰 셔츠와 검은 청바지를 샀습니다.",
+      "typeApproach": "장문 일치 문제는 인물·행동·시간을 고정하고 비슷한 물건이나 사건을 서로 바꾸지 않았는지 확인합니다.",
+      "evidence": [
+        { "in": "sharedPassage", "quote": "Instead,\nJeff picked out a white shirt and black jeans.", "role": "실제 추천 옷", "translation": "Jeff는 대신 흰 셔츠와 검은 청바지를 골랐습니다." },
+        { "in": "sharedPassage", "quote": "Garcia\nbought the recommended clothes", "role": "실제 구매", "translation": "Garcia는 Jeff가 추천한 옷을 구매했습니다." }
+      ],
+      "correctReason": "자신이 가리킨 화려한 옷을 샀다고 바꾼 ⑤가 글의 내용과 일치하지 않습니다.",
+      "trap": { "mark": "④", "choice": 4, "text": "Garcia는 리허설을 앞두고 긴장감을 느꼈다.", "reason": "리허설 장소에서 많은 사람을 생각하자 자신감이 긴장으로 바뀌었다고 본문에 명시되어 있습니다." }
+    }
+  }
+}
