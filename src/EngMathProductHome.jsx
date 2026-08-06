@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { engMathAuthUrl } from "./engMathAccess.js";
+import { trackEngMathEvent } from "./engMathTracking.js";
 
 const SUBJECTS = [
   {
@@ -23,8 +25,16 @@ const SUBJECTS = [
   },
 ];
 
-export default function EngMathProductHome() {
+export default function EngMathProductHome({ user, onLogout }) {
   const navigate = useNavigate();
+
+  const handleLogin = () => {
+    trackEngMathEvent("eng_math_login_start", {
+      target: "product_home",
+      path: "/eng-math-beta",
+    });
+    navigate(engMathAuthUrl("/eng-math-beta"));
+  };
 
   return (
     <main className="eng-math-home">
@@ -39,6 +49,12 @@ export default function EngMathProductHome() {
         }
         .eng-math-home * { box-sizing: border-box; }
         .eng-math-home__inner { max-width: 920px; margin: 0 auto; }
+        .eng-math-home__topbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+        }
         .eng-math-home__brand {
           display: inline-flex;
           align-items: center;
@@ -53,6 +69,34 @@ export default function EngMathProductHome() {
           height: 9px;
           border-radius: 50%;
           background: #3157a5;
+        }
+        .eng-math-home__account {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 9px;
+        }
+        .eng-math-home__account-label {
+          color: #667085;
+          font-size: 0.78rem;
+          font-weight: 700;
+        }
+        .eng-math-home__account-button {
+          min-height: 38px;
+          padding: 0 13px;
+          border: 1px solid #cfd7e5;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.82);
+          color: #3157a5;
+          font: inherit;
+          font-size: 0.8rem;
+          font-weight: 800;
+          cursor: pointer;
+        }
+        .eng-math-home__account-button:hover,
+        .eng-math-home__account-button:focus-visible {
+          border-color: #3157a5;
+          outline: none;
         }
         .eng-math-home__hero {
           padding: 58px 0 34px;
@@ -83,6 +127,17 @@ export default function EngMathProductHome() {
           color: #59677f;
           font-size: 1.05rem;
           line-height: 1.7;
+          word-break: keep-all;
+        }
+        .eng-math-home__access-note {
+          margin: 18px 0 0;
+          padding: 13px 15px;
+          border-left: 3px solid #a9b9d8;
+          border-radius: 0 10px 10px 0;
+          background: rgba(238, 243, 255, 0.68);
+          color: #52617a;
+          font-size: 0.84rem;
+          line-height: 1.55;
           word-break: keep-all;
         }
         .eng-math-home__subject-grid {
@@ -180,6 +235,9 @@ export default function EngMathProductHome() {
         .eng-math-home__korean-arrow { color: #3157a5; font-size: 1.25rem; }
         @media (max-width: 560px) {
           .eng-math-home { padding: 22px 16px 36px; }
+          .eng-math-home__topbar { align-items: flex-start; }
+          .eng-math-home__account { flex-direction: column; align-items: flex-end; gap: 5px; }
+          .eng-math-home__account-label { max-width: 120px; text-align: right; line-height: 1.35; }
           .eng-math-home__hero { padding: 42px 4px 28px; }
           .eng-math-home__subject-grid { grid-template-columns: 1fr; }
           .eng-math-home__subject-card { min-height: 0; padding: 22px; }
@@ -188,9 +246,25 @@ export default function EngMathProductHome() {
       `}</style>
 
       <div className="eng-math-home__inner">
-        <div className="eng-math-home__brand">
-          <span className="eng-math-home__brand-dot" aria-hidden="true" />
-          지니쌤과 공부하자
+        <div className="eng-math-home__topbar">
+          <div className="eng-math-home__brand">
+            <span className="eng-math-home__brand-dot" aria-hidden="true" />
+            지니쌤과 공부하자
+          </div>
+          <div className="eng-math-home__account">
+            {user && (
+              <span className="eng-math-home__account-label">
+                학습 계정 연결됨
+              </span>
+            )}
+            <button
+              className="eng-math-home__account-button"
+              type="button"
+              onClick={user ? onLogout : handleLogin}
+            >
+              {user ? "로그아웃" : "로그인"}
+            </button>
+          </div>
         </div>
 
         <section
@@ -206,6 +280,10 @@ export default function EngMathProductHome() {
           <p className="eng-math-home__lead">
             영어와 수학은 과목별 5문항을 무료로 제공합니다. 나머지 문항은 결제
             없이 잠금 상태만 표시합니다.
+          </p>
+          <p className="eng-math-home__access-note">
+            잠금 문항은 출시 알림만 신청할 수 있습니다. 로그인은 학습 계정
+            연결용이며, 로그인만으로 잠금이 해제되지는 않습니다.
           </p>
         </section>
 

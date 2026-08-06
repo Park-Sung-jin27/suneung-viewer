@@ -18,6 +18,10 @@ const EVENT_NAMES = new Set([
   "library_open",
   "magic_link_request",
   "magic_link_open",
+  "eng_math_locked_view",
+  "eng_math_login_start",
+  "eng_math_waitlist_submit",
+  "eng_math_waitlist_success",
 ]);
 
 function nowIso() {

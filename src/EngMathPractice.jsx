@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import katex from "katex";
 import "katex/dist/katex.min.css";
+import EngMathLockedAccess from "./EngMathLockedAccess.jsx";
+import { resolveEngMathPackAccess } from "./engMathAccess.js";
 import {
   createLearningSessionId,
   readWeeklyLearningSummary,
@@ -561,7 +563,7 @@ function ResultAnswer({ question, subject }) {
   );
 }
 
-export default function EngMathPractice() {
+export default function EngMathPractice({ user }) {
   const navigate = useNavigate();
   const location = useLocation();
   const parameters = new URLSearchParams(location.search);
@@ -639,12 +641,14 @@ export default function EngMathPractice() {
       );
     }
 
-    if (selectedPack.access === "locked") {
+    if (resolveEngMathPackAccess(selectedPack.access) === "locked") {
       return (
-        <PracticeNotice
-          message={`${SUBJECTS[subject].name} ${selectedPack.label} 묶음은 현재 잠겨 있습니다. 무료 체험은 5문항 한 묶음만 제공하며 결제는 아직 연결하지 않았습니다.`}
+        <EngMathLockedAccess
+          user={user}
+          subject={subject}
+          pack={selectedPack}
+          navigate={navigate}
           onBack={() => navigate(catalogUrl(subject, selectedPack))}
-          backLabel="문항 목록으로"
         />
       );
     }

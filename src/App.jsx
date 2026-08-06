@@ -22,6 +22,10 @@ import AcademyPreview from "./AcademyPreview";
 import Landing from "./Landing";
 import EngMathProductHome from "./EngMathProductHome";
 import EngMathPractice from "./EngMathPractice";
+import {
+  ENG_MATH_AUTH_RETURN_KEY,
+  normalizeEngMathReturnTo,
+} from "./engMathAccess.js";
 import ResultPage from "./ResultPage";
 import FeedbackButton from "./FeedbackButton";
 import Privacy from "./Privacy";
@@ -2021,18 +2025,32 @@ function ViewerPage({ user, isPro = false }) {
 // ══════════════════════════════════════════════
 // AuthRedirect — 로그인된 상태로 /auth 재진입 시
 //   신규가입 직후면 /viewer, 아니면 /
-//   (StrictMode 이중 렌더 대비: useRef로 한 번만 읽고 useEffect에서 소비)
+//   (StrictMode 이중 렌더 대비: useState로 한 번만 읽고 useEffect에서 소비)
 // ══════════════════════════════════════════════
 function AuthRedirect() {
-  const justSignedUpRef = useRef(
-    sessionStorage.getItem("justSignedUp") === "1",
+  const [searchParams] = useSearchParams();
+  const [returnTo] = useState(
+    () =>
+      normalizeEngMathReturnTo(searchParams.get("returnTo")) ||
+      normalizeEngMathReturnTo(
+        sessionStorage.getItem(ENG_MATH_AUTH_RETURN_KEY),
+      ),
+  );
+  const [justSignedUp] = useState(
+    () => sessionStorage.getItem("justSignedUp") === "1",
   );
   useEffect(() => {
-    if (justSignedUpRef.current) {
+    if (returnTo) {
+      sessionStorage.removeItem(ENG_MATH_AUTH_RETURN_KEY);
+    }
+    if (justSignedUp) {
       sessionStorage.removeItem("justSignedUp");
     }
-  }, []);
-  if (justSignedUpRef.current) {
+  }, [justSignedUp, returnTo]);
+  if (returnTo) {
+    return <Navigate to={returnTo} replace />;
+  }
+  if (justSignedUp) {
     return (
       <Navigate to="/viewer?year=2026수능&set=r2026a&q=1&mode=study" replace />
     );
@@ -2045,12 +2063,20 @@ function AuthRedirect() {
 // ══════════════════════════════════════════════
 function AuthPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const returnTo = normalizeEngMathReturnTo(searchParams.get("returnTo"));
   const [tab, setTab] = useState("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+
+  const rememberEngMathReturn = () => {
+    if (returnTo) {
+      sessionStorage.setItem(ENG_MATH_AUTH_RETURN_KEY, returnTo);
+    }
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -2059,26 +2085,28 @@ function AuthPage() {
     setLoading(true);
     try {
       if (tab === "login") {
+        rememberEngMathReturn();
         const { error } = await supabase.auth.signInWithPassword({
           email,
           password,
         });
         if (error) throw error;
-        navigate("/");
+        navigate(returnTo || "/");
       } else {
         // 신규가입 플래그 — /auth 자동 리다이렉트가 /viewer로 가게 함
-        sessionStorage.setItem("justSignedUp", "1");
+        rememberEngMathReturn();
+        if (!returnTo) sessionStorage.setItem("justSignedUp", "1");
         const { data, error } = await supabase.auth.signUp({ email, password });
         console.log("signUp data:", data);
         console.log("signUp error:", error);
         if (error) {
-          sessionStorage.removeItem("justSignedUp");
+          if (!returnTo) sessionStorage.removeItem("justSignedUp");
           throw error;
         }
         // 세션 즉시 발급이면 AuthRedirect가 /viewer로 자동 이동.
         // 이메일 확인 필요 시 플래그 정리하고 안내 표시.
         if (!data?.session) {
-          sessionStorage.removeItem("justSignedUp");
+          if (!returnTo) sessionStorage.removeItem("justSignedUp");
           setMessage("확인 이메일을 발송했습니다. 이메일을 확인해 주세요.");
         }
       }
@@ -2095,6 +2123,7 @@ function AuthPage() {
     //   dev (vite):    http://localhost:5173
     //   ※ Supabase Dashboard → Authentication → URL Configuration → Redirect URLs
     //     allowlist 에 두 origin 모두 등록 필요.
+    rememberEngMathReturn();
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: { redirectTo: window.location.origin },
@@ -2106,6 +2135,7 @@ function AuthPage() {
     // 2026-06-10 카카오 로그인 추가. redirectTo origin 명시 (구글과 동일 path).
     //   ※ Supabase Kakao provider: Client ID=REST API 키 / Client Secret=앱 키 편집페이지 코드
     //   ※ 비즈앱 아니면 이메일 미수집 → Supabase "Allow users without an email" ON 필요.
+    rememberEngMathReturn();
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "kakao",
       options: { redirectTo: window.location.origin },
@@ -2351,6 +2381,7 @@ function AuthPage() {
 // ══════════════════════════════════════════════
 export default function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [user, setUser] = useState(null);
   const [isPro, setIsPro] = useState(false);
   const [authReady, setAuthReady] = useState(false);
@@ -2384,6 +2415,16 @@ export default function App() {
       .rpc("is_pro", { uid: user.id })
       .then(({ data }) => setIsPro(data === true));
   }, [user]);
+
+  useEffect(() => {
+    if (!user || location.pathname !== "/") return;
+    const returnTo = normalizeEngMathReturnTo(
+      sessionStorage.getItem(ENG_MATH_AUTH_RETURN_KEY),
+    );
+    if (!returnTo) return;
+    sessionStorage.removeItem(ENG_MATH_AUTH_RETURN_KEY);
+    navigate(returnTo, { replace: true });
+  }, [location.pathname, navigate, user]);
 
   useEffect(() => {
     if (paymentConfirmedRef.current) return;
@@ -2450,6 +2491,13 @@ export default function App() {
     navigate("/");
   }
 
+  async function handleEngMathLogout() {
+    await supabase.auth.signOut();
+    sessionStorage.clear();
+    setUser(null);
+    navigate("/eng-math-beta");
+  }
+
   if (!authReady) return null;
 
   const goToQuestion = (yearKey, setId, questionId) =>
@@ -2473,8 +2521,16 @@ export default function App() {
           )
         }
       />
-      <Route path="/eng-math-beta" element={<EngMathProductHome />} />
-      <Route path="/eng-math/practice" element={<EngMathPractice />} />
+      <Route
+        path="/eng-math-beta"
+        element={
+          <EngMathProductHome user={user} onLogout={handleEngMathLogout} />
+        }
+      />
+      <Route
+        path="/eng-math/practice"
+        element={<EngMathPractice user={user} />}
+      />
       {/* /exams: 비로그인 포함 시험 목록 단독 노출 (랜딩 CTA 도착지).
           MainPage는 user=null이면 무료 release 시험만 표시 → 가입 없이 선택·체험. */}
       <Route
