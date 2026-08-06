@@ -26,9 +26,9 @@
       "questionNumber": 4,
       "answer": 1,
       "answerMark": "①",
-      "figureAsset": "평가원_수학영어_확장/08_math_data/assets/2022_06_common_4-graph.svg",
-      "figureAssetSha256": "cc5d3d986fc82cceee1cda853a188c5aeec74e86c31e61ae0e6622be21b05813",
-      "figureAlt": "x가 0의 왼쪽에서 가까워질 때 y가 -2로 가고, x가 2의 오른쪽에서 가까워질 때 y가 0으로 가는 조각함수 그래프",
+      "figureAsset": "평가원_수학영어_확장/08_math_data/assets/required_figures/2022_06_common_4.png",
+      "figureAssetSha256": "5863e5d9e278eb230b54c9909336cae6a61dc5c2c66178a5bee28acbf58f4a36",
+      "figureAlt": "좌표평면의 조각함수 그래프이다. x<0에서는 (-2,0)을 지나 (0,-2)의 닫힌점으로 내려가는 직선이고, 0<x<1에서는 y=1인 수평선의 양 끝이 열린점이다. x=1의 함수값은 -1이다. 1<x≤2에서는 (1,0)의 열린점에서 (2,-1)의 닫힌점까지 내려가는 선분이고, x>2에서는 (2,0)의 열린점에서 시작해 (3,1)을 지나 증가하는 직선이다.",
       "summary": "그래프에서 x→0−일 때의 값은 -2, x→2+일 때의 값은 0이므로 합은 -2입니다.",
       "approach": "함숫값을 나타내는 닫힌점과 극한을 나타내는 그래프의 접근 방향을 구분해 두 일방향 극한을 각각 읽습니다.",
       "concepts": [

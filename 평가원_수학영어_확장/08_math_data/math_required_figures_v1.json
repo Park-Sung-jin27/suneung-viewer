@@ -1,0 +1,165 @@
+{
+  "metadata": {
+    "schemaVersion": "math-required-figure-v1",
+    "status": "internal_source_verified",
+    "publicConnected": false,
+    "itemCount": 7,
+    "verifiedAt": "2026-08-06"
+  },
+  "items": {
+    "2022_06_common_4": {
+      "id": "2022_06_common_4",
+      "status": "source_verified_internal_asset",
+      "assetPath": "평가원_수학영어_확장/08_math_data/assets/required_figures/2022_06_common_4.png",
+      "assetSha256": "5863e5d9e278eb230b54c9909336cae6a61dc5c2c66178a5bee28acbf58f4a36",
+      "assetWidth": 780,
+      "assetHeight": 450,
+      "figureAlt": "좌표평면의 조각함수 그래프이다. x<0에서는 (-2,0)을 지나 (0,-2)의 닫힌점으로 내려가는 직선이고, 0<x<1에서는 y=1인 수평선의 양 끝이 열린점이다. x=1의 함수값은 -1이다. 1<x≤2에서는 (1,0)의 열린점에서 (2,-1)의 닫힌점까지 내려가는 선분이고, x>2에서는 (2,0)의 열린점에서 시작해 (3,1)을 지나 증가하는 직선이다.",
+      "source": {
+        "exam": "2022학년도 6월 모의평가 수학",
+        "problemFilename": "2교시_수학영역_문제지.pdf",
+        "problemSha256": "f11cb2940871bbee2196d3e9a4be6848a8bba00c729ed68bf6096c1f1c2dbaf3",
+        "page": 1,
+        "renderDpi": 180,
+        "crop": {
+          "x": 1160,
+          "y": 1460,
+          "width": 780,
+          "height": 450
+        }
+      }
+    },
+    "2023_06_common_4": {
+      "id": "2023_06_common_4",
+      "status": "source_verified_internal_asset",
+      "assetPath": "평가원_수학영어_확장/08_math_data/assets/required_figures/2023_06_common_4.png",
+      "assetSha256": "4027f38a771046c221fca9b60492740fb357ef8523961e766e9fd21bc503b840",
+      "assetWidth": 780,
+      "assetHeight": 430,
+      "figureAlt": "좌표평면의 조각함수 그래프이다. x<0에서는 (-2,0)을 지나 (0,-2)의 열린점으로 내려가는 직선이다. 0≤x<1에서는 y=2인 수평선으로 (0,2)는 닫힌점, (1,2)는 열린점이고 x=1의 함수값은 -2이다. x>1에서는 (1,1)과 (2,0)의 열린점을 지나 감소하는 직선이며 x=2의 함수값은 1이다.",
+      "source": {
+        "exam": "2023학년도 6월 모의평가 수학",
+        "problemFilename": "2023학년도 6월 모의평가- 수학 문제.pdf",
+        "problemSha256": "aa82f35e8f31049dbc75279de253ae9c3aeceb09d0a85bf53ba1ce2f882ce452",
+        "page": 1,
+        "renderDpi": 180,
+        "crop": {
+          "x": 1210,
+          "y": 1480,
+          "width": 780,
+          "height": 430
+        }
+      }
+    },
+    "2023_09_cal_27": {
+      "id": "2023_09_cal_27",
+      "status": "source_verified_internal_asset",
+      "assetPath": "평가원_수학영어_확장/08_math_data/assets/required_figures/2023_09_cal_27.png",
+      "assetSha256": "cf013a495bc67c3f4bf3fcc088d9be1cb2d6deddfa0efc8049dcd43a448f80c9",
+      "assetWidth": 880,
+      "assetHeight": 520,
+      "figureAlt": "가로로 긴 직사각형 위에 두 이등변삼각형이 좌우로 반복되어 있고, 대각선 교점 주변의 마주 보는 삼각형 띠가 단계별로 색칠되어 있다. 다음 단계의 더 작은 직사각형과 삼각형이 위쪽으로 반복된다.",
+      "source": {
+        "exam": "2023학년도 9월 모의평가 수학 미적분",
+        "problemFilename": "2023학년도-9월-모의평가-수학-문제.pdf",
+        "problemSha256": "2053cc454daa5fbcef7f3a5de1bbb07b55f814894f4ea0b78026c27d27f025fe",
+        "page": 15,
+        "renderDpi": 180,
+        "crop": {
+          "x": 190,
+          "y": 1250,
+          "width": 880,
+          "height": 520
+        }
+      }
+    },
+    "2024_09_common_4": {
+      "id": "2024_09_common_4",
+      "status": "source_verified_internal_asset",
+      "assetPath": "평가원_수학영어_확장/08_math_data/assets/required_figures/2024_09_common_4.png",
+      "assetSha256": "9b503b8f6bf2dbfa2a222895b2d12f823003db51244544e16beb077fd9a2a1bb",
+      "assetWidth": 760,
+      "assetHeight": 440,
+      "figureAlt": "좌표평면의 조각함수 그래프이다. x<-2에서는 y=1인 수평선이 (-2,1)의 열린점에서 끝난다. (-2,-2)의 닫힌점에서 (-1,0)을 거쳐 (0,-2)의 닫힌점까지 삼각형 모양 선분이 있고, 0<x<1에서는 (0,1)에서 (1,0)으로 내려가는 열린 선분이다. x≥1에서는 y=2인 수평선이 (1,2)의 닫힌점에서 시작한다.",
+      "source": {
+        "exam": "2024학년도 9월 모의평가 수학",
+        "problemFilename": "2024학년도-9월-모의평가-수학-문제.pdf",
+        "problemSha256": "5b2e01cfa31c7932b58afc19d5bebd388292c8382c5013e7c857caf24a6f006a",
+        "page": 1,
+        "renderDpi": 180,
+        "crop": {
+          "x": 1220,
+          "y": 1480,
+          "width": 760,
+          "height": 440
+        }
+      }
+    },
+    "2024_09_sta_24": {
+      "id": "2024_09_sta_24",
+      "status": "source_verified_internal_asset",
+      "assetPath": "평가원_수학영어_확장/08_math_data/assets/required_figures/2024_09_sta_24.png",
+      "assetSha256": "9a37fdfd7fbcb77d4531ac7eeb22e1fe3dcf467a204945f312e2ff56d75444fb",
+      "assetWidth": 760,
+      "assetHeight": 270,
+      "figureAlt": "가로 4칸, 세로 2칸의 직사각형 격자 도로망이다. A는 왼쪽 아래 꼭짓점, B는 오른쪽 위 꼭짓점이며, P는 왼쪽에서 세 번째 세로선과 가운데 가로선의 교점이다.",
+      "source": {
+        "exam": "2024학년도 9월 모의평가 수학 확률과 통계",
+        "problemFilename": "2024학년도-9월-모의평가-수학-문제.pdf",
+        "problemSha256": "5b2e01cfa31c7932b58afc19d5bebd388292c8382c5013e7c857caf24a6f006a",
+        "page": 9,
+        "renderDpi": 180,
+        "crop": {
+          "x": 1210,
+          "y": 760,
+          "width": 760,
+          "height": 270
+        }
+      }
+    },
+    "2025_06_common_4": {
+      "id": "2025_06_common_4",
+      "status": "source_verified_internal_asset",
+      "assetPath": "평가원_수학영어_확장/08_math_data/assets/required_figures/2025_06_common_4.png",
+      "assetSha256": "8bd667a8e21de7a010b504782451f5844887b4fc77d97f1f450b85faf7ae7410",
+      "assetWidth": 780,
+      "assetHeight": 425,
+      "figureAlt": "좌표평면의 조각함수 그래프이다. 왼쪽 곡선은 (-1,2)의 닫힌점까지 이어지고, (-1,1)의 열린점에서 (0,2)의 열린점을 거쳐 (1,1)의 닫힌점까지 두 선분이 이어진다. 오른쪽 곡선은 (1,2)의 열린점에서 시작해 증가한다.",
+      "source": {
+        "exam": "2025학년도 6월 모의평가 수학",
+        "problemFilename": "2025학년도-6월-모의평가-수학-문제.pdf",
+        "problemSha256": "ea1db4dcf34481c3adcfdd58524701924dd7ac988708adbf16a8e942ee283cd4",
+        "page": 1,
+        "renderDpi": 180,
+        "crop": {
+          "x": 1210,
+          "y": 1450,
+          "width": 780,
+          "height": 425
+        }
+      }
+    },
+    "2025_09_common_4": {
+      "id": "2025_09_common_4",
+      "status": "source_verified_internal_asset",
+      "assetPath": "평가원_수학영어_확장/08_math_data/assets/required_figures/2025_09_common_4.png",
+      "assetSha256": "b57fc758f2a5bdbaeabd10b31bd093ba840a2308af948c0051319dd2bf03a5f2",
+      "assetWidth": 800,
+      "assetHeight": 590,
+      "figureAlt": "좌표평면의 조각함수 그래프이다. x<-2의 증가 직선은 (-2,0)의 열린점에서 끝나고, (-2,2)의 닫힌점에서 시작한 곡선은 (0,-2)의 열린점으로 내려간다. (0,1)의 닫힌점에서 (1,2)의 열린점까지 증가 선분, (1,1)의 열린점에서 (2,0)의 열린점까지 감소 선분이 있으며 x=2의 함수값은 1이고 이후 V자 모양으로 증가한다.",
+      "source": {
+        "exam": "2025학년도 9월 모의평가 수학",
+        "problemFilename": "2025학년도-9월-모의평가-수학-문제.pdf",
+        "problemSha256": "10872f1ff40923c9e92705b49d60043ac9e4ddc58db744865b4188d075eef28c",
+        "page": 1,
+        "renderDpi": 180,
+        "crop": {
+          "x": 1200,
+          "y": 1450,
+          "width": 800,
+          "height": 590
+        }
+      }
+    }
+  }
+}

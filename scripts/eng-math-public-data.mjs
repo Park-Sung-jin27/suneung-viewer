@@ -687,10 +687,6 @@ const MATH_SOLUTION_DRAFT_PATTERN =
 const MATH_VERIFIED_SOLUTION_FILENAME = "math_free_verified_solutions_v1.json";
 const MATH_FIGURE_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2022_06_common_4_verified_solution_v1.json";
-const MATH_COMMON_4_FIGURE_ASSET = {
-  path: "평가원_수학영어_확장/08_math_data/assets/2022_06_common_4-graph.svg",
-  sha256: "cc5d3d986fc82cceee1cda853a188c5aeec74e86c31e61ae0e6622be21b05813",
-};
 const MATH_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2022_06_common_7_11_verified_solutions_v1.json";
 const MATH_SECOND_INTERNAL_VERIFIED_SOLUTION_FILENAME =
@@ -881,6 +877,84 @@ const MATH_FIGURE_BLOCKED_IDS = [
   "2025_06_common_4",
   "2025_09_common_4",
 ];
+const MATH_REQUIRED_FIGURE_MANIFEST_FILENAME =
+  "math_required_figures_v1.json";
+const MATH_REQUIRED_FIGURE_SOURCE_HASHES = new Map([
+  ["2022_06_common_4", MATH_VERIFIED_SOURCE_HASHES.problemSha256],
+  ["2023_06_common_4", MATH_2023_06_VERIFIED_SOURCE_HASHES.problemSha256],
+  ["2023_09_cal_27", MATH_2023_09_VERIFIED_SOURCE_HASHES.problemSha256],
+  ["2024_09_common_4", MATH_2024_09_VERIFIED_SOURCE_HASHES.problemSha256],
+  ["2024_09_sta_24", MATH_2024_09_VERIFIED_SOURCE_HASHES.problemSha256],
+  ["2025_06_common_4", MATH_2025_06_VERIFIED_SOURCE_HASHES.problemSha256],
+  ["2025_09_common_4", MATH_2025_09_VERIFIED_SOURCE_HASHES.problemSha256],
+]);
+const MATH_REQUIRED_FIGURE_SOURCE_PAGES = new Map([
+  ["2022_06_common_4", 1],
+  ["2023_06_common_4", 1],
+  ["2023_09_cal_27", 15],
+  ["2024_09_common_4", 1],
+  ["2024_09_sta_24", 9],
+  ["2025_06_common_4", 1],
+  ["2025_09_common_4", 1],
+]);
+const MATH_REQUIRED_FIGURE_ASSETS = new Map([
+  [
+    "2022_06_common_4",
+    {
+      path: "평가원_수학영어_확장/08_math_data/assets/required_figures/2022_06_common_4.png",
+      sha256:
+        "5863e5d9e278eb230b54c9909336cae6a61dc5c2c66178a5bee28acbf58f4a36",
+    },
+  ],
+  [
+    "2023_06_common_4",
+    {
+      path: "평가원_수학영어_확장/08_math_data/assets/required_figures/2023_06_common_4.png",
+      sha256:
+        "4027f38a771046c221fca9b60492740fb357ef8523961e766e9fd21bc503b840",
+    },
+  ],
+  [
+    "2023_09_cal_27",
+    {
+      path: "평가원_수학영어_확장/08_math_data/assets/required_figures/2023_09_cal_27.png",
+      sha256:
+        "cf013a495bc67c3f4bf3fcc088d9be1cb2d6deddfa0efc8049dcd43a448f80c9",
+    },
+  ],
+  [
+    "2024_09_common_4",
+    {
+      path: "평가원_수학영어_확장/08_math_data/assets/required_figures/2024_09_common_4.png",
+      sha256:
+        "9b503b8f6bf2dbfa2a222895b2d12f823003db51244544e16beb077fd9a2a1bb",
+    },
+  ],
+  [
+    "2024_09_sta_24",
+    {
+      path: "평가원_수학영어_확장/08_math_data/assets/required_figures/2024_09_sta_24.png",
+      sha256:
+        "9a37fdfd7fbcb77d4531ac7eeb22e1fe3dcf467a204945f312e2ff56d75444fb",
+    },
+  ],
+  [
+    "2025_06_common_4",
+    {
+      path: "평가원_수학영어_확장/08_math_data/assets/required_figures/2025_06_common_4.png",
+      sha256:
+        "8bd667a8e21de7a010b504782451f5844887b4fc77d97f1f450b85faf7ae7410",
+    },
+  ],
+  [
+    "2025_09_common_4",
+    {
+      path: "평가원_수학영어_확장/08_math_data/assets/required_figures/2025_09_common_4.png",
+      sha256:
+        "b57fc758f2a5bdbaeabd10b31bd093ba840a2308af948c0051319dd2bf03a5f2",
+    },
+  ],
+]);
 const MATH_FIGURE_DESCRIPTION_IDS = [
   "2022_06_common_12",
   "2022_06_cal_26",
@@ -1024,6 +1098,25 @@ function findFile(directory, filename) {
   return null;
 }
 
+function findFileBySha256(directory, expectedSha256, extension) {
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    if (SKIP_DIRECTORIES.has(entry.name)) continue;
+    const entryPath = path.join(directory, entry.name);
+    if (
+      entry.isFile() &&
+      path.extname(entry.name).toLowerCase() === extension &&
+      fileSha256(entryPath) === expectedSha256
+    ) {
+      return entryPath;
+    }
+    if (entry.isDirectory()) {
+      const found = findFileBySha256(entryPath, expectedSha256, extension);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
 function fail(code, detail) {
   throw new Error(`${code}: ${detail}`);
 }
@@ -1039,6 +1132,22 @@ function stableJson(value) {
 
 function fileSha256(filePath) {
   return createHash("sha256").update(readFileSync(filePath)).digest("hex");
+}
+
+function readPngDimensions(filePath, id) {
+  const bytes = readFileSync(filePath);
+  const pngSignature = "89504e470d0a1a0a";
+  if (
+    bytes.length < 24 ||
+    bytes.subarray(0, 8).toString("hex") !== pngSignature ||
+    bytes.subarray(12, 16).toString("ascii") !== "IHDR"
+  ) {
+    fail("MATH_REQUIRED_FIGURE_PNG", id);
+  }
+  return {
+    width: bytes.readUInt32BE(16),
+    height: bytes.readUInt32BE(20),
+  };
 }
 
 function answerMark(answer) {
@@ -1060,8 +1169,6 @@ function validateMathVerifiedSolutionSet({
   filename,
   expectedIds,
   expectedProblemPages,
-  expectedFigureAssets = new Map(),
-  expectedPublicBlockedFigureIds = new Set(),
   expectedSourceHashes = MATH_VERIFIED_SOURCE_HASHES,
   verifiedAt,
 }) {
@@ -1273,24 +1380,27 @@ function validateMathVerifiedSolutionSet({
     ) {
       fail("MATH_SOLUTION_ANSWER", id);
     }
-    const expectedFigureAsset = expectedFigureAssets.get(id);
+    const expectedFigureAsset = MATH_REQUIRED_FIGURE_ASSETS.get(id);
     if (expectedFigureAsset) {
       const assetPath = path.join(ROOT, expectedFigureAsset.path);
       if (
         item.figureAsset !== expectedFigureAsset.path ||
         item.figureAssetSha256 !== expectedFigureAsset.sha256 ||
+        item.figureAlt !== question.figureDesc ||
         !existsSync(assetPath) ||
         fileSha256(assetPath) !== expectedFigureAsset.sha256
       ) {
         fail("MATH_SOLUTION_FIGURE_ASSET", id);
       }
       requireText(item.figureAlt, "MATH_SOLUTION_FIGURE_ALT", id);
-    }
-    const shouldRemainBlockedByFigure = expectedPublicBlockedFigureIds.has(id);
-    if (
-      (item.publicBlockedByFigureAsset === true) !==
-      shouldRemainBlockedByFigure
+    } else if (
+      Object.hasOwn(item, "figureAsset") ||
+      Object.hasOwn(item, "figureAssetSha256") ||
+      Object.hasOwn(item, "figureAlt")
     ) {
+      fail("MATH_SOLUTION_UNAPPROVED_FIGURE_ASSET", id);
+    }
+    if (Object.hasOwn(item, "publicBlockedByFigureAsset")) {
       fail("MATH_SOLUTION_FIGURE_PUBLIC_BOUNDARY", id);
     }
     const expectedQuestionNumber = Number(id.split("_").at(-1));
@@ -1774,9 +1884,6 @@ function validateMathVerifiedSolutions(mathDbPath, mathDb, sourceDirectory) {
     filename: MATH_FIGURE_INTERNAL_VERIFIED_SOLUTION_FILENAME,
     expectedIds: MATH_FIGURE_INTERNAL_VERIFIED_IDS,
     expectedProblemPages: new Map([["2022_06_common_4", 1]]),
-    expectedFigureAssets: new Map([
-      ["2022_06_common_4", MATH_COMMON_4_FIGURE_ASSET],
-    ]),
     verifiedAt: "2026-08-05",
   });
 
@@ -2234,7 +2341,6 @@ function validateMath2023JuneVerifiedSolutions(
       ["2023_06_geo_29", 20],
       ["2023_06_geo_30", 20],
     ]),
-    expectedPublicBlockedFigureIds: new Set(["2023_06_common_4"]),
     expectedSourceHashes: MATH_2023_06_VERIFIED_SOURCE_HASHES,
     verifiedAt: "2026-08-05",
   });
@@ -2343,7 +2449,6 @@ function validateMath2023SeptemberVerifiedSolutions(
       ["2023_09_cal_29", 16],
       ["2023_09_cal_30", 16],
     ]),
-    expectedPublicBlockedFigureIds: new Set(["2023_09_cal_27"]),
     expectedSourceHashes: MATH_2023_09_VERIFIED_SOURCE_HASHES,
     verifiedAt: "2026-08-05",
   });
@@ -2537,7 +2642,6 @@ function validateMath2024SeptemberVerifiedSolutions(
       ["2024_09_common_10", 3],
       ["2024_09_common_11", 4],
     ]),
-    expectedPublicBlockedFigureIds: new Set(["2024_09_common_4"]),
     expectedSourceHashes: MATH_2024_09_VERIFIED_SOURCE_HASHES,
     verifiedAt: "2026-08-05",
   });
@@ -2581,7 +2685,6 @@ function validateMath2024SeptemberVerifiedSolutions(
       ["2024_09_sta_29", 12],
       ["2024_09_sta_30", 12],
     ]),
-    expectedPublicBlockedFigureIds: new Set(["2024_09_sta_24"]),
     expectedSourceHashes: MATH_2024_09_VERIFIED_SOURCE_HASHES,
     verifiedAt: "2026-08-05",
   });
@@ -2663,7 +2766,6 @@ function validateMath2025JuneVerifiedSolutions(
       ["2025_06_common_10", 3],
       ["2025_06_common_11", 4],
     ]),
-    expectedPublicBlockedFigureIds: new Set(["2025_06_common_4"]),
     expectedSourceHashes: MATH_2025_06_VERIFIED_SOURCE_HASHES,
     verifiedAt: "2026-08-05",
   });
@@ -2788,7 +2890,6 @@ function validateMath2025SeptemberVerifiedSolutions(
       ["2025_09_common_10", 3],
       ["2025_09_common_11", 4],
     ]),
-    expectedPublicBlockedFigureIds: new Set(["2025_09_common_4"]),
     expectedSourceHashes: MATH_2025_09_VERIFIED_SOURCE_HASHES,
     verifiedAt: "2026-08-05",
   });
@@ -3394,6 +3495,117 @@ function assertMatchingIds(actualIds, expectedIds, code) {
   }
 }
 
+function validateMathRequiredFigureAssets(
+  mathDbPath,
+  mathDb,
+  sourceDirectory = null,
+) {
+  const manifestPath = path.join(
+    path.dirname(mathDbPath),
+    MATH_REQUIRED_FIGURE_MANIFEST_FILENAME,
+  );
+  const manifest = readJson(
+    manifestPath,
+    MATH_REQUIRED_FIGURE_MANIFEST_FILENAME,
+  );
+  const metadata = manifest.metadata;
+  if (
+    metadata?.schemaVersion !== "math-required-figure-v1" ||
+    metadata.status !== "internal_source_verified" ||
+    metadata.publicConnected !== false ||
+    metadata.itemCount !== MATH_FIGURE_BLOCKED_IDS.length ||
+    metadata.verifiedAt !== "2026-08-06"
+  ) {
+    fail("MATH_REQUIRED_FIGURE_METADATA", String(metadata?.status));
+  }
+
+  const itemIds = Object.keys(manifest.items ?? {});
+  if (stableJson(itemIds) !== stableJson(MATH_FIGURE_BLOCKED_IDS)) {
+    fail("MATH_REQUIRED_FIGURE_IDS", itemIds.join(","));
+  }
+
+  const questionsById = new Map(
+    mathDb.questions.map((question) => [question.id, question]),
+  );
+  const assetDirectory = path.join(
+    path.dirname(mathDbPath),
+    "assets",
+    "required_figures",
+  );
+  if (sourceDirectory && !existsSync(sourceDirectory)) {
+    fail("MATH_REQUIRED_FIGURE_SOURCE_DIRECTORY", sourceDirectory);
+  }
+
+  for (const id of MATH_FIGURE_BLOCKED_IDS) {
+    const item = manifest.items[id];
+    const question = questionsById.get(id);
+    const expectedFigureAsset = MATH_REQUIRED_FIGURE_ASSETS.get(id);
+    const expectedAssetPath = path
+      .relative(ROOT, path.join(assetDirectory, `${id}.png`))
+      .split(path.sep)
+      .join("/");
+    if (
+      item?.id !== id ||
+      item.status !== "source_verified_internal_asset" ||
+      item.assetPath !== expectedAssetPath ||
+      item.assetPath !== expectedFigureAsset?.path ||
+      item.assetSha256 !== expectedFigureAsset?.sha256 ||
+      !question ||
+      question.answerCrossCheck !== "full" ||
+      question.hasFigure !== true ||
+      item.figureAlt !== question.figureDesc
+    ) {
+      fail("MATH_REQUIRED_FIGURE_ITEM", id);
+    }
+
+    const assetPath = path.resolve(ROOT, item.assetPath);
+    const assetRelative = path.relative(assetDirectory, assetPath);
+    if (
+      !assetRelative ||
+      assetRelative.startsWith("..") ||
+      path.isAbsolute(assetRelative) ||
+      path.extname(assetPath).toLowerCase() !== ".png" ||
+      !existsSync(assetPath) ||
+      !/^[a-f0-9]{64}$/.test(item.assetSha256) ||
+      fileSha256(assetPath) !== item.assetSha256
+    ) {
+      fail("MATH_REQUIRED_FIGURE_ASSET", id);
+    }
+
+    const dimensions = readPngDimensions(assetPath, id);
+    const source = item.source;
+    const crop = source?.crop;
+    if (
+      item.assetWidth !== dimensions.width ||
+      item.assetHeight !== dimensions.height ||
+      source?.problemSha256 !== MATH_REQUIRED_FIGURE_SOURCE_HASHES.get(id) ||
+      source?.page !== MATH_REQUIRED_FIGURE_SOURCE_PAGES.get(id) ||
+      source?.renderDpi !== 180 ||
+      !Number.isInteger(crop?.x) ||
+      crop.x < 0 ||
+      !Number.isInteger(crop?.y) ||
+      crop.y < 0 ||
+      crop.width !== dimensions.width ||
+      crop.height !== dimensions.height
+    ) {
+      fail("MATH_REQUIRED_FIGURE_SOURCE", id);
+    }
+    requireText(source.exam, "MATH_REQUIRED_FIGURE_EXAM", id);
+    requireText(
+      source.problemFilename,
+      "MATH_REQUIRED_FIGURE_FILENAME",
+      id,
+    );
+    if (
+      sourceDirectory &&
+      !findFileBySha256(sourceDirectory, source.problemSha256, ".pdf")
+    ) {
+      fail("MATH_REQUIRED_FIGURE_SOURCE_FILE", id);
+    }
+  }
+
+}
+
 function validateMathFigurePolicy(mathDb) {
   const blockedIds = uniqueIdSet(
     MATH_FIGURE_BLOCKED_IDS,
@@ -3743,6 +3955,7 @@ function buildPublicData(
   math2024SeptemberSourceDirectory = null,
   math2025JuneSourceDirectory = null,
   math2025SeptemberSourceDirectory = null,
+  mathFigureSourceDirectory = null,
 ) {
   const englishCandidateQuestions = validateEnglishCandidate();
   const mathDbPath = findFile(ROOT, "math_exam_db_v2_0.json");
@@ -3750,6 +3963,11 @@ function buildPublicData(
   const englishDb = readJson(ENGLISH_DB_PATH, "english_exam_db_v2_1.json");
   const mathDb = readJson(mathDbPath, "math_exam_db_v2_0.json");
   const mathAnswerSource = validateMathAnswerCrosscheck(mathDb);
+  validateMathRequiredFigureAssets(
+    mathDbPath,
+    mathDb,
+    mathFigureSourceDirectory,
+  );
   const mathVerifiedSolutions = validateMathVerifiedSolutions(
     mathDbPath,
     mathDb,
@@ -4258,6 +4476,7 @@ function parseArguments() {
   let math2024SeptemberSourceDirectory = null;
   let math2025JuneSourceDirectory = null;
   let math2025SeptemberSourceDirectory = null;
+  let mathFigureSourceDirectory = null;
   for (let index = 1; index < values.length; index += 1) {
     const value = values[index];
     if (
@@ -4268,7 +4487,8 @@ function parseArguments() {
       value !== "--math-2024-06-source-dir" &&
       value !== "--math-2024-09-source-dir" &&
       value !== "--math-2025-06-source-dir" &&
-      value !== "--math-2025-09-source-dir"
+      value !== "--math-2025-09-source-dir" &&
+      value !== "--math-figure-source-dir"
     ) {
       fail("ARGUMENT_INVALID", value);
     }
@@ -4290,8 +4510,10 @@ function parseArguments() {
       math2024SeptemberSourceDirectory = path.resolve(next);
     } else if (value === "--math-2025-06-source-dir") {
       math2025JuneSourceDirectory = path.resolve(next);
-    } else {
+    } else if (value === "--math-2025-09-source-dir") {
       math2025SeptemberSourceDirectory = path.resolve(next);
+    } else {
+      mathFigureSourceDirectory = path.resolve(next);
     }
     index += 1;
   }
@@ -4305,6 +4527,7 @@ function parseArguments() {
     math2024SeptemberSourceDirectory,
     math2025JuneSourceDirectory,
     math2025SeptemberSourceDirectory,
+    mathFigureSourceDirectory,
   };
 }
 
@@ -4319,6 +4542,7 @@ const data = buildPublicData(
   options.math2024SeptemberSourceDirectory,
   options.math2025JuneSourceDirectory,
   options.math2025SeptemberSourceDirectory,
+  options.mathFigureSourceDirectory,
 );
 
 if (mode === "--write") {
@@ -4331,17 +4555,17 @@ if (mode === "--write") {
   });
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
   console.log(
-    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7internal mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
   );
 } else if (mode === "--check") {
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
   console.log(
-    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7internal mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
   );
 } else if (mode === "--check-dist") {
   verifyPublishedBoundary(path.join(ROOT, "dist"), data);
   console.log(
-    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=406 catalogs=12/88 englishCandidates=168/358 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7internal mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"}`,
   );
 } else {
   fail("MODE_INVALID", mode);
