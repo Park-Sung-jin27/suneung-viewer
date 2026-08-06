@@ -634,6 +634,19 @@ const MATH_2026_CSAT_COMMON_1_11_INTERNAL_VERIFIED_IDS = [
   "2026_csat_common_10",
   "2026_csat_common_11",
 ];
+const MATH_2026_CSAT_COMMON_12_22_INTERNAL_VERIFIED_IDS = [
+  "2026_csat_common_12",
+  "2026_csat_common_13",
+  "2026_csat_common_14",
+  "2026_csat_common_15",
+  "2026_csat_common_16",
+  "2026_csat_common_17",
+  "2026_csat_common_18",
+  "2026_csat_common_19",
+  "2026_csat_common_20",
+  "2026_csat_common_21",
+  "2026_csat_common_22",
+];
 const MATH_SOURCE_CORRECTION_IDS = ["2022_06_cal_29"];
 const MATH_2022_09_SOURCE_CORRECTION_IDS = ["2022_09_common_11"];
 const MATH_2023_06_SOURCE_CORRECTION_IDS = [
@@ -702,6 +715,7 @@ const MATH_INTERNAL_VERIFIED_ID_GROUPS = [
   MATH_2025_09_CAL_INTERNAL_VERIFIED_IDS,
   MATH_2025_09_GEO_INTERNAL_VERIFIED_IDS,
   MATH_2026_CSAT_COMMON_1_11_INTERNAL_VERIFIED_IDS,
+  MATH_2026_CSAT_COMMON_12_22_INTERNAL_VERIFIED_IDS,
 ];
 const MATH_SOURCE_CORRECTION_ID_GROUPS = [
   MATH_SOURCE_CORRECTION_IDS,
@@ -825,6 +839,8 @@ const MATH_2025_09_GEO_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2025_09_geo_23_30_verified_solutions_v1.json";
 const MATH_2026_CSAT_COMMON_1_11_INTERNAL_VERIFIED_SOLUTION_FILENAME =
   "math_2026_csat_common_1_11_verified_solutions_v1.json";
+const MATH_2026_CSAT_COMMON_12_22_INTERNAL_VERIFIED_SOLUTION_FILENAME =
+  "math_2026_csat_common_12_22_verified_solutions_v1.json";
 const MATH_SOURCE_CORRECTION_FILENAME = "math_2022_06_source_corrections_v1.json";
 const MATH_2022_09_SOURCE_CORRECTION_FILENAME =
   "math_2022_09_source_corrections_v1.json";
@@ -1684,7 +1700,7 @@ function validateMathAnswerCrosscheck(mathDb) {
     manifest.scope?.answerFingerprint !==
       MATH_ANSWER_CROSSCHECK_FINGERPRINT ||
     manifest.scope?.publicConnected !== false ||
-    manifest.scope?.verifiedSolutionCount !== 11
+    manifest.scope?.verifiedSolutionCount !== 22
   ) {
     fail("MATH_ANSWER_CROSSCHECK_METADATA", "scope");
   }
@@ -1863,7 +1879,7 @@ function validateMathVerifiedCoverage(mathDb) {
   }
   if (
     MATH_FREE_IDS.length !== 5 ||
-    internalIds.length !== 374 ||
+    internalIds.length !== 385 ||
     sourceCorrectionIds.length !== 13
   ) {
     fail(
@@ -3064,6 +3080,29 @@ function validateMath2026CsatVerifiedSolutions(
       ["2026_csat_common_9", 3],
       ["2026_csat_common_10", 3],
       ["2026_csat_common_11", 4],
+    ]),
+    expectedSourceHashes: MATH_2026_CSAT_VERIFIED_SOURCE_HASHES,
+    verifiedAt: "2026-08-07",
+  });
+
+  validateMathVerifiedSolutionSet({
+    mathDbPath,
+    mathDb,
+    sourceDirectory,
+    filename: MATH_2026_CSAT_COMMON_12_22_INTERNAL_VERIFIED_SOLUTION_FILENAME,
+    expectedIds: MATH_2026_CSAT_COMMON_12_22_INTERNAL_VERIFIED_IDS,
+    expectedProblemPages: new Map([
+      ["2026_csat_common_12", 4],
+      ["2026_csat_common_13", 5],
+      ["2026_csat_common_14", 5],
+      ["2026_csat_common_15", 6],
+      ["2026_csat_common_16", 6],
+      ["2026_csat_common_17", 6],
+      ["2026_csat_common_18", 7],
+      ["2026_csat_common_19", 7],
+      ["2026_csat_common_20", 7],
+      ["2026_csat_common_21", 8],
+      ["2026_csat_common_22", 8],
     ]),
     expectedSourceHashes: MATH_2026_CSAT_VERIFIED_SOURCE_HASHES,
     verifiedAt: "2026-08-07",

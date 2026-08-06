@@ -1,0 +1,504 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2026학년도 대학수학능력시험 수학 공통 12~22번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "7f16548d3d2dbd5dad8cd92c1e06f3241456989eb12ae71689141e55150b219e",
+    "verifiedAt": "2026-08-07",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung",
+      "independentSourceUrls": [
+        "https://univ2022.tistory.com/entry/2026-%EC%88%98%EB%8A%A5-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EC%84%A4",
+        "https://www.ebsi.co.kr"
+      ],
+      "solutionSourceUrls": [
+        "https://univ2022.tistory.com/entry/2026-%EC%88%98%EB%8A%A5-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EC%84%A4"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "74e7e4a614559c3a94618e568d00b0392b12e25b6f5caa5e86334768f080d850",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "mirror-problem.pdf",
+          "sha256": "4051cbbf1c3387116c51a33acc98bc63c793fdd9790206fb976918ef01f86e32"
+        }
+      ],
+      "answerFilename": "math_2026_csat_official_answer.pdf",
+      "answerSha256": "4a6482e853d2674cb79232abcf30d302197c374dd4b18aa9c80427660aec4f53",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "6e693645fe3dd35a03676f2bbb5832cf608f8a0d65bccf1fcb45506c72acd5ff"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지와 정답표를 대조하고, EBS 풀이와 독립 계산으로 각 해법을 다시 확인했습니다."
+  },
+  "items": {
+    "2026_csat_common_12": {
+      "id": "2026_csat_common_12",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 12,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "두 등비수열 조건을 나누면 공비의 세제곱이 2이고 a₁₀은 24/7입니다.",
+      "approach": "첫째항과 공비로 두 조건을 나타낸 뒤 공통인 다항식을 약분합니다.",
+      "concepts": ["등비수열의 일반항", "연립조건"],
+      "steps": [
+        {
+          "title": "조건 정리",
+          "expression": "a_1(1+r^3+r^6)=3,\\qquad a_1r^3(1+r^3+r^6)=6",
+          "explanation": "각 항을 첫째항 a₁과 공비 r의 거듭제곱으로 나타냅니다."
+        },
+        {
+          "title": "공비의 세제곱",
+          "expression": "r^3=\\frac63=2",
+          "explanation": "두 번째 식을 첫 번째 식으로 나누어 공통 인수를 없앱니다."
+        },
+        {
+          "title": "열째항",
+          "expression": "a_1=\\frac3{1+2+4}=\\frac37,\\qquad a_{10}=a_1r^9=\\frac37\\cdot2^3=\\frac{24}{7}",
+          "explanation": "r⁹=(r³)³을 이용해 열째항을 계산합니다."
+        }
+      ],
+      "correctReason": "두 조건을 동시에 만족하는 열째항이 24/7이므로 정답은 ②입니다.",
+      "commonMistake": "a₁₀의 공비 지수는 10이 아니라 일반항 공식에 따라 9입니다.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2026_csat_common_13": {
+      "id": "2026_csat_common_13",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 13,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "두 접선의 y절편 차는 14이고 교점의 x좌표는 7이므로 넓이는 49입니다.",
+      "approach": "각 접선의 기울기와 방정식을 구한 뒤 y축을 밑변으로 삼각형 넓이를 계산합니다.",
+      "concepts": ["접선의 방정식", "곱의 미분법"],
+      "steps": [
+        {
+          "title": "첫 접선",
+          "expression": "f'(1)=-2,\\qquad l:y=-2x-4",
+          "explanation": "점 (1,-6)을 지나고 기울기가 -2인 직선을 구합니다."
+        },
+        {
+          "title": "둘째 접선",
+          "expression": "g'(1)=(3-2)f(1)+(1-2)f'(1)=-4,\\qquad m:y=-4x+10",
+          "explanation": "곱의 미분법으로 기울기를 구하고 점 (1,6)을 사용합니다."
+        },
+        {
+          "title": "교점과 넓이",
+          "expression": "-2x-4=-4x+10\\Rightarrow x=7,\\qquad \\frac12\\cdot14\\cdot7=49",
+          "explanation": "y축 위 두 절편 사이 길이 14와 교점까지의 수평 거리 7을 곱합니다."
+        }
+      ],
+      "correctReason": "두 직선과 y축이 만드는 삼각형의 넓이가 49이므로 정답은 ⑤입니다.",
+      "commonMistake": "g'(1)을 구할 때 한 인수만 미분하거나 점 (1,6) 대신 f(1)을 접선에 사용하지 않아야 합니다.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2026_csat_common_14": {
+      "id": "2026_csat_common_14",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 14,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "두 삼각형의 코사인법칙과 외접원의 사인법칙을 연결하면 GH는 32√15/25입니다.",
+      "approach": "작은 원의 반지름으로 AE와 AG를 정하고, 삼각형 CGE의 외접원 반지름을 먼저 구합니다.",
+      "concepts": ["코사인법칙", "사인법칙"],
+      "steps": [
+        {
+          "title": "기본 길이와 각",
+          "expression": "AC=5,\\qquad AD=AE=AG=2,\\qquad \\sin\\angle BAC=\\frac45",
+          "explanation": "3-4-5 직각삼각형과 AB의 2:1 내분 조건을 사용합니다."
+        },
+        {
+          "title": "현 GE 계산",
+          "expression": "\\cos\\angle CAG=\\frac{2^2+5^2-(2\\sqrt6)^2}{2\\cdot2\\cdot5}=\\frac14,\\qquad GE=\\sqrt6",
+          "explanation": "삼각형 ACG와 이등변삼각형 AEG에 코사인법칙을 차례로 적용합니다."
+        },
+        {
+          "title": "외접원 지름",
+          "expression": "CE=3,\\qquad \\cos\\angle ECG=\\frac{(2\\sqrt6)^2+3^2-(\\sqrt6)^2}{2\\cdot2\\sqrt6\\cdot3}=\\frac{3\\sqrt6}{8}",
+          "explanation": "삼각형 CGE에서 각 ECG의 코사인을 구합니다."
+        },
+        {
+          "title": "사인법칙 적용",
+          "expression": "\\sin\\angle ECG=\\frac{\\sqrt{10}}8,\\qquad 2R=\\frac{GE}{\\sin\\angle ECG}=\\frac{8\\sqrt{15}}5",
+          "explanation": "세 점 C, E, G를 지나는 원의 지름 2R을 구합니다."
+        },
+        {
+          "title": "구하려는 현",
+          "expression": "GH=2R\\sin\\angle HCG=\\frac{8\\sqrt{15}}5\\cdot\\frac45=\\frac{32\\sqrt{15}}{25}",
+          "explanation": "주어진 각 HCG=각 BAC를 마지막 사인법칙에 대입합니다."
+        }
+      ],
+      "correctReason": "공식 그림의 점 순서와 길이 조건을 모두 반영하면 GH=32√15/25이므로 정답은 ④입니다.",
+      "commonMistake": "CG가 작은 원의 현이라고 가정하거나, 삼각형 CGE와 CHG가 공유하는 외접원의 반지름을 다르게 두지 않아야 합니다.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2026_csat_common_15": {
+      "id": "2026_csat_common_15",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 15,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "h'의 부호 변화가 한 번만 남는 최대 경계는 a=4이고, h(3)=7/2입니다.",
+      "approach": "h'=g-f의 교점과 부호 변화를 살피고 왼쪽 직선이 포물선에 접하는 최대 a를 찾습니다.",
+      "concepts": ["정적분으로 정의된 함수", "극값과 접선"],
+      "steps": [
+        {
+          "title": "극값 조건",
+          "expression": "h'(x)=g(x)-f(x)",
+          "explanation": "h의 극값은 g-f가 0을 지나며 부호가 바뀌는 지점에서 생깁니다."
+        },
+        {
+          "title": "최대 경계의 접선",
+          "expression": "y=-x^2\\text{의 }x=t\\text{에서 접선 기울기는 }-2t",
+          "explanation": "a>1에서 오른쪽 교점이 한 극값을 만들므로 왼쪽에서는 추가 부호 변화가 없어야 합니다."
+        },
+        {
+          "title": "접점과 k",
+          "expression": "t^2=-2t(-1-t)\\Rightarrow t(t+2)=0,\\quad t<-1\\Rightarrow t=-2,\\quad k=-2t=4",
+          "explanation": "직선 y=ax+a가 (-1,0)을 지나며 포물선에 접하는 최대 기울기를 구합니다."
+        },
+        {
+          "title": "h(3) 계산",
+          "expression": "h(3)=\\int_0^1(-t^2+t)\\,dt+\\int_1^3(-t^2+5t-4)\\,dt=\\frac16+\\frac{10}{3}=\\frac72",
+          "explanation": "a=4일 때 구간별 g-f를 적분합니다."
+        },
+        {
+          "title": "최종 값",
+          "expression": "k+h(3)=4+\\frac72=\\frac{15}{2}",
+          "explanation": "구한 최댓값과 정적분 값을 더합니다."
+        }
+      ],
+      "correctReason": "극값 개수의 경계에서 k=4이고 계산 결과가 15/2이므로 정답은 ④입니다.",
+      "commonMistake": "h의 극값을 f나 g 각각의 극값으로 판단하지 말고 반드시 h'=g-f의 부호 변화를 확인해야 합니다.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2026_csat_common_16": {
+      "id": "2026_csat_common_16",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 16,
+      "answer": "9",
+      "answerMark": null,
+      "summary": "점화식에 n=1과 n=2를 차례로 대입하면 a₂=2, a₃=9입니다.",
+      "approach": "앞 항에서 다음 항을 만드는 점화식이므로 작은 자연수부터 순서대로 계산합니다.",
+      "concepts": ["수열의 점화식", "귀납적 정의"],
+      "steps": [
+        {
+          "title": "둘째항",
+          "expression": "a_2=1^2a_1+1=1+1=2",
+          "explanation": "n=1과 a₁=1을 점화식에 대입합니다."
+        },
+        {
+          "title": "셋째항",
+          "expression": "a_3=2^2a_2+1=4\\cdot2+1=9",
+          "explanation": "n=2와 앞에서 구한 a₂=2를 사용합니다."
+        }
+      ],
+      "correctReason": "점화식을 두 번 순서대로 적용한 결과 a₃의 값은 9입니다.",
+      "commonMistake": "a₃을 구할 때 n=3을 대입하지 말고 aₙ₊₁의 아래첨자를 확인하여 n=2를 대입해야 합니다.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2026_csat_common_17": {
+      "id": "2026_csat_common_17",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 17,
+      "answer": "16",
+      "answerMark": null,
+      "summary": "부정적분의 상수를 F(0)=4로 정하면 F(2)의 값은 16입니다.",
+      "approach": "f를 항별로 적분한 뒤 초기 조건으로 적분상수를 결정합니다.",
+      "concepts": ["부정적분", "적분상수"],
+      "steps": [
+        {
+          "title": "부정적분",
+          "expression": "F(x)=\\int(4x^3-2x)\\,dx=x^4-x^2+C",
+          "explanation": "각 거듭제곱 항을 한 차수 높여 적분합니다."
+        },
+        {
+          "title": "적분상수",
+          "expression": "F(0)=C=4",
+          "explanation": "주어진 함수값을 이용하여 C를 결정합니다."
+        },
+        {
+          "title": "값 계산",
+          "expression": "F(2)=2^4-2^2+4=16",
+          "explanation": "완성된 부정적분에 x=2를 대입합니다."
+        }
+      ],
+      "correctReason": "적분상수까지 반영한 F(2)의 값은 16입니다.",
+      "commonMistake": "부정적분을 구한 뒤 적분상수 C를 생략하면 F(0)=4 조건을 사용할 수 없습니다.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2026_csat_common_18": {
+      "id": "2026_csat_common_18",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 18,
+      "answer": "12",
+      "answerMark": null,
+      "summary": "코사인에서 사인을 구해 두 변과 끼인각의 넓이 공식에 넣으면 12입니다.",
+      "approach": "삼각형의 내각에서 사인이 양수임을 사용한 뒤 넓이 공식을 적용합니다.",
+      "concepts": ["삼각함수의 관계", "삼각형의 넓이"],
+      "steps": [
+        {
+          "title": "사인 계산",
+          "expression": "\\sin\\angle BAC=\\sqrt{1-\\left(-\\frac35\\right)^2}=\\frac45",
+          "explanation": "삼각형의 내각이므로 사인의 양의 값을 선택합니다."
+        },
+        {
+          "title": "넓이 계산",
+          "expression": "\\frac12\\cdot AB\\cdot AC\\cdot\\sin\\angle BAC=\\frac12\\cdot5\\cdot6\\cdot\\frac45=12",
+          "explanation": "두 변의 길이와 그 사이 각의 사인을 곱합니다."
+        }
+      ],
+      "correctReason": "끼인각의 사인을 반영한 삼각형 ABC의 넓이는 12입니다.",
+      "commonMistake": "코사인이 음수여도 삼각형 내각의 사인은 양수이므로 사인에 음의 부호를 붙이지 않아야 합니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2026_csat_common_19": {
+      "id": "2026_csat_common_19",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 19,
+      "answer": "15",
+      "answerMark": null,
+      "summary": "닫힌 구간에서 함수의 최댓값은 12, 최솟값은 -15이므로 필요한 k는 15입니다.",
+      "approach": "도함수의 근과 구간 양 끝점에서 함숫값을 모두 비교해 절댓값의 최댓값을 찾습니다.",
+      "concepts": ["닫힌 구간의 최댓값", "도함수의 부호"],
+      "steps": [
+        {
+          "title": "임계점",
+          "expression": "F'(x)=6x^2+6x-12=6(x+2)(x-1)",
+          "explanation": "구간 안에서 x=-2와 x=1을 확인해야 합니다."
+        },
+        {
+          "title": "함숫값 비교",
+          "expression": "F(-2)=12,\\qquad F(1)=-15,\\qquad F(2)=-4",
+          "explanation": "임계점과 오른쪽 끝점의 값을 계산합니다."
+        },
+        {
+          "title": "최소 k",
+          "expression": "\\max_{-2\\le x\\le2}|F(x)|=\\max(12,15,4)=15",
+          "explanation": "양쪽 부등식을 동시에 만족시키려면 절댓값 전체를 덮어야 합니다."
+        }
+      ],
+      "correctReason": "함수값의 절댓값 가운데 가장 큰 값이 15이므로 양수 k의 최솟값은 15입니다.",
+      "commonMistake": "최댓값 12만 보고 k를 정하지 말고 음의 최솟값 -15의 절댓값도 비교해야 합니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2026_csat_common_20": {
+      "id": "2026_csat_common_20",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 20,
+      "answer": "130",
+      "answerMark": null,
+      "summary": "연속한 부분합의 차에서 f(n)=n/3을 얻고 p=10, q=52를 계산하면 130입니다.",
+      "approach": "부분합 식을 n+1과 n에서 빼 점화 관계를 만든 뒤 제시된 합을 그 관계로 묶습니다.",
+      "concepts": ["수열의 합과 일반항", "시그마의 재구성"],
+      "steps": [
+        {
+          "title": "부분합의 차",
+          "expression": "a_{n+1}=\\frac23(a_{n+1}-a_n)+\\frac n3",
+          "explanation": "n+1의 부분합에서 n의 부분합을 빼면 (가)는 f(n)=n/3입니다."
+        },
+        {
+          "title": "점화 관계",
+          "expression": "2a_n+a_{n+1}=n",
+          "explanation": "앞 식의 양변을 정리하여 ㉠을 얻습니다."
+        },
+        {
+          "title": "둘째항",
+          "expression": "7+a_2=\\frac23a_2+\\frac{31}{3}\\Rightarrow a_2=10",
+          "explanation": "부분합 식에 n=2를 대입하므로 p=10입니다."
+        },
+        {
+          "title": "전체 합",
+          "expression": "q=a_1+a_2+\\sum_{k=1}^{5}(2a_{2k+1}+a_{2k+2})=17+\\sum_{k=1}^{5}(2k+1)=52",
+          "explanation": "점화 관계에 n=2k+1을 대입해 각 묶음을 홀수로 바꿉니다."
+        },
+        {
+          "title": "최종 계산",
+          "expression": "\\frac{p q}{f(12)}=\\frac{10\\cdot52}{12/3}=130",
+          "explanation": "f(12)=4를 분모에 대입합니다."
+        }
+      ],
+      "correctReason": "빈칸의 값은 f(n)=n/3, p=10, q=52이므로 요구한 값은 130입니다.",
+      "commonMistake": "부분합 식의 n을 n+1로 바꿀 때 이차식과 일차식도 모두 n+1로 치환해야 합니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2026_csat_common_21": {
+      "id": "2026_csat_common_21",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 21,
+      "answer": "65",
+      "answerMark": null,
+      "summary": "연속성과 우극한 조건으로 세 근과 부호 구간을 정하면 t=2, 세 번째 근은 11/3이고 g(-5)=65입니다.",
+      "approach": "분모가 0인 지점의 극한과 g의 연속성을 먼저 사용하고, 자연수에서의 부호 조건으로 계수를 결정합니다.",
+      "concepts": ["함수의 연속", "우극한의 부호"],
+      "steps": [
+        {
+          "title": "세 근 확보",
+          "expression": "f(0)=f(2)=f(t)=0,\\qquad f(x)=\\alpha x(x-2)(x-r)\\quad(\\alpha>0)",
+          "explanation": "a=0,2에서 몫의 우극한이 존재하고 g가 x=t에서 연속이어야 합니다."
+        },
+        {
+          "title": "부호 구간 결정",
+          "expression": "t=2,\\qquad 3<r\\le4",
+          "explanation": "g(-1)>0, g(1)<0과 자연수 m에서 몫이 음수가 되는 값이 정확히 두 개라는 조건을 함께 적용합니다."
+        },
+        {
+          "title": "두 자연수",
+          "expression": "\\left\\{g(-1),-\\frac72g(1)\\right\\}=\\{2,3\\}",
+          "explanation": "이 부호 구간에서는 조건을 만족하는 자연수가 2와 3뿐입니다."
+        },
+        {
+          "title": "계수 결정",
+          "expression": "g(-1)=3\\alpha(r+1),\\qquad -\\frac72g(1)=\\frac72\\alpha(r-1)",
+          "explanation": "두 값이 서로 다르다는 조건 아래 가능한 두 배치를 비교합니다."
+        },
+        {
+          "title": "유효한 배치",
+          "expression": "3\\alpha(r+1)=3,\\quad \\frac72\\alpha(r-1)=2\\Rightarrow r=\\frac{11}{3},\\quad\\alpha=\\frac3{14}",
+          "explanation": "반대 배치는 r=-8이 되어 3<r≤4와 모순입니다."
+        },
+        {
+          "title": "요구한 값",
+          "expression": "g(-5)=-\\frac3{14}(-5)(-7)\\left(-5-\\frac{11}{3}\\right)=65",
+          "explanation": "-5<t이므로 g=-f인 조각을 사용합니다."
+        }
+      ],
+      "correctReason": "모든 연속·부호·서로 다른 자연수 조건을 만족하는 경우에서 g(-5)의 값은 65입니다.",
+      "commonMistake": "a=0과 a=2에서는 분모도 0이므로 단순 대입하지 말고 분자가 같은 차수로 0이 되는지 먼저 확인해야 합니다.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2026_csat_common_22": {
+      "id": "2026_csat_common_22",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 22,
+      "answer": "457",
+      "answerMark": null,
+      "summary": "두 곡선의 좌표 대응과 중점 조건을 풀면 a=63/4, b=7/4이므로 p+q=457입니다.",
+      "approach": "로그식과 지수식을 지수 형태로 바꾸어 두 점의 좌표 관계를 찾고 연립방정식을 풉니다.",
+      "concepts": ["지수함수와 로그함수", "대칭과 중점"],
+      "steps": [
+        {
+          "title": "두 곡선 변환",
+          "expression": "16^b=8a+2,\\qquad 4^c=4d+2",
+          "explanation": "B의 좌표를 (c,d)로 두고 두 곡선의 식을 지수 형태로 바꿉니다."
+        },
+        {
+          "title": "좌표 대응",
+          "expression": "c=2b,\\qquad d=2a",
+          "explanation": "A의 대칭점 (b,a)이 직선 OB 위에 있고 두 곡선의 변환 관계를 만족합니다."
+        },
+        {
+          "title": "중점 조건",
+          "expression": "a+2b=\\frac{77}{4},\\qquad 2a+b=\\frac{133}{4}",
+          "explanation": "선분 AB의 중점 좌표에서 각 좌표의 합을 두 배합니다."
+        },
+        {
+          "title": "a와 b",
+          "expression": "a=\\frac{63}{4},\\qquad b=\\frac74",
+          "explanation": "두 일차방정식을 연립하여 A의 좌표를 구합니다."
+        },
+        {
+          "title": "최종 값",
+          "expression": "ab=\\frac{441}{16}=\\frac qp,\\qquad p+q=16+441=457",
+          "explanation": "441과 16은 서로소이므로 그대로 p와 q가 됩니다."
+        }
+      ],
+      "correctReason": "좌표 관계와 중점 조건으로 얻은 기약분수가 441/16이므로 요구한 값은 457입니다.",
+      "commonMistake": "직선 y=x 대칭은 좌표 순서를 바꾸지만, 점 B 자체가 대칭점인 것은 아니어서 곡선의 배율 관계까지 확인해야 합니다.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}
