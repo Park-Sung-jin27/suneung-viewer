@@ -1,0 +1,523 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 대학수학능력시험 수학 공통 12~22번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 11,
+    "readyCount": 11,
+    "questionFingerprint": "c02d3d562679a8d4f1ffebb67529b35f9408928de8ce253f80dcda68b32901a5",
+    "verifiedAt": "2026-08-07",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung",
+      "independentSourceUrls": [
+        "https://normalrap.tistory.com/entry/2025%EB%85%84-%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98-%EA%B8%B0%EC%B6%9C-%EB%AC%B8%EC%A0%9C-%EB%8B%B5",
+        "https://mathpowergen.com/2025-%EC%88%98%EB%8A%A5-%EC%88%98%ED%95%99-%EA%B8%B0%EC%B6%9C%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%ED%95%B4%EC%84%A4/"
+      ],
+      "solutionSourceUrls": [
+        "https://mathpowergen.com/wp-content/uploads/2025/06/2025%ED%95%99%EB%85%84%EB%8F%84-%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98-%EC%88%98%ED%95%99-%ED%99%80%EC%88%98%ED%98%95-EBS-%ED%95%B4%EC%84%A4.pdf"
+      ],
+      "problemFilename": "problem.pdf",
+      "problemSha256": "4999b0069255aaf361358777163b6ea4e8656130382a37ef355a5ff66ac9ff07",
+      "problemReplicaFilenames": [
+        "problem-kice.pdf",
+        "problem-mirror.pdf"
+      ],
+      "problemReplicaArtifacts": [],
+      "answerFilename": "official-answer.pdf",
+      "answerSha256": "987fa768dc669042df4e018a157535407583e5564cd540cac7ddd2fd414b5e9e",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "9ad45a6f218763f980197e4d03f33cd4df32c1568455ffebd60e0127c6420c43"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지와 정답표를 대조하고, EBS 해설 자료의 계산을 독립적으로 다시 전개해 각 풀이를 확인했습니다."
+  },
+  "items": {
+    "2025_csat_common_12": {
+      "id": "2025_csat_common_12",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 12,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "부분합 식을 한 항씩 빼면 bₙ=2n과 aₙ=2n²+n-1을 얻어 첫 다섯 항의 합은 120입니다.",
+      "approach": "시그마로 주어진 등식을 n과 n-1에 각각 적용한 뒤 두 식의 차로 일반항을 구합니다.",
+      "concepts": ["부분합과 일반항", "등차수열"],
+      "steps": [
+        {
+          "title": "b수열 결정",
+          "expression": "a_1/b_2=1/2,\\quad a_1=2\\Rightarrow b_2=4",
+          "explanation": "n=1을 대입하면 b₁=2인 등차수열의 둘째항이 4이므로 공차는 2입니다."
+        },
+        {
+          "title": "부분합의 차",
+          "expression": "\\frac{a_n}{b_{n+1}}=\\frac12n^2-\\frac12(n-1)^2=n-\\frac12",
+          "explanation": "n일 때의 식에서 n-1일 때의 식을 빼면 마지막 항 하나만 남습니다."
+        },
+        {
+          "title": "a수열 일반항",
+          "expression": "b_{n+1}=2(n+1),\\quad a_n=2n^2+n-1",
+          "explanation": "등차수열의 일반항을 대입하여 aₙ을 n에 관한 식으로 정리합니다."
+        },
+        {
+          "title": "첫 다섯 항의 합",
+          "expression": "\\sum_{k=1}^{5}(2k^2+k-1)=120",
+          "explanation": "제곱합과 자연수의 합 공식을 사용해 요구한 합을 계산합니다."
+        }
+      ],
+      "correctReason": "일반항 aₙ=2n²+n-1의 첫 다섯 항 합이 120이므로 정답은 ①입니다.",
+      "commonMistake": "부분합의 차를 구할 때 n-1을 대입한 식의 우변 전체를 빼지 않으면 상수항이 틀어집니다.",
+      "verification": {
+        "problemPage": 4,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_13": {
+      "id": "2025_csat_common_13",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 13,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "삼차함수의 세 근과 도함수 조건으로 함수를 확정하고 두 넓이의 차를 한 적분으로 계산합니다.",
+      "approach": "f(1)=f(2)=0을 인수로 반영하고 f'(0)=-7로 나머지 근을 구한 뒤 면적 차를 적분합니다.",
+      "concepts": ["삼차함수의 인수분해", "두 곡선 사이의 넓이"],
+      "steps": [
+        {
+          "title": "함수의 인수형",
+          "expression": "f(x)=(x-1)(x-2)(x-k)",
+          "explanation": "최고차항의 계수가 1이고 1과 2가 근이므로 남은 근을 k로 둡니다."
+        },
+        {
+          "title": "세 번째 근 결정",
+          "expression": "f'(0)=2k+k+2=-7\\Rightarrow k=-3",
+          "explanation": "도함수 조건을 인수형에 적용하여 세 번째 근을 구합니다."
+        },
+        {
+          "title": "직선 OP 구하기",
+          "expression": "f(3)=12,\\quad OP:y=4x",
+          "explanation": "P의 좌표가 (3,12)이므로 원점을 지나는 직선의 기울기는 4입니다."
+        },
+        {
+          "title": "넓이 차 계산",
+          "expression": "B-A=\\int_0^3\\{4x-f(x)\\}\\,dx=45/4",
+          "explanation": "두 영역의 차는 0부터 3까지 직선과 삼차함수의 세로 차를 적분한 값입니다."
+        }
+      ],
+      "correctReason": "직선과 곡선 사이의 넓이 차가 45/4이므로 정답은 ⑤입니다.",
+      "commonMistake": "그림의 두 영역을 각각 따로 적분하며 부호를 섞기보다 전체 넓이 차를 한 적분으로 묶어야 합니다.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_14": {
+      "id": "2025_csat_common_14",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 14,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "넓이비로 변의 비를 정하고 사인법칙과 코사인법칙으로 원의 반지름과 높이를 구해 최대 넓이를 계산합니다.",
+      "approach": "AD=AE=r로 두고 삼각형 넓이비, 외접원의 반지름, 원 위 점의 최대 높이를 차례로 연결합니다.",
+      "concepts": ["사인법칙과 코사인법칙", "삼각형 넓이의 최댓값"],
+      "steps": [
+        {
+          "title": "넓이비로 CE 결정",
+          "expression": "\\frac{\\frac12r^2\\sin A}{\\frac56r(r+x)\\sin A}=\\frac9{35}\\Rightarrow x=\\frac43r",
+          "explanation": "AD=AE=r, DB=2r/3, CE=x를 넓이 공식에 대입해 AC=7r/3을 얻습니다."
+        },
+        {
+          "title": "세 변의 비",
+          "expression": "AB=\\frac53r,\\quad AC=\\frac73r,\\quad BC=\\frac83r",
+          "explanation": "sinA:sinC=8:5를 사인법칙에 적용하여 BC까지 r로 나타냅니다."
+        },
+        {
+          "title": "각과 반지름 결정",
+          "expression": "\\cos C=11/14,\\quad\\sin C=5\\sqrt3/14,\\quad r=3\\sqrt3",
+          "explanation": "코사인법칙으로 sinC를 구하고 외접반지름 7에 대한 확대 사인법칙으로 r을 구합니다."
+        },
+        {
+          "title": "최대 높이",
+          "expression": "AH=AC\\sin C=15/2,\\quad QH=r+AH=3\\sqrt3+15/2",
+          "explanation": "BC에서 가장 멀리 떨어진 원 위 점 Q에서 삼각형 PBC의 높이가 최대입니다."
+        },
+        {
+          "title": "최대 넓이",
+          "expression": "\\frac12\\cdot\\frac83r\\cdot QH=36+30\\sqrt3",
+          "explanation": "밑변 BC와 최대 높이 QH를 삼각형 넓이 공식에 대입합니다."
+        }
+      ],
+      "correctReason": "원 위 점이 BC에서 가장 멀 때의 넓이가 36+30√3이므로 정답은 ④입니다.",
+      "commonMistake": "삼각형 ADE와 ABC의 넓이비에서 공통인 sinA를 약분한 뒤 각 변의 비를 일관되게 유지해야 합니다.",
+      "verification": {
+        "problemPage": 5,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_15": {
+      "id": "2025_csat_common_15",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 15,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "0에서의 미분가능성과 도함수 근의 배치 조건을 함께 적용하면 a=9, p=-5/2이고 합은 32입니다.",
+      "approach": "오른쪽 이차함수의 계수를 p로 두고 두 도함수의 근 집합이 정확히 네 점이 되는 겹침 조건을 풉니다.",
+      "concepts": ["조각함수의 미분가능성", "도함수의 근과 극값"],
+      "steps": [
+        {
+          "title": "오른쪽 함수 결정",
+          "expression": "f(x)=px^2+15x+7,\\quad p<0",
+          "explanation": "g(0)=7과 양쪽 미분계수 15의 일치, 이차함수의 음의 최고차항 조건을 반영합니다."
+        },
+        {
+          "title": "왼쪽 도함수의 근",
+          "expression": "h'(x)=3x^2+2ax+15,\\quad \\alpha<\\beta<0",
+          "explanation": "왼쪽 삼차함수가 극대와 극소를 가지는 경우 두 음의 근을 α와 β로 둡니다."
+        },
+        {
+          "title": "네 근 조건 정리",
+          "expression": "\\beta=\\alpha+4,\\quad -15/(2p)=\\beta+4",
+          "explanation": "g'(x)와 g'(x-4)의 근이 정확히 네 개가 되도록 겹치는 위치 관계를 적용합니다."
+        },
+        {
+          "title": "a와 p 계산",
+          "expression": "\\alpha(\\alpha+4)=5,\\quad\\alpha=-5\\Rightarrow a=9,\\ p=-5/2",
+          "explanation": "근과 계수의 관계와 음수 근 조건을 사용해 두 계수를 결정합니다."
+        },
+        {
+          "title": "함숫값의 합",
+          "expression": "g(-2)=5,\\quad g(2)=27,\\quad g(-2)+g(2)=32",
+          "explanation": "각 구간에 해당하는 식에 -2와 2를 대입하여 요구한 합을 구합니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 계수에서 g(-2)+g(2)=32이므로 정답은 ②입니다.",
+      "commonMistake": "도함수의 판별식만 확인하면 근의 개수 조건을 놓치므로 4만큼 이동한 근 집합의 겹침까지 확인해야 합니다.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_16": {
+      "id": "2025_csat_common_16",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 16,
+      "answer": "7",
+      "answerMark": null,
+      "summary": "로그의 진수 조건 x>3을 먼저 세우고 밑을 4로 통일하면 가능한 해는 7입니다.",
+      "approach": "밑이 2인 로그를 밑이 4인 로그로 변환한 뒤 진수가 같다는 조건과 정의역을 함께 적용합니다.",
+      "concepts": ["로그의 진수 조건", "로그의 밑변환"],
+      "steps": [
+        {
+          "title": "정의역 확인",
+          "expression": "x-3>0,\\quad3x-5>0\\Rightarrow x>3",
+          "explanation": "두 로그의 진수가 모두 양수여야 하므로 해의 범위를 먼저 제한합니다."
+        },
+        {
+          "title": "밑 통일",
+          "expression": "\\log_2(x-3)=\\log_4(x-3)^2",
+          "explanation": "밑 2의 로그를 밑 4의 로그로 바꾸면 진수를 제곱한 꼴로 나타낼 수 있습니다."
+        },
+        {
+          "title": "방정식 풀기",
+          "expression": "(x-3)^2=3x-5\\Rightarrow(x-2)(x-7)=0",
+          "explanation": "같은 밑의 로그가 같으므로 진수를 같게 놓고 이차방정식을 풉니다."
+        },
+        {
+          "title": "정의역 적용",
+          "expression": "x>3\\Rightarrow x=7",
+          "explanation": "두 후보 중 진수 조건을 만족하는 값만 남깁니다."
+        }
+      ],
+      "correctReason": "방정식의 두 근 가운데 로그의 정의역을 만족하는 값은 7뿐입니다.",
+      "commonMistake": "대수적으로 얻은 x=2를 그대로 답에 포함하지 말고 처음 세운 진수 조건으로 반드시 걸러야 합니다.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_17": {
+      "id": "2025_csat_common_17",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 17,
+      "answer": "33",
+      "answerMark": null,
+      "summary": "도함수를 부정적분하고 f(1)=6으로 적분상수를 정하면 f(2)=33입니다.",
+      "approach": "주어진 도함수를 항별로 적분한 다음 한 점의 함숫값을 이용해 상수를 결정합니다.",
+      "concepts": ["부정적분", "적분상수"],
+      "steps": [
+        {
+          "title": "원함수 구하기",
+          "expression": "f(x)=\\int(9x^2+4x)\\,dx=3x^3+2x^2+C",
+          "explanation": "도함수의 각 항을 적분하여 원함수의 일반형을 구합니다."
+        },
+        {
+          "title": "적분상수 결정",
+          "expression": "f(1)=3+2+C=6\\Rightarrow C=1",
+          "explanation": "주어진 함숫값을 대입하여 적분상수를 1로 정합니다."
+        },
+        {
+          "title": "f(2) 계산",
+          "expression": "f(2)=3\\cdot8+2\\cdot4+1=33",
+          "explanation": "완성된 함수에 x=2를 대입해 요구한 값을 계산합니다."
+        }
+      ],
+      "correctReason": "적분상수를 포함한 원함수에 2를 대입하면 값이 33입니다.",
+      "commonMistake": "도함수를 적분한 뒤 적분상수 C를 빠뜨리면 f(1)=6 조건을 반영할 수 없습니다.",
+      "verification": {
+        "problemPage": 6,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_18": {
+      "id": "2025_csat_common_18",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 18,
+      "answer": "96",
+      "answerMark": null,
+      "summary": "네 칸 떨어진 두 항의 합이 항상 12이므로 16개 항을 여덟 쌍으로 묶으면 합은 96입니다.",
+      "approach": "주어진 관계를 그대로 이용해 1~8항과 9~16항을 각각 네 쌍으로 묶습니다.",
+      "concepts": ["수열의 항 묶기", "합의 재배열"],
+      "steps": [
+        {
+          "title": "앞 여덟 항 묶기",
+          "expression": "\\sum_{n=1}^{8}a_n=\\sum_{n=1}^{4}(a_n+a_{n+4})=4\\cdot12=48",
+          "explanation": "1항부터 4항까지를 각각 네 칸 뒤의 항과 묶습니다."
+        },
+        {
+          "title": "뒤 여덟 항 묶기",
+          "expression": "\\sum_{n=9}^{16}a_n=\\sum_{n=9}^{12}(a_n+a_{n+4})=48",
+          "explanation": "같은 관계를 9항부터 12항까지 적용하면 뒤쪽 합도 48입니다."
+        },
+        {
+          "title": "전체 합",
+          "expression": "\\sum_{n=1}^{16}a_n=48+48=96",
+          "explanation": "두 구간의 합을 더해 첫 16개 항의 합을 구합니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 항의 쌍이 여덟 개이고 각 합이 12이므로 전체 합은 96입니다.",
+      "commonMistake": "aₙ+aₙ₊₄=12를 네 쌍에만 적용하고 9항부터 16항까지의 네 쌍을 빠뜨리지 않아야 합니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_19": {
+      "id": "2025_csat_common_19",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 19,
+      "answer": "41",
+      "answerMark": null,
+      "summary": "도함수의 두 근에서 극댓값 위치를 찾고 극댓값 7/27로 a를 결정하면 f(3)=41입니다.",
+      "approach": "삼차함수를 미분해 증가·감소를 판정하고 극댓값 조건으로 양수 a를 구합니다.",
+      "concepts": ["삼차함수의 극값", "도함수의 부호"],
+      "steps": [
+        {
+          "title": "도함수 인수분해",
+          "expression": "f'(x)=6x^2-6ax-12a^2=6(x+a)(x-2a)",
+          "explanation": "극값이 생기는 두 지점을 확인할 수 있도록 도함수를 인수분해합니다."
+        },
+        {
+          "title": "극댓값 위치",
+          "expression": "a>0\\Rightarrow x=-a\\text{ 에서 극대},\\quad f(-a)=7a^3",
+          "explanation": "도함수의 부호 변화를 확인하면 -a에서 증가에서 감소로 바뀝니다."
+        },
+        {
+          "title": "a 결정",
+          "expression": "7a^3=7/27\\Rightarrow a=1/3",
+          "explanation": "주어진 극댓값과 f(-a)를 같게 놓고 양수 a를 구합니다."
+        },
+        {
+          "title": "f(3) 계산",
+          "expression": "f(3)=2\\cdot27-9-4=41",
+          "explanation": "a=1/3을 원래 함수에 대입한 뒤 x=3에서 값을 계산합니다."
+        }
+      ],
+      "correctReason": "극댓값 조건으로 a=1/3을 얻고 계산한 f(3)의 값은 41입니다.",
+      "commonMistake": "도함수의 두 영점 중 어느 점이 극대인지 부호 변화를 확인하지 않고 임의로 선택하면 안 됩니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_20": {
+      "id": "2025_csat_common_20",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 20,
+      "answer": "36",
+      "answerMark": null,
+      "summary": "교점 조건으로 목표 입력을 1/5⁹로 바꾸고 f(12)=1/5⁹와 합성 조건을 연결하면 36입니다.",
+      "approach": "k의 교점식을 세제곱해 목표 분모를 정리한 뒤 지수함수 구간의 역대응과 f(f(x))=3x를 사용합니다.",
+      "concepts": ["지수함수의 교점", "합성함수"],
+      "steps": [
+        {
+          "title": "교점식 정리",
+          "expression": "(1/5)^{k-3}=k\\Rightarrow k5^k=5^3",
+          "explanation": "곡선과 직선의 교점에서 두 함숫값이 같다는 식을 정리합니다."
+        },
+        {
+          "title": "목표 입력 단순화",
+          "expression": "k^3\\cdot5^{3k}=(k5^k)^3=5^9",
+          "explanation": "교점식을 세제곱하여 문제에 주어진 복잡한 분모를 5의 거듭제곱으로 바꿉니다."
+        },
+        {
+          "title": "바깥 입력 찾기",
+          "expression": "f(12)=(1/5)^{12-3}=1/5^9",
+          "explanation": "12는 k보다 크므로 지수함수로 정의된 구간에서 목표 입력의 원상을 찾습니다."
+        },
+        {
+          "title": "합성 조건 적용",
+          "expression": "f(1/5^9)=f(f(12))=3\\cdot12=36",
+          "explanation": "x=12를 합성함수 조건에 대입하여 요구한 함숫값을 계산합니다."
+        }
+      ],
+      "correctReason": "목표 값은 f(f(12))와 같고 합성 조건에 따라 그 값은 36입니다.",
+      "commonMistake": "k를 수치로 근사하려 하지 말고 교점식 k5ᵏ=5³을 그대로 세제곱해 목표식을 변형해야 합니다.",
+      "verification": {
+        "problemPage": 7,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_21": {
+      "id": "2025_csat_common_21",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 21,
+      "answer": "16",
+      "answerMark": null,
+      "summary": "모든 점에서 극한이 존재하려면 삼차함수의 유일한 실근이 -1이어야 하며 정수 조건에서 f(1)의 최댓값은 16입니다.",
+      "approach": "분모의 영점에서 분자도 0이어야 한다는 조건을 반복 적용해 근을 제한하고 판별식으로 정수 범위를 구합니다.",
+      "concepts": ["함수의 극한과 영점", "삼차함수의 인수분해"],
+      "steps": [
+        {
+          "title": "근의 반복 조건",
+          "expression": "f(\\beta)=0\\Rightarrow f(2\\beta+1)=0",
+          "explanation": "분모가 0으로 가는 점에서 유한한 극한이 존재하려면 분자도 0으로 가야 합니다."
+        },
+        {
+          "title": "실근 결정",
+          "expression": "\\beta,\\ 2\\beta+1,\\ 4\\beta+3,\\ 8\\beta+7\\text{ 가 모두 근}\\Rightarrow\\beta=-1",
+          "explanation": "β가 -1이 아니면 삼차함수가 서로 다른 네 실근을 갖게 되므로 모순입니다."
+        },
+        {
+          "title": "계수 관계",
+          "expression": "f(-1)=0\\Rightarrow b=a+3",
+          "explanation": "유일한 실근 -1을 원래 삼차식에 대입해 두 계수의 관계를 구합니다."
+        },
+        {
+          "title": "다른 실근 차단",
+          "expression": "f(x)=(x+1)(x^2+(a-1)x+4),\\quad(a-1)^2-16<0",
+          "explanation": "이차인수가 실근을 갖지 않아야 하므로 판별식이 음수여야 합니다."
+        },
+        {
+          "title": "최댓값 계산",
+          "expression": "-3<a<5,\\quad f(1)=2a+8\\Rightarrow a=4,\\ f(1)=16",
+          "explanation": "정수 a의 가능한 범위에서 증가하는 식 2a+8의 최댓값을 구합니다."
+        }
+      ],
+      "correctReason": "허용되는 가장 큰 정수 a=4에서 f(1)의 최댓값은 16입니다.",
+      "commonMistake": "f(-1)=0만 확인하고 끝내면 이차인수가 추가 실근을 만드는 경우를 놓치므로 판별식 조건이 필요합니다.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    },
+    "2025_csat_common_22": {
+      "id": "2025_csat_common_22",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 공통",
+      "questionNumber": 22,
+      "answer": "64",
+      "answerMark": null,
+      "summary": "m=3에서 처음 절댓값이 같아지는 조건으로 a₃의 후보를 나누어 역추적하면 가능한 |a₁|의 합은 64입니다.",
+      "approach": "|a₃|=|a₅|를 홀짝에 따라 풀고 각 후보에서 점화식을 거꾸로 적용해 m=1,2의 조기 일치를 제외합니다.",
+      "concepts": ["귀납적으로 정의된 수열", "경우 나누기"],
+      "steps": [
+        {
+          "title": "a3 후보 결정",
+          "expression": "|a_3|=|a_5|\\Rightarrow a_3\\in\\{0,2,-6\\}",
+          "explanation": "a₃와 a₄의 홀짝에 따른 두 점화 규칙을 적용해 가능한 세 값을 얻습니다."
+        },
+        {
+          "title": "a3=0 역추적",
+          "expression": "a_3=0\\Rightarrow a_2=3\\Rightarrow a_1=6",
+          "explanation": "a₂=0인 갈래는 m=2에서 이미 절댓값이 같아지므로 제외합니다."
+        },
+        {
+          "title": "a3=2 역추적",
+          "expression": "a_3=2\\Rightarrow a_2\\in\\{5,4\\}\\Rightarrow a_1\\in\\{10,7,8\\}",
+          "explanation": "각 단계에서 홀수이면 3을 더하고 짝수이면 두 배하는 역연산을 모두 확인합니다."
+        },
+        {
+          "title": "a3=-6 역추적",
+          "expression": "a_3=-6\\Rightarrow a_2=-12\\Rightarrow a_1\\in\\{-9,-24\\}",
+          "explanation": "a₂=-3인 갈래는 m=2에서 절댓값이 같아져 제외하고 남는 경우만 역추적합니다."
+        },
+        {
+          "title": "절댓값 합",
+          "expression": "6+(10+7+8)+(9+24)=64",
+          "explanation": "모든 유효한 첫째항의 절댓값을 중복 없이 더합니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 첫째항 여섯 개의 절댓값을 합하면 64입니다.",
+      "commonMistake": "|a₃|=|a₅|만 맞는 후보를 모두 세면 안 되고 m=1이나 m=2에서 더 먼저 같은 경우를 제거해야 합니다.",
+      "verification": {
+        "problemPage": 8,
+        "answerTablePage": 1,
+        "problemMatchedPdf": true,
+        "choicesMatchedPdf": true,
+        "answerMatchedPdf": true,
+        "independentDerivation": true
+      }
+    }
+  }
+}
