@@ -1,0 +1,259 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2026학년도 대학수학능력시험 수학 확률과 통계 23~30번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "49941dc9c61394de593146693477b19859f44c99af822a88d2a69af283313622",
+    "verifiedAt": "2026-08-07",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung",
+      "independentSourceUrls": [
+        "https://univ2022.tistory.com/entry/2026-%EC%88%98%EB%8A%A5-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EC%84%A4",
+        "https://www.ebsi.co.kr"
+      ],
+      "solutionSourceUrls": [
+        "https://univ2022.tistory.com/entry/2026-%EC%88%98%EB%8A%A5-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EC%84%A4"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "74e7e4a614559c3a94618e568d00b0392b12e25b6f5caa5e86334768f080d850",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "mirror-problem.pdf",
+          "sha256": "4051cbbf1c3387116c51a33acc98bc63c793fdd9790206fb976918ef01f86e32"
+        }
+      ],
+      "answerFilename": "math_2026_csat_official_answer.pdf",
+      "answerSha256": "4a6482e853d2674cb79232abcf30d302197c374dd4b18aa9c80427660aec4f53",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "6e693645fe3dd35a03676f2bbb5832cf608f8a0d65bccf1fcb45506c72acd5ff"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지와 정답표를 대조하고 EBS 풀이를 독립 계산으로 다시 확인했습니다."
+  },
+  "items": {
+    "2026_csat_sta_23": {
+      "id": "2026_csat_sta_23",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 확률과 통계",
+      "questionNumber": 23,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "네 문자에서 중복을 허용해 세 자리를 채우므로 전체 경우의 수는 64입니다.",
+      "approach": "각 자리에 올 수 있는 문자 수를 확인하고 곱의 법칙을 바로 적용합니다.",
+      "concepts": ["중복순열", "곱의 법칙"],
+      "steps": [
+        {
+          "title": "자리별 선택",
+          "expression": "4\\times4\\times4",
+          "explanation": "세 자리마다 네 문자 중 하나를 독립적으로 선택할 수 있습니다."
+        },
+        {
+          "title": "경우의 수",
+          "expression": "{}_4\\Pi_3=4^3=64",
+          "explanation": "중복을 허용하는 세 자리 배열은 모두 64가지입니다."
+        }
+      ],
+      "correctReason": "계산값 64가 세 번째 선지와 일치하므로 정답은 ③입니다.",
+      "commonMistake": "중복을 허용한다는 조건을 놓치고 서로 다른 세 문자만 뽑아 순열로 계산하면 안 됩니다.",
+      "verification": {"problemPage": 9, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_sta_24": {
+      "id": "2026_csat_sta_24",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 확률과 통계",
+      "questionNumber": 24,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "조건부확률로 교집합을 구한 뒤 합사건의 확률식을 풀면 P(B)는 7/10입니다.",
+      "approach": "먼저 P(A∩B)를 계산하고 확률의 덧셈정리에 대입합니다.",
+      "concepts": ["조건부확률", "확률의 덧셈정리"],
+      "steps": [
+        {
+          "title": "교집합 계산",
+          "expression": "P(A\\cap B)=P(A)P(B\\mid A)=\\frac25\\cdot\\frac14=\\frac1{10}",
+          "explanation": "조건부확률 식을 변형하여 두 사건의 교집합 확률을 구합니다."
+        },
+        {
+          "title": "합사건 적용",
+          "expression": "1=\\frac25+P(B)-\\frac1{10}\\Rightarrow P(B)=\\frac7{10}",
+          "explanation": "합사건의 확률이 1이라는 조건으로 P(B)를 정리합니다."
+        }
+      ],
+      "correctReason": "P(B)=7/10이므로 이에 해당하는 정답은 ①입니다.",
+      "commonMistake": "P(B|A)를 P(A∩B)와 같은 값으로 두지 말고 반드시 P(A)를 곱해야 합니다.",
+      "verification": {"problemPage": 9, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_sta_25": {
+      "id": "2026_csat_sta_25",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 확률과 통계",
+      "questionNumber": 25,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "같은 색인 20쌍과 같은 수인 4쌍은 겹치지 않아 확률은 8/15입니다.",
+      "approach": "전체 두 공 조합을 분모로 두고 두 조건을 만족하는 조합을 각각 셉니다.",
+      "concepts": ["조합", "배반사건의 합"],
+      "steps": [
+        {
+          "title": "전체와 같은 색",
+          "expression": "\\binom{10}{2}=45,\\qquad 2\\binom52=20",
+          "explanation": "전체 45쌍 중 흰 공끼리 또는 검은 공끼리인 쌍은 20개입니다."
+        },
+        {
+          "title": "같은 수 합산",
+          "expression": "\\frac{20+4}{45}=\\frac{24}{45}=\\frac8{15}",
+          "explanation": "서로 다른 색이면서 같은 수인 2, 3, 4, 5의 네 쌍을 더합니다."
+        }
+      ],
+      "correctReason": "구한 확률 8/15와 일치하는 선지는 ②입니다.",
+      "commonMistake": "같은 색인 두 공은 같은 수가 될 수 없으므로 두 사건의 교집합을 다시 빼면 안 됩니다.",
+      "verification": {"problemPage": 10, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_sta_26": {
+      "id": "2026_csat_sta_26",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 확률과 통계",
+      "questionNumber": 26,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "99% 신뢰구간의 한쪽 오차가 2.15이므로 구간의 오른쪽 끝은 5.5입니다.",
+      "approach": "표준편차와 표본 크기로 오차 한계를 구한 뒤 구간 전체 길이를 이용합니다.",
+      "concepts": ["모평균의 신뢰구간", "표본평균의 표준오차"],
+      "steps": [
+        {
+          "title": "오차 한계",
+          "expression": "2.58\\cdot\\frac5{\\sqrt{36}}=2.15",
+          "explanation": "99% 신뢰구간에서 표본평균의 양쪽 오차 한계를 계산합니다."
+        },
+        {
+          "title": "오른쪽 끝",
+          "expression": "a-1.2=2\\cdot2.15=4.3\\Rightarrow a=5.5",
+          "explanation": "신뢰구간 전체 길이는 오차 한계의 두 배이므로 오른쪽 끝을 구할 수 있습니다."
+        }
+      ],
+      "correctReason": "신뢰구간의 오른쪽 끝 a가 5.5이므로 정답은 ⑤입니다.",
+      "commonMistake": "2.15는 구간 전체 폭이 아니라 중심에서 한쪽 끝까지의 거리입니다.",
+      "verification": {"problemPage": 10, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_sta_27": {
+      "id": "2026_csat_sta_27",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 확률과 통계",
+      "questionNumber": 27,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "확률의 총합으로 a=1/6을 얻고 분산의 상수배 성질을 적용하면 45입니다.",
+      "approach": "확률분포를 완성한 뒤 E(X), E(X²), V(X)를 차례로 계산합니다.",
+      "concepts": ["이산확률분포", "분산의 성질"],
+      "steps": [
+        {
+          "title": "확률과 기댓값",
+          "expression": "a=1-\\frac{1+1+3+5}{12}=\\frac16,\\qquad E(X)=\\frac52",
+          "explanation": "확률의 합이 1이라는 조건을 이용해 a와 평균을 구합니다."
+        },
+        {
+          "title": "분산 계산",
+          "expression": "E(X^2)=\\frac{15}{2},\\quad V(X)=\\frac54,\\quad V(6X)=36\\cdot\\frac54=45",
+          "explanation": "1/a=6이고 분산은 상수배의 제곱만큼 변합니다."
+        }
+      ],
+      "correctReason": "V((1/a)X)=45이므로 이에 해당하는 정답은 ④입니다.",
+      "commonMistake": "V(cX)=cV(X)가 아니라 c²V(X)이므로 상수 6을 제곱해야 합니다.",
+      "verification": {"problemPage": 11, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_sta_28": {
+      "id": "2026_csat_sta_28",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 확률과 통계",
+      "questionNumber": 28,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "전체 공 수가 홀수인 경우와 추가 조건을 함께 만족하는 경우를 분류하면 조건부확률은 3/16입니다.",
+      "approach": "주사위 눈을 홀수, 4, 2·6의 세 부류로 묶어 네 번의 시행 구성을 셉니다.",
+      "concepts": ["조건부확률", "다항시행의 경우 분류"],
+      "steps": [
+        {
+          "title": "조건 사건 계산",
+          "expression": "P(A)=\\frac{216+216+168+40}{6^4}=\\frac{640}{6^4}",
+          "explanation": "네 번 뒤 전체 공 수가 홀수인 시행 구성을 빠짐없이 분류합니다."
+        },
+        {
+          "title": "교집합과 비율",
+          "expression": "P(A\\cap B)=\\frac{120}{6^4},\\qquad P(B\\mid A)=\\frac{120}{640}=\\frac3{16}",
+          "explanation": "3번 상자가 2번 상자보다 하나 많은 구성만 다시 세어 조건부확률을 구합니다."
+        }
+      ],
+      "correctReason": "조건부확률이 3/16이므로 이에 해당하는 정답은 ②입니다.",
+      "commonMistake": "전체 공의 합이 홀수라는 조건을 분모에 반영하지 않고 교집합 확률만 구하면 안 됩니다.",
+      "verification": {"problemPage": 11, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_sta_29": {
+      "id": "2026_csat_sta_29",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 확률과 통계",
+      "questionNumber": 29,
+      "answer": "977",
+      "answerMark": null,
+      "summary": "기댓값 조건으로 a=4를 구하고 이항분포를 정규분포로 근사하면 답은 977입니다.",
+      "approach": "한 시행의 성공확률을 a로 나타낸 뒤 평균과 분산을 이용해 표준화합니다.",
+      "concepts": ["이항분포", "정규분포 근사"],
+      "steps": [
+        {
+          "title": "성공확률과 a",
+          "expression": "p=\\frac a6\\binom53\\frac1{2^5}+\\frac{6-a}{6}\\frac1{2^3}=\\frac{a+4}{32},\\quad 19200p=4800\\Rightarrow a=4",
+          "explanation": "동전을 다섯 번 또는 세 번 던지는 두 경우를 합쳐 성공확률을 구합니다."
+        },
+        {
+          "title": "정규 근사",
+          "expression": "X\\approx N(4800,60^2),\\quad z=\\frac{4920-4800}{60}=2,\\quad k=0.5+0.477=0.977",
+          "explanation": "평균 4800과 표준편차 60으로 경계값을 표준화합니다."
+        },
+        {
+          "title": "요구값 계산",
+          "expression": "1000k=1000\\times0.977=977",
+          "explanation": "표에서 구한 누적확률에 1000을 곱해 최종 값을 얻습니다."
+        }
+      ],
+      "correctReason": "정규분포표로 얻은 k가 0.977이므로 요구한 값은 977입니다.",
+      "commonMistake": "이항분포의 분산 3600을 표준편차로 착각하지 말고 제곱근 60으로 표준화해야 합니다.",
+      "verification": {"problemPage": 12, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_sta_30": {
+      "id": "2026_csat_sta_30",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 확률과 통계",
+      "questionNumber": 30,
+      "answer": "262",
+      "answerMark": null,
+      "summary": "한 개 든 주머니가 4개인 경우 150가지와 6개인 경우 112가지를 더하면 262입니다.",
+      "approach": "빈 주머니를 먼저 놓고 2개 든 주머니와 1개 든 주머니의 위치를 차례로 셉니다.",
+      "concepts": ["중복조합", "경우의 수 분할"],
+      "steps": [
+        {
+          "title": "한 개 주머니 네 개",
+          "expression": "\\binom52\\cdot{}_3H_4=10\\cdot\\binom64=150",
+          "explanation": "빈 주머니 네 개의 다섯 틈에 2개 든 주머니 둘을 놓고 남은 세 틈에 한 개 든 주머니를 배치합니다."
+        },
+        {
+          "title": "한 개 주머니 여섯 개",
+          "expression": "\\binom41\\cdot{}_3H_6=4\\cdot\\binom86=112",
+          "explanation": "빈 주머니 세 개의 네 틈에 2개 든 주머니 하나를 놓고 나머지 세 틈을 사용합니다."
+        },
+        {
+          "title": "두 경우 합산",
+          "expression": "150+112=262",
+          "explanation": "조건에서 허용한 두 경우는 서로 겹치지 않으므로 합을 구합니다."
+        }
+      ],
+      "correctReason": "두 경우의 수를 합하면 문제에서 요구한 값은 262입니다.",
+      "commonMistake": "공 두 개가 든 주머니 양옆은 반드시 비어 있어야 하므로 모든 주머니 배열을 단순 조합으로 세면 안 됩니다.",
+      "verification": {"problemPage": 12, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

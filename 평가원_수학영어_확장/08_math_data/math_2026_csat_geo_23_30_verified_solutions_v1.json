@@ -1,0 +1,284 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2026학년도 대학수학능력시험 수학 기하 23~30번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "7d82e0ce5e75c49646e458b7d87d626fbf7b95decbafd07f2e877f0ff796350e",
+    "verifiedAt": "2026-08-07",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung",
+      "independentSourceUrls": [
+        "https://univ2022.tistory.com/entry/2026-%EC%88%98%EB%8A%A5-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EC%84%A4",
+        "https://www.ebsi.co.kr"
+      ],
+      "solutionSourceUrls": [
+        "https://univ2022.tistory.com/entry/2026-%EC%88%98%EB%8A%A5-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EC%84%A4"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "74e7e4a614559c3a94618e568d00b0392b12e25b6f5caa5e86334768f080d850",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "mirror-problem.pdf",
+          "sha256": "4051cbbf1c3387116c51a33acc98bc63c793fdd9790206fb976918ef01f86e32"
+        }
+      ],
+      "answerFilename": "math_2026_csat_official_answer.pdf",
+      "answerSha256": "4a6482e853d2674cb79232abcf30d302197c374dd4b18aa9c80427660aec4f53",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "6e693645fe3dd35a03676f2bbb5832cf608f8a0d65bccf1fcb45506c72acd5ff"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지와 정답표를 대조하고 EBS 풀이를 독립 계산으로 다시 확인했습니다."
+  },
+  "items": {
+    "2026_csat_geo_23": {
+      "id": "2026_csat_geo_23",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 23,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "두 벡터를 성분끼리 더하면 (3,0)이므로 모든 성분의 합은 3입니다.",
+      "approach": "같은 위치의 성분을 더한 뒤 얻은 벡터의 두 성분을 다시 합합니다.",
+      "concepts": ["벡터의 덧셈", "벡터의 성분"],
+      "steps": [
+        {
+          "title": "벡터 합",
+          "expression": "\\vec a+\\vec b=(4,1)+(-1,-1)=(3,0)",
+          "explanation": "첫 번째 성분과 두 번째 성분을 각각 더합니다."
+        },
+        {
+          "title": "성분의 합",
+          "expression": "3+0=3",
+          "explanation": "결과 벡터의 모든 성분을 더해 요구한 값을 구합니다."
+        }
+      ],
+      "correctReason": "모든 성분의 합이 3이므로 정답은 ③입니다.",
+      "commonMistake": "벡터의 크기를 구하는 문제가 아니라 두 성분 자체를 더하는 문제입니다.",
+      "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_geo_24": {
+      "id": "2026_csat_geo_24",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 24,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "표준형 y²=4p(x-2)에서 p=3이므로 초점과 준선 사이 거리는 6입니다.",
+      "approach": "평행이동된 포물선의 초점과 준선을 표준형의 매개변수로 찾습니다.",
+      "concepts": ["포물선의 표준형", "초점과 준선"],
+      "steps": [
+        {
+          "title": "매개변수 확인",
+          "expression": "y^2=12(x-2)=4\\cdot3(x-2)\\Rightarrow p=3",
+          "explanation": "포물선의 꼭짓점이 이동해도 초점과 준선의 상대 거리는 p로 정해집니다."
+        },
+        {
+          "title": "거리 계산",
+          "expression": "2p=2\\cdot3=6",
+          "explanation": "초점은 꼭짓점에서 p, 준선은 반대 방향으로 p만큼 떨어져 있습니다."
+        }
+      ],
+      "correctReason": "초점과 준선 사이 거리가 6이므로 정답은 ①입니다.",
+      "commonMistake": "x방향 평행이동량 2를 초점과 준선 사이 거리인 2p에 더하지 않습니다.",
+      "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_geo_25": {
+      "id": "2026_csat_geo_25",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 25,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "두 대칭이동 점의 좌표 차는 (0,3,4)이므로 선분 BC의 길이는 5입니다.",
+      "approach": "yz평면 대칭과 원점 대칭에서 바뀌는 좌표 부호를 각각 적용합니다.",
+      "concepts": ["공간좌표의 대칭이동", "두 점 사이 거리"],
+      "steps": [
+        {
+          "title": "대칭점 좌표",
+          "expression": "B=\\left(-3,-\\frac32,-2\\right),\\qquad C=\\left(-3,\\frac32,2\\right)",
+          "explanation": "yz평면 대칭은 x만, 원점 대칭은 세 좌표의 부호를 모두 바꿉니다."
+        },
+        {
+          "title": "거리 계산",
+          "expression": "BC=\\sqrt{0^2+3^2+4^2}=5",
+          "explanation": "B와 C의 좌표 차를 공간의 거리 공식에 대입합니다."
+        }
+      ],
+      "correctReason": "선분 BC의 길이가 5이므로 정답은 ⑤입니다.",
+      "commonMistake": "yz평면에 대한 대칭에서는 y와 z가 아니라 x좌표의 부호만 바뀝니다.",
+      "verification": {"problemPage": 18, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_geo_26": {
+      "id": "2026_csat_geo_26",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 26,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "접선의 y절편과 두 초점의 좌표를 구해 거리의 곱을 계산하면 a=4√3/3입니다.",
+      "approach": "쌍곡선 접선 공식으로 P를 구하고 같은 축 위의 세 점 사이 거리를 곱합니다.",
+      "concepts": ["쌍곡선의 초점", "쌍곡선의 접선"],
+      "steps": [
+        {
+          "title": "접선과 점 P",
+          "expression": "x-\\sqrt2y+a=0\\Rightarrow P=\\left(0,\\frac a{\\sqrt2}\\right)",
+          "explanation": "주어진 점에서의 접선에 x=0을 대입해 y축과의 교점을 구합니다."
+        },
+        {
+          "title": "초점과 거리 곱",
+          "expression": "F=(0,\\sqrt2a),\\quad F'=(0,-\\sqrt2a),\\quad PF\\cdot PF'=\\frac32a^2=8",
+          "explanation": "쌍곡선의 초점 거리 c=√2a를 사용해 두 선분 길이를 계산합니다."
+        },
+        {
+          "title": "a 계산",
+          "expression": "a^2=\\frac{16}{3}\\Rightarrow a=\\frac{4\\sqrt3}{3}",
+          "explanation": "a가 양수라는 조건으로 양의 제곱근을 선택합니다."
+        }
+      ],
+      "correctReason": "a=4√3/3과 일치하는 선지는 ②입니다.",
+      "commonMistake": "두 초점은 y축 위의 (0,±√2a)에 있으므로 초점축을 x축으로 잘못 잡으면 안 됩니다.",
+      "verification": {"problemPage": 18, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_geo_27": {
+      "id": "2026_csat_geo_27",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 27,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "밑면에서 현 사이 거리를 2로 구하고 등변사다리꼴의 높이 조건을 쓰면 원기둥 높이는 √21입니다.",
+      "approach": "윗면의 현을 밑면으로 옮겨 평면 거리와 공간 높이를 직각삼각형으로 분리합니다.",
+      "concepts": ["삼수선의 정리", "원기둥과 공간거리"],
+      "steps": [
+        {
+          "title": "밑면 거리",
+          "expression": "HH'=\\sqrt{\\left(\\frac52\\right)^2-\\left(\\frac32\\right)^2}=2,\\qquad [ABH]=\\frac12\\cdot5\\cdot2=5",
+          "explanation": "길이 3인 현의 중점 거리와 반지름으로 H에서 지름 AB까지 거리를 구합니다."
+        },
+        {
+          "title": "사다리꼴 높이",
+          "expression": "[ABCD]=\\frac12(5+3)DH'=4DH'=4\\cdot5\\Rightarrow DH'=5",
+          "explanation": "ABCD는 밑변 5와 3을 가진 등변사다리꼴이고 넓이는 삼각형의 네 배입니다."
+        },
+        {
+          "title": "원기둥 높이",
+          "expression": "DH=\\sqrt{DH'^2-HH'^2}=\\sqrt{25-4}=\\sqrt{21}",
+          "explanation": "공간의 수선 DH와 평면 거리 HH′가 이루는 직각삼각형을 사용합니다."
+        }
+      ],
+      "correctReason": "원기둥의 높이가 √21이므로 정답은 ④입니다.",
+      "commonMistake": "사다리꼴의 높이 DH′와 원기둥의 수직 높이 DH는 서로 다른 길이입니다.",
+      "verification": {"problemPage": 19, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_geo_28": {
+      "id": "2026_csat_geo_28",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 28,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "도형 T의 반지름은 1이고 두 관련 평면의 각의 코사인이 1/4이므로 정사영 넓이는 π/4입니다.",
+      "approach": "수직인 두 평면에서 구의 절단원을 찾고 면적비로 정사영 축척을 구합니다.",
+      "concepts": ["구의 평면 절단", "정사영의 넓이"],
+      "steps": [
+        {
+          "title": "정삼각형 확인",
+          "expression": "CH=DH=2,\\quad BH=\\sqrt{(2\\sqrt5)^2-2^2}=4\\Rightarrow AB=AH=BH=4",
+          "explanation": "삼각형 ABH가 한 변의 길이가 4인 정삼각형임을 먼저 확인합니다."
+        },
+        {
+          "title": "도형 T의 반지름",
+          "expression": "AG=\\frac{4\\sqrt3}{3},\\quad GI=\\frac{2\\sqrt3}{3},\\quad AI=2,\\quad AI\\cdot GI=AG\\cdot r\\Rightarrow r=1",
+          "explanation": "구의 중심 G와 평면 ACD 사이 거리로 절단원의 반지름을 구합니다."
+        },
+        {
+          "title": "평면 사이 각",
+          "expression": "[ABC]=8,\\quad [JBC]=2\\Rightarrow\\cos\\theta=\\frac14",
+          "explanation": "삼각형 ABC와 그 평면 BCD 위 정사영의 넓이 비를 사용합니다."
+        },
+        {
+          "title": "정사영 넓이",
+          "expression": "\\pi r^2\\cos\\theta=\\pi\\cdot1^2\\cdot\\frac14=\\frac\\pi4",
+          "explanation": "원의 넓이에 두 평면이 이루는 각의 코사인을 곱합니다."
+        }
+      ],
+      "correctReason": "정사영의 넓이가 π/4이므로 정답은 ④입니다.",
+      "commonMistake": "도형 T의 원 넓이 π를 그대로 답하지 말고 평면 ABC로의 정사영 비율 1/4을 곱해야 합니다.",
+      "verification": {"problemPage": 19, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_geo_29": {
+      "id": "2026_csat_geo_29",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 29,
+      "answer": "360",
+      "answerMark": null,
+      "summary": "타원의 대칭성과 포물선 정의로 p=9와 A=(1,6)을 얻으면 HF²은 360입니다.",
+      "approach": "삼각형 둘레로 포물선 매개변수 p를 먼저 구하고 넓이 조건으로 점 A를 결정합니다.",
+      "concepts": ["포물선의 정의", "타원의 대칭성"],
+      "steps": [
+        {
+          "title": "둘레로 p 계산",
+          "expression": "AB+BH+AH=4p=p+27\\Rightarrow p=9",
+          "explanation": "타원의 초점 거리 합과 포물선의 AF=AH 성질로 둘레를 4p로 정리합니다."
+        },
+        {
+          "title": "점 A 결정",
+          "expression": "y_1^2=36x_1,\\quad \\frac12(9+x_1)y_1=30\\Rightarrow x_1=1,\\ y_1=6",
+          "explanation": "포물선 방정식과 삼각형 넓이 조건을 함께 풀어 A의 좌표를 구합니다."
+        },
+        {
+          "title": "HF 제곱",
+          "expression": "HF^2=(2p)^2+y_1^2=18^2+6^2=360",
+          "explanation": "F와 H의 수평 거리 18과 수직 거리 6으로 피타고라스 정리를 적용합니다."
+        }
+      ],
+      "correctReason": "계산한 k²의 값이 360이므로 최종 답은 360입니다.",
+      "commonMistake": "포물선의 초점 거리 AF와 준선까지 거리 AH가 같다는 조건을 타원의 초점 거리 합과 혼동하지 않아야 합니다.",
+      "verification": {"problemPage": 20, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_geo_30": {
+      "id": "2026_csat_geo_30",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 30,
+      "answer": "221",
+      "answerMark": null,
+      "summary": "원의 중심 벡터로 조건을 정리한 뒤 필요한 내적을 계산하면 절댓값은 196/25이고 답은 221입니다.",
+      "approach": "선분 AB의 중점을 원점으로 두고 모든 점의 위치벡터 길이가 같다는 성질을 사용합니다.",
+      "concepts": ["벡터의 내적", "지름에 대한 원주각"],
+      "steps": [
+        {
+          "title": "P와 B의 내적",
+          "expression": "|OA|=|OB|=|OP|=|OQ|=5\\sqrt2,\\quad OP\\cdot OB=\\frac{50+50-196}{2}=-48",
+          "explanation": "삼각형 OBP에서 PB=14를 사용해 두 위치벡터의 내적을 구합니다."
+        },
+        {
+          "title": "조건식 정리",
+          "expression": "296-2OP\\cdot OQ=2(100-2OP\\cdot OQ)\\Rightarrow OP\\cdot OQ=-48",
+          "explanation": "주어진 벡터식을 중심 O에 대한 위치벡터로 모두 바꿔 정리합니다."
+        },
+        {
+          "title": "짧은 현의 길이",
+          "expression": "PA=\\sqrt{AB^2-PB^2}=\\sqrt{200-196}=2",
+          "explanation": "AB가 지름이므로 삼각형 APB가 직각삼각형이라는 성질을 이용합니다."
+        },
+        {
+          "title": "요구한 내적",
+          "expression": "|PA\\cdot QB|=\\left|-\\frac{96}{25}-4\\right|=\\frac{196}{25}\\Rightarrow p+q=25+196=221",
+          "explanation": "같은 중심각 관계로 얻은 보조 내적과 지름 방향 내적을 합쳐 기약분수를 구합니다."
+        }
+      ],
+      "correctReason": "기약분수에서 p=25, q=196이므로 요구한 p+q는 221입니다.",
+      "commonMistake": "벡터의 길이끼리 곱한 값과 내적을 같게 두지 말고 두 벡터 사이 각의 코사인을 반영해야 합니다.",
+      "verification": {"problemPage": 20, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

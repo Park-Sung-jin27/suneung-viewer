@@ -1,0 +1,269 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2026학년도 대학수학능력시험 수학 미적분 23~30번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "9851683a8139fed7f207e3093bd45830062a78d2d92a6152879c3830652a33a0",
+    "verifiedAt": "2026-08-07",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung",
+      "independentSourceUrls": [
+        "https://univ2022.tistory.com/entry/2026-%EC%88%98%EB%8A%A5-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EC%84%A4",
+        "https://www.ebsi.co.kr"
+      ],
+      "solutionSourceUrls": [
+        "https://univ2022.tistory.com/entry/2026-%EC%88%98%EB%8A%A5-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EC%84%A4"
+      ],
+      "problemFilename": "kice-problem.pdf",
+      "problemSha256": "74e7e4a614559c3a94618e568d00b0392b12e25b6f5caa5e86334768f080d850",
+      "problemReplicaArtifacts": [
+        {
+          "filename": "mirror-problem.pdf",
+          "sha256": "4051cbbf1c3387116c51a33acc98bc63c793fdd9790206fb976918ef01f86e32"
+        }
+      ],
+      "answerFilename": "math_2026_csat_official_answer.pdf",
+      "answerSha256": "4a6482e853d2674cb79232abcf30d302197c374dd4b18aa9c80427660aec4f53",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "6e693645fe3dd35a03676f2bbb5832cf608f8a0d65bccf1fcb45506c72acd5ff"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지와 정답표를 대조하고 EBS 풀이를 독립 계산으로 다시 확인했습니다."
+  },
+  "items": {
+    "2026_csat_cal_23": {
+      "id": "2026_csat_cal_23",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 23,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "tan t/t의 기본 극한으로 식을 바꾸면 전체 극한값은 3입니다.",
+      "approach": "분모를 tan 6x의 각과 맞춘 뒤 기본 삼각함수 극한을 적용합니다.",
+      "concepts": ["삼각함수의 극한", "치환"],
+      "steps": [
+        {
+          "title": "형태 변환",
+          "expression": "\\frac{\\tan6x}{2x}=3\\cdot\\frac{\\tan6x}{6x}",
+          "explanation": "기본 극한에 맞도록 분모를 6x로 만들고 계수 3을 분리합니다."
+        },
+        {
+          "title": "기본 극한 적용",
+          "expression": "\\lim_{x\\to0}3\\frac{\\tan6x}{6x}=3\\cdot1=3",
+          "explanation": "6x도 0으로 가므로 tan t/t의 극한값 1을 적용합니다."
+        }
+      ],
+      "correctReason": "극한값 3과 일치하는 선지는 ③입니다.",
+      "commonMistake": "tan 6x의 계수 6과 원래 분모의 계수 2의 비를 빠뜨리지 않아야 합니다.",
+      "verification": {"problemPage": 13, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_cal_24": {
+      "id": "2026_csat_cal_24",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 24,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "근호 안을 sin x cos²x로 정리하고 치환적분하면 값은 2/3입니다.",
+      "approach": "구간에서 cos x가 음수가 아님을 확인한 뒤 t=sin x로 치환합니다.",
+      "concepts": ["치환적분", "삼각함수 항등식"],
+      "steps": [
+        {
+          "title": "근호 정리",
+          "expression": "\\sqrt{\\sin x-\\sin^3x}=\\sqrt{\\sin x\\cos^2x}=\\sqrt{\\sin x}\\cos x",
+          "explanation": "0부터 π/2까지 cos x가 0 이상이므로 절댓값 없이 정리할 수 있습니다."
+        },
+        {
+          "title": "치환적분",
+          "expression": "\\int_0^{\\pi/2}\\sqrt{\\sin x}\\cos x\\,dx=\\int_0^1\\sqrt t\\,dt=\\frac23",
+          "explanation": "t=sin x로 두면 적분 구간이 0에서 1로 바뀝니다."
+        }
+      ],
+      "correctReason": "정적분의 값이 2/3이므로 정답은 ④입니다.",
+      "commonMistake": "근호에서 cos²x를 꺼낼 때 일반적으로 |cos x|지만 이 구간에서는 cos x입니다.",
+      "verification": {"problemPage": 13, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_cal_25": {
+      "id": "2026_csat_cal_25",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 25,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "샌드위치 정리로 a_n/n의 극한이 5임을 구하면 전체 극한은 5/2입니다.",
+      "approach": "부등식을 n으로 나누어 핵심 비율의 극한을 먼저 확정합니다.",
+      "concepts": ["수열의 극한", "샌드위치 정리"],
+      "steps": [
+        {
+          "title": "핵심 비율",
+          "expression": "\\sqrt{9-\\frac5{n^2}}+2<\\frac{a_n}{n}<5+\\frac1n\\Rightarrow\\lim_{n\\to\\infty}\\frac{a_n}{n}=5",
+          "explanation": "양쪽 수열이 모두 5로 수렴하므로 가운데 수열도 5로 수렴합니다."
+        },
+        {
+          "title": "전체 극한",
+          "expression": "\\lim\\frac{(a_n/n+2/n)^2}{a_n/n+5-2/n^2}=\\frac{5^2}{5+5}=\\frac52",
+          "explanation": "분자와 분모를 n²으로 나누고 앞에서 구한 극한을 대입합니다."
+        }
+      ],
+      "correctReason": "전체 수열의 극한값이 5/2이므로 정답은 ③입니다.",
+      "commonMistake": "a_n 자체가 5로 수렴하는 것이 아니라 a_n/n이 5로 수렴한다는 점을 구분해야 합니다.",
+      "verification": {"problemPage": 14, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_cal_26": {
+      "id": "2026_csat_cal_26",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 26,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "정삼각형 단면의 넓이를 적분하면 부피는 √3(3+8 ln2)/16입니다.",
+      "approach": "곡선의 함수값을 정삼각형 한 변의 길이로 보고 단면적을 적분합니다.",
+      "concepts": ["단면적과 부피", "부분적분"],
+      "steps": [
+        {
+          "title": "단면적 설정",
+          "expression": "A(x)=\\frac{\\sqrt3}{4}\\left(\\sqrt{x+x\\ln x}\\right)^2=\\frac{\\sqrt3}{4}x(1+\\ln x)",
+          "explanation": "각 단면은 한 변이 곡선 높이인 정삼각형입니다."
+        },
+        {
+          "title": "부피 적분",
+          "expression": "V=\\frac{\\sqrt3}{4}\\int_1^2x(1+\\ln x)\\,dx=\\frac{\\sqrt3}{16}(3+8\\ln2)",
+          "explanation": "1부터 2까지 단면적을 적분하고 부분적분으로 값을 정리합니다."
+        }
+      ],
+      "correctReason": "계산한 부피와 일치하는 선지는 ①입니다.",
+      "commonMistake": "곡선 높이는 단면의 한 변이므로 정삼각형 넓이 공식에서 반드시 제곱해야 합니다.",
+      "verification": {"problemPage": 14, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_cal_27": {
+      "id": "2026_csat_cal_27",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 27,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "교점 조건에서 t=1/4를 얻고 dy/dt를 dx/dt로 나누면 기울기가 결정됩니다.",
+      "approach": "직선 식에 매개변수 좌표를 대입한 뒤 매개변수 미분으로 접선 기울기를 구합니다.",
+      "concepts": ["매개변수 미분", "곡선과 직선의 교점"],
+      "steps": [
+        {
+          "title": "교점의 매개변수",
+          "expression": "y-3x=-5e^{4t}=-5e\\Rightarrow e^{4t}=e\\Rightarrow t=\\frac14",
+          "explanation": "sin²과 cos²의 합을 이용하면 교점 조건이 지수식 하나로 정리됩니다."
+        },
+        {
+          "title": "접선 기울기",
+          "expression": "\\left.\\frac{dy}{dx}\\right|_{t=1/4}=\\frac{4-6+3\\pi}{4+2+\\pi}=\\frac{3\\pi-2}{\\pi+6}",
+          "explanation": "dx/dt와 dy/dt에 t=1/4를 대입한 뒤 비를 계산합니다."
+        }
+      ],
+      "correctReason": "접선 기울기가 (3π-2)/(π+6)이므로 정답은 ②입니다.",
+      "commonMistake": "매개변수 곡선의 기울기는 dy/dt가 아니라 (dy/dt)/(dx/dt)입니다.",
+      "verification": {"problemPage": 15, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_cal_28": {
+      "id": "2026_csat_cal_28",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 28,
+      "answer": "5",
+      "answerMark": "⑤",
+      "summary": "거리 조건을 t=s³/(s+1)로 바꾸고 역함수 적분을 적용하면 157/12+ln2입니다.",
+      "approach": "접선의 y절편으로 거리식을 만든 뒤 s=g(t)를 이용해 변수를 바꿉니다.",
+      "concepts": ["역함수 적분", "부분적분"],
+      "steps": [
+        {
+          "title": "거리와 경계",
+          "expression": "t=\\frac{s^3}{s+1},\\qquad t=\\frac12\\Rightarrow s=1,\\quad t=\\frac{27}{4}\\Rightarrow s=3",
+          "explanation": "접점과 두 y축 위 점 사이 거리에서 t와 s의 관계를 얻습니다."
+        },
+        {
+          "title": "부분적분 변환",
+          "expression": "\\int_{1/2}^{27/4}g(t)\\,dt=\\left[tg(t)\\right]_{1/2}^{27/4}-\\int_1^3\\frac{s^3}{s+1}\\,ds",
+          "explanation": "s=g(t)를 사용하면 두 번째 적분은 s에 관한 유리식 적분이 됩니다."
+        },
+        {
+          "title": "값 계산",
+          "expression": "\\frac{79}{4}-\\left(\\frac{20}{3}-\\ln2\\right)=\\frac{157}{12}+\\ln2",
+          "explanation": "경계항과 다항식 나눗셈으로 얻은 적분값을 합칩니다."
+        }
+      ],
+      "correctReason": "적분값 157/12+ln2와 일치하는 정답은 ⑤입니다.",
+      "commonMistake": "g(t)를 직접 구하려 하지 말고 t=s³/(s+1)의 역관계를 이용해 적분 변수를 바꾸는 것이 핵심입니다.",
+      "verification": {"problemPage": 15, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_cal_29": {
+      "id": "2026_csat_cal_29",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 29,
+      "answer": "97",
+      "answerMark": null,
+      "summary": "등비 조건으로 공차 1/4와 공비 1/3을 구하고 급수 조건을 적용하면 답은 97입니다.",
+      "approach": "연속한 세 등비항의 관계로 등차수열을 정한 뒤 무한급수 범위에서 첫째항을 확정합니다.",
+      "concepts": ["등차·등비수열", "무한급수"],
+      "steps": [
+        {
+          "title": "두 수열 결정",
+          "expression": "a_n=nd,\\quad \\left(\\frac1{2d}-1\\right)^2=\\left(\\frac1d-1\\right)\\left(\\frac1{3d}-1\\right)\\Rightarrow d=\\frac14",
+          "explanation": "세 값이 연속한 등비항이라는 조건으로 등차수열의 공차를 구합니다."
+        },
+        {
+          "title": "첫째항 범위",
+          "expression": "q_b=\\frac13,\\quad 0<\\frac32b_1-16<30\\Rightarrow \\frac{32}{3}<b_1<\\frac{92}{3}\\Rightarrow b_1=27",
+          "explanation": "b₁은 3의 거듭제곱 꼴이므로 주어진 범위에서 27로 하나뿐입니다."
+        },
+        {
+          "title": "짝수항 급수",
+          "expression": "a_2\\sum_{n=1}^{\\infty}b_{2n}=\\frac12\\cdot\\frac9{1-1/9}=\\frac{81}{16}",
+          "explanation": "짝수 번째 항들은 첫째항 9, 공비 1/9인 등비수열입니다."
+        }
+      ],
+      "correctReason": "기약분수의 p와 q가 16과 81이므로 p+q는 97입니다.",
+      "commonMistake": "b₂n의 공비는 원래 공비 1/3이 아니라 두 칸씩 이동하므로 1/9입니다.",
+      "verification": {"problemPage": 16, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2026_csat_cal_30": {
+      "id": "2026_csat_cal_30",
+      "status": "verified_internal_candidate",
+      "exam": "2026학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 30,
+      "answer": "11",
+      "answerMark": null,
+      "summary": "역함수 그래프의 접선 변화를 분석하면 불연속점 두 곳의 함수값으로 최종 값 11을 얻습니다.",
+      "approach": "원래 곡선의 교점 문제를 역함수 그래프와 점 (0,1)을 지나는 직선 문제로 바꿉니다.",
+      "concepts": ["역함수의 그래프", "접선과 교점 개수"],
+      "steps": [
+        {
+          "title": "역함수 가지",
+          "expression": "f^{-1}(x)=\\begin{cases}-\\frac12x(x^2-5)&|x|\\le1\\\\e^{x-1}+1&x>1\\\\-(e^{-x-1}+1)&x<-1\\end{cases}",
+          "explanation": "증가하는 역함수라는 조건으로 절댓값 식의 부호를 각 구간에서 확정합니다."
+        },
+        {
+          "title": "불연속점 정보",
+          "expression": "a=0,\\quad g(a)=1,\\quad \\lim_{m\\to a+}g(m)=3,\\quad g(b)=2",
+          "explanation": "점 (0,1)을 지나는 접선의 임계 기울기에서 교점 개수가 바뀝니다."
+        },
+        {
+          "title": "두 번째 접선",
+          "expression": "b=e^{\\beta+1},\\quad (\\beta+1)e^{-(\\beta+1)}=-2\\Rightarrow\\frac{\\ln b}{b}=-2",
+          "explanation": "음의 지수함수 가지에 그은 접선 조건을 b에 관한 식으로 바꿉니다."
+        },
+        {
+          "title": "최종 계산",
+          "expression": "1\\cdot3+2\\cdot(-2)^2=11",
+          "explanation": "두 불연속점에서 요구한 함수값과 극한값을 대입합니다."
+        }
+      ],
+      "correctReason": "문제의 식에 각 값을 대입한 결과가 11이므로 최종 답은 11입니다.",
+      "commonMistake": "f의 교점 개수를 직접 그리기보다 역함수로 옮길 때 직선의 기울기가 역수가 된다는 점을 함께 반영해야 합니다.",
+      "verification": {"problemPage": 16, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}
