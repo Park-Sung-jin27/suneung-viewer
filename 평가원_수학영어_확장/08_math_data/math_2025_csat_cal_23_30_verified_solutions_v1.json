@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 대학수학능력시험 수학 미적분 23~30번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "ff8ae6ada9c5d87e7fe64e69f65761b869f5534ca3caa75801bffc0298015b27",
+    "verifiedAt": "2026-08-07",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung",
+      "independentSourceUrls": [
+        "https://normalrap.tistory.com/entry/2025%EB%85%84-%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98-%EA%B8%B0%EC%B6%9C-%EB%AC%B8%EC%A0%9C-%EB%8B%B5",
+        "https://mathpowergen.com/2025-%EC%88%98%EB%8A%A5-%EC%88%98%ED%95%99-%EA%B8%B0%EC%B6%9C%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%ED%95%B4%EC%84%A4/"
+      ],
+      "solutionSourceUrls": [
+        "https://mathpowergen.com/wp-content/uploads/2025/06/2025%ED%95%99%EB%85%84%EB%8F%84-%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98-%EC%88%98%ED%95%99-%ED%99%80%EC%88%98%ED%98%95-EBS-%ED%95%B4%EC%84%A4.pdf"
+      ],
+      "problemFilename": "problem.pdf",
+      "problemSha256": "4999b0069255aaf361358777163b6ea4e8656130382a37ef355a5ff66ac9ff07",
+      "problemReplicaFilenames": ["problem-kice.pdf", "problem-mirror.pdf"],
+      "problemReplicaArtifacts": [],
+      "answerFilename": "official-answer.pdf",
+      "answerSha256": "987fa768dc669042df4e018a157535407583e5564cd540cac7ddd2fd414b5e9e",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "9ad45a6f218763f980197e4d03f33cd4df32c1568455ffebd60e0127c6420c43"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지와 정답표를 대조하고 EBS 해설의 계산을 독립적으로 다시 전개해 각 풀이를 확인했습니다."
+  },
+  "items": {
+    "2025_csat_cal_23": {
+      "id": "2025_csat_cal_23",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 23,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "sin x/x의 극한을 제곱 형태로 적용하면 주어진 극한값은 3입니다.",
+      "approach": "분자와 분모에서 x²을 약분할 수 있도록 기본 극한식의 역수를 두 번 곱합니다.",
+      "concepts": ["삼각함수의 극한", "극한의 곱셈법칙"],
+      "steps": [
+        {
+          "title": "기본 극한으로 변형",
+          "expression": "\\frac{3x^2}{\\sin^2x}=3\\left(\\frac{x}{\\sin x}\\right)^2",
+          "explanation": "sin x/x의 기본 극한을 사용할 수 있는 형태로 식을 바꿉니다."
+        },
+        {
+          "title": "극한 계산",
+          "expression": "3\\left(\\lim_{x\\to0}\\frac{x}{\\sin x}\\right)^2=3",
+          "explanation": "sin x/x가 1로 수렴하므로 그 역수와 제곱도 1로 수렴합니다."
+        }
+      ],
+      "correctReason": "극한값이 3이므로 정답은 세 번째 선지 ③입니다.",
+      "commonMistake": "sin²x를 sin(x²)로 해석하지 말고 sin x 전체를 제곱한 식으로 다뤄야 합니다.",
+      "verification": {"problemPage": 13, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_cal_24": {
+      "id": "2025_csat_cal_24",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 24,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "분수를 1+1/(x+1)로 나누어 적분하면 10+ln 11입니다.",
+      "approach": "분자의 x+2를 분모 x+1과 나머지 1로 분해해 기본 적분으로 바꿉니다.",
+      "concepts": ["유리함수의 적분", "로그함수"],
+      "steps": [
+        {
+          "title": "피적분함수 분해",
+          "expression": "\\frac{x+2}{x+1}=1+\\frac1{x+1}",
+          "explanation": "분자와 분모의 차가 1임을 이용해 두 개의 간단한 항으로 나눕니다."
+        },
+        {
+          "title": "정적분 계산",
+          "expression": "\\int_0^{10}\\left(1+\\frac1{x+1}\\right)dx=\\left[x+\\ln(x+1)\\right]_0^{10}=10+\\ln11",
+          "explanation": "구간 양 끝을 대입하면 아래쪽 끝의 로그값은 ln 1=0입니다."
+        }
+      ],
+      "correctReason": "적분값이 10+ln 11이므로 정답은 ④입니다.",
+      "commonMistake": "로그항의 상한을 10으로 쓰지 말고 분모 x+1에 맞춰 ln 11로 계산해야 합니다.",
+      "verification": {"problemPage": 13, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_cal_25": {
+      "id": "2025_csat_cal_25",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 25,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "조건에서 aₙ/n→1을 얻고 유리화하면 극한값은 1/2입니다.",
+      "approach": "먼저 수열 aₙ의 일차 성장률을 확인한 뒤 루트 차를 켤레식으로 유리화합니다.",
+      "concepts": ["수열의 극한", "무리식의 유리화"],
+      "steps": [
+        {
+          "title": "성장률 확인",
+          "expression": "\\frac{a_n}{n}=\\frac{na_n}{n^2+3}\\cdot\\frac{n^2+3}{n^2}\\longrightarrow1",
+          "explanation": "주어진 극한과 1로 수렴하는 비율을 곱해 aₙ/n의 극한을 구합니다."
+        },
+        {
+          "title": "유리화와 극한",
+          "expression": "\\sqrt{a_n^2+n}-a_n=\\frac{n}{\\sqrt{a_n^2+n}+a_n}=\\frac1{\\sqrt{(a_n/n)^2+1/n}+a_n/n}\\longrightarrow\\frac12",
+          "explanation": "분자와 분모를 n으로 나누면 앞에서 구한 성장률을 바로 대입할 수 있습니다."
+        }
+      ],
+      "correctReason": "극한값이 1/2이므로 두 번째 선지 ②가 정답입니다.",
+      "commonMistake": "aₙ이 양의 무한대로 간다는 점을 놓치고 분모의 두 항이 서로 상쇄된다고 판단하면 안 됩니다.",
+      "verification": {"problemPage": 14, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_cal_26": {
+      "id": "2025_csat_cal_26",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 26,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "정사각형 단면 넓이를 적분하고 t+ln t로 치환하면 부피는 ln(e+1)입니다.",
+      "approach": "곡선의 높이가 정사각형 한 변이므로 높이의 제곱을 단면적으로 사용합니다.",
+      "concepts": ["단면의 넓이와 부피", "치환적분"],
+      "steps": [
+        {
+          "title": "단면적 표현",
+          "expression": "S(x)=\\left(\\sqrt{\\frac{x+1}{x(x+\\ln x)}}\\right)^2=\\frac{x+1}{x(x+\\ln x)}",
+          "explanation": "x축에 수직인 정사각형의 한 변은 곡선의 y값과 같습니다."
+        },
+        {
+          "title": "치환적분",
+          "expression": "u=x+\\ln x,\\quad du=\\frac{x+1}{x}dx,\\quad V=\\int_1^e\\frac{x+1}{x(x+\\ln x)}dx=\\int_1^{e+1}\\frac{du}{u}",
+          "explanation": "분자에 치환식의 미분이 그대로 나타나므로 로그 적분으로 바뀝니다."
+        },
+        {
+          "title": "부피 계산",
+          "expression": "V=\\left[\\ln u\\right]_1^{e+1}=\\ln(e+1)",
+          "explanation": "치환된 구간의 양 끝을 대입해 입체의 부피를 구합니다."
+        }
+      ],
+      "correctReason": "부피가 ln(e+1)이므로 첫 번째 선지 ①이 정답입니다.",
+      "commonMistake": "곡선 아래 넓이를 적분하는 문제가 아니라 정사각형 단면의 넓이 y²을 적분하는 문제입니다.",
+      "verification": {"problemPage": 14, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_cal_27": {
+      "id": "2025_csat_cal_27",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 27,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "접선과 단조 조건으로 g(x)=(eˣ−1)³을 확정한 뒤 역함수 미분값을 구하면 1/36입니다.",
+      "approach": "x=0에서의 함수값과 기울기, 역함수 존재에 따른 단조성을 함께 써서 삼차함수를 결정합니다.",
+      "concepts": ["역함수의 미분", "합성함수의 미분"],
+      "steps": [
+        {
+          "title": "접선 조건",
+          "expression": "g(0)=0,\\quad g'(0)=0\\Rightarrow f(1)=-1,\\quad f'(1)=-1",
+          "explanation": "접선이 x축이라는 말은 점의 y좌표와 그 점에서의 기울기가 모두 0이라는 뜻입니다."
+        },
+        {
+          "title": "삼차함수 결정",
+          "expression": "f'(x)=3(x-1)^2-1,\\quad f(x)=(x-1)^3-x,\\quad g(x)=(e^x-1)^3",
+          "explanation": "g가 역함수를 가지려면 양의 입력 eˣ에서 f'(eˣ)+1이 음수가 되지 않아야 하므로 이차식은 x=1에서 중근을 갖습니다."
+        },
+        {
+          "title": "역함수 미분",
+          "expression": "g(\\ln3)=8,\\quad g'(x)=3e^x(e^x-1)^2,\\quad h'(8)=\\frac1{g'(\\ln3)}=\\frac1{36}",
+          "explanation": "역함수에서 8의 원상을 찾은 뒤 역함수 미분 공식을 적용합니다."
+        }
+      ],
+      "correctReason": "h'(8)=1/36이므로 정답은 첫 번째 선지 ①입니다.",
+      "commonMistake": "g(0)=0만 사용하면 f를 하나로 정할 수 없으므로 접선의 기울기와 역함수의 단조 조건까지 함께 써야 합니다.",
+      "verification": {"problemPage": 15, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_cal_28": {
+      "id": "2025_csat_cal_28",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 28,
+      "answer": "2",
+      "answerMark": "②",
+      "summary": "접선과 곡선 사이 넓이를 적분식으로 만들고 미분하면 g(1)+g'(1)=e/2+2/3입니다.",
+      "approach": "f''<0으로 접선이 곡선 위에 있음을 확인한 뒤 넓이 함수를 정적분으로 표현합니다.",
+      "concepts": ["접선과 곡선의 넓이", "매개변수 적분의 미분"],
+      "steps": [
+        {
+          "title": "넓이 함수 설정",
+          "expression": "g(t)=\\int_0^t\\{f'(t)(x-t)+f(t)-f(x)\\}\\,dx",
+          "explanation": "x>0에서 f''(x)<0이므로 접선이 곡선 위에 놓여 두 함수의 차가 넓이가 됩니다."
+        },
+        {
+          "title": "적분식 정리",
+          "expression": "g(t)=\\frac{t^3}{6}-\\frac12(t^2+1)e^{1-t^2}+\\frac e2",
+          "explanation": "f'(x)=-x+e^{1-x²}를 이용해 부분적분 항을 정리하면 f 자체를 알지 않아도 g를 계산할 수 있습니다."
+        },
+        {
+          "title": "함숫값과 미분값",
+          "expression": "g'(t)=\\frac12t^2+t^3e^{1-t^2},\\quad g(1)+g'(1)=\\frac e2+\\frac23",
+          "explanation": "정리된 식을 미분하고 t=1을 대입해 두 값을 합합니다."
+        }
+      ],
+      "correctReason": "계산값이 e/2+2/3이므로 두 번째 선지 ②가 정답입니다.",
+      "commonMistake": "오목성과 볼록성을 반대로 판단해 곡선에서 접선을 빼면 넓이의 부호가 뒤집힙니다.",
+      "verification": {"problemPage": 15, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_cal_29": {
+      "id": "2025_csat_cal_29",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 29,
+      "answer": "25",
+      "answerMark": null,
+      "summary": "두 절댓값 급수에서 첫째항 5와 공비 −1/2를 정하고 부등식을 풀면 가능한 m의 합은 25입니다.",
+      "approach": "양수항과 음수항의 합을 분리해 등비수열을 결정한 뒤 부호가 네 항마다 반복되는 극한합을 계산합니다.",
+      "concepts": ["등비급수", "주기적 부호 수열"],
+      "steps": [
+        {
+          "title": "등비수열 결정",
+          "expression": "a_n=5\\left(-\\frac12\\right)^{n-1}",
+          "explanation": "두 급수는 각각 양수항의 두 배와 음수항 절댓값의 두 배이므로 부호가 교대해야 하며 합의 비로 첫째항과 공비를 정합니다."
+        },
+        {
+          "title": "주기합 계산",
+          "expression": "\\sum_{k=1}^{\\infty}(-1)^{k(k+1)/2}\\left(-\\frac12\\right)^k=\\frac{\\frac12-\\frac14-\\frac18+\\frac1{16}}{1-\\frac1{16}}=\\frac15",
+          "explanation": "계수의 부호가 네 항마다 반복되므로 첫 네 항의 합을 초항으로 하고 공비가 1/16인 등비급수로 계산합니다."
+        },
+        {
+          "title": "자연수 m 선별",
+          "expression": "5\\left(-\\frac12\\right)^{m-1}\\cdot\\frac15=\\left(-\\frac12\\right)^{m-1}>\\frac1{700}\\Rightarrow m\\in\\{1,3,5,7,9\\}",
+          "explanation": "극한합이 양수가 되려면 m이 홀수여야 하고 2의 거듭제곱 크기 조건을 만족하는 홀수는 9까지입니다."
+        },
+        {
+          "title": "합 계산",
+          "expression": "1+3+5+7+9=25",
+          "explanation": "조건을 만족하는 모든 자연수 m을 더합니다."
+        }
+      ],
+      "correctReason": "가능한 m의 값의 합이 25이므로 요구한 답은 25입니다.",
+      "commonMistake": "절댓값 급수를 원래 급수와 동일하게 처리하면 양수항과 음수항의 정보가 사라지므로 두 식을 따로 해석해야 합니다.",
+      "verification": {"problemPage": 16, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_cal_30": {
+      "id": "2025_csat_cal_30",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 미적분",
+      "questionNumber": 30,
+      "answer": "17",
+      "answerMark": null,
+      "summary": "끝점 조건과 도함수의 최소 반복 주기로 a=3/2, b=−3π를 얻고 극대점을 세면 답은 17입니다.",
+      "approach": "sin u=u의 유일한 실근을 이용해 위상 조건을 정한 뒤 도함수의 반복과 단조 위상함수로 극대 위치를 판정합니다.",
+      "concepts": ["합성함수의 미분", "삼각함수의 극대"],
+      "steps": [
+        {
+          "title": "상수 후보 결정",
+          "expression": "f(0)=0,\\quad f(2\\pi)=2\\pi a+b\\Rightarrow b=-2\\pi a,\\quad a\\in\\left\\{1,\\frac32,2\\right\\}",
+          "explanation": "sin b=0과 sin u=u의 실근 u=0을 함께 적용하고 1≤a≤2 조건으로 후보를 좁힙니다."
+        },
+        {
+          "title": "최소 반복 조건",
+          "expression": "f'(x)=(a+\\cos x)\\cos(ax-2\\pi a+\\sin x)\\Rightarrow a=\\frac32,\\quad b=-3\\pi",
+          "explanation": "a=1 또는 2이면 t=2π에서 이미 f'(t)=f'(0)이므로 최소 t가 4π라는 조건에 어긋납니다."
+        },
+        {
+          "title": "극대점 개수와 첫 위치",
+          "expression": "g(x)=\\frac32x-3\\pi+\\sin x,\\quad g'(x)>0,\\quad n=3,\\quad \\alpha_1=\\pi",
+          "explanation": "g는 증가하므로 0과 4π 사이에서 cos g=0인 지점을 순서대로 세고 극대인 세 지점만 고릅니다."
+        },
+        {
+          "title": "최종 계산",
+          "expression": "n\\alpha_1-ab=3\\pi-\\frac32(-3\\pi)=\\frac{15}{2}\\pi,\\quad p+q=2+15=17",
+          "explanation": "서로소인 분모와 분자를 확인해 그 합을 구합니다."
+        }
+      ],
+      "correctReason": "nα₁−ab=(15/2)π이므로 p+q=17입니다.",
+      "commonMistake": "f'(0)=f'(4π)만 확인해서는 최소 양수 t가 4π인지 알 수 없으므로 a=1,2에서 t=2π가 생기는지 반드시 확인해야 합니다.",
+      "verification": {"problemPage": 16, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}

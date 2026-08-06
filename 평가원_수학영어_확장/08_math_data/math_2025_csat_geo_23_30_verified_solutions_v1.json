@@ -1,0 +1,285 @@
+{
+  "metadata": {
+    "schemaVersion": "math-verified-solution-v1",
+    "scope": "2025학년도 대학수학능력시험 수학 기하 23~30번",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "itemCount": 8,
+    "readyCount": 8,
+    "questionFingerprint": "0ee02410cd373670762ee8b2d3d6154e868b575680716bcf93f6075f73532ae9",
+    "verifiedAt": "2026-08-07",
+    "sourceArtifacts": {
+      "archiveUrl": "https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung",
+      "independentSourceUrls": [
+        "https://normalrap.tistory.com/entry/2025%EB%85%84-%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98-%EA%B8%B0%EC%B6%9C-%EB%AC%B8%EC%A0%9C-%EB%8B%B5",
+        "https://mathpowergen.com/2025-%EC%88%98%EB%8A%A5-%EC%88%98%ED%95%99-%EA%B8%B0%EC%B6%9C%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%ED%95%B4%EC%84%A4/"
+      ],
+      "solutionSourceUrls": [
+        "https://mathpowergen.com/wp-content/uploads/2025/06/2025%ED%95%99%EB%85%84%EB%8F%84-%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98-%EC%88%98%ED%95%99-%ED%99%80%EC%88%98%ED%98%95-EBS-%ED%95%B4%EC%84%A4.pdf"
+      ],
+      "problemFilename": "problem.pdf",
+      "problemSha256": "4999b0069255aaf361358777163b6ea4e8656130382a37ef355a5ff66ac9ff07",
+      "problemReplicaFilenames": ["problem-kice.pdf", "problem-mirror.pdf"],
+      "problemReplicaArtifacts": [],
+      "answerFilename": "official-answer.pdf",
+      "answerSha256": "987fa768dc669042df4e018a157535407583e5564cd540cac7ddd2fd414b5e9e",
+      "solutionArtifacts": [
+        {
+          "filename": "ebsi-solution.pdf",
+          "sha256": "9ad45a6f218763f980197e4d03f33cd4df32c1568455ffebd60e0127c6420c43"
+        }
+      ]
+    },
+    "note": "평가원 공식 문제지와 정답표를 대조하고 EBS 해설의 계산을 독립적으로 다시 전개해 각 풀이를 확인했습니다."
+  },
+  "items": {
+    "2025_csat_geo_23": {
+      "id": "2025_csat_geo_23",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 23,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "벡터의 첫 번째 성분을 비교하면 k+3=6이므로 k=3입니다.",
+      "approach": "두 벡터의 덧셈을 성분별로 계산하고 주어진 벡터와 같은 위치의 성분을 비교합니다.",
+      "concepts": ["벡터의 성분", "벡터의 덧셈"],
+      "steps": [
+        {
+          "title": "성분별 덧셈",
+          "expression": "\\vec a+3\\vec b=(k,3)+3(1,2)=(k+3,9)",
+          "explanation": "벡터의 각 성분에 스칼라 3을 곱한 뒤 같은 성분끼리 더합니다."
+        },
+        {
+          "title": "첫 성분 비교",
+          "expression": "k+3=6\\Rightarrow k=3",
+          "explanation": "두 벡터가 같으므로 첫 번째 성분도 서로 같아야 합니다."
+        }
+      ],
+      "correctReason": "k=3이므로 세 번째 선지 ③이 정답입니다.",
+      "commonMistake": "3벡터 b를 (3,2)로 쓰지 말고 두 성분 모두에 3을 곱해 (3,6)으로 계산해야 합니다.",
+      "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_geo_24": {
+      "id": "2025_csat_geo_24",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 24,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "꼭짓점과 준선 사이 거리가 2이므로 포물선 식은 y²=8(x−1)이고 a=4입니다.",
+      "approach": "포물선의 표준형을 세운 뒤 주어진 점의 좌표를 대입합니다.",
+      "concepts": ["포물선의 표준형", "포물선의 정의"],
+      "steps": [
+        {
+          "title": "포물선 방정식",
+          "expression": "p=2,\\qquad y^2=4p(x-1)=8(x-1)",
+          "explanation": "꼭짓점 (1,0)에서 준선 x=-1까지의 거리가 초점거리 p입니다."
+        },
+        {
+          "title": "점 좌표 대입",
+          "expression": "a^2=8(3-1)=16,\\qquad a>0\\Rightarrow a=4",
+          "explanation": "포물선 위의 점 (3,a)를 대입하고 양수 조건으로 부호를 정합니다."
+        }
+      ],
+      "correctReason": "양수 a가 4이므로 정답은 네 번째 선지 ④입니다.",
+      "commonMistake": "꼭짓점에서 준선까지의 거리 2를 표준형의 4p 전체로 착각하지 말아야 합니다.",
+      "verification": {"problemPage": 17, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_geo_25": {
+      "id": "2025_csat_geo_25",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 25,
+      "answer": "3",
+      "answerMark": "③",
+      "summary": "3:2 내분점의 x,y 성분과 외분점의 z성분을 각각 0으로 두면 합은 13입니다.",
+      "approach": "z축 위라는 조건은 x=y=0, xy평면 위라는 조건은 z=0으로 좌표식에 반영합니다.",
+      "concepts": ["공간좌표", "선분의 내분과 외분"],
+      "steps": [
+        {
+          "title": "내분점 조건",
+          "expression": "\\frac{3(-4)+2a}{5}=0,\\quad \\frac{3(-2)+2b}{5}=0\\Rightarrow a=6,\\ b=3",
+          "explanation": "A에서 B 쪽으로 3:2 내분하는 점의 x와 y좌표가 모두 0입니다."
+        },
+        {
+          "title": "외분점 조건",
+          "expression": "\\frac{3c-2\\cdot6}{3-2}=0\\Rightarrow c=4",
+          "explanation": "3:2 외분점이 xy평면 위에 있으므로 그 z좌표가 0입니다."
+        },
+        {
+          "title": "합 계산",
+          "expression": "a+b+c=6+3+4=13",
+          "explanation": "세 좌표값을 문제에서 요구한 순서대로 더합니다."
+        }
+      ],
+      "correctReason": "a+b+c=13이므로 세 번째 선지 ③이 정답입니다.",
+      "commonMistake": "외분점 공식의 분모는 3+2가 아니라 3−2이며 좌표의 계수 부호도 함께 바뀝니다.",
+      "verification": {"problemPage": 18, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_geo_26": {
+      "id": "2025_csat_geo_26",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 26,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "두 타원의 접선 x절편은 각각 2n과 n/2이므로 4≤n≤10인 일곱 자연수가 가능합니다.",
+      "approach": "각 타원의 접선 공식을 적용하되 y절편은 필요 없으므로 y=0을 바로 대입합니다.",
+      "concepts": ["타원의 접선", "연립부등식"],
+      "steps": [
+        {
+          "title": "첫 타원의 접선 절편",
+          "expression": "\\frac{(1/n)x}{2}+y_Py=1,\\quad y=0\\Rightarrow \\alpha=2n",
+          "explanation": "타원 C₁ 위의 점 P에서의 접선식에 x축 조건 y=0을 넣습니다."
+        },
+        {
+          "title": "둘째 타원의 접선 절편",
+          "expression": "2(1/n)x+\\frac{y_Qy}{2}=1,\\quad y=0\\Rightarrow \\beta=\\frac n2",
+          "explanation": "타원 C₂에서도 같은 방식으로 접선의 x절편을 구합니다."
+        },
+        {
+          "title": "자연수 개수",
+          "expression": "6\\le\\frac{3n}{2}\\le15\\Rightarrow4\\le n\\le10",
+          "explanation": "가능한 자연수는 4,5,6,7,8,9,10으로 모두 일곱 개입니다."
+        }
+      ],
+      "correctReason": "조건을 만족하는 n이 7개이므로 정답은 첫 번째 선지 ①입니다.",
+      "commonMistake": "두 타원의 x² 계수가 서로 반대이므로 접선의 x절편도 같다고 두면 안 됩니다.",
+      "verification": {"problemPage": 18, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_geo_27": {
+      "id": "2025_csat_geo_27",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 27,
+      "answer": "1",
+      "answerMark": "①",
+      "summary": "내접원 넓이 2π에 두 평면 사이 각의 코사인 √10/8을 곱하면 √10π/4입니다.",
+      "approach": "수직 조건으로 변의 길이를 구하고 삼각형 ACD의 넓이와 정사영 넓이 비로 평면각을 계산합니다.",
+      "concepts": ["도형의 정사영", "삼각형의 내접원"],
+      "steps": [
+        {
+          "title": "기본 길이 결정",
+          "expression": "BM=2\\sqrt5,\\quad AM=\\sqrt{6^2-(2\\sqrt5)^2}=4,\\quad DM=4,\\quad CD=6",
+          "explanation": "BC가 평면 AMD에 수직이고 M이 중점이므로 직각삼각형들에서 길이를 구합니다."
+        },
+        {
+          "title": "평면각의 코사인",
+          "expression": "[ACD]=8\\sqrt2,\\quad [NCD]=2\\sqrt5,\\quad \\cos\\theta=\\frac{2\\sqrt5}{8\\sqrt2}=\\frac{\\sqrt{10}}8",
+          "explanation": "A의 평면 BCD 위 정사영 N을 이용하면 두 삼각형의 넓이 비가 두 평면 사이 각의 코사인입니다."
+        },
+        {
+          "title": "내접원과 정사영",
+          "expression": "r=\\sqrt2,\\quad \\pi r^2\\cos\\theta=2\\pi\\cdot\\frac{\\sqrt{10}}8=\\frac{\\sqrt{10}}4\\pi",
+          "explanation": "삼각형 ACD의 내접원 반지름을 구하고 원 넓이에 정사영 비율을 곱합니다."
+        }
+      ],
+      "correctReason": "정사영의 넓이가 (√10/4)π이므로 정답은 첫 번째 선지 ①입니다.",
+      "commonMistake": "원의 정사영 넓이는 원래 넓이에 cos θ를 한 번만 곱하며 반지름에 먼저 cos θ를 곱해 다시 제곱하지 않습니다.",
+      "verification": {"problemPage": 19, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_geo_28": {
+      "id": "2025_csat_geo_28",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 28,
+      "answer": "4",
+      "answerMark": "④",
+      "summary": "구의 반지름 5와 삼수선 관계를 이용하면 원 O의 현 PQ 길이는 √55입니다.",
+      "approach": "AC의 중점을 구의 중심으로 잡고 P에서 AC와 AB에 내린 수선의 길이를 평면기하로 연결합니다.",
+      "concepts": ["구의 평면 단면", "삼수선의 정리"],
+      "steps": [
+        {
+          "title": "구와 거리 관계",
+          "expression": "AC=10,\\quad OP=5,\\quad PH=4\\Rightarrow OH=3,\\quad AH=2",
+          "explanation": "AC가 구의 지름이므로 반지름은 5이고 P에서 AC까지의 거리 조건으로 직각삼각형 POH를 풉니다."
+        },
+        {
+          "title": "평면 안의 수선",
+          "expression": "AB:BC=AH:HD=8:6\\Rightarrow HD=\\frac32",
+          "explanation": "삼수선의 정리로 AC와 HD가 수직이고 두 직각삼각형의 닮음을 이용합니다."
+        },
+        {
+          "title": "현의 절반과 전체 길이",
+          "expression": "PD=\\sqrt{PH^2-HD^2}=\\sqrt{16-\\frac94}=\\frac{\\sqrt{55}}2,\\quad PQ=2PD=\\sqrt{55}",
+          "explanation": "D는 원 O의 현 PQ의 중점이므로 절반 길이를 두 배 합니다."
+        }
+      ],
+      "correctReason": "선분 PQ의 길이가 √55이므로 네 번째 선지 ④가 정답입니다.",
+      "commonMistake": "P에서 AC까지의 거리 4를 원 O의 반지름으로 바로 사용하지 말고 평면 ABC로의 정사영 관계를 거쳐야 합니다.",
+      "verification": {"problemPage": 19, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_geo_29": {
+      "id": "2025_csat_geo_29",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 29,
+      "answer": "107",
+      "answerMark": null,
+      "summary": "쌍곡선의 초점거리와 두 삼각형의 닮음에서 PF=7을 얻고 넓이를 계산하면 p+q=107입니다.",
+      "approach": "쌍곡선의 거리차를 이용해 모든 선분을 PF 하나로 나타낸 뒤 닮음비와 이등변삼각형 높이를 구합니다.",
+      "concepts": ["쌍곡선의 초점", "삼각형의 닮음"],
+      "steps": [
+        {
+          "title": "초점과 선분 관계",
+          "expression": "c=\\sqrt{1+35}=6,\\quad FF'=12,\\quad PF=PQ=s,\\quad PF'=s+2,\\quad QF'=2(s+1)",
+          "explanation": "쌍곡선의 두 초점 사이 거리와 오른쪽 가지에서의 두 초점거리 차 2를 사용합니다."
+        },
+        {
+          "title": "닮음으로 s 결정",
+          "expression": "2(s+1):12=12:(s+2)\\Rightarrow(s+10)(s-7)=0\\Rightarrow s=7",
+          "explanation": "삼각형 QF'F와 FF'P의 대응변 비를 세우고 양의 길이를 선택합니다."
+        },
+        {
+          "title": "밑변과 높이",
+          "expression": "QF=\\frac{28}{3},\\quad FH=\\frac{14}{3},\\quad PH=\\sqrt{7^2-\\left(\\frac{14}{3}\\right)^2}=\\frac{7\\sqrt5}{3}",
+          "explanation": "다른 대응변 비로 QF를 구하고 PF=PQ인 이등변삼각형의 높이를 계산합니다."
+        },
+        {
+          "title": "넓이와 답",
+          "expression": "[PFQ]=\\frac12\\cdot\\frac{28}{3}\\cdot\\frac{7\\sqrt5}{3}=\\frac{98}{9}\\sqrt5,\\quad p+q=9+98=107",
+          "explanation": "기약분수의 분모와 분자를 확인해 최종 합을 구합니다."
+        }
+      ],
+      "correctReason": "삼각형 넓이가 (98/9)√5이므로 p+q=107입니다.",
+      "commonMistake": "쌍곡선의 거리차는 2a=2이며 PF'−PF의 순서를 오른쪽 가지에 맞게 사용해야 합니다.",
+      "verification": {"problemPage": 20, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    },
+    "2025_csat_geo_30": {
+      "id": "2025_csat_geo_30",
+      "status": "verified_internal_candidate",
+      "exam": "2025학년도 대학수학능력시험 수학 기하",
+      "questionNumber": 30,
+      "answer": "316",
+      "answerMark": null,
+      "summary": "점 P는 반지름 2인 원을 돌고 점 Q는 이를 1/4로 축소·이동한 원을 돌아 내적 곱은 316입니다.",
+      "approach": "벡터의 합과 차 조건으로 P의 자취를 구하고 Q를 P의 위치벡터에 대한 일차식으로 바꿉니다.",
+      "concepts": ["벡터의 자취", "벡터의 내적"],
+      "steps": [
+        {
+          "title": "점 P의 자취",
+          "expression": "\\left|\\overrightarrow{PB}+\\overrightarrow{PC}\\right|=2|\\overrightarrow{PO}|,\\quad \\left|\\overrightarrow{PB}-\\overrightarrow{PC}\\right|=|\\overrightarrow{CB}|=4\\Rightarrow |PO|=2",
+          "explanation": "BC의 중점을 O로 잡으면 주어진 조건은 P가 중심 O, 반지름 2인 원 위에 있음을 뜻합니다."
+        },
+        {
+          "title": "점 Q의 자취",
+          "expression": "\\overrightarrow{OQ}=\\frac14\\overrightarrow{OB}+\\frac12\\overrightarrow{OD}+\\frac14\\overrightarrow{OP}",
+          "explanation": "벡터 조건을 O를 기준으로 풀면 P의 원을 1/4로 줄인 뒤 일정한 벡터만큼 이동한 자취가 됩니다."
+        },
+        {
+          "title": "내적의 범위",
+          "expression": "\\overrightarrow{AC}\\cdot\\overrightarrow{AQ}=18+\\overrightarrow{AC}\\cdot\\overrightarrow{RQ},\\quad |AC|=4\\sqrt2,\\quad |RQ|=\\frac12",
+          "explanation": "Q 자취의 중심을 R로 두면 변하는 항은 고정 벡터 AC와 반지름 벡터 RQ의 내적뿐입니다."
+        },
+        {
+          "title": "최댓값과 최솟값의 곱",
+          "expression": "M=18+2\\sqrt2,\\quad m=18-2\\sqrt2,\\quad Mm=18^2-(2\\sqrt2)^2=316",
+          "explanation": "두 벡터가 같은 방향과 반대 방향일 때 각각 최댓값과 최솟값을 갖습니다."
+        }
+      ],
+      "correctReason": "최댓값과 최솟값의 곱이 316이므로 요구한 답은 316입니다.",
+      "commonMistake": "Q의 자취 반지름은 P의 반지름 2를 1/4로 줄인 1/2이며 평행이동은 반지름에 영향을 주지 않습니다.",
+      "verification": {"problemPage": 20, "answerTablePage": 1, "problemMatchedPdf": true, "choicesMatchedPdf": true, "answerMatchedPdf": true, "independentDerivation": true}
+    }
+  }
+}
