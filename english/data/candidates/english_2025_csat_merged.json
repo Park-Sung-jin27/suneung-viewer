@@ -1,0 +1,2922 @@
+{
+  "schemaVersion": "english-product-candidate-v2",
+  "candidateId": "english_2025_csat_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "generatedFrom": {
+    "overlayPath": "english/data/candidates/english_2025_csat_candidate.json",
+    "baseDataPath": "english/data/english_exam_db_v2_1.json",
+    "baseDataSha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "reviewDataPath": "english/data/candidates/english_2025_csat_reviews.json",
+    "reviewDataSha256": "367339f01eb46801ada057f08f1b5f6ab58bf6e2f1e44d340c2a73ee03607ed5"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2025학년도_수능_영어_문제.pdf",
+      "sha256": "fc0164edaa52481a97c5dfd6fdf39674753c8d81c6ba6cf3a8f0700b843c6d69"
+    },
+    "answer": {
+      "filename": "2025학년도_수능_영어_정답.png",
+      "sha256": "cbd81e2238ffb78cb96487687de84e520e191938c6ddb89bf5b26f6537ec65e3"
+    },
+    "explanation": {
+      "filename": "2025학년도_수능_영어_해설.pdf",
+      "sha256": "20bf84964746b3f1a04604cf9432d4f15d64eb17729063baae936070f2aca10c"
+    }
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 59,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "sourceTextOverrideQuestionCount": 1,
+    "blockedCount": 0
+  },
+  "integrity": {
+    "questionIds": [
+      "2025_csat_18",
+      "2025_csat_19",
+      "2025_csat_20",
+      "2025_csat_21",
+      "2025_csat_22",
+      "2025_csat_23",
+      "2025_csat_24",
+      "2025_csat_25",
+      "2025_csat_26",
+      "2025_csat_27",
+      "2025_csat_28",
+      "2025_csat_29",
+      "2025_csat_30",
+      "2025_csat_31",
+      "2025_csat_32",
+      "2025_csat_33",
+      "2025_csat_34",
+      "2025_csat_35",
+      "2025_csat_36",
+      "2025_csat_37",
+      "2025_csat_38",
+      "2025_csat_39",
+      "2025_csat_40",
+      "2025_csat_41",
+      "2025_csat_42",
+      "2025_csat_43",
+      "2025_csat_44",
+      "2025_csat_45"
+    ],
+    "choiceOverrideIds": [
+      "2025_csat_20",
+      "2025_csat_24",
+      "2025_csat_28",
+      "2025_csat_29",
+      "2025_csat_30",
+      "2025_csat_32",
+      "2025_csat_35",
+      "2025_csat_36",
+      "2025_csat_37",
+      "2025_csat_38",
+      "2025_csat_39",
+      "2025_csat_40",
+      "2025_csat_43",
+      "2025_csat_45"
+    ],
+    "sourceTextOverrideIds": [
+      "2025_csat_18"
+    ],
+    "figureIds": [
+      "2025_csat_25",
+      "2025_csat_27",
+      "2025_csat_28"
+    ],
+    "choiceFingerprint": "3c97571b52e33cb7d4f9f7c52117b12e161c1f4140b453528e20d0517cbebfb3",
+    "sourceTextFingerprint": "d27c510b050363ec5278535cf19b2e5c611cd973e221f72dcb5c1eb04fd07af9",
+    "figureFingerprint": "d705cdf9ca9b2ffed0aeddc35ded334041bb7646cd2ea74fbd56b35422582b2b",
+    "reviewFingerprint": "5cad592de769b0dfd09b404f7ad4cb4164fa0d5ebce05e8748801180583f6217"
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2025_csat_25",
+      "2025_csat_27",
+      "2025_csat_28"
+    ],
+    "requireSourceTextOverrideForIds": [
+      "2025_csat_18"
+    ]
+  },
+  "questions": [
+    {
+      "id": "2025_csat_18",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 18,
+      "type": "목적",
+      "group": "practical",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "18. 다음 글의 목적으로 가장 적절한 것은?",
+      "rawText": "18. 다음 글의 목적으로 가장 적절한 것은?\nDear Rosydale City Marathon Racers,\nWe are really grateful to all of you who have signed up for\nthe 10th Rosydale City Marathon that was scheduled for\nthis coming Saturday at 10 a.m. Unfortunately, as you may\nalready know, the weather forecast says that there is going\nto be a downpour throughout the race day. We truly hoped\nthat the race would go smoothly. However, it is likely that\nthe heavy rain will make the roads too slippery and\ndangerous for the racers to run safely. As a result, we have\ndecided to cancel the race. We hope you understand and\nwe promise to hold another race in the near future.\nSincerely,\nMartha Kingsley\nRace Manager\n① 마라톤 경기 취소 사실을 공지하려고\n② 마라톤 경기 사전 행사 참여를 독려하려고\n③ 마라톤 경기 참가비 환불 절차를 설명하려고\n④ 마라톤 경기 참여 시 규칙 준수를 당부하려고\n⑤ 마라톤 경기 진행에 따른 도로 통제를 안내하려고",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "마라톤 경기 취소 사실을 공지하려고"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "마라톤 경기 사전 행사 참여를 독려하려고"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "마라톤 경기 참가비 환불 절차를 설명하려고"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "마라톤 경기 참여 시 규칙 준수를 당부하려고"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "마라톤 경기 진행에 따른 도로 통제를 안내하려고"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 800,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base",
+        "textSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_18",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 18,
+        "group": "practical",
+        "type": "목적",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "폭우로 도로가 위험해져 예정된 마라톤 경기를 취소한다는 사실을 참가자들에게 알리는 글입니다.",
+        "typeApproach": "목적 문제는 글의 수신자와 마지막에 제시되는 결정 또는 요청을 먼저 확인하고 가장 직접적인 행동을 고릅니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "the weather forecast says that there is going\nto be a downpour throughout the race day.",
+            "charStart": 249,
+            "role": "취소 배경",
+            "translation": "경기 당일 내내 폭우가 내릴 것이라는 예보가 나왔습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "As a result, we have\ndecided to cancel the race.",
+            "charStart": 504,
+            "role": "핵심 결정",
+            "translation": "그 결과 경기 취소를 결정했다고 명시합니다."
+          }
+        ],
+        "correctReason": "폭우로 인한 안전 문제를 설명한 뒤 경기 취소 결정을 직접 공지하므로 정답은 ①입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "마라톤 경기 참가비 환불 절차를 설명하려고",
+          "reason": "글에는 환불 대상이나 절차가 제시되지 않고, 경기 취소 사실과 그 이유만 안내됩니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_19",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 19,
+      "type": "심경 변화",
+      "group": "practical",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "19. 다음 글에 드러난 Peter의 심경 변화로 가장 적절한 것은?",
+      "rawText": "19. \t다음 글에 드러난 Peter의 심경 변화로 가장 적절한 것은?\nIt was Valentine’s Day on Friday and Peter was certain that\nhis wife, Amy, was going to love his surprise. Peter had spent\na long time searching online for an event that would be a new\nway to spend time with Amy. He had finally found the perfect\nthing for her. She often told him that she liked to go to places\nshe had never visited before, and he was absolutely sure that\nshe would love going to the new, five-star restaurant downtown.\nHe smiled as he called the restaurant and asked for a reservation\nfor Friday. Unfortunately, his smile quickly disappeared when\nhe was told that the restaurant was fully reserved. “That’s too\nbad,” he said quietly. “I thought that I had found the right\nplace.”\n① relaxed \t→ indifferent ② confident → disappointed\n③ confused \t→ satisfied \t④ jealous \t→ discouraged\n⑤ embarrassed → joyful",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "relaxed → indifferent"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "confident → disappointed"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "confused → satisfied"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "jealous → discouraged"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "embarrassed → joyful"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 862,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_19",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 19,
+        "group": "practical",
+        "type": "심경 변화",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "Peter는 아내가 선물을 좋아할 것이라고 확신했지만 레스토랑 예약이 꽉 찬 사실을 알고 실망합니다.",
+        "typeApproach": "심경 변화는 전환 전 감정 단서와 사건 이후의 표정·말투를 각각 찾아 두 감정의 방향을 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "he was absolutely sure that\nshe would love going to the new, five-star restaurant downtown.",
+            "charStart": 385,
+            "role": "처음의 확신",
+            "translation": "그는 아내가 새 레스토랑을 매우 좋아할 것이라고 확신했습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Unfortunately, his smile quickly disappeared when\nhe was told that the restaurant was fully reserved.",
+            "charStart": 555,
+            "role": "이후의 실망",
+            "translation": "예약이 모두 찼다는 말을 듣자 그의 미소가 곧 사라졌습니다."
+          }
+        ],
+        "correctReason": "확신하며 미소 짓던 상태에서 예약 실패로 실망하는 상태로 바뀌므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "jealous → discouraged",
+          "reason": "Peter가 질투했다는 단서는 없으며, 처음 감정은 선물 성공에 대한 확신입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_20",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 20,
+      "type": "주장",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "rawText": "20. \t다음 글에서 필자가 주장하는 바로 가장 적절한 것은?\nWe almost universally accept that playing video games is at\nbest a pleasant break from a student’s learning and more often\nwhat \tprevents \ta \tstudent \tfrom \taccomplishing \ttheir \tgoals.\nGames catch and hold attention in a way that few things can.\nAnd yet once they have our focus, they rarely seem to offer\nanything meaningful to help students grow in their lives\noutside the games. While this may be true for many games, we\nare too easily ignoring a valuable tool that could be used to\nenhance productivity instead of derailing it. Rather, it is\ndesirable that we develop games that connect to the learning\noutcomes we want for our students. This will enable educators\nto take advantage of games’ attention commanding capacities\nand allow our students to enjoy their games while learning.\n① 학습 효과 증진에 활용될 수 있는 게임을 개발해야 한다.\n② 교육 현장에서 학습과 게임 활동을 적절하게 분배해야 한다.\n③ 학습 활동에 게임이 초래하는 집중력 저하를 경계해야 한다.\n④ 여가 시간에 게임을 활용함으로써 학습 효율을 향상해야 한다.\n⑤ 게임의 부정적 영향을 줄이기 위해 학습 공동체가 노력해야 한다.\n이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에\n따라 답을 하시기 바랍니다.\nDear Rosydale City Marathon Racers,\nWe are really grateful to all of you who have signed up for\nthe 10th Rosydale City Marathon that was scheduled for\nthis coming Saturday at 10 a.m. Unfortunately, as you may\nalready know, the weather forecast says that there is going\nto be a downpour throughout the race day. We truly hoped\nthat the race would go smoothly. However, it is likely that\nthe heavy rain will make the roads too slippery and\ndangerous for the racers to run safely. As a result, we have\ndecided to cancel the race. We hope you understand and\nwe promise to hold another race in the near future.\nSincerely,\nMartha Kingsley\nRace Manager\n\n-- 2 of 8 --\n\n홀수형 \t3\n3 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "학습 효과 증진에 활용될 수 있는 게임을 개발해야 한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "교육 현장에서 학습과 게임 활동을 적절하게 분배해야 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "학습 활동에 게임이 초래하는 집중력 저하를 경계해야 한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "여가 시간에 게임을 활용함으로써 학습 효율을 향상해야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "게임의 부정적 영향을 줄이기 위해 학습 공동체가 노력해야 한다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1723,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          12
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_20",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 20,
+        "group": "topic",
+        "type": "주장",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "게임의 강한 주의 집중 능력을 학습 성과와 연결하도록 교육용 게임을 개발해야 한다는 주장입니다.",
+        "typeApproach": "주장 문제는 문제 상황보다 필자가 바람직하다고 명시한 행동과 그 기대 효과를 중심으로 판단합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Rather, it is\ndesirable that we develop games that connect to the learning\noutcomes we want for our students.",
+            "charStart": 568,
+            "role": "필자의 요구",
+            "translation": "학생에게 원하는 학습 성과와 연결되는 게임을 개발하는 것이 바람직하다고 말합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "allow our students to enjoy their games while learning.",
+            "charStart": 769,
+            "role": "기대 효과",
+            "translation": "학생이 학습하면서도 게임을 즐길 수 있게 됩니다."
+          }
+        ],
+        "correctReason": "학습 성과에 연결되는 게임 개발을 직접 요구하므로 정답은 ①입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "학습 활동에 게임이 초래하는 집중력 저하를 경계해야 한다.",
+          "reason": "글은 게임의 집중력을 위험 요소로만 보지 않고 학습에 활용할 수 있는 자원으로 전환하자고 주장합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_21",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 21,
+      "type": "밑줄 의미",
+      "group": "blank",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "21. 밑줄 친 hunting the shadow, not the substance가 다음 글에서",
+      "rawText": "21. \t밑줄 친 hunting the shadow, not the substance가 다음 글에서\n의미하는 바로 가장 적절한 것은? [3점]\nThe position of the architect rose during the Roman Empire,\nas architecture symbolically became a particularly important\npolitical \tstatement. \tCicero \tclassed \tthe \tarchitect \twith \tthe\nphysician and the teacher and Vitruvius spoke of “so great a\nprofession as this.” Marcus Vitruvius Pollio, a practicing\narchitect during the rule of Augustus Caesar, recognized that\narchitecture requires both practical and theoretical knowledge,\nand he listed the disciplines he felt the aspiring architect should\nmaster: literature and writing, draftsmanship, mathematics,\nhistory, philosophy, music, medicine, law, and astronomy ― a\ncurriculum that still has much to recommend it. All of this\nstudy was necessary, he argued, because architects who have\naimed at acquiring manual skill without scholarship have never\nbeen able to reach a position of authority to correspond to their\nplans, while those who have relied only upon theories and\nscholarship were obviously “hunting the shadow, not the\nsubstance.”\n① seeking abstract knowledge emphasized by architectural tradition\n② discounting the subjects necessary to achieve architectural goals\n③ pursuing the ideals of architecture without the practical skills\n④ prioritizing architecture’s material aspects over its artistic ones\n⑤ following historical precedents without regard to current standards",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "seeking abstract knowledge emphasized by architectural tradition"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "discounting the subjects necessary to achieve architectural goals"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "pursuing the ideals of architecture without the practical skills"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "prioritizing architecture’s material aspects over its artistic ones"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "following historical precedents without regard to current standards"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1418,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_21",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 21,
+        "group": "blank",
+        "type": "밑줄 의미",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "건축은 이론과 실무 지식이 함께 필요한데 이론만 좇으면 실체 없이 이상만 추구하게 된다는 뜻입니다.",
+        "typeApproach": "밑줄 비유는 바로 앞의 대조 구조를 찾아 비유의 두 요소를 글의 실제 개념으로 바꾸어 해석합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "architecture requires both practical and theoretical knowledge,",
+            "charStart": 449,
+            "role": "판단 기준",
+            "translation": "건축에는 실용 지식과 이론 지식이 모두 필요합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "those who have relied only upon theories and\nscholarship were obviously “hunting the shadow, not the\nsubstance.”",
+            "charStart": 964,
+            "role": "비유의 대상",
+            "translation": "이론과 학문에만 의존한 이들이 그림자만 좇는 경우라고 설명합니다."
+          }
+        ],
+        "correctReason": "실용 기술 없이 이론적 이상만 추구하는 상황을 가리키므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "seeking abstract knowledge emphasized by architectural tradition",
+          "reason": "추상 지식을 찾는 행위 자체가 아니라 실용 기술이 빠진 이론 편중이 핵심입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_22",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 22,
+      "type": "요지",
+      "group": "topic",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "rawText": "22. \t다음 글의 요지로 가장 적절한 것은?\nThe ability to understand emotions ― to have a diverse\nemotion \tvocabulary \tand \tto \tunderstand \tthe \tcauses \tand\nconsequences of emotion ― is particularly relevant in group\nsettings. Individuals who are skilled in this domain are able to\nexpress emotions, feelings and moods accurately and thus,\nmay \tfacilitate \tclear \tcommunication \tbetween \tco-workers.\nFurthermore, they may be more likely to act in ways that\naccommodate their own needs as well as the needs of others\n(i.e. cooperate). In a group conflict situation, for example, a\nmember with a strong ability to understand emotion will be\nable to express how he feels about the problem and why he\nfeels this way. He also should be able to take the perspective\nof the other group members and understand why they are\nreacting in a certain manner. Appreciation of differences creates\nan arena for open communication and promotes constructive\nconflict resolution and improved group functioning.\n① 집단 구성원 간 갈등 해소를 위해 감정 조절이 중요하다.\n② 감정 이해 능력은 집단 내 원활한 소통과 협력을 촉진한다.\n③ 타인에 대한 공감 능력은 자신의 감정 표현 능력을 향상한다.\n④ 감정 관련 어휘에 대한 지식은 공감 능력 발달의 기반이 된다.\n⑤ 자신의 감정 상태에 대한 이해는 사회성 함양에 필수적 요소이다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "집단 구성원 간 갈등 해소를 위해 감정 조절이 중요하다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "감정 이해 능력은 집단 내 원활한 소통과 협력을 촉진한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "타인에 대한 공감 능력은 자신의 감정 표현 능력을 향상한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "감정 관련 어휘에 대한 지식은 공감 능력 발달의 기반이 된다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "자신의 감정 상태에 대한 이해는 사회성 함양에 필수적 요소이다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1153,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_22",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 22,
+        "group": "topic",
+        "type": "요지",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "감정을 정확히 이해하고 표현하는 능력은 집단의 의사소통·협력·갈등 해결을 개선합니다.",
+        "typeApproach": "요지 문제는 여러 사례가 반복해서 뒷받침하는 공통 효과를 한 문장으로 압축합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Individuals who are skilled in this domain are able to\nexpress emotions, feelings and moods accurately and thus,",
+            "charStart": 210,
+            "role": "감정 이해 능력",
+            "translation": "감정 이해에 능숙한 사람은 감정과 기분을 정확히 표현할 수 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Appreciation of differences creates\nan arena for open communication and promotes constructive\nconflict resolution and improved group functioning.",
+            "charStart": 828,
+            "role": "집단 효과",
+            "translation": "차이를 이해하면 열린 소통과 건설적 갈등 해결, 집단 기능 향상이 촉진됩니다."
+          }
+        ],
+        "correctReason": "감정 이해가 집단 내 소통과 협력을 촉진한다는 내용이므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "집단 구성원 간 갈등 해소를 위해 감정 조절이 중요하다.",
+          "reason": "핵심 능력은 감정을 억제하거나 조절하는 것이 아니라 감정의 원인과 결과를 이해하는 것입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_23",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 23,
+      "type": "주제",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "rawText": "23. \t다음 글의 주제로 가장 적절한 것은?\nThe arrival of the Industrial Age changed the relationship\namong \ttime, \tlabor, \tand \tcapital. \tFactories \tcould \tproduce\naround the clock, and they could do so with greater speed and\nvolume than ever before. A machine that runs twelve hours a\nday will produce more widgets than one that runs for only\neight hours per day ― and a machine that runs twenty-four\nhours per day will produce the most widgets of all. As such, at\nmany factories, the workday is divided into eight-hour shifts,\nso that there will always be people on hand to keep the widget\nmachines humming. Industrialization raised the potential value\nof every single work hour ― the more hours you worked, the\nmore widgets you produced, and the more money you made ―\nand thus wages became tied to effort and production. Labor,\npreviously guided by harvest cycles, became clock-oriented,\nand society started to reorganize around new principles of\nproductivity.\n* widget: 제품\n① shift in the work-time paradigm brought about by industrialization\n② effects of standardizing production procedures on labor markets\n③ influence of industrialization on the machine-human relationship\n④ efficient ways to increase the value of time in the Industrial Age\n⑤ problems that excessive work hours have caused for laborers",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "shift in the work-time paradigm brought about by industrialization"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "effects of standardizing production procedures on labor markets"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "influence of industrialization on the machine-human relationship"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "efficient ways to increase the value of time in the Industrial Age"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "problems that excessive work hours have caused for laborers"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1293,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          14
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_23",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 23,
+        "group": "topic",
+        "type": "주제",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "산업화가 생산 시간의 가치를 높이면서 노동을 수확 주기 중심에서 시계 중심 체제로 바꾸었습니다.",
+        "typeApproach": "주제 문제는 글의 시작에서 제시한 변화와 마지막에서 정리한 사회적 결과를 함께 포함하는 선택지를 고릅니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Industrialization raised the potential value\nof every single work hour",
+            "charStart": 594,
+            "role": "시간 가치의 변화",
+            "translation": "산업화는 모든 노동 시간의 잠재 가치를 높였습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Labor,\npreviously guided by harvest cycles, became clock-oriented,\nand society started to reorganize around new principles of\nproductivity.",
+            "charStart": 808,
+            "role": "노동 체제의 변화",
+            "translation": "수확 주기를 따르던 노동이 시계 중심으로 바뀌고 사회가 생산성 원리에 맞춰 재편되었습니다."
+          }
+        ],
+        "correctReason": "산업화가 일과 시간의 관계를 바꾼 과정을 설명하므로 정답은 ①입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "influence of industrialization on the machine-human relationship",
+          "reason": "기계와 인간의 관계 자체보다 생산 시간과 노동 조직 방식의 변화가 글의 중심입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_24",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 24,
+      "type": "제목",
+      "group": "topic",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "24. 다음 글의 제목으로 가장 적절한 것은?",
+      "rawText": "24. \t다음 글의 제목으로 가장 적절한 것은?\nThe selfie resonates not because it is new, but because it\nexpresses, develops, expands, and intensifies the long history\nof the self-portrait. The self-portrait showed to others the\nstatus of the person depicted. In this sense, what we have\ncome to call our own “image” ― the interface of the way we\nthink we look and the way others see us ― is the first and\nfundamental object of global visual culture. The selfie depicts\nthe drama of our own daily performance of ourselves in\ntension with our inner emotions that may or may not be\nexpressed as we wish. At each stage of the self-portrait’s\nexpansion, more and more people have been able to depict\nthemselves. Today’s young, urban, networked majority has\nreworked the history of the self-portrait to make the selfie into\nthe first visual signature of the new era.\n* resonate: 공명(共鳴)하다 \t** depict: 그리다\n① Are Selfies Just a Temporary Trend in Art History?\n② Fantasy or Reality: Your Selfie Is Not the Real You\n③ The Selfie: A Symbol of Self-oriented Global Culture\n④ The End of Self-portraits: How Selfies Are Taking Over\n⑤ Selfies, the Latest Innovation in Representing Ourselves\n\n-- 3 of 8 --\n\n4 \t홀수형\n4 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Are Selfies Just a Temporary Trend in Art History?"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Fantasy or Reality: Your Selfie Is Not the Real You"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "The Selfie: A Symbol of Self-oriented Global Culture"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "The End of Self-portraits: How Selfies Are Taking Over"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Selfies, the Latest Innovation in Representing Ourselves"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1183,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          15
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_24",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 24,
+        "group": "topic",
+        "type": "제목",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "셀피는 자화상의 오랜 역사를 현대 네트워크 시대에 확장한 새로운 자기표현 방식입니다.",
+        "typeApproach": "제목 문제는 반복되는 핵심 개념과 필자의 평가 방향을 모두 담되 과장하거나 반대로 말한 선택지를 제거합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "The selfie resonates not because it is new, but because it\nexpresses, develops, expands, and intensifies the long history\nof the self-portrait.",
+            "charStart": 27,
+            "role": "역사적 연속성",
+            "translation": "셀피는 자화상의 오랜 역사를 표현하고 확장하기 때문에 의미를 얻습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Today’s young, urban, networked majority has\nreworked the history of the self-portrait to make the selfie into\nthe first visual signature of the new era.",
+            "charStart": 689,
+            "role": "현대적 혁신",
+            "translation": "오늘날 사람들은 자화상의 역사를 재구성해 셀피를 새 시대의 시각적 서명으로 만들었습니다."
+          }
+        ],
+        "correctReason": "자화상의 역사를 잇는 최신 자기표현 혁신이라는 제목이 글을 가장 정확히 압축하므로 정답은 ⑤입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "The End of Self-portraits: How Selfies Are Taking Over",
+          "reason": "글은 셀피가 자화상을 끝냈다고 하지 않고 자화상의 역사를 발전시키고 확장했다고 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_25",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 25,
+      "type": "도표",
+      "group": "info",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "25. 다음 도표의 내용과 일치하지 않는 것은?",
+      "rawText": "25. \t다음 도표의 내용과 일치하지 않는 것은?\nThe graph above shows the percentages of women employed\nbehind the scenes on the top 100 U.S. films by role in 2020,\n2021, and 2022. ① For each of the three years, the percentage\nof women employed as producers on the top 100 U.S. films\nwas the highest as compared with the percentages of each of\nthe other three roles. ② The percentage of women employed\nas directors on the top 100 U.S. films in 2021 was lower than\nin 2020 but higher than in 2022. ③ The percentage of women\nemployed as writers on the top 100 U.S. films increased by 4\npercentage points from 2020 to 2021 and by 1 percentage\npoint from 2021 to 2022. ④ The percentage of women employed\nas editors on the top 100 U.S. films was less than 20% in each\nof the three years. ⑤ In 2022, the percentage of women\nemployed as producers on the top 100 U.S. films was the same\nas that in 2020.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "For each of the three years, the percentage of women employed as producers on the top 100 U.S. films was the highest as compared with the percentages of each of the other three roles."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "The percentage of women employed as directors on the top 100 U.S. films in 2021 was lower than in 2020 but higher than in 2022."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "The percentage of women employed as writers on the top 100 U.S. films increased by 4 percentage points from 2020 to 2021 and by 1 percentage point from 2021 to 2022."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "The percentage of women employed as editors on the top 100 U.S. films was less than 20% in each of the three years."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "In 2022, the percentage of women employed as producers on the top 100 U.S. films was the same as that in 2020."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 875,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          15
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "grouped_bar_chart",
+        "assetPath": "english/assets/2025-csat/q25-figure.png",
+        "sha256": "944a89690dcc88567adb056bd06397a8f14e3ae301bd7eea7ab3d4bbc940071e",
+        "sourcePage": 4,
+        "alt": "Percentages of women employed behind the scenes on top 100 U.S. films. Director: 2020 16%, 2021 12%, 2022 11%. Writer: 2020 12%, 2021 16%, 2022 17%. Editor: 2020 18%, 2021 21%, 2022 18%. Producer: 2020 28%, 2021 24%, 2022 28%."
+      },
+      "review": {
+        "id": "2025_csat_25",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 25,
+        "group": "info",
+        "type": "도표",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "편집자 비율은 2021년에 21%이므로 세 해 모두 20% 미만이라는 설명이 도표와 다릅니다.",
+        "typeApproach": "도표 문제는 각 선택지의 대상·연도·비교 방향을 수치와 하나씩 대조하고 한 조건이라도 어긋나면 표시합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Editor: 2020 18%, 2021 21%, 2022 18%.",
+            "role": "편집자 수치",
+            "translation": "편집자 비율은 2020년 18%, 2021년 21%, 2022년 18%입니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Producer: 2020 28%, 2021 24%, 2022 28%.",
+            "role": "생산자 수치",
+            "translation": "생산자 비율은 2020년 28%, 2021년 24%, 2022년 28%입니다."
+          }
+        ],
+        "correctReason": "2021년 편집자 비율이 21%로 20%를 넘기 때문에 정답은 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "In 2022, the percentage of women employed as producers on the top 100 U.S. films was the same as that in 2020.",
+          "reason": "생산자 비율은 2020년과 2022년에 모두 28%이므로 이 선택지는 도표와 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_26",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 26,
+      "type": "내용 일치",
+      "group": "info",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "26. Dick Enberg에 관한 다음 글의 내용과 일치하지 않는 것은?",
+      "rawText": "26. \tDick Enberg에 관한 다음 글의 내용과 일치하지 않는 것은?\nDick Enberg was one of America’s most beloved sports\nbroadcasters. He was born in Michigan in 1935. In the early\n1960s, he became an assistant professor at San Fernando\nValley State College, where he also served as a coach of its\nbaseball team. Afterwards, he began a full-time sportscasting\ncareer in Los Angeles. In 1973, he became the first U.S.\nsportscaster ever to visit China. He joined NBC Sports in 1975\nand remained with the network for about 25 years, covering\nsuch big events as the Olympics. He later worked for other\nmajor sports broadcasting stations. He made his last live\nbroadcast in 2016 and died the following year at the age of 82.\nHe served as Chairman of the American Sportscaster Association\nfor more than three decades. Enberg was also a best-selling\nwriter and won Emmy Awards as a sportscaster, a writer, and a\nproducer.\n① Michigan에서 태어났다.\n② 대학 야구팀 코치였다.\n③ 중국을 방문한 첫 미국인 스포츠 캐스터였다.\n④ 마지막 생방송 후 3년 뒤에 사망하였다.\n⑤ Emmy Awards를 수상하였다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Michigan에서 태어났다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "대학 야구팀 코치였다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "중국을 방문한 첫 미국인 스포츠 캐스터였다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "마지막 생방송 후 3년 뒤에 사망하였다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Emmy Awards를 수상하였다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 997,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_26",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 26,
+        "group": "info",
+        "type": "내용 일치",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "Dick Enberg는 2016년 마지막 생방송 뒤 이듬해 사망했으므로 3년 뒤라는 설명이 틀립니다.",
+        "typeApproach": "내용 일치 문제는 인물·시점·기간을 선택지와 원문에서 같은 단위로 맞춘 뒤 한 항목씩 대조합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "He made his last live\nbroadcast in 2016 and died the following year at the age of 82.",
+            "charStart": 609,
+            "role": "시점 대조",
+            "translation": "그는 2016년 마지막 생방송을 하고 바로 다음 해에 사망했습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Enberg was also a best-selling\nwriter and won Emmy Awards as a sportscaster, a writer, and a\nproducer.",
+            "charStart": 787,
+            "role": "수상 사실",
+            "translation": "그는 스포츠 캐스터·작가·프로듀서로 에미상을 받았습니다."
+          }
+        ],
+        "correctReason": "마지막 생방송 후 3년이 아니라 다음 해에 사망했으므로 정답은 ④입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "중국을 방문한 첫 미국인 스포츠 캐스터였다.",
+          "reason": "원문은 그가 1973년 중국을 방문한 최초의 미국 스포츠 캐스터라고 명시합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_27",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 27,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "27. Adenville City Pass Card에 관한 다음 안내문의 내용과",
+      "rawText": "27. \tAdenville City Pass Card에 관한 다음 안내문의 내용과\n일치하지 않는 것은?\n① 관광객을 위한 대중교통 카드이다.\n② 시티 투어 버스에는 사용할 수 없다.\n③ 5일 패스 카드에만 주요 관광지 입장료 할인 혜택이 제공된다.\n④ 미사용 카드는 구입일로부터 30일 이내에 환불이 가능하다.\n⑤ 모바일 카드는 A-Transit 앱에서 구입할 수 있다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "관광객을 위한 대중교통 카드이다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "시티 투어 버스에는 사용할 수 없다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "5일 패스 카드에만 주요 관광지 입장료 할인 혜택이 제공된다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "미사용 카드는 구입일로부터 30일 이내에 환불이 가능하다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "모바일 카드는 A-Transit 앱에서 구입할 수 있다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 207,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "notice_with_price_table",
+        "assetPath": "english/assets/2025-csat/q27-notice.png",
+        "sha256": "2efcc8b49759a3f4a5a82e4c5c47838cb3afb6668a77fe985fa89c40eebcf2e0",
+        "sourcePage": 4,
+        "alt": "Adenville City Pass Card notice. The card is for tourists and works on Adenville-based subway lines and Adenville-licensed buses, not city tour buses. 1-Day $10, 3-Day $25, 5-Day $40. All 1-Day, 3-Day, and 5-Day cards include 10% off admission for major tourist attractions. Unused cards are refundable within 30 days of the purchase date. Physical cards are sold at subway stations; mobile cards are sold on the A-Transit app."
+      },
+      "review": {
+        "id": "2025_csat_27",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 27,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "주요 관광지 입장료 10% 할인은 5일권만이 아니라 모든 카드 유형에 적용됩니다.",
+        "typeApproach": "안내문 문제는 이용 대상·서비스 범위·가격·혜택·환불·구매 방법을 항목별로 나누어 선택지와 대조합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "All 1-Day, 3-Day, and 5-Day cards include 10% off admission for major tourist attractions.",
+            "role": "공통 할인 혜택",
+            "translation": "1일권·3일권·5일권 모두 주요 관광지 입장료 10% 할인 혜택을 포함합니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Unused cards are refundable within 30 days of the purchase date.",
+            "role": "환불 조건",
+            "translation": "미사용 카드는 구매일로부터 30일 이내에 환불할 수 있습니다."
+          }
+        ],
+        "correctReason": "할인이 5일권에만 제공된다는 설명이 안내문과 다르므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "미사용 카드는 구입일로부터 30일 이내에 환불이 가능하다.",
+          "reason": "안내문에 미사용 카드의 30일 이내 환불 가능 조건이 그대로 제시되어 있습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_28",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 28,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "28. Luckwood Snow Festival에 관한 다음 안내문의 내용과",
+      "rawText": "28. \tLuckwood Snow Festival에 \t관한 \t다음 \t안내문의 \t내용과\n일치하는 것은?\n① 2년에 한 번 열린다.\n② 열흘 동안 진행된다.\n③ 눈 조각 경연에는 11개 팀이 참가할 것이다.\n④ 주차가 가능하다.\n⑤ 셔틀버스 이용은 무료이다.\nLuckwood Snow Festival\nWe’re happy to announce the 15th annual Luckwood\nSnow Festival. Come to the festival to enjoy winter activities.\nWhen & Where\n∙January 24th—30th (7 days), from 9 a.m. to 8 p.m.\n∙Luckwood Park\nSpecial Activities\n∙Snow Sculpture Contest: 11 teams will participate.\n∙Fun in the Snow: Kids can enjoy snow tunnels and snow slides.\nTransportation\n∙Parking is not available (Use public transportation and/or\nshuttle bus service).\n∙The shuttle bus runs between Luckwood Subway Station\nand Luckwood Park (One-way fare: $1, cash only).\n※ For more information, please visit www.ldsnow.org.\nAdenville City Pass Card\nThe Adenville City Pass Card is a public transportation\ncard for tourists visiting Adenville.\nService Range\n∙Adenville-based subway lines\n∙Adenville-licensed buses\n※ This card cannot be used for city tour buses.\nCard Type\nPrice \tAdditional Benefit\n1-Day \t$10 10% off admission for\nmajor tourist attractions\n3-Day \t$25\n5-Day \t$40\n※ Unused cards are refundable within 30 days of the\npurchase date.\nPurchase Information\n∙Physical cards can be purchased at subway stations.\n∙Mobile cards can be purchased on the A-Transit app.\n\n-- 4 of 8 --\n\n홀수형 \t5\n5 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "2년에 한 번 열린다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "열흘 동안 진행된다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "눈 조각 경연에는 11개 팀이 참가할 것이다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "주차가 가능하다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "셔틀버스 이용은 무료이다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1318,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "figure": {
+        "kind": "festival_notice",
+        "assetPath": "english/assets/2025-csat/q28-notice.png",
+        "sha256": "26d2a2ea69c82329e16cad7c7d00e95c949029d3327f80d6279bda591c2d65b6",
+        "sourcePage": 4,
+        "alt": "Luckwood Snow Festival notice. The 15th annual festival runs January 24th-30th for 7 days, from 9 a.m. to 8 p.m. at Luckwood Park. Snow Sculpture Contest: 11 teams will participate. Kids can enjoy snow tunnels and snow slides. Parking is not available. The shuttle bus fare is $1 one way, cash only."
+      },
+      "review": {
+        "id": "2025_csat_28",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 28,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "눈 축제 안내문은 눈 조각 경연에 11개 팀이 참가한다고 명시합니다.",
+        "typeApproach": "안내문 일치 문제는 개최 기간·활동 인원·주차·교통비처럼 수치와 부정 표현을 우선 확인합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Snow Sculpture Contest: 11 teams will participate.",
+            "role": "참가 팀 수",
+            "translation": "눈 조각 경연에는 11개 팀이 참가합니다."
+          },
+          {
+            "in": "figure",
+            "quote": "The shuttle bus fare is $1 one way, cash only.",
+            "role": "셔틀버스 요금",
+            "translation": "셔틀버스 편도 요금은 현금 1달러입니다."
+          }
+        ],
+        "correctReason": "안내문과 일치하는 내용은 11개 팀의 눈 조각 경연 참가이므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "셔틀버스 이용은 무료이다.",
+          "reason": "셔틀버스는 무료가 아니라 편도 1달러이며 현금으로만 지불할 수 있습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_29",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 29,
+      "type": "어법",
+      "group": "grammar",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "29. 다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?",
+      "rawText": "29. \t다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?\nThink of yourself. When you decide to get up and get a\ndrink of water, for example, you don’t consciously organize or\nconsider the host of steps involved. Imagine if we ① had to\nconsider every single muscle that needed to be contracted or\nrelaxed just to stand up and walk. It would be tiresome and\nvery \tslow ― as \tpatients \trecovering \tfrom \ta \tbrain \tinjury\naffecting the motor system ② knows. The autopilot parts of\nour \tbrain \tdo \tit \tfor \tus \tautomatically, ③ freeing \tup \tour\nconscious mind for more important jobs. It is the older parts of\nour brain ④ that support these automatic processes that allow\nus to move, hear, see, and use many of our social skills. More\nrecently evolved abilities like talking, reading, and writing are\nfar less automated. So, most of the time, ⑤ what you are\nperceiving, feeling, or thinking is based on a very crude and\nfast analysis that happens completely without your awareness.\n* crude: 투박한",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "had to consider"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "knows"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "freeing up"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "that"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "what you are perceiving"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 965,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          18
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_29",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 29,
+        "group": "grammar",
+        "type": "어법",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "②의 주어 핵심어가 복수형 patients이므로 단수 동사 knows가 아니라 know가 와야 합니다.",
+        "typeApproach": "어법 문제는 밑줄마다 주어·동사 수 일치, 절의 역할, 분사와 강조 구문을 따로 판정합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "affecting the motor system ② knows.",
+            "charStart": 394,
+            "role": "수 일치 오류",
+            "translation": "복수 주어 patients에 단수형 knows가 연결되어 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "It is the older parts of\nour brain ④ that support these automatic processes",
+            "charStart": 556,
+            "role": "정상 강조 구문",
+            "translation": "④의 that은 강조 구문을 이루며 복수 동사 support도 알맞습니다."
+          }
+        ],
+        "correctReason": "복수 주어 patients와 동사의 수가 일치하지 않는 ②가 어법상 틀렸습니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "that",
+          "reason": "④의 that은 the older parts of our brain을 강조하는 It is ... that 구조에 맞습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_30",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 30,
+      "type": "어휘",
+      "group": "vocab",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "30. 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지",
+      "rawText": "30. \t다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지\n않은 것은? [3점]\nStudies \tin \tpsychology \thave \treported \tcases \tin \twhich\ncompetitive incentives resulted in lower task effort, and their\nfocus was on the psychological underpinnings of the reduction\nin motivation. For example, competition presents an inevitable\nconflict between the motivation to achieve one’s personal goal\nand the ① desire to maintain good relationships with others.\nWhen the maintenance of interpersonal relationships is important,\nwith their counterparts in particular or with others generally,\ncompetitors experience an ② internal conflict that can harm\ntheir desire to achieve their goal and taint the good feeling\nbrought about by winning. Exline and Lobel found that the\nperception of oneself as a target for upward social comparison\noften makes people ③ uncomfortable. When they believe that\nothers are making envious comparisons with them, people feel\nuneasiness, distress, or sorrow. Feelings of guilt, an emotion\ngenerally associated with high motivation for goal-achievement,\nlead to ④ stronger motivation and performance in the pursuit\nof competitive goals. Consequences of this emotional state include\nlower task motivation in a competition and preferences for\nmore cooperative and altruistic outcomes, such as ⑤ diminishing\nthe significance of the outcome or sharing the winner’s reward.\n* taint: 더럽히다 \t** altruistic: 이타주의의\n[31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "desire"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "internal conflict"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "uncomfortable"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "stronger"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "diminishing"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1430,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_30",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 30,
+        "group": "vocab",
+        "type": "어휘",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "경쟁에서 느끼는 죄책감은 과업 동기를 낮추므로 stronger는 문맥과 반대이며 weaker가 알맞습니다.",
+        "typeApproach": "어휘 문제는 밑줄 단어만 보지 않고 앞의 원인과 뒤의 결과가 같은 방향인지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "lead to ④ stronger motivation and performance in the pursuit\nof competitive goals.",
+            "charStart": 1042,
+            "role": "반대 방향 어휘",
+            "translation": "④는 죄책감이 경쟁 목표의 동기와 수행을 더 강하게 만든다고 표현합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Consequences of this emotional state include\nlower task motivation in a competition",
+            "charStart": 1125,
+            "role": "실제 결과",
+            "translation": "바로 다음 문장은 이 감정 상태가 과업 동기를 낮춘다고 설명합니다."
+          }
+        ],
+        "correctReason": "뒤에서 낮은 과업 동기를 결과로 제시하므로 stronger가 문맥에 맞지 않아 정답은 ④입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "uncomfortable",
+          "reason": "타인이 자신을 부러워하며 비교한다고 느끼면 불편해진다는 설명과 자연스럽게 이어집니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_31",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 31,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "31. Literature can be helpful in the language learning process",
+      "rawText": "31. \tLiterature can be helpful in the language learning process\nbecause of the \tit fosters in readers.\nCore language teaching materials must concentrate on how a\nlanguage operates both as a rule-based system and as a\nsociosemantic system. Very often, the process of learning is\nessentially \tanalytic, \tpiecemeal, \tand, \tat \tthe \tlevel \tof \tthe\npersonality, fairly superficial. Engaging imaginatively with\nliterature enables learners to shift the focus of their attention\nbeyond the more mechanical aspects of the foreign language\nsystem. When a novel, play or short story is explored over a\nperiod of time, the result is that the reader begins to ‘inhabit’\nthe text. He or she is drawn into the book. Pinpointing what\nindividual words or phrases may mean becomes less important\nthan pursuing the development of the story. The reader is\neager to find out what happens as events unfold; he or she\nfeels close to certain characters and shares their emotional\nresponses. The language becomes ‘transparent’ ― the fiction\ndraws the whole person into its own world.\n* sociosemantic: 사회의미론적인 \t** transparent: 투명한\n① linguistic insight \t② artistic imagination\n③ literary sensibility \t④ alternative perspective\n⑤ personal involvement",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "linguistic insight"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "artistic imagination"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "literary sensibility"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "alternative perspective"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "personal involvement"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1222,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_31",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 31,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "문학은 언어 학습자가 단어 분석을 넘어 이야기와 인물의 감정에 개인적으로 몰입하게 합니다.",
+        "typeApproach": "빈칸 문제는 빈칸 뒤의 반복 설명을 압축하고 그 설명을 가장 넓게 포괄하는 개념을 고릅니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "When a novel, play or short story is explored over a\nperiod of time, the result is that the reader begins to ‘inhabit’\nthe text.",
+            "charStart": 538,
+            "role": "텍스트 몰입",
+            "translation": "작품을 지속해서 읽으면 독자는 텍스트 속에 거주하듯 몰입합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "the fiction\ndraws the whole person into its own world.",
+            "charStart": 1004,
+            "role": "전인적 참여",
+            "translation": "허구는 독자의 전 존재를 작품 세계로 끌어들입니다."
+          }
+        ],
+        "correctReason": "독자가 작품 세계와 인물 감정에 빠져드는 개인적 몰입이 핵심이므로 정답은 ⑤입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "artistic imagination",
+          "reason": "상상력도 관련되지만 글은 독자 전체가 이야기 속에 참여하는 몰입을 더 직접적으로 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_32",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 32,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "32. Education, at its best, teaches more than just knowledge.",
+      "rawText": "32. \tEducation, at its best, teaches more than just knowledge.\nIt teaches critical thinking: the ability to stop and think\nbefore acting, to avoid succumbing to emotional pressures.\nThis is not thought control. It is the very reverse: mental\nliberation. \tEven \tthe \tmost \tadvanced \tintellectual \twill \tbe\nimperfect at this skill. But even imperfect possession of it\nof being ‘stimulus-driven’,\nconstantly \treacting \tto \tthe \timmediate \tenvironment, \tthe\nbrightest colours or loudest sounds. Being driven by heuristic\nresponses, living by instinct and emotion all the time, is a very\neasy way to live, in many ways: thought is effortful, especially\nfor the inexperienced. But emotions are also exhausting, and\nshort-term reactions may not, in the long term, be the most\nbeneficial for health and survival. Just as we reach for burgers\nfor the sake of convenience, storing up the arterial fat which\nmay one day kill us, so our reliance on feelings can do us great\nharm.\n* succumb: 굴복하다 \t** arterial: 동맥의\n① intensifies people’s danger\n② enhances our understanding\n③ frees a person from the burden\n④ allows us to accept the inevitability\n⑤ requires one to have the experience\n\n-- 5 of 8 --\n\n6 \t홀수형\n6 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "intensifies people’s danger"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "enhances our understanding"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "frees a person from the burden"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "allows us to accept the inevitability"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "requires one to have the experience"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1197,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          20
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_32",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 32,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "비판적 사고는 즉각적인 자극과 감정에 끌려 반응해야 하는 부담에서 사람을 해방합니다.",
+        "typeApproach": "빈칸 앞의 핵심 정의와 뒤에서 설명하는 반대 상태를 연결해 문장의 논리 방향을 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "It teaches critical thinking: the ability to stop and think\nbefore acting, to avoid succumbing to emotional pressures.",
+            "charStart": 63,
+            "role": "교육의 기능",
+            "translation": "교육은 행동 전에 멈춰 생각하고 감정적 압박에 굴복하지 않는 비판적 사고를 가르칩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "This is not thought control. It is the very reverse: mental\nliberation.",
+            "charStart": 182,
+            "role": "해방의 의미",
+            "translation": "이 능력은 사고 통제가 아니라 정신적 해방입니다."
+          }
+        ],
+        "correctReason": "비판적 사고가 자극에 끌려 다니는 부담에서 벗어나게 한다는 흐름이므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "enhances our understanding",
+          "reason": "이해 증진이라는 일반적 효과보다 즉각적 자극에서 벗어나는 정신적 해방이 문맥에 정확히 맞습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_33",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 33,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "33. We are famously living in the era of the attention economy,",
+      "rawText": "33. \tWe are famously living in the era of the attention economy,\nwhere the largest and most profitable businesses in the world\nare those that consume my attention. The advertising industry\nis literally dedicated to capturing the conscious hours of my\nlife and selling them to someone else. It might seem magical\nthat \tso \tmany \texciting \tand \tuseful \tsoftware \tsystems \tare\navailable to use for free, but it is now conventional wisdom\nthat if you can’t see who is paying for something that appears\nto be free, then \t.\nOur creative engagement with other people is mediated by\nAI-based recommendation systems that are designed to trap\nour attention \tthrough the process \tthat \tNick Seaver calls\ncaptology, keeping us attending to work sold by one company\nrather \tthan \tanother, \treplacing \tthe \tfreedom \tof \tpersonal\nexploration \twith \talgorithm-generated \tplaylists \tor \teven\nalgorithm-generated art. [3점]\n① all of your attention has already been spent\n② the real product being sold is you\n③ your privacy is being violated\n④ the public may be sponsoring you\n⑤ you owe the benefits to your friend AI",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "all of your attention has already been spent"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "the real product being sold is you"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "your privacy is being violated"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "the public may be sponsoring you"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "you owe the benefits to your friend AI"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1097,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          21
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_33",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 33,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "무료 서비스처럼 보여도 광고 산업은 사용자의 관심을 팔기 때문에 실제 상품은 사용자 자신입니다.",
+        "typeApproach": "빈칸 앞의 조건문과 뒤의 구체적 사례가 공통으로 설명하는 거래 구조를 찾아 완성합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "where the largest and most profitable businesses in the world\nare those that consume my attention.",
+            "charStart": 65,
+            "role": "관심 경제",
+            "translation": "가장 수익성 높은 기업들은 사용자의 관심을 소비합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "The advertising industry\nis literally dedicated to capturing the conscious hours of my\nlife and selling them to someone else.",
+            "charStart": 164,
+            "role": "판매 대상",
+            "translation": "광고 산업은 사용자의 의식적인 시간을 붙잡아 다른 이에게 판매합니다."
+          }
+        ],
+        "correctReason": "돈을 내지 않는 사용자의 관심과 시간이 판매 대상이 되므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "your privacy is being violated",
+          "reason": "사생활 침해 가능성보다 사용자의 관심 자체가 상품이 되는 사업 구조가 빈칸의 직접 논리입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_34",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 34,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "34. Centralized, formal rules can .",
+      "rawText": "34. \tCentralized, formal rules can \t.\nThe rules of baseball don’t just regulate the behavior of the\nplayers; they determine the behavior that constitutes playing\nthe game. Rules do not prevent people from playing baseball;\nthey create the very practice that allows people to play\nbaseball. A score of music imposes rules, but it also creates a\npattern of conduct that enables people to produce music. Legal\nrules that enable the formation of corporations, that enable the\nuse of wills and trusts, that create negotiable instruments, and\nthat establish the practice of contracting all make practices that\ncreate new opportunities for individuals. And we have legal\nrules that establish roles individuals play within the legal\nsystem, such as judges, trustees, partners, and guardians. True,\nthe legal rules that establish these roles constrain the behavior\nof individuals who occupy them, but rules also create the roles\nthemselves. Without them an individual would not have the\nopportunity to occupy the role. [3점]\n* constrain: 속박하다\n① categorize one’s patterns of conduct in legal and productive ways\n② lead people to reevaluate their roles and practices in a society\n③ encourage new ways of thinking which promote creative ideas\n④ reinforce one’s behavior within legal and established contexts\n⑤ facilitate productive activity by establishing roles and practices",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "categorize one’s patterns of conduct in legal and productive ways"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "lead people to reevaluate their roles and practices in a society"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "encourage new ways of thinking which promote creative ideas"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "reinforce one’s behavior within legal and established contexts"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "facilitate productive activity by establishing roles and practices"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1363,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          22
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_34",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 34,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "공식 규칙은 행동을 제한하기만 하는 것이 아니라 생산적 활동이 가능한 관행과 역할을 만들어 냅니다.",
+        "typeApproach": "빈칸 뒤의 여러 사례에서 반복되는 동사와 결과를 묶어 규칙의 공통 기능을 추론합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Rules do not prevent people from playing baseball;\nthey create the very practice that allows people to play\nbaseball.",
+            "charStart": 172,
+            "role": "관행 창출",
+            "translation": "규칙은 야구를 막는 것이 아니라 야구라는 관행 자체를 만듭니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "but rules also create the roles\nthemselves.",
+            "charStart": 888,
+            "role": "역할 창출",
+            "translation": "규칙은 사람들이 맡을 수 있는 역할 자체도 만듭니다."
+          }
+        ],
+        "correctReason": "규칙이 역할과 관행을 세워 생산적 활동을 가능하게 한다는 내용이므로 정답은 ⑤입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "reinforce one’s behavior within legal and established contexts",
+          "reason": "기존 행동을 강화하는 것이 아니라 규칙이 새로운 관행과 역할을 성립시키는 점이 핵심입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_35",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 35,
+      "type": "무관한 문장",
+      "group": "irrelevant",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "35. 다음 글에서 전체 흐름과 관계 없는 문장은?",
+      "rawText": "35. \t다음 글에서 전체 흐름과 관계 없는 문장은?\nThe expansion of sports tourism in the twentieth century has\nbeen influenced by further developments in transportation.\nJust as the railways revolutionized travel in the nineteenth\ncentury, so the automobile produced even more dramatic\nchanges in the twentieth. ① The significance of the car in the\ndevelopment of sport and tourism generally has attracted\nconsiderable coverage and it has had no less an impact on\nsports tourism specifically. ② Although originally invented\ntowards the end of the nineteenth century, it started to become\na mass form of transport in the 1920s in the USA and rather\nlater in Britain. ③ Apart from its convenience and flexibility,\nthe car has the additional advantages of affording access to\nmany areas not served by public transport, as well as allowing\nthe easy transport of luggage and equipment. ④ The expansion\nof reasonably priced, good quality accommodation associated\nwith tourism growth has also facilitated the growth of locally\nbased restaurants. ⑤ As a result, it was invaluable for the\ndevelopment of many forms of sports tourism but especially\nthose which require the transportation of people and equipment\nto relatively remote locations.\n[36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한\n것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "The significance of the car in the development of sport and tourism generally has attracted considerable coverage and it has had no less an impact on sports tourism specifically."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Although originally invented towards the end of the nineteenth century, it started to become a mass form of transport in the 1920s in the USA and rather later in Britain."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Apart from its convenience and flexibility, the car has the additional advantages of affording access to many areas not served by public transport, as well as allowing the easy transport of luggage and equipment."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "The expansion of reasonably priced, good quality accommodation associated with tourism growth has also facilitated the growth of locally based restaurants."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "As a result, it was invaluable for the development of many forms of sports tourism but especially those which require the transportation of people and equipment to relatively remote locations."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1258,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          22
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_35",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 35,
+        "group": "irrelevant",
+        "type": "무관한 문장",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "글은 자동차가 스포츠 관광 성장에 기여한 방식을 설명하지만 ④는 숙박과 식당의 성장으로 주제가 바뀝니다.",
+        "typeApproach": "무관한 문장 문제는 첫 문장의 주제어와 각 문장의 연결 대상을 추적해 혼자 다른 인과 사슬을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "The expansion of sports tourism in the twentieth century has\nbeen influenced by further developments in transportation.",
+            "charStart": 30,
+            "role": "중심 주제",
+            "translation": "20세기 스포츠 관광의 확대는 교통 발달의 영향을 받았습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "④ The expansion\nof reasonably priced, good quality accommodation associated\nwith tourism growth has also facilitated the growth of locally\nbased restaurants.",
+            "charStart": 861,
+            "role": "주제 이탈",
+            "translation": "④는 숙박 시설 확대가 지역 식당 성장에 미친 영향을 설명합니다."
+          }
+        ],
+        "correctReason": "자동차와 스포츠 관광의 관계에서 벗어나 숙박·식당을 다룬 ④가 전체 흐름과 무관합니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "Apart from its convenience and flexibility, the car has the additional advantages of affording access to many areas not served by public transport, as well as allowing the easy transport of luggage and equipment.",
+          "reason": "③은 자동차가 스포츠 관광에 필요한 이동성과 장비 운반을 제공한다는 중심 논리를 뒷받침합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_36",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 36,
+      "type": "순서",
+      "group": "order",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "36.",
+      "rawText": "36.\nThe potential for market enforcement is greater when\ncontracting parties have developed reputational capital that\ncan be devalued when contracts are violated.\n(A) Similarly, a landowner can undermaintain fences, ditches,\nand irrigation systems. Accurate assessments of farmer\nand landowner behavior will be made over time, and\nthose farmers and landowners who attempt to gain at each\nother’s expense will find that others may refuse to deal\nwith them in the future.\n(B) Over \ttime \tlandowners \tindirectly \tmonitor \tfarmers \tby\nobserving the reported output, the general quality of the soil,\nand any unusual or extreme behavior. Farmer and landowner\nreputations act as a bond. In any growing season a farmer can\nreduce effort, overuse soil, or underreport the crop.\n(C) Farmers and landowners develop reputations for honesty,\nfairness, producing high yields, and consistently demonstrating\nthat they are good at what they do. In small, close-knit\nfarming communities, reputations are well known.\n* ditch: 개천 \t** irrigation: 물을 댐\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n\n-- 6 of 8 --\n\n홀수형 \t7\n7 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1147,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_36",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 36,
+        "group": "order",
+        "type": "순서",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "평판 자본의 일반 원리 뒤에 농부·지주의 평판을 소개한 C, 농부 감시를 다룬 B, 지주의 대응 사례인 A가 이어집니다.",
+        "typeApproach": "순서 문제는 주어진 글의 일반 개념을 처음 구체화하는 문단을 찾고 지시어·유사 표현으로 다음 문단을 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "The potential for market enforcement is greater when\ncontracting parties have developed reputational capital that\ncan be devalued when contracts are violated.",
+            "charStart": 4,
+            "role": "일반 원리",
+            "translation": "계약 위반으로 가치가 떨어질 평판 자본이 있으면 시장의 제재 가능성이 커집니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Farmers and landowners develop reputations for honesty,\nfairness, producing high yields, and consistently demonstrating\nthat they are good at what they do.",
+            "charStart": 773,
+            "role": "C의 구체화",
+            "translation": "C는 농부와 지주가 정직성과 능력에 대한 평판을 쌓는다고 구체화합니다."
+          }
+        ],
+        "correctReason": "C가 평판을 소개하고 B가 농부의 일탈, A가 similarly로 지주의 일탈과 제재를 연결하므로 정답은 ⑤입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "(B) - (C) - (A)",
+          "reason": "B의 farmers and landowners reputations는 먼저 두 주체의 평판을 소개하는 C가 있어야 자연스럽습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_37",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 37,
+      "type": "순서",
+      "group": "order",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "37.",
+      "rawText": "37.\nWatch the birds in your backyard. If one bird startles and\nflies off, others will follow, not waiting around to assess\nwhether the threat is real. They have been infected by\nemotional contagion.\n(A) Marc wondered whether the birds in line were more fearful\nbecause they didn’t know what their flockmates were\ndoing. Emotional contagion would have been impossible for\nindividual grosbeaks in the linear array except with their\nnearest neighbors.\n(B) In a long-term research project that Marc did with some\nof his students on patterns of antipredatory scanning by\nwestern evening grosbeaks, they found that birds in a\ncircle showed more coordination in scanning than did\nbirds who were feeding in a line.\n(C) The birds in a line, who could only see their nearest\nneighbor, not only were less coordinated when scanning,\nbut also were more nervous, changing their body and head\npositions significantly more than grosbeaks in a circle,\nwhere it was possible for each grosbeak to see every other\ngrosbeak. [3점]\n* grosbeak: 콩새류(類) \t** array: 정렬\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n[38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장\n적절한 곳을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1181,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          24
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_37",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 37,
+        "group": "order",
+        "type": "순서",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "감정 전염의 연구를 소개한 B 뒤에 줄지어 선 새의 결과를 설명한 C, 그 이유를 묻는 A가 이어집니다.",
+        "typeApproach": "순서 문제는 새 정보의 최초 소개, 동일 명사 반복, 마지막 의문 또는 해석의 순서를 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "they found that birds in a\ncircle showed more coordination in scanning than did\nbirds who were feeding in a line.",
+            "charStart": 593,
+            "role": "B의 연구 결과 소개",
+            "translation": "B는 원형으로 모인 새가 줄지어 먹는 새보다 더 협력적으로 살폈다는 연구 결과를 처음 제시합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "The birds in a line, who could only see their nearest\nneighbor, not only were less coordinated when scanning,\nbut also were more nervous",
+            "charStart": 711,
+            "role": "C의 반복·확장",
+            "translation": "C는 B의 줄지어 선 새를 받아 협응이 낮고 더 불안했다는 결과를 확장합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Marc wondered whether the birds in line were more fearful\nbecause they didn’t know what their flockmates were\ndoing.",
+            "charStart": 203,
+            "role": "A의 해석",
+            "translation": "A는 줄지어 선 새가 더 두려워한 이유를 해석합니다."
+          }
+        ],
+        "correctReason": "연구 소개 B, 결과 확장 C, 원인 해석 A의 순서가 자연스러우므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(C) - (B) - (A)",
+          "reason": "C는 B에서 처음 제시된 줄지어 먹는 새를 The birds in a line으로 받아야 하므로 B보다 먼저 올 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_38",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 38,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "38.",
+      "rawText": "38.\nWithout any special legal protection for trade secrets,\nhowever, the secretive inventor risks that an employee or\ncontractor will disclose the proprietary information.\nTrade secret law aims to promote innovation, although it\naccomplishes this objective in a very different manner than\npatent protection. ( ① ) Notwithstanding the advantages of\nobtaining a patent, many innovators prefer to protect their\ninnovation through secrecy. ( ② ) They may believe that the\ncost and delay of seeking a patent are too great or that\nsecrecy better protects their investment and increases their\nprofit. ( ③ ) They might also believe that the invention can\nbest be utilized over a longer period of time than a patent\nwould allow. ( ④ ) Once the idea is released, it will be “free\nas the air” under the background norms of a free market\neconomy. ( ⑤ ) Such a predicament would lead any inventor\nseeking to rely upon secrecy to spend an inordinate amount of\nresources building high and impassable fences around their\nresearch facilities and greatly limiting the number of people\nwith access to the proprietary information. [3점]\n* patent: 특허 \t** predicament: 곤경",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1148,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          24
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_38",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 38,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "주어진 문장은 비밀 보호의 이점 설명 뒤에 발명가가 겪을 공개 위험을 제시하므로 ④에 들어갑니다.",
+        "typeApproach": "문장 삽입은 주어진 문장의 연결어와 핵심 명사가 앞 문단을 어떻게 반박하고 뒤 문장을 어떻게 예고하는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Without any special legal protection for trade secrets,\nhowever, the secretive inventor risks that an employee or\ncontractor will disclose the proprietary information.",
+            "charStart": 4,
+            "role": "주어진 반전 문장",
+            "translation": "하지만 법적 보호가 없으면 직원이나 계약자가 비밀 정보를 공개할 위험이 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "They might also believe that the invention can\nbest be utilized over a longer period of time than a patent\nwould allow. ( ④ ) Once the idea is released, it will be “free\nas the air” under the background norms of a free market\neconomy.",
+            "charStart": 600,
+            "role": "삽입 전후 연결",
+            "translation": "비밀 유지의 이점 뒤에 아이디어 공개 시의 위험이 이어지는 자리입니다."
+          }
+        ],
+        "correctReason": "비밀 유지의 이점에서 공개 위험으로 전환되는 ④가 주어진 however 문장에 가장 알맞습니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "⑤",
+          "reason": "⑤ 뒤의 Such a predicament는 이미 앞에서 설명된 공개 위험을 받아야 하므로 주어진 문장은 그보다 앞인 ④에 와야 합니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_39",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 39,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "39.",
+      "rawText": "39.\nIn reality, objects do not conform to a linear lifecycle model;\ninstead, they undergo breakdowns, await repairs, are stored\naway, or find themselves relegated to the basement, only to\nbe rediscovered and repurposed later.\nBy their very nature, the concepts of maintenance and repair\nare \tpredominantly \texamined \tfrom \ta \tprocess-oriented\nperspective. ( ① ) The focus in related scholarly discourse\noften revolves around the lifespan or lifecycle of objects and\ntechnologies. ( ② ) In this context, maintenance and repair\nare considered practices that have the potential to prolong the\nexistence of objects, ensuring their sustained utilization over\nan extended period. ( ③ ) Krebs and Weber critically engage\nwith anthropomorphic metaphors that imply a biography of\nthings, appropriately highlighting that conventional understanding\nof the lifecycle of a technology, from its acquisition to its\ndisposal \tfrom \tthe \thousehold, \tprovides \tan \tincomplete\ndefinition. ( ④ ) Additionally, objects may enter recycling or\nsecond-hand cycles, leading to a dynamic afterlife marked by\ndiverse applications. ( ⑤ ) As such, the life of an object\nexhibits a far more complicated and adaptive path than a\nsimplistic linear progression.\n* relegate: 추방하다 \t** anthropomorphic: 의인화된",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1271,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          25
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_39",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 39,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "주어진 문장은 물건의 선형 수명 주기를 반박하고 이어지는 재활용·재사용 사례를 여는 역할을 합니다.",
+        "typeApproach": "삽입 문장의 대조 표현과 앞 문장의 문제 제기, 뒤 문장의 추가 사례를 한 묶음으로 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "In reality, objects do not conform to a linear lifecycle model;\ninstead, they undergo breakdowns, await repairs, are stored\naway, or find themselves relegated to the basement, only to\nbe rediscovered and repurposed later.",
+            "charStart": 4,
+            "role": "선형 모델 반박",
+            "translation": "실제 물건은 선형 수명 주기를 따르지 않고 고장·수리·보관·재사용을 거칩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "provides \tan \tincomplete\ndefinition. ( ④ ) Additionally, objects may enter recycling or\nsecond-hand cycles",
+            "charStart": 933,
+            "role": "삽입 위치 단서",
+            "translation": "불완전한 정의라는 비판 뒤에 재활용과 중고 순환이라는 추가 사례가 이어집니다."
+          }
+        ],
+        "correctReason": "선형 관점의 불완전성을 비판한 뒤 실제의 비선형 사례를 제시해야 하므로 정답은 ④입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "③",
+          "reason": "③ 뒤에서는 Krebs와 Weber의 선형 모델 비판이 먼저 제시되므로, 그 비판을 구체화하는 주어진 문장은 ④가 자연스럽습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_40",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 40,
+      "type": "요약문",
+      "group": "summary",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),",
+      "rawText": "40. \t다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),\n(B)에 들어갈 말로 가장 적절한 것은?\nPeople often assume that synthetic food ingredients are\nmore harmful than natural ones, but this is not always the\ncase. Typically, synthetic ingredients can be made in a\nprecisely \tcontrolled \tfashion \tand \thave \twell-defined\ncompositions and properties, allowing careful evaluation of\ntheir potential toxicity. On the other hand, natural ingredients\noften vary appreciably in their composition and properties\ndepending on their origin, the time of year they were\nharvested, the climate they experienced throughout their\nlifetime, the soil quality, and how they were isolated and\nstored. These variations can make testing their safety\nextremely difficult ― one is never sure about the potential\ntoxicity of minor components that may vary from time to\ntime. In some cases, a natural food component has been\nconsumed for hundreds or thousands of years without\ncausing any obvious health problems and can, therefore, be\nassumed to be safe. However, one must still be very careful.\n* synthetic: 합성의\n󰀻\nThe \t(A) \tof the production process for synthetic\nfood ingredients and the variability of natural food ingredients\nmay \t(B) \tpeople’s commonly held assumption that\nthe natural ingredients are more secure.\n(A) \t(B)\n①\n③\n⑤\ncontrollability\nmanageability\naccessibility\n……\n……\n……\nchallenge\nintensify\nquestion\n(A) \t(B)\n②\n④\npredictability\naffordability\n……\n……\nsupport\nreverse\n\n-- 7 of 8 --\n\n8 \t홀수형\n8 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "controllability …… challenge"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "predictability …… support"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "manageability …… intensify"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "affordability …… reverse"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "accessibility …… question"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1453,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          26
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_40",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 40,
+        "group": "summary",
+        "type": "요약문",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "합성 성분 생산의 통제 가능성과 천연 성분의 변동성은 천연이 더 안전하다는 통념에 이의를 제기합니다.",
+        "typeApproach": "요약문은 두 대상의 대조 속성을 각각 찾고 결론 동사가 원문의 평가 방향과 일치하는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "synthetic ingredients can be made in a\nprecisely \tcontrolled \tfashion \tand \thave \twell-defined\ncompositions and properties",
+            "charStart": 195,
+            "role": "합성 성분의 통제 가능성",
+            "translation": "합성 성분은 정밀하게 통제된 방식으로 만들 수 있고 조성과 특성이 분명합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "natural ingredients\noften vary appreciably in their composition and properties",
+            "charStart": 395,
+            "role": "천연 성분의 변동성",
+            "translation": "천연 성분은 조성과 특성이 크게 달라질 수 있습니다."
+          }
+        ],
+        "correctReason": "합성 생산의 controllability와 천연 성분의 변동성이 통념에 challenge하므로 정답은 ①입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "accessibility …… question",
+          "reason": "통념에 의문을 제기하는 방향은 맞지만 첫 빈칸은 접근성이 아니라 생산 과정의 통제 가능성입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_41",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 41,
+      "type": "장문 제목",
+      "group": "long",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "41. 윗글의 제목으로 가장 적절한 것은?",
+      "rawText": "41. \t윗글의 제목으로 가장 적절한 것은?\n① Anatomical Distance Between Humans and Other Primates\n② Human Hands: A Decisive Leap in the Evolutionary Path\n③ Our Hands: An Unexpected Outcome of Evolution\n④ Human Grip: The Dilemma of Human Survival\n⑤ Hidden Power of the Daily Use of Tools",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nImagine grabbing a piece of paper between your thumb and\nindex finger. Maybe you already are, as you turn this page.\nWe use this type of forceful, pad-to-pad precision gripping\nwithout thinking about it, and literally in a snap. Yet it was a\nbreakthrough in human evolution. Other primates exhibit\nsome kinds of precision grips in the handling and use of\nobjects, but not with the kind of (a) efficient opposition that\nour hand anatomy allows. In a single hand, humans can\neasily hold and manipulate objects, even small and delicate\nones, \twhile \tadjusting \tour \tfingers \tto \ttheir \tshape \tand\nreorienting \tthem \twith (b) displacements \tof \tour \tfingertip\npads. \tOur \trelatively \tlong, \tpowerful \tthumb \tand \tother\nanatomical attributes, including our flat nails (which nearly\nall primates possess), make this (c) possible. Just picture\ntrying ― and \tfailing ― to \tdog-ear \tthis \tpage \twith \tpointy,\ncurved claws.\nWith a unique combination of traits, the human hand shaped\nour history. No question, stone tools couldn’t have become a\nkeystone of human technology and subsistence (d) without\nhands that could do the job, along with a nervous system that\ncould regulate and coordinate the necessary signals. Anybody\nwho’s ever attempted to make a spear tip or arrowhead from\na \trock \tknows \tthat \tit (e) excludes \tstrong \tgrips, \tconstant\nrotation and repositioning, and forceful, careful strikes with\nanother \thard \tobject. \tAnd \teven \twith \ta \tfair \tamount \tof\nknow-how, it can be a bloody business.\n* primate: 영장류 \t** anatomy: 해부학 \t*** subsistence: 생계",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Anatomical Distance Between Humans and Other Primates"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Human Hands: A Decisive Leap in the Evolutionary Path"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Our Hands: An Unexpected Outcome of Evolution"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Human Grip: The Dilemma of Human Survival"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Hidden Power of the Daily Use of Tools"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 269,
+        "sharedPassageChars": 1580,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          27
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_41",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 41,
+        "group": "long",
+        "type": "장문 제목",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "인간 손의 정밀한 쥐기 능력은 도구 사용과 생존 기술을 가능하게 한 진화의 결정적 도약이었습니다.",
+        "typeApproach": "장문 제목은 두 문단의 공통 주어와 첫 문단의 진화 의미, 둘째 문단의 역사적 효과를 함께 담아야 합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Yet it was a\nbreakthrough in human evolution.",
+            "charStart": 257,
+            "role": "진화적 의미",
+            "translation": "정밀한 쥐기 능력은 인간 진화의 획기적 발전이었습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "With a unique combination of traits, the human hand shaped\nour history.",
+            "charStart": 942,
+            "role": "역사적 영향",
+            "translation": "독특한 특성의 결합을 갖춘 인간의 손이 우리의 역사를 만들었습니다."
+          }
+        ],
+        "correctReason": "인간 손이 진화와 역사에서 결정적 도약을 이뤘다는 제목이므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "Hidden Power of the Daily Use of Tools",
+          "reason": "도구의 일상적 힘보다 도구 사용을 가능하게 한 인간 손의 진화적 특성이 중심입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_42",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 42,
+      "type": "장문 어휘",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "42. 밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은",
+      "rawText": "42. \t밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은\n것은? [3점]\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nImagine grabbing a piece of paper between your thumb and\nindex finger. Maybe you already are, as you turn this page.\nWe use this type of forceful, pad-to-pad precision gripping\nwithout thinking about it, and literally in a snap. Yet it was a\nbreakthrough in human evolution. Other primates exhibit\nsome kinds of precision grips in the handling and use of\nobjects, but not with the kind of (a) efficient opposition that\nour hand anatomy allows. In a single hand, humans can\neasily hold and manipulate objects, even small and delicate\nones, \twhile \tadjusting \tour \tfingers \tto \ttheir \tshape \tand\nreorienting \tthem \twith (b) displacements \tof \tour \tfingertip\npads. \tOur \trelatively \tlong, \tpowerful \tthumb \tand \tother\nanatomical attributes, including our flat nails (which nearly\nall primates possess), make this (c) possible. Just picture\ntrying ― and \tfailing ― to \tdog-ear \tthis \tpage \twith \tpointy,\ncurved claws.\nWith a unique combination of traits, the human hand shaped\nour history. No question, stone tools couldn’t have become a\nkeystone of human technology and subsistence (d) without\nhands that could do the job, along with a nervous system that\ncould regulate and coordinate the necessary signals. Anybody\nwho’s ever attempted to make a spear tip or arrowhead from\na \trock \tknows \tthat \tit (e) excludes \tstrong \tgrips, \tconstant\nrotation and repositioning, and forceful, careful strikes with\nanother \thard \tobject. \tAnd \teven \twith \ta \tfair \tamount \tof\nknow-how, it can be a bloody business.\n* primate: 영장류 \t** anatomy: 해부학 \t*** subsistence: 생계",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 84,
+        "sharedPassageChars": 1580,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          28
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_42",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 42,
+        "group": "long",
+        "type": "장문 어휘",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "석기를 만들려면 강한 쥐기와 회전·타격이 필요하므로 excludes는 requires로 바뀌어야 합니다.",
+        "typeApproach": "문맥 어휘는 해당 단어 뒤의 나열이 앞 행동의 필요 조건인지 배제 대상인지 인과관계로 판정합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "stone tools couldn’t have become a\nkeystone of human technology and subsistence (d) without\nhands that could do the job",
+            "charStart": 1027,
+            "role": "손의 필요성",
+            "translation": "석기가 기술과 생계의 핵심이 되려면 일을 수행할 손이 필요했습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "it (e) excludes \tstrong \tgrips, \tconstant\nrotation and repositioning, and forceful, careful strikes",
+            "charStart": 1323,
+            "role": "문맥 반대 어휘",
+            "translation": "창촉 제작이 강한 쥐기·회전·타격을 배제한다고 되어 있어 문맥과 반대입니다."
+          }
+        ],
+        "correctReason": "나열된 동작은 석기 제작에 요구되는 조건이므로 excludes가 틀린 ⑤가 정답입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(d)",
+          "reason": "without hands that could do the job은 손이 없었다면 석기가 핵심 기술이 될 수 없었다는 문맥에 맞습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_43",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 43,
+      "type": "장문 순서",
+      "group": "long",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로",
+      "rawText": "43. \t주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로\n가장 적절한 것은?\n①\n③\n⑤\n(B)\n(C)\n(D)\n－\n－\n－\n(D)\n(D)\n(C)\n－\n－\n－\n(C)\n(B)\n(B)\n②\n④\n(C)\n(D)\n－\n－\n(B)\n(B)\n－\n－\n(D)\n(C)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\n“Do you remember when Sean used to tell me that I was the\nbest dad in the world?” Ethan asked his wife, Grace. “Yes, I\ndo. I always envied your relationship with Sean,” she replied.\nEthan then shared how things had changed since (a) his son\nstarted middle school. Grace had noticed Ethan often pushing\nSean to study harder. “Maybe he isn’t that into school right\nnow. How about going hiking, just the two of you?” she\nsuggested. He agreed, and realizing that both his and Sean’s\nhiking jackets were still at the laundry, he asked his wife to go\nand pick them up with him.\n(B)\nEthan and Grace came back home with the jackets and\nchecked if Sean had everything else he needed for hiking.\nLuckily, in his drawers they found his hat, shoes, sunglasses,\nand hiking sticks. When Sean returned from school, Ethan\nsoftly said, “Sean, let’s go hiking this Saturday, just the two\nof us.” Though Sean thanked (b) him for the suggestion, he\nsaid he had to go to the library. Grace stepped in, “You know,\nthe weather this weekend will be the best of the year. Why not\nenjoy it?” After a moment’s hesitation, (c) he agreed.\n(C)\n“When did you bring the jackets in?” the clerk at the\nlaundry asked. “Maybe two weeks ago,” Ethan replied. Then,\nGrace quickly reminded (d) him, “Honey, we actually left\nthem here a month ago.” The clerk went into the storage area\nto look for the clothes. Finally, he returned with the jackets\nand handed them to Ethan. The clerk politely said, “I am\nsorry, but please collect your items earlier next time. Our\nstorage is too full.” Ethan felt embarrassed for the late\ncollection and apologized.\n(D)\nThe weather was perfect. Ethan and Sean set off hiking\nalong the valley by Aicken Mountain. They walked in silence\nuntil Sean fell over a rock and twisted his ankle. Realizing he\ncouldn’t walk, Ethan carried his son down on his back. He\nfelt Sean’s heartbeat, something he hadn’t felt since Sean was\na baby. Suddenly, Sean said, “Dad, I’m sorry. At some point,\nI started to become afraid of disappointing (e) you. But you\nare still the best dad.” Energized, he felt no weight on his\nback and replied, “You are the best son, no matter what.”",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(B) - (D) - (C)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(C) - (B) - (D)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(C) - (D) - (B)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(D) - (B) - (C)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(D) - (C) - (B)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 139,
+        "sharedPassageChars": 2186,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_43",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 43,
+        "group": "long",
+        "type": "장문 순서",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "세탁소에 함께 가자는 A 뒤에 재킷을 찾는 C, 귀가 후 준비하는 B, 실제 하이킹인 D가 이어집니다.",
+        "typeApproach": "장문 순서는 이동 요청·장소 도착·귀가·최종 사건처럼 시간과 장소가 바뀌는 연결 고리를 추적합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "he asked his wife to go\nand pick them up with him.",
+            "charStart": 553,
+            "role": "A의 다음 행동 예고",
+            "translation": "Ethan은 아내에게 재킷을 함께 찾으러 가자고 요청합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Finally, he returned with the jackets\nand handed them to Ethan.",
+            "charStart": 1402,
+            "role": "C의 재킷 수령",
+            "translation": "세탁소 직원이 재킷을 찾아 Ethan에게 건넵니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Ethan and Grace came back home with the jackets and\nchecked if Sean had everything else he needed for hiking.",
+            "charStart": 608,
+            "role": "B의 귀가 후 준비",
+            "translation": "Ethan과 Grace는 재킷을 가지고 집에 돌아와 다른 등산 장비를 확인합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "The weather was perfect. Ethan and Sean set off hiking",
+            "charStart": 1646,
+            "role": "D의 최종 사건",
+            "translation": "마지막으로 Ethan과 Sean이 실제 하이킹을 시작합니다."
+          }
+        ],
+        "correctReason": "세탁소 방문 C, 귀가와 준비 B, 하이킹 D의 시간 순서가 이어지므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "(C) - (D) - (B)",
+          "reason": "B에서 장비를 확인하고 Sean의 동의를 얻은 뒤에야 D의 하이킹이 가능하므로 D가 B보다 앞설 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_44",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 44,
+      "type": "장문 지칭",
+      "group": "long",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "44. 밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른",
+      "rawText": "44. \t밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\n“Do you remember when Sean used to tell me that I was the\nbest dad in the world?” Ethan asked his wife, Grace. “Yes, I\ndo. I always envied your relationship with Sean,” she replied.\nEthan then shared how things had changed since (a) his son\nstarted middle school. Grace had noticed Ethan often pushing\nSean to study harder. “Maybe he isn’t that into school right\nnow. How about going hiking, just the two of you?” she\nsuggested. He agreed, and realizing that both his and Sean’s\nhiking jackets were still at the laundry, he asked his wife to go\nand pick them up with him.\n(B)\nEthan and Grace came back home with the jackets and\nchecked if Sean had everything else he needed for hiking.\nLuckily, in his drawers they found his hat, shoes, sunglasses,\nand hiking sticks. When Sean returned from school, Ethan\nsoftly said, “Sean, let’s go hiking this Saturday, just the two\nof us.” Though Sean thanked (b) him for the suggestion, he\nsaid he had to go to the library. Grace stepped in, “You know,\nthe weather this weekend will be the best of the year. Why not\nenjoy it?” After a moment’s hesitation, (c) he agreed.\n(C)\n“When did you bring the jackets in?” the clerk at the\nlaundry asked. “Maybe two weeks ago,” Ethan replied. Then,\nGrace quickly reminded (d) him, “Honey, we actually left\nthem here a month ago.” The clerk went into the storage area\nto look for the clothes. Finally, he returned with the jackets\nand handed them to Ethan. The clerk politely said, “I am\nsorry, but please collect your items earlier next time. Our\nstorage is too full.” Ethan felt embarrassed for the late\ncollection and apologized.\n(D)\nThe weather was perfect. Ethan and Sean set off hiking\nalong the valley by Aicken Mountain. They walked in silence\nuntil Sean fell over a rock and twisted his ankle. Realizing he\ncouldn’t walk, Ethan carried his son down on his back. He\nfelt Sean’s heartbeat, something he hadn’t felt since Sean was\na baby. Suddenly, Sean said, “Dad, I’m sorry. At some point,\nI started to become afraid of disappointing (e) you. But you\nare still the best dad.” Energized, he felt no weight on his\nback and replied, “You are the best son, no matter what.”",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 78,
+        "sharedPassageChars": 2186,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2025_csat_44",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 44,
+        "group": "long",
+        "type": "장문 지칭",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "(a)·(b)·(d)·(e)는 Ethan을 가리키지만, 동의한 사람인 (c)는 Sean을 가리킵니다.",
+        "typeApproach": "지칭 문제는 대명사 바로 앞 문장의 화자와 행동 주체를 복원하고 다른 대명사와 같은 인물인지 비교합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Ethan then shared how things had changed since (a) his son\nstarted middle school.",
+            "charStart": 214,
+            "role": "a의 지칭",
+            "translation": "(a)의 his는 자신의 아들에 관해 말하는 Ethan을 가리킵니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Grace stepped in, “You know,\nthe weather this weekend will be the best of the year. Why not\nenjoy it?” After a moment’s hesitation, (c) he agreed.",
+            "charStart": 995,
+            "role": "c의 지칭",
+            "translation": "Grace의 설득을 듣고 잠시 망설인 뒤 동의한 (c)는 Sean입니다."
+          }
+        ],
+        "correctReason": "나머지는 Ethan을 가리키고 (c)만 Sean을 가리키므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "(b)",
+          "reason": "Sean이 제안에 대해 감사한 대상인 (b) him은 하이킹을 제안한 Ethan입니다."
+        }
+      }
+    },
+    {
+      "id": "2025_csat_45",
+      "examId": "2025_csat",
+      "schoolYear": 2025,
+      "actualYear": 2024,
+      "session": "수능",
+      "qid": 45,
+      "type": "장문 내용",
+      "group": "long",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "45. 윗글에 관한 내용으로 적절하지 않은 것은?",
+      "rawText": "45. \t윗글에 관한 내용으로 적절하지 않은 것은?\n① Grace는 Ethan과 Sean의 관계를 부러워했다고 말했다.\n② Grace는 Ethan에게 Sean과 둘이서 하이킹할 것을 권했다.\n③ Sean의 선글라스가 서랍장 안에 있었다.\n④ Ethan은 혼자서 세탁소에 하이킹 재킷을 찾으러 갔다.\n⑤ Sean은 하이킹하는 도중 돌에 걸려 넘어졌다.\n* 확인 사항\n◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인\n하시오.\n\n-- 8 of 8 --",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\n“Do you remember when Sean used to tell me that I was the\nbest dad in the world?” Ethan asked his wife, Grace. “Yes, I\ndo. I always envied your relationship with Sean,” she replied.\nEthan then shared how things had changed since (a) his son\nstarted middle school. Grace had noticed Ethan often pushing\nSean to study harder. “Maybe he isn’t that into school right\nnow. How about going hiking, just the two of you?” she\nsuggested. He agreed, and realizing that both his and Sean’s\nhiking jackets were still at the laundry, he asked his wife to go\nand pick them up with him.\n(B)\nEthan and Grace came back home with the jackets and\nchecked if Sean had everything else he needed for hiking.\nLuckily, in his drawers they found his hat, shoes, sunglasses,\nand hiking sticks. When Sean returned from school, Ethan\nsoftly said, “Sean, let’s go hiking this Saturday, just the two\nof us.” Though Sean thanked (b) him for the suggestion, he\nsaid he had to go to the library. Grace stepped in, “You know,\nthe weather this weekend will be the best of the year. Why not\nenjoy it?” After a moment’s hesitation, (c) he agreed.\n(C)\n“When did you bring the jackets in?” the clerk at the\nlaundry asked. “Maybe two weeks ago,” Ethan replied. Then,\nGrace quickly reminded (d) him, “Honey, we actually left\nthem here a month ago.” The clerk went into the storage area\nto look for the clothes. Finally, he returned with the jackets\nand handed them to Ethan. The clerk politely said, “I am\nsorry, but please collect your items earlier next time. Our\nstorage is too full.” Ethan felt embarrassed for the late\ncollection and apologized.\n(D)\nThe weather was perfect. Ethan and Sean set off hiking\nalong the valley by Aicken Mountain. They walked in silence\nuntil Sean fell over a rock and twisted his ankle. Realizing he\ncouldn’t walk, Ethan carried his son down on his back. He\nfelt Sean’s heartbeat, something he hadn’t felt since Sean was\na baby. Suddenly, Sean said, “Dad, I’m sorry. At some point,\nI started to become afraid of disappointing (e) you. But you\nare still the best dad.” Energized, he felt no weight on his\nback and replied, “You are the best son, no matter what.”",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Grace는 Ethan과 Sean의 관계를 부러워했다고 말했다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Grace는 Ethan에게 Sean과 둘이서 하이킹할 것을 권했다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Sean의 선글라스가 서랍장 안에 있었다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Ethan은 혼자서 세탁소에 하이킹 재킷을 찾으러 갔다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Sean은 하이킹하는 도중 돌에 걸려 넘어졌다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2025학년도_수능_영어_문제.pdf",
+        "answerFile": "2025학년도_수능_영어_정답.png",
+        "explainFile": "2025학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 259,
+        "sharedPassageChars": 2186,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2025_csat_45",
+        "status": "ready",
+        "exam": "2025학년도 수능 영어",
+        "qid": 45,
+        "group": "long",
+        "type": "장문 내용",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "Ethan은 혼자가 아니라 Grace와 함께 세탁소에 갔으므로 ④가 글의 내용과 다릅니다.",
+        "typeApproach": "장문 내용 일치는 인물·동행 여부·소지품·사건을 선택지별로 본문의 정확한 장면과 대조합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "He agreed, and realizing that both his and Sean’s\nhiking jackets were still at the laundry, he asked his wife to go\nand pick them up with him.",
+            "charStart": 461,
+            "role": "동행 요청",
+            "translation": "Ethan은 아내에게 재킷을 함께 찾으러 가자고 요청했습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "Ethan and Grace came back home with the jackets",
+            "charStart": 608,
+            "role": "동행 확인",
+            "translation": "Ethan과 Grace가 함께 재킷을 가지고 집으로 돌아왔습니다."
+          }
+        ],
+        "correctReason": "Grace와 함께 세탁소에 다녀왔으므로 혼자 갔다는 ④가 적절하지 않습니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "Sean의 선글라스가 서랍장 안에 있었다.",
+          "reason": "본문은 Sean의 서랍에서 모자·신발·선글라스·등산 스틱을 찾았다고 명시합니다."
+        }
+      }
+    }
+  ]
+}

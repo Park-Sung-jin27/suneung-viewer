@@ -404,6 +404,46 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
     "CHOICE_OVERRIDE_COUNT",
   );
   ensure(new Set(overrideIds).size === overrideIds.length, "CHOICE_OVERRIDE_DUPLICATE");
+  const sourceTextOverrides = overlay.sourceTextOverrides ?? {};
+  const sourceTextOverrideIds = Object.keys(sourceTextOverrides);
+  ensure(
+    sourceTextOverrideIds.length ===
+      (overlay.summary.sourceTextOverrideQuestionCount ?? 0),
+    "SOURCE_TEXT_OVERRIDE_COUNT",
+  );
+  ensure(
+    new Set(sourceTextOverrideIds).size === sourceTextOverrideIds.length,
+    "SOURCE_TEXT_OVERRIDE_DUPLICATE",
+  );
+  ensure(
+    JSON.stringify([...sourceTextOverrideIds].sort()) ===
+      JSON.stringify(
+        [...(overlay.releaseRules.requireSourceTextOverrideForIds ?? [])].sort(),
+      ),
+    "SOURCE_TEXT_OVERRIDE_REQUIRED_IDS",
+  );
+  for (const questionId of sourceTextOverrideIds) {
+    ensure(expectedIds.includes(questionId), "SOURCE_TEXT_OVERRIDE_ID", questionId);
+    const sourceTextOverride = sourceTextOverrides[questionId];
+    ensure(
+      sourceTextOverride &&
+        typeof sourceTextOverride === "object" &&
+        JSON.stringify(Object.keys(sourceTextOverride)) ===
+          JSON.stringify(["rawText"]),
+      "SOURCE_TEXT_OVERRIDE_FIELDS",
+      questionId,
+    );
+    const rawText = validatedText(
+      sourceTextOverride.rawText,
+      "SOURCE_TEXT_OVERRIDE_RAW_TEXT",
+      questionId,
+    );
+    ensure(
+      !REVIEW_DRAFT_PATTERN.test(rawText),
+      "SOURCE_TEXT_OVERRIDE_DRAFT_MARKER",
+      questionId,
+    );
+  }
 
   const figureIds = overlay.figures?.map((figure) => figure.questionId) ?? [];
   ensure(
@@ -436,6 +476,18 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
     ensure(auditQuestion.reviewStatus === "ready", "REVIEW_STATUS", auditQuestion.id);
     const choices = overlay.choiceOverrides?.[auditQuestion.id] ?? baseQuestion.choices;
     validateChoiceList(auditQuestion.id, choices, baseQuestion.type);
+    const rawText =
+      sourceTextOverrides[auditQuestion.id]?.rawText ?? baseQuestion.rawText;
+    if (sourceTextOverrideIds.includes(auditQuestion.id)) {
+      ensure(rawText.includes(baseQuestion.stem), "SOURCE_TEXT_STEM_MISSING", auditQuestion.id);
+      for (const choice of choices) {
+        ensure(
+          rawText.includes(choice.text),
+          "SOURCE_TEXT_CHOICE_MISSING",
+          `${auditQuestion.id}:${choice.num}`,
+        );
+      }
+    }
     const answer = Number(auditQuestion.answer);
     ensure(Number.isInteger(answer) && answer >= 1 && answer <= 5, "ANSWER_INVALID", auditQuestion.id);
 
@@ -452,7 +504,7 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
       answer,
       textStatus: baseQuestion.textStatus,
       stem: baseQuestion.stem,
-      rawText: baseQuestion.rawText,
+      rawText,
       sharedPassage: baseQuestion.sharedPassage,
       choices,
       candidateStatus: auditQuestion.status,
@@ -460,6 +512,9 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
       source: baseQuestion.source,
       extraction: {
         ...baseQuestion.extraction,
+        ...(sourceTextOverrideIds.includes(auditQuestion.id)
+          ? { rawChars: rawText.length }
+          : {}),
         choiceCount: choices.length,
         answerStatus: "source_cross_checked",
       },
@@ -470,6 +525,9 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
         choiceSource: overrideIds.includes(auditQuestion.id)
           ? "source_checked_overlay"
           : "source_checked_base",
+        ...(sourceTextOverrideIds.includes(auditQuestion.id)
+          ? { textSource: "source_checked_overlay" }
+          : {}),
       },
     };
     if (figure) {
@@ -536,15 +594,26 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
       evidenceCount,
       figureAssetCount: overlay.summary.figureAssetCount,
       choiceOverrideQuestionCount: overrideIds.length,
+      ...(sourceTextOverrideIds.length
+        ? { sourceTextOverrideQuestionCount: sourceTextOverrideIds.length }
+        : {}),
       blockedCount: 0,
     },
     integrity: {
       questionIds: expectedIds,
       choiceOverrideIds: overrideIds,
+      ...(sourceTextOverrideIds.length ? { sourceTextOverrideIds } : {}),
       figureIds,
       choiceFingerprint: fingerprint(
         questions.map((question) => [question.id, question.answer, question.choices]),
       ),
+      ...(sourceTextOverrideIds.length
+        ? {
+            sourceTextFingerprint: fingerprint(
+              questions.map((question) => [question.id, question.rawText]),
+            ),
+          }
+        : {}),
       figureFingerprint: fingerprint(
         overlay.figures.map((figure) => [
           figure.questionId,
@@ -582,5 +651,5 @@ if (options.check) {
 }
 
 console.log(
-  `ENG_MATH_ENGLISH_CANDIDATE: pass candidate=${overlay.candidateId} mode=${options.check ? "check" : "merge"} questions=${merged.summary.questionCount} answers=${merged.summary.answerCrossCheckCount} overrides=${merged.summary.choiceOverrideQuestionCount} figures=${merged.summary.figureAssetCount} review=${merged.summary.reviewReadyCount} evidence=${merged.summary.evidenceCount} public=0 source=${options.sourceDirectory ? "verified" : "recorded"}`,
+  `ENG_MATH_ENGLISH_CANDIDATE: pass candidate=${overlay.candidateId} mode=${options.check ? "check" : "merge"} questions=${merged.summary.questionCount} answers=${merged.summary.answerCrossCheckCount} overrides=${merged.summary.choiceOverrideQuestionCount} text=${merged.summary.sourceTextOverrideQuestionCount ?? 0} figures=${merged.summary.figureAssetCount} review=${merged.summary.reviewReadyCount} evidence=${merged.summary.evidenceCount} public=0 source=${options.sourceDirectory ? "verified" : "recorded"}`,
 );

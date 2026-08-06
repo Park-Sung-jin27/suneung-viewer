@@ -1,0 +1,246 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2025_csat_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "examId": "2025_csat"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2025학년도_수능_영어_문제.pdf",
+      "sha256": "fc0164edaa52481a97c5dfd6fdf39674753c8d81c6ba6cf3a8f0700b843c6d69"
+    },
+    "answer": {
+      "filename": "2025학년도_수능_영어_정답.png",
+      "sha256": "cbd81e2238ffb78cb96487687de84e520e191938c6ddb89bf5b26f6537ec65e3"
+    },
+    "explanation": {
+      "filename": "2025학년도_수능_영어_해설.pdf",
+      "sha256": "20bf84964746b3f1a04604cf9432d4f15d64eb17729063baae936070f2aca10c"
+    }
+  },
+  "reviewData": {
+    "path": "english/data/candidates/english_2025_csat_reviews.json",
+    "sha256": "367339f01eb46801ada057f08f1b5f6ab58bf6e2f1e44d340c2a73ee03607ed5",
+    "expectedReadyCount": 28
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 59,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "sourceTextOverrideQuestionCount": 1,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2025_csat_25",
+      "2025_csat_27",
+      "2025_csat_28"
+    ],
+    "requireSourceTextOverrideForIds": [
+      "2025_csat_18"
+    ]
+  },
+  "projectionPolicies": {
+    "default": {
+      "sourceField": "rawText",
+      "stripStem": true,
+      "stripChoices": true,
+      "stripPdfTail": true
+    },
+    "sharedPassageIds": [
+      "2025_csat_41",
+      "2025_csat_42",
+      "2025_csat_43",
+      "2025_csat_44",
+      "2025_csat_45"
+    ],
+    "inlineMarkerIds": [
+      "2025_csat_29",
+      "2025_csat_30",
+      "2025_csat_35",
+      "2025_csat_42",
+      "2025_csat_44"
+    ],
+    "sequenceTableIds": [
+      "2025_csat_36",
+      "2025_csat_37",
+      "2025_csat_43"
+    ],
+    "placementMarkerIds": [
+      "2025_csat_38",
+      "2025_csat_39"
+    ]
+  },
+  "questions": [
+    { "id": "2025_csat_18", "qid": 18, "answer": 1, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_19", "qid": 19, "answer": 2, "problemPage": 2, "explanationPages": [11], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_20", "qid": 20, "answer": 1, "problemPage": 2, "explanationPages": [12], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_21", "qid": 21, "answer": 3, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_22", "qid": 22, "answer": 2, "problemPage": 3, "explanationPages": [13], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_23", "qid": 23, "answer": 1, "problemPage": 3, "explanationPages": [14], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_24", "qid": 24, "answer": 5, "problemPage": 3, "explanationPages": [15], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_25", "qid": 25, "answer": 4, "problemPage": 4, "explanationPages": [15], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2025-csat/q25-figure.png" },
+    { "id": "2025_csat_26", "qid": 26, "answer": 4, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_27", "qid": 27, "answer": 3, "problemPage": 4, "explanationPages": [16], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2025-csat/q27-notice.png" },
+    { "id": "2025_csat_28", "qid": 28, "answer": 3, "problemPage": 4, "explanationPages": [17], "status": "question_answer_ready", "reviewStatus": "ready", "figureAsset": "english/assets/2025-csat/q28-notice.png" },
+    { "id": "2025_csat_29", "qid": 29, "answer": 2, "problemPage": 5, "explanationPages": [18], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_30", "qid": 30, "answer": 4, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_31", "qid": 31, "answer": 5, "problemPage": 5, "explanationPages": [19], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_32", "qid": 32, "answer": 3, "problemPage": 5, "explanationPages": [20], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_33", "qid": 33, "answer": 2, "problemPage": 6, "explanationPages": [21], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_34", "qid": 34, "answer": 5, "problemPage": 6, "explanationPages": [22], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_35", "qid": 35, "answer": 4, "problemPage": 6, "explanationPages": [22], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_36", "qid": 36, "answer": 5, "problemPage": 6, "explanationPages": [23], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_37", "qid": 37, "answer": 3, "problemPage": 7, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_38", "qid": 38, "answer": 4, "problemPage": 7, "explanationPages": [24], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_39", "qid": 39, "answer": 4, "problemPage": 7, "explanationPages": [25], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_40", "qid": 40, "answer": 1, "problemPage": 7, "explanationPages": [26], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_41", "qid": 41, "answer": 2, "problemPage": 8, "explanationPages": [27], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_42", "qid": 42, "answer": 5, "problemPage": 8, "explanationPages": [28], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_43", "qid": 43, "answer": 2, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_44", "qid": 44, "answer": 3, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" },
+    { "id": "2025_csat_45", "qid": 45, "answer": 4, "problemPage": 8, "explanationPages": [29], "status": "question_answer_ready", "reviewStatus": "ready" }
+  ],
+  "sourceTextOverrides": {
+    "2025_csat_18": {
+      "rawText": "18. 다음 글의 목적으로 가장 적절한 것은?\nDear Rosydale City Marathon Racers,\nWe are really grateful to all of you who have signed up for\nthe 10th Rosydale City Marathon that was scheduled for\nthis coming Saturday at 10 a.m. Unfortunately, as you may\nalready know, the weather forecast says that there is going\nto be a downpour throughout the race day. We truly hoped\nthat the race would go smoothly. However, it is likely that\nthe heavy rain will make the roads too slippery and\ndangerous for the racers to run safely. As a result, we have\ndecided to cancel the race. We hope you understand and\nwe promise to hold another race in the near future.\nSincerely,\nMartha Kingsley\nRace Manager\n① 마라톤 경기 취소 사실을 공지하려고\n② 마라톤 경기 사전 행사 참여를 독려하려고\n③ 마라톤 경기 참가비 환불 절차를 설명하려고\n④ 마라톤 경기 참여 시 규칙 준수를 당부하려고\n⑤ 마라톤 경기 진행에 따른 도로 통제를 안내하려고"
+    }
+  },
+  "choiceOverrides": {
+    "2025_csat_20": [
+      { "num": 1, "mark": "①", "text": "학습 효과 증진에 활용될 수 있는 게임을 개발해야 한다." },
+      { "num": 2, "mark": "②", "text": "교육 현장에서 학습과 게임 활동을 적절하게 분배해야 한다." },
+      { "num": 3, "mark": "③", "text": "학습 활동에 게임이 초래하는 집중력 저하를 경계해야 한다." },
+      { "num": 4, "mark": "④", "text": "여가 시간에 게임을 활용함으로써 학습 효율을 향상해야 한다." },
+      { "num": 5, "mark": "⑤", "text": "게임의 부정적 영향을 줄이기 위해 학습 공동체가 노력해야 한다." }
+    ],
+    "2025_csat_24": [
+      { "num": 1, "mark": "①", "text": "Are Selfies Just a Temporary Trend in Art History?" },
+      { "num": 2, "mark": "②", "text": "Fantasy or Reality: Your Selfie Is Not the Real You" },
+      { "num": 3, "mark": "③", "text": "The Selfie: A Symbol of Self-oriented Global Culture" },
+      { "num": 4, "mark": "④", "text": "The End of Self-portraits: How Selfies Are Taking Over" },
+      { "num": 5, "mark": "⑤", "text": "Selfies, the Latest Innovation in Representing Ourselves" }
+    ],
+    "2025_csat_28": [
+      { "num": 1, "mark": "①", "text": "2년에 한 번 열린다." },
+      { "num": 2, "mark": "②", "text": "열흘 동안 진행된다." },
+      { "num": 3, "mark": "③", "text": "눈 조각 경연에는 11개 팀이 참가할 것이다." },
+      { "num": 4, "mark": "④", "text": "주차가 가능하다." },
+      { "num": 5, "mark": "⑤", "text": "셔틀버스 이용은 무료이다." }
+    ],
+    "2025_csat_29": [
+      { "num": 1, "mark": "①", "text": "had to consider" },
+      { "num": 2, "mark": "②", "text": "knows" },
+      { "num": 3, "mark": "③", "text": "freeing up" },
+      { "num": 4, "mark": "④", "text": "that" },
+      { "num": 5, "mark": "⑤", "text": "what you are perceiving" }
+    ],
+    "2025_csat_30": [
+      { "num": 1, "mark": "①", "text": "desire" },
+      { "num": 2, "mark": "②", "text": "internal conflict" },
+      { "num": 3, "mark": "③", "text": "uncomfortable" },
+      { "num": 4, "mark": "④", "text": "stronger" },
+      { "num": 5, "mark": "⑤", "text": "diminishing" }
+    ],
+    "2025_csat_32": [
+      { "num": 1, "mark": "①", "text": "intensifies people’s danger" },
+      { "num": 2, "mark": "②", "text": "enhances our understanding" },
+      { "num": 3, "mark": "③", "text": "frees a person from the burden" },
+      { "num": 4, "mark": "④", "text": "allows us to accept the inevitability" },
+      { "num": 5, "mark": "⑤", "text": "requires one to have the experience" }
+    ],
+    "2025_csat_35": [
+      { "num": 1, "mark": "①", "text": "The significance of the car in the development of sport and tourism generally has attracted considerable coverage and it has had no less an impact on sports tourism specifically." },
+      { "num": 2, "mark": "②", "text": "Although originally invented towards the end of the nineteenth century, it started to become a mass form of transport in the 1920s in the USA and rather later in Britain." },
+      { "num": 3, "mark": "③", "text": "Apart from its convenience and flexibility, the car has the additional advantages of affording access to many areas not served by public transport, as well as allowing the easy transport of luggage and equipment." },
+      { "num": 4, "mark": "④", "text": "The expansion of reasonably priced, good quality accommodation associated with tourism growth has also facilitated the growth of locally based restaurants." },
+      { "num": 5, "mark": "⑤", "text": "As a result, it was invaluable for the development of many forms of sports tourism but especially those which require the transportation of people and equipment to relatively remote locations." }
+    ],
+    "2025_csat_36": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2025_csat_37": [
+      { "num": 1, "mark": "①", "text": "(A) - (C) - (B)" },
+      { "num": 2, "mark": "②", "text": "(B) - (A) - (C)" },
+      { "num": 3, "mark": "③", "text": "(B) - (C) - (A)" },
+      { "num": 4, "mark": "④", "text": "(C) - (A) - (B)" },
+      { "num": 5, "mark": "⑤", "text": "(C) - (B) - (A)" }
+    ],
+    "2025_csat_38": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2025_csat_39": [
+      { "num": 1, "mark": "①", "text": "①" },
+      { "num": 2, "mark": "②", "text": "②" },
+      { "num": 3, "mark": "③", "text": "③" },
+      { "num": 4, "mark": "④", "text": "④" },
+      { "num": 5, "mark": "⑤", "text": "⑤" }
+    ],
+    "2025_csat_40": [
+      { "num": 1, "mark": "①", "text": "controllability …… challenge" },
+      { "num": 2, "mark": "②", "text": "predictability …… support" },
+      { "num": 3, "mark": "③", "text": "manageability …… intensify" },
+      { "num": 4, "mark": "④", "text": "affordability …… reverse" },
+      { "num": 5, "mark": "⑤", "text": "accessibility …… question" }
+    ],
+    "2025_csat_43": [
+      { "num": 1, "mark": "①", "text": "(B) - (D) - (C)" },
+      { "num": 2, "mark": "②", "text": "(C) - (B) - (D)" },
+      { "num": 3, "mark": "③", "text": "(C) - (D) - (B)" },
+      { "num": 4, "mark": "④", "text": "(D) - (B) - (C)" },
+      { "num": 5, "mark": "⑤", "text": "(D) - (C) - (B)" }
+    ],
+    "2025_csat_45": [
+      { "num": 1, "mark": "①", "text": "Grace는 Ethan과 Sean의 관계를 부러워했다고 말했다." },
+      { "num": 2, "mark": "②", "text": "Grace는 Ethan에게 Sean과 둘이서 하이킹할 것을 권했다." },
+      { "num": 3, "mark": "③", "text": "Sean의 선글라스가 서랍장 안에 있었다." },
+      { "num": 4, "mark": "④", "text": "Ethan은 혼자서 세탁소에 하이킹 재킷을 찾으러 갔다." },
+      { "num": 5, "mark": "⑤", "text": "Sean은 하이킹하는 도중 돌에 걸려 넘어졌다." }
+    ]
+  },
+  "figures": [
+    {
+      "questionId": "2025_csat_25",
+      "kind": "grouped_bar_chart",
+      "assetPath": "english/assets/2025-csat/q25-figure.png",
+      "sha256": "944a89690dcc88567adb056bd06397a8f14e3ae301bd7eea7ab3d4bbc940071e",
+      "sourcePage": 4,
+      "alt": "Percentages of women employed behind the scenes on top 100 U.S. films. Director: 2020 16%, 2021 12%, 2022 11%. Writer: 2020 12%, 2021 16%, 2022 17%. Editor: 2020 18%, 2021 21%, 2022 18%. Producer: 2020 28%, 2021 24%, 2022 28%."
+    },
+    {
+      "questionId": "2025_csat_27",
+      "kind": "notice_with_price_table",
+      "assetPath": "english/assets/2025-csat/q27-notice.png",
+      "sha256": "2efcc8b49759a3f4a5a82e4c5c47838cb3afb6668a77fe985fa89c40eebcf2e0",
+      "sourcePage": 4,
+      "alt": "Adenville City Pass Card notice. The card is for tourists and works on Adenville-based subway lines and Adenville-licensed buses, not city tour buses. 1-Day $10, 3-Day $25, 5-Day $40. All 1-Day, 3-Day, and 5-Day cards include 10% off admission for major tourist attractions. Unused cards are refundable within 30 days of the purchase date. Physical cards are sold at subway stations; mobile cards are sold on the A-Transit app."
+    },
+    {
+      "questionId": "2025_csat_28",
+      "kind": "festival_notice",
+      "assetPath": "english/assets/2025-csat/q28-notice.png",
+      "sha256": "26d2a2ea69c82329e16cad7c7d00e95c949029d3327f80d6279bda591c2d65b6",
+      "sourcePage": 4,
+      "alt": "Luckwood Snow Festival notice. The 15th annual festival runs January 24th-30th for 7 days, from 9 a.m. to 8 p.m. at Luckwood Park. Snow Sculpture Contest: 11 teams will participate. Kids can enjoy snow tunnels and snow slides. Parking is not available. The shuttle bus fare is $1 one way, cash only."
+    }
+  ]
+}
