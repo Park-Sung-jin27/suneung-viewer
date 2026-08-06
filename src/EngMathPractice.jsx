@@ -890,7 +890,7 @@ function QuestionCatalog({
           <h1>학습할 문항을 고르세요.</h1>
           <p className="eng-math-catalog__lead">
             {subject === "english"
-              ? "2026학년도 수능 19~23번 5문항은 무료로 풀 수 있습니다. 수능 22문항과 9월 모의평가 28문항은 결제 없이 잠금 상태로만 표시합니다."
+              ? "2026학년도 수능 19~23번 5문항은 무료로 풀 수 있습니다. 수능 22문항은 잠금 상태입니다. 2026학년도 9월 모의평가 28문항은 근거형 풀이 검증을 마쳤으며 출시 준비 중입니다."
               : "2022학년도 6월 공통 첫 5문항은 검증 풀이와 함께 무료로 제공합니다. 나머지 356문항은 잠금 상태입니다."}
           </p>
         </header>
@@ -956,11 +956,17 @@ function QuestionCatalog({
                   {pack.access === "free" ? "무료 5문항" : "잠금"}
                 </span>
               </span>
-              <h2>{pack.label}</h2>
+              <h2>
+                {subject === "english" && pack.id === "english-2026-09-06"
+                  ? `${pack.label} · 41~42번 복습 포함`
+                  : pack.label}
+              </h2>
               <p className="eng-math-catalog__pack-copy">
                 {pack.trackLabel} ·{" "}
                 {subject === "english"
-                  ? "근거형 풀이 제공"
+                  ? pack.examKey === "2026_09" && pack.access === "locked"
+                    ? "근거형 풀이 준비 완료 · 현재 잠금"
+                    : "근거형 풀이 제공"
                   : pack.responseSummary}
               </p>
               {pack.note ? (
@@ -973,7 +979,9 @@ function QuestionCatalog({
                 <span>
                   {pack.access === "free"
                     ? "무료로 학습하기"
-                    : "잠금 범위 확인"}
+                    : subject === "english" && pack.examKey === "2026_09"
+                      ? "문항 구성 보기"
+                      : "잠금 범위 확인"}
                 </span>
                 <span aria-hidden="true">
                   {pack.access === "free" ? "→" : "🔒"}
