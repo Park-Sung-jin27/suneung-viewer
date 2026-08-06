@@ -168,8 +168,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_2",
@@ -222,8 +222,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_3",
@@ -279,8 +279,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_4",
@@ -337,8 +337,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_5",
@@ -395,8 +395,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_6",
@@ -458,8 +458,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_7",
@@ -520,8 +520,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_8",
@@ -579,8 +579,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_9",
@@ -642,8 +642,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_10",
@@ -704,8 +704,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_11",
@@ -767,8 +767,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_12",
@@ -830,8 +830,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_13",
@@ -894,8 +894,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_14",
@@ -958,8 +958,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_common_15",
@@ -1021,8 +1021,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_16",
@@ -1052,8 +1052,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "3",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_17",
@@ -1080,8 +1080,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "4",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_18",
@@ -1112,8 +1112,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "12",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_19",
@@ -1149,8 +1149,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "6",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_20",
@@ -1186,8 +1186,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "110",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_21",
@@ -1218,8 +1218,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "678",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_22",
@@ -1256,8 +1256,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "9",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_cal_23",
@@ -1313,8 +1313,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_cal_24",
@@ -1370,8 +1370,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_cal_25",
@@ -1432,8 +1432,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_cal_26",
@@ -1494,8 +1494,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_cal_27",
@@ -1556,8 +1556,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_cal_28",
@@ -1619,8 +1619,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_cal_29",
@@ -1656,8 +1656,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "11",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_cal_30",
@@ -1694,8 +1694,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "143",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_geo_23",
@@ -1755,8 +1755,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_geo_24",
@@ -1818,8 +1818,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_geo_25",
@@ -1880,8 +1880,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_geo_26",
@@ -1946,8 +1946,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_geo_27",
@@ -2009,8 +2009,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_geo_28",
@@ -2072,8 +2072,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_geo_29",
@@ -2109,8 +2109,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "100",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_geo_30",
@@ -2149,8 +2149,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "23",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_23",
@@ -2203,8 +2203,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_24",
@@ -2260,8 +2260,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_25",
@@ -2318,8 +2318,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_26",
@@ -2376,8 +2376,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_27",
@@ -2438,8 +2438,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_28",
@@ -2496,8 +2496,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_29",
@@ -2532,8 +2532,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "31",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_csat_sta_30",
@@ -2564,8 +2564,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "191",
-      "answerSource": "datanews.sbs.co.kr official KICE 정답표 PDF mirror (홀수형, text-extracted)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_1",
@@ -2618,8 +2618,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_2",
@@ -2675,8 +2675,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_3",
@@ -2733,8 +2733,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_4",
@@ -2787,8 +2787,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_5",
@@ -2849,8 +2849,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_6",
@@ -2911,8 +2911,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_7",
@@ -2973,8 +2973,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_8",
@@ -3035,8 +3035,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_9",
@@ -3097,8 +3097,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_10",
@@ -3160,8 +3160,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_11",
@@ -3222,8 +3222,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_12",
@@ -3286,8 +3286,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_13",
@@ -3349,8 +3349,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_14",
@@ -3413,8 +3413,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_common_15",
@@ -3471,8 +3471,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_16",
@@ -3503,8 +3503,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "10",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_17",
@@ -3535,8 +3535,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "15",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_18",
@@ -3566,8 +3566,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "22",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_19",
@@ -3604,8 +3604,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "7",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_20",
@@ -3643,8 +3643,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "17",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_21",
@@ -3681,8 +3681,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "33",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_22",
@@ -3721,8 +3721,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "13",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_cal_23",
@@ -3786,8 +3786,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_cal_24",
@@ -3844,8 +3844,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_cal_25",
@@ -3906,8 +3906,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_cal_26",
@@ -3969,8 +3969,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_cal_27",
@@ -4035,8 +4035,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_cal_28",
@@ -4102,8 +4102,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_cal_29",
@@ -4141,8 +4141,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "26",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_cal_30",
@@ -4181,8 +4181,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "31",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_geo_23",
@@ -4238,8 +4238,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_geo_24",
@@ -4292,8 +4292,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_geo_25",
@@ -4356,8 +4356,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_geo_26",
@@ -4421,8 +4421,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_geo_27",
@@ -4485,8 +4485,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_geo_28",
@@ -4549,8 +4549,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_geo_29",
@@ -4586,8 +4586,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "12",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_geo_30",
@@ -4626,8 +4626,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "24",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_23",
@@ -4680,8 +4680,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_24",
@@ -4739,8 +4739,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_25",
@@ -4797,8 +4797,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_26",
@@ -4855,8 +4855,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_27",
@@ -4918,8 +4918,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_28",
@@ -4980,8 +4980,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_29",
@@ -5012,8 +5012,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "49",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2023_csat_sta_30",
@@ -5050,8 +5050,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "100",
-      "answerSource": "news1.kr hosted KICE 정답표 이미지 (홀수형, visual read)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_1",
@@ -5104,8 +5104,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_2",
@@ -5158,8 +5158,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_3",
@@ -5216,8 +5216,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_4",
@@ -5270,8 +5270,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_5",
@@ -5324,8 +5324,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_6",
@@ -5381,8 +5381,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_7",
@@ -5443,8 +5443,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_8",
@@ -5501,8 +5501,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_9",
@@ -5559,8 +5559,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_10",
@@ -5623,8 +5623,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_11",
@@ -5685,8 +5685,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_12",
@@ -5749,8 +5749,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_13",
@@ -5812,8 +5812,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_14",
@@ -5878,8 +5878,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_common_15",
@@ -5936,8 +5936,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_16",
@@ -5964,8 +5964,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "2",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_17",
@@ -5992,8 +5992,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "8",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_18",
@@ -6020,8 +6020,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "9",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_19",
@@ -6056,8 +6056,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "32",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_20",
@@ -6094,8 +6094,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "25",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_21",
@@ -6133,8 +6133,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "10",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_22",
@@ -6172,8 +6172,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "483",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_cal_23",
@@ -6229,8 +6229,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_cal_24",
@@ -6292,8 +6292,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_cal_25",
@@ -6355,8 +6355,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_cal_26",
@@ -6417,8 +6417,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_cal_27",
@@ -6475,8 +6475,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_cal_28",
@@ -6538,8 +6538,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_cal_29",
@@ -6574,8 +6574,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "162",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_cal_30",
@@ -6614,8 +6614,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "125",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_geo_23",
@@ -6668,8 +6668,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_geo_24",
@@ -6726,8 +6726,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_geo_25",
@@ -6780,8 +6780,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_geo_26",
@@ -6844,8 +6844,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_geo_27",
@@ -6902,8 +6902,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_geo_28",
@@ -6967,8 +6967,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_geo_29",
@@ -7005,8 +7005,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "11",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_geo_30",
@@ -7044,8 +7044,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "147",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_23",
@@ -7101,8 +7101,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_24",
@@ -7159,8 +7159,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_25",
@@ -7217,8 +7217,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_26",
@@ -7280,8 +7280,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_27",
@@ -7342,8 +7342,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_28",
@@ -7400,8 +7400,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_29",
@@ -7433,8 +7433,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "196",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2024_csat_sta_30",
@@ -7472,8 +7472,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "673",
-      "answerSource": "github l-yohai/suneung results/gpt-4-1106-preview/수학_* result.jsonl (answer field)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_1",
@@ -7529,8 +7529,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_2",
@@ -7583,8 +7583,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_3",
@@ -7641,8 +7641,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_4",
@@ -7699,8 +7699,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_5",
@@ -7753,8 +7753,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_6",
@@ -7814,8 +7814,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_7",
@@ -7871,8 +7871,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_8",
@@ -7925,8 +7925,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_9",
@@ -7983,8 +7983,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_10",
@@ -8046,8 +8046,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_11",
@@ -8104,8 +8104,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_12",
@@ -8167,8 +8167,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_13",
@@ -8231,8 +8231,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_14",
@@ -8297,8 +8297,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_15",
@@ -8360,8 +8360,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_16",
@@ -8391,8 +8391,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "7",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_17",
@@ -8419,8 +8419,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "33",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_18",
@@ -8450,8 +8450,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "96",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_19",
@@ -8482,8 +8482,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "41",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_20",
@@ -8514,8 +8514,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "36",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_21",
@@ -8552,8 +8552,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "16",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_common_22",
@@ -8590,8 +8590,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "64",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_cal_23",
@@ -8647,8 +8647,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_cal_24",
@@ -8709,8 +8709,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_cal_25",
@@ -8772,8 +8772,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_cal_26",
@@ -8835,8 +8835,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_cal_27",
@@ -8899,8 +8899,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_cal_28",
@@ -8964,8 +8964,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_cal_29",
@@ -9003,8 +9003,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "25",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_cal_30",
@@ -9043,8 +9043,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "17",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_geo_23",
@@ -9097,8 +9097,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_geo_24",
@@ -9151,8 +9151,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_geo_25",
@@ -9213,8 +9213,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_geo_26",
@@ -9277,8 +9277,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_geo_27",
@@ -9342,8 +9342,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_geo_28",
@@ -9408,8 +9408,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_geo_29",
@@ -9445,8 +9445,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "107",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_geo_30",
@@ -9484,8 +9484,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "316",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_sta_23",
@@ -9542,8 +9542,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_sta_24",
@@ -9600,8 +9600,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_sta_25",
@@ -9662,8 +9662,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_sta_26",
@@ -9720,8 +9720,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_sta_27",
@@ -9783,8 +9783,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_sta_28",
@@ -9842,8 +9842,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_sta_29",
@@ -9878,8 +9878,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "25",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2025_csat_sta_30",
@@ -9916,8 +9916,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "19",
-      "answerSource": "math_answers_wave3.json:donga_2025_csat_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_1",
@@ -9973,8 +9973,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_2",
@@ -10030,8 +10030,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_3",
@@ -10087,8 +10087,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_4",
@@ -10145,8 +10145,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_5",
@@ -10199,8 +10199,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_6",
@@ -10253,8 +10253,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_7",
@@ -10311,8 +10311,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_8",
@@ -10373,8 +10373,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_9",
@@ -10435,8 +10435,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_10",
@@ -10500,8 +10500,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_11",
@@ -10558,8 +10558,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_12",
@@ -10616,8 +10616,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_13",
@@ -10679,8 +10679,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_14",
@@ -10743,8 +10743,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_15",
@@ -10809,8 +10809,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_16",
@@ -10846,8 +10846,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "2",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_17",
@@ -10878,8 +10878,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "6",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_18",
@@ -10906,8 +10906,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "133",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_19",
@@ -10942,8 +10942,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "8",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_20",
@@ -10979,8 +10979,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "85",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_21",
@@ -11017,8 +11017,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "42",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_common_22",
@@ -11056,8 +11056,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "38",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_cal_23",
@@ -11114,8 +11114,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_cal_24",
@@ -11172,8 +11172,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_cal_25",
@@ -11230,8 +11230,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_cal_26",
@@ -11288,8 +11288,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_cal_27",
@@ -11353,8 +11353,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_cal_28",
@@ -11418,8 +11418,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_cal_29",
@@ -11456,8 +11456,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "109",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_cal_30",
@@ -11495,8 +11495,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "25",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_geo_23",
@@ -11549,8 +11549,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_geo_24",
@@ -11603,8 +11603,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_geo_25",
@@ -11665,8 +11665,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_geo_26",
@@ -11730,8 +11730,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_geo_27",
@@ -11793,8 +11793,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_geo_28",
@@ -11856,8 +11856,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_geo_29",
@@ -11897,8 +11897,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "20",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_geo_30",
@@ -11937,8 +11937,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "36",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_sta_23",
@@ -11995,8 +11995,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_sta_24",
@@ -12053,8 +12053,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_sta_25",
@@ -12112,8 +12112,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_sta_26",
@@ -12176,8 +12176,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_sta_27",
@@ -12234,8 +12234,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_sta_28",
@@ -12292,8 +12292,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_sta_29",
@@ -12324,8 +12324,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "44",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_06_sta_30",
@@ -12357,8 +12357,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "115",
-      "answerSource": "math_answers_wave3.json:scribd_2026_june_math_answer_table",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_1",
@@ -12414,8 +12414,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_2",
@@ -12471,8 +12471,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_3",
@@ -12528,8 +12528,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_4",
@@ -12590,8 +12590,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_5",
@@ -12648,8 +12648,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_6",
@@ -12710,8 +12710,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_7",
@@ -12772,8 +12772,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_8",
@@ -12835,8 +12835,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_9",
@@ -12893,8 +12893,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_10",
@@ -12957,8 +12957,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_11",
@@ -13020,8 +13020,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_12",
@@ -13084,8 +13084,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_13",
@@ -13147,8 +13147,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_14",
@@ -13211,8 +13211,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_15",
@@ -13277,8 +13277,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_16",
@@ -13305,8 +13305,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "8",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_17",
@@ -13333,8 +13333,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "17",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_18",
@@ -13364,8 +13364,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "30",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_19",
@@ -13401,8 +13401,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "10",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_20",
@@ -13439,8 +13439,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "12",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_21",
@@ -13478,8 +13478,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "296",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_common_22",
@@ -13516,8 +13516,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "73",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_cal_23",
@@ -13573,8 +13573,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_cal_24",
@@ -13636,8 +13636,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_cal_25",
@@ -13699,8 +13699,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_cal_26",
@@ -13762,8 +13762,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_cal_27",
@@ -13824,8 +13824,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_cal_28",
@@ -13891,8 +13891,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_cal_29",
@@ -13929,8 +13929,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "91",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_cal_30",
@@ -13967,8 +13967,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "31",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_geo_23",
@@ -14021,8 +14021,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_geo_24",
@@ -14082,8 +14082,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_geo_25",
@@ -14144,8 +14144,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_geo_26",
@@ -14207,8 +14207,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_geo_27",
@@ -14271,8 +14271,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_geo_28",
@@ -14336,8 +14336,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_geo_29",
@@ -14374,8 +14374,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "396",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_geo_30",
@@ -14413,8 +14413,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "69",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_sta_23",
@@ -14467,8 +14467,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_sta_24",
@@ -14529,8 +14529,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_sta_25",
@@ -14587,8 +14587,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_sta_26",
@@ -14649,8 +14649,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_sta_27",
@@ -14708,8 +14708,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_sta_28",
@@ -14773,8 +14773,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_sta_29",
@@ -14811,8 +14811,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "23",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_09_sta_30",
@@ -14844,8 +14844,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "80",
-      "answerSource": "math_answers_wave3.json:studocu_2026_sept_math_answer_table,orbi_2026_sept_math_answer_pdf",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_1",
@@ -14898,8 +14898,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_2",
@@ -14955,8 +14955,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_3",
@@ -15009,8 +15009,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_4",
@@ -15066,8 +15066,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_5",
@@ -15120,8 +15120,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_6",
@@ -15174,8 +15174,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_7",
@@ -15232,8 +15232,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_8",
@@ -15294,8 +15294,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_9",
@@ -15348,8 +15348,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_10",
@@ -15413,8 +15413,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_11",
@@ -15476,8 +15476,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_12",
@@ -15534,8 +15534,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_13",
@@ -15596,8 +15596,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_14",
@@ -15662,8 +15662,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_15",
@@ -15726,8 +15726,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_16",
@@ -15754,8 +15754,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "9",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_17",
@@ -15786,8 +15786,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "16",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_18",
@@ -15817,8 +15817,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "12",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_19",
@@ -15854,8 +15854,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "15",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_20",
@@ -15892,8 +15892,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "130",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_21",
@@ -15930,8 +15930,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "65",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_common_22",
@@ -15969,8 +15969,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "457",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_cal_23",
@@ -16023,8 +16023,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_cal_24",
@@ -16082,8 +16082,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_cal_25",
@@ -16140,8 +16140,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_cal_26",
@@ -16203,8 +16203,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_cal_27",
@@ -16267,8 +16267,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_cal_28",
@@ -16331,8 +16331,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_cal_29",
@@ -16371,8 +16371,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "97",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_cal_30",
@@ -16413,8 +16413,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "11",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_geo_23",
@@ -16470,8 +16470,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_geo_24",
@@ -16533,8 +16533,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_geo_25",
@@ -16587,8 +16587,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_geo_26",
@@ -16652,8 +16652,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_geo_27",
@@ -16717,8 +16717,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_geo_28",
@@ -16786,8 +16786,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_geo_29",
@@ -16823,8 +16823,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "360",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_geo_30",
@@ -16861,8 +16861,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "221",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_sta_23",
@@ -16915,8 +16915,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 3,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_sta_24",
@@ -16973,8 +16973,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 1,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_sta_25",
@@ -17031,8 +17031,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_sta_26",
@@ -17095,8 +17095,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 5,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_sta_27",
@@ -17160,8 +17160,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 4,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_sta_28",
@@ -17224,8 +17224,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": 2,
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_sta_29",
@@ -17257,8 +17257,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "977",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2026_csat_sta_30",
@@ -17294,8 +17294,8 @@
         "metaSource": "ProbDex(AI생성-미검증)"
       },
       "answer": "262",
-      "answerSource": "github hehee9/2026-CSAT all_results.json correct_answer (all model rows internally consistent)",
-      "answerCrossCheck": "partial"
+      "answerSource": "KICE official answer table PDF; independent source matched; see math_answer_crosscheck_v1.json",
+      "answerCrossCheck": "full"
     },
     {
       "id": "2022_06_common_1",

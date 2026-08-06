@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "status": "verified_internal",
+  "verifiedAt": "2026-08-06",
+  "scope": {
+    "examCount": 7,
+    "questionCount": 322,
+    "answerCrossCheck": "full",
+    "answerFingerprint": "cf17c00a8c5884a61018362801cd5df6d3f3794c1da6c184895e74e7da1701ec",
+    "publicConnected": false,
+    "verifiedSolutionCount": 0
+  },
+  "method": {
+    "primary": "KICE official answer table PDF",
+    "secondary": "Previously recorded independent answer source",
+    "acceptanceRule": "All 46 answers must match both sources; any mismatch keeps the exam excluded from full status.",
+    "choiceForm": "odd"
+  },
+  "sourceBoardUrls": {
+    "csat": "https://www.suneung.re.kr/boardCnts/list.do?boardID=1500234&m=0403&s=suneung",
+    "mock": "https://www.suneung.re.kr/boardCnts/list.do?boardID=1500236&m=0403&s=suneung"
+  },
+  "exams": {
+    "math_2022_csat": {
+      "officialDownloadUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=17370fa9d479f61bd4fee34e3a6b5153",
+      "officialFile": "raw_sources/math_answer_pdfs/math_2022_csat_official_answer.pdf",
+      "officialFileSha256": "b381a8509dee4f6984f33b6e91e09c80eb6c18bb59abc568816d9e4ccae52b97",
+      "independentSource": "datanews.sbs.co.kr official KICE answer table PDF mirror (odd form, text extracted)",
+      "answers": {
+        "common": [2, 5, 5, 4, 1, 3, 1, 1, 4, 5, 3, 3, 2, 3, 2, "3", "4", "12", "6", "110", "678", "9"],
+        "sta": [4, 4, 1, 3, 2, 1, "31", "191"],
+        "cal": [5, 4, 2, 3, 1, 2, "11", "143"],
+        "geo": [2, 3, 5, 2, 4, 5, "100", "23"]
+      }
+    },
+    "math_2023_csat": {
+      "officialDownloadUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=7ed981af9e08428db993999c50a8ce3c",
+      "officialFile": "raw_sources/math_answer_pdfs/math_2023_csat_official_answer.pdf",
+      "officialFileSha256": "95163099ce6f6cfef0efafeb34fd1907f7aa12c2400e75dfb03f527c6fffc9e6",
+      "independentSource": "news1.kr hosted KICE answer table image (odd form, visual review)",
+      "answers": {
+        "common": [5, 4, 1, 3, 5, 2, 4, 4, 3, 4, 1, 2, 3, 1, 5, "10", "15", "22", "7", "17", "33", "13"],
+        "sta": [3, 2, 5, 3, 2, 4, "49", "100"],
+        "cal": [4, 3, 5, 4, 2, 2, "26", "31"],
+        "geo": [5, 3, 4, 2, 1, 2, "12", "24"]
+      }
+    },
+    "math_2024_csat": {
+      "officialDownloadUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=bf6151b8e027981a7e251b8243ed9e39",
+      "officialFile": "raw_sources/math_answer_pdfs/math_2024_csat_official_answer.pdf",
+      "officialFileSha256": "9a716aa25add06fdef36da441ba14cc22ab79ef68e8c00ee7d43400c33cab1c5",
+      "independentSource": "l-yohai/suneung result dataset answer field",
+      "answers": {
+        "common": [1, 4, 2, 1, 4, 4, 5, 2, 4, 2, 1, 3, 1, 1, 3, "2", "8", "9", "32", "25", "10", "483"],
+        "sta": [3, 4, 5, 2, 2, 4, "196", "673"],
+        "cal": [3, 2, 4, 3, 1, 2, "162", "125"],
+        "geo": [4, 3, 2, 5, 3, 5, "11", "147"]
+      }
+    },
+    "math_2025_csat": {
+      "officialDownloadUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=e6db150eafd49585cea94f1770b59326",
+      "officialFile": "raw_sources/math_answer_pdfs/math_2025_csat_official_answer.pdf",
+      "officialFileSha256": "987fa768dc669042df4e018a157535407583e5564cd540cac7ddd2fd414b5e9e",
+      "independentSource": "donga.com hosted KICE answer table PDF mirror",
+      "answers": {
+        "common": [5, 4, 5, 2, 4, 5, 3, 1, 4, 3, 2, 1, 5, 4, 2, "7", "33", "96", "41", "36", "16", "64"],
+        "sta": [5, 3, 1, 3, 3, 2, "25", "19"],
+        "cal": [3, 4, 2, 1, 1, 2, "25", "17"],
+        "geo": [3, 4, 3, 1, 1, 4, "107", "316"]
+      }
+    },
+    "math_2026_06": {
+      "officialDownloadUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=57cae81789edc45110da855b6461ccca",
+      "officialFile": "raw_sources/math_answer_pdfs/math_2026_06_official_answer.pdf",
+      "officialFileSha256": "d4ad8341f4dd844d610fa6c59ffbc0c29fb0ca62feafd24eabda749fbd421fbf",
+      "independentSource": "Previously recorded 2026 June answer table",
+      "answers": {
+        "common": [2, 1, 3, 3, 2, 4, 5, 5, 2, 1, 5, 2, 4, 2, 1, "2", "6", "133", "8", "85", "42", "38"],
+        "sta": [3, 4, 3, 5, 1, 5, "44", "115"],
+        "cal": [1, 2, 4, 2, 3, 1, "109", "25"],
+        "geo": [2, 4, 2, 1, 3, 4, "20", "36"]
+      }
+    },
+    "math_2026_09": {
+      "officialDownloadUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=bd2903dc948f398d36476c1d43d87590",
+      "officialFile": "raw_sources/math_answer_pdfs/math_2026_09_official_answer.pdf",
+      "officialFileSha256": "81667ee46828b8f6c52168a9b7a93c1dbdb7650e710e3a161c0d63ad8a2f244c",
+      "independentSource": "Previously recorded 2026 September answer table",
+      "answers": {
+        "common": [4, 4, 5, 1, 2, 5, 1, 3, 2, 3, 5, 1, 4, 3, 5, "8", "17", "30", "10", "12", "296", "73"],
+        "sta": [4, 3, 5, 2, 4, 2, "23", "80"],
+        "cal": [1, 4, 2, 1, 1, 2, "91", "31"],
+        "geo": [2, 4, 1, 1, 2, 4, "396", "69"]
+      }
+    },
+    "math_2026_csat": {
+      "officialDownloadUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=970fb683af8df94b36d29efe00741532",
+      "officialFile": "raw_sources/math_answer_pdfs/math_2026_csat_official_answer.pdf",
+      "officialFileSha256": "4a6482e853d2674cb79232abcf30d302197c374dd4b18aa9c80427660aec4f53",
+      "independentSource": "hehee9/2026-CSAT all_results correct_answer field",
+      "answers": {
+        "common": [1, 4, 5, 3, 3, 2, 5, 1, 4, 3, 3, 2, 5, 4, 4, "9", "16", "12", "15", "130", "65", "457"],
+        "sta": [3, 1, 2, 5, 4, 2, "977", "262"],
+        "cal": [3, 4, 3, 1, 2, 5, "97", "11"],
+        "geo": [3, 1, 5, 2, 4, 4, "360", "221"]
+      }
+    }
+  }
+}
