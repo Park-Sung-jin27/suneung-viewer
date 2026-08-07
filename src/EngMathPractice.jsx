@@ -7,6 +7,7 @@ import { resolveEngMathPackAccess } from "./engMathAccess.js";
 import {
   buildDailyLearningPlan,
   createLearningSessionId,
+  getLearningDiagnosis,
   readDailyLearningPlan,
   readLearningHistory,
   readWeeklyLearningSummary,
@@ -193,6 +194,10 @@ function confidenceLabel(confidence) {
   );
 }
 
+function diagnosisLabel(result) {
+  return getLearningDiagnosis(result)?.label ?? null;
+}
+
 function WeeklyLearningSummary({ summary, profile }) {
   const hasHistory = summary.answerCount > 0;
 
@@ -219,6 +224,7 @@ function WeeklyLearningSummary({ summary, profile }) {
         .eng-math-weekly__weak li span { min-width: 0; word-break: keep-all; }
         .eng-math-weekly__weak li strong { flex: 0 0 auto; color: var(--eng-math-weekly-accent); font-size: 0.74rem; }
         .eng-math-weekly__mastered { margin: 12px 0 0; color: #526078; font-size: 0.78rem; line-height: 1.5; }
+        .eng-math-weekly__diagnoses { margin: 12px 0 0; color: #526078; font-size: 0.78rem; font-weight: 800; line-height: 1.5; }
         @media (max-width: 440px) {
           .eng-math-weekly { padding: 15px; }
           .eng-math-weekly__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -250,6 +256,9 @@ function WeeklyLearningSummary({ summary, profile }) {
               <dd>{summary.recoveredQuestionCount}개</dd>
             </div>
           </dl>
+          <p className="eng-math-weekly__diagnoses">
+            확신 오답 {summary.confidentWrongCount}개 · 불안 정답 {summary.unstableCorrectCount}개
+          </p>
           {summary.masteredQuestionCount > 0 ? (
             <p className="eng-math-weekly__mastered">
               1·3·7일 복습을 마친 문항 {summary.masteredQuestionCount}개
@@ -263,7 +272,14 @@ function WeeklyLearningSummary({ summary, profile }) {
                   <li key={question.questionId}>
                     <span>{question.label}</span>
                     <strong>
-                      {question.wrongCount}회 오답 ·{" "}
+                      {question.wrongCount > 0
+                        ? `${question.wrongCount}회 오답`
+                        : question.latestDiagnosis === "guessed_correct"
+                          ? "찍어서 맞힘"
+                          : question.latestDiagnosis === "uncertain_correct"
+                            ? "불안 정답"
+                            : "복습 필요"}{" "}
+                      ·{" "}
                       {question.status === "due"
                         ? question.reviewLabel
                         : question.latestIsCorrect
@@ -1762,6 +1778,11 @@ function SessionSummary({
                         {confidenceLabel(result.confidence) ?? "확신도 미기록"}
                       </span>
                     ) : null}
+                    {diagnosisLabel(result) ? (
+                      <span className="eng-math-session-summary__item-meta">
+                        진단 · {diagnosisLabel(result)}
+                      </span>
+                    ) : null}
                   </span>
                   <span className="eng-math-session-summary__item-status">
                     {result.isCorrect ? "정답" : "다시 확인"}
@@ -1864,6 +1885,7 @@ function PracticeQuestion({
   const isCorrect = isShortAnswer
     ? currentAnswer === normalizeShortAnswer(question.answer)
     : selectedChoice === question.answer;
+  const diagnosis = getLearningDiagnosis({ isCorrect, confidence });
   const selectedChoiceData = isShortAnswer
     ? null
     : question.choices.find((choice) => choice.number === selectedChoice) ?? null;
@@ -2224,6 +2246,7 @@ function PracticeQuestion({
         .eng-math-practice__result--correct { border-color: #b8e3ca; background: #f0fbf4; color: #155b3a; }
         .eng-math-practice__result--wrong { border-color: #f2c9cd; background: #fff5f5; color: #852b36; }
         .eng-math-practice__result-title { margin: 0 0 7px; font-size: 1.05rem; font-weight: 900; }
+        .eng-math-practice__result-diagnosis { margin: 0 0 7px; font-size: 0.84rem; font-weight: 900; }
         .eng-math-practice__result-copy { margin: 0; color: #3d4d5e; line-height: 1.6; }
         .eng-math-practice__choice-feedback { margin-top: 12px; border: 1px solid #cbd7ed; border-radius: 16px; background: #f7f9ff; padding: 17px; color: #31415c; }
         .eng-math-practice__choice-feedback > span { display: inline-flex; margin-bottom: 7px; color: #3157a5; font-size: 0.74rem; font-weight: 900; }
@@ -2534,6 +2557,11 @@ function PracticeQuestion({
                   <p className="eng-math-practice__result-title">
                     {isCorrect ? "정답입니다." : "정답을 다시 확인해 보세요."}
                   </p>
+                  {diagnosis ? (
+                    <p className="eng-math-practice__result-diagnosis">
+                      진단 · {diagnosis.label}
+                    </p>
+                  ) : null}
                   <ResultAnswer question={question} subject={subject} />
                 </section>
 

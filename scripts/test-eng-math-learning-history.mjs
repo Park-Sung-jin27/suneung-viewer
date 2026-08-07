@@ -4,6 +4,7 @@ import {
   buildDailyLearningPlan,
   buildQuestionReviewStates,
   createLearningSessionRecord,
+  getLearningDiagnosis,
   learningHistoryConfig,
   normalizeLearningHistory,
   recordLearningSession,
@@ -81,6 +82,34 @@ assert.deepEqual(Object.keys(legacyRecord.results[0]), [
   "label",
   "isCorrect",
 ]);
+
+const diagnosisCases = [
+  [true, "sure", "stable_correct", "안정 정답"],
+  [true, "unsure", "uncertain_correct", "불안 정답"],
+  [true, "guess", "guessed_correct", "찍어서 맞힘"],
+  [false, "sure", "confident_wrong", "확신 오답"],
+  [false, "unsure", "uncertain_wrong", "애매 오답"],
+  [false, "guess", "guessed_wrong", "찍은 오답"],
+];
+diagnosisCases.forEach(([isCorrect, confidence, code, label]) => {
+  assert.deepEqual(getLearningDiagnosis({ isCorrect, confidence }), {
+    code,
+    label,
+  });
+});
+assert.equal(getLearningDiagnosis({ isCorrect: true }), null);
+
+const legacyHistory = appendLearningSession(
+  normalizeLearningHistory(null),
+  legacyRecord,
+);
+const legacyState = buildQuestionReviewStates(
+  legacyHistory,
+  "english",
+  new Date("2026-08-07T12:00:00.000Z"),
+)[0];
+assert.equal(legacyState.status, "stable");
+assert.equal(legacyState.latestDiagnosis, null);
 
 let reviewHistory = normalizeLearningHistory(null);
 reviewHistory = appendLearningSession(
@@ -164,6 +193,178 @@ state = buildQuestionReviewStates(
 assert.equal(state.status, "mastered");
 assert.equal(state.reviewLabel, "교정 완료");
 
+let confidenceReviewHistory = normalizeLearningHistory(null);
+confidenceReviewHistory = appendLearningSession(
+  confidenceReviewHistory,
+  session({
+    id: "confidence-wrong",
+    completedAt: "2026-08-01T09:00:00.000Z",
+    questionId: "2026_csat_24",
+    isCorrect: false,
+    confidence: "sure",
+  }),
+);
+state = buildQuestionReviewStates(
+  confidenceReviewHistory,
+  "english",
+  new Date("2026-08-02T09:00:00.000Z"),
+)[0];
+assert.equal(state.status, "due");
+assert.equal(state.reviewLabel, "1일 복습");
+assert.equal(state.isPriorityCorrection, true);
+
+confidenceReviewHistory = appendLearningSession(
+  confidenceReviewHistory,
+  session({
+    id: "confidence-day-1-wrong-retry",
+    completedAt: "2026-08-02T09:00:00.000Z",
+    questionId: "2026_csat_24",
+    isCorrect: true,
+    confidence: "sure",
+    isWrongRetry: true,
+  }),
+);
+state = buildQuestionReviewStates(
+  confidenceReviewHistory,
+  "english",
+  new Date("2026-08-03T09:00:00.000Z"),
+)[0];
+assert.equal(state.recoveryStage, 0);
+assert.equal(state.reviewLabel, "1일 복습");
+assert.equal(state.isPriorityCorrection, true);
+
+confidenceReviewHistory = appendLearningSession(
+  confidenceReviewHistory,
+  session({
+    id: "confidence-day-1",
+    completedAt: "2026-08-02T09:01:00.000Z",
+    questionId: "2026_csat_24",
+    isCorrect: true,
+    confidence: "sure",
+  }),
+);
+state = buildQuestionReviewStates(
+  confidenceReviewHistory,
+  "english",
+  new Date("2026-08-03T09:00:00.000Z"),
+)[0];
+assert.equal(state.recoveryStage, 1);
+assert.equal(state.reviewLabel, "3일 복습");
+assert.equal(state.dueAt, "2026-08-05T09:01:00.000Z");
+assert.equal(state.isPriorityCorrection, false);
+
+confidenceReviewHistory = appendLearningSession(
+  confidenceReviewHistory,
+  session({
+    id: "confidence-day-3-unsure",
+    completedAt: "2026-08-05T09:01:00.000Z",
+    questionId: "2026_csat_24",
+    isCorrect: true,
+    confidence: "unsure",
+  }),
+);
+state = buildQuestionReviewStates(
+  confidenceReviewHistory,
+  "english",
+  new Date("2026-08-05T10:00:00.000Z"),
+)[0];
+assert.equal(state.recoveryStage, 0);
+assert.equal(state.reviewLabel, "1일 복습");
+
+confidenceReviewHistory = appendLearningSession(
+  confidenceReviewHistory,
+  session({
+    id: "confidence-reset-guess",
+    completedAt: "2026-08-06T09:01:00.000Z",
+    questionId: "2026_csat_24",
+    isCorrect: true,
+    confidence: "guess",
+  }),
+);
+state = buildQuestionReviewStates(
+  confidenceReviewHistory,
+  "english",
+  new Date("2026-08-06T10:00:00.000Z"),
+)[0];
+assert.equal(state.recoveryStage, 0);
+assert.equal(state.reviewLabel, "1일 복습");
+
+confidenceReviewHistory = appendLearningSession(
+  confidenceReviewHistory,
+  session({
+    id: "confidence-restart-sure",
+    completedAt: "2026-08-07T09:01:00.000Z",
+    questionId: "2026_csat_24",
+    isCorrect: true,
+    confidence: "sure",
+  }),
+);
+state = buildQuestionReviewStates(
+  confidenceReviewHistory,
+  "english",
+  new Date("2026-08-07T10:00:00.000Z"),
+)[0];
+assert.equal(state.recoveryStage, 1);
+assert.equal(state.reviewLabel, "3일 복습");
+
+const unstableCorrectHistory = appendLearningSession(
+  normalizeLearningHistory(null),
+  session({
+    id: "unstable-correct",
+    completedAt: "2026-08-01T09:00:00.000Z",
+    questionId: "2026_csat_25",
+    isCorrect: true,
+    confidence: "unsure",
+  }),
+);
+const unstableCorrectState = buildQuestionReviewStates(
+  unstableCorrectHistory,
+  "english",
+  new Date("2026-08-02T09:00:00.000Z"),
+)[0];
+assert.equal(unstableCorrectState.status, "due");
+assert.equal(unstableCorrectState.reviewLabel, "1일 복습");
+const unstableCorrectSummary = summarizeLearningHistory(
+  unstableCorrectHistory,
+  "english",
+  new Date("2026-08-02T09:00:00.000Z"),
+);
+assert.equal(unstableCorrectSummary.weakQuestions.length, 1);
+assert.equal(
+  unstableCorrectSummary.weakQuestions[0].questionId,
+  "2026_csat_25",
+);
+assert.equal(unstableCorrectSummary.weakQuestions[0].wrongCount, 0);
+
+let unstableRecoveryHistory = normalizeLearningHistory(null);
+unstableRecoveryHistory = appendLearningSession(
+  unstableRecoveryHistory,
+  session({
+    id: "unstable-recovery-wrong",
+    completedAt: "2026-08-01T10:00:00.000Z",
+    questionId: "2026_csat_26",
+    isCorrect: false,
+    confidence: "sure",
+  }),
+);
+unstableRecoveryHistory = appendLearningSession(
+  unstableRecoveryHistory,
+  session({
+    id: "unstable-recovery-correct",
+    completedAt: "2026-08-01T10:10:00.000Z",
+    questionId: "2026_csat_26",
+    isCorrect: true,
+    confidence: "unsure",
+    isWrongRetry: true,
+  }),
+);
+const unstableRecoverySummary = summarizeLearningHistory(
+  unstableRecoveryHistory,
+  "english",
+  new Date("2026-08-02T10:00:00.000Z"),
+);
+assert.equal(unstableRecoverySummary.recoveredQuestionCount, 0);
+
 let dailyHistory = normalizeLearningHistory(null);
 dailyHistory = appendLearningSession(
   dailyHistory,
@@ -240,6 +441,73 @@ assert.equal(summary.dueReviewCount, 2);
 assert.equal(summary.recoveredQuestionCount, 1);
 assert.equal(summary.repeatWrongQuestionCount, 0);
 
+const confidenceSummary = summarizeLearningHistory(
+  confidenceReviewHistory,
+  "english",
+  new Date("2026-08-07T10:00:00.000Z"),
+);
+assert.equal(confidenceSummary.confidentWrongCount, 1);
+assert.equal(confidenceSummary.unstableCorrectCount, 2);
+assert.equal(confidenceSummary.recoveredQuestionCount, 1);
+
+let priorityHistory = normalizeLearningHistory(null);
+priorityHistory = appendLearningSession(
+  priorityHistory,
+  session({
+    id: "ordinary-wrong",
+    completedAt: "2026-08-06T08:00:00.000Z",
+    questionId: "priority-ordinary",
+    isCorrect: false,
+    confidence: "unsure",
+  }),
+);
+priorityHistory = appendLearningSession(
+  priorityHistory,
+  session({
+    id: "confident-wrong",
+    completedAt: "2026-08-06T09:00:00.000Z",
+    questionId: "priority-confident",
+    isCorrect: false,
+    confidence: "sure",
+  }),
+);
+priorityHistory = appendLearningSession(
+  priorityHistory,
+  session({
+    id: "confident-wrong-immediate-correction",
+    completedAt: "2026-08-06T09:05:00.000Z",
+    questionId: "priority-confident",
+    isCorrect: true,
+    confidence: "sure",
+    isWrongRetry: true,
+  }),
+);
+const priorityState = buildQuestionReviewStates(
+  priorityHistory,
+  "english",
+  new Date("2026-08-07T10:00:00.000Z"),
+).find((candidate) => candidate.questionId === "priority-confident");
+assert.equal(priorityState.isPriorityCorrection, true);
+assert.equal(priorityState.recoveryStage, 0);
+const priorityPlan = buildDailyLearningPlan(
+  [
+    { id: "priority-ordinary" },
+    { id: "priority-confident" },
+    { id: "priority-new-1" },
+    { id: "priority-new-2" },
+    { id: "priority-new-3" },
+  ],
+  "english",
+  priorityHistory,
+  new Date("2026-08-07T10:00:00.000Z"),
+);
+assert.equal(priorityPlan.items[0].questionId, "priority-confident");
+assert.equal(priorityPlan.questions.length, 5);
+assert.equal(
+  new Set(priorityPlan.questions.map((question) => question.id)).size,
+  5,
+);
+
 const memory = new Map();
 const storage = {
   getItem(key) {
@@ -295,6 +563,8 @@ assert.throws(
   /확신도|기록/,
 );
 assert.deepEqual(learningHistoryConfig.reviewIntervalsDays, [1, 3, 7]);
+assert.equal(learningHistoryConfig.version, 1);
+assert.equal(learningHistoryConfig.storageKey, "eng_math_learning_history_v1");
 
 console.log(
   `ENG_MATH_LEARNING_HISTORY: pass version=${learningHistoryConfig.version} daily=${plan.questions.length} due=${summary.dueReviewCount} review=1/3/7`,

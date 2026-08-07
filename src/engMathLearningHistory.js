@@ -7,6 +7,14 @@ const REVIEW_INTERVALS_DAYS = [1, 3, 7];
 const SUBJECTS = new Set(["english", "math"]);
 const ATTEMPT_KINDS = new Set(["standard", "wrong_retry"]);
 const CONFIDENCE_LEVELS = new Set(["sure", "unsure", "guess"]);
+const LEARNING_DIAGNOSES = Object.freeze({
+  stable_correct: { code: "stable_correct", label: "안정 정답" },
+  uncertain_correct: { code: "uncertain_correct", label: "불안 정답" },
+  guessed_correct: { code: "guessed_correct", label: "찍어서 맞힘" },
+  confident_wrong: { code: "confident_wrong", label: "확신 오답" },
+  uncertain_wrong: { code: "uncertain_wrong", label: "애매 오답" },
+  guessed_wrong: { code: "guessed_wrong", label: "찍은 오답" },
+});
 
 function emptyHistory() {
   return { version: HISTORY_VERSION, sessions: [] };
@@ -113,6 +121,33 @@ function reviewLabel(recoveryStage, mastered) {
   return `${REVIEW_INTERVALS_DAYS[recoveryStage]}일 복습`;
 }
 
+export function getLearningDiagnosis(result) {
+  if (
+    typeof result?.isCorrect !== "boolean" ||
+    !CONFIDENCE_LEVELS.has(result.confidence)
+  ) {
+    return null;
+  }
+
+  if (result.isCorrect) {
+    return LEARNING_DIAGNOSES[
+      result.confidence === "sure"
+        ? "stable_correct"
+        : result.confidence === "unsure"
+          ? "uncertain_correct"
+          : "guessed_correct"
+    ];
+  }
+
+  return LEARNING_DIAGNOSES[
+    result.confidence === "sure"
+      ? "confident_wrong"
+      : result.confidence === "unsure"
+        ? "uncertain_wrong"
+        : "guessed_wrong"
+  ];
+}
+
 export function createLearningSessionId() {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
     return crypto.randomUUID();
@@ -187,24 +222,60 @@ export function buildQuestionReviewStates(
       attemptCount: 0,
       wrongCount: 0,
       hadWrong: false,
+      needsReview: false,
       recoveryStage: 0,
       dueAtMs: null,
       latestIsCorrect: attempt.isCorrect,
       latestCompletedAt: attempt.completedAt,
+      latestDiagnosis: null,
+      isPriorityCorrection: false,
     };
     const wasDue = current.dueAtMs !== null && completedAtMs >= current.dueAtMs;
+    const diagnosis = getLearningDiagnosis(attempt);
 
     current.attemptCount += 1;
     current.label = attempt.label;
     current.latestIsCorrect = attempt.isCorrect;
     current.latestCompletedAt = attempt.completedAt;
+    current.latestDiagnosis = diagnosis?.code ?? null;
 
-    if (!attempt.isCorrect) {
+    if (!diagnosis) {
+      if (!attempt.isCorrect) {
+        current.wrongCount += 1;
+        current.hadWrong = true;
+        current.needsReview = true;
+        current.recoveryStage = 0;
+        current.dueAtMs = completedAtMs + REVIEW_INTERVALS_DAYS[0] * DAY_IN_MS;
+      } else if (
+        current.hadWrong &&
+        attempt.attemptKind !== "wrong_retry" &&
+        wasDue
+      ) {
+        current.recoveryStage = Math.min(
+          current.recoveryStage + 1,
+          REVIEW_INTERVALS_DAYS.length,
+        );
+        current.dueAtMs =
+          current.recoveryStage >= REVIEW_INTERVALS_DAYS.length
+            ? null
+            : completedAtMs +
+              REVIEW_INTERVALS_DAYS[current.recoveryStage] * DAY_IN_MS;
+      }
+    } else if (!attempt.isCorrect) {
       current.wrongCount += 1;
       current.hadWrong = true;
+      current.needsReview = true;
       current.recoveryStage = 0;
       current.dueAtMs = completedAtMs + REVIEW_INTERVALS_DAYS[0] * DAY_IN_MS;
-    } else if (current.hadWrong && attempt.attemptKind !== "wrong_retry" && wasDue) {
+    } else if (attempt.confidence !== "sure") {
+      current.needsReview = true;
+      current.recoveryStage = 0;
+      current.dueAtMs = completedAtMs + REVIEW_INTERVALS_DAYS[0] * DAY_IN_MS;
+    } else if (
+      current.needsReview &&
+      attempt.attemptKind !== "wrong_retry" &&
+      wasDue
+    ) {
       current.recoveryStage = Math.min(
         current.recoveryStage + 1,
         REVIEW_INTERVALS_DAYS.length,
@@ -215,6 +286,15 @@ export function buildQuestionReviewStates(
           : completedAtMs +
             REVIEW_INTERVALS_DAYS[current.recoveryStage] * DAY_IN_MS;
     }
+    if (diagnosis?.code === "confident_wrong") {
+      current.isPriorityCorrection = true;
+    } else if (
+      diagnosis?.code === "stable_correct" &&
+      attempt.attemptKind !== "wrong_retry" &&
+      wasDue
+    ) {
+      current.isPriorityCorrection = false;
+    }
 
     states.set(attempt.questionId, current);
   });
@@ -222,7 +302,7 @@ export function buildQuestionReviewStates(
   return [...states.values()]
     .map((state) => {
       const mastered =
-        state.hadWrong &&
+        state.needsReview &&
         state.recoveryStage >= REVIEW_INTERVALS_DAYS.length &&
         state.latestIsCorrect;
       const dueAt = state.dueAtMs === null ? null : new Date(state.dueAtMs).toISOString();
@@ -239,12 +319,15 @@ export function buildQuestionReviewStates(
         attemptCount: state.attemptCount,
         wrongCount: state.wrongCount,
         hadWrong: state.hadWrong,
+        needsReview: state.needsReview,
         recoveryStage: state.recoveryStage,
         latestIsCorrect: state.latestIsCorrect,
         latestCompletedAt: state.latestCompletedAt,
+        latestDiagnosis: state.latestDiagnosis,
+        isPriorityCorrection: state.isPriorityCorrection,
         dueAt,
         status,
-        reviewLabel: state.hadWrong
+        reviewLabel: state.needsReview
           ? reviewLabel(state.recoveryStage, mastered)
           : null,
       };
@@ -302,7 +385,12 @@ export function buildDailyLearningPlan(
   });
   const due = decorated
     .filter((item) => item.state?.status === "due")
-    .sort((a, b) => Date.parse(a.state.dueAt) - Date.parse(b.state.dueAt));
+    .sort(
+      (a, b) =>
+        Number(b.state.isPriorityCorrection) -
+          Number(a.state.isPriorityCorrection) ||
+        Date.parse(a.state.dueAt) - Date.parse(b.state.dueAt),
+    );
   const weak = decorated
     .filter(
       (item) =>
@@ -310,7 +398,12 @@ export function buildDailyLearningPlan(
         item.state.status !== "due" &&
         item.state.status !== "mastered",
     )
-    .sort((a, b) => b.state.wrongCount - a.state.wrongCount);
+    .sort(
+      (a, b) =>
+        Number(b.state.isPriorityCorrection) -
+          Number(a.state.isPriorityCorrection) ||
+        b.state.wrongCount - a.state.wrongCount,
+    );
   const unseen = decorated.filter((item) => !item.state);
   const selected = [];
   const selectedIds = new Set();
@@ -365,9 +458,10 @@ export function summarizeLearningHistory(history, subject, now = new Date()) {
   const correctCount = attempts.filter((result) => result.isCorrect).length;
   const reviewStates = buildQuestionReviewStates(normalized, subject, now);
   const weakQuestions = reviewStates
-    .filter((item) => item.wrongCount > 0 && item.status !== "mastered")
+    .filter((item) => item.needsReview && item.status !== "mastered")
     .sort(
       (a, b) =>
+        Number(b.isPriorityCorrection) - Number(a.isPriorityCorrection) ||
         Number(a.latestIsCorrect) - Number(b.latestIsCorrect) ||
         b.wrongCount - a.wrongCount ||
         Date.parse(b.latestCompletedAt) - Date.parse(a.latestCompletedAt),
@@ -377,10 +471,20 @@ export function summarizeLearningHistory(history, subject, now = new Date()) {
     .map((result) => result.durationMs)
     .filter(Number.isInteger);
   const confidenceCounts = { sure: 0, unsure: 0, guess: 0 };
+  const diagnosisCounts = {
+    stable_correct: 0,
+    uncertain_correct: 0,
+    guessed_correct: 0,
+    confident_wrong: 0,
+    uncertain_wrong: 0,
+    guessed_wrong: 0,
+  };
   attempts.forEach((result) => {
     if (CONFIDENCE_LEVELS.has(result.confidence)) {
       confidenceCounts[result.confidence] += 1;
     }
+    const diagnosis = getLearningDiagnosis(result);
+    if (diagnosis) diagnosisCounts[diagnosis.code] += 1;
   });
 
   return {
@@ -404,9 +508,17 @@ export function summarizeLearningHistory(history, subject, now = new Date()) {
               1000,
           ),
     confidenceCounts,
+    diagnosisCounts,
+    confidentWrongCount: diagnosisCounts.confident_wrong,
+    unstableCorrectCount:
+      diagnosisCounts.uncertain_correct + diagnosisCounts.guessed_correct,
     dueReviewCount: reviewStates.filter((state) => state.status === "due").length,
     recoveredQuestionCount: reviewStates.filter(
-      (state) => state.hadWrong && state.latestIsCorrect,
+      (state) =>
+        state.hadWrong &&
+        state.latestIsCorrect &&
+        (state.latestDiagnosis === null ||
+          state.latestDiagnosis === "stable_correct"),
     ).length,
     masteredQuestionCount: reviewStates.filter(
       (state) => state.status === "mastered",
