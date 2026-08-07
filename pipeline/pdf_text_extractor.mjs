@@ -67,8 +67,13 @@ const MARKER_SETS = {
 //   정규식에 문자를 다시 적으면 정의와 매처가 갈라져 사각이 생긴다(§13⑮).
 const CHOICE_MARKER_KEYS = ["circled_number", "circled_latin", "circled_hangul"];
 const CHOICE_MARKER_CLASS = CHOICE_MARKER_KEYS.flatMap((k) => MARKER_SETS[k].chars).join("");
-const LEADING_CIRCLED_RE = new RegExp(`^\\s*([${CHOICE_MARKER_CLASS}])\\s*(.*)$`);
-// trailing: 끝에 '··· ①' 또는 '...  ⓐ' — 점/공백 3자+ 후 마커 + 종료
+// leading 은 ①~⑤ 전용이다. ⓐ~ⓔ·㉠~㉤ 까지 넓히면 표·짝지음 문항의 항목행
+//   ("ⓐ : 그 사람에게…", "ⓑ ⓒ")이 선지로 오인된다 — 2022예시 실측에서
+//   정상 5선지 문항이 33/36 → 29/36 으로 악화(Q4·Q16·Q24·Q34). 개선은 0건이었다.
+const LEADING_CIRCLED_RE = new RegExp(
+  `^\\s*([${MARKER_SETS.circled_number.chars.join("")}])\\s*(.*)$`,
+);
+// trailing 은 전 계열 유지 — 줄 끝 '··· ⓐ' 형식은 항목행과 형태가 겹치지 않아 악화가 없다.
 const TRAILING_CIRCLED_RE = new RegExp(`^(.*?)[·…\\.\\s]{3,}([${CHOICE_MARKER_CLASS}])\\s*$`);
 // 한 줄에 선지가 모두 들어간 형식 탐지용: "① ⓐ ② ⓑ ③ ⓒ ④ ⓓ ⑤ ⓔ"
 const INLINE_NUM_G = new RegExp(`[${MARKER_SETS.circled_number.chars.join("")}]`, "g");
