@@ -7,12 +7,13 @@
 //   축 C  번호 충돌     : 보기가 마커로 쓰는 원숫자가 그 문항의 선지 번호와 겹친다
 //   축 D  역할 충돌     : 한 마커가 서로 다른 두 문항에서 보기 정의·본문 정박으로 이중 사용된다
 //
-// [양성 회귀 케이스]  — 검사기 수정 시 반드시 이 4건이 다시 잡히는지 먼저 확인할 것(§13⑮(7)).
-//                       "0건"은 회귀 통과 후에만 유효하다.
-//   축 A : 2026_6월 l20266a Q18            (발문 ㉠~㉤ 선언 ↔ 선지 ㉠㉣㉤ → ㉡㉢ 미다룸)
-//   축 B : 2023수능 r2023d Q16             (해설 ⓐⓑ / 본문 ㉠㉡)
-//   축 C : 복원 전 r2020e Q19 (55e1776~1)  (보기가 ④⑤ 를 마커로 사용, 선지 5개)
-//   축 D : 복원 전 r2020e     (55e1776~1)  (ⓐ 가 Q19 보기 정의 · Q20 본문 어휘)
+// [양성 회귀]  `node pipeline/marker_audit.mjs --regress`
+//   pipeline/fixtures/ 의 픽스처를 읽어 각 축이 기지 결함을 잡는지 검사한다.
+//   하나라도 못 잡으면 종료 코드 1. 검사기를 수정하면 반드시 먼저 통과시킬 것(§13⑮(7)).
+//   "0건"은 회귀 통과 후에만 유효하다. git 이력을 뒤질 필요 없이 픽스처로 고정돼 있다.
+//     축 A : l20266a Q18 (현행) · l20196b Q31 (a458ea4~1)
+//     축 B : r2023d Q16 (현행)
+//     축 C·D : r2020e Q17·Q19 (55e1776~1)
 //
 // [현재 기준선]  LIVE(RELEASE_KEYS) 전수, 2026-08-07 시점
 //   축 A = 1 · 축 B = 21 · 축 C = 0 · 축 D = 0
@@ -37,6 +38,34 @@ const DATA = (argv.find((a) => a.startsWith("--data=")) || "").split("=")[1]
   || path.join(ROOT, "public/data/all_data_204.json");
 const ALL = argv.includes("--all");
 const ONLY = (argv.find((a) => a.startsWith("--only=")) || "").split("=")[1] || "";
+
+// ── 양성 회귀 모드: 픽스처를 자기 자신에게 먹여 각 축이 기지 결함을 잡는지 확인 ──
+if (argv.includes("--regress")) {
+  const { execFileSync } = await import("child_process");
+  const dir = path.join(__dirnameSafe(), "fixtures");
+  // 이 감사의 픽스처만 — fixtures/ 에는 다른 도구의 픽스처도 함께 있다
+  const files = fs.readdirSync(dir).filter((f) => /^axis[A-D]+_.*\.json$/.test(f)).sort();
+  if (!files.length) { console.error("★ 픽스처 0건 — 회귀 불가"); process.exit(1); }
+  let fail = 0;
+  console.log(`양성 회귀 — 픽스처 ${files.length}건 (${dir})\n`);
+  for (const f of files) {
+    const fx = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
+    const axes = (f.match(/^axis([A-D]+)_/) || [, ""])[1].split("");
+    for (const ax of axes) {
+      const out = execFileSync(process.execPath,
+        [fileURLToPath(import.meta.url), `--data=${path.join(dir, f)}`, `--only=${ax}`, "--all"],
+        { encoding: "utf8" });
+      const n = (out.match(/^\s*[🔴⚪]/gm) || []).length;
+      const ok = n > 0;
+      if (!ok) fail++;
+      console.log(`  ${ok ? "✅" : "🔴 실패"}  축 ${ax}  ${f}  검출 ${n}건`);
+      if (!ok) console.log(`        기대: ${fx._comment}`);
+    }
+  }
+  console.log(`\n${fail ? `★ 회귀 실패 ${fail}건 — 검사기가 기지 결함을 못 잡습니다. "0건"을 신뢰하지 마십시오.` : "회귀 전건 통과 — 이후의 0건 판정은 유효합니다."}`);
+  process.exit(fail ? 1 : 0);
+}
+function __dirnameSafe() { return path.dirname(fileURLToPath(import.meta.url)); }
 
 const D = JSON.parse(fs.readFileSync(DATA, "utf8"));
 const dl = fs.readFileSync(path.join(ROOT, "src/dataLoader.js"), "utf8");
