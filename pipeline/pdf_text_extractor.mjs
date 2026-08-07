@@ -23,6 +23,8 @@
  */
 
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import { PDFParse } from "pdf-parse";
 
 // ─── PDF → 전체 텍스트 ──────────────────────────────────────
@@ -45,14 +47,59 @@ export async function extractPdfText(pdfPath) {
 //
 // Q 번호 패턴: line 시작에 `\d+\.` 또는 `\d+\.\t`
 const Q_HEADER_RE = /^\s*(\d{1,2})\.\s*(?:\t|\s{2,})?(.*)$/;
-const LEADING_CIRCLED_RE = /^\s*([①②③④⑤])\s*(.*)$/;
 const LEADING_NUMBER_RE = /^\s*([1-5])\.\s+(.+)$/;
-// trailing: 끝에 '··· ①' 또는 '...  ①' — 점/공백 3자+ 후 원문자 + 종료
-const TRAILING_CIRCLED_RE = /^(.*?)[·…\.\s]{3,}([①②③④⑤])\s*$/;
+
+// ─── 마커 집합 정본 (단일 출처) ─────────────────────────────
+// U+3260~3264 (㉠~㉤), U+2460~2464 (①~⑤), U+24D0~24D4 (ⓐ~ⓔ)
+//   선지 마커 정규식·scanMarkers 가 모두 이 정의만 참조한다.
+const MARKER_SETS = {
+  circled_hangul: { chars: "㉠㉡㉢㉣㉤".split(""), label: "㉠~㉤" },
+  circled_number: { chars: "①②③④⑤".split(""), label: "①~⑤" },
+  circled_latin: { chars: "ⓐⓑⓒⓓⓔ".split(""), label: "ⓐ~ⓔ" },
+  section_bracket: {
+    chars: ["(가)", "(나)", "(다)", "(라)"],
+    label: "(가)~(라)",
+  },
+  square_letter: { chars: ["[A]", "[B]", "[C]"], label: "[A]~[C]" },
+};
+
+// 선지 마커 계열은 MARKER_SETS 단일 출처에서 생성한다.
+//   정규식에 문자를 다시 적으면 정의와 매처가 갈라져 사각이 생긴다(§13⑮).
+const CHOICE_MARKER_KEYS = ["circled_number", "circled_latin", "circled_hangul"];
+const CHOICE_MARKER_CLASS = CHOICE_MARKER_KEYS.flatMap((k) => MARKER_SETS[k].chars).join("");
+const LEADING_CIRCLED_RE = new RegExp(`^\\s*([${CHOICE_MARKER_CLASS}])\\s*(.*)$`);
+// trailing: 끝에 '··· ①' 또는 '...  ⓐ' — 점/공백 3자+ 후 마커 + 종료
+const TRAILING_CIRCLED_RE = new RegExp(`^(.*?)[·…\\.\\s]{3,}([${CHOICE_MARKER_CLASS}])\\s*$`);
+// 한 줄에 선지가 모두 들어간 형식 탐지용: "① ⓐ ② ⓑ ③ ⓒ ④ ⓓ ⑤ ⓔ"
+const INLINE_NUM_G = new RegExp(`[${MARKER_SETS.circled_number.chars.join("")}]`, "g");
 
 function circledToNum(ch) {
-  const i = "①②③④⑤".indexOf(ch);
-  return i >= 0 ? i + 1 : null;
+  for (const k of CHOICE_MARKER_KEYS) {
+    const i = MARKER_SETS[k].chars.indexOf(ch);
+    if (i >= 0) return i + 1;
+  }
+  return null;
+}
+
+/**
+ * "① ⓐ ② ⓑ ③ ⓒ ④ ⓓ ⑤ ⓔ" 처럼 한 줄에 선지가 모두 들어간 형식을 분리한다.
+ * ①부터 오름차순 연속 3개 이상 + 각 조각 ≤16자 일 때만 — 일반 선지 줄 오탐 방지.
+ * @returns {{num:number,t:string}[]|null}
+ */
+function splitInlineChoices(line) {
+  const hits = [...line.matchAll(INLINE_NUM_G)];
+  if (hits.length < 3) return null;
+  const nums = hits.map((h) => circledToNum(h[0]));
+  if (!nums.every((n, i) => n === i + 1)) return null;
+  const out = [];
+  for (let i = 0; i < hits.length; i++) {
+    const from = hits[i].index + hits[i][0].length;
+    const to = i + 1 < hits.length ? hits[i + 1].index : line.length;
+    const t = line.slice(from, to).trim();
+    if (t.length > 16) return null;
+    out.push({ num: nums[i], t });
+  }
+  return out.every((c) => c.t) ? out : null;
 }
 
 export function parseQuestionBlocks(fullText) {
@@ -100,6 +147,18 @@ export function parseQuestionBlocks(fullText) {
       continue;
     }
 
+    // (A-0) 한 줄에 선지가 모두 들어간 형식 — "① ⓐ ② ⓑ ③ ⓒ ④ ⓓ ⑤ ⓔ"
+    //   (A) 보다 먼저 검사해야 한다. (A) 는 첫 ① 만 잡고 나머지를 본문으로 삼아
+    //   선지 5개를 1개로 뭉갠다(l20196b Q31 실측).
+    const inline = splitInlineChoices(line);
+    if (inline) {
+      current._section = "choice";
+      for (const c of inline) current.choices.push({ num: c.num, lines: [c.t] });
+      current._currentChoice = null;
+      current._pendingPre = [];
+      continue;
+    }
+
     // (A) leading circled marker
     const mA = line.match(LEADING_CIRCLED_RE);
     if (mA) {
@@ -135,7 +194,10 @@ export function parseQuestionBlocks(fullText) {
     }
 
     // (C) trailing circled marker
-    const mC = line.match(TRAILING_CIRCLED_RE);
+    //   ⚠ <보기> 내부에서는 검사하지 않는다. 보기 안의 항목도 "… ⓐ" 형식으로 끝나므로
+    //     (예: "학생 1 : … 알 수 있어요. ·········· ⓐ", l20196b Q31) 그대로 두면
+    //     보기 항목이 선지로 탈취되고 마커까지 버려진다.
+    const mC = current._section === "bogi" ? null : line.match(TRAILING_CIRCLED_RE);
     if (mC) {
       const num = circledToNum(mC[2]);
       if (num !== null) {
@@ -313,19 +375,45 @@ function finalizeBlock(b) {
   };
 }
 
-// ─── 원문자 / 마커 스캔 ─────────────────────────────────────
-// U+3260~3264 (㉠~㉤), U+2460~2464 (①~⑤), U+24D0~24D4 (ⓐ~ⓔ)
-const MARKER_SETS = {
-  circled_hangul: { chars: "㉠㉡㉢㉣㉤".split(""), label: "㉠~㉤" },
-  circled_number: { chars: "①②③④⑤".split(""), label: "①~⑤" },
-  circled_latin: { chars: "ⓐⓑⓒⓓⓔ".split(""), label: "ⓐ~ⓔ" },
-  section_bracket: {
-    chars: ["(가)", "(나)", "(다)", "(라)"],
-    label: "(가)~(라)",
-  },
-  square_letter: { chars: ["[A]", "[B]", "[C]"], label: "[A]~[C]" },
-};
+// ─── 회귀 자체 검사 ─────────────────────────────────────────
+// `node pipeline/pdf_text_extractor.mjs --selftest`
+//   fixtures/extractor_marker_forms.json 의 선지 마커 형식 케이스를 파싱해 검증한다.
+//   실패 시 종료 코드 1. 파서·정규식을 고치면 반드시 먼저 통과시킬 것(§13⑮(7)).
+export function selftest() {
+  const dir = path.dirname(fileURLToPath(import.meta.url));
+  const fx = JSON.parse(
+    fs.readFileSync(path.join(dir, "fixtures/extractor_marker_forms.json"), "utf8"),
+  );
+  let fail = 0;
+  console.log(`추출기 회귀 — 케이스 ${fx.cases.length}건\n`);
+  for (const c of fx.cases) {
+    const blocks = parseQuestionBlocks(c.text.join("\n"));
+    const b = blocks[0] || { choices: [], bogi: "" };
+    const errs = [];
+    const e = c.expect || {};
+    if (e.choiceCount !== undefined && b.choices.length !== e.choiceCount)
+      errs.push(`선지 ${b.choices.length}개 (기대 ${e.choiceCount})`);
+    if (e.choiceTexts)
+      e.choiceTexts.forEach((t, i) => {
+        if ((b.choices[i] || {}).t !== t)
+          errs.push(`선지${i + 1}="${(b.choices[i] || {}).t}" (기대 "${t}")`);
+      });
+    if (e.bogiContains)
+      for (const s of e.bogiContains)
+        if (!String(b.bogi || "").includes(s)) errs.push(`bogi 에 "${s}" 없음`);
+    if (errs.length) fail++;
+    console.log(`  ${errs.length ? "🔴 실패" : "✅"}  ${c.name}`);
+    for (const x of errs) console.log(`        ${x}`);
+    if (errs.length) console.log(`        사유: ${c.why}`);
+  }
+  console.log(
+    `\n${fail ? `★ 회귀 실패 ${fail}건 — 추출기가 기지 형식을 처리하지 못합니다.` : "회귀 전건 통과."}`,
+  );
+  return fail;
+}
 
+// ─── 원문자 / 마커 스캔 ─────────────────────────────────────
+//   MARKER_SETS 정의는 상단으로 이동함 — 선지 마커 정규식이 이를 단일 출처로 삼는다.
 export function scanMarkers(text) {
   const out = {};
   for (const [key, def] of Object.entries(MARKER_SETS)) {
@@ -338,3 +426,6 @@ export function scanMarkers(text) {
   }
   return out;
 }
+
+// CLI: 회귀 자체 검사
+if (process.argv.includes("--selftest")) process.exit(selftest() ? 1 : 0);
