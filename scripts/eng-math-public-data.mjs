@@ -1348,6 +1348,7 @@ function validateMathVerifiedSolutionSet({
   expectedSourceHashes = MATH_VERIFIED_SOURCE_HASHES,
   verifiedAt,
 }) {
+  const isPublicFreeSolution = filename === MATH_VERIFIED_SOLUTION_FILENAME;
   const solutionPath = path.join(path.dirname(mathDbPath), filename);
   const database = readJson(solutionPath, filename);
   const metadata = database.metadata;
@@ -1588,11 +1589,21 @@ function validateMathVerifiedSolutionSet({
     requireText(item.approach, "MATH_SOLUTION_APPROACH", id);
     requireText(item.correctReason, "MATH_SOLUTION_REASON", id);
     requireText(item.commonMistake, "MATH_SOLUTION_MISTAKE", id);
+    if (isPublicFreeSolution) {
+      requireText(item.firstLook, "MATH_SOLUTION_FIRST_LOOK", id);
+      requireText(item.transferRule, "MATH_SOLUTION_TRANSFER_RULE", id);
+    }
     const narrativeFields = {
       summary: item.summary,
       approach: item.approach,
       correctReason: item.correctReason,
       commonMistake: item.commonMistake,
+      ...(isPublicFreeSolution
+        ? {
+            firstLook: item.firstLook,
+            transferRule: item.transferRule,
+          }
+        : {}),
     };
     for (const [field, text] of Object.entries(narrativeFields)) {
       if (text.trim().length < MATH_SOLUTION_MIN_NARRATIVE_LENGTH) {
@@ -4436,6 +4447,8 @@ function buildPublicData(
       {
         summary: item.summary,
         approach: item.approach,
+        firstLook: item.firstLook,
+        transferRule: item.transferRule,
         concepts: [...item.concepts],
         steps: item.steps.map((step) => ({
           title: step.title,
@@ -4474,6 +4487,7 @@ function buildPublicData(
 
   const english = englishReadySource.map((question) => {
     const review = explanations.get(question.id);
+    const isFreeQuestion = ENGLISH_FREE_IDS.includes(question.id);
     if (String(question.answer) !== String(review.answer))
       fail("ENGLISH_ANSWER_MISMATCH", question.id);
     if (!Array.isArray(review.evidence) || review.evidence.length === 0) {
@@ -4481,6 +4495,32 @@ function buildPublicData(
     }
     if (!review.trap || typeof review.trap.reason !== "string") {
       fail("ENGLISH_TRAP_MISSING", question.id);
+    }
+    if (isFreeQuestion) {
+      requireText(review.decisionCue, "ENGLISH_DECISION_CUE_MISSING", question.id);
+      requireText(
+        review.transferRule,
+        "ENGLISH_TRANSFER_RULE_MISSING",
+        question.id,
+      );
+      const feedbackKeys = Object.keys(review.choiceFeedback ?? {}).sort();
+      if (stableJson(feedbackKeys) !== stableJson(["1", "2", "3", "4", "5"])) {
+        fail("ENGLISH_CHOICE_FEEDBACK_KEYS", question.id);
+      }
+      feedbackKeys.forEach((choiceNumber) => {
+        const feedback = review.choiceFeedback[choiceNumber];
+        requireText(
+          feedback,
+          "ENGLISH_CHOICE_FEEDBACK_MISSING",
+          `${question.id}:${choiceNumber}`,
+        );
+        if (feedback.trim().length < 30) {
+          fail(
+            "ENGLISH_CHOICE_FEEDBACK_DEPTH",
+            `${question.id}:${choiceNumber}`,
+          );
+        }
+      });
     }
 
     const rawPassage =
@@ -4549,6 +4589,18 @@ function buildPublicData(
         summary: review.summary,
         approach: review.typeApproach,
         reason: review.correctReason,
+        ...(isFreeQuestion
+          ? {
+              decisionCue: review.decisionCue,
+              transferRule: review.transferRule,
+              choiceFeedback: Object.fromEntries(
+                Object.entries(review.choiceFeedback).map(([choice, feedback]) => [
+                  choice,
+                  feedback,
+                ]),
+              ),
+            }
+          : {}),
         trap: {
           mark: review.trap.mark,
           text: review.trap.text,
@@ -4729,8 +4781,10 @@ function buildPublicData(
     "commonMistake",
     "concepts",
     "correctReason",
+    "firstLook",
     "steps",
     "summary",
+    "transferRule",
   ];
   const allowedStepKeys = ["explanation", "expression", "title"];
   for (const question of mathFree.questions) {

@@ -5,7 +5,10 @@ import "katex/dist/katex.min.css";
 import EngMathLockedAccess from "./EngMathLockedAccess.jsx";
 import { resolveEngMathPackAccess } from "./engMathAccess.js";
 import {
+  buildDailyLearningPlan,
   createLearningSessionId,
+  readDailyLearningPlan,
+  readLearningHistory,
   readWeeklyLearningSummary,
   recordLearningSession,
 } from "./engMathLearningHistory.js";
@@ -51,9 +54,18 @@ const SUBJECTS = {
 };
 const SESSION_STORAGE_VERSION = 1;
 const SESSION_ANSWER_MARKS = ["", "①", "②", "③", "④", "⑤"];
+const CONFIDENCE_OPTIONS = [
+  { value: "sure", label: "확신 있음" },
+  { value: "unsure", label: "애매함" },
+  { value: "guess", label: "찍음" },
+];
 
 function sessionUrl(subject, packId) {
   return `/eng-math/practice?subject=${subject}&mode=session&pack=${encodeURIComponent(packId)}`;
+}
+
+function dailyUrl(subject, packId) {
+  return `/eng-math/practice?subject=${subject}&mode=daily&pack=${encodeURIComponent(packId)}`;
 }
 
 function catalogUrl(subject, pack = null) {
@@ -103,7 +115,13 @@ function readSavedSession(subject, packId, questions) {
           typeof result.isCorrect === "boolean" &&
           ["choice", "short"].includes(result.answerType) &&
           ["string", "number"].includes(typeof result.selectedAnswer) &&
-          ["string", "number"].includes(typeof result.correctAnswer),
+          ["string", "number"].includes(typeof result.correctAnswer) &&
+          (result.durationMs === undefined ||
+            (Number.isInteger(result.durationMs) && result.durationMs >= 0)) &&
+          (result.confidence === undefined ||
+            CONFIDENCE_OPTIONS.some(
+              (option) => option.value === result.confidence,
+            )),
       );
     const valid =
       saved.version === SESSION_STORAGE_VERSION &&
@@ -160,6 +178,21 @@ function formatSessionAnswer(result, answer) {
   return String(answer);
 }
 
+function formatDuration(durationMs) {
+  if (!Number.isInteger(durationMs)) return null;
+  const totalSeconds = Math.max(1, Math.round(durationMs / 1000));
+  if (totalSeconds < 60) return `${totalSeconds}초`;
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return seconds === 0 ? `${minutes}분` : `${minutes}분 ${seconds}초`;
+}
+
+function confidenceLabel(confidence) {
+  return (
+    CONFIDENCE_OPTIONS.find((option) => option.value === confidence)?.label ?? null
+  );
+}
+
 function WeeklyLearningSummary({ summary, profile }) {
   const hasHistory = summary.answerCount > 0;
 
@@ -175,7 +208,7 @@ function WeeklyLearningSummary({ summary, profile }) {
         .eng-math-weekly__topline h2 { margin: 0; color: #25324a; font-size: 1rem; letter-spacing: -0.025em; }
         .eng-math-weekly__topline span { color: #7a8699; font-size: 0.75rem; font-weight: 800; }
         .eng-math-weekly__empty { margin: 12px 0 0; color: #667085; font-size: 0.84rem; line-height: 1.6; word-break: keep-all; }
-        .eng-math-weekly__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 14px 0 0; }
+        .eng-math-weekly__stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 14px 0 0; }
         .eng-math-weekly__stat { min-width: 0; border-radius: 12px; background: #f6f8fb; padding: 12px; }
         .eng-math-weekly__stat dt { color: #738097; font-size: 0.72rem; font-weight: 800; }
         .eng-math-weekly__stat dd { margin: 5px 0 0; color: #25324a; font-size: 1.05rem; font-weight: 900; }
@@ -185,23 +218,21 @@ function WeeklyLearningSummary({ summary, profile }) {
         .eng-math-weekly__weak li { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; color: #526078; font-size: 0.78rem; line-height: 1.5; }
         .eng-math-weekly__weak li span { min-width: 0; word-break: keep-all; }
         .eng-math-weekly__weak li strong { flex: 0 0 auto; color: var(--eng-math-weekly-accent); font-size: 0.74rem; }
+        .eng-math-weekly__mastered { margin: 12px 0 0; color: #526078; font-size: 0.78rem; line-height: 1.5; }
         @media (max-width: 440px) {
           .eng-math-weekly { padding: 15px; }
+          .eng-math-weekly__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
           .eng-math-weekly__stat { padding: 10px 8px; }
           .eng-math-weekly__weak li { display: grid; gap: 2px; }
         }
       `}</style>
       <div className="eng-math-weekly__topline">
         <h2>이번 주 학습</h2>
-        <span>최근 7일 · 이 브라우저</span>
+        <span>최근 7일 · 완료 {summary.sessionCount}회</span>
       </div>
       {hasHistory ? (
         <>
           <dl className="eng-math-weekly__stats">
-            <div className="eng-math-weekly__stat">
-              <dt>완료 학습</dt>
-              <dd>{summary.sessionCount}회</dd>
-            </div>
             <div className="eng-math-weekly__stat">
               <dt>푼 문항</dt>
               <dd>{summary.answerCount}개</dd>
@@ -210,7 +241,20 @@ function WeeklyLearningSummary({ summary, profile }) {
               <dt>정답률</dt>
               <dd>{summary.accuracy}%</dd>
             </div>
+            <div className="eng-math-weekly__stat">
+              <dt>오늘 복습</dt>
+              <dd>{summary.dueReviewCount}개</dd>
+            </div>
+            <div className="eng-math-weekly__stat">
+              <dt>교정 성공</dt>
+              <dd>{summary.recoveredQuestionCount}개</dd>
+            </div>
           </dl>
+          {summary.masteredQuestionCount > 0 ? (
+            <p className="eng-math-weekly__mastered">
+              1·3·7일 복습을 마친 문항 {summary.masteredQuestionCount}개
+            </p>
+          ) : null}
           {summary.weakQuestions.length > 0 ? (
             <div className="eng-math-weekly__weak">
               <h3>다시 볼 문항</h3>
@@ -220,7 +264,11 @@ function WeeklyLearningSummary({ summary, profile }) {
                     <span>{question.label}</span>
                     <strong>
                       {question.wrongCount}회 오답 ·{" "}
-                      {question.latestIsCorrect ? "최근 재풀이 정답" : "복습 필요"}
+                      {question.status === "due"
+                        ? question.reviewLabel
+                        : question.latestIsCorrect
+                          ? "교정 후 복습 예정"
+                          : "취약 보완 필요"}
                     </strong>
                   </li>
                 ))}
@@ -383,6 +431,10 @@ function MathVerifiedSolution({ solution }) {
   return (
     <>
       <span className="eng-math-practice__math-solution-label">검증 풀이</span>
+      <div className="eng-math-practice__math-first-look">
+        <span>첫 30초 발상</span>
+        <p>{solution.firstLook}</p>
+      </div>
       <h2>{solution.approach}</h2>
       <p>{solution.summary}</p>
 
@@ -417,6 +469,10 @@ function MathVerifiedSolution({ solution }) {
       <div className="eng-math-practice__math-solution-note eng-math-practice__math-solution-note--mistake">
         <h3>자주 하는 실수</h3>
         <p>{solution.commonMistake}</p>
+      </div>
+      <div className="eng-math-practice__math-transfer-rule">
+        <h3>다음 문제 적용</h3>
+        <p>{solution.transferRule}</p>
       </div>
     </>
   );
@@ -571,6 +627,7 @@ export default function EngMathPractice({ user }) {
   const mode = parameters.get("mode");
   const isCatalogMode = mode === "catalog";
   const isSessionMode = mode === "session";
+  const isDailyMode = mode === "daily";
   const questionId = parameters.get("id");
   const packId = parameters.get("pack");
   const initialExam = parameters.get("exam");
@@ -597,6 +654,17 @@ export default function EngMathPractice({ user }) {
       ? candidate
       : null;
   }, [catalog, selectedPack]);
+  const dailyPlan = useMemo(
+    () =>
+      isDailyMode && selectedPack
+        ? buildDailyLearningPlan(
+            selectedPack.questions,
+            subject,
+            readLearningHistory(),
+          )
+        : null,
+    [isDailyMode, selectedPack, subject],
+  );
 
   const chooseSubject = (nextSubject) => {
     navigate(catalogUrl(nextSubject));
@@ -630,7 +698,7 @@ export default function EngMathPractice({ user }) {
     );
   }
 
-  if (isSessionMode) {
+  if (isSessionMode || isDailyMode) {
     if (!selectedPack) {
       return (
         <PracticeNotice
@@ -655,15 +723,23 @@ export default function EngMathPractice({ user }) {
 
     return (
       <LearningSession
-        key={`${subject}-${selectedPack.id}`}
-        questions={selectedPack.questions}
+        key={`${subject}-${selectedPack.id}-${mode}`}
+        questions={dailyPlan?.questions ?? selectedPack.questions}
         subject={subject}
-        packId={selectedPack.id}
+        packId={isDailyMode ? `daily:${selectedPack.id}` : selectedPack.id}
         navigate={navigate}
         onSubjectChange={chooseSubject}
-        packLabel={`${selectedPack.examLabel} · ${selectedPack.trackLabel} · ${selectedPack.label}`}
+        packLabel={
+          isDailyMode
+            ? `오늘의 5문항 · ${selectedPack.examLabel} · ${selectedPack.trackLabel}`
+            : `${selectedPack.examLabel} · ${selectedPack.trackLabel} · ${selectedPack.label}`
+        }
+        isDaily={isDailyMode}
+        dailyPlanItems={dailyPlan?.items ?? []}
         onNextPack={
-          nextPack ? () => navigate(sessionUrl(subject, nextPack.id)) : null
+          !isDailyMode && nextPack
+            ? () => navigate(sessionUrl(subject, nextPack.id))
+            : null
         }
         onCatalog={() => navigate(catalogUrl(subject, selectedPack))}
       />
@@ -702,6 +778,10 @@ function QuestionCatalog({
 }) {
   const profile = SUBJECTS[subject];
   const weeklySummary = readWeeklyLearningSummary(subject);
+  const freePack = catalog.find((pack) => pack.access === "free") ?? null;
+  const dailyPlan = freePack
+    ? readDailyLearningPlan(freePack.questions, subject)
+    : null;
   const examOptions = useMemo(() => {
     const options = new Map();
     catalog.forEach((pack) => options.set(pack.examKey, pack.examLabel));
@@ -812,6 +892,22 @@ function QuestionCatalog({
           line-height: 1.68;
           word-break: keep-all;
         }
+        .eng-math-catalog__daily {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          align-items: center;
+          gap: 18px;
+          margin: 0 0 22px;
+          border: 1px solid color-mix(in srgb, var(--eng-math-daily-accent) 28%, #dfe6ef);
+          border-radius: 18px;
+          background: color-mix(in srgb, var(--eng-math-daily-accent) 6%, #fff);
+          padding: 19px;
+        }
+        .eng-math-catalog__daily-copy { min-width: 0; }
+        .eng-math-catalog__daily-copy span { color: var(--eng-math-daily-accent); font-size: 0.76rem; font-weight: 900; }
+        .eng-math-catalog__daily-copy h2 { margin: 6px 0 7px; color: #25324a; font-size: 1.15rem; letter-spacing: -0.035em; }
+        .eng-math-catalog__daily-copy p { margin: 0; color: #627087; font-size: 0.84rem; line-height: 1.55; word-break: keep-all; }
+        .eng-math-catalog__daily button { min-height: 48px; border: 0; border-radius: 13px; padding: 0 17px; color: #fff; font: inherit; font-size: 0.88rem; font-weight: 900; cursor: pointer; white-space: nowrap; }
         .eng-math-catalog__filters {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -934,6 +1030,8 @@ function QuestionCatalog({
           .eng-math-catalog__grid { grid-template-columns: 1fr; }
           .eng-math-catalog__filters { padding: 14px; }
           .eng-math-catalog__pack { padding: 17px; }
+          .eng-math-catalog__daily { grid-template-columns: 1fr; padding: 16px; }
+          .eng-math-catalog__daily button { width: 100%; }
         }
       `}</style>
 
@@ -986,6 +1084,30 @@ function QuestionCatalog({
         </header>
 
         <WeeklyLearningSummary summary={weeklySummary} profile={profile} />
+
+        {freePack && dailyPlan ? (
+          <section
+            className="eng-math-catalog__daily"
+            aria-label="오늘의 5문항"
+            style={{ "--eng-math-daily-accent": profile.accent }}
+          >
+            <div className="eng-math-catalog__daily-copy">
+              <span>1·3·7일 복습 처방</span>
+              <h2>오늘의 5문항</h2>
+              <p>
+                복습 {dailyPlan.dueCount}개 · 취약 보완 {dailyPlan.weakCount}개 ·
+                새 문항 {dailyPlan.newCount}개를 우선 배치했습니다.
+              </p>
+            </div>
+            <button
+              type="button"
+              style={{ background: profile.accent }}
+              onClick={() => navigate(dailyUrl(subject, freePack.id))}
+            >
+              오늘 학습 시작
+            </button>
+          </section>
+        ) : null}
 
         {subject === "math" ? (
           <section
@@ -1210,6 +1332,8 @@ function LearningSession({
   navigate,
   onSubjectChange,
   packLabel,
+  isDaily,
+  dailyPlanItems,
   onNextPack,
   onCatalog,
 }) {
@@ -1237,6 +1361,10 @@ function LearningSession({
     [isWrongRetry, questions, retryQuestionIds],
   );
   const question = activeQuestions[currentIndex];
+  const dailyReason = isDaily
+    ? dailyPlanItems.find((item) => item.questionId === question?.id)?.reason ??
+      "유지 학습"
+    : null;
 
   const resetSessionState = () => {
     setCurrentIndex(0);
@@ -1352,6 +1480,7 @@ function LearningSession({
         onNextPack={isWrongRetry ? null : onNextPack}
         onCatalog={onCatalog}
         isWrongRetry={isWrongRetry}
+        isDaily={isDaily}
         weeklySummary={weeklySummary}
       />
     );
@@ -1369,6 +1498,8 @@ function LearningSession({
         total: activeQuestions.length,
         isLast: currentIndex === activeQuestions.length - 1,
         isWrongRetry,
+        isDaily,
+        dailyReason,
         onAnswer: recordAnswer,
         onNext: moveForward,
       }}
@@ -1386,6 +1517,7 @@ function SessionSummary({
   onNextPack,
   onCatalog,
   isWrongRetry,
+  isDaily,
   weeklySummary,
 }) {
   const profile = SUBJECTS[subject];
@@ -1517,6 +1649,11 @@ function SessionSummary({
           font-size: 0.78rem;
           font-weight: 700;
         }
+        .eng-math-session-summary__item-meta {
+          color: #7a8699;
+          font-size: 0.73rem;
+          font-weight: 700;
+        }
         .eng-math-session-summary__item-status {
           flex: 0 0 auto;
           font-size: 0.82rem;
@@ -1583,7 +1720,9 @@ function SessionSummary({
             <h1>
               {isWrongRetry
                 ? "오답 재풀이를 마쳤습니다."
-                : "다섯 문제를 모두 풀었습니다."}
+                : isDaily
+                  ? "오늘의 학습을 마쳤습니다."
+                  : "다섯 문제를 모두 풀었습니다."}
             </h1>
             <p className="eng-math-session-summary__lead">
               문항별로 내가 고른 답과 정답을 함께 확인할 수 있습니다.
@@ -1616,6 +1755,13 @@ function SessionSummary({
                       선택 {formatSessionAnswer(result, result.selectedAnswer)} · 정답{" "}
                       {formatSessionAnswer(result, result.correctAnswer)}
                     </span>
+                    {formatDuration(result.durationMs) ||
+                    confidenceLabel(result.confidence) ? (
+                      <span className="eng-math-session-summary__item-meta">
+                        {formatDuration(result.durationMs) ?? "시간 미기록"} ·{" "}
+                        {confidenceLabel(result.confidence) ?? "확신도 미기록"}
+                      </span>
+                    ) : null}
                   </span>
                   <span className="eng-math-session-summary__item-status">
                     {result.isCorrect ? "정답" : "다시 확인"}
@@ -1704,21 +1850,33 @@ function PracticeQuestion({
   const isShortAnswer = subject === "math" && question.responseType === "short";
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [shortAnswer, setShortAnswer] = useState("");
+  const [confidence, setConfidence] = useState(null);
+  const [startedAt, setStartedAt] = useState(() => Date.now());
   const [submitted, setSubmitted] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
   const currentAnswer = isShortAnswer
     ? normalizeShortAnswer(shortAnswer)
     : selectedChoice;
-  const isReadyToSubmit = isShortAnswer
+  const hasAnswer = isShortAnswer
     ? /^\d+$/.test(currentAnswer)
     : currentAnswer !== null;
+  const isReadyToSubmit = hasAnswer && confidence !== null;
   const isCorrect = isShortAnswer
     ? currentAnswer === normalizeShortAnswer(question.answer)
     : selectedChoice === question.answer;
+  const selectedChoiceData = isShortAnswer
+    ? null
+    : question.choices.find((choice) => choice.number === selectedChoice) ?? null;
+  const selectedChoiceFeedback =
+    subject === "english" && selectedChoice !== null
+      ? question.review.choiceFeedback?.[String(selectedChoice)] ?? null
+      : null;
 
   const restart = () => {
     setSelectedChoice(null);
     setShortAnswer("");
+    setConfidence(null);
+    setStartedAt(Date.now());
     setSubmitted(false);
     setShowExplanation(false);
   };
@@ -1738,12 +1896,14 @@ function PracticeQuestion({
         selectedAnswer: currentAnswer,
         correctAnswer: question.answer,
         isCorrect,
+        durationMs: Math.min(60 * 60 * 1000, Math.max(0, Date.now() - startedAt)),
+        confidence,
       });
     }
   };
 
   return (
-    <main className="eng-math-practice">
+    <main className={`eng-math-practice eng-math-practice--${subject}`}>
       <style>{`
         .eng-math-practice {
           min-height: 100svh;
@@ -2040,6 +2200,11 @@ function PracticeQuestion({
         }
         .eng-math-practice__short-answer input:focus { border-color: #16705b; box-shadow: 0 0 0 3px rgba(22,112,91,0.13); }
         .eng-math-practice__short-answer input:disabled { background: #f4f6f8; color: #667085; }
+        .eng-math-practice__confidence { margin-top: 18px; border-top: 1px solid #edf0f5; padding-top: 16px; }
+        .eng-math-practice__confidence h2 { margin: 0 0 9px; color: #4b5870; font-size: 0.82rem; letter-spacing: -0.02em; }
+        .eng-math-practice__confidence-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+        .eng-math-practice__confidence-options button { min-width: 0; min-height: 42px; border: 1px solid #d6deea; border-radius: 11px; background: #fff; padding: 8px; color: #627087; font: inherit; font-size: 0.79rem; font-weight: 850; cursor: pointer; }
+        .eng-math-practice__confidence-options button[aria-pressed="true"] { border-color: var(--eng-math-confidence-accent); background: var(--eng-math-confidence-tint); color: var(--eng-math-confidence-accent); }
         .eng-math-practice__submit,
         .eng-math-practice__restart,
         .eng-math-practice__review-toggle,
@@ -2060,6 +2225,10 @@ function PracticeQuestion({
         .eng-math-practice__result--wrong { border-color: #f2c9cd; background: #fff5f5; color: #852b36; }
         .eng-math-practice__result-title { margin: 0 0 7px; font-size: 1.05rem; font-weight: 900; }
         .eng-math-practice__result-copy { margin: 0; color: #3d4d5e; line-height: 1.6; }
+        .eng-math-practice__choice-feedback { margin-top: 12px; border: 1px solid #cbd7ed; border-radius: 16px; background: #f7f9ff; padding: 17px; color: #31415c; }
+        .eng-math-practice__choice-feedback > span { display: inline-flex; margin-bottom: 7px; color: #3157a5; font-size: 0.74rem; font-weight: 900; }
+        .eng-math-practice__choice-feedback h2 { margin: 0 0 8px; color: #263d7d; font-size: 0.96rem; letter-spacing: -0.02em; }
+        .eng-math-practice__choice-feedback p { margin: 0; line-height: 1.65; word-break: keep-all; }
         .eng-math-practice__review-toggle { margin-top: 12px; border: 1px solid #b8c6df; background: #fff; color: #3157a5; }
         .eng-math-practice__review-toggle--math { border-color: #9bcfbd; color: #16705b; }
         .eng-math-practice__explanation { margin-top: 12px; border-radius: 16px; background: #f5f8ff; padding: 19px; color: #29374d; }
@@ -2068,6 +2237,12 @@ function PracticeQuestion({
         .eng-math-practice__explanation p:last-of-type { margin-bottom: 0; }
         .eng-math-practice__explanation--math { background: #f1faf5; color: #25483b; }
         .eng-math-practice__explanation--math h2 { color: #155d4d; }
+        .eng-math-practice__decision-cue,
+        .eng-math-practice__transfer-rule { margin: 12px 0; border-left: 3px solid #3157a5; border-radius: 0 10px 10px 0; background: #fff; padding: 11px 12px; }
+        .eng-math-practice__decision-cue h3,
+        .eng-math-practice__transfer-rule h3 { margin: 0 0 6px; color: #3157a5; font-size: 0.82rem; }
+        .eng-math-practice__decision-cue p,
+        .eng-math-practice__transfer-rule p { margin: 0; color: #43516a; font-size: 0.88rem; }
         .eng-math-practice__math-solution-label {
           display: inline-flex;
           margin-bottom: 10px;
@@ -2078,6 +2253,9 @@ function PracticeQuestion({
           font-size: 0.74rem;
           font-weight: 900;
         }
+        .eng-math-practice__math-first-look { margin: 0 0 15px; border: 1px solid #9fcfbe; border-radius: 13px; background: #fff; padding: 13px; }
+        .eng-math-practice__math-first-look span { display: block; margin-bottom: 5px; color: #16705b; font-size: 0.76rem; font-weight: 900; }
+        .eng-math-practice__math-first-look p { margin: 0; color: #315448; font-size: 0.9rem; line-height: 1.6; }
         .eng-math-practice__math-concepts { display: flex; flex-wrap: wrap; gap: 7px; margin: 15px 0; }
         .eng-math-practice__math-concepts span { border: 1px solid #b9d9cd; border-radius: 999px; background: #fff; padding: 5px 9px; color: #286654; font-size: 0.76rem; font-weight: 800; }
         .eng-math-practice__math-steps { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
@@ -2089,6 +2267,9 @@ function PracticeQuestion({
         .eng-math-practice__math-steps p { color: #405b52; font-size: 0.88rem; }
         .eng-math-practice__math-solution-note { margin-top: 12px; border-left: 3px solid #4b9d80; background: #fff; padding: 11px 12px; }
         .eng-math-practice__math-solution-note--mistake { border-left-color: #c38a36; background: #fffaf0; }
+        .eng-math-practice__math-transfer-rule { margin-top: 12px; border: 1px solid #8fc5b2; border-radius: 13px; background: #e8f6f0; padding: 12px; }
+        .eng-math-practice__math-transfer-rule h3 { margin: 0 0 6px; color: #155d4d; font-size: 0.86rem; }
+        .eng-math-practice__math-transfer-rule p { margin: 0; color: #315448; font-size: 0.88rem; line-height: 1.6; }
         .eng-math-practice__evidence { margin-top: 13px !important; border-left: 3px solid #8ba2db; padding: 9px 0 9px 12px; color: #405170; font-family: Georgia, "Times New Roman", serif; font-size: 0.92rem; font-style: italic; white-space: pre-wrap; }
         .eng-math-practice__evidence--text { display: grid; gap: 5px; font-family: "Noto Sans KR", system-ui, sans-serif; font-style: normal; white-space: normal; }
         .eng-math-practice__evidence-text-label { color: #3157a5; font-size: 0.76rem; font-weight: 900; }
@@ -2112,6 +2293,17 @@ function PracticeQuestion({
         .eng-math-practice__evidence-translation { color: #5b687d; font-size: 0.84rem; line-height: 1.55; }
         .eng-math-practice__restart { margin-top: 12px; border: 1px solid #cbd5e1; background: #fff; color: #3e4d61; }
         .eng-math-practice__next { margin-top: 12px; color: #fff; }
+        @media (min-width: 960px) {
+          .eng-math-practice--math .eng-math-practice__choices {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+          }
+          .eng-math-practice--math .eng-math-practice__choice {
+            grid-template-columns: 1fr;
+            min-height: 66px;
+            padding: 9px 7px;
+            text-align: center;
+          }
+        }
         @media (max-width: 440px) {
           .eng-math-practice { padding: 16px 14px 32px; }
           .eng-math-practice__topline { align-items: flex-start; }
@@ -2130,6 +2322,7 @@ function PracticeQuestion({
           .eng-math-practice__math-prompt { padding: 16px 14px; font-size: 1rem; }
           .eng-math-practice__math-figure-description { padding: 14px; }
           .eng-math-practice__choice { grid-template-columns: 24px minmax(0, 1fr); padding: 12px 13px; }
+          .eng-math-practice__confidence-options button { padding: 7px 4px; font-size: 0.75rem; }
         }
       `}</style>
 
@@ -2178,7 +2371,11 @@ function PracticeQuestion({
               >
                 <div className="eng-math-practice__progress-copy">
                   <span>
-                    {session.isWrongRetry ? "오답만 다시 풀기" : "5문항 연속 학습"}
+                    {session.isWrongRetry
+                      ? "오답만 다시 풀기"
+                      : session.isDaily
+                        ? `오늘의 5문항 · ${session.dailyReason}`
+                        : "5문항 연속 학습"}
                   </span>
                   <strong>
                     {session.current} / {session.total}
@@ -2210,7 +2407,9 @@ function PracticeQuestion({
               {session
                 ? session.isWrongRetry
                   ? "오답 재풀이"
-                  : "5문항 학습"
+                  : session.isDaily
+                    ? "오늘 학습"
+                    : "5문항 학습"
                 : "1문항 체험"}
             </span>
             <p className="eng-math-practice__label">{question.label}</p>
@@ -2286,6 +2485,35 @@ function PracticeQuestion({
             )}
 
             {!submitted ? (
+              <section
+                className="eng-math-practice__confidence"
+                aria-label="답을 고른 확신도"
+                style={{
+                  "--eng-math-confidence-accent": profile.accent,
+                  "--eng-math-confidence-tint": profile.tint,
+                }}
+              >
+                <h2>이 답을 고른 확신도를 남겨 주세요.</h2>
+                <div
+                  className="eng-math-practice__confidence-options"
+                  role="group"
+                  aria-label="확신도 선택"
+                >
+                  {CONFIDENCE_OPTIONS.map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      aria-pressed={confidence === option.value}
+                      onClick={() => setConfidence(option.value)}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {!submitted ? (
               <button
                 className="eng-math-practice__submit"
                 type="button"
@@ -2293,7 +2521,9 @@ function PracticeQuestion({
                 style={{ background: profile.accent }}
                 onClick={submitAnswer}
               >
-                정답 확인하기
+                {hasAnswer && confidence === null
+                  ? "확신도를 고른 뒤 확인하기"
+                  : "정답 확인하기"}
               </button>
             ) : (
               <>
@@ -2306,6 +2536,21 @@ function PracticeQuestion({
                   </p>
                   <ResultAnswer question={question} subject={subject} />
                 </section>
+
+                {subject === "english" && selectedChoiceFeedback ? (
+                  <section
+                    className="eng-math-practice__choice-feedback"
+                    aria-label="내 선택 교정"
+                  >
+                    <span>{isCorrect ? "정답 판단 확인" : "내 선택 교정"}</span>
+                    <h2>
+                      {isCorrect
+                        ? "근거와 맞는 판단입니다."
+                        : `${selectedChoiceData?.mark ?? selectedChoice}를 고른 판단을 바로잡습니다.`}
+                    </h2>
+                    <p>{selectedChoiceFeedback}</p>
+                  </section>
+                ) : null}
 
                 {subject === "english" ? (
                   <>
@@ -2324,12 +2569,20 @@ function PracticeQuestion({
                       >
                         <h2>{question.review.approach}</h2>
                         <p>{question.review.summary}</p>
+                        <div className="eng-math-practice__decision-cue">
+                          <h3>실전 판단 단서</h3>
+                          <p>{question.review.decisionCue}</p>
+                        </div>
                         <p>{question.review.reason}</p>
                         <p>
                           혼동하기 쉬운 {question.review.trap.mark}{" "}
                           {question.review.trap.text}
                         </p>
                         <p>{question.review.trap.reason}</p>
+                        <div className="eng-math-practice__transfer-rule">
+                          <h3>다음 문제 적용</h3>
+                          <p>{question.review.transferRule}</p>
+                        </div>
                         {question.review.evidence.map((evidence) =>
                           evidence.origin === "figure" ? (
                             <div
