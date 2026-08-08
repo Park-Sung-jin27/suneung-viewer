@@ -27,14 +27,52 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { PDFParse } from "pdf-parse";
 
+// ─── 텍스트 리더 선택 (고정) ────────────────────────────────
+//   pdf-parse / pdftotext -raw = 단(column) 단위 분리  → 정상 32/36
+//   pdftotext -layout          = 시각적 행 병합        → 붕괴 8/19, 블록 36→19
+//   2단 조판 시험지에서 -layout 계열로 교체 금지. 2026-08 예시문항 실측.
+//   -layout 은 좌단 지문과 우단 선지를 물리적으로 같은 줄에 놓아, 문항 헤더가
+//   줄 첫머리에 오지 못하고 선지 경계가 무너진다(6·7·9·11개로 흩어짐).
+//   pdfplumber 도 같은 계열(심사관 실측 5/34)이므로 동일하게 금지.
+
+/**
+ * 2단 조판이 한 줄로 병합됐는지 판정한다.
+ *   병합된 텍스트는 "지문 문장 도중에 선지/문항헤더가 박히는" 행이 급증한다.
+ *   임계는 리허설 실측에서 도출: -raw 65~67건(=문항 경계, 정상) vs -layout 77건(병합).
+ *   행수가 리더마다 달라 절대건수 대신 1000행당 비율로 본다.
+ *     -raw 67/1763행 = 38.0‰   ·   -layout 77/1266행 = 60.8‰
+ *   임계 50‰ — 두 실측값 사이. 넘으면 단 병합으로 보고 중단한다.
+ */
+export function readerSanity(fullText, { threshold = 50 } = {}) {
+  const L = fullText.split(/\r?\n/);
+  let n = 0;
+  for (let i = 1; i < L.length - 1; i++) {
+    const p = L[i - 1].trim(), c = L[i].trim(), x = L[i + 1].trim();
+    if (p && !/[.!?”'"」』…]$/.test(p) && /^(\d{1,2}\.\s|[①-⑤]\s|<보\s*기>)/.test(c) && x) n++;
+  }
+  const permille = L.length ? (n / L.length) * 1000 : 0;
+  return { lines: L.length, interleaves: n, permille: Math.round(permille * 10) / 10,
+    ok: permille <= threshold, threshold };
+}
+
 // ─── PDF → 전체 텍스트 ──────────────────────────────────────
-export async function extractPdfText(pdfPath) {
+export async function extractPdfText(pdfPath, { skipSanity = false } = {}) {
   const buf = fs.readFileSync(pdfPath);
   const parser = new PDFParse({ data: buf });
   const d = await parser.getText();
+  const fullText = d.text || "";
+  const sanity = readerSanity(fullText);
+  if (!skipSanity && !sanity.ok) {
+    throw new Error(
+      `★ 리더 sanity 실패 — 2단 조판이 한 줄로 병합된 것으로 보입니다.\n` +
+        `   문장중간삽입 ${sanity.interleaves}건 / ${sanity.lines}행 = ${sanity.permille}‰ (임계 ${sanity.threshold}‰)\n` +
+        `   -layout·pdfplumber 계열 텍스트일 가능성이 큽니다. 단 단위로 분리하는 리더를 쓰십시오.`,
+    );
+  }
   return {
-    fullText: d.text || "",
+    fullText,
     numpages: d.numpages || null,
+    sanity,
     raw: d,
   };
 }
@@ -133,6 +171,7 @@ export function parseQuestionBlocks(fullText) {
         bogi_lines: [],
         _section: "stem",
         _currentChoice: null,
+        _inBullet: false,
         _pendingPre: [], // 첫 choice 등장 전 누적 (활동지 trailing 마커 대비)
         _rawLines: [qm[2]], // 활동지 block-level 재파싱용 원본
         raw_start_line: i,
@@ -202,7 +241,20 @@ export function parseQuestionBlocks(fullText) {
     //   ⚠ <보기> 내부에서는 검사하지 않는다. 보기 안의 항목도 "… ⓐ" 형식으로 끝나므로
     //     (예: "학생 1 : … 알 수 있어요. ·········· ⓐ", l20196b Q31) 그대로 두면
     //     보기 항목이 선지로 탈취되고 마커까지 버려진다.
-    const mC = current._section === "bogi" ? null : line.match(TRAILING_CIRCLED_RE);
+    //   ⚠ 활동지 불릿 항목도 제외한다. 활동지는 두 종류가 섞여 있다:
+    //       (가) 불릿 항목의 trailing 이 ①~⑤  → 그 항목이 곧 선지다 (Q31 형)
+    //       (나) 불릿 항목의 trailing 이 ⓐ~ⓔ  → 항목은 자료이고 선지는 별도 ①~⑤ (Q16 형)
+    //     (나)를 억제하지 않으면 자료 항목이 선지로 삼켜진다(Q16 실측 3+5=8개).
+    //     불릿과 trailing 마커가 서로 다른 줄에 있을 수 있어 상태로 추적한다.
+    if (/^\s*[∙◦]/.test(line)) current._inBullet = true;
+    const mRaw = line.match(TRAILING_CIRCLED_RE);
+    const bulletNonNumber =
+      current._inBullet &&
+      mRaw &&
+      !MARKER_SETS.circled_number.chars.includes(mRaw[2]);
+    if (mRaw) current._inBullet = false;
+    const mC =
+      current._section === "bogi" || bulletNonNumber ? null : mRaw;
     if (mC) {
       const num = circledToNum(mC[2]);
       if (num !== null) {
@@ -389,6 +441,11 @@ export function selftest() {
   const fx = JSON.parse(
     fs.readFileSync(path.join(dir, "fixtures/extractor_marker_forms.json"), "utf8"),
   );
+  // 활동지 케이스 병합 — fixtures/extractor_*.json 를 모두 읽는다
+  for (const f of fs.readdirSync(path.join(dir, "fixtures"))
+    .filter((x) => /^extractor_.*\.json$/.test(x) && x !== "extractor_marker_forms.json")) {
+    fx.cases.push(...JSON.parse(fs.readFileSync(path.join(dir, "fixtures", f), "utf8")).cases);
+  }
   let fail = 0;
   console.log(`추출기 회귀 — 케이스 ${fx.cases.length}건\n`);
   for (const c of fx.cases) {
