@@ -1185,8 +1185,10 @@ export async function extractStructure(
 
     // ── [NEW] 1차: pdf-parse 경로 시도 ──────────────────────
     let pdfParseAccepted = false;
+    let pdfParseSets = null; // 거부돼도 보관 — fallback 열화 판정에 쓴다
     try {
       const pp = await extractViaPdfParse(pdfPath, yearKey, sec, profile);
+      pdfParseSets = pp.sets || null;
       if (pp.sets && pp.validation && pp.validation.passed) {
         console.log(
           `[extractor] pdf-parse accepted (sec=${sec}, reason=validation_pass, sets=${pp.sets.length}, questions=${pp.validation.total})`,
@@ -1347,6 +1349,44 @@ export async function extractStructure(
       );
       if (sets.length === 0) {
         throw new Error(`step2 ${sec}: 유효한 세트가 0개 — 재실행 필요`);
+      }
+
+      // ── [차단 승격] 문항 커버리지 결손은 경고로 남기지 않는다 ──────────
+      //   2022예시 실증: Gemini fallback 이 Q30~34·Q18~21 을 빠뜨렸는데 경고만 찍고
+      //   세트를 유지해 step3~7 로 흘러갔다. 검증기가 감지하고도 통과시키면 없느니만 못하다.
+      const covErrors = errors.filter((e) => /누락|커버리지|gap/i.test(String(e)));
+      if (covErrors.length) {
+        const got = sets.flatMap((s) => (s.questions || []).map((q) => q.id));
+        throw new Error(
+          `step2 ${sec}: 문항 커버리지 결손 — 파이프라인 중단.\n` +
+            covErrors.map((e) => `    - ${e}`).join("\n") +
+            `\n    추출된 문항: [${[...new Set(got)].sort((a, b) => a - b).join(",")}]` +
+            `\n    → 결손을 해소하거나 추출 경로를 고친 뒤 재실행하십시오.`,
+        );
+      }
+    }
+
+    // ── [fallback 열화 방지] Gemini 산출이 pdf-parse 산출보다 나쁘면 쓰지 않는다 ──
+    //   pdf-parse 가 검증에서 "거부"됐다는 것은 흠이 있다는 뜻이지 문항이 없다는 뜻이 아니다.
+    //   2022예시 실증: pdf-parse 는 Q16 마커·Q32 선지수 흠으로 거부됐으나
+    //   Gemini 는 12문항(35%)을 통째로 빠뜨렸다. 더 나쁜 산출로 교체하면 안 된다.
+    if (!pdfParseAccepted && pdfParseSets) {
+      const nQ = (arr) =>
+        new Set((arr || []).flatMap((s) => (s.questions || []).map((q) => q.id)))
+          .size;
+      const ppN = nQ(pdfParseSets);
+      const gmN = nQ(sets);
+      if (ppN > gmN) {
+        const ids = (arr) =>
+          [...new Set((arr || []).flatMap((s) => (s.questions || []).map((q) => q.id)))]
+            .sort((a, b) => a - b)
+            .join(",");
+        throw new Error(
+          `step2 ${sec}: fallback 이 더 나쁨 — 파이프라인 중단.\n` +
+            `    pdf-parse : ${ppN}문항 [${ids(pdfParseSets)}]  (검증 거부됐으나 커버리지는 넓음)\n` +
+            `    Gemini    : ${gmN}문항 [${ids(sets)}]\n` +
+            `    → pdf-parse 거부 사유를 고치는 편이 낫습니다. Gemini 산출로 교체하지 않았습니다.`,
+        );
       }
     }
 
