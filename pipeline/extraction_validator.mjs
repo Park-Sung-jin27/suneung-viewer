@@ -89,7 +89,27 @@ export function validateQuestion(q, opts = {}) {
       dominance_ratio: +dominance.toFixed(3),
     };
 
-    if (missing.length > 0) {
+    // [M1 면제] 표 형식 문항 — 발문이 마커 범위를 선언해도 선지는 평가어만 나열한다.
+    //   예: "ⓐ～ⓒ에 대한 평가를 바르게 짝지은 것은?" → 선지 "적절 적절 적절"
+    //   마커가 선지에 없는 것이 정상이므로 M1 을 걸면 오탐이다(2022예시 Q16 실측).
+    const TABLE_WORD =
+      /^(적절|부적절|맞음|틀림|있음|없음|참|거짓|O|X|○|×|예|아니오)$/;
+    //   판정은 "전량"이 아니라 "과반"으로 한다 — 마지막 선지에 페이지 머리말
+    //   ("-- 6 of 20 --", "홀수형 7")이 붙어 들어오는 일이 흔하다(2022예시 Q16 실측).
+    const tableLike = (q.choices || []).filter((c) => {
+      const toks = String(c.t || c.text || "")
+        .trim()
+        .split(/[\s\t\n]+/)
+        .filter(Boolean);
+      if (toks.length < 2) return false;
+      const hit = toks.filter((w) => TABLE_WORD.test(w)).length;
+      return hit >= 2 && hit / toks.length >= 0.5;
+    }).length;
+    const isTableForm =
+      (q.choices || []).length > 0 &&
+      total === 0 &&
+      tableLike / (q.choices || []).length > 0.5;
+    if (missing.length > 0 && !isTableForm) {
       issues.push({
         code: "M1_marker_missing",
         severity: "error",

@@ -129,11 +129,14 @@ function circledToNum(ch) {
  * ①부터 오름차순 연속 3개 이상 + 각 조각 ≤16자 일 때만 — 일반 선지 줄 오탐 방지.
  * @returns {{num:number,t:string}[]|null}
  */
-function splitInlineChoices(line) {
+function splitInlineChoices(line, startNum = 1) {
   const hits = [...line.matchAll(INLINE_NUM_G)];
-  if (hits.length < 3) return null;
+  if (hits.length < 2) return null; // 2개부터 — "① … ② …" 2열 조판(2022예시 Q32)
   const nums = hits.map((h) => circledToNum(h[0]));
-  if (!nums.every((n, i) => n === i + 1)) return null;
+  // startNum 부터 오름차순 연속이어야 한다. 줄이 이어지는 형식("③ … ④ …")도 허용.
+  if (!nums.every((n, i) => n === startNum + i)) return null;
+  // 첫 마커 앞에 본문이 있으면 일반 줄 — 자르지 않는다
+  if (line.slice(0, hits[0].index).trim()) return null;
   const out = [];
   for (let i = 0; i < hits.length; i++) {
     const from = hits[i].index + hits[i][0].length;
@@ -194,7 +197,8 @@ export function parseQuestionBlocks(fullText) {
     // (A-0) 한 줄에 선지가 모두 들어간 형식 — "① ⓐ ② ⓑ ③ ⓒ ④ ⓓ ⑤ ⓔ"
     //   (A) 보다 먼저 검사해야 한다. (A) 는 첫 ① 만 잡고 나머지를 본문으로 삼아
     //   선지 5개를 1개로 뭉갠다(l20196b Q31 실측).
-    const inline = splitInlineChoices(line);
+    //   여러 줄에 걸친 2열 조판("① … ② …" / "③ … ④ …")도 이어받는다.
+    const inline = splitInlineChoices(line, current.choices.length + 1);
     if (inline) {
       current._section = "choice";
       for (const c of inline) current.choices.push({ num: c.num, lines: [c.t] });
