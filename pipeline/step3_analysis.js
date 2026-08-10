@@ -1326,7 +1326,11 @@ export async function analyzeStructure(
   ]);
 
   for (const section of ["reading", "literature"]) {
-    for (const set of structureData[section]) {
+    // 입력에 해당 섹션 키가 없어도 죽지 않는다.
+    //   2026-08 실증: literature 키가 없는 입력에서 해설을 전부 생성해 놓고
+    //   저장 직전 'structureData[section] is not iterable' 로 죽어 LLM 1회분이
+    //   통째로 유실됐다(부분 캐시 없음). 빈 배열 기본값으로 그 낭비를 막는다.
+    for (const set of structureData[section] || []) {
       // 이미 완료된 세트 스킵
       if (completedIds.has(set.id)) {
         console.log(`[step3] 스킵 (이미 완료): ${set.id}`);
