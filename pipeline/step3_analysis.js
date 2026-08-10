@@ -651,7 +651,7 @@ async function reanalyzeSingleChoice(set, question, choice) {
   const answer_num = answerNumObj ? answerNumObj.num : null;
 
   const userPrompt = `지문 세트: ${JSON.stringify({ id: set.id, title: set.title, sents: set.sents })}
-문항: ${JSON.stringify({ id: question.id, t: question.t, questionType: question.questionType })}
+문항: ${JSON.stringify({ id: question.id, t: question.t, questionType: question.questionType, bogi: question.bogi })}
 선지: { num: ${choice.num}, t: "${choice.t}", ok: ${choice.ok} }
 정답 선지 번호: ${answer_num}
 neighbor_choices: ${JSON.stringify(neighbor_choices)}
