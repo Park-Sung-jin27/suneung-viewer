@@ -161,6 +161,11 @@
       "source": "/consulting-demo",
       "destination": "/consulting-demo/",
       "permanent": false
+    },
+    {
+      "source": "/eng-math-lab/military-2027",
+      "destination": "/eng-math-lab/military-2027/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -171,6 +176,10 @@
     {
       "source": "/consulting-demo/",
       "destination": "/consulting-demo/index.html"
+    },
+    {
+      "source": "/eng-math-lab/military-2027/",
+      "destination": "/eng-math-lab/military-2027/index.html"
     },
     {
       "source": "/api/(.*).js",
