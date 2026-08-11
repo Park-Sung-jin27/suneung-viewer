@@ -1,0 +1,818 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2023_csat_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "examId": "2023_csat"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2023학년도_수능_영어_문제.pdf",
+      "sha256": "cef96a1106331e4a6fd04bfe05677027dec4de221434dfb51b26aa4e5b74697d"
+    },
+    "answer": {
+      "filename": "2023학년도_수능_영어_정답.png",
+      "sha256": "246f871a9727834a3b452a814bda7fb0b76d41d3b740bc7761107faef028b69f"
+    },
+    "explanation": {
+      "filename": "2023학년도_수능_영어_해설.pdf",
+      "sha256": "7758efc87c0148c0d4e348aeaf578c64e534d894693151394f261c3f6e4c9c4f"
+    }
+  },
+  "reviewData": {
+    "path": "english/data/candidates/english_2023_csat_reviews.json",
+    "sha256": "5f2eb16d97544f4fccba0a80ca89dc88b6751b5c89b406b35b0c6a64574e603a",
+    "expectedReadyCount": 28
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 56,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "sourceTextOverrideQuestionCount": 0,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2023_csat_25",
+      "2023_csat_27",
+      "2023_csat_28"
+    ],
+    "requireSourceTextOverrideForIds": []
+  },
+  "projectionPolicies": {
+    "default": {
+      "sourceField": "rawText",
+      "stripStem": true,
+      "stripChoices": true,
+      "stripPdfTail": true
+    },
+    "sharedPassageIds": [
+      "2023_csat_41",
+      "2023_csat_42",
+      "2023_csat_43",
+      "2023_csat_44",
+      "2023_csat_45"
+    ],
+    "inlineMarkerIds": [
+      "2023_csat_29",
+      "2023_csat_30",
+      "2023_csat_35",
+      "2023_csat_42",
+      "2023_csat_44"
+    ],
+    "sequenceTableIds": [
+      "2023_csat_36",
+      "2023_csat_37",
+      "2023_csat_43"
+    ],
+    "placementMarkerIds": [
+      "2023_csat_38",
+      "2023_csat_39"
+    ]
+  },
+  "questions": [
+    {
+      "id": "2023_csat_18",
+      "qid": 18,
+      "answer": 1,
+      "problemPage": 2,
+      "explanationPages": [
+        11,
+        12
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_19",
+      "qid": 19,
+      "answer": 3,
+      "problemPage": 2,
+      "explanationPages": [
+        12
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_20",
+      "qid": 20,
+      "answer": 3,
+      "problemPage": 2,
+      "explanationPages": [
+        12,
+        13
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_21",
+      "qid": 21,
+      "answer": 1,
+      "problemPage": 3,
+      "explanationPages": [
+        13,
+        14
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_22",
+      "qid": 22,
+      "answer": 1,
+      "problemPage": 3,
+      "explanationPages": [
+        14
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_23",
+      "qid": 23,
+      "answer": 2,
+      "problemPage": 3,
+      "explanationPages": [
+        14,
+        15
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_24",
+      "qid": 24,
+      "answer": 5,
+      "problemPage": 3,
+      "explanationPages": [
+        15,
+        16
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_25",
+      "qid": 25,
+      "answer": 4,
+      "problemPage": 4,
+      "explanationPages": [
+        16
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready",
+      "figureAsset": "english/assets/2023-csat/q25-figure.png"
+    },
+    {
+      "id": "2023_csat_26",
+      "qid": 26,
+      "answer": 5,
+      "problemPage": 4,
+      "explanationPages": [
+        16,
+        17
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_27",
+      "qid": 27,
+      "answer": 2,
+      "problemPage": 4,
+      "explanationPages": [
+        17
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready",
+      "figureAsset": "english/assets/2023-csat/q27-notice.png"
+    },
+    {
+      "id": "2023_csat_28",
+      "qid": 28,
+      "answer": 4,
+      "problemPage": 4,
+      "explanationPages": [
+        18
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready",
+      "figureAsset": "english/assets/2023-csat/q28-notice.png"
+    },
+    {
+      "id": "2023_csat_29",
+      "qid": 29,
+      "answer": 2,
+      "problemPage": 5,
+      "explanationPages": [
+        18,
+        19
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_30",
+      "qid": 30,
+      "answer": 5,
+      "problemPage": 5,
+      "explanationPages": [
+        19,
+        20
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_31",
+      "qid": 31,
+      "answer": 2,
+      "problemPage": 5,
+      "explanationPages": [
+        20
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_32",
+      "qid": 32,
+      "answer": 2,
+      "problemPage": 5,
+      "explanationPages": [
+        21
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_33",
+      "qid": 33,
+      "answer": 1,
+      "problemPage": 6,
+      "explanationPages": [
+        21,
+        22
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_34",
+      "qid": 34,
+      "answer": 5,
+      "problemPage": 6,
+      "explanationPages": [
+        22,
+        23
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_35",
+      "qid": 35,
+      "answer": 3,
+      "problemPage": 6,
+      "explanationPages": [
+        23,
+        24
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_36",
+      "qid": 36,
+      "answer": 2,
+      "problemPage": 6,
+      "explanationPages": [
+        24
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_37",
+      "qid": 37,
+      "answer": 4,
+      "problemPage": 7,
+      "explanationPages": [
+        25
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_38",
+      "qid": 38,
+      "answer": 5,
+      "problemPage": 7,
+      "explanationPages": [
+        25,
+        26
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_39",
+      "qid": 39,
+      "answer": 4,
+      "problemPage": 7,
+      "explanationPages": [
+        26,
+        27
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_40",
+      "qid": 40,
+      "answer": 1,
+      "problemPage": 7,
+      "explanationPages": [
+        27
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_41",
+      "qid": 41,
+      "answer": 1,
+      "problemPage": 8,
+      "explanationPages": [
+        28
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_42",
+      "qid": 42,
+      "answer": 4,
+      "problemPage": 8,
+      "explanationPages": [
+        28,
+        29
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_43",
+      "qid": 43,
+      "answer": 5,
+      "problemPage": 8,
+      "explanationPages": [
+        29,
+        30
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_44",
+      "qid": 44,
+      "answer": 5,
+      "problemPage": 8,
+      "explanationPages": [
+        30
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2023_csat_45",
+      "qid": 45,
+      "answer": 4,
+      "problemPage": 8,
+      "explanationPages": [
+        30
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    }
+  ],
+  "sourceTextOverrides": {},
+  "choiceOverrides": {
+    "2023_csat_20": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "성공적인 삶을 위해 미래에 대한 구체적인 계획을 세워야 한다."
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "중요한 결정을 내릴 때에는 자신의 직관에 따라 판단해야 한다."
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "더 나은 선택을 위해 성공 가능성을 확률적으로 분석해야 한다."
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "빠른 목표 달성을 위해 지름길로 가고자 할 때 신중해야 한다."
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "인생의 여정에서 선택에 따른 결과를 스스로 책임져야 한다."
+      }
+    ],
+    "2023_csat_24": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "Visual Systems Never Betray Our Trust!"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "Secret Missions of Color-Sensitive Brain Cells"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "Blind Spots: What Is Still Unknown About the Brain"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "Why Brain Cells Exemplify Nature’s Recovery Process"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "Separate and Independent: Brain Cells’ Visual Perceptions"
+      }
+    ],
+    "2023_csat_28": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "Valestown의 모든 학생들이 참여할 수 있다."
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "참가자는 포스터의 주제 선정에 제약을 받지 않는다."
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "출품할 파일 양식은 자유롭게 선택 가능하다."
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "심사 기준에 창의성이 포함된다."
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "1인당 출품할 수 있는 포스터의 수에는 제한이 없다."
+      }
+    ],
+    "2023_csat_29": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "that"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "them"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "associated"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "inexpensively"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "opening"
+      }
+    ],
+    "2023_csat_30": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "remote"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "absorption"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "affected"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "adapt"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "maintain"
+      }
+    ],
+    "2023_csat_32": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "provide rich source materials for artists"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "offer the greatest exposure to other people"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "cause cultural conflicts among users of slang"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "present ideal research environments to linguists"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "reduce the social mobility of ambitious outsiders"
+      }
+    ],
+    "2023_csat_35": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "The more confidently you give instructions, the higher the chance of a positive class response."
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "There are times when being able to project your voice loudly will be very useful when working in school, and knowing that you can cut through a noisy classroom, dinner hall or playground is a great skill to have."
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "In order to address serious noise issues in school, students, parents and teachers should search for a solution together."
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "However, I would always advise that you use your loudest voice incredibly sparingly and avoid shouting as much as possible."
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "A quiet, authoritative and measured tone has so much more impact than slightly panicked shouting."
+      }
+    ],
+    "2023_csat_36": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "(A) - (C) - (B)"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "(B) - (A) - (C)"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "(B) - (C) - (A)"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "(C) - (A) - (B)"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "(C) - (B) - (A)"
+      }
+    ],
+    "2023_csat_37": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "(A) - (C) - (B)"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "(B) - (A) - (C)"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "(B) - (C) - (A)"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "(C) - (A) - (B)"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "(C) - (B) - (A)"
+      }
+    ],
+    "2023_csat_38": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "①"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "②"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "③"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "④"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "⑤"
+      }
+    ],
+    "2023_csat_39": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "①"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "②"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "③"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "④"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "⑤"
+      }
+    ],
+    "2023_csat_40": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "persisted … limit"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "persisted … cultivate"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "evolved … accelerate"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "diminished … shape"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "diminished … restrict"
+      }
+    ],
+    "2023_csat_43": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "(B) - (D) - (C)"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "(C) - (B) - (D)"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "(C) - (D) - (B)"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "(D) - (B) - (C)"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "(D) - (C) - (B)"
+      }
+    ],
+    "2023_csat_45": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "Hailey는 생일 케이크를 테이블로 무사히 옮겨 놓았다."
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "아버지는 생일 선물로 받은 안경을 직접 써 보았다."
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "Hailey는 아버지가 색맹이라는 사실을 최근에 알게 되었다."
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "Hailey와 Camila는 아버지의 집을 방문하였다."
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "아버지는 자신의 나이와 똑같은 수의 장미를 받았다."
+      }
+    ]
+  },
+  "figures": [
+    {
+      "questionId": "2023_csat_25",
+      "kind": "grouped_bar_chart",
+      "assetPath": "english/assets/2023-csat/q25-figure.png",
+      "sourcePage": 4,
+      "alt": "Americans’ preferred type of place to live by age group. Ages 18-34: Big/Small City 33%, Suburb 27%, Town/Rural Area 39%. Ages 35-54: Big/Small City 24%, Suburb 27%, Town/Rural Area 49%. Ages 55 and older: Big/Small City 26%, Suburb 22%, Town/Rural Area 52%.",
+      "sha256": "1efcaf2344292e4682a773617845ac904f49b8c23c6255c42d5f46f497966a9e"
+    },
+    {
+      "questionId": "2023_csat_27",
+      "kind": "renovation_notice",
+      "assetPath": "english/assets/2023-csat/q27-notice.png",
+      "sourcePage": 4,
+      "alt": "Natural Jade Resort Renovation Notice. Renovation period: November 21 to December 18, 2022. Renovations take place every day from 9 a.m. to 5 p.m. The gym and indoor swimming pool are closed. Outdoor leisure activities remain available, restaurant meals receive a 15% discount, and tennis courts are free for guests.",
+      "sha256": "2f7babf7963fe30e9ca1aa2af821906b3a98db9c9b9c7d8be96b4a0fe64de28d"
+    },
+    {
+      "questionId": "2023_csat_28",
+      "kind": "contest_notice",
+      "assetPath": "english/assets/2023-csat/q28-notice.png",
+      "sourcePage": 4,
+      "alt": "2022 Valestown Recycles Poster Contest. Participation is only for high school students in Valestown. Theme: Recycling for the Future. PDF files only, maximum 40MB. Judging criteria: use of theme, creativity, and artistic skill. One poster per person. Upload by 6 p.m. December 19.",
+      "sha256": "7f56ffe93e8b4fb6cd4cbe1f917cc78f208e937d17e6f0447ef4c28aecb7dd08"
+    }
+  ]
+}

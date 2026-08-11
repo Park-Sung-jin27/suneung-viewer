@@ -1,0 +1,962 @@
+{
+  "metadata": {
+    "schemaVersion": "eng-explain-candidate-v1",
+    "examId": "2024_csat",
+    "exam": "2024학년도 수능 영어",
+    "status": "internal_candidate",
+    "publicConnected": false,
+    "itemCount": 28,
+    "readyCount": 28,
+    "note": "평가원 문제·정답·해설 원본을 대조하고 근거 문구를 원문 위치와 연결한 내부 해설 후보"
+  },
+  "items": {
+    "2024_csat_18": {
+      "id": "2024_csat_18",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 18,
+      "group": "practical",
+      "type": "목적",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "초급부터 고급까지 이용할 수 있는 웹툰 제작 온라인 강좌의 구성과 가격을 소개하고 수강을 권하는 홍보 글입니다.",
+      "typeApproach": "목적 문제는 글쓴이의 신분보다 독자에게 제시한 상품과 마지막 행동 요청을 묶어 판단해야 합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "this post is for you.",
+          "role": "홍보 대상",
+          "translation": "웹툰 제작 기술에 관심 있는 독자를 직접 대상으로 삼습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "we’ve launched",
+          "role": "상품 제시",
+          "translation": "새 온라인 강좌를 출시했다고 알리며 수강 상품을 소개합니다."
+        }
+      ],
+      "correctReason": "강좌의 내용·수준·가격을 안내한 뒤 수강을 권하므로 정답은 ①입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "기초적인 웹툰 제작 방법을 설명하려고",
+        "reason": "글은 제작 방법을 단계별로 설명하지 않고 강좌 자체의 장점과 이용 조건을 홍보합니다."
+      }
+    },
+    "2024_csat_19": {
+      "id": "2024_csat_19",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 19,
+      "group": "practical",
+      "type": "심경 변화",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "첫 출근 버스를 놓칠까 불안해하던 David가 제시간에 도착할 다른 버스를 타고 안도하는 장면입니다.",
+      "typeApproach": "심경 변화는 사건 전후의 몸짓과 독백을 각각 찾고 두 감정의 방향이 모두 맞는 선지를 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "David couldn’t feel at ease.",
+          "role": "처음 심경",
+          "translation": "David는 마음을 놓지 못하고 불안해합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "finally able to relax.",
+          "role": "나중 심경",
+          "translation": "버스에 탄 뒤 마침내 긴장을 풀고 안도합니다."
+        }
+      ],
+      "correctReason": "불안한 nervous에서 안도한 relieved로 바뀌므로 정답은 ①입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "indifferent → delighted",
+        "reason": "처음부터 무관심한 상태가 아니라 지각 가능성을 걱정하며 계속 시계와 길을 확인했습니다."
+      }
+    },
+    "2024_csat_20": {
+      "id": "2024_csat_20",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 20,
+      "group": "topic",
+      "type": "주장",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "조직의 가치를 실제 문화로 만들려면 구체적 행동을 조직 전체가 공유하도록 명시적인 플레이북이 필요하다는 주장입니다.",
+      "typeApproach": "주장 문제는 반복되는 요구 표현과 마지막 결론에서 글쓴이가 조직에 요구하는 행동을 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "behaviors must then be shared",
+          "role": "공유 요구",
+          "translation": "가치를 반영한 행동은 조직 전체에 공유되어야 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "turn your values into winning behaviors.",
+          "role": "결론",
+          "translation": "가치를 성과를 내는 행동으로 바꾸는 지침을 마련하라고 결론짓습니다."
+        }
+      ],
+      "correctReason": "가치 행동을 널리 공유할 명시적 지침을 요구하므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "조직의 핵심 가치 실현을 위해 구성원 간의 지속적인 의사소통이 필수적이다.",
+        "reason": "의사소통 일반보다 구체적인 행동을 시각화한 플레이북을 마련하는 것이 글의 핵심 요구입니다."
+      }
+    },
+    "2024_csat_21": {
+      "id": "2024_csat_21",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 21,
+      "group": "blank",
+      "type": "밑줄 의미",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "주의의 폭을 넓혀 스트레스 요소를 더 큰 상황 속에서 보면 그 요소에 붙잡히지 않을 수 있다는 비유입니다.",
+      "typeApproach": "밑줄 비유는 비유 앞에서 설명한 원리와 뒤에서 반복한 효과를 실제 의미로 바꾸어 읽습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "you can more easily let go of stress.",
+          "role": "비유의 효과",
+          "translation": "주의의 폭을 넓히면 스트레스를 더 쉽게 놓을 수 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "less important than the bigger picture.",
+          "role": "관점 확대",
+          "translation": "불안을 일으키는 한 요소보다 전체 상황을 더 크게 봅니다."
+        }
+      ],
+      "correctReason": "스트레스 요소를 넘어 경험 전체를 크게 보는 뜻이므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "broadening one’s perspective to identify the cause of stress",
+        "reason": "글은 스트레스의 원인을 찾아내는 것보다 주의 범위를 넓혀 한 요소에 고정되지 않는 데 초점을 둡니다."
+      }
+    },
+    "2024_csat_22": {
+      "id": "2024_csat_22",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 22,
+      "group": "topic",
+      "type": "요지",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "브랜드에 대한 고객의 칭찬에 직접 응답하면 고객을 인정하고 장기적인 팬 관계로 발전시킬 수 있다는 글입니다.",
+      "typeApproach": "요지는 사례의 세부 내용보다 반복되는 문제 상황과 글 끝에서 제시한 놓친 기회를 묶어 정리합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "most brand compliments go unanswered.",
+          "role": "문제 상황",
+          "translation": "대부분의 브랜드 칭찬이 응답을 받지 못한다고 지적합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "create a solid fan based on them.",
+          "role": "기대 효과",
+          "translation": "칭찬에 응답하면 견고한 팬 관계를 만들 수 있습니다."
+        }
+      ],
+      "correctReason": "고객의 브랜드 칭찬에 응답해 관계를 높이는 것이 핵심이므로 정답은 ①입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "고객의 피드백을 면밀히 분석함으로써 브랜드의 성공 가능성을 높일 수 있다.",
+        "reason": "피드백 분석 자체보다 칭찬을 한 고객에게 브랜드가 직접 응답해야 한다는 행동 요구가 중심입니다."
+      }
+    },
+    "2024_csat_23": {
+      "id": "2024_csat_23",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 23,
+      "group": "topic",
+      "type": "주제",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "숲의 생태계 서비스는 시장 가격에 드러나지 않지만 목재보다 더 큰 경제 가치를 가질 수 있으므로 함께 평가해야 합니다.",
+      "typeApproach": "주제 문제는 반복되는 대조 축인 시장 가치와 비시장 가치를 확인하고 필자의 평가 방향을 붙입니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "These services provide the owner with no financial benefits",
+          "role": "시장 한계",
+          "translation": "생태계 서비스는 소유자에게 직접적인 시장 수익을 주지 않습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "over three times greater per hectare",
+          "role": "비시장 가치",
+          "translation": "생태계 서비스의 경제적 이익이 시장 이익보다 훨씬 클 수 있습니다."
+        }
+      ],
+      "correctReason": "숲 자원의 비시장 가치를 의사결정에 반영해야 한다는 주제이므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "merits of balancing forests’ market and non-market values",
+        "reason": "두 가치를 단순히 균형 배분하자는 것이 아니라 시장이 놓치는 비시장 가치의 중요성을 강조합니다."
+      }
+    },
+    "2024_csat_24": {
+      "id": "2024_csat_24",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 24,
+      "group": "topic",
+      "type": "제목",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "오버투어리즘은 단순히 일정 공간에 사람이 가득 찬 상태가 아니라 환경·경제·정치 요인이 얽힌 상대적 개념입니다.",
+      "typeApproach": "제목은 앞부분의 통념과 뒤에서 제시한 반론을 모두 포함하도록 핵심 대조를 압축한 선지를 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "things become more",
+          "role": "통념의 한계",
+          "translation": "도시나 국가 단위의 오버투어리즘은 단순한 수용 인원 문제보다 복잡합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "What is excessive or out of proportion is highly",
+          "role": "상대성",
+          "translation": "무엇이 과도한지는 고정된 기준이 아니라 매우 상대적입니다."
+        }
+      ],
+      "correctReason": "사람 수와 장소의 물리적 수용량만으로 설명할 수 없다는 제목이므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "The Severity of Overtourism: Much Worse than Imagined",
+        "reason": "글은 오버투어리즘이 예상보다 심각하다고 과장하지 않고 개념을 단순화할 수 없다고 설명합니다."
+      }
+    },
+    "2024_csat_25": {
+      "id": "2024_csat_25",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 25,
+      "group": "info",
+      "type": "도표",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "도표에서 핀란드는 2019년 수치가 2017년보다 낮지만 일본은 2019년 수치가 2017년보다 높습니다.",
+      "typeApproach": "도표 문제는 한 선지 안에 묶인 국가·연도 수치를 각각 대조해 한 부분만 틀린 문장을 찾습니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Finland: 2017 18%, 2019 17%, 2022 20%.",
+          "role": "핀란드 수치",
+          "translation": "핀란드는 2019년 17%로 2017년 18%보다 낮습니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Japan: 2017 6%, 2019 11%, 2022 14%.",
+          "role": "일본 수치",
+          "translation": "일본은 2019년 11%로 2017년 6%보다 높습니다."
+        }
+      ],
+      "correctReason": "일본도 2019년이 더 낮다고 한 부분이 도표와 반대이므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "For each of the three years, Ireland showed the highest percentage of the respondents who sometimes or often actively avoided news, among the countries in the graph.",
+        "reason": "아일랜드는 2017·2019·2022년 모두 다섯 국가 가운데 가장 높은 수치를 보입니다."
+      }
+    },
+    "2024_csat_26": {
+      "id": "2024_csat_26",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 26,
+      "group": "info",
+      "type": "내용 일치",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "Townes는 박사 학위를 받은 뒤 Bell Labs에서 일했으므로 두 사건의 순서를 뒤집은 선지가 틀렸습니다.",
+      "typeApproach": "내용 불일치는 인물의 경력을 시간 순서로 배열하고 선지의 전후 관계를 원문과 하나씩 대조합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "doctoral degree from the California Institute of Technology",
+          "role": "학위 취득",
+          "translation": "Townes는 먼저 캘리포니아 공과대학교에서 박사 학위를 받았습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "then he took a job at Bell Labs",
+          "role": "이후 경력",
+          "translation": "그 뒤에 Bell Labs에서 일하기 시작했습니다."
+        }
+      ],
+      "correctReason": "박사 학위 전에 Bell Labs에서 일했다고 순서를 뒤집었으므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "1958년에 레이저의 개념을 제안하였다.",
+        "reason": "1958년에 공동 연구자와 레이저 개념을 제안했다는 내용은 원문에 그대로 제시되어 있습니다."
+      }
+    },
+    "2024_csat_27": {
+      "id": "2024_csat_27",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 27,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "보트 투어 예약은 투어 당일이 아니라 최소 이틀 전까지 완료해야 한다는 안내문입니다.",
+      "typeApproach": "안내문 불일치는 날짜·연령·예약 마감·환불·활동을 항목별로 분리해 선지와 대조합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Bookings must be completed no later than 2 days before the day of the tour.",
+          "role": "예약 마감",
+          "translation": "예약은 투어 당일보다 늦어도 이틀 전에 완료해야 합니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Weekends: two tours",
+          "role": "주말 운영",
+          "translation": "주말에는 오전과 오후에 한 번씩 모두 두 번 운영합니다."
+        }
+      ],
+      "correctReason": "당일 예약이 가능하다는 설명이 예약 마감 조건과 어긋나므로 정답은 ③입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "주말에는 하루에 두 번 운영된다.",
+        "reason": "주말 시간표에는 오전과 오후 두 번의 투어가 명시되어 있어 원문과 일치합니다."
+      }
+    },
+    "2024_csat_28": {
+      "id": "2024_csat_28",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 28,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "영상 공모전은 출품 영상 길이를 3분 이하로 제한하며 학생 한 명당 한 작품만 허용합니다.",
+      "typeApproach": "안내문 일치는 주제·접수 기간·분량·출품 수·심사 주체를 수치와 주체 중심으로 확인합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Video length cannot exceed three minutes.",
+          "role": "영상 길이",
+          "translation": "출품 영상의 길이는 3분을 넘을 수 없습니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Entries are limited to one per student.",
+          "role": "출품 수",
+          "translation": "학생 한 명당 한 작품만 출품할 수 있습니다."
+        }
+      ],
+      "correctReason": "영상 길이가 3분을 초과할 수 없다는 안내와 일치하므로 정답은 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "출품작은 학생 1인당 두 개로 제한된다.",
+        "reason": "출품작은 학생 한 명당 두 개가 아니라 한 개로 제한되어 있습니다."
+      }
+    },
+    "2024_csat_29": {
+      "id": "2024_csat_29",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 29,
+      "group": "grammar",
+      "type": "어법",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "difficulty는 전치사 with를 필요로 하므로 관계대명사 which 앞에도 with가 있어야 하는 어법 문제입니다.",
+      "typeApproach": "어법 문제는 밑줄 단어만 보지 말고 동사·형용사의 결합 방식과 뒤 절에서 빠진 문장 성분을 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "gestures ② which they have some difficulty",
+          "role": "전치사 누락",
+          "translation": "have difficulty with gestures 구조이므로 which 앞에 with가 필요합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "judge ⑤ to be ‘like me’.",
+          "role": "정상 구조",
+          "translation": "judge 목적어 뒤의 to be 보어 구조는 문법적으로 올바릅니다."
+        }
+      ],
+      "correctReason": "② which는 with which로 고쳐야 하므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "to be",
+        "reason": "judge others to be like me는 목적어와 목적격 보어가 연결된 올바른 구조입니다."
+      }
+    },
+    "2024_csat_30": {
+      "id": "2024_csat_30",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 30,
+      "group": "vocab",
+      "type": "어휘",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "비필수품인 비디오 게임에는 구매자가 높은 가격을 받아들이기 어려우므로 판매자가 높은 가격을 요구하지 않아야 합니다.",
+      "typeApproach": "어휘 문제는 밑줄 단어가 앞뒤 인과관계와 같은 방향인지 확인하고 반대말을 넣어 논리를 복구합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "not to directly ask for very ④ low prices for video games",
+          "role": "문맥 충돌",
+          "translation": "비필수품이라서 낮은 가격을 요구하지 않는다는 표현은 뒤 인과와 맞지 않습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "absolute necessity.",
+          "role": "가격 제약",
+          "translation": "구매자가 절대적 필요로 보지 않으므로 높은 가격을 받아들이기 어렵습니다."
+        }
+      ],
+      "correctReason": "④ low는 high로 바꾸어야 가격 논리가 성립하므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "similar",
+        "reason": "구매자와 판매자는 비슷한 문화·경제 환경을 공유하므로 similar는 가격 합의의 배경과 맞습니다."
+      }
+    },
+    "2024_csat_31": {
+      "id": "2024_csat_31",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 31,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "현대의 읽기는 글자 인식만이 아니라 단어와 그림 등 여러 표현 형식을 함께 해석하는 활동입니다.",
+      "typeApproach": "빈칸은 앞의 구체적 사례가 공통으로 부정하는 좁은 개념을 찾고 뒤 문장의 재진술로 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "illustrations complement and enhance each other.",
+          "role": "복합 해석",
+          "translation": "단어와 그림은 서로 보완하며 의미를 만듭니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "what a sentence ‘says’ is often not what it means.",
+          "role": "표면 의미의 한계",
+          "translation": "문장이 말하는 표면과 실제 의미가 다를 수 있습니다."
+        }
+      ],
+      "correctReason": "읽기는 단순한 단어 인식이 아니라 복합 해석이므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "subjective interpretation",
+        "reason": "해석이 복잡해졌다는 말이 곧 읽기가 전적으로 주관적 해석이라는 뜻은 아닙니다."
+      }
+    },
+    "2024_csat_32": {
+      "id": "2024_csat_32",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 32,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "미래 세계를 다룬 영화에서도 익숙한 음악 구조는 관객에게 편안한 맥락을 제공해 낯선 세계를 받아들이게 합니다.",
+      "typeApproach": "빈칸 뒤의 Through와 Such가 가리키는 익숙한 음악의 효과를 찾아 빈칸을 원인과 결과로 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "scores that possess familiar structures and cadences.",
+          "role": "익숙한 음악",
+          "translation": "작곡가들은 익숙한 구조와 박자의 음악을 제시합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "placed in a comfortable",
+          "role": "관객 효과",
+          "translation": "그 익숙함이 관객을 편안한 인식 공간에 놓아 줍니다."
+        }
+      ],
+      "correctReason": "익숙한 음악이 관객의 영화 접근을 돕는다는 뜻이므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "orients audiences to the film’s theme",
+        "reason": "글은 음악이 주제를 직접 알려 준다고 하지 않고 낯선 세계를 익숙한 맥락에서 받아들이게 한다고 설명합니다."
+      }
+    },
+    "2024_csat_33": {
+      "id": "2024_csat_33",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 33,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "얼굴 표정만 떼어 놓으면 맥락이 없어 감정을 확정할 수 없으므로 여러 표정을 서로 바꾸어도 의미 손실이 크지 않습니다.",
+      "typeApproach": "빈칸 뒤에서 부족하다고 지적한 조건을 확인하고 그 조건이 없을 때 앞의 사례가 어떤 한계를 보이는지 추론합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "any setting or context to make the",
+          "role": "맥락 부재",
+          "translation": "감정을 확정하려면 배경과 맥락이 필요한데 그것이 빠져 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "people in particular situations",
+          "role": "실제 판단 단위",
+          "translation": "실제 삶에서는 얼굴만이 아니라 특정 상황 속의 사람을 만납니다."
+        }
+      ],
+      "correctReason": "맥락 없는 표정들은 서로 대체해도 구별되는 감정이 확정되지 않으므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "all of them could be matched consistently with their intended emotions",
+        "reason": "연구 결과가 일관되지 않았으므로 표정과 의도된 감정을 안정적으로 맞출 수 있다는 설명은 반대입니다."
+      }
+    },
+    "2024_csat_34": {
+      "id": "2024_csat_34",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 34,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "도시 교통에 대한 개인의 견해는 그 사람이 실제로 어떤 이동 수단을 이용하는지와 밀접하게 연결됩니다.",
+      "typeApproach": "빈칸 뒤의 갈등 사례가 개인마다 다른 이유를 찾고 이동 경험과 판단의 관계를 가장 직접적으로 표현한 선지를 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "transportation is local and intensely personal.",
+          "role": "개인성",
+          "translation": "교통 문제는 지역적이면서 개인 경험과 강하게 연결됩니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "loss of a few parking spaces",
+          "role": "이동 방식의 이해관계",
+          "translation": "주차 공간 손실 같은 개인적 이해관계가 대규모 사업을 막을 수 있습니다."
+        }
+      ],
+      "correctReason": "거리 인식은 자신의 이동 방식과 가깝게 맞물리므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "ties firmly in with how her city operates",
+        "reason": "도시 전체가 어떻게 운영되는가보다 개인이 평소 어떻게 이동하는가가 견해를 좌우한다는 글입니다."
+      }
+    },
+    "2024_csat_35": {
+      "id": "2024_csat_35",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 35,
+      "group": "irrelevant",
+      "type": "무관한 문장",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "말을 너무 빨리 하면 뇌가 표현을 선택할 시간을 잃어 머뭇거림 표현이 생긴다는 흐름에서 ③만 빠른 말하기를 돕는다는 반대 내용입니다.",
+      "typeApproach": "무관한 문장은 공통 주제어만 보지 말고 앞뒤 문장의 인과 방향을 끊거나 뒤집는 문장을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Speaking fast is a high-risk proposition.",
+          "role": "중심 주장",
+          "translation": "빠르게 말하는 것은 위험이 큰 행동이라고 시작합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "otherwise known as filler.",
+          "role": "결과",
+          "translation": "입이 너무 빨리 움직이면 말 채움 표현이 생긴다고 설명합니다."
+        }
+      ],
+      "correctReason": "③은 좋은 결정이 더 빨리 말하게 돕는다고 하여 느린 선택 과정의 위험을 설명하는 흐름과 어긋나므로 정답은 ③입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "In reality, the brain arrives at an intersection of four or five possible things to say and sits idling for a couple of seconds, considering the options.",
+        "reason": "②는 뇌가 여러 표현 중 하나를 고르느라 잠시 멈춘다는 설명으로 뒤의 말 막힘 원인을 준비합니다."
+      }
+    },
+    "2024_csat_36": {
+      "id": "2024_csat_36",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 36,
+      "group": "order",
+      "type": "순서",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "협상의 목적을 공통점과 갈등 영역의 확인으로 설명한 뒤 남는 차이와 적대적 협상, 그 밖의 기능으로 논의를 확장합니다.",
+      "typeApproach": "순서 문제는 대명사와 범위 표현을 추적해 일반 원칙에서 구체적 경우와 추가 기능으로 이어지는 연결을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "identification of areas of common interest",
+          "role": "일반 목적",
+          "translation": "(C)가 협상의 공통 관심과 갈등 영역 확인이라는 일반 목적을 먼저 제시합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Areas of difference can and do frequently remain",
+          "role": "남는 갈등",
+          "translation": "(A)는 (C)의 갈등 영역이 남을 수 있다고 이어 받습니다."
+        }
+      ],
+      "correctReason": "일반 목적 (C) 뒤에 남는 차이 (A), 그 형태의 다른 기능 (B)가 이어지므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(C) - (B) - (A)",
+        "reason": "(B)의 these forms는 (A)에서 설명한 적대적·갈등 중심 협상 형태를 받아야 하므로 (B)가 (A)보다 먼저 올 수 없습니다."
+      }
+    },
+    "2024_csat_37": {
+      "id": "2024_csat_37",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 37,
+      "group": "order",
+      "type": "순서",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "한 사람이 시작한 행동에 다른 사람들이 따르고, 그 사람이 규범을 지시한 뒤 지시 없이 관찰만으로 따르는 사람도 생기는 과정입니다.",
+      "typeApproach": "순서 문제는 지시 대상인 others와 지시를 받지 않는 some others가 처음 등장하는 순서를 추적합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Others may then conform to this behavior for a number of",
+          "role": "다른 사람의 등장",
+          "translation": "(C)가 최초 행동 뒤에 다른 사람들이 따를 수 있다고 연결합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Thus, she may prescribe the behavior to them",
+          "role": "규범 지시",
+          "translation": "(A)는 최초 행동자가 그들에게 행동을 지시할 수 있다고 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "But some others will not need to have the behavior prescribed",
+          "role": "대조",
+          "translation": "(B)는 지시가 필요한 사람들과 달리 관찰만으로 따르는 사람을 대조합니다."
+        }
+      ],
+      "correctReason": "최초 행동 이후 (C), 지시 방식 (A), 지시 없는 순응 (B)의 순서이므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(C) - (B) - (A)",
+        "reason": "(B)의 But some others는 (A)에서 행동을 지시받아 따르는 사람들을 먼저 제시한 뒤에만 자연스럽습니다."
+      }
+    },
+    "2024_csat_38": {
+      "id": "2024_csat_38",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 38,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "일부 과학 경쟁은 단일 승자가 있는 세계적 경쟁이지만 다른 많은 경쟁은 여러 부분과 다수의 승자를 가진다는 대조입니다.",
+      "typeApproach": "문장 삽입은 주어진 문장의 일부 사례 인정과 뒤의 But 대조가 맞물리는 위치를 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "only a handful of contests exist.",
+          "role": "삽입 전 논점",
+          "translation": "바로 앞은 소수의 경쟁만 존재한다는 암시가 부정확하다고 말합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "identification of the Higgs particle",
+          "role": "주어진 사례",
+          "translation": "주어진 문장은 힉스 입자 발견 같은 단일 승자형 사례를 인정합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "many other contests have multiple parts",
+          "role": "삽입 후 대조",
+          "translation": "뒤 문장은 그러나 다른 많은 경쟁은 여러 부분을 가진다고 대조합니다."
+        }
+      ],
+      "correctReason": "소수의 단일 경쟁 사례를 인정한 뒤 다부분 경쟁과 대조해야 하므로 정답은 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "④",
+        "reason": "④ 뒤는 암 연구라는 다부분 경쟁의 예시가 이어져 이미 대조가 시작된 뒤이므로 주어진 문장이 늦습니다."
+      }
+    },
+    "2024_csat_39": {
+      "id": "2024_csat_39",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 39,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "유리한 돌연변이는 번식으로 다음 세대에 늘지만 책의 우연한 교정은 더 잘 팔릴 선택 장치가 없다는 지점에서 비유가 깨집니다.",
+      "typeApproach": "문장 삽입은 however가 예고하는 전환과 다음 문장의 생물학·책 차이 대조가 시작되는 경계를 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "At the next step in the argument, however",
+          "role": "전환 예고",
+          "translation": "주어진 문장은 다음 논증 단계에서 기존 비유가 깨진다고 예고합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "more heavily represented in the next generation",
+          "role": "생물학적 선택",
+          "translation": "유리한 돌연변이는 번식을 통해 다음 세대에 더 많이 남습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "sell better.",
+          "role": "책과의 차이",
+          "translation": "우연히 교정된 책에는 더 잘 팔리게 하는 같은 선택 장치가 없습니다."
+        }
+      ],
+      "correctReason": "유리한 변화의 공통점 뒤 번식 선택의 차이가 시작되는 ④가 알맞으므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "③",
+        "reason": "③ 뒤까지는 돌연변이와 책의 오류 교정이 모두 유리할 수 있다는 유사성을 계속 설명합니다."
+      }
+    },
+    "2024_csat_40": {
+      "id": "2024_csat_40",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 40,
+      "group": "summary",
+      "type": "요약문",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "과학 분야를 시기별로 하나씩 탐구하면 이전 지식이 압축되어 남고 새로운 학습을 위한 뇌의 공간이 확보됩니다.",
+      "typeApproach": "요약문은 본문의 원인인 순차 탐구와 결과인 새 학습 공간을 각각 빈칸에 대응시킵니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "concentrate attention",
+          "role": "순차 집중",
+          "translation": "한 시기에는 한 주제에 집중해야 한다고 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "sufficient space remains",
+          "role": "새 학습 공간",
+          "translation": "이전 지식이 압축되어 새 이미지를 학습할 충분한 공간이 남습니다."
+        }
+      ],
+      "correctReason": "순차 탐구가 뛰어난 성과를 가능하게 하고 새 학습 공간을 남기므로 정답은 ①입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "requires …… removes",
+        "reason": "순차 탐구는 새 학습 공간을 제거하지 않고 오히려 남기므로 removes는 본문과 반대입니다."
+      }
+    },
+    "2024_csat_41": {
+      "id": "2024_csat_41",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 41,
+      "group": "long",
+      "type": "장문 제목",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "과학자가 미디어와 소통할지는 공적 책임과 인정의 이점, 오해와 논쟁의 위험을 함께 고려한 개인적 선택입니다.",
+      "typeApproach": "장문 제목은 한쪽의 경고만 강조하지 말고 글 전체에 반복되는 선택과 양면성을 함께 담아야 합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "highly individualized.",
+          "role": "개인별 결정",
+          "translation": "미디어와 말할지는 과학자 개인에 따라 달라지는 결정입니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "other scientists continue to resist speaking",
+          "role": "반대 선택",
+          "translation": "일부 과학자는 여전히 기자와 말하기를 거부합니다."
+        }
+      ],
+      "correctReason": "미디어 노출 여부를 선택하는 과학자의 상황을 포괄하므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "Scientists! Be Cautious When Talking to the Media",
+        "reason": "글은 모든 과학자에게 미디어를 경계하라고 명령하지 않고 소통의 이점과 위험을 함께 제시합니다."
+      }
+    },
+    "2024_csat_42": {
+      "id": "2024_csat_42",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 42,
+      "group": "long",
+      "type": "장문 어휘",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "기자와 말하기를 거부하면 과학 연구 시간을 지키고 오인용 위험도 피할 수 있으므로 running은 avoiding이 되어야 합니다.",
+      "typeApproach": "장문 어휘는 접속어와 병렬 구조를 확인해 같은 선택에서 나오는 두 결과의 의미 방향을 맞춥니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "preserving more time for their science",
+          "role": "첫 번째 이점",
+          "translation": "미디어 접촉을 거부하면 과학 연구 시간을 더 보존합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "being misquoted",
+          "role": "피해야 할 위험",
+          "translation": "같은 선택은 오인용 위험도 줄이는 방향이어야 합니다."
+        }
+      ],
+      "correctReason": "거부의 결과는 위험을 감수하는 running이 아니라 피하는 avoiding이어야 하므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(d)",
+        "reason": "일부 과학자가 미디어의 관심과 대중적 인정을 즐긴다는 문맥에서 enjoy는 적절합니다."
+      }
+    },
+    "2024_csat_43": {
+      "id": "2024_csat_43",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 43,
+      "group": "long",
+      "type": "장문 순서",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "두 사람이 출발한 뒤 Clara의 과거와 회복이 제시되고, 절벽 목적지에 도착해 첫 자전거 여행의 성공을 말하는 순서입니다.",
+      "typeApproach": "장문 순서는 출발·한 시간 뒤·목적지 도착 같은 시간 표지를 먼저 배열하고 대화의 선행 사건을 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "started to pedal",
+          "role": "출발",
+          "translation": "(D)에서 두 사람이 자전거를 타고 절벽을 향해 출발합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "One hour later, Clara,",
+          "role": "이동 중",
+          "translation": "(C)는 출발한 지 한 시간 뒤 Clara가 절벽을 발견하는 장면입니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "When they reached their destination",
+          "role": "도착",
+          "translation": "(B)는 목적지에 도착한 뒤의 대화로 마무리됩니다."
+        }
+      ],
+      "correctReason": "출발 (D), 이동과 회상 (C), 목적지 도착 (B)의 순서이므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(D) - (B) - (C)",
+        "reason": "목적지 도착을 말하는 (B)는 한 시간 뒤 절벽을 발견하는 (C)보다 먼저 올 수 없습니다."
+      }
+    },
+    "2024_csat_44": {
+      "id": "2024_csat_44",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 44,
+      "group": "long",
+      "type": "장문 지칭",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "(a)·(b)·(d)·(e)는 Clara를 가리키지만 Clara가 Emma에게 말한 (c) you만 Emma를 가리킵니다.",
+      "typeApproach": "지칭 문제는 대명사가 든 문장의 화자와 청자를 먼저 표시한 뒤 인물별로 묶어 다른 하나를 찾습니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "I can’t wait to ride",
+          "role": "Clara의 말",
+          "translation": "(a) I는 바로 앞에서 고개를 끄덕이며 답한 Clara입니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "With (c) you, absolutely!",
+          "role": "Emma를 지칭",
+          "translation": "Clara가 Emma의 제안에 답하므로 (c) you는 Emma입니다."
+        }
+      ],
+      "correctReason": "나머지는 Clara이고 (c)만 Emma를 가리키므로 정답은 ③입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "(a)",
+        "reason": "(a) I는 Emma의 질문에 직접 답하는 Clara 자신을 가리켜 다른 Clara 지칭들과 같습니다."
+      }
+    },
+    "2024_csat_45": {
+      "id": "2024_csat_45",
+      "status": "ready",
+      "exam": "2024학년도 수능 영어",
+      "qid": 45,
+      "group": "long",
+      "type": "장문 내용",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "Clara는 어깨 부상 때문에 올림픽 메달리스트의 꿈을 포기했으며 실제로 메달을 땄다는 내용은 없습니다.",
+      "typeApproach": "장문 내용 불일치는 사건의 성취 여부와 원인·결과를 구분해 선지의 과장이나 반전을 찾습니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "because of shoulder injuries.",
+          "role": "꿈 포기 원인",
+          "translation": "Clara는 어깨 부상 때문에 수영 선수의 꿈을 포기했습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "found a new passion for bike",
+          "role": "새로운 도전",
+          "translation": "회복 훈련 뒤 자전거 타기에서 새로운 열정을 찾았습니다."
+        }
+      ],
+      "correctReason": "올림픽 메달을 딴 것이 아니라 그 꿈을 포기했으므로 정답은 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "Emma와 Clara는 자전거를 타고 하얀 절벽 쪽으로 갔다.",
+        "reason": "(D)에서 두 사람은 해변 도로 끝의 하얀 절벽을 향해 자전거를 탔다고 명시됩니다."
+      }
+    }
+  }
+}

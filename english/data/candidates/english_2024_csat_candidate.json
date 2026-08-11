@@ -1,0 +1,810 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2024_csat_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "examId": "2024_csat"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2024학년도_수능_영어_문제.pdf",
+      "sha256": "aad0328a63dd0c5e65ea1323cecf6abee383dd57a18a5bc7327d9d513d104037"
+    },
+    "answer": {
+      "filename": "2024학년도_수능_영어_정답.png",
+      "sha256": "a742624162cd957dace6d5e048c90662bda0cdf04192377455206eff6eeaf888"
+    },
+    "explanation": {
+      "filename": "2024학년도_수능_영어_해설.pdf",
+      "sha256": "c63380d61ee86828ff1e09aec3fd02caa92b45a79be45e51656b29f6ad211df4"
+    }
+  },
+  "reviewData": {
+    "path": "english/data/candidates/english_2024_csat_reviews.json",
+    "sha256": "9b45a8d80f078cac73b409804c15fc4edd2aa694d00f3518d2ca38a30f992c03",
+    "expectedReadyCount": 28
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 60,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "sourceTextOverrideQuestionCount": 1,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2024_csat_25",
+      "2024_csat_27",
+      "2024_csat_28"
+    ],
+    "requireSourceTextOverrideForIds": [
+      "2024_csat_18"
+    ]
+  },
+  "projectionPolicies": {
+    "default": {
+      "sourceField": "rawText",
+      "stripStem": true,
+      "stripChoices": true,
+      "stripPdfTail": true
+    },
+    "sharedPassageIds": [
+      "2024_csat_41",
+      "2024_csat_42",
+      "2024_csat_43",
+      "2024_csat_44",
+      "2024_csat_45"
+    ],
+    "inlineMarkerIds": [
+      "2024_csat_29",
+      "2024_csat_30",
+      "2024_csat_35",
+      "2024_csat_42",
+      "2024_csat_44"
+    ],
+    "sequenceTableIds": [
+      "2024_csat_36",
+      "2024_csat_37",
+      "2024_csat_43"
+    ],
+    "placementMarkerIds": [
+      "2024_csat_38",
+      "2024_csat_39"
+    ]
+  },
+  "questions": [
+    {
+      "id": "2024_csat_18",
+      "qid": 18,
+      "answer": 1,
+      "problemPage": 2,
+      "explanationPages": [
+        11
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_19",
+      "qid": 19,
+      "answer": 1,
+      "problemPage": 2,
+      "explanationPages": [
+        11,
+        12
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_20",
+      "qid": 20,
+      "answer": 5,
+      "problemPage": 2,
+      "explanationPages": [
+        12
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_21",
+      "qid": 21,
+      "answer": 4,
+      "problemPage": 3,
+      "explanationPages": [
+        13
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_22",
+      "qid": 22,
+      "answer": 1,
+      "problemPage": 3,
+      "explanationPages": [
+        13
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_23",
+      "qid": 23,
+      "answer": 2,
+      "problemPage": 3,
+      "explanationPages": [
+        14
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_24",
+      "qid": 24,
+      "answer": 5,
+      "problemPage": 3,
+      "explanationPages": [
+        15
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_25",
+      "qid": 25,
+      "answer": 4,
+      "problemPage": 4,
+      "explanationPages": [
+        16
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready",
+      "figureAsset": "english/assets/2024-csat/q25-figure.png"
+    },
+    {
+      "id": "2024_csat_26",
+      "qid": 26,
+      "answer": 2,
+      "problemPage": 4,
+      "explanationPages": [
+        16
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_27",
+      "qid": 27,
+      "answer": 3,
+      "problemPage": 4,
+      "explanationPages": [
+        17
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready",
+      "figureAsset": "english/assets/2024-csat/q27-notice.png"
+    },
+    {
+      "id": "2024_csat_28",
+      "qid": 28,
+      "answer": 3,
+      "problemPage": 4,
+      "explanationPages": [
+        17
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready",
+      "figureAsset": "english/assets/2024-csat/q28-notice.png"
+    },
+    {
+      "id": "2024_csat_29",
+      "qid": 29,
+      "answer": 2,
+      "problemPage": 5,
+      "explanationPages": [
+        18
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_30",
+      "qid": 30,
+      "answer": 4,
+      "problemPage": 5,
+      "explanationPages": [
+        19
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_31",
+      "qid": 31,
+      "answer": 2,
+      "problemPage": 5,
+      "explanationPages": [
+        19
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_32",
+      "qid": 32,
+      "answer": 2,
+      "problemPage": 5,
+      "explanationPages": [
+        20
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_33",
+      "qid": 33,
+      "answer": 5,
+      "problemPage": 6,
+      "explanationPages": [
+        21
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_34",
+      "qid": 34,
+      "answer": 4,
+      "problemPage": 6,
+      "explanationPages": [
+        22
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_35",
+      "qid": 35,
+      "answer": 3,
+      "problemPage": 6,
+      "explanationPages": [
+        23
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_36",
+      "qid": 36,
+      "answer": 4,
+      "problemPage": 6,
+      "explanationPages": [
+        23
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_37",
+      "qid": 37,
+      "answer": 4,
+      "problemPage": 7,
+      "explanationPages": [
+        24
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_38",
+      "qid": 38,
+      "answer": 3,
+      "problemPage": 7,
+      "explanationPages": [
+        25
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_39",
+      "qid": 39,
+      "answer": 4,
+      "problemPage": 7,
+      "explanationPages": [
+        25
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_40",
+      "qid": 40,
+      "answer": 1,
+      "problemPage": 7,
+      "explanationPages": [
+        26
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_41",
+      "qid": 41,
+      "answer": 2,
+      "problemPage": 8,
+      "explanationPages": [
+        27
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_42",
+      "qid": 42,
+      "answer": 5,
+      "problemPage": 8,
+      "explanationPages": [
+        28
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_43",
+      "qid": 43,
+      "answer": 5,
+      "problemPage": 8,
+      "explanationPages": [
+        29
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_44",
+      "qid": 44,
+      "answer": 3,
+      "problemPage": 8,
+      "explanationPages": [
+        29
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    },
+    {
+      "id": "2024_csat_45",
+      "qid": 45,
+      "answer": 3,
+      "problemPage": 8,
+      "explanationPages": [
+        29
+      ],
+      "status": "question_answer_ready",
+      "reviewStatus": "ready"
+    }
+  ],
+  "sourceTextOverrides": {
+    "2024_csat_18": {
+      "rawText": "18. 다음 글의 목적으로 가장 적절한 것은?\nI’m Charlie Reeves, manager of Toon Skills Company.\nIf you’re interested in new webtoon-making skills and\ntechniques, this post is for you. This year, we’ve launched\nspecial online courses, which contain a variety of contents\nabout webtoon production. Each course consists of ten\nunits that help improve your drawing and story-telling skills.\nMoreover, these courses are designed to suit any level,\nfrom beginner to advanced. It costs $45 for one course,\nand you can watch your course as many times as you want\nfor six months. Our courses with talented and experienced\ninstructors will open up a new world of creativity for you.\nIt’s time to start creating your webtoon world at\nhttps://webtoonskills.com.\n① 웹툰 제작 온라인 강좌를 홍보하려고\n② 웹툰 작가 채용 정보를 제공하려고\n③ 신작 웹툰 공개 일정을 공지하려고\n④ 웹툰 창작 대회에 출품을 권유하려고\n⑤ 기초적인 웹툰 제작 방법을 설명하려고"
+    }
+  },
+  "choiceOverrides": {
+    "2024_csat_20": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "조직 문화 혁신을 위해서 모든 구성원이 공유할 핵심 가치를 정립해야 한다."
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "조직 구성원의 행동을 변화시키려면 지도자는 명확한 가치관을 가져야 한다."
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "조직 내 문화가 공유되기 위해서 구성원의 자발적 행동이 뒷받침되어야 한다."
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "조직의 핵심 가치 실현을 위해 구성원 간의 지속적인 의사소통이 필수적이다."
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "조직의 문화 형성에는 가치를 반영한 행동의 공유를 위한 명시적 지침이 필요하다."
+      }
+    ],
+    "2024_csat_24": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "The Solutions to Overtourism: From Complex to Simple"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "What Makes Popular Destinations Attractive to Visitors?"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "Are Tourist Attractions Winners or Losers of Overtourism?"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "The Severity of Overtourism: Much Worse than Imagined"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "Overtourism: Not Simply a Matter of People and Places"
+      }
+    ],
+    "2024_csat_28": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "출품작의 주제가 정해져 있지 않다."
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "한 달 동안 동영상을 접수할 예정이다."
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "출품할 동영상의 길이는 3분을 초과할 수 없다."
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "출품작은 학생 1인당 두 개로 제한된다."
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "학생회가 수상자를 선정할 것이다."
+      }
+    ],
+    "2024_csat_29": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "seeming"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "which"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "do"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "those"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "to be"
+      }
+    ],
+    "2024_csat_30": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "restrictions"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "assess"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "necessity"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "low"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "similar"
+      }
+    ],
+    "2024_csat_32": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "frees the plot of its familiarity"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "aids in viewer access to the film"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "adds to an exotic musical experience"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "orients audiences to the film’s theme"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "inspires viewers to think more deeply"
+      }
+    ],
+    "2024_csat_35": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "Although we’d like to think that our minds are sharp enough to always make good decisions with the greatest efficiency, they just aren’t."
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "In reality, the brain arrives at an intersection of four or five possible things to say and sits idling for a couple of seconds, considering the options."
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "Making a good decision helps you speak faster because it provides you with more time to come up with your responses."
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "When the brain stops sending navigational instructions back to the mouth and the mouth is moving too fast to pause, that’s when you get a verbal fender bender, otherwise known as filler."
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "Um, ah, you know, and like are what your mouth does when it has nowhere to go."
+      }
+    ],
+    "2024_csat_36": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "(A) - (C) - (B)"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "(B) - (A) - (C)"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "(B) - (C) - (A)"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "(C) - (A) - (B)"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "(C) - (B) - (A)"
+      }
+    ],
+    "2024_csat_37": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "(A) - (C) - (B)"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "(B) - (A) - (C)"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "(B) - (C) - (A)"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "(C) - (A) - (B)"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "(C) - (B) - (A)"
+      }
+    ],
+    "2024_csat_38": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "①"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "②"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "③"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "④"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "⑤"
+      }
+    ],
+    "2024_csat_39": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "①"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "②"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "③"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "④"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "⑤"
+      }
+    ],
+    "2024_csat_40": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "enables …… leaves"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "challenges …… spares"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "delays …… creates"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "requires …… removes"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "invites …… diminishes"
+      }
+    ],
+    "2024_csat_43": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "(B) - (D) - (C)"
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "(C) - (B) - (D)"
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "(C) - (D) - (B)"
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "(D) - (B) - (C)"
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "(D) - (C) - (B)"
+      }
+    ],
+    "2024_csat_45": [
+      {
+        "num": 1,
+        "mark": "①",
+        "text": "Emma와 Clara는 자전거 탈 준비를 일출 직후에 마쳤다."
+      },
+      {
+        "num": 2,
+        "mark": "②",
+        "text": "Clara는 자전거 타기와 수영이 꽤 비슷하다고 말했다."
+      },
+      {
+        "num": 3,
+        "mark": "③",
+        "text": "Clara는 올림픽 수영 경기에서 메달을 땄다."
+      },
+      {
+        "num": 4,
+        "mark": "④",
+        "text": "Emma와 Clara는 자전거를 타고 하얀 절벽 쪽으로 갔다."
+      },
+      {
+        "num": 5,
+        "mark": "⑤",
+        "text": "Emma는 Clara의 침묵의 의미를 이해했다."
+      }
+    ]
+  },
+  "figures": [
+    {
+      "questionId": "2024_csat_25",
+      "kind": "grouped_bar_chart",
+      "assetPath": "english/assets/2024-csat/q25-figure.png",
+      "sourcePage": 4,
+      "alt": "Percentages of respondents who sometimes or often actively avoided news. Ireland: 2017 30%, 2019 32%, 2022 41%. Germany: 2017 24%, 2019 25%, 2022 29%. Denmark: 2017 14%, 2019 15%, 2022 20%. Finland: 2017 18%, 2019 17%, 2022 20%. Japan: 2017 6%, 2019 11%, 2022 14%.",
+      "sha256": "8caabd6566cfdeefafefdb8a2210b5cf0f62482e3291e79c2d8f8f5701333b82"
+    },
+    {
+      "questionId": "2024_csat_27",
+      "kind": "notice_with_schedule",
+      "assetPath": "english/assets/2024-csat/q27-notice.png",
+      "sourcePage": 4,
+      "alt": "Turtle Island Boat Tour notice. Dates: June 1 to August 31, 2024. Weekdays: one tour from 1 p.m. to 5 p.m. Weekends: two tours, 9 a.m. to 1 p.m. and 1 p.m. to 5 p.m. Only those aged 17 and over can participate. Bookings must be completed no later than 2 days before the day of the tour. No refunds after the departure time. Activities include snorkeling with a professional diver and feeding tropical fish.",
+      "sha256": "5354577f55eab335ddd9d6304245833d2563c67b377a9048aedcbc6491ff204d"
+    },
+    {
+      "questionId": "2024_csat_28",
+      "kind": "contest_notice",
+      "assetPath": "english/assets/2024-csat/q28-notice.png",
+      "sourcePage": 4,
+      "alt": "2023 Eastland High School Video Clip Contest notice. Theme: Joyful Moments in Our Growing Community. Submissions: December 1 to December 14. Video length cannot exceed three minutes. Entries are limited to one per student. Prize winners will be chosen by the school art teachers.",
+      "sha256": "f7d5aa7d9dfcaf455ac7f16e15d0208cef3f1cf2a2ba1fd42d19fb53578ecaa6"
+    }
+  ]
+}

@@ -29,7 +29,7 @@ const CHOICE_CONTAMINATION_PATTERNS = [
   /\[\d{2}\s*[~～－-]\s*\d{2}\]/,
 ];
 const EXPECTED_PUBLIC_BOUNDARY = {
-  english: { total: 251, free: 5, locked: 246, packs: 54 },
+  english: { total: 307, free: 5, locked: 302, packs: 66 },
   math: { total: 460, free: 5, locked: 455, packs: 110 },
 };
 

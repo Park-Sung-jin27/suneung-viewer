@@ -1,0 +1,2930 @@
+{
+  "schemaVersion": "english-product-candidate-v2",
+  "candidateId": "english_2024_csat_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "generatedFrom": {
+    "overlayPath": "english/data/candidates/english_2024_csat_candidate.json",
+    "baseDataPath": "english/data/english_exam_db_v2_1.json",
+    "baseDataSha256": "33dc5d21d37125932fe7138d2ef7eb5f8bb08f1041e7b67f450064afc89f3cfc",
+    "reviewDataPath": "english/data/candidates/english_2024_csat_reviews.json",
+    "reviewDataSha256": "9b45a8d80f078cac73b409804c15fc4edd2aa694d00f3518d2ca38a30f992c03"
+  },
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2024학년도_수능_영어_문제.pdf",
+      "sha256": "aad0328a63dd0c5e65ea1323cecf6abee383dd57a18a5bc7327d9d513d104037"
+    },
+    "answer": {
+      "filename": "2024학년도_수능_영어_정답.png",
+      "sha256": "a742624162cd957dace6d5e048c90662bda0cdf04192377455206eff6eeaf888"
+    },
+    "explanation": {
+      "filename": "2024학년도_수능_영어_해설.pdf",
+      "sha256": "c63380d61ee86828ff1e09aec3fd02caa92b45a79be45e51656b29f6ad211df4"
+    }
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 60,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "sourceTextOverrideQuestionCount": 1,
+    "blockedCount": 0
+  },
+  "integrity": {
+    "questionIds": [
+      "2024_csat_18",
+      "2024_csat_19",
+      "2024_csat_20",
+      "2024_csat_21",
+      "2024_csat_22",
+      "2024_csat_23",
+      "2024_csat_24",
+      "2024_csat_25",
+      "2024_csat_26",
+      "2024_csat_27",
+      "2024_csat_28",
+      "2024_csat_29",
+      "2024_csat_30",
+      "2024_csat_31",
+      "2024_csat_32",
+      "2024_csat_33",
+      "2024_csat_34",
+      "2024_csat_35",
+      "2024_csat_36",
+      "2024_csat_37",
+      "2024_csat_38",
+      "2024_csat_39",
+      "2024_csat_40",
+      "2024_csat_41",
+      "2024_csat_42",
+      "2024_csat_43",
+      "2024_csat_44",
+      "2024_csat_45"
+    ],
+    "choiceOverrideIds": [
+      "2024_csat_20",
+      "2024_csat_24",
+      "2024_csat_28",
+      "2024_csat_29",
+      "2024_csat_30",
+      "2024_csat_32",
+      "2024_csat_35",
+      "2024_csat_36",
+      "2024_csat_37",
+      "2024_csat_38",
+      "2024_csat_39",
+      "2024_csat_40",
+      "2024_csat_43",
+      "2024_csat_45"
+    ],
+    "sourceTextOverrideIds": [
+      "2024_csat_18"
+    ],
+    "figureIds": [
+      "2024_csat_25",
+      "2024_csat_27",
+      "2024_csat_28"
+    ],
+    "choiceFingerprint": "82d907db8a0581771aa69b085b2ce18fc972ec26b2eae3cd87d56849dd772545",
+    "sourceTextFingerprint": "e08663c6a8fc8a1ced9e6a478a4010dd9e47be034fdf95dff1f96c3967b630f5",
+    "figureFingerprint": "2e58de12271a21a16030cefb2f688f3cc9f23c87db58d3967d2f5cff229dd6a5",
+    "reviewFingerprint": "7db344a7b573114594b48398b7d21021ede46ecb5974954a97822fea36c8310c"
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFigureAssetForIds": [
+      "2024_csat_25",
+      "2024_csat_27",
+      "2024_csat_28"
+    ],
+    "requireSourceTextOverrideForIds": [
+      "2024_csat_18"
+    ]
+  },
+  "questions": [
+    {
+      "id": "2024_csat_18",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 18,
+      "type": "목적",
+      "group": "practical",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "18. 다음 글의 목적으로 가장 적절한 것은?",
+      "rawText": "18. 다음 글의 목적으로 가장 적절한 것은?\nI’m Charlie Reeves, manager of Toon Skills Company.\nIf you’re interested in new webtoon-making skills and\ntechniques, this post is for you. This year, we’ve launched\nspecial online courses, which contain a variety of contents\nabout webtoon production. Each course consists of ten\nunits that help improve your drawing and story-telling skills.\nMoreover, these courses are designed to suit any level,\nfrom beginner to advanced. It costs $45 for one course,\nand you can watch your course as many times as you want\nfor six months. Our courses with talented and experienced\ninstructors will open up a new world of creativity for you.\nIt’s time to start creating your webtoon world at\nhttps://webtoonskills.com.\n① 웹툰 제작 온라인 강좌를 홍보하려고\n② 웹툰 작가 채용 정보를 제공하려고\n③ 신작 웹툰 공개 일정을 공지하려고\n④ 웹툰 창작 대회에 출품을 권유하려고\n⑤ 기초적인 웹툰 제작 방법을 설명하려고",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "웹툰 제작 온라인 강좌를 홍보하려고"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "웹툰 작가 채용 정보를 제공하려고"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "신작 웹툰 공개 일정을 공지하려고"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "웹툰 창작 대회에 출품을 권유하려고"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "기초적인 웹툰 제작 방법을 설명하려고"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 840,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base",
+        "textSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_18",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 18,
+        "group": "practical",
+        "type": "목적",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "초급부터 고급까지 이용할 수 있는 웹툰 제작 온라인 강좌의 구성과 가격을 소개하고 수강을 권하는 홍보 글입니다.",
+        "typeApproach": "목적 문제는 글쓴이의 신분보다 독자에게 제시한 상품과 마지막 행동 요청을 묶어 판단해야 합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "this post is for you.",
+            "charStart": 144,
+            "role": "홍보 대상",
+            "translation": "웹툰 제작 기술에 관심 있는 독자를 직접 대상으로 삼습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "we’ve launched",
+            "charStart": 177,
+            "role": "상품 제시",
+            "translation": "새 온라인 강좌를 출시했다고 알리며 수강 상품을 소개합니다."
+          }
+        ],
+        "correctReason": "강좌의 내용·수준·가격을 안내한 뒤 수강을 권하므로 정답은 ①입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "기초적인 웹툰 제작 방법을 설명하려고",
+          "reason": "글은 제작 방법을 단계별로 설명하지 않고 강좌 자체의 장점과 이용 조건을 홍보합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_19",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 19,
+      "type": "심경 변화",
+      "group": "practical",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "19. 다음 글에 드러난 David의 심경 변화로 가장 적절한 것은?",
+      "rawText": "19. \t다음 글에 드러난 David의 심경 변화로 가장 적절한 것은?\nDavid was starting a new job in Vancouver, and he was\nwaiting for his bus. He kept looking back and forth between\nhis watch and the direction the bus would come from. He\nthought, “My bus isn’t here yet. I can’t be late on my first\nday.” David couldn’t feel at ease. When he looked up again,\nhe saw a different bus coming that was going right to his\nwork. The bus stopped in front of him and opened its door. He\ngot on the bus thinking, “Phew! Luckily, this bus came just in\ntime so I won’t be late.” He leaned back on an unoccupied seat\nin the bus and took a deep breath, finally able to relax.\n① nervous → relieved \t② lonely \t→ hopeful\n③ pleased \t→ confused \t④ indifferent → delighted\n⑤ bored \t→ thrilled",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "nervous → relieved"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "lonely → hopeful"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "pleased → confused"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "indifferent → delighted"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "bored → thrilled"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 745,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          11,
+          12
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_19",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 19,
+        "group": "practical",
+        "type": "심경 변화",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "첫 출근 버스를 놓칠까 불안해하던 David가 제시간에 도착할 다른 버스를 타고 안도하는 장면입니다.",
+        "typeApproach": "심경 변화는 사건 전후의 몸짓과 독백을 각각 찾고 두 감정의 방향이 모두 맞는 선지를 고릅니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "David couldn’t feel at ease.",
+            "charStart": 277,
+            "role": "처음 심경",
+            "translation": "David는 마음을 놓지 못하고 불안해합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "finally able to relax.",
+            "charStart": 612,
+            "role": "나중 심경",
+            "translation": "버스에 탄 뒤 마침내 긴장을 풀고 안도합니다."
+          }
+        ],
+        "correctReason": "불안한 nervous에서 안도한 relieved로 바뀌므로 정답은 ①입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "indifferent → delighted",
+          "reason": "처음부터 무관심한 상태가 아니라 지각 가능성을 걱정하며 계속 시계와 길을 확인했습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_20",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 20,
+      "type": "주장",
+      "group": "topic",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "rawText": "20. \t다음 글에서 필자가 주장하는 바로 가장 적절한 것은?\nValues alone do not create and build culture. Living your\nvalues only some of the time does not contribute to the\ncreation and maintenance of culture. Changing values into\nbehaviors is only half the battle. Certainly, this is a step in the\nright direction, but those behaviors must then be shared and\ndistributed widely throughout the organization, along with a\nclear and concise description of what is expected. It is not\nenough to simply talk about it. It is critical to have a visual\nrepresentation of the specific behaviors that leaders and all\npeople managers can use to coach their people. Just like a\nsports team has a playbook with specific plays designed to\nhelp them perform well and win, your company should have a\nplaybook with the key shifts needed to transform your culture\ninto action and turn your values into winning behaviors.\n① 조직 문화 혁신을 위해서 모든 구성원이 공유할 핵심 가치를 정립해야 한다.\n② 조직 구성원의 행동을 변화시키려면 지도자는 명확한 가치관을 가져야 한다.\n③ 조직 내 문화가 공유되기 위해서 구성원의 자발적 행동이 뒷받침되어야 한다.\n④ 조직의 핵심 가치 실현을 위해 구성원 간의 지속적인 의사소통이 필수적이다.\n⑤ 조직의 문화 형성에는 가치를 반영한 행동의 공유를 위한 명시적 지침이 필요하다.\n이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에\n따라 답을 하시기 바랍니다.\nI’m Charlie Reeves, manager of Toon Skills Company.\nIf you’re interested in new webtoon-making skills and\ntechniques, this post is for you. This year, we’ve launched\nspecial online courses, which contain a variety of contents\nabout webtoon production. Each course consists of ten\nunits that help improve your drawing and story-telling skills.\nMoreover, these courses are designed to suit any level,\nfrom beginner to advanced. It costs $45 for one course,\nand you can watch your course as many times as you want\nfor six months. Our courses with talented and experienced\ninstructors will open up a new world of creativity for you.\nIt’s \ttime \tto \tstart \tcreating \tyour \twebtoon \tworld \tat\nhttps://webtoonskills.com.\n\n-- 2 of 8 --\n\n홀수형 \t3\n3 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "조직 문화 혁신을 위해서 모든 구성원이 공유할 핵심 가치를 정립해야 한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "조직 구성원의 행동을 변화시키려면 지도자는 명확한 가치관을 가져야 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "조직 내 문화가 공유되기 위해서 구성원의 자발적 행동이 뒷받침되어야 한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "조직의 핵심 가치 실현을 위해 구성원 간의 지속적인 의사소통이 필수적이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "조직의 문화 형성에는 가치를 반영한 행동의 공유를 위한 명시적 지침이 필요하다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1890,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 2,
+        "explanationPages": [
+          12
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_20",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 20,
+        "group": "topic",
+        "type": "주장",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "조직의 가치를 실제 문화로 만들려면 구체적 행동을 조직 전체가 공유하도록 명시적인 플레이북이 필요하다는 주장입니다.",
+        "typeApproach": "주장 문제는 반복되는 요구 표현과 마지막 결론에서 글쓴이가 조직에 요구하는 행동을 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "behaviors must then be shared",
+            "charStart": 302,
+            "role": "공유 요구",
+            "translation": "가치를 반영한 행동은 조직 전체에 공유되어야 합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "turn your values into winning behaviors.",
+            "charStart": 839,
+            "role": "결론",
+            "translation": "가치를 성과를 내는 행동으로 바꾸는 지침을 마련하라고 결론짓습니다."
+          }
+        ],
+        "correctReason": "가치 행동을 널리 공유할 명시적 지침을 요구하므로 정답은 ⑤입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "조직의 핵심 가치 실현을 위해 구성원 간의 지속적인 의사소통이 필수적이다.",
+          "reason": "의사소통 일반보다 구체적인 행동을 시각화한 플레이북을 마련하는 것이 글의 핵심 요구입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_21",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 21,
+      "type": "밑줄 의미",
+      "group": "blank",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "21. 밑줄 친 a nonstick frying pan이 다음 글에서 의미하는 바로",
+      "rawText": "21. \t밑줄 친 a nonstick frying pan이 다음 글에서 의미하는 바로\n가장 적절한 것은? [3점]\nHow you focus your attention plays a critical role in how\nyou deal with stress. Scattered attention harms your ability to let\ngo of stress, because even though your attention is scattered,\nit is narrowly focused, for you are able to fixate only on the\nstressful parts of your experience. When your attentional\nspotlight is widened, you can more easily let go of stress. You\ncan put in perspective many more aspects of any situation and\nnot get locked into one part that ties you down to superficial\nand anxiety-provoking levels of attention. A narrow focus\nheightens the stress level of each experience, but a widened\nfocus turns down the stress level because you’re better able to put\neach situation into a broader perspective. One anxiety-provoking\ndetail is less important than the bigger picture. It’s like\ntransforming yourself into a nonstick frying pan. You can still\nfry an egg, but the egg won’t stick to the pan.\n* provoke: 유발시키다\n① never being confronted with any stressful experiences in daily life\n② broadening one’s perspective to identify the cause of stress\n③ rarely confining one’s attention to positive aspects of an experience\n④ having a larger view of an experience beyond its stressful aspects\n⑤ taking stress into account as the source of developing a wide view",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "never being confronted with any stressful experiences in daily life"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "broadening one’s perspective to identify the cause of stress"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "rarely confining one’s attention to positive aspects of an experience"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "having a larger view of an experience beyond its stressful aspects"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "taking stress into account as the source of developing a wide view"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1346,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_21",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 21,
+        "group": "blank",
+        "type": "밑줄 의미",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "주의의 폭을 넓혀 스트레스 요소를 더 큰 상황 속에서 보면 그 요소에 붙잡히지 않을 수 있다는 비유입니다.",
+        "typeApproach": "밑줄 비유는 비유 앞에서 설명한 원리와 뒤에서 반복한 효과를 실제 의미로 바꾸어 읽습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "you can more easily let go of stress.",
+            "charStart": 396,
+            "role": "비유의 효과",
+            "translation": "주의의 폭을 넓히면 스트레스를 더 쉽게 놓을 수 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "less important than the bigger picture.",
+            "charStart": 825,
+            "role": "관점 확대",
+            "translation": "불안을 일으키는 한 요소보다 전체 상황을 더 크게 봅니다."
+          }
+        ],
+        "correctReason": "스트레스 요소를 넘어 경험 전체를 크게 보는 뜻이므로 정답은 ④입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "broadening one’s perspective to identify the cause of stress",
+          "reason": "글은 스트레스의 원인을 찾아내는 것보다 주의 범위를 넓혀 한 요소에 고정되지 않는 데 초점을 둡니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_22",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 22,
+      "type": "요지",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "rawText": "22. \t다음 글의 요지로 가장 적절한 것은?\nBeing able to prioritize your responses allows you to connect\nmore deeply with individual customers, be it a one-off interaction\naround a particularly delightful or upsetting experience, or the\ndevelopment of a longer-term relationship with a significantly\ninfluential individual within your customer base. If you’ve\never posted a favorable comment ― or any comment, for that\nmatter ― about a brand, product or service, think about what it\nwould feel like if you were personally acknowledged by the\nbrand manager, for example, as a result. In general, people\npost because they have something to say ― and because they\nwant to be recognized for having said it. In particular, when\npeople \tpost \tpositive \tcomments \tthey \tare \texpressions \tof\nappreciation for the experience that led to the post. While a\ncompliment to the person standing next to you is typically\nanswered with a response like “Thank You,” the sad fact is\nthat most brand compliments go unanswered. These are lost\nopportunities to understand what drove the compliments and\ncreate a solid fan based on them.\n* compliment: 칭찬\n① 고객과의 관계 증진을 위해 고객의 브랜드 칭찬에 응답하는 것은 중요하다.\n② 고객의 피드백을 면밀히 분석함으로써 브랜드의 성공 가능성을 높일 수 있다.\n③ 신속한 고객 응대를 통해서 고객의 긍정적인 반응을 이끌어 낼 수 있다.\n④ 브랜드 매니저에게는 고객의 부정적인 의견을 수용하는 태도가 요구된다.\n⑤ 고객의 의견을 경청하는 것은 브랜드의 새로운 이미지 창출에 도움이 된다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "고객과의 관계 증진을 위해 고객의 브랜드 칭찬에 응답하는 것은 중요하다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "고객의 피드백을 면밀히 분석함으로써 브랜드의 성공 가능성을 높일 수 있다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "신속한 고객 응대를 통해서 고객의 긍정적인 반응을 이끌어 낼 수 있다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "브랜드 매니저에게는 고객의 부정적인 의견을 수용하는 태도가 요구된다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "고객의 의견을 경청하는 것은 브랜드의 새로운 이미지 창출에 도움이 된다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1327,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          13
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_22",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 22,
+        "group": "topic",
+        "type": "요지",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "브랜드에 대한 고객의 칭찬에 직접 응답하면 고객을 인정하고 장기적인 팬 관계로 발전시킬 수 있다는 글입니다.",
+        "typeApproach": "요지는 사례의 세부 내용보다 반복되는 문제 상황과 글 끝에서 제시한 놓친 기회를 묶어 정리합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "most brand compliments go unanswered.",
+            "charStart": 952,
+            "role": "문제 상황",
+            "translation": "대부분의 브랜드 칭찬이 응답을 받지 못한다고 지적합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "create a solid fan based on them.",
+            "charStart": 1064,
+            "role": "기대 효과",
+            "translation": "칭찬에 응답하면 견고한 팬 관계를 만들 수 있습니다."
+          }
+        ],
+        "correctReason": "고객의 브랜드 칭찬에 응답해 관계를 높이는 것이 핵심이므로 정답은 ①입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "고객의 피드백을 면밀히 분석함으로써 브랜드의 성공 가능성을 높일 수 있다.",
+          "reason": "피드백 분석 자체보다 칭찬을 한 고객에게 브랜드가 직접 응답해야 한다는 행동 요구가 중심입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_23",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 23,
+      "type": "주제",
+      "group": "topic",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "rawText": "23. \t다음 글의 주제로 가장 적절한 것은?\nManagers \tof \tnatural \tresources \ttypically \tface \tmarket\nincentives that provide financial rewards for exploitation. For\nexample, owners of forest lands have a market incentive to cut\ndown trees rather than manage the forest for carbon capture,\nwildlife habitat, flood protection, and other ecosystem services.\nThese services provide the owner with no financial benefits,\nand thus are unlikely to influence management decisions. But\nthe economic benefits provided by these services, based on\ntheir non-market values, may exceed the economic value of the\ntimber. For example, a United Nations initiative has estimated\nthat the economic benefits of ecosystem services provided by\ntropical forests, including climate regulation, water purification,\nand erosion prevention, are over three times greater per hectare\nthan the market benefits. Thus cutting down the trees is\neconomically inefficient, and markets are not sending the correct\n“signal” to favor ecosystem services over extractive uses.\n* exploitation: 이용 \t** timber: 목재\n① necessity of calculating the market values of ecosystem services\n② significance of weighing forest resources’ non-market values\n③ impact of using forest resources to maximize financial benefits\n④ merits of balancing forests’ market and non-market values\n⑤ ways of increasing the efficiency of managing natural resources",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "necessity of calculating the market values of ecosystem services"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "significance of weighing forest resources’ non-market values"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "impact of using forest resources to maximize financial benefits"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "merits of balancing forests’ market and non-market values"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "ways of increasing the efficiency of managing natural resources"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1375,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          14
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_23",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 23,
+        "group": "topic",
+        "type": "주제",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "숲의 생태계 서비스는 시장 가격에 드러나지 않지만 목재보다 더 큰 경제 가치를 가질 수 있으므로 함께 평가해야 합니다.",
+        "typeApproach": "주제 문제는 반복되는 대조 축인 시장 가치와 비시장 가치를 확인하고 필자의 평가 방향을 붙입니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "These services provide the owner with no financial benefits",
+            "charStart": 338,
+            "role": "시장 한계",
+            "translation": "생태계 서비스는 소유자에게 직접적인 시장 수익을 주지 않습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "over three times greater per hectare",
+            "charStart": 801,
+            "role": "비시장 가치",
+            "translation": "생태계 서비스의 경제적 이익이 시장 이익보다 훨씬 클 수 있습니다."
+          }
+        ],
+        "correctReason": "숲 자원의 비시장 가치를 의사결정에 반영해야 한다는 주제이므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "merits of balancing forests’ market and non-market values",
+          "reason": "두 가치를 단순히 균형 배분하자는 것이 아니라 시장이 놓치는 비시장 가치의 중요성을 강조합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_24",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 24,
+      "type": "제목",
+      "group": "topic",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "24. 다음 글의 제목으로 가장 적절한 것은? [3점]",
+      "rawText": "24. \t다음 글의 제목으로 가장 적절한 것은? [3점]\nThe concept of overtourism rests on a particular assumption\nabout people and places common in tourism studies and the\nsocial sciences in general. Both are seen as clearly defined and\ndemarcated. People are framed as bounded social actors either\nplaying the role of hosts or guests. Places, in a similar way, are\ntreated as stable containers with clear boundaries. Hence,\nplaces can be full of tourists and thus suffer from overtourism.\nBut what does it mean for a place to be full of people? Indeed,\nthere are examples of particular attractions that have limited\ncapacity and where there is actually no room for more visitors.\nThis is not least the case with some man-made constructions\nsuch as the Eiffel Tower. However, with places such as cities,\nregions or even whole countries being promoted as destinations\nand described as victims of overtourism, things become more\ncomplex. What is excessive or out of proportion is highly\nrelative and might be more related to other aspects than physical\ncapacity, such as natural degradation and economic leakages\n(not to mention politics and local power dynamics).\n* demarcate: 경계를 정하다\n① The Solutions to Overtourism: From Complex to Simple\n② What Makes Popular Destinations Attractive to Visitors?\n③ Are Tourist Attractions Winners or Losers of Overtourism?\n④ The Severity of Overtourism: Much Worse than Imagined\n⑤ Overtourism: Not Simply a Matter of People and Places\n\n-- 3 of 8 --\n\n4 \t홀수형\n4 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "The Solutions to Overtourism: From Complex to Simple"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "What Makes Popular Destinations Attractive to Visitors?"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Are Tourist Attractions Winners or Losers of Overtourism?"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "The Severity of Overtourism: Much Worse than Imagined"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Overtourism: Not Simply a Matter of People and Places"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1472,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 3,
+        "explanationPages": [
+          15
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_24",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 24,
+        "group": "topic",
+        "type": "제목",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "오버투어리즘은 단순히 일정 공간에 사람이 가득 찬 상태가 아니라 환경·경제·정치 요인이 얽힌 상대적 개념입니다.",
+        "typeApproach": "제목은 앞부분의 통념과 뒤에서 제시한 반론을 모두 포함하도록 핵심 대조를 압축한 선지를 고릅니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "things become more",
+            "charStart": 886,
+            "role": "통념의 한계",
+            "translation": "도시나 국가 단위의 오버투어리즘은 단순한 수용 인원 문제보다 복잡합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "What is excessive or out of proportion is highly",
+            "charStart": 914,
+            "role": "상대성",
+            "translation": "무엇이 과도한지는 고정된 기준이 아니라 매우 상대적입니다."
+          }
+        ],
+        "correctReason": "사람 수와 장소의 물리적 수용량만으로 설명할 수 없다는 제목이므로 정답은 ⑤입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "The Severity of Overtourism: Much Worse than Imagined",
+          "reason": "글은 오버투어리즘이 예상보다 심각하다고 과장하지 않고 개념을 단순화할 수 없다고 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_25",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 25,
+      "type": "도표",
+      "group": "info",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "25. 다음 도표의 내용과 일치하지 않는 것은?",
+      "rawText": "25. \t다음 도표의 내용과 일치하지 않는 것은?\nThe above graph shows the percentages of the respondents\nin five countries who sometimes or often actively avoided\nnews in 2017, 2019, and 2022. ① For each of the three years,\nIreland showed the highest percentage of the respondents who\nsometimes or often actively avoided news, among the countries\nin the graph. ② In Germany, the percentage of the respondents\nwho sometimes or often actively avoided news was less than\n30% in each of the three years. ③ In Denmark, the percentage\nof the respondents who sometimes or often actively avoided\nnews in 2019 was higher than that in 2017 but lower than that\nin 2022. ④ In Finland, the percentage of the respondents who\nsometimes or often actively avoided news in 2019 was lower\nthan that in 2017, which was also true for Japan. ⑤ In Japan,\nthe percentage of the respondents who sometimes or often\nactively avoided news did not exceed 15% in each of the three\nyears.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "For each of the three years, Ireland showed the highest percentage of the respondents who sometimes or often actively avoided news, among the countries in the graph."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "In Germany, the percentage of the respondents who sometimes or often actively avoided news was less than 30% in each of the three years."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "In Denmark, the percentage of the respondents who sometimes or often actively avoided news in 2019 was higher than that in 2017 but lower than that in 2022."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "In Finland, the percentage of the respondents who sometimes or often actively avoided news in 2019 was lower than that in 2017, which was also true for Japan."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "In Japan, the percentage of the respondents who sometimes or often actively avoided news did not exceed 15% in each of the three years."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 937,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "grouped_bar_chart",
+        "assetPath": "english/assets/2024-csat/q25-figure.png",
+        "sha256": "8caabd6566cfdeefafefdb8a2210b5cf0f62482e3291e79c2d8f8f5701333b82",
+        "sourcePage": 4,
+        "alt": "Percentages of respondents who sometimes or often actively avoided news. Ireland: 2017 30%, 2019 32%, 2022 41%. Germany: 2017 24%, 2019 25%, 2022 29%. Denmark: 2017 14%, 2019 15%, 2022 20%. Finland: 2017 18%, 2019 17%, 2022 20%. Japan: 2017 6%, 2019 11%, 2022 14%."
+      },
+      "review": {
+        "id": "2024_csat_25",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 25,
+        "group": "info",
+        "type": "도표",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "도표에서 핀란드는 2019년 수치가 2017년보다 낮지만 일본은 2019년 수치가 2017년보다 높습니다.",
+        "typeApproach": "도표 문제는 한 선지 안에 묶인 국가·연도 수치를 각각 대조해 한 부분만 틀린 문장을 찾습니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Finland: 2017 18%, 2019 17%, 2022 20%.",
+            "role": "핀란드 수치",
+            "translation": "핀란드는 2019년 17%로 2017년 18%보다 낮습니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Japan: 2017 6%, 2019 11%, 2022 14%.",
+            "role": "일본 수치",
+            "translation": "일본은 2019년 11%로 2017년 6%보다 높습니다."
+          }
+        ],
+        "correctReason": "일본도 2019년이 더 낮다고 한 부분이 도표와 반대이므로 정답은 ④입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "For each of the three years, Ireland showed the highest percentage of the respondents who sometimes or often actively avoided news, among the countries in the graph.",
+          "reason": "아일랜드는 2017·2019·2022년 모두 다섯 국가 가운데 가장 높은 수치를 보입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_26",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 26,
+      "type": "내용 일치",
+      "group": "info",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "26. Charles H. Townes에 관한 다음 글의 내용과 일치하지 않는",
+      "rawText": "26. \tCharles H. Townes에 관한 다음 글의 내용과 일치하지 않는\n것은?\nCharles H. Townes, one of the most influential American\nphysicists, was born in South Carolina. In his childhood, he\ngrew up on a farm, studying the stars in the sky. He earned his\ndoctoral degree from the California Institute of Technology in\n1939, and then he took a job at Bell Labs in New York City.\nAfter World War II, he became an associate professor of physics\nat Columbia University. In 1958, Townes and his co-researcher\nproposed the concept of the laser. Laser technology won quick\nacceptance in industry and research. He received the Nobel\nPrize in Physics in 1964. He was also involved in Project\nApollo, the moon landing project. His contribution is priceless\nbecause \tthe \tInternet \tand \tall \tdigital \tmedia \twould \tbe\nunimaginable without the laser.\n① 어린 시절에 농장에서 성장하였다.\n② 박사 학위를 받기 전에 Bell Labs에서 일했다.\n③ 1958년에 레이저의 개념을 제안하였다.\n④ 1964년에 노벨 물리학상을 수상하였다.\n⑤ 달 착륙 프로젝트에 관여하였다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "어린 시절에 농장에서 성장하였다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "박사 학위를 받기 전에 Bell Labs에서 일했다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "1958년에 레이저의 개념을 제안하였다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "1964년에 노벨 물리학상을 수상하였다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "달 착륙 프로젝트에 관여하였다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 936,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          16
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_26",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 26,
+        "group": "info",
+        "type": "내용 일치",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "Townes는 박사 학위를 받은 뒤 Bell Labs에서 일했으므로 두 사건의 순서를 뒤집은 선지가 틀렸습니다.",
+        "typeApproach": "내용 불일치는 인물의 경력을 시간 순서로 배열하고 선지의 전후 관계를 원문과 하나씩 대조합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "doctoral degree from the California Institute of Technology",
+            "charStart": 230,
+            "role": "학위 취득",
+            "translation": "Townes는 먼저 캘리포니아 공과대학교에서 박사 학위를 받았습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "then he took a job at Bell Labs",
+            "charStart": 303,
+            "role": "이후 경력",
+            "translation": "그 뒤에 Bell Labs에서 일하기 시작했습니다."
+          }
+        ],
+        "correctReason": "박사 학위 전에 Bell Labs에서 일했다고 순서를 뒤집었으므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "1958년에 레이저의 개념을 제안하였다.",
+          "reason": "1958년에 공동 연구자와 레이저 개념을 제안했다는 내용은 원문에 그대로 제시되어 있습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_27",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 27,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "27. Turtle Island Boat Tour에 관한 다음 안내문의 내용과 일치하지",
+      "rawText": "27. \tTurtle Island Boat Tour에 관한 다음 안내문의 내용과 일치하지\n않는 것은?\n① 주말에는 하루에 두 번 운영된다.\n② 17세 이상만 참가할 수 있다.\n③ 당일 예약이 가능하다.\n④ 출발 시간 이후에는 환불이 불가능하다.\n⑤ 전문 다이버와 함께 하는 스노클링 활동이 있다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "주말에는 하루에 두 번 운영된다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "17세 이상만 참가할 수 있다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "당일 예약이 가능하다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "출발 시간 이후에는 환불이 불가능하다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "전문 다이버와 함께 하는 스노클링 활동이 있다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 165,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "figure": {
+        "kind": "notice_with_schedule",
+        "assetPath": "english/assets/2024-csat/q27-notice.png",
+        "sha256": "5354577f55eab335ddd9d6304245833d2563c67b377a9048aedcbc6491ff204d",
+        "sourcePage": 4,
+        "alt": "Turtle Island Boat Tour notice. Dates: June 1 to August 31, 2024. Weekdays: one tour from 1 p.m. to 5 p.m. Weekends: two tours, 9 a.m. to 1 p.m. and 1 p.m. to 5 p.m. Only those aged 17 and over can participate. Bookings must be completed no later than 2 days before the day of the tour. No refunds after the departure time. Activities include snorkeling with a professional diver and feeding tropical fish."
+      },
+      "review": {
+        "id": "2024_csat_27",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 27,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "보트 투어 예약은 투어 당일이 아니라 최소 이틀 전까지 완료해야 한다는 안내문입니다.",
+        "typeApproach": "안내문 불일치는 날짜·연령·예약 마감·환불·활동을 항목별로 분리해 선지와 대조합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Bookings must be completed no later than 2 days before the day of the tour.",
+            "role": "예약 마감",
+            "translation": "예약은 투어 당일보다 늦어도 이틀 전에 완료해야 합니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Weekends: two tours",
+            "role": "주말 운영",
+            "translation": "주말에는 오전과 오후에 한 번씩 모두 두 번 운영합니다."
+          }
+        ],
+        "correctReason": "당일 예약이 가능하다는 설명이 예약 마감 조건과 어긋나므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "주말에는 하루에 두 번 운영된다.",
+          "reason": "주말 시간표에는 오전과 오후 두 번의 투어가 명시되어 있어 원문과 일치합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_28",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 28,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "28. 2023 Eastland High School Video Clip Contest에 관한 다음",
+      "rawText": "28. \t2023 Eastland High School Video Clip Contest에 관한 다음\n안내문의 내용과 일치하는 것은?\n① 출품작의 주제가 정해져 있지 않다.\n② 한 달 동안 동영상을 접수할 예정이다.\n③ 출품할 동영상의 길이는 3분을 초과할 수 없다.\n④ 출품작은 학생 1인당 두 개로 제한된다.\n⑤ 학생회가 수상자를 선정할 것이다.\n2023 Eastland High School Video Clip Contest\nShoot and share your most memorable moments with your\nteachers and friends!\nGuidelines\n∙Theme: “Joyful Moments” in Our Growing Community\n∙Submissions will be accepted from December 1 to December 14.\n∙Submissions should be uploaded to our school website.\n󰠂 Video length cannot exceed three minutes.\n󰠂 Entries are limited to one per student.\nPrizes\n∙1st place: $100 gift card, 2nd place: $50 gift card\n∙Winning videos will be posted to our school’s app.\n∙The prize winners will be chosen by the school art teachers.\n※ For more information, visit the school website.\nTurtle Island Boat Tour\nThe fantastic Turtle Island Boat Tour invites you to the\nbeautiful sea world.\nDates: From June 1 to August 31, 2024\nTour Times\nWeekdays \t1 p.m.—5 p.m.\nWeekends 9 a.m.—1 p.m.\n1 p.m.—5 p.m.\n※ Each tour lasts four hours.\nTickets & Booking\n∙$50 per person for each tour\n(Only those aged 17 and over can participate.)\n∙Bookings must be completed no later than 2 days before\nthe day of the tour.\n∙No refunds after the departure time\n∙Each tour group size is limited to 10 participants.\nActivities\n∙Snorkeling with a professional diver\n∙Feeding tropical fish\n※ Feel free to explore our website, www.snorkelingti.com.\n\n-- 4 of 8 --\n\n홀수형 \t5\n5 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "출품작의 주제가 정해져 있지 않다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "한 달 동안 동영상을 접수할 예정이다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "출품할 동영상의 길이는 3분을 초과할 수 없다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "출품작은 학생 1인당 두 개로 제한된다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "학생회가 수상자를 선정할 것이다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1466,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 4,
+        "explanationPages": [
+          17
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "figure": {
+        "kind": "contest_notice",
+        "assetPath": "english/assets/2024-csat/q28-notice.png",
+        "sha256": "f7d5aa7d9dfcaf455ac7f16e15d0208cef3f1cf2a2ba1fd42d19fb53578ecaa6",
+        "sourcePage": 4,
+        "alt": "2023 Eastland High School Video Clip Contest notice. Theme: Joyful Moments in Our Growing Community. Submissions: December 1 to December 14. Video length cannot exceed three minutes. Entries are limited to one per student. Prize winners will be chosen by the school art teachers."
+      },
+      "review": {
+        "id": "2024_csat_28",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 28,
+        "group": "info",
+        "type": "안내문 일치",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "영상 공모전은 출품 영상 길이를 3분 이하로 제한하며 학생 한 명당 한 작품만 허용합니다.",
+        "typeApproach": "안내문 일치는 주제·접수 기간·분량·출품 수·심사 주체를 수치와 주체 중심으로 확인합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Video length cannot exceed three minutes.",
+            "role": "영상 길이",
+            "translation": "출품 영상의 길이는 3분을 넘을 수 없습니다."
+          },
+          {
+            "in": "figure",
+            "quote": "Entries are limited to one per student.",
+            "role": "출품 수",
+            "translation": "학생 한 명당 한 작품만 출품할 수 있습니다."
+          }
+        ],
+        "correctReason": "영상 길이가 3분을 초과할 수 없다는 안내와 일치하므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "출품작은 학생 1인당 두 개로 제한된다.",
+          "reason": "출품작은 학생 한 명당 두 개가 아니라 한 개로 제한되어 있습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_29",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 29,
+      "type": "어법",
+      "group": "grammar",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "29. 다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?",
+      "rawText": "29. \t다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?\nA number of studies provide substantial evidence of an\ninnate human disposition to respond differentially to social\nstimuli. From birth, infants will orient preferentially towards\nthe human face and voice, ① seeming to know that such\nstimuli are particularly meaningful for them. Moreover, they\nregister this connection actively, imitating a variety of facial\ngestures that are presented to them ― tongue protrusions, lip\ntightenings, mouth openings. They will even try to match\ngestures ② which they have some difficulty, experimenting with\ntheir own faces until they succeed. When they ③ do succeed,\nthey show pleasure by a brightening of their eyes; when they\nfail, they show distress. In other words, they not only have\nan innate capacity for matching their own kinaesthetically\nexperienced bodily movements with ④ those of others that are\nvisually perceived; they have an innate drive to do so. That is,\nthey seem to have an innate drive to imitate others whom they\njudge ⑤ to be ‘like me’.\n* innate: 타고난 \t** disposition: 성향\n*** kinaesthetically: 운동감각적으로",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "seeming"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "which"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "do"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "those"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "to be"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1092,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          18
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_29",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 29,
+        "group": "grammar",
+        "type": "어법",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "difficulty는 전치사 with를 필요로 하므로 관계대명사 which 앞에도 with가 있어야 하는 어법 문제입니다.",
+        "typeApproach": "어법 문제는 밑줄 단어만 보지 말고 동사·형용사의 결합 방식과 뒤 절에서 빠진 문장 성분을 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "gestures ② which they have some difficulty",
+            "charStart": 512,
+            "role": "전치사 누락",
+            "translation": "have difficulty with gestures 구조이므로 which 앞에 with가 필요합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "judge ⑤ to be ‘like me’.",
+            "charStart": 1004,
+            "role": "정상 구조",
+            "translation": "judge 목적어 뒤의 to be 보어 구조는 문법적으로 올바릅니다."
+          }
+        ],
+        "correctReason": "② which는 with which로 고쳐야 하므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "to be",
+          "reason": "judge others to be like me는 목적어와 목적격 보어가 연결된 올바른 구조입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_30",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 30,
+      "type": "어휘",
+      "group": "vocab",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "30. 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지",
+      "rawText": "30. \t다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지\n않은 것은? [3점]\nBazaar economies feature an apparently flexible price-setting\nmechanism that sits atop more enduring ties of shared culture.\nBoth the buyer and seller are aware of each other’s ① restrictions.\nIn Delhi’s bazaars, buyers and sellers can ② assess to a large\nextent the financial constraints that other actors have in their\neveryday life. Each actor belonging to a specific economic class\nunderstands what the other sees as a necessity and a luxury.\nIn the case of electronic products like video games, they are not\na ③ necessity at the same level as other household purchases\nsuch as food items. So, the seller in Delhi’s bazaars is careful\nnot to directly ask for very ④ low prices for video games\nbecause at no point will the buyer see possession of them as an\nabsolute necessity. Access to this type of knowledge establishes\na price consensus by relating to each other’s preferences and\nlimitations of belonging to a ⑤ similar cultural and economic\nuniverse.\n* constraint: 압박 \t** consensus: 일치\n[31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "restrictions"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "assess"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "necessity"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "low"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "similar"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1083,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_30",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 30,
+        "group": "vocab",
+        "type": "어휘",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "비필수품인 비디오 게임에는 구매자가 높은 가격을 받아들이기 어려우므로 판매자가 높은 가격을 요구하지 않아야 합니다.",
+        "typeApproach": "어휘 문제는 밑줄 단어가 앞뒤 인과관계와 같은 방향인지 확인하고 반대말을 넣어 논리를 복구합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "not to directly ask for very ④ low prices for video games",
+            "charStart": 690,
+            "role": "문맥 충돌",
+            "translation": "비필수품이라서 낮은 가격을 요구하지 않는다는 표현은 뒤 인과와 맞지 않습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "absolute necessity.",
+            "charStart": 812,
+            "role": "가격 제약",
+            "translation": "구매자가 절대적 필요로 보지 않으므로 높은 가격을 받아들이기 어렵습니다."
+          }
+        ],
+        "correctReason": "④ low는 high로 바꾸어야 가격 논리가 성립하므로 정답은 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "similar",
+          "reason": "구매자와 판매자는 비슷한 문화·경제 환경을 공유하므로 similar는 가격 합의의 배경과 맞습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_31",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 31,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "31. Over the last decade the attention given to how children",
+      "rawText": "31. \tOver the last decade the attention given to how children\nlearn to read has foregrounded the nature of textuality, and of\nthe different, interrelated ways in which readers of all ages\nmake texts mean. ‘Reading’ now applies to a greater number of\nrepresentational forms than at any time in the past: pictures,\nmaps, \tscreens, \tdesign \tgraphics \tand \tphotographs \tare \tall\nregarded as text. In addition to the innovations made possible\nin picture books by new printing processes, design features\nalso predominate in other kinds, such as books of poetry and\ninformation texts. Thus, reading becomes a more complicated\nkind of interpretation than it was when children’s attention\nwas focused on the printed text, with sketches or pictures as an\nadjunct. Children now learn from a picture book that words\nand illustrations complement and enhance each other. Reading\nis not simply \t. Even in the easiest\ntexts, what a sentence ‘says’ is often not what it means.\n* adjunct: 부속물\n① knowledge acquisition \t② word recognition\n③ imaginative play \t④ subjective interpretation\n⑤ image mapping",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "knowledge acquisition"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "word recognition"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "imaginative play"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "subjective interpretation"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "image mapping"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1082,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          19
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_31",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 31,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "현대의 읽기는 글자 인식만이 아니라 단어와 그림 등 여러 표현 형식을 함께 해석하는 활동입니다.",
+        "typeApproach": "빈칸은 앞의 구체적 사례가 공통으로 부정하는 좁은 개념을 찾고 뒤 문장의 재진술로 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "illustrations complement and enhance each other.",
+            "charStart": 808,
+            "role": "복합 해석",
+            "translation": "단어와 그림은 서로 보완하며 의미를 만듭니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "what a sentence ‘says’ is often not what it means.",
+            "charStart": 909,
+            "role": "표면 의미의 한계",
+            "translation": "문장이 말하는 표면과 실제 의미가 다를 수 있습니다."
+          }
+        ],
+        "correctReason": "읽기는 단순한 단어 인식이 아니라 복합 해석이므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "subjective interpretation",
+          "reason": "해석이 복잡해졌다는 말이 곧 읽기가 전적으로 주관적 해석이라는 뜻은 아닙니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_32",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 32,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "32. A musical score within any film can add an additional layer",
+      "rawText": "32. \tA musical score within any film can add an additional layer\nto the film text, which goes beyond simply imitating the action\nviewed. In films that tell of futuristic worlds, composers, much\nlike sound designers, have added freedom to create a world that\nis unknown and new to the viewer. However, unlike sound\ndesigners, composers often shy away from creating unique\npieces that reflect these new worlds and often present musical\nscores that possess familiar structures and cadences. While it is\npossible that this may interfere with creativity and a sense of\nspace and time, it in fact \t.\nThrough recognizable scores, visions of the future or a galaxy\nfar, far away can be placed within a recognizable context.\nSuch familiarity allows the viewer to be placed in a comfortable\nspace so that the film may then lead the viewer to what is an\nunfamiliar, but acceptable vision of a world different from their\nown.\n* score: 악보 \t** cadence: (율동적인) 박자\n① frees the plot of its familiarity\n② aids in viewer access to the film\n③ adds to an exotic musical experience\n④ orients audiences to the film’s theme\n⑤ inspires viewers to think more deeply\n\n-- 5 of 8 --\n\n6 \t홀수형\n6 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "frees the plot of its familiarity"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "aids in viewer access to the film"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "adds to an exotic musical experience"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "orients audiences to the film’s theme"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "inspires viewers to think more deeply"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1165,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 5,
+        "explanationPages": [
+          20
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_32",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 32,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "미래 세계를 다룬 영화에서도 익숙한 음악 구조는 관객에게 편안한 맥락을 제공해 낯선 세계를 받아들이게 합니다.",
+        "typeApproach": "빈칸 뒤의 Through와 Such가 가리키는 익숙한 음악의 효과를 찾아 빈칸을 원인과 결과로 연결합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "scores that possess familiar structures and cadences.",
+            "charStart": 434,
+            "role": "익숙한 음악",
+            "translation": "작곡가들은 익숙한 구조와 박자의 음악을 제시합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "placed in a comfortable",
+            "charStart": 757,
+            "role": "관객 효과",
+            "translation": "그 익숙함이 관객을 편안한 인식 공간에 놓아 줍니다."
+          }
+        ],
+        "correctReason": "익숙한 음악이 관객의 영화 접근을 돕는다는 뜻이므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "orients audiences to the film’s theme",
+          "reason": "글은 음악이 주제를 직접 알려 준다고 하지 않고 낯선 세계를 익숙한 맥락에서 받아들이게 한다고 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_33",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 33,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "33. There have been psychological studies in which subjects",
+      "rawText": "33. \tThere have been psychological studies in which subjects\nwere shown photographs of people’s faces and asked to\nidentify the expression or state of mind evinced. The results\nare invariably very mixed. In the 17th century the French\npainter and theorist Charles Le Brun drew a series of faces\nillustrating the various emotions that painters could be called\nupon \tto \trepresent. \tWhat \tis \tstriking \tabout \tthem \tis \tthat\n. What\nis missing in all this is any setting or context to make the\nemotion determinate. We must know who this person is, who\nthese other people are, what their relationship is, what is at\nstake in the scene, and the like. In real life as well as in\npainting we do not come across just faces; we encounter\npeople in particular situations and our understanding of people\ncannot somehow be precipitated and held isolated from the\nsocial and human circumstances in which they, and we, live\nand breathe and have our being. [3점]\n* evince: (감정 따위를) 분명히 나타내다 \t** precipitate: 촉발하다\n① all of them could be matched consistently with their intended emotions\n② every one of them was illustrated with photographic precision\n③ each of them definitively displayed its own social narrative\n④ most of them would be seen as representing unique characteristics\n⑤ any number of them could be substituted for one another without loss",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "all of them could be matched consistently with their intended emotions"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "every one of them was illustrated with photographic precision"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "each of them definitively displayed its own social narrative"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "most of them would be seen as representing unique characteristics"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "any number of them could be substituted for one another without loss"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1335,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          21
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_33",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 33,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "얼굴 표정만 떼어 놓으면 맥락이 없어 감정을 확정할 수 없으므로 여러 표정을 서로 바꾸어도 의미 손실이 크지 않습니다.",
+        "typeApproach": "빈칸 뒤에서 부족하다고 지적한 조건을 확인하고 그 조건이 없을 때 앞의 사례가 어떤 한계를 보이는지 추론합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "any setting or context to make the",
+            "charStart": 456,
+            "role": "맥락 부재",
+            "translation": "감정을 확정하려면 배경과 맥락이 필요한데 그것이 빠져 있습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "people in particular situations",
+            "charStart": 729,
+            "role": "실제 판단 단위",
+            "translation": "실제 삶에서는 얼굴만이 아니라 특정 상황 속의 사람을 만납니다."
+          }
+        ],
+        "correctReason": "맥락 없는 표정들은 서로 대체해도 구별되는 감정이 확정되지 않으므로 정답은 ⑤입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "all of them could be matched consistently with their intended emotions",
+          "reason": "연구 결과가 일관되지 않았으므로 표정과 의도된 감정을 안정적으로 맞출 수 있다는 설명은 반대입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_34",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 34,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "34. Everyone who drives, walks, or swipes a transit card in a",
+      "rawText": "34. \tEveryone who drives, walks, or swipes a transit card in a\ncity views herself as a transportation expert from the moment\nshe walks out the front door. And how she views the street\n. That’s\nwhy we find so many well-intentioned and civic-minded\ncitizens arguing past one another. At neighborhood meetings\nin school auditoriums, and in back rooms at libraries and\nchurches, \tlocal \tresidents \tacross \tthe \tnation \tgather \tfor\noften-contentious discussions about transportation proposals\nthat would change a city’s streets. And like all politics, all\ntransportation is local and intensely personal. A transit project\nthat could speed travel for tens of thousands of people can be\nstopped by objections to the loss of a few parking spaces or by\nthe simple fear that the project won’t work. It’s not a challenge\nof the data or the traffic engineering or the planning. Public\ndebates \tabout \tstreets \tare \ttypically \trooted \tin \temotional\nassumptions \tabout \thow \ta \tchange \twill \taffect \ta \tperson’s\ncommute, ability to park, belief about what is safe and what\nisn’t, or the bottom line of a local business. [3점]\n* swipe: 판독기에 통과시키다 \t** contentious: 논쟁적인\n*** commute: 통근\n① relies heavily on how others see her city’s streets\n② updates itself with each new public transit policy\n③ arises independently of the streets she travels on\n④ tracks pretty closely with how she gets around\n⑤ ties firmly in with how her city operates",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "relies heavily on how others see her city’s streets"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "updates itself with each new public transit policy"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "arises independently of the streets she travels on"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "tracks pretty closely with how she gets around"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "ties firmly in with how her city operates"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1421,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          22
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_34",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 34,
+        "group": "blank",
+        "type": "빈칸",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "도시 교통에 대한 개인의 견해는 그 사람이 실제로 어떤 이동 수단을 이용하는지와 밀접하게 연결됩니다.",
+        "typeApproach": "빈칸 뒤의 갈등 사례가 개인마다 다른 이유를 찾고 이동 경험과 판단의 관계를 가장 직접적으로 표현한 선지를 고릅니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "transportation is local and intensely personal.",
+            "charStart": 551,
+            "role": "개인성",
+            "translation": "교통 문제는 지역적이면서 개인 경험과 강하게 연결됩니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "loss of a few parking spaces",
+            "charStart": 709,
+            "role": "이동 방식의 이해관계",
+            "translation": "주차 공간 손실 같은 개인적 이해관계가 대규모 사업을 막을 수 있습니다."
+          }
+        ],
+        "correctReason": "거리 인식은 자신의 이동 방식과 가깝게 맞물리므로 정답은 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "ties firmly in with how her city operates",
+          "reason": "도시 전체가 어떻게 운영되는가보다 개인이 평소 어떻게 이동하는가가 견해를 좌우한다는 글입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_35",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 35,
+      "type": "무관한 문장",
+      "group": "irrelevant",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "35. 다음 글에서 전체 흐름과 관계 없는 문장은?",
+      "rawText": "35. \t다음 글에서 전체 흐름과 관계 없는 문장은?\nSpeaking fast is a high-risk proposition. It’s nearly impossible\nto maintain the ideal conditions to be persuasive, well-spoken,\nand effective when the mouth is traveling well over the speed\nlimit. ① Although we’d like to think that our minds are sharp\nenough to always make good decisions with the greatest\nefficiency, they just aren’t. ② In reality, the brain arrives at an\nintersection of four or five possible things to say and sits idling\nfor a couple of seconds, considering the options. ③ Making a\ngood decision helps you speak faster because it provides you\nwith more time to come up with your responses. ④ When the\nbrain \tstops \tsending \tnavigational \tinstructions \tback \tto \tthe\nmouth and the mouth is moving too fast to pause, that’s when\nyou get a verbal fender bender, otherwise known as filler.\n⑤ Um, ah, you know, and like are what your mouth does when\nit has nowhere to go.\n[36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한\n것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Although we’d like to think that our minds are sharp enough to always make good decisions with the greatest efficiency, they just aren’t."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "In reality, the brain arrives at an intersection of four or five possible things to say and sits idling for a couple of seconds, considering the options."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Making a good decision helps you speak faster because it provides you with more time to come up with your responses."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "When the brain stops sending navigational instructions back to the mouth and the mouth is moving too fast to pause, that’s when you get a verbal fender bender, otherwise known as filler."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Um, ah, you know, and like are what your mouth does when it has nowhere to go."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 964,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_35",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 35,
+        "group": "irrelevant",
+        "type": "무관한 문장",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "말을 너무 빨리 하면 뇌가 표현을 선택할 시간을 잃어 머뭇거림 표현이 생긴다는 흐름에서 ③만 빠른 말하기를 돕는다는 반대 내용입니다.",
+        "typeApproach": "무관한 문장은 공통 주제어만 보지 말고 앞뒤 문장의 인과 방향을 끊거나 뒤집는 문장을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Speaking fast is a high-risk proposition.",
+            "charStart": 30,
+            "role": "중심 주장",
+            "translation": "빠르게 말하는 것은 위험이 큰 행동이라고 시작합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "otherwise known as filler.",
+            "charStart": 812,
+            "role": "결과",
+            "translation": "입이 너무 빨리 움직이면 말 채움 표현이 생긴다고 설명합니다."
+          }
+        ],
+        "correctReason": "③은 좋은 결정이 더 빨리 말하게 돕는다고 하여 느린 선택 과정의 위험을 설명하는 흐름과 어긋나므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "In reality, the brain arrives at an intersection of four or five possible things to say and sits idling for a couple of seconds, considering the options.",
+          "reason": "②는 뇌가 여러 표현 중 하나를 고르느라 잠시 멈춘다는 설명으로 뒤의 말 막힘 원인을 준비합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_36",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 36,
+      "type": "순서",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "36.",
+      "rawText": "36.\nNegotiation can be defined as an attempt to explore and\nreconcile \tconflicting \tpositions \tin \torder \tto \treach \tan\nacceptable outcome.\n(A) Areas of difference can and do frequently remain, and\nwill perhaps be the subject of future negotiations, or\nindeed remain irreconcilable. In those instances in which\nthe parties have highly antagonistic or polarised relations,\nthe process is likely to be dominated by the exposition,\nvery often in public, of the areas of conflict.\n(B) In \tthese \tand \tsometimes \tother \tforms \tof \tnegotiation,\nnegotiation \tserves \tfunctions \tother \tthan \treconciling\nconflicting interests. These will include delay, publicity,\ndiverting attention or seeking intelligence about the other\nparty and its negotiating position.\n(C) Whatever the nature of the outcome, which may actually\nfavour \tone \tparty \tmore \tthan \tanother, \tthe \tpurpose \tof\nnegotiation is the identification of areas of common interest\nand conflict. In this sense, depending on the intentions of\nthe parties, the areas of common interest may be clarified,\nrefined and given negotiated form and substance.\n* reconcile: 화해시키다 \t** antagonistic: 적대적인\n*** exposition: 설명\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n\n-- 6 of 8 --\n\n홀수형 \t7\n7 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1277,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 6,
+        "explanationPages": [
+          23
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_36",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 36,
+        "group": "order",
+        "type": "순서",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "협상의 목적을 공통점과 갈등 영역의 확인으로 설명한 뒤 남는 차이와 적대적 협상, 그 밖의 기능으로 논의를 확장합니다.",
+        "typeApproach": "순서 문제는 대명사와 범위 표현을 추적해 일반 원칙에서 구체적 경우와 추가 기능으로 이어지는 연결을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "identification of areas of common interest",
+            "charStart": 889,
+            "role": "일반 목적",
+            "translation": "(C)가 협상의 공통 관심과 갈등 영역 확인이라는 일반 목적을 먼저 제시합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Areas of difference can and do frequently remain",
+            "charStart": 144,
+            "role": "남는 갈등",
+            "translation": "(A)는 (C)의 갈등 영역이 남을 수 있다고 이어 받습니다."
+          }
+        ],
+        "correctReason": "일반 목적 (C) 뒤에 남는 차이 (A), 그 형태의 다른 기능 (B)가 이어지므로 정답은 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(C) - (B) - (A)",
+          "reason": "(B)의 these forms는 (A)에서 설명한 적대적·갈등 중심 협상 형태를 받아야 하므로 (B)가 (A)보다 먼저 올 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_37",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 37,
+      "type": "순서",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "37.",
+      "rawText": "37.\nNorms emerge in groups as a result of people conforming\nto the behavior of others. Thus, the start of a norm occurs\nwhen one person acts in a particular manner in a particular\nsituation because she thinks she ought to.\n(A) Thus, she may prescribe the behavior to them by uttering\nthe norm statement in a prescriptive manner. Alternately,\nshe may communicate that conformity is desired in other\nways, such as by gesturing. In addition, she may threaten\nto sanction them for not behaving as she wishes. This will\ncause some to conform to her wishes and act as she acts.\n(B) But some others will not need to have the behavior prescribed\nto them. They will observe the regularity of behavior and\ndecide on their own that they ought to conform. They may do\nso for either rational or moral reasons.\n(C) Others may then conform to this behavior for a number of\nreasons. The person who performed the initial action may\nthink that others ought to behave as she behaves in\nsituations of this sort. [3점]\n* sanction: 제재를 가하다\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n[38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장\n적절한 곳을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1156,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          24
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_37",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 37,
+        "group": "order",
+        "type": "순서",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "한 사람이 시작한 행동에 다른 사람들이 따르고, 그 사람이 규범을 지시한 뒤 지시 없이 관찰만으로 따르는 사람도 생기는 과정입니다.",
+        "typeApproach": "순서 문제는 지시 대상인 others와 지시를 받지 않는 some others가 처음 등장하는 순서를 추적합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Others may then conform to this behavior for a number of",
+            "charStart": 801,
+            "role": "다른 사람의 등장",
+            "translation": "(C)가 최초 행동 뒤에 다른 사람들이 따를 수 있다고 연결합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "Thus, she may prescribe the behavior to them",
+            "charStart": 227,
+            "role": "규범 지시",
+            "translation": "(A)는 최초 행동자가 그들에게 행동을 지시할 수 있다고 설명합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "But some others will not need to have the behavior prescribed",
+            "charStart": 576,
+            "role": "대조",
+            "translation": "(B)는 지시가 필요한 사람들과 달리 관찰만으로 따르는 사람을 대조합니다."
+          }
+        ],
+        "correctReason": "최초 행동 이후 (C), 지시 방식 (A), 지시 없는 순응 (B)의 순서이므로 정답은 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(C) - (B) - (A)",
+          "reason": "(B)의 But some others는 (A)에서 행동을 지시받아 따르는 사람들을 먼저 제시한 뒤에만 자연스럽습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_38",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 38,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "38.",
+      "rawText": "38.\nYes, \tsome \tcontests \tare \tseen \tas \tworld \tclass, \tsuch \tas\nidentification of the Higgs particle or the development of\nhigh temperature superconductors.\nScience is sometimes described as a winner-take-all contest,\nmeaning that there are no rewards for being second or third.\nThis is an extreme view of the nature of scientific contests.\n( ① ) Even those who describe scientific contests in such a\nway note that it is a somewhat inaccurate description, given\nthat replication and verification have social value and are\ncommon in science. ( ② ) It is also inaccurate to the extent\nthat it suggests that only a handful of contests exist. ( ③ ) But\nmany other contests have multiple parts, and the number of\nsuch contests may be increasing. ( ④ ) By way of example,\nfor many years it was thought that there would be “one” cure\nfor cancer, but it is now realized that cancer takes multiple\nforms and that multiple approaches are needed to provide a\ncure. ( ⑤ ) There won’t be one winner ― there will be many.\n* replication: 반복 \t** verification: 입증",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1047,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          25
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_38",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 38,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "일부 과학 경쟁은 단일 승자가 있는 세계적 경쟁이지만 다른 많은 경쟁은 여러 부분과 다수의 승자를 가진다는 대조입니다.",
+        "typeApproach": "문장 삽입은 주어진 문장의 일부 사례 인정과 뒤의 But 대조가 맞물리는 위치를 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "only a handful of contests exist.",
+            "charStart": 606,
+            "role": "삽입 전 논점",
+            "translation": "바로 앞은 소수의 경쟁만 존재한다는 암시가 부정확하다고 말합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "identification of the Higgs particle",
+            "charStart": 65,
+            "role": "주어진 사례",
+            "translation": "주어진 문장은 힉스 입자 발견 같은 단일 승자형 사례를 인정합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "many other contests have multiple parts",
+            "charStart": 650,
+            "role": "삽입 후 대조",
+            "translation": "뒤 문장은 그러나 다른 많은 경쟁은 여러 부분을 가진다고 대조합니다."
+          }
+        ],
+        "correctReason": "소수의 단일 경쟁 사례를 인정한 뒤 다부분 경쟁과 대조해야 하므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "④",
+          "reason": "④ 뒤는 암 연구라는 다부분 경쟁의 예시가 이어져 이미 대조가 시작된 뒤이므로 주어진 문장이 늦습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_39",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 39,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "39.",
+      "rawText": "39.\nAt the next step in the argument, however, the analogy\nbreaks down.\nMisprints in a book or in any written message usually have a\nnegative impact on the content, sometimes (literally) fatally.\n( ① ) The displacement of a comma, for instance, may be a\nmatter of life and death. ( ② ) Similarly most mutations have\nharmful consequences for the organism in which they occur,\nmeaning \tthat \tthey \treduce \tits \treproductive \tfitness. ( ③ )\nOccasionally, however, a mutation may occur that increases\nthe fitness of the organism, just as an accidental failure to\nreproduce the text of the first edition might provide more\naccurate or updated information. ( ④ ) A favorable mutation\nis going to be more heavily represented in the next generation,\nsince the organism in which it occurred will have more offspring\nand mutations are transmitted to the offspring. ( ⑤ ) By\ncontrast, \tthere \tis \tno \tmechanism \tby \twhich \ta \tbook \tthat\naccidentally corrects the mistakes of the first edition will tend\nto sell better. [3점]\n* analogy: 유사 \t** mutation: 돌연변이",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1045,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          25
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_39",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 39,
+        "group": "order",
+        "type": "문장 삽입",
+        "answer": 4,
+        "answerMark": "④",
+        "summary": "유리한 돌연변이는 번식으로 다음 세대에 늘지만 책의 우연한 교정은 더 잘 팔릴 선택 장치가 없다는 지점에서 비유가 깨집니다.",
+        "typeApproach": "문장 삽입은 however가 예고하는 전환과 다음 문장의 생물학·책 차이 대조가 시작되는 경계를 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "At the next step in the argument, however",
+            "charStart": 4,
+            "role": "전환 예고",
+            "translation": "주어진 문장은 다음 논증 단계에서 기존 비유가 깨진다고 예고합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "more heavily represented in the next generation",
+            "charStart": 693,
+            "role": "생물학적 선택",
+            "translation": "유리한 돌연변이는 번식을 통해 다음 세대에 더 많이 남습니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "sell better.",
+            "charStart": 995,
+            "role": "책과의 차이",
+            "translation": "우연히 교정된 책에는 더 잘 팔리게 하는 같은 선택 장치가 없습니다."
+          }
+        ],
+        "correctReason": "유리한 변화의 공통점 뒤 번식 선택의 차이가 시작되는 ④가 알맞으므로 정답은 ④입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "③",
+          "reason": "③ 뒤까지는 돌연변이와 책의 오류 교정이 모두 유리할 수 있다는 유사성을 계속 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_40",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 40,
+      "type": "요약문",
+      "group": "summary",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),",
+      "rawText": "40. \t다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),\n(B)에 들어갈 말로 가장 적절한 것은?\nEven those with average talent can produce notable work\nin the various sciences, so long as they do not try to embrace\nall of them at once. Instead, they should concentrate attention\non one subject after another (that is, in different periods of\ntime), although later work will weaken earlier attainments\nin the other spheres. This amounts to saying that the brain\nadapts to universal science in time but not in space. In fact,\neven those with great abilities proceed in this way. Thus,\nwhen we are astonished by someone with publications in\ndifferent \tscientific \tfields, \trealize \tthat \teach \ttopic \twas\nexplored during a specific period of time. Knowledge\ngained earlier certainly will not have disappeared from the\nmind of the author, but it will have become simplified by\ncondensing into formulas or greatly abbreviated symbols.\nThus, sufficient space remains for the perception and\nlearning of new images on the cerebral blackboard.\n* condense: 응축하다 \t** cerebral: 대뇌의\n󰀻\nExploring one scientific subject after another \t(A)\nremarkable work across the sciences, as the previously\ngained knowledge is retained in simplified forms within\nthe brain, which \t(B) \troom for new learning.\n(A) \t(B)\n①\n③\n⑤\nenables\ndelays\ninvites\n……\n……\n……\nleaves\ncreates\ndiminishes\n(A) \t(B)\n②\n④\nchallenges\nrequires\n……\n……\nspares\nremoves\n\n-- 7 of 8 --\n\n8 \t홀수형\n8 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "enables …… leaves"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "challenges …… spares"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "delays …… creates"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "requires …… removes"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "invites …… diminishes"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 1401,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 7,
+        "explanationPages": [
+          26
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_40",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 40,
+        "group": "summary",
+        "type": "요약문",
+        "answer": 1,
+        "answerMark": "①",
+        "summary": "과학 분야를 시기별로 하나씩 탐구하면 이전 지식이 압축되어 남고 새로운 학습을 위한 뇌의 공간이 확보됩니다.",
+        "typeApproach": "요약문은 본문의 원인인 순차 탐구와 결과인 새 학습 공간을 각각 빈칸에 대응시킵니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "concentrate attention",
+            "charStart": 224,
+            "role": "순차 집중",
+            "translation": "한 시기에는 한 주제에 집중해야 한다고 설명합니다."
+          },
+          {
+            "in": "rawText",
+            "quote": "sufficient space remains",
+            "charStart": 903,
+            "role": "새 학습 공간",
+            "translation": "이전 지식이 압축되어 새 이미지를 학습할 충분한 공간이 남습니다."
+          }
+        ],
+        "correctReason": "순차 탐구가 뛰어난 성과를 가능하게 하고 새 학습 공간을 남기므로 정답은 ①입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "requires …… removes",
+          "reason": "순차 탐구는 새 학습 공간을 제거하지 않고 오히려 남기므로 removes는 본문과 반대입니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_41",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 41,
+      "type": "장문 제목",
+      "group": "long",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "41. 윗글의 제목으로 가장 적절한 것은?",
+      "rawText": "41. \t윗글의 제목으로 가장 적절한 것은?\n① The Troubling Relationship Between Scientists and the Media\n② A Scientist’s Choice: To Be Exposed to the Media or Not?\n③ Scientists! Be Cautious When Talking to the Media\n④ The Dilemma over Scientific Truth and Media Attention\n⑤ Who Are Responsible for Climate Issues, Scientists or the Media?",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nOne way to avoid contributing to overhyping a story would\nbe to say nothing. However, that is not a realistic option for\nscientists who feel a strong sense of responsibility to inform\nthe public and policymakers and/or to offer suggestions.\nSpeaking with members of the media has (a) advantages in\ngetting \ta \tmessage \tout \tand \tperhaps \treceiving \tfavorable\nrecognition, but it runs the risk of misinterpretations, the need\nfor repeated clarifications, and entanglement in never-ending\ncontroversy. Hence, the decision of whether to speak with the\nmedia tends to be highly individualized. Decades ago, it\nwas (b) unusual for Earth scientists to have results that were\nof interest to the media, and consequently few media contacts\nwere expected or encouraged. In the 1970s, the few scientists\nwho spoke frequently with the media were often (c) criticized\nby their fellow scientists for having done so. The situation\nnow is quite different, as many scientists feel a responsibility\nto speak out because of the importance of global warming and\nrelated issues, and many reporters share these feelings. In\naddition, many scientists are finding that they (d) enjoy the\nmedia attention and the public recognition that comes with it.\nAt the same time, other scientists continue to resist speaking\nwith reporters, thereby preserving more time for their science\nand (e) running the risk of being misquoted and the other\nunpleasantries associated with media coverage.\n* overhype: 과대광고하다 \t** entanglement: 얽힘",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "The Troubling Relationship Between Scientists and the Media"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "A Scientist’s Choice: To Be Exposed to the Media or Not?"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Scientists! Be Cautious When Talking to the Media"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "The Dilemma over Scientific Truth and Media Attention"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Who Are Responsible for Climate Issues, Scientists or the Media?"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 320,
+        "sharedPassageChars": 1525,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          27
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_41",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 41,
+        "group": "long",
+        "type": "장문 제목",
+        "answer": 2,
+        "answerMark": "②",
+        "summary": "과학자가 미디어와 소통할지는 공적 책임과 인정의 이점, 오해와 논쟁의 위험을 함께 고려한 개인적 선택입니다.",
+        "typeApproach": "장문 제목은 한쪽의 경고만 강조하지 말고 글 전체에 반복되는 선택과 양면성을 함께 담아야 합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "highly individualized.",
+            "charStart": 595,
+            "role": "개인별 결정",
+            "translation": "미디어와 말할지는 과학자 개인에 따라 달라지는 결정입니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "other scientists continue to resist speaking",
+            "charStart": 1273,
+            "role": "반대 선택",
+            "translation": "일부 과학자는 여전히 기자와 말하기를 거부합니다."
+          }
+        ],
+        "correctReason": "미디어 노출 여부를 선택하는 과학자의 상황을 포괄하므로 정답은 ②입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "Scientists! Be Cautious When Talking to the Media",
+          "reason": "글은 모든 과학자에게 미디어를 경계하라고 명령하지 않고 소통의 이점과 위험을 함께 제시합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_42",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 42,
+      "type": "장문 어휘",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "42. 밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은",
+      "rawText": "42. \t밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nOne way to avoid contributing to overhyping a story would\nbe to say nothing. However, that is not a realistic option for\nscientists who feel a strong sense of responsibility to inform\nthe public and policymakers and/or to offer suggestions.\nSpeaking with members of the media has (a) advantages in\ngetting \ta \tmessage \tout \tand \tperhaps \treceiving \tfavorable\nrecognition, but it runs the risk of misinterpretations, the need\nfor repeated clarifications, and entanglement in never-ending\ncontroversy. Hence, the decision of whether to speak with the\nmedia tends to be highly individualized. Decades ago, it\nwas (b) unusual for Earth scientists to have results that were\nof interest to the media, and consequently few media contacts\nwere expected or encouraged. In the 1970s, the few scientists\nwho spoke frequently with the media were often (c) criticized\nby their fellow scientists for having done so. The situation\nnow is quite different, as many scientists feel a responsibility\nto speak out because of the importance of global warming and\nrelated issues, and many reporters share these feelings. In\naddition, many scientists are finding that they (d) enjoy the\nmedia attention and the public recognition that comes with it.\nAt the same time, other scientists continue to resist speaking\nwith reporters, thereby preserving more time for their science\nand (e) running the risk of being misquoted and the other\nunpleasantries associated with media coverage.\n* overhype: 과대광고하다 \t** entanglement: 얽힘",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 79,
+        "sharedPassageChars": 1525,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          28
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_42",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 42,
+        "group": "long",
+        "type": "장문 어휘",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "기자와 말하기를 거부하면 과학 연구 시간을 지키고 오인용 위험도 피할 수 있으므로 running은 avoiding이 되어야 합니다.",
+        "typeApproach": "장문 어휘는 접속어와 병렬 구조를 확인해 같은 선택에서 나오는 두 결과의 의미 방향을 맞춥니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "preserving more time for their science",
+            "charStart": 1342,
+            "role": "첫 번째 이점",
+            "translation": "미디어 접촉을 거부하면 과학 연구 시간을 더 보존합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "being misquoted",
+            "charStart": 1409,
+            "role": "피해야 할 위험",
+            "translation": "같은 선택은 오인용 위험도 줄이는 방향이어야 합니다."
+          }
+        ],
+        "correctReason": "거부의 결과는 위험을 감수하는 running이 아니라 피하는 avoiding이어야 하므로 정답은 ⑤입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(d)",
+          "reason": "일부 과학자가 미디어의 관심과 대중적 인정을 즐긴다는 문맥에서 enjoy는 적절합니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_43",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 43,
+      "type": "장문 순서",
+      "group": "long",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로",
+      "rawText": "43. \t주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로\n가장 적절한 것은?\n①\n③\n⑤\n(B)\n(C)\n(D)\n－\n－\n－\n(D)\n(D)\n(C)\n－\n－\n－\n(C)\n(B)\n(B)\n②\n④\n(C)\n(D)\n－\n－\n(B)\n(B)\n－\n－\n(D)\n(C)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nEmma and Clara stood side by side on the beach road, with\ntheir eyes fixed on the boundless ocean. The breathtaking\nscene that surrounded them was beyond description. Just after\nsunrise, they finished their preparations for the bicycle ride\nalong the beach road. Emma turned to Clara with a question,\n“Do you think this will be your favorite ride ever?” Clara’s\nface lit up with a bright smile as she nodded. “Definitely!\n(a) I can’t wait to ride while watching those beautiful waves!”\n(B)\nWhen they reached their destination, Emma and Clara\nstopped their bikes. Emma approached Clara, saying “Bicycle\nriding is unlike swimming, isn’t it?” Clara answered with a\nsmile, “Quite similar, actually. Just like swimming, riding\nmakes me feel truly alive.” She added, “It shows (b) me what\nit means to live while facing life’s tough challenges.” Emma\nnodded in agreement and suggested, “Your first beach bike\nride was a great success. How about coming back next summer?”\nClara replied with delight, “With (c) you, absolutely!”\n(C)\nClara used to be a talented swimmer, but she had to give up\nher dream of becoming an Olympic medalist in swimming\nbecause of shoulder injuries. Yet she responded to the hardship\nin a constructive way. After years of hard training, she made\nan incredible recovery and found a new passion for bike\nriding. Emma saw how the painful past made her maturer and\nhow it made (d) her stronger in the end. One hour later, Clara,\nriding ahead of Emma, turned back and shouted, “Look at the\nwhite cliff!”\n(D)\nEmma and Clara jumped on their bikes and started to pedal\ntoward the white cliff where the beach road ended. Speeding\nup and enjoying the wide blue sea, Emma couldn’t hide her\nexcitement and exclaimed, “Clara, the view is amazing!”\nClara’s silence, however, seemed to say that she was lost in her\nthoughts. Emma understood the meaning of her silence.\nWatching Clara riding beside her, Emma thought about Clara’s\npast tragedy, which (e) she now seemed to have overcome.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(B) - (D) - (C)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(C) - (B) - (D)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(C) - (D) - (B)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(D) - (B) - (C)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(D) - (C) - (B)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 139,
+        "sharedPassageChars": 2021,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_43",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 43,
+        "group": "long",
+        "type": "장문 순서",
+        "answer": 5,
+        "answerMark": "⑤",
+        "summary": "두 사람이 출발한 뒤 Clara의 과거와 회복이 제시되고, 절벽 목적지에 도착해 첫 자전거 여행의 성공을 말하는 순서입니다.",
+        "typeApproach": "장문 순서는 출발·한 시간 뒤·목적지 도착 같은 시간 표지를 먼저 배열하고 대화의 선행 사건을 확인합니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "started to pedal",
+            "charStart": 1594,
+            "role": "출발",
+            "translation": "(D)에서 두 사람이 자전거를 타고 절벽을 향해 출발합니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "One hour later, Clara,",
+            "charStart": 1452,
+            "role": "이동 중",
+            "translation": "(C)는 출발한 지 한 시간 뒤 Clara가 절벽을 발견하는 장면입니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "When they reached their destination",
+            "charStart": 522,
+            "role": "도착",
+            "translation": "(B)는 목적지에 도착한 뒤의 대화로 마무리됩니다."
+          }
+        ],
+        "correctReason": "출발 (D), 이동과 회상 (C), 목적지 도착 (B)의 순서이므로 정답은 ⑤입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(D) - (B) - (C)",
+          "reason": "목적지 도착을 말하는 (B)는 한 시간 뒤 절벽을 발견하는 (C)보다 먼저 올 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_44",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 44,
+      "type": "장문 지칭",
+      "group": "long",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "44. 밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른",
+      "rawText": "44. \t밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nEmma and Clara stood side by side on the beach road, with\ntheir eyes fixed on the boundless ocean. The breathtaking\nscene that surrounded them was beyond description. Just after\nsunrise, they finished their preparations for the bicycle ride\nalong the beach road. Emma turned to Clara with a question,\n“Do you think this will be your favorite ride ever?” Clara’s\nface lit up with a bright smile as she nodded. “Definitely!\n(a) I can’t wait to ride while watching those beautiful waves!”\n(B)\nWhen they reached their destination, Emma and Clara\nstopped their bikes. Emma approached Clara, saying “Bicycle\nriding is unlike swimming, isn’t it?” Clara answered with a\nsmile, “Quite similar, actually. Just like swimming, riding\nmakes me feel truly alive.” She added, “It shows (b) me what\nit means to live while facing life’s tough challenges.” Emma\nnodded in agreement and suggested, “Your first beach bike\nride was a great success. How about coming back next summer?”\nClara replied with delight, “With (c) you, absolutely!”\n(C)\nClara used to be a talented swimmer, but she had to give up\nher dream of becoming an Olympic medalist in swimming\nbecause of shoulder injuries. Yet she responded to the hardship\nin a constructive way. After years of hard training, she made\nan incredible recovery and found a new passion for bike\nriding. Emma saw how the painful past made her maturer and\nhow it made (d) her stronger in the end. One hour later, Clara,\nriding ahead of Emma, turned back and shouted, “Look at the\nwhite cliff!”\n(D)\nEmma and Clara jumped on their bikes and started to pedal\ntoward the white cliff where the beach road ended. Speeding\nup and enjoying the wide blue sea, Emma couldn’t hide her\nexcitement and exclaimed, “Clara, the view is amazing!”\nClara’s silence, however, seemed to say that she was lost in her\nthoughts. Emma understood the meaning of her silence.\nWatching Clara riding beside her, Emma thought about Clara’s\npast tragedy, which (e) she now seemed to have overcome.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 78,
+        "sharedPassageChars": 2021,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_base"
+      },
+      "review": {
+        "id": "2024_csat_44",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 44,
+        "group": "long",
+        "type": "장문 지칭",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "(a)·(b)·(d)·(e)는 Clara를 가리키지만 Clara가 Emma에게 말한 (c) you만 Emma를 가리킵니다.",
+        "typeApproach": "지칭 문제는 대명사가 든 문장의 화자와 청자를 먼저 표시한 뒤 인물별로 묶어 다른 하나를 찾습니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "I can’t wait to ride",
+            "charStart": 458,
+            "role": "Clara의 말",
+            "translation": "(a) I는 바로 앞에서 고개를 끄덕이며 답한 Clara입니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "With (c) you, absolutely!",
+            "charStart": 1025,
+            "role": "Emma를 지칭",
+            "translation": "Clara가 Emma의 제안에 답하므로 (c) you는 Emma입니다."
+          }
+        ],
+        "correctReason": "나머지는 Clara이고 (c)만 Emma를 가리키므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "(a)",
+          "reason": "(a) I는 Emma의 질문에 직접 답하는 Clara 자신을 가리켜 다른 Clara 지칭들과 같습니다."
+        }
+      }
+    },
+    {
+      "id": "2024_csat_45",
+      "examId": "2024_csat",
+      "schoolYear": 2024,
+      "actualYear": 2023,
+      "session": "수능",
+      "qid": 45,
+      "type": "장문 내용",
+      "group": "long",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "45. 윗글에 관한 내용으로 적절하지 않은 것은?",
+      "rawText": "45. \t윗글에 관한 내용으로 적절하지 않은 것은?\n① Emma와 Clara는 자전거 탈 준비를 일출 직후에 마쳤다.\n② Clara는 자전거 타기와 수영이 꽤 비슷하다고 말했다.\n③ Clara는 올림픽 수영 경기에서 메달을 땄다.\n④ Emma와 Clara는 자전거를 타고 하얀 절벽 쪽으로 갔다.\n⑤ Emma는 Clara의 침묵의 의미를 이해했다.\n* 확인 사항\n◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인\n하시오.\n\n-- 8 of 8 --",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nEmma and Clara stood side by side on the beach road, with\ntheir eyes fixed on the boundless ocean. The breathtaking\nscene that surrounded them was beyond description. Just after\nsunrise, they finished their preparations for the bicycle ride\nalong the beach road. Emma turned to Clara with a question,\n“Do you think this will be your favorite ride ever?” Clara’s\nface lit up with a bright smile as she nodded. “Definitely!\n(a) I can’t wait to ride while watching those beautiful waves!”\n(B)\nWhen they reached their destination, Emma and Clara\nstopped their bikes. Emma approached Clara, saying “Bicycle\nriding is unlike swimming, isn’t it?” Clara answered with a\nsmile, “Quite similar, actually. Just like swimming, riding\nmakes me feel truly alive.” She added, “It shows (b) me what\nit means to live while facing life’s tough challenges.” Emma\nnodded in agreement and suggested, “Your first beach bike\nride was a great success. How about coming back next summer?”\nClara replied with delight, “With (c) you, absolutely!”\n(C)\nClara used to be a talented swimmer, but she had to give up\nher dream of becoming an Olympic medalist in swimming\nbecause of shoulder injuries. Yet she responded to the hardship\nin a constructive way. After years of hard training, she made\nan incredible recovery and found a new passion for bike\nriding. Emma saw how the painful past made her maturer and\nhow it made (d) her stronger in the end. One hour later, Clara,\nriding ahead of Emma, turned back and shouted, “Look at the\nwhite cliff!”\n(D)\nEmma and Clara jumped on their bikes and started to pedal\ntoward the white cliff where the beach road ended. Speeding\nup and enjoying the wide blue sea, Emma couldn’t hide her\nexcitement and exclaimed, “Clara, the view is amazing!”\nClara’s silence, however, seemed to say that she was lost in her\nthoughts. Emma understood the meaning of her silence.\nWatching Clara riding beside her, Emma thought about Clara’s\npast tragedy, which (e) she now seemed to have overcome.",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Emma와 Clara는 자전거 탈 준비를 일출 직후에 마쳤다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Clara는 자전거 타기와 수영이 꽤 비슷하다고 말했다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Clara는 올림픽 수영 경기에서 메달을 땄다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Emma와 Clara는 자전거를 타고 하얀 절벽 쪽으로 갔다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Emma는 Clara의 침묵의 의미를 이해했다."
+        }
+      ],
+      "candidateStatus": "question_answer_ready",
+      "reviewStatus": "ready",
+      "source": {
+        "problemFile": "2024학년도_수능_영어_문제.pdf",
+        "answerFile": "2024학년도_수능_영어_정답.png",
+        "explainFile": "2024학년도_수능_영어_해설.pdf"
+      },
+      "extraction": {
+        "rawChars": 258,
+        "sharedPassageChars": 2021,
+        "choiceCount": 5,
+        "answerStatus": "source_cross_checked",
+        "textStatus": "ok"
+      },
+      "audit": {
+        "problemPage": 8,
+        "explanationPages": [
+          29
+        ],
+        "answerCrossChecked": true,
+        "choiceSource": "source_checked_overlay"
+      },
+      "review": {
+        "id": "2024_csat_45",
+        "status": "ready",
+        "exam": "2024학년도 수능 영어",
+        "qid": 45,
+        "group": "long",
+        "type": "장문 내용",
+        "answer": 3,
+        "answerMark": "③",
+        "summary": "Clara는 어깨 부상 때문에 올림픽 메달리스트의 꿈을 포기했으며 실제로 메달을 땄다는 내용은 없습니다.",
+        "typeApproach": "장문 내용 불일치는 사건의 성취 여부와 원인·결과를 구분해 선지의 과장이나 반전을 찾습니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "because of shoulder injuries.",
+            "charStart": 1170,
+            "role": "꿈 포기 원인",
+            "translation": "Clara는 어깨 부상 때문에 수영 선수의 꿈을 포기했습니다."
+          },
+          {
+            "in": "sharedPassage",
+            "quote": "found a new passion for bike",
+            "charStart": 1323,
+            "role": "새로운 도전",
+            "translation": "회복 훈련 뒤 자전거 타기에서 새로운 열정을 찾았습니다."
+          }
+        ],
+        "correctReason": "올림픽 메달을 딴 것이 아니라 그 꿈을 포기했으므로 정답은 ③입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "Emma와 Clara는 자전거를 타고 하얀 절벽 쪽으로 갔다.",
+          "reason": "(D)에서 두 사람은 해변 도로 끝의 하얀 절벽을 향해 자전거를 탔다고 명시됩니다."
+        }
+      }
+    }
+  ]
+}

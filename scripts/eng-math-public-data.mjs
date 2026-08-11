@@ -82,6 +82,20 @@ const ENGLISH_SEVENTH_INTERNAL_CANDIDATE_OVERLAY_PATH = path.join(
   "candidates",
   "english_2025_06_candidate.json",
 );
+const ENGLISH_EIGHTH_INTERNAL_CANDIDATE_OVERLAY_PATH = path.join(
+  ROOT,
+  "english",
+  "data",
+  "candidates",
+  "english_2024_csat_candidate.json",
+);
+const ENGLISH_NINTH_INTERNAL_CANDIDATE_OVERLAY_PATH = path.join(
+  ROOT,
+  "english",
+  "data",
+  "candidates",
+  "english_2023_csat_candidate.json",
+);
 const ENGLISH_CANDIDATE_SOURCE_DIRECTORY = path.join(
   ROOT,
   "raw_sources",
@@ -170,6 +184,14 @@ const ENGLISH_SEVENTH_INTERNAL_CANDIDATE_IDS = Array.from(
   { length: 28 },
   (_, index) => `2025_06_${index + 18}`,
 );
+const ENGLISH_EIGHTH_INTERNAL_CANDIDATE_IDS = Array.from(
+  { length: 28 },
+  (_, index) => `2024_csat_${index + 18}`,
+);
+const ENGLISH_NINTH_INTERNAL_CANDIDATE_IDS = Array.from(
+  { length: 28 },
+  (_, index) => `2023_csat_${index + 18}`,
+);
 const ENGLISH_CANDIDATE_CATALOG_SPECS = [
   {
     overlayPath: ENGLISH_SECOND_INTERNAL_CANDIDATE_OVERLAY_PATH,
@@ -206,6 +228,18 @@ const ENGLISH_CANDIDATE_CATALOG_SPECS = [
     expectedIds: ENGLISH_SEVENTH_INTERNAL_CANDIDATE_IDS,
     examKey: "2025_06",
     examLabel: "2025학년도 6월 모의평가",
+  },
+  {
+    overlayPath: ENGLISH_EIGHTH_INTERNAL_CANDIDATE_OVERLAY_PATH,
+    expectedIds: ENGLISH_EIGHTH_INTERNAL_CANDIDATE_IDS,
+    examKey: "2024_csat",
+    examLabel: "2024학년도 수능",
+  },
+  {
+    overlayPath: ENGLISH_NINTH_INTERNAL_CANDIDATE_OVERLAY_PATH,
+    expectedIds: ENGLISH_NINTH_INTERNAL_CANDIDATE_IDS,
+    examKey: "2023_csat",
+    examLabel: "2023학년도 수능",
   },
   {
     overlayPath: ENGLISH_FOURTH_INTERNAL_CANDIDATE_OVERLAY_PATH,
@@ -3644,7 +3678,7 @@ function validateEnglishCandidate() {
   const questionIds = candidates.flatMap((candidate) =>
     candidate.questions.map((question) => question.id),
   );
-  if (questionIds.length !== 224 || new Set(questionIds).size !== 224) {
+  if (questionIds.length !== 280 || new Set(questionIds).size !== 280) {
     fail("ENGLISH_CANDIDATE_TOTAL_SCOPE", String(questionIds.length));
   }
   return candidates;
@@ -3948,7 +3982,7 @@ function buildPublicCatalog(english, math, englishCandidates) {
     (pack) => pack.access === "free",
   );
   const mathFreePacks = mathPacks.filter((pack) => pack.access === "free");
-  if (englishPacks.length !== 54 || englishFreePacks.length !== 1) {
+  if (englishPacks.length !== 66 || englishFreePacks.length !== 1) {
     fail(
       "ENGLISH_CATALOG_BOUNDARY",
       `${englishPacks.length}:${englishFreePacks.length}`,
@@ -3965,10 +3999,10 @@ function buildPublicCatalog(english, math, englishCandidates) {
     version: 1,
     subjects: {
       english: {
-        totalQuestionCount: 251,
+        totalQuestionCount: 307,
         freeQuestionCount: 5,
-        lockedQuestionCount: 246,
-        packCount: 54,
+        lockedQuestionCount: 302,
+        packCount: 66,
         freePackId: englishFreePacks[0].id,
         packs: englishPacks,
       },
@@ -5141,7 +5175,7 @@ function buildPublicData(
   ]
     .map((question) => question.id)
     .filter((id) => !freeIds.has(id));
-  if (lockedIds.length !== 701 || new Set(lockedIds).size !== 701) {
+  if (lockedIds.length !== 757 || new Set(lockedIds).size !== 757) {
     fail("LOCKED_QUESTION_COUNT", String(lockedIds.length));
   }
 
@@ -5798,17 +5832,17 @@ if (mode === "--write") {
   });
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
   console.log(
-    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=701 catalogs=54/110 englishCandidates=224/475 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=757 catalogs=66/110 englishCandidates=280/307 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
   );
 } else if (mode === "--check") {
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
   console.log(
-    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=701 catalogs=54/110 englishCandidates=224/475 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=757 catalogs=66/110 englishCandidates=280/307 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
   );
 } else if (mode === "--check-dist") {
   verifyPublishedBoundary(path.join(ROOT, "dist"), data);
   console.log(
-    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=701 catalogs=54/110 englishCandidates=224/475 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=757 catalogs=66/110 englishCandidates=280/307 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
   );
 } else {
   fail("MODE_INVALID", mode);
