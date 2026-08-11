@@ -27,41 +27,167 @@ export const _s2norm = (s) =>
     .replace(_S2_NORM_RE, "")
     .replace(/\s+/g, "");
 
+// [축5] 해설 본문 오염 검출 (발주 y④/z①)
+//   배경: P0 정답교정 배치에서 검수 용어·내부 스키마가 해설 본문에 유입돼
+//   읽을 수 없는 문장이 LIVE에 노출됐다(확정 18선지 = LIVE 14 / 미출시 4).
+//   축4는 📌 인용만 보고 🔍 본문은 안 보므로 이 클래스를 구조적으로 못 잡는다(§13⑳).
+//
+//   ★ 판정은 **코드성 사전** 방식이다. "로마자 2자 이상 = FAIL" 같은 광역 규칙은
+//     정상 해설을 대량 오탐한다 — 실측상 DNA(31)·PCR(9)·Hz(10)·pH(6)·ID(10)·
+//     CPU/GPU 는 비문학 지문의 정당한 용어이고, '치환'(118)·'배치'(80)는 정상 국어 용어다.
+//   ⚠ [알려진 한계] 사전에 없는 **신종 오염은 놓친다.**
+//     따라서 "축5 통과 = 오염 없음"이 아니라 "알려진 오염 패턴 없음"으로만 읽어야 한다.
+const POLLUTION_PATTERNS = [
+  // 내부 스키마 필드가 학생용 해설에 노출
+  { name: "ok스키마", re: /\bok\s*[:=]\s*(true|false)\b/i },
+  { name: "필드명노출", re: /questionType|cs_ids|\bpat\s*=/ },
+  // 검수 용어가 본문에 유입된 확정 오염구
+  {
+    name: "사양path정합",
+    re: /사양\s*(안|X)?\s*path|path\s*정합|사실\s*정합|사양\s*안\b/,
+  },
+  // 코드 리터럴. `path` 단독 토큰 포함 — 국어 해설에 등장할 이유가 없고,
+  //   실측상 코퍼스의 path 13건이 전부 오염이며 음성 대조군 539건에는 0건이다
+  //   (r2023a Q2-4 "개념 path 안 다른 문단" 형태는 '사양 path' 사전으로는 안 잡혔다).
+  { name: "코드리터럴", re: /\b(null|undefined|JSON|path)\b/ },
+];
+export function detectAnalysisPollution(analysis) {
+  const a = String(analysis || "");
+  const hits = POLLUTION_PATTERNS.filter((p) => p.re.test(a));
+  return {
+    clean: hits.length === 0,
+    patterns: hits.map((h) => h.name),
+    reason: hits.length
+      ? `축5 해설 오염(${hits.map((h) => h.name).join(",")})`
+      : "OK",
+  };
+}
+
+// [축6] 형식 결함 검출 (발주 ab ①)
+//   문자열만 보고 확정 가능한 2종만 담는다. 원문 대조가 필요한 것(📌 인용 말줄임·운문 '/' 이음·
+//   각주 '*' 누락)은 축4 소관이며, 문자열 규칙으로 만들면 정상 해설을 대량 오탐한다.
+//
+//   (a) 마크다운 강조 노출 — src/QuizPanel.jsx AnalysisBlock 이 {clean}을 plain text 로
+//       렌더한다(whiteSpace: pre-wrap, 마크다운 파서 없음). **강조**가 학생 화면에 별표로
+//       그대로 보인다. [Confirmed 2026-08-05, 발주 aa 재생성 6건 실측]
+//   (b) 결론줄 마커 단독 — 축1은 결론줄의 **첫 코드포인트만** 보므로 "❌" 한 글자가 통과한다.
+//       이 검사로 축1의 알려진 구멍을 함께 막는다.
+//
+//   ⚠ [알려진 한계] "축6 통과 = 알려진 형식 결함 없음"이지 **형식 정상이 아니다.**
+//     여기 없는 형식 결함(표 깨짐·중복 문단·잘린 문장 등)은 그대로 통과한다.
+export function detectFormatDefect(analysis) {
+  const a = String(analysis || "");
+  const hits = [];
+  if (/\*\*[^*\n]+\*\*|__[^_\n]+__/.test(a)) hits.push("마크다운강조");
+  const last = (a.trim().split("\n").pop() || "").trim();
+  const head = Array.from(last)[0];
+  if (head === "✅" || head === "❌") {
+    // 마커 뒤 실질 텍스트: 마커·구두점·공백을 걷어내고 남는 글자가 있는가.
+    const rest = Array.from(last)
+      .slice(1)
+      .join("")
+      .replace(/[\s.,!?·…\-—~"'“”‘’()[\]]/g, "");
+    if (rest.length === 0) hits.push("마커단독");
+  }
+  return {
+    clean: hits.length === 0,
+    patterns: hits,
+    reason: hits.length ? `축6 형식결함(${hits.join(",")})` : "OK",
+  };
+}
+
+// [축2 도메인 확장] (발주 ab ② — 측정 전용, acceptRegenChoice 미연결)
+//   현행 축2는 pat != null 만 본다. 문학 세트에 R* 가 붙어도 통과한다(l20229a Q19-1 pat=R2 실증).
+//   §6 도메인 엄수: 독서에 L* 금지, 문학에 R* 금지. V(어휘)는 양쪽 공통.
+//   ⚠ 연결 금지 — 음성 대조군 결과를 심사관이 판정한 뒤에만 붙인다.
+const PAT_READING = new Set(["R1", "R2", "R3", "R4", "V"]);
+const PAT_LIT = new Set(["L1", "L2", "L3", "L4", "L5", "V"]);
+export function detectPatDomainMismatch(pat, group) {
+  if (!pat) return { clean: true, reason: "OK" };
+  const allowed = group === "literature" ? PAT_LIT : PAT_READING;
+  if (allowed.has(pat)) return { clean: true, reason: "OK" };
+  return {
+    clean: false,
+    reason: `축2 도메인위반(${group === "literature" ? "문학" : "독서"} 세트에 pat=${pat})`,
+  };
+}
+
 // [재생성 채택 게이트] 상위모델 재생성 산출을 3자 정합으로 판정 — 통과분만 채택, 나머지 거부.
 //   축1 ok↔결론줄 스탬프: ok:true→마지막줄 ✅ / ok:false→❌.
 //   축2 ok↔pat: ok:true→pat null / ok:false→pat 있음.
 //   축3 ok↔서술 방향: ok:true인데 결론줄에 부적절 어휘(부적절·어긋·오독…)=역전 서술 → 거부.
 //   게이트 없이 재생성물을 덮어쓰면 A/B처럼 나빠진 결과가 조용히 반영된다(심사관 지시: 게이트 선행).
-export function acceptRegenChoice(analysis, pat, ok) {
+// ── 축1·2·3 판정식 노출 (발주 ac ② — 로직 변경 없음, 축별 독립 측정용) ──────
+//   전수 스윕에서 축별 FAIL을 따로 세려면 각 판정식이 개별 호출 가능해야 한다.
+//   acceptRegenChoice의 reason은 캐스케이드(먼저 걸린 축만 표기)라서 합산으로는
+//   한 축이 다른 축에 가려진다(§13⑮(6)). 아래 3함수는 acceptRegenChoice가
+//   그대로 호출하므로 판정 결과는 이전과 동일하다.
+export function conclusionLineOf(analysis) {
   const lines = String(analysis || "")
     .trim()
     .split("\n");
-  const conclLine = (lines[lines.length - 1] || "").trim();
+  return (lines[lines.length - 1] || "").trim();
+}
+export function detectStampMismatch(analysis, ok) {
   // ✅/❌ are surrogate-pair code points in UTF-16. String indexing returns
   // only the first code unit, so read the first Unicode code point instead.
-  const head = Array.from(conclLine)[0];
-  const stampOk = ok ? head === "✅" : head === "❌";
-  const patOk = ok ? pat == null : pat != null;
-  // ok:true 결론줄에 나오면 자기모순인 표현(부적절 단정 + '부합/일치하지 않아 적절' 류).
-  //   상위모델이 하드제약을 못 이겨 "지문에 부합하지 않아 적절한 선지" 같은 역전-결론을
-  //   내면 스탬프(✅)만 보고 통과되던 사각(2018_6월 l20186c Q36-1 실증) 차단.
+  const head = Array.from(conclusionLineOf(analysis))[0];
+  const clean = ok ? head === "✅" : head === "❌";
+  return {
+    clean,
+    head,
+    reason: clean ? "OK" : `축1 스탬프≠ok(ok=${ok}, 결론두자="${head || "?"}")`,
+  };
+}
+export function detectPatNullMismatch(pat, ok) {
+  const clean = ok ? pat == null : pat != null;
+  return { clean, reason: clean ? "OK" : `축2 pat≠ok(ok=${ok}, pat=${pat})` };
+}
+// ok:true 결론줄에 나오면 자기모순인 표현(부적절 단정 + '부합/일치하지 않아 적절' 류).
+//   상위모델이 하드제약을 못 이겨 "지문에 부합하지 않아 적절한 선지" 같은 역전-결론을
+//   내면 스탬프(✅)만 보고 통과되던 사각(2018_6월 l20186c Q36-1 실증) 차단.
+export function detectNarrativeReversal(analysis, ok) {
   const negLang =
     /부적절|어긋나|오독|과잉|짜깁기|전도|착각|혼동|오인|틀린|잘못|부합하지\s*(않|아니)|일치하지\s*(않|아니)|맞지\s*않/.test(
-      conclLine,
+      conclusionLineOf(analysis),
     );
-  const narrativeOk = ok ? !negLang : true;
+  const clean = ok ? !negLang : true;
+  return { clean, reason: clean ? "OK" : "축3 서술역전 의심(경고·비차단)" };
+}
+
+export function acceptRegenChoice(analysis, pat, ok) {
+  const stamp = detectStampMismatch(analysis, ok);
+  const head = stamp.head;
+  const stampOk = stamp.clean;
+  const patOk = detectPatNullMismatch(pat, ok).clean;
+  const narrativeOk = detectNarrativeReversal(analysis, ok).clean;
   // [축3 강등: 거부축 → 경고축] (심사관 2026-07-30 지시)
   //   축3(서술역전)은 키워드 휴리스틱이라 (a)의미적으로 우회한 역전을 못 잡고(l20186c Q36-1 실증,
   //   §13⑰: 형식 게이트로 내용역전 보증 불가) (b)정상 해설을 오탐할 수 있다. 따라서 채택은
   //   기계적으로 확정적인 축1(스탬프)·축2(pat)로만 판정하고, 축3은 비차단 경고로만 표기한다.
   //   의미 역전의 최종 방어선은 대표/옵션B 검수(§13⑰)이며 게이트는 보조 신호다.
-  const accept = stampOk && patOk;
+  // [축5 연결] (발주 z ① — 양성 18/18 AND 음성 539/539 동시 충족 확인 후 연결)
+  //   재생성 산출물에 검수 용어·내부 스키마가 섞이면 즉시 거부한다. 축4(측정 전용)와 달리
+  //   차단축인 이유: D1 30선지 + 오염 18선지 재생성이 곧 시작되는데, 축5가 없으면
+  //   같은 오염이 재주입돼도 통과한다(오염 원인 경로 일부 미규명 상태).
+  // [축6 연결] (발주 ac ① — 양성 7/7, 오탐 0 확인 후 승인)
+  //   음성 대조군 FAIL 56은 오탐이 아니라 기존 LIVE 결함이다(배포본 DOM 렌더로 직접 확인:
+  //   2022수능 r2022d Q14① 해설에 "**전후좌우에 장착된 여러 대의 카메라**"가 별표째 노출).
+  //   acceptRegenChoice는 신규 산출물에만 걸리므로 연결해도 기존 56건은 막히지 않는다 —
+  //   막히는 것은 앞으로의 재생성분이며 그것이 목적이다.
+  const poll = detectAnalysisPollution(analysis);
+  const fmt = detectFormatDefect(analysis);
+  const accept = stampOk && patOk && poll.clean && fmt.clean;
   const warn = accept && !narrativeOk ? "축3 서술역전 의심(경고·비차단)" : null;
   const reason = accept
     ? "OK"
     : !stampOk
       ? `축1 스탬프≠ok(ok=${ok}, 결론두자="${head || "?"}")`
-      : `축2 pat≠ok(ok=${ok}, pat=${pat})`;
+      : !patOk
+        ? `축2 pat≠ok(ok=${ok}, pat=${pat})`
+        : !poll.clean
+          ? poll.reason
+          : fmt.reason;
   return { accept, reason, warn };
 }
 

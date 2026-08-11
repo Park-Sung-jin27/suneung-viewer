@@ -32,6 +32,9 @@ import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { auditBrackets } from "./bracket_audit.mjs";
 import { expandMarkerRanges, misplacedMarkers } from "./marker_range.mjs";
+// [발주 ae ①] 축6 판별식 재사용 — 새로 짜지 않는다.
+//   두 게이트가 각자 판별식을 가지면 판정 불일치 자체가 결함이 된다.
+import { detectFormatDefect } from "./haesol_v2_gate.mjs";
 
 // ─── 인라인 헬퍼 (step2_postprocess / step3_rules 핵심 로직 내장) ─────────────
 const NEG_PATTERNS = [
@@ -1492,6 +1495,43 @@ for (const yearKey of yearsToCheck) {
             );
           }
 
+          // ── [발주 ae ①] 축6 등재: 형식 결함 = 학생 화면 직접 노출 → CRITICAL ──
+          //   판별식은 haesol_v2_gate.detectFormatDefect 재사용(판정 불일치 방지).
+          //   ⚠ WARNING으로 낮추지 않는다 — WARNING 19축에 1,101건이 쌓여 아무도 열지
+          //     않는 상태이고, 이번 마크다운 55건이 은폐된 구조가 정확히 그것이다.
+          //   근거: AnalysisBlock/어휘 분기 모두 plain text 렌더(마크다운 파서 없음) →
+          //     배포본 DOM에 별표가 그대로 노출됨(2022수능 r2022d Q14① 실물 확인, §13⑯).
+          {
+            const fmt6 = detectFormatDefect(ana);
+            if (!fmt6.clean) {
+              if (fmt6.patterns.includes("마크다운강조"))
+                needsManual(
+                  "F_markdown_emphasis_exposed",
+                  yearKey,
+                  cLoc,
+                  "마크다운 강조(**/__)가 학생 화면에 별표째 노출",
+                );
+              if (fmt6.patterns.includes("마커단독"))
+                needsManual(
+                  "F_conclusion_marker_only",
+                  yearKey,
+                  cLoc,
+                  "결론줄이 마커 한 글자 — 결론 문장 부재",
+                );
+            }
+          }
+
+          // ── [발주 ae ②] ok:false + pat:null — QG 사각(역방향) 등재 ──
+          //   D_true_has_pat 은 ok:true+pat 만 본다. 반대 방향은 어느 축도 보지 않았다.
+          //   ⚠ 잠정 WARNING — 등급은 렌더 확인 결과를 보고 심사관이 지정한다.
+          if (c.ok === false && c.pat == null)
+            needsManual(
+              "D_false_no_pat",
+              yearKey,
+              cLoc,
+              "ok:false 인데 pat 없음 (D_true_has_pat 역방향 사각)",
+            );
+
           // ── C_anchor_exact_fail (§13⑥, 정밀화 v2): 📌 지문 근거 단어내 공백 artifact 한정 CRITICAL ──
           //   1차 대상은 "지문 근거"만(보기 근거는 후속). exact 판정은 raw String.includes.
           //   분류: (a)cs_ids/다문장-연결 exact → 정상  (b)말줄임표 → 비연속(정상)
@@ -2618,6 +2658,11 @@ const SEVERITY_MAP = {
 
   // 결론줄=ok 검사 (§13⑤) — 출시 차단 CRITICAL 승격 (이전 WARNING)
   F_content_reversed: "CRITICAL",
+  // [발주 ae ①] 축6 등재 — 학생 화면 직접 노출이므로 CRITICAL. WARNING 강등 금지.
+  F_markdown_emphasis_exposed: "CRITICAL",
+  F_conclusion_marker_only: "CRITICAL",
+  // [발주 ae ②] ok:false+pat:null — 잠정 WARNING(등급은 렌더 확인 후 심사관 지정)
+  D_false_no_pat: "WARNING",
   // 📌 지문 근거 exact-substring 검사 (§13⑥) — 단어내 공백 artifact만 CRITICAL
   C_anchor_exact_fail: "CRITICAL",
   C_anchor_marker_space: "WARNING", // 마커 인접 공백차(관례·검수)
