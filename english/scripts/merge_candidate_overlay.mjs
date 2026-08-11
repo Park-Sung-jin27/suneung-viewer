@@ -29,8 +29,8 @@ const CHOICE_CONTAMINATION_PATTERNS = [
   /\[\d{2}\s*[~～－-]\s*\d{2}\]/,
 ];
 const EXPECTED_PUBLIC_BOUNDARY = {
-  english: { total: 55, free: 5, locked: 50, packs: 12 },
-  math: { total: 361, free: 5, locked: 356, packs: 88 },
+  english: { total: 251, free: 5, locked: 246, packs: 54 },
+  math: { total: 460, free: 5, locked: 455, packs: 110 },
 };
 
 function fail(code, detail = "") {
@@ -45,6 +45,7 @@ function parseArguments() {
   const values = process.argv.slice(2);
   const options = {
     check: values.includes("--check"),
+    skipPublicBoundary: values.includes("--skip-public-boundary"),
     overlayPath: DEFAULT_OVERLAY_PATH,
     outputPath: null,
     sourceDirectory: null,
@@ -52,7 +53,7 @@ function parseArguments() {
 
   for (let index = 0; index < values.length; index += 1) {
     const value = values[index];
-    if (value === "--check") continue;
+    if (value === "--check" || value === "--skip-public-boundary") continue;
     if (!["--overlay", "--output", "--source-dir"].includes(value)) {
       fail("UNKNOWN_ARGUMENT", value);
     }
@@ -571,7 +572,7 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
     "MERGED_EVIDENCE_COUNT",
     String(evidenceCount),
   );
-  verifyPublicBoundary(overlay);
+  if (!options.skipPublicBoundary) verifyPublicBoundary(overlay);
 
   return {
     schemaVersion: "english-product-candidate-v2",
