@@ -9,7 +9,7 @@ const SUBJECTS = [
     title: "영어 문항 선택",
     description:
       "2026학년도 수능 19~23번을 무료로 풀고, 제출할 때마다 정답과 근거형 풀이를 확인하세요.",
-    detail: "무료 5문항 · 나머지 50문항 잠금",
+    detail: "무료 5문항 · 검증 잠금 246문항",
     accent: "#3157a5",
     tint: "#eef3ff",
   },
@@ -19,7 +19,7 @@ const SUBJECTS = [
     title: "수학 문항 선택",
     description:
       "2022학년도 6월 공통 첫 5문항을 무료로 풀고, 단계별 검증 풀이를 확인하세요.",
-    detail: "무료 5문항 · 나머지 356문항 잠금",
+    detail: "무료 5문항 · 검증 잠금 455문항",
     accent: "#16705b",
     tint: "#eaf7f1",
   },
@@ -199,6 +199,55 @@ export default function EngMathProductHome({ user, onLogout }) {
           font-weight: 800;
         }
         .eng-math-home__subject-action span:last-child { font-size: 1.18rem; }
+        .eng-math-home__lab-link {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 18px;
+          width: 100%;
+          margin-top: 20px;
+          padding: 22px 24px;
+          border: 1px solid #b8d8cf;
+          border-radius: 18px;
+          background: linear-gradient(135deg, #edf9f5 0%, #ffffff 100%);
+          color: inherit;
+          text-decoration: none;
+          box-shadow: 0 10px 24px rgba(22, 112, 91, 0.08);
+        }
+        .eng-math-home__lab-link:hover,
+        .eng-math-home__lab-link:focus-visible {
+          border-color: #16705b;
+          transform: translateY(-2px);
+          outline: none;
+        }
+        .eng-math-home__lab-badge {
+          display: inline-flex;
+          min-height: 28px;
+          align-items: center;
+          padding: 0 9px;
+          border-radius: 999px;
+          background: #d9f1e9;
+          color: #0f684f;
+          font-size: 0.72rem;
+          font-weight: 900;
+          letter-spacing: 0.06em;
+        }
+        .eng-math-home__lab-title {
+          display: block;
+          margin-top: 9px;
+          color: #16213a;
+          font-size: 1.05rem;
+          font-weight: 900;
+        }
+        .eng-math-home__lab-copy {
+          display: block;
+          margin-top: 5px;
+          color: #5b6f69;
+          font-size: 0.85rem;
+          line-height: 1.5;
+          word-break: keep-all;
+        }
+        .eng-math-home__lab-arrow { color: #16705b; font-size: 1.3rem; }
         .eng-math-home__korean-link {
           display: flex;
           align-items: center;
@@ -241,6 +290,7 @@ export default function EngMathProductHome({ user, onLogout }) {
           .eng-math-home__hero { padding: 42px 4px 28px; }
           .eng-math-home__subject-grid { grid-template-columns: 1fr; }
           .eng-math-home__subject-card { min-height: 0; padding: 22px; }
+          .eng-math-home__lab-link { align-items: flex-start; padding: 19px; }
           .eng-math-home__korean-link { align-items: flex-start; padding: 18px; }
         }
       `}</style>
@@ -314,6 +364,24 @@ export default function EngMathProductHome({ user, onLogout }) {
             </button>
           ))}
         </section>
+
+        <a
+          className="eng-math-home__lab-link"
+          href="/eng-math-lab/military-2027/"
+        >
+          <span>
+            <span className="eng-math-home__lab-badge">SEPARATE BETA</span>
+            <span className="eng-math-home__lab-title">
+              2027학년도 사관학교 수학 실전 베타
+            </span>
+            <span className="eng-math-home__lab-copy">
+              46문항 원본 이미지와 공식 답안 대조 풀이를 별도 뷰어에서 확인합니다.
+            </span>
+          </span>
+          <span className="eng-math-home__lab-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
 
         <a className="eng-math-home__korean-link" href="/exams">
           <span>
