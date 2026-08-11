@@ -67,7 +67,47 @@ async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
   }
 }
 
+const MARKER_RE = /[ⓐ-ⓔ㉠-㉤㉮-㉲]/g;
+const MARKER_POOLS = ["ⓐⓑⓒⓓⓔ", "㉠㉡㉢㉣㉤", "㉮㉯㉰㉱㉲"];
+
+/** 발문이 마커 범위를 선언하면(㉠~㉤ 등) 그 범위 전체 마커를 돌려준다. */
+function declaredRange(qText) {
+  const m = String(qText || "").match(
+    /([ⓐ-ⓔ㉠-㉤㉮-㉲])\s*[~～∼]\s*([ⓐ-ⓔ㉠-㉤㉮-㉲])/,
+  );
+  if (!m) return [];
+  for (const pool of MARKER_POOLS) {
+    if (pool.includes(m[1]) && pool.includes(m[2])) {
+      return pool.slice(pool.indexOf(m[1]), pool.indexOf(m[2]) + 1).split("");
+    }
+  }
+  return [];
+}
+
+/** 마커별 정박 문장을 본문·보기에서 찾아 프롬프트에 실을 블록으로 만든다. */
+function anchorBlock(set, question) {
+  const want = new Set(declaredRange(question.t));
+  for (const src of [question.t, ...(question.choices || []).map((c) => c.t)]) {
+    for (const mk of String(src || "").match(MARKER_RE) || []) want.add(mk);
+  }
+  if (!want.size) return "";
+  const bogiText =
+    typeof question.bogi === "string" ? question.bogi : JSON.stringify(question.bogi || "");
+  const pool = [
+    ...(set.sents || []).map((s) => ({ id: s.id, t: String(s.t || "") })),
+    ...(bogiText ? [{ id: "<보기>", t: bogiText }] : []),
+  ];
+  const lines = [];
+  for (const mk of [...want].sort()) {
+    const hit = pool.find((s) => s.t.includes(mk));
+    lines.push(hit ? `${mk} → (${hit.id}) ${hit.t}` : `${mk} → ★정박 문장 없음`);
+  }
+  return `\n[마커 정박 문장]\n${lines.join("\n")}\n`;
+}
+
 async function reanalyzeVocabQuestion(set, question) {
+  const bogiText =
+    typeof question.bogi === "string" ? question.bogi : JSON.stringify(question.bogi || "");
   const userPrompt = `다음 어휘 문제를 분석해줘.
 
 [세트 지문]
@@ -76,7 +116,7 @@ ${JSON.stringify({ id: set.id, title: set.title, sents: set.sents })}
 [문항]
 문항 ${question.id}번: ${question.t}
 questionType: ${question.questionType}
-
+${bogiText ? `\n[<보기>]\n${bogiText}\n` : ""}${anchorBlock(set, question)}
 [선지]
 ${JSON.stringify(question.choices.map((c) => ({ num: c.num, t: c.t, ok: c.ok })))}
 
