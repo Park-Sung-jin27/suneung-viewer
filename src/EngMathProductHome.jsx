@@ -9,7 +9,7 @@ const SUBJECTS = [
     title: "영어 문항 선택",
     description:
       "2026학년도 수능 19~23번을 무료로 풀고, 제출할 때마다 정답과 근거형 풀이를 확인하세요.",
-    detail: "무료 5문항 · 검증 잠금 246문항",
+    detail: "무료 5문항 · 검증 잠금 302문항",
     accent: "#3157a5",
     tint: "#eef3ff",
   },

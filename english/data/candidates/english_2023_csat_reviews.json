@@ -1,0 +1,938 @@
+{
+  "metadata": {
+    "schemaVersion": "eng-explain-candidate-v1",
+    "examId": "2023_csat",
+    "exam": "2023학년도 수능 영어",
+    "status": "internal_candidate",
+    "publicConnected": false,
+    "itemCount": 28,
+    "readyCount": 28,
+    "note": "평가원 문제·정답·해설 원본을 대조하고 근거 문구를 원문 위치와 연결한 내부 해설 후보"
+  },
+  "items": {
+    "2023_csat_18": {
+      "id": "2023_csat_18",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 18,
+      "group": "practical",
+      "type": "목적",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "조류 관찰 클럽의 웹사이트에서 가입 정보를 찾지 못한 Michael이 가입 방법을 묻는 이메일입니다.",
+      "typeApproach": "목적 문제는 글쓴이가 마지막에 상대에게 요구한 행동을 먼저 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "I would love to join your club",
+          "role": "가입 의사",
+          "translation": "글쓴이는 조류 관찰 클럽에 가입하고 싶다고 밝힙니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "sign up for the club",
+          "role": "문의 내용",
+          "translation": "클럽 가입 방법을 알고 싶다고 직접 요청합니다."
+        }
+      ],
+      "correctReason": "클럽 가입 방법을 알려 달라고 요청하므로 정답은 ①입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "조류 관찰과 관련된 웹 사이트를 소개하려고",
+        "reason": "웹사이트를 소개하는 것이 아니라 공사 중인 웹사이트에서 찾지 못한 가입 정보를 문의합니다."
+      }
+    },
+    "2023_csat_19": {
+      "id": "2023_csat_19",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 19,
+      "group": "practical",
+      "type": "심경 변화",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "Jamie는 개인 기록 경신에 실패해 좌절했지만 동료 Ken의 격려를 듣고 자신감과 의욕을 되찾습니다.",
+      "typeApproach": "심경 변화는 실패 직후의 감정과 마지막 행동·말을 각각 표시해 대비합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "her disappointment",
+          "role": "초기 심경",
+          "translation": "Jamie는 기록 경신 실패에 실망합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "felt confident about herself",
+          "role": "후기 심경",
+          "translation": "격려를 들은 뒤 자신감을 느낍니다."
+        }
+      ],
+      "correctReason": "실패로 좌절했다가 격려로 용기를 얻으므로 정답은 ③입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "calm → excited",
+        "reason": "처음 감정은 차분함이 아니라 기록 실패에서 온 좌절과 실망입니다."
+      }
+    },
+    "2023_csat_20": {
+      "id": "2023_csat_20",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 20,
+      "group": "topic",
+      "type": "주장",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "불확실한 선택을 직관에만 맡기지 말고 가능한 결과를 확률로 분석해야 더 나은 결정을 할 수 있다는 글입니다.",
+      "typeApproach": "주장 문제는 반복되는 해결 수단과 그것이 주는 효과를 한 문장으로 묶습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Turning the uncertainty into numbers",
+          "role": "해결 수단",
+          "translation": "불확실성을 수치로 바꾸어 분석합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "analyze all the possible scenarios",
+          "role": "구체적 방법",
+          "translation": "가능한 모든 시나리오의 성공과 실패 비율을 살핍니다."
+        }
+      ],
+      "correctReason": "성공 가능성을 확률적으로 분석해 선택의 질을 높이라고 하므로 정답은 ③입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "중요한 결정을 내릴 때에는 자신의 직관에 따라 판단해야 한다.",
+        "reason": "글은 직관이 차선의 선택으로 이어질 수 있다고 지적합니다."
+      }
+    },
+    "2023_csat_21": {
+      "id": "2023_csat_21",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 21,
+      "group": "blank",
+      "type": "밑줄 의미",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "개인 일기는 자신의 감정과 생각을 기록하고 다시 읽으면서 자아를 점검하고 비판하는 매체입니다.",
+      "typeApproach": "밑줄 의미는 바로 뒤의 재진술과 앞의 구체적 기능을 함께 연결합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "write daily about her whereabouts, feelings, and thoughts",
+          "role": "기록 대상",
+          "translation": "일기는 자신의 행방·감정·생각을 매일 기록하는 공간입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "an object for self-inspection and self-critique",
+          "role": "재진술",
+          "translation": "자아가 자기 점검과 자기 비판의 대상이 됩니다."
+        }
+      ],
+      "correctReason": "글쓰기를 통해 자신을 되돌아본다는 뜻이므로 정답은 ①입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "exchange feedback in the process of writing",
+        "reason": "일기는 사적인 공간에서 자신을 위한 글쓰기이며 타인과 피드백을 교환하는 과정이 아닙니다."
+      }
+    },
+    "2023_csat_22": {
+      "id": "2023_csat_22",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 22,
+      "group": "topic",
+      "type": "요지",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "화물 자전거는 혼잡한 도심의 마지막 구간 배송에 적합하고 비용도 낮아 여러 나라에서 활용되고 있습니다.",
+      "typeApproach": "요지 문제는 반복 사례가 공통으로 뒷받침하는 중심 판단을 고릅니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "a preferred ‘last-mile’ vehicle",
+          "role": "도심 적합성",
+          "translation": "자전거는 혼잡한 지역의 마지막 구간 배송 수단이 될 수 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "low acquisition and maintenance costs",
+          "role": "경제성",
+          "translation": "구입비와 유지비가 낮아 활용 잠재력이 큽니다."
+        }
+      ],
+      "correctReason": "도시에서 자전거가 효율적인 배송 수단이 될 수 있다는 내용이므로 정답은 ①입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "자전거는 배송 수단으로의 경제적 장단점을 모두 가질 수 있다.",
+        "reason": "글은 낮은 비용이라는 장점을 제시할 뿐 경제적 단점을 함께 다루지 않습니다."
+      }
+    },
+    "2023_csat_23": {
+      "id": "2023_csat_23",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 23,
+      "group": "topic",
+      "type": "주제",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "강한 규제보다 정보를 공개하면 소비자가 여러 가치 사이에서 스스로 선택해 의사결정의 자율성을 지킬 수 있습니다.",
+      "typeApproach": "주제 문제는 두 대상을 비교한 뒤 글이 지지하는 쪽의 장점을 중심으로 압축합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "publicize the safety characteristics of cars",
+          "role": "핵심 대비",
+          "translation": "정보를 공개하면 소비자가 안전과 다른 속성을 직접 비교할 수 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "promote, the autonomy",
+          "role": "최종 효과",
+          "translation": "정보 공개는 개인 의사결정의 자율성을 촉진합니다."
+        }
+      ],
+      "correctReason": "자유로운 선택을 보장하는 정보 공개의 이점을 설명하므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "steps to make public information accessible to customers",
+        "reason": "정보 공개의 절차가 아니라 공개가 선택의 자유에 주는 효과가 중심입니다."
+      }
+    },
+    "2023_csat_24": {
+      "id": "2023_csat_24",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 24,
+      "group": "topic",
+      "type": "제목",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "뇌의 시각 체계는 모양·색·위치·움직임을 서로 다른 부분에서 독립적으로 처리합니다.",
+      "typeApproach": "제목 문제는 여러 사례를 포괄하는 공통 구조와 글의 반전 지점을 함께 담은 선택지를 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "one part of your brain sees its shape",
+          "role": "분리 처리",
+          "translation": "뇌의 서로 다른 부분이 모양과 색을 따로 처리합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "see certain aspects of an object and",
+          "role": "독립성 결과",
+          "translation": "일부 시각 요소만 보고 다른 요소는 보지 못할 수 있습니다."
+        }
+      ],
+      "correctReason": "시각 정보가 분리되고 독립적으로 처리된다는 제목이 글 전체를 포괄하므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "Secret Missions of Color-Sensitive Brain Cells",
+        "reason": "색은 여러 시각 요소 중 하나일 뿐이며 글은 전체 시각 정보의 분리 처리를 설명합니다."
+      }
+    },
+    "2023_csat_25": {
+      "id": "2023_csat_25",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 25,
+      "group": "info",
+      "type": "도표",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "55세 이상 집단에서 가장 낮은 비율은 대도시·소도시 26%가 아니라 그 근교 22%입니다.",
+      "typeApproach": "도표 불일치는 선지의 집단·범주·수치를 한 항목씩 도표와 대조합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Ages 55 and older: Big/Small City 26%",
+          "role": "도시 비율",
+          "translation": "55세 이상에서 대도시·소도시 선호 비율은 26%입니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Suburb 22%",
+          "role": "최저 비율",
+          "translation": "같은 집단에서 대도시·소도시 근교가 22%로 가장 낮습니다."
+        }
+      ],
+      "correctReason": "④는 대도시·소도시가 최저라고 했지만 실제 최저는 근교이므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "Each percentage of the three preferred types of place to live was higher than 20% across the three age groups.",
+        "reason": "도표의 아홉 수치는 모두 20%를 초과하므로 원문과 일치합니다."
+      }
+    },
+    "2023_csat_26": {
+      "id": "2023_csat_26",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 26,
+      "group": "info",
+      "type": "내용 일치",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "Luhmann의 책은 번역하기 어렵다고 알려졌지만 실제로 여러 언어로 널리 번역됐습니다.",
+      "typeApproach": "인물 내용 불일치는 마지막 문장의 양보·반전 표현까지 확인해 선지와 비교합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "known to be difficult to translate",
+          "role": "번역 난도",
+          "translation": "그의 책은 번역하기 어렵다고 알려져 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "widely translated into other languages",
+          "role": "실제 번역",
+          "translation": "그럼에도 여러 언어로 널리 번역됐습니다."
+        }
+      ],
+      "correctReason": "번역하기 쉽다고 알려졌다는 ⑤가 원문과 반대이므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "다양한 주제에 관해 연구했다.",
+        "reason": "대중 매체와 법을 포함한 여러 주제를 연구했다고 명시되어 있습니다."
+      }
+    },
+    "2023_csat_27": {
+      "id": "2023_csat_27",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 27,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "리조트 보수 공사는 2022년 11월 21일부터 12월 18일까지 매일 진행됩니다.",
+      "typeApproach": "안내문 불일치는 날짜·빈도·폐쇄 시설·혜택을 각각 분리해 확인합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Renovation period: November 21 to December 18, 2022.",
+          "role": "공사 기간",
+          "translation": "보수 공사는 11월 21일부터 12월 18일까지 진행됩니다."
+        },
+        {
+          "in": "figure",
+          "quote": "Renovations take place every day",
+          "role": "공사 빈도",
+          "translation": "공사는 주말만이 아니라 매일 진행됩니다."
+        }
+      ],
+      "correctReason": "주말에만 진행된다는 ②가 매일 진행된다는 안내와 어긋나므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "손님은 무료로 테니스장을 이용할 수 있다.",
+        "reason": "안내문에 손님은 테니스장을 무료로 이용할 수 있다고 명시되어 있습니다."
+      }
+    },
+    "2023_csat_28": {
+      "id": "2023_csat_28",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 28,
+      "group": "info",
+      "type": "안내문 일치",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "재활용 포스터 대회의 심사 기준에는 주제 활용, 창의성, 예술적 기술이 포함됩니다.",
+      "typeApproach": "안내문 일치는 참가 대상·주제·파일 형식·심사 기준·출품 수를 항목별로 확인합니다.",
+      "evidence": [
+        {
+          "in": "figure",
+          "quote": "Judging criteria: use of theme, creativity, and artistic skill.",
+          "role": "심사 기준",
+          "translation": "심사 기준에 창의성이 포함됩니다."
+        },
+        {
+          "in": "figure",
+          "quote": "One poster per person.",
+          "role": "출품 제한",
+          "translation": "한 사람당 포스터 한 개만 출품할 수 있습니다."
+        }
+      ],
+      "correctReason": "창의성이 심사 기준에 포함된다는 ④가 안내문과 일치하므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "1인당 출품할 수 있는 포스터의 수에는 제한이 없다.",
+        "reason": "안내문은 한 사람당 한 작품으로 제한합니다."
+      }
+    },
+    "2023_csat_29": {
+      "id": "2023_csat_29",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 29,
+      "group": "grammar",
+      "type": "어법",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "주어 people이 자기 자신을 세상에 드러낸다는 뜻이므로 목적어에는 재귀대명사 themselves가 필요합니다.",
+      "typeApproach": "어법 문제는 밑줄마다 문장 성분과 선행사를 확인하고 주어와 목적어가 같은지 점검합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "people present ② them to the world",
+          "role": "대명사 오류",
+          "translation": "people이 자기 자신을 나타내므로 them이 아니라 themselves가 필요합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "the meanings ③ associated with specific pieces",
+          "role": "분사 수식",
+          "translation": "associated는 meanings를 뒤에서 수식하는 과거분사입니다."
+        }
+      ],
+      "correctReason": "② them을 themselves로 고쳐야 하므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "associated",
+        "reason": "meanings와 수동 관계이므로 과거분사 associated가 적절합니다."
+      }
+    },
+    "2023_csat_30": {
+      "id": "2023_csat_30",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 30,
+      "group": "vocab",
+      "type": "어휘",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "기술은 별도 세계로 사람을 데려가는 것이 아니라 일상에 들어와 인간에게 맞게 융합되어야 합니다.",
+      "typeApproach": "어휘 문제는 앞뒤 논리의 방향과 선택 낱말이 그 방향을 유지하는지 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "the one that must ④ adapt",
+          "role": "기술의 방향",
+          "translation": "사람이 기술에 맞추는 것이 아니라 기술이 사람에게 적응해야 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "the longer we will ⑤ maintain their natural fusion",
+          "role": "논리 반전",
+          "translation": "마법의 신세계를 계속 믿으면 일상과의 융합은 유지되는 것이 아니라 지연됩니다."
+        }
+      ],
+      "correctReason": "⑤ maintain은 문맥상 delay와 같은 반대 방향의 말이어야 하므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "adapt",
+        "reason": "인간 중심 컴퓨팅에서는 기술이 인간에게 적응해야 하므로 adapt는 적절합니다."
+      }
+    },
+    "2023_csat_31": {
+      "id": "2023_csat_31",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 31,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "스포츠 기자는 독자도 많고 보수도 높지만 언론계 내부에서는 그 규모에 걸맞은 전문적 존경을 받지 못합니다.",
+      "typeApproach": "빈칸은 Yet 이후의 역접과 마지막 병렬 구조를 이용해 앞부분과 반대되는 평가를 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "much sought after by the major newspapers",
+          "role": "높은 수요",
+          "translation": "유명 스포츠 기자의 글은 주요 신문사가 많이 원합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "do not have a standing in",
+          "role": "낮은 위상",
+          "translation": "그럼에도 직업적 위상은 독자와 보수에 걸맞지 않습니다."
+        }
+      ],
+      "correctReason": "많이 읽히지만 거의 존경받지 못한다는 대비이므로 정답은 ② admired입니다.",
+      "trap": {
+        "mark": "①",
+        "choice": 1,
+        "text": "paid",
+        "reason": "앞에서 수익성 높은 계약과 보수를 언급하므로 적게 지급받는다는 뜻이 아닙니다."
+      }
+    },
+    "2023_csat_32": {
+      "id": "2023_csat_32",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 32,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "도시는 많은 사람이 서로 자주 접촉하는 곳이어서 속어와 취향 변화 같은 문화 혁신이 시작됩니다.",
+      "typeApproach": "빈칸은 앞의 언어 혁신 사례와 뒤의 창의적 사람을 연결하는 공통 원인을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "different people so frequently exposed to",
+          "role": "도시의 조건",
+          "translation": "도시에서는 서로 다른 사람들이 자주 접촉합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "where the most people heard",
+          "role": "혁신 원인",
+          "translation": "많은 사람이 더 많은 사람의 말을 듣고 대화하는 곳에서 언어 혁신이 일어납니다."
+        }
+      ],
+      "correctReason": "도시는 다른 사람과 가장 많이 접촉할 기회를 제공하므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "present ideal research environments to linguists",
+        "reason": "언어학 연구 환경이 아니라 사람 간 빈번한 접촉이 혁신의 원인입니다."
+      }
+    },
+    "2023_csat_33": {
+      "id": "2023_csat_33",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 33,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "물을 전달받는 데 걸리는 시간이라는 국소 정보에 따라 개별 벌이 행동을 바꾸면 군집 전체의 물 조달 인력이 조절됩니다.",
+      "typeApproach": "빈칸은 구체적 사례에서 개인의 행동 변화가 집단에 만든 최종 효과를 일반화합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "If this search time is short",
+          "role": "국소 정보",
+          "translation": "물을 받을 벌을 빨리 찾으면 다른 벌을 모집합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "regulates water collection in response to the colony’s",
+          "role": "집단 조절",
+          "translation": "개별 벌의 반응이 군집의 필요에 맞춰 물 수집을 조절합니다."
+        }
+      ],
+      "correctReason": "개별 행동 변화가 군집의 노동력을 조절하게 하므로 정답은 ①입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "decrease the colony’s workload when necessary",
+        "reason": "필요에 따라 조달 인력을 늘리거나 줄이는 조절이며 단순히 작업량을 감소시키는 것이 아닙니다."
+      }
+    },
+    "2023_csat_34": {
+      "id": "2023_csat_34",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 34,
+      "group": "blank",
+      "type": "빈칸",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "기후 변화에서 과거·현재·미래를 날카롭게 나누면 서로 얽힌 책임의 현실 자체가 보이지 않게 됩니다.",
+      "typeApproach": "not A, but B 구조에서는 뒤의 B를 기준으로 A가 무엇을 부정하는지 역으로 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "hidden from view the extent of the responsibility",
+          "role": "책임 은폐",
+          "translation": "시간 구분은 현재 세대의 책임 범위를 보이지 않게 합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "the realities are obscured from view",
+          "role": "핵심 재진술",
+          "translation": "사실을 보고 부인하는 것이 아니라 사실 자체가 시간 분할로 가려집니다."
+        }
+      ],
+      "correctReason": "우리가 사실을 마주한 뒤 책임을 부인하는 것이 아니라는 ⑤가 빈칸에 들어가므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "sufficient scientific evidence has been provided to us",
+        "reason": "과학적 증거의 충분성은 뒤의 시간 분할과 책임 논의의 직접적인 대조가 아닙니다."
+      }
+    },
+    "2023_csat_35": {
+      "id": "2023_csat_35",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 35,
+      "group": "irrelevant",
+      "type": "무관한 문장",
+      "answer": 3,
+      "answerMark": "③",
+      "summary": "초임 교사는 목소리를 통제해 자신 있게 지시하되 큰 소리와 고함은 아끼고 침착한 어조를 써야 합니다.",
+      "typeApproach": "무관한 문장은 앞뒤 문장의 동일 주제와 대명사·접속어 연결을 끊는 문장을 찾습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "to control your voice and use it for different purposes",
+          "role": "중심 주제",
+          "translation": "글은 교사가 목소리를 조절하는 기술을 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "use your loudest voice incredibly sparingly",
+          "role": "앞뒤 연결",
+          "translation": "큰 목소리는 매우 드물게 쓰고 고함을 피하라고 조언합니다."
+        }
+      ],
+      "correctReason": "③은 학교 소음 문제 해결을 위한 구성원 협력으로 주제가 바뀌므로 정답은 ③입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "However, I would always advise that you use your loudest voice incredibly sparingly and avoid shouting as much as possible.",
+        "reason": "②의 큰 목소리 활용을 제한하며 ⑤의 조용한 어조로 이어지는 핵심 전환 문장입니다."
+      }
+    },
+    "2023_csat_36": {
+      "id": "2023_csat_36",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 36,
+      "group": "order",
+      "type": "순서",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "포식자 신호에 따른 물벼룩의 방어 형질 발달을 제시한 뒤 에너지 효율과 적응적 가소성의 의미를 설명합니다.",
+      "typeApproach": "순서 문제는 지시어가 가리키는 앞 내용과 마지막 일반화의 범위를 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "If the baby water flea",
+          "role": "구체 사례 시작",
+          "translation": "(B)는 어린 물벼룩이 포식자 신호에 따라 방어 형질을 만드는 사례를 제시합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "That’s a clever trick",
+          "role": "지시어 연결",
+          "translation": "(A)의 That은 바로 앞 (B)의 선택적 방어 형질 발달을 가리킵니다."
+        }
+      ],
+      "correctReason": "구체 사례 (B), 그 에너지 이점 (A), 적응으로의 일반화 (C) 순서이므로 정답은 ②입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "(B) - (C) - (A)",
+        "reason": "(A)의 That은 (B)의 구체 사례를 직접 받아야 하며 (C)의 일반화 뒤로 갈 수 없습니다."
+      }
+    },
+    "2023_csat_37": {
+      "id": "2023_csat_37",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 37,
+      "group": "order",
+      "type": "순서",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "승소 시 보수 약정의 작동 방식과 의뢰인 측 장점을 설명한 뒤 공급자가 위험과 보상을 공유하는 가격 구조로 일반화합니다.",
+      "typeApproach": "순서 문제는 첫 문장의 용어를 구체화하는 문장과 Therefore가 받을 원인을 먼저 배치합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Contingency pricing is the major way",
+          "role": "용어 구체화",
+          "translation": "(C)가 승소 시 보수 약정의 실제 지급 방식을 먼저 설명합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "client’s \tfavor \tis\ncompensated",
+          "role": "결과 연결",
+          "translation": "(A)의 Therefore는 (C)의 성공 시 지급 방식에서 나온 결과입니다."
+        }
+      ],
+      "correctReason": "(C)에서 방식, (A)에서 의뢰인 효과, (B)에서 위험 공유로 이어져 정답은 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "(C) - (B) - (A)",
+        "reason": "(A)의 Therefore는 (C) 직후에 와야 인과가 직접 이어집니다."
+      }
+    },
+    "2023_csat_38": {
+      "id": "2023_csat_38",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 38,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "도시 공원에서 거리·차·건물과 분리된 느낌이 드는 이유를 전통적인 경계 설계 방식이 설명합니다.",
+      "typeApproach": "문장 삽입은 지시어가 받는 앞 문장과 뒤 문장의 논리 확장을 함께 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "people often imagine a sharp separation",
+          "role": "앞 문장",
+          "translation": "사람들은 공원이 도시의 사물과 뚜렷이 분리된다고 느낍니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "There’s a reason for that",
+          "role": "지시어",
+          "translation": "주어진 문장의 that은 바로 그 분리감을 가리킵니다."
+        }
+      ],
+      "correctReason": "분리감을 제시한 문장 뒤에 그 이유가 와야 하므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "④",
+        "reason": "④ 뒤에는 아직 분리감 자체가 제시되지 않아 that이 가리킬 대상이 없습니다."
+      }
+    },
+    "2023_csat_39": {
+      "id": "2023_csat_39",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 39,
+      "group": "order",
+      "type": "문장 삽입",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "큰 협상 쟁점을 수량·시간·적용 방식으로 잘게 나누면 합의 가능성을 높일 수 있습니다.",
+      "typeApproach": "문장 삽입은 예시가 설명하는 일반 기준을 앞에서 찾고 다음 문장의 전환도 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "time horizon (when the principle goes into effect",
+          "role": "시간 기준",
+          "translation": "원칙의 시행 시점이나 지속 기간으로 쟁점을 세분할 수 있습니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "implemented until months in the future",
+          "role": "시간 예시",
+          "translation": "주어진 문장은 시행 시점을 늦추는 구체적 사례입니다."
+        }
+      ],
+      "correctReason": "시간 지평 설명 직후에 그 예시가 와야 하므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "⑤",
+        "reason": "⑤ 뒤의 가족 긴급 휴가 예시는 적용 방식의 수를 달리하는 다음 전략을 설명합니다."
+      }
+    },
+    "2023_csat_40": {
+      "id": "2023_csat_40",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 40,
+      "group": "summary",
+      "type": "요약문",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "장인정신은 여러 분야에서 지속돼 왔지만 사회·경제 조건과 경쟁·좌절·집착이 그 온전한 발달을 제한할 수 있습니다.",
+      "typeApproach": "요약문은 첫 빈칸에 시간 흐름의 방향, 둘째 빈칸에 방해 요인의 작용 방향을 넣습니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "an enduring, basic human impulse",
+          "role": "지속성",
+          "translation": "장인정신은 오래 지속되는 기본적인 인간 충동입니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "often stand in the way",
+          "role": "제한 요인",
+          "translation": "사회·경제 조건은 장인의 수련과 헌신을 방해합니다."
+        }
+      ],
+      "correctReason": "시간이 지나도 존속했고 여러 요인이 발달을 제한하므로 정답은 ①입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "persisted … cultivate",
+        "reason": "장인정신은 지속됐지만 방해 요인은 발달을 양성하는 것이 아니라 제한합니다."
+      }
+    },
+    "2023_csat_41": {
+      "id": "2023_csat_41",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 41,
+      "group": "long",
+      "type": "장문 제목",
+      "answer": 1,
+      "answerMark": "①",
+      "summary": "간단한 공식과 체크리스트는 중요한 요소를 일관되게 반영해 여러 분야에서 인간 전문가의 판단을 개선합니다.",
+      "typeApproach": "장문 제목은 첫 사례와 둘째 사례를 모두 포괄하는 공통 원리를 고릅니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "simple formulas can win out",
+          "role": "공식의 장점",
+          "translation": "불확실한 상황에서 간단한 공식이 전문가 판단보다 나을 수 있습니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "‘checklists’ can improve",
+          "role": "체크리스트 효과",
+          "translation": "체크리스트는 전문가 결정의 질을 높입니다."
+        }
+      ],
+      "correctReason": "간단한 공식과 체크리스트가 의사결정을 향상하는 힘을 설명하므로 정답은 ①입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "How Human Judgement Beats Algorithms",
+        "reason": "글은 오히려 단순한 알고리즘이 인간 전문가를 능가할 수 있다고 설명합니다."
+      }
+    },
+    "2023_csat_42": {
+      "id": "2023_csat_42",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 42,
+      "group": "long",
+      "type": "장문 어휘",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "해야 할 일이 많아 중요한 단계를 빠뜨리기 쉬운 상황에서 체크리스트가 전문가 판단을 보완합니다.",
+      "typeApproach": "장문 어휘는 주변 사례의 원인과 결과가 밑줄 낱말과 같은 방향인지 확인합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "hundreds of small",
+          "role": "업무 과부하",
+          "translation": "집중 치료에는 하루 수백 가지 작은 조치가 필요합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "ensuring that important steps or considerations aren’t missed",
+          "role": "체크리스트 목적",
+          "translation": "체크리스트는 중요한 단계를 놓치지 않게 합니다."
+        }
+      ],
+      "correctReason": "사람들이 느끼는 것은 relaxed가 아니라 overloaded와 같은 과부하 상태이므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "③",
+        "choice": 3,
+        "text": "(c)",
+        "reason": "두드러지지만 관련 없는 고려가 인간 판단을 흐릴 수 있다는 문맥에서 irrelevant는 적절합니다."
+      }
+    },
+    "2023_csat_43": {
+      "id": "2023_csat_43",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 43,
+      "group": "long",
+      "type": "장문 순서",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "아버지의 생일 준비 뒤 방문과 선물 공개, 색맹 교정 안경 착용과 감동으로 사건이 이어집니다.",
+      "typeApproach": "장문 순서는 인물의 이동, 아직 공개되지 않은 정보, 선물 사용 결과를 시간 순서로 배열합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "the doorbell ringing",
+          "role": "아버지 도착",
+          "translation": "(D)에서 아버지가 먼저 두 딸의 집에 도착합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "When he opened it, he discovered a pair of glasses inside.",
+          "role": "선물 공개",
+          "translation": "(C)에서 안경 선물을 연 뒤 그 용도가 설명됩니다."
+        }
+      ],
+      "correctReason": "아버지 도착 (D), 안경 공개 (C), 안경 착용과 감동 (B) 순서이므로 정답은 ⑤입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "(D) - (B) - (C)",
+        "reason": "(B)의 안경 착용은 (C)에서 안경 선물과 색맹 사실이 공개된 뒤에 와야 합니다."
+      }
+    },
+    "2023_csat_44": {
+      "id": "2023_csat_44",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 44,
+      "group": "long",
+      "type": "장문 지칭",
+      "answer": 5,
+      "answerMark": "⑤",
+      "summary": "(a)·(b)·(c)·(d)는 Hailey를 가리키지만 (e)는 Camila를 가리킵니다.",
+      "typeApproach": "지칭 문제는 대명사 주변의 말하는 사람과 행동 주체를 이름으로 바꾸어 읽습니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "What gift did (a) you buy",
+          "role": "Hailey 지칭",
+          "translation": "Camila가 Hailey에게 산 선물을 묻고 있어 (a)는 Hailey입니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "something (e) you",
+          "role": "Camila 지칭",
+          "translation": "Hailey가 Camila에게 알아야 할 사실을 말해 (e)는 Camila입니다."
+        }
+      ],
+      "correctReason": "나머지 넷과 달리 Camila를 가리키는 (e)가 정답이므로 ⑤입니다.",
+      "trap": {
+        "mark": "②",
+        "choice": 2,
+        "text": "(b)",
+        "reason": "(b) her gift는 안경을 준비한 Hailey의 선물을 가리킵니다."
+      }
+    },
+    "2023_csat_45": {
+      "id": "2023_csat_45",
+      "status": "ready",
+      "exam": "2023학년도 수능 영어",
+      "qid": 45,
+      "group": "long",
+      "type": "장문 내용",
+      "answer": 4,
+      "answerMark": "④",
+      "summary": "아버지는 딸들을 자기 집으로 초대한 것이 아니라 딸들의 집에 초대받아 방문했습니다.",
+      "typeApproach": "장문 내용 불일치는 장소·이동 방향·주체를 사건별로 대조합니다.",
+      "evidence": [
+        {
+          "in": "sharedPassage",
+          "quote": "inviting me to your place",
+          "role": "방문 장소",
+          "translation": "아버지는 딸들의 집에 초대해 줘서 고맙다고 말합니다."
+        },
+        {
+          "in": "sharedPassage",
+          "quote": "fifty red roses",
+          "role": "나이와 장미",
+          "translation": "50세 생일에 장미 50송이를 받았습니다."
+        }
+      ],
+      "correctReason": "Hailey와 Camila가 아버지 집을 방문했다는 ④는 이동 방향이 반대이므로 정답은 ④입니다.",
+      "trap": {
+        "mark": "⑤",
+        "choice": 5,
+        "text": "아버지는 자신의 나이와 똑같은 수의 장미를 받았다.",
+        "reason": "아버지는 50세 생일에 50송이의 빨간 장미를 받았으므로 일치합니다."
+      }
+    }
+  }
+}
