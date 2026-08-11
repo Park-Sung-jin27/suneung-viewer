@@ -617,6 +617,15 @@ choices 배열만 JSON으로 반환해줘.
 형식: [{ qId: 1, num: 1, pat: null, analysis: "..." }, ...]
 반드시 qId(문항 id)를 포함해줘. qId는 set.questions[n].id 값이다.`;
 
+  // [cu1] 프롬프트 입력 결손 검사 — 이 경로는 JSON.stringify(set) 으로 세트 전체를
+  //   넘기므로 정상 상태에서는 전건 통과한다. 향후 payload 를 줄이는 변경이 들어오면
+  //   여기서 드러난다. 세트 단위 호출이라 문항 skip 은 불가 — 사유를 로그로 남긴다.
+  for (const _q of set.questions || []) {
+    const g = checkPromptInputs(userPrompt, _q, set);
+    if (!g.ok)
+      console.warn(`  [step3:input] ${set.id} Q${_q.id} 입력 결손 — ${g.reasons.join(" / ")}`);
+  }
+
   const response = await callWithRetry(() =>
     client.messages.create(
       {
@@ -640,6 +649,72 @@ choices 배열만 JSON으로 반환해줘.
   return parseJSON(response.content[0].text);
 }
 
+// ─── 프롬프트 입력 결손 검사 (발주 cu[1]) ────────────────────
+// 해설 생성 직전, 모델이 판단에 필요한 값이 실제로 프롬프트에 들어갔는지 본다.
+//   배경: 변별 재생성 경로가 bogi 를 넘기지 않아 선지가 'ㄱ, ㄷ' 뿐인 문항에서
+//   모델이 <보기> 내용을 지어냈다(r20206d Q40 · l20229a Q19 · r20236b Q7-4).
+//   bogi 인자가 미래에 되돌려져도 이 검사가 있으면 조용히 통과하지 않는다.
+// 실패는 전체 중단이 아니라 **문항 단위 skip** 이다 — 배치를 통째로 잃지 않기 위해서(cm 전례).
+const _SYM1 = /^[ㄱ-ㅎa-zA-Zⅰ-ⅹ①-⑮ⓐ-ⓔ㉠-㉤]$/;
+const _flat = (v) => { const a = []; (function w(x) {
+  if (typeof x === "string") a.push(x);
+  else if (Array.isArray(x)) x.forEach(w);
+  else if (x && typeof x === "object") Object.values(x).forEach(w);
+})(v); return a.join("\n"); };
+
+export function checkPromptInputs(prompt, question, set) {
+  const P = String(prompt || "");
+  const reasons = [];
+  const bogi = _flat(question?.bogi);
+
+  // 검사 1 — bogi 가 있으면 그 내용이 프롬프트에 있어야 한다
+  if (bogi.trim()) {
+    const probe = bogi.replace(/\s+/g, "").slice(0, 24);
+    if (probe && !P.replace(/\s+/g, "").includes(probe))
+      reasons.push("bogi_missing: 문항에 <보기>가 있으나 프롬프트에 없음");
+  }
+  // 마커 정의 소재 — bogi 항목 또는 본문 정박 문장
+  const anchorOf = (sym) => {
+    const b = bogi.match(new RegExp(`(^|\\n)\\s*${sym}[.．)\\s][^\\n]*`, "m"));
+    if (b) return b[0].trim();
+    for (const sn of set?.sents || []) {
+      const i = String(sn.t || "").indexOf(sym);
+      if (i >= 0) return String(sn.t).slice(i, i + 40);
+    }
+    return null;
+  };
+  const inPrompt = (txt) => {
+    if (!txt) return false;
+    const p = txt.replace(/\s+/g, "").slice(0, 16);
+    return p.length >= 4 && P.replace(/\s+/g, "").includes(p);
+  };
+  // 검사 2 — 선지가 마커 나열뿐이면 그 마커들의 정의가 있어야 한다
+  const cs = question?.choices || [];
+  const comboSyms = new Set();
+  const isCombo = cs.length >= 4 && cs.every((c) => {
+    const toks = String(c.t || "").split(/[,·、\s]+/).filter(Boolean);
+    const ok = toks.length >= 1 && toks.length <= 4 && toks.every((t) => _SYM1.test(t));
+    if (ok) toks.forEach((t) => comboSyms.add(t));
+    return ok;
+  });
+  if (isCombo) {
+    const miss = [...comboSyms].filter((s) => !inPrompt(anchorOf(s)));
+    if (miss.length) reasons.push(`combo_def_missing: 선지가 마커 나열뿐인데 [${miss.join("")}] 정의가 프롬프트에 없음`);
+  }
+  // 검사 3 — 발문이 마커 범위를 선언하면 범위 내 전 마커 정박 문장이 있어야 한다
+  const rm = String(question?.t || "").match(/([ⓐ-ⓔ㉠-㉤ㄱ-ㅎ])\s*[~～∼]\s*([ⓐ-ⓔ㉠-㉤ㄱ-ㅎ])/);
+  if (rm) {
+    const POOLS = ["ⓐⓑⓒⓓⓔ", "㉠㉡㉢㉣㉤", "ㄱㄴㄷㄹㅁ"];
+    const pool = POOLS.find((p) => p.includes(rm[1]) && p.includes(rm[2]));
+    if (pool) {
+      const span = pool.slice(pool.indexOf(rm[1]), pool.indexOf(rm[2]) + 1).split("");
+      const miss = span.filter((s) => !inPrompt(anchorOf(s)));
+      if (miss.length) reasons.push(`range_def_missing: 발문이 ${rm[1]}~${rm[2]} 선언인데 [${miss.join("")}] 정박 문장이 프롬프트에 없음`);
+    }
+  }
+  return { ok: reasons.length === 0, reasons };
+}
+
 async function reanalyzeSingleChoice(set, question, choice) {
   // [NEW] 변별 판단용 neighbor choices — 같은 문항 내 타 선지 num/t/ok 를 함께 전달
   const neighbor_choices = (question.choices || [])
@@ -658,6 +733,15 @@ neighbor_choices: ${JSON.stringify(neighbor_choices)}
 
 위 선지의 ok 값(${choice.ok})에 맞게 analysis를 작성해줘. 🔍 풀이는 3단(근거 풀이 → 선지-지문 매칭 → 판정)으로 쓰고, 오답이면 함정 진단을 포함할 것. 별도 🔎 비교 블록은 만들지 말 것.
 출력: { "analysis": "..." }`;
+
+  // [cu1] 프롬프트 입력 결손 검사 — API 호출 전. 실패하면 이 문항만 skip 한다.
+  const gate = checkPromptInputs(userPrompt, question, set);
+  if (!gate.ok) {
+    console.warn(
+      `  [step3:skip] ${set.id} Q${question.id}#${choice.num} 생성 skip — ${gate.reasons.join(" / ")}`,
+    );
+    return ""; // 빈 값 → adoptRegeneratedAnalysis 가 채택하지 않고 기존 해설 유지
+  }
 
   const response = await callWithRetry(() =>
     client.messages.create(

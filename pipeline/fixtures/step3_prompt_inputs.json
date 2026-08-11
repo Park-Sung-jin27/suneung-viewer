@@ -1,0 +1,18 @@
+{
+  "_comment": "[step3 프롬프트 입력 결손 회귀] bogi 인자가 프롬프트에서 빠지면 해당 문항이 skip 되어야 한다. bogi 수정이 미래에 되돌려져도 조용히 통과하지 않게 하는 고정 장치.",
+  "_source": "2020_6월 r20206d Q40 — 선지가 'ㄱ, ㄷ' 처럼 마커 나열뿐이라 <보기> 없이는 판단 불가능한 문항",
+  "cases": [
+    {
+      "name": "bogi_removed_must_skip",
+      "why": "reanalyzeSingleChoice 의 문항 payload 에서 bogi 를 빼면 검사 1(bogi_missing)과 검사 2(combo_def_missing)가 걸려 생성이 skip 되어야 한다.",
+      "promptVariant": "without_bogi",
+      "expect": { "ok": false, "reasonsInclude": ["bogi_missing", "combo_def_missing"] }
+    },
+    {
+      "name": "bogi_present_must_pass",
+      "why": "현행(bogi 포함) 프롬프트는 통과해야 한다. 통과하지 못하면 정상 생성이 전부 막힌다.",
+      "promptVariant": "with_bogi",
+      "expect": { "ok": true, "reasonsInclude": [] }
+    }
+  ]
+}
