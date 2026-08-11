@@ -662,6 +662,45 @@ const _flat = (v) => { const a = []; (function w(x) {
   else if (x && typeof x === "object") Object.values(x).forEach(w);
 })(v); return a.join("\n"); };
 
+// ─── 생성 순서 강제 (발주 cv[1]) ──────────────────────────────
+// 마커를 참조하는 문항이 있는데 그 마커가 아직 본문/보기에 정박되지 않았다면
+// 해설을 생성해선 안 된다 — 모델이 참조 대상 없이 내용을 지어낸다.
+//   실증: l20229a Q19 는 마커 정박 이전에 해설이 생성돼 ⓐ~ⓔ 를 서로 뒤바꿔 설명했고,
+//   해설 자신이 "지문에 ⓐ~ⓔ 표시가 없어 판단 불가능"이라 적은 채 LIVE 로 나갔다.
+// 마커 정박은 세트 속성이므로 **세트 단위 skip** 이다(문항으로 나눌 실익 없음).
+export function checkMarkerAnchored(set) {
+  const MARK = /[ⓐ-ⓔ㉠-㉤㉮-㉲]/g;
+  const anchored = new Set();
+  for (const sn of set?.sents || [])
+    for (const m of String(sn.t || "").match(MARK) || []) anchored.add(m);
+  for (const q of set?.questions || [])
+    for (const m of _flat(q.bogi).match(MARK) || []) anchored.add(m);
+
+  const missing = new Map();
+  for (const q of set?.questions || []) {
+    const refs = new Set();
+    const rm = String(q.t || "").match(/([ⓐ-ⓔ㉠-㉤㉮-㉲])\s*[~～∼]\s*([ⓐ-ⓔ㉠-㉤㉮-㉲])/);
+    if (rm) {
+      for (const pool of ["ⓐⓑⓒⓓⓔ", "㉠㉡㉢㉣㉤", "㉮㉯㉰㉱㉲"]) {
+        if (pool.includes(rm[1]) && pool.includes(rm[2])) {
+          pool.slice(pool.indexOf(rm[1]), pool.indexOf(rm[2]) + 1).split("").forEach((x) => refs.add(x));
+          break;
+        }
+      }
+    }
+    for (const m of String(q.t || "").match(MARK) || []) refs.add(m);
+    for (const c of q.choices || []) for (const m of String(c.t || "").match(MARK) || []) refs.add(m);
+    for (const r of refs) if (!anchored.has(r)) {
+      if (!missing.has(r)) missing.set(r, []);
+      missing.get(r).push(q.id);
+    }
+  }
+  return {
+    ok: missing.size === 0,
+    reasons: [...missing.entries()].map(([m, qs]) => `${m}(Q${[...new Set(qs)].join(",")})`),
+  };
+}
+
 export function checkPromptInputs(prompt, question, set) {
   const P = String(prompt || "");
   const reasons = [];
@@ -1418,6 +1457,16 @@ export async function analyzeStructure(
       // 이미 완료된 세트 스킵
       if (completedIds.has(set.id)) {
         console.log(`[step3] 스킵 (이미 완료): ${set.id}`);
+        continue;
+      }
+
+      // [cv1] 생성 순서 강제 — 마커 참조 문항이 있는데 정박이 안 됐으면 세트 전체 skip
+      const anchorGate = checkMarkerAnchored(set);
+      if (!anchorGate.ok) {
+        console.warn(
+          `[step3:skip] ${set.id} 세트 skip — 마커 미정박: ${anchorGate.reasons.join(" ")}\n` +
+            `            마커를 본문/보기에 먼저 정박한 뒤 재실행하십시오.`,
+        );
         continue;
       }
 
