@@ -716,6 +716,10 @@ export function checkPromptInputs(prompt, question, set) {
   const anchorOf = (sym) => {
     const b = bogi.match(new RegExp(`(^|\\n)\\s*${sym}[.．)\\s][^\\n]*`, "m"));
     if (b) return b[0].trim();
+    // <보기> 본문 인라인 정박 (예: "…글 전체에서 ⓐ중요하다고 생각하는 단어만…")
+    // 항목 형식(줄머리+구분자)만 인정하면 인라인 정박 7건이 근거 없이 막힌다.
+    const bi = bogi.indexOf(sym);
+    if (bi >= 0) return bogi.slice(bi, bi + 40);
     for (const sn of set?.sents || []) {
       const i = String(sn.t || "").indexOf(sym);
       if (i >= 0) return String(sn.t).slice(i, i + 40);
