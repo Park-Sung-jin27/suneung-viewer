@@ -11,6 +11,7 @@
  */
 
 import Anthropic from "@anthropic-ai/sdk";
+import { checkPromptInputs } from "./step3_analysis.js";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -121,6 +122,11 @@ ok:true 해설에서는 부정 판정 표현을 절대 사용하지 말 것.
 
 해설만 출력. 설명 금지.`;
 
+  const _g = checkPromptInputs(prompt, q, set);
+  if (!_g.ok) {
+    console.warn(`  [reanalyze_positive:skip] ${set.id} Q${q.id}#${c.num} — ${_g.reasons.join(" / ")}`);
+    return null;
+  }
   const response = await client.messages.create({
     model: "claude-opus-4-6",
     max_tokens: 1500,

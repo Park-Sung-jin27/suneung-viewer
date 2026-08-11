@@ -3,6 +3,7 @@
  * step3 VOCAB_SYSTEM_PROMPT로 analysis 재생성 후 all_data_204.json에 반영
  */
 import fs from "fs";
+import { checkPromptInputs } from "./step3_analysis.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
@@ -82,6 +83,11 @@ ${JSON.stringify(question.choices.map((c) => ({ num: c.num, t: c.t, ok: c.ok }))
 각 선지의 pat과 analysis를 작성해줘.
 출력 형식: [{ qId: ${question.id}, num: 1, pat: null, analysis: "..." }, ...]`;
 
+  const _g = checkPromptInputs(userPrompt, question, set);
+  if (!_g.ok) {
+    console.warn(`  [reanalyze_vocab:skip] ${set.id} Q${question.id} — ${_g.reasons.join(" / ")}`);
+    return null;
+  }
   const response = await callWithRetry(() =>
     client.messages.create(
       {

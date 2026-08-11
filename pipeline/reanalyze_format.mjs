@@ -19,6 +19,7 @@
  */
 
 import Anthropic from "@anthropic-ai/sdk";
+import { checkPromptInputs } from "./step3_analysis.js";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -222,6 +223,11 @@ SYSTEM_PROMPT의 모든 규칙, 특히 [📌 지문 근거 절대 규칙]을 반
     process.stdout.write(
       `  [${i + 1}/${targets.length}] ${loc} (ok=${c.ok})... `,
     );
+    const _g = checkPromptInputs(userPrompt, q, set);
+    if (!_g.ok) {
+      console.warn(`  [reanalyze_format:skip] ${set.id} Q${q.id}#${c.num} — ${_g.reasons.join(" / ")}`);
+      return null;
+    }
     try {
       const resp = await callWithRetry(() =>
         client.messages.create(
