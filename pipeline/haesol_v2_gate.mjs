@@ -214,6 +214,75 @@ export function chooseRegenAnalysis(
 //   가드2 전행성: 각 조각이 그 verse 행의 대부분(정규화 길이 ≥60%)을 차지 — 짧은 substring 후렴 오정박 방지.
 //   가드3 유일성: 한 조각이 복수 verse 행에 매칭(후렴)돼 유일 결정 불가 → null(옵션B 유지).
 //   산문 " / "는 verse sent 부재라 자동 null. _s2norm 재사용.
+/**
+ * [S1 따옴표 짝] 해설에서 인용 문자열을 추출한다.
+ *   구판 `/"([^"]{12,})"/g` 는 12자 미만 인용을 건너뛰면서 따옴표 짝이 어긋나,
+ *   닫는 따옴표와 다음 여는 따옴표 사이의 평문을 인용으로 오인했다(실측 88건).
+ *   여는 따옴표는 짝수번째 " 다 — 짝을 먼저 맞춘 뒤 길이로 거른다.
+ */
+export function extractQuotes(text, minLen = 12) {
+  const a = String(text || "");
+  const pos = [];
+  for (let i = 0; i < a.length; i++) if (a[i] === '"') pos.push(i);
+  const out = [];
+  for (let i = 0; i + 1 < pos.length; i += 2) {
+    const q = a.slice(pos[i] + 1, pos[i + 1]);
+    if (q.length >= minLen && !q.includes("\n")) out.push(q);
+  }
+  return out;
+}
+
+/**
+ * [S2 운문 ' / '] 여러 행을 " / "로 이은 인용의 각 조각이 본문·보기에 실재하는가.
+ *   matchVerseMultiSent 가 sentType=verse 인 연속 행만 다루므로 그 밖의 조판을 놓친다(실측 90건).
+ */
+export function verseSlashResolved(quote, sents, bogi) {
+  if (!String(quote).includes(" / ")) return false;
+  const parts = String(quote).split(" / ").map((x) => x.trim()).filter(Boolean);
+  if (parts.length < 2) return false;
+  return parts.every(
+    (p) =>
+      (sents || []).some((s) => String(s.t || "").includes(p)) ||
+      (bogi && String(bogi).includes(p)),
+  );
+}
+
+/**
+ * 인용 1건이 원문으로 해소되는가. 해소되면 §2 FAIL 이 아니다.
+ *   ctx = { sents, bogi, qt(발문), choices }
+ *   S3 choice.t · S4 q.t 는 §13⑭ "전 텍스트 필드" 원칙에 따라 대조 대상에 포함한다.
+ */
+export function quoteResolved(quote, ctx) {
+  const { sents = [], bogi = "", qt = "", choices = [] } = ctx || {};
+  const q = String(quote);
+  if (sents.some((s) => String(s.t || "").includes(q))) return "sents";
+  if (bogi && String(bogi).includes(q)) return "bogi";
+  const nq = _s2norm(q);
+  if (nq.length >= 6) {
+    if (sents.some((s) => _s2norm(s.t || "").includes(nq))) return "sents~";
+    if (bogi && _s2norm(bogi).includes(nq)) return "bogi~";
+  }
+  if (matchVerseMultiSent(q, sents)) return "verse";
+  if (verseSlashResolved(q, sents, bogi)) return "verse/";        // S2
+  const ct = choices.map((c) => String(c.t || "")).join("  ");
+  if (ct.includes(q)) return "choice.t";                           // S3
+  if (nq.length >= 6 && _s2norm(ct).includes(nq)) return "choice.t~";
+  if (qt && String(qt).includes(q)) return "q.t";                  // S4
+  if (nq.length >= 6 && qt && _s2norm(qt).includes(nq)) return "q.t~";
+  return null;
+}
+
+/** 회귀용 — 한 선지에서 §2 FAIL 로 남는 인용 목록(WARNING 은 제외). */
+export function s2QuoteMiss(analysis, ctx) {
+  const out = [];
+  for (const q of extractQuotes(analysis)) {
+    if (quoteResolved(q, ctx)) continue;
+    if (q.split(/[.!?]/).filter(Boolean).length > 1 || /…|\.{2,}/.test(q)) continue; // WARNING
+    out.push(q);
+  }
+  return out;
+}
+
 export function matchVerseMultiSent(quote, sents) {
   const q = String(quote || "");
   if (!/\s\/\s/.test(q)) return null;
@@ -469,8 +538,12 @@ if (IS_CLI) {
           (c.cs_ids || []).length === 0;
         // ① §2 전선지: 📌 인용(12+) ⊆ sents∪bogi. 다문장=WARNING, 그 외=FAIL
         // ④ 근거완전성(발주#4): 지문 인용 sent가 cs_ids에 없으면 FAIL(⚡·🧠 참조 누락 색출)
-        for (const m of a.matchAll(/"([^"]{12,})"/g)) {
-          const qt = m[1];
+        // [사각 4종 수리 — 발주 dq]
+        //   S1 extractQuotes  : 따옴표 짝을 먼저 맞춘 뒤 길이로 거른다(구판은 짝이 어긋났다)
+        //   S2 verseSlashResolved · S3 choice.t · S4 q.t → quoteResolved 안에서 처리
+        //   ★ 해소 판정만 넓혔다. 원문 어디에도 없는 인용은 그대로 FAIL 로 남는다(음성 대조 보유).
+        const _ctx = { sents: sentArr, bogi, qt: String(q.t || ""), choices: q.choices || [] };
+        for (const qt of extractQuotes(a)) {
           const hit = sentArr.find((sn) => (sn.t || "").includes(qt));
           if (hit) {
             if (!(c.cs_ids || []).includes(hit.id) && !anchorExempt) {
@@ -482,21 +555,7 @@ if (IS_CLI) {
             }
             continue;
           }
-          if (bogi && bogi.includes(qt)) continue; // 보기 인용(bogi)
-          // [결정A] KNOWN 구조표기(마커·각주*·전각↔반각·한자병기)만 다르고 본문에 실재 →
-          //   §2 오탐이므로 미집계. cs·anchorGap(위 raw hit)엔 영향 없음. char-level 차(오타·古語)는
-          //   정규화 후에도 불일치라 아래 s2fail로 계속 잡힌다(§13⑥·§13⑮ 양성회귀 대상).
-          {
-            const nqt = _s2norm(qt);
-            if (
-              nqt.length >= 6 &&
-              (sentArr.some((sn) => _s2norm(sn.t || "").includes(nqt)) ||
-                (bogi && _s2norm(bogi).includes(nqt)))
-            )
-              continue;
-          }
-          // [verse 매처] 연속 verse 행을 " / "로 이은 다행 인용은 §13⑬ 정상 → 오탐 미집계.
-          if (matchVerseMultiSent(qt, sentArr)) continue;
+          if (quoteResolved(qt, _ctx)) continue;
           if (
             qt.split(/[.!?]/).filter(Boolean).length > 1 ||
             /…|\.{2,}/.test(qt)
