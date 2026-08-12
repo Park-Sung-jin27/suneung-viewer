@@ -248,6 +248,45 @@ export function verseSlashResolved(quote, sents, bogi) {
 }
 
 /**
+ * [오탐 ① 마커 삽입] 대조 시 마커 문자를 제거한다.
+ *   ★ 반드시 양쪽(인용·원문)에 대칭 적용한다. 한쪽만 하면 일치가 불일치로 뒤집힌다(§7-26).
+ *   실증: 해설 «갑은 이들과 함께 공동 소송을 하여» / 원문 «갑은 이들과 함께 ㉠ 공동 소송을 하여»
+ */
+export const stripMarks = (x) =>
+  String(x || "").replace(/[㉠-㉿ⓐ-ⓩ①-⑳㈀-㈜⑴-⒇]/g, "").replace(/\s+/g, " ").trim();
+
+/**
+ * [오탐 ② 조사 부착] 조각이 원문에 있는가. 끝의 조사 1~2자를 허용 오차로 둔다.
+ *   실증: 해설 «이와 무관한 명제는» / 원문 «… 이와 무관한 명제 "은주는 학생이다."는 …»
+ *   ★ 허용 폭을 넓히면 요약을 인용으로 표기한 규약위반(⑤)이 통과해 버린다. 2자로 고정한다.
+ */
+export function fragmentIn(frag, hay) {
+  const f = String(frag).trim();
+  if (!f) return false;
+  const H = String(hay);
+  if (H.includes(f)) return true;
+  const sf = stripMarks(f), sh = stripMarks(H);          // 양쪽 대칭
+  if (sf.length >= 4 && sh.includes(sf)) return true;
+  for (let k = 1; k <= 2; k++) {
+    const cut = sf.slice(0, sf.length - k);
+    if (cut.length >= 4 && sh.includes(cut)) return true;
+  }
+  return false;
+}
+
+/**
+ * [오탐 ②] 말줄임표로 자른 인용 — 각 조각이 원문에 있으면 해소.
+ *   조각이 하나라도 없으면 해소되지 않는다(그 조각이 환각 후보다).
+ */
+export function ellipsisResolved(quote, hay) {
+  const q = String(quote);
+  if (!/…|\.{2,}/.test(q)) return false;
+  const parts = q.split(/\s*(?:…|\.{2,})\s*/).map((x) => x.trim()).filter((x) => x.length >= 4);
+  if (parts.length < 2) return false;
+  return parts.every((p) => fragmentIn(p, hay));
+}
+
+/**
  * 인용 1건이 원문으로 해소되는가. 해소되면 §2 FAIL 이 아니다.
  *   ctx = { sents, bogi, qt(발문), choices }
  *   S3 choice.t · S4 q.t 는 §13⑭ "전 텍스트 필드" 원칙에 따라 대조 대상에 포함한다.
@@ -255,6 +294,8 @@ export function verseSlashResolved(quote, sents, bogi) {
 export function quoteResolved(quote, ctx) {
   const { sents = [], bogi = "", qt = "", choices = [] } = ctx || {};
   const q = String(quote);
+  // ③④ 대조 대상은 sents ∪ bogi 합집합으로 통일한다(한쪽만 보면 오탐).
+  const HAY = (sents || []).map((s) => s.t || "").join("\n") + "\n" + String(bogi || "");
   if (sents.some((s) => String(s.t || "").includes(q))) return "sents";
   if (bogi && String(bogi).includes(q)) return "bogi";
   const nq = _s2norm(q);
@@ -262,8 +303,13 @@ export function quoteResolved(quote, ctx) {
     if (sents.some((s) => _s2norm(s.t || "").includes(nq))) return "sents~";
     if (bogi && _s2norm(bogi).includes(nq)) return "bogi~";
   }
+  // ① 마커 삽입 — 양쪽 대칭 제거 후 재대조
+  const sq = stripMarks(q);
+  if (sq.length >= 4 && stripMarks(HAY).includes(sq)) return "marker~";
   if (matchVerseMultiSent(q, sents)) return "verse";
   if (verseSlashResolved(q, sents, bogi)) return "verse/";        // S2
+  // ② 말줄임표 조각 — 조각 전건이 원문에 있으면 해소(끝 조사 2자 허용)
+  if (ellipsisResolved(q, HAY)) return "ellipsis";
   const ct = choices.map((c) => String(c.t || "")).join("  ");
   if (ct.includes(q)) return "choice.t";                           // S3
   if (nq.length >= 6 && _s2norm(ct).includes(nq)) return "choice.t~";
