@@ -47,5 +47,29 @@ for (const c of RC.negative_must_still_fail.cases) {
   if (!ok) console.log(`        ${c.why}`);
 }
 
-console.log(`\n${fail ? `★ 회귀 실패 ${fail}건 — 수리가 사각을 못 없앴거나 게이트를 무디게 만들었다` : "회귀 전건 통과 — 사각 제거 · 진짜 실패 검출 유지"}`);
+// ─── 오탐 4종 + 규약위반 1종 (발주 du) ────────────────────────
+const FP = FX.false_positive_cases;
+if (FP) {
+  console.log("\n■ 검사기 오탐 4종 — 수리 후 FAIL 이 되면 안 된다(양성)\n");
+  for (const [k, c] of Object.entries(FP)) {
+    if (k.startsWith("_") || c.expect !== "pass") continue;
+    const miss = missOf(c);
+    const hit = miss.some((m) => m.includes(c.fragment) || c.fragment.includes(m));
+    const ok = !hit;
+    if (!ok) fail++;
+    console.log(`  ${ok ? "✅" : "🔴"} ${k.padEnd(24)} ${c.set} Q${c.qid}c${c.num}`);
+    if (!ok) console.log(`        잔존: «${miss.find((m) => m.includes(c.fragment) || c.fragment.includes(m)).slice(0, 56)}»`);
+  }
+  console.log("\n■ 규약위반 — 수리 후에도 FAIL 이어야 한다(음성). 통과하면 수리가 과한 것이다\n");
+  for (const [k, c] of Object.entries(FP)) {
+    if (k.startsWith("_") || c.expect !== "fail") continue;
+    const miss = missOf(c);
+    const hit = miss.some((m) => m.includes(c.fragment) || c.fragment.includes(m));
+    if (!hit) fail++;
+    console.log(`  ${hit ? "✅" : "🔴 놓침"} ${k.padEnd(24)} ${c.set} Q${c.qid}c${c.num}  FAIL ${miss.length}건`);
+    if (!hit) console.log(`        ${c.why}`);
+  }
+}
+
+console.log(`\n${fail ? `★ 회귀 실패 ${fail}건 — 수리가 사각을 못 없앴거나 게이트를 무디게 만들었다` : "회귀 전건 통과 — 사각 제거 · 오탐 제거 · 진짜 실패 검출 유지"}`);
 process.exit(fail ? 1 : 0);
