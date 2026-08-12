@@ -20,10 +20,10 @@ const QUESTION_DATA_URLS = {
 const CATALOG_DATA_URL = "/data/eng-math/catalog-public.json";
 const EXPECTED_BOUNDARIES = {
   english: {
-    totalQuestionCount: 307,
+    totalQuestionCount: 868,
     freeQuestionCount: 5,
-    lockedQuestionCount: 302,
-    packCount: 66,
+    lockedQuestionCount: 863,
+    packCount: 187,
   },
   math: {
     totalQuestionCount: 460,
@@ -513,6 +513,17 @@ function prepareLearningData(subject, questionData, catalogData) {
   ) {
     throw new Error("무료·잠금 묶음 구성이 올바르지 않습니다.");
   }
+  if (
+    subject === "english" &&
+    packs.some(
+      (pack) =>
+        !["review_ready", "mixed", "question_answer_ready"].includes(
+          pack.contentStatus,
+        ),
+    )
+  ) {
+    throw new Error("영어 콘텐츠 검증 상태를 확인하지 못했습니다.");
+  }
 
   return {
     boundary,
@@ -796,13 +807,11 @@ function QuestionCatalog({
       : "common";
   const [selectedExam, setSelectedExam] = useState(defaultExam);
   const [selectedTrack, setSelectedTrack] = useState(defaultTrack);
-  const visiblePacks =
-    subject === "math"
-      ? catalog.filter(
-          (pack) =>
-            pack.examKey === selectedExam && pack.trackKey === selectedTrack,
-        )
-      : catalog;
+  const visiblePacks = catalog.filter(
+    (pack) =>
+      pack.examKey === selectedExam &&
+      (subject !== "math" || pack.trackKey === selectedTrack),
+  );
   const visibleQuestionCount = visiblePacks[0]?.scopeQuestionCount ?? 0;
   const visibleFreePackCount = visiblePacks.filter(
     (pack) => pack.access === "free",
@@ -936,6 +945,21 @@ function QuestionCatalog({
           color: #25324a;
           font: inherit;
           font-size: 0.9rem;
+          font-weight: 800;
+        }
+        .eng-math-catalog__content-status {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin: -8px 0 20px;
+        }
+        .eng-math-catalog__content-status span {
+          border: 1px solid #dfe6ef;
+          border-radius: 999px;
+          background: #fff;
+          padding: 7px 10px;
+          color: #627087;
+          font-size: 0.76rem;
           font-weight: 800;
         }
         .eng-math-catalog__summary {
@@ -1078,7 +1102,7 @@ function QuestionCatalog({
           <h1>학습할 문항을 고르세요.</h1>
           <p className="eng-math-catalog__lead">
             {subject === "english"
-              ? "2026학년도 수능 19~23번 5문항은 무료로 풀 수 있습니다. 원본과 근거형 풀이 검증을 마친 나머지 302문항은 잠금 상태입니다."
+              ? "2017~2026학년도 평가원 10개년과 2027학년도 6월까지 868문항을 정리했습니다. 무료 5문항 외에는 잠금이며, 해설 완성 여부를 묶음마다 구분해 표시합니다."
               : "2022학년도 6월 공통 첫 5문항은 검증 풀이와 함께 무료로 제공합니다. 정답·풀이·그림 의존성을 점검한 나머지 455문항은 잠금 상태입니다."}
           </p>
         </header>
@@ -1109,24 +1133,25 @@ function QuestionCatalog({
           </section>
         ) : null}
 
-        {subject === "math" ? (
-          <section
-            className="eng-math-catalog__filters"
-            aria-label="수학 시험과 영역 선택"
-          >
-            <label className="eng-math-catalog__filter">
-              <span>시험</span>
-              <select
-                value={selectedExam}
-                onChange={(event) => setSelectedExam(event.target.value)}
-              >
-                {examOptions.map((option) => (
-                  <option key={option.key} value={option.key}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </label>
+        <section
+          className="eng-math-catalog__filters"
+          aria-label={`${profile.name} 시험${subject === "math" ? "과 영역" : ""} 선택`}
+          style={subject === "english" ? { gridTemplateColumns: "1fr" } : undefined}
+        >
+          <label className="eng-math-catalog__filter">
+            <span>시험</span>
+            <select
+              value={selectedExam}
+              onChange={(event) => setSelectedExam(event.target.value)}
+            >
+              {examOptions.map((option) => (
+                <option key={option.key} value={option.key}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          {subject === "math" ? (
             <label className="eng-math-catalog__filter">
               <span>영역</span>
               <select
@@ -1140,8 +1165,18 @@ function QuestionCatalog({
                 ))}
               </select>
             </label>
+          ) : null}
+        </section>
+
+        {subject === "math" ? null : (
+          <section
+            className="eng-math-catalog__content-status"
+            aria-label="영어 콘텐츠 상태 안내"
+          >
+            <span>근거형 해설 검증 완료 307문항</span>
+            <span>원문·정답 검증 / 해설 구축 중 561문항</span>
           </section>
-        ) : null}
+        )}
 
         <p className="eng-math-catalog__summary">
           {subject === "english"
@@ -1178,9 +1213,11 @@ function QuestionCatalog({
               <p className="eng-math-catalog__pack-copy">
                 {pack.trackLabel} ·{" "}
                 {subject === "english"
-                  ? pack.examKey === "2026_09" && pack.access === "locked"
-                    ? "근거형 풀이 준비 완료 · 현재 잠금"
-                    : "근거형 풀이 제공"
+                  ? pack.contentStatus === "review_ready"
+                    ? "근거형 해설 검증 완료"
+                    : pack.contentStatus === "mixed"
+                      ? "정답 검증 완료 · 일부 해설 보강 중"
+                      : "원문·정답 검증 완료 · 해설 구축 중"
                   : pack.responseSummary}
               </p>
               {pack.note ? (
@@ -1193,9 +1230,7 @@ function QuestionCatalog({
                 <span>
                   {pack.access === "free"
                     ? "무료로 학습하기"
-                    : subject === "english" && pack.examKey === "2026_09"
-                      ? "문항 구성 보기"
-                      : "잠금 범위 확인"}
+                    : "잠금 범위 확인"}
                 </span>
                 <span aria-hidden="true">
                   {pack.access === "free" ? "→" : "🔒"}

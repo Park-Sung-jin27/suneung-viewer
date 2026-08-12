@@ -20,6 +20,19 @@ const ENGLISH_DB_PATH = path.join(
   "data",
   "english_exam_db_v2_1.json",
 );
+const ENGLISH_EVALUATION_INVENTORY_GATE_PATH = path.join(
+  ROOT,
+  "english",
+  "scripts",
+  "build_evaluation_inventory.mjs",
+);
+const ENGLISH_EVALUATION_INVENTORY_PATH = path.join(
+  ROOT,
+  "english",
+  "data",
+  "candidates",
+  "english_evaluation_inventory_v1.json",
+);
 const ENGLISH_CANDIDATE_GATE_PATH = path.join(
   ROOT,
   "english",
@@ -100,6 +113,33 @@ const ENGLISH_CANDIDATE_SOURCE_DIRECTORY = path.join(
   ROOT,
   "raw_sources",
   "english_eval_pdfs",
+);
+const ENGLISH_INVENTORY_QUESTION_COUNT = 868;
+const ENGLISH_INVENTORY_REVIEW_READY_COUNT = 307;
+const ENGLISH_INVENTORY_REVIEW_PENDING_COUNT = 561;
+const ENGLISH_CATALOG_PACK_COUNT = 187;
+const ENG_MATH_LOCKED_QUESTION_COUNT = 1_318;
+const MATH_LEGACY_ANSWER_GATE_PATH = path.join(
+  ROOT,
+  "scripts",
+  "build-math-legacy-answer-candidates.mjs",
+);
+const MATH_LEGACY_ANSWER_CANDIDATE_PATH = path.join(
+  ROOT,
+  "평가원_수학영어_확장",
+  "08_math_data",
+  "math_legacy_answer_candidates_v1.json",
+);
+const MATH_LEGACY_QUESTION_MAP_GATE_PATH = path.join(
+  ROOT,
+  "scripts",
+  "build-math-legacy-question-map.mjs",
+);
+const MATH_LEGACY_QUESTION_MAP_PATH = path.join(
+  ROOT,
+  "평가원_수학영어_확장",
+  "08_math_data",
+  "math_legacy_question_map_v1.json",
 );
 const MATH_ANSWER_CROSSCHECK_PATH = path.join(
   ROOT,
@@ -3684,6 +3724,216 @@ function validateEnglishCandidate() {
   return candidates;
 }
 
+function validateEnglishEvaluationInventory(englishDb, englishCandidates) {
+  try {
+    execFileSync(
+      process.execPath,
+      [ENGLISH_EVALUATION_INVENTORY_GATE_PATH, "--check"],
+      {
+        cwd: ROOT,
+        encoding: "utf8",
+        stdio: "pipe",
+      },
+    );
+  } catch (error) {
+    const detail = String(error.stderr || error.stdout || error.message).trim();
+    fail("ENGLISH_EVALUATION_INVENTORY_GATE", detail);
+  }
+
+  const inventory = readJson(
+    ENGLISH_EVALUATION_INVENTORY_PATH,
+    "english evaluation inventory",
+  );
+  if (
+    inventory.schemaVersion !== "english-evaluation-inventory-v1" ||
+    inventory.status !== "internal_inventory" ||
+    inventory.publicQuestionPayloadConnected !== false ||
+    inventory.summary?.examCount !== 31 ||
+    inventory.summary?.completeSchoolYearCount !== 10 ||
+    inventory.summary?.questionCount !== ENGLISH_INVENTORY_QUESTION_COUNT ||
+    inventory.summary?.answerCrossCheckCount !== ENGLISH_INVENTORY_QUESTION_COUNT ||
+    inventory.summary?.reviewReadyCount !== ENGLISH_INVENTORY_REVIEW_READY_COUNT ||
+    inventory.summary?.reviewPendingCount !== ENGLISH_INVENTORY_REVIEW_PENDING_COUNT ||
+    inventory.summary?.sourceArtifactCount !== 93 ||
+    !Array.isArray(inventory.exams) ||
+    inventory.exams.length !== 31
+  ) {
+    fail("ENGLISH_EVALUATION_INVENTORY_SCOPE");
+  }
+
+  const questionsById = new Map(
+    englishDb.questions.map((question) => [question.id, question]),
+  );
+  const candidateExamKeys = new Set(
+    englishCandidates.map((candidate) => candidate.examKey),
+  );
+  const allQuestionIds = [];
+  const allReviewReadyIds = [];
+  const exams = inventory.exams.map((exam) => {
+    if (
+      !Array.isArray(exam.questionIds) ||
+      exam.questionIds.length !== 28 ||
+      !Array.isArray(exam.reviewReadyQuestionIds) ||
+      exam.reviewReadyQuestionIds.length !== exam.reviewReadyCount ||
+      exam.answerCrossCheckCount !== 28 ||
+      exam.reviewReadyCount + exam.reviewPendingCount !== 28 ||
+      !["ready", "partial", "pending"].includes(exam.reviewStatus)
+    ) {
+      fail("ENGLISH_EVALUATION_INVENTORY_EXAM", exam.examKey ?? "unknown");
+    }
+    const readyIdSet = new Set(exam.reviewReadyQuestionIds);
+    if (
+      readyIdSet.size !== exam.reviewReadyQuestionIds.length ||
+      exam.reviewReadyQuestionIds.some((id) => !exam.questionIds.includes(id)) ||
+      (candidateExamKeys.has(exam.examKey) && exam.reviewStatus !== "ready")
+    ) {
+      fail("ENGLISH_EVALUATION_INVENTORY_REVIEW", exam.examKey);
+    }
+    const questions = exam.questionIds.map((id, index) => {
+      const question = questionsById.get(id);
+      if (
+        !question ||
+        question.examId !== exam.examKey ||
+        Number(question.qid) !== index + 18 ||
+        !Number.isInteger(Number(question.answer)) ||
+        !String(question.rawText ?? "").trim()
+      ) {
+        fail("ENGLISH_EVALUATION_INVENTORY_QUESTION", id);
+      }
+      return {
+        id,
+        qid: Number(question.qid),
+        reviewReady: readyIdSet.has(id),
+      };
+    });
+    allQuestionIds.push(...exam.questionIds);
+    allReviewReadyIds.push(...exam.reviewReadyQuestionIds);
+    return {
+      examKey: exam.examKey,
+      examLabel: exam.examLabel,
+      schoolYear: Number(exam.schoolYear),
+      session: exam.session,
+      reviewStatus: exam.reviewStatus,
+      questions,
+    };
+  });
+
+  if (
+    allQuestionIds.length !== ENGLISH_INVENTORY_QUESTION_COUNT ||
+    new Set(allQuestionIds).size !== ENGLISH_INVENTORY_QUESTION_COUNT ||
+    allReviewReadyIds.length !== ENGLISH_INVENTORY_REVIEW_READY_COUNT ||
+    new Set(allReviewReadyIds).size !== ENGLISH_INVENTORY_REVIEW_READY_COUNT
+  ) {
+    fail(
+      "ENGLISH_EVALUATION_INVENTORY_TOTAL",
+      `${allQuestionIds.length}/${allReviewReadyIds.length}`,
+    );
+  }
+
+  return {
+    exams,
+    questionIds: allQuestionIds,
+    reviewReadyIds: new Set(allReviewReadyIds),
+  };
+}
+
+function validateMathLegacyAnswerCandidates() {
+  try {
+    execFileSync(
+      process.execPath,
+      [MATH_LEGACY_ANSWER_GATE_PATH, "--check"],
+      {
+        cwd: ROOT,
+        encoding: "utf8",
+        stdio: "pipe",
+      },
+    );
+  } catch (error) {
+    const detail = String(error.stderr || error.stdout || error.message).trim();
+    fail("MATH_LEGACY_ANSWER_GATE", detail);
+  }
+
+  const candidate = readJson(
+    MATH_LEGACY_ANSWER_CANDIDATE_PATH,
+    "math legacy answer candidates",
+  );
+  if (
+    candidate.schemaVersion !== "math-legacy-answer-candidates-v1" ||
+    candidate.status !== "internal_answer_candidate" ||
+    candidate.publicConnected !== false ||
+    candidate.summary?.schoolYearCount !== 5 ||
+    candidate.summary?.examCount !== 30 ||
+    candidate.summary?.answerCandidateCount !== 900 ||
+    candidate.summary?.explanationTableAnswerCount !== 870 ||
+    candidate.summary?.manualImageAnswerCount !== 30 ||
+    candidate.summary?.independentContentCrossCheckCount !== 0 ||
+    candidate.summary?.publicQuestionCount !== 0 ||
+    !Array.isArray(candidate.exams) ||
+    candidate.exams.length !== 30
+  ) {
+    fail("MATH_LEGACY_ANSWER_CANDIDATE_SCOPE");
+  }
+
+  const questionIds = candidate.exams.flatMap((exam) =>
+    (exam.questions ?? []).map((question) => question.id),
+  );
+  if (
+    questionIds.length !== 900 ||
+    new Set(questionIds).size !== 900 ||
+    candidate.exams.some(
+      (exam) =>
+        exam.answerCrossCheckStatus !==
+          "pending_independent_content_check" ||
+        exam.questions?.length !== 30 ||
+        exam.questions.some(
+          (question) =>
+            question.answerCrossCheckStatus !==
+            "pending_independent_content_check",
+        ),
+    )
+  ) {
+    fail("MATH_LEGACY_ANSWER_CANDIDATE_CONTENT");
+  }
+
+  try {
+    execFileSync(
+      process.execPath,
+      [MATH_LEGACY_QUESTION_MAP_GATE_PATH, "--check"],
+      {
+        cwd: ROOT,
+        encoding: "utf8",
+        stdio: "pipe",
+      },
+    );
+  } catch (error) {
+    const detail = String(error.stderr || error.stdout || error.message).trim();
+    fail("MATH_LEGACY_QUESTION_MAP_GATE", detail);
+  }
+  const questionMap = readJson(
+    MATH_LEGACY_QUESTION_MAP_PATH,
+    "math legacy question map",
+  );
+  const mappedQuestionIds = questionMap.exams.flatMap((exam) =>
+    (exam.questions ?? []).map((question) => question.id),
+  );
+  if (
+    questionMap.schemaVersion !== "math-legacy-question-map-v1" ||
+    questionMap.status !== "internal_question_map" ||
+    questionMap.publicConnected !== false ||
+    questionMap.summary?.examCount !== 30 ||
+    questionMap.summary?.questionCount !== 900 ||
+    questionMap.summary?.mappedQuestionCount !== 900 ||
+    questionMap.summary?.textAnchorMappedCount !== 840 ||
+    questionMap.summary?.scannedVisualMappedCount !== 60 ||
+    questionMap.summary?.pendingQuestionCount !== 0 ||
+    questionMap.summary?.publicQuestionCount !== 0 ||
+    stableJson(mappedQuestionIds) !== stableJson(questionIds)
+  ) {
+    fail("MATH_LEGACY_QUESTION_MAP_SCOPE");
+  }
+  return questionIds;
+}
+
 function parseMathSessionId(id) {
   const match = String(id).match(
     /^(\d{4}_(?:06|09|csat))_(common|cal|sta|geo)_(\d+)$/,
@@ -3817,73 +4067,118 @@ function hasExactQuestionIds(questions, expectedIds) {
   );
 }
 
-function buildPublicCatalog(english, math, englishCandidates) {
-  const englishByNumber = new Map(
-    english.map((question) => [
-      Number(question.id.replace("2026_csat_", "")),
-      question,
-    ]),
+function buildPublicCatalog(english, math, englishInventory) {
+  const inventoryExamByKey = new Map(
+    englishInventory.exams.map((exam) => [exam.examKey, exam]),
+  );
+  const englishPackContentStatus = (questions) => {
+    const readyCount = questions.filter((question) => question.reviewReady).length;
+    if (readyCount === questions.length) return "review_ready";
+    if (readyCount > 0) return "mixed";
+    return "question_answer_ready";
+  };
+  const buildEnglishPack = ({
+    id,
+    exam,
+    questions,
+    note = "",
+    access = "locked",
+  }) => {
+    validateFiveQuestionGroup(questions, `english|${exam.examKey}`);
+    const numbers = questions.map((question) => question.qid);
+    return {
+      id,
+      examKey: exam.examKey,
+      examLabel: exam.examLabel,
+      trackKey: "english",
+      trackLabel: "영어",
+      label: `${numbers[0]}~${numbers.at(-1)}번`,
+      note,
+      contentStatus: englishPackContentStatus(questions),
+      questionCount: 5,
+      scopeQuestionCount: 28,
+      access,
+    };
+  };
+
+  const csatExam = inventoryExamByKey.get("2026_csat");
+  if (!csatExam) fail("ENGLISH_CATALOG_EXAM_MISSING", "2026_csat");
+  const csatByNumber = new Map(
+    csatExam.questions.map((question) => [question.qid, question]),
   );
   const englishCsatPacks = ENGLISH_SESSION_NUMBER_GROUPS.map(
     (numbers, index) => {
-      const questions = numbers.map((number) => englishByNumber.get(number));
+      const questions = numbers.map((number) => csatByNumber.get(number));
       if (questions.some((question) => !question)) {
         fail("ENGLISH_CATALOG_QUESTION_MISSING", numbers.join(","));
       }
       const isFree = hasExactQuestionIds(questions, ENGLISH_FREE_IDS);
-      return {
+      return buildEnglishPack({
         id: `english-${String(index + 1).padStart(2, "0")}`,
-        examKey: "2026_csat",
-        examLabel: "2026학년도 수능",
-        trackKey: "english",
-        trackLabel: "영어",
-        label: `${numbers[0]}~${numbers.at(-1)}번`,
+        exam: csatExam,
+        questions,
         note:
           index === 4
             ? "앞 묶음의 3문항을 복습합니다."
             : index === 5
               ? "공통 지문 문항을 함께 풉니다."
               : "",
-        questionCount: 5,
-        scopeQuestionCount: 27,
         access: isFree ? "free" : "locked",
-      };
+      });
     },
   );
-  const englishCandidatePacks = englishCandidates.flatMap((candidate) => {
-    const scopeKey = `english|${candidate.examKey}`;
-    const groups = buildFiveQuestionGroups(candidate.questions, scopeKey);
+  const csatQuestion18Pack = buildEnglishPack({
+    id: "english-2026-csat-18",
+    exam: csatExam,
+    questions: [18, 19, 20, 21, 22].map((number) => csatByNumber.get(number)),
+  });
+
+  const sessionRank = new Map([
+    ["수능", 3],
+    ["9월", 2],
+    ["6월", 1],
+  ]);
+  const otherEnglishExams = englishInventory.exams
+    .filter((exam) => exam.examKey !== "2026_csat")
+    .sort(
+      (left, right) =>
+        right.schoolYear - left.schoolYear ||
+        (sessionRank.get(right.session) ?? 0) -
+          (sessionRank.get(left.session) ?? 0),
+    );
+  const otherEnglishPacks = otherEnglishExams.flatMap((exam) => {
+    const scopeKey = `english|${exam.examKey}`;
+    const groups = buildFiveQuestionGroups(exam.questions, scopeKey);
     const coverage = new Set(
       groups.flatMap((group) => group.map((question) => question.id)),
     );
     if (
       groups.length !== 6 ||
       coverage.size !== 28 ||
-      candidate.questions.some((question) => !coverage.has(question.id))
+      exam.questions.some((question) => !coverage.has(question.id))
     ) {
       fail(
-        "ENGLISH_CANDIDATE_CATALOG_COVERAGE",
-        `${candidate.examKey}:${groups.length}:${coverage.size}`,
+        "ENGLISH_CATALOG_COVERAGE",
+        `${exam.examKey}:${groups.length}:${coverage.size}`,
       );
     }
-    return groups.map((questions, index) => {
-      validateFiveQuestionGroup(questions, scopeKey);
-      const numbers = questions.map((question) => question.qid);
-      return {
-        id: `english-${candidate.examKey.replaceAll("_", "-")}-${String(index + 1).padStart(2, "0")}`,
-        examKey: candidate.examKey,
-        examLabel: candidate.examLabel,
-        trackKey: "english",
-        trackLabel: "영어",
-        label: `${numbers[0]}~${numbers.at(-1)}번`,
-        note: numbers[0] === 41 ? "공통 지문 문항을 함께 풉니다." : "",
-        questionCount: 5,
-        scopeQuestionCount: 28,
-        access: "locked",
-      };
-    });
+    return groups.map((questions, index) =>
+      buildEnglishPack({
+        id: `english-${exam.examKey.replaceAll("_", "-")}-${String(index + 1).padStart(2, "0")}`,
+        exam,
+        questions,
+        note:
+          questions[0].qid === 41
+            ? "공통 지문 문항을 함께 풉니다."
+            : "",
+      }),
+    );
   });
-  const englishPacks = [...englishCsatPacks, ...englishCandidatePacks];
+  const englishPacks = [
+    ...englishCsatPacks,
+    csatQuestion18Pack,
+    ...otherEnglishPacks,
+  ];
 
   const mathByScope = new Map();
   for (const question of math) {
@@ -3982,7 +4277,10 @@ function buildPublicCatalog(english, math, englishCandidates) {
     (pack) => pack.access === "free",
   );
   const mathFreePacks = mathPacks.filter((pack) => pack.access === "free");
-  if (englishPacks.length !== 66 || englishFreePacks.length !== 1) {
+  if (
+    englishPacks.length !== ENGLISH_CATALOG_PACK_COUNT ||
+    englishFreePacks.length !== 1
+  ) {
     fail(
       "ENGLISH_CATALOG_BOUNDARY",
       `${englishPacks.length}:${englishFreePacks.length}`,
@@ -3999,10 +4297,10 @@ function buildPublicCatalog(english, math, englishCandidates) {
     version: 1,
     subjects: {
       english: {
-        totalQuestionCount: 307,
+        totalQuestionCount: ENGLISH_INVENTORY_QUESTION_COUNT,
         freeQuestionCount: 5,
-        lockedQuestionCount: 302,
-        packCount: 66,
+        lockedQuestionCount: ENGLISH_INVENTORY_QUESTION_COUNT - 5,
+        packCount: ENGLISH_CATALOG_PACK_COUNT,
         freePackId: englishFreePacks[0].id,
         packs: englishPacks,
       },
@@ -4705,6 +5003,12 @@ function buildPublicData(
   const mathDbPath = findFile(ROOT, "math_exam_db_v2_0.json");
   const explainPath = findFile(ROOT, "eng_explain_2026csat.json");
   const englishDb = readJson(ENGLISH_DB_PATH, "english_exam_db_v2_1.json");
+  const englishInventory = validateEnglishEvaluationInventory(
+    englishDb,
+    englishCandidates,
+  );
+  const mathLegacyAnswerCandidateIds =
+    validateMathLegacyAnswerCandidates();
   const mathDb = readJson(mathDbPath, "math_exam_db_v2_0.json");
   const mathAnswerSource = validateMathAnswerCrosscheck(mathDb);
   validateMathRequiredFigureAssets(
@@ -5089,8 +5393,14 @@ function buildPublicData(
   const catalog = buildPublicCatalog(
     english,
     mathCatalogQuestions,
-    englishCandidates,
+    englishInventory,
   );
+  const catalogPayload = JSON.stringify(catalog);
+  if (
+    mathLegacyAnswerCandidateIds.some((id) => catalogPayload.includes(id))
+  ) {
+    fail("MATH_LEGACY_PREMATURE_CATALOG_LEAK");
+  }
   const englishFreeQuestions = english.filter((question) =>
     ENGLISH_FREE_IDS.includes(question.id),
   );
@@ -5165,17 +5475,16 @@ function buildPublicData(
   assertNoForbiddenKeys({ englishFree, mathFree });
 
   const freeIds = new Set([...ENGLISH_FREE_IDS, ...MATH_FREE_IDS]);
-  const englishCandidateQuestions = englishCandidates.flatMap(
-    (candidate) => candidate.questions,
-  );
   const lockedIds = [
-    ...english,
+    ...englishInventory.questionIds.map((id) => ({ id })),
     ...mathCatalogQuestions,
-    ...englishCandidateQuestions,
   ]
     .map((question) => question.id)
     .filter((id) => !freeIds.has(id));
-  if (lockedIds.length !== 757 || new Set(lockedIds).size !== 757) {
+  if (
+    lockedIds.length !== ENG_MATH_LOCKED_QUESTION_COUNT ||
+    new Set(lockedIds).size !== ENG_MATH_LOCKED_QUESTION_COUNT
+  ) {
     fail("LOCKED_QUESTION_COUNT", String(lockedIds.length));
   }
 
@@ -5185,6 +5494,9 @@ function buildPublicData(
     catalog,
     english,
     englishCandidates,
+    englishInventoryQuestions: englishDb.questions.filter((question) =>
+      englishInventory.questionIds.includes(question.id),
+    ),
     mathDb,
     mathDbPath,
     lockedIds,
@@ -5198,6 +5510,7 @@ function buildPublicData(
     mathAnswerSource,
     english,
     englishCandidates,
+    englishInventory,
     mathDb,
     mathDbPath,
     leakGuards,
@@ -5484,6 +5797,7 @@ function buildLockedLeakGuards({
   catalog,
   english,
   englishCandidates,
+  englishInventoryQuestions,
   mathDb,
   mathDbPath,
   lockedIds,
@@ -5529,6 +5843,19 @@ function buildLockedLeakGuards({
         collectStringLeaves(question.review),
       );
     }
+  }
+  for (const question of englishInventoryQuestions) {
+    if (!lockedIdSet.has(question.id)) continue;
+    addProbe("body", question.id, [
+      question.rawText,
+      question.sharedPassage,
+      question.stem,
+    ]);
+    addProbe(
+      "choices",
+      question.id,
+      (question.choices ?? []).flatMap((choice) => [choice.text, choice.mark]),
+    );
   }
 
   const mathSolutions = loadVerifiedMathSolutionItems(mathDbPath);
@@ -5832,17 +6159,17 @@ if (mode === "--write") {
   });
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
   console.log(
-    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=757 catalogs=66/110 englishCandidates=280/307 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_PUBLIC_DATA: wrote free=10 locked=1318 catalogs=187/110 englishInventory=868 reviews=307+561 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
   );
 } else if (mode === "--check") {
   verifyPublishedBoundary(path.join(ROOT, "public"), data);
   console.log(
-    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=757 catalogs=66/110 englishCandidates=280/307 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_PUBLIC_DATA: pass free=10 locked=1318 catalogs=187/110 englishInventory=868 reviews=307+561 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
   );
 } else if (mode === "--check-dist") {
   verifyPublishedBoundary(path.join(ROOT, "dist"), data);
   console.log(
-    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=757 catalogs=66/110 englishCandidates=280/307 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
+    `ENG_MATH_DIST_BOUNDARY: pass free=10 locked=1318 catalogs=187/110 englishInventory=868 reviews=307+561 mathAnswers=690/${data.mathAnswerSource} mathSolutions=5public+${MATH_INTERNAL_VERIFIED_ID_COUNT}internal mathRequiredFigures=7catalogLocked mathCsatFigureAudit=92eligible/12auxiliary/5decorative militaryLab=46 leakProbes=${data.leakGuards.categoryCounts.body}/${data.leakGuards.categoryCounts.choices}/${data.leakGuards.categoryCounts.explanation} leakAssets=${data.leakGuards.assetHashes.length} mathFigureSource=${options.mathFigureSourceDirectory ? "verified" : "recorded"} mathSourceCorrections=${MATH_SOURCE_CORRECTION_ID_COUNT} mathSource=${options.mathSourceDirectory ? "verified" : "recorded"} math2022_09Source=${options.math2022SeptemberSourceDirectory ? "verified" : "recorded"} math2023_06Source=${options.math2023JuneSourceDirectory ? "verified" : "recorded"} math2023_09Source=${options.math2023SeptemberSourceDirectory ? "verified" : "recorded"} math2024_06Source=${options.math2024JuneSourceDirectory ? "verified" : "recorded"} math2024_09Source=${options.math2024SeptemberSourceDirectory ? "verified" : "recorded"} math2025_06Source=${options.math2025JuneSourceDirectory ? "verified" : "recorded"} math2025_09Source=${options.math2025SeptemberSourceDirectory ? "verified" : "recorded"} math2025_csatSource=${options.math2025CsatSourceDirectory ? "verified" : "recorded"} math2026_csatSource=${options.math2026CsatSourceDirectory ? "verified" : "recorded"}`,
   );
 } else {
   fail("MODE_INVALID", mode);
