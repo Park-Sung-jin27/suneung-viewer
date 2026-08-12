@@ -155,3 +155,6 @@ tmp_pdf_work/
 tmp_pdf_work2/
 pipeline/outputs/
 *.~lock.*#
+
+# Official source artifacts are downloaded on demand and verified by manifest.
+raw_sources/math_eval_pdfs_legacy/
