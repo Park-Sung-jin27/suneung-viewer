@@ -295,7 +295,7 @@
       "state": "UNTOUCHED",
       "live": false,
       "choices": 15,
-      "batch": "B01",
+      "batch": null,
       "history": []
     },
     "2014수능B::l2014aB": {
@@ -744,7 +744,8 @@
       "live": true,
       "choices": 15,
       "batch": "B01",
-      "history": []
+      "history": [],
+      "note": "위험군(지시 포함) · 교차 조건 미충족(결번 0)"
     },
     "2016_9월A::l20169b": {
       "state": "UNTOUCHED",
@@ -2235,7 +2236,8 @@
       "live": true,
       "choices": 30,
       "batch": "B01",
-      "history": []
+      "history": [],
+      "note": "Q7 1문항만 검수 완료 · 잔여 5문항 25선지"
     },
     "2025수능::r2025c": {
       "state": "UNTOUCHED",
@@ -2477,5 +2479,5 @@
     }
   },
   "_HISTORY_FIELDS": "{state, by, date, minutes, note} — minutes 는 그 단계에 실제로 걸린 분. 누락하면 통과로 인정하지 않는다(발주 ev 사양4).",
-  "_BATCH": "B01 = 1묶음 10세트. 위험군4 · 표준군3 · 청정군2 · 특수군1. 특수군은 대표 지정으로 비노출 세트 2014수능A::r2014e 를 넣었다(LIVE 모집단에는 조건 충족 세트가 0건이었다)."
+  "_BATCH": "B01 = 1묶음 9세트. 위험군4 · 표준군3 · 청정군2 · 특수군0. 특수군 = LIVE 모집단에 해당 없음(2014수능A/B 추출 빈약 2회차는 전부 비노출). B01 은 9세트로 확정. 심사관 판정 170."
 }
