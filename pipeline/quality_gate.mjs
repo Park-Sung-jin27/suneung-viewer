@@ -380,6 +380,7 @@ const ACTION_CLASS_MAP = {
   C_answer_derivation: "manual",
   F_distractor_reads_as_answer: "manual",
   F_answer_reads_as_distractor: "manual",
+  W_l3_cs_missing: "manual",
   C_quote_unreflected: "manual",
   W_quote_unreflected: "manual",
   C_highlight_analysis_divergence: "manual",
@@ -2424,6 +2425,28 @@ for (const yearKey of yearsToCheck) {
             }
           }
 
+          // ── [발주 er 사양1] W_l3_cs_missing — pat=L3 인데 cs 부재 ──────
+          //   정본은 pipeline/CLAUDE.md:47 "ok:false + L3 → 부분 일치 작품의 sentId".
+          //   L3(주제·의미 과잉)는 과장의 출처가 작품 안에 있으므로 cs_ids 를 요구한다.
+          //   R3(지문 밖)·V(어휘)가 [] 를 허용하는 것과 성격이 다르다.
+          //   위 REQUIRES_CS/REQ 목록에 L3 가 빠진 것은 구현 결함이었다(발주 ep 에서 발견).
+          //   ★ REQUIRES_CS 목록에 L3 를 넣지 않는다 — 넣으면 39건이 즉시 CRITICAL 이 되어
+          //     release_ready 가 깨진다. 별도 WARNING 축으로 둔다.
+          //   ★ 39건 처리 후 CRITICAL 편입 예정 (발주 er · 2026-08-13).
+          if (
+            c.ok === false &&
+            c.pat === "L3" &&
+            (c.cs_ids?.length || 0) + (c.cs_spans?.length || 0) === 0
+          ) {
+            issue(
+              "W_l3_cs_missing",
+              yearKey,
+              cLoc,
+              "pat=L3 인데 cs_ids/cs_spans 부재 (부분 일치 작품 sentId 미매핑)",
+              "warn",
+            );
+          }
+
           // ── [v2] E_empty_pat_cs_present — ok:false R3/V인데 cs 보유 ───
           //   ok:true 선지의 cs 보유는 정상(근거) → 제외. pat=null도 제외
           //   (ok:true null 정상 / ok:false null은 별도 pat-missing 검사 영역).
@@ -2737,6 +2760,8 @@ const SEVERITY_MAP = {
   // [발주 ef 사양2] 해설 반전 축 — WARNING 고정. CRITICAL 승격 금지(편입 시점 LIVE 0건).
   F_distractor_reads_as_answer: "WARNING",
   F_answer_reads_as_distractor: "WARNING",
+  // [발주 er 사양1] pat=L3 cs 결손 — WARNING. 39건 처리 후 CRITICAL 편입 예정(2026-08-13).
+  W_l3_cs_missing: "WARNING",
 
   // 결론줄=ok 검사 (§13⑤) — 출시 차단 CRITICAL 승격 (이전 WARNING)
   F_content_reversed: "CRITICAL",
@@ -2782,8 +2807,12 @@ const SEVERITY_MAP = {
   W_expression_analysis_missing: "WARNING",
   W_single_evidence: "WARNING",
 
+  // [발주 er 사양2] E_pat_unclassifiable IGNORE -> WARNING 승격.
+  //   ok=false 인데 오류 유형이 없는 것은 AGENTS.md §9(ok<->pat 정합) 위반이다.
+  //   IGNORE 등급이라 LIVE 9건을 아무도 본 적이 없었다(발주 ep 에서 발견).
+  //   ★ CRITICAL 로 올리지 않는다. WARNING 까지만.
+  E_pat_unclassifiable: "WARNING",
   // IGNORE
-  E_pat_unclassifiable: "IGNORE",
   F_conclusion_mismatch: "IGNORE",
   E_pat_zero: "IGNORE",
 
