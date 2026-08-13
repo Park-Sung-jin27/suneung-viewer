@@ -375,6 +375,7 @@ const ACTION_CLASS_MAP = {
   C_work_mismatch: "manual",
   C_label_domain_mismatch: "auto_safe",
   C_vpat_dirty: "auto_safe",
+  C_answer_derivation: "manual",
   C_quote_unreflected: "manual",
   W_quote_unreflected: "manual",
   C_highlight_analysis_divergence: "manual",
@@ -1317,6 +1318,30 @@ for (const yearKey of yearsToCheck) {
         // [Gate 7] --golden 지정 시 골든셋 외 스킵
         if (GOLDEN_ONLY && !goldenMatch(yearKey, set.id, q.id)) continue;
         const qLoc = `${yearKey} ${set.id} Q${q.id}`;
+
+        // ── C_answer_derivation: 정답 유도 결과가 정확히 1개인가 ──────────
+        //   src/App.jsx:1369 가 정답표 없이 ok × questionType 조합에서 정답을 유도한다.
+        //     const qt = q.questionType ?? "negative";
+        //     qt === "positive" ? c.ok === true : c.ok === false
+        //   조합이 깨지면 화면이 틀린 정답을 표시한다.
+        //   판정식은 answer_fidelity.mjs:110-112 와 동일하다 — 그 도구가 이미 잡을 수 있었으나
+        //   실행되지 않아 2022수능 r2022c Q10 이 두 달간 LIVE 였다(발주 eb 실증).
+        //   여기 편입하는 이유는 새 판정을 만들기 위해서가 아니라 "돌리지 않아서 놓치는 경로"를 없애기 위함이다.
+        //   ★ 편입 시점 실측: 공개 241세트 0건 · 비노출 0건 (발주 ec).
+        {
+          const _qt = q.questionType ?? "negative";
+          const _cand = (q.choices || []).filter((c) =>
+            _qt === "positive" ? c.ok === true : c.ok === false,
+          );
+          if ((q.choices || []).length > 0 && _cand.length !== 1) {
+            needsManual(
+              "C_answer_derivation",
+              yearKey,
+              qLoc,
+              `정답 유도 ${_cand.length}개 (questionType=${_qt}${_cand.length ? ", 후보 " + _cand.map((c) => c.num).join(",") : ""}) — 화면이 정답을 ${_cand.length === 0 ? "표시하지 못함" : _cand.length + "개 표시"}`,
+            );
+          }
+        }
 
         // ── A: q.t 보기 혼재 ──────────────────────────────────────────────
         const beforeT = q.t || "";
