@@ -376,6 +376,8 @@ const ACTION_CLASS_MAP = {
   C_label_domain_mismatch: "auto_safe",
   C_vpat_dirty: "auto_safe",
   C_answer_derivation: "manual",
+  F_distractor_reads_as_answer: "manual",
+  F_answer_reads_as_distractor: "manual",
   C_quote_unreflected: "manual",
   W_quote_unreflected: "manual",
   C_highlight_analysis_divergence: "manual",
@@ -467,6 +469,16 @@ const yearsToCheck =
       : YEAR
         ? [YEAR]
         : Object.keys(data);
+
+// ─── [발주 ef 사양2] 해설 반전 축 어구 ─────────────────────────────────────
+//   축 A: 오답 선지 해설이 자기를 정답이라고 말하는 어투
+//   축 B: 정답 선지 해설이 자기를 오답인 듯 부정형으로 말하는 어투
+//   ★ 어구 목록은 발주 ef 원문 그대로다. 임의 가감 금지 — 넓히면 오탐이 늘고,
+//     좁히면 ee-2 가 잡은 실제 결함 형태를 다시 놓친다.
+const ANSWER_ROLE_A_RE =
+  /문제 요구에 부합|문제 요구에 맞는|문제 요구에 적합|이 문항에서 적절한 선지|문항에서 적절한 선지|정답 선지|정답이 된다|답이 된다|정답으로 적절/;
+const ANSWER_ROLE_B_RE =
+  /부적절한 진술이 아님|부적절하지 않|틀린 진술이 아님|잘못된 진술이 아님|올바른 분석이다|정확하여|옳은 진술이다/;
 
 let _releaseSetCount = 0; // --scope=release 순회 set 수 검증용
 
@@ -1340,6 +1352,46 @@ for (const yearKey of yearsToCheck) {
               qLoc,
               `정답 유도 ${_cand.length}개 (questionType=${_qt}${_cand.length ? ", 후보 " + _cand.map((c) => c.num).join(",") : ""}) — 화면이 정답을 ${_cand.length === 0 ? "표시하지 못함" : _cand.length + "개 표시"}`,
             );
+          }
+        }
+
+        // ── [발주 ef 사양2] 해설 반전 축 2종 ─────────────────────────────
+        //   결함의 성격: 정답 번호는 맞는데 해설 문장이 역할을 뒤바꿔 설명한다.
+        //   실증 — 2016_9월A l20169a Q21 ③(오답)이 "이 문항에서 적절한 선지"로 끝나
+        //   학생이 ③을 정답으로 읽었다(발주 ee-2). answer_fidelity 도 quality_gate 도
+        //   수정 전에 0건이었다 — 두 도구 모두 정답 "번호"만 보기 때문이다.
+        //   ★ 등급 WARNING 고정. CRITICAL 승격 금지(발주 ef) — 편입 시점 LIVE 0건.
+        //   ★ 비노출 세트를 RELEASE_KEYS 에 올릴 때 이 두 축 0건을 통과 조건으로 둔다.
+        {
+          const _qt2 = q.questionType ?? "negative";
+          const _isAns = (c) => (_qt2 === "positive" ? c.ok === true : c.ok === false);
+          for (const c of q.choices || []) {
+            const _a = String(c.analysis || "");
+            if (!_a) continue;
+            const cLoc = `${yearKey} ${set.id} Q${q.id}-[${c.num}]`;
+            if (!_isAns(c)) {
+              // 축 A — 정답 유도에서 탈락한 선지(오답)가 자신을 정답처럼 설명
+              const m = _a.match(ANSWER_ROLE_A_RE);
+              if (m)
+                issue(
+                  "F_distractor_reads_as_answer",
+                  yearKey,
+                  cLoc,
+                  `오답 선지 해설에 정답 어투 «${m[0]}» — 학생이 이 선지를 정답으로 읽는다`,
+                  "warn",
+                );
+            } else {
+              // 축 B — 정답으로 유도된 선지가 자신을 오답처럼(부정 어투로) 설명
+              const m = _a.match(ANSWER_ROLE_B_RE);
+              if (m)
+                issue(
+                  "F_answer_reads_as_distractor",
+                  yearKey,
+                  cLoc,
+                  `정답 선지 해설에 오답 어투 «${m[0]}» — 정답 근거가 부정형으로 흐려진다`,
+                  "warn",
+                );
+            }
           }
         }
 
@@ -2680,6 +2732,9 @@ const SEVERITY_MAP = {
 
   // Tier 3 (승격 금지)
   C_pat_mismatch: "WARNING", // Tier 3
+  // [발주 ef 사양2] 해설 반전 축 — WARNING 고정. CRITICAL 승격 금지(편입 시점 LIVE 0건).
+  F_distractor_reads_as_answer: "WARNING",
+  F_answer_reads_as_distractor: "WARNING",
 
   // 결론줄=ok 검사 (§13⑤) — 출시 차단 CRITICAL 승격 (이전 WARNING)
   F_content_reversed: "CRITICAL",
