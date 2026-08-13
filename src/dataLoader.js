@@ -28,8 +28,9 @@ async function _load() {
 //
 //   별도 release 추가 시 본 const 직접 정정 path.
 //
-// ★ 이 목록에 세트를 추가하기 전 필수 확인 (발주 eg · 2026-08-13)
-//   정본은 AGENTS.md 의 release_ready 4기준 절이다. 여기는 요약만 둔다.
+// ★ 공개 승격 4관문 — 이 목록에 세트를 추가하기 전 통과 (발주 eg · 2026-08-13)
+//   정본은 AGENTS.md 의 release_ready 4기준 절 안 공개 승격 4관문 문단이다.
+//   (release_ready 4기준 = 데이터 무결 / 공개 승격 4관문 = 공개 절차. 별개다.)
 //   요약: 1) 관문 --scope=release CRITICAL 0   2) 정답표 대조 0
 //         3) 해설 반전 축 2종 0               4) 세트당 1문항 사람 통독
 //   3)의 미처리 건수는 목록으로 적지 말고 node pipeline/quality_gate.mjs 를

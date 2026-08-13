@@ -344,8 +344,9 @@ node pipeline/quality_gate.mjs --scope=release
 
 개발 중 빠른 확인용 보조: `--scope=suneung5` (LIVE 241 중 40세트만)
 
-**비노출 세트를 `src/dataLoader.js` 의 `RELEASE_KEYS` 에 추가하기 전 필수 확인 (발주 eg · 2026-08-13)** —
-위 4기준과 별개로 다음 4항목을 모두 통과해야 공개할 수 있다.
+**공개 승격 4관문** — 비노출 세트를 `src/dataLoader.js` 의 `RELEASE_KEYS` 에 추가하기 전에 통과해야 하는
+공개 절차다 (발주 eg · 2026-08-13). 위 `release_ready` 4기준은 **데이터 무결** 기준이고, 아래 4관문은
+**공개 절차** 기준이다 — 둘은 별개이며 이름이 겹치지 않도록 구분한다.
 ① `node pipeline/quality_gate.mjs --scope=release` → CRITICAL 0.
 ② `node pipeline/answer_fidelity.mjs` → 정답 불일치 0 (PDF 정답표 대조).
 ③ 해설 반전 축 2종 0건 — `F_distractor_reads_as_answer`(오답 선지가 자기를 정답이라고 설명) ·
@@ -355,7 +356,8 @@ node pipeline/quality_gate.mjs --scope=release
 그 산출에서 두 축이 모두 0건이어야 공개할 수 있다.
 ④ 세트당 최소 1문항 사람 통독. ③의 두 축은 등록된 어구 16개만 잡으므로,
 같은 결함을 다른 말로 쓴 해설은 통과한다 — 기계 0건이 곧 무결이 아니다.
-`src/dataLoader.js` 의 `RELEASE_KEYS` 선언 직상단 주석은 이 절을 가리키는 요약이며, 정본은 이 절이다.
+`src/dataLoader.js` 의 `RELEASE_KEYS` 선언 직상단 주석은 이 **공개 승격 4관문**을 가리키는 요약이며,
+정본은 이 문단이다.
 
 ---
 
