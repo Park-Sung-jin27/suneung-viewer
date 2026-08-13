@@ -290,6 +290,18 @@
       "destination": "https://jippi-saju.netlify.app/tarot/$1"
     },
     {
+      "source": "/manse",
+      "destination": "https://jippi-saju.netlify.app/manse"
+    },
+    {
+      "source": "/manse/",
+      "destination": "https://jippi-saju.netlify.app/manse"
+    },
+    {
+      "source": "/jippi_manse_engine.js",
+      "destination": "https://jippi-saju.netlify.app/jippi_manse_engine.js"
+    },
+    {
       "source": "/fortune/delivery/(.*)",
       "destination": "/api/not-found"
     },
