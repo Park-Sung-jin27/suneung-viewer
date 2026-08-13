@@ -176,6 +176,8 @@ const GATE5 = args.includes("--gate5");
 // Gate 7: 골든셋만 돌림 (회귀 테스트 모드)
 const GOLDEN_ONLY = args.includes("--golden");
 // --scope 프리셋: "suneung5" = 2022~2026수능 5개
+// 인자 없이 실행하면 Object.keys(data) 전수(현재 353세트)를 돈다.
+//   프리셋은 suneung5 · 모의고사전체 · release 3종뿐이며 전수 프리셋은 없다.
 const SCOPE = (() => {
   const scopeArg = args.find((a) => a.startsWith("--scope="));
   if (!scopeArg) return null;
