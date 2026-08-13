@@ -43,7 +43,7 @@
       "state": "UNTOUCHED",
       "live": true,
       "choices": 20,
-      "batch": null,
+      "batch": "B01",
       "history": []
     },
     "2014_6월A::r20146d": {
@@ -127,7 +127,7 @@
       "state": "UNTOUCHED",
       "live": true,
       "choices": 20,
-      "batch": null,
+      "batch": "B01",
       "history": []
     },
     "2014_9월A::r20149a": {
@@ -386,7 +386,7 @@
       "state": "UNTOUCHED",
       "live": true,
       "choices": 20,
-      "batch": null,
+      "batch": "B01",
       "history": []
     },
     "2015_6월A::l20156d": {
@@ -743,7 +743,7 @@
       "state": "UNTOUCHED",
       "live": true,
       "choices": 15,
-      "batch": null,
+      "batch": "B01",
       "history": []
     },
     "2016_9월A::l20169b": {
@@ -1156,14 +1156,14 @@
       "state": "UNTOUCHED",
       "live": true,
       "choices": 15,
-      "batch": null,
+      "batch": "B01",
       "history": []
     },
     "2018수능::l2018b": {
       "state": "UNTOUCHED",
       "live": true,
       "choices": 20,
-      "batch": null,
+      "batch": "B01",
       "history": []
     },
     "2018수능::l2018c": {
@@ -2080,7 +2080,7 @@
       "state": "UNTOUCHED",
       "live": true,
       "choices": 30,
-      "batch": null,
+      "batch": "B01",
       "history": []
     },
     "2025_6월::l20256a": {
@@ -2234,7 +2234,7 @@
       "state": "UNTOUCHED",
       "live": true,
       "choices": 30,
-      "batch": null,
+      "batch": "B01",
       "history": []
     },
     "2025수능::r2025c": {
@@ -2367,7 +2367,7 @@
       "state": "UNTOUCHED",
       "live": true,
       "choices": 20,
-      "batch": null,
+      "batch": "B01",
       "history": []
     },
     "2026수능::l2026b": {
@@ -2475,5 +2475,7 @@
       "batch": null,
       "history": []
     }
-  }
+  },
+  "_HISTORY_FIELDS": "{state, by, date, minutes, note} — minutes 는 그 단계에 실제로 걸린 분. 누락하면 통과로 인정하지 않는다(발주 ev 사양4).",
+  "_BATCH": "B01 = 1묶음. 위험군4(현재 4) · 표준군3 · 청정군2 · 특수군1(공석) 구성. 특수군은 LIVE 에 조건 충족 세트가 0건이라 미충원."
 }
