@@ -221,13 +221,19 @@ export function chooseRegenAnalysis(
  *   여는 따옴표는 짝수번째 " 다 — 짝을 먼저 맞춘 뒤 길이로 거른다.
  */
 export function extractQuotes(text, minLen = 12) {
-  const a = String(text || "");
-  const pos = [];
-  for (let i = 0; i < a.length; i++) if (a[i] === '"') pos.push(i);
+  // [스코프 — 대표 확정 2026-08-12] 인용 대조는 📌 근거 블록만 본다.
+  //   📌 지문 근거 / 보기 근거 → 원문 연속 문자열 그대로여야 한다(요약·재구성·설명괄호 금지).
+  //   🔍 해설 블록            → 설명이므로 원문 인용 의무가 없다. 검사 대상에서 제외한다.
+  //   사유: 형광펜 근거 연결이 제품의 핵심이라 근거 블록의 정확성이 곧 제품 정확성이다.
   const out = [];
-  for (let i = 0; i + 1 < pos.length; i += 2) {
-    const q = a.slice(pos[i] + 1, pos[i + 1]);
-    if (q.length >= minLen && !q.includes("\n")) out.push(q);
+  for (const line of String(text || "").split(/\r?\n/)) {
+    if (!line.includes("📌")) continue;
+    const pos = [];
+    for (let i = 0; i < line.length; i++) if (line[i] === '"') pos.push(i);
+    for (let i = 0; i + 1 < pos.length; i += 2) {
+      const q = line.slice(pos[i] + 1, pos[i + 1]);
+      if (q.length >= minLen) out.push(q);
+    }
   }
   return out;
 }
@@ -258,6 +264,7 @@ export const stripMarks = (x) =>
   String(x || "")
     .replace(/[㉠-㉿ⓐ-ⓩ①-⑳㈀-㈜⑴-⒇]/g, "")
     .replace(/[*＊†‡※⁎]/g, "")
+    .replace(/\^/g, "")            // 위첨자 표기 — 원문 「(체중)0.75」 vs 해설 「(체중)^0.75」
     .replace(/\s+/g, " ")
     .trim();
 
