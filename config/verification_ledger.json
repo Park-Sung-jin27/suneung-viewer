@@ -758,6 +758,13 @@
           "date": "2026-08-14",
           "minutes": "auto 1 / manual 3 / total 4",
           "note": "발주 ey 사양2 — 승격. 발주 ex 의 (a)·(a-2)·(b 마커/각주/보기)는 그때 전부 통과했다. 미통과 사유였던 문단 축은 심사관 판정 172 로 SOURCE_OK (b) 에서 빠지고 VERIFIED 전제로 이관됐다. ★ 이 세트는 para/pid 미보유(0/27)이므로 VERIFIED 로는 잠기지 않는다. 소요는 ex 기록과 동일(재측정 없음)."
+        },
+        {
+          "state": "SOURCE_OK",
+          "by": "데이터 엔지니어(Code B)",
+          "date": "2026-08-14",
+          "minutes": "auto 0(ex 재사용) / manual 1 / total 1",
+          "note": "발주 fa 재검 — 승격 없음(판정 173: 통과 판정 보류). A diff 0 · B 사각 ①0 ②0 · C 마커6·각주0·보기0 PDF 일치 · D para/pid 0/27 🔴결손(PDF 5문단) · E annotations 0건 🔴 미탑재 — 렌더에 마커 뒤 밑줄이 있으나 데이터에 밑줄 정보가 없다(F2). F 자동탐침 0건. 축별 시간 D 0.3분 · E 0.3분(신규 축 증분 약 0.6분)."
         }
       ],
       "note": "위험군(지시 포함) · 교차 조건 미충족(결번 0)"
@@ -1173,7 +1180,15 @@
       "live": true,
       "choices": 15,
       "batch": "B01",
-      "history": []
+      "history": [
+        {
+          "state": "UNTOUCHED",
+          "by": "데이터 엔지니어(Code B)",
+          "date": "2026-08-14",
+          "minutes": "auto 1 / manual 1 / total 2",
+          "note": "발주 fa — 승격 없음. A passage_fidelity --yk=2018수능 위반 0건(본문sent 261) · structure_fidelity 대상 세트 없음. B 사각 ①5건(workTag 4 + footnote 1) ②0 · C 마커 ㉠~㉤ 5건 PDF 일치·각주 PDF *2(본문표시+정의 쌍)=데이터 footnote 1건·보기 0=0 · D para/pid 41/42 ⚠부분(미보유 1건은 [A] workTag s980) · E annotations 0건 · F 0건. 사각 5건 처리 약 0.5분."
+        }
+      ]
     },
     "2018수능::l2018b": {
       "state": "UNTOUCHED",
@@ -2104,6 +2119,13 @@
           "date": "2026-08-14",
           "minutes": "auto 1 / manual 4 / total 5",
           "note": "발주 ey 사양3① — SOURCE_OK 시도. 승격하지 않음(미통과). (a) passage_fidelity --yk=2024수능: LIVE 위반 2건 중 대상 세트 1건 = r2024ds21 포함도 0.5. 판정 = 추출 artifact — PDF 텍스트에 페이지 하단 저작권 문구와 「홀수형 5520」이 문장 중간에 삽입돼 윈도 매칭이 절반 깨진 것이다. 데이터 문장이 옳다. 미판정 diff 0건. structure_fidelity: Layer2 17건에 대상 세트 없음 · Layer3·4 0건. (a-2) 사각 ①0 ②0 ③해당없음(2024수능 추출 정상). 사각 처리 시간 0분. (b) 마커 ⓐ(s2)·㉠(s24)·㉡(s29) 위치 PDF 일치 · 각주 0=0 · <보기> 2=2(Q15·Q16). 🔴 annotations 3건이 존재하지 않는 sentId 를 참조한다: r2024d_s2/r2024d_s25/r2024d_s30 → 실제는 r2024ds2/r2024ds24/r2024ds29 (언더스코어 유무 + 번호 1 차이). 밑줄 렌더가 죽어 ⓐ·㉠·㉡ 강조가 화면에 표시되지 않는다. 게이트 W_annotation_stale 축은 이 세트를 0건으로 통과시킨다(새 사각)."
+        },
+        {
+          "state": "UNTOUCHED",
+          "by": "데이터 엔지니어(Code B)",
+          "date": "2026-08-14",
+          "minutes": "auto 0(ey 재사용) / manual 2 / total 2",
+          "note": "발주 fa 재검 — 승격 없음. A diff 1건=r2024ds21 포함도0.5 → 추출 artifact(페이지 하단 저작권 문구 삽입) 판정, 미판정 0. B 사각 ①0 ②0 · C 마커 ⓐ㉠㉡ PDF 일치·각주0=0·보기 2=2 · D para 33/33 ✅(PDF (가)4문단+(나)) · E annotations 3/3 dangling 🔴 (r2024d_s2/_s25/_s30 → 실제 r2024ds2/24/29) · F3 지문 구분자 (가)(나)가 sentType=body 다 — 전 코퍼스 workTag 156 vs body 7 의 이상치. 축별 시간 D 0.5 · E 0.7 · F 0.8분."
         }
       ]
     },
@@ -2393,7 +2415,15 @@
       "live": true,
       "choices": 20,
       "batch": "B01",
-      "history": []
+      "history": [
+        {
+          "state": "UNTOUCHED",
+          "by": "데이터 엔지니어(Code B)",
+          "date": "2026-08-14",
+          "minutes": "auto 1 / manual 4 / total 5",
+          "note": "발주 fa — 승격 없음. A passage_fidelity --yk=2026수능 위반 1건은 다른 세트(r2026c), 대상 세트 0건 · structure_fidelity 대상 없음. B 사각 ①15건(workTag 14 + author 1) ②7건(133~174자) · C 마커 ⓐ~ⓕ+㉠㉡㉢ 9건 PDF 일치·각주0=0·보기 1=1 · D para/pid 0/29 🔴결손 · E annotations 9건 중 1건 text 불일치 🔴 (l2026as12 text='반기 듣고' → 실제 s8·s27) = F1 · F5 sentId 배열 역행 2건(27→13, 29→19) — ek 축B 결번 12→26·18→28 의 원인이 유실이 아니라 삽입 배치임이 규명됨. 사각 22건 처리 약 2분(①15건 육안 + ②7건 대조)."
+        }
+      ]
     },
     "2026수능::l2026b": {
       "state": "UNTOUCHED",
@@ -2502,5 +2532,6 @@
     }
   },
   "_HISTORY_FIELDS": "{state, by, date, minutes, note} — minutes 는 그 단계에 실제로 걸린 분. 누락하면 통과로 인정하지 않는다(발주 ev 사양4).",
-  "_BATCH": "B01 = 1묶음 9세트. 위험군4 · 표준군3 · 청정군2 · 특수군0. 특수군 = LIVE 모집단에 해당 없음(2014수능A/B 추출 빈약 2회차는 전부 비노출). B01 은 9세트로 확정. 심사관 판정 170."
+  "_BATCH": "B01 = 1묶음 9세트. 위험군4 · 표준군3 · 청정군2 · 특수군0. 특수군 = LIVE 모집단에 해당 없음(2014수능A/B 추출 빈약 2회차는 전부 비노출). B01 은 9세트로 확정. 심사관 판정 170.",
+  "_BATCH_FA": "발주 fa — B01 발견 모드 완주(4세트). 통과 판정 보류(판정 173). 묶음 총 실경과 01:12:08~01:18:09 = 361초. 세트별 minutes 는 공유 작업(fa_axes 1회 실행이 4세트 커버)을 배분한 값이며 독립 측정이 아니다."
 }
