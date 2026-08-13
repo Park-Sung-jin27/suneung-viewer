@@ -28,14 +28,12 @@ async function _load() {
 //
 //   별도 release 추가 시 본 const 직접 정정 path.
 //
-// ★ 이 목록에 세트를 추가하기 전 필수 확인 (심사관 판정 157)
-//   1. node pipeline/quality_gate.mjs --scope=release  → CRITICAL 0
-//   2. node pipeline/answer_fidelity.mjs               → 정답 불일치 0
-//   3. 해설 반전 축 2종 0건
-//      F_distractor_reads_as_answer / F_answer_reads_as_distractor
-//      ※ 현재 비노출 5건 미처리: 2014수능A r2014e Q28 · 2017_9월 l20179b Q23
-//         · 2017_9월 l20179a Q17·Q18·Q19
-//   4. 세트당 최소 1문항 사람 통독 — 축은 등록된 어구 16개만 잡는다
+// ★ 이 목록에 세트를 추가하기 전 필수 확인 (발주 eg · 2026-08-13)
+//   정본은 AGENTS.md 의 release_ready 4기준 절이다. 여기는 요약만 둔다.
+//   요약: 1) 관문 --scope=release CRITICAL 0   2) 정답표 대조 0
+//         3) 해설 반전 축 2종 0               4) 세트당 1문항 사람 통독
+//   3)의 미처리 건수는 목록으로 적지 말고 node pipeline/quality_gate.mjs 를
+//   인자 없이 실행해(전수 353세트) 두 축이 0건인지 확인한다.
 const RELEASE_KEYS = new Set([
   // 2014_6월A (5)
   "2014_6월A::l20146c",
