@@ -54,7 +54,7 @@ const N = (s) => String(s || "")
   .replace(/[“”"‘’'『』「」〈〉<>[\]()（）·ㆍ‧,.!?:;~－\-—/]/g, "")
   .replace(/\s+/g, "");
 
-const SYM1 = /^[ㄱ-ㅎa-zA-Zⅰ-ⅹ①-⑮ⓐ-ⓔ㉠-㉤]$/;
+const SYM1 = /^[ㄱ-ㅎa-zA-Zⅰ-ⅹ①-⑮ⓐ-ⓖ㉠-㉩]$/;
 const isSymbolCombo = (q) => {
   const cs = q.choices || [];
   if (cs.length < 4) return false;
@@ -67,10 +67,10 @@ const isSymbolCombo = (q) => {
 function anchors(q, set) {
   const out = {};
   const b = flat(q.bogi);
-  for (const m of b.matchAll(/(^|\n)\s*([ㄱ-ㅎⓐ-ⓔ㉠-㉤])[.．)\s]\s*([^\n]+)/g)) out[m[2]] = m[3].trim();
-  for (const m of b.matchAll(/(^|\n)\s*([^\n]{6,})[·…\s]{2,}([ⓐ-ⓔ㉠-㉤ㄱ-ㅎ])\s*(?=\n|$)/g)) out[m[3]] = m[2].trim();
+  for (const m of b.matchAll(/(^|\n)\s*([ㄱ-ㅎⓐ-ⓖ㉠-㉩])[.．)\s]\s*([^\n]+)/g)) out[m[2]] = m[3].trim();
+  for (const m of b.matchAll(/(^|\n)\s*([^\n]{6,})[·…\s]{2,}([ⓐ-ⓖ㉠-㉩ㄱ-ㅎ])\s*(?=\n|$)/g)) out[m[3]] = m[2].trim();
   for (const sn of set.sents || []) {
-    for (const m of String(sn.t || "").matchAll(/([ⓐ-ⓔ㉠-㉤])\s*([^\n]{4,80})/g))
+    for (const m of String(sn.t || "").matchAll(/([ⓐ-ⓖ㉠-㉩])\s*([^\n]{4,80})/g))
       if (!out[m[1]]) out[m[1]] = m[2].trim();
   }
   return out;
@@ -86,7 +86,7 @@ function scanSet(yk, set, live) {
     const choiceN = (q.choices || []).map((c) => N(c.t));
     const anc = anchors(q, set);
     const combo = isSymbolCombo(q);
-    const declared = /[ⓐ-ⓔ㉠-㉤ㄱ-ㅎ]\s*[~～∼]\s*[ⓐ-ⓔ㉠-㉤ㄱ-ㅎ]/.test(String(q.t));
+    const declared = /[ⓐ-ⓖ㉠-㉩ㄱ-ㅎ]\s*[~～∼]\s*[ⓐ-ⓖ㉠-㉩ㄱ-ㅎ]/.test(String(q.t));
     for (const c of q.choices || []) {
       const a = String(c.analysis || "");
       if (!a) continue;
@@ -94,7 +94,7 @@ function scanSet(yk, set, live) {
       //   r20206d Q40 실측: 인용문은 정상인데 'ㄱ(포린 존재)'·'ㄷ(핵 존재)' 처럼
       //   괄호 설명에서 <보기> 항목을 지어냈다. 인용 대조만으로는 구조적으로 못 잡는다.
       if (combo || Object.keys(anc).length) {
-        for (const m of a.matchAll(/([ⓐ-ⓔ㉠-㉤ㄱ-ㅎ])\s*[(（]([^)）]{2,30})[)）]/g)) {
+        for (const m of a.matchAll(/([ⓐ-ⓖ㉠-㉩ㄱ-ㅎ])\s*[(（]([^)）]{2,30})[)）]/g)) {
           const def = anc[m[1]];
           if (!def) continue;
           const words = m[2].split(/[\s,·]+/).filter((x) => x.length >= 2);
@@ -128,7 +128,7 @@ function scanSet(yk, set, live) {
         // 규칙 2 — 해설이 "ⓐ는 …" 형태로 특정 마커에 귀속시킨 인용이 실제 그 마커 것인가
         if (declared || Object.keys(anc).length) {
           const before = a.slice(Math.max(0, a.indexOf(raw) - 40), a.indexOf(raw));
-          const m = [...before.matchAll(/([ⓐ-ⓔ㉠-㉤ㄱ-ㅎ])\s*[은는이가]?\s*[^"]{0,24}$/g)].pop();
+          const m = [...before.matchAll(/([ⓐ-ⓖ㉠-㉩ㄱ-ㅎ])\s*[은는이가]?\s*[^"]{0,24}$/g)].pop();
           if (m && anc[m[1]]) {
             const mine = N(anc[m[1]]);
             if (mine && !mine.includes(qn) && !qn.includes(mine.slice(0, 8))) {

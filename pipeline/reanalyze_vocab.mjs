@@ -67,13 +67,13 @@ async function callWithRetry(fn, maxRetries = 3, delay = 5000) {
   }
 }
 
-const MARKER_RE = /[ⓐ-ⓔ㉠-㉤㉮-㉲]/g;
-const MARKER_POOLS = ["ⓐⓑⓒⓓⓔ", "㉠㉡㉢㉣㉤", "㉮㉯㉰㉱㉲"];
+const MARKER_RE = /[ⓐ-ⓖ㉠-㉩㉮-㉲]/g;
+const MARKER_POOLS = ["ⓐⓑⓒⓓⓔⓕⓖ", "㉠㉡㉢㉣㉤㉥㉦㉧㉨㉩", "㉮㉯㉰㉱㉲"];
 
 /** 발문이 마커 범위를 선언하면(㉠~㉤ 등) 그 범위 전체 마커를 돌려준다. */
 function declaredRange(qText) {
   const m = String(qText || "").match(
-    /([ⓐ-ⓔ㉠-㉤㉮-㉲])\s*[~～∼]\s*([ⓐ-ⓔ㉠-㉤㉮-㉲])/,
+    /([ⓐ-ⓖ㉠-㉩㉮-㉲])\s*[~～∼]\s*([ⓐ-ⓖ㉠-㉩㉮-㉲])/,
   );
   if (!m) return [];
   for (const pool of MARKER_POOLS) {

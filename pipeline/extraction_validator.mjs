@@ -17,7 +17,7 @@
  */
 
 const MARKER_RANGE_RE =
-  /([㉠-㉤]|[ⓐ-ⓔ]|[①-⑤])\s*[~～\-–—]\s*([㉠-㉤]|[ⓐ-ⓔ]|[①-⑤])/;
+  /([㉠-㉩]|[ⓐ-ⓖ]|[①-⑤])\s*[~～\-–—]\s*([㉠-㉩]|[ⓐ-ⓖ]|[①-⑤])/;  // [발주 fb] 실사용 최대치
 
 function codePointRangeChars(startCh, endCh) {
   const chars = [];
