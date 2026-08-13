@@ -339,19 +339,23 @@ R2 **아님**:
 자동 검증:
 
 ```powershell
-node pipeline/quality_gate.mjs --scope=suneung5
+node pipeline/quality_gate.mjs --scope=release
 ```
 
-**비노출 세트를 `src/dataLoader.js` 의 `RELEASE_KEYS` 에 추가하기 전 필수 확인 (심사관 판정 157)** —
+개발 중 빠른 확인용 보조: `--scope=suneung5` (LIVE 241 중 40세트만)
+
+**비노출 세트를 `src/dataLoader.js` 의 `RELEASE_KEYS` 에 추가하기 전 필수 확인 (발주 eg · 2026-08-13)** —
 위 4기준과 별개로 다음 4항목을 모두 통과해야 공개할 수 있다.
 ① `node pipeline/quality_gate.mjs --scope=release` → CRITICAL 0.
 ② `node pipeline/answer_fidelity.mjs` → 정답 불일치 0 (PDF 정답표 대조).
 ③ 해설 반전 축 2종 0건 — `F_distractor_reads_as_answer`(오답 선지가 자기를 정답이라고 설명) ·
-`F_answer_reads_as_distractor`(정답 선지가 자기를 오답인 듯 설명). 현재 **비노출 5건이 미처리**다:
-`2014수능A r2014e Q28` · `2017_9월 l20179b Q23` · `2017_9월 l20179a Q17·Q18·Q19`.
+`F_answer_reads_as_distractor`(정답 선지가 자기를 오답인 듯 설명).
+미처리 건수는 목록으로 적지 말고 실행해서 확인한다 — `node pipeline/quality_gate.mjs`
+(인자 없이 실행하면 전수 353세트를 돈다. 전수 전용 스코프 프리셋은 없다).
+그 산출에서 두 축이 모두 0건이어야 공개할 수 있다.
 ④ 세트당 최소 1문항 사람 통독. ③의 두 축은 등록된 어구 16개만 잡으므로,
 같은 결함을 다른 말로 쓴 해설은 통과한다 — 기계 0건이 곧 무결이 아니다.
-같은 목록이 `src/dataLoader.js` 의 `RELEASE_KEYS` 선언 직상단 주석에도 있다.
+`src/dataLoader.js` 의 `RELEASE_KEYS` 선언 직상단 주석은 이 절을 가리키는 요약이며, 정본은 이 절이다.
 
 ---
 
