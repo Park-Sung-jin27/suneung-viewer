@@ -740,7 +740,7 @@
       "history": []
     },
     "2016_9월A::l20169a": {
-      "state": "UNTOUCHED",
+      "state": "SOURCE_OK",
       "live": true,
       "choices": 15,
       "batch": "B01",
@@ -751,6 +751,13 @@
           "date": "2026-08-14",
           "minutes": "auto 1 / manual 3 / total 4",
           "note": "발주 ex — SOURCE_OK 시도. 승격하지 않음(미통과). (a) passage_fidelity --yk=2016_9월A: 본문sent 217 중 LIVE 위반 0 · 대상 세트 27sent 전건 분모 포함 확인. structure_fidelity: Layer2~4 에 대상 세트 없음(스캔 문항 1307). diff 0건 → 미판정 0건. (a-2) 사각 ①0 ②0 ③해당없음(회차 추출 정상). (b) 마커 ⓐⓑⓒ㉠ⓓⓔ 6개 위치 PDF 일치 · 각주 0=0 · <보기> 0=0 · 🔴 문단 구분 불일치 — PDF 5문단인데 데이터에 para/pid 필드가 0/27 로 부재. 화면에서 한 덩어리로 렌더된다. 전 코퍼스 동일 결손 167세트(LIVE 101). 세트 고유 결함이 아니라 스키마 미탑재로 보이며 심사관 판정 대기. (c) 해당없음. 실경과 00:02:46~00:06:16(210초)."
+        },
+        {
+          "state": "SOURCE_OK",
+          "by": "데이터 엔지니어(Code B)",
+          "date": "2026-08-14",
+          "minutes": "auto 1 / manual 3 / total 4",
+          "note": "발주 ey 사양2 — 승격. 발주 ex 의 (a)·(a-2)·(b 마커/각주/보기)는 그때 전부 통과했다. 미통과 사유였던 문단 축은 심사관 판정 172 로 SOURCE_OK (b) 에서 빠지고 VERIFIED 전제로 이관됐다. ★ 이 세트는 para/pid 미보유(0/27)이므로 VERIFIED 로는 잠기지 않는다. 소요는 ex 기록과 동일(재측정 없음)."
         }
       ],
       "note": "위험군(지시 포함) · 교차 조건 미충족(결번 0)"
@@ -2090,7 +2097,15 @@
       "live": true,
       "choices": 30,
       "batch": "B01",
-      "history": []
+      "history": [
+        {
+          "state": "UNTOUCHED",
+          "by": "데이터 엔지니어(Code B)",
+          "date": "2026-08-14",
+          "minutes": "auto 1 / manual 4 / total 5",
+          "note": "발주 ey 사양3① — SOURCE_OK 시도. 승격하지 않음(미통과). (a) passage_fidelity --yk=2024수능: LIVE 위반 2건 중 대상 세트 1건 = r2024ds21 포함도 0.5. 판정 = 추출 artifact — PDF 텍스트에 페이지 하단 저작권 문구와 「홀수형 5520」이 문장 중간에 삽입돼 윈도 매칭이 절반 깨진 것이다. 데이터 문장이 옳다. 미판정 diff 0건. structure_fidelity: Layer2 17건에 대상 세트 없음 · Layer3·4 0건. (a-2) 사각 ①0 ②0 ③해당없음(2024수능 추출 정상). 사각 처리 시간 0분. (b) 마커 ⓐ(s2)·㉠(s24)·㉡(s29) 위치 PDF 일치 · 각주 0=0 · <보기> 2=2(Q15·Q16). 🔴 annotations 3건이 존재하지 않는 sentId 를 참조한다: r2024d_s2/r2024d_s25/r2024d_s30 → 실제는 r2024ds2/r2024ds24/r2024ds29 (언더스코어 유무 + 번호 1 차이). 밑줄 렌더가 죽어 ⓐ·㉠·㉡ 강조가 화면에 표시되지 않는다. 게이트 W_annotation_stale 축은 이 세트를 0건으로 통과시킨다(새 사각)."
+        }
+      ]
     },
     "2025_6월::l20256a": {
       "state": "UNTOUCHED",
