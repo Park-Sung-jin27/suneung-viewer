@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabase";
 import { P, P0, YEAR_INFO } from "./constants";
 import PatternCoach from "./PatternCoach";
+import { loadAllData, sectionOfSet } from "./dataLoader";
 
 const C = {
   green: "#2d6e2d",
@@ -903,6 +904,22 @@ export default function PatternReport({ user, onGoToQuestion }) {
   const [activeCoachPat, setActiveCoachPat] = useState(null);
   const [activeTrainPat, setActiveTrainPat] = useState(null);
   const [toastMsg, setToastMsg] = useState(null);
+  // [발주 fg-1B] 영역(독서/문학) 판별용 — setId 접두가 아니라 reading[]/literature[] 소속으로 가른다.
+  const [secData, setSecData] = useState(null);
+
+  useEffect(() => {
+    let alive = true;
+    loadAllData()
+      .then((d) => {
+        if (alive) setSecData(d);
+      })
+      .catch((e) => {
+        console.warn("[/report] 영역 판별용 데이터 로드 실패 — 유형별 정답률이 미분류로 집계됩니다:", e);
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   useEffect(() => {
     if (!user) {
@@ -1537,16 +1554,27 @@ export default function PatternReport({ user, onGoToQuestion }) {
             {/* 지문 유형별 정답률 */}
             {answers.length > 0 &&
               (() => {
+                // [발주 fg-1B · B-2/B-3] 영역은 reading[]/literature[] 소속으로 가른다.
+                //   setId 접두(r/l) 판별 금지 — 접두와 배열이 어긋난 세트가 6건 있다(발주 fg-1 실측).
+                //   조회 실패 시 접두사로 폴백하지 않고 미분류(unknown)로 집계하고 경고를 남긴다.
                 const sec = {
                   reading: { c: 0, t: 0 },
                   literature: { c: 0, t: 0 },
+                  unknown: { c: 0, t: 0 },
                 };
+                const unresolved = new Set();
                 for (const a of answers) {
-                  const s = a.set_id?.startsWith("l")
-                    ? "literature"
-                    : "reading";
+                  const s =
+                    sectionOfSet(a.year_key, a.set_id, secData) ?? "unknown";
+                  if (s === "unknown") unresolved.add(`${a.year_key}::${a.set_id}`);
                   sec[s].t++;
                   if (a.is_correct) sec[s].c++;
+                }
+                if (unresolved.size) {
+                  console.warn(
+                    `[/report] 유형별 정답률 — 영역 미분류 ${sec.unknown.t}건 / 세트 ${unresolved.size}개:`,
+                    [...unresolved],
+                  );
                 }
                 const rPct =
                   sec.reading.t > 0
@@ -1579,6 +1607,19 @@ export default function PatternReport({ user, onGoToQuestion }) {
                     {[
                       { label: "독서", pct: rPct, cnt: sec.reading },
                       { label: "문학", pct: lPct, cnt: sec.literature },
+                      // 미분류는 0건이면 표시하지 않는다. 0건이 정상 상태다.
+                      ...(sec.unknown.t > 0
+                        ? [
+                            {
+                              label: "미분류",
+                              pct:
+                                Math.round(
+                                  (sec.unknown.c / sec.unknown.t) * 100,
+                                ) || 0,
+                              cnt: sec.unknown,
+                            },
+                          ]
+                        : []),
                     ].map(({ label, pct, cnt }) => (
                       <div key={label} style={{ marginBottom: "10px" }}>
                         <div

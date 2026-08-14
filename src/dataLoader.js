@@ -592,6 +592,30 @@ export function getYearSync(yearKey) {
   return _cache?.[yearKey] ?? null;
 }
 
+/**
+ * 세트 → 영역(독서/문학) 단일 조회 (발주 fg-1B · B-1)
+ *
+ * 소스는 reading[] / literature[] 배열 소속이다. App.jsx:1280-1281 의 _sec 와 같은 기준이며
+ * 같은 결과를 낸다. 영역을 판별해야 하는 모든 지점은 이 함수를 쓴다.
+ *
+ * ★ setId 접두(r/l)로 판별하지 않는다. 접두와 배열이 어긋난 세트가 6건 있다(발주 fg-1 실측):
+ *     reading  에 있는데 l 접두 — l20169a(LIVE) · l2015aB · l2016a
+ *     literature 에 있는데 r 접두 — r20169g(LIVE) · r2016fB · r2019b
+ *   setId 는 기존 답변·오답노트·통계 연결 보존을 위해 개명하지 않는다(영구 금지).
+ *
+ * ★ setId 는 회차 간 충돌한다(예: l20146a 가 2014_6월A·B 양쪽에 존재). yearKey 를 반드시 함께 넘긴다.
+ *
+ * @returns {"reading"|"literature"|null} 못 찾으면 null.
+ *   ★ 호출부는 접두사 판별로 폴백하지 말 것. 미분류로 집계한다(발주 fg-1B · B-3).
+ */
+export function sectionOfSet(yearKey, setId, data = _cache) {
+  const yd = data?.[yearKey];
+  if (!yd || !setId) return null;
+  if ((yd.reading ?? []).some((s) => s.id === setId)) return "reading";
+  if ((yd.literature ?? []).some((s) => s.id === setId)) return "literature";
+  return null;
+}
+
 export async function loadAllData() {
   return await _load();
 }
@@ -601,6 +625,7 @@ export default {
   getYearKeys,
   getAllYearKeys,
   getYearSync,
+  sectionOfSet,
   loadAllData,
   isReleaseSet,
   isReleaseSetAsync,
