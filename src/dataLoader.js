@@ -497,7 +497,13 @@ function _buildSentCs(yearData) {
   for (const sec of ["reading", "literature"]) {
     for (const set of yearData[sec] || []) {
       const sentMap = {};
-      for (const s of set.sents) sentMap[s.id] = s;
+      // [발주 fp-B] 정적 cs 필드 무시 — 형광펜 소스를 cs_ids · cs_spans 로 단일화한다.
+      //   all_data_204.json 의 sents[].cs 에는 구세대 일괄 부여 잔재가 남아 있어
+      //   한 문장에 그 문항의 선지 키가 통째로 들어간다(l2026bs2 = q22_c1~q24_c5 15개).
+      //   그 결과 어느 선지를 눌러도 (가) 18행이 켜졌다. cs_ids 를 8→2 로 줄여도 그대로였다.
+      //   ★ 원본 데이터는 수정하지 않는다. 로딩 시점에만 비운다.
+      //   ★ 롤백: 이 한 줄(s.cs = [])을 제거하면 즉시 원복된다.
+      for (const s of set.sents) (s.cs = []), (sentMap[s.id] = s);
       for (const q of set.questions) {
         for (const c of q.choices) {
           const key = `q${q.id}_c${c.num}`;
