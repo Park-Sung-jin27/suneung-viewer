@@ -14,7 +14,8 @@ export async function saveAnswer({
   pat,
   timeSpent,
 }) {
-  if (!user) return;
+  // 비로그인은 저장 대상이 아니다 — 실패가 아니므로 ok 로 돌려준다.
+  if (!user) return { ok: true, skipped: true };
 
   try {
     const now = new Date().toISOString();
@@ -46,17 +47,43 @@ export async function saveAnswer({
       answered_at: now,
     };
 
+    // [발주 fi-2 B-1] supabase-js 의 insert()/update() 는 실패해도 예외를 던지지 않는다.
+    //   반환된 error 를 확인하지 않으면 try/catch 로도 못 잡는다(§13㉒ 절차 ④).
+    //   INSERT 가 실패했는데 upsert_user_stats(SECURITY DEFINER)만 성공하면
+    //   user_answers 는 비고 카운터만 오른다 — 2026-06-17~08-14 답안 50건 유실의 기전이다.
     if (existing?.id) {
-      await supabase.from("user_answers").update(payload).eq("id", existing.id);
+      const { error } = await supabase
+        .from("user_answers")
+        .update(payload)
+        .eq("id", existing.id);
+      if (error) {
+        console.warn("[saveAnswer] UPDATE 실패:", error.message, payload);
+        return { ok: false, error: error.message };
+      }
     } else {
-      await supabase.from("user_answers").insert(payload);
-      await supabase.rpc("upsert_user_stats", {
+      const { error } = await supabase.from("user_answers").insert(payload);
+      if (error) {
+        // ★ RPC 를 호출하지 않고 즉시 반환한다. 카운터만 오르는 상태를 만들지 않는다.
+        console.warn(
+          "[saveAnswer] INSERT 실패 — user_stats 를 올리지 않습니다:",
+          error.message,
+          payload,
+        );
+        return { ok: false, error: error.message };
+      }
+      const { error: rpcError } = await supabase.rpc("upsert_user_stats", {
         p_user_id: user.id,
         p_correct: isCorrect,
       });
+      if (rpcError) {
+        // 답안 자체는 저장됐다. 카운터만 어긋나므로 실패로 보고하지 않고 경고만 남긴다.
+        console.warn("[saveAnswer] upsert_user_stats 실패:", rpcError.message);
+      }
     }
+    return { ok: true };
   } catch (err) {
     console.warn("[saveAnswer] 저장 실패:", err.message);
+    return { ok: false, error: err.message };
   }
 }
 

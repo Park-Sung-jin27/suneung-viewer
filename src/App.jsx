@@ -1360,6 +1360,7 @@ function ViewerPage({ user, isPro = false }) {
     }
     setSubmitting(true);
     let correctCount = 0;
+    let saveFailed = 0;   // [발주 fi-2 B-2] 조용한 실패 금지 — 저장 실패 건수를 세어 학생에게 알린다.
     for (const q of qs) {
       const choiceNum = studyAnswers[sid]?.[q.id];
       if (choiceNum == null) continue;
@@ -1373,7 +1374,7 @@ function ViewerPage({ user, isPro = false }) {
       );
       if (isCorrect) correctCount += 1;
       try {
-        await saveAnswer({
+        const r = await saveAnswer({
           user,
           yearKey,
           setId: sid,
@@ -1386,7 +1387,9 @@ function ViewerPage({ user, isPro = false }) {
           isCorrect,
           pat: choice.pat ?? null,
         });
+        if (r && r.ok === false) saveFailed += 1;
       } catch (e) {
+        saveFailed += 1;
         console.warn("[saveAnswer 무시]", e?.message);
       }
     }
@@ -1394,9 +1397,9 @@ function ViewerPage({ user, isPro = false }) {
     // daily MVP: 세트 완료 진도 기록 (로그인 유저 — user_progress upsert, fire-and-forget)
     saveSetProgress({ user, yearKey, setId: sid });
     setSubmittedSets((prev) => ({ ...prev, [sid]: true }));
-    setSetScoreToast({ sid, correct: correctCount, total: qs.length });
-    // 다음 지문 자동 이동 — 5초 후
-    setTimeout(() => setSetScoreToast(null), 5000);
+    setSetScoreToast({ sid, correct: correctCount, total: qs.length, saveFailed });
+    // 다음 지문 자동 이동 — 5초 후 (저장 실패 안내가 있으면 12초)
+    setTimeout(() => setSetScoreToast(null), saveFailed > 0 ? 12000 : 5000);
   }
 
   async function handleSubmitAll() {
@@ -1873,6 +1876,26 @@ function ViewerPage({ user, isPro = false }) {
           >
             {setScoreToast.correct} / {setScoreToast.total} 정답
           </div>
+          {/* [발주 fi-2 B-2] 저장 실패 안내 — 조용한 실패 금지.
+              localStorage 대기열은 이번 범위에서 제외했다(발주 지시). */}
+          {setScoreToast.saveFailed > 0 && (
+            <div
+              style={{
+                marginBottom: "8px",
+                padding: "7px 9px",
+                borderRadius: "6px",
+                background: "#fef2f2",
+                border: "1px solid #fecaca",
+                color: "#b91c1c",
+                fontSize: "0.72rem",
+                lineHeight: 1.5,
+              }}
+            >
+              ⚠️ {setScoreToast.saveFailed}문항의 기록을 저장하지 못했습니다.
+              <br />
+              채점 결과는 화면에 그대로 있습니다. 다시 접속해 같은 문항을 제출하면 저장됩니다.
+            </div>
+          )}
           <div style={{ display: "flex", gap: "8px" }}>
             {hasNext && (
               <button

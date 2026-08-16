@@ -947,8 +947,9 @@ export default function PatternReport({ user, onGoToQuestion }) {
         .from("user_answers")
         .select(primaryCols)
         .eq("user_id", user.id)
-        .order("answered_at", { ascending: false })
-        .limit(200);
+        .order("answered_at", { ascending: false });
+      // [발주 fi-2 B-3] .limit(200) 제거 — 상단 수치의 단일 출처가 되므로
+      //   200문항을 넘긴 학생부터 수치가 다시 어긋난다. 전체 테이블이 소규모라 성능 우려 없음.
       if (errPrimary) {
         console.warn(
           "[/report] user_answers answered_at SELECT 실패, fallback:",
@@ -957,8 +958,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
         const { data: ansFallback, error: errFallback } = await supabase
           .from("user_answers")
           .select(fallbackCols)
-          .eq("user_id", user.id)
-          .limit(200);
+          .eq("user_id", user.id);   // [발주 fi-2 B-3] .limit(200) 제거
         if (errFallback) {
           console.warn(
             "[/report] user_answers fallback SELECT 실패:",
@@ -993,8 +993,13 @@ export default function PatternReport({ user, onGoToQuestion }) {
     );
 
   // 집계
-  const totalAnswered = stats?.total_answered ?? 0;
-  const totalCorrect = stats?.total_correct ?? 0;
+  // [발주 fi-2 B-3] 상단 수치는 user_answers 원시 행에서 직접 센다.
+  //   user_stats 는 upsert_user_stats RPC 의 누적 카운터이고 재계산 경로가 없어,
+  //   한 번 어긋나면 스스로 복구되지 않는다(실측 83 vs 71 — 12문항 과다).
+  //   answers 가 단일 출처가 되어야 두 수치가 갈라지지 않는다.
+  //   ★ streak_days 는 answers 로 계산할 수 없어 user_stats 를 그대로 쓴다.
+  const totalAnswered = answers.length;
+  const totalCorrect = answers.filter((a) => a.is_correct).length;
   const streakDays = stats?.streak_days ?? 0;
   const accuracy =
     totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
