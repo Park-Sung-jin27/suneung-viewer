@@ -15,6 +15,8 @@ import { saveEvidenceFeedback } from "./saveEvidenceFeedback";
 //   즉시 발견된다.
 //   현재 인라인 대상 5개: sym_box/check/numbered/wavy · 2014_r20146bB_q23_mark1
 const INLINE_IMG_RE = /(_mark|sym_|_sym)/;
+// [그림src:…] 계열 토큰 보유 여부 판정 — 선지 t 우회 분기에서 쓴다.
+const IMG_TOKEN_RE = /\[(?:도식|사진|그림|이미지)src\s*:/;
 
 // [도식:...] / [사진:...] / [그림:...] / [이미지:...] 패턴을
 // 실제 이미지가 연결되지 않은 경우 중립적 박스로 노출 (원본 설명문 숨김)
@@ -1092,7 +1094,16 @@ function ChoiceItem({
             textAlign: "left",
           }}
         >
-          <span>{applyInlineAnnsLocal(choice.t, choiceAnns)}</span>
+          {/* [발주 fw-B ②] 선지 t 의 [그림src:…] 처리.
+              이 경로는 applyInlineAnnsLocal → renderWithSymbols 로 가는데
+              renderWithSymbols 는 [[sym:KEY]] 만 안다. 이미지 토큰을 넣으면
+              글자 그대로 출력된다. 토큰이 있는 선지에 한해 우회한다.
+              토큰 없는 선지는 기존 경로 그대로 — 회귀 없음. */}
+          <span>
+            {IMG_TOKEN_RE.test(choice.t || "")
+              ? replaceImagePlaceholders(choice.t)
+              : applyInlineAnnsLocal(choice.t, choiceAnns)}
+          </span>
           {showBadge && choice.pat && <PatternBadge pat={choice.pat} />}
         </span>
         {showIcon && icon && (
