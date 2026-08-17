@@ -1038,7 +1038,16 @@ function ChoiceItem({
   const icon = isCorrect ? "✅" : "❌";
 
   return (
-    <div>
+    /* [발주 fw-B ⑧′] flex 아이템은 이 래퍼 DIV 다. BUTTON 이 아니다.
+       ⑥에서 flex·minWidth 를 BUTTON 에 붙여 선언이 통째로 무시됐다.
+       ★ grow 는 0 이다. 1 이면 홀수 마지막 선지(⑤)가 한 줄을 독차지해 혼자 커진다. */
+    <div
+      style={
+        imgChoiceMode
+          ? { flex: "0 1 calc(50% - 4px)", minWidth: "240px" }
+          : undefined
+      }
+    >
       {/* [발주 fj ①] 선지는 <button> 이다. div+onClick 은 키보드·스크린리더로 선택할 수 없다.
           실측(배포본) — tagName DIV · role null · tabIndex -1 · onkeydown 없음,
           페이지 포커스 가능 요소 17개에 선지 25개가 하나도 포함되지 않았다.
@@ -1066,10 +1075,9 @@ function ChoiceItem({
           color: "inherit",
           textAlign: "left",
           margin: 0,
-          // [발주 fw-B ⑥] 그림 선지 모드에서만 2열 배치. 그 외는 기존 100% 폭.
-          ...(imgChoiceMode
-            ? { flex: "1 1 calc(50% - 4px)", minWidth: "200px", width: "auto" }
-            : { width: "100%" }),
+          // [발주 fw-B ⑧′] BUTTON 은 flex 아이템이 아니다(부모 DIV 가 아이템이다).
+          //   flex·minWidth 를 여기 두면 무시된다. 폭은 래퍼를 100% 채우기만 한다.
+          width: "100%",
         }}
       >
         <span
@@ -1110,13 +1118,10 @@ function ChoiceItem({
             {IMG_TOKEN_RE.test(choice.t || "")
               ? replaceImagePlaceholders(
                   choice.t,
+                  // [발주 fw-B ⑧′] maxHeight 제거. 상한은 maxWidth:100%(블록 기본값)뿐이라
+                  //   원본(232×176) 이하로만 그려진다 — 업스케일이 아니다.
                   imgChoiceMode
-                    ? {
-                        maxHeight: "110px",
-                        width: "auto",
-                        height: "auto",
-                        margin: "4px auto",
-                      }
+                    ? { width: "auto", height: "auto", margin: "4px auto" }
                     : null,
                 )
               : applyInlineAnnsLocal(choice.t, choiceAnns)}
