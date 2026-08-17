@@ -1638,8 +1638,11 @@ export default function PatternReport({ user, onGoToQuestion }) {
                           <span style={{ fontWeight: "600", color: C.ink }}>
                             {label}
                           </span>
+                          {/* [발주 fj ④] 분모 0 을 「0%」로 쓰면 다 틀린 것으로 읽힌다. */}
                           <span style={{ color: C.muted }}>
-                            {pct}% ({cnt.c}/{cnt.t})
+                            {cnt.t === 0
+                              ? "아직 풀지 않음"
+                              : `${pct}% (${cnt.c}/${cnt.t})`}
                           </span>
                         </div>
                         <div
@@ -1650,20 +1653,23 @@ export default function PatternReport({ user, onGoToQuestion }) {
                             overflow: "hidden",
                           }}
                         >
-                          <div
-                            style={{
-                              height: "100%",
-                              width: `${pct}%`,
-                              background:
-                                pct >= 80
-                                  ? C.green
-                                  : pct >= 60
-                                    ? "#b7950b"
-                                    : "#c0392b",
-                              borderRadius: "4px",
-                              transition: "width 0.4s ease",
-                            }}
-                          />
+                          {/* 분모 0 이면 채움 막대를 그리지 않는다 — 회색 트랙만 남는다. */}
+                          {cnt.t > 0 && (
+                            <div
+                              style={{
+                                height: "100%",
+                                width: `${pct}%`,
+                                background:
+                                  pct >= 80
+                                    ? C.green
+                                    : pct >= 60
+                                      ? "#b7950b"
+                                      : "#c0392b",
+                                borderRadius: "4px",
+                                transition: "width 0.4s ease",
+                              }}
+                            />
+                          )}
                         </div>
                       </div>
                     ))}
