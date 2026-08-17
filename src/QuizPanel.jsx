@@ -8,11 +8,22 @@ import { saveEvidenceFeedback } from "./saveEvidenceFeedback";
 // [1] 유틸 함수
 // ══════════════════════════════════════════════════════════
 
+// [발주 fw-B C-2-A · 판정 234 「가′」] 인라인은 명시 패턴만, 그 외는 전부 블록.
+//   기본값을 블록으로 두는 이유: 원안(블록을 명시 패턴으로)은 파일명이 규칙을
+//   어기면 조용히 1.5em 으로 떨어져 「안 보임」이 된다. §13⑳ 이 그 조용한 실패
+//   때문에 신설된 조항이다. 기본을 블록으로 두면 실패가 「너무 큼」으로 나타나
+//   즉시 발견된다.
+//   현재 인라인 대상 5개: sym_box/check/numbered/wavy · 2014_r20146bB_q23_mark1
+const INLINE_IMG_RE = /(_mark|sym_|_sym)/;
+
 // [도식:...] / [사진:...] / [그림:...] / [이미지:...] 패턴을
 // 실제 이미지가 연결되지 않은 경우 중립적 박스로 노출 (원본 설명문 숨김)
 function replaceImagePlaceholders(text) {
   if (!text) return text;
-  // [그림src:/images/x.png] → 실제 인라인 <img> (2014_6월B Q23 공유 마크 사양, 2026-06-07)
+  // [그림src:/images/x.png]           → <img> (블록)
+  // [그림src:/images/x.png|선택지 1]  → <img alt="선택지 1"> (블록)
+  //   ★ alt 는 창작이 아니라 접근성 라벨이다. 선지가 <button> 이므로(발주 fj ①)
+  //     alt 가 없으면 스크린리더에서 빈 버튼으로 읽힌다.
   // [그림: 설명] → 점선 placeholder 칩 (기존 path 유지)
   const re = /\[(?:도식|사진|그림|이미지)(?:src)?\s*:[^\]]+\]/g;
   if (!re.test(text)) return text;
@@ -24,20 +35,37 @@ function replaceImagePlaceholders(text) {
     if (i < parts.length - 1) {
       const tok = tokens[i] || "";
       const srcM = tok.match(
-        /^\[(?:도식|사진|그림|이미지)src\s*:\s*([^\]|]+)\]$/,
+        /^\[(?:도식|사진|그림|이미지)src\s*:\s*([^\]|]+?)\s*(?:\|\s*([^\]]*?)\s*)?\]$/,
       );
       if (srcM) {
+        const url = srcM[1].trim();
+        const alt = (srcM[2] || "").trim();
+        const inline = INLINE_IMG_RE.test(url);
+        if (!inline) {
+          // 규칙 점검 근거 — 인라인 패턴에 걸리지 않아 블록으로 렌더된 파일을 남긴다.
+          console.debug("[img] blockRender:", url);
+        }
         result.push(
           <img
-            key={"img-inl-" + i}
-            src={srcM[1].trim()}
-            alt=""
-            style={{
-              height: "1.5em",
-              verticalAlign: "-0.35em",
-              display: "inline",
-              margin: "0 2px",
-            }}
+            key={"img-" + (inline ? "inl-" : "blk-") + i}
+            src={url}
+            alt={alt}
+            style={
+              inline
+                ? {
+                    height: "1.5em",
+                    verticalAlign: "-0.35em",
+                    display: "inline",
+                    margin: "0 2px",
+                  }
+                : {
+                    display: "block",
+                    maxWidth: "100%",
+                    margin: "10px auto",
+                    borderRadius: "6px",
+                    border: "1px solid #e5e7eb",
+                  }
+            }
           />,
         );
       } else {
