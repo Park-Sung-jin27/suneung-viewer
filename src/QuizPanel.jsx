@@ -1005,8 +1005,17 @@ function ChoiceItem({
 
   return (
     <div>
-      <div
+      {/* [발주 fj ①] 선지는 <button> 이다. div+onClick 은 키보드·스크린리더로 선택할 수 없다.
+          실측(배포본) — tagName DIV · role null · tabIndex -1 · onkeydown 없음,
+          페이지 포커스 가능 요소 17개에 선지 25개가 하나도 포함되지 않았다.
+          ★ onKeyDown 을 따로 달지 않는다 — <button> 은 Enter/Space 에서 click 을
+            네이티브로 발화시키므로, 핸들러를 덧붙이면 같은 선택이 두 번 실행된다.
+            role="button" · tabIndex=0 도 <button> 의 기본값이라 명시하지 않는다.
+          ★ 스타일은 기존 값을 그대로 두고 버튼 기본값(font·정렬·너비·여백)만 초기화한다. */}
+      <button
+        type="button"
         onClick={() => onSelect(uid, choice)}
+        aria-pressed={isActive}
         style={{
           display: "flex",
           alignItems: "flex-start",
@@ -1018,6 +1027,12 @@ function ChoiceItem({
           cursor: "pointer",
           transition: "background 0.12s, border 0.12s",
           userSelect: "none",
+          // ↓ 버튼 기본값 초기화 — 기존 div 렌더와 동일하게 보이도록
+          font: "inherit",
+          color: "inherit",
+          textAlign: "left",
+          width: "100%",
+          margin: 0,
         }}
       >
         <span
@@ -1038,8 +1053,10 @@ function ChoiceItem({
         >
           {choice.num}
         </span>
-        <div
+        {/* <button> 안에는 phrasing content 만 올 수 있어 div → span(display:block) 으로 바꾼다. */}
+        <span
           style={{
+            display: "block",
             flex: 1,
             fontSize: "0.88rem",
             lineHeight: "1.65",
@@ -1049,13 +1066,13 @@ function ChoiceItem({
         >
           <span>{applyInlineAnnsLocal(choice.t, choiceAnns)}</span>
           {showBadge && choice.pat && <PatternBadge pat={choice.pat} />}
-        </div>
+        </span>
         {showIcon && icon && (
           <span style={{ fontSize: "1rem", flexShrink: 0, paddingTop: "1px" }}>
             {icon}
           </span>
         )}
-      </div>
+      </button>
       {showAnalysis && choice.analysis && (
         <div
           style={{
