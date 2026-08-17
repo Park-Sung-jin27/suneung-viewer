@@ -20,7 +20,9 @@ const IMG_TOKEN_RE = /\[(?:도식|사진|그림|이미지)src\s*:/;
 
 // [도식:...] / [사진:...] / [그림:...] / [이미지:...] 패턴을
 // 실제 이미지가 연결되지 않은 경우 중립적 박스로 노출 (원본 설명문 숨김)
-function replaceImagePlaceholders(text) {
+// blockStyleOverride: 그림 선지 모드에서만 블록 이미지에 상한을 덧건다(발주 fw-B ⑥).
+//   기본 블록 스타일(a32d145)은 그대로 두고 이 인자가 있을 때만 병합한다.
+function replaceImagePlaceholders(text, blockStyleOverride) {
   if (!text) return text;
   // [그림src:/images/x.png]           → <img> (블록)
   // [그림src:/images/x.png|선택지 1]  → <img alt="선택지 1"> (블록)
@@ -66,6 +68,7 @@ function replaceImagePlaceholders(text) {
                     margin: "10px auto",
                     borderRadius: "6px",
                     border: "1px solid #e5e7eb",
+                    ...(blockStyleOverride || {}),
                   }
             }
           />,
@@ -935,6 +938,7 @@ function ChoiceItem({
   yearKey,
   setId,
   choiceAnns = [],
+  imgChoiceMode = false,
 }) {
   const [evidenceVote, setEvidenceVote] = useState(null);
   const uid = `q${qid}_c${choice.num}`;
@@ -1061,8 +1065,11 @@ function ChoiceItem({
           font: "inherit",
           color: "inherit",
           textAlign: "left",
-          width: "100%",
           margin: 0,
+          // [발주 fw-B ⑥] 그림 선지 모드에서만 2열 배치. 그 외는 기존 100% 폭.
+          ...(imgChoiceMode
+            ? { flex: "1 1 calc(50% - 4px)", minWidth: "200px", width: "auto" }
+            : { width: "100%" }),
         }}
       >
         <span
@@ -1101,7 +1108,17 @@ function ChoiceItem({
               토큰 없는 선지는 기존 경로 그대로 — 회귀 없음. */}
           <span>
             {IMG_TOKEN_RE.test(choice.t || "")
-              ? replaceImagePlaceholders(choice.t)
+              ? replaceImagePlaceholders(
+                  choice.t,
+                  imgChoiceMode
+                    ? {
+                        maxHeight: "110px",
+                        width: "auto",
+                        height: "auto",
+                        margin: "4px auto",
+                      }
+                    : null,
+                )
               : applyInlineAnnsLocal(choice.t, choiceAnns)}
           </span>
           {showBadge && choice.pat && <PatternBadge pat={choice.pat} />}
@@ -1340,6 +1357,13 @@ function QuestionBlock({
       (a.type === "underline" || a.type === "box"),
   );
 
+  // [발주 fw-B ⑥] 그림 선지 모드 진입 조건 — 토큰 보유 선지 2개 이상.
+  //   원문 시험지가 그래프 선지를 가로로 배열하는데 세로 1열로 그리면 비교가 안 된다.
+  //   1개짜리(선지 안 인라인 마크 등)에는 진입하지 않는다.
+  const imgChoiceMode =
+    (question.choices || []).filter((c) => IMG_TOKEN_RE.test(c.t || ""))
+      .length >= 2;
+
   function handleClick(uid, choice) {
     if (mode === MODE.STUDY && submitted && !isReview) return;
     if (clicked === uid) {
@@ -1451,10 +1475,19 @@ function QuestionBlock({
       )}
 
       {/* 선지 목록 — BogiTable과 독립 렌더링 */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+      {/* [발주 fw-B ⑥] 그림 선지 모드 — 토큰 보유 선지가 2개 이상일 때만 진입한다.
+          1개짜리(인라인 마크 등)는 건드리지 않는다. 그 외 문항은 현행 세로 1열 그대로. */}
+      <div
+        style={
+          imgChoiceMode
+            ? { display: "flex", flexWrap: "wrap", gap: "8px" }
+            : { display: "flex", flexDirection: "column", gap: "5px" }
+        }
+      >
         {question.choices.map((c) => (
           <ChoiceItem
             key={c.num}
+            imgChoiceMode={imgChoiceMode}
             choice={c}
             qid={question.id}
             questionType={question.questionType ?? "negative"}
