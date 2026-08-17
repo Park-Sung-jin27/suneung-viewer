@@ -1104,7 +1104,10 @@ for (const yearKey of yearsToCheck) {
           if (typeof str !== "string") return;
           const re = /\[그림src:([^\]]+)\]/g;
           let m;
-          while ((m = re.exec(str))) imgPaths.add(m[1].trim());
+          // [발주 fw-B ②] 토큰 문법이 [그림src:경로|alt] 로 확장됐다(판정 234 ②).
+          //   렌더러(QuizPanel replaceImagePlaceholders)와 같은 규칙으로 잘라야 한다.
+          //   alt 를 경로에 포함시키면 실재하는 파일도 「부재」로 잡힌다.
+          while ((m = re.exec(str))) imgPaths.add(m[1].split("|")[0].trim());
         };
         for (const s of set.sents || []) collectImg(s.t);
         for (const q of set.questions || []) {
