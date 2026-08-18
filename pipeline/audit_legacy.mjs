@@ -66,7 +66,13 @@ function locate(s) {
   if (!n) return "empty";
   if (PDF_FLAT.includes(n)) return "full";
   const head = n.slice(0, Math.max(12, Math.floor(n.length * 0.6)));
-  if (PDF_FLAT.includes(head)) return "head";
+  const tail = n.slice(-Math.max(12, Math.floor(n.length * 0.6)));
+  const hasHead = PDF_FLAT.includes(head);
+  const hasTail = PDF_FLAT.includes(tail);
+  // 앞도 뒤도 원문에 있으면 잘린 게 아니라 중간의 표기가 다른 것이다.
+  //   (실증: l2023c Q30 작품명 낫표→작은따옴표 · r2026d Q17 쉼표→마침표)
+  if (hasHead && hasTail) return "mid";
+  if (hasHead) return "head";
   return "miss";
 }
 
@@ -128,7 +134,8 @@ for (const sec of ["reading", "literature"]) {
           const c = q.bogi.replace(/\[[^\]]*src:[^\]]*\]/g, "");
           if (flat(c).length >= 10) {
             const r = locate(c);
-            if (r === "miss") add("중대", s.id, q.id, "보기 원문 불일치", flat(c).slice(0, 50));
+            if (r === "miss" || r === "mid")
+              add("중대", s.id, q.id, "보기 원문 불일치", flat(c).slice(0, 50));
             else if (r === "head")
               add("치명", s.id, q.id, "보기 뒷부분 절단", `앞부분만 일치 (전체 ${flat(c).length}자)`);
           }
