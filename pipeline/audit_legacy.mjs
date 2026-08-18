@@ -53,12 +53,16 @@ const uni = (s) =>
 // 존재 대조용 — 공백 전부 제거
 const flat = (s) => uni(s).replace(/[\s ]+/g, "").replace(/\[[A-E]\]/g, "");
 const PDF_FLAT = flat(rawPdf);
+// [발주 D-21 B] 강정규화 — 한글·한자·라틴·숫자만 남긴다.
+//   기호·따옴표·구두점·공백 표기 차이를 「불일치」로 잡지 않기 위한 2차 판이다.
+const hard = (x) => String(x || "").normalize("NFKC").replace(/[^\p{Script=Hangul}\p{Script=Han}\p{Script=Latin}0-9]/gu, "");
+const PDF_HARD = hard(rawPdf);
 // 어절 분리 대조용 — 줄바꿈만 제거(줄 끝에서 갈린 어절이 붙는다)
 const PDF_JOIN = uni(rawPdf).replace(/\r?\n/g, "");
 // 줄바꿈을 공백으로 바꾼 판 — 진짜 어절 경계였는지 가리는 데 쓴다.
 const PDF_SPACE = uni(rawPdf).replace(/\r?\n/g, " ");
 
-const F = { 치명: [], 중대: [], 경미: [], 미대조: [], 어절: [], 마커공백: 0, 운문행: 0 };
+const F = { 치명: [], 중대: [], 경미: [], 미대조: [], 어절: [], 마커공백: 0, 운문행: 0, 표기차이: 0 };
 const add = (sev, set, q, type, detail) => F[sev].push({ set, q, type, detail });
 
 function locate(s) {
@@ -73,6 +77,12 @@ function locate(s) {
   //   (실증: l2023c Q30 작품명 낫표→작은따옴표 · r2026d Q17 쉼표→마침표)
   if (hasHead && hasTail) return "mid";
   if (hasHead) return "head";
+  // [발주 D-21 B] 기호·구두점만 다른 경우는 「표기 차이」다. 불일치가 아니다.
+  const h = hard(s);
+  if (h.length >= 8 && PDF_HARD.includes(h)) return "notation";
+  // [발주 D-21 C] (f) 마커 확장 — 뒷부분은 원문에 있는데 앞부분이 다르다.
+  //   발문의 지시 기호를 그 내용으로 풀어 쓴 형태다(D-20 실증 11건).
+  if (h.length >= 20 && PDF_HARD.includes(h.slice(-10))) return "front";
   return "miss";
 }
 
@@ -118,15 +128,25 @@ for (const sec of ["reading", "literature"]) {
       if (/[\u1100-\u11ff\ua960-\ua97f\ud7b0-\ud7ff]/.test(t.t)) {
         // 옛한글 첫가끝 — PDF 는 한양 PUA 등 다른 인코딩으로 낸다. 자동 대조 불가.
         F.미대조.push({ set: s.id, q: "-", type: "옛한글 첫가끝", detail: t.id });
-      } else if (locate(t.t) === "miss")
-        add("중대", s.id, "-", "지문 문장 원문 불일치", `${t.id}: ${String(t.t).slice(0, 40)}…`);
+      } else {
+        const r = locate(t.t);
+        if (r === "notation") F.표기차이++;
+        else if (r === "miss" || r === "front")
+          add("중대", s.id, "-", "지문 문장 원문 불일치", `${t.id}: ${String(t.t).slice(0, 40)}…`);
+      }
       wordSplit(t.t, `${s.id} 지문 ${t.id}`, verseSet || t.sentType === "verse");
     }
 
     for (const q of s.questions || []) {
       // 발문
-      if (locate(q.t) === "miss")
-        add("중대", s.id, q.id, "발문 원문 불일치", String(q.t).slice(0, 50));
+      {
+        const r = locate(q.t);
+        if (r === "front")
+          add("중대", s.id, q.id, "발문 앞부분 차이 ((f) 마커 확장 후보)", String(q.t).slice(0, 50));
+        else if (r === "notation") F.표기차이++;
+        else if (r === "miss")
+          add("중대", s.id, q.id, "발문 원문 불일치", String(q.t).slice(0, 50));
+      }
       wordSplit(q.t, `${s.id} Q${q.id} 발문`, false);
 
       // <보기>
@@ -155,8 +175,14 @@ for (const sec of ["reading", "literature"]) {
           F.미대조.push({ set: s.id, q: q.id, type: "표 평면화 선지", detail: `선지${c.num}` });
           continue;
         }
-        if (locate(t) === "miss")
-          add("중대", s.id, q.id, `선지[${c.num}] 원문 불일치`, t.slice(0, 45));
+        {
+          const r = locate(t);
+          if (r === "front")
+            add("중대", s.id, q.id, `선지[${c.num}] 앞부분 차이 ((f) 후보)`, t.slice(0, 45));
+          else if (r === "notation") F.표기차이++;
+          else if (r === "miss")
+            add("중대", s.id, q.id, `선지[${c.num}] 원문 불일치`, t.slice(0, 45));
+        }
         wordSplit(t, `${s.id} Q${q.id} 선지${c.num}`, false);
 
         // ③ 선지 ↔ 해설 인용 대조
@@ -176,7 +202,7 @@ for (const sec of ["reading", "literature"]) {
 
 console.log(`### ${YK}`);
 console.log(`치명 ${F.치명.length} · 중대 ${F.중대.length} · 어절분리 후보 ${F.어절.length} · 미대조 ${F.미대조.length}`);
-console.log(`  (마커 뒤 공백 ${F.마커공백}건 · 운문 행 ${F.운문행}건 — 정상 관례로 제외)`);
+console.log(`  (마커 뒤 공백 ${F.마커공백} · 운문 행 ${F.운문행} · 표기 차이 ${F.표기차이} — 정상/경미로 제외)`);
 for (const sev of ["치명", "중대"]) {
   if (!F[sev].length) continue;
   console.log(`\n--- ${sev} ${F[sev].length}건 ---`);
