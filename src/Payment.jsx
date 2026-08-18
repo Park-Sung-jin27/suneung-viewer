@@ -67,7 +67,11 @@ const PLANS = [
       { text: "1:1 전문가 리뷰", ok: false },
     ],
     cta: "지금 시작하기",
-    available: true, // 토스 심사용 활성화 — 결제창 연동 검증
+    // 발주 F-3 (2026-08-06): 클라이언트 키가 테스트 키인 상태로 결제창이 열려
+    //   실제 결제 1건이 대금 미수취로 발생. 라이브 키 전환까지 임시 차단.
+    //   ★ 되돌리기: available 을 true 로 복구하면 원상 복구된다.
+    available: false,
+    unavailableLabel: "결제 준비 중입니다 — 곧 오픈합니다",
   },
   {
     id: "premium",
@@ -325,7 +329,7 @@ function PlanCard({
             fontFamily: "'Noto Sans KR', sans-serif",
           }}
         >
-          🔜 출시 예정
+          {plan.unavailableLabel || "🔜 출시 예정"}
         </div>
       )}
     </div>
