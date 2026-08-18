@@ -55,7 +55,11 @@ const flat = (s) => uni(s).replace(/[\s ]+/g, "").replace(/\[[A-E]\]/g, "");
 const PDF_FLAT = flat(rawPdf);
 // [발주 D-21 B] 강정규화 — 한글·한자·라틴·숫자만 남긴다.
 //   기호·따옴표·구두점·공백 표기 차이를 「불일치」로 잡지 않기 위한 2차 판이다.
-const hard = (x) => String(x || "").normalize("NFKC").replace(/[^\p{Script=Hangul}\p{Script=Han}\p{Script=Latin}0-9]/gu, "");
+// [발주 D-27 ③-①] NFKC 는 원문자를 평문자로 접는다(ⓑ→b, ①→1, ㉠→ㄱ).
+//   그대로 두면 마커가 대조 문자열에 섞여 「마커 차이」가 「본문 차이」로 둔갑한다.
+//   강정규화 전에 마커를 먼저 떼어낸다.
+const MARK_ALL = /[①-⑳⑴-⒇Ⓐ-ⓩ㈀-㈞㈠-㈩㉠-㉿]/g;
+const hard = (x) => String(x || "").replace(MARK_ALL, "").normalize("NFKC").replace(/[^\p{Script=Hangul}\p{Script=Han}\p{Script=Latin}0-9]/gu, "");
 const PDF_HARD = hard(rawPdf);
 // 어절 분리 대조용 — 줄바꿈만 제거(줄 끝에서 갈린 어절이 붙는다)
 const PDF_JOIN = uni(rawPdf).replace(/\r?\n/g, "");
@@ -106,7 +110,7 @@ function wordSplit(txt, where, isVerse) {
     if (MARK_BEFORE.test(s[i - 1])) { F.마커공백++; continue; }
     if (s[i + 1] === ":") { F.마커공백++; continue; } // 「이름 : 내용」 표기 관례
     if (isVerse) { F.운문행++; continue; }
-    F.어절.push(`${where} 「…${w.trim()}…」`);
+    F.어절.push(`${where} | ${w.trim()}`);
   }
 }
 
