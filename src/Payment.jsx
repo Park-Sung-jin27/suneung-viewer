@@ -3,7 +3,8 @@
 // 토스페이먼츠 가맹점 심사 완료 전: 스탠다드·프리미엄 "준비 중" 처리
 // ============================================================
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { isAllowlisted } from "./constants";
 
 const C = {
   green: "#2d6e2d",
@@ -305,12 +306,31 @@ function PlanCard({
           {plan.cta}
         </button>
       ) : plan.available ? (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            handleCta();
-          }}
-          disabled={loading}
+        <>
+          {plan.masterOverride && (
+            <div
+              style={{
+                marginBottom: "8px",
+                padding: "6px 10px",
+                borderRadius: "8px",
+                background: "#fef3c7",
+                border: "1px solid #f59e0b",
+                color: "#92400e",
+                fontSize: "0.72rem",
+                fontWeight: "800",
+                textAlign: "center",
+                fontFamily: "'Noto Sans KR', sans-serif",
+              }}
+            >
+              🔧 검수용 — 테스트 키
+            </div>
+          )}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleCta();
+            }}
+            disabled={loading}
           style={{
             width: "100%",
             padding: "12px",
@@ -326,8 +346,9 @@ function PlanCard({
             transition: "opacity 0.15s",
           }}
         >
-          {loading ? "처리 중..." : plan.cta}
-        </button>
+            {loading ? "처리 중..." : plan.cta}
+          </button>
+        </>
       ) : (
         <div
           style={{
@@ -353,6 +374,20 @@ function PlanCard({
 }
 
 export default function Payment({ user, onPaySuccess, onFreeStart }) {
+  // 발주 F-6: F-3 차단은 그대로 두고, 마스터 계정만 결제 E2E 가 가능하도록 우회.
+  //   검수 모드와 동일한 판정(isAllowlisted)을 재사용한다.
+  //   ★ 클라이언트 판정이지만 서버(payment-confirm)가 JWT·금액·주문번호를
+  //     독립 검증하므로 이 플래그를 위조해도 실승인은 통과하지 못한다.
+  const isMaster = isAllowlisted(user?.email);
+  const visiblePlans = useMemo(
+    () =>
+      PLANS.map((p) =>
+        isMaster && p.id === "standard"
+          ? { ...p, available: true, masterOverride: true }
+          : p,
+      ),
+    [isMaster],
+  );
   const [tossPayments, setTossPayments] = useState(null);
   const [loading, setLoading] = useState(false);
   const [sdkError, setSdkError] = useState(null);
@@ -490,7 +525,7 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
           margin: "0 auto 40px",
         }}
       >
-        {PLANS.map((plan) => (
+        {visiblePlans.map((plan) => (
           <PlanCard
             key={plan.id}
             plan={plan}
