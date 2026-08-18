@@ -2492,7 +2492,16 @@ export default function App() {
           });
           if (!res.ok) {
             const j = await res.json().catch(() => ({}));
-            alert(j?.error || "결제 확인에 실패했습니다");
+            // [발주 D-4 ③] 결제는 승인됐는데 권한 부여만 실패한 경우를
+            //   「결제 실패」로 알리면 안 된다. 돈은 이미 나갔다.
+            if (j?.code === "ENTITLEMENT_FAILED") {
+              alert(
+                "결제는 완료됐습니다. 이용권 활성화에 문제가 있어 확인 중입니다.\n" +
+                  "잠시 후에도 열리지 않으면 문의해 주세요 — downfall121@gmail.com",
+              );
+            } else {
+              alert(j?.error || "결제 확인에 실패했습니다");
+            }
             navigate("/", { replace: true });
             return;
           }

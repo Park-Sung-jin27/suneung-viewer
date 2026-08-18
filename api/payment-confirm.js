@@ -13,7 +13,7 @@
 // 정합 요약:
 //   ① JWT 안 사용자 인증 (createClient + auth.getUser).
 //   ② orderId 안 프리픽스 검증 (order_{userId}_{ts} 정합 — 사용자 위조 회피).
-//   ③ amount 안 화이트리스트 검증 (39900 = standard / 89000 = premium).
+//   ③ amount 안 화이트리스트 검증 (39900 = pro 1개월. 89000 은 D-4 에서 제거).
 //   ④ Toss /v1/payments/confirm 안 secret key 안 서버 사이드 호출.
 //   ⑤ Toss 응답 안 amount 재검증 (요청값 == 응답값 정합).
 //   ⑥ service role 안 subscriptions upsert (RLS 우회 정합).
@@ -21,10 +21,53 @@
 
 import { createClient } from "@supabase/supabase-js";
 
-const ALLOWED_AMOUNTS = new Map([
-  [39900, "pro"],
-  [89000, "pro"],
-]);
+// [발주 D-4 ②] 프리미엄(89,000)은 제공 불가 상태다 — 핵심 혜택인
+//   「월 2회 전문가 1:1 리뷰」를 수행할 사람이 없다. 팔 수 없는 상품을
+//   결제 가능 상태로 두면 구매 즉시 제공 불가 + 환불이 된다.
+//   제공할 수 있게 되면 다시 넣는다. 지금은 39,900 만 허용한다.
+const ALLOWED_AMOUNTS = new Map([[39900, "pro"]]);
+
+// [발주 D-4 ①] 1개월 이용권(단건). 빌링키 정기결제는 미구현이므로
+//   승인 시각 기준 1개월 뒤를 만료로 박는다. 이 값이 없으면
+//   is_pro() 의 expires_at IS NULL 분기 때문에 영구 Pro 가 된다.
+//   말일 보정: 1/31 + 1개월 → 2/28(윤년 2/29). 다음 달로 넘치지 않게 자른다.
+function addOneMonth(from) {
+  const r = new Date(from);
+  const day = r.getDate();
+  r.setMonth(r.getMonth() + 1);
+  if (r.getDate() < day) r.setDate(0);
+  return r;
+}
+
+// [발주 D-4 ③] 권한 부여 실패 알림 — 결제는 승인됐는데 구독 반영이
+//   실패한 경우다. 돈은 나가고 권한은 없는 상태라 사람이 즉시 알아야 한다.
+//   ★ 카드정보·시크릿 키는 넣지 않는다. 식별자와 사유만 보낸다.
+async function notifyEntitlementFailure(info) {
+  const webhook =
+    process.env.ORDER_DISCORD_WEBHOOK_URL ||
+    process.env.WAITLIST_DISCORD_WEBHOOK_URL;
+  if (!webhook) return { skipped: true };
+  const content = [
+    "[JIPPI 결제] 권한 부여 실패 — 수동 확인 필요",
+    `userId: ${info.userId}`,
+    `orderId: ${info.orderId}`,
+    `paymentKey: ${info.paymentKey}`,
+    `plan: ${info.plan}`,
+    `reason: ${info.reason}`,
+    `at: ${info.at}`,
+  ].join("\n");
+  try {
+    await fetch(webhook, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: "```\n" + content + "\n```" }),
+    });
+    return { ok: true };
+  } catch (e) {
+    console.error("[/api/payment-confirm] notify failed", e?.message);
+    return { ok: false };
+  }
+}
 
 function getSupabaseConfig() {
   const supabaseUrl = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
@@ -157,11 +200,27 @@ export default async function handler(req, res) {
     const admin = createClient(supabaseUrl, serviceKey, {
       auth: { persistSession: false, autoRefreshToken: false },
     });
+    // [발주 D-4 ①] 재결제는 「연장」이다. 남은 기간이 있으면 그 끝에서
+    //   1개월을 더한다. 덮어쓰면 이미 낸 잔여 기간이 사라져 손해가 된다.
+    const { data: existing } = await admin
+      .from("subscriptions")
+      .select("expires_at, status")
+      .eq("user_id", user.id)
+      .maybeSingle();
+    const now = new Date();
+    const remain =
+      existing?.status === "active" && existing?.expires_at
+        ? new Date(existing.expires_at)
+        : null;
+    const base = remain && remain > now ? remain : now;
+    const expiresAt = addOneMonth(base).toISOString();
+
     const { error: upsertErr } = await admin.from("subscriptions").upsert(
       {
         user_id: user.id,
         plan,
         status: "active",
+        expires_at: expiresAt,
         toss_payment_key: paymentKey,
         toss_order_id: orderId,
       },
@@ -169,7 +228,19 @@ export default async function handler(req, res) {
     );
     if (upsertErr) {
       console.error("[/api/payment-confirm] upsert failed", upsertErr);
-      return res.status(500).json({ error: "Subscription update failed" });
+      // [발주 D-4 ③] 돈은 나갔는데 권한이 없다. 사람이 즉시 알아야 한다.
+      await notifyEntitlementFailure({
+        userId: user.id,
+        orderId,
+        paymentKey,
+        plan,
+        reason: upsertErr.message || "upsert failed",
+        at: now.toISOString(),
+      });
+      return res.status(500).json({
+        error: "Subscription update failed",
+        code: "ENTITLEMENT_FAILED",
+      });
     }
 
     return res.status(200).json({ ok: true, plan });
