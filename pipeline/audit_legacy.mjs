@@ -115,7 +115,10 @@ for (const sec of ["reading", "literature"]) {
         F.미대조.push({ set: s.id, q: "-", type: "도식 플레이스홀더", detail: t.id });
         continue;
       }
-      if (locate(t.t) === "miss")
+      if (/[\u1100-\u11ff\ua960-\ua97f\ud7b0-\ud7ff]/.test(t.t)) {
+        // 옛한글 첫가끝 — PDF 는 한양 PUA 등 다른 인코딩으로 낸다. 자동 대조 불가.
+        F.미대조.push({ set: s.id, q: "-", type: "옛한글 첫가끝", detail: t.id });
+      } else if (locate(t.t) === "miss")
         add("중대", s.id, "-", "지문 문장 원문 불일치", `${t.id}: ${String(t.t).slice(0, 40)}…`);
       wordSplit(t.t, `${s.id} 지문 ${t.id}`, verseSet || t.sentType === "verse");
     }
@@ -147,7 +150,11 @@ for (const sec of ["reading", "literature"]) {
         const t = c.t || "";
         if (/src:/.test(t)) { F.미대조.push({ set: s.id, q: q.id, type: "이미지 선지", detail: `선지${c.num}` }); continue; }
         if (/\[\[sym:/.test(t)) { F.미대조.push({ set: s.id, q: q.id, type: "sym 토큰 선지", detail: `선지${c.num}` }); continue; }
-        if (/\|/.test(t)) { F.미대조.push({ set: s.id, q: q.id, type: "표 평면화 선지", detail: `선지${c.num}` }); continue; }
+        if (/\|/.test(t) || /(?:[ㄱ-ㅎ]|[가-하]) ?: ?[^,]+, ?(?:[ㄱ-ㅎ]|[가-하]) ?:/.test(t)) {
+          // 「ㄱ: … , ㄴ: … 」 형태는 원문 표를 쉼표로 눌러 담은 것이다(2021수능 r2021b Q28 실증).
+          F.미대조.push({ set: s.id, q: q.id, type: "표 평면화 선지", detail: `선지${c.num}` });
+          continue;
+        }
         if (locate(t) === "miss")
           add("중대", s.id, q.id, `선지[${c.num}] 원문 불일치`, t.slice(0, 45));
         wordSplit(t, `${s.id} Q${q.id} 선지${c.num}`, false);
