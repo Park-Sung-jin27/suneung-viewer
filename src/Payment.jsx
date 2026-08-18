@@ -57,7 +57,9 @@ const PLANS = [
     id: "standard",
     name: "스탠다드",
     price: 39900,
-    period: "/ 월 · 구독",
+    // 발주 F-2 (판정 273 ③): 구현은 단건 결제이며 자동 갱신되지 않는다.
+    //   "구독" 표기는 사실과 달라 "1개월 이용권"으로 정정.
+    period: "/ 1개월 이용권",
     badge: "가장 많이 선택",
     features: [
       { text: "오답 패턴 진단 + 전 시험 형광펜 복기 훈련", ok: true },
@@ -67,7 +69,12 @@ const PLANS = [
       { text: "1:1 전문가 리뷰", ok: false },
     ],
     cta: "지금 시작하기",
-    available: true, // 토스 심사용 활성화 — 결제창 연동 검증
+    note: "자동 갱신되지 않습니다. 만료 시 직접 재결제해 주세요.",
+    // 발주 F-3 (2026-08-06): 클라이언트 키가 테스트 키인 상태로 결제창이 열려
+    //   실제 결제 1건이 대금 미수취로 발생. 라이브 키 전환까지 임시 차단.
+    //   ★ 되돌리기: available 을 true 로 복구하면 원상 복구된다.
+    available: false,
+    unavailableLabel: "결제 준비 중입니다 — 곧 오픈합니다",
   },
   {
     id: "premium",
@@ -211,6 +218,19 @@ function PlanCard({
       >
         {plan.period}
       </div>
+      {plan.note && (
+        <div
+          style={{
+            fontSize: "0.68rem",
+            lineHeight: 1.5,
+            color: isFeatured ? "rgba(255,255,255,0.55)" : C.subtle,
+            marginTop: "-14px",
+            marginBottom: "18px",
+          }}
+        >
+          {plan.note}
+        </div>
+      )}
 
       {/* 기능 목록 */}
       <div
@@ -325,7 +345,7 @@ function PlanCard({
             fontFamily: "'Noto Sans KR', sans-serif",
           }}
         >
-          🔜 출시 예정
+          {plan.unavailableLabel || "🔜 출시 예정"}
         </div>
       )}
     </div>

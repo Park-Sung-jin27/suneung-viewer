@@ -646,8 +646,21 @@
           customerEmail: document.getElementById("buyerEmail").value.trim(),
         };
       }
+      // 발주 F-3 (2026-08-06): 테스트 클라이언트 키 상태에서 결제창이 열려
+      //   대금 미수취 결제가 발생. 라이브 키 전환까지 이 경로를 임시 차단한다.
+      //   ★ 되돌리기: 아래 PAYMENT_TEMPORARILY_DISABLED 를 false 로 바꾸면 복구된다.
+      const PAYMENT_TEMPORARILY_DISABLED = true;
+      if (PAYMENT_TEMPORARILY_DISABLED) {
+        document.querySelectorAll("[data-pay-product]").forEach((button) => {
+          button.disabled = true;
+          button.textContent = "결제 준비 중입니다 — 곧 오픈합니다";
+          button.style.cursor = "not-allowed";
+          button.style.opacity = "0.6";
+        });
+      }
       document.querySelectorAll("[data-pay-product]").forEach((button) => {
         button.addEventListener("click", async () => {
+          if (PAYMENT_TEMPORARILY_DISABLED) return;
           button.disabled = true;
           const original = button.textContent;
           button.textContent = "결제창 여는 중";
