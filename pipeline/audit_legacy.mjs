@@ -44,6 +44,9 @@ const uni = (s) =>
     .replace(/⁰/g,"0").replace(/¹/g,"1").replace(/²/g,"2").replace(/³/g,"3")
     .replace(/⁴/g,"4").replace(/⁵/g,"5").replace(/⁶/g,"6").replace(/⁷/g,"7")
     .replace(/⁸/g,"8").replace(/⁹/g,"9").replace(/ⁿ/g,"n")
+    // 한양 PUA 겹낫표 — PDF 가 『』를 U+F0854/U+F0855 로 내보낸다(2023수능 실측)
+    .replace(/\u{F0854}/gu, "[")
+    .replace(/\u{F0855}/gu, "]")
     .replace(/：/g, ":")
     // 불릿 이형자 — PDF 는 ◦(U+25E6), 데이터는 ○(U+25CB) 를 쓴다(2027_6월 실증)
     .replace(/[○◦◯⚬〇]/g, "○");
@@ -144,7 +147,7 @@ for (const sec of ["reading", "literature"]) {
 
         // ③ 선지 ↔ 해설 인용 대조
         for (const m of String(c.analysis || "").matchAll(/· '([^']{10,})'/g))
-          if (!/[~…]/.test(m[1]) && !t.includes(m[1]))
+          if (!/[~…()（）]/.test(m[1]) && !t.includes(m[1]))
             add("중대", s.id, q.id, `선지[${c.num}] 해설 인용이 선지에 없음`, m[1].slice(0, 45));
       }
 
