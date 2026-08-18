@@ -40,6 +40,10 @@ const uni = (s) =>
     .replace(/[（(]/g, "(")
     .replace(/[）)]/g, ")")
     .replace(/[·・･․‧∙⋅ㆍ]/g, "·")
+    // 위첨자 — PDF 추출이 평문화하므로 양쪽을 평문으로 맞춘다(데이터 2ⁿ 이 더 정확).
+    .replace(/⁰/g,"0").replace(/¹/g,"1").replace(/²/g,"2").replace(/³/g,"3")
+    .replace(/⁴/g,"4").replace(/⁵/g,"5").replace(/⁶/g,"6").replace(/⁷/g,"7")
+    .replace(/⁸/g,"8").replace(/⁹/g,"9").replace(/ⁿ/g,"n")
     .replace(/：/g, ":")
     // 불릿 이형자 — PDF 는 ◦(U+25E6), 데이터는 ○(U+25CB) 를 쓴다(2027_6월 실증)
     .replace(/[○◦◯⚬〇]/g, "○");
@@ -48,6 +52,8 @@ const flat = (s) => uni(s).replace(/[\s ]+/g, "").replace(/\[[A-E]\]/g, "");
 const PDF_FLAT = flat(rawPdf);
 // 어절 분리 대조용 — 줄바꿈만 제거(줄 끝에서 갈린 어절이 붙는다)
 const PDF_JOIN = uni(rawPdf).replace(/\r?\n/g, "");
+// 줄바꿈을 공백으로 바꾼 판 — 진짜 어절 경계였는지 가리는 데 쓴다.
+const PDF_SPACE = uni(rawPdf).replace(/\r?\n/g, " ");
 
 const F = { 치명: [], 중대: [], 경미: [], 미대조: [], 어절: [], 마커공백: 0, 운문행: 0 };
 const add = (sev, set, q, type, detail) => F[sev].push({ set, q, type, detail });
@@ -74,6 +80,10 @@ function wordSplit(txt, where, isVerse) {
     if (w.length < 12) continue;
     const n = w.slice(0, i - a) + w.slice(i - a + 1);
     if (!(PDF_JOIN.includes(n) && !PDF_JOIN.includes(w))) continue;
+    // 줄바꿈이 진짜 어절 경계였으면 공백판에 그대로 있다 → 정상
+    if (PDF_SPACE.includes(w)) { F.마커공백++; continue; }
+    // 뒤 글자가 마커면 「… ㉠현실성」 처럼 마커 앞 공백이 관례다
+    if (MARK_BEFORE.test(s[i + 1])) { F.마커공백++; continue; }
     if (MARK_BEFORE.test(s[i - 1])) { F.마커공백++; continue; }
     if (s[i + 1] === ":") { F.마커공백++; continue; } // 「이름 : 내용」 표기 관례
     if (isVerse) { F.운문행++; continue; }
