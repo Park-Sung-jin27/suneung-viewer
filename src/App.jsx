@@ -36,6 +36,7 @@ import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
 import { supabase } from "./supabase";
 import { saveAnswer, saveSetProgress } from "./hooks/useAnswerTracker";
 import TodayPanel from "./TodayPanel";
+import { captureAttribution, recordAttribution } from "./attribution";
 
 const _fl = document.createElement("link");
 _fl.rel = "stylesheet";
@@ -2411,10 +2412,25 @@ export default function App() {
   const [allData, setAllData] = useState(null);
   // 결제 확인 useEffect 중복 실행 가드 (StrictMode 이중 렌더/재마운트 대비 — 한 번만 POST)
   const paymentConfirmedRef = useRef(false);
+  // 유입 경로 기록 중복 실행 가드 (user 당 1회 — 발주 F-1)
+  const attributionRef = useRef(null);
 
   useEffect(() => {
     loadAllData().then(setAllData);
   }, []);
+
+  // 발주 F-1: 최초 진입 시 유입 정보 캡처 (첫 진입 보존 — 덮어쓰지 않음)
+  useEffect(() => {
+    captureAttribution();
+  }, []);
+
+  // 발주 F-1: 세션 확보 후 1회 기록. 실패해도 가입/이용에 영향 없음.
+  useEffect(() => {
+    if (!user?.id) return;
+    if (attributionRef.current === user.id) return;
+    attributionRef.current = user.id;
+    recordAttribution(user);
+  }, [user]);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
