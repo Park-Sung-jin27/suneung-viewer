@@ -1212,7 +1212,13 @@ function ViewerPage({ user, isPro = false }) {
   const initSetId = searchParams.get("set") ?? null;
   const initQId = searchParams.get("q") ?? null;
   const modeParam = searchParams.get("mode") ?? MODE.VIEW;
-  const mode = modeParam === MODE.STUDY ? MODE.STUDY : MODE.VIEW;
+  // 발주 F-10: 외부 공유 링크의 표기(mode=STUDY·Study 등)를 통제할 수 없다.
+  //   정규화 없이 === 로 비교하면 조용히 보기 모드로 강등되고, 보기 모드는
+  //   아무것도 기록하지 않아 화면은 정상인데 측정만 0이 된다.
+  const mode =
+    String(modeParam).trim().toLowerCase() === MODE.STUDY
+      ? MODE.STUDY
+      : MODE.VIEW;
   const reviewParam = searchParams.get("review") === "1";
 
   const [yearData, setYearData] = useState(null);
