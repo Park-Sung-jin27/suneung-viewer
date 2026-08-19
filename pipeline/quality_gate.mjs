@@ -947,6 +947,33 @@ for (const yearKey of yearsToCheck) {
         }
       }
 
+      // ── [Gate] OK_ANALYSIS_CONFLICT — ok 와 해설 결론이 서로 반대 ──
+      //   해설은 「✅ …적절한 진술」 / 「❌ …부적절한 진술」로 끝난다.
+      //   이 표지는 ok 와 같은 축이다 — 둘 다 「선지 진술의 참/거짓」이다.
+      //   (발문 극성은 정답을 고를 때만 쓰인다. 여기서는 직접 비교한다.)
+      //   어긋나면 학생이 정답을 맞히고도 틀렸다고 배운다.
+      //   ★ 선지를 복원할 때마다 새로 생긴다. r20249d Q14 는 마커가 깨져 있는
+      //     동안에는 ❌ 가 타당했고, 복원한 뒤에야 모순이 됐다(2026-08-20 실증).
+      //     사람이 기억하는 절차로는 반드시 놓치므로 게이트에 둔다.
+      {
+        for (const q of set.questions || [])
+          for (const c of q.choices || []) {
+            const _a = String(c.analysis || "").trim();
+            if (!_a) continue;
+            const _m = _a.match(/[✅❌]/g);
+            if (!_m) continue;
+            const _said = _m[_m.length - 1] === "✅";
+            if (_said === !!c.ok) continue;
+            issue(
+              "OK_ANALYSIS_CONFLICT",
+              yearKey,
+              `${set.id} Q${q.id}#${c.num}`,
+              `ok=${!!c.ok} 인데 해설 결론이 ${_said ? "✅ 적절" : "❌ 부적절"} — 정답 판정과 해설이 반대다`,
+              "fatal",
+            );
+          }
+      }
+
       // ── [Gate] CS_SPAN_UNRESOLVED — cs_spans.text 가 문장에서 사라짐 ──
       //   cs_spans 는 문자 오프셋이 아니라 {sent_id, text, occurrence} 다.
       //   문장 안에서 text 를 찾아 칠하므로, 지문을 고칠 때 그 구절이 span 에
@@ -2779,6 +2806,7 @@ const SEVERITY_MAP = {
   C_work_mismatch: "CRITICAL", // Tier 1
   C_label_domain_mismatch: "CRITICAL", // Tier 1 (pat R ↔ 라벨 L / 반대)
   C_vpat_dirty: "CRITICAL", // Tier 1 (pat=V 인데 cs_ids/cs_spans 비어있지 않음)
+  OK_ANALYSIS_CONFLICT: "CRITICAL", // Tier 1 (ok 와 해설 결론이 반대 = 정답을 오답이라 설명)
   CS_SPAN_UNRESOLVED: "CRITICAL", // Tier 1 (cs_spans.text 가 문장에서 사라짐 = 형광펜 조용히 꺼짐)
   MARKER_INTEGRITY_FAIL: "CRITICAL", // Tier 1 (참조 마커/bracket이 지문·annotation에 부재 = 형광펜 정박 불가)
   CS_ALL_NONHIGHLIGHTABLE: "CRITICAL", // Tier 1 (cs_ids 전부 비-하이라이트 sentType = 형광펜 미렌더)
