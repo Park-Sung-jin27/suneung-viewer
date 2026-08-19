@@ -41,9 +41,9 @@ const leadInRaw = (raw, from) => {
   let out = "";
   for (let j = from - 1; j >= 0 && from - j < 12; j--) {
     const c = raw[j];
-    if (/[\s\u00a0]/.test(c)) continue;
     if (CHOICE_NUM.test(c)) break;      // 선지 번호. 여기서 멈춘다
     if (MARK.test(c)) { out = c + out; continue; }
+    if (!hard(c)) continue;             // 공백·구두점은 건너뛴다 (「①㉠: 본문」)
     break;
   }
   return out;
