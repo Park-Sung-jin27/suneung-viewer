@@ -114,6 +114,41 @@ function wordSplit(txt, where, isVerse) {
   }
 }
 
+// [발주 D-60] 해설은 선지를 **축약해서** 인용한다.
+//   부분 문자열 비교(includes)로는 그 축약이 전부 「불일치」로 잡힌다 —
+//   (d) 24건이 전부 오탐이었다(D-58 전건 재판정).
+//   예: 해설 「반복 어휘나 비슷한 문장마다 바로바로 밑줄을 긋는다」
+//       선지 「글에 반복되는 어휘나 의미가 비슷한 문장이 나올 때마다
+//              바로바로 밑줄 긋기를 하며 글을 읽는다」  ← 같은 내용의 축약
+//   어절이 순서대로 대부분 들어 있으면 축약 인용으로 본다.
+const HAN = (s) => String(s || "").replace(/[^\p{Script=Hangul}\p{Script=Han}0-9]/gu, "");
+function subsumed(quote, target) {
+  const T = HAN(target), Q = HAN(quote);
+  if (!T || !Q) return 0;
+  // 글자 단위 순차 포함 — 어절 단위로는 「반복 어휘나」와 「반복되는 어휘나」가
+  //   다른 어절로 갈려 축약을 못 잡는다. 글자가 순서대로 남아 있는 비율을 본다.
+  let pos = 0, hit = 0;
+  for (const ch of Q) {
+    const p = T.indexOf(ch, pos);
+    if (p >= 0) { hit++; pos = p + 1; }
+  }
+  return hit / Q.length;
+}
+
+// [발주 D-60] 해설은 선지만이 아니라 발문·<보기>·지문도 인용한다.
+//   선지만 대조하면 「선지가 ⓓ 한 글자」인 문항에서 전부 불일치로 잡힌다
+//   (2019_6월 l20196b Q31 실증 — <보기> 와 100% 대응하는데 오탐이었다).
+function quoteBest(quote, set, q, choiceText) {
+  let best = subsumed(quote, choiceText);
+  best = Math.max(best, subsumed(quote, q.t));
+  if (typeof q.bogi === "string") best = Math.max(best, subsumed(quote, q.bogi));
+  for (const t of set.sents || []) {
+    best = Math.max(best, subsumed(quote, t.t));
+    if (best >= 0.99) break;
+  }
+  return best;
+}
+
 const PLACEHOLDER = /\[(?:그래프 선택지|그림|도식|이미지|사진|표)(?!src)[^\]]*\]/g;
 
 for (const sec of ["reading", "literature"]) {
@@ -191,7 +226,7 @@ for (const sec of ["reading", "literature"]) {
 
         // ③ 선지 ↔ 해설 인용 대조
         for (const m of String(c.analysis || "").matchAll(/· '([^']{10,})'/g))
-          if (!/[~…()（）]/.test(m[1]) && !t.includes(m[1]))
+          if (!/[~…()（）]/.test(m[1]) && quoteBest(m[1], s, q, t) < 0.78)
             add("중대", s.id, q.id, `선지[${c.num}] 해설 인용이 선지에 없음`, m[1].slice(0, 45));
       }
 
