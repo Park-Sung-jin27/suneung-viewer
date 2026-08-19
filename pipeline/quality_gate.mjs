@@ -947,6 +947,37 @@ for (const yearKey of yearsToCheck) {
         }
       }
 
+      // ── [Gate] CS_SPAN_UNRESOLVED — cs_spans.text 가 문장에서 사라짐 ──
+      //   cs_spans 는 문자 오프셋이 아니라 {sent_id, text, occurrence} 다.
+      //   문장 안에서 text 를 찾아 칠하므로, 지문을 고칠 때 그 구절이 span 에
+      //   걸쳐 있으면 매칭이 실패해 형광펜이 **조용히** 꺼진다. 화면에는
+      //   「아무 일도 안 일어남」으로 보이고 다른 축은 이걸 잡지 못한다.
+      //   (2026-08-19 실증: D-38~D-43 지문 복원이 LIVE 형광펜 15개를 깨뜨렸다)
+      {
+        const _sm = {};
+        for (const s of set.sents || []) _sm[s.id] = String(s.t ?? "");
+        for (const q of set.questions || [])
+          for (const c of q.choices || [])
+            for (const sp of c.cs_spans || []) {
+              const _t = _sm[sp.sent_id];
+              if (_t === undefined) continue; // 문장 부재는 다른 축 담당
+              const _occ = Number(sp.occurrence) || 1;
+              let _i = -1, _from = 0;
+              for (let _k = 0; _k < _occ; _k++) {
+                _i = _t.indexOf(String(sp.text), _from);
+                if (_i < 0) break;
+                _from = _i + 1;
+              }
+              if (_i < 0)
+                issue(
+                  "CS_SPAN_UNRESOLVED",
+                  yearKey,
+                  `${set.id} Q${q.id}#${c.num} ${sp.sent_id}`,
+                  `cs_spans.text 를 문장에서 찾지 못함 (형광펜 미표시): 「${String(sp.text).slice(0, 30)}…」`,
+                  "fatal",
+                );
+            }
+      }
       // ── [Gate] W_annotation_stale / W_bracket_collapse — annotation 무결성 ──
       //   핵심 차별점(선지↔지문 형광펜) 렌더 정합. 자동 stale-스캔이 못 잡는
       //   "존재하나 틀린" bracket collapse 축까지 색출(l2024c류: [B][C]가 동일
@@ -2748,6 +2779,7 @@ const SEVERITY_MAP = {
   C_work_mismatch: "CRITICAL", // Tier 1
   C_label_domain_mismatch: "CRITICAL", // Tier 1 (pat R ↔ 라벨 L / 반대)
   C_vpat_dirty: "CRITICAL", // Tier 1 (pat=V 인데 cs_ids/cs_spans 비어있지 않음)
+  CS_SPAN_UNRESOLVED: "CRITICAL", // Tier 1 (cs_spans.text 가 문장에서 사라짐 = 형광펜 조용히 꺼짐)
   MARKER_INTEGRITY_FAIL: "CRITICAL", // Tier 1 (참조 마커/bracket이 지문·annotation에 부재 = 형광펜 정박 불가)
   CS_ALL_NONHIGHLIGHTABLE: "CRITICAL", // Tier 1 (cs_ids 전부 비-하이라이트 sentType = 형광펜 미렌더)
   BOGI_IMAGE_MISSING: "CRITICAL", // Tier 1 (보기 이미지 파일 부재 = 학생이 보기 못 봐 답 불가)
