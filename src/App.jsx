@@ -1238,6 +1238,14 @@ function ViewerPage({ user, isPro = false }) {
   const [localReview, setLocalReview] = useState(false);
   const isReview = reviewParam || localReview;
   const [warningMsg, setWarningMsg] = useState(null);
+  // 발주 F-11 ②: 같은 경고 문구를 다시 띄우면 state 값이 같아 useEffect 가 재실행되지
+  //   않아 스크롤이 일어나지 않았다(= 학생 눈에는 버튼이 안 먹은 것으로 보임).
+  //   경고를 띄울 때마다 증가시켜 스크롤 effect 를 매번 트리거한다.
+  const [warningSeq, setWarningSeq] = useState(0);
+  const showWarning = useCallback((msg) => {
+    setWarningMsg(msg);
+    setWarningSeq((n) => n + 1);
+  }, []);
 
   useEffect(() => {
     if (!yearKey) {
@@ -1359,10 +1367,12 @@ function ViewerPage({ user, isPro = false }) {
     if (!setObj) return;
     const sid = setObj.id;
     const qs = setObj.questions || [];
-    // 미답 체크
-    const missing = qs.find((q) => studyAnswers[sid]?.[q.id] == null);
-    if (missing) {
-      setWarningMsg(`⚠️ ${missing.id}번 문항에 답이 체크되지 않았습니다.`);
+    // 미답 체크 — 발주 F-11 ①: 첫 문항만 알리면 학생이 다섯 번 눌러야 한다. 전부 나열.
+    const missingIds = qs
+      .filter((q) => studyAnswers[sid]?.[q.id] == null)
+      .map((q) => q.id);
+    if (missingIds.length > 0) {
+      showWarning(`⚠️ ${missingIds.join(", ")}번 문항에 답이 없습니다.`);
       return;
     }
     setSubmitting(true);
@@ -1421,11 +1431,16 @@ function ViewerPage({ user, isPro = false }) {
       if (firstMissing) break;
     }
     if (firstMissing) {
-      const { setId: missId, sec: missSec, qId } = firstMissing;
+      const { setId: missId, sec: missSec } = firstMissing;
       if (missSec !== section) setSection(missSec);
       const idx = (yearData?.[missSec] ?? []).findIndex((s) => s.id === missId);
       if (idx >= 0) setSetIdx(idx);
-      setWarningMsg(`⚠️ ${qId}번 문항에 답이 체크되지 않았습니다.`);
+      // 발주 F-11 ①: 이동한 지문의 미답 문항을 전부 나열한다.
+      const missSet = allSets.find((s) => s.id === missId);
+      const missingIds = (missSet?.questions ?? [])
+        .filter((q) => studyAnswers[missId]?.[q.id] == null)
+        .map((q) => q.id);
+      showWarning(`⚠️ ${missingIds.join(", ")}번 문항에 답이 없습니다.`);
       return;
     }
     setSubmitting(true);
@@ -1471,12 +1486,15 @@ function ViewerPage({ user, isPro = false }) {
   //   여기서 추가 scrollIntoView를 호출하면 PassagePanel의 window.scrollTo와
   //   smooth scroll 큐에서 충돌 → 연속 클릭 시 위치 누적·예측 불가.
 
+  // 발주 F-11 ②: 경고 배너는 페이지 맨 위에 있고 제출 버튼은 아래쪽에 있다.
+  //   스크롤이 안 되면 학생은 버튼이 안 먹었다고 판단한다.
+  //   warningSeq 를 의존성에 넣어 같은 문구를 다시 띄워도 매번 스크롤한다.
   useEffect(() => {
     if (warningMsg)
       document
         .getElementById("warning-banner")
         ?.scrollIntoView({ behavior: "smooth", block: "center" });
-  }, [warningMsg]);
+  }, [warningMsg, warningSeq]);
 
   if (loading)
     return (
