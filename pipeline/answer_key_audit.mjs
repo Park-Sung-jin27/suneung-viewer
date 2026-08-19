@@ -20,7 +20,7 @@ for(const yk of Object.keys(data)){
   for(const sec of["reading","literature"])for(const s of data[yk][sec]||[]){
     const live=RK.has(`${yk}::${s.id}`);
     for(const q of s.questions||[]){
-      const n=Number(q.id); if(!(n>=1&&n<=34))continue;
+      const n=Number(q.id); if(!(n>=1&&n<=45))continue;
       const want=tab[n]; if(want===undefined)continue;
       const neg=NEG.test(String(q.t||""));
       const cs=q.choices||[];
