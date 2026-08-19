@@ -2035,8 +2035,10 @@ function ViewerPage({ user, isPro = false }) {
             overflowY: "auto",
           }}
         >
+          {/* 발주 F-12: key 에 제출 상태가 들어가 있어 제출 순간 패널이 통째로
+              재마운트(리렌더 아님)됐다 → 제출 직후 프리즈. 세트 단위로만 구분한다. */}
           <PassagePanel
-            key={`p-${currentSet?.id}-${submittedSets[currentSet?.id] ? "r" : "s"}`}
+            key={`p-${currentSet?.id}`}
             passageSet={currentSet}
             sel={sel}
             aiCitedSentId={aiCitedSentId}
@@ -2047,7 +2049,7 @@ function ViewerPage({ user, isPro = false }) {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           <QuizPanel
-            key={`q-${currentSet?.id}-${submittedSets[currentSet?.id] ? "r" : "s"}`}
+            key={`q-${currentSet?.id}`}
             passageSet={currentSet}
             sel={sel}
             onSelChange={handleSelChange}
