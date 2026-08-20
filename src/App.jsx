@@ -2560,10 +2560,23 @@ export default function App() {
   const paymentConfirmedRef = useRef(false);
   // 유입 경로 기록 중복 실행 가드 (user 당 1회 — 발주 F-1)
   const attributionRef = useRef(null);
+  // [D-82] all_data_204.json(8.5MB) 요청 중복 가드
+  const allDataReqRef = useRef(false);
 
+  // [D-82] 통짜 데이터는 오답노트(/wrongnote)만 쓴다. 그 경로는 로그인 전용이므로
+  //   비로그인 상태에서는 받지 않는다(비로그인 진입 시 8.5MB 자산 노출·전송 차단).
+  //   로그인하면 그때 1회 받는다 — 오답노트 동작은 그대로.
   useEffect(() => {
-    loadAllData().then(setAllData);
-  }, []);
+    if (!user) return;
+    if (allDataReqRef.current) return;
+    allDataReqRef.current = true;
+    loadAllData()
+      .then(setAllData)
+      .catch((e) => {
+        allDataReqRef.current = false; // 실패 시 다음 기회에 재시도
+        console.warn("[all_data] 로드 실패:", e?.message);
+      });
+  }, [user]);
 
   // 발주 F-1: 최초 진입 시 유입 정보 캡처 (첫 진입 보존 — 덮어쓰지 않음)
   useEffect(() => {
