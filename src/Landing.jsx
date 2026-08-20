@@ -764,8 +764,8 @@ export default function Landing({ onStart }) {
           >
             이용권 결제
           </a>
-          <span style={{ fontSize: "0.75rem", color: C.muted }}>14일 무료</span>
-          <Btn label="14일 무료로 시작하기 →" onClick={onStart} size="sm" />
+          <span style={{ fontSize: "0.75rem", color: C.muted }}>최근 5개년 무료</span>
+          <Btn label="무료로 시작하기 →" onClick={onStart} size="sm" />
         </div>
       </nav>
 
@@ -1072,7 +1072,7 @@ export default function Landing({ onStart }) {
                 marginTop: "12px",
               }}
             >
-              신용카드 없이 시작 · 언제든 해지 가능
+              신용카드 없이 시작 · 자동 갱신 없음
             </p>
           </div>
         </FadeIn>
@@ -1877,7 +1877,7 @@ export default function Landing({ onStart }) {
               진단부터 1:1까지 — 단계별 선택
             </h2>
             <p style={{ fontSize: "0.87rem", color: C.muted }}>
-              14일 무료 진단 → 월 구독 → 1:1 코칭 5석 · 언제든 해지 가능
+              최근 5개년 무료 → 1개월 이용권 → 1:1 코칭 5석
             </p>
           </div>
         </FadeIn>
@@ -1894,9 +1894,9 @@ export default function Landing({ onStart }) {
             <PriceCard
               plan="스타터"
               price="0"
-              period="14일 무료 · 신용카드 불필요"
+              period="가입 없이 바로 · 신용카드 불필요"
               features={[
-                { text: "진단 20문항", ok: true },
+                { text: "최근 5개년 170문항", ok: true },
                 { text: "오류 패턴 리포트 1회", ok: true },
                 { text: "형광펜 근거 표시", ok: true },
                 { text: "누적 리포트", ok: false },
@@ -1987,7 +1987,7 @@ export default function Landing({ onStart }) {
           {[
             {
               icon: "🔎",
-              title: "14일 무료 진단 제공",
+              title: "최근 5개년 수능 전 문항 무료",
               desc: "결제 전 핵심 진단 흐름을 먼저 확인할 수 있습니다. 카드 등록 없이 시작합니다.",
               color: "#15803d",
               bg: "#f0fdf4",
@@ -2004,7 +2004,7 @@ export default function Landing({ onStart }) {
             {
               icon: "🔓",
               title: "신용카드 없이 시작",
-              desc: "스타터 tier 14일 무료 체험. 결제 정보 불필요. 핵심 기능 그대로 체험 가능.",
+              desc: "스타터 — 최근 5개년 무료. 결제 정보 불필요. 핵심 기능 그대로 체험 가능.",
               color: C.mid,
               bg: C.bg,
               border: C.line,

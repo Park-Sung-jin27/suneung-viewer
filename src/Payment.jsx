@@ -42,10 +42,10 @@ const PLANS = [
     id: "starter",
     name: "스타터",
     price: 0,
-    period: "14일 무료",
+    period: "최근 5개년 무료",
     badge: null,
     features: [
-      { text: "진단 20문항", ok: true },
+      { text: "최근 5개년 170문항", ok: true },
       { text: "오류 패턴 리포트 1회", ok: true },
       { text: "형광펜 근거 표시", ok: true },
       { text: "누적 리포트", ok: false },
@@ -493,7 +493,7 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
         <p style={{ fontSize: "0.9rem", color: C.muted, lineHeight: 1.8 }}>
           학원 월 수강료 평균 16.4만원의 1/4 가격
           <br />
-          언제든 해지 · 결제 전 무료 진단
+          자동 갱신 없음 · 결제 전 무료 진단
         </p>
       </div>
 
@@ -558,7 +558,7 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
           {
             icon: "🔓",
             title: "신용카드 없이 시작",
-            desc: "14일 무료 체험 — 결제 정보 불필요",
+            desc: "최근 5개년 무료 — 결제 정보 불필요",
           },
           {
             icon: "📄",

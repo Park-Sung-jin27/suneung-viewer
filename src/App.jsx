@@ -597,7 +597,7 @@ function ProModal({ onClose, onSubscribe }) {
             marginBottom: "24px",
           }}
         >
-          전체 시험은 Pro 구독 후 이용 가능합니다.
+          전체 시험은 1개월 이용권으로 이용 가능합니다.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <button
