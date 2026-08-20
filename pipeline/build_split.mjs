@@ -165,4 +165,6 @@ if (process.argv.includes("--verify")) {
   }
   console.log(`\n## 재조립 검증 — 필드 ${checked.toLocaleString()}개 대조 → 누락 ${miss}건`);
   console.log(miss === 0 ? "✅ 누락 0 — free + pro 로 원본이 완전히 복원된다" : "🔴 누락 있음");
+  // 빌드 체인에서 조용히 지나가지 않도록 종료 코드를 남긴다(발주 D-74).
+  if (miss > 0) process.exit(1);
 }

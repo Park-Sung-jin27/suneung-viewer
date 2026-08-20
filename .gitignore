@@ -158,3 +158,8 @@ pipeline/outputs/
 
 # Official source artifacts are downloaded on demand and verified by manifest.
 raw_sources/math_eval_pdfs_legacy/
+
+# 배포용 분할 산출물 — 빌드 단계에서 생성한다 (발주 D-74).
+#   data-pro/ 는 유료 자산이라 저장소에 두지 않는다.
+public/data/free/
+data-pro/
