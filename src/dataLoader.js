@@ -9,7 +9,7 @@ let _vmCache = null;
 //   ★ 되돌리기: 이 상수를 false 로 되돌리면 즉시 현재 동작으로 복귀한다.
 //     all_data_204.json 은 삭제하지 않는다.
 //   ★ 4단계 승인 전까지 false 로 배포한다.
-export const USE_SPLIT_DATA = false;
+export const USE_SPLIT_DATA = true;
 
 async function _load() {
   if (_cache) return _cache;
