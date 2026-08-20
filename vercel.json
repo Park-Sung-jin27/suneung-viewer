@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/pro-data.js": {
+      "includeFiles": "data-pro/**"
+    }
+  },
   "headers": [
     {
       "source": "/.netlify/functions/(.*)",
