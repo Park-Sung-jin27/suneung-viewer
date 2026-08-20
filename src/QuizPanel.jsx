@@ -1059,6 +1059,9 @@ function ChoiceItem({
         type="button"
         onClick={() => onSelect(uid, choice)}
         aria-pressed={isActive}
+        /* 발주 F-15: 모바일에서 지문 근거로 자동 스크롤된 뒤 이 선지로 되돌아오기
+           위한 앵커. App 의 "선지로 돌아가기" 버튼이 이 속성으로 찾아간다. */
+        data-choice-uid={uid}
         style={{
           display: "flex",
           alignItems: "flex-start",
