@@ -48,7 +48,7 @@ const PLANS = [
       { text: "최근 5개년 170문항", ok: true },
       { text: "오류 패턴 리포트 1회", ok: true },
       { text: "형광펜 근거 표시", ok: true },
-      { text: "누적 리포트", ok: false },
+      { text: "누적 리포트 · 주간 진도(로그인 시)", ok: true },
       { text: "1:1 전문가 리뷰", ok: false },
     ],
     cta: "무료로 시작",
@@ -563,7 +563,7 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
           {
             icon: "📄",
             title: "데이터는 내 것",
-            desc: "해지 후에도 리포트 PDF 다운로드 유지",
+            desc: "이용권이 끝나도 오답 기록·리포트 유지",
           },
         ].map((g, i) => (
           <div

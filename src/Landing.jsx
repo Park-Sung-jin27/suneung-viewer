@@ -1899,7 +1899,7 @@ export default function Landing({ onStart }) {
                 { text: "최근 5개년 170문항", ok: true },
                 { text: "오류 패턴 리포트 1회", ok: true },
                 { text: "형광펜 근거 표시", ok: true },
-                { text: "누적 리포트", ok: false },
+                { text: "누적 리포트 · 주간 진도(로그인 시)", ok: true },
                 { text: "1:1 전문가 리뷰", ok: false },
               ]}
               cta="무료로 시작"
@@ -2012,7 +2012,7 @@ export default function Landing({ onStart }) {
             {
               icon: "📄",
               title: "데이터는 내 것",
-              desc: "구독 해지 후에도 본인의 오류 패턴 리포트 PDF 다운로드 유지. 데이터 잠금 없음.",
+              desc: "이용권이 끝나도 본인의 오답 기록과 패턴 리포트는 그대로 남습니다. 데이터 잠금 없음.",
               color: C.mid,
               bg: C.bg,
               border: C.line,
