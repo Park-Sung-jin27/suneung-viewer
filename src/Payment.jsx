@@ -46,7 +46,7 @@ const PLANS = [
     badge: null,
     features: [
       { text: "최근 5개년 170문항", ok: true },
-      { text: "오류 패턴 리포트 1회", ok: true },
+      { text: "오류 패턴 리포트", ok: true },
       { text: "형광펜 근거 표시", ok: true },
       { text: "누적 리포트 · 주간 진도(로그인 시)", ok: true },
       { text: "1:1 전문가 리뷰", ok: false },
