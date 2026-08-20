@@ -597,7 +597,7 @@ function ProModal({ onClose, onSubscribe }) {
             marginBottom: "24px",
           }}
         >
-          전체 시험은 Pro 구독 후 이용 가능합니다.
+          전체 시험은 1개월 이용권으로 이용 가능합니다.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <button
@@ -1144,7 +1144,7 @@ function MainPage({ isPro, user }) {
             {
               icon: "🎯",
               title: "AI 패턴 훈련",
-              desc: "오답 패턴에 맞는 AI 훈련 문제 무한 생성",
+              desc: "오답 패턴에 맞는 기출 선지 훈련 문제 제공",
               color: MC.green,
               bg: MC.bg,
             },
