@@ -935,6 +935,14 @@ export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
   if (!passageSet) return null;
   const annotations = passageSet.annotations ?? [];
   const visualMarks = passageSet.visualMarks ?? [];
+
+  // 발주 F-14: 선지를 눌렀는데 지문에 켜지는 문장이 하나도 없으면 학생은
+  //   "이 선지는 근거가 없구나"로 읽는다(App.jsx:868 이 형광펜 표시를 약속한다).
+  //   getHL 은 문장 단위라 그 자리에 문구를 넣으면 문장마다 반복 노출된다.
+  //   → 패널 단위로 "켜진 문장 0개"인지 한 번만 판정한다.
+  //   ※ 문구는 심사관이 확정한다. 지금은 자리만 만든다.
+  const hasNoHighlight =
+    !!sel && !(passageSet.sents || []).some((s) => getHL(s, sel));
   // 풀이 모드에서 sel이 있어도 '전체 제출' 전(submitted 알 수 없으므로)
   // QuizPanel이 submitted 전엔 onSelChange를 호출하지 않으므로 sel은 null 유지됨
   // → 별도 처리 없이 sel 그대로 사용
@@ -956,6 +964,22 @@ export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
       >
         {passageSet.range} · {passageSet.title}
       </div>
+      {hasNoHighlight && (
+        <div
+          data-nomap-notice
+          style={{
+            fontSize: "0.78rem",
+            lineHeight: 1.6,
+            color: "#92400e",
+            background: "#fffbeb",
+            border: "1px solid #fcd34d",
+            borderRadius: "8px",
+            padding: "10px 12px",
+          }}
+        >
+          이 선지는 지문 근거 표시가 준비되지 않았습니다
+        </div>
+      )}
       <div
         style={{
           fontSize: "0.92rem",

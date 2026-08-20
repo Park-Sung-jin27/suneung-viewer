@@ -2068,6 +2068,47 @@ function ViewerPage({ user, isPro = false }) {
           />
         </div>
       </div>
+      {/* 발주 F-15: 모바일은 지문·문제가 세로로 이어져 있어, 선지를 누르면
+          지문 근거까지 자동 스크롤된 뒤 그 선지가 화면 4,000~7,500px 아래로 밀린다.
+          손으로 5~9 화면을 되돌려야 하므로 복귀 버튼 하나를 띄운다.
+          ★ PC 는 좌우 분할이라 불필요 → CSS 미디어쿼리로 모바일에서만 노출.
+          ★ 근거 표시가 해제(sel=null)되면 함께 사라진다. */}
+      {sel && (
+        <button
+          type="button"
+          className="back-to-choice"
+          onClick={() => {
+            const el = document.querySelector(`[data-choice-uid="${sel}"]`);
+            if (el)
+              el.scrollIntoView({ behavior: "smooth", block: "center" });
+          }}
+        >
+          ↩ 선지로 돌아가기
+        </button>
+      )}
+      <style>{`
+        .back-to-choice { display: none; }
+        @media (max-width: 900px) {
+          .back-to-choice {
+            display: block;
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+            z-index: 120;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 999px;
+            background: #1f2937;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: 'Noto Sans KR', sans-serif;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            cursor: pointer;
+          }
+        }
+      `}</style>
     </div>
   );
 }
