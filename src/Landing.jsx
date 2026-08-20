@@ -366,7 +366,7 @@ function HighlightDemo({ onStart }) {
             {choice.text}
           </span>
           {active && (
-            <span style={{ fontSize: "0.85rem", flexShrink: 0 }}>❌</span>
+            <span style={{ fontSize: "0.85rem", flexShrink: 0 }}>✗</span>
           )}
         </div>
 
@@ -417,7 +417,7 @@ function HighlightDemo({ onStart }) {
             letterSpacing: "-0.01em",
           }}
         >
-          직접 풀어보기 →
+          직접 풀어보기
         </button>
       </div>
     </div>
@@ -765,7 +765,7 @@ export default function Landing({ onStart }) {
             이용권 결제
           </a>
           <span style={{ fontSize: "0.75rem", color: C.muted }}>최근 5개년 무료</span>
-          <Btn label="무료로 시작하기 →" onClick={onStart} size="sm" />
+          <Btn label="무료로 시작하기" onClick={onStart} size="sm" />
         </div>
       </nav>
 
@@ -1192,17 +1192,15 @@ export default function Landing({ onStart }) {
         >
           {[
             {
-              icon: "❌",
+              icon: "✗",
               title: '오답 해설을 봐도 "내가 왜 틀렸는지" 모름',
               desc: "기존 해설은 정답 이유를 설명합니다. 내가 어떤 사고 경로로 오답을 선택했는지는 설명하지 않습니다.",
             },
             {
-              icon: "🔄",
               title: "같은 유형에서 반복 실수",
               desc: "틀린 이유를 안다고 생각하지만 오류 구조를 모르는 것. 패턴 교정 없는 반복 풀이는 오히려 나쁜 습관을 굳힙니다.",
             },
             {
-              icon: "💸",
               title: "학원·인강 비용만 쌓이고 방향이 없음",
               desc: "강의를 듣는 것은 소비입니다. 내 오류 패턴을 모르면 어떤 강의를 들어도 같은 곳에서 틀립니다.",
             },
@@ -1217,9 +1215,11 @@ export default function Landing({ onStart }) {
                   borderLeft: `3px solid ${C.red}`,
                 }}
               >
-                <div style={{ fontSize: "1.4rem", marginBottom: "12px" }}>
-                  {p.icon}
-                </div>
+                {p.icon && (
+                  <div style={{ fontSize: "1.4rem", marginBottom: "12px" }}>
+                    {p.icon}
+                  </div>
+                )}
                 <div
                   style={{
                     fontSize: "0.9rem",
@@ -1415,19 +1415,16 @@ export default function Landing({ onStart }) {
         >
           {[
             {
-              icon: "🔦",
               title: "지문 근거 형광펜",
               accent: "#3b82f6",
               desc: "선지를 클릭하면 해당 판단의 근거가 된 지문 문장이 색상으로 표시됩니다. 논리를 눈으로 추적하세요.",
             },
             {
-              icon: "🔖",
               title: "오류 패턴 자동 분류",
               accent: C.mid,
               desc: "독서 4종(사실왜곡·인과전도·과잉추론·개념혼합), 문학 5종(표현·정서·주제·구조·보기 대입)으로 자동 분류. 내가 어떤 함정에 자주 빠지는지 알 수 있습니다.",
             },
             {
-              icon: "📊",
               title: "누적 개인 리포트",
               accent: "#8b5cf6",
               desc: "풀수록 쌓이는 데이터. 고빈도 패턴을 시각화하고, 그 패턴만 집중 훈련하는 처방 세트를 자동 생성합니다.",
@@ -1448,21 +1445,23 @@ export default function Landing({ onStart }) {
                 }
                 onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
               >
-                <div
-                  style={{
-                    width: 46,
-                    height: 46,
-                    borderRadius: 11,
-                    background: `${f.accent}14`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "1.3rem",
-                    marginBottom: "16px",
-                  }}
-                >
-                  {f.icon}
-                </div>
+                {f.icon && (
+                  <div
+                    style={{
+                      width: 46,
+                      height: 46,
+                      borderRadius: 11,
+                      background: `${f.accent}14`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "1.3rem",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    {f.icon}
+                  </div>
+                )}
                 <h3
                   style={{
                     fontFamily: "'Noto Serif KR', serif",
@@ -1939,7 +1938,7 @@ export default function Landing({ onStart }) {
         <FadeIn delay={0.2}>
           <div style={{ textAlign: "center", marginTop: "32px" }}>
             <Btn
-              label="무료로 시작하기 →"
+              label="무료로 시작하기"
               onClick={() => {
                 window.location.href = "/exams";
               }}
@@ -1986,7 +1985,6 @@ export default function Landing({ onStart }) {
         >
           {[
             {
-              icon: "🔎",
               title: "최근 5개년 수능 전 문항 무료",
               desc: "결제 전 핵심 진단 흐름을 먼저 확인할 수 있습니다. 카드 등록 없이 시작합니다.",
               color: "#15803d",
@@ -1994,7 +1992,7 @@ export default function Landing({ onStart }) {
               border: "#86efac",
             },
             {
-              icon: "✅",
+              icon: "✓",
               title: "유료 전환 전 조건 확인",
               desc: "월 구독과 1:1 코칭은 결제 전에 금액과 이용 조건을 다시 확인합니다.",
               color: "#15803d",
@@ -2002,7 +2000,6 @@ export default function Landing({ onStart }) {
               border: "#86efac",
             },
             {
-              icon: "🔓",
               title: "신용카드 없이 시작",
               desc: "스타터 — 최근 5개년 무료. 결제 정보 불필요. 핵심 기능 그대로 체험 가능.",
               color: C.mid,
@@ -2010,7 +2007,6 @@ export default function Landing({ onStart }) {
               border: C.line,
             },
             {
-              icon: "📄",
               title: "데이터는 내 것",
               desc: "이용권이 끝나도 본인의 오답 기록과 패턴 리포트는 그대로 남습니다. 데이터 잠금 없음.",
               color: C.mid,
@@ -2027,9 +2023,11 @@ export default function Landing({ onStart }) {
                   padding: "20px 18px",
                 }}
               >
-                <div style={{ fontSize: "1.4rem", marginBottom: "10px" }}>
-                  {g.icon}
-                </div>
+                {g.icon && (
+                  <div style={{ fontSize: "1.4rem", marginBottom: "10px" }}>
+                    {g.icon}
+                  </div>
+                )}
                 <div
                   style={{
                     fontSize: "0.88rem",
@@ -2107,7 +2105,7 @@ export default function Landing({ onStart }) {
                   letterSpacing: "0.02em",
                 }}
               >
-                🚀 곧 만나실 학원 전용 기능
+                곧 만나실 학원 전용 기능
               </p>
               <ul
                 style={{
@@ -2123,17 +2121,17 @@ export default function Landing({ onStart }) {
                 }}
               >
                 <li>
-                  📊 <strong>학원 대시보드</strong> — 학생별 약점 패턴 한눈에
+                  <strong>학원 대시보드</strong> — 학생별 약점 패턴 한눈에
                 </li>
                 <li>
-                  👥 <strong>학원 전용 단가</strong> — 학생 수에 맞춘 합리적
+                  <strong>학원 전용 단가</strong> — 학생 수에 맞춘 합리적
                   가격
                 </li>
                 <li>
-                  🎯 <strong>1:1 코칭 우선 배정</strong> — 학원생 먼저
+                  <strong>1:1 코칭 우선 배정</strong> — 학원생 먼저
                 </li>
                 <li>
-                  🧪 <strong>도입 전 시범 운영</strong> — 부담 없이 체험
+                  <strong>도입 전 시범 운영</strong> — 부담 없이 체험
                 </li>
               </ul>
               <p
@@ -2141,7 +2139,6 @@ export default function Landing({ onStart }) {
                   fontSize: "0.72rem",
                   color: C.muted,
                   marginTop: "14px",
-                  fontStyle: "italic",
                 }}
               >
                 세부 일정·가격은 문의 시 안내드립니다.
@@ -2149,7 +2146,7 @@ export default function Landing({ onStart }) {
             </div>
             <div style={{ textAlign: "center" }}>
               <Btn
-                label="🏢 학원 도입 문의 →"
+                label="학원 도입 문의"
                 onClick={() =>
                   window.open(
                     "https://tally.so/r/gDYZ74?src=landing-academy",
@@ -2208,7 +2205,7 @@ export default function Landing({ onStart }) {
             국어 오답의 원인, 오늘 안에 알 수 있습니다.
           </p>
           <Btn
-            label="무료로 진단 시작 →"
+            label="무료로 진단 시작"
             onClick={onStart}
             variant="white"
             size="lg"
