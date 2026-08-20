@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabase";
 import { P, P0, YEAR_INFO } from "./constants";
 import PatternCoach from "./PatternCoach";
-import { loadAllData, sectionOfSet } from "./dataLoader";
+import { loadAllData, sectionOfSet, isReleaseSet } from "./dataLoader";
 
 const C = {
   green: "#2d6e2d",
@@ -356,13 +356,18 @@ async function fetchBankTrainingQuestion({ patKey, user, excludedKeys }) {
   const attemptedIds = new Set(
     (attempts ?? []).map((attempt) => attempt.training_item_id),
   );
-  const unseen = items.filter(
+  // 발주 F-17: 문제은행 항목도 출처가 비공개(미출시) 세트면 제외한다.
+  //   source_year_key/source_set_id 가 없는 과거 항목은 판정 불가 → 보수적으로 제외.
+  const released = items.filter((item) =>
+    isReleaseSet(item.source_year_key, item.source_set_id),
+  );
+  const unseen = released.filter(
     (item) =>
       !attemptedIds.has(item.id) &&
       !excludedKeys.has(sourceKeyOf(item)) &&
       isUsableTrainingSentence(item.sentence),
   );
-  const usableItems = items.filter((item) =>
+  const usableItems = released.filter((item) =>
     isUsableTrainingSentence(item.sentence),
   );
   const pool = unseen.length > 0 ? unseen : usableItems;
@@ -388,6 +393,9 @@ async function fetchTrainingQuestion(patKey, { user, excludedKeys }) {
 
   for (const [yearKey, yearData] of Object.entries(allData)) {
     for (const set of yearData[targetSection] ?? []) {
+      // 발주 F-17: 훈련 후보에서 비공개(미출시) 세트 제외 — 학생에게 노출되지 않은
+      //   지문이 훈련 문제로 새어 나가지 않게 한다.
+      if (!isReleaseSet(yearKey, set.setId ?? set.id)) continue;
       const passage = (set.sents ?? [])
         .filter(
           (sent) =>
