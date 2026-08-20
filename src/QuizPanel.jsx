@@ -923,6 +923,7 @@ function PatternBadge({ pat }) {
 // [5] ChoiceItem
 // ══════════════════════════════════════════════════════════
 function ChoiceItem({
+  proLoading = false,
   choice,
   qid,
   questionType,
@@ -1137,6 +1138,22 @@ function ChoiceItem({
           </span>
         )}
       </button>
+      {/* 발주 F-20 커밋1 가드(b): pro 도착 전 빈 자리 대신 상태를 알린다.
+          깜빡임을 "해설이 없다"로 오해하지 않게 한다. */}
+      {showAnalysis && !choice.analysis && proLoading && (
+        <div
+          style={{
+            padding: "10px 14px",
+            fontSize: "0.78rem",
+            color: "#6b7280",
+            background: "#f9fafb",
+            border: "1px solid #e5e7eb",
+            borderRadius: "0 0 8px 8px",
+          }}
+        >
+          해설을 불러오는 중입니다…
+        </div>
+      )}
       {showAnalysis && choice.analysis && (
         <div
           style={{
@@ -1323,6 +1340,7 @@ function isVocabQuestion(questionText, isLastQuestion) {
 }
 
 function QuestionBlock({
+  proLoading = false,
   question,
   passageId,
   sel,
@@ -1494,6 +1512,7 @@ function QuestionBlock({
       >
         {question.choices.map((c) => (
           <ChoiceItem
+            proLoading={proLoading}
             key={c.num}
             imgChoiceMode={imgChoiceMode}
             choice={c}
@@ -1794,6 +1813,7 @@ function ReportModal({ totalQ, correctCount, wrongCount, log, onClose }) {
 // [8] QuizPanel — 메인 컴포넌트
 // ══════════════════════════════════════════════════════════
 export default function QuizPanel({
+  proLoading = false,
   passageSet,
   sel,
   onSelChange,
@@ -1905,6 +1925,7 @@ export default function QuizPanel({
     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
       {passageSet.questions.map((q, qIdx) => (
         <QuestionBlock
+          proLoading={proLoading}
           key={`${passageSet.id}-${q.id}`}
           question={q}
           isLastQuestion={qIdx === passageSet.questions.length - 1}

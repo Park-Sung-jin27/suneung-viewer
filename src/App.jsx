@@ -32,7 +32,13 @@ import Privacy from "./Privacy";
 import AuditPanel from "./AuditPanel";
 import { YEAR_INFO, MODE, isSetUnderReview, isAllowlisted } from "./constants";
 import { formatExamTitle, formatExamDate } from "./examTitle";
-import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
+import {
+  loadYear,
+  getYearKeys,
+  loadAllData,
+  attachProToSet,
+  USE_SPLIT_DATA,
+} from "./dataLoader";
 import { supabase } from "./supabase";
 import { saveAnswer, saveSetProgress } from "./hooks/useAnswerTracker";
 import TodayPanel from "./TodayPanel";
@@ -1263,7 +1269,20 @@ function ViewerPage({ user, isPro = false }) {
       return;
     }
     setLoading(true);
-    loadYear(yearKey, { bypassFilter: isMaster })
+    // 발주 F-20 커밋1: split 경로에서 진입 세트의 pro 조각을 함께 받는다.
+    //   토큰 취득은 App.jsx 의 기존 패턴(supabase.auth.getSession)을 재사용한다.
+    //   ★ 플래그 false 면 loadYear 가 setId/accessToken 을 무시하므로 무변화.
+    supabase.auth
+      .getSession()
+      .then(({ data: { session } }) => session?.access_token ?? null)
+      .catch(() => null)
+      .then((accessToken) =>
+        loadYear(yearKey, {
+          bypassFilter: isMaster,
+          setId: initSetId ?? null,
+          accessToken,
+        }),
+      )
       .then((data) => {
         setYearData(data);
         if (initSetId) {
@@ -1290,6 +1309,42 @@ function ViewerPage({ user, isPro = false }) {
   const sets = yearData?.[section] ?? [];
   const currentSet = sets[setIdx] ?? null;
   const isStudy = mode === MODE.STUDY;
+
+  // ── 발주 F-20 커밋1: 세트 단위 lazy pro 병합 ─────────────────────────
+  //   pro(해설·형광펜)를 연도 1회가 아니라 "세트를 넘길 때마다" 받는다.
+  //   가드 (a) 이용권 없는 사용자는 요청 자체를 보내지 않는다(401 낭비 차단).
+  //        (b) 도착 전에는 proLoading 으로 "불러오는 중"을 표시한다(깜빡임 방지).
+  //        (c) 빠른 이동 시 늦게 온 이전 응답이 현재 세트를 덮지 않도록 setId 태깅.
+  const [proLoading, setProLoading] = useState(false);
+  const proReqRef = useRef(null);
+  useEffect(() => {
+    if (!USE_SPLIT_DATA) return; // 플래그 false — 동작 무변화
+    const setId = currentSet?.id;
+    if (!yearData || !yearKey || !setId) return;
+    // (a) 이용권 보유자(또는 마스터)만 요청한다
+    if (!user || !(isPro || isMaster)) return;
+    let alive = true;
+    const reqId = `${yearKey}::${setId}`;
+    proReqRef.current = reqId;
+    setProLoading(true);
+    supabase.auth
+      .getSession()
+      .then(({ data: { session } }) => session?.access_token ?? null)
+      .catch(() => null)
+      .then((token) => attachProToSet(yearData, yearKey, setId, token))
+      .then((merged) => {
+        // (c) 그 사이 다른 세트로 이동했으면 반영하지 않는다
+        if (!alive || proReqRef.current !== reqId) return;
+        if (merged) setYearData((prev) => (prev ? { ...prev } : prev));
+      })
+      .catch((e) => console.warn("[pro-data] 세트 병합 실패:", e?.message))
+      .finally(() => {
+        if (alive && proReqRef.current === reqId) setProLoading(false);
+      });
+    return () => {
+      alive = false;
+    };
+  }, [yearData, yearKey, currentSet?.id, user, isPro, isMaster]); // eslint-disable-line
 
   const allSets = [
     ...(yearData?.reading ?? []).map((s) => ({ ...s, _sec: "reading" })),
@@ -2050,6 +2105,7 @@ function ViewerPage({ user, isPro = false }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           <QuizPanel
             key={`q-${currentSet?.id}`}
+            proLoading={proLoading}
             passageSet={currentSet}
             sel={sel}
             onSelChange={handleSelChange}

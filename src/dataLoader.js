@@ -606,6 +606,20 @@ function _buildSentCs(yearData) {
 //     모든 status (verifying / rebuild_required / hidden / out_of_scope) set 반환.
 //   cache mutation 0 — yd 원본은 보존하고 spread 후 reading/literature 만 새 배열.
 //     bypass 와 비bypass 호출이 교대로 와도 cache 상태에 영향 0.
+// 발주 F-20 커밋1: 세트 단위 lazy pro 병합.
+//   pro 를 "연도 1회"가 아니라 "세트 이동마다" 받는다. 성공 시 형광펜 역참조를
+//   다시 만들고 true 를 돌려준다(호출부가 리렌더 트리거에 쓴다).
+//   ★ 플래그 false 면 아무 것도 하지 않는다 — 동작 무변화.
+export async function attachProToSet(yearData, yearKey, setId, accessToken) {
+  if (!USE_SPLIT_DATA) return false;
+  if (!yearData || !yearKey || !setId || !accessToken) return false;
+  const merged = await _mergePro(yearData, yearKey, setId, accessToken);
+  if (!merged) return false;
+  _buildSentCs(yearData);
+  yearData._csBuilt = true;
+  return true;
+}
+
 export async function loadYear(yearKey, options = {}) {
   const { bypassFilter = false, setId = null, accessToken = null } = options;
   // 발주 F-20: split 경로에서는 무료 트리를 먼저 얹고, 세트 단위로 유료 조각을
