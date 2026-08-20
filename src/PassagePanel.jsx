@@ -418,6 +418,7 @@ function RenderSent({ sent, sel, anns, aiCited }) {
           paddingLeft: "8px",
           lineHeight: "2.0",
         }}
+        data-sent-id={sent.id}
         data-hl={pal && !spans ? "true" : undefined}
       >
         {lines.map((line, i) => {
@@ -547,7 +548,11 @@ function RenderSent({ sent, sel, anns, aiCited }) {
         content
       );
     }
-    return <div style={stStyle}>{inner}</div>;
+    return (
+      <div style={stStyle} data-sent-id={sent.id}>
+        {inner}
+      </div>
+    );
   }
 
   // sentClass — 안내장 등 특수 시각 효과 (block-level 단독 렌더)
@@ -592,7 +597,11 @@ function RenderSent({ sent, sel, anns, aiCited }) {
         content
       );
     }
-    return <div style={scStyle}>{inner}</div>;
+    return (
+      <div style={scStyle} data-sent-id={sent.id}>
+        {inner}
+      </div>
+    );
   }
 
   // body — spans 우선, 실패 시 기존 전체 하이라이트 fallback
@@ -606,6 +615,10 @@ function RenderSent({ sent, sel, anns, aiCited }) {
       return (
         <span
           style={aiCited ? AI_CITED_STYLE : undefined}
+          /* 발주 F-15: data-hl 은 문장이 아니라 하이라이트 "조각"에 붙는다.
+             조각이 문장 뒤쪽이면 앞부분이 화면 위로 잘리므로,
+             스크롤은 문장 단위로 올라가야 한다. 그 앵커. */
+          data-sent-id={sent.id}
           data-ai-cited={aiCited ? "true" : undefined}
         >
           {spanJsx}{" "}
@@ -626,6 +639,7 @@ function RenderSent({ sent, sel, anns, aiCited }) {
   return (
     <span
       style={combinedStyle}
+      data-sent-id={sent.id}
       data-hl={pal ? "true" : undefined}
       data-ai-cited={aiCited ? "true" : undefined}
     >
@@ -894,8 +908,13 @@ export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
   function scrollToSelector(selector) {
     if (!panelRef.current) return;
     const id = requestAnimationFrame(() => {
-      const first = panelRef.current?.querySelector(selector);
-      if (!first) return;
+      const hit = panelRef.current?.querySelector(selector);
+      if (!hit) return;
+      // 발주 F-15 (b): data-hl 은 하이라이트 "조각"에 붙는다. 조각이 문장 뒤쪽이면
+      //   그 조각을 기준으로 스크롤해 문장 앞부분이 화면 위로 잘린다.
+      //   → 문장 래퍼([data-sent-id])로 승격한다. 문장 요소에 data-hl 이 직접
+      //     붙은 경우(spans 부재 path) closest 가 자기 자신을 돌려주므로 회귀 없음.
+      const first = hit.closest("[data-sent-id]") ?? hit;
       let scroller = first.parentElement;
       while (scroller) {
         const oy = getComputedStyle(scroller).overflowY;
@@ -915,7 +934,19 @@ export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
           first.clientHeight / 2;
         scroller.scrollTo({ top, behavior: "smooth" });
       } else {
-        first.scrollIntoView({ behavior: "smooth", block: "start" });
+        // 발주 F-15 (c): 문서 스크롤 경로(모바일 세로 스택)에서는 block:"start" 가
+        //   sticky 헤더 2겹 뒤로 문장을 밀어넣는다. 실제 헤더 높이를 읽어 그만큼
+        //   위로 더 스크롤한다. ★ 상수로 박지 않는다 — 배너 유무로 높이가 변한다.
+        let offset = 16;
+        for (const el of document.querySelectorAll("body *")) {
+          const cs = getComputedStyle(el);
+          if (cs.position !== "sticky") continue;
+          const r = el.getBoundingClientRect();
+          if (r.top <= 1 && r.height > 0 && r.height < 200) offset += r.height;
+        }
+        const top =
+          first.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
       }
     });
     return () => cancelAnimationFrame(id);
