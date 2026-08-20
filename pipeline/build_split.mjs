@@ -1,4 +1,4 @@
-// build_split.mjs — 배포용 free/pro 분할 (발주 D-73)
+// build_split.mjs — 배포용 free/pro 분할 (발주 D-73 · 필터 D-75)
 //
 // ★ public/data/all_data_204.json 은 **단일 소스로 그대로 둔다.**
 //   정답지 · 게이트 3개 · live_verify · 복원 절차가 전부 이 파일을 전제한다.
@@ -16,6 +16,11 @@
 //   ★ ok(정답)는 무료다 — 채점이 없으면 user_answers 가 안 쌓이고 리포트가 빈다.
 //   ★ sents 의 구세대 cs 잔재는 free 에서 제거한다.
 //
+// 🔴 발주 D-75 (심사관 판정 ④) — **LIVE 세트만 내보낸다.**
+//   src/dataLoader.js 의 RELEASE_KEYS 에 없는 세트는 free · pro · index 어디에도 넣지 않는다.
+//   세트 단위로 거른다(연도 단위 아님). 한 연도의 모든 세트가 비노출이면 그 연도는 파일도 index 도 없다.
+//   → 재조립 검증의 「누락 0」은 이제 **LIVE 세트 원본**에 대한 것이다. 비노출은 대조 대상이 아니다.
+//
 // 사용: node pipeline/build_split.mjs [--verify]
 
 import fs from "node:fs";
@@ -28,6 +33,19 @@ const FREE_DIR = path.join(ROOT, "public/data/free");
 const PRO_DIR = path.join(ROOT, "data-pro");
 
 const data = JSON.parse(fs.readFileSync(SRC, "utf8"));
+
+// ── RELEASE_KEYS (발주 D-75) — 다른 감사 도구와 같은 방식으로 읽는다 ──
+// src/ 는 읽기만 한다. 여기서 고치지 않는다(공개 여부는 대표 승인 사항).
+const RELEASE = (() => {
+  const src = fs.readFileSync(path.join(ROOT, "src/dataLoader.js"), "utf8");
+  const at = src.indexOf("const RELEASE_KEYS = new Set([");
+  if (at < 0) { console.error("🔴 RELEASE_KEYS 블록을 찾지 못했다 — 분할 중단"); process.exit(1); }
+  const end = src.indexOf("]);", at);
+  const keys = [...src.slice(at, end).matchAll(/"([^"]+)"/g)].map((m) => m[1]).filter((k) => k.includes("::"));
+  if (keys.length === 0) { console.error("🔴 RELEASE_KEYS 가 비었다 — 분할 중단"); process.exit(1); }
+  return new Set(keys);
+})();
+const isLive = (yk, id) => RELEASE.has(`${yk}::${id}`);
 
 // ── 필드 배분표 ───────────────────────────────────────────────
 const YEAR_META = ["label", "tag", "badge", "color"];
@@ -48,11 +66,15 @@ const pick = (o, keys) => {
 };
 const has = (o) => Object.keys(o).length > 0;
 
-fs.mkdirSync(FREE_DIR, { recursive: true });
-fs.mkdirSync(PRO_DIR, { recursive: true });
+// 이전 빌드의 잔재(비노출 회차 파일 등)를 남기지 않는다.
+for (const d of [FREE_DIR, PRO_DIR]) {
+  fs.mkdirSync(d, { recursive: true });
+  for (const f of fs.readdirSync(d)) if (f.endsWith(".json")) fs.unlinkSync(path.join(d, f));
+}
 
 const index = { years: [] };
 const report = [];
+let dropSet = 0, dropYear = 0;
 
 for (const yk of Object.keys(data)) {
   const y = data[yk];
@@ -64,6 +86,7 @@ for (const yk of Object.keys(data)) {
     if (!y[sec]) continue;
     free[sec] = [];
     for (const set of y[sec]) {
+      if (!isLive(yk, set.id)) { dropSet++; continue; }        // 🔴 D-75 비노출 세트 제외
       const fs_ = pick(set, SET_FREE);
       const ps = { ...pick(set, SET_PRO), ...pick(set, SET_META) };
       // 문장
@@ -94,6 +117,9 @@ for (const yk of Object.keys(data)) {
     }
   }
 
+  // 전 세트가 비노출인 회차는 파일도 index 항목도 만들지 않는다.
+  if (idxSets.length === 0) { dropYear++; continue; }
+
   const freeTxt = JSON.stringify(free);
   const proTxt = JSON.stringify(pro);
   fs.writeFileSync(path.join(FREE_DIR, `${yk}.json`), freeTxt, "utf8");
@@ -111,22 +137,31 @@ const sum = (k) => report.reduce((a, r) => a + r[k], 0);
 const stat = (k) => { const v = report.map((r) => r[k]).sort((a, b) => a - b);
   return { avg: sum(k) / v.length, min: v[0], max: v[v.length - 1] }; };
 const F = stat("free"), P = stat("pro");
-console.log(`## 분할 결과 — ${report.length}회차\n`);
+const liveSets = sum("sets");
+console.log(`## 분할 결과 — ${report.length}회차 · ${liveSets}세트 (LIVE 만)\n`);
 console.log(`| 구분 | 합계 | 평균 | 최소 | 최대 |\n|---|--:|--:|--:|--:|`);
 console.log(`| free | ${(sum("free")/1048576).toFixed(2)}MB | ${KB(F.avg)} | ${KB(F.min)} | ${KB(F.max)} |`);
 console.log(`| pro  | ${(sum("pro")/1048576).toFixed(2)}MB | ${KB(P.avg)} | ${KB(P.min)} | ${KB(P.max)} |`);
 console.log(`| index.json | ${KB(idxTxt.length)} | | | |`);
 console.log(`| 원본 | ${(Buffer.byteLength(fs.readFileSync(SRC,"utf8"))/1048576).toFixed(2)}MB | | | |`);
+console.log(`\n제외(발주 D-75): 비노출 세트 ${dropSet}개 · 전 세트 비노출 회차 ${dropYear}개 — 산출물에 없다`);
 
 // ── 재조립 검증 ──
+// 🔴 대조 대상은 **LIVE 세트**다. 비노출 세트는 산출물에 없으므로 대조하지 않는다(발주 D-75 ④).
 if (process.argv.includes("--verify")) {
-  let miss = 0, checked = 0;
+  let miss = 0, checked = 0, sets = 0;
   for (const yk of Object.keys(data)) {
-    const free = JSON.parse(fs.readFileSync(path.join(FREE_DIR, `${yk}.json`), "utf8"));
+    const fPath = path.join(FREE_DIR, `${yk}.json`);
+    if (!fs.existsSync(fPath)) continue;                       // 전 세트 비노출 회차
+    const free = JSON.parse(fs.readFileSync(fPath, "utf8"));
     const pro = JSON.parse(fs.readFileSync(path.join(PRO_DIR, `${yk}.json`), "utf8"));
     for (const sec of ["reading", "literature"]) {
-      for (const [i, set] of (data[yk][sec] || []).entries()) {
-        const f = free[sec][i], p = pro.sets[set.id] || {};
+      for (const set of data[yk][sec] || []) {
+        if (!isLive(yk, set.id)) continue;
+        sets++;
+        const f = (free[sec] || []).find((v) => v.id === set.id);   // 위치가 아니라 id 로 찾는다
+        if (!f) { miss++; console.log(`  🔴 ${yk} ${set.id} — free 산출물에 없음`); continue; }
+        const p = pro.sets[set.id] || {};
         // 세트 필드
         for (const k of Object.keys(set)) {
           if (k === "sents" || k === "questions") continue;
@@ -163,8 +198,8 @@ if (process.argv.includes("--verify")) {
       }
     }
   }
-  console.log(`\n## 재조립 검증 — 필드 ${checked.toLocaleString()}개 대조 → 누락 ${miss}건`);
-  console.log(miss === 0 ? "✅ 누락 0 — free + pro 로 원본이 완전히 복원된다" : "🔴 누락 있음");
+  console.log(`\n## 재조립 검증 — LIVE ${sets}세트 · 필드 ${checked.toLocaleString()}개 대조 → 누락 ${miss}건`);
+  console.log(miss === 0 ? "✅ 누락 0 — free + pro 로 LIVE 세트 원본이 완전히 복원된다" : "🔴 누락 있음");
   // 빌드 체인에서 조용히 지나가지 않도록 종료 코드를 남긴다(발주 D-74).
   if (miss > 0) process.exit(1);
 }
