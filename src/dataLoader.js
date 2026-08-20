@@ -3,12 +3,80 @@ let _cache = null;
 let _annCache = null;
 let _vmCache = null;
 
+// ── 발주 F-20 (3단계): 무료/유료 데이터 분리 스위치 ──────────────────
+//   false → public/data/all_data_204.json 단일 파일 (현재 동작. 무변화)
+//   true  → public/data/free/<yearKey>.json + /api/pro-data (해설·형광펜)
+//   ★ 되돌리기: 이 상수를 false 로 되돌리면 즉시 현재 동작으로 복귀한다.
+//     all_data_204.json 은 삭제하지 않는다.
+//   ★ 4단계 승인 전까지 false 로 배포한다.
+export const USE_SPLIT_DATA = false;
+
 async function _load() {
   if (_cache) return _cache;
   const res = await fetch("/data/all_data_204.json");
   if (!res.ok) throw new Error("데이터 로드 실패");
   _cache = await res.json();
   return _cache;
+}
+
+// ── split 경로 (USE_SPLIT_DATA=true 일 때만 사용) ────────────────────
+//   스키마 계약은 발주문 그대로다. 형식이 어긋나면 여기서 고치지 말고
+//   심사관에게 올린다 — 한쪽만 맞추면 그게 곧 장애다.
+let _indexCache = null;
+const _freeYearCache = {};
+
+async function _loadIndex() {
+  if (_indexCache) return _indexCache;
+  const res = await fetch("/data/free/index.json");
+  if (!res.ok) throw new Error("무료 인덱스 로드 실패");
+  _indexCache = await res.json();
+  return _indexCache;
+}
+
+async function _loadFreeYear(yearKey) {
+  if (_freeYearCache[yearKey]) return _freeYearCache[yearKey];
+  const res = await fetch(`/data/free/${encodeURIComponent(yearKey)}.json`);
+  if (!res.ok) throw new Error(`연도 데이터 없음: ${yearKey}`);
+  const yd = await res.json();
+  _freeYearCache[yearKey] = yd;
+  return yd;
+}
+
+// 유료 조각을 free 트리에 얹는다. 401/402 는 정상 흐름이다(미로그인·이용권 없음).
+//   ★ 실패해도 무료 열람은 그대로 진행한다. 오류로 처리하지 않는다.
+async function _mergePro(yd, yearKey, setId, accessToken) {
+  if (!accessToken) return false;
+  try {
+    const res = await fetch(
+      `/api/pro-data?year=${encodeURIComponent(yearKey)}&set=${encodeURIComponent(setId)}`,
+      { headers: { Authorization: `Bearer ${accessToken}` } },
+    );
+    if (!res.ok) return false; // 401·402·404 모두 pro 없이 렌더
+    const pro = await res.json();
+    for (const section of ["reading", "literature"]) {
+      const set = (yd[section] ?? []).find((s) => (s.setId ?? s.id) === setId);
+      if (!set) continue;
+      if (pro.vocab !== undefined) set.vocab = pro.vocab;
+      for (const q of set.questions ?? []) {
+        const qPro = pro.questions?.[String(q.id)];
+        if (!qPro) continue;
+        for (const c of q.choices ?? []) {
+          const cPro = qPro.choices?.[String(c.num)];
+          if (!cPro) continue;
+          if (cPro.analysis !== undefined) c.analysis = cPro.analysis;
+          if (cPro.cs_ids !== undefined) c.cs_ids = cPro.cs_ids;
+          if (cPro.cs_spans !== undefined) c.cs_spans = cPro.cs_spans;
+          if (cPro.pat !== undefined) c.pat = cPro.pat;
+        }
+      }
+      // pro 가 얹혔으므로 형광펜 역참조를 다시 만든다.
+      delete yd._csBuilt;
+      return true;
+    }
+  } catch (e) {
+    console.warn("[pro-data] 병합 실패:", e?.message);
+  }
+  return false;
 }
 
 // release 정합 composite key (yearKey::setId) hardcode list — 단일 진실 source.
@@ -539,10 +607,17 @@ function _buildSentCs(yearData) {
 //   cache mutation 0 — yd 원본은 보존하고 spread 후 reading/literature 만 새 배열.
 //     bypass 와 비bypass 호출이 교대로 와도 cache 상태에 영향 0.
 export async function loadYear(yearKey, options = {}) {
-  const { bypassFilter = false } = options;
-  const data = await _load();
+  const { bypassFilter = false, setId = null, accessToken = null } = options;
+  // 발주 F-20: split 경로에서는 무료 트리를 먼저 얹고, 세트 단위로 유료 조각을
+  //   덧댄다. 플래그 false 면 아래 한 줄은 실행되지 않으므로 동작이 동일하다.
+  const data = USE_SPLIT_DATA
+    ? { [yearKey]: await _loadFreeYear(yearKey) }
+    : await _load();
   if (!data[yearKey]) throw new Error(`연도 데이터 없음: ${yearKey}`);
   const yd = data[yearKey];
+  if (USE_SPLIT_DATA && setId) {
+    await _mergePro(yd, yearKey, setId, accessToken);
+  }
   if (!yd._csBuilt) {
     _buildSentCs(yd);
     yd._csBuilt = true;
@@ -576,6 +651,17 @@ export async function loadYear(yearKey, options = {}) {
 //   options.bypassFilter: true 시 전체 yearKey 반환 (마스터/검증자 전용).
 export async function getYearKeys(options = {}) {
   const { bypassFilter = false } = options;
+  // 발주 F-20: split 경로에서는 인덱스만으로 목록을 만든다(연도 파일 미수신).
+  if (USE_SPLIT_DATA) {
+    const idx = await _loadIndex();
+    const years = idx.years ?? [];
+    if (bypassFilter) return years.map((y) => y.yearKey);
+    return years
+      .filter((y) =>
+        (y.sets ?? []).some((s) => isReleaseSet(y.yearKey, s.id)),
+      )
+      .map((y) => y.yearKey);
+  }
   const data = await _load();
   if (bypassFilter) return Object.keys(data);
   const all = Object.keys(data);
