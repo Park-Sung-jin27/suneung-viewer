@@ -25,6 +25,12 @@ const OPEN = String.fromCharCode(40), CLOSE = String.fromCharCode(41);
 const ITEM = /^\s*([ㄱ-ㅎA-Ea-e①-⑤ⓐ-ⓔ])[.．]\s*(.+)$/;
 // 서술형 판정 — 종결어미로 끝나는가
 const NARRATIVE = /(다|군|까|요)[.。]?$/;
+// [발주 D-73 ②] 축 A 비교 전 정규화 — 공백·조사·종결어미를 떼고 견준다.
+//   「반사각은 30°이다」와 「반사각 30°」는 같은 진술이다(r20169a Q20 실증).
+const norm = (s) => String(s || "")
+  .replace(/[s "'“”‘’]/g, "")
+  .replace(/(은|는|이|가|을|를|의|에|도|만)(?=[^가-힣]|$)/g, "")
+  .replace(/(이다|다|임|함|됨|이라|라고)$/g, "");
 
 const rows = [];
 for (const yk of Object.keys(data)) {
@@ -68,7 +74,7 @@ const groups = {};
 for (const r of rows) (groups[`${r.yk}|${r.setId}|${r.q}|${r.key}`] ??= []).push(r);
 const conflict = [];
 for (const [k, v] of Object.entries(groups)) {
-  const uniq = [...new Set(v.map((x) => x.said))];
+  const uniq = [...new Set(v.map((x) => norm(x.said)))];
   if (uniq.length > 1) conflict.push({ key: k, items: v, uniq });
 }
 console.log(`## 축 A — 항목 내부 모순 (같은 기호의 재진술이 서로 다름)\n`);

@@ -218,6 +218,20 @@ const SCOPE_YEARS = {
 };
 const YEAR = args.find((a) => !a.startsWith("--"));
 
+// [발주 D-73 ③] RELEASE_KEYS 를 스코프와 무관하게 읽는다.
+//   RELEASE_KEYS_SET 은 --scope=release 일 때만 채워져 전체 스코프에서는 null 이다.
+let _RK_ALL = null;
+function releaseKeysAll() {
+  if (_RK_ALL) return _RK_ALL;
+  const _s = fs.readFileSync(new URL("../src/dataLoader.js", import.meta.url), "utf8");
+  const _i = _s.indexOf("const RELEASE_KEYS = new Set([");
+  _RK_ALL = new Set(
+    [..._s.slice(_i, _s.indexOf("]);", _i)).matchAll(/"([^"]+)"/g)]
+      .map((m) => m[1]).filter((k) => k.includes("::")),
+  );
+  return _RK_ALL;
+}
+
 // ─── --scope=release: 출시 set(RELEASE_KEYS 전량)만 검사 ─────────────────────
 // 단일 진실 = src/dataLoader.js의 RELEASE_KEYS = new Set([...]) (composite "yearKey::setId").
 // fidelity_gate가 소스 정규식 파싱을 쓰는 패턴 재사용.
@@ -945,6 +959,29 @@ for (const yearKey of yearsToCheck) {
               );
           }
         }
+      }
+
+      // ── [Gate] W_release_key_missing — 회차 안에서 이 세트만 비노출 ──
+      //   같은 yearKey 의 다른 세트는 RELEASE_KEYS 에 있는데 이 세트만 없으면
+      //   의도한 비노출이 아니라 **키 등록 누락**일 수 있다.
+      //   의존처가 셋(뷰어 목록·뷰어 진입·훈련 후보)이라 누락되면 조용히 빠진다.
+      //   ★ 회차 전체가 비노출이면 의도된 것이므로 경고하지 않는다.
+      {
+        const _RK = releaseKeysAll();
+        let _live = 0, _total = 0;
+        for (const _sec of ["reading", "literature"])
+          for (const _s of data[yearKey][_sec] || []) {
+            _total++;
+            if (_RK.has(`${yearKey}::${_s.id}`)) _live++;
+          }
+        if (_live > 0 && _live < _total && !_RK.has(`${yearKey}::${set.id}`))
+          issue(
+            "W_release_key_missing",
+            yearKey,
+            set.id,
+            `회차의 ${_total}세트 중 ${_live}세트가 LIVE 인데 이 세트만 RELEASE_KEYS 에 없다`,
+            "warn",
+          );
       }
 
       // ── [Gate] OK_ANALYSIS_CONFLICT — ok 와 해설 결론이 서로 반대 ──
@@ -2806,7 +2843,8 @@ const SEVERITY_MAP = {
   C_work_mismatch: "CRITICAL", // Tier 1
   C_label_domain_mismatch: "CRITICAL", // Tier 1 (pat R ↔ 라벨 L / 반대)
   C_vpat_dirty: "CRITICAL", // Tier 1 (pat=V 인데 cs_ids/cs_spans 비어있지 않음)
-  OK_ANALYSIS_CONFLICT: "CRITICAL", // Tier 1 (ok 와 해설 결론이 반대 = 정답을 오답이라 설명)
+  OK_ANALYSIS_CONFLICT: "CRITICAL",
+  W_release_key_missing: "WARNING", // 같은 회차의 다른 세트는 LIVE 인데 이 세트만 RELEASE_KEYS 에 없다 // Tier 1 (ok 와 해설 결론이 반대 = 정답을 오답이라 설명)
   CS_SPAN_UNRESOLVED: "CRITICAL", // Tier 1 (cs_spans.text 가 문장에서 사라짐 = 형광펜 조용히 꺼짐)
   MARKER_INTEGRITY_FAIL: "CRITICAL", // Tier 1 (참조 마커/bracket이 지문·annotation에 부재 = 형광펜 정박 불가)
   CS_ALL_NONHIGHLIGHTABLE: "CRITICAL", // Tier 1 (cs_ids 전부 비-하이라이트 sentType = 형광펜 미렌더)
