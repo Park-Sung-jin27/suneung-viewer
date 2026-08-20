@@ -163,3 +163,8 @@ raw_sources/math_eval_pdfs_legacy/
 #   data-pro/ 는 유료 자산이라 저장소에 두지 않는다.
 public/data/free/
 data-pro/
+
+# 판정 지원용 PNG 표본 — 저장소에 두지 않는다 (발주 D-78 판정).
+#   회차 폴더만 무시한다. 목록인 README.md 는 추적을 유지한다.
+#   복구 작업용 로컬 참조. 영구 보관이 필요하면 별도 에셋 스토리지로.
+docs/pdf_image_samples_*/*/
