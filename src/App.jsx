@@ -1322,6 +1322,9 @@ function ViewerPage({ user, isPro = false }) {
   //   그 리렌더가 같은 effect 를 재발화시켜 세트당 요청이 중복됐다(8세트 → 18건).
   //   ① 의존성에서 yearData 제거  ② 완료 세트 캐시로 재요청 차단.
   const proDoneRef = useRef(new Set());
+  // [D-81b] 진행 중인 세트. 응답이 1~2초 걸리는 동안 같은 세트로 되돌아와도
+  //   중복 요청하지 않도록 막는다(완료 시 done 으로 옮기고 여기서 지운다).
+  const proPendingRef = useRef(new Set());
   // 연도가 바뀌면 캐시를 비운다(다른 회차의 완료 표시가 남지 않게).
   const proYearRef = useRef(null);
   useEffect(() => {
@@ -1336,8 +1339,10 @@ function ViewerPage({ user, isPro = false }) {
     }
     const reqId = `${yearKey}::${setId}`;
     if (proDoneRef.current.has(reqId)) return; // 이미 받은 세트
+    if (proPendingRef.current.has(reqId)) return; // 요청이 이미 떠 있는 세트
     let alive = true;
     proReqRef.current = reqId;
+    proPendingRef.current.add(reqId);
     setProLoading(true);
     supabase.auth
       .getSession()
@@ -1345,15 +1350,18 @@ function ViewerPage({ user, isPro = false }) {
       .catch(() => null)
       .then((token) => attachProToSet(yearData, yearKey, setId, token))
       .then((merged) => {
-        // (c) 그 사이 다른 세트로 이동했으면 반영하지 않는다
+        // [D-81b] 병합은 공유 yearData 객체에 이미 반영됐다. 그 사이 다른 세트로
+        //   이동했더라도 데이터는 남으므로 캐시 기록은 조건 없이 한다.
+        //   (조건부로 기록하면 응답 1~2초 사이에 지문을 넘긴 세트가 캐시에 안 남아
+        //    되돌아올 때마다 재요청됐다 — 8세트 18건의 원인.)
+        if (merged) proDoneRef.current.add(reqId);
+        // (c) 화면 갱신만 현재 세트일 때 한다
         if (!alive || proReqRef.current !== reqId) return;
-        if (merged) {
-          proDoneRef.current.add(reqId); // [D-81] 성공한 세트만 캐시에 남긴다
-          setYearData((prev) => (prev ? { ...prev } : prev));
-        }
+        if (merged) setYearData((prev) => (prev ? { ...prev } : prev));
       })
       .catch((e) => console.warn("[pro-data] 세트 병합 실패:", e?.message))
       .finally(() => {
+        proPendingRef.current.delete(reqId);
         if (alive && proReqRef.current === reqId) setProLoading(false);
       });
     return () => {
