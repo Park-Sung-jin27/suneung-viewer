@@ -5,6 +5,8 @@ import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { jsonrepair } from "jsonrepair";
 import { chooseRegenAnalysis } from "./haesol_v2_gate.mjs";
+// [발주 D-89 ④] 토큰 계측만 추가 — 프롬프트·형식·로직은 건드리지 않는다.
+import { logUsage } from "./api_usage.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
@@ -637,6 +639,7 @@ choices 배열만 JSON으로 반환해줘.
       { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
     ),
   );
+  logUsage("step3", (typeof set !== "undefined" && set && set.id) ? set.id : "?", response);
 
   console.log(`[diagnostic] stop_reason=${response.stop_reason}`);
   console.log(
@@ -797,6 +800,7 @@ neighbor_choices: ${JSON.stringify(neighbor_choices)}
       { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
     ),
   );
+  logUsage("step3", (typeof set !== "undefined" && set && set.id) ? set.id : "?", response);
 
   const parsed = parseJSON(response.content[0].text);
   return parsed.analysis || "";
