@@ -9,6 +9,7 @@ import { postprocess } from "./step2_postprocess.mjs";
 import { getExamProfile, logProfile } from "./exam_profile.mjs";
 import { extractPdfText, parseQuestionBlocks } from "./pdf_text_extractor.mjs";
 import { validateQuestionSet } from "./extraction_validator.mjs";
+import { scanSetRanges, planChunks } from "./set_ranges.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
@@ -1017,36 +1018,58 @@ export function validateExtraction(sets, section, lastQuestion, yearKey = "") {
 }
 
 // ─── 구형 포맷 추출 ───────────────────────────────────────────
-async function extractLegacy(pdfBase64, yearKey) {
+async function extractLegacy(pdfBase64, yearKey, pdfPath) {
   const year = yearKey.replace(/[^0-9]/g, "");
 
-  console.log(`[step2] 구형 포맷 감지 — 16~27번 추출 중...`);
-  const batch1 = await callClaude(
-    pdfBase64,
-    `이 시험지의 16번~27번을 추출해줘. id는 set_a, set_b, set_c 순으로 사용해.`,
-    LEGACY_SYSTEM_PROMPT,
-  );
+  // 🔴 D-86b ① — 청크를 고정 번호가 아니라 **세트 경계**에 맞춘다.
+  //    옛 방식(16~27 / 28~39 / 40~45)은 경계가 세트 한가운데를 지나가,
+  //    지문과 문항이 서로 다른 청크로 갈렸다. 2016_6월B 파일럿에서 실증:
+  //      · 문항 [31~33] 에 본문 [41~43] 이 붙음   · Q41~43 통째 누락
+  //    지시문 [a~b] 를 먼저 스캔해 세트 구간을 잡고, 그 경계에서만 자른다.
+  const ranges = scanSetRanges(pdfPath, { min: 16, max: 45 });
+  const chunks = planChunks(ranges, 13);
+  console.log(`[step2] 세트 구간 ${ranges.length}개 → 청크 ${chunks.length}개 (세트 무절단)`);
+  for (const [i, c] of chunks.entries())
+    console.log(`  청크${i + 1}: ${c.from}~${c.to} (${c.count}문항) ` +
+      c.ranges.map((r) => `[${r.from}~${r.to}]`).join(" "));
 
-  console.log(`[step2] 구형 포맷 — 28~39번 추출 중...`);
-  const batch2 = await callClaude(
-    pdfBase64,
-    `이 시험지의 28번~39번을 추출해줘. id는 set_d, set_e, set_f 순으로 사용해.`,
-    LEGACY_SYSTEM_PROMPT,
-  );
+  // 청크별 캐시 — API 가 중간에 끊겨도 성공한 청크는 다시 부르지 않는다 (D-86b ⑤)
+  const cacheDir = path.resolve(__dirname, "./reextract/cache");
+  fs.mkdirSync(cacheDir, { recursive: true });
 
-  console.log(`[step2] 구형 포맷 — 40~45번 추출 중...`);
-  const batch3 = await callClaude(
-    pdfBase64,
-    `이 시험지의 40번~45번을 추출해줘. id는 set_g, set_h 순으로 사용해.`,
-    LEGACY_SYSTEM_PROMPT,
-  );
+  const letters = "abcdefghijklmnop";
+  const batches = [];
+  for (const [i, c] of chunks.entries()) {
+    const cacheFile = path.join(cacheDir, `legacy_${yearKey}_c${i + 1}_${c.from}-${c.to}.json`);
+    if (fs.existsSync(cacheFile)) {
+      console.log(`[step2] 청크${i + 1} 캐시 재사용 — ${path.basename(cacheFile)}`);
+      batches.push(JSON.parse(fs.readFileSync(cacheFile, "utf8")));
+      continue;
+    }
+    const spec = c.ranges.map((r) => (r.from === r.to ? `${r.from}번(단독 문항)` : `[${r.from}~${r.to}]`)).join(", ");
+    const ids = c.ranges.map((_, j) => `set_${letters[i * 4 + j] || "z"}`).join(", ");
+    console.log(`[step2] 청크${i + 1}/${chunks.length} 추출 중 — ${spec}`);
+    const out = await callClaude(
+      pdfBase64,
+      `이 시험지에서 다음 지문 세트만 추출해줘: ${spec}
+` +
+      `각 세트는 「[a~b] 다음 글을 읽고 물음에 답하시오.」 지시문으로 시작한다.
+` +
+      `🔴 지문(sents)과 문항(questions)은 반드시 **같은 지시문 아래 것**끼리 묶어라. ` +
+      `다른 번호대의 지문을 가져오지 마라.
+` +
+      `요청한 번호는 하나도 빠뜨리지 마라. id는 ${ids} 순으로 사용해.`,
+      LEGACY_SYSTEM_PROMPT,
+    );
+    fs.writeFileSync(cacheFile, JSON.stringify(out, null, 2), "utf8");
+    batches.push(out);
+  }
 
-  const allSets = [...batch1, ...batch2, ...batch3];
+  const allSets = batches.flat();
   const reading = [],
     literature = [];
   let rIdx = 0,
     lIdx = 0;
-  const letters = "abcdefgh";
 
   for (const set of allSets) {
     const sec = classifySection(set);
@@ -1115,7 +1138,7 @@ export async function extractStructure(
   if (isLegacyFormat(yearKey)) {
     console.log(`[step2] 구형 수능 포맷 (${yearKey}) — 16~45번 통합 추출`);
     const pdfBuffer = fs.readFileSync(pdfPath);
-    return extractLegacy(pdfBuffer.toString("base64"), yearKey);
+    return extractLegacy(pdfBuffer.toString("base64"), yearKey, pdfPath);
   }
 
   // [NEW] 구버전 guard — 번호 범위 기반 reading/literature 자동 분류 차단
