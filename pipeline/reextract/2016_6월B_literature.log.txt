@@ -1,0 +1,13 @@
+[log] [pilot] 2016_6월B / section=literature / last=45
+[log] [pilot] PDF: 2016_6월B_시험지.pdf
+[log] [profile] detected family=mock version=old year=2016 range_split=false (key="2016_6월B")
+[log] [profile] note: old: Q1~15 선택(화작/문법), Q16~34 독서+문학 혼합 — 범위 기반 분류 금지
+[log] [step2] 구형 수능 포맷 (2016_6월B) — 16~45번 통합 추출
+[log] [step2] 구형 포맷 감지 — 16~27번 추출 중...
+[log] [debug] stop_reason: end_turn, 응답 길이: 16553자
+[log] [step2] 구형 포맷 — 28~39번 추출 중...
+[log] [debug] stop_reason: end_turn, 응답 길이: 18875자
+[log] [step2] 구형 포맷 — 40~45번 추출 중...
+[log] [debug] stop_reason: end_turn, 응답 길이: 12924자
+[log] [step2] 분류 결과: reading 4세트, literature 4세트
+[warn] [step2:sanitize:legacy] QA 필드 strip: reading.choice_ok_stripped=70, reading.choice_pat_stripped=70, reading.choice_analysis_stripped=70, reading.choice_cs_ids_stripped=70, reading.set_vocab_stripped=4, literature.choice_ok_stripped=60, literature.choice_pat_stripped=60, literature.choice_analysis_stripped=60, literature.choice_cs_ids_stripped=60, literature.set_vocab_stripped=4
