@@ -109,6 +109,13 @@ function cleanAnalysis(text) {
       .replace(/\(as\d+(?:~as\d+)?\)/g, "")
       // 말미 패턴 코드 제거: [L1], [R2], [P0] 등
       .replace(/\s*\[([RLVP][0-9]|P0)\]\s*$/gm, "")
+      // 말미 소괄호 패턴 코드 제거 — 데이터 잔재. 반드시 꼬리 앵커($)로만 지운다.
+      //   V·0 은 넣지 않는다: 한 글자라 본문 오폭 위험이 크다.
+      //   (실측: "정답(1) - 출력값(0) = 1이다" 같은 정상 본문이 존재한다.)
+      //   좁은 형태부터 순서대로 — "— 패턴: 관계 뒤집기(R2)" → "(L3: 주제·의미 과잉)" → "(R2)"
+      .replace(/\s*[—-]\s*패턴:\s*[^(\n]{1,20}\((R[1-4]|L[1-5])\)\s*$/gm, "")
+      .replace(/\s*\((R[1-4]|L[1-5]):[^)]{1,20}\)\s*$/gm, "")
+      .replace(/\s*\((R[1-4]|L[1-5])\)\s*$/gm, "")
       // [?], [불명확] 같은 불완전 기호 제거
       .replace(/\[\?[^\]]*\]/g, "")
       // bs7, r2024a_s3 같은 단독 sent ID 제거
@@ -923,6 +930,7 @@ function PatternBadge({ pat }) {
 // [5] ChoiceItem
 // ══════════════════════════════════════════════════════════
 function ChoiceItem({
+  proLoading = false,
   choice,
   qid,
   questionType,
@@ -1137,6 +1145,22 @@ function ChoiceItem({
           </span>
         )}
       </button>
+      {/* 발주 F-20 커밋1 가드(b): pro 도착 전 빈 자리 대신 상태를 알린다.
+          깜빡임을 "해설이 없다"로 오해하지 않게 한다. */}
+      {showAnalysis && !choice.analysis && proLoading && (
+        <div
+          style={{
+            padding: "10px 14px",
+            fontSize: "0.78rem",
+            color: "#6b7280",
+            background: "#f9fafb",
+            border: "1px solid #e5e7eb",
+            borderRadius: "0 0 8px 8px",
+          }}
+        >
+          해설을 불러오는 중입니다…
+        </div>
+      )}
       {showAnalysis && choice.analysis && (
         <div
           style={{
@@ -1323,6 +1347,7 @@ function isVocabQuestion(questionText, isLastQuestion) {
 }
 
 function QuestionBlock({
+  proLoading = false,
   question,
   passageId,
   sel,
@@ -1494,6 +1519,7 @@ function QuestionBlock({
       >
         {question.choices.map((c) => (
           <ChoiceItem
+            proLoading={proLoading}
             key={c.num}
             imgChoiceMode={imgChoiceMode}
             choice={c}
@@ -1794,6 +1820,7 @@ function ReportModal({ totalQ, correctCount, wrongCount, log, onClose }) {
 // [8] QuizPanel — 메인 컴포넌트
 // ══════════════════════════════════════════════════════════
 export default function QuizPanel({
+  proLoading = false,
   passageSet,
   sel,
   onSelChange,
@@ -1905,6 +1932,7 @@ export default function QuizPanel({
     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
       {passageSet.questions.map((q, qIdx) => (
         <QuestionBlock
+          proLoading={proLoading}
           key={`${passageSet.id}-${q.id}`}
           question={q}
           isLastQuestion={qIdx === passageSet.questions.length - 1}

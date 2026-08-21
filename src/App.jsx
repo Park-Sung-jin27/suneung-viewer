@@ -32,7 +32,13 @@ import Privacy from "./Privacy";
 import AuditPanel from "./AuditPanel";
 import { YEAR_INFO, MODE, isSetUnderReview, isAllowlisted } from "./constants";
 import { formatExamTitle, formatExamDate } from "./examTitle";
-import { loadYear, getYearKeys, loadAllData } from "./dataLoader";
+import {
+  loadYear,
+  getYearKeys,
+  loadAllData,
+  attachProToSet,
+  USE_SPLIT_DATA,
+} from "./dataLoader";
 import { supabase } from "./supabase";
 import { saveAnswer, saveSetProgress } from "./hooks/useAnswerTracker";
 import TodayPanel from "./TodayPanel";
@@ -1263,7 +1269,20 @@ function ViewerPage({ user, isPro = false }) {
       return;
     }
     setLoading(true);
-    loadYear(yearKey, { bypassFilter: isMaster })
+    // 발주 F-20 커밋1: split 경로에서 진입 세트의 pro 조각을 함께 받는다.
+    //   토큰 취득은 App.jsx 의 기존 패턴(supabase.auth.getSession)을 재사용한다.
+    //   ★ 플래그 false 면 loadYear 가 setId/accessToken 을 무시하므로 무변화.
+    supabase.auth
+      .getSession()
+      .then(({ data: { session } }) => session?.access_token ?? null)
+      .catch(() => null)
+      .then((accessToken) =>
+        loadYear(yearKey, {
+          bypassFilter: isMaster,
+          setId: initSetId ?? null,
+          accessToken,
+        }),
+      )
       .then((data) => {
         setYearData(data);
         if (initSetId) {
@@ -1290,6 +1309,65 @@ function ViewerPage({ user, isPro = false }) {
   const sets = yearData?.[section] ?? [];
   const currentSet = sets[setIdx] ?? null;
   const isStudy = mode === MODE.STUDY;
+
+  // ── 발주 F-20 커밋1: 세트 단위 lazy pro 병합 ─────────────────────────
+  //   pro(해설·형광펜)를 연도 1회가 아니라 "세트를 넘길 때마다" 받는다.
+  //   가드 (a) 이용권 없는 사용자는 요청 자체를 보내지 않는다(401 낭비 차단).
+  //        (b) 도착 전에는 proLoading 으로 "불러오는 중"을 표시한다(깜빡임 방지).
+  //        (c) 빠른 이동 시 늦게 온 이전 응답이 현재 세트를 덮지 않도록 setId 태깅.
+  const [proLoading, setProLoading] = useState(false);
+  const proReqRef = useRef(null);
+  // [D-81] 이미 받은 세트는 다시 요청하지 않는다.
+  //   병합 성공 시 setYearData 로 새 객체를 만드는데, yearData 가 의존성에 있으면
+  //   그 리렌더가 같은 effect 를 재발화시켜 세트당 요청이 중복됐다(8세트 → 18건).
+  //   ① 의존성에서 yearData 제거  ② 완료 세트 캐시로 재요청 차단.
+  const proDoneRef = useRef(new Set());
+  // [D-81b] 진행 중인 세트. 응답이 1~2초 걸리는 동안 같은 세트로 되돌아와도
+  //   중복 요청하지 않도록 막는다(완료 시 done 으로 옮기고 여기서 지운다).
+  const proPendingRef = useRef(new Set());
+  // 연도가 바뀌면 캐시를 비운다(다른 회차의 완료 표시가 남지 않게).
+  const proYearRef = useRef(null);
+  useEffect(() => {
+    if (!USE_SPLIT_DATA) return; // 플래그 false — 동작 무변화
+    const setId = currentSet?.id;
+    if (!yearData || !yearKey || !setId) return;
+    // (a) 이용권 보유자(또는 마스터)만 요청한다
+    if (!user || !(isPro || isMaster)) return;
+    if (proYearRef.current !== yearKey) {
+      proYearRef.current = yearKey;
+      proDoneRef.current = new Set();
+    }
+    const reqId = `${yearKey}::${setId}`;
+    if (proDoneRef.current.has(reqId)) return; // 이미 받은 세트
+    if (proPendingRef.current.has(reqId)) return; // 요청이 이미 떠 있는 세트
+    let alive = true;
+    proReqRef.current = reqId;
+    proPendingRef.current.add(reqId);
+    setProLoading(true);
+    supabase.auth
+      .getSession()
+      .then(({ data: { session } }) => session?.access_token ?? null)
+      .catch(() => null)
+      .then((token) => attachProToSet(yearData, yearKey, setId, token))
+      .then((merged) => {
+        // [D-81b] 병합은 공유 yearData 객체에 이미 반영됐다. 그 사이 다른 세트로
+        //   이동했더라도 데이터는 남으므로 캐시 기록은 조건 없이 한다.
+        //   (조건부로 기록하면 응답 1~2초 사이에 지문을 넘긴 세트가 캐시에 안 남아
+        //    되돌아올 때마다 재요청됐다 — 8세트 18건의 원인.)
+        if (merged) proDoneRef.current.add(reqId);
+        // (c) 화면 갱신만 현재 세트일 때 한다
+        if (!alive || proReqRef.current !== reqId) return;
+        if (merged) setYearData((prev) => (prev ? { ...prev } : prev));
+      })
+      .catch((e) => console.warn("[pro-data] 세트 병합 실패:", e?.message))
+      .finally(() => {
+        proPendingRef.current.delete(reqId);
+        if (alive && proReqRef.current === reqId) setProLoading(false);
+      });
+    return () => {
+      alive = false;
+    };
+  }, [yearKey, currentSet?.id, user, isPro, isMaster]); // eslint-disable-line
 
   const allSets = [
     ...(yearData?.reading ?? []).map((s) => ({ ...s, _sec: "reading" })),
@@ -2050,6 +2128,7 @@ function ViewerPage({ user, isPro = false }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           <QuizPanel
             key={`q-${currentSet?.id}`}
+            proLoading={proLoading}
             passageSet={currentSet}
             sel={sel}
             onSelChange={handleSelChange}
@@ -2481,10 +2560,23 @@ export default function App() {
   const paymentConfirmedRef = useRef(false);
   // 유입 경로 기록 중복 실행 가드 (user 당 1회 — 발주 F-1)
   const attributionRef = useRef(null);
+  // [D-82] all_data_204.json(8.5MB) 요청 중복 가드
+  const allDataReqRef = useRef(false);
 
+  // [D-82] 통짜 데이터는 오답노트(/wrongnote)만 쓴다. 그 경로는 로그인 전용이므로
+  //   비로그인 상태에서는 받지 않는다(비로그인 진입 시 8.5MB 자산 노출·전송 차단).
+  //   로그인하면 그때 1회 받는다 — 오답노트 동작은 그대로.
   useEffect(() => {
-    loadAllData().then(setAllData);
-  }, []);
+    if (!user) return;
+    if (allDataReqRef.current) return;
+    allDataReqRef.current = true;
+    loadAllData()
+      .then(setAllData)
+      .catch((e) => {
+        allDataReqRef.current = false; // 실패 시 다음 기회에 재시도
+        console.warn("[all_data] 로드 실패:", e?.message);
+      });
+  }, [user]);
 
   // 발주 F-1: 최초 진입 시 유입 정보 캡처 (첫 진입 보존 — 덮어쓰지 않음)
   useEffect(() => {
