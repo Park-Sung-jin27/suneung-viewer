@@ -1,13 +1,20 @@
 [log] [pilot] 2016_6월B / section=literature / last=45
 [log] [pilot] PDF: 2016_6월B_시험지.pdf
 [log] [profile] detected family=mock version=old year=2016 range_split=false (key="2016_6월B")
-[log] [profile] note: old: Q1~15 선택(화작/문법), Q16~34 독서+문학 혼합 — 범위 기반 분류 금지
+[log] [profile] note: old: Q1~15 선택(화작/문법), Q16~45 독서+문학 혼합 — 범위 기반 분류 금지 (D-86b 정정: 34→45)
 [log] [step2] 구형 수능 포맷 (2016_6월B) — 16~45번 통합 추출
-[log] [step2] 구형 포맷 감지 — 16~27번 추출 중...
-[log] [debug] stop_reason: end_turn, 응답 길이: 16553자
-[log] [step2] 구형 포맷 — 28~39번 추출 중...
-[log] [debug] stop_reason: end_turn, 응답 길이: 18875자
-[log] [step2] 구형 포맷 — 40~45번 추출 중...
-[log] [debug] stop_reason: end_turn, 응답 길이: 12924자
-[log] [step2] 분류 결과: reading 4세트, literature 4세트
-[warn] [step2:sanitize:legacy] QA 필드 strip: reading.choice_ok_stripped=70, reading.choice_pat_stripped=70, reading.choice_analysis_stripped=70, reading.choice_cs_ids_stripped=70, reading.set_vocab_stripped=4, literature.choice_ok_stripped=60, literature.choice_pat_stripped=60, literature.choice_analysis_stripped=60, literature.choice_cs_ids_stripped=60, literature.set_vocab_stripped=4
+[log] [step2] 세트 구간 10개 → 청크 3개 (세트 무절단)
+[log]   청크1: 16~26 (11문항) [16~16] [17~20] [21~24] [25~26]
+[log]   청크2: 27~36 (10문항) [27~30] [31~33] [34~36]
+[log]   청크3: 37~45 (9문항) [37~40] [41~43] [44~45]
+[log] [step2] 청크1 캐시 재사용 — legacy_2016_6월B_c1_16-26.json
+[log] [step2] 청크2/3 추출 중 — [27~30], [31~33], [34~36]
+
+[FAIL] Error: 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits."},"request_id":"req_011CeFJAcZLvNDBnzqoBVrZM"}
+    at APIError.generate (file:///C:/Users/downf/suneung-viewer/node_modules/@anthropic-ai/sdk/core/error.mjs:39:20)
+    at Anthropic.makeStatusError (file:///C:/Users/downf/suneung-viewer/node_modules/@anthropic-ai/sdk/client.mjs:145:32)
+    at Anthropic.makeRequest (file:///C:/Users/downf/suneung-viewer/node_modules/@anthropic-ai/sdk/client.mjs:300:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async callWithRetry (file:///C:/Users/downf/jippi-bo/pipeline/step2_extract.js:208:14)
+    at async callClaude (file:///C:/Users/downf/jippi-bo/pipeline/step2_extract.js:324:20)
+    at async extractLegacy (file:///C:/Users/downf/jippi-bo/pipeline/step2_extract.js:1052:17)
