@@ -222,13 +222,15 @@ const needsHumanFlag = (
 ).length;
 // reanalyze 사후 채택 게이트 + B1 재호출 path
 const regenGateAfterReanalyze = (
-  step3.match(/reanalyzeSingleChoice[\s\S]{0,700}adoptRegeneratedAnalysis/g) ||
-  []
+  step3.match(
+    /reanalyzeSingleChoice[\s\S]{0,700}adoptRegeneratedAnalysis/g,
+  ) || []
 ).length;
 const applyAfterReanalyze = (
   step3.match(
     /reanalyzeSingleChoice[\s\S]{0,1200}adoptRegeneratedAnalysis[\s\S]{0,700}applyDeterministicFooter/g,
-  ) || []
+  ) ||
+  []
 ).length;
 
 const b1Audit = {

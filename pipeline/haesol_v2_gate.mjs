@@ -214,6 +214,134 @@ export function chooseRegenAnalysis(
 //   가드2 전행성: 각 조각이 그 verse 행의 대부분(정규화 길이 ≥60%)을 차지 — 짧은 substring 후렴 오정박 방지.
 //   가드3 유일성: 한 조각이 복수 verse 행에 매칭(후렴)돼 유일 결정 불가 → null(옵션B 유지).
 //   산문 " / "는 verse sent 부재라 자동 null. _s2norm 재사용.
+/**
+ * [S1 따옴표 짝] 해설에서 인용 문자열을 추출한다.
+ *   구판 `/"([^"]{12,})"/g` 는 12자 미만 인용을 건너뛰면서 따옴표 짝이 어긋나,
+ *   닫는 따옴표와 다음 여는 따옴표 사이의 평문을 인용으로 오인했다(실측 88건).
+ *   여는 따옴표는 짝수번째 " 다 — 짝을 먼저 맞춘 뒤 길이로 거른다.
+ */
+export function extractQuotes(text, minLen = 12) {
+  // [스코프 — 대표 확정 2026-08-12] 인용 대조는 📌 근거 블록만 본다.
+  //   📌 지문 근거 / 보기 근거 → 원문 연속 문자열 그대로여야 한다(요약·재구성·설명괄호 금지).
+  //   🔍 해설 블록            → 설명이므로 원문 인용 의무가 없다. 검사 대상에서 제외한다.
+  //   사유: 형광펜 근거 연결이 제품의 핵심이라 근거 블록의 정확성이 곧 제품 정확성이다.
+  const out = [];
+  for (const line of String(text || "").split(/\r?\n/)) {
+    if (!line.includes("📌")) continue;
+    const pos = [];
+    for (let i = 0; i < line.length; i++) if (line[i] === '"') pos.push(i);
+    for (let i = 0; i + 1 < pos.length; i += 2) {
+      const q = line.slice(pos[i] + 1, pos[i + 1]);
+      if (q.length >= minLen) out.push(q);
+    }
+  }
+  return out;
+}
+
+/**
+ * [S2 운문 ' / '] 여러 행을 " / "로 이은 인용의 각 조각이 본문·보기에 실재하는가.
+ *   matchVerseMultiSent 가 sentType=verse 인 연속 행만 다루므로 그 밖의 조판을 놓친다(실측 90건).
+ */
+export function verseSlashResolved(quote, sents, bogi) {
+  if (!String(quote).includes(" / ")) return false;
+  const parts = String(quote).split(" / ").map((x) => x.trim()).filter(Boolean);
+  if (parts.length < 2) return false;
+  return parts.every(
+    (p) =>
+      (sents || []).some((s) => String(s.t || "").includes(p)) ||
+      (bogi && String(bogi).includes(p)),
+  );
+}
+
+/**
+ * [오탐 ① 마커 삽입] 대조 시 마커 문자를 제거한다.
+ *   ★ 반드시 양쪽(인용·원문)에 대칭 적용한다. 한쪽만 하면 일치가 불일치로 뒤집힌다(§7-26).
+ *   실증: 해설 «갑은 이들과 함께 공동 소송을 하여» / 원문 «갑은 이들과 함께 ㉠ 공동 소송을 하여»
+ */
+//   [오탐 ⑥ 각주 기호] 시험지 본문의 각주 표시(*, †, ‡, ※, ⁎)도 함께 제거한다.
+//   실증: 원문 «가시광선의 파장의 범위는 390∼780 nm* 정도인데» / 해설 «… nm 정도인데»
+export const stripMarks = (x) =>
+  String(x || "")
+    .replace(/[㉠-㉿ⓐ-ⓩ①-⑳㈀-㈜⑴-⒇]/g, "")
+    .replace(/[*＊†‡※⁎]/g, "")
+    .replace(/\^/g, "")            // 위첨자 표기 — 원문 「(체중)0.75」 vs 해설 「(체중)^0.75」
+    .replace(/\s+/g, " ")
+    .trim();
+
+/**
+ * [오탐 ② 조사 부착] 조각이 원문에 있는가. 끝의 조사 1~2자를 허용 오차로 둔다.
+ *   실증: 해설 «이와 무관한 명제는» / 원문 «… 이와 무관한 명제 "은주는 학생이다."는 …»
+ *   ★ 허용 폭을 넓히면 요약을 인용으로 표기한 규약위반(⑤)이 통과해 버린다. 2자로 고정한다.
+ */
+export function fragmentIn(frag, hay) {
+  const f = String(frag).trim();
+  if (!f) return false;
+  const H = String(hay);
+  if (H.includes(f)) return true;
+  const sf = stripMarks(f), sh = stripMarks(H);          // 양쪽 대칭
+  if (sf.length >= 4 && sh.includes(sf)) return true;
+  for (let k = 1; k <= 2; k++) {
+    const cut = sf.slice(0, sf.length - k);
+    if (cut.length >= 4 && sh.includes(cut)) return true;
+  }
+  return false;
+}
+
+/**
+ * [오탐 ②] 말줄임표로 자른 인용 — 각 조각이 원문에 있으면 해소.
+ *   조각이 하나라도 없으면 해소되지 않는다(그 조각이 환각 후보다).
+ */
+export function ellipsisResolved(quote, hay) {
+  const q = String(quote);
+  if (!/…|\.{2,}/.test(q)) return false;
+  const parts = q.split(/\s*(?:…|\.{2,})\s*/).map((x) => x.trim()).filter((x) => x.length >= 4);
+  if (parts.length < 2) return false;
+  return parts.every((p) => fragmentIn(p, hay));
+}
+
+/**
+ * 인용 1건이 원문으로 해소되는가. 해소되면 §2 FAIL 이 아니다.
+ *   ctx = { sents, bogi, qt(발문), choices }
+ *   S3 choice.t · S4 q.t 는 §13⑭ "전 텍스트 필드" 원칙에 따라 대조 대상에 포함한다.
+ */
+export function quoteResolved(quote, ctx) {
+  const { sents = [], bogi = "", qt = "", choices = [] } = ctx || {};
+  const q = String(quote);
+  // ③④ 대조 대상은 sents ∪ bogi 합집합으로 통일한다(한쪽만 보면 오탐).
+  const HAY = (sents || []).map((s) => s.t || "").join("\n") + "\n" + String(bogi || "");
+  if (sents.some((s) => String(s.t || "").includes(q))) return "sents";
+  if (bogi && String(bogi).includes(q)) return "bogi";
+  const nq = _s2norm(q);
+  if (nq.length >= 6) {
+    if (sents.some((s) => _s2norm(s.t || "").includes(nq))) return "sents~";
+    if (bogi && _s2norm(bogi).includes(nq)) return "bogi~";
+  }
+  // ① 마커 삽입 — 양쪽 대칭 제거 후 재대조
+  const sq = stripMarks(q);
+  if (sq.length >= 4 && stripMarks(HAY).includes(sq)) return "marker~";
+  if (matchVerseMultiSent(q, sents)) return "verse";
+  if (verseSlashResolved(q, sents, bogi)) return "verse/";        // S2
+  // ② 말줄임표 조각 — 조각 전건이 원문에 있으면 해소(끝 조사 2자 허용)
+  if (ellipsisResolved(q, HAY)) return "ellipsis";
+  const ct = choices.map((c) => String(c.t || "")).join("  ");
+  if (ct.includes(q)) return "choice.t";                           // S3
+  if (nq.length >= 6 && _s2norm(ct).includes(nq)) return "choice.t~";
+  if (qt && String(qt).includes(q)) return "q.t";                  // S4
+  if (nq.length >= 6 && qt && _s2norm(qt).includes(nq)) return "q.t~";
+  return null;
+}
+
+/** 회귀용 — 한 선지에서 §2 FAIL 로 남는 인용 목록(WARNING 은 제외). */
+export function s2QuoteMiss(analysis, ctx) {
+  const out = [];
+  for (const q of extractQuotes(analysis)) {
+    if (quoteResolved(q, ctx)) continue;
+    if (q.split(/[.!?]/).filter(Boolean).length > 1 || /…|\.{2,}/.test(q)) continue; // WARNING
+    out.push(q);
+  }
+  return out;
+}
+
 export function matchVerseMultiSent(quote, sents) {
   const q = String(quote || "");
   if (!/\s\/\s/.test(q)) return null;
@@ -469,8 +597,12 @@ if (IS_CLI) {
           (c.cs_ids || []).length === 0;
         // ① §2 전선지: 📌 인용(12+) ⊆ sents∪bogi. 다문장=WARNING, 그 외=FAIL
         // ④ 근거완전성(발주#4): 지문 인용 sent가 cs_ids에 없으면 FAIL(⚡·🧠 참조 누락 색출)
-        for (const m of a.matchAll(/"([^"]{12,})"/g)) {
-          const qt = m[1];
+        // [사각 4종 수리 — 발주 dq]
+        //   S1 extractQuotes  : 따옴표 짝을 먼저 맞춘 뒤 길이로 거른다(구판은 짝이 어긋났다)
+        //   S2 verseSlashResolved · S3 choice.t · S4 q.t → quoteResolved 안에서 처리
+        //   ★ 해소 판정만 넓혔다. 원문 어디에도 없는 인용은 그대로 FAIL 로 남는다(음성 대조 보유).
+        const _ctx = { sents: sentArr, bogi, qt: String(q.t || ""), choices: q.choices || [] };
+        for (const qt of extractQuotes(a)) {
           const hit = sentArr.find((sn) => (sn.t || "").includes(qt));
           if (hit) {
             if (!(c.cs_ids || []).includes(hit.id) && !anchorExempt) {
@@ -482,21 +614,7 @@ if (IS_CLI) {
             }
             continue;
           }
-          if (bogi && bogi.includes(qt)) continue; // 보기 인용(bogi)
-          // [결정A] KNOWN 구조표기(마커·각주*·전각↔반각·한자병기)만 다르고 본문에 실재 →
-          //   §2 오탐이므로 미집계. cs·anchorGap(위 raw hit)엔 영향 없음. char-level 차(오타·古語)는
-          //   정규화 후에도 불일치라 아래 s2fail로 계속 잡힌다(§13⑥·§13⑮ 양성회귀 대상).
-          {
-            const nqt = _s2norm(qt);
-            if (
-              nqt.length >= 6 &&
-              (sentArr.some((sn) => _s2norm(sn.t || "").includes(nqt)) ||
-                (bogi && _s2norm(bogi).includes(nqt)))
-            )
-              continue;
-          }
-          // [verse 매처] 연속 verse 행을 " / "로 이은 다행 인용은 §13⑬ 정상 → 오탐 미집계.
-          if (matchVerseMultiSent(qt, sentArr)) continue;
+          if (quoteResolved(qt, _ctx)) continue;
           if (
             qt.split(/[.!?]/).filter(Boolean).length > 1 ||
             /…|\.{2,}/.test(qt)

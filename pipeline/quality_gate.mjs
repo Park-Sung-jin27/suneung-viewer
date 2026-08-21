@@ -176,6 +176,8 @@ const GATE5 = args.includes("--gate5");
 // Gate 7: 골든셋만 돌림 (회귀 테스트 모드)
 const GOLDEN_ONLY = args.includes("--golden");
 // --scope 프리셋: "suneung5" = 2022~2026수능 5개
+// 인자 없이 실행하면 Object.keys(data) 전수(현재 353세트)를 돈다.
+//   프리셋은 suneung5 · 모의고사전체 · release 3종뿐이며 전수 프리셋은 없다.
 const SCOPE = (() => {
   const scopeArg = args.find((a) => a.startsWith("--scope="));
   if (!scopeArg) return null;
@@ -215,6 +217,20 @@ const SCOPE_YEARS = {
   ],
 };
 const YEAR = args.find((a) => !a.startsWith("--"));
+
+// [발주 D-73 ③] RELEASE_KEYS 를 스코프와 무관하게 읽는다.
+//   RELEASE_KEYS_SET 은 --scope=release 일 때만 채워져 전체 스코프에서는 null 이다.
+let _RK_ALL = null;
+function releaseKeysAll() {
+  if (_RK_ALL) return _RK_ALL;
+  const _s = fs.readFileSync(new URL("../src/dataLoader.js", import.meta.url), "utf8");
+  const _i = _s.indexOf("const RELEASE_KEYS = new Set([");
+  _RK_ALL = new Set(
+    [..._s.slice(_i, _s.indexOf("]);", _i)).matchAll(/"([^"]+)"/g)]
+      .map((m) => m[1]).filter((k) => k.includes("::")),
+  );
+  return _RK_ALL;
+}
 
 // ─── --scope=release: 출시 set(RELEASE_KEYS 전량)만 검사 ─────────────────────
 // 단일 진실 = src/dataLoader.js의 RELEASE_KEYS = new Set([...]) (composite "yearKey::setId").
@@ -375,6 +391,10 @@ const ACTION_CLASS_MAP = {
   C_work_mismatch: "manual",
   C_label_domain_mismatch: "auto_safe",
   C_vpat_dirty: "auto_safe",
+  C_answer_derivation: "manual",
+  F_distractor_reads_as_answer: "manual",
+  F_answer_reads_as_distractor: "manual",
+  W_l3_cs_missing: "manual",
   C_quote_unreflected: "manual",
   W_quote_unreflected: "manual",
   C_highlight_analysis_divergence: "manual",
@@ -466,6 +486,16 @@ const yearsToCheck =
       : YEAR
         ? [YEAR]
         : Object.keys(data);
+
+// ─── [발주 ef 사양2] 해설 반전 축 어구 ─────────────────────────────────────
+//   축 A: 오답 선지 해설이 자기를 정답이라고 말하는 어투
+//   축 B: 정답 선지 해설이 자기를 오답인 듯 부정형으로 말하는 어투
+//   ★ 어구 목록은 발주 ef 원문 그대로다. 임의 가감 금지 — 넓히면 오탐이 늘고,
+//     좁히면 ee-2 가 잡은 실제 결함 형태를 다시 놓친다.
+const ANSWER_ROLE_A_RE =
+  /문제 요구에 부합|문제 요구에 맞는|문제 요구에 적합|이 문항에서 적절한 선지|문항에서 적절한 선지|정답 선지|정답이 된다|답이 된다|정답으로 적절/;
+const ANSWER_ROLE_B_RE =
+  /부적절한 진술이 아님|부적절하지 않|틀린 진술이 아님|잘못된 진술이 아님|올바른 분석이다|정확하여|옳은 진술이다/;
 
 let _releaseSetCount = 0; // --scope=release 순회 set 수 검증용
 
@@ -931,6 +961,87 @@ for (const yearKey of yearsToCheck) {
         }
       }
 
+      // ── [Gate] W_release_key_missing — 회차 안에서 이 세트만 비노출 ──
+      //   같은 yearKey 의 다른 세트는 RELEASE_KEYS 에 있는데 이 세트만 없으면
+      //   의도한 비노출이 아니라 **키 등록 누락**일 수 있다.
+      //   의존처가 셋(뷰어 목록·뷰어 진입·훈련 후보)이라 누락되면 조용히 빠진다.
+      //   ★ 회차 전체가 비노출이면 의도된 것이므로 경고하지 않는다.
+      {
+        const _RK = releaseKeysAll();
+        let _live = 0, _total = 0;
+        for (const _sec of ["reading", "literature"])
+          for (const _s of data[yearKey][_sec] || []) {
+            _total++;
+            if (_RK.has(`${yearKey}::${_s.id}`)) _live++;
+          }
+        if (_live > 0 && _live < _total && !_RK.has(`${yearKey}::${set.id}`))
+          issue(
+            "W_release_key_missing",
+            yearKey,
+            set.id,
+            `회차의 ${_total}세트 중 ${_live}세트가 LIVE 인데 이 세트만 RELEASE_KEYS 에 없다`,
+            "warn",
+          );
+      }
+
+      // ── [Gate] OK_ANALYSIS_CONFLICT — ok 와 해설 결론이 서로 반대 ──
+      //   해설은 「✅ …적절한 진술」 / 「❌ …부적절한 진술」로 끝난다.
+      //   이 표지는 ok 와 같은 축이다 — 둘 다 「선지 진술의 참/거짓」이다.
+      //   (발문 극성은 정답을 고를 때만 쓰인다. 여기서는 직접 비교한다.)
+      //   어긋나면 학생이 정답을 맞히고도 틀렸다고 배운다.
+      //   ★ 선지를 복원할 때마다 새로 생긴다. r20249d Q14 는 마커가 깨져 있는
+      //     동안에는 ❌ 가 타당했고, 복원한 뒤에야 모순이 됐다(2026-08-20 실증).
+      //     사람이 기억하는 절차로는 반드시 놓치므로 게이트에 둔다.
+      {
+        for (const q of set.questions || [])
+          for (const c of q.choices || []) {
+            const _a = String(c.analysis || "").trim();
+            if (!_a) continue;
+            const _m = _a.match(/[✅❌]/g);
+            if (!_m) continue;
+            const _said = _m[_m.length - 1] === "✅";
+            if (_said === !!c.ok) continue;
+            issue(
+              "OK_ANALYSIS_CONFLICT",
+              yearKey,
+              `${set.id} Q${q.id}#${c.num}`,
+              `ok=${!!c.ok} 인데 해설 결론이 ${_said ? "✅ 적절" : "❌ 부적절"} — 정답 판정과 해설이 반대다`,
+              "fatal",
+            );
+          }
+      }
+
+      // ── [Gate] CS_SPAN_UNRESOLVED — cs_spans.text 가 문장에서 사라짐 ──
+      //   cs_spans 는 문자 오프셋이 아니라 {sent_id, text, occurrence} 다.
+      //   문장 안에서 text 를 찾아 칠하므로, 지문을 고칠 때 그 구절이 span 에
+      //   걸쳐 있으면 매칭이 실패해 형광펜이 **조용히** 꺼진다. 화면에는
+      //   「아무 일도 안 일어남」으로 보이고 다른 축은 이걸 잡지 못한다.
+      //   (2026-08-19 실증: D-38~D-43 지문 복원이 LIVE 형광펜 15개를 깨뜨렸다)
+      {
+        const _sm = {};
+        for (const s of set.sents || []) _sm[s.id] = String(s.t ?? "");
+        for (const q of set.questions || [])
+          for (const c of q.choices || [])
+            for (const sp of c.cs_spans || []) {
+              const _t = _sm[sp.sent_id];
+              if (_t === undefined) continue; // 문장 부재는 다른 축 담당
+              const _occ = Number(sp.occurrence) || 1;
+              let _i = -1, _from = 0;
+              for (let _k = 0; _k < _occ; _k++) {
+                _i = _t.indexOf(String(sp.text), _from);
+                if (_i < 0) break;
+                _from = _i + 1;
+              }
+              if (_i < 0)
+                issue(
+                  "CS_SPAN_UNRESOLVED",
+                  yearKey,
+                  `${set.id} Q${q.id}#${c.num} ${sp.sent_id}`,
+                  `cs_spans.text 를 문장에서 찾지 못함 (형광펜 미표시): 「${String(sp.text).slice(0, 30)}…」`,
+                  "fatal",
+                );
+            }
+      }
       // ── [Gate] W_annotation_stale / W_bracket_collapse — annotation 무결성 ──
       //   핵심 차별점(선지↔지문 형광펜) 렌더 정합. 자동 stale-스캔이 못 잡는
       //   "존재하나 틀린" bracket collapse 축까지 색출(l2024c류: [B][C]가 동일
@@ -1088,7 +1199,10 @@ for (const yearKey of yearsToCheck) {
           if (typeof str !== "string") return;
           const re = /\[그림src:([^\]]+)\]/g;
           let m;
-          while ((m = re.exec(str))) imgPaths.add(m[1].trim());
+          // [발주 fw-B ②] 토큰 문법이 [그림src:경로|alt] 로 확장됐다(판정 234 ②).
+          //   렌더러(QuizPanel replaceImagePlaceholders)와 같은 규칙으로 잘라야 한다.
+          //   alt 를 경로에 포함시키면 실재하는 파일도 「부재」로 잡힌다.
+          while ((m = re.exec(str))) imgPaths.add(m[1].split("|")[0].trim());
         };
         for (const s of set.sents || []) collectImg(s.t);
         for (const q of set.questions || []) {
@@ -1317,6 +1431,70 @@ for (const yearKey of yearsToCheck) {
         // [Gate 7] --golden 지정 시 골든셋 외 스킵
         if (GOLDEN_ONLY && !goldenMatch(yearKey, set.id, q.id)) continue;
         const qLoc = `${yearKey} ${set.id} Q${q.id}`;
+
+        // ── C_answer_derivation: 정답 유도 결과가 정확히 1개인가 ──────────
+        //   src/App.jsx:1369 가 정답표 없이 ok × questionType 조합에서 정답을 유도한다.
+        //     const qt = q.questionType ?? "negative";
+        //     qt === "positive" ? c.ok === true : c.ok === false
+        //   조합이 깨지면 화면이 틀린 정답을 표시한다.
+        //   판정식은 answer_fidelity.mjs:110-112 와 동일하다 — 그 도구가 이미 잡을 수 있었으나
+        //   실행되지 않아 2022수능 r2022c Q10 이 두 달간 LIVE 였다(발주 eb 실증).
+        //   여기 편입하는 이유는 새 판정을 만들기 위해서가 아니라 "돌리지 않아서 놓치는 경로"를 없애기 위함이다.
+        //   ★ 편입 시점 실측: 공개 241세트 0건 · 비노출 0건 (발주 ec).
+        {
+          const _qt = q.questionType ?? "negative";
+          const _cand = (q.choices || []).filter((c) =>
+            _qt === "positive" ? c.ok === true : c.ok === false,
+          );
+          if ((q.choices || []).length > 0 && _cand.length !== 1) {
+            needsManual(
+              "C_answer_derivation",
+              yearKey,
+              qLoc,
+              `정답 유도 ${_cand.length}개 (questionType=${_qt}${_cand.length ? ", 후보 " + _cand.map((c) => c.num).join(",") : ""}) — 화면이 정답을 ${_cand.length === 0 ? "표시하지 못함" : _cand.length + "개 표시"}`,
+            );
+          }
+        }
+
+        // ── [발주 ef 사양2] 해설 반전 축 2종 ─────────────────────────────
+        //   결함의 성격: 정답 번호는 맞는데 해설 문장이 역할을 뒤바꿔 설명한다.
+        //   실증 — 2016_9월A l20169a Q21 ③(오답)이 "이 문항에서 적절한 선지"로 끝나
+        //   학생이 ③을 정답으로 읽었다(발주 ee-2). answer_fidelity 도 quality_gate 도
+        //   수정 전에 0건이었다 — 두 도구 모두 정답 "번호"만 보기 때문이다.
+        //   ★ 등급 WARNING 고정. CRITICAL 승격 금지(발주 ef) — 편입 시점 LIVE 0건.
+        //   ★ 비노출 세트를 RELEASE_KEYS 에 올릴 때 이 두 축 0건을 통과 조건으로 둔다.
+        {
+          const _qt2 = q.questionType ?? "negative";
+          const _isAns = (c) => (_qt2 === "positive" ? c.ok === true : c.ok === false);
+          for (const c of q.choices || []) {
+            const _a = String(c.analysis || "");
+            if (!_a) continue;
+            const cLoc = `${yearKey} ${set.id} Q${q.id}-[${c.num}]`;
+            if (!_isAns(c)) {
+              // 축 A — 정답 유도에서 탈락한 선지(오답)가 자신을 정답처럼 설명
+              const m = _a.match(ANSWER_ROLE_A_RE);
+              if (m)
+                issue(
+                  "F_distractor_reads_as_answer",
+                  yearKey,
+                  cLoc,
+                  `오답 선지 해설에 정답 어투 «${m[0]}» — 학생이 이 선지를 정답으로 읽는다`,
+                  "warn",
+                );
+            } else {
+              // 축 B — 정답으로 유도된 선지가 자신을 오답처럼(부정 어투로) 설명
+              const m = _a.match(ANSWER_ROLE_B_RE);
+              if (m)
+                issue(
+                  "F_answer_reads_as_distractor",
+                  yearKey,
+                  cLoc,
+                  `정답 선지 해설에 오답 어투 «${m[0]}» — 정답 근거가 부정형으로 흐려진다`,
+                  "warn",
+                );
+            }
+          }
+        }
 
         // ── A: q.t 보기 혼재 ──────────────────────────────────────────────
         const beforeT = q.t || "";
@@ -2345,6 +2523,28 @@ for (const yearKey of yearsToCheck) {
             }
           }
 
+          // ── [발주 er 사양1] W_l3_cs_missing — pat=L3 인데 cs 부재 ──────
+          //   정본은 pipeline/CLAUDE.md:47 "ok:false + L3 → 부분 일치 작품의 sentId".
+          //   L3(주제·의미 과잉)는 과장의 출처가 작품 안에 있으므로 cs_ids 를 요구한다.
+          //   R3(지문 밖)·V(어휘)가 [] 를 허용하는 것과 성격이 다르다.
+          //   위 REQUIRES_CS/REQ 목록에 L3 가 빠진 것은 구현 결함이었다(발주 ep 에서 발견).
+          //   ★ REQUIRES_CS 목록에 L3 를 넣지 않는다 — 넣으면 39건이 즉시 CRITICAL 이 되어
+          //     release_ready 가 깨진다. 별도 WARNING 축으로 둔다.
+          //   ★ 39건 처리 후 CRITICAL 편입 예정 (발주 er · 2026-08-13).
+          if (
+            c.ok === false &&
+            c.pat === "L3" &&
+            (c.cs_ids?.length || 0) + (c.cs_spans?.length || 0) === 0
+          ) {
+            issue(
+              "W_l3_cs_missing",
+              yearKey,
+              cLoc,
+              "pat=L3 인데 cs_ids/cs_spans 부재 (부분 일치 작품 sentId 미매핑)",
+              "warn",
+            );
+          }
+
           // ── [v2] E_empty_pat_cs_present — ok:false R3/V인데 cs 보유 ───
           //   ok:true 선지의 cs 보유는 정상(근거) → 제외. pat=null도 제외
           //   (ok:true null 정상 / ok:false null은 별도 pat-missing 검사 영역).
@@ -2643,6 +2843,9 @@ const SEVERITY_MAP = {
   C_work_mismatch: "CRITICAL", // Tier 1
   C_label_domain_mismatch: "CRITICAL", // Tier 1 (pat R ↔ 라벨 L / 반대)
   C_vpat_dirty: "CRITICAL", // Tier 1 (pat=V 인데 cs_ids/cs_spans 비어있지 않음)
+  OK_ANALYSIS_CONFLICT: "CRITICAL",
+  W_release_key_missing: "WARNING", // 같은 회차의 다른 세트는 LIVE 인데 이 세트만 RELEASE_KEYS 에 없다 // Tier 1 (ok 와 해설 결론이 반대 = 정답을 오답이라 설명)
+  CS_SPAN_UNRESOLVED: "CRITICAL", // Tier 1 (cs_spans.text 가 문장에서 사라짐 = 형광펜 조용히 꺼짐)
   MARKER_INTEGRITY_FAIL: "CRITICAL", // Tier 1 (참조 마커/bracket이 지문·annotation에 부재 = 형광펜 정박 불가)
   CS_ALL_NONHIGHLIGHTABLE: "CRITICAL", // Tier 1 (cs_ids 전부 비-하이라이트 sentType = 형광펜 미렌더)
   BOGI_IMAGE_MISSING: "CRITICAL", // Tier 1 (보기 이미지 파일 부재 = 학생이 보기 못 봐 답 불가)
@@ -2655,6 +2858,11 @@ const SEVERITY_MAP = {
 
   // Tier 3 (승격 금지)
   C_pat_mismatch: "WARNING", // Tier 3
+  // [발주 ef 사양2] 해설 반전 축 — WARNING 고정. CRITICAL 승격 금지(편입 시점 LIVE 0건).
+  F_distractor_reads_as_answer: "WARNING",
+  F_answer_reads_as_distractor: "WARNING",
+  // [발주 er 사양1] pat=L3 cs 결손 — WARNING. 39건 처리 후 CRITICAL 편입 예정(2026-08-13).
+  W_l3_cs_missing: "WARNING",
 
   // 결론줄=ok 검사 (§13⑤) — 출시 차단 CRITICAL 승격 (이전 WARNING)
   F_content_reversed: "CRITICAL",
@@ -2700,8 +2908,12 @@ const SEVERITY_MAP = {
   W_expression_analysis_missing: "WARNING",
   W_single_evidence: "WARNING",
 
+  // [발주 er 사양2] E_pat_unclassifiable IGNORE -> WARNING 승격.
+  //   ok=false 인데 오류 유형이 없는 것은 AGENTS.md §9(ok<->pat 정합) 위반이다.
+  //   IGNORE 등급이라 LIVE 9건을 아무도 본 적이 없었다(발주 ep 에서 발견).
+  //   ★ CRITICAL 로 올리지 않는다. WARNING 까지만.
+  E_pat_unclassifiable: "WARNING",
   // IGNORE
-  E_pat_unclassifiable: "IGNORE",
   F_conclusion_mismatch: "IGNORE",
   E_pat_zero: "IGNORE",
 
