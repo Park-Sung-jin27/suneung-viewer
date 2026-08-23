@@ -5,6 +5,7 @@
 //   ② 짝 검사    — 지문↔문항이 같은 지시문 구간인가 (pair_gate 와 같은 판정식)
 //   ③ 앵커 대조  — sents·choices 가 원본에 실재하는가 (-layout / -raw 병용)
 //   ④ 커버리지   — 요청한 문항이 다 있는가 · 정답키에 그 번호가 있는가
+//   ⑤ 마커 정합성 — 선지가 가리키는 ㉠·ⓐ·[A] 가 지문·보기에 실재하는가 (부분 누락도 실패)
 //
 // 전부 통과해야 「병합 후보」다. 하나라도 실패하면
 // **코덱스에 그대로 붙여넣을 수 있는 재작업 요청 문구**를 출력한다.
@@ -18,6 +19,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { hard } from "./anchor.mjs";
 import { scanSetRanges, pdfText } from "./set_ranges.mjs";
+import { checkSetMarkers } from "./marker_anchor_check.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const yk = process.argv[2];
@@ -149,21 +151,34 @@ const extra = [...got].filter((n) => !wanted.includes(n));
 if (missing.length) say(`요청한 문항 중 ${missing.length}개가 빠졌습니다: ${missing.join(", ")}. 빠짐없이 넣어 주세요.`);
 if (extra.length) say(`요청하지 않은 문항이 들어왔습니다: ${extra.join(", ")}. 지시문의 표에 있는 번호만 넣어 주세요.`);
 
+// ── ⑤ 마커 정합성 (발주 D-92 ①) ──
+//   선지·발문이 가리키는 ㉠·ⓐ·[A] 가 지문(sents)이나 보기(bogi)에 실재하는가.
+//   🔴 부분 미정박도 실패다 — step3 는 전부 없을 때만 skip 하고, 절반만 없으면 통과시킨다.
+let markerBad = 0;
+for (const s of sets)
+  for (const m of checkSetMarkers(s)) {
+    markerBad++;
+    say(`세트 ${s.id} Q${m.qid}: 선지·발문이 ${m.missing.join("")} 를 가리키는데 ` +
+      `지문·보기 어디에도 없습니다${m.부분 ? "(일부만 누락)" : ""}. ` +
+      `그 마커가 정의된 부분(<보기> 상자·지문 표시)을 빠뜨리지 말고 함께 넣어 주세요.`);
+  }
+
 const key = JSON.parse(fs.readFileSync(path.join(ROOT, "pipeline/answer_key.json"), "utf8"))[yk]?.ans || {};
 const noKey = [...got].filter((n) => key[String(n)] == null);
 
 // ── 보고 ──
-const fail = schemaBad + pairBad + anchorBad + missing.length + extra.length;
+const fail = schemaBad + pairBad + anchorBad + missing.length + extra.length + markerBad;
 console.log(`## 위임 산출물 검수 — ${yk} / ${section}`);
 console.log(`  세트 ${sets.length}개 · 문항 ${got.size}개`);
 console.log(`  ① 스키마    ${schemaBad ? `🔴 ${schemaBad}건` : "✅ 통과"}`);
 console.log(`  ② 짝 검사    ${pairBad ? `🔴 ${pairBad}세트` : "✅ 통과"}`);
 console.log(`  ③ 앵커 대조  ${anchorBad ? `🔴 ${anchorBad}건` : "✅ 통과"}`);
 console.log(`  ④ 커버리지   ${missing.length || extra.length ? `🔴 빠짐 ${missing.length} · 초과 ${extra.length}` : `✅ ${wanted.length}/${wanted.length}`}`);
+console.log(`  ⑤ 마커 정합성 ${markerBad ? `🔴 ${markerBad}건` : "✅ 통과"}`);
 console.log(`  정답키       ${noKey.length ? `⚠ ${noKey.length}문항 정답 없음 (${noKey.join(",")})` : "✅ 전건 보유"}`);
 
 if (fail === 0) {
-  console.log(`\n✅ 병합 후보 — 4개 검사 전부 통과. 다음은 step3(정답·해설) 단계다.`);
+  console.log(`\n✅ 병합 후보 — 5개 검사 전부 통과. 다음은 step3(정답·해설) 단계다.`);
   process.exit(0);
 }
 console.log(`\n🔴 병합 불가 — 아래를 코덱스에 그대로 보낸다.`);
