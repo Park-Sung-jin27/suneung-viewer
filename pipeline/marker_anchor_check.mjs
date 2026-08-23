@@ -36,14 +36,29 @@ const grab = (s, kind) => new Set(String(s || "").match(kind.re) || []);
  * 세트 하나의 마커 정합성.
  * @returns [{qid, kind, missing:[...], refIn, anchorIn}]
  */
+// bogi 는 문자열일 때도, 객체(표·이미지 등)일 때도 있다.
+// String() 으로 뭉개면 "[object Object]" 가 되어 안에 든 마커를 통째로 놓친다(실증).
+const flat = (v) => {
+  if (v == null) return "";
+  if (typeof v === "string") return v;
+  if (Array.isArray(v)) return v.map(flat).join("\n");
+  if (typeof v === "object") return Object.values(v).map(flat).join("\n");
+  return String(v);
+};
+
 export function checkSetMarkers(set) {
-  // 정박처 — 지문 문장 전체 + 각 문항의 보기
+  // 정박처 ① 지문 문장  ② 문항의 보기  ③ annotations
+  //   🔴 [A] 는 sents 텍스트가 아니라 annotations 의 {type:"bracket", label:"A"} 로 표시된다.
+  //      이걸 빼면 정상 데이터가 대량 오탐된다 — D-94 1차 스캔의 [A]류 75건이 그랬다.
   const sentsText = (set.sents || []).map((t) => t.t || "").join("\n");
+  const annLabels = (set.annotations || [])
+    .map((a) => (a && a.label ? `[${a.label}]` : "")).join(" ");
+  const annText = flat(set.annotations);
   const out = [];
   for (const q of set.questions || []) {
-    const anchorText = sentsText + "\n" + String(q.bogi || "");
+    const anchorText = sentsText + "\n" + flat(q.bogi) + "\n" + annLabels + "\n" + annText;
     // 참조처 — 발문 + 선지
-    const refText = String(q.t || "") + "\n" + (q.choices || []).map((c) => c.t || "").join("\n");
+    const refText = flat(q.t) + "\n" + (q.choices || []).map((c) => c.t || "").join("\n");
     for (const kind of KINDS) {
       const refs = grab(refText, kind);
       if (!refs.size) continue;
