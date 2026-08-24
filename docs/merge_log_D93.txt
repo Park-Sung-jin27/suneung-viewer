@@ -1,6 +1,25 @@
 ## 병합 적용 — 재추출 산출물
 
-### 1. 사전 확인 — 회차 19
+### 1. 사전 확인 — 회차 19 · PROBE(끝나면 원복)
+   2014_6월A: step4_result.json
+   2014_6월B: step4_result.json
+   2014_9월A: step4_result.json
+   2014_9월B: step4_result.json
+   2015_6월B: step4_result.json
+   2015_9월A: step4_result.json
+   2015_9월B: step4_result.json
+   2016_6월A: step4_result.json
+   2016_6월B: step4_result.json
+   2016_9월A: step4_result.json
+   2016_9월B: step4_result.json
+   2017_6월: step4_result.json
+   2017_9월: step4_result.json
+   2018_9월: step4_result.json
+   2019_9월: step4_result.json
+   2020_6월: step4_result.json
+   2020_9월: step4_result.json
+   2021_9월: step4_result.json
+   2022_9월: step4_result.json
   병합 대상 43세트 · 제외 0세트
 
 ### 2. id 충돌 — 0건 ✅
@@ -15,30 +34,32 @@
   세트 353 → 396 (+43)
   문항 1368 → 1524 (+156)
   선지 6840 → 7620 (+780)
-  쓰기 완료 9.87MB
+  쓰기 완료 10.09MB
 
-### 6. 귀속 판정
-  기존 353세트 위반 변동: **0건** ✅
-  신규 43세트 위반: 1018건 · 위반율 130.5% (기존 평균 24.5%)
-     2014_6월A: l20146d:22 l20146e:16
-     2014_6월B: l20146e:17 l20146f:25
-     2014_9월A: l20149c:19 l20149d:22 l20149e:17
-     2014_9월B: l20149d:29 l20149e:16
-     2015_6월B: l20156c:24 l20156d:20
-     2015_9월A: l20159d:28
-     2015_9월B: r20159c:23 r20159d:12 l20159a:18 l20159b:33 l20159c:26 l20159d:18
-     2016_6월A: l20166e:24
-     2016_6월B: l20166b:18 l20166c:18 l20166d:25 l20166e:13
-     2016_9월A: l20169e:29
-     2016_9월B: l20169b:28 l20169c:27
-     2017_6월: l20176a:40
-     2017_9월: r20179c:25 r20179d:26
-     2018_9월: r20189c:30 l20189a:26 l20189b:31 l20189c:36 l20189d:29
-     2019_9월: r20199c:31
-     2020_6월: l20206d:22
-     2020_9월: l20209a:26 l20209b:21 l20209c:16 l20209d:32
-     2021_9월: l20219d:16
-     2022_9월: l20229c:25 l20229d:19
-  전체 위반 1675 → 2881 (CRITICAL 487 → 1831)
+### 6. 분리 게이트 판정 (loc 파싱 없음)
+  기존만  세트 353 · 선지 6840 → CRITICAL 487 (전체 1675)
+  신규만  세트 43 · 선지 780 → CRITICAL 798 (전체 1673)
+  병합본  세트 396 · 선지 7620 → CRITICAL 1285 (전체 3384)
+  기존 변동 = 1285 − 487 − 798 = **0** ✅  (전체 기준 36)
+  신규 CRITICAL 위반율 **102.3%** (기존 7.1% · 정지선 15%) 🔴
 
-🔴 정지·원복 — 신규 위반율 130.5% > 기존 평균의 2배 (49.0%)
+  신규 CRITICAL 위반 코드별:
+     CS_SPAN_UNRESOLVED             695
+     F_zerowidth_corruption         63
+     H_analysis_id_leak             19
+     OK_ANALYSIS_CONFLICT           8
+     F_content_reversed             8
+     F_encoding_corruption          3
+     CS_ALL_NONHIGHLIGHTABLE        1
+     C_anchor_exact_fail            1
+  기존 CRITICAL 위반 코드별(대조):
+     MARKER_INTEGRITY_FAIL          111
+     E_ok_true_no_cs_ids            75
+     MISSING_csid_true              75
+     E_required_cs_missing          70
+     MISSING_csid_false             70
+     F_content_reversed             22
+     F_empty_analysis               20
+     OK_ANALYSIS_CONFLICT           9
+
+🔴 정지·원복 — 신규 CRITICAL 위반율 102.3% > 정지선 15%
