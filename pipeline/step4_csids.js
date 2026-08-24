@@ -4,6 +4,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { jsonrepair } from "jsonrepair";
+// [발주 D-93 후속] 토큰 계측만 추가 — 로직 무변경.
+import { logUsage } from "./api_usage.mjs";
 import { matchVerseMultiSent } from "./haesol_v2_gate.mjs"; // verse 다행 매처(단일 소스, §13⑮)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -485,6 +487,7 @@ ${markerHint}
       { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
     ),
   );
+  logUsage("step4", "?", response);
 
   const matches = parseJSON(response.content[0].text);
 

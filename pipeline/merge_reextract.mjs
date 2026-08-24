@@ -33,15 +33,16 @@ function gateBySet(dataPath) {
   if (dataPath) args.push(`--data=${dataPath}`);
   try { sh(args); } catch { /* release_blocked 는 비정상 종료가 아니다 */ }
   const rep = JSON.parse(fs.readFileSync(path.join(ROOT, "pipeline/quality_report.json"), "utf8"));
-  const bySet = new Map();
+  const bySet = new Map();      // 전체 issues (참고 지표)
+  const critBySet = new Map();  // CRITICAL (판정 기준 — 발주 D-93 후속 4)
   let total = 0;
-  for (const it of rep.issues || []) {
-    total++;
+  const keyOf = (it) => {
     const m = String(it.loc || "").match(/^(\S+)\s+(\S+)/);
-    const key = m ? `${m[1]}::${m[2]}` : `${it.yearKey}::?`;
-    bySet.set(key, (bySet.get(key) || 0) + 1);
-  }
-  return { bySet, total, critical: (rep.critical || []).length };
+    return m ? `${m[1]}::${m[2]}` : `${it.yearKey}::?`;
+  };
+  for (const it of rep.issues || []) { total++; const k = keyOf(it); bySet.set(k, (bySet.get(k) || 0) + 1); }
+  for (const it of rep.critical || []) { const k = keyOf(it); critBySet.set(k, (critBySet.get(k) || 0) + 1); }
+  return { bySet, critBySet, total, critical: (rep.critical || []).length };
 }
 
 const log = [];
@@ -49,13 +50,23 @@ const say = (s) => { console.log(s); log.push(s); };
 
 // ── 1. 사전 확인 ──
 say(`## 병합 ${APPLY ? "적용" : "DRY-RUN"} — 재추출 산출물\n`);
-const rounds = fs.readdirSync(STEP3).filter((d) => fs.existsSync(path.join(STEP3, d, "step3_result.json")));
-say(`### 1. 사전 확인 — 회차 ${rounds.length}`);
+const ONLY = (() => { const i = process.argv.indexOf("--only"); return i > 0 ? process.argv[i + 1] : null; })();
+const PROBE = process.argv.includes("--probe");   // 병합 → 게이트 판정 → **무조건 원복** (검증용)
+// step4(cs_ids)가 돌아간 회차는 step4_result 를 쓴다. 없으면 step3_result.
+const pick = (d) => {
+  const p4 = path.join(STEP3, d, "step4_result.json");
+  return fs.existsSync(p4) ? p4 : path.join(STEP3, d, "step3_result.json");
+};
+const rounds = fs.readdirSync(STEP3)
+  .filter((d) => fs.existsSync(path.join(STEP3, d, "step3_result.json")))
+  .filter((d) => !ONLY || d === ONLY);
+say(`### 1. 사전 확인 — 회차 ${rounds.length}${ONLY ? ` (--only ${ONLY})` : ""}${PROBE ? " · PROBE(끝나면 원복)" : ""}`);
+for (const d of rounds) say(`   ${d}: ${path.basename(pick(d))}`);
 
 const excluded = [];      // 부분 병합: 제외된 세트
 const incoming = [];      // {yk, sec, set}
 for (const yk of rounds) {
-  const j = JSON.parse(fs.readFileSync(path.join(STEP3, yk, "step3_result.json"), "utf8"));
+  const j = JSON.parse(fs.readFileSync(pick(yk), "utf8"));
   const key = JSON.parse(fs.readFileSync(path.join(STEP3, yk, "answer_key.json"), "utf8"));
   for (const sec of ["reading", "literature"])
     for (const s of j[sec] || []) {
@@ -131,27 +142,39 @@ say(`  쓰기 완료 ${(fs.statSync(SRC).size / 1048576).toFixed(2)}MB`);
 
 // ── 6. 귀속 판정 ──
 const g1 = gateBySet(null);
-let movedOld = 0; const moved = [];
+// 🔴 전체 issues 뿐 아니라 **CRITICAL 기준으로도** 본다.
+//    severity 재분류가 일어나면 전체 수는 그대로인데 CRITICAL 만 변할 수 있다.
+let movedOld = 0, movedCrit = 0; const moved = [];
 for (const k of oldKeys) {
   const a = g0.bySet.get(k) || 0, b = g1.bySet.get(k) || 0;
-  if (a !== b) { movedOld++; if (moved.length < 10) moved.push(`${k}: ${a}→${b}`); }
+  const ca = g0.critBySet.get(k) || 0, cb = g1.critBySet.get(k) || 0;
+  if (a !== b) { movedOld++; if (moved.length < 10) moved.push(`${k}: 전체 ${a}→${b}`); }
+  if (ca !== cb) { movedCrit++; if (moved.length < 10) moved.push(`${k}: CRITICAL ${ca}→${cb}`); }
 }
 const newViol = {};
-let newTotal = 0;
+let newTotal = 0, newCrit = 0;
 for (const { yk, set } of incoming) {
-  const n = g1.bySet.get(`${yk}::${set.id}`) || 0;
-  newTotal += n;
-  if (n) (newViol[yk] ??= []).push(`${set.id}:${n}`);
+  const k = `${yk}::${set.id}`;
+  const n = g1.bySet.get(k) || 0, c = g1.critBySet.get(k) || 0;
+  newTotal += n; newCrit += c;
+  if (n || c) (newViol[yk] ??= []).push(`${set.id}:${c}C/${n}`);
 }
 const newQ = incoming.reduce((a, x) => a + (x.set.questions || []).length, 0);
 const newChoices = incoming.reduce((a, x) => a + (x.set.questions || []).flatMap((q) => q.choices || []).length, 0);
-const rate = newTotal / newChoices * 100;
-const baseRate = g0.total / before.ch * 100;
+// 🔴 판정 기준은 **CRITICAL** 로 고정한다(발주 D-93 후속 ④).
+//    기존 평균 7.1%(487/6840) · 정지선 15%. W_ 경고는 참고 지표로만 병기한다.
+const STOP_RATE = 15;
+const rate = newCrit / newChoices * 100;              // 신규 CRITICAL 위반율
+const baseRate = g0.critical / before.ch * 100;       // 기존 CRITICAL 위반율
+const rateAll = newTotal / newChoices * 100;          // 참고 — 전체 issues 기준
+const baseAll = g0.total / before.ch * 100;
 
 say(`\n### 6. 귀속 판정`);
-say(`  기존 ${oldKeys.size}세트 위반 변동: **${movedOld}건** ${movedOld === 0 ? "✅" : "🔴"}`);
+say(`  기존 ${oldKeys.size}세트 변동 — 전체 ${movedOld}건 · CRITICAL ${movedCrit}건 ${movedOld === 0 && movedCrit === 0 ? "✅" : "🔴"}`);
 for (const m of moved) say(`     ${m}`);
-say(`  신규 ${incoming.length}세트 위반: ${newTotal}건 · 위반율 ${rate.toFixed(1)}% (기존 평균 ${baseRate.toFixed(1)}%)`);
+say(`  신규 ${incoming.length}세트 CRITICAL: ${newCrit}건 · 위반율 **${rate.toFixed(1)}%** (기존 ${baseRate.toFixed(1)}% · 정지선 ${STOP_RATE}%)`);
+say(`    [참고] 전체 issues 기준: ${newTotal}건 · ${rateAll.toFixed(1)}% (기존 ${baseAll.toFixed(1)}%)`);
+say(`    세트별 (CRITICAL/전체):`);
 for (const [yk, list] of Object.entries(newViol)) say(`     ${yk}: ${list.join(" ")}`);
 say(`  전체 위반 ${g0.total} → ${g1.total} (CRITICAL ${g0.critical} → ${g1.critical})`);
 
@@ -161,9 +184,16 @@ const revert = (why) => {
   fs.writeFileSync(path.join(ROOT, "docs/merge_log_D93.txt"), log.join("\n"), "utf8");
   process.exit(1);
 };
-if (movedOld !== 0) revert(`기존 세트 위반이 ${movedOld}건 변했다 (허용 0)`);
-if (rate > baseRate * 2) revert(`신규 위반율 ${rate.toFixed(1)}% > 기존 평균의 2배 (${(baseRate * 2).toFixed(1)}%)`);
+if (movedOld !== 0 || movedCrit !== 0) revert(`기존 세트 위반이 변했다 — 전체 ${movedOld}건 · CRITICAL ${movedCrit}건 (허용 0)`);
+if (rate > STOP_RATE) revert(`신규 CRITICAL 위반율 ${rate.toFixed(1)}% > 정지선 ${STOP_RATE}%`);
 
+if (PROBE) {
+  fs.writeFileSync(SRC, fs.readFileSync(BAK, "utf8"), "utf8");
+  say(`
+### PROBE — 판정만 하고 원복했다.`);
+  fs.writeFileSync(path.join(ROOT, "docs/merge_log_D93.txt"), log.join("\n"), "utf8");
+  process.exit(0);
+}
 say(`\n✅ 귀속 판정 통과`);
 fs.writeFileSync(path.join(ROOT, "docs/merge_log_D93.txt"), log.join("\n"), "utf8");
 say(`\n다음: npm run build (build:split --verify · free/pro 241 유지 확인)`);
