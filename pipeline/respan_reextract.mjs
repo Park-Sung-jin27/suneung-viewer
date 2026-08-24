@@ -35,9 +35,16 @@ const MARKER = /[㉠-㉾㈀-㈞①-⓿]/;
 // 무시할 문자는 **건너뛰기만** 한다 — idx 는 언제나 원본 인덱스를 가리키므로
 // 반환값은 항상 본문 원문 구간이 된다(변형본에서 잘라내는 사고 방지).
 const HANJA_PAREN = /\([一-鿿豈-﫿][^)]*\)/g;
+// [A] [B] … 대괄호 마커. 본문에는 없고 annotations 로 정박되는데, step4 는
+// 인용문 앞에 붙여 쓴다("[A] '낭군이 입신양명하여…'"). 통째로 무시한다.
+const BRACKET = /\[[A-Z]\]/g;
 function normMap(s, dropHanja) {
-  // 한자 병기 구간을 미리 표시해 둔다 (인덱스는 원본 그대로 유지)
+  // 무시할 구간을 미리 표시해 둔다 (인덱스는 원본 그대로 유지)
   const skip = new Set();
+  BRACKET.lastIndex = 0;
+  let bm;
+  while ((bm = BRACKET.exec(s)) !== null)
+    for (let k = bm.index; k < bm.index + bm[0].length; k++) skip.add(k);
   if (dropHanja) {
     HANJA_PAREN.lastIndex = 0;
     let m;
@@ -90,7 +97,7 @@ function reanchor(t, quote) {
 // 표기(공백·괄호·마커·따옴표·한자·생략표)를 걷어낸 뒤 한쪽이 다른 쪽을 품는가.
 // 품지 못하면 다른 구절을 가리킨 것이다 — 채택하지 않는다.
 const bare = (s) => String(s)
-  .replace(/\s/g, "").replace(/[*()]/g, "")
+  .replace(/\s/g, "").replace(/\[[A-Z]\]/g, "").replace(/[*()]/g, "")
   .replace(/[㉠-㉾㈀-㈞①-⓿]/g, "")
   .replace(/[“”‘’"']/g, "")
   .replace(/[一-鿿豈-﫿]/g, "")
@@ -114,7 +121,7 @@ const stat = (j) => {
 };
 
 console.log(`## cs_spans 재생성 ${APPLY ? "적용" : "DRY-RUN"} — ${targets.length}회차\n`);
-let b0 = 0, b1 = 0, b2 = 0, gAdd = 0, gDrop = 0, gFix = 0;
+let b0 = 0, b1 = 0, b2 = 0, gAdd = 0, gDrop = 0, gFix = 0, gDedup = 0;
 const dropped = [];
 
 for (const yk of targets) {
@@ -192,6 +199,24 @@ for (const yk of targets) {
       c.cs_spans = keep;
     }
   }
+  // ── 4. 중복 제거 ──
+  //   --extract-spans 의 mergeSpans 는 **추가만** 한다. 이 도구를 두 번 돌리면
+  //   재정박으로 바뀐 텍스트를 새 span 으로 보고 또 붙인다(실측: 366건 중복).
+  //   같은 (sent_id, text, occurrence) 는 하나만 남긴다.
+  let dedup = 0;
+  for (const s of [...(j1.reading || []), ...(j1.literature || [])])
+    for (const q of s.questions || []) for (const c of q.choices || []) {
+      if (!Array.isArray(c.cs_spans) || c.cs_spans.length < 2) continue;
+      const seen = new Set(), keep = [];
+      for (const sp of c.cs_spans) {
+        const k = `${sp.sent_id}|${sp.text}|${sp.occurrence || 1}`;
+        if (seen.has(k)) { dedup++; continue; }
+        seen.add(k); keep.push(sp);
+      }
+      c.cs_spans = keep;
+    }
+  gDedup += dedup;
+
   const s2 = stat(j1);
   if (APPLY) fs.writeFileSync(p, JSON.stringify(j1, null, 2), "utf8");
 
@@ -204,6 +229,7 @@ console.log(`\n## 합계`);
 console.log(`   span 추가          +${gAdd}`);
 console.log(`   실패 ${b0} → 재추출 후 ${b1} → **재정박 ${gFix}건 복구** → 남은 ${b2 + gDrop}`);
 console.log(`   제거된 깨진 span   ${gDrop}건`);
+console.log(`   중복 제거          ${gDedup}건`);
 
 if (dropped.length) {
   const rp = path.join(ROOT, "docs/csspan_dropped_20260824.md");

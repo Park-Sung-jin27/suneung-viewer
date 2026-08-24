@@ -21,6 +21,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const STEP3 = path.join(ROOT, "pipeline/reextract/step3");
 const APPLY = process.argv.includes("--apply");
 const ONLY = (() => { const i = process.argv.indexOf("--only"); return i > 0 ? process.argv[i + 1] : null; })();
+// --fields : 발문·선지·보기까지 확장 (기본은 sents.t 만)
+const FIELDS = process.argv.includes("--fields");
 
 const W = (s) => String(s).replace(/\s/g, "");
 
@@ -91,10 +93,11 @@ for (const yk of targets) {
   catch (e) { console.log(`  ${yk.padEnd(11)} 🔴 ${e.message}`); continue; }
 
   let tot = 0, sp = 0, no = 0, unk = 0;
-  for (const s of [...(j.reading || []), ...(j.literature || [])])
-    for (const x of s.sents || []) {
-      const t = String(x.t ?? "");
-      if (!t.includes("\n")) continue;
+  for (const s of [...(j.reading || []), ...(j.literature || [])]) {
+    // 한 문자열의 조판 줄바꿈을 정리한다. 판별 불가 지점은 \n 그대로 남긴다.
+    const clean = (raw, where) => {
+      const t = String(raw ?? "");
+      if (!t.includes("\n")) return t;
       const parts = t.split("\n");
       let out = parts[0];
       for (let i = 0; i < parts.length - 1; i++) {
@@ -102,13 +105,41 @@ for (const yk of targets) {
         const d = decide(lines, i, parts[i], parts[i + 1]);
         if (d === null) {
           unk++;
-          unresolved.push({ yk, set: s.id, sid: x.id, a: parts[i].slice(-24), b: parts[i + 1].slice(0, 24) });
+          unresolved.push({ yk, set: s.id, sid: where, a: parts[i].slice(-24), b: parts[i + 1].slice(0, 24) });
           out += "\n" + parts[i + 1];          // 판별 불가 — 손대지 않는다
         } else if (d.sp) { sp++; out += " " + parts[i + 1]; }
         else { no++; out += parts[i + 1]; }
       }
-      if (APPLY) x.t = out;
+      return out;
+    };
+
+    for (const x of s.sents || []) {
+      const v = clean(x.t, x.id);
+      if (APPLY) x.t = v;
     }
+    // 발문·선지·보기도 같은 조판 줄바꿈을 안고 있다(실측: 발문 30% · 선지 75% · 보기 100%).
+    // choices.analysis 는 제외한다 — 해설이 문단을 줄바꿈으로 나누는 것은 정상이고,
+    // 기존 353세트도 99.4%가 줄바꿈을 갖는다.
+    if (FIELDS)
+      for (const q of s.questions || []) {
+        const qv = clean(q.t, `Q${q.id}.t`);
+        if (APPLY) q.t = qv;
+        if (typeof q.bogi === "string") {
+          const bv = clean(q.bogi, `Q${q.id}.bogi`);
+          if (APPLY) q.bogi = bv;
+        } else if (q.bogi && typeof q.bogi === "object" && !Array.isArray(q.bogi)) {
+          for (const k of Object.keys(q.bogi))
+            if (typeof q.bogi[k] === "string") {
+              const bv = clean(q.bogi[k], `Q${q.id}.bogi.${k}`);
+              if (APPLY) q.bogi[k] = bv;
+            }
+        }
+        for (const c of q.choices || []) {
+          const cv = clean(c.t, `Q${q.id}#${c.num}.t`);
+          if (APPLY) c.t = cv;
+        }
+      }
+  }
   if (APPLY) fs.writeFileSync(p, JSON.stringify(j, null, 2), "utf8");
   console.log(`  ${yk.padEnd(11)} 줄바꿈 ${String(tot).padStart(4)} → 공백 ${String(sp).padStart(4)} · 붙임 ${String(no).padStart(4)} · 판별불가 ${String(unk).padStart(3)}${unk ? " ⚠" : " ✅"}`);
   gTot += tot; gSp += sp; gNo += no; gUnk += unk;

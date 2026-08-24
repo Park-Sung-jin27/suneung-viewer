@@ -761,7 +761,9 @@ export function checkPromptInputs(prompt, question, set) {
   return { ok: reasons.length === 0, reasons };
 }
 
-async function reanalyzeSingleChoice(set, question, choice) {
+// export: 선지 단위 재생성을 외부 도구(polarity_regen.mjs)에서도 쓴다.
+// 프롬프트·모델·시스템 프롬프트·형식은 손대지 않았다 — 노출만 했다.
+export async function reanalyzeSingleChoice(set, question, choice) {
   // [NEW] 변별 판단용 neighbor choices — 같은 문항 내 타 선지 num/t/ok 를 함께 전달
   const neighbor_choices = (question.choices || [])
     .filter((c) => c.num !== choice.num)
