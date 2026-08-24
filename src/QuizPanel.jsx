@@ -3,6 +3,7 @@ import { P, CC, MODE, SYMBOLS } from "./constants";
 import { BogiTable } from "./BogiTable";
 import QuestionQA from "./QuestionQA";
 import { saveEvidenceFeedback } from "./saveEvidenceFeedback";
+import ReportIssueButton from "./ReportIssueButton";
 
 // ══════════════════════════════════════════════════════════
 // [1] 유틸 함수
@@ -1348,6 +1349,7 @@ function isVocabQuestion(questionText, isLastQuestion) {
 
 function QuestionBlock({
   proLoading = false,
+  isPro = false,
   question,
   passageId,
   sel,
@@ -1447,6 +1449,14 @@ function QuestionBlock({
           </span>
           {question.t}
         </div>
+        {/* 발주 F-21: 문항 단위 오류 신고. 회차·세트·문항·모드는 자동 첨부된다. */}
+        <ReportIssueButton
+          user={user}
+          yearKey={yearKey}
+          setId={setId}
+          questionId={question.id}
+          isPro={isPro}
+        />
         {question.correctRate != null && (
           <span
             style={{
@@ -1821,6 +1831,7 @@ function ReportModal({ totalQ, correctCount, wrongCount, log, onClose }) {
 // ══════════════════════════════════════════════════════════
 export default function QuizPanel({
   proLoading = false,
+  isPro = false,
   passageSet,
   sel,
   onSelChange,
@@ -1933,6 +1944,7 @@ export default function QuizPanel({
       {passageSet.questions.map((q, qIdx) => (
         <QuestionBlock
           proLoading={proLoading}
+          isPro={isPro}
           key={`${passageSet.id}-${q.id}`}
           question={q}
           isLastQuestion={qIdx === passageSet.questions.length - 1}
