@@ -1,6 +1,6 @@
 ## 병합 적용 — 재추출 산출물
 
-### 1. 사전 확인 — 회차 19 · PROBE(끝나면 원복)
+### 1. 사전 확인 — 회차 19
    2014_6월A: step4_result.json
    2014_6월B: step4_result.json
    2014_9월A: step4_result.json
@@ -55,4 +55,4 @@
      F_empty_analysis               20
      OK_ANALYSIS_CONFLICT           9
 
-### PROBE — 판정만 하고 원복했다.
+✅ 귀속 판정 통과
