@@ -38,20 +38,16 @@
 
 ### 6. 분리 게이트 판정 (loc 파싱 없음)
   기존만  세트 353 · 선지 6840 → CRITICAL 487 (전체 1675)
-  신규만  세트 43 · 선지 780 → CRITICAL 798 (전체 1673)
-  병합본  세트 396 · 선지 7620 → CRITICAL 1285 (전체 3384)
-  기존 변동 = 1285 − 487 − 798 = **0** ✅  (전체 기준 36)
-  신규 CRITICAL 위반율 **102.3%** (기존 7.1% · 정지선 15%) 🔴
+  신규만  세트 43 · 선지 780 → CRITICAL 37 (전체 227)
+  병합본  세트 396 · 선지 7620 → CRITICAL 524 (전체 1938)
+  기존 변동 = 524 − 487 − 37 = **0** ✅  (전체 기준 36)
+  신규 CRITICAL 위반율 **4.7%** (기존 7.1% · 정지선 15%) ✅
 
   신규 CRITICAL 위반 코드별:
-     CS_SPAN_UNRESOLVED             695
-     F_zerowidth_corruption         63
-     H_analysis_id_leak             19
+     C_anchor_exact_fail            20
      OK_ANALYSIS_CONFLICT           8
      F_content_reversed             8
-     F_encoding_corruption          3
      CS_ALL_NONHIGHLIGHTABLE        1
-     C_anchor_exact_fail            1
   기존 CRITICAL 위반 코드별(대조):
      MARKER_INTEGRITY_FAIL          111
      E_ok_true_no_cs_ids            75
@@ -62,4 +58,4 @@
      F_empty_analysis               20
      OK_ANALYSIS_CONFLICT           9
 
-🔴 정지·원복 — 신규 CRITICAL 위반율 102.3% > 정지선 15%
+### PROBE — 판정만 하고 원복했다.
