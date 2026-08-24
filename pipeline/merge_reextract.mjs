@@ -36,9 +36,16 @@ function gateBySet(dataPath) {
   const bySet = new Map();      // 전체 issues (참고 지표)
   const critBySet = new Map();  // CRITICAL (판정 기준 — 발주 D-93 후속 4)
   let total = 0;
+  // 🔴 loc 형식은 축마다 다르다 (555건 중 yearKey 포함 369 / 없음 186).
+  //    "2014_6월A r20146d Q27-[1]"  ← yearKey 있음
+  //    "l20146b [A]"                ← yearKey 없음
+  //    앞 두 토큰을 세트로 읽으면 후자가 통째로 새서 귀속 판정이 거짓 통과한다(실증).
+  //    issue 객체의 yearKey 필드는 555/555 항상 있으므로 그것을 쓰고,
+  //    loc 에서는 세트 id 패턴만 찾는다.
+  const SETID = /([rl]\d{4,6}[A-Za-z]?)/;
   const keyOf = (it) => {
-    const m = String(it.loc || "").match(/^(\S+)\s+(\S+)/);
-    return m ? `${m[1]}::${m[2]}` : `${it.yearKey}::?`;
+    const m = String(it.loc || "").match(SETID);
+    return `${it.yearKey}::${m ? m[1] : "?"}`;
   };
   for (const it of rep.issues || []) { total++; const k = keyOf(it); bySet.set(k, (bySet.get(k) || 0) + 1); }
   for (const it of rep.critical || []) { const k = keyOf(it); critBySet.set(k, (critBySet.get(k) || 0) + 1); }
