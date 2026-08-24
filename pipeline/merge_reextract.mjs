@@ -15,6 +15,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import os from "node:os";
 import { checkSetMarkers } from "./marker_anchor_check.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -27,29 +28,36 @@ const STEP3 = path.join(ROOT, "pipeline/reextract/step3");
 const sh = (args, opts = {}) =>
   execFileSync("node", args, { cwd: ROOT, maxBuffer: 256 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"], ...opts }).toString();
 
-// 게이트 리포트를 세트 단위로 집계 — loc 예: "2026수능 r2026a Q1-[1]"
-function gateBySet(dataPath) {
-  const args = [path.join(ROOT, "pipeline/quality_gate.mjs"), "--report"];
-  if (dataPath) args.push(`--data=${dataPath}`);
+// ── 분리 게이트 (발주 2026-08-24 [채택]) ──
+//   loc 파싱으로 귀속을 판정하던 방식을 폐기한다.
+//   폐기 이유: setId 는 **회차 안에서만 유일**하다(dataLoader.js:91 — A/B형 분리
+//   노출을 위해 yearKey::setId 복합키로 다룬다). 기존 353세트도 29종이 회차 간
+//   중복이라, loc 문자열에서 세트 id 만 뽑아 귀속시키는 방식은 구조적으로 불가능하다.
+//   실제로 판정기가 3연속 틀렸다(130.5% → 3.3% → 0.0%, 진실 113%).
+//
+//   대신 **기존만 / 신규만 / 병합본** 세 벌을 각각 게이트에 넣어 수를 직접 뺀다.
+//   파싱이 없으므로 틀릴 여지가 없다.
+//     기존 변동 = 병합본.CRITICAL − 기존만.CRITICAL − 신규만.CRITICAL   (0 이어야 함)
+//     신규 위반율 = 신규만.CRITICAL / 신규 선지 수
+const TMP = path.join(os.tmpdir(), "merge_reextract_gate.json");
+function gateOf(label, dataObj) {
+  fs.writeFileSync(TMP, JSON.stringify(dataObj), "utf8");
+  const args = [path.join(ROOT, "pipeline/quality_gate.mjs"), "--report", `--data=${TMP}`];
   try { sh(args); } catch { /* release_blocked 는 비정상 종료가 아니다 */ }
   const rep = JSON.parse(fs.readFileSync(path.join(ROOT, "pipeline/quality_report.json"), "utf8"));
-  const bySet = new Map();      // 전체 issues (참고 지표)
-  const critBySet = new Map();  // CRITICAL (판정 기준 — 발주 D-93 후속 4)
-  let total = 0;
-  // 🔴 loc 형식은 축마다 다르다 (555건 중 yearKey 포함 369 / 없음 186).
-  //    "2014_6월A r20146d Q27-[1]"  ← yearKey 있음
-  //    "l20146b [A]"                ← yearKey 없음
-  //    앞 두 토큰을 세트로 읽으면 후자가 통째로 새서 귀속 판정이 거짓 통과한다(실증).
-  //    issue 객체의 yearKey 필드는 555/555 항상 있으므로 그것을 쓰고,
-  //    loc 에서는 세트 id 패턴만 찾는다.
-  const SETID = /([rl]\d{4,6}[A-Za-z]?)/;
-  const keyOf = (it) => {
-    const m = String(it.loc || "").match(SETID);
-    return `${it.yearKey}::${m ? m[1] : "?"}`;
-  };
-  for (const it of rep.issues || []) { total++; const k = keyOf(it); bySet.set(k, (bySet.get(k) || 0) + 1); }
-  for (const it of rep.critical || []) { const k = keyOf(it); critBySet.set(k, (critBySet.get(k) || 0) + 1); }
-  return { bySet, critBySet, total, critical: (rep.critical || []).length };
+  const byType = new Map();
+  for (const it of rep.critical || []) byType.set(it.type, (byType.get(it.type) || 0) + 1);
+  return { label, total: (rep.issues || []).length, critical: (rep.critical || []).length, byType };
+}
+// 원본 구조는 유지하되 지정한 세트만 남긴 사본
+function subset(data, keep) {
+  const out = {};
+  for (const [yk, v] of Object.entries(data)) {
+    out[yk] = { ...v };
+    for (const sec of ["reading", "literature"])
+      if (v[sec]) out[yk][sec] = v[sec].filter((s) => keep(yk, s));
+  }
+  return out;
 }
 
 const log = [];
@@ -117,10 +125,9 @@ const count = (d) => {
 };
 const before = count(data);
 say(`\n### 3. 병합 전 — 세트 ${before.sets} · 문항 ${before.qs} · 선지 ${before.ch}`);
-const g0 = gateBySet(null);
+const g0 = gateOf("기존만", data);
 say(`  게이트 위반 ${g0.total} (CRITICAL ${g0.critical})`);
-const oldKeys = new Set();
-for (const yk of Object.keys(data)) for (const sec of ["reading", "literature"]) for (const s of data[yk][sec] || []) oldKeys.add(`${yk}::${s.id}`);
+const oldCount = before.sets;
 
 if (!APPLY) {
   say(`\n### DRY-RUN 종료 — 아무것도 쓰지 않았다.`);
@@ -147,43 +154,33 @@ if (after.sets - before.sets !== incoming.length) { say("🔴 정지 — 세트 
 fs.writeFileSync(SRC, JSON.stringify(data), "utf8");
 say(`  쓰기 완료 ${(fs.statSync(SRC).size / 1048576).toFixed(2)}MB`);
 
-// ── 6. 귀속 판정 ──
-const g1 = gateBySet(null);
-// 🔴 전체 issues 뿐 아니라 **CRITICAL 기준으로도** 본다.
-//    severity 재분류가 일어나면 전체 수는 그대로인데 CRITICAL 만 변할 수 있다.
-let movedOld = 0, movedCrit = 0; const moved = [];
-for (const k of oldKeys) {
-  const a = g0.bySet.get(k) || 0, b = g1.bySet.get(k) || 0;
-  const ca = g0.critBySet.get(k) || 0, cb = g1.critBySet.get(k) || 0;
-  if (a !== b) { movedOld++; if (moved.length < 10) moved.push(`${k}: 전체 ${a}→${b}`); }
-  if (ca !== cb) { movedCrit++; if (moved.length < 10) moved.push(`${k}: CRITICAL ${ca}→${cb}`); }
-}
-const newViol = {};
-let newTotal = 0, newCrit = 0;
-for (const { yk, set } of incoming) {
-  const k = `${yk}::${set.id}`;
-  const n = g1.bySet.get(k) || 0, c = g1.critBySet.get(k) || 0;
-  newTotal += n; newCrit += c;
-  if (n || c) (newViol[yk] ??= []).push(`${set.id}:${c}C/${n}`);
-}
+// ── 6. 분리 게이트 판정 ──
 const newQ = incoming.reduce((a, x) => a + (x.set.questions || []).length, 0);
 const newChoices = incoming.reduce((a, x) => a + (x.set.questions || []).flatMap((q) => q.choices || []).length, 0);
-// 🔴 판정 기준은 **CRITICAL** 로 고정한다(발주 D-93 후속 ④).
-//    기존 평균 7.1%(487/6840) · 정지선 15%. W_ 경고는 참고 지표로만 병기한다.
-const STOP_RATE = 15;
-const rate = newCrit / newChoices * 100;              // 신규 CRITICAL 위반율
-const baseRate = g0.critical / before.ch * 100;       // 기존 CRITICAL 위반율
-const rateAll = newTotal / newChoices * 100;          // 참고 — 전체 issues 기준
-const baseAll = g0.total / before.ch * 100;
+const newKeys = new Set(incoming.map(({ yk, set }) => `${yk}::${set.id}`));
 
-say(`\n### 6. 귀속 판정`);
-say(`  기존 ${oldKeys.size}세트 변동 — 전체 ${movedOld}건 · CRITICAL ${movedCrit}건 ${movedOld === 0 && movedCrit === 0 ? "✅" : "🔴"}`);
-for (const m of moved) say(`     ${m}`);
-say(`  신규 ${incoming.length}세트 CRITICAL: ${newCrit}건 · 위반율 **${rate.toFixed(1)}%** (기존 ${baseRate.toFixed(1)}% · 정지선 ${STOP_RATE}%)`);
-say(`    [참고] 전체 issues 기준: ${newTotal}건 · ${rateAll.toFixed(1)}% (기존 ${baseAll.toFixed(1)}%)`);
-say(`    세트별 (CRITICAL/전체):`);
-for (const [yk, list] of Object.entries(newViol)) say(`     ${yk}: ${list.join(" ")}`);
-say(`  전체 위반 ${g0.total} → ${g1.total} (CRITICAL ${g0.critical} → ${g1.critical})`);
+const gN = gateOf("신규만", subset(data, (yk, s) => newKeys.has(`${yk}::${s.id}`)));
+const gM = gateOf("병합본", data);
+
+// 🔴 판정 기준은 CRITICAL 로 고정한다(발주 D-93 후속 ④). W_ 경고는 참고 지표.
+const STOP_RATE = 15;
+const drift = gM.critical - g0.critical - gN.critical;      // 상호작용 = 기존 변동
+const driftAll = gM.total - g0.total - gN.total;
+const rate = newChoices ? gN.critical / newChoices * 100 : 0;
+const baseRate = before.ch ? g0.critical / before.ch * 100 : 0;
+
+say(`
+### 6. 분리 게이트 판정 (loc 파싱 없음)`);
+say(`  기존만  세트 ${before.sets} · 선지 ${before.ch} → CRITICAL ${g0.critical} (전체 ${g0.total})`);
+say(`  신규만  세트 ${incoming.length} · 선지 ${newChoices} → CRITICAL ${gN.critical} (전체 ${gN.total})`);
+say(`  병합본  세트 ${after.sets} · 선지 ${after.ch} → CRITICAL ${gM.critical} (전체 ${gM.total})`);
+say(`  기존 변동 = ${gM.critical} − ${g0.critical} − ${gN.critical} = **${drift}** ${drift === 0 ? "✅" : "🔴"}  (전체 기준 ${driftAll})`);
+say(`  신규 CRITICAL 위반율 **${rate.toFixed(1)}%** (기존 ${baseRate.toFixed(1)}% · 정지선 ${STOP_RATE}%) ${rate > STOP_RATE ? "🔴" : "✅"}`);
+say(`
+  신규 CRITICAL 위반 코드별:`);
+for (const [t, n] of [...gN.byType].sort((a, b) => b[1] - a[1])) say(`     ${t.padEnd(30)} ${n}`);
+say(`  기존 CRITICAL 위반 코드별(대조):`);
+for (const [t, n] of [...g0.byType].sort((a, b) => b[1] - a[1]).slice(0, 8)) say(`     ${t.padEnd(30)} ${n}`);
 
 const revert = (why) => {
   fs.writeFileSync(SRC, fs.readFileSync(BAK, "utf8"), "utf8");
@@ -191,7 +188,7 @@ const revert = (why) => {
   fs.writeFileSync(path.join(ROOT, "docs/merge_log_D93.txt"), log.join("\n"), "utf8");
   process.exit(1);
 };
-if (movedOld !== 0 || movedCrit !== 0) revert(`기존 세트 위반이 변했다 — 전체 ${movedOld}건 · CRITICAL ${movedCrit}건 (허용 0)`);
+if (drift !== 0) revert(`기존 세트 위반이 변했다 — CRITICAL 상호작용 ${drift}건 (허용 0)`);
 if (rate > STOP_RATE) revert(`신규 CRITICAL 위반율 ${rate.toFixed(1)}% > 정지선 ${STOP_RATE}%`);
 
 if (PROBE) {
