@@ -622,14 +622,20 @@ export async function attachProToSet(yearData, yearKey, setId, accessToken) {
 
 export async function loadYear(yearKey, options = {}) {
   const { bypassFilter = false, setId = null, accessToken = null } = options;
+  // 발주 F-22: 마스터·검증자(bypassFilter)는 비노출 세트까지 봐야 한다.
+  //   free/ 에는 LIVE 세트만 담기므로 split 경로로는 구조적으로 볼 수 없다
+  //   (예: 2016_6월B 문학 — free 1세트 / 통짜 5세트).
+  //   bypassFilter 일 때만 통짜 파일로 폴백한다. 일반 사용자 경로는 무접촉이고,
+  //   통짜 파일에는 해설·형광펜이 이미 들어 있으므로 pro 병합도 불필요하다.
+  const useSplit = USE_SPLIT_DATA && !bypassFilter;
   // 발주 F-20: split 경로에서는 무료 트리를 먼저 얹고, 세트 단위로 유료 조각을
   //   덧댄다. 플래그 false 면 아래 한 줄은 실행되지 않으므로 동작이 동일하다.
-  const data = USE_SPLIT_DATA
+  const data = useSplit
     ? { [yearKey]: await _loadFreeYear(yearKey) }
     : await _load();
   if (!data[yearKey]) throw new Error(`연도 데이터 없음: ${yearKey}`);
   const yd = data[yearKey];
-  if (USE_SPLIT_DATA && setId) {
+  if (useSplit && setId) {
     await _mergePro(yd, yearKey, setId, accessToken);
   }
   if (!yd._csBuilt) {
@@ -666,10 +672,11 @@ export async function loadYear(yearKey, options = {}) {
 export async function getYearKeys(options = {}) {
   const { bypassFilter = false } = options;
   // 발주 F-20: split 경로에서는 인덱스만으로 목록을 만든다(연도 파일 미수신).
-  if (USE_SPLIT_DATA) {
+  // 발주 F-22: bypassFilter(마스터·검증자)는 index 에 없는 비노출 연도까지
+  //   봐야 하므로 아래 split 분기를 타지 않고 통짜 파일 경로로 내려간다.
+  if (USE_SPLIT_DATA && !bypassFilter) {
     const idx = await _loadIndex();
     const years = idx.years ?? [];
-    if (bypassFilter) return years.map((y) => y.yearKey);
     return years
       .filter((y) =>
         (y.sets ?? []).some((s) => isReleaseSet(y.yearKey, s.id)),
