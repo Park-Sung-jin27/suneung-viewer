@@ -21,6 +21,10 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const STEP3 = path.join(ROOT, "pipeline/reextract/step3");
 const APPLY = process.argv.includes("--apply");
 const ONLY = (() => { const i = process.argv.indexOf("--only"); return i > 0 ? process.argv[i + 1] : null; })();
+// --with-extract : step4_csids --extract-spans 를 먼저 돌린다(기본은 끔).
+//   그 단계는 span 을 **추가**해 배열 인덱스를 밀어내고, 같은 자리 span 을 다른
+//   구절로 덮기도 한다. 실측 이득은 +10건뿐이라 기본에서 뺐다. 재정박만으로 충분하다.
+const WITH_EXTRACT = process.argv.includes("--with-extract");
 
 const rounds = fs.readdirSync(STEP3).filter((d) => fs.existsSync(path.join(STEP3, d, "step4_result.json")));
 const targets = ONLY ? rounds.filter((r) => r === ONLY) : rounds;
@@ -130,35 +134,42 @@ for (const yk of targets) {
   const s0 = stat(j);
 
   // ── 1. --extract-spans (래퍼) ──
-  const tmp = path.join(os.tmpdir(), `respan_${yk}.json`);
-  fs.writeFileSync(tmp, JSON.stringify({ [yk]: { reading: j.reading || [], literature: j.literature || [] } }), "utf8");
-  try {
-    execFileSync("node", [path.join(ROOT, "pipeline/step4_csids.js"), "--extract-spans", yk, `--data=${tmp}`],
-      { cwd: ROOT, maxBuffer: 256 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
-  } catch (e) {
-    console.log(`  ${yk.padEnd(11)} 🔴 extract-spans 실패: ${String(e.stderr || e.message).slice(0, 100)}`);
-    continue;
+  let j1 = j;
+  if (WITH_EXTRACT) {
+    const tmp = path.join(os.tmpdir(), `respan_${yk}.json`);
+    fs.writeFileSync(tmp, JSON.stringify({ [yk]: { reading: j.reading || [], literature: j.literature || [] } }), "utf8");
+    try {
+      execFileSync("node", [path.join(ROOT, "pipeline/step4_csids.js"), "--extract-spans", yk, `--data=${tmp}`],
+        { cwd: ROOT, maxBuffer: 256 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+    } catch (e) {
+      console.log(`  ${yk.padEnd(11)} 🔴 extract-spans 실패: ${String(e.stderr || e.message).slice(0, 100)}`);
+      continue;
+    }
+    const back = JSON.parse(fs.readFileSync(tmp, "utf8"))[yk];
+    j1 = { ...j, reading: back.reading, literature: back.literature };
   }
-  const back = JSON.parse(fs.readFileSync(tmp, "utf8"))[yk];
-  const j1 = { ...j, reading: back.reading, literature: back.literature };
   // 🔴 extract-spans 는 analysis 인용문을 다시 찾아 같은 자리 span 을 덮어쓸 수 있다.
   //    덮어쓴 값이 원래 인용과 **다른 구절**이면 형광펜이 엉뚱한 곳에 켜지므로 되돌린다.
   //    (실측 3건: "일인 주주가 회사의 대표 이사가…" → "일인 주식회사")
   let revert = 0;
-  {
+  if (WITH_EXTRACT) {
+    // 🔴 키에 **배열 위치(i)** 를 넣는다.
+    //    한 선지가 같은 (sent_id, occurrence) 로 span 을 여럿 갖는 경우가 있다
+    //    (실측: l20189c Q36#2 가 l20189cs21|1 로 3개). 위치를 빼면 Map 이 셋을
+    //    하나로 뭉개고, 되돌릴 때 셋 모두 그 하나의 값이 되어 서로 다른 근거가
+    //    같은 구절로 덮인다 → dedup 이 1개로 줄여 형광펜 2개가 조용히 사라진다.
     const before = new Map();
     for (const s of [...(j.reading || []), ...(j.literature || [])])
       for (const q of s.questions || []) for (const c of q.choices || [])
-        for (const sp of c.cs_spans || [])
-          before.set(`${s.id}|${q.id}|${c.num}|${sp.sent_id}|${sp.occurrence || 1}`, String(sp.text));
+        (c.cs_spans || []).forEach((sp, i) =>
+          before.set(`${s.id}|${q.id}|${c.num}|${i}`, String(sp.text)));
     for (const s of [...(j1.reading || []), ...(j1.literature || [])])
       for (const q of s.questions || []) for (const c of q.choices || [])
-        for (const sp of c.cs_spans || []) {
-          const k = `${s.id}|${q.id}|${c.num}|${sp.sent_id}|${sp.occurrence || 1}`;
-          const was = before.get(k);
-          if (was === undefined || was === sp.text) continue;
+        (c.cs_spans || []).forEach((sp, i) => {
+          const was = before.get(`${s.id}|${q.id}|${c.num}|${i}`);
+          if (was === undefined || was === sp.text) return;
           if (!sameQuote(was, sp.text)) { sp.text = was; revert++; }
-        }
+        });
   }
   const s1 = stat(j1);
 
