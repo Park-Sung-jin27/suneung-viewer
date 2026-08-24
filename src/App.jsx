@@ -2129,6 +2129,7 @@ function ViewerPage({ user, isPro = false }) {
           <QuizPanel
             key={`q-${currentSet?.id}`}
             proLoading={proLoading}
+            isPro={isPro || isMaster}
             passageSet={currentSet}
             sel={sel}
             onSelChange={handleSelChange}
