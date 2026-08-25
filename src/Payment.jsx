@@ -73,10 +73,9 @@ const PLANS = [
     note: "자동 갱신되지 않습니다. 만료 시 직접 재결제해 주세요.",
     // 발주 F-3 (2026-08-06): 클라이언트 키가 테스트 키인 상태로 결제창이 열려
     //   실제 결제 1건이 대금 미수취로 발생. 라이브 키 전환까지 임시 차단했다.
-    // 발주 F-26 (2026-08-21): Preview E2E 를 위해 해제한다.
-    //   ★ 이 브랜치(e2e/payment-preview)는 Preview 전용이다. E2E ①②④ 합격
-    //     전까지 main 에 머지하지 않는다.
-    //   ★ 되돌리기: available 을 false 로 되돌리면 원상 복구된다.
+    // 발주 F-26 (2026-08-21): Preview E2E 4/4 합격으로 차단 해제.
+    //   Production 키 짝 정합(live_sk_ 서버 + live_ck_ 번들) 확인 완료.
+    //   ★ 되돌리기: available 을 false 로 되돌리면 결제 진입이 다시 막힌다.
     available: true,
     unavailableLabel: "결제 준비 중입니다 — 곧 오픈합니다",
   },
