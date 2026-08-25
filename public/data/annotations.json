@@ -1929,6 +1929,12 @@
         "sentId": "l20226as24",
         "marker": "ⓑ",
         "text": "ⓑ 요설들"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20226as24",
+        "sentTo": "l20226as24"
       }
     ],
     "l20226b": [
