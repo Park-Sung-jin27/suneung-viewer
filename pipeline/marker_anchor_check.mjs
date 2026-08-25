@@ -99,3 +99,32 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       `(참조 ${r.refs.join("")} / 정박 ${r.anchors.join("") || "없음"}) ${r.부분 ? "[부분]" : "[전부]"}`);
   process.exit(1);
 }
+
+/**
+ * ⑥ bracket 정박 축 (발주 D-104 ③)
+ *
+ * `workTag` 로 들어간 `[A]`~`[F]` 단독 문장은 **렌더러가 의도적으로 숨긴다**
+ * (PassagePanel.jsx 의 `_isAreaEndMarker` — "visual 본문 노출 NOT path").
+ * 실제 구간 표시는 `annotations` 의 `{type:"bracket", label, sentFrom, sentTo}` 가 그린다.
+ *
+ * 따라서 **workTag 는 있는데 bracket 이 없으면 화면에 아무것도 안 나온다.**
+ * ⑤축(마커 정합성)은 이걸 못 잡는다 — 텍스트에는 실재하기 때문이다.
+ *
+ * 반환: 결함이면 { labels, nTags } · 정상이면 null
+ */
+export function checkBracketAnchored(set) {
+  const TAG = /^\[([A-F])\]$/;
+  const tags = (set.sents || [])
+    .map((x) => String(x.t ?? "").trim().match(TAG))
+    .filter(Boolean)
+    .map((m) => m[1]);
+  if (!tags.length) return null;
+  const brackets = (set.annotations || []).filter((a) => a && a.type === "bracket");
+  if (brackets.length) {
+    // 라벨 단위 누락도 본다 (D-94 의 l2024b [C] 류)
+    const have = new Set(brackets.map((b) => b.label));
+    const miss = [...new Set(tags)].filter((t) => !have.has(t));
+    return miss.length ? { labels: miss, nTags: tags.length, partial: true } : null;
+  }
+  return { labels: [...new Set(tags)], nTags: tags.length, partial: false };
+}

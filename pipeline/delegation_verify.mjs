@@ -19,7 +19,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { hard } from "./anchor.mjs";
 import { scanSetRanges, pdfText } from "./set_ranges.mjs";
-import { checkSetMarkers } from "./marker_anchor_check.mjs";
+import { checkSetMarkers, checkBracketAnchored } from "./marker_anchor_check.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const yk = process.argv[2];
@@ -163,11 +163,26 @@ for (const s of sets)
       `그 마커가 정의된 부분(<보기> 상자·지문 표시)을 빠뜨리지 말고 함께 넣어 주세요.`);
   }
 
+// ── ⑥ bracket 정박 (발주 D-104 ③) ──
+//   workTag [A-F] 단독 문장은 렌더러가 숨긴다. 실제 구간 표시는 annotations.bracket 이
+//   그린다. workTag 만 있고 bracket 이 없으면 **화면에 아무것도 안 나온다.**
+//   ⑤축은 텍스트 실재만 보므로 이걸 못 잡는다.
+let bracketBad = 0;
+for (const s of sets) {
+  const r = checkBracketAnchored(s);
+  if (!r) continue;
+  bracketBad++;
+  say(`세트 ${s.id}: 지문에 [${r.labels.join("][")}] 구간 표시가 있는데 ` +
+    `annotations 의 bracket 정박이 ${r.partial ? "일부" : ""} 없습니다. ` +
+    `그대로 두면 화면에 구간 표시가 아예 안 보입니다. ` +
+    `각 구간의 시작·끝 문장을 {type:"bracket", label, sentFrom, sentTo} 로 넣어 주세요.`);
+}
+
 const key = JSON.parse(fs.readFileSync(path.join(ROOT, "pipeline/answer_key.json"), "utf8"))[yk]?.ans || {};
 const noKey = [...got].filter((n) => key[String(n)] == null);
 
 // ── 보고 ──
-const fail = schemaBad + pairBad + anchorBad + missing.length + extra.length + markerBad;
+const fail = schemaBad + pairBad + anchorBad + missing.length + extra.length + markerBad + bracketBad;
 console.log(`## 위임 산출물 검수 — ${yk} / ${section}`);
 console.log(`  세트 ${sets.length}개 · 문항 ${got.size}개`);
 console.log(`  ① 스키마    ${schemaBad ? `🔴 ${schemaBad}건` : "✅ 통과"}`);
