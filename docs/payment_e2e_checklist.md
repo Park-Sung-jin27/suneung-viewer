@@ -94,3 +94,77 @@ console.log(r.status, await r.json());
 ## 완료 조건
 
 1~4 전부 기대대로일 때만 라이브 키 전환으로 넘어간다.
+
+---
+
+# 실행 결과 — 2026-08-21 (발주 F-26)
+
+> 수행 환경: Vercel **Preview** (`e2e/payment-preview` 브랜치, `test_ck_`/`test_sk_`).
+> 차단 스위치 2개(`public/suneung/index.html` `PAYMENT_TEMPORARILY_DISABLED`,
+> `src/Payment.jsx` 스탠다드 `available`)를 해제한 상태로 수행했다.
+> 값은 **심사관·대표 실측**이며, 프론트(Code A)가 대신 측정한 값이 아니다.
+
+## 판정: 4/4 합격 → main 머지(`fe9a4d7`) → Production 재배포 완료
+
+| # | 항목 | 실측 | 판정 |
+|---|---|---|---|
+| ① | 정상 결제 → Pro 세트 실제 열림 | `growth27` 계정에 **신규 구독 생성**, 뷰어에서 **`/api/pro-data` 200** | 합격 |
+| ② | 재결제 → 만료일 연장 | `expires_at` = **`2026-09-25T15:01:00.654Z`** = 직전값 + 1개월. **밀리초까지 보존** = 덮어쓰기가 아니라 연장 | 합격 |
+| ③ | 89,000원 거절 | **400 `Invalid subscription amount`** (로그인 세션 기준). 비로그인은 **401 선행** | 합격 |
+| ④ | 권한 부여 실패 → 안내·알림 | 화면 문구 표시 + Discord 알림 수신, **알림에 민감정보 없음**, DB 무결 | 합격 |
+
+②의 합격 근거는 **밀리초(`.654Z`)가 보존됐다**는 점이다. 오늘 기준으로 다시 계산했다면
+밀리초가 달라진다. 잔여 기간이 살아서 그 끝에 1개월이 더해졌다는 직접 증거다.
+
+## ④ 재현 방법 (다음 회차에 재사용)
+
+체크리스트 4번 원문 SQL은 그대로 쓰면 실패한다. `plan='pro'` 행이 이미 있으면
+`ADD CONSTRAINT` 가 기존 행 검사에서 에러난다. **`not valid`** 를 붙여야 한다 —
+기존 행 검사는 건너뛰고 신규 INSERT/UPDATE 에만 적용된다.
+
+```sql
+alter table subscriptions add constraint tmp_block check (plan <> 'pro') not valid;
+-- 39,900원 결제 1건 수행 → 화면·Discord·DB 확인
+alter table subscriptions drop constraint tmp_block;   -- 반드시 제거
+```
+
+🔴 제약이 남아 있으면 **모든 실고객 결제의 권한 부여가 실패**한다. 확인:
+
+```sql
+select conname from pg_constraint where conrelid = 'subscriptions'::regclass;
+```
+
+🔴 `ORDER_DISCORD_WEBHOOK_URL` 이 Preview 스코프에 없으면 알림이 **오류 없이 건너뛴다**
+(`skipped: true`). 그러면 ④는 합격/불합격 판정 자체가 성립하지 않는다.
+이번 회차를 위해 Preview 에 등록했고, 다음 회차를 위해 **유지한다**.
+
+## 서버 응답 계약
+
+| 상황 | HTTP | body |
+|---|---|---|
+| 정상 | 200 | `{ ok: true, plan: "pro" }` |
+| 금액 화이트리스트 밖 | 400 | `{ error: "Invalid subscription amount" }` |
+| orderId 사용자 불일치 | 403 | `{ error: "Order does not match user" }` |
+| Toss 승인 실패 | 402 | `{ error: "Payment confirmation failed" }` |
+| **승인 성공 + 권한 부여 실패** | **500** | **`{ error: "Subscription update failed", code: "ENTITLEMENT_FAILED" }`** |
+
+`ENTITLEMENT_FAILED` 는 **돈이 이미 나간 상태**다. 「결제 실패」로 알리면 안 된다.
+클라이언트는 `src/App.jsx` 결제 확인 effect 에서 이 `code` 를 따로 분기한다.
+
+## 오픈 검증 (Production)
+
+| 항목 | 실측 |
+|---|---|
+| 번들 클라이언트 키 | **`live_ck_6BYq…`** |
+| 서버 시크릿 키 | `live_sk_` (키 짝 정합 확인) |
+| 진단 호출 | Toss `tossCode: NOT_FOUND_PAYMENT_SESSION` — 라이브 경로가 살아 있다는 증거 |
+| 결제창 금액 | **39,900원** |
+| `/suneung/` 정적 페이지 | `PAYMENT_TEMPORARILY_DISABLED = false` |
+| `/payment` 「결제 준비 중입니다」 | **0건** (해제 전에는 노출) |
+| 89,000 프리미엄 | `available: false` 유지 — 「출시 준비 중」 배지 1건 |
+
+## 남긴 것
+
+- 브랜치 `e2e/payment-preview` **보존** (다음 E2E 재사용).
+- Preview 환경변수 `test_ck_`/`test_sk_`/`ORDER_DISCORD_WEBHOOK_URL` **유지**.
+- 89,000원 상품은 `ALLOWED_AMOUNTS` 에 없다. 열려면 **서버 금액 등록과 함께 별도 발주**.
