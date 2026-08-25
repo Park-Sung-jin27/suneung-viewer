@@ -4896,6 +4896,20 @@
         "sentFrom": "l20249ds19",
         "sentTo": "l20249ds31"
       }
+    ],
+    "l20249a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20249as3",
+        "sentTo": "l20249as3"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20249as9",
+        "sentTo": "l20249as9"
+      }
     ]
   },
   "2027_6월": {
