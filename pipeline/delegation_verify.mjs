@@ -164,18 +164,27 @@ for (const s of sets)
   }
 
 // ── ⑥ bracket 정박 (발주 D-104 ③) ──
-//   workTag [A-F] 단독 문장은 렌더러가 숨긴다. 실제 구간 표시는 annotations.bracket 이
-//   그린다. workTag 만 있고 bracket 이 없으면 **화면에 아무것도 안 나온다.**
-//   ⑤축은 텍스트 실재만 보므로 이걸 못 잡는다.
+//   workTag [A-F] 단독 문장은 렌더러가 숨긴다(PassagePanel `_isAreaEndMarker`).
+//   실제 구간 표시는 annotations.bracket 이 그린다. 따라서 workTag 만 있고
+//   bracket 이 없으면 **화면에 아무것도 안 나온다.** ⑤축은 텍스트 실재만 보므로 못 잡는다.
+//
+//   FAIL 은 (a) 관점 하나만 쓴다. 나머지 둘은 참고로만 찍는다 — 실측 근거:
+//     (a) workTag 있고 bracket 없음      28건 · 전부 실제 결함 (오탐 0)
+//     (b) bracket 있고 workTag 없음(역방향) 23건 · **전부 정상 패턴**
+//         bracket 만 있어도 렌더된다. workTag 는 선택적 마커다 → 축에 넣으면 오탐 100%
+//     (c) 문항 참조인데 bracket 없음     105건(정밀화 83) · D-94 ⑤축과 중복
 let bracketBad = 0;
 for (const s of sets) {
   const r = checkBracketAnchored(s);
   if (!r) continue;
-  bracketBad++;
-  say(`세트 ${s.id}: 지문에 [${r.labels.join("][")}] 구간 표시가 있는데 ` +
-    `annotations 의 bracket 정박이 ${r.partial ? "일부" : ""} 없습니다. ` +
-    `그대로 두면 화면에 구간 표시가 아예 안 보입니다. ` +
-    `각 구간의 시작·끝 문장을 {type:"bracket", label, sentFrom, sentTo} 로 넣어 주세요.`);
+  if (r.tagNoBracket.length) {
+    bracketBad++;
+    say(`세트 ${s.id}: 지문에 [${r.tagNoBracket.join("][")}] 구간 표시가 있는데 ` +
+      `annotations 의 bracket 정박이 없습니다. 그대로 두면 화면에 구간 표시가 아예 ` +
+      `안 보입니다. 각 구간의 시작·끝 문장을 {type:"bracket", label, sentFrom, sentTo} 로 넣어 주세요.`);
+  }
+  if (r.refNoBracket.length)
+    console.log(`  [참고] ${s.id}: 문항이 [${r.refNoBracket.join("][")}] 를 가리키는데 bracket 이 없다 (⑤축·D-94 소관)`);
 }
 
 const key = JSON.parse(fs.readFileSync(path.join(ROOT, "pipeline/answer_key.json"), "utf8"))[yk]?.ans || {};

@@ -114,17 +114,35 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
  */
 export function checkBracketAnchored(set) {
   const TAG = /^\[([A-F])\]$/;
-  const tags = (set.sents || [])
-    .map((x) => String(x.t ?? "").trim().match(TAG))
-    .filter(Boolean)
-    .map((m) => m[1]);
-  if (!tags.length) return null;
-  const brackets = (set.annotations || []).filter((a) => a && a.type === "bracket");
-  if (brackets.length) {
-    // 라벨 단위 누락도 본다 (D-94 의 l2024b [C] 류)
-    const have = new Set(brackets.map((b) => b.label));
-    const miss = [...new Set(tags)].filter((t) => !have.has(t));
-    return miss.length ? { labels: miss, nTags: tags.length, partial: true } : null;
+  const tagLabels = new Set(
+    (set.sents || [])
+      .map((x) => String(x.t ?? "").trim().match(TAG))
+      .filter(Boolean)
+      .map((m) => m[1]));
+  const brLabels = new Set(
+    (set.annotations || []).filter((a) => a && a.type === "bracket").map((a) => a.label));
+
+  // 문항이 실제로 가리키는 라벨 — 이것이 화면에 나와야 한다
+  const refLabels = new Set();
+  for (const q of set.questions || []) {
+    const parts = [flat(q.t), flat(q.bogi), ...(q.choices || []).map((c) => c.t || "")];
+    for (const m of parts.join(" ").match(/\[[A-F]\]/g) || []) refLabels.add(m[1]);
   }
-  return { labels: [...new Set(tags)], nTags: tags.length, partial: false };
+
+  const missTagNoBr = [...tagLabels].filter((l) => !brLabels.has(l)).sort();
+  const missBrNoTag = [...brLabels].filter((l) => !tagLabels.has(l)).sort();
+  const missRefNoBr = [...refLabels].filter((l) => !brLabels.has(l)).sort();
+
+  if (!missTagNoBr.length && !missBrNoTag.length && !missRefNoBr.length) return null;
+  return {
+    // (a) workTag 는 있는데 bracket 이 없다 → 그 구간은 화면에 안 나온다
+    tagNoBracket: missTagNoBr,
+    // (b) bracket 은 있는데 workTag 가 없다 → 렌더는 되지만 데이터가 비대칭이다
+    bracketNoTag: missBrNoTag,
+    // (c) 문항이 가리키는데 bracket 이 없다 → **학생이 못 보는 구간**. 가장 실질적이다
+    refNoBracket: missRefNoBr,
+    labels: missTagNoBr,            // 하위호환 (기존 호출부)
+    nTags: tagLabels.size,
+    partial: brLabels.size > 0,
+  };
 }
