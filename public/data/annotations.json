@@ -3691,6 +3691,12 @@
         "qId": 21,
         "text": "또 다른 내화",
         "marker": "ⓒ"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20266as20",
+        "sentTo": "l20266as22"
       }
     ],
     "l20266c": [
