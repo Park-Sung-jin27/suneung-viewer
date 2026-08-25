@@ -1941,14 +1941,14 @@
       {
         "type": "bracket",
         "label": "A",
-        "sentFrom": "l20226bs23",
-        "sentTo": "l20226bs25"
+        "sentFrom": "l20226bs40",
+        "sentTo": "l20226bs40"
       },
       {
         "type": "bracket",
         "label": "B",
-        "sentFrom": "l20226bs25",
-        "sentTo": "l20226bs25"
+        "sentFrom": "l20226bs41",
+        "sentTo": "l20226bs41"
       },
       {
         "type": "underline",

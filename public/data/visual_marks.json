@@ -13931,17 +13931,15 @@
       "label": "A",
       "target": "sent_range",
       "sentIds": [
-        "l20226bs23",
-        "l20226bs24",
-        "l20226bs25"
+        "l20226bs40"
       ],
       "start": {
-        "sentId": "l20226bs23",
+        "sentId": "l20226bs40",
         "offset": 0
       },
       "end": {
-        "sentId": "l20226bs25",
-        "offset": 32
+        "sentId": "l20226bs40",
+        "offset": 195
       },
       "source": "migrated_from_annotations",
       "status": "needs_human",
@@ -14027,15 +14025,15 @@
       "label": "B",
       "target": "sent_range",
       "sentIds": [
-        "l20226bs25"
+        "l20226bs41"
       ],
       "start": {
-        "sentId": "l20226bs25",
+        "sentId": "l20226bs41",
         "offset": 0
       },
       "end": {
-        "sentId": "l20226bs25",
-        "offset": 32
+        "sentId": "l20226bs41",
+        "offset": 248
       },
       "source": "migrated_from_annotations",
       "status": "needs_human",
