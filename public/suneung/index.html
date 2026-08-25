@@ -649,7 +649,9 @@
       // 발주 F-3 (2026-08-06): 테스트 클라이언트 키 상태에서 결제창이 열려
       //   대금 미수취 결제가 발생. 라이브 키 전환까지 이 경로를 임시 차단한다.
       //   ★ 되돌리기: 아래 PAYMENT_TEMPORARILY_DISABLED 를 false 로 바꾸면 복구된다.
-      const PAYMENT_TEMPORARILY_DISABLED = true;
+      // 발주 F-26 (2026-08-21): Preview E2E 4/4 합격으로 false 로 해제.
+      //   ★ 되돌리기: true 로 바꾸면 결제 진입이 다시 막힌다.
+      const PAYMENT_TEMPORARILY_DISABLED = false;
       if (PAYMENT_TEMPORARILY_DISABLED) {
         document.querySelectorAll("[data-pay-product]").forEach((button) => {
           button.disabled = true;
