@@ -26,13 +26,25 @@ const SPEC = [
     ["D", "l2019bs25", "l2019bs27", "승산이 다시 하되…"],
     ["E", "l2019bs33", "l2019bs37", "놀랍고 어이없어 종이에 써서 뵈되…"],
   ]],
+  // 🔴 기존 bracket 4개(A·B·D·E)가 **(가) 유치환 「채전」의 시행**(l2023ds9~12)을
+  //    가리키고 있었다. 원본 21면 판독 결과 [A]~[F] 는 전부 **(나) 나희덕
+  //    「음지의 꽃」** 에 있다. (가) 지면에는 구간 표시가 하나도 없다.
+  //    그래서 [C][F] 추가가 아니라 **6개 전부 재정박**한다(REPLACE).
+  ["2023수능", "l2023d", "21면", [
+    ["A", "l2023ds20", "l2023ds21", "우리는 썩어 가는 참나무 떼,"],
+    ["B", "l2023ds24", "l2023ds25", "함께 썩어 갈수록"],
+    ["C", "l2023ds26", "l2023ds27", "이윽고 잠자던 홀씨들 일어나"],
+    ["D", "l2023ds29", "l2023ds31", "우리는 서서히 썩어 가지만"],
+    ["E", "l2023ds33", "l2023ds34", "산비탈에 구르는 낙엽으로도"],
+    ["F", "l2023ds35", "l2023ds36", "덮을 길 없는 우리의 몸을"],
+  ], "REPLACE"],
 ];
 
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
 let touched = 0;
 console.log(`## bracket 정박 패치 ${APPLY ? "적용" : "DRY-RUN"}\n`);
 
-for (const [yk, sid, page, items] of SPEC) {
+for (const [yk, sid, page, items, mode] of SPEC) {
   if (ONLY && sid !== ONLY) continue;
   let set = null;
   for (const sec of ["reading", "literature"]) {
@@ -43,7 +55,13 @@ for (const [yk, sid, page, items] of SPEC) {
 
   const ids = new Set((set.sents || []).map((x) => x.id));
   const idx = (id) => (set.sents || []).findIndex((x) => x.id === id);
-  const have = new Set((set.annotations || []).filter((a) => a && a.type === "bracket").map((a) => a.label));
+  const existing = (set.annotations || []).filter((a) => a && a.type === "bracket");
+  if (mode === "REPLACE" && existing.length) {
+    console.log(`  🔁 ${sid} — 기존 bracket ${existing.length}개를 폐기하고 다시 넣는다 (오정박)`);
+    for (const a of existing)
+      console.log(`       버림: [${a.label}] ${a.sentFrom}~${a.sentTo}`);
+  }
+  const have = mode === "REPLACE" ? new Set() : new Set(existing.map((a) => a.label));
   const add = [];
   let bad = false;
   for (const [label, from, to, head] of items) {
@@ -58,7 +76,10 @@ for (const [yk, sid, page, items] of SPEC) {
   if (!add.length) continue;
   console.log(`     근거: 원본 ${page} 지면 판독`);
   if (APPLY) {
-    set.annotations = [...(set.annotations || []), ...add];
+    const keep = mode === "REPLACE"
+      ? (set.annotations || []).filter((a) => !(a && a.type === "bracket"))
+      : (set.annotations || []);
+    set.annotations = [...keep, ...add];
     touched += add.length;
   }
 }
