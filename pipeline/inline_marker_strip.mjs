@@ -16,6 +16,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = path.join(ROOT, "public/data/all_data_204.json");
 const APPLY = process.argv.includes("--apply");
+const ONLY = (() => { const i = process.argv.indexOf("--only"); return i > 0 ? process.argv[i + 1] : null; })();
 
 // [yearKey, setId, sentId, 지울 문자열, 판정 근거]
 //
@@ -39,6 +40,36 @@ const SPEC = [
     "라벨 [A] 는 21면에서 y=186.3 (구간 178.5~203.3 중간)에 있다. s23 은 y0 232.3 으로 그 구간 밖이다 — 붙을 자리가 아니다"],
   ["2023수능", "l2023d", "l2023ds28", "[C] ",
     "라벨 [C] 는 21면에서 y=297.0 (구간 289.6~313.4 중간)에 있다. s28 은 y0 324.2 로 그 구간 밖이다 — 붙을 자리가 아니다"],
+
+  // ── D-109 ① 인라인 24건 (C-5 작업 B 판정 + 벡터 재확인) ───────────────
+  // 지우는 문자열의 앞뒤 공백까지 건별로 정한다. PDF 조판에서 라벨이 어절 사이에
+  // 끼어 있던 자리는 공백까지 함께 지워야 어절이 도로 붙는다(예: 「그림자 [A] 가」→「그림자가」).
+  ["2024수능", "l2024c", "l2024_28_31s6", "[A] ", "10면 우단 가로획 163.0/201.5. bracket [A] 가 이 문장을 감싸고 있다 — 인라인은 중복 표기"],
+  ["2024수능", "l2024c", "l2024_28_31s7", "[B] ", "10면 우단 가로획 273.3/330.5. bracket [B] 가 이 문장을 감싼다"],
+  ["2024수능", "l2024c", "l2024_28_31s7", "[C] ", "10면 우단 가로획 365.2/403.7. bracket [C] 가 이 문장을 감싼다"],
+  ["2023수능", "l2023c", "l2023cs2", "[A] ", "10면. bracket [A] s2~s2 와 겹친다"],
+  ["2023수능", "l2023c", "l2023cs28", "[E] ", "10면 우단 가로획 218.2/256.7 — 「사흘 됐나?…」 ~ 「어머니의 고개는 무거워 보였다.」 bracket [E] s28~s29 와 일치"],
+  // ★ 이 문장은 cs_spans 의 text 안에도 "[A] " 가 들어 있다(3건). 문장에서만 지우면
+  //   text 매칭이 깨져 형광펜이 통째로 사라진다 — 그래서 span text 도 함께 고친다(SPAN).
+  ["2022수능", "l2022b", "l2022bs2", "[A] ", "8면 우단 가로획 199.3/493.7, 라벨 [A] y=341.9 가 정중앙. bracket [A] s1~s5 와 일치. 원문도 「달채 씨」다(「김」 누락 아님)", "SPAN"],
+  ["2022_6월", "r20226b", "r20226bs24", " [A] ", "「바나나의 그림자 [A] 가」 → 「바나나의 그림자가」. 조판 줄바꿈으로 갈린 어절 사이에 라벨이 끼어 있었다"],
+  ["2022_6월", "r20226d", "r20226ds23", "[A] ", "5면 가로획 163.0/312.1 — 「실시간 PCR에서 발색도는…」 ~ 「…농도를 계산할 수 있다.」 bracket [A] s22~s24 와 일치"],
+  ["2022_6월", "l20226c", "l20226cs16", "[A] ", "정박과 같은 커밋에서 처리"],
+  ["2022_6월", "l20226a", "l20226as24", "[A] ", "정박과 같은 커밋에서 처리"],
+  ["2022_6월", "l20226b", "l20226bs40", "[A] ", "정박과 같은 커밋에서 처리"],
+  ["2022_6월", "l20226b", "l20226bs41", "[B] ", "정박과 같은 커밋에서 처리"],
+  ["2026_6월", "l20266a", "l20266as20", " [A] ", "「불안 [A] 스러운」 → 「불안스러운」. 어절 사이에 끼어 있었다"],
+  ["2026_6월", "l20266b", "l20266bs15", " [A]", "「크기가 비슷하다 [A]」 → 「크기가 비슷하다」. 행 끝 라벨"],
+  ["2026_6월", "l20266d", "l20266ds4", " [A]", "11면 가로획 216.6/273.2 (4줄) — bracket [A] s2~s5 와 일치. C-5 의 3행 판독은 벡터와 어긋나 채택하지 않는다"],
+  ["2026_6월", "l20266d", "l20266ds11", " [B]", "11면 가로획 326.9/383.5 (4줄) — bracket [B] s8~s11 과 일치"],
+  ["2026_6월", "l20266d", "l20266ds18", " [C]", "11면 가로획 510.7/567.4 (4줄) — bracket [C] s17~s20 과 일치. 코덱스 모순 3건 중 1건, 벡터가 최종"],
+  ["2026_6월", "l20266d", "l20266ds21", " [D]", "11면 가로획 584.2/622.1 (3줄) — bracket [D] s21~s23 과 일치. 모순 3건 중 1건"],
+  ["2026_6월", "l20266d", "l20266ds24", " [E]", "11면 가로획 639.4/660.3 (2줄) — bracket [E] s24~s25 와 일치. C-5 의 1행 판독은 벡터와 어긋난다"],
+  ["2021수능", "r2021a", "r2021as7", "[A] ", "6면 우단 가로획 362.3/620.2 — 「북학이라는 목적의식이…」 ~ 「…실용적인 입장을 보였다.」 bracket [A] s5~s9 와 일치"],
+  ["2021수능", "l2021a", "l2021as18", "[A]", "「같이 [A]그 얘기를」 → 「같이 그 얘기를」. 실제 구간은 s32~s45 라 이 자리에 라벨이 있을 이유가 없다"],
+  ["2021수능", "l2021a", "l2021as60", "[B] ", "9면 좌단 가로획 409.7/631.9 (13줄) — bracket [B] s55~s67 과 일치"],
+  ["2024_9월", "l20249a", "l20249as3", "[A] ", "「장원[A] 급제하여」 → 「장원급제하여」. 조판 줄바꿈 자리다"],
+  ["2024_9월", "l20249a", "l20249as9", "[B]", "「수심[B]으로」 → 「수심으로」. 조판 줄바꿈 자리다"],
 ];
 
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
@@ -46,7 +77,8 @@ const norm = (s) => String(s).replace(/_/g, "");
 let n = 0;
 console.log(`## 인라인 마커 제거 ${APPLY ? "적용" : "DRY-RUN"} — ${SPEC.length}건\n`);
 
-for (const [yk, sid, sentId, kill, why] of SPEC) {
+for (const [yk, sid, sentId, kill, why, mode] of SPEC) {
+  if (ONLY && sid !== ONLY) continue;
   let set = null;
   for (const sec of ["reading", "literature"]) {
     const f = (data[yk]?.[sec] || []).find((x) => x.id === sid);
@@ -60,23 +92,35 @@ for (const [yk, sid, sentId, kill, why] of SPEC) {
   if (at < 0) { console.log(`  ⚠ ${sentId} — ${JSON.stringify(kill)} 가 없다, 건너뜀`); continue; }
   if (t.indexOf(kill, at + 1) >= 0) { console.log(`  🔴 ${sentId} — ${JSON.stringify(kill)} 가 두 번 이상이다, 건너뜀`); continue; }
 
-  // 이 문장을 가리키는 span 의 text 에 마커가 섞였는지 확인
+  // 이 문장을 가리키는 span 의 text 에 마커가 섞였는지 확인한다.
+  //   cs_spans 는 문자 오프셋이 아니라 text 매칭이라, 문장에서만 지우면 그 span 이 죽는다.
+  //   SPAN 모드에서는 span text 도 같이 고치고, 아니면 멈춘다(조용한 실패 금지).
   let blocked = false;
+  const spanFix = [];
   for (const q of set.questions || [])
     for (const c of q.choices || [])
       for (const sp of c.cs_spans || []) {
         if (norm(sp.sent_id) !== norm(sentId)) continue;
-        if (String(sp.text ?? "").includes(kill.trim())) {
-          console.log(`  🔴 ${sentId} — span text 에 마커가 들어 있다: ${JSON.stringify(sp.text)}`);
+        const st = String(sp.text ?? "");
+        if (!st.includes(kill.trim())) continue;
+        if (mode === "SPAN") {
+          const a2 = st.indexOf(kill) >= 0 ? kill : kill.trim();
+          spanFix.push([sp, st.split(a2).join(""), q.id, c.num]);
+        } else {
+          console.log(`  🔴 ${sentId} — span text 에 마커가 들어 있다: ${JSON.stringify(st.slice(0, 60))}`);
           blocked = true;
         }
       }
-  if (blocked) { console.log(`  🔴 ${sentId} — 건너뛴다`); continue; }
+  if (blocked) { console.log(`  🔴 ${sentId} — 건너뛴다 (SPAN 모드로 지정해야 함께 고친다)`); continue; }
 
   console.log(`  ${yk} ${sid} ${sentId}`);
   console.log(`     전: ${JSON.stringify(t.slice(Math.max(0, at - 26), at + kill.length + 26))}`);
   console.log(`     후: ${JSON.stringify((t.slice(0, at) + t.slice(at + kill.length)).slice(Math.max(0, at - 26), at + 26))}`);
   console.log(`     근거: ${why}`);
+  for (const [sp, fixed, qid, num] of spanFix) {
+    console.log(`     span 동반 수정 Q${qid}#${num}: ${JSON.stringify(String(sp.text).slice(0, 44))} → ${JSON.stringify(fixed.slice(0, 44))}`);
+    if (APPLY) sp.text = fixed;
+  }
   if (APPLY) sent.t = t.slice(0, at) + t.slice(at + kill.length);
   n++;
 }
