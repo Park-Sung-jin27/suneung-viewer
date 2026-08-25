@@ -13840,24 +13840,26 @@
       "label": "A",
       "target": "sent_range",
       "sentIds": [
-        "r20226bs14",
-        "r20226bs15",
-        "r20226bs16",
         "r20226bs17",
         "r20226bs18",
         "r20226bs19",
         "r20226bs20",
         "r20226bs21",
         "r20226bs22",
-        "r20226bs23"
+        "r20226bs23",
+        "r20226bs24",
+        "r20226bs25",
+        "r20226bs26",
+        "r20226bs27",
+        "r20226bs28"
       ],
       "start": {
-        "sentId": "r20226bs14",
+        "sentId": "r20226bs17",
         "offset": 0
       },
       "end": {
-        "sentId": "r20226bs23",
-        "offset": 27
+        "sentId": "r20226bs28",
+        "offset": 39
       },
       "source": "migrated_from_annotations",
       "status": "needs_human",
