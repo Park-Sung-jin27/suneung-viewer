@@ -177,6 +177,33 @@ const table = (title, arr, note) => {
     out.push(`| ${r.yk} | \`${r.sid}\` | ${r.live ? "🔴 LIVE" : "비노출"} | ${r.label} | \`${r.range}\` | ${r.lines ?? "—"} | ${r.src} | ${r.render} |`);
   out.push(``);
 };
+// ── 화면 유효값 스냅샷 (D-108 ③) ────────────────────────────────────
+// 심사관이 C-6 원본 판독값과 **기계 대조**할 표. 라벨마다 화면이 실제로 쓰는 최종값과
+// 그 원천을 적고, 첫 행·끝 행 본문을 붙여 눈으로도 맞출 수 있게 한다.
+const sentText = new Map();
+for (const [yk, v] of Object.entries(data))
+  for (const sec of ["reading", "literature"])
+    for (const s of v[sec] || [])
+      for (const x of s.sents || [])
+        sentText.set(`${yk}::${s.setId || s.id}::${x.id}`, String(x.t ?? "").replace(/\n/g, " ").replace(/\|/g, "\\|"));
+const cut = (s, n) => (s == null ? "—" : s.length > n ? s.slice(0, n) + "…" : s);
+
+out.push(`## 화면 유효값 스냅샷 (D-108 ③)`);
+out.push(``);
+out.push(`라벨마다 **화면이 실제로 쓰는 최종값**과 원천이다. C-6 원본 판독값과 이 표를 기계 대조하면`);
+out.push(`진짜 불일치 목록이 나온다 — C-6 재판독은 필요 없다.`);
+out.push(`\`원천\` 은 그 값을 준 파일: \`ann\`=annotations.json · \`vm\`=visual_marks.json ·`);
+out.push(`\`all_data 전용\`=화면 집합에 없음(잔재).`);
+out.push(``);
+out.push(`| 회차 | 세트 | 노출 | 라벨 | 화면 sentFrom | 화면 sentTo | 행수 | 원천 | 첫 행 | 끝 행 |`);
+out.push(`|---|---|---|---|---|---|--:|---|---|---|`);
+for (const r of rows) {
+  const [f, t] = r.range.split(" ~ ");
+  const k = (id) => sentText.get(`${r.yk}::${r.sid}::${id}`);
+  out.push(`| ${r.yk} | \`${r.sid}\` | ${r.live ? "🔴 LIVE" : "비노출"} | ${r.label} | \`${f}\` | \`${t ?? f}\` | ${r.lines ?? "—"} | ${r.src} | ${cut(k(f), 40)} | ${cut(k(t ?? f), 40)} |`);
+}
+out.push(``);
+
 table("🔴 안 그려짐", notDrawn.filter((r) => r.src !== "all_data 전용"));
 table("🔴 all_data 에만 있어 사장된 정박", orphan,
   `annotations.json 에 그 세트 항목이 있으면 all_data 의 \`set.annotations\` 는 통째로 버려진다.`);
