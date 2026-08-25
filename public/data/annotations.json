@@ -2036,6 +2036,12 @@
         "sentId": "l20226cs22",
         "marker": "㉤",
         "text": "㉤이때 이 감사는"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20226cs16",
+        "sentTo": "l20226cs16"
       }
     ],
     "l20226d": []
