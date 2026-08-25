@@ -4772,6 +4772,18 @@
         "sentId": "r20249bs14",
         "text": "ⓑ따라",
         "marker": "ⓑ"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20249bs16",
+        "sentTo": "r20249bs20"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "r20249bs21",
+        "sentTo": "r20249bs23"
       }
     ],
     "r20249d": [
@@ -5054,7 +5066,7 @@
         "type": "bracket",
         "label": "A",
         "sentFrom": "l20276as40",
-        "sentTo": "l20276as48"
+        "sentTo": "l20276as51"
       }
     ],
     "l20276b": [
@@ -5130,7 +5142,7 @@
         "type": "bracket",
         "label": "A",
         "sentFrom": "l20276cs31",
-        "sentTo": "l20276cs48"
+        "sentTo": "l20276cs50"
       }
     ],
     "l20276d": [

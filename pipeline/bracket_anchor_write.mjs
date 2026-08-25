@@ -1,0 +1,112 @@
+// bracket_anchor_write.mjs — 화면 원천에 bracket 정박을 기록한다 (발주 D-108 ①②)
+//
+// ★ 정본 규칙 (D-108 ①)
+//   · bracket 정박·수리는 **annotations.json** 에 쓴다.
+//   · 같은 라벨이 **visual_marks.json** 에 bracket 으로 있으면 동일 값으로 동기화한다.
+//     (없으면 만들지 않는다 — vm 은 감사 산출물이지 정박 원천이 아니다)
+//   · all_data_204.json 의 set.annotations 는 **건드리지 않는다**(삭제도 금지, F-25 소관).
+//
+//   근거: src/dataLoader.js:548 _attachAnnotations 가 annotations.json 에 그 세트 항목이
+//   있으면 set.annotations 를 통째로 덮어쓴다. src/PassagePanel.jsx:745 는 vm bracket 을
+//   합쳐 label|from|to 로 dedup 하고, getBracketInfo(:655)가 첫 매치에서 return 한다.
+//   따라서 두 파일의 값이 어긋나면 vm 이 먼저 매치돼 annotations.json 수정이 묻힌다.
+//
+// 문장 순서·길이는 all_data_204.json 에서 읽는다(읽기 전용).
+//
+// 사용: node pipeline/bracket_anchor_write.mjs [--only <setId>] [--apply]
+
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const P = (f) => path.join(ROOT, "public/data", f);
+const APPLY = process.argv.includes("--apply");
+const ONLY = (() => { const i = process.argv.indexOf("--only"); return i > 0 ? process.argv[i + 1] : null; })();
+
+// [yearKey, setId, 라벨, sentFrom, sentTo, 근거]
+const SPEC = [
+  ["2027_6월", "l20276a", "A", "l20276as40", "l20276as51",
+    "6~7면 걸침. 7면 닫힘 가로획 y=181.6 은 s51 행(y0 177.1) 글자 높이 안이다. 900dpi 확대에서 꺾쇠는 하나. 심사관 PDF 실측 확정 — 기존 s48 은 코덱스 C-4 판독값이었다"],
+  ["2027_6월", "l20276c", "A", "l20276cs31", "l20276cs50",
+    "10면 좌→우단 걸침. 우단 닫힘 가로획 y=182.9 는 s50 행(y0 177.1) 안이다. 기존 s48 은 좌단 끝에서 끊은 값"],
+  ["2024_9월", "r20249b", "A", "r20249bs16", "r20249bs20",
+    "2면 가로획 695.6/862.3. annotations.json 에 bracket 이 없어 정박이 통째로 빠져 있었다(비노출)"],
+  ["2024_9월", "r20249b", "B", "r20249bs21", "r20249bs23",
+    "2면 가로획 879.4/1009.2. 위와 같음"],
+];
+
+const rawAnn = fs.readFileSync(P("annotations.json"), "utf8");
+const rawVm = fs.readFileSync(P("visual_marks.json"), "utf8");
+const ann = JSON.parse(rawAnn);
+const vm = JSON.parse(rawVm);
+const data = JSON.parse(fs.readFileSync(P("all_data_204.json"), "utf8"));
+
+// 재직렬화가 원본과 바이트 동일한지 먼저 확인한다 — 아니면 쓰지 않는다.
+for (const [name, raw, obj] of [["annotations.json", rawAnn, ann], ["visual_marks.json", rawVm, vm]]) {
+  if (JSON.stringify(obj, null, 2) !== raw) {
+    console.error(`🔴 ${name} — 재직렬화가 원본과 다르다. 서식이 깨지므로 중단한다`);
+    process.exit(1);
+  }
+}
+
+const sentsOf = (yk, sid) => {
+  for (const sec of ["reading", "literature"]) {
+    const s = (data[yk]?.[sec] || []).find((x) => (x.setId || x.id) === sid);
+    if (s) return s.sents || [];
+  }
+  return null;
+};
+
+let nAnn = 0, nVm = 0, bad = false;
+console.log(`## bracket 정박 기록 ${APPLY ? "적용" : "DRY-RUN"} — 원천: annotations.json (+vm 동기화)\n`);
+
+for (const [yk, sid, label, from, to, why] of SPEC) {
+  if (ONLY && sid !== ONLY) continue;
+  const sents = sentsOf(yk, sid);
+  if (!sents) { console.log(`  🔴 ${yk} ${sid} — 세트 없음`); bad = true; continue; }
+  const ids = sents.map((x) => String(x.id));
+  const fi = ids.indexOf(from), ti = ids.indexOf(to);
+  if (fi < 0 || ti < 0) { console.log(`  🔴 ${sid} [${label}] — 문장 id 없음 (${from} / ${to})`); bad = true; continue; }
+  if (fi > ti) { console.log(`  🔴 ${sid} [${label}] — from 이 to 보다 뒤다`); bad = true; continue; }
+
+  // ── annotations.json ──────────────────────────────────────────────
+  ann[yk] ||= {};
+  const list = (ann[yk][sid] ||= []);
+  const at = list.findIndex((a) => a?.type === "bracket" && a.label === label);
+  const next = { type: "bracket", label, sentFrom: from, sentTo: to };
+  const prev = at >= 0 ? list[at] : null;
+  if (prev && prev.sentFrom === from && prev.sentTo === to) {
+    console.log(`  ⚠ ${yk} ${sid} [${label}] — 이미 같은 값, 건너뜀`);
+  } else {
+    console.log(`  ${yk} ${sid} [${label}] ${prev ? `${prev.sentFrom}~${prev.sentTo} → ` : "(신규) "}${from} ~ ${to}  (${ti - fi + 1}행)`);
+    console.log(`     근거: ${why}`);
+    if (APPLY) { if (at >= 0) list[at] = { ...prev, ...next }; else list.push(next); }
+    nAnn++;
+  }
+
+  // ── visual_marks.json — 같은 라벨의 bracket 이 있을 때만 동기화 ──
+  const m = (vm.marks || []).find((x) => x?.type === "bracket" && x.yearKey === yk && x.setId === sid && x.label === label);
+  if (!m) { console.log(`     vm: 같은 라벨 bracket 없음 — 만들지 않는다`); continue; }
+  const span = ids.slice(fi, ti + 1);
+  const same = JSON.stringify(m.sentIds) === JSON.stringify(span);
+  if (same) { console.log(`     vm: 이미 같은 범위`); continue; }
+  console.log(`     vm 동기화: ${m.sentIds[0]}~${m.sentIds[m.sentIds.length - 1]} (${m.sentIds.length}) → ${span[0]}~${span[span.length - 1]} (${span.length})`);
+  if (APPLY) {
+    m.sentIds = span;
+    // start/end 는 렌더러가 bracket 에 쓰지 않는다(감사 표시용). 규약대로 맞춰 둔다.
+    if (m.start) m.start = { ...m.start, sentId: span[0], offset: 0 };
+    if (m.end) m.end = { ...m.end, sentId: span[span.length - 1], offset: String(sents[ti].t ?? "").length };
+  }
+  nVm++;
+}
+
+if (bad) { console.log(`\n🔴 검증 실패 항목이 있다 — 아무것도 쓰지 않는다`); process.exit(1); }
+
+if (APPLY && (nAnn || nVm)) {
+  fs.writeFileSync(P("annotations.json"), JSON.stringify(ann, null, 2), "utf8");
+  if (nVm) fs.writeFileSync(P("visual_marks.json"), JSON.stringify(vm, null, 2), "utf8");
+  console.log(`\n  annotations.json ${nAnn}건 · visual_marks.json ${nVm}건 기록`);
+  console.log(`  all_data_204.json 은 건드리지 않았다`);
+}
+if (!APPLY) console.log(`\n### DRY-RUN — 아무것도 쓰지 않았다. 적용하려면 --apply`);
