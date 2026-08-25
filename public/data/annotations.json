@@ -3859,6 +3859,14 @@
         "text": "ⓔ일어나지",
         "marker": "ⓔ"
       }
+    ],
+    "l20266b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20266bs4",
+        "sentTo": "l20266bs15"
+      }
     ]
   },
   "2020수능": {
