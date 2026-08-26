@@ -12392,15 +12392,24 @@
       "sentIds": [
         "l20259as2",
         "l20259as3",
-        "l20259as4"
+        "l20259as4",
+        "l20259as5",
+        "l20259as980",
+        "l20259as6",
+        "l20259as7",
+        "l20259as8",
+        "l20259as9",
+        "l20259as10",
+        "l20259as11",
+        "l20259as12"
       ],
       "start": {
         "sentId": "l20259as2",
         "offset": 0
       },
       "end": {
-        "sentId": "l20259as4",
-        "offset": 92
+        "sentId": "l20259as12",
+        "offset": 8
       },
       "source": "migrated_from_annotations",
       "status": "needs_human",
