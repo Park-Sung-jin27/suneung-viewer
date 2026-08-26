@@ -413,6 +413,12 @@ const RELEASE_KEYS = new Set([
   "2018수능::l2018b",
   "2018수능::l2018c",
   "2018수능::l2018d",
+  // ── 웨이브 1 배치 1 (발주 F-29, 2026-08-21) ──
+  //   근거: QG CRITICAL 0 + 정답표 대조 통과 + 심사관 gate3 화면 실측 통과.
+  //   데이터 엔지니어의 release_approval_records 3건과 대응한다.
+  "2026_6월::r20266a",
+  "2026_9월::l20269c",
+  "2026_9월::l20269d",
 ]);
 
 // yearKey-aware release 검사 (동기 — composite key lookup).
