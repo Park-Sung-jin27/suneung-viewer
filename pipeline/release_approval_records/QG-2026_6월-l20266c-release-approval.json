@@ -1,8 +1,8 @@
 {
   "yearKey": "2026_6월",
   "setId": "l20266c",
-  "approved_at": "(대표 승인 시각 — gate3 실측 후)",
-  "approved_by": "(대표)",
+  "approved_at": "2026-08-26",
+  "approved_by": "대표 (구두 승인, 심사관 배석)",
   "gate0_evidence": {
     "method": "원본 정답표 대조 (_done/2026_6월/2026_6월_정답.pdf)",
     "checked": "questionType 기준 정답 특정 — 27~30번 전 문항",
@@ -20,10 +20,11 @@
   "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
   "gate3_evidence": {
     "method": "심사관 화면 실측",
-    "verified_at": "(D-115-3 상신 후 실측 예정)",
-    "bundle": "(미기입)",
-    "console_error_count": null,
-    "pass": null
+    "verified_at": "2026-08-26",
+    "bundle": "CAY6bu2N",
+    "detail": "Q28#3 해설 비문(「것은의」) 제거 화면 확인 포함",
+    "console_error_count": 0,
+    "pass": true
   },
   "diagnostic_axes": {
     "note": "D-114 진단 8축 — 재진단 결과 결함 0",
