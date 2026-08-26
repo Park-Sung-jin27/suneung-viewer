@@ -13091,22 +13091,22 @@
       "label": "A",
       "target": "sent_range",
       "sentIds": [
+        "r2023bs1",
         "r2023bs2",
         "r2023bs3",
         "r2023bs4",
         "r2023bs5",
         "r2023bs6",
         "r2023bs7",
-        "r2023bs8",
-        "r2023bs9"
+        "r2023bs8"
       ],
       "start": {
-        "sentId": "r2023bs2",
+        "sentId": "r2023bs1",
         "offset": 0
       },
       "end": {
-        "sentId": "r2023bs9",
-        "offset": 69
+        "sentId": "r2023bs8",
+        "offset": 115
       },
       "source": "migrated_from_annotations",
       "status": "verified",
