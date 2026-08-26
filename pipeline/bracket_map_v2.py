@@ -20,7 +20,8 @@
 #
 # 판정은 사람이 한다. 이 도구는 후보를 좌표째로 내놓을 뿐이다.
 #
-# 사용: python pipeline/bracket_map_v2.py <setId> [<setId> ...]
+# 사용: python pipeline/bracket_map_v2.py <setId|연도::setId> [...]
+#   setId 는 연도 키 안에서만 고유하다 — 중복 id 는 「연도::setId」로 부른다
 
 import sys, io, os, re, json
 import fitz
@@ -40,13 +41,27 @@ LABEL = re.compile(r"^\[([A-F])\]$")
 SKIP_TYPES = ("workTag", "author", "footnote", "omission")
 
 
-def find_set(set_id):
+def find_set(spec):
+    """set 을 찾는다. ★ setId 는 **연도 키 안에서만 고유**하다(2014·2015 A/B형 등 47종 중복).
+    그래서 인자로 "yearKey::setId" 를 받는 것을 권장하고, setId 만 준 경우
+    중복이면 어느 연도인지 물어보며 멈춘다 — 조용히 첫 것을 고르지 않는다."""
+    yk_want, _, sid = spec.rpartition("::")
+    hits = []
     for yk, v in ALL.items():
+        if yk_want and yk != yk_want:
+            continue
         for sec in ("reading", "literature"):
             for s in v.get(sec) or []:
-                if (s.get("setId") or s.get("id")) == set_id:
-                    return yk, s
-    return None, None
+                if (s.get("setId") or s.get("id")) == sid:
+                    hits.append((yk, s))
+    if not hits:
+        return None, None
+    if len(hits) > 1:
+        years = ", ".join(y for y, _ in hits)
+        print(f"🔴 {sid} — 연도 {len(hits)}곳에 있다({years}). "
+              f"「연도::{sid}」 형식으로 다시 부르십시오")
+        return None, None
+    return hits[0]
 
 
 def screen_brackets(yk, set_id, s):
@@ -150,8 +165,11 @@ def brackets_on(doc, pages):
     return out
 
 
-def scan(set_id):
-    yk, s = find_set(set_id)
+def scan(spec):
+    yk, s = find_set(spec)
+    # 인자에 연도가 붙어 있어도 아래에서는 **순수 setId** 를 써야 한다
+    # (annotations.json / visual_marks.json 조회 키가 순수 id 다).
+    set_id = spec.rpartition("::")[2]
     if not s:
         print(f"\n🔴 {set_id} — 세트 없음")
         return

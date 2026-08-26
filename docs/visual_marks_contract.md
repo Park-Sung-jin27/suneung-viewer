@@ -1,175 +1,41 @@
-# Visual Marks Contract — Phase 1
+# `visual_marks.json` 용도 계약 — 동결
 
-> 갱신: 2026-05-20
-> 도구: `pipeline/visual_mark_extractor.mjs` + `pipeline/visual_marks_schema.json`
-> 데이터: `public/data/visual_marks.json` (자동 생성 — 본 contract 사양 안 단일 진실)
+> 확정: 2026-08-25 (발주 D-113 ②)
+> **이 파일은 감사·이관 이력 산출물이다. 화면 렌더와 무관하다.**
 
----
+## 무엇이 바뀌었나
 
-## 1. 목적
+F-25 2단계(`15b95f4`, 2026-08-25)로 `src/PassagePanel.jsx` 가
+**bracket 렌더 원천을 `annotations.json` 하나로 단일화**했다.
+그 전까지는 `visual_marks.json` 의 bracket 을 함께 합쳐 `label|from|to` 로
+dedup 했고, `getBracketInfo` 가 첫 매치에서 반환하는 탓에 **vm 값이 ann 값을 덮는**
+사고가 있었다(`l20259a` [A] — ann `s6~s12` 인데 화면은 vm `s2~s4` 를 그렸다).
 
-본 contract = bracket / underline / box / inline_label 사양 안 시각 표지 안 **단일 source of truth** 정의 path.
+지금은 vm 이 화면에 닿지 않는다.
 
-### 사양 분리 lock 정합
+## 계약
 
-| layer                            | 단독 진실                         | 도구                          |
-| -------------------------------- | --------------------------------- | ----------------------------- |
-| source (all_data 본문 marker)    | sent.t 안 [X] / workTag           | bracket*audit SOURCE*\*       |
-| annotation (sentId 영역 매핑)    | annotations.json bracket entries  | bracket*audit ANNOTATION*\*   |
-| **visual_marks (통합 contract)** | **public/data/visual_marks.json** | **visual_mark_extractor.mjs** |
-| render (DOM 시각화)              | viewer DOM                        | visual*audit RENDER*\*        |
+1. **렌더 무관.** `visual_marks.json` 은 화면에 아무 영향이 없다.
+   렌더 관련 판단·집계는 `annotations.json` 만 본다.
+2. **동결.** 새 마커를 vm 에 만들지 않는다. 정박·수리는 `annotations.json` 에 쓴다
+   (`pipeline/bracket_anchor_write.mjs` 가 이 규칙을 강제한다).
+3. **기존 값은 유지한다.** 감사 이력(`status`·`release_block`·`audit_source`·
+   `referenced_in`·`source: migrated_from_annotations`)이 담겨 있어, 어떤 판단을
+   거쳐 지금 값이 됐는지 되짚는 데 쓰인다. **삭제는 별도 판정 사항이다.**
+4. `bracket` 외 타입(`inline_label` 등)도 렌더러가 쓰지 않는다 —
+   `src/` 전체에서 `inline_label` 은 주석 한 줄(`dataLoader.js:511`)에만 나온다.
 
-visual_marks = source + annotation 정합 통합 path 안 release 판단 단일 단독 path.
+## 이 파일을 쓰는 곳 (D-113 ② 조사)
 
----
+| 파일 | 무엇을 하나 | 조치 |
+|---|---|---|
+| `src/dataLoader.js` `_loadVm` · `_attachVisualMarks` | 읽어서 `set.visualMarks` 에 주입 | 주입은 남아 있으나 `PassagePanel` 이 더는 bracket 을 꺼내 쓰지 않는다 — **프론트 판정 사항** |
+| `pipeline/bracket_anchor_write.mjs` | 같은 라벨의 bracket 이 vm 에 **있을 때만** 동일 값으로 동기화. 없으면 만들지 않는다 | 유지 — 두 파일이 어긋나 생긴 사고를 막는 안전장치다 |
+| `pipeline/sentence_split.mjs` | 문장 분리 시 vm 의 `sentIds` 도 함께 이관 | 유지 — 이력의 정합을 지킨다 |
+| `pipeline/bracket_effective_dump.mjs` | ann ↔ vm 차이를 대조해 보고 | 유지 — 감사 목적에 부합 |
+| `pipeline/bracket_ledger.mjs` · `bracket_render_table.mjs` · `marker_gap_recount.mjs` | (D-112 까지) 화면 원천으로 vm 을 합산 | 🔧 **`ecc4098` 에서 제거** — ann 단일 원천으로 정합 |
+| `pipeline/bracket_map_v2.py` · `bracket_autoscan.py` | 화면값 표시용으로 vm 참조 | 판독 도구의 참고 표시일 뿐 판정에 쓰지 않는다 |
 
-## 2. schema (`visual_marks_schema.json` 정합)
-
-각 entry = 단일 시각 표지 path:
-
-```json
-{
-  "id": "vm_<unique_id>",
-  "yearKey": "2024수능",
-  "setId": "l2024a",
-  "type": "bracket | underline | box | inline_label",
-  "label": "A",
-  "target": "sent_range | text_span",
-  "sentIds": ["l2024_18_21s7", "l2024_18_21s8"],
-  "start": { "sentId": "l2024_18_21s7", "offset": 0 },
-  "end": { "sentId": "l2024_18_21s8", "offset": 12 },
-  "source": "auto_text_parser | manual | migrated_from_annotations",
-  "status": "verified | needs_human | broken | non_blocking",
-  "release_block": true,
-  "audit_source": "ANNOTATION_BRACKET / SOURCE_INLINE / ..."
-}
-```
-
-### 필수 필드
-
-- `id`: 유니크 식별자 (vm*{yearKey}*{setId}_{type}_{label}\_{counter} path)
-- `yearKey` + `setId`: 위치 단독
-- `type`: 사양 분류 (bracket/underline/box/inline_label)
-- `source`: 도입 path (auto_text_parser / manual / migrated_from_annotations)
-- `status`: 검증 상태
-- `release_block`: release 영향 여부 (true 시 release 차단 의무)
-
-### target 사양
-
-| target     | 사용 case                            | start/end 정합 |
-| ---------- | ------------------------------------ | -------------- |
-| sent_range | bracket (영역 단위)                  | sent 단위 단독 |
-| text_span  | inline_label / underline (단어/어구) | offset 사양 안 |
-
----
-
-## 3. status 안 4 path
-
-| status       | 의미                                    | release_block                 |
-| ------------ | --------------------------------------- | ----------------------------- |
-| verified     | source + annotation + 참조 모두 정합    | true / false (참조 path 정합) |
-| needs_human  | bracket_audit 안 결함 검출              | true (검수 사후 결정)         |
-| broken       | sentId DEAD / 위치 불일치               | true (즉시 정정 의무)         |
-| non_blocking | 본문 marker 사양 안 문항/선지 참조 부재 | false (release 영향 부재)     |
-
-### release_block=true 사양 lock
-
-release 39 set 안 visual_marks 안 `release_block=true` + `status != verified` 검출 시 release 차단 의무 (lock).
-
----
-
-## 4. extractor logic 단독 path
-
-### Step 1: source 자동 추출 (auto_text_parser)
-
-```
-for each set in all_data:
-  for each sent:
-    if sentType == "workTag" and sent.t matches /^\[([A-F])\]$/:
-      bracket [X] → 직전 verse 연속 안 sent_range 사양
-      type=bracket, source=auto_text_parser
-    elif sentType in ["body","verse"] and sent.t contains "[X]" (substring):
-      inline_label [X] → text_span 사양 (offset 사양 안)
-      type=inline_label, source=auto_text_parser
-```
-
-### Step 2: annotation 마이그레이션 (migrated_from_annotations)
-
-```
-for each bracket in annotations.json:
-  bracket [label] sentFrom~sentTo → visual_mark sent_range 사양
-  type=bracket, source=migrated_from_annotations
-for each underline / box in annotations.json:
-  underline {sentId, text} → visual_mark text_span 사양
-  box {sentId, text} → visual_mark text_span 사양
-```
-
-### Step 3: 문항/선지 cross-reference
-
-```
-for each visual_mark with type in ["bracket","inline_label"]:
-  scan questions[*].t + choices[*].t + choices[*].analysis for "[X]" 사양
-  if found: release_block=true
-  else: release_block=false, status=non_blocking
-```
-
-### Step 4: bracket_audit cross-check
-
-```
-import { auditBrackets } from './bracket_audit.mjs';
-findings = auditBrackets(data, annotations);
-for each finding mapped to visual_mark:
-  if finding.severity == "CRITICAL": visual_mark.status = "broken" or "needs_human"
-  if finding.severity == "WARNING": visual_mark.status = "needs_human"
-  visual_mark.audit_source = finding.code (e.g., "ANNOTATION_BRACKET_BODY_MARKER_MISSING")
-```
-
----
-
-## 5. 영구 lock 사양
-
-### Lock V1 — visual_marks single source of truth
-
-release 39 set 안 visual_marks.json 단독 release 판단 path. annotations.json + all_data 본문 marker = source 단독, visual_marks 사양 안 통합 판단.
-
-### Lock V2 — release_block=true + status≠verified 차단
-
-release 사양 안 위 조건 검출 시 release 차단 의무 lock.
-
-### Lock V3 — mixed_commit 차단
-
-visual_marks 생성 시점 = 본 audit_commit. data_commit + annotation_commit ≠ audit_commit 시 mixed_commit=true 출력 + release 판단 차단 의무 (visual_audit + bracket_audit 동일 사양 path 정합).
-
-### Lock V4 — manual entry append-only
-
-사용자 manual entry (source=manual) 사양 사후 — auto-regenerate 시 manual entries 정합 path 유지 의무 (overwrite X).
-
----
-
-## 6. 사양 워크플로 정합
-
-```
-1. 자동 추출:
-   node pipeline/visual_mark_extractor.mjs
-   → public/data/visual_marks.json 생성
-   → pipeline/visual_marks_report.json 검수 raw 생성
-
-2. 검수 path:
-   - status=broken / needs_human 사양 안 사용자 검토 의무
-   - manual fix 사양 안 source=manual 마킹
-
-3. release 판단:
-   - release_block=true + status==verified path 단독 release 가능
-   - 외 path 안 release 차단 의무 (lock V2)
-
-4. CI 통합 잠재:
-   quality_gate 안 visual_marks 사양 import + lock V2/V3 검증 path (별도 회기)
-```
-
----
-
-## 7. 후속 path (별도 회기)
-
-- Phase 2: viewer rendering 안 visual_marks.json 직접 read path (annotations.json 사양 사후)
-- Phase 3: quality_gate 안 visual_marks lock 통합
-- Phase 4: visual_audit 안 visual_marks 정합 검증 (RENDER vs DATA 동기)
+**갱신 단계(쓰기)는 위 두 파이프라인 도구(`bracket_anchor_write` · `sentence_split`)뿐이고,
+둘 다 「ann 에 쓸 때 vm 에 같은 라벨이 이미 있으면 맞춰 준다」는 동기화 목적이다.**
+새로 만들지는 않는다. 제거 여부는 다음 판정에 따른다.
