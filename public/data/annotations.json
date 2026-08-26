@@ -3832,6 +3832,12 @@
         "sentId": "r20266bs17",
         "text": "ⓔ내놓는",
         "marker": "ⓔ"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20266bs9",
+        "sentTo": "r20266bs16"
       }
     ],
     "r20266c": [
