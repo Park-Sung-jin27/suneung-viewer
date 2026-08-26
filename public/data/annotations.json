@@ -4358,6 +4358,12 @@
         "sentId": "l20229bs29",
         "marker": "ⓔ",
         "text": "ⓔ바다는 언제 그런 일이"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20229bs26",
+        "sentTo": "l20229bs28"
       }
     ],
     "r20229b": [
