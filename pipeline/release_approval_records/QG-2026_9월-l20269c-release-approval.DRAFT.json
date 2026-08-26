@@ -1,0 +1,62 @@
+{
+  "_status": "DRAFT — 엔지니어 준비분. gate3_evidence 와 approved_at/by 는 심사관·대표가 채운다",
+  "yearKey": "2026_9월",
+  "setId": "l20269c",
+  "approved_at": "(대표 승인 시각)",
+  "approved_by": "(대표)",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2026_9월/2026_9월_정답.pdf)",
+    "checked": "questionType 기준 정답 특정 — 31~34번 전 문항",
+    "answer_key_mismatch": 0,
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2026_9월",
+    "scope": "연도 스코프 (판정 305② 준수 — --scope=release 단독 실행 아님)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 1,
+    "critical_detail_year": "l20269d Q30-[1] 결론 이모지 블록 누락 — 다른 세트 건",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "gate3_evidence": {
+    "method": "(심사관 배포 화면 실측 — 엔지니어 환경에서는 브라우저가 차단됨)",
+    "verified_at": "(미기입)",
+    "console_error_count": "(미기입)",
+    "pass": null
+  },
+  "diagnostic_axes": {
+    "note": "D-114 진단 8축 — 전 축 무결점",
+    "삼충실도": "해설 20/20 · 근거 누락 0 · ok:false pat 누락 0",
+    "근거정합": "cs_spans 43건 전부 해당 문장에서 확인 · 죽은 cs_ids 0",
+    "setId충돌": "2026_9월 은 A/B형 없음 — 동명 세트 0",
+    "구간표시": "[A] l20269cs27~l20269cs31 · 대장 등재 · 화면값 일치",
+    "글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "각주": "본문 * 과 footnote 대응 정합",
+    "문항형식": "4문항 × 5지 · 정답 특정 가능 4/4",
+    "분리게이트": "기존 변동 0"
+  },
+  "title_fix_record": {
+    "l20269c": {
+      "title": "두 출발",
+      "range": "31~34번",
+      "note": "변경 없음 — 기존 값 그대로"
+    }
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "sets_cite_status": {
+      "l20269c": "cite_present_author_sentType"
+    },
+    "evidence": "- 염상섭, 「두 출발」 -",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2026_9월::l20269c",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2026_9%EC%9B%94&set=l20269c&q=31&mode=study",
+  "comment": "웨이브 1 배치 1 — l20269c 무결점 합격 (D-114 진단 / D-115 승격 준비). gate3 화면 실측과 대표 승인이 남았다."
+}
