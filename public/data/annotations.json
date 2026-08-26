@@ -6054,5 +6054,21 @@
         "sentTo": "l20156bs14"
       }
     ]
+  },
+  "2016_9월B": {
+    "r20169g": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20169gs7",
+        "sentTo": "r20169gs7"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "r20169gs16",
+        "sentTo": "r20169gs16"
+      }
+    ]
   }
 }
