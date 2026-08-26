@@ -1716,7 +1716,14 @@ for (const yearKey of yearsToCheck) {
           //         (c)단일 sent noSpace 매칭 안 됨 → 다문장 boundary(정상, 미flag)
           //         (d)verse sent 또는 region에 줄바꿈 → 운문 \n↔공백(정상, 미flag)
           //         (e)마커(ⓐ-ⓩ㉠-㉭) 인접 공백차 → C_anchor_marker_space (WARNING 강등)
-          //         (f)순수 단어내 공백 artifact(l2022b류) → C_anchor_exact_fail (CRITICAL, sent.t 교정)
+          //         (f)순수 단어내 공백 artifact(l2022b류) → C_anchor_exact_fail (CRITICAL)
+          //   ⚠ [D-115-2 ③] 메시지에서 "sent.t 교정 대상" 문구를 뺐다.
+          //     실측 3건 모두 sent.t 는 정상이었고 결함은 해설 쪽이었다:
+          //       r20266b Q4#5 — 해설 인용이 원문 마커 ㉠ 를 공백으로 바꿔 적었다
+          //       l20266c Q28#3 — 아래 인용 추출 정규식이 **작은따옴표 짝을 어긋나게** 잡아
+          //         '대풍(큰 바람)' 과 '대풍' 사이의 "이다. " 를 인용으로 오인했다(오탐)
+          //     따라서 이 코드는 **결함 위치를 특정하지 못한다**. 원문·해설 양쪽을 보고 판별해야 한다.
+          //     인용 추출을 큰따옴표로 좁히는 건은 별도 발주(웨이브 2 전 전수 점검) 소관.
           if (ana && ana.includes("지문 근거")) {
             const csJoin = (c.cs_ids || [])
               .map((id) => (set.sents || []).find((s) => s.id === id))
@@ -1770,7 +1777,7 @@ for (const yearKey of yearsToCheck) {
                   "C_anchor_exact_fail",
                   yearKey,
                   cLoc,
-                  `📌 지문 근거 "${q.slice(0, 24)}…" 단어내 공백 artifact (${ms.id} sent.t 교정 대상)`,
+                  `📌 지문 근거 "${q.slice(0, 24)}…" 원문/해설 인용 불일치 — 결함 위치 판별 필요 (후보: ${ms.id})`,
                 );
               }
             }

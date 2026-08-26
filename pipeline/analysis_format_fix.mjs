@@ -39,6 +39,16 @@ const SPEC = [
   ["2026_6월", "r20266b", 9, 4, "MARKDOWN", null, "강조 5곳"],
   ["2026_6월", "r20266b", 9, 5, "MARKDOWN", null, "강조 1곳"],
   ["2026_6월", "l20266c", 29, 3, "MARKDOWN", null, "강조 2곳"],
+
+  // ── D-115-2 ② 승인된 최소 수정 ──────────────────────────────────────
+  //   REPLACE 는 [찾을 문자열, 바꿀 문자열] 을 준다. 그 문자열이 **정확히 한 번**
+  //   나올 때만 바꾸고, 그렇지 않으면 멈춘다. 논지는 건드리지 않는다.
+  ["2026_6월", "l20266c", 28, 3, "REPLACE", ["해당하는 것은의 '대풍", "해당하는 것은 '대풍"],
+    "해설 본문 비문 — 「것은의」에서 조사 '의' 1자만 지운다. 다른 곳은 손대지 않는다"],
+  ["2026_6월", "r20266b", 4, 5, "REPLACE", ['" 그러나 이 모델은 자유를', '"그러나 이 모델은 자유를'],
+    "지문 인용 앞 여분 공백 1자 제거. 원문 r20266bs4 에는 마커가 없다 — 공백만 군더더기였다"],
+  ["2026_6월", "r20266b", 4, 5, "REPLACE", ['" 이러한 악순환을 방지하면서', '"㉠이러한 악순환을 방지하면서'],
+    "원문 r20266bs16 은 「㉠이러한 악순환을…」이다. 인용이 마커 ㉠ 를 공백으로 바꿔 놓아 exact 대조가 실패했다 — 원문 표기로 되돌린다"],
 ];
 
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
@@ -66,6 +76,21 @@ for (const [yk, sid, qid, num, kind, val, why] of SPEC) {
     console.log(`  ${yk} ${sid} Q${qid}#${num} [결론 블록 추가]`);
     console.log(`     기존 끝: ${JSON.stringify(a.replace(/\s+$/, "").slice(-46))}`);
     console.log(`     추가:    ${JSON.stringify(val)}`);
+    console.log(`     근거: ${why}`);
+    if (APPLY) c.analysis = next;
+    n++;
+    continue;
+  }
+
+  if (kind === "REPLACE") {
+    const [from, to] = val;
+    const cnt = a.split(from).length - 1;
+    if (cnt !== 1) { console.log(`  🔴 ${sid} Q${qid}#${num} — ${JSON.stringify(from)} 가 ${cnt}번 나온다(1번이어야 함). 중단`); bad = true; continue; }
+    const next = a.replace(from, to);
+    const i = a.indexOf(from);
+    console.log(`  ${yk} ${sid} Q${qid}#${num} [최소 수정]`);
+    console.log(`     전: ${JSON.stringify(a.slice(Math.max(0, i - 26), i + from.length + 20))}`);
+    console.log(`     후: ${JSON.stringify(next.slice(Math.max(0, i - 26), i + to.length + 20))}`);
     console.log(`     근거: ${why}`);
     if (APPLY) c.analysis = next;
     n++;

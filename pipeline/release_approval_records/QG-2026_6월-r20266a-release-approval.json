@@ -1,0 +1,64 @@
+{
+  "yearKey": "2026_6월",
+  "setId": "r20266a",
+  "approved_at": "2026-08-26",
+  "approved_by": "대표 (구두 승인, 심사관 배석)",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2026_6월/2026_6월_정답.pdf)",
+    "checked": "questionType 기준 정답 특정 — 1~3번 전 문항",
+    "answer_key_mismatch": 0,
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2026_6월",
+    "scope": "연도 스코프 (판정 305② 준수 — --scope=release 단독 실행 아님)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 2,
+    "note": "2026_6월 잔여 CRITICAL 2건은 r20266b·l20266c 건 — 이 세트 0",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "gate3_evidence": {
+    "method": "심사관 화면 실측",
+    "verified_at": "2026-08-26",
+    "bundle": "CCfULP4G",
+    "detail": "l20269c 는 [A]-Q31 정합 및 스크린샷 육안 확인 포함",
+    "console_error_count": 0,
+    "pass": true
+  },
+  "diagnostic_axes": {
+    "note": "D-114 진단 8축",
+    "삼충실도": "해설 15/15 · 근거 누락 0 · ok:false pat 누락 0",
+    "근거정합": "cs_spans 18건 전부 확인",
+    "구간표시": "구간 표시 없는 세트 — 문항 참조도 없음",
+    "글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "문항형식": "3문항 × 5지 · 정답 특정 가능 3/3",
+    "setId충돌": "2026_6월 은 A/B형 없음 — 동명 세트 0",
+    "각주": "본문 * 과 footnote 대응 정합",
+    "분리게이트": "기존 변동 0"
+  },
+  "repair_record": "Q3#3 결론 블록 추가 (ba9ed62) — 해설 논지 불변. 정답표 3번=③ 과 ok:false=[3] 일치 확인 후 적용",
+  "title_fix_record": {
+    "r20266a": {
+      "title": "동형이의어의 의미 확정 과정",
+      "range": "1~3번",
+      "note": "변경 없음 — 기존 값 그대로"
+    }
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "sets_cite_status": {
+      "r20266a": "no_cite_info_text"
+    },
+    "evidence": "독서 지문 — 작가·출전 표기 없음(정상)",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2026_6월::r20266a",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2026_6%EC%9B%94&set=r20266a&q=1&mode=study",
+  "comment": "웨이브 1 배치 1 — r20266a 승격 확정 (D-114 진단 / D-115 수리 / D-115-2 승인)"
+}
