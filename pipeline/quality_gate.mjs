@@ -3252,6 +3252,15 @@ console.log(
 console.log(
   `W_orphan_marker: 마커 보유 세트 ${scopeMarkerSets} 중 고아 ${scopeOrphanSets}세트 / 고아 마커 ${scopeOrphanMarkers}개 (LIVE ${scopeOrphanLiveSets}세트)`,
 );
+// [D-118 ⑥] 요약만으로는 어느 세트인지 알 수 없어 매번 되짚어야 했다 — 세트를 적는다.
+{
+  const by = new Map();
+  for (const x of orphanMarkerCands) {
+    const k = `${x.yearKey}::${x.setId}${x.live ? " 🔴LIVE" : ""}`;
+    by.set(k, [...(by.get(k) || []), ...(x.markers || [x.marker ?? x.label ?? "?"])]);
+  }
+  for (const [k, ms] of by) console.log(`  · ${k} — 고아 마커 ${ms.join(" ")}`);
+}
 console.log(
   `W_marker_misplaced: 오정박 ${markerMisplacedCands.length}건 (LIVE ${markerMisplacedCands.filter((x) => x.live).length}) — 인라인↔ann sentId 불일치`,
 );
@@ -3271,6 +3280,13 @@ if (scopeEchoChoices === 0 && scopeSets > 0)
   console.log(
     `W_domain_mismatch: pat 보유 선지 ${scopeDomainChoices} 중 계열 불일치 ${scopeDomainHits}선지 / ${domainMismatchCands.length}세트`,
   );
+  // [D-118 ⑥] 세트·선지를 적는다. LIVE 는 앞에 표시해 우선순위를 바로 보이게 한다.
+  for (const x of domainMismatchCands)
+    console.log(
+      `  · ${x.live ? "🔴LIVE " : ""}${x.yearKey}::${x.setId} [${x.level}]` +
+        (x.loc ? ` ${x.loc}` : "") +
+        (x.detail ? ` — ${x.detail}` : ""),
+    );
   console.log(
     `  ├ [A 세트 배열 이관] ${scopeDomainSetHits}세트 (LIVE ${liveSet}) — 오분율 100%, 배열 이관 대상`,
   );
