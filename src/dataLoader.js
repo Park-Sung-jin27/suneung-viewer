@@ -556,6 +556,13 @@ function _attachAnnotations(yearData, annYear) {
         set.annotations = list;
       } else if (!set.annotations) {
         set.annotations = [];
+      } else {
+        // 발주 F-25 ⓑ: annotations.json 엔트리가 없는 세트에서만 살아남던
+        //   통짜 파일(all_data → free/<year>.json) 내장 브래킷을 제거한다.
+        //   브래킷 원천은 annotations.json 하나다.
+        //   ★ box·underline·marker 등 다른 타입은 그대로 둔다(스코프는 bracket).
+        //   ★ 되돌리기: 이 else 분기를 지우면 원복된다.
+        set.annotations = set.annotations.filter((a) => a?.type !== "bracket");
       }
     }
   }
