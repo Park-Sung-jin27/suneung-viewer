@@ -2,7 +2,7 @@
 
 > 생성: `node pipeline/marker_gap_recount.mjs --md`
 > 기존 집계는 all_data 의 `set.annotations` 를 봤다. 화면은 그 값을 읽지 않는다.
-> 여기서는 화면 원천(annotations.json ∪ visual_marks.json)에서 **실제로 그려지는 라벨**과
+> 여기서는 화면 원천(annotations.json — F-25 2단계에서 단일화)에서 **실제로 그려지는 라벨**과
 > 문항이 가리키는 라벨을 맞춰 본다. 판정 단위는 라벨이다.
 
 | 항목 | 세트 | LIVE 세트 |

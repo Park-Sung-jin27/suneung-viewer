@@ -53,11 +53,8 @@ for (const [yk, v] of Object.entries(data))
       // 화면에 실제로 그려지는 라벨
       const annList = ann[yk]?.[setId];
       const effAnn = Array.isArray(annList) && annList.length > 0 ? annList : (s.annotations || []);
+      // ★ F-25 2단계(2026-08-25): 렌더 원천이 annotations.json 하나로 단일화됐다.
       const cands = [
-        ...(vmBy.get(`${yk}::${setId}`) || [])
-          .filter((m) => m.type === "bracket" && m.target === "sent_range" && m.status !== "broken"
-            && Array.isArray(m.sentIds) && m.sentIds.length)
-          .map((m) => ({ label: m.label, from: m.sentIds[0], to: m.sentIds[m.sentIds.length - 1] })),
         ...effAnn.filter((a) => a?.type === "bracket" && a.sentFrom && a.sentTo && (!a.target || a.target === "passage"))
           .map((a) => ({ label: a.label, from: a.sentFrom, to: a.sentTo })),
       ];
@@ -78,7 +75,7 @@ out.push(`# D-94 클래스 재집계 — 화면 원천 기준 (D-109 ②)`);
 out.push(``);
 out.push(`> 생성: \`node pipeline/marker_gap_recount.mjs --md\``);
 out.push(`> 기존 집계는 all_data 의 \`set.annotations\` 를 봤다. 화면은 그 값을 읽지 않는다.`);
-out.push(`> 여기서는 화면 원천(annotations.json ∪ visual_marks.json)에서 **실제로 그려지는 라벨**과`);
+out.push(`> 여기서는 화면 원천(annotations.json — F-25 2단계에서 단일화)에서 **실제로 그려지는 라벨**과`);
 out.push(`> 문항이 가리키는 라벨을 맞춰 본다. 판정 단위는 라벨이다.`);
 out.push(``);
 out.push(`| 항목 | 세트 | LIVE 세트 |`);

@@ -1,5 +1,7 @@
 # 구간 표시 [A]~[F] 트랙 — 최종 커버리지 명세 (D-112 ③)
 
+> ★ F-25 2단계(2026-08-25)로 렌더 원천이 `annotations.json` 하나가 됐다. 아래 수치는 그 기준이다.
+>
 > 근거 문서: `docs/bracket_verification_ledger.md`(대장) · `docs/bracket_render_table.md`(스냅샷)
 > · `docs/marker_gap_recount.md`(공백 집계) · `docs/d110_2_remap.md` · `docs/d111_manual_path.md`
 

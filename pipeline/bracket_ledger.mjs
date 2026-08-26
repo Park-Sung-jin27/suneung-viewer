@@ -129,11 +129,10 @@ for (const [yk, v] of Object.entries(data))
       const effAnn = Array.isArray(annList) && annList.length > 0 ? annList : (s.annotations || []);
       const annBr = effAnn.filter((a) => a?.type === "bracket" && a.sentFrom && a.sentTo && (!a.target || a.target === "passage"))
         .map((a) => ({ label: a.label, from: a.sentFrom, to: a.sentTo, src: "ann" }));
-      const vmBr = (vmBy.get(`${yk}::${setId}`) || [])
-        .filter((m) => m.type === "bracket" && m.target === "sent_range" && m.status !== "broken" && Array.isArray(m.sentIds) && m.sentIds.length)
-        .map((m) => ({ label: m.label, from: m.sentIds[0], to: m.sentIds[m.sentIds.length - 1], src: "vm" }));
+      // ★ F-25 2단계(2026-08-25): 렌더 원천이 annotations.json 하나로 단일화됐다.
+      //   src/PassagePanel.jsx 가 더 이상 visual_marks 의 bracket 을 합치지 않는다.
       const seen = new Set();
-      const cands = [...vmBr, ...annBr].filter((b) => {
+      const cands = [...annBr].filter((b) => {
         const k = `${b.label}|${b.from}|${b.to}`;
         if (seen.has(k)) return false; seen.add(k); return true;
       });
