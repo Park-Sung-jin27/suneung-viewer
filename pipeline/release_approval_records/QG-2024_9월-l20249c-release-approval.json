@@ -1,0 +1,63 @@
+{
+  "yearKey": "2024_9월",
+  "setId": "l20249c",
+  "approved_at": "(대표 승인 시각 — gate3 실측 후)",
+  "approved_by": "(대표)",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2024_9월/2024_9월_정답.pdf)",
+    "checked": "questionType 기준 정답 특정 — 28~31번 전 문항",
+    "answer_key_mismatch": 0,
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2024_9월",
+    "scope": "연도 스코프 (판정 305② 준수)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 0,
+    "note": "2024_9월 전체 CRITICAL 0 · release_ready (D-118 수리 후)",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "gate3_evidence": {
+    "method": "심사관 화면 실측",
+    "verified_at": "(D-118 상신 후 실측 예정)",
+    "bundle": "(미기입)",
+    "console_error_count": null,
+    "pass": null
+  },
+  "diagnostic_axes": {
+    "note": "D-117 진단 8축 — D-118 수리 후 결함 0",
+    "삼충실도": "해설 20/20 · 근거 누락 0 · ok:false pat 누락 0",
+    "근거정합": "cs_spans 37건 전부 해당 문장에서 확인",
+    "setId충돌": "2024_9월 은 A/B형 없음 — 동명 세트 0",
+    "구간표시": "구간 표시 없는 세트 — 문항 참조도 없음",
+    "글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "각주": "본문 * 과 footnote 대응 정합",
+    "문항형식": "5지 · 정답 특정 가능 전 문항",
+    "분리게이트": "기존 변동 0"
+  },
+  "repair_record": "s1 「누구 보다도」→「누구보다도」 (ea0ec9e) — 원본 10면 매치 y 253.1/271.6 이 서로 다른 줄. cs_spans 1건 동반 수정, 해설은 이미 붙여 인용",
+  "title_fix_record": {
+    "l20249c": {
+      "title": "원미동 시인",
+      "range": "28~31번",
+      "note": "변경 없음 — 기존 값 그대로"
+    }
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "sets_cite_status": {
+      "l20249c": "cite_present_author_sentType"
+    },
+    "evidence": "- 양귀자, 「원미동 시인」 -",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2024_9월::l20249c",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2024_9%EC%9B%94&set=l20249c&q=28&mode=study",
+  "comment": "웨이브 1 배치 2 — l20249c (D-117 진단 / D-118 수리). gate3 화면 실측과 대표 승인이 남았다."
+}
