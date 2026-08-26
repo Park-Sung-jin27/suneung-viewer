@@ -4430,6 +4430,12 @@
         "sentId": "r20229ds15",
         "marker": "ⓐ",
         "text": "ⓐ맞춰"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20229ds11",
+        "sentTo": "r20229ds17"
       }
     ]
   },
