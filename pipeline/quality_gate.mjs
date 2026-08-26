@@ -1736,13 +1736,21 @@ for (const yearKey of yearsToCheck) {
             for (const line of ana.split(/\r?\n/)) {
               if (!line.includes("📌") || !line.includes("지문 근거")) continue;
               if (line.includes("보기 근거")) continue; // 1차: 지문 근거만
+              // ★ [D-116 ①] 작은따옴표 항의 최소 길이를 정규식에서 뺐다.
+              //   전에는 '([^']{4,})' 였는데, 3자 이하 인용('옥피리'·'항서' 등 국어 지문에 흔하다)이
+              //   {4,} 에 미달해 매치되지 않고 **다음 따옴표부터 짝이 밀렸다**. 그 결과
+              //   l20266c Q28#3 에서 '대풍(큰 바람)' 과 '대풍' 사이의 "이다. " 가 인용으로 잡혔다(오탐).
+              //   이제 짝은 전부 맞추되, 검사 대상에서만 4자 미만을 뺀다 — 짝 밀림이 사라진다.
+              //   큰따옴표 항은 그대로 둔다(그쪽은 짝 밀림이 관측되지 않았다).
+              //   사전 조사: 작은따옴표 인용 1,375개 중 1,003개가 실제 지문 인용으로 정상 검사된다.
+              //   항을 없애면 그 검사가 통째로 사라지므로 없애지 않는다.
               const quotes = [
                 ...line.matchAll(
-                  /"([^"]{4,})"|“([^”]{4,})”|'([^']{4,})'|‘([^’]{4,})’/g,
+                  /"([^"]{4,})"|“([^”]{4,})”|'([^']+)'|‘([^’]+)’/g,
                 ),
               ]
                 .map((m) => m[1] || m[2] || m[3] || m[4] || "")
-                .filter(Boolean);
+                .filter((q) => q && q.length >= 4);
               for (const q of quotes) {
                 if (csJoin.includes(q) || setJoin.includes(q)) continue; // (a) raw exact
                 if (/…|\.{2,}/.test(q)) continue; // (b) 말줄임표
