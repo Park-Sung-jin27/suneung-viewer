@@ -1106,8 +1106,8 @@
       {
         "type": "bracket",
         "label": "C",
-        "sentFrom": "l2024_28_31s7",
-        "sentTo": "l2024_28_31s7"
+        "sentFrom": "l2024_28_31s7b",
+        "sentTo": "l2024_28_31s7b"
       },
       {
         "type": "underline",
@@ -1135,7 +1135,7 @@
       },
       {
         "type": "underline",
-        "sentId": "l2024_28_31s7",
+        "sentId": "l2024_28_31s7b",
         "text": "\"오오, 그러니까, 채, 무어, 말할 새두 없이 문이 잠겨져서, 그냥 갇힌 채, 누구 오기만 기대린 게로군?\"",
         "marker": "㉤"
       }

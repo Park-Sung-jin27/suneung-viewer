@@ -279,7 +279,7 @@
       "label": "C",
       "target": "text_span",
       "sentIds": [
-        "l2024_28_31s7"
+        "l2024_28_31s7b"
       ],
       "start": {
         "sentId": "l2024_28_31s7",
@@ -12851,7 +12851,7 @@
       "label": "C",
       "target": "sent_range",
       "sentIds": [
-        "l2024_28_31s7"
+        "l2024_28_31s7b"
       ],
       "start": {
         "sentId": "l2024_28_31s7",
