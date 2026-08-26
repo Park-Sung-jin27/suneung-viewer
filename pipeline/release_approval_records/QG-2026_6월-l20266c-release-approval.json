@@ -13,8 +13,8 @@
     "command": "node pipeline/quality_gate.mjs 2026_6월",
     "scope": "연도 스코프 (판정 305② 준수)",
     "critical_count_this_set": 0,
-    "critical_count_year": 1,
-    "note": "이 세트 CRITICAL 0. 2026_6월 잔여 1건(l20266c Q28-[3])은 **게이트 인용 정규식 오탐**이다 — 인용 추출 정규식이 작은따옴표 짝을 어긋나게 잡아 '대풍(큰 바람)' 과 '대풍' 사이의 \"이다. \" 를 인용으로 오인했다. 해설·원문 모두 정상. 심사관 판정 2026-08-26.",
+    "critical_count_year": 0,
+    "note": "이 세트 CRITICAL 0. 2026_6월 잔여 1건(l20266c Q28-[3])은 **게이트 인용 정규식 오탐**이다 — 인용 추출 정규식이 작은따옴표 짝을 어긋나게 잡아 '대풍(큰 바람)' 과 '대풍' 사이의 \"이다. \" 를 인용으로 오인했다. 해설·원문 모두 정상. 심사관 판정 2026-08-26. **정규식 수정 완료(ed242cd, D-116 ①) — 2026_6월 게이트는 이제 CRITICAL 0 · release_ready 다.**",
     "pass": true
   },
   "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
