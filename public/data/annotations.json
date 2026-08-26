@@ -4449,6 +4449,20 @@
         "sentFrom": "r20229ds11",
         "sentTo": "r20229ds17"
       }
+    ],
+    "l20229c": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20229cs19",
+        "sentTo": "l20229cs21"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20229cs26",
+        "sentTo": "l20229cs28"
+      }
     ]
   },
   "2025_6월": {
