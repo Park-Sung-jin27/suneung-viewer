@@ -282,6 +282,39 @@ console.log("\nall_data(세트 파일 내장) 원천 구간:", ad.length);
 for (const r of ad)
   console.log(`  ${r.yearKey} ${r.setId} [${r.label}] ${r.from}~${r.to}`);
 
+// annotations.json 엔트리가 "그 세트가 없는 연도 키" 아래 있는 경우.
+//   dataLoader._attachAnnotations 는 annAll[yearKey] 로만 조회하므로 이런
+//   엔트리는 어느 화면에도 닿지 않는다(legacy·single 양쪽 모두).
+//   실측 사례: l20146a 는 2014_6월B 에 있는데 엔트리는 2014_6월A 키 아래 있고,
+//   그 세트는 문장이 5개라 선언된 sentTo(l20146as6)도 존재하지 않는다.
+{
+  const home = {}; // setId → 그 세트가 실제로 있는 yearKey 목록
+  for (const f of readdirSync(FREE_DIR).filter(
+    (x) => x.endsWith(".json") && x !== "index.json",
+  )) {
+    const yk = f.replace(/\.json$/, "");
+    const d = readJson(path.join(FREE_DIR, f));
+    for (const sec of ["reading", "literature"])
+      for (const s of d[sec] || [])
+        (home[s.setId || s.id] ||= []).push(yk);
+  }
+  const orphans = [];
+  for (const [yk, sets] of Object.entries(res.ann)) {
+    for (const [setId, list] of Object.entries(sets)) {
+      if (!Array.isArray(list)) continue;
+      if (!list.some((a) => a.type === "bracket")) continue;
+      const where = home[setId];
+      if (!where) continue; // 비노출 세트 — 판단 보류
+      if (!where.includes(yk)) orphans.push({ yk, setId, where });
+    }
+  }
+  console.log("\n연도 키가 어긋난 ann 브래킷 엔트리:", orphans.length);
+  for (const o of orphans)
+    console.log(
+      `  ann["${o.yk}"]["${o.setId}"] — 이 세트는 ${o.where.join(", ")} 에 있다`,
+    );
+}
+
 const cf = conflicts(res);
 console.log("\nann 과 vm 의 범위가 다른 (세트,라벨):", cf.length);
 for (const r of cf)
