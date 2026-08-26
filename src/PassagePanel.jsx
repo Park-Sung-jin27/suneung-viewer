@@ -726,21 +726,18 @@ function renderAll(sents, sel, annotations, visualMarks, aiCitedSentId) {
   // bracket source: visual_marks + annotations.json bracket 둘 다 인정.
   //   v2 보강 (2026-06-01): 39 set 의 bracket 이 annotations.json 에만 있고 visualMarks 미등록 결함 발견.
   //   양쪽 source 모두 인정하여 학습 viewer 에 표시 의무.
-  const vmList = Array.isArray(visualMarks) ? visualMarks : [];
-  const vmBrackets = vmList
-    .filter(
-      (m) =>
-        m.type === "bracket" &&
-        m.target === "sent_range" &&
-        m.status !== "broken" &&
-        Array.isArray(m.sentIds) &&
-        m.sentIds.length > 0,
-    )
-    .map((m) => ({
-      label: m.label,
-      sentFrom: m.sentIds[0],
-      sentTo: m.sentIds[m.sentIds.length - 1],
-    }));
+  // 발주 F-25 ⓐ: 브래킷 렌더 원천을 annotations.json 하나로 단일화한다.
+  //   종전에는 vm 브래킷이 배열 앞에 놓여 first-match-wins 로 ann 을 이겼고,
+  //   ann 을 고쳐도 화면이 안 바뀌거나(l20259a) 어느 원천에도 없는 범위가
+  //   그려지는(r2023b: ann s1~s8 + vm s2~s9 → s1~s9) 사고가 났다.
+  //   ★ 스코프는 bracket 뿐이다. vm 의 box·underline·inline_label 등 다른
+  //     타입 렌더는 아래 경로에서 그대로 유지된다.
+  //   ★ 되돌리기: vmBrackets 를 brackets 배열 앞에 다시 넣으면 원복된다.
+  //   ※ visualMarks 인자는 남겨 둔다(호출부·prop 배선 무변경). 실측 결과 이
+  //     뷰어가 visual_marks 를 쓰던 곳은 브래킷 하나뿐이었다 — box·underline·
+  //     marker·inline_label 420건은 렌더 경로가 없었고, 인라인 타입은
+  //     annotations.json(passageAnns) 에서만 온다. 그래서 이 변경의 영향은
+  //     브래킷에만 닿는다.
   const annBrackets = passageAnns
     .filter((a) => a.type === "bracket" && a.sentFrom && a.sentTo)
     .map((a) => ({
@@ -749,9 +746,11 @@ function renderAll(sents, sel, annotations, visualMarks, aiCitedSentId) {
       sentTo: a.sentTo,
     }));
   // 중복 제거 (label + sentFrom + sentTo 동일 시 한 번만)
+  //   원천이 하나가 됐으므로 같은 값이 두 번 들어올 일은 사실상 없지만,
+  //   annotations.json 자체의 중복 엔트리를 막기 위해 남겨 둔다.
   const bracketKey = (b) => `${b.label}|${b.sentFrom}|${b.sentTo}`;
   const seenKeys = new Set();
-  const brackets = [...vmBrackets, ...annBrackets].filter((b) => {
+  const brackets = annBrackets.filter((b) => {
     const k = bracketKey(b);
     if (seenKeys.has(k)) return false;
     seenKeys.add(k);
