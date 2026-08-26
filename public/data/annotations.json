@@ -4876,6 +4876,12 @@
         "type": "box",
         "sentId": "r20249as2",
         "text": "대부분의 읽기 발달 연구"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20249as13",
+        "sentTo": "r20249as15"
       }
     ],
     "l20249c": [
