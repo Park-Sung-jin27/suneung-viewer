@@ -12475,22 +12475,25 @@
       "label": "A",
       "target": "sent_range",
       "sentIds": [
-        "l20259cs20",
-        "l20259cs21",
-        "l20259cs22",
-        "l20259cs23",
-        "l20259cs24",
-        "l20259cs25",
-        "l20259cs26",
-        "l20259cs27"
+        "l20259cs41",
+        "l20259cs42",
+        "l20259cs43",
+        "l20259cs44",
+        "l20259cs45",
+        "l20259cs46",
+        "l20259cs47",
+        "l20259cs48",
+        "l20259cs49",
+        "l20259cs50",
+        "l20259cs51"
       ],
       "start": {
-        "sentId": "l20259cs20",
+        "sentId": "l20259cs41",
         "offset": 0
       },
       "end": {
-        "sentId": "l20259cs27",
-        "offset": 116
+        "sentId": "l20259cs51",
+        "offset": 28
       },
       "source": "migrated_from_annotations",
       "status": "needs_human",
