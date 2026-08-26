@@ -1,0 +1,63 @@
+{
+  "yearKey": "2026_6월",
+  "setId": "l20266c",
+  "approved_at": "(대표 승인 시각 — gate3 실측 후)",
+  "approved_by": "(대표)",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2026_6월/2026_6월_정답.pdf)",
+    "checked": "questionType 기준 정답 특정 — 27~30번 전 문항",
+    "answer_key_mismatch": 0,
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2026_6월",
+    "scope": "연도 스코프 (판정 305② 준수)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 1,
+    "note": "이 세트 CRITICAL 0. 2026_6월 잔여 1건(l20266c Q28-[3])은 **게이트 인용 정규식 오탐**이다 — 인용 추출 정규식이 작은따옴표 짝을 어긋나게 잡아 '대풍(큰 바람)' 과 '대풍' 사이의 \"이다. \" 를 인용으로 오인했다. 해설·원문 모두 정상. 심사관 판정 2026-08-26.",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "gate3_evidence": {
+    "method": "심사관 화면 실측",
+    "verified_at": "(D-115-3 상신 후 실측 예정)",
+    "bundle": "(미기입)",
+    "console_error_count": null,
+    "pass": null
+  },
+  "diagnostic_axes": {
+    "note": "D-114 진단 8축 — 재진단 결과 결함 0",
+    "삼충실도": "해설 20/20 · 근거 누락 0 · ok:false pat 누락 0",
+    "근거정합": "cs_spans 33건 전부 해당 문장에서 확인",
+    "구간표시": "구간 표시 없는 세트 — 문항 참조도 없음",
+    "글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "문항형식": "4문항 × 5지 · 정답 특정 가능 4/4",
+    "setId충돌": "2026_6월 은 A/B형 없음 — 동명 세트 0",
+    "각주": "본문 * 과 footnote 대응 정합",
+    "분리게이트": "기존 변동 0"
+  },
+  "repair_record": "Q29#3 강조 표시 제거 (a2b5dc8) · Q28#3 해설 비문 「것은의」→「것은」 1자 삭제 (e5051f6). 논지 불변",
+  "title_fix_record": {
+    "l20266c": {
+      "title": "김진옥전",
+      "range": "27~30번",
+      "note": "변경 없음 — 기존 값 그대로"
+    }
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "sets_cite_status": {
+      "l20266c": "cite_present_author_sentType"
+    },
+    "evidence": "- 작자 미상, 「김진옥전」 -",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2026_6월::l20266c",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주(F-30) 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2026_6%EC%9B%94&set=l20266c&q=27&mode=study",
+  "comment": "웨이브 1 배치 1 마감 — l20266c (D-114 진단 / D-115·D-115-2·D-115-3 수리). gate3 화면 실측과 대표 승인이 남았다."
+}
