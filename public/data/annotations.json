@@ -4364,6 +4364,12 @@
         "label": "A",
         "sentFrom": "l20229bs26",
         "sentTo": "l20229bs28"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20229bs30",
+        "sentTo": "l20229bs36"
       }
     ],
     "r20229b": [
