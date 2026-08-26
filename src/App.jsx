@@ -2673,7 +2673,7 @@ export default function App() {
             if (j?.code === "ENTITLEMENT_FAILED") {
               alert(
                 "결제는 완료됐습니다. 이용권 활성화에 문제가 있어 확인 중입니다.\n" +
-                  "잠시 후에도 열리지 않으면 문의해 주세요 — downfall121@gmail.com",
+                  "잠시 후에도 열리지 않으면 문의해 주세요 — seongjinpark12@gmail.com",
               );
             } else {
               alert(j?.error || "결제 확인에 실패했습니다");

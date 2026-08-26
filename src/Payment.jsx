@@ -324,7 +324,7 @@ function PlanCard({
                 fontFamily: "'Noto Sans KR', sans-serif",
               }}
             >
-              🔧 검수용 — 테스트 키
+              🔧 검수 모드
             </div>
           )}
           <button
@@ -422,7 +422,9 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
         method: "CARD",
         amount: { currency: "KRW", value: plan.price },
         orderId: `order_${user.id}_${Date.now()}`,
-        orderName: `짚이 ${plan.name} 구독 (1개월)`,
+        // 발주 F-28 ⓑ: 구현은 자동 갱신되지 않는 단건 결제다. 결제창·카드사
+        //   명세서에 「구독」이 찍히면 자동 갱신으로 오해한다(F-2 정정 취지).
+        orderName: `짚이 ${plan.name} 이용권 (1개월)`,
         customerEmail: user.email,
         customerName: user.email,
         successUrl: window.location.origin + "/payment-success.html",
@@ -611,9 +613,7 @@ export default function Payment({ user, onPaySuccess, onFreeStart }) {
           lineHeight: "1.7",
         }}
       >
-        스탠다드·프리미엄 플랜은 결제 시스템 준비 완료 후 순차 오픈 예정입니다.
-        <br />
-        현재 무료 스타터 플랜으로 핵심 기능을 먼저 경험해보세요.
+        프리미엄 플랜은 준비 중입니다. 먼저 무료 스타터로 핵심 기능을 확인해 보세요.
       </p>
 
       {/* ── B2B 학원 도입 플랜 ── */}
