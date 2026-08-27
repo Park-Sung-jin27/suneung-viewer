@@ -1,0 +1,63 @@
+{
+  "yearKey": "2024_9월",
+  "setId": "r20249d",
+  "approved_at": "(대표 승인 시각 — gate3 실측 후)",
+  "approved_by": "(대표)",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2024_9월/2024_9월_정답.pdf)",
+    "checked": "questionType 기준 정답 특정 — 12~17번 전 문항",
+    "answer_key_mismatch": 0,
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2024_9월",
+    "scope": "연도 스코프 (판정 305② 준수)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 0,
+    "note": "2024_9월 전체 CRITICAL 0 · release_ready (D-118·D-118-2 수리 후)",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "gate3_evidence": {
+    "method": "심사관 화면 실측",
+    "verified_at": "(D-118-2 상신 후 실측 예정)",
+    "bundle": "(미기입)",
+    "console_error_count": null,
+    "pass": null
+  },
+  "diagnostic_axes": {
+    "note": "D-117 진단 8축 — D-118·D-118-2 수리 후 결함 0",
+    "삼충실도": "해설 30/30 · 근거 누락 0 (Q17 은 어휘 문항이라 오답에 지문 근거가 없는 것이 정상) · ok:false pat 누락 0",
+    "근거정합": "cs_spans 7건 전부 해당 문장에서 확인",
+    "setId충돌": "2024_9월 은 A/B형 없음 — 동명 세트 0",
+    "구간표시": "구간 표시 없는 세트 — 문항 참조도 없음",
+    "글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "각주": "s11 「직역*」 복원 후 각주부 s20 과 짝 정합",
+    "문항형식": "6문항 × 5지 · 정답 특정 가능 6/6",
+    "분리게이트": "기존 변동 0"
+  },
+  "repair_record": "s11 「직역을」→「직역*을」 각주 마커 복원 (db32f48) — 원본 4면 y 560.7 대조. 각주부 s20 과 짝을 이룬다 · 근거 부여 5건 (D-118-2 ①): Q12#4 [s18,s19] · Q16#5 [s36] · Q15#2 [s24,s25,s26] · Q15#3 [s24,s26] · Q15#4 [s31,s32]. 정답 선지 2건 포함",
+  "title_fix_record": {
+    "r20249d": {
+      "title": "조선 신분제와 개혁론",
+      "range": "12~17번",
+      "note": "변경 없음 — 기존 값 그대로"
+    }
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "sets_cite_status": {
+      "r20249d": "no_cite_info_text"
+    },
+    "evidence": "독서 지문 — 작가·출전 표기 없음(정상)",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2024_9월::r20249d",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2024_9%EC%9B%94&set=r20249d&q=12&mode=study",
+  "comment": "웨이브 1 배치 2 — r20249d (D-117 진단 / D-118·D-118-2 수리). gate3 화면 실측과 대표 승인이 남았다."
+}

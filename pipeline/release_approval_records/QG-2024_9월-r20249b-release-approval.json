@@ -12,10 +12,10 @@
   "gate1_evidence": {
     "command": "node pipeline/quality_gate.mjs 2024_9월",
     "scope": "연도 스코프 (판정 305② 준수)",
-    "critical_count_this_set": 0,
+    "critical_count_this_set": "(QG 는 0 이나 별건 결함이 있다)",
     "critical_count_year": 0,
     "note": "2024_9월 전체 CRITICAL 0 · release_ready (D-118 수리 후)",
-    "pass": true
+    "pass": false
   },
   "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
   "gate3_evidence": {
@@ -59,5 +59,13 @@
     "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
   },
   "review_url": "https://www.jippi.kr/viewer?year=2024_9%EC%9B%94&set=r20249b&q=4&mode=study",
-  "comment": "웨이브 1 배치 2 — r20249b (D-117 진단 / D-118 수리). gate3 화면 실측과 대표 승인이 남았다."
+  "comment": "웨이브 1 배치 2 — r20249b (D-117 진단 / D-118 수리). gate3 화면 실측과 대표 승인이 남았다.",
+  "_status": "🔴 철회 — 승격 불가 (D-118-2 ②)",
+  "blocking_defect": {
+    "summary": "Q5 발문·선지의 원문자 마커 ㉮㉯㉰㉱ 가 한글 음절로 오치환되고 일부는 소실됐다",
+    "evidence": "원본 2면 5번은 「[A], [B]의 입장에서 ㉮～㉱에 대해 이해한 내용으로 적절하지 않은 것은?」이고 선지 ①②③④⑤ 가 ㉮~㉱ 를 참조한다(PDF y 580.6~876.5). 데이터는 발문이 「가~라에 대해」이고 선지에서 마커가 「가·나·다·라·카」로 바뀌거나 아예 빠졌다. 「카」는 ㉮~㉱ 범위 밖 글자다.",
+    "impact": "본문 ㉮㉯㉰㉱ 4개가 고아 마커로 남고, Q5 선지가 무엇을 가리키는지 학생이 알 수 없다",
+    "scale": "중~대 — 발문 1 + 선지 5개를 원본 대조로 복원해야 한다",
+    "next": "별도 발주 대기"
+  }
 }
