@@ -1,0 +1,103 @@
+// choice_text_restore.mjs — 발문·선지 본문을 원본 지면 표기로 되돌린다 (발주 D-119 ②)
+//
+// **원본을 눈으로 옮겨 적은 것만 넣는다.** 추정 금지(§13⑬).
+// SPEC 의 각 문자열은 시험지 PDF 에서 행 단위로 읽어 이어 붙인 것이고, y 좌표를 함께 남긴다.
+//
+// 안전장치 (하나라도 어긋나면 아무것도 쓰지 않는다):
+//   · 대상 문항·선지가 실재해야 한다
+//   · 새 문자열이 기존과 달라야 한다(같으면 건너뛴다)
+//   · 새 문자열에 범위 밖 글자가 없는지, 마커 개수가 기대와 같은지 센다
+//   · 바꾼 뒤 그 선지를 가리키는 cs_spans 가 여전히 유효한지 확인한다
+//
+// 사용: node pipeline/choice_text_restore.mjs [--only <setId>] [--apply]
+
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const APPLY = process.argv.includes("--apply");
+const ONLY = (() => { const i = process.argv.indexOf("--only"); return i > 0 ? process.argv[i + 1] : null; })();
+
+// r20249b Q5 — 원본 2면. 마커 ㉮㉯㉰㉱ 가 「가·나·다·라·카」로 오치환되고 일부는 소실됐다.
+//   「카」는 ㉮~㉱ 범위 밖 글자다. 본문 s19·s22·s23 의 ㉮㉯㉰㉱ 는 멀쩡하다.
+const SPEC = [
+  {
+    yk: "2024_9월", setId: "r20249b", qId: 5,
+    stem: "[A], [B]의 입장에서 ㉮～㉱에 대해 이해한 내용으로 적절하지 않은 것은?",
+    stemY: "y 580.6 + 601.4",
+    choices: {
+      1: ["[A]의 입장에서, ㉮는 데이터 이동권 도입을 통해 ㉯의 데이터를 재사용할 수 있게 되었으므로 데이터 생성 비용을 줄일 수 있다고 보겠군.",
+        "y 625.9 + 644.2 + 662.6"],
+      2: ["[A]의 입장에서, 정보 주체가 데이터 이동을 요청하여 데이터를 전송받는 제3자가 ㉰라면, ㉰는 분쟁 없이 정보 주체의 데이터를 받게 되어 거래 비용을 줄일 수 있다고 보겠군.",
+        "y 681.0 + 699.3 + 717.7"],
+      3: ["[B]의 입장에서, ㉰가 ㉱와의 거래에 실패해 데이터를 수집하지 못하여 ㉰에 데이터 생성 비용이 발생하면, 데이터 관련 산업의 시장에 진입하기 어려워질 수 있다고 보겠군.",
+        "y 736.1 + 754.5 + 772.8"],
+      4: ["[A]와 달리 [B]의 입장에서, 정보 주체의 데이터가 ㉯에서 ㉱로 이동하여 집적·처리될수록 기업 간 공유나 유통이 위축될 수 있다고 보겠군.",
+        "y 791.2 + 809.6 + 828.0 — 원본은 「집적․처리」(U+2024)이나 이 데이터의 관례 표기 「집적·처리」를 따른다"],
+      5: ["[B]와 달리 [A]의 입장에서, ㉯는 ㉮로 데이터를 이동하여 경제적 이득을 취할 수 있으므로 데이터의 공유나 유통의 활성화에 기여할 수 있다고 보겠군.",
+        "y 846.4 + 864.7 + 883.1"],
+    },
+    // 원본 5번에는 <보기>가 없다(발문 601.4 다음 바로 선지 625.9). 데이터의 bogi 는 별건 —
+    // 지금은 건드리지 않고 보고만 한다.
+    expectMarkers: { 1: "㉮㉯", 2: "㉰㉰", 3: "㉰㉱㉰", 4: "㉯㉱", 5: "㉯㉮" },
+  },
+];
+
+const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
+const flat = (v) => (v == null ? "" : typeof v === "string" ? v : JSON.stringify(v));
+// 오치환의 흔적 — 단독으로 쓰인 「카」(원본 ㉮~㉱ 어디에도 대응하지 않는 글자)
+const OUT_OF_RANGE = /(?<![가-힣])카(?![가-힣])/;
+let n = 0, bad = false;
+console.log(`## 발문·선지 원본 복원 ${APPLY ? "적용" : "DRY-RUN"} — ${SPEC.length}건\n`);
+
+for (const S of SPEC) {
+  if (ONLY && S.setId !== ONLY) continue;
+  let set = null;
+  for (const sec of ["reading", "literature"]) {
+    const f = (data[S.yk]?.[sec] || []).find((x) => (x.setId || x.id) === S.setId);
+    if (f) { set = f; break; }
+  }
+  if (!set) { console.log(`  🔴 ${S.yk} ${S.setId} — 세트 없음`); bad = true; continue; }
+  const q = (set.questions || []).find((x) => String(x.id) === String(S.qId));
+  if (!q) { console.log(`  🔴 Q${S.qId} — 문항 없음`); bad = true; continue; }
+
+  console.log(`  ${S.yk} ${S.setId} Q${S.qId}`);
+  console.log(`     발문 전: ${JSON.stringify(flat(q.t))}`);
+  console.log(`     발문 후: ${JSON.stringify(S.stem)}   (원본 ${S.stemY})`);
+  if (APPLY) q.t = S.stem;
+
+  for (const [num, [txt, why]] of Object.entries(S.choices)) {
+    const c = (q.choices || []).find((x) => String(x.num) === String(num));
+    if (!c) { console.log(`  🔴 #${num} — 선지 없음`); bad = true; continue; }
+    const got = [...txt.matchAll(/[㉮-㉱]/g)].map((m) => m[0]).join("");
+    const want = S.expectMarkers[num];
+    if (got !== want) { console.log(`  🔴 #${num} — 마커가 ${got || "없음"} 인데 ${want} 이어야 한다`); bad = true; continue; }
+    if (OUT_OF_RANGE.test(txt)) { console.log(`  🔴 #${num} — 범위 밖 글자가 남아 있다`); bad = true; continue; }
+    console.log(`     #${num} 전: ${JSON.stringify(flat(c.t))}`);
+    console.log(`     #${num} 후: ${JSON.stringify(txt)}`);
+    console.log(`          원본 ${why}`);
+    // 이 선지의 cs_spans 는 지문 문장을 가리킨다 — 선지 본문 변경과 무관하지만 확인해 둔다
+    for (const sp of c.cs_spans || []) {
+      const st = (set.sents || []).find((x) => String(x.id) === String(sp.sent_id));
+      const okSpan = st && flat(st.t).includes(flat(sp.text));
+      if (!okSpan) { console.log(`  🔴 #${num} cs_span 이 문장에서 안 잡힌다: ${sp.sent_id}`); bad = true; }
+    }
+    if (APPLY) c.t = txt;
+    n++;
+  }
+
+  if (q.bogi) {
+    console.log(`     ⚠ bogi 가 있다 — 원본 5번에는 <보기>가 없다(발문 601.4 다음 바로 선지 625.9).`);
+    console.log(`       ${JSON.stringify(flat(q.bogi).slice(0, 90))}`);
+    console.log(`       **건드리지 않았다.** 삭제 여부는 판정 사항이다.`);
+  }
+}
+
+if (bad) { console.log(`\n🔴 검증 실패가 있다 — 아무것도 쓰지 않았다`); process.exit(1); }
+if (APPLY && n) {
+  fs.writeFileSync(DATA, JSON.stringify(data), "utf8");
+  console.log(`\n  all_data 갱신 ${(fs.statSync(DATA).size / 1048576).toFixed(2)}MB · 선지 ${n}개 + 발문`);
+}
+if (!APPLY) console.log(`\n### DRY-RUN — 아무것도 쓰지 않았다. 적용하려면 --apply`);
