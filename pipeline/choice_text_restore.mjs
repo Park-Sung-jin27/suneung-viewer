@@ -69,6 +69,24 @@ const SPEC = [
     expectMarkers: {},
   },
 
+  // ── D-121 ② 발문 마커 소실 2건 — 🔴 LIVE (심사관 승인) ─────────────
+  //   둘 다 발문 첫 글자가 통째로 빠졌다. 본문 마커는 정확하다.
+  //   r20249d Q17 과 같은 유형이고 그 건은 D-120 에서 복원했다.
+  {
+    yk: "2022_6월", setId: "r20226b", qId: 9,
+    stem: "ⓐ와 문맥상 의미가 가장 가까운 것은?",
+    stemY: "y 890.7 (3면) — 본문 ⓐ찾고자 는 2면 y 599.9",
+    choices: {},
+    expectMarkers: {},
+  },
+  {
+    yk: "2022_6월", setId: "r20226c", qId: 11,
+    stem: "㉠에 대한 설명으로 적절하지 않은 것은?",
+    stemY: "y 369.4 (4면) — 본문 ㉠울타리 는 4면 y 636.2",
+    choices: {},
+    expectMarkers: {},
+  },
+
 ];
 
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
