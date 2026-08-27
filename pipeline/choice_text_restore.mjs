@@ -87,6 +87,18 @@ const SPEC = [
     expectMarkers: {},
   },
 
+  // ── D-122 ③ r20249b Q5 bogi 삭제 (심사관 승인) ────────────────────
+  //   원본 5번에는 <보기>가 없다(발문 y 601.4 다음 바로 선지 y 625.9).
+  //   데이터의 bogi 는 「가·나·다·라」를 풀어 쓴 것인데 정의부터 본문과 어긋난다 —
+  //   「다: … 데이터를 전송받는 제3자」라 해 놓고 본문 ㉰ 는 「데이터 보유량이 적은 신규 기업」이다.
+  //   해설 5건을 같은 커밋에서 고치므로 지금 지워야 미아가 생기지 않는다.
+  {
+    yk: "2024_9월", setId: "r20249b", qId: 5,
+    dropBogi: true,
+    choices: {},
+    expectMarkers: {},
+  },
+
 ];
 
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
