@@ -102,5 +102,30 @@ if (bad) { console.log(`\n🔴 검증 실패가 있다 — 아무것도 쓰지 �
 if (APPLY && n) {
   fs.writeFileSync(DATA, JSON.stringify(data), "utf8");
   console.log(`\n  all_data 갱신 ${(fs.statSync(DATA).size / 1048576).toFixed(2)}MB · ${n}건`);
+  // 되읽어 확인한다 — 「적용」이라 찍고 안 써진 사고가 있었다(D-120). 채택 규칙 ②
+  const back = JSON.parse(fs.readFileSync(DATA, "utf8"));
+  let miss = 0;
+  for (const [yk, sid, sentId, from, to] of SPEC) {
+    if (ONLY && sid !== ONLY) continue;
+    let set = null;
+    for (const sec of ["reading", "literature"]) {
+      const f = (back[yk]?.[sec] || []).find((x) => (x.setId || x.id) === sid);
+      if (f) { set = f; break; }
+    }
+    const sent = (set?.sents || []).find((x) => String(x.id) === sentId);
+    if (!sent) continue;
+    const t = flat(sent.t);
+    if (t.includes(from) || !t.includes(to)) { console.log(`  🔴 되읽기 실패: ${sentId} 본문`); miss++; }
+    for (const q of set.questions || [])
+      for (const c of q.choices || [])
+        for (const sp of c.cs_spans || []) {
+          if (norm(sp.sent_id) !== norm(sentId)) continue;
+          if (flat(sp.text).includes(from)) { console.log(`  🔴 되읽기 실패: Q${q.id}#${c.num} cs_span 에 옛 형태 잔존`); miss++; }
+          if (!t.includes(flat(sp.text))) { console.log(`  🔴 되읽기 실패: Q${q.id}#${c.num} cs_span 이 문장에서 안 잡힌다`); miss++; }
+        }
+  }
+  if (miss) { console.log(`
+🔴 되읽기에서 ${miss}건이 어긋났다`); process.exit(1); }
+  console.log(`  되읽기 검산 통과 — 본문·cs_span 정합`);
 }
 if (!APPLY) console.log(`\n### DRY-RUN — 아무것도 쓰지 않았다. 적용하려면 --apply`);
