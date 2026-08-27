@@ -56,6 +56,19 @@ const SPEC = [
     choices: {},
     expectMarkers: {},
   },
+
+  // ── D-120 ③ r20249d Q17 발문 — 원본 정본 원칙 ─────────────────────
+  //   원본 6면 「17. ⓐ와 문맥상 의미가 가장 가까운 것은?」(y 891.2)인데
+  //   데이터는 마커를 풀어 「굳어졌다와 문맥상…」으로 적었다. 의미 손실은 없었지만
+  //   본문 s12 의 ⓐ 가 고아로 남는다 — 원본 표기로 되돌린다.
+  {
+    yk: "2024_9월", setId: "r20249d", qId: 17,
+    stem: "ⓐ와 문맥상 의미가 가장 가까운 것은?",
+    stemY: "y 891.2 (6면)",
+    choices: {},
+    expectMarkers: {},
+  },
+
 ];
 
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
@@ -77,9 +90,21 @@ for (const S of SPEC) {
   if (!q) { console.log(`  🔴 Q${S.qId} — 문항 없음`); bad = true; continue; }
 
   console.log(`  ${S.yk} ${S.setId} Q${S.qId}`);
-  console.log(`     발문 전: ${JSON.stringify(flat(q.t))}`);
-  console.log(`     발문 후: ${JSON.stringify(S.stem)}   (원본 ${S.stemY})`);
-  if (APPLY) q.t = S.stem;
+  if (S.stem) {
+    console.log(`     발문 전: ${JSON.stringify(flat(q.t))}`);
+    console.log(`     발문 후: ${JSON.stringify(S.stem)}   (원본 ${S.stemY})`);
+    if (flat(q.t) !== S.stem) { if (APPLY) q.t = S.stem; n++; }
+    else console.log(`     (이미 같다 — 건너뜀)`);
+  }
+  if (S.dropBogi) {
+    if (!q.bogi) console.log(`     ⚠ bogi 가 이미 없다, 건너뜀`);
+    else {
+      console.log(`     bogi 삭제 (원본에 <보기>가 없다):`);
+      console.log(`       ${JSON.stringify(flat(q.bogi))}`);
+      if (APPLY) delete q.bogi;
+      n++;
+    }
+  }
 
   for (const [num, [txt, why]] of Object.entries(S.choices)) {
     const c = (q.choices || []).find((x) => String(x.num) === String(num));
@@ -101,7 +126,7 @@ for (const S of SPEC) {
     n++;
   }
 
-  if (q.bogi) {
+  if (q.bogi && !S.dropBogi) {
     console.log(`     ⚠ bogi 가 있다 — 원본 5번에는 <보기>가 없다(발문 601.4 다음 바로 선지 625.9).`);
     console.log(`       ${JSON.stringify(flat(q.bogi).slice(0, 90))}`);
     console.log(`       **건드리지 않았다.** 삭제 여부는 판정 사항이다.`);
@@ -111,6 +136,30 @@ for (const S of SPEC) {
 if (bad) { console.log(`\n🔴 검증 실패가 있다 — 아무것도 쓰지 않았다`); process.exit(1); }
 if (APPLY && n) {
   fs.writeFileSync(DATA, JSON.stringify(data), "utf8");
-  console.log(`\n  all_data 갱신 ${(fs.statSync(DATA).size / 1048576).toFixed(2)}MB · 선지 ${n}개 + 발문`);
+  console.log(`\n  all_data 갱신 ${(fs.statSync(DATA).size / 1048576).toFixed(2)}MB · 변경 ${n}건`);
+  // 되읽어 확인한다 — 「적용」이라 찍고 안 써진 사고가 있었다(D-120: n 이 선지만 셌다)
+  const back = JSON.parse(fs.readFileSync(DATA, "utf8"));
+  let miss = 0;
+  for (const S of SPEC) {
+    if (ONLY && S.setId !== ONLY) continue;
+    let set = null;
+    for (const sec of ["reading", "literature"]) {
+      const f = (back[S.yk]?.[sec] || []).find((x) => (x.setId || x.id) === S.setId);
+      if (f) { set = f; break; }
+    }
+    const q = (set?.questions || []).find((x) => String(x.id) === String(S.qId));
+    if (!q) continue;
+    if (S.stem && flat(q.t) !== S.stem) { console.log(`  🔴 되읽기 실패: ${S.setId} Q${S.qId} 발문`); miss++; }
+    if (S.dropBogi && q.bogi) { console.log(`  🔴 되읽기 실패: ${S.setId} Q${S.qId} bogi 잔존`); miss++; }
+    for (const [num, [txt]] of Object.entries(S.choices)) {
+      const c = (q.choices || []).find((x) => String(x.num) === String(num));
+      if (c && flat(c.t) !== txt) { console.log(`  🔴 되읽기 실패: ${S.setId} Q${S.qId}#${num}`); miss++; }
+    }
+  }
+  if (miss) { console.log(`
+🔴 되읽기에서 ${miss}건이 반영되지 않았다`); process.exit(1); }
+  console.log(`  되읽기 검산 통과`);
 }
+if (APPLY && !n) console.log(`
+  변경할 것이 없었다 — 파일을 쓰지 않았다`);
 if (!APPLY) console.log(`\n### DRY-RUN — 아무것도 쓰지 않았다. 적용하려면 --apply`);
