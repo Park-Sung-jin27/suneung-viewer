@@ -53,6 +53,13 @@ const SPEC = [
   // ── D-118 ②③ 배치 2 ────────────────────────────────────────────────
   ["2024_9월", "r20249b", 5, 5, "REPLACE", ["부적절한 진술[?]", "부적절한 진술 [사실 왜곡]"],
     "결론줄 pat 자리에 placeholder [?] 가 남아 있었다. 이 선지는 pat=R1 이고, 데이터에서 R1 의 표준 표기는 [사실 왜곡](161건)이다. 정답표 2024_9월 5번 = ⑤ 와 ok:false=[5] 가 일치한다"],
+  // ── D-120 ① r20266b Q7 해설 마커 교체 (🔴 LIVE) ────────────────────
+  //   해설이 「㉠이 가리키는 구체적 맥락(임대차 종료 후 원상회복 의무 등 계약 우선…)」처럼
+  //   명백히 ㉮(s35)의 내용을 ㉠ 이라 부르고 있다. 발문 복원에 맞춰 표기만 바꾼다.
+  ["2026_6월", "r20266b", 7, 1, "MARKER_SWAP", ["㉠", "㉮"], "발문 원본이 ㉮ 다. 해설 2곳이 s35(계약 우선) 내용을 ㉠ 이라 부른다"],
+  ["2026_6월", "r20266b", 7, 2, "MARKER_SWAP", ["㉠", "㉮"], "「㉠이 가리키는 상황(원상회복 의무 등)」 — s35 내용이다"],
+  ["2026_6월", "r20266b", 7, 4, "MARKER_SWAP", ["㉠", "㉮"], "「㉠은 '계약이 법률보다 우선 적용되는 경우'를 의미한다」 — s35 내용이다"],
+
   ["2024_9월", "l20249a", 20, 3, "CONCLUSION",
     "❌ 낭자의 발화 초점이 '떠남'인데 '옴'으로 뒤바꿔 읽은 부적절한 진술 [인과·관계 전도]",
     "정답표 2024_9월 20번 = ③ 이고 데이터도 ok:false 가 #3 하나뿐이다(negative 발문) — 논지·ok 모두 정합. 결론 블록만 없었다. pat=R2 → 표준 표기 [인과·관계 전도](60건)"],
@@ -89,10 +96,30 @@ for (const [yk, sid, qid, num, kind, val, why] of SPEC) {
     continue;
   }
 
+  if (kind === "MARKER_SWAP") {
+    // 지정한 선지의 해설에서 마커 하나를 다른 마커로 **전부** 바꾼다.
+    //   발문이 가리키는 마커가 오치환된 경우, 해설도 같은 마커를 쓰고 있어 함께 맞춰야 한다.
+    //   글자 하나만 바뀌므로 논지는 변하지 않는다.
+    const [from, to] = val;
+    const cnt = a.split(from).length - 1;
+    if (!cnt) { console.log(`  ⚠ ${sid} Q${qid}#${num} — ${from} 가 없다, 건너뜀`); continue; }
+    if (a.includes(to)) { console.log(`  🔴 ${sid} Q${qid}#${num} — 바꿀 대상 ${to} 가 이미 있다. 섞이면 안 된다`); bad = true; continue; }
+    const next = a.split(from).join(to);
+    console.log(`  ${yk} ${sid} Q${qid}#${num} [마커 교체] ${from} → ${to} · ${cnt}곳`);
+    for (const m of a.matchAll(new RegExp(from, "g")))
+      console.log(`     @${m.index}: ${JSON.stringify(a.slice(Math.max(0, m.index - 30), m.index + 26))}`);
+    console.log(`     근거: ${why}`);
+    if (APPLY) c.analysis = next;
+    n++;
+    continue;
+  }
+
   if (kind === "REPLACE") {
     const [from, to] = val;
     const cnt = a.split(from).length - 1;
-    if (cnt !== 1) { console.log(`  🔴 ${sid} Q${qid}#${num} — ${JSON.stringify(from)} 가 ${cnt}번 나온다(1번이어야 함). 중단`); bad = true; continue; }
+    // 이미 적용된 건은 찾을 문자열이 사라진다 — 멱등하게 건너뛴다(중단하지 않는다).
+    if (cnt === 0) { console.log(`  ⚠ ${sid} Q${qid}#${num} — ${JSON.stringify(from)} 가 없다(이미 적용됨), 건너뜀`); continue; }
+    if (cnt > 1) { console.log(`  🔴 ${sid} Q${qid}#${num} — ${JSON.stringify(from)} 가 ${cnt}번 나온다(1번이어야 함). 중단`); bad = true; continue; }
     const next = a.replace(from, to);
     const i = a.indexOf(from);
     console.log(`  ${yk} ${sid} Q${qid}#${num} [최소 수정]`);
