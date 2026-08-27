@@ -33,6 +33,36 @@ const SPEC = [
        + "s8 은 지문에 실제로 등장하는 유일한 사례(대기환경보전법)로, 「다양한 사례」 반박의 실물 근거다.",
   },
 
+  // ── D-123 ② l20266b Q23 cs_ids 재부여 — 심사관 승인 ────────────────
+  //   본문 수리로 ⓐ 가 s29 로 돌아갔는데 근거는 s48(옛 ⓐ 자리)을 가리키고 있었다.
+  //   해설 재작성과 같은 커밋에서 맞춘다. 기존 값은 실행 로그에 남긴다.
+  {
+    yk: "2026_6월", setId: "l20266b", qId: 23, num: 1, replace: true,
+    csIds: ["l20266bs29", "l20266bs30", "l20266bs31"], csSpans: [],
+    why: "ⓐ 본문(s29)과 그 뒤 날씨 조건 두 행(s30·s31). 선지의 「날씨의 영향을 받지 않고」를 정면으로 반박하는 자리다. 기존 [s48] 은 옛 ⓐ 자리였다",
+  },
+
+  {
+    yk: "2026_6월", setId: "l20266b", qId: 23, num: 4, replace: true,
+    csIds: ["l20266bs28", "l20266bs29", "l20266bs34", "l20266bs55"],
+    // 기존 span 중 ⓑ 본문(s55)은 새 해설도 그대로 인용한다 — 살린다.
+    // s48 span 은 옛 ⓐ 자리라 버린다.
+    csSpans: [
+      { sent_id: "l20266bs55", text: "거리에서 ⓑ바다로 나가는 길이 좋다.", occurrence: 1 },
+    ],
+    why: "만류의 주체(s28)와 ⓐ 본문(s29), 일행이 이미 함께 있음을 보이는 s34, 그리고 ⓑ 본문(s55). 기존 [s48, s55] 중 s48 이 옛 ⓐ 자리였다",
+  },
+
+  {
+    yk: "2026_6월", setId: "l20266b", qId: 23, num: 5, replace: true,
+    csIds: ["l20266bs29", "l20266bs32", "l20266bs55", "l20266bs57"],
+    // 기존 span 중 「정하고 고운」(s57)은 새 해설의 핵심 논거라 살린다. s48 span 은 버린다.
+    csSpans: [
+      { sent_id: "l20266bs57", text: "정하고 고운 길", occurrence: 1 },
+    ],
+    why: "ⓐ 의 「칠십 리 왕복」(s29)과 「미끄러운 돌사다리 천신만고」(s32) — 걷기에 편하지 않음의 근거. ⓑ 본문(s55)과 「정하고 고운」이 나오는 s57. 기존 [s48, s57, s58] 중 s48 이 옛 ⓐ 자리였다",
+  },
+
   // ── D-118-2 ① 배치 2 r20249d — 심사관 승인 ────────────────────────
   //   각 해설의 📌 지문 근거 인용을 문장에 되맞춰 고른 것이다.
   {
@@ -74,8 +104,24 @@ for (const S of SPEC) {
   const q = (set.questions || []).find((x) => String(x.id) === String(S.qId));
   const c = q && (q.choices || []).find((x) => String(x.num) === String(S.num));
   if (!c) { console.log(`  🔴 ${S.setId} Q${S.qId}#${S.num} — 선지 없음`); bad = true; continue; }
-  if ((c.cs_ids || []).length || (c.cs_spans || []).length) {
+  const had = (c.cs_ids || []).length || (c.cs_spans || []).length;
+  if (had && !S.replace) {
     console.log(`  ⚠ ${S.setId} Q${S.qId}#${S.num} — 이미 근거가 있다, 건너뜀`); continue;
+  }
+  if (S.replace) {
+    // 재부여 모드 (D-123 ② 승인). 안전장치 셋:
+    //   ① 선지별 SPEC — 세트 단위 일괄이 아니라 한 선지씩 적는다
+    //   ② 기존 값을 지우기 전에 전부 찍는다 — 무엇을 버렸는지 기록에 남는다
+    //   ③ 쓴 뒤 되읽어 검산한다
+    if (!had) { console.log(`  🔴 ${S.setId} Q${S.qId}#${S.num} — replace 인데 기존 근거가 없다. 대상이 아니다`); bad = true; continue; }
+    const sameIds = JSON.stringify(c.cs_ids || []) === JSON.stringify(S.csIds);
+    if (sameIds && !(c.cs_spans || []).length && !S.csSpans.length) {
+      console.log(`  ⚠ ${S.setId} Q${S.qId}#${S.num} — 이미 새 근거다, 건너뜀`); continue;
+    }
+    console.log(`  ${S.setId} Q${S.qId}#${S.num} 기존 근거를 버린다:`);
+    console.log(`     cs_ids  기존 [${(c.cs_ids || []).join(", ")}]`);
+    for (const sp of c.cs_spans || [])
+      console.log(`     cs_span 기존 ${sp.sent_id} occ${sp.occurrence} ${JSON.stringify(String(sp.text).slice(0, 46))}`);
   }
 
   const byId = new Map((set.sents || []).map((x) => [String(x.id), String(x.t ?? "")]));
@@ -102,5 +148,30 @@ if (bad) { console.log(`\n🔴 검증 실패가 있다 — 아무것도 쓰지 �
 if (APPLY && n) {
   fs.writeFileSync(DATA, JSON.stringify(data), "utf8");
   console.log(`\n  all_data 갱신 ${(fs.statSync(DATA).size / 1048576).toFixed(2)}MB · ${n}건`);
+  // 되읽어 확인한다 — 채택 규칙 ②
+  const back = JSON.parse(fs.readFileSync(DATA, "utf8"));
+  let miss = 0;
+  for (const S of SPEC) {
+    if (ONLY && S.setId !== ONLY) continue;
+    let set = null;
+    for (const sec of ["reading", "literature"]) {
+      const f = (back[S.yk]?.[sec] || []).find((x) => (x.setId || x.id) === S.setId);
+      if (f) { set = f; break; }
+    }
+    const q = (set?.questions || []).find((x) => String(x.id) === String(S.qId));
+    const ch = q && (q.choices || []).find((x) => String(x.num) === String(S.num));
+    if (!ch) continue;
+    if (JSON.stringify(ch.cs_ids || []) !== JSON.stringify(S.csIds)) {
+      console.log(`  🔴 되읽기 실패: ${S.setId} Q${S.qId}#${S.num} cs_ids`); miss++;
+    }
+    const byId = new Map((set.sents || []).map((x) => [String(x.id), String(x.t ?? "")]));
+    for (const sp of ch.cs_spans || [])
+      if (!(byId.get(String(sp.sent_id)) || "").includes(String(sp.text))) {
+        console.log(`  🔴 되읽기 실패: ${S.setId} Q${S.qId}#${S.num} cs_span 이 문장에서 안 잡힌다`); miss++;
+      }
+  }
+  if (miss) { console.log(`
+🔴 되읽기에서 ${miss}건이 어긋났다`); process.exit(1); }
+  console.log(`  되읽기 검산 통과`);
 }
 if (!APPLY) console.log(`\n### DRY-RUN — 아무것도 쓰지 않았다. 적용하려면 --apply`);
