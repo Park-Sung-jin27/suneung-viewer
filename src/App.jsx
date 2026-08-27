@@ -51,7 +51,18 @@ _fl.href =
 document.head.appendChild(_fl);
 
 const SECTION_LABELS = { reading: "독서", literature: "문학" };
-const FREE_YEARS = ["2026수능", "2025수능", "2024수능", "2023수능", "2022수능"];
+// 무료 개방 회차. 여기 없는 회차는 비로그인·무료 회원에게 뷰어 진입이 막힌다.
+//   "2027_9월" — 9월 모평 한시 개방(유입 후크). 수능(11월) 후 재검토한다.
+//   CEO 승인 2026-08-27 (발주 F-38). F-20 6단계 금지 규율은 이 건에 한해 해제됐다.
+//   ★ 되돌리기: "2027_9월" 한 줄을 빼면 즉시 Pro 전용으로 돌아간다.
+const FREE_YEARS = [
+  "2027_9월",
+  "2026수능",
+  "2025수능",
+  "2024수능",
+  "2023수능",
+  "2022수능",
+];
 
 const MC = {
   green: "#2d6e2d",
@@ -1079,7 +1090,16 @@ function MainPage({ isPro, user }) {
           <span style={{ fontSize: "0.72rem", color: MC.subtle }}>
             {isPro
               ? "전체 개방"
-              : `무료 ${FREE_YEARS.length}개 · Pro ${Math.max(0, yearKeys.length - FREE_YEARS.length)}개`}
+              : // 발주 F-38: 배열 길이가 아니라 "실제 목록에 뜬 회차"에서 센다.
+                //   FREE_YEARS 에 회차를 먼저 넣고 세트 키를 나중에 넣는 구간이
+                //   생기는데(9월 모평 준비), 배열 길이로 세면 그 사이 무료 개수가
+                //   부풀고 Pro 개수가 깎여 화면 숫자가 사실과 달라진다.
+                (() => {
+                  const freeCount = yearKeys.filter((y) =>
+                    FREE_YEARS.includes(y),
+                  ).length;
+                  return `무료 ${freeCount}개 · Pro ${Math.max(0, yearKeys.length - freeCount)}개`;
+                })()}
           </span>
         </div>
 
