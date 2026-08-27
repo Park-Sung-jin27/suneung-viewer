@@ -1,0 +1,78 @@
+{
+  "yearKey": "2022_6월",
+  "setId": "l20226a",
+  "approved_at": "(대표 승인 시각 — gate3 실측 후)",
+  "approved_by": "(대표)",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2022_6월/2022_6월_정답.pdf)",
+    "checked": "questionType 기준 정답 특정 — 18·19·20·21번 전 문항",
+    "answer_key": {
+      "18": 2,
+      "19": 4,
+      "20": 1,
+      "21": 5
+    },
+    "answer_key_mismatch": 0,
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2022_6월",
+    "scope": "연도 스코프 (판정 305② 준수)",
+    "critical_count_this_set": 0,
+    "note": "2022_6월 연도 CRITICAL 1건은 l20226b Q25#3 (별건). 이 세트에 걸린 CRITICAL 은 0",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "bogi_shape_check": {
+    "note": "F-36 이 방어한 bogi 객체형 크래시 대상인지 확인 (D-127 채택)",
+    "result": "Q18~Q21 네 문항 모두 bogi 가 문자열이다 — 객체형이 아니므로 해당 없음",
+    "pass": true
+  },
+  "gate3_evidence": {
+    "method": "심사관 화면 실측",
+    "verified_at": "(심사관 기재)",
+    "bundle": "(심사관 기재)",
+    "detail": "(심사관 기재)",
+    "console_error_count": null,
+    "pass": null
+  },
+  "diagnostic_axes": {
+    "note": "D-128 ① 진단 11축 (release_diag.mjs) — 수리 없이 결함 0",
+    "tool": "node pipeline/release_diag.mjs \"2022_6월::l20226a\"",
+    "①삼충실도": "해설 누락 0 · 근거 누락 0 · pat 누락 0",
+    "②근거정합": "cs_spans 전건 해당 문장에서 확인",
+    "③setId충돌": "이 연도에만 존재 — 복합 키 규약(D-113 ①) 무관",
+    "④구간표시": "[A] 정박 확인 — annotations.json 8항목(underline 7 + bracket 1)",
+    "⑤글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "⑥각주": "본문 * 과 각주 문장 정합",
+    "⑦문항형식": "5지 · 정답 특정 4/4",
+    "⑧분리게이트": "기존 변동 0",
+    "⑨마커고아": "고아 0",
+    "⑩발문마커소실": "0 (D-121 ④ 채택 축)",
+    "⑪인용부호소실": "0 (D-122 ④ 채택 축)"
+  },
+  "repair_record": "수리 없음 — 진단 시점부터 결함 0 (D-128 ① 배치 A)",
+  "title_fix_record": {
+    "l20226a": {
+      "title": "무사와 악사",
+      "range": "18~21번",
+      "note": "변경 없음 — 기존 값 그대로"
+    }
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "sets_cite_status": {
+      "l20226a": "현대소설 — 본문 끝 「- 홍성원, 「무사와 악사」 -」 표기 있음"
+    },
+    "last_sent_tail": "- 홍성원, 「무사와 악사」 -",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2022_6월::l20226a",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2022_6%EC%9B%94&set=l20226a&q=18&mode=study",
+  "comment": "웨이브 3 배치 A (D-128 ① 진단 · 수리 없음). 블로그 글이 직접 인용하는 세트라 최우선 처리(D-128 추가). gate3 화면 실측과 대표 승인이 남았다."
+}
