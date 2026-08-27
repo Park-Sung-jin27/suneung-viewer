@@ -4469,6 +4469,26 @@
         "sentFrom": "l20229cs26",
         "sentTo": "l20229cs28"
       }
+    ],
+    "l20229d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20229ds10",
+        "sentTo": "l20229ds11"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20229ds16",
+        "sentTo": "l20229ds17"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l20229ds38",
+        "sentTo": "l20229ds39"
+      }
     ]
   },
   "2025_6월": {
@@ -5334,6 +5354,14 @@
         "sentFrom": "l20216cs9",
         "sentTo": "l20216cs11"
       }
+    ],
+    "r20216d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r20216ds15",
+        "sentTo": "r20216ds20"
+      }
     ]
   },
   "2014수능A": {
@@ -6068,6 +6096,14 @@
         "label": "B",
         "sentFrom": "l20219as6",
         "sentTo": "l20219as10"
+      }
+    ],
+    "l20219d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20219ds25",
+        "sentTo": "l20219ds32"
       }
     ]
   },
