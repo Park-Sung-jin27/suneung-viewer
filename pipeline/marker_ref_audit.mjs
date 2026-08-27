@@ -45,7 +45,14 @@ for (const [yk, v] of Object.entries(data))
       for (const q of s.questions || []) {
         const parts = [flat(q.t), flat(q.bogi), ...(q.choices || []).flatMap((c) => [flat(c.t), flat(c.analysis)])];
         qText.push([q.id, parts.join(" ")]);
-        for (const m of parts.join(" ").match(MARK) || []) inQ.add(m);
+        const joined = parts.join(" ");
+        for (const m of joined.match(MARK) || []) inQ.add(m);
+        // 「ⓐ~ⓔ」 같은 범위 표기는 사이의 마커를 전부 가리킨다 (D-120 ⓪ — r2021a ⓑⓒⓓ 오탐)
+        for (const r of joined.matchAll(/([①-⓿㈀-㋿])\s*[~～〜–—-]\s*([①-⓿㈀-㋿])/g)) {
+          const [a0, b0] = [r[1].codePointAt(0), r[2].codePointAt(0)];
+          if (b0 <= a0 || b0 - a0 > 12) continue;   // 같은 계열의 짧은 범위만
+          for (let c = a0; c <= b0; c++) inQ.add(String.fromCodePoint(c));
+        }
       }
       if (!inBody.size && !inQ.size) continue;
       sets++;
