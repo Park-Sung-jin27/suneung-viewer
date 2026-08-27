@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Component } from "react";
 import { P, CC, MODE, SYMBOLS } from "./constants";
 import { BogiTable } from "./BogiTable";
 import QuestionQA from "./QuestionQA";
@@ -396,6 +396,40 @@ function applyBogiInlineAnns(text, anns) {
 }
 
 // ══════════════════════════════════════════════════════════
+// 발주 F-36: bogi 의 image 필드는 두 형태로 들어온다.
+//   문자열  "/images/x.png" 또는 "x.png"
+//   객체    { url: "/images/x.png", alt: "..." }
+//   annotated_image 분기가 문자열만 가정해 .startsWith 를 부르는 바람에
+//   r20246c Q11 에서 TypeError 가 나고 세트 전체가 백지가 됐다.
+//   ★ 두 형태를 모두 받아 정규화한다. 데이터는 고치지 않는다.
+function resolveBogiImage(img) {
+  const raw =
+    typeof img === "string" ? img : (img?.url ?? img?.src ?? img?.path ?? "");
+  if (typeof raw !== "string" || !raw) return null;
+  const url = raw.startsWith("/") ? raw : `/images/${raw}`;
+  const alt = typeof img === "object" && img?.alt ? img.alt : "보기 그림";
+  return { url, alt };
+}
+
+// 발주 F-36: 한 문항의 <보기> 데이터 이상이 세트 전체를 죽이면 안 된다.
+//   렌더가 터지면 그 <보기>만 생략하고 나머지 문항은 그대로 보여준다.
+class BogiErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { failed: false };
+  }
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  componentDidCatch(error) {
+    console.warn("[bogi] 렌더 실패 — 이 <보기>만 생략:", error?.message);
+  }
+  render() {
+    if (this.state.failed) return null;
+    return this.props.children;
+  }
+}
+
 function BogiRenderer({ bogi, anns = [] }) {
   if (!bogi) return null;
   // bogi string 안 inline underline/box overlay (target='bogi' annotation 도입 path).
@@ -587,13 +621,12 @@ function BogiRenderer({ bogi, anns = [] }) {
   if (bogi.type === "annotated_image") {
     const pos = bogi.imagePosition;
     const isHorizontal = pos === "right" || pos === "left";
-    const imgSrc = bogi.image.startsWith("/")
-      ? bogi.image
-      : `/images/${bogi.image}`;
-    const imgEl = (
+    // 발주 F-36: 문자열·객체 두 형태를 모두 받는다. 해석 실패 시 이미지 없이 렌더.
+    const img = resolveBogiImage(bogi.image);
+    const imgEl = img && (
       <img
-        src={imgSrc}
-        alt="보기 그림"
+        src={img.url}
+        alt={img.alt}
         style={{
           maxWidth: "100%",
           borderRadius: "4px",
@@ -782,10 +815,11 @@ function BogiRenderer({ bogi, anns = [] }) {
                     </span>
                   )}
                 </div>
-                {item.image && (
+                {/* 발주 F-36: items[].image 도 같은 두 형태를 받는다. */}
+                {resolveBogiImage(item.image) && (
                   <img
-                    src={item.image}
-                    alt={item.label}
+                    src={resolveBogiImage(item.image).url}
+                    alt={item.label || resolveBogiImage(item.image).alt}
                     style={{
                       maxWidth: "100%",
                       maxHeight: "120px",
@@ -1486,19 +1520,23 @@ function QuestionBlock({
         )}
       </div>
 
-      {/* 보기 — BogiTable or BogiRenderer */}
-      {hasBogiTable ? (
-        <BogiTable
-          bogiTable={question.bogiTable}
-          sel={sel}
-          onSelect={(num) => {
-            const c = question.choices.find((c) => c.num === num);
-            if (c) handleClick(`q${question.id}_c${num}`, c);
-          }}
-        />
-      ) : (
-        <BogiRenderer bogi={question.bogi} anns={bogiAnns} />
-      )}
+      {/* 보기 — BogiTable or BogiRenderer.
+          발주 F-36: 두 경로 모두 에러 경계 안에 둔다. 한 문항의 <보기>
+          데이터 이상이 세트 전체를 백지로 만들면 안 된다. */}
+      <BogiErrorBoundary>
+        {hasBogiTable ? (
+          <BogiTable
+            bogiTable={question.bogiTable}
+            sel={sel}
+            onSelect={(num) => {
+              const c = question.choices.find((c) => c.num === num);
+              if (c) handleClick(`q${question.id}_c${num}`, c);
+            }}
+          />
+        ) : (
+          <BogiRenderer bogi={question.bogi} anns={bogiAnns} />
+        )}
+      </BogiErrorBoundary>
 
       {/* 어휘 문제 안내 */}
       {isVocab && (
