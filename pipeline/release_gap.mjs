@@ -151,6 +151,15 @@ if (unread.length) {
 }
 out.push(``);
 out.push(`검수 가능한 갭은 **${gap.length - unread.length}세트**다.`);
+out.push(``);
+out.push(`### 판정 — 웨이브 3 범위에서 제외 (D-130 ⓪ 대표 승인)`);
+out.push(``);
+out.push(`이 ${unread.length}세트는 **스캔본·원본 대조 불가**로 보류한다.`);
+out.push(`텍스트층이 있는 PDF 를 확보하면 재개한다 — 폐기가 아니라 보류다.`);
+out.push(``);
+out.push(`OCR 로 대체하지 않는다(§13⑬ — OCR 결과를 원문으로 삼지 않는다).`);
+out.push(``);
+out.push(`**웨이브 3 범위 = ${gap.length - unread.length}세트**다.`);
 
 if (process.argv.includes("--md")) console.log(out.join("\n"));
 else console.log(out.slice(0, out.indexOf("## setId 문자열 대조가 부정확한 이유")).join("\n") + "\n(전체 표는 --md 로)");
