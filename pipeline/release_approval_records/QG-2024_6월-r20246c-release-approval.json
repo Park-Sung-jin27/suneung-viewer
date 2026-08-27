@@ -25,11 +25,12 @@
   "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
   "gate3_evidence": {
     "method": "심사관 화면 실측",
-    "verified_at": "(심사관 기재)",
+    "verified_at": "(F-36 후 재개)",
     "bundle": "(심사관 기재)",
     "detail": "(심사관 기재)",
     "console_error_count": null,
-    "pass": null
+    "pass": null,
+    "hold_reason": "D-127 판정 — 데이터·해설은 합격이나 화면이 렌더 크래시. bogi 가 type:annotated_image 이면서 image 가 객체 {url, alt} 인 유일한 문항이라 annotated_image 분기가 문자열을 기대하다 터진다. 프론트 F-36 으로 방어 중. 데이터는 손대지 않는다 — {url, alt} 는 r20236a·r20246a 가 LIVE 로 쓰는 관례다. 전수 분포는 docs/d127_bogi_image_shapes.md 참조."
   },
   "diagnostic_axes": {
     "note": "D-124 진단 11축 (release_diag.mjs) — D-125 수리 후 결함 0",
@@ -69,5 +70,5 @@
     "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
   },
   "review_url": "https://www.jippi.kr/viewer?year=2024_6%EC%9B%94&set=r20246c&q=8&mode=study",
-  "comment": "웨이브 2 (D-124 진단 / D-125 수리 · 규모 중). gate3 화면 실측과 대표 승인이 남았다."
+  "comment": "웨이브 2 (D-124 진단 / D-126 ② 수리 · 규모 중). 데이터 게이트 통과. gate3 는 F-36(bogi annotated_image 의 image 객체 미대응) 수리 후 재개한다."
 }
