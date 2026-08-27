@@ -85,19 +85,26 @@ for (const key of targets) {
 
   // ① 삼충실도
   {
-    let noAna = 0, noEv = 0, noPat = 0, ch = 0;
+    let noAna = 0, noEv = 0, noPat = 0, ch = 0, vocabSkip = 0;
     for (const q of qs) for (const c of q.choices || []) {
       ch++;
       if (!flat(c.analysis).trim()) noAna++;
-      if (!(c.cs_ids || []).length && !(c.cs_spans || []).length) noEv++;
+      // 어휘 문항(pat V)의 오답 선지는 근거를 달지 않는 것이 기존 규칙이다 (D-125 ⓪ 판정).
+      //   「ⓐ와 문맥상 의미가 가장 가까운 것은?」 류에서 오답은 지문이 아니라 선지 문장 자체를
+      //   따지므로 가리킬 지문 문장이 없다. 결함으로 세지 않고 아래에 건수만 남긴다.
+      const noEvidence = !(c.cs_ids || []).length && !(c.cs_spans || []).length;
+      const vocabExempt = noEvidence && c.ok === false && flat(c.pat).trim() === "V";
+      if (vocabExempt) vocabSkip++;
+      else if (noEvidence) noEv++;
       if (c.ok === false && !flat(c.pat).trim()) noPat++;
     }
     const bad = noAna + noEv + noPat;
-    rows.push(["① 삼충실도", bad ? `🔴 ${bad}` : "✅ 0", `선지 ${ch} · 해설누락 ${noAna} · 근거누락 ${noEv} · pat누락 ${noPat}`]);
+    rows.push(["① 삼충실도", bad ? `🔴 ${bad}` : "✅ 0", `선지 ${ch} · 해설누락 ${noAna} · 근거누락 ${noEv} · pat누락 ${noPat}` + (vocabSkip ? ` · 어휘 오답 제외 ${vocabSkip}` : "")]);
     if (noEv) {
       const list = [];
       for (const q of qs) for (const c of q.choices || [])
-        if (!(c.cs_ids || []).length && !(c.cs_spans || []).length) list.push(`Q${q.id}#${c.num}`);
+        if (!(c.cs_ids || []).length && !(c.cs_spans || []).length
+          && !(c.ok === false && flat(c.pat).trim() === "V")) list.push(`Q${q.id}#${c.num}`);
       detail.push(`- **근거 누락 ${noEv}건**: ${list.join(", ")}`);
     }
     if (noPat) {
