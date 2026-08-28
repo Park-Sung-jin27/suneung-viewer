@@ -15,6 +15,9 @@
 //   ⑩ 발문 마커 소실 조사가 홀로 선 발문 (stem_head_audit 과 같은 규칙)
 //   ⑪ 인용부호 소실  ⑩ 중 마커가 아니라 인용부호·상자가 빠진 형태
 //
+//   ⑫ 결함 표지 잔존  _pat_error · _ok_analysis_mismatch 가 남아 있는가 (D-133 ③)
+//   ⑬ 결론줄        ok:false 인데 ✅ 이거나, 결론줄이 세트의 표준 표기가 아닌가 (D-133 ③)
+//
 // 사용: node pipeline/release_diag.mjs <yearKey>::<setId> [...]  [--md]
 
 import fs from "node:fs";
@@ -255,6 +258,65 @@ for (const key of targets) {
     rows.push(["⑩ 발문 마커소실", head.length ? `🔴 ${head.length}` : "✅ 0", head.map((h) => `Q${h.qid}`).join(", ") || "없음"]);
     rows.push(["⑪ 인용부호 소실", quote.length ? `⚠ ${quote.length}` : "✅ 0", quote.map((h) => `Q${h.qid}`).join(", ") || "없음"]);
     for (const h of hits) detail.push(`- **${h.kind}** Q${h.qid}: \`${h.t}\``);
+  }
+
+  // ⑫ 결함 표지 잔존 — 파이프라인이 남긴 밑줄 키 (D-133 ③)
+  //   _discriminative_validation 은 LIVE 세트에도 널리 있는 일상 산출물이라 세지 않는다.
+  //   passed:false 인 것만 따로 알린다.
+  {
+    const DEFECT_KEYS = ["_pat_error", "_ok_analysis_mismatch"];
+    const hit = [], notPassed = [];
+    for (const q of qs) for (const c of q.choices || []) {
+      for (const k of DEFECT_KEYS)
+        if (k in c) hit.push(`Q${q.id}#${c.num} ${k}`);
+      const dv = c._discriminative_validation;
+      if (dv && dv.passed === false) notPassed.push(`Q${q.id}#${c.num}`);
+    }
+    rows.push(["⑫ 결함 표지 잔존", hit.length ? `🔴 ${hit.length}` : "✅ 0",
+      `${hit.join(", ") || "없음"}` + (notPassed.length ? ` · _discriminative_validation passed:false ${notPassed.length}건` : "")]);
+    if (hit.length) detail.push(`- **결함 표지 잔존**: ${hit.join(", ")} — 수리가 먼저, 제거가 나중이다(D-133 ②)`);
+    if (notPassed.length) detail.push(`- _discriminative_validation passed:false — ${notPassed.join(", ")}`);
+  }
+
+  // ⑬ 결론줄 — ok 와 기호가 맞는가, 세트 표준 표기인가 (D-133 ③)
+  //   ⚠ 「마지막 줄」로 보면 안 된다. 세트마다 형식이 다르다:
+  //     A형  … 분석 … / ❌ 지문과 어긋나는 부적절한 진술          ← 결론이 마지막 줄
+  //     B형  … 분석 … / ❌ 왜 틀렸나 / <설명 여러 줄>            ← 결론이 헤더 줄
+  //   그래서 **마지막으로 등장하는 판정 기호(✅/❌)가 있는 줄**을 결론줄로 본다.
+  {
+    const wrongMark = [], odd = [], noMark = [];
+    const tally = {};
+    const concl = (c) => {
+      const lines = flat(c.analysis).replace(/\s+$/, "").split(String.fromCharCode(10));
+      for (let k = lines.length - 1; k >= 0; k--)
+        if (/[✅❌]/.test(lines[k])) return lines[k].trim();
+      return null;
+    };
+    for (const q of qs) for (const c of q.choices || []) {
+      if (!flat(c.analysis).trim()) continue;
+      const line = concl(c);
+      if (line == null) { noMark.push(`Q${q.id}#${c.num}`); continue; }
+      const want = c.ok === false ? "❌" : "✅";
+      const nope = c.ok === false ? "✅" : "❌";
+      if (!line.includes(want) || line.includes(nope)) { wrongMark.push(`Q${q.id}#${c.num}`); continue; }
+      if (c.ok === false) tally[line] = (tally[line] || 0) + 1;
+    }
+    const std = Object.entries(tally).sort((a2, b2) => b2[1] - a2[1])[0];
+    if (std && std[1] >= 2)
+      for (const q of qs) for (const c of q.choices || []) {
+        if (c.ok !== false || !flat(c.analysis).trim()) continue;
+        const line = concl(c);
+        if (line == null || !line.includes("❌") || line.includes("✅")) continue;
+        if (line !== std[0]) odd.push(`Q${q.id}#${c.num}`);
+      }
+    const n13 = wrongMark.length + noMark.length;
+    rows.push(["⑬ 결론줄", n13 ? `🔴 ${n13}` : odd.length ? `⚠ ${odd.length}` : "✅ 0",
+      `기호 어긋남 ${wrongMark.length} · 기호 없음 ${noMark.length}`
+      + (std ? ` · 표준 표기 ${JSON.stringify(std[0].slice(0, 26))} ${std[1]}회` : "")
+      + (odd.length ? ` · 비표준 ${odd.join(", ")}` : "")]);
+    if (wrongMark.length) detail.push(`- **결론 기호가 ok 와 어긋난다**: ${wrongMark.join(", ")}`);
+    if (noMark.length) detail.push(`- **결론 기호가 아예 없다**: ${noMark.join(", ")}`);
+    if (odd.length) detail.push(`- 결론줄이 세트 표준 표기와 다르다: ${odd.join(", ")} — 판정 사항이다`);
   }
 
   say(`> 노출 ${live ? "🔴 LIVE" : "미노출"} · ${sec} · 문항 ${qs.map((q) => q.id).join(",")}`);
