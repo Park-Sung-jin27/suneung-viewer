@@ -10,6 +10,7 @@ import { getExamProfile, logProfile } from "./exam_profile.mjs";
 import { extractPdfText, parseQuestionBlocks } from "./pdf_text_extractor.mjs";
 import { validateQuestionSet } from "./extraction_validator.mjs";
 import { scanSetRanges, planChunks } from "./set_ranges.mjs";
+import { logUsage } from "./api_usage.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
@@ -348,6 +349,9 @@ async function callClaude(pdfBase64, userPrompt, systemPrompt = SYSTEM_PROMPT) {
     ),
   );
 
+  // 토큰 계측 — step3·step4 와 같은 자리에 남긴다 (D-136 ③).
+  //   step2 만 계측이 빠져 있어 재추출 43세트 때 비용을 사후에 알 수 없었다.
+  logUsage("step2", "claude", response);
   const raw = response.content[0].text;
   console.log(
     `[debug] stop_reason: ${response.stop_reason}, 응답 길이: ${raw.length}자`,
