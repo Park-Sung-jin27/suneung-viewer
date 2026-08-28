@@ -147,6 +147,13 @@ node pipeline/step6_merge.js pipeline/test_data/step3_2027_9월.json 2027_9월 l
 
 **`추가 4개`** 가 나와야 합니다. `0개` 면 세트가 안 들어간 것입니다.
 
+> 🔴 **당일 유일한 확인점 — `analysis N/N` 과 `cs_ids N/N` 의 분모와 분자가 같은지 보십시오.**
+> `85/85` 처럼 같아야 정상입니다. `70/85` 처럼 다르면 **해설이 덜 붙은 것**이니
+> step 4 를 그 세트만 다시 돌립니다.
+>
+> 리허설은 해설이 이미 채워진 데이터로 돌렸기 때문에, 갓 만든 해설이 들어오는
+> 당일에 이 수치가 처음으로 의미를 갖습니다.
+
 ---
 
 ## step 7 — 형광펜 붙이기 (20분 · 약 $3)
@@ -159,27 +166,6 @@ node pipeline/step4_csids.js --retarget 2027_9월
 
 끝에 `✅ 2027_9월 완료` 와 `N건 cs_ids 채움` 이 나옵니다.
 자동으로 `pipeline/backups/` 에 원본 사본을 남기므로 잘못돼도 되돌릴 수 있습니다.
-
----
-
-## step 7-2 — 정답 교차검증 (15분 · 약 $2) · 선택
-
-`step5_verify.js` 는 `{reading:[], literature:[]}` 형태의 파일을 받습니다.
-그런데 **step 7 은 파일을 만들지 않고 `all_data` 를 직접 고칩니다.** 그래서 입력을 손으로 뽑아야 합니다.
-
-```bash
-node -e "const fs=require('fs');const D=JSON.parse(fs.readFileSync('public/data/all_data_204.json','utf8'));const v=D['2027_9월'];fs.writeFileSync('pipeline/test_data/step4_2027_9월.json',JSON.stringify({reading:v.reading,literature:v.literature},null,2));console.log('추출 완료');"
-```
-
-```bash
-node pipeline/step5_verify.js pipeline/test_data/step4_2027_9월.json pipeline/test_data/answer_2027_9월.json > pipeline/test_data/step5_2027_9월.json
-```
-
-> ⚠ 파일 이름을 `step4_2027_9월.json` 으로 두십시오 — 도구가 이름에서 회차를 읽습니다.
->
-> **이 단계는 건너뛰어도 됩니다.** AI 로 문제를 다시 풀어 정답을 교차 확인하는 절차인데,
-> step 8-1 의 정답표 전수 대조가 같은 일을 **정답표 원본으로** 더 확실하게 합니다.
-> 시간이 급하면 생략하고 step 8 로 가십시오.
 
 ---
 
@@ -289,9 +275,8 @@ node pipeline/build_split.mjs --verify
 | step 5 회차 자리 | ~10초 | $0 |
 | step 6 병합 | ~2분 | $0 |
 | step 7 형광펜 | ~20분 | ~$3 |
-| step 7-2 교차검증(선택) | ~15분 | ~$2 |
 | step 8 게이트 7종 | ~12분 | $0 |
-| **합계** | **약 1시간 45분** | **약 $11** |
+| **합계** | **약 1시간 30분** | **약 $9** |
 
 72시간 안에 충분히 들어갑니다. 시간이 아니라 **중간에 멈추는 지점**을 잘 보는 것이 중요합니다.
 
