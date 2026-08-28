@@ -33,6 +33,40 @@ const SPEC = [
        + "s8 은 지문에 실제로 등장하는 유일한 사례(대기환경보전법)로, 「다양한 사례」 반박의 실물 근거다.",
   },
 
+  // ── D-131 ② 배치 A 근거 5건 — 심사관 승인 (D-130 ② 상신안 그대로) ──
+  //   전부 pat R3 또는 무값이라 어휘 면제(D-125 ⓪) 대상이 아니다.
+  //   다섯 건 모두 해설이 이미 근거를 글로 밝혀 두었고 대응 문장이 본문에 있다.
+  {
+    yk: "2021_6월", setId: "r20216a", qId: 16, num: 2,
+    csIds: ["r20216as6", "r20216as22"], csSpans: [],
+    why: "해설이 「📌 지문 근거: (가)와 (나) 전체 내용」이라 문장 지정이 없었다. 해설 본문은 「(가)는 과거제의 특징과 영향을, (나)는 부작용과 개혁론을 다룬다」고 한다 — 그 둘을 한 문장씩 잡으면 「두 가지 이론의 구분」이 아님이 드러난다. s6 (가) 제도의 영향 · s22 (나) 부작용. 형제 #1 이 (가) 대표로 s6 을, #4 가 (나) 대표로 s22 를 쓴다",
+  },
+
+  {
+    yk: "2021_6월", setId: "r20216a", qId: 16, num: 5,
+    csIds: ["r20216as15", "r20216as16", "r20216as22"], csSpans: [],
+    why: "선지가 「(가)는 통시적, (나)는 학자들의 상반된 입장을 공시적으로」라 하는데 (나) 쪽이 틀렸다. s15·s16 은 (가)의 통시적 전개(형제 #1·#3 이 함께 쓰는 문장)이고, s22 는 (나)가 상반된 입장이 아니라 일관된 비판임을 보이는 자리다",
+  },
+
+  {
+    yk: "2021_6월", setId: "r20216d", qId: 31, num: 1,
+    csIds: ["r20216ds11", "r20216ds12"], csSpans: [],
+    why: "선지가 「수입이 법인세율 높은 국가일수록 많다」고 하는데 <보기> 가설은 이윤의 **비율**에 관한 것이다. s11 은 법인세율이 높은 B국 자회사에서 특허 사용 수입이 발생하는 구조, s12 는 「Z사는 ⓐB국의 자회사에 법인세가 부과될 이윤을 최소화한다」다. 정답 #4 와 같은 조합이며, 가설이 다루는 것이 수입 총량이 아님을 보인다",
+  },
+
+  {
+    yk: "2021_6월", setId: "r20216d", qId: 31, num: 3,
+    csIds: ["r20216ds11", "r20216ds12"], csSpans: [],
+    why: "선지가 「제반 비용의 비율이 법인세율이 낮은 국가일수록 높다」고 해 방향을 뒤집었다. 지문이 말하는 것은 법인세율이 **높은** 국가에서 이윤을 최소화하는 구조(s11·s12)다. 같은 두 문장이 그 방향을 직접 보여 준다",
+  },
+
+  {
+    yk: "2021_9월", setId: "l20219d", qId: 32, num: 5,
+    pat: "L4",
+    csIds: ["l20219ds31", "l20219ds32"], csSpans: [],
+    why: "선지가 「'심봉사'의 발언이 끝나기 전에 자신이 딸임을 밝힘」이라 하는데 본문이 정면으로 반박한다. s31 「황후 들으시고 … 그 말씀을 자세히 들으심에 정녕 부친인 줄은 아시되」, s32 「그 말씀을 마치자 황후 버선발로 뛰어 내려와서」 — 「그 말씀을 마치자」는 발언이 끝난 뒤다. pat 도 비어 있어 함께 붙인다. 사건의 선후를 뒤집은 것이므로 L4(구조·맥락 오류)이고, 형제 #1 도 L4 다",
+  },
+
   // ── D-127 ② l20236b Q22#4 근거 부여 — A안 승인 ────────────────────
   //   웨이브 2 에서 유일하게 남은 근거 누락 1건. pat 이 L3 이라 어휘 면제(D-125 ⓪) 대상이 아니다.
   //   기존 근거가 아예 없으므로 replace 가 아니라 일반 부여다.
@@ -143,13 +177,34 @@ for (const S of SPEC) {
   }
   if (bad) continue;
 
+  // pat 부여 (D-131 ④ 승인). replace 와 같은 3중 안전장치를 건다:
+  //   ① 선지별 SPEC — 세트 단위 일괄이 아니라 한 선지씩 적는다
+  //   ② 기존 값을 로그에 남긴다 ③ 쓴 뒤 되읽어 검산한다
+  //   pat 은 ok:false 선지에만 붙는다. 이미 값이 있으면 덮어쓰지 않는다.
+  if (S.pat) {
+    const cur = String(c.pat ?? "").trim();
+    if (c.ok !== false) {
+      console.log(`  🔴 ${S.setId} Q${S.qId}#${S.num} — ok 가 false 가 아니다(${c.ok}). pat 을 붙이면 안 된다`);
+      bad = true; continue;
+    }
+    if (cur && cur !== S.pat) {
+      console.log(`  🔴 ${S.setId} Q${S.qId}#${S.num} — pat 이 이미 ${JSON.stringify(cur)} 다. 덮어쓰지 않는다`);
+      bad = true; continue;
+    }
+    console.log(`     pat 기존 ${JSON.stringify(cur) || "(빈 값)"} → ${JSON.stringify(S.pat)}`);
+  }
+
   console.log(`  ${S.yk} ${S.setId} Q${S.qId}#${S.num}`);
   console.log(`     선지: ${String(c.t).slice(0, 60)}`);
   console.log(`     cs_ids  → [${S.csIds.join(", ")}]`);
   for (const id of S.csIds) console.log(`        ${id}: ${byId.get(id).slice(0, 52)}`);
   for (const sp of S.csSpans) console.log(`     cs_span → ${sp.sent_id} occ${sp.occurrence} ${JSON.stringify(sp.text.slice(0, 46))}`);
   console.log(`     근거: ${S.why}`);
-  if (APPLY) { c.cs_ids = [...S.csIds]; c.cs_spans = S.csSpans.map((x) => ({ ...x })); }
+  if (APPLY) {
+    c.cs_ids = [...S.csIds];
+    c.cs_spans = S.csSpans.map((x) => ({ ...x }));
+    if (S.pat) c.pat = S.pat;
+  }
   n++;
 }
 
@@ -170,6 +225,9 @@ if (APPLY && n) {
     const q = (set?.questions || []).find((x) => String(x.id) === String(S.qId));
     const ch = q && (q.choices || []).find((x) => String(x.num) === String(S.num));
     if (!ch) continue;
+    if (S.pat && String(ch.pat ?? "").trim() !== S.pat) {
+      console.log(`  🔴 되읽기 실패: ${S.setId} Q${S.qId}#${S.num} pat`); miss++;
+    }
     if (JSON.stringify(ch.cs_ids || []) !== JSON.stringify(S.csIds)) {
       console.log(`  🔴 되읽기 실패: ${S.setId} Q${S.qId}#${S.num} cs_ids`); miss++;
     }
