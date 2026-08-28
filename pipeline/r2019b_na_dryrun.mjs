@@ -154,6 +154,31 @@ console.log("");
 console.log("> ⚠ **S-11 은 독서 전용 규약이다**(D-138: `if (sec === \"reading\")`). (나)는 시나리오라");
 console.log("> §13⑧ 극문학 표준(stage/speech)이 맞는 틀로 보인다. **판정 사항이라 고르지 않고 둘 다 낸다.**");
 console.log("");
+// ── ◯E 추출 artifact 표시 (발주 D-147 ② · §13⑬) ──────────
+const EFF = /◯\s*E/g;
+const effHits = [];
+dramaOut.forEach((x, i) => {
+  const t = String(x.t);
+  if (EFF.test(t)) effHits.push({ id: `r2019bs${sents.length + i + 1}`, t });
+  EFF.lastIndex = 0;
+});
+console.log("## 🔴 `◯E` 추출 artifact — 그대로 넣지 않는다 `[확인 필요]`");
+console.log("");
+console.log("효과음 원문자가 `원문자 + 탭 + E` 로 추출된다. **원본은 한 글자(ⓔ)로 보인다.**");
+console.log("§13⑬ 대로 추출 결과를 원문으로 삼지 않는다 — **화면으로 글자를 확인한 뒤 확정한다.**");
+console.log("");
+const effCount = effHits.reduce((a, h) => a + (String(h.t).match(/◯\s*E/g) || []).length, 0);
+console.log(`- 해당 문장 **${effHits.length}개** · 출현 **${effCount}회**`);
+console.log("");
+console.log("| 문장 | 추출된 형태 (raw) |");
+console.log("|---|---|");
+for (const h of effHits)
+  console.log(`| \`${h.id}\` | ${JSON.stringify(h.t.slice(0, 46))} |`);
+console.log("");
+console.log(`> **적용 시 이 ${effHits.length}개 문장은 추출 문자열 그대로 넣지 말 것.** 심사관이 화면에서 글자를 확정한 뒤`);
+console.log("> 그 글자로 일괄 치환한다. 확정 전에는 `[확인 필요]` 상태로 남긴다.");
+console.log("");
+
 console.log("## 적용 시 안전 절차 (아직 실행하지 않음)");
 console.log("");
 console.log("1. `pipeline/backups/` 로 백업 + MD5 기록");
