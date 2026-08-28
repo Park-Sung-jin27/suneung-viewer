@@ -13,6 +13,12 @@ const KEY=(yk)=>A[yk]?.ans;
 const src=fs.readFileSync(new URL("../src/dataLoader.js", import.meta.url),"utf8");const _s=src.indexOf("const RELEASE_KEYS = new Set([");
 const RK=new Set([...src.slice(_s,src.indexOf("]);",_s)).matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(k=>k.includes("::")));
 const NEG=/(?:적절|알맞|옳|바르|타당)하?지\s*(?:않은|않는)|아닌\s*것은|일치하지\s*않는|보기\s*어려운|찾을\s*수\s*없는|할\s*수\s*없는|볼\s*수\s*없는|없는\s*것은|어려운\s*것은|부적절/;
+// --expect <회차> : 그 회차가 반드시 대조되어야 한다. 빠지면 크게 경고하고 exit 1.
+//   ★ 정답표가 answer_key.json 에 없으면 이 도구는 그 회차를 조용히 건너뛴다.
+//     신규 회차에서 이 옵션 없이 돌리면 「불일치 0건」이 나오지만 실은 아무것도 안 본 것이다.
+//     (D-140 ① — 런북에서 이 연결이 빠져 있었다)
+const _ei = process.argv.indexOf("--expect");
+const EXPECT = _ei >= 0 ? process.argv[_ei + 1] : null;
 const bad=[], shape=[]; let checked=0; const skip=[];
 for(const yk of Object.keys(data)){
   const tab=A[yk]?.ans;
@@ -34,7 +40,26 @@ for(const yk of Object.keys(data)){
 console.log(`## 정답표 전수 대조 (발문 유형 반영) — ${checked}문항\n`);
 console.log(`🔴 정답 불일치        : ${bad.length}건 (LIVE ${bad.filter(x=>x.live).length})`);
 console.log(`🟡 ok 배치가 1개가 아님: ${shape.length}건 (LIVE ${shape.filter(x=>x.live).length})`);
-console.log(`   대조 제외 회차: ${skip.join(", ")}\n`);
+console.log(`   대조 제외 회차 ${skip.length}개: ${skip.join(", ")}\n`);
+if (EXPECT) {
+  // skip 목록만 보면 안 된다 — all_data 에 아직 없는 회차는 순회 자체를 안 해
+  //   skip 에도 안 들어가고 「대조됨」으로 잘못 통과한다(D-140 ① 실증).
+  //   그래서 세 가지를 다 본다: 정답표 있음 · 데이터 있음 · 실제로 대조됨.
+  const keyN = Object.keys(A[EXPECT]?.ans || {}).length;
+  const inData = !!data[EXPECT];
+  const done = inData && keyN >= 34 && !skip.includes(EXPECT);
+  if (!done) {
+    console.log(``);
+    console.log(`🔴🔴🔴 ${EXPECT} 은 대조되지 않았다.`);
+    console.log(`       정답표(answer_key.json): ${keyN ? keyN + "문항" : "없음"}`);
+    console.log(`       데이터(all_data_204.json): ${inData ? "있음" : "없음"}`);
+    console.log(`       위 「불일치 0건」은 이 회차를 본 결과가 아니다. 공개하면 안 된다.`);
+    if (!keyN) console.log(`       → step1_answer.js 산출물을 answer_key.json 에 넣는다.`);
+    if (!inData) console.log(`       → step6_merge.js 로 all_data 에 병합한다.`);
+    process.exit(1);
+  }
+  console.log(`   ✅ ${EXPECT} 대조됨 — 정답표 ${keyN}문항이 실제로 쓰였다`);
+}
 if(bad.length){console.log("| 회차 | 세트 | 문항 | 유형 | 데이터 | 정답표 | LIVE |\n|---|---|--:|:-:|:-:|:-:|:-:|");
   for(const b of bad.slice(0,30)) console.log(`| ${b.yk} | \`${b.sid}\` | ${b.n} | ${b.neg?"부정":"긍정"} | ${b.got} | **${b.want}** | ${b.live?"**LIVE**":"-"} |`);
   if(bad.length>30)console.log(`… 외 ${bad.length-30}건`);}
