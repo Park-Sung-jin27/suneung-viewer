@@ -48,8 +48,8 @@ const BATCH = {
 
 const argv = process.argv.slice(2);
 const ALL = argv.includes("--all");
-const bIdx = argv.indexOf("--batch");
-const batchName = bIdx > 0 ? argv[bIdx + 1] : null;
+const bIdx = argv.indexOf("--batch");   // 0 도 유효한 위치다 — >0 으로 보면 첫 인자를 놓친다
+const batchName = bIdx >= 0 ? argv[bIdx + 1] : null;
 
 // 대상 세트 모으기
 const targets = [];
