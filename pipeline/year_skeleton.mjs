@@ -58,7 +58,7 @@ if (!APPLY) {
 data[yk] = skel;
 fs.writeFileSync(DATA, JSON.stringify(data), "utf8");
 
-// 되읽기 검산 — 채택 규칙 ②
+// 되읽기 검산 — S-02
 const back = JSON.parse(fs.readFileSync(DATA, "utf8"));
 if (!back[yk] || !Array.isArray(back[yk].reading) || !Array.isArray(back[yk].literature)) {
   console.log(`\n🔴 되읽기 실패 — ${yk} 가 제대로 만들어지지 않았다`);

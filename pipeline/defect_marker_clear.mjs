@@ -108,7 +108,7 @@ if (bad) { console.log(`\n🔴 검증 실패가 있다 — 아무것도 쓰지 �
 if (APPLY && n) {
   fs.writeFileSync(DATA, JSON.stringify(data), "utf8");
   console.log(`\n  all_data 갱신 ${(fs.statSync(DATA).size / 1048576).toFixed(2)}MB · ${n}건`);
-  // 되읽기 검산 — 채택 규칙 ②
+  // 되읽기 검산 — S-02
   const back = JSON.parse(fs.readFileSync(DATA, "utf8"));
   let miss = 0;
   for (const S of SPEC) {
