@@ -106,36 +106,80 @@ node pipeline/step3_analysis.js pipeline/test_data/step2_2027_9월.json pipeline
 
 ---
 
-## 🔴 step 5~7 — **미검증 구간** (D-140 ⑤ 대조에서 드러남)
+## step 5 — 회차 자리 만들기 (10초 · 비용 0) ★ 신규 회차는 이게 먼저
 
-**이 구간은 명령어를 그대로 따라 하면 실패합니다.** 도구 시그니처를 대조한 결과 셋이 어긋납니다.
-
-| 문제 | 확인한 사실 |
-|---|---|
-| `step4_csids.js --retarget` 은 **파일을 만들지 않는다** | `all_data_204.json` 을 직접 읽고 덮어쓴다(`step4_csids.js:705`). `pipeline/test_data/step4_*.json` 은 생기지 않는다 |
-| `step5_verify.js` 는 그 없는 파일을 요구한다 | 인자가 `[step4결과JSON] [정답키JSON]` 이다 |
-| `step6_merge.js` 는 **신규 회차를 거부한다** | `if (!allData[examKey])` 에서 멈춘다. `2027_9월` 은 아직 `all_data` 에 없다 |
-
-즉 **step4 는 「이미 병합된 데이터」를 고치는 도구**이고, step6 은 **「이미 있는 회차」에만 쓸 수 있습니다.**
-신규 회차를 처음 넣는 경로가 이 셋으로는 이어지지 않습니다.
-
-재추출 43세트 때는 `step6_merge` 대신 `pipeline/merge_reextract.mjs` 를 썼습니다
-(`docs/pipeline_map_20260822.md`: 「회차·섹션 단위로 받는 구식 인터페이스라 merge_reextract 로 대체」).
-그 도구가 신규 회차를 만들어 주는지는 **아직 확인하지 않았습니다** `[확인 필요]`.
-
-### 그래서 지금 할 일
-
-**9/2 전에 이 구간을 한 번 리허설해야 합니다.** 검증 없이 당일에 처음 돌리면
-D-135 때처럼 예상 못 한 곳에서 막힙니다.
-
-임시로 확실한 것만 적어 둡니다:
+`2027_9월` 은 아직 데이터에 없습니다. **자리를 먼저 만들어야 다음 단계가 돕니다.**
 
 ```bash
-# step 5 (형광펜) — all_data 에 회차가 들어간 뒤에 돌린다
+node pipeline/year_skeleton.mjs 2027_9월
+```
+
+미리보기가 맞으면 실제로 만듭니다.
+
+```bash
+node pipeline/year_skeleton.mjs 2027_9월 --apply
+```
+
+> 이 단계가 없으면 step 6 이 `시험 키를 찾을 수 없음: "2027_9월"` 로 멈춥니다.
+> 기존 회차를 다시 돌릴 때는 이 단계를 건너뜁니다(이미 있으면 도구가 알아서 아무것도 안 합니다).
+
+---
+
+## step 6 — 데이터에 합치기 (2분 · 비용 0)
+
+독서와 문학을 따로 넣습니다.
+
+```bash
+node pipeline/step6_merge.js pipeline/test_data/step3_2027_9월.json 2027_9월 reading
+```
+
+```bash
+node pipeline/step6_merge.js pipeline/test_data/step3_2027_9월.json 2027_9월 literature
+```
+
+각각 이런 줄이 나오면 정상입니다.
+
+```
+✅ 머지 완료: 2027_9월 / reading
+   세트: 업데이트 0개, 추가 4개
+   analysis 채움: 85/85
+```
+
+**`추가 4개`** 가 나와야 합니다. `0개` 면 세트가 안 들어간 것입니다.
+
+---
+
+## step 7 — 형광펜 붙이기 (20분 · 약 $3)
+
+**병합이 끝난 뒤에** 돌립니다. 이 도구는 `all_data_204.json` 을 직접 고칩니다.
+
+```bash
 node pipeline/step4_csids.js --retarget 2027_9월
 ```
 
-이 명령은 **step 7(병합) 이후에** 와야 합니다. 순서가 런북 초안과 반대입니다.
+끝에 `✅ 2027_9월 완료` 와 `N건 cs_ids 채움` 이 나옵니다.
+자동으로 `pipeline/backups/` 에 원본 사본을 남기므로 잘못돼도 되돌릴 수 있습니다.
+
+---
+
+## step 7-2 — 정답 교차검증 (15분 · 약 $2) · 선택
+
+`step5_verify.js` 는 `{reading:[], literature:[]}` 형태의 파일을 받습니다.
+그런데 **step 7 은 파일을 만들지 않고 `all_data` 를 직접 고칩니다.** 그래서 입력을 손으로 뽑아야 합니다.
+
+```bash
+node -e "const fs=require('fs');const D=JSON.parse(fs.readFileSync('public/data/all_data_204.json','utf8'));const v=D['2027_9월'];fs.writeFileSync('pipeline/test_data/step4_2027_9월.json',JSON.stringify({reading:v.reading,literature:v.literature},null,2));console.log('추출 완료');"
+```
+
+```bash
+node pipeline/step5_verify.js pipeline/test_data/step4_2027_9월.json pipeline/test_data/answer_2027_9월.json > pipeline/test_data/step5_2027_9월.json
+```
+
+> ⚠ 파일 이름을 `step4_2027_9월.json` 으로 두십시오 — 도구가 이름에서 회차를 읽습니다.
+>
+> **이 단계는 건너뛰어도 됩니다.** AI 로 문제를 다시 풀어 정답을 교차 확인하는 절차인데,
+> step 8-1 의 정답표 전수 대조가 같은 일을 **정답표 원본으로** 더 확실하게 합니다.
+> 시간이 급하면 생략하고 step 8 로 가십시오.
 
 ---
 
@@ -242,7 +286,10 @@ node pipeline/build_split.mjs --verify
 |---|---|---|
 | step 0~3 (파일·검사·정답표·등록·구조) | ~12분 | $0 |
 | step 4 해설 | **~45분** | ~$6 |
-| step 5~7 (미검증 구간) | ~35분 | ~$5 |
+| step 5 회차 자리 | ~10초 | $0 |
+| step 6 병합 | ~2분 | $0 |
+| step 7 형광펜 | ~20분 | ~$3 |
+| step 7-2 교차검증(선택) | ~15분 | ~$2 |
 | step 8 게이트 7종 | ~12분 | $0 |
 | **합계** | **약 1시간 45분** | **약 $11** |
 
@@ -250,12 +297,11 @@ node pipeline/build_split.mjs --verify
 
 ---
 
-## 멈춰야 하는 네 지점
+## 멈춰야 하는 세 지점
 
 1. **step 1-1** — 원문자가 0개면 스캔본. 이 파이프라인으로 못 합니다.
 2. **step 3** — `🔴 전체 폴백` 이 뜨면 원문자가 대량 손실됩니다.
-3. **step 5~7** — 미검증 구간입니다. 9/2 전에 리허설하지 않았다면 여기서 막힙니다.
-4. **step 8-1** — 정답이 하나라도 다르면 공개 금지. **틀린 정답 노출이 최악입니다.**
+3. **step 8-1** — 정답이 하나라도 다르면 공개 금지. **틀린 정답 노출이 최악입니다.**
    `✅ 2027_9월 대조됨` 이 안 뜨면 대조 자체가 안 된 것입니다(step 2-2 누락).
 
 ## 공개 후 남는 일
