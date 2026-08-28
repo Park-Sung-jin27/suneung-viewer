@@ -1,0 +1,93 @@
+{
+  "yearKey": "2022_6월",
+  "setId": "l20226b",
+  "composite_key": "2022_6월::l20226b",
+  "approved_at": "2026-08-28",
+  "approved_by": "대표",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2022_6월/2022_6월_정답.pdf)",
+    "checked": "questionType 기준 정답 특정 — 22·23·24·25·26·27번 전 문항",
+    "answer_key": {
+      "22": 5,
+      "23": 3,
+      "24": 4,
+      "25": 1,
+      "26": 3,
+      "27": 2
+    },
+    "answer_key_mismatch": 0,
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2022_6월",
+    "scope": "연도 스코프 (판정 305② 준수)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 0,
+    "note": "D-130·D-131 수리 후 2022_6월 연도 CRITICAL 0",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "bogi_shape_check": {
+    "note": "F-36 이 방어한 bogi 객체형 크래시 대상인지 확인 (D-127 채택)",
+    "shapes": {
+      "문자열": 6
+    },
+    "result": "문항 6개 모두 bogi 가 문자열이거나 없다 — 객체형이 아니므로 해당 없음",
+    "pass": true
+  },
+  "gate3_evidence": {
+    "method": "심사관 화면 실측",
+    "verified_at": "2026-08-28",
+    "bundle": "54cc40c",
+    "detail": "Q25#3 결론줄이 형제 선지와 같은 형식으로 뜨는 것 확인",
+    "console_error_count": 0,
+    "pass": true
+  },
+  "diagnostic_axes": {
+    "note": "D-128 ① 진단 11축 (release_diag.mjs) — D-130·D-131 수리 후 결함 0",
+    "tool": "node pipeline/release_diag.mjs \"2022_6월::l20226b\"",
+    "①삼충실도": "해설 누락 0 · 근거 누락 0 · pat 누락 0",
+    "②근거정합": "cs_spans 105건 전건 해당 문장에서 확인",
+    "③setId충돌": "이 연도에만 존재 — 복합 키 규약(D-113 ①) 무관",
+    "④구간표시": "[A] [B] 정박 확인 — annotations.json 7항목(bracket 2 + underline 5)",
+    "⑤글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "⑥각주": "본문 * 과 각주 문장 정합",
+    "⑦문항형식": "5지 · 정답 특정 6/6",
+    "⑧분리게이트": "build_split --verify — LIVE 262세트 · 필드 67,982개 대조 누락 0 · free/ 유료 필드 누출 0",
+    "⑨마커고아": "고아 0",
+    "⑩발문마커소실": "0 (D-121 ④ 채택 축)",
+    "⑪인용부호소실": "0 (D-122 ④ 채택 축)"
+  },
+  "repair_record": "Q25#3 결론줄 추가 (f27e41a) — 해설 본문은 완결돼 있고 마지막 한 줄만 없었다. 형제 #2·#4·#5 의 정형구 「❌ 지문과 어긋나는 부적절한 진술」을 따랐다. 논지 불변, pat L3 유지",
+  "title_fix_record": {
+    "l20226b": {
+      "title": "유객 / 율리유곡 / 조어삼매",
+      "range": "22~27번",
+      "note": "변경 없음 — 기존 값 그대로"
+    }
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "sets_cite_status": {
+      "l20226b": "고전시가+가사+수필 3제 — 본문 끝 「- 김용준, 「조어삼매(釣魚三昧)」 -」 표기 있음"
+    },
+    "last_sent_tail": "- 김용준, 「조어삼매(釣魚三昧)」 -",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "annotations_snapshot": {
+    "count": 7,
+    "types": {
+      "bracket": 2,
+      "underline": 5
+    },
+    "source": "public/data/annotations.json — F-25 2단계 이후 화면 렌더 단일 원천"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2022_6월::l20226b",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2022_6%EC%9B%94&set=l20226b&q=22&mode=study",
+  "comment": "웨이브 3 배치 A (D-128 ① 진단 / D-130·D-131 수리 · 규모 소). gate3 심사관 실측 통과(2026-08-28, 커밋 54cc40c 기준) + 대표 승인 완료(2026-08-28). 노출 대기."
+}

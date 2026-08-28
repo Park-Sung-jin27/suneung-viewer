@@ -1,0 +1,91 @@
+{
+  "yearKey": "2021_6월",
+  "setId": "r20216d",
+  "composite_key": "2021_6월::r20216d",
+  "approved_at": "2026-08-28",
+  "approved_by": "대표",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2021_6월/2021_6월_정답.pdf)",
+    "checked": "questionType 기준 정답 특정 — 29·30·31·32·33번 전 문항",
+    "answer_key": {
+      "29": 2,
+      "30": 5,
+      "31": 4,
+      "32": 3,
+      "33": 3
+    },
+    "answer_key_mismatch": 0,
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2021_6월",
+    "scope": "연도 스코프 (판정 305② 준수)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 0,
+    "note": "D-130·D-131 수리 후 2021_6월 연도 CRITICAL 0",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "bogi_shape_check": {
+    "note": "F-36 이 방어한 bogi 객체형 크래시 대상인지 확인 (D-127 채택)",
+    "shapes": {
+      "문자열": 5
+    },
+    "result": "문항 5개 모두 bogi 가 문자열이거나 없다 — 객체형이 아니므로 해당 없음",
+    "pass": true
+  },
+  "gate3_evidence": {
+    "method": "심사관 화면 실측",
+    "verified_at": "2026-08-28",
+    "bundle": "54cc40c",
+    "detail": "[A] 꺾쇠가 마지막 문단(s15~s20)을 감싸는 것 확인",
+    "console_error_count": 0,
+    "pass": true
+  },
+  "diagnostic_axes": {
+    "note": "D-128 ① 진단 11축 (release_diag.mjs) — D-130·D-131 수리 후 결함 0",
+    "tool": "node pipeline/release_diag.mjs \"2021_6월::r20216d\"",
+    "①삼충실도": "해설 누락 0 · 근거 누락 0 · pat 누락 0",
+    "②근거정합": "cs_spans 0건 — 근거가 cs_ids 로만 붙어 있다. 문장 단위 형광펜은 정상 동작하며 결함이 아니다(D-130 ⑤ 판정, 백로그 등재)",
+    "③setId충돌": "이 연도에만 존재 — 복합 키 규약(D-113 ①) 무관",
+    "④구간표시": "[A] 정박 확인 — annotations.json bracket 1건 (D-130 ④ 신규)",
+    "⑤글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "⑥각주": "본문 * 과 각주 문장 정합",
+    "⑦문항형식": "5지 · 정답 특정 5/5",
+    "⑧분리게이트": "build_split --verify — LIVE 262세트 · 필드 67,982개 대조 누락 0 · free/ 유료 필드 누출 0",
+    "⑨마커고아": "고아 0",
+    "⑩발문마커소실": "0 (D-121 ④ 채택 축)",
+    "⑪인용부호소실": "0 (D-122 ④ 채택 축)"
+  },
+  "repair_record": "[A] 신규 정박 s15~s20 (88eb23b) — 본문에 [A] 글자가 아예 없어 QG 가 「지문/bracket annotation 에 부재」로 잡던 건이다. 10면 꺾쇠 401.1/679.2 (x=453.1), 지식 재산 보호의 최적 수준을 다루는 마지막 문단 전체다 · Q31#1·#3 근거 [s11, s12] 부여 (D-131 ②)",
+  "title_fix_record": {
+    "r20216d": {
+      "title": "ICT 다국적 기업과 디지털세",
+      "range": "29~33번",
+      "note": "변경 없음 — 기존 값 그대로"
+    }
+  },
+  "cite_audit_record": {
+    "method": "author sentType detection",
+    "sets_cite_status": {
+      "r20216d": "독서 지문 — 작가·출전 표기 없음(정상)"
+    },
+    "last_sent_tail": "이는 지식 재산 보호의 최적 수준에 대해서도 국가별 입장이 다름을 시사한다.",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "annotations_snapshot": {
+    "count": 1,
+    "types": {
+      "bracket": 1
+    },
+    "source": "public/data/annotations.json — F-25 2단계 이후 화면 렌더 단일 원천"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2021_6월::r20216d",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2021_6%EC%9B%94&set=r20216d&q=29&mode=study",
+  "comment": "웨이브 3 배치 A (D-128 ① 진단 / D-130·D-131 수리 · 규모 중). gate3 심사관 실측 통과(2026-08-28, 커밋 54cc40c 기준) + 대표 승인 완료(2026-08-28). 노출 대기."
+}
