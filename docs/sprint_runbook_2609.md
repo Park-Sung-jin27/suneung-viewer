@@ -209,7 +209,7 @@ node pipeline/quality_gate.mjs 2027_9월
 
 **`CRITICAL … 0건`** 이어야 합니다.
 
-### 8-4. 마커 감사 2종 — 신규 추출 세트 필수 (규칙 ⑪)
+### 8-4. 마커 감사 2종 — 신규 추출 세트 필수 (S-09)
 
 ```bash
 node pipeline/marker_ref_audit.mjs

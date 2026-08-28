@@ -724,8 +724,11 @@ suneung-viewer/
 | `docs/current_state.md`          | 현 진행 + 다음 액션                                      | 주 1회            |
 | `docs/d_engine_decisions.md`     | D엔진 의제 결정 (영구)                                   | 신규 의제 결정 시 |
 | `ops/employees/{role}/AGENTS.md` | 직원별 specific 규칙                                     | 역할 변경 시      |
+| `docs/session_20260825_state.md` | 데이터 엔지니어 세션 규칙 `S-01`~`S-16` + 진행 상태      | 발주 종결 시      |
 
 mismatch 시 **`AGENTS.md` 우선** (lock #20 정합).
+
+**세션 규칙은 `docs/session_20260825_state.md` 3절에 있다 (`S-01`~`S-16`). `CLAUDE.md` §13(①~⑱)과 별개 체계다.**
 
 ---
 
