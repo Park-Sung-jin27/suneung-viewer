@@ -467,6 +467,15 @@ const RELEASE_KEYS = new Set([
   "2021_6월::l20216b",
   "2022_6월::l20226a",
   "2022_9월::l20229c",
+  // -- 웨이브 3 배치 A 잔여 (발주 F-40, 2026-08-28) --
+  //   전제: D-132 승격 기록(f133ac1) push 후 반영 -- 4관문 순서.
+  //   l20219d 는 제외한다. Q32#5 에 _ok_analysis_mismatch(ok:false 인데 해설
+  //   말미가 확인으로 끝남) 와 _discriminative_validation.passed:false 가 남아
+  //   build_split --verify 가 누락 2건으로 실패했다. 데이터 수리 후 별도 발주.
+  "2021_6월::r20216a",
+  "2021_6월::r20216d",
+  "2022_6월::l20226b",
+  "2022_9월::l20229d",
 ]);
 
 // yearKey-aware release 검사 (동기 — composite key lookup).
