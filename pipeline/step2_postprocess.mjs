@@ -257,6 +257,17 @@ export function postprocess(sets, sec, ctx = {}) {
     }
   }
 
+  // [D-138 ①] 산문 문장 재분할 — 독서만.
+  //   문학은 실측상 이미 기존과 문장 수가 일치한다(2027_6월 l20276a~d 74/80/90/25).
+  //   verse 는 행이 곧 의미 단위라 어느 영역에서도 건드리지 않는다(resplitProse 안에서 보호).
+  if (sec === "reading")
+    for (const set of sets) {
+      const before = (set.sents || []).length;
+      set.sents = resplitProse(set.sents || []);
+      const after = set.sents.length;
+      if (before !== after) stats.resplit = (stats.resplit || 0) + 1;
+    }
+
   for (const set of sets) {
     const st = cleanSentStructure(set, sec);
     stats.sent += st.removed + st.typed + st.verse + (st.title ? 1 : 0);
@@ -271,4 +282,98 @@ export function postprocess(sets, sec, ctx = {}) {
   else console.log(`  [postprocess] 정제 항목 없음 ✅`);
 
   return sets;
+}
+
+// ── [D-138 ①] 문장 재분할 — 산문만, 운문은 그대로 ──────────────────────
+//
+//   왜 필요한가
+//     pdf-parse 경로는 PDF 렌더 그대로 줄바꿈 단위로 문장을 만든다
+//     (pdf_text_extractor.mjs:17 — 「문장 단위 splitting 은 상위 단계 책임」).
+//     그런데 그 상위 단계가 실제로는 재분할을 하지 않아, 독서 지문이 한 문장을
+//     여러 조각으로 쪼갠 채 나온다(D-137 재리허설: 21 → 33개).
+//     문장 id 가 달라지면 step4 가 붙이는 cs_ids 알갱이가 기존 6,840개 해설과
+//     어긋나므로 여기서 맞춘다.
+//
+//   무엇을 건드리지 않는가
+//     · sentType 이 body 가 아닌 것 — verse(운문)·workTag·author·footnote·omission
+//       운문은 줄바꿈이 곧 행이고 행이 곧 의미 단위다. 이어 붙이면 안 된다.
+//     · 문학 영역 전체 — 실측상 이미 기존과 문장 수가 정확히 일치한다
+//       (2027_6월 l20276a~d: 74/80/90/25 전건 일치). 손대면 오히려 깨진다.
+//     즉 재분할은 **독서(reading)의 body 문장**에만 건다.
+//
+//   종결 판정
+//     단순 ". " 는 쓰지 않는다 — 「3.5」 「㉠.」 「1．」 에 걸린다.
+//     한국어 종결어미 뒤의 문장부호만 경계로 본다. 인용 닫는 부호도 함께 넘긴다.
+
+// 종결어미 마지막 글자 — 넓게 잡되 숫자·마커·영문은 제외된다
+const _END_SYLLABLE = "다자까가라";   // 기존 독서 body 4,507문장 실측 — 이 5종이 99.9%를 덮는다
+//   (다:4412 자:46 까:25 가:9 라:9 · 나머지는 1회씩). 넓게 잡으면 문장 중간에서 잘린다.
+// 종결부호 + 닫는 인용부(있으면) + 공백(없을 수도 있다)
+//   PDF 한 줄 안에 두 문장이 이어지면 「…간주된다.채권자가…」처럼 공백이 없다.
+//   \s* 로 두어도 숫자(3.5)·마커(㉠.)는 앞이 종결어미가 아니라 걸리지 않는다.
+const _SENT_BREAK = new RegExp(
+  `(?<=[${_END_SYLLABLE}][.?!])["'’”」』\\)\\]]*\\s+`,
+  "g",
+);
+
+/**
+ * 산문 한 덩어리를 문장 단위로 나눈다.
+ *   ★ 인용부호 안에서는 자르지 않는다 — 「'모임에 꼭 참석해 주세요. 불참 시 …'」처럼
+ *     따옴표 안에 종결부가 들어 있는 문장이 흔하다(2024_6월 r20246b 실측).
+ *     여는 따옴표를 만나면 깊이를 올리고 닫는 따옴표에서 내린다. 깊이가 0 일 때만 자른다.
+ */
+function splitSentences(text) {
+  const OPEN = "'‘“「『(〈《";
+  const CLOSE = "'’”」』)〉》";
+  const CLOSERS = "\"'’”」』)]";
+  const out = [];
+  let depth = 0, start = 0;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    // 곧은 따옴표는 여닫이가 같아 토글로 다룬다
+    if (ch === "'" || ch === '"') { depth = depth > 0 ? depth - 1 : 1; continue; }
+    if (OPEN.includes(ch)) { depth++; continue; }
+    if (CLOSE.includes(ch)) { if (depth > 0) depth--; continue; }
+    if (depth > 0) continue;
+    if (!".?!".includes(ch)) continue;
+    const prev = text[i - 1] || "";
+    if (!_END_SYLLABLE.includes(prev)) continue;   // 숫자·마커·영문 뒤는 종결이 아니다
+    let k = i + 1;
+    while (k < text.length && CLOSERS.includes(text[k])) k++;   // 닫는 인용부 흡수
+    if (k >= text.length) break;
+    if (!/\s/.test(text[k])) continue;                          // 공백이 있어야 문장 경계
+    const piece = text.slice(start, k).trim();
+    if (piece) out.push(piece);
+    while (k < text.length && /\s/.test(text[k])) k++;
+    start = k; i = k - 1;
+  }
+  const tail = text.slice(start).trim();
+  if (tail) out.push(tail);
+  return out;
+}
+
+/** 줄바꿈으로 쪼개진 산문 조각을 이어 붙인 뒤 문장 단위로 다시 나눈다. */
+export function resplitProse(sents) {
+  const out = [];
+  let buf = null;   // 이어 붙이는 중인 body 조각들
+
+  const flushBuf = () => {
+    if (!buf) return;
+    const joined = buf.parts.join(" ").replace(/\s+/g, " ").trim();
+    for (const t of splitSentences(joined)) out.push({ ...buf.proto, t });
+    buf = null;
+  };
+  for (const x of sents) {
+    const type = x.sentType || "body";
+    if (type !== "body") { flushBuf(); out.push(x); continue; }
+    if (!buf) buf = { proto: { ...x }, parts: [] };
+    buf.parts.push(String(x.t ?? ""));
+  }
+  flushBuf();
+
+  // id 재부여 — prefix 는 첫 문장 id 에서 딴다 (rXXXXas1 → rXXXXa)
+  const first = sents.find((x) => x.id);
+  const prefix = first ? String(first.id).replace(/s\d+[a-z]?$/, "") : "";
+  if (prefix) out.forEach((x, i) => { x.id = `${prefix}s${i + 1}`; });
+  return out;
 }
