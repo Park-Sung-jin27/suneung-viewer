@@ -196,7 +196,15 @@ export function parseQuestionBlocks(fullText) {
     current._rawLines.push(line);
 
     // <보기> 시작?
-    if (/<\s*보\s*기\s*>/.test(line)) {
+    //   ⚠ 선지 문두(①~⑤)로 시작하는 줄은 제외한다. 선지 본문이 「① <보기>의 …」로
+    //     시작하는 문항이 있고(2027_6월 Q8 실측 — 선지 ①~④ 가 전부 그렇다),
+    //     그것을 박스 시작으로 오인하면 _section 이 bogi 로 넘어가 **그 문항의 선지가
+    //     통째로 사라진다.** 선지 0개가 되면 validator 가 S2_choice_count 로 거부하고,
+    //     step2 는 산출물 전체를 버리고 Gemini 로 폴백한다 — 그 경로가 원문자 마커를
+    //     77% 잃었다(D-135 리허설 · D-136 원인 규명).
+    //   규칙은 좁게 — **선지 문두 한정**이다. 그 밖의 <보기> 처리는 건드리지 않는다.
+    const _isChoiceHead = /^\s*[①②③④⑤]/.test(line);
+    if (!_isChoiceHead && /<\s*보\s*기\s*>/.test(line)) {
       current._section = "bogi";
       current.bogi_lines.push(line);
       continue;

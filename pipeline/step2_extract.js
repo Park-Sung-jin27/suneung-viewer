@@ -12,6 +12,10 @@ import { validateQuestionSet } from "./extraction_validator.mjs";
 import { scanSetRanges, planChunks } from "./set_ranges.mjs";
 import { logUsage } from "./api_usage.mjs";
 
+// [D-137 ③] 이번 실행에서 Gemini 로 넘어간 자리를 모은다 — 실행 끝에 요약으로 찍는다.
+//   조용한 폴백이 D-135 사고의 본질이었다. 다시는 모르고 지나가지 않게 한다.
+const FALLBACK_LOG = [];
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
@@ -1213,6 +1217,7 @@ export async function extractStructure(
     // ── [NEW] 1차: pdf-parse 경로 시도 ──────────────────────
     let pdfParseAccepted = false;
     let pdfParseSets = null; // 거부돼도 보관 — fallback 열화 판정에 쓴다
+    let pdfParseFailedQ = [];  // 검증에 걸린 문항 ID — 이 문항만 Gemini 로 대체한다 (D-137 ③)
     try {
       const pp = await extractViaPdfParse(pdfPath, yearKey, sec, profile);
       pdfParseSets = pp.sets || null;
@@ -1228,6 +1233,10 @@ export async function extractStructure(
           : (pp.validation?.error_questions || [])
               .map((e) => `Q${e.qId}:${(e.issue_codes || []).join(",")}`)
               .slice(0, 5);
+        // 어느 문항이 걸렸는지 남긴다 — 이 문항만 Gemini 로 채우기 위해서다 (D-137 ③)
+        pdfParseFailedQ = (pp.validation?.error_questions || [])
+          .map((e) => String(e.qId))
+          .filter(Boolean);
         const gapReasons = pp.validation?.id_gaps?.length
           ? [`id_gaps:${pp.validation.id_gaps.join(",")}`]
           : [];
@@ -1348,6 +1357,44 @@ export async function extractStructure(
       for (const s of sets || []) s._extractor = "gemini_fallback";
     }
 
+    // ── [D-137 ③] 부분 폴백 — 실패한 문항만 Gemini 것을 쓴다 ──────────────
+    //   ★ 조용한 폴백이 이번 사고의 본질이다(D-135: 마커 77% 소실).
+    //     Q8 하나가 검증에 걸렸다고 4세트를 통째로 Gemini 로 넘기면 멀쩡한 문항의
+    //     원문자 마커까지 함께 죽는다. pdf-parse 가 성공한 문항은 그대로 두고,
+    //     걸린 문항만 Gemini 결과로 바꾼다. 그리고 **어느 문항이 바뀌었는지 반드시 찍는다.**
+    let fallbackQIds = [];
+    if (!pdfParseAccepted && pdfParseSets && pdfParseSets.length && pdfParseFailedQ.length) {
+      const geminiByQ = new Map();
+      for (const g of sets || [])
+        for (const q of g.questions || []) geminiByQ.set(String(q.id), q);
+
+      let swapped = 0;
+      for (const set of pdfParseSets)
+        for (let i = 0; i < (set.questions || []).length; i++) {
+          const qid = String(set.questions[i].id);
+          if (!pdfParseFailedQ.includes(qid)) continue;
+          const g = geminiByQ.get(qid);
+          if (!g) continue;
+          set.questions[i] = { ...g, _extractor: "gemini" };   // 이 문항만 표식
+          fallbackQIds.push(qid);
+          swapped++;
+        }
+
+      if (swapped) {
+        for (const qid of fallbackQIds)
+          console.log(`[extractor] 🔴 폴백 문항 Q${qid} — pdf-parse 검증 실패로 Gemini 결과를 씀 (마커 손실 가능)`);
+        sets = pdfParseSets;
+        for (const set of sets) if (!set._extractor) set._extractor = "pdf-parse";
+        console.log(`[extractor] 부분 폴백 적용 — pdf-parse ${sets.length}세트 유지 · 폴백 문항 ${swapped}건`);
+      } else {
+        console.warn(`[extractor] ⚠ 부분 폴백 불가 — 실패 문항 ${pdfParseFailedQ.join(",")} 을 Gemini 결과에서 찾지 못했다. 전체 Gemini 결과를 쓴다`);
+      }
+    }
+    if (!pdfParseAccepted && !fallbackQIds.length)
+      console.log(`[extractor] 🔴 전체 폴백 (sec=${sec}) — 이 섹션의 모든 문항이 Gemini 결과다 (마커 손실 가능)`);
+    for (const qid of fallbackQIds) FALLBACK_LOG.push(`${sec}:Q${qid}`);
+    if (!pdfParseAccepted && !fallbackQIds.length) FALLBACK_LOG.push(`${sec}:전체`);
+
     // ── 추출 직후 검증 (범위 밖 세트 자동 필터링) ──
     const { valid, errors } = validateExtraction(
       sets,
@@ -1463,6 +1510,12 @@ export async function extractStructure(
 
     result[sec] = sets;
   }
+
+  // [D-137 ③] 실행 끝 폴백 요약 — 조용히 지나가지 않게 한다
+  if (FALLBACK_LOG.length)
+    console.log(`[extractor] 🔴 폴백 문항 ${FALLBACK_LOG.length}건 — ${FALLBACK_LOG.join(", ")}`);
+  else
+    console.log(`[extractor] ✅ 폴백 문항 0건 — 전 문항 pdf-parse 원문에서 나왔다`);
 
   return result;
 }
