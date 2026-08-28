@@ -487,7 +487,7 @@ ${markerHint}
       { headers: { "anthropic-beta": "output-128k-2025-02-19" } },
     ),
   );
-  logUsage("step4", "?", response);
+  logUsage("step4", set?.id ?? "?", response);   // 세트 라벨을 남긴다 — "?" 면 세트당 실측이 안 쌓인다 (D-135 ③)
 
   const matches = parseJSON(response.content[0].text);
 
