@@ -6160,6 +6160,12 @@
         "label": "B",
         "sentFrom": "l20206ds56",
         "sentTo": "l20206ds58"
+      },
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20206ds25",
+        "sentTo": "l20206ds32"
       }
     ]
   }
