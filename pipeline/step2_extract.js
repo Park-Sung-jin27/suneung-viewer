@@ -1517,6 +1517,33 @@ export async function extractStructure(
   else
     console.log(`[extractor] ✅ 폴백 문항 0건 — 전 문항 pdf-parse 원문에서 나왔다`);
 
+  // [D-150 ④] 원문자 분해 경고 — ◯(U+25EF) 뒤에 영문자가 붙으면 합자가 깨진 것이다
+  //   2019수능 r2019b 의 효과음 ⓔ 가 `◯ + 탭 + E` 로 추출됐다(D-149). 그대로 넣으면
+  //   본문·선지·해설에 깨진 글자가 박히고, 나중에 전 필드를 뒤져 고쳐야 한다(§13⑭).
+  //   ※ `◯◯◯ 여사`(이름 가림)는 뒤에 영문자가 없어 걸리지 않는다 — 2015_6월 l20156b 실측.
+  {
+    const hits = [];
+    const scan = (sec, where, t) => {
+      const s = t == null ? "" : typeof t === "string" ? t : JSON.stringify(t);
+      for (const m of s.match(/◯\s*[A-Za-z]/g) || []) hits.push(`${sec}:${where}(${m.replace(/\s+/g, "")})`);
+    };
+    for (const [sec, sets] of Object.entries(result))
+      for (const st of sets || []) {
+        for (const x of st.sents || []) scan(sec, String(x.id ?? "sent"), x.t);
+        for (const q of st.questions || []) {
+          scan(sec, `Q${q.id}`, q.t);
+          scan(sec, `Q${q.id}보기`, q.bogi);
+          for (const c of q.choices || []) scan(sec, `Q${q.id}#${c.num}`, c.t);
+        }
+      }
+    if (hits.length)
+      console.log(`[extractor] 🔴 원문자 분해 의심 ${hits.length}건 — ${hits.slice(0, 12).join(", ")}${hits.length > 12 ? " …" : ""}`
+        + `\n[extractor]    ◯ 뒤에 영문자가 붙었다. 원본은 ⓐ ⓔ 같은 한 글자일 가능성이 크다.`
+        + `\n[extractor]    화면으로 글자를 확인한 뒤 확정할 것 — 추출 결과를 그대로 넣지 말 것(§13⑬).`);
+    else
+      console.log(`[extractor] ✅ 원문자 분해 의심 0건`);
+  }
+
   return result;
 }
 
