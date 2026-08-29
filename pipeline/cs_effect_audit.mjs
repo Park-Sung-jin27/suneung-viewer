@@ -48,6 +48,9 @@ const LIVE_ONLY = argv.includes("--live");
 const LIST_ONLY = argv.includes("--list");
 const yi = argv.indexOf("--year");
 const YEAR = yi >= 0 ? argv[yi + 1] : null;
+if (yi >= 0 && !YEAR) { console.error("🔴 --year 뒤에 회차 키가 없다."); process.exit(1); }
+if (YEAR && !data[YEAR]) { console.error(`🔴 회차 \`${YEAR}\` 가 데이터에 없다. 오타이거나 아직 안 만든 회차다.`); process.exit(1); }
+//   가드가 없으면 오타·미생성 회차에 「0건」이 떠 통과한 것처럼 보인다(§13⑳ 조용한 실패)
 const picks = argv.filter((x) => x.includes("::"));
 
 const rows = [];

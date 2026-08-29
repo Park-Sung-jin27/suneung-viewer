@@ -34,6 +34,7 @@
 // 사용:
 //   node pipeline/passage_gap_audit.mjs              전 데이터 396세트
 //   node pipeline/passage_gap_audit.mjs --live       LIVE 세트만
+//   node pipeline/passage_gap_audit.mjs --year 2027_9월   회차 단위 (스프린트 게이트 8-7)
 //   node pipeline/passage_gap_audit.mjs "2019수능::r2019b" …   지정 세트만
 
 import fs from "node:fs";
@@ -56,6 +57,11 @@ const TAGS = ["(가)", "(나)", "(다)", "(라)", "(마)"];
 const argv = process.argv.slice(2);
 const LIVE_ONLY = argv.includes("--live");
 const picks = argv.filter((x) => x.includes("::"));
+// --year 는 스프린트 런북 8-7 이 쓴다. 없으면 전 세트를 훑고도 조용히 통과한 척한다(§13⑳)
+const yi = argv.indexOf("--year");
+const YEAR = yi >= 0 ? argv[yi + 1] : null;
+if (yi >= 0 && !YEAR) { console.error("🔴 --year 뒤에 회차 키가 없다."); process.exit(1); }
+if (YEAR && !data[YEAR]) { console.error(`🔴 회차 \`${YEAR}\` 가 데이터에 없다. 오타이거나 아직 안 만든 회차다.`); process.exit(1); }
 
 const rows = [];
 for (const [yk, v] of Object.entries(data))
@@ -64,7 +70,9 @@ for (const [yk, v] of Object.entries(data))
       const setId = s.setId || s.id;
       const key = `${yk}::${setId}`;
       const live = REL.has(key);
-      if (picks.length ? !picks.includes(key) : LIVE_ONLY && !live) continue;
+      if (picks.length) { if (!picks.includes(key)) continue; }
+      else if (YEAR) { if (yk !== YEAR) continue; }
+      else if (LIVE_ONLY && !live) continue;
 
       const sents = s.sents || [];
       const body = sents.map((x) => flat(x.t)).join(NL);
@@ -116,7 +124,7 @@ for (const [yk, v] of Object.entries(data))
       if (total || tagSkip) rows.push({ yk, setId, key, live, sents: sents.length, refTags, bodyTags: [...bodyTags], tagMiss, tagSkip, scenes, sceneMiss, labels: [...labels], labMiss, total });
     }
 
-const scanned = picks.length || (LIVE_ONLY ? REL.size : "396(전체)");
+const scanned = picks.length ? `지정 ${picks.length}세트` : YEAR ? `${YEAR} 회차` : LIVE_ONLY ? `LIVE ${REL.size}세트` : "396(전체)";
 const hit = rows.filter((r) => r.total);
 const skip = rows.filter((r) => !r.total && r.tagSkip);
 
