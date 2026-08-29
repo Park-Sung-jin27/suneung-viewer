@@ -6138,5 +6138,15 @@
         "sentTo": "r20169gs16"
       }
     ]
+  },
+  "2020_6월": {
+    "l20206a": [
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20206as14",
+        "sentTo": "l20206as15"
+      }
+    ]
   }
 }
