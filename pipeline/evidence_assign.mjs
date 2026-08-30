@@ -192,6 +192,87 @@ const SPEC = [
     csSpans: [],
     why: "선지가 [A]와 [C] 둘을 말한다. [A] 쪽 근거는 해설 📌 의 「대풍이 일어나서 / 태산 같은 성난 물결」이라 s3 이 맞고(기존 값 유지), [C] 는 정박 범위 s_x11~s_x15 로 좁힌다",
   },
+
+  // ── D-168 ②③④⑤ l2024d 근거 정밀화 — 심사관 전수 감사 (2026-08-30) ────────
+  //   어구는 전부 해당 문장 t 에서 그대로 복사했고 21개를 기계 대조로 확인했다(S-24 · 21/21).
+  //   ★ replace 는 cs_spans 를 통째로 덮어쓴다 — 기존 span 은 반드시 옮겨 적는다(D-167 에서 겪음).
+  //   ⑤ cs_ids 통짜 해소: 17~18개를 물던 선지를 실제 근거 문장으로 좁힌다(S-27).
+  {
+    yk: "2024수능", setId: "l2024d", qId: 32, num: 1, replace: true,
+    csIds: ["l2024ds_x12", "l2024ds_x13", "l2024ds_x15", "l2024ds_x16", "l2024ds_x17"],
+    csSpans: [   // 기존 3건 보존 — 전부 새 범위 안이다
+      { sent_id: "l2024ds_x15", text: "풍도의 험하던 일 저승 같고 꿈도 같다", occurrence: 1 },
+      { sent_id: "l2024ds_x16", text: "손주 안고 어르면서 한가히 누웠으니", occurrence: 1 },
+      { sent_id: "l2024ds_x17", text: "강호의 산인이요 성대의 일반이로다", occurrence: 1 },
+    ],
+    why: "D-168 ⑤. 17문장을 통째로 물던 것을 해설이 실제로 인용하는 다섯으로 좁힌다 — s_x12·s_x13(처자식 재회의 기쁨) · s_x15(풍도의 험하던 일) · s_x16·s_x17(귀향 후 한가로움). 기존 cs_spans 3건은 그대로 보존",
+  },
+  {
+    yk: "2024수능", setId: "l2024d", qId: 32, num: 3, replace: true,
+    csIds: ["l2024ds8", "l2024ds9"],
+    csSpans: [
+      { sent_id: "l2024ds8", text: "양류풍", occurrence: 1 },
+      { sent_id: "l2024ds9", text: "서림 풍우", occurrence: 1 },
+    ],
+    why: "D-168 ②. 이 선지는 **계절 어휘**를 묻는다. 실제 계절 어휘는 s8 「양류풍」·s9 「서림 풍우」 둘뿐이라 cs_ids 를 [s8] → [s8, s9] 로 넓히고 그 두 어구에 cs_spans 를 건다. 해설 📌 에서 층석류·고사매·「벼를 갈고」를 뺀 것과 짝이다(분재·농사라 계절 어휘가 아니다)",
+  },
+  {
+    yk: "2024수능", setId: "l2024d", qId: 32, num: 4, replace: true,
+    csIds: ["l2024ds8"],
+    csSpans: [
+      { sent_id: "l2024ds8", text: "막대 짚고 나와 거니니", occurrence: 1 },
+      { sent_id: "l2024ds8", text: "초동과 목수(牧叟)는 웃고 가리키나니", occurrence: 1 },
+    ],
+    why: "D-168 ④. cs_ids 는 s8 그대로 두고 해설이 짚는 두 어구에 cs_spans 를 건다 — 선지가 「두 인물의 행위 대비」를 말하므로 화자의 행위(막대 짚고 나와 거니니)와 초동·목수의 행위(웃고 가리키나니)가 각각 켜져야 대비가 화면에 보인다",
+  },
+  {
+    yk: "2024수능", setId: "l2024d", qId: 32, num: 5, replace: true,
+    csIds: ["l2024ds_x6", "l2024ds_x15", "l2024ds_x16", "l2024ds_x17", "l2024ds7", "l2024ds9"],
+    csSpans: [
+      { sent_id: "l2024ds_x6", text: "천은이 망극하다", occurrence: 1 },
+      { sent_id: "l2024ds7", text: "너뿐인가 하노라", occurrence: 1 },
+      { sent_id: "l2024ds9", text: "자랑할 때 있으리라", occurrence: 1 },
+    ],
+    why: "D-168 ④⑤. 18문장을 물던 것을 여섯으로 좁히고 영탄적 표현 세 곳에 cs_spans 를 건다. 선지가 「영탄적 표현」을 묻는데 형광펜이 문단 전체를 칠하면 어느 표현이 영탄인지 안 보인다. s7·s9 는 D-168 ⑨ 로 끝에 <제N수> 가 붙었지만 이 어구들은 그 앞이라 그대로 잡힌다",
+  },
+  {
+    yk: "2024수능", setId: "l2024d", qId: 33, num: 5, replace: true,
+    csIds: ["l2024ds3", "l2024ds_x11", "l2024ds_x12", "l2024ds_x13", "l2024ds_x14", "l2024ds_x15"],
+    csSpans: [
+      { sent_id: "l2024ds3", text: "대풍이 일어나서", occurrence: 1 },
+      { sent_id: "l2024ds3", text: "태산 같은 성난 물결", occurrence: 1 },
+      { sent_id: "l2024ds_x15", text: "풍도의 험하던 일 저승 같고 꿈도 같다", occurrence: 1 },
+    ],
+    why: "D-168 ④. cs_ids 는 D-167 에서 정한 값 그대로 두고, 해설 📌 가 짚는 세 어구에 cs_spans 를 건다 — [A] 「대풍이 일어나서」·「태산 같은 성난 물결」(여정상의 위험) · [C] 「풍도의 험하던 일…」(과거 위험의 소회)",
+  },
+  {
+    yk: "2024수능", setId: "l2024d", qId: 34, num: 3, replace: true,
+    csIds: ["l2024ds2", "l2024ds7"],
+    csSpans: [
+      { sent_id: "l2024ds2", text: "삼현과 군악 소리 해산을 진동하니", occurrence: 1 },
+      { sent_id: "l2024ds7", text: "꼬아 자란 층석류*요 틀어 지은 고사매*라", occurrence: 1 },
+    ],
+    why: "D-168 ④. cs_ids 유지. 해설이 (가)·(나)에서 하나씩 인용하므로 그 두 어구에 cs_spans 를 건다 — 「경험(군악)」과 「외물(분재)」의 대비가 화면에 드러난다",
+  },
+  {
+    yk: "2024수능", setId: "l2024d", qId: 34, num: 4, replace: true,
+    csIds: ["l2024ds3", "l2024ds9"],
+    csSpans: [
+      { sent_id: "l2024ds3", text: "내 신세를 생각하니", occurrence: 1 },
+      { sent_id: "l2024ds9", text: "두어라 야인 생애도 자랑할 때 있으리라", occurrence: 1 },
+    ],
+    why: "D-168 ③④. cs_ids 유지. 해설 재작성으로 (가) s3 근거가 들어왔으므로 그 어구와 (나) 어구에 cs_spans 를 건다 — 정답 선지(ok:false)라 형광펜이 특히 정확해야 한다",
+  },
+  {
+    yk: "2024수능", setId: "l2024d", qId: 34, num: 5, replace: true,
+    csIds: ["l2024ds_x16", "l2024ds_x17", "l2024ds8"],
+    csSpans: [
+      { sent_id: "l2024ds_x16", text: "손주 안고 어르면서 한가히 누웠으니", occurrence: 1 },
+      { sent_id: "l2024ds_x17", text: "강호의 산인이요 성대의 일반이로다", occurrence: 1 },
+      { sent_id: "l2024ds8", text: "뜻대로 소일하니", occurrence: 1 },
+    ],
+    why: "D-168 ④⑤. 18문장을 물던 것을 셋으로 좁히고 해설이 인용하는 세 어구에 cs_spans 를 건다 — 「강호에서의 자족감」이 (가) 두 곳·(나) 한 곳에서 어떻게 드러나는지 화면에서 바로 보인다",
+  },
 ];
 
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));

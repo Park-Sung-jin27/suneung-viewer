@@ -87,6 +87,22 @@ const SPEC = [
     "원본 498행 「몇 명이 못 된다. ㉢ 얼마 있다, 원래의 신전은 술집으로 변하」. "
     + "Q26#5 의 cs_span 「얼마 있다, 원래의 신전은…」은 삽입 지점 바로 뒤에서 시작하므로 치환 후에도 그대로 부분 문자열로 남는다"],
 
+  // ── D-168 ⑨ l2024d (나) 화암구곡 수 표시 복원 — 심사관 승인 ─────────────
+  //   원본 2024수능 PDF 823~836행에 <제1수>·<제6수>·<제9수> 3개가 실재한다(추출 확인).
+  //   제1수 → 제6수 → 제9수로 **건너뛴다** — 표시가 없으면 학생이 연속된 세 수로 오해한다.
+  //   ★ 저장 방식: verse 문장 **끝**에 붙인다. 전 데이터 실측 verse/문장끝 36회 · workTag/단독 31회로
+  //     관례가 둘로 갈리는데, 가장 가까운 선례인 l20199a(한거십팔곡 연시조)가 verse 끝 방식이다(S-14).
+  //     원본도 각 수의 끝(오른쪽 정렬)이라 자리가 맞는다.
+  ["2024수능", "l2024d", "l2024ds7", "너뿐인가 하노라", "너뿐인가 하노라 <제1수>",
+    "원본 823~836행. s7 은 화암구곡 첫 수이고 문장 끝이 「…아마도 화암 풍경이 너뿐인가 하노라」다. "
+    + "이 어구는 s7 안에 한 곳뿐이다. cs_spans 는 건드리지 않는다 — 근거 어구에 수 표시가 붙으면 형광펜이 그것까지 칠한다", { noSpanSync: true }],
+  ["2024수능", "l2024d", "l2024ds8", "웃고 가리키나니", "웃고 가리키나니 <제6수>",
+    "원본 823~836행. s8 은 제6수이고 끝이 「…초동과 목수(牧叟)는 웃고 가리키나니」다. "
+    + "제1수 다음이 제6수라 **번호가 건너뛴다** — 표시가 없으면 연속으로 읽힌다", { noSpanSync: true }],
+  ["2024수능", "l2024d", "l2024ds9", "자랑할 때 있으리라", "자랑할 때 있으리라 <제9수>",
+    "원본 823~836행. s9 는 제9수이고 끝이 「두어라 야인 생애도 자랑할 때 있으리라」다. "
+    + "cs_spans 는 건드리지 않는다(위와 같은 이유)", { noSpanSync: true }],
+
 ];
 
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
@@ -95,7 +111,10 @@ const norm = (s) => String(s).replace(/_/g, "");
 let n = 0, bad = false;
 console.log(`## 본문 문장 수리 ${APPLY ? "적용" : "DRY-RUN"} — ${SPEC.length}건\n`);
 
-for (const [yk, sid, sentId, from, to, why] of SPEC) {
+// 7번째 요소 opts — { noSpanSync: true } 면 cs_spans 를 건드리지 않는다.
+//   문장 **끝에 메타 표시를 덧붙이는** 수리(예 연시조 <제N수>)에서는 동기화가 해롭다.
+//   근거 어구는 그대로여야 하는데 동기화하면 형광펜이 수 표시까지 칠한다(D-168 ⑨ 에서 발견).
+for (const [yk, sid, sentId, from, to, why, opts = {}] of SPEC) {
   if (ONLY && sid !== ONLY) continue;
   let set = null;
   for (const sec of ["reading", "literature"]) {
@@ -106,6 +125,14 @@ for (const [yk, sid, sentId, from, to, why] of SPEC) {
   const sent = (set.sents || []).find((x) => String(x.id) === sentId);
   if (!sent) { console.log(`  🔴 ${sentId} — 문장 없음`); bad = true; continue; }
   const t = flat(sent.t);
+  // 🔴 멱등 가드 — 이미 적용된 건은 건너뛴다.
+  //   덧붙이기 수리(to 가 from 을 품음)는 두 번 돌면 「<제1수> <제1수>」처럼 두 번 붙는다.
+  //   D-168 ⑨ 에서 실제로 그렇게 됐다 — 첫 실행이 쓰기까지 하고 되읽기에서만 실패했는데,
+  //   그걸 「안 써졌다」로 읽고 다시 돌린 것이 원인이다.
+  if (String(to).includes(String(from)) && t.includes(to)) {
+    console.log(`  ⏭ ${yk} ${sid} ${sentId} — 이미 적용됨(${JSON.stringify(String(to).slice(-12))}), 건너뛴다`);
+    continue;
+  }
   const cnt = t.split(from).length - 1;
   if (cnt !== 1) { console.log(`  🔴 ${sentId} — ${JSON.stringify(from)} 가 ${cnt}번 나온다(1번이어야 함)`); bad = true; continue; }
   const nextT = t.replace(from, to);
@@ -121,6 +148,7 @@ for (const [yk, sid, sentId, from, to, why] of SPEC) {
         if (norm(sp.sent_id) !== norm(sentId)) continue;
         const st = flat(sp.text);
         if (!st.includes(from)) continue;
+        if (opts.noSpanSync) continue;   // 메타 표시 덧붙이기 — 근거 어구는 그대로 둔다
         spanFix.push([sp, st.replace(from, to), q.id, c.num]);
       }
 
@@ -155,7 +183,11 @@ if (APPLY && n) {
   // 되읽어 확인한다 — 「적용」이라 찍고 안 써진 사고가 있었다(D-120). S-02
   const back = JSON.parse(fs.readFileSync(DATA, "utf8"));
   let miss = 0;
-  for (const [yk, sid, sentId, from, to] of SPEC) {
+  for (const [yk, sid, sentId, from, to, , opts2 = {}] of SPEC) {
+    // 🔴 **덧붙이기 수리**(to 가 from 을 품는 경우, 예 「…있으리라」 → 「…있으리라 <제9수>」)에서는
+    //   from 이 문장에 그대로 남는 것이 정상이다. 「from 이 사라졌는가」로 보면 거짓 실패가 난다.
+    //   D-168 ⑨ 에서 실제로 4건이 그렇게 걸렸다 — 데이터는 멀쩡한데 도구가 실패라고 찍었다.
+    const append = String(to).includes(String(from));
     if (ONLY && sid !== ONLY) continue;
     let set = null;
     for (const sec of ["reading", "literature"]) {
@@ -165,12 +197,12 @@ if (APPLY && n) {
     const sent = (set?.sents || []).find((x) => String(x.id) === sentId);
     if (!sent) continue;
     const t = flat(sent.t);
-    if (t.includes(from) || !t.includes(to)) { console.log(`  🔴 되읽기 실패: ${sentId} 본문`); miss++; }
+    if ((!append && t.includes(from)) || !t.includes(to)) { console.log(`  🔴 되읽기 실패: ${sentId} 본문`); miss++; }
     for (const q of set.questions || [])
       for (const c of q.choices || [])
         for (const sp of c.cs_spans || []) {
           if (norm(sp.sent_id) !== norm(sentId)) continue;
-          if (flat(sp.text).includes(from)) { console.log(`  🔴 되읽기 실패: Q${q.id}#${c.num} cs_span 에 옛 형태 잔존`); miss++; }
+          if (!append && !opts2.noSpanSync && flat(sp.text).includes(from)) { console.log(`  🔴 되읽기 실패: Q${q.id}#${c.num} cs_span 에 옛 형태 잔존`); miss++; }
           if (!t.includes(flat(sp.text))) { console.log(`  🔴 되읽기 실패: Q${q.id}#${c.num} cs_span 이 문장에서 안 잡힌다`); miss++; }
         }
   }
