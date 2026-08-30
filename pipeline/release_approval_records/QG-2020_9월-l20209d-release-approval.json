@@ -1,0 +1,94 @@
+{
+  "yearKey": "2020_9월",
+  "setId": "l20209d",
+  "composite_key": "2020_9월::l20209d",
+  "approved_at": "2026-08-30",
+  "approved_by": "대표",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2020_9월/2020_9월_정답.pdf)",
+    "command": "node pipeline/answer_key_audit.mjs --expect 2020_9월",
+    "checked": "questionType 기준 정답 특정 — 42·43·44·45번 전 문항",
+    "answer_key": {
+      "42": 2,
+      "43": 5,
+      "44": 3,
+      "45": 1
+    },
+    "answer_key_mismatch": 0,
+    "expect_confirmed": "✅ 2020_9월 대조됨 — 정답표가 실제로 쓰였다(--expect 가드 통과)",
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2020_9월",
+    "scope": "연도 스코프 (판정 305② 준수 — --scope=release 단독 실행 금지)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 0,
+    "result": "release_ready — CRITICAL 0건",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "bogi_shape_check": {
+    "note": "bogi 객체형이면 gate3 화면 실측 필수 (S-07 · r20246c 백지 크래시 전례)",
+    "shapes": {
+      "없음": 3,
+      "문자열": 1
+    },
+    "result": "객체형 없음 — 해당 없음",
+    "pass": true
+  },
+  "gate3_evidence": {
+    "method": "심사관 화면 실측",
+    "verified_at": "2026-08-30",
+    "detail": "Q42#1 형광펜이 s1 에 실제로 점등되는 것을 확인. pat L4 배지 표시 확인.",
+    "console_error_count": 0,
+    "pass": true
+  },
+  "diagnostic_axes": {
+    "note": "release_diag 13축 + D-146~D-157 신설 축 4종. 수치는 데이터에서 읽어 채웠다",
+    "tool": "node pipeline/release_diag.mjs \"2020_9월::l20209d\"",
+    "①삼충실도": "선지 20 · 해설 누락 0 · 근거 누락 0 · pat 누락 0 (어휘 pat=V 면제)",
+    "②근거정합": "cs_spans 40건 · 끊긴 cs_id 0건",
+    "③setId충돌": "복합 키(D-113 ①) 사용 — yearKey::setId",
+    "④구간표시": "[A] 류 라벨 미사용 · annotations 0",
+    "⑤글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "⑥각주": "본문 * 과 각주 문장 정합",
+    "⑦문항형식": "문항 4 · 5지 · 정답 특정 4/4",
+    "⑧분리게이트": "node pipeline/build_split.mjs --verify — LIVE 267세트 · 필드 69,439개 대조 누락 0",
+    "⑨마커고아": "본문 마커 6개 · 고아 0",
+    "⑩발문마커소실": "0 (stem_head_audit 목록에 없음)",
+    "⑪인용부호소실": "0",
+    "⑫결함표지잔존": "_pat_error · _ok_analysis_mismatch 0",
+    "⑬결론줄": "기호 어긋남 0 · 기호 없음 0 · [라벨]↔pat 어긋남 0 (D-163 ② 재설계 기준)",
+    "신설-본문결손": "node pipeline/passage_gap_audit.mjs \"2020_9월::l20209d\" — 결손 0 (D-146)",
+    "신설-형광펜실효": "node pipeline/cs_effect_audit.mjs \"2020_9월::l20209d\" — 형광펜 0개 선지 0건 (D-147)",
+    "신설-선지오염": "node pipeline/choice_contamination_audit.mjs --year 2020_9월 — 0쌍 (D-149)",
+    "신설-문항대장": "node pipeline/question_roster_audit.mjs --year 2020_9월 — 구간 누락·유령·중복 0 (D-151)",
+    "신설-줄거리각주오염": "node pipeline/source_contamination_audit.mjs --year 2020_9월 — 0쌍 (D-157)"
+  },
+  "repair_record": "D-162 Q42#1 근거 교체 [s16] → [s1, s15, s17]. 기존 근거가 s16「(중략)」 하나뿐이라 화면에서 형광펜이 한 개도 안 켜지던 자리다(CS_ALL_NONHIGHLIGHTABLE). 심사관 원문 어구 3개가 해당 문장에 실재하는지 기계 대조로 확인한 뒤 적용했다. pat L4 유지.",
+  "title_record": {
+    "title": "이청준, ｢자서전들 쓰십시다｣",
+    "range": "42~45번",
+    "note": "변경 없음 — 기존 값 그대로"
+  },
+  "cite_audit_record": {
+    "method": "본문 마지막 문장(author sentType) 확인",
+    "last_sent_tail": "- 이청준, ｢자서전들 쓰십시다｣ -",
+    "result": "지문 안 작가·제목 cite 표기 있음",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "annotations_snapshot": {
+    "count": 0,
+    "types": {},
+    "source": "public/data/annotations.json — F-25 2단계 이후 화면 렌더 단일 원천"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2020_9월::l20209d",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2020_9%EC%9B%94&set=l20209d&q=42&mode=study",
+  "limitation_note": "S-18 — 「전 축 통과」는 **알려진 유형이 없다**는 뜻이지 결함이 없다는 뜻이 아니다. 진단 축 목록은 지금까지 터진 사고의 역산이라, 아직 안 터진 유형은 애초에 목록에 없다. D-145~D-157 사이에 「기존 축이 못 보는 결함」이 다섯 번 연속 새로 나왔다.",
+  "comment": "배치 B 회차 단위 처리(D-160~D-163). 4관문 전부 충족 — gate0 정답표 전수 대조 · gate1 quality_gate 2020_9월 CRITICAL 0 · gate3 심사관 화면 실측(2026-08-30) · 대표 승인(2026-08-30). 노출 대기."
+}
