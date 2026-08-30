@@ -16,7 +16,7 @@
 //   ⑪ 인용부호 소실  ⑩ 중 마커가 아니라 인용부호·상자가 빠진 형태
 //
 //   ⑫ 결함 표지 잔존  _pat_error · _ok_analysis_mismatch 가 남아 있는가 (D-133 ③)
-//   ⑬ 결론줄        ok:false 인데 ✅ 이거나, 결론줄이 세트의 표준 표기가 아닌가 (D-133 ③)
+//   ⑬ 결론줄        ok:false 인데 ✅ 이거나, 결론줄 [라벨] 이 pat 과 어긋나는가 (D-133 ③ · D-163 ② 보정)
 //
 // 사용: node pipeline/release_diag.mjs <yearKey>::<setId> [...]  [--md]
 
@@ -301,22 +301,35 @@ for (const key of targets) {
       if (!line.includes(want) || line.includes(nope)) { wrongMark.push(`Q${q.id}#${c.num}`); continue; }
       if (c.ok === false) tally[line] = (tally[line] || 0) + 1;
     }
-    const std = Object.entries(tally).sort((a2, b2) => b2[1] - a2[1])[0];
-    if (std && std[1] >= 2)
-      for (const q of qs) for (const c of q.choices || []) {
-        if (c.ok !== false || !flat(c.analysis).trim()) continue;
-        const line = concl(c);
-        if (line == null || !line.includes("❌") || line.includes("✅")) continue;
-        if (line !== std[0]) odd.push(`Q${q.id}#${c.num}`);
-      }
-    const n13 = wrongMark.length + noMark.length;
-    rows.push(["⑬ 결론줄", n13 ? `🔴 ${n13}` : odd.length ? `⚠ ${odd.length}` : "✅ 0",
-      `기호 어긋남 ${wrongMark.length} · 기호 없음 ${noMark.length}`
-      + (std ? ` · 표준 표기 ${JSON.stringify(std[0].slice(0, 26))} ${std[1]}회` : "")
-      + (odd.length ? ` · 비표준 ${odd.join(", ")}` : "")]);
+    // ★ D-163 ② 「세트 최빈 문구와 다름」 판정을 **폐기**했다
+    //   전 데이터 실측: ok:false 결론줄이 **일반형 1,372종 · 보기형 412종 · 서술형 112종**이고,
+    //   세 유형의 최빈이 전부 「❌ 지문과 어긋나는 부적절한 진술」로 같다.
+    //   유형별로 갈라도 달라지는 게 없고, 문구가 원래 자유롭게 쓰인다.
+    //   실제로 l2019c Q36#5(서술상 특징)·Q38#4(<보기>)는 문구가 문항 유형에 정확히 맞는데도
+    //   「비표준」으로 걸렸다 — 축이 정상을 결함으로 부른 것이다(D-162 ③ 판정).
+    //
+    //   대신 **결론줄 끝 [라벨] ↔ pat 일치**를 본다. 이건 실측 준수율이 높다:
+    //   라벨이 붙은 612건 중 **592건(96.7%) 일치** — 어긋나는 20건이 진짜 결함이다.
+    //   (대부분 어휘 문항인데 pat=V 이면서 라벨은 R 계열로 붙은 자리다)
+    const LAB = { "사실 왜곡": "R1", "인과·관계 전도": "R2", "과잉 추론": "R3", "개념 혼합": "R4", "어휘": "V",
+      "표현·형식 오독": "L1", "정서·태도 오독": "L2", "주제·의미 과잉": "L3", "구조·맥락 오류": "L4", "보기 대입 오류": "L5" };
+    let labN = 0;
+    for (const q of qs) for (const c of q.choices || []) {
+      if (c.ok !== false || !flat(c.analysis).trim()) continue;
+      const line = concl(c);
+      if (line == null || !line.includes("❌") || line.includes("✅")) continue;
+      const m = line.match(/\[([^\]]+)\]\s*$/);
+      if (!m || !(m[1] in LAB)) continue;      // 라벨이 없으면 판정하지 않는다
+      labN++;
+      if (LAB[m[1]] !== String(c.pat || "").trim()) odd.push(`Q${q.id}#${c.num}(라벨 ${LAB[m[1]]} ≠ pat ${c.pat || "없음"})`);
+    }
+    const n13 = wrongMark.length + noMark.length + odd.length;
+    rows.push(["⑬ 결론줄", n13 ? `🔴 ${n13}` : "✅ 0",
+      `기호 어긋남 ${wrongMark.length} · 기호 없음 ${noMark.length} · 라벨↔pat 어긋남 ${odd.length}`
+      + ` (라벨 보유 ${labN}건)`]);
     if (wrongMark.length) detail.push(`- **결론 기호가 ok 와 어긋난다**: ${wrongMark.join(", ")}`);
     if (noMark.length) detail.push(`- **결론 기호가 아예 없다**: ${noMark.join(", ")}`);
-    if (odd.length) detail.push(`- 결론줄이 세트 표준 표기와 다르다: ${odd.join(", ")} — 판정 사항이다`);
+    if (odd.length) detail.push(`- **결론줄 [라벨] 이 pat 과 어긋난다**: ${odd.join(", ")}`);
   }
 
   say(`> 노출 ${live ? "🔴 LIVE" : "미노출"} · ${sec} · 문항 ${qs.map((q) => q.id).join(",")}`);
