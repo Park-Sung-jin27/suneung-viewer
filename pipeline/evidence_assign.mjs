@@ -146,6 +146,52 @@ const SPEC = [
        + "세 어구 전부 해당 문장에 실재함을 기계 대조로 확인했다. "
        + "기존 s16 은 (중략)이라 omission — 형광펜이 안 켜져 제외한다. pat L4 유지",
   },
+
+  // ── D-167 ①② l2024d Q33 — 구간 밖까지 물던 cs_ids 를 좁힌다 (심사관 판정) ──
+  //   annotations 정박은 정확하다: [A]=s2~s3 · [B]=s_x1~s_x6 · [C]=s_x11~s_x15
+  //   그런데 선지 4개가 s_x1~s_x17 을 통째로 물어 **[A][B][C] 전체가 칠해졌다.**
+  //   선지가 [B]만 말하는데 [C] 구간까지 형광펜이 켜지면 학생이 어디를 봐야 할지 모른다.
+  {
+    yk: "2024수능", setId: "l2024d", qId: 33, num: 2, replace: true,
+    csIds: ["l2024ds_x1", "l2024ds_x2", "l2024ds_x3", "l2024ds_x4", "l2024ds_x5", "l2024ds_x6"],
+    // 🔴 기존 cs_spans 3건을 **그대로 옮겨 적는다** — replace 모드는 통째로 덮어쓰므로
+    //    빈 배열을 주면 멀쩡한 형광펜 어구가 지워진다(적용 전 dry-run 에서 발견).
+    csSpans: [
+      { sent_id: "l2024ds_x4", text: "나라께서 보시고서", occurrence: 1 },
+      { sent_id: "l2024ds_x5", text: "너희 더위 어려우니 먼저 나가 쉬라시니", occurrence: 1 },
+      { sent_id: "l2024ds_x6", text: "곡배하고 사퇴하니 천은이 망극하다", occurrence: 1 },
+    ],
+    why: "선지가 [B]만 말한다(「신하들의 고충을 헤아리는 임금의 배려」). 기존 cs_spans 3건은 전부 새 범위 안이라 그대로 보존한다. [B] 정박 범위가 s_x1~s_x6 이므로 그 여섯 문장으로 좁힌다. 기존 17개는 [C] 구간(s_x11~s_x15)과 구간 밖(s_x7~s_x10·s_x16·s_x17)까지 물고 있었다",
+  },
+  {
+    yk: "2024수능", setId: "l2024d", qId: 33, num: 3, replace: true,
+    csIds: ["l2024ds_x11", "l2024ds_x12", "l2024ds_x13", "l2024ds_x14", "l2024ds_x15"],
+    csSpans: [   // 기존 2건 보존 — 둘 다 새 범위 안이다
+      { sent_id: "l2024ds_x12", text: "처자식들 나를 보고 죽었던 이 고쳐 본 듯", occurrence: 1 },
+      { sent_id: "l2024ds_x13", text: "기쁘기 극한지라 어리석은 듯 앉았구나", occurrence: 1 },
+    ],
+    why: "선지가 [C]만 말한다(「가족들의 모습」). [C] 정박 범위 s_x11~s_x15 로 좁힌다. 해설 📌 가 인용한 「처자식들 나를 보고… / 기쁘기 극한지라…」가 s_x12·s_x13 으로 이 범위 안이다. 정답 선지(ok:false · pat L2)라 형광펜이 특히 정확해야 한다",
+  },
+  {
+    yk: "2024수능", setId: "l2024d", qId: 33, num: 4, replace: true,
+    csIds: ["l2024ds2", "l2024ds_x1", "l2024ds_x2", "l2024ds_x3", "l2024ds_x4", "l2024ds_x5", "l2024ds_x6"],
+    csSpans: [
+      { sent_id: "l2024ds2", text: "아무것도 아니 뵈고", occurrence: 1 },
+      { sent_id: "l2024ds_x2", text: "끓는 땅에 엎디어서 말씀을 여쭈오니", occurrence: 1 },
+      { sent_id: "l2024ds_x3", text: "속에서 불이 나고", occurrence: 1 },
+    ],
+    why: "선지가 [A]와 [B] 둘을 말한다. [A] 대표 문장 s2 + [B] 전체 s_x1~s_x6. "
+       + "cs_spans 는 해설 📌 가 이미 짚은 어구 그대로 넣는다 — [A] 「아무것도 아니 뵈고」 · "
+       + "[B] 「끓는 땅에 엎디어서 말씀을 여쭈오니」 「속에서 불이 나고」. "
+       + "세 어구가 해당 문장에 글자 그대로 있는지 기계 대조로 확인했다(3/3). "
+       + "cs_spans 가 없으면 문장이 통째로 칠해진다 — 이 선지가 그 사례였다(D-167 ②)",
+  },
+  {
+    yk: "2024수능", setId: "l2024d", qId: 33, num: 5, replace: true,
+    csIds: ["l2024ds3", "l2024ds_x11", "l2024ds_x12", "l2024ds_x13", "l2024ds_x14", "l2024ds_x15"],
+    csSpans: [],
+    why: "선지가 [A]와 [C] 둘을 말한다. [A] 쪽 근거는 해설 📌 의 「대풍이 일어나서 / 태산 같은 성난 물결」이라 s3 이 맞고(기존 값 유지), [C] 는 정박 범위 s_x11~s_x15 로 좁힌다",
+  },
 ];
 
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
