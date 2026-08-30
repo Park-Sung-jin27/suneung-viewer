@@ -4176,6 +4176,14 @@
         "sentFrom": "l2019as18",
         "sentTo": "l2019as20"
       }
+    ],
+    "r2019b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "r2019bs10",
+        "sentTo": "r2019bs10"
+      }
     ]
   },
   "2016수능A": {
