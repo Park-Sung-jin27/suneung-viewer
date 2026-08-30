@@ -159,6 +159,16 @@
         { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" },
         { "key": "Cache-Control", "value": "private, no-store, max-age=0" }
       ]
+    },
+    {
+      "source": "/report/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" },
+        { "key": "Cache-Control", "value": "private, no-store, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
     }
   ],
   "redirects": [
@@ -321,6 +331,14 @@
     {
       "source": "/fortune/(.*)",
       "destination": "https://jippi-saju.netlify.app/fortune/$1"
+    },
+    {
+      "source": "/report/",
+      "destination": "https://jippi-saju.netlify.app/report/"
+    },
+    {
+      "source": "/report/(.*)",
+      "destination": "https://jippi-saju.netlify.app/report/$1"
     },
     { "source": "/room", "destination": "https://jippi-saju.netlify.app/room" },
     {
