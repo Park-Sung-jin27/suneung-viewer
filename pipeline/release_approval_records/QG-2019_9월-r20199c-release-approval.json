@@ -1,0 +1,98 @@
+{
+  "yearKey": "2019_9월",
+  "setId": "r20199c",
+  "composite_key": "2019_9월::r20199c",
+  "approved_at": "2026-08-30",
+  "approved_by": "대표",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2019_9월/2019_9월_정답.pdf)",
+    "command": "node pipeline/answer_key_audit.mjs --expect 2019_9월",
+    "checked": "questionType 기준 정답 특정 — 33·34·35·36·37·38번 전 문항",
+    "answer_key": {
+      "33": 5,
+      "34": 4,
+      "35": 2,
+      "36": 1,
+      "37": 4,
+      "38": 3
+    },
+    "answer_key_mismatch": 0,
+    "expect_confirmed": "✅ 2019_9월 대조됨 — 정답표 45문항이 실제로 쓰였다(--expect 가드 통과)",
+    "note": "--expect 없이 돌리면 정답표가 없는 회차를 조용히 건너뛰고 「0건」이 뜬다 (D-140 ①)",
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2019_9월",
+    "scope": "연도 스코프 (판정 305② 준수 — --scope=release 단독 실행 금지)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 0,
+    "result": "release_ready — CRITICAL 0건",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "bogi_shape_check": {
+    "note": "bogi 객체형이면 gate3 화면 실측 필수 (S-07 · r20246c 백지 크래시 전례)",
+    "shapes": {
+      "문자열": 1
+    },
+    "result": "객체형 없음 — 해당 없음",
+    "pass": true
+  },
+  "gate3_evidence": {
+    "method": "심사관 화면 실측",
+    "verified_at": "2026-08-30",
+    "detail": "박스 표지 「벤야민이 말한 근대 도시」가 지문 s40 에 렌더된다. 37번 발문은 박스 없이 텍스트로 표시되며 공백 정리 후 「근대 도시를」로 붙어 나온다. Q36#1 형광펜이 s31 에 켜진다.",
+    "console_error_count": 0,
+    "pass": true
+  },
+  "diagnostic_axes": {
+    "note": "release_diag 13축 + D-146~D-157 신설 축 4종. 수치는 데이터에서 읽어 채웠다",
+    "tool": "node pipeline/release_diag.mjs \"2019_9월::r20199c\"",
+    "①삼충실도": "선지 30 · 해설 누락 0 · 근거 누락 0 · pat 누락 0 (어휘 pat=V 4건 면제)",
+    "②근거정합": "cs_spans 44건 · 어긋남 44 · 끊긴 cs_id 0건",
+    "③setId충돌": "복합 키(D-113 ①) 사용 — yearKey::setId",
+    "④구간표시": "annotations 1건 (box:1)",
+    "⑤글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "⑥각주": "본문 * 과 각주 문장 정합",
+    "⑦문항형식": "문항 6 · 5지 6/6 · 정답 특정 6/6",
+    "⑧분리게이트": "node pipeline/build_split.mjs --verify — LIVE 273세트 · 필드 71,340개 대조 누락 0",
+    "⑨마커고아": "본문 마커 ↔ 문항 마커 정합 · 고아 0",
+    "⑩발문마커소실": "0 (stem_head_audit 목록에 없음)",
+    "⑪인용부호소실": "0",
+    "⑫결함표지잔존": "_pat_error · _ok_analysis_mismatch 0",
+    "⑬결론줄": "기호 어긋남 0 · [라벨]↔pat 어긋남 0 (라벨 보유 1건 · D-163 ② 재설계 기준)",
+    "신설-본문결손": "node pipeline/passage_gap_audit.mjs \"2019_9월::r20199c\" — 결손 0 (D-146)",
+    "신설-형광펜실효": "node pipeline/cs_effect_audit.mjs --year 2019_9월 — 형광펜 0개 선지 0건 · 비-하이라이트 cs_id 0건 (D-147)",
+    "신설-선지오염": "node pipeline/choice_contamination_audit.mjs --year 2019_9월 — 0쌍 (D-149)",
+    "신설-문항대장": "node pipeline/question_roster_audit.mjs --year 2019_9월 — 구간 누락·유령·중복 0 (D-151)",
+    "신설-줄거리각주오염": "node pipeline/source_contamination_audit.mjs --year 2019_9월 — 0쌍 (D-157)",
+    "신설-근거공백": "node pipeline/evidence_gap_survey.mjs — 이 세트 근거 공백 0건 (D-174)"
+  },
+  "repair_record": "D-171 B 근거 8선지(Q33#1~#4·Q34#2·#5·Q35#2·Q36#1) + Q36#1 pat null→L5 + 해설 📌 라벨 맞바꿈(첫 인용이 지문 s30~31, 둘째가 <보기>인데 반대로 적혀 있었다) + 결론줄 라벨 [보기 대입 오류②]→[보기 대입 오류] + 지문 박스 표지 1건. D-172 ⑥ Q37 발문 공백 정리(박스 제거 흔적).",
+  "title_record": {
+    "title": "근대 도시의 삶과 영화에 관한 벤야민의 견해",
+    "range": "33~38번"
+  },
+  "annotations_snapshot": {
+    "count": 1,
+    "types": {
+      "box": 1
+    },
+    "source": "public/data/annotations.json — F-25 2단계 이후 화면 렌더 단일 원천"
+  },
+  "cite_audit_record": {
+    "method": "본문 마지막 문장 확인",
+    "last_sent_type": "body",
+    "last_sent_tail": "이렇게 벤야민의 견해는 근대 도시에 대한 일면적인 시선을 ⓔ 바로잡는 데 도움을 준다.",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2019_9월::r20199c",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2019_9%EC%9B%94&set=r20199c&q=33&mode=study",
+  "limitation_note": "S-18 — 「전 축 통과」는 **알려진 유형이 없다**는 뜻이지 결함이 없다는 뜻이 아니다. 진단 축 목록은 지금까지 터진 사고의 역산이라, 아직 안 터진 유형은 애초에 목록에 없다. D-145~D-157 사이에 「기존 축이 못 보는 결함」이 다섯 번 연속 새로 나왔고, D-171~D-175 에서도 발주 어구의 원문자 누락·발문 박스 렌더 경로 부재·정의에 없는 pat 값이 새로 나왔다. ★ 이 세트 고유 한계 — 37번 발문의 박스 표지를 **넣지 못했다**. 프론트가 아는 annotations target 이 passage·bogi·choice 뿐이라 발문에 박스를 그리는 경로가 없다(F-44 로 이관). 데이터에 넣으면 화면에 안 나오는 조용한 실패가 된다.",
+  "comment": "2019_9월 팩 3호(D-171~D-173) + 마감(D-175). 4관문 전부 충족 — gate0 정답표 45문항 전수 대조(불일치 0) · gate1 quality_gate 2019_9월 CRITICAL 0 · gate3 심사관 화면 실측(2026-08-30) · 대표 승인(2026-08-30). 노출 대기."
+}

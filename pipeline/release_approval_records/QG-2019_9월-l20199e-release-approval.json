@@ -1,0 +1,95 @@
+{
+  "yearKey": "2019_9월",
+  "setId": "l20199e",
+  "composite_key": "2019_9월::l20199e",
+  "approved_at": "2026-08-30",
+  "approved_by": "대표",
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2019_9월/2019_9월_정답.pdf)",
+    "command": "node pipeline/answer_key_audit.mjs --expect 2019_9월",
+    "checked": "questionType 기준 정답 특정 — 42·43·44·45번 전 문항",
+    "answer_key": {
+      "42": 2,
+      "43": 4,
+      "44": 5,
+      "45": 1
+    },
+    "answer_key_mismatch": 0,
+    "expect_confirmed": "✅ 2019_9월 대조됨 — 정답표 45문항이 실제로 쓰였다(--expect 가드 통과)",
+    "note": "--expect 없이 돌리면 정답표가 없는 회차를 조용히 건너뛰고 「0건」이 뜬다 (D-140 ①)",
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2019_9월",
+    "scope": "연도 스코프 (판정 305② 준수 — --scope=release 단독 실행 금지)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 0,
+    "result": "release_ready — CRITICAL 0건",
+    "note": "D-171 적용 직후 이 세트만 CRITICAL 6건(Q42#1·#3·#5 를 두 축이 이중 계상)이었다. D-172 로 0 이 됐다.",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "bogi_shape_check": {
+    "note": "bogi 객체형이면 gate3 화면 실측 필수 (S-07 · r20246c 백지 크래시 전례)",
+    "shapes": {
+      "문자열": 4
+    },
+    "result": "객체형 없음 — 해당 없음",
+    "pass": true
+  },
+  "gate3_evidence": {
+    "method": "심사관 화면 실측",
+    "verified_at": "2026-08-30",
+    "detail": "재분할 38문장이 화면에서 원본과 글자수 완전 일치로 렌더된다. 문단 흐름이 끊기지 않고, 42~45번 20선지 전부 형광펜이 켜진다.",
+    "console_error_count": 0,
+    "pass": true
+  },
+  "diagnostic_axes": {
+    "note": "release_diag 13축 + D-146~D-157 신설 축 4종. 수치는 데이터에서 읽어 채웠다",
+    "tool": "node pipeline/release_diag.mjs \"2019_9월::l20199e\"",
+    "①삼충실도": "선지 20 · 해설 누락 0 · 근거 누락 0 · pat 누락 0",
+    "②근거정합": "cs_spans 0건 · 어긋남 0 · 끊긴 cs_id 0건",
+    "③setId충돌": "복합 키(D-113 ①) 사용 — yearKey::setId",
+    "④구간표시": "[A] 류 라벨을 쓰지 않는다 · annotations 0건",
+    "⑤글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "⑥각주": "본문 * 과 각주 문장 정합",
+    "⑦문항형식": "문항 4 · 5지 4/4 · 정답 특정 4/4",
+    "⑧분리게이트": "node pipeline/build_split.mjs --verify — LIVE 273세트 · 필드 71,340개 대조 누락 0",
+    "⑨마커고아": "본문 마커 ↔ 문항 마커 정합 · 고아 0",
+    "⑩발문마커소실": "0 (stem_head_audit 목록에 없음)",
+    "⑪인용부호소실": "0",
+    "⑫결함표지잔존": "_pat_error · _ok_analysis_mismatch 0",
+    "⑬결론줄": "기호 어긋남 0 · [라벨]↔pat 어긋남 0 (라벨 보유 0건 · D-163 ② 재설계 기준)",
+    "신설-본문결손": "node pipeline/passage_gap_audit.mjs \"2019_9월::l20199e\" — 결손 0 (D-146)",
+    "신설-형광펜실효": "node pipeline/cs_effect_audit.mjs --year 2019_9월 — 형광펜 0개 선지 0건 · 비-하이라이트 cs_id 0건 (D-147)",
+    "신설-선지오염": "node pipeline/choice_contamination_audit.mjs --year 2019_9월 — 0쌍 (D-149)",
+    "신설-문항대장": "node pipeline/question_roster_audit.mjs --year 2019_9월 — 구간 누락·유령·중복 0 (D-151)",
+    "신설-줄거리각주오염": "node pipeline/source_contamination_audit.mjs --year 2019_9월 — 0쌍 (D-157)",
+    "신설-근거공백": "node pipeline/evidence_gap_survey.mjs — 이 세트 근거 공백 0건 (D-174)"
+  },
+  "repair_record": "D-171 A 본문 재분할 9→38문장 (S-11 경계 규칙 · 첫 조각 id 보존 · 뒤 조각 s901~s929 · 본문 글자 공백 제외 1,892→1,892 완전 일치) + cs_ids 재정박 14선지. D-172 ①~④ Q42#1[s918]·#3[s912]·#5[s905 s906] 근거 + 해설 📌 를 「작품 전체 서술 방식」류에서 실제 어구 인용으로 교체. D-173 ①~③ Q43#4·Q45#4·Q45#5 근거. → 20선지 근거 공백 0/20 · quality_gate CRITICAL 6→0",
+  "title_record": {
+    "title": "비 오는 길",
+    "range": "42~45번"
+  },
+  "annotations_snapshot": {
+    "count": 0,
+    "types": {},
+    "source": "public/data/annotations.json — F-25 2단계 이후 화면 렌더 단일 원천"
+  },
+  "cite_audit_record": {
+    "method": "본문 마지막 문장 확인",
+    "last_sent_type": "author",
+    "last_sent_tail": "- 최명익, 「비 오는 길」 -",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2019_9월::l20199e",
+    "file": "src/dataLoader.js",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2019_9%EC%9B%94&set=l20199e&q=42&mode=study",
+  "limitation_note": "S-18 — 「전 축 통과」는 **알려진 유형이 없다**는 뜻이지 결함이 없다는 뜻이 아니다. 진단 축 목록은 지금까지 터진 사고의 역산이라, 아직 안 터진 유형은 애초에 목록에 없다. D-145~D-157 사이에 「기존 축이 못 보는 결함」이 다섯 번 연속 새로 나왔고, D-171~D-175 에서도 발주 어구의 원문자 누락·발문 박스 렌더 경로 부재·정의에 없는 pat 값이 새로 나왔다. ★ 이 세트 고유 한계 — 본문을 9문장에서 38문장으로 **재분할했다**. 글자는 완전 일치를 검산했지만 **문장 경계 자체가 원본 문단 구분과 맞는지는 데이터로 검산할 수 없다**(S-11 경계 규칙은 종결부호 기준이지 원본 조판 기준이 아니다). gate3 화면 실측이 이 세트에서 특히 중요한 이유다.",
+  "comment": "2019_9월 팩 3호(D-171~D-173) + 마감(D-175). 4관문 전부 충족 — gate0 정답표 45문항 전수 대조(불일치 0) · gate1 quality_gate 2019_9월 CRITICAL 0 · gate3 심사관 화면 실측(2026-08-30) · 대표 승인(2026-08-30). 노출 대기."
+}
