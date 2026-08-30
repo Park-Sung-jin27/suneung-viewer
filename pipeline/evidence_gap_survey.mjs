@@ -21,6 +21,13 @@
 //   · V(어휘)는 **면제 대상**이라 따로 뺀다 — 어휘 문항은 근거 문장을 걸지 않는 것이 정상이다
 //   · null 도 따로 본다 — pat 이 없으면 quality_gate 가 애초에 볼 수 없는 자리다
 //
+// ★ 「📌 인용 보유」 컬럼 (D-175 ③)
+//   근거가 빈 선지 중에도 **해설이 이미 지문을 인용하고 있는 것**이 있다.
+//   D-173 의 l20199e 3선지가 그랬다 — 📌 가 어구를 그대로 물고 있어서
+//   cs_ids 만 걸면 끝났다. 인용이 없는 자리는 어구부터 새로 찾아야 한다.
+//   **수리 난이도가 다르다.** 이 컬럼이 그 갈래를 미리 보여 준다.
+//   판정·수리는 하지 않는다 — 9/3 판정 후 별건이다.
+//
 // 사용:
 //   node pipeline/evidence_gap_survey.mjs              LIVE 전수 (기본)
 //   node pipeline/evidence_gap_survey.mjs --all        전 396세트
@@ -57,7 +64,7 @@ if (mReq.some((l) => l.join() !== CRIT_PATS.join()))
 const NAME = { R1: "사실 왜곡", R2: "인과·관계 전도", R3: "과잉 추론", R4: "개념 혼합", V: "어휘",
   L1: "표현·형식 오독", L2: "정서·태도 오독", L3: "주제·의미 과잉", L4: "구조·맥락 오류", L5: "보기 대입 오류" };
 
-const byPat = new Map(), bySet = new Map();
+const byPat = new Map(), bySet = new Map(), cited = new Map();
 let sets = 0, choices = 0, wrong = 0;
 for (const [yk, v] of Object.entries(data))
   for (const sec of ["reading", "literature"])
@@ -73,10 +80,13 @@ for (const [yk, v] of Object.entries(data))
           if ((c.cs_ids || []).length) continue;
           const p = c.pat == null || c.pat === "" ? "null" : String(c.pat).trim();
           byPat.set(p, (byPat.get(p) || 0) + 1);
-          if (!bySet.has(key)) bySet.set(key, { live: REL.has(key), n: 0, pats: new Map(), where: [] });
+          if (!bySet.has(key)) bySet.set(key, { live: REL.has(key), n: 0, cited: 0, pats: new Map(), where: [] });
           const b = bySet.get(key);
           b.n++; b.pats.set(p, (b.pats.get(p) || 0) + 1);
           if (b.where.length < 6) b.where.push(`Q${q.id}#${c.num}(${p})`);
+          // 📌 인용 보유 — 해설이 지문을 큰따옴표로 인용하고 있는가
+          const quoted = /["“”「」‘’]/.test(String(c.analysis || ""));
+          if (quoted) { cited.set(p, (cited.get(p) || 0) + 1); b.cited++; }
         }
     }
 
@@ -104,17 +114,25 @@ console.log("");
 
 console.log("## pat 별 집계");
 console.log("");
-console.log("| pat | 이름 | 건수 | 비중 | quality_gate 가 근거를 요구하나 |");
-console.log("|---|---|--:|--:|---|");
+console.log("| pat | 이름 | 건수 | 비중 | 📌 인용 보유 | quality_gate 가 근거를 요구하나 |");
+console.log("|---|---|--:|--:|--:|---|");
 const order = ["L1", "L2", "L3", "L4", "L5", "R1", "R2", "R3", "R4"];
 for (const p of order) {
   const n = byPat.get(p) || 0;
   if (!n) continue;
   const caught = CRIT_PATS.includes(p);
-  console.log(`| \`${p}\` | ${NAME[p]} | **${n.toLocaleString()}** | ${(n / total * 100).toFixed(1)}% | ${caught ? "🔴 **예 — CRITICAL 로 잡힌다**" : "— **아니오, 면제**"} |`);
+  const q = cited.get(p) || 0;
+  console.log(`| \`${p}\` | ${NAME[p]} | **${n.toLocaleString()}** | ${(n / total * 100).toFixed(1)}% | **${q}** (${(q / n * 100).toFixed(0)}%) | ${caught ? "🔴 **예 — CRITICAL 로 잡힌다**" : "— **아니오, 면제**"} |`);
 }
-console.log(`| \`V\` | 어휘 | ${nV.toLocaleString()} | ${(nV / total * 100).toFixed(1)}% | — **아니오, 면제** |`);
-console.log(`| \`null\` | pat 없음 | ${nNull.toLocaleString()} | ${(nNull / total * 100).toFixed(1)}% | — **아니오, 면제** |`);
+console.log(`| \`V\` | 어휘 | ${nV.toLocaleString()} | ${(nV / total * 100).toFixed(1)}% | ${cited.get("V") || 0} | — **아니오, 면제** |`);
+console.log(`| \`null\` | pat 없음 | ${nNull.toLocaleString()} | ${(nNull / total * 100).toFixed(1)}% | ${cited.get("null") || 0} | — **아니오, 면제** |`);
+console.log("");
+const citedReal = (cited.get("R3") || 0) + (cited.get("L3") || 0);
+const realGap = total - nV - nNull;
+console.log(`> **📌 인용 보유 부분집합** — 면제·null 뺀 실질 공백 ${realGap}건 중 **${citedReal}건(${(citedReal / realGap * 100).toFixed(0)}%)** 은`);
+console.log("> 해설이 이미 지문을 인용하고 있다. D-173 의 l20199e 3선지처럼 **cs_ids 만 걸면 되는 자리**다.");
+console.log(`> 나머지 ${realGap - citedReal}건은 어구부터 새로 찾아야 한다 — 수리 난이도가 다르다.`);
+console.log("> **수리는 하지 않는다.** 9/3 판정 후 별건이다(D-175 ③ — R3·L3 일괄 수리 안 함 확정).");
 console.log("");
 console.log(`> \`quality_gate\` 가 근거를 요구하는 pat: ${CRIT_PATS.map((p) => `\`${p}\``).join(" · ")}`);
 console.log("> 나머지(`R3`·`L3`·`V`·`null`)는 **의도적 면제**다 — 코드 주석이 그렇게 적고 있다. 버그가 아니다.");
@@ -130,11 +148,11 @@ console.log("");
 const rows = [...bySet.entries()].sort((a, b) => b[1].n - a[1].n);
 console.log(`## 세트별 상위 ${Math.min(TOP, rows.length)} (전 ${rows.length}세트)`);
 console.log("");
-console.log("| 세트 | 공백 | pat 내역 | 자리 |");
-console.log("|---|--:|---|---|");
+console.log("| 세트 | 공백 | 📌 인용 | pat 내역 | 자리 |");
+console.log("|---|--:|--:|---|---|");
 for (const [key, b] of rows.slice(0, TOP)) {
   const pats = [...b.pats].sort((x, y) => y[1] - x[1]).map(([p, n]) => `${p}:${n}`).join(" ");
-  console.log(`| \`${key}\`${b.live && ALL ? " 🔴 LIVE" : ""} | **${b.n}** | ${pats} | ${b.where.join(" ")}${b.n > b.where.length ? " …" : ""} |`);
+  console.log(`| \`${key}\`${b.live && ALL ? " 🔴 LIVE" : ""} | **${b.n}** | ${b.cited} | ${pats} | ${b.where.join(" ")}${b.n > b.where.length ? " …" : ""} |`);
 }
 console.log("");
 console.log(`> 상위 ${Math.min(TOP, rows.length)}세트가 전체 공백의 ${(rows.slice(0, TOP).reduce((a, [, b]) => a + b.n, 0) / total * 100).toFixed(0)}% 를 차지한다.`);
