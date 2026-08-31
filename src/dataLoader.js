@@ -485,6 +485,14 @@ const RELEASE_KEYS = new Set([
   "2020_9월::l20209b",
   "2020_9월::l20209c",
   "2020_9월::l20209d",
+  // -- 웨이브 3 배치 C (발주 F-45, 2026-08-28) --
+  //   전제: D-175 승격 기록 143건 push 확인(2019_9월 3건 포함) -- 4관문 순서.
+  //   RELEASED_KEYS 는 무변경 -- 「검수 중」 배너 유지.
+  //   r20199c 는 후속이다. Q36#1 이 독서 세트인데 pat="L5"(문학 코드)이고
+  //   _pat_error(expected_domain R / suggested R2) 가 남아 --verify 가
+  //   누락 1건으로 실패한다. D-177 pat 수리 후 별도 push.
+  "2019_9월::l20199a",
+  "2019_9월::l20199e",
 ]);
 
 // yearKey-aware release 검사 (동기 — composite key lookup).
