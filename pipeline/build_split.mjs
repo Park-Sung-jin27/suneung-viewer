@@ -57,7 +57,11 @@ const SENT_PRO = ["cs"];                                                  // 구
 const Q_FREE = ["id", "t", "bogi", "questionType", "bogiImage", "bogiImages", "bogiType", "bogiTable", "stem"];
 const Q_META = ["needsReview"];
 const C_FREE = ["num", "t", "ok"];
-const C_PRO = ["analysis", "cs_ids", "cs_spans", "pat", "cs", "_discriminative_validation", "text"];
+const C_PRO = ["analysis", "cs_ids", "cs_spans", "pat", "cs", "_discriminative_validation", "_pat_error", "text"];
+//   _pat_error 는 D-178 (A안)로 넣었다. 이 키를 가진 세트가 9개 있는데 전부 비노출이라
+//   지금껏 --verify 가 통과했다. r20199c 를 노출하려는 순간 「누락 1건」으로 막혔고,
+//   그게 F-45 가 그 세트만 뺀 이유였다. _discriminative_validation 과 같은 성격의
+//   진단용 밑줄 키라 같은 자리(pro)에 둔다. free 로는 나가지 않는다 — 유료 필드다.
 
 const pick = (o, keys) => {
   const r = {};
