@@ -109,6 +109,13 @@ function extractAnswers(text) {
     if (qid >= 1 && qid <= 45) answers.set(qid, CIRCLED_TO_NUM.get(match[2]));
   }
 
+  // 평가원 당일 공개 정답표 PDF는 문항 번호 뒤에 마침표 없이
+  // `18 ② 2`처럼 추출되므로 이 형식도 함께 읽는다.
+  for (const match of head.matchAll(/(?:^|\s)(\d{1,2})\s+([①②③④⑤])(?=\s)/g)) {
+    const qid = Number(match[1]);
+    if (qid >= 1 && qid <= 45) answers.set(qid, CIRCLED_TO_NUM.get(match[2]));
+  }
+
   const lines = head.split(/\r?\n/).map(compact).filter(Boolean);
   for (let idx = 0; idx < lines.length; idx += 1) {
     const qids = [...lines[idx].matchAll(/\b0?([1-9]|[1-3]\d|4[0-5])\./g)].map(
@@ -236,7 +243,8 @@ async function buildDb() {
     const examType = item.examType;
     const examId = buildExamId(schoolYear, examType);
     const problemFile = path.join(SOURCE_DIR, item.files.problem.fileName);
-    const explainFile = path.join(SOURCE_DIR, item.files.explain.fileName);
+    const answerSource = item.files.explain ?? item.files.answer;
+    const explainFile = path.join(SOURCE_DIR, answerSource.fileName);
 
     let answers = new Map();
     const examWarnings = [];
@@ -308,7 +316,7 @@ async function buildDb() {
         source: {
           problemFile: item.files.problem.fileName,
           answerFile: item.files.answer.fileName,
-          explainFile: item.files.explain.fileName,
+          explainFile: item.files.explain?.fileName ?? null,
         },
         extraction: {
           rawChars: raw.length,

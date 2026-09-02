@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "english-candidate-overlay-v1",
+  "candidateId": "english_2027_09_18_45",
+  "status": "internal_candidate",
+  "publicConnected": false,
+  "approval": {
+    "status": "release_approved",
+    "approvedAt": "2026-09-02",
+    "answerCrossCheck": "28/28",
+    "rawTextSampleQuestionIds": [18, 21, 34, 39, 42],
+    "fullTextReviewExport": {
+      "path": "english/data/candidates/english_2027_09_fulltext_review_export.json",
+      "sha256": "c87d992555372f027a16e1cbcdf3465265f6fba222d8ccb1d34fc5f9abf64e88"
+    },
+    "unlockAuthorized": true
+  },
+  "baseData": {
+    "path": "english/data/english_exam_db_v2_1.json",
+    "sha256": "38f7f01c9a77c4ce94990c1e6499c0eca0397401f07c912df8c6e7c0a3848c26",
+    "examId": "2027_09"
+  },
+  "sourceArtifacts": {
+    "problem": {"filename": "2027학년도_9월_영어_문제.pdf", "sha256": "745d64d94e0719735b88a10802fbbd5053b4982c855199396e58fe2f53b81cf0"},
+    "answer": {"filename": "2027학년도_9월_영어_정답.pdf", "sha256": "c49d980f3ff9db1ba6dcc5c5208c3e8b43cf100ec5581abd3594abb6dd93189e"},
+    "script": {"filename": "2027학년도_9월_영어_듣기대본.pdf", "sha256": "078aeb4d4496f44b85ef1fde0925fcdd6646fcfaf0fb6c94c1da70f168b40ab0"}
+  },
+  "reviewData": {
+    "path": "english/data/candidates/english_2027_09_reviews.json",
+    "sha256": "98a25b7be42a90557cd33673adeddc0a2d7179b685649b5ed9be3359982ad761",
+    "expectedReadyCount": 28
+  },
+  "summary": {
+    "questionCount": 28,
+    "answerCrossCheckCount": 28,
+    "questionAnswerReadyCount": 28,
+    "reviewReadyCount": 28,
+    "evidenceCount": 28,
+    "figureAssetCount": 3,
+    "choiceOverrideQuestionCount": 14,
+    "blockedCount": 0
+  },
+  "releaseRules": {
+    "allowPublicGeneration": false,
+    "requireReviewBeforeExplanationRelease": true,
+    "requireCandidateMergeGate": true,
+    "requireFullTranslationForAll": true,
+    "requireFigureAssetForIds": ["2027_09_25", "2027_09_27", "2027_09_28"]
+  },
+  "projectionPolicies": {
+    "default": {"sourceField": "rawText", "stripStem": true, "stripChoices": true, "stripPdfTail": true},
+    "sharedPassageIds": ["2027_09_41", "2027_09_42", "2027_09_43", "2027_09_44", "2027_09_45"],
+    "inlineMarkerIds": ["2027_09_29", "2027_09_30", "2027_09_35", "2027_09_42", "2027_09_44"],
+    "sequenceTableIds": ["2027_09_36", "2027_09_37", "2027_09_43"],
+    "placementMarkerIds": ["2027_09_38", "2027_09_39"]
+  },
+  "questions": [
+    {"id":"2027_09_18","qid":18,"answer":2,"problemPage":2,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_19","qid":19,"answer":2,"problemPage":2,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_20","qid":20,"answer":1,"problemPage":2,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_21","qid":21,"answer":2,"problemPage":3,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_22","qid":22,"answer":2,"problemPage":3,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_23","qid":23,"answer":5,"problemPage":3,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_24","qid":24,"answer":1,"problemPage":3,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_25","qid":25,"answer":3,"problemPage":4,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready","figureAsset":"english/assets/2027-09/q25-figure.png"},
+    {"id":"2027_09_26","qid":26,"answer":4,"problemPage":4,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_27","qid":27,"answer":5,"problemPage":4,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready","figureAsset":"english/assets/2027-09/q27-notice.png"},
+    {"id":"2027_09_28","qid":28,"answer":5,"problemPage":4,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready","figureAsset":"english/assets/2027-09/q28-notice.png"},
+    {"id":"2027_09_29","qid":29,"answer":3,"problemPage":5,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_30","qid":30,"answer":5,"problemPage":5,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_31","qid":31,"answer":1,"problemPage":5,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_32","qid":32,"answer":5,"problemPage":5,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_33","qid":33,"answer":3,"problemPage":6,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_34","qid":34,"answer":4,"problemPage":6,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_35","qid":35,"answer":4,"problemPage":6,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_36","qid":36,"answer":3,"problemPage":6,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_37","qid":37,"answer":4,"problemPage":7,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_38","qid":38,"answer":5,"problemPage":7,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_39","qid":39,"answer":3,"problemPage":7,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_40","qid":40,"answer":1,"problemPage":7,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_41","qid":41,"answer":3,"problemPage":8,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_42","qid":42,"answer":4,"problemPage":8,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_43","qid":43,"answer":4,"problemPage":8,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_44","qid":44,"answer":4,"problemPage":8,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"},
+    {"id":"2027_09_45","qid":45,"answer":2,"problemPage":8,"explanationPages":[],"status":"question_answer_ready","reviewStatus":"ready"}
+  ],
+  "choiceOverrides": {
+    "2027_09_20": [
+      {"num":1,"mark":"①","text":"변화하는 사회에 대응하기 위해 평생교육을 강화해야 한다."},
+      {"num":2,"mark":"②","text":"융합 교육을 통해 미래 사회의 인재를 적극 육성해야 한다."},
+      {"num":3,"mark":"③","text":"경제 교육을 강화하여 투자에 대한 바른 인식을 갖도록 해야 한다."},
+      {"num":4,"mark":"④","text":"기술 발전을 위해 특정 분야의 전문 지식 습득을 장려해야 한다."},
+      {"num":5,"mark":"⑤","text":"평생교육 기관을 설립하여 사회의 균형 발전을 도모해야 한다."}
+    ],
+    "2027_09_24": [
+      {"num":1,"mark":"①","text":"Fading Boundaries: Evolving Views of Aging"},
+      {"num":2,"mark":"②","text":"Forever Young! The Rise of the Anti-aging Industry"},
+      {"num":3,"mark":"③","text":"How Multiple Perspectives Narrow Generation Gaps"},
+      {"num":4,"mark":"④","text":"Older and Wiser: What the Elderly Can Teach Us"},
+      {"num":5,"mark":"⑤","text":"Do Modern Lifestyles Really Slow Aging?"}
+    ],
+    "2027_09_28": [
+      {"num":1,"mark":"①","text":"매주 주말마다 진행된다."},
+      {"num":2,"mark":"②","text":"1주 차 수업에 스크립트 분석을 한다."},
+      {"num":3,"mark":"③","text":"매월 마지막 주에만 등록할 수 있다."},
+      {"num":4,"mark":"④","text":"추가 비용을 내면 녹화된 수업 강의가 제공될 것이다."},
+      {"num":5,"mark":"⑤","text":"유명한 성우를 만날 기회가 있을 것이다."}
+    ],
+    "2027_09_29": [
+      {"num":1,"mark":"①","text":"to connect"},
+      {"num":2,"mark":"②","text":"simply being"},
+      {"num":3,"mark":"③","text":"enable"},
+      {"num":4,"mark":"④","text":"maintaining"},
+      {"num":5,"mark":"⑤","text":"that"}
+    ],
+    "2027_09_30": [
+      {"num":1,"mark":"①","text":"destructive"},
+      {"num":2,"mark":"②","text":"altering"},
+      {"num":3,"mark":"③","text":"overtaking"},
+      {"num":4,"mark":"④","text":"allow"},
+      {"num":5,"mark":"⑤","text":"shorten"}
+    ],
+    "2027_09_32": [
+      {"num":1,"mark":"①","text":"more cautious of acting immediately"},
+      {"num":2,"mark":"②","text":"less sensitive to others’ reactions"},
+      {"num":3,"mark":"③","text":"stronger in their ability to focus"},
+      {"num":4,"mark":"④","text":"slower in adapting to changes"},
+      {"num":5,"mark":"⑤","text":"better at anticipating stimuli"}
+    ],
+    "2027_09_35": [
+      {"num":1,"mark":"①","text":"The reason is to be found in the fact that tourist experience in cities is measured in days and hours, even in minutes in the case of cultural attractions or seconds in particular sites."},
+      {"num":2,"mark":"②","text":"In addition, cultural tourists do not often repeat their visit to the same place, and therefore they are continuously looking for new attractions."},
+      {"num":3,"mark":"③","text":"As a result of this, a process of selection of cultural assets takes place since only a few buildings and only a small number of social representations are able to be adapted to the tourist visit."},
+      {"num":4,"mark":"④","text":"International festivals bring tourists closer to the community by offering a highly interactive and engaging experience."},
+      {"num":5,"mark":"⑤","text":"The main difference between the selection of cultural assets made for locals and the one made for tourists is that in the second case, only a small choice is made among the largest, most impressive and unique resources."}
+    ],
+    "2027_09_36": [
+      {"num":1,"mark":"①","text":"(A) - (C) - (B)"},
+      {"num":2,"mark":"②","text":"(B) - (A) - (C)"},
+      {"num":3,"mark":"③","text":"(B) - (C) - (A)"},
+      {"num":4,"mark":"④","text":"(C) - (A) - (B)"},
+      {"num":5,"mark":"⑤","text":"(C) - (B) - (A)"}
+    ],
+    "2027_09_37": [
+      {"num":1,"mark":"①","text":"(A) - (C) - (B)"},
+      {"num":2,"mark":"②","text":"(B) - (A) - (C)"},
+      {"num":3,"mark":"③","text":"(B) - (C) - (A)"},
+      {"num":4,"mark":"④","text":"(C) - (A) - (B)"},
+      {"num":5,"mark":"⑤","text":"(C) - (B) - (A)"}
+    ],
+    "2027_09_38": [
+      {"num":1,"mark":"①","text":"①"}, {"num":2,"mark":"②","text":"②"}, {"num":3,"mark":"③","text":"③"}, {"num":4,"mark":"④","text":"④"}, {"num":5,"mark":"⑤","text":"⑤"}
+    ],
+    "2027_09_39": [
+      {"num":1,"mark":"①","text":"①"}, {"num":2,"mark":"②","text":"②"}, {"num":3,"mark":"③","text":"③"}, {"num":4,"mark":"④","text":"④"}, {"num":5,"mark":"⑤","text":"⑤"}
+    ],
+    "2027_09_40": [
+      {"num":1,"mark":"①","text":"maximizing …… strategic"},
+      {"num":2,"mark":"②","text":"increasing …… uniform"},
+      {"num":3,"mark":"③","text":"controlling …… minimal"},
+      {"num":4,"mark":"④","text":"reducing …… targeted"},
+      {"num":5,"mark":"⑤","text":"limiting …… purposeful"}
+    ],
+    "2027_09_43": [
+      {"num":1,"mark":"①","text":"(B) - (D) - (C)"},
+      {"num":2,"mark":"②","text":"(C) - (B) - (D)"},
+      {"num":3,"mark":"③","text":"(C) - (D) - (B)"},
+      {"num":4,"mark":"④","text":"(D) - (B) - (C)"},
+      {"num":5,"mark":"⑤","text":"(D) - (C) - (B)"}
+    ],
+    "2027_09_45": [
+      {"num":1,"mark":"①","text":"Mickey는 Tim이 좋아하는 캐릭터의 이름이었다."},
+      {"num":2,"mark":"②","text":"Mickey는 공원에 도착하자마자 즐겁게 뛰어다녔다."},
+      {"num":3,"mark":"③","text":"Tim은 Mickey를 다른 개에게 소개하려 했다."},
+      {"num":4,"mark":"④","text":"Tim과 Daniel은 자신의 개를 함께 산책시키기로 했다."},
+      {"num":5,"mark":"⑤","text":"Tim은 Jack과의 통화에서 고민을 이야기했다."}
+    ]
+  },
+  "figures": [
+    {"questionId":"2027_09_25","kind":"grouped_bar_chart","assetPath":"english/assets/2027-09/q25-figure.png","sha256":"cc3bc79bfe1ab8ae66efac30ff188908eb2102590b951685f16d1824ffa59ef5","sourcePage":4,"alt":"영국 연령대별 식단 선택 원본 도표. Group A Meat-eater 68%, Flexitarian 12%, Vegetarian 8%. Group B Meat-eater 73%, Flexitarian 12%, Vegetarian 6%. Group C Meat-eater 73%, Flexitarian 16%, Vegetarian 4%. Group D Meat-eater 77%, Flexitarian 13%, Vegetarian 3%."},
+    {"questionId":"2027_09_27","kind":"notice_with_table","assetPath":"english/assets/2027-09/q27-notice.png","sha256":"cf761f86ec5a4a158ee45e5e9309f894bb9bdee952e678a35b81626900e90c45","sourcePage":4,"alt":"RCQ High School Food Waste Reduction Competition 원본 안내문. 1st prize 1 class, 2nd prize 1 class, 3rd prize 2 classes. 2nd prize 1 class 수상."},
+    {"questionId":"2027_09_28","kind":"notice_with_table","assetPath":"english/assets/2027-09/q28-notice.png","sha256":"471aa3c42bc28148d5de73b5210dee7b9521e1d29d927ac77d42f4234736e4ea","sourcePage":4,"alt":"Newstar Voice Acting Course 원본 안내문. 매주 목요일 수업, 첫째 주 등록, 녹화 강의 무료 제공, chance to meet the famous voice actor Richard Choi 혜택."}
+  ]
+}

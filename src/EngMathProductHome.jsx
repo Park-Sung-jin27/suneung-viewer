@@ -1,6 +1,27 @@
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { engMathAuthUrl } from "./engMathAccess.js";
 import { trackEngMathEvent } from "./engMathTracking.js";
+import {
+  createScopedLearningHistoryStorage,
+  readLearningHistory,
+  readWeeklyLearningSummary,
+} from "./engMathLearningHistory.js";
+import {
+  combineLocalAndMemberSummary,
+  syncMemberLearningHistory,
+} from "./engMathLearningEventsSync.js";
+import {
+  buildMathConceptWeeklyPlan,
+  createScopedMathConceptProgressStorage,
+  readMathConceptProgress,
+  summarizeMathConceptProgress,
+  writeMathConceptProgress,
+} from "./mathConceptProgress.js";
+import { syncMemberMathConceptProgress } from "./mathConceptProgressSync.js";
+import { MATH_PROGRESS_CONCEPTS } from "./mathCourseConcepts.js";
+import { buildEngMathWeeklyOverview } from "./engMathWeeklyOverview.js";
+import { supabase } from "./supabase.js";
 
 const SUBJECTS = [
   {
@@ -19,14 +40,135 @@ const SUBJECTS = [
     title: "수학 문항 선택",
     description:
       "2022학년도 6월 공통 첫 5문항을 무료로 풀고, 단계별 검증 풀이를 확인하세요.",
-    detail: "무료 5문항 · 검증 잠금 455문항",
+    detail: "무료 5문항 · 검증 잠금 501문항",
     accent: "#16705b",
     tint: "#eaf7f1",
   },
 ];
 
+function readLocalWeeklyOverview(historyStorage, conceptStorage) {
+  const conceptProgress = readMathConceptProgress(conceptStorage);
+  const conceptSummary = summarizeMathConceptProgress(
+    conceptProgress,
+    MATH_PROGRESS_CONCEPTS,
+  );
+  const mathSummary = readWeeklyLearningSummary(
+    "math",
+    new Date(),
+    historyStorage,
+  );
+  const englishSummary = readWeeklyLearningSummary(
+    "english",
+    new Date(),
+    historyStorage,
+  );
+  const conceptPlan = buildMathConceptWeeklyPlan(
+    conceptProgress,
+    MATH_PROGRESS_CONCEPTS,
+  );
+  return {
+    conceptProgress,
+    conceptSummary,
+    mathSummary,
+    englishSummary,
+    overview: buildEngMathWeeklyOverview({
+      conceptSummary,
+      mathSummary,
+      englishSummary,
+      nextConcept: conceptPlan.nextConcept,
+    }),
+  };
+}
+
+function useEngMathWeeklyOverview(user) {
+  const historyStorage = useMemo(
+    () => createScopedLearningHistoryStorage(user?.id),
+    [user?.id],
+  );
+  const conceptStorage = useMemo(
+    () => createScopedMathConceptProgressStorage(user?.id),
+    [user?.id],
+  );
+  const local = useMemo(
+    () => readLocalWeeklyOverview(historyStorage, conceptStorage),
+    [conceptStorage, historyStorage],
+  );
+  const [syncedState, setSyncedState] = useState(null);
+
+  useEffect(() => {
+    if (!user?.id) return undefined;
+
+    let active = true;
+    void Promise.all([
+      syncMemberLearningHistory({
+        supabase,
+        authenticatedUserId: user.id,
+        history: readLearningHistory(historyStorage),
+      }),
+      syncMemberMathConceptProgress({
+        supabase,
+        authenticatedUserId: user.id,
+          progress: local.conceptProgress,
+          validConcepts: MATH_PROGRESS_CONCEPTS,
+      }),
+    ])
+      .then(([learningResult, conceptResult]) => {
+        if (!active) return;
+        const mergedConceptProgress = writeMathConceptProgress(
+          conceptResult.progress,
+          conceptStorage,
+        );
+        const conceptPlan = buildMathConceptWeeklyPlan(
+          mergedConceptProgress,
+          MATH_PROGRESS_CONCEPTS,
+        );
+        setSyncedState({
+          userId: user.id,
+          status: "synced",
+          overview: buildEngMathWeeklyOverview({
+            conceptSummary: conceptResult.summary,
+            mathSummary: combineLocalAndMemberSummary(
+              local.mathSummary,
+              learningResult.summaries.math,
+            ),
+            englishSummary: combineLocalAndMemberSummary(
+              local.englishSummary,
+              learningResult.summaries.english,
+            ),
+            nextConcept: conceptPlan.nextConcept,
+          }),
+        });
+      })
+      .catch(() => {
+        if (active) {
+          setSyncedState({
+            userId: user.id,
+            status: "error",
+            overview: local.overview,
+          });
+        }
+      });
+    return () => {
+      active = false;
+    };
+  }, [conceptStorage, historyStorage, local, user?.id]);
+
+  if (!user?.id) return { status: "local", overview: local.overview };
+  if (syncedState?.userId === user.id) return syncedState;
+  return { status: "syncing", overview: local.overview };
+}
+
 export default function EngMathProductHome({ user, onLogout }) {
   const navigate = useNavigate();
+  const weekly = useEngMathWeeklyOverview(user);
+  const weeklyScope =
+    weekly.status === "synced"
+      ? "회원 기록 연결됨"
+      : weekly.status === "syncing"
+        ? "회원 기록 확인 중"
+        : weekly.status === "error"
+          ? "이 기기 기록 · 다음 접속 때 다시 연결"
+          : "이 기기 기록";
 
   const handleLogin = () => {
     trackEngMathEvent("eng_math_login_start", {
@@ -140,6 +282,105 @@ export default function EngMathProductHome({ user, onLogout }) {
           line-height: 1.55;
           word-break: keep-all;
         }
+        .eng-math-home__weekly {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 270px;
+          gap: 24px;
+          margin: 0 0 22px;
+          padding: 25px;
+          background: #18253d;
+          color: #ffffff;
+          box-shadow: 0 16px 34px rgba(24, 37, 61, 0.16);
+        }
+        .eng-math-home__weekly-head {
+          display: flex;
+          align-items: start;
+          justify-content: space-between;
+          gap: 18px;
+          margin-bottom: 20px;
+        }
+        .eng-math-home__weekly-head h2 {
+          margin: 0;
+          font-size: 1.18rem;
+          letter-spacing: -0.035em;
+        }
+        .eng-math-home__weekly-head p {
+          margin: 6px 0 0;
+          color: #b9c5d8;
+          font-size: 0.76rem;
+          line-height: 1.5;
+          word-break: keep-all;
+        }
+        .eng-math-home__weekly-scope {
+          flex: 0 0 auto;
+          color: #93a9ce;
+          font-size: 0.68rem;
+          font-weight: 800;
+        }
+        .eng-math-home__weekly-lanes { display: grid; gap: 13px; }
+        .eng-math-home__weekly-lane {
+          display: grid;
+          grid-template-columns: 92px minmax(0, 1fr) 64px;
+          align-items: center;
+          gap: 12px;
+        }
+        .eng-math-home__weekly-lane strong { font-size: 0.75rem; }
+        .eng-math-home__weekly-track {
+          height: 7px;
+          overflow: hidden;
+          background: #33445e;
+        }
+        .eng-math-home__weekly-fill {
+          display: block;
+          height: 100%;
+          background: var(--weekly-lane-color);
+          transition: width 180ms ease;
+        }
+        .eng-math-home__weekly-count {
+          color: #d9e2ef;
+          font: 800 0.72rem ui-monospace, monospace;
+          text-align: right;
+        }
+        .eng-math-home__weekly-action {
+          display: grid;
+          align-content: center;
+          min-width: 0;
+          border-left: 1px solid #40516b;
+          padding-left: 24px;
+        }
+        .eng-math-home__weekly-action > span {
+          color: #e9ad4a;
+          font: 900 0.66rem ui-monospace, monospace;
+          letter-spacing: 0.08em;
+        }
+        .eng-math-home__weekly-action h3 {
+          margin: 8px 0 0;
+          font-size: 1.08rem;
+          line-height: 1.35;
+          letter-spacing: -0.035em;
+          word-break: keep-all;
+        }
+        .eng-math-home__weekly-action p {
+          margin: 7px 0 16px;
+          color: #b8c5d7;
+          font-size: 0.74rem;
+          line-height: 1.55;
+          word-break: keep-all;
+        }
+        .eng-math-home__weekly-button {
+          min-height: 44px;
+          border: 1px solid #e9ad4a;
+          background: #e9ad4a;
+          color: #18253d;
+          font: inherit;
+          font-size: 0.78rem;
+          font-weight: 900;
+          cursor: pointer;
+        }
+        .eng-math-home__weekly-button:focus-visible {
+          outline: 3px solid rgba(255, 255, 255, 0.7);
+          outline-offset: 2px;
+        }
         .eng-math-home__subject-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -199,6 +440,54 @@ export default function EngMathProductHome({ user, onLogout }) {
           font-weight: 800;
         }
         .eng-math-home__subject-action span:last-child { font-size: 1.18rem; }
+        .eng-math-home__concept-link {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 18px;
+          width: 100%;
+          margin-top: 20px;
+          padding: 23px 24px;
+          border: 1px solid #b8d8cf;
+          border-left: 5px solid #16705b;
+          background: #ffffff;
+          color: inherit;
+          text-decoration: none;
+          box-shadow: 0 10px 24px rgba(22, 112, 91, 0.07);
+        }
+        .eng-math-home__concept-link:hover,
+        .eng-math-home__concept-link:focus-visible {
+          border-color: #16705b;
+          outline: 3px solid rgba(233, 173, 74, 0.5);
+          outline-offset: 2px;
+        }
+        .eng-math-home__concept-badge {
+          display: inline-flex;
+          min-height: 27px;
+          align-items: center;
+          padding: 0 9px;
+          background: #e6f4ef;
+          color: #0f684f;
+          font-size: 0.7rem;
+          font-weight: 900;
+          letter-spacing: 0.08em;
+        }
+        .eng-math-home__concept-title {
+          display: block;
+          margin-top: 9px;
+          color: #16213a;
+          font-size: 1.08rem;
+          font-weight: 900;
+        }
+        .eng-math-home__concept-copy {
+          display: block;
+          margin-top: 5px;
+          color: #5b6f69;
+          font-size: 0.85rem;
+          line-height: 1.5;
+          word-break: keep-all;
+        }
+        .eng-math-home__concept-arrow { color: #16705b; font-size: 1.3rem; }
         .eng-math-home__lab-link {
           display: flex;
           align-items: center;
@@ -288,8 +577,13 @@ export default function EngMathProductHome({ user, onLogout }) {
           .eng-math-home__account { flex-direction: column; align-items: flex-end; gap: 5px; }
           .eng-math-home__account-label { max-width: 120px; text-align: right; line-height: 1.35; }
           .eng-math-home__hero { padding: 42px 4px 28px; }
+          .eng-math-home__weekly { grid-template-columns: 1fr; gap: 20px; padding: 21px 19px; }
+          .eng-math-home__weekly-head { display: grid; gap: 6px; }
+          .eng-math-home__weekly-lane { grid-template-columns: 78px minmax(0,1fr) 58px; gap: 9px; }
+          .eng-math-home__weekly-action { border-top: 1px solid #40516b; border-left: 0; padding-top: 20px; padding-left: 0; }
           .eng-math-home__subject-grid { grid-template-columns: 1fr; }
           .eng-math-home__subject-card { min-height: 0; padding: 22px; }
+          .eng-math-home__concept-link { align-items: flex-start; padding: 19px; }
           .eng-math-home__lab-link { align-items: flex-start; padding: 19px; }
           .eng-math-home__korean-link { align-items: flex-start; padding: 18px; }
         }
@@ -337,6 +631,67 @@ export default function EngMathProductHome({ user, onLogout }) {
           </p>
         </section>
 
+        <section
+          className="eng-math-home__weekly"
+          aria-label="영어 수학 최근 7일 학습표"
+        >
+          <div>
+            <div className="eng-math-home__weekly-head">
+              <div>
+                <h2>이번 7일 학습표</h2>
+                <p>개념을 먼저 익히고, 수학과 영어 5문항씩으로 확인합니다.</p>
+              </div>
+              <span className="eng-math-home__weekly-scope">
+                {weeklyScope}
+              </span>
+            </div>
+            <div className="eng-math-home__weekly-lanes">
+              {weekly.overview.lanes.map((lane) => {
+                const color =
+                  lane.key === "concepts"
+                    ? "#e9ad4a"
+                    : lane.key === "math"
+                      ? "#61b99e"
+                      : "#86a7e8";
+                return (
+                  <div
+                    className="eng-math-home__weekly-lane"
+                    key={lane.key}
+                    aria-label={`${lane.label} ${lane.completed}/${lane.target}`}
+                    style={{ "--weekly-lane-color": color }}
+                  >
+                    <strong>{lane.label}</strong>
+                    <span
+                      className="eng-math-home__weekly-track"
+                      aria-hidden="true"
+                    >
+                      <span
+                        className="eng-math-home__weekly-fill"
+                        style={{ width: `${lane.percent}%` }}
+                      />
+                    </span>
+                    <span className="eng-math-home__weekly-count">
+                      {Math.min(lane.completed, lane.target)}/{lane.target}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="eng-math-home__weekly-action">
+            <span>{weekly.overview.nextAction.eyebrow}</span>
+            <h3>{weekly.overview.nextAction.title}</h3>
+            <p>{weekly.overview.nextAction.copy}</p>
+            <button
+              className="eng-math-home__weekly-button"
+              type="button"
+              onClick={() => navigate(weekly.overview.nextAction.path)}
+            >
+              {weekly.overview.nextAction.label}
+            </button>
+          </div>
+        </section>
+
         <section className="eng-math-home__subject-grid" aria-label="과목 선택">
           {SUBJECTS.map((subject) => (
             <button
@@ -364,6 +719,22 @@ export default function EngMathProductHome({ user, onLogout }) {
             </button>
           ))}
         </section>
+
+        <a className="eng-math-home__concept-link" href="/math/concepts">
+          <span>
+            <span className="eng-math-home__concept-badge">NEW · 수능 수학</span>
+            <span className="eng-math-home__concept-title">
+              수능 수학 개념 모음
+            </span>
+            <span className="eng-math-home__concept-copy">
+              수학Ⅰ·수학Ⅱ·확률과 통계·미적분·기하 72개 개념을
+              뜻·공식·예제·직접 풀기 순서로 공부합니다.
+            </span>
+          </span>
+          <span className="eng-math-home__concept-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
 
         <a
           className="eng-math-home__lab-link"
