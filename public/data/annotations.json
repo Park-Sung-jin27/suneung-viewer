@@ -6183,5 +6183,29 @@
         "sentTo": "l20206ds32"
       }
     ]
+  },
+  "2027_9월": {
+    "l20279a": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20279as4",
+        "sentTo": "l20279as8"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20279as68",
+        "sentTo": "l20279as72"
+      }
+    ],
+    "l20279d": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20279ds38",
+        "sentTo": "l20279ds47"
+      }
+    ]
   }
 }
