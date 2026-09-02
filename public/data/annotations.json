@@ -6206,6 +6206,38 @@
         "sentFrom": "l20279ds38",
         "sentTo": "l20279ds47"
       }
+    ],
+    "l20279c": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20279cs6",
+        "sentTo": "l20279cs7"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20279cs13",
+        "sentTo": "l20279cs14"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l20279cs19",
+        "sentTo": "l20279cs20"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l20279cs25",
+        "sentTo": "l20279cs27"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l20279cs36",
+        "sentTo": "l20279cs38"
+      }
     ]
   }
 }
