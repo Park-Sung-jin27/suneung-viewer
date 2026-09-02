@@ -1,0 +1,144 @@
+{
+  "yearKey": "2027_9월",
+  "setId": "l20279c",
+  "composite_key": "2027_9월::l20279c",
+  "approved_at": "2026-09-02",
+  "approved_by": "대표",
+  "provenance": {
+    "origin": "무인 러너 (대표 예약 발화 · 2026-09-02 11:16~12:16 · step1-2 ~ step8)",
+    "preserved_commit": "24db9be — 러너 산출 원형 보존",
+    "normalized_commit": "e657b21 — all_data §13⑪ minified 규약 복원(내용 무변)",
+    "gate_report": "docs/sprint_2027_9월_gate_report_20260902.md",
+    "note": "러너는 같은 실행에서 l20279b 를 skip 하고도 정상 종료했고, s1 안내문·title 을 발문에서 그대로 가져왔다. 무인 산출물이라 전량 검증 대상으로 다뤘다."
+  },
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2027_9월/2027_9월_정답.pdf)",
+    "command": "node pipeline/answer_key_audit.mjs --expect 2027_9월",
+    "checked": "questionType 기준 정답 특정 — 28·29·30·31번 전 문항",
+    "answer_key": {
+      "28": 1,
+      "29": 3,
+      "30": 2,
+      "31": 3
+    },
+    "answer_key_mismatch": 0,
+    "expect_confirmed": "✅ 2027_9월 대조됨 — 정답표 34문항이 실제로 쓰였다(--expect 가드 통과)",
+    "note": "--expect 없이 돌리면 정답표가 없는 회차를 조용히 건너뛰고 「0건」이 뜬다 (D-140 ①)",
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2027_9월",
+    "scope": "연도 스코프 (판정 305② 준수)",
+    "verdict_unit": "세트 (D-185 확정 규칙 — 귀속 CRITICAL 0 + LIVE 전수 신규 위반 0)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 12,
+    "year_critical_owners": "전부 r20279b 귀속 (트랙2 · 9/4 처리)",
+    "live_regression": "LIVE 279세트 형광펜 0개 세트 0 · 0개 선지 0 — 신규 위반 0",
+    "result": "이 세트 귀속 CRITICAL 0. 회차는 release_blocked 이나 그것은 r20279b 미수리분 때문이다.",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "bogi_shape_check": {
+    "note": "bogi 객체형이면 gate3 화면 실측 필수 (S-07 · r20246c 백지 크래시 전례)",
+    "shapes": {
+      "문자열": 1
+    },
+    "result": "객체형 없음",
+    "pass": true
+  },
+  "gate3_evidence": {
+    "method": "심사관 화면 실측 (localhost:5173 dev + 마스터 세션 · review=1)",
+    "checklist": "gate3 체크리스트 v2 (2026-09-01) — ⑴형광펜 ⑵마커·꺾쇠 ⑷해설정합 ⑸배지 ⑹원본 1:1 ⑺렌더 원천",
+    "verified_at": "2026-09-02",
+    "detail": "꺾쇠 5개 렌더 정상 · [D] 끝이 「버리드라네그랴.”」까지 덮음 · Q29⑤ 클릭 시 [E]+[B] 형광펜 · cs/span/정답 전건 통과. D-192 해설 수리 재검산 통과 — Q29#3 「왼통」 · Q31#1 「인물들은」 · Q29#1 [A] 인용 s7 · Q29#3 [D] 인용 s25~27 · Q29 #2·#4 🔍 재작성분 확인.",
+    "console_error_count": 0,
+    "note": "비노출 세트는 마스터 로그인이 있어야 열린다 — bypassFilter 가 켜져야 통짜 all_data 폴백 경로를 탄다(dataLoader.js:718 · App.jsx:1301).",
+    "pass": true
+  },
+  "diagnostic_axes": {
+    "note": "release_diag 13축 + 신설 축. 수치는 데이터에서 읽어 채웠다",
+    "tool": "node pipeline/release_diag.mjs \"2027_9월::l20279c\"",
+    "①삼충실도": "선지 20 · 해설 누락 0 · pat 누락 0 · 근거 누락 0건 — 그중 **근거 필수 pat 0건** / 의도적 면제 0건(R3 0 · V 0)",
+    "근거공백_면제근거": "REQUIRES_CS = [R1, R2, R4, L1, L2, L4, L5] (quality_gate 소스에서 읽음). R3·V·L3·null 은 의도적 면제이며 버그가 아니다(D-172 확인). V 는 채우면 오히려 C_vpat_dirty CRITICAL 이 된다.",
+    "②근거정합": "cs_spans 27건 · 어긋남 0 · 끊긴 cs_id 0건",
+    "③setId충돌": "복합 키(D-113 ①) 사용 — yearKey::setId",
+    "④구간표시": "annotations 5건 (bracket:5) · 미정박 0",
+    "⑤글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "⑥각주": "본문 * 과 각주 문장 정합",
+    "⑦문항형식": "문항 4 · 5지 4/4 · 정답 특정 4/4",
+    "⑧분리게이트": "node pipeline/build_split.mjs --verify — LIVE 279세트 · 필드 73,152개 대조 누락 0",
+    "⑨마커고아": "본문 마커 ↔ 문항 마커 정합 · 고아 0 · 역고아 0",
+    "⑩발문마커소실": "0",
+    "⑪인용부호소실": "0",
+    "⑫결함표지잔존": "_pat_error · _ok_analysis_mismatch 0",
+    "⑬결론줄": "기호 어긋남 0 · 라벨↔pat 어긋남 0 (코드 라벨 10건 · 명칭 라벨 0건 · 라벨 없음/자유문구 10건)",
+    "ok=true+pat": "0건 (0 이어야 한다 — QuizPanel:1076 이 ok 를 안 보고 배지를 띄운다)",
+    "📌라벨↔구간정합": "Q29 전 선지 10/10 ✅ (라벨 [X] 인용 ⊆ 해당 꺾쇠 구간 · 정규화 대조). D-189 로 게이트 축 이관 예정",
+    "신설-형광펜실효": "node pipeline/cs_effect_audit.mjs --year 2027_9월 — 형광펜 0개 세트 0 · 0개 선지 0 · 비-하이라이트 cs_id 0건"
+  },
+  "known_observation": {
+    "item": "결론줄 코드 라벨",
+    "detail": "이 회차 결론줄은 [R1] 형태의 코드 라벨이다(이 세트 10건). LIVE 관례는 명칭 라벨([사실 왜곡])이며 무라벨·자유문구도 혼재한다.",
+    "verdict": "심사관 비차단 판정 — 백로그 「구형 결론줄 정리」에 「코드 라벨 표준화」 추가"
+  },
+  "repair_record": "D-190 W4a — [A]~[E] 정박 5건 + cs_span 1건(「당구 삼 년에 음풍월」 → 「당구(堂狗) 삼 년에 음풍월」). 구간은 원본 p10 판독으로만 정했고, Q29#5 의 cs_ids([E]+[B])가 판독과 완전히 일치해 데이터가 독립으로 뒷받침했다. D-192 — Q29#3 오자 「왠통」→「왼통」 · Q31#1 보기 인용 「이들은」→「인물들은」 · Q29#2 cs_spans 중복 정리 · Q29#1 [A] 인용을 s7 실인용으로 · Q29#3 [D] 인용을 s25~27 로 교체 + cs_ids 편입 · Q29 #2·#4 🔍 재작성(화자 오인·구간 오인, 심사관 승인 문안).",
+  "title_record": {
+    "title": "고향 없는 사람들",
+    "range": "28~31번"
+  },
+  "annotations_snapshot": {
+    "count": 5,
+    "types": {
+      "bracket": 5
+    },
+    "entries": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20279cs6",
+        "sentTo": "l20279cs7"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20279cs13",
+        "sentTo": "l20279cs14"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l20279cs19",
+        "sentTo": "l20279cs20"
+      },
+      {
+        "type": "bracket",
+        "label": "D",
+        "sentFrom": "l20279cs25",
+        "sentTo": "l20279cs27"
+      },
+      {
+        "type": "bracket",
+        "label": "E",
+        "sentFrom": "l20279cs36",
+        "sentTo": "l20279cs38"
+      }
+    ],
+    "source": "public/data/annotations.json — 화면 렌더 단일 원천"
+  },
+  "cite_audit_record": {
+    "method": "본문 마지막 문장 확인",
+    "last_sent_type": "author",
+    "last_sent_tail": "- 박화성, ｢고향 없는 사람들｣ -",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2027_9월::l20279c",
+    "file": "src/dataLoader.js",
+    "order": "F-48 2차",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2027_9%EC%9B%94&set=l20279c&q=28&mode=study",
+  "limitation_note": "S-18 — 「전 축 통과」는 **알려진 유형이 없다**는 뜻이지 결함이 없다는 뜻이 아니다. 오늘만 해도 s1 안내문 혼입·title 발문 복사·역고아 ⓑ·화자 오인·구간 오인이 전부 자동 게이트를 통과하고 gate3 육안·원본 대조에서만 드러났다. ★ 이 세트 고유 한계 — Q29 #2·#4 는 라벨을 잘못 붙인 채 논지가 완성돼 있어 🔍 를 다시 썼다. **같은 유형(화자 오인·구간 오인)이 이 세트의 다른 문항이나 다른 세트에 더 있는지는 전수로 확인하지 않았다** — Q29 만 라벨↔구간 정합을 10/10 으로 스캔했다. r20279b 착수 전 전수 선행 스캔이 D-189 로 예정돼 있다. 또 [A]~[E] 구간은 원본에 꺾쇠 세로선이 없어 **들여쓴 대화 블록 경계와 라벨 중앙 y 로 판독**했다(지문 박스 테두리를 꺾쇠로 오인하지 않도록 별도 확인했다).",
+  "comment": "2027_9월 W3·W4a (D-190 · D-192). 4관문 충족 — gate0 정답표 34문항 전수 대조(불일치 0) · gate1 세트 귀속 CRITICAL 0(회차 12건은 r20279b 미수리분) · gate3 심사관 화면 실측(2026-09-02) · 대표 승인(2026-09-02). F-48 2차 노출 대기."
+}

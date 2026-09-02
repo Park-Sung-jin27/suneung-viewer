@@ -1,0 +1,117 @@
+{
+  "yearKey": "2027_9월",
+  "setId": "r20279c",
+  "composite_key": "2027_9월::r20279c",
+  "approved_at": "2026-09-02",
+  "approved_by": "대표",
+  "provenance": {
+    "origin": "무인 러너 (대표 예약 발화 · 2026-09-02 11:16~12:16 · step1-2 ~ step8)",
+    "preserved_commit": "24db9be — 러너 산출 원형 보존",
+    "normalized_commit": "e657b21 — all_data §13⑪ minified 규약 복원(내용 무변)",
+    "gate_report": "docs/sprint_2027_9월_gate_report_20260902.md",
+    "note": "러너는 같은 실행에서 l20279b 를 skip 하고도 정상 종료했고, s1 안내문·title 을 발문에서 그대로 가져왔다. 무인 산출물이라 전량 검증 대상으로 다뤘다."
+  },
+  "gate0_evidence": {
+    "method": "원본 정답표 대조 (_done/2027_9월/2027_9월_정답.pdf)",
+    "command": "node pipeline/answer_key_audit.mjs --expect 2027_9월",
+    "checked": "questionType 기준 정답 특정 — 10·11·12·13번 전 문항",
+    "answer_key": {
+      "10": 2,
+      "11": 5,
+      "12": 3,
+      "13": 1
+    },
+    "answer_key_mismatch": 0,
+    "expect_confirmed": "✅ 2027_9월 대조됨 — 정답표 34문항이 실제로 쓰였다(--expect 가드 통과)",
+    "note": "--expect 없이 돌리면 정답표가 없는 회차를 조용히 건너뛰고 「0건」이 뜬다 (D-140 ①)",
+    "pass": true
+  },
+  "gate1_evidence": {
+    "command": "node pipeline/quality_gate.mjs 2027_9월",
+    "scope": "연도 스코프 (판정 305② 준수)",
+    "verdict_unit": "세트 (D-185 확정 규칙 — 귀속 CRITICAL 0 + LIVE 전수 신규 위반 0)",
+    "critical_count_this_set": 0,
+    "critical_count_year": 12,
+    "year_critical_owners": "전부 r20279b 귀속 (트랙2 · 9/4 처리)",
+    "live_regression": "LIVE 279세트 형광펜 0개 세트 0 · 0개 선지 0 — 신규 위반 0",
+    "result": "이 세트 귀속 CRITICAL 0. 회차는 release_blocked 이나 그것은 r20279b 미수리분 때문이다.",
+    "pass": true
+  },
+  "gate2_lite_evidence": "deferred — 기존 정책 유지, release 영향 0",
+  "bogi_shape_check": {
+    "note": "bogi 객체형이면 gate3 화면 실측 필수 (S-07 · r20246c 백지 크래시 전례)",
+    "shapes": {
+      "문자열": 1
+    },
+    "result": "객체형 없음",
+    "pass": true
+  },
+  "gate3_evidence": {
+    "method": "심사관 화면 실측 (localhost:5173 dev + 마스터 세션 · review=1)",
+    "checklist": "gate3 체크리스트 v2 (2026-09-01) — ⑴형광펜 ⑵마커·꺾쇠 ⑷해설정합 ⑸배지 ⑹원본 1:1 ⑺렌더 원천",
+    "verified_at": "2026-09-02",
+    "detail": "데이터 원본 1:1 + 화면 실측 전부 통과. 문장·발문·선지 원문 실재(검사기 미검출 7건은 줄바꿈 오탐으로 원문 대조 종결). span 원문 일치 위반 0 · cs_id 무효 0 · ok+pat 0 · 결론줄 코드 라벨 정합 위반 0. Q10#2 클릭 시 배지 「R1 사실 왜곡」 정상 · 📌 인용 표시 · 원문 공백(「특별한 경우 에」) 그대로 렌더. 📌 정정분 「정류기 에서」가 해설·본문 글자 그대로 일치. 수리 후 지문 첫 줄에 안내문 없음 · 목록 제목 「어댑터의 전원 변환 방식」 확인.",
+    "console_error_count": 0,
+    "note": "비노출 세트는 마스터 로그인이 있어야 열린다 — bypassFilter 가 켜져야 통짜 all_data 폴백 경로를 탄다(dataLoader.js:718 · App.jsx:1301).",
+    "pass": true
+  },
+  "diagnostic_axes": {
+    "note": "release_diag 13축 + 신설 축. 수치는 데이터에서 읽어 채웠다",
+    "tool": "node pipeline/release_diag.mjs \"2027_9월::r20279c\"",
+    "①삼충실도": "선지 20 · 해설 누락 0 · pat 누락 0 · 근거 누락 3건 — 그중 **근거 필수 pat 0건** / 의도적 면제 3건(R3 3 · V 0)",
+    "근거공백_면제근거": "REQUIRES_CS = [R1, R2, R4, L1, L2, L4, L5] (quality_gate 소스에서 읽음). R3·V·L3·null 은 의도적 면제이며 버그가 아니다(D-172 확인). V 는 채우면 오히려 C_vpat_dirty CRITICAL 이 된다.",
+    "②근거정합": "cs_spans 26건 · 어긋남 0 · 끊긴 cs_id 0건",
+    "③setId충돌": "복합 키(D-113 ①) 사용 — yearKey::setId",
+    "④구간표시": "[A] 류 라벨을 쓰지 않는다 · annotations 0건",
+    "⑤글자손상": "PUA 0 · ZWSP 0 · U+FFFD 0",
+    "⑥각주": "본문 * 과 각주 문장 정합",
+    "⑦문항형식": "문항 4 · 5지 4/4 · 정답 특정 3/4",
+    "⑧분리게이트": "node pipeline/build_split.mjs --verify — LIVE 279세트 · 필드 73,152개 대조 누락 0",
+    "⑨마커고아": "본문 마커 ↔ 문항 마커 정합 · 고아 0 · 역고아 0",
+    "⑩발문마커소실": "0",
+    "⑪인용부호소실": "0",
+    "⑫결함표지잔존": "_pat_error · _ok_analysis_mismatch 0",
+    "⑬결론줄": "기호 어긋남 0 · 라벨↔pat 어긋남 0 (코드 라벨 10건 · 명칭 라벨 0건 · 라벨 없음/자유문구 10건)",
+    "ok=true+pat": "0건 (0 이어야 한다 — QuizPanel:1076 이 ok 를 안 보고 배지를 띄운다)",
+    "📌라벨↔구간정합": "해당 없음 ([A]~[E] 라벨을 쓰지 않는다)",
+    "신설-형광펜실효": "node pipeline/cs_effect_audit.mjs --year 2027_9월 — 형광펜 0개 세트 0 · 0개 선지 0 · 비-하이라이트 cs_id 0건"
+  },
+  "backlog_flag": {
+    "item": "R3 근거 공백",
+    "count": 3,
+    "detail": "이 세트의 R3(과잉 추론) 오답 3건에 cs_ids 가 비어 있다. 게이트는 요구하지 않지만 채우면 형광펜이 그만큼 더 켜진다.",
+    "priority": "백로그 「R3·L3 근거 공백 212건」 중 **최우선 수리** (심사관 지정 2026-09-02). 작업은 후일."
+  },
+  "known_observation": {
+    "item": "결론줄 코드 라벨",
+    "detail": "이 회차 결론줄은 [R1] 형태의 코드 라벨이다(이 세트 10건). LIVE 관례는 명칭 라벨([사실 왜곡])이며 무라벨·자유문구도 혼재한다.",
+    "verdict": "심사관 비차단 판정 — 백로그 「구형 결론줄 정리」에 「코드 라벨 표준화」 추가"
+  },
+  "repair_record": "D-190 W3 — cs_span 6건(따옴표 곡선화 1 · 중간 조사 공백 1 · 괄호 조각 4). 어구는 재타이핑하지 않고 본문에서 잘라냈다. D-190 트랙1 — Q10#5 📌 인용을 「정류기 에서」로 본문에 맞췄다(본문의 그 공백은 원본 텍스트층에도 있다 — 오경보 2번 확정). D-190 gate3 조건 — s1 안내문 접두 19자 제거 + title 「어댑터의 전원 변환 방식」(심사관 확정). 본문은 안내문 접두 말고 한 글자도 고치지 않았다.",
+  "title_record": {
+    "title": "어댑터의 전원 변환 방식",
+    "range": "10~13번"
+  },
+  "annotations_snapshot": {
+    "count": 0,
+    "types": {},
+    "entries": [],
+    "source": "public/data/annotations.json — 화면 렌더 단일 원천"
+  },
+  "cite_audit_record": {
+    "method": "본문 마지막 문장 확인",
+    "last_sent_type": "body",
+    "last_sent_tail": "스위칭 방식은 열로 소모되는 전력이 적지만, 스위치의 온․오프에 의해 생긴 전압 변동이 온․오프 신호와 동일",
+    "policy": "지문 안 작가 + 제목 cite 영구 포함 의무"
+  },
+  "frontend_request": {
+    "action": "RELEASE_KEYS 에 추가",
+    "key": "2027_9월::r20279c",
+    "file": "src/dataLoader.js",
+    "order": "F-48 2차",
+    "note": "엔지니어는 RELEASE_KEYS 를 수정하지 않는다 — 프론트 발주 사항"
+  },
+  "review_url": "https://www.jippi.kr/viewer?year=2027_9%EC%9B%94&set=r20279c&q=10&mode=study",
+  "limitation_note": "S-18 — 「전 축 통과」는 **알려진 유형이 없다**는 뜻이지 결함이 없다는 뜻이 아니다. 오늘만 해도 s1 안내문 혼입·title 발문 복사·역고아 ⓑ·화자 오인·구간 오인이 전부 자동 게이트를 통과하고 gate3 육안·원본 대조에서만 드러났다. ★ 이 세트 고유 한계 — 본문에 「정류기 에서」·「특별한 경우 에」처럼 조사 앞이 벌어진 자리가 남아 있다. 원본 텍스트층과 같은 상태라 본문은 손대지 않았고 span·📌 를 본문에 맞췄다. 다만 **원본 지면의 조판이 실제로 그렇게 벌어져 있는지는 텍스트층 대조까지만 했고 지면 이미지로는 확인하지 않았다**.",
+  "comment": "2027_9월 W3·W4a (D-190 · D-192). 4관문 충족 — gate0 정답표 34문항 전수 대조(불일치 0) · gate1 세트 귀속 CRITICAL 0(회차 12건은 r20279b 미수리분) · gate3 심사관 화면 실측(2026-09-02) · 대표 승인(2026-09-02). F-48 2차 노출 대기."
+}
