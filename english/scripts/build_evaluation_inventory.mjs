@@ -39,7 +39,7 @@ const OUTPUT_PATH = path.join(
   "english_evaluation_inventory_v1.json",
 );
 const COMPLETE_SCHOOL_YEARS = Array.from({ length: 10 }, (_, index) => 2017 + index);
-const LATEST_PARTIAL_EXAM_KEY = "2027_06";
+const LATEST_PARTIAL_EXAM_KEYS = new Set(["2027_06", "2027_09"]);
 const CHOICE_MARKS = ["①", "②", "③", "④", "⑤"];
 
 function fail(code, detail = "") {
@@ -145,13 +145,13 @@ function sourceArtifactFor(
 
 function resolveSourceMode(sourceManifest, sourceDirectory) {
   if (!sourceManifest) return "recorded";
-  const filenames = sourceManifest.items.flatMap((item) =>
-    ["problem", "answer", "explain"].map(
-      (kind) => item.files?.[kind]?.fileName,
-    ),
-  );
+  const filenames = sourceManifest.items.flatMap((item) => [
+    item.files?.problem?.fileName,
+    item.files?.answer?.fileName,
+    (item.files?.explain ?? item.files?.script)?.fileName,
+  ]);
   ensure(
-    filenames.length === 93 && filenames.every((filename) => typeof filename === "string"),
+    filenames.length === 96 && filenames.every((filename) => typeof filename === "string"),
     "SOURCE_MANIFEST_FILE_COUNT",
     String(filenames.length),
   );
@@ -214,10 +214,10 @@ function buildInventory(sourceDirectory, recordedInventory = null) {
   const targetExams = englishDb.exams.filter(
     (exam) =>
       COMPLETE_SCHOOL_YEARS.includes(Number(exam.schoolYear)) ||
-      exam.id === LATEST_PARTIAL_EXAM_KEY,
+      LATEST_PARTIAL_EXAM_KEYS.has(exam.id),
   );
 
-  ensure(targetExams.length === 31, "INVENTORY_EXAM_COUNT", String(targetExams.length));
+  ensure(targetExams.length === 32, "INVENTORY_EXAM_COUNT", String(targetExams.length));
   const allQuestionIds = [];
   const answerPairs = [];
   const sourceHashes = [];
@@ -259,13 +259,25 @@ function buildInventory(sourceDirectory, recordedInventory = null) {
         recordedExams.get(exam.id)?.sourceArtifacts?.answer,
         sourceMode,
       ),
-      explanation: sourceArtifactFor(
-        manifestItem,
-        "explanation",
-        sourceDirectory,
-        recordedExams.get(exam.id)?.sourceArtifacts?.explanation,
-        sourceMode,
-      ),
+      ...(manifestItem?.files?.explain
+        ? {
+            explanation: sourceArtifactFor(
+              manifestItem,
+              "explanation",
+              sourceDirectory,
+              recordedExams.get(exam.id)?.sourceArtifacts?.explanation,
+              sourceMode,
+            ),
+          }
+        : {
+            script: sourceArtifactFor(
+              manifestItem,
+              "script",
+              sourceDirectory,
+              recordedExams.get(exam.id)?.sourceArtifacts?.script,
+              sourceMode,
+            ),
+          }),
     };
     sourceHashes.push(
       ...Object.values(sourceArtifacts).map((artifact) => artifact.sha256),
@@ -301,7 +313,9 @@ function buildInventory(sourceDirectory, recordedInventory = null) {
       examLabel: examLabel(exam),
       schoolYear: Number(exam.schoolYear),
       session: exam.session,
-      scope: exam.id === LATEST_PARTIAL_EXAM_KEY ? "latest_partial_year" : "complete_ten_years",
+      scope: LATEST_PARTIAL_EXAM_KEYS.has(exam.id)
+        ? "latest_partial_year"
+        : "complete_ten_years",
       questionCount: 28,
       answerCrossCheckCount: 28,
       reviewReadyCount,
@@ -320,11 +334,11 @@ function buildInventory(sourceDirectory, recordedInventory = null) {
     (sum, exam) => sum + exam.reviewReadyCount,
     0,
   );
-  ensure(allQuestionIds.length === 868, "INVENTORY_QUESTION_COUNT", String(allQuestionIds.length));
-  ensure(new Set(allQuestionIds).size === 868, "INVENTORY_QUESTION_DUPLICATE");
-  ensure(reviewReadyCount === 307, "INVENTORY_REVIEW_READY_COUNT", String(reviewReadyCount));
-  ensure(sourceHashes.length === 93, "INVENTORY_SOURCE_COUNT", String(sourceHashes.length));
-  ensure(new Set(sourceHashes).size === 93, "INVENTORY_SOURCE_HASH_DUPLICATE");
+  ensure(allQuestionIds.length === 896, "INVENTORY_QUESTION_COUNT", String(allQuestionIds.length));
+  ensure(new Set(allQuestionIds).size === 896, "INVENTORY_QUESTION_DUPLICATE");
+  ensure(reviewReadyCount === 335, "INVENTORY_REVIEW_READY_COUNT", String(reviewReadyCount));
+  ensure(sourceHashes.length === 96, "INVENTORY_SOURCE_COUNT", String(sourceHashes.length));
+  ensure(new Set(sourceHashes).size === 96, "INVENTORY_SOURCE_HASH_DUPLICATE");
 
   return {
     schemaVersion: "english-evaluation-inventory-v1",
@@ -332,7 +346,7 @@ function buildInventory(sourceDirectory, recordedInventory = null) {
     publicQuestionPayloadConnected: false,
     scope: {
       completeSchoolYears: COMPLETE_SCHOOL_YEARS,
-      latestPartialExamKey: LATEST_PARTIAL_EXAM_KEY,
+      latestPartialExamKeys: [...LATEST_PARTIAL_EXAM_KEYS],
     },
     summary: {
       examCount: exams.length,

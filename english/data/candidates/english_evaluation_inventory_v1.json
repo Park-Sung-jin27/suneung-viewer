@@ -15,16 +15,19 @@
       2025,
       2026
     ],
-    "latestPartialExamKey": "2027_06"
+    "latestPartialExamKeys": [
+      "2027_06",
+      "2027_09"
+    ]
   },
   "summary": {
-    "examCount": 31,
+    "examCount": 32,
     "completeSchoolYearCount": 10,
-    "questionCount": 868,
-    "answerCrossCheckCount": 868,
-    "reviewReadyCount": 307,
+    "questionCount": 896,
+    "answerCrossCheckCount": 896,
+    "reviewReadyCount": 335,
     "reviewPendingCount": 561,
-    "sourceArtifactCount": 93
+    "sourceArtifactCount": 96
   },
   "exams": [
     {
@@ -2142,11 +2145,98 @@
         }
       },
       "answerFingerprint": "924856ba8ceafe4f124dded046550319306d10890bd669247e4d6b554acdb6fa"
+    },
+    {
+      "examKey": "2027_09",
+      "examLabel": "2027학년도 9월 모의평가",
+      "schoolYear": 2027,
+      "session": "9월",
+      "scope": "latest_partial_year",
+      "questionCount": 28,
+      "answerCrossCheckCount": 28,
+      "reviewReadyCount": 28,
+      "reviewPendingCount": 0,
+      "reviewStatus": "ready",
+      "reviewReadyQuestionIds": [
+        "2027_09_18",
+        "2027_09_19",
+        "2027_09_20",
+        "2027_09_21",
+        "2027_09_22",
+        "2027_09_23",
+        "2027_09_24",
+        "2027_09_25",
+        "2027_09_26",
+        "2027_09_27",
+        "2027_09_28",
+        "2027_09_29",
+        "2027_09_30",
+        "2027_09_31",
+        "2027_09_32",
+        "2027_09_33",
+        "2027_09_34",
+        "2027_09_35",
+        "2027_09_36",
+        "2027_09_37",
+        "2027_09_38",
+        "2027_09_39",
+        "2027_09_40",
+        "2027_09_41",
+        "2027_09_42",
+        "2027_09_43",
+        "2027_09_44",
+        "2027_09_45"
+      ],
+      "questionIds": [
+        "2027_09_18",
+        "2027_09_19",
+        "2027_09_20",
+        "2027_09_21",
+        "2027_09_22",
+        "2027_09_23",
+        "2027_09_24",
+        "2027_09_25",
+        "2027_09_26",
+        "2027_09_27",
+        "2027_09_28",
+        "2027_09_29",
+        "2027_09_30",
+        "2027_09_31",
+        "2027_09_32",
+        "2027_09_33",
+        "2027_09_34",
+        "2027_09_35",
+        "2027_09_36",
+        "2027_09_37",
+        "2027_09_38",
+        "2027_09_39",
+        "2027_09_40",
+        "2027_09_41",
+        "2027_09_42",
+        "2027_09_43",
+        "2027_09_44",
+        "2027_09_45"
+      ],
+      "sourceArtifacts": {
+        "problem": {
+          "filename": "2027학년도_9월_영어_문제.pdf",
+          "sha256": "745d64d94e0719735b88a10802fbbd5053b4982c855199396e58fe2f53b81cf0"
+        },
+        "answer": {
+          "filename": "2027학년도_9월_영어_정답.pdf",
+          "sha256": "c49d980f3ff9db1ba6dcc5c5208c3e8b43cf100ec5581abd3594abb6dd93189e"
+        },
+        "script": {
+          "filename": "2027학년도_9월_영어_듣기대본.pdf",
+          "sha256": "078aeb4d4496f44b85ef1fde0925fcdd6646fcfaf0fb6c94c1da70f168b40ab0"
+        }
+      },
+      "answerFingerprint": "b2b9d159fec8822c439b8dcc1efaf29e0bae59e5a4dec50d1ff6cf098af62068"
     }
   ],
   "integrity": {
-    "questionIdsFingerprint": "b3b7feb58ee7e902a318839aec54b7073c221c4eef9f465ee53c6b52ffb5c4bb",
-    "answerFingerprint": "95fce0c617d3ba8ad2d854a456ff32cbea038df2482810c60876804bacba6a3d",
-    "sourceHashFingerprint": "32e5ad994b814d0a2c189f208b9ba17475e313802f5fd062f6b8da306f0db1cf"
+    "questionIdsFingerprint": "e05c91db92fa90d5ed5837f6897300a90419e909417e0bf741325b549988a3c0",
+    "answerFingerprint": "9803dc8f82685b8178b494187e0fb38c6a31442c1d2a6886e8e2ad9561aa66b2",
+    "sourceHashFingerprint": "ab0456f1fa7451a5b51de1e4ae83ca44da0b9f2314b1b39d72e50f6f3adf094d"
   }
 }

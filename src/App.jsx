@@ -22,6 +22,7 @@ import AcademyPreview from "./AcademyPreview";
 import Landing from "./Landing";
 import EngMathProductHome from "./EngMathProductHome";
 import EngMathPractice from "./EngMathPractice";
+import MathConceptLibrary from "./MathConceptLibrary";
 import {
   ENG_MATH_AUTH_RETURN_KEY,
   normalizeEngMathReturnTo,
@@ -2531,6 +2532,7 @@ export default function App() {
         path="/eng-math/practice"
         element={<EngMathPractice user={user} />}
       />
+      <Route path="/math/concepts" element={<MathConceptLibrary user={user} />} />
       {/* /exams: 비로그인 포함 시험 목록 단독 노출 (랜딩 CTA 도착지).
           MainPage는 user=null이면 무료 release 시험만 표시 → 가입 없이 선택·체험. */}
       <Route

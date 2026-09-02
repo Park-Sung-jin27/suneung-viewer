@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import katex from "katex";
 import "katex/dist/katex.min.css";
@@ -6,12 +6,19 @@ import EngMathLockedAccess from "./EngMathLockedAccess.jsx";
 import { resolveEngMathPackAccess } from "./engMathAccess.js";
 import {
   buildDailyLearningPlan,
+  createScopedLearningHistoryStorage,
   createLearningSessionId,
   readDailyLearningPlan,
   readLearningHistory,
   readWeeklyLearningSummary,
   recordLearningSession,
 } from "./engMathLearningHistory.js";
+import {
+  combineLocalAndMemberSummary,
+  syncMemberLearningHistory,
+} from "./engMathLearningEventsSync.js";
+import { supabase } from "./supabase.js";
+import { createActiveQuestionTimer } from "./activeQuestionTimer.js";
 
 const QUESTION_DATA_URLS = {
   english: "/data/eng-math/english-free-public.json",
@@ -20,16 +27,16 @@ const QUESTION_DATA_URLS = {
 const CATALOG_DATA_URL = "/data/eng-math/catalog-public.json";
 const EXPECTED_BOUNDARIES = {
   english: {
-    totalQuestionCount: 868,
+    totalQuestionCount: 896,
     freeQuestionCount: 5,
-    lockedQuestionCount: 863,
-    packCount: 187,
+    lockedQuestionCount: 891,
+    packCount: 193,
   },
   math: {
-    totalQuestionCount: 460,
+    totalQuestionCount: 506,
     freeQuestionCount: 5,
-    lockedQuestionCount: 455,
-    packCount: 110,
+    lockedQuestionCount: 501,
+    packCount: 121,
   },
 };
 
@@ -83,22 +90,24 @@ function normalizeShortAnswer(value) {
   return trimmed.replace(/^0+(?=\d)/, "");
 }
 
-function sessionStorageKey(subject, packId) {
-  return `eng_math_session_v1:${subject}:${packId}`;
+function sessionStorageKey(subject, packId, storageNamespace) {
+  return `eng_math_session_v1:${storageNamespace}:${subject}:${packId}`;
 }
 
-function removeSavedSession(subject, packId) {
+function removeSavedSession(subject, packId, storageNamespace) {
   if (typeof window === "undefined") return;
   try {
-    window.localStorage.removeItem(sessionStorageKey(subject, packId));
+    window.localStorage.removeItem(
+      sessionStorageKey(subject, packId, storageNamespace),
+    );
   } catch {
     // 브라우저 저장소를 사용할 수 없어도 현재 학습은 계속 진행한다.
   }
 }
 
-function readSavedSession(subject, packId, questions) {
+function readSavedSession(subject, packId, questions, storageNamespace) {
   if (typeof window === "undefined") return null;
-  const key = sessionStorageKey(subject, packId);
+  const key = sessionStorageKey(subject, packId, storageNamespace);
   try {
     const raw = window.localStorage.getItem(key);
     if (!raw) return null;
@@ -149,7 +158,14 @@ function readSavedSession(subject, packId, questions) {
   }
 }
 
-function saveSession(subject, packId, sessionId, questions, results) {
+function saveSession(
+  subject,
+  packId,
+  sessionId,
+  questions,
+  results,
+  storageNamespace,
+) {
   if (typeof window === "undefined") return;
   const payload = {
     version: SESSION_STORAGE_VERSION,
@@ -163,7 +179,7 @@ function saveSession(subject, packId, sessionId, questions, results) {
   };
   try {
     window.localStorage.setItem(
-      sessionStorageKey(subject, packId),
+      sessionStorageKey(subject, packId, storageNamespace),
       JSON.stringify(payload),
     );
   } catch {
@@ -193,8 +209,14 @@ function confidenceLabel(confidence) {
   );
 }
 
-function WeeklyLearningSummary({ summary, profile }) {
+function WeeklyLearningSummary({ summary, profile, syncStatus = "local" }) {
   const hasHistory = summary.answerCount > 0;
+  const recordScope =
+    syncStatus === "synced"
+      ? "회원 기록"
+      : syncStatus === "syncing"
+        ? "회원 기록 확인 중"
+        : "이 기기 기록";
 
   return (
     <section
@@ -228,7 +250,7 @@ function WeeklyLearningSummary({ summary, profile }) {
       `}</style>
       <div className="eng-math-weekly__topline">
         <h2>이번 주 학습</h2>
-        <span>최근 7일 · 완료 {summary.sessionCount}회</span>
+        <span>{recordScope} · 최근 7일 · 완료 {summary.sessionCount}회</span>
       </div>
       {hasHistory ? (
         <>
@@ -630,6 +652,83 @@ function ResultAnswer({ question, subject }) {
   );
 }
 
+function useMemberLearningSync(user, historyStorage) {
+  const authenticatedUserId = user?.id ?? null;
+  const [memberLearning, setMemberLearning] = useState({
+    userId: null,
+    status: authenticatedUserId ? "syncing" : "local",
+    summaries: null,
+  });
+
+  const refresh = useCallback(async () => {
+    if (!authenticatedUserId) return;
+
+    setMemberLearning({
+      userId: authenticatedUserId,
+      status: "syncing",
+      summaries: null,
+    });
+    try {
+      const result = await syncMemberLearningHistory({
+        supabase,
+        authenticatedUserId,
+        history: readLearningHistory(historyStorage),
+      });
+      setMemberLearning({
+        userId: authenticatedUserId,
+        status: "synced",
+        summaries: result.summaries,
+      });
+    } catch {
+      setMemberLearning({
+        userId: authenticatedUserId,
+        status: "error",
+        summaries: null,
+      });
+    }
+  }, [authenticatedUserId, historyStorage]);
+
+  useEffect(() => {
+    if (!authenticatedUserId) return undefined;
+    let active = true;
+    void syncMemberLearningHistory({
+      supabase,
+      authenticatedUserId,
+      history: readLearningHistory(historyStorage),
+    })
+      .then((result) => {
+        if (active) {
+          setMemberLearning({
+            userId: authenticatedUserId,
+            status: "synced",
+            summaries: result.summaries,
+          });
+        }
+      })
+      .catch(() => {
+        if (active) {
+          setMemberLearning({
+            userId: authenticatedUserId,
+            status: "error",
+            summaries: null,
+          });
+        }
+      });
+    return () => {
+      active = false;
+    };
+  }, [authenticatedUserId, historyStorage]);
+
+  if (memberLearning.userId !== authenticatedUserId) {
+    return {
+      status: authenticatedUserId ? "syncing" : "local",
+      summaries: null,
+      refresh,
+    };
+  }
+  return { ...memberLearning, refresh };
+}
+
 export default function EngMathPractice({ user }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -643,6 +742,12 @@ export default function EngMathPractice({ user }) {
   const packId = parameters.get("pack");
   const initialExam = parameters.get("exam");
   const initialTrack = parameters.get("track");
+  const historyStorage = useMemo(
+    () => createScopedLearningHistoryStorage(user?.id),
+    [user?.id],
+  );
+  const storageNamespace = user?.id ? `member:${user.id}` : "local";
+  const memberLearning = useMemberLearningSync(user, historyStorage);
   const { status, questions, catalog, boundary, error } =
     usePublicLearningData(subject);
   const question = useMemo(
@@ -671,10 +776,10 @@ export default function EngMathPractice({ user }) {
         ? buildDailyLearningPlan(
             selectedPack.questions,
             subject,
-            readLearningHistory(),
+            readLearningHistory(historyStorage),
           )
         : null,
-    [isDailyMode, selectedPack, subject],
+    [historyStorage, isDailyMode, selectedPack, subject],
   );
 
   const chooseSubject = (nextSubject) => {
@@ -705,6 +810,9 @@ export default function EngMathPractice({ user }) {
         navigate={navigate}
         onSubjectChange={chooseSubject}
         boundary={boundary}
+        memberSummary={memberLearning.summaries?.[subject] ?? null}
+        syncStatus={memberLearning.status}
+        historyStorage={historyStorage}
       />
     );
   }
@@ -753,6 +861,11 @@ export default function EngMathPractice({ user }) {
             : null
         }
         onCatalog={() => navigate(catalogUrl(subject, selectedPack))}
+        memberSummary={memberLearning.summaries?.[subject] ?? null}
+        syncStatus={memberLearning.status}
+        onLearningRecorded={memberLearning.refresh}
+        historyStorage={historyStorage}
+        storageNamespace={storageNamespace}
       />
     );
   }
@@ -786,12 +899,18 @@ function QuestionCatalog({
   navigate,
   onSubjectChange,
   boundary,
+  memberSummary,
+  syncStatus,
+  historyStorage,
 }) {
   const profile = SUBJECTS[subject];
-  const weeklySummary = readWeeklyLearningSummary(subject);
+  const weeklySummary = combineLocalAndMemberSummary(
+    readWeeklyLearningSummary(subject, new Date(), historyStorage),
+    memberSummary,
+  );
   const freePack = catalog.find((pack) => pack.access === "free") ?? null;
   const dailyPlan = freePack
-    ? readDailyLearningPlan(freePack.questions, subject)
+    ? readDailyLearningPlan(freePack.questions, subject, new Date(), historyStorage)
     : null;
   const examOptions = useMemo(() => {
     const options = new Map();
@@ -1102,12 +1221,16 @@ function QuestionCatalog({
           <h1>학습할 문항을 고르세요.</h1>
           <p className="eng-math-catalog__lead">
             {subject === "english"
-              ? "2017~2026학년도 평가원 10개년과 2027학년도 6월까지 868문항을 정리했습니다. 무료 5문항 외에는 잠금이며, 해설 완성 여부를 묶음마다 구분해 표시합니다."
-              : "2022학년도 6월 공통 첫 5문항은 검증 풀이와 함께 무료로 제공합니다. 정답·풀이·그림 의존성을 점검한 나머지 455문항은 잠금 상태입니다."}
+              ? "2017~2026학년도 평가원 10개년과 2027학년도 9월까지 896문항을 정리했습니다. 무료 5문항 외에는 잠금이며, 해설 완성 여부를 묶음마다 구분해 표시합니다."
+              : "2022학년도 6월 공통 첫 5문항은 검증 풀이와 함께 무료로 제공합니다. 정답·풀이·그림 의존성을 점검한 나머지 501문항은 잠금 상태입니다."}
           </p>
         </header>
 
-        <WeeklyLearningSummary summary={weeklySummary} profile={profile} />
+        <WeeklyLearningSummary
+          summary={weeklySummary}
+          profile={profile}
+          syncStatus={syncStatus}
+        />
 
         {freePack && dailyPlan ? (
           <section
@@ -1173,7 +1296,7 @@ function QuestionCatalog({
             className="eng-math-catalog__content-status"
             aria-label="영어 콘텐츠 상태 안내"
           >
-            <span>근거형 해설 검증 완료 307문항</span>
+            <span>근거형 해설 검증 완료 335문항</span>
             <span>원문·정답 검증 / 해설 구축 중 561문항</span>
           </section>
         )}
@@ -1371,9 +1494,14 @@ function LearningSession({
   dailyPlanItems,
   onNextPack,
   onCatalog,
+  memberSummary,
+  syncStatus,
+  onLearningRecorded,
+  historyStorage,
+  storageNamespace,
 }) {
   const [resumeCandidate, setResumeCandidate] = useState(() =>
-    readSavedSession(subject, packId, questions),
+    readSavedSession(subject, packId, questions, storageNamespace),
   );
   const [sessionId, setSessionId] = useState(
     () => resumeCandidate?.sessionId ?? createLearningSessionId(),
@@ -1383,7 +1511,7 @@ function LearningSession({
   const [finished, setFinished] = useState(false);
   const [retryQuestionIds, setRetryQuestionIds] = useState(null);
   const [weeklySummary, setWeeklySummary] = useState(() =>
-    readWeeklyLearningSummary(subject),
+    readWeeklyLearningSummary(subject, new Date(), historyStorage),
   );
   const isWrongRetry = Array.isArray(retryQuestionIds);
   const activeQuestions = useMemo(
@@ -1411,24 +1539,36 @@ function LearningSession({
     const next = [...results];
     next[currentIndex] = result;
     setResults(next);
-    if (!isWrongRetry) saveSession(subject, packId, sessionId, questions, next);
+    if (!isWrongRetry) {
+      saveSession(
+        subject,
+        packId,
+        sessionId,
+        questions,
+        next,
+        storageNamespace,
+      );
+    }
     if (next.length === activeQuestions.length) {
-      setWeeklySummary(
-        recordLearningSession({
+      const summary = recordLearningSession(
+        {
           sessionId,
           subject,
           packId,
           packLabel,
           isWrongRetry,
           results: next,
-        }),
+        },
+        historyStorage,
       );
+      setWeeklySummary(summary);
+      void onLearningRecorded?.();
     }
   };
 
   const moveForward = () => {
     if (currentIndex === activeQuestions.length - 1) {
-      if (!isWrongRetry) removeSavedSession(subject, packId);
+      if (!isWrongRetry) removeSavedSession(subject, packId, storageNamespace);
       setFinished(true);
       return;
     }
@@ -1447,8 +1587,8 @@ function LearningSession({
     setFinished(completed);
     setResumeCandidate(null);
     if (completed) {
-      setWeeklySummary(
-        recordLearningSession({
+      const summary = recordLearningSession(
+        {
           sessionId,
           subject,
           packId,
@@ -1456,14 +1596,17 @@ function LearningSession({
           isWrongRetry: false,
           results: resumeCandidate.results,
           completedAt: resumeCandidate.updatedAt,
-        }),
+        },
+        historyStorage,
       );
-      removeSavedSession(subject, packId);
+      setWeeklySummary(summary);
+      void onLearningRecorded?.();
+      removeSavedSession(subject, packId, storageNamespace);
     }
   };
 
   const startFreshSession = () => {
-    removeSavedSession(subject, packId);
+    removeSavedSession(subject, packId, storageNamespace);
     setResumeCandidate(null);
     setRetryQuestionIds(null);
     setSessionId(createLearningSessionId());
@@ -1471,7 +1614,7 @@ function LearningSession({
   };
 
   const restartSession = () => {
-    removeSavedSession(subject, packId);
+    removeSavedSession(subject, packId, storageNamespace);
     setRetryQuestionIds(null);
     setSessionId(createLearningSessionId());
     resetSessionState();
@@ -1482,7 +1625,7 @@ function LearningSession({
       .filter((result) => !result.isCorrect)
       .map((result) => result.questionId);
     if (wrongIds.length === 0) return;
-    removeSavedSession(subject, packId);
+    removeSavedSession(subject, packId, storageNamespace);
     setRetryQuestionIds(wrongIds);
     setSessionId(createLearningSessionId());
     resetSessionState();
@@ -1516,7 +1659,11 @@ function LearningSession({
         onCatalog={onCatalog}
         isWrongRetry={isWrongRetry}
         isDaily={isDaily}
-        weeklySummary={weeklySummary}
+        weeklySummary={combineLocalAndMemberSummary(
+          weeklySummary,
+          memberSummary,
+        )}
+        syncStatus={syncStatus}
       />
     );
   }
@@ -1554,6 +1701,7 @@ function SessionSummary({
   isWrongRetry,
   isDaily,
   weeklySummary,
+  syncStatus,
 }) {
   const profile = SUBJECTS[subject];
   const correctCount = results.filter((result) => result.isCorrect).length;
@@ -1774,6 +1922,7 @@ function SessionSummary({
             <WeeklyLearningSummary
               summary={weeklySummary}
               profile={profile}
+              syncStatus={syncStatus}
             />
 
             <ol className="eng-math-session-summary__list" aria-label="문항별 결과">
@@ -1886,7 +2035,10 @@ function PracticeQuestion({
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [shortAnswer, setShortAnswer] = useState("");
   const [confidence, setConfidence] = useState(null);
-  const [startedAt, setStartedAt] = useState(() => Date.now());
+  const questionTimerRef = useRef(null);
+  if (questionTimerRef.current === null) {
+    questionTimerRef.current = createActiveQuestionTimer();
+  }
   const [submitted, setSubmitted] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
   const currentAnswer = isShortAnswer
@@ -1907,11 +2059,33 @@ function PracticeQuestion({
       ? question.review.choiceFeedback?.[String(selectedChoice)] ?? null
       : null;
 
+  useEffect(() => {
+    const syncTimerWithPage = () => {
+      const isActive =
+        document.visibilityState === "visible" && document.hasFocus();
+      if (isActive) questionTimerRef.current.resume(Date.now());
+      else questionTimerRef.current.pause(Date.now());
+    };
+    syncTimerWithPage();
+    document.addEventListener("visibilitychange", syncTimerWithPage);
+    window.addEventListener("focus", syncTimerWithPage);
+    window.addEventListener("blur", syncTimerWithPage);
+    return () => {
+      questionTimerRef.current.pause(Date.now());
+      document.removeEventListener("visibilitychange", syncTimerWithPage);
+      window.removeEventListener("focus", syncTimerWithPage);
+      window.removeEventListener("blur", syncTimerWithPage);
+    };
+  }, []);
+
   const restart = () => {
     setSelectedChoice(null);
     setShortAnswer("");
     setConfidence(null);
-    setStartedAt(Date.now());
+    questionTimerRef.current.reset({
+      now: Date.now(),
+      active: document.visibilityState === "visible" && document.hasFocus(),
+    });
     setSubmitted(false);
     setShowExplanation(false);
   };
@@ -1922,6 +2096,7 @@ function PracticeQuestion({
 
   const submitAnswer = () => {
     if (!isReadyToSubmit || submitted) return;
+    const durationMs = questionTimerRef.current.pause(Date.now());
     setSubmitted(true);
     if (session) {
       session.onAnswer({
@@ -1931,7 +2106,7 @@ function PracticeQuestion({
         selectedAnswer: currentAnswer,
         correctAnswer: question.answer,
         isCorrect,
-        durationMs: Math.min(60 * 60 * 1000, Math.max(0, Date.now() - startedAt)),
+        durationMs: Math.min(60 * 60 * 1000, Math.max(0, durationMs)),
         confidence,
       });
     }
