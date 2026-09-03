@@ -352,4 +352,17 @@ assert.equal(conceptLibrarySource.includes("수능 수학 과목 선택"), true)
 assert.equal(conceptLibrarySource.includes("selectCourse"), true);
 assert.equal(conceptLibrarySource.includes("임의로 기출을 붙이지 않습니다"), true);
 
+const vercelConfiguration = JSON.parse(
+  fs.readFileSync(path.resolve("vercel.json"), "utf8"),
+);
+const conceptRouteRewrites = (vercelConfiguration.rewrites ?? []).filter(
+  (rule) =>
+    rule.source === "/math/concepts" && rule.destination === "/index.html",
+);
+assert.equal(
+  conceptRouteRewrites.length,
+  1,
+  "/math/concepts must resolve to the SPA entry on direct visits and reloads",
+);
+
 console.log("math concept library tests: PASS");

@@ -351,6 +351,7 @@
     },
     { "source": "/eng-math-beta", "destination": "/index.html" },
     { "source": "/eng-math/practice", "destination": "/index.html" },
+    { "source": "/math/concepts", "destination": "/index.html" },
     { "source": "/auth", "destination": "/index.html" },
     { "source": "/exams", "destination": "/index.html" },
     { "source": "/viewer", "destination": "/index.html" },
