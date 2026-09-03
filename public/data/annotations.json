@@ -6238,6 +6238,26 @@
         "sentFrom": "l20279cs36",
         "sentTo": "l20279cs38"
       }
+    ],
+    "l20279b": [
+      {
+        "type": "bracket",
+        "label": "A",
+        "sentFrom": "l20279bs8",
+        "sentTo": "l20279bs11"
+      },
+      {
+        "type": "bracket",
+        "label": "B",
+        "sentFrom": "l20279bs26",
+        "sentTo": "l20279bs27"
+      },
+      {
+        "type": "bracket",
+        "label": "C",
+        "sentFrom": "l20279bs50",
+        "sentTo": "l20279bs65"
+      }
     ]
   }
 }
