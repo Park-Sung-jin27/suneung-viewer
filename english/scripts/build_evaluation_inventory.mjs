@@ -244,28 +244,33 @@ function buildInventory(sourceDirectory, recordedInventory = null) {
 
     const manifestItem = manifestItems.get(`${exam.schoolYear}|${exam.session}`);
     ensure(sourceMode === "recorded" || manifestItem, "SOURCE_MANIFEST_EXAM", exam.id);
+    const recordedSourceArtifacts = recordedExams.get(exam.id)?.sourceArtifacts;
+    const usesExplanation = Boolean(
+      manifestItem?.files?.explain ||
+        (!manifestItem && recordedSourceArtifacts?.explanation),
+    );
     const sourceArtifacts = {
       problem: sourceArtifactFor(
         manifestItem,
         "problem",
         sourceDirectory,
-        recordedExams.get(exam.id)?.sourceArtifacts?.problem,
+        recordedSourceArtifacts?.problem,
         sourceMode,
       ),
       answer: sourceArtifactFor(
         manifestItem,
         "answer",
         sourceDirectory,
-        recordedExams.get(exam.id)?.sourceArtifacts?.answer,
+        recordedSourceArtifacts?.answer,
         sourceMode,
       ),
-      ...(manifestItem?.files?.explain
+      ...(usesExplanation
         ? {
             explanation: sourceArtifactFor(
               manifestItem,
               "explanation",
               sourceDirectory,
-              recordedExams.get(exam.id)?.sourceArtifacts?.explanation,
+              recordedSourceArtifacts?.explanation,
               sourceMode,
             ),
           }
@@ -274,7 +279,7 @@ function buildInventory(sourceDirectory, recordedInventory = null) {
               manifestItem,
               "script",
               sourceDirectory,
-              recordedExams.get(exam.id)?.sourceArtifacts?.script,
+              recordedSourceArtifacts?.script,
               sourceMode,
             ),
           }),
