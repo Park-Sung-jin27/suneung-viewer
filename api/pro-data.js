@@ -26,6 +26,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
 
+// 유입 회차 무료 개방 — 대표 확정 2026-09-03 (F-49)
+//   로그인(①②)은 그대로 요구하고, 이용권 검사(③)만 건너뛴다.
+//   그 외 회차는 기존 402 흐름을 그대로 유지한다.
+const FREE_PRO_YEARS = new Set(["2027_9월"]);
+
 function getSupabaseConfig() {
   const supabaseUrl = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
   const anonKey =
@@ -114,10 +119,14 @@ export default async function handler(req, res) {
     const user = await getAuthedUser(req);
     if (!user) return res.status(401).json({ error: "Login required" });
 
-    // ③ 이용권
-    const pass = await hasActivePass(user.id);
-    if (!pass.ok) {
-      return res.status(402).json({ error: "Pass required", reason: "no_pass" });
+    // ③ 이용권 — 유입 개방 회차(F-49)는 로그인만으로 통과시킨다.
+    if (!FREE_PRO_YEARS.has(req.query?.year)) {
+      const pass = await hasActivePass(user.id);
+      if (!pass.ok) {
+        return res
+          .status(402)
+          .json({ error: "Pass required", reason: "no_pass" });
+      }
     }
 
     // ④ 입력 검증 후 해당 세트만 절단
