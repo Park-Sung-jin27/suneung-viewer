@@ -3852,10 +3852,28 @@ function validateMath2027SeptemberRegisteredCandidate() {
   if (stableJson(metadata.sourceArtifacts) !== stableJson(expectedSources)) {
     fail("MATH_2027_09_SOURCE_METADATA");
   }
-  for (const [kind, source] of Object.entries(expectedSources)) {
-    const sourcePath = path.join(MATH_2027_09_SOURCE_DIRECTORY, source.filename);
-    if (!existsSync(sourcePath) || fileSha256(sourcePath) !== source.sha256) {
-      fail("MATH_2027_09_SOURCE_HASH", kind);
+  const sourceEntries = Object.entries(expectedSources).map(([kind, source]) => ({
+    kind,
+    source,
+    sourcePath: path.join(MATH_2027_09_SOURCE_DIRECTORY, source.filename),
+  }));
+  const availableSourceEntries = sourceEntries.filter(({ sourcePath }) =>
+    existsSync(sourcePath),
+  );
+  if (
+    availableSourceEntries.length > 0 &&
+    availableSourceEntries.length !== sourceEntries.length
+  ) {
+    fail(
+      "MATH_2027_09_SOURCE_SET",
+      `${availableSourceEntries.length}/${sourceEntries.length}`,
+    );
+  }
+  if (availableSourceEntries.length === sourceEntries.length) {
+    for (const { kind, source, sourcePath } of sourceEntries) {
+      if (fileSha256(sourcePath) !== source.sha256) {
+        fail("MATH_2027_09_SOURCE_HASH", kind);
+      }
     }
   }
 
