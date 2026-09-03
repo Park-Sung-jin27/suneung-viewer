@@ -43,6 +43,30 @@ const SPEC = [
     },
     why: "pat 이 L4 로 채워졌고 결론줄이 「❌ 지문과 어긋나는 부적절한 진술」로 ok:false 와 맞아졌다",
   },
+
+  // ── D-190 트랙2 r20279b 3선지 — 심사관 gate3 통과 뒤 (2026-09-02) ────
+  //   세 선지 모두 ok=false 인데 결론줄이 「✅ 적절」이었고 pat 이 0(10종에 없는 값)이었다.
+  //   D-190 트랙2 에서 해설을 다시 쓰고 pat 을 부여해 두 결함을 함께 없앴다.
+  //   ★ S-10 의 「수리가 끝난 뒤」에서 '끝'은 사람 검증까지다(심사관 확정).
+  //     게이트가 ⑫축에서 이 3선지를 계속 가리키고 있던 것은 검증 전 안전핀이었고,
+  //     gate3 를 통과한 지금이 지울 시점이다.
+  ...[
+    { qId: 7, num: 2, pat: "R4", tail: "표준적 입장의 '범주 일치'를 '관계에 따른 범주 변동'으로 바꿔 읽은" },
+    { qId: 7, num: 5, pat: "R1", tail: "표준적 입장이 부정하는 '피행위자' 지위를 동물에게 부여한" },
+    { qId: 8, num: 3, pat: "R3", tail: "<보기>가 배제한 '대표 구성원 → 종 전체' 추론을 그대로 한" },
+  ].map((x) => ({
+    yk: "2027_9월", setId: "r20279b", qId: x.qId, num: x.num,
+    clear: ["_pat_error", "_ok_analysis_mismatch"],
+    validation: {
+      passed: true,
+      resolved: ["PAT_FIELD_MISSING", "ok_analysis_conflict"],
+      note: `PAT_FIELD_MISSING 은 pat ${x.pat} 부여로, ok_analysis_conflict 는 해설 재작성`
+        + "(D-190 트랙2 · 심사관 승인 문안)으로 해소했다. pat 구분 기준은 "
+        + "docs/backlog_pat_criteria.md 참조. 재실행이 아니라 근거를 명시한 갱신이다.",
+      updated_by: "D-190 트랙2",
+    },
+    why: `pat 이 0 에서 ${x.pat} 로 채워졌고, 결론줄이 「❌ ${x.tail} 부적절한 진술 [${x.pat}]」로 ok:false 와 맞아졌다`,
+  })),
 ];
 
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
