@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { CC, FIGURE_IMAGE_MAP } from "./constants";
+import { useSearchParams } from "react-router-dom";
+import { CC, FIGURE_IMAGE_MAP, MODE } from "./constants";
 
 // ── 기호 밑줄 + 영역 라벨 hide (/g 플래그 금지) ──
 // SYM_SPLIT: ㉠-㉿ⓐ-ⓩ①-⑤ + [A-F] 라벨 단독 path 안 단일 정규식 분리.
@@ -902,6 +903,7 @@ function renderAll(sents, sel, annotations, visualMarks, aiCitedSentId) {
 
 export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
   const panelRef = useRef(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // 스크롤 helper — [data-hl] 또는 [data-ai-cited] 안 first 자동 검색 path.
   function scrollToSelector(selector) {
@@ -973,6 +975,25 @@ export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
   //   ※ 문구는 심사관이 확정한다. 지금은 자리만 만든다.
   const hasNoHighlight =
     !!sel && !(passageSet.sents || []).some((s) => getHL(s, sel));
+
+  // 근거가 안 켜지는 사유는 두 가지다. 문구를 섞으면 사실과 다른 안내가 된다.
+  //   (a) 데이터 — 그 선지에 cs_ids·cs_spans 가 없거나 sentId 가 어긋난 경우
+  //   (b) 정책 — 유료 조각이 아예 안 실린 상태(비로그인·무료 계정의 보기 모드).
+  //       이때는 선지가 근거를 정상 보유하고 있어도 클라이언트에 값이 없다.
+  //   판정 근거: 세트 안 어느 선지든 cs 를 하나라도 갖고 있으면 조각이 실린 것이다.
+  const csAnywhere = (passageSet.questions || []).some((q) =>
+    (q.choices || []).some(
+      (c) => (c.cs_ids?.length ?? 0) > 0 || (c.cs_spans?.length ?? 0) > 0,
+    ),
+  );
+  const noticeKind = !hasNoHighlight ? null : csAnywhere ? "data" : "policy";
+
+  function startStudyMode() {
+    const next = new URLSearchParams(searchParams);
+    next.set("mode", MODE.STUDY);
+    next.delete("review");
+    setSearchParams(next, { replace: true });
+  }
   // 풀이 모드에서 sel이 있어도 '전체 제출' 전(submitted 알 수 없으므로)
   // QuizPanel이 submitted 전엔 onSelChange를 호출하지 않으므로 sel은 null 유지됨
   // → 별도 처리 없이 sel 그대로 사용
@@ -994,9 +1015,10 @@ export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
       >
         {passageSet.range} · {passageSet.title}
       </div>
-      {hasNoHighlight && (
+      {noticeKind && (
         <div
           data-nomap-notice
+          data-notice-kind={noticeKind}
           style={{
             fontSize: "0.78rem",
             lineHeight: 1.6,
@@ -1005,9 +1027,39 @@ export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
             border: "1px solid #fcd34d",
             borderRadius: "8px",
             padding: "10px 12px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "8px",
           }}
         >
-          이 선지는 지문 근거 표시가 준비되지 않았습니다
+          {noticeKind === "policy" ? (
+            <>
+              <span>
+                답을 입력하면 이 선지의 지문 근거가 형광펜으로 표시됩니다
+              </span>
+              {mode !== MODE.STUDY && (
+                <button
+                  onClick={startStudyMode}
+                  style={{
+                    border: "1px solid #d97706",
+                    background: "#fff",
+                    color: "#92400e",
+                    borderRadius: "6px",
+                    padding: "5px 12px",
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    fontFamily: "'Noto Sans KR', sans-serif",
+                  }}
+                >
+                  풀이 모드로 시작하기
+                </button>
+              )}
+            </>
+          ) : (
+            <span>이 선지는 지문 근거 표시가 준비되지 않았습니다</span>
+          )}
         </div>
       )}
       <div
