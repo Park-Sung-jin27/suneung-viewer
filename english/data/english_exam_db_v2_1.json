@@ -1,55 +1,59 @@
 {
   "schemaVersion": "english-exam-db-v1+v2.1",
-  "createdAt": "2026-06-10T00:50:11.731Z",
+  "createdAt": "2026-09-02T08:28:28.974Z",
   "separationRule": "This English database is independent from public/data/all_data_204.json.",
   "sourceManifest": "raw_sources/english_eval_pdfs/manifest.json",
   "scope": {
     "fromSchoolYear": 2017,
     "toSchoolYear": 2027,
-    "sessions": ["6월", "9월", "수능"],
+    "sessions": [
+      "6월",
+      "9월",
+      "수능"
+    ],
     "questionRange": "18~45",
     "corePatternQuestionRange": "20~24, 31~40",
     "csatForm": "홀수형"
   },
   "summary": {
-    "examCount": 31,
-    "questionCount": 868,
-    "corePatternTargetCount": 465,
+    "examCount": 32,
+    "questionCount": 896,
+    "corePatternTargetCount": 480,
     "countsByGroup": {
-      "blank": 148,
-      "grammar": 31,
-      "info": 124,
-      "irrelevant": 31,
-      "long": 155,
-      "order": 124,
-      "practical": 62,
-      "summary": 31,
-      "topic": 125,
-      "vocab": 37
+      "blank": 153,
+      "grammar": 32,
+      "info": 128,
+      "irrelevant": 32,
+      "long": 160,
+      "order": 128,
+      "practical": 64,
+      "summary": 32,
+      "topic": 129,
+      "vocab": 38
     },
     "countsByType": {
-      "내용 일치": 31,
-      "도표": 31,
-      "목적": 31,
-      "무관한 문장": 31,
-      "문장 삽입": 62,
-      "밑줄 의미": 25,
-      "빈칸": 124,
-      "순서": 62,
-      "심경 변화": 31,
-      "안내문 일치": 62,
-      "어법": 31,
-      "어휘": 37,
-      "요약문": 31,
-      "요지": 31,
-      "장문 내용": 31,
-      "장문 순서": 31,
-      "장문 어휘": 31,
-      "장문 제목": 31,
-      "장문 지칭": 31,
-      "제목": 32,
-      "주장": 30,
-      "주제": 31
+      "내용 일치": 32,
+      "도표": 32,
+      "목적": 32,
+      "무관한 문장": 32,
+      "문장 삽입": 64,
+      "밑줄 의미": 26,
+      "빈칸": 128,
+      "순서": 64,
+      "심경 변화": 32,
+      "안내문 일치": 64,
+      "어법": 32,
+      "어휘": 38,
+      "요약문": 32,
+      "요지": 32,
+      "장문 내용": 32,
+      "장문 순서": 32,
+      "장문 어휘": 32,
+      "장문 제목": 32,
+      "장문 지칭": 32,
+      "제목": 33,
+      "주장": 31,
+      "주제": 32
     },
     "missingAnswerCount": 0,
     "missingAnswerQuestionIds": [],
@@ -1976,6 +1980,68 @@
           "url": "https://wdown.ebsi.co.kr/W61001/01exam/20260604/go3/eng_1_hsj_7712E7U1_2.pdf",
           "ok": true,
           "size": 306955,
+          "error": ""
+        }
+      },
+      "answerCount": 45,
+      "extractionWarnings": []
+    },
+    {
+      "id": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "questionIds": [
+        "2027_09_18",
+        "2027_09_19",
+        "2027_09_20",
+        "2027_09_21",
+        "2027_09_22",
+        "2027_09_23",
+        "2027_09_24",
+        "2027_09_25",
+        "2027_09_26",
+        "2027_09_27",
+        "2027_09_28",
+        "2027_09_29",
+        "2027_09_30",
+        "2027_09_31",
+        "2027_09_32",
+        "2027_09_33",
+        "2027_09_34",
+        "2027_09_35",
+        "2027_09_36",
+        "2027_09_37",
+        "2027_09_38",
+        "2027_09_39",
+        "2027_09_40",
+        "2027_09_41",
+        "2027_09_42",
+        "2027_09_43",
+        "2027_09_44",
+        "2027_09_45"
+      ],
+      "sourceFiles": {
+        "problem": {
+          "fileName": "2027학년도_9월_영어_문제.pdf",
+          "url": "https://cdn.kice.re.kr/09mo-27suneung/09mo-27suneung_3.pdf",
+          "ok": true,
+          "size": 2049508,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2027학년도_9월_영어_정답.pdf",
+          "url": "https://cdn.kice.re.kr/09mo-27suneung/09mo-27suneung_3a.pdf",
+          "ok": true,
+          "size": 49317,
+          "error": ""
+        },
+        "script": {
+          "fileName": "2027학년도_9월_영어_듣기대본.pdf",
+          "url": "https://cdn.kice.re.kr/09mo-27suneung/09mo-27suneung_31.pdf",
+          "ok": true,
+          "size": 853052,
           "error": ""
         }
       },
@@ -49869,6 +49935,1546 @@
       "extraction": {
         "rawChars": 276,
         "sharedPassageChars": 2177,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_18",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 18,
+      "type": "목적",
+      "group": "practical",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "18. 다음 글의 목적으로 가장 적절한 것은?",
+      "rawText": "18. \t다음 글의 목적으로 가장 적절한 것은?\nDear Mr. Steve Carter,\nCongratulations on the 60th graduation ceremony of Yuoralis\nHigh School. As a former student, I am extremely proud\nthat the school has become one of the best schools in the\nlocal community. I felt honored when I received your kind\ninvitation to deliver a speech at the ceremony. However, I\nam deeply sorry to say that I will not be able to give a speech\nbecause I have a very important overseas business trip\nscheduled during that time. I would have loved to speak to\nthe graduating students, but I must decline your invitation\nto this meaningful celebration. I wish you a memorable\ngraduation ceremony.\nSincerely,\nJane Whittmore\n① 졸업식 일정을 문의하려고\n② 졸업식 연설 초청을 거절하려고\n③ 졸업식 자원 봉사를 지원하려고\n④ 졸업식의 미흡했던 점을 지적하려고\n⑤ 졸업식에서 공연할 팀을 추천하려고",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "졸업식 일정을 문의하려고"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "졸업식 연설 초청을 거절하려고"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "졸업식 자원 봉사를 지원하려고"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "졸업식의 미흡했던 점을 지적하려고"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "졸업식에서 공연할 팀을 추천하려고"
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 775,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_19",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 19,
+      "type": "심경 변화",
+      "group": "practical",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "19. 다음 글에 드러난 Katie의 심경 변화로 가장 적절한 것은?",
+      "rawText": "19. \t다음 글에 드러난 Katie의 심경 변화로 가장 적절한 것은?\nOn her way to school, Katie thought of the argument she\nhad with Sarah the day before and wiped tears from her eyes.\n“I can’t believe I fought with my best friend,” she cried. “I just\nwant things to go back to normal.” It seemed that nothing\ncould help her overcome this painful moment. As she walked\ninto her classroom, she heard a familiar voice. Sarah was\ncalling her name. “Katie, I’m sorry for the things I said\nyesterday.” A big smile spread across Katie’s face. “I’m sorry,\ntoo. Let’s never fight again.” Katie and Sarah hugged each\nother tightly and laughed the way they always did before.\n① nervous → frustrated \t② sad \t→ delighted\n③ excited → calm \t④ bored → happy\n⑤ hopeful → disappointed",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "nervous → frustrated"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "sad → delighted"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "excited → calm"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "bored → happy"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "hopeful → disappointed"
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 739,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_20",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 20,
+      "type": "주장",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "rawText": "20. \t다음 글에서 필자가 주장하는 바로 가장 적절한 것은?\nCurrent social changes driven by technological advancements\ndemand a fundamental rethinking in our approach to education.\nIn particular, lifelong learning is no longer optional; it is essential.\nWe must recognize that the rapidly evolving socioeconomic\necology requires individuals to engage in constant upskilling\nand self-transformation. If we can enhance lifelong learning\ninitiatives, we will not only promote personal growth and\nwell-being but also sustain national productivity and global\ncompetitiveness. Furthermore, our efforts will support social\nintegration by providing opportunities for people from various\nbackgrounds to connect and move on together. Investing in\nlifelong education thus is not simply an extra expense; we must\nconsider it a necessity for survival and success as we encounter\nsignificant changes in the years ahead. By prioritizing lifelong\neducation, we will be able to navigate this changing world\nwith confidence and a sense of fulfillment.\n① 변화하는 사회에 대응하기 위해 평생교육을 강화해야 한다.\n② 융합 교육을 통해 미래 사회의 인재를 적극 육성해야 한다.\n③ 경제 교육을 강화하여 투자에 대한 바른 인식을 갖도록 해야 한다.\n④ 기술 발전을 위해 특정 분야의 전문 지식 습득을 장려해야 한다.\n⑤ 평생교육 기관을 설립하여 사회의 균형 발전을 도모해야 한다.\n이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에\n따라 답을 하시기 바랍니다.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 2 of 8 --\n\n3\n3 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "변화하는 사회에 대응하기 위해 평생교육을 강화해야 한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "융합 교육을 통해 미래 사회의 인재를 적극 육성해야 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "경제 교육을 강화하여 투자에 대한 바른 인식을 갖도록 해야 한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "기술 발전을 위해 특정 분야의 전문 지식 습득을 장려해야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "평생교육 기관을 설립하여 사회의 균형 발전을 도모해야 한다. 이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에 따라 답을 하시기 바랍니다. 이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다. -- 2 of 8 -- 3 3 8"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1293,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_21",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 21,
+      "type": "밑줄 의미",
+      "group": "blank",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "21. 밑줄 친 holding a mirror up to society가 다음 글에서 의미",
+      "rawText": "21. \t밑줄 친 holding a mirror up to society가 다음 글에서 의미\n하는 바로 가장 적절한 것은? [3점]\nSocial media companies are working to keep you on site or\nattempting to deliver results useful to you. You can see this\npersonalization reflected in the results of search engines,\nwhich try to maximize relevance: searching for “bakery” in\nNew York should return different results than searching in\nParis. Features like the little predictive-text cues of autocomplete\nalso look to maximize relevance by suggesting refinements:\ntyping in “cats” might prompt the user with “cats movie” or\n“cats that don’t shed.” Autocomplete suggestions offer a look\ninto \tthe \talgorithm’s \tunderstanding \tof \taccumulated \tuser\nbehavior ― an immensely important part of how key social\nmedia algorithms work. The outputs are personalized, but the\ndata sets are massive, and the platforms are mining for\nsimilarities across vast quantities of user information. If a\nwhole lot of users near you or similar to you complete the\nsearch that you’ve begun with specific words, the autocomplete\nalgorithm takes that into account and may be more likely to\nsuggest them to you. Since the results are derived from data\nrelated to millions of searches, autocomplete is, in a sense,\nholding a mirror up to society.\n① manipulating search results in favor of the socially influential\n② revealing commonalities in users and their shared interests\n③ censoring personal data utilizing social media algorithms\n④ collecting information useful for building user networks\n⑤ examining apparently random data to find regularity",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "manipulating search results in favor of the socially influential"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "revealing commonalities in users and their shared interests"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "censoring personal data utilizing social media algorithms"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "collecting information useful for building user networks"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "examining apparently random data to find regularity"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1557,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_22",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 22,
+      "type": "요지",
+      "group": "topic",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "rawText": "22. \t다음 글의 요지로 가장 적절한 것은?\nStudies show that people who sit in the front row learn and\nretain more than others in the audience, partially because those\nin the front row are more eager to learn, and they show more\nattention to the speaker in order to avoid being called on.\nThose in the middle sections are the next most attentive and\nask the most questions, as the middle section is considered a\nsafe area, surrounded by others. The side areas and back are\nthe least responsive and attentive. In one experiment we\nconducted, we placed name cards on participants’ seats so\nthey could not take their usual positions. We intentionally sat\nenthusiastic people to the sides and rear of the room, and\nwell-known back-row hermits sat in the front. We found that\nthis strategy not only increased the participation and recall of\nthe normally negative participants who sat up front, it also\ndecreased the participation and recall of the usually positive\nparticipants who had been sent to the back.\n* hermit: 은둔자\n① 개인의 성향을 고려한 좌석 배정이 업무의 효율성을 높인다.\n② 앉은 위치가 학습 참여와 배운 내용의 기억에 영향을 준다.\n③ 학습자들의 적극적인 참여는 생산적인 토론에 필수적이다.\n④ 자유로운 질의응답은 강연 분위기를 결정하는 요인이다.\n⑤ 수업 집중도와 기억력은 긍정적 상관관계를 보인다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "개인의 성향을 고려한 좌석 배정이 업무의 효율성을 높인다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "앉은 위치가 학습 참여와 배운 내용의 기억에 영향을 준다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "학습자들의 적극적인 참여는 생산적인 토론에 필수적이다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "자유로운 질의응답은 강연 분위기를 결정하는 요인이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "수업 집중도와 기억력은 긍정적 상관관계를 보인다."
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1165,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_23",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 23,
+      "type": "주제",
+      "group": "topic",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "rawText": "23. \t다음 글의 주제로 가장 적절한 것은?\nPopular culture loves to label dopamine as the “pleasure\nmolecule,” yet science reveals a richer, more nuanced reality.\nDopamine’s true role is found not simply in the thrill of\nreward, but in the dance of anticipation, striving, and imagining\nwhat could be. The rush of motivation that energizes you at\nthe start of a new day, the focus that allows you to solve\ncomplex problems, and the curiosity that fuels ambition are all\norchestrated by dopamine. Dopamine doesn’t give contentment;\nit delivers possibility. It sets the stage for new challenges,\nframes future goals as attainable, and propels you to ask\n“What if?” about new opportunities, relationships, or aspirations.\nThe anticipation of a meaningful conversation, the excitement\nfor a fresh project, and even just the temptation of a delicious\nmeal are all sparked by dopamine’s drive for future reward.\nCritically, dopamine rewards the process, not just the finished\nresult. It’s what sharpens focus and fills ordinary moments\nwith potential.\n* strive: 노력하다\n① limitation of dopamine as a chemical reaction orchestrator\n② impact of dopamine on sparking intense pleasure\n③ usefulness of dopamine in improving cognitive skills\n④ importance of rewards in sustaining motivation\n⑤ force of dopamine as a facilitator of realizing possibilities",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "limitation of dopamine as a chemical reaction orchestrator"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "impact of dopamine on sparking intense pleasure"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "usefulness of dopamine in improving cognitive skills"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "importance of rewards in sustaining motivation"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "force of dopamine as a facilitator of realizing possibilities"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1322,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_24",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 24,
+      "type": "제목",
+      "group": "topic",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "24. 다음 글의 제목으로 가장 적절한 것은?",
+      "rawText": "24. \t다음 글의 제목으로 가장 적절한 것은?\nThe new views about and questions being asked about aging\ncould \tbe \tdetected \tacross \tsociety. \t“Something \tstrange \tis\nhappening in America,” wrote Marj Jackson Levin for the St.\nLouis Post-Dispatch in 1988, finding that what she called “the\nformer boundaries of age” were being expanded or relaxed in\nmany arenas. Whether it was fortysomething baseball players,\nmidlife women having babies, or the oldest president in the\nnation’s history, it did indeed appear that the preconceptions\nsurrounding aging were weakening. As baby boomers entered\nmidlife, the idea of oldness was being pushed back, and the\nexpectations for what people should or should not be doing at\na particular age broadened. Turning fifty had only recently\nbeen commonly viewed as the unofficial turning of the corner\ninto one’s senior years, for example, but now that number did\nnot automatically mean one could not start a new career or\nfamily. In a good number of cases, at least, age was becoming\nless significant, a clear victory for those lobbying for a less\nage-centric society.\n① Fading Boundaries: Evolving Views of Aging\n② Forever Young! The Rise of the Anti-aging Industry\n③ How Multiple Perspectives Narrow Generation Gaps\n④ Older and Wiser: What the Elderly Can Teach Us\n⑤ Do Modern Lifestyles Really Slow Aging?\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 3 of 8 --\n\n4\n4 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Fading Boundaries: Evolving Views of Aging"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Forever Young! The Rise of the Anti-aging Industry"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "How Multiple Perspectives Narrow Generation Gaps"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Older and Wiser: What the Elderly Can Teach Us"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Do Modern Lifestyles Really Slow Aging? 㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ -- 3 of 8 -- 4 4 8"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1376,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_25",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 25,
+      "type": "도표",
+      "group": "info",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "25. 다음 도표의 내용과 일치하지 않는 것은?",
+      "rawText": "25. \t다음 도표의 내용과 일치하지 않는 것은?\nThe above graph shows the percentages of U.K. respondents\nby age who self-reported their dietary choices as Meat-eater,\nFlexitarian, or Vegetarian, based on data released in 2026.\n① The most common dietary choice among the respondents\nwas Meat-eater in all age groups shown. ② With respect to\nthe category of Vegetarian, Group A, the youngest age group,\nshowed the highest percentage among the four age groups.\n③ In Group B, the percentage of Meat-eater was lower than\n70 percent. ④ When it comes to the percentage of Flexitarian\nin each age group, the highest was in Group C. ⑤ For Group D,\nthe oldest age group, less than five percent of the respondents\nreported Vegetarian as their dietary choice.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "The most common dietary choice among the respondents was Meat-eater in all age groups shown."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "With respect to the category of Vegetarian, Group A, the youngest age group, showed the highest percentage among the four age groups."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "In Group B, the percentage of Meat-eater was lower than 70 percent."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "When it comes to the percentage of Flexitarian in each age group, the highest was in Group C."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "For Group D, the oldest age group, less than five percent of the respondents reported Vegetarian as their dietary choice."
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 728,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_26",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 26,
+      "type": "내용 일치",
+      "group": "info",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "26. Chuck Jones에 관한 다음 글의 내용과 일치하지 않는 것은?",
+      "rawText": "26. \tChuck Jones에 관한 다음 글의 내용과 일치하지 않는 것은?\nChuck Jones was an influential director and artist whose\nwork shaped animated films and cartoon production. He was\nborn in Spokane, Washington, in 1912, though he grew up in\nLos Angeles. As a child, Jones had many opportunities to\ndraw. He used the leftover pencils and paper that his father\nbrought him from work. Jones began his career in animation\nin 1930 and was quickly promoted. In the 1940s, he created\nfamous characters such as Wile E. Coyote and the Road\nRunner. He directed the famous cartoon film How the Grinch\nStole Christmas, which is still enjoyed by many people today.\nJones started his own company, Chuck Jones Enterprises, in\n1970. For his contribution to the field of animation, he received\nan Honorary Academy Award in 1996. Late in his life, he\nestablished a non-profit organization supporting art education\nand other creative skills.\n① 어렸을 때 그림을 그릴 기회가 많았다.\n② Wile E. Coyote와 같은 유명한 캐릭터를 만들었다.\n③ 많은 사람들이 여전히 즐기는 만화 영화를 감독했다.\n④ 애니메이션 분야에 기여한 공로로 1970년에 상을 받았다.\n⑤ 예술 교육을 지원하는 비영리 기구를 설립했다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "어렸을 때 그림을 그릴 기회가 많았다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Wile E. Coyote와 같은 유명한 캐릭터를 만들었다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "많은 사람들이 여전히 즐기는 만화 영화를 감독했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "애니메이션 분야에 기여한 공로로 1970년에 상을 받았다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "예술 교육을 지원하는 비영리 기구를 설립했다."
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1052,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_27",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 27,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "27. RCQ High School Food Waste Reduction Competition에",
+      "rawText": "27. \tRCQ High School Food Waste Reduction Competition에\n관한 다음 안내문의 내용과 일치하지 않는 것은?\nRCQ High School Food Waste Reduction\nCompetition\nOur school is holding a food waste reduction competition\nto promote sustainable living. This competition has been held\nevery year since 2023. Your effort makes a difference!\nWhen: October 1 to October 31, 2026\nWho: All classes of RCQ High School will participate.\nHow\n∙Every lunch, we will give a point to each student who\ndoesn’t leave food on their tray.\n∙Students’ points will be combined by class. Winning classes\nwill be decided by each class’s points.\nPrizes\nNumber of Winners \tReward (per class)\n1st prize \t1 class \tSnacks worth $200\n2nd prize \t1 class \tSnacks worth $150\n3rd prize \t2 classes \tSnacks worth $100\n① 2023년 이래로 매년 개최되고 있다.\n② 한 달간 진행된다.\n③ RCQ 고등학교의 모든 학급이 참가할 것이다.\n④ 수상 학급은 각 학급의 점수로 결정될 것이다.\n⑤ 2등상은 두 학급에 주어진다.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "2023년 이래로 매년 개최되고 있다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "한 달간 진행된다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "RCQ 고등학교의 모든 학급이 참가할 것이다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "수상 학급은 각 학급의 점수로 결정될 것이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "2등상은 두 학급에 주어진다."
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 861,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_28",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 28,
+      "type": "안내문 일치",
+      "group": "info",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "28. Newstar Voice Acting Course에 관한 다음 안내문의 내용과",
+      "rawText": "28. \tNewstar Voice Acting Course에 관한 다음 안내문의 내용과\n일치하는 것은?\nNewstar Voice Acting Course\nDo you dream of hearing your own voice in an animation\nor movie? If so, our voice acting course is perfect for you.\nWhen & Where\n∙6 p.m. to 8 p.m. every Thursday\n∙Room #223, Newstar Building\nCourse Content\nClass Schedule \tContent\nWeek 1 \tWays to Breathe and Vocalize\nWeek 2 \tScript Analysis\nWeek 3 \tAnimation Dubbing\nWeek 4 \tMovie Dubbing\nRegistration\n∙The registration fee is $170.\n∙You can register only in the first week of every month.\n∙To register, call 789-331-0234 or email us at n#star@v#ac.com.\nSpecial Benefits\n∙Video-recorded class lectures will be provided for no\nadditional fee.\n∙You will have a chance to meet the famous voice actor\nRichard Choi, who will share his know-how with you.\n① 매주 주말마다 진행된다.\n② 1주 차 수업에 스크립트 분석을 한다.\n③ 매월 마지막 주에만 등록할 수 있다.\n④ 추가 비용을 내면 녹화된 수업 강의가 제공될 것이다.\n⑤ 유명한 성우를 만날 기회가 있을 것이다.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 4 of 8 --\n\n5\n5 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "매주 주말마다 진행된다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "1주 차 수업에 스크립트 분석을 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "매월 마지막 주에만 등록할 수 있다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "추가 비용을 내면 녹화된 수업 강의가 제공될 것이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "유명한 성우를 만날 기회가 있을 것이다. 이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다. -- 4 of 8 -- 5 5 8"
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 957,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_29",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 29,
+      "type": "어법",
+      "group": "grammar",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "29. 다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?",
+      "rawText": "29. \t다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?\nLeaders come in all shapes and sizes, but successful leaders\ntend to have one thing in common: the ability to share someone\nelse’s feelings, known as empathy. While empathy forms in\neveryone to some degree, effective leaders know how to develop\nthis \temotional \tguidance \tsystem ① to connect \twith \tothers’\nfeelings and perspectives. However, empathy in leaders is more\nthan ② simply being kind to employees, clients, and customers.\nEmpathetic people seem more approachable, focusing on the\nwords of others. Listening to the needs of employees ③ enable\nleaders \tto \tclearly \tidentify \twhat \tmakes \tthem \tfeel \theard.\nUtilized in this way, empathy can be considered a crucial part\nof ④ maintaining employee satisfaction. Leaders who are unable\nto surround themselves with competent employees will not be\nsuccessful. Indeed, a leader’s failure to empathize with talented\nworkers is one of the main situations ⑤ that could lead them to\nleave an organization. In this case, the organization must spend\nprecious time and money to find suitable replacements for them.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "to connect with others’ feelings and perspectives. However, empathy in leaders is more than"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "simply being kind to employees, clients, and customers. Empathetic people seem more approachable, focusing on the words of others. Listening to the needs of employees"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "enable leaders to clearly identify what makes them feel heard. Utilized in this way, empathy can be considered a crucial part of"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "maintaining employee satisfaction. Leaders who are unable to surround themselves with competent employees will not be successful. Indeed, a leader’s failure to empathize with talented workers is one of the main situations"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "that could lead them to leave an organization. In this case, the organization must spend precious time and money to find suitable replacements for them."
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1094,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_30",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 30,
+      "type": "어휘",
+      "group": "vocab",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "30. 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지",
+      "rawText": "30. \t다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지\n않은 것은? [3점]\nThere is good news about pests and medicinal herbs: Most\nherbs either repel pests or attract beneficial insects that help\nkeep pest populations in check. So the more herbs you grow,\nthe more you will attract pollinators and “good” bugs that like\nto eat the more ① destructive pests, which will lead to a more\nsuccessful garden! When it comes to managing pests in the\ngarden, it’s important to remember that you are ② altering the\necosystem of an area that existed on its own before you planted\nanything into it. So the first couple years in a new garden can\nfeel like wave after wave of pests are ③ overtaking your\nplants. This is normal. The goal of a long-term healthy garden\nis to work with the environment you are trying to cultivate to\n④ allow the plants, pollinators, and even the annoying pests to\nbalance out. Immediately attempting to remove a new pest entirely\nfrom your garden will only fu r ther these initial imbalances\nand ⑤ shorten the process of helping your garden grow better\non its own.\n* repel: 쫓아버리다 \t** pollinator: 꽃가루 매개자\n[31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "destructive pests, which will lead to a more successful garden! When it comes to managing pests in the garden, it’s important to remember that you are"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "altering the ecosystem of an area that existed on its own before you planted anything into it. So the first couple years in a new garden can feel like wave after wave of pests are"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "overtaking your plants. This is normal. The goal of a long-term healthy garden is to work with the environment you are trying to cultivate to"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "allow the plants, pollinators, and even the annoying pests to balance out. Immediately attempting to remove a new pest entirely from your garden will only fu r ther these initial imbalances and"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "shorten the process of helping your garden grow better on its own. * repel: 쫓아버리다 ** pollinator: 꽃가루 매개자 [31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오."
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1133,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_31",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 31,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "31. What stresses you out more than anything? Perhaps it’s",
+      "rawText": "31. \tWhat stresses you out more than anything? Perhaps it’s\nspeaking in front of others. For many, this is so stressful it\neven has a name: glossophobia. The explanation for why it’s\nuncomfortable to have everyone’s eyes on you is probably\nthat, for almost all of our evolution, it’s been extremely important\nnot to be excluded from the group. To prepare for what might\nhappen if you are evaluated and socially shamed ― and thus\nalienated from the group ― your brain fires up the stress system\nand your heart begins to beat harder. Our natural sensitivity to\nbeing evaluated by other people is another example of our\nbrain not being adapted to the modern world. If we give a bad\npresentation at work, we are unlikely to lose our job and thus\nrisk starving to death. But in the world we long ago evolved\nfor, exclusion from the group could be a matter of life and\ndeath. \twas not merely a matter of safety but also\nof survival. You simply couldn’t make it on your own.\n* starve: 굶주리다\n① Belonging \t② Confidence\n③ Endurance \t④ Learning\n⑤ Competition",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Belonging"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Confidence"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Endurance"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Learning"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Competition"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1046,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_32",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 32,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "32. Not only are our sensory systems organized to detect change,",
+      "rawText": "32. \tNot only are our sensory systems organized to detect change,\nbut they are most tuned to stimuli that are unexpected and\nsurprising. When you move your body and produce tactile\nsensations, these stimuli are less noticeable to you than are\nsensations produced by another individual. The sensations of\nyour own legs touching one another when you cross your legs,\nfor example, are generally less noticeable than a similar touch on\nyour leg would be if someone sitting next to you brushed their\nleg against yours. Likewise, your reaction to your cat jumping\nonto your lap is likely to be much greater if you have your eyes\nclosed when it happens. This differential response to surprising\ntactile stimuli appears to be a defense mechanism that has\nadaptive significance. It is probably also the reason why being\ntickled by someone else is more effective at producing an\nemotional reaction than trying to tickle yourself. Our enjoyment\nof being tickled generally diminishes as we age. This is likely\ndue to the fact that adults are \t,\nand hence are more difficult to surprise, than are children.\n* tactile: 촉각의 \t** tickle: 간질이다\n① more cautious of acting immediately\n② less sensitive to others’ reactions\n③ stronger in their ability to focus\n④ slower in adapting to changes\n⑤ better at anticipating stimuli\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 5 of 8 --\n\n6\n6 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "more cautious of acting immediately"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "less sensitive to others’ reactions"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "stronger in their ability to focus"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "slower in adapting to changes"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "better at anticipating stimuli 㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ -- 5 of 8 -- 6 6 8"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1356,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_33",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 33,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "33. While a picture transports the spectator almost instantly",
+      "rawText": "33. \tWhile a picture transports the spectator almost instantly\ninto a landscape, language can only describe it detail by detail,\nbringing it slowly into the reader’s mind. How can a literary\nwork capture the feel of a place in both its atmosphere and its\ntopography without losing the reader in a descriptive forest? One\nsolution, proposed by Balzac, is to \t.\nBalzac’s novels open with detailed portrayals of the setting, but\nthe descriptions never threaten the reader’s sense of orientation\nbecause they trace a precise path through the fictional world.\nWhen the novel describes a house, the narrator inspects the\nbuilding in a systematic manner, approaching it from the street,\nexamining the garden and the front, entering through the main\ndoor, and walking from room to room, as would a real estate\nagent or a prospective resident. The reader ends up with a precise\nnotion of the layout of the building, all the way down to the\nfloor plan. [3점]\n* topography: 지형\n① flood the reader’s mind with abstract images\n② present small objects in detail\n③ tie description to a moving body\n④ distance readers from a scene\n⑤ portray a landscape from upward angles",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "flood the reader’s mind with abstract images"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "present small objects in detail"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "tie description to a moving body"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "distance readers from a scene"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "portray a landscape from upward angles"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1153,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_34",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 34,
+      "type": "빈칸",
+      "group": "blank",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "34. Surprise is the fundamental joke mechanism. Most punch",
+      "rawText": "34. \tSurprise is the fundamental joke mechanism. Most punch\nlines rely on an element of surprise for their effect ― that’s\nwhy they’re not funny the third time you hear them. The\njoke-teller’s skill lies in judging exactly how much of a\nsurprise the audience is prepared to take. He must make a\nseries of assumptions about what they will understand, what\ntheir reference points are, and how relaxed they appear to be.\nJerry Seinfeld once compared telling a joke to attempting to\nleap a metaphorical canyon, taking the audience with you. The\nsetup to the joke is the near-side cliff, and the punch line is the\nfar side. If they’re too far apart, the listeners don’t make it to\nthe other side. And if they are too close together, the audience\njust steps across the gap and doesn’t experience a thrilling leap\nof any kind. The joke-hearers get far more pleasure from the\njoke \t. [3점]\n* canyon: 협곡\n① if they feel relaxed enough to laugh\n② when it matches their expectations\n③ if it is about someone else\n④ if they have to do a little work\n⑤ when they fail to fully understand it",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "if they feel relaxed enough to laugh"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "when it matches their expectations"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "if it is about someone else"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "if they have to do a little work"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "when they fail to fully understand it"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1074,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_35",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 35,
+      "type": "무관한 문장",
+      "group": "irrelevant",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "35. 다음 글에서 전체 흐름과 관계 없는 문장은?",
+      "rawText": "35. \t다음 글에서 전체 흐름과 관계 없는 문장은?\nTourists make intense and short-term use of a very limited\nnumber of historical assets and cultural attractions, including\nmaterial and non-material ones. ① The reason is to be found\nin the fact that tourist experience in cities is measured in days\nand hours, even in minutes in the case of cultural attractions or\nseconds in particular sites. ② In addition, cultural tourists do\nnot often repeat their visit to the same place, and therefore\nthey are continuously looking for new attractions. ③ As a\nresult of this, a process of selection of cultural assets takes\nplace since only a few buildings and only a small number of\nsocial representations are able to be adapted to the tourist visit.\n④ International festivals bring tourists closer to the community\nby offering a highly interactive and engaging experience. ⑤ The\nmain difference between the selection of cultural assets made\nfor locals and the one made for tourists is that in the second\ncase, only a small choice is made among the largest, most\nimpressive and unique resources.\n[36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한\n것을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "The reason is to be found in the fact that tourist experience in cities is measured in days and hours, even in minutes in the case of cultural attractions or seconds in particular sites."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "In addition, cultural tourists do not often repeat their visit to the same place, and therefore they are continuously looking for new attractions."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "As a result of this, a process of selection of cultural assets takes place since only a few buildings and only a small number of social representations are able to be adapted to the tourist visit."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "International festivals bring tourists closer to the community by offering a highly interactive and engaging experience."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "The main difference between the selection of cultural assets made for locals and the one made for tourists is that in the second case, only a small choice is made among the largest, most impressive and unique resources. [36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것을 고르시오."
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1111,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_36",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 36,
+      "type": "순서",
+      "group": "order",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "36.",
+      "rawText": "36.\nOur choices and actions send messages to others about\nour values. Consider a manager who communicates to her\nemployees in a call center that “customer care is the most\nimportant thing for our company.”\n(A) In many cases, performance is multidimensional, but\ncompensation is only given to one aspect of performance,\ntypically \tthe \tone \tthat \tis \teasiest \tto \tmeasure. \tSimple\n“one-aspect” compensation sends a clear message to the\nworkers: concentrate on what we’re paying you for and\nignore everything else.\n(B) That’s a signal to others regarding values. Now, imagine\nthat the manager sets the incentives such that employees\nare paid by the number of calls they answer. This incentive\nsends a very different signal about what the manager is\nlooking for: it’s about being fast, which comes at the\nexpense of quality of care.\n(C) Such mixed signals leave the employees confused about\nthe manager’s values and expectations. This mixed signals\nproblem is channeled into a simple question: what should\nbe rewarded?\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 6 of 8 --\n\n7\n7 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": ""
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": ""
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(A) (B) (C) － － － (C) (C) (B) － － － (B) (A) (A)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": ""
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(B) (C) － － (A) (A) － － (C) (B) 㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ -- 6 of 8 -- 7 7 8"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1158,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_37",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 37,
+      "type": "순서",
+      "group": "order",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "37.",
+      "rawText": "37.\nThe initial selection of farmed Atlantic salmon took\nplace from fish drawn from forty different river systems.\n(A) But \twhatever \tthe \tmanifestation \tof \tdifference \tthat\noccurred in different species of salmon, the first salmon\nfarmers realized that crossing and recrossing the specific\nfamilies from the original forty rivers would result in\nsalmon that grew faster.\n(B) And because salmon, unlike cattle and sheep, can produce\nmany thousands of offspring in the course of their lives,\nonce favorable individuals were found, just a few strong\nmales and females could form the basis of a whole new\nrace of highly productive fish. A domestic population\ncould be created quickly that would be quite different\nfrom the initial wild ancestors.\n(C) Every salmon river has its own unique set of challenges to\nwhich fish must adapt. Some rivers are very long, like the\nYukon, and require animals that can build up massive fat\nreserves in order to survive the extended journey. Others\nare very far north, with only a short season of warmer\ntemperatures, \tand \trequire \ta \tfish \tthat \tcan \tmaximize\ngrowth, particularly during its younger phase. [3점]\n* manifestation: 표현 \t** offspring: 자손\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n[38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장\n적절한 곳을 고르시오.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": ""
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": ""
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(A) (B) (C) － － － (C) (C) (B) － － － (B) (A) (A)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": ""
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(B) (C) － － (A) (A) － － (C) (B) [38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장 적절한 곳을 고르시오."
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1324,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_38",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 38,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 5,
+      "textStatus": "ok",
+      "stem": "38.",
+      "rawText": "38.\nCitizen engagement involves people helping governments,\nrather than scientists, to improve public services and policies\nin their communities.\nThe growth and success of citizen science and citizen\nengagement has been made possible by the Internet and mobile\ntechnology, encouraging and coordinating the efforts of millions\nof people throughout the world. ( ① ) Websites, smartphone\napps, and social media have been instrumental in expanding\nthe reach and impact of a diversity of citizen science projects\nacross time and geographical zones. ( ② ) Citizen science\ninvolves local people helping scientists carry out a scientific\nproject at scale. ( ③ ) Currently, thousands of such projects\nhave been set up all over the world, whereby volunteers help\nout in a number of research areas, including biodiversity,\nair quality, astronomy, and environmental issues. ( ④ ) They\ndo so by participating in scientific activities such as monitoring\nplants and wildlife, collecting air and water samples, categorizing\ngalaxies, \tand \tanalyzing \tDNA sequences. ( ⑤ ) Examples\ninclude setting up and managing a website that offers local\nservices for community disasters and creating an emergency\nresponse team when a disaster occurs.",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": ") Websites, smartphone apps, and social media have been instrumental in expanding the reach and impact of a diversity of citizen science projects across time and geographical zones. ("
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": ") Citizen science involves local people helping scientists carry out a scientific project at scale. ("
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": ") Currently, thousands of such projects have been set up all over the world, whereby volunteers help out in a number of research areas, including biodiversity, air quality, astronomy, and environmental issues. ("
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": ") They do so by participating in scientific activities such as monitoring plants and wildlife, collecting air and water samples, categorizing galaxies, and analyzing DNA sequences. ("
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": ") Examples include setting up and managing a website that offers local services for community disasters and creating an emergency response team when a disaster occurs."
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1221,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_39",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 39,
+      "type": "문장 삽입",
+      "group": "order",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "39.",
+      "rawText": "39.\nHowever, melody alone would not normally keep the\nlistener’s attention for long because a piece of music needs\nsome variety and contrasting elements from time to time.\nRegardless of musical style, an increase of focus on certain\nparameters in a musical passage should be accompanied by a\ndecrease in focus on others. ( ① ) The human mind has an\nattention limit, beyond which music is most likely to be\nperceived as lacking order or direction. ( ② ) For instance, if\nthe intention is to focus on melodic lines, then one should\navoid making too many contrasting timbre variations while the\nmelodies are unfolding; otherwise, the timbre may distract\nattention away from the pitch. ( ③ ) One of the most difficult\nissues in the practice of composition is to find the right balance\nbetween repetition and diversity: a well-balanced piece of music\nshould unfold naturally to listeners. ( ④ ) In most Western\nmusical \tstyles, \tthis \tunfolding \tresults \tfrom \ta \tnetwork \tof\nrelationships \tbetween \tmusical \tattributes \tthat \tcombine \tin\ndifferent ways to create situations where contrasts can take place.\n( ⑤ ) Such contrasts are normally preceded by a preparatory\nstage, which builds upon the listener’s expectations. [3점]\n* timbre: 음색",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": ") The human mind has an attention limit, beyond which music is most likely to be perceived as lacking order or direction. ("
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": ") For instance, if the intention is to focus on melodic lines, then one should avoid making too many contrasting timbre variations while the melodies are unfolding; otherwise, the timbre may distract attention away from the pitch. ("
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": ") One of the most difficult issues in the practice of composition is to find the right balance between repetition and diversity: a well-balanced piece of music should unfold naturally to listeners. ("
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": ") In most Western musical styles, this unfolding results from a network of relationships between musical attributes that combine in different ways to create situations where contrasts can take place. ("
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": ") Such contrasts are normally preceded by a preparatory stage, which builds upon the listener’s expectations. [3점] * timbre: 음색"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1233,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_40",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 40,
+      "type": "요약문",
+      "group": "summary",
+      "answer": 1,
+      "textStatus": "ok",
+      "stem": "40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),",
+      "rawText": "40. \t다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),\n(B)에 들어갈 말로 가장 적절한 것은?\nMany designers would argue that the most important\nelement of lighting is visibility. Some even refer to it as the\nprimary function of lighting. Visibility simply refers to the\nprinciple of using light to reveal or illuminate objects. In\nthe early days, the job of the designer was nothing more\nthan to create enough light so that the audience or occupants\nof a space could see. In many ways, this philosophy of\nlighting was based on the premise that more was better,\nand many believed that the more footcandles or lumens\nplaced on a stage or in a room, the better visibility that you\nhad. Since the 1950s or ’60s, theatrical designing moved\ntoward a concept that we call selective visibility, which\nsimply refers to revealing to an audience only what needs\nto be seen. Hence, a less-revealing image on stage might\nbe more appropriate for the dramatic action than a fully\nilluminated stage. In selective visibility, areas of low intensity,\nshadows, silhouettes, and high contrast can become effective\nelements in a lighting designer’s set of tools.\n* illuminate: 비추다 \t** premise: 전제\n󰀻\nWhile stage lighting designs in the early days focused on\n(A) \tvisibility, they later shifted to \t(B)\nillumination to enhance dramatic effect.\n(A) \t(B) \t(A) \t(B)\n① maximizing …… strategic \t② increasing…… uniform\n③ controlling …… minimal \t④ reducing …… targeted\n⑤ limiting \t…… purposeful\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 7 of 8 --\n\n8\n8 8",
+      "sharedPassage": "",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "maximizing …… strategic"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "increasing…… uniform"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "controlling …… minimal"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "reducing …… targeted"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "limiting …… purposeful 㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ -- 7 of 8 -- 8 8 8"
+        }
+      ],
+      "corePatternTarget": true,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 1488,
+        "sharedPassageChars": 0,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_41",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 41,
+      "type": "장문 제목",
+      "group": "long",
+      "answer": 3,
+      "textStatus": "ok",
+      "stem": "41. 윗글의 제목으로 가장 적절한 것은?",
+      "rawText": "41. \t윗글의 제목으로 가장 적절한 것은?\n① Why Do Advertisers Trick Careless People?\n② Accurate Claims Matter for Consumer Trust\n③ Curiosity over Truth: How to Attract Consumers\n④ How Can We Deal with Exaggerated Product Claims?\n⑤ To Buy or Not to Buy? What Makes Consumers Hesitate",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nIn a consumer research classic, Maloney proposed that\nthe disbelief most people experience when encountering\nexaggerated product claims is often overwhelmed by a natural\ncuriosity. When advertising information conflicts with existing\nbeliefs, the resulting disagreement must be somehow resolved.\nThis is often done by (a) yielding to the message and trying\nout the product in an attempt to readjust personal attitudes\ntoward the brand. In his study, a sample of housewives was\nexposed to advertisements for food products and then divided\ninto two groups: those participants that found the ad claims to\nbe believable and the others that thought they were hard to\nbelieve. The latter group was further divided into two groups,\nthose who (b) confidently disbelieved the claims and those\nwho had what Maloney described as a curious nonbelief. The\nlatter was tied into beliefs that actual product experience\nwas (c) necessary to fully judge the claims. Few consumers\nwho clearly disbelieved the message were interested in trying\nthe product (18%). However, Maloney’s results showed that\nmore consumers who were in the curious nonbelief group\nwere ready to try the product (44%) than in the group that\nexpressed no concerns about (i.e., believed) the advertising\nclaims (34%). The results suggest that advertising that causes\nconsumers not to believe the message claims but makes them\n(d) indifferent may be the most effective form of new product\nadvertising. Convincing consumers that the claims about a\nnew product are true is not necessary to (e) create interest in\nproduct trial.\n* overwhelm: 압도하다",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Why Do Advertisers Trick Careless People?"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Accurate Claims Matter for Consumer Trust"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Curiosity over Truth: How to Attract Consumers"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "How Can We Deal with Exaggerated Product Claims?"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "To Buy or Not to Buy? What Makes Consumers Hesitate"
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 266,
+        "sharedPassageChars": 1623,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_42",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 42,
+      "type": "장문 어휘",
+      "group": "long",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "42. 밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은",
+      "rawText": "42. \t밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은\n것은? [3점]\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nIn a consumer research classic, Maloney proposed that\nthe disbelief most people experience when encountering\nexaggerated product claims is often overwhelmed by a natural\ncuriosity. When advertising information conflicts with existing\nbeliefs, the resulting disagreement must be somehow resolved.\nThis is often done by (a) yielding to the message and trying\nout the product in an attempt to readjust personal attitudes\ntoward the brand. In his study, a sample of housewives was\nexposed to advertisements for food products and then divided\ninto two groups: those participants that found the ad claims to\nbe believable and the others that thought they were hard to\nbelieve. The latter group was further divided into two groups,\nthose who (b) confidently disbelieved the claims and those\nwho had what Maloney described as a curious nonbelief. The\nlatter was tied into beliefs that actual product experience\nwas (c) necessary to fully judge the claims. Few consumers\nwho clearly disbelieved the message were interested in trying\nthe product (18%). However, Maloney’s results showed that\nmore consumers who were in the curious nonbelief group\nwere ready to try the product (44%) than in the group that\nexpressed no concerns about (i.e., believed) the advertising\nclaims (34%). The results suggest that advertising that causes\nconsumers not to believe the message claims but makes them\n(d) indifferent may be the most effective form of new product\nadvertising. Convincing consumers that the claims about a\nnew product are true is not necessary to (e) create interest in\nproduct trial.\n* overwhelm: 압도하다",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 84,
+        "sharedPassageChars": 1623,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_43",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 43,
+      "type": "장문 순서",
+      "group": "long",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로",
+      "rawText": "43. \t주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로\n가장 적절한 것은?\n①\n③\n⑤\n(B)\n(C)\n(D)\n－\n－\n－\n(D)\n(D)\n(C)\n－\n－\n－\n(C)\n(B)\n(B)\n②\n④\n(C)\n(D)\n－\n－\n(B)\n(B)\n－\n－\n(D)\n(C)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nTim adopted a dog a few months ago. When he met his dog\nfor the first time, he named him after his favorite character,\nMickey. Mickey was a healthy dog, but he soon seemed to\nlack energy. Tim thought that taking care of a dog was much\nharder than he had expected. So, he decided to sign up for a\ndog \ttraining \tcourse. \tAt \tthe \ttraining \tcenter, \the \tmet \tan\ninstructor named Jack. He emphasized to Tim, “Be sure to\nwalk (a) your dog daily. Dogs need regular exercise to be\nhappy and healthy.”\n(B)\nWhen Tim and Mickey arrived at the park Jack had\nrecommended, dozens of dogs were already jumping and\nplaying. Mickey looked nervous in the unfamiliar surroundings.\nTim said, “Don’t worry, Mickey. It’ll be fun.” Just then, Tim\nsaw a boy about (b) his age standing with a small dog.\nGathering his courage, Tim walked over to him. “Hi, I’m Tim.\nCan I introduce my dog to yours?” The boy replied, “Sure.\nI’m Daniel. Oh, it looks like they like each other already!”\n(C)\nHaving something in common as dog owners, Tim and\nDaniel enjoyed talking to each other. They spent the next two\nhours pleasantly chatting and decided to walk their dogs\ntogether regularly. “See you soon,” said Tim as (c) he and\nMickey left the park. Over the next few weeks, the boys and\ntheir dogs became great friends. After returning from a walk\none day, Tim said to Mickey, “Walking you felt like a burden\nat first, but now I see doing things for (d) you can be great\nfor me, too!”\n(D)\nBeing sure to follow Jack’s advice, Tim took Mickey for a\nwalk every day. However, this extra responsibility soon\nseemed like a burden, and Tim felt exhausted. One day, Tim\ngot a call from Jack. “Hello, Tim. How’s everything going\nwith Mickey?” Tim replied, “Actually, it’s pretty hard walking\nhim every day. We’ve been taking the same route, and it has\nbecome a little boring.” Jack offered (e) him a new idea.\n“How about going to Happy Dog Park?” Tim said, “That’s a\ngreat idea!”",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": ""
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": ""
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(B) (C) (D) － － － (D) (D) (C) － － － (C) (B) (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": ""
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) (D) － － (B) (B) － － (D) (C)"
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 139,
+        "sharedPassageChars": 1968,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_44",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 44,
+      "type": "장문 지칭",
+      "group": "long",
+      "answer": 4,
+      "textStatus": "ok",
+      "stem": "44. 밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른",
+      "rawText": "44. \t밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nTim adopted a dog a few months ago. When he met his dog\nfor the first time, he named him after his favorite character,\nMickey. Mickey was a healthy dog, but he soon seemed to\nlack energy. Tim thought that taking care of a dog was much\nharder than he had expected. So, he decided to sign up for a\ndog \ttraining \tcourse. \tAt \tthe \ttraining \tcenter, \the \tmet \tan\ninstructor named Jack. He emphasized to Tim, “Be sure to\nwalk (a) your dog daily. Dogs need regular exercise to be\nhappy and healthy.”\n(B)\nWhen Tim and Mickey arrived at the park Jack had\nrecommended, dozens of dogs were already jumping and\nplaying. Mickey looked nervous in the unfamiliar surroundings.\nTim said, “Don’t worry, Mickey. It’ll be fun.” Just then, Tim\nsaw a boy about (b) his age standing with a small dog.\nGathering his courage, Tim walked over to him. “Hi, I’m Tim.\nCan I introduce my dog to yours?” The boy replied, “Sure.\nI’m Daniel. Oh, it looks like they like each other already!”\n(C)\nHaving something in common as dog owners, Tim and\nDaniel enjoyed talking to each other. They spent the next two\nhours pleasantly chatting and decided to walk their dogs\ntogether regularly. “See you soon,” said Tim as (c) he and\nMickey left the park. Over the next few weeks, the boys and\ntheir dogs became great friends. After returning from a walk\none day, Tim said to Mickey, “Walking you felt like a burden\nat first, but now I see doing things for (d) you can be great\nfor me, too!”\n(D)\nBeing sure to follow Jack’s advice, Tim took Mickey for a\nwalk every day. However, this extra responsibility soon\nseemed like a burden, and Tim felt exhausted. One day, Tim\ngot a call from Jack. “Hello, Tim. How’s everything going\nwith Mickey?” Tim replied, “Actually, it’s pretty hard walking\nhim every day. We’ve been taking the same route, and it has\nbecome a little boring.” Jack offered (e) him a new idea.\n“How about going to Happy Dog Park?” Tim said, “That’s a\ngreat idea!”",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 78,
+        "sharedPassageChars": 1968,
+        "choiceCount": 5,
+        "answerStatus": "ok",
+        "textStatus": "ok"
+      }
+    },
+    {
+      "id": "2027_09_45",
+      "examId": "2027_09",
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "session": "9월",
+      "qid": 45,
+      "type": "장문 내용",
+      "group": "long",
+      "answer": 2,
+      "textStatus": "ok",
+      "stem": "45. 윗글에 관한 내용으로 적절하지 않은 것은?",
+      "rawText": "45. \t윗글에 관한 내용으로 적절하지 않은 것은?\n① Mickey는 Tim이 좋아하는 캐릭터의 이름이었다.\n② Mickey는 공원에 도착하자마자 즐겁게 뛰어다녔다.\n③ Tim은 Mickey를 다른 개에게 소개하려 했다.\n④ Tim과 Daniel은 자신의 개를 함께 산책시키기로 했다.\n⑤ Tim은 Jack과의 통화에서 고민을 이야기했다.\n* 확인 사항\n◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인\n하시오.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 8 of 8 --",
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nTim adopted a dog a few months ago. When he met his dog\nfor the first time, he named him after his favorite character,\nMickey. Mickey was a healthy dog, but he soon seemed to\nlack energy. Tim thought that taking care of a dog was much\nharder than he had expected. So, he decided to sign up for a\ndog \ttraining \tcourse. \tAt \tthe \ttraining \tcenter, \the \tmet \tan\ninstructor named Jack. He emphasized to Tim, “Be sure to\nwalk (a) your dog daily. Dogs need regular exercise to be\nhappy and healthy.”\n(B)\nWhen Tim and Mickey arrived at the park Jack had\nrecommended, dozens of dogs were already jumping and\nplaying. Mickey looked nervous in the unfamiliar surroundings.\nTim said, “Don’t worry, Mickey. It’ll be fun.” Just then, Tim\nsaw a boy about (b) his age standing with a small dog.\nGathering his courage, Tim walked over to him. “Hi, I’m Tim.\nCan I introduce my dog to yours?” The boy replied, “Sure.\nI’m Daniel. Oh, it looks like they like each other already!”\n(C)\nHaving something in common as dog owners, Tim and\nDaniel enjoyed talking to each other. They spent the next two\nhours pleasantly chatting and decided to walk their dogs\ntogether regularly. “See you soon,” said Tim as (c) he and\nMickey left the park. Over the next few weeks, the boys and\ntheir dogs became great friends. After returning from a walk\none day, Tim said to Mickey, “Walking you felt like a burden\nat first, but now I see doing things for (d) you can be great\nfor me, too!”\n(D)\nBeing sure to follow Jack’s advice, Tim took Mickey for a\nwalk every day. However, this extra responsibility soon\nseemed like a burden, and Tim felt exhausted. One day, Tim\ngot a call from Jack. “Hello, Tim. How’s everything going\nwith Mickey?” Tim replied, “Actually, it’s pretty hard walking\nhim every day. We’ve been taking the same route, and it has\nbecome a little boring.” Jack offered (e) him a new idea.\n“How about going to Happy Dog Park?” Tim said, “That’s a\ngreat idea!”",
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Mickey는 Tim이 좋아하는 캐릭터의 이름이었다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Mickey는 공원에 도착하자마자 즐겁게 뛰어다녔다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Tim은 Mickey를 다른 개에게 소개하려 했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Tim과 Daniel은 자신의 개를 함께 산책시키기로 했다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Tim은 Jack과의 통화에서 고민을 이야기했다. * 확인 사항 ◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인 하시오. 이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다. -- 8 of 8 --"
+        }
+      ],
+      "corePatternTarget": false,
+      "source": {
+        "problemFile": "2027학년도_9월_영어_문제.pdf",
+        "answerFile": "2027학년도_9월_영어_정답.pdf",
+        "explainFile": null
+      },
+      "extraction": {
+        "rawChars": 285,
+        "sharedPassageChars": 1968,
         "choiceCount": 5,
         "answerStatus": "ok",
         "textStatus": "ok"

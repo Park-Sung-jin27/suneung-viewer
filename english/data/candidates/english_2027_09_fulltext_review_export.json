@@ -1,0 +1,1830 @@
+{
+  "schemaVersion": "english-fulltext-review-export-v1",
+  "exportId": "english_2027_09_18_45_fulltext_review",
+  "status": "internal_review_only",
+  "publicConnected": false,
+  "sourceCandidateId": "english_2027_09_18_45",
+  "sourceArtifacts": {
+    "problem": {
+      "filename": "2027학년도_9월_영어_문제.pdf",
+      "sha256": "745d64d94e0719735b88a10802fbbd5053b4982c855199396e58fe2f53b81cf0"
+    },
+    "answer": {
+      "filename": "2027학년도_9월_영어_정답.pdf",
+      "sha256": "c49d980f3ff9db1ba6dcc5c5208c3e8b43cf100ec5581abd3594abb6dd93189e"
+    },
+    "script": {
+      "filename": "2027학년도_9월_영어_듣기대본.pdf",
+      "sha256": "078aeb4d4496f44b85ef1fde0925fcdd6646fcfaf0fb6c94c1da70f168b40ab0"
+    }
+  },
+  "scope": {
+    "exam": "2027학년도 9월 모의평가 영어",
+    "questionRange": "18-45",
+    "questionCount": 28,
+    "rawTextQuestionCount": 28,
+    "translationQuestionCount": 28
+  },
+  "integrity": {
+    "questionIds": [
+      "2027_09_18",
+      "2027_09_19",
+      "2027_09_20",
+      "2027_09_21",
+      "2027_09_22",
+      "2027_09_23",
+      "2027_09_24",
+      "2027_09_25",
+      "2027_09_26",
+      "2027_09_27",
+      "2027_09_28",
+      "2027_09_29",
+      "2027_09_30",
+      "2027_09_31",
+      "2027_09_32",
+      "2027_09_33",
+      "2027_09_34",
+      "2027_09_35",
+      "2027_09_36",
+      "2027_09_37",
+      "2027_09_38",
+      "2027_09_39",
+      "2027_09_40",
+      "2027_09_41",
+      "2027_09_42",
+      "2027_09_43",
+      "2027_09_44",
+      "2027_09_45"
+    ],
+    "rawTextFingerprint": "7a74d1fbc2aef4fe595e54cbfde33e8fe33d4093a5696bcfdcf0197da1ce74d9",
+    "reviewFingerprint": "452cea730568e2f924380e5c7e2b8e38f7a4ffd4a6fa0777b887d8307ba0dfd2"
+  },
+  "usageRestrictions": [
+    "검수 전용 내부 파일",
+    "공개 데이터 생성 입력으로 사용 금지",
+    "원문 대조 승인 전 잠금 해제 금지"
+  ],
+  "questions": [
+    {
+      "id": "2027_09_18",
+      "qid": 18,
+      "type": "목적",
+      "group": "practical",
+      "problemPage": 2,
+      "answer": 2,
+      "answerMark": "②",
+      "stem": "18. 다음 글의 목적으로 가장 적절한 것은?",
+      "rawText": "18. \t다음 글의 목적으로 가장 적절한 것은?\nDear Mr. Steve Carter,\nCongratulations on the 60th graduation ceremony of Yuoralis\nHigh School. As a former student, I am extremely proud\nthat the school has become one of the best schools in the\nlocal community. I felt honored when I received your kind\ninvitation to deliver a speech at the ceremony. However, I\nam deeply sorry to say that I will not be able to give a speech\nbecause I have a very important overseas business trip\nscheduled during that time. I would have loved to speak to\nthe graduating students, but I must decline your invitation\nto this meaningful celebration. I wish you a memorable\ngraduation ceremony.\nSincerely,\nJane Whittmore\n① 졸업식 일정을 문의하려고\n② 졸업식 연설 초청을 거절하려고\n③ 졸업식 자원 봉사를 지원하려고\n④ 졸업식의 미흡했던 점을 지적하려고\n⑤ 졸업식에서 공연할 팀을 추천하려고",
+      "rawTextChars": 775,
+      "sharedPassage": "",
+      "sourceTextForReview": "18. \t다음 글의 목적으로 가장 적절한 것은?\nDear Mr. Steve Carter,\nCongratulations on the 60th graduation ceremony of Yuoralis\nHigh School. As a former student, I am extremely proud\nthat the school has become one of the best schools in the\nlocal community. I felt honored when I received your kind\ninvitation to deliver a speech at the ceremony. However, I\nam deeply sorry to say that I will not be able to give a speech\nbecause I have a very important overseas business trip\nscheduled during that time. I would have loved to speak to\nthe graduating students, but I must decline your invitation\nto this meaningful celebration. I wish you a memorable\ngraduation ceremony.\nSincerely,\nJane Whittmore\n① 졸업식 일정을 문의하려고\n② 졸업식 연설 초청을 거절하려고\n③ 졸업식 자원 봉사를 지원하려고\n④ 졸업식의 미흡했던 점을 지적하려고\n⑤ 졸업식에서 공연할 팀을 추천하려고",
+      "sourceTextForReviewChars": 775,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "졸업식 일정을 문의하려고"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "졸업식 연설 초청을 거절하려고"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "졸업식 자원 봉사를 지원하려고"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "졸업식의 미흡했던 점을 지적하려고"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "졸업식에서 공연할 팀을 추천하려고"
+        }
+      ],
+      "review": {
+        "fullTranslation": "Steve Carter 선생님께, Yuoralis 고등학교의 제60회 졸업식을 축하드립니다. 졸업생으로서 학교가 지역 사회 최고의 학교 중 하나가 된 것을 매우 자랑스럽게 생각합니다. 졸업식 연설 초청을 받고 영광이었습니다. 그러나 그 기간에 중요한 해외 출장이 예정되어 있어 연설할 수 없습니다. 졸업생들에게 꼭 이야기하고 싶었지만 이 뜻깊은 행사 초청을 거절해야 합니다. 기억에 남는 졸업식이 되기를 바랍니다. Jane Whittmore 드림.",
+        "summary": "정답 ②. 졸업식 연설 초청을 영광스럽게 여기지만 해외 출장 때문에 참석할 수 없어 정중히 거절하는 편지입니다.",
+        "typeApproach": "목적 문제는 수신자에게 하는 핵심 행동을 찾습니다. 이 글에서는 초청에 감사한 뒤 거절 의사를 직접 밝힌 문장이 결정적입니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "I must decline your invitation",
+            "charStart": 547,
+            "role": "거절 의사",
+            "translation": "당신의 초청을 거절해야 한다고 직접 밝힙니다."
+          }
+        ],
+        "correctReason": "행사 일정을 묻거나 지원하는 글이 아니라 연설 초청을 받아들일 수 없다고 통보하므로 ②입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "졸업식 일정을 문의하려고",
+          "reason": "출장 일정은 거절 이유로 제시되었을 뿐, 졸업식 날짜를 묻는 내용은 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_19",
+      "qid": 19,
+      "type": "심경 변화",
+      "group": "practical",
+      "problemPage": 2,
+      "answer": 2,
+      "answerMark": "②",
+      "stem": "19. 다음 글에 드러난 Katie의 심경 변화로 가장 적절한 것은?",
+      "rawText": "19. \t다음 글에 드러난 Katie의 심경 변화로 가장 적절한 것은?\nOn her way to school, Katie thought of the argument she\nhad with Sarah the day before and wiped tears from her eyes.\n“I can’t believe I fought with my best friend,” she cried. “I just\nwant things to go back to normal.” It seemed that nothing\ncould help her overcome this painful moment. As she walked\ninto her classroom, she heard a familiar voice. Sarah was\ncalling her name. “Katie, I’m sorry for the things I said\nyesterday.” A big smile spread across Katie’s face. “I’m sorry,\ntoo. Let’s never fight again.” Katie and Sarah hugged each\nother tightly and laughed the way they always did before.\n① nervous → frustrated \t② sad \t→ delighted\n③ excited → calm \t④ bored → happy\n⑤ hopeful → disappointed",
+      "rawTextChars": 739,
+      "sharedPassage": "",
+      "sourceTextForReview": "19. \t다음 글에 드러난 Katie의 심경 변화로 가장 적절한 것은?\nOn her way to school, Katie thought of the argument she\nhad with Sarah the day before and wiped tears from her eyes.\n“I can’t believe I fought with my best friend,” she cried. “I just\nwant things to go back to normal.” It seemed that nothing\ncould help her overcome this painful moment. As she walked\ninto her classroom, she heard a familiar voice. Sarah was\ncalling her name. “Katie, I’m sorry for the things I said\nyesterday.” A big smile spread across Katie’s face. “I’m sorry,\ntoo. Let’s never fight again.” Katie and Sarah hugged each\nother tightly and laughed the way they always did before.\n① nervous → frustrated \t② sad \t→ delighted\n③ excited → calm \t④ bored → happy\n⑤ hopeful → disappointed",
+      "sourceTextForReviewChars": 739,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "nervous → frustrated"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "sad → delighted"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "excited → calm"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "bored → happy"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "hopeful → disappointed"
+        }
+      ],
+      "review": {
+        "fullTranslation": "학교에 가는 길에 Katie는 전날 Sarah와 다툰 일을 생각하며 눈물을 닦았다. 가장 친한 친구와 싸웠다는 사실을 믿을 수 없었고 모든 것이 예전으로 돌아가기를 바랐다. 이 고통스러운 순간을 이겨 낼 방법이 없는 듯했다. 교실에 들어서자 Sarah가 이름을 부르며 어제 한 말을 사과했다. Katie의 얼굴에 큰 미소가 번졌고 그녀도 사과하며 다시는 싸우지 말자고 말했다. 두 사람은 꼭 껴안고 예전처럼 함께 웃었다.",
+        "summary": "정답 ②. 친구와 다툰 일을 떠올리며 울던 Katie가 서로 사과하고 화해한 뒤 웃고 기뻐합니다.",
+        "typeApproach": "심경 변화는 사건 전후의 감정 표현을 따로 묶습니다. 눈물과 고통이 앞부분, 미소와 포옹이 뒷부분의 단서입니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "A big smile spread across Katie’s face.",
+            "charStart": 469,
+            "role": "후기 심경",
+            "translation": "Katie의 얼굴에 큰 미소가 번졌습니다."
+          }
+        ],
+        "correctReason": "친구와의 다툼으로 슬퍼하다가 화해 후 기뻐하므로 sad에서 delighted로 바뀌는 ②입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "bored → happy",
+          "reason": "마지막의 행복은 맞지만 처음 감정은 지루함이 아니라 다툼 때문에 느끼는 슬픔입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_20",
+      "qid": 20,
+      "type": "주장",
+      "group": "topic",
+      "problemPage": 2,
+      "answer": 1,
+      "answerMark": "①",
+      "stem": "20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?",
+      "rawText": "20. \t다음 글에서 필자가 주장하는 바로 가장 적절한 것은?\nCurrent social changes driven by technological advancements\ndemand a fundamental rethinking in our approach to education.\nIn particular, lifelong learning is no longer optional; it is essential.\nWe must recognize that the rapidly evolving socioeconomic\necology requires individuals to engage in constant upskilling\nand self-transformation. If we can enhance lifelong learning\ninitiatives, we will not only promote personal growth and\nwell-being but also sustain national productivity and global\ncompetitiveness. Furthermore, our efforts will support social\nintegration by providing opportunities for people from various\nbackgrounds to connect and move on together. Investing in\nlifelong education thus is not simply an extra expense; we must\nconsider it a necessity for survival and success as we encounter\nsignificant changes in the years ahead. By prioritizing lifelong\neducation, we will be able to navigate this changing world\nwith confidence and a sense of fulfillment.\n① 변화하는 사회에 대응하기 위해 평생교육을 강화해야 한다.\n② 융합 교육을 통해 미래 사회의 인재를 적극 육성해야 한다.\n③ 경제 교육을 강화하여 투자에 대한 바른 인식을 갖도록 해야 한다.\n④ 기술 발전을 위해 특정 분야의 전문 지식 습득을 장려해야 한다.\n⑤ 평생교육 기관을 설립하여 사회의 균형 발전을 도모해야 한다.\n이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에\n따라 답을 하시기 바랍니다.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 2 of 8 --\n\n3\n3 8",
+      "rawTextChars": 1293,
+      "sharedPassage": "",
+      "sourceTextForReview": "20. \t다음 글에서 필자가 주장하는 바로 가장 적절한 것은?\nCurrent social changes driven by technological advancements\ndemand a fundamental rethinking in our approach to education.\nIn particular, lifelong learning is no longer optional; it is essential.\nWe must recognize that the rapidly evolving socioeconomic\necology requires individuals to engage in constant upskilling\nand self-transformation. If we can enhance lifelong learning\ninitiatives, we will not only promote personal growth and\nwell-being but also sustain national productivity and global\ncompetitiveness. Furthermore, our efforts will support social\nintegration by providing opportunities for people from various\nbackgrounds to connect and move on together. Investing in\nlifelong education thus is not simply an extra expense; we must\nconsider it a necessity for survival and success as we encounter\nsignificant changes in the years ahead. By prioritizing lifelong\neducation, we will be able to navigate this changing world\nwith confidence and a sense of fulfillment.\n① 변화하는 사회에 대응하기 위해 평생교육을 강화해야 한다.\n② 융합 교육을 통해 미래 사회의 인재를 적극 육성해야 한다.\n③ 경제 교육을 강화하여 투자에 대한 바른 인식을 갖도록 해야 한다.\n④ 기술 발전을 위해 특정 분야의 전문 지식 습득을 장려해야 한다.\n⑤ 평생교육 기관을 설립하여 사회의 균형 발전을 도모해야 한다.\n이제 듣기 문제가 끝났습니다. 18번부터는 문제지의 지시에\n따라 답을 하시기 바랍니다.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 2 of 8 --\n\n3\n3 8",
+      "sourceTextForReviewChars": 1293,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "변화하는 사회에 대응하기 위해 평생교육을 강화해야 한다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "융합 교육을 통해 미래 사회의 인재를 적극 육성해야 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "경제 교육을 강화하여 투자에 대한 바른 인식을 갖도록 해야 한다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "기술 발전을 위해 특정 분야의 전문 지식 습득을 장려해야 한다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "평생교육 기관을 설립하여 사회의 균형 발전을 도모해야 한다."
+        }
+      ],
+      "review": {
+        "fullTranslation": "기술 발전이 이끄는 현재의 사회 변화는 교육에 접근하는 방식을 근본적으로 다시 생각할 것을 요구한다. 특히 평생학습은 더 이상 선택이 아니라 필수이다. 빠르게 변하는 사회경제적 환경 속에서 개인은 지속적으로 능력을 높이고 자신을 변화시켜야 한다. 평생학습 정책을 강화하면 개인의 성장과 행복을 촉진할 뿐 아니라 국가 생산성과 세계 경쟁력을 유지할 수 있다. 다양한 배경의 사람들이 연결되어 함께 나아갈 기회도 제공해 사회 통합을 도울 수 있다. 따라서 평생교육 투자는 단순한 추가 지출이 아니라 앞으로의 큰 변화 속에서 생존하고 성공하기 위한 필수 조건이다. 평생교육을 우선하면 변화하는 세계를 자신감과 성취감을 가지고 헤쳐 나갈 수 있다.",
+        "summary": "정답 ①. 빠르게 변하는 사회에서 개인 성장과 국가 경쟁력을 유지하려면 평생교육을 필수 투자로 강화해야 한다는 주장입니다.",
+        "typeApproach": "주장 문제는 반복되는 당위 표현과 결론을 묶습니다. essential, necessity, prioritizing이 모두 평생교육 강화로 모입니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "lifelong learning is no longer optional; it is essential.",
+            "charStart": 172,
+            "role": "핵심 주장",
+            "translation": "평생학습은 더 이상 선택이 아니라 필수입니다."
+          }
+        ],
+        "correctReason": "기술 변화에 대응하기 위해 평생교육을 생존과 성공의 필수 요소로 우선해야 하므로 ①입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "융합 교육을 통해 미래 사회의 인재를 적극 육성해야 한다.",
+          "reason": "글은 융합 교육이나 인재 육성을 말하지 않고 모든 개인의 지속적인 평생학습을 강조합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_21",
+      "qid": 21,
+      "type": "밑줄 의미",
+      "group": "blank",
+      "problemPage": 3,
+      "answer": 2,
+      "answerMark": "②",
+      "stem": "21. 밑줄 친 holding a mirror up to society가 다음 글에서 의미",
+      "rawText": "21. \t밑줄 친 holding a mirror up to society가 다음 글에서 의미\n하는 바로 가장 적절한 것은? [3점]\nSocial media companies are working to keep you on site or\nattempting to deliver results useful to you. You can see this\npersonalization reflected in the results of search engines,\nwhich try to maximize relevance: searching for “bakery” in\nNew York should return different results than searching in\nParis. Features like the little predictive-text cues of autocomplete\nalso look to maximize relevance by suggesting refinements:\ntyping in “cats” might prompt the user with “cats movie” or\n“cats that don’t shed.” Autocomplete suggestions offer a look\ninto \tthe \talgorithm’s \tunderstanding \tof \taccumulated \tuser\nbehavior ― an immensely important part of how key social\nmedia algorithms work. The outputs are personalized, but the\ndata sets are massive, and the platforms are mining for\nsimilarities across vast quantities of user information. If a\nwhole lot of users near you or similar to you complete the\nsearch that you’ve begun with specific words, the autocomplete\nalgorithm takes that into account and may be more likely to\nsuggest them to you. Since the results are derived from data\nrelated to millions of searches, autocomplete is, in a sense,\nholding a mirror up to society.\n① manipulating search results in favor of the socially influential\n② revealing commonalities in users and their shared interests\n③ censoring personal data utilizing social media algorithms\n④ collecting information useful for building user networks\n⑤ examining apparently random data to find regularity",
+      "rawTextChars": 1557,
+      "sharedPassage": "",
+      "sourceTextForReview": "21. \t밑줄 친 holding a mirror up to society가 다음 글에서 의미\n하는 바로 가장 적절한 것은? [3점]\nSocial media companies are working to keep you on site or\nattempting to deliver results useful to you. You can see this\npersonalization reflected in the results of search engines,\nwhich try to maximize relevance: searching for “bakery” in\nNew York should return different results than searching in\nParis. Features like the little predictive-text cues of autocomplete\nalso look to maximize relevance by suggesting refinements:\ntyping in “cats” might prompt the user with “cats movie” or\n“cats that don’t shed.” Autocomplete suggestions offer a look\ninto \tthe \talgorithm’s \tunderstanding \tof \taccumulated \tuser\nbehavior ― an immensely important part of how key social\nmedia algorithms work. The outputs are personalized, but the\ndata sets are massive, and the platforms are mining for\nsimilarities across vast quantities of user information. If a\nwhole lot of users near you or similar to you complete the\nsearch that you’ve begun with specific words, the autocomplete\nalgorithm takes that into account and may be more likely to\nsuggest them to you. Since the results are derived from data\nrelated to millions of searches, autocomplete is, in a sense,\nholding a mirror up to society.\n① manipulating search results in favor of the socially influential\n② revealing commonalities in users and their shared interests\n③ censoring personal data utilizing social media algorithms\n④ collecting information useful for building user networks\n⑤ examining apparently random data to find regularity",
+      "sourceTextForReviewChars": 1557,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "manipulating search results in favor of the socially influential"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "revealing commonalities in users and their shared interests"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "censoring personal data utilizing social media algorithms"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "collecting information useful for building user networks"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "examining apparently random data to find regularity"
+        }
+      ],
+      "review": {
+        "fullTranslation": "소셜 미디어 기업은 사용자가 사이트에 더 오래 머물게 하거나 사용자에게 유용한 결과를 제공하려고 한다. 검색 엔진도 관련성을 최대화하려 하므로 뉴욕에서 bakery를 검색한 결과는 파리에서의 결과와 달라야 한다. 자동 완성의 예측 문구 역시 cats를 입력했을 때 cats movie나 털이 빠지지 않는 고양이 같은 구체적 검색어를 제안해 관련성을 높인다. 이런 제안은 누적된 사용자 행동을 알고리즘이 어떻게 이해하는지 보여 준다. 결과는 개인화되어 있지만 데이터 집합은 방대하며 플랫폼은 수많은 사용자 정보에서 유사성을 찾는다. 주변이나 자신과 비슷한 많은 사용자가 특정 단어로 검색을 완성했다면 알고리즘은 그 사실을 반영해 같은 단어를 제안할 가능성이 커진다. 자동 완성 결과는 수백만 건의 검색 자료에서 나오므로 어떤 의미에서는 사회를 비추는 거울과 같다.",
+        "summary": "정답 ②. 자동 완성은 수많은 검색에서 비슷한 사용자들이 공통으로 찾는 관심사를 드러낸다는 비유입니다.",
+        "typeApproach": "밑줄 의미는 비유를 앞 문장의 작동 원리로 바꿉니다. 대규모 사용자 정보에서 유사성을 찾는다는 설명이 그대로 답이 됩니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "the platforms are mining for\nsimilarities across vast quantities of user information.",
+            "charStart": 828,
+            "role": "알고리즘 원리",
+            "translation": "플랫폼은 방대한 사용자 정보에서 유사성을 찾아냅니다."
+          }
+        ],
+        "correctReason": "사회에 거울을 비춘다는 말은 사용자들의 공통점과 공유 관심사를 보여 준다는 뜻이므로 ②입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "examining apparently random data to find regularity",
+          "reason": "데이터가 무작위로 보인다는 내용은 없으며, 핵심은 비슷한 사용자들의 공통 관심사를 반영하는 것입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_22",
+      "qid": 22,
+      "type": "요지",
+      "group": "topic",
+      "problemPage": 3,
+      "answer": 2,
+      "answerMark": "②",
+      "stem": "22. 다음 글의 요지로 가장 적절한 것은?",
+      "rawText": "22. \t다음 글의 요지로 가장 적절한 것은?\nStudies show that people who sit in the front row learn and\nretain more than others in the audience, partially because those\nin the front row are more eager to learn, and they show more\nattention to the speaker in order to avoid being called on.\nThose in the middle sections are the next most attentive and\nask the most questions, as the middle section is considered a\nsafe area, surrounded by others. The side areas and back are\nthe least responsive and attentive. In one experiment we\nconducted, we placed name cards on participants’ seats so\nthey could not take their usual positions. We intentionally sat\nenthusiastic people to the sides and rear of the room, and\nwell-known back-row hermits sat in the front. We found that\nthis strategy not only increased the participation and recall of\nthe normally negative participants who sat up front, it also\ndecreased the participation and recall of the usually positive\nparticipants who had been sent to the back.\n* hermit: 은둔자\n① 개인의 성향을 고려한 좌석 배정이 업무의 효율성을 높인다.\n② 앉은 위치가 학습 참여와 배운 내용의 기억에 영향을 준다.\n③ 학습자들의 적극적인 참여는 생산적인 토론에 필수적이다.\n④ 자유로운 질의응답은 강연 분위기를 결정하는 요인이다.\n⑤ 수업 집중도와 기억력은 긍정적 상관관계를 보인다.",
+      "rawTextChars": 1165,
+      "sharedPassage": "",
+      "sourceTextForReview": "22. \t다음 글의 요지로 가장 적절한 것은?\nStudies show that people who sit in the front row learn and\nretain more than others in the audience, partially because those\nin the front row are more eager to learn, and they show more\nattention to the speaker in order to avoid being called on.\nThose in the middle sections are the next most attentive and\nask the most questions, as the middle section is considered a\nsafe area, surrounded by others. The side areas and back are\nthe least responsive and attentive. In one experiment we\nconducted, we placed name cards on participants’ seats so\nthey could not take their usual positions. We intentionally sat\nenthusiastic people to the sides and rear of the room, and\nwell-known back-row hermits sat in the front. We found that\nthis strategy not only increased the participation and recall of\nthe normally negative participants who sat up front, it also\ndecreased the participation and recall of the usually positive\nparticipants who had been sent to the back.\n* hermit: 은둔자\n① 개인의 성향을 고려한 좌석 배정이 업무의 효율성을 높인다.\n② 앉은 위치가 학습 참여와 배운 내용의 기억에 영향을 준다.\n③ 학습자들의 적극적인 참여는 생산적인 토론에 필수적이다.\n④ 자유로운 질의응답은 강연 분위기를 결정하는 요인이다.\n⑤ 수업 집중도와 기억력은 긍정적 상관관계를 보인다.",
+      "sourceTextForReviewChars": 1165,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "개인의 성향을 고려한 좌석 배정이 업무의 효율성을 높인다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "앉은 위치가 학습 참여와 배운 내용의 기억에 영향을 준다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "학습자들의 적극적인 참여는 생산적인 토론에 필수적이다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "자유로운 질의응답은 강연 분위기를 결정하는 요인이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "수업 집중도와 기억력은 긍정적 상관관계를 보인다."
+        }
+      ],
+      "review": {
+        "fullTranslation": "연구에 따르면 앞줄에 앉은 사람은 청중의 다른 사람보다 더 많이 배우고 기억한다. 그들은 배우려는 의욕이 더 크기도 하고 질문을 받을 가능성 때문에 발표자에게 더 집중한다. 가운데 구역의 사람은 그다음으로 주의를 기울이고 질문을 가장 많이 하는데, 다른 사람에게 둘러싸인 안전한 자리로 여겨지기 때문이다. 옆과 뒤쪽은 반응과 집중이 가장 낮다. 한 실험에서는 참가자가 평소 자리에 앉지 못하도록 좌석에 이름표를 놓았다. 적극적인 사람은 옆이나 뒤에, 평소 뒤에 숨는 소극적인 사람은 앞에 앉혔다. 그 결과 앞에 앉은 소극적인 참가자의 참여와 기억은 늘었고 뒤로 간 적극적인 참가자의 참여와 기억은 줄었다.",
+        "summary": "정답 ②. 앞줄에 앉으면 참여와 기억이 늘고 뒷줄로 옮기면 줄어드는 실험을 통해 좌석 위치의 영향을 설명합니다.",
+        "typeApproach": "요지 문제는 실험에서 조작한 조건과 달라진 결과를 연결합니다. 바꾼 것은 좌석이고 변한 것은 참여도와 회상입니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "increased the participation and recall of\nthe normally negative participants who sat up front",
+            "charStart": 777,
+            "role": "실험 결과",
+            "translation": "평소 소극적이던 사람도 앞에 앉자 참여와 기억이 증가했습니다."
+          }
+        ],
+        "correctReason": "같은 사람도 앉은 위치를 바꾸자 참여와 기억이 달라졌으므로 좌석 위치의 영향을 말한 ②입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "수업 집중도와 기억력은 긍정적 상관관계를 보인다.",
+          "reason": "집중과 기억의 관계만이 아니라 좌석 위치가 참여와 기억 모두에 미치는 효과가 글의 중심입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_23",
+      "qid": 23,
+      "type": "주제",
+      "group": "topic",
+      "problemPage": 3,
+      "answer": 5,
+      "answerMark": "⑤",
+      "stem": "23. 다음 글의 주제로 가장 적절한 것은?",
+      "rawText": "23. \t다음 글의 주제로 가장 적절한 것은?\nPopular culture loves to label dopamine as the “pleasure\nmolecule,” yet science reveals a richer, more nuanced reality.\nDopamine’s true role is found not simply in the thrill of\nreward, but in the dance of anticipation, striving, and imagining\nwhat could be. The rush of motivation that energizes you at\nthe start of a new day, the focus that allows you to solve\ncomplex problems, and the curiosity that fuels ambition are all\norchestrated by dopamine. Dopamine doesn’t give contentment;\nit delivers possibility. It sets the stage for new challenges,\nframes future goals as attainable, and propels you to ask\n“What if?” about new opportunities, relationships, or aspirations.\nThe anticipation of a meaningful conversation, the excitement\nfor a fresh project, and even just the temptation of a delicious\nmeal are all sparked by dopamine’s drive for future reward.\nCritically, dopamine rewards the process, not just the finished\nresult. It’s what sharpens focus and fills ordinary moments\nwith potential.\n* strive: 노력하다\n① limitation of dopamine as a chemical reaction orchestrator\n② impact of dopamine on sparking intense pleasure\n③ usefulness of dopamine in improving cognitive skills\n④ importance of rewards in sustaining motivation\n⑤ force of dopamine as a facilitator of realizing possibilities",
+      "rawTextChars": 1322,
+      "sharedPassage": "",
+      "sourceTextForReview": "23. \t다음 글의 주제로 가장 적절한 것은?\nPopular culture loves to label dopamine as the “pleasure\nmolecule,” yet science reveals a richer, more nuanced reality.\nDopamine’s true role is found not simply in the thrill of\nreward, but in the dance of anticipation, striving, and imagining\nwhat could be. The rush of motivation that energizes you at\nthe start of a new day, the focus that allows you to solve\ncomplex problems, and the curiosity that fuels ambition are all\norchestrated by dopamine. Dopamine doesn’t give contentment;\nit delivers possibility. It sets the stage for new challenges,\nframes future goals as attainable, and propels you to ask\n“What if?” about new opportunities, relationships, or aspirations.\nThe anticipation of a meaningful conversation, the excitement\nfor a fresh project, and even just the temptation of a delicious\nmeal are all sparked by dopamine’s drive for future reward.\nCritically, dopamine rewards the process, not just the finished\nresult. It’s what sharpens focus and fills ordinary moments\nwith potential.\n* strive: 노력하다\n① limitation of dopamine as a chemical reaction orchestrator\n② impact of dopamine on sparking intense pleasure\n③ usefulness of dopamine in improving cognitive skills\n④ importance of rewards in sustaining motivation\n⑤ force of dopamine as a facilitator of realizing possibilities",
+      "sourceTextForReviewChars": 1322,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "limitation of dopamine as a chemical reaction orchestrator"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "impact of dopamine on sparking intense pleasure"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "usefulness of dopamine in improving cognitive skills"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "importance of rewards in sustaining motivation"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "force of dopamine as a facilitator of realizing possibilities"
+        }
+      ],
+      "review": {
+        "fullTranslation": "대중문화는 도파민을 흔히 쾌락 분자라고 부르지만 과학은 더 풍부하고 미묘한 현실을 보여 준다. 도파민의 진정한 역할은 보상의 짜릿함만이 아니라 기대하고 노력하며 가능한 미래를 상상하는 과정에 있다. 하루를 시작할 때 생기는 의욕, 복잡한 문제를 해결하게 하는 집중력, 야망을 키우는 호기심은 모두 도파민이 조율한다. 도파민은 만족감을 주기보다 가능성을 제공한다. 새로운 도전을 준비시키고 미래 목표를 이룰 수 있는 것으로 보이게 하며 새로운 기회·관계·열망에 대해 가능성을 묻게 한다. 뜻깊은 대화를 기다리는 마음, 새 프로젝트에 대한 흥분, 맛있는 음식을 향한 유혹도 미래 보상을 추구하는 도파민에서 생긴다. 중요한 점은 도파민이 완성된 결과뿐 아니라 그 과정에도 보상을 준다는 것이다. 도파민은 집중력을 날카롭게 하고 평범한 순간을 가능성으로 채운다.",
+        "summary": "정답 ⑤. 도파민은 단순한 쾌락 물질이 아니라 미래의 가능성을 상상하고 목표를 향해 움직이게 하는 힘입니다.",
+        "typeApproach": "주제 문제는 첫 문장에서 반박한 통념과 글 전체에서 새로 정의한 기능을 함께 담는 선지를 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Dopamine doesn’t give contentment;\nit delivers possibility.",
+            "charStart": 479,
+            "role": "핵심 재정의",
+            "translation": "도파민은 만족을 주는 것이 아니라 가능성을 제공합니다."
+          }
+        ],
+        "correctReason": "도파민이 기대·집중·호기심을 통해 가능성을 현실화하도록 돕는다는 설명을 포괄하므로 ⑤입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "impact of dopamine on sparking intense pleasure",
+          "reason": "글은 도파민을 단순한 쾌락 물질로 보는 대중적 통념을 분명히 수정합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_24",
+      "qid": 24,
+      "type": "제목",
+      "group": "topic",
+      "problemPage": 3,
+      "answer": 1,
+      "answerMark": "①",
+      "stem": "24. 다음 글의 제목으로 가장 적절한 것은?",
+      "rawText": "24. \t다음 글의 제목으로 가장 적절한 것은?\nThe new views about and questions being asked about aging\ncould \tbe \tdetected \tacross \tsociety. \t“Something \tstrange \tis\nhappening in America,” wrote Marj Jackson Levin for the St.\nLouis Post-Dispatch in 1988, finding that what she called “the\nformer boundaries of age” were being expanded or relaxed in\nmany arenas. Whether it was fortysomething baseball players,\nmidlife women having babies, or the oldest president in the\nnation’s history, it did indeed appear that the preconceptions\nsurrounding aging were weakening. As baby boomers entered\nmidlife, the idea of oldness was being pushed back, and the\nexpectations for what people should or should not be doing at\na particular age broadened. Turning fifty had only recently\nbeen commonly viewed as the unofficial turning of the corner\ninto one’s senior years, for example, but now that number did\nnot automatically mean one could not start a new career or\nfamily. In a good number of cases, at least, age was becoming\nless significant, a clear victory for those lobbying for a less\nage-centric society.\n① Fading Boundaries: Evolving Views of Aging\n② Forever Young! The Rise of the Anti-aging Industry\n③ How Multiple Perspectives Narrow Generation Gaps\n④ Older and Wiser: What the Elderly Can Teach Us\n⑤ Do Modern Lifestyles Really Slow Aging?\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 3 of 8 --\n\n4\n4 8",
+      "rawTextChars": 1376,
+      "sharedPassage": "",
+      "sourceTextForReview": "24. \t다음 글의 제목으로 가장 적절한 것은?\nThe new views about and questions being asked about aging\ncould \tbe \tdetected \tacross \tsociety. \t“Something \tstrange \tis\nhappening in America,” wrote Marj Jackson Levin for the St.\nLouis Post-Dispatch in 1988, finding that what she called “the\nformer boundaries of age” were being expanded or relaxed in\nmany arenas. Whether it was fortysomething baseball players,\nmidlife women having babies, or the oldest president in the\nnation’s history, it did indeed appear that the preconceptions\nsurrounding aging were weakening. As baby boomers entered\nmidlife, the idea of oldness was being pushed back, and the\nexpectations for what people should or should not be doing at\na particular age broadened. Turning fifty had only recently\nbeen commonly viewed as the unofficial turning of the corner\ninto one’s senior years, for example, but now that number did\nnot automatically mean one could not start a new career or\nfamily. In a good number of cases, at least, age was becoming\nless significant, a clear victory for those lobbying for a less\nage-centric society.\n① Fading Boundaries: Evolving Views of Aging\n② Forever Young! The Rise of the Anti-aging Industry\n③ How Multiple Perspectives Narrow Generation Gaps\n④ Older and Wiser: What the Elderly Can Teach Us\n⑤ Do Modern Lifestyles Really Slow Aging?\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 3 of 8 --\n\n4\n4 8",
+      "sourceTextForReviewChars": 1376,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Fading Boundaries: Evolving Views of Aging"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Forever Young! The Rise of the Anti-aging Industry"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "How Multiple Perspectives Narrow Generation Gaps"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Older and Wiser: What the Elderly Can Teach Us"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Do Modern Lifestyles Really Slow Aging?"
+        }
+      ],
+      "review": {
+        "fullTranslation": "노화에 관한 새로운 시각과 질문은 사회 전반에서 발견되었다. 1988년 Marj Jackson Levin은 미국에서 이상한 일이 일어나고 있다며 과거의 나이 경계가 여러 영역에서 넓어지거나 느슨해지고 있다고 썼다. 40대 야구 선수, 중년에 아이를 낳는 여성, 미국 역사상 최고령 대통령 같은 사례는 노화를 둘러싼 선입견이 약해지고 있음을 보여 주었다. 베이비붐 세대가 중년에 접어들면서 노인으로 여겨지는 시점이 뒤로 밀렸고 특정 나이에 무엇을 해야 하거나 하지 말아야 한다는 기대의 범위도 넓어졌다. 얼마 전까지만 해도 쉰 살은 노년으로 들어서는 비공식 경계처럼 여겨졌지만 이제는 그 나이가 새 직업이나 가족을 시작할 수 없다는 뜻이 아니었다. 적어도 상당수의 경우 나이는 덜 중요해지고 있었으며, 이는 나이 중심적이지 않은 사회를 주장한 사람들의 분명한 승리였다.",
+        "summary": "정답 ①. 특정 나이에 무엇을 해야 한다는 고정관념이 약해지면서 나이의 경계와 노화에 대한 관점이 변하고 있습니다.",
+        "typeApproach": "제목 문제는 반복되는 age boundaries, preconceptions, less significant를 하나의 변화 방향으로 일반화합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "age was becoming\nless significant",
+            "charStart": 982,
+            "role": "결론",
+            "translation": "나이는 점점 덜 중요한 기준이 되고 있었습니다."
+          }
+        ],
+        "correctReason": "나이의 기존 경계가 흐려지고 노화에 대한 관점이 변화하는 글 전체를 담은 제목은 ①입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "Forever Young! The Rise of the Anti-aging Industry",
+          "reason": "나이 고정관념의 약화를 다룰 뿐 젊음을 유지하는 산업의 성장을 설명하지 않습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_25",
+      "qid": 25,
+      "type": "도표",
+      "group": "info",
+      "problemPage": 4,
+      "answer": 3,
+      "answerMark": "③",
+      "stem": "25. 다음 도표의 내용과 일치하지 않는 것은?",
+      "rawText": "25. \t다음 도표의 내용과 일치하지 않는 것은?\nThe above graph shows the percentages of U.K. respondents\nby age who self-reported their dietary choices as Meat-eater,\nFlexitarian, or Vegetarian, based on data released in 2026.\n① The most common dietary choice among the respondents\nwas Meat-eater in all age groups shown. ② With respect to\nthe category of Vegetarian, Group A, the youngest age group,\nshowed the highest percentage among the four age groups.\n③ In Group B, the percentage of Meat-eater was lower than\n70 percent. ④ When it comes to the percentage of Flexitarian\nin each age group, the highest was in Group C. ⑤ For Group D,\nthe oldest age group, less than five percent of the respondents\nreported Vegetarian as their dietary choice.",
+      "rawTextChars": 728,
+      "sharedPassage": "",
+      "sourceTextForReview": "25. \t다음 도표의 내용과 일치하지 않는 것은?\nThe above graph shows the percentages of U.K. respondents\nby age who self-reported their dietary choices as Meat-eater,\nFlexitarian, or Vegetarian, based on data released in 2026.\n① The most common dietary choice among the respondents\nwas Meat-eater in all age groups shown. ② With respect to\nthe category of Vegetarian, Group A, the youngest age group,\nshowed the highest percentage among the four age groups.\n③ In Group B, the percentage of Meat-eater was lower than\n70 percent. ④ When it comes to the percentage of Flexitarian\nin each age group, the highest was in Group C. ⑤ For Group D,\nthe oldest age group, less than five percent of the respondents\nreported Vegetarian as their dietary choice.",
+      "sourceTextForReviewChars": 728,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "The most common dietary choice among the respondents was Meat-eater in all age groups shown."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "With respect to the category of Vegetarian, Group A, the youngest age group, showed the highest percentage among the four age groups."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "In Group B, the percentage of Meat-eater was lower than 70 percent."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "When it comes to the percentage of Flexitarian in each age group, the highest was in Group C."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "For Group D, the oldest age group, less than five percent of the respondents reported Vegetarian as their dietary choice."
+        }
+      ],
+      "review": {
+        "fullTranslation": "위 그래프는 2026년에 공개된 자료를 바탕으로 영국 응답자들이 자신의 식단을 육식, 유연한 채식, 채식 가운데 무엇으로 보고했는지를 연령대별 비율로 보여 준다. A집단은 18~24세, B집단은 25~49세, C집단은 50~64세, D집단은 65세 이상이다. 육식 비율은 각각 68%, 73%, 73%, 77%이고 유연한 채식 비율은 12%, 12%, 16%, 13%이며 채식 비율은 8%, 6%, 4%, 3%이다. 일부 식단 항목은 표시되지 않았고 그래프의 백분율은 반올림되었다.",
+        "summary": "정답 ③. B집단의 육식 비율은 73%이므로 70%보다 낮다는 설명이 도표와 일치하지 않습니다.",
+        "typeApproach": "도표 문제는 선지의 집단·항목·비교 기준을 수치와 한 번씩 대조합니다. ③은 73%를 70% 미만으로 뒤집었습니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "Group B Meat-eater 73%",
+            "role": "도표 수치",
+            "translation": "B집단의 육식 응답 비율은 73%입니다."
+          }
+        ],
+        "correctReason": "B집단 Meat-eater 수치는 73%로 70%보다 높으므로 반대로 서술한 ③이 정답입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "When it comes to the percentage of Flexitarian in each age group, the highest was in Group C.",
+          "reason": "Flexitarian은 A·B 12%, C 16%, D 13%이므로 C가 가장 높다는 설명은 맞습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_26",
+      "qid": 26,
+      "type": "내용 일치",
+      "group": "info",
+      "problemPage": 4,
+      "answer": 4,
+      "answerMark": "④",
+      "stem": "26. Chuck Jones에 관한 다음 글의 내용과 일치하지 않는 것은?",
+      "rawText": "26. \tChuck Jones에 관한 다음 글의 내용과 일치하지 않는 것은?\nChuck Jones was an influential director and artist whose\nwork shaped animated films and cartoon production. He was\nborn in Spokane, Washington, in 1912, though he grew up in\nLos Angeles. As a child, Jones had many opportunities to\ndraw. He used the leftover pencils and paper that his father\nbrought him from work. Jones began his career in animation\nin 1930 and was quickly promoted. In the 1940s, he created\nfamous characters such as Wile E. Coyote and the Road\nRunner. He directed the famous cartoon film How the Grinch\nStole Christmas, which is still enjoyed by many people today.\nJones started his own company, Chuck Jones Enterprises, in\n1970. For his contribution to the field of animation, he received\nan Honorary Academy Award in 1996. Late in his life, he\nestablished a non-profit organization supporting art education\nand other creative skills.\n① 어렸을 때 그림을 그릴 기회가 많았다.\n② Wile E. Coyote와 같은 유명한 캐릭터를 만들었다.\n③ 많은 사람들이 여전히 즐기는 만화 영화를 감독했다.\n④ 애니메이션 분야에 기여한 공로로 1970년에 상을 받았다.\n⑤ 예술 교육을 지원하는 비영리 기구를 설립했다.",
+      "rawTextChars": 1052,
+      "sharedPassage": "",
+      "sourceTextForReview": "26. \tChuck Jones에 관한 다음 글의 내용과 일치하지 않는 것은?\nChuck Jones was an influential director and artist whose\nwork shaped animated films and cartoon production. He was\nborn in Spokane, Washington, in 1912, though he grew up in\nLos Angeles. As a child, Jones had many opportunities to\ndraw. He used the leftover pencils and paper that his father\nbrought him from work. Jones began his career in animation\nin 1930 and was quickly promoted. In the 1940s, he created\nfamous characters such as Wile E. Coyote and the Road\nRunner. He directed the famous cartoon film How the Grinch\nStole Christmas, which is still enjoyed by many people today.\nJones started his own company, Chuck Jones Enterprises, in\n1970. For his contribution to the field of animation, he received\nan Honorary Academy Award in 1996. Late in his life, he\nestablished a non-profit organization supporting art education\nand other creative skills.\n① 어렸을 때 그림을 그릴 기회가 많았다.\n② Wile E. Coyote와 같은 유명한 캐릭터를 만들었다.\n③ 많은 사람들이 여전히 즐기는 만화 영화를 감독했다.\n④ 애니메이션 분야에 기여한 공로로 1970년에 상을 받았다.\n⑤ 예술 교육을 지원하는 비영리 기구를 설립했다.",
+      "sourceTextForReviewChars": 1052,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "어렸을 때 그림을 그릴 기회가 많았다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Wile E. Coyote와 같은 유명한 캐릭터를 만들었다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "많은 사람들이 여전히 즐기는 만화 영화를 감독했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "애니메이션 분야에 기여한 공로로 1970년에 상을 받았다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "예술 교육을 지원하는 비영리 기구를 설립했다."
+        }
+      ],
+      "review": {
+        "fullTranslation": "Chuck Jones는 애니메이션 영화와 만화 제작에 큰 영향을 준 감독이자 예술가였다. 그는 1912년 Washington주 Spokane에서 태어났지만 Los Angeles에서 자랐다. 어린 시절 아버지가 직장에서 가져온 남은 연필과 종이 덕분에 그림을 그릴 기회가 많았다. 1930년에 애니메이션 일을 시작해 빠르게 승진했고, 1940년대에는 Wile E. Coyote와 Road Runner 같은 유명 캐릭터를 만들었다. 오늘날에도 많은 사람이 즐기는 만화 영화 How the Grinch Stole Christmas를 감독했다. 1970년에는 Chuck Jones Enterprises를 설립했고 애니메이션 분야에 기여한 공로로 1996년 명예 아카데미상을 받았다. 말년에는 예술 교육과 다른 창의적 능력을 지원하는 비영리 기구를 세웠다.",
+        "summary": "정답 ④. Chuck Jones는 1970년에 회사를 세웠고 애니메이션 공로상은 1996년에 받았습니다.",
+        "typeApproach": "인물 일치 문제는 선지의 연도와 사건을 짝으로 확인합니다. 1970과 수상 사건을 잘못 연결한 선지가 핵심 함정입니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "received\nan Honorary Academy Award in 1996.",
+            "charStart": 744,
+            "role": "수상 연도",
+            "translation": "1996년에 명예 아카데미상을 받았습니다."
+          }
+        ],
+        "correctReason": "1970년은 회사 설립 연도이고 수상은 1996년이므로 1970년에 상을 받았다는 ④가 정답입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "예술 교육을 지원하는 비영리 기구를 설립했다.",
+          "reason": "말년에 예술 교육과 창의적 기술을 지원하는 비영리 기구를 세웠다고 본문에 명시되어 있습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_27",
+      "qid": 27,
+      "type": "안내문 일치",
+      "group": "info",
+      "problemPage": 4,
+      "answer": 5,
+      "answerMark": "⑤",
+      "stem": "27. RCQ High School Food Waste Reduction Competition에",
+      "rawText": "27. \tRCQ High School Food Waste Reduction Competition에\n관한 다음 안내문의 내용과 일치하지 않는 것은?\nRCQ High School Food Waste Reduction\nCompetition\nOur school is holding a food waste reduction competition\nto promote sustainable living. This competition has been held\nevery year since 2023. Your effort makes a difference!\nWhen: October 1 to October 31, 2026\nWho: All classes of RCQ High School will participate.\nHow\n∙Every lunch, we will give a point to each student who\ndoesn’t leave food on their tray.\n∙Students’ points will be combined by class. Winning classes\nwill be decided by each class’s points.\nPrizes\nNumber of Winners \tReward (per class)\n1st prize \t1 class \tSnacks worth $200\n2nd prize \t1 class \tSnacks worth $150\n3rd prize \t2 classes \tSnacks worth $100\n① 2023년 이래로 매년 개최되고 있다.\n② 한 달간 진행된다.\n③ RCQ 고등학교의 모든 학급이 참가할 것이다.\n④ 수상 학급은 각 학급의 점수로 결정될 것이다.\n⑤ 2등상은 두 학급에 주어진다.",
+      "rawTextChars": 861,
+      "sharedPassage": "",
+      "sourceTextForReview": "27. \tRCQ High School Food Waste Reduction Competition에\n관한 다음 안내문의 내용과 일치하지 않는 것은?\nRCQ High School Food Waste Reduction\nCompetition\nOur school is holding a food waste reduction competition\nto promote sustainable living. This competition has been held\nevery year since 2023. Your effort makes a difference!\nWhen: October 1 to October 31, 2026\nWho: All classes of RCQ High School will participate.\nHow\n∙Every lunch, we will give a point to each student who\ndoesn’t leave food on their tray.\n∙Students’ points will be combined by class. Winning classes\nwill be decided by each class’s points.\nPrizes\nNumber of Winners \tReward (per class)\n1st prize \t1 class \tSnacks worth $200\n2nd prize \t1 class \tSnacks worth $150\n3rd prize \t2 classes \tSnacks worth $100\n① 2023년 이래로 매년 개최되고 있다.\n② 한 달간 진행된다.\n③ RCQ 고등학교의 모든 학급이 참가할 것이다.\n④ 수상 학급은 각 학급의 점수로 결정될 것이다.\n⑤ 2등상은 두 학급에 주어진다.",
+      "sourceTextForReviewChars": 861,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "2023년 이래로 매년 개최되고 있다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "한 달간 진행된다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "RCQ 고등학교의 모든 학급이 참가할 것이다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "수상 학급은 각 학급의 점수로 결정될 것이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "2등상은 두 학급에 주어진다."
+        }
+      ],
+      "review": {
+        "fullTranslation": "RCQ 고등학교는 지속 가능한 생활을 장려하기 위해 음식물 쓰레기 감축 대회를 연다. 이 대회는 2023년부터 매년 열렸으며 2026년 10월 1일부터 31일까지 모든 학급이 참가한다. 매일 점심에 음식을 식판에 남기지 않은 학생 한 명마다 1점을 준다. 학생들의 점수는 학급별로 합산하고 각 학급의 점수로 수상 학급을 정한다. 1등 한 학급은 200달러 상당의 간식, 2등 한 학급은 150달러 상당의 간식, 3등 두 학급은 각각 100달러 상당의 간식을 받는다.",
+        "summary": "정답 ⑤. 음식물 쓰레기 감축 대회의 2등상 수상 학급은 두 학급이 아니라 한 학급입니다.",
+        "typeApproach": "안내문 문제는 기간·대상·선정 방식·수상 인원을 표의 같은 행과 직접 대조합니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "2nd prize 1 class",
+            "role": "수상 인원",
+            "translation": "2등상은 한 학급에 주어집니다."
+          }
+        ],
+        "correctReason": "표에서 2nd prize의 Number of Winners가 1 class이므로 두 학급이라고 한 ⑤가 정답입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "RCQ 고등학교의 모든 학급이 참가할 것이다.",
+          "reason": "안내문 Who 항목에 모든 학급이 참가한다고 명시되어 있어 일치하는 설명입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_28",
+      "qid": 28,
+      "type": "안내문 일치",
+      "group": "info",
+      "problemPage": 4,
+      "answer": 5,
+      "answerMark": "⑤",
+      "stem": "28. Newstar Voice Acting Course에 관한 다음 안내문의 내용과",
+      "rawText": "28. \tNewstar Voice Acting Course에 관한 다음 안내문의 내용과\n일치하는 것은?\nNewstar Voice Acting Course\nDo you dream of hearing your own voice in an animation\nor movie? If so, our voice acting course is perfect for you.\nWhen & Where\n∙6 p.m. to 8 p.m. every Thursday\n∙Room #223, Newstar Building\nCourse Content\nClass Schedule \tContent\nWeek 1 \tWays to Breathe and Vocalize\nWeek 2 \tScript Analysis\nWeek 3 \tAnimation Dubbing\nWeek 4 \tMovie Dubbing\nRegistration\n∙The registration fee is $170.\n∙You can register only in the first week of every month.\n∙To register, call 789-331-0234 or email us at n#star@v#ac.com.\nSpecial Benefits\n∙Video-recorded class lectures will be provided for no\nadditional fee.\n∙You will have a chance to meet the famous voice actor\nRichard Choi, who will share his know-how with you.\n① 매주 주말마다 진행된다.\n② 1주 차 수업에 스크립트 분석을 한다.\n③ 매월 마지막 주에만 등록할 수 있다.\n④ 추가 비용을 내면 녹화된 수업 강의가 제공될 것이다.\n⑤ 유명한 성우를 만날 기회가 있을 것이다.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 4 of 8 --\n\n5\n5 8",
+      "rawTextChars": 957,
+      "sharedPassage": "",
+      "sourceTextForReview": "28. \tNewstar Voice Acting Course에 관한 다음 안내문의 내용과\n일치하는 것은?\nNewstar Voice Acting Course\nDo you dream of hearing your own voice in an animation\nor movie? If so, our voice acting course is perfect for you.\nWhen & Where\n∙6 p.m. to 8 p.m. every Thursday\n∙Room #223, Newstar Building\nCourse Content\nClass Schedule \tContent\nWeek 1 \tWays to Breathe and Vocalize\nWeek 2 \tScript Analysis\nWeek 3 \tAnimation Dubbing\nWeek 4 \tMovie Dubbing\nRegistration\n∙The registration fee is $170.\n∙You can register only in the first week of every month.\n∙To register, call 789-331-0234 or email us at n#star@v#ac.com.\nSpecial Benefits\n∙Video-recorded class lectures will be provided for no\nadditional fee.\n∙You will have a chance to meet the famous voice actor\nRichard Choi, who will share his know-how with you.\n① 매주 주말마다 진행된다.\n② 1주 차 수업에 스크립트 분석을 한다.\n③ 매월 마지막 주에만 등록할 수 있다.\n④ 추가 비용을 내면 녹화된 수업 강의가 제공될 것이다.\n⑤ 유명한 성우를 만날 기회가 있을 것이다.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 4 of 8 --\n\n5\n5 8",
+      "sourceTextForReviewChars": 957,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "매주 주말마다 진행된다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "1주 차 수업에 스크립트 분석을 한다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "매월 마지막 주에만 등록할 수 있다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "추가 비용을 내면 녹화된 수업 강의가 제공될 것이다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "유명한 성우를 만날 기회가 있을 것이다."
+        }
+      ],
+      "review": {
+        "fullTranslation": "Newstar 성우 과정은 자신의 목소리를 애니메이션이나 영화에서 듣고 싶은 사람을 위한 수업이다. 매주 목요일 오후 6시부터 8시까지 Newstar 건물 223호에서 진행된다. 1주 차에는 호흡과 발성법, 2주 차에는 대본 분석, 3주 차에는 애니메이션 더빙, 4주 차에는 영화 더빙을 배운다. 등록비는 170달러이고 매월 첫째 주에만 전화나 이메일로 등록할 수 있다. 추가 비용 없이 녹화 강의를 제공하며 유명 성우 Richard Choi를 만나 그의 노하우를 들을 기회도 있다.",
+        "summary": "정답 ⑤. 수강생에게 유명 성우 Richard Choi를 만나 노하우를 들을 기회가 제공됩니다.",
+        "typeApproach": "일치하는 것을 찾는 문제이므로 각 선지를 일정표와 혜택 항목에 대조하고, 원문과 같은 정보 하나를 남깁니다.",
+        "evidence": [
+          {
+            "in": "figure",
+            "quote": "chance to meet the famous voice actor Richard Choi",
+            "role": "특별 혜택",
+            "translation": "유명 성우 Richard Choi를 만날 기회가 있습니다."
+          }
+        ],
+        "correctReason": "Special Benefits에 유명 성우를 만날 기회가 명시되어 있으므로 ⑤가 정답입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "추가 비용을 내면 녹화된 수업 강의가 제공될 것이다.",
+          "reason": "녹화 강의는 추가 비용 없이 제공되므로 추가 비용을 낸다는 설명은 틀립니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_29",
+      "qid": 29,
+      "type": "어법",
+      "group": "grammar",
+      "problemPage": 5,
+      "answer": 3,
+      "answerMark": "③",
+      "stem": "29. 다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?",
+      "rawText": "29. \t다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?\nLeaders come in all shapes and sizes, but successful leaders\ntend to have one thing in common: the ability to share someone\nelse’s feelings, known as empathy. While empathy forms in\neveryone to some degree, effective leaders know how to develop\nthis \temotional \tguidance \tsystem ① to connect \twith \tothers’\nfeelings and perspectives. However, empathy in leaders is more\nthan ② simply being kind to employees, clients, and customers.\nEmpathetic people seem more approachable, focusing on the\nwords of others. Listening to the needs of employees ③ enable\nleaders \tto \tclearly \tidentify \twhat \tmakes \tthem \tfeel \theard.\nUtilized in this way, empathy can be considered a crucial part\nof ④ maintaining employee satisfaction. Leaders who are unable\nto surround themselves with competent employees will not be\nsuccessful. Indeed, a leader’s failure to empathize with talented\nworkers is one of the main situations ⑤ that could lead them to\nleave an organization. In this case, the organization must spend\nprecious time and money to find suitable replacements for them.",
+      "rawTextChars": 1094,
+      "sharedPassage": "",
+      "sourceTextForReview": "29. \t다음 글의 밑줄 친 부분 중, 어법상 틀린 것은?\nLeaders come in all shapes and sizes, but successful leaders\ntend to have one thing in common: the ability to share someone\nelse’s feelings, known as empathy. While empathy forms in\neveryone to some degree, effective leaders know how to develop\nthis \temotional \tguidance \tsystem ① to connect \twith \tothers’\nfeelings and perspectives. However, empathy in leaders is more\nthan ② simply being kind to employees, clients, and customers.\nEmpathetic people seem more approachable, focusing on the\nwords of others. Listening to the needs of employees ③ enable\nleaders \tto \tclearly \tidentify \twhat \tmakes \tthem \tfeel \theard.\nUtilized in this way, empathy can be considered a crucial part\nof ④ maintaining employee satisfaction. Leaders who are unable\nto surround themselves with competent employees will not be\nsuccessful. Indeed, a leader’s failure to empathize with talented\nworkers is one of the main situations ⑤ that could lead them to\nleave an organization. In this case, the organization must spend\nprecious time and money to find suitable replacements for them.",
+      "sourceTextForReviewChars": 1094,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "to connect"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "simply being"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "enable"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "maintaining"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "that"
+        }
+      ],
+      "review": {
+        "fullTranslation": "지도자는 모습과 규모가 다양하지만 성공적인 지도자에게는 다른 사람의 감정을 함께 느끼는 능력, 즉 공감이라는 공통점이 있다. 공감은 누구에게나 어느 정도 생기지만 유능한 지도자는 다른 사람의 감정과 관점에 연결되도록 이 정서적 안내 체계를 발전시킨다. 지도자의 공감은 직원과 고객에게 단순히 친절한 것 이상이다. 공감하는 사람은 더 다가가기 쉬워 보이고 다른 사람의 말에 집중한다. 직원의 요구에 귀 기울이는 것은 지도자가 직원이 자신의 말을 존중받았다고 느끼게 하는 요인을 분명히 파악하도록 해 준다. 이런 방식으로 활용되는 공감은 직원 만족을 유지하는 핵심 요소이다. 유능한 직원을 곁에 두지 못하는 지도자는 성공할 수 없다. 재능 있는 직원에게 공감하지 못하는 지도자의 실패는 그들이 조직을 떠나게 하는 주요 상황 중 하나이며, 조직은 대체 인력을 찾는 데 귀중한 시간과 돈을 써야 한다.",
+        "summary": "정답 ③. 문장의 주어는 동명사구 Listening to the needs of employees이므로 단수 동사 enables가 와야 합니다.",
+        "typeApproach": "어법 문제는 밑줄마다 역할을 먼저 정합니다. ③은 주어의 핵이 동명사 Listening이므로 수 일치를 확인하면 됩니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Listening to the needs of employees",
+            "charStart": 541,
+            "role": "단수 주어",
+            "translation": "직원들의 요구에 귀 기울이는 것이라는 동명사구가 주어입니다."
+          }
+        ],
+        "correctReason": "동명사구 주어는 단수로 취급하므로 enable이 아니라 enables가 필요해 ③이 정답입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "maintaining",
+          "reason": "전치사 of 뒤에는 동명사 maintaining이 자연스럽게 이어지므로 어법상 올바릅니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_30",
+      "qid": 30,
+      "type": "어휘",
+      "group": "vocab",
+      "problemPage": 5,
+      "answer": 5,
+      "answerMark": "⑤",
+      "stem": "30. 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지",
+      "rawText": "30. \t다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지\n않은 것은? [3점]\nThere is good news about pests and medicinal herbs: Most\nherbs either repel pests or attract beneficial insects that help\nkeep pest populations in check. So the more herbs you grow,\nthe more you will attract pollinators and “good” bugs that like\nto eat the more ① destructive pests, which will lead to a more\nsuccessful garden! When it comes to managing pests in the\ngarden, it’s important to remember that you are ② altering the\necosystem of an area that existed on its own before you planted\nanything into it. So the first couple years in a new garden can\nfeel like wave after wave of pests are ③ overtaking your\nplants. This is normal. The goal of a long-term healthy garden\nis to work with the environment you are trying to cultivate to\n④ allow the plants, pollinators, and even the annoying pests to\nbalance out. Immediately attempting to remove a new pest entirely\nfrom your garden will only fu r ther these initial imbalances\nand ⑤ shorten the process of helping your garden grow better\non its own.\n* repel: 쫓아버리다 \t** pollinator: 꽃가루 매개자\n[31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "rawTextChars": 1133,
+      "sharedPassage": "",
+      "sourceTextForReview": "30. \t다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지\n않은 것은? [3점]\nThere is good news about pests and medicinal herbs: Most\nherbs either repel pests or attract beneficial insects that help\nkeep pest populations in check. So the more herbs you grow,\nthe more you will attract pollinators and “good” bugs that like\nto eat the more ① destructive pests, which will lead to a more\nsuccessful garden! When it comes to managing pests in the\ngarden, it’s important to remember that you are ② altering the\necosystem of an area that existed on its own before you planted\nanything into it. So the first couple years in a new garden can\nfeel like wave after wave of pests are ③ overtaking your\nplants. This is normal. The goal of a long-term healthy garden\nis to work with the environment you are trying to cultivate to\n④ allow the plants, pollinators, and even the annoying pests to\nbalance out. Immediately attempting to remove a new pest entirely\nfrom your garden will only fu r ther these initial imbalances\nand ⑤ shorten the process of helping your garden grow better\non its own.\n* repel: 쫓아버리다 \t** pollinator: 꽃가루 매개자\n[31～34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.",
+      "sourceTextForReviewChars": 1133,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "destructive"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "altering"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "overtaking"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "allow"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "shorten"
+        }
+      ],
+      "review": {
+        "fullTranslation": "해충과 약초에 관해서는 좋은 소식이 있다. 대부분의 약초는 해충을 쫓거나 해충 개체 수를 억제하는 유익한 곤충을 끌어들인다. 따라서 약초를 많이 기를수록 꽃가루 매개자와 파괴적인 해충을 잡아먹는 좋은 벌레가 더 많이 찾아와 정원을 성공적으로 가꿀 수 있다. 정원 해충을 관리할 때는 무엇을 심기 전부터 스스로 존재하던 지역 생태계를 바꾸고 있다는 점을 기억해야 한다. 새 정원의 첫 몇 해에는 해충이 계속 식물을 덮치는 것처럼 느껴질 수 있지만 이는 정상이다. 장기적으로 건강한 정원을 만들려면 식물과 꽃가루 매개자, 성가신 해충까지 서로 균형을 이루도록 환경과 함께 일해야 한다. 새 해충을 즉시 완전히 제거하려 하면 초기 불균형이 더 심해지고 정원이 스스로 더 잘 자라도록 돕는 과정이 오히려 길어진다.",
+        "summary": "정답 ⑤. 새 해충을 즉시 없애면 생태계 불균형을 더 키워 정원이 스스로 균형을 찾는 과정을 짧게 하지 않고 길게 합니다.",
+        "typeApproach": "어휘 문제는 밑줄 앞뒤의 인과 방향을 확인합니다. 불균형을 further한다면 회복 과정은 shorten이 아니라 lengthen되어야 합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Immediately attempting to remove a new pest entirely",
+            "charStart": 869,
+            "role": "성급한 제거",
+            "translation": "새 해충을 즉시 완전히 제거하려는 행동을 말합니다."
+          }
+        ],
+        "correctReason": "성급한 제거는 초기 불균형을 심화해 회복 과정을 늘리므로 shorten이 문맥과 반대인 ⑤가 정답입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "allow",
+          "reason": "식물·꽃가루 매개자·해충이 균형을 이루도록 허용한다는 문맥에 allow는 적절합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_31",
+      "qid": 31,
+      "type": "빈칸",
+      "group": "blank",
+      "problemPage": 5,
+      "answer": 1,
+      "answerMark": "①",
+      "stem": "31. What stresses you out more than anything? Perhaps it’s",
+      "rawText": "31. \tWhat stresses you out more than anything? Perhaps it’s\nspeaking in front of others. For many, this is so stressful it\neven has a name: glossophobia. The explanation for why it’s\nuncomfortable to have everyone’s eyes on you is probably\nthat, for almost all of our evolution, it’s been extremely important\nnot to be excluded from the group. To prepare for what might\nhappen if you are evaluated and socially shamed ― and thus\nalienated from the group ― your brain fires up the stress system\nand your heart begins to beat harder. Our natural sensitivity to\nbeing evaluated by other people is another example of our\nbrain not being adapted to the modern world. If we give a bad\npresentation at work, we are unlikely to lose our job and thus\nrisk starving to death. But in the world we long ago evolved\nfor, exclusion from the group could be a matter of life and\ndeath. \twas not merely a matter of safety but also\nof survival. You simply couldn’t make it on your own.\n* starve: 굶주리다\n① Belonging \t② Confidence\n③ Endurance \t④ Learning\n⑤ Competition",
+      "rawTextChars": 1046,
+      "sharedPassage": "",
+      "sourceTextForReview": "31. \tWhat stresses you out more than anything? Perhaps it’s\nspeaking in front of others. For many, this is so stressful it\neven has a name: glossophobia. The explanation for why it’s\nuncomfortable to have everyone’s eyes on you is probably\nthat, for almost all of our evolution, it’s been extremely important\nnot to be excluded from the group. To prepare for what might\nhappen if you are evaluated and socially shamed ― and thus\nalienated from the group ― your brain fires up the stress system\nand your heart begins to beat harder. Our natural sensitivity to\nbeing evaluated by other people is another example of our\nbrain not being adapted to the modern world. If we give a bad\npresentation at work, we are unlikely to lose our job and thus\nrisk starving to death. But in the world we long ago evolved\nfor, exclusion from the group could be a matter of life and\ndeath. \twas not merely a matter of safety but also\nof survival. You simply couldn’t make it on your own.\n* starve: 굶주리다\n① Belonging \t② Confidence\n③ Endurance \t④ Learning\n⑤ Competition",
+      "sourceTextForReviewChars": 1046,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Belonging"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Confidence"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Endurance"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Learning"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Competition"
+        }
+      ],
+      "review": {
+        "fullTranslation": "무엇이 당신에게 가장 큰 스트레스를 주는가? 아마 다른 사람 앞에서 말하는 일일 수 있다. 많은 사람에게 이 두려움은 매우 커서 발표 공포증이라는 이름도 있다. 모든 사람의 시선이 자신에게 쏠리는 것이 불편한 이유는 진화 과정의 거의 전부에서 집단으로부터 배제되지 않는 일이 매우 중요했기 때문일 것이다. 다른 사람에게 평가받고 사회적으로 수치심을 느껴 집단에서 소외될 상황에 대비하려고 뇌는 스트레스 체계를 작동시키고 심장을 더 세게 뛰게 한다. 타인의 평가에 민감한 성향은 뇌가 현대 세계에 아직 적응하지 못한 또 다른 사례이다. 직장에서 발표를 못해도 보통 일자리를 잃고 굶어 죽을 위험에 처하지는 않는다. 하지만 오래전 우리가 진화한 환경에서는 집단에서 배제되는 일이 생사가 걸린 문제일 수 있었다. 집단에 속하는 것은 안전뿐 아니라 생존의 문제였고 혼자서는 살아갈 수 없었다.",
+        "summary": "정답 ①. 과거에는 집단에서 배제되면 생존이 위태로웠으므로 집단에 속하는 일이 안전과 생존 모두에 중요했습니다.",
+        "typeApproach": "마지막 빈칸은 결론이므로 바로 앞의 exclusion과 make it on your own을 원인으로 묶어 상위 개념을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "exclusion from the group could be a matter of life and\ndeath.",
+            "charStart": 808,
+            "role": "생존 근거",
+            "translation": "집단에서 배제되는 것은 생사가 걸린 문제일 수 있었습니다."
+          }
+        ],
+        "correctReason": "집단 소속 여부가 안전뿐 아니라 생존을 결정했다는 결론이므로 Belonging인 ①이 정답입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "Confidence",
+          "reason": "발표 불안이 자신감과 관련 있어 보이지만 글은 진화 과정의 집단 소속과 배제를 원인으로 설명합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_32",
+      "qid": 32,
+      "type": "빈칸",
+      "group": "blank",
+      "problemPage": 5,
+      "answer": 5,
+      "answerMark": "⑤",
+      "stem": "32. Not only are our sensory systems organized to detect change,",
+      "rawText": "32. \tNot only are our sensory systems organized to detect change,\nbut they are most tuned to stimuli that are unexpected and\nsurprising. When you move your body and produce tactile\nsensations, these stimuli are less noticeable to you than are\nsensations produced by another individual. The sensations of\nyour own legs touching one another when you cross your legs,\nfor example, are generally less noticeable than a similar touch on\nyour leg would be if someone sitting next to you brushed their\nleg against yours. Likewise, your reaction to your cat jumping\nonto your lap is likely to be much greater if you have your eyes\nclosed when it happens. This differential response to surprising\ntactile stimuli appears to be a defense mechanism that has\nadaptive significance. It is probably also the reason why being\ntickled by someone else is more effective at producing an\nemotional reaction than trying to tickle yourself. Our enjoyment\nof being tickled generally diminishes as we age. This is likely\ndue to the fact that adults are \t,\nand hence are more difficult to surprise, than are children.\n* tactile: 촉각의 \t** tickle: 간질이다\n① more cautious of acting immediately\n② less sensitive to others’ reactions\n③ stronger in their ability to focus\n④ slower in adapting to changes\n⑤ better at anticipating stimuli\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 5 of 8 --\n\n6\n6 8",
+      "rawTextChars": 1356,
+      "sharedPassage": "",
+      "sourceTextForReview": "32. \tNot only are our sensory systems organized to detect change,\nbut they are most tuned to stimuli that are unexpected and\nsurprising. When you move your body and produce tactile\nsensations, these stimuli are less noticeable to you than are\nsensations produced by another individual. The sensations of\nyour own legs touching one another when you cross your legs,\nfor example, are generally less noticeable than a similar touch on\nyour leg would be if someone sitting next to you brushed their\nleg against yours. Likewise, your reaction to your cat jumping\nonto your lap is likely to be much greater if you have your eyes\nclosed when it happens. This differential response to surprising\ntactile stimuli appears to be a defense mechanism that has\nadaptive significance. It is probably also the reason why being\ntickled by someone else is more effective at producing an\nemotional reaction than trying to tickle yourself. Our enjoyment\nof being tickled generally diminishes as we age. This is likely\ndue to the fact that adults are \t,\nand hence are more difficult to surprise, than are children.\n* tactile: 촉각의 \t** tickle: 간질이다\n① more cautious of acting immediately\n② less sensitive to others’ reactions\n③ stronger in their ability to focus\n④ slower in adapting to changes\n⑤ better at anticipating stimuli\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 5 of 8 --\n\n6\n6 8",
+      "sourceTextForReviewChars": 1356,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "more cautious of acting immediately"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "less sensitive to others’ reactions"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "stronger in their ability to focus"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "slower in adapting to changes"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "better at anticipating stimuli"
+        }
+      ],
+      "review": {
+        "fullTranslation": "우리의 감각 체계는 변화를 감지하도록 구성되어 있을 뿐 아니라 예상하지 못한 놀라운 자극에 가장 민감하다. 자신이 몸을 움직여 만든 촉각 자극은 다른 사람이 만든 감각보다 덜 눈에 띈다. 예를 들어 다리를 꼬며 자기 다리끼리 닿는 감각은 옆 사람의 다리가 스칠 때보다 보통 덜 느껴진다. 눈을 감고 있을 때 고양이가 무릎에 뛰어오르면 반응이 더 클 가능성도 높다. 놀라운 촉각 자극에 다르게 반응하는 것은 적응상 의미가 있는 방어 기제로 보인다. 다른 사람이 간지럽힐 때 스스로 간지럽히는 것보다 감정 반응이 큰 이유도 이것일 것이다. 나이가 들수록 간지럼을 즐기는 정도는 대체로 줄어드는데, 성인은 아이보다 자극을 더 잘 예상해 놀라게 하기가 어렵기 때문일 가능성이 크다.",
+        "summary": "정답 ⑤. 성인은 아이보다 자극을 더 잘 예상하기 때문에 놀라기 어렵고 간지럼의 즐거움도 줄어듭니다.",
+        "typeApproach": "빈칸 뒤의 hence가 결과를 알려 줍니다. 더 놀라기 어렵게 만드는 원인은 자극을 미리 예상하는 능력입니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "more difficult to surprise",
+            "charStart": 1047,
+            "role": "결과 단서",
+            "translation": "성인은 놀라게 하기가 더 어렵습니다."
+          }
+        ],
+        "correctReason": "놀라움이 줄어드는 직접 원인은 자극을 더 잘 예측하기 때문이므로 ⑤가 정답입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "slower in adapting to changes",
+          "reason": "변화 적응 속도를 말하지 않으며, 글의 핵심은 예상하지 못한 촉각 자극에 대한 반응입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_33",
+      "qid": 33,
+      "type": "빈칸",
+      "group": "blank",
+      "problemPage": 6,
+      "answer": 3,
+      "answerMark": "③",
+      "stem": "33. While a picture transports the spectator almost instantly",
+      "rawText": "33. \tWhile a picture transports the spectator almost instantly\ninto a landscape, language can only describe it detail by detail,\nbringing it slowly into the reader’s mind. How can a literary\nwork capture the feel of a place in both its atmosphere and its\ntopography without losing the reader in a descriptive forest? One\nsolution, proposed by Balzac, is to \t.\nBalzac’s novels open with detailed portrayals of the setting, but\nthe descriptions never threaten the reader’s sense of orientation\nbecause they trace a precise path through the fictional world.\nWhen the novel describes a house, the narrator inspects the\nbuilding in a systematic manner, approaching it from the street,\nexamining the garden and the front, entering through the main\ndoor, and walking from room to room, as would a real estate\nagent or a prospective resident. The reader ends up with a precise\nnotion of the layout of the building, all the way down to the\nfloor plan. [3점]\n* topography: 지형\n① flood the reader’s mind with abstract images\n② present small objects in detail\n③ tie description to a moving body\n④ distance readers from a scene\n⑤ portray a landscape from upward angles",
+      "rawTextChars": 1153,
+      "sharedPassage": "",
+      "sourceTextForReview": "33. \tWhile a picture transports the spectator almost instantly\ninto a landscape, language can only describe it detail by detail,\nbringing it slowly into the reader’s mind. How can a literary\nwork capture the feel of a place in both its atmosphere and its\ntopography without losing the reader in a descriptive forest? One\nsolution, proposed by Balzac, is to \t.\nBalzac’s novels open with detailed portrayals of the setting, but\nthe descriptions never threaten the reader’s sense of orientation\nbecause they trace a precise path through the fictional world.\nWhen the novel describes a house, the narrator inspects the\nbuilding in a systematic manner, approaching it from the street,\nexamining the garden and the front, entering through the main\ndoor, and walking from room to room, as would a real estate\nagent or a prospective resident. The reader ends up with a precise\nnotion of the layout of the building, all the way down to the\nfloor plan. [3점]\n* topography: 지형\n① flood the reader’s mind with abstract images\n② present small objects in detail\n③ tie description to a moving body\n④ distance readers from a scene\n⑤ portray a landscape from upward angles",
+      "sourceTextForReviewChars": 1153,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "flood the reader’s mind with abstract images"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "present small objects in detail"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "tie description to a moving body"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "distance readers from a scene"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "portray a landscape from upward angles"
+        }
+      ],
+      "review": {
+        "fullTranslation": "그림은 보는 사람을 거의 즉시 풍경 속으로 데려가지만 언어는 세부 사항을 하나씩 설명하며 그 장면을 독자의 머릿속에 천천히 가져온다. 문학 작품은 독자가 묘사의 숲에서 길을 잃지 않게 하면서 장소의 분위기와 지형을 어떻게 담을 수 있을까? Balzac이 제안한 한 가지 해법은 묘사를 움직이는 몸에 연결하는 것이다. 그의 소설은 배경을 자세히 묘사하며 시작하지만 허구 세계에서 정확한 경로를 따라가기 때문에 독자는 방향 감각을 잃지 않는다. 집을 묘사할 때 서술자는 부동산 중개인이나 예비 거주자처럼 거리에서 접근하고 정원과 정면을 살핀 뒤 현관문으로 들어가 방에서 방으로 이동한다. 독자는 결국 평면도까지 그릴 수 있을 만큼 건물의 배치를 정확히 알게 된다.",
+        "summary": "정답 ③. Balzac은 서술자가 실제로 이동하듯 공간을 순서대로 따라가게 하여 독자가 장소의 구조를 잃지 않게 합니다.",
+        "typeApproach": "빈칸 뒤의 구체적 예시를 일반화합니다. 거리에서 정원·문·방으로 이동하는 공통점은 움직이는 몸에 묘사를 연결하는 것입니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "trace a precise path through the fictional world.",
+            "charStart": 505,
+            "role": "묘사 방식",
+            "translation": "허구 세계 안에서 정확한 이동 경로를 따라갑니다."
+          }
+        ],
+        "correctReason": "장소를 정적인 목록이 아니라 이동 경로에 따라 묘사하므로 tie description to a moving body인 ③입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "present small objects in detail",
+          "reason": "세부 묘사는 있지만 독자의 방향 감각을 지키는 핵심 방법은 작은 사물이 아니라 이동 순서입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_34",
+      "qid": 34,
+      "type": "빈칸",
+      "group": "blank",
+      "problemPage": 6,
+      "answer": 4,
+      "answerMark": "④",
+      "stem": "34. Surprise is the fundamental joke mechanism. Most punch",
+      "rawText": "34. \tSurprise is the fundamental joke mechanism. Most punch\nlines rely on an element of surprise for their effect ― that’s\nwhy they’re not funny the third time you hear them. The\njoke-teller’s skill lies in judging exactly how much of a\nsurprise the audience is prepared to take. He must make a\nseries of assumptions about what they will understand, what\ntheir reference points are, and how relaxed they appear to be.\nJerry Seinfeld once compared telling a joke to attempting to\nleap a metaphorical canyon, taking the audience with you. The\nsetup to the joke is the near-side cliff, and the punch line is the\nfar side. If they’re too far apart, the listeners don’t make it to\nthe other side. And if they are too close together, the audience\njust steps across the gap and doesn’t experience a thrilling leap\nof any kind. The joke-hearers get far more pleasure from the\njoke \t. [3점]\n* canyon: 협곡\n① if they feel relaxed enough to laugh\n② when it matches their expectations\n③ if it is about someone else\n④ if they have to do a little work\n⑤ when they fail to fully understand it",
+      "rawTextChars": 1074,
+      "sharedPassage": "",
+      "sourceTextForReview": "34. \tSurprise is the fundamental joke mechanism. Most punch\nlines rely on an element of surprise for their effect ― that’s\nwhy they’re not funny the third time you hear them. The\njoke-teller’s skill lies in judging exactly how much of a\nsurprise the audience is prepared to take. He must make a\nseries of assumptions about what they will understand, what\ntheir reference points are, and how relaxed they appear to be.\nJerry Seinfeld once compared telling a joke to attempting to\nleap a metaphorical canyon, taking the audience with you. The\nsetup to the joke is the near-side cliff, and the punch line is the\nfar side. If they’re too far apart, the listeners don’t make it to\nthe other side. And if they are too close together, the audience\njust steps across the gap and doesn’t experience a thrilling leap\nof any kind. The joke-hearers get far more pleasure from the\njoke \t. [3점]\n* canyon: 협곡\n① if they feel relaxed enough to laugh\n② when it matches their expectations\n③ if it is about someone else\n④ if they have to do a little work\n⑤ when they fail to fully understand it",
+      "sourceTextForReviewChars": 1074,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "if they feel relaxed enough to laugh"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "when it matches their expectations"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "if it is about someone else"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "if they have to do a little work"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "when they fail to fully understand it"
+        }
+      ],
+      "review": {
+        "fullTranslation": "놀라움은 농담의 기본 작동 원리이다. 대부분의 결정적인 마지막 말은 놀라움에 의존하기 때문에 같은 농담을 세 번째 들으면 재미가 없다. 농담하는 사람의 솜씨는 청중이 어느 정도의 놀라움을 받아들일 수 있는지 정확히 판단하는 데 있다. 청중이 무엇을 이해하고 어떤 배경지식을 가지며 얼마나 편안한지 가정해야 한다. Jerry Seinfeld는 농담을 청중과 함께 비유적인 협곡을 뛰어넘는 일에 비유했다. 농담의 설정은 가까운 쪽 절벽이고 결정적인 마지막 말은 반대편 절벽이다. 둘이 너무 멀면 청중은 건너지 못한다. 너무 가까우면 그냥 걸어 건너므로 짜릿한 도약을 경험하지 못한다. 청중은 농담을 이해하기 위해 약간의 노력을 해야 할 때 훨씬 더 큰 즐거움을 얻는다.",
+        "summary": "정답 ④. 농담은 너무 뻔하지도 이해 불가능하지도 않아야 하며, 청자가 약간의 추론을 거쳐 반전을 넘을 때 즐거움이 커집니다.",
+        "typeApproach": "마지막 빈칸은 협곡 비유의 결론입니다. 간격이 너무 멀거나 가까운 두 극단의 중간 조건을 찾습니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "The joke-hearers get far more pleasure from the\njoke",
+            "charStart": 820,
+            "role": "결론 문장",
+            "translation": "농담을 듣는 사람은 그 농담에서 훨씬 더 큰 즐거움을 얻습니다."
+          }
+        ],
+        "correctReason": "청자가 전혀 애쓰지 않거나 이해하지 못하는 극단이 아니라 약간의 생각을 해야 할 때 즐거우므로 ④입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "when it matches their expectations",
+          "reason": "농담의 핵심은 기대와 완전히 일치하는 것이 아니라 감당할 수 있는 정도의 놀라움을 주는 것입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_35",
+      "qid": 35,
+      "type": "무관한 문장",
+      "group": "irrelevant",
+      "problemPage": 6,
+      "answer": 4,
+      "answerMark": "④",
+      "stem": "35. 다음 글에서 전체 흐름과 관계 없는 문장은?",
+      "rawText": "35. \t다음 글에서 전체 흐름과 관계 없는 문장은?\nTourists make intense and short-term use of a very limited\nnumber of historical assets and cultural attractions, including\nmaterial and non-material ones. ① The reason is to be found\nin the fact that tourist experience in cities is measured in days\nand hours, even in minutes in the case of cultural attractions or\nseconds in particular sites. ② In addition, cultural tourists do\nnot often repeat their visit to the same place, and therefore\nthey are continuously looking for new attractions. ③ As a\nresult of this, a process of selection of cultural assets takes\nplace since only a few buildings and only a small number of\nsocial representations are able to be adapted to the tourist visit.\n④ International festivals bring tourists closer to the community\nby offering a highly interactive and engaging experience. ⑤ The\nmain difference between the selection of cultural assets made\nfor locals and the one made for tourists is that in the second\ncase, only a small choice is made among the largest, most\nimpressive and unique resources.\n[36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한\n것을 고르시오.",
+      "rawTextChars": 1111,
+      "sharedPassage": "",
+      "sourceTextForReview": "35. \t다음 글에서 전체 흐름과 관계 없는 문장은?\nTourists make intense and short-term use of a very limited\nnumber of historical assets and cultural attractions, including\nmaterial and non-material ones. ① The reason is to be found\nin the fact that tourist experience in cities is measured in days\nand hours, even in minutes in the case of cultural attractions or\nseconds in particular sites. ② In addition, cultural tourists do\nnot often repeat their visit to the same place, and therefore\nthey are continuously looking for new attractions. ③ As a\nresult of this, a process of selection of cultural assets takes\nplace since only a few buildings and only a small number of\nsocial representations are able to be adapted to the tourist visit.\n④ International festivals bring tourists closer to the community\nby offering a highly interactive and engaging experience. ⑤ The\nmain difference between the selection of cultural assets made\nfor locals and the one made for tourists is that in the second\ncase, only a small choice is made among the largest, most\nimpressive and unique resources.\n[36～37] 주어진 글 다음에 이어질 글의 순서로 가장 적절한\n것을 고르시오.",
+      "sourceTextForReviewChars": 1111,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "The reason is to be found in the fact that tourist experience in cities is measured in days and hours, even in minutes in the case of cultural attractions or seconds in particular sites."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "In addition, cultural tourists do not often repeat their visit to the same place, and therefore they are continuously looking for new attractions."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "As a result of this, a process of selection of cultural assets takes place since only a few buildings and only a small number of social representations are able to be adapted to the tourist visit."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "International festivals bring tourists closer to the community by offering a highly interactive and engaging experience."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "The main difference between the selection of cultural assets made for locals and the one made for tourists is that in the second case, only a small choice is made among the largest, most impressive and unique resources."
+        }
+      ],
+      "review": {
+        "fullTranslation": "관광객은 물질적·비물질적 역사 자산과 문화 명소 가운데 아주 제한된 수만을 짧은 기간에 집중적으로 이용한다. 그 이유는 도시 관광 경험이 며칠이나 몇 시간으로 측정되고 문화 명소에서는 몇 분, 특정 장소에서는 몇 초에 불과하기 때문이다. 문화 관광객은 같은 곳을 반복해서 찾는 경우가 드물어 계속 새로운 명소를 찾는다. 그 결과 관광 방문에 맞게 조정할 수 있는 소수의 건물과 사회적 표상만 선택되는 과정이 일어난다. 지역 주민을 위한 문화 자산 선택과 관광객을 위한 선택의 가장 큰 차이는 관광객의 경우 가장 크고 인상적이며 독특한 자원 가운데에서도 아주 적은 수만 고른다는 점이다.",
+        "summary": "정답 ④. 글은 짧은 관광 시간 때문에 소수 문화 자산만 선택되는 현상을 설명하는데 축제의 상호작용은 이 흐름과 무관합니다.",
+        "typeApproach": "무관한 문장은 앞뒤에서 반복되는 중심어를 확인합니다. ①②③⑤는 자산의 선택과 제한을 이어 가지만 ④만 축제 경험을 말합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "only a few buildings and only a small number of\nsocial representations",
+            "charStart": 606,
+            "role": "중심 흐름",
+            "translation": "소수의 건물과 사회적 표상만 관광 대상으로 선택됩니다."
+          }
+        ],
+        "correctReason": "관광용 문화 자산의 제한적 선택이라는 논리에서 벗어나 국제 축제의 교류 효과를 말한 ④가 정답입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "The main difference between the selection of cultural assets made for locals and the one made for tourists is that in the second case, only a small choice is made among the largest, most impressive and unique resources.",
+          "reason": "관광객에게는 크고 인상적이며 독특한 자산 중 소수만 선택된다는 중심 내용을 결론처럼 이어 줍니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_36",
+      "qid": 36,
+      "type": "순서",
+      "group": "order",
+      "problemPage": 6,
+      "answer": 3,
+      "answerMark": "③",
+      "stem": "36.",
+      "rawText": "36.\nOur choices and actions send messages to others about\nour values. Consider a manager who communicates to her\nemployees in a call center that “customer care is the most\nimportant thing for our company.”\n(A) In many cases, performance is multidimensional, but\ncompensation is only given to one aspect of performance,\ntypically \tthe \tone \tthat \tis \teasiest \tto \tmeasure. \tSimple\n“one-aspect” compensation sends a clear message to the\nworkers: concentrate on what we’re paying you for and\nignore everything else.\n(B) That’s a signal to others regarding values. Now, imagine\nthat the manager sets the incentives such that employees\nare paid by the number of calls they answer. This incentive\nsends a very different signal about what the manager is\nlooking for: it’s about being fast, which comes at the\nexpense of quality of care.\n(C) Such mixed signals leave the employees confused about\nthe manager’s values and expectations. This mixed signals\nproblem is channeled into a simple question: what should\nbe rewarded?\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 6 of 8 --\n\n7\n7 8",
+      "rawTextChars": 1158,
+      "sharedPassage": "",
+      "sourceTextForReview": "36.\nOur choices and actions send messages to others about\nour values. Consider a manager who communicates to her\nemployees in a call center that “customer care is the most\nimportant thing for our company.”\n(A) In many cases, performance is multidimensional, but\ncompensation is only given to one aspect of performance,\ntypically \tthe \tone \tthat \tis \teasiest \tto \tmeasure. \tSimple\n“one-aspect” compensation sends a clear message to the\nworkers: concentrate on what we’re paying you for and\nignore everything else.\n(B) That’s a signal to others regarding values. Now, imagine\nthat the manager sets the incentives such that employees\nare paid by the number of calls they answer. This incentive\nsends a very different signal about what the manager is\nlooking for: it’s about being fast, which comes at the\nexpense of quality of care.\n(C) Such mixed signals leave the employees confused about\nthe manager’s values and expectations. This mixed signals\nproblem is channeled into a simple question: what should\nbe rewarded?\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 6 of 8 --\n\n7\n7 8",
+      "sourceTextForReviewChars": 1158,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "review": {
+        "fullTranslation": "우리의 선택과 행동은 우리의 가치관에 관한 메시지를 다른 사람에게 보낸다. 한 콜센터 관리자가 직원들에게 고객 관리가 회사에서 가장 중요하다고 말한다고 생각해 보자. 그것은 가치에 관한 하나의 신호이다. 그런데 관리자가 직원이 응대한 통화 수에 따라 보수를 받도록 유인책을 정한다면, 이 유인책은 관리자가 원하는 것이 빠른 처리라는 매우 다른 신호를 보낸다. 빠른 처리는 고객 관리의 질을 희생한다. 이런 상반된 신호는 직원들이 관리자의 가치와 기대를 혼동하게 하며 무엇에 보상해야 하는가라는 질문으로 이어진다. 많은 경우 성과는 여러 측면을 갖지만 보상은 보통 가장 측정하기 쉬운 한 측면에만 주어진다. 이런 단순한 한 측면 보상은 보수를 주는 일에 집중하고 나머지는 무시하라는 분명한 메시지를 직원에게 보낸다.",
+        "summary": "정답 ③. 고객 관리가 중요하다는 말 뒤에 속도 보상이라는 반대 신호(B), 혼란(C), 한 측면 보상의 일반화(A)가 이어집니다.",
+        "typeApproach": "순서 문제는 지시어와 논리 범위를 봅니다. B의 this incentive, C의 Such mixed signals, A의 In many cases가 B-C-A를 만듭니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Such mixed signals leave the employees confused",
+            "charStart": 834,
+            "role": "연결 단서",
+            "translation": "그런 상반된 신호가 직원들을 혼란스럽게 합니다."
+          }
+        ],
+        "correctReason": "상반된 보상 신호를 제시한 B 다음에 Such mixed signals의 C가 오고, 이를 일반화한 A가 끝이므로 ③입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "(C) - (A) - (B)",
+          "reason": "C의 Such mixed signals는 아직 두 신호가 제시되기 전에는 가리킬 대상이 없으므로 첫 문단이 될 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_37",
+      "qid": 37,
+      "type": "순서",
+      "group": "order",
+      "problemPage": 7,
+      "answer": 4,
+      "answerMark": "④",
+      "stem": "37.",
+      "rawText": "37.\nThe initial selection of farmed Atlantic salmon took\nplace from fish drawn from forty different river systems.\n(A) But \twhatever \tthe \tmanifestation \tof \tdifference \tthat\noccurred in different species of salmon, the first salmon\nfarmers realized that crossing and recrossing the specific\nfamilies from the original forty rivers would result in\nsalmon that grew faster.\n(B) And because salmon, unlike cattle and sheep, can produce\nmany thousands of offspring in the course of their lives,\nonce favorable individuals were found, just a few strong\nmales and females could form the basis of a whole new\nrace of highly productive fish. A domestic population\ncould be created quickly that would be quite different\nfrom the initial wild ancestors.\n(C) Every salmon river has its own unique set of challenges to\nwhich fish must adapt. Some rivers are very long, like the\nYukon, and require animals that can build up massive fat\nreserves in order to survive the extended journey. Others\nare very far north, with only a short season of warmer\ntemperatures, \tand \trequire \ta \tfish \tthat \tcan \tmaximize\ngrowth, particularly during its younger phase. [3점]\n* manifestation: 표현 \t** offspring: 자손\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n[38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장\n적절한 곳을 고르시오.",
+      "rawTextChars": 1324,
+      "sharedPassage": "",
+      "sourceTextForReview": "37.\nThe initial selection of farmed Atlantic salmon took\nplace from fish drawn from forty different river systems.\n(A) But \twhatever \tthe \tmanifestation \tof \tdifference \tthat\noccurred in different species of salmon, the first salmon\nfarmers realized that crossing and recrossing the specific\nfamilies from the original forty rivers would result in\nsalmon that grew faster.\n(B) And because salmon, unlike cattle and sheep, can produce\nmany thousands of offspring in the course of their lives,\nonce favorable individuals were found, just a few strong\nmales and females could form the basis of a whole new\nrace of highly productive fish. A domestic population\ncould be created quickly that would be quite different\nfrom the initial wild ancestors.\n(C) Every salmon river has its own unique set of challenges to\nwhich fish must adapt. Some rivers are very long, like the\nYukon, and require animals that can build up massive fat\nreserves in order to survive the extended journey. Others\nare very far north, with only a short season of warmer\ntemperatures, \tand \trequire \ta \tfish \tthat \tcan \tmaximize\ngrowth, particularly during its younger phase. [3점]\n* manifestation: 표현 \t** offspring: 자손\n①\n③\n⑤\n(A)\n(B)\n(C)\n－\n－\n－\n(C)\n(C)\n(B)\n－\n－\n－\n(B)\n(A)\n(A)\n②\n④\n(B)\n(C)\n－\n－\n(A)\n(A)\n－\n－\n(C)\n(B)\n[38～39] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장\n적절한 곳을 고르시오.",
+      "sourceTextForReviewChars": 1324,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(A) - (C) - (B)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(B) - (A) - (C)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(B) - (C) - (A)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(C) - (A) - (B)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(C) - (B) - (A)"
+        }
+      ],
+      "review": {
+        "fullTranslation": "양식 Atlantic salmon의 최초 선발은 서로 다른 40개 강에서 가져온 물고기로 이루어졌다. 연어가 사는 강마다 물고기가 적응해야 하는 고유한 어려움이 있다. Yukon처럼 매우 긴 강에서는 긴 여정을 견디기 위해 막대한 지방을 축적할 수 있어야 한다. 북쪽의 강은 따뜻한 계절이 짧아 어린 시기에 성장을 최대화할 수 있는 물고기가 필요하다. 종마다 이런 차이가 어떤 모습으로 나타나든 초기 연어 양식업자들은 원래 40개 강에서 온 특정 계통들을 반복해서 교배하면 더 빨리 자라는 연어를 만들 수 있음을 알았다. 연어는 소나 양과 달리 평생 수천 마리의 자손을 낳을 수 있으므로 좋은 개체를 찾으면 소수의 강한 암수만으로도 생산성이 높은 새로운 품종의 기초를 만들 수 있었다. 이렇게 야생 조상과 상당히 다른 사육 집단을 빠르게 만들 수 있었다.",
+        "summary": "정답 ④. 서로 다른 강에 적응한 연어의 차이(C)를 설명한 뒤 교배로 빠른 성장 개체를 만들고(A), 많은 자손으로 새 집단을 만든 결과(B)가 옵니다.",
+        "typeApproach": "순서 문제는 최초 집단의 다양성에서 원인·교배·결과로 전개되는지 봅니다. C의 강별 차이가 A의 difference를 먼저 설명합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Every salmon river has its own unique set of challenges",
+            "charStart": 749,
+            "role": "다양성의 원인",
+            "translation": "연어가 사는 강마다 서로 다른 고유한 환경 과제가 있습니다."
+          }
+        ],
+        "correctReason": "강별 적응 차이 C, 그 차이를 이용한 교배 A, 생산적인 새 집단 형성 B의 순서이므로 ④입니다.",
+        "trap": {
+          "mark": "③",
+          "choice": 3,
+          "text": "(B) - (C) - (A)",
+          "reason": "B의 favorable individuals는 A에서 빠르게 자라는 개체를 선발한 뒤에야 등장할 수 있습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_38",
+      "qid": 38,
+      "type": "문장 삽입",
+      "group": "order",
+      "problemPage": 7,
+      "answer": 5,
+      "answerMark": "⑤",
+      "stem": "38.",
+      "rawText": "38.\nCitizen engagement involves people helping governments,\nrather than scientists, to improve public services and policies\nin their communities.\nThe growth and success of citizen science and citizen\nengagement has been made possible by the Internet and mobile\ntechnology, encouraging and coordinating the efforts of millions\nof people throughout the world. ( ① ) Websites, smartphone\napps, and social media have been instrumental in expanding\nthe reach and impact of a diversity of citizen science projects\nacross time and geographical zones. ( ② ) Citizen science\ninvolves local people helping scientists carry out a scientific\nproject at scale. ( ③ ) Currently, thousands of such projects\nhave been set up all over the world, whereby volunteers help\nout in a number of research areas, including biodiversity,\nair quality, astronomy, and environmental issues. ( ④ ) They\ndo so by participating in scientific activities such as monitoring\nplants and wildlife, collecting air and water samples, categorizing\ngalaxies, \tand \tanalyzing \tDNA sequences. ( ⑤ ) Examples\ninclude setting up and managing a website that offers local\nservices for community disasters and creating an emergency\nresponse team when a disaster occurs.",
+      "rawTextChars": 1221,
+      "sharedPassage": "",
+      "sourceTextForReview": "38.\nCitizen engagement involves people helping governments,\nrather than scientists, to improve public services and policies\nin their communities.\nThe growth and success of citizen science and citizen\nengagement has been made possible by the Internet and mobile\ntechnology, encouraging and coordinating the efforts of millions\nof people throughout the world. ( ① ) Websites, smartphone\napps, and social media have been instrumental in expanding\nthe reach and impact of a diversity of citizen science projects\nacross time and geographical zones. ( ② ) Citizen science\ninvolves local people helping scientists carry out a scientific\nproject at scale. ( ③ ) Currently, thousands of such projects\nhave been set up all over the world, whereby volunteers help\nout in a number of research areas, including biodiversity,\nair quality, astronomy, and environmental issues. ( ④ ) They\ndo so by participating in scientific activities such as monitoring\nplants and wildlife, collecting air and water samples, categorizing\ngalaxies, \tand \tanalyzing \tDNA sequences. ( ⑤ ) Examples\ninclude setting up and managing a website that offers local\nservices for community disasters and creating an emergency\nresponse team when a disaster occurs.",
+      "sourceTextForReviewChars": 1221,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "review": {
+        "fullTranslation": "시민 과학과 시민 참여가 성장하고 성공할 수 있었던 것은 인터넷과 모바일 기술 덕분이며, 이 기술은 전 세계 수백만 명의 노력을 장려하고 조정했다. 웹사이트·스마트폰 앱·소셜 미디어는 시간과 지역의 경계를 넘어 다양한 시민 과학 프로젝트의 범위와 영향력을 넓히는 데 중요한 역할을 했다. 시민 과학은 지역 주민이 과학자들을 도와 대규모 과학 프로젝트를 수행하는 것이다. 현재 세계 곳곳에 수천 개의 프로젝트가 마련되어 자원봉사자들이 생물 다양성, 대기 질, 천문학, 환경 문제 같은 연구를 돕는다. 이들은 식물과 야생동물을 관찰하고 공기와 물 시료를 모으며 은하를 분류하고 DNA 염기서열을 분석한다. 시민 참여는 사람들이 과학자가 아니라 정부를 도와 지역 사회의 공공 서비스와 정책을 개선하는 것이다. 예로 지역 재난 서비스를 제공하는 웹사이트를 만들고 운영하거나 재난이 발생했을 때 긴급 대응팀을 구성하는 일이 있다.",
+        "summary": "정답 ⑤. 앞부분은 시민 과학의 정의와 연구 사례이고, ⑤ 뒤부터 정부의 공공 서비스 개선 사례가 나오므로 시민 참여의 정의가 그 경계에 들어갑니다.",
+        "typeApproach": "문장 삽입은 주어진 문장의 핵심어가 앞 문단을 이어 받는지, 뒤 문장을 예고하는지 확인합니다. scientists에서 governments로 주제가 전환됩니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "Citizen engagement involves people helping governments,",
+            "charStart": 4,
+            "role": "주제 전환",
+            "translation": "시민 참여는 사람들이 정부를 도와 공공 서비스와 정책을 개선하는 것입니다."
+          }
+        ],
+        "correctReason": "④까지 시민 과학 사례가 끝나고 ⑤ 뒤에 시민 참여 사례가 시작되므로 정의 문장은 ⑤에 들어가야 합니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "④",
+          "reason": "④ 뒤 문장은 식물 관찰·시료 채취 등 시민 과학 활동을 계속 설명하므로 아직 정부를 돕는 시민 참여로 전환되지 않습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_39",
+      "qid": 39,
+      "type": "문장 삽입",
+      "group": "order",
+      "problemPage": 7,
+      "answer": 3,
+      "answerMark": "③",
+      "stem": "39.",
+      "rawText": "39.\nHowever, melody alone would not normally keep the\nlistener’s attention for long because a piece of music needs\nsome variety and contrasting elements from time to time.\nRegardless of musical style, an increase of focus on certain\nparameters in a musical passage should be accompanied by a\ndecrease in focus on others. ( ① ) The human mind has an\nattention limit, beyond which music is most likely to be\nperceived as lacking order or direction. ( ② ) For instance, if\nthe intention is to focus on melodic lines, then one should\navoid making too many contrasting timbre variations while the\nmelodies are unfolding; otherwise, the timbre may distract\nattention away from the pitch. ( ③ ) One of the most difficult\nissues in the practice of composition is to find the right balance\nbetween repetition and diversity: a well-balanced piece of music\nshould unfold naturally to listeners. ( ④ ) In most Western\nmusical \tstyles, \tthis \tunfolding \tresults \tfrom \ta \tnetwork \tof\nrelationships \tbetween \tmusical \tattributes \tthat \tcombine \tin\ndifferent ways to create situations where contrasts can take place.\n( ⑤ ) Such contrasts are normally preceded by a preparatory\nstage, which builds upon the listener’s expectations. [3점]\n* timbre: 음색",
+      "rawTextChars": 1233,
+      "sharedPassage": "",
+      "sourceTextForReview": "39.\nHowever, melody alone would not normally keep the\nlistener’s attention for long because a piece of music needs\nsome variety and contrasting elements from time to time.\nRegardless of musical style, an increase of focus on certain\nparameters in a musical passage should be accompanied by a\ndecrease in focus on others. ( ① ) The human mind has an\nattention limit, beyond which music is most likely to be\nperceived as lacking order or direction. ( ② ) For instance, if\nthe intention is to focus on melodic lines, then one should\navoid making too many contrasting timbre variations while the\nmelodies are unfolding; otherwise, the timbre may distract\nattention away from the pitch. ( ③ ) One of the most difficult\nissues in the practice of composition is to find the right balance\nbetween repetition and diversity: a well-balanced piece of music\nshould unfold naturally to listeners. ( ④ ) In most Western\nmusical \tstyles, \tthis \tunfolding \tresults \tfrom \ta \tnetwork \tof\nrelationships \tbetween \tmusical \tattributes \tthat \tcombine \tin\ndifferent ways to create situations where contrasts can take place.\n( ⑤ ) Such contrasts are normally preceded by a preparatory\nstage, which builds upon the listener’s expectations. [3점]\n* timbre: 음색",
+      "sourceTextForReviewChars": 1233,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "①"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "②"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "③"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "④"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "⑤"
+        }
+      ],
+      "review": {
+        "fullTranslation": "음악 양식과 관계없이 한 음악 구절에서 특정 요소에 더 집중하면 다른 요소에 대한 집중은 줄여야 한다. 인간의 마음에는 주의력의 한계가 있어 그 한계를 넘으면 음악은 질서나 방향이 없는 것으로 느껴지기 쉽다. 예를 들어 선율에 집중하려면 선율이 전개되는 동안 대조적인 음색 변화를 지나치게 많이 주지 말아야 한다. 그렇지 않으면 음색이 음높이에서 주의를 빼앗는다. 그러나 선율만으로는 오랫동안 청자의 주의를 유지하기 어렵고 음악에는 때때로 변화와 대조 요소가 필요하다. 작곡에서 가장 어려운 문제 중 하나는 반복과 다양성의 적절한 균형을 찾는 것이다. 균형 잡힌 음악은 청자에게 자연스럽게 전개되어야 한다. 대부분의 서양 음악에서 이런 전개는 서로 다른 방식으로 결합해 대조 상황을 만드는 음악 속성들의 관계망에서 생긴다. 그런 대조 앞에는 보통 청자의 기대를 쌓는 준비 단계가 놓인다.",
+        "summary": "정답 ③. 앞에서는 선율에 집중할 때 음색 변화를 줄이는 원칙을 말하고, 삽입문은 선율만으로는 부족하다고 전환해 반복과 다양성의 균형으로 이어집니다.",
+        "typeApproach": "삽입문의 However가 뒤집는 내용을 앞에서 찾고, 뒤 문장의 repetition and diversity가 삽입문의 variety와 이어지는지 확인합니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "However, melody alone would not normally keep the\nlistener’s attention for long",
+            "charStart": 4,
+            "role": "대조 전환",
+            "translation": "그러나 선율만으로는 보통 청자의 주의를 오래 유지하지 못합니다."
+          }
+        ],
+        "correctReason": "선율 집중 사례가 끝난 ③ 뒤에서 선율만의 한계를 제시해야 다음의 반복과 다양성 균형으로 자연스럽게 이어져 ③입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "④",
+          "reason": "④ 뒤의 this unfolding은 이미 반복과 다양성의 균형이라는 선행 내용을 필요로 하므로 삽입문보다 먼저 올 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_40",
+      "qid": 40,
+      "type": "요약문",
+      "group": "summary",
+      "problemPage": 7,
+      "answer": 1,
+      "answerMark": "①",
+      "stem": "40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),",
+      "rawText": "40. \t다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),\n(B)에 들어갈 말로 가장 적절한 것은?\nMany designers would argue that the most important\nelement of lighting is visibility. Some even refer to it as the\nprimary function of lighting. Visibility simply refers to the\nprinciple of using light to reveal or illuminate objects. In\nthe early days, the job of the designer was nothing more\nthan to create enough light so that the audience or occupants\nof a space could see. In many ways, this philosophy of\nlighting was based on the premise that more was better,\nand many believed that the more footcandles or lumens\nplaced on a stage or in a room, the better visibility that you\nhad. Since the 1950s or ’60s, theatrical designing moved\ntoward a concept that we call selective visibility, which\nsimply refers to revealing to an audience only what needs\nto be seen. Hence, a less-revealing image on stage might\nbe more appropriate for the dramatic action than a fully\nilluminated stage. In selective visibility, areas of low intensity,\nshadows, silhouettes, and high contrast can become effective\nelements in a lighting designer’s set of tools.\n* illuminate: 비추다 \t** premise: 전제\n󰀻\nWhile stage lighting designs in the early days focused on\n(A) \tvisibility, they later shifted to \t(B)\nillumination to enhance dramatic effect.\n(A) \t(B) \t(A) \t(B)\n① maximizing …… strategic \t② increasing…… uniform\n③ controlling …… minimal \t④ reducing …… targeted\n⑤ limiting \t…… purposeful\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 7 of 8 --\n\n8\n8 8",
+      "rawTextChars": 1488,
+      "sharedPassage": "",
+      "sourceTextForReview": "40. \t다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),\n(B)에 들어갈 말로 가장 적절한 것은?\nMany designers would argue that the most important\nelement of lighting is visibility. Some even refer to it as the\nprimary function of lighting. Visibility simply refers to the\nprinciple of using light to reveal or illuminate objects. In\nthe early days, the job of the designer was nothing more\nthan to create enough light so that the audience or occupants\nof a space could see. In many ways, this philosophy of\nlighting was based on the premise that more was better,\nand many believed that the more footcandles or lumens\nplaced on a stage or in a room, the better visibility that you\nhad. Since the 1950s or ’60s, theatrical designing moved\ntoward a concept that we call selective visibility, which\nsimply refers to revealing to an audience only what needs\nto be seen. Hence, a less-revealing image on stage might\nbe more appropriate for the dramatic action than a fully\nilluminated stage. In selective visibility, areas of low intensity,\nshadows, silhouettes, and high contrast can become effective\nelements in a lighting designer’s set of tools.\n* illuminate: 비추다 \t** premise: 전제\n󰀻\nWhile stage lighting designs in the early days focused on\n(A) \tvisibility, they later shifted to \t(B)\nillumination to enhance dramatic effect.\n(A) \t(B) \t(A) \t(B)\n① maximizing …… strategic \t② increasing…… uniform\n③ controlling …… minimal \t④ reducing …… targeted\n⑤ limiting \t…… purposeful\n㢨ٻⱬ㥐㫴㜄ٻḴ䚐ٻ㤴㣅Ề㡴ٻ䚐ạẄ㡕Ḱ㥉䓽ᴴ㠄㜄ٻ㢼㏩⏼␘ډ\n\n-- 7 of 8 --\n\n8\n8 8",
+      "sourceTextForReviewChars": 1488,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "maximizing …… strategic"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "increasing …… uniform"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "controlling …… minimal"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "reducing …… targeted"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "limiting …… purposeful"
+        }
+      ],
+      "review": {
+        "fullTranslation": "많은 디자이너는 조명에서 가장 중요한 요소가 가시성이라고 주장하며 어떤 사람은 이를 조명의 주된 기능이라고 부른다. 가시성은 빛으로 물체를 드러내거나 밝히는 원리를 뜻한다. 초기 디자이너의 일은 관객이나 공간의 사람이 볼 수 있도록 충분한 빛을 만드는 데 그쳤다. 이 철학은 더 많을수록 좋다는 전제에 기초해 무대나 방에 더 많은 조도를 제공할수록 가시성이 좋아진다고 여겼다. 1950~60년대 이후 극장 조명 디자인은 관객에게 볼 필요가 있는 것만 보여 주는 선택적 가시성으로 이동했다. 그래서 무대를 완전히 밝히는 것보다 덜 드러나는 장면이 극적 행동에 더 알맞을 수 있다. 선택적 가시성에서는 낮은 밝기, 그림자, 실루엣, 강한 명암 대비도 조명 디자이너의 효과적인 도구가 된다.",
+        "summary": "정답 ①. 초기 조명은 최대한 많이 보여 주는 데 집중했지만 이후에는 극적 효과에 필요한 부분만 전략적으로 비추는 방식으로 바뀌었습니다.",
+        "typeApproach": "요약문은 초기와 후기의 대조를 각각 한 단어로 압축합니다. more was better는 maximizing, selective visibility는 strategic입니다.",
+        "evidence": [
+          {
+            "in": "rawText",
+            "quote": "only what needs\nto be seen",
+            "charStart": 805,
+            "role": "선택적 조명",
+            "translation": "관객이 볼 필요가 있는 것만 드러냅니다."
+          }
+        ],
+        "correctReason": "초기는 가시성을 최대화했고 후기는 극적 효과를 위해 전략적으로 조명했으므로 maximizing과 strategic인 ①입니다.",
+        "trap": {
+          "mark": "④",
+          "choice": 4,
+          "text": "reducing …… targeted",
+          "reason": "후기의 targeted 성격은 비슷하지만 초기에는 가시성을 줄인 것이 아니라 최대화했습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_41",
+      "qid": 41,
+      "type": "장문 제목",
+      "group": "long",
+      "problemPage": 8,
+      "answer": 3,
+      "answerMark": "③",
+      "stem": "41. 윗글의 제목으로 가장 적절한 것은?",
+      "rawText": "41. \t윗글의 제목으로 가장 적절한 것은?\n① Why Do Advertisers Trick Careless People?\n② Accurate Claims Matter for Consumer Trust\n③ Curiosity over Truth: How to Attract Consumers\n④ How Can We Deal with Exaggerated Product Claims?\n⑤ To Buy or Not to Buy? What Makes Consumers Hesitate",
+      "rawTextChars": 266,
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nIn a consumer research classic, Maloney proposed that\nthe disbelief most people experience when encountering\nexaggerated product claims is often overwhelmed by a natural\ncuriosity. When advertising information conflicts with existing\nbeliefs, the resulting disagreement must be somehow resolved.\nThis is often done by (a) yielding to the message and trying\nout the product in an attempt to readjust personal attitudes\ntoward the brand. In his study, a sample of housewives was\nexposed to advertisements for food products and then divided\ninto two groups: those participants that found the ad claims to\nbe believable and the others that thought they were hard to\nbelieve. The latter group was further divided into two groups,\nthose who (b) confidently disbelieved the claims and those\nwho had what Maloney described as a curious nonbelief. The\nlatter was tied into beliefs that actual product experience\nwas (c) necessary to fully judge the claims. Few consumers\nwho clearly disbelieved the message were interested in trying\nthe product (18%). However, Maloney’s results showed that\nmore consumers who were in the curious nonbelief group\nwere ready to try the product (44%) than in the group that\nexpressed no concerns about (i.e., believed) the advertising\nclaims (34%). The results suggest that advertising that causes\nconsumers not to believe the message claims but makes them\n(d) indifferent may be the most effective form of new product\nadvertising. Convincing consumers that the claims about a\nnew product are true is not necessary to (e) create interest in\nproduct trial.\n* overwhelm: 압도하다",
+      "sourceTextForReview": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nIn a consumer research classic, Maloney proposed that\nthe disbelief most people experience when encountering\nexaggerated product claims is often overwhelmed by a natural\ncuriosity. When advertising information conflicts with existing\nbeliefs, the resulting disagreement must be somehow resolved.\nThis is often done by (a) yielding to the message and trying\nout the product in an attempt to readjust personal attitudes\ntoward the brand. In his study, a sample of housewives was\nexposed to advertisements for food products and then divided\ninto two groups: those participants that found the ad claims to\nbe believable and the others that thought they were hard to\nbelieve. The latter group was further divided into two groups,\nthose who (b) confidently disbelieved the claims and those\nwho had what Maloney described as a curious nonbelief. The\nlatter was tied into beliefs that actual product experience\nwas (c) necessary to fully judge the claims. Few consumers\nwho clearly disbelieved the message were interested in trying\nthe product (18%). However, Maloney’s results showed that\nmore consumers who were in the curious nonbelief group\nwere ready to try the product (44%) than in the group that\nexpressed no concerns about (i.e., believed) the advertising\nclaims (34%). The results suggest that advertising that causes\nconsumers not to believe the message claims but makes them\n(d) indifferent may be the most effective form of new product\nadvertising. Convincing consumers that the claims about a\nnew product are true is not necessary to (e) create interest in\nproduct trial.\n* overwhelm: 압도하다\n\n41. \t윗글의 제목으로 가장 적절한 것은?\n① Why Do Advertisers Trick Careless People?\n② Accurate Claims Matter for Consumer Trust\n③ Curiosity over Truth: How to Attract Consumers\n④ How Can We Deal with Exaggerated Product Claims?\n⑤ To Buy or Not to Buy? What Makes Consumers Hesitate",
+      "sourceTextForReviewChars": 1891,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Why Do Advertisers Trick Careless People?"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Accurate Claims Matter for Consumer Trust"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Curiosity over Truth: How to Attract Consumers"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "How Can We Deal with Exaggerated Product Claims?"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "To Buy or Not to Buy? What Makes Consumers Hesitate"
+        }
+      ],
+      "review": {
+        "fullTranslation": "소비자 연구의 고전에서 Maloney는 과장된 제품 주장을 접할 때 생기는 불신이 자연스러운 호기심에 압도되는 경우가 많다고 보았다. 광고 정보가 기존 믿음과 충돌하면 그 불일치를 해결해야 하는데, 메시지를 받아들이고 제품을 직접 사용해 브랜드에 대한 태도를 조정하는 방식이 쓰이기도 한다. 연구에서는 주부들에게 식품 광고를 보여 준 뒤 광고 주장을 믿는 집단과 믿기 어렵다고 여기는 집단으로 나누었다. 후자는 다시 확신을 가지고 불신하는 사람과 호기심을 동반해 불신하는 사람으로 나뉘었다. 호기심 섞인 불신은 주장을 제대로 판단하려면 실제 제품 경험이 필요하다는 믿음과 연결되었다. 메시지를 명확히 믿지 않은 소비자 가운데 제품을 써 보려는 사람은 18%뿐이었다. 그러나 호기심 섞인 불신 집단은 44%가 제품을 시험할 준비가 되어 있어 광고 주장을 믿은 집단의 34%보다 높았다. 이는 소비자가 광고 주장을 믿지 않더라도 무관심이 아니라 호기심을 느끼게 하는 광고가 신제품 광고에 가장 효과적일 수 있음을 보여 준다. 신제품 체험에 관심을 만들기 위해 주장이 참이라고 소비자를 설득할 필요는 없다.",
+        "summary": "정답 ③. 광고 주장을 완전히 믿지 않아도 호기심이 생기면 오히려 제품을 시험해 보려는 의향이 커질 수 있습니다.",
+        "typeApproach": "제목 문제는 실험의 역설적 결과를 잡습니다. 믿음 34%보다 호기심 섞인 불신 44%가 더 높다는 대비가 중심입니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "curious nonbelief group\nwere ready to try the product (44%)",
+            "charStart": 1141,
+            "role": "핵심 결과",
+            "translation": "호기심 섞인 불신 집단의 44%가 제품을 시험할 의향을 보였습니다."
+          }
+        ],
+        "correctReason": "광고의 진실성보다 불신 속 호기심이 제품 체험을 더 유도한다는 내용이므로 Curiosity over Truth인 ③입니다.",
+        "trap": {
+          "mark": "②",
+          "choice": 2,
+          "text": "Accurate Claims Matter for Consumer Trust",
+          "reason": "정확한 주장으로 신뢰를 얻는 방법이 아니라 믿기 어려운 주장도 호기심을 자극할 수 있다는 실험입니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_42",
+      "qid": 42,
+      "type": "장문 어휘",
+      "group": "long",
+      "problemPage": 8,
+      "answer": 4,
+      "answerMark": "④",
+      "stem": "42. 밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은",
+      "rawText": "42. \t밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은\n것은? [3점]\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "rawTextChars": 84,
+      "sharedPassage": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nIn a consumer research classic, Maloney proposed that\nthe disbelief most people experience when encountering\nexaggerated product claims is often overwhelmed by a natural\ncuriosity. When advertising information conflicts with existing\nbeliefs, the resulting disagreement must be somehow resolved.\nThis is often done by (a) yielding to the message and trying\nout the product in an attempt to readjust personal attitudes\ntoward the brand. In his study, a sample of housewives was\nexposed to advertisements for food products and then divided\ninto two groups: those participants that found the ad claims to\nbe believable and the others that thought they were hard to\nbelieve. The latter group was further divided into two groups,\nthose who (b) confidently disbelieved the claims and those\nwho had what Maloney described as a curious nonbelief. The\nlatter was tied into beliefs that actual product experience\nwas (c) necessary to fully judge the claims. Few consumers\nwho clearly disbelieved the message were interested in trying\nthe product (18%). However, Maloney’s results showed that\nmore consumers who were in the curious nonbelief group\nwere ready to try the product (44%) than in the group that\nexpressed no concerns about (i.e., believed) the advertising\nclaims (34%). The results suggest that advertising that causes\nconsumers not to believe the message claims but makes them\n(d) indifferent may be the most effective form of new product\nadvertising. Convincing consumers that the claims about a\nnew product are true is not necessary to (e) create interest in\nproduct trial.\n* overwhelm: 압도하다",
+      "sourceTextForReview": "[41～42] 다음 글을 읽고, 물음에 답하시오.\nIn a consumer research classic, Maloney proposed that\nthe disbelief most people experience when encountering\nexaggerated product claims is often overwhelmed by a natural\ncuriosity. When advertising information conflicts with existing\nbeliefs, the resulting disagreement must be somehow resolved.\nThis is often done by (a) yielding to the message and trying\nout the product in an attempt to readjust personal attitudes\ntoward the brand. In his study, a sample of housewives was\nexposed to advertisements for food products and then divided\ninto two groups: those participants that found the ad claims to\nbe believable and the others that thought they were hard to\nbelieve. The latter group was further divided into two groups,\nthose who (b) confidently disbelieved the claims and those\nwho had what Maloney described as a curious nonbelief. The\nlatter was tied into beliefs that actual product experience\nwas (c) necessary to fully judge the claims. Few consumers\nwho clearly disbelieved the message were interested in trying\nthe product (18%). However, Maloney’s results showed that\nmore consumers who were in the curious nonbelief group\nwere ready to try the product (44%) than in the group that\nexpressed no concerns about (i.e., believed) the advertising\nclaims (34%). The results suggest that advertising that causes\nconsumers not to believe the message claims but makes them\n(d) indifferent may be the most effective form of new product\nadvertising. Convincing consumers that the claims about a\nnew product are true is not necessary to (e) create interest in\nproduct trial.\n* overwhelm: 압도하다\n\n42. \t밑줄 친 (a)～(e) 중에서 문맥상 낱말의 쓰임이 적절하지 않은\n것은? [3점]\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sourceTextForReviewChars": 1709,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "review": {
+        "fullTranslation": "소비자 연구의 고전에서 Maloney는 과장된 제품 주장을 접할 때 생기는 불신이 자연스러운 호기심에 압도되는 경우가 많다고 보았다. 광고 정보가 기존 믿음과 충돌하면 그 불일치를 해결해야 하는데, 메시지를 받아들이고 제품을 직접 사용해 브랜드에 대한 태도를 조정하는 방식이 쓰이기도 한다. 연구에서는 주부들에게 식품 광고를 보여 준 뒤 광고 주장을 믿는 집단과 믿기 어렵다고 여기는 집단으로 나누었다. 후자는 다시 확신을 가지고 불신하는 사람과 호기심을 동반해 불신하는 사람으로 나뉘었다. 호기심 섞인 불신은 주장을 제대로 판단하려면 실제 제품 경험이 필요하다는 믿음과 연결되었다. 메시지를 명확히 믿지 않은 소비자 가운데 제품을 써 보려는 사람은 18%뿐이었다. 그러나 호기심 섞인 불신 집단은 44%가 제품을 시험할 준비가 되어 있어 광고 주장을 믿은 집단의 34%보다 높았다. 이는 소비자가 광고 주장을 믿지 않더라도 무관심이 아니라 호기심을 느끼게 하는 광고가 신제품 광고에 가장 효과적일 수 있음을 보여 준다. 신제품 체험에 관심을 만들기 위해 주장이 참이라고 소비자를 설득할 필요는 없다.",
+        "summary": "정답 ④. 가장 효과적인 광고는 소비자를 무관심하게 만드는 것이 아니라 믿지 않으면서도 궁금하게 만들어 제품을 시험하게 합니다.",
+        "typeApproach": "장문 어휘는 앞의 집단 이름과 실험 수치를 결론 문장에 다시 대입합니다. curious nonbelief와 반대인 indifferent가 어긋납니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "but makes them\n(d) indifferent may be the most effective",
+            "charStart": 1392,
+            "role": "문맥 충돌",
+            "translation": "그러나 그들을 무관심하게 만드는 광고가 가장 효과적일 수 있다고 되어 있습니다."
+          }
+        ],
+        "correctReason": "실험 결론은 소비자를 curious하게 만드는 광고이므로 indifferent는 curious로 바뀌어야 해 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(e)",
+          "reason": "제품 주장을 진실이라고 확신시키지 않아도 체험 관심을 create할 수 있다는 결론에 create는 적절합니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_43",
+      "qid": 43,
+      "type": "장문 순서",
+      "group": "long",
+      "problemPage": 8,
+      "answer": 4,
+      "answerMark": "④",
+      "stem": "43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로",
+      "rawText": "43. \t주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로\n가장 적절한 것은?\n①\n③\n⑤\n(B)\n(C)\n(D)\n－\n－\n－\n(D)\n(D)\n(C)\n－\n－\n－\n(C)\n(B)\n(B)\n②\n④\n(C)\n(D)\n－\n－\n(B)\n(B)\n－\n－\n(D)\n(C)",
+      "rawTextChars": 139,
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nTim adopted a dog a few months ago. When he met his dog\nfor the first time, he named him after his favorite character,\nMickey. Mickey was a healthy dog, but he soon seemed to\nlack energy. Tim thought that taking care of a dog was much\nharder than he had expected. So, he decided to sign up for a\ndog \ttraining \tcourse. \tAt \tthe \ttraining \tcenter, \the \tmet \tan\ninstructor named Jack. He emphasized to Tim, “Be sure to\nwalk (a) your dog daily. Dogs need regular exercise to be\nhappy and healthy.”\n(B)\nWhen Tim and Mickey arrived at the park Jack had\nrecommended, dozens of dogs were already jumping and\nplaying. Mickey looked nervous in the unfamiliar surroundings.\nTim said, “Don’t worry, Mickey. It’ll be fun.” Just then, Tim\nsaw a boy about (b) his age standing with a small dog.\nGathering his courage, Tim walked over to him. “Hi, I’m Tim.\nCan I introduce my dog to yours?” The boy replied, “Sure.\nI’m Daniel. Oh, it looks like they like each other already!”\n(C)\nHaving something in common as dog owners, Tim and\nDaniel enjoyed talking to each other. They spent the next two\nhours pleasantly chatting and decided to walk their dogs\ntogether regularly. “See you soon,” said Tim as (c) he and\nMickey left the park. Over the next few weeks, the boys and\ntheir dogs became great friends. After returning from a walk\none day, Tim said to Mickey, “Walking you felt like a burden\nat first, but now I see doing things for (d) you can be great\nfor me, too!”\n(D)\nBeing sure to follow Jack’s advice, Tim took Mickey for a\nwalk every day. However, this extra responsibility soon\nseemed like a burden, and Tim felt exhausted. One day, Tim\ngot a call from Jack. “Hello, Tim. How’s everything going\nwith Mickey?” Tim replied, “Actually, it’s pretty hard walking\nhim every day. We’ve been taking the same route, and it has\nbecome a little boring.” Jack offered (e) him a new idea.\n“How about going to Happy Dog Park?” Tim said, “That’s a\ngreat idea!”",
+      "sourceTextForReview": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nTim adopted a dog a few months ago. When he met his dog\nfor the first time, he named him after his favorite character,\nMickey. Mickey was a healthy dog, but he soon seemed to\nlack energy. Tim thought that taking care of a dog was much\nharder than he had expected. So, he decided to sign up for a\ndog \ttraining \tcourse. \tAt \tthe \ttraining \tcenter, \the \tmet \tan\ninstructor named Jack. He emphasized to Tim, “Be sure to\nwalk (a) your dog daily. Dogs need regular exercise to be\nhappy and healthy.”\n(B)\nWhen Tim and Mickey arrived at the park Jack had\nrecommended, dozens of dogs were already jumping and\nplaying. Mickey looked nervous in the unfamiliar surroundings.\nTim said, “Don’t worry, Mickey. It’ll be fun.” Just then, Tim\nsaw a boy about (b) his age standing with a small dog.\nGathering his courage, Tim walked over to him. “Hi, I’m Tim.\nCan I introduce my dog to yours?” The boy replied, “Sure.\nI’m Daniel. Oh, it looks like they like each other already!”\n(C)\nHaving something in common as dog owners, Tim and\nDaniel enjoyed talking to each other. They spent the next two\nhours pleasantly chatting and decided to walk their dogs\ntogether regularly. “See you soon,” said Tim as (c) he and\nMickey left the park. Over the next few weeks, the boys and\ntheir dogs became great friends. After returning from a walk\none day, Tim said to Mickey, “Walking you felt like a burden\nat first, but now I see doing things for (d) you can be great\nfor me, too!”\n(D)\nBeing sure to follow Jack’s advice, Tim took Mickey for a\nwalk every day. However, this extra responsibility soon\nseemed like a burden, and Tim felt exhausted. One day, Tim\ngot a call from Jack. “Hello, Tim. How’s everything going\nwith Mickey?” Tim replied, “Actually, it’s pretty hard walking\nhim every day. We’ve been taking the same route, and it has\nbecome a little boring.” Jack offered (e) him a new idea.\n“How about going to Happy Dog Park?” Tim said, “That’s a\ngreat idea!”\n\n43. \t주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로\n가장 적절한 것은?\n①\n③\n⑤\n(B)\n(C)\n(D)\n－\n－\n－\n(D)\n(D)\n(C)\n－\n－\n－\n(C)\n(B)\n(B)\n②\n④\n(C)\n(D)\n－\n－\n(B)\n(B)\n－\n－\n(D)\n(C)",
+      "sourceTextForReviewChars": 2109,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(B) - (D) - (C)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(C) - (B) - (D)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(C) - (D) - (B)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(D) - (B) - (C)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(D) - (C) - (B)"
+        }
+      ],
+      "review": {
+        "fullTranslation": "Tim은 몇 달 전에 개를 입양했고 처음 만났을 때 자신이 좋아하는 캐릭터의 이름을 따 Mickey라고 이름 붙였다. 건강했던 Mickey가 곧 활기를 잃자 Tim은 개를 돌보는 일이 예상보다 어렵다고 생각해 훈련 과정에 등록했다. 강사 Jack은 개가 행복하고 건강하려면 매일 산책시켜야 한다고 강조했다. Tim은 조언대로 매일 산책했지만 추가 책임이 부담스러워 지쳤다. 같은 길만 걸어 지루하다고 Jack에게 말하자 Jack은 Happy Dog Park를 제안했다. 공원에는 많은 개가 놀고 있었고 Mickey는 낯선 환경에서 긴장했다. Tim은 또래 소년 Daniel과 그의 작은 개를 보고 용기를 내 자신의 개를 소개했다. 두 개는 곧 서로를 좋아했다. 개를 기른다는 공통점이 있는 Tim과 Daniel은 두 시간 동안 즐겁게 이야기하고 정기적으로 함께 산책하기로 했다. 몇 주 동안 두 소년과 개들은 좋은 친구가 되었다. Tim은 처음에는 Mickey를 산책시키는 일이 부담이었지만 이제는 Mickey를 위해 하는 일이 자신에게도 큰 도움이 된다는 것을 알게 되었다.",
+        "summary": "정답 ④. Jack의 조언대로 산책하다 지친 Tim이 새 공원을 추천받고(D), 그곳에서 Daniel을 만나(B), 함께 산책하는 친구가 됩니다(C).",
+        "typeApproach": "장문 순서는 장소와 사건의 원인을 추적합니다. 공원 추천이 먼저, 공원 도착이 다음, 만남 뒤 관계의 발전이 마지막입니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "How about going to Happy Dog Park?",
+            "charStart": 1900,
+            "role": "장소 이동의 원인",
+            "translation": "Jack이 Happy Dog Park에 가 보라고 제안합니다."
+          }
+        ],
+        "correctReason": "Jack의 공원 제안 D가 B의 arrived at the park를 만들고, 만남 뒤 C에서 친구가 되므로 D-B-C인 ④입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(D) - (C) - (B)",
+          "reason": "C는 Daniel과 이미 대화하고 우정을 쌓은 뒤의 내용이므로 첫 만남을 다룬 B보다 앞설 수 없습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_44",
+      "qid": 44,
+      "type": "장문 지칭",
+      "group": "long",
+      "problemPage": 8,
+      "answer": 4,
+      "answerMark": "④",
+      "stem": "44. 밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른",
+      "rawText": "44. \t밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "rawTextChars": 78,
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nTim adopted a dog a few months ago. When he met his dog\nfor the first time, he named him after his favorite character,\nMickey. Mickey was a healthy dog, but he soon seemed to\nlack energy. Tim thought that taking care of a dog was much\nharder than he had expected. So, he decided to sign up for a\ndog \ttraining \tcourse. \tAt \tthe \ttraining \tcenter, \the \tmet \tan\ninstructor named Jack. He emphasized to Tim, “Be sure to\nwalk (a) your dog daily. Dogs need regular exercise to be\nhappy and healthy.”\n(B)\nWhen Tim and Mickey arrived at the park Jack had\nrecommended, dozens of dogs were already jumping and\nplaying. Mickey looked nervous in the unfamiliar surroundings.\nTim said, “Don’t worry, Mickey. It’ll be fun.” Just then, Tim\nsaw a boy about (b) his age standing with a small dog.\nGathering his courage, Tim walked over to him. “Hi, I’m Tim.\nCan I introduce my dog to yours?” The boy replied, “Sure.\nI’m Daniel. Oh, it looks like they like each other already!”\n(C)\nHaving something in common as dog owners, Tim and\nDaniel enjoyed talking to each other. They spent the next two\nhours pleasantly chatting and decided to walk their dogs\ntogether regularly. “See you soon,” said Tim as (c) he and\nMickey left the park. Over the next few weeks, the boys and\ntheir dogs became great friends. After returning from a walk\none day, Tim said to Mickey, “Walking you felt like a burden\nat first, but now I see doing things for (d) you can be great\nfor me, too!”\n(D)\nBeing sure to follow Jack’s advice, Tim took Mickey for a\nwalk every day. However, this extra responsibility soon\nseemed like a burden, and Tim felt exhausted. One day, Tim\ngot a call from Jack. “Hello, Tim. How’s everything going\nwith Mickey?” Tim replied, “Actually, it’s pretty hard walking\nhim every day. We’ve been taking the same route, and it has\nbecome a little boring.” Jack offered (e) him a new idea.\n“How about going to Happy Dog Park?” Tim said, “That’s a\ngreat idea!”",
+      "sourceTextForReview": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nTim adopted a dog a few months ago. When he met his dog\nfor the first time, he named him after his favorite character,\nMickey. Mickey was a healthy dog, but he soon seemed to\nlack energy. Tim thought that taking care of a dog was much\nharder than he had expected. So, he decided to sign up for a\ndog \ttraining \tcourse. \tAt \tthe \ttraining \tcenter, \the \tmet \tan\ninstructor named Jack. He emphasized to Tim, “Be sure to\nwalk (a) your dog daily. Dogs need regular exercise to be\nhappy and healthy.”\n(B)\nWhen Tim and Mickey arrived at the park Jack had\nrecommended, dozens of dogs were already jumping and\nplaying. Mickey looked nervous in the unfamiliar surroundings.\nTim said, “Don’t worry, Mickey. It’ll be fun.” Just then, Tim\nsaw a boy about (b) his age standing with a small dog.\nGathering his courage, Tim walked over to him. “Hi, I’m Tim.\nCan I introduce my dog to yours?” The boy replied, “Sure.\nI’m Daniel. Oh, it looks like they like each other already!”\n(C)\nHaving something in common as dog owners, Tim and\nDaniel enjoyed talking to each other. They spent the next two\nhours pleasantly chatting and decided to walk their dogs\ntogether regularly. “See you soon,” said Tim as (c) he and\nMickey left the park. Over the next few weeks, the boys and\ntheir dogs became great friends. After returning from a walk\none day, Tim said to Mickey, “Walking you felt like a burden\nat first, but now I see doing things for (d) you can be great\nfor me, too!”\n(D)\nBeing sure to follow Jack’s advice, Tim took Mickey for a\nwalk every day. However, this extra responsibility soon\nseemed like a burden, and Tim felt exhausted. One day, Tim\ngot a call from Jack. “Hello, Tim. How’s everything going\nwith Mickey?” Tim replied, “Actually, it’s pretty hard walking\nhim every day. We’ve been taking the same route, and it has\nbecome a little boring.” Jack offered (e) him a new idea.\n“How about going to Happy Dog Park?” Tim said, “That’s a\ngreat idea!”\n\n44. \t밑줄 친 (a)～(e) 중에서 가리키는 대상이 나머지 넷과 다른\n것은?\n① (a) \t② (b) \t③ (c) \t④ (d) \t⑤ (e)",
+      "sourceTextForReviewChars": 2048,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "(a)"
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "(b)"
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "(c)"
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "(d)"
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "(e)"
+        }
+      ],
+      "review": {
+        "fullTranslation": "Tim은 몇 달 전에 개를 입양했고 처음 만났을 때 자신이 좋아하는 캐릭터의 이름을 따 Mickey라고 이름 붙였다. 건강했던 Mickey가 곧 활기를 잃자 Tim은 개를 돌보는 일이 예상보다 어렵다고 생각해 훈련 과정에 등록했다. 강사 Jack은 개가 행복하고 건강하려면 매일 산책시켜야 한다고 강조했다. Tim은 조언대로 매일 산책했지만 추가 책임이 부담스러워 지쳤다. 같은 길만 걸어 지루하다고 Jack에게 말하자 Jack은 Happy Dog Park를 제안했다. 공원에는 많은 개가 놀고 있었고 Mickey는 낯선 환경에서 긴장했다. Tim은 또래 소년 Daniel과 그의 작은 개를 보고 용기를 내 자신의 개를 소개했다. 두 개는 곧 서로를 좋아했다. 개를 기른다는 공통점이 있는 Tim과 Daniel은 두 시간 동안 즐겁게 이야기하고 정기적으로 함께 산책하기로 했다. 몇 주 동안 두 소년과 개들은 좋은 친구가 되었다. Tim은 처음에는 Mickey를 산책시키는 일이 부담이었지만 이제는 Mickey를 위해 하는 일이 자신에게도 큰 도움이 된다는 것을 알게 되었다.",
+        "summary": "정답 ④. (a)·(b)·(c)·(e)는 모두 Tim을 가리키지만 Mickey에게 직접 말한 (d) you만 개 Mickey를 가리킵니다.",
+        "typeApproach": "지칭 문제는 대명사 바로 앞의 화자와 청자를 확인합니다. 직접 인용문에서 Tim이 Mickey에게 말하므로 you의 대상이 달라집니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Tim said to Mickey, “Walking you felt like a burden",
+            "charStart": 1355,
+            "role": "화자와 청자",
+            "translation": "Tim이 Mickey에게 산책시키는 일이 부담이었다고 말합니다."
+          }
+        ],
+        "correctReason": "(d) you는 Tim의 말 상대인 Mickey이고 나머지 밑줄은 Tim을 가리키므로 ④가 정답입니다.",
+        "trap": {
+          "mark": "⑤",
+          "choice": 5,
+          "text": "(e)",
+          "reason": "Jack offered him a new idea에서 him은 전화를 받고 있는 Tim을 가리켜 다른 세 Tim 지칭과 같습니다."
+        }
+      }
+    },
+    {
+      "id": "2027_09_45",
+      "qid": 45,
+      "type": "장문 내용",
+      "group": "long",
+      "problemPage": 8,
+      "answer": 2,
+      "answerMark": "②",
+      "stem": "45. 윗글에 관한 내용으로 적절하지 않은 것은?",
+      "rawText": "45. \t윗글에 관한 내용으로 적절하지 않은 것은?\n① Mickey는 Tim이 좋아하는 캐릭터의 이름이었다.\n② Mickey는 공원에 도착하자마자 즐겁게 뛰어다녔다.\n③ Tim은 Mickey를 다른 개에게 소개하려 했다.\n④ Tim과 Daniel은 자신의 개를 함께 산책시키기로 했다.\n⑤ Tim은 Jack과의 통화에서 고민을 이야기했다.\n* 확인 사항\n◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인\n하시오.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 8 of 8 --",
+      "rawTextChars": 285,
+      "sharedPassage": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nTim adopted a dog a few months ago. When he met his dog\nfor the first time, he named him after his favorite character,\nMickey. Mickey was a healthy dog, but he soon seemed to\nlack energy. Tim thought that taking care of a dog was much\nharder than he had expected. So, he decided to sign up for a\ndog \ttraining \tcourse. \tAt \tthe \ttraining \tcenter, \the \tmet \tan\ninstructor named Jack. He emphasized to Tim, “Be sure to\nwalk (a) your dog daily. Dogs need regular exercise to be\nhappy and healthy.”\n(B)\nWhen Tim and Mickey arrived at the park Jack had\nrecommended, dozens of dogs were already jumping and\nplaying. Mickey looked nervous in the unfamiliar surroundings.\nTim said, “Don’t worry, Mickey. It’ll be fun.” Just then, Tim\nsaw a boy about (b) his age standing with a small dog.\nGathering his courage, Tim walked over to him. “Hi, I’m Tim.\nCan I introduce my dog to yours?” The boy replied, “Sure.\nI’m Daniel. Oh, it looks like they like each other already!”\n(C)\nHaving something in common as dog owners, Tim and\nDaniel enjoyed talking to each other. They spent the next two\nhours pleasantly chatting and decided to walk their dogs\ntogether regularly. “See you soon,” said Tim as (c) he and\nMickey left the park. Over the next few weeks, the boys and\ntheir dogs became great friends. After returning from a walk\none day, Tim said to Mickey, “Walking you felt like a burden\nat first, but now I see doing things for (d) you can be great\nfor me, too!”\n(D)\nBeing sure to follow Jack’s advice, Tim took Mickey for a\nwalk every day. However, this extra responsibility soon\nseemed like a burden, and Tim felt exhausted. One day, Tim\ngot a call from Jack. “Hello, Tim. How’s everything going\nwith Mickey?” Tim replied, “Actually, it’s pretty hard walking\nhim every day. We’ve been taking the same route, and it has\nbecome a little boring.” Jack offered (e) him a new idea.\n“How about going to Happy Dog Park?” Tim said, “That’s a\ngreat idea!”",
+      "sourceTextForReview": "[43～45] 다음 글을 읽고, 물음에 답하시오.\n(A)\nTim adopted a dog a few months ago. When he met his dog\nfor the first time, he named him after his favorite character,\nMickey. Mickey was a healthy dog, but he soon seemed to\nlack energy. Tim thought that taking care of a dog was much\nharder than he had expected. So, he decided to sign up for a\ndog \ttraining \tcourse. \tAt \tthe \ttraining \tcenter, \the \tmet \tan\ninstructor named Jack. He emphasized to Tim, “Be sure to\nwalk (a) your dog daily. Dogs need regular exercise to be\nhappy and healthy.”\n(B)\nWhen Tim and Mickey arrived at the park Jack had\nrecommended, dozens of dogs were already jumping and\nplaying. Mickey looked nervous in the unfamiliar surroundings.\nTim said, “Don’t worry, Mickey. It’ll be fun.” Just then, Tim\nsaw a boy about (b) his age standing with a small dog.\nGathering his courage, Tim walked over to him. “Hi, I’m Tim.\nCan I introduce my dog to yours?” The boy replied, “Sure.\nI’m Daniel. Oh, it looks like they like each other already!”\n(C)\nHaving something in common as dog owners, Tim and\nDaniel enjoyed talking to each other. They spent the next two\nhours pleasantly chatting and decided to walk their dogs\ntogether regularly. “See you soon,” said Tim as (c) he and\nMickey left the park. Over the next few weeks, the boys and\ntheir dogs became great friends. After returning from a walk\none day, Tim said to Mickey, “Walking you felt like a burden\nat first, but now I see doing things for (d) you can be great\nfor me, too!”\n(D)\nBeing sure to follow Jack’s advice, Tim took Mickey for a\nwalk every day. However, this extra responsibility soon\nseemed like a burden, and Tim felt exhausted. One day, Tim\ngot a call from Jack. “Hello, Tim. How’s everything going\nwith Mickey?” Tim replied, “Actually, it’s pretty hard walking\nhim every day. We’ve been taking the same route, and it has\nbecome a little boring.” Jack offered (e) him a new idea.\n“How about going to Happy Dog Park?” Tim said, “That’s a\ngreat idea!”\n\n45. \t윗글에 관한 내용으로 적절하지 않은 것은?\n① Mickey는 Tim이 좋아하는 캐릭터의 이름이었다.\n② Mickey는 공원에 도착하자마자 즐겁게 뛰어다녔다.\n③ Tim은 Mickey를 다른 개에게 소개하려 했다.\n④ Tim과 Daniel은 자신의 개를 함께 산책시키기로 했다.\n⑤ Tim은 Jack과의 통화에서 고민을 이야기했다.\n* 확인 사항\n◦ 답안지의 해당란에 필요한 내용을 정확히 기입(표기)했는지 확인\n하시오.\n이 문제지에 관한 저작권은 한국교육과정평가원에 있습니다.\n\n-- 8 of 8 --",
+      "sourceTextForReviewChars": 2255,
+      "choices": [
+        {
+          "num": 1,
+          "mark": "①",
+          "text": "Mickey는 Tim이 좋아하는 캐릭터의 이름이었다."
+        },
+        {
+          "num": 2,
+          "mark": "②",
+          "text": "Mickey는 공원에 도착하자마자 즐겁게 뛰어다녔다."
+        },
+        {
+          "num": 3,
+          "mark": "③",
+          "text": "Tim은 Mickey를 다른 개에게 소개하려 했다."
+        },
+        {
+          "num": 4,
+          "mark": "④",
+          "text": "Tim과 Daniel은 자신의 개를 함께 산책시키기로 했다."
+        },
+        {
+          "num": 5,
+          "mark": "⑤",
+          "text": "Tim은 Jack과의 통화에서 고민을 이야기했다."
+        }
+      ],
+      "review": {
+        "fullTranslation": "Tim은 몇 달 전에 개를 입양했고 처음 만났을 때 자신이 좋아하는 캐릭터의 이름을 따 Mickey라고 이름 붙였다. 건강했던 Mickey가 곧 활기를 잃자 Tim은 개를 돌보는 일이 예상보다 어렵다고 생각해 훈련 과정에 등록했다. 강사 Jack은 개가 행복하고 건강하려면 매일 산책시켜야 한다고 강조했다. Tim은 조언대로 매일 산책했지만 추가 책임이 부담스러워 지쳤다. 같은 길만 걸어 지루하다고 Jack에게 말하자 Jack은 Happy Dog Park를 제안했다. 공원에는 많은 개가 놀고 있었고 Mickey는 낯선 환경에서 긴장했다. Tim은 또래 소년 Daniel과 그의 작은 개를 보고 용기를 내 자신의 개를 소개했다. 두 개는 곧 서로를 좋아했다. 개를 기른다는 공통점이 있는 Tim과 Daniel은 두 시간 동안 즐겁게 이야기하고 정기적으로 함께 산책하기로 했다. 몇 주 동안 두 소년과 개들은 좋은 친구가 되었다. Tim은 처음에는 Mickey를 산책시키는 일이 부담이었지만 이제는 Mickey를 위해 하는 일이 자신에게도 큰 도움이 된다는 것을 알게 되었다.",
+        "summary": "정답 ②. Mickey는 공원에 도착했을 때 낯선 환경 때문에 즐겁게 뛰어다닌 것이 아니라 긴장한 모습이었습니다.",
+        "typeApproach": "장문 내용 문제는 인물·장소·행동을 사건 순서대로 대조합니다. 공원 도착 직후 Mickey의 실제 반응이 정답을 가릅니다.",
+        "evidence": [
+          {
+            "in": "sharedPassage",
+            "quote": "Mickey looked nervous in the unfamiliar surroundings.",
+            "charStart": 642,
+            "role": "도착 직후 반응",
+            "translation": "Mickey는 낯선 환경에서 긴장해 보였습니다."
+          }
+        ],
+        "correctReason": "공원에 도착한 Mickey는 nervous였으므로 즐겁게 뛰어다녔다고 바꾼 ②가 정답입니다.",
+        "trap": {
+          "mark": "①",
+          "choice": 1,
+          "text": "Mickey는 Tim이 좋아하는 캐릭터의 이름이었다.",
+          "reason": "Tim이 가장 좋아하는 캐릭터의 이름을 따서 개에게 Mickey라는 이름을 붙였으므로 일치합니다."
+        }
+      }
+    }
+  ]
+}

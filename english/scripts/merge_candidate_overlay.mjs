@@ -29,8 +29,8 @@ const CHOICE_CONTAMINATION_PATTERNS = [
   /\[\d{2}\s*[~～－-]\s*\d{2}\]/,
 ];
 const EXPECTED_PUBLIC_BOUNDARY = {
-  english: { total: 868, free: 5, locked: 863, packs: 187 },
-  math: { total: 460, free: 5, locked: 455, packs: 110 },
+  english: { total: 896, free: 5, locked: 891, packs: 193 },
+  math: { total: 506, free: 5, locked: 501, packs: 121 },
 };
 
 function fail(code, detail = "") {
@@ -48,13 +48,18 @@ function parseArguments() {
     skipPublicBoundary: values.includes("--skip-public-boundary"),
     overlayPath: DEFAULT_OVERLAY_PATH,
     outputPath: null,
+    reviewExportPath: null,
     sourceDirectory: null,
   };
 
   for (let index = 0; index < values.length; index += 1) {
     const value = values[index];
     if (value === "--check" || value === "--skip-public-boundary") continue;
-    if (!["--overlay", "--output", "--source-dir"].includes(value)) {
+    if (
+      !["--overlay", "--output", "--review-export", "--source-dir"].includes(
+        value,
+      )
+    ) {
       fail("UNKNOWN_ARGUMENT", value);
     }
     const next = values[index + 1];
@@ -63,6 +68,7 @@ function parseArguments() {
     const resolved = path.resolve(ROOT, next);
     if (value === "--overlay") options.overlayPath = resolved;
     if (value === "--output") options.outputPath = resolved;
+    if (value === "--review-export") options.reviewExportPath = resolved;
     if (value === "--source-dir") options.sourceDirectory = resolved;
   }
 
@@ -74,6 +80,82 @@ function parseArguments() {
     );
   }
   return options;
+}
+
+function buildFullTextReviewExport(merged) {
+  const questions = merged.questions.map((question) => {
+    const sourceTextForReview = question.sharedPassage
+      ? `${question.sharedPassage}\n\n${question.rawText}`
+      : question.rawText;
+    return {
+      id: question.id,
+      qid: question.qid,
+      type: question.type,
+      group: question.group,
+      problemPage: question.audit.problemPage,
+      answer: question.answer,
+      answerMark: ENGLISH_CHOICE_MARKS[question.answer - 1],
+      stem: question.stem,
+      rawText: question.rawText,
+      rawTextChars: question.rawText.length,
+      sharedPassage: question.sharedPassage,
+      sourceTextForReview,
+      sourceTextForReviewChars: sourceTextForReview.length,
+      choices: question.choices,
+      review: {
+        fullTranslation: question.review.fullTranslation,
+        summary: question.review.summary,
+        typeApproach: question.review.typeApproach,
+        evidence: question.review.evidence,
+        correctReason: question.review.correctReason,
+        trap: question.review.trap,
+      },
+    };
+  });
+  ensure(questions.length === 28, "REVIEW_EXPORT_QUESTION_COUNT");
+  for (const question of questions) {
+    ensure(
+      question.rawText.trim().length > 0 &&
+        question.sourceTextForReview.trim().length >= 100,
+      "REVIEW_EXPORT_RAW_TEXT_MISSING",
+      question.id,
+    );
+    ensure(
+      question.review.fullTranslation.trim().length >= 80,
+      "REVIEW_EXPORT_TRANSLATION_MISSING",
+      question.id,
+    );
+  }
+  return {
+    schemaVersion: "english-fulltext-review-export-v1",
+    exportId: `${merged.candidateId}_fulltext_review`,
+    status: "internal_review_only",
+    publicConnected: false,
+    sourceCandidateId: merged.candidateId,
+    sourceArtifacts: merged.sourceArtifacts,
+    scope: {
+      exam: "2027학년도 9월 모의평가 영어",
+      questionRange: "18-45",
+      questionCount: questions.length,
+      rawTextQuestionCount: questions.length,
+      translationQuestionCount: questions.length,
+    },
+    integrity: {
+      questionIds: questions.map((question) => question.id),
+      rawTextFingerprint: fingerprint(
+        questions.map((question) => [question.id, question.rawText]),
+      ),
+      reviewFingerprint: fingerprint(
+        questions.map((question) => [question.id, question.review]),
+      ),
+    },
+    usageRestrictions: [
+      "검수 전용 내부 파일",
+      "공개 데이터 생성 입력으로 사용 금지",
+      "원문 대조 승인 전 잠금 해제 금지",
+    ],
+    questions,
+  };
 }
 
 function readJson(filePath, label) {
@@ -91,6 +173,38 @@ function sha256(filePath) {
 
 function fingerprint(value) {
   return createHash("sha256").update(JSON.stringify(value)).digest("hex");
+}
+
+function validateReleaseApproval(overlay) {
+  const approval = overlay.approval;
+  if (!approval) return null;
+  ensure(
+    approval.status === "release_approved",
+    "APPROVAL_STATUS",
+  );
+  ensure(approval.approvedAt === "2026-09-02", "APPROVAL_DATE");
+  ensure(approval.answerCrossCheck === "28/28", "APPROVAL_ANSWER_SCOPE");
+  ensure(
+    JSON.stringify(approval.rawTextSampleQuestionIds) ===
+      JSON.stringify([18, 21, 34, 39, 42]),
+    "APPROVAL_RAW_TEXT_SAMPLE",
+  );
+  ensure(approval.unlockAuthorized === true, "APPROVAL_UNLOCK_STATE");
+  const reviewExportPath = path.resolve(
+    ROOT,
+    approval.fullTextReviewExport?.path ?? "",
+  );
+  ensure(
+    path.relative(ROOT, reviewExportPath).replaceAll(path.sep, "/") ===
+      "english/data/candidates/english_2027_09_fulltext_review_export.json",
+    "APPROVAL_REVIEW_EXPORT_PATH",
+  );
+  ensure(existsSync(reviewExportPath), "APPROVAL_REVIEW_EXPORT_MISSING");
+  ensure(
+    sha256(reviewExportPath) === approval.fullTextReviewExport.sha256,
+    "APPROVAL_REVIEW_EXPORT_HASH",
+  );
+  return approval;
 }
 
 function listFiles(directory) {
@@ -235,6 +349,25 @@ function buildValidatedReview(question, choices, figure, review) {
     "REVIEW_REASON",
     question.id,
   );
+  const fullTranslation = Object.hasOwn(review, "fullTranslation")
+    ? validatedText(
+        review.fullTranslation,
+        "REVIEW_FULL_TRANSLATION",
+        question.id,
+      )
+    : null;
+  if (fullTranslation) {
+    ensure(
+      fullTranslation.trim().length >= 80,
+      "REVIEW_FULL_TRANSLATION_DEPTH",
+      question.id,
+    );
+    ensure(
+      !REVIEW_DRAFT_PATTERN.test(fullTranslation),
+      "REVIEW_FULL_TRANSLATION_DRAFT_MARKER",
+      question.id,
+    );
+  }
   ensure(
     correctReason.includes(review.answerMark),
     "REVIEW_REASON_ANSWER_MARK",
@@ -329,6 +462,7 @@ function buildValidatedReview(question, choices, figure, review) {
     answerMark: review.answerMark,
     summary,
     typeApproach,
+    ...(fullTranslation ? { fullTranslation } : {}),
     evidence,
     correctReason,
     trap: {
@@ -351,6 +485,7 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
     overlay.releaseRules?.allowPublicGeneration === false,
     "OVERLAY_PUBLIC_GENERATION_ALLOWED",
   );
+  const approval = validateReleaseApproval(overlay);
   verifySourceArtifacts(overlay, sourceDirectory);
 
   const basePath = path.resolve(ROOT, overlay.baseData?.path ?? "");
@@ -546,6 +681,12 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
       figure,
       reviewsById.get(auditQuestion.id),
     );
+    if (
+      overlay.releaseRules.requireFullTranslationForAll === true &&
+      !mergedQuestion.review.fullTranslation
+    ) {
+      fail("REVIEW_FULL_TRANSLATION_REQUIRED", auditQuestion.id);
+    }
     return mergedQuestion;
   });
 
@@ -577,8 +718,11 @@ function buildMergedCandidate(overlay, overlayPath, sourceDirectory) {
   return {
     schemaVersion: "english-product-candidate-v2",
     candidateId: overlay.candidateId,
-    status: "internal_candidate",
+    status: approval ? "internal_release_ready" : "internal_candidate",
     publicConnected: false,
+    ...(approval
+      ? { canonicalState: "release_ready_catalog_locked", approval }
+      : {}),
     generatedFrom: {
       overlayPath: path.relative(ROOT, overlayPath).replaceAll(path.sep, "/"),
       baseDataPath: overlay.baseData.path,
@@ -639,6 +783,12 @@ const merged = buildMergedCandidate(
   options.sourceDirectory,
 );
 const serialized = `${JSON.stringify(merged, null, 2)}\n`;
+const reviewExport = options.reviewExportPath
+  ? buildFullTextReviewExport(merged)
+  : null;
+const serializedReviewExport = reviewExport
+  ? `${JSON.stringify(reviewExport, null, 2)}\n`
+  : null;
 
 if (options.check) {
   ensure(existsSync(options.outputPath), "MERGED_OUTPUT_MISSING", options.outputPath);
@@ -647,10 +797,25 @@ if (options.check) {
     "MERGED_OUTPUT_OUTDATED",
     path.relative(ROOT, options.outputPath),
   );
+  if (options.reviewExportPath) {
+    ensure(
+      existsSync(options.reviewExportPath),
+      "REVIEW_EXPORT_MISSING",
+      options.reviewExportPath,
+    );
+    ensure(
+      readFileSync(options.reviewExportPath, "utf8") === serializedReviewExport,
+      "REVIEW_EXPORT_OUTDATED",
+      path.relative(ROOT, options.reviewExportPath),
+    );
+  }
 } else {
   writeFileSync(options.outputPath, serialized, "utf8");
+  if (options.reviewExportPath) {
+    writeFileSync(options.reviewExportPath, serializedReviewExport, "utf8");
+  }
 }
 
 console.log(
-  `ENG_MATH_ENGLISH_CANDIDATE: pass candidate=${overlay.candidateId} mode=${options.check ? "check" : "merge"} questions=${merged.summary.questionCount} answers=${merged.summary.answerCrossCheckCount} overrides=${merged.summary.choiceOverrideQuestionCount} text=${merged.summary.sourceTextOverrideQuestionCount ?? 0} figures=${merged.summary.figureAssetCount} review=${merged.summary.reviewReadyCount} evidence=${merged.summary.evidenceCount} public=0 source=${options.sourceDirectory ? "verified" : "recorded"}`,
+  `ENG_MATH_ENGLISH_CANDIDATE: pass candidate=${overlay.candidateId} mode=${options.check ? "check" : "merge"} questions=${merged.summary.questionCount} answers=${merged.summary.answerCrossCheckCount} overrides=${merged.summary.choiceOverrideQuestionCount} text=${merged.summary.sourceTextOverrideQuestionCount ?? 0} figures=${merged.summary.figureAssetCount} review=${merged.summary.reviewReadyCount} evidence=${merged.summary.evidenceCount} fulltext=${reviewExport?.scope.rawTextQuestionCount ?? 0} public=0 source=${options.sourceDirectory ? "verified" : "recorded"}`,
 );

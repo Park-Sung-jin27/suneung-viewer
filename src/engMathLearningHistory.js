@@ -427,6 +427,22 @@ function browserStorage() {
   }
 }
 
+export function createScopedLearningHistoryStorage(
+  authenticatedUserId,
+  storage = browserStorage(),
+) {
+  if (!storage || !authenticatedUserId) return storage;
+  const scopedKey = `${HISTORY_STORAGE_KEY}:member:${authenticatedUserId}`;
+  return {
+    getItem(key) {
+      return storage.getItem(key === HISTORY_STORAGE_KEY ? scopedKey : key);
+    },
+    setItem(key, value) {
+      return storage.setItem(key === HISTORY_STORAGE_KEY ? scopedKey : key, value);
+    },
+  };
+}
+
 export function readLearningHistory(storage = browserStorage()) {
   if (!storage) return emptyHistory();
   try {
