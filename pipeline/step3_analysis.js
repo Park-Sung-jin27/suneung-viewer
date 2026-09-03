@@ -671,6 +671,31 @@ const _flat = (v) => { const a = []; (function w(x) {
 //   실증: l20229a Q19 는 마커 정박 이전에 해설이 생성돼 ⓐ~ⓔ 를 서로 뒤바꿔 설명했고,
 //   해설 자신이 "지문에 ⓐ~ⓔ 표시가 없어 판단 불가능"이라 적은 채 LIVE 로 나갔다.
 // 마커 정박은 세트 속성이므로 **세트 단위 skip** 이다(문항으로 나눌 실익 없음).
+//
+// ── 정박 원천 셋째: 발문 안의 «정의형» 마커 (발주 D-196) ─────────────
+//   수업 활동 박스가 bogi 가 아니라 발문(q.t) 안에 들어오는 편집 형식이 있다.
+//   l20279b Q26 은 「∙㉮ : 작가가 자전거 바퀴살의 움직임에서…」처럼 발문 안에서
+//   ㉮~㉲ 를 직접 정의한다. 정박 원천이 sents+bogi 뿐이어서 이 5개가 미정박으로
+//   잡히고 세트 6문항이 통째로 skip 됐는데, 실제로는 참조 대상이 프롬프트에
+//   온전히 들어 있었다. 없는 결함 때문에 정상 세트를 잃은 것이다.
+//
+// ★ q.t 전체를 정박 원천에 넣으면 안 된다 — 발문의 **참조**가 자기 자신을 정박해
+//   l20229a Q19(「ⓐ~ⓔ 중 …」 범위 선언 + 본문 미정박) 결함이 게이트를 통과한다.
+//   그래서 정의형만 인정하는 조건 셋을 건다:
+//     ① 줄머리 — 개행(또는 문자열 시작) 뒤 불릿·공백만 지나 마커가 온다
+//     ② 구분자 — 마커 바로 뒤가 `:` `：` `.` `．` `)` 중 하나다
+//     ③ 실질 내용 — 구분자 뒤 같은 줄에 공백 아닌 글자가 6자 이상 있다
+//   참조형은 셋 다 넘지 못한다. 「ⓐ~ⓔ 중 …」은 ①은 넘어도 뒤가 `~` 라 ②에서 막히고,
+//   선지의 「㉮의 작가의 상황은」은 줄 중간이라 ①에서 막힌다.
+//   마커 문자는 코드포인트로 적었다 — 원문자 범위를 눈으로 잘못 읽는 사고를 막는다.
+const RE_MARKER_DEF = /(?:^|\n)[ \t\u3000]*[\u2219\u00B7\u2022\u2027\u30FB\u25E6\u25CB\u25CF\u25A0\u25A1\u25AA\u25B8-]?[ \t\u3000]*([\u24D0-\u24D4\u3260-\u3264\u326E-\u3272])[ \t\u3000]*[:\uFF1A.\uFF0E)]([^\n]*)/g;
+export function markerDefsInPromptText(text) {
+  const out = new Set();
+  for (const m of String(text || "").matchAll(RE_MARKER_DEF))
+    if (m[2].replace(/\s+/g, "").length >= 6) out.add(m[1]);
+  return out;
+}
+
 export function checkMarkerAnchored(set) {
   const MARK = /[ⓐ-ⓔ㉠-㉤㉮-㉲]/g;
   const anchored = new Set();
@@ -678,6 +703,8 @@ export function checkMarkerAnchored(set) {
     for (const m of String(sn.t || "").match(MARK) || []) anchored.add(m);
   for (const q of set?.questions || [])
     for (const m of _flat(q.bogi).match(MARK) || []) anchored.add(m);
+  for (const q of set?.questions || [])
+    for (const m of markerDefsInPromptText(q.t)) anchored.add(m);
 
   const missing = new Map();
   for (const q of set?.questions || []) {
