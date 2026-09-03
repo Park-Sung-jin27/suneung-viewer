@@ -1325,6 +1325,14 @@ function ViewerPage({ user, isPro = false }) {
   const sets = yearData?.[section] ?? [];
   const currentSet = sets[setIdx] ?? null;
   const isStudy = mode === MODE.STUDY;
+  // 발주 F-52: 선지를 누르는 즉시 근거·해설이 뜨는 조건.
+  //   배너 문구는 반드시 이 식과 같은 것을 써야 한다. 두 식이 갈리면
+  //   또 문구가 약속을 못 지킨다(F-51 과 같은 실수).
+  //   보기 모드는 QuizPanel 이 이미 제출 없이 표시한다
+  //   (showResult = mode !== STUDY || submitted). 남은 변수는 pro 조각 수신이고,
+  //   그 판단은 src/freeAccess.js 단일 정본을 그대로 쓴다.
+  const evidenceOnClick =
+    !isStudy && !!user && (isPro || isMaster || isFreeProYear(yearKey));
 
   // ── 발주 F-20 커밋1: 세트 단위 lazy pro 병합 ─────────────────────────
   //   pro(해설·형광펜)를 연도 1회가 아니라 "세트를 넘길 때마다" 받는다.
@@ -1780,11 +1788,26 @@ function ViewerPage({ user, isPro = false }) {
         </div>
       )}
 
-      <Banner
-        bannerId="how-to-use-v1"
-        message="💡 시험지를 먼저 풀고 오세요 — 답을 입력하면 지문 근거와 해설이 표시됩니다"
-        type="info"
-      />
+      {/* 발주 F-52: 안내는 실제 동작과 일치해야 한다.
+          · 클릭 즉시 뜨는 상태 → 그대로 안내한다
+          · 풀이 모드            → 「풀고 나면 표시」 복기 설계 그대로
+          · 그 밖(보기 모드인데 pro 조각이 없는 비로그인·개방 밖)
+            → 배너를 띄우지 않는다. 답을 입력해도 뜨지 않으므로 기존 문구가
+              거짓이 된다. 이 경우 안내는 PassagePanel 이 선지 클릭 시점에
+              사유별로 한다(F-51). */}
+      {evidenceOnClick ? (
+        <Banner
+          bannerId="how-to-use-view-v1"
+          message="💡 선지를 누르면 지문 근거가 형광펜으로 표시됩니다"
+          type="info"
+        />
+      ) : isStudy ? (
+        <Banner
+          bannerId="how-to-use-v1"
+          message="💡 시험지를 먼저 풀고 오세요 — 답을 입력하면 지문 근거와 해설이 표시됩니다"
+          type="info"
+        />
+      ) : null}
 
       {currentSet && isSetUnderReview(yearKey, currentSet.id) && (
         <Banner
