@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "schemaVersion": "english-source-review-patch-v1",
+    "patchId": "english-2026-csat-q18-source-review-v1",
+    "status": "internal_verified_candidate",
+    "publicConnected": false,
+    "allowPublicGeneration": false,
+    "verifiedAt": "2026-08-12",
+    "scope": "2026_csat_18",
+    "baseData": {
+      "path": "english/data/english_exam_db_v2_1.json",
+      "sha256": "38f7f01c9a77c4ce94990c1e6499c0eca0397401f07c912df8c6e7c0a3848c26"
+    },
+    "sourceArtifacts": {
+      "problem": {
+        "filename": "2026학년도_수능_영어_문제.pdf",
+        "sha256": "da5013456f405c94ba8d82263667b2a3fee8d0093a665e54ba1e97cf9d3f5f41",
+        "page": 2
+      },
+      "answer": {
+        "filename": "2026학년도_수능_영어_정답.png",
+        "sha256": "a70b15612471b6e0252a8e9ddf36fa171012b1665badf096ca6bfe9ea8e666f2"
+      },
+      "explanation": {
+        "filename": "2026학년도_수능_영어_해설.pdf",
+        "sha256": "cfe0c6b5495258610e7c027d5b091fd12d6d955792015bf6122c7deb205555c3",
+        "page": 11
+      }
+    },
+    "summary": {
+      "itemCount": 1,
+      "sourceTextOverrideCount": 1,
+      "reviewReadyCount": 1,
+      "publicQuestionPayloadCount": 0
+    }
+  },
+  "item": {
+    "id": "2026_csat_18",
+    "examId": "2026_csat",
+    "qid": 18,
+    "group": "practical",
+    "type": "목적",
+    "answer": 2,
+    "answerMark": "②",
+    "expectedBaseState": {
+      "rawChars": 139,
+      "reviewStatus": "source_issue",
+      "sourceIssueKind": "missing_passage"
+    },
+    "rawText": "18. 다음 글의 목적으로 가장 적절한 것은?\nDear students,\nI am Amanda Clark, the school club director, and I am writing\nto you about our school clubs. Over the last few semesters,\nthere have been requests for more diverse school clubs. For this\nreason, the school decided to expand the number of clubs for\nextracurricular activities. This provides students with an\nopportunity to make additional clubs. Students can make any type\nof club based on their various interests, such as hip-hop, K-pop\ndancing, or coding. Therefore, I am encouraging you to submit a\nproposal for a new club that you would like to create. Please turn\nthis in to my office by the end of this week. I look forward to\nseeing your great ideas.\nBest regards,\nAmanda Clark\n① 동아리 활동에 대한 만족도를 조사하려고\n② 동아리 개설 제안서 제출을 독려하려고\n③ 체험 활동 결과 보고서를 요청하려고\n④ 동아리 신규 회원 모집을 공지하려고\n⑤ 방과 후 활동 프로그램을 설명하려고",
+    "review": {
+      "id": "2026_csat_18",
+      "status": "ready",
+      "exam": "2026학년도 수능 영어",
+      "qid": 18,
+      "group": "practical",
+      "type": "목적",
+      "answer": 2,
+      "answerMark": "②",
+      "summary": "정답 ②. 학교가 다양한 신규 동아리를 늘리기 위해 학생들에게 동아리 개설 제안서 제출을 요청하는 글입니다.",
+      "typeApproach": "목적 문제는 배경 설명보다 글쓴이가 독자에게 직접 요구하는 행동을 마지막 부분에서 확인합니다.",
+      "evidence": [
+        {
+          "in": "rawText",
+          "quote": "Therefore, I am encouraging you to submit a\nproposal for a new club that you would like to create.",
+          "role": "직접 요청",
+          "translation": "그러므로 여러분이 만들고 싶은 새 동아리의 제안서를 제출하도록 권합니다."
+        },
+        {
+          "in": "rawText",
+          "quote": "Please turn\nthis in to my office by the end of this week.",
+          "role": "제출 기한",
+          "translation": "이번 주가 끝나기 전까지 그 제안서를 제 사무실로 제출해 주세요."
+        }
+      ],
+      "correctReason": "글쓴이는 학생들에게 만들고 싶은 새 동아리의 제안서를 이번 주 안에 제출하라고 직접 요청하므로 ②가 정답입니다.",
+      "trap": {
+        "mark": "④",
+        "choice": 4,
+        "text": "동아리 신규 회원 모집을 공지하려고",
+        "reason": "새 회원을 모집하는 공지가 아니라 학생이 만들고 싶은 새 동아리의 제안서를 제출하라는 요청입니다."
+      }
+    }
+  }
+}

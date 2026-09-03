@@ -3,12 +3,36 @@ import {
   appendLearningSession,
   buildDailyLearningPlan,
   buildQuestionReviewStates,
+  createScopedLearningHistoryStorage,
   createLearningSessionRecord,
   learningHistoryConfig,
   normalizeLearningHistory,
   recordLearningSession,
   summarizeLearningHistory,
 } from "../src/engMathLearningHistory.js";
+
+const scopedBacking = new Map();
+const scopedStorage = {
+  getItem(key) {
+    return scopedBacking.get(key) ?? null;
+  },
+  setItem(key, value) {
+    scopedBacking.set(key, value);
+  },
+};
+const memberOneStorage = createScopedLearningHistoryStorage(
+  "10000000-0000-4000-8000-000000000001",
+  scopedStorage,
+);
+const memberTwoStorage = createScopedLearningHistoryStorage(
+  "20000000-0000-4000-8000-000000000002",
+  scopedStorage,
+);
+memberOneStorage.setItem(learningHistoryConfig.storageKey, "member-one");
+memberTwoStorage.setItem(learningHistoryConfig.storageKey, "member-two");
+assert.equal(memberOneStorage.getItem(learningHistoryConfig.storageKey), "member-one");
+assert.equal(memberTwoStorage.getItem(learningHistoryConfig.storageKey), "member-two");
+assert.equal(scopedStorage.getItem(learningHistoryConfig.storageKey), null);
 
 function session({
   id,

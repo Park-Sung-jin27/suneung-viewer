@@ -93,6 +93,10 @@ assert.doesNotMatch(lockedAccessSource, /\/payment/);
 const homeSource = readSource("src/EngMathProductHome.jsx");
 assert.match(homeSource, /출시 알림만 신청/);
 assert.match(homeSource, /로그인만으로 잠금이 해제되지는 않습니다/);
+assert.match(homeSource, /이번 7일 학습표/);
+assert.match(homeSource, /useEngMathWeeklyOverview/);
+assert.match(homeSource, /weekly\.overview\.nextAction\.path/);
+assert.match(homeSource, /수학Ⅰ·수학Ⅱ·확률과 통계·미적분·기하 72개 개념/);
 
 console.log(
   `ENG_MATH_ACCESS: pass events=${ENG_MATH_EVENTS.length} access=free-only authReturn=eng-math-only`,

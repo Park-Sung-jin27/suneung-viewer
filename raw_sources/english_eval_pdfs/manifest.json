@@ -964,6 +964,37 @@
           "error": ""
         }
       }
+    },
+    {
+      "schoolYear": 2027,
+      "actualYear": 2026,
+      "month": "9월",
+      "examType": "9월",
+      "title": "고3 9월 모평(평가원) 영어",
+      "sourceBlockYear": 2026,
+      "files": {
+        "problem": {
+          "fileName": "2027학년도_9월_영어_문제.pdf",
+          "url": "https://cdn.kice.re.kr/09mo-27suneung/09mo-27suneung_3.pdf",
+          "ok": true,
+          "size": 2049508,
+          "error": ""
+        },
+        "answer": {
+          "fileName": "2027학년도_9월_영어_정답.pdf",
+          "url": "https://cdn.kice.re.kr/09mo-27suneung/09mo-27suneung_3a.pdf",
+          "ok": true,
+          "size": 49317,
+          "error": ""
+        },
+        "script": {
+          "fileName": "2027학년도_9월_영어_듣기대본.pdf",
+          "url": "https://cdn.kice.re.kr/09mo-27suneung/09mo-27suneung_31.pdf",
+          "ok": true,
+          "size": 853052,
+          "error": ""
+        }
+      }
     }
   ],
   "missing": [],
