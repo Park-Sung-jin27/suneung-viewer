@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/pro-data.js": {
-      "includeFiles": "{data-pro/**,src/freeAccess.js}"
+      "includeFiles": "data-pro/**"
     }
   },
   "headers": [
