@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
-import { CC, FIGURE_IMAGE_MAP, MODE } from "./constants";
+import { CC, FIGURE_IMAGE_MAP } from "./constants";
+import { isFreeProYear } from "./freeAccess";
 
 // ── 기호 밑줄 + 영역 라벨 hide (/g 플래그 금지) ──
 // SYM_SPLIT: ㉠-㉿ⓐ-ⓩ①-⑤ + [A-F] 라벨 단독 path 안 단일 정규식 분리.
@@ -653,6 +653,19 @@ function RenderSent({ sent, sel, anns, aiCited }) {
 // hideLabel path 폐기 (결함 B+C 정정): body / verse sent.t 안 "[X]" 인라인 텍스트
 //   = RenderSent path 안 hideLabels=true 안 visibility:hidden 적용 (자리 유지) →
 //   좌측 측면 라벨 단독 노출 (l2022a 형태) 통일 path. hide trigger 결정 X.
+// 발주 F-51: 안내 박스 안 행동 링크 공용 스타일
+const NOTICE_ACTION = {
+  border: "1px solid #d97706",
+  background: "#fff",
+  color: "#92400e",
+  borderRadius: "6px",
+  padding: "5px 12px",
+  fontSize: "0.75rem",
+  fontWeight: 700,
+  textDecoration: "none",
+  fontFamily: "'Noto Sans KR', sans-serif",
+};
+
 function getBracketInfo(sentId, brackets, sentIds) {
   for (const br of brackets) {
     const from = sentIds.indexOf(br.sentFrom);
@@ -901,9 +914,16 @@ function renderAll(sents, sel, annotations, visualMarks, aiCitedSentId) {
   return result;
 }
 
-export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
+export default function PassagePanel({
+  passageSet,
+  sel,
+  mode,
+  aiCitedSentId,
+  user = null,
+  isPro = false,
+  yearKey = null,
+}) {
   const panelRef = useRef(null);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   // 스크롤 helper — [data-hl] 또는 [data-ai-cited] 안 first 자동 검색 path.
   function scrollToSelector(selector) {
@@ -986,14 +1006,24 @@ export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
       (c) => (c.cs_ids?.length ?? 0) > 0 || (c.cs_spans?.length ?? 0) > 0,
     ),
   );
-  const noticeKind = !hasNoHighlight ? null : csAnywhere ? "data" : "policy";
-
-  function startStudyMode() {
-    const next = new URLSearchParams(searchParams);
-    next.set("mode", MODE.STUDY);
-    next.delete("review");
-    setSearchParams(next, { replace: true });
-  }
+  // 발주 F-51: 문구를 세 갈래로 나눈다. 460881c 의 (b) 문구
+  //   「답을 입력하면 … 표시됩니다」는 비로그인·무이용권에게 사실이 아니었다.
+  //   근거·해설은 pro 조각이므로 답을 입력해도 켜지지 않는다.
+  //     (a) data     — 조각은 실렸는데 그 선지만 없음 → 현행 문구
+  //     (b) login    — 비로그인. 개방 회차면 로그인으로 열린다
+  //     (b') pass_login — 비로그인 + 개방 회차 밖 → 이용권 안내
+  //     (c) pass     — 로그인했으나 이용권 없음 → 이용권 기능임을 알린다
+  const noticeKind = !hasNoHighlight
+    ? null
+    : csAnywhere
+      ? "data"
+      : !user
+        ? isFreeProYear(yearKey)
+          ? "login"
+          : "pass_login"
+        : isPro
+          ? "data"
+          : "pass";
   // 풀이 모드에서 sel이 있어도 '전체 제출' 전(submitted 알 수 없으므로)
   // QuizPanel이 submitted 전엔 onSelChange를 호출하지 않으므로 sel은 null 유지됨
   // → 별도 처리 없이 sel 그대로 사용
@@ -1033,31 +1063,23 @@ export default function PassagePanel({ passageSet, sel, mode, aiCitedSentId }) {
             gap: "8px",
           }}
         >
-          {noticeKind === "policy" ? (
+          {noticeKind === "login" && (
             <>
-              <span>
-                답을 입력하면 이 선지의 지문 근거가 형광펜으로 표시됩니다
-              </span>
-              {mode !== MODE.STUDY && (
-                <button
-                  onClick={startStudyMode}
-                  style={{
-                    border: "1px solid #d97706",
-                    background: "#fff",
-                    color: "#92400e",
-                    borderRadius: "6px",
-                    padding: "5px 12px",
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    fontFamily: "'Noto Sans KR', sans-serif",
-                  }}
-                >
-                  풀이 모드로 시작하기
-                </button>
-              )}
+              <span>로그인하면 지문 근거가 바로 표시됩니다</span>
+              <a href="/auth" style={NOTICE_ACTION}>
+                로그인
+              </a>
             </>
-          ) : (
+          )}
+          {(noticeKind === "pass" || noticeKind === "pass_login") && (
+            <>
+              <span>근거 표시와 해설은 이용권 기능입니다</span>
+              <a href="/payment" style={NOTICE_ACTION}>
+                요금제 보기
+              </a>
+            </>
+          )}
+          {noticeKind === "data" && (
             <span>이 선지는 지문 근거 표시가 준비되지 않았습니다</span>
           )}
         </div>

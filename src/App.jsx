@@ -32,6 +32,9 @@ import FeedbackButton from "./FeedbackButton";
 import Privacy from "./Privacy";
 import AuditPanel from "./AuditPanel";
 import { YEAR_INFO, MODE, isSetUnderReview, isAllowlisted } from "./constants";
+// 발주 F-50: 무료 개방 회차는 src/freeAccess.js 가 단일 정본이다.
+//   api/pro-data.js 도 같은 파일을 import 한다 — 목록을 두 곳에 두지 않는다.
+import { FREE_YEARS, isFreeProYear } from "./freeAccess";
 import { formatExamTitle, formatExamDate } from "./examTitle";
 import {
   loadYear,
@@ -56,14 +59,6 @@ const SECTION_LABELS = { reading: "독서", literature: "문학" };
 //   "2027_9월" — 9월 모평 한시 개방(유입 후크). 수능(11월) 후 재검토한다.
 //   CEO 승인 2026-08-27 (발주 F-38). F-20 6단계 금지 규율은 이 건에 한해 해제됐다.
 //   ★ 되돌리기: "2027_9월" 한 줄을 빼면 즉시 Pro 전용으로 돌아간다.
-const FREE_YEARS = [
-  "2027_9월",
-  "2026수능",
-  "2025수능",
-  "2024수능",
-  "2023수능",
-  "2022수능",
-];
 
 const MC = {
   green: "#2d6e2d",
@@ -1352,8 +1347,12 @@ function ViewerPage({ user, isPro = false }) {
     if (!USE_SPLIT_DATA) return; // 플래그 false — 동작 무변화
     const setId = currentSet?.id;
     if (!yearData || !yearKey || !setId) return;
-    // (a) 이용권 보유자(또는 마스터)만 요청한다
-    if (!user || !(isPro || isMaster)) return;
+    // (a) 로그인은 반드시 요구한다 — 비로그인 개방은 범위가 아니다(F-50).
+    if (!user) return;
+    // 이용권 보유자·마스터, 그리고 개방 회차의 무료 로그인 계정까지 요청한다.
+    //   ★ F-49 는 서버 이용권 검사만 열었고 이 가드가 요청을 막아 무효였다.
+    //     개방 회차 목록은 src/freeAccess.js 단일 정본을 쓴다.
+    if (!(isPro || isMaster) && !isFreeProYear(yearKey)) return;
     if (proYearRef.current !== yearKey) {
       proYearRef.current = yearKey;
       proDoneRef.current = new Set();
@@ -2141,6 +2140,11 @@ function ViewerPage({ user, isPro = false }) {
             passageSet={currentSet}
             sel={sel}
             aiCitedSentId={aiCitedSentId}
+            /* 발주 F-51: 근거 미표시 안내를 사유별로 갈라 쓰기 위한 상태.
+               표시 문구 판단에만 쓴다 — 근거 표시 정책은 건드리지 않는다. */
+            user={user}
+            isPro={isPro || isMaster}
+            yearKey={yearKey}
             mode={
               isReview || !!submittedSets[currentSet?.id] ? MODE.VIEW : mode
             }

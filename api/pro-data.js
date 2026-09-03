@@ -25,11 +25,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
-
-// 유입 회차 무료 개방 — 대표 확정 2026-09-03 (F-49)
+// 유입 회차 무료 개방 — 대표 확정 2026-09-03 (F-49) · 정본 통합 (F-50)
 //   로그인(①②)은 그대로 요구하고, 이용권 검사(③)만 건너뛴다.
 //   그 외 회차는 기존 402 흐름을 그대로 유지한다.
-const FREE_PRO_YEARS = new Set(["2027_9월"]);
+//   ★ 목록을 여기에 복제하지 않는다 — src/freeAccess.js 가 단일 정본이다.
+import { isFreeProYear } from "../src/freeAccess.js";
 
 function getSupabaseConfig() {
   const supabaseUrl = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
@@ -120,7 +120,7 @@ export default async function handler(req, res) {
     if (!user) return res.status(401).json({ error: "Login required" });
 
     // ③ 이용권 — 유입 개방 회차(F-49)는 로그인만으로 통과시킨다.
-    if (!FREE_PRO_YEARS.has(req.query?.year)) {
+    if (!isFreeProYear(req.query?.year)) {
       const pass = await hasActivePass(user.id);
       if (!pass.ok) {
         return res
