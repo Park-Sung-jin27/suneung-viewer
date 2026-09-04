@@ -22,13 +22,38 @@
 export const KEEP_BREAK_RE =
   /^\s*(?:(?:선생님|학\s*생|학생\s*\d?|사회자|진행자)\s*[:：]|[∙·•▪]?\s*[㉠-㉤ⓐ-ⓔ㉮-㉲]\s*[:：]|[*※])/;
 
+// 발주 F-57: 화자 이름을 목록으로 열거하면 새 회차마다 빠진다.
+//   대신 「블록 안에서 같은 형태가 반복되는가」로 판정한다.
+//     1패스 — RE_NAMED 에 맞는 줄을 센다 (첫 줄 포함)
+//     2패스 — 2회 이상이거나 씬 표기가 있으면 그 줄들을 보존한다
+//   1회만 나오는 「상태1의 출력값:」 같은 항목 라벨은 접힌다 — 반복 조건이 거른다.
+//   ★ KEEP_BREAK_RE 는 반복 조건 없이 먼저 검사한다. 확장은 상위집합이라
+//     기존 보존(선생님·학 생·원문자·각주)을 잃지 않는다.
+//   ★ 판정식은 pipeline/set_intake_gate.mjs 와 한 글자도 다르면 안 된다.
+//     그래서 여기서 export 한다 — 게이트가 지역 정의 대신 이것을 import 한다.
+//     (marker_chars.json 에 ㉯~㉲ 가 빠져 게이트가 5개 중 1개만 본 사고의 재발 방지)
+export const RE_NAMED = /^\s*[가-힣A-Za-z0-9()·\s]{1,12}[:：]/;
+export const RE_SCENE = /^\s*S#\s*\d/;
+
+// 이 블록이 대화형인가 — 게이트와 프론트가 같은 답을 내야 한다.
+export function isDialogueBlock(lines) {
+  const named = lines.filter((l) => RE_NAMED.test(l)).length;
+  const scene = lines.some((l) => RE_SCENE.test(l));
+  return named >= 2 || scene;
+}
+
 export function foldLayoutBreaks(text) {
   if (typeof text !== "string" || !text.includes("\n")) return text;
   const lines = text.split("\n");
+  const dialogue = isDialogueBlock(lines);
+
   let out = lines[0];
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i];
-    if (KEEP_BREAK_RE.test(line)) {
+    const keep =
+      KEEP_BREAK_RE.test(line) ||
+      (dialogue && (RE_NAMED.test(line) || RE_SCENE.test(line)));
+    if (keep) {
       out += "\n" + line;
     } else {
       const tail = line.replace(/^\s+/, "");
