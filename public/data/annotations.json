@@ -3669,6 +3669,12 @@
         "type": "box",
         "sentId": "r20266ds1",
         "text": "플로리디의 정보 철학"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r20266ds20",
+        "text": "추상화 층위를 통해 인식되는 정보는"
       }
     ],
     "l20266a": [
@@ -3873,6 +3879,18 @@
         "label": "A",
         "sentFrom": "l20266bs4",
         "sentTo": "l20266bs15"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "l20266bs29",
+        "text": "만물초 가는 길"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "l20266bs55",
+        "text": "바다로 나가는 길"
       }
     ]
   },
@@ -4056,6 +4074,18 @@
         "label": "A",
         "sentFrom": "l2020as2",
         "sentTo": "l2020as12"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "l2020as42",
+        "text": "이것이 내가 몸은 벼슬을 하면서도 뜻은 강호에 두어 매양"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l2020as17",
+        "text": "모재(茅齋)"
       }
     ]
   },
@@ -4138,6 +4168,42 @@
         "label": "A",
         "sentFrom": "r2019ds13",
         "sentTo": "r2019ds18"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "r2019ds3",
+        "text": "일으킬"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "r2019ds5",
+        "text": "만들었다"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓒ",
+        "sentId": "r2019ds8",
+        "text": "지닌"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓓ",
+        "sentId": "r2019ds20",
+        "text": "여겼다"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓔ",
+        "sentId": "r2019ds25",
+        "text": "갖추어져"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r2019ds21",
+        "text": "서양 과학과 중국 전통"
       }
     ],
     "l2019a": [
@@ -4178,6 +4244,18 @@
         "label": "A",
         "sentFrom": "r2019bs10",
         "sentTo": "r2019bs10"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r2019bs7",
+        "text": "자동차의 문은 유난히 소리 내어 닫히고, 다시 또"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "r2019bs13",
+        "text": "얼마 있다, 원래의 신전은 술집으로 변하"
       }
     ]
   },
@@ -4298,6 +4376,30 @@
         "label": "B",
         "sentFrom": "l2015ds43",
         "sentTo": "l2015ds43"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l2015ds8",
+        "text": "그네들의 한문"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l2015ds12",
+        "text": "무 밑둥"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l2015ds18",
+        "text": "이 늙은 향도(香徒)"
+      },
+      {
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "l2015ds19",
+        "text": "그럴 만한 인물"
       }
     ]
   },
@@ -4491,6 +4593,18 @@
         "label": "C",
         "sentFrom": "l20229ds38",
         "sentTo": "l20229ds39"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20229ds4",
+        "text": "꿈같이 만나 있어"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l20229ds30",
+        "text": "꿈에나 보려 하니"
       }
     ]
   },
@@ -4905,6 +5019,12 @@
         "label": "A",
         "sentFrom": "r20249as13",
         "sentTo": "r20249as15"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r20249as5",
+        "text": "읽기 준비 단계"
       }
     ],
     "l20249c": [
@@ -4976,6 +5096,36 @@
         "label": "B",
         "sentFrom": "l20249as9",
         "sentTo": "l20249as9"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "l20249as10",
+        "text": "슬프다, 춘양아! 가련타, 동춘아! 너희 어미 잃고 어찌 살라 하는가?"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓒ",
+        "sentId": "l20249as14",
+        "text": "첩은 천상의 죄 있으니 천명이 아닌 것이 없습니다. 너무 한탄치 마옵소서."
+      },
+      {
+        "type": "marker",
+        "marker": "ⓔ",
+        "sentId": "l20249as16",
+        "text": "이 백학선은 몸이 추우면 더운 바람이 나오니 천하 유명한 보배이옵"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "l20249as5",
+        "text": "이 편지는 네 어미에게 부친 편지라. 네가 잘 간수하라."
+      },
+      {
+        "type": "marker",
+        "marker": "ⓓ",
+        "sentId": "l20249as15",
+        "text": "옥황상제님이 우리를 올라오라 하시니 천명을 거스르지"
       }
     ]
   },
@@ -5296,6 +5446,48 @@
         "label": "B",
         "sentFrom": "l20216bs69",
         "sentTo": "l20216bs69"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20216bs14",
+        "text": "(황만근이 한 말이 아니라 그 말을 들은 민 씨의 표현이다)"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "l20216bs7",
+        "text": "여기"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "l20216bs36",
+        "text": "마을"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓒ",
+        "sentId": "l20216bs49",
+        "text": "주변"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓓ",
+        "sentId": "l20216bs53",
+        "text": "마당"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓔ",
+        "sentId": "l20216bs67",
+        "text": "우물"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l20216bs36",
+        "text": "(팥죽 할마이란 팥죽을 파는 할머니, 혹은 늘 팥죽을 쑤고"
       }
     ],
     "l20216d": [
@@ -5364,6 +5556,12 @@
         "label": "A",
         "sentFrom": "r20216ds15",
         "sentTo": "r20216ds20"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "r20216ds12",
+        "text": "B국의 자회사에"
       }
     ]
   },
@@ -5560,6 +5758,48 @@
         "label": "가",
         "sentFrom": "r2018bs25",
         "sentTo": "r2018bs31"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓒ",
+        "sentId": "r2018bs27",
+        "text": "초래한다"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "r2018bs12",
+        "text": "괴리되어"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "r2018bs13",
+        "text": "노출될"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓓ",
+        "sentId": "r2018bs31",
+        "text": "복귀하면서"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓔ",
+        "sentId": "r2018bs37",
+        "text": "도모하는"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r2018bs26",
+        "text": "실질 통화량"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "r2018bs27",
+        "text": "시장 금리"
       }
     ],
     "l2018c": [
@@ -5568,6 +5808,12 @@
         "label": "A",
         "sentFrom": "l2018cs60",
         "sentTo": "l2018cs65"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l2018cs18",
+        "text": "풀"
       }
     ],
     "l2018a": [
@@ -5581,6 +5827,36 @@
         "type": "box",
         "sentId": "l2018as24",
         "text": "묘비명"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l2018as3",
+        "text": "앞내강 쨍쨍 얼어 조이던 밤에"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l2018as5",
+        "text": "강 건너 하늘 끝에 사막도 닿은 곳"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l2018as9",
+        "text": "그만 어느 모래불에 떨어져 타서 죽겠죠"
+      },
+      {
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "l2018as11",
+        "text": "눈물 먹은 별들이 조상"
+      },
+      {
+        "type": "marker",
+        "marker": "㉤",
+        "sentId": "l2018as12",
+        "text": "밤은 옛일을 무지개보다 곱게 짜내나니"
       }
     ]
   },
@@ -5779,6 +6055,36 @@
         "label": "A",
         "sentFrom": "r20199as20",
         "sentTo": "r20199as21"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "r20199as13",
+        "text": "떨어진다"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r20199as20",
+        "text": "갑"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "r20199as20",
+        "text": "병"
+      },
+      {
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "r20199as24",
+        "text": "기초 자산의 신용"
+      },
+      {
+        "type": "marker",
+        "marker": "㉤",
+        "sentId": "r20199as25",
+        "text": "보장 매도자의"
       }
     ],
     "r20199c": [
@@ -5786,6 +6092,36 @@
         "type": "box",
         "sentId": "r20199cs40",
         "text": "벤야민이 말한 근대 도시"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "r20199cs15",
+        "text": "아우르려는"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓒ",
+        "sentId": "r20199cs29",
+        "text": "떠올리게"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓔ",
+        "sentId": "r20199cs41",
+        "text": "바로잡는"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r20199cs2",
+        "text": "생산학파"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "r20199cs9",
+        "text": "소비학파"
       }
     ]
   },
@@ -5796,6 +6132,30 @@
         "label": "A",
         "sentFrom": "r20209bs4",
         "sentTo": "r20209bs10"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "r20209bs25",
+        "text": "법률이 등록 대상으로 규정한 자동차, 항공기 등의 동산"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "r20209bs26",
+        "text": "일어나게"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r20209bs12",
+        "text": "점유로 소유권이 공시되는 동산"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "r20209bs25",
+        "text": "토지․건물과 같은 부동산"
       }
     ],
     "r20209a": [
@@ -5804,6 +6164,42 @@
         "label": "A",
         "sentFrom": "r20209as37",
         "sentTo": "r20209as41"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "r20209as5",
+        "text": "만날"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓑ",
+        "sentId": "r20209as9",
+        "text": "여겨졌던"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓒ",
+        "sentId": "r20209as12",
+        "text": "나타났다"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓓ",
+        "sentId": "r20209as19",
+        "text": "이룬다"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓔ",
+        "sentId": "r20209as30",
+        "text": "펼치기"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r20209as31",
+        "text": "자료에 기록된 사실이 허구일지도 모른다는 의심을 버리지"
       }
     ]
   },
@@ -5854,6 +6250,18 @@
         "label": "A",
         "sentFrom": "r20196bs1",
         "sentTo": "r20196bs4"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "r20196bs23",
+        "text": "의사와 의사 아닌 사람이 체결한 동업 계약"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r20196bs15",
+        "text": "이 규정을 위반하여 공인 중개사와 고객이 체결한 매매 계약"
       }
     ],
     "l20196a": [
@@ -5868,6 +6276,30 @@
         "label": "B",
         "sentFrom": "l20196as19",
         "sentTo": "l20196as21"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l20196as15",
+        "text": "남의 재물 갖고 제 마음대로 쓰는 놈은 어떤 놈의 팔자인고"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l20196as16",
+        "text": "짚옹고집 도술 보고 근처에 참옹고집 온 줄 알고"
+      },
+      {
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "l20196as17",
+        "text": "과연 마을 뒷산에 앉아 잔치하는 데를 보고 눈물을 흘리고 앉았거늘"
+      },
+      {
+        "type": "marker",
+        "marker": "㉤",
+        "sentId": "l20196as18",
+        "text": "갈 마음 전혀 없다"
       }
     ]
   },
@@ -5902,6 +6334,12 @@
         "label": "E",
         "sentFrom": "l20156as13",
         "sentTo": "l20156as15"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20156as14",
+        "text": "그늘"
       }
     ],
     "l20156b": [
@@ -5916,6 +6354,12 @@
         "label": "B",
         "sentFrom": "l20156bs26",
         "sentTo": "l20156bs31"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "l20156bs34",
+        "text": "얼마나 그들의 땅에"
       }
     ],
     "l20156c": [
@@ -5936,6 +6380,18 @@
         "label": "C",
         "sentFrom": "l20156cs14",
         "sentTo": "l20156cs16"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20156cs5",
+        "text": "편자 없는 헌 망건에 박쪼가리 관자 달고 물렛줄로 당끈 달"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l20156cs13",
+        "text": "제 손으로 제비 새끼를"
       }
     ],
     "l20156d": [
@@ -6046,6 +6502,12 @@
         "label": "B",
         "sentFrom": "l20149as7",
         "sentTo": "l20149as13"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20149as15",
+        "text": "뿌리 깊은 벌판"
       }
     ]
   },
@@ -6056,6 +6518,18 @@
         "label": "A",
         "sentFrom": "l20176bs5",
         "sentTo": "l20176bs5"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20176bs7",
+        "text": "작품 전체에 통일성을 부여하는 기능"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l20176bs7",
+        "text": "송축의 내용"
       }
     ],
     "r20176c": [
@@ -6074,6 +6548,36 @@
         "label": "A",
         "sentFrom": "l20166ds3",
         "sentTo": "l20166ds4"
+      },
+      {
+        "type": "marker",
+        "marker": "㉤",
+        "sentId": "l20166ds7",
+        "text": "여자, 더 이상 참을 수 없다는 듯 다급하게 되돌아와서 남자를 부축해 일으키고 포옹한다"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20166ds2",
+        "text": "하인, 아무 말 없이 책을 빼앗아 버린다"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l20166ds2",
+        "text": "남자가 항의하려 하자 하인은 무뚝뚝"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l20166ds5",
+        "text": "여자, 얼굴을 외면한 채 걸어 나간다"
+      },
+      {
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "l20166ds6",
+        "text": "넥타이를 빌렸었던 남성 관"
       }
     ]
   },
@@ -6090,6 +6594,36 @@
         "label": "B",
         "sentFrom": "l20169ds41",
         "sentTo": "l20169ds42"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20169ds13",
+        "text": "이봐 아이들아 아무쪼록 힘을 써라"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l20169ds19",
+        "text": "부역 세금은 어찌하여 차려 낼꼬"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l20169ds23",
+        "text": "겨울을 덥다 한들 몸을 어이 가릴꼬"
+      },
+      {
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "l20169ds25",
+        "text": "솥 시루도 버려두니 붉은빛이 다 되었다"
+      },
+      {
+        "type": "marker",
+        "marker": "㉤",
+        "sentId": "l20169ds27",
+        "text": "원근 친척 손님들은 어이하여 접대할꼬"
       }
     ]
   },
@@ -6114,6 +6648,12 @@
         "label": "A",
         "sentFrom": "l20219ds25",
         "sentTo": "l20219ds32"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20219ds7",
+        "text": "거짓말"
       }
     ]
   },
@@ -6130,6 +6670,12 @@
         "label": "B",
         "sentFrom": "l20156bs11",
         "sentTo": "l20156bs14"
+      },
+      {
+        "type": "marker",
+        "marker": "ⓐ",
+        "sentId": "l20156bs14a",
+        "text": "얼마나 그들의 땅에"
       }
     ]
   },
@@ -6146,6 +6692,30 @@
         "label": "B",
         "sentFrom": "r20169gs16",
         "sentTo": "r20169gs16"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "r20169gs10",
+        "text": "오 부인은 크게 노했다."
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "r20169gs13",
+        "text": "어느 겨를에 일신"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "r20169gs17",
+        "text": "추호도 망설이는 기색이 없이"
+      },
+      {
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "r20169gs33",
+        "text": "큰 은혜를 보답하려 하네"
       }
     ]
   },
@@ -6192,6 +6762,18 @@
         "label": "B",
         "sentFrom": "l20279as68",
         "sentTo": "l20279as72"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20279as38",
+        "text": "일"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l20279as40",
+        "text": "일"
       }
     ],
     "l20279d": [
@@ -6200,6 +6782,36 @@
         "label": "A",
         "sentFrom": "l20279ds38",
         "sentTo": "l20279ds47"
+      },
+      {
+        "type": "marker",
+        "marker": "㉠",
+        "sentId": "l20279ds2",
+        "text": "가을이 점점 깊고 객회(客懷)는 쓸쓸한데"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l20279ds8",
+        "text": "격식은 못 갖췄으나 거처는 정갈하다"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l20279ds22",
+        "text": "정원에 가득한 꽃 잘라 벤들 뉘 금할꼬"
+      },
+      {
+        "type": "marker",
+        "marker": "㉣",
+        "sentId": "l20279ds24",
+        "text": "주 문왕 기산(岐山) 다스릴 제 인정(仁政)을 베푸시면"
+      },
+      {
+        "type": "marker",
+        "marker": "㉤",
+        "sentId": "l20279ds33",
+        "text": "일월 같은 우리 임이 거의 아니 살피실까"
       }
     ],
     "l20279c": [
@@ -6232,6 +6844,18 @@
         "label": "E",
         "sentFrom": "l20279cs36",
         "sentTo": "l20279cs38"
+      },
+      {
+        "type": "marker",
+        "marker": "㉡",
+        "sentId": "l20279cs60",
+        "text": "편지"
+      },
+      {
+        "type": "marker",
+        "marker": "㉢",
+        "sentId": "l20279cs79",
+        "text": "편지"
       }
     ],
     "l20279b": [
