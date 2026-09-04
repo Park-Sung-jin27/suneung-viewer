@@ -6252,6 +6252,12 @@
         "label": "C",
         "sentFrom": "l20279bs50",
         "sentTo": "l20279bs65"
+      },
+      {
+        "type": "underline",
+        "sentId": "l20279bs25",
+        "marker": "㉢",
+        "text": "치르르치르르"
       }
     ]
   }
