@@ -302,6 +302,32 @@ function parseFlowchart(text) {
 //   plain text + substring match path — replaceImagePlaceholders 미적용.
 //   [도식/사진] placeholder 사용 set 안 본 path 미적용 의무 (안 호환 path).
 //   blank-box: marker 또는 [label] 패턴을 회색 박스(width 지정)로 표시.
+// 발주 F-55: 지면 조판 줄바꿈과 의미 경계 줄바꿈을 가른다.
+//   데이터의 개행에는 두 종류가 섞여 있다.
+//     ⑴ 의미 경계 — "선생님 :", "학 생 :", "∙㉮ :" 앞의 줄바꿈. 살려야 한다
+//     ⑵ 조판 줄바꿈 — 지면 폭 때문에 문장 중간이 끊긴 것. 합쳐야 한다
+//   white-space: pre-wrap 을 그냥 주면 ⑵ 까지 재현해 좁은 화면에서 문장이
+//   엉뚱한 자리에서 끊긴다. 그래서 렌더 직전에 ⑵ 만 공백으로 접는다.
+//   ★ 원본 데이터는 건드리지 않는다 — 렌더 시점 변환이다.
+const KEEP_BREAK_RE =
+  /^\s*(?:(?:선생님|학\s*생|학생\s*\d?|사회자|진행자)\s*[:：]|[∙·•▪]?\s*[㉠-㉤ⓐ-ⓔ㉮-㉲]\s*[:：])/;
+
+function foldLayoutBreaks(text) {
+  if (typeof text !== "string" || !text.includes("\n")) return text;
+  const lines = text.split("\n");
+  let out = lines[0];
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i];
+    if (KEEP_BREAK_RE.test(line)) {
+      out += "\n" + line;
+    } else {
+      const tail = line.replace(/^\s+/, "");
+      out += (out.endsWith(" ") || tail === "" ? "" : " ") + tail;
+    }
+  }
+  return out;
+}
+
 function applyBogiInlineAnns(text, anns) {
   if (!text || !anns || anns.length === 0) return text;
   // 각 ann 에 대해 검색할 substring (matchText) 과 표시할 내용(displayText) 결정.
@@ -601,15 +627,27 @@ function BogiRenderer({ bogi, anns = [] }) {
     //   대신 plain text + underline 사용. [도식/사진] placeholder 가 본 분기 안
     //   재현 안 됨 — bogi 안 image placeholder 미사용 set 한정 path.
     if (hasAnns) {
+      // 발주 F-55: applyBogiInlineAnns 는 indexOf 로 원문을 찾는다. 정규화가
+      //   찾을 문자열을 갈라놓으면 밑줄이 통째로 사라진다. 그래서 정규화본에서
+      //   모든 ann 이 여전히 발견될 때만 바꾸고, 하나라도 못 찾으면 원문을 쓴다.
+      const folded = foldLayoutBreaks(bogi);
+      const annSafe = anns.every((a) => {
+        const needle =
+          a.type === "blank-box"
+            ? (a.marker ?? (a.label ? `[${a.label}]` : null))
+            : a.text;
+        return !needle || folded.includes(needle);
+      });
+      const text = annSafe ? folded : bogi;
       return wrap(
-        <div style={{ whiteSpace: "pre-wrap", textAlign: "justify" }}>
-          {applyBogiInlineAnns(bogi, anns)}
+        <div style={{ whiteSpace: "pre-line", textAlign: "justify" }}>
+          {applyBogiInlineAnns(text, anns)}
         </div>,
       );
     }
     return wrap(
-      <div style={{ whiteSpace: "pre-wrap", textAlign: "justify" }}>
-        {replaceImagePlaceholders(bogi)}
+      <div style={{ whiteSpace: "pre-line", textAlign: "justify" }}>
+        {replaceImagePlaceholders(foldLayoutBreaks(bogi))}
       </div>,
     );
   }
@@ -1476,12 +1514,15 @@ function QuestionBlock({
             lineHeight: "1.6",
             textAlign: "left",
             flex: 1,
+            // 발주 F-55: foldLayoutBreaks 가 조판 줄바꿈을 접은 뒤라,
+            //   여기 남은 개행은 의미 경계뿐이다. pre-line 이 그것만 살린다.
+            whiteSpace: "pre-line",
           }}
         >
           <span style={{ color: "#9ca3af", marginRight: "5px" }}>
             {question.id}.
           </span>
-          {question.t}
+          {foldLayoutBreaks(question.t)}
         </div>
         {/* 발주 F-21: 문항 단위 오류 신고. 회차·세트·문항·모드는 자동 첨부된다. */}
         <ReportIssueButton
