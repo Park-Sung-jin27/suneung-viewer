@@ -25,6 +25,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractQuotes, quoteResolved } from "./haesol_v2_gate.mjs";
+// ★ 프론트 렌더가 쓰는 규칙을 그대로 import 한다. 복사하면 정본이 첫날에 갈라진다
+//   (marker_chars.json 에 ㉯~㉲ 가 빠져 게이트가 5개 중 1개만 본 사고와 같은 형태).
+import { KEEP_BREAK_RE } from "../src/layoutBreaks.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 // --data / --ann 은 회귀 시험용이다. 수리 전 백업이나 fixture 를 물려
@@ -67,6 +70,18 @@ const RE_LABEL = /\[([A-F])\]/g;
 //   ★ 조사 뒤 공백을 필수로 둔다. \s* 로 두면 「가장 적절한 것은?」의 「가」를 조사로
 //     읽어 정상 발문을 걸어 버린다(l20279a Q20 오탐). 조사는 앞말에 붙고 뒤는 띄운다.
 const 조사 = /^[에은는이가을를와과로도만의]\s+[가-힣]/;
+
+// ── 렌더 정합 A축 (발주 D-200) ────────────────────────────────────────
+//   데이터에 개행이 있어도 프론트가 접어 버리면 화면에서는 한 덩어리가 된다.
+//   게이트 5종이 전부 데이터 축이라 이걸 아무도 못 봤다 — 대표가 화면을 보고서야
+//   드러났다(발문 21 · 보기 155곳).
+//
+// ★ 대화형 판정은 이름 패턴이 아니라 **반복**으로 한다(심사관 확정).
+//   ^<짧은 이름> : 을 그대로 받으면 「그가 말했다 : …」 같은 산문이 걸린다.
+//   대본·대담은 화자가 되풀이되고 산문의 단발 콜론은 되풀이되지 않는다.
+//   LIVE 126블록 음성 시험에서 새로 걸린 9블록이 전부 진짜 대화형이었다(오탐 0).
+const RE_NAMED = /^\s*[가-힣A-Za-z0-9()·\s]{1,12}[:：]/;  // <짧은 이름> :
+const RE_SCENE = /^\s*S#\s*\d/;                        // 시나리오 씬 표기
 
 const findings = [];
 const add = (t, axis, level, msg, where) => findings.push({ key: t.key, live: RELEASE.has(t.key), axis, level, msg, where });
@@ -169,6 +184,23 @@ for (const t of targets) {
       add(t, "A′앵커", "FAIL", `${a.marker} 항목의 앵커 ${a.sentId} 가 그 마커 구간(${ids[mi]}~${ids[rangeEnd.get(a.marker)]}) 밖이다`, "");
   }
 
+  // ── A축 렌더 정합 ─────────────────────────────────────────────────────
+  for (const q of set.questions || []) {
+    const bogi = typeof q.bogi === "string" ? q.bogi : (q.bogi ? JSON.stringify(q.bogi) : "");
+    for (const [field, txt] of [["발문", String(q.t || "")], ["보기", bogi]]) {
+      if (!txt.includes("\n")) continue;
+      const lines = txt.split("\n");
+      const named = lines.filter((l) => RE_NAMED.test(l)).length;
+      const scene = lines.some((l) => RE_SCENE.test(l));
+      if (named < 2 && !scene) continue;                 // 대화형이 아니다
+      const folded = lines.filter((l, i) => i > 0 && !KEEP_BREAK_RE.test(l) && (RE_NAMED.test(l) || RE_SCENE.test(l)));
+      if (!folded.length) continue;                      // 프론트가 이미 다 가른다
+      add(t, "A축렌더", "WARN",
+        `대화형인데 화면에서 ${folded.length}줄이 접힌다 — 화자 구분이 사라진다: ` +
+        folded.slice(0, 3).map((l) => JSON.stringify(l.trim().slice(0, 34))).join(" · "),
+        `Q${q.id} ${field}`);
+    }
+  }
   // ── C 중복 등재 ───────────────────────────────────────────────────────
   const seen = new Map();
   for (const a of list) {
@@ -180,7 +212,7 @@ for (const t of targets) {
 }
 
 // ── 출력 ────────────────────────────────────────────────────────────────
-const AX = ["⑴빈칸소실", "⑵라벨혼입", "⑶구간부재", "⑷인용변형", "A′앵커", "C중복등재"];
+const AX = ["⑴빈칸소실", "⑵라벨혼입", "⑶구간부재", "⑷인용변형", "A′앵커", "C중복등재", "A축렌더"];
 console.log("# 세트 탑재 검사 (D-199)");
 console.log("");
 console.log(`- 대상 ${targets.length}세트 (LIVE ${targets.filter((t) => RELEASE.has(t.key)).length})`);
