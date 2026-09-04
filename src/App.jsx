@@ -772,8 +772,18 @@ function MainPage({ isPro, user }) {
   const navigate = useNavigate();
   const [yearKeys, setYearKeys] = useState([]);
   const isMaster = isAllowlisted(user?.email);
+  // [발주 F-60 ⓑ] 마스터는 비노출 회차 목록을 인증 API 에서 받는다 —
+  //   토큰이 필요하다. 일반 학생 경로는 index.json 만 보므로 토큰을 쓰지 않는다.
   useEffect(() => {
-    getYearKeys({ bypassFilter: isMaster }).then(setYearKeys);
+    supabase.auth
+      .getSession()
+      .then(({ data: { session } }) => session?.access_token ?? null)
+      .catch(() => null)
+      .then((accessToken) =>
+        getYearKeys({ bypassFilter: isMaster, accessToken }),
+      )
+      .then(setYearKeys)
+      .catch((e) => console.warn("[회차 목록] 로드 실패:", e?.message));
   }, [isMaster]);
   const [showProModal, setShowProModal] = useState(false);
   const [modeTarget, setModeTarget] = useState(null);

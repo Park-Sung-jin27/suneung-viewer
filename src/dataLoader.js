@@ -79,6 +79,47 @@ async function _mergePro(yd, yearKey, setId, accessToken) {
   return false;
 }
 
+// ── 마스터 검수 경로 (발주 F-60 ⓑ) ─────────────────────────────
+//   비노출 세트는 free/ 에도 data-pro/ 에도 없다(build_split 이 LIVE 만 만든다).
+//   통짜 파일을 브라우저로 받는 대신, 인증된 서버 경로에서 회차·세트 단위로 받는다.
+//   ★ 이 모듈은 순수하게 유지한다 — api/ 에서 import 하므로 supabase 를 들이지
+//     않는다(src/supabase.js 는 import.meta.env 를 쓴다). 토큰은 인자로 받는다.
+const _masterYearCache = {};
+let _masterKeysCache = null;
+
+async function _masterFetch(query, accessToken) {
+  if (!accessToken) throw new Error("마스터 조회에는 로그인이 필요합니다");
+  const res = await fetch(`/api/master-data?${query}`, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+  if (!res.ok) throw new Error(`마스터 데이터 조회 실패 (${res.status})`);
+  return await res.json();
+}
+
+async function _loadMasterYear(yearKey, accessToken) {
+  if (_masterYearCache[yearKey]) return _masterYearCache[yearKey];
+  const yd = await _masterFetch(
+    `year=${encodeURIComponent(yearKey)}`,
+    accessToken,
+  );
+  _masterYearCache[yearKey] = yd;
+  return yd;
+}
+
+async function _loadMasterYearKeys(accessToken) {
+  if (_masterKeysCache) return _masterKeysCache;
+  const r = await _masterFetch("list=1", accessToken);
+  _masterKeysCache = r.yearKeys ?? [];
+  return _masterKeysCache;
+}
+
+// /audit/:setId 는 회차를 모른 채 들어온다. 서버가 찾아 준다.
+//   반환: [{ yearKey, area, set }] — setId 는 회차 간 충돌하므로 여러 건일 수 있다.
+export async function findAuditSet(setId, accessToken) {
+  const r = await _masterFetch(`set=${encodeURIComponent(setId)}`, accessToken);
+  return r.matches ?? [];
+}
+
 // release 정합 composite key (yearKey::setId) hardcode list — 단일 진실 source.
 //   기준: pipeline/release_approval_records/QG-{examKey}-{setId}-release-approval.json
 //        파일 존재 사양 — backfill 없이 frontend 단독 명시.
@@ -731,9 +772,10 @@ export async function loadYear(yearKey, options = {}) {
   const useSplit = USE_SPLIT_DATA && !bypassFilter;
   // 발주 F-20: split 경로에서는 무료 트리를 먼저 얹고, 세트 단위로 유료 조각을
   //   덧댄다. 플래그 false 면 아래 한 줄은 실행되지 않으므로 동작이 동일하다.
+  // 발주 F-60 ⓑ: 마스터 경로는 통짜 파일 대신 인증 API 에서 그 회차만 받는다.
   const data = useSplit
     ? { [yearKey]: await _loadFreeYear(yearKey) }
-    : await _load();
+    : { [yearKey]: await _loadMasterYear(yearKey, accessToken) };
   if (!data[yearKey]) throw new Error(`연도 데이터 없음: ${yearKey}`);
   const yd = data[yearKey];
   if (useSplit && setId) {
@@ -771,7 +813,7 @@ export async function loadYear(yearKey, options = {}) {
 //   release set 0 인 year 는 selection UI 에서도 숨김.
 //   options.bypassFilter: true 시 전체 yearKey 반환 (마스터/검증자 전용).
 export async function getYearKeys(options = {}) {
-  const { bypassFilter = false } = options;
+  const { bypassFilter = false, accessToken = null } = options;
   // 발주 F-20: split 경로에서는 인덱스만으로 목록을 만든다(연도 파일 미수신).
   // 발주 F-22: bypassFilter(마스터·검증자)는 index 에 없는 비노출 연도까지
   //   봐야 하므로 아래 split 분기를 타지 않고 통짜 파일 경로로 내려간다.
@@ -784,8 +826,10 @@ export async function getYearKeys(options = {}) {
       )
       .map((y) => y.yearKey);
   }
+  // 발주 F-60 ⓑ: 마스터는 index 에 없는 비노출 회차까지 봐야 한다.
+  //   통짜 파일을 받는 대신 인증 API 에서 키 목록만 받는다.
+  if (bypassFilter) return await _loadMasterYearKeys(accessToken);
   const data = await _load();
-  if (bypassFilter) return Object.keys(data);
   const all = Object.keys(data);
   return all.filter((yk) => {
     const yd = data[yk];
@@ -859,6 +903,7 @@ export default {
   sectionOfSet,
   loadAllData,
   loadYears,
+  findAuditSet,
   isReleaseSet,
   isReleaseSetAsync,
   getReleaseStats,

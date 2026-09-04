@@ -12,7 +12,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams, Navigate, Link } from "react-router-dom";
 import { isAllowlisted } from "./constants";
-import { loadAllData } from "./dataLoader";
+import { findAuditSet } from "./dataLoader";
+import { supabase } from "./supabase";
 
 // 2026-06-27 발주 5-B 안 범위 확장 [㉠-㉮] → [㉠-㉿] path.
 const MARKER_RE = /[ⓐ-ⓩ㉠-㉿]/g;
@@ -309,7 +310,9 @@ export default function AuditPanel({ user }) {
   const { setId } = useParams();
   const [searchParams] = useSearchParams();
   const yearKeyParam = searchParams.get("yearKey");
-  const [allData, setAllData] = useState(null);
+  // [발주 F-60 ⓑ] 통짜 10.4MB 대신 이 setId 에 해당하는 세트만 서버에서 받는다.
+  //   [{ yearKey, area, set }] — setId 는 회차 간 충돌하므로 여러 건일 수 있다.
+  const [matches, setMatches] = useState(null);
   const [annotations, setAnnotations] = useState(null);
   const [err, setErr] = useState(null);
 
@@ -342,8 +345,11 @@ export default function AuditPanel({ user }) {
   }
 
   useEffect(() => {
-    loadAllData()
-      .then((data) => setAllData(data))
+    supabase.auth
+      .getSession()
+      .then(({ data: { session } }) => session?.access_token ?? null)
+      .then((accessToken) => findAuditSet(setId, accessToken))
+      .then(setMatches)
       .catch((e) => setErr(e.message));
     fetch("/data/annotations.json")
       .then((r) => r.json())
@@ -354,25 +360,19 @@ export default function AuditPanel({ user }) {
       .then((r) => (r.ok ? r.json() : null))
       .then((c) => setCsCandidates(c))
       .catch(() => setCsCandidates(null));
-  }, []);
+    // [발주 F-60 ⓑ] setId 를 의존성에 넣는다 — 이제 세트 단위로 받으므로
+    //   라우트 파라미터만 바뀌었을 때 다시 받지 않으면 직전 세트가 그대로 남는다.
+    //   (통짜를 받던 때는 전 회차가 메모리에 있어 이 문제가 없었다.)
+  }, [setId]);
 
   if (err) return <div style={{ padding: 20 }}>오류: {err}</div>;
-  if (!allData || !annotations)
+  if (!matches || !annotations)
     return <div style={{ padding: 20 }}>데이터 로딩 중…</div>;
 
   // v4: setId 충돌 (동일 setId 가 여러 yearKey 에 존재 — LEGACY A/B형 33 set) 대응:
   //   ?yearKey= 명시 → 해당 set 사용
   //   미명시 + 매칭 1개 → 그 set 사용 (백워드 호환, 충돌 X 317 set)
   //   미명시 + 매칭 2+ → yearKey 선택 화면 표시 (잘못된 본문 검수 방지)
-  const matches = [];
-  for (const yk of Object.keys(allData)) {
-    for (const dom of ["reading", "literature"]) {
-      const list = allData[yk]?.[dom] || [];
-      const found = list.find((s) => s.id === setId);
-      if (found) matches.push({ yearKey: yk, area: dom, set: found });
-    }
-  }
-
   if (matches.length === 0) {
     return (
       <div style={{ padding: 20 }}>
