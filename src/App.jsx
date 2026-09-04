@@ -1253,6 +1253,10 @@ function ViewerPage({ user, isPro = false }) {
   //   set 이동 사후 자동 클리어 정합 (currentSet.id 안 useEffect 반영).
   const [aiCitedSentId, setAiCitedSentId] = useState(null);
   const [studyAnswers, setStudyAnswers] = useState({});
+  // 발주 F-58 ④: 문항별 소요 시간. 답을 고른 시각들 사이의 간격을 그 문항에 귀속한다.
+  //   anchor = 직전 경계(세트 진입 또는 직전 답 확정) 시각. elapsed[setId][qid] = 누적 ms.
+  //   ★ 상한·보정을 두지 않는다 — 판정 임계는 데이터가 쌓인 뒤 정하므로 원값을 그대로 남긴다.
+  const qTimeRef = useRef({ anchor: null, elapsed: {} });
   const [submitted, setSubmitted] = useState(false);
   const [submittedSets, setSubmittedSets] = useState({}); // set 단위 제출 상태 — UX W2
   const [setScoreToast, setSetScoreToast] = useState(null); // set 채점 toast
@@ -1467,9 +1471,30 @@ function ViewerPage({ user, isPro = false }) {
     requestAnimationFrame(() => setAiCitedSentId(sentId));
   }, []);
 
+  // 발주 F-58 ④: 세트가 바뀌면 경계를 새로 잡는다. 직전 세트에서 흘려보낸 시간이
+  //   다음 세트 첫 문항의 소요 시간으로 넘어가지 않게 한다.
+  useEffect(() => {
+    qTimeRef.current.anchor = currentSet ? Date.now() : null;
+  }, [yearKey, currentSet?.id]); // eslint-disable-line
+
+  // 발주 F-58 ④: 저장 단위는 초 — supabase/schema.sql 의 time_spent INT 주석 그대로다.
+  //   기록이 없으면 undefined 를 돌려준다(saveAnswer 가 null 로 넣는다).
+  function timeSpentFor(sid, qid) {
+    const ms = qTimeRef.current.elapsed[sid]?.[qid];
+    return Number.isFinite(ms) ? Math.round(ms / 1000) : undefined;
+  }
+
   function handleStudyAnswer(qid, choiceNum) {
     const sid = currentSet?.id;
     if (!sid) return;
+    // 발주 F-58 ④: 경계~지금 사이의 시간을 이 문항에 더한다. 답을 바꾸면 그만큼 더 쌓인다.
+    const now = Date.now();
+    const t = qTimeRef.current;
+    if (t.anchor != null) {
+      if (!t.elapsed[sid]) t.elapsed[sid] = {};
+      t.elapsed[sid][qid] = (t.elapsed[sid][qid] ?? 0) + (now - t.anchor);
+    }
+    t.anchor = now;
     setStudyAnswers((prev) => ({
       ...prev,
       [sid]: { ...prev[sid], [qid]: choiceNum },
@@ -1518,6 +1543,7 @@ function ViewerPage({ user, isPro = false }) {
           questionType: qt,
           isCorrect,
           pat: choice.pat ?? null,
+          timeSpent: timeSpentFor(sid, q.id),
         });
         if (r && r.ok === false) saveFailed += 1;
       } catch (e) {
@@ -1584,6 +1610,7 @@ function ViewerPage({ user, isPro = false }) {
             questionType: qt,
             isCorrect,
             pat: choice.pat ?? null,
+            timeSpent: timeSpentFor(s.id, q.id),
           });
         } catch (e) {
           console.warn("[saveAnswer 무시]", e?.message);
