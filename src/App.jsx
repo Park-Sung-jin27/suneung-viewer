@@ -44,7 +44,11 @@ import {
   USE_SPLIT_DATA,
 } from "./dataLoader";
 import { supabase } from "./supabase";
-import { saveAnswer, saveSetProgress } from "./hooks/useAnswerTracker";
+import {
+  saveAnswer,
+  saveSetProgress,
+  fillAnswerPatterns,
+} from "./hooks/useAnswerTracker";
 import TodayPanel from "./TodayPanel";
 import { captureAttribution, recordAttribution } from "./attribution";
 
@@ -1518,6 +1522,8 @@ function ViewerPage({ user, isPro = false }) {
     setSubmitting(true);
     let correctCount = 0;
     let saveFailed = 0;   // [발주 fi-2 B-2] 조용한 실패 금지 — 저장 실패 건수를 세어 학생에게 알린다.
+    // 발주 F-61: 오답 패턴은 서버가 채운다. 여기서는 무엇을 골랐는지만 모은다.
+    const patItems = [];
     for (const q of qs) {
       const choiceNum = studyAnswers[sid]?.[q.id];
       if (choiceNum == null) continue;
@@ -1530,6 +1536,7 @@ function ViewerPage({ user, isPro = false }) {
         qt === "positive" ? c.ok === true : c.ok === false,
       );
       if (isCorrect) correctCount += 1;
+      else patItems.push({ questionId: q.id, choiceNum });
       try {
         const r = await saveAnswer({
           user,
@@ -1542,7 +1549,6 @@ function ViewerPage({ user, isPro = false }) {
           correctChoiceText: correctChoice?.t ?? null,
           questionType: qt,
           isCorrect,
-          pat: choice.pat ?? null,
           timeSpent: timeSpentFor(sid, q.id),
         });
         if (r && r.ok === false) saveFailed += 1;
@@ -1551,6 +1557,9 @@ function ViewerPage({ user, isPro = false }) {
         console.warn("[saveAnswer 무시]", e?.message);
       }
     }
+    // 발주 F-61: 답안이 다 저장된 뒤 세트 단위로 한 번 채운다.
+    //   실패해도 답안은 남는다 — pat 만 null 이다(F-61 이전과 같은 최악).
+    await fillAnswerPatterns({ user, yearKey, setId: sid, items: patItems });
     setSubmitting(false);
     // daily MVP: 세트 완료 진도 기록 (로그인 유저 — user_progress upsert, fire-and-forget)
     saveSetProgress({ user, yearKey, setId: sid });
@@ -1585,6 +1594,8 @@ function ViewerPage({ user, isPro = false }) {
       return;
     }
     setSubmitting(true);
+    // 발주 F-61: 세트별로 모아 두었다가 저장이 끝난 뒤 한 세트에 한 번 채운다.
+    const patItemsBySet = {};
     for (const s of allSets) {
       for (const q of s.questions ?? []) {
         const choiceNum = studyAnswers[s.id]?.[q.id];
@@ -1597,6 +1608,10 @@ function ViewerPage({ user, isPro = false }) {
         const correctChoice = q.choices.find((c) =>
           qt === "positive" ? c.ok === true : c.ok === false,
         );
+        if (!isCorrect) {
+          if (!patItemsBySet[s.id]) patItemsBySet[s.id] = [];
+          patItemsBySet[s.id].push({ questionId: q.id, choiceNum });
+        }
         try {
           await saveAnswer({
             user,
@@ -1609,12 +1624,17 @@ function ViewerPage({ user, isPro = false }) {
             correctChoiceText: correctChoice?.t ?? null,
             questionType: qt,
             isCorrect,
-            pat: choice.pat ?? null,
             timeSpent: timeSpentFor(s.id, q.id),
           });
         } catch (e) {
           console.warn("[saveAnswer 무시]", e?.message);
         }
+      }
+    }
+    for (const s of allSets) {
+      const items = patItemsBySet[s.id];
+      if (items?.length) {
+        await fillAnswerPatterns({ user, yearKey, setId: s.id, items });
       }
     }
     setSubmitting(false);

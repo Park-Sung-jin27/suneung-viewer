@@ -11,7 +11,6 @@ export async function saveAnswer({
   correctChoiceText,
   questionType,
   isCorrect,
-  pat,
   timeSpent,
 }) {
   // 비로그인은 저장 대상이 아니다 — 실패가 아니므로 ok 로 돌려준다.
@@ -39,7 +38,11 @@ export async function saveAnswer({
       correct_choice_text: correctChoiceText ?? null,
       question_type: questionType ?? null,
       is_correct: isCorrect,
-      pat: isCorrect ? null : pat,
+      // 발주 F-61: pat 은 브라우저가 알 수 없다 — pro 필드이고, 내려보내면
+      //   한 문항에서 pat 유무가 곧 정답을 가리킨다. 서버가 채운다.
+      //   여기서는 항상 null 로 되돌린다 — 답을 바꿨을 때 직전 시도의 패턴이
+      //   남으면 틀린 기록이 된다. 채우기는 fillAnswerPatterns 가 직후에 한다.
+      pat: null,
       time_spent: Number.isFinite(timeSpent) ? timeSpent : null,
       next_review: nextReview,
       review_count: reviewCount,
@@ -83,6 +86,37 @@ export async function saveAnswer({
     return { ok: true };
   } catch (err) {
     console.warn("[saveAnswer] 저장 실패:", err.message);
+    return { ok: false, error: err.message };
+  }
+}
+
+// 발주 F-61 (A′): 오답 패턴을 서버가 채우게 한다.
+//   보내는 것은 "무엇을 골랐는가" 뿐이다 — pat 은 요청에도 응답에도 없다.
+//   답안 저장이 끝난 뒤 세트 단위로 한 번 호출한다.
+//   실패해도 답안은 이미 저장돼 있다. pat 만 null 로 남는다(F-61 이전과 같은 최악).
+export async function fillAnswerPatterns({ user, yearKey, setId, items }) {
+  if (!user || !yearKey || !setId || !items?.length) {
+    return { ok: true, skipped: true };
+  }
+  try {
+    const { data } = await supabase.auth.getSession();
+    const token = data?.session?.access_token;
+    if (!token) return { ok: false, error: "no_session" };
+    const res = await fetch("/api/answer-pat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ yearKey, setId, items }),
+    });
+    if (!res.ok) {
+      console.warn("[fillAnswerPatterns] 실패:", res.status);
+      return { ok: false, error: `HTTP ${res.status}` };
+    }
+    return { ok: true };
+  } catch (err) {
+    console.warn("[fillAnswerPatterns] 실패:", err.message);
     return { ok: false, error: err.message };
   }
 }

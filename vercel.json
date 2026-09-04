@@ -2,6 +2,9 @@
   "functions": {
     "api/pro-data.js": {
       "includeFiles": "data-pro/**"
+    },
+    "api/answer-pat.js": {
+      "includeFiles": "data-pro/**"
     }
   },
   "headers": [
