@@ -9,6 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { P } from "./constants";
 import { supabase } from "./supabase";
+import { loadYears } from "./dataLoader";
 
 function withoutMarkdownNode(props) {
   const cleanProps = { ...props };
@@ -35,6 +36,33 @@ function findQuestion(allData, yearKey, setId, questionId) {
     }
   }
   return null;
+}
+
+// [발주 F-62] 코칭용 해설·근거 문장. 서버가 본인이 푼 문항인지 확인한 뒤 1건만 준다.
+//   실패(403·네트워크)는 오류로 처리하지 않는다 — 근거 없이도 코칭은 돌아간다.
+async function fetchCoachContext(wa) {
+  try {
+    const { data } = await supabase.auth.getSession();
+    const token = data?.session?.access_token;
+    if (!token) return null;
+    const res = await fetch("/api/coach-context", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        yearKey: wa.year_key,
+        setId: wa.set_id,
+        questionId: wa.question_id,
+        choiceNum: wa.choice_num,
+      }),
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
 }
 
 async function getClaudeHeaders() {
@@ -418,18 +446,20 @@ export default function PatternCoach({
     desc: "",
   };
 
-  // allData 동적 로드 (App.jsx가 이미 로드했더라도 별도 번들에서 가져옴)
+  // [발주 F-60 ⓐ] 통짜(10.4MB) 대신 오답에 등장한 회차의 free 조각만 받는다.
+  //   문항·선지 텍스트와 세트 제목은 free 에 있다.
   useEffect(() => {
-    fetch("/data/all_data_204.json")
-      .then((r) => r.json())
-      .then((m) => setAllData(m))
+    loadYears((wrongAnswers ?? []).map((a) => a.year_key))
+      .then(setAllData)
       .catch(() => setAllData({})); // 실패 시 빈 객체 — 패턴 이름만으로 코칭
-  }, []);
+  }, []); // eslint-disable-line
 
   // allData 준비되면 wrongItems 구성 + 초기 코칭 요청
   useEffect(() => {
     if (allData === null) return;
+    let alive = true;
 
+    (async () => {
     // wrongAnswers: [{ set_id, question_id, choice_num, pat, year_key }]
     const items = [];
     for (const wa of wrongAnswers) {
@@ -444,15 +474,16 @@ export default function PatternCoach({
       const { question, set } = found;
       const choice = question.choices?.find((c) => c.num === wa.choice_num);
       if (!choice) continue;
-      const groundingSents = (choice.cs_ids ?? [])
-        .map((sid) => set.sents?.find((s) => s.id === sid)?.t)
-        .filter(Boolean);
+      // [발주 F-62] 해설·근거 문장은 pro 필드라 브라우저에 없다. 서버가
+      //   본인이 실제로 푼 문항인지 확인한 뒤 그 1건만 준다.
+      //   실패해도 코칭은 진행한다 — 근거 없이 패턴 이름만으로 답한다.
+      const ctx = await fetchCoachContext(wa);
       items.push({
         questionText: question.t,
         choiceNum: choice.num,
         choiceText: choice.t,
-        analysis: choice.analysis ?? "",
-        groundingSents,
+        analysis: ctx?.analysis ?? "",
+        groundingSents: ctx?.groundingSents ?? [],
         // 보러가기용 메타
         yearKey: wa.year_key,
         setId: wa.set_id,
@@ -460,6 +491,7 @@ export default function PatternCoach({
         questionId: wa.question_id,
       });
     }
+    if (!alive) return;
     setWrongItems(items);
 
     setLoadingInit(true);
@@ -478,6 +510,11 @@ export default function PatternCoach({
         ]);
       })
       .finally(() => setLoadingInit(false));
+    })();
+
+    return () => {
+      alive = false;
+    };
   }, [allData]); // eslint-disable-line
 
   // 스크롤

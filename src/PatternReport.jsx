@@ -2,7 +2,7 @@
 // PatternReport.jsx — 오답 패턴 리포트 + AI 코칭 + 기출 패턴 훈련
 // ============================================================
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabase";
 import { P, P0, YEAR_INFO } from "./constants";
@@ -383,70 +383,57 @@ async function fetchTrainingQuestion(patKey, { user, excludedKeys }) {
   });
   if (bankQuestion) return bankQuestion;
 
-  const isLit = patKey.startsWith("L");
-  const targetSection = isLit ? "literature" : "reading";
-  const res = await fetch("/data/all_data_204.json");
-  if (!res.ok) throw new Error("기출 데이터를 불러오지 못했습니다.");
-  const allData = await res.json();
-  const patternItems = [];
-  const trueControls = [];
-
-  for (const [yearKey, yearData] of Object.entries(allData)) {
-    for (const set of yearData[targetSection] ?? []) {
-      // 발주 F-17: 훈련 후보에서 비공개(미출시) 세트 제외 — 학생에게 노출되지 않은
-      //   지문이 훈련 문제로 새어 나가지 않게 한다.
-      if (!isReleaseSet(yearKey, set.setId ?? set.id)) continue;
-      const passage = (set.sents ?? [])
-        .filter(
-          (sent) =>
-            sent.sentType !== "author" &&
-            sent.sentType !== "footnote" &&
-            sent.sentType !== "omission",
-        )
-        .map((sent) => sent.t)
-        .join("\n");
-
-      for (const question of set.questions ?? []) {
-        for (const choice of question.choices ?? []) {
-          const evidence = (choice.cs_ids ?? [])
-            .map((sid) => set.sents?.find((sent) => sent.id === sid)?.t)
-            .filter(Boolean);
-          const sourceKey = `${yearKey}|${set.id}|${question.id}|${choice.num}`;
-          if (excludedKeys.has(sourceKey)) continue;
-          if (!isUsableTrainingSentence(choice.t)) continue;
-          const item = {
-            source: "live_data",
-            passage,
-            sentence: choice.t,
-            isCorrect: choice.ok === true,
-            evidenceSentence: evidence[0] ?? "",
-            sourceYearKey: yearKey,
-            sourceSetId: set.id,
-            sourceQuestionId: question.id,
-            sourceChoiceNum: choice.num,
-            explanation:
-              choice.analysis ??
-              "해설이 없는 선지입니다. 지문 근거와 선지를 직접 대조하세요.",
-            sourceLabel: `${yearKey} · ${set.title ?? set.id} · ${question.id}번 ${choice.num}번 선지`,
-          };
-
-          if (choice.pat === patKey && choice.ok === false) {
-            patternItems.push(item);
-          } else if (choice.ok === true && evidence.length > 0) {
-            trueControls.push(item);
-          }
-        }
-      }
-    }
-  }
-
-  const usePatternItem =
-    patternItems.length > 0 &&
-    (Math.random() < 0.75 || trueControls.length === 0);
-  const pool = usePatternItem ? patternItems : trueControls;
-  if (pool.length === 0)
+  // [발주 F-62] 후보 선별은 pro 필드(choice.pat)라 브라우저가 할 수 없다.
+  //   서버가 고르고, 지문·선지 텍스트만 준다.
+  //   ★ 정오·해설·근거 문장은 여기 없다. 제출 후 revealTrainingQuestion 이 받는다 —
+  //     미리 오면 「이 선지에 결함이 있는가」의 답이 새어 훈련이 무의미해진다.
+  const { data: sess } = await supabase.auth.getSession();
+  const token = sess?.session?.access_token;
+  if (!token) throw new Error("로그인이 필요합니다.");
+  const res = await fetch(
+    `/api/training-item?pat=${encodeURIComponent(patKey)}`,
+    { headers: { Authorization: `Bearer ${token}` } },
+  );
+  if (res.status === 404) {
     throw new Error(`${patKey} 훈련 선지를 찾지 못했습니다.`);
-  return pool[Math.floor(Math.random() * pool.length)];
+  }
+  if (!res.ok) throw new Error("기출 데이터를 불러오지 못했습니다.");
+  const item = await res.json();
+  return {
+    source: "live_data",
+    passage: item.passage,
+    sentence: item.sentence,
+    sourceYearKey: item.sourceYearKey,
+    sourceSetId: item.sourceSetId,
+    sourceQuestionId: item.sourceQuestionId,
+    sourceChoiceNum: item.sourceChoiceNum,
+    sourceLabel: item.sourceLabel,
+    revealToken: item.token,
+  };
+}
+
+// [발주 F-62] 제출 후에만 정오·해설·근거 문장을 받는다.
+//   서버는 이 학생에게 그 좌표를 실제로 발급했다는 서명(revealToken)을 확인한다.
+async function revealTrainingQuestion(question) {
+  const { data } = await supabase.auth.getSession();
+  const token = data?.session?.access_token;
+  if (!token) return null;
+  const res = await fetch("/api/training-reveal", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      yearKey: question.sourceYearKey,
+      setId: question.sourceSetId,
+      questionId: question.sourceQuestionId,
+      choiceNum: question.sourceChoiceNum,
+      token: question.revealToken,
+    }),
+  });
+  if (!res.ok) return null;
+  return await res.json();
 }
 
 async function recordTrainingAttempt({ user, patKey, question, ans, isRight }) {
@@ -474,6 +461,7 @@ function PatternTrainer({ patKey, user, wrongAnswers = [], onClose }) {
   const [count, setCount] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [errorMsg, setErrorMsg] = useState("");
+  const gradingRef = useRef(false); // 채점 응답 대기 중 중복 클릭 차단
 
   async function loadQuestion() {
     setPhase("loading");
@@ -498,16 +486,41 @@ function PatternTrainer({ patKey, user, wrongAnswers = [], onClose }) {
     loadQuestion();
   }, []); // eslint-disable-line
 
-  function handleSelect(ans) {
+  // [발주 F-62] 출제 응답에는 정오가 없다. 제출한 뒤에 서버에서 받는다.
+  //   받는 동안 두 번 눌리지 않게 ref 로 막는다(phase 는 아직 "question" 이다).
+  async function handleSelect(ans) {
     if (phase !== "question") return;
-    setSelected(ans);
-    setPhase("result");
-    setCount((c) => c + 1);
-    const isRight = (ans === "O") === question.isCorrect;
-    if (isRight) setCorrect((c) => c + 1);
-    recordTrainingAttempt({ user, patKey, question, ans, isRight }).catch(
-      () => {},
-    );
+    if (gradingRef.current) return;
+    gradingRef.current = true;
+    try {
+      setSelected(ans);
+      let q = question;
+      if (typeof q.isCorrect !== "boolean") {
+        const revealed = await revealTrainingQuestion(q);
+        if (!revealed?.ok) {
+          setSelected(null);
+          setErrorMsg("채점 결과를 불러오지 못했습니다. 다시 시도해 주세요.");
+          setPhase("error");
+          return;
+        }
+        q = {
+          ...q,
+          isCorrect: revealed.isCorrect === true,
+          explanation: revealed.explanation ?? "",
+          evidenceSentence: revealed.evidenceSentence ?? "",
+        };
+        setQuestion(q);
+      }
+      setPhase("result");
+      setCount((c) => c + 1);
+      const isRight = (ans === "O") === q.isCorrect;
+      if (isRight) setCorrect((c) => c + 1);
+      recordTrainingAttempt({ user, patKey, question: q, ans, isRight }).catch(
+        () => {},
+      );
+    } finally {
+      gradingRef.current = false;
+    }
   }
 
   const isRight =

@@ -5,6 +5,15 @@
     },
     "api/answer-pat.js": {
       "includeFiles": "data-pro/**"
+    },
+    "api/training-item.js": {
+      "includeFiles": "public/data/all_data_204.json"
+    },
+    "api/training-reveal.js": {
+      "includeFiles": "public/data/all_data_204.json"
+    },
+    "api/coach-context.js": {
+      "includeFiles": "public/data/all_data_204.json"
     }
   },
   "headers": [
