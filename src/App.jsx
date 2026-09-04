@@ -1338,7 +1338,10 @@ function ViewerPage({ user, isPro = false }) {
   //   지킬 수 있는 유일한 미로그인 구간이다.
   //   개방 밖 회차는 여기 넣지 않는다 — 로그인해도 이용권이 없으면 안 열리므로
   //   「로그인하면 표시됩니다」가 거짓이 된다(F-51 과 같은 실수).
-  const guestOnFreeYear = !isStudy && !user && isFreeProYear(yearKey);
+  // 발주 F-53 후속: 풀이 모드도 비로그인이면 같다. 답을 입력해도 pro 조각이
+  //   없어 아무것도 안 뜨므로 「답을 입력하면 표시됩니다」가 거짓이 된다.
+  //   → mode 와 무관하게 「비로그인 + 개방 회차」면 로그인 유도로 보낸다.
+  const guestOnFreeYear = !user && isFreeProYear(yearKey);
 
   // ── 발주 F-20 커밋1: 세트 단위 lazy pro 병합 ─────────────────────────
   //   pro(해설·형광펜)를 연도 1회가 아니라 "세트를 넘길 때마다" 받는다.
@@ -1797,7 +1800,8 @@ function ViewerPage({ user, isPro = false }) {
       {/* 발주 F-52: 안내는 실제 동작과 일치해야 한다.
           · 클릭 즉시 뜨는 상태 → 그대로 안내한다
           · 풀이 모드            → 「풀고 나면 표시」 복기 설계 그대로
-          · 비로그인 + 개방 회차 → 로그인 유도 (F-53). 로그인하면 곧바로 열린다
+          · 비로그인 + 개방 회차 → 로그인 유도 (F-53). 풀이 모드도 마찬가지다 —
+            비로그인은 답을 입력해도 pro 조각이 없어 아무것도 뜨지 않는다
           · 그 밖(개방 밖 회차)   → 배너를 띄우지 않는다. 로그인해도 이용권이
             없으면 안 열리므로 어떤 약속도 거짓이 된다. 이 경우 안내는
             PassagePanel 이 선지 클릭 시점에 사유별로 한다(F-51). */}
@@ -1814,7 +1818,7 @@ function ViewerPage({ user, isPro = false }) {
           type="info"
           action={{ label: "무료로 로그인", href: "/auth" }}
         />
-      ) : isStudy ? (
+      ) : isStudy && !!user ? (
         <Banner
           bannerId="how-to-use-v1"
           message="💡 시험지를 먼저 풀고 오세요 — 답을 입력하면 지문 근거와 해설이 표시됩니다"
