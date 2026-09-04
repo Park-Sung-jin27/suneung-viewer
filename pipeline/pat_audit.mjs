@@ -12,7 +12,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const STEP3 = path.join(ROOT, "pipeline/reextract/step3");
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
 const N = Number(arg("--sample", 50));

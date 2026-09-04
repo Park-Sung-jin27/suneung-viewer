@@ -35,7 +35,7 @@ import { expandMarkerRanges } from "./marker_range.mjs";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const argv = process.argv.slice(2);
 const DATA = (argv.find((a) => a.startsWith("--data=")) || "").split("=")[1]
-  || path.join(ROOT, "public/data/all_data_204.json");
+  || path.join(ROOT, "data-source/all_data_204.json");
 const ALL = argv.includes("--all");
 const ONLY = (argv.find((a) => a.startsWith("--only=")) || "").split("=")[1] || "";
 

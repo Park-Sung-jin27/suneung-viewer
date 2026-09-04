@@ -22,7 +22,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 
-const DATA_PATH = path.join(ROOT, "public/data/all_data_204.json");
+const DATA_PATH = path.join(ROOT, "data-source/all_data_204.json");
 const ANN_PATH = path.join(ROOT, "public/data/annotations.json");
 const LOADER_PATH = path.join(ROOT, "src/dataLoader.js");
 const REPORT_PATH = path.join(ROOT, "pipeline/quality_report.json");

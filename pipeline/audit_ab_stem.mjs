@@ -20,7 +20,7 @@ if (!DIR) {
 }
 
 const data = JSON.parse(
-  fs.readFileSync(path.join(ROOT, "public/data/all_data_204.json"), "utf8"),
+  fs.readFileSync(path.join(ROOT, "data-source/all_data_204.json"), "utf8"),
 );
 const src = fs.readFileSync(path.join(ROOT, "src/dataLoader.js"), "utf8");
 const _s = src.indexOf("const RELEASE_KEYS = new Set([");

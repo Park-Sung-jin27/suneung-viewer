@@ -10,7 +10,7 @@ import url from "node:url";
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
-const ALL_DATA = path.join(ROOT, "public/data/all_data_204.json");
+const ALL_DATA = path.join(ROOT, "data-source/all_data_204.json");
 const ANNO = path.join(ROOT, "public/data/annotations.json");
 
 const FREE_YEARS = ["2026수능", "2025수능", "2024수능", "2023수능", "2022수능"];

@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIR = process.argv[2];
 const data = JSON.parse(
-  fs.readFileSync(path.join(ROOT, "public/data/all_data_204.json"), "utf8"),
+  fs.readFileSync(path.join(ROOT, "data-source/all_data_204.json"), "utf8"),
 );
 
 // 강한 정규화 — 기호·따옴표·구두점·공백을 전부 지운다.

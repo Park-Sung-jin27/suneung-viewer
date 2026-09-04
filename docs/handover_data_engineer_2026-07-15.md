@@ -126,7 +126,7 @@ node pipeline/passage_fidelity.mjs               # 본문 포함도 (LIVE/비노
 node pipeline/haesol_v2_gate.mjs --sets=<yk>::<setId>[,...]   # v2 6축 harness
 
 # v2 인벤토리 재생성 (세션 임시본 소실 시)
-git cat-file -p HEAD:public/data/all_data_204.json > "$TMP/inv.json"
+git cat-file -p HEAD:data-source/all_data_204.json > "$TMP/inv.json"
 #   → 353세트 순회하며 analysis.startsWith("🎯")로 v2/미적용 분류 (본 문서 §2 수치 참조)
 
 # 마커 범위 payload 확인

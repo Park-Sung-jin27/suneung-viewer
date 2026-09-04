@@ -23,7 +23,7 @@ const OUT = path.join(ROOT, `pipeline/release_approval_records/QG-${YK}-${SID}-r
 const APPLY = process.argv.includes("--apply");
 const GATE3 = (() => { const i = process.argv.indexOf("--gate3"); return i > 0 ? process.argv[i + 1] : null; })();
 
-const data = JSON.parse(fs.readFileSync(path.join(ROOT, "public/data/all_data_204.json"), "utf8"));
+const data = JSON.parse(fs.readFileSync(path.join(ROOT, "data-source/all_data_204.json"), "utf8"));
 const ann = JSON.parse(fs.readFileSync(path.join(ROOT, "public/data/annotations.json"), "utf8"));
 const answer = JSON.parse(fs.readFileSync(path.join(ROOT, "pipeline/test_data/answer_2027_9월.json"), "utf8"));
 const gateSrc = fs.readFileSync(path.join(ROOT, "pipeline/quality_gate.mjs"), "utf8");

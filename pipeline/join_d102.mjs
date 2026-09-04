@@ -21,7 +21,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const STEP3 = path.join(ROOT, "pipeline/reextract/step3");
 const CAND = "C:/Users/downf/suneung-viewer/pipeline/test_data/join_mecab_candidates.json";
 const APPLY = process.argv.includes("--apply");

@@ -21,7 +21,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const ANN = path.join(ROOT, "public/data/annotations.json");
 const YK = "2020_6월", SID = "l20206a", NEWID = `${SID}s901`;
 const CUT = "쉬고 있었는데,";

@@ -3,7 +3,7 @@
 // 구조/정답/본문 무결성(structure·answer·passage_fidelity)은 별도 게이트로 병행 — 본 도구는 데이터 완성도 분류.
 // 사용: node pipeline/legacy_readiness.mjs [--yk=2017_9월] [--full]
 import fs from "fs";
-const d = JSON.parse(fs.readFileSync("public/data/all_data_204.json", "utf8"));
+const d = JSON.parse(fs.readFileSync("data-source/all_data_204.json", "utf8"));
 let ann = {};
 try {
   ann = JSON.parse(fs.readFileSync("public/data/annotations.json", "utf8"));

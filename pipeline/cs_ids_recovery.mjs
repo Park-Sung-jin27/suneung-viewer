@@ -31,7 +31,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "..");
 
-const DATA_PATH = path.join(ROOT, "public/data/all_data_204.json");
+const DATA_PATH = path.join(ROOT, "data-source/all_data_204.json");
 const ANN_PATH = path.join(ROOT, "public/data/annotations.json");
 const THRESH_PATH = path.join(ROOT, "config/cs_ids_recovery_thresholds.json");
 const MARKER_PATH = path.join(ROOT, "config/marker_chars.json");

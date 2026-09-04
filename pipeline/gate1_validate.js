@@ -1,5 +1,5 @@
 /**
- * Gate 1 v3 — Release Validator for public/data/all_data_204.json
+ * Gate 1 v3 — Release Validator for data-source/all_data_204.json
  *
  * 정의: 현재 release 데이터의 구조적 안전성 검증기.
  *       canonical naming 강제기가 아니다.

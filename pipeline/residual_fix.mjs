@@ -1,6 +1,6 @@
 // residual_fix.mjs — 병합 데이터의 알려진 잔존 정리 (발주 D-100)
 //
-// 대상은 **병합된 `public/data/all_data_204.json` 안의 신규 43세트**다.
+// 대상은 **병합된 `data-source/all_data_204.json` 안의 신규 43세트**다.
 // 같은 내용을 `pipeline/reextract/step3/*/step4_result.json` 에도 반영해 재현성을 지킨다.
 //
 // ① 줄바꿈 잔존 19건
@@ -19,7 +19,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const STEP3 = path.join(ROOT, "pipeline/reextract/step3");
 const APPLY = process.argv.includes("--apply");
 

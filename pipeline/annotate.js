@@ -23,7 +23,7 @@ import { execSync } from "child_process";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+const DATA_PATH = path.resolve(__dirname, "../data-source/all_data_204.json");
 const ANN_PATH = path.resolve(__dirname, "../public/data/annotations.json");
 const ROOT = path.resolve(__dirname, "..");
 

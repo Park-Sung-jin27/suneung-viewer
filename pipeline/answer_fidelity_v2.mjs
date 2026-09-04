@@ -6,7 +6,7 @@
 // 사용: node pipeline/answer_fidelity.mjs [--yk=2018수능]
 import fs from "fs";
 import { execSync } from "child_process";
-const d = JSON.parse(fs.readFileSync("public/data/all_data_204.json", "utf8"));
+const d = JSON.parse(fs.readFileSync("data-source/all_data_204.json", "utf8"));
 const args = process.argv.slice(2);
 const ykFilter = (args.find((a) => a.startsWith("--yk=")) || "").split("=")[1];
 const CIRC = { "①": 1, "②": 2, "③": 3, "④": 4, "⑤": 5 };

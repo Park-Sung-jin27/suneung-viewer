@@ -19,7 +19,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const P = (r) => path.join(ROOT, r);
 
-const data = JSON.parse(fs.readFileSync(P("public/data/all_data_204.json"), "utf8"));
+const data = JSON.parse(fs.readFileSync(P("data-source/all_data_204.json"), "utf8"));
 const ann = JSON.parse(fs.readFileSync(P("public/data/annotations.json"), "utf8"));
 const report = JSON.parse(fs.readFileSync(P("pipeline/quality_report.json"), "utf8"));
 

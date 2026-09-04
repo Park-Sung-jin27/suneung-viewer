@@ -9,7 +9,7 @@
 |      | Code A                                                           |
 | ---- | ---------------------------------------------------------------- |
 | 담당 | `src/*.jsx`, `api/*.js`, `src/constants.js`, `src/dataLoader.js` |
-| 금지 | `public/data/all_data_204.json` 직접 수정                        |
+| 금지 | `data-source/all_data_204.json` 직접 수정                        |
 
 **동시 push 절대 금지 / 작업 전 git pull 필수**
 
@@ -115,7 +115,7 @@ FREE_YEARS = ["2026수능", "2025수능", "2024수능", "2023수능", "2022수�
 ## 절대 금지
 
 ```
-- public/data/all_data_204.json 직접 수정
+- data-source/all_data_204.json 직접 수정
 - pipeline/* 수정
 - Code B와 동시 push
 - PowerShell && 체이닝 (→ ; 사용)

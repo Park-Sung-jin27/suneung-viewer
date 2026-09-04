@@ -18,7 +18,7 @@
 import fs from "node:fs";
 import { buildIndex, locateSpan, hard } from "./anchor.mjs";
 const SP=process.env.PDF_DIR || "C:/Users/downf/AppData/Local/Temp/claude/C--Users-downf-suneung-viewer/8c51d2eb-5f22-4331-9ae9-75ba84946ea5/scratchpad";
-const data=JSON.parse(fs.readFileSync(new URL("../public/data/all_data_204.json", import.meta.url),"utf8"));
+const data=JSON.parse(fs.readFileSync(new URL("../data-source/all_data_204.json", import.meta.url),"utf8"));
 const src=fs.readFileSync(new URL("../src/dataLoader.js", import.meta.url),"utf8");const _s=src.indexOf("const RELEASE_KEYS = new Set([");
 const RK=new Set([...src.slice(_s,src.indexOf("]);",_s)).matchAll(/"([^"]+)"/g)].map(m=>m[1]).filter(k=>k.includes("::")));
 const FREE5=["2022수능","2023수능","2024수능","2025수능","2026수능"];

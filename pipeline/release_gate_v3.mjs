@@ -28,7 +28,7 @@ import fs from "fs";
 const args = process.argv.slice(2);
 const dataPath =
   (args.find((a) => a.startsWith("--data=")) || "").split("=")[1] ||
-  "public/data/all_data_204.json";
+  "data-source/all_data_204.json";
 const allSets = args.includes("--all-sets");
 const showWarn = args.includes("--warn");
 

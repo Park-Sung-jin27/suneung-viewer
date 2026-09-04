@@ -84,7 +84,7 @@
 
 1. CLAUDE_MASTER.md v0 생성
 2. 데이터 엔지니어 CLAUDE.md v1 (오늘 v2로 재작성)
-3. 정본 JSON 경로 확정: `public/data/all_data_204.json`
+3. 정본 JSON 경로 확정: `data-source/all_data_204.json`
 4. 이미지 스키마 확정: `image` 단일 필드, `/images/파일명`
 5. 이미지 누락 위치 확정: 2014_9a, 2021수능, 2022수능 + 중복 1건
 6. git 미푸시 심각성 발견 (17+ 100+)

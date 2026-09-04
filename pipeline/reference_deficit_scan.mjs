@@ -34,8 +34,8 @@ const CALIB = argv.includes("--calib");
 
 const loadData = (rev) =>
   JSON.parse(rev
-    ? execSync(`git cat-file blob ${rev}:public/data/all_data_204.json`, { cwd: ROOT, encoding: "buffer", maxBuffer: 5e8 }).toString("utf8")
-    : fs.readFileSync(path.join(ROOT, "public/data/all_data_204.json"), "utf8"));
+    ? execSync(`git cat-file blob ${rev}:data-source/all_data_204.json`, { cwd: ROOT, encoding: "buffer", maxBuffer: 5e8 }).toString("utf8")
+    : fs.readFileSync(path.join(ROOT, "data-source/all_data_204.json"), "utf8"));
 
 const RK = new Set([...fs.readFileSync(path.join(ROOT, "src/dataLoader.js"), "utf8")
   .match(/const RELEASE_KEYS = new Set\(\[([\s\S]*?)\]\)/)[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]));

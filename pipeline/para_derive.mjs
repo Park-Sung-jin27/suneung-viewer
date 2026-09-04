@@ -15,7 +15,7 @@ import { execSync } from "child_process";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const RAW_DIR = path.join(ROOT, "pipeline/output/para_fix/_raw");
-const DATA_PATH = path.join(ROOT, "public/data/all_data_204.json");
+const DATA_PATH = path.join(ROOT, "data-source/all_data_204.json");
 
 // 매칭용 정규화: 마커(㉠ⓐ①[A])·공백 제거 → pdftotext 마커 렌더 편차로 인한 앵커 실패 축소.
 const MARK_RE = /[ⓐ-ⓩⒶ-Ⓩ㉠-㉯①-⑳]|\[[A-E]\]/g;

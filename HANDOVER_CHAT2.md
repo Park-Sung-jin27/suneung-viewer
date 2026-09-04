@@ -140,7 +140,7 @@ URL: https://suneung-viewer.vercel.app
 
 ## §6 Code A 절대 금지 (src/CLAUDE.md 정합)
 
-- public/data/all_data_204.json 직접 수정
+- data-source/all_data_204.json 직접 수정
 - pipeline/\* 수정
 - Code B (Chat 1)와 동시 push
 - PowerShell && 체이닝

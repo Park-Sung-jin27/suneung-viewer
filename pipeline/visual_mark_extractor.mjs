@@ -32,7 +32,7 @@ import { auditBrackets } from "./bracket_audit.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const DATA_PATH = "public/data/all_data_204.json";
+const DATA_PATH = "data-source/all_data_204.json";
 const ANN_PATH = "public/data/annotations.json";
 const OUT_PATH = "public/data/visual_marks.json";
 const REPORT_PATH = "pipeline/visual_marks_report.json";

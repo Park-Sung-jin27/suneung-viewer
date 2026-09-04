@@ -1,23 +1,13 @@
 // dataLoader.js
-let _cache = null;
 let _annCache = null;
 let _vmCache = null;
 
-// ── 발주 F-20 (3단계): 무료/유료 데이터 분리 스위치 ──────────────────
-//   false → public/data/all_data_204.json 단일 파일 (현재 동작. 무변화)
-//   true  → public/data/free/<yearKey>.json + /api/pro-data (해설·형광펜)
-//   ★ 되돌리기: 이 상수를 false 로 되돌리면 즉시 현재 동작으로 복귀한다.
-//     all_data_204.json 은 삭제하지 않는다.
-//   ★ 4단계 승인 전까지 false 로 배포한다.
+// ── 무료/유료 데이터 분리 (발주 F-20 3단계 → F-60 ⓓ 로 확정) ─────────
+//   free/<yearKey>.json + /api/pro-data (해설·형광펜) 경로만 남았다.
+//   ★ 통짜 폴백은 사라졌다 — 원본은 data-source/ 로 옮겨져 정적 URL 이 없다.
+//     되돌리려면 원본을 public/ 으로 되돌리는 것부터 해야 한다. 이 상수만
+//     false 로 바꾸면 아무 데이터도 못 받는다.
 export const USE_SPLIT_DATA = true;
-
-async function _load() {
-  if (_cache) return _cache;
-  const res = await fetch("/data/all_data_204.json");
-  if (!res.ok) throw new Error("데이터 로드 실패");
-  _cache = await res.json();
-  return _cache;
-}
 
 // ── split 경로 (USE_SPLIT_DATA=true 일 때만 사용) ────────────────────
 //   스키마 계약은 발주문 그대로다. 형식이 어긋나면 여기서 고치지 말고
@@ -829,19 +819,7 @@ export async function getYearKeys(options = {}) {
   // 발주 F-60 ⓑ: 마스터는 index 에 없는 비노출 회차까지 봐야 한다.
   //   통짜 파일을 받는 대신 인증 API 에서 키 목록만 받는다.
   if (bypassFilter) return await _loadMasterYearKeys(accessToken);
-  const data = await _load();
-  const all = Object.keys(data);
-  return all.filter((yk) => {
-    const yd = data[yk];
-    const reading = yd.reading || [];
-    const literature = yd.literature || [];
-    const filter = _statusFilterFor(yk);
-    return reading.some(filter) || literature.some(filter);
-  });
-}
-
-export function getYearSync(yearKey) {
-  return _cache?.[yearKey] ?? null;
+  return [];
 }
 
 /**
@@ -860,7 +838,7 @@ export function getYearSync(yearKey) {
  * @returns {"reading"|"literature"|null} 못 찾으면 null.
  *   ★ 호출부는 접두사 판별로 폴백하지 말 것. 미분류로 집계한다(발주 fg-1B · B-3).
  */
-export function sectionOfSet(yearKey, setId, data = _cache) {
+export function sectionOfSet(yearKey, setId, data) {
   const yd = data?.[yearKey];
   if (!yd || !setId) return null;
   if ((yd.reading ?? []).some((s) => s.id === setId)) return "reading";
@@ -892,16 +870,10 @@ export async function loadYears(yearKeys) {
   return out;
 }
 
-export async function loadAllData() {
-  return await _load();
-}
-
 export default {
   loadYear,
   getYearKeys,
-  getYearSync,
   sectionOfSet,
-  loadAllData,
   loadYears,
   findAuditSet,
   isReleaseSet,

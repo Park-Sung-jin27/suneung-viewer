@@ -20,7 +20,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ANN = path.join(ROOT, "public/data/annotations.json");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const YK = "2027_9월", SID = "l20279b";
 const SPEC = { type: "underline", sentId: "l20279bs25", marker: "㉢", text: "치르르치르르" }; // ㉢ · 치르르치르르
 const APPLY = process.argv.includes("--apply");

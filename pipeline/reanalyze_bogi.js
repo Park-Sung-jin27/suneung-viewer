@@ -10,7 +10,7 @@ import { retrySet } from "./step3_analysis.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+const DATA_PATH = path.resolve(__dirname, "../data-source/all_data_204.json");
 const BACKUP_DIR = path.resolve(__dirname, "backups");
 const TEST_DATA_DIR = path.resolve(__dirname, "test_data");
 

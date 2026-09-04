@@ -7,7 +7,7 @@
 import fs from "fs";
 import { execSync } from "child_process";
 const ROOT = process.cwd();
-const d = JSON.parse(fs.readFileSync("public/data/all_data_204.json", "utf8"));
+const d = JSON.parse(fs.readFileSync("data-source/all_data_204.json", "utf8"));
 const args = process.argv.slice(2);
 const ALL = args.includes("--all");
 const ykFilter = (args.find((a) => a.startsWith("--yk=")) || "").split("=")[1];

@@ -28,7 +28,7 @@ const MODEL = "claude-sonnet-4-5";
 const BETA_HEADER = { headers: { "anthropic-beta": "output-128k-2025-02-19" } };
 const DATA_PATH = path.resolve(
   __dirname,
-  "../../public/data/all_data_204.json",
+  "../../data-source/all_data_204.json",
 );
 const OUTPUT_PATH = path.resolve(__dirname, "./4c_results.json");
 

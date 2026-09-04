@@ -5,7 +5,7 @@
  * 첫 번째 목표: 현재 데이터와의 일치율 검증(--dry-run), 다음 단계에서 --apply 로 교정.
  *
  * 입력:
- *   - public/data/all_data_204.json
+ *   - data-source/all_data_204.json
  *   - config/pat_decision_rules.json
  *   - config/pat_signal_map.json
  *   - config/pat_override_cases.json

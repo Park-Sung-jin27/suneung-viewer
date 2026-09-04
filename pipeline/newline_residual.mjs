@@ -19,7 +19,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const STEP3 = path.join(ROOT, "pipeline/reextract/step3");
 const APPLY = process.argv.includes("--apply");
 const W = (s) => String(s).replace(/\s/g, "");

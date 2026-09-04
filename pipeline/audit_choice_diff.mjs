@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const [YK, TXT] = process.argv.slice(2);
 const data = JSON.parse(
-  fs.readFileSync(path.join(ROOT, "public/data/all_data_204.json"), "utf8"),
+  fs.readFileSync(path.join(ROOT, "data-source/all_data_204.json"), "utf8"),
 );
 const raw = fs.readFileSync(TXT, "utf8");
 

@@ -15,7 +15,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const SRC = path.join(ROOT, "public/data/all_data_204.json");
+const SRC = path.join(ROOT, "data-source/all_data_204.json");
 const APPLY = process.argv.includes("--apply");
 
 // 판정 결과 (발주 D-85b) — yk, setId, qid, num, 확정 pat, 사유
@@ -76,7 +76,7 @@ console.log(`\n## ${APPLY ? "적용" : "DRY-RUN (쓰지 않음)"}`);
 console.log(`  pat 변경 ${patChanged}건 / 6건 · 꼬리 제거 ${tailRemoved}건 · 글자 감소 ${chars}`);
 
 if (APPLY) {
-  const bak = path.join(ROOT, "public/data/all_data_204.backup.D85b-pre.json");
+  const bak = path.join(ROOT, "data-source/all_data_204.backup.D85b-pre.json");
   if (!fs.existsSync(bak)) fs.writeFileSync(bak, raw, "utf8");
   console.log(`  백업: ${path.relative(ROOT, bak)}`);
   fs.writeFileSync(SRC, JSON.stringify(data), "utf8");

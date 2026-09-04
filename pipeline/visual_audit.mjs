@@ -44,7 +44,7 @@ function safeGitCmd(cmd) {
 function getCommitChain() {
   const audit_commit = safeGitCmd("git rev-parse HEAD") || "unknown";
   const data_commit =
-    safeGitCmd("git log -1 --format=%H -- public/data/all_data_204.json") ||
+    safeGitCmd("git log -1 --format=%H -- data-source/all_data_204.json") ||
     "unknown";
   const ann_commit =
     safeGitCmd("git log -1 --format=%H -- public/data/annotations.json") ||

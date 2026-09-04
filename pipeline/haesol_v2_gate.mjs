@@ -411,7 +411,7 @@ if (IS_CLI) {
   //   배포본 all_data는 아직 v2 반영 전(미커밋)이라 그대로 검사하면 옛 해설을 본다.
   //   배포본 복사 → v2 산출물({qId,num,pat,analysis}) 주입 → 임시 파일 → quality_gate --data=<임시>.
   //   인자 없으면 기존대로 배포본(하위호환).
-  const ALLDATA = path.join(ROOT, "public/data/all_data_204.json");
+  const ALLDATA = path.join(ROOT, "data-source/all_data_204.json");
   const TARGET = (args.find((a) => a.startsWith("--target=")) || "").split(
     "=",
   )[1];

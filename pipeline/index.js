@@ -297,7 +297,7 @@ function validateMerged(allDataPath) {
 async function main() {
   const allDataPath = path.resolve(
     __dirname,
-    "../public/data/all_data_204.json",
+    "../data-source/all_data_204.json",
   );
 
   console.log("");

@@ -1,7 +1,7 @@
 ---
 name: safe-data-edit
 description: >
-  suneung-viewer의 대용량 정본 JSON(public/data/all_data_204.json ·
+  suneung-viewer의 대용량 정본 JSON(data-source/all_data_204.json ·
   public/data/annotations.json)을 손상 없이 안전하게 편집한다. 해설·cs_ids·cs_span·
   pat·본문(sent.t)·마커·괄호를 고칠 때 항상 사용. git-object 우회 6단계 + 3계층 동시
   정합 + 인코딩/제로폭 0 검증 + 게이트↔push 분리를 강제한다. 트리거: "데이터 고쳐",
@@ -12,7 +12,7 @@ description: >
 
 ## 언제 쓰나
 
-`public/data/all_data_204.json`(~10.7MB) 또는 `public/data/annotations.json` 의
+`data-source/all_data_204.json`(~10.7MB) 또는 `public/data/annotations.json` 의
 어떤 필드든 고칠 때. 이 파일들은 mount 동기화 중 **truncate** 되거나, `git show|node`
 stdin 파이프에서 **멀티바이트 문자가 쪼개져** 손상된 전례가 있다(U+FFFD 184건 인시던트).
 이 스킬은 그 재발을 막는 고정 절차다.
@@ -33,7 +33,7 @@ stdin 파이프에서 **멀티바이트 문자가 쪼개져** 손상된 전례�
 ```bash
 cd <repo>; export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 git pull origin main
-git show HEAD:public/data/all_data_204.json > /tmp/all_data.json
+git show HEAD:data-source/all_data_204.json > /tmp/all_data.json
 head -c 120 /tmp/all_data.json          # 들여쓰기 포맷 확인(indent=2 vs 압축)
 ```
 
@@ -89,16 +89,16 @@ cs_span 교정이면 추가로: 교정한 `cs_span.text` 가 교정 후 `sent.t`
 ### Step 5 — in-place 덮기 + readback
 
 ```bash
-cat /tmp/all_data.clean.json > public/data/all_data_204.json
-python3 -c "import json;json.load(open('public/data/all_data_204.json',encoding='utf-8'));print('readback OK')"
+cat /tmp/all_data.clean.json > data-source/all_data_204.json
+python3 -c "import json;json.load(open('data-source/all_data_204.json',encoding='utf-8'));print('readback OK')"
 ```
 
 ### Step 6 — 게이트 (push 전, 별도 단계)
 
 ```bash
 node pipeline/quality_gate.mjs --scope=release 2>&1 | grep -E "CRITICAL|<관련 게이트>"
-git add public/data/all_data_204.json
-git cat-file -s :public/data/all_data_204.json     # staged blob 크기 정상 확인
+git add data-source/all_data_204.json
+git cat-file -s :data-source/all_data_204.json     # staged blob 크기 정상 확인
 ```
 
 → CRITICAL 확인 후 **여기서 멈추고 대표에게 보고**. push 는 대표 승인 후.

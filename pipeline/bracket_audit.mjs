@@ -24,7 +24,7 @@
  *
  * Report 안 commit hash 추가:
  *   - audit_commit (현 HEAD)
- *   - data_commit  (public/data/all_data_204.json 최근 commit)
+ *   - data_commit  (data-source/all_data_204.json 최근 commit)
  *   - mixed_commit (audit_commit ≠ data_commit 시 true)
  *
  * 사용 (다른 도구 안 import):
@@ -54,7 +54,7 @@ function safeGitCmd(cmd) {
 export function getCommitHashes() {
   const audit_commit = safeGitCmd("git rev-parse HEAD") || "unknown";
   const data_commit =
-    safeGitCmd("git log -1 --format=%H -- public/data/all_data_204.json") ||
+    safeGitCmd("git log -1 --format=%H -- data-source/all_data_204.json") ||
     "unknown";
   const ann_commit =
     safeGitCmd("git log -1 --format=%H -- public/data/annotations.json") ||
@@ -432,7 +432,7 @@ if (isMain) {
     args.find((a) => a.startsWith("--report="))?.slice("--report=".length) ||
     "pipeline/bracket_audit_report.json";
 
-  const data = loadJson("public/data/all_data_204.json");
+  const data = loadJson("data-source/all_data_204.json");
   const ann = loadJson("public/data/annotations.json");
   const years = yearArg ? [yearArg] : null;
 

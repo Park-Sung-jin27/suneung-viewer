@@ -4,9 +4,9 @@
 // 지휘부 lock 사항:
 //   - 패치 항목 8건 (직전 회기 §4 표 그대로)
 //   - source: 4c run 1 (5건) + 4a run 1 (2건) + 4a run 3 (1건, V 분류 정합성 우선)
-//   - 백업: public/data/all_data_204.json.bak.4d (스크립트 시작 시 자동, 이미 존재 시 skip)
+//   - 백업: data-source/all_data_204.json.bak.4d (스크립트 시작 시 자동, 이미 존재 시 skip)
 //   - 입력: 4a_results.json, 4c_results.json (read-only)
-//   - 패치 대상: public/data/all_data_204.json (write)
+//   - 패치 대상: data-source/all_data_204.json (write)
 //   - 다른 항목 변경 금지 (acceptance test 4 강제)
 //   - step3_analysis.js / 4-a runner / 4-c runner 본체 미수정
 
@@ -16,8 +16,8 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
-const DATA_PATH = path.resolve(ROOT, "public/data/all_data_204.json");
-const BACKUP_PATH = path.resolve(ROOT, "public/data/all_data_204.json.bak.4d");
+const DATA_PATH = path.resolve(ROOT, "data-source/all_data_204.json");
+const BACKUP_PATH = path.resolve(ROOT, "data-source/all_data_204.json.bak.4d");
 const RES_4A_PATH = path.resolve(__dirname, "./4a_results.json");
 const RES_4C_PATH = path.resolve(__dirname, "./4c_results.json");
 

@@ -26,7 +26,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DRY = process.argv.includes("--dry-run");
 
-const PUB_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+const PUB_PATH = path.resolve(__dirname, "../data-source/all_data_204.json");
 
 // ── pat 분류 함수 ──────────────────────────────────────────────────────────────
 function detectPat(analysis, sec) {
@@ -217,5 +217,5 @@ console.log("══════════════════════�
 if (!DRY) {
   // public/data 저장
   fs.writeFileSync(PUB_PATH, JSON.stringify(data), "utf8");
-  console.log("✅ public/data/all_data_204.json 저장 완료");
+  console.log("✅ data-source/all_data_204.json 저장 완료");
 }

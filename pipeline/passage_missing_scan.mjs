@@ -14,7 +14,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const P = (r) => path.join(ROOT, r);
 const JSON_OUT = process.argv.includes("--json");
 
-const data = JSON.parse(fs.readFileSync(P("public/data/all_data_204.json"), "utf8"));
+const data = JSON.parse(fs.readFileSync(P("data-source/all_data_204.json"), "utf8"));
 
 // RELEASE_KEYS — 기존 파서 6종과 동일 방식
 const src = fs.readFileSync(P("src/dataLoader.js"), "utf8");

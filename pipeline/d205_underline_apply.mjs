@@ -25,7 +25,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const ANN = path.join(ROOT, "public/data/annotations.json");
 const argv = process.argv.slice(2);
 const IN = (() => { const i = argv.indexOf("--in"); return i >= 0 ? argv[i + 1] : null; })();

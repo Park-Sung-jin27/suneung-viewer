@@ -1,7 +1,7 @@
 # 병합 절차 초안 (D-93 준비 · 2026-08-22)
 
 > **초안이다. 심사관 확정 전에는 실행하지 않는다.**
-> 대상: 재추출 산출물 **41세트 · 156문항** → `public/data/all_data_204.json`
+> 대상: 재추출 산출물 **41세트 · 156문항** → `data-source/all_data_204.json`
 
 ## 0. 사전 조건 (전부 충족돼야 착수)
 
@@ -16,11 +16,11 @@
 ## 1. 백업 — 되돌릴 지점을 먼저 만든다
 
 ```bash
-node -e "const fs=require('fs');fs.copyFileSync('public/data/all_data_204.json','public/data/all_data_204.backup.20260822-D93.json')"
-md5sum public/data/all_data_204.json public/data/all_data_204.backup.20260822-D93.json
+node -e "const fs=require('fs');fs.copyFileSync('data-source/all_data_204.json','data-source/all_data_204.backup.20260822-D93.json')"
+md5sum data-source/all_data_204.json data-source/all_data_204.backup.20260822-D93.json
 ```
 - 두 md5 가 같아야 진행한다.
-- 백업은 `.gitignore` 대상(`public/data/all_data_204.backup.*.json`)이라 저장소에 안 들어간다.
+- 백업은 `.gitignore` 대상(`data-source/all_data_204.backup.*.json`)이라 저장소에 안 들어간다.
 - 🔴 셸 리다이렉션으로 만들지 않는다 — BOM 오염(§13⑪).
 
 ## 2. 병합 직전 재검사 (병합 스크립트가 스스로 한다)
@@ -70,7 +70,7 @@ md5sum public/data/all_data_204.json public/data/all_data_204.backup.20260822-D9
 ## 6. `quality_gate` 전수 — 병합 전후 비교
 
 ```bash
-node pipeline/quality_gate.mjs --data=public/data/all_data_204.backup.20260822-D93.json   # 전
+node pipeline/quality_gate.mjs --data=data-source/all_data_204.backup.20260822-D93.json   # 전
 node pipeline/quality_gate.mjs                                                             # 후
 ```
 - 현재 기준선: **위반 487건**
@@ -99,7 +99,7 @@ git diff --stat src/dataLoader.js     # 아무 것도 나오지 않아야 한다
 ## 9. 커밋 분리 (§7-9)
 
 ```
-1) fix(data): 재추출 41세트 156문항 병합          ← public/data/all_data_204.json 만
+1) fix(data): 재추출 41세트 156문항 병합          ← data-source/all_data_204.json 만
 2) tools:    병합 스크립트                         ← pipeline/ 만
 3) docs:     병합 결과 리포트                      ← docs/ 만
 ```
@@ -108,7 +108,7 @@ push 는 심사관 확인 후.
 ## 10. 되돌리는 법
 
 ```bash
-node -e "const fs=require('fs');fs.copyFileSync('public/data/all_data_204.backup.20260822-D93.json','public/data/all_data_204.json')"
+node -e "const fs=require('fs');fs.copyFileSync('data-source/all_data_204.backup.20260822-D93.json','data-source/all_data_204.json')"
 ```
 커밋 전이면 이것으로 끝. 커밋 후면 그 커밋 하나만 revert 하면 된다(데이터 단독 커밋이라 안전).
 

@@ -22,7 +22,7 @@ import { buildIndex, hard } from "./anchor.mjs";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIR = process.argv[2];
 if (!DIR) { console.error("사용: node pipeline/sentence_head_audit.mjs <pdf텍스트디렉터리>"); process.exit(1); }
-const data = JSON.parse(fs.readFileSync(path.join(ROOT, "public/data/all_data_204.json"), "utf8"));
+const data = JSON.parse(fs.readFileSync(path.join(ROOT, "data-source/all_data_204.json"), "utf8"));
 const src = fs.readFileSync(path.join(ROOT, "src/dataLoader.js"), "utf8");
 const _s = src.indexOf("const RELEASE_KEYS = new Set([");
 const RK = new Set(

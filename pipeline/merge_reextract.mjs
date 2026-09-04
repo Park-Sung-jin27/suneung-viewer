@@ -19,10 +19,10 @@ import os from "node:os";
 import { checkSetMarkers } from "./marker_anchor_check.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const SRC = path.join(ROOT, "public/data/all_data_204.json");
+const SRC = path.join(ROOT, "data-source/all_data_204.json");
 const APPLY = process.argv.includes("--apply");
 const STAMP = "20260822-D93";
-const BAK = path.join(ROOT, `public/data/all_data_204.backup.${STAMP}.json`);
+const BAK = path.join(ROOT, `data-source/all_data_204.backup.${STAMP}.json`);
 const STEP3 = path.join(ROOT, "pipeline/reextract/step3");
 
 const sh = (args, opts = {}) =>

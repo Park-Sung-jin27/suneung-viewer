@@ -14,7 +14,7 @@ import { fileURLToPath } from "url";
 import { expandMarkerRanges } from "./marker_range.mjs";   // 공용 파서 공유(사각 분기 방지)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const D = JSON.parse(fs.readFileSync(path.join(ROOT, "public/data/all_data_204.json"), "utf8"));
+const D = JSON.parse(fs.readFileSync(path.join(ROOT, "data-source/all_data_204.json"), "utf8"));
 const dl = fs.readFileSync(path.join(ROOT, "src/dataLoader.js"), "utf8");
 const RK = new Set([...dl.match(/const RELEASE_KEYS = new Set\(\[([\s\S]*?)\]\)/)[1]
   .matchAll(/"([^"]+)"/g)].map((m) => m[1]));

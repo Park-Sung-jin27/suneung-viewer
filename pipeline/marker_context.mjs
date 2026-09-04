@@ -10,7 +10,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ANN_PATH = path.resolve(__dirname, "../public/data/annotations.json");
-const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+const DATA_PATH = path.resolve(__dirname, "../data-source/all_data_204.json");
 
 let _ann = null;
 function loadAnn() {

@@ -49,7 +49,7 @@ function classifyFile(filename) {
 
 async function tryRun(yearKey, examPath, answerPath) {
   // all_data_204.json에서 이미 존재하는 연도키 확인
-  const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+  const DATA_PATH = path.resolve(__dirname, "../data-source/all_data_204.json");
   if (existsSync(DATA_PATH)) {
     const allData = JSON.parse(fs.readFileSync(DATA_PATH, "utf-8"));
     if (allData[yearKey]) {

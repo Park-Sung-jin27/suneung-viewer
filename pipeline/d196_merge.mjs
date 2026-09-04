@@ -20,7 +20,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const SRC = path.join(ROOT, "pipeline/test_data/d196_l20279b/step4_result.json");
 const SRC_FALLBACK = path.join(ROOT, "pipeline/test_data/d196_l20279b/step3_result.json");
 const YK = "2027_9월", SEC = "literature", SID = "l20279b";

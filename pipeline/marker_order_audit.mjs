@@ -17,7 +17,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = process.argv[2] || path.join(ROOT, "public/data/all_data_204.json");
+const DATA = process.argv[2] || path.join(ROOT, "data-source/all_data_204.json");
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
 const src = fs.readFileSync(path.join(ROOT, "src/dataLoader.js"), "utf8");
 const _s = src.indexOf("const RELEASE_KEYS = new Set([");

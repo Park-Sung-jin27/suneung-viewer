@@ -90,7 +90,7 @@ def collect(pg, key, x0, x1, ybase, tol=7):
     return "".join(c[3] for c in got), (min(c[0] for c in got), max(c[1] for c in got))
 
 # ── 데이터 ────────────────────────────────────────────────────────────────
-data = json.load(open(R + "public/data/all_data_204.json", encoding="utf-8"))
+data = json.load(open(R + "data-source/all_data_204.json", encoding="utf-8"))
 ann = json.load(open(R + "public/data/annotations.json", encoding="utf-8"))
 dl = open(R + "src/dataLoader.js", encoding="utf-8").read()
 at = dl.index("const RELEASE_KEYS = new Set([")

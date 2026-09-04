@@ -22,7 +22,7 @@ if (!YK || !TXT) {
   process.exit(1);
 }
 const data = JSON.parse(
-  fs.readFileSync(path.join(ROOT, "public/data/all_data_204.json"), "utf8"),
+  fs.readFileSync(path.join(ROOT, "data-source/all_data_204.json"), "utf8"),
 );
 const rawPdf = fs.readFileSync(TXT, "utf8");
 

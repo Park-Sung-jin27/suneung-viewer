@@ -13,7 +13,7 @@ const args = process.argv.slice(2);
 const ykFilter = (args.find((a) => a.startsWith("--yk=")) || "").split("=")[1];
 const dataPath =
   (args.find((a) => a.startsWith("--data=")) || "").split("=")[1] ||
-  "public/data/all_data_204.json";
+  "data-source/all_data_204.json";
 const showAll = args.includes("--all");
 
 const d = JSON.parse(fs.readFileSync(dataPath, "utf8"));

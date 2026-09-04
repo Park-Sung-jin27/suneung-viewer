@@ -28,7 +28,7 @@
 ## 사용자 confirm 의무
 
 - production merge (TEST_MODE 해제)
-- commit + push (특히 `public/data/all_data_204.json`)
+- commit + push (특히 `data-source/all_data_204.json`)
 - 13개년 (2014~~2026) path 안 시험 정정 우선순위 결정 — FREE 5수능 (2022~~2026) 베타 우선 + LEGACY 8개년 (2014~2021) 즉시 병행 + 모의평가 (6월/9월) 후순위
 - step2 patch (합본 PDF 거부 등 룰 변경)
 

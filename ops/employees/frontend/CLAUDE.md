@@ -27,13 +27,13 @@ React/Vite + Supabase + UX 담당.
 
 - Supabase schema 변경 (신규 테이블, RLS 정책)
 - API key 노출 가능 영역
-- `public/data/all_data_204.json` 직접 수정 (이건 데이터 엔지니어 영역)
+- `data-source/all_data_204.json` 직접 수정 (이건 데이터 엔지니어 영역)
 - pipeline/\* 수정 (이건 데이터 엔지니어 영역)
 - production 배포 (Vercel deployment)
 
 ## 절대 금지
 
-- `public/data/all_data_204.json` 직접 수정 (정본 — 데이터 엔지니어 영역)
+- `data-source/all_data_204.json` 직접 수정 (정본 — 데이터 엔지니어 영역)
 - `pipeline/*` 수정 (데이터 엔지니어 영역)
 - JSX 부분 패치 (Python string replacement) — 완전 파일 재작성만
 - 가산적 조건 분기 (예: `hasBogiImage`, `hasBogiTable` 같은 flag 누적) → 단일 통합 컴포넌트 (예: BogiRenderer)

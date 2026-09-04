@@ -1,6 +1,6 @@
 // build_split.mjs — 배포용 free/pro 분할 (발주 D-73 · 필터 D-75)
 //
-// ★ public/data/all_data_204.json 은 **단일 소스로 그대로 둔다.**
+// ★ data-source/all_data_204.json 은 **단일 소스로 그대로 둔다.**
 //   정답지 · 게이트 3개 · live_verify · 복원 절차가 전부 이 파일을 전제한다.
 //   소스를 쪼개면 그것들을 다시 써야 한다. 배포 직전 빌드 단계에서만 쪼갠다.
 //
@@ -28,21 +28,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const SRC = path.join(ROOT, "public/data/all_data_204.json");
+const SRC = path.join(ROOT, "data-source/all_data_204.json");
 const FREE_DIR = path.join(ROOT, "public/data/free");
 const PRO_DIR = path.join(ROOT, "data-pro");
 
 const data = JSON.parse(fs.readFileSync(SRC, "utf8"));
 
-// ── 서버리스 함수용 스테이징 (발주 F-63) ─────────────────────
-//   api/_sourceData.js 는 data-source/all_data_204.json 을 읽는다.
-//   vercel.json 의 includeFiles 도 그 경로를 가리킨다(data-pro/ 와 같은 방식 —
-//   빌드가 만든 디렉터리를 함수 번들에 넣는다).
-//   ★ 발주 F-60 ⓓ 로 원본이 data-source/ 로 옮겨지면 SRC 한 줄만 바꾸고
-//     이 복사 블록을 지운다. vercel.json 과 _sourceData.js 는 그대로 둔다.
-const STAGE_DIR = path.join(ROOT, "data-source");
-fs.mkdirSync(STAGE_DIR, { recursive: true });
-fs.copyFileSync(SRC, path.join(STAGE_DIR, "all_data_204.json"));
+// 발주 F-60 ⓓ: 원본이 data-source/ 로 옮겨졌다. 이제 SRC 자체가 함수 번들에
+//   들어가는 경로이므로 스테이징 복사가 필요 없다(F-63 의 복사 블록 제거).
 
 // ── RELEASE_KEYS (발주 D-75) — 다른 감사 도구와 같은 방식으로 읽는다 ──
 // src/ 는 읽기만 한다. 여기서 고치지 않는다(공개 여부는 대표 승인 사항).

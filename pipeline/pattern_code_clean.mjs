@@ -1,7 +1,7 @@
 // pattern_code_clean.mjs — 해설 본문 패턴 코드 잔재 정리 (발주 D-85)
 //
 // 🔴 데이터 수정 스크립트다. 기본은 dry-run 이고, --apply 를 줘야 실제로 쓴다.
-//    --apply 전에 백업을 만든다(public/data/all_data_204.backup.<stamp>.json · gitignore 대상).
+//    --apply 전에 백업을 만든다(data-source/all_data_204.backup.<stamp>.json · gitignore 대상).
 //
 // 대상 (감싼 형태만 — 맨몸 코드는 건드리지 않는다)
 //   [코드] · [코드 이름] · [코드-이름] · (코드) · (코드: 이름) · — 패턴: 이름(코드)
@@ -22,7 +22,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const SRC = path.join(ROOT, "public/data/all_data_204.json");
+const SRC = path.join(ROOT, "data-source/all_data_204.json");
 const APPLY = process.argv.includes("--apply");
 
 const raw = fs.readFileSync(SRC, "utf8");
@@ -98,7 +98,7 @@ for (const x of log) console.log(`  ${x.key}\n    전: …${x.from.replace(/\s+/
 
 if (APPLY) {
   const stamp = fs.statSync(SRC).mtime.toISOString().slice(0, 10).replace(/-/g, "");
-  const bak = path.join(ROOT, `public/data/all_data_204.backup.${stamp}-D85.json`);
+  const bak = path.join(ROOT, `data-source/all_data_204.backup.${stamp}-D85.json`);
   if (!fs.existsSync(bak)) fs.writeFileSync(bak, raw, "utf8");   // 원본 바이트 그대로
   console.log(`\n백업: ${path.relative(ROOT, bak)} (${(Buffer.byteLength(raw) / 1048576).toFixed(2)}MB)`);
   fs.writeFileSync(SRC, JSON.stringify(data), "utf8");           // minified 재직렬화 — 최소 diff

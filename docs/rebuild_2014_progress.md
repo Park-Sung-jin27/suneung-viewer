@@ -83,7 +83,7 @@
 1. 전체 무결성: `node pipeline/quality_gate.mjs --scope=suneung5` (CRITICAL 0 유지 확인 — suneung5는 영향 없어야)
 2. 대표 push 명령 (sandbox는 push 불가, 대표 머신에서):
    ```
-   cd C:\Users\downf\suneung-viewer; git add public/data/all_data_204.json docs/rebuild_2014_progress.md; git commit -m "fix: 2014수능 A/B OCR 오염 6 set 시각 전사 재구축"; git push origin main
+   cd C:\Users\downf\suneung-viewer; git add data-source/all_data_204.json docs/rebuild_2014_progress.md; git commit -m "fix: 2014수능 A/B OCR 오염 6 set 시각 전사 재구축"; git push origin main
    ```
 3. **재출시 결정은 대표 몫**: 해설·cs 채우고 본문 원문 대조 끝난 뒤, dataLoader.js + constants.js 양쪽에 6 set 재추가.
 
@@ -142,4 +142,4 @@
 1. **대표 PDF 통독 대조** — 특히 l2014aB(고어), l2014b(OCR 오독 다수), 각 set 체크리스트 항목.
 2. **해설·cs_ids 생성** — 7 set 모두 비어 있음(재출시 전 필수).
 3. **재출시** — 해설·cs 채운 뒤 dataLoader.js RELEASE_SET_IDS + constants.js RELEASED_SETS 양쪽에 재추가 + 화면에서 set 정렬·[A]/[B]/[C]·옛한글 렌더 1회 확인.
-4. **commit** (대표 머신): `git add public/data/all_data_204.json docs/rebuild_2014_progress.md; git commit -m "fix: 2014수능 A/B OCR 오염 6 set 재구축 + 구조 결함 2건 정정"; git push origin main`
+4. **commit** (대표 머신): `git add data-source/all_data_204.json docs/rebuild_2014_progress.md; git commit -m "fix: 2014수능 A/B OCR 오염 6 set 재구축 + 구조 결함 2건 정정"; git push origin main`

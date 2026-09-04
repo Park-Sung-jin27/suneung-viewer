@@ -17,7 +17,7 @@ if (!examKey) {
 
 // ─── 데이터 로드 ─────────────────────────────────────────────
 
-const allDataPath = path.resolve(__dirname, "../public/data/all_data_204.json");
+const allDataPath = path.resolve(__dirname, "../data-source/all_data_204.json");
 const allData = JSON.parse(fs.readFileSync(allDataPath, "utf8"));
 
 if (!allData[examKey]) {
@@ -113,7 +113,7 @@ if (issues.length > 0) {
   if (fixed > 0) {
     const allDataPath = path.resolve(
       __dirname,
-      "../public/data/all_data_204.json",
+      "../data-source/all_data_204.json",
     );
     const allData = JSON.parse(fs.readFileSync(allDataPath, "utf8"));
     allData[examKey] = exam;

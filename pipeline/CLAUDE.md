@@ -8,7 +8,7 @@
 
 |      | Code B                                                                        |
 | ---- | ----------------------------------------------------------------------------- |
-| 담당 | `pipeline/*`, `public/data/all_data_204.json`, `public/data/annotations.json` |
+| 담당 | `pipeline/*`, `data-source/all_data_204.json`, `public/data/annotations.json` |
 | 금지 | `src/*.jsx` 수정                                                              |
 
 **동시 push 절대 금지 / 작업 전 git pull 필수**
@@ -18,7 +18,7 @@
 ## 데이터 구조
 
 ```
-단일 진실: public/data/all_data_204.json (9.5MB)
+단일 진실: data-source/all_data_204.json (9.5MB)
 어노테이션: public/data/annotations.json
 
 Choice: { num, t, ok, pat, analysis, cs_ids, cs_spans }

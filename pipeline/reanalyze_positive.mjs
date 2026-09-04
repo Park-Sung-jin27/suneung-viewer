@@ -20,7 +20,7 @@ import dotenv from "dotenv";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
-const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+const DATA_PATH = path.resolve(__dirname, "../data-source/all_data_204.json");
 const BACKUP_DIR = path.resolve(__dirname, "../pipeline/backups");
 const REPORT_PATH = path.resolve(__dirname, "reanalyze_positive_report.json");
 const MAX_RETRY = 2;

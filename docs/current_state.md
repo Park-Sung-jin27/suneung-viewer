@@ -726,7 +726,7 @@
 ### 운영 강화 (이번 세션 확립)
 
 - 게이트↔push 분리 준수 / 데이터·도구·이미지·annotations **단독 push**(fortune 가드) / 표·학습지·도식 문항은 **페이지 이미지 직독이 유일 검증법**(pdftotext 불가).
-- **⚠️ 인시던트 교훈 (대표, all_data 손상)**: sandbox sync truncation이 `all_data_204.json`을 손상시킨 사례 발생. → **데이터/annotations 편집은 git-object 우회 강제**: `git show HEAD:public/data/all_data_204.json` → 검증(JSON.parse) → in-place write → readback 확인. **mount plain read+write 금지**(truncation 위험). CLAUDE.md §16 DO NOT TOUCH('node -e 인라인 수동 패치 금지')와 'sandbox truncate' 환경주의(v1.9) 실증.
+- **⚠️ 인시던트 교훈 (대표, all_data 손상)**: sandbox sync truncation이 `all_data_204.json`을 손상시킨 사례 발생. → **데이터/annotations 편집은 git-object 우회 강제**: `git show HEAD:data-source/all_data_204.json` → 검증(JSON.parse) → in-place write → readback 확인. **mount plain read+write 금지**(truncation 위험). CLAUDE.md §16 DO NOT TOUCH('node -e 인라인 수동 패치 금지')와 'sandbox truncate' 환경주의(v1.9) 실증.
 
 ---
 

@@ -18,7 +18,7 @@
 
 | 파일                                                  | 변경 내용                                                                        |
 | ----------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `public/data/all_data_204.json`                       | 대상 선지의 `cs_ids` 에 올바른 `sentId` 추가(또는 정당하면 무변경)               |
+| `data-source/all_data_204.json`                       | 대상 선지의 `cs_ids` 에 올바른 `sentId` 추가(또는 정당하면 무변경)               |
 | (읽기 전용) `pipeline/output/csless_with_anchor.json` | 80건 목록                                                                        |
 | (도구) `pipeline/cs_ids_recovery.mjs`                 | 후보 sentId 산출(read-only). `pipeline/cs_ids_apply.mjs` 로 적용(기본 --dry-run) |
 | (읽기 전용) `_done/{yearKey}/{yearKey}_시험지.pdf`    | 근거 문장 원문 대조                                                              |
@@ -55,7 +55,7 @@ node pipeline/cs_ids_recovery.mjs        # read-only, 후보를 pipeline/output/
 ```bash
 python3 - <<'PY'
 import json
-d=json.load(open('public/data/all_data_204.json',encoding='utf-8'))
+d=json.load(open('data-source/all_data_204.json',encoding='utf-8'))
 sets=d if isinstance(d,list) else (d.get('sets') or list(d.values()))
 for s in sets:
     ids={st['id'] for st in s.get('sents',[])}

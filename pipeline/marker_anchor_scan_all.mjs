@@ -16,7 +16,7 @@ import { checkSetMarkers } from "./marker_anchor_check.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "docs/marker_anchor_scan_20260822.md");
-const data = JSON.parse(fs.readFileSync(path.join(ROOT, "public/data/all_data_204.json"), "utf8"));
+const data = JSON.parse(fs.readFileSync(path.join(ROOT, "data-source/all_data_204.json"), "utf8"));
 const RELEASE = (() => {
   const src = fs.readFileSync(path.join(ROOT, "src/dataLoader.js"), "utf8");
   const at = src.indexOf("const RELEASE_KEYS = new Set([");

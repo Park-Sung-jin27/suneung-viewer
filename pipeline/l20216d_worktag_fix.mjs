@@ -23,7 +23,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const APPLY = process.argv.includes("--apply");
 
 const YK = "2021_6월", SID = "l20216d", NEWID = "l20216ds900";

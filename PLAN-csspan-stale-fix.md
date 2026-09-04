@@ -18,7 +18,7 @@
 
 | 파일                                               | 변경 내용                                                                                          |
 | -------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `public/data/all_data_204.json`                    | 문제의 `cs_spans[].text`(및 필요 시 `analysis` 내 📌 근거 인용)를 현재 `sent.t` 와 일치하도록 교정 |
+| `data-source/all_data_204.json`                    | 문제의 `cs_spans[].text`(및 필요 시 `analysis` 내 📌 근거 인용)를 현재 `sent.t` 와 일치하도록 교정 |
 | (읽기 전용) `pipeline/output/csspan_stale.json`    | 대상 목록. yearKey·setId·qId·choice·sent_id·text·kind·live                                         |
 | (읽기 전용) `_done/{yearKey}/{yearKey}_시험지.pdf` | 어느 쪽(sent.t 또는 cs_span.text)이 원문 정본인지 판정 근거                                        |
 
@@ -46,7 +46,7 @@ cat pipeline/output/csspan_stale.json | python3 -m json.tool | head -80
 
 ```bash
 # 현재 데이터의 sent.t 와 cs_span.text 를 나란히 확인
-git show HEAD:public/data/all_data_204.json > /tmp/all_data.json
+git show HEAD:data-source/all_data_204.json > /tmp/all_data.json
 python3 - <<'PY'
 import json
 d=json.load(open('/tmp/all_data.json',encoding='utf-8'))
@@ -114,8 +114,8 @@ print('옛 형태 잔존:', raw.count('옛 cs_span text'))   # 0 이어야 함
 **Step 5 — in-place 덮기 + readback + 게이트**
 
 ```bash
-cat /tmp/all_data.clean.json > public/data/all_data_204.json
-python3 -c "import json;json.load(open('public/data/all_data_204.json',encoding='utf-8'));print('JSON OK')"
+cat /tmp/all_data.clean.json > data-source/all_data_204.json
+python3 -c "import json;json.load(open('data-source/all_data_204.json',encoding='utf-8'));print('JSON OK')"
 node pipeline/quality_gate.mjs --scope=release 2>&1 | grep -E "csspan_stale|csspan_broken|CRITICAL"
 ```
 

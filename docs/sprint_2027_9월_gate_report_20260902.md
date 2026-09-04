@@ -573,7 +573,7 @@ W_domain_mismatch: pat 보유 선지 59 중 계열 불일치 0선지 / 0세트
 
 ```
 M pipeline/answer_key.json          ← 2027_9월 등록 (47→48회차, 기존 47개 무변형 확인)
-M public/data/all_data_204.json     ← 회차 자리 + 7세트 병합 + cs_ids 121건
+M data-source/all_data_204.json     ← 회차 자리 + 7세트 병합 + cs_ids 121건
 M pipeline/reextract/api_usage.jsonl
 ```
 `pipeline/backups/all_data_204.before_step4_retarget.2026-09-02T03-11-50-593Z.json` 에 step7 직전 사본 있음.

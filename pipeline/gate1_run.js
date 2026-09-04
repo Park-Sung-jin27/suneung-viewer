@@ -8,7 +8,7 @@
  *   node pipeline/gate1_run.js --year 2026수능 --report pipeline/gate1_reports/2026수능.json
  *   node pipeline/gate1_run.js --year 2026수능 --answer-key answer_keys/2026수능.json
  *
- * Default data path: public/data/all_data_204.json (정본 [Confirmed]).
+ * Default data path: data-source/all_data_204.json (정본 [Confirmed]).
  *   override: --data <path>  또는  $SUNEUNG_DATA_PATH
  *
  * Exit codes:
@@ -47,7 +47,7 @@ function main() {
   const dataPath =
     args.data ||
     process.env.SUNEUNG_DATA_PATH ||
-    path.resolve(__dirname, "../public/data/all_data_204.json");
+    path.resolve(__dirname, "../data-source/all_data_204.json");
 
   const year = args.year;
   if (!year) {

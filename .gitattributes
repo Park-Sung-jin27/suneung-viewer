@@ -5,4 +5,4 @@
 * text=auto eol=lf
 
 # all_data_204.json — binary 단독 path (merge attempt + EOL norm NOT).
-public/data/all_data_204.json binary merge=ours
+data-source/all_data_204.json binary merge=ours

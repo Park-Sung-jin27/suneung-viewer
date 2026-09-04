@@ -89,7 +89,7 @@
 
 ### 정본 파일
 
-`public/data/all_data_204.json` — **단일 파일 구조 유지**
+`data-source/all_data_204.json` — **단일 파일 구조 유지**
 
 - 현재 크기: ~10.7MB (2026-04-25 기준)
 - 20MB 제한 주의 (대규모 처리 시 세트 단위 필터링 필수)
@@ -336,7 +336,7 @@ git push origin main
 
 ### 안전장치
 
-- `.gitattributes`에 `public/data/all_data_204.json merge=ours` 추가 (충돌 방지)
+- `.gitattributes`에 `data-source/all_data_204.json merge=ours` 추가 (충돌 방지)
 - `git config --local user.name`으로 머신 식별 (노트북 / 데스크톱)
 - `.env` 커밋 금지 (`.gitignore` 유지)
 - **양쪽 머신 동시 작업 금지**

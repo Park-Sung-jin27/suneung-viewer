@@ -121,7 +121,7 @@ migration 진행 결정 = 별도 회기 + Code A 영역 영향 사용자 결정 
 | -------------- | ---------------------------------------------------------------------------------- |
 | 영향 set 수    | 302                                                                                |
 | 영향 choice 수 | ~50000 (302 × ~170 choices)                                                        |
-| 영향 file      | `public/data/all_data_204.json` (정본)                                             |
+| 영향 file      | `data-source/all_data_204.json` (정본)                                             |
 | Code A 영역    | `dataLoader.js`, `QuestionQA.jsx`, `QuizPanel.jsx`, `cleanAnalysis` logic          |
 | Code B 영역    | `step3_analysis.js`, `step5_verify.js`, `quality_gate.mjs`, `d_engine_wrapper.mjs` |
 | 잠재 위험      | viewer 안 footer render 사양 미정합 시 학생 화면 footer 부재                       |

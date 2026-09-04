@@ -95,7 +95,7 @@
 | 영역                                                     | 의무                |
 | -------------------------------------------------------- | ------------------- |
 | **production merge** (TEST_MODE 해제 + step6 호출)       | 사용자 승인         |
-| **commit + push** (특히 `public/data/all_data_204.json`) | 사용자 검토 후 승인 |
+| **commit + push** (특히 `data-source/all_data_204.json`) | 사용자 검토 후 승인 |
 | **schema 변경** (`feedback_logs` 등 신규 테이블)         | 사용자 결정         |
 | **release 출시 시점**                                    | 사용자 결정         |
 | **가격·요금제·B2B 단가**                                 | 사용자 결정         |
@@ -221,7 +221,7 @@
 - **`scripts/` 폴더 과도한 증가 지양**
 - **JSX 수정은 완전 파일 재작성** (Python string replacement 금지)
 - **가산적 조건 분기 금지** → 단일 통합 컴포넌트 (예: BogiRenderer)
-- **`public/data/all_data_204.json` 단일 파일 구조 유지**
+- **`data-source/all_data_204.json` 단일 파일 구조 유지**
 - **자동 해설 재생성 금지 (절대)** — 단 — **시범 예외 사양 (2026-05-24 사용자 결정)**:
   - **시범 1 yearKey 단독** (2019수능 권고) Step3 재실행 허용 — D엔진 검증 통과 사양 단독
   - 시범 종결 사후 결정 의무: 전수 진입 (c 전수 path) 또는 보류
@@ -256,7 +256,7 @@
 
 ### 정본 파일
 
-`public/data/all_data_204.json` — **단일 파일 구조 유지** (~10.7MB)
+`data-source/all_data_204.json` — **단일 파일 구조 유지** (~10.7MB)
 
 ⚠️ `src/data/all_data_204.json`는 **존재하지 않음** (과거 기록 무효).
 
@@ -621,7 +621,7 @@ git push origin main
 
 ### 안전장치
 
-- `.gitattributes` 에 `public/data/all_data_204.json merge=ours` 추가
+- `.gitattributes` 에 `data-source/all_data_204.json merge=ours` 추가
 - `.env` 커밋 금지 (`.gitignore` 유지)
 - **양쪽 머신 동시 작업 금지**
 

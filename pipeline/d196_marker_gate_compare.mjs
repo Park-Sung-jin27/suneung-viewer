@@ -72,7 +72,7 @@ console.log("");
 
 // ── ② 전 세트 판정 비교 ─────────────────────────────────────────────────
 const SRC = [
-  ["all_data_204 (LIVE·비노출 전부)", path.join(ROOT, "public/data/all_data_204.json"), "byYear"],
+  ["all_data_204 (LIVE·비노출 전부)", path.join(ROOT, "data-source/all_data_204.json"), "byYear"],
   ["step2_2027_9월 (l20279b 원천)", path.join(ROOT, "pipeline/test_data/step2_2027_9월.json"), "flat"],
 ];
 const rows = [];

@@ -518,7 +518,7 @@ npm run dev
 
 ## 절대 금지 (CLAUDE.md 정합)
 
-- ❌ `public/data/all_data_204.json` 수정 (해당 패치 영역 X)
+- ❌ `data-source/all_data_204.json` 수정 (해당 패치 영역 X)
 - ❌ Code B 와 동시 push
 - ❌ 패치 작업 중 PowerShell `&&` 체이닝 (→ `;` 사용)
 

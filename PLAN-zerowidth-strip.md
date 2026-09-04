@@ -8,7 +8,7 @@
 
 ## 1. 목표 (완료 시 참인 상태)
 
-`public/data/all_data_204.json` 과 `public/data/annotations.json` 의 **모든 텍스트 필드에서 U+200B(ZWSP) 등 제로폭 문자가 0개**가 된다. 그 결과:
+`data-source/all_data_204.json` 과 `public/data/annotations.json` 의 **모든 텍스트 필드에서 U+200B(ZWSP) 등 제로폭 문자가 0개**가 된다. 그 결과:
 
 - `node pipeline/quality_gate.mjs --scope=release` 의 `F_zerowidth_corruption` 이 **0건**.
 - 이 작업만으로 게이트 CRITICAL 이 **87 → 51**로 감소(나머지 51 = bracket, PLAN-bracket-annotations 소관).
@@ -18,7 +18,7 @@
 
 | 파일                            | 변경 내용                                                         |
 | ------------------------------- | ----------------------------------------------------------------- |
-| `public/data/all_data_204.json` | 전 텍스트 필드에서 U+200B·U+200C·U+200D·U+FEFF·U+00AD·U+2060 제거 |
+| `data-source/all_data_204.json` | 전 텍스트 필드에서 U+200B·U+200C·U+200D·U+FEFF·U+00AD·U+2060 제거 |
 | `public/data/annotations.json`  | 동일                                                              |
 
 > 게이트 코드(`pipeline/quality_gate.mjs` 859~895행)가 검출하는 문자 집합과 **정확히 동일한 6종**만 제거한다. 그 외 문자는 절대 건드리지 않는다.
@@ -42,7 +42,7 @@ node pipeline/quality_gate.mjs --scope=release 2>&1 | grep -E "CRITICAL|zerowidt
 **Step 1 — HEAD 원본을 /tmp로 추출 (mount plain read 금지)**
 
 ```bash
-git show HEAD:public/data/all_data_204.json > /tmp/all_data.json
+git show HEAD:data-source/all_data_204.json > /tmp/all_data.json
 git show HEAD:public/data/annotations.json > /tmp/annotations.json
 ```
 
@@ -89,14 +89,14 @@ PY
 **Step 4 — in-place 덮어쓰기(mount는 unlink 불가 → redirect O_TRUNC)**
 
 ```bash
-cat /tmp/all_data.clean.json > public/data/all_data_204.json
+cat /tmp/all_data.clean.json > data-source/all_data_204.json
 cat /tmp/annotations.clean.json > public/data/annotations.json
 ```
 
 **Step 5 — readback 검증**
 
 ```bash
-python3 -c "import json;[json.load(open(p,encoding='utf-8')) for p in ['public/data/all_data_204.json','public/data/annotations.json']];print('readback JSON OK')"
+python3 -c "import json;[json.load(open(p,encoding='utf-8')) for p in ['data-source/all_data_204.json','public/data/annotations.json']];print('readback JSON OK')"
 node pipeline/quality_gate.mjs --scope=release 2>&1 | grep -E "CRITICAL|zerowidth"
 # → F_zerowidth_corruption 0건, CRITICAL 51건(감소) 확인
 ```
@@ -104,12 +104,12 @@ node pipeline/quality_gate.mjs --scope=release 2>&1 | grep -E "CRITICAL|zerowidt
 **Step 6 — 게이트 통과 확인 후에만(gate↔push 분리, §13④) 대표에게 보고**
 
 ```bash
-git add public/data/all_data_204.json public/data/annotations.json
-git cat-file -s :public/data/all_data_204.json    # staged blob 크기 확인(비정상 축소 아님)
+git add data-source/all_data_204.json public/data/annotations.json
+git cat-file -s :data-source/all_data_204.json    # staged blob 크기 확인(비정상 축소 아님)
 git diff --cached --stat
 ```
 
-> **push 는 대표 승인 후에만.** `public/data/all_data_204.json` commit+push 는 CLAUDE.md §2에서 대표 confirm 의무 영역. 커밋 메시지 예: `fix(zerowidth): U+200B 161회 일괄 제거 — F_zerowidth_corruption 36→0 [PLAN-zerowidth-strip]`
+> **push 는 대표 승인 후에만.** `data-source/all_data_204.json` commit+push 는 CLAUDE.md §2에서 대표 confirm 의무 영역. 커밋 메시지 예: `fix(zerowidth): U+200B 161회 일괄 제거 — F_zerowidth_corruption 36→0 [PLAN-zerowidth-strip]`
 
 ## 4. 성능 낮은 모델이 놓칠 엣지 케이스
 

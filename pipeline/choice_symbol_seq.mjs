@@ -20,7 +20,7 @@ import { execSync } from "child_process";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
-const DATA_PATH = path.join(ROOT, "public/data/all_data_204.json");
+const DATA_PATH = path.join(ROOT, "data-source/all_data_204.json");
 const OUT_PATH = path.join(__dirname, "output/_choice_symbol_seq.json");
 
 const args = process.argv.slice(2);

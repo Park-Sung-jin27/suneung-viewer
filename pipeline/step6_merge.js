@@ -28,7 +28,7 @@ if (section !== "reading" && section !== "literature") {
 // ─── 파일 로드 ───────────────────────────────────────────────
 
 const step5Abs = path.resolve(step5Path);
-const allDataPath = path.resolve(__dirname, "../public/data/all_data_204.json");
+const allDataPath = path.resolve(__dirname, "../data-source/all_data_204.json");
 
 const step5Data = JSON.parse(fs.readFileSync(step5Abs, "utf8"));
 const allData = JSON.parse(fs.readFileSync(allDataPath, "utf8"));

@@ -44,7 +44,7 @@ async function fetchLive() {
 
 const liveText = await fetchLive();
 // 기준본 — origin/main 의 값. 작업트리가 아니라 원격이 기준이다.
-const refText = execFileSync("git", ["cat-file", "-p", "origin/main:public/data/all_data_204.json"],
+const refText = execFileSync("git", ["cat-file", "-p", "origin/main:data-source/all_data_204.json"],
   { cwd: ROOT, encoding: "buffer", maxBuffer: 1 << 28 }).toString("utf8");
 
 console.log(`## LIVE 도달 검증\n`);

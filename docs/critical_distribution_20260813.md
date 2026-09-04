@@ -6,7 +6,7 @@
 - `node pipeline/quality_gate.mjs` (인자 없음 = 전수 353세트) → `pipeline/output/all_critical.json` 477건
 - `node pipeline/quality_gate.mjs --scope=release` (LIVE 241세트) → WARNING 1,100건
 
-두 실행 모두 같은 데이터를 봤다: `public/data/all_data_204.json`.
+두 실행 모두 같은 데이터를 봤다: `data-source/all_data_204.json`.
 
 | 스코프 | 세트 | CRITICAL | WARNING | IGNORE |
 |---|---:|---:|---:|---:|

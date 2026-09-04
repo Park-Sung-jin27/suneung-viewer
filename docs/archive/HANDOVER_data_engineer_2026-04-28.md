@@ -234,7 +234,7 @@ node C:\Users\downf\suneung-viewer\pipeline\annotate.js {yearKey} --apply-draft
 
 1. `pipeline/backups/*` (97개, 523MB) — .gitignore 추적 제외 완료, 물리 삭제 5/15 후
 2. `.claude/worktrees/*` (756개, 254MB) — 9개 dirty worktree 정리 후 `git worktree remove`
-3. `public/data/all_data_204.json.bak_*` (4건, 38MB)
+3. `data-source/all_data_204.json.bak_*` (4건, 38MB)
 4. `pipeline/outputs/`, `reports/` 내부
 5. `_annotation_drafts/`, `_para_drafts/`
 6. 잔여 `.bak` 파일
@@ -250,7 +250,7 @@ node C:\Users\downf\suneung-viewer\pipeline\annotate.js {yearKey} --apply-draft
 ## 🚨 절대 금지 (CLAUDE_MASTER §6 + 데이터 엔지니어 CLAUDE.md §1)
 
 - src/\*.jsx 수정
-- public/data/all_data_204.json 직접 수동 편집 (파이프라인 통과 필수)
+- data-source/all_data_204.json 직접 수동 편집 (파이프라인 통과 필수)
 - 검증 안 된 수정을 main 직반영
 - 프론트엔드 직원과 동시 push
 - PowerShell `&&` 체이닝 (→ `;` 사용)

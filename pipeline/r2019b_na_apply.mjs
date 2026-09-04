@@ -29,7 +29,7 @@ import { fileURLToPath } from "node:url";
 import { extractPdfText } from "./pdf_text_extractor.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const PDF = path.join(ROOT, "_done/2019수능/2019수능_시험지.pdf");
 const APPLY = process.argv.includes("--apply");
 const NL = String.fromCharCode(10);

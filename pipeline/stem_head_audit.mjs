@@ -21,7 +21,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 // --data=<경로> : 수리 전 스냅샷으로 그물이 실제로 걸리는지 회귀 확인할 때 쓴다
 const DATA_ARG = (process.argv.find((x) => x.startsWith("--data=")) || "").split("=")[1];
-const DATA = DATA_ARG ? path.resolve(process.cwd(), DATA_ARG) : path.join(ROOT, "public/data/all_data_204.json");
+const DATA = DATA_ARG ? path.resolve(process.cwd(), DATA_ARG) : path.join(ROOT, "data-source/all_data_204.json");
 const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
 const src = fs.readFileSync(path.join(ROOT, "src/dataLoader.js"), "utf8");
 const at = src.indexOf("const RELEASE_KEYS = new Set([");

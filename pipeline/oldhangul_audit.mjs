@@ -33,7 +33,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
 const ykFilter = (args.find((a) => a.startsWith("--yk=")) || "").split("=")[1];
 const includeHidden = args.includes("--all");
-const DATA = "public/data/all_data_204.json";
+const DATA = "data-source/all_data_204.json";
 const ANN = "public/data/annotations.json";
 
 const PUA_RE = new RegExp(

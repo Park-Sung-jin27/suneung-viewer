@@ -2,7 +2,7 @@
 
 > 갱신: 2026-05-20
 > 도구: `pipeline/step2_postprocess_vNext.mjs` (sent_split_migration)
-> 데이터: `public/data/all_data_204.json`
+> 데이터: `data-source/all_data_204.json`
 
 ---
 

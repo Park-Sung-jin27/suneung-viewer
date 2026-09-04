@@ -35,7 +35,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 //   「고쳐진 결함을 이 게이트가 실제로 잡는가」를 확인한다. 기본은 정본이다.
 const argRaw = process.argv.slice(2);
 const pick = (k, d) => { const i = argRaw.indexOf(k); return i >= 0 ? argRaw[i + 1] : d; };
-const DATA_PATH = pick("--data", path.join(ROOT, "public/data/all_data_204.json"));
+const DATA_PATH = pick("--data", path.join(ROOT, "data-source/all_data_204.json"));
 const ANN_PATH = pick("--ann", path.join(ROOT, "public/data/annotations.json"));
 const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
 const ann = JSON.parse(fs.readFileSync(ANN_PATH, "utf8"));

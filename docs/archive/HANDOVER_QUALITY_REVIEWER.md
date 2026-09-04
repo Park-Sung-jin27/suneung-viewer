@@ -167,7 +167,7 @@
 
 ## 미해결 블로커 (Chat 1 영역)
 
-git status modified 19개 파일 (pipeline/, public/data/all_data_204.json 포함).
+git status modified 19개 파일 (pipeline/, data-source/all_data_204.json 포함).
 Chat 1 재개 시 정리 필요. Chat 2(이 세션)는 건드리지 않음.
 
 ---

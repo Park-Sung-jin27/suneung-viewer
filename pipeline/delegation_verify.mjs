@@ -137,7 +137,7 @@ if (anchorBad) {
 
 // ── ④ 커버리지 ──
 const have = new Set();
-const dataAll = JSON.parse(fs.readFileSync(path.join(ROOT, "public/data/all_data_204.json"), "utf8"));
+const dataAll = JSON.parse(fs.readFileSync(path.join(ROOT, "data-source/all_data_204.json"), "utf8"));
 for (const sec of ["reading", "literature"])
   for (const s of dataAll[yk][sec] || []) for (const q of s.questions || []) have.add(Number(q.id));
 const isNew = Number(yk.slice(0, 4)) >= 2022;

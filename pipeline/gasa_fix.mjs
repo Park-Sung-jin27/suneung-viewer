@@ -25,7 +25,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DATA = path.join(ROOT, "public/data/all_data_204.json");
+const DATA = path.join(ROOT, "data-source/all_data_204.json");
 const APPLY = process.argv.includes("--apply");
 
 // 행 시작 어구 — 원본에서 이 위치를 찾아 자른다. [tag] 는 그 행 끝에 붙는다.

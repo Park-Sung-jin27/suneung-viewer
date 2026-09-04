@@ -40,7 +40,7 @@ QRE = "^(" + B + "d{1,2})" + B + "." + B + "s*" + B + "S"
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DONE = os.path.join(ROOT, "_done")
-SRC = os.path.join(ROOT, "public/data/all_data_204.json")
+SRC = os.path.join(ROOT, "data-source/all_data_204.json")
 OUT = os.path.join(ROOT, "docs/pdf_image_audit_20260820.md")
 
 MIN_SIDE = 200  # 필터 (b)

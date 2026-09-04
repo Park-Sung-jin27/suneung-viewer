@@ -6,7 +6,7 @@
 
 import fs from "fs";
 
-const DATA_PATH = "public/data/all_data_204.json";
+const DATA_PATH = "data-source/all_data_204.json";
 const REPORT_PATH = "pipeline/gate0_source_fidelity_report.json";
 const SET_STATUS_PATH = "pipeline/set_status.json";
 

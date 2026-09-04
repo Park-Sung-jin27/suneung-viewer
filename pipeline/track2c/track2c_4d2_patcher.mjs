@@ -5,7 +5,7 @@
 //   - 분기 (a-i) 채택: 4-d 패치 #7만 정정 (단순 analysis 본문 수정)
 //   - V 분류 자체는 정합 (pat 변경 0건)
 //   - 정정 대상: analysis 본문에서 ` (r\d{4}[a-z]_?s\d+)` 패턴 제거
-//   - 백업: public/data/all_data_204.json.bak.4d2 (4-d 적용 상태에서 백업)
+//   - 백업: data-source/all_data_204.json.bak.4d2 (4-d 적용 상태에서 백업)
 //   - 다른 set/qid/choice 정정 금지
 
 import fs from "fs";
@@ -14,8 +14,8 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
-const DATA_PATH = path.resolve(ROOT, "public/data/all_data_204.json");
-const BACKUP_PATH = path.resolve(ROOT, "public/data/all_data_204.json.bak.4d2");
+const DATA_PATH = path.resolve(ROOT, "data-source/all_data_204.json");
+const BACKUP_PATH = path.resolve(ROOT, "data-source/all_data_204.json.bak.4d2");
 
 console.log("[4-d-2] r2023b Q9 #2 analysis 내부 ID 제거 진입");
 console.log("[4-d-2] CWD:", process.cwd());

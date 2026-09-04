@@ -2,7 +2,7 @@
 
 > 갱신: 2026-05-20
 > 도구: `pipeline/bracket_audit.mjs` (SOURCE\_\*) + `pipeline/step2_postprocess_vNext.mjs`
-> 데이터: `public/data/all_data_204.json` 안 sents[].t
+> 데이터: `data-source/all_data_204.json` 안 sents[].t
 
 ---
 

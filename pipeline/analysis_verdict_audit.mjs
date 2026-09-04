@@ -13,7 +13,7 @@
 
 import fs from "node:fs";
 
-const data = JSON.parse(fs.readFileSync(new URL("../public/data/all_data_204.json", import.meta.url), "utf8"));
+const data = JSON.parse(fs.readFileSync(new URL("../data-source/all_data_204.json", import.meta.url), "utf8"));
 const src = fs.readFileSync(new URL("../src/dataLoader.js", import.meta.url), "utf8");
 const _s = src.indexOf("const RELEASE_KEYS = new Set([");
 const RK = new Set(

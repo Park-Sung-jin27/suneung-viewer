@@ -7,7 +7,7 @@
 //     「가장 적절한 것은?」   → 정답 = ok:true  인 유일한 선지
 // 사용: node pipeline/answer_key_audit.mjs
 import fs from "node:fs";
-const data=JSON.parse(fs.readFileSync(new URL("../public/data/all_data_204.json", import.meta.url),"utf8"));
+const data=JSON.parse(fs.readFileSync(new URL("../data-source/all_data_204.json", import.meta.url),"utf8"));
 const A=JSON.parse(fs.readFileSync(new URL("./answer_key.json", import.meta.url),"utf8"));
 const KEY=(yk)=>A[yk]?.ans;
 const src=fs.readFileSync(new URL("../src/dataLoader.js", import.meta.url),"utf8");const _s=src.indexOf("const RELEASE_KEYS = new Set([");

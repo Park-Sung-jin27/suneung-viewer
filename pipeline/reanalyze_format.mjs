@@ -31,7 +31,7 @@ dotenv.config({ path: path.resolve(__dirname, "../.env"), override: true });
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-const DATA_PATH = path.resolve(__dirname, "../public/data/all_data_204.json");
+const DATA_PATH = path.resolve(__dirname, "../data-source/all_data_204.json");
 const BACKUP_DIR = path.resolve(__dirname, "backups");
 
 const SCOPE_PRESETS = {

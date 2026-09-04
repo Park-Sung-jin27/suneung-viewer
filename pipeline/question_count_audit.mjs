@@ -27,7 +27,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DONE = path.join(ROOT, "_done");
-const SRC = path.join(ROOT, "public/data/all_data_204.json");
+const SRC = path.join(ROOT, "data-source/all_data_204.json");
 const OUT = path.join(ROOT, "docs/question_count_audit_20260820.md");
 
 const data = JSON.parse(fs.readFileSync(SRC, "utf8"));

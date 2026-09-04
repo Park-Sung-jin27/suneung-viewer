@@ -24,7 +24,7 @@ release scope 게이트에 나타난 2014 세트: `2014_6월A`·`2014_6월B`·`2
 
 | 파일                                          | 변경 내용                                                 |
 | --------------------------------------------- | --------------------------------------------------------- |
-| `public/data/all_data_204.json`               | 육안 대조로 발견한 sent.t·choices·q.t 오타/누락/환각 교정 |
+| `data-source/all_data_204.json`               | 육안 대조로 발견한 sent.t·choices·q.t 오타/누락/환각 교정 |
 | (읽기 전용) `_done/2014_6월A/…_시험지.pdf` 등 | 스캔본 — fitz 고해상 렌더 후 육안                         |
 | (읽기 전용) `_done/2014_*/…_정답.pdf`         | 텍스트본 — `pdftotext -layout` 로 정답 확정               |
 | (참고) `docs/rebuild_2014_progress.md`        | 2014수능 재구축 트랙과 중복 방지                          |
@@ -62,7 +62,7 @@ PY
 ```bash
 python3 - <<'PY'
 import json
-d=json.load(open('public/data/all_data_204.json',encoding='utf-8'))
+d=json.load(open('data-source/all_data_204.json',encoding='utf-8'))
 sets=d if isinstance(d,list) else (d.get('sets') or list(d.values()))
 for s in sets:
     if s.get('id')!='r20146a': continue           # ← 대상 setId

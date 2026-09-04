@@ -69,7 +69,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const DEFAULT_DATA_PATH = path.join(
   __dirname,
-  "../public/data/all_data_204.json",
+  "../data-source/all_data_204.json",
 );
 const DEFAULT_ANN_PATH = path.join(
   __dirname,
