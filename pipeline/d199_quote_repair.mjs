@@ -48,6 +48,34 @@ const quotesOf = (line) => {
 };
 const RE_ELL = /\s*(?:…+|\.{2,})\s*/;
 
+// ★ 공백 역매핑 잘라내기.
+//   이 조판은 줄이 단어 중간에서 끊긴다 — 「…항상 근심 / 하고, 자기가…」. 그래서
+//   원문을 공백 한 칸으로 이어 붙여도 인용 조각이 그대로는 안 나온다. 공백을 모두
+//   지운 문자열에서 찾은 다음, 그 위치를 원문 인덱스로 되돌려 원문을 잘라낸다.
+//   ★ 새 문자열을 짓지 않는다 — 결과는 언제나 원문에서 떼어낸 조각이다.
+function stripMap(src) {
+  let flat = ""; const map = [];
+  for (let i = 0; i < src.length; i++) if (!/\s/.test(src[i])) { flat += src[i]; map.push(i); }
+  return { flat, map };
+}
+function carveLoose(src, head, tail) {
+  const S = stripMap(src), H = head.replace(/\s+/g, ""), T = tail.replace(/\s+/g, "");
+  if (!H || !T) return null;
+  // 시작 어구가 여러 곳이면(짧은 조각일 때 흔하다) 끝 어구를 담는 **가장 짧은** 구간을
+  //   고른다. 앞쪽 것을 무턱대고 쓰면 인용이 지문 절반이 된다.
+  let i = -1, j = -1, best = Infinity;
+  for (let p = S.flat.indexOf(H); p >= 0; p = S.flat.indexOf(H, p + 1)) {
+    // 조각이 하나뿐이면 시작과 끝이 같은 문자열이다. 그때 끝을 시작 "뒤에서" 찾으면
+    //   같은 말이 다시 나올 리 없어 늘 실패한다 — 그 자리 자체가 구간이다.
+    const q = H === T ? p : S.flat.indexOf(T, p + H.length);
+    if (q < 0) continue;
+    const span = q + T.length - p;
+    if (span < best) { best = span; i = p; j = q; }
+  }
+  if (i < 0 || j < 0) return null;
+  const from = S.map[i], to = S.map[j + T.length - 1];
+  return src.slice(from, to + 1).replace(/\s+/g, " ");
+}
 const plans = [], skipped = [];
 let warnOnly = 0;
 for (const sec of ["reading", "literature"]) for (const set of data[YEAR]?.[sec] || []) {
@@ -106,6 +134,29 @@ for (const sec of ["reading", "literature"]) for (const set of data[YEAR]?.[sec]
                 }
                 if (fixed) break;
               }
+            }
+          }
+          // 인용 끝에 말줄임을 달아 「여기서 끊었다」고 표시한 경우 — 조각이 하나뿐이다.
+          //   덜어낸 가운데가 없으므로 말줄임만 떼면 원문 그대로가 된다.
+          if (!fixed && RE_ELL.test(quote)) {
+            const only = quote.split(RE_ELL).map((x) => x.trim()).filter(Boolean);
+            if (only.length === 1) {
+              const cand = only[0];
+              // 원문에서 잘라낸 것을 쓴다. 인용과 글자가 같아도 공백이 다를 수 있는데,
+              //   그때 인용 쪽을 그대로 두면 게이트가 다시 못 잡는다 — 원문이 정본이다.
+              const carved = SOURCES.map((SRC) => carveLoose(SRC, cand, cand)).find(Boolean);
+              if (quoteResolved(cand, ctx)) { fixed = cand; why = `인용 끝의 말줄임 제거 — 덜어낸 가운데가 없다`; }
+              else if (carved) { fixed = carved; why = `인용 끝의 말줄임 제거 + 원문으로 잘라내기(공백 역매핑)`; }
+            }
+          }
+          // 공백 join 으로 못 찾은 것을 공백 역매핑으로 한 번 더 시도한다
+          if (!fixed && RE_ELL.test(quote)) {
+            const fr2 = quote.split(RE_ELL).map((x) => x.trim()).filter(Boolean);
+            if (fr2.length >= 2) for (const SRC of SOURCES) {
+              const whole = carveLoose(SRC, fr2[0], fr2[fr2.length - 1]);
+              if (!whole) continue;
+              const gap = whole.replace(/\s+/g, "").length - fr2.join("").replace(/\s+/g, "").length;
+              if (gap >= 0 && gap <= GAP) { fixed = whole; why = `덜어낸 ${gap}자를 원문으로 메움 (공백 역매핑 · 한도 ${GAP})`; break; }
             }
           }
           const isFail = why != null || /\s[~～∼]\s/.test(quote) || RE_ELL.test(quote) || how === "ellipsis";
