@@ -163,6 +163,8 @@ raw_sources/math_eval_pdfs_legacy/
 #   data-pro/ 는 유료 자산이라 저장소에 두지 않는다.
 public/data/free/
 data-pro/
+#   data-source/ 는 빌드가 만드는 서버리스 함수용 스테이징 복사본이다 (발주 F-63).
+data-source/
 
 # 판정 지원용 PNG 표본 — 저장소에 두지 않는다 (발주 D-78 판정).
 #   회차 폴더만 무시한다. 목록인 README.md 는 추적을 유지한다.

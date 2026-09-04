@@ -34,6 +34,16 @@ const PRO_DIR = path.join(ROOT, "data-pro");
 
 const data = JSON.parse(fs.readFileSync(SRC, "utf8"));
 
+// ── 서버리스 함수용 스테이징 (발주 F-63) ─────────────────────
+//   api/_sourceData.js 는 data-source/all_data_204.json 을 읽는다.
+//   vercel.json 의 includeFiles 도 그 경로를 가리킨다(data-pro/ 와 같은 방식 —
+//   빌드가 만든 디렉터리를 함수 번들에 넣는다).
+//   ★ 발주 F-60 ⓓ 로 원본이 data-source/ 로 옮겨지면 SRC 한 줄만 바꾸고
+//     이 복사 블록을 지운다. vercel.json 과 _sourceData.js 는 그대로 둔다.
+const STAGE_DIR = path.join(ROOT, "data-source");
+fs.mkdirSync(STAGE_DIR, { recursive: true });
+fs.copyFileSync(SRC, path.join(STAGE_DIR, "all_data_204.json"));
+
 // ── RELEASE_KEYS (발주 D-75) — 다른 감사 도구와 같은 방식으로 읽는다 ──
 // src/ 는 읽기만 한다. 여기서 고치지 않는다(공개 여부는 대표 승인 사항).
 const RELEASE = (() => {

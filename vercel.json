@@ -7,13 +7,13 @@
       "includeFiles": "data-pro/**"
     },
     "api/training-item.js": {
-      "includeFiles": "public/data/all_data_204.json"
+      "includeFiles": "data-source/**"
     },
     "api/training-reveal.js": {
-      "includeFiles": "public/data/all_data_204.json"
+      "includeFiles": "data-source/**"
     },
     "api/coach-context.js": {
-      "includeFiles": "public/data/all_data_204.json"
+      "includeFiles": "data-source/**"
     }
   },
   "headers": [

@@ -7,8 +7,9 @@
 //
 //   ★ 원본 1개만 읽는다. free 조각(지문·선지 텍스트)과 pro 필드가 한 파일에
 //     같이 있어 조각 두 벌을 번들에 넣지 않아도 된다.
-//     발주 F-60 ⓓ 로 원본이 data-source/ 로 옮겨지면 SOURCE_REL 한 줄과
-//     vercel.json 의 includeFiles 만 바꾼다.
+//     경로는 data-source/ 로 이미 고정해 두었다(발주 F-63). 지금은 빌드가
+//     public/data/ 의 원본을 그리로 복사해 둔다(pipeline/build_split.mjs).
+//     발주 F-60 ⓓ 로 원본 자체가 옮겨지면 이 파일도 vercel.json 도 안 바뀐다.
 //
 //   ★ 콜드 스타트에 한 번만 파싱하고 모듈 스코프에 둔다. 웜 인스턴스는 재사용한다.
 
@@ -17,7 +18,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
 
-const SOURCE_REL = "public/data/all_data_204.json";
+const SOURCE_REL = "data-source/all_data_204.json";
 
 let _source = null;
 export function loadSource() {
