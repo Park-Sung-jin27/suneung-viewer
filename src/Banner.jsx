@@ -12,7 +12,14 @@ const TYPE_STYLES = {
   success: { bg: "#f2f7f2", border: "#7aad7a", color: "#2d6e2d" },
 };
 
-export default function Banner({ bannerId, message, type = "info" }) {
+// 발주 F-53: action 은 선택이다 — { label, href }. 주면 문구 옆에 링크 버튼이
+//   붙고, 주지 않으면 종전과 완전히 같다(기존 호출부 무영향).
+export default function Banner({
+  bannerId,
+  message,
+  type = "info",
+  action = null,
+}) {
   const [dismissed, setDismissed] = useState(
     sessionStorage.getItem(`banner_dismissed_${bannerId}`) === "true",
   );
@@ -51,6 +58,25 @@ export default function Banner({ bannerId, message, type = "info" }) {
       >
         {message}
       </span>
+      {action?.href && action?.label && (
+        <a
+          href={action.href}
+          style={{
+            marginLeft: "10px",
+            border: `1px solid ${s.color}`,
+            borderRadius: "5px",
+            padding: "3px 10px",
+            fontSize: "0.72rem",
+            fontWeight: 700,
+            color: s.color,
+            textDecoration: "none",
+            lineHeight: 1.3,
+            whiteSpace: "nowrap",
+          }}
+        >
+          {action.label}
+        </a>
+      )}
       <button
         onClick={handleClose}
         style={{
