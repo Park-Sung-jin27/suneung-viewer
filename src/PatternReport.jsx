@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabase";
 import { P, P0, YEAR_INFO } from "./constants";
 import PatternCoach from "./PatternCoach";
-import { loadAllData, sectionOfSet, isReleaseSet } from "./dataLoader";
+import { loadYears, sectionOfSet, isReleaseSet } from "./dataLoader";
 
 const C = {
   green: "#2d6e2d",
@@ -915,9 +915,13 @@ export default function PatternReport({ user, onGoToQuestion }) {
   // [발주 fg-1B] 영역(독서/문학) 판별용 — setId 접두가 아니라 reading[]/literature[] 소속으로 가른다.
   const [secData, setSecData] = useState(null);
 
+  // [발주 F-60 ⓐ] 통짜(10.4MB) 대신 답안에 실제로 등장한 회차의 free 조각만 받는다.
+  //   sectionOfSet 은 reading[]/literature[] 소속만 보므로 free 조각으로 충분하다.
+  //   답안이 로드된 뒤에 회차를 알 수 있으므로 answers 에 의존한다.
   useEffect(() => {
+    if (answers.length === 0) return undefined;
     let alive = true;
-    loadAllData()
+    loadYears(answers.map((a) => a.year_key))
       .then((d) => {
         if (alive) setSecData(d);
       })
@@ -927,7 +931,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
     return () => {
       alive = false;
     };
-  }, []);
+  }, [answers]);
 
   useEffect(() => {
     if (!user) {

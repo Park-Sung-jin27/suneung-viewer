@@ -39,7 +39,7 @@ import { formatExamTitle, formatExamDate } from "./examTitle";
 import {
   loadYear,
   getYearKeys,
-  loadAllData,
+  loadYears,
   attachProToSet,
   USE_SPLIT_DATA,
 } from "./dataLoader";
@@ -2677,13 +2677,22 @@ export default function App() {
   const allDataReqRef = useRef(false);
 
   // [D-82] 통짜 데이터는 오답노트(/wrongnote)만 쓴다. 그 경로는 로그인 전용이므로
-  //   비로그인 상태에서는 받지 않는다(비로그인 진입 시 8.5MB 자산 노출·전송 차단).
-  //   로그인하면 그때 1회 받는다 — 오답노트 동작은 그대로.
+  //   비로그인 상태에서는 받지 않는다.
+  // [발주 F-60 ⓐ] 통짜(10.4MB) 대신 「학생이 푼 회차」의 free 조각만 받는다.
+  //   오답노트는 문항·선지·세트 제목만 쓴다(analysis·cs_ids 를 읽지 않는다) —
+  //   free 조각으로 충분하다. 푼 적 없는 학생은 한 바이트도 받지 않는다.
   useEffect(() => {
     if (!user) return;
     if (allDataReqRef.current) return;
     allDataReqRef.current = true;
-    loadAllData()
+    supabase
+      .from("user_answers")
+      .select("year_key")
+      .eq("user_id", user.id)
+      .then(({ data, error }) => {
+        if (error) throw new Error(error.message);
+        return loadYears((data ?? []).map((r) => r.year_key));
+      })
       .then(setAllData)
       .catch((e) => {
         allDataReqRef.current = false; // 실패 시 다음 기회에 재시도

@@ -796,12 +796,6 @@ export async function getYearKeys(options = {}) {
   });
 }
 
-// 전체 yearKey 반환 (필터 X) — 디버깅·내부용
-export async function getAllYearKeys() {
-  const data = await _load();
-  return Object.keys(data);
-}
-
 export function getYearSync(yearKey) {
   return _cache?.[yearKey] ?? null;
 }
@@ -830,6 +824,30 @@ export function sectionOfSet(yearKey, setId, data = _cache) {
   return null;
 }
 
+// 발주 F-60 ⓐ: 회차 단위 로드.
+//   loadAllData() 와 같은 모양 { yearKey: yearData } 를 돌려주지만, 필요한 회차만
+//   free 조각으로 받는다. 호출부의 조회 함수(sectionOfSet · findQuestion 등)는
+//   그대로 쓴다 — 모양이 같아서다.
+//   ★ free 조각에는 pro 필드(analysis · pat · cs_ids)가 없다. 그 필드가 필요한
+//     경로는 이걸로 바꾸면 안 된다(조용히 열화된다).
+//   없는 회차 하나가 전체를 실패시키지 않는다 — 받은 것만 담는다.
+export async function loadYears(yearKeys) {
+  const uniq = [...new Set((yearKeys ?? []).filter(Boolean))];
+  const loaded = await Promise.all(
+    uniq.map((yk) =>
+      _loadFreeYear(yk)
+        .then((yd) => [yk, yd])
+        .catch((e) => {
+          console.warn(`[loadYears] ${yk} 로드 실패:`, e?.message);
+          return null;
+        }),
+    ),
+  );
+  const out = {};
+  for (const row of loaded) if (row) out[row[0]] = row[1];
+  return out;
+}
+
 export async function loadAllData() {
   return await _load();
 }
@@ -837,10 +855,10 @@ export async function loadAllData() {
 export default {
   loadYear,
   getYearKeys,
-  getAllYearKeys,
   getYearSync,
   sectionOfSet,
   loadAllData,
+  loadYears,
   isReleaseSet,
   isReleaseSetAsync,
   getReleaseStats,
