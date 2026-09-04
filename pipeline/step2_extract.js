@@ -11,6 +11,7 @@ import { extractPdfText, parseQuestionBlocks } from "./pdf_text_extractor.mjs";
 import { validateQuestionSet } from "./extraction_validator.mjs";
 import { scanSetRanges, planChunks } from "./set_ranges.mjs";
 import { logUsage } from "./api_usage.mjs";
+import { scanPUA, reportPUA } from "./pua_guard.mjs";
 
 // [D-137 ③] 이번 실행에서 Gemini 로 넘어간 자리를 모은다 — 실행 끝에 요약으로 찍는다.
 //   조용한 폴백이 D-135 사고의 본질이었다. 다시는 모르고 지나가지 않게 한다.
@@ -1562,7 +1563,19 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   }
 
   extractStructure(pdfPath, yearKey, lastQuestion, section)
-    .then((result) => console.log(JSON.stringify(result, null, 2)))
+    .then((result) => {
+      // 산출물을 먼저 다 내보낸 뒤에 검사한다 — 리다이렉트로 파일은 남기고 종료 코드로만
+      // 실패시킨다. 여기서 바로 죽이면 방금 쓴 API 호출분이 통째로 날아간다(cm 전례).
+      console.log(JSON.stringify(result, null, 2));
+      const hits = scanPUA(result);
+      if (hits.length) {
+        console.error("");
+        console.error(reportPUA(hits, yearKey + " step2 산출물"));
+        console.error("");
+        console.error("   → 산출물 파일 자체는 저장됐다. 교체 전에는 다음 단계로 넘기지 말 것.");
+        process.exit(1);
+      }
+    })
     .catch((err) => {
       console.error("오류:", err.message);
       process.exit(1);
