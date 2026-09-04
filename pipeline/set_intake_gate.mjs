@@ -131,6 +131,18 @@ for (const t of targets) {
     add(t, "⑶구간부재", "FAIL", `문항이 [${[...refLabels].join("][")}] 를 참조하는데 이 세트의 annotations 에 bracket 이 하나도 없다 — 신규 세트에 구간 표시가 안 만들어졌다`, "");
   else for (const L of refLabels) if (!haveBr.has(L))
     add(t, "⑶구간부재", "FAIL", `[${L}] 를 참조하는데 bracket 이 없다`, "");
+  // ★ 같은 축에 「마커는 있는데 주석이 통째로 없다」를 합산한다(심사관 승인).
+  //   구간 라벨 부재와 주석 전무는 원인이 달라도 결과가 같다 — 화면에 표시가
+  //   아예 안 그려진다. 따로 세면 한 결함이 두 수치로 흩어진다. 사유는 나눠 적는다.
+  //   지면 표본 6건 전건에서 마커 어구에 밑줄이 실재했다(PDF 벡터 좌표 판독,
+  //   음성 대조 10/10) — 주석이 없는 것은 조판 관례가 아니라 누락이다.
+  {
+    const mk = new Set((sents || []).flatMap((x) => String(x.t).match(/[ⓐ-ⓔ㉠-㉤]/g) || []));
+    if (mk.size && !list.length)
+      add(t, "⑶구간부재", "FAIL",
+        `본문에 마커 ${[...mk].join("")} 가 있는데 이 세트의 annotations 가 통째로 비어 있다 — 밑줄·구간·박스가 하나도 안 그려진다`,
+        "");
+  }
   for (const a of list.filter((x) => x.type === "bracket")) {
     if (!ids.includes(String(a.sentFrom)) || !ids.includes(String(a.sentTo)))
       add(t, "⑶구간부재", "FAIL", `[${a.label}] 의 정박 ${a.sentFrom}~${a.sentTo} 가 본문에 없다`, "");
