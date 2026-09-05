@@ -1281,11 +1281,6 @@
       },
       {
         "type": "underline",
-        "sentId": "r2023cs11",
-        "text": "받을"
-      },
-      {
-        "type": "underline",
         "sentId": "r2023cs16",
         "text": "고를"
       },
@@ -1550,11 +1545,6 @@
         "sentId": "r2022bs18",
         "text": "예술-종교-철학",
         "marker": "㉡"
-      },
-      {
-        "type": "box",
-        "sentId": "r2022bs10",
-        "text": "직관·표상·사유"
       },
       {
         "type": "underline",
@@ -2803,31 +2793,6 @@
       },
       {
         "type": "underline",
-        "sentId": "l20239as14",
-        "text": "㉡황명이 급하오니 수이 행장 차리소서."
-      },
-      {
-        "type": "underline",
-        "sentId": "l20239as19",
-        "text": "ⓐ 장계"
-      },
-      {
-        "type": "underline",
-        "sentId": "l20239as23",
-        "text": "㉢정 상서께서 지난달 보름께 별세하셨나이다."
-      },
-      {
-        "type": "underline",
-        "sentId": "l20239as26",
-        "text": "㉣대원수 호왕에 승리하여"
-      },
-      {
-        "type": "underline",
-        "sentId": "l20239as30",
-        "text": "ⓑ첩서"
-      },
-      {
-        "type": "underline",
         "sentId": "l20239as36",
         "text": "㉤서찰을 본즉 태부인의 서찰이라."
       },
@@ -2920,11 +2885,6 @@
       },
       {
         "type": "underline",
-        "sentId": "l20239cs52",
-        "text": "㉡바위틈"
-      },
-      {
-        "type": "underline",
         "sentId": "l20239cs26",
         "marker": "㉠",
         "text": "㉠은신처"
@@ -2951,28 +2911,8 @@
       },
       {
         "type": "underline",
-        "sentId": "l20239ds15",
-        "text": "㉠산두(山頭)에 한운(閑雲) 일고 수중(水中)에 백구(白鷗) 난다"
-      },
-      {
-        "type": "underline",
         "sentId": "l20239ds17",
         "text": "일생에 시름을 잊고 너를 좇아 놀리라"
-      },
-      {
-        "type": "underline",
-        "sentId": "l20239ds24",
-        "text": "㉢ 바람에 떨어진 갈대꽃 갠 하늘에 눈이 되어"
-      },
-      {
-        "type": "underline",
-        "sentId": "l20239ds25",
-        "text": "석양에 높이 날아 어지러이 뿌리는데"
-      },
-      {
-        "type": "underline",
-        "sentId": "l20239ds43",
-        "text": "㉣ 아이야 닻 들어라 만조(晚潮)에 띄워 가자"
       },
       {
         "type": "underline",
@@ -3510,7 +3450,6 @@
       },
       {
         "type": "marker",
-        "marker": "㉠",
         "sentId": "r2021bs10",
         "text": "기차 탑승을 위해 미리 돈을 지불하고 승차권을 구입하는 것"
       }
@@ -4037,7 +3976,7 @@
       },
       {
         "type": "underline",
-        "sentId": "r2020es12",
+        "sentId": "r2020es16",
         "text": "따르면",
         "marker": "ⓑ"
       },
