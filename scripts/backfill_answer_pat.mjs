@@ -31,6 +31,7 @@ import { createClient } from "@supabase/supabase-js";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const APPLY = process.argv.includes("--apply");
 const SELFTEST = process.argv.includes("--selftest");
+const DIAGNOSE = process.argv.includes("--diagnose");
 const PAGE = 1000;
 
 // .env.local (vercel env pull) 을 읽는다. 이미 환경변수가 있으면 그쪽이 우선.
@@ -86,7 +87,7 @@ async function fetchAllWrong(db) {
     const { data, error } = await db
       .from("user_answers")
       .select(
-        "id, user_id, year_key, set_id, question_id, choice_num, pat, question_type, is_correct",
+        "id, user_id, year_key, set_id, question_id, choice_num, pat, question_type, is_correct, answered_at",
       )
       .eq("is_correct", false)
       .order("id", { ascending: true })
@@ -96,6 +97,16 @@ async function fetchAllWrong(db) {
     if (!data || data.length < PAGE) break;
   }
   return rows;
+}
+
+// 진단 출력 한 줄 — user_id 는 앞 8자만(식별은 되고 전체는 남기지 않는다)
+function rowLine(r, extra = "") {
+  const at = r.answered_at ? String(r.answered_at).slice(0, 10) : "날짜없음";
+  const qt = r.question_type ?? "(null)";
+  return (
+    `${String(r.user_id).slice(0, 8)} ${at} ${r.year_key} ${r.set_id} ` +
+    `q${r.question_id} c${r.choice_num} qt=${qt}${extra}`
+  );
 }
 
 function pct(n, d) {
@@ -166,8 +177,9 @@ async function main() {
   console.log(`   그중 pat null: ${wrong.filter((r) => r.pat == null).length}건\n`);
 
   // ── 백필 ────────────────────────────────────────────────
-  const fill = [];   // { row, pat }
-  const notFound = []; // 원본에서 좌표를 못 찾은 행
+  const fill = [];     // 채울 수 있는 행
+  const notFound = []; // 좌표 자체를 원본에서 못 찾은 행
+  const noPat = [];    // 좌표는 찾았으나 원본 선지에 pat 이 없는 행
   for (const r of wrong) {
     if (r.pat != null) continue;
     const hit = findChoice(source, r.year_key, r.set_id, r.question_id, r.choice_num);
@@ -176,6 +188,9 @@ async function main() {
       continue;
     }
     const p = hit.choice.pat;
+    if (!(typeof p === "string" && p.length > 0)) {
+      noPat.push({ row: r, ok: hit.choice.ok });
+    }
     if (typeof p === "string" && p.length > 0) {
       // 결함 쪽 선지(ok===false)인가. 아니면 ② 로 분류돼야 할 행에 pat 이 붙는다 —
       //   원본의 pat/ok 불일치다. 채우되 건수를 따로 보고한다(발주 판단 사항).
@@ -183,13 +198,14 @@ async function main() {
     }
   }
 
-  console.log(`## 1단계 백필`);
-  console.log(`   채울 수 있는 행: ${fill.length}건`);
-  console.log(`   원본에서 좌표를 못 찾은 행: ${notFound.length}건`);
+  const nullRows = wrong.filter((r) => r.pat == null).length;
   const oddSide = fill.filter((f) => !f.defectSide);
-  console.log(
-    `   ─ 그중 결함 쪽 선지(ok=false): ${fill.length - oddSide.length}건 · 아닌 것: ${oddSide.length}건`,
-  );
+  console.log(`## 1단계 백필 — pat null ${nullRows}건의 갈래 (셋은 서로 겹치지 않는다)`);
+  console.log(`   (a) 채울 수 있는 행          : ${fill.length}건`);
+  console.log(`       └ 그 ${fill.length}건 중 결함 쪽(ok=false) ${fill.length - oddSide.length} · 아닌 것 ${oddSide.length}`);
+  console.log(`   (b) 좌표를 원본에서 못 찾음  : ${notFound.length}건`);
+  console.log(`   (c) 좌표는 찾았으나 pat 없음 : ${noPat.length}건`);
+  console.log(`   합계 ${fill.length}+${notFound.length}+${noPat.length}=${fill.length + notFound.length + noPat.length} (pat null ${nullRows} 과 같아야 한다)`);
   if (oddSide.length > 0) {
     console.log(`   ⚠ 아닌 것 ${oddSide.length}건은 원본의 pat/ok 불일치다. 채우면 ② 가 패턴으로 잡힌다:`);
     for (const f of oddSide.slice(0, 20)) {
@@ -229,7 +245,11 @@ async function main() {
     else if (qt === "negative") g2.push(r);
     else gUnknown.push(r);
   }
-  console.log(`\n## 2단계 잔여 null 분류 — 총 ${remain.length}건`);
+  console.log(
+    APPLY
+      ? `\n## 2단계 백필 후 잔여 null — 총 ${remain.length}건`
+      : `\n## 2단계 현재 null 분류 (백필 전 — 조회 모드다) — 총 ${remain.length}건`,
+  );
   console.log(`   ① 기록 결손(positive 오답인데 null): ${g1.length}건`);
   console.log(`   ② negative 오판(정상 — pat 원래 없음): ${g2.length}건`);
   console.log(`   ─ questionType 결손: ${gUnknown.length}건`);
@@ -247,6 +267,38 @@ async function main() {
         `     ${r.year_key} ${r.set_id} q${r.question_id} c${r.choice_num} — ${why}`,
       );
     }
+  }
+
+  // ── 진단 (발주 F-65 후속 설명 3건) ──────────────────────
+  if (DIAGNOSE) {
+    console.log(
+      `\n## 진단 A — questionType 결손 ${gUnknown.length}건 (question_type 컬럼은 2026-06-17 967c068 에 추가됐다)`,
+    );
+    for (const r of gUnknown) console.log(`     ${rowLine(r)}`);
+
+    console.log(`\n## 진단 B — 좌표를 원본에서 못 찾은 ${notFound.length}건`);
+    for (const r of notFound) console.log(`     ${rowLine(r)}`);
+
+    console.log(`\n## 진단 C — 채울 수 있는 ${fill.length}건 (백필 대상)`);
+    for (const f of fill) {
+      console.log(
+        `     ${rowLine(f.row, ` → pat=${f.pat} ok=${JSON.stringify(f.defectSide ? false : "not-false")}`)}`,
+      );
+    }
+
+    console.log(`\n## 진단 D — 좌표는 찾았으나 원본 선지에 pat 이 없는 ${noPat.length}건`);
+    for (const x of noPat.slice(0, 40)) {
+      console.log(`     ${rowLine(x.row, ` ok=${JSON.stringify(x.ok)}`)}`);
+    }
+
+    // 옛 행 가설 검증 — question_type 결손이 컬럼 추가 이전 행인가
+    const CUT = "2026-06-17";
+    const before = gUnknown.filter(
+      (r) => r.answered_at && String(r.answered_at).slice(0, 10) < CUT,
+    ).length;
+    console.log(
+      `\n## 진단 E — questionType 결손 ${gUnknown.length}건 중 ${CUT} 이전 기록: ${before}건 · 이후: ${gUnknown.length - before}건`,
+    );
   }
 
   // ── 3단계 분포 ──────────────────────────────────────────
