@@ -4541,41 +4541,6 @@
     "r20256d": [
       {
         "type": "underline",
-        "target": "bogi",
-        "qId": 14,
-        "text": "전통적인 윤리학자: 옳다. 도덕적 판단의 근거는 도덕 주체로부터 독립적으로 존재하기 때문이다.",
-        "marker": "①"
-      },
-      {
-        "type": "underline",
-        "target": "bogi",
-        "qId": 14,
-        "text": "에이어 : 옳지 않다. 도덕 문장은 도덕 주체로부터 독립적일 수 없기 때문이다.",
-        "marker": "②"
-      },
-      {
-        "type": "underline",
-        "target": "bogi",
-        "qId": 14,
-        "text": "에이어 : 옳지 않다. 도덕 문장은 분석적이지도 종합적이지도 않기 때문이다.",
-        "marker": "③"
-      },
-      {
-        "type": "underline",
-        "target": "bogi",
-        "qId": 14,
-        "text": "에이어 : 옳다. 도덕 문장은 전건 긍정식의 전제로 사용되면 진리 적합성을 갖기 때문이다.",
-        "marker": "④"
-      },
-      {
-        "type": "underline",
-        "target": "bogi",
-        "qId": 14,
-        "text": "행크스: 옳지 않다. 단독으로 진술된 문장은 조건문의 일부로 사용된 때와 내용 차이가 없기 때문이다.",
-        "marker": "⑤"
-      },
-      {
-        "type": "underline",
         "sentId": "r20256ds1",
         "marker": "ⓐ",
         "text": "ⓐ 찾는"
