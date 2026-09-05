@@ -864,39 +864,39 @@
         "marker": "㉡"
       },
       {
-        "type": "choice-underline",
+        "type": "underline",
+        "target": "choice",
         "qId": 17,
-        "cNum": 1,
-        "text": "담겨",
-        "target": "bogi"
+        "choiceNum": 1,
+        "text": "담겨"
       },
       {
-        "type": "choice-underline",
+        "type": "underline",
+        "target": "choice",
         "qId": 17,
-        "cNum": 2,
-        "text": "담겨",
-        "target": "bogi"
+        "choiceNum": 2,
+        "text": "담겨"
       },
       {
-        "type": "choice-underline",
+        "type": "underline",
+        "target": "choice",
         "qId": 17,
-        "cNum": 3,
-        "text": "담겨",
-        "target": "bogi"
+        "choiceNum": 3,
+        "text": "담겨"
       },
       {
-        "type": "choice-underline",
+        "type": "underline",
+        "target": "choice",
         "qId": 17,
-        "cNum": 4,
-        "text": "담겨",
-        "target": "bogi"
+        "choiceNum": 4,
+        "text": "담겨"
       },
       {
-        "type": "choice-underline",
+        "type": "underline",
+        "target": "choice",
         "qId": 17,
-        "cNum": 5,
-        "text": "담겨",
-        "target": "bogi"
+        "choiceNum": 5,
+        "text": "담겨"
       }
     ],
     "l2024a": [
