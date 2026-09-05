@@ -51,8 +51,11 @@ function admin() {
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) {
     console.error("🔴 SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY 가 없다.");
-    console.error("   vercel env pull .env.local 로 받은 뒤 다시 실행한다.");
-    process.exit(1);
+    console.error("   PowerShell:  $env:SUPABASE_SERVICE_ROLE_KEY = \"<키>\"");
+    // process.exit 은 열린 핸들을 끊어 Windows 에서 libuv 경고를 낸다.
+    //   종료 코드만 세우고 자연히 끝나게 둔다.
+    process.exitCode = 1;
+    return null;
   }
   return createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
@@ -156,6 +159,7 @@ async function main() {
     return;
   }
   const db = admin();
+  if (!db) return;
 
   const wrong = await fetchAllWrong(db);
   console.log(`\n## 대상 — user_answers 의 오답(is_correct=false) ${wrong.length}건`);
@@ -299,5 +303,5 @@ async function main() {
 
 main().catch((e) => {
   console.error("🔴", e.message);
-  process.exit(1);
+  process.exitCode = 1;
 });
