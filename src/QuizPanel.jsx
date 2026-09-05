@@ -336,6 +336,11 @@ function applyBogiInlineAnns(text, anns) {
         // 발주 F-67: marker 는 라벨(ⓐ)과 붙는 위치(앞/뒤)를 함께 넘긴다.
         marker: a.marker,
         endMarker: a.endMarker,
+        // ★ 원문에 이미 라벨이 박혀 있으면 덧붙이지 않는다. 안 그러면
+        //   "…봐야겠어.ⓐ ⓐ" 처럼 두 번 나온다(실제로 그렇게 배포됐다).
+        //   PassagePanel 의 suppressSup 과 같은 규율이다 — 그걸 빠뜨렸다.
+        suppressLabel:
+          a.type === "marker" && a.marker ? text.includes(a.marker) : false,
         idx: text.indexOf(matchText),
       };
     })
@@ -354,6 +359,7 @@ function applyBogiInlineAnns(text, anns) {
       width: a.width,
       marker: a.marker,
       endMarker: a.endMarker,
+      suppressLabel: a.suppressLabel,
     });
     cursor = a.idx + a.matchText.length;
   }
@@ -409,11 +415,11 @@ function applyBogiInlineAnns(text, anns) {
     if (p.type === "marker")
       return (
         <span key={i}>
-          {p.marker && !p.endMarker && (
+          {p.marker && !p.suppressLabel && !p.endMarker && (
             <sup style={MARKER_LABEL_STYLE}>{p.marker}</sup>
           )}
           {p.t}
-          {p.marker && p.endMarker && (
+          {p.marker && !p.suppressLabel && p.endMarker && (
             <sup style={MARKER_LABEL_STYLE}>{p.marker}</sup>
           )}
         </span>
