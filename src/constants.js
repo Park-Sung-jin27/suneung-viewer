@@ -723,6 +723,18 @@ export function isAllowlisted(email) {
   return MASTER_ALLOWLIST.includes(email.toLowerCase().trim());
 }
 
+// marker 라벨(㉠ ⓐ 등) 위첨자 스타일 — 단일 정본.
+//   본문(PassagePanel)과 <보기>(QuizPanel)가 같은 모양을 써야 한다.
+//   ★ 밑줄은 여기 없다. 본문은 별도로 밑줄을 긋고, <보기>는 긋지 않는다
+//     (발주 F-67 — 지면상 <보기>의 ⓐ~ⓔ 는 밑줄 없이 라벨만 붙는다).
+export const MARKER_LABEL_STYLE = {
+  verticalAlign: "super",
+  fontSize: "0.72em",
+  fontWeight: 700,
+  color: "#374151",
+  marginRight: "1px",
+};
+
 // 선지 기호 이미지 매핑 ([[sym:box]] 등 치환용)
 export const SYMBOLS = {
   box: "/images/sym_box.png",

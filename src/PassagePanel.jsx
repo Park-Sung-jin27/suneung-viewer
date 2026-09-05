@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { CC, FIGURE_IMAGE_MAP } from "./constants";
+import { CC, FIGURE_IMAGE_MAP, MARKER_LABEL_STYLE } from "./constants";
 import { isFreeProYear } from "./freeAccess";
 
 // ── 기호 밑줄 + 영역 라벨 hide (/g 플래그 금지) ──
@@ -212,16 +212,10 @@ const BOX_STYLE = {
   padding: "0 3px",
 };
 const UL_STYLE = { textDecoration: "underline", textUnderlineOffset: "3px" };
-// marker label (㉠ ⓐ 등) — 위첨자 위치 안 underline text 사전 노출 path.
+// marker label (㉠ ⓐ 등) 스타일은 src/constants.js 가 정본이다 (발주 F-67).
+//   <보기> 쪽(QuizPanel)이 같은 모양을 써야 해서 한 곳에 뒀다.
 //   annotations.json schema: { type:"marker", marker:"ⓐ", sentId, text }
 //   visual_marks.json schema: { type:"marker", label:"ⓐ", text, ... }
-const MARKER_LABEL_STYLE = {
-  verticalAlign: "super",
-  fontSize: "0.72em",
-  fontWeight: 700,
-  color: "#374151",
-  marginRight: "1px",
-};
 
 // applyInlineAnns(text, anns)
 //   anns: [{ type: 'underline'|'box'|'marker', text, marker? }]

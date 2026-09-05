@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, Component } from "react";
-import { P, CC, MODE, SYMBOLS } from "./constants";
+import { P, CC, MODE, SYMBOLS, MARKER_LABEL_STYLE } from "./constants";
 import { BogiTable } from "./BogiTable";
 import QuestionQA from "./QuestionQA";
 import { saveEvidenceFeedback } from "./saveEvidenceFeedback";
@@ -333,6 +333,9 @@ function applyBogiInlineAnns(text, anns) {
         displayText,
         type: a.type,
         width: a.width,
+        // 발주 F-67: marker 는 라벨(ⓐ)과 붙는 위치(앞/뒤)를 함께 넘긴다.
+        marker: a.marker,
+        endMarker: a.endMarker,
         idx: text.indexOf(matchText),
       };
     })
@@ -345,7 +348,13 @@ function applyBogiInlineAnns(text, anns) {
     if (a.idx < cursor) continue;
     if (a.idx > cursor)
       parts.push({ t: text.slice(cursor, a.idx), type: null });
-    parts.push({ t: a.displayText, type: a.type, width: a.width });
+    parts.push({
+      t: a.displayText,
+      type: a.type,
+      width: a.width,
+      marker: a.marker,
+      endMarker: a.endMarker,
+    });
     cursor = a.idx + a.matchText.length;
   }
   if (cursor < text.length) parts.push({ t: text.slice(cursor), type: null });
@@ -392,6 +401,21 @@ function applyBogiInlineAnns(text, anns) {
           }}
         >
           {p.t}
+        </span>
+      );
+    // 발주 F-67: <보기>의 marker 는 지면상 밑줄이 없다. 라벨만 붙인다.
+    //   본문(PassagePanel)은 밑줄을 긋지만 여기서는 긋지 않는다 — 지면이 다르다.
+    //   endMarker 면 어구 끝, 아니면 앞에 붙인다.
+    if (p.type === "marker")
+      return (
+        <span key={i}>
+          {p.marker && !p.endMarker && (
+            <sup style={MARKER_LABEL_STYLE}>{p.marker}</sup>
+          )}
+          {p.t}
+          {p.marker && p.endMarker && (
+            <sup style={MARKER_LABEL_STYLE}>{p.marker}</sup>
+          )}
         </span>
       );
     return <span key={i}>{p.t}</span>;
