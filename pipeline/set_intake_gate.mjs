@@ -65,7 +65,10 @@ for (const [yk, v] of Object.entries(data)) for (const sec of ["reading", "liter
 }
 if (!targets.length) { console.error("검사 대상이 없다 — --year / --live / \"회차::세트\" 중 하나를 주십시오"); process.exit(1); }
 
-const MARK = /[ⓐ-ⓔ㉠-㉿]/;
+// ★ ⓐ-ⓔ 로 끊으면 ⓕ·ⓖ 를 못 본다 — 정상 주석 3건을 「본문에 없다」로 잡았다
+//   (2026수능 l2026a ⓕ · 2024_9월 l20249c ⓕⓖ). marker_chars.json 에 ㉯~㉲ 가
+//   빠져 게이트가 5개 중 1개만 본 D-196 사고와 같은 형태다. 원문자 전 범위를 본다.
+const MARK = /[ⓐ-ⓩ㉠-㉿]/;
 const RE_LABEL = /\[([A-F])\]/g;
 // 줄이 조사로 시작 = 앞에 있어야 할 말이 사라진 자리.
 //   ★ 조사 뒤 공백을 필수로 둔다. \s* 로 두면 「가장 적절한 것은?」의 「가」를 조사로
@@ -178,100 +181,71 @@ for (const t of targets) {
   }
 
   // ── A′ 마커 앵커 정합 ─────────────────────────────────────────────────
-  //   마커가 본문에 박힌 문장을 찾고, 그 마커의 허용 구간을 정한다.
-  const markerSent = new Map();          // 마커 → 본문 문장 index
+  //   마커가 박힌 문장을 찾고, 그 마커의 허용 구간을 정한다.
+  //   ★ 마커는 한 세트에 여러 번 나올 수 있다. 첫 등장만 기록하면 뒤 등장에
+  //     정박한 정상 주석이 「구간 밖」이 된다 — 2025_6월 l20256c ㉢ 이 s6·s101
+  //     두 곳에 있는데 s6 기준으로 재서 s101 정박을 틀렸다고 했다(문장 재분할
+  //     900번대 신규 id 규약). 등장 위치를 전부 모아 **어느 하나에라도** 들면 통과한다.
+  const markerSents = new Map();               // 마커 → 등장 문장 index 목록
   for (let i = 0; i < sents.length; i++)
-    for (const ch of String(sents[i].t || "")) if (MARK.test(ch) && !markerSent.has(ch)) markerSent.set(ch, i);
-  const order = [...markerSent.entries()].sort((a, b) => a[1] - b[1]);
-  const rangeEnd = new Map();
-  order.forEach(([ch], n) => rangeEnd.set(ch, n + 1 < order.length ? order[n + 1][1] : sents.length - 1));
+    for (const ch of String(sents[i].t || ""))
+      if (MARK.test(ch)) {
+        if (!markerSents.has(ch)) markerSents.set(ch, []);
+        if (!markerSents.get(ch).includes(i)) markerSents.get(ch).push(i);
+      }
+  // 구간 끝 = 다음 마커가 박힌 문장까지 포함한다. 마커는 문장 중간에서 시작하므로
+  //   경계 문장은 앞뒤 두 구간에 걸친다(l20276a ㉠ 의 앵커 s26 이 그 경우다).
+  const allPos = [...new Set([...markerSents.values()].flat())].sort((a, b) => a - b);
+  const endOf = (i) => { const nx = allPos.find((p) => p > i); return nx == null ? sents.length - 1 : nx; };
+
+  // 문항이 그 마커를 부르는가 — 별도 분류의 조건이다
+  let refTxt = "";
+  for (const q of set.questions || []) {
+    refTxt += String(q.t || "");
+    for (const c of q.choices || []) refTxt += String(c.t || "");
+  }
 
   for (const a of list) {
     if (!a.marker || !a.sentId) continue;
-    const mi = markerSent.get(a.marker);
-    if (mi == null) { add(t, "A′앵커", "FAIL", `밑줄이 마커 ${a.marker} 를 달고 있는데 그 마커가 본문에 없다`, String(a.sentId)); continue; }
+    const pos = markerSents.get(a.marker);
+    if (!pos || !pos.length) {
+      // ★ FAIL 이 아니다. 문항이 부르는 마커면 지면에는 실재하고 본문 텍스트에서
+      //   소실된 것이라, marker 를 지우면 학생이 그 마커를 지문에서 못 찾게 된다
+      //   (2024_6월 r20246a ㉡㉢ — 심사관 반려). 부르지 않으면 잉여다.
+      const called = refTxt.includes(a.marker);
+      add(t, "M본문마커부재", called ? "WARN" : "FAIL",
+        called
+          ? `문항이 ${a.marker} 를 부르는데 본문에 원문자가 없다 — 지면에는 있고 본문 텍스트에서 소실된 것이다(marker 를 지우면 안 된다)`
+          : `${a.marker} 를 부르는 문항이 없는데 주석만 남아 있다 — 잉여다`,
+        String(a.sentId));
+      continue;
+    }
     const ai = ids.indexOf(String(a.sentId));
     if (ai < 0) { add(t, "A′앵커", "FAIL", `${a.marker} 항목의 앵커 ${a.sentId} 가 본문에 없다`, ""); continue; }
-    if (ai === mi) continue;                                   // 마커 문장 그 자체
-    if (ai < mi) { add(t, "A′앵커", "FAIL", `${a.marker} 항목의 앵커가 마커 문장보다 **앞**이다 (앵커 ${a.sentId} · 마커 ${ids[mi]}) — 다문장 밑줄로 설명되지 않는다`, ""); continue; }
-    if (ai > rangeEnd.get(a.marker))
-      add(t, "A′앵커", "FAIL", `${a.marker} 항목의 앵커 ${a.sentId} 가 그 마커 구간(${ids[mi]}~${ids[rangeEnd.get(a.marker)]}) 밖이다`, "");
-  }
-
-  // ── A축 렌더 정합 ─────────────────────────────────────────────────────
-  //   데이터에 개행이 있어도 프론트가 접으면 화면에서는 한 덩어리가 된다.
-  //   게이트 5종이 전부 데이터 축이라 이걸 아무도 못 봤다 — 대표가 화면을 보고서야
-  //   드러났다(발문 21 · 보기 155곳).
-  //   ★ 접히는지 여부는 프론트 함수에 직접 물어본다. 조건을 베껴 쓰면 프론트가
-  //     바뀔 때 게이트만 옛 동작을 재고, 이미 고쳐진 것을 계속 경보한다.
-  for (const q of set.questions || []) {
-    // 프론트는 보기에 foldIfAnnSafe 를 쓴다 — 주석이 깨지면 접기를 포기한다.
-    //   발문은 주석 대상이 아니라 foldLayoutBreaks 를 그대로 쓴다.
-    const anns = list.filter((a) => a.type !== "bracket");
-    const bogi = typeof q.bogi === "string" ? q.bogi
-      : (q.bogi && typeof q.bogi.text === "string" ? q.bogi.text : "");
-    const cases = [
-      ["발문", String(q.t || ""), (x) => foldLayoutBreaks(x)],
-      ["보기", bogi, (x) => foldIfAnnSafe(x, anns)],
-    ];
-    for (const [field, txt, fold] of cases) {
-      if (!txt.includes("\n")) continue;              // 개행 0 은 B축이 본다
-      const lines = txt.split("\n");
-      if (!isDialogueBlock(lines)) continue;
-      // ★ 접힌 줄 수를 세면 안 된다 — 대화형 블록에도 조판 줄바꿈이 섞여 있고
-      //   그건 접히는 것이 정상이다. 「한 줄이라도 접히면 WARN」으로 재면 조판 줄이
-      //   하나라도 있는 블록이 전부 걸린다(실측 3건이 전부 그 과경보였다).
-      //   봐야 할 것은 **의미 경계 줄(화자·씬)이 줄머리를 잃었는가** 하나다.
-      //   뒤에 조판 줄이 붙어 길어지는 것은 손실이 아니므로 줄머리로 대조한다.
-      const out = fold(txt).split("\n").map((x) => x.trim());
-      const lost = lines.filter((l, i) => i > 0
-        && (RE_NAMED.test(l) || RE_SCENE.test(l))
-        && !out.some((o) => o.startsWith(l.trim().slice(0, 14))));
-      if (!lost.length) continue;                      // 프론트가 다 살린다
-      add(t, "A축렌더", "WARN",
-        `대화형인데 화자·씬 표기 ${lost.length}줄이 화면에서 접힌다 — 화자 구분이 사라진다: ` +
-        lost.slice(0, 3).map((l) => JSON.stringify(l.trim().slice(0, 32))).join(" · "),
-        `Q${q.id} ${field}`);
-    }
-  }
-
-  // ── B축 개행 소실 ─────────────────────────────────────────────────────
-  //   A축은 개행이 있어야 검사에 든다. 개행이 0 인 열화본은 검사조차 못 받는다 —
-  //   그 사각지대에 LIVE 결함이 있었다(2015_6월B l20156b Q36, 대본이 한 덩어리).
-  //   프론트를 고쳐도 안 된다. 데이터에 줄 구분이 없으므로 추출 소실이고 복원 대상이다.
-  //
-  // ★ " / " 앵커가 정밀도의 핵심이다. 개행이 사라진 자리에 조판 구분자가 남는데,
-  //   그 앵커를 빼면 표 라벨 콜론(2022_6월 r20226b Q4 「[도식: … 학습 항목: …」)과
-  //   씬 언급(2022_9월 l20229b Q26 「S#18과 S#24에 대한…」)이 오탐으로 들어온다.
-  //   ⓑ 의 마침표와 ⓐ 의 " / " 가 각각 그 둘을 걸러낸다.
-  for (const q of set.questions || []) {
-    const bogi = typeof q.bogi === "string" ? q.bogi
-      : (q.bogi && typeof q.bogi.text === "string" ? q.bogi.text : "");
-    for (const [field, txt] of [["발문", String(q.t || "")], ["보기", bogi]]) {
-      if (!txt || txt.includes("\n")) continue;         // 개행이 있으면 A축 소관
-      const sp = [...txt.matchAll(/(?:^|\s\/\s)([가-힣A-Za-z0-9()·]{1,12})\s*[:：]/g)];
-      const scenes = (txt.match(/(?:^|\s\/\s)S#\s*\d+\./g) || []).length;
-      const speakers = new Set(sp.map((m) => m[1].trim()));
-      const isDialog = (sp.length >= 3 && speakers.size >= 2) || scenes >= 2;
-      if (!isDialog) continue;
-      add(t, "B축개행소실", "WARN",
-        `조판 개행이 소실된 대본 — 화자 구분이 없다 (화자 ${speakers.size}명 · 발화 ${sp.length}회` +
-        (scenes ? ` · 씬 ${scenes}개` : "") + ")",
-        `Q${q.id} ${field}`);
-    }
+    if (pos.some((mi) => ai >= mi && ai <= endOf(mi))) continue;   // 어느 등장 구간에든 든다
+    const near = pos.reduce((p, c) => (Math.abs(c - ai) < Math.abs(p - ai) ? c : p), pos[0]);
+    add(t, "A′앵커", "FAIL",
+      ai < near
+        ? `${a.marker} 항목의 앵커가 마커 문장보다 **앞**이다 (앵커 ${a.sentId} · 마커 ${ids[near]}) — 다문장 밑줄로 설명되지 않는다`
+        : `${a.marker} 항목의 앵커 ${a.sentId} 가 그 마커 구간(${pos.map((m) => ids[m] + "~" + ids[endOf(m)]).join(" / ")}) 밖이다`,
+      "");
   }
   // ── C 중복 등재 ───────────────────────────────────────────────────────
   const seen = new Map();
   for (const a of list) {
     if (!a.text || !a.sentId) continue;
-    const k = `${a.type}|${a.sentId}|${a.text}`;
+    // ★ target 이 「어디에 그리는가」를 가른다 — PassagePanel:738 은 target 없거나
+    //   "passage" 인 것만 본문에 그리고, QuizPanel:1424 는 target="bogi" 를 보기에
+    //   그린다. 키에서 빼면 서로 다른 곳에 그리는 두 주석이 중복으로 잡히고, 지우면
+    //   한쪽 표시가 통째로 사라진다(r2024a 5건·l2025a 1건 실측 — 반영 직전에 잡았다).
+    const k = `${a.type}|${a.target || "passage"}|${a.sentId}|${a.text}`;
     if (seen.has(k)) add(t, "C중복등재", "FAIL", `같은 항목이 두 번 등재됐다: ${a.type} ${a.sentId} ${JSON.stringify(a.text.slice(0, 26))}`, "");
     else seen.set(k, true);
   }
 }
 
 // ── 출력 ────────────────────────────────────────────────────────────────
-const AX = ["⑴빈칸소실", "⑵라벨혼입", "⑶구간부재", "⑷인용변형", "A′앵커", "C중복등재", "A축렌더", "B축개행소실"];
+const AX = ["⑴빈칸소실", "⑵라벨혼입", "⑶구간부재", "⑷인용변형", "A′앵커", "C중복등재", "A축렌더", "B축개행소실", "M본문마커부재"];
 console.log("# 세트 탑재 검사 (D-199)");
 console.log("");
 console.log(`- 대상 ${targets.length}세트 (LIVE ${targets.filter((t) => RELEASE.has(t.key)).length})`);
