@@ -602,7 +602,13 @@ function BogiRenderer({ bogi, anns = [] }) {
                   background: "#fafafa",
                 }}
               >
-                {box}
+                {/* 발주 F-67: 흐름도(↓) 분기는 hasAnns 검사 앞에서 돌아나가므로
+                    지금까지 <보기> annotation 이 이 경로로는 전혀 적용되지 않았다.
+                    각 상자에도 같은 오버레이를 얹는다. 상자 문자열은 원문의
+                    부분이므로 indexOf 가 상자 안에서 찾는다.
+                    ★ 접기(foldIfAnnSafe)는 하지 않는다 — 상자는 이미 ↓ 로 갈렸고,
+                      여기서 접으면 기존 흐름도 모양이 바뀐다. 오버레이만 얹는다. */}
+                {hasAnns ? applyBogiInlineAnns(box, anns) : box}
               </div>
               {i < flow.boxes.length - 1 && (
                 <div
