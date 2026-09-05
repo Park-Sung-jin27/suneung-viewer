@@ -1421,11 +1421,19 @@ function QuestionBlock({
   //   target === 'bogi' + qId === question.id → 본 문제 bogi 영역
   //   target === 'choice' + qId === question.id → 본 문제 선지 영역
   //     (choiceNum 별 분류는 ChoiceItem 안에서)
+  // 발주 F-66: 필터가 underline·box 만 받아 marker·blank-box 가
+  //   applyBogiInlineAnns 에 전달조차 되지 않았다. 그쪽은 blank-box 처리
+  //   코드를 이미 갖고 있다 — 필터와 매처가 어긋나 있었다.
+  //   ★ choice-underline 은 넣지 않는다(target 이 bogi 인 것이 5건 있다).
+  //     그건 데이터 정규화로 푼다 — D 쪽 별도 진행이다.
   const bogiAnns = annotations.filter(
     (a) =>
       a.target === "bogi" &&
       a.qId === question.id &&
-      (a.type === "underline" || a.type === "box"),
+      (a.type === "underline" ||
+        a.type === "box" ||
+        a.type === "marker" ||
+        a.type === "blank-box"),
   );
   const choiceAnnsAll = annotations.filter(
     (a) =>
