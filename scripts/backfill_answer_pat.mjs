@@ -32,6 +32,9 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const APPLY = process.argv.includes("--apply");
 const SELFTEST = process.argv.includes("--selftest");
 const DIAGNOSE = process.argv.includes("--diagnose");
+// 발주 F-65 후속 ②: question_type 결손 채움. pat 백필과 판정을 분리한다
+//   — pat 은 이미 승인됐고 qt 는 조회 확인 뒤에 승인되므로 플래그를 따로 둔다.
+const APPLY_QT = process.argv.includes("--apply-qt");
 const PAGE = 1000;
 
 // .env.local (vercel env pull) 을 읽는다. 이미 환경변수가 있으면 그쪽이 우선.
@@ -109,6 +112,24 @@ function rowLine(r, extra = "") {
   );
 }
 
+// 발주 F-65 ③ 의 3분류 규칙. 이 순서로 판정한다.
+//   ⑴ 패턴 오답   pat 있음
+//   ⑵ 판단 실수형 pat null ∧ questionType="negative" ∧ 고른 선지가 원본 ok===true
+//   ⑶ 미분류      나머지(원본에 좌표가 없는 초기 베타 기록 등)
+function classify(row, source) {
+  if (row.pat != null) return "패턴";
+  const hit = findChoice(
+    source,
+    row.year_key,
+    row.set_id,
+    row.question_id,
+    row.choice_num,
+  );
+  if (!hit) return "미분류";
+  if (row.question_type === "negative" && hit.choice.ok === true) return "실수";
+  return "미분류";
+}
+
 function pct(n, d) {
   return d === 0 ? "0.0%" : ((n / d) * 100).toFixed(1) + "%";
 }
@@ -155,6 +176,58 @@ function selftest(source) {
     console.log(`\n   ① 가 남을 수 있는 자리 — positive 오답 선지인데 원본에 pat 이 없는 곳:`);
     for (const x of posNoPatList) console.log(`     ${x}`);
   }
+  // 3분류 규칙 자체를 실제 함수로 돌려 본다 — 원본에서 좌표를 골라 합성 행을 만든다.
+  //   시뮬레이션이 아니라 화면·백필이 쓸 classify() 를 그대로 부른다.
+  const probe = [];
+  outer: for (const [yk, yd] of Object.entries(source)) {
+    for (const sec of ["reading", "literature"]) {
+      for (const set of yd[sec] ?? []) {
+        for (const q of set.questions ?? []) {
+          if ((q.questionType ?? "negative") !== "negative") continue;
+          const okTrue = (q.choices ?? []).find((c) => c.ok === true);
+          const okFalse = (q.choices ?? []).find((c) => c.ok === false);
+          if (!okTrue || !okFalse) continue;
+          const base = { year_key: yk, set_id: set.id, question_id: q.id };
+          probe.push([
+            "pat 있음 → 패턴",
+            { ...base, choice_num: okTrue.num, pat: "R1", question_type: "negative" },
+            "패턴",
+          ]);
+          probe.push([
+            "pat null · negative · 고른 선지 ok=true → 실수",
+            { ...base, choice_num: okTrue.num, pat: null, question_type: "negative" },
+            "실수",
+          ]);
+          probe.push([
+            "pat null · negative · 고른 선지 ok=false → 미분류",
+            { ...base, choice_num: okFalse.num, pat: null, question_type: "negative" },
+            "미분류",
+          ]);
+          probe.push([
+            "pat null · qt null → 미분류",
+            { ...base, choice_num: okTrue.num, pat: null, question_type: null },
+            "미분류",
+          ]);
+          probe.push([
+            "원본에 좌표 없음(s세트) → 미분류",
+            { year_key: "2026수능", set_id: "s1", question_id: 1, choice_num: 1, pat: null, question_type: "negative" },
+            "미분류",
+          ]);
+          break outer;
+        }
+      }
+    }
+  }
+  console.log(`\n   [3분류 규칙 음성/양성 시험] classify() 직접 호출`);
+  let pass = 0;
+  for (const [name, row, want] of probe) {
+    const got = classify(row, source);
+    const okMark = got === want ? "✔" : "🔴";
+    if (got === want) pass += 1;
+    console.log(`     ${okMark} ${name.padEnd(42)} 기대=${want} 실제=${got}`);
+  }
+  console.log(`     통과 ${pass}/${probe.length}`);
+
   if (negHasPatList.length > 0) {
     console.log(`\n   ⚠ negative 오답 선지인데 pat 이 있는 곳 (pat/ok 불일치 ${negHasPatList.length}건, 앞 20):`);
     for (const x of negHasPatList.slice(0, 20)) console.log(`     ${x}`);
@@ -233,6 +306,84 @@ async function main() {
     }
     console.log(`   UPDATE 성공 ${ok}건 · 실패 ${fail}건`);
   }
+
+  // ── qt 백필 (발주 F-65 후속 ②) ─────────────────────────
+  //   question_type 컬럼은 2026-06-17(967c068)에 추가됐다. 그 이전 기록은
+  //   전부 null 이다. 원본에 좌표가 있으면 원본의 questionType 으로 채운다.
+  //   ★ "negative" 기본값으로 일괄 채우지 않는다(발주 금지). 원본 값만 쓴다.
+  //     원본 문항에 questionType 이 없으면 채우지 않고 건별로 보고한다.
+  const qtFill = [];     // 채울 수 있는 행 { row, qt }
+  const qtNoCoord = [];  // 좌표가 원본에 없어 대상 외 (s세트 등)
+  const qtNoSource = []; // 좌표는 있으나 원본에 questionType 이 없는 행
+  for (const r of wrong) {
+    if (r.question_type != null) continue;
+    const hit = findChoice(source, r.year_key, r.set_id, r.question_id, r.choice_num);
+    if (!hit) {
+      qtNoCoord.push(r);
+      continue;
+    }
+    const qt = hit.question.questionType;
+    if (typeof qt === "string" && qt.length > 0) qtFill.push({ row: r, qt });
+    else qtNoSource.push(r);
+  }
+
+  console.log(
+    `\n## qt 백필 — question_type null ${qtFill.length + qtNoCoord.length + qtNoSource.length}건의 갈래`,
+  );
+  console.log(`   (a) 원본 값으로 채울 수 있음 : ${qtFill.length}건`);
+  console.log(`   (b) 좌표가 원본에 없음(대상 외): ${qtNoCoord.length}건`);
+  console.log(`   (c) 원본에 questionType 없음 : ${qtNoSource.length}건`);
+  if (qtFill.length > 0) {
+    console.log(`\n   [전건] 현재 null → 채울 값`);
+    for (const f of qtFill) console.log(`     ${rowLine(f.row)}  →  ${f.qt}`);
+  }
+  if (qtNoCoord.length > 0) {
+    console.log(`\n   [대상 외] 좌표 없음`);
+    for (const r of qtNoCoord) console.log(`     ${rowLine(r)}`);
+  }
+  if (qtNoSource.length > 0) {
+    console.log(`\n   [보류] 원본에 questionType 이 없어 채우지 않는다`);
+    for (const r of qtNoSource) console.log(`     ${rowLine(r)}`);
+  }
+  if (APPLY_QT) {
+    let ok = 0;
+    let fail = 0;
+    for (const f of qtFill) {
+      const { error } = await db
+        .from("user_answers")
+        .update({ question_type: f.qt })
+        .eq("id", f.row.id);
+      if (error) {
+        fail += 1;
+        console.log(`   🔴 qt UPDATE 실패 id=${f.row.id}: ${error.message}`);
+      } else {
+        ok += 1;
+        f.row.question_type = f.qt;
+      }
+    }
+    console.log(`   qt UPDATE 성공 ${ok}건 · 실패 ${fail}건`);
+  } else {
+    console.log(`   (조회 모드 — 쓰지 않았다. --apply-qt 로 실행하면 UPDATE 한다)`);
+  }
+
+  // ── 3분류 예상 분포 (발주 F-65 ③ 규칙) ──────────────────
+  //   pat 백필과 qt 백필이 둘 다 적용됐다고 가정한 값을 함께 낸다.
+  //   조회 모드에서는 메모리상으로만 반영해 계산한다(DB 는 안 건드린다).
+  const projected = wrong.map((r) => ({ ...r }));
+  const byId = new Map(projected.map((r) => [r.id, r]));
+  for (const f of fill) { const t = byId.get(f.row.id); if (t) t.pat = f.pat; }
+  for (const f of qtFill) { const t = byId.get(f.row.id); if (t) t.question_type = f.qt; }
+  const now3 = { 패턴: 0, 실수: 0, 미분류: 0 };
+  const next3 = { 패턴: 0, 실수: 0, 미분류: 0 };
+  for (const r of wrong) now3[classify(r, source)] += 1;
+  for (const r of projected) next3[classify(r, source)] += 1;
+  console.log(`\n## 3분류 (발주 ③ 규칙) — 현재 → 백필 후 예상`);
+  console.log(`   ⑴ 패턴 오답   ${now3["패턴"]} → ${next3["패턴"]}`);
+  console.log(`   ⑵ 판단 실수형 ${now3["실수"]} → ${next3["실수"]}`);
+  console.log(`   ⑶ 미분류      ${now3["미분류"]} → ${next3["미분류"]}`);
+  const sNow = now3["패턴"] + now3["실수"] + now3["미분류"];
+  const sNext = next3["패턴"] + next3["실수"] + next3["미분류"];
+  console.log(`   합계 검산: ${sNow} / ${sNext} (오답 총수 ${wrong.length} 과 둘 다 같아야 한다)`);
 
   // ── 2단계 잔여 null 분류 ────────────────────────────────
   const remain = wrong.filter((r) => r.pat == null);
