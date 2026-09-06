@@ -7,6 +7,12 @@ const REVIEW_INTERVALS_DAYS = [1, 3, 7];
 const SUBJECTS = new Set(["english", "math"]);
 const ATTEMPT_KINDS = new Set(["standard", "wrong_retry"]);
 const CONFIDENCE_LEVELS = new Set(["sure", "unsure", "guess"]);
+const REVIEW_NEED_RANK = Object.freeze({
+  gave_up: 0,
+  sure_wrong: 1,
+  wrong: 2,
+  recovery: 3,
+});
 
 function emptyHistory() {
   return { version: HISTORY_VERSION, sessions: [] };
@@ -57,6 +63,12 @@ function normalizeResult(result) {
       throw new Error("문항 확신도 형식이 올바르지 않습니다.");
     }
     normalized.confidence = result.confidence;
+  }
+  if (result.gaveUp !== undefined) {
+    if (typeof result.gaveUp !== "boolean") {
+      throw new Error("문항 포기 기록 형식이 올바르지 않습니다.");
+    }
+    if (result.gaveUp) normalized.gaveUp = true;
   }
   return normalized;
 }
@@ -111,6 +123,25 @@ function attemptsForSubject(history, subject, nowMs) {
 function reviewLabel(recoveryStage, mastered) {
   if (mastered) return "교정 완료";
   return `${REVIEW_INTERVALS_DAYS[recoveryStage]}일 복습`;
+}
+
+function reviewNeedForWrongAttempt(attempt) {
+  if (attempt.gaveUp) return "gave_up";
+  if (attempt.confidence === "sure") return "sure_wrong";
+  return "wrong";
+}
+
+function reviewNeedReason(reviewNeed) {
+  if (reviewNeed === "gave_up") return "풀이를 먼저 본 문제";
+  if (reviewNeed === "sure_wrong") return "확신했지만 틀린 문제";
+  return null;
+}
+
+function compareReviewNeed(a, b) {
+  return (
+    REVIEW_NEED_RANK[a.state?.reviewNeed ?? "recovery"] -
+    REVIEW_NEED_RANK[b.state?.reviewNeed ?? "recovery"]
+  );
 }
 
 export function createLearningSessionId() {
@@ -189,6 +220,7 @@ export function buildQuestionReviewStates(
       hadWrong: false,
       recoveryStage: 0,
       dueAtMs: null,
+      reviewNeed: "recovery",
       latestIsCorrect: attempt.isCorrect,
       latestCompletedAt: attempt.completedAt,
     };
@@ -204,11 +236,13 @@ export function buildQuestionReviewStates(
       current.hadWrong = true;
       current.recoveryStage = 0;
       current.dueAtMs = completedAtMs + REVIEW_INTERVALS_DAYS[0] * DAY_IN_MS;
+      current.reviewNeed = reviewNeedForWrongAttempt(attempt);
     } else if (current.hadWrong && attempt.attemptKind !== "wrong_retry" && wasDue) {
       current.recoveryStage = Math.min(
         current.recoveryStage + 1,
         REVIEW_INTERVALS_DAYS.length,
       );
+      current.reviewNeed = "recovery";
       current.dueAtMs =
         current.recoveryStage >= REVIEW_INTERVALS_DAYS.length
           ? null
@@ -244,6 +278,8 @@ export function buildQuestionReviewStates(
         latestCompletedAt: state.latestCompletedAt,
         dueAt,
         status,
+        reviewNeed: state.reviewNeed,
+        reviewNeedReason: reviewNeedReason(state.reviewNeed),
         reviewLabel: state.hadWrong
           ? reviewLabel(state.recoveryStage, mastered)
           : null,
@@ -290,11 +326,12 @@ export function buildDailyLearningPlan(
   );
   const decorated = rotateForDate(uniqueQuestions, nowMs).map((question) => {
     const state = stateById.get(question.id) ?? null;
+    const needReason = reviewNeedReason(state?.reviewNeed);
     const reason =
       state?.status === "due"
-        ? state.reviewLabel
+        ? [needReason, state.reviewLabel].filter(Boolean).join(" · ")
         : state?.hadWrong && state.status !== "mastered"
-          ? "취약 보완"
+          ? [needReason, "취약 보완"].filter(Boolean).join(" · ")
           : !state
             ? "새 문항"
             : "유지 학습";
@@ -302,7 +339,12 @@ export function buildDailyLearningPlan(
   });
   const due = decorated
     .filter((item) => item.state?.status === "due")
-    .sort((a, b) => Date.parse(a.state.dueAt) - Date.parse(b.state.dueAt));
+    .sort(
+      (a, b) =>
+        compareReviewNeed(a, b) ||
+        Date.parse(a.state.dueAt) - Date.parse(b.state.dueAt) ||
+        b.state.wrongCount - a.state.wrongCount,
+    );
   const weak = decorated
     .filter(
       (item) =>
@@ -310,7 +352,12 @@ export function buildDailyLearningPlan(
         item.state.status !== "due" &&
         item.state.status !== "mastered",
     )
-    .sort((a, b) => b.state.wrongCount - a.state.wrongCount);
+    .sort(
+      (a, b) =>
+        compareReviewNeed(a, b) ||
+        b.state.wrongCount - a.state.wrongCount ||
+        Date.parse(a.state.dueAt) - Date.parse(b.state.dueAt),
+    );
   const unseen = decorated.filter((item) => !item.state);
   const selected = [];
   const selectedIds = new Set();
@@ -335,9 +382,14 @@ export function buildDailyLearningPlan(
   return {
     questions: selected.map(({ question }) => question),
     items,
-    dueCount: items.filter((item) => item.reason.endsWith("일 복습")).length,
-    weakCount: items.filter((item) => item.reason === "취약 보완").length,
-    newCount: items.filter((item) => item.reason === "새 문항").length,
+    dueCount: selected.filter((item) => item.state?.status === "due").length,
+    weakCount: selected.filter(
+      (item) =>
+        item.state?.hadWrong &&
+        item.state.status !== "due" &&
+        item.state.status !== "mastered",
+    ).length,
+    newCount: selected.filter((item) => !item.state).length,
   };
 }
 
@@ -382,6 +434,19 @@ export function summarizeLearningHistory(history, subject, now = new Date()) {
       confidenceCounts[result.confidence] += 1;
     }
   });
+  const gaveUpQuestionCount = new Set(
+    attempts
+      .filter((result) => result.gaveUp)
+      .map((result) => result.questionId),
+  ).size;
+  const sureWrongQuestionCount = new Set(
+    attempts
+      .filter(
+        (result) =>
+          !result.isCorrect && result.confidence === "sure" && !result.gaveUp,
+      )
+      .map((result) => result.questionId),
+  ).size;
 
   return {
     sessionCount: recentSessions.length,
@@ -404,6 +469,8 @@ export function summarizeLearningHistory(history, subject, now = new Date()) {
               1000,
           ),
     confidenceCounts,
+    gaveUpQuestionCount,
+    sureWrongQuestionCount,
     dueReviewCount: reviewStates.filter((state) => state.status === "due").length,
     recoveredQuestionCount: reviewStates.filter(
       (state) => state.hadWrong && state.latestIsCorrect,

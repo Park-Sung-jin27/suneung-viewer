@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run check:business && npm run check:eng-math-public && npm run check:eng-math-learning-history && npm run check:active-question-timer && npm run check:math-concept-library && npm run check:math-concept-progress && npm run check:eng-math-weekly-overview && npm run check:eng-math-member-sync && npm run check:eng-math-access && npm run check:jippi-library-p0 && npm run build:split && vite build && npm run check:eng-math-dist && npm run check:jippi-delivery-dist",
+    "build": "npm run check:business && npm run check:eng-math-public && npm run check:eng-math-learning-history && npm run check:eng-math-post-solve-confidence && npm run check:active-question-timer && npm run check:math-concept-library && npm run check:math-concept-progress && npm run check:eng-math-weekly-overview && npm run check:eng-math-member-sync && npm run check:eng-math-access && npm run check:jippi-library-p0 && npm run build:split && vite build && npm run check:eng-math-dist && npm run check:jippi-delivery-dist",
     "check:business": "node scripts/check-business-profile.mjs",
     "check:eng-math-public": "node scripts/eng-math-public-data.mjs --check",
     "check:eng-math-learning-history": "node scripts/test-eng-math-learning-history.mjs",
+    "check:eng-math-post-solve-confidence": "node scripts/test-eng-math-post-solve-confidence.mjs",
     "check:active-question-timer": "node scripts/test-active-question-timer.mjs",
     "check:math-concept-library": "node scripts/test-math-concept-library.mjs",
     "check:math-concept-progress": "node scripts/test-math-concept-progress.mjs",

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import {
   combineLocalAndMemberSummary,
   learningHistoryToEventRows,
@@ -17,7 +18,11 @@ const history = {
       completedAt: "2026-08-30T09:00:00.000Z",
       results: [
         { questionId: "eng-1", isCorrect: true },
-        { questionId: "eng-2", isCorrect: false },
+        {
+          questionId: "eng-2",
+          isCorrect: false,
+          confidence: "sure",
+        },
       ],
     },
     {
@@ -27,18 +32,30 @@ const history = {
       completedAt: "2026-08-30T09:10:00.000Z",
       results: [
         { questionId: "eng-2", isCorrect: true },
-        { questionId: "eng-3", isCorrect: false },
+        { questionId: "eng-3", isCorrect: false, gaveUp: true },
       ],
     },
   ],
 };
 
 const rows = learningHistoryToEventRows(history, userId);
-assert.equal(rows.length, 5);
+assert.equal(rows.length, 7);
 assert.equal(rows.filter((row) => row.activity_type === "answer").length, 4);
 assert.equal(
   rows.filter((row) => row.activity_type === "remediation_complete").length,
   1,
+);
+assert.equal(
+  rows.filter((row) => row.activity_type === "review_signal").length,
+  2,
+);
+assert.deepEqual(
+  new Set(
+    rows
+      .filter((row) => row.activity_type === "review_signal")
+      .map((row) => row.outcome),
+  ),
+  new Set(["gave_up", "sure_wrong"]),
 );
 assert.equal(rows.every((row) => row.user_id === userId), true);
 assert.equal(rows.every((row) => row.event_id.length <= 240), true);
@@ -57,6 +74,8 @@ assert.deepEqual(summary, {
   wrongCount: 2,
   accuracy: 50,
   recoveredQuestionCount: 1,
+  gaveUpQuestionCount: 1,
+  sureWrongQuestionCount: 1,
 });
 
 const localSummary = {
@@ -67,12 +86,16 @@ const localSummary = {
   wrongCount: 1,
   accuracy: 50,
   recoveredQuestionCount: 0,
+  gaveUpQuestionCount: 0,
+  sureWrongQuestionCount: 0,
   dueReviewCount: 2,
   weakQuestions: [{ questionId: "eng-2" }],
 };
 const combined = combineLocalAndMemberSummary(localSummary, summary);
 assert.equal(combined.answerCount, 4);
 assert.equal(combined.recoveredQuestionCount, 1);
+assert.equal(combined.gaveUpQuestionCount, 1);
+assert.equal(combined.sureWrongQuestionCount, 1);
 assert.equal(combined.dueReviewCount, 2);
 assert.equal(combined.weakQuestions.length, 1);
 
@@ -105,13 +128,27 @@ const synced = await syncMemberLearningHistory({
   now: new Date("2026-08-31T09:00:00.000Z"),
 });
 assert.equal(upserts.length, 1);
-assert.equal(upserts[0].batch.length, 5);
+assert.equal(upserts[0].batch.length, 7);
 assert.deepEqual(upserts[0].options, {
   onConflict: "user_id,event_id",
   ignoreDuplicates: true,
 });
 assert.equal(synced.summaries.english.answerCount, 4);
 assert.equal(synced.summaries.math.answerCount, 0);
+assert.equal(synced.summaries.english.gaveUpQuestionCount, 1);
+assert.equal(synced.summaries.english.sureWrongQuestionCount, 1);
+
+const reviewSignalMigration = readFileSync(
+  new URL(
+    "../supabase/migrations/20260905_review_signal_events.sql",
+    import.meta.url,
+  ),
+  "utf8",
+);
+assert.match(reviewSignalMigration, /'review_signal'/);
+assert.match(reviewSignalMigration, /'gave_up', 'sure_wrong'/);
+assert.doesNotMatch(reviewSignalMigration, /create\s+policy/i);
+assert.doesNotMatch(reviewSignalMigration, /drop\s+policy/i);
 
 await assert.rejects(
   () =>
