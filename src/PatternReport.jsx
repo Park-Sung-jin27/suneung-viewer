@@ -8,6 +8,11 @@ import { supabase } from "./supabase";
 import { P, P0, YEAR_INFO } from "./constants";
 import PatternCoach from "./PatternCoach";
 import { loadYears, sectionOfSet, isReleaseSet } from "./dataLoader";
+import {
+  PATTERN_THRESHOLDS,
+  patternTier,
+  countByClass,
+} from "./patternClassify";
 
 const C = {
   green: "#2d6e2d",
@@ -99,7 +104,15 @@ function SummaryCard({ label, value, sub }) {
 }
 
 // ── 패턴 바 ──────────────────────────────────────────────────
-function PatternBar({ patKey, count, maxCount, isTop, onCoach, onTrain }) {
+function PatternBar({
+  patKey,
+  count,
+  maxCount,
+  isTop,
+  tier = "확정",
+  onCoach,
+  onTrain,
+}) {
   const info = P[patKey] ?? P0;
   const pct = maxCount > 0 ? Math.round((count / maxCount) * 100) : 0;
 
@@ -131,6 +144,24 @@ function PatternBar({ patKey, count, maxCount, isTop, onCoach, onTrain }) {
         >
           {info.name}
         </span>
+        {/* [발주 F-65 ③] 2회는 「관찰 중」 배지만 붙이고 훈련 처방은 연결하지 않는다. */}
+        {!isTop && tier === "관찰" && (
+          <span
+            style={{
+              fontSize: "0.63rem",
+              fontWeight: "700",
+              color: "#92400e",
+              background: "#fef3c7",
+              border: "1px solid #fcd34d",
+              borderRadius: "4px",
+              padding: "1px 6px",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+            }}
+          >
+            관찰 중
+          </span>
+        )}
         {isTop && (
           <span
             style={{
@@ -182,7 +213,9 @@ function PatternBar({ patKey, count, maxCount, isTop, onCoach, onTrain }) {
           {info.desc}
         </div>
         <div style={{ display: "flex", gap: "5px", flexShrink: 0 }}>
-          {/* 훈련하기 버튼 — 항상 표시 */}
+          {/* [발주 F-65 ③] 훈련 처방은 확정 패턴(3회 이상)에만 연결한다.
+              2회 이하에 처방을 붙이면 우연을 약점으로 굳힌다. */}
+          {tier === "확정" && (
           <button
             onClick={() => onTrain(patKey)}
             style={{
@@ -203,6 +236,7 @@ function PatternBar({ patKey, count, maxCount, isTop, onCoach, onTrain }) {
           >
             🎯 훈련
           </button>
+          )}
           <button
             onClick={() => onCoach(patKey)}
             style={{
@@ -1046,8 +1080,17 @@ export default function PatternReport({ user, onGoToQuestion }) {
           allPatKeys[0],
         )
       : null;
-  const hasTopPat = topPat !== null && (patCounts[topPat] ?? 0) > 0;
-  const hasReliableTopPat = hasTopPat && totalWrong >= 3;
+  // [발주 F-65 ③] 패턴 표시 임계 — 1회는 우연과 구분되지 않는다.
+  //   이전에는 (patCounts[topPat] ?? 0) > 0 이라 1회만 나와도 「핵심 취약
+  //   패턴」으로 단정했다. 임계는 src/patternClassify.js 의 상수를 쓴다.
+  const topCount = topPat !== null ? (patCounts[topPat] ?? 0) : 0;
+  const hasTopPat = topCount >= PATTERN_THRESHOLDS.watching;
+  const hasReliableTopPat = topCount >= PATTERN_THRESHOLDS.confirmed;
+
+  // [발주 F-65 ③] 오답 3분류. 규칙은 patternClassify.js 정본을 그대로 쓴다.
+  //   ⑵ 판정에 원본 ok 가 필요한데 ok 는 free 조각에 있으므로(C_FREE)
+  //   secData 만으로 계산된다 — 추가 요청이 없다.
+  const wrongClass = countByClass(answers, secData ?? {});
   const p0Count = patCounts["0"] ?? 0;
 
   const yearMap = {};
@@ -1496,6 +1539,95 @@ export default function PatternReport({ user, onGoToQuestion }) {
               </div>
             )}
 
+            {/* [발주 F-65 ③] 오답 3분류 — ⑵ 를 「미분류」로 뭉치지 않는다.
+                성격이 다른 신호이고, 학생에게 전할 말이 다르다. */}
+            {wrongClass.total > 0 && (
+              <div
+                style={{
+                  background: C.white,
+                  border: `1px solid ${C.border}`,
+                  borderRadius: "14px",
+                  padding: "16px 18px",
+                  marginBottom: "16px",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "0.68rem",
+                    fontWeight: "700",
+                    color: C.subtle,
+                    letterSpacing: "0.08em",
+                    marginBottom: "10px",
+                  }}
+                >
+                  오답 {wrongClass.total}건의 성격
+                </div>
+                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                  {[
+                    { k: "패턴", label: "패턴 오답", color: "#c0392b", bg: "#fef2f2" },
+                    { k: "실수", label: "판단 실수형", color: "#92400e", bg: "#fffbeb" },
+                    { k: "미분류", label: "미분류", color: C.muted, bg: "#f9fafb" },
+                  ].map((x) => (
+                    <div
+                      key={x.k}
+                      style={{
+                        flex: "1 1 30%",
+                        minWidth: "96px",
+                        background: x.bg,
+                        borderRadius: "10px",
+                        padding: "10px 12px",
+                      }}
+                    >
+                      <div style={{ fontSize: "0.68rem", color: C.muted }}>
+                        {x.label}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "1.15rem",
+                          fontWeight: "800",
+                          color: x.color,
+                        }}
+                      >
+                        {wrongClass[x.k]}건
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {wrongClass["실수"] > 0 && (
+                  <div
+                    style={{
+                      marginTop: "10px",
+                      fontSize: "0.72rem",
+                      color: C.ink,
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    판단 실수형 {wrongClass["실수"]}건 —{" "}
+                    「적절하지 않은 것은?」 유형에서 결함 없는 선지를 골랐습니다.
+                    패턴이 아니라 확인 습관의 문제입니다.
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* [발주 F-65 ③] 임계 미만이면 단정하지 않는다. */}
+            {!hasTopPat && wrongClass["패턴"] > 0 && (
+              <div
+                style={{
+                  background: "#f9fafb",
+                  border: `1px dashed ${C.border}`,
+                  borderRadius: "14px",
+                  padding: "16px 18px",
+                  marginBottom: "16px",
+                  fontSize: "0.82rem",
+                  color: C.ink,
+                  lineHeight: 1.6,
+                }}
+              >
+                표본이 부족합니다 — 시험 1개 더 풀면 패턴이 보입니다.
+              </div>
+            )}
+
             {/* AI 진단 메시지 */}
             {hasTopPat &&
               (() => {
@@ -1537,7 +1669,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
                     >
                       {hasReliableTopPat
                         ? "핵심 취약 패턴은 "
-                        : "초기 의심 패턴은 "}
+                        : "관찰 중인 패턴은 "}
                       <span style={{ color: topInfo.color }}>
                         {topPat} {topInfo.name}
                       </span>
@@ -1758,6 +1890,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
                       count={patCounts[pk] ?? 0}
                       maxCount={maxCount}
                       isTop={hasReliableTopPat && topPat === pk}
+                      tier={patternTier(patCounts[pk] ?? 0)}
                       onCoach={setActiveCoachPat}
                       onTrain={setActiveTrainPat}
                     />
@@ -1797,6 +1930,7 @@ export default function PatternReport({ user, onGoToQuestion }) {
                       count={patCounts[pk] ?? 0}
                       maxCount={maxCount}
                       isTop={hasReliableTopPat && topPat === pk}
+                      tier={patternTier(patCounts[pk] ?? 0)}
                       onCoach={setActiveCoachPat}
                       onTrain={setActiveTrainPat}
                     />

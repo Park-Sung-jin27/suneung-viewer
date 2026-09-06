@@ -27,6 +27,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createClient } from "@supabase/supabase-js";
+// 3분류 규칙·좌표 조회는 src/patternClassify.js 가 정본이다 (발주 F-65 ③).
+//   화면(PatternReport)과 같은 함수를 쓴다 — 규칙이 갈리면 화면과 DB 가
+//   다른 말을 하게 된다.
+import {
+  findChoice,
+  classifyWrong,
+} from "../src/patternClassify.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const APPLY = process.argv.includes("--apply");
@@ -66,24 +73,6 @@ function admin() {
   });
 }
 
-// 좌표 → 선지. api/_sourceData.js 의 findChoice 와 같은 규율
-//   (setId 는 회차 간 충돌하므로 yearKey 를 반드시 함께 본다).
-function findChoice(source, yearKey, setId, questionId, choiceNum) {
-  const yd = source?.[yearKey];
-  if (!yd) return null;
-  for (const section of ["reading", "literature"]) {
-    const set = (yd[section] ?? []).find((s) => s.id === setId);
-    if (!set) continue;
-    const q = (set.questions ?? []).find(
-      (x) => String(x.id) === String(questionId),
-    );
-    if (!q) return null;
-    const c = (q.choices ?? []).find((x) => Number(x.num) === Number(choiceNum));
-    return c ? { set, question: q, choice: c } : null;
-  }
-  return null;
-}
-
 async function fetchAllWrong(db) {
   const rows = [];
   for (let from = 0; ; from += PAGE) {
@@ -110,24 +99,6 @@ function rowLine(r, extra = "") {
     `${String(r.user_id).slice(0, 8)} ${at} ${r.year_key} ${r.set_id} ` +
     `q${r.question_id} c${r.choice_num} qt=${qt}${extra}`
   );
-}
-
-// 발주 F-65 ③ 의 3분류 규칙. 이 순서로 판정한다.
-//   ⑴ 패턴 오답   pat 있음
-//   ⑵ 판단 실수형 pat null ∧ questionType="negative" ∧ 고른 선지가 원본 ok===true
-//   ⑶ 미분류      나머지(원본에 좌표가 없는 초기 베타 기록 등)
-function classify(row, source) {
-  if (row.pat != null) return "패턴";
-  const hit = findChoice(
-    source,
-    row.year_key,
-    row.set_id,
-    row.question_id,
-    row.choice_num,
-  );
-  if (!hit) return "미분류";
-  if (row.question_type === "negative" && hit.choice.ok === true) return "실수";
-  return "미분류";
 }
 
 function pct(n, d) {
@@ -218,10 +189,10 @@ function selftest(source) {
       }
     }
   }
-  console.log(`\n   [3분류 규칙 음성/양성 시험] classify() 직접 호출`);
+  console.log(`\n   [3분류 규칙 음성/양성 시험] classifyWrong() 직접 호출`);
   let pass = 0;
   for (const [name, row, want] of probe) {
-    const got = classify(row, source);
+    const got = classifyWrong(row, source);
     const okMark = got === want ? "✔" : "🔴";
     if (got === want) pass += 1;
     console.log(`     ${okMark} ${name.padEnd(42)} 기대=${want} 실제=${got}`);
@@ -375,8 +346,8 @@ async function main() {
   for (const f of qtFill) { const t = byId.get(f.row.id); if (t) t.question_type = f.qt; }
   const now3 = { 패턴: 0, 실수: 0, 미분류: 0 };
   const next3 = { 패턴: 0, 실수: 0, 미분류: 0 };
-  for (const r of wrong) now3[classify(r, source)] += 1;
-  for (const r of projected) next3[classify(r, source)] += 1;
+  for (const r of wrong) now3[classifyWrong(r, source)] += 1;
+  for (const r of projected) next3[classifyWrong(r, source)] += 1;
   console.log(`\n## 3분류 (발주 ③ 규칙) — 현재 → 백필 후 예상`);
   console.log(`   ⑴ 패턴 오답   ${now3["패턴"]} → ${next3["패턴"]}`);
   console.log(`   ⑵ 판단 실수형 ${now3["실수"]} → ${next3["실수"]}`);
