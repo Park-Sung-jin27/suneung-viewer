@@ -997,10 +997,14 @@ export default function PatternReport({ user, onGoToQuestion }) {
 
       // user_answers path — answered_at 안 schema 부재 path 안 graceful
       // fallback 정합 (attempt_count 폐기 path — trend 계산 단독 미사용).
+      // [발주 F-68] question_type 을 반드시 함께 읽는다.
+      //   빠지면 classifyWrong 의 answer.question_type 이 undefined 가 되어
+      //   ⑵(판단 실수형) 판정이 전량 ⑶(미분류)으로 떨어진다. 규칙·임계는
+      //   멀쩡했고 화면이 넘기는 입력에 이 필드가 없었던 것이다.
       const primaryCols =
-        "year_key, is_correct, pat, set_id, question_id, choice_num, answered_at";
+        "year_key, is_correct, pat, set_id, question_id, choice_num, question_type, answered_at";
       const fallbackCols =
-        "year_key, is_correct, pat, set_id, question_id, choice_num";
+        "year_key, is_correct, pat, set_id, question_id, choice_num, question_type";
       let answersData = null;
       const { data: ansPrimary, error: errPrimary } = await supabase
         .from("user_answers")
