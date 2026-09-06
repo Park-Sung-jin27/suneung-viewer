@@ -487,31 +487,9 @@ function RenderSent({ sent, sel, anns, aiCited }) {
   //     본문 행간의 1.4배가 되지 않는다.
   //   ★ 연속 summary 는 인접 형제 마진이 상쇄되어 여백이 겹쳐 쌓이지 않는다
   //     (부모가 flex 가 아니라 일반 흐름이다 — 확인함).
-  if (st === "summary") {
-    // 라벨([앞부분의 줄거리] 등)만 굵게. 없으면 전체를 그대로 둔다.
-    const m = /^\s*(\[[^\]]*\])\s*([\s\S]*)$/.exec(t ?? "");
-    return (
-      <div
-        style={{
-          textAlign: "left",
-          color: "#1f2937",
-          fontSize: "0.84rem",
-          fontFamily: "'Noto Sans KR', sans-serif",
-          margin: "2.58rem 0",
-          lineHeight: 1.7,
-        }}
-      >
-        {m ? (
-          <>
-            <span style={{ fontWeight: 700 }}>{m[1]}</span>{" "}
-            <Underlined text={m[2]} />
-          </>
-        ) : (
-          <Underlined text={t} />
-        )}
-      </div>
-    );
-  }
+  // 발주 F-71: summary 는 renderAll 이 연속 구간째로 SummaryBlock 에 넘긴다.
+  //   여기에 분기를 남겨 두면 정본이 둘이 된다(F-66 의 필터/매처 어긋남과 같은
+  //   함정). 단일 문장도 길이 1인 구간으로 같은 경로를 탄다.
   if (st === "author")
     return (
       <div
@@ -760,6 +738,49 @@ function BracketContainer({ label, children }) {
   );
 }
 
+// 발주 F-70/F-71: 줄거리 블록. D-209 지면 실측 근거 —
+//   본문(0.92rem · 행간 2.0 · 명조)과 달리 고딕이고 글자가 작으며 앞뒤 여백이
+//   넓고 내부 행간은 좁다(10.23~10.72/11.21pt, 전후 27/23 대 행간 18.3 ≈ 1.4배).
+//   ★ 여백은 rem 이다. em 이면 자기 글자 크기(0.84rem) 기준이 되어 본문 행간의
+//     1.4배가 되지 않는다.
+const SUMMARY_BLOCK_STYLE = {
+  textAlign: "left",
+  color: "#1f2937",
+  fontSize: "0.84rem",
+  fontFamily: "'Noto Sans KR', sans-serif",
+  margin: "2.58rem 0",
+  lineHeight: 1.7,
+};
+const SUMMARY_LABEL_RE = /^\s*(\[[^\]]*\])\s*([\s\S]*)$/;
+
+// 발주 F-71: 연속 summary 문장을 한 블록으로 묶는다.
+//   문장마다 div 를 따로 내면 문장 사이에도 2.58rem 이 들어가 한 덩어리 줄거리가
+//   갈라진다(마진 상쇄는 2배가 되는 것만 막지, 사이 여백 자체를 없애지 않는다).
+//   여백은 바깥 블록에만 두고 안쪽은 줄바꿈만 한다.
+//   ★ 라벨 볼드는 블록 첫 줄(지시문)에만 준다.
+function SummaryBlock({ items }) {
+  return (
+    <div style={SUMMARY_BLOCK_STYLE}>
+      {items.map((it, idx) => {
+        const t = it.sent.t;
+        const m = idx === 0 ? SUMMARY_LABEL_RE.exec(t ?? "") : null;
+        return (
+          <div key={it.sent.id}>
+            {m ? (
+              <>
+                <span style={{ fontWeight: 700 }}>{m[1]}</span>{" "}
+                <Underlined text={m[2]} />
+              </>
+            ) : (
+              <Underlined text={t} />
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function renderAll(sents, sel, annotations, visualMarks, aiCitedSentId) {
   // target field 호환 path: target 미존재 시 'passage' default.
   // choice/bogi target annotation 은 PassagePanel 영역 외 — QuizPanel 처리.
@@ -877,9 +898,26 @@ function renderAll(sents, sel, annotations, visualMarks, aiCitedSentId) {
       );
       bodyBuf = [];
     };
-    for (const g of groupItems) {
+    for (let gi = 0; gi < groupItems.length; gi++) {
+      const g = groupItems[gi];
       if (g.isBlock) {
         flushBody();
+        // 발주 F-71: 연속 summary 는 한 블록으로 묶는다. 단일 summary 도
+        //   길이 1인 구간으로 같은 경로를 탄다(정본 하나).
+        if (g.st === "summary") {
+          const run = [g];
+          while (
+            gi + 1 < groupItems.length &&
+            groupItems[gi + 1].st === "summary"
+          ) {
+            gi += 1;
+            run.push(groupItems[gi]);
+          }
+          out.push(
+            <SummaryBlock key={keyPrefix + "_sum_" + run[0].sent.id} items={run} />,
+          );
+          continue;
+        }
         out.push(
           <RenderSent
             key={g.sent.id}
