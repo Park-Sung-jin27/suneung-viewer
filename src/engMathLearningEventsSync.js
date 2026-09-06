@@ -71,6 +71,25 @@ export function learningHistoryToEventRows(history, authenticatedUserId) {
         outcome: "answered",
       });
 
+      const reviewSignal =
+        !result.isCorrect && result.gaveUp
+          ? "gave_up"
+          : !result.isCorrect && result.confidence === "sure"
+            ? "sure_wrong"
+            : null;
+      if (reviewSignal) {
+        rows.push({
+          ...baseRow(
+            session,
+            result,
+            userId,
+            `review-signal-${reviewSignal}`,
+          ),
+          activity_type: "review_signal",
+          outcome: reviewSignal,
+        });
+      }
+
       if (session.attemptKind === "wrong_retry" && result.isCorrect) {
         rows.push({
           ...baseRow(session, result, userId, "remediation"),
@@ -119,6 +138,23 @@ export function summarizeMemberLearningEvents(
       )
       .map((row) => row.problem_key),
   );
+  const gaveUpQuestionCount = new Set(
+    recentRows
+      .filter(
+        (row) =>
+          row.activity_type === "review_signal" && row.outcome === "gave_up",
+      )
+      .map((row) => row.problem_key),
+  ).size;
+  const sureWrongQuestionCount = new Set(
+    recentRows
+      .filter(
+        (row) =>
+          row.activity_type === "review_signal" &&
+          row.outcome === "sure_wrong",
+      )
+      .map((row) => row.problem_key),
+  ).size;
 
   return {
     sessionCount: sessionIds.size,
@@ -131,6 +167,8 @@ export function summarizeMemberLearningEvents(
     accuracy:
       answers.length === 0 ? null : Math.round((correctCount / answers.length) * 100),
     recoveredQuestionCount: recoveredQuestionIds.size,
+    gaveUpQuestionCount,
+    sureWrongQuestionCount,
   };
 }
 
@@ -148,6 +186,10 @@ export function combineLocalAndMemberSummary(localSummary, memberSummary) {
       localSummary.recoveredQuestionCount,
       memberSummary.recoveredQuestionCount,
     ),
+    gaveUpQuestionCount:
+      memberSummary.gaveUpQuestionCount ?? localSummary.gaveUpQuestionCount,
+    sureWrongQuestionCount:
+      memberSummary.sureWrongQuestionCount ?? localSummary.sureWrongQuestionCount,
   };
 }
 

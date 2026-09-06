@@ -43,6 +43,7 @@ function session({
   subject = "english",
   durationMs,
   confidence,
+  gaveUp,
 }) {
   return createLearningSessionRecord({
     sessionId: id,
@@ -57,6 +58,7 @@ function session({
         isCorrect,
         durationMs,
         confidence,
+        gaveUp,
         passage: "LOCKED_CONTENT_MUST_NOT_BE_STORED",
         choices: ["LOCKED_CHOICE_MUST_NOT_BE_STORED"],
         solution: "LOCKED_SOLUTION_MUST_NOT_BE_STORED",
@@ -73,6 +75,7 @@ const privacyRecord = session({
   isCorrect: false,
   durationMs: 42000,
   confidence: "unsure",
+  gaveUp: true,
 });
 assert.deepEqual(Object.keys(privacyRecord.results[0]), [
   "questionId",
@@ -80,10 +83,12 @@ assert.deepEqual(Object.keys(privacyRecord.results[0]), [
   "isCorrect",
   "durationMs",
   "confidence",
+  "gaveUp",
 ]);
 assert.equal(JSON.stringify(privacyRecord).includes("LOCKED_CONTENT"), false);
 assert.equal(JSON.stringify(privacyRecord).includes("LOCKED_CHOICE"), false);
 assert.equal(JSON.stringify(privacyRecord).includes("LOCKED_SOLUTION"), false);
+assert.equal(privacyRecord.results[0].gaveUp, true);
 
 const legacyRecord = createLearningSessionRecord({
   sessionId: "legacy-v1",
@@ -252,6 +257,101 @@ assert.deepEqual(
 assert.equal(plan.items[2].questionId, "2026_csat_21");
 assert.equal(plan.items[2].reason, "취약 보완");
 assert.equal(plan.items.some((item) => item.reason === "새 문항"), true);
+
+function assertPriorityReviewPlan(subject) {
+  const prefix = subject === "english" ? "priority_english" : "priority_math";
+  let priorityHistory = normalizeLearningHistory(null);
+  priorityHistory = appendLearningSession(
+    priorityHistory,
+    session({
+      id: `${prefix}-normal`,
+      completedAt: "2026-08-06T09:00:00.000Z",
+      questionId: `${prefix}_normal`,
+      isCorrect: false,
+      confidence: "unsure",
+      subject,
+    }),
+  );
+  priorityHistory = appendLearningSession(
+    priorityHistory,
+    session({
+      id: `${prefix}-sure`,
+      completedAt: "2026-08-06T09:05:00.000Z",
+      questionId: `${prefix}_sure`,
+      isCorrect: false,
+      confidence: "sure",
+      subject,
+    }),
+  );
+  priorityHistory = appendLearningSession(
+    priorityHistory,
+    session({
+      id: `${prefix}-gave-up`,
+      completedAt: "2026-08-06T09:10:00.000Z",
+      questionId: `${prefix}_gave_up`,
+      isCorrect: false,
+      gaveUp: true,
+      subject,
+    }),
+  );
+
+  const reviewNow = new Date("2026-08-07T12:00:00.000Z");
+  const priorityStates = buildQuestionReviewStates(
+    priorityHistory,
+    subject,
+    reviewNow,
+  );
+  const stateByQuestionId = new Map(
+    priorityStates.map((item) => [item.questionId, item]),
+  );
+  assert.equal(
+    stateByQuestionId.get(`${prefix}_normal`).dueAt,
+    "2026-08-07T09:00:00.000Z",
+  );
+  assert.equal(
+    stateByQuestionId.get(`${prefix}_sure`).reviewNeed,
+    "sure_wrong",
+  );
+  assert.equal(
+    stateByQuestionId.get(`${prefix}_gave_up`).reviewNeed,
+    "gave_up",
+  );
+
+  const priorityQuestions = ["normal", "sure", "gave_up", "new_1", "new_2"].map(
+    (suffix) => ({ id: `${prefix}_${suffix}` }),
+  );
+  const priorityPlan = buildDailyLearningPlan(
+    priorityQuestions,
+    subject,
+    priorityHistory,
+    reviewNow,
+  );
+  assert.deepEqual(
+    priorityPlan.items.slice(0, 2),
+    [
+      {
+        questionId: `${prefix}_gave_up`,
+        reason: "풀이를 먼저 본 문제 · 1일 복습",
+      },
+      {
+        questionId: `${prefix}_sure`,
+        reason: "확신했지만 틀린 문제 · 1일 복습",
+      },
+    ],
+  );
+  assert.equal(priorityPlan.dueCount, 3);
+  assert.equal(priorityPlan.newCount, 2);
+  const prioritySummary = summarizeLearningHistory(
+    priorityHistory,
+    subject,
+    reviewNow,
+  );
+  assert.equal(prioritySummary.gaveUpQuestionCount, 1);
+  assert.equal(prioritySummary.sureWrongQuestionCount, 1);
+}
+
+assertPriorityReviewPlan("english");
+assertPriorityReviewPlan("math");
 
 const summary = summarizeLearningHistory(
   dailyHistory,
