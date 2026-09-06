@@ -462,21 +462,56 @@ function RenderSent({ sent, sel, anns, aiCited }) {
       </div>
     );
   }
+  // 발주 F-70 ②: 지면 대조 결과 회색·자간 확대는 근거가 없었다.
+  //   색을 본문과 같은 검정으로 되돌리고 letterSpacing 을 뺀다.
+  //   중앙 정렬은 지면에 부합하므로 유지한다.
   if (st === "omission")
     return (
       <div
         style={{
           textAlign: "center",
-          color: "#9ca3af",
+          color: "#1f2937",
           fontSize: "0.83rem",
           // 중략·줄거리 표시는 앞뒤 지문과 한 줄씩 띄움 (2026-06-05 사양)
           margin: "1.6em 0",
-          letterSpacing: "0.1em",
         }}
       >
         {t}
       </div>
     );
+  // 발주 F-70 ①: [앞부분의 줄거리] 등 요약 블록. D-209 지면 실측 근거 —
+  //   본문(0.92rem · 행간 2.0 · 명조)과 달리 고딕 계열이고 글자가 작으며
+  //   앞뒤 여백이 넓고 내부 행간은 좁다(10.23~10.72/11.21pt, 전후 27/23 대
+  //   행간 18.3 → 약 1.4배).
+  //   ★ 여백은 rem 으로 쓴다. em 이면 자기 글자 크기(0.84rem) 기준이 되어
+  //     본문 행간의 1.4배가 되지 않는다.
+  //   ★ 연속 summary 는 인접 형제 마진이 상쇄되어 여백이 겹쳐 쌓이지 않는다
+  //     (부모가 flex 가 아니라 일반 흐름이다 — 확인함).
+  if (st === "summary") {
+    // 라벨([앞부분의 줄거리] 등)만 굵게. 없으면 전체를 그대로 둔다.
+    const m = /^\s*(\[[^\]]*\])\s*([\s\S]*)$/.exec(t ?? "");
+    return (
+      <div
+        style={{
+          textAlign: "left",
+          color: "#1f2937",
+          fontSize: "0.84rem",
+          fontFamily: "'Noto Sans KR', sans-serif",
+          margin: "2.58rem 0",
+          lineHeight: 1.7,
+        }}
+      >
+        {m ? (
+          <>
+            <span style={{ fontWeight: 700 }}>{m[1]}</span>{" "}
+            <Underlined text={m[2]} />
+          </>
+        ) : (
+          <Underlined text={t} />
+        )}
+      </div>
+    );
+  }
   if (st === "author")
     return (
       <div
@@ -780,6 +815,7 @@ function renderAll(sents, sel, annotations, visualMarks, aiCitedSentId) {
   const BLOCK_TYPES = new Set([
     "workTag",
     "omission",
+    "summary", // 발주 F-70: [앞부분의 줄거리] 등 — 본문과 다른 블록이다
     "author",
     "footnote",
     "image",
