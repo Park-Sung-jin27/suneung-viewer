@@ -1320,7 +1320,7 @@ for (const yearKey of yearsToCheck) {
           .filter(
             (s) =>
               s.sentType &&
-              !["footnote", "author", "workTag", "omission"].includes(
+              !["footnote", "author", "workTag", "omission", "summary"].includes(
                 s.sentType,
               ),
           )
@@ -1996,7 +1996,7 @@ for (const yearKey of yearsToCheck) {
               const setNorm = (set.sents || [])
                 .filter(
                   (s) =>
-                    !["footnote", "author", "workTag", "omission"].includes(
+                    !["footnote", "author", "workTag", "omission", "summary"].includes(
                       s.sentType,
                     ),
                 )
@@ -2152,6 +2152,9 @@ for (const yearKey of yearsToCheck) {
               "footnote",
               "author",
               "omission",
+              // 발주 D-209: [앞부분의 줄거리] 등 줄거리 블록. 지면이 본문과
+              //   다른 서체·크기로 조판하는 별도 블록이라 본문이 아니다.
+              "summary",
               "workTag",
             ]);
             const csS = c.cs_ids
