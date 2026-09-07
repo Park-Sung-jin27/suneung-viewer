@@ -596,6 +596,9 @@ export default function EngMathProductHome({ user, onLogout }) {
             지니쌤과 공부하자
           </div>
           <div className="eng-math-home__account">
+            <button className="eng-math-home__account-button" type="button" onClick={() => navigate('/eng-math/classroom')}>
+              수업 관리·학생 연결
+            </button>
             {user && (
               <span className="eng-math-home__account-label">
                 학습 계정 연결됨
