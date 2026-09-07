@@ -660,7 +660,12 @@ function BogiRenderer({ bogi, anns = [] }) {
   //   imagePosition: 'right' | 'left' → 텍스트 옆 배치 (데스크탑)
   //                  'top' | 'bottom' | undefined → 세로 배치
   //   모바일(<=640px)에서는 항상 세로 배치로 fallback
-  if (bogi.type === "annotated_image") {
+  // 발주 F-36 계열 방어: type 이 없어도 image 가 있으면 같은 경로로 그린다.
+  //   데이터에 type 없는 객체형이 4건 있다(r20236a q2 · r20246a q3 ·
+  //   l20149a q33 · r20279c q13). 아래 폴백은 「알 수 없는 타입」을 return null
+  //   로 버리므로, 그 4건은 이미지뿐 아니라 <보기> 텍스트까지 통째로 사라진다.
+  //   ★ 데이터는 고치지 않는다(D 영역). 렌더가 두 형태를 다 받는다.
+  if (bogi.type === "annotated_image" || (!bogi.type && bogi.image)) {
     const pos = bogi.imagePosition;
     const isHorizontal = pos === "right" || pos === "left";
     // 발주 F-36: 문자열·객체 두 형태를 모두 받는다. 해석 실패 시 이미지 없이 렌더.
