@@ -661,6 +661,18 @@ function RenderSent({ sent, sel, anns, aiCited }) {
 //   = RenderSent path 안 hideLabels=true 안 visibility:hidden 적용 (자리 유지) →
 //   좌측 측면 라벨 단독 노출 (l2022a 형태) 통일 path. hide trigger 결정 X.
 // 발주 F-51: 안내 박스 안 행동 링크 공용 스타일
+// 발주 F-73: cs_ids 가 비어 있는 것이 「정상」인 pat 이 있다(quality_gate 규약).
+//   R3 — 지문에 없는 내용을 끌어온 선지라 지문에 표시할 근거가 애초에 없다.
+//   V  — 어휘 문항은 형광펜이 아니라 해설로 안내한다.
+//   이 둘에 「준비되지 않았습니다」를 띄우면 정상 상태가 결함처럼 읽힌다.
+//   ★ 그 외 pat(또는 pat 없음)은 기존 문구를 유지한다. 그건 진짜 데이터
+//     공백의 신호이므로 바꾸면 결함이 숨는다.
+const NOTICE_DATA_DEFAULT = "이 선지는 지문 근거 표시가 준비되지 않았습니다";
+const NOTICE_DATA_BY_PAT = {
+  R3: "이 선지는 지문에 없는 내용을 끌어온 것이라 지문에 표시할 근거가 없습니다. 해설에서 지문이 어디까지 말했는지 확인하세요.",
+  V: "어휘 문항은 형광펜 대신 해설로 안내합니다. 밑줄 친 어휘가 든 문장의 문맥을 다시 읽어 보세요.",
+};
+
 const NOTICE_ACTION = {
   border: "1px solid #d97706",
   background: "#fff",
@@ -1092,6 +1104,21 @@ export default function PassagePanel({
         : isPro
           ? "data"
           : "pass";
+  // 발주 F-73: 고른 선지의 pat 을 찾아 안내 문구를 가른다.
+  //   sel 형식은 `q<문항id>_c<선지번호>` 다(QuizPanel 이 만든다).
+  const selectedPat = (() => {
+    if (!sel) return null;
+    const parts = String(sel).split("_c");
+    if (parts.length < 2) return null;
+    const qid = parts[0].replace(/^q/, "");
+    const cNum = Number(parts[1]);
+    const q = (passageSet.questions || []).find((x) => String(x.id) === qid);
+    const c = (q?.choices || []).find((x) => Number(x.num) === cNum);
+    return c?.pat ?? null;
+  })();
+  const patNotice = selectedPat ? NOTICE_DATA_BY_PAT[selectedPat] : null;
+  // 정상 상태(R3·V)는 경고색(노랑) 대신 중립색으로 둔다 — 결함이 아니다.
+  const noticeNeutral = noticeKind === "data" && !!patNotice;
   // 풀이 모드에서 sel이 있어도 '전체 제출' 전(submitted 알 수 없으므로)
   // QuizPanel이 submitted 전엔 onSelChange를 호출하지 않으므로 sel은 null 유지됨
   // → 별도 처리 없이 sel 그대로 사용
@@ -1120,9 +1147,9 @@ export default function PassagePanel({
           style={{
             fontSize: "0.78rem",
             lineHeight: 1.6,
-            color: "#92400e",
-            background: "#fffbeb",
-            border: "1px solid #fcd34d",
+            color: noticeNeutral ? "#374151" : "#92400e",
+            background: noticeNeutral ? "#f9fafb" : "#fffbeb",
+            border: noticeNeutral ? "1px solid #e5e7eb" : "1px solid #fcd34d",
             borderRadius: "8px",
             padding: "10px 12px",
             display: "flex",
@@ -1148,7 +1175,7 @@ export default function PassagePanel({
             </>
           )}
           {noticeKind === "data" && (
-            <span>이 선지는 지문 근거 표시가 준비되지 않았습니다</span>
+            <span>{patNotice ?? NOTICE_DATA_DEFAULT}</span>
           )}
         </div>
       )}
