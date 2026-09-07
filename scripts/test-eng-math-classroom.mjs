@@ -38,6 +38,17 @@ async function rejects(action, message) {
   checks++;
 }
 try {
+  const deployment = JSON.parse(
+    readFileSync(new URL("../vercel.json", import.meta.url), "utf8"),
+  );
+  ok(
+    deployment.rewrites.some(
+      (rule) =>
+        rule.source === "/eng-math/classroom" &&
+        rule.destination === "/index.html",
+    ),
+    "deployed classroom direct links and login returns must reach the app",
+  );
   await db.exec(`create role anon; create role authenticated; create schema auth;
     create table auth.users(id uuid primary key, email text);
     create function auth.uid() returns uuid language sql stable as
