@@ -3,6 +3,7 @@ export const ENG_MATH_AUTH_RETURN_KEY = "eng_math_auth_return_v1";
 const ENG_MATH_RETURN_PATHS = new Set([
   "/eng-math-beta",
   "/eng-math/practice",
+  "/eng-math/classroom",
 ]);
 
 export function normalizeEngMathReturnTo(value) {

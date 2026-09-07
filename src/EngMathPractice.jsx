@@ -130,7 +130,8 @@ function readSavedSession(subject, packId, questions, storageNamespace) {
           (result.confidence === undefined ||
             CONFIDENCE_OPTIONS.some(
               (option) => option.value === result.confidence,
-            )),
+            )) &&
+          (result.gaveUp === undefined || typeof result.gaveUp === "boolean"),
       );
     const valid =
       saved.version === SESSION_STORAGE_VERSION &&
@@ -188,6 +189,9 @@ function saveSession(
 }
 
 function formatSessionAnswer(result, answer) {
+  if (result.gaveUp && answer === result.selectedAnswer) {
+    return "모르겠어요";
+  }
   if (result.answerType === "choice") {
     return SESSION_ANSWER_MARKS[Number(answer)] ?? String(answer);
   }
@@ -217,6 +221,8 @@ function WeeklyLearningSummary({ summary, profile, syncStatus = "local" }) {
       : syncStatus === "syncing"
         ? "회원 기록 확인 중"
         : "이 기기 기록";
+  const reviewSignalScope =
+    syncStatus === "synced" ? "회원 기록 · 모든 기기" : "현재 기기에서 남긴 기록";
 
   return (
     <section
@@ -234,6 +240,15 @@ function WeeklyLearningSummary({ summary, profile, syncStatus = "local" }) {
         .eng-math-weekly__stat { min-width: 0; border-radius: 12px; background: #f6f8fb; padding: 12px; }
         .eng-math-weekly__stat dt { color: #738097; font-size: 0.72rem; font-weight: 800; }
         .eng-math-weekly__stat dd { margin: 5px 0 0; color: #25324a; font-size: 1.05rem; font-weight: 900; }
+        .eng-math-weekly__signals { margin-top: 15px; border: 1px solid color-mix(in srgb, var(--eng-math-weekly-accent) 20%, #dfe6ef); border-radius: 14px; background: color-mix(in srgb, var(--eng-math-weekly-accent) 4%, #fff); padding: 13px; }
+        .eng-math-weekly__signals-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+        .eng-math-weekly__signals h3 { margin: 0; color: #39475e; font-size: 0.8rem; }
+        .eng-math-weekly__signals-head span { color: #8792a4; font-size: 0.68rem; font-weight: 750; }
+        .eng-math-weekly__signal-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 10px 0 0; }
+        .eng-math-weekly__signal { min-width: 0; border-radius: 10px; background: #fff; padding: 10px; }
+        .eng-math-weekly__signal dt { color: #66738a; font-size: 0.72rem; font-weight: 800; line-height: 1.45; word-break: keep-all; }
+        .eng-math-weekly__signal dd { margin: 5px 0 0; color: var(--eng-math-weekly-accent); font-size: 1rem; font-weight: 900; }
+        .eng-math-weekly__signals p { margin: 9px 0 0; color: #718096; font-size: 0.7rem; line-height: 1.5; word-break: keep-all; }
         .eng-math-weekly__weak { margin-top: 15px; border-top: 1px solid #edf0f5; padding-top: 13px; }
         .eng-math-weekly__weak h3 { margin: 0 0 8px; color: #4a586e; font-size: 0.8rem; }
         .eng-math-weekly__weak ul { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
@@ -277,6 +292,23 @@ function WeeklyLearningSummary({ summary, profile, syncStatus = "local" }) {
               1·3·7일 복습을 마친 문항 {summary.masteredQuestionCount}개
             </p>
           ) : null}
+          <div className="eng-math-weekly__signals">
+            <div className="eng-math-weekly__signals-head">
+              <h3>이번 주 복습 신호</h3>
+              <span>{reviewSignalScope}</span>
+            </div>
+            <dl className="eng-math-weekly__signal-list">
+              <div className="eng-math-weekly__signal">
+                <dt>풀이를 먼저 본 문제</dt>
+                <dd>{summary.gaveUpQuestionCount ?? 0}개</dd>
+              </div>
+              <div className="eng-math-weekly__signal">
+                <dt>확신했지만 틀린 문제</dt>
+                <dd>{summary.sureWrongQuestionCount ?? 0}개</dd>
+              </div>
+            </dl>
+            <p>이 두 유형은 복습 예정일이 되면 일반 오답보다 먼저 나옵니다.</p>
+          </div>
           {summary.weakQuestions.length > 0 ? (
             <div className="eng-math-weekly__weak">
               <h3>다시 볼 문항</h3>
@@ -1566,6 +1598,40 @@ function LearningSession({
     }
   };
 
+  const recordConfidence = (confidence) => {
+    const currentResult = results[currentIndex];
+    if (!currentResult || currentResult.confidence === confidence) return;
+
+    const next = [...results];
+    next[currentIndex] = { ...currentResult, confidence };
+    setResults(next);
+    if (!isWrongRetry) {
+      saveSession(
+        subject,
+        packId,
+        sessionId,
+        questions,
+        next,
+        storageNamespace,
+      );
+    }
+    if (next.length === activeQuestions.length) {
+      const summary = recordLearningSession(
+        {
+          sessionId,
+          subject,
+          packId,
+          packLabel,
+          isWrongRetry,
+          results: next,
+        },
+        historyStorage,
+      );
+      setWeeklySummary(summary);
+      void onLearningRecorded?.();
+    }
+  };
+
   const moveForward = () => {
     if (currentIndex === activeQuestions.length - 1) {
       if (!isWrongRetry) removeSavedSession(subject, packId, storageNamespace);
@@ -1683,6 +1749,7 @@ function LearningSession({
         isDaily,
         dailyReason,
         onAnswer: recordAnswer,
+        onConfidence: recordConfidence,
         onNext: moveForward,
       }}
     />
@@ -2035,6 +2102,7 @@ function PracticeQuestion({
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [shortAnswer, setShortAnswer] = useState("");
   const [confidence, setConfidence] = useState(null);
+  const [gaveUp, setGaveUp] = useState(false);
   const questionTimerRef = useRef(null);
   if (questionTimerRef.current === null) {
     questionTimerRef.current = createActiveQuestionTimer();
@@ -2047,7 +2115,7 @@ function PracticeQuestion({
   const hasAnswer = isShortAnswer
     ? /^\d+$/.test(currentAnswer)
     : currentAnswer !== null;
-  const isReadyToSubmit = hasAnswer && confidence !== null;
+  const isReadyToSubmit = hasAnswer;
   const isCorrect = isShortAnswer
     ? currentAnswer === normalizeShortAnswer(question.answer)
     : selectedChoice === question.answer;
@@ -2082,6 +2150,7 @@ function PracticeQuestion({
     setSelectedChoice(null);
     setShortAnswer("");
     setConfidence(null);
+    setGaveUp(false);
     questionTimerRef.current.reset({
       now: Date.now(),
       active: document.visibilityState === "visible" && document.hasFocus(),
@@ -2094,10 +2163,16 @@ function PracticeQuestion({
     if (!submitted) setSelectedChoice(number);
   };
 
+  const selectConfidence = (value) => {
+    setConfidence(value);
+    session?.onConfidence(value);
+  };
+
   const submitAnswer = () => {
     if (!isReadyToSubmit || submitted) return;
     const durationMs = questionTimerRef.current.pause(Date.now());
     setSubmitted(true);
+    setShowExplanation(!isCorrect);
     if (session) {
       session.onAnswer({
         questionId: question.id,
@@ -2107,7 +2182,26 @@ function PracticeQuestion({
         correctAnswer: question.answer,
         isCorrect,
         durationMs: Math.min(60 * 60 * 1000, Math.max(0, durationMs)),
-        confidence,
+      });
+    }
+  };
+
+  const revealSolution = () => {
+    if (submitted) return;
+    const durationMs = questionTimerRef.current.pause(Date.now());
+    setSubmitted(true);
+    setGaveUp(true);
+    setShowExplanation(true);
+    if (session) {
+      session.onAnswer({
+        questionId: question.id,
+        label: question.label,
+        answerType: isShortAnswer ? "short" : "choice",
+        selectedAnswer: "",
+        correctAnswer: question.answer,
+        isCorrect: false,
+        gaveUp: true,
+        durationMs: Math.min(60 * 60 * 1000, Math.max(0, durationMs)),
       });
     }
   };
@@ -2411,11 +2505,13 @@ function PracticeQuestion({
         .eng-math-practice__short-answer input:focus { border-color: #16705b; box-shadow: 0 0 0 3px rgba(22,112,91,0.13); }
         .eng-math-practice__short-answer input:disabled { background: #f4f6f8; color: #667085; }
         .eng-math-practice__confidence { margin-top: 18px; border-top: 1px solid #edf0f5; padding-top: 16px; }
-        .eng-math-practice__confidence h2 { margin: 0 0 9px; color: #4b5870; font-size: 0.82rem; letter-spacing: -0.02em; }
+        .eng-math-practice__confidence h2 { margin: 0 0 5px; color: #334155; font-size: 0.88rem; letter-spacing: -0.02em; }
+        .eng-math-practice__confidence p { margin: 0 0 11px; color: #748197; font-size: 0.75rem; line-height: 1.55; word-break: keep-all; }
         .eng-math-practice__confidence-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
         .eng-math-practice__confidence-options button { min-width: 0; min-height: 42px; border: 1px solid #d6deea; border-radius: 11px; background: #fff; padding: 8px; color: #627087; font: inherit; font-size: 0.79rem; font-weight: 850; cursor: pointer; }
         .eng-math-practice__confidence-options button[aria-pressed="true"] { border-color: var(--eng-math-confidence-accent); background: var(--eng-math-confidence-tint); color: var(--eng-math-confidence-accent); }
         .eng-math-practice__submit,
+        .eng-math-practice__reveal,
         .eng-math-practice__restart,
         .eng-math-practice__review-toggle,
         .eng-math-practice__next {
@@ -2430,6 +2526,8 @@ function PracticeQuestion({
         }
         .eng-math-practice__submit { margin-top: 22px; color: #fff; }
         .eng-math-practice__submit:disabled { cursor: not-allowed; opacity: 0.46; }
+        .eng-math-practice__reveal { min-height: 40px; border: 0; background: transparent; color: #748197; font-size: 0.8rem; text-decoration: underline; text-underline-offset: 3px; }
+        .eng-math-practice__reveal:hover { color: #46556d; }
         .eng-math-practice__result { margin-top: 23px; border: 1px solid; border-radius: 16px; padding: 18px; }
         .eng-math-practice__result--correct { border-color: #b8e3ca; background: #f0fbf4; color: #155b3a; }
         .eng-math-practice__result--wrong { border-color: #f2c9cd; background: #fff5f5; color: #852b36; }
@@ -2695,46 +2793,24 @@ function PracticeQuestion({
             )}
 
             {!submitted ? (
-              <section
-                className="eng-math-practice__confidence"
-                aria-label="답을 고른 확신도"
-                style={{
-                  "--eng-math-confidence-accent": profile.accent,
-                  "--eng-math-confidence-tint": profile.tint,
-                }}
-              >
-                <h2>이 답을 고른 확신도를 남겨 주세요.</h2>
-                <div
-                  className="eng-math-practice__confidence-options"
-                  role="group"
-                  aria-label="확신도 선택"
+              <>
+                <button
+                  className="eng-math-practice__submit"
+                  type="button"
+                  disabled={!isReadyToSubmit}
+                  style={{ background: profile.accent }}
+                  onClick={submitAnswer}
                 >
-                  {CONFIDENCE_OPTIONS.map((option) => (
-                    <button
-                      key={option.value}
-                      type="button"
-                      aria-pressed={confidence === option.value}
-                      onClick={() => setConfidence(option.value)}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
-              </section>
-            ) : null}
-
-            {!submitted ? (
-              <button
-                className="eng-math-practice__submit"
-                type="button"
-                disabled={!isReadyToSubmit}
-                style={{ background: profile.accent }}
-                onClick={submitAnswer}
-              >
-                {hasAnswer && confidence === null
-                  ? "확신도를 고른 뒤 확인하기"
-                  : "정답 확인하기"}
-              </button>
+                  정답 확인하기
+                </button>
+                <button
+                  className="eng-math-practice__reveal"
+                  type="button"
+                  onClick={revealSolution}
+                >
+                  잘 모르겠어요 · 풀이 보기
+                </button>
+              </>
             ) : (
               <>
                 <section
@@ -2742,10 +2818,47 @@ function PracticeQuestion({
                   aria-live="polite"
                 >
                   <p className="eng-math-practice__result-title">
-                    {isCorrect ? "정답입니다." : "정답을 다시 확인해 보세요."}
+                    {gaveUp
+                      ? "정답과 풀이를 확인하세요."
+                      : isCorrect
+                        ? "정답입니다."
+                        : "정답을 다시 확인해 보세요."}
                   </p>
                   <ResultAnswer question={question} subject={subject} />
                 </section>
+
+                {!gaveUp ? (
+                  <section
+                    className="eng-math-practice__confidence"
+                    aria-label="선택 학습 기록"
+                    style={{
+                      "--eng-math-confidence-accent": profile.accent,
+                      "--eng-math-confidence-tint": profile.tint,
+                    }}
+                  >
+                    <h2>방금 답을 고를 때 어땠나요? (선택)</h2>
+                    <p>
+                      남겨 두면 복습할 때 확신했지만 틀린 문제를 먼저 찾을 수
+                      있어요.
+                    </p>
+                    <div
+                      className="eng-math-practice__confidence-options"
+                      role="group"
+                      aria-label="확신도 선택 기록"
+                    >
+                      {CONFIDENCE_OPTIONS.map((option) => (
+                        <button
+                          key={option.value}
+                          type="button"
+                          aria-pressed={confidence === option.value}
+                          onClick={() => selectConfidence(option.value)}
+                        >
+                          {option.label}
+                        </button>
+                      ))}
+                    </div>
+                  </section>
+                ) : null}
 
                 {subject === "english" && selectedChoiceFeedback ? (
                   <section
