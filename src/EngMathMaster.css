@@ -21,6 +21,8 @@
 .em-master__warning { color:var(--amber); font-size:14px; padding:12px; border:1px solid var(--line); }
 .em-master__question { padding:10px 0 24px; border-bottom:2px solid var(--green); }
 .em-master__raw { white-space:pre-wrap; font-size:18px; font-family:Georgia,'Malgun Gothic',serif; }
+.em-master__blank { display:inline-block; width:12em; max-width:95%; height:1em; margin:0 .15em; border-bottom:2px solid currentColor; vertical-align:baseline; }
+.em-master__blank--short { width:6em; }
 .em-master figure { margin:20px 0; }
 .em-master img { display:block; max-width:100%; height:auto; border:1px solid var(--line); }
 .em-master figcaption { font-size:12px; margin-top:8px; line-height:1.6; }

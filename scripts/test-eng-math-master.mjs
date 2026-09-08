@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createMasterHandler, isEngMathMaster } from '../server/engMathMaster.js';
 import { normalizeEngMathReturnTo } from '../src/engMathAccess.js';
+import { splitEnglishBlankText } from '../src/englishBlankText.js';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const directory = path.join(root, 'data-eng-math-master');
 const read = file => JSON.parse(fs.readFileSync(path.join(directory,file),'utf8'));
@@ -62,6 +63,17 @@ for(const name of ['EngMathMaster.jsx','EngMathMasterEntry.jsx','engMathMasterCl
 check(!fs.readdirSync(directory).some(f=>f.includes('fulltext_review_export')),'review-only export never packaged');
 check(!read('english--2027_09_24.json').rawText.includes('㢨ٻⱬ㥐㫴'),'known corrupted footer removed from display only');
 console.log(`ENG_MATH_MASTER: PASS ${checks} checks; default-deny auth, token verification, assets, private content, routes`);
+
+for (const number of [31, 32, 33, 34]) {
+  const q = read(`english--2027_09_${number}.json`);
+  check(q.blankSpans?.length === 1, `official blank restored: ${number}`);
+  const parts = splitEnglishBlankText(q.rawText, q.blankSpans);
+  check(parts.filter(p => p.blank).length === 1, 'one visible blank');
+  check(parts.map(p => p.blank ? '\t' : p.text).join('') === q.rawText, 'source wording and choice spacing preserved');
+}
+check(splitEnglishBlankText('31.\ttext\n① A\t② B').every(p=>!p.blank), 'ordinary tabs are not blanks');
+assert.throws(()=>splitEnglishBlankText('hello', [{start:1,length:1}]), /Invalid English blank/);
+console.log('ENGLISH_BLANK_DISPLAY: PASS official 2027_09 31–34, source preservation, non-blank tabs');
 
 // Isolated browser QA: localhost only, no real login, database calls or event writes.
 // Not part of the application or deployment entry points.

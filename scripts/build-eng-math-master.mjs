@@ -59,7 +59,23 @@ function displayRaw(text) {
     .replace(/^㢨ٻⱬ㥐㫴[^\n]*$/gm, '')
     .replace(/\n-- \d+ of \d+ --(?:\s*\d+)*\s*$/, '').trim();
 }
+// Visually checked against the official 2027 September English PDF, pages 5–6.
+// Tabs elsewhere include question indentation and choice spacing: never replace all tabs.
+const verifiedBlankAnchors = {
+  '2027_09_31': 'death. \twas not merely',
+  '2027_09_32': 'adults are \t,',
+  '2027_09_33': 'solution, proposed by Balzac, is to \t.',
+  '2027_09_34': 'joke \t. [3점]',
+};
+function blankSpans(q, text) {
+  const anchor = verifiedBlankAnchors[q.id];
+  if (!anchor) return [];
+  const start = text.indexOf(anchor);
+  if (start < 0 || start !== text.lastIndexOf(anchor)) throw new Error(`Blank anchor changed: ${q.id}`);
+  return [{ start: start + anchor.indexOf('\t'), length: 1, width: q.qid === 31 ? 'short' : 'long' }];
+}
 for (const q of english.values()) {
+  const rawText = displayRaw(q.rawText);
   const review = englishReviews.get(q.id);
   const usableReview = review?.status === 'ready' && String(review.answer) === String(q.answer) ? review : null;
   const image = asset(q.figure?.assetPath, q.figure?.alt, q.figure?.sha256);
@@ -67,7 +83,8 @@ for (const q of english.values()) {
   questions.push({
     id: `english--${q.id}`, subject: 'english', examId: q.examId,
     examLabel: `${q.schoolYear}학년도 ${q.session} 영어`, number: q.qid, track: '',
-    title: q.type || '영어', prompt: q.stem, rawText: displayRaw(q.rawText), sharedPassage: displayRaw(q.sharedPassage),
+    title: q.type || '영어', prompt: q.stem, rawText, sharedPassage: displayRaw(q.sharedPassage),
+    blankSpans: blankSpans(q, rawText),
     choices: [], answer: q.answer, review: usableReview,
     reviewStatus: usableReview ? 'registered' : 'pending',
     images: fallbackImage ? [fallbackImage] : [],
