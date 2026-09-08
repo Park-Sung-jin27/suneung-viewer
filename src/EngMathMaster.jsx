@@ -5,6 +5,13 @@ import 'katex/dist/katex.min.css';
 import { engMathAuthUrl } from './engMathAccess.js';
 import { fetchMaster } from './engMathMasterClient.js';
 import './EngMathMaster.css';
+import { splitEnglishBlankText } from './englishBlankText.js';
+
+function EnglishText({ text, blanks }) {
+  return splitEnglishBlankText(text, blanks).map((part, index) => part.blank
+    ? <span key={index} className={`em-master__blank em-master__blank--${part.width}`} role="img" aria-label="빈칸" />
+    : <span key={index}>{part.text}</span>);
+}
 
 const tracks = { common: '공통', cal: '미적분', sta: '확률과 통계', geo: '기하' };
 function MathText({ text = '', expression = false }) {
@@ -96,7 +103,7 @@ function MasterReader({ user }) {
         <h2 tabIndex={-1} ref={heading}>{detail.examLabel} · {tracks[detail.track] || ''} {detail.number}번</h2>
         <p className="em-master__warning">{detail.warning}</p>
         <div className="em-master__question"><h3>문제</h3>
-          {detail.subject==='english' ? <>{detail.sharedPassage && <p className="em-master__raw">{detail.sharedPassage}</p>}<p className="em-master__raw">{detail.rawText}</p></> : <><p><MathText text={detail.prompt}/></p>{detail.choices.map((c,i)=><p key={i}>{c.mark} <MathText text={c.text}/></p>)}</>}
+          {detail.subject==='english' ? <>{detail.sharedPassage && <p className="em-master__raw">{detail.sharedPassage}</p>}{detail.blankSpans?.length > 0 && <p>다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.</p>}<p className="em-master__raw"><EnglishText text={detail.rawText} blanks={detail.blankSpans}/></p></> : <><p><MathText text={detail.prompt}/></p>{detail.choices.map((c,i)=><p key={i}>{c.mark} <MathText text={c.text}/></p>)}</>}
           {detail.images.map(image=><PrivateImage key={image.id} image={image} userId={user.id}/>)}
           {detail.figureDescription && <p>그림 설명(원본 대체 아님): <MathText text={detail.figureDescription}/></p>}
         </div>
