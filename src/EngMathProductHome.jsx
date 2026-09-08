@@ -22,6 +22,7 @@ import { syncMemberMathConceptProgress } from "./mathConceptProgressSync.js";
 import { MATH_PROGRESS_CONCEPTS } from "./mathCourseConcepts.js";
 import { buildEngMathWeeklyOverview } from "./engMathWeeklyOverview.js";
 import { supabase } from "./supabase.js";
+import EngMathMasterEntry from "./EngMathMasterEntry.jsx";
 
 const SUBJECTS = [
   {
@@ -599,6 +600,7 @@ export default function EngMathProductHome({ user, onLogout }) {
             <button className="eng-math-home__account-button" type="button" onClick={() => navigate('/eng-math/classroom')}>
               수업 관리·학생 연결
             </button>
+            <EngMathMasterEntry user={user} />
             {user && (
               <span className="eng-math-home__account-label">
                 학습 계정 연결됨
