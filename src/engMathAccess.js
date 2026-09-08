@@ -4,6 +4,7 @@ const ENG_MATH_RETURN_PATHS = new Set([
   "/eng-math-beta",
   "/eng-math/practice",
   "/eng-math/classroom",
+  "/eng-math/master",
 ]);
 
 export function normalizeEngMathReturnTo(value) {

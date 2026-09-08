@@ -23,6 +23,7 @@ import Landing from "./Landing";
 import EngMathProductHome from "./EngMathProductHome";
 import EngMathPractice from "./EngMathPractice";
 import EngMathClassroom from "./EngMathClassroom.jsx";
+import EngMathMaster from "./EngMathMaster.jsx";
 import MathConceptLibrary from "./MathConceptLibrary";
 import {
   ENG_MATH_AUTH_RETURN_KEY,
@@ -2872,6 +2873,7 @@ export default function App() {
         element={<EngMathPractice user={user} />}
       />
       <Route path="/eng-math/classroom" element={<EngMathClassroom user={user} authReady={authReady} />} />
+      <Route path="/eng-math/master" element={<EngMathMaster user={user} authReady={authReady} />} />
       <Route path="/math/concepts" element={<MathConceptLibrary user={user} />} />
       {/* /exams: 비로그인 포함 시험 목록 단독 노출 (랜딩 CTA 도착지).
           MainPage는 user=null이면 무료 release 시험만 표시 → 가입 없이 선택·체험. */}

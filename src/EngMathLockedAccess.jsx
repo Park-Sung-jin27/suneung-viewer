@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { engMathAuthUrl } from "./engMathAccess.js";
+import EngMathMasterEntry from "./EngMathMasterEntry.jsx";
 import {
   trackEngMathEvent,
   trackEngMathEventOnce,
@@ -228,6 +229,7 @@ export default function EngMathLockedAccess({
       `}</style>
 
       <section className="eng-math-lock__card" aria-labelledby="lock-title">
+        <EngMathMasterEntry user={user} />
         <span className="eng-math-lock__badge">판매 준비 중</span>
         <h1 id="lock-title">이 5문항 묶음은 아직 열리지 않았습니다.</h1>
         <p className="eng-math-lock__pack">

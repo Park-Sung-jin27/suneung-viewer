@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/build-eng-math-master.mjs && node scripts/test-eng-math-master.mjs",
+    "check:eng-math-master": "node scripts/build-eng-math-master.mjs && node scripts/test-eng-math-master.mjs",
     "dev": "vite",
     "build": "npm run check:business && npm run check:eng-math-public && npm run check:eng-math-learning-history && npm run check:eng-math-post-solve-confidence && npm run check:eng-math-classroom && npm run check:active-question-timer && npm run check:math-concept-library && npm run check:math-concept-progress && npm run check:eng-math-weekly-overview && npm run check:eng-math-member-sync && npm run check:eng-math-access && npm run check:jippi-library-p0 && npm run build:split && vite build && npm run check:eng-math-dist && npm run check:jippi-delivery-dist",
     "check:business": "node scripts/check-business-profile.mjs",
