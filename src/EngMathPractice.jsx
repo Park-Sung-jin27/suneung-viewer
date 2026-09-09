@@ -142,7 +142,9 @@ function readSavedSession(subject, packId, questions, storageNamespace) {
       validResults &&
       Number.isInteger(saved.currentIndex) &&
       saved.currentIndex === saved.results.length &&
-      typeof saved.updatedAt === "string";
+      Number.isFinite(Date.parse(saved.updatedAt)) &&
+      // Older saved sessions have no per-question timestamp.
+      saved.results.every(result => result.answeredAt === undefined || Number.isFinite(Date.parse(result.answeredAt)));
 
     if (!valid) {
       window.localStorage.removeItem(key);
@@ -265,7 +267,7 @@ function WeeklyLearningSummary({ summary, profile, syncStatus = "local" }) {
       `}</style>
       <div className="eng-math-weekly__topline">
         <h2>이번 주 학습</h2>
-        <span>{recordScope} · 최근 7일 · 완료 {summary.sessionCount}회</span>
+        <span>{recordScope} · 최근 7일 · 학습 {summary.sessionCount}회차</span>
       </div>
       {hasHistory ? (
         <>
@@ -332,7 +334,7 @@ function WeeklyLearningSummary({ summary, profile, syncStatus = "local" }) {
         </>
       ) : (
         <p className="eng-math-weekly__empty">
-          아직 이번 주 기록이 없습니다. 무료 5문항을 끝내면 정답률과 다시 볼
+          아직 이번 주 기록이 없습니다. 한 문제씩 학습하면 정답률과 다시 볼
           문항이 여기에 남습니다.
         </p>
       )}
@@ -686,6 +688,7 @@ function ResultAnswer({ question, subject }) {
 
 function useMemberLearningSync(user, historyStorage) {
   const authenticatedUserId = user?.id ?? null;
+  const syncGeneration = useRef(0);
   const [memberLearning, setMemberLearning] = useState({
     userId: null,
     status: authenticatedUserId ? "syncing" : "local",
@@ -694,6 +697,7 @@ function useMemberLearningSync(user, historyStorage) {
 
   const refresh = useCallback(async () => {
     if (!authenticatedUserId) return;
+    const generation = ++syncGeneration.current;
 
     setMemberLearning({
       userId: authenticatedUserId,
@@ -706,12 +710,14 @@ function useMemberLearningSync(user, historyStorage) {
         authenticatedUserId,
         history: readLearningHistory(historyStorage),
       });
+      if (generation !== syncGeneration.current) return;
       setMemberLearning({
         userId: authenticatedUserId,
         status: "synced",
         summaries: result.summaries,
       });
     } catch {
+      if (generation !== syncGeneration.current) return;
       setMemberLearning({
         userId: authenticatedUserId,
         status: "error",
@@ -723,33 +729,16 @@ function useMemberLearningSync(user, historyStorage) {
   useEffect(() => {
     if (!authenticatedUserId) return undefined;
     let active = true;
-    void syncMemberLearningHistory({
-      supabase,
-      authenticatedUserId,
-      history: readLearningHistory(historyStorage),
-    })
-      .then((result) => {
-        if (active) {
-          setMemberLearning({
-            userId: authenticatedUserId,
-            status: "synced",
-            summaries: result.summaries,
-          });
-        }
-      })
-      .catch(() => {
-        if (active) {
-          setMemberLearning({
-            userId: authenticatedUserId,
-            status: "error",
-            summaries: null,
-          });
-        }
-      });
+    const generation = syncGeneration;
+    Promise.resolve().then(() => { if (active) void refresh(); });
+    const retryOnline = () => void refresh();
+    window.addEventListener("online", retryOnline);
     return () => {
       active = false;
+      generation.current++;
+      window.removeEventListener("online", retryOnline);
     };
-  }, [authenticatedUserId, historyStorage]);
+  }, [authenticatedUserId, refresh]);
 
   if (memberLearning.userId !== authenticatedUserId) {
     return {
@@ -874,7 +863,7 @@ export default function EngMathPractice({ user }) {
 
     return (
       <LearningSession
-        key={`${subject}-${selectedPack.id}-${mode}`}
+        key={`${storageNamespace}-${subject}-${selectedPack.id}-${mode}`}
         questions={dailyPlan?.questions ?? selectedPack.questions}
         subject={subject}
         packId={isDailyMode ? `daily:${selectedPack.id}` : selectedPack.id}
@@ -1542,6 +1531,7 @@ function LearningSession({
   const [results, setResults] = useState([]);
   const [finished, setFinished] = useState(false);
   const [retryQuestionIds, setRetryQuestionIds] = useState(null);
+  const [recovery, setRecovery] = useState(null);
   const [weeklySummary, setWeeklySummary] = useState(() =>
     readWeeklyLearningSummary(subject, new Date(), historyStorage),
   );
@@ -1562,14 +1552,28 @@ function LearningSession({
     : null;
 
   const resetSessionState = () => {
+    setRecovery(null);
     setCurrentIndex(0);
     setResults([]);
     setFinished(false);
   };
 
+  const persistProgress = (next, overrides = {}) => {
+    const summary = recordLearningSession({ sessionId, subject, packId, packLabel,
+      isWrongRetry, results: next, questionCount: activeQuestions.length, ...overrides }, historyStorage);
+    setWeeklySummary(summary);
+    if (summary.storageStatus === "saved") void onLearningRecorded?.();
+  };
+
   const recordAnswer = (result) => {
+    const stamped = { ...result, answeredAt: new Date().toISOString() };
+    if (recovery) {
+      setRecovery(current => ({ ...current, result: stamped }));
+      persistProgress([stamped], { sessionId: recovery.id, isWrongRetry: true, questionCount: 1 });
+      return;
+    }
     const next = [...results];
-    next[currentIndex] = result;
+    next[currentIndex] = stamped;
     setResults(next);
     if (!isWrongRetry) {
       saveSession(
@@ -1581,24 +1585,17 @@ function LearningSession({
         storageNamespace,
       );
     }
-    if (next.length === activeQuestions.length) {
-      const summary = recordLearningSession(
-        {
-          sessionId,
-          subject,
-          packId,
-          packLabel,
-          isWrongRetry,
-          results: next,
-        },
-        historyStorage,
-      );
-      setWeeklySummary(summary);
-      void onLearningRecorded?.();
-    }
+    persistProgress(next);
   };
 
   const recordConfidence = (confidence) => {
+    if (recovery) {
+      if (!recovery.result) return;
+      const result = { ...recovery.result, confidence };
+      setRecovery(current => ({ ...current, result }));
+      persistProgress([result], { sessionId: recovery.id, isWrongRetry: true, questionCount: 1 });
+      return;
+    }
     const currentResult = results[currentIndex];
     if (!currentResult || currentResult.confidence === confidence) return;
 
@@ -1615,24 +1612,11 @@ function LearningSession({
         storageNamespace,
       );
     }
-    if (next.length === activeQuestions.length) {
-      const summary = recordLearningSession(
-        {
-          sessionId,
-          subject,
-          packId,
-          packLabel,
-          isWrongRetry,
-          results: next,
-        },
-        historyStorage,
-      );
-      setWeeklySummary(summary);
-      void onLearningRecorded?.();
-    }
+    persistProgress(next);
   };
 
   const moveForward = () => {
+    setRecovery(null);
     if (currentIndex === activeQuestions.length - 1) {
       if (!isWrongRetry) removeSavedSession(subject, packId, storageNamespace);
       setFinished(true);
@@ -1644,7 +1628,9 @@ function LearningSession({
   const resumeSession = () => {
     if (!resumeCandidate) return;
     const completed = resumeCandidate.results.length === questions.length;
-    setResults(resumeCandidate.results);
+    const resumedResults = resumeCandidate.results.map(result => ({ ...result,
+      answeredAt: result.answeredAt ?? resumeCandidate.updatedAt }));
+    setResults(resumedResults);
     setCurrentIndex(
       completed
         ? questions.length - 1
@@ -1652,21 +1638,9 @@ function LearningSession({
     );
     setFinished(completed);
     setResumeCandidate(null);
+    persistProgress(resumedResults, { isWrongRetry: false, questionCount: questions.length,
+      completedAt: resumeCandidate.updatedAt });
     if (completed) {
-      const summary = recordLearningSession(
-        {
-          sessionId,
-          subject,
-          packId,
-          packLabel,
-          isWrongRetry: false,
-          results: resumeCandidate.results,
-          completedAt: resumeCandidate.updatedAt,
-        },
-        historyStorage,
-      );
-      setWeeklySummary(summary);
-      void onLearningRecorded?.();
       removeSavedSession(subject, packId, storageNamespace);
     }
   };
@@ -1736,7 +1710,7 @@ function LearningSession({
 
   return (
     <PracticeQuestion
-      key={question.id}
+      key={`${question.id}:${recovery?.id ?? "initial"}`}
       question={question}
       subject={subject}
       navigate={navigate}
@@ -1748,6 +1722,11 @@ function LearningSession({
         isWrongRetry,
         isDaily,
         dailyReason,
+        isImmediateRetry: !!recovery,
+        recordStatus: weeklySummary.storageStatus,
+        syncStatus,
+        onSync: onLearningRecorded,
+        onRetryHere: () => setRecovery({ id: createLearningSessionId(), result: null }),
         onAnswer: recordAnswer,
         onConfidence: recordConfidence,
         onNext: moveForward,
@@ -2090,7 +2069,7 @@ function SessionSummary({
   );
 }
 
-function PracticeQuestion({
+export function PracticeQuestion({
   question,
   subject,
   navigate,
@@ -2109,6 +2088,10 @@ function PracticeQuestion({
   }
   const [submitted, setSubmitted] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
+  const questionStart = useRef(null);
+  useEffect(() => {
+    if (session?.isImmediateRetry) questionStart.current?.focus();
+  }, [session?.isImmediateRetry]);
   const currentAnswer = isShortAnswer
     ? normalizeShortAnswer(shortAnswer)
     : selectedChoice;
@@ -2169,7 +2152,7 @@ function PracticeQuestion({
   };
 
   const submitAnswer = () => {
-    if (!isReadyToSubmit || submitted) return;
+    if (!isReadyToSubmit || submitted || session?.submissionPending) return;
     const durationMs = questionTimerRef.current.pause(Date.now());
     setSubmitted(true);
     setShowExplanation(!isCorrect);
@@ -2187,7 +2170,7 @@ function PracticeQuestion({
   };
 
   const revealSolution = () => {
-    if (submitted) return;
+    if (submitted || session?.submissionPending) return;
     const durationMs = questionTimerRef.current.pause(Date.now());
     setSubmitted(true);
     setGaveUp(true);
@@ -2314,6 +2297,10 @@ function PracticeQuestion({
           word-break: keep-all;
         }
         .eng-math-practice__label { margin: 0; color: #758196; font-size: 0.83rem; font-weight: 700; }
+        .eng-math-practice__recovery { margin: 20px 0; padding: 16px; border-left: 3px solid #3157a5; background: #f1f5fa; line-height: 1.65; }
+        .eng-math-practice__recovery p { margin: 0 0 10px; font-size: 0.85rem; }
+        .eng-math-practice__recovery button { padding: 12px; border: 1px solid #3157a5; border-radius: 8px; background: white; color: #3157a5; font: inherit; font-weight: 700; cursor: pointer; }
+        .eng-math-practice__record-status { margin: 14px 0; color: #586c7d; font-size: 0.78rem; line-height: 1.6; }
         .eng-math-practice__passage {
           margin: 24px 0 20px;
           border-left: 4px solid #cbd5e1;
@@ -2721,7 +2708,8 @@ function PracticeQuestion({
                 : "1문항 체험"}
             </span>
             <p className="eng-math-practice__label">{question.label}</p>
-            <h1 className="eng-math-practice__heading">
+            {session?.isImmediateRetry && <p className="eng-math-practice__record-status">해설을 가린 재풀이입니다. 첫 답안 기록은 바뀌지 않습니다.</p>}
+            <h1 className="eng-math-practice__heading" ref={questionStart} tabIndex={-1}>
               {subject === "math"
                 ? "문제를 읽고 정답을 확인하세요."
                 : question.prompt}
@@ -2827,7 +2815,7 @@ function PracticeQuestion({
                   <ResultAnswer question={question} subject={subject} />
                 </section>
 
-                {!gaveUp ? (
+                {!gaveUp && session?.assignmentStatus === undefined ? (
                   <section
                     className="eng-math-practice__confidence"
                     aria-label="선택 학습 기록"
@@ -2966,14 +2954,34 @@ function PracticeQuestion({
                   </>
                 ) : null}
 
+                {session && <p className="eng-math-practice__record-status" role="status">
+                  {session.assignmentStatus !== undefined
+                    ? session.assignmentStatus === 'saved' ? '과제 답안이 서버에 접수됐습니다. 과제 목록에서 완료 분량을 확인하세요.'
+                    : session.assignmentStatus === 'error' ? session.assignmentError
+                    : '과제 답안 접수를 확인하고 있습니다. 접수 완료 전에는 화면을 닫지 마세요.'
+                    : session.recordStatus === "unavailable"
+                    ? "이 기기에 답안을 저장하지 못했습니다. 현재 풀이는 계속할 수 있지만 화면을 닫으면 기록이 사라질 수 있습니다."
+                    : session.syncStatus === "synced" ? "회원 기록에 반영했습니다. 선생님은 최신 기록을 불러와 확인할 수 있습니다."
+                    : session.syncStatus === "syncing" ? "이 기기에 저장했습니다. 회원 기록에 반영 중입니다."
+                    : session.syncStatus === "error" ? "이 기기에는 저장했지만 회원 기록에 반영하지 못했습니다. 연결 후 다시 반영해 주세요."
+                    : "이 기기에 저장했습니다. 선생님에게 공유하려면 로그인한 상태에서 학습해야 합니다."}
+                  {session.syncStatus === "error" && <button type="button" onClick={session.onSync}>회원 기록 다시 반영</button>}
+                  {session.assignmentStatus === "error" && <button type="button" onClick={session.onSync}>같은 답안 다시 접수</button>}
+                </p>}
+                {session && (gaveUp || !isCorrect) && <section className="eng-math-practice__recovery" aria-label="풀이 후 다시 풀기">
+                  <p>풀이를 읽었다면 정답과 해설을 가리고 다시 풀어 보세요. 지금 다시 풀기 어려우면 다음 문제로 넘어가도 됩니다.</p>
+                  <button type="button" disabled={session.submissionPending} onClick={session.onRetryHere}>해설 가리고 다시 풀기</button>
+                </section>}
+                {session?.isImmediateRetry && !gaveUp && isCorrect && <p className="eng-math-practice__record-status">재풀이에서 맞혔습니다. 답을 기억한 것일 수도 있으니, 다음 복습에서도 혼자 풀 수 있는지 확인하세요.</p>}
                 {session ? (
                   <button
                     className="eng-math-practice__next"
                     type="button"
                     style={{ background: profile.accent }}
                     onClick={session.onNext}
+                    disabled={session.submissionPending}
                   >
-                    {session.isLast
+                    {session.assignmentStatus !== undefined ? "과제 진행 확인" : session.isLast
                       ? session.isWrongRetry
                         ? "오답 결과 보기"
                         : "5문항 결과 보기"

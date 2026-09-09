@@ -9,6 +9,8 @@ import {
   loadClassroom,
 } from "./engMathClassroom.js";
 import "./EngMathClassroom.css";
+import EngMathAssignmentPreview from "./EngMathAssignmentPreview.jsx";
+import AssignedPractice, {AssignmentHub} from "./EngMathAssignments.jsx";
 
 const SUBJECT = { english: "영어", math: "수학" };
 const REASONS = {
@@ -469,6 +471,8 @@ function Workspace({ user, demo }) {
             </section>
           )}
           {!loading && !error && students.length > 0 && <DailyRoster key={classId} students={students} asOf={data.asOf} onSelect={setStudentId} busy={busy} onRefresh={() => setRevision(v => v + 1)}/>}
+          {demo && new URLSearchParams(location.search).get("assignments") === "1" && students.length > 0 && <EngMathAssignmentPreview key={`assignments-${classId}`} members={students}/>}
+          {!demo && selectedClass && data && <AssignmentHub key={`teacher-assignments-${user.id}-${classId}`} teacherId={user.id} classId={classId} members={students}/>}
           <section className="classroom-roster" aria-label="학생 학습 현황">
             <div className="classroom-section-head">
               <div>
@@ -744,7 +748,7 @@ function Workspace({ user, demo }) {
                 <span>
                   이 수업반을 만든 선생님에게 내 이름과 영어·수학 최근 30일 학습
                   기록(연결 전 기록 포함)을 공유합니다. 문제별 정오답, 풀이
-                  포기, 복습·개념 완료 기록이 포함됩니다. 연결 해제로 공유를
+                  포기, 복습·개념 완료 기록이 포함됩니다. 배정받아 제출한 과제의 답안·재풀이 결과·접수 시각도 공유합니다. 연결 해제로 공유를
                   중단할 수 있습니다.
                 </span>
               </label>
@@ -754,6 +758,7 @@ function Workspace({ user, demo }) {
             </form>
           )}
           <h3>연결된 수업반</h3>
+          {!demo && <AssignmentHub key={`student-assignments-${revision}`}/>}
           {!classes.joined.length && <p>아직 연결된 수업반이 없습니다.</p>}
           {classes.joined.map((c) => (
             <article className="classroom-membership" key={c.id}>
@@ -801,6 +806,8 @@ function Workspace({ user, demo }) {
 export default function EngMathClassroom({ user, authReady }) {
   const location = useLocation();
   const demo = new URLSearchParams(location.search).get("demo") === "1";
+  const assignmentId = new URLSearchParams(location.search).get("assignment");
+  if (!demo && user && authReady && assignmentId) return <AssignedPractice key={`${user.id}:${assignmentId}`} id={assignmentId} user={user}/>;
   return (
     <main className="classroom">
       <div className="classroom-inner">
@@ -831,7 +838,7 @@ export default function EngMathClassroom({ user, authReady }) {
             </p>
             <Link
               className="classroom-primary"
-              to={engMathAuthUrl(new URLSearchParams(location.search).get("role") === "student" ? "/eng-math/classroom?role=student" : "/eng-math/classroom")}
+              to={engMathAuthUrl(`/eng-math/classroom${location.search}`)}
             >
               로그인하고 시작하기
             </Link>

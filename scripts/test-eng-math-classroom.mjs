@@ -388,11 +388,13 @@ try {
 
 // Repeatable local UI verification; never connects to the production database.
 if (process.argv.includes("--serve")) {
+  const port = Number(process.argv.find(arg => arg.startsWith("--port="))?.slice(7) || 4188);
+  if (!Number.isInteger(port) || port < 1024 || port > 65535) throw new Error("Invalid local QA port");
   const { createServer } = await import("vite");
   const { fileURLToPath } = await import("node:url");
   const server = await createServer({
     configFile: false, root: fileURLToPath(new URL("../", import.meta.url)),
-    server: { host: "127.0.0.1", port: 4188, strictPort: true },
+    server: { host: "127.0.0.1", port, strictPort: true },
     esbuild: { jsx: "automatic" },
     plugins: [{
       name: "classroom-local-qa",
@@ -413,5 +415,5 @@ if (process.argv.includes("--serve")) {
     }],
   });
   await server.listen();
-  console.log("Classroom local QA: http://127.0.0.1:4188/eng-math/classroom?demo=1");
+  console.log(`Classroom local QA: http://127.0.0.1:${port}/eng-math/classroom?demo=1`);
 }

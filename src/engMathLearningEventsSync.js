@@ -30,7 +30,7 @@ function baseRow(session, result, userId, kind) {
     subject: session.subject,
     problem_key: result.questionId,
     source_session_id: `public-v1:${session.id}`,
-    occurred_at: new Date(session.completedAt).toISOString(),
+    occurred_at: new Date(result.answeredAt ?? session.completedAt).toISOString(),
     correct: null,
     outcome: null,
     correct_first: null,
@@ -59,6 +59,7 @@ export function learningHistoryToEventRows(history, authenticatedUserId) {
     for (const result of session.results) {
       if (
         typeof result?.questionId !== "string" ||
+        !Number.isFinite(Date.parse(result.answeredAt ?? session.completedAt)) ||
         typeof result?.isCorrect !== "boolean"
       ) {
         continue;
