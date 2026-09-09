@@ -15,7 +15,8 @@ assert.match(practiceSource, /잘 모르겠어요 · 풀이 보기/);
 assert.match(practiceSource, /setShowExplanation\(!isCorrect\)/);
 assert.match(practiceSource, /gaveUp: true/);
 assert.match(practiceSource, /정답과 풀이를 확인하세요\./);
-assert.match(practiceSource, /\{!gaveUp \? \(/);
+assert.match(practiceSource, /\{!gaveUp && session\?\.assignmentStatus === undefined \? \(/,
+  "일반 학습의 선택 기록은 유지하고, 아직 확신도 저장을 연결하지 않은 과제에서는 입력란을 숨깁니다.");
 assert.match(practiceSource, /이번 주 복습 신호/);
 assert.match(practiceSource, /풀이를 먼저 본 문제/);
 assert.match(practiceSource, /확신했지만 틀린 문제/);

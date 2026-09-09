@@ -48,6 +48,10 @@ function normalizeResult(result) {
     label: result.label,
     isCorrect: result.isCorrect,
   };
+  if (result.answeredAt !== undefined) {
+    if (!Number.isFinite(Date.parse(result.answeredAt))) throw new Error("답안 기록 시각이 올바르지 않습니다.");
+    normalized.answeredAt = new Date(result.answeredAt).toISOString();
+  }
   if (result.durationMs !== undefined) {
     if (
       !Number.isInteger(result.durationMs) ||
@@ -89,6 +93,9 @@ function normalizeSession(session) {
   }
 
   const results = session.results.map(normalizeResult);
+  if (session.questionCount !== undefined && (!Number.isInteger(session.questionCount) ||
+      session.questionCount < results.length || session.questionCount > 5))
+    throw new Error("학습 묶음 문항 수가 올바르지 않습니다.");
   if (new Set(results.map((result) => result.questionId)).size !== results.length) {
     throw new Error("학습 기록에 중복 문항이 있습니다.");
   }
@@ -100,6 +107,7 @@ function normalizeSession(session) {
     packLabel: session.packLabel,
     attemptKind: session.attemptKind,
     completedAt: new Date(session.completedAt).toISOString(),
+    ...(session.questionCount !== undefined ? { questionCount: session.questionCount } : {}),
     results,
   };
 }
@@ -108,15 +116,16 @@ function attemptsForSubject(history, subject, nowMs) {
   return normalizeLearningHistory(history).sessions
     .filter(
       (session) =>
-        session.subject === subject && Date.parse(session.completedAt) <= nowMs,
+        session.subject === subject,
     )
     .flatMap((session) =>
       session.results.map((result) => ({
         ...result,
         attemptKind: session.attemptKind,
-        completedAt: session.completedAt,
+        completedAt: result.answeredAt ?? session.completedAt,
       })),
     )
+    .filter(attempt => Date.parse(attempt.completedAt) <= nowMs)
     .sort((a, b) => Date.parse(a.completedAt) - Date.parse(b.completedAt));
 }
 
@@ -158,6 +167,7 @@ export function createLearningSessionRecord({
   packLabel,
   isWrongRetry,
   results,
+  questionCount,
   completedAt = new Date().toISOString(),
 }) {
   return normalizeSession({
@@ -168,6 +178,7 @@ export function createLearningSessionRecord({
     attemptKind: isWrongRetry ? "wrong_retry" : "standard",
     completedAt,
     results,
+    questionCount,
   });
 }
 
@@ -400,20 +411,15 @@ export function summarizeLearningHistory(history, subject, now = new Date()) {
 
   const nowMs = resolveNowMs(now);
   const normalized = normalizeLearningHistory(history);
-  const recentSessions = normalized.sessions.filter((session) => {
-    const completedAt = Date.parse(session.completedAt);
-    return (
-      session.subject === subject &&
-      completedAt <= nowMs &&
-      completedAt >= nowMs - WEEK_IN_MS
-    );
-  });
+  const inWindow = time => Date.parse(time) <= nowMs && Date.parse(time) >= nowMs - WEEK_IN_MS;
+  const recentSessions = normalized.sessions.filter(session => session.subject === subject &&
+    session.results.some(result => inWindow(result.answeredAt ?? session.completedAt)));
   const attempts = recentSessions.flatMap((session) =>
     session.results.map((result) => ({
       ...result,
-      completedAt: session.completedAt,
+      completedAt: result.answeredAt ?? session.completedAt,
     })),
-  );
+  ).filter(attempt => inWindow(attempt.completedAt));
   const correctCount = attempts.filter((result) => result.isCorrect).length;
   const reviewStates = buildQuestionReviewStates(normalized, subject, now);
   const weakQuestions = reviewStates
@@ -450,6 +456,8 @@ export function summarizeLearningHistory(history, subject, now = new Date()) {
 
   return {
     sessionCount: recentSessions.length,
+    completedSessionCount: recentSessions.filter(s => s.questionCount === undefined || s.results.length === s.questionCount).length,
+    inProgressSessionCount: recentSessions.filter(s => s.questionCount !== undefined && s.results.length < s.questionCount).length,
     retrySessionCount: recentSessions.filter(
       (session) => session.attemptKind === "wrong_retry",
     ).length,
@@ -546,15 +554,17 @@ export function recordLearningSession(input, storage = browserStorage()) {
   const session = createLearningSessionRecord(input);
   const history = appendLearningSession(readLearningHistory(storage), session);
 
+  let storageStatus = "unavailable";
   if (storage) {
     try {
       storage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(history));
+      storageStatus = "saved";
     } catch {
       // 저장이 막혀도 현재 학습 결과 화면은 계속 보여준다.
     }
   }
 
-  return summarizeLearningHistory(history, session.subject, session.completedAt);
+  return { ...summarizeLearningHistory(history, session.subject, session.completedAt), storageStatus };
 }
 
 export const learningHistoryConfig = Object.freeze({
