@@ -787,8 +787,8 @@ export default function EngMathPractice({ user }) {
     [questionId, questions],
   );
   const selectedPack = useMemo(
-    () => catalog.find((pack) => pack.id === packId) ?? null,
-    [catalog, packId],
+    () => (isDailyMode && !packId ? catalog.find((pack) => pack.access === "free") : catalog.find((pack) => pack.id === packId)) ?? null,
+    [catalog, packId, isDailyMode],
   );
   const nextPack = useMemo(() => {
     if (!selectedPack) return null;

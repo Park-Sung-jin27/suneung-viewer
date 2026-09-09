@@ -36,6 +36,40 @@ function dateLabel(value) {
     : "최근 30일 기록 없음";
 }
 
+function DayCounts({ counts }) {
+  return <>
+    <strong>답안 제출 {counts.answered}문항</strong>
+    <span>풀이 먼저 보기 {counts.viewed}문항</span>
+    <span>복습 {counts.reviewed}문항 · 개념 {counts.concepts}개</span>
+  </>;
+}
+
+function DailyRoster({ students, asOf, onSelect, onRefresh, busy }) {
+  const [chosenDate, setChosenDate] = useState("");
+  const [onlyMissing, setOnlyMissing] = useState(false);
+  const dates = students[0]?.days.map(day => day.date) || [];
+  const date = dates.includes(chosenDate) ? chosenDate : dates.at(-1);
+  const rows = students.map(student => ({ student, day: student.days.find(day => day.date === date) }));
+  const missing = rows.filter(row => !row.day.hasActivity).length;
+  return <section className="classroom-roster" aria-label="날짜별 학습 확인">
+    <div className="classroom-section-head"><div><h2>매일 학습 확인</h2><p>한국 시간 기준 · 기록 있음 {rows.length - missing}명 / 기록 없음 {missing}명</p><p>{dateLabel(asOf)}에 불러온 기록</p></div><button disabled={busy} onClick={onRefresh}>최신 기록 확인</button></div>
+    <div className="classroom-filters">
+      <label>확인할 날짜<select value={date} onChange={e => setChosenDate(e.target.value)}>{dates.toReversed().map(value => <option key={value} value={value}>{value}{value === dates.at(-1) ? " · 오늘" : ""}</option>)}</select></label>
+      <label>학습 기록 표시<select value={onlyMissing ? "missing" : "all"} onChange={e => setOnlyMissing(e.target.value === "missing")}><option value="all">전체 학생</option><option value="missing">선택한 날 기록 없음</option></select></label>
+    </div>
+    <div className="classroom-table-wrap"><table><thead><tr><th>학생</th><th>기록 상태</th><th>영어</th><th>수학</th></tr></thead><tbody>
+      {rows.filter(row => !onlyMissing || !row.day.hasActivity).map(({student, day}) => <tr key={student.student_id}>
+        <th><button onClick={() => onSelect(student.student_id)}>{student.student_name}<span>최근 7일 자세히 보기</span></button></th>
+        <td data-label="기록 상태">{day.hasActivity ? "학습 기록 있음" : "기록 없음"}</td>
+        <td data-label="영어"><DayCounts counts={day.subjects.english}/></td>
+        <td data-label="수학"><DayCounts counts={day.subjects.math}/></td>
+      </tr>)}
+    </tbody></table></div>
+    {onlyMissing && missing === 0 && <p className="classroom-empty">선택한 날은 모든 학생에게 학습 기록이 있습니다.</p>}
+    <p className="classroom-muted classroom-footnote">접속만으로 학습 처리하지 않습니다. 기록 없음은 미학습뿐 아니라 아직 동기화되지 않은 경우도 포함합니다. 기록이 있다고 과제 완료나 이해 완료를 뜻하지는 않습니다.</p>
+  </section>;
+}
+
 function StudentDetail({ student, demo, busy, onTargets, onRemove }) {
   const detailRef = useRef(null);
   useEffect(() => {
@@ -60,6 +94,12 @@ function StudentDetail({ student, demo, busy, onTargets, onRemove }) {
       </div>
       <div className="classroom-detail-grid">
         <div>
+          <details className="classroom-daily-detail"><summary>최근 7일 날짜별 학습 기록 펼치기</summary>
+          <ul className="classroom-days">{student.days.toReversed().map(day => <li key={day.date}>
+            <strong>{day.date} · {day.hasActivity ? "기록 있음" : "기록 없음"}</strong>
+            <div><span>영어</span><DayCounts counts={day.subjects.english}/></div>
+            <div><span>수학</span><DayCounts counts={day.subjects.math}/></div>
+          </li>)}</ul></details>
           <h3>
             함께 짚을 문제 <span>{student.issues.length}</span>
           </h3>
@@ -175,7 +215,8 @@ function StudentDetail({ student, demo, busy, onTargets, onRemove }) {
 }
 
 function Workspace({ user, demo }) {
-  const [mode, setMode] = useState("teacher");
+  const location = useLocation();
+  const [mode, setMode] = useState(() => new URLSearchParams(location.search).get("role") === "student" ? "student" : "teacher");
   const [classes, setClasses] = useState({ owned: [], joined: [] });
   const [classId, setClassId] = useState("");
   const [data, setData] = useState(null);
@@ -268,7 +309,7 @@ function Workspace({ user, demo }) {
   async function copyInvite() {
     try {
       await navigator.clipboard.writeText(
-        `지니쌤과 공부하자에서 수업반에 연결해 주세요.\n${window.location.origin}/eng-math/classroom\n학생으로 연결 → 초대 코드 입력\n초대 코드: ${selectedClass.invite_code}`,
+        `지니쌤과 공부하자에서 수업반에 연결해 주세요.\n${window.location.origin}/eng-math/classroom?role=student\n로그인 → 학생으로 연결 → 초대 코드 입력\n초대 코드: ${selectedClass.invite_code}\n기록 공유에 동의한 뒤, 매일 영어·수학 학습을 시작하세요. 풀지 못한 문제는 풀이를 확인하고 복습해 주세요. 학습 후 회원 기록 동기화 상태까지 확인해 주세요.`,
       );
       setMessage("초대 안내를 복사했습니다. 수업 중인 학생에게 전달해 주세요.");
     } catch {
@@ -292,11 +333,11 @@ function Workspace({ user, demo }) {
         <div>
           <span className="classroom-eyebrow">영어·수학 수업 관리</span>
           <h1>
-            다음 수업에서
+            매일의 공부를
             <br />
-            함께 짚을 것들.
+            함께 확인하세요.
           </h1>
-          <p>학생별 학습량을 확인하고, 다시 설명할 문제를 모아 보세요.</p>
+          <p>날짜별 학습 기록을 확인하고, 다음 수업에서 짚을 문제를 모아 보세요.</p>
         </div>
         <div className="classroom-mode" aria-label="관리 역할">
           <button
@@ -427,6 +468,7 @@ function Workspace({ user, demo }) {
               </div>
             </section>
           )}
+          {!loading && !error && students.length > 0 && <DailyRoster key={classId} students={students} asOf={data.asOf} onSelect={setStudentId} busy={busy} onRefresh={() => setRevision(v => v + 1)}/>}
           <section className="classroom-roster" aria-label="학생 학습 현황">
             <div className="classroom-section-head">
               <div>
@@ -621,6 +663,12 @@ function Workspace({ user, demo }) {
         </>
       ) : (
         <section className="classroom-student">
+          <div className="classroom-daily-start">
+            <h2>오늘도, 학습을 이어 가세요</h2>
+            <p>내 계정으로 로그인하고 수업반에 연결한 뒤 시작하세요. 답안을 제출하면 학습 기록이 남습니다. 모르는 문제는 풀이를 보고 다시 풀어 보세요.</p>
+            <div><Link className="classroom-primary" to="/eng-math/practice?subject=english&mode=daily">오늘 영어 학습</Link><Link className="classroom-primary" to="/eng-math/practice?subject=math&mode=daily">오늘 수학 학습</Link></div>
+            <p className="classroom-muted">현재 열린 각 5문항 안에서 학습·복습합니다. 매일 새로운 문제가 제공되는 것은 아닙니다. 학습을 마친 뒤 회원 기록 동기화 상태를 확인해 주세요.</p>
+          </div>
           <h2>선생님의 수업반에 연결하기</h2>
           <p>선생님께 받은 초대 코드를 입력해 수업반 이름을 먼저 확인하세요.</p>
           <form
@@ -783,7 +831,7 @@ export default function EngMathClassroom({ user, authReady }) {
             </p>
             <Link
               className="classroom-primary"
-              to={engMathAuthUrl("/eng-math/classroom")}
+              to={engMathAuthUrl(new URLSearchParams(location.search).get("role") === "student" ? "/eng-math/classroom?role=student" : "/eng-math/classroom")}
             >
               로그인하고 시작하기
             </Link>
