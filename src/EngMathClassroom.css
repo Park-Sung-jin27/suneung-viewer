@@ -71,7 +71,7 @@
   opacity: 0.5;
   cursor: default;
 }
-.classroom :is(button, input, select, a):focus-visible {
+.classroom :is(button, input, select, a, summary):focus-visible {
   outline: 3px solid #356ac3;
   outline-offset: 3px;
 }
@@ -414,6 +414,14 @@
   padding-top: 16px;
   border-top: 1px solid var(--line);
 }
+.classroom-days { list-style:none; padding:0; margin:18px 0 30px; }
+.classroom-daily-detail { margin-bottom:24px; }
+.classroom-daily-detail summary { cursor:pointer; color:var(--blue); font-weight:700; padding:8px 0; }
+.classroom-days li { border-left:3px solid var(--line); padding:12px 16px; margin-bottom:12px; background:var(--paper); font-size:13px; line-height:1.7; }
+.classroom-days li > strong { display:block; margin-bottom:8px; color:var(--blue); }
+.classroom-days li > div { display:flex; flex-wrap:wrap; gap:4px 12px; }
+.classroom-daily-start { border-bottom:1px solid var(--line); padding-bottom:20px; margin-bottom:28px; }
+.classroom-daily-start > div { display:flex; gap:12px; flex-wrap:wrap; margin:18px 0; }
 @media (max-width: 700px) {
   .classroom table {
     min-width: 0;

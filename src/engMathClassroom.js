@@ -21,6 +21,32 @@ export function summarizeClassStudent(member, events, asOf) {
   const todayKst = new Date(now + 9 * 3600000).toISOString().slice(0, 10);
   const weekStart = Date.parse(`${todayKst}T00:00:00+09:00`) - 6 * DAY;
   const recent = rows.filter((e) => Date.parse(e.occurred_at) >= weekStart);
+  const attemptKey = e => JSON.stringify([e.subject, e.problem_key, e.source_session_id]);
+  const gaveUpSessions = new Set(rows.filter(e => e.activity_type === "review_signal" && e.outcome === "gave_up").map(attemptKey));
+  const days = Array.from({ length: 7 }, (_, index) => {
+    const start = weekStart + index * DAY;
+    const dayRows = recent.filter((e) => {
+      const time = Date.parse(e.occurred_at);
+      return time >= start && time < start + DAY;
+    });
+    const subjects = Object.fromEntries(SUBJECTS.map((subject) => {
+      const subjectRows = dayRows.filter(e => e.subject === subject);
+      const answers = subjectRows.filter(e => e.activity_type === "answer");
+      const gaveUp = e => e.outcome === "gave_up" || gaveUpSessions.has(attemptKey(e));
+      const unique = list => new Set(list.map(e => e.problem_key)).size;
+      return [subject, {
+        answered: unique(answers.filter(e => !gaveUp(e))),
+        viewed: unique(answers.filter(gaveUp)),
+        reviewed: unique(subjectRows.filter(e => e.activity_type === "review_complete")),
+        concepts: unique(subjectRows.filter(e => e.activity_type === "concept_complete")),
+      }];
+    }));
+    return {
+      date: new Date(start + 9 * 3600000).toISOString().slice(0, 10),
+      subjects,
+      hasActivity: Object.values(subjects).some(s => s.answered + s.viewed + s.reviewed + s.concepts > 0),
+    };
+  });
   const answers = rows.filter((e) => e.activity_type === "answer");
   const latest = new Map();
   for (const e of answers.sort(
@@ -70,6 +96,7 @@ export function summarizeClassStudent(member, events, asOf) {
   );
   return {
     ...member,
+    days,
     subjects,
     issues,
     activeDays: new Set(
@@ -177,7 +204,7 @@ export function classroomDemo() {
         subject: "english",
         problem_key: `2026_csat_${q}`,
         source_session_id: `demo-${student}-${q}`,
-        occurred_at: new Date(Date.now() - (24 + q) * 3600000).toISOString(),
+        occurred_at: new Date(Date.parse(asOf) - student * DAY).toISOString(),
       };
       events.push({
         ...base,
@@ -203,7 +230,7 @@ export function classroomDemo() {
         problem_key: `2022_06_common_${q}`,
         source_session_id: `demo-math-${student}`,
         event_id: `math-${student}-${q}`,
-        occurred_at: new Date(Date.now() - 12 * 3600000).toISOString(),
+        occurred_at: new Date(Date.parse(asOf) - student * DAY).toISOString(),
         activity_type: "answer",
         correct: q !== 2,
         outcome: "answered",

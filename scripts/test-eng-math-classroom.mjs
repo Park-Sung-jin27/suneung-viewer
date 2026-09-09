@@ -268,6 +268,25 @@ try {
     "old-session signal cannot contaminate current attempt",
   );
   const empty = summarizeClassStudent(member, [], iso);
+  ok(empty.days.length === 7 && empty.days.every(d => !d.hasActivity), "all seven calendar days appear even with no records");
+  const dailyBase = { ...wrong, occurred_at: "2026-09-09T02:00:00Z", outcome: "answered", source_session_id: "today" };
+  const daily = summarizeClassStudent(member, [
+    {...dailyBase, event_id:"today-answer"},
+    {...dailyBase, event_id:"retry-answer"},
+    {...dailyBase, event_id:"give-up", problem_key:"q2", outcome:"gave_up"},
+    {...dailyBase, event_id:"concept", subject:"math", activity_type:"concept_complete", problem_key:"concept1"},
+    {...dailyBase, event_id:"review", activity_type:"review_complete"},
+    {...dailyBase, event_id:"yesterday", occurred_at:"2026-09-08T14:59:59Z"},
+    {...dailyBase, event_id:"midnight", subject:"math", occurred_at:"2026-09-08T15:00:00Z"},
+    {...dailyBase, event_id:"future", problem_key:"qFuture", occurred_at:"2026-09-10T02:00:00Z"},
+    {...dailyBase, event_id:"other-user", problem_key:"qOther", user_id:stranger},
+  ], "2026-09-09T03:00:00Z");
+  const today = daily.days.at(-1);
+  ok(today.date === "2026-09-09" && today.subjects.english.answered === 1, "daily answers deduplicate retries and exclude future/other student events");
+  ok(today.subjects.english.viewed === 1 && today.subjects.english.reviewed === 1, "viewed explanation is separate from answer submission and review completion");
+  ok(today.subjects.math.answered === 1 && today.subjects.math.concepts === 1, "KST midnight belongs to new day and concept completion stays separate");
+  ok(daily.days.at(-2).subjects.english.answered === 1 && daily.subjects.english.count === 2, "repeat on another day counts per day but weekly unique count is unchanged");
+  ok(summarizeClassStudent(member, [{...dailyBase, event_id:"signal-only", activity_type:"review_signal"}], "2026-09-09T03:00:00Z").days.every(d => !d.hasActivity), "confidence-only changes cannot mark daily learning");
   const boundary = summarizeClassStudent(
     member,
     [
@@ -315,6 +334,7 @@ try {
     normalizeEngMathReturnTo("/eng-math/classroom") === "/eng-math/classroom",
     "auth returns to classroom",
   );
+  ok(normalizeEngMathReturnTo("/eng-math/classroom?role=student") === "/eng-math/classroom?role=student", "student invitation retains student mode after login");
   ok(
     normalizeEngMathReturnTo("//evil.test/eng-math/classroom") === "",
     "auth rejects external redirects",
@@ -364,4 +384,34 @@ try {
   );
 } finally {
   await db.close();
+}
+
+// Repeatable local UI verification; never connects to the production database.
+if (process.argv.includes("--serve")) {
+  const { createServer } = await import("vite");
+  const { fileURLToPath } = await import("node:url");
+  const server = await createServer({
+    configFile: false, root: fileURLToPath(new URL("../", import.meta.url)),
+    server: { host: "127.0.0.1", port: 4188, strictPort: true },
+    esbuild: { jsx: "automatic" },
+    plugins: [{
+      name: "classroom-local-qa",
+      resolveId(id) { if (id === "/__classroom_test.jsx") return "\0classroom-test"; },
+      load(id) { if (id === "\0classroom-test") return `import React from 'react';import{createRoot}from'react-dom/client';import{BrowserRouter,Routes,Route}from'react-router-dom';import Classroom from '/src/EngMathClassroom.jsx';import Practice from '/src/EngMathPractice.jsx';createRoot(document.getElementById('root')).render(React.createElement(BrowserRouter,null,React.createElement(Routes,null,React.createElement(Route,{path:'/eng-math/classroom',element:React.createElement(Classroom,{user:null,authReady:true})}),React.createElement(Route,{path:'/eng-math/practice',element:React.createElement(Practice,{user:null})}))));`; },
+      transform(code, id) { if (id.replaceAll('\\', '/').endsWith('/src/supabase.js')) return {code: "export const supabase = {rpc:async()=>{throw new Error('Local demo only');}};", map:null}; },
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          const url = new URL(req.url, "http://127.0.0.1:4188");
+          if (["/eng-math/classroom", "/eng-math/practice"].includes(url.pathname)) {
+            res.setHeader("Content-Type", "text/html; charset=utf-8");
+            res.end('<!doctype html><html lang="ko"><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><p>로컬 화면 검증 · 운영 계정·DB 연결 없음</p><div id="root"></div><script type="module" src="/__classroom_test.jsx"></script></body></html>');
+            return;
+          }
+          next();
+        });
+      },
+    }],
+  });
+  await server.listen();
+  console.log("Classroom local QA: http://127.0.0.1:4188/eng-math/classroom?demo=1");
 }
