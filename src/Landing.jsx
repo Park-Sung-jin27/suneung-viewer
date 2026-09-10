@@ -743,17 +743,6 @@ export default function Landing({ onStart }) {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <a
-            href="/fortune/"
-            style={{
-              color: C.mid,
-              fontSize: "0.78rem",
-              fontWeight: 800,
-              textDecoration: "none",
-            }}
-          >
-            운세 리포트
-          </a>
-          <a
             href="/payment"
             style={{
               color: C.mid,
